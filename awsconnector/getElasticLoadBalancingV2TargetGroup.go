@@ -12,7 +12,8 @@ import (
 )
 
 // Get a ElasticLoadBalancingV2TargetGroup
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupElasticLoadBalancingV2TargetGroup(ctx *pulumi.Context, args *LookupElasticLoadBalancingV2TargetGroupArgs, opts ...pulumi.InvokeOption) (*LookupElasticLoadBalancingV2TargetGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupElasticLoadBalancingV2TargetGroupResult

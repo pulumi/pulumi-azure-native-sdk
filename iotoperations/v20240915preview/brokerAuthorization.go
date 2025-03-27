@@ -61,6 +61,9 @@ func NewBrokerAuthorization(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:iotoperations/v20241101:BrokerAuthorization"),
 		},
 		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:BrokerAuthorization"),
+		},
+		{
 			Type: pulumi.String("azure-native:iotoperations:BrokerAuthorization"),
 		},
 	})

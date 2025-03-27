@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the properties of the specified volume container name.
-// Azure REST API version: 2017-06-01.
+//
+// Uses Azure REST API version 2017-06-01.
 func LookupVolumeContainer(ctx *pulumi.Context, args *LookupVolumeContainerArgs, opts ...pulumi.InvokeOption) (*LookupVolumeContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeContainerResult

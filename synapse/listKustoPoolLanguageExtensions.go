@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a list of language extensions that can run within KQL queries.
-// Azure REST API version: 2021-06-01-preview.
+//
+// Uses Azure REST API version 2021-06-01-preview.
 func ListKustoPoolLanguageExtensions(ctx *pulumi.Context, args *ListKustoPoolLanguageExtensionsArgs, opts ...pulumi.InvokeOption) (*ListKustoPoolLanguageExtensionsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListKustoPoolLanguageExtensionsResult

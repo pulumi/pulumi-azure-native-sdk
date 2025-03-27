@@ -12,7 +12,8 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// Azure REST API version: 2021-03-01-preview.
+//
+// Uses Azure REST API version 2021-03-01-preview.
 func LookupEnvironmentSpecificationVersion(ctx *pulumi.Context, args *LookupEnvironmentSpecificationVersionArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentSpecificationVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentSpecificationVersionResult

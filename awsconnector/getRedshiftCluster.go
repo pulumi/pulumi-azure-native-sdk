@@ -12,7 +12,8 @@ import (
 )
 
 // Get a RedshiftCluster
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupRedshiftCluster(ctx *pulumi.Context, args *LookupRedshiftClusterArgs, opts ...pulumi.InvokeOption) (*LookupRedshiftClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRedshiftClusterResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves an existing access policy resource with the given name.
-// Azure REST API version: 2021-11-01-preview.
+//
+// Uses Azure REST API version 2021-11-01-preview.
 func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessPolicyResult

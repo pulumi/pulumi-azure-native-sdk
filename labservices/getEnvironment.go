@@ -12,7 +12,8 @@ import (
 )
 
 // Get environment
-// Azure REST API version: 2018-10-15.
+//
+// Uses Azure REST API version 2018-10-15.
 func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentResult

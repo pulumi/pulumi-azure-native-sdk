@@ -2360,7 +2360,7 @@ type AzureActiveDirectoryRegistration struct {
 	// The app setting name that contains the client secret of the relying party application.
 	ClientSecretSettingName *string `pulumi:"clientSecretSettingName"`
 	// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 	// This URI is a case-sensitive identifier for the token issuer.
 	// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 	OpenIdIssuer *string `pulumi:"openIdIssuer"`
@@ -2396,7 +2396,7 @@ type AzureActiveDirectoryRegistrationArgs struct {
 	// The app setting name that contains the client secret of the relying party application.
 	ClientSecretSettingName pulumi.StringPtrInput `pulumi:"clientSecretSettingName"`
 	// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 	// This URI is a case-sensitive identifier for the token issuer.
 	// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 	OpenIdIssuer pulumi.StringPtrInput `pulumi:"openIdIssuer"`
@@ -2514,7 +2514,7 @@ func (o AzureActiveDirectoryRegistrationOutput) ClientSecretSettingName() pulumi
 }
 
 // The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 // This URI is a case-sensitive identifier for the token issuer.
 // More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 func (o AzureActiveDirectoryRegistrationOutput) OpenIdIssuer() pulumi.StringPtrOutput {
@@ -2602,7 +2602,7 @@ func (o AzureActiveDirectoryRegistrationPtrOutput) ClientSecretSettingName() pul
 }
 
 // The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 // This URI is a case-sensitive identifier for the token issuer.
 // More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 func (o AzureActiveDirectoryRegistrationPtrOutput) OpenIdIssuer() pulumi.StringPtrOutput {
@@ -2633,7 +2633,7 @@ type AzureActiveDirectoryRegistrationResponse struct {
 	// The app setting name that contains the client secret of the relying party application.
 	ClientSecretSettingName *string `pulumi:"clientSecretSettingName"`
 	// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 	// This URI is a case-sensitive identifier for the token issuer.
 	// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 	OpenIdIssuer *string `pulumi:"openIdIssuer"`
@@ -2688,7 +2688,7 @@ func (o AzureActiveDirectoryRegistrationResponseOutput) ClientSecretSettingName(
 }
 
 // The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 // This URI is a case-sensitive identifier for the token issuer.
 // More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 func (o AzureActiveDirectoryRegistrationResponseOutput) OpenIdIssuer() pulumi.StringPtrOutput {
@@ -2776,7 +2776,7 @@ func (o AzureActiveDirectoryRegistrationResponsePtrOutput) ClientSecretSettingNa
 }
 
 // The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 // This URI is a case-sensitive identifier for the token issuer.
 // More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 func (o AzureActiveDirectoryRegistrationResponsePtrOutput) OpenIdIssuer() pulumi.StringPtrOutput {

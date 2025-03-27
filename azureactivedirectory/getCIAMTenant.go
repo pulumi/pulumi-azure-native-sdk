@@ -12,7 +12,8 @@ import (
 )
 
 // Get the Azure AD for customers tenant resource.
-// Azure REST API version: 2023-05-17-preview.
+//
+// Uses Azure REST API version 2023-05-17-preview.
 func LookupCIAMTenant(ctx *pulumi.Context, args *LookupCIAMTenantArgs, opts ...pulumi.InvokeOption) (*LookupCIAMTenantResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCIAMTenantResult

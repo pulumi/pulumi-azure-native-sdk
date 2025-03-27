@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a database.
-// Azure REST API version: 2022-12-29.
+//
+// Uses Azure REST API version 2022-12-29.
 func LookupReadOnlyFollowingDatabase(ctx *pulumi.Context, args *LookupReadOnlyFollowingDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadOnlyFollowingDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReadOnlyFollowingDatabaseResult

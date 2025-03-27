@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a specific role by name.
-// Azure REST API version: 2022-03-01.
+//
+// Uses Azure REST API version 2022-03-01.
 func LookupKubernetesRole(ctx *pulumi.Context, args *LookupKubernetesRoleArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesRoleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesRoleResult

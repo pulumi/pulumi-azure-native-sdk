@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves details of this Network Tap.
-// Azure REST API version: 2023-06-15.
+//
+// Uses Azure REST API version 2023-06-15.
 func LookupNetworkTap(ctx *pulumi.Context, args *LookupNetworkTapArgs, opts ...pulumi.InvokeOption) (*LookupNetworkTapResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkTapResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Returns an import job.
-// Azure REST API version: 2024-03-01.
+//
+// Uses Azure REST API version 2024-03-01.
 func LookupImportJob(ctx *pulumi.Context, args *LookupImportJobArgs, opts ...pulumi.InvokeOption) (*LookupImportJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupImportJobResult

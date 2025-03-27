@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a EnterpriseKnowledgeGraph service specified by the parameters.
-// Azure REST API version: 2018-12-03.
+//
+// Uses Azure REST API version 2018-12-03.
 func LookupEnterpriseKnowledgeGraph(ctx *pulumi.Context, args *LookupEnterpriseKnowledgeGraphArgs, opts ...pulumi.InvokeOption) (*LookupEnterpriseKnowledgeGraphResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnterpriseKnowledgeGraphResult

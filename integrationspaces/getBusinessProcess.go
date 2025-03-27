@@ -12,7 +12,8 @@ import (
 )
 
 // Get a BusinessProcess
-// Azure REST API version: 2023-11-14-preview.
+//
+// Uses Azure REST API version 2023-11-14-preview.
 func LookupBusinessProcess(ctx *pulumi.Context, args *LookupBusinessProcessArgs, opts ...pulumi.InvokeOption) (*LookupBusinessProcessResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBusinessProcessResult

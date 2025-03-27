@@ -27,7 +27,7 @@ type LookupNodeTypeArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the node type.
 	NodeTypeName string `pulumi:"nodeTypeName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -69,7 +69,7 @@ type LookupNodeTypeResult struct {
 	FrontendConfigurations []FrontendConfigurationResponse `pulumi:"frontendConfigurations"`
 	// Specifies the full host group resource Id. This property is used for deploying on azure dedicated hosts.
 	HostGroupId *string `pulumi:"hostGroupId"`
-	// Azure resource identifier.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Indicates the Service Fabric system services for the cluster will run on this node type. This setting cannot be changed once the node type is created.
 	IsPrimary bool `pulumi:"isPrimary"`
@@ -79,7 +79,7 @@ type LookupNodeTypeResult struct {
 	IsStateless *bool `pulumi:"isStateless"`
 	// Indicates if scale set associated with the node type can be composed of multiple placement groups.
 	MultiplePlacementGroups *bool `pulumi:"multiplePlacementGroups"`
-	// Azure resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer.
 	NatConfigurations []NodeTypeNatConfigResponse `pulumi:"natConfigurations"`
@@ -103,11 +103,11 @@ type LookupNodeTypeResult struct {
 	SpotRestoreTimeout *string `pulumi:"spotRestoreTimeout"`
 	// Indicates the resource id of the subnet for the node type.
 	SubnetId *string `pulumi:"subnetId"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Azure resource tags.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Azure resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Specifies whether the use public load balancer. If not specified and the node type doesn't have its own frontend configuration, it will be attached to the default load balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is true, then the frontend has to be an Internal Load Balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is false or not set, then the custom load balancer must include a public load balancer to provide outbound connectivity.
 	UseDefaultPublicLoadBalancer *bool `pulumi:"useDefaultPublicLoadBalancer"`
@@ -131,7 +131,7 @@ type LookupNodeTypeResult struct {
 	VmImageSku *string `pulumi:"vmImageSku"`
 	// The version of the Azure Virtual Machines Marketplace image. A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
 	VmImageVersion *string `pulumi:"vmImageVersion"`
-	// The number of nodes in the node type. <br /><br />**Values:** <br />-1 - Use when auto scale rules are configured or sku.capacity is defined <br /> 0 - Not supported <br /> >0 - Use for manual scale.
+	// The number of nodes in the node type. **Values:** -1 - Use when auto scale rules are configured or sku.capacity is defined 0 - Not supported >0 - Use for manual scale.
 	VmInstanceCount int `pulumi:"vmInstanceCount"`
 	// Identities to assign to the virtual machine scale set under the node type.
 	VmManagedIdentity *VmManagedIdentityResponse `pulumi:"vmManagedIdentity"`
@@ -153,6 +153,10 @@ func (val *LookupNodeTypeResult) Defaults() *LookupNodeTypeResult {
 		return nil
 	}
 	tmp := *val
+	if tmp.DataDiskType == nil {
+		dataDiskType_ := "StandardSSD_LRS"
+		tmp.DataDiskType = &dataDiskType_
+	}
 	if tmp.EnableEncryptionAtHost == nil {
 		enableEncryptionAtHost_ := false
 		tmp.EnableEncryptionAtHost = &enableEncryptionAtHost_
@@ -181,7 +185,7 @@ type LookupNodeTypeOutputArgs struct {
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the node type.
 	NodeTypeName pulumi.StringInput `pulumi:"nodeTypeName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -296,7 +300,7 @@ func (o LookupNodeTypeResultOutput) HostGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) *string { return v.HostGroupId }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource identifier.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupNodeTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -321,7 +325,7 @@ func (o LookupNodeTypeResultOutput) MultiplePlacementGroups() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v LookupNodeTypeResult) *bool { return v.MultiplePlacementGroups }).(pulumi.BoolPtrOutput)
 }
 
-// Azure resource name.
+// The name of the resource
 func (o LookupNodeTypeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -381,17 +385,17 @@ func (o LookupNodeTypeResultOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupNodeTypeResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource tags.
+// Resource tags.
 func (o LookupNodeTypeResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Azure resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupNodeTypeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -451,7 +455,7 @@ func (o LookupNodeTypeResultOutput) VmImageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) *string { return v.VmImageVersion }).(pulumi.StringPtrOutput)
 }
 
-// The number of nodes in the node type. <br /><br />**Values:** <br />-1 - Use when auto scale rules are configured or sku.capacity is defined <br /> 0 - Not supported <br /> >0 - Use for manual scale.
+// The number of nodes in the node type. **Values:** -1 - Use when auto scale rules are configured or sku.capacity is defined 0 - Not supported >0 - Use for manual scale.
 func (o LookupNodeTypeResultOutput) VmInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) int { return v.VmInstanceCount }).(pulumi.IntOutput)
 }

@@ -69,6 +69,9 @@ func NewIacProfile(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devhub/v20240501preview:IacProfile"),
 		},
 		{
+			Type: pulumi.String("azure-native:devhub/v20250301preview:IacProfile"),
+		},
+		{
 			Type: pulumi.String("azure-native:devhub:IacProfile"),
 		},
 	})

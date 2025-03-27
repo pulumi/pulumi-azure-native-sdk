@@ -44,6 +44,9 @@ func NewVariableValueAtManagementGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:authorization/v20241201preview:VariableValueAtManagementGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:authorization:VariableValueAtManagementGroup"),
 		},
 	})

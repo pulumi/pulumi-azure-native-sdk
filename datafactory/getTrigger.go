@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a trigger.
-// Azure REST API version: 2018-06-01.
+//
+// Uses Azure REST API version 2018-06-01.
 func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.InvokeOption) (*LookupTriggerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTriggerResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an read-write access token for application insights diagnostic service data.
-// Azure REST API version: 2021-03-03-preview.
+//
+// Uses Azure REST API version 2021-03-03-preview.
 func GetDiagnosticServiceTokenReadWrite(ctx *pulumi.Context, args *GetDiagnosticServiceTokenReadWriteArgs, opts ...pulumi.InvokeOption) (*GetDiagnosticServiceTokenReadWriteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetDiagnosticServiceTokenReadWriteResult

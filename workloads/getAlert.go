@@ -12,7 +12,8 @@ import (
 )
 
 // Gets properties of an alert for the specified subscription, resource group, SAP monitor name, and resource name.
-// Azure REST API version: 2024-02-01-preview.
+//
+// Uses Azure REST API version 2024-02-01-preview.
 func LookupAlert(ctx *pulumi.Context, args *LookupAlertArgs, opts ...pulumi.InvokeOption) (*LookupAlertResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertResult

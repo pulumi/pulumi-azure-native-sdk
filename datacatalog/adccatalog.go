@@ -13,7 +13,8 @@ import (
 )
 
 // Azure Data Catalog.
-// Azure REST API version: 2016-03-30. Prior API version in Azure Native 1.x: 2016-03-30.
+//
+// Uses Azure REST API version 2016-03-30. In version 1.x of the Azure Native provider, it used API version 2016-03-30.
 type ADCCatalog struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets information about a artifact manifest resource.
-// Azure REST API version: 2023-09-01.
+//
+// Uses Azure REST API version 2023-09-01.
 //
 // Other available API versions: 2024-04-15.
 func LookupArtifactManifest(ctx *pulumi.Context, args *LookupArtifactManifestArgs, opts ...pulumi.InvokeOption) (*LookupArtifactManifestResult, error) {

@@ -12,7 +12,8 @@ import (
 )
 
 // Get the details for a specific student in the specified lab by student alias
-// Azure REST API version: 2021-12-01-preview.
+//
+// Uses Azure REST API version 2021-12-01-preview.
 func LookupStudent(ctx *pulumi.Context, args *LookupStudentArgs, opts ...pulumi.InvokeOption) (*LookupStudentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStudentResult

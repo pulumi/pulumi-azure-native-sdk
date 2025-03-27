@@ -25,7 +25,7 @@ func GetmanagedAzResiliencyStatus(ctx *pulumi.Context, args *GetmanagedAzResilie
 type GetmanagedAzResiliencyStatusArgs struct {
 	// The name of the cluster resource.
 	ClusterName string `pulumi:"clusterName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -49,7 +49,7 @@ func GetmanagedAzResiliencyStatusOutput(ctx *pulumi.Context, args GetmanagedAzRe
 type GetmanagedAzResiliencyStatusOutputArgs struct {
 	// The name of the cluster resource.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

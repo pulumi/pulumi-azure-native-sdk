@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service.
-// Azure REST API version: 2022-03-30-preview.
+//
+// Uses Azure REST API version 2022-03-30-preview.
 //
 // Other available API versions: 2023-07-15-preview.
 func ListSqlMigrationServiceMonitoringData(ctx *pulumi.Context, args *ListSqlMigrationServiceMonitoringDataArgs, opts ...pulumi.InvokeOption) (*ListSqlMigrationServiceMonitoringDataResult, error) {

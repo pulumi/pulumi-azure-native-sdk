@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a link to download the run logs.
-// Azure REST API version: 2019-06-01-preview.
+//
+// Uses Azure REST API version 2019-06-01-preview.
 //
 // Other available API versions: 2018-09-01, 2019-04-01.
 func ListRunLogSasUrl(ctx *pulumi.Context, args *ListRunLogSasUrlArgs, opts ...pulumi.InvokeOption) (*ListRunLogSasUrlResult, error) {

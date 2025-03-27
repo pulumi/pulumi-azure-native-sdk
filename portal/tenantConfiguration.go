@@ -12,9 +12,10 @@ import (
 )
 
 // The tenant configuration resource definition.
-// Azure REST API version: 2020-09-01-preview. Prior API version in Azure Native 1.x: 2020-09-01-preview.
 //
-// Other available API versions: 2022-12-01-preview.
+// Uses Azure REST API version 2020-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-09-01-preview.
+//
+// Other available API versions: 2022-12-01-preview, 2025-04-01-preview.
 type TenantConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -44,6 +45,9 @@ func NewTenantConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:portal/v20221201preview:TenantConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:portal/v20250401preview:TenantConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

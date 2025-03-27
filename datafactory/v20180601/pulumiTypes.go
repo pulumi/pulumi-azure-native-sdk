@@ -24510,7 +24510,7 @@ func (o AzurePostgreSqlLinkedServiceResponseOutput) Version() pulumi.StringPtrOu
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// A copy activity Azure PostgreSQL sink.
+// A copy activity Azure Database for PostgreSQL sink.
 type AzurePostgreSqlSink struct {
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
@@ -24525,10 +24525,14 @@ type AzurePostgreSqlSink struct {
 	// Copy sink type.
 	// Expected value is 'AzurePostgreSqlSink'.
 	Type string `pulumi:"type"`
+	// Azure Database for PostgreSQL upsert option settings
+	UpsertSettings *AzurePostgreSqlSinkUpsertSettings `pulumi:"upsertSettings"`
 	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
 	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
 	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+	// The write behavior for the operation. Default is Bulk Insert.
+	WriteMethod *string `pulumi:"writeMethod"`
 }
 
 // AzurePostgreSqlSinkInput is an input type that accepts AzurePostgreSqlSinkArgs and AzurePostgreSqlSinkOutput values.
@@ -24542,7 +24546,7 @@ type AzurePostgreSqlSinkInput interface {
 	ToAzurePostgreSqlSinkOutputWithContext(context.Context) AzurePostgreSqlSinkOutput
 }
 
-// A copy activity Azure PostgreSQL sink.
+// A copy activity Azure Database for PostgreSQL sink.
 type AzurePostgreSqlSinkArgs struct {
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
@@ -24557,10 +24561,14 @@ type AzurePostgreSqlSinkArgs struct {
 	// Copy sink type.
 	// Expected value is 'AzurePostgreSqlSink'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Azure Database for PostgreSQL upsert option settings
+	UpsertSettings AzurePostgreSqlSinkUpsertSettingsPtrInput `pulumi:"upsertSettings"`
 	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
 	WriteBatchSize pulumi.Input `pulumi:"writeBatchSize"`
 	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	WriteBatchTimeout pulumi.Input `pulumi:"writeBatchTimeout"`
+	// The write behavior for the operation. Default is Bulk Insert.
+	WriteMethod pulumi.StringPtrInput `pulumi:"writeMethod"`
 }
 
 func (AzurePostgreSqlSinkArgs) ElementType() reflect.Type {
@@ -24575,7 +24583,7 @@ func (i AzurePostgreSqlSinkArgs) ToAzurePostgreSqlSinkOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AzurePostgreSqlSinkOutput)
 }
 
-// A copy activity Azure PostgreSQL sink.
+// A copy activity Azure Database for PostgreSQL sink.
 type AzurePostgreSqlSinkOutput struct{ *pulumi.OutputState }
 
 func (AzurePostgreSqlSinkOutput) ElementType() reflect.Type {
@@ -24621,6 +24629,11 @@ func (o AzurePostgreSqlSinkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzurePostgreSqlSink) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Azure Database for PostgreSQL upsert option settings
+func (o AzurePostgreSqlSinkOutput) UpsertSettings() AzurePostgreSqlSinkUpsertSettingsPtrOutput {
+	return o.ApplyT(func(v AzurePostgreSqlSink) *AzurePostgreSqlSinkUpsertSettings { return v.UpsertSettings }).(AzurePostgreSqlSinkUpsertSettingsPtrOutput)
+}
+
 // Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
 func (o AzurePostgreSqlSinkOutput) WriteBatchSize() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzurePostgreSqlSink) interface{} { return v.WriteBatchSize }).(pulumi.AnyOutput)
@@ -24631,7 +24644,12 @@ func (o AzurePostgreSqlSinkOutput) WriteBatchTimeout() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzurePostgreSqlSink) interface{} { return v.WriteBatchTimeout }).(pulumi.AnyOutput)
 }
 
-// A copy activity Azure PostgreSQL sink.
+// The write behavior for the operation. Default is Bulk Insert.
+func (o AzurePostgreSqlSinkOutput) WriteMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzurePostgreSqlSink) *string { return v.WriteMethod }).(pulumi.StringPtrOutput)
+}
+
+// A copy activity Azure Database for PostgreSQL sink.
 type AzurePostgreSqlSinkResponse struct {
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
@@ -24646,13 +24664,17 @@ type AzurePostgreSqlSinkResponse struct {
 	// Copy sink type.
 	// Expected value is 'AzurePostgreSqlSink'.
 	Type string `pulumi:"type"`
+	// Azure Database for PostgreSQL upsert option settings
+	UpsertSettings *AzurePostgreSqlSinkResponseUpsertSettings `pulumi:"upsertSettings"`
 	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
 	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
 	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+	// The write behavior for the operation. Default is Bulk Insert.
+	WriteMethod *string `pulumi:"writeMethod"`
 }
 
-// A copy activity Azure PostgreSQL sink.
+// A copy activity Azure Database for PostgreSQL sink.
 type AzurePostgreSqlSinkResponseOutput struct{ *pulumi.OutputState }
 
 func (AzurePostgreSqlSinkResponseOutput) ElementType() reflect.Type {
@@ -24698,6 +24720,13 @@ func (o AzurePostgreSqlSinkResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzurePostgreSqlSinkResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Azure Database for PostgreSQL upsert option settings
+func (o AzurePostgreSqlSinkResponseOutput) UpsertSettings() AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput {
+	return o.ApplyT(func(v AzurePostgreSqlSinkResponse) *AzurePostgreSqlSinkResponseUpsertSettings {
+		return v.UpsertSettings
+	}).(AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput)
+}
+
 // Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
 func (o AzurePostgreSqlSinkResponseOutput) WriteBatchSize() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzurePostgreSqlSinkResponse) interface{} { return v.WriteBatchSize }).(pulumi.AnyOutput)
@@ -24708,7 +24737,212 @@ func (o AzurePostgreSqlSinkResponseOutput) WriteBatchTimeout() pulumi.AnyOutput 
 	return o.ApplyT(func(v AzurePostgreSqlSinkResponse) interface{} { return v.WriteBatchTimeout }).(pulumi.AnyOutput)
 }
 
-// A copy activity Azure PostgreSQL source.
+// The write behavior for the operation. Default is Bulk Insert.
+func (o AzurePostgreSqlSinkResponseOutput) WriteMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzurePostgreSqlSinkResponse) *string { return v.WriteMethod }).(pulumi.StringPtrOutput)
+}
+
+// Azure Database for PostgreSQL upsert option settings
+type AzurePostgreSqlSinkResponseUpsertSettings struct {
+	// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+	Keys interface{} `pulumi:"keys"`
+}
+
+// Azure Database for PostgreSQL upsert option settings
+type AzurePostgreSqlSinkResponseUpsertSettingsOutput struct{ *pulumi.OutputState }
+
+func (AzurePostgreSqlSinkResponseUpsertSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzurePostgreSqlSinkResponseUpsertSettings)(nil)).Elem()
+}
+
+func (o AzurePostgreSqlSinkResponseUpsertSettingsOutput) ToAzurePostgreSqlSinkResponseUpsertSettingsOutput() AzurePostgreSqlSinkResponseUpsertSettingsOutput {
+	return o
+}
+
+func (o AzurePostgreSqlSinkResponseUpsertSettingsOutput) ToAzurePostgreSqlSinkResponseUpsertSettingsOutputWithContext(ctx context.Context) AzurePostgreSqlSinkResponseUpsertSettingsOutput {
+	return o
+}
+
+// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+func (o AzurePostgreSqlSinkResponseUpsertSettingsOutput) Keys() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlSinkResponseUpsertSettings) interface{} { return v.Keys }).(pulumi.AnyOutput)
+}
+
+type AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzurePostgreSqlSinkResponseUpsertSettings)(nil)).Elem()
+}
+
+func (o AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput) ToAzurePostgreSqlSinkResponseUpsertSettingsPtrOutput() AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput {
+	return o
+}
+
+func (o AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput) ToAzurePostgreSqlSinkResponseUpsertSettingsPtrOutputWithContext(ctx context.Context) AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput {
+	return o
+}
+
+func (o AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput) Elem() AzurePostgreSqlSinkResponseUpsertSettingsOutput {
+	return o.ApplyT(func(v *AzurePostgreSqlSinkResponseUpsertSettings) AzurePostgreSqlSinkResponseUpsertSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AzurePostgreSqlSinkResponseUpsertSettings
+		return ret
+	}).(AzurePostgreSqlSinkResponseUpsertSettingsOutput)
+}
+
+// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+func (o AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput) Keys() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AzurePostgreSqlSinkResponseUpsertSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Keys
+	}).(pulumi.AnyOutput)
+}
+
+// Azure Database for PostgreSQL upsert option settings
+type AzurePostgreSqlSinkUpsertSettings struct {
+	// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+	Keys interface{} `pulumi:"keys"`
+}
+
+// AzurePostgreSqlSinkUpsertSettingsInput is an input type that accepts AzurePostgreSqlSinkUpsertSettingsArgs and AzurePostgreSqlSinkUpsertSettingsOutput values.
+// You can construct a concrete instance of `AzurePostgreSqlSinkUpsertSettingsInput` via:
+//
+//	AzurePostgreSqlSinkUpsertSettingsArgs{...}
+type AzurePostgreSqlSinkUpsertSettingsInput interface {
+	pulumi.Input
+
+	ToAzurePostgreSqlSinkUpsertSettingsOutput() AzurePostgreSqlSinkUpsertSettingsOutput
+	ToAzurePostgreSqlSinkUpsertSettingsOutputWithContext(context.Context) AzurePostgreSqlSinkUpsertSettingsOutput
+}
+
+// Azure Database for PostgreSQL upsert option settings
+type AzurePostgreSqlSinkUpsertSettingsArgs struct {
+	// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+	Keys pulumi.Input `pulumi:"keys"`
+}
+
+func (AzurePostgreSqlSinkUpsertSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzurePostgreSqlSinkUpsertSettings)(nil)).Elem()
+}
+
+func (i AzurePostgreSqlSinkUpsertSettingsArgs) ToAzurePostgreSqlSinkUpsertSettingsOutput() AzurePostgreSqlSinkUpsertSettingsOutput {
+	return i.ToAzurePostgreSqlSinkUpsertSettingsOutputWithContext(context.Background())
+}
+
+func (i AzurePostgreSqlSinkUpsertSettingsArgs) ToAzurePostgreSqlSinkUpsertSettingsOutputWithContext(ctx context.Context) AzurePostgreSqlSinkUpsertSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzurePostgreSqlSinkUpsertSettingsOutput)
+}
+
+func (i AzurePostgreSqlSinkUpsertSettingsArgs) ToAzurePostgreSqlSinkUpsertSettingsPtrOutput() AzurePostgreSqlSinkUpsertSettingsPtrOutput {
+	return i.ToAzurePostgreSqlSinkUpsertSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AzurePostgreSqlSinkUpsertSettingsArgs) ToAzurePostgreSqlSinkUpsertSettingsPtrOutputWithContext(ctx context.Context) AzurePostgreSqlSinkUpsertSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzurePostgreSqlSinkUpsertSettingsOutput).ToAzurePostgreSqlSinkUpsertSettingsPtrOutputWithContext(ctx)
+}
+
+// AzurePostgreSqlSinkUpsertSettingsPtrInput is an input type that accepts AzurePostgreSqlSinkUpsertSettingsArgs, AzurePostgreSqlSinkUpsertSettingsPtr and AzurePostgreSqlSinkUpsertSettingsPtrOutput values.
+// You can construct a concrete instance of `AzurePostgreSqlSinkUpsertSettingsPtrInput` via:
+//
+//	        AzurePostgreSqlSinkUpsertSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzurePostgreSqlSinkUpsertSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAzurePostgreSqlSinkUpsertSettingsPtrOutput() AzurePostgreSqlSinkUpsertSettingsPtrOutput
+	ToAzurePostgreSqlSinkUpsertSettingsPtrOutputWithContext(context.Context) AzurePostgreSqlSinkUpsertSettingsPtrOutput
+}
+
+type azurePostgreSqlSinkUpsertSettingsPtrType AzurePostgreSqlSinkUpsertSettingsArgs
+
+func AzurePostgreSqlSinkUpsertSettingsPtr(v *AzurePostgreSqlSinkUpsertSettingsArgs) AzurePostgreSqlSinkUpsertSettingsPtrInput {
+	return (*azurePostgreSqlSinkUpsertSettingsPtrType)(v)
+}
+
+func (*azurePostgreSqlSinkUpsertSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzurePostgreSqlSinkUpsertSettings)(nil)).Elem()
+}
+
+func (i *azurePostgreSqlSinkUpsertSettingsPtrType) ToAzurePostgreSqlSinkUpsertSettingsPtrOutput() AzurePostgreSqlSinkUpsertSettingsPtrOutput {
+	return i.ToAzurePostgreSqlSinkUpsertSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *azurePostgreSqlSinkUpsertSettingsPtrType) ToAzurePostgreSqlSinkUpsertSettingsPtrOutputWithContext(ctx context.Context) AzurePostgreSqlSinkUpsertSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzurePostgreSqlSinkUpsertSettingsPtrOutput)
+}
+
+// Azure Database for PostgreSQL upsert option settings
+type AzurePostgreSqlSinkUpsertSettingsOutput struct{ *pulumi.OutputState }
+
+func (AzurePostgreSqlSinkUpsertSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzurePostgreSqlSinkUpsertSettings)(nil)).Elem()
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsOutput) ToAzurePostgreSqlSinkUpsertSettingsOutput() AzurePostgreSqlSinkUpsertSettingsOutput {
+	return o
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsOutput) ToAzurePostgreSqlSinkUpsertSettingsOutputWithContext(ctx context.Context) AzurePostgreSqlSinkUpsertSettingsOutput {
+	return o
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsOutput) ToAzurePostgreSqlSinkUpsertSettingsPtrOutput() AzurePostgreSqlSinkUpsertSettingsPtrOutput {
+	return o.ToAzurePostgreSqlSinkUpsertSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsOutput) ToAzurePostgreSqlSinkUpsertSettingsPtrOutputWithContext(ctx context.Context) AzurePostgreSqlSinkUpsertSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzurePostgreSqlSinkUpsertSettings) *AzurePostgreSqlSinkUpsertSettings {
+		return &v
+	}).(AzurePostgreSqlSinkUpsertSettingsPtrOutput)
+}
+
+// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+func (o AzurePostgreSqlSinkUpsertSettingsOutput) Keys() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlSinkUpsertSettings) interface{} { return v.Keys }).(pulumi.AnyOutput)
+}
+
+type AzurePostgreSqlSinkUpsertSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AzurePostgreSqlSinkUpsertSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzurePostgreSqlSinkUpsertSettings)(nil)).Elem()
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsPtrOutput) ToAzurePostgreSqlSinkUpsertSettingsPtrOutput() AzurePostgreSqlSinkUpsertSettingsPtrOutput {
+	return o
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsPtrOutput) ToAzurePostgreSqlSinkUpsertSettingsPtrOutputWithContext(ctx context.Context) AzurePostgreSqlSinkUpsertSettingsPtrOutput {
+	return o
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsPtrOutput) Elem() AzurePostgreSqlSinkUpsertSettingsOutput {
+	return o.ApplyT(func(v *AzurePostgreSqlSinkUpsertSettings) AzurePostgreSqlSinkUpsertSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AzurePostgreSqlSinkUpsertSettings
+		return ret
+	}).(AzurePostgreSqlSinkUpsertSettingsOutput)
+}
+
+// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+func (o AzurePostgreSqlSinkUpsertSettingsPtrOutput) Keys() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AzurePostgreSqlSinkUpsertSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Keys
+	}).(pulumi.AnyOutput)
+}
+
+// A copy activity Azure Database for PostgreSQL source.
 type AzurePostgreSqlSource struct {
 	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
@@ -24740,7 +24974,7 @@ type AzurePostgreSqlSourceInput interface {
 	ToAzurePostgreSqlSourceOutputWithContext(context.Context) AzurePostgreSqlSourceOutput
 }
 
-// A copy activity Azure PostgreSQL source.
+// A copy activity Azure Database for PostgreSQL source.
 type AzurePostgreSqlSourceArgs struct {
 	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
 	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
@@ -24773,7 +25007,7 @@ func (i AzurePostgreSqlSourceArgs) ToAzurePostgreSqlSourceOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AzurePostgreSqlSourceOutput)
 }
 
-// A copy activity Azure PostgreSQL source.
+// A copy activity Azure Database for PostgreSQL source.
 type AzurePostgreSqlSourceOutput struct{ *pulumi.OutputState }
 
 func (AzurePostgreSqlSourceOutput) ElementType() reflect.Type {
@@ -24829,7 +25063,7 @@ func (o AzurePostgreSqlSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzurePostgreSqlSource) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// A copy activity Azure PostgreSQL source.
+// A copy activity Azure Database for PostgreSQL source.
 type AzurePostgreSqlSourceResponse struct {
 	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
@@ -24850,7 +25084,7 @@ type AzurePostgreSqlSourceResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// A copy activity Azure PostgreSQL source.
+// A copy activity Azure Database for PostgreSQL source.
 type AzurePostgreSqlSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (AzurePostgreSqlSourceResponseOutput) ElementType() reflect.Type {
@@ -34684,6 +34918,10 @@ func (o CommonDataServiceForAppsLinkedServiceResponseOutput) Version() pulumi.St
 type CommonDataServiceForAppsSink struct {
 	// The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 	AlternateKeyName interface{} `pulumi:"alternateKeyName"`
+	// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+	BypassBusinessLogicExecution interface{} `pulumi:"bypassBusinessLogicExecution"`
+	// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+	BypassPowerAutomateFlows interface{} `pulumi:"bypassPowerAutomateFlows"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The flag indicating whether to ignore null values from input dataset (except key fields) during write operation. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -34720,6 +34958,10 @@ type CommonDataServiceForAppsSinkInput interface {
 type CommonDataServiceForAppsSinkArgs struct {
 	// The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 	AlternateKeyName pulumi.Input `pulumi:"alternateKeyName"`
+	// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+	BypassBusinessLogicExecution pulumi.Input `pulumi:"bypassBusinessLogicExecution"`
+	// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+	BypassPowerAutomateFlows pulumi.Input `pulumi:"bypassPowerAutomateFlows"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
 	// The flag indicating whether to ignore null values from input dataset (except key fields) during write operation. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -34773,6 +35015,16 @@ func (o CommonDataServiceForAppsSinkOutput) AlternateKeyName() pulumi.AnyOutput 
 	return o.ApplyT(func(v CommonDataServiceForAppsSink) interface{} { return v.AlternateKeyName }).(pulumi.AnyOutput)
 }
 
+// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+func (o CommonDataServiceForAppsSinkOutput) BypassBusinessLogicExecution() pulumi.AnyOutput {
+	return o.ApplyT(func(v CommonDataServiceForAppsSink) interface{} { return v.BypassBusinessLogicExecution }).(pulumi.AnyOutput)
+}
+
+// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o CommonDataServiceForAppsSinkOutput) BypassPowerAutomateFlows() pulumi.AnyOutput {
+	return o.ApplyT(func(v CommonDataServiceForAppsSink) interface{} { return v.BypassPowerAutomateFlows }).(pulumi.AnyOutput)
+}
+
 // If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 func (o CommonDataServiceForAppsSinkOutput) DisableMetricsCollection() pulumi.AnyOutput {
 	return o.ApplyT(func(v CommonDataServiceForAppsSink) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
@@ -34823,6 +35075,10 @@ func (o CommonDataServiceForAppsSinkOutput) WriteBehavior() pulumi.StringOutput 
 type CommonDataServiceForAppsSinkResponse struct {
 	// The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 	AlternateKeyName interface{} `pulumi:"alternateKeyName"`
+	// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+	BypassBusinessLogicExecution interface{} `pulumi:"bypassBusinessLogicExecution"`
+	// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+	BypassPowerAutomateFlows interface{} `pulumi:"bypassPowerAutomateFlows"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The flag indicating whether to ignore null values from input dataset (except key fields) during write operation. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -34862,6 +35118,16 @@ func (o CommonDataServiceForAppsSinkResponseOutput) ToCommonDataServiceForAppsSi
 // The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 func (o CommonDataServiceForAppsSinkResponseOutput) AlternateKeyName() pulumi.AnyOutput {
 	return o.ApplyT(func(v CommonDataServiceForAppsSinkResponse) interface{} { return v.AlternateKeyName }).(pulumi.AnyOutput)
+}
+
+// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+func (o CommonDataServiceForAppsSinkResponseOutput) BypassBusinessLogicExecution() pulumi.AnyOutput {
+	return o.ApplyT(func(v CommonDataServiceForAppsSinkResponse) interface{} { return v.BypassBusinessLogicExecution }).(pulumi.AnyOutput)
+}
+
+// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o CommonDataServiceForAppsSinkResponseOutput) BypassPowerAutomateFlows() pulumi.AnyOutput {
+	return o.ApplyT(func(v CommonDataServiceForAppsSinkResponse) interface{} { return v.BypassPowerAutomateFlows }).(pulumi.AnyOutput)
 }
 
 // If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -50514,6 +50780,10 @@ func (o DynamicsCrmLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput
 type DynamicsCrmSink struct {
 	// The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 	AlternateKeyName interface{} `pulumi:"alternateKeyName"`
+	// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+	BypassBusinessLogicExecution interface{} `pulumi:"bypassBusinessLogicExecution"`
+	// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+	BypassPowerAutomateFlows interface{} `pulumi:"bypassPowerAutomateFlows"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The flag indicating whether to ignore null values from input dataset (except key fields) during write operation. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -50550,6 +50820,10 @@ type DynamicsCrmSinkInput interface {
 type DynamicsCrmSinkArgs struct {
 	// The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 	AlternateKeyName pulumi.Input `pulumi:"alternateKeyName"`
+	// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+	BypassBusinessLogicExecution pulumi.Input `pulumi:"bypassBusinessLogicExecution"`
+	// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+	BypassPowerAutomateFlows pulumi.Input `pulumi:"bypassPowerAutomateFlows"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
 	// The flag indicating whether to ignore null values from input dataset (except key fields) during write operation. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -50603,6 +50877,16 @@ func (o DynamicsCrmSinkOutput) AlternateKeyName() pulumi.AnyOutput {
 	return o.ApplyT(func(v DynamicsCrmSink) interface{} { return v.AlternateKeyName }).(pulumi.AnyOutput)
 }
 
+// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+func (o DynamicsCrmSinkOutput) BypassBusinessLogicExecution() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsCrmSink) interface{} { return v.BypassBusinessLogicExecution }).(pulumi.AnyOutput)
+}
+
+// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o DynamicsCrmSinkOutput) BypassPowerAutomateFlows() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsCrmSink) interface{} { return v.BypassPowerAutomateFlows }).(pulumi.AnyOutput)
+}
+
 // If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 func (o DynamicsCrmSinkOutput) DisableMetricsCollection() pulumi.AnyOutput {
 	return o.ApplyT(func(v DynamicsCrmSink) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
@@ -50653,6 +50937,10 @@ func (o DynamicsCrmSinkOutput) WriteBehavior() pulumi.StringOutput {
 type DynamicsCrmSinkResponse struct {
 	// The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 	AlternateKeyName interface{} `pulumi:"alternateKeyName"`
+	// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+	BypassBusinessLogicExecution interface{} `pulumi:"bypassBusinessLogicExecution"`
+	// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+	BypassPowerAutomateFlows interface{} `pulumi:"bypassPowerAutomateFlows"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The flag indicating whether to ignore null values from input dataset (except key fields) during write operation. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -50692,6 +50980,16 @@ func (o DynamicsCrmSinkResponseOutput) ToDynamicsCrmSinkResponseOutputWithContex
 // The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 func (o DynamicsCrmSinkResponseOutput) AlternateKeyName() pulumi.AnyOutput {
 	return o.ApplyT(func(v DynamicsCrmSinkResponse) interface{} { return v.AlternateKeyName }).(pulumi.AnyOutput)
+}
+
+// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+func (o DynamicsCrmSinkResponseOutput) BypassBusinessLogicExecution() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsCrmSinkResponse) interface{} { return v.BypassBusinessLogicExecution }).(pulumi.AnyOutput)
+}
+
+// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o DynamicsCrmSinkResponseOutput) BypassPowerAutomateFlows() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsCrmSinkResponse) interface{} { return v.BypassPowerAutomateFlows }).(pulumi.AnyOutput)
 }
 
 // If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -51530,6 +51828,10 @@ func (o DynamicsLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
 type DynamicsSink struct {
 	// The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 	AlternateKeyName interface{} `pulumi:"alternateKeyName"`
+	// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+	BypassBusinessLogicExecution interface{} `pulumi:"bypassBusinessLogicExecution"`
+	// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+	BypassPowerAutomateFlows interface{} `pulumi:"bypassPowerAutomateFlows"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The flag indicating whether ignore null values from input dataset (except key fields) during write operation. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -51566,6 +51868,10 @@ type DynamicsSinkInput interface {
 type DynamicsSinkArgs struct {
 	// The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 	AlternateKeyName pulumi.Input `pulumi:"alternateKeyName"`
+	// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+	BypassBusinessLogicExecution pulumi.Input `pulumi:"bypassBusinessLogicExecution"`
+	// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+	BypassPowerAutomateFlows pulumi.Input `pulumi:"bypassPowerAutomateFlows"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
 	// The flag indicating whether ignore null values from input dataset (except key fields) during write operation. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -51619,6 +51925,16 @@ func (o DynamicsSinkOutput) AlternateKeyName() pulumi.AnyOutput {
 	return o.ApplyT(func(v DynamicsSink) interface{} { return v.AlternateKeyName }).(pulumi.AnyOutput)
 }
 
+// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+func (o DynamicsSinkOutput) BypassBusinessLogicExecution() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsSink) interface{} { return v.BypassBusinessLogicExecution }).(pulumi.AnyOutput)
+}
+
+// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o DynamicsSinkOutput) BypassPowerAutomateFlows() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsSink) interface{} { return v.BypassPowerAutomateFlows }).(pulumi.AnyOutput)
+}
+
 // If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 func (o DynamicsSinkOutput) DisableMetricsCollection() pulumi.AnyOutput {
 	return o.ApplyT(func(v DynamicsSink) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
@@ -51669,6 +51985,10 @@ func (o DynamicsSinkOutput) WriteBehavior() pulumi.StringOutput {
 type DynamicsSinkResponse struct {
 	// The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 	AlternateKeyName interface{} `pulumi:"alternateKeyName"`
+	// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+	BypassBusinessLogicExecution interface{} `pulumi:"bypassBusinessLogicExecution"`
+	// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+	BypassPowerAutomateFlows interface{} `pulumi:"bypassPowerAutomateFlows"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The flag indicating whether ignore null values from input dataset (except key fields) during write operation. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -51708,6 +52028,16 @@ func (o DynamicsSinkResponseOutput) ToDynamicsSinkResponseOutputWithContext(ctx 
 // The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
 func (o DynamicsSinkResponseOutput) AlternateKeyName() pulumi.AnyOutput {
 	return o.ApplyT(func(v DynamicsSinkResponse) interface{} { return v.AlternateKeyName }).(pulumi.AnyOutput)
+}
+
+// Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+func (o DynamicsSinkResponseOutput) BypassBusinessLogicExecution() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsSinkResponse) interface{} { return v.BypassBusinessLogicExecution }).(pulumi.AnyOutput)
+}
+
+// Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o DynamicsSinkResponseOutput) BypassPowerAutomateFlows() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsSinkResponse) interface{} { return v.BypassPowerAutomateFlows }).(pulumi.AnyOutput)
 }
 
 // If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -65824,8 +66154,6 @@ type GreenplumLinkedService struct {
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
-	Password interface{} `pulumi:"password"`
 	// The port for the connection. Type: integer. Only used for V2.
 	Port interface{} `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
@@ -65876,8 +66204,6 @@ type GreenplumLinkedServiceArgs struct {
 	Host pulumi.Input `pulumi:"host"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
-	// The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
-	Password pulumi.Input `pulumi:"password"`
 	// The port for the connection. Type: integer. Only used for V2.
 	Port pulumi.Input `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
@@ -65975,11 +66301,6 @@ func (o GreenplumLinkedServiceOutput) Parameters() ParameterSpecificationMapOutp
 	return o.ApplyT(func(v GreenplumLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
 }
 
-// The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
-func (o GreenplumLinkedServiceOutput) Password() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
-}
-
 // The port for the connection. Type: integer. Only used for V2.
 func (o GreenplumLinkedServiceOutput) Port() pulumi.AnyOutput {
 	return o.ApplyT(func(v GreenplumLinkedService) interface{} { return v.Port }).(pulumi.AnyOutput)
@@ -66035,8 +66356,6 @@ type GreenplumLinkedServiceResponse struct {
 	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
-	Password interface{} `pulumi:"password"`
 	// The port for the connection. Type: integer. Only used for V2.
 	Port interface{} `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
@@ -66120,11 +66439,6 @@ func (o GreenplumLinkedServiceResponseOutput) Host() pulumi.AnyOutput {
 // Parameters for linked service.
 func (o GreenplumLinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
 	return o.ApplyT(func(v GreenplumLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
-}
-
-// The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
-func (o GreenplumLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
 // The port for the connection. Type: integer. Only used for V2.
@@ -66354,236 +66668,6 @@ func (o GreenplumSourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
 // Expected value is 'GreenplumSource'.
 func (o GreenplumSourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GreenplumSourceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Greenplum Database dataset.
-type GreenplumTableDataset struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// The table name of Greenplum. Type: string (or Expression with resultType string).
-	Table interface{} `pulumi:"table"`
-	// This property will be retired. Please consider using schema + table properties instead.
-	TableName interface{} `pulumi:"tableName"`
-	// Type of dataset.
-	// Expected value is 'GreenplumTable'.
-	Type string `pulumi:"type"`
-}
-
-// GreenplumTableDatasetInput is an input type that accepts GreenplumTableDatasetArgs and GreenplumTableDatasetOutput values.
-// You can construct a concrete instance of `GreenplumTableDatasetInput` via:
-//
-//	GreenplumTableDatasetArgs{...}
-type GreenplumTableDatasetInput interface {
-	pulumi.Input
-
-	ToGreenplumTableDatasetOutput() GreenplumTableDatasetOutput
-	ToGreenplumTableDatasetOutputWithContext(context.Context) GreenplumTableDatasetOutput
-}
-
-// Greenplum Database dataset.
-type GreenplumTableDatasetArgs struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// Dataset description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder DatasetFolderPtrInput `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema pulumi.Input `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure pulumi.Input `pulumi:"structure"`
-	// The table name of Greenplum. Type: string (or Expression with resultType string).
-	Table pulumi.Input `pulumi:"table"`
-	// This property will be retired. Please consider using schema + table properties instead.
-	TableName pulumi.Input `pulumi:"tableName"`
-	// Type of dataset.
-	// Expected value is 'GreenplumTable'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GreenplumTableDatasetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GreenplumTableDataset)(nil)).Elem()
-}
-
-func (i GreenplumTableDatasetArgs) ToGreenplumTableDatasetOutput() GreenplumTableDatasetOutput {
-	return i.ToGreenplumTableDatasetOutputWithContext(context.Background())
-}
-
-func (i GreenplumTableDatasetArgs) ToGreenplumTableDatasetOutputWithContext(ctx context.Context) GreenplumTableDatasetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GreenplumTableDatasetOutput)
-}
-
-// Greenplum Database dataset.
-type GreenplumTableDatasetOutput struct{ *pulumi.OutputState }
-
-func (GreenplumTableDatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GreenplumTableDataset)(nil)).Elem()
-}
-
-func (o GreenplumTableDatasetOutput) ToGreenplumTableDatasetOutput() GreenplumTableDatasetOutput {
-	return o
-}
-
-func (o GreenplumTableDatasetOutput) ToGreenplumTableDatasetOutputWithContext(ctx context.Context) GreenplumTableDatasetOutput {
-	return o
-}
-
-// List of tags that can be used for describing the Dataset.
-func (o GreenplumTableDatasetOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v GreenplumTableDataset) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// Dataset description.
-func (o GreenplumTableDatasetOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GreenplumTableDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o GreenplumTableDatasetOutput) Folder() DatasetFolderPtrOutput {
-	return o.ApplyT(func(v GreenplumTableDataset) *DatasetFolder { return v.Folder }).(DatasetFolderPtrOutput)
-}
-
-// Linked service reference.
-func (o GreenplumTableDatasetOutput) LinkedServiceName() LinkedServiceReferenceOutput {
-	return o.ApplyT(func(v GreenplumTableDataset) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
-}
-
-// Parameters for dataset.
-func (o GreenplumTableDatasetOutput) Parameters() ParameterSpecificationMapOutput {
-	return o.ApplyT(func(v GreenplumTableDataset) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
-}
-
-// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-func (o GreenplumTableDatasetOutput) Schema() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumTableDataset) interface{} { return v.Schema }).(pulumi.AnyOutput)
-}
-
-// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-func (o GreenplumTableDatasetOutput) Structure() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumTableDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
-}
-
-// The table name of Greenplum. Type: string (or Expression with resultType string).
-func (o GreenplumTableDatasetOutput) Table() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumTableDataset) interface{} { return v.Table }).(pulumi.AnyOutput)
-}
-
-// This property will be retired. Please consider using schema + table properties instead.
-func (o GreenplumTableDatasetOutput) TableName() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumTableDataset) interface{} { return v.TableName }).(pulumi.AnyOutput)
-}
-
-// Type of dataset.
-// Expected value is 'GreenplumTable'.
-func (o GreenplumTableDatasetOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GreenplumTableDataset) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Greenplum Database dataset.
-type GreenplumTableDatasetResponse struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// The table name of Greenplum. Type: string (or Expression with resultType string).
-	Table interface{} `pulumi:"table"`
-	// This property will be retired. Please consider using schema + table properties instead.
-	TableName interface{} `pulumi:"tableName"`
-	// Type of dataset.
-	// Expected value is 'GreenplumTable'.
-	Type string `pulumi:"type"`
-}
-
-// Greenplum Database dataset.
-type GreenplumTableDatasetResponseOutput struct{ *pulumi.OutputState }
-
-func (GreenplumTableDatasetResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GreenplumTableDatasetResponse)(nil)).Elem()
-}
-
-func (o GreenplumTableDatasetResponseOutput) ToGreenplumTableDatasetResponseOutput() GreenplumTableDatasetResponseOutput {
-	return o
-}
-
-func (o GreenplumTableDatasetResponseOutput) ToGreenplumTableDatasetResponseOutputWithContext(ctx context.Context) GreenplumTableDatasetResponseOutput {
-	return o
-}
-
-// List of tags that can be used for describing the Dataset.
-func (o GreenplumTableDatasetResponseOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v GreenplumTableDatasetResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// Dataset description.
-func (o GreenplumTableDatasetResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GreenplumTableDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o GreenplumTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v GreenplumTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
-}
-
-// Linked service reference.
-func (o GreenplumTableDatasetResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
-	return o.ApplyT(func(v GreenplumTableDatasetResponse) LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponseOutput)
-}
-
-// Parameters for dataset.
-func (o GreenplumTableDatasetResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
-	return o.ApplyT(func(v GreenplumTableDatasetResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
-}
-
-// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-func (o GreenplumTableDatasetResponseOutput) Schema() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumTableDatasetResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
-}
-
-// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-func (o GreenplumTableDatasetResponseOutput) Structure() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumTableDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
-}
-
-// The table name of Greenplum. Type: string (or Expression with resultType string).
-func (o GreenplumTableDatasetResponseOutput) Table() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumTableDatasetResponse) interface{} { return v.Table }).(pulumi.AnyOutput)
-}
-
-// This property will be retired. Please consider using schema + table properties instead.
-func (o GreenplumTableDatasetResponseOutput) TableName() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumTableDatasetResponse) interface{} { return v.TableName }).(pulumi.AnyOutput)
-}
-
-// Type of dataset.
-// Expected value is 'GreenplumTable'.
-func (o GreenplumTableDatasetResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GreenplumTableDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type SSISExecutionParameterMapMap map[string]SSISExecutionParameterMapInput
@@ -66866,6 +66950,10 @@ func init() {
 	pulumi.RegisterOutputType(AzurePostgreSqlLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlSinkOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlSinkResponseOutput{})
+	pulumi.RegisterOutputType(AzurePostgreSqlSinkResponseUpsertSettingsOutput{})
+	pulumi.RegisterOutputType(AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AzurePostgreSqlSinkUpsertSettingsOutput{})
+	pulumi.RegisterOutputType(AzurePostgreSqlSinkUpsertSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlSourceOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlSourceResponseOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlTableDatasetOutput{})
@@ -67268,8 +67356,6 @@ func init() {
 	pulumi.RegisterOutputType(GreenplumLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(GreenplumSourceOutput{})
 	pulumi.RegisterOutputType(GreenplumSourceResponseOutput{})
-	pulumi.RegisterOutputType(GreenplumTableDatasetOutput{})
-	pulumi.RegisterOutputType(GreenplumTableDatasetResponseOutput{})
 	pulumi.RegisterOutputType(SSISExecutionParameterMapMapOutput{})
 	pulumi.RegisterOutputType(SSISExecutionParameterResponseMapMapOutput{})
 }

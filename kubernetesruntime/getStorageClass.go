@@ -12,7 +12,8 @@ import (
 )
 
 // Get a StorageClassResource
-// Azure REST API version: 2024-03-01.
+//
+// Uses Azure REST API version 2024-03-01.
 //
 // Other available API versions: 2023-10-01-preview.
 func LookupStorageClass(ctx *pulumi.Context, args *LookupStorageClassArgs, opts ...pulumi.InvokeOption) (*LookupStorageClassResult, error) {

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a specific security operator for the requested scope.
-// Azure REST API version: 2023-01-01-preview.
+//
+// Uses Azure REST API version 2023-01-01-preview.
 func LookupSecurityOperator(ctx *pulumi.Context, args *LookupSecurityOperatorArgs, opts ...pulumi.InvokeOption) (*LookupSecurityOperatorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityOperatorResult

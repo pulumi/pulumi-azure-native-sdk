@@ -13,7 +13,8 @@ import (
 )
 
 // Security Standard on a resource
-// Azure REST API version: 2024-08-01.
+//
+// Uses Azure REST API version 2024-08-01.
 type SecurityStandard struct {
 	pulumi.CustomResourceState
 

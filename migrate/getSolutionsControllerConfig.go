@@ -12,7 +12,8 @@ import (
 )
 
 // Class representing the config for the solution in the migrate project.
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 func GetSolutionsControllerConfig(ctx *pulumi.Context, args *GetSolutionsControllerConfigArgs, opts ...pulumi.InvokeOption) (*GetSolutionsControllerConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSolutionsControllerConfigResult

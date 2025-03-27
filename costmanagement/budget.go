@@ -13,9 +13,10 @@ import (
 )
 
 // A budget resource.
-// Azure REST API version: 2023-04-01-preview.
 //
-// Other available API versions: 2019-04-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01.
+// Uses Azure REST API version 2023-04-01-preview.
+//
+// Other available API versions: 2019-04-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01, 2024-10-01-preview.
 type Budget struct {
 	pulumi.CustomResourceState
 
@@ -120,6 +121,9 @@ func NewBudget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20240801:Budget"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20241001preview:Budget"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,7 +12,8 @@ import (
 )
 
 // Returns the specified machine group as it existed during the specified time interval.
-// Azure REST API version: 2015-11-01-preview.
+//
+// Uses Azure REST API version 2015-11-01-preview.
 func LookupMachineGroup(ctx *pulumi.Context, args *LookupMachineGroupArgs, opts ...pulumi.InvokeOption) (*LookupMachineGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineGroupResult

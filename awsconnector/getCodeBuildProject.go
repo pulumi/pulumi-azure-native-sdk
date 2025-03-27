@@ -12,7 +12,8 @@ import (
 )
 
 // Get a CodeBuildProject
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupCodeBuildProject(ctx *pulumi.Context, args *LookupCodeBuildProjectArgs, opts ...pulumi.InvokeOption) (*LookupCodeBuildProjectResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCodeBuildProjectResult

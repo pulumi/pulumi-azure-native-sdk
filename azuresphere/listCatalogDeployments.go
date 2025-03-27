@@ -12,7 +12,8 @@ import (
 )
 
 // Lists deployments for catalog.
-// Azure REST API version: 2022-09-01-preview.
+//
+// Uses Azure REST API version 2022-09-01-preview.
 //
 // Other available API versions: 2024-04-01.
 func ListCatalogDeployments(ctx *pulumi.Context, args *ListCatalogDeploymentsArgs, opts ...pulumi.InvokeOption) (*ListCatalogDeploymentsResult, error) {

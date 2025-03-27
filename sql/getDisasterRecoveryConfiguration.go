@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a disaster recovery configuration.
-// Azure REST API version: 2014-04-01.
+//
+// Uses Azure REST API version 2014-04-01.
 func LookupDisasterRecoveryConfiguration(ctx *pulumi.Context, args *LookupDisasterRecoveryConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDisasterRecoveryConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDisasterRecoveryConfigurationResult

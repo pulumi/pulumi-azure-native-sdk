@@ -12,7 +12,8 @@ import (
 )
 
 // Gets information about the specified networkServiceDesign group.
-// Azure REST API version: 2023-09-01.
+//
+// Uses Azure REST API version 2023-09-01.
 //
 // Other available API versions: 2024-04-15.
 func LookupNetworkServiceDesignGroup(ctx *pulumi.Context, args *LookupNetworkServiceDesignGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkServiceDesignGroupResult, error) {

@@ -161,6 +161,9 @@ func NewContentTemplate(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:ContentTemplate"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:ContentTemplate"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:ContentTemplate"),
 		},
 	})

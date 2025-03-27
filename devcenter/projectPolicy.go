@@ -13,7 +13,10 @@ import (
 )
 
 // Represents an project policy resource.
-// Azure REST API version: 2024-10-01-preview.
+//
+// Uses Azure REST API version 2024-10-01-preview.
+//
+// Other available API versions: 2025-02-01.
 type ProjectPolicy struct {
 	pulumi.CustomResourceState
 
@@ -47,6 +50,9 @@ func NewProjectPolicy(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:ProjectPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:ProjectPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

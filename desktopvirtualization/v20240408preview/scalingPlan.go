@@ -107,9 +107,6 @@ func NewScalingPlan(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:ScalingPlan"),
 		},
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:ScalingPlan"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ScalingPlan"),
 		},
 		{
@@ -129,6 +126,9 @@ func NewScalingPlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:ScalingPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:ScalingPlan"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:ScalingPlan"),

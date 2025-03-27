@@ -12,7 +12,8 @@ import (
 )
 
 // Gets information about the specified Subscription Level ProfessionalService.
-// Azure REST API version: 2023-07-01-preview.
+//
+// Uses Azure REST API version 2023-07-01-preview.
 func LookupProfessionalServiceSubscriptionLevel(ctx *pulumi.Context, args *LookupProfessionalServiceSubscriptionLevelArgs, opts ...pulumi.InvokeOption) (*LookupProfessionalServiceSubscriptionLevelResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProfessionalServiceSubscriptionLevelResult

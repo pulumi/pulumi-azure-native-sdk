@@ -163,6 +163,9 @@ func NewIncidentRelation(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:IncidentRelation"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:IncidentRelation"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:IncidentRelation"),
 		},
 	})

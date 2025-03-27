@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an existing peering with the specified name under the given subscription and resource group.
-// Azure REST API version: 2022-10-01.
+//
+// Uses Azure REST API version 2022-10-01.
 func LookupPeering(ctx *pulumi.Context, args *LookupPeeringArgs, opts ...pulumi.InvokeOption) (*LookupPeeringResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPeeringResult

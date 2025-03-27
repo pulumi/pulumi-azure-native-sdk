@@ -12,7 +12,8 @@ import (
 )
 
 // Get information about a configuration profile assignment
-// Azure REST API version: 2022-05-04.
+//
+// Uses Azure REST API version 2022-05-04.
 func LookupConfigurationProfileAssignment(ctx *pulumi.Context, args *LookupConfigurationProfileAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationProfileAssignmentResult

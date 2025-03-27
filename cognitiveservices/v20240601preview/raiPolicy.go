@@ -54,6 +54,9 @@ func NewRaiPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cognitiveservices/v20241001:RaiPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20250401preview:RaiPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:cognitiveservices:RaiPolicy"),
 		},
 	})

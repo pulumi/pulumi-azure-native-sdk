@@ -12,9 +12,10 @@ import (
 )
 
 // Get a SecurityPolicy
-// Azure REST API version: 2024-05-01-preview.
 //
-// Other available API versions: 2025-01-01.
+// Uses Azure REST API version 2024-05-01-preview.
+//
+// Other available API versions: 2025-01-01, 2025-03-01-preview.
 func LookupSecurityPoliciesInterface(ctx *pulumi.Context, args *LookupSecurityPoliciesInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupSecurityPoliciesInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityPoliciesInterfaceResult
@@ -52,7 +53,7 @@ type LookupSecurityPoliciesInterfaceResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Web Application Firewall Policy of the Traffic Controller Security Policy
+	// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 	WafPolicy *WafPolicyResponse `pulumi:"wafPolicy"`
 }
 
@@ -133,7 +134,7 @@ func (o LookupSecurityPoliciesInterfaceResultOutput) Type() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupSecurityPoliciesInterfaceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Web Application Firewall Policy of the Traffic Controller Security Policy
+// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 func (o LookupSecurityPoliciesInterfaceResultOutput) WafPolicy() WafPolicyResponsePtrOutput {
 	return o.ApplyT(func(v LookupSecurityPoliciesInterfaceResult) *WafPolicyResponse { return v.WafPolicy }).(WafPolicyResponsePtrOutput)
 }

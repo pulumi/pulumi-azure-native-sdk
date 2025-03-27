@@ -12,7 +12,8 @@ import (
 )
 
 // Get a SnsTopic
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupSnsTopic(ctx *pulumi.Context, args *LookupSnsTopicArgs, opts ...pulumi.InvokeOption) (*LookupSnsTopicResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnsTopicResult

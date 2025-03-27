@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieve the details of the gateway resource.
-// Azure REST API version: 2023-07-07-preview.
+//
+// Uses Azure REST API version 2023-07-07-preview.
 func LookupManagedGateway(ctx *pulumi.Context, args *LookupManagedGatewayArgs, opts ...pulumi.InvokeOption) (*LookupManagedGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedGatewayResult

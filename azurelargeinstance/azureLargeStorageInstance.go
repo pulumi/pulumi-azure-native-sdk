@@ -14,7 +14,8 @@ import (
 
 // AzureLargeStorageInstance info on Azure (ARM properties and
 // AzureLargeStorageInstance properties)
-// Azure REST API version: 2024-08-01-preview.
+//
+// Uses Azure REST API version 2024-08-01-preview.
 type AzureLargeStorageInstance struct {
 	pulumi.CustomResourceState
 

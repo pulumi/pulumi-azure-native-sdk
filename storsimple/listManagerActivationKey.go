@@ -12,7 +12,8 @@ import (
 )
 
 // Returns the activation key of the manager.
-// Azure REST API version: 2017-06-01.
+//
+// Uses Azure REST API version 2017-06-01.
 func ListManagerActivationKey(ctx *pulumi.Context, args *ListManagerActivationKeyArgs, opts ...pulumi.InvokeOption) (*ListManagerActivationKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListManagerActivationKeyResult

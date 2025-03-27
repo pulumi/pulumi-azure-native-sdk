@@ -13,7 +13,8 @@ import (
 )
 
 // A billing profile.
-// Azure REST API version: 2024-04-01.
+//
+// Uses Azure REST API version 2024-04-01.
 type BillingProfile struct {
 	pulumi.CustomResourceState
 

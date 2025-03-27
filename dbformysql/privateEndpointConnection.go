@@ -13,7 +13,8 @@ import (
 )
 
 // The private endpoint connection resource.
-// Azure REST API version: 2022-09-30-preview. Prior API version in Azure Native 1.x: 2018-06-01.
+//
+// Uses Azure REST API version 2022-09-30-preview. In version 1.x of the Azure Native provider, it used API version 2018-06-01.
 //
 // Other available API versions: 2018-06-01-privatepreview, 2023-06-30.
 type PrivateEndpointConnection struct {

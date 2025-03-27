@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Route53DomainsDomainSummary
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupRoute53DomainsDomainSummary(ctx *pulumi.Context, args *LookupRoute53DomainsDomainSummaryArgs, opts ...pulumi.InvokeOption) (*LookupRoute53DomainsDomainSummaryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoute53DomainsDomainSummaryResult

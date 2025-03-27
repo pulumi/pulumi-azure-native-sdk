@@ -12,7 +12,8 @@ import (
 )
 
 // Get the details of an Asset Filter associated with the specified Asset.
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 func LookupAssetFilter(ctx *pulumi.Context, args *LookupAssetFilterArgs, opts ...pulumi.InvokeOption) (*LookupAssetFilterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssetFilterResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a landing zone configuration.
-// Azure REST API version: 2025-02-27-preview.
+//
+// Uses Azure REST API version 2025-02-27-preview.
 func LookupLandingZoneConfigurationOperation(ctx *pulumi.Context, args *LookupLandingZoneConfigurationOperationArgs, opts ...pulumi.InvokeOption) (*LookupLandingZoneConfigurationOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLandingZoneConfigurationOperationResult

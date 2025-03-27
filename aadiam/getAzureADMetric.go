@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a azureADMetrics instance with a given name.
-// Azure REST API version: 2020-07-01-preview.
+//
+// Uses Azure REST API version 2020-07-01-preview.
 func LookupAzureADMetric(ctx *pulumi.Context, args *LookupAzureADMetricArgs, opts ...pulumi.InvokeOption) (*LookupAzureADMetricResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureADMetricResult

@@ -16,7 +16,7 @@ import (
 type ImportJob struct {
 	pulumi.CustomResourceState
 
-	// The administrative status of the import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will cancel the current active import job. By default it is set to 'Enable'.
+	// The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'.
 	AdminStatus pulumi.StringPtrOutput `pulumi:"adminStatus"`
 	// A recent and frequently updated rate of total files, directories, and symlinks imported per second.
 	BlobsImportedPerSecond pulumi.Float64Output `pulumi:"blobsImportedPerSecond"`
@@ -143,7 +143,7 @@ func (ImportJobState) ElementType() reflect.Type {
 }
 
 type importJobArgs struct {
-	// The administrative status of the import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will cancel the current active import job. By default it is set to 'Enable'.
+	// The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'.
 	AdminStatus *string `pulumi:"adminStatus"`
 	// Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
 	AmlFilesystemName string `pulumi:"amlFilesystemName"`
@@ -165,7 +165,7 @@ type importJobArgs struct {
 
 // The set of arguments for constructing a ImportJob resource.
 type ImportJobArgs struct {
-	// The administrative status of the import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will cancel the current active import job. By default it is set to 'Enable'.
+	// The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'.
 	AdminStatus pulumi.StringPtrInput
 	// Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
 	AmlFilesystemName pulumi.StringInput
@@ -222,7 +222,7 @@ func (o ImportJobOutput) ToImportJobOutputWithContext(ctx context.Context) Impor
 	return o
 }
 
-// The administrative status of the import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will cancel the current active import job. By default it is set to 'Enable'.
+// The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'.
 func (o ImportJobOutput) AdminStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImportJob) pulumi.StringPtrOutput { return v.AdminStatus }).(pulumi.StringPtrOutput)
 }

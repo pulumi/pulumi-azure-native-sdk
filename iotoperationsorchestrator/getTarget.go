@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Target
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 func LookupTarget(ctx *pulumi.Context, args *LookupTargetArgs, opts ...pulumi.InvokeOption) (*LookupTargetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTargetResult

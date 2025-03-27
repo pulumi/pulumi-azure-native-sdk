@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the secrets of the workload deployment.
-// Azure REST API version: 2022-05-01-preview.
+//
+// Uses Azure REST API version 2022-05-01-preview.
 func GetWorkloadDeploymentSecretConfigurations(ctx *pulumi.Context, args *GetWorkloadDeploymentSecretConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetWorkloadDeploymentSecretConfigurationsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetWorkloadDeploymentSecretConfigurationsResult

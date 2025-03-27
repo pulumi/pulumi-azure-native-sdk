@@ -12,7 +12,8 @@ import (
 )
 
 // Get a ElasticLoadBalancingv2TargetHealthDescription
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupElasticLoadBalancingv2TargetHealthDescription(ctx *pulumi.Context, args *LookupElasticLoadBalancingv2TargetHealthDescriptionArgs, opts ...pulumi.InvokeOption) (*LookupElasticLoadBalancingv2TargetHealthDescriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupElasticLoadBalancingv2TargetHealthDescriptionResult

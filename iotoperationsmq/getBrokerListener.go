@@ -12,7 +12,8 @@ import (
 )
 
 // Get a BrokerListenerResource
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 func LookupBrokerListener(ctx *pulumi.Context, args *LookupBrokerListenerArgs, opts ...pulumi.InvokeOption) (*LookupBrokerListenerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBrokerListenerResult

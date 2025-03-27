@@ -104,6 +104,9 @@ func NewWorkflow(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devhub/v20240801preview:Workflow"),
 		},
 		{
+			Type: pulumi.String("azure-native:devhub/v20250301preview:Workflow"),
+		},
+		{
 			Type: pulumi.String("azure-native:devhub:Workflow"),
 		},
 	})

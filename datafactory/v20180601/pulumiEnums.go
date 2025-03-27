@@ -686,6 +686,174 @@ func (in *azureFunctionActivityMethodPtr) ToAzureFunctionActivityMethodPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(AzureFunctionActivityMethodPtrOutput)
 }
 
+// The write behavior for the operation. Default is Bulk Insert.
+type AzurePostgreSqlWriteMethodEnum string
+
+const (
+	AzurePostgreSqlWriteMethodEnumBulkInsert  = AzurePostgreSqlWriteMethodEnum("BulkInsert")
+	AzurePostgreSqlWriteMethodEnumCopyCommand = AzurePostgreSqlWriteMethodEnum("CopyCommand")
+	AzurePostgreSqlWriteMethodEnumUpsert      = AzurePostgreSqlWriteMethodEnum("Upsert")
+)
+
+func (AzurePostgreSqlWriteMethodEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzurePostgreSqlWriteMethodEnum)(nil)).Elem()
+}
+
+func (e AzurePostgreSqlWriteMethodEnum) ToAzurePostgreSqlWriteMethodEnumOutput() AzurePostgreSqlWriteMethodEnumOutput {
+	return pulumi.ToOutput(e).(AzurePostgreSqlWriteMethodEnumOutput)
+}
+
+func (e AzurePostgreSqlWriteMethodEnum) ToAzurePostgreSqlWriteMethodEnumOutputWithContext(ctx context.Context) AzurePostgreSqlWriteMethodEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzurePostgreSqlWriteMethodEnumOutput)
+}
+
+func (e AzurePostgreSqlWriteMethodEnum) ToAzurePostgreSqlWriteMethodEnumPtrOutput() AzurePostgreSqlWriteMethodEnumPtrOutput {
+	return e.ToAzurePostgreSqlWriteMethodEnumPtrOutputWithContext(context.Background())
+}
+
+func (e AzurePostgreSqlWriteMethodEnum) ToAzurePostgreSqlWriteMethodEnumPtrOutputWithContext(ctx context.Context) AzurePostgreSqlWriteMethodEnumPtrOutput {
+	return AzurePostgreSqlWriteMethodEnum(e).ToAzurePostgreSqlWriteMethodEnumOutputWithContext(ctx).ToAzurePostgreSqlWriteMethodEnumPtrOutputWithContext(ctx)
+}
+
+func (e AzurePostgreSqlWriteMethodEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzurePostgreSqlWriteMethodEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzurePostgreSqlWriteMethodEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzurePostgreSqlWriteMethodEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzurePostgreSqlWriteMethodEnumOutput struct{ *pulumi.OutputState }
+
+func (AzurePostgreSqlWriteMethodEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzurePostgreSqlWriteMethodEnum)(nil)).Elem()
+}
+
+func (o AzurePostgreSqlWriteMethodEnumOutput) ToAzurePostgreSqlWriteMethodEnumOutput() AzurePostgreSqlWriteMethodEnumOutput {
+	return o
+}
+
+func (o AzurePostgreSqlWriteMethodEnumOutput) ToAzurePostgreSqlWriteMethodEnumOutputWithContext(ctx context.Context) AzurePostgreSqlWriteMethodEnumOutput {
+	return o
+}
+
+func (o AzurePostgreSqlWriteMethodEnumOutput) ToAzurePostgreSqlWriteMethodEnumPtrOutput() AzurePostgreSqlWriteMethodEnumPtrOutput {
+	return o.ToAzurePostgreSqlWriteMethodEnumPtrOutputWithContext(context.Background())
+}
+
+func (o AzurePostgreSqlWriteMethodEnumOutput) ToAzurePostgreSqlWriteMethodEnumPtrOutputWithContext(ctx context.Context) AzurePostgreSqlWriteMethodEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzurePostgreSqlWriteMethodEnum) *AzurePostgreSqlWriteMethodEnum {
+		return &v
+	}).(AzurePostgreSqlWriteMethodEnumPtrOutput)
+}
+
+func (o AzurePostgreSqlWriteMethodEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzurePostgreSqlWriteMethodEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzurePostgreSqlWriteMethodEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzurePostgreSqlWriteMethodEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzurePostgreSqlWriteMethodEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzurePostgreSqlWriteMethodEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzurePostgreSqlWriteMethodEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (AzurePostgreSqlWriteMethodEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzurePostgreSqlWriteMethodEnum)(nil)).Elem()
+}
+
+func (o AzurePostgreSqlWriteMethodEnumPtrOutput) ToAzurePostgreSqlWriteMethodEnumPtrOutput() AzurePostgreSqlWriteMethodEnumPtrOutput {
+	return o
+}
+
+func (o AzurePostgreSqlWriteMethodEnumPtrOutput) ToAzurePostgreSqlWriteMethodEnumPtrOutputWithContext(ctx context.Context) AzurePostgreSqlWriteMethodEnumPtrOutput {
+	return o
+}
+
+func (o AzurePostgreSqlWriteMethodEnumPtrOutput) Elem() AzurePostgreSqlWriteMethodEnumOutput {
+	return o.ApplyT(func(v *AzurePostgreSqlWriteMethodEnum) AzurePostgreSqlWriteMethodEnum {
+		if v != nil {
+			return *v
+		}
+		var ret AzurePostgreSqlWriteMethodEnum
+		return ret
+	}).(AzurePostgreSqlWriteMethodEnumOutput)
+}
+
+func (o AzurePostgreSqlWriteMethodEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzurePostgreSqlWriteMethodEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzurePostgreSqlWriteMethodEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzurePostgreSqlWriteMethodEnumInput is an input type that accepts values of the AzurePostgreSqlWriteMethodEnum enum
+// A concrete instance of `AzurePostgreSqlWriteMethodEnumInput` can be one of the following:
+//
+//	AzurePostgreSqlWriteMethodEnumBulkInsert
+//	AzurePostgreSqlWriteMethodEnumCopyCommand
+//	AzurePostgreSqlWriteMethodEnumUpsert
+type AzurePostgreSqlWriteMethodEnumInput interface {
+	pulumi.Input
+
+	ToAzurePostgreSqlWriteMethodEnumOutput() AzurePostgreSqlWriteMethodEnumOutput
+	ToAzurePostgreSqlWriteMethodEnumOutputWithContext(context.Context) AzurePostgreSqlWriteMethodEnumOutput
+}
+
+var azurePostgreSqlWriteMethodEnumPtrType = reflect.TypeOf((**AzurePostgreSqlWriteMethodEnum)(nil)).Elem()
+
+type AzurePostgreSqlWriteMethodEnumPtrInput interface {
+	pulumi.Input
+
+	ToAzurePostgreSqlWriteMethodEnumPtrOutput() AzurePostgreSqlWriteMethodEnumPtrOutput
+	ToAzurePostgreSqlWriteMethodEnumPtrOutputWithContext(context.Context) AzurePostgreSqlWriteMethodEnumPtrOutput
+}
+
+type azurePostgreSqlWriteMethodEnumPtr string
+
+func AzurePostgreSqlWriteMethodEnumPtr(v string) AzurePostgreSqlWriteMethodEnumPtrInput {
+	return (*azurePostgreSqlWriteMethodEnumPtr)(&v)
+}
+
+func (*azurePostgreSqlWriteMethodEnumPtr) ElementType() reflect.Type {
+	return azurePostgreSqlWriteMethodEnumPtrType
+}
+
+func (in *azurePostgreSqlWriteMethodEnumPtr) ToAzurePostgreSqlWriteMethodEnumPtrOutput() AzurePostgreSqlWriteMethodEnumPtrOutput {
+	return pulumi.ToOutput(in).(AzurePostgreSqlWriteMethodEnumPtrOutput)
+}
+
+func (in *azurePostgreSqlWriteMethodEnumPtr) ToAzurePostgreSqlWriteMethodEnumPtrOutputWithContext(ctx context.Context) AzurePostgreSqlWriteMethodEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzurePostgreSqlWriteMethodEnumPtrOutput)
+}
+
 // Specify the write behavior when upserting documents into Azure Search Index.
 type AzureSearchIndexWriteBehaviorType string
 
@@ -14172,6 +14340,172 @@ func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
 }
 
+// Type of value copied from source.
+type ValueType string
+
+const (
+	ValueTypeActual  = ValueType("actual")
+	ValueTypeDisplay = ValueType("display")
+)
+
+func (ValueType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueType)(nil)).Elem()
+}
+
+func (e ValueType) ToValueTypeOutput() ValueTypeOutput {
+	return pulumi.ToOutput(e).(ValueTypeOutput)
+}
+
+func (e ValueType) ToValueTypeOutputWithContext(ctx context.Context) ValueTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ValueTypeOutput)
+}
+
+func (e ValueType) ToValueTypePtrOutput() ValueTypePtrOutput {
+	return e.ToValueTypePtrOutputWithContext(context.Background())
+}
+
+func (e ValueType) ToValueTypePtrOutputWithContext(ctx context.Context) ValueTypePtrOutput {
+	return ValueType(e).ToValueTypeOutputWithContext(ctx).ToValueTypePtrOutputWithContext(ctx)
+}
+
+func (e ValueType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ValueType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ValueType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ValueType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ValueTypeOutput struct{ *pulumi.OutputState }
+
+func (ValueTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueType)(nil)).Elem()
+}
+
+func (o ValueTypeOutput) ToValueTypeOutput() ValueTypeOutput {
+	return o
+}
+
+func (o ValueTypeOutput) ToValueTypeOutputWithContext(ctx context.Context) ValueTypeOutput {
+	return o
+}
+
+func (o ValueTypeOutput) ToValueTypePtrOutput() ValueTypePtrOutput {
+	return o.ToValueTypePtrOutputWithContext(context.Background())
+}
+
+func (o ValueTypeOutput) ToValueTypePtrOutputWithContext(ctx context.Context) ValueTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValueType) *ValueType {
+		return &v
+	}).(ValueTypePtrOutput)
+}
+
+func (o ValueTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ValueTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ValueType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ValueTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ValueTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ValueType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ValueTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ValueTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValueType)(nil)).Elem()
+}
+
+func (o ValueTypePtrOutput) ToValueTypePtrOutput() ValueTypePtrOutput {
+	return o
+}
+
+func (o ValueTypePtrOutput) ToValueTypePtrOutputWithContext(ctx context.Context) ValueTypePtrOutput {
+	return o
+}
+
+func (o ValueTypePtrOutput) Elem() ValueTypeOutput {
+	return o.ApplyT(func(v *ValueType) ValueType {
+		if v != nil {
+			return *v
+		}
+		var ret ValueType
+		return ret
+	}).(ValueTypeOutput)
+}
+
+func (o ValueTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ValueTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ValueType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ValueTypeInput is an input type that accepts values of the ValueType enum
+// A concrete instance of `ValueTypeInput` can be one of the following:
+//
+//	ValueTypeActual
+//	ValueTypeDisplay
+type ValueTypeInput interface {
+	pulumi.Input
+
+	ToValueTypeOutput() ValueTypeOutput
+	ToValueTypeOutputWithContext(context.Context) ValueTypeOutput
+}
+
+var valueTypePtrType = reflect.TypeOf((**ValueType)(nil)).Elem()
+
+type ValueTypePtrInput interface {
+	pulumi.Input
+
+	ToValueTypePtrOutput() ValueTypePtrOutput
+	ToValueTypePtrOutputWithContext(context.Context) ValueTypePtrOutput
+}
+
+type valueTypePtr string
+
+func ValueTypePtr(v string) ValueTypePtrInput {
+	return (*valueTypePtr)(&v)
+}
+
+func (*valueTypePtr) ElementType() reflect.Type {
+	return valueTypePtrType
+}
+
+func (in *valueTypePtr) ToValueTypePtrOutput() ValueTypePtrOutput {
+	return pulumi.ToOutput(in).(ValueTypePtrOutput)
+}
+
+func (in *valueTypePtr) ToValueTypePtrOutputWithContext(ctx context.Context) ValueTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ValueTypePtrOutput)
+}
+
 // Variable type.
 type VariableType string
 
@@ -14858,6 +15192,8 @@ func init() {
 	pulumi.RegisterOutputType(AmazonRdsForSqlAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(AzureFunctionActivityMethodOutput{})
 	pulumi.RegisterOutputType(AzureFunctionActivityMethodPtrOutput{})
+	pulumi.RegisterOutputType(AzurePostgreSqlWriteMethodEnumOutput{})
+	pulumi.RegisterOutputType(AzurePostgreSqlWriteMethodEnumPtrOutput{})
 	pulumi.RegisterOutputType(AzureSearchIndexWriteBehaviorTypeOutput{})
 	pulumi.RegisterOutputType(AzureSearchIndexWriteBehaviorTypePtrOutput{})
 	pulumi.RegisterOutputType(AzureSqlDWAuthenticationTypeOutput{})
@@ -15019,6 +15355,8 @@ func init() {
 	pulumi.RegisterOutputType(TumblingWindowFrequencyPtrOutput{})
 	pulumi.RegisterOutputType(TypeOutput{})
 	pulumi.RegisterOutputType(TypePtrOutput{})
+	pulumi.RegisterOutputType(ValueTypeOutput{})
+	pulumi.RegisterOutputType(ValueTypePtrOutput{})
 	pulumi.RegisterOutputType(VariableTypeOutput{})
 	pulumi.RegisterOutputType(VariableTypePtrOutput{})
 	pulumi.RegisterOutputType(WebActivityMethodOutput{})

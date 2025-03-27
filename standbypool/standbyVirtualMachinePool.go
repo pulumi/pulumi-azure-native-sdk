@@ -13,9 +13,10 @@ import (
 )
 
 // A StandbyVirtualMachinePoolResource.
-// Azure REST API version: 2023-12-01-preview.
 //
-// Other available API versions: 2024-03-01, 2024-03-01-preview.
+// Uses Azure REST API version 2023-12-01-preview.
+//
+// Other available API versions: 2024-03-01, 2024-03-01-preview, 2025-03-01.
 type StandbyVirtualMachinePool struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +62,9 @@ func NewStandbyVirtualMachinePool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:standbypool/v20240301preview:StandbyVirtualMachinePool"),
+		},
+		{
+			Type: pulumi.String("azure-native:standbypool/v20250301:StandbyVirtualMachinePool"),
 		},
 	})
 	opts = append(opts, aliases)

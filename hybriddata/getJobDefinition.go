@@ -12,7 +12,8 @@ import (
 )
 
 // This method gets job definition object by name.
-// Azure REST API version: 2019-06-01.
+//
+// Uses Azure REST API version 2019-06-01.
 func LookupJobDefinition(ctx *pulumi.Context, args *LookupJobDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupJobDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobDefinitionResult

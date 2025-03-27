@@ -13,7 +13,8 @@ import (
 )
 
 // Workload instance model.
-// Azure REST API version: 2022-05-01-preview.
+//
+// Uses Azure REST API version 2022-05-01-preview.
 type WorkloadInstance struct {
 	pulumi.CustomResourceState
 

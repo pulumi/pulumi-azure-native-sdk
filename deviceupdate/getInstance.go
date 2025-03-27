@@ -12,7 +12,8 @@ import (
 )
 
 // Returns instance details for the given instance and account name.
-// Azure REST API version: 2023-07-01.
+//
+// Uses Azure REST API version 2023-07-01.
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceResult

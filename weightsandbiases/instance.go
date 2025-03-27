@@ -13,7 +13,8 @@ import (
 )
 
 // Concrete tracked resource types can be created by aliasing this type using a specific property type.
-// Azure REST API version: 2024-09-18-preview.
+//
+// Uses Azure REST API version 2024-09-18-preview.
 type Instance struct {
 	pulumi.CustomResourceState
 

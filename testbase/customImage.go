@@ -13,7 +13,8 @@ import (
 )
 
 // The test base custom image resource.
-// Azure REST API version: 2023-11-01-preview.
+//
+// Uses Azure REST API version 2023-11-01-preview.
 type CustomImage struct {
 	pulumi.CustomResourceState
 

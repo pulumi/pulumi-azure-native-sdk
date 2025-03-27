@@ -74,6 +74,9 @@ func NewConnectedEnvironmentsStorage(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:app/v20240802preview:ConnectedEnvironmentsStorage"),
 		},
 		{
+			Type: pulumi.String("azure-native:app/v20250101:ConnectedEnvironmentsStorage"),
+		},
+		{
 			Type: pulumi.String("azure-native:app:ConnectedEnvironmentsStorage"),
 		},
 	})

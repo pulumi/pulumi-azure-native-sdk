@@ -69,6 +69,9 @@ func NewQuery(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:operationalinsights/v20190901preview:Query"),
 		},
 		{
+			Type: pulumi.String("azure-native:operationalinsights/v20250201:Query"),
+		},
+		{
 			Type: pulumi.String("azure-native:operationalinsights:Query"),
 		},
 	})

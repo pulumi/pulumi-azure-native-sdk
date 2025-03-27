@@ -12,7 +12,8 @@ import (
 )
 
 // Lists connection details for the underlying container resources of an Azure Dev Spaces Controller.
-// Azure REST API version: 2019-04-01.
+//
+// Uses Azure REST API version 2019-04-01.
 func ListControllerConnectionDetails(ctx *pulumi.Context, args *ListControllerConnectionDetailsArgs, opts ...pulumi.InvokeOption) (*ListControllerConnectionDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListControllerConnectionDetailsResult

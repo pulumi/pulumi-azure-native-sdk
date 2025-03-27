@@ -12,7 +12,8 @@ import (
 )
 
 // The operation to get the extension.
-// Azure REST API version: 2022-12-15-preview.
+//
+// Uses Azure REST API version 2022-12-15-preview.
 func LookupMachineExtension(ctx *pulumi.Context, args *LookupMachineExtensionArgs, opts ...pulumi.InvokeOption) (*LookupMachineExtensionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineExtensionResult

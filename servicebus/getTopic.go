@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a description for the specified topic.
-// Azure REST API version: 2022-01-01-preview.
+//
+// Uses Azure REST API version 2022-01-01-preview.
 //
 // Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {

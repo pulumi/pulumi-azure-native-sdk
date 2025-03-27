@@ -12,7 +12,8 @@ import (
 )
 
 // Get the recommended SAP Availability Zone Pair Details for your region.
-// Azure REST API version: 2024-09-01.
+//
+// Uses Azure REST API version 2024-09-01.
 func GetSapVirtualInstanceInvokeAvailabilityZoneDetails(ctx *pulumi.Context, args *GetSapVirtualInstanceInvokeAvailabilityZoneDetailsArgs, opts ...pulumi.InvokeOption) (*GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult

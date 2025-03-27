@@ -13,7 +13,8 @@ import (
 )
 
 // A alert associated with SAP monitor.
-// Azure REST API version: 2024-02-01-preview.
+//
+// Uses Azure REST API version 2024-02-01-preview.
 type Alert struct {
 	pulumi.CustomResourceState
 

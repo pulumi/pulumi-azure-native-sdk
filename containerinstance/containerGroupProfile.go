@@ -13,7 +13,8 @@ import (
 )
 
 // A container group profile.
-// Azure REST API version: 2024-05-01-preview.
+//
+// Uses Azure REST API version 2024-05-01-preview.
 type ContainerGroupProfile struct {
 	pulumi.CustomResourceState
 

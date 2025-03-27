@@ -50,6 +50,9 @@ func NewJobPrivateEndpoint(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230501preview:JobPrivateEndpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:JobPrivateEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:JobPrivateEndpoint"),
 		},
 		{

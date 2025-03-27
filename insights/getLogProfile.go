@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the log profile.
-// Azure REST API version: 2016-03-01.
+//
+// Uses Azure REST API version 2016-03-01.
 func LookupLogProfile(ctx *pulumi.Context, args *LookupLogProfileArgs, opts ...pulumi.InvokeOption) (*LookupLogProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogProfileResult

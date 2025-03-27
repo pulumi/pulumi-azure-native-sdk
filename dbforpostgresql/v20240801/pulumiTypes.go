@@ -3981,7 +3981,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 type UserAssignedIdentity struct {
 	// the identity principal Id of the server.
 	PrincipalId *string `pulumi:"principalId"`
-	// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
+	// the types of identities associated with this resource
 	Type string `pulumi:"type"`
 	// represents user assigned identities map.
 	UserAssignedIdentities map[string]UserIdentity `pulumi:"userAssignedIdentities"`
@@ -4002,7 +4002,7 @@ type UserAssignedIdentityInput interface {
 type UserAssignedIdentityArgs struct {
 	// the identity principal Id of the server.
 	PrincipalId pulumi.StringPtrInput `pulumi:"principalId"`
-	// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
+	// the types of identities associated with this resource
 	Type pulumi.StringInput `pulumi:"type"`
 	// represents user assigned identities map.
 	UserAssignedIdentities UserIdentityMapInput `pulumi:"userAssignedIdentities"`
@@ -4091,7 +4091,7 @@ func (o UserAssignedIdentityOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserAssignedIdentity) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
 }
 
-// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
+// the types of identities associated with this resource
 func (o UserAssignedIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentity) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4135,7 +4135,7 @@ func (o UserAssignedIdentityPtrOutput) PrincipalId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
+// the types of identities associated with this resource
 func (o UserAssignedIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAssignedIdentity) *string {
 		if v == nil {
@@ -4161,7 +4161,7 @@ type UserAssignedIdentityResponse struct {
 	PrincipalId *string `pulumi:"principalId"`
 	// Tenant id of the server.
 	TenantId string `pulumi:"tenantId"`
-	// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
+	// the types of identities associated with this resource
 	Type string `pulumi:"type"`
 	// represents user assigned identities map.
 	UserAssignedIdentities map[string]UserIdentityResponse `pulumi:"userAssignedIdentities"`
@@ -4192,7 +4192,7 @@ func (o UserAssignedIdentityResponseOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
+// the types of identities associated with this resource
 func (o UserAssignedIdentityResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4246,7 +4246,7 @@ func (o UserAssignedIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
+// the types of identities associated with this resource
 func (o UserAssignedIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAssignedIdentityResponse) *string {
 		if v == nil {

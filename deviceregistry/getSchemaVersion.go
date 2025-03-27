@@ -12,7 +12,8 @@ import (
 )
 
 // Get a SchemaVersion
-// Azure REST API version: 2024-09-01-preview.
+//
+// Uses Azure REST API version 2024-09-01-preview.
 func LookupSchemaVersion(ctx *pulumi.Context, args *LookupSchemaVersionArgs, opts ...pulumi.InvokeOption) (*LookupSchemaVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaVersionResult

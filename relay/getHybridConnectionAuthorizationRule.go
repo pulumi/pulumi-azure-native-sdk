@@ -12,7 +12,8 @@ import (
 )
 
 // Hybrid connection authorization rule for a hybrid connection by name.
-// Azure REST API version: 2021-11-01.
+//
+// Uses Azure REST API version 2021-11-01.
 //
 // Other available API versions: 2017-04-01, 2024-01-01.
 func LookupHybridConnectionAuthorizationRule(ctx *pulumi.Context, args *LookupHybridConnectionAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupHybridConnectionAuthorizationRuleResult, error) {

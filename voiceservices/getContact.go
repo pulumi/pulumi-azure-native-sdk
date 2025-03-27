@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Contact
-// Azure REST API version: 2022-12-01-preview.
+//
+// Uses Azure REST API version 2022-12-01-preview.
 func LookupContact(ctx *pulumi.Context, args *LookupContactArgs, opts ...pulumi.InvokeOption) (*LookupContactResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContactResult

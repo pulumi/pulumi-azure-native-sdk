@@ -12,7 +12,8 @@ import (
 )
 
 // Get a LightsailInstance
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupLightsailInstance(ctx *pulumi.Context, args *LookupLightsailInstanceArgs, opts ...pulumi.InvokeOption) (*LookupLightsailInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLightsailInstanceResult

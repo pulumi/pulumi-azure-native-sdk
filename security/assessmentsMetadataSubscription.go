@@ -13,7 +13,8 @@ import (
 )
 
 // Security assessment metadata
-// Azure REST API version: 2019-01-01-preview.
+//
+// Uses Azure REST API version 2019-01-01-preview.
 type AssessmentsMetadataSubscription struct {
 	pulumi.CustomResourceState
 

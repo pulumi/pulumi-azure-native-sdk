@@ -13,9 +13,10 @@ import (
 )
 
 // A SqlManagedInstance.
-// Azure REST API version: 2023-01-15-preview. Prior API version in Azure Native 1.x: 2021-06-01-preview.
 //
-// Other available API versions: 2024-01-01, 2024-05-01-preview.
+// Uses Azure REST API version 2023-01-15-preview. In version 1.x of the Azure Native provider, it used API version 2021-06-01-preview.
+//
+// Other available API versions: 2024-01-01, 2024-05-01-preview, 2025-03-01-preview.
 type SqlManagedInstance struct {
 	pulumi.CustomResourceState
 
@@ -81,6 +82,9 @@ func NewSqlManagedInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:SqlManagedInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:SqlManagedInstance"),
 		},
 	})
 	opts = append(opts, aliases)

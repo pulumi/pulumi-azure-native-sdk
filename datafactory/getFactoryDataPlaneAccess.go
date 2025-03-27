@@ -12,7 +12,8 @@ import (
 )
 
 // Get Data Plane access.
-// Azure REST API version: 2018-06-01.
+//
+// Uses Azure REST API version 2018-06-01.
 func GetFactoryDataPlaneAccess(ctx *pulumi.Context, args *GetFactoryDataPlaneAccessArgs, opts ...pulumi.InvokeOption) (*GetFactoryDataPlaneAccessResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetFactoryDataPlaneAccessResult

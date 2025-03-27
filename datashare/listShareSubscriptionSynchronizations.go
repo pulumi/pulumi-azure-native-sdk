@@ -12,7 +12,8 @@ import (
 )
 
 // List synchronizations of a share subscription
-// Azure REST API version: 2021-08-01.
+//
+// Uses Azure REST API version 2021-08-01.
 func ListShareSubscriptionSynchronizations(ctx *pulumi.Context, args *ListShareSubscriptionSynchronizationsArgs, opts ...pulumi.InvokeOption) (*ListShareSubscriptionSynchronizationsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListShareSubscriptionSynchronizationsResult

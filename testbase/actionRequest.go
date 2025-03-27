@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-11-01-preview.
+// Uses Azure REST API version 2023-11-01-preview.
 type ActionRequest struct {
 	pulumi.CustomResourceState
 

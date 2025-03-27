@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a file test result for the matching test
-// Azure REST API version: 2020-02-10-preview.
+//
+// Uses Azure REST API version 2020-02-10-preview.
 func GetTestResultFile(ctx *pulumi.Context, args *GetTestResultFileArgs, opts ...pulumi.InvokeOption) (*GetTestResultFileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetTestResultFileResult

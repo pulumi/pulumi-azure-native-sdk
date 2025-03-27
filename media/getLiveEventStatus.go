@@ -12,7 +12,8 @@ import (
 )
 
 // Gets status telemetry of a live event.
-// Azure REST API version: 2022-11-01.
+//
+// Uses Azure REST API version 2022-11-01.
 func GetLiveEventStatus(ctx *pulumi.Context, args *GetLiveEventStatusArgs, opts ...pulumi.InvokeOption) (*GetLiveEventStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetLiveEventStatusResult

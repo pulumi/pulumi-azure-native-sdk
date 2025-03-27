@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the report for a resource group under a subscription by report name.
-// Azure REST API version: 2018-08-01-preview.
+//
+// Uses Azure REST API version 2018-08-01-preview.
 func LookupReportByResourceGroupName(ctx *pulumi.Context, args *LookupReportByResourceGroupNameArgs, opts ...pulumi.InvokeOption) (*LookupReportByResourceGroupNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReportByResourceGroupNameResult

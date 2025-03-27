@@ -13,7 +13,8 @@ import (
 )
 
 // A long term retention policy.
-// Azure REST API version: 2017-03-01-preview.
+//
+// Uses Azure REST API version 2017-03-01-preview.
 type BackupLongTermRetentionPolicy struct {
 	pulumi.CustomResourceState
 
@@ -92,6 +93,9 @@ func NewBackupLongTermRetentionPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:BackupLongTermRetentionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801:BackupLongTermRetentionPolicy"),
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:BackupLongTermRetentionPolicy"),

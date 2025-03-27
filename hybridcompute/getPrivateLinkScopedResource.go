@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a scoped resource in a private link scope.
-// Azure REST API version: 2020-08-15-preview.
+//
+// Uses Azure REST API version 2020-08-15-preview.
 func LookupPrivateLinkScopedResource(ctx *pulumi.Context, args *LookupPrivateLinkScopedResourceArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkScopedResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkScopedResourceResult

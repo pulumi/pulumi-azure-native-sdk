@@ -12,7 +12,8 @@ import (
 )
 
 // Get a private access resource
-// Azure REST API version: 2023-10-27-preview.
+//
+// Uses Azure REST API version 2023-10-27-preview.
 //
 // Other available API versions: 2024-03-22-preview, 2024-11-01-preview.
 func LookupPrivateAccess(ctx *pulumi.Context, args *LookupPrivateAccessArgs, opts ...pulumi.InvokeOption) (*LookupPrivateAccessResult, error) {

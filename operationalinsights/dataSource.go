@@ -13,9 +13,10 @@ import (
 )
 
 // Datasources under OMS Workspace.
-// Azure REST API version: 2020-08-01. Prior API version in Azure Native 1.x: 2020-08-01.
 //
-// Other available API versions: 2015-11-01-preview, 2023-09-01.
+// Uses Azure REST API version 2020-08-01. In version 1.x of the Azure Native provider, it used API version 2020-08-01.
+//
+// Other available API versions: 2015-11-01-preview, 2023-09-01, 2025-02-01.
 type DataSource struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +65,9 @@ func NewDataSource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20230901:DataSource"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20250201:DataSource"),
 		},
 	})
 	opts = append(opts, aliases)

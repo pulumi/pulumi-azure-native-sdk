@@ -12,7 +12,8 @@ import (
 )
 
 // Lists the diagnostic settings categories for the specified resource.
-// Azure REST API version: 2021-05-01-preview.
+//
+// Uses Azure REST API version 2021-05-01-preview.
 //
 // Other available API versions: 2017-05-01-preview.
 func ListDiagnosticSettingsCategory(ctx *pulumi.Context, args *ListDiagnosticSettingsCategoryArgs, opts ...pulumi.InvokeOption) (*ListDiagnosticSettingsCategoryResult, error) {

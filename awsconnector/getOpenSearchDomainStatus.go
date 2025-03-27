@@ -12,7 +12,8 @@ import (
 )
 
 // Get a OpenSearchDomainStatus
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupOpenSearchDomainStatus(ctx *pulumi.Context, args *LookupOpenSearchDomainStatusArgs, opts ...pulumi.InvokeOption) (*LookupOpenSearchDomainStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenSearchDomainStatusResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get the count of reports.
-// Azure REST API version: 2024-06-27.
+//
+// Uses Azure REST API version 2024-06-27.
 func GetProviderActionCollectionCount(ctx *pulumi.Context, args *GetProviderActionCollectionCountArgs, opts ...pulumi.InvokeOption) (*GetProviderActionCollectionCountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProviderActionCollectionCountResult

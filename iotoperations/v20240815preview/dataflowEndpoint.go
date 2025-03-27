@@ -58,6 +58,9 @@ func NewDataflowEndpoint(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:iotoperations/v20241101:DataflowEndpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:DataflowEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:iotoperations:DataflowEndpoint"),
 		},
 	})

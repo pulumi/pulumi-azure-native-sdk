@@ -13,7 +13,8 @@ import (
 )
 
 // ModernizeProject model.
-// Azure REST API version: 2022-05-01-preview.
+//
+// Uses Azure REST API version 2022-05-01-preview.
 type ModernizeProject struct {
 	pulumi.CustomResourceState
 

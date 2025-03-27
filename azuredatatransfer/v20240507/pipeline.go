@@ -54,6 +54,9 @@ func NewPipeline(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azuredatatransfer/v20240927:Pipeline"),
 		},
 		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20250301preview:Pipeline"),
+		},
+		{
 			Type: pulumi.String("azure-native:azuredatatransfer:Pipeline"),
 		},
 	})

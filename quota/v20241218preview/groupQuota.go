@@ -46,6 +46,9 @@ func NewGroupQuota(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:quota/v20250301:GroupQuota"),
 		},
 		{
+			Type: pulumi.String("azure-native:quota/v20250315preview:GroupQuota"),
+		},
+		{
 			Type: pulumi.String("azure-native:quota:GroupQuota"),
 		},
 	})

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an VirtualNetworkRule for a Namespace by rule name.
-// Azure REST API version: 2018-01-01-preview.
+//
+// Uses Azure REST API version 2018-01-01-preview.
 func LookupNamespaceVirtualNetworkRule(ctx *pulumi.Context, args *LookupNamespaceVirtualNetworkRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceVirtualNetworkRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceVirtualNetworkRuleResult

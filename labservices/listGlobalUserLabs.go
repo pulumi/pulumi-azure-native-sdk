@@ -12,7 +12,8 @@ import (
 )
 
 // List labs for the user.
-// Azure REST API version: 2018-10-15.
+//
+// Uses Azure REST API version 2018-10-15.
 func ListGlobalUserLabs(ctx *pulumi.Context, args *ListGlobalUserLabsArgs, opts ...pulumi.InvokeOption) (*ListGlobalUserLabsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListGlobalUserLabsResult

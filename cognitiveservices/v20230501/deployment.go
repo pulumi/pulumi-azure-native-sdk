@@ -69,6 +69,9 @@ func NewDeployment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cognitiveservices/v20241001:Deployment"),
 		},
 		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20250401preview:Deployment"),
+		},
+		{
 			Type: pulumi.String("azure-native:cognitiveservices:Deployment"),
 		},
 	})

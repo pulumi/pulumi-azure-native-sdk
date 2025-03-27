@@ -348,8 +348,8 @@ func (in *amlFilesystemSquashModePtr) ToAmlFilesystemSquashModePtrOutputWithCont
 type AutoExportJobAdminStatus string
 
 const (
-	AutoExportJobAdminStatusActive = AutoExportJobAdminStatus("Active")
-	AutoExportJobAdminStatusCancel = AutoExportJobAdminStatus("Cancel")
+	AutoExportJobAdminStatusEnable  = AutoExportJobAdminStatus("Enable")
+	AutoExportJobAdminStatusDisable = AutoExportJobAdminStatus("Disable")
 )
 
 func (AutoExportJobAdminStatus) ElementType() reflect.Type {
@@ -474,8 +474,8 @@ func (o AutoExportJobAdminStatusPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // AutoExportJobAdminStatusInput is an input type that accepts values of the AutoExportJobAdminStatus enum
 // A concrete instance of `AutoExportJobAdminStatusInput` can be one of the following:
 //
-//	AutoExportJobAdminStatusActive
-//	AutoExportJobAdminStatusCancel
+//	AutoExportJobAdminStatusEnable
+//	AutoExportJobAdminStatusDisable
 type AutoExportJobAdminStatusInput interface {
 	pulumi.Input
 
@@ -1022,7 +1022,7 @@ func (in *conflictResolutionModePtr) ToConflictResolutionModePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ConflictResolutionModePtrOutput)
 }
 
-// The administrative status of the import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will cancel the current active import job. By default it is set to 'Enable'.
+// The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'.
 type ImportJobAdminStatus string
 
 const (

@@ -12,7 +12,8 @@ import (
 )
 
 // Get the setting from the given scope by name.
-// Azure REST API version: 2022-10-05-preview.
+//
+// Uses Azure REST API version 2022-10-05-preview.
 func LookupTagInheritanceSetting(ctx *pulumi.Context, args *LookupTagInheritanceSettingArgs, opts ...pulumi.InvokeOption) (*LookupTagInheritanceSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagInheritanceSettingResult

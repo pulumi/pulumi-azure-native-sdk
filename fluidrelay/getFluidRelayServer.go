@@ -12,7 +12,8 @@ import (
 )
 
 // A FluidRelay Server.
-// Azure REST API version: 2022-06-01.
+//
+// Uses Azure REST API version 2022-06-01.
 //
 // Other available API versions: 2021-06-15-preview.
 func LookupFluidRelayServer(ctx *pulumi.Context, args *LookupFluidRelayServerArgs, opts ...pulumi.InvokeOption) (*LookupFluidRelayServerResult, error) {

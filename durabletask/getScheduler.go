@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Scheduler
-// Azure REST API version: 2024-10-01-preview.
+//
+// Uses Azure REST API version 2024-10-01-preview.
 func LookupScheduler(ctx *pulumi.Context, args *LookupSchedulerArgs, opts ...pulumi.InvokeOption) (*LookupSchedulerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchedulerResult

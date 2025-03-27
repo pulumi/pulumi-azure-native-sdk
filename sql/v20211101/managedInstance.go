@@ -139,6 +139,9 @@ func NewManagedInstance(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230501preview:ManagedInstance"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:ManagedInstance"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ManagedInstance"),
 		},
 		{

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an existing target group within a profile.
-// Azure REST API version: 2024-06-01-preview.
+//
+// Uses Azure REST API version 2024-06-01-preview.
 func LookupAFDTargetGroup(ctx *pulumi.Context, args *LookupAFDTargetGroupArgs, opts ...pulumi.InvokeOption) (*LookupAFDTargetGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAFDTargetGroupResult

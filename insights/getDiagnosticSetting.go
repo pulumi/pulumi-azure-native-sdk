@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the active diagnostic settings for the specified resource.
-// Azure REST API version: 2021-05-01-preview.
+//
+// Uses Azure REST API version 2021-05-01-preview.
 func LookupDiagnosticSetting(ctx *pulumi.Context, args *LookupDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupDiagnosticSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiagnosticSettingResult

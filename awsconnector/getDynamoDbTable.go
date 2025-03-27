@@ -12,7 +12,8 @@ import (
 )
 
 // Get a DynamoDBTable
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupDynamoDbTable(ctx *pulumi.Context, args *LookupDynamoDbTableArgs, opts ...pulumi.InvokeOption) (*LookupDynamoDbTableResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDynamoDbTableResult

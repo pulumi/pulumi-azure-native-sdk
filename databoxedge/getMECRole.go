@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a specific role by name.
-// Azure REST API version: 2022-03-01.
+//
+// Uses Azure REST API version 2022-03-01.
 func LookupMECRole(ctx *pulumi.Context, args *LookupMECRoleArgs, opts ...pulumi.InvokeOption) (*LookupMECRoleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMECRoleResult

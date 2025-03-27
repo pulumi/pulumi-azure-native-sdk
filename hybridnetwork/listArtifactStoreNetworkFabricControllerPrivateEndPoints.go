@@ -12,7 +12,8 @@ import (
 )
 
 // List network fabric controllers to artifact stores
-// Azure REST API version: 2024-04-15.
+//
+// Uses Azure REST API version 2024-04-15.
 func ListArtifactStoreNetworkFabricControllerPrivateEndPoints(ctx *pulumi.Context, args *ListArtifactStoreNetworkFabricControllerPrivateEndPointsArgs, opts ...pulumi.InvokeOption) (*ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult

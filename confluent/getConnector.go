@@ -12,7 +12,8 @@ import (
 )
 
 // Details of connector record
-// Azure REST API version: 2024-07-01.
+//
+// Uses Azure REST API version 2024-07-01.
 func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorResult

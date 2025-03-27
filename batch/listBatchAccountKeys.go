@@ -12,7 +12,8 @@ import (
 )
 
 // This operation applies only to Batch accounts with allowedAuthenticationModes containing 'SharedKey'. If the Batch account doesn't contain 'SharedKey' in its allowedAuthenticationMode, clients cannot use shared keys to authenticate, and must use another allowedAuthenticationModes instead. In this case, getting the keys will fail.
-// Azure REST API version: 2023-05-01.
+//
+// Uses Azure REST API version 2023-05-01.
 //
 // Other available API versions: 2022-01-01, 2023-11-01, 2024-02-01, 2024-07-01.
 func ListBatchAccountKeys(ctx *pulumi.Context, args *ListBatchAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListBatchAccountKeysResult, error) {

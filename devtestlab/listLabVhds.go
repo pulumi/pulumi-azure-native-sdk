@@ -12,7 +12,8 @@ import (
 )
 
 // List disk images available for custom image creation.
-// Azure REST API version: 2018-09-15.
+//
+// Uses Azure REST API version 2018-09-15.
 func ListLabVhds(ctx *pulumi.Context, args *ListLabVhdsArgs, opts ...pulumi.InvokeOption) (*ListLabVhdsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListLabVhdsResult

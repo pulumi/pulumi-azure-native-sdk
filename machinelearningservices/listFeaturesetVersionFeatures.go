@@ -12,7 +12,8 @@ import (
 )
 
 // A paginated list of Feature entities.
-// Azure REST API version: 2023-02-01-preview.
+//
+// Uses Azure REST API version 2023-02-01-preview.
 func ListFeaturesetVersionFeatures(ctx *pulumi.Context, args *ListFeaturesetVersionFeaturesArgs, opts ...pulumi.InvokeOption) (*ListFeaturesetVersionFeaturesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFeaturesetVersionFeaturesResult

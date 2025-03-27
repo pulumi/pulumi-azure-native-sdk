@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Image
-// Azure REST API version: 2022-09-01-preview.
+//
+// Uses Azure REST API version 2022-09-01-preview.
 //
 // Other available API versions: 2024-04-01.
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {

@@ -87,6 +87,9 @@ func NewConnectedEnvironment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:app/v20240802preview:ConnectedEnvironment"),
 		},
 		{
+			Type: pulumi.String("azure-native:app/v20250101:ConnectedEnvironment"),
+		},
+		{
 			Type: pulumi.String("azure-native:app:ConnectedEnvironment"),
 		},
 	})

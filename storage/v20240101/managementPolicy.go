@@ -20,7 +20,7 @@ type ManagementPolicy struct {
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Policy ManagementPolicySchemaResponseOutput `pulumi:"policy"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -133,7 +133,7 @@ type managementPolicyArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// The name of the Storage Account Management Policy. It should always be 'default'
 	ManagementPolicyName *string `pulumi:"managementPolicyName"`
-	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Policy ManagementPolicySchema `pulumi:"policy"`
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -145,7 +145,7 @@ type ManagementPolicyArgs struct {
 	AccountName pulumi.StringInput
 	// The name of the Storage Account Management Policy. It should always be 'default'
 	ManagementPolicyName pulumi.StringPtrInput
-	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Policy ManagementPolicySchemaInput
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -198,7 +198,7 @@ func (o ManagementPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 func (o ManagementPolicyOutput) Policy() ManagementPolicySchemaResponseOutput {
 	return o.ApplyT(func(v *ManagementPolicy) ManagementPolicySchemaResponseOutput { return v.Policy }).(ManagementPolicySchemaResponseOutput)
 }

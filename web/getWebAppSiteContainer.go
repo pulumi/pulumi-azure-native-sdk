@@ -12,7 +12,8 @@ import (
 )
 
 // Container of a site
-// Azure REST API version: 2023-12-01.
+//
+// Uses Azure REST API version 2023-12-01.
 //
 // Other available API versions: 2024-04-01.
 func LookupWebAppSiteContainer(ctx *pulumi.Context, args *LookupWebAppSiteContainerArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSiteContainerResult, error) {

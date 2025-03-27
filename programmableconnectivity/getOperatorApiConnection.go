@@ -12,7 +12,8 @@ import (
 )
 
 // Get an Operator API Connection.
-// Azure REST API version: 2024-01-15-preview.
+//
+// Uses Azure REST API version 2024-01-15-preview.
 func LookupOperatorApiConnection(ctx *pulumi.Context, args *LookupOperatorApiConnectionArgs, opts ...pulumi.InvokeOption) (*LookupOperatorApiConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOperatorApiConnectionResult

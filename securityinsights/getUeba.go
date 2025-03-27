@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a setting.
-// Azure REST API version: 2023-06-01-preview.
+//
+// Uses Azure REST API version 2023-06-01-preview.
 func LookupUeba(ctx *pulumi.Context, args *LookupUebaArgs, opts ...pulumi.InvokeOption) (*LookupUebaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUebaResult

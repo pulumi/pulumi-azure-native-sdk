@@ -12,7 +12,8 @@ import (
 )
 
 // Get a list of SAP supported SKUs for ASCS, Application and Database tier.
-// Azure REST API version: 2024-09-01.
+//
+// Uses Azure REST API version 2024-09-01.
 func GetSapVirtualInstanceInvokeSapSupportedSku(ctx *pulumi.Context, args *GetSapVirtualInstanceInvokeSapSupportedSkuArgs, opts ...pulumi.InvokeOption) (*GetSapVirtualInstanceInvokeSapSupportedSkuResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSapVirtualInstanceInvokeSapSupportedSkuResult

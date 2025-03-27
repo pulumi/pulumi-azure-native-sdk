@@ -12,7 +12,8 @@ import (
 )
 
 // Get a ApiGatewayStage
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupApiGatewayStage(ctx *pulumi.Context, args *LookupApiGatewayStageArgs, opts ...pulumi.InvokeOption) (*LookupApiGatewayStageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiGatewayStageResult

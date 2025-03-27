@@ -13,7 +13,8 @@ import (
 )
 
 // The Landing zone registration resource type.
-// Azure REST API version: 2025-02-27-preview.
+//
+// Uses Azure REST API version 2025-02-27-preview.
 type LandingZoneRegistrationOperation struct {
 	pulumi.CustomResourceState
 

@@ -5465,174 +5465,6 @@ func (in *providerPermissionsScopePtr) ToProviderPermissionsScopePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ProviderPermissionsScopePtrOutput)
 }
 
-// The kind of repository access credentials
-type RepositoryAccessKind string
-
-const (
-	RepositoryAccessKindOAuth = RepositoryAccessKind("OAuth")
-	RepositoryAccessKindPAT   = RepositoryAccessKind("PAT")
-	RepositoryAccessKindApp   = RepositoryAccessKind("App")
-)
-
-func (RepositoryAccessKind) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryAccessKind)(nil)).Elem()
-}
-
-func (e RepositoryAccessKind) ToRepositoryAccessKindOutput() RepositoryAccessKindOutput {
-	return pulumi.ToOutput(e).(RepositoryAccessKindOutput)
-}
-
-func (e RepositoryAccessKind) ToRepositoryAccessKindOutputWithContext(ctx context.Context) RepositoryAccessKindOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(RepositoryAccessKindOutput)
-}
-
-func (e RepositoryAccessKind) ToRepositoryAccessKindPtrOutput() RepositoryAccessKindPtrOutput {
-	return e.ToRepositoryAccessKindPtrOutputWithContext(context.Background())
-}
-
-func (e RepositoryAccessKind) ToRepositoryAccessKindPtrOutputWithContext(ctx context.Context) RepositoryAccessKindPtrOutput {
-	return RepositoryAccessKind(e).ToRepositoryAccessKindOutputWithContext(ctx).ToRepositoryAccessKindPtrOutputWithContext(ctx)
-}
-
-func (e RepositoryAccessKind) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RepositoryAccessKind) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RepositoryAccessKind) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e RepositoryAccessKind) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type RepositoryAccessKindOutput struct{ *pulumi.OutputState }
-
-func (RepositoryAccessKindOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryAccessKind)(nil)).Elem()
-}
-
-func (o RepositoryAccessKindOutput) ToRepositoryAccessKindOutput() RepositoryAccessKindOutput {
-	return o
-}
-
-func (o RepositoryAccessKindOutput) ToRepositoryAccessKindOutputWithContext(ctx context.Context) RepositoryAccessKindOutput {
-	return o
-}
-
-func (o RepositoryAccessKindOutput) ToRepositoryAccessKindPtrOutput() RepositoryAccessKindPtrOutput {
-	return o.ToRepositoryAccessKindPtrOutputWithContext(context.Background())
-}
-
-func (o RepositoryAccessKindOutput) ToRepositoryAccessKindPtrOutputWithContext(ctx context.Context) RepositoryAccessKindPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryAccessKind) *RepositoryAccessKind {
-		return &v
-	}).(RepositoryAccessKindPtrOutput)
-}
-
-func (o RepositoryAccessKindOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o RepositoryAccessKindOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RepositoryAccessKind) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o RepositoryAccessKindOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RepositoryAccessKindOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RepositoryAccessKind) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type RepositoryAccessKindPtrOutput struct{ *pulumi.OutputState }
-
-func (RepositoryAccessKindPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RepositoryAccessKind)(nil)).Elem()
-}
-
-func (o RepositoryAccessKindPtrOutput) ToRepositoryAccessKindPtrOutput() RepositoryAccessKindPtrOutput {
-	return o
-}
-
-func (o RepositoryAccessKindPtrOutput) ToRepositoryAccessKindPtrOutputWithContext(ctx context.Context) RepositoryAccessKindPtrOutput {
-	return o
-}
-
-func (o RepositoryAccessKindPtrOutput) Elem() RepositoryAccessKindOutput {
-	return o.ApplyT(func(v *RepositoryAccessKind) RepositoryAccessKind {
-		if v != nil {
-			return *v
-		}
-		var ret RepositoryAccessKind
-		return ret
-	}).(RepositoryAccessKindOutput)
-}
-
-func (o RepositoryAccessKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RepositoryAccessKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RepositoryAccessKind) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// RepositoryAccessKindInput is an input type that accepts values of the RepositoryAccessKind enum
-// A concrete instance of `RepositoryAccessKindInput` can be one of the following:
-//
-//	RepositoryAccessKindOAuth
-//	RepositoryAccessKindPAT
-//	RepositoryAccessKindApp
-type RepositoryAccessKindInput interface {
-	pulumi.Input
-
-	ToRepositoryAccessKindOutput() RepositoryAccessKindOutput
-	ToRepositoryAccessKindOutputWithContext(context.Context) RepositoryAccessKindOutput
-}
-
-var repositoryAccessKindPtrType = reflect.TypeOf((**RepositoryAccessKind)(nil)).Elem()
-
-type RepositoryAccessKindPtrInput interface {
-	pulumi.Input
-
-	ToRepositoryAccessKindPtrOutput() RepositoryAccessKindPtrOutput
-	ToRepositoryAccessKindPtrOutputWithContext(context.Context) RepositoryAccessKindPtrOutput
-}
-
-type repositoryAccessKindPtr string
-
-func RepositoryAccessKindPtr(v string) RepositoryAccessKindPtrInput {
-	return (*repositoryAccessKindPtr)(&v)
-}
-
-func (*repositoryAccessKindPtr) ElementType() reflect.Type {
-	return repositoryAccessKindPtrType
-}
-
-func (in *repositoryAccessKindPtr) ToRepositoryAccessKindPtrOutput() RepositoryAccessKindPtrOutput {
-	return pulumi.ToOutput(in).(RepositoryAccessKindPtrOutput)
-}
-
-func (in *repositoryAccessKindPtr) ToRepositoryAccessKindPtrOutputWithContext(ctx context.Context) RepositoryAccessKindPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(RepositoryAccessKindPtrOutput)
-}
-
 // Type of paging
 type RestApiPollerRequestPagingKind string
 
@@ -6159,9 +5991,9 @@ type SourceType string
 
 const (
 	// The source from local file.
-	SourceType_Local_file = SourceType("Local file")
-	// The source from remote storage.
-	SourceType_Remote_storage = SourceType("Remote storage")
+	SourceTypeLocal = SourceType("Local")
+	// The source from Azure storage.
+	SourceTypeAzureStorage = SourceType("AzureStorage")
 )
 
 func (SourceType) ElementType() reflect.Type {
@@ -6286,8 +6118,8 @@ func (o SourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 // SourceTypeInput is an input type that accepts values of the SourceType enum
 // A concrete instance of `SourceTypeInput` can be one of the following:
 //
-//	SourceType_Local_file
-//	SourceType_Remote_storage
+//	SourceTypeLocal
+//	SourceTypeAzureStorage
 type SourceTypeInput interface {
 	pulumi.Input
 
@@ -7063,8 +6895,6 @@ func init() {
 	pulumi.RegisterOutputType(PackageKindPtrOutput{})
 	pulumi.RegisterOutputType(ProviderPermissionsScopeOutput{})
 	pulumi.RegisterOutputType(ProviderPermissionsScopePtrOutput{})
-	pulumi.RegisterOutputType(RepositoryAccessKindOutput{})
-	pulumi.RegisterOutputType(RepositoryAccessKindPtrOutput{})
 	pulumi.RegisterOutputType(RestApiPollerRequestPagingKindOutput{})
 	pulumi.RegisterOutputType(RestApiPollerRequestPagingKindPtrOutput{})
 	pulumi.RegisterOutputType(SettingsStatusOutput{})

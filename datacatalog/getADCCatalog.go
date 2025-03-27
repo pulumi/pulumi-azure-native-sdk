@@ -12,7 +12,8 @@ import (
 )
 
 // The Get Azure Data Catalog Service operation retrieves a json representation of the data catalog.
-// Azure REST API version: 2016-03-30.
+//
+// Uses Azure REST API version 2016-03-30.
 func LookupADCCatalog(ctx *pulumi.Context, args *LookupADCCatalogArgs, opts ...pulumi.InvokeOption) (*LookupADCCatalogResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupADCCatalogResult

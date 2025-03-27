@@ -12,7 +12,8 @@ import (
 )
 
 // DevOps Policy assignment resource.
-// Azure REST API version: 2024-05-15-preview.
+//
+// Uses Azure REST API version 2024-05-15-preview.
 func LookupDevOpsPolicyAssignment(ctx *pulumi.Context, args *LookupDevOpsPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupDevOpsPolicyAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDevOpsPolicyAssignmentResult

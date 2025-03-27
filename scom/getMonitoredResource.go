@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieve the details of the monitored resource.
-// Azure REST API version: 2023-07-07-preview.
+//
+// Uses Azure REST API version 2023-07-07-preview.
 func LookupMonitoredResource(ctx *pulumi.Context, args *LookupMonitoredResourceArgs, opts ...pulumi.InvokeOption) (*LookupMonitoredResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitoredResourceResult

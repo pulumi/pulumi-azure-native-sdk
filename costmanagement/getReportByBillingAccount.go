@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the report for a billing account by report name.
-// Azure REST API version: 2018-08-01-preview.
+//
+// Uses Azure REST API version 2018-08-01-preview.
 func LookupReportByBillingAccount(ctx *pulumi.Context, args *LookupReportByBillingAccountArgs, opts ...pulumi.InvokeOption) (*LookupReportByBillingAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReportByBillingAccountResult

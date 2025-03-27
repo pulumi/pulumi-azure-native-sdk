@@ -12,7 +12,8 @@ import (
 )
 
 // List all the media edge policies associated with the Media Services account.
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 func ListMediaServiceEdgePolicies(ctx *pulumi.Context, args *ListMediaServiceEdgePoliciesArgs, opts ...pulumi.InvokeOption) (*ListMediaServiceEdgePoliciesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMediaServiceEdgePoliciesResult

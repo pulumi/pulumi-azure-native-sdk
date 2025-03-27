@@ -123,6 +123,9 @@ func NewServer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230501preview:Server"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:Server"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:Server"),
 		},
 		{

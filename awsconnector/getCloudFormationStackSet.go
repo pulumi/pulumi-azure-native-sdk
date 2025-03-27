@@ -12,7 +12,8 @@ import (
 )
 
 // Get a CloudFormationStackSet
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupCloudFormationStackSet(ctx *pulumi.Context, args *LookupCloudFormationStackSetArgs, opts ...pulumi.InvokeOption) (*LookupCloudFormationStackSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudFormationStackSetResult

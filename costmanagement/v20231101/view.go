@@ -111,6 +111,9 @@ func NewView(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:costmanagement/v20240801:View"),
 		},
 		{
+			Type: pulumi.String("azure-native:costmanagement/v20241001preview:View"),
+		},
+		{
 			Type: pulumi.String("azure-native:costmanagement:View"),
 		},
 	})

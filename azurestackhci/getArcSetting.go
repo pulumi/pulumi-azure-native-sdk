@@ -12,7 +12,8 @@ import (
 )
 
 // Get ArcSetting resource details of HCI Cluster.
-// Azure REST API version: 2023-03-01.
+//
+// Uses Azure REST API version 2023-03-01.
 //
 // Other available API versions: 2021-09-01-preview, 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
 func LookupArcSetting(ctx *pulumi.Context, args *LookupArcSettingArgs, opts ...pulumi.InvokeOption) (*LookupArcSettingResult, error) {

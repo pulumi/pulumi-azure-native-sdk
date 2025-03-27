@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Operation to list the RegistrationTokens associated with the HostPool.
+// Operation to list the RegistrationTokens associated with the HostPool
 func ListHostPoolRegistrationTokens(ctx *pulumi.Context, args *ListHostPoolRegistrationTokensArgs, opts ...pulumi.InvokeOption) (*ListHostPoolRegistrationTokensResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListHostPoolRegistrationTokensResult

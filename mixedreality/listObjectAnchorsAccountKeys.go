@@ -11,8 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List Both of the 2 Keys of an object anchors Account
-// Azure REST API version: 2021-03-01-preview.
+// > [!NOTE]
+// >
+// > **Mixed Reality retirement**
+// >
+// > The Mixed Reality service is now deprecated and will be retired.
+//
+//	List Both of the 2 Keys of an object anchors Account
+//
+// Uses Azure REST API version 2021-03-01-preview.
 func ListObjectAnchorsAccountKeys(ctx *pulumi.Context, args *ListObjectAnchorsAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListObjectAnchorsAccountKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListObjectAnchorsAccountKeysResult

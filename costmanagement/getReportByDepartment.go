@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the report for a department by report name.
-// Azure REST API version: 2018-08-01-preview.
+//
+// Uses Azure REST API version 2018-08-01-preview.
 func LookupReportByDepartment(ctx *pulumi.Context, args *LookupReportByDepartmentArgs, opts ...pulumi.InvokeOption) (*LookupReportByDepartmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReportByDepartmentResult

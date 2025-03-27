@@ -12,7 +12,8 @@ import (
 )
 
 // Gets information about the specified Subscription Level SaaS.
-// Azure REST API version: 2018-03-01-beta.
+//
+// Uses Azure REST API version 2018-03-01-beta.
 func LookupSaasSubscriptionLevel(ctx *pulumi.Context, args *LookupSaasSubscriptionLevelArgs, opts ...pulumi.InvokeOption) (*LookupSaasSubscriptionLevelResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSaasSubscriptionLevelResult

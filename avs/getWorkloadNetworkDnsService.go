@@ -12,7 +12,8 @@ import (
 )
 
 // NSX DNS Service
-// Azure REST API version: 2022-05-01.
+//
+// Uses Azure REST API version 2022-05-01.
 //
 // Other available API versions: 2023-03-01, 2023-09-01.
 func LookupWorkloadNetworkDnsService(ctx *pulumi.Context, args *LookupWorkloadNetworkDnsServiceArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkDnsServiceResult, error) {

@@ -13,7 +13,8 @@ import (
 )
 
 // Details of topic record
-// Azure REST API version: 2024-07-01.
+//
+// Uses Azure REST API version 2024-07-01.
 type Topic struct {
 	pulumi.CustomResourceState
 

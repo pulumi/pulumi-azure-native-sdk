@@ -12,7 +12,8 @@ import (
 )
 
 // Get a DataSet in a share
-// Azure REST API version: 2021-08-01.
+//
+// Uses Azure REST API version 2021-08-01.
 func LookupKustoClusterDataSet(ctx *pulumi.Context, args *LookupKustoClusterDataSetArgs, opts ...pulumi.InvokeOption) (*LookupKustoClusterDataSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKustoClusterDataSetResult

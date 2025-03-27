@@ -12,7 +12,8 @@ import (
 )
 
 // Returns the allowed callout policies for the specified service.
-// Azure REST API version: 2024-04-13.
+//
+// Uses Azure REST API version 2024-04-13.
 func ListClusterCalloutPolicies(ctx *pulumi.Context, args *ListClusterCalloutPoliciesArgs, opts ...pulumi.InvokeOption) (*ListClusterCalloutPoliciesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListClusterCalloutPoliciesResult

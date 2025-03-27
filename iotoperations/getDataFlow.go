@@ -12,7 +12,8 @@ import (
 )
 
 // Get a DataFlowResource
-// Azure REST API version: 2024-07-01-preview.
+//
+// Uses Azure REST API version 2024-07-01-preview.
 func LookupDataFlow(ctx *pulumi.Context, args *LookupDataFlowArgs, opts ...pulumi.InvokeOption) (*LookupDataFlowResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataFlowResult

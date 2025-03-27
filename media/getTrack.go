@@ -12,7 +12,8 @@ import (
 )
 
 // Get the details of a Track in the Asset
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 func LookupTrack(ctx *pulumi.Context, args *LookupTrackArgs, opts ...pulumi.InvokeOption) (*LookupTrackResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrackResult

@@ -12,7 +12,10 @@ import (
 )
 
 // Get the destination endpoints for the specified flow and stream ID.
-// Azure REST API version: 2024-09-27.
+//
+// Uses Azure REST API version 2024-09-27.
+//
+// Other available API versions: 2025-03-01-preview.
 func GetFlowDestinationEndpoints(ctx *pulumi.Context, args *GetFlowDestinationEndpointsArgs, opts ...pulumi.InvokeOption) (*GetFlowDestinationEndpointsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetFlowDestinationEndpointsResult

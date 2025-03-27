@@ -12,7 +12,8 @@ import (
 )
 
 // Get a RedshiftClusterParameterGroup
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupRedshiftClusterParameterGroup(ctx *pulumi.Context, args *LookupRedshiftClusterParameterGroupArgs, opts ...pulumi.InvokeOption) (*LookupRedshiftClusterParameterGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRedshiftClusterParameterGroupResult

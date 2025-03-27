@@ -13,7 +13,8 @@ import (
 
 // Gets an Azure Large Instance for the specified subscription, resource group,
 // and instance name.
-// Azure REST API version: 2024-08-01-preview.
+//
+// Uses Azure REST API version 2024-08-01-preview.
 func LookupAzureLargeInstance(ctx *pulumi.Context, args *LookupAzureLargeInstanceArgs, opts ...pulumi.InvokeOption) (*LookupAzureLargeInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureLargeInstanceResult

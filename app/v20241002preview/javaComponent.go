@@ -50,6 +50,9 @@ func NewJavaComponent(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:app/v20240802preview:JavaComponent"),
 		},
 		{
+			Type: pulumi.String("azure-native:app/v20250101:JavaComponent"),
+		},
+		{
 			Type: pulumi.String("azure-native:app:JavaComponent"),
 		},
 	})

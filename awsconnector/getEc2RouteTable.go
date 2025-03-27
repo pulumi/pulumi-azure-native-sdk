@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2RouteTable
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2RouteTable(ctx *pulumi.Context, args *LookupEc2RouteTableArgs, opts ...pulumi.InvokeOption) (*LookupEc2RouteTableResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2RouteTableResult

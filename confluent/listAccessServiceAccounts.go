@@ -12,7 +12,8 @@ import (
 )
 
 // List service accounts success response
-// Azure REST API version: 2023-08-22.
+//
+// Uses Azure REST API version 2023-08-22.
 //
 // Other available API versions: 2024-02-13, 2024-07-01.
 func ListAccessServiceAccounts(ctx *pulumi.Context, args *ListAccessServiceAccountsArgs, opts ...pulumi.InvokeOption) (*ListAccessServiceAccountsResult, error) {

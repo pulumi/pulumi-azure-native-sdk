@@ -12,7 +12,8 @@ import (
 )
 
 // Get an iSCSI Target.
-// Azure REST API version: 2021-08-01.
+//
+// Uses Azure REST API version 2021-08-01.
 //
 // Other available API versions: 2020-03-15-preview.
 func LookupIscsiTarget(ctx *pulumi.Context, args *LookupIscsiTargetArgs, opts ...pulumi.InvokeOption) (*LookupIscsiTargetResult, error) {

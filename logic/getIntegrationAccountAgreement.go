@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an integration account agreement.
-// Azure REST API version: 2019-05-01.
+//
+// Uses Azure REST API version 2019-05-01.
 //
 // Other available API versions: 2015-08-01-preview.
 func LookupIntegrationAccountAgreement(ctx *pulumi.Context, args *LookupIntegrationAccountAgreementArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountAgreementResult, error) {

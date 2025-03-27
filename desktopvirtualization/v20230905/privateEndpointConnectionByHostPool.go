@@ -63,9 +63,6 @@ func NewPrivateEndpointConnectionByHostPool(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:PrivateEndpointConnectionByHostPool"),
 		},
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:PrivateEndpointConnectionByHostPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20231004preview:PrivateEndpointConnectionByHostPool"),
 		},
 		{
@@ -85,6 +82,9 @@ func NewPrivateEndpointConnectionByHostPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:PrivateEndpointConnectionByHostPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:PrivateEndpointConnectionByHostPool"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:PrivateEndpointConnectionByHostPool"),

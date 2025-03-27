@@ -47,6 +47,9 @@ func NewJobPrivateEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:JobPrivateEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:JobPrivateEndpoint"),
 		},
 		{

@@ -12,7 +12,8 @@ import (
 )
 
 // Get the running status of the Network Interface.
-// Azure REST API version: 2023-02-01-preview.
+//
+// Uses Azure REST API version 2023-02-01-preview.
 func GetNetworkInterfaceStatus(ctx *pulumi.Context, args *GetNetworkInterfaceStatusArgs, opts ...pulumi.InvokeOption) (*GetNetworkInterfaceStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkInterfaceStatusResult

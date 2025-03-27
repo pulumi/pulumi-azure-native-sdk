@@ -12,7 +12,8 @@ import (
 )
 
 // Get a EfsFileSystem
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEfsFileSystem(ctx *pulumi.Context, args *LookupEfsFileSystemArgs, opts ...pulumi.InvokeOption) (*LookupEfsFileSystemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEfsFileSystemResult

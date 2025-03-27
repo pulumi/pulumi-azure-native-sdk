@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the properties of the specified machine learning workspace.
-// Azure REST API version: 2019-10-01.
+//
+// Uses Azure REST API version 2019-10-01.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceResult

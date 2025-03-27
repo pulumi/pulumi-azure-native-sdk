@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an existing origin group within a profile.
-// Azure REST API version: 2023-05-01.
+//
+// Uses Azure REST API version 2023-05-01.
 //
 // Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 func LookupAFDOriginGroup(ctx *pulumi.Context, args *LookupAFDOriginGroupArgs, opts ...pulumi.InvokeOption) (*LookupAFDOriginGroupResult, error) {

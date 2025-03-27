@@ -11,7 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List Both of the 2 Keys of a Spatial Anchors Account
+// > [!NOTE]
+// >
+// > **Mixed Reality retirement**
+// >
+// > The Mixed Reality service is now deprecated and will be retired.
+//
+//	List Both of the 2 Keys of a Spatial Anchors Account
 func ListSpatialAnchorsAccountKeys(ctx *pulumi.Context, args *ListSpatialAnchorsAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListSpatialAnchorsAccountKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSpatialAnchorsAccountKeysResult

@@ -12,7 +12,10 @@ import (
 )
 
 // Gets the details of the protected item.
-// Azure REST API version: 2021-02-16-preview.
+//
+// Uses Azure REST API version 2021-02-16-preview.
+//
+// Other available API versions: 2024-09-01.
 func LookupProtectedItem(ctx *pulumi.Context, args *LookupProtectedItemArgs, opts ...pulumi.InvokeOption) (*LookupProtectedItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectedItemResult

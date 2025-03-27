@@ -13,7 +13,8 @@ import (
 )
 
 // Container App.
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 //
 // Other available API versions: 2023-12-01.
 type ContainerApp struct {

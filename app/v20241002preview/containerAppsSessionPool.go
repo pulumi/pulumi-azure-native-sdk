@@ -72,6 +72,9 @@ func NewContainerAppsSessionPool(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:app/v20240802preview:ContainerAppsSessionPool"),
 		},
 		{
+			Type: pulumi.String("azure-native:app/v20250101:ContainerAppsSessionPool"),
+		},
+		{
 			Type: pulumi.String("azure-native:app:ContainerAppsSessionPool"),
 		},
 	})

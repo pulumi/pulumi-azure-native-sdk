@@ -25,15 +25,15 @@ func ListManagedClusterFaultSimulation(ctx *pulumi.Context, args *ListManagedClu
 type ListManagedClusterFaultSimulationArgs struct {
 	// The name of the cluster resource.
 	ClusterName string `pulumi:"clusterName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Fault simulation list results
 type ListManagedClusterFaultSimulationResult struct {
-	// The URL to use for getting the next set of results.
+	// The link to the next page of items
 	NextLink *string `pulumi:"nextLink"`
-	// The list of fault simulations.
+	// The FaultSimulation items on this page
 	Value []FaultSimulationResponse `pulumi:"value"`
 }
 
@@ -49,7 +49,7 @@ func ListManagedClusterFaultSimulationOutput(ctx *pulumi.Context, args ListManag
 type ListManagedClusterFaultSimulationOutputArgs struct {
 	// The name of the cluster resource.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -72,12 +72,12 @@ func (o ListManagedClusterFaultSimulationResultOutput) ToListManagedClusterFault
 	return o
 }
 
-// The URL to use for getting the next set of results.
+// The link to the next page of items
 func (o ListManagedClusterFaultSimulationResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListManagedClusterFaultSimulationResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// The list of fault simulations.
+// The FaultSimulation items on this page
 func (o ListManagedClusterFaultSimulationResultOutput) Value() FaultSimulationResponseArrayOutput {
 	return o.ApplyT(func(v ListManagedClusterFaultSimulationResult) []FaultSimulationResponse { return v.Value }).(FaultSimulationResponseArrayOutput)
 }

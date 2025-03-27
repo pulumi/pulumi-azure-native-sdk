@@ -12,7 +12,8 @@ import (
 )
 
 // Get a published version of a blueprint definition.
-// Azure REST API version: 2018-11-01-preview.
+//
+// Uses Azure REST API version 2018-11-01-preview.
 func LookupPublishedBlueprint(ctx *pulumi.Context, args *LookupPublishedBlueprintArgs, opts ...pulumi.InvokeOption) (*LookupPublishedBlueprintResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPublishedBlueprintResult

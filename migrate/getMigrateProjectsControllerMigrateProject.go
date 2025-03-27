@@ -12,7 +12,8 @@ import (
 )
 
 // Get information related to a specific migrate project. Returns a json object of type 'migrateProject' as specified in the models section.
-// Azure REST API version: 2020-05-01.
+//
+// Uses Azure REST API version 2020-05-01.
 //
 // Other available API versions: 2023-01-01.
 func LookupMigrateProjectsControllerMigrateProject(ctx *pulumi.Context, args *LookupMigrateProjectsControllerMigrateProjectArgs, opts ...pulumi.InvokeOption) (*LookupMigrateProjectsControllerMigrateProjectResult, error) {

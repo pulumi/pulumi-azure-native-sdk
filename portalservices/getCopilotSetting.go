@@ -12,7 +12,10 @@ import (
 )
 
 // Get a CopilotSettingsResource
-// Azure REST API version: 2024-04-01-preview.
+//
+// Uses Azure REST API version 2024-04-01-preview.
+//
+// Other available API versions: 2024-04-01.
 func LookupCopilotSetting(ctx *pulumi.Context, args *LookupCopilotSettingArgs, opts ...pulumi.InvokeOption) (*LookupCopilotSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCopilotSettingResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the details of the workload deployment.
-// Azure REST API version: 2022-05-01-preview.
+//
+// Uses Azure REST API version 2022-05-01-preview.
 func LookupWorkloadDeployment(ctx *pulumi.Context, args *LookupWorkloadDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadDeploymentResult

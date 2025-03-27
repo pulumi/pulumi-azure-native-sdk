@@ -118,9 +118,6 @@ func NewScalingPlanPersonalSchedule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:ScalingPlanPersonalSchedule"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ScalingPlanPersonalSchedule"),
 		},
 		{
@@ -140,6 +137,9 @@ func NewScalingPlanPersonalSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:ScalingPlanPersonalSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:ScalingPlanPersonalSchedule"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:ScalingPlanPersonalSchedule"),
@@ -180,7 +180,7 @@ func (ScalingPlanPersonalScheduleState) ElementType() reflect.Type {
 
 type scalingPlanPersonalScheduleArgs struct {
 	// Set of days of the week on which this schedule is active.
-	DaysOfWeek []string `pulumi:"daysOfWeek"`
+	DaysOfWeek []DayOfWeek `pulumi:"daysOfWeek"`
 	// Action to be taken after a user disconnect during the off-peak period.
 	OffPeakActionOnDisconnect *string `pulumi:"offPeakActionOnDisconnect"`
 	// Action to be taken after a logoff during the off-peak period.
@@ -242,7 +242,7 @@ type scalingPlanPersonalScheduleArgs struct {
 // The set of arguments for constructing a ScalingPlanPersonalSchedule resource.
 type ScalingPlanPersonalScheduleArgs struct {
 	// Set of days of the week on which this schedule is active.
-	DaysOfWeek pulumi.StringArrayInput
+	DaysOfWeek DayOfWeekArrayInput
 	// Action to be taken after a user disconnect during the off-peak period.
 	OffPeakActionOnDisconnect pulumi.StringPtrInput
 	// Action to be taken after a logoff during the off-peak period.

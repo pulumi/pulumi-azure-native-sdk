@@ -12,7 +12,8 @@ import (
 )
 
 // Gets information about a cluster role.
-// Azure REST API version: 2022-11-08.
+//
+// Uses Azure REST API version 2022-11-08.
 //
 // Other available API versions: 2023-03-02-preview.
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {

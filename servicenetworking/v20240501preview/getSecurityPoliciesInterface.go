@@ -49,7 +49,7 @@ type LookupSecurityPoliciesInterfaceResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Web Application Firewall Policy of the Traffic Controller Security Policy
+	// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 	WafPolicy *WafPolicyResponse `pulumi:"wafPolicy"`
 }
 
@@ -130,7 +130,7 @@ func (o LookupSecurityPoliciesInterfaceResultOutput) Type() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupSecurityPoliciesInterfaceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Web Application Firewall Policy of the Traffic Controller Security Policy
+// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 func (o LookupSecurityPoliciesInterfaceResultOutput) WafPolicy() WafPolicyResponsePtrOutput {
 	return o.ApplyT(func(v LookupSecurityPoliciesInterfaceResult) *WafPolicyResponse { return v.WafPolicy }).(WafPolicyResponsePtrOutput)
 }

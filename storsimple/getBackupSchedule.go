@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the properties of the specified backup schedule name.
-// Azure REST API version: 2017-06-01.
+//
+// Uses Azure REST API version 2017-06-01.
 func LookupBackupSchedule(ctx *pulumi.Context, args *LookupBackupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupBackupScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupScheduleResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get stream events telemetry of a live event.
-// Azure REST API version: 2022-11-01.
+//
+// Uses Azure REST API version 2022-11-01.
 func GetLiveEventStreamEvents(ctx *pulumi.Context, args *GetLiveEventStreamEventsArgs, opts ...pulumi.InvokeOption) (*GetLiveEventStreamEventsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetLiveEventStreamEventsResult

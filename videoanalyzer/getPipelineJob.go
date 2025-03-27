@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves a specific pipeline job by name. If a pipeline job with that name has been previously created, the call will return the JSON representation of that instance.
-// Azure REST API version: 2021-11-01-preview.
+//
+// Uses Azure REST API version 2021-11-01-preview.
 func LookupPipelineJob(ctx *pulumi.Context, args *LookupPipelineJobArgs, opts ...pulumi.InvokeOption) (*LookupPipelineJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineJobResult

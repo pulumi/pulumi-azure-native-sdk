@@ -12,7 +12,8 @@ import (
 )
 
 // Get a SqsQueue
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupSqsQueue(ctx *pulumi.Context, args *LookupSqsQueueArgs, opts ...pulumi.InvokeOption) (*LookupSqsQueueResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqsQueueResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a test base custom image.
-// Azure REST API version: 2023-11-01-preview.
+//
+// Uses Azure REST API version 2023-11-01-preview.
 func LookupCustomImage(ctx *pulumi.Context, args *LookupCustomImageArgs, opts ...pulumi.InvokeOption) (*LookupCustomImageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomImageResult

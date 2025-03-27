@@ -13,7 +13,8 @@ import (
 )
 
 // Instance dataflowProfile resource
-// Azure REST API version: 2024-07-01-preview.
+//
+// Uses Azure REST API version 2024-07-01-preview.
 type DataFlowProfile struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +61,9 @@ func NewDataFlowProfile(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20241101:DataFlowProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:DataFlowProfile"),
 		},
 	})
 	opts = append(opts, aliases)

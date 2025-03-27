@@ -13,7 +13,8 @@ import (
 )
 
 // A logic app extension resource
-// Azure REST API version: 2024-02-02-preview.
+//
+// Uses Azure REST API version 2024-02-02-preview.
 //
 // Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
 type LogicApp struct {

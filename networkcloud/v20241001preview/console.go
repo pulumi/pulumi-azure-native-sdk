@@ -81,6 +81,9 @@ func NewConsole(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud/v20240701:Console"),
 		},
 		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:Console"),
+		},
+		{
 			Type: pulumi.String("azure-native:networkcloud:Console"),
 		},
 	})

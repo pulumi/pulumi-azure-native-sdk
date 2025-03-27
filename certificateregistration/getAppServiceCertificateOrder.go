@@ -12,7 +12,8 @@ import (
 )
 
 // Description for Get a certificate order.
-// Azure REST API version: 2022-09-01.
+//
+// Uses Azure REST API version 2022-09-01.
 //
 // Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
 func LookupAppServiceCertificateOrder(ctx *pulumi.Context, args *LookupAppServiceCertificateOrderArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceCertificateOrderResult, error) {

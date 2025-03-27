@@ -12,7 +12,8 @@ import (
 )
 
 // Site REST Resource.
-// Azure REST API version: 2020-07-07.
+//
+// Uses Azure REST API version 2020-07-07.
 func LookupHyperVSite(ctx *pulumi.Context, args *LookupHyperVSiteArgs, opts ...pulumi.InvokeOption) (*LookupHyperVSiteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHyperVSiteResult

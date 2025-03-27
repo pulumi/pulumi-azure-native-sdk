@@ -12,7 +12,8 @@ import (
 )
 
 // Get image properties under the image definition name created by test base custom image which derived from 'VHD' source.
-// Azure REST API version: 2023-11-01-preview.
+//
+// Uses Azure REST API version 2023-11-01-preview.
 func LookupImageDefinition(ctx *pulumi.Context, args *LookupImageDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupImageDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupImageDefinitionResult

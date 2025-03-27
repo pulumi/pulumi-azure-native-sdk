@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a workspace active directory admin
-// Azure REST API version: 2021-06-01.
+//
+// Uses Azure REST API version 2021-06-01.
 //
 // Other available API versions: 2021-06-01-preview.
 func LookupWorkspaceAadAdmin(ctx *pulumi.Context, args *LookupWorkspaceAadAdminArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceAadAdminResult, error) {

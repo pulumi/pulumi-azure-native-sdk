@@ -146,6 +146,9 @@ func NewBareMetalMachine(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:BareMetalMachine"),
 		},
 		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:BareMetalMachine"),
+		},
+		{
 			Type: pulumi.String("azure-native:networkcloud:BareMetalMachine"),
 		},
 	})

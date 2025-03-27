@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a specific Analytics Items defined within an Application Insights component.
-// Azure REST API version: 2015-05-01.
+//
+// Uses Azure REST API version 2015-05-01.
 func LookupAnalyticsItem(ctx *pulumi.Context, args *LookupAnalyticsItemArgs, opts ...pulumi.InvokeOption) (*LookupAnalyticsItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnalyticsItemResult

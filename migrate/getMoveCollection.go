@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the move collection.
-// Azure REST API version: 2022-08-01.
+//
+// Uses Azure REST API version 2022-08-01.
 //
 // Other available API versions: 2023-08-01.
 func LookupMoveCollection(ctx *pulumi.Context, args *LookupMoveCollectionArgs, opts ...pulumi.InvokeOption) (*LookupMoveCollectionResult, error) {

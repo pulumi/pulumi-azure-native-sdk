@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the specified ground station in a specified resource group.
-// Azure REST API version: 2024-03-01-preview.
+//
+// Uses Azure REST API version 2024-03-01-preview.
 //
 // Other available API versions: 2024-03-01.
 func LookupGroundStation(ctx *pulumi.Context, args *LookupGroundStationArgs, opts ...pulumi.InvokeOption) (*LookupGroundStationResult, error) {

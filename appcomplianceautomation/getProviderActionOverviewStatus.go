@@ -12,7 +12,8 @@ import (
 )
 
 // Get the resource overview status.
-// Azure REST API version: 2024-06-27.
+//
+// Uses Azure REST API version 2024-06-27.
 func GetProviderActionOverviewStatus(ctx *pulumi.Context, args *GetProviderActionOverviewStatusArgs, opts ...pulumi.InvokeOption) (*GetProviderActionOverviewStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProviderActionOverviewStatusResult

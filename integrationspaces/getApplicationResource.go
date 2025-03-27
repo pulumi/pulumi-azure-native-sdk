@@ -12,7 +12,8 @@ import (
 )
 
 // Get a ApplicationResource
-// Azure REST API version: 2023-11-14-preview.
+//
+// Uses Azure REST API version 2023-11-14-preview.
 func LookupApplicationResource(ctx *pulumi.Context, args *LookupApplicationResourceArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationResourceResult

@@ -13,9 +13,10 @@ import (
 )
 
 // Represents a ApplicationGroup definition.
-// Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview.
 //
-// Other available API versions: 2022-04-01-preview, 2022-10-14-preview, 2023-07-07-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
+// Uses Azure REST API version 2022-09-09. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+//
+// Other available API versions: 2022-04-01-preview, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
 type ApplicationGroup struct {
 	pulumi.CustomResourceState
 
@@ -123,9 +124,6 @@ func NewApplicationGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:ApplicationGroup"),
 		},
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:ApplicationGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ApplicationGroup"),
 		},
 		{
@@ -148,6 +146,9 @@ func NewApplicationGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:ApplicationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:ApplicationGroup"),
 		},
 	})
 	opts = append(opts, aliases)

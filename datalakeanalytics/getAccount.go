@@ -12,7 +12,8 @@ import (
 )
 
 // Gets details of the specified Data Lake Analytics account.
-// Azure REST API version: 2019-11-01-preview.
+//
+// Uses Azure REST API version 2019-11-01-preview.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult

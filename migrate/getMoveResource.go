@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the Move Resource.
-// Azure REST API version: 2022-08-01.
+//
+// Uses Azure REST API version 2022-08-01.
 //
 // Other available API versions: 2023-08-01.
 func LookupMoveResource(ctx *pulumi.Context, args *LookupMoveResourceArgs, opts ...pulumi.InvokeOption) (*LookupMoveResourceResult, error) {

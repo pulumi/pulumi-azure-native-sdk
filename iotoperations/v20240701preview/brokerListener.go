@@ -61,6 +61,9 @@ func NewBrokerListener(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:iotoperations/v20241101:BrokerListener"),
 		},
 		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:BrokerListener"),
+		},
+		{
 			Type: pulumi.String("azure-native:iotoperations:BrokerListener"),
 		},
 	})

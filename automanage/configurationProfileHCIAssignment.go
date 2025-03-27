@@ -13,7 +13,8 @@ import (
 )
 
 // Configuration profile assignment is an association between a VM and automanage profile configuration.
-// Azure REST API version: 2022-05-04.
+//
+// Uses Azure REST API version 2022-05-04.
 type ConfigurationProfileHCIAssignment struct {
 	pulumi.CustomResourceState
 

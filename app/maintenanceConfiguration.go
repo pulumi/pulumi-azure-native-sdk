@@ -13,7 +13,8 @@ import (
 )
 
 // Information about the Maintenance Configuration resource.
-// Azure REST API version: 2024-10-02-preview.
+//
+// Uses Azure REST API version 2024-10-02-preview.
 type MaintenanceConfiguration struct {
 	pulumi.CustomResourceState
 

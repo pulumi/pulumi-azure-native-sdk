@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Hyper-V collector.
-// Azure REST API version: 2019-10-01.
+//
+// Uses Azure REST API version 2019-10-01.
 func LookupHyperVCollector(ctx *pulumi.Context, args *LookupHyperVCollectorArgs, opts ...pulumi.InvokeOption) (*LookupHyperVCollectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHyperVCollectorResult

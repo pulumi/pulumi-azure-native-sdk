@@ -12,7 +12,8 @@ import (
 )
 
 // Get a SecretsManagerResourcePolicy
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupSecretsManagerResourcePolicy(ctx *pulumi.Context, args *LookupSecretsManagerResourcePolicyArgs, opts ...pulumi.InvokeOption) (*LookupSecretsManagerResourcePolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretsManagerResourcePolicyResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a SuppressionList resource.
-// Azure REST API version: 2023-06-01-preview.
+//
+// Uses Azure REST API version 2023-06-01-preview.
 //
 // Other available API versions: 2024-09-01-preview.
 func LookupSuppressionList(ctx *pulumi.Context, args *LookupSuppressionListArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionListResult, error) {

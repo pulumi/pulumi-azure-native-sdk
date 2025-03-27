@@ -71,6 +71,9 @@ func NewSavedSearch(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:operationalinsights/v20200801:SavedSearch"),
 		},
 		{
+			Type: pulumi.String("azure-native:operationalinsights/v20250201:SavedSearch"),
+		},
+		{
 			Type: pulumi.String("azure-native:operationalinsights:SavedSearch"),
 		},
 	})

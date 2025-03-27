@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an existing tunnel policy within a profile.
-// Azure REST API version: 2024-06-01-preview.
+//
+// Uses Azure REST API version 2024-06-01-preview.
 func LookupTunnelPolicy(ctx *pulumi.Context, args *LookupTunnelPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTunnelPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTunnelPolicyResult

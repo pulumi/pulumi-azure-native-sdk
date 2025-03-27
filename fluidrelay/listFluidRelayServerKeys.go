@@ -12,7 +12,8 @@ import (
 )
 
 // The set of available keys for this server.
-// Azure REST API version: 2022-06-01.
+//
+// Uses Azure REST API version 2022-06-01.
 func ListFluidRelayServerKeys(ctx *pulumi.Context, args *ListFluidRelayServerKeysArgs, opts ...pulumi.InvokeOption) (*ListFluidRelayServerKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFluidRelayServerKeysResult

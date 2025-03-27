@@ -13,7 +13,8 @@ import (
 )
 
 // The private endpoint connection of a Digital Twin.
-// Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2020-12-01.
+//
+// Uses Azure REST API version 2023-01-31. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
 // Other available API versions: 2020-12-01.
 type PrivateEndpointConnection struct {

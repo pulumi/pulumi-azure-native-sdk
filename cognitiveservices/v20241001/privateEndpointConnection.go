@@ -75,6 +75,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cognitiveservices/v20240601preview:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20250401preview:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:cognitiveservices:PrivateEndpointConnection"),
 		},
 	})

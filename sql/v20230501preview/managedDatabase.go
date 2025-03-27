@@ -105,6 +105,9 @@ func NewManagedDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230201preview:ManagedDatabase"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:ManagedDatabase"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ManagedDatabase"),
 		},
 		{

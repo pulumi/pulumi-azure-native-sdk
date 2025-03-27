@@ -12,7 +12,8 @@ import (
 )
 
 // Get the content callback url for an integration account assembly.
-// Azure REST API version: 2019-05-01.
+//
+// Uses Azure REST API version 2019-05-01.
 func ListIntegrationAccountAssemblyContentCallbackUrl(ctx *pulumi.Context, args *ListIntegrationAccountAssemblyContentCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListIntegrationAccountAssemblyContentCallbackUrlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListIntegrationAccountAssemblyContentCallbackUrlResult

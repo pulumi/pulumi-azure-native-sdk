@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieve the module identified by module name.
-// Azure REST API version: 2023-11-01.
+//
+// Uses Azure REST API version 2023-11-01.
 func LookupPowerShell72Module(ctx *pulumi.Context, args *LookupPowerShell72ModuleArgs, opts ...pulumi.InvokeOption) (*LookupPowerShell72ModuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPowerShell72ModuleResult

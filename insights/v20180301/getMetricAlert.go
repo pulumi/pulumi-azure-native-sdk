@@ -53,7 +53,7 @@ type LookupMetricAlertResult struct {
 	Location string `pulumi:"location"`
 	// Azure resource name
 	Name string `pulumi:"name"`
-	// the list of resource id's that this metric alert is scoped to.
+	// the list of resource id's that this metric alert is scoped to. You cannot change the scope of a metric rule based on logs.
 	Scopes []string `pulumi:"scopes"`
 	// Alert severity {0, 1, 2, 3, 4}
 	Severity int `pulumi:"severity"`
@@ -159,7 +159,7 @@ func (o LookupMetricAlertResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricAlertResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// the list of resource id's that this metric alert is scoped to.
+// the list of resource id's that this metric alert is scoped to. You cannot change the scope of a metric rule based on logs.
 func (o LookupMetricAlertResultOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupMetricAlertResult) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }

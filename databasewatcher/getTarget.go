@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Target
-// Azure REST API version: 2023-09-01-preview.
+//
+// Uses Azure REST API version 2023-09-01-preview.
 //
 // Other available API versions: 2024-07-19-preview, 2024-10-01-preview, 2025-01-02.
 func LookupTarget(ctx *pulumi.Context, args *LookupTargetArgs, opts ...pulumi.InvokeOption) (*LookupTargetResult, error) {
@@ -36,7 +37,7 @@ type LookupTargetArgs struct {
 
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupTargetResult struct {
-	// The server name to use in the connection string when connecting to a target. Port number and instance name must be specified separately.
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
 	ConnectionServerName string `pulumi:"connectionServerName"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
@@ -93,7 +94,7 @@ func (o LookupTargetResultOutput) ToLookupTargetResultOutputWithContext(ctx cont
 	return o
 }
 
-// The server name to use in the connection string when connecting to a target. Port number and instance name must be specified separately.
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
 func (o LookupTargetResultOutput) ConnectionServerName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.ConnectionServerName }).(pulumi.StringOutput)
 }

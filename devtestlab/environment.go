@@ -13,7 +13,8 @@ import (
 )
 
 // An environment, which is essentially an ARM template deployment.
-// Azure REST API version: 2018-09-15. Prior API version in Azure Native 1.x: 2018-09-15.
+//
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type Environment struct {
 	pulumi.CustomResourceState
 

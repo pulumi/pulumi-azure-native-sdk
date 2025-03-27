@@ -13,9 +13,10 @@ import (
 )
 
 // The top level Linked service resource container.
-// Azure REST API version: 2020-08-01. Prior API version in Azure Native 1.x: 2020-08-01.
 //
-// Other available API versions: 2015-11-01-preview, 2023-09-01.
+// Uses Azure REST API version 2020-08-01. In version 1.x of the Azure Native provider, it used API version 2020-08-01.
+//
+// Other available API versions: 2015-11-01-preview, 2023-09-01, 2025-02-01.
 type LinkedService struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +62,9 @@ func NewLinkedService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20230901:LinkedService"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20250201:LinkedService"),
 		},
 	})
 	opts = append(opts, aliases)

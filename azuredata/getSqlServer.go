@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a SQL Server.
-// Azure REST API version: 2019-07-24-preview.
+//
+// Uses Azure REST API version 2019-07-24-preview.
 func LookupSqlServer(ctx *pulumi.Context, args *LookupSqlServerArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerResult

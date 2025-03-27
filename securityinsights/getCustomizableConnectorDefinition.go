@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a data connector definition.
-// Azure REST API version: 2023-07-01-preview.
+//
+// Uses Azure REST API version 2023-07-01-preview.
 func LookupCustomizableConnectorDefinition(ctx *pulumi.Context, args *LookupCustomizableConnectorDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupCustomizableConnectorDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomizableConnectorDefinitionResult

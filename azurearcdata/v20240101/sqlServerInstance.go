@@ -66,6 +66,9 @@ func NewSqlServerInstance(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:SqlServerInstance"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:SqlServerInstance"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurearcdata:SqlServerInstance"),
 		},
 	})

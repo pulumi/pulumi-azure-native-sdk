@@ -12,7 +12,8 @@ import (
 )
 
 // Get the callback url for a trigger of a workflow version.
-// Azure REST API version: 2019-05-01.
+//
+// Uses Azure REST API version 2019-05-01.
 //
 // Other available API versions: 2018-07-01-preview.
 func ListWorkflowVersionTriggerCallbackUrl(ctx *pulumi.Context, args *ListWorkflowVersionTriggerCallbackUrlArgs, opts ...pulumi.InvokeOption) (*ListWorkflowVersionTriggerCallbackUrlResult, error) {

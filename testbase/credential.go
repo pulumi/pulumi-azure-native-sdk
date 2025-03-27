@@ -13,7 +13,8 @@ import (
 )
 
 // The test base credential resource.
-// Azure REST API version: 2023-11-01-preview.
+//
+// Uses Azure REST API version 2023-11-01-preview.
 type Credential struct {
 	pulumi.CustomResourceState
 

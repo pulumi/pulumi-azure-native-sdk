@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2InstanceStatus
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2InstanceStatus(ctx *pulumi.Context, args *LookupEc2InstanceStatusArgs, opts ...pulumi.InvokeOption) (*LookupEc2InstanceStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2InstanceStatusResult

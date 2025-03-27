@@ -13,9 +13,10 @@ import (
 )
 
 // A replication link.
-// Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2023-08-01-preview, 2024-05-01-preview.
+// Uses Azure REST API version 2023-05-01-preview.
+//
+// Other available API versions: 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 type ReplicationLink struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +69,9 @@ func NewReplicationLink(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:ReplicationLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801:ReplicationLink"),
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ReplicationLink"),

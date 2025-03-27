@@ -13,7 +13,8 @@ import (
 )
 
 // A resource under application.
-// Azure REST API version: 2023-11-14-preview.
+//
+// Uses Azure REST API version 2023-11-14-preview.
 type ApplicationResource struct {
 	pulumi.CustomResourceState
 

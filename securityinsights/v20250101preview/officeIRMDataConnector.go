@@ -160,6 +160,9 @@ func NewOfficeIRMDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:OfficeIRMDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:OfficeIRMDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:OfficeIRMDataConnector"),
 		},
 	})

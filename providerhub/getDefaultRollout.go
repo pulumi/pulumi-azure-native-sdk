@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the default rollout details.
-// Azure REST API version: 2021-09-01-preview.
+//
+// Uses Azure REST API version 2021-09-01-preview.
 func LookupDefaultRollout(ctx *pulumi.Context, args *LookupDefaultRolloutArgs, opts ...pulumi.InvokeOption) (*LookupDefaultRolloutResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDefaultRolloutResult

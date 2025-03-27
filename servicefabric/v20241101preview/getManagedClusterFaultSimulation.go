@@ -25,7 +25,7 @@ func GetManagedClusterFaultSimulation(ctx *pulumi.Context, args *GetManagedClust
 type GetManagedClusterFaultSimulationArgs struct {
 	// The name of the cluster resource.
 	ClusterName string `pulumi:"clusterName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// unique identifier for the fault simulation.
 	SimulationId string `pulumi:"simulationId"`
@@ -57,7 +57,7 @@ func GetManagedClusterFaultSimulationOutput(ctx *pulumi.Context, args GetManaged
 type GetManagedClusterFaultSimulationOutputArgs struct {
 	// The name of the cluster resource.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// unique identifier for the fault simulation.
 	SimulationId pulumi.StringInput `pulumi:"simulationId"`

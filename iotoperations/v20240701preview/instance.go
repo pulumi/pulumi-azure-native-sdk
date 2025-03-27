@@ -56,6 +56,9 @@ func NewInstance(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:iotoperations/v20241101:Instance"),
 		},
 		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:Instance"),
+		},
+		{
 			Type: pulumi.String("azure-native:iotoperations:Instance"),
 		},
 	})

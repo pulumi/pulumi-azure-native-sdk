@@ -12,7 +12,8 @@ import (
 )
 
 // Get a InfrastructureResource
-// Azure REST API version: 2023-11-14-preview.
+//
+// Uses Azure REST API version 2023-11-14-preview.
 func LookupInfrastructureResource(ctx *pulumi.Context, args *LookupInfrastructureResourceArgs, opts ...pulumi.InvokeOption) (*LookupInfrastructureResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInfrastructureResourceResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a DaxCluster
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupDaxCluster(ctx *pulumi.Context, args *LookupDaxClusterArgs, opts ...pulumi.InvokeOption) (*LookupDaxClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDaxClusterResult

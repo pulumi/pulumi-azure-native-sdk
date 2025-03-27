@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a label in the given workspace.
-// Azure REST API version: 2023-04-01-preview.
+//
+// Uses Azure REST API version 2023-04-01-preview.
 func LookupLabelByWorkspace(ctx *pulumi.Context, args *LookupLabelByWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupLabelByWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabelByWorkspaceResult

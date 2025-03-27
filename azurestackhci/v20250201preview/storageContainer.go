@@ -81,6 +81,9 @@ func NewStorageContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:StorageContainer"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:StorageContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci:StorageContainer"),
 		},
 	})

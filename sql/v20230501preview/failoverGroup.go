@@ -101,6 +101,9 @@ func NewFailoverGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230201preview:FailoverGroup"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:FailoverGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:FailoverGroup"),
 		},
 		{

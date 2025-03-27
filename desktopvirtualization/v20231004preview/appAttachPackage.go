@@ -72,6 +72,9 @@ func NewAppAttachPackage(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:AppAttachPackage"),
 		},
 		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:AppAttachPackage"),
+		},
+		{
 			Type: pulumi.String("azure-native:desktopvirtualization:AppAttachPackage"),
 		},
 	})

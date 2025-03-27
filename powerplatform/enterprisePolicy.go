@@ -13,7 +13,8 @@ import (
 )
 
 // Definition of the EnterprisePolicy.
-// Azure REST API version: 2020-10-30-preview. Prior API version in Azure Native 1.x: 2020-10-30-preview.
+//
+// Uses Azure REST API version 2020-10-30-preview. In version 1.x of the Azure Native provider, it used API version 2020-10-30-preview.
 type EnterprisePolicy struct {
 	pulumi.CustomResourceState
 

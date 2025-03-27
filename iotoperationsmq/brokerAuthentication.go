@@ -13,7 +13,8 @@ import (
 )
 
 // MQ broker/authentication resource
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 type BrokerAuthentication struct {
 	pulumi.CustomResourceState
 

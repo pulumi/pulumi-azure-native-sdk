@@ -12,7 +12,8 @@ import (
 )
 
 // Advanced Ingress routing for path/header based routing for a Container App Environment
-// Azure REST API version: 2024-10-02-preview.
+//
+// Uses Azure REST API version 2024-10-02-preview.
 func LookupHttpRouteConfig(ctx *pulumi.Context, args *LookupHttpRouteConfigArgs, opts ...pulumi.InvokeOption) (*LookupHttpRouteConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHttpRouteConfigResult

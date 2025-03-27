@@ -12,7 +12,8 @@ import (
 )
 
 // Solution REST Resource.
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 func LookupSolutionsControllerSolution(ctx *pulumi.Context, args *LookupSolutionsControllerSolutionArgs, opts ...pulumi.InvokeOption) (*LookupSolutionsControllerSolutionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSolutionsControllerSolutionResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Site
-// Azure REST API version: 2024-02-01-preview.
+//
+// Uses Azure REST API version 2024-02-01-preview.
 func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.InvokeOption) (*LookupSiteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSiteResult

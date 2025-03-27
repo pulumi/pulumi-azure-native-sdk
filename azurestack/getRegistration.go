@@ -12,7 +12,8 @@ import (
 )
 
 // Returns the properties of an Azure Stack registration.
-// Azure REST API version: 2022-06-01.
+//
+// Uses Azure REST API version 2022-06-01.
 //
 // Other available API versions: 2020-06-01-preview.
 func LookupRegistration(ctx *pulumi.Context, args *LookupRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupRegistrationResult, error) {

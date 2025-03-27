@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the details of the modernizeProject agent.
-// Azure REST API version: 2022-05-01-preview.
+//
+// Uses Azure REST API version 2022-05-01-preview.
 func LookupMigrateAgent(ctx *pulumi.Context, args *LookupMigrateAgentArgs, opts ...pulumi.InvokeOption) (*LookupMigrateAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigrateAgentResult

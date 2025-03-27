@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the registration definition details.
-// Azure REST API version: 2022-10-01.
+//
+// Uses Azure REST API version 2022-10-01.
 func LookupRegistrationDefinition(ctx *pulumi.Context, args *LookupRegistrationDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupRegistrationDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistrationDefinitionResult

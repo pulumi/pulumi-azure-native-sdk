@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a database.
-// Azure REST API version: 2021-06-01-preview.
+//
+// Uses Azure REST API version 2021-06-01-preview.
 func LookupReadWriteDatabase(ctx *pulumi.Context, args *LookupReadWriteDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadWriteDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReadWriteDatabaseResult

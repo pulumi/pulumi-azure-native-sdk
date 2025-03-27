@@ -13,7 +13,8 @@ import (
 )
 
 // A gateway resource.
-// Azure REST API version: 2023-07-07-preview.
+//
+// Uses Azure REST API version 2023-07-07-preview.
 type ManagedGateway struct {
 	pulumi.CustomResourceState
 

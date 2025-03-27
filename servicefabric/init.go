@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:servicefabric:Application":
+		r = &Application{}
+	case "azure-native:servicefabric:ApplicationType":
+		r = &ApplicationType{}
+	case "azure-native:servicefabric:ApplicationTypeVersion":
+		r = &ApplicationTypeVersion{}
 	case "azure-native:servicefabric:ManagedCluster":
 		r = &ManagedCluster{}
 	case "azure-native:servicefabric:ManagedClusterApplication":
@@ -33,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ManagedClusterService{}
 	case "azure-native:servicefabric:NodeType":
 		r = &NodeType{}
+	case "azure-native:servicefabric:Service":
+		r = &Service{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

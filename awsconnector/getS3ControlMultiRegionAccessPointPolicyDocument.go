@@ -12,7 +12,8 @@ import (
 )
 
 // Get a S3ControlMultiRegionAccessPointPolicyDocument
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupS3ControlMultiRegionAccessPointPolicyDocument(ctx *pulumi.Context, args *LookupS3ControlMultiRegionAccessPointPolicyDocumentArgs, opts ...pulumi.InvokeOption) (*LookupS3ControlMultiRegionAccessPointPolicyDocumentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupS3ControlMultiRegionAccessPointPolicyDocumentResult

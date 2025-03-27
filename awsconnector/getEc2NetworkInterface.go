@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2NetworkInterface
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2NetworkInterface(ctx *pulumi.Context, args *LookupEc2NetworkInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupEc2NetworkInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2NetworkInterfaceResult

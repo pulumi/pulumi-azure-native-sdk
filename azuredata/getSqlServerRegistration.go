@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a SQL Server registration.
-// Azure REST API version: 2019-07-24-preview.
+//
+// Uses Azure REST API version 2019-07-24-preview.
 func LookupSqlServerRegistration(ctx *pulumi.Context, args *LookupSqlServerRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerRegistrationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerRegistrationResult

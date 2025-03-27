@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a specific addon by name.
-// Azure REST API version: 2022-03-01.
+//
+// Uses Azure REST API version 2022-03-01.
 func LookupIoTAddon(ctx *pulumi.Context, args *LookupIoTAddonArgs, opts ...pulumi.InvokeOption) (*LookupIoTAddonResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIoTAddonResult

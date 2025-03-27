@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a database's threat detection policy.
-// Azure REST API version: 2014-04-01.
+//
+// Uses Azure REST API version 2014-04-01.
 func LookupDatabaseThreatDetectionPolicy(ctx *pulumi.Context, args *LookupDatabaseThreatDetectionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseThreatDetectionPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseThreatDetectionPolicyResult

@@ -898,6 +898,19 @@ type ApplicationUpgradePolicy struct {
 	UpgradeReplicaSetCheckTimeout *float64 `pulumi:"upgradeReplicaSetCheckTimeout"`
 }
 
+// Defaults sets the appropriate defaults for ApplicationUpgradePolicy
+func (val *ApplicationUpgradePolicy) Defaults() *ApplicationUpgradePolicy {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ForceRestart == nil {
+		forceRestart_ := false
+		tmp.ForceRestart = &forceRestart_
+	}
+	return &tmp
+}
+
 // ApplicationUpgradePolicyInput is an input type that accepts ApplicationUpgradePolicyArgs and ApplicationUpgradePolicyOutput values.
 // You can construct a concrete instance of `ApplicationUpgradePolicyInput` via:
 //
@@ -927,6 +940,17 @@ type ApplicationUpgradePolicyArgs struct {
 	UpgradeReplicaSetCheckTimeout pulumi.Float64PtrInput `pulumi:"upgradeReplicaSetCheckTimeout"`
 }
 
+// Defaults sets the appropriate defaults for ApplicationUpgradePolicyArgs
+func (val *ApplicationUpgradePolicyArgs) Defaults() *ApplicationUpgradePolicyArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ForceRestart == nil {
+		tmp.ForceRestart = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
 func (ApplicationUpgradePolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationUpgradePolicy)(nil)).Elem()
 }
@@ -1154,6 +1178,19 @@ type ApplicationUpgradePolicyResponse struct {
 	UpgradeReplicaSetCheckTimeout *float64 `pulumi:"upgradeReplicaSetCheckTimeout"`
 }
 
+// Defaults sets the appropriate defaults for ApplicationUpgradePolicyResponse
+func (val *ApplicationUpgradePolicyResponse) Defaults() *ApplicationUpgradePolicyResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ForceRestart == nil {
+		forceRestart_ := false
+		tmp.ForceRestart = &forceRestart_
+	}
+	return &tmp
+}
+
 // Describes the policy for a monitored application upgrade.
 type ApplicationUpgradePolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -1302,6 +1339,7 @@ func (o ApplicationUpgradePolicyResponsePtrOutput) UpgradeReplicaSetCheckTimeout
 	}).(pulumi.Float64PtrOutput)
 }
 
+// User assigned identity for the application.
 type ApplicationUserAssignedIdentity struct {
 	// The friendly name of user assigned identity.
 	Name string `pulumi:"name"`
@@ -1320,6 +1358,7 @@ type ApplicationUserAssignedIdentityInput interface {
 	ToApplicationUserAssignedIdentityOutputWithContext(context.Context) ApplicationUserAssignedIdentityOutput
 }
 
+// User assigned identity for the application.
 type ApplicationUserAssignedIdentityArgs struct {
 	// The friendly name of user assigned identity.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -1364,6 +1403,7 @@ func (i ApplicationUserAssignedIdentityArray) ToApplicationUserAssignedIdentityA
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUserAssignedIdentityArrayOutput)
 }
 
+// User assigned identity for the application.
 type ApplicationUserAssignedIdentityOutput struct{ *pulumi.OutputState }
 
 func (ApplicationUserAssignedIdentityOutput) ElementType() reflect.Type {
@@ -1408,6 +1448,7 @@ func (o ApplicationUserAssignedIdentityArrayOutput) Index(i pulumi.IntInput) App
 	}).(ApplicationUserAssignedIdentityOutput)
 }
 
+// User assigned identity for the application.
 type ApplicationUserAssignedIdentityResponse struct {
 	// The friendly name of user assigned identity.
 	Name string `pulumi:"name"`
@@ -1415,6 +1456,7 @@ type ApplicationUserAssignedIdentityResponse struct {
 	PrincipalId string `pulumi:"principalId"`
 }
 
+// User assigned identity for the application.
 type ApplicationUserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
 
 func (ApplicationUserAssignedIdentityResponseOutput) ElementType() reflect.Type {
@@ -3295,6 +3337,10 @@ func (val *ClusterUpgradePolicy) Defaults() *ClusterUpgradePolicy {
 		return nil
 	}
 	tmp := *val
+	if tmp.ForceRestart == nil {
+		forceRestart_ := false
+		tmp.ForceRestart = &forceRestart_
+	}
 	tmp.HealthPolicy = tmp.HealthPolicy.Defaults()
 
 	return &tmp
@@ -3334,6 +3380,9 @@ func (val *ClusterUpgradePolicyArgs) Defaults() *ClusterUpgradePolicyArgs {
 		return nil
 	}
 	tmp := *val
+	if tmp.ForceRestart == nil {
+		tmp.ForceRestart = pulumi.BoolPtr(false)
+	}
 
 	return &tmp
 }
@@ -3543,6 +3592,10 @@ func (val *ClusterUpgradePolicyResponse) Defaults() *ClusterUpgradePolicyRespons
 		return nil
 	}
 	tmp := *val
+	if tmp.ForceRestart == nil {
+		forceRestart_ := false
+		tmp.ForceRestart = &forceRestart_
+	}
 	tmp.HealthPolicy = tmp.HealthPolicy.Defaults()
 
 	return &tmp
@@ -3975,7 +4028,7 @@ type FaultSimulationDetailsResponse struct {
 	// unique identifier for the operation associated with the fault simulation.
 	OperationId *string `pulumi:"operationId"`
 	// Fault simulation parameters.
-	Parameters *ZoneFaultSimulationParametersResponse `pulumi:"parameters"`
+	Parameters *ZoneFaultSimulationContentResponse `pulumi:"parameters"`
 }
 
 // Details for Fault Simulation.
@@ -4011,8 +4064,8 @@ func (o FaultSimulationDetailsResponseOutput) OperationId() pulumi.StringPtrOutp
 }
 
 // Fault simulation parameters.
-func (o FaultSimulationDetailsResponseOutput) Parameters() ZoneFaultSimulationParametersResponsePtrOutput {
-	return o.ApplyT(func(v FaultSimulationDetailsResponse) *ZoneFaultSimulationParametersResponse { return v.Parameters }).(ZoneFaultSimulationParametersResponsePtrOutput)
+func (o FaultSimulationDetailsResponseOutput) Parameters() ZoneFaultSimulationContentResponsePtrOutput {
+	return o.ApplyT(func(v FaultSimulationDetailsResponse) *ZoneFaultSimulationContentResponse { return v.Parameters }).(ZoneFaultSimulationContentResponsePtrOutput)
 }
 
 type FaultSimulationDetailsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -4070,13 +4123,13 @@ func (o FaultSimulationDetailsResponsePtrOutput) OperationId() pulumi.StringPtrO
 }
 
 // Fault simulation parameters.
-func (o FaultSimulationDetailsResponsePtrOutput) Parameters() ZoneFaultSimulationParametersResponsePtrOutput {
-	return o.ApplyT(func(v *FaultSimulationDetailsResponse) *ZoneFaultSimulationParametersResponse {
+func (o FaultSimulationDetailsResponsePtrOutput) Parameters() ZoneFaultSimulationContentResponsePtrOutput {
+	return o.ApplyT(func(v *FaultSimulationDetailsResponse) *ZoneFaultSimulationContentResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(ZoneFaultSimulationParametersResponsePtrOutput)
+	}).(ZoneFaultSimulationContentResponsePtrOutput)
 }
 
 // Fault simulation object with status.
@@ -4155,14 +4208,27 @@ func (o FaultSimulationResponseArrayOutput) Index(i pulumi.IntInput) FaultSimula
 
 // Describes the frontend configurations for the node type.
 type FrontendConfiguration struct {
-	// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/applicationGateways/<applicationGatewayName>/backendAddressPools/<backendAddressPoolName>'.
+	// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{backendAddressPoolName}'.
 	ApplicationGatewayBackendAddressPoolId *string `pulumi:"applicationGatewayBackendAddressPoolId"`
 	// The IP address type of this frontend configuration. If omitted the default value is IPv4.
 	IpAddressType *string `pulumi:"ipAddressType"`
-	// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/backendAddressPools/<backendAddressPoolName>'.
+	// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}'.
 	LoadBalancerBackendAddressPoolId *string `pulumi:"loadBalancerBackendAddressPoolId"`
-	// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/inboundNatPools/<inboundNatPoolName>'.
+	// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatPools/{inboundNatPoolName}'.
 	LoadBalancerInboundNatPoolId *string `pulumi:"loadBalancerInboundNatPoolId"`
+}
+
+// Defaults sets the appropriate defaults for FrontendConfiguration
+func (val *FrontendConfiguration) Defaults() *FrontendConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IpAddressType == nil {
+		ipAddressType_ := "IPv4"
+		tmp.IpAddressType = &ipAddressType_
+	}
+	return &tmp
 }
 
 // FrontendConfigurationInput is an input type that accepts FrontendConfigurationArgs and FrontendConfigurationOutput values.
@@ -4178,16 +4244,27 @@ type FrontendConfigurationInput interface {
 
 // Describes the frontend configurations for the node type.
 type FrontendConfigurationArgs struct {
-	// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/applicationGateways/<applicationGatewayName>/backendAddressPools/<backendAddressPoolName>'.
+	// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{backendAddressPoolName}'.
 	ApplicationGatewayBackendAddressPoolId pulumi.StringPtrInput `pulumi:"applicationGatewayBackendAddressPoolId"`
 	// The IP address type of this frontend configuration. If omitted the default value is IPv4.
 	IpAddressType pulumi.StringPtrInput `pulumi:"ipAddressType"`
-	// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/backendAddressPools/<backendAddressPoolName>'.
+	// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}'.
 	LoadBalancerBackendAddressPoolId pulumi.StringPtrInput `pulumi:"loadBalancerBackendAddressPoolId"`
-	// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/inboundNatPools/<inboundNatPoolName>'.
+	// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatPools/{inboundNatPoolName}'.
 	LoadBalancerInboundNatPoolId pulumi.StringPtrInput `pulumi:"loadBalancerInboundNatPoolId"`
 }
 
+// Defaults sets the appropriate defaults for FrontendConfigurationArgs
+func (val *FrontendConfigurationArgs) Defaults() *FrontendConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IpAddressType == nil {
+		tmp.IpAddressType = pulumi.StringPtr("IPv4")
+	}
+	return &tmp
+}
 func (FrontendConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*FrontendConfiguration)(nil)).Elem()
 }
@@ -4240,7 +4317,7 @@ func (o FrontendConfigurationOutput) ToFrontendConfigurationOutputWithContext(ct
 	return o
 }
 
-// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/applicationGateways/<applicationGatewayName>/backendAddressPools/<backendAddressPoolName>'.
+// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{backendAddressPoolName}'.
 func (o FrontendConfigurationOutput) ApplicationGatewayBackendAddressPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrontendConfiguration) *string { return v.ApplicationGatewayBackendAddressPoolId }).(pulumi.StringPtrOutput)
 }
@@ -4250,12 +4327,12 @@ func (o FrontendConfigurationOutput) IpAddressType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrontendConfiguration) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
 }
 
-// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/backendAddressPools/<backendAddressPoolName>'.
+// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}'.
 func (o FrontendConfigurationOutput) LoadBalancerBackendAddressPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrontendConfiguration) *string { return v.LoadBalancerBackendAddressPoolId }).(pulumi.StringPtrOutput)
 }
 
-// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/inboundNatPools/<inboundNatPoolName>'.
+// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatPools/{inboundNatPoolName}'.
 func (o FrontendConfigurationOutput) LoadBalancerInboundNatPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrontendConfiguration) *string { return v.LoadBalancerInboundNatPoolId }).(pulumi.StringPtrOutput)
 }
@@ -4282,14 +4359,27 @@ func (o FrontendConfigurationArrayOutput) Index(i pulumi.IntInput) FrontendConfi
 
 // Describes the frontend configurations for the node type.
 type FrontendConfigurationResponse struct {
-	// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/applicationGateways/<applicationGatewayName>/backendAddressPools/<backendAddressPoolName>'.
+	// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{backendAddressPoolName}'.
 	ApplicationGatewayBackendAddressPoolId *string `pulumi:"applicationGatewayBackendAddressPoolId"`
 	// The IP address type of this frontend configuration. If omitted the default value is IPv4.
 	IpAddressType *string `pulumi:"ipAddressType"`
-	// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/backendAddressPools/<backendAddressPoolName>'.
+	// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}'.
 	LoadBalancerBackendAddressPoolId *string `pulumi:"loadBalancerBackendAddressPoolId"`
-	// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/inboundNatPools/<inboundNatPoolName>'.
+	// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatPools/{inboundNatPoolName}'.
 	LoadBalancerInboundNatPoolId *string `pulumi:"loadBalancerInboundNatPoolId"`
+}
+
+// Defaults sets the appropriate defaults for FrontendConfigurationResponse
+func (val *FrontendConfigurationResponse) Defaults() *FrontendConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IpAddressType == nil {
+		ipAddressType_ := "IPv4"
+		tmp.IpAddressType = &ipAddressType_
+	}
+	return &tmp
 }
 
 // Describes the frontend configurations for the node type.
@@ -4307,7 +4397,7 @@ func (o FrontendConfigurationResponseOutput) ToFrontendConfigurationResponseOutp
 	return o
 }
 
-// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/applicationGateways/<applicationGatewayName>/backendAddressPools/<backendAddressPoolName>'.
+// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{backendAddressPoolName}'.
 func (o FrontendConfigurationResponseOutput) ApplicationGatewayBackendAddressPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrontendConfigurationResponse) *string { return v.ApplicationGatewayBackendAddressPoolId }).(pulumi.StringPtrOutput)
 }
@@ -4317,12 +4407,12 @@ func (o FrontendConfigurationResponseOutput) IpAddressType() pulumi.StringPtrOut
 	return o.ApplyT(func(v FrontendConfigurationResponse) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
 }
 
-// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/backendAddressPools/<backendAddressPoolName>'.
+// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}'.
 func (o FrontendConfigurationResponseOutput) LoadBalancerBackendAddressPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrontendConfigurationResponse) *string { return v.LoadBalancerBackendAddressPoolId }).(pulumi.StringPtrOutput)
 }
 
-// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/inboundNatPools/<inboundNatPoolName>'.
+// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatPools/{inboundNatPoolName}'.
 func (o FrontendConfigurationResponseOutput) LoadBalancerInboundNatPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrontendConfigurationResponse) *string { return v.LoadBalancerInboundNatPoolId }).(pulumi.StringPtrOutput)
 }
@@ -4360,7 +4450,7 @@ type IpConfiguration struct {
 	// Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4.
 	PrivateIPAddressVersion *string `pulumi:"privateIPAddressVersion"`
 	// The public IP address configuration of the network interface.
-	PublicIPAddressConfiguration *IpConfigurationPublicIPAddressConfiguration `pulumi:"publicIPAddressConfiguration"`
+	PublicIPAddressConfiguration *PublicIPAddressConfiguration `pulumi:"publicIPAddressConfiguration"`
 	// Specifies the subnet of the network interface.
 	Subnet *SubResource `pulumi:"subnet"`
 }
@@ -4404,7 +4494,7 @@ type IpConfigurationArgs struct {
 	// Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4.
 	PrivateIPAddressVersion pulumi.StringPtrInput `pulumi:"privateIPAddressVersion"`
 	// The public IP address configuration of the network interface.
-	PublicIPAddressConfiguration IpConfigurationPublicIPAddressConfigurationPtrInput `pulumi:"publicIPAddressConfiguration"`
+	PublicIPAddressConfiguration PublicIPAddressConfigurationPtrInput `pulumi:"publicIPAddressConfiguration"`
 	// Specifies the subnet of the network interface.
 	Subnet SubResourcePtrInput `pulumi:"subnet"`
 }
@@ -4499,10 +4589,8 @@ func (o IpConfigurationOutput) PrivateIPAddressVersion() pulumi.StringPtrOutput 
 }
 
 // The public IP address configuration of the network interface.
-func (o IpConfigurationOutput) PublicIPAddressConfiguration() IpConfigurationPublicIPAddressConfigurationPtrOutput {
-	return o.ApplyT(func(v IpConfiguration) *IpConfigurationPublicIPAddressConfiguration {
-		return v.PublicIPAddressConfiguration
-	}).(IpConfigurationPublicIPAddressConfigurationPtrOutput)
+func (o IpConfigurationOutput) PublicIPAddressConfiguration() PublicIPAddressConfigurationPtrOutput {
+	return o.ApplyT(func(v IpConfiguration) *PublicIPAddressConfiguration { return v.PublicIPAddressConfiguration }).(PublicIPAddressConfigurationPtrOutput)
 }
 
 // Specifies the subnet of the network interface.
@@ -4530,208 +4618,6 @@ func (o IpConfigurationArrayOutput) Index(i pulumi.IntInput) IpConfigurationOutp
 	}).(IpConfigurationOutput)
 }
 
-// The public IP address configuration of the network interface.
-type IpConfigurationPublicIPAddressConfiguration struct {
-	// Specifies the list of IP tags associated with the public IP address.
-	IpTags []IpTag `pulumi:"ipTags"`
-	// Name of the network interface.
-	Name string `pulumi:"name"`
-	// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
-	PublicIPAddressVersion *string `pulumi:"publicIPAddressVersion"`
-}
-
-// Defaults sets the appropriate defaults for IpConfigurationPublicIPAddressConfiguration
-func (val *IpConfigurationPublicIPAddressConfiguration) Defaults() *IpConfigurationPublicIPAddressConfiguration {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.PublicIPAddressVersion == nil {
-		publicIPAddressVersion_ := "IPv4"
-		tmp.PublicIPAddressVersion = &publicIPAddressVersion_
-	}
-	return &tmp
-}
-
-// IpConfigurationPublicIPAddressConfigurationInput is an input type that accepts IpConfigurationPublicIPAddressConfigurationArgs and IpConfigurationPublicIPAddressConfigurationOutput values.
-// You can construct a concrete instance of `IpConfigurationPublicIPAddressConfigurationInput` via:
-//
-//	IpConfigurationPublicIPAddressConfigurationArgs{...}
-type IpConfigurationPublicIPAddressConfigurationInput interface {
-	pulumi.Input
-
-	ToIpConfigurationPublicIPAddressConfigurationOutput() IpConfigurationPublicIPAddressConfigurationOutput
-	ToIpConfigurationPublicIPAddressConfigurationOutputWithContext(context.Context) IpConfigurationPublicIPAddressConfigurationOutput
-}
-
-// The public IP address configuration of the network interface.
-type IpConfigurationPublicIPAddressConfigurationArgs struct {
-	// Specifies the list of IP tags associated with the public IP address.
-	IpTags IpTagArrayInput `pulumi:"ipTags"`
-	// Name of the network interface.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
-	PublicIPAddressVersion pulumi.StringPtrInput `pulumi:"publicIPAddressVersion"`
-}
-
-// Defaults sets the appropriate defaults for IpConfigurationPublicIPAddressConfigurationArgs
-func (val *IpConfigurationPublicIPAddressConfigurationArgs) Defaults() *IpConfigurationPublicIPAddressConfigurationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.PublicIPAddressVersion == nil {
-		tmp.PublicIPAddressVersion = pulumi.StringPtr("IPv4")
-	}
-	return &tmp
-}
-func (IpConfigurationPublicIPAddressConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpConfigurationPublicIPAddressConfiguration)(nil)).Elem()
-}
-
-func (i IpConfigurationPublicIPAddressConfigurationArgs) ToIpConfigurationPublicIPAddressConfigurationOutput() IpConfigurationPublicIPAddressConfigurationOutput {
-	return i.ToIpConfigurationPublicIPAddressConfigurationOutputWithContext(context.Background())
-}
-
-func (i IpConfigurationPublicIPAddressConfigurationArgs) ToIpConfigurationPublicIPAddressConfigurationOutputWithContext(ctx context.Context) IpConfigurationPublicIPAddressConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IpConfigurationPublicIPAddressConfigurationOutput)
-}
-
-func (i IpConfigurationPublicIPAddressConfigurationArgs) ToIpConfigurationPublicIPAddressConfigurationPtrOutput() IpConfigurationPublicIPAddressConfigurationPtrOutput {
-	return i.ToIpConfigurationPublicIPAddressConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i IpConfigurationPublicIPAddressConfigurationArgs) ToIpConfigurationPublicIPAddressConfigurationPtrOutputWithContext(ctx context.Context) IpConfigurationPublicIPAddressConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IpConfigurationPublicIPAddressConfigurationOutput).ToIpConfigurationPublicIPAddressConfigurationPtrOutputWithContext(ctx)
-}
-
-// IpConfigurationPublicIPAddressConfigurationPtrInput is an input type that accepts IpConfigurationPublicIPAddressConfigurationArgs, IpConfigurationPublicIPAddressConfigurationPtr and IpConfigurationPublicIPAddressConfigurationPtrOutput values.
-// You can construct a concrete instance of `IpConfigurationPublicIPAddressConfigurationPtrInput` via:
-//
-//	        IpConfigurationPublicIPAddressConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type IpConfigurationPublicIPAddressConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToIpConfigurationPublicIPAddressConfigurationPtrOutput() IpConfigurationPublicIPAddressConfigurationPtrOutput
-	ToIpConfigurationPublicIPAddressConfigurationPtrOutputWithContext(context.Context) IpConfigurationPublicIPAddressConfigurationPtrOutput
-}
-
-type ipConfigurationPublicIPAddressConfigurationPtrType IpConfigurationPublicIPAddressConfigurationArgs
-
-func IpConfigurationPublicIPAddressConfigurationPtr(v *IpConfigurationPublicIPAddressConfigurationArgs) IpConfigurationPublicIPAddressConfigurationPtrInput {
-	return (*ipConfigurationPublicIPAddressConfigurationPtrType)(v)
-}
-
-func (*ipConfigurationPublicIPAddressConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IpConfigurationPublicIPAddressConfiguration)(nil)).Elem()
-}
-
-func (i *ipConfigurationPublicIPAddressConfigurationPtrType) ToIpConfigurationPublicIPAddressConfigurationPtrOutput() IpConfigurationPublicIPAddressConfigurationPtrOutput {
-	return i.ToIpConfigurationPublicIPAddressConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *ipConfigurationPublicIPAddressConfigurationPtrType) ToIpConfigurationPublicIPAddressConfigurationPtrOutputWithContext(ctx context.Context) IpConfigurationPublicIPAddressConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IpConfigurationPublicIPAddressConfigurationPtrOutput)
-}
-
-// The public IP address configuration of the network interface.
-type IpConfigurationPublicIPAddressConfigurationOutput struct{ *pulumi.OutputState }
-
-func (IpConfigurationPublicIPAddressConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpConfigurationPublicIPAddressConfiguration)(nil)).Elem()
-}
-
-func (o IpConfigurationPublicIPAddressConfigurationOutput) ToIpConfigurationPublicIPAddressConfigurationOutput() IpConfigurationPublicIPAddressConfigurationOutput {
-	return o
-}
-
-func (o IpConfigurationPublicIPAddressConfigurationOutput) ToIpConfigurationPublicIPAddressConfigurationOutputWithContext(ctx context.Context) IpConfigurationPublicIPAddressConfigurationOutput {
-	return o
-}
-
-func (o IpConfigurationPublicIPAddressConfigurationOutput) ToIpConfigurationPublicIPAddressConfigurationPtrOutput() IpConfigurationPublicIPAddressConfigurationPtrOutput {
-	return o.ToIpConfigurationPublicIPAddressConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o IpConfigurationPublicIPAddressConfigurationOutput) ToIpConfigurationPublicIPAddressConfigurationPtrOutputWithContext(ctx context.Context) IpConfigurationPublicIPAddressConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpConfigurationPublicIPAddressConfiguration) *IpConfigurationPublicIPAddressConfiguration {
-		return &v
-	}).(IpConfigurationPublicIPAddressConfigurationPtrOutput)
-}
-
-// Specifies the list of IP tags associated with the public IP address.
-func (o IpConfigurationPublicIPAddressConfigurationOutput) IpTags() IpTagArrayOutput {
-	return o.ApplyT(func(v IpConfigurationPublicIPAddressConfiguration) []IpTag { return v.IpTags }).(IpTagArrayOutput)
-}
-
-// Name of the network interface.
-func (o IpConfigurationPublicIPAddressConfigurationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v IpConfigurationPublicIPAddressConfiguration) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
-func (o IpConfigurationPublicIPAddressConfigurationOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpConfigurationPublicIPAddressConfiguration) *string { return v.PublicIPAddressVersion }).(pulumi.StringPtrOutput)
-}
-
-type IpConfigurationPublicIPAddressConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (IpConfigurationPublicIPAddressConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IpConfigurationPublicIPAddressConfiguration)(nil)).Elem()
-}
-
-func (o IpConfigurationPublicIPAddressConfigurationPtrOutput) ToIpConfigurationPublicIPAddressConfigurationPtrOutput() IpConfigurationPublicIPAddressConfigurationPtrOutput {
-	return o
-}
-
-func (o IpConfigurationPublicIPAddressConfigurationPtrOutput) ToIpConfigurationPublicIPAddressConfigurationPtrOutputWithContext(ctx context.Context) IpConfigurationPublicIPAddressConfigurationPtrOutput {
-	return o
-}
-
-func (o IpConfigurationPublicIPAddressConfigurationPtrOutput) Elem() IpConfigurationPublicIPAddressConfigurationOutput {
-	return o.ApplyT(func(v *IpConfigurationPublicIPAddressConfiguration) IpConfigurationPublicIPAddressConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret IpConfigurationPublicIPAddressConfiguration
-		return ret
-	}).(IpConfigurationPublicIPAddressConfigurationOutput)
-}
-
-// Specifies the list of IP tags associated with the public IP address.
-func (o IpConfigurationPublicIPAddressConfigurationPtrOutput) IpTags() IpTagArrayOutput {
-	return o.ApplyT(func(v *IpConfigurationPublicIPAddressConfiguration) []IpTag {
-		if v == nil {
-			return nil
-		}
-		return v.IpTags
-	}).(IpTagArrayOutput)
-}
-
-// Name of the network interface.
-func (o IpConfigurationPublicIPAddressConfigurationPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IpConfigurationPublicIPAddressConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
-func (o IpConfigurationPublicIPAddressConfigurationPtrOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IpConfigurationPublicIPAddressConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublicIPAddressVersion
-	}).(pulumi.StringPtrOutput)
-}
-
 // Specifies an IP configuration of the network interface.
 type IpConfigurationResponse struct {
 	// Specifies an array of references to backend address pools of application gateways. A node type can reference backend address pools of multiple application gateways. Multiple node types cannot use the same application gateway.
@@ -4745,7 +4631,7 @@ type IpConfigurationResponse struct {
 	// Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4.
 	PrivateIPAddressVersion *string `pulumi:"privateIPAddressVersion"`
 	// The public IP address configuration of the network interface.
-	PublicIPAddressConfiguration *IpConfigurationResponsePublicIPAddressConfiguration `pulumi:"publicIPAddressConfiguration"`
+	PublicIPAddressConfiguration *PublicIPAddressConfigurationResponse `pulumi:"publicIPAddressConfiguration"`
 	// Specifies the subnet of the network interface.
 	Subnet *SubResourceResponse `pulumi:"subnet"`
 }
@@ -4806,10 +4692,10 @@ func (o IpConfigurationResponseOutput) PrivateIPAddressVersion() pulumi.StringPt
 }
 
 // The public IP address configuration of the network interface.
-func (o IpConfigurationResponseOutput) PublicIPAddressConfiguration() IpConfigurationResponsePublicIPAddressConfigurationPtrOutput {
-	return o.ApplyT(func(v IpConfigurationResponse) *IpConfigurationResponsePublicIPAddressConfiguration {
+func (o IpConfigurationResponseOutput) PublicIPAddressConfiguration() PublicIPAddressConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) *PublicIPAddressConfigurationResponse {
 		return v.PublicIPAddressConfiguration
-	}).(IpConfigurationResponsePublicIPAddressConfigurationPtrOutput)
+	}).(PublicIPAddressConfigurationResponsePtrOutput)
 }
 
 // Specifies the subnet of the network interface.
@@ -4835,113 +4721,6 @@ func (o IpConfigurationResponseArrayOutput) Index(i pulumi.IntInput) IpConfigura
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpConfigurationResponse {
 		return vs[0].([]IpConfigurationResponse)[vs[1].(int)]
 	}).(IpConfigurationResponseOutput)
-}
-
-// The public IP address configuration of the network interface.
-type IpConfigurationResponsePublicIPAddressConfiguration struct {
-	// Specifies the list of IP tags associated with the public IP address.
-	IpTags []IpTagResponse `pulumi:"ipTags"`
-	// Name of the network interface.
-	Name string `pulumi:"name"`
-	// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
-	PublicIPAddressVersion *string `pulumi:"publicIPAddressVersion"`
-}
-
-// Defaults sets the appropriate defaults for IpConfigurationResponsePublicIPAddressConfiguration
-func (val *IpConfigurationResponsePublicIPAddressConfiguration) Defaults() *IpConfigurationResponsePublicIPAddressConfiguration {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.PublicIPAddressVersion == nil {
-		publicIPAddressVersion_ := "IPv4"
-		tmp.PublicIPAddressVersion = &publicIPAddressVersion_
-	}
-	return &tmp
-}
-
-// The public IP address configuration of the network interface.
-type IpConfigurationResponsePublicIPAddressConfigurationOutput struct{ *pulumi.OutputState }
-
-func (IpConfigurationResponsePublicIPAddressConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpConfigurationResponsePublicIPAddressConfiguration)(nil)).Elem()
-}
-
-func (o IpConfigurationResponsePublicIPAddressConfigurationOutput) ToIpConfigurationResponsePublicIPAddressConfigurationOutput() IpConfigurationResponsePublicIPAddressConfigurationOutput {
-	return o
-}
-
-func (o IpConfigurationResponsePublicIPAddressConfigurationOutput) ToIpConfigurationResponsePublicIPAddressConfigurationOutputWithContext(ctx context.Context) IpConfigurationResponsePublicIPAddressConfigurationOutput {
-	return o
-}
-
-// Specifies the list of IP tags associated with the public IP address.
-func (o IpConfigurationResponsePublicIPAddressConfigurationOutput) IpTags() IpTagResponseArrayOutput {
-	return o.ApplyT(func(v IpConfigurationResponsePublicIPAddressConfiguration) []IpTagResponse { return v.IpTags }).(IpTagResponseArrayOutput)
-}
-
-// Name of the network interface.
-func (o IpConfigurationResponsePublicIPAddressConfigurationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v IpConfigurationResponsePublicIPAddressConfiguration) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
-func (o IpConfigurationResponsePublicIPAddressConfigurationOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpConfigurationResponsePublicIPAddressConfiguration) *string { return v.PublicIPAddressVersion }).(pulumi.StringPtrOutput)
-}
-
-type IpConfigurationResponsePublicIPAddressConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (IpConfigurationResponsePublicIPAddressConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IpConfigurationResponsePublicIPAddressConfiguration)(nil)).Elem()
-}
-
-func (o IpConfigurationResponsePublicIPAddressConfigurationPtrOutput) ToIpConfigurationResponsePublicIPAddressConfigurationPtrOutput() IpConfigurationResponsePublicIPAddressConfigurationPtrOutput {
-	return o
-}
-
-func (o IpConfigurationResponsePublicIPAddressConfigurationPtrOutput) ToIpConfigurationResponsePublicIPAddressConfigurationPtrOutputWithContext(ctx context.Context) IpConfigurationResponsePublicIPAddressConfigurationPtrOutput {
-	return o
-}
-
-func (o IpConfigurationResponsePublicIPAddressConfigurationPtrOutput) Elem() IpConfigurationResponsePublicIPAddressConfigurationOutput {
-	return o.ApplyT(func(v *IpConfigurationResponsePublicIPAddressConfiguration) IpConfigurationResponsePublicIPAddressConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret IpConfigurationResponsePublicIPAddressConfiguration
-		return ret
-	}).(IpConfigurationResponsePublicIPAddressConfigurationOutput)
-}
-
-// Specifies the list of IP tags associated with the public IP address.
-func (o IpConfigurationResponsePublicIPAddressConfigurationPtrOutput) IpTags() IpTagResponseArrayOutput {
-	return o.ApplyT(func(v *IpConfigurationResponsePublicIPAddressConfiguration) []IpTagResponse {
-		if v == nil {
-			return nil
-		}
-		return v.IpTags
-	}).(IpTagResponseArrayOutput)
-}
-
-// Name of the network interface.
-func (o IpConfigurationResponsePublicIPAddressConfigurationPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IpConfigurationResponsePublicIPAddressConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
-func (o IpConfigurationResponsePublicIPAddressConfigurationPtrOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IpConfigurationResponsePublicIPAddressConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublicIPAddressVersion
-	}).(pulumi.StringPtrOutput)
 }
 
 // The IP tag associated with the public IP address.
@@ -6186,7 +5965,7 @@ type NodeTypeFaultSimulationResponse struct {
 	// Current or latest asynchronous operation identifier on the node type.
 	OperationId *string `pulumi:"operationId"`
 	// Current or latest asynchronous operation status on the node type
-	OperationStatus *string `pulumi:"operationStatus"`
+	OperationStatus string `pulumi:"operationStatus"`
 	// Fault simulation status
 	Status *string `pulumi:"status"`
 }
@@ -6217,8 +5996,8 @@ func (o NodeTypeFaultSimulationResponseOutput) OperationId() pulumi.StringPtrOut
 }
 
 // Current or latest asynchronous operation status on the node type
-func (o NodeTypeFaultSimulationResponseOutput) OperationStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeTypeFaultSimulationResponse) *string { return v.OperationStatus }).(pulumi.StringPtrOutput)
+func (o NodeTypeFaultSimulationResponseOutput) OperationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeTypeFaultSimulationResponse) string { return v.OperationStatus }).(pulumi.StringOutput)
 }
 
 // Fault simulation status
@@ -6426,11 +6205,11 @@ func (o NodeTypeNatConfigResponseArrayOutput) Index(i pulumi.IntInput) NodeTypeN
 
 // Describes a node type sku.
 type NodeTypeSku struct {
-	// The number of nodes in the node type.<br /><br />If present in request it will override properties.vmInstanceCount.
+	// The number of nodes in the node type. If present in request it will override properties.vmInstanceCount.
 	Capacity int `pulumi:"capacity"`
-	// The sku name. <br /><br />Name is internally generated and is used in auto-scale scenarios.<br /> Property does not allow to be changed to other values than generated.<br /> To avoid deployment errors please omit the property.
+	// The sku name. Name is internally generated and is used in auto-scale scenarios. Property does not allow to be changed to other values than generated. To avoid deployment errors please omit the property.
 	Name *string `pulumi:"name"`
-	// Specifies the tier of the node type. <br /><br /> Possible Values:<br /> **Standard**
+	// Specifies the tier of the node type. Possible Values: **Standard**
 	Tier *string `pulumi:"tier"`
 }
 
@@ -6447,11 +6226,11 @@ type NodeTypeSkuInput interface {
 
 // Describes a node type sku.
 type NodeTypeSkuArgs struct {
-	// The number of nodes in the node type.<br /><br />If present in request it will override properties.vmInstanceCount.
+	// The number of nodes in the node type. If present in request it will override properties.vmInstanceCount.
 	Capacity pulumi.IntInput `pulumi:"capacity"`
-	// The sku name. <br /><br />Name is internally generated and is used in auto-scale scenarios.<br /> Property does not allow to be changed to other values than generated.<br /> To avoid deployment errors please omit the property.
+	// The sku name. Name is internally generated and is used in auto-scale scenarios. Property does not allow to be changed to other values than generated. To avoid deployment errors please omit the property.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the tier of the node type. <br /><br /> Possible Values:<br /> **Standard**
+	// Specifies the tier of the node type. Possible Values: **Standard**
 	Tier pulumi.StringPtrInput `pulumi:"tier"`
 }
 
@@ -6533,17 +6312,17 @@ func (o NodeTypeSkuOutput) ToNodeTypeSkuPtrOutputWithContext(ctx context.Context
 	}).(NodeTypeSkuPtrOutput)
 }
 
-// The number of nodes in the node type.<br /><br />If present in request it will override properties.vmInstanceCount.
+// The number of nodes in the node type. If present in request it will override properties.vmInstanceCount.
 func (o NodeTypeSkuOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeTypeSku) int { return v.Capacity }).(pulumi.IntOutput)
 }
 
-// The sku name. <br /><br />Name is internally generated and is used in auto-scale scenarios.<br /> Property does not allow to be changed to other values than generated.<br /> To avoid deployment errors please omit the property.
+// The sku name. Name is internally generated and is used in auto-scale scenarios. Property does not allow to be changed to other values than generated. To avoid deployment errors please omit the property.
 func (o NodeTypeSkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTypeSku) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the tier of the node type. <br /><br /> Possible Values:<br /> **Standard**
+// Specifies the tier of the node type. Possible Values: **Standard**
 func (o NodeTypeSkuOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTypeSku) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
@@ -6572,7 +6351,7 @@ func (o NodeTypeSkuPtrOutput) Elem() NodeTypeSkuOutput {
 	}).(NodeTypeSkuOutput)
 }
 
-// The number of nodes in the node type.<br /><br />If present in request it will override properties.vmInstanceCount.
+// The number of nodes in the node type. If present in request it will override properties.vmInstanceCount.
 func (o NodeTypeSkuPtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeTypeSku) *int {
 		if v == nil {
@@ -6582,7 +6361,7 @@ func (o NodeTypeSkuPtrOutput) Capacity() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The sku name. <br /><br />Name is internally generated and is used in auto-scale scenarios.<br /> Property does not allow to be changed to other values than generated.<br /> To avoid deployment errors please omit the property.
+// The sku name. Name is internally generated and is used in auto-scale scenarios. Property does not allow to be changed to other values than generated. To avoid deployment errors please omit the property.
 func (o NodeTypeSkuPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTypeSku) *string {
 		if v == nil {
@@ -6592,7 +6371,7 @@ func (o NodeTypeSkuPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the tier of the node type. <br /><br /> Possible Values:<br /> **Standard**
+// Specifies the tier of the node type. Possible Values: **Standard**
 func (o NodeTypeSkuPtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTypeSku) *string {
 		if v == nil {
@@ -6604,11 +6383,11 @@ func (o NodeTypeSkuPtrOutput) Tier() pulumi.StringPtrOutput {
 
 // Describes a node type sku.
 type NodeTypeSkuResponse struct {
-	// The number of nodes in the node type.<br /><br />If present in request it will override properties.vmInstanceCount.
+	// The number of nodes in the node type. If present in request it will override properties.vmInstanceCount.
 	Capacity int `pulumi:"capacity"`
-	// The sku name. <br /><br />Name is internally generated and is used in auto-scale scenarios.<br /> Property does not allow to be changed to other values than generated.<br /> To avoid deployment errors please omit the property.
+	// The sku name. Name is internally generated and is used in auto-scale scenarios. Property does not allow to be changed to other values than generated. To avoid deployment errors please omit the property.
 	Name *string `pulumi:"name"`
-	// Specifies the tier of the node type. <br /><br /> Possible Values:<br /> **Standard**
+	// Specifies the tier of the node type. Possible Values: **Standard**
 	Tier *string `pulumi:"tier"`
 }
 
@@ -6627,17 +6406,17 @@ func (o NodeTypeSkuResponseOutput) ToNodeTypeSkuResponseOutputWithContext(ctx co
 	return o
 }
 
-// The number of nodes in the node type.<br /><br />If present in request it will override properties.vmInstanceCount.
+// The number of nodes in the node type. If present in request it will override properties.vmInstanceCount.
 func (o NodeTypeSkuResponseOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeTypeSkuResponse) int { return v.Capacity }).(pulumi.IntOutput)
 }
 
-// The sku name. <br /><br />Name is internally generated and is used in auto-scale scenarios.<br /> Property does not allow to be changed to other values than generated.<br /> To avoid deployment errors please omit the property.
+// The sku name. Name is internally generated and is used in auto-scale scenarios. Property does not allow to be changed to other values than generated. To avoid deployment errors please omit the property.
 func (o NodeTypeSkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTypeSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the tier of the node type. <br /><br /> Possible Values:<br /> **Standard**
+// Specifies the tier of the node type. Possible Values: **Standard**
 func (o NodeTypeSkuResponseOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTypeSkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
@@ -6666,7 +6445,7 @@ func (o NodeTypeSkuResponsePtrOutput) Elem() NodeTypeSkuResponseOutput {
 	}).(NodeTypeSkuResponseOutput)
 }
 
-// The number of nodes in the node type.<br /><br />If present in request it will override properties.vmInstanceCount.
+// The number of nodes in the node type. If present in request it will override properties.vmInstanceCount.
 func (o NodeTypeSkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeTypeSkuResponse) *int {
 		if v == nil {
@@ -6676,7 +6455,7 @@ func (o NodeTypeSkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The sku name. <br /><br />Name is internally generated and is used in auto-scale scenarios.<br /> Property does not allow to be changed to other values than generated.<br /> To avoid deployment errors please omit the property.
+// The sku name. Name is internally generated and is used in auto-scale scenarios. Property does not allow to be changed to other values than generated. To avoid deployment errors please omit the property.
 func (o NodeTypeSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTypeSkuResponse) *string {
 		if v == nil {
@@ -6686,7 +6465,7 @@ func (o NodeTypeSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the tier of the node type. <br /><br /> Possible Values:<br /> **Standard**
+// Specifies the tier of the node type. Possible Values: **Standard**
 func (o NodeTypeSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTypeSkuResponse) *string {
 		if v == nil {
@@ -6828,6 +6607,315 @@ func (o PartitionInstanceCountScaleMechanismResponseOutput) MinInstanceCount() p
 // The number of instances to add or remove during a scaling operation.
 func (o PartitionInstanceCountScaleMechanismResponseOutput) ScaleIncrement() pulumi.IntOutput {
 	return o.ApplyT(func(v PartitionInstanceCountScaleMechanismResponse) int { return v.ScaleIncrement }).(pulumi.IntOutput)
+}
+
+// The public IP address configuration of the network interface.
+type PublicIPAddressConfiguration struct {
+	// Specifies the list of IP tags associated with the public IP address.
+	IpTags []IpTag `pulumi:"ipTags"`
+	// Name of the network interface.
+	Name string `pulumi:"name"`
+	// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
+	PublicIPAddressVersion *string `pulumi:"publicIPAddressVersion"`
+}
+
+// Defaults sets the appropriate defaults for PublicIPAddressConfiguration
+func (val *PublicIPAddressConfiguration) Defaults() *PublicIPAddressConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PublicIPAddressVersion == nil {
+		publicIPAddressVersion_ := "IPv4"
+		tmp.PublicIPAddressVersion = &publicIPAddressVersion_
+	}
+	return &tmp
+}
+
+// PublicIPAddressConfigurationInput is an input type that accepts PublicIPAddressConfigurationArgs and PublicIPAddressConfigurationOutput values.
+// You can construct a concrete instance of `PublicIPAddressConfigurationInput` via:
+//
+//	PublicIPAddressConfigurationArgs{...}
+type PublicIPAddressConfigurationInput interface {
+	pulumi.Input
+
+	ToPublicIPAddressConfigurationOutput() PublicIPAddressConfigurationOutput
+	ToPublicIPAddressConfigurationOutputWithContext(context.Context) PublicIPAddressConfigurationOutput
+}
+
+// The public IP address configuration of the network interface.
+type PublicIPAddressConfigurationArgs struct {
+	// Specifies the list of IP tags associated with the public IP address.
+	IpTags IpTagArrayInput `pulumi:"ipTags"`
+	// Name of the network interface.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
+	PublicIPAddressVersion pulumi.StringPtrInput `pulumi:"publicIPAddressVersion"`
+}
+
+// Defaults sets the appropriate defaults for PublicIPAddressConfigurationArgs
+func (val *PublicIPAddressConfigurationArgs) Defaults() *PublicIPAddressConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PublicIPAddressVersion == nil {
+		tmp.PublicIPAddressVersion = pulumi.StringPtr("IPv4")
+	}
+	return &tmp
+}
+func (PublicIPAddressConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressConfiguration)(nil)).Elem()
+}
+
+func (i PublicIPAddressConfigurationArgs) ToPublicIPAddressConfigurationOutput() PublicIPAddressConfigurationOutput {
+	return i.ToPublicIPAddressConfigurationOutputWithContext(context.Background())
+}
+
+func (i PublicIPAddressConfigurationArgs) ToPublicIPAddressConfigurationOutputWithContext(ctx context.Context) PublicIPAddressConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIPAddressConfigurationOutput)
+}
+
+func (i PublicIPAddressConfigurationArgs) ToPublicIPAddressConfigurationPtrOutput() PublicIPAddressConfigurationPtrOutput {
+	return i.ToPublicIPAddressConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i PublicIPAddressConfigurationArgs) ToPublicIPAddressConfigurationPtrOutputWithContext(ctx context.Context) PublicIPAddressConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIPAddressConfigurationOutput).ToPublicIPAddressConfigurationPtrOutputWithContext(ctx)
+}
+
+// PublicIPAddressConfigurationPtrInput is an input type that accepts PublicIPAddressConfigurationArgs, PublicIPAddressConfigurationPtr and PublicIPAddressConfigurationPtrOutput values.
+// You can construct a concrete instance of `PublicIPAddressConfigurationPtrInput` via:
+//
+//	        PublicIPAddressConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PublicIPAddressConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToPublicIPAddressConfigurationPtrOutput() PublicIPAddressConfigurationPtrOutput
+	ToPublicIPAddressConfigurationPtrOutputWithContext(context.Context) PublicIPAddressConfigurationPtrOutput
+}
+
+type publicIPAddressConfigurationPtrType PublicIPAddressConfigurationArgs
+
+func PublicIPAddressConfigurationPtr(v *PublicIPAddressConfigurationArgs) PublicIPAddressConfigurationPtrInput {
+	return (*publicIPAddressConfigurationPtrType)(v)
+}
+
+func (*publicIPAddressConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressConfiguration)(nil)).Elem()
+}
+
+func (i *publicIPAddressConfigurationPtrType) ToPublicIPAddressConfigurationPtrOutput() PublicIPAddressConfigurationPtrOutput {
+	return i.ToPublicIPAddressConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *publicIPAddressConfigurationPtrType) ToPublicIPAddressConfigurationPtrOutputWithContext(ctx context.Context) PublicIPAddressConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIPAddressConfigurationPtrOutput)
+}
+
+// The public IP address configuration of the network interface.
+type PublicIPAddressConfigurationOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressConfiguration)(nil)).Elem()
+}
+
+func (o PublicIPAddressConfigurationOutput) ToPublicIPAddressConfigurationOutput() PublicIPAddressConfigurationOutput {
+	return o
+}
+
+func (o PublicIPAddressConfigurationOutput) ToPublicIPAddressConfigurationOutputWithContext(ctx context.Context) PublicIPAddressConfigurationOutput {
+	return o
+}
+
+func (o PublicIPAddressConfigurationOutput) ToPublicIPAddressConfigurationPtrOutput() PublicIPAddressConfigurationPtrOutput {
+	return o.ToPublicIPAddressConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o PublicIPAddressConfigurationOutput) ToPublicIPAddressConfigurationPtrOutputWithContext(ctx context.Context) PublicIPAddressConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicIPAddressConfiguration) *PublicIPAddressConfiguration {
+		return &v
+	}).(PublicIPAddressConfigurationPtrOutput)
+}
+
+// Specifies the list of IP tags associated with the public IP address.
+func (o PublicIPAddressConfigurationOutput) IpTags() IpTagArrayOutput {
+	return o.ApplyT(func(v PublicIPAddressConfiguration) []IpTag { return v.IpTags }).(IpTagArrayOutput)
+}
+
+// Name of the network interface.
+func (o PublicIPAddressConfigurationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressConfiguration) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
+func (o PublicIPAddressConfigurationOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressConfiguration) *string { return v.PublicIPAddressVersion }).(pulumi.StringPtrOutput)
+}
+
+type PublicIPAddressConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressConfiguration)(nil)).Elem()
+}
+
+func (o PublicIPAddressConfigurationPtrOutput) ToPublicIPAddressConfigurationPtrOutput() PublicIPAddressConfigurationPtrOutput {
+	return o
+}
+
+func (o PublicIPAddressConfigurationPtrOutput) ToPublicIPAddressConfigurationPtrOutputWithContext(ctx context.Context) PublicIPAddressConfigurationPtrOutput {
+	return o
+}
+
+func (o PublicIPAddressConfigurationPtrOutput) Elem() PublicIPAddressConfigurationOutput {
+	return o.ApplyT(func(v *PublicIPAddressConfiguration) PublicIPAddressConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIPAddressConfiguration
+		return ret
+	}).(PublicIPAddressConfigurationOutput)
+}
+
+// Specifies the list of IP tags associated with the public IP address.
+func (o PublicIPAddressConfigurationPtrOutput) IpTags() IpTagArrayOutput {
+	return o.ApplyT(func(v *PublicIPAddressConfiguration) []IpTag {
+		if v == nil {
+			return nil
+		}
+		return v.IpTags
+	}).(IpTagArrayOutput)
+}
+
+// Name of the network interface.
+func (o PublicIPAddressConfigurationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
+func (o PublicIPAddressConfigurationPtrOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAddressVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The public IP address configuration of the network interface.
+type PublicIPAddressConfigurationResponse struct {
+	// Specifies the list of IP tags associated with the public IP address.
+	IpTags []IpTagResponse `pulumi:"ipTags"`
+	// Name of the network interface.
+	Name string `pulumi:"name"`
+	// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
+	PublicIPAddressVersion *string `pulumi:"publicIPAddressVersion"`
+}
+
+// Defaults sets the appropriate defaults for PublicIPAddressConfigurationResponse
+func (val *PublicIPAddressConfigurationResponse) Defaults() *PublicIPAddressConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PublicIPAddressVersion == nil {
+		publicIPAddressVersion_ := "IPv4"
+		tmp.PublicIPAddressVersion = &publicIPAddressVersion_
+	}
+	return &tmp
+}
+
+// The public IP address configuration of the network interface.
+type PublicIPAddressConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressConfigurationResponse)(nil)).Elem()
+}
+
+func (o PublicIPAddressConfigurationResponseOutput) ToPublicIPAddressConfigurationResponseOutput() PublicIPAddressConfigurationResponseOutput {
+	return o
+}
+
+func (o PublicIPAddressConfigurationResponseOutput) ToPublicIPAddressConfigurationResponseOutputWithContext(ctx context.Context) PublicIPAddressConfigurationResponseOutput {
+	return o
+}
+
+// Specifies the list of IP tags associated with the public IP address.
+func (o PublicIPAddressConfigurationResponseOutput) IpTags() IpTagResponseArrayOutput {
+	return o.ApplyT(func(v PublicIPAddressConfigurationResponse) []IpTagResponse { return v.IpTags }).(IpTagResponseArrayOutput)
+}
+
+// Name of the network interface.
+func (o PublicIPAddressConfigurationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressConfigurationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
+func (o PublicIPAddressConfigurationResponseOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressConfigurationResponse) *string { return v.PublicIPAddressVersion }).(pulumi.StringPtrOutput)
+}
+
+type PublicIPAddressConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressConfigurationResponse)(nil)).Elem()
+}
+
+func (o PublicIPAddressConfigurationResponsePtrOutput) ToPublicIPAddressConfigurationResponsePtrOutput() PublicIPAddressConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o PublicIPAddressConfigurationResponsePtrOutput) ToPublicIPAddressConfigurationResponsePtrOutputWithContext(ctx context.Context) PublicIPAddressConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o PublicIPAddressConfigurationResponsePtrOutput) Elem() PublicIPAddressConfigurationResponseOutput {
+	return o.ApplyT(func(v *PublicIPAddressConfigurationResponse) PublicIPAddressConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIPAddressConfigurationResponse
+		return ret
+	}).(PublicIPAddressConfigurationResponseOutput)
+}
+
+// Specifies the list of IP tags associated with the public IP address.
+func (o PublicIPAddressConfigurationResponsePtrOutput) IpTags() IpTagResponseArrayOutput {
+	return o.ApplyT(func(v *PublicIPAddressConfigurationResponse) []IpTagResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpTags
+	}).(IpTagResponseArrayOutput)
+}
+
+// Name of the network interface.
+func (o PublicIPAddressConfigurationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
+func (o PublicIPAddressConfigurationResponsePtrOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAddressVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 // Describes Az Resiliency status of Base resources
@@ -8075,7 +8163,7 @@ func (o ServicePlacementInvalidDomainPolicyResponseOutput) Type() pulumi.StringO
 	return o.ApplyT(func(v ServicePlacementInvalidDomainPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The name of the domain that should used for placement as per this policy.
+// The type of placement policy for a service fabric service. Following are the possible values.
 type ServicePlacementNonPartiallyPlaceServicePolicy struct {
 	// The type of placement policy for a service fabric service. Following are the possible values.
 	// Expected value is 'NonPartiallyPlaceService'.
@@ -8093,7 +8181,7 @@ type ServicePlacementNonPartiallyPlaceServicePolicyInput interface {
 	ToServicePlacementNonPartiallyPlaceServicePolicyOutputWithContext(context.Context) ServicePlacementNonPartiallyPlaceServicePolicyOutput
 }
 
-// The name of the domain that should used for placement as per this policy.
+// The type of placement policy for a service fabric service. Following are the possible values.
 type ServicePlacementNonPartiallyPlaceServicePolicyArgs struct {
 	// The type of placement policy for a service fabric service. Following are the possible values.
 	// Expected value is 'NonPartiallyPlaceService'.
@@ -8112,7 +8200,7 @@ func (i ServicePlacementNonPartiallyPlaceServicePolicyArgs) ToServicePlacementNo
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePlacementNonPartiallyPlaceServicePolicyOutput)
 }
 
-// The name of the domain that should used for placement as per this policy.
+// The type of placement policy for a service fabric service. Following are the possible values.
 type ServicePlacementNonPartiallyPlaceServicePolicyOutput struct{ *pulumi.OutputState }
 
 func (ServicePlacementNonPartiallyPlaceServicePolicyOutput) ElementType() reflect.Type {
@@ -8133,14 +8221,14 @@ func (o ServicePlacementNonPartiallyPlaceServicePolicyOutput) Type() pulumi.Stri
 	return o.ApplyT(func(v ServicePlacementNonPartiallyPlaceServicePolicy) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The name of the domain that should used for placement as per this policy.
+// The type of placement policy for a service fabric service. Following are the possible values.
 type ServicePlacementNonPartiallyPlaceServicePolicyResponse struct {
 	// The type of placement policy for a service fabric service. Following are the possible values.
 	// Expected value is 'NonPartiallyPlaceService'.
 	Type string `pulumi:"type"`
 }
 
-// The name of the domain that should used for placement as per this policy.
+// The type of placement policy for a service fabric service. Following are the possible values.
 type ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput struct{ *pulumi.OutputState }
 
 func (ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput) ElementType() reflect.Type {
@@ -11218,7 +11306,7 @@ type SystemDataResponse struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// The type of identity that created the resource.
 	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC).
+	// The timestamp of resource last modification (UTC)
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// The identity that last modified the resource.
 	LastModifiedBy *string `pulumi:"lastModifiedBy"`
@@ -11256,7 +11344,7 @@ func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
 
-// The timestamp of resource last modification (UTC).
+// The timestamp of resource last modification (UTC)
 func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }
@@ -11533,6 +11621,7 @@ func (o UniformInt64RangePartitionSchemeResponseOutput) PartitionScheme() pulumi
 	return o.ApplyT(func(v UniformInt64RangePartitionSchemeResponse) string { return v.PartitionScheme }).(pulumi.StringOutput)
 }
 
+// User assigned identity.
 type UserAssignedIdentityResponse struct {
 	// The client id of user assigned identity.
 	ClientId string `pulumi:"clientId"`
@@ -11540,6 +11629,7 @@ type UserAssignedIdentityResponse struct {
 	PrincipalId string `pulumi:"principalId"`
 }
 
+// User assigned identity.
 type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
@@ -11899,7 +11989,7 @@ func (o VMSSExtensionResponseArrayOutput) Index(i pulumi.IntInput) VMSSExtension
 
 // Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
 type VaultCertificate struct {
-	// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. <br><br>For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name <UppercaseThumbprint>.crt for the X509 certificate file and <UppercaseThumbprint>.prv for private key. Both of these files are .pem formatted.
+	// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name {UppercaseThumbprint}.crt for the X509 certificate file and {UppercaseThumbprint}.prv for private key. Both of these files are .pem formatted.
 	CertificateStore string `pulumi:"certificateStore"`
 	// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 	CertificateUrl string `pulumi:"certificateUrl"`
@@ -11918,7 +12008,7 @@ type VaultCertificateInput interface {
 
 // Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
 type VaultCertificateArgs struct {
-	// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. <br><br>For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name <UppercaseThumbprint>.crt for the X509 certificate file and <UppercaseThumbprint>.prv for private key. Both of these files are .pem formatted.
+	// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name {UppercaseThumbprint}.crt for the X509 certificate file and {UppercaseThumbprint}.prv for private key. Both of these files are .pem formatted.
 	CertificateStore pulumi.StringInput `pulumi:"certificateStore"`
 	// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 	CertificateUrl pulumi.StringInput `pulumi:"certificateUrl"`
@@ -11976,7 +12066,7 @@ func (o VaultCertificateOutput) ToVaultCertificateOutputWithContext(ctx context.
 	return o
 }
 
-// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. <br><br>For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name <UppercaseThumbprint>.crt for the X509 certificate file and <UppercaseThumbprint>.prv for private key. Both of these files are .pem formatted.
+// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name {UppercaseThumbprint}.crt for the X509 certificate file and {UppercaseThumbprint}.prv for private key. Both of these files are .pem formatted.
 func (o VaultCertificateOutput) CertificateStore() pulumi.StringOutput {
 	return o.ApplyT(func(v VaultCertificate) string { return v.CertificateStore }).(pulumi.StringOutput)
 }
@@ -12008,7 +12098,7 @@ func (o VaultCertificateArrayOutput) Index(i pulumi.IntInput) VaultCertificateOu
 
 // Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
 type VaultCertificateResponse struct {
-	// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. <br><br>For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name <UppercaseThumbprint>.crt for the X509 certificate file and <UppercaseThumbprint>.prv for private key. Both of these files are .pem formatted.
+	// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name {UppercaseThumbprint}.crt for the X509 certificate file and {UppercaseThumbprint}.prv for private key. Both of these files are .pem formatted.
 	CertificateStore string `pulumi:"certificateStore"`
 	// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 	CertificateUrl string `pulumi:"certificateUrl"`
@@ -12029,7 +12119,7 @@ func (o VaultCertificateResponseOutput) ToVaultCertificateResponseOutputWithCont
 	return o
 }
 
-// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. <br><br>For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name <UppercaseThumbprint>.crt for the X509 certificate file and <UppercaseThumbprint>.prv for private key. Both of these files are .pem formatted.
+// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name {UppercaseThumbprint}.crt for the X509 certificate file and {UppercaseThumbprint}.prv for private key. Both of these files are .pem formatted.
 func (o VaultCertificateResponseOutput) CertificateStore() pulumi.StringOutput {
 	return o.ApplyT(func(v VaultCertificateResponse) string { return v.CertificateStore }).(pulumi.StringOutput)
 }
@@ -12447,7 +12537,7 @@ func (o VmApplicationResponseArrayOutput) Index(i pulumi.IntInput) VmApplication
 	}).(VmApplicationResponseOutput)
 }
 
-// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started ->. Enter any required information and then click Save.
+// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started. Enter any required information and then click Save.
 type VmImagePlan struct {
 	// The plan ID.
 	Name *string `pulumi:"name"`
@@ -12470,7 +12560,7 @@ type VmImagePlanInput interface {
 	ToVmImagePlanOutputWithContext(context.Context) VmImagePlanOutput
 }
 
-// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started ->. Enter any required information and then click Save.
+// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started. Enter any required information and then click Save.
 type VmImagePlanArgs struct {
 	// The plan ID.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -12535,7 +12625,7 @@ func (i *vmImagePlanPtrType) ToVmImagePlanPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(VmImagePlanPtrOutput)
 }
 
-// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started ->. Enter any required information and then click Save.
+// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started. Enter any required information and then click Save.
 type VmImagePlanOutput struct{ *pulumi.OutputState }
 
 func (VmImagePlanOutput) ElementType() reflect.Type {
@@ -12644,7 +12734,7 @@ func (o VmImagePlanPtrOutput) Publisher() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started ->. Enter any required information and then click Save.
+// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started. Enter any required information and then click Save.
 type VmImagePlanResponse struct {
 	// The plan ID.
 	Name *string `pulumi:"name"`
@@ -12656,7 +12746,7 @@ type VmImagePlanResponse struct {
 	Publisher *string `pulumi:"publisher"`
 }
 
-// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started ->. Enter any required information and then click Save.
+// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started. Enter any required information and then click Save.
 type VmImagePlanResponseOutput struct{ *pulumi.OutputState }
 
 func (VmImagePlanResponseOutput) ElementType() reflect.Type {
@@ -12967,6 +13057,18 @@ type VmssDataDisk struct {
 	Lun int `pulumi:"lun"`
 }
 
+// Defaults sets the appropriate defaults for VmssDataDisk
+func (val *VmssDataDisk) Defaults() *VmssDataDisk {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.DiskType) {
+		tmp.DiskType = "StandardSSD_LRS"
+	}
+	return &tmp
+}
+
 // VmssDataDiskInput is an input type that accepts VmssDataDiskArgs and VmssDataDiskOutput values.
 // You can construct a concrete instance of `VmssDataDiskInput` via:
 //
@@ -12990,6 +13092,17 @@ type VmssDataDiskArgs struct {
 	Lun pulumi.IntInput `pulumi:"lun"`
 }
 
+// Defaults sets the appropriate defaults for VmssDataDiskArgs
+func (val *VmssDataDiskArgs) Defaults() *VmssDataDiskArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DiskType == nil {
+		tmp.DiskType = pulumi.String("StandardSSD_LRS")
+	}
+	return &tmp
+}
 func (VmssDataDiskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*VmssDataDisk)(nil)).Elem()
 }
@@ -13094,6 +13207,18 @@ type VmssDataDiskResponse struct {
 	Lun int `pulumi:"lun"`
 }
 
+// Defaults sets the appropriate defaults for VmssDataDiskResponse
+func (val *VmssDataDiskResponse) Defaults() *VmssDataDiskResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.DiskType) {
+		tmp.DiskType = "StandardSSD_LRS"
+	}
+	return &tmp
+}
+
 // Managed data disk description.
 type VmssDataDiskResponseOutput struct{ *pulumi.OutputState }
 
@@ -13150,7 +13275,7 @@ func (o VmssDataDiskResponseArrayOutput) Index(i pulumi.IntInput) VmssDataDiskRe
 }
 
 // Parameters for Zone Fault Simulation action.
-type ZoneFaultSimulationParametersResponse struct {
+type ZoneFaultSimulationContentResponse struct {
 	// Constraints for Fault Simulation action.
 	Constraints *FaultSimulationConstraintsResponse `pulumi:"constraints"`
 	// The kind of fault simulation.
@@ -13163,70 +13288,68 @@ type ZoneFaultSimulationParametersResponse struct {
 }
 
 // Parameters for Zone Fault Simulation action.
-type ZoneFaultSimulationParametersResponseOutput struct{ *pulumi.OutputState }
+type ZoneFaultSimulationContentResponseOutput struct{ *pulumi.OutputState }
 
-func (ZoneFaultSimulationParametersResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneFaultSimulationParametersResponse)(nil)).Elem()
+func (ZoneFaultSimulationContentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneFaultSimulationContentResponse)(nil)).Elem()
 }
 
-func (o ZoneFaultSimulationParametersResponseOutput) ToZoneFaultSimulationParametersResponseOutput() ZoneFaultSimulationParametersResponseOutput {
+func (o ZoneFaultSimulationContentResponseOutput) ToZoneFaultSimulationContentResponseOutput() ZoneFaultSimulationContentResponseOutput {
 	return o
 }
 
-func (o ZoneFaultSimulationParametersResponseOutput) ToZoneFaultSimulationParametersResponseOutputWithContext(ctx context.Context) ZoneFaultSimulationParametersResponseOutput {
+func (o ZoneFaultSimulationContentResponseOutput) ToZoneFaultSimulationContentResponseOutputWithContext(ctx context.Context) ZoneFaultSimulationContentResponseOutput {
 	return o
 }
 
 // Constraints for Fault Simulation action.
-func (o ZoneFaultSimulationParametersResponseOutput) Constraints() FaultSimulationConstraintsResponsePtrOutput {
-	return o.ApplyT(func(v ZoneFaultSimulationParametersResponse) *FaultSimulationConstraintsResponse {
-		return v.Constraints
-	}).(FaultSimulationConstraintsResponsePtrOutput)
+func (o ZoneFaultSimulationContentResponseOutput) Constraints() FaultSimulationConstraintsResponsePtrOutput {
+	return o.ApplyT(func(v ZoneFaultSimulationContentResponse) *FaultSimulationConstraintsResponse { return v.Constraints }).(FaultSimulationConstraintsResponsePtrOutput)
 }
 
 // The kind of fault simulation.
 // Expected value is 'Zone'.
-func (o ZoneFaultSimulationParametersResponseOutput) FaultKind() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneFaultSimulationParametersResponse) string { return v.FaultKind }).(pulumi.StringOutput)
+func (o ZoneFaultSimulationContentResponseOutput) FaultKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneFaultSimulationContentResponse) string { return v.FaultKind }).(pulumi.StringOutput)
 }
 
 // Force the action to go through without any check on the cluster.
-func (o ZoneFaultSimulationParametersResponseOutput) Force() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneFaultSimulationParametersResponse) *bool { return v.Force }).(pulumi.BoolPtrOutput)
+func (o ZoneFaultSimulationContentResponseOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneFaultSimulationContentResponse) *bool { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates the zones of the fault simulation.
-func (o ZoneFaultSimulationParametersResponseOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ZoneFaultSimulationParametersResponse) []string { return v.Zones }).(pulumi.StringArrayOutput)
+func (o ZoneFaultSimulationContentResponseOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZoneFaultSimulationContentResponse) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
-type ZoneFaultSimulationParametersResponsePtrOutput struct{ *pulumi.OutputState }
+type ZoneFaultSimulationContentResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (ZoneFaultSimulationParametersResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneFaultSimulationParametersResponse)(nil)).Elem()
+func (ZoneFaultSimulationContentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneFaultSimulationContentResponse)(nil)).Elem()
 }
 
-func (o ZoneFaultSimulationParametersResponsePtrOutput) ToZoneFaultSimulationParametersResponsePtrOutput() ZoneFaultSimulationParametersResponsePtrOutput {
+func (o ZoneFaultSimulationContentResponsePtrOutput) ToZoneFaultSimulationContentResponsePtrOutput() ZoneFaultSimulationContentResponsePtrOutput {
 	return o
 }
 
-func (o ZoneFaultSimulationParametersResponsePtrOutput) ToZoneFaultSimulationParametersResponsePtrOutputWithContext(ctx context.Context) ZoneFaultSimulationParametersResponsePtrOutput {
+func (o ZoneFaultSimulationContentResponsePtrOutput) ToZoneFaultSimulationContentResponsePtrOutputWithContext(ctx context.Context) ZoneFaultSimulationContentResponsePtrOutput {
 	return o
 }
 
-func (o ZoneFaultSimulationParametersResponsePtrOutput) Elem() ZoneFaultSimulationParametersResponseOutput {
-	return o.ApplyT(func(v *ZoneFaultSimulationParametersResponse) ZoneFaultSimulationParametersResponse {
+func (o ZoneFaultSimulationContentResponsePtrOutput) Elem() ZoneFaultSimulationContentResponseOutput {
+	return o.ApplyT(func(v *ZoneFaultSimulationContentResponse) ZoneFaultSimulationContentResponse {
 		if v != nil {
 			return *v
 		}
-		var ret ZoneFaultSimulationParametersResponse
+		var ret ZoneFaultSimulationContentResponse
 		return ret
-	}).(ZoneFaultSimulationParametersResponseOutput)
+	}).(ZoneFaultSimulationContentResponseOutput)
 }
 
 // Constraints for Fault Simulation action.
-func (o ZoneFaultSimulationParametersResponsePtrOutput) Constraints() FaultSimulationConstraintsResponsePtrOutput {
-	return o.ApplyT(func(v *ZoneFaultSimulationParametersResponse) *FaultSimulationConstraintsResponse {
+func (o ZoneFaultSimulationContentResponsePtrOutput) Constraints() FaultSimulationConstraintsResponsePtrOutput {
+	return o.ApplyT(func(v *ZoneFaultSimulationContentResponse) *FaultSimulationConstraintsResponse {
 		if v == nil {
 			return nil
 		}
@@ -13236,8 +13359,8 @@ func (o ZoneFaultSimulationParametersResponsePtrOutput) Constraints() FaultSimul
 
 // The kind of fault simulation.
 // Expected value is 'Zone'.
-func (o ZoneFaultSimulationParametersResponsePtrOutput) FaultKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneFaultSimulationParametersResponse) *string {
+func (o ZoneFaultSimulationContentResponsePtrOutput) FaultKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneFaultSimulationContentResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -13246,8 +13369,8 @@ func (o ZoneFaultSimulationParametersResponsePtrOutput) FaultKind() pulumi.Strin
 }
 
 // Force the action to go through without any check on the cluster.
-func (o ZoneFaultSimulationParametersResponsePtrOutput) Force() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZoneFaultSimulationParametersResponse) *bool {
+func (o ZoneFaultSimulationContentResponsePtrOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneFaultSimulationContentResponse) *bool {
 		if v == nil {
 			return nil
 		}
@@ -13256,8 +13379,8 @@ func (o ZoneFaultSimulationParametersResponsePtrOutput) Force() pulumi.BoolPtrOu
 }
 
 // Indicates the zones of the fault simulation.
-func (o ZoneFaultSimulationParametersResponsePtrOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneFaultSimulationParametersResponse) []string {
+func (o ZoneFaultSimulationContentResponsePtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZoneFaultSimulationContentResponse) []string {
 		if v == nil {
 			return nil
 		}
@@ -13332,12 +13455,8 @@ func init() {
 	pulumi.RegisterOutputType(FrontendConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(IpConfigurationOutput{})
 	pulumi.RegisterOutputType(IpConfigurationArrayOutput{})
-	pulumi.RegisterOutputType(IpConfigurationPublicIPAddressConfigurationOutput{})
-	pulumi.RegisterOutputType(IpConfigurationPublicIPAddressConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(IpConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(IpConfigurationResponseArrayOutput{})
-	pulumi.RegisterOutputType(IpConfigurationResponsePublicIPAddressConfigurationOutput{})
-	pulumi.RegisterOutputType(IpConfigurationResponsePublicIPAddressConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(IpTagOutput{})
 	pulumi.RegisterOutputType(IpTagArrayOutput{})
 	pulumi.RegisterOutputType(IpTagResponseOutput{})
@@ -13369,6 +13488,10 @@ func init() {
 	pulumi.RegisterOutputType(NodeTypeSkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(PartitionInstanceCountScaleMechanismOutput{})
 	pulumi.RegisterOutputType(PartitionInstanceCountScaleMechanismResponseOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressConfigurationOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzStatusResponseOutput{})
 	pulumi.RegisterOutputType(ResourceAzStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(RollingUpgradeMonitoringPolicyOutput{})
@@ -13470,6 +13593,6 @@ func init() {
 	pulumi.RegisterOutputType(VmssDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(VmssDataDiskResponseOutput{})
 	pulumi.RegisterOutputType(VmssDataDiskResponseArrayOutput{})
-	pulumi.RegisterOutputType(ZoneFaultSimulationParametersResponseOutput{})
-	pulumi.RegisterOutputType(ZoneFaultSimulationParametersResponsePtrOutput{})
+	pulumi.RegisterOutputType(ZoneFaultSimulationContentResponseOutput{})
+	pulumi.RegisterOutputType(ZoneFaultSimulationContentResponsePtrOutput{})
 }

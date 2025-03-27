@@ -12,7 +12,8 @@ import (
 )
 
 // Get a EcrRepository
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEcrRepository(ctx *pulumi.Context, args *LookupEcrRepositoryArgs, opts ...pulumi.InvokeOption) (*LookupEcrRepositoryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEcrRepositoryResult

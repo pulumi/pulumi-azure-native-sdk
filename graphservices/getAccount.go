@@ -12,7 +12,8 @@ import (
 )
 
 // Returns account resource for a given name.
-// Azure REST API version: 2023-04-13.
+//
+// Uses Azure REST API version 2023-04-13.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult

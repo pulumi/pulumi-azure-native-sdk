@@ -11,8 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieve a Spatial Anchors Account.
-// Azure REST API version: 2021-01-01.
+// > [!NOTE]
+// >
+// > **Mixed Reality retirement**
+// >
+// > The Mixed Reality service is now deprecated and will be retired.
+//
+//	Retrieve a Spatial Anchors Account.
+//
+// Uses Azure REST API version 2021-01-01.
 //
 // Other available API versions: 2021-03-01-preview.
 func LookupSpatialAnchorsAccount(ctx *pulumi.Context, args *LookupSpatialAnchorsAccountArgs, opts ...pulumi.InvokeOption) (*LookupSpatialAnchorsAccountResult, error) {

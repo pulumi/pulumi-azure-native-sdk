@@ -70,6 +70,9 @@ func NewPostgresInstance(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurearcdata/v20240101:PostgresInstance"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:PostgresInstance"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurearcdata:PostgresInstance"),
 		},
 	})

@@ -94,6 +94,9 @@ func NewServerKey(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230201preview:ServerKey"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:ServerKey"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ServerKey"),
 		},
 		{

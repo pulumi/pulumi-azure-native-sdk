@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a Transform.
-// Azure REST API version: 2022-07-01.
+//
+// Uses Azure REST API version 2022-07-01.
 func LookupTransform(ctx *pulumi.Context, args *LookupTransformArgs, opts ...pulumi.InvokeOption) (*LookupTransformResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTransformResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2SecurityGroup
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2SecurityGroup(ctx *pulumi.Context, args *LookupEc2SecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupEc2SecurityGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2SecurityGroupResult

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a private endpoint connection.
+// Get a PrivateEndpointConnectionWithSystemData
 func LookupPrivateEndpointConnectionByHostPool(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByHostPoolArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByHostPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionByHostPoolResult
@@ -25,7 +25,7 @@ func LookupPrivateEndpointConnectionByHostPool(ctx *pulumi.Context, args *Lookup
 type LookupPrivateEndpointConnectionByHostPoolArgs struct {
 	// The name of the host pool within the specified resource group
 	HostPoolName string `pulumi:"hostPoolName"`
-	// The name of the private endpoint connection associated with the Azure resource.
+	// The name parameter for private endpoint
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -63,7 +63,7 @@ func LookupPrivateEndpointConnectionByHostPoolOutput(ctx *pulumi.Context, args L
 type LookupPrivateEndpointConnectionByHostPoolOutputArgs struct {
 	// The name of the host pool within the specified resource group
 	HostPoolName pulumi.StringInput `pulumi:"hostPoolName"`
-	// The name of the private endpoint connection associated with the Azure resource.
+	// The name parameter for private endpoint
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`

@@ -175,6 +175,9 @@ func NewWatchlistItem(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:WatchlistItem"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:WatchlistItem"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:WatchlistItem"),
 		},
 	})

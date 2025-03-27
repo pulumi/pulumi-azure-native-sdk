@@ -12,9 +12,10 @@ import (
 )
 
 // Retrieves an Arc Sql Server availability group.
-// Azure REST API version: 2024-01-01.
 //
-// Other available API versions: 2024-05-01-preview.
+// Uses Azure REST API version 2024-01-01.
+//
+// Other available API versions: 2024-05-01-preview, 2025-03-01-preview.
 func LookupSqlServerAvailabilityGroup(ctx *pulumi.Context, args *LookupSqlServerAvailabilityGroupArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerAvailabilityGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerAvailabilityGroupResult

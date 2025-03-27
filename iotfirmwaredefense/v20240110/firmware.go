@@ -63,6 +63,9 @@ func NewFirmware(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:iotfirmwaredefense/v20230208preview:Firmware"),
 		},
 		{
+			Type: pulumi.String("azure-native:iotfirmwaredefense/v20250401preview:Firmware"),
+		},
+		{
 			Type: pulumi.String("azure-native:iotfirmwaredefense:Firmware"),
 		},
 	})

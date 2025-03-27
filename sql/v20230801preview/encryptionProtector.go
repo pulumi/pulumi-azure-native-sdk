@@ -101,6 +101,9 @@ func NewEncryptionProtector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230501preview:EncryptionProtector"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:EncryptionProtector"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:EncryptionProtector"),
 		},
 		{

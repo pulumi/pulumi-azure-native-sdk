@@ -13,7 +13,8 @@ import (
 )
 
 // DataConnector Model.
-// Azure REST API version: 2023-06-01-preview.
+//
+// Uses Azure REST API version 2023-06-01-preview.
 type DataConnector struct {
 	pulumi.CustomResourceState
 

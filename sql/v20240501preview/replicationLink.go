@@ -67,6 +67,9 @@ func NewReplicationLink(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230501preview:ReplicationLink"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:ReplicationLink"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ReplicationLink"),
 		},
 		{

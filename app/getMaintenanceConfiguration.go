@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the maintenance configuration of a ManagedEnvironment .
-// Azure REST API version: 2024-10-02-preview.
+//
+// Uses Azure REST API version 2024-10-02-preview.
 func LookupMaintenanceConfiguration(ctx *pulumi.Context, args *LookupMaintenanceConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupMaintenanceConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMaintenanceConfigurationResult

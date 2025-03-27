@@ -13,7 +13,8 @@ import (
 )
 
 // Tunnel Policy maps domains to target endpoints to process traffic over the tunnelling protocol.
-// Azure REST API version: 2024-06-01-preview.
+//
+// Uses Azure REST API version 2024-06-01-preview.
 type TunnelPolicy struct {
 	pulumi.CustomResourceState
 

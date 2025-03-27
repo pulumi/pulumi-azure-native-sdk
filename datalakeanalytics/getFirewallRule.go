@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the specified Data Lake Analytics firewall rule.
-// Azure REST API version: 2019-11-01-preview.
+//
+// Uses Azure REST API version 2019-11-01-preview.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallRuleResult

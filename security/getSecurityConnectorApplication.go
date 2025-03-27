@@ -12,7 +12,8 @@ import (
 )
 
 // Get a specific application for the requested scope by applicationId
-// Azure REST API version: 2022-07-01-preview.
+//
+// Uses Azure REST API version 2022-07-01-preview.
 func LookupSecurityConnectorApplication(ctx *pulumi.Context, args *LookupSecurityConnectorApplicationArgs, opts ...pulumi.InvokeOption) (*LookupSecurityConnectorApplicationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityConnectorApplicationResult

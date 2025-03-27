@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a data connection.
-// Azure REST API version: 2021-06-01-preview.
+//
+// Uses Azure REST API version 2021-06-01-preview.
 func LookupEventGridDataConnection(ctx *pulumi.Context, args *LookupEventGridDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventGridDataConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEventGridDataConnectionResult

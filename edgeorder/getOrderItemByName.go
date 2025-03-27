@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an order item.
-// Azure REST API version: 2021-12-01.
+//
+// Uses Azure REST API version 2021-12-01.
 func LookupOrderItemByName(ctx *pulumi.Context, args *LookupOrderItemByNameArgs, opts ...pulumi.InvokeOption) (*LookupOrderItemByNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrderItemByNameResult

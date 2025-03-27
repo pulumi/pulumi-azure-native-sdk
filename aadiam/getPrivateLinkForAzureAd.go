@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a private link policy with a given name.
-// Azure REST API version: 2020-03-01.
+//
+// Uses Azure REST API version 2020-03-01.
 func LookupPrivateLinkForAzureAd(ctx *pulumi.Context, args *LookupPrivateLinkForAzureAdArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkForAzureAdResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkForAzureAdResult

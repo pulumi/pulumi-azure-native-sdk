@@ -13,7 +13,8 @@ import (
 )
 
 // Security operator under a given subscription and pricing
-// Azure REST API version: 2023-01-01-preview.
+//
+// Uses Azure REST API version 2023-01-01-preview.
 type SecurityOperator struct {
 	pulumi.CustomResourceState
 

@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-08-01-preview.
+// Uses Azure REST API version 2023-08-01-preview.
 //
-// Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview.
+// Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
 type InferenceGroup struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +70,9 @@ func NewInferenceGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:InferenceGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:InferenceGroup"),
 		},
 	})
 	opts = append(opts, aliases)

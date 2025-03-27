@@ -13,7 +13,8 @@ import (
 )
 
 // A Durable Task Scheduler resource
-// Azure REST API version: 2024-10-01-preview.
+//
+// Uses Azure REST API version 2024-10-01-preview.
 type Scheduler struct {
 	pulumi.CustomResourceState
 

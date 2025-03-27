@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a link in the hub.
-// Azure REST API version: 2017-04-26.
+//
+// Uses Azure REST API version 2017-04-26.
 func LookupLink(ctx *pulumi.Context, args *LookupLinkArgs, opts ...pulumi.InvokeOption) (*LookupLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLinkResult

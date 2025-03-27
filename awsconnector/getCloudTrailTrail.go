@@ -12,7 +12,8 @@ import (
 )
 
 // Get a CloudTrailTrail
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupCloudTrailTrail(ctx *pulumi.Context, args *LookupCloudTrailTrailArgs, opts ...pulumi.InvokeOption) (*LookupCloudTrailTrailResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudTrailTrailResult

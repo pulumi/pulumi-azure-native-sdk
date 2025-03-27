@@ -12,7 +12,8 @@ import (
 )
 
 // list date to migrate to new pricing model.
-// Azure REST API version: 2017-10-01.
+//
+// Uses Azure REST API version 2017-10-01.
 func ListEASubscriptionListMigrationDatePost(ctx *pulumi.Context, args *ListEASubscriptionListMigrationDatePostArgs, opts ...pulumi.InvokeOption) (*ListEASubscriptionListMigrationDatePostResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEASubscriptionListMigrationDatePostResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves the user ManagementAssociation.
-// Azure REST API version: 2015-11-01-preview.
+//
+// Uses Azure REST API version 2015-11-01-preview.
 func LookupManagementAssociation(ctx *pulumi.Context, args *LookupManagementAssociationArgs, opts ...pulumi.InvokeOption) (*LookupManagementAssociationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementAssociationResult

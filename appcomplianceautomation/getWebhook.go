@@ -12,7 +12,8 @@ import (
 )
 
 // Get the AppComplianceAutomation webhook and its properties.
-// Azure REST API version: 2024-06-27.
+//
+// Uses Azure REST API version 2024-06-27.
 func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.InvokeOption) (*LookupWebhookResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebhookResult

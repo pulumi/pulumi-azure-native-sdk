@@ -12,7 +12,8 @@ import (
 )
 
 // The EngagementFabric account
-// Azure REST API version: 2018-09-01-preview.
+//
+// Uses Azure REST API version 2018-09-01-preview.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult

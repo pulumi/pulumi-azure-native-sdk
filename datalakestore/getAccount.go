@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the specified Data Lake Store account.
-// Azure REST API version: 2016-11-01.
+//
+// Uses Azure REST API version 2016-11-01.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult

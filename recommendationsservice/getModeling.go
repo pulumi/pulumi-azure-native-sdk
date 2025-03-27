@@ -12,7 +12,8 @@ import (
 )
 
 // Returns Modeling resources for a given name.
-// Azure REST API version: 2022-02-01.
+//
+// Uses Azure REST API version 2022-02-01.
 //
 // Other available API versions: 2022-03-01-preview.
 func LookupModeling(ctx *pulumi.Context, args *LookupModelingArgs, opts ...pulumi.InvokeOption) (*LookupModelingResult, error) {

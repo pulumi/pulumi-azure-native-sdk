@@ -12,7 +12,8 @@ import (
 )
 
 // Get a specific action rule
-// Azure REST API version: 2019-05-05-preview.
+//
+// Uses Azure REST API version 2019-05-05-preview.
 func LookupActionRuleByName(ctx *pulumi.Context, args *LookupActionRuleByNameArgs, opts ...pulumi.InvokeOption) (*LookupActionRuleByNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActionRuleByNameResult

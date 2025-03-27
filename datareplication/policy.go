@@ -13,7 +13,10 @@ import (
 )
 
 // Policy model.
-// Azure REST API version: 2021-02-16-preview.
+//
+// Uses Azure REST API version 2021-02-16-preview.
+//
+// Other available API versions: 2024-09-01.
 type Policy struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +48,9 @@ func NewPolicy(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datareplication/v20210216preview:Policy"),
+		},
+		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:Policy"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves the current value for a specific setting.
-// Azure REST API version: 2019-11-01.
+//
+// Uses Azure REST API version 2019-11-01.
 func LookupSetting(ctx *pulumi.Context, args *LookupSettingArgs, opts ...pulumi.InvokeOption) (*LookupSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSettingResult

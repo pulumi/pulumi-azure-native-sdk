@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2Subnet
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2Subnet(ctx *pulumi.Context, args *LookupEc2SubnetArgs, opts ...pulumi.InvokeOption) (*LookupEc2SubnetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2SubnetResult

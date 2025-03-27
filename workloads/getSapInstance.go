@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the SAP Instance resource.
-// Azure REST API version: 2023-10-01-preview.
+//
+// Uses Azure REST API version 2023-10-01-preview.
 func LookupSapInstance(ctx *pulumi.Context, args *LookupSapInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSapInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSapInstanceResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get the EmailService and its properties.
-// Azure REST API version: 2023-03-31.
+//
+// Uses Azure REST API version 2023-03-31.
 //
 // Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
 func LookupEmailService(ctx *pulumi.Context, args *LookupEmailServiceArgs, opts ...pulumi.InvokeOption) (*LookupEmailServiceResult, error) {

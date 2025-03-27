@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the specified spacecraft in a specified resource group.
-// Azure REST API version: 2022-11-01.
+//
+// Uses Azure REST API version 2022-11-01.
 //
 // Other available API versions: 2022-03-01.
 func LookupSpacecraft(ctx *pulumi.Context, args *LookupSpacecraftArgs, opts ...pulumi.InvokeOption) (*LookupSpacecraftResult, error) {

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets information about the specified profile.
-// Azure REST API version: 2017-04-26.
+//
+// Uses Azure REST API version 2017-04-26.
 func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.InvokeOption) (*LookupProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProfileResult

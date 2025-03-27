@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Asset
-// Azure REST API version: 2023-11-01-preview.
+//
+// Uses Azure REST API version 2023-11-01-preview.
 //
 // Other available API versions: 2024-09-01-preview, 2024-11-01.
 func LookupAsset(ctx *pulumi.Context, args *LookupAssetArgs, opts ...pulumi.InvokeOption) (*LookupAssetResult, error) {

@@ -29,7 +29,7 @@ type GetHostPoolRegistrationTokenArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Represents a RegistrationInfo definition.  This is not returned on HostPool GET. In order to get the registration token use the retrieveRegistrationToken or listRegistrationTokens POST calls.
+// Represents a RegistrationInfo definition.
 type GetHostPoolRegistrationTokenResult struct {
 	// Expiration time of registration token.
 	ExpirationTime *string `pulumi:"expirationTime"`
@@ -59,7 +59,7 @@ func (GetHostPoolRegistrationTokenOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetHostPoolRegistrationTokenArgs)(nil)).Elem()
 }
 
-// Represents a RegistrationInfo definition.  This is not returned on HostPool GET. In order to get the registration token use the retrieveRegistrationToken or listRegistrationTokens POST calls.
+// Represents a RegistrationInfo definition.
 type GetHostPoolRegistrationTokenResultOutput struct{ *pulumi.OutputState }
 
 func (GetHostPoolRegistrationTokenResultOutput) ElementType() reflect.Type {

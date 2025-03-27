@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a data connection.
-// Azure REST API version: 2022-12-29.
+//
+// Uses Azure REST API version 2022-12-29.
 func LookupIotHubDataConnection(ctx *pulumi.Context, args *LookupIotHubDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupIotHubDataConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIotHubDataConnectionResult

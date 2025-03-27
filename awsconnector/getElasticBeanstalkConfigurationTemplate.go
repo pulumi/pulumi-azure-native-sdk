@@ -12,7 +12,8 @@ import (
 )
 
 // Get a ElasticBeanstalkConfigurationTemplate
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupElasticBeanstalkConfigurationTemplate(ctx *pulumi.Context, args *LookupElasticBeanstalkConfigurationTemplateArgs, opts ...pulumi.InvokeOption) (*LookupElasticBeanstalkConfigurationTemplateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupElasticBeanstalkConfigurationTemplateResult

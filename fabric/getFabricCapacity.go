@@ -12,7 +12,8 @@ import (
 )
 
 // Get a FabricCapacity
-// Azure REST API version: 2023-11-01.
+//
+// Uses Azure REST API version 2023-11-01.
 //
 // Other available API versions: 2025-01-15-preview.
 func LookupFabricCapacity(ctx *pulumi.Context, args *LookupFabricCapacityArgs, opts ...pulumi.InvokeOption) (*LookupFabricCapacityResult, error) {

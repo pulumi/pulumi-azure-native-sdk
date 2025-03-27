@@ -61,6 +61,9 @@ func NewDataFlow(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:iotoperations/v20241101:DataFlow"),
 		},
 		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:DataFlow"),
+		},
+		{
 			Type: pulumi.String("azure-native:iotoperations:DataFlow"),
 		},
 	})

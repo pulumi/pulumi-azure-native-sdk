@@ -12,9 +12,10 @@ import (
 )
 
 // Retrieves a SQL Server Instance resource
-// Azure REST API version: 2023-01-15-preview.
 //
-// Other available API versions: 2024-01-01, 2024-05-01-preview.
+// Uses Azure REST API version 2023-01-15-preview.
+//
+// Other available API versions: 2024-01-01, 2024-05-01-preview, 2025-03-01-preview.
 func LookupSqlServerInstance(ctx *pulumi.Context, args *LookupSqlServerInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerInstanceResult

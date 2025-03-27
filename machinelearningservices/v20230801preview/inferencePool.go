@@ -63,6 +63,9 @@ func NewInferencePool(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:InferencePool"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:InferencePool"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:InferencePool"),
 		},
 	})

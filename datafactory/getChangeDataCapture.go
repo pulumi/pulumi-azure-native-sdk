@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a change data capture.
-// Azure REST API version: 2018-06-01.
+//
+// Uses Azure REST API version 2018-06-01.
 func LookupChangeDataCapture(ctx *pulumi.Context, args *LookupChangeDataCaptureArgs, opts ...pulumi.InvokeOption) (*LookupChangeDataCaptureResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupChangeDataCaptureResult

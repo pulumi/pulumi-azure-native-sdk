@@ -12,7 +12,8 @@ import (
 )
 
 // Implements HybridIdentityMetadata GET method.
-// Azure REST API version: 2022-12-15-preview.
+//
+// Uses Azure REST API version 2022-12-15-preview.
 func LookupHybridIdentityMetadatum(ctx *pulumi.Context, args *LookupHybridIdentityMetadatumArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadatumResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridIdentityMetadatumResult

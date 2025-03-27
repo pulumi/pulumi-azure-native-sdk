@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieve an Azure ML commitment plan by its subscription, resource group and name.
-// Azure REST API version: 2016-05-01-preview.
+//
+// Uses Azure REST API version 2016-05-01-preview.
 func LookupCommitmentPlan(ctx *pulumi.Context, args *LookupCommitmentPlanArgs, opts ...pulumi.InvokeOption) (*LookupCommitmentPlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCommitmentPlanResult

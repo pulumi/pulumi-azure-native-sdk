@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a feature registration
-// Azure REST API version: 2021-07-01.
+//
+// Uses Azure REST API version 2021-07-01.
 func LookupSubscriptionFeatureRegistration(ctx *pulumi.Context, args *LookupSubscriptionFeatureRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionFeatureRegistrationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubscriptionFeatureRegistrationResult

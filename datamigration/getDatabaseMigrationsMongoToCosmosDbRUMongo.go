@@ -12,7 +12,8 @@ import (
 )
 
 // Get Database Migration resource.
-// Azure REST API version: 2023-07-15-preview.
+//
+// Uses Azure REST API version 2023-07-15-preview.
 func LookupDatabaseMigrationsMongoToCosmosDbRUMongo(ctx *pulumi.Context, args *LookupDatabaseMigrationsMongoToCosmosDbRUMongoArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult

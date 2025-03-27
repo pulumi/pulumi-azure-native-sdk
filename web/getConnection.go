@@ -12,7 +12,8 @@ import (
 )
 
 // Get a specific connection
-// Azure REST API version: 2016-06-01.
+//
+// Uses Azure REST API version 2016-06-01.
 //
 // Other available API versions: 2015-08-01-preview.
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {

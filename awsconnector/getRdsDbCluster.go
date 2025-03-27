@@ -12,7 +12,8 @@ import (
 )
 
 // Get a RdsDBCluster
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupRdsDbCluster(ctx *pulumi.Context, args *LookupRdsDbClusterArgs, opts ...pulumi.InvokeOption) (*LookupRdsDbClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRdsDbClusterResult

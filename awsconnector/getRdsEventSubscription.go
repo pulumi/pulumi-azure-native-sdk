@@ -12,7 +12,8 @@ import (
 )
 
 // Get a RdsEventSubscription
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupRdsEventSubscription(ctx *pulumi.Context, args *LookupRdsEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupRdsEventSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRdsEventSubscriptionResult

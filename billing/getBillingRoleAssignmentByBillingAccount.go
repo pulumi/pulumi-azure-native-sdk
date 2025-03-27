@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a role assignment for the caller on a billing account. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement.
-// Azure REST API version: 2019-10-01-preview.
+//
+// Uses Azure REST API version 2019-10-01-preview.
 //
 // Other available API versions: 2024-04-01.
 func LookupBillingRoleAssignmentByBillingAccount(ctx *pulumi.Context, args *LookupBillingRoleAssignmentByBillingAccountArgs, opts ...pulumi.InvokeOption) (*LookupBillingRoleAssignmentByBillingAccountResult, error) {

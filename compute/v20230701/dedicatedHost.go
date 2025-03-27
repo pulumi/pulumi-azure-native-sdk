@@ -112,6 +112,9 @@ func NewDedicatedHost(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:compute/v20240701:DedicatedHost"),
 		},
 		{
+			Type: pulumi.String("azure-native:compute/v20241101:DedicatedHost"),
+		},
+		{
 			Type: pulumi.String("azure-native:compute:DedicatedHost"),
 		},
 	})

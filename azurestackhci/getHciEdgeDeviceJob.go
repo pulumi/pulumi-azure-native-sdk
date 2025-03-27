@@ -12,7 +12,8 @@ import (
 )
 
 // Get a EdgeDeviceJob
-// Azure REST API version: 2024-09-01-preview.
+//
+// Uses Azure REST API version 2024-09-01-preview.
 func LookupHciEdgeDeviceJob(ctx *pulumi.Context, args *LookupHciEdgeDeviceJobArgs, opts ...pulumi.InvokeOption) (*LookupHciEdgeDeviceJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHciEdgeDeviceJobResult

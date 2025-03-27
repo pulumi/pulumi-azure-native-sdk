@@ -95,6 +95,9 @@ func NewTagRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:elastic/v20240615preview:TagRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:elastic/v20250115preview:TagRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:elastic:TagRule"),
 		},
 	})

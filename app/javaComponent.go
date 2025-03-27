@@ -13,9 +13,10 @@ import (
 )
 
 // Java Component.
-// Azure REST API version: 2023-11-02-preview.
 //
-// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Uses Azure REST API version 2023-11-02-preview.
+//
+// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
 type JavaComponent struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +61,9 @@ func NewJavaComponent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:JavaComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250101:JavaComponent"),
 		},
 	})
 	opts = append(opts, aliases)

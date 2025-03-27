@@ -12,9 +12,10 @@ import (
 )
 
 // Gets a storage insight instance.
-// Azure REST API version: 2020-08-01.
 //
-// Other available API versions: 2023-09-01.
+// Uses Azure REST API version 2020-08-01.
+//
+// Other available API versions: 2023-09-01, 2025-02-01.
 func LookupStorageInsightConfig(ctx *pulumi.Context, args *LookupStorageInsightConfigArgs, opts ...pulumi.InvokeOption) (*LookupStorageInsightConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageInsightConfigResult

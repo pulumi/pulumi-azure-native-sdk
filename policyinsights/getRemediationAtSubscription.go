@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an existing remediation at subscription scope.
-// Azure REST API version: 2021-10-01.
+//
+// Uses Azure REST API version 2021-10-01.
 //
 // Other available API versions: 2024-10-01.
 func LookupRemediationAtSubscription(ctx *pulumi.Context, args *LookupRemediationAtSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtSubscriptionResult, error) {

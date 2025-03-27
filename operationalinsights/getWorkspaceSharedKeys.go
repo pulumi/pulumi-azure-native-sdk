@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the shared keys for a workspace.
-// Azure REST API version: 2015-11-01-preview.
+//
+// Uses Azure REST API version 2015-11-01-preview.
 func GetWorkspaceSharedKeys(ctx *pulumi.Context, args *GetWorkspaceSharedKeysArgs, opts ...pulumi.InvokeOption) (*GetWorkspaceSharedKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetWorkspaceSharedKeysResult

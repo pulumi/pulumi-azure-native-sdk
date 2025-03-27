@@ -12,7 +12,8 @@ import (
 )
 
 // Get a SsmInstanceInformation
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupSsmInstanceInformation(ctx *pulumi.Context, args *LookupSsmInstanceInformationArgs, opts ...pulumi.InvokeOption) (*LookupSsmInstanceInformationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSsmInstanceInformationResult

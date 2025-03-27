@@ -14,8 +14,10 @@ import (
 type Access string
 
 const (
+	// The network traffic is allowed.
 	AccessAllow = Access("allow")
-	AccessDeny  = Access("deny")
+	// The network traffic is denied.
+	AccessDeny = Access("deny")
 )
 
 func (Access) ElementType() reflect.Type {
@@ -693,7 +695,9 @@ func (in *clusterUpgradeModePtr) ToClusterUpgradeModePtrOutputWithContext(ctx co
 type Direction string
 
 const (
-	DirectionInbound  = Direction("inbound")
+	// Inbound direction.
+	DirectionInbound = Direction("inbound")
+	// Outbound direction.
 	DirectionOutbound = Direction("outbound")
 )
 
@@ -2062,13 +2066,20 @@ func (in *moveCostPtr) ToMoveCostPtrOutputWithContext(ctx context.Context) MoveC
 type NsgProtocol string
 
 const (
-	NsgProtocolHttp  = NsgProtocol("http")
+	// Protocol applies to HTTP.
+	NsgProtocolHttp = NsgProtocol("http")
+	// Protocol applies to HTTPS.
 	NsgProtocolHttps = NsgProtocol("https")
-	NsgProtocolTcp   = NsgProtocol("tcp")
-	NsgProtocolUdp   = NsgProtocol("udp")
-	NsgProtocolIcmp  = NsgProtocol("icmp")
-	NsgProtocolAh    = NsgProtocol("ah")
-	NsgProtocolEsp   = NsgProtocol("esp")
+	// Protocol applies to TCP.
+	NsgProtocolTcp = NsgProtocol("tcp")
+	// Protocol applies to UDP.
+	NsgProtocolUdp = NsgProtocol("udp")
+	// Protocol applies to ICMP.
+	NsgProtocolIcmp = NsgProtocol("icmp")
+	// Protocol applies to AH.
+	NsgProtocolAh = NsgProtocol("ah")
+	// Protocol applies to ESP.
+	NsgProtocolEsp = NsgProtocol("esp")
 )
 
 func (NsgProtocol) ElementType() reflect.Type {
@@ -2234,7 +2245,7 @@ func (in *nsgProtocolPtr) ToNsgProtocolPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(NsgProtocolPtrOutput)
 }
 
-// Specifies how the service is partitioned.
+// Enumerates the ways that a service can be partitioned.
 type PartitionScheme string
 
 const (
@@ -2250,7 +2261,9 @@ const (
 type PrivateEndpointNetworkPolicies string
 
 const (
-	PrivateEndpointNetworkPoliciesEnabled  = PrivateEndpointNetworkPolicies("enabled")
+	// Enable apply network policies on private end point in the subnet.
+	PrivateEndpointNetworkPoliciesEnabled = PrivateEndpointNetworkPolicies("enabled")
+	// Disable apply network policies on private end point in the subnet.
 	PrivateEndpointNetworkPoliciesDisabled = PrivateEndpointNetworkPolicies("disabled")
 )
 
@@ -2416,7 +2429,9 @@ func (in *privateEndpointNetworkPoliciesPtr) ToPrivateEndpointNetworkPoliciesPtr
 type PrivateIPAddressVersion string
 
 const (
+	// The IP configuration's private IP is IPv4.
 	PrivateIPAddressVersionIPv4 = PrivateIPAddressVersion("IPv4")
+	// The IP configuration's private IP is IPv6.
 	PrivateIPAddressVersionIPv6 = PrivateIPAddressVersion("IPv6")
 )
 
@@ -2582,7 +2597,9 @@ func (in *privateIPAddressVersionPtr) ToPrivateIPAddressVersionPtrOutputWithCont
 type PrivateLinkServiceNetworkPolicies string
 
 const (
-	PrivateLinkServiceNetworkPoliciesEnabled  = PrivateLinkServiceNetworkPolicies("enabled")
+	// Enable apply network policies on private link service in the subnet.
+	PrivateLinkServiceNetworkPoliciesEnabled = PrivateLinkServiceNetworkPolicies("enabled")
+	// Disable apply network policies on private link service in the subnet.
 	PrivateLinkServiceNetworkPoliciesDisabled = PrivateLinkServiceNetworkPolicies("disabled")
 )
 
@@ -2748,8 +2765,11 @@ func (in *privateLinkServiceNetworkPoliciesPtr) ToPrivateLinkServiceNetworkPolic
 type ProbeProtocol string
 
 const (
-	ProbeProtocolTcp   = ProbeProtocol("tcp")
-	ProbeProtocolHttp  = ProbeProtocol("http")
+	// Probe protocol is TCP.
+	ProbeProtocolTcp = ProbeProtocol("tcp")
+	// Probe protocol is HTTP.
+	ProbeProtocolHttp = ProbeProtocol("http")
+	// Probe protocol is HTTPS.
 	ProbeProtocolHttps = ProbeProtocol("https")
 )
 
@@ -2916,7 +2936,9 @@ func (in *probeProtocolPtr) ToProbeProtocolPtrOutputWithContext(ctx context.Cont
 type Protocol string
 
 const (
+	// Transport protocol is TCP.
 	ProtocolTcp = Protocol("tcp")
+	// Transport protocol is UDP.
 	ProtocolUdp = Protocol("udp")
 )
 
@@ -3082,7 +3104,9 @@ func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) Proto
 type PublicIPAddressVersion string
 
 const (
+	// The IP configuration's public IP is IPv4.
 	PublicIPAddressVersionIPv4 = PublicIPAddressVersion("IPv4")
+	// The IP configuration's public IP is IPv6.
 	PublicIPAddressVersionIPv6 = PublicIPAddressVersion("IPv6")
 )
 
@@ -4116,7 +4140,7 @@ const (
 	ServicePlacementPolicyTypeNonPartiallyPlaceService = ServicePlacementPolicyType("NonPartiallyPlaceService")
 )
 
-// Specifies the mechanism associated with this scaling policy.
+// Enumerates the ways that a service can be partitioned.
 type ServiceScalingMechanismKind string
 
 const (
@@ -4126,7 +4150,7 @@ const (
 	ServiceScalingMechanismKindAddRemoveIncrementalNamedPartition = ServiceScalingMechanismKind("AddRemoveIncrementalNamedPartition")
 )
 
-// Specifies the trigger associated with this scaling policy.
+// Enumerates the ways that a service can be partitioned.
 type ServiceScalingTriggerKind string
 
 const (

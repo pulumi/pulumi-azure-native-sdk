@@ -13,7 +13,8 @@ import (
 )
 
 // Workload deployment model.
-// Azure REST API version: 2022-05-01-preview.
+//
+// Uses Azure REST API version 2022-05-01-preview.
 type WorkloadDeployment struct {
 	pulumi.CustomResourceState
 

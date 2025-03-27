@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a resource type details in the given subscription and provider.
-// Azure REST API version: 2021-09-01-preview.
+//
+// Uses Azure REST API version 2021-09-01-preview.
 func LookupResourceTypeRegistration(ctx *pulumi.Context, args *LookupResourceTypeRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupResourceTypeRegistrationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceTypeRegistrationResult

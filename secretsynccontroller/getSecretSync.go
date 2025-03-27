@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the properties of a SecretSync instance.
-// Azure REST API version: 2024-08-21-preview.
+//
+// Uses Azure REST API version 2024-08-21-preview.
 func LookupSecretSync(ctx *pulumi.Context, args *LookupSecretSyncArgs, opts ...pulumi.InvokeOption) (*LookupSecretSyncResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretSyncResult

@@ -122,6 +122,12 @@ func NewNetworkinterfaceRetrieve(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:networkinterfaceRetrieve"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:NetworkinterfaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:networkinterfaceRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci:NetworkinterfaceRetrieve"),
 		},
 		{

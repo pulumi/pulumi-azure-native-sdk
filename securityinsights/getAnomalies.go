@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a setting.
-// Azure REST API version: 2023-06-01-preview.
+//
+// Uses Azure REST API version 2023-06-01-preview.
 func LookupAnomalies(ctx *pulumi.Context, args *LookupAnomaliesArgs, opts ...pulumi.InvokeOption) (*LookupAnomaliesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnomaliesResult

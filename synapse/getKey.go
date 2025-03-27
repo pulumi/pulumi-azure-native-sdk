@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a workspace key
-// Azure REST API version: 2021-06-01.
+//
+// Uses Azure REST API version 2021-06-01.
 //
 // Other available API versions: 2021-06-01-preview.
 func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOption) (*LookupKeyResult, error) {

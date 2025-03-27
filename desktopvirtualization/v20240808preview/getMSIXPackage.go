@@ -61,7 +61,7 @@ type LookupMSIXPackageResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Package Version found in the appxmanifest.xml.
+	// Package version found in the appxmanifest.xml.
 	Version *string `pulumi:"version"`
 }
 
@@ -172,7 +172,7 @@ func (o LookupMSIXPackageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMSIXPackageResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Package Version found in the appxmanifest.xml.
+// Package version found in the appxmanifest.xml.
 func (o LookupMSIXPackageResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMSIXPackageResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

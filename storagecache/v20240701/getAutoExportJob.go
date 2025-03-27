@@ -90,7 +90,7 @@ func (val *LookupAutoExportJobResult) Defaults() *LookupAutoExportJobResult {
 	}
 	tmp := *val
 	if tmp.AdminStatus == nil {
-		adminStatus_ := "Active"
+		adminStatus_ := "Enable"
 		tmp.AdminStatus = &adminStatus_
 	}
 	return &tmp

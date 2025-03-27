@@ -92,6 +92,9 @@ func NewPolicyDefinition(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:authorization/v20240501:PolicyDefinition"),
 		},
 		{
+			Type: pulumi.String("azure-native:authorization/v20250301:PolicyDefinition"),
+		},
+		{
 			Type: pulumi.String("azure-native:authorization:PolicyDefinition"),
 		},
 	})

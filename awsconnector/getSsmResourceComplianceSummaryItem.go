@@ -12,7 +12,8 @@ import (
 )
 
 // Get a SsmResourceComplianceSummaryItem
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupSsmResourceComplianceSummaryItem(ctx *pulumi.Context, args *LookupSsmResourceComplianceSummaryItemArgs, opts ...pulumi.InvokeOption) (*LookupSsmResourceComplianceSummaryItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSsmResourceComplianceSummaryItemResult

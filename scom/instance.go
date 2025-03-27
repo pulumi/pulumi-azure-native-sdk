@@ -13,7 +13,8 @@ import (
 )
 
 // A SCOM instance resource
-// Azure REST API version: 2023-07-07-preview.
+//
+// Uses Azure REST API version 2023-07-07-preview.
 type Instance struct {
 	pulumi.CustomResourceState
 

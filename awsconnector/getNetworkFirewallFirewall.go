@@ -12,7 +12,8 @@ import (
 )
 
 // Get a NetworkFirewallFirewall
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupNetworkFirewallFirewall(ctx *pulumi.Context, args *LookupNetworkFirewallFirewallArgs, opts ...pulumi.InvokeOption) (*LookupNetworkFirewallFirewallResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkFirewallFirewallResult

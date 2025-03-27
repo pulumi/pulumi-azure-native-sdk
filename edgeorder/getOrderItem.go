@@ -12,7 +12,8 @@ import (
 )
 
 // Get an order item.
-// Azure REST API version: 2022-05-01-preview.
+//
+// Uses Azure REST API version 2022-05-01-preview.
 //
 // Other available API versions: 2024-02-01.
 func LookupOrderItem(ctx *pulumi.Context, args *LookupOrderItemArgs, opts ...pulumi.InvokeOption) (*LookupOrderItemResult, error) {

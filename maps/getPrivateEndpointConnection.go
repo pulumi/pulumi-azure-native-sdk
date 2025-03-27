@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the Maps Account.
-// Azure REST API version: 2023-12-01-preview.
+//
+// Uses Azure REST API version 2023-12-01-preview.
 //
 // Other available API versions: 2024-01-01-preview.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {

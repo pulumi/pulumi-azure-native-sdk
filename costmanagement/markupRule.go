@@ -13,7 +13,8 @@ import (
 )
 
 // Markup rule
-// Azure REST API version: 2022-10-05-preview.
+//
+// Uses Azure REST API version 2022-10-05-preview.
 type MarkupRule struct {
 	pulumi.CustomResourceState
 

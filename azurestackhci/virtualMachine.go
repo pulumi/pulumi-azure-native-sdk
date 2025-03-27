@@ -13,7 +13,8 @@ import (
 )
 
 // The virtual machine resource definition.
-// Azure REST API version: 2022-12-15-preview.
+//
+// Uses Azure REST API version 2022-12-15-preview.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 

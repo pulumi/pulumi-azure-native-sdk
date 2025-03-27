@@ -51,6 +51,9 @@ func NewOpenAI(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:elastic/v20241001preview:OpenAI"),
 		},
 		{
+			Type: pulumi.String("azure-native:elastic/v20250115preview:OpenAI"),
+		},
+		{
 			Type: pulumi.String("azure-native:elastic:OpenAI"),
 		},
 	})

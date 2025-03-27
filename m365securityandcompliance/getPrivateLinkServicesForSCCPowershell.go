@@ -12,7 +12,8 @@ import (
 )
 
 // Get the metadata of a privateLinkServicesForSCCPowershell resource.
-// Azure REST API version: 2021-03-25-preview.
+//
+// Uses Azure REST API version 2021-03-25-preview.
 func LookupPrivateLinkServicesForSCCPowershell(ctx *pulumi.Context, args *LookupPrivateLinkServicesForSCCPowershellArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicesForSCCPowershellResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkServicesForSCCPowershellResult

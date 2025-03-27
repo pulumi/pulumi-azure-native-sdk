@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Macie2JobSummary
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupMacie2JobSummary(ctx *pulumi.Context, args *LookupMacie2JobSummaryArgs, opts ...pulumi.InvokeOption) (*LookupMacie2JobSummaryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMacie2JobSummaryResult

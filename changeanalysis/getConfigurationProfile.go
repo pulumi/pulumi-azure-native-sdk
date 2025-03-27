@@ -12,7 +12,8 @@ import (
 )
 
 // A profile object that contains change analysis configuration, such as notification settings, for this subscription
-// Azure REST API version: 2020-04-01-preview.
+//
+// Uses Azure REST API version 2020-04-01-preview.
 func LookupConfigurationProfile(ctx *pulumi.Context, args *LookupConfigurationProfileArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationProfileResult

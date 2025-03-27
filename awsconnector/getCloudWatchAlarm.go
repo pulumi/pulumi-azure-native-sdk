@@ -12,7 +12,8 @@ import (
 )
 
 // Get a CloudWatchAlarm
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupCloudWatchAlarm(ctx *pulumi.Context, args *LookupCloudWatchAlarmArgs, opts ...pulumi.InvokeOption) (*LookupCloudWatchAlarmResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudWatchAlarmResult

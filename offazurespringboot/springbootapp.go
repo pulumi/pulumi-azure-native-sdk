@@ -13,7 +13,8 @@ import (
 )
 
 // The springbootapps envelope resource definition.
-// Azure REST API version: 2024-04-01-preview.
+//
+// Uses Azure REST API version 2024-04-01-preview.
 type Springbootapp struct {
 	pulumi.CustomResourceState
 

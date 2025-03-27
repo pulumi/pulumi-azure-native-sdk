@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a list of L2 Connections attached to an ground station.
-// Azure REST API version: 2024-03-01-preview.
+//
+// Uses Azure REST API version 2024-03-01-preview.
 //
 // Other available API versions: 2024-03-01.
 func ListGroundStationL2Connections(ctx *pulumi.Context, args *ListGroundStationL2ConnectionsArgs, opts ...pulumi.InvokeOption) (*ListGroundStationL2ConnectionsResult, error) {

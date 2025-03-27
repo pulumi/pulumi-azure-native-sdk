@@ -12,7 +12,8 @@ import (
 )
 
 // Get a DataLakeConnectorResource
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 func LookupDataLakeConnector(ctx *pulumi.Context, args *LookupDataLakeConnectorArgs, opts ...pulumi.InvokeOption) (*LookupDataLakeConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataLakeConnectorResult

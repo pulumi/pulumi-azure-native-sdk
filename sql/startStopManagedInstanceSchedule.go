@@ -13,9 +13,10 @@ import (
 )
 
 // Managed instance's Start/Stop schedule.
-// Azure REST API version: 2022-11-01-preview.
 //
-// Other available API versions: 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Uses Azure REST API version 2022-11-01-preview.
+//
+// Other available API versions: 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 type StartStopManagedInstanceSchedule struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +72,9 @@ func NewStartStopManagedInstanceSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:StartStopManagedInstanceSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801:StartStopManagedInstanceSchedule"),
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:StartStopManagedInstanceSchedule"),

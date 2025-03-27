@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Task Hub
-// Azure REST API version: 2024-10-01-preview.
+//
+// Uses Azure REST API version 2024-10-01-preview.
 func LookupTaskHub(ctx *pulumi.Context, args *LookupTaskHubArgs, opts ...pulumi.InvokeOption) (*LookupTaskHubResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTaskHubResult

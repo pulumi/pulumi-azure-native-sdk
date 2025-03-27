@@ -45,6 +45,9 @@ func NewMonitoredSubscription(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:elastic/v20241001preview:MonitoredSubscription"),
 		},
 		{
+			Type: pulumi.String("azure-native:elastic/v20250115preview:MonitoredSubscription"),
+		},
+		{
 			Type: pulumi.String("azure-native:elastic:MonitoredSubscription"),
 		},
 	})

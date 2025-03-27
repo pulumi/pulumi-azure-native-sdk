@@ -12,7 +12,8 @@ import (
 )
 
 // Returns the BitLocker Keys for all drives in the specified job.
-// Azure REST API version: 2021-01-01.
+//
+// Uses Azure REST API version 2021-01-01.
 func ListBitLockerKey(ctx *pulumi.Context, args *ListBitLockerKeyArgs, opts ...pulumi.InvokeOption) (*ListBitLockerKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBitLockerKeyResult

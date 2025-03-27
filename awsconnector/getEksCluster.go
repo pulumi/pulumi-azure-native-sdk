@@ -12,7 +12,8 @@ import (
 )
 
 // Get a EksCluster
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEksCluster(ctx *pulumi.Context, args *LookupEksClusterArgs, opts ...pulumi.InvokeOption) (*LookupEksClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEksClusterResult

@@ -61,6 +61,9 @@ func NewFlow(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azuredatatransfer/v20240927:Flow"),
 		},
 		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20250301preview:Flow"),
+		},
+		{
 			Type: pulumi.String("azure-native:azuredatatransfer:Flow"),
 		},
 	})

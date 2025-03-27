@@ -12,7 +12,8 @@ import (
 )
 
 // Get a springbootapps resource.
-// Azure REST API version: 2024-04-01-preview.
+//
+// Uses Azure REST API version 2024-04-01-preview.
 func LookupSpringbootapp(ctx *pulumi.Context, args *LookupSpringbootappArgs, opts ...pulumi.InvokeOption) (*LookupSpringbootappResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpringbootappResult

@@ -261,7 +261,7 @@ func (o ResourceIdResponseArrayOutput) Index(i pulumi.IntInput) ResourceIdRespon
 
 // SecurityPolicyConfigurations Subresource of Traffic Controller.
 type SecurityPolicyConfigurations struct {
-	// Contains reference to a WAF-type security policy that is applied at the Traffic Controller level.
+	// Contains reference to a WAF-type security policy.
 	WafSecurityPolicy *WafSecurityPolicy `pulumi:"wafSecurityPolicy"`
 }
 
@@ -278,7 +278,7 @@ type SecurityPolicyConfigurationsInput interface {
 
 // SecurityPolicyConfigurations Subresource of Traffic Controller.
 type SecurityPolicyConfigurationsArgs struct {
-	// Contains reference to a WAF-type security policy that is applied at the Traffic Controller level.
+	// Contains reference to a WAF-type security policy.
 	WafSecurityPolicy WafSecurityPolicyPtrInput `pulumi:"wafSecurityPolicy"`
 }
 
@@ -360,7 +360,7 @@ func (o SecurityPolicyConfigurationsOutput) ToSecurityPolicyConfigurationsPtrOut
 	}).(SecurityPolicyConfigurationsPtrOutput)
 }
 
-// Contains reference to a WAF-type security policy that is applied at the Traffic Controller level.
+// Contains reference to a WAF-type security policy.
 func (o SecurityPolicyConfigurationsOutput) WafSecurityPolicy() WafSecurityPolicyPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyConfigurations) *WafSecurityPolicy { return v.WafSecurityPolicy }).(WafSecurityPolicyPtrOutput)
 }
@@ -389,7 +389,7 @@ func (o SecurityPolicyConfigurationsPtrOutput) Elem() SecurityPolicyConfiguratio
 	}).(SecurityPolicyConfigurationsOutput)
 }
 
-// Contains reference to a WAF-type security policy that is applied at the Traffic Controller level.
+// Contains reference to a WAF-type security policy.
 func (o SecurityPolicyConfigurationsPtrOutput) WafSecurityPolicy() WafSecurityPolicyPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyConfigurations) *WafSecurityPolicy {
 		if v == nil {
@@ -401,7 +401,7 @@ func (o SecurityPolicyConfigurationsPtrOutput) WafSecurityPolicy() WafSecurityPo
 
 // SecurityPolicyConfigurations Subresource of Traffic Controller.
 type SecurityPolicyConfigurationsResponse struct {
-	// Contains reference to a WAF-type security policy that is applied at the Traffic Controller level.
+	// Contains reference to a WAF-type security policy.
 	WafSecurityPolicy *WafSecurityPolicyResponse `pulumi:"wafSecurityPolicy"`
 }
 
@@ -420,7 +420,7 @@ func (o SecurityPolicyConfigurationsResponseOutput) ToSecurityPolicyConfiguratio
 	return o
 }
 
-// Contains reference to a WAF-type security policy that is applied at the Traffic Controller level.
+// Contains reference to a WAF-type security policy.
 func (o SecurityPolicyConfigurationsResponseOutput) WafSecurityPolicy() WafSecurityPolicyResponsePtrOutput {
 	return o.ApplyT(func(v SecurityPolicyConfigurationsResponse) *WafSecurityPolicyResponse { return v.WafSecurityPolicy }).(WafSecurityPolicyResponsePtrOutput)
 }
@@ -449,7 +449,7 @@ func (o SecurityPolicyConfigurationsResponsePtrOutput) Elem() SecurityPolicyConf
 	}).(SecurityPolicyConfigurationsResponseOutput)
 }
 
-// Contains reference to a WAF-type security policy that is applied at the Traffic Controller level.
+// Contains reference to a WAF-type security policy.
 func (o SecurityPolicyConfigurationsResponsePtrOutput) WafSecurityPolicy() WafSecurityPolicyResponsePtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyConfigurationsResponse) *WafSecurityPolicyResponse {
 		if v == nil {

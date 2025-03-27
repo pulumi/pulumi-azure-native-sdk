@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the properties for an Azure Dev Spaces Controller.
-// Azure REST API version: 2019-04-01.
+//
+// Uses Azure REST API version 2019-04-01.
 func LookupController(ctx *pulumi.Context, args *LookupControllerArgs, opts ...pulumi.InvokeOption) (*LookupControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupControllerResult

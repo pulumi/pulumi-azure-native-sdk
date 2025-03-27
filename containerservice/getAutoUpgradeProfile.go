@@ -12,7 +12,8 @@ import (
 )
 
 // Get a AutoUpgradeProfile
-// Azure REST API version: 2024-05-02-preview.
+//
+// Uses Azure REST API version 2024-05-02-preview.
 func LookupAutoUpgradeProfile(ctx *pulumi.Context, args *LookupAutoUpgradeProfileArgs, opts ...pulumi.InvokeOption) (*LookupAutoUpgradeProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutoUpgradeProfileResult

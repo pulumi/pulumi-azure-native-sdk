@@ -12,7 +12,8 @@ import (
 )
 
 // Get the SAP Disk Configuration Layout prod/non-prod SAP System.
-// Azure REST API version: 2024-09-01.
+//
+// Uses Azure REST API version 2024-09-01.
 func GetSapVirtualInstanceInvokeDiskConfigurations(ctx *pulumi.Context, args *GetSapVirtualInstanceInvokeDiskConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetSapVirtualInstanceInvokeDiskConfigurationsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSapVirtualInstanceInvokeDiskConfigurationsResult

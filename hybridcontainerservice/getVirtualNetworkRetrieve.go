@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the Hybrid AKS virtual network
-// Azure REST API version: 2022-09-01-preview.
+//
+// Uses Azure REST API version 2022-09-01-preview.
 func LookupVirtualNetworkRetrieve(ctx *pulumi.Context, args *LookupVirtualNetworkRetrieveArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkRetrieveResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkRetrieveResult

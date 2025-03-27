@@ -12,7 +12,8 @@ import (
 )
 
 // Get a BrokerAuthorizationResource
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 func LookupBrokerAuthorization(ctx *pulumi.Context, args *LookupBrokerAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupBrokerAuthorizationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBrokerAuthorizationResult

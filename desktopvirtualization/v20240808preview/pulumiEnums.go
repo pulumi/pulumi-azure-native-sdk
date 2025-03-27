@@ -14,8 +14,10 @@ import (
 type ApplicationGroupType string
 
 const (
+	// Application group is Remote and can launch individual applications without a Desktop.
 	ApplicationGroupTypeRemoteApp = ApplicationGroupType("RemoteApp")
-	ApplicationGroupTypeDesktop   = ApplicationGroupType("Desktop")
+	// Application Group delivers a full expected Desktop experience
+	ApplicationGroupTypeDesktop = ApplicationGroupType("Desktop")
 )
 
 func (ApplicationGroupType) ElementType() reflect.Type {
@@ -180,9 +182,12 @@ func (in *applicationGroupTypePtr) ToApplicationGroupTypePtrOutputWithContext(ct
 type CommandLineSetting string
 
 const (
+	// Cannot be launched with command line arguments.
 	CommandLineSettingDoNotAllow = CommandLineSetting("DoNotAllow")
-	CommandLineSettingAllow      = CommandLineSetting("Allow")
-	CommandLineSettingRequire    = CommandLineSetting("Require")
+	// Can optionally be launched with command line arguments.
+	CommandLineSettingAllow = CommandLineSetting("Allow")
+	// Required to be launched with command line arguments.
+	CommandLineSettingRequire = CommandLineSetting("Require")
 )
 
 func (CommandLineSetting) ElementType() reflect.Type {
@@ -344,17 +349,17 @@ func (in *commandLineSettingPtr) ToCommandLineSettingPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(CommandLineSettingPtrOutput)
 }
 
-// Day of the week.
+// Day of the week. Modeled as string
 type DayOfWeek string
 
 const (
-	DayOfWeekSunday    = DayOfWeek("Sunday")
 	DayOfWeekMonday    = DayOfWeek("Monday")
 	DayOfWeekTuesday   = DayOfWeek("Tuesday")
 	DayOfWeekWednesday = DayOfWeek("Wednesday")
 	DayOfWeekThursday  = DayOfWeek("Thursday")
 	DayOfWeekFriday    = DayOfWeek("Friday")
 	DayOfWeekSaturday  = DayOfWeek("Saturday")
+	DayOfWeekSunday    = DayOfWeek("Sunday")
 )
 
 func (DayOfWeek) ElementType() reflect.Type {
@@ -479,13 +484,13 @@ func (o DayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 // DayOfWeekInput is an input type that accepts values of the DayOfWeek enum
 // A concrete instance of `DayOfWeekInput` can be one of the following:
 //
-//	DayOfWeekSunday
 //	DayOfWeekMonday
 //	DayOfWeekTuesday
 //	DayOfWeekWednesday
 //	DayOfWeekThursday
 //	DayOfWeekFriday
 //	DayOfWeekSaturday
+//	DayOfWeekSunday
 type DayOfWeekInput interface {
 	pulumi.Input
 
@@ -520,12 +525,60 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
+// DayOfWeekArrayInput is an input type that accepts DayOfWeekArray and DayOfWeekArrayOutput values.
+// You can construct a concrete instance of `DayOfWeekArrayInput` via:
+//
+//	DayOfWeekArray{ DayOfWeekArgs{...} }
+type DayOfWeekArrayInput interface {
+	pulumi.Input
+
+	ToDayOfWeekArrayOutput() DayOfWeekArrayOutput
+	ToDayOfWeekArrayOutputWithContext(context.Context) DayOfWeekArrayOutput
+}
+
+type DayOfWeekArray []DayOfWeek
+
+func (DayOfWeekArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DayOfWeek)(nil)).Elem()
+}
+
+func (i DayOfWeekArray) ToDayOfWeekArrayOutput() DayOfWeekArrayOutput {
+	return i.ToDayOfWeekArrayOutputWithContext(context.Background())
+}
+
+func (i DayOfWeekArray) ToDayOfWeekArrayOutputWithContext(ctx context.Context) DayOfWeekArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DayOfWeekArrayOutput)
+}
+
+type DayOfWeekArrayOutput struct{ *pulumi.OutputState }
+
+func (DayOfWeekArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DayOfWeek)(nil)).Elem()
+}
+
+func (o DayOfWeekArrayOutput) ToDayOfWeekArrayOutput() DayOfWeekArrayOutput {
+	return o
+}
+
+func (o DayOfWeekArrayOutput) ToDayOfWeekArrayOutputWithContext(ctx context.Context) DayOfWeekArrayOutput {
+	return o
+}
+
+func (o DayOfWeekArrayOutput) Index(i pulumi.IntInput) DayOfWeekOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DayOfWeek {
+		return vs[0].([]DayOfWeek)[vs[1].(int)]
+	}).(DayOfWeekOutput)
+}
+
 // Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
 type DirectUDP string
 
 const (
-	DirectUDPDefault  = DirectUDP("Default")
-	DirectUDPEnabled  = DirectUDP("Enabled")
+	// AVD-wide settings are used to determine connection availability
+	DirectUDPDefault = DirectUDP("Default")
+	// UDP will attempt this connection type when making connections.
+	DirectUDPEnabled = DirectUDP("Enabled")
+	// UDP will not attempt this connection type when making connections
 	DirectUDPDisabled = DirectUDP("Disabled")
 )
 
@@ -692,9 +745,12 @@ func (in *directUDPPtr) ToDirectUDPPtrOutputWithContext(ctx context.Context) Dir
 type FailHealthCheckOnStagingFailure string
 
 const (
-	FailHealthCheckOnStagingFailureUnhealthy       = FailHealthCheckOnStagingFailure("Unhealthy")
+	// Health Check will report unhealthy
+	FailHealthCheckOnStagingFailureUnhealthy = FailHealthCheckOnStagingFailure("Unhealthy")
+	// Health Check will report NeedsAssistance
 	FailHealthCheckOnStagingFailureNeedsAssistance = FailHealthCheckOnStagingFailure("NeedsAssistance")
-	FailHealthCheckOnStagingFailureDoNotFail       = FailHealthCheckOnStagingFailure("DoNotFail")
+	// Health Check will not report failure
+	FailHealthCheckOnStagingFailureDoNotFail = FailHealthCheckOnStagingFailure("DoNotFail")
 )
 
 func (FailHealthCheckOnStagingFailure) ElementType() reflect.Type {
@@ -1031,10 +1087,14 @@ func (in *hostPoolTypePtr) ToHostPoolTypePtrOutputWithContext(ctx context.Contex
 type HostpoolPublicNetworkAccess string
 
 const (
-	HostpoolPublicNetworkAccessEnabled                    = HostpoolPublicNetworkAccess("Enabled")
-	HostpoolPublicNetworkAccessDisabled                   = HostpoolPublicNetworkAccess("Disabled")
+	// Allows this resource to be accessed from the public network
+	HostpoolPublicNetworkAccessEnabled = HostpoolPublicNetworkAccess("Enabled")
+	// Prevents this resource from being accessed from the public network
+	HostpoolPublicNetworkAccessDisabled = HostpoolPublicNetworkAccess("Disabled")
+	// Allows SessionHosts to be accessed from the public network
 	HostpoolPublicNetworkAccessEnabledForSessionHostsOnly = HostpoolPublicNetworkAccess("EnabledForSessionHostsOnly")
-	HostpoolPublicNetworkAccessEnabledForClientsOnly      = HostpoolPublicNetworkAccess("EnabledForClientsOnly")
+	// Allows Clients to be accessed from the public network
+	HostpoolPublicNetworkAccessEnabledForClientsOnly = HostpoolPublicNetworkAccess("EnabledForClientsOnly")
 )
 
 func (HostpoolPublicNetworkAccess) ElementType() reflect.Type {
@@ -1201,9 +1261,13 @@ func (in *hostpoolPublicNetworkAccessPtr) ToHostpoolPublicNetworkAccessPtrOutput
 type LoadBalancerType string
 
 const (
-	LoadBalancerTypeBreadthFirst       = LoadBalancerType("BreadthFirst")
-	LoadBalancerTypeDepthFirst         = LoadBalancerType("DepthFirst")
-	LoadBalancerTypePersistent         = LoadBalancerType("Persistent")
+	// Uses BreadthFirst algorithm for load balancing.
+	LoadBalancerTypeBreadthFirst = LoadBalancerType("BreadthFirst")
+	// Uses DepthFirst algorithm for load balancing.
+	LoadBalancerTypeDepthFirst = LoadBalancerType("DepthFirst")
+	// Maintains persistent connections.
+	LoadBalancerTypePersistent = LoadBalancerType("Persistent")
+	// Maintains multiple persistents connections.
 	LoadBalancerTypeMultiplePersistent = LoadBalancerType("MultiplePersistent")
 )
 
@@ -1371,8 +1435,11 @@ func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutputWithContext(ctx contex
 type ManagedPrivateUDP string
 
 const (
-	ManagedPrivateUDPDefault  = ManagedPrivateUDP("Default")
-	ManagedPrivateUDPEnabled  = ManagedPrivateUDP("Enabled")
+	// AVD-wide settings are used to determine connection availability
+	ManagedPrivateUDPDefault = ManagedPrivateUDP("Default")
+	// UDP will attempt this connection type when making connections.
+	ManagedPrivateUDPEnabled = ManagedPrivateUDP("Enabled")
+	// UDP will not attempt this connection type when making connections
 	ManagedPrivateUDPDisabled = ManagedPrivateUDP("Disabled")
 )
 
@@ -1709,8 +1776,10 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 type ManagementType string
 
 const (
+	// Automated management of the hostpool
 	ManagementTypeAutomated = ManagementType("Automated")
-	ManagementTypeStandard  = ManagementType("Standard")
+	// Standard management of the hostpool
+	ManagementTypeStandard = ManagementType("Standard")
 )
 
 func (ManagementType) ElementType() reflect.Type {
@@ -1875,7 +1944,9 @@ func (in *managementTypePtr) ToManagementTypePtrOutputWithContext(ctx context.Co
 type PackageTimestamped string
 
 const (
-	PackageTimestampedTimestamped    = PackageTimestamped("Timestamped")
+	// Package is timestamped
+	PackageTimestampedTimestamped = PackageTimestamped("Timestamped")
+	// Package is not timestamped, use certificate expiry date
 	PackageTimestampedNotTimestamped = PackageTimestamped("NotTimestamped")
 )
 
@@ -2041,8 +2112,10 @@ func (in *packageTimestampedPtr) ToPackageTimestampedPtrOutputWithContext(ctx co
 type PersonalDesktopAssignmentType string
 
 const (
+	// Automatically assigns an available personal desktop to the user.
 	PersonalDesktopAssignmentTypeAutomatic = PersonalDesktopAssignmentType("Automatic")
-	PersonalDesktopAssignmentTypeDirect    = PersonalDesktopAssignmentType("Direct")
+	// Manually assigns a specific personal desktop to the user.
+	PersonalDesktopAssignmentTypeDirect = PersonalDesktopAssignmentType("Direct")
 )
 
 func (PersonalDesktopAssignmentType) ElementType() reflect.Type {
@@ -2207,11 +2280,11 @@ func (in *personalDesktopAssignmentTypePtr) ToPersonalDesktopAssignmentTypePtrOu
 type PreferredAppGroupType string
 
 const (
-	// This value is read only, it is not accepted on input.
+	// Internal Use Only
 	PreferredAppGroupTypeNone = PreferredAppGroupType("None")
-	// Users access the full Windows desktop from a session host. Available with pooled or personal host pools.
+	// Use Desktop Application Group
 	PreferredAppGroupTypeDesktop = PreferredAppGroupType("Desktop")
-	// Users access individual applications you select and publish to the application group. Available with pooled host pools only.
+	// Use RailApplications (RemoteApp)
 	PreferredAppGroupTypeRailApplications = PreferredAppGroupType("RailApplications")
 )
 
@@ -2378,8 +2451,11 @@ func (in *preferredAppGroupTypePtr) ToPreferredAppGroupTypePtrOutputWithContext(
 type PrivateEndpointServiceConnectionStatus string
 
 const (
-	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
+	// Connection is Pending
+	PrivateEndpointServiceConnectionStatusPending = PrivateEndpointServiceConnectionStatus("Pending")
+	// Connection was Approved
 	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
+	// Connection was rejected
 	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
 )
 
@@ -2546,7 +2622,9 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 type PublicNetworkAccess string
 
 const (
-	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	// This resource is accessible from the public network.
+	PublicNetworkAccessEnabled = PublicNetworkAccess("Enabled")
+	// This resource is not accessible from the public network.
 	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
@@ -2712,8 +2790,11 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 type PublicUDP string
 
 const (
-	PublicUDPDefault  = PublicUDP("Default")
-	PublicUDPEnabled  = PublicUDP("Enabled")
+	// AVD-wide settings are used to determine connection availability
+	PublicUDPDefault = PublicUDP("Default")
+	// UDP will attempt this connection type when making connections.
+	PublicUDPEnabled = PublicUDP("Enabled")
+	// UDP will not attempt this connection type when making connections
 	PublicUDPDisabled = PublicUDP("Disabled")
 )
 
@@ -2880,8 +2961,11 @@ func (in *publicUDPPtr) ToPublicUDPPtrOutputWithContext(ctx context.Context) Pub
 type RegistrationTokenOperation string
 
 const (
+	// Delete operation
 	RegistrationTokenOperationDelete = RegistrationTokenOperation("Delete")
-	RegistrationTokenOperationNone   = RegistrationTokenOperation("None")
+	// No Operation
+	RegistrationTokenOperationNone = RegistrationTokenOperation("None")
+	// Update Operation
 	RegistrationTokenOperationUpdate = RegistrationTokenOperation("Update")
 )
 
@@ -3048,8 +3132,11 @@ func (in *registrationTokenOperationPtr) ToRegistrationTokenOperationPtrOutputWi
 type RelayUDP string
 
 const (
-	RelayUDPDefault  = RelayUDP("Default")
-	RelayUDPEnabled  = RelayUDP("Enabled")
+	// AVD-wide settings are used to determine connection availability
+	RelayUDPDefault = RelayUDP("Default")
+	// UDP will attempt this connection type when making connections.
+	RelayUDPEnabled = RelayUDP("Enabled")
+	// UDP will not attempt this connection type when making connections
 	RelayUDPDisabled = RelayUDP("Disabled")
 )
 
@@ -3216,7 +3303,9 @@ func (in *relayUDPPtr) ToRelayUDPPtrOutputWithContext(ctx context.Context) Relay
 type RemoteApplicationType string
 
 const (
-	RemoteApplicationTypeInBuilt         = RemoteApplicationType("InBuilt")
+	// Built-in applications
+	RemoteApplicationTypeInBuilt = RemoteApplicationType("InBuilt")
+	// Imported MSIX application packages
 	RemoteApplicationTypeMsixApplication = RemoteApplicationType("MsixApplication")
 )
 
@@ -3382,9 +3471,13 @@ func (in *remoteApplicationTypePtr) ToRemoteApplicationTypePtrOutputWithContext(
 type SSOSecretType string
 
 const (
-	SSOSecretTypeSharedKey             = SSOSecretType("SharedKey")
-	SSOSecretTypeCertificate           = SSOSecretType("Certificate")
-	SSOSecretTypeSharedKeyInKeyVault   = SSOSecretType("SharedKeyInKeyVault")
+	// The SSO Secret is a Shared Key.
+	SSOSecretTypeSharedKey = SSOSecretType("SharedKey")
+	// The SSO Secret is a Certificate.
+	SSOSecretTypeCertificate = SSOSecretType("Certificate")
+	// The SSO Secret is a SharedKey that is stored in KeyVault.
+	SSOSecretTypeSharedKeyInKeyVault = SSOSecretType("SharedKeyInKeyVault")
+	// The SSO Secret is a Certificate that is stored in KeyVault.
 	SSOSecretTypeCertificateInKeyVault = SSOSecretType("CertificateInKeyVault")
 )
 
@@ -3720,9 +3813,12 @@ func (in *scalingHostPoolTypePtr) ToScalingHostPoolTypePtrOutputWithContext(ctx 
 type SessionHandlingOperation string
 
 const (
-	SessionHandlingOperationNone       = SessionHandlingOperation("None")
+	// No action will be taken after disconnect
+	SessionHandlingOperationNone = SessionHandlingOperation("None")
+	// Session Host will be deallocated after disconnect
 	SessionHandlingOperationDeallocate = SessionHandlingOperation("Deallocate")
-	SessionHandlingOperationHibernate  = SessionHandlingOperation("Hibernate")
+	// Session Host will hibernate after disconnect
+	SessionHandlingOperationHibernate = SessionHandlingOperation("Hibernate")
 )
 
 func (SessionHandlingOperation) ElementType() reflect.Type {
@@ -4056,8 +4152,10 @@ func (in *sessionHostComponentUpdateTypePtr) ToSessionHostComponentUpdateTypePtr
 type SessionHostLoadBalancingAlgorithm string
 
 const (
+	// Breadth First Algorithm for Load Balancing
 	SessionHostLoadBalancingAlgorithmBreadthFirst = SessionHostLoadBalancingAlgorithm("BreadthFirst")
-	SessionHostLoadBalancingAlgorithmDepthFirst   = SessionHostLoadBalancingAlgorithm("DepthFirst")
+	// Depth First Algorithm for Load Balancing
+	SessionHostLoadBalancingAlgorithmDepthFirst = SessionHostLoadBalancingAlgorithm("DepthFirst")
 )
 
 func (SessionHostLoadBalancingAlgorithm) ElementType() reflect.Type {
@@ -4222,7 +4320,9 @@ func (in *sessionHostLoadBalancingAlgorithmPtr) ToSessionHostLoadBalancingAlgori
 type SetStartVMOnConnect string
 
 const (
-	SetStartVMOnConnectEnable  = SetStartVMOnConnect("Enable")
+	// Start VM on Connect is enabled
+	SetStartVMOnConnectEnable = SetStartVMOnConnect("Enable")
+	// Start VM on Connect is disabled, must use rampUpAutoStartHosts or turn on manually
 	SetStartVMOnConnectDisable = SetStartVMOnConnect("Disable")
 )
 
@@ -4729,7 +4829,9 @@ func (in *startupBehaviorPtr) ToStartupBehaviorPtrOutputWithContext(ctx context.
 type StopHostsWhen string
 
 const (
-	StopHostsWhenZeroSessions       = StopHostsWhen("ZeroSessions")
+	// Zero Total Sessions
+	StopHostsWhenZeroSessions = StopHostsWhen("ZeroSessions")
+	// Zero Active Sessions
 	StopHostsWhenZeroActiveSessions = StopHostsWhen("ZeroActiveSessions")
 )
 
@@ -4898,6 +5000,7 @@ func init() {
 	pulumi.RegisterOutputType(CommandLineSettingPtrOutput{})
 	pulumi.RegisterOutputType(DayOfWeekOutput{})
 	pulumi.RegisterOutputType(DayOfWeekPtrOutput{})
+	pulumi.RegisterOutputType(DayOfWeekArrayOutput{})
 	pulumi.RegisterOutputType(DirectUDPOutput{})
 	pulumi.RegisterOutputType(DirectUDPPtrOutput{})
 	pulumi.RegisterOutputType(FailHealthCheckOnStagingFailureOutput{})

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2KeyPair
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2KeyPair(ctx *pulumi.Context, args *LookupEc2KeyPairArgs, opts ...pulumi.InvokeOption) (*LookupEc2KeyPairResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2KeyPairResult

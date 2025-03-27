@@ -13,9 +13,10 @@ import (
 )
 
 // Firmware analysis workspace.
-// Azure REST API version: 2023-02-08-preview.
 //
-// Other available API versions: 2024-01-10.
+// Uses Azure REST API version 2023-02-08-preview.
+//
+// Other available API versions: 2024-01-10, 2025-04-01-preview.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +50,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotfirmwaredefense/v20240110:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotfirmwaredefense/v20250401preview:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

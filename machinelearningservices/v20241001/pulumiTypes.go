@@ -40180,6 +40180,8 @@ type InferenceContainerProperties struct {
 	ReadinessRoute *Route `pulumi:"readinessRoute"`
 	// The port to send the scoring requests to, within the inference server container.
 	ScoringRoute *Route `pulumi:"scoringRoute"`
+	// The route to check the startup of the application in the container.
+	StartupRoute *Route `pulumi:"startupRoute"`
 }
 
 // InferenceContainerPropertiesInput is an input type that accepts InferenceContainerPropertiesArgs and InferenceContainerPropertiesOutput values.
@@ -40200,6 +40202,8 @@ type InferenceContainerPropertiesArgs struct {
 	ReadinessRoute RoutePtrInput `pulumi:"readinessRoute"`
 	// The port to send the scoring requests to, within the inference server container.
 	ScoringRoute RoutePtrInput `pulumi:"scoringRoute"`
+	// The route to check the startup of the application in the container.
+	StartupRoute RoutePtrInput `pulumi:"startupRoute"`
 }
 
 func (InferenceContainerPropertiesArgs) ElementType() reflect.Type {
@@ -40294,6 +40298,11 @@ func (o InferenceContainerPropertiesOutput) ScoringRoute() RoutePtrOutput {
 	return o.ApplyT(func(v InferenceContainerProperties) *Route { return v.ScoringRoute }).(RoutePtrOutput)
 }
 
+// The route to check the startup of the application in the container.
+func (o InferenceContainerPropertiesOutput) StartupRoute() RoutePtrOutput {
+	return o.ApplyT(func(v InferenceContainerProperties) *Route { return v.StartupRoute }).(RoutePtrOutput)
+}
+
 type InferenceContainerPropertiesPtrOutput struct{ *pulumi.OutputState }
 
 func (InferenceContainerPropertiesPtrOutput) ElementType() reflect.Type {
@@ -40348,6 +40357,16 @@ func (o InferenceContainerPropertiesPtrOutput) ScoringRoute() RoutePtrOutput {
 	}).(RoutePtrOutput)
 }
 
+// The route to check the startup of the application in the container.
+func (o InferenceContainerPropertiesPtrOutput) StartupRoute() RoutePtrOutput {
+	return o.ApplyT(func(v *InferenceContainerProperties) *Route {
+		if v == nil {
+			return nil
+		}
+		return v.StartupRoute
+	}).(RoutePtrOutput)
+}
+
 type InferenceContainerPropertiesResponse struct {
 	// The route to check the liveness of the inference server container.
 	LivenessRoute *RouteResponse `pulumi:"livenessRoute"`
@@ -40355,6 +40374,8 @@ type InferenceContainerPropertiesResponse struct {
 	ReadinessRoute *RouteResponse `pulumi:"readinessRoute"`
 	// The port to send the scoring requests to, within the inference server container.
 	ScoringRoute *RouteResponse `pulumi:"scoringRoute"`
+	// The route to check the startup of the application in the container.
+	StartupRoute *RouteResponse `pulumi:"startupRoute"`
 }
 
 type InferenceContainerPropertiesResponseOutput struct{ *pulumi.OutputState }
@@ -40384,6 +40405,11 @@ func (o InferenceContainerPropertiesResponseOutput) ReadinessRoute() RouteRespon
 // The port to send the scoring requests to, within the inference server container.
 func (o InferenceContainerPropertiesResponseOutput) ScoringRoute() RouteResponsePtrOutput {
 	return o.ApplyT(func(v InferenceContainerPropertiesResponse) *RouteResponse { return v.ScoringRoute }).(RouteResponsePtrOutput)
+}
+
+// The route to check the startup of the application in the container.
+func (o InferenceContainerPropertiesResponseOutput) StartupRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v InferenceContainerPropertiesResponse) *RouteResponse { return v.StartupRoute }).(RouteResponsePtrOutput)
 }
 
 type InferenceContainerPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -40437,6 +40463,16 @@ func (o InferenceContainerPropertiesResponsePtrOutput) ScoringRoute() RouteRespo
 			return nil
 		}
 		return v.ScoringRoute
+	}).(RouteResponsePtrOutput)
+}
+
+// The route to check the startup of the application in the container.
+func (o InferenceContainerPropertiesResponsePtrOutput) StartupRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v *InferenceContainerPropertiesResponse) *RouteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StartupRoute
 	}).(RouteResponsePtrOutput)
 }
 
@@ -41845,6 +41881,8 @@ type KubernetesOnlineDeployment struct {
 	// it defaults to TargetUtilizationScaleSettings for KubernetesOnlineDeployment
 	// and to DefaultScaleSettings for ManagedOnlineDeployment.
 	ScaleSettings interface{} `pulumi:"scaleSettings"`
+	// Startup probe verify whether an application within a container has started successfully.
+	StartupProbe *ProbeSettings `pulumi:"startupProbe"`
 }
 
 // Defaults sets the appropriate defaults for KubernetesOnlineDeployment
@@ -41872,6 +41910,8 @@ func (val *KubernetesOnlineDeployment) Defaults() *KubernetesOnlineDeployment {
 	tmp.ReadinessProbe = tmp.ReadinessProbe.Defaults()
 
 	tmp.RequestSettings = tmp.RequestSettings.Defaults()
+
+	tmp.StartupProbe = tmp.StartupProbe.Defaults()
 
 	return &tmp
 }
@@ -41927,6 +41967,8 @@ type KubernetesOnlineDeploymentArgs struct {
 	// it defaults to TargetUtilizationScaleSettings for KubernetesOnlineDeployment
 	// and to DefaultScaleSettings for ManagedOnlineDeployment.
 	ScaleSettings pulumi.Input `pulumi:"scaleSettings"`
+	// Startup probe verify whether an application within a container has started successfully.
+	StartupProbe ProbeSettingsPtrInput `pulumi:"startupProbe"`
 }
 
 // Defaults sets the appropriate defaults for KubernetesOnlineDeploymentArgs
@@ -42066,6 +42108,11 @@ func (o KubernetesOnlineDeploymentOutput) ScaleSettings() pulumi.AnyOutput {
 	return o.ApplyT(func(v KubernetesOnlineDeployment) interface{} { return v.ScaleSettings }).(pulumi.AnyOutput)
 }
 
+// Startup probe verify whether an application within a container has started successfully.
+func (o KubernetesOnlineDeploymentOutput) StartupProbe() ProbeSettingsPtrOutput {
+	return o.ApplyT(func(v KubernetesOnlineDeployment) *ProbeSettings { return v.StartupProbe }).(ProbeSettingsPtrOutput)
+}
+
 // Properties specific to a KubernetesOnlineDeployment.
 type KubernetesOnlineDeploymentResponse struct {
 	// If true, enables Application Insights logging.
@@ -42108,6 +42155,8 @@ type KubernetesOnlineDeploymentResponse struct {
 	// it defaults to TargetUtilizationScaleSettings for KubernetesOnlineDeployment
 	// and to DefaultScaleSettings for ManagedOnlineDeployment.
 	ScaleSettings interface{} `pulumi:"scaleSettings"`
+	// Startup probe verify whether an application within a container has started successfully.
+	StartupProbe *ProbeSettingsResponse `pulumi:"startupProbe"`
 }
 
 // Defaults sets the appropriate defaults for KubernetesOnlineDeploymentResponse
@@ -42135,6 +42184,8 @@ func (val *KubernetesOnlineDeploymentResponse) Defaults() *KubernetesOnlineDeplo
 	tmp.ReadinessProbe = tmp.ReadinessProbe.Defaults()
 
 	tmp.RequestSettings = tmp.RequestSettings.Defaults()
+
+	tmp.StartupProbe = tmp.StartupProbe.Defaults()
 
 	return &tmp
 }
@@ -42248,6 +42299,11 @@ func (o KubernetesOnlineDeploymentResponseOutput) RequestSettings() OnlineReques
 // and to DefaultScaleSettings for ManagedOnlineDeployment.
 func (o KubernetesOnlineDeploymentResponseOutput) ScaleSettings() pulumi.AnyOutput {
 	return o.ApplyT(func(v KubernetesOnlineDeploymentResponse) interface{} { return v.ScaleSettings }).(pulumi.AnyOutput)
+}
+
+// Startup probe verify whether an application within a container has started successfully.
+func (o KubernetesOnlineDeploymentResponseOutput) StartupProbe() ProbeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v KubernetesOnlineDeploymentResponse) *ProbeSettingsResponse { return v.StartupProbe }).(ProbeSettingsResponsePtrOutput)
 }
 
 // Kubernetes properties
@@ -45581,6 +45637,8 @@ type ManagedOnlineDeployment struct {
 	// it defaults to TargetUtilizationScaleSettings for KubernetesOnlineDeployment
 	// and to DefaultScaleSettings for ManagedOnlineDeployment.
 	ScaleSettings interface{} `pulumi:"scaleSettings"`
+	// Startup probe verify whether an application within a container has started successfully.
+	StartupProbe *ProbeSettings `pulumi:"startupProbe"`
 }
 
 // Defaults sets the appropriate defaults for ManagedOnlineDeployment
@@ -45608,6 +45666,8 @@ func (val *ManagedOnlineDeployment) Defaults() *ManagedOnlineDeployment {
 	tmp.ReadinessProbe = tmp.ReadinessProbe.Defaults()
 
 	tmp.RequestSettings = tmp.RequestSettings.Defaults()
+
+	tmp.StartupProbe = tmp.StartupProbe.Defaults()
 
 	return &tmp
 }
@@ -45661,6 +45721,8 @@ type ManagedOnlineDeploymentArgs struct {
 	// it defaults to TargetUtilizationScaleSettings for KubernetesOnlineDeployment
 	// and to DefaultScaleSettings for ManagedOnlineDeployment.
 	ScaleSettings pulumi.Input `pulumi:"scaleSettings"`
+	// Startup probe verify whether an application within a container has started successfully.
+	StartupProbe ProbeSettingsPtrInput `pulumi:"startupProbe"`
 }
 
 // Defaults sets the appropriate defaults for ManagedOnlineDeploymentArgs
@@ -45793,6 +45855,11 @@ func (o ManagedOnlineDeploymentOutput) ScaleSettings() pulumi.AnyOutput {
 	return o.ApplyT(func(v ManagedOnlineDeployment) interface{} { return v.ScaleSettings }).(pulumi.AnyOutput)
 }
 
+// Startup probe verify whether an application within a container has started successfully.
+func (o ManagedOnlineDeploymentOutput) StartupProbe() ProbeSettingsPtrOutput {
+	return o.ApplyT(func(v ManagedOnlineDeployment) *ProbeSettings { return v.StartupProbe }).(ProbeSettingsPtrOutput)
+}
+
 // Properties specific to a ManagedOnlineDeployment.
 type ManagedOnlineDeploymentResponse struct {
 	// If true, enables Application Insights logging.
@@ -45833,6 +45900,8 @@ type ManagedOnlineDeploymentResponse struct {
 	// it defaults to TargetUtilizationScaleSettings for KubernetesOnlineDeployment
 	// and to DefaultScaleSettings for ManagedOnlineDeployment.
 	ScaleSettings interface{} `pulumi:"scaleSettings"`
+	// Startup probe verify whether an application within a container has started successfully.
+	StartupProbe *ProbeSettingsResponse `pulumi:"startupProbe"`
 }
 
 // Defaults sets the appropriate defaults for ManagedOnlineDeploymentResponse
@@ -45860,6 +45929,8 @@ func (val *ManagedOnlineDeploymentResponse) Defaults() *ManagedOnlineDeploymentR
 	tmp.ReadinessProbe = tmp.ReadinessProbe.Defaults()
 
 	tmp.RequestSettings = tmp.RequestSettings.Defaults()
+
+	tmp.StartupProbe = tmp.StartupProbe.Defaults()
 
 	return &tmp
 }
@@ -45966,6 +46037,11 @@ func (o ManagedOnlineDeploymentResponseOutput) RequestSettings() OnlineRequestSe
 // and to DefaultScaleSettings for ManagedOnlineDeployment.
 func (o ManagedOnlineDeploymentResponseOutput) ScaleSettings() pulumi.AnyOutput {
 	return o.ApplyT(func(v ManagedOnlineDeploymentResponse) interface{} { return v.ScaleSettings }).(pulumi.AnyOutput)
+}
+
+// Startup probe verify whether an application within a container has started successfully.
+func (o ManagedOnlineDeploymentResponseOutput) StartupProbe() ProbeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v ManagedOnlineDeploymentResponse) *ProbeSettingsResponse { return v.StartupProbe }).(ProbeSettingsResponsePtrOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

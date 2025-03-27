@@ -12,7 +12,8 @@ import (
 )
 
 // Get service runner.
-// Azure REST API version: 2018-09-15.
+//
+// Uses Azure REST API version 2018-09-15.
 func LookupServiceRunner(ctx *pulumi.Context, args *LookupServiceRunnerArgs, opts ...pulumi.InvokeOption) (*LookupServiceRunnerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceRunnerResult

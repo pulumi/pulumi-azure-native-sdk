@@ -12,7 +12,8 @@ import (
 )
 
 // Get a blueprint artifact.
-// Azure REST API version: 2018-11-01-preview.
+//
+// Uses Azure REST API version 2018-11-01-preview.
 func LookupRoleAssignmentArtifact(ctx *pulumi.Context, args *LookupRoleAssignmentArtifactArgs, opts ...pulumi.InvokeOption) (*LookupRoleAssignmentArtifactResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleAssignmentArtifactResult

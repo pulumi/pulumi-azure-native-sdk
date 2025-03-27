@@ -92,6 +92,9 @@ func NewLicenseProfile(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hybridcompute/v20241110preview:LicenseProfile"),
 		},
 		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250113:LicenseProfile"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcompute:LicenseProfile"),
 		},
 	})

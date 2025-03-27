@@ -82,6 +82,9 @@ func NewSshPublicKey(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:compute/v20240701:SshPublicKey"),
 		},
 		{
+			Type: pulumi.String("azure-native:compute/v20241101:SshPublicKey"),
+		},
+		{
 			Type: pulumi.String("azure-native:compute:SshPublicKey"),
 		},
 	})

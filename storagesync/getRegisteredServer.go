@@ -12,7 +12,8 @@ import (
 )
 
 // Get a given registered server.
-// Azure REST API version: 2022-06-01.
+//
+// Uses Azure REST API version 2022-06-01.
 //
 // Other available API versions: 2022-09-01.
 func LookupRegisteredServer(ctx *pulumi.Context, args *LookupRegisteredServerArgs, opts ...pulumi.InvokeOption) (*LookupRegisteredServerResult, error) {

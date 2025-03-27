@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a role assignment for the caller on a enrollment Account. The operation is supported only for billing accounts with agreement type Enterprise Agreement.
-// Azure REST API version: 2019-10-01-preview.
+//
+// Uses Azure REST API version 2019-10-01-preview.
 //
 // Other available API versions: 2024-04-01.
 func LookupBillingRoleAssignmentByEnrollmentAccount(ctx *pulumi.Context, args *LookupBillingRoleAssignmentByEnrollmentAccountArgs, opts ...pulumi.InvokeOption) (*LookupBillingRoleAssignmentByEnrollmentAccountResult, error) {

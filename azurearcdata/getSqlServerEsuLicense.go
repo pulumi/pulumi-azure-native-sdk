@@ -12,7 +12,10 @@ import (
 )
 
 // Retrieves a SQL Server ESU license resource
-// Azure REST API version: 2024-05-01-preview.
+//
+// Uses Azure REST API version 2024-05-01-preview.
+//
+// Other available API versions: 2025-03-01-preview.
 func LookupSqlServerEsuLicense(ctx *pulumi.Context, args *LookupSqlServerEsuLicenseArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerEsuLicenseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerEsuLicenseResult

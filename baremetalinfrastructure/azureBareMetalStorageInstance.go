@@ -13,7 +13,8 @@ import (
 )
 
 // AzureBareMetalStorageInstance info on Azure (ARM properties and AzureBareMetalStorage properties)
-// Azure REST API version: 2023-04-06.
+//
+// Uses Azure REST API version 2023-04-06.
 //
 // Other available API versions: 2023-08-04-preview, 2023-11-01-preview, 2024-08-01-preview.
 type AzureBareMetalStorageInstance struct {

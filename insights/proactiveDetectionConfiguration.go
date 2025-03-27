@@ -13,7 +13,8 @@ import (
 )
 
 // A ProactiveDetection configuration definition.
-// Azure REST API version: 2018-05-01-preview. Prior API version in Azure Native 1.x: 2015-05-01.
+//
+// Uses Azure REST API version 2018-05-01-preview. In version 1.x of the Azure Native provider, it used API version 2015-05-01.
 //
 // Other available API versions: 2015-05-01.
 type ProactiveDetectionConfiguration struct {

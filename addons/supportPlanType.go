@@ -13,7 +13,8 @@ import (
 )
 
 // The status of the Canonical support plan.
-// Azure REST API version: 2018-03-01. Prior API version in Azure Native 1.x: 2018-03-01.
+//
+// Uses Azure REST API version 2018-03-01. In version 1.x of the Azure Native provider, it used API version 2018-03-01.
 type SupportPlanType struct {
 	pulumi.CustomResourceState
 

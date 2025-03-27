@@ -12,7 +12,8 @@ import (
 )
 
 // List available models from all connections.
-// Azure REST API version: 2024-04-01-preview.
+//
+// Uses Azure REST API version 2024-04-01-preview.
 func ListWorkspaceConnectionModels(ctx *pulumi.Context, args *ListWorkspaceConnectionModelsArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceConnectionModelsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkspaceConnectionModelsResult

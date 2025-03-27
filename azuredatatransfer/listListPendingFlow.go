@@ -12,9 +12,10 @@ import (
 )
 
 // Lists all pending flows for a connection.
-// Azure REST API version: 2023-10-11-preview.
 //
-// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27.
+// Uses Azure REST API version 2023-10-11-preview.
+//
+// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27, 2025-03-01-preview.
 func ListListPendingFlow(ctx *pulumi.Context, args *ListListPendingFlowArgs, opts ...pulumi.InvokeOption) (*ListListPendingFlowResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListListPendingFlowResult

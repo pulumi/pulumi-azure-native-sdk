@@ -13,7 +13,8 @@ import (
 )
 
 // An infrastructure resource under Space.
-// Azure REST API version: 2023-11-14-preview.
+//
+// Uses Azure REST API version 2023-11-14-preview.
 type InfrastructureResource struct {
 	pulumi.CustomResourceState
 

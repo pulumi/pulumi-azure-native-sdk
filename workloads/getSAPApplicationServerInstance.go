@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
-// Azure REST API version: 2023-04-01.
+//
+// Uses Azure REST API version 2023-04-01.
 //
 // Other available API versions: 2021-12-01-preview, 2023-10-01-preview.
 func LookupSAPApplicationServerInstance(ctx *pulumi.Context, args *LookupSAPApplicationServerInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPApplicationServerInstanceResult, error) {

@@ -41,6 +41,9 @@ func NewVault(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:Vault"),
+		},
+		{
 			Type: pulumi.String("azure-native:datareplication:Vault"),
 		},
 	})

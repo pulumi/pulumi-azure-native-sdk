@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a document processor for a given name.
-// Azure REST API version: 2022-09-15-preview.
+//
+// Uses Azure REST API version 2022-09-15-preview.
 func LookupDocumentProcessor(ctx *pulumi.Context, args *LookupDocumentProcessorArgs, opts ...pulumi.InvokeOption) (*LookupDocumentProcessorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDocumentProcessorResult

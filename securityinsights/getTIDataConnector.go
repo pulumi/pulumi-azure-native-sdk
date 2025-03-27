@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a data connector.
-// Azure REST API version: 2023-02-01.
+//
+// Uses Azure REST API version 2023-02-01.
 func LookupTIDataConnector(ctx *pulumi.Context, args *LookupTIDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupTIDataConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTIDataConnectorResult

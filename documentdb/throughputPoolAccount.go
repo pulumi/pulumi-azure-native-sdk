@@ -13,7 +13,8 @@ import (
 )
 
 // An Azure Cosmos DB Throughputpool Account
-// Azure REST API version: 2023-11-15-preview.
+//
+// Uses Azure REST API version 2023-11-15-preview.
 //
 // Other available API versions: 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview, 2024-12-01-preview.
 type ThroughputPoolAccount struct {

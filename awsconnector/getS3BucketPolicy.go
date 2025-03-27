@@ -12,7 +12,8 @@ import (
 )
 
 // Get a S3BucketPolicy
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupS3BucketPolicy(ctx *pulumi.Context, args *LookupS3BucketPolicyArgs, opts ...pulumi.InvokeOption) (*LookupS3BucketPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupS3BucketPolicyResult

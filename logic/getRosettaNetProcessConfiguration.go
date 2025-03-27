@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an integration account RosettaNetProcessConfiguration.
-// Azure REST API version: 2016-06-01.
+//
+// Uses Azure REST API version 2016-06-01.
 func LookupRosettaNetProcessConfiguration(ctx *pulumi.Context, args *LookupRosettaNetProcessConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupRosettaNetProcessConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRosettaNetProcessConfigurationResult

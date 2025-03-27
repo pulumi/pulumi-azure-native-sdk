@@ -12,7 +12,8 @@ import (
 )
 
 // The Get ManagedNetworks operation gets a Managed Network Resource, specified by the resource group and Managed Network name
-// Azure REST API version: 2019-06-01-preview.
+//
+// Uses Azure REST API version 2019-06-01-preview.
 func LookupManagedNetwork(ctx *pulumi.Context, args *LookupManagedNetworkArgs, opts ...pulumi.InvokeOption) (*LookupManagedNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedNetworkResult

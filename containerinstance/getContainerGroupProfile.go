@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the properties of the specified container group profile in the specified subscription and resource group. The operation returns the properties of container group profile including containers, image registry credentials, restart policy, IP address type, OS type, volumes, current revision number, etc.
-// Azure REST API version: 2024-05-01-preview.
+//
+// Uses Azure REST API version 2024-05-01-preview.
 func LookupContainerGroupProfile(ctx *pulumi.Context, args *LookupContainerGroupProfileArgs, opts ...pulumi.InvokeOption) (*LookupContainerGroupProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerGroupProfileResult

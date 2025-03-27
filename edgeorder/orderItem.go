@@ -13,7 +13,8 @@ import (
 )
 
 // Represents order item resource.
-// Azure REST API version: 2022-05-01-preview.
+//
+// Uses Azure REST API version 2022-05-01-preview.
 //
 // Other available API versions: 2024-02-01.
 type OrderItem struct {

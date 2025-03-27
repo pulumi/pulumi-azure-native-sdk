@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the information about the gateway resource with the given name. The information include the description and other properties of the gateway.
-// Azure REST API version: 2018-09-01-preview.
+//
+// Uses Azure REST API version 2018-09-01-preview.
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayResult

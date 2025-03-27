@@ -12,7 +12,8 @@ import (
 )
 
 // Get a LambdaFunctionCodeLocation
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupLambdaFunctionCodeLocation(ctx *pulumi.Context, args *LookupLambdaFunctionCodeLocationArgs, opts ...pulumi.InvokeOption) (*LookupLambdaFunctionCodeLocationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLambdaFunctionCodeLocationResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get Insight resources by workloadImpactName and insightName
-// Azure REST API version: 2024-05-01-preview.
+//
+// Uses Azure REST API version 2024-05-01-preview.
 func LookupInsight(ctx *pulumi.Context, args *LookupInsightArgs, opts ...pulumi.InvokeOption) (*LookupInsightResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInsightResult

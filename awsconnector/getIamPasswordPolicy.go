@@ -12,7 +12,8 @@ import (
 )
 
 // Get a IamPasswordPolicy
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupIamPasswordPolicy(ctx *pulumi.Context, args *LookupIamPasswordPolicyArgs, opts ...pulumi.InvokeOption) (*LookupIamPasswordPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIamPasswordPolicyResult

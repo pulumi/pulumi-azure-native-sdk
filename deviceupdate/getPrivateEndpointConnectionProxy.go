@@ -12,7 +12,8 @@ import (
 )
 
 // (INTERNAL - DO NOT USE) Get the specified private endpoint connection proxy associated with the device update account.
-// Azure REST API version: 2023-07-01.
+//
+// Uses Azure REST API version 2023-07-01.
 func LookupPrivateEndpointConnectionProxy(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionProxyArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionProxyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionProxyResult

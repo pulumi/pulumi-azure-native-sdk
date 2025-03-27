@@ -12,7 +12,8 @@ import (
 )
 
 // Get a DynamoDBContinuousBackupsDescription
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupDynamoDbContinuousBackupsDescription(ctx *pulumi.Context, args *LookupDynamoDbContinuousBackupsDescriptionArgs, opts ...pulumi.InvokeOption) (*LookupDynamoDbContinuousBackupsDescriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDynamoDbContinuousBackupsDescriptionResult

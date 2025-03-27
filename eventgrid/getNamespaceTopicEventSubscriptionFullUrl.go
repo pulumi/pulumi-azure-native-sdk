@@ -12,7 +12,8 @@ import (
 )
 
 // Get the full endpoint URL for an event subscription of a namespace topic.
-// Azure REST API version: 2024-06-01-preview.
+//
+// Uses Azure REST API version 2024-06-01-preview.
 //
 // Other available API versions: 2024-12-15-preview, 2025-02-15.
 func GetNamespaceTopicEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetNamespaceTopicEventSubscriptionFullUrlArgs, opts ...pulumi.InvokeOption) (*GetNamespaceTopicEventSubscriptionFullUrlResult, error) {

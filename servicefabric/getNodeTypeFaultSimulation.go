@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a fault simulation by the simulationId.
-// Azure REST API version: 2024-11-01-preview.
+//
+// Uses Azure REST API version 2024-11-01-preview.
 func GetNodeTypeFaultSimulation(ctx *pulumi.Context, args *GetNodeTypeFaultSimulationArgs, opts ...pulumi.InvokeOption) (*GetNodeTypeFaultSimulationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetNodeTypeFaultSimulationResult
@@ -28,7 +29,7 @@ type GetNodeTypeFaultSimulationArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the node type.
 	NodeTypeName string `pulumi:"nodeTypeName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// unique identifier for the fault simulation.
 	SimulationId string `pulumi:"simulationId"`
@@ -62,7 +63,7 @@ type GetNodeTypeFaultSimulationOutputArgs struct {
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the node type.
 	NodeTypeName pulumi.StringInput `pulumi:"nodeTypeName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// unique identifier for the fault simulation.
 	SimulationId pulumi.StringInput `pulumi:"simulationId"`

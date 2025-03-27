@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves the properties of an existing Azure Cosmos DB Table Role Definition with the given Id.
-// Azure REST API version: 2024-12-01-preview.
+//
+// Uses Azure REST API version 2024-12-01-preview.
 func LookupTableResourceTableRoleDefinition(ctx *pulumi.Context, args *LookupTableResourceTableRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupTableResourceTableRoleDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTableResourceTableRoleDefinitionResult

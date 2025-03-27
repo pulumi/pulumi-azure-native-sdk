@@ -13,9 +13,10 @@ import (
 )
 
 // Workspace resource.
-// Azure REST API version: 2023-02-28. Prior API version in Azure Native 1.x: 2022-05-15.
 //
-// Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31.
+// Uses Azure REST API version 2023-02-28. In version 1.x of the Azure Native provider, it used API version 2022-05-15.
+//
+// Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31, 2025-03-01-preview.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -84,6 +85,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20240331:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20250301preview:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

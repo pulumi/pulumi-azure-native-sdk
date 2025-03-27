@@ -92,6 +92,9 @@ func NewCapacityReservation(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:compute/v20240301:CapacityReservation"),
 		},
 		{
+			Type: pulumi.String("azure-native:compute/v20241101:CapacityReservation"),
+		},
+		{
 			Type: pulumi.String("azure-native:compute:CapacityReservation"),
 		},
 	})

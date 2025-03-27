@@ -107,6 +107,9 @@ func NewDatabaseAdvisor(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230501preview:DatabaseAdvisor"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:DatabaseAdvisor"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:DatabaseAdvisor"),
 		},
 		{

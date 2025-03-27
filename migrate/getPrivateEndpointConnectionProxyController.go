@@ -12,7 +12,8 @@ import (
 )
 
 // Get the of private link proxy resources from a migrate project and private link proxy resource.
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 func LookupPrivateEndpointConnectionProxyController(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionProxyControllerArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionProxyControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionProxyControllerResult

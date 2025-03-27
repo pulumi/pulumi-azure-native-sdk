@@ -12,7 +12,8 @@ import (
 )
 
 // Get a S3AccessPoint
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupS3AccessPoint(ctx *pulumi.Context, args *LookupS3AccessPointArgs, opts ...pulumi.InvokeOption) (*LookupS3AccessPointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupS3AccessPointResult

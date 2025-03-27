@@ -63,6 +63,9 @@ func NewRemoteRenderingAccount(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:mixedreality/v20210301preview:RemoteRenderingAccount"),
 		},
 		{
+			Type: pulumi.String("azure-native:mixedreality/v20250101:RemoteRenderingAccount"),
+		},
+		{
 			Type: pulumi.String("azure-native:mixedreality:RemoteRenderingAccount"),
 		},
 	})

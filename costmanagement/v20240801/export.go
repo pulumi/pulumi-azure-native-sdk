@@ -105,6 +105,9 @@ func NewExport(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:costmanagement/v20231101:Export"),
 		},
 		{
+			Type: pulumi.String("azure-native:costmanagement/v20241001preview:Export"),
+		},
+		{
 			Type: pulumi.String("azure-native:costmanagement:Export"),
 		},
 	})

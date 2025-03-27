@@ -12,7 +12,8 @@ import (
 )
 
 // Returns oep resource for a given name.
-// Azure REST API version: 2022-04-04-preview.
+//
+// Uses Azure REST API version 2022-04-04-preview.
 func LookupEnergyService(ctx *pulumi.Context, args *LookupEnergyServiceArgs, opts ...pulumi.InvokeOption) (*LookupEnergyServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnergyServiceResult

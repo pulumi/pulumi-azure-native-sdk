@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves an existing edge module resource with the given name.
-// Azure REST API version: 2021-11-01-preview.
+//
+// Uses Azure REST API version 2021-11-01-preview.
 func LookupEdgeModule(ctx *pulumi.Context, args *LookupEdgeModuleArgs, opts ...pulumi.InvokeOption) (*LookupEdgeModuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEdgeModuleResult

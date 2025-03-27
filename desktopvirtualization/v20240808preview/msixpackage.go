@@ -42,7 +42,7 @@ type MSIXPackage struct {
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Package Version found in the appxmanifest.xml.
+	// Package version found in the appxmanifest.xml.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -103,9 +103,6 @@ func NewMSIXPackage(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:MSIXPackage"),
 		},
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:MSIXPackage"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:MSIXPackage"),
 		},
 		{
@@ -125,6 +122,9 @@ func NewMSIXPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:MSIXPackage"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:MSIXPackage"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:MSIXPackage"),
@@ -190,7 +190,7 @@ type msixpackageArgs struct {
 	PackageRelativePath *string `pulumi:"packageRelativePath"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Package Version found in the appxmanifest.xml.
+	// Package version found in the appxmanifest.xml.
 	Version *string `pulumi:"version"`
 }
 
@@ -222,7 +222,7 @@ type MSIXPackageArgs struct {
 	PackageRelativePath pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Package Version found in the appxmanifest.xml.
+	// Package version found in the appxmanifest.xml.
 	Version pulumi.StringPtrInput
 }
 
@@ -328,7 +328,7 @@ func (o MSIXPackageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *MSIXPackage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Package Version found in the appxmanifest.xml.
+// Package version found in the appxmanifest.xml.
 func (o MSIXPackageOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MSIXPackage) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }

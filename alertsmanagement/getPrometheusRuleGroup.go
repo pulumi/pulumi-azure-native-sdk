@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieve a Prometheus rule group definition.
-// Azure REST API version: 2023-03-01.
+//
+// Uses Azure REST API version 2023-03-01.
 func LookupPrometheusRuleGroup(ctx *pulumi.Context, args *LookupPrometheusRuleGroupArgs, opts ...pulumi.InvokeOption) (*LookupPrometheusRuleGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrometheusRuleGroupResult

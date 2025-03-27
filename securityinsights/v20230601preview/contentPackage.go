@@ -137,6 +137,9 @@ func NewContentPackage(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:ContentPackage"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:ContentPackage"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:ContentPackage"),
 		},
 	})

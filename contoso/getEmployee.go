@@ -12,7 +12,10 @@ import (
 )
 
 // Get a Employee
-// Azure REST API version: 2021-10-01-preview.
+//
+// Uses Azure REST API version 2021-10-01-preview.
+//
+// Other available API versions: 2021-11-01.
 func LookupEmployee(ctx *pulumi.Context, args *LookupEmployeeArgs, opts ...pulumi.InvokeOption) (*LookupEmployeeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmployeeResult

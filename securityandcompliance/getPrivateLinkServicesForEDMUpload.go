@@ -12,7 +12,8 @@ import (
 )
 
 // Get the metadata of a privateLinkServicesForEDMUpload resource.
-// Azure REST API version: 2021-03-08.
+//
+// Uses Azure REST API version 2021-03-08.
 func LookupPrivateLinkServicesForEDMUpload(ctx *pulumi.Context, args *LookupPrivateLinkServicesForEDMUploadArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicesForEDMUploadResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkServicesForEDMUploadResult

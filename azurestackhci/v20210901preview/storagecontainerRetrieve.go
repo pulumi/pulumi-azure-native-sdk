@@ -115,6 +115,12 @@ func NewStoragecontainerRetrieve(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:storagecontainerRetrieve"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:StoragecontainerRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:storagecontainerRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci:StoragecontainerRetrieve"),
 		},
 		{

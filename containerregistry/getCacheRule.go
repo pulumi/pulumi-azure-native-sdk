@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the properties of the specified cache rule resource.
-// Azure REST API version: 2023-01-01-preview.
+//
+// Uses Azure REST API version 2023-01-01-preview.
 //
 // Other available API versions: 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
 func LookupCacheRule(ctx *pulumi.Context, args *LookupCacheRuleArgs, opts ...pulumi.InvokeOption) (*LookupCacheRuleResult, error) {

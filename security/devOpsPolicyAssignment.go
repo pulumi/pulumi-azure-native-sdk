@@ -13,7 +13,8 @@ import (
 )
 
 // DevOps Policy assignment resource.
-// Azure REST API version: 2024-05-15-preview.
+//
+// Uses Azure REST API version 2024-05-15-preview.
 type DevOpsPolicyAssignment struct {
 	pulumi.CustomResourceState
 

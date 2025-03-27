@@ -12,7 +12,8 @@ import (
 )
 
 // Get an association.
-// Azure REST API version: 2018-09-01-preview.
+//
+// Uses Azure REST API version 2018-09-01-preview.
 func LookupAssociation(ctx *pulumi.Context, args *LookupAssociationArgs, opts ...pulumi.InvokeOption) (*LookupAssociationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssociationResult

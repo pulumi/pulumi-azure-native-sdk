@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Server collector.
-// Azure REST API version: 2019-10-01.
+//
+// Uses Azure REST API version 2019-10-01.
 func LookupServerCollector(ctx *pulumi.Context, args *LookupServerCollectorArgs, opts ...pulumi.InvokeOption) (*LookupServerCollectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerCollectorResult

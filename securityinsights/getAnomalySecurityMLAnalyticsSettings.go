@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the Security ML Analytics Settings.
-// Azure REST API version: 2023-02-01.
+//
+// Uses Azure REST API version 2023-02-01.
 func LookupAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context, args *LookupAnomalySecurityMLAnalyticsSettingsArgs, opts ...pulumi.InvokeOption) (*LookupAnomalySecurityMLAnalyticsSettingsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnomalySecurityMLAnalyticsSettingsResult

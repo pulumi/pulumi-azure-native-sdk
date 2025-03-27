@@ -50,6 +50,12 @@ func NewAccessPolicyAssignment(ctx *pulumi.Context,
 	if args.User == nil {
 		return nil, errors.New("invalid value for required argument 'User'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:cache/v20250401:AccessPolicyAssignment"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource AccessPolicyAssignment
 	err := ctx.RegisterResource("azure-native:cache/v20240901preview:AccessPolicyAssignment", name, args, &resource, opts...)

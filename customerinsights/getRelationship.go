@@ -12,7 +12,8 @@ import (
 )
 
 // Gets information about the specified relationship.
-// Azure REST API version: 2017-04-26.
+//
+// Uses Azure REST API version 2017-04-26.
 func LookupRelationship(ctx *pulumi.Context, args *LookupRelationshipArgs, opts ...pulumi.InvokeOption) (*LookupRelationshipResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRelationshipResult

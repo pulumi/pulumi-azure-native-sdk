@@ -164,6 +164,9 @@ func NewVirtualMachineScaleSet(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:compute/v20240701:VirtualMachineScaleSet"),
 		},
 		{
+			Type: pulumi.String("azure-native:compute/v20241101:VirtualMachineScaleSet"),
+		},
+		{
 			Type: pulumi.String("azure-native:compute:VirtualMachineScaleSet"),
 		},
 	})

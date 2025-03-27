@@ -12,9 +12,10 @@ import (
 )
 
 // Gets list of items that violate tenant's configuration.
-// Azure REST API version: 2020-09-01-preview.
 //
-// Other available API versions: 2022-12-01-preview.
+// Uses Azure REST API version 2020-09-01-preview.
+//
+// Other available API versions: 2022-12-01-preview, 2025-04-01-preview.
 func ListListTenantConfigurationViolation(ctx *pulumi.Context, args *ListListTenantConfigurationViolationArgs, opts ...pulumi.InvokeOption) (*ListListTenantConfigurationViolationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListListTenantConfigurationViolationResult

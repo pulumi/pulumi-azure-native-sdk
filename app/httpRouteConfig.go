@@ -13,7 +13,8 @@ import (
 )
 
 // Advanced Ingress routing for path/header based routing for a Container App Environment
-// Azure REST API version: 2024-10-02-preview.
+//
+// Uses Azure REST API version 2024-10-02-preview.
 type HttpRouteConfig struct {
 	pulumi.CustomResourceState
 

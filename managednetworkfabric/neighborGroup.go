@@ -13,7 +13,8 @@ import (
 )
 
 // Defines the Neighbor Group.
-// Azure REST API version: 2023-06-15.
+//
+// Uses Azure REST API version 2023-06-15.
 type NeighborGroup struct {
 	pulumi.CustomResourceState
 

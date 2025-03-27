@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieve the Database Migration Service
-// Azure REST API version: 2023-07-15-preview.
+//
+// Uses Azure REST API version 2023-07-15-preview.
 func LookupMigrationService(ctx *pulumi.Context, args *LookupMigrationServiceArgs, opts ...pulumi.InvokeOption) (*LookupMigrationServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigrationServiceResult

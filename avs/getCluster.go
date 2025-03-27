@@ -12,7 +12,8 @@ import (
 )
 
 // A cluster resource
-// Azure REST API version: 2022-05-01.
+//
+// Uses Azure REST API version 2022-05-01.
 //
 // Other available API versions: 2020-03-20, 2021-06-01, 2023-03-01, 2023-09-01.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {

@@ -331,7 +331,7 @@ type AppAttachPackageInfoProperties struct {
 	CertificateName *string `pulumi:"certificateName"`
 	// User friendly Name to be displayed in the portal.
 	DisplayName *string `pulumi:"displayName"`
-	// VHD/CIM/APP-V image path on Network Share.
+	// VHD/CIM image path on Network Share.
 	ImagePath *string `pulumi:"imagePath"`
 	// Make this version of the package the active one across the hostpool.
 	IsActive *bool `pulumi:"isActive"`
@@ -339,7 +339,7 @@ type AppAttachPackageInfoProperties struct {
 	IsPackageTimestamped *string `pulumi:"isPackageTimestamped"`
 	// Specifies how to register Package in feed.
 	IsRegularRegistration *bool `pulumi:"isRegularRegistration"`
-	// Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+	// Date Package was last updated, found in the appxmanifest.xml.
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// Alias of App Attach Package. Assigned at import time
 	PackageAlias *string `pulumi:"packageAlias"`
@@ -347,15 +347,15 @@ type AppAttachPackageInfoProperties struct {
 	PackageApplications []MsixPackageApplications `pulumi:"packageApplications"`
 	// List of package dependencies.
 	PackageDependencies []MsixPackageDependencies `pulumi:"packageDependencies"`
-	// Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
+	// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
 	PackageFamilyName *string `pulumi:"packageFamilyName"`
-	// Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+	// Package Full Name from appxmanifest.xml.
 	PackageFullName *string `pulumi:"packageFullName"`
 	// Package Name from appxmanifest.xml.
 	PackageName *string `pulumi:"packageName"`
 	// Relative Path to the package inside the image.
 	PackageRelativePath *string `pulumi:"packageRelativePath"`
-	// Package Version found in the appxmanifest.xml.
+	// Package version found in the appxmanifest.xml.
 	Version *string `pulumi:"version"`
 }
 
@@ -378,7 +378,7 @@ type AppAttachPackageInfoPropertiesArgs struct {
 	CertificateName pulumi.StringPtrInput `pulumi:"certificateName"`
 	// User friendly Name to be displayed in the portal.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// VHD/CIM/APP-V image path on Network Share.
+	// VHD/CIM image path on Network Share.
 	ImagePath pulumi.StringPtrInput `pulumi:"imagePath"`
 	// Make this version of the package the active one across the hostpool.
 	IsActive pulumi.BoolPtrInput `pulumi:"isActive"`
@@ -386,7 +386,7 @@ type AppAttachPackageInfoPropertiesArgs struct {
 	IsPackageTimestamped pulumi.StringPtrInput `pulumi:"isPackageTimestamped"`
 	// Specifies how to register Package in feed.
 	IsRegularRegistration pulumi.BoolPtrInput `pulumi:"isRegularRegistration"`
-	// Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+	// Date Package was last updated, found in the appxmanifest.xml.
 	LastUpdated pulumi.StringPtrInput `pulumi:"lastUpdated"`
 	// Alias of App Attach Package. Assigned at import time
 	PackageAlias pulumi.StringPtrInput `pulumi:"packageAlias"`
@@ -394,15 +394,15 @@ type AppAttachPackageInfoPropertiesArgs struct {
 	PackageApplications MsixPackageApplicationsArrayInput `pulumi:"packageApplications"`
 	// List of package dependencies.
 	PackageDependencies MsixPackageDependenciesArrayInput `pulumi:"packageDependencies"`
-	// Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
+	// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
 	PackageFamilyName pulumi.StringPtrInput `pulumi:"packageFamilyName"`
-	// Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+	// Package Full Name from appxmanifest.xml.
 	PackageFullName pulumi.StringPtrInput `pulumi:"packageFullName"`
 	// Package Name from appxmanifest.xml.
 	PackageName pulumi.StringPtrInput `pulumi:"packageName"`
 	// Relative Path to the package inside the image.
 	PackageRelativePath pulumi.StringPtrInput `pulumi:"packageRelativePath"`
-	// Package Version found in the appxmanifest.xml.
+	// Package version found in the appxmanifest.xml.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -499,7 +499,7 @@ func (o AppAttachPackageInfoPropertiesOutput) DisplayName() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// VHD/CIM/APP-V image path on Network Share.
+// VHD/CIM image path on Network Share.
 func (o AppAttachPackageInfoPropertiesOutput) ImagePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.ImagePath }).(pulumi.StringPtrOutput)
 }
@@ -519,7 +519,7 @@ func (o AppAttachPackageInfoPropertiesOutput) IsRegularRegistration() pulumi.Boo
 	return o.ApplyT(func(v AppAttachPackageInfoProperties) *bool { return v.IsRegularRegistration }).(pulumi.BoolPtrOutput)
 }
 
-// Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+// Date Package was last updated, found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesOutput) LastUpdated() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.LastUpdated }).(pulumi.StringPtrOutput)
 }
@@ -539,12 +539,12 @@ func (o AppAttachPackageInfoPropertiesOutput) PackageDependencies() MsixPackageD
 	return o.ApplyT(func(v AppAttachPackageInfoProperties) []MsixPackageDependencies { return v.PackageDependencies }).(MsixPackageDependenciesArrayOutput)
 }
 
-// Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
+// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
 func (o AppAttachPackageInfoPropertiesOutput) PackageFamilyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.PackageFamilyName }).(pulumi.StringPtrOutput)
 }
 
-// Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+// Package Full Name from appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesOutput) PackageFullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.PackageFullName }).(pulumi.StringPtrOutput)
 }
@@ -559,7 +559,7 @@ func (o AppAttachPackageInfoPropertiesOutput) PackageRelativePath() pulumi.Strin
 	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.PackageRelativePath }).(pulumi.StringPtrOutput)
 }
 
-// Package Version found in the appxmanifest.xml.
+// Package version found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoProperties) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -618,7 +618,7 @@ func (o AppAttachPackageInfoPropertiesPtrOutput) DisplayName() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// VHD/CIM/APP-V image path on Network Share.
+// VHD/CIM image path on Network Share.
 func (o AppAttachPackageInfoPropertiesPtrOutput) ImagePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
 		if v == nil {
@@ -658,7 +658,7 @@ func (o AppAttachPackageInfoPropertiesPtrOutput) IsRegularRegistration() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+// Date Package was last updated, found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesPtrOutput) LastUpdated() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
 		if v == nil {
@@ -698,7 +698,7 @@ func (o AppAttachPackageInfoPropertiesPtrOutput) PackageDependencies() MsixPacka
 	}).(MsixPackageDependenciesArrayOutput)
 }
 
-// Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
+// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
 func (o AppAttachPackageInfoPropertiesPtrOutput) PackageFamilyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
 		if v == nil {
@@ -708,7 +708,7 @@ func (o AppAttachPackageInfoPropertiesPtrOutput) PackageFamilyName() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+// Package Full Name from appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesPtrOutput) PackageFullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
 		if v == nil {
@@ -738,7 +738,7 @@ func (o AppAttachPackageInfoPropertiesPtrOutput) PackageRelativePath() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Package Version found in the appxmanifest.xml.
+// Package version found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoProperties) *string {
 		if v == nil {
@@ -756,7 +756,7 @@ type AppAttachPackageInfoPropertiesResponse struct {
 	CertificateName *string `pulumi:"certificateName"`
 	// User friendly Name to be displayed in the portal.
 	DisplayName *string `pulumi:"displayName"`
-	// VHD/CIM/APP-V image path on Network Share.
+	// VHD/CIM image path on Network Share.
 	ImagePath *string `pulumi:"imagePath"`
 	// Make this version of the package the active one across the hostpool.
 	IsActive *bool `pulumi:"isActive"`
@@ -764,7 +764,7 @@ type AppAttachPackageInfoPropertiesResponse struct {
 	IsPackageTimestamped *string `pulumi:"isPackageTimestamped"`
 	// Specifies how to register Package in feed.
 	IsRegularRegistration *bool `pulumi:"isRegularRegistration"`
-	// Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+	// Date Package was last updated, found in the appxmanifest.xml.
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// Alias of App Attach Package. Assigned at import time
 	PackageAlias *string `pulumi:"packageAlias"`
@@ -772,15 +772,15 @@ type AppAttachPackageInfoPropertiesResponse struct {
 	PackageApplications []MsixPackageApplicationsResponse `pulumi:"packageApplications"`
 	// List of package dependencies.
 	PackageDependencies []MsixPackageDependenciesResponse `pulumi:"packageDependencies"`
-	// Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
+	// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
 	PackageFamilyName *string `pulumi:"packageFamilyName"`
-	// Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+	// Package Full Name from appxmanifest.xml.
 	PackageFullName *string `pulumi:"packageFullName"`
 	// Package Name from appxmanifest.xml.
 	PackageName *string `pulumi:"packageName"`
 	// Relative Path to the package inside the image.
 	PackageRelativePath *string `pulumi:"packageRelativePath"`
-	// Package Version found in the appxmanifest.xml.
+	// Package version found in the appxmanifest.xml.
 	Version *string `pulumi:"version"`
 }
 
@@ -814,7 +814,7 @@ func (o AppAttachPackageInfoPropertiesResponseOutput) DisplayName() pulumi.Strin
 	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// VHD/CIM/APP-V image path on Network Share.
+// VHD/CIM image path on Network Share.
 func (o AppAttachPackageInfoPropertiesResponseOutput) ImagePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.ImagePath }).(pulumi.StringPtrOutput)
 }
@@ -834,7 +834,7 @@ func (o AppAttachPackageInfoPropertiesResponseOutput) IsRegularRegistration() pu
 	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *bool { return v.IsRegularRegistration }).(pulumi.BoolPtrOutput)
 }
 
-// Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+// Date Package was last updated, found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesResponseOutput) LastUpdated() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.LastUpdated }).(pulumi.StringPtrOutput)
 }
@@ -858,12 +858,12 @@ func (o AppAttachPackageInfoPropertiesResponseOutput) PackageDependencies() Msix
 	}).(MsixPackageDependenciesResponseArrayOutput)
 }
 
-// Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
+// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
 func (o AppAttachPackageInfoPropertiesResponseOutput) PackageFamilyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.PackageFamilyName }).(pulumi.StringPtrOutput)
 }
 
-// Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+// Package Full Name from appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesResponseOutput) PackageFullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.PackageFullName }).(pulumi.StringPtrOutput)
 }
@@ -878,7 +878,7 @@ func (o AppAttachPackageInfoPropertiesResponseOutput) PackageRelativePath() pulu
 	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.PackageRelativePath }).(pulumi.StringPtrOutput)
 }
 
-// Package Version found in the appxmanifest.xml.
+// Package version found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppAttachPackageInfoPropertiesResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -937,7 +937,7 @@ func (o AppAttachPackageInfoPropertiesResponsePtrOutput) DisplayName() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// VHD/CIM/APP-V image path on Network Share.
+// VHD/CIM image path on Network Share.
 func (o AppAttachPackageInfoPropertiesResponsePtrOutput) ImagePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
 		if v == nil {
@@ -977,7 +977,7 @@ func (o AppAttachPackageInfoPropertiesResponsePtrOutput) IsRegularRegistration()
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+// Date Package was last updated, found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesResponsePtrOutput) LastUpdated() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
 		if v == nil {
@@ -1017,7 +1017,7 @@ func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageDependencies() M
 	}).(MsixPackageDependenciesResponseArrayOutput)
 }
 
-// Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
+// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
 func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageFamilyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
 		if v == nil {
@@ -1027,7 +1027,7 @@ func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageFamilyName() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+// Package Full Name from appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageFullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
 		if v == nil {
@@ -1057,7 +1057,7 @@ func (o AppAttachPackageInfoPropertiesResponsePtrOutput) PackageRelativePath() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Package Version found in the appxmanifest.xml.
+// Package version found in the appxmanifest.xml.
 func (o AppAttachPackageInfoPropertiesResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppAttachPackageInfoPropertiesResponse) *string {
 		if v == nil {
@@ -1065,190 +1065,6 @@ func (o AppAttachPackageInfoPropertiesResponsePtrOutput) Version() pulumi.String
 		}
 		return v.Version
 	}).(pulumi.StringPtrOutput)
-}
-
-// Schema for App Attach Package properties.
-type AppAttachPackageProperties struct {
-	// Field that can be populated with custom data and filtered on in list GET calls
-	CustomData *string `pulumi:"customData"`
-	// Parameter indicating how the health check should behave if this package fails staging
-	FailHealthCheckOnStagingFailure *string `pulumi:"failHealthCheckOnStagingFailure"`
-	// List of Hostpool resource Ids.
-	HostPoolReferences []string `pulumi:"hostPoolReferences"`
-	// Detailed properties for App Attach Package
-	Image *AppAttachPackageInfoProperties `pulumi:"image"`
-	// URL of keyvault location to store certificate
-	KeyVaultURL *string `pulumi:"keyVaultURL"`
-	// Lookback url to third party control plane, is null for native app attach packages
-	PackageLookbackUrl *string `pulumi:"packageLookbackUrl"`
-	// Specific name of package owner, is "AppAttach" for native app attach packages
-	PackageOwnerName *string `pulumi:"packageOwnerName"`
-}
-
-// AppAttachPackagePropertiesInput is an input type that accepts AppAttachPackagePropertiesArgs and AppAttachPackagePropertiesOutput values.
-// You can construct a concrete instance of `AppAttachPackagePropertiesInput` via:
-//
-//	AppAttachPackagePropertiesArgs{...}
-type AppAttachPackagePropertiesInput interface {
-	pulumi.Input
-
-	ToAppAttachPackagePropertiesOutput() AppAttachPackagePropertiesOutput
-	ToAppAttachPackagePropertiesOutputWithContext(context.Context) AppAttachPackagePropertiesOutput
-}
-
-// Schema for App Attach Package properties.
-type AppAttachPackagePropertiesArgs struct {
-	// Field that can be populated with custom data and filtered on in list GET calls
-	CustomData pulumi.StringPtrInput `pulumi:"customData"`
-	// Parameter indicating how the health check should behave if this package fails staging
-	FailHealthCheckOnStagingFailure pulumi.StringPtrInput `pulumi:"failHealthCheckOnStagingFailure"`
-	// List of Hostpool resource Ids.
-	HostPoolReferences pulumi.StringArrayInput `pulumi:"hostPoolReferences"`
-	// Detailed properties for App Attach Package
-	Image AppAttachPackageInfoPropertiesPtrInput `pulumi:"image"`
-	// URL of keyvault location to store certificate
-	KeyVaultURL pulumi.StringPtrInput `pulumi:"keyVaultURL"`
-	// Lookback url to third party control plane, is null for native app attach packages
-	PackageLookbackUrl pulumi.StringPtrInput `pulumi:"packageLookbackUrl"`
-	// Specific name of package owner, is "AppAttach" for native app attach packages
-	PackageOwnerName pulumi.StringPtrInput `pulumi:"packageOwnerName"`
-}
-
-func (AppAttachPackagePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppAttachPackageProperties)(nil)).Elem()
-}
-
-func (i AppAttachPackagePropertiesArgs) ToAppAttachPackagePropertiesOutput() AppAttachPackagePropertiesOutput {
-	return i.ToAppAttachPackagePropertiesOutputWithContext(context.Background())
-}
-
-func (i AppAttachPackagePropertiesArgs) ToAppAttachPackagePropertiesOutputWithContext(ctx context.Context) AppAttachPackagePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppAttachPackagePropertiesOutput)
-}
-
-// Schema for App Attach Package properties.
-type AppAttachPackagePropertiesOutput struct{ *pulumi.OutputState }
-
-func (AppAttachPackagePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppAttachPackageProperties)(nil)).Elem()
-}
-
-func (o AppAttachPackagePropertiesOutput) ToAppAttachPackagePropertiesOutput() AppAttachPackagePropertiesOutput {
-	return o
-}
-
-func (o AppAttachPackagePropertiesOutput) ToAppAttachPackagePropertiesOutputWithContext(ctx context.Context) AppAttachPackagePropertiesOutput {
-	return o
-}
-
-// Field that can be populated with custom data and filtered on in list GET calls
-func (o AppAttachPackagePropertiesOutput) CustomData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppAttachPackageProperties) *string { return v.CustomData }).(pulumi.StringPtrOutput)
-}
-
-// Parameter indicating how the health check should behave if this package fails staging
-func (o AppAttachPackagePropertiesOutput) FailHealthCheckOnStagingFailure() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppAttachPackageProperties) *string { return v.FailHealthCheckOnStagingFailure }).(pulumi.StringPtrOutput)
-}
-
-// List of Hostpool resource Ids.
-func (o AppAttachPackagePropertiesOutput) HostPoolReferences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AppAttachPackageProperties) []string { return v.HostPoolReferences }).(pulumi.StringArrayOutput)
-}
-
-// Detailed properties for App Attach Package
-func (o AppAttachPackagePropertiesOutput) Image() AppAttachPackageInfoPropertiesPtrOutput {
-	return o.ApplyT(func(v AppAttachPackageProperties) *AppAttachPackageInfoProperties { return v.Image }).(AppAttachPackageInfoPropertiesPtrOutput)
-}
-
-// URL of keyvault location to store certificate
-func (o AppAttachPackagePropertiesOutput) KeyVaultURL() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppAttachPackageProperties) *string { return v.KeyVaultURL }).(pulumi.StringPtrOutput)
-}
-
-// Lookback url to third party control plane, is null for native app attach packages
-func (o AppAttachPackagePropertiesOutput) PackageLookbackUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppAttachPackageProperties) *string { return v.PackageLookbackUrl }).(pulumi.StringPtrOutput)
-}
-
-// Specific name of package owner, is "AppAttach" for native app attach packages
-func (o AppAttachPackagePropertiesOutput) PackageOwnerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppAttachPackageProperties) *string { return v.PackageOwnerName }).(pulumi.StringPtrOutput)
-}
-
-// Schema for App Attach Package properties.
-type AppAttachPackagePropertiesResponse struct {
-	// Field that can be populated with custom data and filtered on in list GET calls
-	CustomData *string `pulumi:"customData"`
-	// Parameter indicating how the health check should behave if this package fails staging
-	FailHealthCheckOnStagingFailure *string `pulumi:"failHealthCheckOnStagingFailure"`
-	// List of Hostpool resource Ids.
-	HostPoolReferences []string `pulumi:"hostPoolReferences"`
-	// Detailed properties for App Attach Package
-	Image *AppAttachPackageInfoPropertiesResponse `pulumi:"image"`
-	// URL of keyvault location to store certificate
-	KeyVaultURL *string `pulumi:"keyVaultURL"`
-	// Lookback url to third party control plane, is null for native app attach packages
-	PackageLookbackUrl *string `pulumi:"packageLookbackUrl"`
-	// Specific name of package owner, is "AppAttach" for native app attach packages
-	PackageOwnerName *string `pulumi:"packageOwnerName"`
-	// The provisioning state of the App Attach Package.
-	ProvisioningState string `pulumi:"provisioningState"`
-}
-
-// Schema for App Attach Package properties.
-type AppAttachPackagePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (AppAttachPackagePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppAttachPackagePropertiesResponse)(nil)).Elem()
-}
-
-func (o AppAttachPackagePropertiesResponseOutput) ToAppAttachPackagePropertiesResponseOutput() AppAttachPackagePropertiesResponseOutput {
-	return o
-}
-
-func (o AppAttachPackagePropertiesResponseOutput) ToAppAttachPackagePropertiesResponseOutputWithContext(ctx context.Context) AppAttachPackagePropertiesResponseOutput {
-	return o
-}
-
-// Field that can be populated with custom data and filtered on in list GET calls
-func (o AppAttachPackagePropertiesResponseOutput) CustomData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) *string { return v.CustomData }).(pulumi.StringPtrOutput)
-}
-
-// Parameter indicating how the health check should behave if this package fails staging
-func (o AppAttachPackagePropertiesResponseOutput) FailHealthCheckOnStagingFailure() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) *string { return v.FailHealthCheckOnStagingFailure }).(pulumi.StringPtrOutput)
-}
-
-// List of Hostpool resource Ids.
-func (o AppAttachPackagePropertiesResponseOutput) HostPoolReferences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) []string { return v.HostPoolReferences }).(pulumi.StringArrayOutput)
-}
-
-// Detailed properties for App Attach Package
-func (o AppAttachPackagePropertiesResponseOutput) Image() AppAttachPackageInfoPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) *AppAttachPackageInfoPropertiesResponse { return v.Image }).(AppAttachPackageInfoPropertiesResponsePtrOutput)
-}
-
-// URL of keyvault location to store certificate
-func (o AppAttachPackagePropertiesResponseOutput) KeyVaultURL() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) *string { return v.KeyVaultURL }).(pulumi.StringPtrOutput)
-}
-
-// Lookback url to third party control plane, is null for native app attach packages
-func (o AppAttachPackagePropertiesResponseOutput) PackageLookbackUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) *string { return v.PackageLookbackUrl }).(pulumi.StringPtrOutput)
-}
-
-// Specific name of package owner, is "AppAttach" for native app attach packages
-func (o AppAttachPackagePropertiesResponseOutput) PackageOwnerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) *string { return v.PackageOwnerName }).(pulumi.StringPtrOutput)
-}
-
-// The provisioning state of the App Attach Package.
-func (o AppAttachPackagePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v AppAttachPackagePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Maintenance window starting hour and day of week.
@@ -1929,7 +1745,7 @@ func (o MsixPackageApplicationsResponseArrayOutput) Index(i pulumi.IntInput) Msi
 
 // Schema for MSIX Package Dependencies properties.
 type MsixPackageDependencies struct {
-	// Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages this is the locations of the user and deployment config files
+	// Name of package dependency.
 	DependencyName *string `pulumi:"dependencyName"`
 	// Dependency version required.
 	MinVersion *string `pulumi:"minVersion"`
@@ -1950,7 +1766,7 @@ type MsixPackageDependenciesInput interface {
 
 // Schema for MSIX Package Dependencies properties.
 type MsixPackageDependenciesArgs struct {
-	// Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages this is the locations of the user and deployment config files
+	// Name of package dependency.
 	DependencyName pulumi.StringPtrInput `pulumi:"dependencyName"`
 	// Dependency version required.
 	MinVersion pulumi.StringPtrInput `pulumi:"minVersion"`
@@ -2010,7 +1826,7 @@ func (o MsixPackageDependenciesOutput) ToMsixPackageDependenciesOutputWithContex
 	return o
 }
 
-// Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages this is the locations of the user and deployment config files
+// Name of package dependency.
 func (o MsixPackageDependenciesOutput) DependencyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MsixPackageDependencies) *string { return v.DependencyName }).(pulumi.StringPtrOutput)
 }
@@ -2047,7 +1863,7 @@ func (o MsixPackageDependenciesArrayOutput) Index(i pulumi.IntInput) MsixPackage
 
 // Schema for MSIX Package Dependencies properties.
 type MsixPackageDependenciesResponse struct {
-	// Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages this is the locations of the user and deployment config files
+	// Name of package dependency.
 	DependencyName *string `pulumi:"dependencyName"`
 	// Dependency version required.
 	MinVersion *string `pulumi:"minVersion"`
@@ -2070,7 +1886,7 @@ func (o MsixPackageDependenciesResponseOutput) ToMsixPackageDependenciesResponse
 	return o
 }
 
-// Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages this is the locations of the user and deployment config files
+// Name of package dependency.
 func (o MsixPackageDependenciesResponseOutput) DependencyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MsixPackageDependenciesResponse) *string { return v.DependencyName }).(pulumi.StringPtrOutput)
 }
@@ -2449,20 +2265,127 @@ func (o PlanResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The private endpoint connection resource.
-type PrivateEndpointConnectionResponse struct {
+// Properties of the private endpoint connection.
+type PrivateEndpointConnectionPropertiesResponse struct {
 	// The group ids for the private endpoint resource.
 	GroupIds []string `pulumi:"groupIds"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-	Id string `pulumi:"id"`
-	// The name of the resource
-	Name string `pulumi:"name"`
 	// The private endpoint resource.
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Properties of the private endpoint connection.
+type PrivateEndpointConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConnectionPropertiesResponseOutput() PrivateEndpointConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConnectionPropertiesResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponseOutput {
+	return o
+}
+
+// The group ids for the private endpoint resource.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The private endpoint resource.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// The provisioning state of the private endpoint connection resource.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) ToPrivateEndpointConnectionPropertiesResponsePtrOutput() PrivateEndpointConnectionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) ToPrivateEndpointConnectionPropertiesResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) Elem() PrivateEndpointConnectionPropertiesResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) PrivateEndpointConnectionPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointConnectionPropertiesResponse
+		return ret
+	}).(PrivateEndpointConnectionPropertiesResponseOutput)
+}
+
+// The group ids for the private endpoint resource.
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The private endpoint resource.
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpoint
+	}).(PrivateEndpointResponsePtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) *PrivateLinkServiceConnectionStateResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
+}
+
+// The provisioning state of the private endpoint connection resource.
+func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private endpoint connection resource.
+type PrivateEndpointConnectionResponse struct {
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Resource properties.
+	Properties *PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -2484,11 +2407,6 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
-// The group ids for the private endpoint resource.
-func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -2499,21 +2417,11 @@ func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The private endpoint resource.
-func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateLinkServiceConnectionStateResponse {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
-}
-
-// The provisioning state of the private endpoint connection resource.
-func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+// Resource properties.
+func (o PrivateEndpointConnectionResponseOutput) Properties() PrivateEndpointConnectionPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointConnectionPropertiesResponse {
+		return v.Properties
+	}).(PrivateEndpointConnectionPropertiesResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -2719,7 +2627,61 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringP
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Represents a RegistrationInfo definition.  This is not returned on HostPool GET. In order to get the registration token use the retrieveRegistrationToken or listRegistrationTokens POST calls.
+type PrivateLinkServiceConnectionStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutput() PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) PrivateLinkServiceConnectionStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateLinkServiceConnectionStateResponse
+		return ret
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// A message indicating if changes on the service provider require any updates on the consumer.
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionsRequired
+	}).(pulumi.StringPtrOutput)
+}
+
+// The reason for approval/rejection of the connection.
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a RegistrationInfo definition.
 type RegistrationInfo struct {
 	// Expiration time of registration token.
 	ExpirationTime *string `pulumi:"expirationTime"`
@@ -2740,7 +2702,7 @@ type RegistrationInfoInput interface {
 	ToRegistrationInfoOutputWithContext(context.Context) RegistrationInfoOutput
 }
 
-// Represents a RegistrationInfo definition.  This is not returned on HostPool GET. In order to get the registration token use the retrieveRegistrationToken or listRegistrationTokens POST calls.
+// Represents a RegistrationInfo definition.
 type RegistrationInfoArgs struct {
 	// Expiration time of registration token.
 	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
@@ -2803,7 +2765,7 @@ func (i *registrationInfoPtrType) ToRegistrationInfoPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationInfoPtrOutput)
 }
 
-// Represents a RegistrationInfo definition.  This is not returned on HostPool GET. In order to get the registration token use the retrieveRegistrationToken or listRegistrationTokens POST calls.
+// Represents a RegistrationInfo definition.
 type RegistrationInfoOutput struct{ *pulumi.OutputState }
 
 func (RegistrationInfoOutput) ElementType() reflect.Type {
@@ -2897,7 +2859,7 @@ func (o RegistrationInfoPtrOutput) Token() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Represents a RegistrationInfo definition.  This is not returned on HostPool GET. In order to get the registration token use the retrieveRegistrationToken or listRegistrationTokens POST calls.
+// Represents a RegistrationInfo definition.
 type RegistrationInfoResponse struct {
 	// Expiration time of registration token.
 	ExpirationTime *string `pulumi:"expirationTime"`
@@ -2907,7 +2869,7 @@ type RegistrationInfoResponse struct {
 	Token *string `pulumi:"token"`
 }
 
-// Represents a RegistrationInfo definition.  This is not returned on HostPool GET. In order to get the registration token use the retrieveRegistrationToken or listRegistrationTokens POST calls.
+// Represents a RegistrationInfo definition.
 type RegistrationInfoResponseOutput struct{ *pulumi.OutputState }
 
 func (RegistrationInfoResponseOutput) ElementType() reflect.Type {
@@ -3209,7 +3171,7 @@ func (o ScalingHostPoolReferenceResponseArrayOutput) Index(i pulumi.IntInput) Sc
 // A ScalingPlanPooledSchedule.
 type ScalingSchedule struct {
 	// Set of days of the week on which this schedule is active.
-	DaysOfWeek []string `pulumi:"daysOfWeek"`
+	DaysOfWeek []DayOfWeek `pulumi:"daysOfWeek"`
 	// Name of the ScalingPlanPooledSchedule.
 	Name *string `pulumi:"name"`
 	// Load balancing algorithm for off-peak period.
@@ -3260,7 +3222,7 @@ type ScalingScheduleInput interface {
 // A ScalingPlanPooledSchedule.
 type ScalingScheduleArgs struct {
 	// Set of days of the week on which this schedule is active.
-	DaysOfWeek pulumi.StringArrayInput `pulumi:"daysOfWeek"`
+	DaysOfWeek DayOfWeekArrayInput `pulumi:"daysOfWeek"`
 	// Name of the ScalingPlanPooledSchedule.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Load balancing algorithm for off-peak period.
@@ -3350,8 +3312,8 @@ func (o ScalingScheduleOutput) ToScalingScheduleOutputWithContext(ctx context.Co
 }
 
 // Set of days of the week on which this schedule is active.
-func (o ScalingScheduleOutput) DaysOfWeek() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ScalingSchedule) []string { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
+func (o ScalingScheduleOutput) DaysOfWeek() DayOfWeekArrayOutput {
+	return o.ApplyT(func(v ScalingSchedule) []DayOfWeek { return v.DaysOfWeek }).(DayOfWeekArrayOutput)
 }
 
 // Name of the ScalingPlanPooledSchedule.
@@ -4327,8 +4289,6 @@ func init() {
 	pulumi.RegisterOutputType(AppAttachPackageInfoPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AppAttachPackageInfoPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AppAttachPackageInfoPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(AppAttachPackagePropertiesOutput{})
-	pulumi.RegisterOutputType(AppAttachPackagePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPropertiesOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPropertiesResponseOutput{})
@@ -4349,12 +4309,15 @@ func init() {
 	pulumi.RegisterOutputType(PlanPtrOutput{})
 	pulumi.RegisterOutputType(PlanResponseOutput{})
 	pulumi.RegisterOutputType(PlanResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(RegistrationInfoOutput{})
 	pulumi.RegisterOutputType(RegistrationInfoPtrOutput{})
 	pulumi.RegisterOutputType(RegistrationInfoResponseOutput{})

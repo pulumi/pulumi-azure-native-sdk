@@ -86,6 +86,9 @@ func NewJob(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:app/v20241002preview:Job"),
 		},
 		{
+			Type: pulumi.String("azure-native:app/v20250101:Job"),
+		},
+		{
 			Type: pulumi.String("azure-native:app:Job"),
 		},
 	})

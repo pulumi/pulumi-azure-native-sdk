@@ -12,7 +12,8 @@ import (
 )
 
 // The get business process development artifact action.
-// Azure REST API version: 2023-11-14-preview.
+//
+// Uses Azure REST API version 2023-11-14-preview.
 func GetApplicationBusinessProcessDevelopmentArtifact(ctx *pulumi.Context, args *GetApplicationBusinessProcessDevelopmentArtifactArgs, opts ...pulumi.InvokeOption) (*GetApplicationBusinessProcessDevelopmentArtifactResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetApplicationBusinessProcessDevelopmentArtifactResult

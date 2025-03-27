@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an associated tenant by ID.
-// Azure REST API version: 2024-04-01.
+//
+// Uses Azure REST API version 2024-04-01.
 func LookupAssociatedTenant(ctx *pulumi.Context, args *LookupAssociatedTenantArgs, opts ...pulumi.InvokeOption) (*LookupAssociatedTenantResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssociatedTenantResult

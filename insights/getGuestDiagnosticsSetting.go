@@ -12,7 +12,8 @@ import (
 )
 
 // Gets guest diagnostics settings.
-// Azure REST API version: 2018-06-01-preview.
+//
+// Uses Azure REST API version 2018-06-01-preview.
 func LookupGuestDiagnosticsSetting(ctx *pulumi.Context, args *LookupGuestDiagnosticsSettingArgs, opts ...pulumi.InvokeOption) (*LookupGuestDiagnosticsSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestDiagnosticsSettingResult

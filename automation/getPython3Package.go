@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieve the python 3 package identified by package name.
-// Azure REST API version: 2022-08-08.
+//
+// Uses Azure REST API version 2022-08-08.
 //
 // Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
 func LookupPython3Package(ctx *pulumi.Context, args *LookupPython3PackageArgs, opts ...pulumi.InvokeOption) (*LookupPython3PackageResult, error) {

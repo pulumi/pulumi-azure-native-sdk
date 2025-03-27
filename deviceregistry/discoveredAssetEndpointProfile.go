@@ -13,7 +13,8 @@ import (
 )
 
 // Discovered Asset Endpoint Profile definition.
-// Azure REST API version: 2024-09-01-preview.
+//
+// Uses Azure REST API version 2024-09-01-preview.
 type DiscoveredAssetEndpointProfile struct {
 	pulumi.CustomResourceState
 

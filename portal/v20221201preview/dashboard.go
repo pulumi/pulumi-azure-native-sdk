@@ -54,6 +54,9 @@ func NewDashboard(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:portal/v20200901preview:Dashboard"),
 		},
 		{
+			Type: pulumi.String("azure-native:portal/v20250401preview:Dashboard"),
+		},
+		{
 			Type: pulumi.String("azure-native:portal:Dashboard"),
 		},
 	})

@@ -30,7 +30,7 @@ type SecurityPoliciesInterface struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Web Application Firewall Policy of the Traffic Controller Security Policy
+	// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 	WafPolicy WafPolicyResponsePtrOutput `pulumi:"wafPolicy"`
 }
 
@@ -50,6 +50,9 @@ func NewSecurityPoliciesInterface(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20240501preview:SecurityPoliciesInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20250301preview:SecurityPoliciesInterface"),
 		},
 		{
 			Type: pulumi.String("azure-native:servicenetworking:SecurityPoliciesInterface"),
@@ -99,7 +102,7 @@ type securityPoliciesInterfaceArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// traffic controller name for path
 	TrafficControllerName string `pulumi:"trafficControllerName"`
-	// Web Application Firewall Policy of the Traffic Controller Security Policy
+	// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 	WafPolicy *WafPolicy `pulumi:"wafPolicy"`
 }
 
@@ -115,7 +118,7 @@ type SecurityPoliciesInterfaceArgs struct {
 	Tags pulumi.StringMapInput
 	// traffic controller name for path
 	TrafficControllerName pulumi.StringInput
-	// Web Application Firewall Policy of the Traffic Controller Security Policy
+	// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 	WafPolicy WafPolicyPtrInput
 }
 
@@ -191,7 +194,7 @@ func (o SecurityPoliciesInterfaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPoliciesInterface) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Web Application Firewall Policy of the Traffic Controller Security Policy
+// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 func (o SecurityPoliciesInterfaceOutput) WafPolicy() WafPolicyResponsePtrOutput {
 	return o.ApplyT(func(v *SecurityPoliciesInterface) WafPolicyResponsePtrOutput { return v.WafPolicy }).(WafPolicyResponsePtrOutput)
 }

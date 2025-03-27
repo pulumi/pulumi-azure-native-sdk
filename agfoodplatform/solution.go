@@ -13,7 +13,8 @@ import (
 )
 
 // Solution resource.
-// Azure REST API version: 2023-06-01-preview.
+//
+// Uses Azure REST API version 2023-06-01-preview.
 //
 // Other available API versions: 2021-09-01-preview.
 type Solution struct {

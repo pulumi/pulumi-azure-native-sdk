@@ -13,7 +13,8 @@ import (
 )
 
 // The SecretSync resource.
-// Azure REST API version: 2024-08-21-preview.
+//
+// Uses Azure REST API version 2024-08-21-preview.
 type SecretSync struct {
 	pulumi.CustomResourceState
 

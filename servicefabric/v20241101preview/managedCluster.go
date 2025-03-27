@@ -62,7 +62,7 @@ type ManagedCluster struct {
 	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
 	// Setting this to true will link the IPv4 address as the ServicePublicIP of the IPv6 address. It can only be set to True if IPv6 is enabled on the cluster.
 	EnableServicePublicIP pulumi.BoolPtrOutput `pulumi:"enableServicePublicIP"`
-	// Azure resource etag.
+	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.",
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The list of custom fabric settings to configure the cluster.
 	FabricSettings SettingsSectionDescriptionResponseArrayOutput `pulumi:"fabricSettings"`
@@ -80,9 +80,9 @@ type ManagedCluster struct {
 	Ipv6Address pulumi.StringOutput `pulumi:"ipv6Address"`
 	// Load balancing rules that are applied to the public load balancer of the cluster.
 	LoadBalancingRules LoadBalancingRuleResponseArrayOutput `pulumi:"loadBalancingRules"`
-	// Azure resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Azure resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Custom Network Security Rules that are applied to the Virtual Network of the cluster.
 	NetworkSecurityRules NetworkSecurityRuleResponseArrayOutput `pulumi:"networkSecurityRules"`
@@ -98,11 +98,11 @@ type ManagedCluster struct {
 	Sku SkuResponseOutput `pulumi:"sku"`
 	// If specified, the node types for the cluster are created in this subnet instead of the default VNet. The **networkSecurityRules** specified for the cluster are also applied to this subnet. This setting cannot be changed once the cluster is created.
 	SubnetId pulumi.StringPtrOutput `pulumi:"subnetId"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Azure resource tags.
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Azure resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The policy to use when upgrading the cluster.
 	UpgradeDescription ClusterUpgradePolicyResponsePtrOutput `pulumi:"upgradeDescription"`
@@ -135,6 +135,9 @@ func NewManagedCluster(ctx *pulumi.Context,
 	}
 	if args.ClientConnectionPort == nil {
 		args.ClientConnectionPort = pulumi.IntPtr(19000)
+	}
+	if args.ClusterUpgradeMode == nil {
+		args.ClusterUpgradeMode = pulumi.StringPtr("Automatic")
 	}
 	if args.HttpGatewayConnectionPort == nil {
 		args.HttpGatewayConnectionPort = pulumi.IntPtr(19080)
@@ -299,7 +302,7 @@ type managedClusterArgs struct {
 	IpTags []IpTag `pulumi:"ipTags"`
 	// Load balancing rules that are applied to the public load balancer of the cluster.
 	LoadBalancingRules []LoadBalancingRule `pulumi:"loadBalancingRules"`
-	// Azure resource location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Custom Network Security Rules that are applied to the Virtual Network of the cluster.
 	NetworkSecurityRules []NetworkSecurityRule `pulumi:"networkSecurityRules"`
@@ -307,7 +310,7 @@ type managedClusterArgs struct {
 	PublicIPPrefixId *string `pulumi:"publicIPPrefixId"`
 	// Specify the resource id of a public IPv6 prefix that the load balancer will allocate a public IPv6 address from. This setting cannot be changed once the cluster is created.
 	PublicIPv6PrefixId *string `pulumi:"publicIPv6PrefixId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Service endpoints for subnets in the cluster.
 	ServiceEndpoints []ServiceEndpoint `pulumi:"serviceEndpoints"`
@@ -315,7 +318,7 @@ type managedClusterArgs struct {
 	Sku Sku `pulumi:"sku"`
 	// If specified, the node types for the cluster are created in this subnet instead of the default VNet. The **networkSecurityRules** specified for the cluster are also applied to this subnet. This setting cannot be changed once the cluster is created.
 	SubnetId *string `pulumi:"subnetId"`
-	// Azure resource tags.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The policy to use when upgrading the cluster.
 	UpgradeDescription *ClusterUpgradePolicy `pulumi:"upgradeDescription"`
@@ -381,7 +384,7 @@ type ManagedClusterArgs struct {
 	IpTags IpTagArrayInput
 	// Load balancing rules that are applied to the public load balancer of the cluster.
 	LoadBalancingRules LoadBalancingRuleArrayInput
-	// Azure resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Custom Network Security Rules that are applied to the Virtual Network of the cluster.
 	NetworkSecurityRules NetworkSecurityRuleArrayInput
@@ -389,7 +392,7 @@ type ManagedClusterArgs struct {
 	PublicIPPrefixId pulumi.StringPtrInput
 	// Specify the resource id of a public IPv6 prefix that the load balancer will allocate a public IPv6 address from. This setting cannot be changed once the cluster is created.
 	PublicIPv6PrefixId pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Service endpoints for subnets in the cluster.
 	ServiceEndpoints ServiceEndpointArrayInput
@@ -397,7 +400,7 @@ type ManagedClusterArgs struct {
 	Sku SkuInput
 	// If specified, the node types for the cluster are created in this subnet instead of the default VNet. The **networkSecurityRules** specified for the cluster are also applied to this subnet. This setting cannot be changed once the cluster is created.
 	SubnetId pulumi.StringPtrInput
-	// Azure resource tags.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The policy to use when upgrading the cluster.
 	UpgradeDescription ClusterUpgradePolicyPtrInput
@@ -563,7 +566,7 @@ func (o ManagedClusterOutput) EnableServicePublicIP() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.BoolPtrOutput { return v.EnableServicePublicIP }).(pulumi.BoolPtrOutput)
 }
 
-// Azure resource etag.
+// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.",
 func (o ManagedClusterOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -608,12 +611,12 @@ func (o ManagedClusterOutput) LoadBalancingRules() LoadBalancingRuleResponseArra
 	return o.ApplyT(func(v *ManagedCluster) LoadBalancingRuleResponseArrayOutput { return v.LoadBalancingRules }).(LoadBalancingRuleResponseArrayOutput)
 }
 
-// Azure resource location.
+// The geo-location where the resource lives
 func (o ManagedClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Azure resource name.
+// The name of the resource
 func (o ManagedClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -653,17 +656,17 @@ func (o ManagedClusterOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringPtrOutput { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ManagedClusterOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ManagedCluster) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource tags.
+// Resource tags.
 func (o ManagedClusterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Azure resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ManagedClusterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedCluster) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

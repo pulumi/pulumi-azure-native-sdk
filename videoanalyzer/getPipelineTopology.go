@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves a specific pipeline topology by name. If a topology with that name has been previously created, the call will return the JSON representation of that topology.
-// Azure REST API version: 2021-11-01-preview.
+//
+// Uses Azure REST API version 2021-11-01-preview.
 func LookupPipelineTopology(ctx *pulumi.Context, args *LookupPipelineTopologyArgs, opts ...pulumi.InvokeOption) (*LookupPipelineTopologyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineTopologyResult

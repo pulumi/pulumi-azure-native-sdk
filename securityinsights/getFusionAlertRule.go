@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the alert rule.
-// Azure REST API version: 2023-02-01.
+//
+// Uses Azure REST API version 2023-02-01.
 func LookupFusionAlertRule(ctx *pulumi.Context, args *LookupFusionAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupFusionAlertRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFusionAlertRuleResult

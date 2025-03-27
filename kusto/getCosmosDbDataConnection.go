@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a data connection.
-// Azure REST API version: 2022-12-29.
+//
+// Uses Azure REST API version 2022-12-29.
 func LookupCosmosDbDataConnection(ctx *pulumi.Context, args *LookupCosmosDbDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupCosmosDbDataConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCosmosDbDataConnectionResult

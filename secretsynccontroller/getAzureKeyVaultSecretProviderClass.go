@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the properties of an AzureKeyVaultSecretProviderClass instance.
-// Azure REST API version: 2024-08-21-preview.
+//
+// Uses Azure REST API version 2024-08-21-preview.
 func LookupAzureKeyVaultSecretProviderClass(ctx *pulumi.Context, args *LookupAzureKeyVaultSecretProviderClassArgs, opts ...pulumi.InvokeOption) (*LookupAzureKeyVaultSecretProviderClassResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureKeyVaultSecretProviderClassResult

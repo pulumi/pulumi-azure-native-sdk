@@ -12,7 +12,8 @@ import (
 )
 
 // Get a RdsDBInstance
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupRdsDbInstance(ctx *pulumi.Context, args *LookupRdsDbInstanceArgs, opts ...pulumi.InvokeOption) (*LookupRdsDbInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRdsDbInstanceResult

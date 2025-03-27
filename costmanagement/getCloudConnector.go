@@ -12,7 +12,8 @@ import (
 )
 
 // Get a cloud connector definition
-// Azure REST API version: 2019-03-01-preview.
+//
+// Uses Azure REST API version 2019-03-01-preview.
 func LookupCloudConnector(ctx *pulumi.Context, args *LookupCloudConnectorArgs, opts ...pulumi.InvokeOption) (*LookupCloudConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudConnectorResult

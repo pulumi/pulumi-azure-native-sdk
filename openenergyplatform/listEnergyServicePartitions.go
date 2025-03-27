@@ -12,7 +12,8 @@ import (
 )
 
 // Method that gets called when list of partitions is requested.
-// Azure REST API version: 2022-04-04-preview.
+//
+// Uses Azure REST API version 2022-04-04-preview.
 func ListEnergyServicePartitions(ctx *pulumi.Context, args *ListEnergyServicePartitionsArgs, opts ...pulumi.InvokeOption) (*ListEnergyServicePartitionsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEnergyServicePartitionsResult

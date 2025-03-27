@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the report for a subscription by report name.
-// Azure REST API version: 2018-08-01-preview.
+//
+// Uses Azure REST API version 2018-08-01-preview.
 func LookupReport(ctx *pulumi.Context, args *LookupReportArgs, opts ...pulumi.InvokeOption) (*LookupReportResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReportResult

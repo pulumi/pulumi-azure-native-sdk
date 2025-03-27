@@ -12,7 +12,10 @@ import (
 )
 
 // Get the source addresses for the specified flow.
-// Azure REST API version: 2024-09-27.
+//
+// Uses Azure REST API version 2024-09-27.
+//
+// Other available API versions: 2025-03-01-preview.
 func GetFlowSourceAddresses(ctx *pulumi.Context, args *GetFlowSourceAddressesArgs, opts ...pulumi.InvokeOption) (*GetFlowSourceAddressesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetFlowSourceAddressesResult

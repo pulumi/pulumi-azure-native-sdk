@@ -12,7 +12,10 @@ import (
 )
 
 // Retrieves a SQL Server license resource
-// Azure REST API version: 2024-05-01-preview.
+//
+// Uses Azure REST API version 2024-05-01-preview.
+//
+// Other available API versions: 2025-03-01-preview.
 func LookupSqlServerLicense(ctx *pulumi.Context, args *LookupSqlServerLicenseArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerLicenseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerLicenseResult

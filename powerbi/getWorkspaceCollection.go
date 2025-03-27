@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves an existing Power BI Workspace Collection.
-// Azure REST API version: 2016-01-29.
+//
+// Uses Azure REST API version 2016-01-29.
 func LookupWorkspaceCollection(ctx *pulumi.Context, args *LookupWorkspaceCollectionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceCollectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceCollectionResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves the properties of a Managed CCF app.
-// Azure REST API version: 2023-01-26-preview.
+//
+// Uses Azure REST API version 2023-01-26-preview.
 //
 // Other available API versions: 2023-06-28-preview, 2024-07-09-preview, 2024-09-19-preview.
 func LookupManagedCCF(ctx *pulumi.Context, args *LookupManagedCCFArgs, opts ...pulumi.InvokeOption) (*LookupManagedCCFResult, error) {

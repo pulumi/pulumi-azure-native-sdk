@@ -65,6 +65,9 @@ func NewManagedInstanceLongTermRetentionPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230501preview:ManagedInstanceLongTermRetentionPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:ManagedInstanceLongTermRetentionPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ManagedInstanceLongTermRetentionPolicy"),
 		},
 		{

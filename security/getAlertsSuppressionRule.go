@@ -12,7 +12,8 @@ import (
 )
 
 // Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
-// Azure REST API version: 2019-01-01-preview.
+//
+// Uses Azure REST API version 2019-01-01-preview.
 func LookupAlertsSuppressionRule(ctx *pulumi.Context, args *LookupAlertsSuppressionRuleArgs, opts ...pulumi.InvokeOption) (*LookupAlertsSuppressionRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertsSuppressionRuleResult

@@ -12,9 +12,10 @@ import (
 )
 
 // Get a StandbyVirtualMachinePoolResource
-// Azure REST API version: 2023-12-01-preview.
 //
-// Other available API versions: 2024-03-01, 2024-03-01-preview.
+// Uses Azure REST API version 2023-12-01-preview.
+//
+// Other available API versions: 2024-03-01, 2024-03-01-preview, 2025-03-01.
 func LookupStandbyVirtualMachinePool(ctx *pulumi.Context, args *LookupStandbyVirtualMachinePoolArgs, opts ...pulumi.InvokeOption) (*LookupStandbyVirtualMachinePoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStandbyVirtualMachinePoolResult

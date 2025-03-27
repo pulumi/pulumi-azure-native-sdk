@@ -12,7 +12,8 @@ import (
 )
 
 // Gets data image upload URL.
-// Azure REST API version: 2017-04-26.
+//
+// Uses Azure REST API version 2017-04-26.
 func GetImageUploadUrlForData(ctx *pulumi.Context, args *GetImageUploadUrlForDataArgs, opts ...pulumi.InvokeOption) (*GetImageUploadUrlForDataResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetImageUploadUrlForDataResult

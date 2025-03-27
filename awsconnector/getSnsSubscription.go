@@ -12,7 +12,8 @@ import (
 )
 
 // Get a SnsSubscription
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupSnsSubscription(ctx *pulumi.Context, args *LookupSnsSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSnsSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnsSubscriptionResult

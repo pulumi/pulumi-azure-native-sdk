@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2Image
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2Image(ctx *pulumi.Context, args *LookupEc2ImageArgs, opts ...pulumi.InvokeOption) (*LookupEc2ImageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2ImageResult

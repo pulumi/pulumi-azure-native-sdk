@@ -12,7 +12,8 @@ import (
 )
 
 // Get a IamRole
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupIamRole(ctx *pulumi.Context, args *LookupIamRoleArgs, opts ...pulumi.InvokeOption) (*LookupIamRoleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIamRoleResult

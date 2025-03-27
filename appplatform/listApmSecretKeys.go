@@ -12,7 +12,8 @@ import (
 )
 
 // List keys of APM sensitive properties.
-// Azure REST API version: 2023-05-01-preview.
+//
+// Uses Azure REST API version 2023-05-01-preview.
 //
 // Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
 func ListApmSecretKeys(ctx *pulumi.Context, args *ListApmSecretKeysArgs, opts ...pulumi.InvokeOption) (*ListApmSecretKeysResult, error) {

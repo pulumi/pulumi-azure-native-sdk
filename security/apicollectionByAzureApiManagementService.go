@@ -13,7 +13,8 @@ import (
 )
 
 // An API collection as represented by Microsoft Defender for APIs.
-// Azure REST API version: 2023-11-15.
+//
+// Uses Azure REST API version 2023-11-15.
 type APICollectionByAzureApiManagementService struct {
 	pulumi.CustomResourceState
 

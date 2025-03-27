@@ -12,7 +12,8 @@ import (
 )
 
 // Get a SecretsManagerSecret
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupSecretsManagerSecret(ctx *pulumi.Context, args *LookupSecretsManagerSecretArgs, opts ...pulumi.InvokeOption) (*LookupSecretsManagerSecretResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretsManagerSecretResult

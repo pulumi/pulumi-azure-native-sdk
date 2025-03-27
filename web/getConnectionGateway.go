@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a specific gateway under a subscription and in a specific resource group
-// Azure REST API version: 2016-06-01.
+//
+// Uses Azure REST API version 2016-06-01.
 func LookupConnectionGateway(ctx *pulumi.Context, args *LookupConnectionGatewayArgs, opts ...pulumi.InvokeOption) (*LookupConnectionGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionGatewayResult

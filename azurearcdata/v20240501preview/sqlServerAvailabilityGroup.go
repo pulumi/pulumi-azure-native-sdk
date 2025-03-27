@@ -51,6 +51,9 @@ func NewSqlServerAvailabilityGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurearcdata/v20240101:SqlServerAvailabilityGroup"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:SqlServerAvailabilityGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurearcdata:SqlServerAvailabilityGroup"),
 		},
 	})

@@ -12,7 +12,8 @@ import (
 )
 
 // Get the Azure AD B2C tenant resource.
-// Azure REST API version: 2021-04-01.
+//
+// Uses Azure REST API version 2021-04-01.
 //
 // Other available API versions: 2019-01-01-preview, 2023-01-18-preview, 2023-05-17-preview.
 func LookupB2CTenant(ctx *pulumi.Context, args *LookupB2CTenantArgs, opts ...pulumi.InvokeOption) (*LookupB2CTenantResult, error) {

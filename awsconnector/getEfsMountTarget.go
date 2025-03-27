@@ -12,7 +12,8 @@ import (
 )
 
 // Get a EfsMountTarget
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEfsMountTarget(ctx *pulumi.Context, args *LookupEfsMountTargetArgs, opts ...pulumi.InvokeOption) (*LookupEfsMountTargetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEfsMountTargetResult

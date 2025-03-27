@@ -12,7 +12,8 @@ import (
 )
 
 // Gets information about the specified site network service.
-// Azure REST API version: 2023-09-01.
+//
+// Uses Azure REST API version 2023-09-01.
 //
 // Other available API versions: 2024-04-15.
 func LookupSiteNetworkService(ctx *pulumi.Context, args *LookupSiteNetworkServiceArgs, opts ...pulumi.InvokeOption) (*LookupSiteNetworkServiceResult, error) {

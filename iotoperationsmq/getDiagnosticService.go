@@ -12,7 +12,8 @@ import (
 )
 
 // Get a DiagnosticServiceResource
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 func LookupDiagnosticService(ctx *pulumi.Context, args *LookupDiagnosticServiceArgs, opts ...pulumi.InvokeOption) (*LookupDiagnosticServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiagnosticServiceResult

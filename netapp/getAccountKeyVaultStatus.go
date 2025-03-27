@@ -12,7 +12,8 @@ import (
 )
 
 // Contains data from encryption.keyVaultProperties as well as information about which private endpoint is used by each encryption sibling set. Response from this endpoint can be modified and used as request body for POST request.
-// Azure REST API version: 2024-09-01-preview.
+//
+// Uses Azure REST API version 2024-09-01-preview.
 func GetAccountKeyVaultStatus(ctx *pulumi.Context, args *GetAccountKeyVaultStatusArgs, opts ...pulumi.InvokeOption) (*GetAccountKeyVaultStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountKeyVaultStatusResult

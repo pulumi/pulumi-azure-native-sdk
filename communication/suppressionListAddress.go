@@ -13,7 +13,8 @@ import (
 )
 
 // A object that represents a SuppressionList record.
-// Azure REST API version: 2023-06-01-preview.
+//
+// Uses Azure REST API version 2023-06-01-preview.
 //
 // Other available API versions: 2024-09-01-preview.
 type SuppressionListAddress struct {

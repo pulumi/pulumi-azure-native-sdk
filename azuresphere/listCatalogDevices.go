@@ -12,7 +12,8 @@ import (
 )
 
 // Lists devices for catalog.
-// Azure REST API version: 2022-09-01-preview.
+//
+// Uses Azure REST API version 2022-09-01-preview.
 //
 // Other available API versions: 2024-04-01.
 func ListCatalogDevices(ctx *pulumi.Context, args *ListCatalogDevicesArgs, opts ...pulumi.InvokeOption) (*ListCatalogDevicesResult, error) {

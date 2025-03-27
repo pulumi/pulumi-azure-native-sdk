@@ -13,7 +13,8 @@ import (
 )
 
 // Represents MDATP (Microsoft Defender Advanced Threat Protection) data connector.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-01-01.
+//
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
 type MDATPDataConnector struct {
 	pulumi.CustomResourceState
 
@@ -159,6 +160,9 @@ func NewMDATPDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:MDATPDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

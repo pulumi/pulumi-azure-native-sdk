@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a SAP Migration discovery site resource.
-// Azure REST API version: 2023-10-01-preview.
+//
+// Uses Azure REST API version 2023-10-01-preview.
 func LookupSapDiscoverySite(ctx *pulumi.Context, args *LookupSapDiscoverySiteArgs, opts ...pulumi.InvokeOption) (*LookupSapDiscoverySiteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSapDiscoverySiteResult

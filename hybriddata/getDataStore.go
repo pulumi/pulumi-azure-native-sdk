@@ -12,7 +12,8 @@ import (
 )
 
 // This method gets the data store/repository by name.
-// Azure REST API version: 2019-06-01.
+//
+// Uses Azure REST API version 2019-06-01.
 func LookupDataStore(ctx *pulumi.Context, args *LookupDataStoreArgs, opts ...pulumi.InvokeOption) (*LookupDataStoreResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataStoreResult

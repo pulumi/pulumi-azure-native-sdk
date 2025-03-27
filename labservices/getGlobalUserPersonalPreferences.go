@@ -12,7 +12,8 @@ import (
 )
 
 // Get personal preferences for a user
-// Azure REST API version: 2018-10-15.
+//
+// Uses Azure REST API version 2018-10-15.
 func GetGlobalUserPersonalPreferences(ctx *pulumi.Context, args *GetGlobalUserPersonalPreferencesArgs, opts ...pulumi.InvokeOption) (*GetGlobalUserPersonalPreferencesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetGlobalUserPersonalPreferencesResult

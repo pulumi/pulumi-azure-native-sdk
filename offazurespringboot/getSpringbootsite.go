@@ -12,7 +12,8 @@ import (
 )
 
 // Get a springbootsites resource.
-// Azure REST API version: 2023-01-01-preview.
+//
+// Uses Azure REST API version 2023-01-01-preview.
 func LookupSpringbootsite(ctx *pulumi.Context, args *LookupSpringbootsiteArgs, opts ...pulumi.InvokeOption) (*LookupSpringbootsiteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpringbootsiteResult

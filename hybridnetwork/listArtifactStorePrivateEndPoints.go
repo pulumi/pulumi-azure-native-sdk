@@ -12,7 +12,8 @@ import (
 )
 
 // List manual private endpoints on artifact stores
-// Azure REST API version: 2024-04-15.
+//
+// Uses Azure REST API version 2024-04-15.
 func ListArtifactStorePrivateEndPoints(ctx *pulumi.Context, args *ListArtifactStorePrivateEndPointsArgs, opts ...pulumi.InvokeOption) (*ListArtifactStorePrivateEndPointsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListArtifactStorePrivateEndPointsResult

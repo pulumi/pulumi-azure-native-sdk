@@ -109,6 +109,9 @@ func NewWorkspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:databricks/v20240901preview:Workspace"),
 		},
 		{
+			Type: pulumi.String("azure-native:databricks/v20250301preview:Workspace"),
+		},
+		{
 			Type: pulumi.String("azure-native:databricks:Workspace"),
 		},
 	})

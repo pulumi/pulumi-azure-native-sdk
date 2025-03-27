@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the send key name and value for a Hybrid Connection.
-// Azure REST API version: 2018-11-01.
+//
+// Uses Azure REST API version 2018-11-01.
 func ListWebAppHybridConnectionKeys(ctx *pulumi.Context, args *ListWebAppHybridConnectionKeysArgs, opts ...pulumi.InvokeOption) (*ListWebAppHybridConnectionKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppHybridConnectionKeysResult

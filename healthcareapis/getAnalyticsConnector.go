@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the properties of the specified Analytics Connector.
-// Azure REST API version: 2022-10-01-preview.
+//
+// Uses Azure REST API version 2022-10-01-preview.
 func LookupAnalyticsConnector(ctx *pulumi.Context, args *LookupAnalyticsConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAnalyticsConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnalyticsConnectorResult

@@ -13,7 +13,8 @@ import (
 )
 
 // A Solution resource belonging to an Instance resource.
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 type Solution struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a CodeBuildSourceCredentialsInfo
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupCodeBuildSourceCredentialsInfo(ctx *pulumi.Context, args *LookupCodeBuildSourceCredentialsInfoArgs, opts ...pulumi.InvokeOption) (*LookupCodeBuildSourceCredentialsInfoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCodeBuildSourceCredentialsInfoResult

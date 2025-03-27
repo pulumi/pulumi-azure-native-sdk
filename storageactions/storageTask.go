@@ -13,7 +13,8 @@ import (
 )
 
 // Represents Storage Task.
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 type StorageTask struct {
 	pulumi.CustomResourceState
 

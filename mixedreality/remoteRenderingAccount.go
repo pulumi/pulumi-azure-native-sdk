@@ -13,9 +13,10 @@ import (
 )
 
 // RemoteRenderingAccount Response.
-// Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2021-01-01.
 //
-// Other available API versions: 2021-03-01-preview.
+// Uses Azure REST API version 2021-01-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+//
+// Other available API versions: 2021-03-01-preview, 2025-01-01.
 type RemoteRenderingAccount struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +68,9 @@ func NewRemoteRenderingAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mixedreality/v20210301preview:RemoteRenderingAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:mixedreality/v20250101:RemoteRenderingAccount"),
 		},
 	})
 	opts = append(opts, aliases)

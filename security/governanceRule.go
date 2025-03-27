@@ -13,7 +13,8 @@ import (
 )
 
 // Governance rule over a given scope
-// Azure REST API version: 2022-01-01-preview.
+//
+// Uses Azure REST API version 2022-01-01-preview.
 type GovernanceRule struct {
 	pulumi.CustomResourceState
 

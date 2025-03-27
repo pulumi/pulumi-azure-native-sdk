@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the SAS token associated with the specified Data Lake Analytics and Azure Storage account and container combination.
-// Azure REST API version: 2019-11-01-preview.
+//
+// Uses Azure REST API version 2019-11-01-preview.
 func ListStorageAccountSasTokens(ctx *pulumi.Context, args *ListStorageAccountSasTokensArgs, opts ...pulumi.InvokeOption) (*ListStorageAccountSasTokensResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListStorageAccountSasTokensResult

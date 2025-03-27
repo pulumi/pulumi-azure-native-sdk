@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an existing registered ASN with the specified name under the given subscription, resource group and peering.
-// Azure REST API version: 2022-10-01.
+//
+// Uses Azure REST API version 2022-10-01.
 func LookupRegisteredAsn(ctx *pulumi.Context, args *LookupRegisteredAsnArgs, opts ...pulumi.InvokeOption) (*LookupRegisteredAsnResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegisteredAsnResult

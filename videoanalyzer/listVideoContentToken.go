@@ -12,7 +12,8 @@ import (
 )
 
 // Generates a streaming token which can be used for accessing content from video content URLs, for a video resource with the given name.
-// Azure REST API version: 2021-11-01-preview.
+//
+// Uses Azure REST API version 2021-11-01-preview.
 func ListVideoContentToken(ctx *pulumi.Context, args *ListVideoContentTokenArgs, opts ...pulumi.InvokeOption) (*ListVideoContentTokenResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListVideoContentTokenResult

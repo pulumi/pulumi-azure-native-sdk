@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2Address
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2Address(ctx *pulumi.Context, args *LookupEc2AddressArgs, opts ...pulumi.InvokeOption) (*LookupEc2AddressResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2AddressResult

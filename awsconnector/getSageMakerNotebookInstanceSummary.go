@@ -12,7 +12,8 @@ import (
 )
 
 // Get a SageMakerNotebookInstanceSummary
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupSageMakerNotebookInstanceSummary(ctx *pulumi.Context, args *LookupSageMakerNotebookInstanceSummaryArgs, opts ...pulumi.InvokeOption) (*LookupSageMakerNotebookInstanceSummaryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSageMakerNotebookInstanceSummaryResult

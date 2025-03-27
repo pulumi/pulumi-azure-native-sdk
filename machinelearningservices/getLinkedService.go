@@ -12,7 +12,8 @@ import (
 )
 
 // Get the detail of a linked service.
-// Azure REST API version: 2020-09-01-preview.
+//
+// Uses Azure REST API version 2020-09-01-preview.
 func LookupLinkedService(ctx *pulumi.Context, args *LookupLinkedServiceArgs, opts ...pulumi.InvokeOption) (*LookupLinkedServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLinkedServiceResult

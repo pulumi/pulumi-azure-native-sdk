@@ -13,7 +13,8 @@ import (
 )
 
 // Definition of the configuration profile.
-// Azure REST API version: 2022-05-04.
+//
+// Uses Azure REST API version 2022-05-04.
 type ConfigurationProfilesVersion struct {
 	pulumi.CustomResourceState
 

@@ -65,9 +65,6 @@ func NewPrivateEndpointConnectionByWorkspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:PrivateEndpointConnectionByWorkspace"),
 		},
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:PrivateEndpointConnectionByWorkspace"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:PrivateEndpointConnectionByWorkspace"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewPrivateEndpointConnectionByWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:PrivateEndpointConnectionByWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:PrivateEndpointConnectionByWorkspace"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:PrivateEndpointConnectionByWorkspace"),

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the provider registration details.
-// Azure REST API version: 2021-09-01-preview.
+//
+// Uses Azure REST API version 2021-09-01-preview.
 func LookupProviderRegistration(ctx *pulumi.Context, args *LookupProviderRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupProviderRegistrationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProviderRegistrationResult

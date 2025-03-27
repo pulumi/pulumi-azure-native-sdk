@@ -13,7 +13,8 @@ import (
 )
 
 // Represents the high level Nodes needed to provision isp customer resources
-// Azure REST API version: 2023-05-01-preview.
+//
+// Uses Azure REST API version 2023-05-01-preview.
 type IspCustomer struct {
 	pulumi.CustomResourceState
 

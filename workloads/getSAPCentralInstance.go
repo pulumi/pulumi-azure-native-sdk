@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the SAP Central Services Instance resource.
-// Azure REST API version: 2023-04-01.
+//
+// Uses Azure REST API version 2023-04-01.
 //
 // Other available API versions: 2023-10-01-preview.
 func LookupSAPCentralInstance(ctx *pulumi.Context, args *LookupSAPCentralInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSAPCentralInstanceResult, error) {

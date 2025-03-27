@@ -12,7 +12,8 @@ import (
 )
 
 // Returns the properties of a Linked Subscription resource.
-// Azure REST API version: 2020-06-01-preview.
+//
+// Uses Azure REST API version 2020-06-01-preview.
 func LookupLinkedSubscription(ctx *pulumi.Context, args *LookupLinkedSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupLinkedSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLinkedSubscriptionResult

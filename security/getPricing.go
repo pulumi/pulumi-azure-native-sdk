@@ -12,7 +12,8 @@ import (
 )
 
 // Get the Defender plans pricing configurations of the selected scope (valid scopes are resource id or a subscription id). At the resource level, supported resource types are 'VirtualMachines, VMSS and ARC Machines'.
-// Azure REST API version: 2024-01-01.
+//
+// Uses Azure REST API version 2024-01-01.
 func LookupPricing(ctx *pulumi.Context, args *LookupPricingArgs, opts ...pulumi.InvokeOption) (*LookupPricingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPricingResult

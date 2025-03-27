@@ -12,7 +12,8 @@ import (
 )
 
 // Get a IamPolicyVersion
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupIamPolicyVersion(ctx *pulumi.Context, args *LookupIamPolicyVersionArgs, opts ...pulumi.InvokeOption) (*LookupIamPolicyVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIamPolicyVersionResult

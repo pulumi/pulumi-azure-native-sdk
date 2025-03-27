@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the details of the workload instance.
-// Azure REST API version: 2022-05-01-preview.
+//
+// Uses Azure REST API version 2022-05-01-preview.
 func LookupWorkloadInstance(ctx *pulumi.Context, args *LookupWorkloadInstanceArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadInstanceResult

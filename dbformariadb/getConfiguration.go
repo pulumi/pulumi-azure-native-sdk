@@ -12,7 +12,8 @@ import (
 )
 
 // Gets information about a configuration of server.
-// Azure REST API version: 2018-06-01.
+//
+// Uses Azure REST API version 2018-06-01.
 //
 // Other available API versions: 2018-06-01-preview.
 func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationResult, error) {

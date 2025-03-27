@@ -58,6 +58,9 @@ func NewBrokerAuthentication(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:iotoperations/v20240915preview:BrokerAuthentication"),
 		},
 		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:BrokerAuthentication"),
+		},
+		{
 			Type: pulumi.String("azure-native:iotoperations:BrokerAuthentication"),
 		},
 	})

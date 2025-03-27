@@ -25,7 +25,7 @@ func LookupManagedCluster(ctx *pulumi.Context, args *LookupManagedClusterArgs, o
 type LookupManagedClusterArgs struct {
 	// The name of the cluster resource.
 	ClusterName string `pulumi:"clusterName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -77,7 +77,7 @@ type LookupManagedClusterResult struct {
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// Setting this to true will link the IPv4 address as the ServicePublicIP of the IPv6 address. It can only be set to True if IPv6 is enabled on the cluster.
 	EnableServicePublicIP *bool `pulumi:"enableServicePublicIP"`
-	// Azure resource etag.
+	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.",
 	Etag string `pulumi:"etag"`
 	// The list of custom fabric settings to configure the cluster.
 	FabricSettings []SettingsSectionDescriptionResponse `pulumi:"fabricSettings"`
@@ -87,7 +87,7 @@ type LookupManagedClusterResult struct {
 	HttpGatewayConnectionPort *int `pulumi:"httpGatewayConnectionPort"`
 	// The port used for token-auth based HTTPS connections to the cluster. Cannot be set to the same port as HttpGatewayEndpoint.
 	HttpGatewayTokenAuthConnectionPort *int `pulumi:"httpGatewayTokenAuthConnectionPort"`
-	// Azure resource identifier.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The list of IP tags associated with the default public IP address of the cluster.
 	IpTags []IpTagResponse `pulumi:"ipTags"`
@@ -97,9 +97,9 @@ type LookupManagedClusterResult struct {
 	Ipv6Address string `pulumi:"ipv6Address"`
 	// Load balancing rules that are applied to the public load balancer of the cluster.
 	LoadBalancingRules []LoadBalancingRuleResponse `pulumi:"loadBalancingRules"`
-	// Azure resource location.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Azure resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Custom Network Security Rules that are applied to the Virtual Network of the cluster.
 	NetworkSecurityRules []NetworkSecurityRuleResponse `pulumi:"networkSecurityRules"`
@@ -115,11 +115,11 @@ type LookupManagedClusterResult struct {
 	Sku SkuResponse `pulumi:"sku"`
 	// If specified, the node types for the cluster are created in this subnet instead of the default VNet. The **networkSecurityRules** specified for the cluster are also applied to this subnet. This setting cannot be changed once the cluster is created.
 	SubnetId *string `pulumi:"subnetId"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Azure resource tags.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Azure resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The policy to use when upgrading the cluster.
 	UpgradeDescription *ClusterUpgradePolicyResponse `pulumi:"upgradeDescription"`
@@ -140,6 +140,10 @@ func (val *LookupManagedClusterResult) Defaults() *LookupManagedClusterResult {
 	if tmp.ClientConnectionPort == nil {
 		clientConnectionPort_ := 19000
 		tmp.ClientConnectionPort = &clientConnectionPort_
+	}
+	if tmp.ClusterUpgradeMode == nil {
+		clusterUpgradeMode_ := "Automatic"
+		tmp.ClusterUpgradeMode = &clusterUpgradeMode_
 	}
 	if tmp.HttpGatewayConnectionPort == nil {
 		httpGatewayConnectionPort_ := 19080
@@ -165,7 +169,7 @@ func LookupManagedClusterOutput(ctx *pulumi.Context, args LookupManagedClusterOu
 type LookupManagedClusterOutputArgs struct {
 	// The name of the cluster resource.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -305,7 +309,7 @@ func (o LookupManagedClusterResultOutput) EnableServicePublicIP() pulumi.BoolPtr
 	return o.ApplyT(func(v LookupManagedClusterResult) *bool { return v.EnableServicePublicIP }).(pulumi.BoolPtrOutput)
 }
 
-// Azure resource etag.
+// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.",
 func (o LookupManagedClusterResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedClusterResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -330,7 +334,7 @@ func (o LookupManagedClusterResultOutput) HttpGatewayTokenAuthConnectionPort() p
 	return o.ApplyT(func(v LookupManagedClusterResult) *int { return v.HttpGatewayTokenAuthConnectionPort }).(pulumi.IntPtrOutput)
 }
 
-// Azure resource identifier.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupManagedClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -355,12 +359,12 @@ func (o LookupManagedClusterResultOutput) LoadBalancingRules() LoadBalancingRule
 	return o.ApplyT(func(v LookupManagedClusterResult) []LoadBalancingRuleResponse { return v.LoadBalancingRules }).(LoadBalancingRuleResponseArrayOutput)
 }
 
-// Azure resource location.
+// The geo-location where the resource lives
 func (o LookupManagedClusterResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedClusterResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Azure resource name.
+// The name of the resource
 func (o LookupManagedClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -400,17 +404,17 @@ func (o LookupManagedClusterResultOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedClusterResult) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupManagedClusterResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupManagedClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource tags.
+// Resource tags.
 func (o LookupManagedClusterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupManagedClusterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Azure resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupManagedClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedClusterResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -87,6 +87,9 @@ func NewMachineRunCommand(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hybridcompute/v20240910preview:MachineRunCommand"),
 		},
 		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250113:MachineRunCommand"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcompute:MachineRunCommand"),
 		},
 	})

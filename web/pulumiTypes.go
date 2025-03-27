@@ -7017,7 +7017,7 @@ type AzureActiveDirectoryRegistration struct {
 	// The app setting name that contains the client secret of the relying party application.
 	ClientSecretSettingName *string `pulumi:"clientSecretSettingName"`
 	// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 	// This URI is a case-sensitive identifier for the token issuer.
 	// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 	OpenIdIssuer *string `pulumi:"openIdIssuer"`
@@ -7053,7 +7053,7 @@ type AzureActiveDirectoryRegistrationArgs struct {
 	// The app setting name that contains the client secret of the relying party application.
 	ClientSecretSettingName pulumi.StringPtrInput `pulumi:"clientSecretSettingName"`
 	// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 	// This URI is a case-sensitive identifier for the token issuer.
 	// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 	OpenIdIssuer pulumi.StringPtrInput `pulumi:"openIdIssuer"`
@@ -7171,7 +7171,7 @@ func (o AzureActiveDirectoryRegistrationOutput) ClientSecretSettingName() pulumi
 }
 
 // The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 // This URI is a case-sensitive identifier for the token issuer.
 // More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 func (o AzureActiveDirectoryRegistrationOutput) OpenIdIssuer() pulumi.StringPtrOutput {
@@ -7259,7 +7259,7 @@ func (o AzureActiveDirectoryRegistrationPtrOutput) ClientSecretSettingName() pul
 }
 
 // The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 // This URI is a case-sensitive identifier for the token issuer.
 // More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 func (o AzureActiveDirectoryRegistrationPtrOutput) OpenIdIssuer() pulumi.StringPtrOutput {
@@ -7290,7 +7290,7 @@ type AzureActiveDirectoryRegistrationResponse struct {
 	// The app setting name that contains the client secret of the relying party application.
 	ClientSecretSettingName *string `pulumi:"clientSecretSettingName"`
 	// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 	// This URI is a case-sensitive identifier for the token issuer.
 	// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 	OpenIdIssuer *string `pulumi:"openIdIssuer"`
@@ -7345,7 +7345,7 @@ func (o AzureActiveDirectoryRegistrationResponseOutput) ClientSecretSettingName(
 }
 
 // The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 // This URI is a case-sensitive identifier for the token issuer.
 // More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 func (o AzureActiveDirectoryRegistrationResponseOutput) OpenIdIssuer() pulumi.StringPtrOutput {
@@ -7433,7 +7433,7 @@ func (o AzureActiveDirectoryRegistrationResponsePtrOutput) ClientSecretSettingNa
 }
 
 // The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
 // This URI is a case-sensitive identifier for the token issuer.
 // More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 func (o AzureActiveDirectoryRegistrationResponsePtrOutput) OpenIdIssuer() pulumi.StringPtrOutput {
@@ -29087,8 +29087,7 @@ func (o QueueScaleRuleResponsePtrOutput) QueueName() pulumi.StringPtrOutput {
 type RampUpRule struct {
 	// Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
 	ActionHostName *string `pulumi:"actionHostName"`
-	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-	// https://www.siteextensions.net/packages/TiPCallback/
+	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
 	ChangeDecisionCallbackUrl *string `pulumi:"changeDecisionCallbackUrl"`
 	// Specifies interval in minutes to reevaluate ReroutePercentage.
 	ChangeIntervalInMinutes *int `pulumi:"changeIntervalInMinutes"`
@@ -29121,8 +29120,7 @@ type RampUpRuleInput interface {
 type RampUpRuleArgs struct {
 	// Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
 	ActionHostName pulumi.StringPtrInput `pulumi:"actionHostName"`
-	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-	// https://www.siteextensions.net/packages/TiPCallback/
+	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
 	ChangeDecisionCallbackUrl pulumi.StringPtrInput `pulumi:"changeDecisionCallbackUrl"`
 	// Specifies interval in minutes to reevaluate ReroutePercentage.
 	ChangeIntervalInMinutes pulumi.IntPtrInput `pulumi:"changeIntervalInMinutes"`
@@ -29197,8 +29195,7 @@ func (o RampUpRuleOutput) ActionHostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RampUpRule) *string { return v.ActionHostName }).(pulumi.StringPtrOutput)
 }
 
-// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-// https://www.siteextensions.net/packages/TiPCallback/
+// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
 func (o RampUpRuleOutput) ChangeDecisionCallbackUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RampUpRule) *string { return v.ChangeDecisionCallbackUrl }).(pulumi.StringPtrOutput)
 }
@@ -29259,8 +29256,7 @@ func (o RampUpRuleArrayOutput) Index(i pulumi.IntInput) RampUpRuleOutput {
 type RampUpRuleResponse struct {
 	// Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
 	ActionHostName *string `pulumi:"actionHostName"`
-	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-	// https://www.siteextensions.net/packages/TiPCallback/
+	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
 	ChangeDecisionCallbackUrl *string `pulumi:"changeDecisionCallbackUrl"`
 	// Specifies interval in minutes to reevaluate ReroutePercentage.
 	ChangeIntervalInMinutes *int `pulumi:"changeIntervalInMinutes"`
@@ -29298,8 +29294,7 @@ func (o RampUpRuleResponseOutput) ActionHostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RampUpRuleResponse) *string { return v.ActionHostName }).(pulumi.StringPtrOutput)
 }
 
-// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-// https://www.siteextensions.net/packages/TiPCallback/
+// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
 func (o RampUpRuleResponseOutput) ChangeDecisionCallbackUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RampUpRuleResponse) *string { return v.ChangeDecisionCallbackUrl }).(pulumi.StringPtrOutput)
 }

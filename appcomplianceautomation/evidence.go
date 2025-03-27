@@ -13,7 +13,8 @@ import (
 )
 
 // A class represent an AppComplianceAutomation evidence resource.
-// Azure REST API version: 2024-06-27.
+//
+// Uses Azure REST API version 2024-06-27.
 type Evidence struct {
 	pulumi.CustomResourceState
 

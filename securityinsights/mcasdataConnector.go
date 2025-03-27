@@ -13,7 +13,8 @@ import (
 )
 
 // Represents MCAS (Microsoft Cloud App Security) data connector.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-01-01.
+//
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
 type MCASDataConnector struct {
 	pulumi.CustomResourceState
 
@@ -159,6 +160,9 @@ func NewMCASDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:MCASDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

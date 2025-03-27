@@ -13,7 +13,8 @@ import (
 )
 
 // The NetworkTapRule resource definition.
-// Azure REST API version: 2023-06-15.
+//
+// Uses Azure REST API version 2023-06-15.
 type NetworkTapRule struct {
 	pulumi.CustomResourceState
 

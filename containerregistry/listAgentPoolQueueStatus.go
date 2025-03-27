@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the count of queued runs for a given agent pool.
-// Azure REST API version: 2019-06-01-preview.
+//
+// Uses Azure REST API version 2019-06-01-preview.
 func ListAgentPoolQueueStatus(ctx *pulumi.Context, args *ListAgentPoolQueueStatusArgs, opts ...pulumi.InvokeOption) (*ListAgentPoolQueueStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAgentPoolQueueStatusResult

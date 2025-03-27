@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2015-02-01-preview. Prior API version in Azure Native 1.x: 2015-02-01-preview.
+// Uses Azure REST API version 2015-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2015-02-01-preview.
 type WorkflowAccessKey struct {
 	pulumi.CustomResourceState
 

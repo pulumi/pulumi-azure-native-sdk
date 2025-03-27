@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the kafka configuration for the account
-// Azure REST API version: 2021-12-01.
+//
+// Uses Azure REST API version 2021-12-01.
 //
 // Other available API versions: 2023-05-01-preview, 2024-04-01-preview.
 func LookupKafkaConfiguration(ctx *pulumi.Context, args *LookupKafkaConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupKafkaConfigurationResult, error) {

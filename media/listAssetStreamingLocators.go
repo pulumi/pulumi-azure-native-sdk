@@ -12,7 +12,8 @@ import (
 )
 
 // Lists Streaming Locators which are associated with this asset.
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 func ListAssetStreamingLocators(ctx *pulumi.Context, args *ListAssetStreamingLocatorsArgs, opts ...pulumi.InvokeOption) (*ListAssetStreamingLocatorsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAssetStreamingLocatorsResult

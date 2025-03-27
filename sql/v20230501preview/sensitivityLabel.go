@@ -111,6 +111,9 @@ func NewSensitivityLabel(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230201preview:SensitivityLabel"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:SensitivityLabel"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:SensitivityLabel"),
 		},
 		{

@@ -13,7 +13,8 @@ import (
 )
 
 // Describes a Machine Extension.
-// Azure REST API version: 2022-12-15-preview.
+//
+// Uses Azure REST API version 2022-12-15-preview.
 type MachineExtension struct {
 	pulumi.CustomResourceState
 

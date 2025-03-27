@@ -13,7 +13,8 @@ import (
 )
 
 // The Prometheus rule group resource.
-// Azure REST API version: 2023-03-01.
+//
+// Uses Azure REST API version 2023-03-01.
 type PrometheusRuleGroup struct {
 	pulumi.CustomResourceState
 

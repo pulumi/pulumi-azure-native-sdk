@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2AccountAttribute
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2AccountAttribute(ctx *pulumi.Context, args *LookupEc2AccountAttributeArgs, opts ...pulumi.InvokeOption) (*LookupEc2AccountAttributeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2AccountAttributeResult

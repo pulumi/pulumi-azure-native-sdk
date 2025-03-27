@@ -12,7 +12,8 @@ import (
 )
 
 // Get a CloudFrontDistribution
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupCloudFrontDistribution(ctx *pulumi.Context, args *LookupCloudFrontDistributionArgs, opts ...pulumi.InvokeOption) (*LookupCloudFrontDistributionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudFrontDistributionResult

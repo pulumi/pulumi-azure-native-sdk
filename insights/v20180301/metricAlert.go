@@ -36,7 +36,7 @@ type MetricAlert struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Azure resource name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// the list of resource id's that this metric alert is scoped to.
+	// the list of resource id's that this metric alert is scoped to. You cannot change the scope of a metric rule based on logs.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// Alert severity {0, 1, 2, 3, 4}
 	Severity pulumi.IntOutput `pulumi:"severity"`
@@ -137,7 +137,7 @@ type metricAlertArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the rule.
 	RuleName *string `pulumi:"ruleName"`
-	// the list of resource id's that this metric alert is scoped to.
+	// the list of resource id's that this metric alert is scoped to. You cannot change the scope of a metric rule based on logs.
 	Scopes []string `pulumi:"scopes"`
 	// Alert severity {0, 1, 2, 3, 4}
 	Severity int `pulumi:"severity"`
@@ -171,7 +171,7 @@ type MetricAlertArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// The name of the rule.
 	RuleName pulumi.StringPtrInput
-	// the list of resource id's that this metric alert is scoped to.
+	// the list of resource id's that this metric alert is scoped to. You cannot change the scope of a metric rule based on logs.
 	Scopes pulumi.StringArrayInput
 	// Alert severity {0, 1, 2, 3, 4}
 	Severity pulumi.IntInput
@@ -272,7 +272,7 @@ func (o MetricAlertOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricAlert) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// the list of resource id's that this metric alert is scoped to.
+// the list of resource id's that this metric alert is scoped to. You cannot change the scope of a metric rule based on logs.
 func (o MetricAlertOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MetricAlert) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

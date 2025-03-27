@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the details of the Schema specified by its identifier.
-// Azure REST API version: 2021-04-01-preview.
+//
+// Uses Azure REST API version 2021-04-01-preview.
 func LookupSchema(ctx *pulumi.Context, args *LookupSchemaArgs, opts ...pulumi.InvokeOption) (*LookupSchemaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaResult

@@ -13,7 +13,8 @@ import (
 )
 
 // Cluster pool.
-// Azure REST API version: 2023-06-01-preview.
+//
+// Uses Azure REST API version 2023-06-01-preview.
 //
 // Other available API versions: 2023-11-01-preview, 2024-05-01-preview.
 type ClusterPool struct {

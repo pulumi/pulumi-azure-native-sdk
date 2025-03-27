@@ -16,12 +16,26 @@ import (
 type AppAttachPackage struct {
 	pulumi.CustomResourceState
 
+	// Field that can be populated with custom data and filtered on in list GET calls
+	CustomData pulumi.StringPtrOutput `pulumi:"customData"`
+	// Parameter indicating how the health check should behave if this package fails staging
+	FailHealthCheckOnStagingFailure pulumi.StringPtrOutput `pulumi:"failHealthCheckOnStagingFailure"`
+	// List of Hostpool resource Ids.
+	HostPoolReferences pulumi.StringArrayOutput `pulumi:"hostPoolReferences"`
+	// Detailed properties for App Attach Package
+	Image AppAttachPackageInfoPropertiesResponsePtrOutput `pulumi:"image"`
+	// URL path to certificate name located in keyVault
+	KeyVaultURL pulumi.StringPtrOutput `pulumi:"keyVaultURL"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Detailed properties for App Attach Package
-	Properties AppAttachPackagePropertiesResponseOutput `pulumi:"properties"`
+	// Lookback url to third party control plane, is null for native app attach packages
+	PackageLookbackUrl pulumi.StringPtrOutput `pulumi:"packageLookbackUrl"`
+	// Specific name of package owner, is "AppAttach" for native app attach packages
+	PackageOwnerName pulumi.StringPtrOutput `pulumi:"packageOwnerName"`
+	// The provisioning state of the App Attach Package.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -37,9 +51,6 @@ func NewAppAttachPackage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -61,6 +72,9 @@ func NewAppAttachPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:AppAttachPackage"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:AppAttachPackage"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:AppAttachPackage"),
@@ -100,12 +114,24 @@ func (AppAttachPackageState) ElementType() reflect.Type {
 }
 
 type appAttachPackageArgs struct {
-	// The name of the App Attach package arm object
+	// The name of the App Attach package
 	AppAttachPackageName *string `pulumi:"appAttachPackageName"`
+	// Field that can be populated with custom data and filtered on in list GET calls
+	CustomData *string `pulumi:"customData"`
+	// Parameter indicating how the health check should behave if this package fails staging
+	FailHealthCheckOnStagingFailure *string `pulumi:"failHealthCheckOnStagingFailure"`
+	// List of Hostpool resource Ids.
+	HostPoolReferences []string `pulumi:"hostPoolReferences"`
+	// Detailed properties for App Attach Package
+	Image *AppAttachPackageInfoProperties `pulumi:"image"`
+	// URL path to certificate name located in keyVault
+	KeyVaultURL *string `pulumi:"keyVaultURL"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Detailed properties for App Attach Package
-	Properties AppAttachPackageProperties `pulumi:"properties"`
+	// Lookback url to third party control plane, is null for native app attach packages
+	PackageLookbackUrl *string `pulumi:"packageLookbackUrl"`
+	// Specific name of package owner, is "AppAttach" for native app attach packages
+	PackageOwnerName *string `pulumi:"packageOwnerName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -114,12 +140,24 @@ type appAttachPackageArgs struct {
 
 // The set of arguments for constructing a AppAttachPackage resource.
 type AppAttachPackageArgs struct {
-	// The name of the App Attach package arm object
+	// The name of the App Attach package
 	AppAttachPackageName pulumi.StringPtrInput
+	// Field that can be populated with custom data and filtered on in list GET calls
+	CustomData pulumi.StringPtrInput
+	// Parameter indicating how the health check should behave if this package fails staging
+	FailHealthCheckOnStagingFailure pulumi.StringPtrInput
+	// List of Hostpool resource Ids.
+	HostPoolReferences pulumi.StringArrayInput
+	// Detailed properties for App Attach Package
+	Image AppAttachPackageInfoPropertiesPtrInput
+	// URL path to certificate name located in keyVault
+	KeyVaultURL pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Detailed properties for App Attach Package
-	Properties AppAttachPackagePropertiesInput
+	// Lookback url to third party control plane, is null for native app attach packages
+	PackageLookbackUrl pulumi.StringPtrInput
+	// Specific name of package owner, is "AppAttach" for native app attach packages
+	PackageOwnerName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -163,6 +201,31 @@ func (o AppAttachPackageOutput) ToAppAttachPackageOutputWithContext(ctx context.
 	return o
 }
 
+// Field that can be populated with custom data and filtered on in list GET calls
+func (o AppAttachPackageOutput) CustomData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackage) pulumi.StringPtrOutput { return v.CustomData }).(pulumi.StringPtrOutput)
+}
+
+// Parameter indicating how the health check should behave if this package fails staging
+func (o AppAttachPackageOutput) FailHealthCheckOnStagingFailure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackage) pulumi.StringPtrOutput { return v.FailHealthCheckOnStagingFailure }).(pulumi.StringPtrOutput)
+}
+
+// List of Hostpool resource Ids.
+func (o AppAttachPackageOutput) HostPoolReferences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppAttachPackage) pulumi.StringArrayOutput { return v.HostPoolReferences }).(pulumi.StringArrayOutput)
+}
+
+// Detailed properties for App Attach Package
+func (o AppAttachPackageOutput) Image() AppAttachPackageInfoPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *AppAttachPackage) AppAttachPackageInfoPropertiesResponsePtrOutput { return v.Image }).(AppAttachPackageInfoPropertiesResponsePtrOutput)
+}
+
+// URL path to certificate name located in keyVault
+func (o AppAttachPackageOutput) KeyVaultURL() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackage) pulumi.StringPtrOutput { return v.KeyVaultURL }).(pulumi.StringPtrOutput)
+}
+
 // The geo-location where the resource lives
 func (o AppAttachPackageOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppAttachPackage) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -173,9 +236,19 @@ func (o AppAttachPackageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppAttachPackage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Detailed properties for App Attach Package
-func (o AppAttachPackageOutput) Properties() AppAttachPackagePropertiesResponseOutput {
-	return o.ApplyT(func(v *AppAttachPackage) AppAttachPackagePropertiesResponseOutput { return v.Properties }).(AppAttachPackagePropertiesResponseOutput)
+// Lookback url to third party control plane, is null for native app attach packages
+func (o AppAttachPackageOutput) PackageLookbackUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackage) pulumi.StringPtrOutput { return v.PackageLookbackUrl }).(pulumi.StringPtrOutput)
+}
+
+// Specific name of package owner, is "AppAttach" for native app attach packages
+func (o AppAttachPackageOutput) PackageOwnerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppAttachPackage) pulumi.StringPtrOutput { return v.PackageOwnerName }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the App Attach Package.
+func (o AppAttachPackageOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppAttachPackage) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

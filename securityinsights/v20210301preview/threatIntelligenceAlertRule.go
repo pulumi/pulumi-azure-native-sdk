@@ -176,6 +176,9 @@ func NewThreatIntelligenceAlertRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:ThreatIntelligenceAlertRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:ThreatIntelligenceAlertRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:ThreatIntelligenceAlertRule"),
 		},
 	})

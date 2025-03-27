@@ -130,6 +130,9 @@ func NewCluster(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:Cluster"),
 		},
 		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:Cluster"),
+		},
+		{
 			Type: pulumi.String("azure-native:networkcloud:Cluster"),
 		},
 	})

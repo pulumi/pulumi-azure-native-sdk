@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the Hybrid AKS storage space object
-// Azure REST API version: 2022-09-01-preview.
+//
+// Uses Azure REST API version 2022-09-01-preview.
 func LookupStorageSpaceRetrieve(ctx *pulumi.Context, args *LookupStorageSpaceRetrieveArgs, opts ...pulumi.InvokeOption) (*LookupStorageSpaceRetrieveResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageSpaceRetrieveResult

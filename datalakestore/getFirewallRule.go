@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the specified Data Lake Store firewall rule.
-// Azure REST API version: 2016-11-01.
+//
+// Uses Azure REST API version 2016-11-01.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallRuleResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a IamInstanceProfile
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupIamInstanceProfile(ctx *pulumi.Context, args *LookupIamInstanceProfileArgs, opts ...pulumi.InvokeOption) (*LookupIamInstanceProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIamInstanceProfileResult

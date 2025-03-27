@@ -13,7 +13,8 @@ import (
 )
 
 // A Programmable Connectivity Operator API Connection resource
-// Azure REST API version: 2024-01-15-preview.
+//
+// Uses Azure REST API version 2024-01-15-preview.
 type OperatorApiConnection struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,8 @@ import (
 )
 
 // Dra model.
-// Azure REST API version: 2021-02-16-preview.
+//
+// Uses Azure REST API version 2021-02-16-preview.
 type Dra struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +46,9 @@ func NewDra(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datareplication/v20210216preview:Dra"),
+		},
+		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:Dra"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,7 +12,8 @@ import (
 )
 
 // Lists the applicable start/stop schedules, if any.
-// Azure REST API version: 2018-09-15.
+//
+// Uses Azure REST API version 2018-09-15.
 func ListVirtualMachineApplicableSchedules(ctx *pulumi.Context, args *ListVirtualMachineApplicableSchedulesArgs, opts ...pulumi.InvokeOption) (*ListVirtualMachineApplicableSchedulesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListVirtualMachineApplicableSchedulesResult

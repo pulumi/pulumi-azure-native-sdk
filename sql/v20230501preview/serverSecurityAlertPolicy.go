@@ -100,6 +100,9 @@ func NewServerSecurityAlertPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230201preview:ServerSecurityAlertPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:ServerSecurityAlertPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ServerSecurityAlertPolicy"),
 		},
 		{

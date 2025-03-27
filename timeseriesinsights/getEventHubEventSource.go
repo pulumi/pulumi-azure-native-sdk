@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the event source with the specified name in the specified environment.
-// Azure REST API version: 2020-05-15.
+//
+// Uses Azure REST API version 2020-05-15.
 func LookupEventHubEventSource(ctx *pulumi.Context, args *LookupEventHubEventSourceArgs, opts ...pulumi.InvokeOption) (*LookupEventHubEventSourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEventHubEventSourceResult

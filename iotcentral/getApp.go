@@ -12,7 +12,8 @@ import (
 )
 
 // Get the metadata of an IoT Central application.
-// Azure REST API version: 2021-06-01.
+//
+// Uses Azure REST API version 2021-06-01.
 //
 // Other available API versions: 2021-11-01-preview.
 func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOption) (*LookupAppResult, error) {

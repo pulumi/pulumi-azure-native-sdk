@@ -12,7 +12,8 @@ import (
 )
 
 // Lists all of the streaming jobs in the given cluster.
-// Azure REST API version: 2020-03-01.
+//
+// Uses Azure REST API version 2020-03-01.
 //
 // Other available API versions: 2020-03-01-preview.
 func ListClusterStreamingJobs(ctx *pulumi.Context, args *ListClusterStreamingJobsArgs, opts ...pulumi.InvokeOption) (*ListClusterStreamingJobsResult, error) {

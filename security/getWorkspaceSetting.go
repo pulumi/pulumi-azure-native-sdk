@@ -12,7 +12,8 @@ import (
 )
 
 // Settings about where we should store your security data and logs. If the result is empty, it means that no custom-workspace configuration was set
-// Azure REST API version: 2017-08-01-preview.
+//
+// Uses Azure REST API version 2017-08-01-preview.
 func LookupWorkspaceSetting(ctx *pulumi.Context, args *LookupWorkspaceSettingArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceSettingResult

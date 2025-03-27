@@ -12,7 +12,8 @@ import (
 )
 
 // List sensitive environment variables of the Job.
-// Azure REST API version: 2024-05-01-preview.
+//
+// Uses Azure REST API version 2024-05-01-preview.
 func ListJobEnvSecrets(ctx *pulumi.Context, args *ListJobEnvSecretsArgs, opts ...pulumi.InvokeOption) (*ListJobEnvSecretsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListJobEnvSecretsResult

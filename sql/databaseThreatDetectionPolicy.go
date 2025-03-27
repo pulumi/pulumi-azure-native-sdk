@@ -13,7 +13,8 @@ import (
 )
 
 // Contains information about a database Threat Detection policy.
-// Azure REST API version: 2014-04-01.
+//
+// Uses Azure REST API version 2014-04-01.
 type DatabaseThreatDetectionPolicy struct {
 	pulumi.CustomResourceState
 
@@ -108,6 +109,9 @@ func NewDatabaseThreatDetectionPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:DatabaseThreatDetectionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801:DatabaseThreatDetectionPolicy"),
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:DatabaseThreatDetectionPolicy"),

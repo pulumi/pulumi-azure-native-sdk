@@ -12,7 +12,8 @@ import (
 )
 
 // Get a specific Smart Detector alert rule.
-// Azure REST API version: 2021-04-01.
+//
+// Uses Azure REST API version 2021-04-01.
 func LookupSmartDetectorAlertRule(ctx *pulumi.Context, args *LookupSmartDetectorAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupSmartDetectorAlertRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSmartDetectorAlertRuleResult

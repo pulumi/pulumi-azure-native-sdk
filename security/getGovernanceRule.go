@@ -12,7 +12,8 @@ import (
 )
 
 // Get a specific governance rule for the requested scope by ruleId
-// Azure REST API version: 2022-01-01-preview.
+//
+// Uses Azure REST API version 2022-01-01-preview.
 func LookupGovernanceRule(ctx *pulumi.Context, args *LookupGovernanceRuleArgs, opts ...pulumi.InvokeOption) (*LookupGovernanceRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGovernanceRuleResult

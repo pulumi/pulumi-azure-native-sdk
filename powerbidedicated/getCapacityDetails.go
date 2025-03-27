@@ -12,7 +12,8 @@ import (
 )
 
 // Gets details about the specified dedicated capacity.
-// Azure REST API version: 2021-01-01.
+//
+// Uses Azure REST API version 2021-01-01.
 func LookupCapacityDetails(ctx *pulumi.Context, args *LookupCapacityDetailsArgs, opts ...pulumi.InvokeOption) (*LookupCapacityDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapacityDetailsResult

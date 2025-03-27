@@ -39,7 +39,7 @@ type LookupManagementPolicyResult struct {
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Policy ManagementPolicySchemaResponse `pulumi:"policy"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -97,7 +97,7 @@ func (o LookupManagementPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 func (o LookupManagementPolicyResultOutput) Policy() ManagementPolicySchemaResponseOutput {
 	return o.ApplyT(func(v LookupManagementPolicyResult) ManagementPolicySchemaResponse { return v.Policy }).(ManagementPolicySchemaResponseOutput)
 }

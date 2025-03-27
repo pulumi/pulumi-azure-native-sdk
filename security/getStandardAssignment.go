@@ -12,7 +12,8 @@ import (
 )
 
 // This operation retrieves a single standard assignment, given its name and the scope it was created at.
-// Azure REST API version: 2024-08-01.
+//
+// Uses Azure REST API version 2024-08-01.
 func LookupStandardAssignment(ctx *pulumi.Context, args *LookupStandardAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupStandardAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStandardAssignmentResult

@@ -58,6 +58,9 @@ func NewBroker(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:iotoperations/v20241101:Broker"),
 		},
 		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:Broker"),
+		},
+		{
 			Type: pulumi.String("azure-native:iotoperations:Broker"),
 		},
 	})

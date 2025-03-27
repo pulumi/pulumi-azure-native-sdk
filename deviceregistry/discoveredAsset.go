@@ -13,7 +13,8 @@ import (
 )
 
 // Discovered Asset definition.
-// Azure REST API version: 2024-09-01-preview.
+//
+// Uses Azure REST API version 2024-09-01-preview.
 type DiscoveredAsset struct {
 	pulumi.CustomResourceState
 

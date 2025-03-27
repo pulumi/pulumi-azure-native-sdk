@@ -13,7 +13,8 @@ import (
 )
 
 // A Task Hub resource belonging to the scheduler
-// Azure REST API version: 2024-10-01-preview.
+//
+// Uses Azure REST API version 2024-10-01-preview.
 type TaskHub struct {
 	pulumi.CustomResourceState
 

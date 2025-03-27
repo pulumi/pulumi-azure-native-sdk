@@ -13,7 +13,8 @@ import (
 )
 
 // The Internet Gateway resource definition.
-// Azure REST API version: 2023-06-15.
+//
+// Uses Azure REST API version 2023-06-15.
 type InternetGateway struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,8 @@ import (
 )
 
 // Tag Inheritance Setting definition.
-// Azure REST API version: 2022-10-05-preview.
+//
+// Uses Azure REST API version 2022-10-05-preview.
 type TagInheritanceSetting struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +63,9 @@ func NewTagInheritanceSetting(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20240801:TagInheritanceSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20241001preview:TagInheritanceSetting"),
 		},
 	})
 	opts = append(opts, aliases)

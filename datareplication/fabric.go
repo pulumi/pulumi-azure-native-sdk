@@ -13,7 +13,10 @@ import (
 )
 
 // Fabric model.
-// Azure REST API version: 2021-02-16-preview.
+//
+// Uses Azure REST API version 2021-02-16-preview.
+//
+// Other available API versions: 2024-09-01.
 type Fabric struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +49,9 @@ func NewFabric(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datareplication/v20210216preview:Fabric"),
+		},
+		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:Fabric"),
 		},
 	})
 	opts = append(opts, aliases)

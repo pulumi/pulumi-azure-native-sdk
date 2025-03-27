@@ -104,6 +104,9 @@ func NewPolicyAssignment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:authorization/v20250101:PolicyAssignment"),
 		},
 		{
+			Type: pulumi.String("azure-native:authorization/v20250301:PolicyAssignment"),
+		},
+		{
 			Type: pulumi.String("azure-native:authorization:PolicyAssignment"),
 		},
 	})

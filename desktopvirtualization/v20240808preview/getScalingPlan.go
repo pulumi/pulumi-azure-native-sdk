@@ -33,7 +33,7 @@ type LookupScalingPlanArgs struct {
 type LookupScalingPlanResult struct {
 	// Description of scaling plan.
 	Description *string `pulumi:"description"`
-	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+	// If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	Etag string `pulumi:"etag"`
 	// Exclusion tag for scaling plan.
 	ExclusionTag *string `pulumi:"exclusionTag"`
@@ -45,9 +45,9 @@ type LookupScalingPlanResult struct {
 	HostPoolType *string `pulumi:"hostPoolType"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Managed service identity (system assigned and/or user assigned identities)
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -57,11 +57,11 @@ type LookupScalingPlanResult struct {
 	Name string `pulumi:"name"`
 	// ObjectId of scaling plan. (internal use)
 	ObjectId string `pulumi:"objectId"`
-	// Plan for the resource.
+	// Details of the resource plan.
 	Plan *PlanResponse `pulumi:"plan"`
-	// List of Pooled ScalingSchedule definitions.
+	// List of ScalingPlanPooledSchedule definitions.
 	Schedules []ScalingScheduleResponse `pulumi:"schedules"`
-	// The resource model definition representing SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -125,7 +125,7 @@ func (o LookupScalingPlanResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScalingPlanResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+// If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 func (o LookupScalingPlanResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScalingPlanResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -155,12 +155,12 @@ func (o LookupScalingPlanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScalingPlanResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
+// The managed service identities assigned to this resource.
 func (o LookupScalingPlanResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupScalingPlanResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
-// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 func (o LookupScalingPlanResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScalingPlanResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -185,17 +185,17 @@ func (o LookupScalingPlanResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScalingPlanResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// Plan for the resource.
+// Details of the resource plan.
 func (o LookupScalingPlanResultOutput) Plan() PlanResponsePtrOutput {
 	return o.ApplyT(func(v LookupScalingPlanResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
-// List of Pooled ScalingSchedule definitions.
+// List of ScalingPlanPooledSchedule definitions.
 func (o LookupScalingPlanResultOutput) Schedules() ScalingScheduleResponseArrayOutput {
 	return o.ApplyT(func(v LookupScalingPlanResult) []ScalingScheduleResponse { return v.Schedules }).(ScalingScheduleResponseArrayOutput)
 }
 
-// The resource model definition representing SKU
+// The SKU (Stock Keeping Unit) assigned to this resource.
 func (o LookupScalingPlanResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupScalingPlanResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }

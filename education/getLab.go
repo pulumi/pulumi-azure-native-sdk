@@ -12,7 +12,8 @@ import (
 )
 
 // Get the details for a specific lab associated with the provided billing account name, billing profile name, and invoice section name.
-// Azure REST API version: 2021-12-01-preview.
+//
+// Uses Azure REST API version 2021-12-01-preview.
 func LookupLab(ctx *pulumi.Context, args *LookupLabArgs, opts ...pulumi.InvokeOption) (*LookupLabResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabResult

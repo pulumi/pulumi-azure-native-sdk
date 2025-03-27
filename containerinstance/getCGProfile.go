@@ -12,7 +12,8 @@ import (
 )
 
 // Get the properties of the specified container group profile.
-// Azure REST API version: 2024-11-01-preview.
+//
+// Uses Azure REST API version 2024-11-01-preview.
 func LookupCGProfile(ctx *pulumi.Context, args *LookupCGProfileArgs, opts ...pulumi.InvokeOption) (*LookupCGProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCGProfileResult

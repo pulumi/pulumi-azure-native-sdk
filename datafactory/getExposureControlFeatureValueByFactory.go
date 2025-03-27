@@ -12,7 +12,8 @@ import (
 )
 
 // Get exposure control feature for specific factory.
-// Azure REST API version: 2018-06-01.
+//
+// Uses Azure REST API version 2018-06-01.
 func GetExposureControlFeatureValueByFactory(ctx *pulumi.Context, args *GetExposureControlFeatureValueByFactoryArgs, opts ...pulumi.InvokeOption) (*GetExposureControlFeatureValueByFactoryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetExposureControlFeatureValueByFactoryResult

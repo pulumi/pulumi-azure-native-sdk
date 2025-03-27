@@ -42,6 +42,9 @@ func NewEmployee(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:contoso/v20211101:Employee"),
+		},
+		{
 			Type: pulumi.String("azure-native:contoso:Employee"),
 		},
 	})

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the specified private endpoint connection associated with the service.
-// Azure REST API version: 2021-03-08.
+//
+// Uses Azure REST API version 2021-03-08.
 func LookupPrivateEndpointConnectionsForMIPPolicySync(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionsForMIPPolicySyncArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionsForMIPPolicySyncResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionsForMIPPolicySyncResult

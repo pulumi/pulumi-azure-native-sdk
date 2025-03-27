@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a list of L2 Connections attached to an edge site.
-// Azure REST API version: 2024-03-01-preview.
+//
+// Uses Azure REST API version 2024-03-01-preview.
 //
 // Other available API versions: 2024-03-01.
 func ListEdgeSiteL2Connections(ctx *pulumi.Context, args *ListEdgeSiteL2ConnectionsArgs, opts ...pulumi.InvokeOption) (*ListEdgeSiteL2ConnectionsResult, error) {

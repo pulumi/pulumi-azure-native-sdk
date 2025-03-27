@@ -47,6 +47,9 @@ func NewDevOpsConfiguration(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:security/v20240515preview:DevOpsConfiguration"),
 		},
 		{
+			Type: pulumi.String("azure-native:security/v20250301:DevOpsConfiguration"),
+		},
+		{
 			Type: pulumi.String("azure-native:security:DevOpsConfiguration"),
 		},
 	})

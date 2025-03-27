@@ -12,7 +12,8 @@ import (
 )
 
 // Get the description of an existing time series database connection.
-// Azure REST API version: 2023-01-31.
+//
+// Uses Azure REST API version 2023-01-31.
 func LookupTimeSeriesDatabaseConnection(ctx *pulumi.Context, args *LookupTimeSeriesDatabaseConnectionArgs, opts ...pulumi.InvokeOption) (*LookupTimeSeriesDatabaseConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTimeSeriesDatabaseConnectionResult

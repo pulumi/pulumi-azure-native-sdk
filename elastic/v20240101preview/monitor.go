@@ -100,6 +100,9 @@ func NewMonitor(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:elastic/v20241001preview:Monitor"),
 		},
 		{
+			Type: pulumi.String("azure-native:elastic/v20250115preview:Monitor"),
+		},
+		{
 			Type: pulumi.String("azure-native:elastic:Monitor"),
 		},
 	})

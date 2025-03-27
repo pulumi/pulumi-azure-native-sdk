@@ -12,7 +12,8 @@ import (
 )
 
 // Get the metadata of a privateLinkServicesForMIPPolicySync resource.
-// Azure REST API version: 2021-03-25-preview.
+//
+// Uses Azure REST API version 2021-03-25-preview.
 func LookupPrivateLinkServicesForMIPPolicySync(ctx *pulumi.Context, args *LookupPrivateLinkServicesForMIPPolicySyncArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicesForMIPPolicySyncResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkServicesForMIPPolicySyncResult

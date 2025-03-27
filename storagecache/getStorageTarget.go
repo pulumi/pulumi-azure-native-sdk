@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a Storage Target from a cache.
-// Azure REST API version: 2023-05-01.
+//
+// Uses Azure REST API version 2023-05-01.
 //
 // Other available API versions: 2021-03-01, 2023-11-01-preview, 2024-03-01, 2024-07-01.
 func LookupStorageTarget(ctx *pulumi.Context, args *LookupStorageTargetArgs, opts ...pulumi.InvokeOption) (*LookupStorageTargetResult, error) {

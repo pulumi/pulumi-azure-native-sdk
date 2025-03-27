@@ -12,7 +12,8 @@ import (
 )
 
 // Returns an AML file system.
-// Azure REST API version: 2023-05-01.
+//
+// Uses Azure REST API version 2023-05-01.
 func LookupAmlFilesystem(ctx *pulumi.Context, args *LookupAmlFilesystemArgs, opts ...pulumi.InvokeOption) (*LookupAmlFilesystemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAmlFilesystemResult

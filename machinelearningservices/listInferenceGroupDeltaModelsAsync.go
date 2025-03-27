@@ -12,7 +12,10 @@ import (
 )
 
 // A paginated list of String entities.
-// Azure REST API version: 2024-10-01-preview.
+//
+// Uses Azure REST API version 2024-10-01-preview.
+//
+// Other available API versions: 2025-01-01-preview.
 func ListInferenceGroupDeltaModelsAsync(ctx *pulumi.Context, args *ListInferenceGroupDeltaModelsAsyncArgs, opts ...pulumi.InvokeOption) (*ListInferenceGroupDeltaModelsAsyncResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListInferenceGroupDeltaModelsAsyncResult

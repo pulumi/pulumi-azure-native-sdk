@@ -12,7 +12,8 @@ import (
 )
 
 // Gets all the SIM groups assigned to a mobile network.
-// Azure REST API version: 2024-04-01.
+//
+// Uses Azure REST API version 2024-04-01.
 func ListMobileNetworkSimGroups(ctx *pulumi.Context, args *ListMobileNetworkSimGroupsArgs, opts ...pulumi.InvokeOption) (*ListMobileNetworkSimGroupsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMobileNetworkSimGroupsResult

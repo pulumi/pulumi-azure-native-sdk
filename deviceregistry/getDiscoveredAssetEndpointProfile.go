@@ -12,7 +12,8 @@ import (
 )
 
 // Get a DiscoveredAssetEndpointProfile
-// Azure REST API version: 2024-09-01-preview.
+//
+// Uses Azure REST API version 2024-09-01-preview.
 func LookupDiscoveredAssetEndpointProfile(ctx *pulumi.Context, args *LookupDiscoveredAssetEndpointProfileArgs, opts ...pulumi.InvokeOption) (*LookupDiscoveredAssetEndpointProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiscoveredAssetEndpointProfileResult

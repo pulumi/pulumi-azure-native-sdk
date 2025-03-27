@@ -12,7 +12,8 @@ import (
 )
 
 // Get a EcrImageDetail
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEcrImageDetail(ctx *pulumi.Context, args *LookupEcrImageDetailArgs, opts ...pulumi.InvokeOption) (*LookupEcrImageDetailResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEcrImageDetailResult

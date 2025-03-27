@@ -12,7 +12,8 @@ import (
 )
 
 // Get a AcmCertificateSummary
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupAcmCertificateSummary(ctx *pulumi.Context, args *LookupAcmCertificateSummaryArgs, opts ...pulumi.InvokeOption) (*LookupAcmCertificateSummaryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAcmCertificateSummaryResult

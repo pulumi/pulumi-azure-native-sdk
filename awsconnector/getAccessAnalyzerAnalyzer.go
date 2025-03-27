@@ -12,7 +12,8 @@ import (
 )
 
 // Get a AccessAnalyzerAnalyzer
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupAccessAnalyzerAnalyzer(ctx *pulumi.Context, args *LookupAccessAnalyzerAnalyzerArgs, opts ...pulumi.InvokeOption) (*LookupAccessAnalyzerAnalyzerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessAnalyzerAnalyzerResult

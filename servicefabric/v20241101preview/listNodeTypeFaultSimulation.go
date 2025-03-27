@@ -27,15 +27,15 @@ type ListNodeTypeFaultSimulationArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the node type.
 	NodeTypeName string `pulumi:"nodeTypeName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Fault simulation list results
 type ListNodeTypeFaultSimulationResult struct {
-	// The URL to use for getting the next set of results.
+	// The link to the next page of items
 	NextLink *string `pulumi:"nextLink"`
-	// The list of fault simulations.
+	// The FaultSimulation items on this page
 	Value []FaultSimulationResponse `pulumi:"value"`
 }
 
@@ -53,7 +53,7 @@ type ListNodeTypeFaultSimulationOutputArgs struct {
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the node type.
 	NodeTypeName pulumi.StringInput `pulumi:"nodeTypeName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,12 +76,12 @@ func (o ListNodeTypeFaultSimulationResultOutput) ToListNodeTypeFaultSimulationRe
 	return o
 }
 
-// The URL to use for getting the next set of results.
+// The link to the next page of items
 func (o ListNodeTypeFaultSimulationResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListNodeTypeFaultSimulationResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// The list of fault simulations.
+// The FaultSimulation items on this page
 func (o ListNodeTypeFaultSimulationResultOutput) Value() FaultSimulationResponseArrayOutput {
 	return o.ApplyT(func(v ListNodeTypeFaultSimulationResult) []FaultSimulationResponse { return v.Value }).(FaultSimulationResponseArrayOutput)
 }

@@ -12,7 +12,8 @@ import (
 )
 
 // Support information for the service
-// Azure REST API version: 2024-02-07-preview.
+//
+// Uses Azure REST API version 2024-02-07-preview.
 //
 // Other available API versions: 2024-01-19-preview, 2025-02-06-preview.
 func ListPaloAltoNetworksCloudngfwSupportInfo(ctx *pulumi.Context, args *ListPaloAltoNetworksCloudngfwSupportInfoArgs, opts ...pulumi.InvokeOption) (*ListPaloAltoNetworksCloudngfwSupportInfoResult, error) {

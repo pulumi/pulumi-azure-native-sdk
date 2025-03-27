@@ -12,7 +12,8 @@ import (
 )
 
 // Lists connection keys.
-// Azure REST API version: 2015-08-01-preview.
+//
+// Uses Azure REST API version 2015-08-01-preview.
 func ListConnectionKeys(ctx *pulumi.Context, args *ListConnectionKeysArgs, opts ...pulumi.InvokeOption) (*ListConnectionKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConnectionKeysResult

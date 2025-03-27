@@ -11,10 +11,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieve a Remote Rendering Account.
-// Azure REST API version: 2021-01-01.
+// > [!NOTE]
+// >
+// > **Mixed Reality retirement**
+// >
+// > The Mixed Reality service is now deprecated and will be retired.
 //
-// Other available API versions: 2021-03-01-preview.
+//	Retrieve a Remote Rendering Account.
+//
+// Uses Azure REST API version 2021-01-01.
+//
+// Other available API versions: 2021-03-01-preview, 2025-01-01.
 func LookupRemoteRenderingAccount(ctx *pulumi.Context, args *LookupRemoteRenderingAccountArgs, opts ...pulumi.InvokeOption) (*LookupRemoteRenderingAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRemoteRenderingAccountResult

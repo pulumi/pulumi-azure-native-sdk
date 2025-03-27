@@ -12,7 +12,8 @@ import (
 )
 
 // Get a IamMFADevice
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupIamMfaDevice(ctx *pulumi.Context, args *LookupIamMfaDeviceArgs, opts ...pulumi.InvokeOption) (*LookupIamMfaDeviceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIamMfaDeviceResult

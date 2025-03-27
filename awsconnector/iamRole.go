@@ -13,7 +13,8 @@ import (
 )
 
 // A Microsoft.AwsConnector resource
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 type IamRole struct {
 	pulumi.CustomResourceState
 

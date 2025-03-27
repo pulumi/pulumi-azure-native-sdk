@@ -12,9 +12,10 @@ import (
 )
 
 // Gets Build details
-// Azure REST API version: 2024-07-01-preview.
 //
-// Other available API versions: 2024-08-01-preview, 2024-10-01-preview.
+// Uses Azure REST API version 2024-07-01-preview.
+//
+// Other available API versions: 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
 func GetProjectCatalogImageDefinitionBuildDetails(ctx *pulumi.Context, args *GetProjectCatalogImageDefinitionBuildDetailsArgs, opts ...pulumi.InvokeOption) (*GetProjectCatalogImageDefinitionBuildDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectCatalogImageDefinitionBuildDetailsResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a CommunicationsGateway
-// Azure REST API version: 2023-04-03.
+//
+// Uses Azure REST API version 2023-04-03.
 //
 // Other available API versions: 2023-09-01.
 func LookupCommunicationsGateway(ctx *pulumi.Context, args *LookupCommunicationsGatewayArgs, opts ...pulumi.InvokeOption) (*LookupCommunicationsGatewayResult, error) {

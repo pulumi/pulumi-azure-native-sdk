@@ -13,7 +13,8 @@ import (
 )
 
 // Details of cluster record
-// Azure REST API version: 2024-07-01.
+//
+// Uses Azure REST API version 2024-07-01.
 type OrganizationClusterById struct {
 	pulumi.CustomResourceState
 

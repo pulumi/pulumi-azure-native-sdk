@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2024-04-01-preview.
+// Uses Azure REST API version 2024-04-01-preview.
 //
-// Other available API versions: 2024-07-01-preview, 2024-10-01-preview.
+// Other available API versions: 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview.
 type ConnectionRaiBlocklist struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +59,9 @@ func NewConnectionRaiBlocklist(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ConnectionRaiBlocklist"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ConnectionRaiBlocklist"),
 		},
 	})
 	opts = append(opts, aliases)

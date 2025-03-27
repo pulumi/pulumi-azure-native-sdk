@@ -63,6 +63,9 @@ func NewFederatedIdentityCredential(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:managedidentity/v20241130:FederatedIdentityCredential"),
 		},
 		{
+			Type: pulumi.String("azure-native:managedidentity/v20250131preview:FederatedIdentityCredential"),
+		},
+		{
 			Type: pulumi.String("azure-native:managedidentity:FederatedIdentityCredential"),
 		},
 	})

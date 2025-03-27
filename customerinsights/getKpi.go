@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a KPI in the hub.
-// Azure REST API version: 2017-04-26.
+//
+// Uses Azure REST API version 2017-04-26.
 func LookupKpi(ctx *pulumi.Context, args *LookupKpiArgs, opts ...pulumi.InvokeOption) (*LookupKpiResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKpiResult

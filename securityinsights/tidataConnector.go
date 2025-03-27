@@ -13,7 +13,8 @@ import (
 )
 
 // Represents threat intelligence data connector.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-01-01.
+//
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
 type TIDataConnector struct {
 	pulumi.CustomResourceState
 
@@ -161,6 +162,9 @@ func NewTIDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:TIDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

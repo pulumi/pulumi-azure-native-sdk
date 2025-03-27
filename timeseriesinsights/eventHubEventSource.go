@@ -13,7 +13,8 @@ import (
 )
 
 // An event source that receives its data from an Azure EventHub.
-// Azure REST API version: 2020-05-15. Prior API version in Azure Native 1.x: 2020-05-15.
+//
+// Uses Azure REST API version 2020-05-15. In version 1.x of the Azure Native provider, it used API version 2020-05-15.
 type EventHubEventSource struct {
 	pulumi.CustomResourceState
 

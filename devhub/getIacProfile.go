@@ -12,9 +12,10 @@ import (
 )
 
 // Resource representation of a IacProfile.
-// Azure REST API version: 2024-05-01-preview.
 //
-// Other available API versions: 2024-08-01-preview.
+// Uses Azure REST API version 2024-05-01-preview.
+//
+// Other available API versions: 2024-08-01-preview, 2025-03-01-preview.
 func LookupIacProfile(ctx *pulumi.Context, args *LookupIacProfileArgs, opts ...pulumi.InvokeOption) (*LookupIacProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIacProfileResult

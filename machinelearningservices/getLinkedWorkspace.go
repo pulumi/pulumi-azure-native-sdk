@@ -12,7 +12,8 @@ import (
 )
 
 // Get the detail of a linked workspace.
-// Azure REST API version: 2020-05-15-preview.
+//
+// Uses Azure REST API version 2020-05-15-preview.
 func LookupLinkedWorkspace(ctx *pulumi.Context, args *LookupLinkedWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupLinkedWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLinkedWorkspaceResult

@@ -12,7 +12,8 @@ import (
 )
 
 // List the storage accounts which are in use by related reports
-// Azure REST API version: 2024-06-27.
+//
+// Uses Azure REST API version 2024-06-27.
 func ListProviderActionInUseStorageAccounts(ctx *pulumi.Context, args *ListProviderActionInUseStorageAccountsArgs, opts ...pulumi.InvokeOption) (*ListProviderActionInUseStorageAccountsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListProviderActionInUseStorageAccountsResult

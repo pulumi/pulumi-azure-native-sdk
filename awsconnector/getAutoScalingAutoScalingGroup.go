@@ -12,7 +12,8 @@ import (
 )
 
 // Get a AutoScalingAutoScalingGroup
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupAutoScalingAutoScalingGroup(ctx *pulumi.Context, args *LookupAutoScalingAutoScalingGroupArgs, opts ...pulumi.InvokeOption) (*LookupAutoScalingAutoScalingGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutoScalingAutoScalingGroupResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get gallery image
-// Azure REST API version: 2018-10-15.
+//
+// Uses Azure REST API version 2018-10-15.
 func LookupGalleryImage(ctx *pulumi.Context, args *LookupGalleryImageArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryImageResult

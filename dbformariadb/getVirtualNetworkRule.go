@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a virtual network rule.
-// Azure REST API version: 2018-06-01.
+//
+// Uses Azure REST API version 2018-06-01.
 //
 // Other available API versions: 2018-06-01-preview.
 func LookupVirtualNetworkRule(ctx *pulumi.Context, args *LookupVirtualNetworkRuleArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkRuleResult, error) {

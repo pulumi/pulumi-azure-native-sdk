@@ -12,7 +12,8 @@ import (
 )
 
 // This returns the list of interfaces in the WSDL
-// Azure REST API version: 2016-06-01.
+//
+// Uses Azure REST API version 2016-06-01.
 func ListCustomApiWsdlInterfaces(ctx *pulumi.Context, args *ListCustomApiWsdlInterfacesArgs, opts ...pulumi.InvokeOption) (*ListCustomApiWsdlInterfacesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListCustomApiWsdlInterfacesResult

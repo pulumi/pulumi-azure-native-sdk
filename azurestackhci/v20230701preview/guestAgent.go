@@ -69,6 +69,9 @@ func NewGuestAgent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:GuestAgent"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:GuestAgent"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the configured settings for a serial port
-// Azure REST API version: 2018-05-01.
+//
+// Uses Azure REST API version 2018-05-01.
 func LookupSerialPort(ctx *pulumi.Context, args *LookupSerialPortArgs, opts ...pulumi.InvokeOption) (*LookupSerialPortResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSerialPortResult

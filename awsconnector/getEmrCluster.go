@@ -12,7 +12,8 @@ import (
 )
 
 // Get a EmrCluster
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEmrCluster(ctx *pulumi.Context, args *LookupEmrClusterArgs, opts ...pulumi.InvokeOption) (*LookupEmrClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmrClusterResult

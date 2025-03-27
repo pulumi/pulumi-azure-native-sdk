@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the preview information of a vendor sku.
-// Azure REST API version: 2022-01-01-preview.
+//
+// Uses Azure REST API version 2022-01-01-preview.
 func LookupVendorSkuPreview(ctx *pulumi.Context, args *LookupVendorSkuPreviewArgs, opts ...pulumi.InvokeOption) (*LookupVendorSkuPreviewResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVendorSkuPreviewResult

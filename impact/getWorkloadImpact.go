@@ -12,7 +12,8 @@ import (
 )
 
 // Get a WorkloadImpact
-// Azure REST API version: 2024-05-01-preview.
+//
+// Uses Azure REST API version 2024-05-01-preview.
 func LookupWorkloadImpact(ctx *pulumi.Context, args *LookupWorkloadImpactArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadImpactResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadImpactResult

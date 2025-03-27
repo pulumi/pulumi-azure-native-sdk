@@ -62,6 +62,9 @@ func NewGateway(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hybridcompute/v20241110preview:Gateway"),
 		},
 		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250113:Gateway"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcompute:Gateway"),
 		},
 	})

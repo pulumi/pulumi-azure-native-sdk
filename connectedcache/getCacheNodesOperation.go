@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves the properties of a cacheNodes
-// Azure REST API version: 2023-05-01-preview.
+//
+// Uses Azure REST API version 2023-05-01-preview.
 func LookupCacheNodesOperation(ctx *pulumi.Context, args *LookupCacheNodesOperationArgs, opts ...pulumi.InvokeOption) (*LookupCacheNodesOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCacheNodesOperationResult

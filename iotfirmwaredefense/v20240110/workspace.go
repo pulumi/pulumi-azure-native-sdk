@@ -45,6 +45,9 @@ func NewWorkspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:iotfirmwaredefense/v20230208preview:Workspace"),
 		},
 		{
+			Type: pulumi.String("azure-native:iotfirmwaredefense/v20250401preview:Workspace"),
+		},
+		{
 			Type: pulumi.String("azure-native:iotfirmwaredefense:Workspace"),
 		},
 	})

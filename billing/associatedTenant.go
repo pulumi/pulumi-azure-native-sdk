@@ -13,7 +13,8 @@ import (
 )
 
 // An associated tenant.
-// Azure REST API version: 2024-04-01.
+//
+// Uses Azure REST API version 2024-04-01.
 type AssociatedTenant struct {
 	pulumi.CustomResourceState
 

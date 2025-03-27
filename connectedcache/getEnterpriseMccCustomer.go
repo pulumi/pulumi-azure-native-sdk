@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the enterprise mcc customer resource information using this get call
-// Azure REST API version: 2023-05-01-preview.
+//
+// Uses Azure REST API version 2023-05-01-preview.
 func LookupEnterpriseMccCustomer(ctx *pulumi.Context, args *LookupEnterpriseMccCustomerArgs, opts ...pulumi.InvokeOption) (*LookupEnterpriseMccCustomerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnterpriseMccCustomerResult

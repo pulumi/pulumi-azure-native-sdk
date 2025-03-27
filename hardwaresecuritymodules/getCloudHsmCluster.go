@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the specified Cloud HSM Cluster
-// Azure REST API version: 2022-08-31-preview.
+//
+// Uses Azure REST API version 2022-08-31-preview.
 //
 // Other available API versions: 2023-12-10-preview, 2024-06-30-preview.
 func LookupCloudHsmCluster(ctx *pulumi.Context, args *LookupCloudHsmClusterArgs, opts ...pulumi.InvokeOption) (*LookupCloudHsmClusterResult, error) {

@@ -12,7 +12,8 @@ import (
 )
 
 // Get the metadata of a privateLinkServicesForO365ManagementActivityAPI resource.
-// Azure REST API version: 2021-03-25-preview.
+//
+// Uses Azure REST API version 2021-03-25-preview.
 func LookupPrivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context, args *LookupPrivateLinkServicesForO365ManagementActivityAPIArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicesForO365ManagementActivityAPIResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkServicesForO365ManagementActivityAPIResult

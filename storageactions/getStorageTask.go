@@ -12,7 +12,8 @@ import (
 )
 
 // Get the storage task properties
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 func LookupStorageTask(ctx *pulumi.Context, args *LookupStorageTaskArgs, opts ...pulumi.InvokeOption) (*LookupStorageTaskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageTaskResult

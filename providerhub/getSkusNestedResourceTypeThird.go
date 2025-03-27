@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the sku details for the given resource type and sku name.
-// Azure REST API version: 2021-09-01-preview.
+//
+// Uses Azure REST API version 2021-09-01-preview.
 func LookupSkusNestedResourceTypeThird(ctx *pulumi.Context, args *LookupSkusNestedResourceTypeThirdArgs, opts ...pulumi.InvokeOption) (*LookupSkusNestedResourceTypeThirdResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSkusNestedResourceTypeThirdResult

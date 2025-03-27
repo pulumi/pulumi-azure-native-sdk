@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the Hybrid AKS provisioned cluster
-// Azure REST API version: 2022-09-01-preview.
+//
+// Uses Azure REST API version 2022-09-01-preview.
 //
 // Other available API versions: 2022-05-01-preview.
 func LookupProvisionedCluster(ctx *pulumi.Context, args *LookupProvisionedClusterArgs, opts ...pulumi.InvokeOption) (*LookupProvisionedClusterResult, error) {

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a ElasticLoadBalancingV2Listener
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupElasticLoadBalancingV2Listener(ctx *pulumi.Context, args *LookupElasticLoadBalancingV2ListenerArgs, opts ...pulumi.InvokeOption) (*LookupElasticLoadBalancingV2ListenerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupElasticLoadBalancingV2ListenerResult

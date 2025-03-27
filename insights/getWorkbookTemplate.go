@@ -12,7 +12,8 @@ import (
 )
 
 // Get a single workbook template by its resourceName.
-// Azure REST API version: 2020-11-20.
+//
+// Uses Azure REST API version 2020-11-20.
 func LookupWorkbookTemplate(ctx *pulumi.Context, args *LookupWorkbookTemplateArgs, opts ...pulumi.InvokeOption) (*LookupWorkbookTemplateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkbookTemplateResult

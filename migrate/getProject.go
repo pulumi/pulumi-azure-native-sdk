@@ -12,7 +12,8 @@ import (
 )
 
 // Get the project with the specified name.
-// Azure REST API version: 2019-10-01.
+//
+// Uses Azure REST API version 2019-10-01.
 //
 // Other available API versions: 2018-02-02.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {

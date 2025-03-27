@@ -12,7 +12,8 @@ import (
 )
 
 // Get a MAK key.
-// Azure REST API version: 2019-09-16-preview.
+//
+// Uses Azure REST API version 2019-09-16-preview.
 func LookupMultipleActivationKey(ctx *pulumi.Context, args *LookupMultipleActivationKeyArgs, opts ...pulumi.InvokeOption) (*LookupMultipleActivationKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMultipleActivationKeyResult

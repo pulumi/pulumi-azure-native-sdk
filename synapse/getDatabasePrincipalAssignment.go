@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a Kusto pool database principalAssignment.
-// Azure REST API version: 2021-04-01-preview.
+//
+// Uses Azure REST API version 2021-04-01-preview.
 func LookupDatabasePrincipalAssignment(ctx *pulumi.Context, args *LookupDatabasePrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupDatabasePrincipalAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabasePrincipalAssignmentResult

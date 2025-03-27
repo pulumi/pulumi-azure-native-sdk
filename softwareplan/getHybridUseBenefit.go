@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a given plan ID
-// Azure REST API version: 2019-12-01.
+//
+// Uses Azure REST API version 2019-12-01.
 func LookupHybridUseBenefit(ctx *pulumi.Context, args *LookupHybridUseBenefitArgs, opts ...pulumi.InvokeOption) (*LookupHybridUseBenefitResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridUseBenefitResult

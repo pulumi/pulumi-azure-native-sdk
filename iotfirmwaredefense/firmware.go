@@ -13,9 +13,10 @@ import (
 )
 
 // Firmware definition
-// Azure REST API version: 2023-02-08-preview.
 //
-// Other available API versions: 2024-01-10.
+// Uses Azure REST API version 2023-02-08-preview.
+//
+// Other available API versions: 2024-01-10, 2025-04-01-preview.
 type Firmware struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +68,9 @@ func NewFirmware(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotfirmwaredefense/v20240110:Firmware"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotfirmwaredefense/v20250401preview:Firmware"),
 		},
 	})
 	opts = append(opts, aliases)

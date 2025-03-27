@@ -13,7 +13,8 @@ import (
 )
 
 // Edge device job for Azure Stack HCI solution.
-// Azure REST API version: 2024-09-01-preview.
+//
+// Uses Azure REST API version 2024-09-01-preview.
 type HciEdgeDeviceJob struct {
 	pulumi.CustomResourceState
 

@@ -65,9 +65,6 @@ func NewPrivateEndpointConnectionByWorkspace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:PrivateEndpointConnectionByWorkspace"),
 		},
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:PrivateEndpointConnectionByWorkspace"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:PrivateEndpointConnectionByWorkspace"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewPrivateEndpointConnectionByWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:PrivateEndpointConnectionByWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:PrivateEndpointConnectionByWorkspace"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:PrivateEndpointConnectionByWorkspace"),
@@ -126,7 +126,7 @@ func (PrivateEndpointConnectionByWorkspaceState) ElementType() reflect.Type {
 }
 
 type privateEndpointConnectionByWorkspaceArgs struct {
-	// The name of the private endpoint connection associated with the Azure resource.
+	// The name parameter for private endpoint
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
@@ -138,7 +138,7 @@ type privateEndpointConnectionByWorkspaceArgs struct {
 
 // The set of arguments for constructing a PrivateEndpointConnectionByWorkspace resource.
 type PrivateEndpointConnectionByWorkspaceArgs struct {
-	// The name of the private endpoint connection associated with the Azure resource.
+	// The name parameter for private endpoint
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput

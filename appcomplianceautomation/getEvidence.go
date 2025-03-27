@@ -12,7 +12,8 @@ import (
 )
 
 // Get the evidence metadata
-// Azure REST API version: 2024-06-27.
+//
+// Uses Azure REST API version 2024-06-27.
 func LookupEvidence(ctx *pulumi.Context, args *LookupEvidenceArgs, opts ...pulumi.InvokeOption) (*LookupEvidenceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEvidenceResult

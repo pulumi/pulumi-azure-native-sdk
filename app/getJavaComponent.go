@@ -12,9 +12,10 @@ import (
 )
 
 // Java Component.
-// Azure REST API version: 2023-11-02-preview.
 //
-// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Uses Azure REST API version 2023-11-02-preview.
+//
+// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
 func LookupJavaComponent(ctx *pulumi.Context, args *LookupJavaComponentArgs, opts ...pulumi.InvokeOption) (*LookupJavaComponentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJavaComponentResult

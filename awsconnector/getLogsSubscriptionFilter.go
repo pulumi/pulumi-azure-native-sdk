@@ -12,7 +12,8 @@ import (
 )
 
 // Get a LogsSubscriptionFilter
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupLogsSubscriptionFilter(ctx *pulumi.Context, args *LookupLogsSubscriptionFilterArgs, opts ...pulumi.InvokeOption) (*LookupLogsSubscriptionFilterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogsSubscriptionFilterResult

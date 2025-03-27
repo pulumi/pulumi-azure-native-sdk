@@ -103,9 +103,6 @@ func NewScalingPlanPooledSchedule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:ScalingPlanPooledSchedule"),
 		},
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:ScalingPlanPooledSchedule"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ScalingPlanPooledSchedule"),
 		},
 		{
@@ -125,6 +122,9 @@ func NewScalingPlanPooledSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:ScalingPlanPooledSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:ScalingPlanPooledSchedule"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:ScalingPlanPooledSchedule"),
@@ -165,7 +165,9 @@ func (ScalingPlanPooledScheduleState) ElementType() reflect.Type {
 
 type scalingPlanPooledScheduleArgs struct {
 	// Set of days of the week on which this schedule is active.
-	DaysOfWeek []string `pulumi:"daysOfWeek"`
+	DaysOfWeek []DayOfWeek `pulumi:"daysOfWeek"`
+	// Name of the ScalingPlanPooledSchedule
+	Name *string `pulumi:"name"`
 	// Load balancing algorithm for off-peak period.
 	OffPeakLoadBalancingAlgorithm *string `pulumi:"offPeakLoadBalancingAlgorithm"`
 	// Starting time for off-peak period.
@@ -209,7 +211,9 @@ type scalingPlanPooledScheduleArgs struct {
 // The set of arguments for constructing a ScalingPlanPooledSchedule resource.
 type ScalingPlanPooledScheduleArgs struct {
 	// Set of days of the week on which this schedule is active.
-	DaysOfWeek pulumi.StringArrayInput
+	DaysOfWeek DayOfWeekArrayInput
+	// Name of the ScalingPlanPooledSchedule
+	Name pulumi.StringPtrInput
 	// Load balancing algorithm for off-peak period.
 	OffPeakLoadBalancingAlgorithm pulumi.StringPtrInput
 	// Starting time for off-peak period.

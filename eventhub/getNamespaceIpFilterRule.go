@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an IpFilterRule for a Namespace by rule name.
-// Azure REST API version: 2018-01-01-preview.
+//
+// Uses Azure REST API version 2018-01-01-preview.
 func LookupNamespaceIpFilterRule(ctx *pulumi.Context, args *LookupNamespaceIpFilterRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceIpFilterRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceIpFilterRuleResult

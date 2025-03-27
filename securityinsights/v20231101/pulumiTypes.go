@@ -8089,73 +8089,6 @@ func (o PropertyConditionPropertiesResponseOutput) ConditionType() pulumi.String
 	return o.ApplyT(func(v PropertyConditionPropertiesResponse) string { return v.ConditionType }).(pulumi.StringOutput)
 }
 
-// Represents a repository.
-type RepoResponse struct {
-	// Array of branches.
-	Branches []string `pulumi:"branches"`
-	// The name of the repository.
-	FullName *string `pulumi:"fullName"`
-	// The installation id of the repository.
-	InstallationId *float64 `pulumi:"installationId"`
-	// The url to access the repository.
-	Url *string `pulumi:"url"`
-}
-
-// Represents a repository.
-type RepoResponseOutput struct{ *pulumi.OutputState }
-
-func (RepoResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepoResponse)(nil)).Elem()
-}
-
-func (o RepoResponseOutput) ToRepoResponseOutput() RepoResponseOutput {
-	return o
-}
-
-func (o RepoResponseOutput) ToRepoResponseOutputWithContext(ctx context.Context) RepoResponseOutput {
-	return o
-}
-
-// Array of branches.
-func (o RepoResponseOutput) Branches() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RepoResponse) []string { return v.Branches }).(pulumi.StringArrayOutput)
-}
-
-// The name of the repository.
-func (o RepoResponseOutput) FullName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RepoResponse) *string { return v.FullName }).(pulumi.StringPtrOutput)
-}
-
-// The installation id of the repository.
-func (o RepoResponseOutput) InstallationId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RepoResponse) *float64 { return v.InstallationId }).(pulumi.Float64PtrOutput)
-}
-
-// The url to access the repository.
-func (o RepoResponseOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RepoResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-type RepoResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RepoResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RepoResponse)(nil)).Elem()
-}
-
-func (o RepoResponseArrayOutput) ToRepoResponseArrayOutput() RepoResponseArrayOutput {
-	return o
-}
-
-func (o RepoResponseArrayOutput) ToRepoResponseArrayOutputWithContext(ctx context.Context) RepoResponseArrayOutput {
-	return o
-}
-
-func (o RepoResponseArrayOutput) Index(i pulumi.IntInput) RepoResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepoResponse {
-		return vs[0].([]RepoResponse)[vs[1].(int)]
-	}).(RepoResponseOutput)
-}
-
 // security ml analytics settings data sources
 type SecurityMLAnalyticsSettingsDataSource struct {
 	// The connector id that provides the following data types
@@ -10193,8 +10126,6 @@ func init() {
 	pulumi.RegisterOutputType(PropertyChangedConditionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PropertyConditionPropertiesOutput{})
 	pulumi.RegisterOutputType(PropertyConditionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(RepoResponseOutput{})
-	pulumi.RegisterOutputType(RepoResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceResponseOutput{})

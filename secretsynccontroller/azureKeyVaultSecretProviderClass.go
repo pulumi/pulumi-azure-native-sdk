@@ -13,7 +13,8 @@ import (
 )
 
 // The AzureKeyVaultSecretProviderClass resource.
-// Azure REST API version: 2024-08-21-preview.
+//
+// Uses Azure REST API version 2024-08-21-preview.
 type AzureKeyVaultSecretProviderClass struct {
 	pulumi.CustomResourceState
 

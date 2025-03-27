@@ -141,6 +141,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:recoveryservices/v20240730preview:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:recoveryservices/v20241101preview:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:recoveryservices:PrivateEndpointConnection"),
 		},
 	})

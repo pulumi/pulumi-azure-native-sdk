@@ -13,7 +13,8 @@ import (
 )
 
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
-// Azure REST API version: 2025-02-27-preview.
+//
+// Uses Azure REST API version 2025-02-27-preview.
 type LandingZoneConfigurationOperation struct {
 	pulumi.CustomResourceState
 

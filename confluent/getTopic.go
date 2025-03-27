@@ -12,7 +12,8 @@ import (
 )
 
 // Details of topic record
-// Azure REST API version: 2024-07-01.
+//
+// Uses Azure REST API version 2024-07-01.
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTopicResult

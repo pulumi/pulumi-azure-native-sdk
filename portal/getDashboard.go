@@ -12,9 +12,10 @@ import (
 )
 
 // Gets the Dashboard.
-// Azure REST API version: 2020-09-01-preview.
 //
-// Other available API versions: 2019-01-01-preview, 2022-12-01-preview.
+// Uses Azure REST API version 2020-09-01-preview.
+//
+// Other available API versions: 2019-01-01-preview, 2022-12-01-preview, 2025-04-01-preview.
 func LookupDashboard(ctx *pulumi.Context, args *LookupDashboardArgs, opts ...pulumi.InvokeOption) (*LookupDashboardResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDashboardResult

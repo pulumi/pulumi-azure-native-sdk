@@ -12,7 +12,8 @@ import (
 )
 
 // Get a AppSyncGraphqlApi
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupAppSyncGraphqlApi(ctx *pulumi.Context, args *LookupAppSyncGraphqlApiArgs, opts ...pulumi.InvokeOption) (*LookupAppSyncGraphqlApiResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppSyncGraphqlApiResult

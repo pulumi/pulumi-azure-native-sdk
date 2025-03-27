@@ -110,6 +110,9 @@ func NewSyncMember(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230501preview:SyncMember"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:SyncMember"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:SyncMember"),
 		},
 		{

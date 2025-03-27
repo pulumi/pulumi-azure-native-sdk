@@ -13,7 +13,8 @@ import (
 )
 
 // Single item in a List or Get IpFilterRules operation
-// Azure REST API version: 2018-01-01-preview. Prior API version in Azure Native 1.x: 2018-01-01-preview.
+//
+// Uses Azure REST API version 2018-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-01-01-preview.
 type NamespaceIpFilterRule struct {
 	pulumi.CustomResourceState
 

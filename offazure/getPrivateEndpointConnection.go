@@ -12,7 +12,8 @@ import (
 )
 
 // REST model used to encapsulate the user visible state of a PrivateEndpoint.
-// Azure REST API version: 2020-07-07.
+//
+// Uses Azure REST API version 2020-07-07.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult

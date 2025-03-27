@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an invoice section by its ID. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.
-// Azure REST API version: 2024-04-01.
+//
+// Uses Azure REST API version 2024-04-01.
 func LookupInvoiceSection(ctx *pulumi.Context, args *LookupInvoiceSectionArgs, opts ...pulumi.InvokeOption) (*LookupInvoiceSectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInvoiceSectionResult

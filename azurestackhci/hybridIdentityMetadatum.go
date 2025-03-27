@@ -13,7 +13,8 @@ import (
 )
 
 // Defines the HybridIdentityMetadata.
-// Azure REST API version: 2022-12-15-preview.
+//
+// Uses Azure REST API version 2022-12-15-preview.
 type HybridIdentityMetadatum struct {
 	pulumi.CustomResourceState
 

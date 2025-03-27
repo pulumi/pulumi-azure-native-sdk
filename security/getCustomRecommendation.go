@@ -12,7 +12,8 @@ import (
 )
 
 // Get a specific custom recommendation for the requested scope by customRecommendationName
-// Azure REST API version: 2024-08-01.
+//
+// Uses Azure REST API version 2024-08-01.
 func LookupCustomRecommendation(ctx *pulumi.Context, args *LookupCustomRecommendationArgs, opts ...pulumi.InvokeOption) (*LookupCustomRecommendationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomRecommendationResult

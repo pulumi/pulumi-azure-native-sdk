@@ -12,7 +12,8 @@ import (
 )
 
 // Get a SsmParameter
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupSsmParameter(ctx *pulumi.Context, args *LookupSsmParameterArgs, opts ...pulumi.InvokeOption) (*LookupSsmParameterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSsmParameterResult

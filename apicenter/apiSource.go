@@ -13,7 +13,8 @@ import (
 )
 
 // API source entity.
-// Azure REST API version: 2024-06-01-preview.
+//
+// Uses Azure REST API version 2024-06-01-preview.
 type ApiSource struct {
 	pulumi.CustomResourceState
 

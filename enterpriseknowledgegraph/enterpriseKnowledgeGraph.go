@@ -13,7 +13,8 @@ import (
 )
 
 // EnterpriseKnowledgeGraph resource definition
-// Azure REST API version: 2018-12-03. Prior API version in Azure Native 1.x: 2018-12-03.
+//
+// Uses Azure REST API version 2018-12-03. In version 1.x of the Azure Native provider, it used API version 2018-12-03.
 type EnterpriseKnowledgeGraph struct {
 	pulumi.CustomResourceState
 

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a private endpoint connection.
+// Get a PrivateEndpointConnectionWithSystemData
 func LookupPrivateEndpointConnectionByWorkspace(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionByWorkspaceResult
@@ -23,7 +23,7 @@ func LookupPrivateEndpointConnectionByWorkspace(ctx *pulumi.Context, args *Looku
 }
 
 type LookupPrivateEndpointConnectionByWorkspaceArgs struct {
-	// The name of the private endpoint connection associated with the Azure resource.
+	// The name parameter for private endpoint
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -61,7 +61,7 @@ func LookupPrivateEndpointConnectionByWorkspaceOutput(ctx *pulumi.Context, args 
 }
 
 type LookupPrivateEndpointConnectionByWorkspaceOutputArgs struct {
-	// The name of the private endpoint connection associated with the Azure resource.
+	// The name parameter for private endpoint
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`

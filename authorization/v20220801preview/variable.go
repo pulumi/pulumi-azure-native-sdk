@@ -38,6 +38,9 @@ func NewVariable(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:authorization/v20241201preview:Variable"),
+		},
+		{
 			Type: pulumi.String("azure-native:authorization:Variable"),
 		},
 	})

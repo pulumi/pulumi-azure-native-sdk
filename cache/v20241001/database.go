@@ -100,6 +100,9 @@ func NewDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cache/v20240901preview:Database"),
 		},
 		{
+			Type: pulumi.String("azure-native:cache/v20250401:Database"),
+		},
+		{
 			Type: pulumi.String("azure-native:cache:Database"),
 		},
 	})

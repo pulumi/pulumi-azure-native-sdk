@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a specific role by name.
-// Azure REST API version: 2022-03-01.
+//
+// Uses Azure REST API version 2022-03-01.
 func LookupCloudEdgeManagementRole(ctx *pulumi.Context, args *LookupCloudEdgeManagementRoleArgs, opts ...pulumi.InvokeOption) (*LookupCloudEdgeManagementRoleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudEdgeManagementRoleResult

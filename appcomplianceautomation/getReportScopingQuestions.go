@@ -12,7 +12,8 @@ import (
 )
 
 // Fix the AppComplianceAutomation report error. e.g: App Compliance Automation Tool service unregistered, automation removed.
-// Azure REST API version: 2024-06-27.
+//
+// Uses Azure REST API version 2024-06-27.
 func GetReportScopingQuestions(ctx *pulumi.Context, args *GetReportScopingQuestionsArgs, opts ...pulumi.InvokeOption) (*GetReportScopingQuestionsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetReportScopingQuestionsResult

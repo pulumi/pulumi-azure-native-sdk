@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Authority
-// Azure REST API version: 2024-01-26-preview.
+//
+// Uses Azure REST API version 2024-01-26-preview.
 func LookupAuthority(ctx *pulumi.Context, args *LookupAuthorityArgs, opts ...pulumi.InvokeOption) (*LookupAuthorityResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorityResult

@@ -13,7 +13,8 @@ import (
 )
 
 // MQ dataLakeConnector resource
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 type DataLakeConnector struct {
 	pulumi.CustomResourceState
 

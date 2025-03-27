@@ -12,7 +12,8 @@ import (
 )
 
 // Get a RdsExportTask
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupRdsExportTask(ctx *pulumi.Context, args *LookupRdsExportTaskArgs, opts ...pulumi.InvokeOption) (*LookupRdsExportTaskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRdsExportTaskResult

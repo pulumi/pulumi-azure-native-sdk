@@ -1208,13 +1208,14 @@ func (in *highAvailabilityModePtr) ToHighAvailabilityModePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(HighAvailabilityModePtrOutput)
 }
 
-// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
+// the types of identities associated with this resource
 type IdentityType string
 
 const (
-	IdentityTypeNone           = IdentityType("None")
-	IdentityTypeUserAssigned   = IdentityType("UserAssigned")
-	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
+	IdentityTypeNone                         = IdentityType("None")
+	IdentityTypeUserAssigned                 = IdentityType("UserAssigned")
+	IdentityTypeSystemAssigned               = IdentityType("SystemAssigned")
+	IdentityType_SystemAssigned_UserAssigned = IdentityType("SystemAssigned,UserAssigned")
 )
 
 func (IdentityType) ElementType() reflect.Type {
@@ -1342,6 +1343,7 @@ func (o IdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 //	IdentityTypeNone
 //	IdentityTypeUserAssigned
 //	IdentityTypeSystemAssigned
+//	IdentityType_SystemAssigned_UserAssigned
 type IdentityTypeInput interface {
 	pulumi.Input
 

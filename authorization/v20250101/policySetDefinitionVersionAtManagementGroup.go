@@ -64,6 +64,9 @@ func NewPolicySetDefinitionVersionAtManagementGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:authorization/v20240501:PolicySetDefinitionVersionAtManagementGroup"),
 		},
 		{
+			Type: pulumi.String("azure-native:authorization/v20250301:PolicySetDefinitionVersionAtManagementGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:authorization:PolicySetDefinitionVersionAtManagementGroup"),
 		},
 	})

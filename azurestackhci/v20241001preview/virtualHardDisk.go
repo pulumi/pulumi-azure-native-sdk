@@ -97,6 +97,9 @@ func NewVirtualHardDisk(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:VirtualHardDisk"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:VirtualHardDisk"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci:VirtualHardDisk"),
 		},
 	})

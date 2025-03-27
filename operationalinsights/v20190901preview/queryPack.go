@@ -52,6 +52,9 @@ func NewQueryPack(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:operationalinsights/v20230901:QueryPack"),
 		},
 		{
+			Type: pulumi.String("azure-native:operationalinsights/v20250201:QueryPack"),
+		},
+		{
 			Type: pulumi.String("azure-native:operationalinsights:QueryPack"),
 		},
 	})

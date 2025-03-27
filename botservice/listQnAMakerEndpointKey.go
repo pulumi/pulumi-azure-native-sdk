@@ -12,7 +12,8 @@ import (
 )
 
 // Lists the QnA Maker endpoint keys
-// Azure REST API version: 2022-09-15.
+//
+// Uses Azure REST API version 2022-09-15.
 //
 // Other available API versions: 2022-06-15-preview, 2023-09-15-preview.
 func ListQnAMakerEndpointKey(ctx *pulumi.Context, args *ListQnAMakerEndpointKeyArgs, opts ...pulumi.InvokeOption) (*ListQnAMakerEndpointKeyResult, error) {

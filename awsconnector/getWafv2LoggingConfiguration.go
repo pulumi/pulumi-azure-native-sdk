@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Wafv2LoggingConfiguration
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupWafv2LoggingConfiguration(ctx *pulumi.Context, args *LookupWafv2LoggingConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupWafv2LoggingConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWafv2LoggingConfigurationResult

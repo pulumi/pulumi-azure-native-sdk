@@ -12,7 +12,8 @@ import (
 )
 
 // Get the metadata of a privateLinkServicesForM365SecurityCenter resource.
-// Azure REST API version: 2021-03-25-preview.
+//
+// Uses Azure REST API version 2021-03-25-preview.
 func LookupPrivateLinkServicesForM365SecurityCenter(ctx *pulumi.Context, args *LookupPrivateLinkServicesForM365SecurityCenterArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkServicesForM365SecurityCenterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkServicesForM365SecurityCenterResult

@@ -45,6 +45,9 @@ func NewSqlServerEsuLicense(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:SqlServerEsuLicense"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurearcdata:SqlServerEsuLicense"),
 		},
 	})

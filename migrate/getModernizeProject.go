@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the details of the modernize project.
-// Azure REST API version: 2022-05-01-preview.
+//
+// Uses Azure REST API version 2022-05-01-preview.
 func LookupModernizeProject(ctx *pulumi.Context, args *LookupModernizeProjectArgs, opts ...pulumi.InvokeOption) (*LookupModernizeProjectResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupModernizeProjectResult

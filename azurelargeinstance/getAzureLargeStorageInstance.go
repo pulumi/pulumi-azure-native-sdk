@@ -13,7 +13,8 @@ import (
 
 // Gets an Azure Large Storage instance for the specified subscription, resource
 // group, and instance name.
-// Azure REST API version: 2024-08-01-preview.
+//
+// Uses Azure REST API version 2024-08-01-preview.
 func LookupAzureLargeStorageInstance(ctx *pulumi.Context, args *LookupAzureLargeStorageInstanceArgs, opts ...pulumi.InvokeOption) (*LookupAzureLargeStorageInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureLargeStorageInstanceResult

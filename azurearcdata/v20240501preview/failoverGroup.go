@@ -51,6 +51,9 @@ func NewFailoverGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurearcdata/v20240101:FailoverGroup"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:FailoverGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurearcdata:FailoverGroup"),
 		},
 	})

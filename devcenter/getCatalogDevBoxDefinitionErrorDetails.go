@@ -12,7 +12,8 @@ import (
 )
 
 // Gets Catalog Devbox Definition error details
-// Azure REST API version: 2023-08-01-preview.
+//
+// Uses Azure REST API version 2023-08-01-preview.
 //
 // Other available API versions: 2023-10-01-preview.
 func GetCatalogDevBoxDefinitionErrorDetails(ctx *pulumi.Context, args *GetCatalogDevBoxDefinitionErrorDetailsArgs, opts ...pulumi.InvokeOption) (*GetCatalogDevBoxDefinitionErrorDetailsResult, error) {

@@ -13,7 +13,8 @@ import (
 )
 
 // Define the connector resource.
-// Azure REST API version: 2023-10-01-preview.
+//
+// Uses Azure REST API version 2023-10-01-preview.
 type Connector struct {
 	pulumi.CustomResourceState
 

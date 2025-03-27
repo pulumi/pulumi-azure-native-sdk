@@ -13,7 +13,8 @@ import (
 )
 
 // Security Assignment on a resource group over a given scope
-// Azure REST API version: 2024-08-01.
+//
+// Uses Azure REST API version 2024-08-01.
 type StandardAssignment struct {
 	pulumi.CustomResourceState
 

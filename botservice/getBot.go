@@ -12,7 +12,8 @@ import (
 )
 
 // Returns a BotService specified by the parameters.
-// Azure REST API version: 2022-09-15.
+//
+// Uses Azure REST API version 2022-09-15.
 //
 // Other available API versions: 2023-09-15-preview.
 func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOption) (*LookupBotResult, error) {

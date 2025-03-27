@@ -12,7 +12,8 @@ import (
 )
 
 // Returns the properties of a lab user.
-// Azure REST API version: 2022-08-01.
+//
+// Uses Azure REST API version 2022-08-01.
 //
 // Other available API versions: 2018-10-15, 2023-06-07.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {

@@ -112,6 +112,9 @@ func NewIncidentTask(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:IncidentTask"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:IncidentTask"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:IncidentTask"),
 		},
 	})

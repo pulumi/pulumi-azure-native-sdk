@@ -2533,6 +2533,7 @@ type SessionHandlingOperation string
 const (
 	SessionHandlingOperationNone       = SessionHandlingOperation("None")
 	SessionHandlingOperationDeallocate = SessionHandlingOperation("Deallocate")
+	SessionHandlingOperationHibernate  = SessionHandlingOperation("Hibernate")
 )
 
 func (SessionHandlingOperation) ElementType() reflect.Type {
@@ -2659,6 +2660,7 @@ func (o SessionHandlingOperationPtrOutput) ToStringPtrOutputWithContext(ctx cont
 //
 //	SessionHandlingOperationNone
 //	SessionHandlingOperationDeallocate
+//	SessionHandlingOperationHibernate
 type SessionHandlingOperationInput interface {
 	pulumi.Input
 

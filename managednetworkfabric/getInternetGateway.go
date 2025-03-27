@@ -12,7 +12,8 @@ import (
 )
 
 // Implements Gateway GET method.
-// Azure REST API version: 2023-06-15.
+//
+// Uses Azure REST API version 2023-06-15.
 func LookupInternetGateway(ctx *pulumi.Context, args *LookupInternetGatewayArgs, opts ...pulumi.InvokeOption) (*LookupInternetGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInternetGatewayResult

@@ -12,7 +12,8 @@ import (
 )
 
 // [Deprecated] Get a Private Atlas resource.
-// Azure REST API version: 2020-02-01-preview.
+//
+// Uses Azure REST API version 2020-02-01-preview.
 func LookupPrivateAtlase(ctx *pulumi.Context, args *LookupPrivateAtlaseArgs, opts ...pulumi.InvokeOption) (*LookupPrivateAtlaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateAtlaseResult

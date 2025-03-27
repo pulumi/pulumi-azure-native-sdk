@@ -12,7 +12,8 @@ import (
 )
 
 // Get a ConfigServiceDeliveryChannel
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupConfigServiceDeliveryChannel(ctx *pulumi.Context, args *LookupConfigServiceDeliveryChannelArgs, opts ...pulumi.InvokeOption) (*LookupConfigServiceDeliveryChannelResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigServiceDeliveryChannelResult

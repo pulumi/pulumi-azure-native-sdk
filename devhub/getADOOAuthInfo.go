@@ -12,7 +12,10 @@ import (
 )
 
 // Response containing ADO OAuth information
-// Azure REST API version: 2024-08-01-preview.
+//
+// Uses Azure REST API version 2024-08-01-preview.
+//
+// Other available API versions: 2025-03-01-preview.
 func GetADOOAuthInfo(ctx *pulumi.Context, args *GetADOOAuthInfoArgs, opts ...pulumi.InvokeOption) (*GetADOOAuthInfoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetADOOAuthInfoResult

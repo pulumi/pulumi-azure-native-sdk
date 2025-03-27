@@ -12,7 +12,8 @@ import (
 )
 
 // Returns Intune iOS policies.
-// Azure REST API version: 2015-01-14-preview.
+//
+// Uses Azure REST API version 2015-01-14-preview.
 //
 // Other available API versions: 2015-01-14-privatepreview.
 func LookupIoMAMPolicyByName(ctx *pulumi.Context, args *LookupIoMAMPolicyByNameArgs, opts ...pulumi.InvokeOption) (*LookupIoMAMPolicyByNameResult, error) {

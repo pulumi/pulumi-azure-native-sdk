@@ -13,7 +13,8 @@ import (
 )
 
 // Instance dataflowEndpoint resource
-// Azure REST API version: 2024-07-01-preview.
+//
+// Uses Azure REST API version 2024-07-01-preview.
 type DataFlowEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +61,9 @@ func NewDataFlowEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20241101:DataFlowEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:DataFlowEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

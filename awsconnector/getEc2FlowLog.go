@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2FlowLog
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2FlowLog(ctx *pulumi.Context, args *LookupEc2FlowLogArgs, opts ...pulumi.InvokeOption) (*LookupEc2FlowLogResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2FlowLogResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a workflow access key.
-// Azure REST API version: 2015-02-01-preview.
+//
+// Uses Azure REST API version 2015-02-01-preview.
 func LookupWorkflowAccessKey(ctx *pulumi.Context, args *LookupWorkflowAccessKeyArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowAccessKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkflowAccessKeyResult

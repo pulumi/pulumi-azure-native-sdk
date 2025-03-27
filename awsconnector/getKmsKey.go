@@ -12,7 +12,8 @@ import (
 )
 
 // Get a KmsKey
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupKmsKey(ctx *pulumi.Context, args *LookupKmsKeyArgs, opts ...pulumi.InvokeOption) (*LookupKmsKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKmsKeyResult

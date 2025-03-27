@@ -12,7 +12,8 @@ import (
 )
 
 // List credential for publishing artifacts defined in artifact manifest.
-// Azure REST API version: 2023-09-01.
+//
+// Uses Azure REST API version 2023-09-01.
 //
 // Other available API versions: 2024-04-15.
 func ListArtifactManifestCredential(ctx *pulumi.Context, args *ListArtifactManifestCredentialArgs, opts ...pulumi.InvokeOption) (*ListArtifactManifestCredentialResult, error) {

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2Snapshot
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2Snapshot(ctx *pulumi.Context, args *LookupEc2SnapshotArgs, opts ...pulumi.InvokeOption) (*LookupEc2SnapshotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2SnapshotResult

@@ -45,7 +45,7 @@ type LookupHostPoolResult struct {
 	Description *string `pulumi:"description"`
 	// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
 	DirectUDP *string `pulumi:"directUDP"`
-	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+	// If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	Etag string `pulumi:"etag"`
 	// Friendly name of HostPool.
 	FriendlyName *string `pulumi:"friendlyName"`
@@ -53,9 +53,9 @@ type LookupHostPoolResult struct {
 	HostPoolType string `pulumi:"hostPoolType"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Managed service identity (system assigned and/or user assigned identities)
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The type of the load balancer.
 	LoadBalancerType string `pulumi:"loadBalancerType"`
@@ -75,7 +75,7 @@ type LookupHostPoolResult struct {
 	ObjectId string `pulumi:"objectId"`
 	// PersonalDesktopAssignment type for HostPool.
 	PersonalDesktopAssignmentType *string `pulumi:"personalDesktopAssignmentType"`
-	// Plan for the resource.
+	// Details of the resource plan.
 	Plan *PlanResponse `pulumi:"plan"`
 	// The type of preferred application group type, default to Desktop Application Group
 	PreferredAppGroupType string `pulumi:"preferredAppGroupType"`
@@ -85,13 +85,13 @@ type LookupHostPoolResult struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
 	PublicUDP *string `pulumi:"publicUDP"`
-	// The registration info of HostPool. This is not returned on GET. In order to get the registration token use the retrieveRegistrationToken or listRegistrationTokens POST calls.
+	// The registration info of HostPool.
 	RegistrationInfo *RegistrationInfoResponse `pulumi:"registrationInfo"`
 	// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
 	RelayUDP *string `pulumi:"relayUDP"`
 	// The ring number of HostPool.
 	Ring *int `pulumi:"ring"`
-	// The resource model definition representing SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku *SkuResponse `pulumi:"sku"`
 	// ClientId for the registered Relying Party used to issue WVD SSO certificates.
 	SsoClientId *string `pulumi:"ssoClientId"`
@@ -185,7 +185,7 @@ func (o LookupHostPoolResultOutput) DirectUDP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *string { return v.DirectUDP }).(pulumi.StringPtrOutput)
 }
 
-// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+// If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 func (o LookupHostPoolResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -205,12 +205,12 @@ func (o LookupHostPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
+// The managed service identities assigned to this resource.
 func (o LookupHostPoolResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
-// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 func (o LookupHostPoolResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -260,7 +260,7 @@ func (o LookupHostPoolResultOutput) PersonalDesktopAssignmentType() pulumi.Strin
 	return o.ApplyT(func(v LookupHostPoolResult) *string { return v.PersonalDesktopAssignmentType }).(pulumi.StringPtrOutput)
 }
 
-// Plan for the resource.
+// Details of the resource plan.
 func (o LookupHostPoolResultOutput) Plan() PlanResponsePtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
@@ -285,7 +285,7 @@ func (o LookupHostPoolResultOutput) PublicUDP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *string { return v.PublicUDP }).(pulumi.StringPtrOutput)
 }
 
-// The registration info of HostPool. This is not returned on GET. In order to get the registration token use the retrieveRegistrationToken or listRegistrationTokens POST calls.
+// The registration info of HostPool.
 func (o LookupHostPoolResultOutput) RegistrationInfo() RegistrationInfoResponsePtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *RegistrationInfoResponse { return v.RegistrationInfo }).(RegistrationInfoResponsePtrOutput)
 }
@@ -300,7 +300,7 @@ func (o LookupHostPoolResultOutput) Ring() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *int { return v.Ring }).(pulumi.IntPtrOutput)
 }
 
-// The resource model definition representing SKU
+// The SKU (Stock Keeping Unit) assigned to this resource.
 func (o LookupHostPoolResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }

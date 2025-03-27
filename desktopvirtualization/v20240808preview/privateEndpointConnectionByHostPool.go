@@ -65,9 +65,6 @@ func NewPrivateEndpointConnectionByHostPool(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:PrivateEndpointConnectionByHostPool"),
 		},
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:PrivateEndpointConnectionByHostPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:PrivateEndpointConnectionByHostPool"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewPrivateEndpointConnectionByHostPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:PrivateEndpointConnectionByHostPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:PrivateEndpointConnectionByHostPool"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:PrivateEndpointConnectionByHostPool"),
@@ -128,7 +128,7 @@ func (PrivateEndpointConnectionByHostPoolState) ElementType() reflect.Type {
 type privateEndpointConnectionByHostPoolArgs struct {
 	// The name of the host pool within the specified resource group
 	HostPoolName string `pulumi:"hostPoolName"`
-	// The name of the private endpoint connection associated with the Azure resource.
+	// The name parameter for private endpoint
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
@@ -140,7 +140,7 @@ type privateEndpointConnectionByHostPoolArgs struct {
 type PrivateEndpointConnectionByHostPoolArgs struct {
 	// The name of the host pool within the specified resource group
 	HostPoolName pulumi.StringInput
-	// The name of the private endpoint connection associated with the Azure resource.
+	// The name parameter for private endpoint
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput

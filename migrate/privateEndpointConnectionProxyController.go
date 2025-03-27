@@ -13,7 +13,8 @@ import (
 )
 
 // Defines Private endpoint proxy resource.
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 type PrivateEndpointConnectionProxyController struct {
 	pulumi.CustomResourceState
 

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an Azure Bare Metal Instance for the specified subscription, resource group, and instance name.
-// Azure REST API version: 2024-08-01-preview.
+//
+// Uses Azure REST API version 2024-08-01-preview.
 func LookupAzureBareMetalInstance(ctx *pulumi.Context, args *LookupAzureBareMetalInstanceArgs, opts ...pulumi.InvokeOption) (*LookupAzureBareMetalInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureBareMetalInstanceResult

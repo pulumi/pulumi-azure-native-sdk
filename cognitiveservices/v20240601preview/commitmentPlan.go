@@ -75,6 +75,9 @@ func NewCommitmentPlan(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cognitiveservices/v20241001:CommitmentPlan"),
 		},
 		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20250401preview:CommitmentPlan"),
+		},
+		{
 			Type: pulumi.String("azure-native:cognitiveservices:CommitmentPlan"),
 		},
 	})

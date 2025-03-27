@@ -12,7 +12,8 @@ import (
 )
 
 // Get a RdsDBSnapshot
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupRdsDbSnapshot(ctx *pulumi.Context, args *LookupRdsDbSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupRdsDbSnapshotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRdsDbSnapshotResult

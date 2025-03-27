@@ -12,7 +12,8 @@ import (
 )
 
 // Get a EksNodegroup
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEksNodegroup(ctx *pulumi.Context, args *LookupEksNodegroupArgs, opts ...pulumi.InvokeOption) (*LookupEksNodegroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEksNodegroupResult

@@ -12,7 +12,8 @@ import (
 )
 
 // The EngagementFabric channel
-// Azure REST API version: 2018-09-01-preview.
+//
+// Uses Azure REST API version 2018-09-01-preview.
 func LookupChannel(ctx *pulumi.Context, args *LookupChannelArgs, opts ...pulumi.InvokeOption) (*LookupChannelResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupChannelResult

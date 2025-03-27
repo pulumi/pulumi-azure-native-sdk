@@ -12,7 +12,8 @@ import (
 )
 
 // List primary and secondary keys for a specific key name
-// Azure REST API version: 2022-12-12.
+//
+// Uses Azure REST API version 2022-12-12.
 //
 // Other available API versions: 2020-09-01-preview, 2023-03-01-preview, 2025-02-01-preview.
 func ListIotDpsResourceKeysForKeyName(ctx *pulumi.Context, args *ListIotDpsResourceKeysForKeyNameArgs, opts ...pulumi.InvokeOption) (*ListIotDpsResourceKeysForKeyNameResult, error) {

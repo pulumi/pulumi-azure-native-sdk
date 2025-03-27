@@ -13,7 +13,8 @@ import (
 )
 
 // Concrete tracked resource types can be created by aliasing this type using a specific property type.
-// Azure REST API version: 2023-05-01-preview.
+//
+// Uses Azure REST API version 2023-05-01-preview.
 type CacheNodesOperation struct {
 	pulumi.CustomResourceState
 

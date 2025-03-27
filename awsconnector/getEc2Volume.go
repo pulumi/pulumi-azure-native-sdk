@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Ec2Volume
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEc2Volume(ctx *pulumi.Context, args *LookupEc2VolumeArgs, opts ...pulumi.InvokeOption) (*LookupEc2VolumeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEc2VolumeResult

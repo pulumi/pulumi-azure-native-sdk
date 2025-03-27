@@ -12,7 +12,8 @@ import (
 )
 
 // Get a MqResource
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 func LookupMq(ctx *pulumi.Context, args *LookupMqArgs, opts ...pulumi.InvokeOption) (*LookupMqResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMqResult

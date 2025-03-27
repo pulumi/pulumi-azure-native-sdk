@@ -12,7 +12,8 @@ import (
 )
 
 // Get a blueprint artifact.
-// Azure REST API version: 2018-11-01-preview.
+//
+// Uses Azure REST API version 2018-11-01-preview.
 func LookupTemplateArtifact(ctx *pulumi.Context, args *LookupTemplateArtifactArgs, opts ...pulumi.InvokeOption) (*LookupTemplateArtifactResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTemplateArtifactResult

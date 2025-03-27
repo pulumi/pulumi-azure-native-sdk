@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an existing attestation at subscription scope.
-// Azure REST API version: 2022-09-01.
+//
+// Uses Azure REST API version 2022-09-01.
 //
 // Other available API versions: 2024-10-01.
 func LookupAttestationAtSubscription(ctx *pulumi.Context, args *LookupAttestationAtSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupAttestationAtSubscriptionResult, error) {

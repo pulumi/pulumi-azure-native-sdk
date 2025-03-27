@@ -69,6 +69,9 @@ func NewTable(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:operationalinsights/v20230901:Table"),
 		},
 		{
+			Type: pulumi.String("azure-native:operationalinsights/v20250201:Table"),
+		},
+		{
 			Type: pulumi.String("azure-native:operationalinsights:Table"),
 		},
 	})

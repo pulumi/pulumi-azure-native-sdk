@@ -13,7 +13,8 @@ import (
 )
 
 // Resource information with extended details.
-// Azure REST API version: 2022-08-31-preview.
+//
+// Uses Azure REST API version 2022-08-31-preview.
 //
 // Other available API versions: 2023-12-10-preview, 2024-06-30-preview.
 type CloudHsmCluster struct {

@@ -12,7 +12,8 @@ import (
 )
 
 // The operation returns properties of a Secret.
-// Azure REST API version: 2022-09-04.
+//
+// Uses Azure REST API version 2022-09-04.
 //
 // Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22.
 func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.InvokeOption) (*LookupSecretResult, error) {

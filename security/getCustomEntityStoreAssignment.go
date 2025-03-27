@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a single custom entity store assignment by name for the provided subscription and resource group.
-// Azure REST API version: 2021-07-01-preview.
+//
+// Uses Azure REST API version 2021-07-01-preview.
 func LookupCustomEntityStoreAssignment(ctx *pulumi.Context, args *LookupCustomEntityStoreAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupCustomEntityStoreAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomEntityStoreAssignmentResult

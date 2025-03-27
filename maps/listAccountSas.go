@@ -14,9 +14,10 @@ import (
 // Create and list an account shared access signature token. Use this SAS token for authentication to Azure Maps REST APIs through various Azure Maps SDKs. As prerequisite to create a SAS Token.
 //
 // Prerequisites:
-//  1. Create or have an existing User Assigned Managed Identity in the same Azure region as the account.
-//  2. Create or update an Azure Map account with the same Azure region as the User Assigned Managed Identity is placed.
-//     Azure REST API version: 2021-12-01-preview.
+// 1. Create or have an existing User Assigned Managed Identity in the same Azure region as the account.
+// 2. Create or update an Azure Map account with the same Azure region as the User Assigned Managed Identity is placed.
+//
+// Uses Azure REST API version 2021-12-01-preview.
 //
 // Other available API versions: 2023-06-01, 2023-08-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-07-01-preview.
 func ListAccountSas(ctx *pulumi.Context, args *ListAccountSasArgs, opts ...pulumi.InvokeOption) (*ListAccountSasResult, error) {

@@ -12,7 +12,10 @@ import (
 )
 
 // Get the connection string for the specified flow.
-// Azure REST API version: 2024-09-27.
+//
+// Uses Azure REST API version 2024-09-27.
+//
+// Other available API versions: 2025-03-01-preview.
 func GetFlowStreamConnectionString(ctx *pulumi.Context, args *GetFlowStreamConnectionStringArgs, opts ...pulumi.InvokeOption) (*GetFlowStreamConnectionStringResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetFlowStreamConnectionStringResult

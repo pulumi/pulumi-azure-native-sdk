@@ -66,6 +66,9 @@ func NewUserAssignedIdentity(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:managedidentity/v20230731preview:UserAssignedIdentity"),
 		},
 		{
+			Type: pulumi.String("azure-native:managedidentity/v20250131preview:UserAssignedIdentity"),
+		},
+		{
 			Type: pulumi.String("azure-native:managedidentity:UserAssignedIdentity"),
 		},
 	})

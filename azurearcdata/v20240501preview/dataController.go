@@ -72,6 +72,9 @@ func NewDataController(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurearcdata/v20240101:DataController"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:DataController"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurearcdata:DataController"),
 		},
 	})

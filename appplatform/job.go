@@ -13,7 +13,8 @@ import (
 )
 
 // Job resource payload
-// Azure REST API version: 2024-05-01-preview.
+//
+// Uses Azure REST API version 2024-05-01-preview.
 type Job struct {
 	pulumi.CustomResourceState
 

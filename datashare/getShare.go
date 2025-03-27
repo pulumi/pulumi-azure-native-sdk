@@ -12,7 +12,8 @@ import (
 )
 
 // Get a share
-// Azure REST API version: 2021-08-01.
+//
+// Uses Azure REST API version 2021-08-01.
 func LookupShare(ctx *pulumi.Context, args *LookupShareArgs, opts ...pulumi.InvokeOption) (*LookupShareResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupShareResult

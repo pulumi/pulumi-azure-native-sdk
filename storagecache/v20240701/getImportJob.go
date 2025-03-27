@@ -33,7 +33,7 @@ type LookupImportJobArgs struct {
 
 // An import job instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
 type LookupImportJobResult struct {
-	// The administrative status of the import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will cancel the current active import job. By default it is set to 'Enable'.
+	// The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'.
 	AdminStatus *string `pulumi:"adminStatus"`
 	// A recent and frequently updated rate of total files, directories, and symlinks imported per second.
 	BlobsImportedPerSecond float64 `pulumi:"blobsImportedPerSecond"`
@@ -146,7 +146,7 @@ func (o LookupImportJobResultOutput) ToLookupImportJobResultOutputWithContext(ct
 	return o
 }
 
-// The administrative status of the import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will cancel the current active import job. By default it is set to 'Enable'.
+// The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'.
 func (o LookupImportJobResultOutput) AdminStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupImportJobResult) *string { return v.AdminStatus }).(pulumi.StringPtrOutput)
 }

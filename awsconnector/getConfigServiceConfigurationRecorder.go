@@ -12,7 +12,8 @@ import (
 )
 
 // Get a ConfigServiceConfigurationRecorder
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupConfigServiceConfigurationRecorder(ctx *pulumi.Context, args *LookupConfigServiceConfigurationRecorderArgs, opts ...pulumi.InvokeOption) (*LookupConfigServiceConfigurationRecorderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigServiceConfigurationRecorderResult

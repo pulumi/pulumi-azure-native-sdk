@@ -84,6 +84,9 @@ func NewRestorePoint(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:compute/v20240701:RestorePoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:compute/v20241101:RestorePoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:compute:RestorePoint"),
 		},
 	})

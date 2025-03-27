@@ -64,6 +64,9 @@ func NewTrafficControllerInterface(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:servicenetworking/v20250101:TrafficControllerInterface"),
 		},
 		{
+			Type: pulumi.String("azure-native:servicenetworking/v20250301preview:TrafficControllerInterface"),
+		},
+		{
 			Type: pulumi.String("azure-native:servicenetworking:TrafficControllerInterface"),
 		},
 	})

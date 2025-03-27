@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the specified Data Lake Analytics compute policy.
-// Azure REST API version: 2019-11-01-preview.
+//
+// Uses Azure REST API version 2019-11-01-preview.
 func LookupComputePolicy(ctx *pulumi.Context, args *LookupComputePolicyArgs, opts ...pulumi.InvokeOption) (*LookupComputePolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupComputePolicyResult

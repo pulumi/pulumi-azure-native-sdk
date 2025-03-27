@@ -12,7 +12,8 @@ import (
 )
 
 // Get a specific security standard for the requested scope by standardId
-// Azure REST API version: 2024-08-01.
+//
+// Uses Azure REST API version 2024-08-01.
 func LookupSecurityStandard(ctx *pulumi.Context, args *LookupSecurityStandardArgs, opts ...pulumi.InvokeOption) (*LookupSecurityStandardResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityStandardResult

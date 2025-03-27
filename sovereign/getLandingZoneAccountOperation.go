@@ -12,7 +12,8 @@ import (
 )
 
 // Get a landing zone account.
-// Azure REST API version: 2025-02-27-preview.
+//
+// Uses Azure REST API version 2025-02-27-preview.
 func LookupLandingZoneAccountOperation(ctx *pulumi.Context, args *LookupLandingZoneAccountOperationArgs, opts ...pulumi.InvokeOption) (*LookupLandingZoneAccountOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLandingZoneAccountOperationResult

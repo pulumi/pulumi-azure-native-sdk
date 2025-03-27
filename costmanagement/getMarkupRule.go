@@ -12,7 +12,8 @@ import (
 )
 
 // Get a markup rule by its rule name.
-// Azure REST API version: 2022-10-05-preview.
+//
+// Uses Azure REST API version 2022-10-05-preview.
 func LookupMarkupRule(ctx *pulumi.Context, args *LookupMarkupRuleArgs, opts ...pulumi.InvokeOption) (*LookupMarkupRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMarkupRuleResult

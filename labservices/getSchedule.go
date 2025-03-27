@@ -12,7 +12,8 @@ import (
 )
 
 // Returns the properties of a lab Schedule.
-// Azure REST API version: 2022-08-01.
+//
+// Uses Azure REST API version 2022-08-01.
 //
 // Other available API versions: 2023-06-07.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {

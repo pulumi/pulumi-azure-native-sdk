@@ -12,7 +12,8 @@ import (
 )
 
 // Get a MqttBridgeTopicMapResource
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 func LookupMqttBridgeTopicMap(ctx *pulumi.Context, args *LookupMqttBridgeTopicMapArgs, opts ...pulumi.InvokeOption) (*LookupMqttBridgeTopicMapResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMqttBridgeTopicMapResult

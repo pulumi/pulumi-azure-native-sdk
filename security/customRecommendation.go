@@ -13,7 +13,8 @@ import (
 )
 
 // Custom Recommendation
-// Azure REST API version: 2024-08-01.
+//
+// Uses Azure REST API version 2024-08-01.
 type CustomRecommendation struct {
 	pulumi.CustomResourceState
 

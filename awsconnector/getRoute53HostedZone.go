@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Route53HostedZone
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupRoute53HostedZone(ctx *pulumi.Context, args *LookupRoute53HostedZoneArgs, opts ...pulumi.InvokeOption) (*LookupRoute53HostedZoneResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoute53HostedZoneResult

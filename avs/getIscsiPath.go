@@ -12,7 +12,8 @@ import (
 )
 
 // Get a IscsiPath
-// Azure REST API version: 2023-09-01.
+//
+// Uses Azure REST API version 2023-09-01.
 func LookupIscsiPath(ctx *pulumi.Context, args *LookupIscsiPathArgs, opts ...pulumi.InvokeOption) (*LookupIscsiPathResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIscsiPathResult

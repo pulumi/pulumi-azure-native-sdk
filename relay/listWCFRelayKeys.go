@@ -12,7 +12,8 @@ import (
 )
 
 // Primary and secondary connection strings to the WCF relay.
-// Azure REST API version: 2021-11-01.
+//
+// Uses Azure REST API version 2021-11-01.
 //
 // Other available API versions: 2024-01-01.
 func ListWCFRelayKeys(ctx *pulumi.Context, args *ListWCFRelayKeysArgs, opts ...pulumi.InvokeOption) (*ListWCFRelayKeysResult, error) {

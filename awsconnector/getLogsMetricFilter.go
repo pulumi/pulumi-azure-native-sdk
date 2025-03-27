@@ -12,7 +12,8 @@ import (
 )
 
 // Get a LogsMetricFilter
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupLogsMetricFilter(ctx *pulumi.Context, args *LookupLogsMetricFilterArgs, opts ...pulumi.InvokeOption) (*LookupLogsMetricFilterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogsMetricFilterResult

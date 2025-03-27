@@ -12,7 +12,8 @@ import (
 )
 
 // Gets draft package path and temp working path with SAS.
-// Azure REST API version: 2023-11-01-preview.
+//
+// Uses Azure REST API version 2023-11-01-preview.
 func GetDraftPackagePath(ctx *pulumi.Context, args *GetDraftPackagePathArgs, opts ...pulumi.InvokeOption) (*GetDraftPackagePathResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetDraftPackagePathResult

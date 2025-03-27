@@ -12,7 +12,8 @@ import (
 )
 
 // Get a server vulnerability assessments setting of the requested kind, that is set on the subscription
-// Azure REST API version: 2023-05-01.
+//
+// Uses Azure REST API version 2023-05-01.
 func LookupAzureServersSetting(ctx *pulumi.Context, args *LookupAzureServersSettingArgs, opts ...pulumi.InvokeOption) (*LookupAzureServersSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureServersSettingResult

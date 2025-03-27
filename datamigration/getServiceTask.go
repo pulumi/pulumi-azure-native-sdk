@@ -12,7 +12,8 @@ import (
 )
 
 // The service tasks resource is a nested, proxy-only resource representing work performed by a DMS instance. The GET method retrieves information about a service task.
-// Azure REST API version: 2021-06-30.
+//
+// Uses Azure REST API version 2021-06-30.
 //
 // Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
 func LookupServiceTask(ctx *pulumi.Context, args *LookupServiceTaskArgs, opts ...pulumi.InvokeOption) (*LookupServiceTaskResult, error) {

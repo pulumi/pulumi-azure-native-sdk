@@ -12,7 +12,8 @@ import (
 )
 
 // Get OuContainer in DomainService instance.
-// Azure REST API version: 2022-12-01.
+//
+// Uses Azure REST API version 2022-12-01.
 func LookupOuContainer(ctx *pulumi.Context, args *LookupOuContainerArgs, opts ...pulumi.InvokeOption) (*LookupOuContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOuContainerResult

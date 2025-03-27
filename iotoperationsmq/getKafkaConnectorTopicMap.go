@@ -12,7 +12,8 @@ import (
 )
 
 // Get a KafkaTopicMapResource
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 func LookupKafkaConnectorTopicMap(ctx *pulumi.Context, args *LookupKafkaConnectorTopicMapArgs, opts ...pulumi.InvokeOption) (*LookupKafkaConnectorTopicMapResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaConnectorTopicMapResult

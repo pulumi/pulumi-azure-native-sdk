@@ -12,7 +12,8 @@ import (
 )
 
 // Returns details of the API source.
-// Azure REST API version: 2024-06-01-preview.
+//
+// Uses Azure REST API version 2024-06-01-preview.
 func LookupApiSource(ctx *pulumi.Context, args *LookupApiSourceArgs, opts ...pulumi.InvokeOption) (*LookupApiSourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiSourceResult

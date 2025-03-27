@@ -25,7 +25,7 @@ func GetmanagedMaintenanceWindowStatus(ctx *pulumi.Context, args *GetmanagedMain
 type GetmanagedMaintenanceWindowStatusArgs struct {
 	// The name of the cluster resource.
 	ClusterName string `pulumi:"clusterName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -59,7 +59,7 @@ func GetmanagedMaintenanceWindowStatusOutput(ctx *pulumi.Context, args Getmanage
 type GetmanagedMaintenanceWindowStatusOutputArgs struct {
 	// The name of the cluster resource.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

@@ -78,7 +78,7 @@ func NewAutoExportJob(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	if args.AdminStatus == nil {
-		args.AdminStatus = pulumi.StringPtr("Active")
+		args.AdminStatus = pulumi.StringPtr("Enable")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{

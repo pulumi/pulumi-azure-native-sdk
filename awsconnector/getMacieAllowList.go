@@ -12,7 +12,8 @@ import (
 )
 
 // Get a MacieAllowList
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupMacieAllowList(ctx *pulumi.Context, args *LookupMacieAllowListArgs, opts ...pulumi.InvokeOption) (*LookupMacieAllowListResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMacieAllowListResult

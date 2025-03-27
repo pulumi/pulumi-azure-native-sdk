@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an read-only access token for application insights diagnostic service data.
-// Azure REST API version: 2021-03-03-preview.
+//
+// Uses Azure REST API version 2021-03-03-preview.
 func GetDiagnosticServiceTokenReadOnly(ctx *pulumi.Context, args *GetDiagnosticServiceTokenReadOnlyArgs, opts ...pulumi.InvokeOption) (*GetDiagnosticServiceTokenReadOnlyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetDiagnosticServiceTokenReadOnlyResult

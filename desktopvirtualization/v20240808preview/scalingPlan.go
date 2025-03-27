@@ -18,7 +18,7 @@ type ScalingPlan struct {
 
 	// Description of scaling plan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+	// If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Exclusion tag for scaling plan.
 	ExclusionTag pulumi.StringPtrOutput `pulumi:"exclusionTag"`
@@ -28,9 +28,9 @@ type ScalingPlan struct {
 	HostPoolReferences ScalingHostPoolReferenceResponseArrayOutput `pulumi:"hostPoolReferences"`
 	// HostPool type for desktop.
 	HostPoolType pulumi.StringPtrOutput `pulumi:"hostPoolType"`
-	// Managed service identity (system assigned and/or user assigned identities)
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -40,11 +40,11 @@ type ScalingPlan struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ObjectId of scaling plan. (internal use)
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// Plan for the resource.
+	// Details of the resource plan.
 	Plan PlanResponsePtrOutput `pulumi:"plan"`
-	// List of Pooled ScalingSchedule definitions.
+	// List of ScalingPlanPooledSchedule definitions.
 	Schedules ScalingScheduleResponseArrayOutput `pulumi:"schedules"`
-	// The resource model definition representing SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -107,9 +107,6 @@ func NewScalingPlan(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:ScalingPlan"),
 		},
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:ScalingPlan"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ScalingPlan"),
 		},
 		{
@@ -129,6 +126,9 @@ func NewScalingPlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:ScalingPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:ScalingPlan"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:ScalingPlan"),
@@ -178,23 +178,23 @@ type scalingPlanArgs struct {
 	HostPoolReferences []ScalingHostPoolReference `pulumi:"hostPoolReferences"`
 	// HostPool type for desktop.
 	HostPoolType *string `pulumi:"hostPoolType"`
-	// Managed service identity (system assigned and/or user assigned identities)
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy *string `pulumi:"managedBy"`
-	// Plan for the resource.
+	// Details of the resource plan.
 	Plan *Plan `pulumi:"plan"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the scaling plan.
 	ScalingPlanName *string `pulumi:"scalingPlanName"`
-	// List of Pooled ScalingSchedule definitions.
+	// List of ScalingPlanPooledSchedule definitions.
 	Schedules []ScalingSchedule `pulumi:"schedules"`
-	// The resource model definition representing SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -214,23 +214,23 @@ type ScalingPlanArgs struct {
 	HostPoolReferences ScalingHostPoolReferenceArrayInput
 	// HostPool type for desktop.
 	HostPoolType pulumi.StringPtrInput
-	// Managed service identity (system assigned and/or user assigned identities)
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityPtrInput
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrInput
-	// Plan for the resource.
+	// Details of the resource plan.
 	Plan PlanPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the scaling plan.
 	ScalingPlanName pulumi.StringPtrInput
-	// List of Pooled ScalingSchedule definitions.
+	// List of ScalingPlanPooledSchedule definitions.
 	Schedules ScalingScheduleArrayInput
-	// The resource model definition representing SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -280,7 +280,7 @@ func (o ScalingPlanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingPlan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+// If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 func (o ScalingPlanOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScalingPlan) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -305,12 +305,12 @@ func (o ScalingPlanOutput) HostPoolType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingPlan) pulumi.StringPtrOutput { return v.HostPoolType }).(pulumi.StringPtrOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
+// The managed service identities assigned to this resource.
 func (o ScalingPlanOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *ScalingPlan) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
-// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 func (o ScalingPlanOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingPlan) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -335,17 +335,17 @@ func (o ScalingPlanOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScalingPlan) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// Plan for the resource.
+// Details of the resource plan.
 func (o ScalingPlanOutput) Plan() PlanResponsePtrOutput {
 	return o.ApplyT(func(v *ScalingPlan) PlanResponsePtrOutput { return v.Plan }).(PlanResponsePtrOutput)
 }
 
-// List of Pooled ScalingSchedule definitions.
+// List of ScalingPlanPooledSchedule definitions.
 func (o ScalingPlanOutput) Schedules() ScalingScheduleResponseArrayOutput {
 	return o.ApplyT(func(v *ScalingPlan) ScalingScheduleResponseArrayOutput { return v.Schedules }).(ScalingScheduleResponseArrayOutput)
 }
 
-// The resource model definition representing SKU
+// The SKU (Stock Keeping Unit) assigned to this resource.
 func (o ScalingPlanOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v *ScalingPlan) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }

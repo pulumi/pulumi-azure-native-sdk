@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the environment with the specified name in the specified subscription and resource group.
-// Azure REST API version: 2020-05-15.
+//
+// Uses Azure REST API version 2020-05-15.
 func LookupGen1Environment(ctx *pulumi.Context, args *LookupGen1EnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupGen1EnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGen1EnvironmentResult

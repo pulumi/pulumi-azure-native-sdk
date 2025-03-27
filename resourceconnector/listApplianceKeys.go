@@ -12,7 +12,8 @@ import (
 )
 
 // Returns the cluster customer credentials for the dedicated appliance.
-// Azure REST API version: 2022-10-27.
+//
+// Uses Azure REST API version 2022-10-27.
 func ListApplianceKeys(ctx *pulumi.Context, args *ListApplianceKeysArgs, opts ...pulumi.InvokeOption) (*ListApplianceKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListApplianceKeysResult

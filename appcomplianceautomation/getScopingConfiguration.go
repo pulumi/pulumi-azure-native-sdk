@@ -12,7 +12,8 @@ import (
 )
 
 // Get the AppComplianceAutomation scoping configuration of the specific report.
-// Azure REST API version: 2024-06-27.
+//
+// Uses Azure REST API version 2024-06-27.
 func LookupScopingConfiguration(ctx *pulumi.Context, args *LookupScopingConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupScopingConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScopingConfigurationResult

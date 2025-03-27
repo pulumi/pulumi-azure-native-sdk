@@ -12,7 +12,8 @@ import (
 )
 
 // The project resource is a nested resource representing a stored migration project. The GET method retrieves information about a project.
-// Azure REST API version: 2021-06-30.
+//
+// Uses Azure REST API version 2021-06-30.
 //
 // Other available API versions: 2021-10-30-preview, 2022-03-30-preview, 2023-07-15-preview.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {

@@ -117,6 +117,9 @@ func NewScheduledQueryRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:insights/v20231201:ScheduledQueryRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:insights/v20250101preview:ScheduledQueryRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:insights:ScheduledQueryRule"),
 		},
 	})

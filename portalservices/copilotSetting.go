@@ -13,7 +13,10 @@ import (
 )
 
 // The copilot settings tenant resource definition.
-// Azure REST API version: 2024-04-01-preview.
+//
+// Uses Azure REST API version 2024-04-01-preview.
+//
+// Other available API versions: 2024-04-01.
 type CopilotSetting struct {
 	pulumi.CustomResourceState
 
@@ -40,6 +43,9 @@ func NewCopilotSetting(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'AccessControlEnabled'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:portalservices/v20240401:CopilotSetting"),
+		},
 		{
 			Type: pulumi.String("azure-native:portalservices/v20240401preview:CopilotSetting"),
 		},

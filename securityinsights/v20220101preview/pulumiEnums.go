@@ -195,8 +195,8 @@ const (
 type SourceType string
 
 const (
-	SourceType_Local_file     = SourceType("Local file")
-	SourceType_Remote_storage = SourceType("Remote storage")
+	SourceTypeLocal        = SourceType("Local")
+	SourceTypeAzureStorage = SourceType("AzureStorage")
 )
 
 func (SourceType) ElementType() reflect.Type {
@@ -321,8 +321,8 @@ func (o SourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 // SourceTypeInput is an input type that accepts values of the SourceType enum
 // A concrete instance of `SourceTypeInput` can be one of the following:
 //
-//	SourceType_Local_file
-//	SourceType_Remote_storage
+//	SourceTypeLocal
+//	SourceTypeAzureStorage
 type SourceTypeInput interface {
 	pulumi.Input
 

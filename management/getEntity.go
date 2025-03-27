@@ -13,7 +13,7 @@ import (
 
 // List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.
 //
-// Azure REST API version: 2021-04-01.
+// Uses Azure REST API version 2021-04-01.
 //
 // Other available API versions: 2020-05-01, 2020-10-01, 2023-04-01.
 func GetEntity(ctx *pulumi.Context, args *GetEntityArgs, opts ...pulumi.InvokeOption) (*GetEntityResult, error) {

@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the ispCustomer resource information using this get call
-// Azure REST API version: 2023-05-01-preview.
+//
+// Uses Azure REST API version 2023-05-01-preview.
 func LookupIspCustomer(ctx *pulumi.Context, args *LookupIspCustomerArgs, opts ...pulumi.InvokeOption) (*LookupIspCustomerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIspCustomerResult

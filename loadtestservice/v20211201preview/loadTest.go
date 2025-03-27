@@ -57,6 +57,9 @@ func NewLoadTest(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:loadtestservice/v20231201preview:LoadTest"),
 		},
 		{
+			Type: pulumi.String("azure-native:loadtestservice/v20241201preview:LoadTest"),
+		},
+		{
 			Type: pulumi.String("azure-native:loadtestservice:LoadTest"),
 		},
 	})

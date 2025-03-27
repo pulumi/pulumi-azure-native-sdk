@@ -12,9 +12,10 @@ import (
 )
 
 // Gets a Log Analytics workspace table.
-// Azure REST API version: 2022-10-01.
 //
-// Other available API versions: 2023-09-01.
+// Uses Azure REST API version 2022-10-01.
+//
+// Other available API versions: 2023-09-01, 2025-02-01.
 func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.InvokeOption) (*LookupTableResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTableResult

@@ -12,7 +12,8 @@ import (
 )
 
 // Get DataManagerForAgriculture resource.
-// Azure REST API version: 2023-06-01-preview.
+//
+// Uses Azure REST API version 2023-06-01-preview.
 func LookupDataManagerForAgricultureResource(ctx *pulumi.Context, args *LookupDataManagerForAgricultureResourceArgs, opts ...pulumi.InvokeOption) (*LookupDataManagerForAgricultureResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataManagerForAgricultureResourceResult

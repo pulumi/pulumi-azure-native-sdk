@@ -12,7 +12,8 @@ import (
 )
 
 // Gets details about the specified streaming job.
-// Azure REST API version: 2020-03-01.
+//
+// Uses Azure REST API version 2020-03-01.
 //
 // Other available API versions: 2017-04-01-preview, 2021-10-01-preview.
 func LookupStreamingJob(ctx *pulumi.Context, args *LookupStreamingJobArgs, opts ...pulumi.InvokeOption) (*LookupStreamingJobResult, error) {

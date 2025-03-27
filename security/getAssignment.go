@@ -12,7 +12,8 @@ import (
 )
 
 // Get a specific standard assignment for the requested scope by resourceId
-// Azure REST API version: 2021-08-01-preview.
+//
+// Uses Azure REST API version 2021-08-01-preview.
 func LookupAssignment(ctx *pulumi.Context, args *LookupAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssignmentResult

@@ -13,7 +13,8 @@ import (
 )
 
 // Definition of the Runtime Environment type.
-// Azure REST API version: 2023-05-15-preview.
+//
+// Uses Azure REST API version 2023-05-15-preview.
 //
 // Other available API versions: 2024-10-23.
 type RuntimeEnvironment struct {

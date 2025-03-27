@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves the user ManagementConfiguration.
-// Azure REST API version: 2015-11-01-preview.
+//
+// Uses Azure REST API version 2015-11-01-preview.
 func LookupManagementConfiguration(ctx *pulumi.Context, args *LookupManagementConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupManagementConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementConfigurationResult

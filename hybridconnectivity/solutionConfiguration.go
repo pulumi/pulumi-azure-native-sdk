@@ -13,14 +13,25 @@ import (
 )
 
 // Solution Configuration
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 type SolutionConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The last time resources were inventoried
+	LastSyncTime pulumi.StringOutput `pulumi:"lastSyncTime"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource-specific properties for this resource.
-	Properties SolutionConfigurationPropertiesResponseOutput `pulumi:"properties"`
+	// The resource provisioning state.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Solution settings
+	SolutionSettings pulumi.StringMapOutput `pulumi:"solutionSettings"`
+	// The type of the solution
+	SolutionType pulumi.StringOutput `pulumi:"solutionType"`
+	// The status of solution configurations
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The detailed message of status details
+	StatusDetails pulumi.StringOutput `pulumi:"statusDetails"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -36,6 +47,9 @@ func NewSolutionConfiguration(ctx *pulumi.Context,
 
 	if args.ResourceUri == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceUri'")
+	}
+	if args.SolutionType == nil {
+		return nil, errors.New("invalid value for required argument 'SolutionType'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -76,22 +90,26 @@ func (SolutionConfigurationState) ElementType() reflect.Type {
 }
 
 type solutionConfigurationArgs struct {
-	// The resource-specific properties for this resource.
-	Properties *SolutionConfigurationProperties `pulumi:"properties"`
 	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 	// Represent Solution Configuration Resource.
 	SolutionConfiguration *string `pulumi:"solutionConfiguration"`
+	// Solution settings
+	SolutionSettings map[string]string `pulumi:"solutionSettings"`
+	// The type of the solution
+	SolutionType string `pulumi:"solutionType"`
 }
 
 // The set of arguments for constructing a SolutionConfiguration resource.
 type SolutionConfigurationArgs struct {
-	// The resource-specific properties for this resource.
-	Properties SolutionConfigurationPropertiesPtrInput
 	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput
 	// Represent Solution Configuration Resource.
 	SolutionConfiguration pulumi.StringPtrInput
+	// Solution settings
+	SolutionSettings pulumi.StringMapInput
+	// The type of the solution
+	SolutionType pulumi.StringInput
 }
 
 func (SolutionConfigurationArgs) ElementType() reflect.Type {
@@ -131,14 +149,39 @@ func (o SolutionConfigurationOutput) ToSolutionConfigurationOutputWithContext(ct
 	return o
 }
 
+// The last time resources were inventoried
+func (o SolutionConfigurationOutput) LastSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SolutionConfiguration) pulumi.StringOutput { return v.LastSyncTime }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o SolutionConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SolutionConfiguration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource-specific properties for this resource.
-func (o SolutionConfigurationOutput) Properties() SolutionConfigurationPropertiesResponseOutput {
-	return o.ApplyT(func(v *SolutionConfiguration) SolutionConfigurationPropertiesResponseOutput { return v.Properties }).(SolutionConfigurationPropertiesResponseOutput)
+// The resource provisioning state.
+func (o SolutionConfigurationOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *SolutionConfiguration) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Solution settings
+func (o SolutionConfigurationOutput) SolutionSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SolutionConfiguration) pulumi.StringMapOutput { return v.SolutionSettings }).(pulumi.StringMapOutput)
+}
+
+// The type of the solution
+func (o SolutionConfigurationOutput) SolutionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SolutionConfiguration) pulumi.StringOutput { return v.SolutionType }).(pulumi.StringOutput)
+}
+
+// The status of solution configurations
+func (o SolutionConfigurationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SolutionConfiguration) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The detailed message of status details
+func (o SolutionConfigurationOutput) StatusDetails() pulumi.StringOutput {
+	return o.ApplyT(func(v *SolutionConfiguration) pulumi.StringOutput { return v.StatusDetails }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

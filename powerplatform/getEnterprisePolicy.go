@@ -12,7 +12,8 @@ import (
 )
 
 // Get information about an EnterprisePolicy
-// Azure REST API version: 2020-10-30-preview.
+//
+// Uses Azure REST API version 2020-10-30-preview.
 func LookupEnterprisePolicy(ctx *pulumi.Context, args *LookupEnterprisePolicyArgs, opts ...pulumi.InvokeOption) (*LookupEnterprisePolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnterprisePolicyResult

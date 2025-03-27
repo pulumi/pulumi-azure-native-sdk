@@ -12,7 +12,8 @@ import (
 )
 
 // Retrieves details of this Network Packet Broker.
-// Azure REST API version: 2023-06-15.
+//
+// Uses Azure REST API version 2023-06-15.
 func LookupNetworkPacketBroker(ctx *pulumi.Context, args *LookupNetworkPacketBrokerArgs, opts ...pulumi.InvokeOption) (*LookupNetworkPacketBrokerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkPacketBrokerResult

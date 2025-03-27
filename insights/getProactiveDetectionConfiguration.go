@@ -12,7 +12,8 @@ import (
 )
 
 // Get the ProactiveDetection configuration for this configuration id.
-// Azure REST API version: 2018-05-01-preview.
+//
+// Uses Azure REST API version 2018-05-01-preview.
 //
 // Other available API versions: 2015-05-01.
 func LookupProactiveDetectionConfiguration(ctx *pulumi.Context, args *LookupProactiveDetectionConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupProactiveDetectionConfigurationResult, error) {

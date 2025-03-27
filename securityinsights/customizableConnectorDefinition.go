@@ -13,7 +13,8 @@ import (
 )
 
 // Connector definition for kind 'Customizable'.
-// Azure REST API version: 2023-07-01-preview.
+//
+// Uses Azure REST API version 2023-07-01-preview.
 type CustomizableConnectorDefinition struct {
 	pulumi.CustomResourceState
 
@@ -88,6 +89,9 @@ func NewCustomizableConnectorDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:CustomizableConnectorDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:CustomizableConnectorDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

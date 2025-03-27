@@ -12,7 +12,8 @@ import (
 )
 
 // Lists impacted resources in the subscription by an event (Security Advisory).
-// Azure REST API version: 2022-10-01.
+//
+// Uses Azure REST API version 2022-10-01.
 //
 // Other available API versions: 2022-10-01-preview, 2023-07-01-preview, 2023-10-01-preview, 2024-02-01.
 func ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId(ctx *pulumi.Context, args *ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdArgs, opts ...pulumi.InvokeOption) (*ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult, error) {

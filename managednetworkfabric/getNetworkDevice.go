@@ -12,7 +12,8 @@ import (
 )
 
 // Get the Network Device resource details.
-// Azure REST API version: 2023-02-01-preview.
+//
+// Uses Azure REST API version 2023-02-01-preview.
 //
 // Other available API versions: 2023-06-15.
 func LookupNetworkDevice(ctx *pulumi.Context, args *LookupNetworkDeviceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkDeviceResult, error) {

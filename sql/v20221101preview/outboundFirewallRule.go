@@ -69,6 +69,9 @@ func NewOutboundFirewallRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230501preview:OutboundFirewallRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801:OutboundFirewallRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:OutboundFirewallRule"),
 		},
 		{

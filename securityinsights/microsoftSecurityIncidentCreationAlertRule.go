@@ -13,7 +13,8 @@ import (
 )
 
 // Represents MicrosoftSecurityIncidentCreation rule.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-01-01.
+//
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
 type MicrosoftSecurityIncidentCreationAlertRule struct {
 	pulumi.CustomResourceState
 
@@ -182,6 +183,9 @@ func NewMicrosoftSecurityIncidentCreationAlertRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:MicrosoftSecurityIncidentCreationAlertRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:MicrosoftSecurityIncidentCreationAlertRule"),
 		},
 	})
 	opts = append(opts, aliases)

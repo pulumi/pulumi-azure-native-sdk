@@ -18261,8 +18261,7 @@ func (o PushSettingsResponsePtrOutput) Type() pulumi.StringPtrOutput {
 type RampUpRule struct {
 	// Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
 	ActionHostName *string `pulumi:"actionHostName"`
-	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-	// https://www.siteextensions.net/packages/TiPCallback/
+	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
 	ChangeDecisionCallbackUrl *string `pulumi:"changeDecisionCallbackUrl"`
 	// Specifies interval in minutes to reevaluate ReroutePercentage.
 	ChangeIntervalInMinutes *int `pulumi:"changeIntervalInMinutes"`
@@ -18295,8 +18294,7 @@ type RampUpRuleInput interface {
 type RampUpRuleArgs struct {
 	// Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
 	ActionHostName pulumi.StringPtrInput `pulumi:"actionHostName"`
-	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-	// https://www.siteextensions.net/packages/TiPCallback/
+	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
 	ChangeDecisionCallbackUrl pulumi.StringPtrInput `pulumi:"changeDecisionCallbackUrl"`
 	// Specifies interval in minutes to reevaluate ReroutePercentage.
 	ChangeIntervalInMinutes pulumi.IntPtrInput `pulumi:"changeIntervalInMinutes"`
@@ -18371,8 +18369,7 @@ func (o RampUpRuleOutput) ActionHostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RampUpRule) *string { return v.ActionHostName }).(pulumi.StringPtrOutput)
 }
 
-// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-// https://www.siteextensions.net/packages/TiPCallback/
+// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
 func (o RampUpRuleOutput) ChangeDecisionCallbackUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RampUpRule) *string { return v.ChangeDecisionCallbackUrl }).(pulumi.StringPtrOutput)
 }
@@ -18433,8 +18430,7 @@ func (o RampUpRuleArrayOutput) Index(i pulumi.IntInput) RampUpRuleOutput {
 type RampUpRuleResponse struct {
 	// Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
 	ActionHostName *string `pulumi:"actionHostName"`
-	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-	// https://www.siteextensions.net/packages/TiPCallback/
+	// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
 	ChangeDecisionCallbackUrl *string `pulumi:"changeDecisionCallbackUrl"`
 	// Specifies interval in minutes to reevaluate ReroutePercentage.
 	ChangeIntervalInMinutes *int `pulumi:"changeIntervalInMinutes"`
@@ -18472,8 +18468,7 @@ func (o RampUpRuleResponseOutput) ActionHostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RampUpRuleResponse) *string { return v.ActionHostName }).(pulumi.StringPtrOutput)
 }
 
-// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-// https://www.siteextensions.net/packages/TiPCallback/
+// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
 func (o RampUpRuleResponseOutput) ChangeDecisionCallbackUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RampUpRuleResponse) *string { return v.ChangeDecisionCallbackUrl }).(pulumi.StringPtrOutput)
 }

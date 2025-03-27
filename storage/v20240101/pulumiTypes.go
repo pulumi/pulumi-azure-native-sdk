@@ -9385,9 +9385,9 @@ func (o ManagementPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) Manage
 	}).(ManagementPolicyRuleResponseOutput)
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 type ManagementPolicySchema struct {
-	// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Rules []ManagementPolicyRule `pulumi:"rules"`
 }
 
@@ -9402,9 +9402,9 @@ type ManagementPolicySchemaInput interface {
 	ToManagementPolicySchemaOutputWithContext(context.Context) ManagementPolicySchemaOutput
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 type ManagementPolicySchemaArgs struct {
-	// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Rules ManagementPolicyRuleArrayInput `pulumi:"rules"`
 }
 
@@ -9420,7 +9420,7 @@ func (i ManagementPolicySchemaArgs) ToManagementPolicySchemaOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicySchemaOutput)
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 type ManagementPolicySchemaOutput struct{ *pulumi.OutputState }
 
 func (ManagementPolicySchemaOutput) ElementType() reflect.Type {
@@ -9435,18 +9435,18 @@ func (o ManagementPolicySchemaOutput) ToManagementPolicySchemaOutputWithContext(
 	return o
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 func (o ManagementPolicySchemaOutput) Rules() ManagementPolicyRuleArrayOutput {
 	return o.ApplyT(func(v ManagementPolicySchema) []ManagementPolicyRule { return v.Rules }).(ManagementPolicyRuleArrayOutput)
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 type ManagementPolicySchemaResponse struct {
-	// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Rules []ManagementPolicyRuleResponse `pulumi:"rules"`
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 type ManagementPolicySchemaResponseOutput struct{ *pulumi.OutputState }
 
 func (ManagementPolicySchemaResponseOutput) ElementType() reflect.Type {
@@ -9461,7 +9461,7 @@ func (o ManagementPolicySchemaResponseOutput) ToManagementPolicySchemaResponseOu
 	return o
 }
 
-// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 func (o ManagementPolicySchemaResponseOutput) Rules() ManagementPolicyRuleResponseArrayOutput {
 	return o.ApplyT(func(v ManagementPolicySchemaResponse) []ManagementPolicyRuleResponse { return v.Rules }).(ManagementPolicyRuleResponseArrayOutput)
 }
@@ -14462,15 +14462,15 @@ func (o StorageTaskAssignmentReportResponseOutput) Prefix() pulumi.StringOutput 
 
 // Storage task execution report for a run instance.
 type StorageTaskReportPropertiesResponse struct {
-	// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	FinishTime string `pulumi:"finishTime"`
-	// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	ObjectFailedCount string `pulumi:"objectFailedCount"`
-	// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	ObjectsOperatedOnCount string `pulumi:"objectsOperatedOnCount"`
-	// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	ObjectsSucceededCount string `pulumi:"objectsSucceededCount"`
-	// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	ObjectsTargetedCount string `pulumi:"objectsTargetedCount"`
 	// Represents the overall result of the execution for the run instance
 	RunResult string `pulumi:"runResult"`
@@ -14478,7 +14478,7 @@ type StorageTaskReportPropertiesResponse struct {
 	RunStatusEnum string `pulumi:"runStatusEnum"`
 	// Well known Azure Storage error code that represents the error encountered during execution of the run instance.
 	RunStatusError string `pulumi:"runStatusError"`
-	// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+	// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 	StartTime string `pulumi:"startTime"`
 	// Represents the Storage Account Id where the storage task definition was applied and executed.
 	StorageAccountId string `pulumi:"storageAccountId"`
@@ -14507,27 +14507,27 @@ func (o StorageTaskReportPropertiesResponseOutput) ToStorageTaskReportProperties
 	return o
 }
 
-// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) FinishTime() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.FinishTime }).(pulumi.StringOutput)
 }
 
-// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) ObjectFailedCount() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.ObjectFailedCount }).(pulumi.StringOutput)
 }
 
-// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) ObjectsOperatedOnCount() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.ObjectsOperatedOnCount }).(pulumi.StringOutput)
 }
 
-// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) ObjectsSucceededCount() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.ObjectsSucceededCount }).(pulumi.StringOutput)
 }
 
-// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) ObjectsTargetedCount() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.ObjectsTargetedCount }).(pulumi.StringOutput)
 }
@@ -14547,7 +14547,7 @@ func (o StorageTaskReportPropertiesResponseOutput) RunStatusError() pulumi.Strin
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.RunStatusError }).(pulumi.StringOutput)
 }
 
-// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageTaskReportPropertiesResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -14601,7 +14601,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) Elem() StorageTaskReportPr
 	}).(StorageTaskReportPropertiesResponseOutput)
 }
 
-// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) FinishTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {
@@ -14611,7 +14611,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) FinishTime() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectFailedCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {
@@ -14621,7 +14621,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectFailedCount() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectsOperatedOnCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {
@@ -14631,7 +14631,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectsOperatedOnCount() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectsSucceededCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {
@@ -14641,7 +14641,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectsSucceededCount() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) ObjectsTargetedCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {
@@ -14681,7 +14681,7 @@ func (o StorageTaskReportPropertiesResponsePtrOutput) RunStatusError() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
 func (o StorageTaskReportPropertiesResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageTaskReportPropertiesResponse) *string {
 		if v == nil {

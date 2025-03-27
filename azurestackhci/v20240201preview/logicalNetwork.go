@@ -73,6 +73,9 @@ func NewLogicalNetwork(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:LogicalNetwork"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:LogicalNetwork"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci:LogicalNetwork"),
 		},
 	})

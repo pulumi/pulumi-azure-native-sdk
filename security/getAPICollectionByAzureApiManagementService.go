@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an Azure API Management API if it has been onboarded to Microsoft Defender for APIs. If an Azure API Management API is onboarded to Microsoft Defender for APIs, the system will monitor the operations within the Azure API Management API for intrusive behaviors and provide alerts for attacks that have been detected.
-// Azure REST API version: 2023-11-15.
+//
+// Uses Azure REST API version 2023-11-15.
 func LookupAPICollectionByAzureApiManagementService(ctx *pulumi.Context, args *LookupAPICollectionByAzureApiManagementServiceArgs, opts ...pulumi.InvokeOption) (*LookupAPICollectionByAzureApiManagementServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAPICollectionByAzureApiManagementServiceResult

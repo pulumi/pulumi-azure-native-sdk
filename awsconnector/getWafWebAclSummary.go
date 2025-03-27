@@ -12,7 +12,8 @@ import (
 )
 
 // Get a WafWebACLSummary
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupWafWebAclSummary(ctx *pulumi.Context, args *LookupWafWebAclSummaryArgs, opts ...pulumi.InvokeOption) (*LookupWafWebAclSummaryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWafWebAclSummaryResult

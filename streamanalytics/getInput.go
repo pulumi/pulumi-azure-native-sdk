@@ -12,7 +12,8 @@ import (
 )
 
 // Gets details about the specified input.
-// Azure REST API version: 2020-03-01.
+//
+// Uses Azure REST API version 2020-03-01.
 //
 // Other available API versions: 2021-10-01-preview.
 func LookupInput(ctx *pulumi.Context, args *LookupInputArgs, opts ...pulumi.InvokeOption) (*LookupInputResult, error) {

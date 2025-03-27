@@ -97,6 +97,9 @@ func NewConnectedEnvironmentsDaprComponent(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:app/v20240802preview:ConnectedEnvironmentsDaprComponent"),
 		},
 		{
+			Type: pulumi.String("azure-native:app/v20250101:ConnectedEnvironmentsDaprComponent"),
+		},
+		{
 			Type: pulumi.String("azure-native:app:ConnectedEnvironmentsDaprComponent"),
 		},
 	})

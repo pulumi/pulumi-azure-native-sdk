@@ -12,7 +12,8 @@ import (
 )
 
 // Get a blueprint artifact.
-// Azure REST API version: 2018-11-01-preview.
+//
+// Uses Azure REST API version 2018-11-01-preview.
 func LookupPolicyAssignmentArtifact(ctx *pulumi.Context, args *LookupPolicyAssignmentArtifactArgs, opts ...pulumi.InvokeOption) (*LookupPolicyAssignmentArtifactResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyAssignmentArtifactResult

@@ -80,6 +80,9 @@ func NewManagedEnvironmentsStorage(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:app/v20240802preview:ManagedEnvironmentsStorage"),
 		},
 		{
+			Type: pulumi.String("azure-native:app/v20250101:ManagedEnvironmentsStorage"),
+		},
+		{
 			Type: pulumi.String("azure-native:app:ManagedEnvironmentsStorage"),
 		},
 	})

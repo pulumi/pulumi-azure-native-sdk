@@ -176,6 +176,9 @@ func NewVirtualMachine(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:compute/v20240701:VirtualMachine"),
 		},
 		{
+			Type: pulumi.String("azure-native:compute/v20241101:VirtualMachine"),
+		},
+		{
 			Type: pulumi.String("azure-native:compute:VirtualMachine"),
 		},
 	})

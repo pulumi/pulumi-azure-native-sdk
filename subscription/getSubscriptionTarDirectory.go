@@ -12,7 +12,8 @@ import (
 )
 
 // The operation to view Initiator Subscription Changed Request
-// Azure REST API version: 2024-08-01-preview.
+//
+// Uses Azure REST API version 2024-08-01-preview.
 func LookupSubscriptionTarDirectory(ctx *pulumi.Context, args *LookupSubscriptionTarDirectoryArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionTarDirectoryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubscriptionTarDirectoryResult

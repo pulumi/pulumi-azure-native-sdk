@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a Global parameter
-// Azure REST API version: 2018-06-01.
+//
+// Uses Azure REST API version 2018-06-01.
 func LookupGlobalParameter(ctx *pulumi.Context, args *LookupGlobalParameterArgs, opts ...pulumi.InvokeOption) (*LookupGlobalParameterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalParameterResult

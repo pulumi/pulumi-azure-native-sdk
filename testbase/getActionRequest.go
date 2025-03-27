@@ -12,7 +12,8 @@ import (
 )
 
 // Get the action request under the specified test base account.
-// Azure REST API version: 2023-11-01-preview.
+//
+// Uses Azure REST API version 2023-11-01-preview.
 func LookupActionRequest(ctx *pulumi.Context, args *LookupActionRequestArgs, opts ...pulumi.InvokeOption) (*LookupActionRequestResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActionRequestResult

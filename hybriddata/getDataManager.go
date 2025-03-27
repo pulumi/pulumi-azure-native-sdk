@@ -12,7 +12,8 @@ import (
 )
 
 // Gets information about the specified data manager resource.
-// Azure REST API version: 2019-06-01.
+//
+// Uses Azure REST API version 2019-06-01.
 func LookupDataManager(ctx *pulumi.Context, args *LookupDataManagerArgs, opts ...pulumi.InvokeOption) (*LookupDataManagerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataManagerResult

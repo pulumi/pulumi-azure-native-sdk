@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the backup connection resource of virtual instance for SAP.
-// Azure REST API version: 2023-10-01-preview.
+//
+// Uses Azure REST API version 2023-10-01-preview.
 func LookupACSSBackupConnection(ctx *pulumi.Context, args *LookupACSSBackupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupACSSBackupConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupACSSBackupConnectionResult

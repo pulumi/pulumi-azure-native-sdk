@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a billing profile by its ID. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement and Microsoft Partner Agreement.
-// Azure REST API version: 2024-04-01.
+//
+// Uses Azure REST API version 2024-04-01.
 func LookupBillingProfile(ctx *pulumi.Context, args *LookupBillingProfileArgs, opts ...pulumi.InvokeOption) (*LookupBillingProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBillingProfileResult

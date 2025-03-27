@@ -13,7 +13,7 @@ import (
 
 // Gets the hierarchy settings defined at the Management Group level. Settings can only be set on the root Management Group of the hierarchy.
 //
-// Azure REST API version: 2021-04-01.
+// Uses Azure REST API version 2021-04-01.
 //
 // Other available API versions: 2023-04-01.
 func LookupHierarchySetting(ctx *pulumi.Context, args *LookupHierarchySettingArgs, opts ...pulumi.InvokeOption) (*LookupHierarchySettingResult, error) {

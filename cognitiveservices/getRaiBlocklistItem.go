@@ -12,9 +12,10 @@ import (
 )
 
 // Gets the specified custom blocklist Item associated with the custom blocklist.
-// Azure REST API version: 2023-10-01-preview.
 //
-// Other available API versions: 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
+// Uses Azure REST API version 2023-10-01-preview.
+//
+// Other available API versions: 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview.
 func LookupRaiBlocklistItem(ctx *pulumi.Context, args *LookupRaiBlocklistItemArgs, opts ...pulumi.InvokeOption) (*LookupRaiBlocklistItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRaiBlocklistItemResult

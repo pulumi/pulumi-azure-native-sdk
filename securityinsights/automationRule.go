@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-01-01-preview.
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2019-01-01-preview.
 //
-// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
 type AutomationRule struct {
 	pulumi.CustomResourceState
 
@@ -171,6 +171,9 @@ func NewAutomationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:AutomationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:AutomationRule"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -12,7 +12,8 @@ import (
 )
 
 // Lists the IDs of all provisioned SIMs in a mobile network
-// Azure REST API version: 2022-04-01-preview.
+//
+// Uses Azure REST API version 2022-04-01-preview.
 func ListMobileNetworkSimIds(ctx *pulumi.Context, args *ListMobileNetworkSimIdsArgs, opts ...pulumi.InvokeOption) (*ListMobileNetworkSimIdsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMobileNetworkSimIdsResult

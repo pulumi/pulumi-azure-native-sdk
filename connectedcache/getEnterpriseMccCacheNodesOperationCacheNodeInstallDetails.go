@@ -12,7 +12,8 @@ import (
 )
 
 // This api gets secrets of the ispCacheNode resource install details
-// Azure REST API version: 2023-05-01-preview.
+//
+// Uses Azure REST API version 2023-05-01-preview.
 func GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetails(ctx *pulumi.Context, args *GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult

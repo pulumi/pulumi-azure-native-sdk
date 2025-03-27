@@ -12,7 +12,8 @@ import (
 )
 
 // Get the management partner using the partnerId, objectId and tenantId.
-// Azure REST API version: 2018-02-01.
+//
+// Uses Azure REST API version 2018-02-01.
 func LookupPartner(ctx *pulumi.Context, args *LookupPartnerArgs, opts ...pulumi.InvokeOption) (*LookupPartnerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerResult

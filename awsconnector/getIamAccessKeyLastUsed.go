@@ -12,7 +12,8 @@ import (
 )
 
 // Get a IamAccessKeyLastUsed
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupIamAccessKeyLastUsed(ctx *pulumi.Context, args *LookupIamAccessKeyLastUsedArgs, opts ...pulumi.InvokeOption) (*LookupIamAccessKeyLastUsedResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIamAccessKeyLastUsedResult

@@ -54,6 +54,9 @@ func NewConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azuredatatransfer/v20240927:Connection"),
 		},
 		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20250301preview:Connection"),
+		},
+		{
 			Type: pulumi.String("azure-native:azuredatatransfer:Connection"),
 		},
 	})

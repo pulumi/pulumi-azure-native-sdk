@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the active subscription diagnostic settings for the specified resource.
-// Azure REST API version: 2021-05-01-preview.
+//
+// Uses Azure REST API version 2021-05-01-preview.
 //
 // Other available API versions: 2017-05-01-preview.
 func LookupSubscriptionDiagnosticSetting(ctx *pulumi.Context, args *LookupSubscriptionDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionDiagnosticSettingResult, error) {

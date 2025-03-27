@@ -12,7 +12,8 @@ import (
 )
 
 // Get a KmsAlias
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupKmsAlias(ctx *pulumi.Context, args *LookupKmsAliasArgs, opts ...pulumi.InvokeOption) (*LookupKmsAliasResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKmsAliasResult

@@ -58,6 +58,9 @@ func NewDataFlowProfile(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:iotoperations/v20241101:DataFlowProfile"),
 		},
 		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:DataFlowProfile"),
+		},
+		{
 			Type: pulumi.String("azure-native:iotoperations:DataFlowProfile"),
 		},
 	})

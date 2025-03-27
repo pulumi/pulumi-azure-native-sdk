@@ -13,7 +13,10 @@ import (
 )
 
 // Employee resource
-// Azure REST API version: 2021-10-01-preview.
+//
+// Uses Azure REST API version 2021-10-01-preview.
+//
+// Other available API versions: 2021-11-01.
 type Employee struct {
 	pulumi.CustomResourceState
 
@@ -44,6 +47,9 @@ func NewEmployee(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:contoso/v20211001preview:Employee"),
+		},
+		{
+			Type: pulumi.String("azure-native:contoso/v20211101:Employee"),
 		},
 	})
 	opts = append(opts, aliases)

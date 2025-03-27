@@ -63,6 +63,9 @@ func NewFrontendsInterface(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:servicenetworking/v20250101:FrontendsInterface"),
 		},
 		{
+			Type: pulumi.String("azure-native:servicenetworking/v20250301preview:FrontendsInterface"),
+		},
+		{
 			Type: pulumi.String("azure-native:servicenetworking:FrontendsInterface"),
 		},
 	})

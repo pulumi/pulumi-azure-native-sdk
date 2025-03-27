@@ -12,7 +12,8 @@ import (
 )
 
 // Returns the description for the specified namespace.
-// Azure REST API version: 2021-11-01.
+//
+// Uses Azure REST API version 2021-11-01.
 //
 // Other available API versions: 2024-01-01.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {

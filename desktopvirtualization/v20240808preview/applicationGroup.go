@@ -22,15 +22,15 @@ type ApplicationGroup struct {
 	CloudPcResource pulumi.BoolOutput `pulumi:"cloudPcResource"`
 	// Description of ApplicationGroup.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+	// If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Friendly name of ApplicationGroup.
 	FriendlyName pulumi.StringPtrOutput `pulumi:"friendlyName"`
 	// HostPool arm path of ApplicationGroup.
 	HostPoolArmPath pulumi.StringOutput `pulumi:"hostPoolArmPath"`
-	// Managed service identity (system assigned and/or user assigned identities)
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -40,11 +40,11 @@ type ApplicationGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ObjectId of ApplicationGroup. (internal use)
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// Plan for the resource.
+	// Details of the resource plan.
 	Plan PlanResponsePtrOutput `pulumi:"plan"`
 	// Boolean representing whether the applicationGroup is show in the feed.
 	ShowInFeed pulumi.BoolPtrOutput `pulumi:"showInFeed"`
-	// The resource model definition representing SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -125,9 +125,6 @@ func NewApplicationGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:ApplicationGroup"),
 		},
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:ApplicationGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ApplicationGroup"),
 		},
 		{
@@ -147,6 +144,9 @@ func NewApplicationGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:ApplicationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:ApplicationGroup"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:ApplicationGroup"),
@@ -196,21 +196,21 @@ type applicationGroupArgs struct {
 	FriendlyName *string `pulumi:"friendlyName"`
 	// HostPool arm path of ApplicationGroup.
 	HostPoolArmPath string `pulumi:"hostPoolArmPath"`
-	// Managed service identity (system assigned and/or user assigned identities)
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy *string `pulumi:"managedBy"`
-	// Plan for the resource.
+	// Details of the resource plan.
 	Plan *Plan `pulumi:"plan"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Boolean representing whether the applicationGroup is show in the feed.
 	ShowInFeed *bool `pulumi:"showInFeed"`
-	// The resource model definition representing SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -228,21 +228,21 @@ type ApplicationGroupArgs struct {
 	FriendlyName pulumi.StringPtrInput
 	// HostPool arm path of ApplicationGroup.
 	HostPoolArmPath pulumi.StringInput
-	// Managed service identity (system assigned and/or user assigned identities)
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityPtrInput
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrInput
-	// Plan for the resource.
+	// Details of the resource plan.
 	Plan PlanPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Boolean representing whether the applicationGroup is show in the feed.
 	ShowInFeed pulumi.BoolPtrInput
-	// The resource model definition representing SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -300,7 +300,7 @@ func (o ApplicationGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+// If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 func (o ApplicationGroupOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -315,12 +315,12 @@ func (o ApplicationGroupOutput) HostPoolArmPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.HostPoolArmPath }).(pulumi.StringOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
+// The managed service identities assigned to this resource.
 func (o ApplicationGroupOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *ApplicationGroup) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
-// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 func (o ApplicationGroupOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -345,7 +345,7 @@ func (o ApplicationGroupOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// Plan for the resource.
+// Details of the resource plan.
 func (o ApplicationGroupOutput) Plan() PlanResponsePtrOutput {
 	return o.ApplyT(func(v *ApplicationGroup) PlanResponsePtrOutput { return v.Plan }).(PlanResponsePtrOutput)
 }
@@ -355,7 +355,7 @@ func (o ApplicationGroupOutput) ShowInFeed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.BoolPtrOutput { return v.ShowInFeed }).(pulumi.BoolPtrOutput)
 }
 
-// The resource model definition representing SKU
+// The SKU (Stock Keeping Unit) assigned to this resource.
 func (o ApplicationGroupOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v *ApplicationGroup) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }

@@ -12,7 +12,8 @@ import (
 )
 
 // Get a IamServerCertificate
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupIamServerCertificate(ctx *pulumi.Context, args *LookupIamServerCertificateArgs, opts ...pulumi.InvokeOption) (*LookupIamServerCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIamServerCertificateResult

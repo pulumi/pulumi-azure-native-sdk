@@ -12,7 +12,8 @@ import (
 )
 
 // Get a GuardDutyDetector
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupGuardDutyDetector(ctx *pulumi.Context, args *LookupGuardDutyDetectorArgs, opts ...pulumi.InvokeOption) (*LookupGuardDutyDetectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuardDutyDetectorResult

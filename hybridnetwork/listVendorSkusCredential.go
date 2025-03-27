@@ -12,7 +12,8 @@ import (
 )
 
 // Generate credentials for publishing SKU images.
-// Azure REST API version: 2022-01-01-preview.
+//
+// Uses Azure REST API version 2022-01-01-preview.
 func ListVendorSkusCredential(ctx *pulumi.Context, args *ListVendorSkusCredentialArgs, opts ...pulumi.InvokeOption) (*ListVendorSkusCredentialResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListVendorSkusCredentialResult

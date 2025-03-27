@@ -12,7 +12,8 @@ import (
 )
 
 // Get a LambdaFunction
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupLambdaFunction(ctx *pulumi.Context, args *LookupLambdaFunctionArgs, opts ...pulumi.InvokeOption) (*LookupLambdaFunctionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLambdaFunctionResult

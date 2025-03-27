@@ -60,7 +60,7 @@ type NodeType struct {
 	IsStateless pulumi.BoolPtrOutput `pulumi:"isStateless"`
 	// Indicates if scale set associated with the node type can be composed of multiple placement groups.
 	MultiplePlacementGroups pulumi.BoolPtrOutput `pulumi:"multiplePlacementGroups"`
-	// Azure resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer.
 	NatConfigurations NodeTypeNatConfigResponseArrayOutput `pulumi:"natConfigurations"`
@@ -84,11 +84,11 @@ type NodeType struct {
 	SpotRestoreTimeout pulumi.StringPtrOutput `pulumi:"spotRestoreTimeout"`
 	// Indicates the resource id of the subnet for the node type.
 	SubnetId pulumi.StringPtrOutput `pulumi:"subnetId"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Azure resource tags.
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Azure resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Specifies whether the use public load balancer. If not specified and the node type doesn't have its own frontend configuration, it will be attached to the default load balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is true, then the frontend has to be an Internal Load Balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is false or not set, then the custom load balancer must include a public load balancer to provide outbound connectivity.
 	UseDefaultPublicLoadBalancer pulumi.BoolPtrOutput `pulumi:"useDefaultPublicLoadBalancer"`
@@ -112,7 +112,7 @@ type NodeType struct {
 	VmImageSku pulumi.StringPtrOutput `pulumi:"vmImageSku"`
 	// The version of the Azure Virtual Machines Marketplace image. A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
 	VmImageVersion pulumi.StringPtrOutput `pulumi:"vmImageVersion"`
-	// The number of nodes in the node type. <br /><br />**Values:** <br />-1 - Use when auto scale rules are configured or sku.capacity is defined <br /> 0 - Not supported <br /> >0 - Use for manual scale.
+	// The number of nodes in the node type. **Values:** -1 - Use when auto scale rules are configured or sku.capacity is defined 0 - Not supported >0 - Use for manual scale.
 	VmInstanceCount pulumi.IntOutput `pulumi:"vmInstanceCount"`
 	// Identities to assign to the virtual machine scale set under the node type.
 	VmManagedIdentity VmManagedIdentityResponsePtrOutput `pulumi:"vmManagedIdentity"`
@@ -146,6 +146,9 @@ func NewNodeType(ctx *pulumi.Context,
 	}
 	if args.VmInstanceCount == nil {
 		return nil, errors.New("invalid value for required argument 'VmInstanceCount'")
+	}
+	if args.DataDiskType == nil {
+		args.DataDiskType = pulumi.StringPtr("StandardSSD_LRS")
 	}
 	if args.EnableEncryptionAtHost == nil {
 		args.EnableEncryptionAtHost = pulumi.BoolPtr(false)
@@ -314,7 +317,7 @@ type nodeTypeArgs struct {
 	NodeTypeName *string `pulumi:"nodeTypeName"`
 	// The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run.
 	PlacementProperties map[string]string `pulumi:"placementProperties"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Specifies whether secure boot should be enabled on the nodeType. Can only be used with TrustedLaunch SecurityType
 	SecureBootEnabled *bool `pulumi:"secureBootEnabled"`
@@ -328,7 +331,7 @@ type nodeTypeArgs struct {
 	SpotRestoreTimeout *string `pulumi:"spotRestoreTimeout"`
 	// Indicates the resource id of the subnet for the node type.
 	SubnetId *string `pulumi:"subnetId"`
-	// Azure resource tags.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies whether the use public load balancer. If not specified and the node type doesn't have its own frontend configuration, it will be attached to the default load balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is true, then the frontend has to be an Internal Load Balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is false or not set, then the custom load balancer must include a public load balancer to provide outbound connectivity.
 	UseDefaultPublicLoadBalancer *bool `pulumi:"useDefaultPublicLoadBalancer"`
@@ -352,7 +355,7 @@ type nodeTypeArgs struct {
 	VmImageSku *string `pulumi:"vmImageSku"`
 	// The version of the Azure Virtual Machines Marketplace image. A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
 	VmImageVersion *string `pulumi:"vmImageVersion"`
-	// The number of nodes in the node type. <br /><br />**Values:** <br />-1 - Use when auto scale rules are configured or sku.capacity is defined <br /> 0 - Not supported <br /> >0 - Use for manual scale.
+	// The number of nodes in the node type. **Values:** -1 - Use when auto scale rules are configured or sku.capacity is defined 0 - Not supported >0 - Use for manual scale.
 	VmInstanceCount int `pulumi:"vmInstanceCount"`
 	// Identities to assign to the virtual machine scale set under the node type.
 	VmManagedIdentity *VmManagedIdentity `pulumi:"vmManagedIdentity"`
@@ -426,7 +429,7 @@ type NodeTypeArgs struct {
 	NodeTypeName pulumi.StringPtrInput
 	// The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run.
 	PlacementProperties pulumi.StringMapInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Specifies whether secure boot should be enabled on the nodeType. Can only be used with TrustedLaunch SecurityType
 	SecureBootEnabled pulumi.BoolPtrInput
@@ -440,7 +443,7 @@ type NodeTypeArgs struct {
 	SpotRestoreTimeout pulumi.StringPtrInput
 	// Indicates the resource id of the subnet for the node type.
 	SubnetId pulumi.StringPtrInput
-	// Azure resource tags.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Specifies whether the use public load balancer. If not specified and the node type doesn't have its own frontend configuration, it will be attached to the default load balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is true, then the frontend has to be an Internal Load Balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is false or not set, then the custom load balancer must include a public load balancer to provide outbound connectivity.
 	UseDefaultPublicLoadBalancer pulumi.BoolPtrInput
@@ -464,7 +467,7 @@ type NodeTypeArgs struct {
 	VmImageSku pulumi.StringPtrInput
 	// The version of the Azure Virtual Machines Marketplace image. A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
 	VmImageVersion pulumi.StringPtrInput
-	// The number of nodes in the node type. <br /><br />**Values:** <br />-1 - Use when auto scale rules are configured or sku.capacity is defined <br /> 0 - Not supported <br /> >0 - Use for manual scale.
+	// The number of nodes in the node type. **Values:** -1 - Use when auto scale rules are configured or sku.capacity is defined 0 - Not supported >0 - Use for manual scale.
 	VmInstanceCount pulumi.IntInput
 	// Identities to assign to the virtual machine scale set under the node type.
 	VmManagedIdentity VmManagedIdentityPtrInput
@@ -629,7 +632,7 @@ func (o NodeTypeOutput) MultiplePlacementGroups() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodeType) pulumi.BoolPtrOutput { return v.MultiplePlacementGroups }).(pulumi.BoolPtrOutput)
 }
 
-// Azure resource name.
+// The name of the resource
 func (o NodeTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -689,17 +692,17 @@ func (o NodeTypeOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeType) pulumi.StringPtrOutput { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o NodeTypeOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *NodeType) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource tags.
+// Resource tags.
 func (o NodeTypeOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodeType) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Azure resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o NodeTypeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeType) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -759,7 +762,7 @@ func (o NodeTypeOutput) VmImageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeType) pulumi.StringPtrOutput { return v.VmImageVersion }).(pulumi.StringPtrOutput)
 }
 
-// The number of nodes in the node type. <br /><br />**Values:** <br />-1 - Use when auto scale rules are configured or sku.capacity is defined <br /> 0 - Not supported <br /> >0 - Use for manual scale.
+// The number of nodes in the node type. **Values:** -1 - Use when auto scale rules are configured or sku.capacity is defined 0 - Not supported >0 - Use for manual scale.
 func (o NodeTypeOutput) VmInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodeType) pulumi.IntOutput { return v.VmInstanceCount }).(pulumi.IntOutput)
 }

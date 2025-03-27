@@ -12,7 +12,8 @@ import (
 )
 
 // Get a tenant action group.
-// Azure REST API version: 2023-05-01-preview.
+//
+// Uses Azure REST API version 2023-05-01-preview.
 func LookupTenantActionGroup(ctx *pulumi.Context, args *LookupTenantActionGroupArgs, opts ...pulumi.InvokeOption) (*LookupTenantActionGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTenantActionGroupResult

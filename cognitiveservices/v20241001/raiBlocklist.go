@@ -54,6 +54,9 @@ func NewRaiBlocklist(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cognitiveservices/v20240601preview:RaiBlocklist"),
 		},
 		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20250401preview:RaiBlocklist"),
+		},
+		{
 			Type: pulumi.String("azure-native:cognitiveservices:RaiBlocklist"),
 		},
 	})

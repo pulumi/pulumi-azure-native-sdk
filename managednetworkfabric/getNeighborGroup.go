@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the Neighbor Group.
-// Azure REST API version: 2023-06-15.
+//
+// Uses Azure REST API version 2023-06-15.
 func LookupNeighborGroup(ctx *pulumi.Context, args *LookupNeighborGroupArgs, opts ...pulumi.InvokeOption) (*LookupNeighborGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNeighborGroupResult

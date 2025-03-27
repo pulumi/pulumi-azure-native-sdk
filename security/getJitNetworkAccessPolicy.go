@@ -12,7 +12,8 @@ import (
 )
 
 // Policies for protecting resources using Just-in-Time access control for the subscription, location
-// Azure REST API version: 2020-01-01.
+//
+// Uses Azure REST API version 2020-01-01.
 func LookupJitNetworkAccessPolicy(ctx *pulumi.Context, args *LookupJitNetworkAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupJitNetworkAccessPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJitNetworkAccessPolicyResult

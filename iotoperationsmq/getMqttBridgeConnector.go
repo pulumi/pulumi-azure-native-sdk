@@ -12,7 +12,8 @@ import (
 )
 
 // Get a MqttBridgeConnectorResource
-// Azure REST API version: 2023-10-04-preview.
+//
+// Uses Azure REST API version 2023-10-04-preview.
 func LookupMqttBridgeConnector(ctx *pulumi.Context, args *LookupMqttBridgeConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMqttBridgeConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMqttBridgeConnectorResult

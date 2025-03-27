@@ -12,7 +12,8 @@ import (
 )
 
 // Get a IamAccessKeyMetadata
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupIamAccessKeyMetadataInfo(ctx *pulumi.Context, args *LookupIamAccessKeyMetadataInfoArgs, opts ...pulumi.InvokeOption) (*LookupIamAccessKeyMetadataInfoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIamAccessKeyMetadataInfoResult

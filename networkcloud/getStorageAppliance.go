@@ -12,9 +12,10 @@ import (
 )
 
 // Get properties of the provided storage appliance.
-// Azure REST API version: 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
+// Uses Azure REST API version 2023-10-01-preview.
+//
+// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
 func LookupStorageAppliance(ctx *pulumi.Context, args *LookupStorageApplianceArgs, opts ...pulumi.InvokeOption) (*LookupStorageApplianceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageApplianceResult

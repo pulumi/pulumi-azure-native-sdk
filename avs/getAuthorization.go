@@ -12,7 +12,8 @@ import (
 )
 
 // ExpressRoute Circuit Authorization
-// Azure REST API version: 2022-05-01.
+//
+// Uses Azure REST API version 2022-05-01.
 //
 // Other available API versions: 2023-03-01, 2023-09-01.
 func LookupAuthorization(ctx *pulumi.Context, args *LookupAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationResult, error) {

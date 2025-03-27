@@ -12,7 +12,8 @@ import (
 )
 
 // Lists secret keys.
-// Azure REST API version: 2015-02-01-preview.
+//
+// Uses Azure REST API version 2015-02-01-preview.
 func ListWorkflowAccessKeySecretKeys(ctx *pulumi.Context, args *ListWorkflowAccessKeySecretKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkflowAccessKeySecretKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkflowAccessKeySecretKeysResult

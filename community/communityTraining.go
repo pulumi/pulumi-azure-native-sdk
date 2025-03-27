@@ -13,7 +13,8 @@ import (
 )
 
 // A CommunityProviderHub resource
-// Azure REST API version: 2023-11-01.
+//
+// Uses Azure REST API version 2023-11-01.
 type CommunityTraining struct {
 	pulumi.CustomResourceState
 

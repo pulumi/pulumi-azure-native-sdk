@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the sizing recommendations.
-// Azure REST API version: 2024-09-01.
+//
+// Uses Azure REST API version 2024-09-01.
 func GetSapVirtualInstanceInvokeSizingRecommendations(ctx *pulumi.Context, args *GetSapVirtualInstanceInvokeSizingRecommendationsArgs, opts ...pulumi.InvokeOption) (*GetSapVirtualInstanceInvokeSizingRecommendationsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSapVirtualInstanceInvokeSizingRecommendationsResult

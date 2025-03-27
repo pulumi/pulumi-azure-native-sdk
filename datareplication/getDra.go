@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the details of the fabric agent.
-// Azure REST API version: 2021-02-16-preview.
+//
+// Uses Azure REST API version 2021-02-16-preview.
 func LookupDra(ctx *pulumi.Context, args *LookupDraArgs, opts ...pulumi.InvokeOption) (*LookupDraResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDraResult

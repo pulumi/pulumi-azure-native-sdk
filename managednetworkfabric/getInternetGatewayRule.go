@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an Internet Gateway Rule resource.
-// Azure REST API version: 2023-06-15.
+//
+// Uses Azure REST API version 2023-06-15.
 func LookupInternetGatewayRule(ctx *pulumi.Context, args *LookupInternetGatewayRuleArgs, opts ...pulumi.InvokeOption) (*LookupInternetGatewayRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInternetGatewayRuleResult

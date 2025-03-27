@@ -13,7 +13,8 @@ import (
 )
 
 // An integration space.
-// Azure REST API version: 2023-11-14-preview.
+//
+// Uses Azure REST API version 2023-11-14-preview.
 type Space struct {
 	pulumi.CustomResourceState
 

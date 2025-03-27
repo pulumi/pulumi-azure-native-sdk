@@ -12,7 +12,8 @@ import (
 )
 
 // Gets a Kusto cluster principalAssignment.
-// Azure REST API version: 2022-12-29.
+//
+// Uses Azure REST API version 2022-12-29.
 //
 // Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
 func LookupClusterPrincipalAssignment(ctx *pulumi.Context, args *LookupClusterPrincipalAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupClusterPrincipalAssignmentResult, error) {

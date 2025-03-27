@@ -13,7 +13,8 @@ import (
 )
 
 // Insight resource
-// Azure REST API version: 2024-05-01-preview.
+//
+// Uses Azure REST API version 2024-05-01-preview.
 type Insight struct {
 	pulumi.CustomResourceState
 

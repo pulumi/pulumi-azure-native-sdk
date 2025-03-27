@@ -103,6 +103,9 @@ func NewVirtualMachineInstance(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:VirtualMachineInstance"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:VirtualMachineInstance"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci:VirtualMachineInstance"),
 		},
 	})

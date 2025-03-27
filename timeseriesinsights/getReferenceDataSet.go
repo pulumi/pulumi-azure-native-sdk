@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the reference data set with the specified name in the specified environment.
-// Azure REST API version: 2020-05-15.
+//
+// Uses Azure REST API version 2020-05-15.
 //
 // Other available API versions: 2021-06-30-preview.
 func LookupReferenceDataSet(ctx *pulumi.Context, args *LookupReferenceDataSetArgs, opts ...pulumi.InvokeOption) (*LookupReferenceDataSetResult, error) {

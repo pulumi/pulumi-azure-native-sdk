@@ -12,7 +12,8 @@ import (
 )
 
 // List Paths supported by this Streaming Locator
-// Azure REST API version: 2023-01-01.
+//
+// Uses Azure REST API version 2023-01-01.
 func ListStreamingLocatorPaths(ctx *pulumi.Context, args *ListStreamingLocatorPathsArgs, opts ...pulumi.InvokeOption) (*ListStreamingLocatorPathsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListStreamingLocatorPathsResult

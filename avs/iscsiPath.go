@@ -13,7 +13,8 @@ import (
 )
 
 // An iSCSI path resource
-// Azure REST API version: 2023-09-01.
+//
+// Uses Azure REST API version 2023-09-01.
 type IscsiPath struct {
 	pulumi.CustomResourceState
 

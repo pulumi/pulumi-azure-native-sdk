@@ -13,7 +13,8 @@ import (
 )
 
 // Represents a Administrator.
-// Azure REST API version: 2022-01-01.
+//
+// Uses Azure REST API version 2022-01-01.
 //
 // Other available API versions: 2023-06-01-preview, 2023-06-30, 2023-12-30.
 type AzureADAdministrator struct {

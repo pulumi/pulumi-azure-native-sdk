@@ -12,7 +12,8 @@ import (
 )
 
 // Gets an authorization rule for a queue by rule name.
-// Azure REST API version: 2022-01-01-preview.
+//
+// Uses Azure REST API version 2022-01-01-preview.
 //
 // Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupQueueAuthorizationRule(ctx *pulumi.Context, args *LookupQueueAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupQueueAuthorizationRuleResult, error) {

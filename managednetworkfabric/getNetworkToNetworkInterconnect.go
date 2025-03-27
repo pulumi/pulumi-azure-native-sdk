@@ -12,7 +12,8 @@ import (
 )
 
 // Implements NetworkToNetworkInterconnects GET method.
-// Azure REST API version: 2023-02-01-preview.
+//
+// Uses Azure REST API version 2023-02-01-preview.
 //
 // Other available API versions: 2023-06-15.
 func LookupNetworkToNetworkInterconnect(ctx *pulumi.Context, args *LookupNetworkToNetworkInterconnectArgs, opts ...pulumi.InvokeOption) (*LookupNetworkToNetworkInterconnectResult, error) {

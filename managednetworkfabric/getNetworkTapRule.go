@@ -12,7 +12,8 @@ import (
 )
 
 // Get Network Tap Rule resource details.
-// Azure REST API version: 2023-06-15.
+//
+// Uses Azure REST API version 2023-06-15.
 func LookupNetworkTapRule(ctx *pulumi.Context, args *LookupNetworkTapRuleArgs, opts ...pulumi.InvokeOption) (*LookupNetworkTapRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkTapRuleResult

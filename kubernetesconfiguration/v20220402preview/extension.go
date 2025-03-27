@@ -110,6 +110,9 @@ func NewExtension(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:kubernetesconfiguration/v20230501:Extension"),
 		},
 		{
+			Type: pulumi.String("azure-native:kubernetesconfiguration/v20241101:Extension"),
+		},
+		{
 			Type: pulumi.String("azure-native:kubernetesconfiguration:Extension"),
 		},
 	})

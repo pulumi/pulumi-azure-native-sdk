@@ -12,7 +12,8 @@ import (
 )
 
 // Get a EcsService
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupEcsService(ctx *pulumi.Context, args *LookupEcsServiceArgs, opts ...pulumi.InvokeOption) (*LookupEcsServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEcsServiceResult

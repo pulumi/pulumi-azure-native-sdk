@@ -12,7 +12,8 @@ import (
 )
 
 // Get a LogsLogStream
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupLogsLogStream(ctx *pulumi.Context, args *LookupLogsLogStreamArgs, opts ...pulumi.InvokeOption) (*LookupLogsLogStreamResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogsLogStreamResult

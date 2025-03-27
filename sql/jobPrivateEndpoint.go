@@ -13,9 +13,10 @@ import (
 )
 
 // A job agent private endpoint.
-// Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2023-08-01-preview, 2024-05-01-preview.
+// Uses Azure REST API version 2023-05-01-preview.
+//
+// Other available API versions: 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 type JobPrivateEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +52,9 @@ func NewJobPrivateEndpoint(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:JobPrivateEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801:JobPrivateEndpoint"),
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:JobPrivateEndpoint"),

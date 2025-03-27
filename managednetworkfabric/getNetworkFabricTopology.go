@@ -12,7 +12,8 @@ import (
 )
 
 // Gets Topology of the underlying resources in the given Network Fabric instance.
-// Azure REST API version: 2023-06-15.
+//
+// Uses Azure REST API version 2023-06-15.
 func GetNetworkFabricTopology(ctx *pulumi.Context, args *GetNetworkFabricTopologyArgs, opts ...pulumi.InvokeOption) (*GetNetworkFabricTopologyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkFabricTopologyResult

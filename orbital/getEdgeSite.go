@@ -12,7 +12,8 @@ import (
 )
 
 // Gets the specified edge site in a specified resource group.
-// Azure REST API version: 2024-03-01-preview.
+//
+// Uses Azure REST API version 2024-03-01-preview.
 //
 // Other available API versions: 2024-03-01.
 func LookupEdgeSite(ctx *pulumi.Context, args *LookupEdgeSiteArgs, opts ...pulumi.InvokeOption) (*LookupEdgeSiteResult, error) {

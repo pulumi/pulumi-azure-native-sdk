@@ -13,7 +13,10 @@ import (
 )
 
 // Describe SQL Server ESU license resource.
-// Azure REST API version: 2024-05-01-preview.
+//
+// Uses Azure REST API version 2024-05-01-preview.
+//
+// Other available API versions: 2025-03-01-preview.
 type SqlServerEsuLicense struct {
 	pulumi.CustomResourceState
 
@@ -47,6 +50,9 @@ func NewSqlServerEsuLicense(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:SqlServerEsuLicense"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:SqlServerEsuLicense"),
 		},
 	})
 	opts = append(opts, aliases)

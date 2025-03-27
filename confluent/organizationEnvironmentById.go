@@ -13,7 +13,8 @@ import (
 )
 
 // Details about environment name, metadata and environment id of an environment
-// Azure REST API version: 2024-07-01.
+//
+// Uses Azure REST API version 2024-07-01.
 type OrganizationEnvironmentById struct {
 	pulumi.CustomResourceState
 

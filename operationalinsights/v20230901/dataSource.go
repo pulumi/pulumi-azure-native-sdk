@@ -60,6 +60,9 @@ func NewDataSource(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:operationalinsights/v20200801:DataSource"),
 		},
 		{
+			Type: pulumi.String("azure-native:operationalinsights/v20250201:DataSource"),
+		},
+		{
 			Type: pulumi.String("azure-native:operationalinsights:DataSource"),
 		},
 	})

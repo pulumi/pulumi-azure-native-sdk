@@ -12,7 +12,8 @@ import (
 )
 
 // Get a Route53ResourceRecordSet
-// Azure REST API version: 2024-12-01.
+//
+// Uses Azure REST API version 2024-12-01.
 func LookupRoute53ResourceRecordSet(ctx *pulumi.Context, args *LookupRoute53ResourceRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupRoute53ResourceRecordSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoute53ResourceRecordSetResult
