@@ -14,12 +14,14 @@ import (
 
 // The top level storage insight resource container.
 //
-// Uses Azure REST API version 2020-08-01. In version 1.x of the Azure Native provider, it used API version 2020-08-01.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2020-08-01.
 //
-// Other available API versions: 2023-09-01, 2025-02-01.
+// Other available API versions: 2020-03-01-preview, 2020-08-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type StorageInsightConfig struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The names of the blob containers that the workspace should read
 	Containers pulumi.StringArrayOutput `pulumi:"containers"`
 	// The ETag of the storage insight.
@@ -178,6 +180,11 @@ func (o StorageInsightConfigOutput) ToStorageInsightConfigOutput() StorageInsigh
 
 func (o StorageInsightConfigOutput) ToStorageInsightConfigOutputWithContext(ctx context.Context) StorageInsightConfigOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StorageInsightConfigOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageInsightConfig) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The names of the blob containers that the workspace should read

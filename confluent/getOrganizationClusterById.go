@@ -37,6 +37,8 @@ type LookupOrganizationClusterByIdArgs struct {
 
 // Details of cluster record
 type LookupOrganizationClusterByIdResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Id of the cluster
 	Id *string `pulumi:"id"`
 	// Type of cluster
@@ -90,6 +92,11 @@ func (o LookupOrganizationClusterByIdResultOutput) ToLookupOrganizationClusterBy
 
 func (o LookupOrganizationClusterByIdResultOutput) ToLookupOrganizationClusterByIdResultOutputWithContext(ctx context.Context) LookupOrganizationClusterByIdResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOrganizationClusterByIdResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Id of the cluster

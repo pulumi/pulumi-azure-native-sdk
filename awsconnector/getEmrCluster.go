@@ -33,6 +33,8 @@ type LookupEmrClusterArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupEmrClusterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -82,6 +84,11 @@ func (o LookupEmrClusterResultOutput) ToLookupEmrClusterResultOutput() LookupEmr
 
 func (o LookupEmrClusterResultOutput) ToLookupEmrClusterResultOutputWithContext(ctx context.Context) LookupEmrClusterResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEmrClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmrClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

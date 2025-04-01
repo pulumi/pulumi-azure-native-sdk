@@ -14,9 +14,9 @@ import (
 
 // Represents a server.
 //
-// Uses Azure REST API version 2022-01-01. In version 1.x of the Azure Native provider, it used API version 2017-12-01.
+// Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-01-01.
 //
-// Other available API versions: 2017-12-01, 2018-06-01-privatepreview, 2020-07-01-preview, 2020-07-01-privatepreview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-02-01-preview, 2024-06-01-preview, 2024-10-01-preview.
+// Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Server struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type Server struct {
 	AdministratorLogin pulumi.StringPtrOutput `pulumi:"administratorLogin"`
 	// availability Zone information of the server.
 	AvailabilityZone pulumi.StringPtrOutput `pulumi:"availabilityZone"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Backup related properties of a server.
 	Backup BackupResponsePtrOutput `pulumi:"backup"`
 	// The Data Encryption for CMK.
@@ -33,7 +35,9 @@ type Server struct {
 	// High availability related properties of a server.
 	HighAvailability HighAvailabilityResponsePtrOutput `pulumi:"highAvailability"`
 	// The cmk identity for the server.
-	Identity IdentityResponsePtrOutput `pulumi:"identity"`
+	Identity MySQLServerIdentityResponsePtrOutput `pulumi:"identity"`
+	// Source properties for import from storage.
+	ImportSourceProperties ImportSourcePropertiesResponsePtrOutput `pulumi:"importSourceProperties"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Maintenance window of a server.
@@ -42,19 +46,21 @@ type Server struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network related properties of a server.
 	Network NetworkResponsePtrOutput `pulumi:"network"`
+	// PrivateEndpointConnections related properties of a server.
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The maximum number of replicas that a primary server can have.
 	ReplicaCapacity pulumi.IntOutput `pulumi:"replicaCapacity"`
 	// The replication role.
 	ReplicationRole pulumi.StringPtrOutput `pulumi:"replicationRole"`
 	// The SKU (pricing tier) of the server.
-	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	Sku MySQLServerSkuResponsePtrOutput `pulumi:"sku"`
 	// The source MySQL server id.
 	SourceServerResourceId pulumi.StringPtrOutput `pulumi:"sourceServerResourceId"`
 	// The state of a server.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Storage related properties of a server.
 	Storage StorageResponsePtrOutput `pulumi:"storage"`
-	// The system metadata relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -81,6 +87,12 @@ func NewServer(ctx *pulumi.Context,
 		args.Storage = args.Storage.ToStoragePtrOutput().ApplyT(func(v *Storage) *Storage { return v.Defaults() }).(StoragePtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20171201:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:Server"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20200701preview:Server"),
 		},
@@ -176,7 +188,9 @@ type serverArgs struct {
 	// High availability related properties of a server.
 	HighAvailability *HighAvailability `pulumi:"highAvailability"`
 	// The cmk identity for the server.
-	Identity *Identity `pulumi:"identity"`
+	Identity *MySQLServerIdentity `pulumi:"identity"`
+	// Source properties for import from storage.
+	ImportSourceProperties *ImportSourceProperties `pulumi:"importSourceProperties"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Maintenance window of a server.
@@ -192,7 +206,7 @@ type serverArgs struct {
 	// The name of the server.
 	ServerName *string `pulumi:"serverName"`
 	// The SKU (pricing tier) of the server.
-	Sku *Sku `pulumi:"sku"`
+	Sku *MySQLServerSku `pulumi:"sku"`
 	// The source MySQL server id.
 	SourceServerResourceId *string `pulumi:"sourceServerResourceId"`
 	// Storage related properties of a server.
@@ -220,7 +234,9 @@ type ServerArgs struct {
 	// High availability related properties of a server.
 	HighAvailability HighAvailabilityPtrInput
 	// The cmk identity for the server.
-	Identity IdentityPtrInput
+	Identity MySQLServerIdentityPtrInput
+	// Source properties for import from storage.
+	ImportSourceProperties ImportSourcePropertiesPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Maintenance window of a server.
@@ -236,7 +252,7 @@ type ServerArgs struct {
 	// The name of the server.
 	ServerName pulumi.StringPtrInput
 	// The SKU (pricing tier) of the server.
-	Sku SkuPtrInput
+	Sku MySQLServerSkuPtrInput
 	// The source MySQL server id.
 	SourceServerResourceId pulumi.StringPtrInput
 	// Storage related properties of a server.
@@ -294,6 +310,11 @@ func (o ServerOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o ServerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Backup related properties of a server.
 func (o ServerOutput) Backup() BackupResponsePtrOutput {
 	return o.ApplyT(func(v *Server) BackupResponsePtrOutput { return v.Backup }).(BackupResponsePtrOutput)
@@ -315,8 +336,13 @@ func (o ServerOutput) HighAvailability() HighAvailabilityResponsePtrOutput {
 }
 
 // The cmk identity for the server.
-func (o ServerOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Server) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+func (o ServerOutput) Identity() MySQLServerIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Server) MySQLServerIdentityResponsePtrOutput { return v.Identity }).(MySQLServerIdentityResponsePtrOutput)
+}
+
+// Source properties for import from storage.
+func (o ServerOutput) ImportSourceProperties() ImportSourcePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *Server) ImportSourcePropertiesResponsePtrOutput { return v.ImportSourceProperties }).(ImportSourcePropertiesResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -339,6 +365,11 @@ func (o ServerOutput) Network() NetworkResponsePtrOutput {
 	return o.ApplyT(func(v *Server) NetworkResponsePtrOutput { return v.Network }).(NetworkResponsePtrOutput)
 }
 
+// PrivateEndpointConnections related properties of a server.
+func (o ServerOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *Server) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
 // The maximum number of replicas that a primary server can have.
 func (o ServerOutput) ReplicaCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v *Server) pulumi.IntOutput { return v.ReplicaCapacity }).(pulumi.IntOutput)
@@ -350,8 +381,8 @@ func (o ServerOutput) ReplicationRole() pulumi.StringPtrOutput {
 }
 
 // The SKU (pricing tier) of the server.
-func (o ServerOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v *Server) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+func (o ServerOutput) Sku() MySQLServerSkuResponsePtrOutput {
+	return o.ApplyT(func(v *Server) MySQLServerSkuResponsePtrOutput { return v.Sku }).(MySQLServerSkuResponsePtrOutput)
 }
 
 // The source MySQL server id.
@@ -369,7 +400,7 @@ func (o ServerOutput) Storage() StorageResponsePtrOutput {
 	return o.ApplyT(func(v *Server) StorageResponsePtrOutput { return v.Storage }).(StorageResponsePtrOutput)
 }
 
-// The system metadata relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ServerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Server) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

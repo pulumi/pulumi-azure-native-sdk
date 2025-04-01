@@ -14,6 +14,8 @@ import (
 // Get the details of an Asset in the Media Services account
 //
 // Uses Azure REST API version 2023-01-01.
+//
+// Other available API versions: 2018-03-30-preview, 2018-06-01-preview, 2018-07-01, 2020-05-01, 2021-06-01, 2021-11-01, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAsset(ctx *pulumi.Context, args *LookupAssetArgs, opts ...pulumi.InvokeOption) (*LookupAssetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssetResult
@@ -39,6 +41,8 @@ type LookupAssetResult struct {
 	AlternateId *string `pulumi:"alternateId"`
 	// The Asset ID.
 	AssetId string `pulumi:"assetId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name of the asset blob container.
 	Container *string `pulumi:"container"`
 	// The creation date of the Asset.
@@ -108,6 +112,11 @@ func (o LookupAssetResultOutput) AlternateId() pulumi.StringPtrOutput {
 // The Asset ID.
 func (o LookupAssetResultOutput) AssetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssetResult) string { return v.AssetId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAssetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the asset blob container.

@@ -13,9 +13,9 @@ import (
 
 // Gets the specified NSP access rule by name.
 //
-// Uses Azure REST API version 2021-02-01-preview.
+// Uses Azure REST API version 2023-08-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
+// Other available API versions: 2021-02-01-preview, 2023-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNspAccessRule(ctx *pulumi.Context, args *LookupNspAccessRuleArgs, opts ...pulumi.InvokeOption) (*LookupNspAccessRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNspAccessRuleResult
@@ -41,6 +41,8 @@ type LookupNspAccessRuleArgs struct {
 type LookupNspAccessRuleResult struct {
 	// Inbound address prefixes (IPv4/IPv6)
 	AddressPrefixes []string `pulumi:"addressPrefixes"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Direction that specifies whether the access rules is inbound/outbound.
 	Direction *string `pulumi:"direction"`
 	// Outbound rules email address format.
@@ -59,6 +61,8 @@ type LookupNspAccessRuleResult struct {
 	PhoneNumbers []string `pulumi:"phoneNumbers"`
 	// The provisioning state of the scope assignment resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Inbound rules service tag names.
+	ServiceTags []string `pulumi:"serviceTags"`
 	// List of subscription ids
 	Subscriptions []SubscriptionIdResponse `pulumi:"subscriptions"`
 	// Resource tags.
@@ -111,6 +115,11 @@ func (o LookupNspAccessRuleResultOutput) AddressPrefixes() pulumi.StringArrayOut
 	return o.ApplyT(func(v LookupNspAccessRuleResult) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupNspAccessRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNspAccessRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Direction that specifies whether the access rules is inbound/outbound.
 func (o LookupNspAccessRuleResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
@@ -156,6 +165,11 @@ func (o LookupNspAccessRuleResultOutput) PhoneNumbers() pulumi.StringArrayOutput
 // The provisioning state of the scope assignment resource.
 func (o LookupNspAccessRuleResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspAccessRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Inbound rules service tag names.
+func (o LookupNspAccessRuleResultOutput) ServiceTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNspAccessRuleResult) []string { return v.ServiceTags }).(pulumi.StringArrayOutput)
 }
 
 // List of subscription ids

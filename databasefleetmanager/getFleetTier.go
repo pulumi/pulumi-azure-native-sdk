@@ -35,6 +35,8 @@ type LookupFleetTierArgs struct {
 
 // A SQL Database Fleet tier.
 type LookupFleetTierResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -82,6 +84,11 @@ func (o LookupFleetTierResultOutput) ToLookupFleetTierResultOutput() LookupFleet
 
 func (o LookupFleetTierResultOutput) ToLookupFleetTierResultOutputWithContext(ctx context.Context) LookupFleetTierResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFleetTierResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFleetTierResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

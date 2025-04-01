@@ -13,9 +13,9 @@ import (
 
 // Retrieves information about a gallery Application Version.
 //
-// Uses Azure REST API version 2022-03-03.
+// Uses Azure REST API version 2024-03-03.
 //
-// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGalleryApplicationVersion(ctx *pulumi.Context, args *LookupGalleryApplicationVersionArgs, opts ...pulumi.InvokeOption) (*LookupGalleryApplicationVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryApplicationVersionResult
@@ -41,6 +41,8 @@ type LookupGalleryApplicationVersionArgs struct {
 
 // Specifies information about the gallery Application Version that you want to create or update.
 type LookupGalleryApplicationVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource location
@@ -100,6 +102,11 @@ func (o LookupGalleryApplicationVersionResultOutput) ToLookupGalleryApplicationV
 
 func (o LookupGalleryApplicationVersionResultOutput) ToLookupGalleryApplicationVersionResultOutputWithContext(ctx context.Context) LookupGalleryApplicationVersionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGalleryApplicationVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGalleryApplicationVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

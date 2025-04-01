@@ -14,12 +14,14 @@ import (
 
 // Policy Contract details.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 //
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GraphQLApiResolverPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Format of the policyContent.
 	Format pulumi.StringPtrOutput `pulumi:"format"`
 	// The name of the resource
@@ -181,6 +183,11 @@ func (o GraphQLApiResolverPolicyOutput) ToGraphQLApiResolverPolicyOutput() Graph
 
 func (o GraphQLApiResolverPolicyOutput) ToGraphQLApiResolverPolicyOutputWithContext(ctx context.Context) GraphQLApiResolverPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GraphQLApiResolverPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GraphQLApiResolverPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Format of the policyContent.

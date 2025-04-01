@@ -35,6 +35,8 @@ type LookupDiscoveredAssetEndpointProfileArgs struct {
 type LookupDiscoveredAssetEndpointProfileResult struct {
 	// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Identifier used to detect changes in the asset endpoint profile.
 	DiscoveryId string `pulumi:"discoveryId"`
 	// Defines the configuration for the connector type that is being used with the endpoint profile.
@@ -101,6 +103,11 @@ func (o LookupDiscoveredAssetEndpointProfileResultOutput) ToLookupDiscoveredAsse
 // Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 func (o LookupDiscoveredAssetEndpointProfileResultOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiscoveredAssetEndpointProfileResult) *string { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDiscoveredAssetEndpointProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscoveredAssetEndpointProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Identifier used to detect changes in the asset endpoint profile.

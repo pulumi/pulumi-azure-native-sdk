@@ -35,6 +35,8 @@ type LookupDiscoveredAssetArgs struct {
 type LookupDiscoveredAssetResult struct {
 	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
 	AssetEndpointProfileRef string `pulumi:"assetEndpointProfileRef"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set.
 	Datasets []DiscoveredDatasetResponse `pulumi:"datasets"`
 	// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
@@ -131,6 +133,11 @@ func (o LookupDiscoveredAssetResultOutput) ToLookupDiscoveredAssetResultOutputWi
 // A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
 func (o LookupDiscoveredAssetResultOutput) AssetEndpointProfileRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiscoveredAssetResult) string { return v.AssetEndpointProfileRef }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDiscoveredAssetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscoveredAssetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set.

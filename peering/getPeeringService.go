@@ -33,6 +33,8 @@ type LookupPeeringServiceArgs struct {
 
 // Peering Service
 type LookupPeeringServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ID of the resource.
 	Id string `pulumi:"id"`
 	// The location of the resource.
@@ -92,6 +94,11 @@ func (o LookupPeeringServiceResultOutput) ToLookupPeeringServiceResultOutput() L
 
 func (o LookupPeeringServiceResultOutput) ToLookupPeeringServiceResultOutputWithContext(ctx context.Context) LookupPeeringServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPeeringServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ID of the resource.

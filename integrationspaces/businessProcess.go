@@ -14,10 +14,12 @@ import (
 
 // A business process under application.
 //
-// Uses Azure REST API version 2023-11-14-preview.
+// Uses Azure REST API version 2023-11-14-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-14-preview.
 type BusinessProcess struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The business process mapping.
 	BusinessProcessMapping BusinessProcessMappingItemResponseMapOutput `pulumi:"businessProcessMapping"`
 	// The business process stages.
@@ -178,6 +180,11 @@ func (o BusinessProcessOutput) ToBusinessProcessOutput() BusinessProcessOutput {
 
 func (o BusinessProcessOutput) ToBusinessProcessOutputWithContext(ctx context.Context) BusinessProcessOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BusinessProcessOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BusinessProcess) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The business process mapping.

@@ -3004,6 +3004,8 @@ type AzureCredentials struct {
 	ClientId *string `pulumi:"clientId"`
 	// Client Secret.
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Kind of auth github does for deploying the template
+	Kind *string `pulumi:"kind"`
 	// Subscription Id.
 	SubscriptionId *string `pulumi:"subscriptionId"`
 	// Tenant Id.
@@ -3027,6 +3029,8 @@ type AzureCredentialsArgs struct {
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Client Secret.
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Kind of auth github does for deploying the template
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Subscription Id.
 	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
 	// Tenant Id.
@@ -3121,6 +3125,11 @@ func (o AzureCredentialsOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureCredentials) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Kind of auth github does for deploying the template
+func (o AzureCredentialsOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCredentials) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
 // Subscription Id.
 func (o AzureCredentialsOutput) SubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureCredentials) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
@@ -3172,6 +3181,16 @@ func (o AzureCredentialsPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kind of auth github does for deploying the template
+func (o AzureCredentialsPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3999,11 +4018,211 @@ func (o AzureStaticWebAppsResponsePtrOutput) Registration() AzureStaticWebAppsRe
 	}).(AzureStaticWebAppsRegistrationResponsePtrOutput)
 }
 
+// The configuration settings of the storage of the tokens if blob storage is used.
+type BlobStorageTokenStore struct {
+	// The name of the app secrets containing the SAS URL of the blob storage containing the tokens.
+	SasUrlSettingName string `pulumi:"sasUrlSettingName"`
+}
+
+// BlobStorageTokenStoreInput is an input type that accepts BlobStorageTokenStoreArgs and BlobStorageTokenStoreOutput values.
+// You can construct a concrete instance of `BlobStorageTokenStoreInput` via:
+//
+//	BlobStorageTokenStoreArgs{...}
+type BlobStorageTokenStoreInput interface {
+	pulumi.Input
+
+	ToBlobStorageTokenStoreOutput() BlobStorageTokenStoreOutput
+	ToBlobStorageTokenStoreOutputWithContext(context.Context) BlobStorageTokenStoreOutput
+}
+
+// The configuration settings of the storage of the tokens if blob storage is used.
+type BlobStorageTokenStoreArgs struct {
+	// The name of the app secrets containing the SAS URL of the blob storage containing the tokens.
+	SasUrlSettingName pulumi.StringInput `pulumi:"sasUrlSettingName"`
+}
+
+func (BlobStorageTokenStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlobStorageTokenStore)(nil)).Elem()
+}
+
+func (i BlobStorageTokenStoreArgs) ToBlobStorageTokenStoreOutput() BlobStorageTokenStoreOutput {
+	return i.ToBlobStorageTokenStoreOutputWithContext(context.Background())
+}
+
+func (i BlobStorageTokenStoreArgs) ToBlobStorageTokenStoreOutputWithContext(ctx context.Context) BlobStorageTokenStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlobStorageTokenStoreOutput)
+}
+
+func (i BlobStorageTokenStoreArgs) ToBlobStorageTokenStorePtrOutput() BlobStorageTokenStorePtrOutput {
+	return i.ToBlobStorageTokenStorePtrOutputWithContext(context.Background())
+}
+
+func (i BlobStorageTokenStoreArgs) ToBlobStorageTokenStorePtrOutputWithContext(ctx context.Context) BlobStorageTokenStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlobStorageTokenStoreOutput).ToBlobStorageTokenStorePtrOutputWithContext(ctx)
+}
+
+// BlobStorageTokenStorePtrInput is an input type that accepts BlobStorageTokenStoreArgs, BlobStorageTokenStorePtr and BlobStorageTokenStorePtrOutput values.
+// You can construct a concrete instance of `BlobStorageTokenStorePtrInput` via:
+//
+//	        BlobStorageTokenStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlobStorageTokenStorePtrInput interface {
+	pulumi.Input
+
+	ToBlobStorageTokenStorePtrOutput() BlobStorageTokenStorePtrOutput
+	ToBlobStorageTokenStorePtrOutputWithContext(context.Context) BlobStorageTokenStorePtrOutput
+}
+
+type blobStorageTokenStorePtrType BlobStorageTokenStoreArgs
+
+func BlobStorageTokenStorePtr(v *BlobStorageTokenStoreArgs) BlobStorageTokenStorePtrInput {
+	return (*blobStorageTokenStorePtrType)(v)
+}
+
+func (*blobStorageTokenStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlobStorageTokenStore)(nil)).Elem()
+}
+
+func (i *blobStorageTokenStorePtrType) ToBlobStorageTokenStorePtrOutput() BlobStorageTokenStorePtrOutput {
+	return i.ToBlobStorageTokenStorePtrOutputWithContext(context.Background())
+}
+
+func (i *blobStorageTokenStorePtrType) ToBlobStorageTokenStorePtrOutputWithContext(ctx context.Context) BlobStorageTokenStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlobStorageTokenStorePtrOutput)
+}
+
+// The configuration settings of the storage of the tokens if blob storage is used.
+type BlobStorageTokenStoreOutput struct{ *pulumi.OutputState }
+
+func (BlobStorageTokenStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlobStorageTokenStore)(nil)).Elem()
+}
+
+func (o BlobStorageTokenStoreOutput) ToBlobStorageTokenStoreOutput() BlobStorageTokenStoreOutput {
+	return o
+}
+
+func (o BlobStorageTokenStoreOutput) ToBlobStorageTokenStoreOutputWithContext(ctx context.Context) BlobStorageTokenStoreOutput {
+	return o
+}
+
+func (o BlobStorageTokenStoreOutput) ToBlobStorageTokenStorePtrOutput() BlobStorageTokenStorePtrOutput {
+	return o.ToBlobStorageTokenStorePtrOutputWithContext(context.Background())
+}
+
+func (o BlobStorageTokenStoreOutput) ToBlobStorageTokenStorePtrOutputWithContext(ctx context.Context) BlobStorageTokenStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlobStorageTokenStore) *BlobStorageTokenStore {
+		return &v
+	}).(BlobStorageTokenStorePtrOutput)
+}
+
+// The name of the app secrets containing the SAS URL of the blob storage containing the tokens.
+func (o BlobStorageTokenStoreOutput) SasUrlSettingName() pulumi.StringOutput {
+	return o.ApplyT(func(v BlobStorageTokenStore) string { return v.SasUrlSettingName }).(pulumi.StringOutput)
+}
+
+type BlobStorageTokenStorePtrOutput struct{ *pulumi.OutputState }
+
+func (BlobStorageTokenStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlobStorageTokenStore)(nil)).Elem()
+}
+
+func (o BlobStorageTokenStorePtrOutput) ToBlobStorageTokenStorePtrOutput() BlobStorageTokenStorePtrOutput {
+	return o
+}
+
+func (o BlobStorageTokenStorePtrOutput) ToBlobStorageTokenStorePtrOutputWithContext(ctx context.Context) BlobStorageTokenStorePtrOutput {
+	return o
+}
+
+func (o BlobStorageTokenStorePtrOutput) Elem() BlobStorageTokenStoreOutput {
+	return o.ApplyT(func(v *BlobStorageTokenStore) BlobStorageTokenStore {
+		if v != nil {
+			return *v
+		}
+		var ret BlobStorageTokenStore
+		return ret
+	}).(BlobStorageTokenStoreOutput)
+}
+
+// The name of the app secrets containing the SAS URL of the blob storage containing the tokens.
+func (o BlobStorageTokenStorePtrOutput) SasUrlSettingName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlobStorageTokenStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SasUrlSettingName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration settings of the storage of the tokens if blob storage is used.
+type BlobStorageTokenStoreResponse struct {
+	// The name of the app secrets containing the SAS URL of the blob storage containing the tokens.
+	SasUrlSettingName string `pulumi:"sasUrlSettingName"`
+}
+
+// The configuration settings of the storage of the tokens if blob storage is used.
+type BlobStorageTokenStoreResponseOutput struct{ *pulumi.OutputState }
+
+func (BlobStorageTokenStoreResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlobStorageTokenStoreResponse)(nil)).Elem()
+}
+
+func (o BlobStorageTokenStoreResponseOutput) ToBlobStorageTokenStoreResponseOutput() BlobStorageTokenStoreResponseOutput {
+	return o
+}
+
+func (o BlobStorageTokenStoreResponseOutput) ToBlobStorageTokenStoreResponseOutputWithContext(ctx context.Context) BlobStorageTokenStoreResponseOutput {
+	return o
+}
+
+// The name of the app secrets containing the SAS URL of the blob storage containing the tokens.
+func (o BlobStorageTokenStoreResponseOutput) SasUrlSettingName() pulumi.StringOutput {
+	return o.ApplyT(func(v BlobStorageTokenStoreResponse) string { return v.SasUrlSettingName }).(pulumi.StringOutput)
+}
+
+type BlobStorageTokenStoreResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BlobStorageTokenStoreResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlobStorageTokenStoreResponse)(nil)).Elem()
+}
+
+func (o BlobStorageTokenStoreResponsePtrOutput) ToBlobStorageTokenStoreResponsePtrOutput() BlobStorageTokenStoreResponsePtrOutput {
+	return o
+}
+
+func (o BlobStorageTokenStoreResponsePtrOutput) ToBlobStorageTokenStoreResponsePtrOutputWithContext(ctx context.Context) BlobStorageTokenStoreResponsePtrOutput {
+	return o
+}
+
+func (o BlobStorageTokenStoreResponsePtrOutput) Elem() BlobStorageTokenStoreResponseOutput {
+	return o.ApplyT(func(v *BlobStorageTokenStoreResponse) BlobStorageTokenStoreResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BlobStorageTokenStoreResponse
+		return ret
+	}).(BlobStorageTokenStoreResponseOutput)
+}
+
+// The name of the app secrets containing the SAS URL of the blob storage containing the tokens.
+func (o BlobStorageTokenStoreResponsePtrOutput) SasUrlSettingName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlobStorageTokenStoreResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SasUrlSettingName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration of the build.
 type BuildConfiguration struct {
 	// Base OS used to build and run the app.
 	BaseOs *string `pulumi:"baseOs"`
-	// List of environment variables to be passed to the build.
+	// List of environment variables to be passed to the build, secrets should not be used in environment variable.
 	EnvironmentVariables []EnvironmentVariable `pulumi:"environmentVariables"`
 	// Platform to be used to build and run the app.
 	Platform *string `pulumi:"platform"`
@@ -4028,7 +4247,7 @@ type BuildConfigurationInput interface {
 type BuildConfigurationArgs struct {
 	// Base OS used to build and run the app.
 	BaseOs pulumi.StringPtrInput `pulumi:"baseOs"`
-	// List of environment variables to be passed to the build.
+	// List of environment variables to be passed to the build, secrets should not be used in environment variable.
 	EnvironmentVariables EnvironmentVariableArrayInput `pulumi:"environmentVariables"`
 	// Platform to be used to build and run the app.
 	Platform pulumi.StringPtrInput `pulumi:"platform"`
@@ -4121,7 +4340,7 @@ func (o BuildConfigurationOutput) BaseOs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildConfiguration) *string { return v.BaseOs }).(pulumi.StringPtrOutput)
 }
 
-// List of environment variables to be passed to the build.
+// List of environment variables to be passed to the build, secrets should not be used in environment variable.
 func (o BuildConfigurationOutput) EnvironmentVariables() EnvironmentVariableArrayOutput {
 	return o.ApplyT(func(v BuildConfiguration) []EnvironmentVariable { return v.EnvironmentVariables }).(EnvironmentVariableArrayOutput)
 }
@@ -4175,7 +4394,7 @@ func (o BuildConfigurationPtrOutput) BaseOs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of environment variables to be passed to the build.
+// List of environment variables to be passed to the build, secrets should not be used in environment variable.
 func (o BuildConfigurationPtrOutput) EnvironmentVariables() EnvironmentVariableArrayOutput {
 	return o.ApplyT(func(v *BuildConfiguration) []EnvironmentVariable {
 		if v == nil {
@@ -4219,7 +4438,7 @@ func (o BuildConfigurationPtrOutput) PreBuildSteps() PreBuildStepArrayOutput {
 type BuildConfigurationResponse struct {
 	// Base OS used to build and run the app.
 	BaseOs *string `pulumi:"baseOs"`
-	// List of environment variables to be passed to the build.
+	// List of environment variables to be passed to the build, secrets should not be used in environment variable.
 	EnvironmentVariables []EnvironmentVariableResponse `pulumi:"environmentVariables"`
 	// Platform to be used to build and run the app.
 	Platform *string `pulumi:"platform"`
@@ -4249,7 +4468,7 @@ func (o BuildConfigurationResponseOutput) BaseOs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildConfigurationResponse) *string { return v.BaseOs }).(pulumi.StringPtrOutput)
 }
 
-// List of environment variables to be passed to the build.
+// List of environment variables to be passed to the build, secrets should not be used in environment variable.
 func (o BuildConfigurationResponseOutput) EnvironmentVariables() EnvironmentVariableResponseArrayOutput {
 	return o.ApplyT(func(v BuildConfigurationResponse) []EnvironmentVariableResponse { return v.EnvironmentVariables }).(EnvironmentVariableResponseArrayOutput)
 }
@@ -4303,7 +4522,7 @@ func (o BuildConfigurationResponsePtrOutput) BaseOs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of environment variables to be passed to the build.
+// List of environment variables to be passed to the build, secrets should not be used in environment variable.
 func (o BuildConfigurationResponsePtrOutput) EnvironmentVariables() EnvironmentVariableResponseArrayOutput {
 	return o.ApplyT(func(v *BuildConfigurationResponse) []EnvironmentVariableResponse {
 		if v == nil {
@@ -5107,6 +5326,8 @@ type Configuration struct {
 	Registries []RegistryCredentials `pulumi:"registries"`
 	// Collection of secrets used by a Container app
 	Secrets []Secret `pulumi:"secrets"`
+	// Container App to be a dev Container App Service
+	Service *Service `pulumi:"service"`
 }
 
 // Defaults sets the appropriate defaults for Configuration
@@ -5152,6 +5373,8 @@ type ConfigurationArgs struct {
 	Registries RegistryCredentialsArrayInput `pulumi:"registries"`
 	// Collection of secrets used by a Container app
 	Secrets SecretArrayInput `pulumi:"secrets"`
+	// Container App to be a dev Container App Service
+	Service ServicePtrInput `pulumi:"service"`
 }
 
 // Defaults sets the appropriate defaults for ConfigurationArgs
@@ -5275,6 +5498,11 @@ func (o ConfigurationOutput) Secrets() SecretArrayOutput {
 	return o.ApplyT(func(v Configuration) []Secret { return v.Secrets }).(SecretArrayOutput)
 }
 
+// Container App to be a dev Container App Service
+func (o ConfigurationOutput) Service() ServicePtrOutput {
+	return o.ApplyT(func(v Configuration) *Service { return v.Service }).(ServicePtrOutput)
+}
+
 type ConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationPtrOutput) ElementType() reflect.Type {
@@ -5360,6 +5588,16 @@ func (o ConfigurationPtrOutput) Secrets() SecretArrayOutput {
 	}).(SecretArrayOutput)
 }
 
+// Container App to be a dev Container App Service
+func (o ConfigurationPtrOutput) Service() ServicePtrOutput {
+	return o.ApplyT(func(v *Configuration) *Service {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(ServicePtrOutput)
+}
+
 // Non versioned Container App configuration properties that define the mutable settings of a Container app
 type ConfigurationResponse struct {
 	// ActiveRevisionsMode controls how active revisions are handled for the Container app:
@@ -5375,6 +5613,8 @@ type ConfigurationResponse struct {
 	Registries []RegistryCredentialsResponse `pulumi:"registries"`
 	// Collection of secrets used by a Container app
 	Secrets []SecretResponse `pulumi:"secrets"`
+	// Container App to be a dev Container App Service
+	Service *ServiceResponse `pulumi:"service"`
 }
 
 // Defaults sets the appropriate defaults for ConfigurationResponse
@@ -5438,6 +5678,11 @@ func (o ConfigurationResponseOutput) Registries() RegistryCredentialsResponseArr
 // Collection of secrets used by a Container app
 func (o ConfigurationResponseOutput) Secrets() SecretResponseArrayOutput {
 	return o.ApplyT(func(v ConfigurationResponse) []SecretResponse { return v.Secrets }).(SecretResponseArrayOutput)
+}
+
+// Container App to be a dev Container App Service
+func (o ConfigurationResponseOutput) Service() ServiceResponsePtrOutput {
+	return o.ApplyT(func(v ConfigurationResponse) *ServiceResponse { return v.Service }).(ServiceResponsePtrOutput)
 }
 
 type ConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -5523,6 +5768,16 @@ func (o ConfigurationResponsePtrOutput) Secrets() SecretResponseArrayOutput {
 		}
 		return v.Secrets
 	}).(SecretResponseArrayOutput)
+}
+
+// Container App to be a dev Container App Service
+func (o ConfigurationResponsePtrOutput) Service() ServiceResponsePtrOutput {
+	return o.ApplyT(func(v *ConfigurationResponse) *ServiceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(ServiceResponsePtrOutput)
 }
 
 // Storage properties
@@ -6872,6 +7127,10 @@ func (o ContainerAppProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
 
 // Container App Secret.
 type ContainerAppSecretResponse struct {
+	// Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
+	Identity string `pulumi:"identity"`
+	// Azure Key Vault URL pointing to the secret referenced by the container app.
+	KeyVaultUrl string `pulumi:"keyVaultUrl"`
 	// Secret Name.
 	Name string `pulumi:"name"`
 	// Secret Value.
@@ -6891,6 +7150,16 @@ func (o ContainerAppSecretResponseOutput) ToContainerAppSecretResponseOutput() C
 
 func (o ContainerAppSecretResponseOutput) ToContainerAppSecretResponseOutputWithContext(ctx context.Context) ContainerAppSecretResponseOutput {
 	return o
+}
+
+// Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
+func (o ContainerAppSecretResponseOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerAppSecretResponse) string { return v.Identity }).(pulumi.StringOutput)
+}
+
+// Azure Key Vault URL pointing to the secret referenced by the container app.
+func (o ContainerAppSecretResponseOutput) KeyVaultUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerAppSecretResponse) string { return v.KeyVaultUrl }).(pulumi.StringOutput)
 }
 
 // Secret Name.
@@ -7907,17 +8176,17 @@ func (o CookieExpirationResponsePtrOutput) TimeToExpiration() pulumi.StringPtrOu
 
 // Cross-Origin-Resource-Sharing policy
 type CorsPolicy struct {
-	// allow credential or not
+	// Specifies whether the resource allows credentials
 	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// allowed HTTP headers
+	// Specifies the content for the access-control-allow-headers header
 	AllowedHeaders []string `pulumi:"allowedHeaders"`
-	// allowed HTTP methods
+	// Specifies the content for the access-control-allow-methods header
 	AllowedMethods []string `pulumi:"allowedMethods"`
-	// allowed origins
+	// Specifies the content for the access-control-allow-origins header
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// expose HTTP headers
+	// Specifies the content for the access-control-expose-headers header
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
-	// max time client can cache the result
+	// Specifies the content for the access-control-max-age header
 	MaxAge *int `pulumi:"maxAge"`
 }
 
@@ -7934,17 +8203,17 @@ type CorsPolicyInput interface {
 
 // Cross-Origin-Resource-Sharing policy
 type CorsPolicyArgs struct {
-	// allow credential or not
+	// Specifies whether the resource allows credentials
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// allowed HTTP headers
+	// Specifies the content for the access-control-allow-headers header
 	AllowedHeaders pulumi.StringArrayInput `pulumi:"allowedHeaders"`
-	// allowed HTTP methods
+	// Specifies the content for the access-control-allow-methods header
 	AllowedMethods pulumi.StringArrayInput `pulumi:"allowedMethods"`
-	// allowed origins
+	// Specifies the content for the access-control-allow-origins header
 	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
-	// expose HTTP headers
+	// Specifies the content for the access-control-expose-headers header
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
-	// max time client can cache the result
+	// Specifies the content for the access-control-max-age header
 	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
 }
 
@@ -8026,32 +8295,32 @@ func (o CorsPolicyOutput) ToCorsPolicyPtrOutputWithContext(ctx context.Context) 
 	}).(CorsPolicyPtrOutput)
 }
 
-// allow credential or not
+// Specifies whether the resource allows credentials
 func (o CorsPolicyOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CorsPolicy) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// allowed HTTP headers
+// Specifies the content for the access-control-allow-headers header
 func (o CorsPolicyOutput) AllowedHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
 }
 
-// allowed HTTP methods
+// Specifies the content for the access-control-allow-methods header
 func (o CorsPolicyOutput) AllowedMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
 }
 
-// allowed origins
+// Specifies the content for the access-control-allow-origins header
 func (o CorsPolicyOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// expose HTTP headers
+// Specifies the content for the access-control-expose-headers header
 func (o CorsPolicyOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
-// max time client can cache the result
+// Specifies the content for the access-control-max-age header
 func (o CorsPolicyOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CorsPolicy) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
@@ -8080,7 +8349,7 @@ func (o CorsPolicyPtrOutput) Elem() CorsPolicyOutput {
 	}).(CorsPolicyOutput)
 }
 
-// allow credential or not
+// Specifies whether the resource allows credentials
 func (o CorsPolicyPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CorsPolicy) *bool {
 		if v == nil {
@@ -8090,7 +8359,7 @@ func (o CorsPolicyPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// allowed HTTP headers
+// Specifies the content for the access-control-allow-headers header
 func (o CorsPolicyPtrOutput) AllowedHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicy) []string {
 		if v == nil {
@@ -8100,7 +8369,7 @@ func (o CorsPolicyPtrOutput) AllowedHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// allowed HTTP methods
+// Specifies the content for the access-control-allow-methods header
 func (o CorsPolicyPtrOutput) AllowedMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicy) []string {
 		if v == nil {
@@ -8110,7 +8379,7 @@ func (o CorsPolicyPtrOutput) AllowedMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// allowed origins
+// Specifies the content for the access-control-allow-origins header
 func (o CorsPolicyPtrOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicy) []string {
 		if v == nil {
@@ -8120,7 +8389,7 @@ func (o CorsPolicyPtrOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// expose HTTP headers
+// Specifies the content for the access-control-expose-headers header
 func (o CorsPolicyPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicy) []string {
 		if v == nil {
@@ -8130,7 +8399,7 @@ func (o CorsPolicyPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// max time client can cache the result
+// Specifies the content for the access-control-max-age header
 func (o CorsPolicyPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CorsPolicy) *int {
 		if v == nil {
@@ -8142,17 +8411,17 @@ func (o CorsPolicyPtrOutput) MaxAge() pulumi.IntPtrOutput {
 
 // Cross-Origin-Resource-Sharing policy
 type CorsPolicyResponse struct {
-	// allow credential or not
+	// Specifies whether the resource allows credentials
 	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// allowed HTTP headers
+	// Specifies the content for the access-control-allow-headers header
 	AllowedHeaders []string `pulumi:"allowedHeaders"`
-	// allowed HTTP methods
+	// Specifies the content for the access-control-allow-methods header
 	AllowedMethods []string `pulumi:"allowedMethods"`
-	// allowed origins
+	// Specifies the content for the access-control-allow-origins header
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// expose HTTP headers
+	// Specifies the content for the access-control-expose-headers header
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
-	// max time client can cache the result
+	// Specifies the content for the access-control-max-age header
 	MaxAge *int `pulumi:"maxAge"`
 }
 
@@ -8171,32 +8440,32 @@ func (o CorsPolicyResponseOutput) ToCorsPolicyResponseOutputWithContext(ctx cont
 	return o
 }
 
-// allow credential or not
+// Specifies whether the resource allows credentials
 func (o CorsPolicyResponseOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
-// allowed HTTP headers
+// Specifies the content for the access-control-allow-headers header
 func (o CorsPolicyResponseOutput) AllowedHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
 }
 
-// allowed HTTP methods
+// Specifies the content for the access-control-allow-methods header
 func (o CorsPolicyResponseOutput) AllowedMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
 }
 
-// allowed origins
+// Specifies the content for the access-control-allow-origins header
 func (o CorsPolicyResponseOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// expose HTTP headers
+// Specifies the content for the access-control-expose-headers header
 func (o CorsPolicyResponseOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
-// max time client can cache the result
+// Specifies the content for the access-control-max-age header
 func (o CorsPolicyResponseOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
@@ -8225,7 +8494,7 @@ func (o CorsPolicyResponsePtrOutput) Elem() CorsPolicyResponseOutput {
 	}).(CorsPolicyResponseOutput)
 }
 
-// allow credential or not
+// Specifies whether the resource allows credentials
 func (o CorsPolicyResponsePtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CorsPolicyResponse) *bool {
 		if v == nil {
@@ -8235,7 +8504,7 @@ func (o CorsPolicyResponsePtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// allowed HTTP headers
+// Specifies the content for the access-control-allow-headers header
 func (o CorsPolicyResponsePtrOutput) AllowedHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicyResponse) []string {
 		if v == nil {
@@ -8245,7 +8514,7 @@ func (o CorsPolicyResponsePtrOutput) AllowedHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// allowed HTTP methods
+// Specifies the content for the access-control-allow-methods header
 func (o CorsPolicyResponsePtrOutput) AllowedMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicyResponse) []string {
 		if v == nil {
@@ -8255,7 +8524,7 @@ func (o CorsPolicyResponsePtrOutput) AllowedMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// allowed origins
+// Specifies the content for the access-control-allow-origins header
 func (o CorsPolicyResponsePtrOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicyResponse) []string {
 		if v == nil {
@@ -8265,7 +8534,7 @@ func (o CorsPolicyResponsePtrOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// expose HTTP headers
+// Specifies the content for the access-control-expose-headers header
 func (o CorsPolicyResponsePtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicyResponse) []string {
 		if v == nil {
@@ -8275,7 +8544,7 @@ func (o CorsPolicyResponsePtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// max time client can cache the result
+// Specifies the content for the access-control-max-age header
 func (o CorsPolicyResponsePtrOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CorsPolicyResponse) *int {
 		if v == nil {
@@ -9951,8 +10220,292 @@ func (o DaprPtrOutput) LogLevel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Dapr Component Resiliency Policy Circuit Breaker Policy Configuration.
+type DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration struct {
+	// The number of consecutive errors before the circuit is opened.
+	ConsecutiveErrors *int `pulumi:"consecutiveErrors"`
+	// The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
+	IntervalInSeconds *int `pulumi:"intervalInSeconds"`
+	// The interval in seconds until a retry attempt is made after the circuit is opened.
+	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
+}
+
+// DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationInput is an input type that accepts DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs and DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput values.
+// You can construct a concrete instance of `DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationInput` via:
+//
+//	DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs{...}
+type DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationInput interface {
+	pulumi.Input
+
+	ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput
+	ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutputWithContext(context.Context) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput
+}
+
+// Dapr Component Resiliency Policy Circuit Breaker Policy Configuration.
+type DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs struct {
+	// The number of consecutive errors before the circuit is opened.
+	ConsecutiveErrors pulumi.IntPtrInput `pulumi:"consecutiveErrors"`
+	// The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
+	IntervalInSeconds pulumi.IntPtrInput `pulumi:"intervalInSeconds"`
+	// The interval in seconds until a retry attempt is made after the circuit is opened.
+	TimeoutInSeconds pulumi.IntPtrInput `pulumi:"timeoutInSeconds"`
+}
+
+func (DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration)(nil)).Elem()
+}
+
+func (i DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput {
+	return i.ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutputWithContext(context.Background())
+}
+
+func (i DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput)
+}
+
+func (i DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput {
+	return i.ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput).ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutputWithContext(ctx)
+}
+
+// DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrInput is an input type that accepts DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs, DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtr and DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput values.
+// You can construct a concrete instance of `DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrInput` via:
+//
+//	        DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput
+	ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutputWithContext(context.Context) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput
+}
+
+type daprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrType DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs
+
+func DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtr(v *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrInput {
+	return (*daprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrType)(v)
+}
+
+func (*daprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration)(nil)).Elem()
+}
+
+func (i *daprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrType) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput {
+	return i.ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *daprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrType) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput)
+}
+
+// Dapr Component Resiliency Policy Circuit Breaker Policy Configuration.
+type DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput {
+	return o.ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration) *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration {
+		return &v
+	}).(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput)
+}
+
+// The number of consecutive errors before the circuit is opened.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration) *int {
+		return v.ConsecutiveErrors
+	}).(pulumi.IntPtrOutput)
+}
+
+// The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput) IntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration) *int {
+		return v.IntervalInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The interval in seconds until a retry attempt is made after the circuit is opened.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+type DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput) Elem() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration
+		return ret
+	}).(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput)
+}
+
+// The number of consecutive errors before the circuit is opened.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsecutiveErrors
+	}).(pulumi.IntPtrOutput)
+}
+
+// The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput) IntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IntervalInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The interval in seconds until a retry attempt is made after the circuit is opened.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Dapr Component Resiliency Policy Circuit Breaker Policy Configuration.
+type DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse struct {
+	// The number of consecutive errors before the circuit is opened.
+	ConsecutiveErrors *int `pulumi:"consecutiveErrors"`
+	// The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
+	IntervalInSeconds *int `pulumi:"intervalInSeconds"`
+	// The interval in seconds until a retry attempt is made after the circuit is opened.
+	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
+}
+
+// Dapr Component Resiliency Policy Circuit Breaker Policy Configuration.
+type DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput {
+	return o
+}
+
+// The number of consecutive errors before the circuit is opened.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse) *int {
+		return v.ConsecutiveErrors
+	}).(pulumi.IntPtrOutput)
+}
+
+// The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput) IntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse) *int {
+		return v.IntervalInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The interval in seconds until a retry attempt is made after the circuit is opened.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse) *int {
+		return v.TimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput) ToDaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput) Elem() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse) DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse
+		return ret
+	}).(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput)
+}
+
+// The number of consecutive errors before the circuit is opened.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsecutiveErrors
+	}).(pulumi.IntPtrOutput)
+}
+
+// The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput) IntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IntervalInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The interval in seconds until a retry attempt is made after the circuit is opened.
+func (o DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
 // Dapr Component Resiliency Policy Configuration.
 type DaprComponentResiliencyPolicyConfiguration struct {
+	// The optional circuit breaker policy configuration
+	CircuitBreakerPolicy *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration `pulumi:"circuitBreakerPolicy"`
 	// The optional HTTP retry policy configuration
 	HttpRetryPolicy *DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration `pulumi:"httpRetryPolicy"`
 	// The optional timeout policy configuration
@@ -9972,6 +10525,8 @@ type DaprComponentResiliencyPolicyConfigurationInput interface {
 
 // Dapr Component Resiliency Policy Configuration.
 type DaprComponentResiliencyPolicyConfigurationArgs struct {
+	// The optional circuit breaker policy configuration
+	CircuitBreakerPolicy DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrInput `pulumi:"circuitBreakerPolicy"`
 	// The optional HTTP retry policy configuration
 	HttpRetryPolicy DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrInput `pulumi:"httpRetryPolicy"`
 	// The optional timeout policy configuration
@@ -10056,6 +10611,13 @@ func (o DaprComponentResiliencyPolicyConfigurationOutput) ToDaprComponentResilie
 	}).(DaprComponentResiliencyPolicyConfigurationPtrOutput)
 }
 
+// The optional circuit breaker policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationOutput) CircuitBreakerPolicy() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyConfiguration) *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration {
+		return v.CircuitBreakerPolicy
+	}).(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput)
+}
+
 // The optional HTTP retry policy configuration
 func (o DaprComponentResiliencyPolicyConfigurationOutput) HttpRetryPolicy() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
 	return o.ApplyT(func(v DaprComponentResiliencyPolicyConfiguration) *DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration {
@@ -10094,6 +10656,16 @@ func (o DaprComponentResiliencyPolicyConfigurationPtrOutput) Elem() DaprComponen
 	}).(DaprComponentResiliencyPolicyConfigurationOutput)
 }
 
+// The optional circuit breaker policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationPtrOutput) CircuitBreakerPolicy() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyConfiguration) *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.CircuitBreakerPolicy
+	}).(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput)
+}
+
 // The optional HTTP retry policy configuration
 func (o DaprComponentResiliencyPolicyConfigurationPtrOutput) HttpRetryPolicy() DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationPtrOutput {
 	return o.ApplyT(func(v *DaprComponentResiliencyPolicyConfiguration) *DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration {
@@ -10116,6 +10688,8 @@ func (o DaprComponentResiliencyPolicyConfigurationPtrOutput) TimeoutPolicy() Dap
 
 // Dapr Component Resiliency Policy Configuration.
 type DaprComponentResiliencyPolicyConfigurationResponse struct {
+	// The optional circuit breaker policy configuration
+	CircuitBreakerPolicy *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse `pulumi:"circuitBreakerPolicy"`
 	// The optional HTTP retry policy configuration
 	HttpRetryPolicy *DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse `pulumi:"httpRetryPolicy"`
 	// The optional timeout policy configuration
@@ -10135,6 +10709,13 @@ func (o DaprComponentResiliencyPolicyConfigurationResponseOutput) ToDaprComponen
 
 func (o DaprComponentResiliencyPolicyConfigurationResponseOutput) ToDaprComponentResiliencyPolicyConfigurationResponseOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyConfigurationResponseOutput {
 	return o
+}
+
+// The optional circuit breaker policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationResponseOutput) CircuitBreakerPolicy() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DaprComponentResiliencyPolicyConfigurationResponse) *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse {
+		return v.CircuitBreakerPolicy
+	}).(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput)
 }
 
 // The optional HTTP retry policy configuration
@@ -10173,6 +10754,16 @@ func (o DaprComponentResiliencyPolicyConfigurationResponsePtrOutput) Elem() Dapr
 		var ret DaprComponentResiliencyPolicyConfigurationResponse
 		return ret
 	}).(DaprComponentResiliencyPolicyConfigurationResponseOutput)
+}
+
+// The optional circuit breaker policy configuration
+func (o DaprComponentResiliencyPolicyConfigurationResponsePtrOutput) CircuitBreakerPolicy() DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *DaprComponentResiliencyPolicyConfigurationResponse) *DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CircuitBreakerPolicy
+	}).(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput)
 }
 
 // The optional HTTP retry policy configuration
@@ -10881,6 +11472,66 @@ func (o DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput
 		}
 		return v.ResponseTimeoutInSeconds
 	}).(pulumi.IntPtrOutput)
+}
+
+// Configuration properties Dapr component
+type DaprConfigurationResponse struct {
+	// The version of Dapr
+	Version string `pulumi:"version"`
+}
+
+// Configuration properties Dapr component
+type DaprConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DaprConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaprConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprConfigurationResponseOutput) ToDaprConfigurationResponseOutput() DaprConfigurationResponseOutput {
+	return o
+}
+
+func (o DaprConfigurationResponseOutput) ToDaprConfigurationResponseOutputWithContext(ctx context.Context) DaprConfigurationResponseOutput {
+	return o
+}
+
+// The version of Dapr
+func (o DaprConfigurationResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v DaprConfigurationResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type DaprConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DaprConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaprConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaprConfigurationResponsePtrOutput) ToDaprConfigurationResponsePtrOutput() DaprConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprConfigurationResponsePtrOutput) ToDaprConfigurationResponsePtrOutputWithContext(ctx context.Context) DaprConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaprConfigurationResponsePtrOutput) Elem() DaprConfigurationResponseOutput {
+	return o.ApplyT(func(v *DaprConfigurationResponse) DaprConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DaprConfigurationResponse
+		return ret
+	}).(DaprConfigurationResponseOutput)
+}
+
+// The version of Dapr
+func (o DaprConfigurationResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 // Dapr component metadata.
@@ -12813,203 +13464,239 @@ func (o DynamicPoolConfigurationResponsePtrOutput) ExecutionType() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Managed Environment resource SKU properties.
-type EnvironmentSkuProperties struct {
-	// Name of the Sku.
-	Name string `pulumi:"name"`
+// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
+type EncryptionSettings struct {
+	// The secret name which is referenced for EncryptionKey.
+	ContainerAppAuthEncryptionSecretName *string `pulumi:"containerAppAuthEncryptionSecretName"`
+	// The secret name which is referenced for SigningKey.
+	ContainerAppAuthSigningSecretName *string `pulumi:"containerAppAuthSigningSecretName"`
 }
 
-// EnvironmentSkuPropertiesInput is an input type that accepts EnvironmentSkuPropertiesArgs and EnvironmentSkuPropertiesOutput values.
-// You can construct a concrete instance of `EnvironmentSkuPropertiesInput` via:
+// EncryptionSettingsInput is an input type that accepts EncryptionSettingsArgs and EncryptionSettingsOutput values.
+// You can construct a concrete instance of `EncryptionSettingsInput` via:
 //
-//	EnvironmentSkuPropertiesArgs{...}
-type EnvironmentSkuPropertiesInput interface {
+//	EncryptionSettingsArgs{...}
+type EncryptionSettingsInput interface {
 	pulumi.Input
 
-	ToEnvironmentSkuPropertiesOutput() EnvironmentSkuPropertiesOutput
-	ToEnvironmentSkuPropertiesOutputWithContext(context.Context) EnvironmentSkuPropertiesOutput
+	ToEncryptionSettingsOutput() EncryptionSettingsOutput
+	ToEncryptionSettingsOutputWithContext(context.Context) EncryptionSettingsOutput
 }
 
-// Managed Environment resource SKU properties.
-type EnvironmentSkuPropertiesArgs struct {
-	// Name of the Sku.
-	Name pulumi.StringInput `pulumi:"name"`
+// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
+type EncryptionSettingsArgs struct {
+	// The secret name which is referenced for EncryptionKey.
+	ContainerAppAuthEncryptionSecretName pulumi.StringPtrInput `pulumi:"containerAppAuthEncryptionSecretName"`
+	// The secret name which is referenced for SigningKey.
+	ContainerAppAuthSigningSecretName pulumi.StringPtrInput `pulumi:"containerAppAuthSigningSecretName"`
 }
 
-func (EnvironmentSkuPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentSkuProperties)(nil)).Elem()
+func (EncryptionSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionSettings)(nil)).Elem()
 }
 
-func (i EnvironmentSkuPropertiesArgs) ToEnvironmentSkuPropertiesOutput() EnvironmentSkuPropertiesOutput {
-	return i.ToEnvironmentSkuPropertiesOutputWithContext(context.Background())
+func (i EncryptionSettingsArgs) ToEncryptionSettingsOutput() EncryptionSettingsOutput {
+	return i.ToEncryptionSettingsOutputWithContext(context.Background())
 }
 
-func (i EnvironmentSkuPropertiesArgs) ToEnvironmentSkuPropertiesOutputWithContext(ctx context.Context) EnvironmentSkuPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSkuPropertiesOutput)
+func (i EncryptionSettingsArgs) ToEncryptionSettingsOutputWithContext(ctx context.Context) EncryptionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSettingsOutput)
 }
 
-func (i EnvironmentSkuPropertiesArgs) ToEnvironmentSkuPropertiesPtrOutput() EnvironmentSkuPropertiesPtrOutput {
-	return i.ToEnvironmentSkuPropertiesPtrOutputWithContext(context.Background())
+func (i EncryptionSettingsArgs) ToEncryptionSettingsPtrOutput() EncryptionSettingsPtrOutput {
+	return i.ToEncryptionSettingsPtrOutputWithContext(context.Background())
 }
 
-func (i EnvironmentSkuPropertiesArgs) ToEnvironmentSkuPropertiesPtrOutputWithContext(ctx context.Context) EnvironmentSkuPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSkuPropertiesOutput).ToEnvironmentSkuPropertiesPtrOutputWithContext(ctx)
+func (i EncryptionSettingsArgs) ToEncryptionSettingsPtrOutputWithContext(ctx context.Context) EncryptionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSettingsOutput).ToEncryptionSettingsPtrOutputWithContext(ctx)
 }
 
-// EnvironmentSkuPropertiesPtrInput is an input type that accepts EnvironmentSkuPropertiesArgs, EnvironmentSkuPropertiesPtr and EnvironmentSkuPropertiesPtrOutput values.
-// You can construct a concrete instance of `EnvironmentSkuPropertiesPtrInput` via:
+// EncryptionSettingsPtrInput is an input type that accepts EncryptionSettingsArgs, EncryptionSettingsPtr and EncryptionSettingsPtrOutput values.
+// You can construct a concrete instance of `EncryptionSettingsPtrInput` via:
 //
-//	        EnvironmentSkuPropertiesArgs{...}
+//	        EncryptionSettingsArgs{...}
 //
 //	or:
 //
 //	        nil
-type EnvironmentSkuPropertiesPtrInput interface {
+type EncryptionSettingsPtrInput interface {
 	pulumi.Input
 
-	ToEnvironmentSkuPropertiesPtrOutput() EnvironmentSkuPropertiesPtrOutput
-	ToEnvironmentSkuPropertiesPtrOutputWithContext(context.Context) EnvironmentSkuPropertiesPtrOutput
+	ToEncryptionSettingsPtrOutput() EncryptionSettingsPtrOutput
+	ToEncryptionSettingsPtrOutputWithContext(context.Context) EncryptionSettingsPtrOutput
 }
 
-type environmentSkuPropertiesPtrType EnvironmentSkuPropertiesArgs
+type encryptionSettingsPtrType EncryptionSettingsArgs
 
-func EnvironmentSkuPropertiesPtr(v *EnvironmentSkuPropertiesArgs) EnvironmentSkuPropertiesPtrInput {
-	return (*environmentSkuPropertiesPtrType)(v)
+func EncryptionSettingsPtr(v *EncryptionSettingsArgs) EncryptionSettingsPtrInput {
+	return (*encryptionSettingsPtrType)(v)
 }
 
-func (*environmentSkuPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentSkuProperties)(nil)).Elem()
+func (*encryptionSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionSettings)(nil)).Elem()
 }
 
-func (i *environmentSkuPropertiesPtrType) ToEnvironmentSkuPropertiesPtrOutput() EnvironmentSkuPropertiesPtrOutput {
-	return i.ToEnvironmentSkuPropertiesPtrOutputWithContext(context.Background())
+func (i *encryptionSettingsPtrType) ToEncryptionSettingsPtrOutput() EncryptionSettingsPtrOutput {
+	return i.ToEncryptionSettingsPtrOutputWithContext(context.Background())
 }
 
-func (i *environmentSkuPropertiesPtrType) ToEnvironmentSkuPropertiesPtrOutputWithContext(ctx context.Context) EnvironmentSkuPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSkuPropertiesPtrOutput)
+func (i *encryptionSettingsPtrType) ToEncryptionSettingsPtrOutputWithContext(ctx context.Context) EncryptionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSettingsPtrOutput)
 }
 
-// Managed Environment resource SKU properties.
-type EnvironmentSkuPropertiesOutput struct{ *pulumi.OutputState }
+// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
+type EncryptionSettingsOutput struct{ *pulumi.OutputState }
 
-func (EnvironmentSkuPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentSkuProperties)(nil)).Elem()
+func (EncryptionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionSettings)(nil)).Elem()
 }
 
-func (o EnvironmentSkuPropertiesOutput) ToEnvironmentSkuPropertiesOutput() EnvironmentSkuPropertiesOutput {
+func (o EncryptionSettingsOutput) ToEncryptionSettingsOutput() EncryptionSettingsOutput {
 	return o
 }
 
-func (o EnvironmentSkuPropertiesOutput) ToEnvironmentSkuPropertiesOutputWithContext(ctx context.Context) EnvironmentSkuPropertiesOutput {
+func (o EncryptionSettingsOutput) ToEncryptionSettingsOutputWithContext(ctx context.Context) EncryptionSettingsOutput {
 	return o
 }
 
-func (o EnvironmentSkuPropertiesOutput) ToEnvironmentSkuPropertiesPtrOutput() EnvironmentSkuPropertiesPtrOutput {
-	return o.ToEnvironmentSkuPropertiesPtrOutputWithContext(context.Background())
+func (o EncryptionSettingsOutput) ToEncryptionSettingsPtrOutput() EncryptionSettingsPtrOutput {
+	return o.ToEncryptionSettingsPtrOutputWithContext(context.Background())
 }
 
-func (o EnvironmentSkuPropertiesOutput) ToEnvironmentSkuPropertiesPtrOutputWithContext(ctx context.Context) EnvironmentSkuPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentSkuProperties) *EnvironmentSkuProperties {
+func (o EncryptionSettingsOutput) ToEncryptionSettingsPtrOutputWithContext(ctx context.Context) EncryptionSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionSettings) *EncryptionSettings {
 		return &v
-	}).(EnvironmentSkuPropertiesPtrOutput)
+	}).(EncryptionSettingsPtrOutput)
 }
 
-// Name of the Sku.
-func (o EnvironmentSkuPropertiesOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v EnvironmentSkuProperties) string { return v.Name }).(pulumi.StringOutput)
+// The secret name which is referenced for EncryptionKey.
+func (o EncryptionSettingsOutput) ContainerAppAuthEncryptionSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionSettings) *string { return v.ContainerAppAuthEncryptionSecretName }).(pulumi.StringPtrOutput)
 }
 
-type EnvironmentSkuPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (EnvironmentSkuPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentSkuProperties)(nil)).Elem()
+// The secret name which is referenced for SigningKey.
+func (o EncryptionSettingsOutput) ContainerAppAuthSigningSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionSettings) *string { return v.ContainerAppAuthSigningSecretName }).(pulumi.StringPtrOutput)
 }
 
-func (o EnvironmentSkuPropertiesPtrOutput) ToEnvironmentSkuPropertiesPtrOutput() EnvironmentSkuPropertiesPtrOutput {
+type EncryptionSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionSettings)(nil)).Elem()
+}
+
+func (o EncryptionSettingsPtrOutput) ToEncryptionSettingsPtrOutput() EncryptionSettingsPtrOutput {
 	return o
 }
 
-func (o EnvironmentSkuPropertiesPtrOutput) ToEnvironmentSkuPropertiesPtrOutputWithContext(ctx context.Context) EnvironmentSkuPropertiesPtrOutput {
+func (o EncryptionSettingsPtrOutput) ToEncryptionSettingsPtrOutputWithContext(ctx context.Context) EncryptionSettingsPtrOutput {
 	return o
 }
 
-func (o EnvironmentSkuPropertiesPtrOutput) Elem() EnvironmentSkuPropertiesOutput {
-	return o.ApplyT(func(v *EnvironmentSkuProperties) EnvironmentSkuProperties {
+func (o EncryptionSettingsPtrOutput) Elem() EncryptionSettingsOutput {
+	return o.ApplyT(func(v *EncryptionSettings) EncryptionSettings {
 		if v != nil {
 			return *v
 		}
-		var ret EnvironmentSkuProperties
+		var ret EncryptionSettings
 		return ret
-	}).(EnvironmentSkuPropertiesOutput)
+	}).(EncryptionSettingsOutput)
 }
 
-// Name of the Sku.
-func (o EnvironmentSkuPropertiesPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentSkuProperties) *string {
+// The secret name which is referenced for EncryptionKey.
+func (o EncryptionSettingsPtrOutput) ContainerAppAuthEncryptionSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionSettings) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Name
+		return v.ContainerAppAuthEncryptionSecretName
 	}).(pulumi.StringPtrOutput)
 }
 
-// Managed Environment resource SKU properties.
-type EnvironmentSkuPropertiesResponse struct {
-	// Name of the Sku.
-	Name string `pulumi:"name"`
-}
-
-// Managed Environment resource SKU properties.
-type EnvironmentSkuPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (EnvironmentSkuPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentSkuPropertiesResponse)(nil)).Elem()
-}
-
-func (o EnvironmentSkuPropertiesResponseOutput) ToEnvironmentSkuPropertiesResponseOutput() EnvironmentSkuPropertiesResponseOutput {
-	return o
-}
-
-func (o EnvironmentSkuPropertiesResponseOutput) ToEnvironmentSkuPropertiesResponseOutputWithContext(ctx context.Context) EnvironmentSkuPropertiesResponseOutput {
-	return o
-}
-
-// Name of the Sku.
-func (o EnvironmentSkuPropertiesResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v EnvironmentSkuPropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type EnvironmentSkuPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EnvironmentSkuPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentSkuPropertiesResponse)(nil)).Elem()
-}
-
-func (o EnvironmentSkuPropertiesResponsePtrOutput) ToEnvironmentSkuPropertiesResponsePtrOutput() EnvironmentSkuPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o EnvironmentSkuPropertiesResponsePtrOutput) ToEnvironmentSkuPropertiesResponsePtrOutputWithContext(ctx context.Context) EnvironmentSkuPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o EnvironmentSkuPropertiesResponsePtrOutput) Elem() EnvironmentSkuPropertiesResponseOutput {
-	return o.ApplyT(func(v *EnvironmentSkuPropertiesResponse) EnvironmentSkuPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EnvironmentSkuPropertiesResponse
-		return ret
-	}).(EnvironmentSkuPropertiesResponseOutput)
-}
-
-// Name of the Sku.
-func (o EnvironmentSkuPropertiesResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentSkuPropertiesResponse) *string {
+// The secret name which is referenced for SigningKey.
+func (o EncryptionSettingsPtrOutput) ContainerAppAuthSigningSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionSettings) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Name
+		return v.ContainerAppAuthSigningSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
+type EncryptionSettingsResponse struct {
+	// The secret name which is referenced for EncryptionKey.
+	ContainerAppAuthEncryptionSecretName *string `pulumi:"containerAppAuthEncryptionSecretName"`
+	// The secret name which is referenced for SigningKey.
+	ContainerAppAuthSigningSecretName *string `pulumi:"containerAppAuthSigningSecretName"`
+}
+
+// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
+type EncryptionSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionSettingsResponse)(nil)).Elem()
+}
+
+func (o EncryptionSettingsResponseOutput) ToEncryptionSettingsResponseOutput() EncryptionSettingsResponseOutput {
+	return o
+}
+
+func (o EncryptionSettingsResponseOutput) ToEncryptionSettingsResponseOutputWithContext(ctx context.Context) EncryptionSettingsResponseOutput {
+	return o
+}
+
+// The secret name which is referenced for EncryptionKey.
+func (o EncryptionSettingsResponseOutput) ContainerAppAuthEncryptionSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionSettingsResponse) *string { return v.ContainerAppAuthEncryptionSecretName }).(pulumi.StringPtrOutput)
+}
+
+// The secret name which is referenced for SigningKey.
+func (o EncryptionSettingsResponseOutput) ContainerAppAuthSigningSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionSettingsResponse) *string { return v.ContainerAppAuthSigningSecretName }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionSettingsResponse)(nil)).Elem()
+}
+
+func (o EncryptionSettingsResponsePtrOutput) ToEncryptionSettingsResponsePtrOutput() EncryptionSettingsResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionSettingsResponsePtrOutput) ToEncryptionSettingsResponsePtrOutputWithContext(ctx context.Context) EncryptionSettingsResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionSettingsResponsePtrOutput) Elem() EncryptionSettingsResponseOutput {
+	return o.ApplyT(func(v *EncryptionSettingsResponse) EncryptionSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionSettingsResponse
+		return ret
+	}).(EncryptionSettingsResponseOutput)
+}
+
+// The secret name which is referenced for EncryptionKey.
+func (o EncryptionSettingsResponsePtrOutput) ContainerAppAuthEncryptionSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerAppAuthEncryptionSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The secret name which is referenced for SigningKey.
+func (o EncryptionSettingsResponsePtrOutput) ContainerAppAuthSigningSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerAppAuthSigningSecretName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14646,6 +15333,8 @@ type GithubActionConfiguration struct {
 	AzureCredentials *AzureCredentials `pulumi:"azureCredentials"`
 	// Context path
 	ContextPath *string `pulumi:"contextPath"`
+	// One time Github PAT to configure github environment
+	GithubPersonalAccessToken *string `pulumi:"githubPersonalAccessToken"`
 	// Image name
 	Image *string `pulumi:"image"`
 	// Operation system
@@ -14677,6 +15366,8 @@ type GithubActionConfigurationArgs struct {
 	AzureCredentials AzureCredentialsPtrInput `pulumi:"azureCredentials"`
 	// Context path
 	ContextPath pulumi.StringPtrInput `pulumi:"contextPath"`
+	// One time Github PAT to configure github environment
+	GithubPersonalAccessToken pulumi.StringPtrInput `pulumi:"githubPersonalAccessToken"`
 	// Image name
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// Operation system
@@ -14779,6 +15470,11 @@ func (o GithubActionConfigurationOutput) ContextPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GithubActionConfiguration) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
 }
 
+// One time Github PAT to configure github environment
+func (o GithubActionConfigurationOutput) GithubPersonalAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GithubActionConfiguration) *string { return v.GithubPersonalAccessToken }).(pulumi.StringPtrOutput)
+}
+
 // Image name
 func (o GithubActionConfigurationOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GithubActionConfiguration) *string { return v.Image }).(pulumi.StringPtrOutput)
@@ -14850,6 +15546,16 @@ func (o GithubActionConfigurationPtrOutput) ContextPath() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.ContextPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// One time Github PAT to configure github environment
+func (o GithubActionConfigurationPtrOutput) GithubPersonalAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GithubActionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GithubPersonalAccessToken
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19267,6 +19973,8 @@ func (o IdentityProvidersResponsePtrOutput) Twitter() TwitterResponsePtrOutput {
 
 // Container App Ingress configuration.
 type Ingress struct {
+	// Settings to expose additional ports on container app
+	AdditionalPortMappings []IngressPortMapping `pulumi:"additionalPortMappings"`
 	// Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
 	AllowInsecure *bool `pulumi:"allowInsecure"`
 	// Client certificate mode for mTLS authentication. Ignore indicates server drops client certificate on forwarding. Accept indicates server forwards client certificate but does not require a client certificate. Require indicates server requires a client certificate.
@@ -19281,6 +19989,8 @@ type Ingress struct {
 	External *bool `pulumi:"external"`
 	// Rules to restrict incoming IP address.
 	IpSecurityRestrictions []IpSecurityRestrictionRule `pulumi:"ipSecurityRestrictions"`
+	// Sticky Sessions for Single Revision Mode
+	StickySessions *IngressStickySessions `pulumi:"stickySessions"`
 	// Target Port in containers for traffic from ingress
 	TargetPort *int `pulumi:"targetPort"`
 	// Traffic weights for app's revisions
@@ -19323,6 +20033,8 @@ type IngressInput interface {
 
 // Container App Ingress configuration.
 type IngressArgs struct {
+	// Settings to expose additional ports on container app
+	AdditionalPortMappings IngressPortMappingArrayInput `pulumi:"additionalPortMappings"`
 	// Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
 	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
 	// Client certificate mode for mTLS authentication. Ignore indicates server drops client certificate on forwarding. Accept indicates server forwards client certificate but does not require a client certificate. Require indicates server requires a client certificate.
@@ -19337,6 +20049,8 @@ type IngressArgs struct {
 	External pulumi.BoolPtrInput `pulumi:"external"`
 	// Rules to restrict incoming IP address.
 	IpSecurityRestrictions IpSecurityRestrictionRuleArrayInput `pulumi:"ipSecurityRestrictions"`
+	// Sticky Sessions for Single Revision Mode
+	StickySessions IngressStickySessionsPtrInput `pulumi:"stickySessions"`
 	// Target Port in containers for traffic from ingress
 	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
 	// Traffic weights for app's revisions
@@ -19440,6 +20154,11 @@ func (o IngressOutput) ToIngressPtrOutputWithContext(ctx context.Context) Ingres
 	}).(IngressPtrOutput)
 }
 
+// Settings to expose additional ports on container app
+func (o IngressOutput) AdditionalPortMappings() IngressPortMappingArrayOutput {
+	return o.ApplyT(func(v Ingress) []IngressPortMapping { return v.AdditionalPortMappings }).(IngressPortMappingArrayOutput)
+}
+
 // Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
 func (o IngressOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Ingress) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
@@ -19473,6 +20192,11 @@ func (o IngressOutput) External() pulumi.BoolPtrOutput {
 // Rules to restrict incoming IP address.
 func (o IngressOutput) IpSecurityRestrictions() IpSecurityRestrictionRuleArrayOutput {
 	return o.ApplyT(func(v Ingress) []IpSecurityRestrictionRule { return v.IpSecurityRestrictions }).(IpSecurityRestrictionRuleArrayOutput)
+}
+
+// Sticky Sessions for Single Revision Mode
+func (o IngressOutput) StickySessions() IngressStickySessionsPtrOutput {
+	return o.ApplyT(func(v Ingress) *IngressStickySessions { return v.StickySessions }).(IngressStickySessionsPtrOutput)
 }
 
 // Target Port in containers for traffic from ingress
@@ -19512,6 +20236,16 @@ func (o IngressPtrOutput) Elem() IngressOutput {
 		var ret Ingress
 		return ret
 	}).(IngressOutput)
+}
+
+// Settings to expose additional ports on container app
+func (o IngressPtrOutput) AdditionalPortMappings() IngressPortMappingArrayOutput {
+	return o.ApplyT(func(v *Ingress) []IngressPortMapping {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalPortMappings
+	}).(IngressPortMappingArrayOutput)
 }
 
 // Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
@@ -19584,6 +20318,16 @@ func (o IngressPtrOutput) IpSecurityRestrictions() IpSecurityRestrictionRuleArra
 	}).(IpSecurityRestrictionRuleArrayOutput)
 }
 
+// Sticky Sessions for Single Revision Mode
+func (o IngressPtrOutput) StickySessions() IngressStickySessionsPtrOutput {
+	return o.ApplyT(func(v *Ingress) *IngressStickySessions {
+		if v == nil {
+			return nil
+		}
+		return v.StickySessions
+	}).(IngressStickySessionsPtrOutput)
+}
+
 // Target Port in containers for traffic from ingress
 func (o IngressPtrOutput) TargetPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Ingress) *int {
@@ -19614,8 +20358,188 @@ func (o IngressPtrOutput) Transport() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Port mappings of container app ingress
+type IngressPortMapping struct {
+	// Specifies the exposed port for the target port. If not specified, it defaults to target port
+	ExposedPort *int `pulumi:"exposedPort"`
+	// Specifies whether the app port is accessible outside of the environment
+	External bool `pulumi:"external"`
+	// Specifies the port user's container listens on
+	TargetPort int `pulumi:"targetPort"`
+}
+
+// IngressPortMappingInput is an input type that accepts IngressPortMappingArgs and IngressPortMappingOutput values.
+// You can construct a concrete instance of `IngressPortMappingInput` via:
+//
+//	IngressPortMappingArgs{...}
+type IngressPortMappingInput interface {
+	pulumi.Input
+
+	ToIngressPortMappingOutput() IngressPortMappingOutput
+	ToIngressPortMappingOutputWithContext(context.Context) IngressPortMappingOutput
+}
+
+// Port mappings of container app ingress
+type IngressPortMappingArgs struct {
+	// Specifies the exposed port for the target port. If not specified, it defaults to target port
+	ExposedPort pulumi.IntPtrInput `pulumi:"exposedPort"`
+	// Specifies whether the app port is accessible outside of the environment
+	External pulumi.BoolInput `pulumi:"external"`
+	// Specifies the port user's container listens on
+	TargetPort pulumi.IntInput `pulumi:"targetPort"`
+}
+
+func (IngressPortMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressPortMapping)(nil)).Elem()
+}
+
+func (i IngressPortMappingArgs) ToIngressPortMappingOutput() IngressPortMappingOutput {
+	return i.ToIngressPortMappingOutputWithContext(context.Background())
+}
+
+func (i IngressPortMappingArgs) ToIngressPortMappingOutputWithContext(ctx context.Context) IngressPortMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressPortMappingOutput)
+}
+
+// IngressPortMappingArrayInput is an input type that accepts IngressPortMappingArray and IngressPortMappingArrayOutput values.
+// You can construct a concrete instance of `IngressPortMappingArrayInput` via:
+//
+//	IngressPortMappingArray{ IngressPortMappingArgs{...} }
+type IngressPortMappingArrayInput interface {
+	pulumi.Input
+
+	ToIngressPortMappingArrayOutput() IngressPortMappingArrayOutput
+	ToIngressPortMappingArrayOutputWithContext(context.Context) IngressPortMappingArrayOutput
+}
+
+type IngressPortMappingArray []IngressPortMappingInput
+
+func (IngressPortMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IngressPortMapping)(nil)).Elem()
+}
+
+func (i IngressPortMappingArray) ToIngressPortMappingArrayOutput() IngressPortMappingArrayOutput {
+	return i.ToIngressPortMappingArrayOutputWithContext(context.Background())
+}
+
+func (i IngressPortMappingArray) ToIngressPortMappingArrayOutputWithContext(ctx context.Context) IngressPortMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressPortMappingArrayOutput)
+}
+
+// Port mappings of container app ingress
+type IngressPortMappingOutput struct{ *pulumi.OutputState }
+
+func (IngressPortMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressPortMapping)(nil)).Elem()
+}
+
+func (o IngressPortMappingOutput) ToIngressPortMappingOutput() IngressPortMappingOutput {
+	return o
+}
+
+func (o IngressPortMappingOutput) ToIngressPortMappingOutputWithContext(ctx context.Context) IngressPortMappingOutput {
+	return o
+}
+
+// Specifies the exposed port for the target port. If not specified, it defaults to target port
+func (o IngressPortMappingOutput) ExposedPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IngressPortMapping) *int { return v.ExposedPort }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether the app port is accessible outside of the environment
+func (o IngressPortMappingOutput) External() pulumi.BoolOutput {
+	return o.ApplyT(func(v IngressPortMapping) bool { return v.External }).(pulumi.BoolOutput)
+}
+
+// Specifies the port user's container listens on
+func (o IngressPortMappingOutput) TargetPort() pulumi.IntOutput {
+	return o.ApplyT(func(v IngressPortMapping) int { return v.TargetPort }).(pulumi.IntOutput)
+}
+
+type IngressPortMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (IngressPortMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IngressPortMapping)(nil)).Elem()
+}
+
+func (o IngressPortMappingArrayOutput) ToIngressPortMappingArrayOutput() IngressPortMappingArrayOutput {
+	return o
+}
+
+func (o IngressPortMappingArrayOutput) ToIngressPortMappingArrayOutputWithContext(ctx context.Context) IngressPortMappingArrayOutput {
+	return o
+}
+
+func (o IngressPortMappingArrayOutput) Index(i pulumi.IntInput) IngressPortMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IngressPortMapping {
+		return vs[0].([]IngressPortMapping)[vs[1].(int)]
+	}).(IngressPortMappingOutput)
+}
+
+// Port mappings of container app ingress
+type IngressPortMappingResponse struct {
+	// Specifies the exposed port for the target port. If not specified, it defaults to target port
+	ExposedPort *int `pulumi:"exposedPort"`
+	// Specifies whether the app port is accessible outside of the environment
+	External bool `pulumi:"external"`
+	// Specifies the port user's container listens on
+	TargetPort int `pulumi:"targetPort"`
+}
+
+// Port mappings of container app ingress
+type IngressPortMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (IngressPortMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressPortMappingResponse)(nil)).Elem()
+}
+
+func (o IngressPortMappingResponseOutput) ToIngressPortMappingResponseOutput() IngressPortMappingResponseOutput {
+	return o
+}
+
+func (o IngressPortMappingResponseOutput) ToIngressPortMappingResponseOutputWithContext(ctx context.Context) IngressPortMappingResponseOutput {
+	return o
+}
+
+// Specifies the exposed port for the target port. If not specified, it defaults to target port
+func (o IngressPortMappingResponseOutput) ExposedPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IngressPortMappingResponse) *int { return v.ExposedPort }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether the app port is accessible outside of the environment
+func (o IngressPortMappingResponseOutput) External() pulumi.BoolOutput {
+	return o.ApplyT(func(v IngressPortMappingResponse) bool { return v.External }).(pulumi.BoolOutput)
+}
+
+// Specifies the port user's container listens on
+func (o IngressPortMappingResponseOutput) TargetPort() pulumi.IntOutput {
+	return o.ApplyT(func(v IngressPortMappingResponse) int { return v.TargetPort }).(pulumi.IntOutput)
+}
+
+type IngressPortMappingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IngressPortMappingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IngressPortMappingResponse)(nil)).Elem()
+}
+
+func (o IngressPortMappingResponseArrayOutput) ToIngressPortMappingResponseArrayOutput() IngressPortMappingResponseArrayOutput {
+	return o
+}
+
+func (o IngressPortMappingResponseArrayOutput) ToIngressPortMappingResponseArrayOutputWithContext(ctx context.Context) IngressPortMappingResponseArrayOutput {
+	return o
+}
+
+func (o IngressPortMappingResponseArrayOutput) Index(i pulumi.IntInput) IngressPortMappingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IngressPortMappingResponse {
+		return vs[0].([]IngressPortMappingResponse)[vs[1].(int)]
+	}).(IngressPortMappingResponseOutput)
+}
+
 // Container App Ingress configuration.
 type IngressResponse struct {
+	// Settings to expose additional ports on container app
+	AdditionalPortMappings []IngressPortMappingResponse `pulumi:"additionalPortMappings"`
 	// Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
 	AllowInsecure *bool `pulumi:"allowInsecure"`
 	// Client certificate mode for mTLS authentication. Ignore indicates server drops client certificate on forwarding. Accept indicates server forwards client certificate but does not require a client certificate. Require indicates server requires a client certificate.
@@ -19632,6 +20556,8 @@ type IngressResponse struct {
 	Fqdn string `pulumi:"fqdn"`
 	// Rules to restrict incoming IP address.
 	IpSecurityRestrictions []IpSecurityRestrictionRuleResponse `pulumi:"ipSecurityRestrictions"`
+	// Sticky Sessions for Single Revision Mode
+	StickySessions *IngressResponseStickySessions `pulumi:"stickySessions"`
 	// Target Port in containers for traffic from ingress
 	TargetPort *int `pulumi:"targetPort"`
 	// Traffic weights for app's revisions
@@ -19676,6 +20602,11 @@ func (o IngressResponseOutput) ToIngressResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+// Settings to expose additional ports on container app
+func (o IngressResponseOutput) AdditionalPortMappings() IngressPortMappingResponseArrayOutput {
+	return o.ApplyT(func(v IngressResponse) []IngressPortMappingResponse { return v.AdditionalPortMappings }).(IngressPortMappingResponseArrayOutput)
+}
+
 // Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
 func (o IngressResponseOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IngressResponse) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
@@ -19716,6 +20647,11 @@ func (o IngressResponseOutput) IpSecurityRestrictions() IpSecurityRestrictionRul
 	return o.ApplyT(func(v IngressResponse) []IpSecurityRestrictionRuleResponse { return v.IpSecurityRestrictions }).(IpSecurityRestrictionRuleResponseArrayOutput)
 }
 
+// Sticky Sessions for Single Revision Mode
+func (o IngressResponseOutput) StickySessions() IngressResponseStickySessionsPtrOutput {
+	return o.ApplyT(func(v IngressResponse) *IngressResponseStickySessions { return v.StickySessions }).(IngressResponseStickySessionsPtrOutput)
+}
+
 // Target Port in containers for traffic from ingress
 func (o IngressResponseOutput) TargetPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v IngressResponse) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
@@ -19753,6 +20689,16 @@ func (o IngressResponsePtrOutput) Elem() IngressResponseOutput {
 		var ret IngressResponse
 		return ret
 	}).(IngressResponseOutput)
+}
+
+// Settings to expose additional ports on container app
+func (o IngressResponsePtrOutput) AdditionalPortMappings() IngressPortMappingResponseArrayOutput {
+	return o.ApplyT(func(v *IngressResponse) []IngressPortMappingResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalPortMappings
+	}).(IngressPortMappingResponseArrayOutput)
 }
 
 // Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
@@ -19835,6 +20781,16 @@ func (o IngressResponsePtrOutput) IpSecurityRestrictions() IpSecurityRestriction
 	}).(IpSecurityRestrictionRuleResponseArrayOutput)
 }
 
+// Sticky Sessions for Single Revision Mode
+func (o IngressResponsePtrOutput) StickySessions() IngressResponseStickySessionsPtrOutput {
+	return o.ApplyT(func(v *IngressResponse) *IngressResponseStickySessions {
+		if v == nil {
+			return nil
+		}
+		return v.StickySessions
+	}).(IngressResponseStickySessionsPtrOutput)
+}
+
 // Target Port in containers for traffic from ingress
 func (o IngressResponsePtrOutput) TargetPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IngressResponse) *int {
@@ -19862,6 +20818,206 @@ func (o IngressResponsePtrOutput) Transport() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Transport
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sticky Sessions for Single Revision Mode
+type IngressResponseStickySessions struct {
+	// Sticky Session Affinity
+	Affinity *string `pulumi:"affinity"`
+}
+
+// Sticky Sessions for Single Revision Mode
+type IngressResponseStickySessionsOutput struct{ *pulumi.OutputState }
+
+func (IngressResponseStickySessionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressResponseStickySessions)(nil)).Elem()
+}
+
+func (o IngressResponseStickySessionsOutput) ToIngressResponseStickySessionsOutput() IngressResponseStickySessionsOutput {
+	return o
+}
+
+func (o IngressResponseStickySessionsOutput) ToIngressResponseStickySessionsOutputWithContext(ctx context.Context) IngressResponseStickySessionsOutput {
+	return o
+}
+
+// Sticky Session Affinity
+func (o IngressResponseStickySessionsOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressResponseStickySessions) *string { return v.Affinity }).(pulumi.StringPtrOutput)
+}
+
+type IngressResponseStickySessionsPtrOutput struct{ *pulumi.OutputState }
+
+func (IngressResponseStickySessionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IngressResponseStickySessions)(nil)).Elem()
+}
+
+func (o IngressResponseStickySessionsPtrOutput) ToIngressResponseStickySessionsPtrOutput() IngressResponseStickySessionsPtrOutput {
+	return o
+}
+
+func (o IngressResponseStickySessionsPtrOutput) ToIngressResponseStickySessionsPtrOutputWithContext(ctx context.Context) IngressResponseStickySessionsPtrOutput {
+	return o
+}
+
+func (o IngressResponseStickySessionsPtrOutput) Elem() IngressResponseStickySessionsOutput {
+	return o.ApplyT(func(v *IngressResponseStickySessions) IngressResponseStickySessions {
+		if v != nil {
+			return *v
+		}
+		var ret IngressResponseStickySessions
+		return ret
+	}).(IngressResponseStickySessionsOutput)
+}
+
+// Sticky Session Affinity
+func (o IngressResponseStickySessionsPtrOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IngressResponseStickySessions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Affinity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sticky Sessions for Single Revision Mode
+type IngressStickySessions struct {
+	// Sticky Session Affinity
+	Affinity *string `pulumi:"affinity"`
+}
+
+// IngressStickySessionsInput is an input type that accepts IngressStickySessionsArgs and IngressStickySessionsOutput values.
+// You can construct a concrete instance of `IngressStickySessionsInput` via:
+//
+//	IngressStickySessionsArgs{...}
+type IngressStickySessionsInput interface {
+	pulumi.Input
+
+	ToIngressStickySessionsOutput() IngressStickySessionsOutput
+	ToIngressStickySessionsOutputWithContext(context.Context) IngressStickySessionsOutput
+}
+
+// Sticky Sessions for Single Revision Mode
+type IngressStickySessionsArgs struct {
+	// Sticky Session Affinity
+	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
+}
+
+func (IngressStickySessionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressStickySessions)(nil)).Elem()
+}
+
+func (i IngressStickySessionsArgs) ToIngressStickySessionsOutput() IngressStickySessionsOutput {
+	return i.ToIngressStickySessionsOutputWithContext(context.Background())
+}
+
+func (i IngressStickySessionsArgs) ToIngressStickySessionsOutputWithContext(ctx context.Context) IngressStickySessionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressStickySessionsOutput)
+}
+
+func (i IngressStickySessionsArgs) ToIngressStickySessionsPtrOutput() IngressStickySessionsPtrOutput {
+	return i.ToIngressStickySessionsPtrOutputWithContext(context.Background())
+}
+
+func (i IngressStickySessionsArgs) ToIngressStickySessionsPtrOutputWithContext(ctx context.Context) IngressStickySessionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressStickySessionsOutput).ToIngressStickySessionsPtrOutputWithContext(ctx)
+}
+
+// IngressStickySessionsPtrInput is an input type that accepts IngressStickySessionsArgs, IngressStickySessionsPtr and IngressStickySessionsPtrOutput values.
+// You can construct a concrete instance of `IngressStickySessionsPtrInput` via:
+//
+//	        IngressStickySessionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IngressStickySessionsPtrInput interface {
+	pulumi.Input
+
+	ToIngressStickySessionsPtrOutput() IngressStickySessionsPtrOutput
+	ToIngressStickySessionsPtrOutputWithContext(context.Context) IngressStickySessionsPtrOutput
+}
+
+type ingressStickySessionsPtrType IngressStickySessionsArgs
+
+func IngressStickySessionsPtr(v *IngressStickySessionsArgs) IngressStickySessionsPtrInput {
+	return (*ingressStickySessionsPtrType)(v)
+}
+
+func (*ingressStickySessionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IngressStickySessions)(nil)).Elem()
+}
+
+func (i *ingressStickySessionsPtrType) ToIngressStickySessionsPtrOutput() IngressStickySessionsPtrOutput {
+	return i.ToIngressStickySessionsPtrOutputWithContext(context.Background())
+}
+
+func (i *ingressStickySessionsPtrType) ToIngressStickySessionsPtrOutputWithContext(ctx context.Context) IngressStickySessionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressStickySessionsPtrOutput)
+}
+
+// Sticky Sessions for Single Revision Mode
+type IngressStickySessionsOutput struct{ *pulumi.OutputState }
+
+func (IngressStickySessionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressStickySessions)(nil)).Elem()
+}
+
+func (o IngressStickySessionsOutput) ToIngressStickySessionsOutput() IngressStickySessionsOutput {
+	return o
+}
+
+func (o IngressStickySessionsOutput) ToIngressStickySessionsOutputWithContext(ctx context.Context) IngressStickySessionsOutput {
+	return o
+}
+
+func (o IngressStickySessionsOutput) ToIngressStickySessionsPtrOutput() IngressStickySessionsPtrOutput {
+	return o.ToIngressStickySessionsPtrOutputWithContext(context.Background())
+}
+
+func (o IngressStickySessionsOutput) ToIngressStickySessionsPtrOutputWithContext(ctx context.Context) IngressStickySessionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IngressStickySessions) *IngressStickySessions {
+		return &v
+	}).(IngressStickySessionsPtrOutput)
+}
+
+// Sticky Session Affinity
+func (o IngressStickySessionsOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressStickySessions) *string { return v.Affinity }).(pulumi.StringPtrOutput)
+}
+
+type IngressStickySessionsPtrOutput struct{ *pulumi.OutputState }
+
+func (IngressStickySessionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IngressStickySessions)(nil)).Elem()
+}
+
+func (o IngressStickySessionsPtrOutput) ToIngressStickySessionsPtrOutput() IngressStickySessionsPtrOutput {
+	return o
+}
+
+func (o IngressStickySessionsPtrOutput) ToIngressStickySessionsPtrOutputWithContext(ctx context.Context) IngressStickySessionsPtrOutput {
+	return o
+}
+
+func (o IngressStickySessionsPtrOutput) Elem() IngressStickySessionsOutput {
+	return o.ApplyT(func(v *IngressStickySessions) IngressStickySessions {
+		if v != nil {
+			return *v
+		}
+		var ret IngressStickySessions
+		return ret
+	}).(IngressStickySessionsOutput)
+}
+
+// Sticky Session Affinity
+func (o IngressStickySessionsPtrOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IngressStickySessions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Affinity
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20461,6 +21617,302 @@ func (o JavaComponentConfigurationPropertyResponseArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JavaComponentConfigurationPropertyResponse {
 		return vs[0].([]JavaComponentConfigurationPropertyResponse)[vs[1].(int)]
 	}).(JavaComponentConfigurationPropertyResponseOutput)
+}
+
+// Container App Ingress configuration.
+type JavaComponentIngressResponse struct {
+	// Hostname of the Java Component endpoint
+	Fqdn string `pulumi:"fqdn"`
+}
+
+// Container App Ingress configuration.
+type JavaComponentIngressResponseOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentIngressResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentIngressResponse)(nil)).Elem()
+}
+
+func (o JavaComponentIngressResponseOutput) ToJavaComponentIngressResponseOutput() JavaComponentIngressResponseOutput {
+	return o
+}
+
+func (o JavaComponentIngressResponseOutput) ToJavaComponentIngressResponseOutputWithContext(ctx context.Context) JavaComponentIngressResponseOutput {
+	return o
+}
+
+// Hostname of the Java Component endpoint
+func (o JavaComponentIngressResponseOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v JavaComponentIngressResponse) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+type JavaComponentIngressResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentIngressResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JavaComponentIngressResponse)(nil)).Elem()
+}
+
+func (o JavaComponentIngressResponsePtrOutput) ToJavaComponentIngressResponsePtrOutput() JavaComponentIngressResponsePtrOutput {
+	return o
+}
+
+func (o JavaComponentIngressResponsePtrOutput) ToJavaComponentIngressResponsePtrOutputWithContext(ctx context.Context) JavaComponentIngressResponsePtrOutput {
+	return o
+}
+
+func (o JavaComponentIngressResponsePtrOutput) Elem() JavaComponentIngressResponseOutput {
+	return o.ApplyT(func(v *JavaComponentIngressResponse) JavaComponentIngressResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JavaComponentIngressResponse
+		return ret
+	}).(JavaComponentIngressResponseOutput)
+}
+
+// Hostname of the Java Component endpoint
+func (o JavaComponentIngressResponsePtrOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JavaComponentIngressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Fqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Java component scaling configurations
+type JavaComponentPropertiesResponseScale struct {
+	// Optional. Maximum number of Java component replicas
+	MaxReplicas *int `pulumi:"maxReplicas"`
+	// Optional. Minimum number of Java component replicas. Defaults to 1 if not set
+	MinReplicas *int `pulumi:"minReplicas"`
+}
+
+// Java component scaling configurations
+type JavaComponentPropertiesResponseScaleOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentPropertiesResponseScaleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentPropertiesResponseScale)(nil)).Elem()
+}
+
+func (o JavaComponentPropertiesResponseScaleOutput) ToJavaComponentPropertiesResponseScaleOutput() JavaComponentPropertiesResponseScaleOutput {
+	return o
+}
+
+func (o JavaComponentPropertiesResponseScaleOutput) ToJavaComponentPropertiesResponseScaleOutputWithContext(ctx context.Context) JavaComponentPropertiesResponseScaleOutput {
+	return o
+}
+
+// Optional. Maximum number of Java component replicas
+func (o JavaComponentPropertiesResponseScaleOutput) MaxReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JavaComponentPropertiesResponseScale) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Minimum number of Java component replicas. Defaults to 1 if not set
+func (o JavaComponentPropertiesResponseScaleOutput) MinReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JavaComponentPropertiesResponseScale) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
+}
+
+type JavaComponentPropertiesResponseScalePtrOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentPropertiesResponseScalePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JavaComponentPropertiesResponseScale)(nil)).Elem()
+}
+
+func (o JavaComponentPropertiesResponseScalePtrOutput) ToJavaComponentPropertiesResponseScalePtrOutput() JavaComponentPropertiesResponseScalePtrOutput {
+	return o
+}
+
+func (o JavaComponentPropertiesResponseScalePtrOutput) ToJavaComponentPropertiesResponseScalePtrOutputWithContext(ctx context.Context) JavaComponentPropertiesResponseScalePtrOutput {
+	return o
+}
+
+func (o JavaComponentPropertiesResponseScalePtrOutput) Elem() JavaComponentPropertiesResponseScaleOutput {
+	return o.ApplyT(func(v *JavaComponentPropertiesResponseScale) JavaComponentPropertiesResponseScale {
+		if v != nil {
+			return *v
+		}
+		var ret JavaComponentPropertiesResponseScale
+		return ret
+	}).(JavaComponentPropertiesResponseScaleOutput)
+}
+
+// Optional. Maximum number of Java component replicas
+func (o JavaComponentPropertiesResponseScalePtrOutput) MaxReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JavaComponentPropertiesResponseScale) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicas
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Minimum number of Java component replicas. Defaults to 1 if not set
+func (o JavaComponentPropertiesResponseScalePtrOutput) MinReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JavaComponentPropertiesResponseScale) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinReplicas
+	}).(pulumi.IntPtrOutput)
+}
+
+// Java component scaling configurations
+type JavaComponentPropertiesScale struct {
+	// Optional. Maximum number of Java component replicas
+	MaxReplicas *int `pulumi:"maxReplicas"`
+	// Optional. Minimum number of Java component replicas. Defaults to 1 if not set
+	MinReplicas *int `pulumi:"minReplicas"`
+}
+
+// JavaComponentPropertiesScaleInput is an input type that accepts JavaComponentPropertiesScaleArgs and JavaComponentPropertiesScaleOutput values.
+// You can construct a concrete instance of `JavaComponentPropertiesScaleInput` via:
+//
+//	JavaComponentPropertiesScaleArgs{...}
+type JavaComponentPropertiesScaleInput interface {
+	pulumi.Input
+
+	ToJavaComponentPropertiesScaleOutput() JavaComponentPropertiesScaleOutput
+	ToJavaComponentPropertiesScaleOutputWithContext(context.Context) JavaComponentPropertiesScaleOutput
+}
+
+// Java component scaling configurations
+type JavaComponentPropertiesScaleArgs struct {
+	// Optional. Maximum number of Java component replicas
+	MaxReplicas pulumi.IntPtrInput `pulumi:"maxReplicas"`
+	// Optional. Minimum number of Java component replicas. Defaults to 1 if not set
+	MinReplicas pulumi.IntPtrInput `pulumi:"minReplicas"`
+}
+
+func (JavaComponentPropertiesScaleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentPropertiesScale)(nil)).Elem()
+}
+
+func (i JavaComponentPropertiesScaleArgs) ToJavaComponentPropertiesScaleOutput() JavaComponentPropertiesScaleOutput {
+	return i.ToJavaComponentPropertiesScaleOutputWithContext(context.Background())
+}
+
+func (i JavaComponentPropertiesScaleArgs) ToJavaComponentPropertiesScaleOutputWithContext(ctx context.Context) JavaComponentPropertiesScaleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaComponentPropertiesScaleOutput)
+}
+
+func (i JavaComponentPropertiesScaleArgs) ToJavaComponentPropertiesScalePtrOutput() JavaComponentPropertiesScalePtrOutput {
+	return i.ToJavaComponentPropertiesScalePtrOutputWithContext(context.Background())
+}
+
+func (i JavaComponentPropertiesScaleArgs) ToJavaComponentPropertiesScalePtrOutputWithContext(ctx context.Context) JavaComponentPropertiesScalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaComponentPropertiesScaleOutput).ToJavaComponentPropertiesScalePtrOutputWithContext(ctx)
+}
+
+// JavaComponentPropertiesScalePtrInput is an input type that accepts JavaComponentPropertiesScaleArgs, JavaComponentPropertiesScalePtr and JavaComponentPropertiesScalePtrOutput values.
+// You can construct a concrete instance of `JavaComponentPropertiesScalePtrInput` via:
+//
+//	        JavaComponentPropertiesScaleArgs{...}
+//
+//	or:
+//
+//	        nil
+type JavaComponentPropertiesScalePtrInput interface {
+	pulumi.Input
+
+	ToJavaComponentPropertiesScalePtrOutput() JavaComponentPropertiesScalePtrOutput
+	ToJavaComponentPropertiesScalePtrOutputWithContext(context.Context) JavaComponentPropertiesScalePtrOutput
+}
+
+type javaComponentPropertiesScalePtrType JavaComponentPropertiesScaleArgs
+
+func JavaComponentPropertiesScalePtr(v *JavaComponentPropertiesScaleArgs) JavaComponentPropertiesScalePtrInput {
+	return (*javaComponentPropertiesScalePtrType)(v)
+}
+
+func (*javaComponentPropertiesScalePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JavaComponentPropertiesScale)(nil)).Elem()
+}
+
+func (i *javaComponentPropertiesScalePtrType) ToJavaComponentPropertiesScalePtrOutput() JavaComponentPropertiesScalePtrOutput {
+	return i.ToJavaComponentPropertiesScalePtrOutputWithContext(context.Background())
+}
+
+func (i *javaComponentPropertiesScalePtrType) ToJavaComponentPropertiesScalePtrOutputWithContext(ctx context.Context) JavaComponentPropertiesScalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// Java component scaling configurations
+type JavaComponentPropertiesScaleOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentPropertiesScaleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentPropertiesScale)(nil)).Elem()
+}
+
+func (o JavaComponentPropertiesScaleOutput) ToJavaComponentPropertiesScaleOutput() JavaComponentPropertiesScaleOutput {
+	return o
+}
+
+func (o JavaComponentPropertiesScaleOutput) ToJavaComponentPropertiesScaleOutputWithContext(ctx context.Context) JavaComponentPropertiesScaleOutput {
+	return o
+}
+
+func (o JavaComponentPropertiesScaleOutput) ToJavaComponentPropertiesScalePtrOutput() JavaComponentPropertiesScalePtrOutput {
+	return o.ToJavaComponentPropertiesScalePtrOutputWithContext(context.Background())
+}
+
+func (o JavaComponentPropertiesScaleOutput) ToJavaComponentPropertiesScalePtrOutputWithContext(ctx context.Context) JavaComponentPropertiesScalePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JavaComponentPropertiesScale) *JavaComponentPropertiesScale {
+		return &v
+	}).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// Optional. Maximum number of Java component replicas
+func (o JavaComponentPropertiesScaleOutput) MaxReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JavaComponentPropertiesScale) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Minimum number of Java component replicas. Defaults to 1 if not set
+func (o JavaComponentPropertiesScaleOutput) MinReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JavaComponentPropertiesScale) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
+}
+
+type JavaComponentPropertiesScalePtrOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentPropertiesScalePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JavaComponentPropertiesScale)(nil)).Elem()
+}
+
+func (o JavaComponentPropertiesScalePtrOutput) ToJavaComponentPropertiesScalePtrOutput() JavaComponentPropertiesScalePtrOutput {
+	return o
+}
+
+func (o JavaComponentPropertiesScalePtrOutput) ToJavaComponentPropertiesScalePtrOutputWithContext(ctx context.Context) JavaComponentPropertiesScalePtrOutput {
+	return o
+}
+
+func (o JavaComponentPropertiesScalePtrOutput) Elem() JavaComponentPropertiesScaleOutput {
+	return o.ApplyT(func(v *JavaComponentPropertiesScale) JavaComponentPropertiesScale {
+		if v != nil {
+			return *v
+		}
+		var ret JavaComponentPropertiesScale
+		return ret
+	}).(JavaComponentPropertiesScaleOutput)
+}
+
+// Optional. Maximum number of Java component replicas
+func (o JavaComponentPropertiesScalePtrOutput) MaxReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JavaComponentPropertiesScale) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicas
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Minimum number of Java component replicas. Defaults to 1 if not set
+func (o JavaComponentPropertiesScalePtrOutput) MinReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JavaComponentPropertiesScale) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinReplicas
+	}).(pulumi.IntPtrOutput)
 }
 
 // Configuration to bind a Java Component to another Java Component
@@ -22997,6 +24449,66 @@ func (o JwtClaimChecksResponsePtrOutput) AllowedGroups() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Configuration properties Keda component
+type KedaConfigurationResponse struct {
+	// The version of Keda
+	Version string `pulumi:"version"`
+}
+
+// Configuration properties Keda component
+type KedaConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (KedaConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KedaConfigurationResponse)(nil)).Elem()
+}
+
+func (o KedaConfigurationResponseOutput) ToKedaConfigurationResponseOutput() KedaConfigurationResponseOutput {
+	return o
+}
+
+func (o KedaConfigurationResponseOutput) ToKedaConfigurationResponseOutputWithContext(ctx context.Context) KedaConfigurationResponseOutput {
+	return o
+}
+
+// The version of Keda
+func (o KedaConfigurationResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v KedaConfigurationResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type KedaConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KedaConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KedaConfigurationResponse)(nil)).Elem()
+}
+
+func (o KedaConfigurationResponsePtrOutput) ToKedaConfigurationResponsePtrOutput() KedaConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o KedaConfigurationResponsePtrOutput) ToKedaConfigurationResponsePtrOutputWithContext(ctx context.Context) KedaConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o KedaConfigurationResponsePtrOutput) Elem() KedaConfigurationResponseOutput {
+	return o.ApplyT(func(v *KedaConfigurationResponse) KedaConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KedaConfigurationResponse
+		return ret
+	}).(KedaConfigurationResponseOutput)
+}
+
+// The version of Keda
+func (o KedaConfigurationResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KedaConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 type LogAnalyticsConfiguration struct {
 	// Log analytics customer id
@@ -23230,6 +24742,8 @@ type Login struct {
 	PreserveUrlFragmentsForLogins *bool `pulumi:"preserveUrlFragmentsForLogins"`
 	// The routes that specify the endpoints used for login and logout requests.
 	Routes *LoginRoutes `pulumi:"routes"`
+	// The configuration settings of the token store.
+	TokenStore *TokenStore `pulumi:"tokenStore"`
 }
 
 // LoginInput is an input type that accepts LoginArgs and LoginOutput values.
@@ -23257,6 +24771,8 @@ type LoginArgs struct {
 	PreserveUrlFragmentsForLogins pulumi.BoolPtrInput `pulumi:"preserveUrlFragmentsForLogins"`
 	// The routes that specify the endpoints used for login and logout requests.
 	Routes LoginRoutesPtrInput `pulumi:"routes"`
+	// The configuration settings of the token store.
+	TokenStore TokenStorePtrInput `pulumi:"tokenStore"`
 }
 
 func (LoginArgs) ElementType() reflect.Type {
@@ -23364,6 +24880,11 @@ func (o LoginOutput) Routes() LoginRoutesPtrOutput {
 	return o.ApplyT(func(v Login) *LoginRoutes { return v.Routes }).(LoginRoutesPtrOutput)
 }
 
+// The configuration settings of the token store.
+func (o LoginOutput) TokenStore() TokenStorePtrOutput {
+	return o.ApplyT(func(v Login) *TokenStore { return v.TokenStore }).(TokenStorePtrOutput)
+}
+
 type LoginPtrOutput struct{ *pulumi.OutputState }
 
 func (LoginPtrOutput) ElementType() reflect.Type {
@@ -23440,6 +24961,16 @@ func (o LoginPtrOutput) Routes() LoginRoutesPtrOutput {
 	}).(LoginRoutesPtrOutput)
 }
 
+// The configuration settings of the token store.
+func (o LoginPtrOutput) TokenStore() TokenStorePtrOutput {
+	return o.ApplyT(func(v *Login) *TokenStore {
+		if v == nil {
+			return nil
+		}
+		return v.TokenStore
+	}).(TokenStorePtrOutput)
+}
+
 // The configuration settings of the login flow of users using ContainerApp Service Authentication/Authorization.
 type LoginResponse struct {
 	// External URLs that can be redirected to as part of logging in or logging out of the app. Note that the query string part of the URL is ignored.
@@ -23454,6 +24985,8 @@ type LoginResponse struct {
 	PreserveUrlFragmentsForLogins *bool `pulumi:"preserveUrlFragmentsForLogins"`
 	// The routes that specify the endpoints used for login and logout requests.
 	Routes *LoginRoutesResponse `pulumi:"routes"`
+	// The configuration settings of the token store.
+	TokenStore *TokenStoreResponse `pulumi:"tokenStore"`
 }
 
 // The configuration settings of the login flow of users using ContainerApp Service Authentication/Authorization.
@@ -23496,6 +25029,11 @@ func (o LoginResponseOutput) PreserveUrlFragmentsForLogins() pulumi.BoolPtrOutpu
 // The routes that specify the endpoints used for login and logout requests.
 func (o LoginResponseOutput) Routes() LoginRoutesResponsePtrOutput {
 	return o.ApplyT(func(v LoginResponse) *LoginRoutesResponse { return v.Routes }).(LoginRoutesResponsePtrOutput)
+}
+
+// The configuration settings of the token store.
+func (o LoginResponseOutput) TokenStore() TokenStoreResponsePtrOutput {
+	return o.ApplyT(func(v LoginResponse) *TokenStoreResponse { return v.TokenStore }).(TokenStoreResponsePtrOutput)
 }
 
 type LoginResponsePtrOutput struct{ *pulumi.OutputState }
@@ -23572,6 +25110,16 @@ func (o LoginResponsePtrOutput) Routes() LoginRoutesResponsePtrOutput {
 		}
 		return v.Routes
 	}).(LoginRoutesResponsePtrOutput)
+}
+
+// The configuration settings of the token store.
+func (o LoginResponsePtrOutput) TokenStore() TokenStoreResponsePtrOutput {
+	return o.ApplyT(func(v *LoginResponse) *TokenStoreResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TokenStore
+	}).(TokenStoreResponsePtrOutput)
 }
 
 // The routes that specify the endpoints used for login and logout requests.
@@ -24187,240 +25735,606 @@ func (o ManagedCertificateResponsePropertiesOutput) ValidationToken() pulumi.Str
 	return o.ApplyT(func(v ManagedCertificateResponseProperties) string { return v.ValidationToken }).(pulumi.StringOutput)
 }
 
-// Configuration used to control the Environment Egress outbound traffic
-type ManagedEnvironmentOutboundSettings struct {
-	// Outbound type for the cluster
-	OutBoundType *string `pulumi:"outBoundType"`
-	// Virtual Appliance IP used as the Egress controller for the Environment
-	VirtualNetworkApplianceIp *string `pulumi:"virtualNetworkApplianceIp"`
+// Peer traffic encryption settings for the Managed Environment
+type ManagedEnvironmentEncryption struct {
+	// Boolean indicating whether the peer traffic encryption is enabled
+	Enabled *bool `pulumi:"enabled"`
 }
 
-// ManagedEnvironmentOutboundSettingsInput is an input type that accepts ManagedEnvironmentOutboundSettingsArgs and ManagedEnvironmentOutboundSettingsOutput values.
-// You can construct a concrete instance of `ManagedEnvironmentOutboundSettingsInput` via:
+// ManagedEnvironmentEncryptionInput is an input type that accepts ManagedEnvironmentEncryptionArgs and ManagedEnvironmentEncryptionOutput values.
+// You can construct a concrete instance of `ManagedEnvironmentEncryptionInput` via:
 //
-//	ManagedEnvironmentOutboundSettingsArgs{...}
-type ManagedEnvironmentOutboundSettingsInput interface {
+//	ManagedEnvironmentEncryptionArgs{...}
+type ManagedEnvironmentEncryptionInput interface {
 	pulumi.Input
 
-	ToManagedEnvironmentOutboundSettingsOutput() ManagedEnvironmentOutboundSettingsOutput
-	ToManagedEnvironmentOutboundSettingsOutputWithContext(context.Context) ManagedEnvironmentOutboundSettingsOutput
+	ToManagedEnvironmentEncryptionOutput() ManagedEnvironmentEncryptionOutput
+	ToManagedEnvironmentEncryptionOutputWithContext(context.Context) ManagedEnvironmentEncryptionOutput
 }
 
-// Configuration used to control the Environment Egress outbound traffic
-type ManagedEnvironmentOutboundSettingsArgs struct {
-	// Outbound type for the cluster
-	OutBoundType pulumi.StringPtrInput `pulumi:"outBoundType"`
-	// Virtual Appliance IP used as the Egress controller for the Environment
-	VirtualNetworkApplianceIp pulumi.StringPtrInput `pulumi:"virtualNetworkApplianceIp"`
+// Peer traffic encryption settings for the Managed Environment
+type ManagedEnvironmentEncryptionArgs struct {
+	// Boolean indicating whether the peer traffic encryption is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
-func (ManagedEnvironmentOutboundSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedEnvironmentOutboundSettings)(nil)).Elem()
+func (ManagedEnvironmentEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedEnvironmentEncryption)(nil)).Elem()
 }
 
-func (i ManagedEnvironmentOutboundSettingsArgs) ToManagedEnvironmentOutboundSettingsOutput() ManagedEnvironmentOutboundSettingsOutput {
-	return i.ToManagedEnvironmentOutboundSettingsOutputWithContext(context.Background())
+func (i ManagedEnvironmentEncryptionArgs) ToManagedEnvironmentEncryptionOutput() ManagedEnvironmentEncryptionOutput {
+	return i.ToManagedEnvironmentEncryptionOutputWithContext(context.Background())
 }
 
-func (i ManagedEnvironmentOutboundSettingsArgs) ToManagedEnvironmentOutboundSettingsOutputWithContext(ctx context.Context) ManagedEnvironmentOutboundSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentOutboundSettingsOutput)
+func (i ManagedEnvironmentEncryptionArgs) ToManagedEnvironmentEncryptionOutputWithContext(ctx context.Context) ManagedEnvironmentEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentEncryptionOutput)
 }
 
-func (i ManagedEnvironmentOutboundSettingsArgs) ToManagedEnvironmentOutboundSettingsPtrOutput() ManagedEnvironmentOutboundSettingsPtrOutput {
-	return i.ToManagedEnvironmentOutboundSettingsPtrOutputWithContext(context.Background())
+func (i ManagedEnvironmentEncryptionArgs) ToManagedEnvironmentEncryptionPtrOutput() ManagedEnvironmentEncryptionPtrOutput {
+	return i.ToManagedEnvironmentEncryptionPtrOutputWithContext(context.Background())
 }
 
-func (i ManagedEnvironmentOutboundSettingsArgs) ToManagedEnvironmentOutboundSettingsPtrOutputWithContext(ctx context.Context) ManagedEnvironmentOutboundSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentOutboundSettingsOutput).ToManagedEnvironmentOutboundSettingsPtrOutputWithContext(ctx)
+func (i ManagedEnvironmentEncryptionArgs) ToManagedEnvironmentEncryptionPtrOutputWithContext(ctx context.Context) ManagedEnvironmentEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentEncryptionOutput).ToManagedEnvironmentEncryptionPtrOutputWithContext(ctx)
 }
 
-// ManagedEnvironmentOutboundSettingsPtrInput is an input type that accepts ManagedEnvironmentOutboundSettingsArgs, ManagedEnvironmentOutboundSettingsPtr and ManagedEnvironmentOutboundSettingsPtrOutput values.
-// You can construct a concrete instance of `ManagedEnvironmentOutboundSettingsPtrInput` via:
+// ManagedEnvironmentEncryptionPtrInput is an input type that accepts ManagedEnvironmentEncryptionArgs, ManagedEnvironmentEncryptionPtr and ManagedEnvironmentEncryptionPtrOutput values.
+// You can construct a concrete instance of `ManagedEnvironmentEncryptionPtrInput` via:
 //
-//	        ManagedEnvironmentOutboundSettingsArgs{...}
+//	        ManagedEnvironmentEncryptionArgs{...}
 //
 //	or:
 //
 //	        nil
-type ManagedEnvironmentOutboundSettingsPtrInput interface {
+type ManagedEnvironmentEncryptionPtrInput interface {
 	pulumi.Input
 
-	ToManagedEnvironmentOutboundSettingsPtrOutput() ManagedEnvironmentOutboundSettingsPtrOutput
-	ToManagedEnvironmentOutboundSettingsPtrOutputWithContext(context.Context) ManagedEnvironmentOutboundSettingsPtrOutput
+	ToManagedEnvironmentEncryptionPtrOutput() ManagedEnvironmentEncryptionPtrOutput
+	ToManagedEnvironmentEncryptionPtrOutputWithContext(context.Context) ManagedEnvironmentEncryptionPtrOutput
 }
 
-type managedEnvironmentOutboundSettingsPtrType ManagedEnvironmentOutboundSettingsArgs
+type managedEnvironmentEncryptionPtrType ManagedEnvironmentEncryptionArgs
 
-func ManagedEnvironmentOutboundSettingsPtr(v *ManagedEnvironmentOutboundSettingsArgs) ManagedEnvironmentOutboundSettingsPtrInput {
-	return (*managedEnvironmentOutboundSettingsPtrType)(v)
+func ManagedEnvironmentEncryptionPtr(v *ManagedEnvironmentEncryptionArgs) ManagedEnvironmentEncryptionPtrInput {
+	return (*managedEnvironmentEncryptionPtrType)(v)
 }
 
-func (*managedEnvironmentOutboundSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedEnvironmentOutboundSettings)(nil)).Elem()
+func (*managedEnvironmentEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedEnvironmentEncryption)(nil)).Elem()
 }
 
-func (i *managedEnvironmentOutboundSettingsPtrType) ToManagedEnvironmentOutboundSettingsPtrOutput() ManagedEnvironmentOutboundSettingsPtrOutput {
-	return i.ToManagedEnvironmentOutboundSettingsPtrOutputWithContext(context.Background())
+func (i *managedEnvironmentEncryptionPtrType) ToManagedEnvironmentEncryptionPtrOutput() ManagedEnvironmentEncryptionPtrOutput {
+	return i.ToManagedEnvironmentEncryptionPtrOutputWithContext(context.Background())
 }
 
-func (i *managedEnvironmentOutboundSettingsPtrType) ToManagedEnvironmentOutboundSettingsPtrOutputWithContext(ctx context.Context) ManagedEnvironmentOutboundSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentOutboundSettingsPtrOutput)
+func (i *managedEnvironmentEncryptionPtrType) ToManagedEnvironmentEncryptionPtrOutputWithContext(ctx context.Context) ManagedEnvironmentEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentEncryptionPtrOutput)
 }
 
-// Configuration used to control the Environment Egress outbound traffic
-type ManagedEnvironmentOutboundSettingsOutput struct{ *pulumi.OutputState }
+// Peer traffic encryption settings for the Managed Environment
+type ManagedEnvironmentEncryptionOutput struct{ *pulumi.OutputState }
 
-func (ManagedEnvironmentOutboundSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedEnvironmentOutboundSettings)(nil)).Elem()
+func (ManagedEnvironmentEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedEnvironmentEncryption)(nil)).Elem()
 }
 
-func (o ManagedEnvironmentOutboundSettingsOutput) ToManagedEnvironmentOutboundSettingsOutput() ManagedEnvironmentOutboundSettingsOutput {
+func (o ManagedEnvironmentEncryptionOutput) ToManagedEnvironmentEncryptionOutput() ManagedEnvironmentEncryptionOutput {
 	return o
 }
 
-func (o ManagedEnvironmentOutboundSettingsOutput) ToManagedEnvironmentOutboundSettingsOutputWithContext(ctx context.Context) ManagedEnvironmentOutboundSettingsOutput {
+func (o ManagedEnvironmentEncryptionOutput) ToManagedEnvironmentEncryptionOutputWithContext(ctx context.Context) ManagedEnvironmentEncryptionOutput {
 	return o
 }
 
-func (o ManagedEnvironmentOutboundSettingsOutput) ToManagedEnvironmentOutboundSettingsPtrOutput() ManagedEnvironmentOutboundSettingsPtrOutput {
-	return o.ToManagedEnvironmentOutboundSettingsPtrOutputWithContext(context.Background())
+func (o ManagedEnvironmentEncryptionOutput) ToManagedEnvironmentEncryptionPtrOutput() ManagedEnvironmentEncryptionPtrOutput {
+	return o.ToManagedEnvironmentEncryptionPtrOutputWithContext(context.Background())
 }
 
-func (o ManagedEnvironmentOutboundSettingsOutput) ToManagedEnvironmentOutboundSettingsPtrOutputWithContext(ctx context.Context) ManagedEnvironmentOutboundSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedEnvironmentOutboundSettings) *ManagedEnvironmentOutboundSettings {
+func (o ManagedEnvironmentEncryptionOutput) ToManagedEnvironmentEncryptionPtrOutputWithContext(ctx context.Context) ManagedEnvironmentEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedEnvironmentEncryption) *ManagedEnvironmentEncryption {
 		return &v
-	}).(ManagedEnvironmentOutboundSettingsPtrOutput)
+	}).(ManagedEnvironmentEncryptionPtrOutput)
 }
 
-// Outbound type for the cluster
-func (o ManagedEnvironmentOutboundSettingsOutput) OutBoundType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedEnvironmentOutboundSettings) *string { return v.OutBoundType }).(pulumi.StringPtrOutput)
+// Boolean indicating whether the peer traffic encryption is enabled
+func (o ManagedEnvironmentEncryptionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedEnvironmentEncryption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Virtual Appliance IP used as the Egress controller for the Environment
-func (o ManagedEnvironmentOutboundSettingsOutput) VirtualNetworkApplianceIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedEnvironmentOutboundSettings) *string { return v.VirtualNetworkApplianceIp }).(pulumi.StringPtrOutput)
+type ManagedEnvironmentEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedEnvironmentEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedEnvironmentEncryption)(nil)).Elem()
 }
 
-type ManagedEnvironmentOutboundSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedEnvironmentOutboundSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedEnvironmentOutboundSettings)(nil)).Elem()
-}
-
-func (o ManagedEnvironmentOutboundSettingsPtrOutput) ToManagedEnvironmentOutboundSettingsPtrOutput() ManagedEnvironmentOutboundSettingsPtrOutput {
+func (o ManagedEnvironmentEncryptionPtrOutput) ToManagedEnvironmentEncryptionPtrOutput() ManagedEnvironmentEncryptionPtrOutput {
 	return o
 }
 
-func (o ManagedEnvironmentOutboundSettingsPtrOutput) ToManagedEnvironmentOutboundSettingsPtrOutputWithContext(ctx context.Context) ManagedEnvironmentOutboundSettingsPtrOutput {
+func (o ManagedEnvironmentEncryptionPtrOutput) ToManagedEnvironmentEncryptionPtrOutputWithContext(ctx context.Context) ManagedEnvironmentEncryptionPtrOutput {
 	return o
 }
 
-func (o ManagedEnvironmentOutboundSettingsPtrOutput) Elem() ManagedEnvironmentOutboundSettingsOutput {
-	return o.ApplyT(func(v *ManagedEnvironmentOutboundSettings) ManagedEnvironmentOutboundSettings {
+func (o ManagedEnvironmentEncryptionPtrOutput) Elem() ManagedEnvironmentEncryptionOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentEncryption) ManagedEnvironmentEncryption {
 		if v != nil {
 			return *v
 		}
-		var ret ManagedEnvironmentOutboundSettings
+		var ret ManagedEnvironmentEncryption
 		return ret
-	}).(ManagedEnvironmentOutboundSettingsOutput)
+	}).(ManagedEnvironmentEncryptionOutput)
 }
 
-// Outbound type for the cluster
-func (o ManagedEnvironmentOutboundSettingsPtrOutput) OutBoundType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedEnvironmentOutboundSettings) *string {
+// Boolean indicating whether the peer traffic encryption is enabled
+func (o ManagedEnvironmentEncryptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentEncryption) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.OutBoundType
-	}).(pulumi.StringPtrOutput)
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
-// Virtual Appliance IP used as the Egress controller for the Environment
-func (o ManagedEnvironmentOutboundSettingsPtrOutput) VirtualNetworkApplianceIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedEnvironmentOutboundSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VirtualNetworkApplianceIp
-	}).(pulumi.StringPtrOutput)
+// Peer authentication settings for the Managed Environment
+type ManagedEnvironmentPeerAuthentication struct {
+	// Mutual TLS authentication settings for the Managed Environment
+	Mtls *Mtls `pulumi:"mtls"`
 }
 
-// Configuration used to control the Environment Egress outbound traffic
-type ManagedEnvironmentOutboundSettingsResponse struct {
-	// Outbound type for the cluster
-	OutBoundType *string `pulumi:"outBoundType"`
-	// Virtual Appliance IP used as the Egress controller for the Environment
-	VirtualNetworkApplianceIp *string `pulumi:"virtualNetworkApplianceIp"`
+// ManagedEnvironmentPeerAuthenticationInput is an input type that accepts ManagedEnvironmentPeerAuthenticationArgs and ManagedEnvironmentPeerAuthenticationOutput values.
+// You can construct a concrete instance of `ManagedEnvironmentPeerAuthenticationInput` via:
+//
+//	ManagedEnvironmentPeerAuthenticationArgs{...}
+type ManagedEnvironmentPeerAuthenticationInput interface {
+	pulumi.Input
+
+	ToManagedEnvironmentPeerAuthenticationOutput() ManagedEnvironmentPeerAuthenticationOutput
+	ToManagedEnvironmentPeerAuthenticationOutputWithContext(context.Context) ManagedEnvironmentPeerAuthenticationOutput
 }
 
-// Configuration used to control the Environment Egress outbound traffic
-type ManagedEnvironmentOutboundSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedEnvironmentOutboundSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedEnvironmentOutboundSettingsResponse)(nil)).Elem()
+// Peer authentication settings for the Managed Environment
+type ManagedEnvironmentPeerAuthenticationArgs struct {
+	// Mutual TLS authentication settings for the Managed Environment
+	Mtls MtlsPtrInput `pulumi:"mtls"`
 }
 
-func (o ManagedEnvironmentOutboundSettingsResponseOutput) ToManagedEnvironmentOutboundSettingsResponseOutput() ManagedEnvironmentOutboundSettingsResponseOutput {
+func (ManagedEnvironmentPeerAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedEnvironmentPeerAuthentication)(nil)).Elem()
+}
+
+func (i ManagedEnvironmentPeerAuthenticationArgs) ToManagedEnvironmentPeerAuthenticationOutput() ManagedEnvironmentPeerAuthenticationOutput {
+	return i.ToManagedEnvironmentPeerAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ManagedEnvironmentPeerAuthenticationArgs) ToManagedEnvironmentPeerAuthenticationOutputWithContext(ctx context.Context) ManagedEnvironmentPeerAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentPeerAuthenticationOutput)
+}
+
+func (i ManagedEnvironmentPeerAuthenticationArgs) ToManagedEnvironmentPeerAuthenticationPtrOutput() ManagedEnvironmentPeerAuthenticationPtrOutput {
+	return i.ToManagedEnvironmentPeerAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedEnvironmentPeerAuthenticationArgs) ToManagedEnvironmentPeerAuthenticationPtrOutputWithContext(ctx context.Context) ManagedEnvironmentPeerAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentPeerAuthenticationOutput).ToManagedEnvironmentPeerAuthenticationPtrOutputWithContext(ctx)
+}
+
+// ManagedEnvironmentPeerAuthenticationPtrInput is an input type that accepts ManagedEnvironmentPeerAuthenticationArgs, ManagedEnvironmentPeerAuthenticationPtr and ManagedEnvironmentPeerAuthenticationPtrOutput values.
+// You can construct a concrete instance of `ManagedEnvironmentPeerAuthenticationPtrInput` via:
+//
+//	        ManagedEnvironmentPeerAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedEnvironmentPeerAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToManagedEnvironmentPeerAuthenticationPtrOutput() ManagedEnvironmentPeerAuthenticationPtrOutput
+	ToManagedEnvironmentPeerAuthenticationPtrOutputWithContext(context.Context) ManagedEnvironmentPeerAuthenticationPtrOutput
+}
+
+type managedEnvironmentPeerAuthenticationPtrType ManagedEnvironmentPeerAuthenticationArgs
+
+func ManagedEnvironmentPeerAuthenticationPtr(v *ManagedEnvironmentPeerAuthenticationArgs) ManagedEnvironmentPeerAuthenticationPtrInput {
+	return (*managedEnvironmentPeerAuthenticationPtrType)(v)
+}
+
+func (*managedEnvironmentPeerAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedEnvironmentPeerAuthentication)(nil)).Elem()
+}
+
+func (i *managedEnvironmentPeerAuthenticationPtrType) ToManagedEnvironmentPeerAuthenticationPtrOutput() ManagedEnvironmentPeerAuthenticationPtrOutput {
+	return i.ToManagedEnvironmentPeerAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *managedEnvironmentPeerAuthenticationPtrType) ToManagedEnvironmentPeerAuthenticationPtrOutputWithContext(ctx context.Context) ManagedEnvironmentPeerAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentPeerAuthenticationPtrOutput)
+}
+
+// Peer authentication settings for the Managed Environment
+type ManagedEnvironmentPeerAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ManagedEnvironmentPeerAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedEnvironmentPeerAuthentication)(nil)).Elem()
+}
+
+func (o ManagedEnvironmentPeerAuthenticationOutput) ToManagedEnvironmentPeerAuthenticationOutput() ManagedEnvironmentPeerAuthenticationOutput {
 	return o
 }
 
-func (o ManagedEnvironmentOutboundSettingsResponseOutput) ToManagedEnvironmentOutboundSettingsResponseOutputWithContext(ctx context.Context) ManagedEnvironmentOutboundSettingsResponseOutput {
+func (o ManagedEnvironmentPeerAuthenticationOutput) ToManagedEnvironmentPeerAuthenticationOutputWithContext(ctx context.Context) ManagedEnvironmentPeerAuthenticationOutput {
 	return o
 }
 
-// Outbound type for the cluster
-func (o ManagedEnvironmentOutboundSettingsResponseOutput) OutBoundType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedEnvironmentOutboundSettingsResponse) *string { return v.OutBoundType }).(pulumi.StringPtrOutput)
+func (o ManagedEnvironmentPeerAuthenticationOutput) ToManagedEnvironmentPeerAuthenticationPtrOutput() ManagedEnvironmentPeerAuthenticationPtrOutput {
+	return o.ToManagedEnvironmentPeerAuthenticationPtrOutputWithContext(context.Background())
 }
 
-// Virtual Appliance IP used as the Egress controller for the Environment
-func (o ManagedEnvironmentOutboundSettingsResponseOutput) VirtualNetworkApplianceIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedEnvironmentOutboundSettingsResponse) *string { return v.VirtualNetworkApplianceIp }).(pulumi.StringPtrOutput)
+func (o ManagedEnvironmentPeerAuthenticationOutput) ToManagedEnvironmentPeerAuthenticationPtrOutputWithContext(ctx context.Context) ManagedEnvironmentPeerAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedEnvironmentPeerAuthentication) *ManagedEnvironmentPeerAuthentication {
+		return &v
+	}).(ManagedEnvironmentPeerAuthenticationPtrOutput)
 }
 
-type ManagedEnvironmentOutboundSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedEnvironmentOutboundSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedEnvironmentOutboundSettingsResponse)(nil)).Elem()
+// Mutual TLS authentication settings for the Managed Environment
+func (o ManagedEnvironmentPeerAuthenticationOutput) Mtls() MtlsPtrOutput {
+	return o.ApplyT(func(v ManagedEnvironmentPeerAuthentication) *Mtls { return v.Mtls }).(MtlsPtrOutput)
 }
 
-func (o ManagedEnvironmentOutboundSettingsResponsePtrOutput) ToManagedEnvironmentOutboundSettingsResponsePtrOutput() ManagedEnvironmentOutboundSettingsResponsePtrOutput {
+type ManagedEnvironmentPeerAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedEnvironmentPeerAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedEnvironmentPeerAuthentication)(nil)).Elem()
+}
+
+func (o ManagedEnvironmentPeerAuthenticationPtrOutput) ToManagedEnvironmentPeerAuthenticationPtrOutput() ManagedEnvironmentPeerAuthenticationPtrOutput {
 	return o
 }
 
-func (o ManagedEnvironmentOutboundSettingsResponsePtrOutput) ToManagedEnvironmentOutboundSettingsResponsePtrOutputWithContext(ctx context.Context) ManagedEnvironmentOutboundSettingsResponsePtrOutput {
+func (o ManagedEnvironmentPeerAuthenticationPtrOutput) ToManagedEnvironmentPeerAuthenticationPtrOutputWithContext(ctx context.Context) ManagedEnvironmentPeerAuthenticationPtrOutput {
 	return o
 }
 
-func (o ManagedEnvironmentOutboundSettingsResponsePtrOutput) Elem() ManagedEnvironmentOutboundSettingsResponseOutput {
-	return o.ApplyT(func(v *ManagedEnvironmentOutboundSettingsResponse) ManagedEnvironmentOutboundSettingsResponse {
+func (o ManagedEnvironmentPeerAuthenticationPtrOutput) Elem() ManagedEnvironmentPeerAuthenticationOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentPeerAuthentication) ManagedEnvironmentPeerAuthentication {
 		if v != nil {
 			return *v
 		}
-		var ret ManagedEnvironmentOutboundSettingsResponse
+		var ret ManagedEnvironmentPeerAuthentication
 		return ret
-	}).(ManagedEnvironmentOutboundSettingsResponseOutput)
+	}).(ManagedEnvironmentPeerAuthenticationOutput)
 }
 
-// Outbound type for the cluster
-func (o ManagedEnvironmentOutboundSettingsResponsePtrOutput) OutBoundType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedEnvironmentOutboundSettingsResponse) *string {
+// Mutual TLS authentication settings for the Managed Environment
+func (o ManagedEnvironmentPeerAuthenticationPtrOutput) Mtls() MtlsPtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentPeerAuthentication) *Mtls {
 		if v == nil {
 			return nil
 		}
-		return v.OutBoundType
-	}).(pulumi.StringPtrOutput)
+		return v.Mtls
+	}).(MtlsPtrOutput)
 }
 
-// Virtual Appliance IP used as the Egress controller for the Environment
-func (o ManagedEnvironmentOutboundSettingsResponsePtrOutput) VirtualNetworkApplianceIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedEnvironmentOutboundSettingsResponse) *string {
+// Peer traffic settings for the Managed Environment
+type ManagedEnvironmentPeerTrafficConfiguration struct {
+	// Peer traffic encryption settings for the Managed Environment
+	Encryption *ManagedEnvironmentEncryption `pulumi:"encryption"`
+}
+
+// ManagedEnvironmentPeerTrafficConfigurationInput is an input type that accepts ManagedEnvironmentPeerTrafficConfigurationArgs and ManagedEnvironmentPeerTrafficConfigurationOutput values.
+// You can construct a concrete instance of `ManagedEnvironmentPeerTrafficConfigurationInput` via:
+//
+//	ManagedEnvironmentPeerTrafficConfigurationArgs{...}
+type ManagedEnvironmentPeerTrafficConfigurationInput interface {
+	pulumi.Input
+
+	ToManagedEnvironmentPeerTrafficConfigurationOutput() ManagedEnvironmentPeerTrafficConfigurationOutput
+	ToManagedEnvironmentPeerTrafficConfigurationOutputWithContext(context.Context) ManagedEnvironmentPeerTrafficConfigurationOutput
+}
+
+// Peer traffic settings for the Managed Environment
+type ManagedEnvironmentPeerTrafficConfigurationArgs struct {
+	// Peer traffic encryption settings for the Managed Environment
+	Encryption ManagedEnvironmentEncryptionPtrInput `pulumi:"encryption"`
+}
+
+func (ManagedEnvironmentPeerTrafficConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedEnvironmentPeerTrafficConfiguration)(nil)).Elem()
+}
+
+func (i ManagedEnvironmentPeerTrafficConfigurationArgs) ToManagedEnvironmentPeerTrafficConfigurationOutput() ManagedEnvironmentPeerTrafficConfigurationOutput {
+	return i.ToManagedEnvironmentPeerTrafficConfigurationOutputWithContext(context.Background())
+}
+
+func (i ManagedEnvironmentPeerTrafficConfigurationArgs) ToManagedEnvironmentPeerTrafficConfigurationOutputWithContext(ctx context.Context) ManagedEnvironmentPeerTrafficConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentPeerTrafficConfigurationOutput)
+}
+
+func (i ManagedEnvironmentPeerTrafficConfigurationArgs) ToManagedEnvironmentPeerTrafficConfigurationPtrOutput() ManagedEnvironmentPeerTrafficConfigurationPtrOutput {
+	return i.ToManagedEnvironmentPeerTrafficConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedEnvironmentPeerTrafficConfigurationArgs) ToManagedEnvironmentPeerTrafficConfigurationPtrOutputWithContext(ctx context.Context) ManagedEnvironmentPeerTrafficConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentPeerTrafficConfigurationOutput).ToManagedEnvironmentPeerTrafficConfigurationPtrOutputWithContext(ctx)
+}
+
+// ManagedEnvironmentPeerTrafficConfigurationPtrInput is an input type that accepts ManagedEnvironmentPeerTrafficConfigurationArgs, ManagedEnvironmentPeerTrafficConfigurationPtr and ManagedEnvironmentPeerTrafficConfigurationPtrOutput values.
+// You can construct a concrete instance of `ManagedEnvironmentPeerTrafficConfigurationPtrInput` via:
+//
+//	        ManagedEnvironmentPeerTrafficConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedEnvironmentPeerTrafficConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToManagedEnvironmentPeerTrafficConfigurationPtrOutput() ManagedEnvironmentPeerTrafficConfigurationPtrOutput
+	ToManagedEnvironmentPeerTrafficConfigurationPtrOutputWithContext(context.Context) ManagedEnvironmentPeerTrafficConfigurationPtrOutput
+}
+
+type managedEnvironmentPeerTrafficConfigurationPtrType ManagedEnvironmentPeerTrafficConfigurationArgs
+
+func ManagedEnvironmentPeerTrafficConfigurationPtr(v *ManagedEnvironmentPeerTrafficConfigurationArgs) ManagedEnvironmentPeerTrafficConfigurationPtrInput {
+	return (*managedEnvironmentPeerTrafficConfigurationPtrType)(v)
+}
+
+func (*managedEnvironmentPeerTrafficConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedEnvironmentPeerTrafficConfiguration)(nil)).Elem()
+}
+
+func (i *managedEnvironmentPeerTrafficConfigurationPtrType) ToManagedEnvironmentPeerTrafficConfigurationPtrOutput() ManagedEnvironmentPeerTrafficConfigurationPtrOutput {
+	return i.ToManagedEnvironmentPeerTrafficConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *managedEnvironmentPeerTrafficConfigurationPtrType) ToManagedEnvironmentPeerTrafficConfigurationPtrOutputWithContext(ctx context.Context) ManagedEnvironmentPeerTrafficConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentPeerTrafficConfigurationPtrOutput)
+}
+
+// Peer traffic settings for the Managed Environment
+type ManagedEnvironmentPeerTrafficConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ManagedEnvironmentPeerTrafficConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedEnvironmentPeerTrafficConfiguration)(nil)).Elem()
+}
+
+func (o ManagedEnvironmentPeerTrafficConfigurationOutput) ToManagedEnvironmentPeerTrafficConfigurationOutput() ManagedEnvironmentPeerTrafficConfigurationOutput {
+	return o
+}
+
+func (o ManagedEnvironmentPeerTrafficConfigurationOutput) ToManagedEnvironmentPeerTrafficConfigurationOutputWithContext(ctx context.Context) ManagedEnvironmentPeerTrafficConfigurationOutput {
+	return o
+}
+
+func (o ManagedEnvironmentPeerTrafficConfigurationOutput) ToManagedEnvironmentPeerTrafficConfigurationPtrOutput() ManagedEnvironmentPeerTrafficConfigurationPtrOutput {
+	return o.ToManagedEnvironmentPeerTrafficConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedEnvironmentPeerTrafficConfigurationOutput) ToManagedEnvironmentPeerTrafficConfigurationPtrOutputWithContext(ctx context.Context) ManagedEnvironmentPeerTrafficConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedEnvironmentPeerTrafficConfiguration) *ManagedEnvironmentPeerTrafficConfiguration {
+		return &v
+	}).(ManagedEnvironmentPeerTrafficConfigurationPtrOutput)
+}
+
+// Peer traffic encryption settings for the Managed Environment
+func (o ManagedEnvironmentPeerTrafficConfigurationOutput) Encryption() ManagedEnvironmentEncryptionPtrOutput {
+	return o.ApplyT(func(v ManagedEnvironmentPeerTrafficConfiguration) *ManagedEnvironmentEncryption { return v.Encryption }).(ManagedEnvironmentEncryptionPtrOutput)
+}
+
+type ManagedEnvironmentPeerTrafficConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedEnvironmentPeerTrafficConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedEnvironmentPeerTrafficConfiguration)(nil)).Elem()
+}
+
+func (o ManagedEnvironmentPeerTrafficConfigurationPtrOutput) ToManagedEnvironmentPeerTrafficConfigurationPtrOutput() ManagedEnvironmentPeerTrafficConfigurationPtrOutput {
+	return o
+}
+
+func (o ManagedEnvironmentPeerTrafficConfigurationPtrOutput) ToManagedEnvironmentPeerTrafficConfigurationPtrOutputWithContext(ctx context.Context) ManagedEnvironmentPeerTrafficConfigurationPtrOutput {
+	return o
+}
+
+func (o ManagedEnvironmentPeerTrafficConfigurationPtrOutput) Elem() ManagedEnvironmentPeerTrafficConfigurationOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentPeerTrafficConfiguration) ManagedEnvironmentPeerTrafficConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedEnvironmentPeerTrafficConfiguration
+		return ret
+	}).(ManagedEnvironmentPeerTrafficConfigurationOutput)
+}
+
+// Peer traffic encryption settings for the Managed Environment
+func (o ManagedEnvironmentPeerTrafficConfigurationPtrOutput) Encryption() ManagedEnvironmentEncryptionPtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentPeerTrafficConfiguration) *ManagedEnvironmentEncryption {
 		if v == nil {
 			return nil
 		}
-		return v.VirtualNetworkApplianceIp
-	}).(pulumi.StringPtrOutput)
+		return v.Encryption
+	}).(ManagedEnvironmentEncryptionPtrOutput)
+}
+
+// Peer traffic encryption settings for the Managed Environment
+type ManagedEnvironmentResponseEncryption struct {
+	// Boolean indicating whether the peer traffic encryption is enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// Peer traffic encryption settings for the Managed Environment
+type ManagedEnvironmentResponseEncryptionOutput struct{ *pulumi.OutputState }
+
+func (ManagedEnvironmentResponseEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedEnvironmentResponseEncryption)(nil)).Elem()
+}
+
+func (o ManagedEnvironmentResponseEncryptionOutput) ToManagedEnvironmentResponseEncryptionOutput() ManagedEnvironmentResponseEncryptionOutput {
+	return o
+}
+
+func (o ManagedEnvironmentResponseEncryptionOutput) ToManagedEnvironmentResponseEncryptionOutputWithContext(ctx context.Context) ManagedEnvironmentResponseEncryptionOutput {
+	return o
+}
+
+// Boolean indicating whether the peer traffic encryption is enabled
+func (o ManagedEnvironmentResponseEncryptionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedEnvironmentResponseEncryption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedEnvironmentResponseEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedEnvironmentResponseEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedEnvironmentResponseEncryption)(nil)).Elem()
+}
+
+func (o ManagedEnvironmentResponseEncryptionPtrOutput) ToManagedEnvironmentResponseEncryptionPtrOutput() ManagedEnvironmentResponseEncryptionPtrOutput {
+	return o
+}
+
+func (o ManagedEnvironmentResponseEncryptionPtrOutput) ToManagedEnvironmentResponseEncryptionPtrOutputWithContext(ctx context.Context) ManagedEnvironmentResponseEncryptionPtrOutput {
+	return o
+}
+
+func (o ManagedEnvironmentResponseEncryptionPtrOutput) Elem() ManagedEnvironmentResponseEncryptionOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentResponseEncryption) ManagedEnvironmentResponseEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedEnvironmentResponseEncryption
+		return ret
+	}).(ManagedEnvironmentResponseEncryptionOutput)
+}
+
+// Boolean indicating whether the peer traffic encryption is enabled
+func (o ManagedEnvironmentResponseEncryptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentResponseEncryption) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Peer authentication settings for the Managed Environment
+type ManagedEnvironmentResponsePeerAuthentication struct {
+	// Mutual TLS authentication settings for the Managed Environment
+	Mtls *MtlsResponse `pulumi:"mtls"`
+}
+
+// Peer authentication settings for the Managed Environment
+type ManagedEnvironmentResponsePeerAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ManagedEnvironmentResponsePeerAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedEnvironmentResponsePeerAuthentication)(nil)).Elem()
+}
+
+func (o ManagedEnvironmentResponsePeerAuthenticationOutput) ToManagedEnvironmentResponsePeerAuthenticationOutput() ManagedEnvironmentResponsePeerAuthenticationOutput {
+	return o
+}
+
+func (o ManagedEnvironmentResponsePeerAuthenticationOutput) ToManagedEnvironmentResponsePeerAuthenticationOutputWithContext(ctx context.Context) ManagedEnvironmentResponsePeerAuthenticationOutput {
+	return o
+}
+
+// Mutual TLS authentication settings for the Managed Environment
+func (o ManagedEnvironmentResponsePeerAuthenticationOutput) Mtls() MtlsResponsePtrOutput {
+	return o.ApplyT(func(v ManagedEnvironmentResponsePeerAuthentication) *MtlsResponse { return v.Mtls }).(MtlsResponsePtrOutput)
+}
+
+type ManagedEnvironmentResponsePeerAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedEnvironmentResponsePeerAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedEnvironmentResponsePeerAuthentication)(nil)).Elem()
+}
+
+func (o ManagedEnvironmentResponsePeerAuthenticationPtrOutput) ToManagedEnvironmentResponsePeerAuthenticationPtrOutput() ManagedEnvironmentResponsePeerAuthenticationPtrOutput {
+	return o
+}
+
+func (o ManagedEnvironmentResponsePeerAuthenticationPtrOutput) ToManagedEnvironmentResponsePeerAuthenticationPtrOutputWithContext(ctx context.Context) ManagedEnvironmentResponsePeerAuthenticationPtrOutput {
+	return o
+}
+
+func (o ManagedEnvironmentResponsePeerAuthenticationPtrOutput) Elem() ManagedEnvironmentResponsePeerAuthenticationOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentResponsePeerAuthentication) ManagedEnvironmentResponsePeerAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedEnvironmentResponsePeerAuthentication
+		return ret
+	}).(ManagedEnvironmentResponsePeerAuthenticationOutput)
+}
+
+// Mutual TLS authentication settings for the Managed Environment
+func (o ManagedEnvironmentResponsePeerAuthenticationPtrOutput) Mtls() MtlsResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentResponsePeerAuthentication) *MtlsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Mtls
+	}).(MtlsResponsePtrOutput)
+}
+
+// Peer traffic settings for the Managed Environment
+type ManagedEnvironmentResponsePeerTrafficConfiguration struct {
+	// Peer traffic encryption settings for the Managed Environment
+	Encryption *ManagedEnvironmentResponseEncryption `pulumi:"encryption"`
+}
+
+// Peer traffic settings for the Managed Environment
+type ManagedEnvironmentResponsePeerTrafficConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ManagedEnvironmentResponsePeerTrafficConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedEnvironmentResponsePeerTrafficConfiguration)(nil)).Elem()
+}
+
+func (o ManagedEnvironmentResponsePeerTrafficConfigurationOutput) ToManagedEnvironmentResponsePeerTrafficConfigurationOutput() ManagedEnvironmentResponsePeerTrafficConfigurationOutput {
+	return o
+}
+
+func (o ManagedEnvironmentResponsePeerTrafficConfigurationOutput) ToManagedEnvironmentResponsePeerTrafficConfigurationOutputWithContext(ctx context.Context) ManagedEnvironmentResponsePeerTrafficConfigurationOutput {
+	return o
+}
+
+// Peer traffic encryption settings for the Managed Environment
+func (o ManagedEnvironmentResponsePeerTrafficConfigurationOutput) Encryption() ManagedEnvironmentResponseEncryptionPtrOutput {
+	return o.ApplyT(func(v ManagedEnvironmentResponsePeerTrafficConfiguration) *ManagedEnvironmentResponseEncryption {
+		return v.Encryption
+	}).(ManagedEnvironmentResponseEncryptionPtrOutput)
+}
+
+type ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedEnvironmentResponsePeerTrafficConfiguration)(nil)).Elem()
+}
+
+func (o ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput) ToManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput() ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput {
+	return o
+}
+
+func (o ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput) ToManagedEnvironmentResponsePeerTrafficConfigurationPtrOutputWithContext(ctx context.Context) ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput {
+	return o
+}
+
+func (o ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput) Elem() ManagedEnvironmentResponsePeerTrafficConfigurationOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentResponsePeerTrafficConfiguration) ManagedEnvironmentResponsePeerTrafficConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedEnvironmentResponsePeerTrafficConfiguration
+		return ret
+	}).(ManagedEnvironmentResponsePeerTrafficConfigurationOutput)
+}
+
+// Peer traffic encryption settings for the Managed Environment
+func (o ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput) Encryption() ManagedEnvironmentResponseEncryptionPtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironmentResponsePeerTrafficConfiguration) *ManagedEnvironmentResponseEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(ManagedEnvironmentResponseEncryptionPtrOutput)
 }
 
 // Storage properties
@@ -24587,6 +26501,205 @@ func (o ManagedEnvironmentStorageResponsePropertiesOutput) ToManagedEnvironmentS
 // Azure file properties
 func (o ManagedEnvironmentStorageResponsePropertiesOutput) AzureFile() AzureFilePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v ManagedEnvironmentStorageResponseProperties) *AzureFilePropertiesResponse { return v.AzureFile }).(AzureFilePropertiesResponsePtrOutput)
+}
+
+// Optional settings for a Managed Identity that is assigned to the Session pool.
+type ManagedIdentitySetting struct {
+	// The resource ID of a user-assigned managed identity that is assigned to the Session Pool, or 'system' for system-assigned identity.
+	Identity string `pulumi:"identity"`
+	// Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available.
+	Lifecycle *string `pulumi:"lifecycle"`
+}
+
+// Defaults sets the appropriate defaults for ManagedIdentitySetting
+func (val *ManagedIdentitySetting) Defaults() *ManagedIdentitySetting {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Lifecycle == nil {
+		lifecycle_ := "None"
+		tmp.Lifecycle = &lifecycle_
+	}
+	return &tmp
+}
+
+// ManagedIdentitySettingInput is an input type that accepts ManagedIdentitySettingArgs and ManagedIdentitySettingOutput values.
+// You can construct a concrete instance of `ManagedIdentitySettingInput` via:
+//
+//	ManagedIdentitySettingArgs{...}
+type ManagedIdentitySettingInput interface {
+	pulumi.Input
+
+	ToManagedIdentitySettingOutput() ManagedIdentitySettingOutput
+	ToManagedIdentitySettingOutputWithContext(context.Context) ManagedIdentitySettingOutput
+}
+
+// Optional settings for a Managed Identity that is assigned to the Session pool.
+type ManagedIdentitySettingArgs struct {
+	// The resource ID of a user-assigned managed identity that is assigned to the Session Pool, or 'system' for system-assigned identity.
+	Identity pulumi.StringInput `pulumi:"identity"`
+	// Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available.
+	Lifecycle pulumi.StringPtrInput `pulumi:"lifecycle"`
+}
+
+// Defaults sets the appropriate defaults for ManagedIdentitySettingArgs
+func (val *ManagedIdentitySettingArgs) Defaults() *ManagedIdentitySettingArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Lifecycle == nil {
+		tmp.Lifecycle = pulumi.StringPtr("None")
+	}
+	return &tmp
+}
+func (ManagedIdentitySettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentitySetting)(nil)).Elem()
+}
+
+func (i ManagedIdentitySettingArgs) ToManagedIdentitySettingOutput() ManagedIdentitySettingOutput {
+	return i.ToManagedIdentitySettingOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentitySettingArgs) ToManagedIdentitySettingOutputWithContext(ctx context.Context) ManagedIdentitySettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentitySettingOutput)
+}
+
+// ManagedIdentitySettingArrayInput is an input type that accepts ManagedIdentitySettingArray and ManagedIdentitySettingArrayOutput values.
+// You can construct a concrete instance of `ManagedIdentitySettingArrayInput` via:
+//
+//	ManagedIdentitySettingArray{ ManagedIdentitySettingArgs{...} }
+type ManagedIdentitySettingArrayInput interface {
+	pulumi.Input
+
+	ToManagedIdentitySettingArrayOutput() ManagedIdentitySettingArrayOutput
+	ToManagedIdentitySettingArrayOutputWithContext(context.Context) ManagedIdentitySettingArrayOutput
+}
+
+type ManagedIdentitySettingArray []ManagedIdentitySettingInput
+
+func (ManagedIdentitySettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedIdentitySetting)(nil)).Elem()
+}
+
+func (i ManagedIdentitySettingArray) ToManagedIdentitySettingArrayOutput() ManagedIdentitySettingArrayOutput {
+	return i.ToManagedIdentitySettingArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentitySettingArray) ToManagedIdentitySettingArrayOutputWithContext(ctx context.Context) ManagedIdentitySettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentitySettingArrayOutput)
+}
+
+// Optional settings for a Managed Identity that is assigned to the Session pool.
+type ManagedIdentitySettingOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentitySettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentitySetting)(nil)).Elem()
+}
+
+func (o ManagedIdentitySettingOutput) ToManagedIdentitySettingOutput() ManagedIdentitySettingOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingOutput) ToManagedIdentitySettingOutputWithContext(ctx context.Context) ManagedIdentitySettingOutput {
+	return o
+}
+
+// The resource ID of a user-assigned managed identity that is assigned to the Session Pool, or 'system' for system-assigned identity.
+func (o ManagedIdentitySettingOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentitySetting) string { return v.Identity }).(pulumi.StringOutput)
+}
+
+// Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available.
+func (o ManagedIdentitySettingOutput) Lifecycle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentitySetting) *string { return v.Lifecycle }).(pulumi.StringPtrOutput)
+}
+
+type ManagedIdentitySettingArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentitySettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedIdentitySetting)(nil)).Elem()
+}
+
+func (o ManagedIdentitySettingArrayOutput) ToManagedIdentitySettingArrayOutput() ManagedIdentitySettingArrayOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingArrayOutput) ToManagedIdentitySettingArrayOutputWithContext(ctx context.Context) ManagedIdentitySettingArrayOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingArrayOutput) Index(i pulumi.IntInput) ManagedIdentitySettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedIdentitySetting {
+		return vs[0].([]ManagedIdentitySetting)[vs[1].(int)]
+	}).(ManagedIdentitySettingOutput)
+}
+
+// Optional settings for a Managed Identity that is assigned to the Session pool.
+type ManagedIdentitySettingResponse struct {
+	// The resource ID of a user-assigned managed identity that is assigned to the Session Pool, or 'system' for system-assigned identity.
+	Identity string `pulumi:"identity"`
+	// Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available.
+	Lifecycle *string `pulumi:"lifecycle"`
+}
+
+// Defaults sets the appropriate defaults for ManagedIdentitySettingResponse
+func (val *ManagedIdentitySettingResponse) Defaults() *ManagedIdentitySettingResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Lifecycle == nil {
+		lifecycle_ := "None"
+		tmp.Lifecycle = &lifecycle_
+	}
+	return &tmp
+}
+
+// Optional settings for a Managed Identity that is assigned to the Session pool.
+type ManagedIdentitySettingResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentitySettingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentitySettingResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentitySettingResponseOutput) ToManagedIdentitySettingResponseOutput() ManagedIdentitySettingResponseOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingResponseOutput) ToManagedIdentitySettingResponseOutputWithContext(ctx context.Context) ManagedIdentitySettingResponseOutput {
+	return o
+}
+
+// The resource ID of a user-assigned managed identity that is assigned to the Session Pool, or 'system' for system-assigned identity.
+func (o ManagedIdentitySettingResponseOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentitySettingResponse) string { return v.Identity }).(pulumi.StringOutput)
+}
+
+// Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available.
+func (o ManagedIdentitySettingResponseOutput) Lifecycle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentitySettingResponse) *string { return v.Lifecycle }).(pulumi.StringPtrOutput)
+}
+
+type ManagedIdentitySettingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentitySettingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedIdentitySettingResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentitySettingResponseArrayOutput) ToManagedIdentitySettingResponseArrayOutput() ManagedIdentitySettingResponseArrayOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingResponseArrayOutput) ToManagedIdentitySettingResponseArrayOutputWithContext(ctx context.Context) ManagedIdentitySettingResponseArrayOutput {
+	return o
+}
+
+func (o ManagedIdentitySettingResponseArrayOutput) Index(i pulumi.IntInput) ManagedIdentitySettingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedIdentitySettingResponse {
+		return vs[0].([]ManagedIdentitySettingResponse)[vs[1].(int)]
+	}).(ManagedIdentitySettingResponseOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -24859,6 +26972,470 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 		}
 		return v.UserAssignedIdentities
 	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+// Configuration properties for mutual TLS authentication
+type Mtls struct {
+	// Boolean indicating whether the mutual TLS authentication is enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// MtlsInput is an input type that accepts MtlsArgs and MtlsOutput values.
+// You can construct a concrete instance of `MtlsInput` via:
+//
+//	MtlsArgs{...}
+type MtlsInput interface {
+	pulumi.Input
+
+	ToMtlsOutput() MtlsOutput
+	ToMtlsOutputWithContext(context.Context) MtlsOutput
+}
+
+// Configuration properties for mutual TLS authentication
+type MtlsArgs struct {
+	// Boolean indicating whether the mutual TLS authentication is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (MtlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Mtls)(nil)).Elem()
+}
+
+func (i MtlsArgs) ToMtlsOutput() MtlsOutput {
+	return i.ToMtlsOutputWithContext(context.Background())
+}
+
+func (i MtlsArgs) ToMtlsOutputWithContext(ctx context.Context) MtlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MtlsOutput)
+}
+
+func (i MtlsArgs) ToMtlsPtrOutput() MtlsPtrOutput {
+	return i.ToMtlsPtrOutputWithContext(context.Background())
+}
+
+func (i MtlsArgs) ToMtlsPtrOutputWithContext(ctx context.Context) MtlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MtlsOutput).ToMtlsPtrOutputWithContext(ctx)
+}
+
+// MtlsPtrInput is an input type that accepts MtlsArgs, MtlsPtr and MtlsPtrOutput values.
+// You can construct a concrete instance of `MtlsPtrInput` via:
+//
+//	        MtlsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MtlsPtrInput interface {
+	pulumi.Input
+
+	ToMtlsPtrOutput() MtlsPtrOutput
+	ToMtlsPtrOutputWithContext(context.Context) MtlsPtrOutput
+}
+
+type mtlsPtrType MtlsArgs
+
+func MtlsPtr(v *MtlsArgs) MtlsPtrInput {
+	return (*mtlsPtrType)(v)
+}
+
+func (*mtlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Mtls)(nil)).Elem()
+}
+
+func (i *mtlsPtrType) ToMtlsPtrOutput() MtlsPtrOutput {
+	return i.ToMtlsPtrOutputWithContext(context.Background())
+}
+
+func (i *mtlsPtrType) ToMtlsPtrOutputWithContext(ctx context.Context) MtlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MtlsPtrOutput)
+}
+
+// Configuration properties for mutual TLS authentication
+type MtlsOutput struct{ *pulumi.OutputState }
+
+func (MtlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Mtls)(nil)).Elem()
+}
+
+func (o MtlsOutput) ToMtlsOutput() MtlsOutput {
+	return o
+}
+
+func (o MtlsOutput) ToMtlsOutputWithContext(ctx context.Context) MtlsOutput {
+	return o
+}
+
+func (o MtlsOutput) ToMtlsPtrOutput() MtlsPtrOutput {
+	return o.ToMtlsPtrOutputWithContext(context.Background())
+}
+
+func (o MtlsOutput) ToMtlsPtrOutputWithContext(ctx context.Context) MtlsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Mtls) *Mtls {
+		return &v
+	}).(MtlsPtrOutput)
+}
+
+// Boolean indicating whether the mutual TLS authentication is enabled
+func (o MtlsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Mtls) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MtlsPtrOutput struct{ *pulumi.OutputState }
+
+func (MtlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Mtls)(nil)).Elem()
+}
+
+func (o MtlsPtrOutput) ToMtlsPtrOutput() MtlsPtrOutput {
+	return o
+}
+
+func (o MtlsPtrOutput) ToMtlsPtrOutputWithContext(ctx context.Context) MtlsPtrOutput {
+	return o
+}
+
+func (o MtlsPtrOutput) Elem() MtlsOutput {
+	return o.ApplyT(func(v *Mtls) Mtls {
+		if v != nil {
+			return *v
+		}
+		var ret Mtls
+		return ret
+	}).(MtlsOutput)
+}
+
+// Boolean indicating whether the mutual TLS authentication is enabled
+func (o MtlsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Mtls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration properties for mutual TLS authentication
+type MtlsResponse struct {
+	// Boolean indicating whether the mutual TLS authentication is enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// Configuration properties for mutual TLS authentication
+type MtlsResponseOutput struct{ *pulumi.OutputState }
+
+func (MtlsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MtlsResponse)(nil)).Elem()
+}
+
+func (o MtlsResponseOutput) ToMtlsResponseOutput() MtlsResponseOutput {
+	return o
+}
+
+func (o MtlsResponseOutput) ToMtlsResponseOutputWithContext(ctx context.Context) MtlsResponseOutput {
+	return o
+}
+
+// Boolean indicating whether the mutual TLS authentication is enabled
+func (o MtlsResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MtlsResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MtlsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MtlsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MtlsResponse)(nil)).Elem()
+}
+
+func (o MtlsResponsePtrOutput) ToMtlsResponsePtrOutput() MtlsResponsePtrOutput {
+	return o
+}
+
+func (o MtlsResponsePtrOutput) ToMtlsResponsePtrOutputWithContext(ctx context.Context) MtlsResponsePtrOutput {
+	return o
+}
+
+func (o MtlsResponsePtrOutput) Elem() MtlsResponseOutput {
+	return o.ApplyT(func(v *MtlsResponse) MtlsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MtlsResponse
+		return ret
+	}).(MtlsResponseOutput)
+}
+
+// Boolean indicating whether the mutual TLS authentication is enabled
+func (o MtlsResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MtlsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Nacos properties.
+type NacosComponent struct {
+	// Type of the Java Component.
+	// Expected value is 'Nacos'.
+	ComponentType string `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations []JavaComponentConfigurationProperty `pulumi:"configurations"`
+	// Java component scaling configurations
+	Scale *JavaComponentPropertiesScale `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds []JavaComponentServiceBind `pulumi:"serviceBinds"`
+}
+
+// NacosComponentInput is an input type that accepts NacosComponentArgs and NacosComponentOutput values.
+// You can construct a concrete instance of `NacosComponentInput` via:
+//
+//	NacosComponentArgs{...}
+type NacosComponentInput interface {
+	pulumi.Input
+
+	ToNacosComponentOutput() NacosComponentOutput
+	ToNacosComponentOutputWithContext(context.Context) NacosComponentOutput
+}
+
+// Nacos properties.
+type NacosComponentArgs struct {
+	// Type of the Java Component.
+	// Expected value is 'Nacos'.
+	ComponentType pulumi.StringInput `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations JavaComponentConfigurationPropertyArrayInput `pulumi:"configurations"`
+	// Java component scaling configurations
+	Scale JavaComponentPropertiesScalePtrInput `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds JavaComponentServiceBindArrayInput `pulumi:"serviceBinds"`
+}
+
+func (NacosComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NacosComponent)(nil)).Elem()
+}
+
+func (i NacosComponentArgs) ToNacosComponentOutput() NacosComponentOutput {
+	return i.ToNacosComponentOutputWithContext(context.Background())
+}
+
+func (i NacosComponentArgs) ToNacosComponentOutputWithContext(ctx context.Context) NacosComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NacosComponentOutput)
+}
+
+func (i NacosComponentArgs) ToNacosComponentPtrOutput() NacosComponentPtrOutput {
+	return i.ToNacosComponentPtrOutputWithContext(context.Background())
+}
+
+func (i NacosComponentArgs) ToNacosComponentPtrOutputWithContext(ctx context.Context) NacosComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NacosComponentOutput).ToNacosComponentPtrOutputWithContext(ctx)
+}
+
+// NacosComponentPtrInput is an input type that accepts NacosComponentArgs, NacosComponentPtr and NacosComponentPtrOutput values.
+// You can construct a concrete instance of `NacosComponentPtrInput` via:
+//
+//	        NacosComponentArgs{...}
+//
+//	or:
+//
+//	        nil
+type NacosComponentPtrInput interface {
+	pulumi.Input
+
+	ToNacosComponentPtrOutput() NacosComponentPtrOutput
+	ToNacosComponentPtrOutputWithContext(context.Context) NacosComponentPtrOutput
+}
+
+type nacosComponentPtrType NacosComponentArgs
+
+func NacosComponentPtr(v *NacosComponentArgs) NacosComponentPtrInput {
+	return (*nacosComponentPtrType)(v)
+}
+
+func (*nacosComponentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NacosComponent)(nil)).Elem()
+}
+
+func (i *nacosComponentPtrType) ToNacosComponentPtrOutput() NacosComponentPtrOutput {
+	return i.ToNacosComponentPtrOutputWithContext(context.Background())
+}
+
+func (i *nacosComponentPtrType) ToNacosComponentPtrOutputWithContext(ctx context.Context) NacosComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NacosComponentPtrOutput)
+}
+
+// Nacos properties.
+type NacosComponentOutput struct{ *pulumi.OutputState }
+
+func (NacosComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NacosComponent)(nil)).Elem()
+}
+
+func (o NacosComponentOutput) ToNacosComponentOutput() NacosComponentOutput {
+	return o
+}
+
+func (o NacosComponentOutput) ToNacosComponentOutputWithContext(ctx context.Context) NacosComponentOutput {
+	return o
+}
+
+func (o NacosComponentOutput) ToNacosComponentPtrOutput() NacosComponentPtrOutput {
+	return o.ToNacosComponentPtrOutputWithContext(context.Background())
+}
+
+func (o NacosComponentOutput) ToNacosComponentPtrOutputWithContext(ctx context.Context) NacosComponentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NacosComponent) *NacosComponent {
+		return &v
+	}).(NacosComponentPtrOutput)
+}
+
+// Type of the Java Component.
+// Expected value is 'Nacos'.
+func (o NacosComponentOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v NacosComponent) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// List of Java Components configuration properties
+func (o NacosComponentOutput) Configurations() JavaComponentConfigurationPropertyArrayOutput {
+	return o.ApplyT(func(v NacosComponent) []JavaComponentConfigurationProperty { return v.Configurations }).(JavaComponentConfigurationPropertyArrayOutput)
+}
+
+// Java component scaling configurations
+func (o NacosComponentOutput) Scale() JavaComponentPropertiesScalePtrOutput {
+	return o.ApplyT(func(v NacosComponent) *JavaComponentPropertiesScale { return v.Scale }).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o NacosComponentOutput) ServiceBinds() JavaComponentServiceBindArrayOutput {
+	return o.ApplyT(func(v NacosComponent) []JavaComponentServiceBind { return v.ServiceBinds }).(JavaComponentServiceBindArrayOutput)
+}
+
+type NacosComponentPtrOutput struct{ *pulumi.OutputState }
+
+func (NacosComponentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NacosComponent)(nil)).Elem()
+}
+
+func (o NacosComponentPtrOutput) ToNacosComponentPtrOutput() NacosComponentPtrOutput {
+	return o
+}
+
+func (o NacosComponentPtrOutput) ToNacosComponentPtrOutputWithContext(ctx context.Context) NacosComponentPtrOutput {
+	return o
+}
+
+func (o NacosComponentPtrOutput) Elem() NacosComponentOutput {
+	return o.ApplyT(func(v *NacosComponent) NacosComponent {
+		if v != nil {
+			return *v
+		}
+		var ret NacosComponent
+		return ret
+	}).(NacosComponentOutput)
+}
+
+// Type of the Java Component.
+// Expected value is 'Nacos'.
+func (o NacosComponentPtrOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NacosComponent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComponentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Java Components configuration properties
+func (o NacosComponentPtrOutput) Configurations() JavaComponentConfigurationPropertyArrayOutput {
+	return o.ApplyT(func(v *NacosComponent) []JavaComponentConfigurationProperty {
+		if v == nil {
+			return nil
+		}
+		return v.Configurations
+	}).(JavaComponentConfigurationPropertyArrayOutput)
+}
+
+// Java component scaling configurations
+func (o NacosComponentPtrOutput) Scale() JavaComponentPropertiesScalePtrOutput {
+	return o.ApplyT(func(v *NacosComponent) *JavaComponentPropertiesScale {
+		if v == nil {
+			return nil
+		}
+		return v.Scale
+	}).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o NacosComponentPtrOutput) ServiceBinds() JavaComponentServiceBindArrayOutput {
+	return o.ApplyT(func(v *NacosComponent) []JavaComponentServiceBind {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceBinds
+	}).(JavaComponentServiceBindArrayOutput)
+}
+
+// Nacos properties.
+type NacosComponentResponse struct {
+	// Type of the Java Component.
+	// Expected value is 'Nacos'.
+	ComponentType string `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations []JavaComponentConfigurationPropertyResponse `pulumi:"configurations"`
+	// Java Component Ingress configurations.
+	Ingress *JavaComponentIngressResponse `pulumi:"ingress"`
+	// Provisioning state of the Java Component.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Java component scaling configurations
+	Scale *JavaComponentPropertiesResponseScale `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds []JavaComponentServiceBindResponse `pulumi:"serviceBinds"`
+}
+
+// Nacos properties.
+type NacosComponentResponseOutput struct{ *pulumi.OutputState }
+
+func (NacosComponentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NacosComponentResponse)(nil)).Elem()
+}
+
+func (o NacosComponentResponseOutput) ToNacosComponentResponseOutput() NacosComponentResponseOutput {
+	return o
+}
+
+func (o NacosComponentResponseOutput) ToNacosComponentResponseOutputWithContext(ctx context.Context) NacosComponentResponseOutput {
+	return o
+}
+
+// Type of the Java Component.
+// Expected value is 'Nacos'.
+func (o NacosComponentResponseOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v NacosComponentResponse) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// List of Java Components configuration properties
+func (o NacosComponentResponseOutput) Configurations() JavaComponentConfigurationPropertyResponseArrayOutput {
+	return o.ApplyT(func(v NacosComponentResponse) []JavaComponentConfigurationPropertyResponse { return v.Configurations }).(JavaComponentConfigurationPropertyResponseArrayOutput)
+}
+
+// Java Component Ingress configurations.
+func (o NacosComponentResponseOutput) Ingress() JavaComponentIngressResponsePtrOutput {
+	return o.ApplyT(func(v NacosComponentResponse) *JavaComponentIngressResponse { return v.Ingress }).(JavaComponentIngressResponsePtrOutput)
+}
+
+// Provisioning state of the Java Component.
+func (o NacosComponentResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v NacosComponentResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Java component scaling configurations
+func (o NacosComponentResponseOutput) Scale() JavaComponentPropertiesResponseScalePtrOutput {
+	return o.ApplyT(func(v NacosComponentResponse) *JavaComponentPropertiesResponseScale { return v.Scale }).(JavaComponentPropertiesResponseScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o NacosComponentResponseOutput) ServiceBinds() JavaComponentServiceBindResponseArrayOutput {
+	return o.ApplyT(func(v NacosComponentResponse) []JavaComponentServiceBindResponse { return v.ServiceBinds }).(JavaComponentServiceBindResponseArrayOutput)
 }
 
 // The configuration settings of the nonce used in the login flow.
@@ -28178,6 +30755,216 @@ func (o ScaleRuleResponseArrayOutput) Index(i pulumi.IntInput) ScaleRuleResponse
 	}).(ScaleRuleResponseOutput)
 }
 
+// Spring Cloud Gateway route definition
+type ScgRoute struct {
+	// Filters of the route
+	Filters []string `pulumi:"filters"`
+	// Id of the route
+	Id string `pulumi:"id"`
+	// Order of the route
+	Order *float64 `pulumi:"order"`
+	// Predicates of the route
+	Predicates []string `pulumi:"predicates"`
+	// Uri of the route
+	Uri string `pulumi:"uri"`
+}
+
+// ScgRouteInput is an input type that accepts ScgRouteArgs and ScgRouteOutput values.
+// You can construct a concrete instance of `ScgRouteInput` via:
+//
+//	ScgRouteArgs{...}
+type ScgRouteInput interface {
+	pulumi.Input
+
+	ToScgRouteOutput() ScgRouteOutput
+	ToScgRouteOutputWithContext(context.Context) ScgRouteOutput
+}
+
+// Spring Cloud Gateway route definition
+type ScgRouteArgs struct {
+	// Filters of the route
+	Filters pulumi.StringArrayInput `pulumi:"filters"`
+	// Id of the route
+	Id pulumi.StringInput `pulumi:"id"`
+	// Order of the route
+	Order pulumi.Float64PtrInput `pulumi:"order"`
+	// Predicates of the route
+	Predicates pulumi.StringArrayInput `pulumi:"predicates"`
+	// Uri of the route
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (ScgRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScgRoute)(nil)).Elem()
+}
+
+func (i ScgRouteArgs) ToScgRouteOutput() ScgRouteOutput {
+	return i.ToScgRouteOutputWithContext(context.Background())
+}
+
+func (i ScgRouteArgs) ToScgRouteOutputWithContext(ctx context.Context) ScgRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScgRouteOutput)
+}
+
+// ScgRouteArrayInput is an input type that accepts ScgRouteArray and ScgRouteArrayOutput values.
+// You can construct a concrete instance of `ScgRouteArrayInput` via:
+//
+//	ScgRouteArray{ ScgRouteArgs{...} }
+type ScgRouteArrayInput interface {
+	pulumi.Input
+
+	ToScgRouteArrayOutput() ScgRouteArrayOutput
+	ToScgRouteArrayOutputWithContext(context.Context) ScgRouteArrayOutput
+}
+
+type ScgRouteArray []ScgRouteInput
+
+func (ScgRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScgRoute)(nil)).Elem()
+}
+
+func (i ScgRouteArray) ToScgRouteArrayOutput() ScgRouteArrayOutput {
+	return i.ToScgRouteArrayOutputWithContext(context.Background())
+}
+
+func (i ScgRouteArray) ToScgRouteArrayOutputWithContext(ctx context.Context) ScgRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScgRouteArrayOutput)
+}
+
+// Spring Cloud Gateway route definition
+type ScgRouteOutput struct{ *pulumi.OutputState }
+
+func (ScgRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScgRoute)(nil)).Elem()
+}
+
+func (o ScgRouteOutput) ToScgRouteOutput() ScgRouteOutput {
+	return o
+}
+
+func (o ScgRouteOutput) ToScgRouteOutputWithContext(ctx context.Context) ScgRouteOutput {
+	return o
+}
+
+// Filters of the route
+func (o ScgRouteOutput) Filters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScgRoute) []string { return v.Filters }).(pulumi.StringArrayOutput)
+}
+
+// Id of the route
+func (o ScgRouteOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ScgRoute) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Order of the route
+func (o ScgRouteOutput) Order() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ScgRoute) *float64 { return v.Order }).(pulumi.Float64PtrOutput)
+}
+
+// Predicates of the route
+func (o ScgRouteOutput) Predicates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScgRoute) []string { return v.Predicates }).(pulumi.StringArrayOutput)
+}
+
+// Uri of the route
+func (o ScgRouteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ScgRoute) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type ScgRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (ScgRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScgRoute)(nil)).Elem()
+}
+
+func (o ScgRouteArrayOutput) ToScgRouteArrayOutput() ScgRouteArrayOutput {
+	return o
+}
+
+func (o ScgRouteArrayOutput) ToScgRouteArrayOutputWithContext(ctx context.Context) ScgRouteArrayOutput {
+	return o
+}
+
+func (o ScgRouteArrayOutput) Index(i pulumi.IntInput) ScgRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScgRoute {
+		return vs[0].([]ScgRoute)[vs[1].(int)]
+	}).(ScgRouteOutput)
+}
+
+// Spring Cloud Gateway route definition
+type ScgRouteResponse struct {
+	// Filters of the route
+	Filters []string `pulumi:"filters"`
+	// Id of the route
+	Id string `pulumi:"id"`
+	// Order of the route
+	Order *float64 `pulumi:"order"`
+	// Predicates of the route
+	Predicates []string `pulumi:"predicates"`
+	// Uri of the route
+	Uri string `pulumi:"uri"`
+}
+
+// Spring Cloud Gateway route definition
+type ScgRouteResponseOutput struct{ *pulumi.OutputState }
+
+func (ScgRouteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScgRouteResponse)(nil)).Elem()
+}
+
+func (o ScgRouteResponseOutput) ToScgRouteResponseOutput() ScgRouteResponseOutput {
+	return o
+}
+
+func (o ScgRouteResponseOutput) ToScgRouteResponseOutputWithContext(ctx context.Context) ScgRouteResponseOutput {
+	return o
+}
+
+// Filters of the route
+func (o ScgRouteResponseOutput) Filters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScgRouteResponse) []string { return v.Filters }).(pulumi.StringArrayOutput)
+}
+
+// Id of the route
+func (o ScgRouteResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ScgRouteResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Order of the route
+func (o ScgRouteResponseOutput) Order() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ScgRouteResponse) *float64 { return v.Order }).(pulumi.Float64PtrOutput)
+}
+
+// Predicates of the route
+func (o ScgRouteResponseOutput) Predicates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScgRouteResponse) []string { return v.Predicates }).(pulumi.StringArrayOutput)
+}
+
+// Uri of the route
+func (o ScgRouteResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ScgRouteResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type ScgRouteResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ScgRouteResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScgRouteResponse)(nil)).Elem()
+}
+
+func (o ScgRouteResponseArrayOutput) ToScgRouteResponseArrayOutput() ScgRouteResponseArrayOutput {
+	return o
+}
+
+func (o ScgRouteResponseArrayOutput) ToScgRouteResponseArrayOutputWithContext(ctx context.Context) ScgRouteResponseArrayOutput {
+	return o
+}
+
+func (o ScgRouteResponseArrayOutput) Index(i pulumi.IntInput) ScgRouteResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScgRouteResponse {
+		return vs[0].([]ScgRouteResponse)[vs[1].(int)]
+	}).(ScgRouteResponseOutput)
+}
+
 // Maintenance schedule entry for a managed environment.
 type ScheduledEntry struct {
 	// Length of maintenance window range from 8 to 24 hours.
@@ -28703,6 +31490,368 @@ func (o SecretVolumeItemResponseArrayOutput) Index(i pulumi.IntInput) SecretVolu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretVolumeItemResponse {
 		return vs[0].([]SecretVolumeItemResponse)[vs[1].(int)]
 	}).(SecretVolumeItemResponseOutput)
+}
+
+// Container App to be a dev service
+type Service struct {
+	// Dev ContainerApp service type
+	Type string `pulumi:"type"`
+}
+
+// ServiceInput is an input type that accepts ServiceArgs and ServiceOutput values.
+// You can construct a concrete instance of `ServiceInput` via:
+//
+//	ServiceArgs{...}
+type ServiceInput interface {
+	pulumi.Input
+
+	ToServiceOutput() ServiceOutput
+	ToServiceOutputWithContext(context.Context) ServiceOutput
+}
+
+// Container App to be a dev service
+type ServiceArgs struct {
+	// Dev ContainerApp service type
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Service)(nil)).Elem()
+}
+
+func (i ServiceArgs) ToServiceOutput() ServiceOutput {
+	return i.ToServiceOutputWithContext(context.Background())
+}
+
+func (i ServiceArgs) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOutput)
+}
+
+func (i ServiceArgs) ToServicePtrOutput() ServicePtrOutput {
+	return i.ToServicePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceArgs) ToServicePtrOutputWithContext(ctx context.Context) ServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOutput).ToServicePtrOutputWithContext(ctx)
+}
+
+// ServicePtrInput is an input type that accepts ServiceArgs, ServicePtr and ServicePtrOutput values.
+// You can construct a concrete instance of `ServicePtrInput` via:
+//
+//	        ServiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePtrInput interface {
+	pulumi.Input
+
+	ToServicePtrOutput() ServicePtrOutput
+	ToServicePtrOutputWithContext(context.Context) ServicePtrOutput
+}
+
+type servicePtrType ServiceArgs
+
+func ServicePtr(v *ServiceArgs) ServicePtrInput {
+	return (*servicePtrType)(v)
+}
+
+func (*servicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Service)(nil)).Elem()
+}
+
+func (i *servicePtrType) ToServicePtrOutput() ServicePtrOutput {
+	return i.ToServicePtrOutputWithContext(context.Background())
+}
+
+func (i *servicePtrType) ToServicePtrOutputWithContext(ctx context.Context) ServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePtrOutput)
+}
+
+// Container App to be a dev service
+type ServiceOutput struct{ *pulumi.OutputState }
+
+func (ServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Service)(nil)).Elem()
+}
+
+func (o ServiceOutput) ToServiceOutput() ServiceOutput {
+	return o
+}
+
+func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
+	return o
+}
+
+func (o ServiceOutput) ToServicePtrOutput() ServicePtrOutput {
+	return o.ToServicePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceOutput) ToServicePtrOutputWithContext(ctx context.Context) ServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Service) *Service {
+		return &v
+	}).(ServicePtrOutput)
+}
+
+// Dev ContainerApp service type
+func (o ServiceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v Service) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServicePtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Service)(nil)).Elem()
+}
+
+func (o ServicePtrOutput) ToServicePtrOutput() ServicePtrOutput {
+	return o
+}
+
+func (o ServicePtrOutput) ToServicePtrOutputWithContext(ctx context.Context) ServicePtrOutput {
+	return o
+}
+
+func (o ServicePtrOutput) Elem() ServiceOutput {
+	return o.ApplyT(func(v *Service) Service {
+		if v != nil {
+			return *v
+		}
+		var ret Service
+		return ret
+	}).(ServiceOutput)
+}
+
+// Dev ContainerApp service type
+func (o ServicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration to bind a ContainerApp to a dev ContainerApp Service
+type ServiceBind struct {
+	// Name of the service bind
+	Name *string `pulumi:"name"`
+	// Resource id of the target service
+	ServiceId *string `pulumi:"serviceId"`
+}
+
+// ServiceBindInput is an input type that accepts ServiceBindArgs and ServiceBindOutput values.
+// You can construct a concrete instance of `ServiceBindInput` via:
+//
+//	ServiceBindArgs{...}
+type ServiceBindInput interface {
+	pulumi.Input
+
+	ToServiceBindOutput() ServiceBindOutput
+	ToServiceBindOutputWithContext(context.Context) ServiceBindOutput
+}
+
+// Configuration to bind a ContainerApp to a dev ContainerApp Service
+type ServiceBindArgs struct {
+	// Name of the service bind
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Resource id of the target service
+	ServiceId pulumi.StringPtrInput `pulumi:"serviceId"`
+}
+
+func (ServiceBindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceBind)(nil)).Elem()
+}
+
+func (i ServiceBindArgs) ToServiceBindOutput() ServiceBindOutput {
+	return i.ToServiceBindOutputWithContext(context.Background())
+}
+
+func (i ServiceBindArgs) ToServiceBindOutputWithContext(ctx context.Context) ServiceBindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceBindOutput)
+}
+
+// ServiceBindArrayInput is an input type that accepts ServiceBindArray and ServiceBindArrayOutput values.
+// You can construct a concrete instance of `ServiceBindArrayInput` via:
+//
+//	ServiceBindArray{ ServiceBindArgs{...} }
+type ServiceBindArrayInput interface {
+	pulumi.Input
+
+	ToServiceBindArrayOutput() ServiceBindArrayOutput
+	ToServiceBindArrayOutputWithContext(context.Context) ServiceBindArrayOutput
+}
+
+type ServiceBindArray []ServiceBindInput
+
+func (ServiceBindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceBind)(nil)).Elem()
+}
+
+func (i ServiceBindArray) ToServiceBindArrayOutput() ServiceBindArrayOutput {
+	return i.ToServiceBindArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceBindArray) ToServiceBindArrayOutputWithContext(ctx context.Context) ServiceBindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceBindArrayOutput)
+}
+
+// Configuration to bind a ContainerApp to a dev ContainerApp Service
+type ServiceBindOutput struct{ *pulumi.OutputState }
+
+func (ServiceBindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceBind)(nil)).Elem()
+}
+
+func (o ServiceBindOutput) ToServiceBindOutput() ServiceBindOutput {
+	return o
+}
+
+func (o ServiceBindOutput) ToServiceBindOutputWithContext(ctx context.Context) ServiceBindOutput {
+	return o
+}
+
+// Name of the service bind
+func (o ServiceBindOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBind) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Resource id of the target service
+func (o ServiceBindOutput) ServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBind) *string { return v.ServiceId }).(pulumi.StringPtrOutput)
+}
+
+type ServiceBindArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceBindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceBind)(nil)).Elem()
+}
+
+func (o ServiceBindArrayOutput) ToServiceBindArrayOutput() ServiceBindArrayOutput {
+	return o
+}
+
+func (o ServiceBindArrayOutput) ToServiceBindArrayOutputWithContext(ctx context.Context) ServiceBindArrayOutput {
+	return o
+}
+
+func (o ServiceBindArrayOutput) Index(i pulumi.IntInput) ServiceBindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceBind {
+		return vs[0].([]ServiceBind)[vs[1].(int)]
+	}).(ServiceBindOutput)
+}
+
+// Configuration to bind a ContainerApp to a dev ContainerApp Service
+type ServiceBindResponse struct {
+	// Name of the service bind
+	Name *string `pulumi:"name"`
+	// Resource id of the target service
+	ServiceId *string `pulumi:"serviceId"`
+}
+
+// Configuration to bind a ContainerApp to a dev ContainerApp Service
+type ServiceBindResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceBindResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceBindResponse)(nil)).Elem()
+}
+
+func (o ServiceBindResponseOutput) ToServiceBindResponseOutput() ServiceBindResponseOutput {
+	return o
+}
+
+func (o ServiceBindResponseOutput) ToServiceBindResponseOutputWithContext(ctx context.Context) ServiceBindResponseOutput {
+	return o
+}
+
+// Name of the service bind
+func (o ServiceBindResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBindResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Resource id of the target service
+func (o ServiceBindResponseOutput) ServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBindResponse) *string { return v.ServiceId }).(pulumi.StringPtrOutput)
+}
+
+type ServiceBindResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceBindResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceBindResponse)(nil)).Elem()
+}
+
+func (o ServiceBindResponseArrayOutput) ToServiceBindResponseArrayOutput() ServiceBindResponseArrayOutput {
+	return o
+}
+
+func (o ServiceBindResponseArrayOutput) ToServiceBindResponseArrayOutputWithContext(ctx context.Context) ServiceBindResponseArrayOutput {
+	return o
+}
+
+func (o ServiceBindResponseArrayOutput) Index(i pulumi.IntInput) ServiceBindResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceBindResponse {
+		return vs[0].([]ServiceBindResponse)[vs[1].(int)]
+	}).(ServiceBindResponseOutput)
+}
+
+// Container App to be a dev service
+type ServiceResponse struct {
+	// Dev ContainerApp service type
+	Type string `pulumi:"type"`
+}
+
+// Container App to be a dev service
+type ServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceResponse)(nil)).Elem()
+}
+
+func (o ServiceResponseOutput) ToServiceResponseOutput() ServiceResponseOutput {
+	return o
+}
+
+func (o ServiceResponseOutput) ToServiceResponseOutputWithContext(ctx context.Context) ServiceResponseOutput {
+	return o
+}
+
+// Dev ContainerApp service type
+func (o ServiceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServiceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceResponse)(nil)).Elem()
+}
+
+func (o ServiceResponsePtrOutput) ToServiceResponsePtrOutput() ServiceResponsePtrOutput {
+	return o
+}
+
+func (o ServiceResponsePtrOutput) ToServiceResponsePtrOutputWithContext(ctx context.Context) ServiceResponsePtrOutput {
+	return o
+}
+
+func (o ServiceResponsePtrOutput) Elem() ServiceResponseOutput {
+	return o.ApplyT(func(v *ServiceResponse) ServiceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceResponse
+		return ret
+	}).(ServiceResponseOutput)
+}
+
+// Dev ContainerApp service type
+func (o ServiceResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Container definitions for the sessions of the session pool.
@@ -29724,10 +32873,12 @@ func (o SessionPoolSecretResponseArrayOutput) Index(i pulumi.IntInput) SessionPo
 
 // Session pool private registry credentials.
 type SessionRegistryCredentials struct {
+	// A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
+	Identity *string `pulumi:"identity"`
 	// The name of the secret that contains the registry login password
 	PasswordSecretRef *string `pulumi:"passwordSecretRef"`
 	// Container registry server.
-	RegistryServer *string `pulumi:"registryServer"`
+	Server *string `pulumi:"server"`
 	// Container registry username.
 	Username *string `pulumi:"username"`
 }
@@ -29745,10 +32896,12 @@ type SessionRegistryCredentialsInput interface {
 
 // Session pool private registry credentials.
 type SessionRegistryCredentialsArgs struct {
+	// A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
 	// The name of the secret that contains the registry login password
 	PasswordSecretRef pulumi.StringPtrInput `pulumi:"passwordSecretRef"`
 	// Container registry server.
-	RegistryServer pulumi.StringPtrInput `pulumi:"registryServer"`
+	Server pulumi.StringPtrInput `pulumi:"server"`
 	// Container registry username.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -29831,14 +32984,19 @@ func (o SessionRegistryCredentialsOutput) ToSessionRegistryCredentialsPtrOutputW
 	}).(SessionRegistryCredentialsPtrOutput)
 }
 
+// A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
+func (o SessionRegistryCredentialsOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionRegistryCredentials) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
 // The name of the secret that contains the registry login password
 func (o SessionRegistryCredentialsOutput) PasswordSecretRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SessionRegistryCredentials) *string { return v.PasswordSecretRef }).(pulumi.StringPtrOutput)
 }
 
 // Container registry server.
-func (o SessionRegistryCredentialsOutput) RegistryServer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SessionRegistryCredentials) *string { return v.RegistryServer }).(pulumi.StringPtrOutput)
+func (o SessionRegistryCredentialsOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionRegistryCredentials) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
 // Container registry username.
@@ -29870,6 +33028,16 @@ func (o SessionRegistryCredentialsPtrOutput) Elem() SessionRegistryCredentialsOu
 	}).(SessionRegistryCredentialsOutput)
 }
 
+// A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
+func (o SessionRegistryCredentialsPtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionRegistryCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(pulumi.StringPtrOutput)
+}
+
 // The name of the secret that contains the registry login password
 func (o SessionRegistryCredentialsPtrOutput) PasswordSecretRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SessionRegistryCredentials) *string {
@@ -29881,12 +33049,12 @@ func (o SessionRegistryCredentialsPtrOutput) PasswordSecretRef() pulumi.StringPt
 }
 
 // Container registry server.
-func (o SessionRegistryCredentialsPtrOutput) RegistryServer() pulumi.StringPtrOutput {
+func (o SessionRegistryCredentialsPtrOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SessionRegistryCredentials) *string {
 		if v == nil {
 			return nil
 		}
-		return v.RegistryServer
+		return v.Server
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29902,10 +33070,12 @@ func (o SessionRegistryCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
 
 // Session pool private registry credentials.
 type SessionRegistryCredentialsResponse struct {
+	// A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
+	Identity *string `pulumi:"identity"`
 	// The name of the secret that contains the registry login password
 	PasswordSecretRef *string `pulumi:"passwordSecretRef"`
 	// Container registry server.
-	RegistryServer *string `pulumi:"registryServer"`
+	Server *string `pulumi:"server"`
 	// Container registry username.
 	Username *string `pulumi:"username"`
 }
@@ -29925,14 +33095,19 @@ func (o SessionRegistryCredentialsResponseOutput) ToSessionRegistryCredentialsRe
 	return o
 }
 
+// A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
+func (o SessionRegistryCredentialsResponseOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionRegistryCredentialsResponse) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
 // The name of the secret that contains the registry login password
 func (o SessionRegistryCredentialsResponseOutput) PasswordSecretRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SessionRegistryCredentialsResponse) *string { return v.PasswordSecretRef }).(pulumi.StringPtrOutput)
 }
 
 // Container registry server.
-func (o SessionRegistryCredentialsResponseOutput) RegistryServer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SessionRegistryCredentialsResponse) *string { return v.RegistryServer }).(pulumi.StringPtrOutput)
+func (o SessionRegistryCredentialsResponseOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionRegistryCredentialsResponse) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
 // Container registry username.
@@ -29964,6 +33139,16 @@ func (o SessionRegistryCredentialsResponsePtrOutput) Elem() SessionRegistryCrede
 	}).(SessionRegistryCredentialsResponseOutput)
 }
 
+// A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
+func (o SessionRegistryCredentialsResponsePtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionRegistryCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(pulumi.StringPtrOutput)
+}
+
 // The name of the secret that contains the registry login password
 func (o SessionRegistryCredentialsResponsePtrOutput) PasswordSecretRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SessionRegistryCredentialsResponse) *string {
@@ -29975,12 +33160,12 @@ func (o SessionRegistryCredentialsResponsePtrOutput) PasswordSecretRef() pulumi.
 }
 
 // Container registry server.
-func (o SessionRegistryCredentialsResponsePtrOutput) RegistryServer() pulumi.StringPtrOutput {
+func (o SessionRegistryCredentialsResponsePtrOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SessionRegistryCredentialsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.RegistryServer
+		return v.Server
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29992,6 +33177,1089 @@ func (o SessionRegistryCredentialsResponsePtrOutput) Username() pulumi.StringPtr
 		}
 		return v.Username
 	}).(pulumi.StringPtrOutput)
+}
+
+// Spring Boot Admin properties.
+type SpringBootAdminComponent struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringBootAdmin'.
+	ComponentType string `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations []JavaComponentConfigurationProperty `pulumi:"configurations"`
+	// Java component scaling configurations
+	Scale *JavaComponentPropertiesScale `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds []JavaComponentServiceBind `pulumi:"serviceBinds"`
+}
+
+// SpringBootAdminComponentInput is an input type that accepts SpringBootAdminComponentArgs and SpringBootAdminComponentOutput values.
+// You can construct a concrete instance of `SpringBootAdminComponentInput` via:
+//
+//	SpringBootAdminComponentArgs{...}
+type SpringBootAdminComponentInput interface {
+	pulumi.Input
+
+	ToSpringBootAdminComponentOutput() SpringBootAdminComponentOutput
+	ToSpringBootAdminComponentOutputWithContext(context.Context) SpringBootAdminComponentOutput
+}
+
+// Spring Boot Admin properties.
+type SpringBootAdminComponentArgs struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringBootAdmin'.
+	ComponentType pulumi.StringInput `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations JavaComponentConfigurationPropertyArrayInput `pulumi:"configurations"`
+	// Java component scaling configurations
+	Scale JavaComponentPropertiesScalePtrInput `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds JavaComponentServiceBindArrayInput `pulumi:"serviceBinds"`
+}
+
+func (SpringBootAdminComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringBootAdminComponent)(nil)).Elem()
+}
+
+func (i SpringBootAdminComponentArgs) ToSpringBootAdminComponentOutput() SpringBootAdminComponentOutput {
+	return i.ToSpringBootAdminComponentOutputWithContext(context.Background())
+}
+
+func (i SpringBootAdminComponentArgs) ToSpringBootAdminComponentOutputWithContext(ctx context.Context) SpringBootAdminComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringBootAdminComponentOutput)
+}
+
+func (i SpringBootAdminComponentArgs) ToSpringBootAdminComponentPtrOutput() SpringBootAdminComponentPtrOutput {
+	return i.ToSpringBootAdminComponentPtrOutputWithContext(context.Background())
+}
+
+func (i SpringBootAdminComponentArgs) ToSpringBootAdminComponentPtrOutputWithContext(ctx context.Context) SpringBootAdminComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringBootAdminComponentOutput).ToSpringBootAdminComponentPtrOutputWithContext(ctx)
+}
+
+// SpringBootAdminComponentPtrInput is an input type that accepts SpringBootAdminComponentArgs, SpringBootAdminComponentPtr and SpringBootAdminComponentPtrOutput values.
+// You can construct a concrete instance of `SpringBootAdminComponentPtrInput` via:
+//
+//	        SpringBootAdminComponentArgs{...}
+//
+//	or:
+//
+//	        nil
+type SpringBootAdminComponentPtrInput interface {
+	pulumi.Input
+
+	ToSpringBootAdminComponentPtrOutput() SpringBootAdminComponentPtrOutput
+	ToSpringBootAdminComponentPtrOutputWithContext(context.Context) SpringBootAdminComponentPtrOutput
+}
+
+type springBootAdminComponentPtrType SpringBootAdminComponentArgs
+
+func SpringBootAdminComponentPtr(v *SpringBootAdminComponentArgs) SpringBootAdminComponentPtrInput {
+	return (*springBootAdminComponentPtrType)(v)
+}
+
+func (*springBootAdminComponentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpringBootAdminComponent)(nil)).Elem()
+}
+
+func (i *springBootAdminComponentPtrType) ToSpringBootAdminComponentPtrOutput() SpringBootAdminComponentPtrOutput {
+	return i.ToSpringBootAdminComponentPtrOutputWithContext(context.Background())
+}
+
+func (i *springBootAdminComponentPtrType) ToSpringBootAdminComponentPtrOutputWithContext(ctx context.Context) SpringBootAdminComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringBootAdminComponentPtrOutput)
+}
+
+// Spring Boot Admin properties.
+type SpringBootAdminComponentOutput struct{ *pulumi.OutputState }
+
+func (SpringBootAdminComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringBootAdminComponent)(nil)).Elem()
+}
+
+func (o SpringBootAdminComponentOutput) ToSpringBootAdminComponentOutput() SpringBootAdminComponentOutput {
+	return o
+}
+
+func (o SpringBootAdminComponentOutput) ToSpringBootAdminComponentOutputWithContext(ctx context.Context) SpringBootAdminComponentOutput {
+	return o
+}
+
+func (o SpringBootAdminComponentOutput) ToSpringBootAdminComponentPtrOutput() SpringBootAdminComponentPtrOutput {
+	return o.ToSpringBootAdminComponentPtrOutputWithContext(context.Background())
+}
+
+func (o SpringBootAdminComponentOutput) ToSpringBootAdminComponentPtrOutputWithContext(ctx context.Context) SpringBootAdminComponentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpringBootAdminComponent) *SpringBootAdminComponent {
+		return &v
+	}).(SpringBootAdminComponentPtrOutput)
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringBootAdmin'.
+func (o SpringBootAdminComponentOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringBootAdminComponent) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringBootAdminComponentOutput) Configurations() JavaComponentConfigurationPropertyArrayOutput {
+	return o.ApplyT(func(v SpringBootAdminComponent) []JavaComponentConfigurationProperty { return v.Configurations }).(JavaComponentConfigurationPropertyArrayOutput)
+}
+
+// Java component scaling configurations
+func (o SpringBootAdminComponentOutput) Scale() JavaComponentPropertiesScalePtrOutput {
+	return o.ApplyT(func(v SpringBootAdminComponent) *JavaComponentPropertiesScale { return v.Scale }).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringBootAdminComponentOutput) ServiceBinds() JavaComponentServiceBindArrayOutput {
+	return o.ApplyT(func(v SpringBootAdminComponent) []JavaComponentServiceBind { return v.ServiceBinds }).(JavaComponentServiceBindArrayOutput)
+}
+
+type SpringBootAdminComponentPtrOutput struct{ *pulumi.OutputState }
+
+func (SpringBootAdminComponentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpringBootAdminComponent)(nil)).Elem()
+}
+
+func (o SpringBootAdminComponentPtrOutput) ToSpringBootAdminComponentPtrOutput() SpringBootAdminComponentPtrOutput {
+	return o
+}
+
+func (o SpringBootAdminComponentPtrOutput) ToSpringBootAdminComponentPtrOutputWithContext(ctx context.Context) SpringBootAdminComponentPtrOutput {
+	return o
+}
+
+func (o SpringBootAdminComponentPtrOutput) Elem() SpringBootAdminComponentOutput {
+	return o.ApplyT(func(v *SpringBootAdminComponent) SpringBootAdminComponent {
+		if v != nil {
+			return *v
+		}
+		var ret SpringBootAdminComponent
+		return ret
+	}).(SpringBootAdminComponentOutput)
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringBootAdmin'.
+func (o SpringBootAdminComponentPtrOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpringBootAdminComponent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComponentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringBootAdminComponentPtrOutput) Configurations() JavaComponentConfigurationPropertyArrayOutput {
+	return o.ApplyT(func(v *SpringBootAdminComponent) []JavaComponentConfigurationProperty {
+		if v == nil {
+			return nil
+		}
+		return v.Configurations
+	}).(JavaComponentConfigurationPropertyArrayOutput)
+}
+
+// Java component scaling configurations
+func (o SpringBootAdminComponentPtrOutput) Scale() JavaComponentPropertiesScalePtrOutput {
+	return o.ApplyT(func(v *SpringBootAdminComponent) *JavaComponentPropertiesScale {
+		if v == nil {
+			return nil
+		}
+		return v.Scale
+	}).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringBootAdminComponentPtrOutput) ServiceBinds() JavaComponentServiceBindArrayOutput {
+	return o.ApplyT(func(v *SpringBootAdminComponent) []JavaComponentServiceBind {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceBinds
+	}).(JavaComponentServiceBindArrayOutput)
+}
+
+// Spring Boot Admin properties.
+type SpringBootAdminComponentResponse struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringBootAdmin'.
+	ComponentType string `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations []JavaComponentConfigurationPropertyResponse `pulumi:"configurations"`
+	// Java Component Ingress configurations.
+	Ingress *JavaComponentIngressResponse `pulumi:"ingress"`
+	// Provisioning state of the Java Component.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Java component scaling configurations
+	Scale *JavaComponentPropertiesResponseScale `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds []JavaComponentServiceBindResponse `pulumi:"serviceBinds"`
+}
+
+// Spring Boot Admin properties.
+type SpringBootAdminComponentResponseOutput struct{ *pulumi.OutputState }
+
+func (SpringBootAdminComponentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringBootAdminComponentResponse)(nil)).Elem()
+}
+
+func (o SpringBootAdminComponentResponseOutput) ToSpringBootAdminComponentResponseOutput() SpringBootAdminComponentResponseOutput {
+	return o
+}
+
+func (o SpringBootAdminComponentResponseOutput) ToSpringBootAdminComponentResponseOutputWithContext(ctx context.Context) SpringBootAdminComponentResponseOutput {
+	return o
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringBootAdmin'.
+func (o SpringBootAdminComponentResponseOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringBootAdminComponentResponse) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringBootAdminComponentResponseOutput) Configurations() JavaComponentConfigurationPropertyResponseArrayOutput {
+	return o.ApplyT(func(v SpringBootAdminComponentResponse) []JavaComponentConfigurationPropertyResponse {
+		return v.Configurations
+	}).(JavaComponentConfigurationPropertyResponseArrayOutput)
+}
+
+// Java Component Ingress configurations.
+func (o SpringBootAdminComponentResponseOutput) Ingress() JavaComponentIngressResponsePtrOutput {
+	return o.ApplyT(func(v SpringBootAdminComponentResponse) *JavaComponentIngressResponse { return v.Ingress }).(JavaComponentIngressResponsePtrOutput)
+}
+
+// Provisioning state of the Java Component.
+func (o SpringBootAdminComponentResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringBootAdminComponentResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Java component scaling configurations
+func (o SpringBootAdminComponentResponseOutput) Scale() JavaComponentPropertiesResponseScalePtrOutput {
+	return o.ApplyT(func(v SpringBootAdminComponentResponse) *JavaComponentPropertiesResponseScale { return v.Scale }).(JavaComponentPropertiesResponseScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringBootAdminComponentResponseOutput) ServiceBinds() JavaComponentServiceBindResponseArrayOutput {
+	return o.ApplyT(func(v SpringBootAdminComponentResponse) []JavaComponentServiceBindResponse { return v.ServiceBinds }).(JavaComponentServiceBindResponseArrayOutput)
+}
+
+// Spring Cloud Config properties.
+type SpringCloudConfigComponent struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringCloudConfig'.
+	ComponentType string `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations []JavaComponentConfigurationProperty `pulumi:"configurations"`
+	// Java component scaling configurations
+	Scale *JavaComponentPropertiesScale `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds []JavaComponentServiceBind `pulumi:"serviceBinds"`
+}
+
+// SpringCloudConfigComponentInput is an input type that accepts SpringCloudConfigComponentArgs and SpringCloudConfigComponentOutput values.
+// You can construct a concrete instance of `SpringCloudConfigComponentInput` via:
+//
+//	SpringCloudConfigComponentArgs{...}
+type SpringCloudConfigComponentInput interface {
+	pulumi.Input
+
+	ToSpringCloudConfigComponentOutput() SpringCloudConfigComponentOutput
+	ToSpringCloudConfigComponentOutputWithContext(context.Context) SpringCloudConfigComponentOutput
+}
+
+// Spring Cloud Config properties.
+type SpringCloudConfigComponentArgs struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringCloudConfig'.
+	ComponentType pulumi.StringInput `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations JavaComponentConfigurationPropertyArrayInput `pulumi:"configurations"`
+	// Java component scaling configurations
+	Scale JavaComponentPropertiesScalePtrInput `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds JavaComponentServiceBindArrayInput `pulumi:"serviceBinds"`
+}
+
+func (SpringCloudConfigComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudConfigComponent)(nil)).Elem()
+}
+
+func (i SpringCloudConfigComponentArgs) ToSpringCloudConfigComponentOutput() SpringCloudConfigComponentOutput {
+	return i.ToSpringCloudConfigComponentOutputWithContext(context.Background())
+}
+
+func (i SpringCloudConfigComponentArgs) ToSpringCloudConfigComponentOutputWithContext(ctx context.Context) SpringCloudConfigComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudConfigComponentOutput)
+}
+
+func (i SpringCloudConfigComponentArgs) ToSpringCloudConfigComponentPtrOutput() SpringCloudConfigComponentPtrOutput {
+	return i.ToSpringCloudConfigComponentPtrOutputWithContext(context.Background())
+}
+
+func (i SpringCloudConfigComponentArgs) ToSpringCloudConfigComponentPtrOutputWithContext(ctx context.Context) SpringCloudConfigComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudConfigComponentOutput).ToSpringCloudConfigComponentPtrOutputWithContext(ctx)
+}
+
+// SpringCloudConfigComponentPtrInput is an input type that accepts SpringCloudConfigComponentArgs, SpringCloudConfigComponentPtr and SpringCloudConfigComponentPtrOutput values.
+// You can construct a concrete instance of `SpringCloudConfigComponentPtrInput` via:
+//
+//	        SpringCloudConfigComponentArgs{...}
+//
+//	or:
+//
+//	        nil
+type SpringCloudConfigComponentPtrInput interface {
+	pulumi.Input
+
+	ToSpringCloudConfigComponentPtrOutput() SpringCloudConfigComponentPtrOutput
+	ToSpringCloudConfigComponentPtrOutputWithContext(context.Context) SpringCloudConfigComponentPtrOutput
+}
+
+type springCloudConfigComponentPtrType SpringCloudConfigComponentArgs
+
+func SpringCloudConfigComponentPtr(v *SpringCloudConfigComponentArgs) SpringCloudConfigComponentPtrInput {
+	return (*springCloudConfigComponentPtrType)(v)
+}
+
+func (*springCloudConfigComponentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpringCloudConfigComponent)(nil)).Elem()
+}
+
+func (i *springCloudConfigComponentPtrType) ToSpringCloudConfigComponentPtrOutput() SpringCloudConfigComponentPtrOutput {
+	return i.ToSpringCloudConfigComponentPtrOutputWithContext(context.Background())
+}
+
+func (i *springCloudConfigComponentPtrType) ToSpringCloudConfigComponentPtrOutputWithContext(ctx context.Context) SpringCloudConfigComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudConfigComponentPtrOutput)
+}
+
+// Spring Cloud Config properties.
+type SpringCloudConfigComponentOutput struct{ *pulumi.OutputState }
+
+func (SpringCloudConfigComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudConfigComponent)(nil)).Elem()
+}
+
+func (o SpringCloudConfigComponentOutput) ToSpringCloudConfigComponentOutput() SpringCloudConfigComponentOutput {
+	return o
+}
+
+func (o SpringCloudConfigComponentOutput) ToSpringCloudConfigComponentOutputWithContext(ctx context.Context) SpringCloudConfigComponentOutput {
+	return o
+}
+
+func (o SpringCloudConfigComponentOutput) ToSpringCloudConfigComponentPtrOutput() SpringCloudConfigComponentPtrOutput {
+	return o.ToSpringCloudConfigComponentPtrOutputWithContext(context.Background())
+}
+
+func (o SpringCloudConfigComponentOutput) ToSpringCloudConfigComponentPtrOutputWithContext(ctx context.Context) SpringCloudConfigComponentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpringCloudConfigComponent) *SpringCloudConfigComponent {
+		return &v
+	}).(SpringCloudConfigComponentPtrOutput)
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringCloudConfig'.
+func (o SpringCloudConfigComponentOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringCloudConfigComponent) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringCloudConfigComponentOutput) Configurations() JavaComponentConfigurationPropertyArrayOutput {
+	return o.ApplyT(func(v SpringCloudConfigComponent) []JavaComponentConfigurationProperty { return v.Configurations }).(JavaComponentConfigurationPropertyArrayOutput)
+}
+
+// Java component scaling configurations
+func (o SpringCloudConfigComponentOutput) Scale() JavaComponentPropertiesScalePtrOutput {
+	return o.ApplyT(func(v SpringCloudConfigComponent) *JavaComponentPropertiesScale { return v.Scale }).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringCloudConfigComponentOutput) ServiceBinds() JavaComponentServiceBindArrayOutput {
+	return o.ApplyT(func(v SpringCloudConfigComponent) []JavaComponentServiceBind { return v.ServiceBinds }).(JavaComponentServiceBindArrayOutput)
+}
+
+type SpringCloudConfigComponentPtrOutput struct{ *pulumi.OutputState }
+
+func (SpringCloudConfigComponentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpringCloudConfigComponent)(nil)).Elem()
+}
+
+func (o SpringCloudConfigComponentPtrOutput) ToSpringCloudConfigComponentPtrOutput() SpringCloudConfigComponentPtrOutput {
+	return o
+}
+
+func (o SpringCloudConfigComponentPtrOutput) ToSpringCloudConfigComponentPtrOutputWithContext(ctx context.Context) SpringCloudConfigComponentPtrOutput {
+	return o
+}
+
+func (o SpringCloudConfigComponentPtrOutput) Elem() SpringCloudConfigComponentOutput {
+	return o.ApplyT(func(v *SpringCloudConfigComponent) SpringCloudConfigComponent {
+		if v != nil {
+			return *v
+		}
+		var ret SpringCloudConfigComponent
+		return ret
+	}).(SpringCloudConfigComponentOutput)
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringCloudConfig'.
+func (o SpringCloudConfigComponentPtrOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpringCloudConfigComponent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComponentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringCloudConfigComponentPtrOutput) Configurations() JavaComponentConfigurationPropertyArrayOutput {
+	return o.ApplyT(func(v *SpringCloudConfigComponent) []JavaComponentConfigurationProperty {
+		if v == nil {
+			return nil
+		}
+		return v.Configurations
+	}).(JavaComponentConfigurationPropertyArrayOutput)
+}
+
+// Java component scaling configurations
+func (o SpringCloudConfigComponentPtrOutput) Scale() JavaComponentPropertiesScalePtrOutput {
+	return o.ApplyT(func(v *SpringCloudConfigComponent) *JavaComponentPropertiesScale {
+		if v == nil {
+			return nil
+		}
+		return v.Scale
+	}).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringCloudConfigComponentPtrOutput) ServiceBinds() JavaComponentServiceBindArrayOutput {
+	return o.ApplyT(func(v *SpringCloudConfigComponent) []JavaComponentServiceBind {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceBinds
+	}).(JavaComponentServiceBindArrayOutput)
+}
+
+// Spring Cloud Config properties.
+type SpringCloudConfigComponentResponse struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringCloudConfig'.
+	ComponentType string `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations []JavaComponentConfigurationPropertyResponse `pulumi:"configurations"`
+	// Provisioning state of the Java Component.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Java component scaling configurations
+	Scale *JavaComponentPropertiesResponseScale `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds []JavaComponentServiceBindResponse `pulumi:"serviceBinds"`
+}
+
+// Spring Cloud Config properties.
+type SpringCloudConfigComponentResponseOutput struct{ *pulumi.OutputState }
+
+func (SpringCloudConfigComponentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudConfigComponentResponse)(nil)).Elem()
+}
+
+func (o SpringCloudConfigComponentResponseOutput) ToSpringCloudConfigComponentResponseOutput() SpringCloudConfigComponentResponseOutput {
+	return o
+}
+
+func (o SpringCloudConfigComponentResponseOutput) ToSpringCloudConfigComponentResponseOutputWithContext(ctx context.Context) SpringCloudConfigComponentResponseOutput {
+	return o
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringCloudConfig'.
+func (o SpringCloudConfigComponentResponseOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringCloudConfigComponentResponse) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringCloudConfigComponentResponseOutput) Configurations() JavaComponentConfigurationPropertyResponseArrayOutput {
+	return o.ApplyT(func(v SpringCloudConfigComponentResponse) []JavaComponentConfigurationPropertyResponse {
+		return v.Configurations
+	}).(JavaComponentConfigurationPropertyResponseArrayOutput)
+}
+
+// Provisioning state of the Java Component.
+func (o SpringCloudConfigComponentResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringCloudConfigComponentResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Java component scaling configurations
+func (o SpringCloudConfigComponentResponseOutput) Scale() JavaComponentPropertiesResponseScalePtrOutput {
+	return o.ApplyT(func(v SpringCloudConfigComponentResponse) *JavaComponentPropertiesResponseScale { return v.Scale }).(JavaComponentPropertiesResponseScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringCloudConfigComponentResponseOutput) ServiceBinds() JavaComponentServiceBindResponseArrayOutput {
+	return o.ApplyT(func(v SpringCloudConfigComponentResponse) []JavaComponentServiceBindResponse { return v.ServiceBinds }).(JavaComponentServiceBindResponseArrayOutput)
+}
+
+// Spring Cloud Eureka properties.
+type SpringCloudEurekaComponent struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringCloudEureka'.
+	ComponentType string `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations []JavaComponentConfigurationProperty `pulumi:"configurations"`
+	// Java component scaling configurations
+	Scale *JavaComponentPropertiesScale `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds []JavaComponentServiceBind `pulumi:"serviceBinds"`
+}
+
+// SpringCloudEurekaComponentInput is an input type that accepts SpringCloudEurekaComponentArgs and SpringCloudEurekaComponentOutput values.
+// You can construct a concrete instance of `SpringCloudEurekaComponentInput` via:
+//
+//	SpringCloudEurekaComponentArgs{...}
+type SpringCloudEurekaComponentInput interface {
+	pulumi.Input
+
+	ToSpringCloudEurekaComponentOutput() SpringCloudEurekaComponentOutput
+	ToSpringCloudEurekaComponentOutputWithContext(context.Context) SpringCloudEurekaComponentOutput
+}
+
+// Spring Cloud Eureka properties.
+type SpringCloudEurekaComponentArgs struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringCloudEureka'.
+	ComponentType pulumi.StringInput `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations JavaComponentConfigurationPropertyArrayInput `pulumi:"configurations"`
+	// Java component scaling configurations
+	Scale JavaComponentPropertiesScalePtrInput `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds JavaComponentServiceBindArrayInput `pulumi:"serviceBinds"`
+}
+
+func (SpringCloudEurekaComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudEurekaComponent)(nil)).Elem()
+}
+
+func (i SpringCloudEurekaComponentArgs) ToSpringCloudEurekaComponentOutput() SpringCloudEurekaComponentOutput {
+	return i.ToSpringCloudEurekaComponentOutputWithContext(context.Background())
+}
+
+func (i SpringCloudEurekaComponentArgs) ToSpringCloudEurekaComponentOutputWithContext(ctx context.Context) SpringCloudEurekaComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudEurekaComponentOutput)
+}
+
+func (i SpringCloudEurekaComponentArgs) ToSpringCloudEurekaComponentPtrOutput() SpringCloudEurekaComponentPtrOutput {
+	return i.ToSpringCloudEurekaComponentPtrOutputWithContext(context.Background())
+}
+
+func (i SpringCloudEurekaComponentArgs) ToSpringCloudEurekaComponentPtrOutputWithContext(ctx context.Context) SpringCloudEurekaComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudEurekaComponentOutput).ToSpringCloudEurekaComponentPtrOutputWithContext(ctx)
+}
+
+// SpringCloudEurekaComponentPtrInput is an input type that accepts SpringCloudEurekaComponentArgs, SpringCloudEurekaComponentPtr and SpringCloudEurekaComponentPtrOutput values.
+// You can construct a concrete instance of `SpringCloudEurekaComponentPtrInput` via:
+//
+//	        SpringCloudEurekaComponentArgs{...}
+//
+//	or:
+//
+//	        nil
+type SpringCloudEurekaComponentPtrInput interface {
+	pulumi.Input
+
+	ToSpringCloudEurekaComponentPtrOutput() SpringCloudEurekaComponentPtrOutput
+	ToSpringCloudEurekaComponentPtrOutputWithContext(context.Context) SpringCloudEurekaComponentPtrOutput
+}
+
+type springCloudEurekaComponentPtrType SpringCloudEurekaComponentArgs
+
+func SpringCloudEurekaComponentPtr(v *SpringCloudEurekaComponentArgs) SpringCloudEurekaComponentPtrInput {
+	return (*springCloudEurekaComponentPtrType)(v)
+}
+
+func (*springCloudEurekaComponentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpringCloudEurekaComponent)(nil)).Elem()
+}
+
+func (i *springCloudEurekaComponentPtrType) ToSpringCloudEurekaComponentPtrOutput() SpringCloudEurekaComponentPtrOutput {
+	return i.ToSpringCloudEurekaComponentPtrOutputWithContext(context.Background())
+}
+
+func (i *springCloudEurekaComponentPtrType) ToSpringCloudEurekaComponentPtrOutputWithContext(ctx context.Context) SpringCloudEurekaComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudEurekaComponentPtrOutput)
+}
+
+// Spring Cloud Eureka properties.
+type SpringCloudEurekaComponentOutput struct{ *pulumi.OutputState }
+
+func (SpringCloudEurekaComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudEurekaComponent)(nil)).Elem()
+}
+
+func (o SpringCloudEurekaComponentOutput) ToSpringCloudEurekaComponentOutput() SpringCloudEurekaComponentOutput {
+	return o
+}
+
+func (o SpringCloudEurekaComponentOutput) ToSpringCloudEurekaComponentOutputWithContext(ctx context.Context) SpringCloudEurekaComponentOutput {
+	return o
+}
+
+func (o SpringCloudEurekaComponentOutput) ToSpringCloudEurekaComponentPtrOutput() SpringCloudEurekaComponentPtrOutput {
+	return o.ToSpringCloudEurekaComponentPtrOutputWithContext(context.Background())
+}
+
+func (o SpringCloudEurekaComponentOutput) ToSpringCloudEurekaComponentPtrOutputWithContext(ctx context.Context) SpringCloudEurekaComponentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpringCloudEurekaComponent) *SpringCloudEurekaComponent {
+		return &v
+	}).(SpringCloudEurekaComponentPtrOutput)
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringCloudEureka'.
+func (o SpringCloudEurekaComponentOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringCloudEurekaComponent) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringCloudEurekaComponentOutput) Configurations() JavaComponentConfigurationPropertyArrayOutput {
+	return o.ApplyT(func(v SpringCloudEurekaComponent) []JavaComponentConfigurationProperty { return v.Configurations }).(JavaComponentConfigurationPropertyArrayOutput)
+}
+
+// Java component scaling configurations
+func (o SpringCloudEurekaComponentOutput) Scale() JavaComponentPropertiesScalePtrOutput {
+	return o.ApplyT(func(v SpringCloudEurekaComponent) *JavaComponentPropertiesScale { return v.Scale }).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringCloudEurekaComponentOutput) ServiceBinds() JavaComponentServiceBindArrayOutput {
+	return o.ApplyT(func(v SpringCloudEurekaComponent) []JavaComponentServiceBind { return v.ServiceBinds }).(JavaComponentServiceBindArrayOutput)
+}
+
+type SpringCloudEurekaComponentPtrOutput struct{ *pulumi.OutputState }
+
+func (SpringCloudEurekaComponentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpringCloudEurekaComponent)(nil)).Elem()
+}
+
+func (o SpringCloudEurekaComponentPtrOutput) ToSpringCloudEurekaComponentPtrOutput() SpringCloudEurekaComponentPtrOutput {
+	return o
+}
+
+func (o SpringCloudEurekaComponentPtrOutput) ToSpringCloudEurekaComponentPtrOutputWithContext(ctx context.Context) SpringCloudEurekaComponentPtrOutput {
+	return o
+}
+
+func (o SpringCloudEurekaComponentPtrOutput) Elem() SpringCloudEurekaComponentOutput {
+	return o.ApplyT(func(v *SpringCloudEurekaComponent) SpringCloudEurekaComponent {
+		if v != nil {
+			return *v
+		}
+		var ret SpringCloudEurekaComponent
+		return ret
+	}).(SpringCloudEurekaComponentOutput)
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringCloudEureka'.
+func (o SpringCloudEurekaComponentPtrOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpringCloudEurekaComponent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComponentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringCloudEurekaComponentPtrOutput) Configurations() JavaComponentConfigurationPropertyArrayOutput {
+	return o.ApplyT(func(v *SpringCloudEurekaComponent) []JavaComponentConfigurationProperty {
+		if v == nil {
+			return nil
+		}
+		return v.Configurations
+	}).(JavaComponentConfigurationPropertyArrayOutput)
+}
+
+// Java component scaling configurations
+func (o SpringCloudEurekaComponentPtrOutput) Scale() JavaComponentPropertiesScalePtrOutput {
+	return o.ApplyT(func(v *SpringCloudEurekaComponent) *JavaComponentPropertiesScale {
+		if v == nil {
+			return nil
+		}
+		return v.Scale
+	}).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringCloudEurekaComponentPtrOutput) ServiceBinds() JavaComponentServiceBindArrayOutput {
+	return o.ApplyT(func(v *SpringCloudEurekaComponent) []JavaComponentServiceBind {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceBinds
+	}).(JavaComponentServiceBindArrayOutput)
+}
+
+// Spring Cloud Eureka properties.
+type SpringCloudEurekaComponentResponse struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringCloudEureka'.
+	ComponentType string `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations []JavaComponentConfigurationPropertyResponse `pulumi:"configurations"`
+	// Java Component Ingress configurations.
+	Ingress *JavaComponentIngressResponse `pulumi:"ingress"`
+	// Provisioning state of the Java Component.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Java component scaling configurations
+	Scale *JavaComponentPropertiesResponseScale `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds []JavaComponentServiceBindResponse `pulumi:"serviceBinds"`
+}
+
+// Spring Cloud Eureka properties.
+type SpringCloudEurekaComponentResponseOutput struct{ *pulumi.OutputState }
+
+func (SpringCloudEurekaComponentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudEurekaComponentResponse)(nil)).Elem()
+}
+
+func (o SpringCloudEurekaComponentResponseOutput) ToSpringCloudEurekaComponentResponseOutput() SpringCloudEurekaComponentResponseOutput {
+	return o
+}
+
+func (o SpringCloudEurekaComponentResponseOutput) ToSpringCloudEurekaComponentResponseOutputWithContext(ctx context.Context) SpringCloudEurekaComponentResponseOutput {
+	return o
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringCloudEureka'.
+func (o SpringCloudEurekaComponentResponseOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringCloudEurekaComponentResponse) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringCloudEurekaComponentResponseOutput) Configurations() JavaComponentConfigurationPropertyResponseArrayOutput {
+	return o.ApplyT(func(v SpringCloudEurekaComponentResponse) []JavaComponentConfigurationPropertyResponse {
+		return v.Configurations
+	}).(JavaComponentConfigurationPropertyResponseArrayOutput)
+}
+
+// Java Component Ingress configurations.
+func (o SpringCloudEurekaComponentResponseOutput) Ingress() JavaComponentIngressResponsePtrOutput {
+	return o.ApplyT(func(v SpringCloudEurekaComponentResponse) *JavaComponentIngressResponse { return v.Ingress }).(JavaComponentIngressResponsePtrOutput)
+}
+
+// Provisioning state of the Java Component.
+func (o SpringCloudEurekaComponentResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringCloudEurekaComponentResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Java component scaling configurations
+func (o SpringCloudEurekaComponentResponseOutput) Scale() JavaComponentPropertiesResponseScalePtrOutput {
+	return o.ApplyT(func(v SpringCloudEurekaComponentResponse) *JavaComponentPropertiesResponseScale { return v.Scale }).(JavaComponentPropertiesResponseScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringCloudEurekaComponentResponseOutput) ServiceBinds() JavaComponentServiceBindResponseArrayOutput {
+	return o.ApplyT(func(v SpringCloudEurekaComponentResponse) []JavaComponentServiceBindResponse { return v.ServiceBinds }).(JavaComponentServiceBindResponseArrayOutput)
+}
+
+// Spring Cloud Gateway properties.
+type SpringCloudGatewayComponent struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringCloudGateway'.
+	ComponentType string `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations []JavaComponentConfigurationProperty `pulumi:"configurations"`
+	// Java component scaling configurations
+	Scale *JavaComponentPropertiesScale `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds []JavaComponentServiceBind `pulumi:"serviceBinds"`
+	// Gateway route definition
+	SpringCloudGatewayRoutes []ScgRoute `pulumi:"springCloudGatewayRoutes"`
+}
+
+// SpringCloudGatewayComponentInput is an input type that accepts SpringCloudGatewayComponentArgs and SpringCloudGatewayComponentOutput values.
+// You can construct a concrete instance of `SpringCloudGatewayComponentInput` via:
+//
+//	SpringCloudGatewayComponentArgs{...}
+type SpringCloudGatewayComponentInput interface {
+	pulumi.Input
+
+	ToSpringCloudGatewayComponentOutput() SpringCloudGatewayComponentOutput
+	ToSpringCloudGatewayComponentOutputWithContext(context.Context) SpringCloudGatewayComponentOutput
+}
+
+// Spring Cloud Gateway properties.
+type SpringCloudGatewayComponentArgs struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringCloudGateway'.
+	ComponentType pulumi.StringInput `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations JavaComponentConfigurationPropertyArrayInput `pulumi:"configurations"`
+	// Java component scaling configurations
+	Scale JavaComponentPropertiesScalePtrInput `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds JavaComponentServiceBindArrayInput `pulumi:"serviceBinds"`
+	// Gateway route definition
+	SpringCloudGatewayRoutes ScgRouteArrayInput `pulumi:"springCloudGatewayRoutes"`
+}
+
+func (SpringCloudGatewayComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudGatewayComponent)(nil)).Elem()
+}
+
+func (i SpringCloudGatewayComponentArgs) ToSpringCloudGatewayComponentOutput() SpringCloudGatewayComponentOutput {
+	return i.ToSpringCloudGatewayComponentOutputWithContext(context.Background())
+}
+
+func (i SpringCloudGatewayComponentArgs) ToSpringCloudGatewayComponentOutputWithContext(ctx context.Context) SpringCloudGatewayComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudGatewayComponentOutput)
+}
+
+func (i SpringCloudGatewayComponentArgs) ToSpringCloudGatewayComponentPtrOutput() SpringCloudGatewayComponentPtrOutput {
+	return i.ToSpringCloudGatewayComponentPtrOutputWithContext(context.Background())
+}
+
+func (i SpringCloudGatewayComponentArgs) ToSpringCloudGatewayComponentPtrOutputWithContext(ctx context.Context) SpringCloudGatewayComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudGatewayComponentOutput).ToSpringCloudGatewayComponentPtrOutputWithContext(ctx)
+}
+
+// SpringCloudGatewayComponentPtrInput is an input type that accepts SpringCloudGatewayComponentArgs, SpringCloudGatewayComponentPtr and SpringCloudGatewayComponentPtrOutput values.
+// You can construct a concrete instance of `SpringCloudGatewayComponentPtrInput` via:
+//
+//	        SpringCloudGatewayComponentArgs{...}
+//
+//	or:
+//
+//	        nil
+type SpringCloudGatewayComponentPtrInput interface {
+	pulumi.Input
+
+	ToSpringCloudGatewayComponentPtrOutput() SpringCloudGatewayComponentPtrOutput
+	ToSpringCloudGatewayComponentPtrOutputWithContext(context.Context) SpringCloudGatewayComponentPtrOutput
+}
+
+type springCloudGatewayComponentPtrType SpringCloudGatewayComponentArgs
+
+func SpringCloudGatewayComponentPtr(v *SpringCloudGatewayComponentArgs) SpringCloudGatewayComponentPtrInput {
+	return (*springCloudGatewayComponentPtrType)(v)
+}
+
+func (*springCloudGatewayComponentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpringCloudGatewayComponent)(nil)).Elem()
+}
+
+func (i *springCloudGatewayComponentPtrType) ToSpringCloudGatewayComponentPtrOutput() SpringCloudGatewayComponentPtrOutput {
+	return i.ToSpringCloudGatewayComponentPtrOutputWithContext(context.Background())
+}
+
+func (i *springCloudGatewayComponentPtrType) ToSpringCloudGatewayComponentPtrOutputWithContext(ctx context.Context) SpringCloudGatewayComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudGatewayComponentPtrOutput)
+}
+
+// Spring Cloud Gateway properties.
+type SpringCloudGatewayComponentOutput struct{ *pulumi.OutputState }
+
+func (SpringCloudGatewayComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudGatewayComponent)(nil)).Elem()
+}
+
+func (o SpringCloudGatewayComponentOutput) ToSpringCloudGatewayComponentOutput() SpringCloudGatewayComponentOutput {
+	return o
+}
+
+func (o SpringCloudGatewayComponentOutput) ToSpringCloudGatewayComponentOutputWithContext(ctx context.Context) SpringCloudGatewayComponentOutput {
+	return o
+}
+
+func (o SpringCloudGatewayComponentOutput) ToSpringCloudGatewayComponentPtrOutput() SpringCloudGatewayComponentPtrOutput {
+	return o.ToSpringCloudGatewayComponentPtrOutputWithContext(context.Background())
+}
+
+func (o SpringCloudGatewayComponentOutput) ToSpringCloudGatewayComponentPtrOutputWithContext(ctx context.Context) SpringCloudGatewayComponentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpringCloudGatewayComponent) *SpringCloudGatewayComponent {
+		return &v
+	}).(SpringCloudGatewayComponentPtrOutput)
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringCloudGateway'.
+func (o SpringCloudGatewayComponentOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponent) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringCloudGatewayComponentOutput) Configurations() JavaComponentConfigurationPropertyArrayOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponent) []JavaComponentConfigurationProperty { return v.Configurations }).(JavaComponentConfigurationPropertyArrayOutput)
+}
+
+// Java component scaling configurations
+func (o SpringCloudGatewayComponentOutput) Scale() JavaComponentPropertiesScalePtrOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponent) *JavaComponentPropertiesScale { return v.Scale }).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringCloudGatewayComponentOutput) ServiceBinds() JavaComponentServiceBindArrayOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponent) []JavaComponentServiceBind { return v.ServiceBinds }).(JavaComponentServiceBindArrayOutput)
+}
+
+// Gateway route definition
+func (o SpringCloudGatewayComponentOutput) SpringCloudGatewayRoutes() ScgRouteArrayOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponent) []ScgRoute { return v.SpringCloudGatewayRoutes }).(ScgRouteArrayOutput)
+}
+
+type SpringCloudGatewayComponentPtrOutput struct{ *pulumi.OutputState }
+
+func (SpringCloudGatewayComponentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpringCloudGatewayComponent)(nil)).Elem()
+}
+
+func (o SpringCloudGatewayComponentPtrOutput) ToSpringCloudGatewayComponentPtrOutput() SpringCloudGatewayComponentPtrOutput {
+	return o
+}
+
+func (o SpringCloudGatewayComponentPtrOutput) ToSpringCloudGatewayComponentPtrOutputWithContext(ctx context.Context) SpringCloudGatewayComponentPtrOutput {
+	return o
+}
+
+func (o SpringCloudGatewayComponentPtrOutput) Elem() SpringCloudGatewayComponentOutput {
+	return o.ApplyT(func(v *SpringCloudGatewayComponent) SpringCloudGatewayComponent {
+		if v != nil {
+			return *v
+		}
+		var ret SpringCloudGatewayComponent
+		return ret
+	}).(SpringCloudGatewayComponentOutput)
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringCloudGateway'.
+func (o SpringCloudGatewayComponentPtrOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpringCloudGatewayComponent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComponentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringCloudGatewayComponentPtrOutput) Configurations() JavaComponentConfigurationPropertyArrayOutput {
+	return o.ApplyT(func(v *SpringCloudGatewayComponent) []JavaComponentConfigurationProperty {
+		if v == nil {
+			return nil
+		}
+		return v.Configurations
+	}).(JavaComponentConfigurationPropertyArrayOutput)
+}
+
+// Java component scaling configurations
+func (o SpringCloudGatewayComponentPtrOutput) Scale() JavaComponentPropertiesScalePtrOutput {
+	return o.ApplyT(func(v *SpringCloudGatewayComponent) *JavaComponentPropertiesScale {
+		if v == nil {
+			return nil
+		}
+		return v.Scale
+	}).(JavaComponentPropertiesScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringCloudGatewayComponentPtrOutput) ServiceBinds() JavaComponentServiceBindArrayOutput {
+	return o.ApplyT(func(v *SpringCloudGatewayComponent) []JavaComponentServiceBind {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceBinds
+	}).(JavaComponentServiceBindArrayOutput)
+}
+
+// Gateway route definition
+func (o SpringCloudGatewayComponentPtrOutput) SpringCloudGatewayRoutes() ScgRouteArrayOutput {
+	return o.ApplyT(func(v *SpringCloudGatewayComponent) []ScgRoute {
+		if v == nil {
+			return nil
+		}
+		return v.SpringCloudGatewayRoutes
+	}).(ScgRouteArrayOutput)
+}
+
+// Spring Cloud Gateway properties.
+type SpringCloudGatewayComponentResponse struct {
+	// Type of the Java Component.
+	// Expected value is 'SpringCloudGateway'.
+	ComponentType string `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations []JavaComponentConfigurationPropertyResponse `pulumi:"configurations"`
+	// Java Component Ingress configurations.
+	Ingress *JavaComponentIngressResponse `pulumi:"ingress"`
+	// Provisioning state of the Java Component.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Java component scaling configurations
+	Scale *JavaComponentPropertiesResponseScale `pulumi:"scale"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds []JavaComponentServiceBindResponse `pulumi:"serviceBinds"`
+	// Gateway route definition
+	SpringCloudGatewayRoutes []ScgRouteResponse `pulumi:"springCloudGatewayRoutes"`
+}
+
+// Spring Cloud Gateway properties.
+type SpringCloudGatewayComponentResponseOutput struct{ *pulumi.OutputState }
+
+func (SpringCloudGatewayComponentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudGatewayComponentResponse)(nil)).Elem()
+}
+
+func (o SpringCloudGatewayComponentResponseOutput) ToSpringCloudGatewayComponentResponseOutput() SpringCloudGatewayComponentResponseOutput {
+	return o
+}
+
+func (o SpringCloudGatewayComponentResponseOutput) ToSpringCloudGatewayComponentResponseOutputWithContext(ctx context.Context) SpringCloudGatewayComponentResponseOutput {
+	return o
+}
+
+// Type of the Java Component.
+// Expected value is 'SpringCloudGateway'.
+func (o SpringCloudGatewayComponentResponseOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponentResponse) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// List of Java Components configuration properties
+func (o SpringCloudGatewayComponentResponseOutput) Configurations() JavaComponentConfigurationPropertyResponseArrayOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponentResponse) []JavaComponentConfigurationPropertyResponse {
+		return v.Configurations
+	}).(JavaComponentConfigurationPropertyResponseArrayOutput)
+}
+
+// Java Component Ingress configurations.
+func (o SpringCloudGatewayComponentResponseOutput) Ingress() JavaComponentIngressResponsePtrOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponentResponse) *JavaComponentIngressResponse { return v.Ingress }).(JavaComponentIngressResponsePtrOutput)
+}
+
+// Provisioning state of the Java Component.
+func (o SpringCloudGatewayComponentResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponentResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Java component scaling configurations
+func (o SpringCloudGatewayComponentResponseOutput) Scale() JavaComponentPropertiesResponseScalePtrOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponentResponse) *JavaComponentPropertiesResponseScale { return v.Scale }).(JavaComponentPropertiesResponseScalePtrOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o SpringCloudGatewayComponentResponseOutput) ServiceBinds() JavaComponentServiceBindResponseArrayOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponentResponse) []JavaComponentServiceBindResponse { return v.ServiceBinds }).(JavaComponentServiceBindResponseArrayOutput)
+}
+
+// Gateway route definition
+func (o SpringCloudGatewayComponentResponseOutput) SpringCloudGatewayRoutes() ScgRouteResponseArrayOutput {
+	return o.ApplyT(func(v SpringCloudGatewayComponentResponse) []ScgRouteResponse { return v.SpringCloudGatewayRoutes }).(ScgRouteResponseArrayOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -30703,6 +34971,10 @@ type Template struct {
 	RevisionSuffix *string `pulumi:"revisionSuffix"`
 	// Scaling properties for the Container App.
 	Scale *Scale `pulumi:"scale"`
+	// List of container app services bound to the app
+	ServiceBinds []ServiceBind `pulumi:"serviceBinds"`
+	// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
+	TerminationGracePeriodSeconds *float64 `pulumi:"terminationGracePeriodSeconds"`
 	// List of volume definitions for the Container App.
 	Volumes []Volume `pulumi:"volumes"`
 }
@@ -30741,6 +35013,10 @@ type TemplateArgs struct {
 	RevisionSuffix pulumi.StringPtrInput `pulumi:"revisionSuffix"`
 	// Scaling properties for the Container App.
 	Scale ScalePtrInput `pulumi:"scale"`
+	// List of container app services bound to the app
+	ServiceBinds ServiceBindArrayInput `pulumi:"serviceBinds"`
+	// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
+	TerminationGracePeriodSeconds pulumi.Float64PtrInput `pulumi:"terminationGracePeriodSeconds"`
 	// List of volume definitions for the Container App.
 	Volumes VolumeArrayInput `pulumi:"volumes"`
 }
@@ -30854,6 +35130,16 @@ func (o TemplateOutput) Scale() ScalePtrOutput {
 	return o.ApplyT(func(v Template) *Scale { return v.Scale }).(ScalePtrOutput)
 }
 
+// List of container app services bound to the app
+func (o TemplateOutput) ServiceBinds() ServiceBindArrayOutput {
+	return o.ApplyT(func(v Template) []ServiceBind { return v.ServiceBinds }).(ServiceBindArrayOutput)
+}
+
+// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
+func (o TemplateOutput) TerminationGracePeriodSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Template) *float64 { return v.TerminationGracePeriodSeconds }).(pulumi.Float64PtrOutput)
+}
+
 // List of volume definitions for the Container App.
 func (o TemplateOutput) Volumes() VolumeArrayOutput {
 	return o.ApplyT(func(v Template) []Volume { return v.Volumes }).(VolumeArrayOutput)
@@ -30923,6 +35209,26 @@ func (o TemplatePtrOutput) Scale() ScalePtrOutput {
 	}).(ScalePtrOutput)
 }
 
+// List of container app services bound to the app
+func (o TemplatePtrOutput) ServiceBinds() ServiceBindArrayOutput {
+	return o.ApplyT(func(v *Template) []ServiceBind {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceBinds
+	}).(ServiceBindArrayOutput)
+}
+
+// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
+func (o TemplatePtrOutput) TerminationGracePeriodSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Template) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TerminationGracePeriodSeconds
+	}).(pulumi.Float64PtrOutput)
+}
+
 // List of volume definitions for the Container App.
 func (o TemplatePtrOutput) Volumes() VolumeArrayOutput {
 	return o.ApplyT(func(v *Template) []Volume {
@@ -30945,6 +35251,10 @@ type TemplateResponse struct {
 	RevisionSuffix *string `pulumi:"revisionSuffix"`
 	// Scaling properties for the Container App.
 	Scale *ScaleResponse `pulumi:"scale"`
+	// List of container app services bound to the app
+	ServiceBinds []ServiceBindResponse `pulumi:"serviceBinds"`
+	// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
+	TerminationGracePeriodSeconds *float64 `pulumi:"terminationGracePeriodSeconds"`
 	// List of volume definitions for the Container App.
 	Volumes []VolumeResponse `pulumi:"volumes"`
 }
@@ -30995,6 +35305,16 @@ func (o TemplateResponseOutput) RevisionSuffix() pulumi.StringPtrOutput {
 // Scaling properties for the Container App.
 func (o TemplateResponseOutput) Scale() ScaleResponsePtrOutput {
 	return o.ApplyT(func(v TemplateResponse) *ScaleResponse { return v.Scale }).(ScaleResponsePtrOutput)
+}
+
+// List of container app services bound to the app
+func (o TemplateResponseOutput) ServiceBinds() ServiceBindResponseArrayOutput {
+	return o.ApplyT(func(v TemplateResponse) []ServiceBindResponse { return v.ServiceBinds }).(ServiceBindResponseArrayOutput)
+}
+
+// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
+func (o TemplateResponseOutput) TerminationGracePeriodSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TemplateResponse) *float64 { return v.TerminationGracePeriodSeconds }).(pulumi.Float64PtrOutput)
 }
 
 // List of volume definitions for the Container App.
@@ -31064,6 +35384,26 @@ func (o TemplateResponsePtrOutput) Scale() ScaleResponsePtrOutput {
 		}
 		return v.Scale
 	}).(ScaleResponsePtrOutput)
+}
+
+// List of container app services bound to the app
+func (o TemplateResponsePtrOutput) ServiceBinds() ServiceBindResponseArrayOutput {
+	return o.ApplyT(func(v *TemplateResponse) []ServiceBindResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceBinds
+	}).(ServiceBindResponseArrayOutput)
+}
+
+// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
+func (o TemplateResponsePtrOutput) TerminationGracePeriodSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TemplateResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TerminationGracePeriodSeconds
+	}).(pulumi.Float64PtrOutput)
 }
 
 // List of volume definitions for the Container App.
@@ -31310,6 +35650,296 @@ func (o TimeoutPolicyResponsePtrOutput) ResponseTimeoutInSeconds() pulumi.IntPtr
 		}
 		return v.ResponseTimeoutInSeconds
 	}).(pulumi.IntPtrOutput)
+}
+
+// The configuration settings of the token store.
+type TokenStore struct {
+	// The configuration settings of the storage of the tokens if blob storage is used.
+	AzureBlobStorage *BlobStorageTokenStore `pulumi:"azureBlobStorage"`
+	// <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
+	//  The default is <code>false</code>.
+	Enabled *bool `pulumi:"enabled"`
+	// The number of hours after session token expiration that a session token can be used to
+	// call the token refresh API. The default is 72 hours.
+	TokenRefreshExtensionHours *float64 `pulumi:"tokenRefreshExtensionHours"`
+}
+
+// TokenStoreInput is an input type that accepts TokenStoreArgs and TokenStoreOutput values.
+// You can construct a concrete instance of `TokenStoreInput` via:
+//
+//	TokenStoreArgs{...}
+type TokenStoreInput interface {
+	pulumi.Input
+
+	ToTokenStoreOutput() TokenStoreOutput
+	ToTokenStoreOutputWithContext(context.Context) TokenStoreOutput
+}
+
+// The configuration settings of the token store.
+type TokenStoreArgs struct {
+	// The configuration settings of the storage of the tokens if blob storage is used.
+	AzureBlobStorage BlobStorageTokenStorePtrInput `pulumi:"azureBlobStorage"`
+	// <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
+	//  The default is <code>false</code>.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The number of hours after session token expiration that a session token can be used to
+	// call the token refresh API. The default is 72 hours.
+	TokenRefreshExtensionHours pulumi.Float64PtrInput `pulumi:"tokenRefreshExtensionHours"`
+}
+
+func (TokenStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TokenStore)(nil)).Elem()
+}
+
+func (i TokenStoreArgs) ToTokenStoreOutput() TokenStoreOutput {
+	return i.ToTokenStoreOutputWithContext(context.Background())
+}
+
+func (i TokenStoreArgs) ToTokenStoreOutputWithContext(ctx context.Context) TokenStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TokenStoreOutput)
+}
+
+func (i TokenStoreArgs) ToTokenStorePtrOutput() TokenStorePtrOutput {
+	return i.ToTokenStorePtrOutputWithContext(context.Background())
+}
+
+func (i TokenStoreArgs) ToTokenStorePtrOutputWithContext(ctx context.Context) TokenStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TokenStoreOutput).ToTokenStorePtrOutputWithContext(ctx)
+}
+
+// TokenStorePtrInput is an input type that accepts TokenStoreArgs, TokenStorePtr and TokenStorePtrOutput values.
+// You can construct a concrete instance of `TokenStorePtrInput` via:
+//
+//	        TokenStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type TokenStorePtrInput interface {
+	pulumi.Input
+
+	ToTokenStorePtrOutput() TokenStorePtrOutput
+	ToTokenStorePtrOutputWithContext(context.Context) TokenStorePtrOutput
+}
+
+type tokenStorePtrType TokenStoreArgs
+
+func TokenStorePtr(v *TokenStoreArgs) TokenStorePtrInput {
+	return (*tokenStorePtrType)(v)
+}
+
+func (*tokenStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TokenStore)(nil)).Elem()
+}
+
+func (i *tokenStorePtrType) ToTokenStorePtrOutput() TokenStorePtrOutput {
+	return i.ToTokenStorePtrOutputWithContext(context.Background())
+}
+
+func (i *tokenStorePtrType) ToTokenStorePtrOutputWithContext(ctx context.Context) TokenStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TokenStorePtrOutput)
+}
+
+// The configuration settings of the token store.
+type TokenStoreOutput struct{ *pulumi.OutputState }
+
+func (TokenStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TokenStore)(nil)).Elem()
+}
+
+func (o TokenStoreOutput) ToTokenStoreOutput() TokenStoreOutput {
+	return o
+}
+
+func (o TokenStoreOutput) ToTokenStoreOutputWithContext(ctx context.Context) TokenStoreOutput {
+	return o
+}
+
+func (o TokenStoreOutput) ToTokenStorePtrOutput() TokenStorePtrOutput {
+	return o.ToTokenStorePtrOutputWithContext(context.Background())
+}
+
+func (o TokenStoreOutput) ToTokenStorePtrOutputWithContext(ctx context.Context) TokenStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TokenStore) *TokenStore {
+		return &v
+	}).(TokenStorePtrOutput)
+}
+
+// The configuration settings of the storage of the tokens if blob storage is used.
+func (o TokenStoreOutput) AzureBlobStorage() BlobStorageTokenStorePtrOutput {
+	return o.ApplyT(func(v TokenStore) *BlobStorageTokenStore { return v.AzureBlobStorage }).(BlobStorageTokenStorePtrOutput)
+}
+
+// <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
+//
+//	The default is <code>false</code>.
+func (o TokenStoreOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TokenStore) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The number of hours after session token expiration that a session token can be used to
+// call the token refresh API. The default is 72 hours.
+func (o TokenStoreOutput) TokenRefreshExtensionHours() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TokenStore) *float64 { return v.TokenRefreshExtensionHours }).(pulumi.Float64PtrOutput)
+}
+
+type TokenStorePtrOutput struct{ *pulumi.OutputState }
+
+func (TokenStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TokenStore)(nil)).Elem()
+}
+
+func (o TokenStorePtrOutput) ToTokenStorePtrOutput() TokenStorePtrOutput {
+	return o
+}
+
+func (o TokenStorePtrOutput) ToTokenStorePtrOutputWithContext(ctx context.Context) TokenStorePtrOutput {
+	return o
+}
+
+func (o TokenStorePtrOutput) Elem() TokenStoreOutput {
+	return o.ApplyT(func(v *TokenStore) TokenStore {
+		if v != nil {
+			return *v
+		}
+		var ret TokenStore
+		return ret
+	}).(TokenStoreOutput)
+}
+
+// The configuration settings of the storage of the tokens if blob storage is used.
+func (o TokenStorePtrOutput) AzureBlobStorage() BlobStorageTokenStorePtrOutput {
+	return o.ApplyT(func(v *TokenStore) *BlobStorageTokenStore {
+		if v == nil {
+			return nil
+		}
+		return v.AzureBlobStorage
+	}).(BlobStorageTokenStorePtrOutput)
+}
+
+// <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
+//
+//	The default is <code>false</code>.
+func (o TokenStorePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TokenStore) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of hours after session token expiration that a session token can be used to
+// call the token refresh API. The default is 72 hours.
+func (o TokenStorePtrOutput) TokenRefreshExtensionHours() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TokenStore) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TokenRefreshExtensionHours
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The configuration settings of the token store.
+type TokenStoreResponse struct {
+	// The configuration settings of the storage of the tokens if blob storage is used.
+	AzureBlobStorage *BlobStorageTokenStoreResponse `pulumi:"azureBlobStorage"`
+	// <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
+	//  The default is <code>false</code>.
+	Enabled *bool `pulumi:"enabled"`
+	// The number of hours after session token expiration that a session token can be used to
+	// call the token refresh API. The default is 72 hours.
+	TokenRefreshExtensionHours *float64 `pulumi:"tokenRefreshExtensionHours"`
+}
+
+// The configuration settings of the token store.
+type TokenStoreResponseOutput struct{ *pulumi.OutputState }
+
+func (TokenStoreResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TokenStoreResponse)(nil)).Elem()
+}
+
+func (o TokenStoreResponseOutput) ToTokenStoreResponseOutput() TokenStoreResponseOutput {
+	return o
+}
+
+func (o TokenStoreResponseOutput) ToTokenStoreResponseOutputWithContext(ctx context.Context) TokenStoreResponseOutput {
+	return o
+}
+
+// The configuration settings of the storage of the tokens if blob storage is used.
+func (o TokenStoreResponseOutput) AzureBlobStorage() BlobStorageTokenStoreResponsePtrOutput {
+	return o.ApplyT(func(v TokenStoreResponse) *BlobStorageTokenStoreResponse { return v.AzureBlobStorage }).(BlobStorageTokenStoreResponsePtrOutput)
+}
+
+// <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
+//
+//	The default is <code>false</code>.
+func (o TokenStoreResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TokenStoreResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The number of hours after session token expiration that a session token can be used to
+// call the token refresh API. The default is 72 hours.
+func (o TokenStoreResponseOutput) TokenRefreshExtensionHours() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TokenStoreResponse) *float64 { return v.TokenRefreshExtensionHours }).(pulumi.Float64PtrOutput)
+}
+
+type TokenStoreResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TokenStoreResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TokenStoreResponse)(nil)).Elem()
+}
+
+func (o TokenStoreResponsePtrOutput) ToTokenStoreResponsePtrOutput() TokenStoreResponsePtrOutput {
+	return o
+}
+
+func (o TokenStoreResponsePtrOutput) ToTokenStoreResponsePtrOutputWithContext(ctx context.Context) TokenStoreResponsePtrOutput {
+	return o
+}
+
+func (o TokenStoreResponsePtrOutput) Elem() TokenStoreResponseOutput {
+	return o.ApplyT(func(v *TokenStoreResponse) TokenStoreResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TokenStoreResponse
+		return ret
+	}).(TokenStoreResponseOutput)
+}
+
+// The configuration settings of the storage of the tokens if blob storage is used.
+func (o TokenStoreResponsePtrOutput) AzureBlobStorage() BlobStorageTokenStoreResponsePtrOutput {
+	return o.ApplyT(func(v *TokenStoreResponse) *BlobStorageTokenStoreResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureBlobStorage
+	}).(BlobStorageTokenStoreResponsePtrOutput)
+}
+
+// <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
+//
+//	The default is <code>false</code>.
+func (o TokenStoreResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TokenStoreResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of hours after session token expiration that a session token can be used to
+// call the token refresh API. The default is 72 hours.
+func (o TokenStoreResponsePtrOutput) TokenRefreshExtensionHours() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TokenStoreResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TokenRefreshExtensionHours
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Traffic weight assigned to a revision
@@ -32093,18 +36723,14 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 type VnetConfiguration struct {
 	// CIDR notation IP range assigned to the Docker bridge, network. Must not overlap with any other provided IP ranges.
 	DockerBridgeCidr *string `pulumi:"dockerBridgeCidr"`
-	// Resource ID of a subnet for infrastructure components. This subnet must be in the same VNET as the subnet defined in runtimeSubnetId. Must not overlap with any other provided IP ranges.
+	// Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
 	InfrastructureSubnetId *string `pulumi:"infrastructureSubnetId"`
-	// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide runtimeSubnetId and infrastructureSubnetId if enabling this property
+	// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
 	Internal *bool `pulumi:"internal"`
-	// Configuration used to control the Environment Egress outbound traffic
-	OutboundSettings *ManagedEnvironmentOutboundSettings `pulumi:"outboundSettings"`
 	// IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
 	PlatformReservedCidr *string `pulumi:"platformReservedCidr"`
 	//  An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
 	PlatformReservedDnsIP *string `pulumi:"platformReservedDnsIP"`
-	// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
-	RuntimeSubnetId *string `pulumi:"runtimeSubnetId"`
 }
 
 // VnetConfigurationInput is an input type that accepts VnetConfigurationArgs and VnetConfigurationOutput values.
@@ -32122,18 +36748,14 @@ type VnetConfigurationInput interface {
 type VnetConfigurationArgs struct {
 	// CIDR notation IP range assigned to the Docker bridge, network. Must not overlap with any other provided IP ranges.
 	DockerBridgeCidr pulumi.StringPtrInput `pulumi:"dockerBridgeCidr"`
-	// Resource ID of a subnet for infrastructure components. This subnet must be in the same VNET as the subnet defined in runtimeSubnetId. Must not overlap with any other provided IP ranges.
+	// Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
 	InfrastructureSubnetId pulumi.StringPtrInput `pulumi:"infrastructureSubnetId"`
-	// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide runtimeSubnetId and infrastructureSubnetId if enabling this property
+	// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
 	Internal pulumi.BoolPtrInput `pulumi:"internal"`
-	// Configuration used to control the Environment Egress outbound traffic
-	OutboundSettings ManagedEnvironmentOutboundSettingsPtrInput `pulumi:"outboundSettings"`
 	// IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
 	PlatformReservedCidr pulumi.StringPtrInput `pulumi:"platformReservedCidr"`
 	//  An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
 	PlatformReservedDnsIP pulumi.StringPtrInput `pulumi:"platformReservedDnsIP"`
-	// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
-	RuntimeSubnetId pulumi.StringPtrInput `pulumi:"runtimeSubnetId"`
 }
 
 func (VnetConfigurationArgs) ElementType() reflect.Type {
@@ -32219,19 +36841,14 @@ func (o VnetConfigurationOutput) DockerBridgeCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnetConfiguration) *string { return v.DockerBridgeCidr }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID of a subnet for infrastructure components. This subnet must be in the same VNET as the subnet defined in runtimeSubnetId. Must not overlap with any other provided IP ranges.
+// Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
 func (o VnetConfigurationOutput) InfrastructureSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnetConfiguration) *string { return v.InfrastructureSubnetId }).(pulumi.StringPtrOutput)
 }
 
-// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide runtimeSubnetId and infrastructureSubnetId if enabling this property
+// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
 func (o VnetConfigurationOutput) Internal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VnetConfiguration) *bool { return v.Internal }).(pulumi.BoolPtrOutput)
-}
-
-// Configuration used to control the Environment Egress outbound traffic
-func (o VnetConfigurationOutput) OutboundSettings() ManagedEnvironmentOutboundSettingsPtrOutput {
-	return o.ApplyT(func(v VnetConfiguration) *ManagedEnvironmentOutboundSettings { return v.OutboundSettings }).(ManagedEnvironmentOutboundSettingsPtrOutput)
 }
 
 // IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
@@ -32242,11 +36859,6 @@ func (o VnetConfigurationOutput) PlatformReservedCidr() pulumi.StringPtrOutput {
 // An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
 func (o VnetConfigurationOutput) PlatformReservedDnsIP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnetConfiguration) *string { return v.PlatformReservedDnsIP }).(pulumi.StringPtrOutput)
-}
-
-// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
-func (o VnetConfigurationOutput) RuntimeSubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VnetConfiguration) *string { return v.RuntimeSubnetId }).(pulumi.StringPtrOutput)
 }
 
 type VnetConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -32283,7 +36895,7 @@ func (o VnetConfigurationPtrOutput) DockerBridgeCidr() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource ID of a subnet for infrastructure components. This subnet must be in the same VNET as the subnet defined in runtimeSubnetId. Must not overlap with any other provided IP ranges.
+// Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
 func (o VnetConfigurationPtrOutput) InfrastructureSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VnetConfiguration) *string {
 		if v == nil {
@@ -32293,7 +36905,7 @@ func (o VnetConfigurationPtrOutput) InfrastructureSubnetId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide runtimeSubnetId and infrastructureSubnetId if enabling this property
+// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
 func (o VnetConfigurationPtrOutput) Internal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VnetConfiguration) *bool {
 		if v == nil {
@@ -32301,16 +36913,6 @@ func (o VnetConfigurationPtrOutput) Internal() pulumi.BoolPtrOutput {
 		}
 		return v.Internal
 	}).(pulumi.BoolPtrOutput)
-}
-
-// Configuration used to control the Environment Egress outbound traffic
-func (o VnetConfigurationPtrOutput) OutboundSettings() ManagedEnvironmentOutboundSettingsPtrOutput {
-	return o.ApplyT(func(v *VnetConfiguration) *ManagedEnvironmentOutboundSettings {
-		if v == nil {
-			return nil
-		}
-		return v.OutboundSettings
-	}).(ManagedEnvironmentOutboundSettingsPtrOutput)
 }
 
 // IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
@@ -32333,32 +36935,18 @@ func (o VnetConfigurationPtrOutput) PlatformReservedDnsIP() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
-func (o VnetConfigurationPtrOutput) RuntimeSubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VnetConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RuntimeSubnetId
-	}).(pulumi.StringPtrOutput)
-}
-
 // Configuration properties for apps environment to join a Virtual Network
 type VnetConfigurationResponse struct {
 	// CIDR notation IP range assigned to the Docker bridge, network. Must not overlap with any other provided IP ranges.
 	DockerBridgeCidr *string `pulumi:"dockerBridgeCidr"`
-	// Resource ID of a subnet for infrastructure components. This subnet must be in the same VNET as the subnet defined in runtimeSubnetId. Must not overlap with any other provided IP ranges.
+	// Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
 	InfrastructureSubnetId *string `pulumi:"infrastructureSubnetId"`
-	// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide runtimeSubnetId and infrastructureSubnetId if enabling this property
+	// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
 	Internal *bool `pulumi:"internal"`
-	// Configuration used to control the Environment Egress outbound traffic
-	OutboundSettings *ManagedEnvironmentOutboundSettingsResponse `pulumi:"outboundSettings"`
 	// IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
 	PlatformReservedCidr *string `pulumi:"platformReservedCidr"`
 	//  An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
 	PlatformReservedDnsIP *string `pulumi:"platformReservedDnsIP"`
-	// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
-	RuntimeSubnetId *string `pulumi:"runtimeSubnetId"`
 }
 
 // Configuration properties for apps environment to join a Virtual Network
@@ -32381,21 +36969,14 @@ func (o VnetConfigurationResponseOutput) DockerBridgeCidr() pulumi.StringPtrOutp
 	return o.ApplyT(func(v VnetConfigurationResponse) *string { return v.DockerBridgeCidr }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID of a subnet for infrastructure components. This subnet must be in the same VNET as the subnet defined in runtimeSubnetId. Must not overlap with any other provided IP ranges.
+// Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
 func (o VnetConfigurationResponseOutput) InfrastructureSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnetConfigurationResponse) *string { return v.InfrastructureSubnetId }).(pulumi.StringPtrOutput)
 }
 
-// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide runtimeSubnetId and infrastructureSubnetId if enabling this property
+// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
 func (o VnetConfigurationResponseOutput) Internal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VnetConfigurationResponse) *bool { return v.Internal }).(pulumi.BoolPtrOutput)
-}
-
-// Configuration used to control the Environment Egress outbound traffic
-func (o VnetConfigurationResponseOutput) OutboundSettings() ManagedEnvironmentOutboundSettingsResponsePtrOutput {
-	return o.ApplyT(func(v VnetConfigurationResponse) *ManagedEnvironmentOutboundSettingsResponse {
-		return v.OutboundSettings
-	}).(ManagedEnvironmentOutboundSettingsResponsePtrOutput)
 }
 
 // IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
@@ -32406,11 +36987,6 @@ func (o VnetConfigurationResponseOutput) PlatformReservedCidr() pulumi.StringPtr
 // An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
 func (o VnetConfigurationResponseOutput) PlatformReservedDnsIP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnetConfigurationResponse) *string { return v.PlatformReservedDnsIP }).(pulumi.StringPtrOutput)
-}
-
-// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
-func (o VnetConfigurationResponseOutput) RuntimeSubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VnetConfigurationResponse) *string { return v.RuntimeSubnetId }).(pulumi.StringPtrOutput)
 }
 
 type VnetConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -32447,7 +37023,7 @@ func (o VnetConfigurationResponsePtrOutput) DockerBridgeCidr() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource ID of a subnet for infrastructure components. This subnet must be in the same VNET as the subnet defined in runtimeSubnetId. Must not overlap with any other provided IP ranges.
+// Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
 func (o VnetConfigurationResponsePtrOutput) InfrastructureSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VnetConfigurationResponse) *string {
 		if v == nil {
@@ -32457,7 +37033,7 @@ func (o VnetConfigurationResponsePtrOutput) InfrastructureSubnetId() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide runtimeSubnetId and infrastructureSubnetId if enabling this property
+// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
 func (o VnetConfigurationResponsePtrOutput) Internal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VnetConfigurationResponse) *bool {
 		if v == nil {
@@ -32465,16 +37041,6 @@ func (o VnetConfigurationResponsePtrOutput) Internal() pulumi.BoolPtrOutput {
 		}
 		return v.Internal
 	}).(pulumi.BoolPtrOutput)
-}
-
-// Configuration used to control the Environment Egress outbound traffic
-func (o VnetConfigurationResponsePtrOutput) OutboundSettings() ManagedEnvironmentOutboundSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *VnetConfigurationResponse) *ManagedEnvironmentOutboundSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.OutboundSettings
-	}).(ManagedEnvironmentOutboundSettingsResponsePtrOutput)
 }
 
 // IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
@@ -32494,16 +37060,6 @@ func (o VnetConfigurationResponsePtrOutput) PlatformReservedDnsIP() pulumi.Strin
 			return nil
 		}
 		return v.PlatformReservedDnsIP
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
-func (o VnetConfigurationResponsePtrOutput) RuntimeSubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VnetConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RuntimeSubnetId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33015,9 +37571,11 @@ func (o WorkflowHealthResponsePtrOutput) State() pulumi.StringPtrOutput {
 // Workload profile to scope container app execution.
 type WorkloadProfile struct {
 	// The maximum capacity.
-	MaximumCount int `pulumi:"maximumCount"`
+	MaximumCount *int `pulumi:"maximumCount"`
 	// The minimum capacity.
-	MinimumCount int `pulumi:"minimumCount"`
+	MinimumCount *int `pulumi:"minimumCount"`
+	// Workload profile type for the workloads to run on.
+	Name string `pulumi:"name"`
 	// Workload profile type for the workloads to run on.
 	WorkloadProfileType string `pulumi:"workloadProfileType"`
 }
@@ -33036,9 +37594,11 @@ type WorkloadProfileInput interface {
 // Workload profile to scope container app execution.
 type WorkloadProfileArgs struct {
 	// The maximum capacity.
-	MaximumCount pulumi.IntInput `pulumi:"maximumCount"`
+	MaximumCount pulumi.IntPtrInput `pulumi:"maximumCount"`
 	// The minimum capacity.
-	MinimumCount pulumi.IntInput `pulumi:"minimumCount"`
+	MinimumCount pulumi.IntPtrInput `pulumi:"minimumCount"`
+	// Workload profile type for the workloads to run on.
+	Name pulumi.StringInput `pulumi:"name"`
 	// Workload profile type for the workloads to run on.
 	WorkloadProfileType pulumi.StringInput `pulumi:"workloadProfileType"`
 }
@@ -33096,13 +37656,18 @@ func (o WorkloadProfileOutput) ToWorkloadProfileOutputWithContext(ctx context.Co
 }
 
 // The maximum capacity.
-func (o WorkloadProfileOutput) MaximumCount() pulumi.IntOutput {
-	return o.ApplyT(func(v WorkloadProfile) int { return v.MaximumCount }).(pulumi.IntOutput)
+func (o WorkloadProfileOutput) MaximumCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkloadProfile) *int { return v.MaximumCount }).(pulumi.IntPtrOutput)
 }
 
 // The minimum capacity.
-func (o WorkloadProfileOutput) MinimumCount() pulumi.IntOutput {
-	return o.ApplyT(func(v WorkloadProfile) int { return v.MinimumCount }).(pulumi.IntOutput)
+func (o WorkloadProfileOutput) MinimumCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkloadProfile) *int { return v.MinimumCount }).(pulumi.IntPtrOutput)
+}
+
+// Workload profile type for the workloads to run on.
+func (o WorkloadProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkloadProfile) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Workload profile type for the workloads to run on.
@@ -33133,9 +37698,11 @@ func (o WorkloadProfileArrayOutput) Index(i pulumi.IntInput) WorkloadProfileOutp
 // Workload profile to scope container app execution.
 type WorkloadProfileResponse struct {
 	// The maximum capacity.
-	MaximumCount int `pulumi:"maximumCount"`
+	MaximumCount *int `pulumi:"maximumCount"`
 	// The minimum capacity.
-	MinimumCount int `pulumi:"minimumCount"`
+	MinimumCount *int `pulumi:"minimumCount"`
+	// Workload profile type for the workloads to run on.
+	Name string `pulumi:"name"`
 	// Workload profile type for the workloads to run on.
 	WorkloadProfileType string `pulumi:"workloadProfileType"`
 }
@@ -33156,13 +37723,18 @@ func (o WorkloadProfileResponseOutput) ToWorkloadProfileResponseOutputWithContex
 }
 
 // The maximum capacity.
-func (o WorkloadProfileResponseOutput) MaximumCount() pulumi.IntOutput {
-	return o.ApplyT(func(v WorkloadProfileResponse) int { return v.MaximumCount }).(pulumi.IntOutput)
+func (o WorkloadProfileResponseOutput) MaximumCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkloadProfileResponse) *int { return v.MaximumCount }).(pulumi.IntPtrOutput)
 }
 
 // The minimum capacity.
-func (o WorkloadProfileResponseOutput) MinimumCount() pulumi.IntOutput {
-	return o.ApplyT(func(v WorkloadProfileResponse) int { return v.MinimumCount }).(pulumi.IntOutput)
+func (o WorkloadProfileResponseOutput) MinimumCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkloadProfileResponse) *int { return v.MinimumCount }).(pulumi.IntPtrOutput)
+}
+
+// Workload profile type for the workloads to run on.
+func (o WorkloadProfileResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkloadProfileResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Workload profile type for the workloads to run on.
@@ -33251,6 +37823,10 @@ func init() {
 	pulumi.RegisterOutputType(AzureStaticWebAppsRegistrationResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureStaticWebAppsResponseOutput{})
 	pulumi.RegisterOutputType(AzureStaticWebAppsResponsePtrOutput{})
+	pulumi.RegisterOutputType(BlobStorageTokenStoreOutput{})
+	pulumi.RegisterOutputType(BlobStorageTokenStorePtrOutput{})
+	pulumi.RegisterOutputType(BlobStorageTokenStoreResponseOutput{})
+	pulumi.RegisterOutputType(BlobStorageTokenStoreResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildConfigurationOutput{})
 	pulumi.RegisterOutputType(BuildConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(BuildConfigurationResponseOutput{})
@@ -33340,6 +37916,10 @@ func init() {
 	pulumi.RegisterOutputType(CustomScaleRuleResponsePtrOutput{})
 	pulumi.RegisterOutputType(DaprOutput{})
 	pulumi.RegisterOutputType(DaprPtrOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyConfigurationOutput{})
 	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyConfigurationResponseOutput{})
@@ -33356,6 +37936,8 @@ func init() {
 	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DaprConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DaprConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DaprMetadataOutput{})
 	pulumi.RegisterOutputType(DaprMetadataArrayOutput{})
 	pulumi.RegisterOutputType(DaprMetadataResponseOutput{})
@@ -33392,10 +37974,10 @@ func init() {
 	pulumi.RegisterOutputType(DynamicPoolConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DynamicPoolConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(DynamicPoolConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(EnvironmentSkuPropertiesOutput{})
-	pulumi.RegisterOutputType(EnvironmentSkuPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(EnvironmentSkuPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(EnvironmentSkuPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionSettingsOutput{})
+	pulumi.RegisterOutputType(EncryptionSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionSettingsResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentVarOutput{})
 	pulumi.RegisterOutputType(EnvironmentVarArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentVarResponseOutput{})
@@ -33494,8 +38076,16 @@ func init() {
 	pulumi.RegisterOutputType(IdentityProvidersResponsePtrOutput{})
 	pulumi.RegisterOutputType(IngressOutput{})
 	pulumi.RegisterOutputType(IngressPtrOutput{})
+	pulumi.RegisterOutputType(IngressPortMappingOutput{})
+	pulumi.RegisterOutputType(IngressPortMappingArrayOutput{})
+	pulumi.RegisterOutputType(IngressPortMappingResponseOutput{})
+	pulumi.RegisterOutputType(IngressPortMappingResponseArrayOutput{})
 	pulumi.RegisterOutputType(IngressResponseOutput{})
 	pulumi.RegisterOutputType(IngressResponsePtrOutput{})
+	pulumi.RegisterOutputType(IngressResponseStickySessionsOutput{})
+	pulumi.RegisterOutputType(IngressResponseStickySessionsPtrOutput{})
+	pulumi.RegisterOutputType(IngressStickySessionsOutput{})
+	pulumi.RegisterOutputType(IngressStickySessionsPtrOutput{})
 	pulumi.RegisterOutputType(InitContainerOutput{})
 	pulumi.RegisterOutputType(InitContainerArrayOutput{})
 	pulumi.RegisterOutputType(InitContainerResponseOutput{})
@@ -33508,6 +38098,12 @@ func init() {
 	pulumi.RegisterOutputType(JavaComponentConfigurationPropertyArrayOutput{})
 	pulumi.RegisterOutputType(JavaComponentConfigurationPropertyResponseOutput{})
 	pulumi.RegisterOutputType(JavaComponentConfigurationPropertyResponseArrayOutput{})
+	pulumi.RegisterOutputType(JavaComponentIngressResponseOutput{})
+	pulumi.RegisterOutputType(JavaComponentIngressResponsePtrOutput{})
+	pulumi.RegisterOutputType(JavaComponentPropertiesResponseScaleOutput{})
+	pulumi.RegisterOutputType(JavaComponentPropertiesResponseScalePtrOutput{})
+	pulumi.RegisterOutputType(JavaComponentPropertiesScaleOutput{})
+	pulumi.RegisterOutputType(JavaComponentPropertiesScalePtrOutput{})
 	pulumi.RegisterOutputType(JavaComponentServiceBindOutput{})
 	pulumi.RegisterOutputType(JavaComponentServiceBindArrayOutput{})
 	pulumi.RegisterOutputType(JavaComponentServiceBindResponseOutput{})
@@ -33544,6 +38140,8 @@ func init() {
 	pulumi.RegisterOutputType(JwtClaimChecksPtrOutput{})
 	pulumi.RegisterOutputType(JwtClaimChecksResponseOutput{})
 	pulumi.RegisterOutputType(JwtClaimChecksResponsePtrOutput{})
+	pulumi.RegisterOutputType(KedaConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(KedaConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsConfigurationOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsConfigurationResponseOutput{})
@@ -33563,17 +38161,36 @@ func init() {
 	pulumi.RegisterOutputType(ManagedCertificatePropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedCertificatePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedCertificateResponsePropertiesOutput{})
-	pulumi.RegisterOutputType(ManagedEnvironmentOutboundSettingsOutput{})
-	pulumi.RegisterOutputType(ManagedEnvironmentOutboundSettingsPtrOutput{})
-	pulumi.RegisterOutputType(ManagedEnvironmentOutboundSettingsResponseOutput{})
-	pulumi.RegisterOutputType(ManagedEnvironmentOutboundSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentEncryptionOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentPeerAuthenticationOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentPeerAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentPeerTrafficConfigurationOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentPeerTrafficConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentResponseEncryptionOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentResponseEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentResponsePeerAuthenticationOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentResponsePeerAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentResponsePeerTrafficConfigurationOutput{})
+	pulumi.RegisterOutputType(ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ManagedEnvironmentStoragePropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedEnvironmentStoragePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedEnvironmentStorageResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(ManagedIdentitySettingOutput{})
+	pulumi.RegisterOutputType(ManagedIdentitySettingArrayOutput{})
+	pulumi.RegisterOutputType(ManagedIdentitySettingResponseOutput{})
+	pulumi.RegisterOutputType(ManagedIdentitySettingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(MtlsOutput{})
+	pulumi.RegisterOutputType(MtlsPtrOutput{})
+	pulumi.RegisterOutputType(MtlsResponseOutput{})
+	pulumi.RegisterOutputType(MtlsResponsePtrOutput{})
+	pulumi.RegisterOutputType(NacosComponentOutput{})
+	pulumi.RegisterOutputType(NacosComponentPtrOutput{})
+	pulumi.RegisterOutputType(NacosComponentResponseOutput{})
 	pulumi.RegisterOutputType(NonceOutput{})
 	pulumi.RegisterOutputType(NoncePtrOutput{})
 	pulumi.RegisterOutputType(NonceResponseOutput{})
@@ -33630,6 +38247,10 @@ func init() {
 	pulumi.RegisterOutputType(ScaleRuleAuthResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScaleRuleResponseOutput{})
 	pulumi.RegisterOutputType(ScaleRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(ScgRouteOutput{})
+	pulumi.RegisterOutputType(ScgRouteArrayOutput{})
+	pulumi.RegisterOutputType(ScgRouteResponseOutput{})
+	pulumi.RegisterOutputType(ScgRouteResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScheduledEntryOutput{})
 	pulumi.RegisterOutputType(ScheduledEntryArrayOutput{})
 	pulumi.RegisterOutputType(ScheduledEntryResponseOutput{})
@@ -33642,6 +38263,14 @@ func init() {
 	pulumi.RegisterOutputType(SecretVolumeItemArrayOutput{})
 	pulumi.RegisterOutputType(SecretVolumeItemResponseOutput{})
 	pulumi.RegisterOutputType(SecretVolumeItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceOutput{})
+	pulumi.RegisterOutputType(ServicePtrOutput{})
+	pulumi.RegisterOutputType(ServiceBindOutput{})
+	pulumi.RegisterOutputType(ServiceBindArrayOutput{})
+	pulumi.RegisterOutputType(ServiceBindResponseOutput{})
+	pulumi.RegisterOutputType(ServiceBindResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceResponseOutput{})
+	pulumi.RegisterOutputType(ServiceResponsePtrOutput{})
 	pulumi.RegisterOutputType(SessionContainerOutput{})
 	pulumi.RegisterOutputType(SessionContainerArrayOutput{})
 	pulumi.RegisterOutputType(SessionContainerResourcesOutput{})
@@ -33666,6 +38295,18 @@ func init() {
 	pulumi.RegisterOutputType(SessionRegistryCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(SessionRegistryCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(SessionRegistryCredentialsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SpringBootAdminComponentOutput{})
+	pulumi.RegisterOutputType(SpringBootAdminComponentPtrOutput{})
+	pulumi.RegisterOutputType(SpringBootAdminComponentResponseOutput{})
+	pulumi.RegisterOutputType(SpringCloudConfigComponentOutput{})
+	pulumi.RegisterOutputType(SpringCloudConfigComponentPtrOutput{})
+	pulumi.RegisterOutputType(SpringCloudConfigComponentResponseOutput{})
+	pulumi.RegisterOutputType(SpringCloudEurekaComponentOutput{})
+	pulumi.RegisterOutputType(SpringCloudEurekaComponentPtrOutput{})
+	pulumi.RegisterOutputType(SpringCloudEurekaComponentResponseOutput{})
+	pulumi.RegisterOutputType(SpringCloudGatewayComponentOutput{})
+	pulumi.RegisterOutputType(SpringCloudGatewayComponentPtrOutput{})
+	pulumi.RegisterOutputType(SpringCloudGatewayComponentResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TcpConnectionPoolOutput{})
 	pulumi.RegisterOutputType(TcpConnectionPoolPtrOutput{})
@@ -33687,6 +38328,10 @@ func init() {
 	pulumi.RegisterOutputType(TimeoutPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TimeoutPolicyResponseOutput{})
 	pulumi.RegisterOutputType(TimeoutPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(TokenStoreOutput{})
+	pulumi.RegisterOutputType(TokenStorePtrOutput{})
+	pulumi.RegisterOutputType(TokenStoreResponseOutput{})
+	pulumi.RegisterOutputType(TokenStoreResponsePtrOutput{})
 	pulumi.RegisterOutputType(TrafficWeightOutput{})
 	pulumi.RegisterOutputType(TrafficWeightArrayOutput{})
 	pulumi.RegisterOutputType(TrafficWeightResponseOutput{})

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-12-01-preview.
 //
-// Other available API versions: 2024-12-01-preview.
+// Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupLoadTestMapping(ctx *pulumi.Context, args *LookupLoadTestMappingArgs, opts ...pulumi.InvokeOption) (*LookupLoadTestMappingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadTestMappingResult
@@ -35,6 +35,8 @@ type LookupLoadTestMappingArgs struct {
 
 // LoadTest mapping resource details
 type LookupLoadTestMappingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Mapped Azure Load Test resource Id.
 	AzureLoadTestingResourceId *string `pulumi:"azureLoadTestingResourceId"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -84,6 +86,11 @@ func (o LookupLoadTestMappingResultOutput) ToLookupLoadTestMappingResultOutput()
 
 func (o LookupLoadTestMappingResultOutput) ToLookupLoadTestMappingResultOutputWithContext(ctx context.Context) LookupLoadTestMappingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLoadTestMappingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadTestMappingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Mapped Azure Load Test resource Id.

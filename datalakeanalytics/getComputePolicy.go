@@ -35,6 +35,8 @@ type LookupComputePolicyArgs struct {
 
 // Data Lake Analytics compute policy information.
 type LookupComputePolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource identifier.
 	Id string `pulumi:"id"`
 	// The maximum degree of parallelism per job this user can use to submit jobs.
@@ -86,6 +88,11 @@ func (o LookupComputePolicyResultOutput) ToLookupComputePolicyResultOutput() Loo
 
 func (o LookupComputePolicyResultOutput) ToLookupComputePolicyResultOutputWithContext(ctx context.Context) LookupComputePolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupComputePolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputePolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource identifier.

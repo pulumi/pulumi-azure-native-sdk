@@ -33,6 +33,8 @@ type LookupCIAMTenantArgs struct {
 
 // The Azure AD for customers resource.
 type LookupCIAMTenantResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The type of billing. Will be MAU for all new customers. Cannot be changed if value is 'MAU'. Learn more about Azure AD for customers billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling).
 	BillingType string `pulumi:"billingType"`
 	// These properties are used to create the Azure AD for customers tenant. These properties are not part of the Azure resource.
@@ -93,6 +95,11 @@ func (o LookupCIAMTenantResultOutput) ToLookupCIAMTenantResultOutput() LookupCIA
 
 func (o LookupCIAMTenantResultOutput) ToLookupCIAMTenantResultOutputWithContext(ctx context.Context) LookupCIAMTenantResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCIAMTenantResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCIAMTenantResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The type of billing. Will be MAU for all new customers. Cannot be changed if value is 'MAU'. Learn more about Azure AD for customers billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling).

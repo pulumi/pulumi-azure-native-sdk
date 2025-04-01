@@ -35,6 +35,8 @@ type LookupTimeSeriesDatabaseConnectionArgs struct {
 
 // Describes a time series database connection resource.
 type LookupTimeSeriesDatabaseConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource identifier.
 	Id string `pulumi:"id"`
 	// Extension resource name.
@@ -92,6 +94,11 @@ func (o LookupTimeSeriesDatabaseConnectionResultOutput) ToLookupTimeSeriesDataba
 
 func (o LookupTimeSeriesDatabaseConnectionResultOutput) ToLookupTimeSeriesDatabaseConnectionResultOutputWithContext(ctx context.Context) LookupTimeSeriesDatabaseConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTimeSeriesDatabaseConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTimeSeriesDatabaseConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource identifier.

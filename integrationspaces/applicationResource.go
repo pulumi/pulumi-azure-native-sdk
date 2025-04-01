@@ -14,10 +14,12 @@ import (
 
 // A resource under application.
 //
-// Uses Azure REST API version 2023-11-14-preview.
+// Uses Azure REST API version 2023-11-14-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-14-preview.
 type ApplicationResource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The status of the last operation.
@@ -164,6 +166,11 @@ func (o ApplicationResourceOutput) ToApplicationResourceOutput() ApplicationReso
 
 func (o ApplicationResourceOutput) ToApplicationResourceOutputWithContext(ctx context.Context) ApplicationResourceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApplicationResourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationResource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

@@ -14,12 +14,14 @@ import (
 
 // Properties of an artifact source.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type ArtifactSource struct {
 	pulumi.CustomResourceState
 
 	// The folder containing Azure Resource Manager templates.
 	ArmTemplateFolderPath pulumi.StringPtrOutput `pulumi:"armTemplateFolderPath"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The artifact source's branch reference.
 	BranchRef pulumi.StringPtrOutput `pulumi:"branchRef"`
 	// The artifact source's creation date.
@@ -206,6 +208,11 @@ func (o ArtifactSourceOutput) ToArtifactSourceOutputWithContext(ctx context.Cont
 // The folder containing Azure Resource Manager templates.
 func (o ArtifactSourceOutput) ArmTemplateFolderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArtifactSource) pulumi.StringPtrOutput { return v.ArmTemplateFolderPath }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ArtifactSourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArtifactSource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The artifact source's branch reference.

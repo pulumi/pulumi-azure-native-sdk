@@ -14,23 +14,27 @@ import (
 
 // ExpressRoute Circuit Authorization
 //
-// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2020-03-20.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
 //
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Authorization struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The ID of the ExpressRoute Circuit Authorization
 	ExpressRouteAuthorizationId pulumi.StringOutput `pulumi:"expressRouteAuthorizationId"`
 	// The key of the ExpressRoute Circuit Authorization
 	ExpressRouteAuthorizationKey pulumi.StringOutput `pulumi:"expressRouteAuthorizationKey"`
 	// The ID of the ExpressRoute Circuit
 	ExpressRouteId pulumi.StringPtrOutput `pulumi:"expressRouteId"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The state of the  ExpressRoute Circuit Authorization provisioning
+	// The state of the ExpressRoute Circuit Authorization provisioning
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -107,11 +111,11 @@ func (AuthorizationState) ElementType() reflect.Type {
 }
 
 type authorizationArgs struct {
-	// Name of the ExpressRoute Circuit Authorization in the private cloud
+	// Name of the ExpressRoute Circuit Authorization
 	AuthorizationName *string `pulumi:"authorizationName"`
 	// The ID of the ExpressRoute Circuit
 	ExpressRouteId *string `pulumi:"expressRouteId"`
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -119,11 +123,11 @@ type authorizationArgs struct {
 
 // The set of arguments for constructing a Authorization resource.
 type AuthorizationArgs struct {
-	// Name of the ExpressRoute Circuit Authorization in the private cloud
+	// Name of the ExpressRoute Circuit Authorization
 	AuthorizationName pulumi.StringPtrInput
 	// The ID of the ExpressRoute Circuit
 	ExpressRouteId pulumi.StringPtrInput
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -166,6 +170,11 @@ func (o AuthorizationOutput) ToAuthorizationOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AuthorizationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Authorization) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The ID of the ExpressRoute Circuit Authorization
 func (o AuthorizationOutput) ExpressRouteAuthorizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authorization) pulumi.StringOutput { return v.ExpressRouteAuthorizationId }).(pulumi.StringOutput)
@@ -181,17 +190,22 @@ func (o AuthorizationOutput) ExpressRouteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Authorization) pulumi.StringPtrOutput { return v.ExpressRouteId }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o AuthorizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authorization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The state of the  ExpressRoute Circuit Authorization provisioning
+// The state of the ExpressRoute Circuit Authorization provisioning
 func (o AuthorizationOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authorization) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AuthorizationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Authorization) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AuthorizationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authorization) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

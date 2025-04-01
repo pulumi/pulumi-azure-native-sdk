@@ -13,9 +13,9 @@ import (
 
 // Retrieves the details of a VirtualWAN.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2019-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVirtualWan(ctx *pulumi.Context, args *LookupVirtualWanArgs, opts ...pulumi.InvokeOption) (*LookupVirtualWanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualWanResult
@@ -39,6 +39,8 @@ type LookupVirtualWanResult struct {
 	AllowBranchToBranchTraffic *bool `pulumi:"allowBranchToBranchTraffic"`
 	// True if Vnet to Vnet traffic is allowed.
 	AllowVnetToVnetTraffic *bool `pulumi:"allowVnetToVnetTraffic"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Vpn encryption to be disabled or not.
 	DisableVpnEncryption *bool `pulumi:"disableVpnEncryption"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -106,6 +108,11 @@ func (o LookupVirtualWanResultOutput) AllowBranchToBranchTraffic() pulumi.BoolPt
 // True if Vnet to Vnet traffic is allowed.
 func (o LookupVirtualWanResultOutput) AllowVnetToVnetTraffic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) *bool { return v.AllowVnetToVnetTraffic }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualWanResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualWanResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Vpn encryption to be disabled or not.

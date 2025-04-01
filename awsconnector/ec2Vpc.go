@@ -14,10 +14,12 @@ import (
 
 // A Microsoft.AwsConnector resource
 //
-// Uses Azure REST API version 2024-12-01.
+// Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2024-12-01.
 type Ec2Vpc struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -142,6 +144,11 @@ func (o Ec2VpcOutput) ToEc2VpcOutput() Ec2VpcOutput {
 
 func (o Ec2VpcOutput) ToEc2VpcOutputWithContext(ctx context.Context) Ec2VpcOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o Ec2VpcOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ec2Vpc) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

@@ -33,6 +33,8 @@ type LookupEcsServiceArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupEcsServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -92,6 +94,11 @@ func (o LookupEcsServiceResultOutput) ToLookupEcsServiceResultOutput() LookupEcs
 
 func (o LookupEcsServiceResultOutput) ToLookupEcsServiceResultOutputWithContext(ctx context.Context) LookupEcsServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEcsServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEcsServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

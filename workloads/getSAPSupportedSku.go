@@ -13,9 +13,9 @@ import (
 
 // Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2021-12-01-preview, 2022-11-01-preview, 2023-10-01-preview.
+// Other available API versions: 2023-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native workloads [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetSAPSupportedSku(ctx *pulumi.Context, args *GetSAPSupportedSkuArgs, opts ...pulumi.InvokeOption) (*GetSAPSupportedSkuResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSAPSupportedSkuResult

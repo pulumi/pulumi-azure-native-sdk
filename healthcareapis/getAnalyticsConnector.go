@@ -35,6 +35,8 @@ type LookupAnalyticsConnectorArgs struct {
 
 // Analytics Connector definition.
 type LookupAnalyticsConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Data destination configuration for Analytics Connector.
 	DataDestinationConfiguration AnalyticsConnectorDataLakeDataDestinationResponse `pulumi:"dataDestinationConfiguration"`
 	// Data mapping configuration for Analytics Connector.
@@ -96,6 +98,11 @@ func (o LookupAnalyticsConnectorResultOutput) ToLookupAnalyticsConnectorResultOu
 
 func (o LookupAnalyticsConnectorResultOutput) ToLookupAnalyticsConnectorResultOutputWithContext(ctx context.Context) LookupAnalyticsConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAnalyticsConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAnalyticsConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Data destination configuration for Analytics Connector.

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2021-06-01.
 //
-// Other available API versions: 2021-05-01, 2021-06-01-preview.
+// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSqlPool(ctx *pulumi.Context, args *LookupSqlPoolArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlPoolResult
@@ -37,6 +37,8 @@ type LookupSqlPoolArgs struct {
 
 // A SQL Analytics pool
 type LookupSqlPoolResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Collation mode
 	Collation *string `pulumi:"collation"`
 	// Date the SQL pool was created
@@ -120,6 +122,11 @@ func (o LookupSqlPoolResultOutput) ToLookupSqlPoolResultOutput() LookupSqlPoolRe
 
 func (o LookupSqlPoolResultOutput) ToLookupSqlPoolResultOutputWithContext(ctx context.Context) LookupSqlPoolResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collation mode

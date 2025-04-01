@@ -14,21 +14,23 @@ import (
 
 // Model that represents a Experiment resource.
 //
-// Uses Azure REST API version 2023-04-15-preview. In version 1.x of the Azure Native provider, it used API version 2021-09-15-preview.
+// Uses Azure REST API version 2024-03-22-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-15-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
+// Other available API versions: 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-11-01-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Experiment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the experiment resource.
-	Identity ResourceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ExperimentIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The properties of the experiment resource.
 	Properties ExperimentPropertiesResponseOutput `pulumi:"properties"`
-	// The system metadata of the experiment resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -124,7 +126,7 @@ type experimentArgs struct {
 	// String that represents a Experiment resource name.
 	ExperimentName *string `pulumi:"experimentName"`
 	// The identity of the experiment resource.
-	Identity *ResourceIdentity `pulumi:"identity"`
+	Identity *ExperimentIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The properties of the experiment resource.
@@ -140,7 +142,7 @@ type ExperimentArgs struct {
 	// String that represents a Experiment resource name.
 	ExperimentName pulumi.StringPtrInput
 	// The identity of the experiment resource.
-	Identity ResourceIdentityPtrInput
+	Identity ExperimentIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The properties of the experiment resource.
@@ -188,9 +190,14 @@ func (o ExperimentOutput) ToExperimentOutputWithContext(ctx context.Context) Exp
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ExperimentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The identity of the experiment resource.
-func (o ExperimentOutput) Identity() ResourceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Experiment) ResourceIdentityResponsePtrOutput { return v.Identity }).(ResourceIdentityResponsePtrOutput)
+func (o ExperimentOutput) Identity() ExperimentIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Experiment) ExperimentIdentityResponsePtrOutput { return v.Identity }).(ExperimentIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -208,7 +215,7 @@ func (o ExperimentOutput) Properties() ExperimentPropertiesResponseOutput {
 	return o.ApplyT(func(v *Experiment) ExperimentPropertiesResponseOutput { return v.Properties }).(ExperimentPropertiesResponseOutput)
 }
 
-// The system metadata of the experiment resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ExperimentOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Experiment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

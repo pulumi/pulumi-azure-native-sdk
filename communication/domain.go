@@ -14,14 +14,16 @@ import (
 
 // A class representing a Domains resource.
 //
-// Uses Azure REST API version 2023-03-31. In version 1.x of the Azure Native provider, it used API version 2021-10-01-preview.
+// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-31.
 //
-// Other available API versions: 2022-07-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 //
 // Note: If `domainManagement` is set to `AzureManaged`, then `domainName` is required.
 type Domain struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location where the Domains resource data is stored at rest.
 	DataLocation pulumi.StringOutput `pulumi:"dataLocation"`
 	// Describes how a Domains resource is being managed.
@@ -195,6 +197,11 @@ func (o DomainOutput) ToDomainOutput() DomainOutput {
 
 func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DomainOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location where the Domains resource data is stored at rest.

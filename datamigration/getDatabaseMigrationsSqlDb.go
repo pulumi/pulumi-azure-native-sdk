@@ -13,9 +13,9 @@ import (
 
 // Retrieve the Database Migration resource.
 //
-// Uses Azure REST API version 2022-03-30-preview.
+// Uses Azure REST API version 2023-07-15-preview.
 //
-// Other available API versions: 2023-07-15-preview.
+// Other available API versions: 2022-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDatabaseMigrationsSqlDb(ctx *pulumi.Context, args *LookupDatabaseMigrationsSqlDbArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseMigrationsSqlDbResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseMigrationsSqlDbResult
@@ -40,8 +40,10 @@ type LookupDatabaseMigrationsSqlDbArgs struct {
 
 // Database Migration Resource for SQL Database.
 type LookupDatabaseMigrationsSqlDbResult struct {
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	Id              string `pulumi:"id"`
+	Name            string `pulumi:"name"`
 	// Database Migration Resource properties for SQL database.
 	Properties DatabaseMigrationPropertiesSqlDbResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
@@ -87,6 +89,11 @@ func (o LookupDatabaseMigrationsSqlDbResultOutput) ToLookupDatabaseMigrationsSql
 
 func (o LookupDatabaseMigrationsSqlDbResultOutput) ToLookupDatabaseMigrationsSqlDbResultOutputWithContext(ctx context.Context) LookupDatabaseMigrationsSqlDbResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDatabaseMigrationsSqlDbResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseMigrationsSqlDbResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseMigrationsSqlDbResultOutput) Id() pulumi.StringOutput {

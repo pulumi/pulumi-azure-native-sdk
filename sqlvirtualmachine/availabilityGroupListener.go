@@ -14,9 +14,9 @@ import (
 
 // A SQL Server availability group listener.
 //
-// Uses Azure REST API version 2022-02-01. In version 1.x of the Azure Native provider, it used API version 2017-03-01-preview.
+// Uses Azure REST API version 2023-10-01. In version 2.x of the Azure Native provider, it used API version 2022-02-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-10-01.
+// Other available API versions: 2022-02-01, 2022-07-01-preview, 2022-08-01-preview, 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sqlvirtualmachine [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AvailabilityGroupListener struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type AvailabilityGroupListener struct {
 	AvailabilityGroupConfiguration AgConfigurationResponsePtrOutput `pulumi:"availabilityGroupConfiguration"`
 	// Name of the availability group.
 	AvailabilityGroupName pulumi.StringPtrOutput `pulumi:"availabilityGroupName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Create a default availability group if it does not exist.
 	CreateDefaultAvailabilityGroupIfNotExist pulumi.BoolPtrOutput `pulumi:"createDefaultAvailabilityGroupIfNotExist"`
 	// List of load balancer configurations for an availability group listener.
@@ -204,6 +206,11 @@ func (o AvailabilityGroupListenerOutput) AvailabilityGroupConfiguration() AgConf
 // Name of the availability group.
 func (o AvailabilityGroupListenerOutput) AvailabilityGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AvailabilityGroupListener) pulumi.StringPtrOutput { return v.AvailabilityGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o AvailabilityGroupListenerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AvailabilityGroupListener) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Create a default availability group if it does not exist.

@@ -39,6 +39,8 @@ type LookupADLSGen1FileDataSetArgs struct {
 type LookupADLSGen1FileDataSetResult struct {
 	// The ADLS account name.
 	AccountName string `pulumi:"accountName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Unique id for identifying a data set resource
 	DataSetId string `pulumi:"dataSetId"`
 	// The file name in the ADLS account.
@@ -104,6 +106,11 @@ func (o LookupADLSGen1FileDataSetResultOutput) ToLookupADLSGen1FileDataSetResult
 // The ADLS account name.
 func (o LookupADLSGen1FileDataSetResultOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen1FileDataSetResult) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupADLSGen1FileDataSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupADLSGen1FileDataSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Unique id for identifying a data set resource

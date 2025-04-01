@@ -10,126 +10,125 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Level at which content is filtered.
-type AllowedContentLevel string
+// Setting for trusted services.
+type ByPassSelection string
 
 const (
-	AllowedContentLevelLow    = AllowedContentLevel("Low")
-	AllowedContentLevelMedium = AllowedContentLevel("Medium")
-	AllowedContentLevelHigh   = AllowedContentLevel("High")
+	ByPassSelectionNone          = ByPassSelection("None")
+	ByPassSelectionAzureServices = ByPassSelection("AzureServices")
 )
 
-func (AllowedContentLevel) ElementType() reflect.Type {
-	return reflect.TypeOf((*AllowedContentLevel)(nil)).Elem()
+func (ByPassSelection) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByPassSelection)(nil)).Elem()
 }
 
-func (e AllowedContentLevel) ToAllowedContentLevelOutput() AllowedContentLevelOutput {
-	return pulumi.ToOutput(e).(AllowedContentLevelOutput)
+func (e ByPassSelection) ToByPassSelectionOutput() ByPassSelectionOutput {
+	return pulumi.ToOutput(e).(ByPassSelectionOutput)
 }
 
-func (e AllowedContentLevel) ToAllowedContentLevelOutputWithContext(ctx context.Context) AllowedContentLevelOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(AllowedContentLevelOutput)
+func (e ByPassSelection) ToByPassSelectionOutputWithContext(ctx context.Context) ByPassSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ByPassSelectionOutput)
 }
 
-func (e AllowedContentLevel) ToAllowedContentLevelPtrOutput() AllowedContentLevelPtrOutput {
-	return e.ToAllowedContentLevelPtrOutputWithContext(context.Background())
+func (e ByPassSelection) ToByPassSelectionPtrOutput() ByPassSelectionPtrOutput {
+	return e.ToByPassSelectionPtrOutputWithContext(context.Background())
 }
 
-func (e AllowedContentLevel) ToAllowedContentLevelPtrOutputWithContext(ctx context.Context) AllowedContentLevelPtrOutput {
-	return AllowedContentLevel(e).ToAllowedContentLevelOutputWithContext(ctx).ToAllowedContentLevelPtrOutputWithContext(ctx)
+func (e ByPassSelection) ToByPassSelectionPtrOutputWithContext(ctx context.Context) ByPassSelectionPtrOutput {
+	return ByPassSelection(e).ToByPassSelectionOutputWithContext(ctx).ToByPassSelectionPtrOutputWithContext(ctx)
 }
 
-func (e AllowedContentLevel) ToStringOutput() pulumi.StringOutput {
+func (e ByPassSelection) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e AllowedContentLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e ByPassSelection) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e AllowedContentLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e ByPassSelection) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e AllowedContentLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e ByPassSelection) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type AllowedContentLevelOutput struct{ *pulumi.OutputState }
+type ByPassSelectionOutput struct{ *pulumi.OutputState }
 
-func (AllowedContentLevelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AllowedContentLevel)(nil)).Elem()
+func (ByPassSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByPassSelection)(nil)).Elem()
 }
 
-func (o AllowedContentLevelOutput) ToAllowedContentLevelOutput() AllowedContentLevelOutput {
+func (o ByPassSelectionOutput) ToByPassSelectionOutput() ByPassSelectionOutput {
 	return o
 }
 
-func (o AllowedContentLevelOutput) ToAllowedContentLevelOutputWithContext(ctx context.Context) AllowedContentLevelOutput {
+func (o ByPassSelectionOutput) ToByPassSelectionOutputWithContext(ctx context.Context) ByPassSelectionOutput {
 	return o
 }
 
-func (o AllowedContentLevelOutput) ToAllowedContentLevelPtrOutput() AllowedContentLevelPtrOutput {
-	return o.ToAllowedContentLevelPtrOutputWithContext(context.Background())
+func (o ByPassSelectionOutput) ToByPassSelectionPtrOutput() ByPassSelectionPtrOutput {
+	return o.ToByPassSelectionPtrOutputWithContext(context.Background())
 }
 
-func (o AllowedContentLevelOutput) ToAllowedContentLevelPtrOutputWithContext(ctx context.Context) AllowedContentLevelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AllowedContentLevel) *AllowedContentLevel {
+func (o ByPassSelectionOutput) ToByPassSelectionPtrOutputWithContext(ctx context.Context) ByPassSelectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ByPassSelection) *ByPassSelection {
 		return &v
-	}).(AllowedContentLevelPtrOutput)
+	}).(ByPassSelectionPtrOutput)
 }
 
-func (o AllowedContentLevelOutput) ToStringOutput() pulumi.StringOutput {
+func (o ByPassSelectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o AllowedContentLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllowedContentLevel) string {
+func (o ByPassSelectionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ByPassSelection) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o AllowedContentLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o ByPassSelectionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o AllowedContentLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllowedContentLevel) *string {
+func (o ByPassSelectionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ByPassSelection) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type AllowedContentLevelPtrOutput struct{ *pulumi.OutputState }
+type ByPassSelectionPtrOutput struct{ *pulumi.OutputState }
 
-func (AllowedContentLevelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AllowedContentLevel)(nil)).Elem()
+func (ByPassSelectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ByPassSelection)(nil)).Elem()
 }
 
-func (o AllowedContentLevelPtrOutput) ToAllowedContentLevelPtrOutput() AllowedContentLevelPtrOutput {
+func (o ByPassSelectionPtrOutput) ToByPassSelectionPtrOutput() ByPassSelectionPtrOutput {
 	return o
 }
 
-func (o AllowedContentLevelPtrOutput) ToAllowedContentLevelPtrOutputWithContext(ctx context.Context) AllowedContentLevelPtrOutput {
+func (o ByPassSelectionPtrOutput) ToByPassSelectionPtrOutputWithContext(ctx context.Context) ByPassSelectionPtrOutput {
 	return o
 }
 
-func (o AllowedContentLevelPtrOutput) Elem() AllowedContentLevelOutput {
-	return o.ApplyT(func(v *AllowedContentLevel) AllowedContentLevel {
+func (o ByPassSelectionPtrOutput) Elem() ByPassSelectionOutput {
+	return o.ApplyT(func(v *ByPassSelection) ByPassSelection {
 		if v != nil {
 			return *v
 		}
-		var ret AllowedContentLevel
+		var ret ByPassSelection
 		return ret
-	}).(AllowedContentLevelOutput)
+	}).(ByPassSelectionOutput)
 }
 
-func (o AllowedContentLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o ByPassSelectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o AllowedContentLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AllowedContentLevel) *string {
+func (o ByPassSelectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ByPassSelection) *string {
 		if e == nil {
 			return nil
 		}
@@ -138,44 +137,211 @@ func (o AllowedContentLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// AllowedContentLevelInput is an input type that accepts values of the AllowedContentLevel enum
-// A concrete instance of `AllowedContentLevelInput` can be one of the following:
+// ByPassSelectionInput is an input type that accepts values of the ByPassSelection enum
+// A concrete instance of `ByPassSelectionInput` can be one of the following:
 //
-//	AllowedContentLevelLow
-//	AllowedContentLevelMedium
-//	AllowedContentLevelHigh
-type AllowedContentLevelInput interface {
+//	ByPassSelectionNone
+//	ByPassSelectionAzureServices
+type ByPassSelectionInput interface {
 	pulumi.Input
 
-	ToAllowedContentLevelOutput() AllowedContentLevelOutput
-	ToAllowedContentLevelOutputWithContext(context.Context) AllowedContentLevelOutput
+	ToByPassSelectionOutput() ByPassSelectionOutput
+	ToByPassSelectionOutputWithContext(context.Context) ByPassSelectionOutput
 }
 
-var allowedContentLevelPtrType = reflect.TypeOf((**AllowedContentLevel)(nil)).Elem()
+var byPassSelectionPtrType = reflect.TypeOf((**ByPassSelection)(nil)).Elem()
 
-type AllowedContentLevelPtrInput interface {
+type ByPassSelectionPtrInput interface {
 	pulumi.Input
 
-	ToAllowedContentLevelPtrOutput() AllowedContentLevelPtrOutput
-	ToAllowedContentLevelPtrOutputWithContext(context.Context) AllowedContentLevelPtrOutput
+	ToByPassSelectionPtrOutput() ByPassSelectionPtrOutput
+	ToByPassSelectionPtrOutputWithContext(context.Context) ByPassSelectionPtrOutput
 }
 
-type allowedContentLevelPtr string
+type byPassSelectionPtr string
 
-func AllowedContentLevelPtr(v string) AllowedContentLevelPtrInput {
-	return (*allowedContentLevelPtr)(&v)
+func ByPassSelectionPtr(v string) ByPassSelectionPtrInput {
+	return (*byPassSelectionPtr)(&v)
 }
 
-func (*allowedContentLevelPtr) ElementType() reflect.Type {
-	return allowedContentLevelPtrType
+func (*byPassSelectionPtr) ElementType() reflect.Type {
+	return byPassSelectionPtrType
 }
 
-func (in *allowedContentLevelPtr) ToAllowedContentLevelPtrOutput() AllowedContentLevelPtrOutput {
-	return pulumi.ToOutput(in).(AllowedContentLevelPtrOutput)
+func (in *byPassSelectionPtr) ToByPassSelectionPtrOutput() ByPassSelectionPtrOutput {
+	return pulumi.ToOutput(in).(ByPassSelectionPtrOutput)
 }
 
-func (in *allowedContentLevelPtr) ToAllowedContentLevelPtrOutputWithContext(ctx context.Context) AllowedContentLevelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(AllowedContentLevelPtrOutput)
+func (in *byPassSelectionPtr) ToByPassSelectionPtrOutputWithContext(ctx context.Context) ByPassSelectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ByPassSelectionPtrOutput)
+}
+
+// Level at which content is filtered.
+type ContentLevel string
+
+const (
+	ContentLevelLow    = ContentLevel("Low")
+	ContentLevelMedium = ContentLevel("Medium")
+	ContentLevelHigh   = ContentLevel("High")
+)
+
+func (ContentLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentLevel)(nil)).Elem()
+}
+
+func (e ContentLevel) ToContentLevelOutput() ContentLevelOutput {
+	return pulumi.ToOutput(e).(ContentLevelOutput)
+}
+
+func (e ContentLevel) ToContentLevelOutputWithContext(ctx context.Context) ContentLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ContentLevelOutput)
+}
+
+func (e ContentLevel) ToContentLevelPtrOutput() ContentLevelPtrOutput {
+	return e.ToContentLevelPtrOutputWithContext(context.Background())
+}
+
+func (e ContentLevel) ToContentLevelPtrOutputWithContext(ctx context.Context) ContentLevelPtrOutput {
+	return ContentLevel(e).ToContentLevelOutputWithContext(ctx).ToContentLevelPtrOutputWithContext(ctx)
+}
+
+func (e ContentLevel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ContentLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ContentLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ContentLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ContentLevelOutput struct{ *pulumi.OutputState }
+
+func (ContentLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentLevel)(nil)).Elem()
+}
+
+func (o ContentLevelOutput) ToContentLevelOutput() ContentLevelOutput {
+	return o
+}
+
+func (o ContentLevelOutput) ToContentLevelOutputWithContext(ctx context.Context) ContentLevelOutput {
+	return o
+}
+
+func (o ContentLevelOutput) ToContentLevelPtrOutput() ContentLevelPtrOutput {
+	return o.ToContentLevelPtrOutputWithContext(context.Background())
+}
+
+func (o ContentLevelOutput) ToContentLevelPtrOutputWithContext(ctx context.Context) ContentLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContentLevel) *ContentLevel {
+		return &v
+	}).(ContentLevelPtrOutput)
+}
+
+func (o ContentLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ContentLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContentLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ContentLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContentLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContentLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContentLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (ContentLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentLevel)(nil)).Elem()
+}
+
+func (o ContentLevelPtrOutput) ToContentLevelPtrOutput() ContentLevelPtrOutput {
+	return o
+}
+
+func (o ContentLevelPtrOutput) ToContentLevelPtrOutputWithContext(ctx context.Context) ContentLevelPtrOutput {
+	return o
+}
+
+func (o ContentLevelPtrOutput) Elem() ContentLevelOutput {
+	return o.ApplyT(func(v *ContentLevel) ContentLevel {
+		if v != nil {
+			return *v
+		}
+		var ret ContentLevel
+		return ret
+	}).(ContentLevelOutput)
+}
+
+func (o ContentLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContentLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ContentLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ContentLevelInput is an input type that accepts values of the ContentLevel enum
+// A concrete instance of `ContentLevelInput` can be one of the following:
+//
+//	ContentLevelLow
+//	ContentLevelMedium
+//	ContentLevelHigh
+type ContentLevelInput interface {
+	pulumi.Input
+
+	ToContentLevelOutput() ContentLevelOutput
+	ToContentLevelOutputWithContext(context.Context) ContentLevelOutput
+}
+
+var contentLevelPtrType = reflect.TypeOf((**ContentLevel)(nil)).Elem()
+
+type ContentLevelPtrInput interface {
+	pulumi.Input
+
+	ToContentLevelPtrOutput() ContentLevelPtrOutput
+	ToContentLevelPtrOutputWithContext(context.Context) ContentLevelPtrOutput
+}
+
+type contentLevelPtr string
+
+func ContentLevelPtr(v string) ContentLevelPtrInput {
+	return (*contentLevelPtr)(&v)
+}
+
+func (*contentLevelPtr) ElementType() reflect.Type {
+	return contentLevelPtrType
+}
+
+func (in *contentLevelPtr) ToContentLevelPtrOutput() ContentLevelPtrOutput {
+	return pulumi.ToOutput(in).(ContentLevelPtrOutput)
+}
+
+func (in *contentLevelPtr) ToContentLevelPtrOutputWithContext(ctx context.Context) ContentLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ContentLevelPtrOutput)
 }
 
 // Deployment model version upgrade option.
@@ -1680,13 +1846,14 @@ func (in *raiPolicyContentSourcePtr) ToRaiPolicyContentSourcePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(RaiPolicyContentSourcePtrOutput)
 }
 
-// Content Filters mode.
+// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
 type RaiPolicyMode string
 
 const (
-	RaiPolicyModeDefault  = RaiPolicyMode("Default")
-	RaiPolicyModeDeferred = RaiPolicyMode("Deferred")
-	RaiPolicyModeBlocking = RaiPolicyMode("Blocking")
+	RaiPolicyModeDefault              = RaiPolicyMode("Default")
+	RaiPolicyModeDeferred             = RaiPolicyMode("Deferred")
+	RaiPolicyModeBlocking             = RaiPolicyMode("Blocking")
+	RaiPolicyMode_Asynchronous_filter = RaiPolicyMode("Asynchronous_filter")
 )
 
 func (RaiPolicyMode) ElementType() reflect.Type {
@@ -1814,6 +1981,7 @@ func (o RaiPolicyModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 //	RaiPolicyModeDefault
 //	RaiPolicyModeDeferred
 //	RaiPolicyModeBlocking
+//	RaiPolicyMode_Asynchronous_filter
 type RaiPolicyModeInput interface {
 	pulumi.Input
 
@@ -2359,8 +2527,10 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 }
 
 func init() {
-	pulumi.RegisterOutputType(AllowedContentLevelOutput{})
-	pulumi.RegisterOutputType(AllowedContentLevelPtrOutput{})
+	pulumi.RegisterOutputType(ByPassSelectionOutput{})
+	pulumi.RegisterOutputType(ByPassSelectionPtrOutput{})
+	pulumi.RegisterOutputType(ContentLevelOutput{})
+	pulumi.RegisterOutputType(ContentLevelPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentModelVersionUpgradeOptionOutput{})
 	pulumi.RegisterOutputType(DeploymentModelVersionUpgradeOptionPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentScaleTypeOutput{})

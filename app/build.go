@@ -14,12 +14,14 @@ import (
 
 // Information pertaining to an individual build.
 //
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2024-10-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Build struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Status of the build once it has been provisioned.
 	BuildStatus pulumi.StringOutput `pulumi:"buildStatus"`
 	// Configuration of the build.
@@ -167,6 +169,11 @@ func (o BuildOutput) ToBuildOutput() BuildOutput {
 
 func (o BuildOutput) ToBuildOutputWithContext(ctx context.Context) BuildOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BuildOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Build) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Status of the build once it has been provisioned.

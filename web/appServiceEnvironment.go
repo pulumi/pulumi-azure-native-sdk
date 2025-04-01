@@ -14,12 +14,14 @@ import (
 
 // App Service Environment ARM resource.
 //
-// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2019-08-01, 2020-10-01, 2021-01-15, 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AppServiceEnvironment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Custom settings for changing the behavior of the App Service Environment.
 	ClusterSettings NameValuePairResponseArrayOutput `pulumi:"clusterSettings"`
 	// Full view of the custom domain suffix configuration for ASEv3.
@@ -36,7 +38,7 @@ type AppServiceEnvironment struct {
 	InternalLoadBalancingMode pulumi.StringPtrOutput `pulumi:"internalLoadBalancingMode"`
 	// Number of IP SSL addresses reserved for the App Service Environment.
 	IpsslAddressCount pulumi.IntPtrOutput `pulumi:"ipsslAddressCount"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource Location.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -190,7 +192,7 @@ type appServiceEnvironmentArgs struct {
 	InternalLoadBalancingMode *string `pulumi:"internalLoadBalancingMode"`
 	// Number of IP SSL addresses reserved for the App Service Environment.
 	IpsslAddressCount *int `pulumi:"ipsslAddressCount"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location *string `pulumi:"location"`
@@ -230,7 +232,7 @@ type AppServiceEnvironmentArgs struct {
 	InternalLoadBalancingMode pulumi.StringPtrInput
 	// Number of IP SSL addresses reserved for the App Service Environment.
 	IpsslAddressCount pulumi.IntPtrInput
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrInput
 	// Resource Location.
 	Location pulumi.StringPtrInput
@@ -291,6 +293,11 @@ func (o AppServiceEnvironmentOutput) ToAppServiceEnvironmentOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AppServiceEnvironmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Custom settings for changing the behavior of the App Service Environment.
 func (o AppServiceEnvironmentOutput) ClusterSettings() NameValuePairResponseArrayOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) NameValuePairResponseArrayOutput { return v.ClusterSettings }).(NameValuePairResponseArrayOutput)
@@ -333,7 +340,7 @@ func (o AppServiceEnvironmentOutput) IpsslAddressCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.IntPtrOutput { return v.IpsslAddressCount }).(pulumi.IntPtrOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o AppServiceEnvironmentOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }

@@ -14,12 +14,14 @@ import (
 
 // API Schema Contract details.
 //
-// Uses Azure REST API version 2022-09-01-preview.
+// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WorkspaceApiSchema struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Types definitions. Used for Swagger/OpenAPI v2/v3 schemas only, null otherwise.
 	Components pulumi.AnyOutput `pulumi:"components"`
 	// Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml`.
@@ -187,6 +189,11 @@ func (o WorkspaceApiSchemaOutput) ToWorkspaceApiSchemaOutput() WorkspaceApiSchem
 
 func (o WorkspaceApiSchemaOutput) ToWorkspaceApiSchemaOutputWithContext(ctx context.Context) WorkspaceApiSchemaOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceApiSchemaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceApiSchema) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Types definitions. Used for Swagger/OpenAPI v2/v3 schemas only, null otherwise.

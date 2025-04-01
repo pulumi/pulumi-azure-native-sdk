@@ -14,12 +14,14 @@ import (
 
 // .NET Component.
 //
-// Uses Azure REST API version 2023-11-02-preview.
+// Uses Azure REST API version 2024-10-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-02-preview.
 //
-// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DotNetComponent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Type of the .NET Component.
 	ComponentType pulumi.StringPtrOutput `pulumi:"componentType"`
 	// List of .NET Components configuration properties
@@ -162,6 +164,11 @@ func (o DotNetComponentOutput) ToDotNetComponentOutput() DotNetComponentOutput {
 
 func (o DotNetComponentOutput) ToDotNetComponentOutputWithContext(ctx context.Context) DotNetComponentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DotNetComponentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DotNetComponent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Type of the .NET Component.

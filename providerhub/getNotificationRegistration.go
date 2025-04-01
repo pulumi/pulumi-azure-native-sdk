@@ -33,6 +33,8 @@ type LookupNotificationRegistrationArgs struct {
 
 // The notification registration definition.
 type LookupNotificationRegistrationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -77,6 +79,11 @@ func (o LookupNotificationRegistrationResultOutput) ToLookupNotificationRegistra
 
 func (o LookupNotificationRegistrationResultOutput) ToLookupNotificationRegistrationResultOutputWithContext(ctx context.Context) LookupNotificationRegistrationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNotificationRegistrationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationRegistrationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

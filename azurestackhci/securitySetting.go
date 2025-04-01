@@ -14,12 +14,14 @@ import (
 
 // Security settings proxy resource
 //
-// Uses Azure REST API version 2023-11-01-preview.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01-preview.
 //
-// Other available API versions: 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Other available API versions: 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SecuritySetting struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The status of the last operation.
@@ -28,10 +30,14 @@ type SecuritySetting struct {
 	SecuredCoreComplianceAssignment pulumi.StringPtrOutput `pulumi:"securedCoreComplianceAssignment"`
 	// Security Compliance Status
 	SecurityComplianceStatus SecurityComplianceStatusResponseOutput `pulumi:"securityComplianceStatus"`
+	// SMB encryption for intra-cluster traffic Compliance Assignment
+	SmbEncryptionForIntraClusterTrafficComplianceAssignment pulumi.StringPtrOutput `pulumi:"smbEncryptionForIntraClusterTrafficComplianceAssignment"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// WDAC Compliance Assignment
+	WdacComplianceAssignment pulumi.StringPtrOutput `pulumi:"wdacComplianceAssignment"`
 }
 
 // NewSecuritySetting registers a new resource with the given unique name, arguments, and options.
@@ -49,6 +55,12 @@ func NewSecuritySetting(ctx *pulumi.Context,
 	}
 	if args.SecuredCoreComplianceAssignment == nil {
 		args.SecuredCoreComplianceAssignment = pulumi.StringPtr("Audit")
+	}
+	if args.SmbEncryptionForIntraClusterTrafficComplianceAssignment == nil {
+		args.SmbEncryptionForIntraClusterTrafficComplianceAssignment = pulumi.StringPtr("Audit")
+	}
+	if args.WdacComplianceAssignment == nil {
+		args.WdacComplianceAssignment = pulumi.StringPtr("Audit")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -112,6 +124,10 @@ type securitySettingArgs struct {
 	SecuredCoreComplianceAssignment *string `pulumi:"securedCoreComplianceAssignment"`
 	// Name of security setting
 	SecuritySettingsName *string `pulumi:"securitySettingsName"`
+	// SMB encryption for intra-cluster traffic Compliance Assignment
+	SmbEncryptionForIntraClusterTrafficComplianceAssignment *string `pulumi:"smbEncryptionForIntraClusterTrafficComplianceAssignment"`
+	// WDAC Compliance Assignment
+	WdacComplianceAssignment *string `pulumi:"wdacComplianceAssignment"`
 }
 
 // The set of arguments for constructing a SecuritySetting resource.
@@ -124,6 +140,10 @@ type SecuritySettingArgs struct {
 	SecuredCoreComplianceAssignment pulumi.StringPtrInput
 	// Name of security setting
 	SecuritySettingsName pulumi.StringPtrInput
+	// SMB encryption for intra-cluster traffic Compliance Assignment
+	SmbEncryptionForIntraClusterTrafficComplianceAssignment pulumi.StringPtrInput
+	// WDAC Compliance Assignment
+	WdacComplianceAssignment pulumi.StringPtrInput
 }
 
 func (SecuritySettingArgs) ElementType() reflect.Type {
@@ -163,6 +183,11 @@ func (o SecuritySettingOutput) ToSecuritySettingOutputWithContext(ctx context.Co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SecuritySettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o SecuritySettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -183,6 +208,13 @@ func (o SecuritySettingOutput) SecurityComplianceStatus() SecurityComplianceStat
 	return o.ApplyT(func(v *SecuritySetting) SecurityComplianceStatusResponseOutput { return v.SecurityComplianceStatus }).(SecurityComplianceStatusResponseOutput)
 }
 
+// SMB encryption for intra-cluster traffic Compliance Assignment
+func (o SecuritySettingOutput) SmbEncryptionForIntraClusterTrafficComplianceAssignment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringPtrOutput {
+		return v.SmbEncryptionForIntraClusterTrafficComplianceAssignment
+	}).(pulumi.StringPtrOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SecuritySettingOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SecuritySetting) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
@@ -191,6 +223,11 @@ func (o SecuritySettingOutput) SystemData() SystemDataResponseOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SecuritySettingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// WDAC Compliance Assignment
+func (o SecuritySettingOutput) WdacComplianceAssignment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringPtrOutput { return v.WdacComplianceAssignment }).(pulumi.StringPtrOutput)
 }
 
 func init() {

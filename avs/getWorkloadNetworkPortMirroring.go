@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// NSX Port Mirroring
+// Get a WorkloadNetworkPortMirroring
 //
-// Uses Azure REST API version 2022-05-01.
+// Uses Azure REST API version 2023-09-01.
 //
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkloadNetworkPortMirroring(ctx *pulumi.Context, args *LookupWorkloadNetworkPortMirroringArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkPortMirroringResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadNetworkPortMirroringResult
@@ -27,7 +27,7 @@ func LookupWorkloadNetworkPortMirroring(ctx *pulumi.Context, args *LookupWorkloa
 }
 
 type LookupWorkloadNetworkPortMirroringArgs struct {
-	// NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+	// ID of the NSX port mirroring profile.
 	PortMirroringId string `pulumi:"portMirroringId"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
@@ -37,15 +37,17 @@ type LookupWorkloadNetworkPortMirroringArgs struct {
 
 // NSX Port Mirroring
 type LookupWorkloadNetworkPortMirroringResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Destination VM Group.
 	Destination *string `pulumi:"destination"`
 	// Direction of port mirroring profile.
 	Direction *string `pulumi:"direction"`
 	// Display name of the port mirroring profile.
 	DisplayName *string `pulumi:"displayName"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning state
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -55,7 +57,9 @@ type LookupWorkloadNetworkPortMirroringResult struct {
 	Source *string `pulumi:"source"`
 	// Port Mirroring Status.
 	Status string `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -69,7 +73,7 @@ func LookupWorkloadNetworkPortMirroringOutput(ctx *pulumi.Context, args LookupWo
 }
 
 type LookupWorkloadNetworkPortMirroringOutputArgs struct {
-	// NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+	// ID of the NSX port mirroring profile.
 	PortMirroringId pulumi.StringInput `pulumi:"portMirroringId"`
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
@@ -96,6 +100,11 @@ func (o LookupWorkloadNetworkPortMirroringResultOutput) ToLookupWorkloadNetworkP
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWorkloadNetworkPortMirroringResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Destination VM Group.
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) *string { return v.Destination }).(pulumi.StringPtrOutput)
@@ -111,12 +120,12 @@ func (o LookupWorkloadNetworkPortMirroringResultOutput) DisplayName() pulumi.Str
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -141,7 +150,12 @@ func (o LookupWorkloadNetworkPortMirroringResultOutput) Status() pulumi.StringOu
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWorkloadNetworkPortMirroringResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWorkloadNetworkPortMirroringResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkPortMirroringResult) string { return v.Type }).(pulumi.StringOutput)
 }

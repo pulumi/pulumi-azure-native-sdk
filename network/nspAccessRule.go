@@ -14,14 +14,16 @@ import (
 
 // The NSP access rule resource
 //
-// Uses Azure REST API version 2021-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+// Uses Azure REST API version 2023-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
+// Other available API versions: 2021-02-01-preview, 2023-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NspAccessRule struct {
 	pulumi.CustomResourceState
 
 	// Inbound address prefixes (IPv4/IPv6)
 	AddressPrefixes pulumi.StringArrayOutput `pulumi:"addressPrefixes"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Direction that specifies whether the access rules is inbound/outbound.
 	Direction pulumi.StringPtrOutput `pulumi:"direction"`
 	// Outbound rules email address format.
@@ -38,6 +40,8 @@ type NspAccessRule struct {
 	PhoneNumbers pulumi.StringArrayOutput `pulumi:"phoneNumbers"`
 	// The provisioning state of the scope assignment resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Inbound rules service tag names.
+	ServiceTags pulumi.StringArrayOutput `pulumi:"serviceTags"`
 	// List of subscription ids
 	Subscriptions SubscriptionIdResponseArrayOutput `pulumi:"subscriptions"`
 	// Resource tags.
@@ -134,6 +138,8 @@ type nspAccessRuleArgs struct {
 	ProfileName string `pulumi:"profileName"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Inbound rules service tag names.
+	ServiceTags []string `pulumi:"serviceTags"`
 	// List of subscription ids
 	Subscriptions []SubscriptionId `pulumi:"subscriptions"`
 	// Resource tags.
@@ -166,6 +172,8 @@ type NspAccessRuleArgs struct {
 	ProfileName pulumi.StringInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
+	// Inbound rules service tag names.
+	ServiceTags pulumi.StringArrayInput
 	// List of subscription ids
 	Subscriptions SubscriptionIdArrayInput
 	// Resource tags.
@@ -214,6 +222,11 @@ func (o NspAccessRuleOutput) AddressPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NspAccessRule) pulumi.StringArrayOutput { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o NspAccessRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NspAccessRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Direction that specifies whether the access rules is inbound/outbound.
 func (o NspAccessRuleOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NspAccessRule) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
@@ -252,6 +265,11 @@ func (o NspAccessRuleOutput) PhoneNumbers() pulumi.StringArrayOutput {
 // The provisioning state of the scope assignment resource.
 func (o NspAccessRuleOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NspAccessRule) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Inbound rules service tag names.
+func (o NspAccessRuleOutput) ServiceTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NspAccessRule) pulumi.StringArrayOutput { return v.ServiceTags }).(pulumi.StringArrayOutput)
 }
 
 // List of subscription ids

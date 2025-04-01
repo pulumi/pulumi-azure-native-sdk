@@ -14,10 +14,12 @@ import (
 
 // Peering Service
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 type PeeringService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The Log Analytics Workspace Properties
@@ -195,6 +197,11 @@ func (o PeeringServiceOutput) ToPeeringServiceOutput() PeeringServiceOutput {
 
 func (o PeeringServiceOutput) ToPeeringServiceOutputWithContext(ctx context.Context) PeeringServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PeeringServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PeeringService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location of the resource.

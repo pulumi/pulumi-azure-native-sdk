@@ -14,12 +14,14 @@ import (
 
 // Single item in a List or Get AuthorizationRule operation
 //
-// Uses Azure REST API version 2022-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
 //
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type EventHubAuthorizationRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -184,6 +186,11 @@ func (o EventHubAuthorizationRuleOutput) ToEventHubAuthorizationRuleOutput() Eve
 
 func (o EventHubAuthorizationRuleOutput) ToEventHubAuthorizationRuleOutputWithContext(ctx context.Context) EventHubAuthorizationRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EventHubAuthorizationRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventHubAuthorizationRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

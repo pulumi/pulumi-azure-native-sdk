@@ -14,10 +14,12 @@ import (
 
 // Definition of the EnterprisePolicy.
 //
-// Uses Azure REST API version 2020-10-30-preview. In version 1.x of the Azure Native provider, it used API version 2020-10-30-preview.
+// Uses Azure REST API version 2020-10-30-preview. In version 2.x of the Azure Native provider, it used API version 2020-10-30-preview.
 type EnterprisePolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The encryption settings for a configuration store.
 	Encryption PropertiesResponseEncryptionPtrOutput `pulumi:"encryption"`
 	// The health status of the resource.
@@ -177,6 +179,11 @@ func (o EnterprisePolicyOutput) ToEnterprisePolicyOutput() EnterprisePolicyOutpu
 
 func (o EnterprisePolicyOutput) ToEnterprisePolicyOutputWithContext(ctx context.Context) EnterprisePolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EnterprisePolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterprisePolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The encryption settings for a configuration store.

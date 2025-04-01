@@ -13,9 +13,9 @@ import (
 
 // Get a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 //
-// Uses Azure REST API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2024-04-01.
+// Other available API versions: 2022-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuresphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDeviceGroup(ctx *pulumi.Context, args *LookupDeviceGroupArgs, opts ...pulumi.InvokeOption) (*LookupDeviceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeviceGroupResult
@@ -41,6 +41,8 @@ type LookupDeviceGroupArgs struct {
 type LookupDeviceGroupResult struct {
 	// Flag to define if the user allows for crash dump collection.
 	AllowCrashDumpsCollection *string `pulumi:"allowCrashDumpsCollection"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description of the device group.
 	Description *string `pulumi:"description"`
 	// Deployment status for the device group.
@@ -105,6 +107,11 @@ func (o LookupDeviceGroupResultOutput) ToLookupDeviceGroupResultOutputWithContex
 // Flag to define if the user allows for crash dump collection.
 func (o LookupDeviceGroupResultOutput) AllowCrashDumpsCollection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDeviceGroupResult) *string { return v.AllowCrashDumpsCollection }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDeviceGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the device group.

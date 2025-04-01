@@ -14,12 +14,14 @@ import (
 
 // Tag-product link details.
 //
-// Uses Azure REST API version 2022-09-01-preview.
+// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WorkspaceTagProductLink struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Full resource Id of a product.
@@ -169,6 +171,11 @@ func (o WorkspaceTagProductLinkOutput) ToWorkspaceTagProductLinkOutput() Workspa
 
 func (o WorkspaceTagProductLinkOutput) ToWorkspaceTagProductLinkOutputWithContext(ctx context.Context) WorkspaceTagProductLinkOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceTagProductLinkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceTagProductLink) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

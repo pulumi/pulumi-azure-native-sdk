@@ -13,9 +13,9 @@ import (
 
 // Retrieves information about a proximity placement group .
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupProximityPlacementGroup(ctx *pulumi.Context, args *LookupProximityPlacementGroupArgs, opts ...pulumi.InvokeOption) (*LookupProximityPlacementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProximityPlacementGroupResult
@@ -39,6 +39,8 @@ type LookupProximityPlacementGroupArgs struct {
 type LookupProximityPlacementGroupResult struct {
 	// A list of references to all availability sets in the proximity placement group.
 	AvailabilitySets []SubResourceWithColocationStatusResponse `pulumi:"availabilitySets"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Describes colocation status of the Proximity Placement Group.
 	ColocationStatus *InstanceViewStatusResponse `pulumi:"colocationStatus"`
 	// Resource Id
@@ -105,6 +107,11 @@ func (o LookupProximityPlacementGroupResultOutput) AvailabilitySets() SubResourc
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) []SubResourceWithColocationStatusResponse {
 		return v.AvailabilitySets
 	}).(SubResourceWithColocationStatusResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupProximityPlacementGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProximityPlacementGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Describes colocation status of the Proximity Placement Group.

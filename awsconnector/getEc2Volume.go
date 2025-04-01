@@ -33,6 +33,8 @@ type LookupEc2VolumeArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupEc2VolumeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -82,6 +84,11 @@ func (o LookupEc2VolumeResultOutput) ToLookupEc2VolumeResultOutput() LookupEc2Vo
 
 func (o LookupEc2VolumeResultOutput) ToLookupEc2VolumeResultOutputWithContext(ctx context.Context) LookupEc2VolumeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEc2VolumeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEc2VolumeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

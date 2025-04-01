@@ -14,12 +14,14 @@ import (
 
 // The storage container resource definition.
 //
-// Uses Azure REST API version 2022-12-15-preview.
+// Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type StorageContainer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The extendedLocation of the resource.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -27,7 +29,7 @@ type StorageContainer struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Path of the storage container on the disk
-	Path pulumi.StringPtrOutput `pulumi:"path"`
+	Path pulumi.StringOutput `pulumi:"path"`
 	// Provisioning state of the storage container.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The observed state of storage containers
@@ -47,12 +49,18 @@ func NewStorageContainer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Path == nil {
+		return nil, errors.New("invalid value for required argument 'Path'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:StorageContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:StoragecontainerRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:StorageContainer"),
@@ -127,7 +135,7 @@ type storageContainerArgs struct {
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Path of the storage container on the disk
-	Path *string `pulumi:"path"`
+	Path string `pulumi:"path"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the storage container
@@ -143,7 +151,7 @@ type StorageContainerArgs struct {
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Path of the storage container on the disk
-	Path pulumi.StringPtrInput
+	Path pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Name of the storage container
@@ -189,6 +197,11 @@ func (o StorageContainerOutput) ToStorageContainerOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o StorageContainerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The extendedLocation of the resource.
 func (o StorageContainerOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v *StorageContainer) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
@@ -205,8 +218,8 @@ func (o StorageContainerOutput) Name() pulumi.StringOutput {
 }
 
 // Path of the storage container on the disk
-func (o StorageContainerOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageContainer) pulumi.StringPtrOutput { return v.Path }).(pulumi.StringPtrOutput)
+func (o StorageContainerOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageContainer) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
 // Provisioning state of the storage container.

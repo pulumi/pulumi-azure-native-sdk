@@ -14,7 +14,7 @@ import (
 
 // The integration service environment managed api.
 //
-// Uses Azure REST API version 2019-05-01. In version 1.x of the Azure Native provider, it used API version 2019-05-01.
+// Uses Azure REST API version 2019-05-01. In version 2.x of the Azure Native provider, it used API version 2019-05-01.
 type IntegrationServiceEnvironmentManagedApi struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type IntegrationServiceEnvironmentManagedApi struct {
 	ApiDefinitionUrl pulumi.StringOutput `pulumi:"apiDefinitionUrl"`
 	// The api definitions.
 	ApiDefinitions ApiResourceDefinitionsResponseOutput `pulumi:"apiDefinitions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The backend service.
 	BackendService ApiResourceBackendServiceResponseOutput `pulumi:"backendService"`
 	// The capabilities.
@@ -187,6 +189,11 @@ func (o IntegrationServiceEnvironmentManagedApiOutput) ApiDefinitions() ApiResou
 	return o.ApplyT(func(v *IntegrationServiceEnvironmentManagedApi) ApiResourceDefinitionsResponseOutput {
 		return v.ApiDefinitions
 	}).(ApiResourceDefinitionsResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o IntegrationServiceEnvironmentManagedApiOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationServiceEnvironmentManagedApi) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The backend service.

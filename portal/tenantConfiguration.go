@@ -13,12 +13,14 @@ import (
 
 // The tenant configuration resource definition.
 //
-// Uses Azure REST API version 2020-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-09-01-preview.
+// Uses Azure REST API version 2022-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2020-09-01-preview.
 //
-// Other available API versions: 2022-12-01-preview, 2025-04-01-preview.
+// Other available API versions: 2019-01-01-preview, 2020-09-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native portal [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type TenantConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
@@ -133,6 +135,11 @@ func (o TenantConfigurationOutput) ToTenantConfigurationOutput() TenantConfigura
 
 func (o TenantConfigurationOutput) ToTenantConfigurationOutputWithContext(ctx context.Context) TenantConfigurationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TenantConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TenantConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

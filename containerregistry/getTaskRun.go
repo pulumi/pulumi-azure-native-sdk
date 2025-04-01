@@ -36,6 +36,8 @@ type LookupTaskRunArgs struct {
 // The task run that has the ARM resource and properties.
 // The task run will have the information of request and result of a run.
 type LookupTaskRunResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// How the run should be forced to rerun even if the run request configuration has not changed
 	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
 	// The resource ID.
@@ -104,6 +106,11 @@ func (o LookupTaskRunResultOutput) ToLookupTaskRunResultOutput() LookupTaskRunRe
 
 func (o LookupTaskRunResultOutput) ToLookupTaskRunResultOutputWithContext(ctx context.Context) LookupTaskRunResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTaskRunResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTaskRunResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // How the run should be forced to rerun even if the run request configuration has not changed

@@ -14,10 +14,12 @@ import (
 
 // Network security default user rule.
 //
-// Uses Azure REST API version 2022-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+// Uses Azure REST API version 2022-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-04-01-preview.
 type DefaultUserRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description for this rule. Restricted to 140 chars.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The destination port ranges.
@@ -80,16 +82,34 @@ func NewDefaultUserRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20210501preview:DefaultUserRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20210501preview:UserRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20220201preview:DefaultUserRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220401preview:DefaultUserRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20220401preview:UserRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240301:DefaultUserRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240301:SecurityUserRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240501:DefaultUserRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:SecurityUserRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:SecurityUserRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:UserRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -197,6 +217,11 @@ func (o DefaultUserRuleOutput) ToDefaultUserRuleOutput() DefaultUserRuleOutput {
 
 func (o DefaultUserRuleOutput) ToDefaultUserRuleOutputWithContext(ctx context.Context) DefaultUserRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DefaultUserRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultUserRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule. Restricted to 140 chars.

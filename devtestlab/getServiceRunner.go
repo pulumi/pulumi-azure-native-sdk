@@ -35,6 +35,8 @@ type LookupServiceRunnerArgs struct {
 
 // A container for a managed identity to execute DevTest lab services.
 type LookupServiceRunnerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The identifier of the resource.
 	Id string `pulumi:"id"`
 	// The identity of the resource.
@@ -84,6 +86,11 @@ func (o LookupServiceRunnerResultOutput) ToLookupServiceRunnerResultOutput() Loo
 
 func (o LookupServiceRunnerResultOutput) ToLookupServiceRunnerResultOutputWithContext(ctx context.Context) LookupServiceRunnerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServiceRunnerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceRunnerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identifier of the resource.

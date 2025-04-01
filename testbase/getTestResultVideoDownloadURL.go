@@ -13,9 +13,9 @@ import (
 
 // Gets the download URL of the test execution screen recording.
 //
-// Uses Azure REST API version 2022-04-01-preview.
+// Uses Azure REST API version 2023-11-01-preview.
 //
-// Other available API versions: 2023-11-01-preview.
+// Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetTestResultVideoDownloadURL(ctx *pulumi.Context, args *GetTestResultVideoDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetTestResultVideoDownloadURLResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetTestResultVideoDownloadURLResult
@@ -29,7 +29,7 @@ func GetTestResultVideoDownloadURL(ctx *pulumi.Context, args *GetTestResultVideo
 type GetTestResultVideoDownloadURLArgs struct {
 	// The resource name of the Test Base Package.
 	PackageName string `pulumi:"packageName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
@@ -57,7 +57,7 @@ func GetTestResultVideoDownloadURLOutput(ctx *pulumi.Context, args GetTestResult
 type GetTestResultVideoDownloadURLOutputArgs struct {
 	// The resource name of the Test Base Package.
 	PackageName pulumi.StringInput `pulumi:"packageName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`

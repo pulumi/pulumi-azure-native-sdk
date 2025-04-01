@@ -14,10 +14,14 @@ import (
 
 // Class representing a Kusto kusto pool.
 //
-// Uses Azure REST API version 2021-06-01-preview.
+// Uses Azure REST API version 2021-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-01-preview.
+//
+// Other available API versions: 2021-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type KustoPool struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Kusto Pool data ingestion URI.
 	DataIngestionUri pulumi.StringOutput `pulumi:"dataIngestionUri"`
 	// A boolean value that indicates if the purge operations are enabled.
@@ -199,6 +203,11 @@ func (o KustoPoolOutput) ToKustoPoolOutput() KustoPoolOutput {
 
 func (o KustoPoolOutput) ToKustoPoolOutputWithContext(ctx context.Context) KustoPoolOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o KustoPoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KustoPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Kusto Pool data ingestion URI.

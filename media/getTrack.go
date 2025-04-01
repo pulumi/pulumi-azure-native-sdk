@@ -14,6 +14,8 @@ import (
 // Get the details of a Track in the Asset
 //
 // Uses Azure REST API version 2023-01-01.
+//
+// Other available API versions: 2021-11-01, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupTrack(ctx *pulumi.Context, args *LookupTrackArgs, opts ...pulumi.InvokeOption) (*LookupTrackResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrackResult
@@ -37,6 +39,8 @@ type LookupTrackArgs struct {
 
 // An Asset Track resource.
 type LookupTrackResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -86,6 +90,11 @@ func (o LookupTrackResultOutput) ToLookupTrackResultOutput() LookupTrackResultOu
 
 func (o LookupTrackResultOutput) ToLookupTrackResultOutputWithContext(ctx context.Context) LookupTrackResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTrackResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrackResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

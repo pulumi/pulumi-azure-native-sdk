@@ -14,12 +14,14 @@ import (
 
 // Instance broker authentication resource
 //
-// Uses Azure REST API version 2024-07-01-preview.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01-preview.
 //
-// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01, 2025-04-01.
+// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type BrokerAuthentication struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Edge location of the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The name of the resource
@@ -167,6 +169,11 @@ func (o BrokerAuthenticationOutput) ToBrokerAuthenticationOutput() BrokerAuthent
 
 func (o BrokerAuthenticationOutput) ToBrokerAuthenticationOutputWithContext(ctx context.Context) BrokerAuthenticationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BrokerAuthenticationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BrokerAuthentication) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Edge location of the resource.

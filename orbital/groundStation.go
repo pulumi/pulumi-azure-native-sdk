@@ -14,14 +14,16 @@ import (
 
 // Ground Station contains one or more antennas.
 //
-// Uses Azure REST API version 2024-03-01-preview.
+// Uses Azure REST API version 2024-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-01-preview.
 //
-// Other available API versions: 2024-03-01.
+// Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native orbital [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GroundStation struct {
 	pulumi.CustomResourceState
 
 	// Altitude of the ground station.
 	AltitudeMeters pulumi.Float64PtrOutput `pulumi:"altitudeMeters"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Ground station capabilities.
 	Capabilities pulumi.StringArrayOutput `pulumi:"capabilities"`
 	// City of ground station.
@@ -196,6 +198,11 @@ func (o GroundStationOutput) ToGroundStationOutputWithContext(ctx context.Contex
 // Altitude of the ground station.
 func (o GroundStationOutput) AltitudeMeters() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GroundStation) pulumi.Float64PtrOutput { return v.AltitudeMeters }).(pulumi.Float64PtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o GroundStationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroundStation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Ground station capabilities.

@@ -15,10 +15,12 @@ import (
 // The task run that has the ARM resource and properties.
 // The task run will have the information of request and result of a run.
 //
-// Uses Azure REST API version 2019-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2019-06-01-preview.
+// Uses Azure REST API version 2019-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01-preview.
 type TaskRun struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// How the run should be forced to rerun even if the run request configuration has not changed
 	ForceUpdateTag pulumi.StringPtrOutput `pulumi:"forceUpdateTag"`
 	// Identity for the resource.
@@ -160,6 +162,11 @@ func (o TaskRunOutput) ToTaskRunOutput() TaskRunOutput {
 
 func (o TaskRunOutput) ToTaskRunOutputWithContext(ctx context.Context) TaskRunOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TaskRunOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TaskRun) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // How the run should be forced to rerun even if the run request configuration has not changed

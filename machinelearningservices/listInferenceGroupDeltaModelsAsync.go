@@ -13,9 +13,9 @@ import (
 
 // A paginated list of String entities.
 //
-// Uses Azure REST API version 2024-10-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 //
-// Other available API versions: 2025-01-01-preview.
+// Other available API versions: 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListInferenceGroupDeltaModelsAsync(ctx *pulumi.Context, args *ListInferenceGroupDeltaModelsAsyncArgs, opts ...pulumi.InvokeOption) (*ListInferenceGroupDeltaModelsAsyncResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListInferenceGroupDeltaModelsAsyncResult

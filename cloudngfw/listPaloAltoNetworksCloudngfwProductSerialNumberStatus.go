@@ -13,9 +13,9 @@ import (
 
 // Product serial and status for the service
 //
-// Uses Azure REST API version 2024-02-07-preview.
+// Uses Azure REST API version 2025-02-06-preview.
 //
-// Other available API versions: 2025-02-06-preview.
+// Other available API versions: 2024-02-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListPaloAltoNetworksCloudngfwProductSerialNumberStatus(ctx *pulumi.Context, args *ListPaloAltoNetworksCloudngfwProductSerialNumberStatusArgs, opts ...pulumi.InvokeOption) (*ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResult

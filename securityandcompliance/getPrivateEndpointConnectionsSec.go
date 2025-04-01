@@ -35,6 +35,8 @@ type LookupPrivateEndpointConnectionsSecArgs struct {
 
 // The Private Endpoint Connection resource.
 type LookupPrivateEndpointConnectionsSecResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -86,6 +88,11 @@ func (o LookupPrivateEndpointConnectionsSecResultOutput) ToLookupPrivateEndpoint
 
 func (o LookupPrivateEndpointConnectionsSecResultOutput) ToLookupPrivateEndpointConnectionsSecResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionsSecResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionsSecResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionsSecResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

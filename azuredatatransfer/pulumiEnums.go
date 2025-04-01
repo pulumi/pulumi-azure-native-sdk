@@ -342,6 +342,174 @@ func (in *directionPtr) ToDirectionPtrOutputWithContext(ctx context.Context) Dir
 	return pulumi.ToOutputWithContext(ctx, in).(DirectionPtrOutput)
 }
 
+// Billing tier for this messaging flow
+type FlowBillingTier string
+
+const (
+	FlowBillingTierBlobTransport = FlowBillingTier("BlobTransport")
+	FlowBillingTierStandard      = FlowBillingTier("Standard")
+	FlowBillingTierPremium       = FlowBillingTier("Premium")
+)
+
+func (FlowBillingTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowBillingTier)(nil)).Elem()
+}
+
+func (e FlowBillingTier) ToFlowBillingTierOutput() FlowBillingTierOutput {
+	return pulumi.ToOutput(e).(FlowBillingTierOutput)
+}
+
+func (e FlowBillingTier) ToFlowBillingTierOutputWithContext(ctx context.Context) FlowBillingTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FlowBillingTierOutput)
+}
+
+func (e FlowBillingTier) ToFlowBillingTierPtrOutput() FlowBillingTierPtrOutput {
+	return e.ToFlowBillingTierPtrOutputWithContext(context.Background())
+}
+
+func (e FlowBillingTier) ToFlowBillingTierPtrOutputWithContext(ctx context.Context) FlowBillingTierPtrOutput {
+	return FlowBillingTier(e).ToFlowBillingTierOutputWithContext(ctx).ToFlowBillingTierPtrOutputWithContext(ctx)
+}
+
+func (e FlowBillingTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FlowBillingTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FlowBillingTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FlowBillingTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FlowBillingTierOutput struct{ *pulumi.OutputState }
+
+func (FlowBillingTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowBillingTier)(nil)).Elem()
+}
+
+func (o FlowBillingTierOutput) ToFlowBillingTierOutput() FlowBillingTierOutput {
+	return o
+}
+
+func (o FlowBillingTierOutput) ToFlowBillingTierOutputWithContext(ctx context.Context) FlowBillingTierOutput {
+	return o
+}
+
+func (o FlowBillingTierOutput) ToFlowBillingTierPtrOutput() FlowBillingTierPtrOutput {
+	return o.ToFlowBillingTierPtrOutputWithContext(context.Background())
+}
+
+func (o FlowBillingTierOutput) ToFlowBillingTierPtrOutputWithContext(ctx context.Context) FlowBillingTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlowBillingTier) *FlowBillingTier {
+		return &v
+	}).(FlowBillingTierPtrOutput)
+}
+
+func (o FlowBillingTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FlowBillingTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FlowBillingTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FlowBillingTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FlowBillingTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FlowBillingTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FlowBillingTierPtrOutput struct{ *pulumi.OutputState }
+
+func (FlowBillingTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowBillingTier)(nil)).Elem()
+}
+
+func (o FlowBillingTierPtrOutput) ToFlowBillingTierPtrOutput() FlowBillingTierPtrOutput {
+	return o
+}
+
+func (o FlowBillingTierPtrOutput) ToFlowBillingTierPtrOutputWithContext(ctx context.Context) FlowBillingTierPtrOutput {
+	return o
+}
+
+func (o FlowBillingTierPtrOutput) Elem() FlowBillingTierOutput {
+	return o.ApplyT(func(v *FlowBillingTier) FlowBillingTier {
+		if v != nil {
+			return *v
+		}
+		var ret FlowBillingTier
+		return ret
+	}).(FlowBillingTierOutput)
+}
+
+func (o FlowBillingTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FlowBillingTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FlowBillingTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FlowBillingTierInput is an input type that accepts values of the FlowBillingTier enum
+// A concrete instance of `FlowBillingTierInput` can be one of the following:
+//
+//	FlowBillingTierBlobTransport
+//	FlowBillingTierStandard
+//	FlowBillingTierPremium
+type FlowBillingTierInput interface {
+	pulumi.Input
+
+	ToFlowBillingTierOutput() FlowBillingTierOutput
+	ToFlowBillingTierOutputWithContext(context.Context) FlowBillingTierOutput
+}
+
+var flowBillingTierPtrType = reflect.TypeOf((**FlowBillingTier)(nil)).Elem()
+
+type FlowBillingTierPtrInput interface {
+	pulumi.Input
+
+	ToFlowBillingTierPtrOutput() FlowBillingTierPtrOutput
+	ToFlowBillingTierPtrOutputWithContext(context.Context) FlowBillingTierPtrOutput
+}
+
+type flowBillingTierPtr string
+
+func FlowBillingTierPtr(v string) FlowBillingTierPtrInput {
+	return (*flowBillingTierPtr)(&v)
+}
+
+func (*flowBillingTierPtr) ElementType() reflect.Type {
+	return flowBillingTierPtrType
+}
+
+func (in *flowBillingTierPtr) ToFlowBillingTierPtrOutput() FlowBillingTierPtrOutput {
+	return pulumi.ToOutput(in).(FlowBillingTierPtrOutput)
+}
+
+func (in *flowBillingTierPtr) ToFlowBillingTierPtrOutputWithContext(ctx context.Context) FlowBillingTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FlowBillingTierPtrOutput)
+}
+
 // Status of the current flow
 type FlowStatus string
 
@@ -520,6 +688,10 @@ const (
 	FlowTypeMicrosoftInternal = FlowType("MicrosoftInternal")
 	FlowTypeBasicFiles        = FlowType("BasicFiles")
 	FlowTypeData              = FlowType("Data")
+	FlowTypeStandard          = FlowType("Standard")
+	FlowTypeStreamingVideo    = FlowType("StreamingVideo")
+	FlowTypeOpaque            = FlowType("Opaque")
+	FlowTypeMissionOpaqueXML  = FlowType("MissionOpaqueXML")
 )
 
 func (FlowType) ElementType() reflect.Type {
@@ -652,6 +824,10 @@ func (o FlowTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 //	FlowTypeMicrosoftInternal
 //	FlowTypeBasicFiles
 //	FlowTypeData
+//	FlowTypeStandard
+//	FlowTypeStreamingVideo
+//	FlowTypeOpaque
+//	FlowTypeMissionOpaqueXML
 type FlowTypeInput interface {
 	pulumi.Input
 
@@ -1022,6 +1198,172 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
+// The direction of the schema.
+type SchemaDirection string
+
+const (
+	SchemaDirectionSend    = SchemaDirection("Send")
+	SchemaDirectionReceive = SchemaDirection("Receive")
+)
+
+func (SchemaDirection) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaDirection)(nil)).Elem()
+}
+
+func (e SchemaDirection) ToSchemaDirectionOutput() SchemaDirectionOutput {
+	return pulumi.ToOutput(e).(SchemaDirectionOutput)
+}
+
+func (e SchemaDirection) ToSchemaDirectionOutputWithContext(ctx context.Context) SchemaDirectionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SchemaDirectionOutput)
+}
+
+func (e SchemaDirection) ToSchemaDirectionPtrOutput() SchemaDirectionPtrOutput {
+	return e.ToSchemaDirectionPtrOutputWithContext(context.Background())
+}
+
+func (e SchemaDirection) ToSchemaDirectionPtrOutputWithContext(ctx context.Context) SchemaDirectionPtrOutput {
+	return SchemaDirection(e).ToSchemaDirectionOutputWithContext(ctx).ToSchemaDirectionPtrOutputWithContext(ctx)
+}
+
+func (e SchemaDirection) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchemaDirection) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchemaDirection) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SchemaDirection) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SchemaDirectionOutput struct{ *pulumi.OutputState }
+
+func (SchemaDirectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaDirection)(nil)).Elem()
+}
+
+func (o SchemaDirectionOutput) ToSchemaDirectionOutput() SchemaDirectionOutput {
+	return o
+}
+
+func (o SchemaDirectionOutput) ToSchemaDirectionOutputWithContext(ctx context.Context) SchemaDirectionOutput {
+	return o
+}
+
+func (o SchemaDirectionOutput) ToSchemaDirectionPtrOutput() SchemaDirectionPtrOutput {
+	return o.ToSchemaDirectionPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaDirectionOutput) ToSchemaDirectionPtrOutputWithContext(ctx context.Context) SchemaDirectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaDirection) *SchemaDirection {
+		return &v
+	}).(SchemaDirectionPtrOutput)
+}
+
+func (o SchemaDirectionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SchemaDirectionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaDirection) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SchemaDirectionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaDirectionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaDirection) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchemaDirectionPtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaDirectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaDirection)(nil)).Elem()
+}
+
+func (o SchemaDirectionPtrOutput) ToSchemaDirectionPtrOutput() SchemaDirectionPtrOutput {
+	return o
+}
+
+func (o SchemaDirectionPtrOutput) ToSchemaDirectionPtrOutputWithContext(ctx context.Context) SchemaDirectionPtrOutput {
+	return o
+}
+
+func (o SchemaDirectionPtrOutput) Elem() SchemaDirectionOutput {
+	return o.ApplyT(func(v *SchemaDirection) SchemaDirection {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaDirection
+		return ret
+	}).(SchemaDirectionOutput)
+}
+
+func (o SchemaDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchemaDirection) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SchemaDirectionInput is an input type that accepts values of the SchemaDirection enum
+// A concrete instance of `SchemaDirectionInput` can be one of the following:
+//
+//	SchemaDirectionSend
+//	SchemaDirectionReceive
+type SchemaDirectionInput interface {
+	pulumi.Input
+
+	ToSchemaDirectionOutput() SchemaDirectionOutput
+	ToSchemaDirectionOutputWithContext(context.Context) SchemaDirectionOutput
+}
+
+var schemaDirectionPtrType = reflect.TypeOf((**SchemaDirection)(nil)).Elem()
+
+type SchemaDirectionPtrInput interface {
+	pulumi.Input
+
+	ToSchemaDirectionPtrOutput() SchemaDirectionPtrOutput
+	ToSchemaDirectionPtrOutputWithContext(context.Context) SchemaDirectionPtrOutput
+}
+
+type schemaDirectionPtr string
+
+func SchemaDirectionPtr(v string) SchemaDirectionPtrInput {
+	return (*schemaDirectionPtr)(&v)
+}
+
+func (*schemaDirectionPtr) ElementType() reflect.Type {
+	return schemaDirectionPtrType
+}
+
+func (in *schemaDirectionPtr) ToSchemaDirectionPtrOutput() SchemaDirectionPtrOutput {
+	return pulumi.ToOutput(in).(SchemaDirectionPtrOutput)
+}
+
+func (in *schemaDirectionPtr) ToSchemaDirectionPtrOutputWithContext(ctx context.Context) SchemaDirectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SchemaDirectionPtrOutput)
+}
+
 // Status of the schema
 type SchemaStatus string
 
@@ -1188,11 +1530,347 @@ func (in *schemaStatusPtr) ToSchemaStatusPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaStatusPtrOutput)
 }
 
+// The Schema Type
+type SchemaType string
+
+const (
+	SchemaTypeXsd = SchemaType("Xsd")
+	SchemaTypeZip = SchemaType("Zip")
+)
+
+func (SchemaType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaType)(nil)).Elem()
+}
+
+func (e SchemaType) ToSchemaTypeOutput() SchemaTypeOutput {
+	return pulumi.ToOutput(e).(SchemaTypeOutput)
+}
+
+func (e SchemaType) ToSchemaTypeOutputWithContext(ctx context.Context) SchemaTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SchemaTypeOutput)
+}
+
+func (e SchemaType) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
+	return e.ToSchemaTypePtrOutputWithContext(context.Background())
+}
+
+func (e SchemaType) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
+	return SchemaType(e).ToSchemaTypeOutputWithContext(ctx).ToSchemaTypePtrOutputWithContext(ctx)
+}
+
+func (e SchemaType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchemaType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchemaType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SchemaType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SchemaTypeOutput struct{ *pulumi.OutputState }
+
+func (SchemaTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaType)(nil)).Elem()
+}
+
+func (o SchemaTypeOutput) ToSchemaTypeOutput() SchemaTypeOutput {
+	return o
+}
+
+func (o SchemaTypeOutput) ToSchemaTypeOutputWithContext(ctx context.Context) SchemaTypeOutput {
+	return o
+}
+
+func (o SchemaTypeOutput) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
+	return o.ToSchemaTypePtrOutputWithContext(context.Background())
+}
+
+func (o SchemaTypeOutput) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaType) *SchemaType {
+		return &v
+	}).(SchemaTypePtrOutput)
+}
+
+func (o SchemaTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SchemaTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SchemaTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchemaTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaType)(nil)).Elem()
+}
+
+func (o SchemaTypePtrOutput) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
+	return o
+}
+
+func (o SchemaTypePtrOutput) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
+	return o
+}
+
+func (o SchemaTypePtrOutput) Elem() SchemaTypeOutput {
+	return o.ApplyT(func(v *SchemaType) SchemaType {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaType
+		return ret
+	}).(SchemaTypeOutput)
+}
+
+func (o SchemaTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchemaType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SchemaTypeInput is an input type that accepts values of the SchemaType enum
+// A concrete instance of `SchemaTypeInput` can be one of the following:
+//
+//	SchemaTypeXsd
+//	SchemaTypeZip
+type SchemaTypeInput interface {
+	pulumi.Input
+
+	ToSchemaTypeOutput() SchemaTypeOutput
+	ToSchemaTypeOutputWithContext(context.Context) SchemaTypeOutput
+}
+
+var schemaTypePtrType = reflect.TypeOf((**SchemaType)(nil)).Elem()
+
+type SchemaTypePtrInput interface {
+	pulumi.Input
+
+	ToSchemaTypePtrOutput() SchemaTypePtrOutput
+	ToSchemaTypePtrOutputWithContext(context.Context) SchemaTypePtrOutput
+}
+
+type schemaTypePtr string
+
+func SchemaTypePtr(v string) SchemaTypePtrInput {
+	return (*schemaTypePtr)(&v)
+}
+
+func (*schemaTypePtr) ElementType() reflect.Type {
+	return schemaTypePtrType
+}
+
+func (in *schemaTypePtr) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
+	return pulumi.ToOutput(in).(SchemaTypePtrOutput)
+}
+
+func (in *schemaTypePtr) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SchemaTypePtrOutput)
+}
+
+// The protocol of the stream
+type StreamProtocol string
+
+const (
+	StreamProtocolUDP = StreamProtocol("UDP")
+	StreamProtocolSRT = StreamProtocol("SRT")
+	StreamProtocolRTP = StreamProtocol("RTP")
+)
+
+func (StreamProtocol) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamProtocol)(nil)).Elem()
+}
+
+func (e StreamProtocol) ToStreamProtocolOutput() StreamProtocolOutput {
+	return pulumi.ToOutput(e).(StreamProtocolOutput)
+}
+
+func (e StreamProtocol) ToStreamProtocolOutputWithContext(ctx context.Context) StreamProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StreamProtocolOutput)
+}
+
+func (e StreamProtocol) ToStreamProtocolPtrOutput() StreamProtocolPtrOutput {
+	return e.ToStreamProtocolPtrOutputWithContext(context.Background())
+}
+
+func (e StreamProtocol) ToStreamProtocolPtrOutputWithContext(ctx context.Context) StreamProtocolPtrOutput {
+	return StreamProtocol(e).ToStreamProtocolOutputWithContext(ctx).ToStreamProtocolPtrOutputWithContext(ctx)
+}
+
+func (e StreamProtocol) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StreamProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StreamProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StreamProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StreamProtocolOutput struct{ *pulumi.OutputState }
+
+func (StreamProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamProtocol)(nil)).Elem()
+}
+
+func (o StreamProtocolOutput) ToStreamProtocolOutput() StreamProtocolOutput {
+	return o
+}
+
+func (o StreamProtocolOutput) ToStreamProtocolOutputWithContext(ctx context.Context) StreamProtocolOutput {
+	return o
+}
+
+func (o StreamProtocolOutput) ToStreamProtocolPtrOutput() StreamProtocolPtrOutput {
+	return o.ToStreamProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o StreamProtocolOutput) ToStreamProtocolPtrOutputWithContext(ctx context.Context) StreamProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamProtocol) *StreamProtocol {
+		return &v
+	}).(StreamProtocolPtrOutput)
+}
+
+func (o StreamProtocolOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StreamProtocolOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StreamProtocol) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StreamProtocolOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StreamProtocolOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StreamProtocol) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamProtocol)(nil)).Elem()
+}
+
+func (o StreamProtocolPtrOutput) ToStreamProtocolPtrOutput() StreamProtocolPtrOutput {
+	return o
+}
+
+func (o StreamProtocolPtrOutput) ToStreamProtocolPtrOutputWithContext(ctx context.Context) StreamProtocolPtrOutput {
+	return o
+}
+
+func (o StreamProtocolPtrOutput) Elem() StreamProtocolOutput {
+	return o.ApplyT(func(v *StreamProtocol) StreamProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret StreamProtocol
+		return ret
+	}).(StreamProtocolOutput)
+}
+
+func (o StreamProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StreamProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StreamProtocol) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StreamProtocolInput is an input type that accepts values of the StreamProtocol enum
+// A concrete instance of `StreamProtocolInput` can be one of the following:
+//
+//	StreamProtocolUDP
+//	StreamProtocolSRT
+//	StreamProtocolRTP
+type StreamProtocolInput interface {
+	pulumi.Input
+
+	ToStreamProtocolOutput() StreamProtocolOutput
+	ToStreamProtocolOutputWithContext(context.Context) StreamProtocolOutput
+}
+
+var streamProtocolPtrType = reflect.TypeOf((**StreamProtocol)(nil)).Elem()
+
+type StreamProtocolPtrInput interface {
+	pulumi.Input
+
+	ToStreamProtocolPtrOutput() StreamProtocolPtrOutput
+	ToStreamProtocolPtrOutputWithContext(context.Context) StreamProtocolPtrOutput
+}
+
+type streamProtocolPtr string
+
+func StreamProtocolPtr(v string) StreamProtocolPtrInput {
+	return (*streamProtocolPtr)(&v)
+}
+
+func (*streamProtocolPtr) ElementType() reflect.Type {
+	return streamProtocolPtrType
+}
+
+func (in *streamProtocolPtr) ToStreamProtocolPtrOutput() StreamProtocolPtrOutput {
+	return pulumi.ToOutput(in).(StreamProtocolPtrOutput)
+}
+
+func (in *streamProtocolPtr) ToStreamProtocolPtrOutputWithContext(ctx context.Context) StreamProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StreamProtocolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DataTypeOutput{})
 	pulumi.RegisterOutputType(DataTypePtrOutput{})
 	pulumi.RegisterOutputType(DirectionOutput{})
 	pulumi.RegisterOutputType(DirectionPtrOutput{})
+	pulumi.RegisterOutputType(FlowBillingTierOutput{})
+	pulumi.RegisterOutputType(FlowBillingTierPtrOutput{})
 	pulumi.RegisterOutputType(FlowStatusOutput{})
 	pulumi.RegisterOutputType(FlowStatusPtrOutput{})
 	pulumi.RegisterOutputType(FlowTypeOutput{})
@@ -1201,6 +1879,12 @@ func init() {
 	pulumi.RegisterOutputType(ListApprovedSchemasDirectionPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(SchemaDirectionOutput{})
+	pulumi.RegisterOutputType(SchemaDirectionPtrOutput{})
 	pulumi.RegisterOutputType(SchemaStatusOutput{})
 	pulumi.RegisterOutputType(SchemaStatusPtrOutput{})
+	pulumi.RegisterOutputType(SchemaTypeOutput{})
+	pulumi.RegisterOutputType(SchemaTypePtrOutput{})
+	pulumi.RegisterOutputType(StreamProtocolOutput{})
+	pulumi.RegisterOutputType(StreamProtocolPtrOutput{})
 }

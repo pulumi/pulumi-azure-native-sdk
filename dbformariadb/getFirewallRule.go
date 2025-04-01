@@ -14,8 +14,6 @@ import (
 // Gets information about a server firewall rule.
 //
 // Uses Azure REST API version 2018-06-01.
-//
-// Other available API versions: 2018-06-01-preview.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallRuleResult
@@ -37,6 +35,8 @@ type LookupFirewallRuleArgs struct {
 
 // Represents a server firewall rule.
 type LookupFirewallRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The end IP address of the server firewall rule. Must be IPv4 format.
 	EndIpAddress string `pulumi:"endIpAddress"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -84,6 +84,11 @@ func (o LookupFirewallRuleResultOutput) ToLookupFirewallRuleResultOutput() Looku
 
 func (o LookupFirewallRuleResultOutput) ToLookupFirewallRuleResultOutputWithContext(ctx context.Context) LookupFirewallRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFirewallRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The end IP address of the server firewall rule. Must be IPv4 format.

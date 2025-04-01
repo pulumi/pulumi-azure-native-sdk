@@ -39,6 +39,8 @@ type LookupFormulaArgs struct {
 type LookupFormulaResult struct {
 	// The author of the formula.
 	Author string `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the formula.
 	CreationDate string `pulumi:"creationDate"`
 	// The description of the formula.
@@ -117,6 +119,11 @@ func (o LookupFormulaResultOutput) ToLookupFormulaResultOutputWithContext(ctx co
 // The author of the formula.
 func (o LookupFormulaResultOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormulaResult) string { return v.Author }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupFormulaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFormulaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the formula.

@@ -13,9 +13,9 @@ import (
 
 // Description for Gets a named add-on of an app.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppPremierAddOn(ctx *pulumi.Context, args *LookupWebAppPremierAddOnArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPremierAddOnResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppPremierAddOnResult
@@ -37,9 +37,11 @@ type LookupWebAppPremierAddOnArgs struct {
 
 // Premier add-on.
 type LookupWebAppPremierAddOnResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id.
 	Id string `pulumi:"id"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location string `pulumi:"location"`
@@ -98,12 +100,17 @@ func (o LookupWebAppPremierAddOnResultOutput) ToLookupWebAppPremierAddOnResultOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWebAppPremierAddOnResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Id.
 func (o LookupWebAppPremierAddOnResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o LookupWebAppPremierAddOnResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

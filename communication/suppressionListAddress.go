@@ -14,12 +14,14 @@ import (
 
 // A object that represents a SuppressionList record.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2024-09-01-preview.
+// Other available API versions: 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SuppressionListAddress struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.
 	DataLocation pulumi.StringOutput `pulumi:"dataLocation"`
 	// Email address of the recipient.
@@ -181,6 +183,11 @@ func (o SuppressionListAddressOutput) ToSuppressionListAddressOutput() Suppressi
 
 func (o SuppressionListAddressOutput) ToSuppressionListAddressOutputWithContext(ctx context.Context) SuppressionListAddressOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SuppressionListAddressOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SuppressionListAddress) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.

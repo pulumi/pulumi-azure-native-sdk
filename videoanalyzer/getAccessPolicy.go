@@ -37,6 +37,8 @@ type LookupAccessPolicyArgs struct {
 type LookupAccessPolicyResult struct {
 	// Authentication method to be used when validating client API access.
 	Authentication *JwtAuthenticationResponse `pulumi:"authentication"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -89,6 +91,11 @@ func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutputWithCont
 // Authentication method to be used when validating client API access.
 func (o LookupAccessPolicyResultOutput) Authentication() JwtAuthenticationResponsePtrOutput {
 	return o.ApplyT(func(v LookupAccessPolicyResult) *JwtAuthenticationResponse { return v.Authentication }).(JwtAuthenticationResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAccessPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

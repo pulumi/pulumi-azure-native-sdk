@@ -33,6 +33,8 @@ type LookupElasticLoadBalancingv2TargetHealthDescriptionArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupElasticLoadBalancingv2TargetHealthDescriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -82,6 +84,11 @@ func (o LookupElasticLoadBalancingv2TargetHealthDescriptionResultOutput) ToLooku
 
 func (o LookupElasticLoadBalancingv2TargetHealthDescriptionResultOutput) ToLookupElasticLoadBalancingv2TargetHealthDescriptionResultOutputWithContext(ctx context.Context) LookupElasticLoadBalancingv2TargetHealthDescriptionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupElasticLoadBalancingv2TargetHealthDescriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticLoadBalancingv2TargetHealthDescriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

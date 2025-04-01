@@ -16,10 +16,12 @@ import (
 // For more information, refer to: https://docs.microsoft.com/en-us/azure/databox-online/azure-stack-edge-gpu-virtual-machine-overview
 // By using this feature, you agree to the preview legal terms. See the https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/ for additional details.
 //
-// Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
 type CloudEdgeManagementRole struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Edge Profile of the resource
 	EdgeProfile EdgeProfileResponseOutput `pulumi:"edgeProfile"`
 	// Role type.
@@ -104,10 +106,46 @@ func NewCloudEdgeManagementRole(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:databoxedge/v20230101preview:CloudEdgeManagementRole"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:KubernetesRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:MECRole"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:CloudEdgeManagementRole"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:KubernetesRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:MECRole"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:CloudEdgeManagementRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:KubernetesRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:MECRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:KubernetesRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:MECRole"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -207,6 +245,11 @@ func (o CloudEdgeManagementRoleOutput) ToCloudEdgeManagementRoleOutput() CloudEd
 
 func (o CloudEdgeManagementRoleOutput) ToCloudEdgeManagementRoleOutputWithContext(ctx context.Context) CloudEdgeManagementRoleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CloudEdgeManagementRoleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudEdgeManagementRole) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Edge Profile of the resource

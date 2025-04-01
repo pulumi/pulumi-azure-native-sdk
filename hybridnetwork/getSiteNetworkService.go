@@ -13,9 +13,9 @@ import (
 
 // Gets information about the specified site network service.
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2024-04-15.
 //
-// Other available API versions: 2024-04-15.
+// Other available API versions: 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSiteNetworkService(ctx *pulumi.Context, args *LookupSiteNetworkServiceArgs, opts ...pulumi.InvokeOption) (*LookupSiteNetworkServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSiteNetworkServiceResult
@@ -35,6 +35,8 @@ type LookupSiteNetworkServiceArgs struct {
 
 // Site network service resource.
 type LookupSiteNetworkServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The managed identity of the Site network service, if configured.
@@ -88,6 +90,11 @@ func (o LookupSiteNetworkServiceResultOutput) ToLookupSiteNetworkServiceResultOu
 
 func (o LookupSiteNetworkServiceResultOutput) ToLookupSiteNetworkServiceResultOutputWithContext(ctx context.Context) LookupSiteNetworkServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSiteNetworkServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSiteNetworkServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

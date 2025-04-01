@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2021-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-11-20.
-//
-// Other available API versions: 2021-05-01-preview.
+// Uses Azure REST API version 2021-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-09-01-preview.
 type OperationByProviderRegistration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -127,6 +127,11 @@ func (o OperationByProviderRegistrationOutput) ToOperationByProviderRegistration
 
 func (o OperationByProviderRegistrationOutput) ToOperationByProviderRegistrationOutputWithContext(ctx context.Context) OperationByProviderRegistrationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o OperationByProviderRegistrationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OperationByProviderRegistration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

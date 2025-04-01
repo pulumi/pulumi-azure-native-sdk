@@ -14,8 +14,6 @@ import (
 // Gets information about a configuration of server.
 //
 // Uses Azure REST API version 2018-06-01.
-//
-// Other available API versions: 2018-06-01-preview.
 func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationResult
@@ -39,6 +37,8 @@ type LookupConfigurationArgs struct {
 type LookupConfigurationResult struct {
 	// Allowed values of the configuration.
 	AllowedValues string `pulumi:"allowedValues"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Data type of the configuration.
 	DataType string `pulumi:"dataType"`
 	// Default value of the configuration.
@@ -97,6 +97,11 @@ func (o LookupConfigurationResultOutput) ToLookupConfigurationResultOutputWithCo
 // Allowed values of the configuration.
 func (o LookupConfigurationResultOutput) AllowedValues() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.AllowedValues }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Data type of the configuration.

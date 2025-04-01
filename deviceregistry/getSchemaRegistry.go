@@ -33,6 +33,8 @@ type LookupSchemaRegistryArgs struct {
 
 // Schema registry definition.
 type LookupSchemaRegistryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Human-readable description of the schema registry.
 	Description *string `pulumi:"description"`
 	// Human-readable display name.
@@ -94,6 +96,11 @@ func (o LookupSchemaRegistryResultOutput) ToLookupSchemaRegistryResultOutput() L
 
 func (o LookupSchemaRegistryResultOutput) ToLookupSchemaRegistryResultOutputWithContext(ctx context.Context) LookupSchemaRegistryResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSchemaRegistryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSchemaRegistryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Human-readable description of the schema registry.

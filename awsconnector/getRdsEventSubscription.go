@@ -33,6 +33,8 @@ type LookupRdsEventSubscriptionArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupRdsEventSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -92,6 +94,11 @@ func (o LookupRdsEventSubscriptionResultOutput) ToLookupRdsEventSubscriptionResu
 
 func (o LookupRdsEventSubscriptionResultOutput) ToLookupRdsEventSubscriptionResultOutputWithContext(ctx context.Context) LookupRdsEventSubscriptionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRdsEventSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRdsEventSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

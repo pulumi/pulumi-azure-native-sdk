@@ -14,14 +14,16 @@ import (
 
 // PaloAltoNetworks Firewall
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2025-02-06-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
 //
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Firewall struct {
 	pulumi.CustomResourceState
 
 	// Associated Rulestack
 	AssociatedRulestack RulestackDetailsResponsePtrOutput `pulumi:"associatedRulestack"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// DNS settings for Firewall
 	DnsSettings DNSSettingsResponseOutput `pulumi:"dnsSettings"`
 	// Frontend settings for Firewall
@@ -30,6 +32,8 @@ type Firewall struct {
 	Identity AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput `pulumi:"identity"`
 	// Panorama Managed: Default is False. Default will be CloudSec managed
 	IsPanoramaManaged pulumi.StringPtrOutput `pulumi:"isPanoramaManaged"`
+	// Strata Cloud Managed: Default is False. Default will be CloudSec managed
+	IsStrataCloudManaged pulumi.StringPtrOutput `pulumi:"isStrataCloudManaged"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Marketplace details
@@ -46,6 +50,8 @@ type Firewall struct {
 	PlanData PlanDataResponseOutput `pulumi:"planData"`
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
+	StrataCloudManagerConfig StrataCloudManagerConfigResponsePtrOutput `pulumi:"strataCloudManagerConfig"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -148,6 +154,8 @@ type firewallArgs struct {
 	Identity *AzureResourceManagerManagedIdentityProperties `pulumi:"identity"`
 	// Panorama Managed: Default is False. Default will be CloudSec managed
 	IsPanoramaManaged *string `pulumi:"isPanoramaManaged"`
+	// Strata Cloud Managed: Default is False. Default will be CloudSec managed
+	IsStrataCloudManaged *string `pulumi:"isStrataCloudManaged"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Marketplace details
@@ -162,6 +170,8 @@ type firewallArgs struct {
 	PlanData PlanData `pulumi:"planData"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
+	StrataCloudManagerConfig *StrataCloudManagerConfig `pulumi:"strataCloudManagerConfig"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -180,6 +190,8 @@ type FirewallArgs struct {
 	Identity AzureResourceManagerManagedIdentityPropertiesPtrInput
 	// Panorama Managed: Default is False. Default will be CloudSec managed
 	IsPanoramaManaged pulumi.StringPtrInput
+	// Strata Cloud Managed: Default is False. Default will be CloudSec managed
+	IsStrataCloudManaged pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Marketplace details
@@ -194,6 +206,8 @@ type FirewallArgs struct {
 	PlanData PlanDataInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
+	StrataCloudManagerConfig StrataCloudManagerConfigPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -240,6 +254,11 @@ func (o FirewallOutput) AssociatedRulestack() RulestackDetailsResponsePtrOutput 
 	return o.ApplyT(func(v *Firewall) RulestackDetailsResponsePtrOutput { return v.AssociatedRulestack }).(RulestackDetailsResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o FirewallOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // DNS settings for Firewall
 func (o FirewallOutput) DnsSettings() DNSSettingsResponseOutput {
 	return o.ApplyT(func(v *Firewall) DNSSettingsResponseOutput { return v.DnsSettings }).(DNSSettingsResponseOutput)
@@ -258,6 +277,11 @@ func (o FirewallOutput) Identity() AzureResourceManagerManagedIdentityProperties
 // Panorama Managed: Default is False. Default will be CloudSec managed
 func (o FirewallOutput) IsPanoramaManaged() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringPtrOutput { return v.IsPanoramaManaged }).(pulumi.StringPtrOutput)
+}
+
+// Strata Cloud Managed: Default is False. Default will be CloudSec managed
+func (o FirewallOutput) IsStrataCloudManaged() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringPtrOutput { return v.IsStrataCloudManaged }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -298,6 +322,11 @@ func (o FirewallOutput) PlanData() PlanDataResponseOutput {
 // Provisioning state of the resource.
 func (o FirewallOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
+func (o FirewallOutput) StrataCloudManagerConfig() StrataCloudManagerConfigResponsePtrOutput {
+	return o.ApplyT(func(v *Firewall) StrataCloudManagerConfigResponsePtrOutput { return v.StrataCloudManagerConfig }).(StrataCloudManagerConfigResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

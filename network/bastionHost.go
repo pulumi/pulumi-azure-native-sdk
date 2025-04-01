@@ -14,12 +14,14 @@ import (
 
 // Bastion Host resource.
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type BastionHost struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Enable/Disable Copy/Paste feature of the Bastion Host resource.
 	DisableCopyPaste pulumi.BoolPtrOutput `pulumi:"disableCopyPaste"`
 	// FQDN for the endpoint on which bastion host is accessible.
@@ -30,6 +32,10 @@ type BastionHost struct {
 	EnableIpConnect pulumi.BoolPtrOutput `pulumi:"enableIpConnect"`
 	// Enable/Disable Kerberos feature of the Bastion Host resource.
 	EnableKerberos pulumi.BoolPtrOutput `pulumi:"enableKerberos"`
+	// Enable/Disable Private Only feature of the Bastion Host resource.
+	EnablePrivateOnlyBastion pulumi.BoolPtrOutput `pulumi:"enablePrivateOnlyBastion"`
+	// Enable/Disable Session Recording feature of the Bastion Host resource.
+	EnableSessionRecording pulumi.BoolPtrOutput `pulumi:"enableSessionRecording"`
 	// Enable/Disable Shareable Link of the Bastion Host resource.
 	EnableShareableLink pulumi.BoolPtrOutput `pulumi:"enableShareableLink"`
 	// Enable/Disable Tunneling feature of the Bastion Host resource.
@@ -41,7 +47,8 @@ type BastionHost struct {
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name        pulumi.StringOutput                                     `pulumi:"name"`
+	NetworkAcls BastionHostPropertiesFormatResponseNetworkAclsPtrOutput `pulumi:"networkAcls"`
 	// The provisioning state of the bastion host resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The scale units for the Bastion Host resource.
@@ -52,6 +59,10 @@ type BastionHost struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Reference to an existing virtual network required for Developer Bastion Host only.
+	VirtualNetwork SubResourceResponsePtrOutput `pulumi:"virtualNetwork"`
+	// A list of availability zones denoting where the resource needs to come from.
+	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewBastionHost registers a new resource with the given unique name, arguments, and options.
@@ -76,11 +87,20 @@ func NewBastionHost(ctx *pulumi.Context,
 	if args.EnableKerberos == nil {
 		args.EnableKerberos = pulumi.BoolPtr(false)
 	}
+	if args.EnablePrivateOnlyBastion == nil {
+		args.EnablePrivateOnlyBastion = pulumi.BoolPtr(false)
+	}
+	if args.EnableSessionRecording == nil {
+		args.EnableSessionRecording = pulumi.BoolPtr(false)
+	}
 	if args.EnableShareableLink == nil {
 		args.EnableShareableLink = pulumi.BoolPtr(false)
 	}
 	if args.EnableTunneling == nil {
 		args.EnableTunneling = pulumi.BoolPtr(false)
+	}
+	if args.Sku != nil {
+		args.Sku = args.Sku.ToSkuPtrOutput().ApplyT(func(v *Sku) *Sku { return v.Defaults() }).(SkuPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -226,6 +246,10 @@ type bastionHostArgs struct {
 	EnableIpConnect *bool `pulumi:"enableIpConnect"`
 	// Enable/Disable Kerberos feature of the Bastion Host resource.
 	EnableKerberos *bool `pulumi:"enableKerberos"`
+	// Enable/Disable Private Only feature of the Bastion Host resource.
+	EnablePrivateOnlyBastion *bool `pulumi:"enablePrivateOnlyBastion"`
+	// Enable/Disable Session Recording feature of the Bastion Host resource.
+	EnableSessionRecording *bool `pulumi:"enableSessionRecording"`
 	// Enable/Disable Shareable Link of the Bastion Host resource.
 	EnableShareableLink *bool `pulumi:"enableShareableLink"`
 	// Enable/Disable Tunneling feature of the Bastion Host resource.
@@ -235,7 +259,8 @@ type bastionHostArgs struct {
 	// IP configuration of the Bastion Host resource.
 	IpConfigurations []BastionHostIPConfiguration `pulumi:"ipConfigurations"`
 	// Resource location.
-	Location *string `pulumi:"location"`
+	Location    *string                                 `pulumi:"location"`
+	NetworkAcls *BastionHostPropertiesFormatNetworkAcls `pulumi:"networkAcls"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The scale units for the Bastion Host resource.
@@ -244,6 +269,10 @@ type bastionHostArgs struct {
 	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Reference to an existing virtual network required for Developer Bastion Host only.
+	VirtualNetwork *SubResource `pulumi:"virtualNetwork"`
+	// A list of availability zones denoting where the resource needs to come from.
+	Zones []string `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a BastionHost resource.
@@ -260,6 +289,10 @@ type BastionHostArgs struct {
 	EnableIpConnect pulumi.BoolPtrInput
 	// Enable/Disable Kerberos feature of the Bastion Host resource.
 	EnableKerberos pulumi.BoolPtrInput
+	// Enable/Disable Private Only feature of the Bastion Host resource.
+	EnablePrivateOnlyBastion pulumi.BoolPtrInput
+	// Enable/Disable Session Recording feature of the Bastion Host resource.
+	EnableSessionRecording pulumi.BoolPtrInput
 	// Enable/Disable Shareable Link of the Bastion Host resource.
 	EnableShareableLink pulumi.BoolPtrInput
 	// Enable/Disable Tunneling feature of the Bastion Host resource.
@@ -269,7 +302,8 @@ type BastionHostArgs struct {
 	// IP configuration of the Bastion Host resource.
 	IpConfigurations BastionHostIPConfigurationArrayInput
 	// Resource location.
-	Location pulumi.StringPtrInput
+	Location    pulumi.StringPtrInput
+	NetworkAcls BastionHostPropertiesFormatNetworkAclsPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The scale units for the Bastion Host resource.
@@ -278,6 +312,10 @@ type BastionHostArgs struct {
 	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// Reference to an existing virtual network required for Developer Bastion Host only.
+	VirtualNetwork SubResourcePtrInput
+	// A list of availability zones denoting where the resource needs to come from.
+	Zones pulumi.StringArrayInput
 }
 
 func (BastionHostArgs) ElementType() reflect.Type {
@@ -317,6 +355,11 @@ func (o BastionHostOutput) ToBastionHostOutputWithContext(ctx context.Context) B
 	return o
 }
 
+// The Azure API version of the resource.
+func (o BastionHostOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BastionHost) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Enable/Disable Copy/Paste feature of the Bastion Host resource.
 func (o BastionHostOutput) DisableCopyPaste() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BastionHost) pulumi.BoolPtrOutput { return v.DisableCopyPaste }).(pulumi.BoolPtrOutput)
@@ -340,6 +383,16 @@ func (o BastionHostOutput) EnableIpConnect() pulumi.BoolPtrOutput {
 // Enable/Disable Kerberos feature of the Bastion Host resource.
 func (o BastionHostOutput) EnableKerberos() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BastionHost) pulumi.BoolPtrOutput { return v.EnableKerberos }).(pulumi.BoolPtrOutput)
+}
+
+// Enable/Disable Private Only feature of the Bastion Host resource.
+func (o BastionHostOutput) EnablePrivateOnlyBastion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BastionHost) pulumi.BoolPtrOutput { return v.EnablePrivateOnlyBastion }).(pulumi.BoolPtrOutput)
+}
+
+// Enable/Disable Session Recording feature of the Bastion Host resource.
+func (o BastionHostOutput) EnableSessionRecording() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BastionHost) pulumi.BoolPtrOutput { return v.EnableSessionRecording }).(pulumi.BoolPtrOutput)
 }
 
 // Enable/Disable Shareable Link of the Bastion Host resource.
@@ -372,6 +425,10 @@ func (o BastionHostOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BastionHost) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o BastionHostOutput) NetworkAcls() BastionHostPropertiesFormatResponseNetworkAclsPtrOutput {
+	return o.ApplyT(func(v *BastionHost) BastionHostPropertiesFormatResponseNetworkAclsPtrOutput { return v.NetworkAcls }).(BastionHostPropertiesFormatResponseNetworkAclsPtrOutput)
+}
+
 // The provisioning state of the bastion host resource.
 func (o BastionHostOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *BastionHost) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -395,6 +452,16 @@ func (o BastionHostOutput) Tags() pulumi.StringMapOutput {
 // Resource type.
 func (o BastionHostOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *BastionHost) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Reference to an existing virtual network required for Developer Bastion Host only.
+func (o BastionHostOutput) VirtualNetwork() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *BastionHost) SubResourceResponsePtrOutput { return v.VirtualNetwork }).(SubResourceResponsePtrOutput)
+}
+
+// A list of availability zones denoting where the resource needs to come from.
+func (o BastionHostOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BastionHost) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

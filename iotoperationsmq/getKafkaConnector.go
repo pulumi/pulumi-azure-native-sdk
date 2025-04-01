@@ -35,6 +35,8 @@ type LookupKafkaConnectorArgs struct {
 
 // MQ kafkaConnector resource
 type LookupKafkaConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The client id prefix of the dynamically generated client ids.
 	ClientIdPrefix *string `pulumi:"clientIdPrefix"`
 	// Extended Location
@@ -116,6 +118,11 @@ func (o LookupKafkaConnectorResultOutput) ToLookupKafkaConnectorResultOutput() L
 
 func (o LookupKafkaConnectorResultOutput) ToLookupKafkaConnectorResultOutputWithContext(ctx context.Context) LookupKafkaConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKafkaConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The client id prefix of the dynamically generated client ids.

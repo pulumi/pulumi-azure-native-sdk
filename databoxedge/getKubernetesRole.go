@@ -13,7 +13,7 @@ import (
 
 // Gets a specific role by name.
 //
-// Uses Azure REST API version 2022-03-01.
+// Uses Azure REST API version 2023-07-01.
 func LookupKubernetesRole(ctx *pulumi.Context, args *LookupKubernetesRoleArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesRoleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesRoleResult
@@ -42,6 +42,8 @@ type LookupKubernetesRoleArgs struct {
 //     Or Demo: https://databoxupdatepackages.blob.core.windows.net/documentation/Microsoft-Azure-Stack-Edge-K8S-Cloud-Management-20210323.mp4
 //     By using this feature, you agree to the preview legal terms. See the https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/
 type LookupKubernetesRoleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Host OS supported by the Kubernetes role.
 	HostPlatform string `pulumi:"hostPlatform"`
 	// Platform where the runtime is hosted.
@@ -109,6 +111,11 @@ func (o LookupKubernetesRoleResultOutput) ToLookupKubernetesRoleResultOutput() L
 
 func (o LookupKubernetesRoleResultOutput) ToLookupKubernetesRoleResultOutputWithContext(ctx context.Context) LookupKubernetesRoleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKubernetesRoleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Host OS supported by the Kubernetes role.

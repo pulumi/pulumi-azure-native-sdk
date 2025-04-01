@@ -14,10 +14,14 @@ import (
 
 // An AML file system instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-03-01.
+//
+// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AmlFilesystem struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Client information for the AML file system.
 	ClientInfo AmlFilesystemClientInfoResponseOutput `pulumi:"clientInfo"`
 	// Specifies encryption settings of the AML file system.
@@ -38,6 +42,8 @@ type AmlFilesystem struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ARM provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Specifies root squash settings of the AML file system.
+	RootSquashSettings AmlFilesystemRootSquashSettingsResponsePtrOutput `pulumi:"rootSquashSettings"`
 	// SKU for the resource.
 	Sku SkuNameResponsePtrOutput `pulumi:"sku"`
 	// The size of the AML file system, in TiB. This might be rounded up.
@@ -81,34 +87,16 @@ func NewAmlFilesystem(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:storagecache/v20230301preview:AmlFilesystem"),
 		},
 		{
-			Type: pulumi.String("azure-native:storagecache/v20230301preview:amlFilesystem"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagecache/v20230501:AmlFilesystem"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagecache/v20230501:amlFilesystem"),
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20231101preview:AmlFilesystem"),
 		},
 		{
-			Type: pulumi.String("azure-native:storagecache/v20231101preview:amlFilesystem"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagecache/v20240301:AmlFilesystem"),
 		},
 		{
-			Type: pulumi.String("azure-native:storagecache/v20240301:amlFilesystem"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagecache/v20240701:AmlFilesystem"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagecache/v20240701:amlFilesystem"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagecache:amlFilesystem"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -161,6 +149,8 @@ type amlFilesystemArgs struct {
 	MaintenanceWindow AmlFilesystemMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Specifies root squash settings of the AML file system.
+	RootSquashSettings *AmlFilesystemRootSquashSettings `pulumi:"rootSquashSettings"`
 	// SKU for the resource.
 	Sku *SkuName `pulumi:"sku"`
 	// The size of the AML file system, in TiB. This might be rounded up.
@@ -189,6 +179,8 @@ type AmlFilesystemArgs struct {
 	MaintenanceWindow AmlFilesystemMaintenanceWindowInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Specifies root squash settings of the AML file system.
+	RootSquashSettings AmlFilesystemRootSquashSettingsPtrInput
 	// SKU for the resource.
 	Sku SkuNamePtrInput
 	// The size of the AML file system, in TiB. This might be rounded up.
@@ -234,6 +226,11 @@ func (o AmlFilesystemOutput) ToAmlFilesystemOutput() AmlFilesystemOutput {
 
 func (o AmlFilesystemOutput) ToAmlFilesystemOutputWithContext(ctx context.Context) AmlFilesystemOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AmlFilesystemOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AmlFilesystem) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Client information for the AML file system.
@@ -284,6 +281,11 @@ func (o AmlFilesystemOutput) Name() pulumi.StringOutput {
 // ARM provisioning state.
 func (o AmlFilesystemOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AmlFilesystem) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Specifies root squash settings of the AML file system.
+func (o AmlFilesystemOutput) RootSquashSettings() AmlFilesystemRootSquashSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *AmlFilesystem) AmlFilesystemRootSquashSettingsResponsePtrOutput { return v.RootSquashSettings }).(AmlFilesystemRootSquashSettingsResponsePtrOutput)
 }
 
 // SKU for the resource.

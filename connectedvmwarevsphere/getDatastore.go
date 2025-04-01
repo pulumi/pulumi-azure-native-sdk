@@ -13,9 +13,9 @@ import (
 
 // Implements datastore GET method.
 //
-// Uses Azure REST API version 2022-07-15-preview.
+// Uses Azure REST API version 2023-12-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Other available API versions: 2022-07-15-preview, 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDatastore(ctx *pulumi.Context, args *LookupDatastoreArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatastoreResult
@@ -35,6 +35,8 @@ type LookupDatastoreArgs struct {
 
 // Define the datastore.
 type LookupDatastoreResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets Maximum capacity of this datastore in GBs.
 	CapacityGB float64 `pulumi:"capacityGB"`
 	// Gets the name of the corresponding resource in Kubernetes.
@@ -106,6 +108,11 @@ func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutput() LookupDatas
 
 func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutputWithContext(ctx context.Context) LookupDatastoreResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDatastoreResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatastoreResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets Maximum capacity of this datastore in GBs.

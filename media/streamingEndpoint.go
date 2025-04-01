@@ -14,9 +14,9 @@ import (
 
 // The streaming endpoint.
 //
-// Uses Azure REST API version 2022-11-01. In version 1.x of the Azure Native provider, it used API version 2020-05-01.
+// Uses Azure REST API version 2022-11-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
 //
-// Other available API versions: 2018-06-01-preview.
+// Other available API versions: 2018-03-30-preview, 2018-06-01-preview, 2018-07-01, 2019-05-01-preview, 2020-05-01, 2021-06-01, 2021-11-01, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type StreamingEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type StreamingEndpoint struct {
 	AccessControl StreamingEndpointAccessControlResponsePtrOutput `pulumi:"accessControl"`
 	// This feature is deprecated, do not set a value for this property.
 	AvailabilitySetName pulumi.StringPtrOutput `pulumi:"availabilitySetName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The CDN enabled flag.
 	CdnEnabled pulumi.BoolPtrOutput `pulumi:"cdnEnabled"`
 	// The CDN profile name.
@@ -264,6 +266,11 @@ func (o StreamingEndpointOutput) AccessControl() StreamingEndpointAccessControlR
 // This feature is deprecated, do not set a value for this property.
 func (o StreamingEndpointOutput) AvailabilitySetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamingEndpoint) pulumi.StringPtrOutput { return v.AvailabilitySetName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o StreamingEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StreamingEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The CDN enabled flag.

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview.
+// Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupOpenAI(ctx *pulumi.Context, args *LookupOpenAIArgs, opts ...pulumi.InvokeOption) (*LookupOpenAIResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenAIResult
@@ -37,6 +37,8 @@ type LookupOpenAIArgs struct {
 
 // Capture properties of Open AI resource Integration.
 type LookupOpenAIResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The id of the integration.
 	Id string `pulumi:"id"`
 	// Name of the integration.
@@ -82,6 +84,11 @@ func (o LookupOpenAIResultOutput) ToLookupOpenAIResultOutput() LookupOpenAIResul
 
 func (o LookupOpenAIResultOutput) ToLookupOpenAIResultOutputWithContext(ctx context.Context) LookupOpenAIResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOpenAIResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenAIResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The id of the integration.

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-08-01-preview.
 //
-// Other available API versions: 2024-12-01-preview.
+// Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVariableAtManagementGroup(ctx *pulumi.Context, args *LookupVariableAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupVariableAtManagementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVariableAtManagementGroupResult
@@ -35,6 +35,8 @@ type LookupVariableAtManagementGroupArgs struct {
 
 // The variable.
 type LookupVariableAtManagementGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Variable column definitions.
 	Columns []PolicyVariableColumnResponse `pulumi:"columns"`
 	// The ID of the variable.
@@ -80,6 +82,11 @@ func (o LookupVariableAtManagementGroupResultOutput) ToLookupVariableAtManagemen
 
 func (o LookupVariableAtManagementGroupResultOutput) ToLookupVariableAtManagementGroupResultOutputWithContext(ctx context.Context) LookupVariableAtManagementGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVariableAtManagementGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVariableAtManagementGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Variable column definitions.

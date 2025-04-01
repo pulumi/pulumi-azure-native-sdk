@@ -13,9 +13,9 @@ import (
 
 // Get properties of the provided rack.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2025-02-01.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRack(ctx *pulumi.Context, args *LookupRackArgs, opts ...pulumi.InvokeOption) (*LookupRackResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRackResult
@@ -36,12 +36,16 @@ type LookupRackArgs struct {
 type LookupRackResult struct {
 	// The value that will be used for machines in this rack to represent the availability zones that can be referenced by Hybrid AKS Clusters for node arrangement.
 	AvailabilityZone string `pulumi:"availabilityZone"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID of the cluster the rack is created for. This value is set when the rack is created by the cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// The more detailed status of the rack.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -105,6 +109,11 @@ func (o LookupRackResultOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRackResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupRackResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRackResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource ID of the cluster the rack is created for. This value is set when the rack is created by the cluster.
 func (o LookupRackResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRackResult) string { return v.ClusterId }).(pulumi.StringOutput)
@@ -118,6 +127,11 @@ func (o LookupRackResultOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o LookupRackResultOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRackResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o LookupRackResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRackResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.

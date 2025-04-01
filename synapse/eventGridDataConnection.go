@@ -14,10 +14,12 @@ import (
 
 // Class representing an Event Grid data connection.
 //
-// Uses Azure REST API version 2021-06-01-preview.
+// Uses Azure REST API version 2021-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-01-preview.
 type EventGridDataConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of blob storage event type to process.
 	BlobStorageEventType pulumi.StringPtrOutput `pulumi:"blobStorageEventType"`
 	// The event hub consumer group.
@@ -87,6 +89,18 @@ func NewEventGridDataConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601preview:EventGridDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse/v20210601preview:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse/v20210601preview:IotHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:IotHubDataConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -226,6 +240,11 @@ func (o EventGridDataConnectionOutput) ToEventGridDataConnectionOutput() EventGr
 
 func (o EventGridDataConnectionOutput) ToEventGridDataConnectionOutputWithContext(ctx context.Context) EventGridDataConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EventGridDataConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventGridDataConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of blob storage event type to process.

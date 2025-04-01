@@ -14,10 +14,12 @@ import (
 
 // MQ dataLakeConnector resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type DataLakeConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// DataLake database format to use.
 	DatabaseFormat pulumi.StringOutput `pulumi:"databaseFormat"`
 	// Extended Location
@@ -217,6 +219,11 @@ func (o DataLakeConnectorOutput) ToDataLakeConnectorOutput() DataLakeConnectorOu
 
 func (o DataLakeConnectorOutput) ToDataLakeConnectorOutputWithContext(ctx context.Context) DataLakeConnectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DataLakeConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataLakeConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // DataLake database format to use.

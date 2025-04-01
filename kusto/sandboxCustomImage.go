@@ -14,16 +14,20 @@ import (
 
 // Class representing a Kusto sandbox custom image.
 //
-// Uses Azure REST API version 2023-08-15.
+// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2023-08-15.
 //
-// Other available API versions: 2024-04-13.
+// Other available API versions: 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SandboxCustomImage struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
+	BaseImageName pulumi.StringPtrOutput `pulumi:"baseImageName"`
 	// The language name, for example Python.
 	Language pulumi.StringOutput `pulumi:"language"`
-	// The version of the language.
-	LanguageVersion pulumi.StringOutput `pulumi:"languageVersion"`
+	// The version of the language. Either this property or baseImageName should be specified.
+	LanguageVersion pulumi.StringPtrOutput `pulumi:"languageVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioned state of the resource.
@@ -46,9 +50,6 @@ func NewSandboxCustomImage(ctx *pulumi.Context,
 	}
 	if args.Language == nil {
 		return nil, errors.New("invalid value for required argument 'Language'")
-	}
-	if args.LanguageVersion == nil {
-		return nil, errors.New("invalid value for required argument 'LanguageVersion'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -95,12 +96,14 @@ func (SandboxCustomImageState) ElementType() reflect.Type {
 }
 
 type sandboxCustomImageArgs struct {
+	// The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
+	BaseImageName *string `pulumi:"baseImageName"`
 	// The name of the Kusto cluster.
 	ClusterName string `pulumi:"clusterName"`
 	// The language name, for example Python.
 	Language string `pulumi:"language"`
-	// The version of the language.
-	LanguageVersion string `pulumi:"languageVersion"`
+	// The version of the language. Either this property or baseImageName should be specified.
+	LanguageVersion *string `pulumi:"languageVersion"`
 	// The requirements file content.
 	RequirementsFileContent *string `pulumi:"requirementsFileContent"`
 	// The name of the resource group. The name is case insensitive.
@@ -111,12 +114,14 @@ type sandboxCustomImageArgs struct {
 
 // The set of arguments for constructing a SandboxCustomImage resource.
 type SandboxCustomImageArgs struct {
+	// The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
+	BaseImageName pulumi.StringPtrInput
 	// The name of the Kusto cluster.
 	ClusterName pulumi.StringInput
 	// The language name, for example Python.
 	Language pulumi.StringInput
-	// The version of the language.
-	LanguageVersion pulumi.StringInput
+	// The version of the language. Either this property or baseImageName should be specified.
+	LanguageVersion pulumi.StringPtrInput
 	// The requirements file content.
 	RequirementsFileContent pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -162,14 +167,24 @@ func (o SandboxCustomImageOutput) ToSandboxCustomImageOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SandboxCustomImageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SandboxCustomImage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
+func (o SandboxCustomImageOutput) BaseImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SandboxCustomImage) pulumi.StringPtrOutput { return v.BaseImageName }).(pulumi.StringPtrOutput)
+}
+
 // The language name, for example Python.
 func (o SandboxCustomImageOutput) Language() pulumi.StringOutput {
 	return o.ApplyT(func(v *SandboxCustomImage) pulumi.StringOutput { return v.Language }).(pulumi.StringOutput)
 }
 
-// The version of the language.
-func (o SandboxCustomImageOutput) LanguageVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *SandboxCustomImage) pulumi.StringOutput { return v.LanguageVersion }).(pulumi.StringOutput)
+// The version of the language. Either this property or baseImageName should be specified.
+func (o SandboxCustomImageOutput) LanguageVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SandboxCustomImage) pulumi.StringPtrOutput { return v.LanguageVersion }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource

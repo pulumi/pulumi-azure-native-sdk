@@ -14,20 +14,26 @@ import (
 
 // Class representing a database script.
 //
-// Uses Azure REST API version 2022-12-29. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2022-12-29.
 //
-// Other available API versions: 2021-08-27, 2023-05-02, 2023-08-15, 2024-04-13.
+// Other available API versions: 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Script struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Flag that indicates whether to continue if one of the command fails.
 	ContinueOnErrors pulumi.BoolPtrOutput `pulumi:"continueOnErrors"`
 	// A unique string. If changed the script will be applied again.
 	ForceUpdateTag pulumi.StringPtrOutput `pulumi:"forceUpdateTag"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Indicates if the permissions for the script caller are kept following completion of the script.
+	PrincipalPermissionsAction pulumi.StringPtrOutput `pulumi:"principalPermissionsAction"`
 	// The provisioned state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Differentiates between the type of script commands included - Database or Cluster. The default is Database.
+	ScriptLevel pulumi.StringPtrOutput `pulumi:"scriptLevel"`
 	// The url to the KQL script blob file. Must not be used together with scriptContent property
 	ScriptUrl pulumi.StringPtrOutput `pulumi:"scriptUrl"`
 	// Metadata pertaining to creation and last modification of the resource.
@@ -126,10 +132,14 @@ type scriptArgs struct {
 	DatabaseName string `pulumi:"databaseName"`
 	// A unique string. If changed the script will be applied again.
 	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
-	// The name of the resource group containing the Kusto cluster.
+	// Indicates if the permissions for the script caller are kept following completion of the script.
+	PrincipalPermissionsAction *string `pulumi:"principalPermissionsAction"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
 	ScriptContent *string `pulumi:"scriptContent"`
+	// Differentiates between the type of script commands included - Database or Cluster. The default is Database.
+	ScriptLevel *string `pulumi:"scriptLevel"`
 	// The name of the Kusto database script.
 	ScriptName *string `pulumi:"scriptName"`
 	// The url to the KQL script blob file. Must not be used together with scriptContent property
@@ -148,10 +158,14 @@ type ScriptArgs struct {
 	DatabaseName pulumi.StringInput
 	// A unique string. If changed the script will be applied again.
 	ForceUpdateTag pulumi.StringPtrInput
-	// The name of the resource group containing the Kusto cluster.
+	// Indicates if the permissions for the script caller are kept following completion of the script.
+	PrincipalPermissionsAction pulumi.StringPtrInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
 	ScriptContent pulumi.StringPtrInput
+	// Differentiates between the type of script commands included - Database or Cluster. The default is Database.
+	ScriptLevel pulumi.StringPtrInput
 	// The name of the Kusto database script.
 	ScriptName pulumi.StringPtrInput
 	// The url to the KQL script blob file. Must not be used together with scriptContent property
@@ -197,6 +211,11 @@ func (o ScriptOutput) ToScriptOutputWithContext(ctx context.Context) ScriptOutpu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ScriptOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Script) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Flag that indicates whether to continue if one of the command fails.
 func (o ScriptOutput) ContinueOnErrors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Script) pulumi.BoolPtrOutput { return v.ContinueOnErrors }).(pulumi.BoolPtrOutput)
@@ -212,9 +231,19 @@ func (o ScriptOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Script) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Indicates if the permissions for the script caller are kept following completion of the script.
+func (o ScriptOutput) PrincipalPermissionsAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Script) pulumi.StringPtrOutput { return v.PrincipalPermissionsAction }).(pulumi.StringPtrOutput)
+}
+
 // The provisioned state of the resource.
 func (o ScriptOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Script) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Differentiates between the type of script commands included - Database or Cluster. The default is Database.
+func (o ScriptOutput) ScriptLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Script) pulumi.StringPtrOutput { return v.ScriptLevel }).(pulumi.StringPtrOutput)
 }
 
 // The url to the KQL script blob file. Must not be used together with scriptContent property

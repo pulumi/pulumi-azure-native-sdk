@@ -14,14 +14,16 @@ import (
 
 // Describes a federated identity credential.
 //
-// Uses Azure REST API version 2023-01-31. In version 1.x of the Azure Native provider, it used API version 2022-01-31-preview.
+// Uses Azure REST API version 2023-01-31. In version 2.x of the Azure Native provider, it used API version 2023-01-31.
 //
-// Other available API versions: 2023-07-31-preview, 2024-11-30, 2025-01-31-preview.
+// Other available API versions: 2022-01-31-preview, 2023-07-31-preview, 2024-11-30, 2025-01-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managedidentity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FederatedIdentityCredential struct {
 	pulumi.CustomResourceState
 
 	// The list of audiences that can appear in the issued token.
 	Audiences pulumi.StringArrayOutput `pulumi:"audiences"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The URL of the issuer to be trusted.
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
 	// The name of the resource
@@ -177,6 +179,11 @@ func (o FederatedIdentityCredentialOutput) ToFederatedIdentityCredentialOutputWi
 // The list of audiences that can appear in the issued token.
 func (o FederatedIdentityCredentialOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FederatedIdentityCredential) pulumi.StringArrayOutput { return v.Audiences }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o FederatedIdentityCredentialOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FederatedIdentityCredential) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The URL of the issuer to be trusted.

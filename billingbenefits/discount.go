@@ -14,12 +14,14 @@ import (
 
 // Resource definition for Discounts.
 //
-// Uses Azure REST API version 2024-11-01-preview.
+// Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
 type Discount struct {
 	pulumi.CustomResourceState
 
 	// List of applied scopes supported for discounts.
 	AppliedScopeType pulumi.StringPtrOutput `pulumi:"appliedScopeType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Fully-qualified identifier of the benefit under applicable benefit list.
 	BenefitResourceId pulumi.StringOutput `pulumi:"benefitResourceId"`
 	// Billing account resource id where the discount metadata is present.
@@ -230,6 +232,11 @@ func (o DiscountOutput) ToDiscountOutputWithContext(ctx context.Context) Discoun
 // List of applied scopes supported for discounts.
 func (o DiscountOutput) AppliedScopeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Discount) pulumi.StringPtrOutput { return v.AppliedScopeType }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o DiscountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Discount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully-qualified identifier of the benefit under applicable benefit list.

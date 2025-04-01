@@ -2069,6 +2069,465 @@ func (o DiagnosticsUploadConfigurationResponsePtrOutput) StorageAccountContainer
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration for sending packet core events to Azure Event Hub.
+type EventHubConfiguration struct {
+	// Resource ID  of Azure Event Hub to send packet core events to.
+	Id string `pulumi:"id"`
+	// The duration (in seconds) between UE usage reports.
+	ReportingInterval *int `pulumi:"reportingInterval"`
+}
+
+// Defaults sets the appropriate defaults for EventHubConfiguration
+func (val *EventHubConfiguration) Defaults() *EventHubConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ReportingInterval == nil {
+		reportingInterval_ := 1800
+		tmp.ReportingInterval = &reportingInterval_
+	}
+	return &tmp
+}
+
+// EventHubConfigurationInput is an input type that accepts EventHubConfigurationArgs and EventHubConfigurationOutput values.
+// You can construct a concrete instance of `EventHubConfigurationInput` via:
+//
+//	EventHubConfigurationArgs{...}
+type EventHubConfigurationInput interface {
+	pulumi.Input
+
+	ToEventHubConfigurationOutput() EventHubConfigurationOutput
+	ToEventHubConfigurationOutputWithContext(context.Context) EventHubConfigurationOutput
+}
+
+// Configuration for sending packet core events to Azure Event Hub.
+type EventHubConfigurationArgs struct {
+	// Resource ID  of Azure Event Hub to send packet core events to.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The duration (in seconds) between UE usage reports.
+	ReportingInterval pulumi.IntPtrInput `pulumi:"reportingInterval"`
+}
+
+// Defaults sets the appropriate defaults for EventHubConfigurationArgs
+func (val *EventHubConfigurationArgs) Defaults() *EventHubConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ReportingInterval == nil {
+		tmp.ReportingInterval = pulumi.IntPtr(1800)
+	}
+	return &tmp
+}
+func (EventHubConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubConfiguration)(nil)).Elem()
+}
+
+func (i EventHubConfigurationArgs) ToEventHubConfigurationOutput() EventHubConfigurationOutput {
+	return i.ToEventHubConfigurationOutputWithContext(context.Background())
+}
+
+func (i EventHubConfigurationArgs) ToEventHubConfigurationOutputWithContext(ctx context.Context) EventHubConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubConfigurationOutput)
+}
+
+func (i EventHubConfigurationArgs) ToEventHubConfigurationPtrOutput() EventHubConfigurationPtrOutput {
+	return i.ToEventHubConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i EventHubConfigurationArgs) ToEventHubConfigurationPtrOutputWithContext(ctx context.Context) EventHubConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubConfigurationOutput).ToEventHubConfigurationPtrOutputWithContext(ctx)
+}
+
+// EventHubConfigurationPtrInput is an input type that accepts EventHubConfigurationArgs, EventHubConfigurationPtr and EventHubConfigurationPtrOutput values.
+// You can construct a concrete instance of `EventHubConfigurationPtrInput` via:
+//
+//	        EventHubConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventHubConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToEventHubConfigurationPtrOutput() EventHubConfigurationPtrOutput
+	ToEventHubConfigurationPtrOutputWithContext(context.Context) EventHubConfigurationPtrOutput
+}
+
+type eventHubConfigurationPtrType EventHubConfigurationArgs
+
+func EventHubConfigurationPtr(v *EventHubConfigurationArgs) EventHubConfigurationPtrInput {
+	return (*eventHubConfigurationPtrType)(v)
+}
+
+func (*eventHubConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventHubConfiguration)(nil)).Elem()
+}
+
+func (i *eventHubConfigurationPtrType) ToEventHubConfigurationPtrOutput() EventHubConfigurationPtrOutput {
+	return i.ToEventHubConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *eventHubConfigurationPtrType) ToEventHubConfigurationPtrOutputWithContext(ctx context.Context) EventHubConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubConfigurationPtrOutput)
+}
+
+// Configuration for sending packet core events to Azure Event Hub.
+type EventHubConfigurationOutput struct{ *pulumi.OutputState }
+
+func (EventHubConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubConfiguration)(nil)).Elem()
+}
+
+func (o EventHubConfigurationOutput) ToEventHubConfigurationOutput() EventHubConfigurationOutput {
+	return o
+}
+
+func (o EventHubConfigurationOutput) ToEventHubConfigurationOutputWithContext(ctx context.Context) EventHubConfigurationOutput {
+	return o
+}
+
+func (o EventHubConfigurationOutput) ToEventHubConfigurationPtrOutput() EventHubConfigurationPtrOutput {
+	return o.ToEventHubConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o EventHubConfigurationOutput) ToEventHubConfigurationPtrOutputWithContext(ctx context.Context) EventHubConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventHubConfiguration) *EventHubConfiguration {
+		return &v
+	}).(EventHubConfigurationPtrOutput)
+}
+
+// Resource ID  of Azure Event Hub to send packet core events to.
+func (o EventHubConfigurationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v EventHubConfiguration) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The duration (in seconds) between UE usage reports.
+func (o EventHubConfigurationOutput) ReportingInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventHubConfiguration) *int { return v.ReportingInterval }).(pulumi.IntPtrOutput)
+}
+
+type EventHubConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (EventHubConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventHubConfiguration)(nil)).Elem()
+}
+
+func (o EventHubConfigurationPtrOutput) ToEventHubConfigurationPtrOutput() EventHubConfigurationPtrOutput {
+	return o
+}
+
+func (o EventHubConfigurationPtrOutput) ToEventHubConfigurationPtrOutputWithContext(ctx context.Context) EventHubConfigurationPtrOutput {
+	return o
+}
+
+func (o EventHubConfigurationPtrOutput) Elem() EventHubConfigurationOutput {
+	return o.ApplyT(func(v *EventHubConfiguration) EventHubConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret EventHubConfiguration
+		return ret
+	}).(EventHubConfigurationOutput)
+}
+
+// Resource ID  of Azure Event Hub to send packet core events to.
+func (o EventHubConfigurationPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventHubConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration (in seconds) between UE usage reports.
+func (o EventHubConfigurationPtrOutput) ReportingInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventHubConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReportingInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configuration for sending packet core events to Azure Event Hub.
+type EventHubConfigurationResponse struct {
+	// Resource ID  of Azure Event Hub to send packet core events to.
+	Id string `pulumi:"id"`
+	// The duration (in seconds) between UE usage reports.
+	ReportingInterval *int `pulumi:"reportingInterval"`
+}
+
+// Defaults sets the appropriate defaults for EventHubConfigurationResponse
+func (val *EventHubConfigurationResponse) Defaults() *EventHubConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ReportingInterval == nil {
+		reportingInterval_ := 1800
+		tmp.ReportingInterval = &reportingInterval_
+	}
+	return &tmp
+}
+
+// Configuration for sending packet core events to Azure Event Hub.
+type EventHubConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (EventHubConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubConfigurationResponse)(nil)).Elem()
+}
+
+func (o EventHubConfigurationResponseOutput) ToEventHubConfigurationResponseOutput() EventHubConfigurationResponseOutput {
+	return o
+}
+
+func (o EventHubConfigurationResponseOutput) ToEventHubConfigurationResponseOutputWithContext(ctx context.Context) EventHubConfigurationResponseOutput {
+	return o
+}
+
+// Resource ID  of Azure Event Hub to send packet core events to.
+func (o EventHubConfigurationResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v EventHubConfigurationResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The duration (in seconds) between UE usage reports.
+func (o EventHubConfigurationResponseOutput) ReportingInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventHubConfigurationResponse) *int { return v.ReportingInterval }).(pulumi.IntPtrOutput)
+}
+
+type EventHubConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EventHubConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventHubConfigurationResponse)(nil)).Elem()
+}
+
+func (o EventHubConfigurationResponsePtrOutput) ToEventHubConfigurationResponsePtrOutput() EventHubConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o EventHubConfigurationResponsePtrOutput) ToEventHubConfigurationResponsePtrOutputWithContext(ctx context.Context) EventHubConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o EventHubConfigurationResponsePtrOutput) Elem() EventHubConfigurationResponseOutput {
+	return o.ApplyT(func(v *EventHubConfigurationResponse) EventHubConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EventHubConfigurationResponse
+		return ret
+	}).(EventHubConfigurationResponseOutput)
+}
+
+// Resource ID  of Azure Event Hub to send packet core events to.
+func (o EventHubConfigurationResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventHubConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration (in seconds) between UE usage reports.
+func (o EventHubConfigurationResponsePtrOutput) ReportingInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventHubConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReportingInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+type HomeNetworkPrivateKeysProvisioningResponse struct {
+	// The provisioning state of the private keys for SUPI concealment.
+	State string `pulumi:"state"`
+}
+
+type HomeNetworkPrivateKeysProvisioningResponseOutput struct{ *pulumi.OutputState }
+
+func (HomeNetworkPrivateKeysProvisioningResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HomeNetworkPrivateKeysProvisioningResponse)(nil)).Elem()
+}
+
+func (o HomeNetworkPrivateKeysProvisioningResponseOutput) ToHomeNetworkPrivateKeysProvisioningResponseOutput() HomeNetworkPrivateKeysProvisioningResponseOutput {
+	return o
+}
+
+func (o HomeNetworkPrivateKeysProvisioningResponseOutput) ToHomeNetworkPrivateKeysProvisioningResponseOutputWithContext(ctx context.Context) HomeNetworkPrivateKeysProvisioningResponseOutput {
+	return o
+}
+
+// The provisioning state of the private keys for SUPI concealment.
+func (o HomeNetworkPrivateKeysProvisioningResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v HomeNetworkPrivateKeysProvisioningResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// A key used for SUPI concealment.
+type HomeNetworkPublicKey struct {
+	// The Home Network Public Key Identifier determines which public key was used to generate the SUCI sent to the AMF. See TS 23.003 Section 2.2B Section 5.
+	Id int `pulumi:"id"`
+	// The URL of Azure Key Vault secret containing the private key, versioned or unversioned. For example: https://contosovault.vault.azure.net/secrets/mySuciPrivateKey/562a4bb76b524a1493a6afe8e536ee78.
+	Url *string `pulumi:"url"`
+}
+
+// HomeNetworkPublicKeyInput is an input type that accepts HomeNetworkPublicKeyArgs and HomeNetworkPublicKeyOutput values.
+// You can construct a concrete instance of `HomeNetworkPublicKeyInput` via:
+//
+//	HomeNetworkPublicKeyArgs{...}
+type HomeNetworkPublicKeyInput interface {
+	pulumi.Input
+
+	ToHomeNetworkPublicKeyOutput() HomeNetworkPublicKeyOutput
+	ToHomeNetworkPublicKeyOutputWithContext(context.Context) HomeNetworkPublicKeyOutput
+}
+
+// A key used for SUPI concealment.
+type HomeNetworkPublicKeyArgs struct {
+	// The Home Network Public Key Identifier determines which public key was used to generate the SUCI sent to the AMF. See TS 23.003 Section 2.2B Section 5.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The URL of Azure Key Vault secret containing the private key, versioned or unversioned. For example: https://contosovault.vault.azure.net/secrets/mySuciPrivateKey/562a4bb76b524a1493a6afe8e536ee78.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (HomeNetworkPublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HomeNetworkPublicKey)(nil)).Elem()
+}
+
+func (i HomeNetworkPublicKeyArgs) ToHomeNetworkPublicKeyOutput() HomeNetworkPublicKeyOutput {
+	return i.ToHomeNetworkPublicKeyOutputWithContext(context.Background())
+}
+
+func (i HomeNetworkPublicKeyArgs) ToHomeNetworkPublicKeyOutputWithContext(ctx context.Context) HomeNetworkPublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HomeNetworkPublicKeyOutput)
+}
+
+// HomeNetworkPublicKeyArrayInput is an input type that accepts HomeNetworkPublicKeyArray and HomeNetworkPublicKeyArrayOutput values.
+// You can construct a concrete instance of `HomeNetworkPublicKeyArrayInput` via:
+//
+//	HomeNetworkPublicKeyArray{ HomeNetworkPublicKeyArgs{...} }
+type HomeNetworkPublicKeyArrayInput interface {
+	pulumi.Input
+
+	ToHomeNetworkPublicKeyArrayOutput() HomeNetworkPublicKeyArrayOutput
+	ToHomeNetworkPublicKeyArrayOutputWithContext(context.Context) HomeNetworkPublicKeyArrayOutput
+}
+
+type HomeNetworkPublicKeyArray []HomeNetworkPublicKeyInput
+
+func (HomeNetworkPublicKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HomeNetworkPublicKey)(nil)).Elem()
+}
+
+func (i HomeNetworkPublicKeyArray) ToHomeNetworkPublicKeyArrayOutput() HomeNetworkPublicKeyArrayOutput {
+	return i.ToHomeNetworkPublicKeyArrayOutputWithContext(context.Background())
+}
+
+func (i HomeNetworkPublicKeyArray) ToHomeNetworkPublicKeyArrayOutputWithContext(ctx context.Context) HomeNetworkPublicKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HomeNetworkPublicKeyArrayOutput)
+}
+
+// A key used for SUPI concealment.
+type HomeNetworkPublicKeyOutput struct{ *pulumi.OutputState }
+
+func (HomeNetworkPublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HomeNetworkPublicKey)(nil)).Elem()
+}
+
+func (o HomeNetworkPublicKeyOutput) ToHomeNetworkPublicKeyOutput() HomeNetworkPublicKeyOutput {
+	return o
+}
+
+func (o HomeNetworkPublicKeyOutput) ToHomeNetworkPublicKeyOutputWithContext(ctx context.Context) HomeNetworkPublicKeyOutput {
+	return o
+}
+
+// The Home Network Public Key Identifier determines which public key was used to generate the SUCI sent to the AMF. See TS 23.003 Section 2.2B Section 5.
+func (o HomeNetworkPublicKeyOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v HomeNetworkPublicKey) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The URL of Azure Key Vault secret containing the private key, versioned or unversioned. For example: https://contosovault.vault.azure.net/secrets/mySuciPrivateKey/562a4bb76b524a1493a6afe8e536ee78.
+func (o HomeNetworkPublicKeyOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HomeNetworkPublicKey) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type HomeNetworkPublicKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (HomeNetworkPublicKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HomeNetworkPublicKey)(nil)).Elem()
+}
+
+func (o HomeNetworkPublicKeyArrayOutput) ToHomeNetworkPublicKeyArrayOutput() HomeNetworkPublicKeyArrayOutput {
+	return o
+}
+
+func (o HomeNetworkPublicKeyArrayOutput) ToHomeNetworkPublicKeyArrayOutputWithContext(ctx context.Context) HomeNetworkPublicKeyArrayOutput {
+	return o
+}
+
+func (o HomeNetworkPublicKeyArrayOutput) Index(i pulumi.IntInput) HomeNetworkPublicKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HomeNetworkPublicKey {
+		return vs[0].([]HomeNetworkPublicKey)[vs[1].(int)]
+	}).(HomeNetworkPublicKeyOutput)
+}
+
+// A key used for SUPI concealment.
+type HomeNetworkPublicKeyResponse struct {
+	// The Home Network Public Key Identifier determines which public key was used to generate the SUCI sent to the AMF. See TS 23.003 Section 2.2B Section 5.
+	Id int `pulumi:"id"`
+	// The URL of Azure Key Vault secret containing the private key, versioned or unversioned. For example: https://contosovault.vault.azure.net/secrets/mySuciPrivateKey/562a4bb76b524a1493a6afe8e536ee78.
+	Url *string `pulumi:"url"`
+}
+
+// A key used for SUPI concealment.
+type HomeNetworkPublicKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (HomeNetworkPublicKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HomeNetworkPublicKeyResponse)(nil)).Elem()
+}
+
+func (o HomeNetworkPublicKeyResponseOutput) ToHomeNetworkPublicKeyResponseOutput() HomeNetworkPublicKeyResponseOutput {
+	return o
+}
+
+func (o HomeNetworkPublicKeyResponseOutput) ToHomeNetworkPublicKeyResponseOutputWithContext(ctx context.Context) HomeNetworkPublicKeyResponseOutput {
+	return o
+}
+
+// The Home Network Public Key Identifier determines which public key was used to generate the SUCI sent to the AMF. See TS 23.003 Section 2.2B Section 5.
+func (o HomeNetworkPublicKeyResponseOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v HomeNetworkPublicKeyResponse) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The URL of Azure Key Vault secret containing the private key, versioned or unversioned. For example: https://contosovault.vault.azure.net/secrets/mySuciPrivateKey/562a4bb76b524a1493a6afe8e536ee78.
+func (o HomeNetworkPublicKeyResponseOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HomeNetworkPublicKeyResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type HomeNetworkPublicKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HomeNetworkPublicKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HomeNetworkPublicKeyResponse)(nil)).Elem()
+}
+
+func (o HomeNetworkPublicKeyResponseArrayOutput) ToHomeNetworkPublicKeyResponseArrayOutput() HomeNetworkPublicKeyResponseArrayOutput {
+	return o
+}
+
+func (o HomeNetworkPublicKeyResponseArrayOutput) ToHomeNetworkPublicKeyResponseArrayOutputWithContext(ctx context.Context) HomeNetworkPublicKeyResponseArrayOutput {
+	return o
+}
+
+func (o HomeNetworkPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) HomeNetworkPublicKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HomeNetworkPublicKeyResponse {
+		return vs[0].([]HomeNetworkPublicKeyResponse)[vs[1].(int)]
+	}).(HomeNetworkPublicKeyResponseOutput)
+}
+
 // HTTPS server certificate configuration.
 type HttpsServerCertificate struct {
 	// The certificate URL, unversioned. For example: https://contosovault.vault.azure.net/certificates/ingress.
@@ -2593,14 +3052,20 @@ func (o InstallationResponsePtrOutput) State() pulumi.StringPtrOutput {
 
 // Interface properties
 type InterfaceProperties struct {
+	// The IPv4 addresses of the endpoints to send BFD probes to.
+	BfdIpv4Endpoints []string `pulumi:"bfdIpv4Endpoints"`
 	// The IPv4 address.
 	Ipv4Address *string `pulumi:"ipv4Address"`
+	// The list of IPv4 addresses, for a multi-node system.
+	Ipv4AddressList []string `pulumi:"ipv4AddressList"`
 	// The default IPv4 gateway (router).
 	Ipv4Gateway *string `pulumi:"ipv4Gateway"`
 	// The IPv4 subnet.
 	Ipv4Subnet *string `pulumi:"ipv4Subnet"`
 	// The logical name for this interface. This should match one of the interfaces configured on your Azure Stack Edge device.
 	Name *string `pulumi:"name"`
+	// VLAN identifier of the network interface. Example: 501.
+	VlanId *int `pulumi:"vlanId"`
 }
 
 // InterfacePropertiesInput is an input type that accepts InterfacePropertiesArgs and InterfacePropertiesOutput values.
@@ -2616,14 +3081,20 @@ type InterfacePropertiesInput interface {
 
 // Interface properties
 type InterfacePropertiesArgs struct {
+	// The IPv4 addresses of the endpoints to send BFD probes to.
+	BfdIpv4Endpoints pulumi.StringArrayInput `pulumi:"bfdIpv4Endpoints"`
 	// The IPv4 address.
 	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
+	// The list of IPv4 addresses, for a multi-node system.
+	Ipv4AddressList pulumi.StringArrayInput `pulumi:"ipv4AddressList"`
 	// The default IPv4 gateway (router).
 	Ipv4Gateway pulumi.StringPtrInput `pulumi:"ipv4Gateway"`
 	// The IPv4 subnet.
 	Ipv4Subnet pulumi.StringPtrInput `pulumi:"ipv4Subnet"`
 	// The logical name for this interface. This should match one of the interfaces configured on your Azure Stack Edge device.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// VLAN identifier of the network interface. Example: 501.
+	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
 }
 
 func (InterfacePropertiesArgs) ElementType() reflect.Type {
@@ -2653,9 +3124,19 @@ func (o InterfacePropertiesOutput) ToInterfacePropertiesOutputWithContext(ctx co
 	return o
 }
 
+// The IPv4 addresses of the endpoints to send BFD probes to.
+func (o InterfacePropertiesOutput) BfdIpv4Endpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InterfaceProperties) []string { return v.BfdIpv4Endpoints }).(pulumi.StringArrayOutput)
+}
+
 // The IPv4 address.
 func (o InterfacePropertiesOutput) Ipv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InterfaceProperties) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
+}
+
+// The list of IPv4 addresses, for a multi-node system.
+func (o InterfacePropertiesOutput) Ipv4AddressList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InterfaceProperties) []string { return v.Ipv4AddressList }).(pulumi.StringArrayOutput)
 }
 
 // The default IPv4 gateway (router).
@@ -2673,16 +3154,27 @@ func (o InterfacePropertiesOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InterfaceProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// VLAN identifier of the network interface. Example: 501.
+func (o InterfacePropertiesOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InterfaceProperties) *int { return v.VlanId }).(pulumi.IntPtrOutput)
+}
+
 // Interface properties
 type InterfacePropertiesResponse struct {
+	// The IPv4 addresses of the endpoints to send BFD probes to.
+	BfdIpv4Endpoints []string `pulumi:"bfdIpv4Endpoints"`
 	// The IPv4 address.
 	Ipv4Address *string `pulumi:"ipv4Address"`
+	// The list of IPv4 addresses, for a multi-node system.
+	Ipv4AddressList []string `pulumi:"ipv4AddressList"`
 	// The default IPv4 gateway (router).
 	Ipv4Gateway *string `pulumi:"ipv4Gateway"`
 	// The IPv4 subnet.
 	Ipv4Subnet *string `pulumi:"ipv4Subnet"`
 	// The logical name for this interface. This should match one of the interfaces configured on your Azure Stack Edge device.
 	Name *string `pulumi:"name"`
+	// VLAN identifier of the network interface. Example: 501.
+	VlanId *int `pulumi:"vlanId"`
 }
 
 // Interface properties
@@ -2700,9 +3192,19 @@ func (o InterfacePropertiesResponseOutput) ToInterfacePropertiesResponseOutputWi
 	return o
 }
 
+// The IPv4 addresses of the endpoints to send BFD probes to.
+func (o InterfacePropertiesResponseOutput) BfdIpv4Endpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InterfacePropertiesResponse) []string { return v.BfdIpv4Endpoints }).(pulumi.StringArrayOutput)
+}
+
 // The IPv4 address.
 func (o InterfacePropertiesResponseOutput) Ipv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InterfacePropertiesResponse) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
+}
+
+// The list of IPv4 addresses, for a multi-node system.
+func (o InterfacePropertiesResponseOutput) Ipv4AddressList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InterfacePropertiesResponse) []string { return v.Ipv4AddressList }).(pulumi.StringArrayOutput)
 }
 
 // The default IPv4 gateway (router).
@@ -2718,6 +3220,11 @@ func (o InterfacePropertiesResponseOutput) Ipv4Subnet() pulumi.StringPtrOutput {
 // The logical name for this interface. This should match one of the interfaces configured on your Azure Stack Edge device.
 func (o InterfacePropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InterfacePropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// VLAN identifier of the network interface. Example: 501.
+func (o InterfacePropertiesResponseOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InterfacePropertiesResponse) *int { return v.VlanId }).(pulumi.IntPtrOutput)
 }
 
 // An Azure key vault key.
@@ -3455,6 +3962,206 @@ func (o MobileNetworkResourceIdResponsePtrOutput) Id() pulumi.StringPtrOutput {
 		}
 		return &v.Id
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration enabling NAS reroute.
+type NASRerouteConfiguration struct {
+	// The macro network's MME group ID. This is where unknown UEs are sent to via NAS reroute.
+	MacroMmeGroupId int `pulumi:"macroMmeGroupId"`
+}
+
+// NASRerouteConfigurationInput is an input type that accepts NASRerouteConfigurationArgs and NASRerouteConfigurationOutput values.
+// You can construct a concrete instance of `NASRerouteConfigurationInput` via:
+//
+//	NASRerouteConfigurationArgs{...}
+type NASRerouteConfigurationInput interface {
+	pulumi.Input
+
+	ToNASRerouteConfigurationOutput() NASRerouteConfigurationOutput
+	ToNASRerouteConfigurationOutputWithContext(context.Context) NASRerouteConfigurationOutput
+}
+
+// Configuration enabling NAS reroute.
+type NASRerouteConfigurationArgs struct {
+	// The macro network's MME group ID. This is where unknown UEs are sent to via NAS reroute.
+	MacroMmeGroupId pulumi.IntInput `pulumi:"macroMmeGroupId"`
+}
+
+func (NASRerouteConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NASRerouteConfiguration)(nil)).Elem()
+}
+
+func (i NASRerouteConfigurationArgs) ToNASRerouteConfigurationOutput() NASRerouteConfigurationOutput {
+	return i.ToNASRerouteConfigurationOutputWithContext(context.Background())
+}
+
+func (i NASRerouteConfigurationArgs) ToNASRerouteConfigurationOutputWithContext(ctx context.Context) NASRerouteConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NASRerouteConfigurationOutput)
+}
+
+func (i NASRerouteConfigurationArgs) ToNASRerouteConfigurationPtrOutput() NASRerouteConfigurationPtrOutput {
+	return i.ToNASRerouteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i NASRerouteConfigurationArgs) ToNASRerouteConfigurationPtrOutputWithContext(ctx context.Context) NASRerouteConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NASRerouteConfigurationOutput).ToNASRerouteConfigurationPtrOutputWithContext(ctx)
+}
+
+// NASRerouteConfigurationPtrInput is an input type that accepts NASRerouteConfigurationArgs, NASRerouteConfigurationPtr and NASRerouteConfigurationPtrOutput values.
+// You can construct a concrete instance of `NASRerouteConfigurationPtrInput` via:
+//
+//	        NASRerouteConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type NASRerouteConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToNASRerouteConfigurationPtrOutput() NASRerouteConfigurationPtrOutput
+	ToNASRerouteConfigurationPtrOutputWithContext(context.Context) NASRerouteConfigurationPtrOutput
+}
+
+type nasrerouteConfigurationPtrType NASRerouteConfigurationArgs
+
+func NASRerouteConfigurationPtr(v *NASRerouteConfigurationArgs) NASRerouteConfigurationPtrInput {
+	return (*nasrerouteConfigurationPtrType)(v)
+}
+
+func (*nasrerouteConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NASRerouteConfiguration)(nil)).Elem()
+}
+
+func (i *nasrerouteConfigurationPtrType) ToNASRerouteConfigurationPtrOutput() NASRerouteConfigurationPtrOutput {
+	return i.ToNASRerouteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *nasrerouteConfigurationPtrType) ToNASRerouteConfigurationPtrOutputWithContext(ctx context.Context) NASRerouteConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NASRerouteConfigurationPtrOutput)
+}
+
+// Configuration enabling NAS reroute.
+type NASRerouteConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NASRerouteConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NASRerouteConfiguration)(nil)).Elem()
+}
+
+func (o NASRerouteConfigurationOutput) ToNASRerouteConfigurationOutput() NASRerouteConfigurationOutput {
+	return o
+}
+
+func (o NASRerouteConfigurationOutput) ToNASRerouteConfigurationOutputWithContext(ctx context.Context) NASRerouteConfigurationOutput {
+	return o
+}
+
+func (o NASRerouteConfigurationOutput) ToNASRerouteConfigurationPtrOutput() NASRerouteConfigurationPtrOutput {
+	return o.ToNASRerouteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o NASRerouteConfigurationOutput) ToNASRerouteConfigurationPtrOutputWithContext(ctx context.Context) NASRerouteConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NASRerouteConfiguration) *NASRerouteConfiguration {
+		return &v
+	}).(NASRerouteConfigurationPtrOutput)
+}
+
+// The macro network's MME group ID. This is where unknown UEs are sent to via NAS reroute.
+func (o NASRerouteConfigurationOutput) MacroMmeGroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v NASRerouteConfiguration) int { return v.MacroMmeGroupId }).(pulumi.IntOutput)
+}
+
+type NASRerouteConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (NASRerouteConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NASRerouteConfiguration)(nil)).Elem()
+}
+
+func (o NASRerouteConfigurationPtrOutput) ToNASRerouteConfigurationPtrOutput() NASRerouteConfigurationPtrOutput {
+	return o
+}
+
+func (o NASRerouteConfigurationPtrOutput) ToNASRerouteConfigurationPtrOutputWithContext(ctx context.Context) NASRerouteConfigurationPtrOutput {
+	return o
+}
+
+func (o NASRerouteConfigurationPtrOutput) Elem() NASRerouteConfigurationOutput {
+	return o.ApplyT(func(v *NASRerouteConfiguration) NASRerouteConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret NASRerouteConfiguration
+		return ret
+	}).(NASRerouteConfigurationOutput)
+}
+
+// The macro network's MME group ID. This is where unknown UEs are sent to via NAS reroute.
+func (o NASRerouteConfigurationPtrOutput) MacroMmeGroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NASRerouteConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MacroMmeGroupId
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configuration enabling NAS reroute.
+type NASRerouteConfigurationResponse struct {
+	// The macro network's MME group ID. This is where unknown UEs are sent to via NAS reroute.
+	MacroMmeGroupId int `pulumi:"macroMmeGroupId"`
+}
+
+// Configuration enabling NAS reroute.
+type NASRerouteConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (NASRerouteConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NASRerouteConfigurationResponse)(nil)).Elem()
+}
+
+func (o NASRerouteConfigurationResponseOutput) ToNASRerouteConfigurationResponseOutput() NASRerouteConfigurationResponseOutput {
+	return o
+}
+
+func (o NASRerouteConfigurationResponseOutput) ToNASRerouteConfigurationResponseOutputWithContext(ctx context.Context) NASRerouteConfigurationResponseOutput {
+	return o
+}
+
+// The macro network's MME group ID. This is where unknown UEs are sent to via NAS reroute.
+func (o NASRerouteConfigurationResponseOutput) MacroMmeGroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v NASRerouteConfigurationResponse) int { return v.MacroMmeGroupId }).(pulumi.IntOutput)
+}
+
+type NASRerouteConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NASRerouteConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NASRerouteConfigurationResponse)(nil)).Elem()
+}
+
+func (o NASRerouteConfigurationResponsePtrOutput) ToNASRerouteConfigurationResponsePtrOutput() NASRerouteConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o NASRerouteConfigurationResponsePtrOutput) ToNASRerouteConfigurationResponsePtrOutputWithContext(ctx context.Context) NASRerouteConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o NASRerouteConfigurationResponsePtrOutput) Elem() NASRerouteConfigurationResponseOutput {
+	return o.ApplyT(func(v *NASRerouteConfigurationResponse) NASRerouteConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NASRerouteConfigurationResponse
+		return ret
+	}).(NASRerouteConfigurationResponseOutput)
+}
+
+// The macro network's MME group ID. This is where unknown UEs are sent to via NAS reroute.
+func (o NASRerouteConfigurationResponsePtrOutput) MacroMmeGroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NASRerouteConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MacroMmeGroupId
+	}).(pulumi.IntPtrOutput)
 }
 
 // The network address and port translation settings to use for the attached data network.
@@ -5058,7 +5765,7 @@ func (o PlatformConfigurationResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PlatformConfigurationResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Public land mobile network (PLMN) ID.
+// Public land mobile network (PLMN) ID. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
 type PlmnId struct {
 	// Mobile country code (MCC).
 	Mcc string `pulumi:"mcc"`
@@ -5077,7 +5784,7 @@ type PlmnIdInput interface {
 	ToPlmnIdOutputWithContext(context.Context) PlmnIdOutput
 }
 
-// Public land mobile network (PLMN) ID.
+// Public land mobile network (PLMN) ID. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
 type PlmnIdArgs struct {
 	// Mobile country code (MCC).
 	Mcc pulumi.StringInput `pulumi:"mcc"`
@@ -5097,7 +5804,7 @@ func (i PlmnIdArgs) ToPlmnIdOutputWithContext(ctx context.Context) PlmnIdOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(PlmnIdOutput)
 }
 
-// Public land mobile network (PLMN) ID.
+// Public land mobile network (PLMN) ID. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
 type PlmnIdOutput struct{ *pulumi.OutputState }
 
 func (PlmnIdOutput) ElementType() reflect.Type {
@@ -5122,7 +5829,7 @@ func (o PlmnIdOutput) Mnc() pulumi.StringOutput {
 	return o.ApplyT(func(v PlmnId) string { return v.Mnc }).(pulumi.StringOutput)
 }
 
-// Public land mobile network (PLMN) ID.
+// Public land mobile network (PLMN) ID. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
 type PlmnIdResponse struct {
 	// Mobile country code (MCC).
 	Mcc string `pulumi:"mcc"`
@@ -5130,7 +5837,7 @@ type PlmnIdResponse struct {
 	Mnc string `pulumi:"mnc"`
 }
 
-// Public land mobile network (PLMN) ID.
+// Public land mobile network (PLMN) ID. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
 type PlmnIdResponseOutput struct{ *pulumi.OutputState }
 
 func (PlmnIdResponseOutput) ElementType() reflect.Type {
@@ -5731,6 +6438,428 @@ func (o PortReuseHoldTimesResponsePtrOutput) Udp() pulumi.IntPtrOutput {
 		}
 		return v.Udp
 	}).(pulumi.IntPtrOutput)
+}
+
+// Configuration relating to a particular PLMN
+type PublicLandMobileNetwork struct {
+	// Configuration relating to SUPI concealment.
+	HomeNetworkPublicKeys *PublicLandMobileNetworkHomeNetworkPublicKeys `pulumi:"homeNetworkPublicKeys"`
+	// Mobile country code (MCC).
+	Mcc string `pulumi:"mcc"`
+	// Mobile network code (MNC).
+	Mnc string `pulumi:"mnc"`
+}
+
+// PublicLandMobileNetworkInput is an input type that accepts PublicLandMobileNetworkArgs and PublicLandMobileNetworkOutput values.
+// You can construct a concrete instance of `PublicLandMobileNetworkInput` via:
+//
+//	PublicLandMobileNetworkArgs{...}
+type PublicLandMobileNetworkInput interface {
+	pulumi.Input
+
+	ToPublicLandMobileNetworkOutput() PublicLandMobileNetworkOutput
+	ToPublicLandMobileNetworkOutputWithContext(context.Context) PublicLandMobileNetworkOutput
+}
+
+// Configuration relating to a particular PLMN
+type PublicLandMobileNetworkArgs struct {
+	// Configuration relating to SUPI concealment.
+	HomeNetworkPublicKeys PublicLandMobileNetworkHomeNetworkPublicKeysPtrInput `pulumi:"homeNetworkPublicKeys"`
+	// Mobile country code (MCC).
+	Mcc pulumi.StringInput `pulumi:"mcc"`
+	// Mobile network code (MNC).
+	Mnc pulumi.StringInput `pulumi:"mnc"`
+}
+
+func (PublicLandMobileNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicLandMobileNetwork)(nil)).Elem()
+}
+
+func (i PublicLandMobileNetworkArgs) ToPublicLandMobileNetworkOutput() PublicLandMobileNetworkOutput {
+	return i.ToPublicLandMobileNetworkOutputWithContext(context.Background())
+}
+
+func (i PublicLandMobileNetworkArgs) ToPublicLandMobileNetworkOutputWithContext(ctx context.Context) PublicLandMobileNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicLandMobileNetworkOutput)
+}
+
+// PublicLandMobileNetworkArrayInput is an input type that accepts PublicLandMobileNetworkArray and PublicLandMobileNetworkArrayOutput values.
+// You can construct a concrete instance of `PublicLandMobileNetworkArrayInput` via:
+//
+//	PublicLandMobileNetworkArray{ PublicLandMobileNetworkArgs{...} }
+type PublicLandMobileNetworkArrayInput interface {
+	pulumi.Input
+
+	ToPublicLandMobileNetworkArrayOutput() PublicLandMobileNetworkArrayOutput
+	ToPublicLandMobileNetworkArrayOutputWithContext(context.Context) PublicLandMobileNetworkArrayOutput
+}
+
+type PublicLandMobileNetworkArray []PublicLandMobileNetworkInput
+
+func (PublicLandMobileNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PublicLandMobileNetwork)(nil)).Elem()
+}
+
+func (i PublicLandMobileNetworkArray) ToPublicLandMobileNetworkArrayOutput() PublicLandMobileNetworkArrayOutput {
+	return i.ToPublicLandMobileNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i PublicLandMobileNetworkArray) ToPublicLandMobileNetworkArrayOutputWithContext(ctx context.Context) PublicLandMobileNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicLandMobileNetworkArrayOutput)
+}
+
+// Configuration relating to a particular PLMN
+type PublicLandMobileNetworkOutput struct{ *pulumi.OutputState }
+
+func (PublicLandMobileNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicLandMobileNetwork)(nil)).Elem()
+}
+
+func (o PublicLandMobileNetworkOutput) ToPublicLandMobileNetworkOutput() PublicLandMobileNetworkOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkOutput) ToPublicLandMobileNetworkOutputWithContext(ctx context.Context) PublicLandMobileNetworkOutput {
+	return o
+}
+
+// Configuration relating to SUPI concealment.
+func (o PublicLandMobileNetworkOutput) HomeNetworkPublicKeys() PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput {
+	return o.ApplyT(func(v PublicLandMobileNetwork) *PublicLandMobileNetworkHomeNetworkPublicKeys {
+		return v.HomeNetworkPublicKeys
+	}).(PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput)
+}
+
+// Mobile country code (MCC).
+func (o PublicLandMobileNetworkOutput) Mcc() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicLandMobileNetwork) string { return v.Mcc }).(pulumi.StringOutput)
+}
+
+// Mobile network code (MNC).
+func (o PublicLandMobileNetworkOutput) Mnc() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicLandMobileNetwork) string { return v.Mnc }).(pulumi.StringOutput)
+}
+
+type PublicLandMobileNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (PublicLandMobileNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PublicLandMobileNetwork)(nil)).Elem()
+}
+
+func (o PublicLandMobileNetworkArrayOutput) ToPublicLandMobileNetworkArrayOutput() PublicLandMobileNetworkArrayOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkArrayOutput) ToPublicLandMobileNetworkArrayOutputWithContext(ctx context.Context) PublicLandMobileNetworkArrayOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkArrayOutput) Index(i pulumi.IntInput) PublicLandMobileNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PublicLandMobileNetwork {
+		return vs[0].([]PublicLandMobileNetwork)[vs[1].(int)]
+	}).(PublicLandMobileNetworkOutput)
+}
+
+// Configuration relating to SUPI concealment.
+type PublicLandMobileNetworkHomeNetworkPublicKeys struct {
+	// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile A Protection Scheme.
+	ProfileA []HomeNetworkPublicKey `pulumi:"profileA"`
+	// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile B Protection Scheme.
+	ProfileB []HomeNetworkPublicKey `pulumi:"profileB"`
+}
+
+// PublicLandMobileNetworkHomeNetworkPublicKeysInput is an input type that accepts PublicLandMobileNetworkHomeNetworkPublicKeysArgs and PublicLandMobileNetworkHomeNetworkPublicKeysOutput values.
+// You can construct a concrete instance of `PublicLandMobileNetworkHomeNetworkPublicKeysInput` via:
+//
+//	PublicLandMobileNetworkHomeNetworkPublicKeysArgs{...}
+type PublicLandMobileNetworkHomeNetworkPublicKeysInput interface {
+	pulumi.Input
+
+	ToPublicLandMobileNetworkHomeNetworkPublicKeysOutput() PublicLandMobileNetworkHomeNetworkPublicKeysOutput
+	ToPublicLandMobileNetworkHomeNetworkPublicKeysOutputWithContext(context.Context) PublicLandMobileNetworkHomeNetworkPublicKeysOutput
+}
+
+// Configuration relating to SUPI concealment.
+type PublicLandMobileNetworkHomeNetworkPublicKeysArgs struct {
+	// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile A Protection Scheme.
+	ProfileA HomeNetworkPublicKeyArrayInput `pulumi:"profileA"`
+	// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile B Protection Scheme.
+	ProfileB HomeNetworkPublicKeyArrayInput `pulumi:"profileB"`
+}
+
+func (PublicLandMobileNetworkHomeNetworkPublicKeysArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicLandMobileNetworkHomeNetworkPublicKeys)(nil)).Elem()
+}
+
+func (i PublicLandMobileNetworkHomeNetworkPublicKeysArgs) ToPublicLandMobileNetworkHomeNetworkPublicKeysOutput() PublicLandMobileNetworkHomeNetworkPublicKeysOutput {
+	return i.ToPublicLandMobileNetworkHomeNetworkPublicKeysOutputWithContext(context.Background())
+}
+
+func (i PublicLandMobileNetworkHomeNetworkPublicKeysArgs) ToPublicLandMobileNetworkHomeNetworkPublicKeysOutputWithContext(ctx context.Context) PublicLandMobileNetworkHomeNetworkPublicKeysOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicLandMobileNetworkHomeNetworkPublicKeysOutput)
+}
+
+func (i PublicLandMobileNetworkHomeNetworkPublicKeysArgs) ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput() PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput {
+	return i.ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutputWithContext(context.Background())
+}
+
+func (i PublicLandMobileNetworkHomeNetworkPublicKeysArgs) ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutputWithContext(ctx context.Context) PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicLandMobileNetworkHomeNetworkPublicKeysOutput).ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutputWithContext(ctx)
+}
+
+// PublicLandMobileNetworkHomeNetworkPublicKeysPtrInput is an input type that accepts PublicLandMobileNetworkHomeNetworkPublicKeysArgs, PublicLandMobileNetworkHomeNetworkPublicKeysPtr and PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput values.
+// You can construct a concrete instance of `PublicLandMobileNetworkHomeNetworkPublicKeysPtrInput` via:
+//
+//	        PublicLandMobileNetworkHomeNetworkPublicKeysArgs{...}
+//
+//	or:
+//
+//	        nil
+type PublicLandMobileNetworkHomeNetworkPublicKeysPtrInput interface {
+	pulumi.Input
+
+	ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput() PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput
+	ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutputWithContext(context.Context) PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput
+}
+
+type publicLandMobileNetworkHomeNetworkPublicKeysPtrType PublicLandMobileNetworkHomeNetworkPublicKeysArgs
+
+func PublicLandMobileNetworkHomeNetworkPublicKeysPtr(v *PublicLandMobileNetworkHomeNetworkPublicKeysArgs) PublicLandMobileNetworkHomeNetworkPublicKeysPtrInput {
+	return (*publicLandMobileNetworkHomeNetworkPublicKeysPtrType)(v)
+}
+
+func (*publicLandMobileNetworkHomeNetworkPublicKeysPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicLandMobileNetworkHomeNetworkPublicKeys)(nil)).Elem()
+}
+
+func (i *publicLandMobileNetworkHomeNetworkPublicKeysPtrType) ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput() PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput {
+	return i.ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutputWithContext(context.Background())
+}
+
+func (i *publicLandMobileNetworkHomeNetworkPublicKeysPtrType) ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutputWithContext(ctx context.Context) PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput)
+}
+
+// Configuration relating to SUPI concealment.
+type PublicLandMobileNetworkHomeNetworkPublicKeysOutput struct{ *pulumi.OutputState }
+
+func (PublicLandMobileNetworkHomeNetworkPublicKeysOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicLandMobileNetworkHomeNetworkPublicKeys)(nil)).Elem()
+}
+
+func (o PublicLandMobileNetworkHomeNetworkPublicKeysOutput) ToPublicLandMobileNetworkHomeNetworkPublicKeysOutput() PublicLandMobileNetworkHomeNetworkPublicKeysOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkHomeNetworkPublicKeysOutput) ToPublicLandMobileNetworkHomeNetworkPublicKeysOutputWithContext(ctx context.Context) PublicLandMobileNetworkHomeNetworkPublicKeysOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkHomeNetworkPublicKeysOutput) ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput() PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput {
+	return o.ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutputWithContext(context.Background())
+}
+
+func (o PublicLandMobileNetworkHomeNetworkPublicKeysOutput) ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutputWithContext(ctx context.Context) PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicLandMobileNetworkHomeNetworkPublicKeys) *PublicLandMobileNetworkHomeNetworkPublicKeys {
+		return &v
+	}).(PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput)
+}
+
+// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile A Protection Scheme.
+func (o PublicLandMobileNetworkHomeNetworkPublicKeysOutput) ProfileA() HomeNetworkPublicKeyArrayOutput {
+	return o.ApplyT(func(v PublicLandMobileNetworkHomeNetworkPublicKeys) []HomeNetworkPublicKey { return v.ProfileA }).(HomeNetworkPublicKeyArrayOutput)
+}
+
+// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile B Protection Scheme.
+func (o PublicLandMobileNetworkHomeNetworkPublicKeysOutput) ProfileB() HomeNetworkPublicKeyArrayOutput {
+	return o.ApplyT(func(v PublicLandMobileNetworkHomeNetworkPublicKeys) []HomeNetworkPublicKey { return v.ProfileB }).(HomeNetworkPublicKeyArrayOutput)
+}
+
+type PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicLandMobileNetworkHomeNetworkPublicKeys)(nil)).Elem()
+}
+
+func (o PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput) ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput() PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput) ToPublicLandMobileNetworkHomeNetworkPublicKeysPtrOutputWithContext(ctx context.Context) PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput) Elem() PublicLandMobileNetworkHomeNetworkPublicKeysOutput {
+	return o.ApplyT(func(v *PublicLandMobileNetworkHomeNetworkPublicKeys) PublicLandMobileNetworkHomeNetworkPublicKeys {
+		if v != nil {
+			return *v
+		}
+		var ret PublicLandMobileNetworkHomeNetworkPublicKeys
+		return ret
+	}).(PublicLandMobileNetworkHomeNetworkPublicKeysOutput)
+}
+
+// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile A Protection Scheme.
+func (o PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput) ProfileA() HomeNetworkPublicKeyArrayOutput {
+	return o.ApplyT(func(v *PublicLandMobileNetworkHomeNetworkPublicKeys) []HomeNetworkPublicKey {
+		if v == nil {
+			return nil
+		}
+		return v.ProfileA
+	}).(HomeNetworkPublicKeyArrayOutput)
+}
+
+// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile B Protection Scheme.
+func (o PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput) ProfileB() HomeNetworkPublicKeyArrayOutput {
+	return o.ApplyT(func(v *PublicLandMobileNetworkHomeNetworkPublicKeys) []HomeNetworkPublicKey {
+		if v == nil {
+			return nil
+		}
+		return v.ProfileB
+	}).(HomeNetworkPublicKeyArrayOutput)
+}
+
+// Configuration relating to a particular PLMN
+type PublicLandMobileNetworkResponse struct {
+	// Configuration relating to SUPI concealment.
+	HomeNetworkPublicKeys *PublicLandMobileNetworkResponseHomeNetworkPublicKeys `pulumi:"homeNetworkPublicKeys"`
+	// Mobile country code (MCC).
+	Mcc string `pulumi:"mcc"`
+	// Mobile network code (MNC).
+	Mnc string `pulumi:"mnc"`
+}
+
+// Configuration relating to a particular PLMN
+type PublicLandMobileNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (PublicLandMobileNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicLandMobileNetworkResponse)(nil)).Elem()
+}
+
+func (o PublicLandMobileNetworkResponseOutput) ToPublicLandMobileNetworkResponseOutput() PublicLandMobileNetworkResponseOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkResponseOutput) ToPublicLandMobileNetworkResponseOutputWithContext(ctx context.Context) PublicLandMobileNetworkResponseOutput {
+	return o
+}
+
+// Configuration relating to SUPI concealment.
+func (o PublicLandMobileNetworkResponseOutput) HomeNetworkPublicKeys() PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput {
+	return o.ApplyT(func(v PublicLandMobileNetworkResponse) *PublicLandMobileNetworkResponseHomeNetworkPublicKeys {
+		return v.HomeNetworkPublicKeys
+	}).(PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput)
+}
+
+// Mobile country code (MCC).
+func (o PublicLandMobileNetworkResponseOutput) Mcc() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicLandMobileNetworkResponse) string { return v.Mcc }).(pulumi.StringOutput)
+}
+
+// Mobile network code (MNC).
+func (o PublicLandMobileNetworkResponseOutput) Mnc() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicLandMobileNetworkResponse) string { return v.Mnc }).(pulumi.StringOutput)
+}
+
+type PublicLandMobileNetworkResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PublicLandMobileNetworkResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PublicLandMobileNetworkResponse)(nil)).Elem()
+}
+
+func (o PublicLandMobileNetworkResponseArrayOutput) ToPublicLandMobileNetworkResponseArrayOutput() PublicLandMobileNetworkResponseArrayOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkResponseArrayOutput) ToPublicLandMobileNetworkResponseArrayOutputWithContext(ctx context.Context) PublicLandMobileNetworkResponseArrayOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkResponseArrayOutput) Index(i pulumi.IntInput) PublicLandMobileNetworkResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PublicLandMobileNetworkResponse {
+		return vs[0].([]PublicLandMobileNetworkResponse)[vs[1].(int)]
+	}).(PublicLandMobileNetworkResponseOutput)
+}
+
+// Configuration relating to SUPI concealment.
+type PublicLandMobileNetworkResponseHomeNetworkPublicKeys struct {
+	// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile A Protection Scheme.
+	ProfileA []HomeNetworkPublicKeyResponse `pulumi:"profileA"`
+	// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile B Protection Scheme.
+	ProfileB []HomeNetworkPublicKeyResponse `pulumi:"profileB"`
+}
+
+// Configuration relating to SUPI concealment.
+type PublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput struct{ *pulumi.OutputState }
+
+func (PublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicLandMobileNetworkResponseHomeNetworkPublicKeys)(nil)).Elem()
+}
+
+func (o PublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput) ToPublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput() PublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput) ToPublicLandMobileNetworkResponseHomeNetworkPublicKeysOutputWithContext(ctx context.Context) PublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput {
+	return o
+}
+
+// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile A Protection Scheme.
+func (o PublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput) ProfileA() HomeNetworkPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v PublicLandMobileNetworkResponseHomeNetworkPublicKeys) []HomeNetworkPublicKeyResponse {
+		return v.ProfileA
+	}).(HomeNetworkPublicKeyResponseArrayOutput)
+}
+
+// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile B Protection Scheme.
+func (o PublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput) ProfileB() HomeNetworkPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v PublicLandMobileNetworkResponseHomeNetworkPublicKeys) []HomeNetworkPublicKeyResponse {
+		return v.ProfileB
+	}).(HomeNetworkPublicKeyResponseArrayOutput)
+}
+
+type PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicLandMobileNetworkResponseHomeNetworkPublicKeys)(nil)).Elem()
+}
+
+func (o PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput) ToPublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput() PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput) ToPublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutputWithContext(ctx context.Context) PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput {
+	return o
+}
+
+func (o PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput) Elem() PublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput {
+	return o.ApplyT(func(v *PublicLandMobileNetworkResponseHomeNetworkPublicKeys) PublicLandMobileNetworkResponseHomeNetworkPublicKeys {
+		if v != nil {
+			return *v
+		}
+		var ret PublicLandMobileNetworkResponseHomeNetworkPublicKeys
+		return ret
+	}).(PublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput)
+}
+
+// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile A Protection Scheme.
+func (o PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput) ProfileA() HomeNetworkPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v *PublicLandMobileNetworkResponseHomeNetworkPublicKeys) []HomeNetworkPublicKeyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ProfileA
+	}).(HomeNetworkPublicKeyResponseArrayOutput)
+}
+
+// This provides a mapping to identify which public key has been used for SUPI concealment using the Profile B Protection Scheme.
+func (o PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput) ProfileB() HomeNetworkPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v *PublicLandMobileNetworkResponseHomeNetworkPublicKeys) []HomeNetworkPublicKeyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ProfileB
+	}).(HomeNetworkPublicKeyResponseArrayOutput)
 }
 
 // QoS policy
@@ -6501,6 +7630,242 @@ func (o ServiceResourceIdResponseArrayOutput) Index(i pulumi.IntInput) ServiceRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceResourceIdResponse {
 		return vs[0].([]ServiceResourceIdResponse)[vs[1].(int)]
 	}).(ServiceResourceIdResponseOutput)
+}
+
+// Signaling configuration for the packet core.
+type SignalingConfiguration struct {
+	// An ordered list of NAS encryption algorithms, used to encrypt control plane traffic between the UE and packet core, in order from most to least preferred. If not specified, the packet core will use a built-in default ordering.
+	NasEncryption []string `pulumi:"nasEncryption"`
+	// Configuration enabling 4G NAS reroute.
+	NasReroute *NASRerouteConfiguration `pulumi:"nasReroute"`
+}
+
+// SignalingConfigurationInput is an input type that accepts SignalingConfigurationArgs and SignalingConfigurationOutput values.
+// You can construct a concrete instance of `SignalingConfigurationInput` via:
+//
+//	SignalingConfigurationArgs{...}
+type SignalingConfigurationInput interface {
+	pulumi.Input
+
+	ToSignalingConfigurationOutput() SignalingConfigurationOutput
+	ToSignalingConfigurationOutputWithContext(context.Context) SignalingConfigurationOutput
+}
+
+// Signaling configuration for the packet core.
+type SignalingConfigurationArgs struct {
+	// An ordered list of NAS encryption algorithms, used to encrypt control plane traffic between the UE and packet core, in order from most to least preferred. If not specified, the packet core will use a built-in default ordering.
+	NasEncryption pulumi.StringArrayInput `pulumi:"nasEncryption"`
+	// Configuration enabling 4G NAS reroute.
+	NasReroute NASRerouteConfigurationPtrInput `pulumi:"nasReroute"`
+}
+
+func (SignalingConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalingConfiguration)(nil)).Elem()
+}
+
+func (i SignalingConfigurationArgs) ToSignalingConfigurationOutput() SignalingConfigurationOutput {
+	return i.ToSignalingConfigurationOutputWithContext(context.Background())
+}
+
+func (i SignalingConfigurationArgs) ToSignalingConfigurationOutputWithContext(ctx context.Context) SignalingConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignalingConfigurationOutput)
+}
+
+func (i SignalingConfigurationArgs) ToSignalingConfigurationPtrOutput() SignalingConfigurationPtrOutput {
+	return i.ToSignalingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SignalingConfigurationArgs) ToSignalingConfigurationPtrOutputWithContext(ctx context.Context) SignalingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignalingConfigurationOutput).ToSignalingConfigurationPtrOutputWithContext(ctx)
+}
+
+// SignalingConfigurationPtrInput is an input type that accepts SignalingConfigurationArgs, SignalingConfigurationPtr and SignalingConfigurationPtrOutput values.
+// You can construct a concrete instance of `SignalingConfigurationPtrInput` via:
+//
+//	        SignalingConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SignalingConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSignalingConfigurationPtrOutput() SignalingConfigurationPtrOutput
+	ToSignalingConfigurationPtrOutputWithContext(context.Context) SignalingConfigurationPtrOutput
+}
+
+type signalingConfigurationPtrType SignalingConfigurationArgs
+
+func SignalingConfigurationPtr(v *SignalingConfigurationArgs) SignalingConfigurationPtrInput {
+	return (*signalingConfigurationPtrType)(v)
+}
+
+func (*signalingConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignalingConfiguration)(nil)).Elem()
+}
+
+func (i *signalingConfigurationPtrType) ToSignalingConfigurationPtrOutput() SignalingConfigurationPtrOutput {
+	return i.ToSignalingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *signalingConfigurationPtrType) ToSignalingConfigurationPtrOutputWithContext(ctx context.Context) SignalingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignalingConfigurationPtrOutput)
+}
+
+// Signaling configuration for the packet core.
+type SignalingConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SignalingConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalingConfiguration)(nil)).Elem()
+}
+
+func (o SignalingConfigurationOutput) ToSignalingConfigurationOutput() SignalingConfigurationOutput {
+	return o
+}
+
+func (o SignalingConfigurationOutput) ToSignalingConfigurationOutputWithContext(ctx context.Context) SignalingConfigurationOutput {
+	return o
+}
+
+func (o SignalingConfigurationOutput) ToSignalingConfigurationPtrOutput() SignalingConfigurationPtrOutput {
+	return o.ToSignalingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SignalingConfigurationOutput) ToSignalingConfigurationPtrOutputWithContext(ctx context.Context) SignalingConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SignalingConfiguration) *SignalingConfiguration {
+		return &v
+	}).(SignalingConfigurationPtrOutput)
+}
+
+// An ordered list of NAS encryption algorithms, used to encrypt control plane traffic between the UE and packet core, in order from most to least preferred. If not specified, the packet core will use a built-in default ordering.
+func (o SignalingConfigurationOutput) NasEncryption() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SignalingConfiguration) []string { return v.NasEncryption }).(pulumi.StringArrayOutput)
+}
+
+// Configuration enabling 4G NAS reroute.
+func (o SignalingConfigurationOutput) NasReroute() NASRerouteConfigurationPtrOutput {
+	return o.ApplyT(func(v SignalingConfiguration) *NASRerouteConfiguration { return v.NasReroute }).(NASRerouteConfigurationPtrOutput)
+}
+
+type SignalingConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SignalingConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignalingConfiguration)(nil)).Elem()
+}
+
+func (o SignalingConfigurationPtrOutput) ToSignalingConfigurationPtrOutput() SignalingConfigurationPtrOutput {
+	return o
+}
+
+func (o SignalingConfigurationPtrOutput) ToSignalingConfigurationPtrOutputWithContext(ctx context.Context) SignalingConfigurationPtrOutput {
+	return o
+}
+
+func (o SignalingConfigurationPtrOutput) Elem() SignalingConfigurationOutput {
+	return o.ApplyT(func(v *SignalingConfiguration) SignalingConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SignalingConfiguration
+		return ret
+	}).(SignalingConfigurationOutput)
+}
+
+// An ordered list of NAS encryption algorithms, used to encrypt control plane traffic between the UE and packet core, in order from most to least preferred. If not specified, the packet core will use a built-in default ordering.
+func (o SignalingConfigurationPtrOutput) NasEncryption() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SignalingConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NasEncryption
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configuration enabling 4G NAS reroute.
+func (o SignalingConfigurationPtrOutput) NasReroute() NASRerouteConfigurationPtrOutput {
+	return o.ApplyT(func(v *SignalingConfiguration) *NASRerouteConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.NasReroute
+	}).(NASRerouteConfigurationPtrOutput)
+}
+
+// Signaling configuration for the packet core.
+type SignalingConfigurationResponse struct {
+	// An ordered list of NAS encryption algorithms, used to encrypt control plane traffic between the UE and packet core, in order from most to least preferred. If not specified, the packet core will use a built-in default ordering.
+	NasEncryption []string `pulumi:"nasEncryption"`
+	// Configuration enabling 4G NAS reroute.
+	NasReroute *NASRerouteConfigurationResponse `pulumi:"nasReroute"`
+}
+
+// Signaling configuration for the packet core.
+type SignalingConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SignalingConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalingConfigurationResponse)(nil)).Elem()
+}
+
+func (o SignalingConfigurationResponseOutput) ToSignalingConfigurationResponseOutput() SignalingConfigurationResponseOutput {
+	return o
+}
+
+func (o SignalingConfigurationResponseOutput) ToSignalingConfigurationResponseOutputWithContext(ctx context.Context) SignalingConfigurationResponseOutput {
+	return o
+}
+
+// An ordered list of NAS encryption algorithms, used to encrypt control plane traffic between the UE and packet core, in order from most to least preferred. If not specified, the packet core will use a built-in default ordering.
+func (o SignalingConfigurationResponseOutput) NasEncryption() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SignalingConfigurationResponse) []string { return v.NasEncryption }).(pulumi.StringArrayOutput)
+}
+
+// Configuration enabling 4G NAS reroute.
+func (o SignalingConfigurationResponseOutput) NasReroute() NASRerouteConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v SignalingConfigurationResponse) *NASRerouteConfigurationResponse { return v.NasReroute }).(NASRerouteConfigurationResponsePtrOutput)
+}
+
+type SignalingConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SignalingConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignalingConfigurationResponse)(nil)).Elem()
+}
+
+func (o SignalingConfigurationResponsePtrOutput) ToSignalingConfigurationResponsePtrOutput() SignalingConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SignalingConfigurationResponsePtrOutput) ToSignalingConfigurationResponsePtrOutputWithContext(ctx context.Context) SignalingConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SignalingConfigurationResponsePtrOutput) Elem() SignalingConfigurationResponseOutput {
+	return o.ApplyT(func(v *SignalingConfigurationResponse) SignalingConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SignalingConfigurationResponse
+		return ret
+	}).(SignalingConfigurationResponseOutput)
+}
+
+// An ordered list of NAS encryption algorithms, used to encrypt control plane traffic between the UE and packet core, in order from most to least preferred. If not specified, the packet core will use a built-in default ordering.
+func (o SignalingConfigurationResponsePtrOutput) NasEncryption() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SignalingConfigurationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NasEncryption
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configuration enabling 4G NAS reroute.
+func (o SignalingConfigurationResponsePtrOutput) NasReroute() NASRerouteConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *SignalingConfigurationResponse) *NASRerouteConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NasReroute
+	}).(NASRerouteConfigurationResponsePtrOutput)
 }
 
 // SIM group resource.
@@ -7975,6 +9340,201 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
+type UserConsentConfiguration struct {
+	// Allow Microsoft to access non-PII telemetry information from the packet core.
+	AllowSupportTelemetryAccess *bool `pulumi:"allowSupportTelemetryAccess"`
+}
+
+// UserConsentConfigurationInput is an input type that accepts UserConsentConfigurationArgs and UserConsentConfigurationOutput values.
+// You can construct a concrete instance of `UserConsentConfigurationInput` via:
+//
+//	UserConsentConfigurationArgs{...}
+type UserConsentConfigurationInput interface {
+	pulumi.Input
+
+	ToUserConsentConfigurationOutput() UserConsentConfigurationOutput
+	ToUserConsentConfigurationOutputWithContext(context.Context) UserConsentConfigurationOutput
+}
+
+type UserConsentConfigurationArgs struct {
+	// Allow Microsoft to access non-PII telemetry information from the packet core.
+	AllowSupportTelemetryAccess pulumi.BoolPtrInput `pulumi:"allowSupportTelemetryAccess"`
+}
+
+func (UserConsentConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserConsentConfiguration)(nil)).Elem()
+}
+
+func (i UserConsentConfigurationArgs) ToUserConsentConfigurationOutput() UserConsentConfigurationOutput {
+	return i.ToUserConsentConfigurationOutputWithContext(context.Background())
+}
+
+func (i UserConsentConfigurationArgs) ToUserConsentConfigurationOutputWithContext(ctx context.Context) UserConsentConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserConsentConfigurationOutput)
+}
+
+func (i UserConsentConfigurationArgs) ToUserConsentConfigurationPtrOutput() UserConsentConfigurationPtrOutput {
+	return i.ToUserConsentConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i UserConsentConfigurationArgs) ToUserConsentConfigurationPtrOutputWithContext(ctx context.Context) UserConsentConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserConsentConfigurationOutput).ToUserConsentConfigurationPtrOutputWithContext(ctx)
+}
+
+// UserConsentConfigurationPtrInput is an input type that accepts UserConsentConfigurationArgs, UserConsentConfigurationPtr and UserConsentConfigurationPtrOutput values.
+// You can construct a concrete instance of `UserConsentConfigurationPtrInput` via:
+//
+//	        UserConsentConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserConsentConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToUserConsentConfigurationPtrOutput() UserConsentConfigurationPtrOutput
+	ToUserConsentConfigurationPtrOutputWithContext(context.Context) UserConsentConfigurationPtrOutput
+}
+
+type userConsentConfigurationPtrType UserConsentConfigurationArgs
+
+func UserConsentConfigurationPtr(v *UserConsentConfigurationArgs) UserConsentConfigurationPtrInput {
+	return (*userConsentConfigurationPtrType)(v)
+}
+
+func (*userConsentConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserConsentConfiguration)(nil)).Elem()
+}
+
+func (i *userConsentConfigurationPtrType) ToUserConsentConfigurationPtrOutput() UserConsentConfigurationPtrOutput {
+	return i.ToUserConsentConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *userConsentConfigurationPtrType) ToUserConsentConfigurationPtrOutputWithContext(ctx context.Context) UserConsentConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserConsentConfigurationPtrOutput)
+}
+
+type UserConsentConfigurationOutput struct{ *pulumi.OutputState }
+
+func (UserConsentConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserConsentConfiguration)(nil)).Elem()
+}
+
+func (o UserConsentConfigurationOutput) ToUserConsentConfigurationOutput() UserConsentConfigurationOutput {
+	return o
+}
+
+func (o UserConsentConfigurationOutput) ToUserConsentConfigurationOutputWithContext(ctx context.Context) UserConsentConfigurationOutput {
+	return o
+}
+
+func (o UserConsentConfigurationOutput) ToUserConsentConfigurationPtrOutput() UserConsentConfigurationPtrOutput {
+	return o.ToUserConsentConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o UserConsentConfigurationOutput) ToUserConsentConfigurationPtrOutputWithContext(ctx context.Context) UserConsentConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserConsentConfiguration) *UserConsentConfiguration {
+		return &v
+	}).(UserConsentConfigurationPtrOutput)
+}
+
+// Allow Microsoft to access non-PII telemetry information from the packet core.
+func (o UserConsentConfigurationOutput) AllowSupportTelemetryAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserConsentConfiguration) *bool { return v.AllowSupportTelemetryAccess }).(pulumi.BoolPtrOutput)
+}
+
+type UserConsentConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (UserConsentConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserConsentConfiguration)(nil)).Elem()
+}
+
+func (o UserConsentConfigurationPtrOutput) ToUserConsentConfigurationPtrOutput() UserConsentConfigurationPtrOutput {
+	return o
+}
+
+func (o UserConsentConfigurationPtrOutput) ToUserConsentConfigurationPtrOutputWithContext(ctx context.Context) UserConsentConfigurationPtrOutput {
+	return o
+}
+
+func (o UserConsentConfigurationPtrOutput) Elem() UserConsentConfigurationOutput {
+	return o.ApplyT(func(v *UserConsentConfiguration) UserConsentConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret UserConsentConfiguration
+		return ret
+	}).(UserConsentConfigurationOutput)
+}
+
+// Allow Microsoft to access non-PII telemetry information from the packet core.
+func (o UserConsentConfigurationPtrOutput) AllowSupportTelemetryAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UserConsentConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSupportTelemetryAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+type UserConsentConfigurationResponse struct {
+	// Allow Microsoft to access non-PII telemetry information from the packet core.
+	AllowSupportTelemetryAccess *bool `pulumi:"allowSupportTelemetryAccess"`
+}
+
+type UserConsentConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (UserConsentConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserConsentConfigurationResponse)(nil)).Elem()
+}
+
+func (o UserConsentConfigurationResponseOutput) ToUserConsentConfigurationResponseOutput() UserConsentConfigurationResponseOutput {
+	return o
+}
+
+func (o UserConsentConfigurationResponseOutput) ToUserConsentConfigurationResponseOutputWithContext(ctx context.Context) UserConsentConfigurationResponseOutput {
+	return o
+}
+
+// Allow Microsoft to access non-PII telemetry information from the packet core.
+func (o UserConsentConfigurationResponseOutput) AllowSupportTelemetryAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserConsentConfigurationResponse) *bool { return v.AllowSupportTelemetryAccess }).(pulumi.BoolPtrOutput)
+}
+
+type UserConsentConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UserConsentConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserConsentConfigurationResponse)(nil)).Elem()
+}
+
+func (o UserConsentConfigurationResponsePtrOutput) ToUserConsentConfigurationResponsePtrOutput() UserConsentConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o UserConsentConfigurationResponsePtrOutput) ToUserConsentConfigurationResponsePtrOutputWithContext(ctx context.Context) UserConsentConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o UserConsentConfigurationResponsePtrOutput) Elem() UserConsentConfigurationResponseOutput {
+	return o.ApplyT(func(v *UserConsentConfigurationResponse) UserConsentConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserConsentConfigurationResponse
+		return ret
+	}).(UserConsentConfigurationResponseOutput)
+}
+
+// Allow Microsoft to access non-PII telemetry information from the packet core.
+func (o UserConsentConfigurationResponsePtrOutput) AllowSupportTelemetryAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UserConsentConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSupportTelemetryAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AmbrOutput{})
 	pulumi.RegisterOutputType(AmbrPtrOutput{})
@@ -8015,6 +9575,15 @@ func init() {
 	pulumi.RegisterOutputType(DiagnosticsUploadConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DiagnosticsUploadConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(DiagnosticsUploadConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(EventHubConfigurationOutput{})
+	pulumi.RegisterOutputType(EventHubConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(EventHubConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(EventHubConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(HomeNetworkPrivateKeysProvisioningResponseOutput{})
+	pulumi.RegisterOutputType(HomeNetworkPublicKeyOutput{})
+	pulumi.RegisterOutputType(HomeNetworkPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(HomeNetworkPublicKeyResponseOutput{})
+	pulumi.RegisterOutputType(HomeNetworkPublicKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(HttpsServerCertificateOutput{})
 	pulumi.RegisterOutputType(HttpsServerCertificatePtrOutput{})
 	pulumi.RegisterOutputType(HttpsServerCertificateResponseOutput{})
@@ -8039,6 +9608,10 @@ func init() {
 	pulumi.RegisterOutputType(MobileNetworkResourceIdPtrOutput{})
 	pulumi.RegisterOutputType(MobileNetworkResourceIdResponseOutput{})
 	pulumi.RegisterOutputType(MobileNetworkResourceIdResponsePtrOutput{})
+	pulumi.RegisterOutputType(NASRerouteConfigurationOutput{})
+	pulumi.RegisterOutputType(NASRerouteConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(NASRerouteConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(NASRerouteConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(NaptConfigurationOutput{})
 	pulumi.RegisterOutputType(NaptConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(NaptConfigurationResponseOutput{})
@@ -8067,6 +9640,14 @@ func init() {
 	pulumi.RegisterOutputType(PortReuseHoldTimesPtrOutput{})
 	pulumi.RegisterOutputType(PortReuseHoldTimesResponseOutput{})
 	pulumi.RegisterOutputType(PortReuseHoldTimesResponsePtrOutput{})
+	pulumi.RegisterOutputType(PublicLandMobileNetworkOutput{})
+	pulumi.RegisterOutputType(PublicLandMobileNetworkArrayOutput{})
+	pulumi.RegisterOutputType(PublicLandMobileNetworkHomeNetworkPublicKeysOutput{})
+	pulumi.RegisterOutputType(PublicLandMobileNetworkHomeNetworkPublicKeysPtrOutput{})
+	pulumi.RegisterOutputType(PublicLandMobileNetworkResponseOutput{})
+	pulumi.RegisterOutputType(PublicLandMobileNetworkResponseArrayOutput{})
+	pulumi.RegisterOutputType(PublicLandMobileNetworkResponseHomeNetworkPublicKeysOutput{})
+	pulumi.RegisterOutputType(PublicLandMobileNetworkResponseHomeNetworkPublicKeysPtrOutput{})
 	pulumi.RegisterOutputType(QosPolicyOutput{})
 	pulumi.RegisterOutputType(QosPolicyPtrOutput{})
 	pulumi.RegisterOutputType(QosPolicyResponseOutput{})
@@ -8079,6 +9660,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceResourceIdArrayOutput{})
 	pulumi.RegisterOutputType(ServiceResourceIdResponseOutput{})
 	pulumi.RegisterOutputType(ServiceResourceIdResponseArrayOutput{})
+	pulumi.RegisterOutputType(SignalingConfigurationOutput{})
+	pulumi.RegisterOutputType(SignalingConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SignalingConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SignalingConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SimGroupResponseOutput{})
 	pulumi.RegisterOutputType(SimGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(SimPolicyResourceIdOutput{})
@@ -8112,4 +9697,8 @@ func init() {
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(UserConsentConfigurationOutput{})
+	pulumi.RegisterOutputType(UserConsentConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(UserConsentConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(UserConsentConfigurationResponsePtrOutput{})
 }

@@ -13,9 +13,9 @@ import (
 
 // Configuration information for analysis run.
 //
-// Uses Azure REST API version 2024-01-01-preview.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2024-05-01.
+// Other available API versions: 2024-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupReachabilityAnalysisRun(ctx *pulumi.Context, args *LookupReachabilityAnalysisRunArgs, opts ...pulumi.InvokeOption) (*LookupReachabilityAnalysisRunResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReachabilityAnalysisRunResult
@@ -39,6 +39,8 @@ type LookupReachabilityAnalysisRunArgs struct {
 
 // Configuration information for analysis run.
 type LookupReachabilityAnalysisRunResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -88,6 +90,11 @@ func (o LookupReachabilityAnalysisRunResultOutput) ToLookupReachabilityAnalysisR
 
 func (o LookupReachabilityAnalysisRunResultOutput) ToLookupReachabilityAnalysisRunResultOutputWithContext(ctx context.Context) LookupReachabilityAnalysisRunResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupReachabilityAnalysisRunResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReachabilityAnalysisRunResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

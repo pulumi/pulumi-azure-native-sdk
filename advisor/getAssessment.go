@@ -33,6 +33,8 @@ type LookupAssessmentArgs struct {
 type LookupAssessmentResult struct {
 	// Assessment Id.
 	AssessmentId string `pulumi:"assessmentId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Assessment Type Description.
 	Description string `pulumi:"description"`
 	// Assessment Id
@@ -95,6 +97,11 @@ func (o LookupAssessmentResultOutput) ToLookupAssessmentResultOutputWithContext(
 // Assessment Id.
 func (o LookupAssessmentResultOutput) AssessmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) string { return v.AssessmentId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAssessmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssessmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Assessment Type Description.

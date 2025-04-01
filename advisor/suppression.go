@@ -14,12 +14,14 @@ import (
 
 // The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
 //
-// Uses Azure REST API version 2023-01-01. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
+// Uses Azure REST API version 2023-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
 //
-// Other available API versions: 2023-09-01-preview, 2025-01-01.
+// Other available API versions: 2023-01-01, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Suppression struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the expiration time stamp.
 	ExpirationTimeStamp pulumi.StringOutput `pulumi:"expirationTimeStamp"`
 	// The name of the resource
@@ -171,6 +173,11 @@ func (o SuppressionOutput) ToSuppressionOutput() SuppressionOutput {
 
 func (o SuppressionOutput) ToSuppressionOutputWithContext(ctx context.Context) SuppressionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SuppressionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Suppression) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the expiration time stamp.

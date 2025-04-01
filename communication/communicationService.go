@@ -14,16 +14,20 @@ import (
 
 // A class representing a CommunicationService resource.
 //
-// Uses Azure REST API version 2023-03-31. In version 1.x of the Azure Native provider, it used API version 2020-08-20.
+// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-31.
 //
-// Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CommunicationService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location where the communication service stores its data at rest.
 	DataLocation pulumi.StringOutput `pulumi:"dataLocation"`
 	// FQDN of the CommunicationService instance.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The immutable resource Id of the communication service.
 	ImmutableResourceId pulumi.StringOutput `pulumi:"immutableResourceId"`
 	// List of email Domain resource Ids.
@@ -129,6 +133,8 @@ type communicationServiceArgs struct {
 	CommunicationServiceName *string `pulumi:"communicationServiceName"`
 	// The location where the communication service stores its data at rest.
 	DataLocation string `pulumi:"dataLocation"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// List of email Domain resource Ids.
 	LinkedDomains []string `pulumi:"linkedDomains"`
 	// The geo-location where the resource lives
@@ -145,6 +151,8 @@ type CommunicationServiceArgs struct {
 	CommunicationServiceName pulumi.StringPtrInput
 	// The location where the communication service stores its data at rest.
 	DataLocation pulumi.StringInput
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity ManagedServiceIdentityPtrInput
 	// List of email Domain resource Ids.
 	LinkedDomains pulumi.StringArrayInput
 	// The geo-location where the resource lives
@@ -192,6 +200,11 @@ func (o CommunicationServiceOutput) ToCommunicationServiceOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o CommunicationServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommunicationService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The location where the communication service stores its data at rest.
 func (o CommunicationServiceOutput) DataLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommunicationService) pulumi.StringOutput { return v.DataLocation }).(pulumi.StringOutput)
@@ -200,6 +213,11 @@ func (o CommunicationServiceOutput) DataLocation() pulumi.StringOutput {
 // FQDN of the CommunicationService instance.
 func (o CommunicationServiceOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommunicationService) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+func (o CommunicationServiceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *CommunicationService) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The immutable resource Id of the communication service.

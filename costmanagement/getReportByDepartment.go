@@ -33,6 +33,8 @@ type LookupReportByDepartmentArgs struct {
 
 // A report resource.
 type LookupReportByDepartmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Has definition for the report.
 	Definition ReportDefinitionResponse `pulumi:"definition"`
 	// Has delivery information for the report.
@@ -84,6 +86,11 @@ func (o LookupReportByDepartmentResultOutput) ToLookupReportByDepartmentResultOu
 
 func (o LookupReportByDepartmentResultOutput) ToLookupReportByDepartmentResultOutputWithContext(ctx context.Context) LookupReportByDepartmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupReportByDepartmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReportByDepartmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Has definition for the report.

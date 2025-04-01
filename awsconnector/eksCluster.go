@@ -14,10 +14,12 @@ import (
 
 // A Microsoft.AwsConnector resource
 //
-// Uses Azure REST API version 2024-12-01.
+// Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2024-12-01.
 type EksCluster struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
@@ -126,6 +128,11 @@ func (o EksClusterOutput) ToEksClusterOutput() EksClusterOutput {
 
 func (o EksClusterOutput) ToEksClusterOutputWithContext(ctx context.Context) EksClusterOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EksClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EksCluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

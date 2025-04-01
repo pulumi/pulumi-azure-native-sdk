@@ -37,6 +37,8 @@ type LookupNetworkSecurityPerimeterLinkArgs struct {
 type LookupNetworkSecurityPerimeterLinkResult struct {
 	// Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
 	AutoApprovedRemotePerimeterResourceId *string `pulumi:"autoApprovedRemotePerimeterResourceId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -107,6 +109,11 @@ func (o LookupNetworkSecurityPerimeterLinkResultOutput) AutoApprovedRemotePerime
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterLinkResult) *string {
 		return v.AutoApprovedRemotePerimeterResourceId
 	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkSecurityPerimeterLinkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityPerimeterLinkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.

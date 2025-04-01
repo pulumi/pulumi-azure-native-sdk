@@ -13,9 +13,9 @@ import (
 
 // Retrieves information about a gallery Application Definition.
 //
-// Uses Azure REST API version 2022-03-03.
+// Uses Azure REST API version 2024-03-03.
 //
-// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGalleryApplication(ctx *pulumi.Context, args *LookupGalleryApplicationArgs, opts ...pulumi.InvokeOption) (*LookupGalleryApplicationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryApplicationResult
@@ -37,6 +37,8 @@ type LookupGalleryApplicationArgs struct {
 
 // Specifies information about the gallery Application Definition that you want to create or update.
 type LookupGalleryApplicationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
 	CustomActions []GalleryApplicationCustomActionResponse `pulumi:"customActions"`
 	// The description of this gallery Application Definition resource. This property is updatable.
@@ -55,7 +57,7 @@ type LookupGalleryApplicationResult struct {
 	PrivacyStatementUri *string `pulumi:"privacyStatementUri"`
 	// The release note uri.
 	ReleaseNoteUri *string `pulumi:"releaseNoteUri"`
-	// This property allows you to specify the supported type of the OS that application is built for. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+	// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
 	SupportedOSType string `pulumi:"supportedOSType"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
@@ -98,6 +100,11 @@ func (o LookupGalleryApplicationResultOutput) ToLookupGalleryApplicationResultOu
 
 func (o LookupGalleryApplicationResultOutput) ToLookupGalleryApplicationResultOutputWithContext(ctx context.Context) LookupGalleryApplicationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGalleryApplicationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGalleryApplicationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
@@ -147,7 +154,7 @@ func (o LookupGalleryApplicationResultOutput) ReleaseNoteUri() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupGalleryApplicationResult) *string { return v.ReleaseNoteUri }).(pulumi.StringPtrOutput)
 }
 
-// This property allows you to specify the supported type of the OS that application is built for. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
 func (o LookupGalleryApplicationResultOutput) SupportedOSType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryApplicationResult) string { return v.SupportedOSType }).(pulumi.StringOutput)
 }

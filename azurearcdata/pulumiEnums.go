@@ -683,182 +683,6 @@ func (in *arcSqlManagedInstanceLicenseTypePtr) ToArcSqlManagedInstanceLicenseTyp
 }
 
 // SQL Server license type.
-type ArcSqlServerLicenseType string
-
-const (
-	ArcSqlServerLicenseTypeUndefined   = ArcSqlServerLicenseType("Undefined")
-	ArcSqlServerLicenseTypeFree        = ArcSqlServerLicenseType("Free")
-	ArcSqlServerLicenseTypeHADR        = ArcSqlServerLicenseType("HADR")
-	ArcSqlServerLicenseTypeServerCAL   = ArcSqlServerLicenseType("ServerCAL")
-	ArcSqlServerLicenseTypeLicenseOnly = ArcSqlServerLicenseType("LicenseOnly")
-	ArcSqlServerLicenseTypePAYG        = ArcSqlServerLicenseType("PAYG")
-	ArcSqlServerLicenseTypePaid        = ArcSqlServerLicenseType("Paid")
-)
-
-func (ArcSqlServerLicenseType) ElementType() reflect.Type {
-	return reflect.TypeOf((*ArcSqlServerLicenseType)(nil)).Elem()
-}
-
-func (e ArcSqlServerLicenseType) ToArcSqlServerLicenseTypeOutput() ArcSqlServerLicenseTypeOutput {
-	return pulumi.ToOutput(e).(ArcSqlServerLicenseTypeOutput)
-}
-
-func (e ArcSqlServerLicenseType) ToArcSqlServerLicenseTypeOutputWithContext(ctx context.Context) ArcSqlServerLicenseTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ArcSqlServerLicenseTypeOutput)
-}
-
-func (e ArcSqlServerLicenseType) ToArcSqlServerLicenseTypePtrOutput() ArcSqlServerLicenseTypePtrOutput {
-	return e.ToArcSqlServerLicenseTypePtrOutputWithContext(context.Background())
-}
-
-func (e ArcSqlServerLicenseType) ToArcSqlServerLicenseTypePtrOutputWithContext(ctx context.Context) ArcSqlServerLicenseTypePtrOutput {
-	return ArcSqlServerLicenseType(e).ToArcSqlServerLicenseTypeOutputWithContext(ctx).ToArcSqlServerLicenseTypePtrOutputWithContext(ctx)
-}
-
-func (e ArcSqlServerLicenseType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ArcSqlServerLicenseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ArcSqlServerLicenseType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ArcSqlServerLicenseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ArcSqlServerLicenseTypeOutput struct{ *pulumi.OutputState }
-
-func (ArcSqlServerLicenseTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ArcSqlServerLicenseType)(nil)).Elem()
-}
-
-func (o ArcSqlServerLicenseTypeOutput) ToArcSqlServerLicenseTypeOutput() ArcSqlServerLicenseTypeOutput {
-	return o
-}
-
-func (o ArcSqlServerLicenseTypeOutput) ToArcSqlServerLicenseTypeOutputWithContext(ctx context.Context) ArcSqlServerLicenseTypeOutput {
-	return o
-}
-
-func (o ArcSqlServerLicenseTypeOutput) ToArcSqlServerLicenseTypePtrOutput() ArcSqlServerLicenseTypePtrOutput {
-	return o.ToArcSqlServerLicenseTypePtrOutputWithContext(context.Background())
-}
-
-func (o ArcSqlServerLicenseTypeOutput) ToArcSqlServerLicenseTypePtrOutputWithContext(ctx context.Context) ArcSqlServerLicenseTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArcSqlServerLicenseType) *ArcSqlServerLicenseType {
-		return &v
-	}).(ArcSqlServerLicenseTypePtrOutput)
-}
-
-func (o ArcSqlServerLicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ArcSqlServerLicenseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ArcSqlServerLicenseType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ArcSqlServerLicenseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ArcSqlServerLicenseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ArcSqlServerLicenseType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ArcSqlServerLicenseTypePtrOutput struct{ *pulumi.OutputState }
-
-func (ArcSqlServerLicenseTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ArcSqlServerLicenseType)(nil)).Elem()
-}
-
-func (o ArcSqlServerLicenseTypePtrOutput) ToArcSqlServerLicenseTypePtrOutput() ArcSqlServerLicenseTypePtrOutput {
-	return o
-}
-
-func (o ArcSqlServerLicenseTypePtrOutput) ToArcSqlServerLicenseTypePtrOutputWithContext(ctx context.Context) ArcSqlServerLicenseTypePtrOutput {
-	return o
-}
-
-func (o ArcSqlServerLicenseTypePtrOutput) Elem() ArcSqlServerLicenseTypeOutput {
-	return o.ApplyT(func(v *ArcSqlServerLicenseType) ArcSqlServerLicenseType {
-		if v != nil {
-			return *v
-		}
-		var ret ArcSqlServerLicenseType
-		return ret
-	}).(ArcSqlServerLicenseTypeOutput)
-}
-
-func (o ArcSqlServerLicenseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ArcSqlServerLicenseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ArcSqlServerLicenseType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ArcSqlServerLicenseTypeInput is an input type that accepts values of the ArcSqlServerLicenseType enum
-// A concrete instance of `ArcSqlServerLicenseTypeInput` can be one of the following:
-//
-//	ArcSqlServerLicenseTypeUndefined
-//	ArcSqlServerLicenseTypeFree
-//	ArcSqlServerLicenseTypeHADR
-//	ArcSqlServerLicenseTypeServerCAL
-//	ArcSqlServerLicenseTypeLicenseOnly
-//	ArcSqlServerLicenseTypePAYG
-//	ArcSqlServerLicenseTypePaid
-type ArcSqlServerLicenseTypeInput interface {
-	pulumi.Input
-
-	ToArcSqlServerLicenseTypeOutput() ArcSqlServerLicenseTypeOutput
-	ToArcSqlServerLicenseTypeOutputWithContext(context.Context) ArcSqlServerLicenseTypeOutput
-}
-
-var arcSqlServerLicenseTypePtrType = reflect.TypeOf((**ArcSqlServerLicenseType)(nil)).Elem()
-
-type ArcSqlServerLicenseTypePtrInput interface {
-	pulumi.Input
-
-	ToArcSqlServerLicenseTypePtrOutput() ArcSqlServerLicenseTypePtrOutput
-	ToArcSqlServerLicenseTypePtrOutputWithContext(context.Context) ArcSqlServerLicenseTypePtrOutput
-}
-
-type arcSqlServerLicenseTypePtr string
-
-func ArcSqlServerLicenseTypePtr(v string) ArcSqlServerLicenseTypePtrInput {
-	return (*arcSqlServerLicenseTypePtr)(&v)
-}
-
-func (*arcSqlServerLicenseTypePtr) ElementType() reflect.Type {
-	return arcSqlServerLicenseTypePtrType
-}
-
-func (in *arcSqlServerLicenseTypePtr) ToArcSqlServerLicenseTypePtrOutput() ArcSqlServerLicenseTypePtrOutput {
-	return pulumi.ToOutput(in).(ArcSqlServerLicenseTypePtrOutput)
-}
-
-func (in *arcSqlServerLicenseTypePtr) ToArcSqlServerLicenseTypePtrOutputWithContext(ctx context.Context) ArcSqlServerLicenseTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ArcSqlServerLicenseTypePtrOutput)
-}
-
-// SQL Server license type.
 type BillingPlan string
 
 const (
@@ -1024,127 +848,125 @@ func (in *billingPlanPtr) ToBillingPlanPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(BillingPlanPtrOutput)
 }
 
-// The cloud connectivity status.
-type ConnectionStatus string
+// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+type DatabaseCreateMode string
 
 const (
-	ConnectionStatusConnected    = ConnectionStatus("Connected")
-	ConnectionStatusDisconnected = ConnectionStatus("Disconnected")
-	ConnectionStatusRegistered   = ConnectionStatus("Registered")
-	ConnectionStatusUnknown      = ConnectionStatus("Unknown")
+	DatabaseCreateModeDefault            = DatabaseCreateMode("Default")
+	DatabaseCreateModePointInTimeRestore = DatabaseCreateMode("PointInTimeRestore")
 )
 
-func (ConnectionStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionStatus)(nil)).Elem()
+func (DatabaseCreateMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseCreateMode)(nil)).Elem()
 }
 
-func (e ConnectionStatus) ToConnectionStatusOutput() ConnectionStatusOutput {
-	return pulumi.ToOutput(e).(ConnectionStatusOutput)
+func (e DatabaseCreateMode) ToDatabaseCreateModeOutput() DatabaseCreateModeOutput {
+	return pulumi.ToOutput(e).(DatabaseCreateModeOutput)
 }
 
-func (e ConnectionStatus) ToConnectionStatusOutputWithContext(ctx context.Context) ConnectionStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ConnectionStatusOutput)
+func (e DatabaseCreateMode) ToDatabaseCreateModeOutputWithContext(ctx context.Context) DatabaseCreateModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatabaseCreateModeOutput)
 }
 
-func (e ConnectionStatus) ToConnectionStatusPtrOutput() ConnectionStatusPtrOutput {
-	return e.ToConnectionStatusPtrOutputWithContext(context.Background())
+func (e DatabaseCreateMode) ToDatabaseCreateModePtrOutput() DatabaseCreateModePtrOutput {
+	return e.ToDatabaseCreateModePtrOutputWithContext(context.Background())
 }
 
-func (e ConnectionStatus) ToConnectionStatusPtrOutputWithContext(ctx context.Context) ConnectionStatusPtrOutput {
-	return ConnectionStatus(e).ToConnectionStatusOutputWithContext(ctx).ToConnectionStatusPtrOutputWithContext(ctx)
+func (e DatabaseCreateMode) ToDatabaseCreateModePtrOutputWithContext(ctx context.Context) DatabaseCreateModePtrOutput {
+	return DatabaseCreateMode(e).ToDatabaseCreateModeOutputWithContext(ctx).ToDatabaseCreateModePtrOutputWithContext(ctx)
 }
 
-func (e ConnectionStatus) ToStringOutput() pulumi.StringOutput {
+func (e DatabaseCreateMode) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ConnectionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e DatabaseCreateMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ConnectionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e DatabaseCreateMode) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e ConnectionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e DatabaseCreateMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type ConnectionStatusOutput struct{ *pulumi.OutputState }
+type DatabaseCreateModeOutput struct{ *pulumi.OutputState }
 
-func (ConnectionStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionStatus)(nil)).Elem()
+func (DatabaseCreateModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseCreateMode)(nil)).Elem()
 }
 
-func (o ConnectionStatusOutput) ToConnectionStatusOutput() ConnectionStatusOutput {
+func (o DatabaseCreateModeOutput) ToDatabaseCreateModeOutput() DatabaseCreateModeOutput {
 	return o
 }
 
-func (o ConnectionStatusOutput) ToConnectionStatusOutputWithContext(ctx context.Context) ConnectionStatusOutput {
+func (o DatabaseCreateModeOutput) ToDatabaseCreateModeOutputWithContext(ctx context.Context) DatabaseCreateModeOutput {
 	return o
 }
 
-func (o ConnectionStatusOutput) ToConnectionStatusPtrOutput() ConnectionStatusPtrOutput {
-	return o.ToConnectionStatusPtrOutputWithContext(context.Background())
+func (o DatabaseCreateModeOutput) ToDatabaseCreateModePtrOutput() DatabaseCreateModePtrOutput {
+	return o.ToDatabaseCreateModePtrOutputWithContext(context.Background())
 }
 
-func (o ConnectionStatusOutput) ToConnectionStatusPtrOutputWithContext(ctx context.Context) ConnectionStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionStatus) *ConnectionStatus {
+func (o DatabaseCreateModeOutput) ToDatabaseCreateModePtrOutputWithContext(ctx context.Context) DatabaseCreateModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseCreateMode) *DatabaseCreateMode {
 		return &v
-	}).(ConnectionStatusPtrOutput)
+	}).(DatabaseCreateModePtrOutput)
 }
 
-func (o ConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
+func (o DatabaseCreateModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o ConnectionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConnectionStatus) string {
+func (o DatabaseCreateModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseCreateMode) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o ConnectionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o DatabaseCreateModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ConnectionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConnectionStatus) *string {
+func (o DatabaseCreateModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseCreateMode) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type ConnectionStatusPtrOutput struct{ *pulumi.OutputState }
+type DatabaseCreateModePtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionStatus)(nil)).Elem()
+func (DatabaseCreateModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseCreateMode)(nil)).Elem()
 }
 
-func (o ConnectionStatusPtrOutput) ToConnectionStatusPtrOutput() ConnectionStatusPtrOutput {
+func (o DatabaseCreateModePtrOutput) ToDatabaseCreateModePtrOutput() DatabaseCreateModePtrOutput {
 	return o
 }
 
-func (o ConnectionStatusPtrOutput) ToConnectionStatusPtrOutputWithContext(ctx context.Context) ConnectionStatusPtrOutput {
+func (o DatabaseCreateModePtrOutput) ToDatabaseCreateModePtrOutputWithContext(ctx context.Context) DatabaseCreateModePtrOutput {
 	return o
 }
 
-func (o ConnectionStatusPtrOutput) Elem() ConnectionStatusOutput {
-	return o.ApplyT(func(v *ConnectionStatus) ConnectionStatus {
+func (o DatabaseCreateModePtrOutput) Elem() DatabaseCreateModeOutput {
+	return o.ApplyT(func(v *DatabaseCreateMode) DatabaseCreateMode {
 		if v != nil {
 			return *v
 		}
-		var ret ConnectionStatus
+		var ret DatabaseCreateMode
 		return ret
-	}).(ConnectionStatusOutput)
+	}).(DatabaseCreateModeOutput)
 }
 
-func (o ConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o DatabaseCreateModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ConnectionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConnectionStatus) *string {
+func (o DatabaseCreateModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatabaseCreateMode) *string {
 		if e == nil {
 			return nil
 		}
@@ -1153,45 +975,43 @@ func (o ConnectionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConnectionStatusInput is an input type that accepts values of the ConnectionStatus enum
-// A concrete instance of `ConnectionStatusInput` can be one of the following:
+// DatabaseCreateModeInput is an input type that accepts values of the DatabaseCreateMode enum
+// A concrete instance of `DatabaseCreateModeInput` can be one of the following:
 //
-//	ConnectionStatusConnected
-//	ConnectionStatusDisconnected
-//	ConnectionStatusRegistered
-//	ConnectionStatusUnknown
-type ConnectionStatusInput interface {
+//	DatabaseCreateModeDefault
+//	DatabaseCreateModePointInTimeRestore
+type DatabaseCreateModeInput interface {
 	pulumi.Input
 
-	ToConnectionStatusOutput() ConnectionStatusOutput
-	ToConnectionStatusOutputWithContext(context.Context) ConnectionStatusOutput
+	ToDatabaseCreateModeOutput() DatabaseCreateModeOutput
+	ToDatabaseCreateModeOutputWithContext(context.Context) DatabaseCreateModeOutput
 }
 
-var connectionStatusPtrType = reflect.TypeOf((**ConnectionStatus)(nil)).Elem()
+var databaseCreateModePtrType = reflect.TypeOf((**DatabaseCreateMode)(nil)).Elem()
 
-type ConnectionStatusPtrInput interface {
+type DatabaseCreateModePtrInput interface {
 	pulumi.Input
 
-	ToConnectionStatusPtrOutput() ConnectionStatusPtrOutput
-	ToConnectionStatusPtrOutputWithContext(context.Context) ConnectionStatusPtrOutput
+	ToDatabaseCreateModePtrOutput() DatabaseCreateModePtrOutput
+	ToDatabaseCreateModePtrOutputWithContext(context.Context) DatabaseCreateModePtrOutput
 }
 
-type connectionStatusPtr string
+type databaseCreateModePtr string
 
-func ConnectionStatusPtr(v string) ConnectionStatusPtrInput {
-	return (*connectionStatusPtr)(&v)
+func DatabaseCreateModePtr(v string) DatabaseCreateModePtrInput {
+	return (*databaseCreateModePtr)(&v)
 }
 
-func (*connectionStatusPtr) ElementType() reflect.Type {
-	return connectionStatusPtrType
+func (*databaseCreateModePtr) ElementType() reflect.Type {
+	return databaseCreateModePtrType
 }
 
-func (in *connectionStatusPtr) ToConnectionStatusPtrOutput() ConnectionStatusPtrOutput {
-	return pulumi.ToOutput(in).(ConnectionStatusPtrOutput)
+func (in *databaseCreateModePtr) ToDatabaseCreateModePtrOutput() DatabaseCreateModePtrOutput {
+	return pulumi.ToOutput(in).(DatabaseCreateModePtrOutput)
 }
 
-func (in *connectionStatusPtr) ToConnectionStatusPtrOutputWithContext(ctx context.Context) ConnectionStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ConnectionStatusPtrOutput)
+func (in *databaseCreateModePtr) ToDatabaseCreateModePtrOutputWithContext(ctx context.Context) DatabaseCreateModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatabaseCreateModePtrOutput)
 }
 
 // State of the database.
@@ -1372,174 +1192,6 @@ func (in *databaseStatePtr) ToDatabaseStatePtrOutput() DatabaseStatePtrOutput {
 
 func (in *databaseStatePtr) ToDatabaseStatePtrOutputWithContext(ctx context.Context) DatabaseStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseStatePtrOutput)
-}
-
-// Status of Azure Defender.
-type DefenderStatus string
-
-const (
-	DefenderStatusProtected   = DefenderStatus("Protected")
-	DefenderStatusUnprotected = DefenderStatus("Unprotected")
-	DefenderStatusUnknown     = DefenderStatus("Unknown")
-)
-
-func (DefenderStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderStatus)(nil)).Elem()
-}
-
-func (e DefenderStatus) ToDefenderStatusOutput() DefenderStatusOutput {
-	return pulumi.ToOutput(e).(DefenderStatusOutput)
-}
-
-func (e DefenderStatus) ToDefenderStatusOutputWithContext(ctx context.Context) DefenderStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(DefenderStatusOutput)
-}
-
-func (e DefenderStatus) ToDefenderStatusPtrOutput() DefenderStatusPtrOutput {
-	return e.ToDefenderStatusPtrOutputWithContext(context.Background())
-}
-
-func (e DefenderStatus) ToDefenderStatusPtrOutputWithContext(ctx context.Context) DefenderStatusPtrOutput {
-	return DefenderStatus(e).ToDefenderStatusOutputWithContext(ctx).ToDefenderStatusPtrOutputWithContext(ctx)
-}
-
-func (e DefenderStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DefenderStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DefenderStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e DefenderStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type DefenderStatusOutput struct{ *pulumi.OutputState }
-
-func (DefenderStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefenderStatus)(nil)).Elem()
-}
-
-func (o DefenderStatusOutput) ToDefenderStatusOutput() DefenderStatusOutput {
-	return o
-}
-
-func (o DefenderStatusOutput) ToDefenderStatusOutputWithContext(ctx context.Context) DefenderStatusOutput {
-	return o
-}
-
-func (o DefenderStatusOutput) ToDefenderStatusPtrOutput() DefenderStatusPtrOutput {
-	return o.ToDefenderStatusPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderStatusOutput) ToDefenderStatusPtrOutputWithContext(ctx context.Context) DefenderStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderStatus) *DefenderStatus {
-		return &v
-	}).(DefenderStatusPtrOutput)
-}
-
-func (o DefenderStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o DefenderStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DefenderStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o DefenderStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e DefenderStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type DefenderStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (DefenderStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefenderStatus)(nil)).Elem()
-}
-
-func (o DefenderStatusPtrOutput) ToDefenderStatusPtrOutput() DefenderStatusPtrOutput {
-	return o
-}
-
-func (o DefenderStatusPtrOutput) ToDefenderStatusPtrOutputWithContext(ctx context.Context) DefenderStatusPtrOutput {
-	return o
-}
-
-func (o DefenderStatusPtrOutput) Elem() DefenderStatusOutput {
-	return o.ApplyT(func(v *DefenderStatus) DefenderStatus {
-		if v != nil {
-			return *v
-		}
-		var ret DefenderStatus
-		return ret
-	}).(DefenderStatusOutput)
-}
-
-func (o DefenderStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o DefenderStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DefenderStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// DefenderStatusInput is an input type that accepts values of the DefenderStatus enum
-// A concrete instance of `DefenderStatusInput` can be one of the following:
-//
-//	DefenderStatusProtected
-//	DefenderStatusUnprotected
-//	DefenderStatusUnknown
-type DefenderStatusInput interface {
-	pulumi.Input
-
-	ToDefenderStatusOutput() DefenderStatusOutput
-	ToDefenderStatusOutputWithContext(context.Context) DefenderStatusOutput
-}
-
-var defenderStatusPtrType = reflect.TypeOf((**DefenderStatus)(nil)).Elem()
-
-type DefenderStatusPtrInput interface {
-	pulumi.Input
-
-	ToDefenderStatusPtrOutput() DefenderStatusPtrOutput
-	ToDefenderStatusPtrOutputWithContext(context.Context) DefenderStatusPtrOutput
-}
-
-type defenderStatusPtr string
-
-func DefenderStatusPtr(v string) DefenderStatusPtrInput {
-	return (*defenderStatusPtr)(&v)
-}
-
-func (*defenderStatusPtr) ElementType() reflect.Type {
-	return defenderStatusPtrType
-}
-
-func (in *defenderStatusPtr) ToDefenderStatusPtrOutput() DefenderStatusPtrOutput {
-	return pulumi.ToOutput(in).(DefenderStatusPtrOutput)
-}
-
-func (in *defenderStatusPtr) ToDefenderStatusPtrOutputWithContext(ctx context.Context) DefenderStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(DefenderStatusPtrOutput)
 }
 
 // SQL Server edition.
@@ -4093,16 +3745,12 @@ func init() {
 	pulumi.RegisterOutputType(AggregationTypePtrOutput{})
 	pulumi.RegisterOutputType(ArcSqlManagedInstanceLicenseTypeOutput{})
 	pulumi.RegisterOutputType(ArcSqlManagedInstanceLicenseTypePtrOutput{})
-	pulumi.RegisterOutputType(ArcSqlServerLicenseTypeOutput{})
-	pulumi.RegisterOutputType(ArcSqlServerLicenseTypePtrOutput{})
 	pulumi.RegisterOutputType(BillingPlanOutput{})
 	pulumi.RegisterOutputType(BillingPlanPtrOutput{})
-	pulumi.RegisterOutputType(ConnectionStatusOutput{})
-	pulumi.RegisterOutputType(ConnectionStatusPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseCreateModeOutput{})
+	pulumi.RegisterOutputType(DatabaseCreateModePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseStateOutput{})
 	pulumi.RegisterOutputType(DatabaseStatePtrOutput{})
-	pulumi.RegisterOutputType(DefenderStatusOutput{})
-	pulumi.RegisterOutputType(DefenderStatusPtrOutput{})
 	pulumi.RegisterOutputType(EditionTypeOutput{})
 	pulumi.RegisterOutputType(EditionTypePtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationTypesOutput{})

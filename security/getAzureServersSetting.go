@@ -31,6 +31,8 @@ type LookupAzureServersSettingArgs struct {
 
 // A vulnerability assessments setting on Azure servers in the defined scope.
 type LookupAzureServersSettingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The kind of the server vulnerability assessments setting
@@ -77,6 +79,11 @@ func (o LookupAzureServersSettingResultOutput) ToLookupAzureServersSettingResult
 
 func (o LookupAzureServersSettingResultOutput) ToLookupAzureServersSettingResultOutputWithContext(ctx context.Context) LookupAzureServersSettingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAzureServersSettingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureServersSettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

@@ -13,9 +13,9 @@ import (
 
 // Gets a flow log resource by name.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFlowLog(ctx *pulumi.Context, args *LookupFlowLogArgs, opts ...pulumi.InvokeOption) (*LookupFlowLogResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFlowLogResult
@@ -37,8 +37,12 @@ type LookupFlowLogArgs struct {
 
 // A flow log resource.
 type LookupFlowLogResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Flag to enable/disable flow logging.
 	Enabled *bool `pulumi:"enabled"`
+	// Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
+	EnabledFilteringCriteria *string `pulumi:"enabledFilteringCriteria"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Parameters that define the configuration of traffic analytics.
@@ -47,6 +51,8 @@ type LookupFlowLogResult struct {
 	Format *FlowLogFormatParametersResponse `pulumi:"format"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
+	// FlowLog resource Managed Identity
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// Resource name.
@@ -116,9 +122,19 @@ func (o LookupFlowLogResultOutput) ToLookupFlowLogResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupFlowLogResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFlowLogResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Flag to enable/disable flow logging.
 func (o LookupFlowLogResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
+func (o LookupFlowLogResultOutput) EnabledFilteringCriteria() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupFlowLogResult) *string { return v.EnabledFilteringCriteria }).(pulumi.StringPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -139,6 +155,11 @@ func (o LookupFlowLogResultOutput) Format() FlowLogFormatParametersResponsePtrOu
 // Resource ID.
 func (o LookupFlowLogResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// FlowLog resource Managed Identity
+func (o LookupFlowLogResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupFlowLogResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Resource location.

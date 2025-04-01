@@ -41,6 +41,8 @@ type LookupProfileResult struct {
 	ApiEntitySetName *string `pulumi:"apiEntitySetName"`
 	// The attributes for the Type.
 	Attributes map[string][]string `pulumi:"attributes"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Localized descriptions for the property.
 	Description map[string]string `pulumi:"description"`
 	// Localized display names for the property.
@@ -128,6 +130,11 @@ func (o LookupProfileResultOutput) ApiEntitySetName() pulumi.StringPtrOutput {
 // The attributes for the Type.
 func (o LookupProfileResultOutput) Attributes() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v LookupProfileResult) map[string][]string { return v.Attributes }).(pulumi.StringArrayMapOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Localized descriptions for the property.

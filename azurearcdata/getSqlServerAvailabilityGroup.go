@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2024-05-01-preview, 2025-03-01-preview.
+// Other available API versions: 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSqlServerAvailabilityGroup(ctx *pulumi.Context, args *LookupSqlServerAvailabilityGroupArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerAvailabilityGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerAvailabilityGroupResult
@@ -37,6 +37,8 @@ type LookupSqlServerAvailabilityGroupArgs struct {
 
 // Arc Sql Server Availability Group
 type LookupSqlServerAvailabilityGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -88,6 +90,11 @@ func (o LookupSqlServerAvailabilityGroupResultOutput) ToLookupSqlServerAvailabil
 
 func (o LookupSqlServerAvailabilityGroupResultOutput) ToLookupSqlServerAvailabilityGroupResultOutputWithContext(ctx context.Context) LookupSqlServerAvailabilityGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlServerAvailabilityGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlServerAvailabilityGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

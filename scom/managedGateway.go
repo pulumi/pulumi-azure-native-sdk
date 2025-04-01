@@ -14,10 +14,12 @@ import (
 
 // A gateway resource.
 //
-// Uses Azure REST API version 2023-07-07-preview.
+// Uses Azure REST API version 2023-07-07-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-07-preview.
 type ManagedGateway struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The properties of a gateway resource.
@@ -133,6 +135,11 @@ func (o ManagedGatewayOutput) ToManagedGatewayOutput() ManagedGatewayOutput {
 
 func (o ManagedGatewayOutput) ToManagedGatewayOutputWithContext(ctx context.Context) ManagedGatewayOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagedGatewayOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedGateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

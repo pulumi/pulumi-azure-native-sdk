@@ -14,10 +14,12 @@ import (
 
 // Lab details.
 //
-// Uses Azure REST API version 2021-12-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-12-01-preview.
+// Uses Azure REST API version 2021-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-12-01-preview.
 type Lab struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Default monetary cap for each student in this lab
 	BudgetPerStudent AmountResponseOutput `pulumi:"budgetPerStudent"`
 	// The type of currency being used for the value.
@@ -40,6 +42,8 @@ type Lab struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Total budget
+	TotalBudget AmountResponseOutput `pulumi:"totalBudget"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Amount value.
@@ -192,6 +196,11 @@ func (o LabOutput) ToLabOutputWithContext(ctx context.Context) LabOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LabOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Default monetary cap for each student in this lab
 func (o LabOutput) BudgetPerStudent() AmountResponseOutput {
 	return o.ApplyT(func(v *Lab) AmountResponseOutput { return v.BudgetPerStudent }).(AmountResponseOutput)
@@ -245,6 +254,11 @@ func (o LabOutput) Status() pulumi.StringOutput {
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LabOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Lab) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Total budget
+func (o LabOutput) TotalBudget() AmountResponseOutput {
+	return o.ApplyT(func(v *Lab) AmountResponseOutput { return v.TotalBudget }).(AmountResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

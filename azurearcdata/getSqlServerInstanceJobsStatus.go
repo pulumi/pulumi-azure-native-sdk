@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-05-01-preview.
 //
-// Other available API versions: 2025-03-01-preview.
+// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetSqlServerInstanceJobsStatus(ctx *pulumi.Context, args *GetSqlServerInstanceJobsStatusArgs, opts ...pulumi.InvokeOption) (*GetSqlServerInstanceJobsStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSqlServerInstanceJobsStatusResult

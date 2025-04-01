@@ -13,9 +13,9 @@ import (
 
 // Gets the details of an ASR replication protected item.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-10-01.
+// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupReplicationProtectedItem(ctx *pulumi.Context, args *LookupReplicationProtectedItemArgs, opts ...pulumi.InvokeOption) (*LookupReplicationProtectedItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationProtectedItemResult
@@ -41,6 +41,8 @@ type LookupReplicationProtectedItemArgs struct {
 
 // Replication protected item.
 type LookupReplicationProtectedItemResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource Location
@@ -92,6 +94,11 @@ func (o LookupReplicationProtectedItemResultOutput) ToLookupReplicationProtected
 
 func (o LookupReplicationProtectedItemResultOutput) ToLookupReplicationProtectedItemResultOutputWithContext(ctx context.Context) LookupReplicationProtectedItemResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupReplicationProtectedItemResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationProtectedItemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

@@ -13,9 +13,9 @@ import (
 
 // Get authorizationRule for a WCF relay by name.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2017-04-01, 2024-01-01.
+// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWCFRelayAuthorizationRule(ctx *pulumi.Context, args *LookupWCFRelayAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupWCFRelayAuthorizationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWCFRelayAuthorizationRuleResult
@@ -39,6 +39,8 @@ type LookupWCFRelayAuthorizationRuleArgs struct {
 
 // Single item in a List or Get AuthorizationRule operation
 type LookupWCFRelayAuthorizationRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -90,6 +92,11 @@ func (o LookupWCFRelayAuthorizationRuleResultOutput) ToLookupWCFRelayAuthorizati
 
 func (o LookupWCFRelayAuthorizationRuleResultOutput) ToLookupWCFRelayAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupWCFRelayAuthorizationRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWCFRelayAuthorizationRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWCFRelayAuthorizationRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

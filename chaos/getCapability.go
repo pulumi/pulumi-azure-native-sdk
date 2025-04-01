@@ -13,9 +13,9 @@ import (
 
 // Get a Capability resource that extends a Target resource.
 //
-// Uses Azure REST API version 2023-04-15-preview.
+// Uses Azure REST API version 2024-03-22-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
+// Other available API versions: 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-11-01-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCapability(ctx *pulumi.Context, args *LookupCapabilityArgs, opts ...pulumi.InvokeOption) (*LookupCapabilityResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapabilityResult
@@ -43,13 +43,15 @@ type LookupCapabilityArgs struct {
 
 // Model that represents a Capability resource.
 type LookupCapabilityResult struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The properties of a capability resource.
 	Properties CapabilityPropertiesResponse `pulumi:"properties"`
-	// The standard system metadata of a resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -98,7 +100,12 @@ func (o LookupCapabilityResultOutput) ToLookupCapabilityResultOutputWithContext(
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupCapabilityResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCapabilityResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupCapabilityResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapabilityResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -113,7 +120,7 @@ func (o LookupCapabilityResultOutput) Properties() CapabilityPropertiesResponseO
 	return o.ApplyT(func(v LookupCapabilityResult) CapabilityPropertiesResponse { return v.Properties }).(CapabilityPropertiesResponseOutput)
 }
 
-// The standard system metadata of a resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupCapabilityResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCapabilityResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

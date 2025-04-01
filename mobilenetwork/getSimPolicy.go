@@ -13,9 +13,9 @@ import (
 
 // Gets information about the specified SIM policy.
 //
-// Uses Azure REST API version 2023-06-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
+// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSimPolicy(ctx *pulumi.Context, args *LookupSimPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSimPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSimPolicyResult
@@ -37,6 +37,8 @@ type LookupSimPolicyArgs struct {
 
 // SIM policy resource.
 type LookupSimPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map. The slice must be in the same location as the SIM policy.
 	DefaultSlice SliceResourceIdResponse `pulumi:"defaultSlice"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -112,6 +114,11 @@ func (o LookupSimPolicyResultOutput) ToLookupSimPolicyResultOutput() LookupSimPo
 
 func (o LookupSimPolicyResultOutput) ToLookupSimPolicyResultOutputWithContext(ctx context.Context) LookupSimPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSimPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSimPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map. The slice must be in the same location as the SIM policy.

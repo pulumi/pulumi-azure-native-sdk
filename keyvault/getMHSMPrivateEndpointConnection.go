@@ -13,9 +13,9 @@ import (
 
 // Gets the specified private endpoint connection associated with the managed HSM Pool.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
+// Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMHSMPrivateEndpointConnection(ctx *pulumi.Context, args *LookupMHSMPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupMHSMPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMHSMPrivateEndpointConnectionResult
@@ -37,10 +37,14 @@ type LookupMHSMPrivateEndpointConnectionArgs struct {
 
 // Private endpoint connection resource.
 type LookupMHSMPrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Modified whenever there is a change in the state of private endpoint connection.
 	Etag *string `pulumi:"etag"`
 	// The Azure Resource Manager resource ID for the managed HSM Pool.
 	Id string `pulumi:"id"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location *string `pulumi:"location"`
 	// The name of the managed HSM Pool.
@@ -98,6 +102,11 @@ func (o LookupMHSMPrivateEndpointConnectionResultOutput) ToLookupMHSMPrivateEndp
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupMHSMPrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMHSMPrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Modified whenever there is a change in the state of private endpoint connection.
 func (o LookupMHSMPrivateEndpointConnectionResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMHSMPrivateEndpointConnectionResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
@@ -106,6 +115,11 @@ func (o LookupMHSMPrivateEndpointConnectionResultOutput) Etag() pulumi.StringPtr
 // The Azure Resource Manager resource ID for the managed HSM Pool.
 func (o LookupMHSMPrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMHSMPrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+func (o LookupMHSMPrivateEndpointConnectionResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupMHSMPrivateEndpointConnectionResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The supported Azure location where the managed HSM Pool should be created.

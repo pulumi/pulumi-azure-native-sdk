@@ -13,9 +13,9 @@ import (
 
 // Gets a server DNS alias.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServerDnsAlias(ctx *pulumi.Context, args *LookupServerDnsAliasArgs, opts ...pulumi.InvokeOption) (*LookupServerDnsAliasResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerDnsAliasResult
@@ -37,6 +37,8 @@ type LookupServerDnsAliasArgs struct {
 
 // A server DNS alias.
 type LookupServerDnsAliasResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The fully qualified DNS record for alias
 	AzureDnsRecord string `pulumi:"azureDnsRecord"`
 	// Resource ID.
@@ -82,6 +84,11 @@ func (o LookupServerDnsAliasResultOutput) ToLookupServerDnsAliasResultOutput() L
 
 func (o LookupServerDnsAliasResultOutput) ToLookupServerDnsAliasResultOutputWithContext(ctx context.Context) LookupServerDnsAliasResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServerDnsAliasResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerDnsAliasResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The fully qualified DNS record for alias

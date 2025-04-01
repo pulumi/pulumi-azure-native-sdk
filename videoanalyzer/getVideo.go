@@ -14,8 +14,6 @@ import (
 // Retrieves an existing video resource with the given name.
 //
 // Uses Azure REST API version 2021-11-01-preview.
-//
-// Other available API versions: 2021-05-01-preview.
 func LookupVideo(ctx *pulumi.Context, args *LookupVideoArgs, opts ...pulumi.InvokeOption) (*LookupVideoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVideoResult
@@ -39,6 +37,8 @@ type LookupVideoArgs struct {
 type LookupVideoResult struct {
 	// Video archival properties.
 	Archival *VideoArchivalResponse `pulumi:"archival"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Set of URLs to the video content.
 	ContentUrls VideoContentUrlsResponse `pulumi:"contentUrls"`
 	// Optional video description provided by the user. Value can be up to 2048 characters long.
@@ -99,6 +99,11 @@ func (o LookupVideoResultOutput) ToLookupVideoResultOutputWithContext(ctx contex
 // Video archival properties.
 func (o LookupVideoResultOutput) Archival() VideoArchivalResponsePtrOutput {
 	return o.ApplyT(func(v LookupVideoResult) *VideoArchivalResponse { return v.Archival }).(VideoArchivalResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVideoResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVideoResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Set of URLs to the video content.

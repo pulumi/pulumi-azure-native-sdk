@@ -13,9 +13,9 @@ import (
 
 // Gets the search service with the given name in the given resource group.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2023-11-01.
 //
-// Other available API versions: 2021-04-01-preview, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview.
+// Other available API versions: 2022-09-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceResult
@@ -29,14 +29,16 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 type LookupServiceArgs struct {
 	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the Azure Cognitive Search service associated with the specified resource group.
+	// The name of the search service associated with the specified resource group.
 	SearchServiceName string `pulumi:"searchServiceName"`
 }
 
-// Describes an Azure Cognitive Search service and its current state.
+// Describes a search service and its current state.
 type LookupServiceResult struct {
 	// Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
 	AuthOptions *DataPlaneAuthOptionsResponse `pulumi:"authOptions"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Specifies any policy regarding encryption of resources (such as indexes) using customer manager keys within a search service.
@@ -51,11 +53,11 @@ type LookupServiceResult struct {
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Network specific rules that determine how the Azure Cognitive Search service may be reached.
+	// Network-specific rules that determine how the search service may be reached.
 	NetworkRuleSet *NetworkRuleSetResponse `pulumi:"networkRuleSet"`
 	// The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
 	PartitionCount *int `pulumi:"partitionCount"`
-	// The list of private endpoint connections to the Azure Cognitive Search service.
+	// The list of private endpoint connections to the search service.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// The state of the last provisioning operation performed on the search service. Provisioning is an intermediate state that occurs while service capacity is being established. After capacity is set up, provisioningState changes to either 'succeeded' or 'failed'. Client applications can poll provisioning status (the recommended polling interval is from 30 seconds to one minute) by using the Get Search Service operation to see when an operation is completed. If you are using the free service, this value tends to come back as 'succeeded' directly in the call to Create search service. This is because the free service uses capacity that is already set up.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -63,11 +65,13 @@ type LookupServiceResult struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
 	ReplicaCount *int `pulumi:"replicaCount"`
-	// The list of shared private link resources managed by the Azure Cognitive Search service.
+	// Sets options that control the availability of semantic search. This configuration is only possible for certain search SKUs in certain locations.
+	SemanticSearch *string `pulumi:"semanticSearch"`
+	// The list of shared private link resources managed by the search service.
 	SharedPrivateLinkResources []SharedPrivateLinkResourceResponse `pulumi:"sharedPrivateLinkResources"`
-	// The SKU of the Search Service, which determines price tier and capacity limits. This property is required when creating a new Search Service.
+	// The SKU of the search service, which determines billing rate and capacity limits. This property is required when creating a new search service.
 	Sku *SkuResponse `pulumi:"sku"`
-	// The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. If your service is in the degraded, disabled, or error states, it means the Azure Cognitive Search team is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
+	// The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. If your service is in the degraded, disabled, or error states, Microsoft is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
 	Status string `pulumi:"status"`
 	// The details of the search service status.
 	StatusDetails string `pulumi:"statusDetails"`
@@ -113,7 +117,7 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 type LookupServiceOutputArgs struct {
 	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the Azure Cognitive Search service associated with the specified resource group.
+	// The name of the search service associated with the specified resource group.
 	SearchServiceName pulumi.StringInput `pulumi:"searchServiceName"`
 }
 
@@ -121,7 +125,7 @@ func (LookupServiceOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupServiceArgs)(nil)).Elem()
 }
 
-// Describes an Azure Cognitive Search service and its current state.
+// Describes a search service and its current state.
 type LookupServiceResultOutput struct{ *pulumi.OutputState }
 
 func (LookupServiceResultOutput) ElementType() reflect.Type {
@@ -139,6 +143,11 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx co
 // Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
 func (o LookupServiceResultOutput) AuthOptions() DataPlaneAuthOptionsResponsePtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *DataPlaneAuthOptionsResponse { return v.AuthOptions }).(DataPlaneAuthOptionsResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.
@@ -176,7 +185,7 @@ func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Network specific rules that determine how the Azure Cognitive Search service may be reached.
+// Network-specific rules that determine how the search service may be reached.
 func (o LookupServiceResultOutput) NetworkRuleSet() NetworkRuleSetResponsePtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *NetworkRuleSetResponse { return v.NetworkRuleSet }).(NetworkRuleSetResponsePtrOutput)
 }
@@ -186,7 +195,7 @@ func (o LookupServiceResultOutput) PartitionCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *int { return v.PartitionCount }).(pulumi.IntPtrOutput)
 }
 
-// The list of private endpoint connections to the Azure Cognitive Search service.
+// The list of private endpoint connections to the search service.
 func (o LookupServiceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupServiceResult) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
@@ -206,17 +215,22 @@ func (o LookupServiceResultOutput) ReplicaCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *int { return v.ReplicaCount }).(pulumi.IntPtrOutput)
 }
 
-// The list of shared private link resources managed by the Azure Cognitive Search service.
+// Sets options that control the availability of semantic search. This configuration is only possible for certain search SKUs in certain locations.
+func (o LookupServiceResultOutput) SemanticSearch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *string { return v.SemanticSearch }).(pulumi.StringPtrOutput)
+}
+
+// The list of shared private link resources managed by the search service.
 func (o LookupServiceResultOutput) SharedPrivateLinkResources() SharedPrivateLinkResourceResponseArrayOutput {
 	return o.ApplyT(func(v LookupServiceResult) []SharedPrivateLinkResourceResponse { return v.SharedPrivateLinkResources }).(SharedPrivateLinkResourceResponseArrayOutput)
 }
 
-// The SKU of the Search Service, which determines price tier and capacity limits. This property is required when creating a new Search Service.
+// The SKU of the search service, which determines billing rate and capacity limits. This property is required when creating a new search service.
 func (o LookupServiceResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
-// The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. If your service is in the degraded, disabled, or error states, it means the Azure Cognitive Search team is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
+// The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. If your service is in the degraded, disabled, or error states, Microsoft is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
 func (o LookupServiceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Status }).(pulumi.StringOutput)
 }

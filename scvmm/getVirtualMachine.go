@@ -13,9 +13,9 @@ import (
 
 // Implements VirtualMachine GET method.
 //
-// Uses Azure REST API version 2022-05-21-preview.
+// Uses Azure REST API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-04-01-preview.
+// Other available API versions: 2022-05-21-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineResult
@@ -37,6 +37,8 @@ type LookupVirtualMachineArgs struct {
 type LookupVirtualMachineResult struct {
 	// Availability Sets in vm.
 	AvailabilitySets []VirtualMachinePropertiesResponseAvailabilitySets `pulumi:"availabilitySets"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Type of checkpoint supported for the vm.
 	CheckpointType *string `pulumi:"checkpointType"`
 	// Checkpoints in the vm.
@@ -129,6 +131,11 @@ func (o LookupVirtualMachineResultOutput) AvailabilitySets() VirtualMachinePrope
 	return o.ApplyT(func(v LookupVirtualMachineResult) []VirtualMachinePropertiesResponseAvailabilitySets {
 		return v.AvailabilitySets
 	}).(VirtualMachinePropertiesResponseAvailabilitySetsArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualMachineResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Type of checkpoint supported for the vm.

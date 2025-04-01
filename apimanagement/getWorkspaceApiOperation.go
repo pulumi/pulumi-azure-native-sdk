@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkspaceApiOperation(ctx *pulumi.Context, args *LookupWorkspaceApiOperationArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiOperationResult
@@ -41,6 +41,8 @@ type LookupWorkspaceApiOperationArgs struct {
 
 // API Operation details.
 type LookupWorkspaceApiOperationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description of the operation. May include HTML formatting tags.
 	Description *string `pulumi:"description"`
 	// Operation Name.
@@ -104,6 +106,11 @@ func (o LookupWorkspaceApiOperationResultOutput) ToLookupWorkspaceApiOperationRe
 
 func (o LookupWorkspaceApiOperationResultOutput) ToLookupWorkspaceApiOperationResultOutputWithContext(ctx context.Context) LookupWorkspaceApiOperationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkspaceApiOperationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceApiOperationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the operation. May include HTML formatting tags.

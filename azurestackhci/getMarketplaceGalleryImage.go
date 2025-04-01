@@ -13,9 +13,9 @@ import (
 
 // Gets a marketplace gallery image
 //
-// Uses Azure REST API version 2022-12-15-preview.
+// Uses Azure REST API version 2025-02-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMarketplaceGalleryImage(ctx *pulumi.Context, args *LookupMarketplaceGalleryImageArgs, opts ...pulumi.InvokeOption) (*LookupMarketplaceGalleryImageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMarketplaceGalleryImageResult
@@ -35,15 +35,17 @@ type LookupMarketplaceGalleryImageArgs struct {
 
 // The marketplace gallery image resource definition.
 type LookupMarketplaceGalleryImageResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
 	CloudInitDataSource *string `pulumi:"cloudInitDataSource"`
-	// Container Name for storage container
-	ContainerName *string `pulumi:"containerName"`
+	// Storage ContainerID of the storage container to be used for marketplace gallery image
+	ContainerId *string `pulumi:"containerId"`
 	// The extendedLocation of the resource.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// The hypervisor generation of the Virtual Machine [V1, V2]
 	HyperVGeneration *string `pulumi:"hyperVGeneration"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// This is the gallery image definition identifier.
 	Identifier *GalleryImageIdentifierResponse `pulumi:"identifier"`
@@ -52,7 +54,7 @@ type LookupMarketplaceGalleryImageResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Operating system type that the gallery image uses [Windows, Linux]
-	OsType *string `pulumi:"osType"`
+	OsType string `pulumi:"osType"`
 	// Provisioning state of the marketplace gallery image.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The observed state of marketplace gallery images
@@ -102,14 +104,19 @@ func (o LookupMarketplaceGalleryImageResultOutput) ToLookupMarketplaceGalleryIma
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupMarketplaceGalleryImageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMarketplaceGalleryImageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
 func (o LookupMarketplaceGalleryImageResultOutput) CloudInitDataSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMarketplaceGalleryImageResult) *string { return v.CloudInitDataSource }).(pulumi.StringPtrOutput)
 }
 
-// Container Name for storage container
-func (o LookupMarketplaceGalleryImageResultOutput) ContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMarketplaceGalleryImageResult) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+// Storage ContainerID of the storage container to be used for marketplace gallery image
+func (o LookupMarketplaceGalleryImageResultOutput) ContainerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMarketplaceGalleryImageResult) *string { return v.ContainerId }).(pulumi.StringPtrOutput)
 }
 
 // The extendedLocation of the resource.
@@ -122,7 +129,7 @@ func (o LookupMarketplaceGalleryImageResultOutput) HyperVGeneration() pulumi.Str
 	return o.ApplyT(func(v LookupMarketplaceGalleryImageResult) *string { return v.HyperVGeneration }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMarketplaceGalleryImageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMarketplaceGalleryImageResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -143,8 +150,8 @@ func (o LookupMarketplaceGalleryImageResultOutput) Name() pulumi.StringOutput {
 }
 
 // Operating system type that the gallery image uses [Windows, Linux]
-func (o LookupMarketplaceGalleryImageResultOutput) OsType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMarketplaceGalleryImageResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
+func (o LookupMarketplaceGalleryImageResultOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMarketplaceGalleryImageResult) string { return v.OsType }).(pulumi.StringOutput)
 }
 
 // Provisioning state of the marketplace gallery image.

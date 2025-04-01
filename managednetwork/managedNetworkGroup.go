@@ -14,10 +14,12 @@ import (
 
 // The Managed Network Group resource
 //
-// Uses Azure REST API version 2019-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2019-06-01-preview.
+// Uses Azure REST API version 2019-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01-preview.
 type ManagedNetworkGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Responsibility role under which this Managed Network Group will be created
@@ -169,6 +171,11 @@ func (o ManagedNetworkGroupOutput) ToManagedNetworkGroupOutput() ManagedNetworkG
 
 func (o ManagedNetworkGroupOutput) ToManagedNetworkGroupOutputWithContext(ctx context.Context) ManagedNetworkGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagedNetworkGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedNetworkGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

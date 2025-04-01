@@ -13,9 +13,9 @@ import (
 
 // Gets information about a private endpoint connection under a disk access resource.
 //
-// Uses Azure REST API version 2022-07-02.
+// Uses Azure REST API version 2024-03-02.
 //
-// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDiskAccessAPrivateEndpointConnection(ctx *pulumi.Context, args *LookupDiskAccessAPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupDiskAccessAPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskAccessAPrivateEndpointConnectionResult
@@ -37,6 +37,8 @@ type LookupDiskAccessAPrivateEndpointConnectionArgs struct {
 
 // The Private Endpoint Connection resource.
 type LookupDiskAccessAPrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// private endpoint connection Id
 	Id string `pulumi:"id"`
 	// private endpoint connection name
@@ -86,6 +88,11 @@ func (o LookupDiskAccessAPrivateEndpointConnectionResultOutput) ToLookupDiskAcce
 
 func (o LookupDiskAccessAPrivateEndpointConnectionResultOutput) ToLookupDiskAccessAPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupDiskAccessAPrivateEndpointConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDiskAccessAPrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskAccessAPrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // private endpoint connection Id

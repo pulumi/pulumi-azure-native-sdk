@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2021-06-01.
 //
-// Other available API versions: 2020-01-01.
+// Other available API versions: 2019-01-01-preview, 2020-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAssessment(ctx *pulumi.Context, args *LookupAssessmentArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssessmentResult
@@ -39,6 +39,8 @@ type LookupAssessmentArgs struct {
 type LookupAssessmentResult struct {
 	// Additional data regarding the assessment
 	AdditionalData map[string]string `pulumi:"additionalData"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// User friendly display name of the assessment
 	DisplayName string `pulumi:"displayName"`
 	// Resource Id
@@ -99,6 +101,11 @@ func (o LookupAssessmentResultOutput) ToLookupAssessmentResultOutputWithContext(
 // Additional data regarding the assessment
 func (o LookupAssessmentResultOutput) AdditionalData() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAssessmentResult) map[string]string { return v.AdditionalData }).(pulumi.StringMapOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAssessmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssessmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // User friendly display name of the assessment

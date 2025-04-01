@@ -14,26 +14,30 @@ import (
 
 // Asset definition.
 //
-// Uses Azure REST API version 2023-11-01-preview.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01-preview.
 //
-// Other available API versions: 2024-09-01-preview, 2024-11-01.
+// Other available API versions: 2023-11-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Asset struct {
 	pulumi.CustomResourceState
 
-	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-	AssetEndpointProfileUri pulumi.StringOutput `pulumi:"assetEndpointProfileUri"`
-	// Resource path to asset type (model) definition.
-	AssetType pulumi.StringPtrOutput `pulumi:"assetType"`
+	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
+	AssetEndpointProfileRef pulumi.StringOutput `pulumi:"assetEndpointProfileRef"`
 	// A set of key-value pairs that contain custom attributes set by the customer.
 	Attributes pulumi.AnyOutput `pulumi:"attributes"`
-	// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration.
-	DataPoints DataPointResponseArrayOutput `pulumi:"dataPoints"`
-	// Stringified JSON that contains protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here.
-	DefaultDataPointsConfiguration pulumi.StringPtrOutput `pulumi:"defaultDataPointsConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
+	Datasets DatasetResponseArrayOutput `pulumi:"datasets"`
+	// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
+	DefaultDatasetsConfiguration pulumi.StringPtrOutput `pulumi:"defaultDatasetsConfiguration"`
 	// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
 	DefaultEventsConfiguration pulumi.StringPtrOutput `pulumi:"defaultEventsConfiguration"`
+	// Object that describes the default topic information for the asset.
+	DefaultTopic TopicResponsePtrOutput `pulumi:"defaultTopic"`
 	// Human-readable description of the asset.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
+	DiscoveredAssetRefs pulumi.StringArrayOutput `pulumi:"discoveredAssetRefs"`
 	// Human-readable display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Reference to the documentation.
@@ -77,7 +81,7 @@ type Asset struct {
 	// Globally unique, immutable, non-reusable id.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
 	// An integer that is incremented each time the resource is modified.
-	Version pulumi.IntOutput `pulumi:"version"`
+	Version pulumi.Float64Output `pulumi:"version"`
 }
 
 // NewAsset registers a new resource with the given unique name, arguments, and options.
@@ -87,14 +91,17 @@ func NewAsset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AssetEndpointProfileUri == nil {
-		return nil, errors.New("invalid value for required argument 'AssetEndpointProfileUri'")
+	if args.AssetEndpointProfileRef == nil {
+		return nil, errors.New("invalid value for required argument 'AssetEndpointProfileRef'")
 	}
 	if args.ExtendedLocation == nil {
 		return nil, errors.New("invalid value for required argument 'ExtendedLocation'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.DefaultTopic != nil {
+		args.DefaultTopic = args.DefaultTopic.ToTopicPtrOutput().ApplyT(func(v *Topic) *Topic { return v.Defaults() }).(TopicPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -141,22 +148,24 @@ func (AssetState) ElementType() reflect.Type {
 }
 
 type assetArgs struct {
-	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-	AssetEndpointProfileUri string `pulumi:"assetEndpointProfileUri"`
+	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
+	AssetEndpointProfileRef string `pulumi:"assetEndpointProfileRef"`
 	// Asset name parameter.
 	AssetName *string `pulumi:"assetName"`
-	// Resource path to asset type (model) definition.
-	AssetType *string `pulumi:"assetType"`
 	// A set of key-value pairs that contain custom attributes set by the customer.
 	Attributes interface{} `pulumi:"attributes"`
-	// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration.
-	DataPoints []DataPoint `pulumi:"dataPoints"`
-	// Stringified JSON that contains protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here.
-	DefaultDataPointsConfiguration *string `pulumi:"defaultDataPointsConfiguration"`
+	// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
+	Datasets []Dataset `pulumi:"datasets"`
+	// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
+	DefaultDatasetsConfiguration *string `pulumi:"defaultDatasetsConfiguration"`
 	// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
 	DefaultEventsConfiguration *string `pulumi:"defaultEventsConfiguration"`
+	// Object that describes the default topic information for the asset.
+	DefaultTopic *Topic `pulumi:"defaultTopic"`
 	// Human-readable description of the asset.
 	Description *string `pulumi:"description"`
+	// Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
+	DiscoveredAssetRefs []string `pulumi:"discoveredAssetRefs"`
 	// Human-readable display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Reference to the documentation.
@@ -193,22 +202,24 @@ type assetArgs struct {
 
 // The set of arguments for constructing a Asset resource.
 type AssetArgs struct {
-	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-	AssetEndpointProfileUri pulumi.StringInput
+	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
+	AssetEndpointProfileRef pulumi.StringInput
 	// Asset name parameter.
 	AssetName pulumi.StringPtrInput
-	// Resource path to asset type (model) definition.
-	AssetType pulumi.StringPtrInput
 	// A set of key-value pairs that contain custom attributes set by the customer.
 	Attributes pulumi.Input
-	// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration.
-	DataPoints DataPointArrayInput
-	// Stringified JSON that contains protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here.
-	DefaultDataPointsConfiguration pulumi.StringPtrInput
+	// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
+	Datasets DatasetArrayInput
+	// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
+	DefaultDatasetsConfiguration pulumi.StringPtrInput
 	// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
 	DefaultEventsConfiguration pulumi.StringPtrInput
+	// Object that describes the default topic information for the asset.
+	DefaultTopic TopicPtrInput
 	// Human-readable description of the asset.
 	Description pulumi.StringPtrInput
+	// Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
+	DiscoveredAssetRefs pulumi.StringArrayInput
 	// Human-readable display name.
 	DisplayName pulumi.StringPtrInput
 	// Reference to the documentation.
@@ -280,14 +291,9 @@ func (o AssetOutput) ToAssetOutputWithContext(ctx context.Context) AssetOutput {
 	return o
 }
 
-// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-func (o AssetOutput) AssetEndpointProfileUri() pulumi.StringOutput {
-	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.AssetEndpointProfileUri }).(pulumi.StringOutput)
-}
-
-// Resource path to asset type (model) definition.
-func (o AssetOutput) AssetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.AssetType }).(pulumi.StringPtrOutput)
+// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
+func (o AssetOutput) AssetEndpointProfileRef() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.AssetEndpointProfileRef }).(pulumi.StringOutput)
 }
 
 // A set of key-value pairs that contain custom attributes set by the customer.
@@ -295,14 +301,19 @@ func (o AssetOutput) Attributes() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Asset) pulumi.AnyOutput { return v.Attributes }).(pulumi.AnyOutput)
 }
 
-// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration.
-func (o AssetOutput) DataPoints() DataPointResponseArrayOutput {
-	return o.ApplyT(func(v *Asset) DataPointResponseArrayOutput { return v.DataPoints }).(DataPointResponseArrayOutput)
+// The Azure API version of the resource.
+func (o AssetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Stringified JSON that contains protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here.
-func (o AssetOutput) DefaultDataPointsConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.DefaultDataPointsConfiguration }).(pulumi.StringPtrOutput)
+// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
+func (o AssetOutput) Datasets() DatasetResponseArrayOutput {
+	return o.ApplyT(func(v *Asset) DatasetResponseArrayOutput { return v.Datasets }).(DatasetResponseArrayOutput)
+}
+
+// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
+func (o AssetOutput) DefaultDatasetsConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.DefaultDatasetsConfiguration }).(pulumi.StringPtrOutput)
 }
 
 // Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
@@ -310,9 +321,19 @@ func (o AssetOutput) DefaultEventsConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.DefaultEventsConfiguration }).(pulumi.StringPtrOutput)
 }
 
+// Object that describes the default topic information for the asset.
+func (o AssetOutput) DefaultTopic() TopicResponsePtrOutput {
+	return o.ApplyT(func(v *Asset) TopicResponsePtrOutput { return v.DefaultTopic }).(TopicResponsePtrOutput)
+}
+
 // Human-readable description of the asset.
 func (o AssetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
+func (o AssetOutput) DiscoveredAssetRefs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringArrayOutput { return v.DiscoveredAssetRefs }).(pulumi.StringArrayOutput)
 }
 
 // Human-readable display name.
@@ -421,8 +442,8 @@ func (o AssetOutput) Uuid() pulumi.StringOutput {
 }
 
 // An integer that is incremented each time the resource is modified.
-func (o AssetOutput) Version() pulumi.IntOutput {
-	return o.ApplyT(func(v *Asset) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+func (o AssetOutput) Version() pulumi.Float64Output {
+	return o.ApplyT(func(v *Asset) pulumi.Float64Output { return v.Version }).(pulumi.Float64Output)
 }
 
 func init() {

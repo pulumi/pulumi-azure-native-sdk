@@ -13,9 +13,9 @@ import (
 
 // Returns details of the API.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2024-03-15-preview.
 //
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Other available API versions: 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApi(ctx *pulumi.Context, args *LookupApiArgs, opts ...pulumi.InvokeOption) (*LookupApiResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiResult
@@ -39,6 +39,8 @@ type LookupApiArgs struct {
 
 // API entity.
 type LookupApiResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The set of contacts
 	Contacts []ContactResponse `pulumi:"contacts"`
 	// The custom metadata defined for API catalog entities.
@@ -106,6 +108,11 @@ func (o LookupApiResultOutput) ToLookupApiResultOutput() LookupApiResultOutput {
 
 func (o LookupApiResultOutput) ToLookupApiResultOutputWithContext(ctx context.Context) LookupApiResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The set of contacts

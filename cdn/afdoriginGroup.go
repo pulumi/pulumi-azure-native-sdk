@@ -14,12 +14,14 @@ import (
 
 // AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AFDOriginGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion  pulumi.StringOutput `pulumi:"azureApiVersion"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
 	// Health probe settings to the origin that is used to determine the health of the origin.
 	HealthProbeSettings HealthProbeParametersResponsePtrOutput `pulumi:"healthProbeSettings"`
@@ -189,6 +191,11 @@ func (o AFDOriginGroupOutput) ToAFDOriginGroupOutput() AFDOriginGroupOutput {
 
 func (o AFDOriginGroupOutput) ToAFDOriginGroupOutputWithContext(ctx context.Context) AFDOriginGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AFDOriginGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AFDOriginGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o AFDOriginGroupOutput) DeploymentStatus() pulumi.StringOutput {

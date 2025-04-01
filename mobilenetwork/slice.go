@@ -14,12 +14,14 @@ import (
 
 // Network slice resource. Must be created in the same location as its parent mobile network.
 //
-// Uses Azure REST API version 2023-06-01. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
 //
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
+// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Slice struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An optional description for this network slice.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The geo-location where the resource lives
@@ -180,6 +182,11 @@ func (o SliceOutput) ToSliceOutput() SliceOutput {
 
 func (o SliceOutput) ToSliceOutputWithContext(ctx context.Context) SliceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SliceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slice) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An optional description for this network slice.

@@ -14,8 +14,6 @@ import (
 // Gets information about the specified cluster.
 //
 // Uses Azure REST API version 2020-03-01.
-//
-// Other available API versions: 2020-03-01-preview.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
@@ -35,6 +33,8 @@ type LookupClusterArgs struct {
 
 // A Stream Analytics Cluster object
 type LookupClusterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Represents the number of streaming units currently being used on the cluster.
 	CapacityAllocated int `pulumi:"capacityAllocated"`
 	// Represents the sum of the SUs of all streaming jobs associated with the cluster. If all of the jobs were running, this would be the capacity allocated.
@@ -94,6 +94,11 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutput() LookupClusterRe
 
 func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx context.Context) LookupClusterResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Represents the number of streaming units currently being used on the cluster.

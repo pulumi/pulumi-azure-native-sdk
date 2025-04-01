@@ -35,6 +35,8 @@ type LookupPimRoleEligibilityScheduleArgs struct {
 type LookupPimRoleEligibilityScheduleResult struct {
 	// The approvalId of the role eligibility schedule request.
 	ApprovalId string `pulumi:"approvalId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
 	Condition *string `pulumi:"condition"`
 	// Version of the condition. Currently accepted value is '2.0'
@@ -113,6 +115,11 @@ func (o LookupPimRoleEligibilityScheduleResultOutput) ToLookupPimRoleEligibility
 // The approvalId of the role eligibility schedule request.
 func (o LookupPimRoleEligibilityScheduleResultOutput) ApprovalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPimRoleEligibilityScheduleResult) string { return v.ApprovalId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPimRoleEligibilityScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPimRoleEligibilityScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'

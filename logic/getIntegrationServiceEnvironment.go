@@ -33,6 +33,8 @@ type LookupIntegrationServiceEnvironmentArgs struct {
 
 // The integration service environment.
 type LookupIntegrationServiceEnvironmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id.
 	Id string `pulumi:"id"`
 	// Managed service identity properties.
@@ -84,6 +86,11 @@ func (o LookupIntegrationServiceEnvironmentResultOutput) ToLookupIntegrationServ
 
 func (o LookupIntegrationServiceEnvironmentResultOutput) ToLookupIntegrationServiceEnvironmentResultOutputWithContext(ctx context.Context) LookupIntegrationServiceEnvironmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationServiceEnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationServiceEnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id.

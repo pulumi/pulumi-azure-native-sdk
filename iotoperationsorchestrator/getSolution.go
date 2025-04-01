@@ -33,6 +33,8 @@ type LookupSolutionArgs struct {
 
 // A Solution resource belonging to an Instance resource.
 type LookupSolutionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A list of components
 	Components []ComponentPropertiesResponse `pulumi:"components"`
 	// Edge location of the resource.
@@ -88,6 +90,11 @@ func (o LookupSolutionResultOutput) ToLookupSolutionResultOutput() LookupSolutio
 
 func (o LookupSolutionResultOutput) ToLookupSolutionResultOutputWithContext(ctx context.Context) LookupSolutionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSolutionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSolutionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A list of components

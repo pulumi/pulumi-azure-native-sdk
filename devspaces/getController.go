@@ -32,6 +32,8 @@ type LookupControllerArgs struct {
 }
 
 type LookupControllerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// DNS name for accessing DataPlane services
 	DataPlaneFqdn string `pulumi:"dataPlaneFqdn"`
 	// DNS suffix for public endpoints running in the Azure Dev Spaces Controller.
@@ -88,6 +90,11 @@ func (o LookupControllerResultOutput) ToLookupControllerResultOutput() LookupCon
 
 func (o LookupControllerResultOutput) ToLookupControllerResultOutputWithContext(ctx context.Context) LookupControllerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // DNS name for accessing DataPlane services

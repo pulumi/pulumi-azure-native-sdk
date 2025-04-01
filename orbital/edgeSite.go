@@ -14,12 +14,14 @@ import (
 
 // A customer's reference to a global communications site site.
 //
-// Uses Azure REST API version 2024-03-01-preview.
+// Uses Azure REST API version 2024-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-01-preview.
 //
-// Other available API versions: 2024-03-01.
+// Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native orbital [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type EdgeSite struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A reference to global communications site.
 	GlobalCommunicationsSite EdgeSitesPropertiesResponseGlobalCommunicationsSiteOutput `pulumi:"globalCommunicationsSite"`
 	// The geo-location where the resource lives
@@ -150,6 +152,11 @@ func (o EdgeSiteOutput) ToEdgeSiteOutput() EdgeSiteOutput {
 
 func (o EdgeSiteOutput) ToEdgeSiteOutputWithContext(ctx context.Context) EdgeSiteOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EdgeSiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeSite) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A reference to global communications site.

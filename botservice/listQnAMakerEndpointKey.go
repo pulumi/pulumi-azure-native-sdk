@@ -13,9 +13,9 @@ import (
 
 // Lists the QnA Maker endpoint keys
 //
-// Uses Azure REST API version 2022-09-15.
+// Uses Azure REST API version 2023-09-15-preview.
 //
-// Other available API versions: 2022-06-15-preview, 2023-09-15-preview.
+// Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListQnAMakerEndpointKey(ctx *pulumi.Context, args *ListQnAMakerEndpointKeyArgs, opts ...pulumi.InvokeOption) (*ListQnAMakerEndpointKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListQnAMakerEndpointKeyResult

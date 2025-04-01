@@ -33,6 +33,8 @@ type LookupIamVirtualMfaDeviceArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupIamVirtualMfaDeviceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -82,6 +84,11 @@ func (o LookupIamVirtualMfaDeviceResultOutput) ToLookupIamVirtualMfaDeviceResult
 
 func (o LookupIamVirtualMfaDeviceResultOutput) ToLookupIamVirtualMfaDeviceResultOutputWithContext(ctx context.Context) LookupIamVirtualMfaDeviceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIamVirtualMfaDeviceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIamVirtualMfaDeviceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

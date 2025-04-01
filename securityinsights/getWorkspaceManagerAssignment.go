@@ -13,9 +13,9 @@ import (
 
 // Gets a workspace manager assignment
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkspaceManagerAssignment(ctx *pulumi.Context, args *LookupWorkspaceManagerAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceManagerAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceManagerAssignmentResult
@@ -37,9 +37,11 @@ type LookupWorkspaceManagerAssignmentArgs struct {
 
 // The workspace manager assignment
 type LookupWorkspaceManagerAssignmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// List of resources included in this workspace manager assignment
 	Items []AssignmentItemResponse `pulumi:"items"`
@@ -94,12 +96,17 @@ func (o LookupWorkspaceManagerAssignmentResultOutput) ToLookupWorkspaceManagerAs
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWorkspaceManagerAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceManagerAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Etag.
 func (o LookupWorkspaceManagerAssignmentResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceManagerAssignmentResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWorkspaceManagerAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceManagerAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }

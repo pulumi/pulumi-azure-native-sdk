@@ -13,9 +13,9 @@ import (
 
 // Get a ElasticSan.
 //
-// Uses Azure REST API version 2021-11-20-preview.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2021-11-20-preview, 2022-12-01-preview, 2023-01-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elasticsan [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupElasticSan(ctx *pulumi.Context, args *LookupElasticSanArgs, opts ...pulumi.InvokeOption) (*LookupElasticSanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupElasticSanResult
@@ -37,23 +37,29 @@ type LookupElasticSanArgs struct {
 type LookupElasticSanResult struct {
 	// Logical zone for Elastic San resource; example: ["1"].
 	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Base size of the Elastic San appliance in TiB.
 	BaseSizeTiB float64 `pulumi:"baseSizeTiB"`
 	// Extended size of the Elastic San appliance in TiB.
 	ExtendedCapacitySizeTiB float64 `pulumi:"extendedCapacitySizeTiB"`
-	// Azure resource identifier.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The geo-location where the resource lives.
-	Location *string `pulumi:"location"`
-	// Azure resource name.
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// The list of Private Endpoint Connections.
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// State of the operation on the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// resource sku
 	Sku SkuResponse `pulumi:"sku"`
-	// Resource metadata required by ARM RPC
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Azure resource tags.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Total Provisioned IOPS of the Elastic San appliance.
 	TotalIops float64 `pulumi:"totalIops"`
@@ -63,7 +69,7 @@ type LookupElasticSanResult struct {
 	TotalSizeTiB float64 `pulumi:"totalSizeTiB"`
 	// Total size of the provisioned Volumes in GiB.
 	TotalVolumeSizeGiB float64 `pulumi:"totalVolumeSizeGiB"`
-	// Azure resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Total number of volume groups in this Elastic San appliance.
 	VolumeGroupCount float64 `pulumi:"volumeGroupCount"`
@@ -109,6 +115,11 @@ func (o LookupElasticSanResultOutput) AvailabilityZones() pulumi.StringArrayOutp
 	return o.ApplyT(func(v LookupElasticSanResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupElasticSanResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSanResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Base size of the Elastic San appliance in TiB.
 func (o LookupElasticSanResultOutput) BaseSizeTiB() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupElasticSanResult) float64 { return v.BaseSizeTiB }).(pulumi.Float64Output)
@@ -119,19 +130,26 @@ func (o LookupElasticSanResultOutput) ExtendedCapacitySizeTiB() pulumi.Float64Ou
 	return o.ApplyT(func(v LookupElasticSanResult) float64 { return v.ExtendedCapacitySizeTiB }).(pulumi.Float64Output)
 }
 
-// Azure resource identifier.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupElasticSanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticSanResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives.
-func (o LookupElasticSanResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupElasticSanResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+// The geo-location where the resource lives
+func (o LookupElasticSanResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSanResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Azure resource name.
+// The name of the resource
 func (o LookupElasticSanResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticSanResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of Private Endpoint Connections.
+func (o LookupElasticSanResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupElasticSanResult) []PrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // State of the operation on the resource.
@@ -139,17 +157,22 @@ func (o LookupElasticSanResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticSanResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
+func (o LookupElasticSanResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupElasticSanResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
 // resource sku
 func (o LookupElasticSanResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupElasticSanResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
-// Resource metadata required by ARM RPC
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupElasticSanResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupElasticSanResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource tags.
+// Resource tags.
 func (o LookupElasticSanResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupElasticSanResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -174,7 +197,7 @@ func (o LookupElasticSanResultOutput) TotalVolumeSizeGiB() pulumi.Float64Output 
 	return o.ApplyT(func(v LookupElasticSanResult) float64 { return v.TotalVolumeSizeGiB }).(pulumi.Float64Output)
 }
 
-// Azure resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupElasticSanResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticSanResult) string { return v.Type }).(pulumi.StringOutput)
 }

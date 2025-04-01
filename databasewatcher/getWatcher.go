@@ -13,9 +13,9 @@ import (
 
 // Get a Watcher
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2024-10-01-preview.
 //
-// Other available API versions: 2024-07-19-preview, 2024-10-01-preview, 2025-01-02.
+// Other available API versions: 2023-09-01-preview, 2024-07-19-preview, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databasewatcher [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWatcher(ctx *pulumi.Context, args *LookupWatcherArgs, opts ...pulumi.InvokeOption) (*LookupWatcherResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWatcherResult
@@ -35,9 +35,13 @@ type LookupWatcherArgs struct {
 
 // The DatabaseWatcherProviderHub resource.
 type LookupWatcherResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The data store for collected monitoring data.
 	Datastore *DatastoreResponse `pulumi:"datastore"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The resource ID of a user-assigned managed identity that will be assigned to a new alert rule.
+	DefaultAlertRuleIdentityResourceId *string `pulumi:"defaultAlertRuleIdentityResourceId"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
@@ -92,12 +96,22 @@ func (o LookupWatcherResultOutput) ToLookupWatcherResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWatcherResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWatcherResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The data store for collected monitoring data.
 func (o LookupWatcherResultOutput) Datastore() DatastoreResponsePtrOutput {
 	return o.ApplyT(func(v LookupWatcherResult) *DatastoreResponse { return v.Datastore }).(DatastoreResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The resource ID of a user-assigned managed identity that will be assigned to a new alert rule.
+func (o LookupWatcherResultOutput) DefaultAlertRuleIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWatcherResult) *string { return v.DefaultAlertRuleIdentityResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWatcherResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWatcherResult) string { return v.Id }).(pulumi.StringOutput)
 }

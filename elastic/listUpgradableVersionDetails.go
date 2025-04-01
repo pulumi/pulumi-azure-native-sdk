@@ -13,9 +13,9 @@ import (
 
 // Stack Versions that this version can upgrade to
 //
-// Uses Azure REST API version 2023-06-01.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview.
+// Other available API versions: 2023-06-01, 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListUpgradableVersionDetails(ctx *pulumi.Context, args *ListUpgradableVersionDetailsArgs, opts ...pulumi.InvokeOption) (*ListUpgradableVersionDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListUpgradableVersionDetailsResult
@@ -29,7 +29,7 @@ func ListUpgradableVersionDetails(ctx *pulumi.Context, args *ListUpgradableVersi
 type ListUpgradableVersionDetailsArgs struct {
 	// Monitor resource name
 	MonitorName string `pulumi:"monitorName"`
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -53,7 +53,7 @@ func ListUpgradableVersionDetailsOutput(ctx *pulumi.Context, args ListUpgradable
 type ListUpgradableVersionDetailsOutputArgs struct {
 	// Monitor resource name
 	MonitorName pulumi.StringInput `pulumi:"monitorName"`
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

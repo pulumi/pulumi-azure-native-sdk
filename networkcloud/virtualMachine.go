@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-12-12-preview.
+// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type VirtualMachine struct {
 	AdminUsername pulumi.StringOutput `pulumi:"adminUsername"`
 	// The cluster availability zone containing this virtual machine.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource ID of the bare metal machine that hosts the virtual machine.
 	BareMetalMachineId pulumi.StringOutput `pulumi:"bareMetalMachineId"`
 	// Selects the boot method for the virtual machine.
@@ -30,19 +32,23 @@ type VirtualMachine struct {
 	CloudServicesNetworkAttachment NetworkAttachmentResponseOutput `pulumi:"cloudServicesNetworkAttachment"`
 	// The resource ID of the cluster the virtual machine is created for.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// The extended location to use for creation of a VM console resource.
+	ConsoleExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"consoleExtendedLocation"`
 	// The number of CPU cores in the virtual machine.
 	CpuCores pulumi.Float64Output `pulumi:"cpuCores"`
 	// The more detailed status of the virtual machine.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine.
 	IsolateEmulatorThread pulumi.StringPtrOutput `pulumi:"isolateEmulatorThread"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The memory size of the virtual machine in GB.
+	// The memory size of the virtual machine. Allocations are measured in gibibytes.
 	MemorySizeGB pulumi.Float64Output `pulumi:"memorySizeGB"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -184,6 +190,8 @@ type virtualMachineArgs struct {
 	BootMethod *string `pulumi:"bootMethod"`
 	// The cloud service network that provides platform-level services for the virtual machine.
 	CloudServicesNetworkAttachment NetworkAttachment `pulumi:"cloudServicesNetworkAttachment"`
+	// The extended location to use for creation of a VM console resource.
+	ConsoleExtendedLocation *ExtendedLocation `pulumi:"consoleExtendedLocation"`
 	// The number of CPU cores in the virtual machine.
 	CpuCores float64 `pulumi:"cpuCores"`
 	// The extended location of the cluster associated with the resource.
@@ -192,7 +200,7 @@ type virtualMachineArgs struct {
 	IsolateEmulatorThread *string `pulumi:"isolateEmulatorThread"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The memory size of the virtual machine in GB.
+	// The memory size of the virtual machine. Allocations are measured in gibibytes.
 	MemorySizeGB float64 `pulumi:"memorySizeGB"`
 	// The list of network attachments to the virtual machine.
 	NetworkAttachments []NetworkAttachment `pulumi:"networkAttachments"`
@@ -230,6 +238,8 @@ type VirtualMachineArgs struct {
 	BootMethod pulumi.StringPtrInput
 	// The cloud service network that provides platform-level services for the virtual machine.
 	CloudServicesNetworkAttachment NetworkAttachmentInput
+	// The extended location to use for creation of a VM console resource.
+	ConsoleExtendedLocation ExtendedLocationPtrInput
 	// The number of CPU cores in the virtual machine.
 	CpuCores pulumi.Float64Input
 	// The extended location of the cluster associated with the resource.
@@ -238,7 +248,7 @@ type VirtualMachineArgs struct {
 	IsolateEmulatorThread pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The memory size of the virtual machine in GB.
+	// The memory size of the virtual machine. Allocations are measured in gibibytes.
 	MemorySizeGB pulumi.Float64Input
 	// The list of network attachments to the virtual machine.
 	NetworkAttachments NetworkAttachmentArrayInput
@@ -315,6 +325,11 @@ func (o VirtualMachineOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o VirtualMachineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource ID of the bare metal machine that hosts the virtual machine.
 func (o VirtualMachineOutput) BareMetalMachineId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.BareMetalMachineId }).(pulumi.StringOutput)
@@ -335,6 +350,11 @@ func (o VirtualMachineOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// The extended location to use for creation of a VM console resource.
+func (o VirtualMachineOutput) ConsoleExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) ExtendedLocationResponsePtrOutput { return v.ConsoleExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
 // The number of CPU cores in the virtual machine.
 func (o VirtualMachineOutput) CpuCores() pulumi.Float64Output {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.Float64Output { return v.CpuCores }).(pulumi.Float64Output)
@@ -348,6 +368,11 @@ func (o VirtualMachineOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o VirtualMachineOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o VirtualMachineOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.
@@ -365,7 +390,7 @@ func (o VirtualMachineOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The memory size of the virtual machine in GB.
+// The memory size of the virtual machine. Allocations are measured in gibibytes.
 func (o VirtualMachineOutput) MemorySizeGB() pulumi.Float64Output {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.Float64Output { return v.MemorySizeGB }).(pulumi.Float64Output)
 }

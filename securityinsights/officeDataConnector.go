@@ -14,10 +14,12 @@ import (
 
 // Represents office data connector.
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 type OfficeDataConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
 	DataTypes OfficeDataConnectorDataTypesResponsePtrOutput `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -60,7 +62,46 @@ func NewOfficeDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20200101:OfficeDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:Dynamics365DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:MSTIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:MTPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:OfficeATPDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20210301preview:OfficeDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20210301preview:TiTaxiiDataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20210901preview:OfficeDataConnector"),
@@ -108,7 +149,25 @@ func NewOfficeDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20221201preview:OfficeDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230201:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230201:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230201:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230201:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230201:MDATPDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201:OfficeDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230201:TIDataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230201preview:OfficeDataConnector"),
@@ -123,46 +182,718 @@ func NewOfficeDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230501preview:OfficeDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:AwsS3DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:CodelessApiPollingDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:Dynamics365DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:GCPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:IoTDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:MSTIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:MTPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:MicrosoftPurviewInformationProtectionDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:Office365ProjectDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:OfficeATPDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230601preview:OfficeDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:OfficeIRMDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:OfficePowerBIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230601preview:TiTaxiiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:AwsS3DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:CodelessApiPollingDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:Dynamics365DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:GCPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:IoTDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:MSTIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:MTPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:MicrosoftPurviewInformationProtectionDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:Office365ProjectDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:OfficeATPDataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:OfficeDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:OfficeIRMDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:OfficePowerBIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230701preview:TiTaxiiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:AwsS3DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:CodelessApiPollingDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:Dynamics365DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:GCPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:IoTDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:MSTIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:MTPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:MicrosoftPurviewInformationProtectionDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:Office365ProjectDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:OfficeATPDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:OfficeDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:OfficeIRMDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:OfficePowerBIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230801preview:TiTaxiiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:AwsS3DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:CodelessApiPollingDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Dynamics365DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:GCPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:IoTDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:MSTIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:MTPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:MicrosoftPurviewInformationProtectionDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Office365ProjectDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:OfficeATPDataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:OfficeDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:OfficeIRMDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:OfficePowerBIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20230901preview:TiTaxiiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:AwsS3DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:CodelessApiPollingDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Dynamics365DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:GCPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:IoTDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:MSTIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:MTPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:MicrosoftPurviewInformationProtectionDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Office365ProjectDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:OfficeATPDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20231001preview:OfficeDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:OfficeIRMDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:OfficePowerBIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:TiTaxiiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231101:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231101:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231101:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231101:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231101:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231101:MDATPDataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231101:OfficeDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20231101:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:AwsS3DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:CodelessApiPollingDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:Dynamics365DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:GCPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:IoTDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:MSTIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:MTPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:MicrosoftPurviewInformationProtectionDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:Office365ProjectDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:OfficeATPDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20231201preview:OfficeDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:OfficeIRMDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:OfficePowerBIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:TiTaxiiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:AwsS3DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:CodelessApiPollingDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:Dynamics365DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:GCPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:IoTDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:MSTIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:MTPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:MicrosoftPurviewInformationProtectionDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:Office365ProjectDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:OfficeATPDataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240101preview:OfficeDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:OfficeIRMDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:OfficePowerBIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:RestApiPollerDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:TiTaxiiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240301:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240301:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240301:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240301:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240301:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240301:MDATPDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20240301:OfficeDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240301:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:AwsS3DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:CodelessApiPollingDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:Dynamics365DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:GCPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:IoTDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:MSTIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:MTPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:MicrosoftPurviewInformationProtectionDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:Office365ProjectDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:OfficeATPDataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:OfficeDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:OfficeIRMDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:OfficePowerBIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:RestApiPollerDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:TiTaxiiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240901:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240901:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240901:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240901:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240901:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240901:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240901:MSTIDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20240901:OfficeDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20240901:PremiumMicrosoftDefenderForThreatIntelligence"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240901:RestApiPollerDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240901:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:AwsS3DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:CodelessApiPollingDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Dynamics365DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:GCPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:IoTDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:MSTIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:MTPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:MicrosoftPurviewInformationProtectionDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Office365ProjectDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:OfficeATPDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:OfficeDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:OfficeIRMDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:OfficePowerBIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:PurviewAuditDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:RestApiPollerDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:TiTaxiiDataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:OfficeDataConnector"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250301:OfficeDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:ASCDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:MCASDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:TIDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -266,6 +997,11 @@ func (o OfficeDataConnectorOutput) ToOfficeDataConnectorOutput() OfficeDataConne
 
 func (o OfficeDataConnectorOutput) ToOfficeDataConnectorOutputWithContext(ctx context.Context) OfficeDataConnectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o OfficeDataConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OfficeDataConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The available data types for the connector.

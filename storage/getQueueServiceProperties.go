@@ -13,9 +13,9 @@ import (
 
 // Gets the properties of a storage account’s Queue service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupQueueServiceProperties(ctx *pulumi.Context, args *LookupQueueServicePropertiesArgs, opts ...pulumi.InvokeOption) (*LookupQueueServicePropertiesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueueServicePropertiesResult
@@ -37,6 +37,8 @@ type LookupQueueServicePropertiesArgs struct {
 
 // The properties of a storage account’s Queue service.
 type LookupQueueServicePropertiesResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies CORS rules for the Queue service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Queue service.
 	Cors *CorsRulesResponse `pulumi:"cors"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -82,6 +84,11 @@ func (o LookupQueueServicePropertiesResultOutput) ToLookupQueueServiceProperties
 
 func (o LookupQueueServicePropertiesResultOutput) ToLookupQueueServicePropertiesResultOutputWithContext(ctx context.Context) LookupQueueServicePropertiesResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupQueueServicePropertiesResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueServicePropertiesResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies CORS rules for the Queue service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Queue service.

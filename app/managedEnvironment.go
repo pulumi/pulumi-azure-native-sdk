@@ -14,36 +14,46 @@ import (
 
 // An environment for hosting container apps
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2022-03-01.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 //
-// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
+// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ManagedEnvironment struct {
 	pulumi.CustomResourceState
 
 	// Cluster configuration which enables the log daemon to export app logs to configured destination.
 	AppLogsConfiguration AppLogsConfigurationResponsePtrOutput `pulumi:"appLogsConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Custom domain configuration for the environment
 	CustomDomainConfiguration CustomDomainConfigurationResponsePtrOutput `pulumi:"customDomainConfiguration"`
 	// Application Insights connection string used by Dapr to export Service to Service communication telemetry
 	DaprAIConnectionString pulumi.StringPtrOutput `pulumi:"daprAIConnectionString"`
 	// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
 	DaprAIInstrumentationKey pulumi.StringPtrOutput `pulumi:"daprAIInstrumentationKey"`
+	// The configuration of Dapr component.
+	DaprConfiguration DaprConfigurationResponsePtrOutput `pulumi:"daprConfiguration"`
 	// Default Domain Name for the cluster
 	DefaultDomain pulumi.StringOutput `pulumi:"defaultDomain"`
 	// Any errors that occurred during deployment or deployment validation
 	DeploymentErrors pulumi.StringOutput `pulumi:"deploymentErrors"`
 	// The endpoint of the eventstream of the Environment.
 	EventStreamEndpoint pulumi.StringOutput `pulumi:"eventStreamEndpoint"`
+	// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
+	InfrastructureResourceGroup pulumi.StringPtrOutput `pulumi:"infrastructureResourceGroup"`
+	// The configuration of Keda component.
+	KedaConfiguration KedaConfigurationResponsePtrOutput `pulumi:"kedaConfiguration"`
 	// Kind of the Environment.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Peer authentication settings for the Managed Environment
+	PeerAuthentication ManagedEnvironmentResponsePeerAuthenticationPtrOutput `pulumi:"peerAuthentication"`
+	// Peer traffic settings for the Managed Environment
+	PeerTrafficConfiguration ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput `pulumi:"peerTrafficConfiguration"`
 	// Provisioning state of the Environment.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// SKU properties of the Environment.
-	Sku EnvironmentSkuPropertiesResponsePtrOutput `pulumi:"sku"`
 	// Static IP of the Environment
 	StaticIp pulumi.StringOutput `pulumi:"staticIp"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -161,14 +171,18 @@ type managedEnvironmentArgs struct {
 	DaprAIInstrumentationKey *string `pulumi:"daprAIInstrumentationKey"`
 	// Name of the Environment.
 	EnvironmentName *string `pulumi:"environmentName"`
+	// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
+	InfrastructureResourceGroup *string `pulumi:"infrastructureResourceGroup"`
 	// Kind of the Environment.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Peer authentication settings for the Managed Environment
+	PeerAuthentication *ManagedEnvironmentPeerAuthentication `pulumi:"peerAuthentication"`
+	// Peer traffic settings for the Managed Environment
+	PeerTrafficConfiguration *ManagedEnvironmentPeerTrafficConfiguration `pulumi:"peerTrafficConfiguration"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// SKU properties of the Environment.
-	Sku *EnvironmentSkuProperties `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Vnet configuration for the environment
@@ -191,14 +205,18 @@ type ManagedEnvironmentArgs struct {
 	DaprAIInstrumentationKey pulumi.StringPtrInput
 	// Name of the Environment.
 	EnvironmentName pulumi.StringPtrInput
+	// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
+	InfrastructureResourceGroup pulumi.StringPtrInput
 	// Kind of the Environment.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Peer authentication settings for the Managed Environment
+	PeerAuthentication ManagedEnvironmentPeerAuthenticationPtrInput
+	// Peer traffic settings for the Managed Environment
+	PeerTrafficConfiguration ManagedEnvironmentPeerTrafficConfigurationPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// SKU properties of the Environment.
-	Sku EnvironmentSkuPropertiesPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Vnet configuration for the environment
@@ -251,6 +269,11 @@ func (o ManagedEnvironmentOutput) AppLogsConfiguration() AppLogsConfigurationRes
 	return o.ApplyT(func(v *ManagedEnvironment) AppLogsConfigurationResponsePtrOutput { return v.AppLogsConfiguration }).(AppLogsConfigurationResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o ManagedEnvironmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Custom domain configuration for the environment
 func (o ManagedEnvironmentOutput) CustomDomainConfiguration() CustomDomainConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) CustomDomainConfigurationResponsePtrOutput {
@@ -268,6 +291,11 @@ func (o ManagedEnvironmentOutput) DaprAIInstrumentationKey() pulumi.StringPtrOut
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringPtrOutput { return v.DaprAIInstrumentationKey }).(pulumi.StringPtrOutput)
 }
 
+// The configuration of Dapr component.
+func (o ManagedEnvironmentOutput) DaprConfiguration() DaprConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) DaprConfigurationResponsePtrOutput { return v.DaprConfiguration }).(DaprConfigurationResponsePtrOutput)
+}
+
 // Default Domain Name for the cluster
 func (o ManagedEnvironmentOutput) DefaultDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.DefaultDomain }).(pulumi.StringOutput)
@@ -281,6 +309,16 @@ func (o ManagedEnvironmentOutput) DeploymentErrors() pulumi.StringOutput {
 // The endpoint of the eventstream of the Environment.
 func (o ManagedEnvironmentOutput) EventStreamEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.EventStreamEndpoint }).(pulumi.StringOutput)
+}
+
+// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
+func (o ManagedEnvironmentOutput) InfrastructureResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringPtrOutput { return v.InfrastructureResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// The configuration of Keda component.
+func (o ManagedEnvironmentOutput) KedaConfiguration() KedaConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) KedaConfigurationResponsePtrOutput { return v.KedaConfiguration }).(KedaConfigurationResponsePtrOutput)
 }
 
 // Kind of the Environment.
@@ -298,14 +336,23 @@ func (o ManagedEnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Peer authentication settings for the Managed Environment
+func (o ManagedEnvironmentOutput) PeerAuthentication() ManagedEnvironmentResponsePeerAuthenticationPtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) ManagedEnvironmentResponsePeerAuthenticationPtrOutput {
+		return v.PeerAuthentication
+	}).(ManagedEnvironmentResponsePeerAuthenticationPtrOutput)
+}
+
+// Peer traffic settings for the Managed Environment
+func (o ManagedEnvironmentOutput) PeerTrafficConfiguration() ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput {
+		return v.PeerTrafficConfiguration
+	}).(ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput)
+}
+
 // Provisioning state of the Environment.
 func (o ManagedEnvironmentOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// SKU properties of the Environment.
-func (o ManagedEnvironmentOutput) Sku() EnvironmentSkuPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *ManagedEnvironment) EnvironmentSkuPropertiesResponsePtrOutput { return v.Sku }).(EnvironmentSkuPropertiesResponsePtrOutput)
 }
 
 // Static IP of the Environment

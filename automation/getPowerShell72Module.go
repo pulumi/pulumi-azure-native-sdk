@@ -37,6 +37,8 @@ type LookupPowerShell72ModuleArgs struct {
 type LookupPowerShell72ModuleResult struct {
 	// Gets the activity count of the module.
 	ActivityCount *int `pulumi:"activityCount"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the creation time.
 	CreationTime *string `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -109,6 +111,11 @@ func (o LookupPowerShell72ModuleResultOutput) ToLookupPowerShell72ModuleResultOu
 // Gets the activity count of the module.
 func (o LookupPowerShell72ModuleResultOutput) ActivityCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupPowerShell72ModuleResult) *int { return v.ActivityCount }).(pulumi.IntPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPowerShell72ModuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPowerShell72ModuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the creation time.

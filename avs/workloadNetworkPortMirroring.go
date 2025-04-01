@@ -14,19 +14,21 @@ import (
 
 // NSX Port Mirroring
 //
-// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2020-07-17-preview.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
 //
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WorkloadNetworkPortMirroring struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Destination VM Group.
 	Destination pulumi.StringPtrOutput `pulumi:"destination"`
 	// Direction of port mirroring profile.
 	Direction pulumi.StringPtrOutput `pulumi:"direction"`
 	// Display name of the port mirroring profile.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -36,7 +38,9 @@ type WorkloadNetworkPortMirroring struct {
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 	// Port Mirroring Status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -116,7 +120,7 @@ type workloadNetworkPortMirroringArgs struct {
 	Direction *string `pulumi:"direction"`
 	// Display name of the port mirroring profile.
 	DisplayName *string `pulumi:"displayName"`
-	// NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+	// ID of the NSX port mirroring profile.
 	PortMirroringId *string `pulumi:"portMirroringId"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
@@ -136,7 +140,7 @@ type WorkloadNetworkPortMirroringArgs struct {
 	Direction pulumi.StringPtrInput
 	// Display name of the port mirroring profile.
 	DisplayName pulumi.StringPtrInput
-	// NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+	// ID of the NSX port mirroring profile.
 	PortMirroringId pulumi.StringPtrInput
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
@@ -185,6 +189,11 @@ func (o WorkloadNetworkPortMirroringOutput) ToWorkloadNetworkPortMirroringOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o WorkloadNetworkPortMirroringOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadNetworkPortMirroring) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Destination VM Group.
 func (o WorkloadNetworkPortMirroringOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadNetworkPortMirroring) pulumi.StringPtrOutput { return v.Destination }).(pulumi.StringPtrOutput)
@@ -200,7 +209,7 @@ func (o WorkloadNetworkPortMirroringOutput) DisplayName() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *WorkloadNetworkPortMirroring) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o WorkloadNetworkPortMirroringOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkPortMirroring) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -225,7 +234,12 @@ func (o WorkloadNetworkPortMirroringOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkPortMirroring) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WorkloadNetworkPortMirroringOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *WorkloadNetworkPortMirroring) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WorkloadNetworkPortMirroringOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkPortMirroring) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

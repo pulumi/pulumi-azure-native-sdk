@@ -31,6 +31,8 @@ type LookupSubscriptionTarDirectoryArgs struct {
 
 // Subscription Response for Changed Target Directory.
 type LookupSubscriptionTarDirectoryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified ID for the Subscription Changed Directory resource.
 	Id string `pulumi:"id"`
 	// Subscription Name.
@@ -72,6 +74,11 @@ func (o LookupSubscriptionTarDirectoryResultOutput) ToLookupSubscriptionTarDirec
 
 func (o LookupSubscriptionTarDirectoryResultOutput) ToLookupSubscriptionTarDirectoryResultOutputWithContext(ctx context.Context) LookupSubscriptionTarDirectoryResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSubscriptionTarDirectoryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionTarDirectoryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified ID for the Subscription Changed Directory resource.

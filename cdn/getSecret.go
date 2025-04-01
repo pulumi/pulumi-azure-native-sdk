@@ -13,9 +13,9 @@ import (
 
 // Gets an existing Secret within a profile.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-09-01.
 //
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.InvokeOption) (*LookupSecretResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretResult
@@ -37,6 +37,8 @@ type LookupSecretArgs struct {
 
 // Friendly Secret name mapping to the any Secret or secret related information.
 type LookupSecretResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion  string `pulumi:"azureApiVersion"`
 	DeploymentStatus string `pulumi:"deploymentStatus"`
 	// Resource ID.
 	Id string `pulumi:"id"`
@@ -89,6 +91,11 @@ func (o LookupSecretResultOutput) ToLookupSecretResultOutput() LookupSecretResul
 
 func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx context.Context) LookupSecretResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSecretResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupSecretResultOutput) DeploymentStatus() pulumi.StringOutput {

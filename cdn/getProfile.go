@@ -13,9 +13,9 @@ import (
 
 // Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-09-01.
 //
-// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.InvokeOption) (*LookupProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProfileResult
@@ -35,6 +35,8 @@ type LookupProfileArgs struct {
 
 // A profile is a logical grouping of endpoints that share the same settings.
 type LookupProfileResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Key-Value pair representing additional properties for profiles.
 	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
 	// The Id of the frontdoor.
@@ -47,6 +49,8 @@ type LookupProfileResult struct {
 	Kind string `pulumi:"kind"`
 	// Resource location.
 	Location string `pulumi:"location"`
+	// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+	LogScrubbing *ProfileLogScrubbingResponse `pulumi:"logScrubbing"`
 	// Resource name.
 	Name string `pulumi:"name"`
 	// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
@@ -100,6 +104,11 @@ func (o LookupProfileResultOutput) ToLookupProfileResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Key-Value pair representing additional properties for profiles.
 func (o LookupProfileResultOutput) ExtendedProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupProfileResult) map[string]string { return v.ExtendedProperties }).(pulumi.StringMapOutput)
@@ -128,6 +137,11 @@ func (o LookupProfileResultOutput) Kind() pulumi.StringOutput {
 // Resource location.
 func (o LookupProfileResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProfileResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+func (o LookupProfileResultOutput) LogScrubbing() ProfileLogScrubbingResponsePtrOutput {
+	return o.ApplyT(func(v LookupProfileResult) *ProfileLogScrubbingResponse { return v.LogScrubbing }).(ProfileLogScrubbingResponsePtrOutput)
 }
 
 // Resource name.

@@ -13,9 +13,9 @@ import (
 
 // Returns the subscriptionIds along with its provisioning state for being associated with the GroupQuota. If the subscription is not a member of GroupQuota, it will return 404, else 200.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-03-01.
 //
-// Other available API versions: 2024-10-15-preview, 2024-12-18-preview, 2025-03-01, 2025-03-15-preview.
+// Other available API versions: 2023-06-01-preview, 2024-10-15-preview, 2024-12-18-preview, 2025-03-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quota [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGroupQuotaSubscription(ctx *pulumi.Context, args *LookupGroupQuotaSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupGroupQuotaSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupQuotaSubscriptionResult
@@ -35,6 +35,8 @@ type LookupGroupQuotaSubscriptionArgs struct {
 
 // This represents a Azure subscriptionId that is associated with a GroupQuotasEntity.
 type LookupGroupQuotaSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -79,6 +81,11 @@ func (o LookupGroupQuotaSubscriptionResultOutput) ToLookupGroupQuotaSubscription
 
 func (o LookupGroupQuotaSubscriptionResultOutput) ToLookupGroupQuotaSubscriptionResultOutputWithContext(ctx context.Context) LookupGroupQuotaSubscriptionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGroupQuotaSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupQuotaSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

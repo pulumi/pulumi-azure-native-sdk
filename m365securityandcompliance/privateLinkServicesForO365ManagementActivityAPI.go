@@ -14,10 +14,12 @@ import (
 
 // The description of the service.
 //
-// Uses Azure REST API version 2021-03-25-preview. In version 1.x of the Azure Native provider, it used API version 2021-03-25-preview.
+// Uses Azure REST API version 2021-03-25-preview.
 type PrivateLinkServicesForO365ManagementActivityAPI struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Setting indicating whether the service has a managed identity associated with it.
@@ -54,12 +56,6 @@ func NewPrivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForO365ManagementActivityAPI"),
-		},
-		{
-			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForO365ManagementActivityAPI"),
-		},
-		{
-			Type: pulumi.String("azure-native:m365securityandcompliance:privateLinkServicesForO365ManagementActivityAPI"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -165,6 +161,11 @@ func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) ToPrivateLinkServ
 
 func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) ToPrivateLinkServicesForO365ManagementActivityAPIOutputWithContext(ctx context.Context) PrivateLinkServicesForO365ManagementActivityAPIOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateLinkServicesForO365ManagementActivityAPI) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

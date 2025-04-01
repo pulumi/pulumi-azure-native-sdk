@@ -13,9 +13,9 @@ import (
 
 // Get details of the specified volume group
 //
-// Uses Azure REST API version 2022-11-01.
+// Uses Azure REST API version 2024-09-01.
 //
-// Other available API versions: 2021-10-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
+// Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVolumeGroup(ctx *pulumi.Context, args *LookupVolumeGroupArgs, opts ...pulumi.InvokeOption) (*LookupVolumeGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeGroupResult
@@ -37,6 +37,8 @@ type LookupVolumeGroupArgs struct {
 
 // Volume group resource for create
 type LookupVolumeGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Volume group details
 	GroupMetaData *VolumeGroupMetaDataResponse `pulumi:"groupMetaData"`
 	// Resource Id
@@ -88,6 +90,11 @@ func (o LookupVolumeGroupResultOutput) ToLookupVolumeGroupResultOutput() LookupV
 
 func (o LookupVolumeGroupResultOutput) ToLookupVolumeGroupResultOutputWithContext(ctx context.Context) LookupVolumeGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVolumeGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Volume group details

@@ -13,9 +13,9 @@ import (
 
 // Get a valid sender username for a domains resource.
 //
-// Uses Azure REST API version 2023-03-31.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSenderUsername(ctx *pulumi.Context, args *LookupSenderUsernameArgs, opts ...pulumi.InvokeOption) (*LookupSenderUsernameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSenderUsernameResult
@@ -39,6 +39,8 @@ type LookupSenderUsernameArgs struct {
 
 // A class representing a SenderUsername resource.
 type LookupSenderUsernameResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The location where the SenderUsername resource data is stored at rest.
 	DataLocation string `pulumi:"dataLocation"`
 	// The display name for the senderUsername.
@@ -94,6 +96,11 @@ func (o LookupSenderUsernameResultOutput) ToLookupSenderUsernameResultOutput() L
 
 func (o LookupSenderUsernameResultOutput) ToLookupSenderUsernameResultOutputWithContext(ctx context.Context) LookupSenderUsernameResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSenderUsernameResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSenderUsernameResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location where the SenderUsername resource data is stored at rest.

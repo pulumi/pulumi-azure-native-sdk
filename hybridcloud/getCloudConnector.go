@@ -35,6 +35,8 @@ type LookupCloudConnectorArgs struct {
 type LookupCloudConnectorResult struct {
 	// Account identifier of the remote cloud.
 	AccountId *string `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The cloud connector type.
 	CloudType *string `pulumi:"cloudType"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -93,6 +95,11 @@ func (o LookupCloudConnectorResultOutput) ToLookupCloudConnectorResultOutputWith
 // Account identifier of the remote cloud.
 func (o LookupCloudConnectorResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCloudConnectorResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupCloudConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cloud connector type.

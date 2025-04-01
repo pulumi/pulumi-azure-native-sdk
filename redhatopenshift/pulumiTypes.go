@@ -15,10 +15,6 @@ var _ = utilities.GetEnvOrDefault
 
 // APIServerProfile represents an API server profile.
 type APIServerProfile struct {
-	// The IP of the cluster API server.
-	Ip *string `pulumi:"ip"`
-	// The URL to access the cluster API server.
-	Url *string `pulumi:"url"`
 	// API server visibility.
 	Visibility *string `pulumi:"visibility"`
 }
@@ -36,10 +32,6 @@ type APIServerProfileInput interface {
 
 // APIServerProfile represents an API server profile.
 type APIServerProfileArgs struct {
-	// The IP of the cluster API server.
-	Ip pulumi.StringPtrInput `pulumi:"ip"`
-	// The URL to access the cluster API server.
-	Url pulumi.StringPtrInput `pulumi:"url"`
 	// API server visibility.
 	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
 }
@@ -122,16 +114,6 @@ func (o APIServerProfileOutput) ToAPIServerProfilePtrOutputWithContext(ctx conte
 	}).(APIServerProfilePtrOutput)
 }
 
-// The IP of the cluster API server.
-func (o APIServerProfileOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v APIServerProfile) *string { return v.Ip }).(pulumi.StringPtrOutput)
-}
-
-// The URL to access the cluster API server.
-func (o APIServerProfileOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v APIServerProfile) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
 // API server visibility.
 func (o APIServerProfileOutput) Visibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v APIServerProfile) *string { return v.Visibility }).(pulumi.StringPtrOutput)
@@ -161,26 +143,6 @@ func (o APIServerProfilePtrOutput) Elem() APIServerProfileOutput {
 	}).(APIServerProfileOutput)
 }
 
-// The IP of the cluster API server.
-func (o APIServerProfilePtrOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *APIServerProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ip
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URL to access the cluster API server.
-func (o APIServerProfilePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *APIServerProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
 // API server visibility.
 func (o APIServerProfilePtrOutput) Visibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *APIServerProfile) *string {
@@ -194,9 +156,9 @@ func (o APIServerProfilePtrOutput) Visibility() pulumi.StringPtrOutput {
 // APIServerProfile represents an API server profile.
 type APIServerProfileResponse struct {
 	// The IP of the cluster API server.
-	Ip *string `pulumi:"ip"`
+	Ip string `pulumi:"ip"`
 	// The URL to access the cluster API server.
-	Url *string `pulumi:"url"`
+	Url string `pulumi:"url"`
 	// API server visibility.
 	Visibility *string `pulumi:"visibility"`
 }
@@ -217,13 +179,13 @@ func (o APIServerProfileResponseOutput) ToAPIServerProfileResponseOutputWithCont
 }
 
 // The IP of the cluster API server.
-func (o APIServerProfileResponseOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v APIServerProfileResponse) *string { return v.Ip }).(pulumi.StringPtrOutput)
+func (o APIServerProfileResponseOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v APIServerProfileResponse) string { return v.Ip }).(pulumi.StringOutput)
 }
 
 // The URL to access the cluster API server.
-func (o APIServerProfileResponseOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v APIServerProfileResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
+func (o APIServerProfileResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v APIServerProfileResponse) string { return v.Url }).(pulumi.StringOutput)
 }
 
 // API server visibility.
@@ -261,7 +223,7 @@ func (o APIServerProfileResponsePtrOutput) Ip() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Ip
+		return &v.Ip
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -271,7 +233,7 @@ func (o APIServerProfileResponsePtrOutput) Url() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Url
+		return &v.Url
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -630,149 +592,9 @@ func (o ClusterProfileResponsePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 // ConsoleProfile represents a console profile.
-type ConsoleProfile struct {
-	// The URL to access the cluster console.
-	Url *string `pulumi:"url"`
-}
-
-// ConsoleProfileInput is an input type that accepts ConsoleProfileArgs and ConsoleProfileOutput values.
-// You can construct a concrete instance of `ConsoleProfileInput` via:
-//
-//	ConsoleProfileArgs{...}
-type ConsoleProfileInput interface {
-	pulumi.Input
-
-	ToConsoleProfileOutput() ConsoleProfileOutput
-	ToConsoleProfileOutputWithContext(context.Context) ConsoleProfileOutput
-}
-
-// ConsoleProfile represents a console profile.
-type ConsoleProfileArgs struct {
-	// The URL to access the cluster console.
-	Url pulumi.StringPtrInput `pulumi:"url"`
-}
-
-func (ConsoleProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsoleProfile)(nil)).Elem()
-}
-
-func (i ConsoleProfileArgs) ToConsoleProfileOutput() ConsoleProfileOutput {
-	return i.ToConsoleProfileOutputWithContext(context.Background())
-}
-
-func (i ConsoleProfileArgs) ToConsoleProfileOutputWithContext(ctx context.Context) ConsoleProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsoleProfileOutput)
-}
-
-func (i ConsoleProfileArgs) ToConsoleProfilePtrOutput() ConsoleProfilePtrOutput {
-	return i.ToConsoleProfilePtrOutputWithContext(context.Background())
-}
-
-func (i ConsoleProfileArgs) ToConsoleProfilePtrOutputWithContext(ctx context.Context) ConsoleProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsoleProfileOutput).ToConsoleProfilePtrOutputWithContext(ctx)
-}
-
-// ConsoleProfilePtrInput is an input type that accepts ConsoleProfileArgs, ConsoleProfilePtr and ConsoleProfilePtrOutput values.
-// You can construct a concrete instance of `ConsoleProfilePtrInput` via:
-//
-//	        ConsoleProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type ConsoleProfilePtrInput interface {
-	pulumi.Input
-
-	ToConsoleProfilePtrOutput() ConsoleProfilePtrOutput
-	ToConsoleProfilePtrOutputWithContext(context.Context) ConsoleProfilePtrOutput
-}
-
-type consoleProfilePtrType ConsoleProfileArgs
-
-func ConsoleProfilePtr(v *ConsoleProfileArgs) ConsoleProfilePtrInput {
-	return (*consoleProfilePtrType)(v)
-}
-
-func (*consoleProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConsoleProfile)(nil)).Elem()
-}
-
-func (i *consoleProfilePtrType) ToConsoleProfilePtrOutput() ConsoleProfilePtrOutput {
-	return i.ToConsoleProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *consoleProfilePtrType) ToConsoleProfilePtrOutputWithContext(ctx context.Context) ConsoleProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsoleProfilePtrOutput)
-}
-
-// ConsoleProfile represents a console profile.
-type ConsoleProfileOutput struct{ *pulumi.OutputState }
-
-func (ConsoleProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsoleProfile)(nil)).Elem()
-}
-
-func (o ConsoleProfileOutput) ToConsoleProfileOutput() ConsoleProfileOutput {
-	return o
-}
-
-func (o ConsoleProfileOutput) ToConsoleProfileOutputWithContext(ctx context.Context) ConsoleProfileOutput {
-	return o
-}
-
-func (o ConsoleProfileOutput) ToConsoleProfilePtrOutput() ConsoleProfilePtrOutput {
-	return o.ToConsoleProfilePtrOutputWithContext(context.Background())
-}
-
-func (o ConsoleProfileOutput) ToConsoleProfilePtrOutputWithContext(ctx context.Context) ConsoleProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsoleProfile) *ConsoleProfile {
-		return &v
-	}).(ConsoleProfilePtrOutput)
-}
-
-// The URL to access the cluster console.
-func (o ConsoleProfileOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConsoleProfile) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-type ConsoleProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (ConsoleProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConsoleProfile)(nil)).Elem()
-}
-
-func (o ConsoleProfilePtrOutput) ToConsoleProfilePtrOutput() ConsoleProfilePtrOutput {
-	return o
-}
-
-func (o ConsoleProfilePtrOutput) ToConsoleProfilePtrOutputWithContext(ctx context.Context) ConsoleProfilePtrOutput {
-	return o
-}
-
-func (o ConsoleProfilePtrOutput) Elem() ConsoleProfileOutput {
-	return o.ApplyT(func(v *ConsoleProfile) ConsoleProfile {
-		if v != nil {
-			return *v
-		}
-		var ret ConsoleProfile
-		return ret
-	}).(ConsoleProfileOutput)
-}
-
-// The URL to access the cluster console.
-func (o ConsoleProfilePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConsoleProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
-// ConsoleProfile represents a console profile.
 type ConsoleProfileResponse struct {
 	// The URL to access the cluster console.
-	Url *string `pulumi:"url"`
+	Url string `pulumi:"url"`
 }
 
 // ConsoleProfile represents a console profile.
@@ -791,8 +613,8 @@ func (o ConsoleProfileResponseOutput) ToConsoleProfileResponseOutputWithContext(
 }
 
 // The URL to access the cluster console.
-func (o ConsoleProfileResponseOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConsoleProfileResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
+func (o ConsoleProfileResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsoleProfileResponse) string { return v.Url }).(pulumi.StringOutput)
 }
 
 type ConsoleProfileResponsePtrOutput struct{ *pulumi.OutputState }
@@ -825,14 +647,58 @@ func (o ConsoleProfileResponsePtrOutput) Url() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Url
+		return &v.Url
 	}).(pulumi.StringPtrOutput)
+}
+
+// EffectiveOutboundIP represents an effective outbound IP resource of the cluster public load balancer.
+type EffectiveOutboundIPResponse struct {
+	// The fully qualified Azure resource id of an IP address resource.
+	Id *string `pulumi:"id"`
+}
+
+// EffectiveOutboundIP represents an effective outbound IP resource of the cluster public load balancer.
+type EffectiveOutboundIPResponseOutput struct{ *pulumi.OutputState }
+
+func (EffectiveOutboundIPResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EffectiveOutboundIPResponse)(nil)).Elem()
+}
+
+func (o EffectiveOutboundIPResponseOutput) ToEffectiveOutboundIPResponseOutput() EffectiveOutboundIPResponseOutput {
+	return o
+}
+
+func (o EffectiveOutboundIPResponseOutput) ToEffectiveOutboundIPResponseOutputWithContext(ctx context.Context) EffectiveOutboundIPResponseOutput {
+	return o
+}
+
+// The fully qualified Azure resource id of an IP address resource.
+func (o EffectiveOutboundIPResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EffectiveOutboundIPResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type EffectiveOutboundIPResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EffectiveOutboundIPResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EffectiveOutboundIPResponse)(nil)).Elem()
+}
+
+func (o EffectiveOutboundIPResponseArrayOutput) ToEffectiveOutboundIPResponseArrayOutput() EffectiveOutboundIPResponseArrayOutput {
+	return o
+}
+
+func (o EffectiveOutboundIPResponseArrayOutput) ToEffectiveOutboundIPResponseArrayOutputWithContext(ctx context.Context) EffectiveOutboundIPResponseArrayOutput {
+	return o
+}
+
+func (o EffectiveOutboundIPResponseArrayOutput) Index(i pulumi.IntInput) EffectiveOutboundIPResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EffectiveOutboundIPResponse {
+		return vs[0].([]EffectiveOutboundIPResponse)[vs[1].(int)]
+	}).(EffectiveOutboundIPResponseOutput)
 }
 
 // IngressProfile represents an ingress profile.
 type IngressProfile struct {
-	// The IP of the ingress.
-	Ip *string `pulumi:"ip"`
 	// The ingress profile name.
 	Name *string `pulumi:"name"`
 	// Ingress visibility.
@@ -852,8 +718,6 @@ type IngressProfileInput interface {
 
 // IngressProfile represents an ingress profile.
 type IngressProfileArgs struct {
-	// The IP of the ingress.
-	Ip pulumi.StringPtrInput `pulumi:"ip"`
 	// The ingress profile name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Ingress visibility.
@@ -912,11 +776,6 @@ func (o IngressProfileOutput) ToIngressProfileOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The IP of the ingress.
-func (o IngressProfileOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IngressProfile) *string { return v.Ip }).(pulumi.StringPtrOutput)
-}
-
 // The ingress profile name.
 func (o IngressProfileOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IngressProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -950,7 +809,7 @@ func (o IngressProfileArrayOutput) Index(i pulumi.IntInput) IngressProfileOutput
 // IngressProfile represents an ingress profile.
 type IngressProfileResponse struct {
 	// The IP of the ingress.
-	Ip *string `pulumi:"ip"`
+	Ip string `pulumi:"ip"`
 	// The ingress profile name.
 	Name *string `pulumi:"name"`
 	// Ingress visibility.
@@ -973,8 +832,8 @@ func (o IngressProfileResponseOutput) ToIngressProfileResponseOutputWithContext(
 }
 
 // The IP of the ingress.
-func (o IngressProfileResponseOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IngressProfileResponse) *string { return v.Ip }).(pulumi.StringPtrOutput)
+func (o IngressProfileResponseOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v IngressProfileResponse) string { return v.Ip }).(pulumi.StringOutput)
 }
 
 // The ingress profile name.
@@ -1005,6 +864,423 @@ func (o IngressProfileResponseArrayOutput) Index(i pulumi.IntInput) IngressProfi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IngressProfileResponse {
 		return vs[0].([]IngressProfileResponse)[vs[1].(int)]
 	}).(IngressProfileResponseOutput)
+}
+
+// LoadBalancerProfile represents the profile of the cluster public load balancer.
+type LoadBalancerProfile struct {
+	// The desired managed outbound IPs for the cluster public load balancer.
+	ManagedOutboundIps *ManagedOutboundIPs `pulumi:"managedOutboundIps"`
+}
+
+// LoadBalancerProfileInput is an input type that accepts LoadBalancerProfileArgs and LoadBalancerProfileOutput values.
+// You can construct a concrete instance of `LoadBalancerProfileInput` via:
+//
+//	LoadBalancerProfileArgs{...}
+type LoadBalancerProfileInput interface {
+	pulumi.Input
+
+	ToLoadBalancerProfileOutput() LoadBalancerProfileOutput
+	ToLoadBalancerProfileOutputWithContext(context.Context) LoadBalancerProfileOutput
+}
+
+// LoadBalancerProfile represents the profile of the cluster public load balancer.
+type LoadBalancerProfileArgs struct {
+	// The desired managed outbound IPs for the cluster public load balancer.
+	ManagedOutboundIps ManagedOutboundIPsPtrInput `pulumi:"managedOutboundIps"`
+}
+
+func (LoadBalancerProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerProfile)(nil)).Elem()
+}
+
+func (i LoadBalancerProfileArgs) ToLoadBalancerProfileOutput() LoadBalancerProfileOutput {
+	return i.ToLoadBalancerProfileOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerProfileArgs) ToLoadBalancerProfileOutputWithContext(ctx context.Context) LoadBalancerProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerProfileOutput)
+}
+
+func (i LoadBalancerProfileArgs) ToLoadBalancerProfilePtrOutput() LoadBalancerProfilePtrOutput {
+	return i.ToLoadBalancerProfilePtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerProfileArgs) ToLoadBalancerProfilePtrOutputWithContext(ctx context.Context) LoadBalancerProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerProfileOutput).ToLoadBalancerProfilePtrOutputWithContext(ctx)
+}
+
+// LoadBalancerProfilePtrInput is an input type that accepts LoadBalancerProfileArgs, LoadBalancerProfilePtr and LoadBalancerProfilePtrOutput values.
+// You can construct a concrete instance of `LoadBalancerProfilePtrInput` via:
+//
+//	        LoadBalancerProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerProfilePtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerProfilePtrOutput() LoadBalancerProfilePtrOutput
+	ToLoadBalancerProfilePtrOutputWithContext(context.Context) LoadBalancerProfilePtrOutput
+}
+
+type loadBalancerProfilePtrType LoadBalancerProfileArgs
+
+func LoadBalancerProfilePtr(v *LoadBalancerProfileArgs) LoadBalancerProfilePtrInput {
+	return (*loadBalancerProfilePtrType)(v)
+}
+
+func (*loadBalancerProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerProfile)(nil)).Elem()
+}
+
+func (i *loadBalancerProfilePtrType) ToLoadBalancerProfilePtrOutput() LoadBalancerProfilePtrOutput {
+	return i.ToLoadBalancerProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerProfilePtrType) ToLoadBalancerProfilePtrOutputWithContext(ctx context.Context) LoadBalancerProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerProfilePtrOutput)
+}
+
+// LoadBalancerProfile represents the profile of the cluster public load balancer.
+type LoadBalancerProfileOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerProfile)(nil)).Elem()
+}
+
+func (o LoadBalancerProfileOutput) ToLoadBalancerProfileOutput() LoadBalancerProfileOutput {
+	return o
+}
+
+func (o LoadBalancerProfileOutput) ToLoadBalancerProfileOutputWithContext(ctx context.Context) LoadBalancerProfileOutput {
+	return o
+}
+
+func (o LoadBalancerProfileOutput) ToLoadBalancerProfilePtrOutput() LoadBalancerProfilePtrOutput {
+	return o.ToLoadBalancerProfilePtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerProfileOutput) ToLoadBalancerProfilePtrOutputWithContext(ctx context.Context) LoadBalancerProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerProfile) *LoadBalancerProfile {
+		return &v
+	}).(LoadBalancerProfilePtrOutput)
+}
+
+// The desired managed outbound IPs for the cluster public load balancer.
+func (o LoadBalancerProfileOutput) ManagedOutboundIps() ManagedOutboundIPsPtrOutput {
+	return o.ApplyT(func(v LoadBalancerProfile) *ManagedOutboundIPs { return v.ManagedOutboundIps }).(ManagedOutboundIPsPtrOutput)
+}
+
+type LoadBalancerProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerProfile)(nil)).Elem()
+}
+
+func (o LoadBalancerProfilePtrOutput) ToLoadBalancerProfilePtrOutput() LoadBalancerProfilePtrOutput {
+	return o
+}
+
+func (o LoadBalancerProfilePtrOutput) ToLoadBalancerProfilePtrOutputWithContext(ctx context.Context) LoadBalancerProfilePtrOutput {
+	return o
+}
+
+func (o LoadBalancerProfilePtrOutput) Elem() LoadBalancerProfileOutput {
+	return o.ApplyT(func(v *LoadBalancerProfile) LoadBalancerProfile {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerProfile
+		return ret
+	}).(LoadBalancerProfileOutput)
+}
+
+// The desired managed outbound IPs for the cluster public load balancer.
+func (o LoadBalancerProfilePtrOutput) ManagedOutboundIps() ManagedOutboundIPsPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerProfile) *ManagedOutboundIPs {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedOutboundIps
+	}).(ManagedOutboundIPsPtrOutput)
+}
+
+// LoadBalancerProfile represents the profile of the cluster public load balancer.
+type LoadBalancerProfileResponse struct {
+	// The list of effective outbound IP addresses of the public load balancer.
+	EffectiveOutboundIps []EffectiveOutboundIPResponse `pulumi:"effectiveOutboundIps"`
+	// The desired managed outbound IPs for the cluster public load balancer.
+	ManagedOutboundIps *ManagedOutboundIPsResponse `pulumi:"managedOutboundIps"`
+}
+
+// LoadBalancerProfile represents the profile of the cluster public load balancer.
+type LoadBalancerProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerProfileResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerProfileResponseOutput) ToLoadBalancerProfileResponseOutput() LoadBalancerProfileResponseOutput {
+	return o
+}
+
+func (o LoadBalancerProfileResponseOutput) ToLoadBalancerProfileResponseOutputWithContext(ctx context.Context) LoadBalancerProfileResponseOutput {
+	return o
+}
+
+// The list of effective outbound IP addresses of the public load balancer.
+func (o LoadBalancerProfileResponseOutput) EffectiveOutboundIps() EffectiveOutboundIPResponseArrayOutput {
+	return o.ApplyT(func(v LoadBalancerProfileResponse) []EffectiveOutboundIPResponse { return v.EffectiveOutboundIps }).(EffectiveOutboundIPResponseArrayOutput)
+}
+
+// The desired managed outbound IPs for the cluster public load balancer.
+func (o LoadBalancerProfileResponseOutput) ManagedOutboundIps() ManagedOutboundIPsResponsePtrOutput {
+	return o.ApplyT(func(v LoadBalancerProfileResponse) *ManagedOutboundIPsResponse { return v.ManagedOutboundIps }).(ManagedOutboundIPsResponsePtrOutput)
+}
+
+type LoadBalancerProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerProfileResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerProfileResponsePtrOutput) ToLoadBalancerProfileResponsePtrOutput() LoadBalancerProfileResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerProfileResponsePtrOutput) ToLoadBalancerProfileResponsePtrOutputWithContext(ctx context.Context) LoadBalancerProfileResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerProfileResponsePtrOutput) Elem() LoadBalancerProfileResponseOutput {
+	return o.ApplyT(func(v *LoadBalancerProfileResponse) LoadBalancerProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerProfileResponse
+		return ret
+	}).(LoadBalancerProfileResponseOutput)
+}
+
+// The list of effective outbound IP addresses of the public load balancer.
+func (o LoadBalancerProfileResponsePtrOutput) EffectiveOutboundIps() EffectiveOutboundIPResponseArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerProfileResponse) []EffectiveOutboundIPResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveOutboundIps
+	}).(EffectiveOutboundIPResponseArrayOutput)
+}
+
+// The desired managed outbound IPs for the cluster public load balancer.
+func (o LoadBalancerProfileResponsePtrOutput) ManagedOutboundIps() ManagedOutboundIPsResponsePtrOutput {
+	return o.ApplyT(func(v *LoadBalancerProfileResponse) *ManagedOutboundIPsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedOutboundIps
+	}).(ManagedOutboundIPsResponsePtrOutput)
+}
+
+// ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer.
+type ManagedOutboundIPs struct {
+	// Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
+	Count *int `pulumi:"count"`
+}
+
+// ManagedOutboundIPsInput is an input type that accepts ManagedOutboundIPsArgs and ManagedOutboundIPsOutput values.
+// You can construct a concrete instance of `ManagedOutboundIPsInput` via:
+//
+//	ManagedOutboundIPsArgs{...}
+type ManagedOutboundIPsInput interface {
+	pulumi.Input
+
+	ToManagedOutboundIPsOutput() ManagedOutboundIPsOutput
+	ToManagedOutboundIPsOutputWithContext(context.Context) ManagedOutboundIPsOutput
+}
+
+// ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer.
+type ManagedOutboundIPsArgs struct {
+	// Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+}
+
+func (ManagedOutboundIPsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedOutboundIPs)(nil)).Elem()
+}
+
+func (i ManagedOutboundIPsArgs) ToManagedOutboundIPsOutput() ManagedOutboundIPsOutput {
+	return i.ToManagedOutboundIPsOutputWithContext(context.Background())
+}
+
+func (i ManagedOutboundIPsArgs) ToManagedOutboundIPsOutputWithContext(ctx context.Context) ManagedOutboundIPsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedOutboundIPsOutput)
+}
+
+func (i ManagedOutboundIPsArgs) ToManagedOutboundIPsPtrOutput() ManagedOutboundIPsPtrOutput {
+	return i.ToManagedOutboundIPsPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedOutboundIPsArgs) ToManagedOutboundIPsPtrOutputWithContext(ctx context.Context) ManagedOutboundIPsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedOutboundIPsOutput).ToManagedOutboundIPsPtrOutputWithContext(ctx)
+}
+
+// ManagedOutboundIPsPtrInput is an input type that accepts ManagedOutboundIPsArgs, ManagedOutboundIPsPtr and ManagedOutboundIPsPtrOutput values.
+// You can construct a concrete instance of `ManagedOutboundIPsPtrInput` via:
+//
+//	        ManagedOutboundIPsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedOutboundIPsPtrInput interface {
+	pulumi.Input
+
+	ToManagedOutboundIPsPtrOutput() ManagedOutboundIPsPtrOutput
+	ToManagedOutboundIPsPtrOutputWithContext(context.Context) ManagedOutboundIPsPtrOutput
+}
+
+type managedOutboundIPsPtrType ManagedOutboundIPsArgs
+
+func ManagedOutboundIPsPtr(v *ManagedOutboundIPsArgs) ManagedOutboundIPsPtrInput {
+	return (*managedOutboundIPsPtrType)(v)
+}
+
+func (*managedOutboundIPsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedOutboundIPs)(nil)).Elem()
+}
+
+func (i *managedOutboundIPsPtrType) ToManagedOutboundIPsPtrOutput() ManagedOutboundIPsPtrOutput {
+	return i.ToManagedOutboundIPsPtrOutputWithContext(context.Background())
+}
+
+func (i *managedOutboundIPsPtrType) ToManagedOutboundIPsPtrOutputWithContext(ctx context.Context) ManagedOutboundIPsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedOutboundIPsPtrOutput)
+}
+
+// ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer.
+type ManagedOutboundIPsOutput struct{ *pulumi.OutputState }
+
+func (ManagedOutboundIPsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedOutboundIPs)(nil)).Elem()
+}
+
+func (o ManagedOutboundIPsOutput) ToManagedOutboundIPsOutput() ManagedOutboundIPsOutput {
+	return o
+}
+
+func (o ManagedOutboundIPsOutput) ToManagedOutboundIPsOutputWithContext(ctx context.Context) ManagedOutboundIPsOutput {
+	return o
+}
+
+func (o ManagedOutboundIPsOutput) ToManagedOutboundIPsPtrOutput() ManagedOutboundIPsPtrOutput {
+	return o.ToManagedOutboundIPsPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedOutboundIPsOutput) ToManagedOutboundIPsPtrOutputWithContext(ctx context.Context) ManagedOutboundIPsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedOutboundIPs) *ManagedOutboundIPs {
+		return &v
+	}).(ManagedOutboundIPsPtrOutput)
+}
+
+// Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
+func (o ManagedOutboundIPsOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagedOutboundIPs) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+type ManagedOutboundIPsPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedOutboundIPsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedOutboundIPs)(nil)).Elem()
+}
+
+func (o ManagedOutboundIPsPtrOutput) ToManagedOutboundIPsPtrOutput() ManagedOutboundIPsPtrOutput {
+	return o
+}
+
+func (o ManagedOutboundIPsPtrOutput) ToManagedOutboundIPsPtrOutputWithContext(ctx context.Context) ManagedOutboundIPsPtrOutput {
+	return o
+}
+
+func (o ManagedOutboundIPsPtrOutput) Elem() ManagedOutboundIPsOutput {
+	return o.ApplyT(func(v *ManagedOutboundIPs) ManagedOutboundIPs {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedOutboundIPs
+		return ret
+	}).(ManagedOutboundIPsOutput)
+}
+
+// Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
+func (o ManagedOutboundIPsPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedOutboundIPs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer.
+type ManagedOutboundIPsResponse struct {
+	// Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
+	Count *int `pulumi:"count"`
+}
+
+// ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer.
+type ManagedOutboundIPsResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedOutboundIPsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedOutboundIPsResponse)(nil)).Elem()
+}
+
+func (o ManagedOutboundIPsResponseOutput) ToManagedOutboundIPsResponseOutput() ManagedOutboundIPsResponseOutput {
+	return o
+}
+
+func (o ManagedOutboundIPsResponseOutput) ToManagedOutboundIPsResponseOutputWithContext(ctx context.Context) ManagedOutboundIPsResponseOutput {
+	return o
+}
+
+// Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
+func (o ManagedOutboundIPsResponseOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagedOutboundIPsResponse) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+type ManagedOutboundIPsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedOutboundIPsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedOutboundIPsResponse)(nil)).Elem()
+}
+
+func (o ManagedOutboundIPsResponsePtrOutput) ToManagedOutboundIPsResponsePtrOutput() ManagedOutboundIPsResponsePtrOutput {
+	return o
+}
+
+func (o ManagedOutboundIPsResponsePtrOutput) ToManagedOutboundIPsResponsePtrOutputWithContext(ctx context.Context) ManagedOutboundIPsResponsePtrOutput {
+	return o
+}
+
+func (o ManagedOutboundIPsResponsePtrOutput) Elem() ManagedOutboundIPsResponseOutput {
+	return o.ApplyT(func(v *ManagedOutboundIPsResponse) ManagedOutboundIPsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedOutboundIPsResponse
+		return ret
+	}).(ManagedOutboundIPsResponseOutput)
+}
+
+// Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
+func (o ManagedOutboundIPsResponsePtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedOutboundIPsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
 }
 
 // MasterProfile represents a master profile.
@@ -1317,8 +1593,14 @@ func (o MasterProfileResponsePtrOutput) VmSize() pulumi.StringPtrOutput {
 
 // NetworkProfile represents a network profile.
 type NetworkProfile struct {
+	// The cluster load balancer profile.
+	LoadBalancerProfile *LoadBalancerProfile `pulumi:"loadBalancerProfile"`
+	// The OutboundType used for egress traffic.
+	OutboundType *string `pulumi:"outboundType"`
 	// The CIDR used for OpenShift/Kubernetes Pods.
 	PodCidr *string `pulumi:"podCidr"`
+	// Specifies whether subnets are pre-attached with an NSG
+	PreconfiguredNSG *string `pulumi:"preconfiguredNSG"`
 	// The CIDR used for OpenShift/Kubernetes Services.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 }
@@ -1336,8 +1618,14 @@ type NetworkProfileInput interface {
 
 // NetworkProfile represents a network profile.
 type NetworkProfileArgs struct {
+	// The cluster load balancer profile.
+	LoadBalancerProfile LoadBalancerProfilePtrInput `pulumi:"loadBalancerProfile"`
+	// The OutboundType used for egress traffic.
+	OutboundType pulumi.StringPtrInput `pulumi:"outboundType"`
 	// The CIDR used for OpenShift/Kubernetes Pods.
 	PodCidr pulumi.StringPtrInput `pulumi:"podCidr"`
+	// Specifies whether subnets are pre-attached with an NSG
+	PreconfiguredNSG pulumi.StringPtrInput `pulumi:"preconfiguredNSG"`
 	// The CIDR used for OpenShift/Kubernetes Services.
 	ServiceCidr pulumi.StringPtrInput `pulumi:"serviceCidr"`
 }
@@ -1420,9 +1708,24 @@ func (o NetworkProfileOutput) ToNetworkProfilePtrOutputWithContext(ctx context.C
 	}).(NetworkProfilePtrOutput)
 }
 
+// The cluster load balancer profile.
+func (o NetworkProfileOutput) LoadBalancerProfile() LoadBalancerProfilePtrOutput {
+	return o.ApplyT(func(v NetworkProfile) *LoadBalancerProfile { return v.LoadBalancerProfile }).(LoadBalancerProfilePtrOutput)
+}
+
+// The OutboundType used for egress traffic.
+func (o NetworkProfileOutput) OutboundType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProfile) *string { return v.OutboundType }).(pulumi.StringPtrOutput)
+}
+
 // The CIDR used for OpenShift/Kubernetes Pods.
 func (o NetworkProfileOutput) PodCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkProfile) *string { return v.PodCidr }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether subnets are pre-attached with an NSG
+func (o NetworkProfileOutput) PreconfiguredNSG() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProfile) *string { return v.PreconfiguredNSG }).(pulumi.StringPtrOutput)
 }
 
 // The CIDR used for OpenShift/Kubernetes Services.
@@ -1454,6 +1757,26 @@ func (o NetworkProfilePtrOutput) Elem() NetworkProfileOutput {
 	}).(NetworkProfileOutput)
 }
 
+// The cluster load balancer profile.
+func (o NetworkProfilePtrOutput) LoadBalancerProfile() LoadBalancerProfilePtrOutput {
+	return o.ApplyT(func(v *NetworkProfile) *LoadBalancerProfile {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerProfile
+	}).(LoadBalancerProfilePtrOutput)
+}
+
+// The OutboundType used for egress traffic.
+func (o NetworkProfilePtrOutput) OutboundType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutboundType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The CIDR used for OpenShift/Kubernetes Pods.
 func (o NetworkProfilePtrOutput) PodCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkProfile) *string {
@@ -1461,6 +1784,16 @@ func (o NetworkProfilePtrOutput) PodCidr() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PodCidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether subnets are pre-attached with an NSG
+func (o NetworkProfilePtrOutput) PreconfiguredNSG() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreconfiguredNSG
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1476,8 +1809,14 @@ func (o NetworkProfilePtrOutput) ServiceCidr() pulumi.StringPtrOutput {
 
 // NetworkProfile represents a network profile.
 type NetworkProfileResponse struct {
+	// The cluster load balancer profile.
+	LoadBalancerProfile *LoadBalancerProfileResponse `pulumi:"loadBalancerProfile"`
+	// The OutboundType used for egress traffic.
+	OutboundType *string `pulumi:"outboundType"`
 	// The CIDR used for OpenShift/Kubernetes Pods.
 	PodCidr *string `pulumi:"podCidr"`
+	// Specifies whether subnets are pre-attached with an NSG
+	PreconfiguredNSG *string `pulumi:"preconfiguredNSG"`
 	// The CIDR used for OpenShift/Kubernetes Services.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 }
@@ -1497,9 +1836,24 @@ func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutputWithContext(
 	return o
 }
 
+// The cluster load balancer profile.
+func (o NetworkProfileResponseOutput) LoadBalancerProfile() LoadBalancerProfileResponsePtrOutput {
+	return o.ApplyT(func(v NetworkProfileResponse) *LoadBalancerProfileResponse { return v.LoadBalancerProfile }).(LoadBalancerProfileResponsePtrOutput)
+}
+
+// The OutboundType used for egress traffic.
+func (o NetworkProfileResponseOutput) OutboundType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProfileResponse) *string { return v.OutboundType }).(pulumi.StringPtrOutput)
+}
+
 // The CIDR used for OpenShift/Kubernetes Pods.
 func (o NetworkProfileResponseOutput) PodCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkProfileResponse) *string { return v.PodCidr }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether subnets are pre-attached with an NSG
+func (o NetworkProfileResponseOutput) PreconfiguredNSG() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProfileResponse) *string { return v.PreconfiguredNSG }).(pulumi.StringPtrOutput)
 }
 
 // The CIDR used for OpenShift/Kubernetes Services.
@@ -1531,6 +1885,26 @@ func (o NetworkProfileResponsePtrOutput) Elem() NetworkProfileResponseOutput {
 	}).(NetworkProfileResponseOutput)
 }
 
+// The cluster load balancer profile.
+func (o NetworkProfileResponsePtrOutput) LoadBalancerProfile() LoadBalancerProfileResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkProfileResponse) *LoadBalancerProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerProfile
+	}).(LoadBalancerProfileResponsePtrOutput)
+}
+
+// The OutboundType used for egress traffic.
+func (o NetworkProfileResponsePtrOutput) OutboundType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutboundType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The CIDR used for OpenShift/Kubernetes Pods.
 func (o NetworkProfileResponsePtrOutput) PodCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkProfileResponse) *string {
@@ -1538,6 +1912,16 @@ func (o NetworkProfileResponsePtrOutput) PodCidr() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PodCidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether subnets are pre-attached with an NSG
+func (o NetworkProfileResponsePtrOutput) PreconfiguredNSG() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreconfiguredNSG
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2099,14 +2483,22 @@ func init() {
 	pulumi.RegisterOutputType(ClusterProfilePtrOutput{})
 	pulumi.RegisterOutputType(ClusterProfileResponseOutput{})
 	pulumi.RegisterOutputType(ClusterProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(ConsoleProfileOutput{})
-	pulumi.RegisterOutputType(ConsoleProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConsoleProfileResponseOutput{})
 	pulumi.RegisterOutputType(ConsoleProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(EffectiveOutboundIPResponseOutput{})
+	pulumi.RegisterOutputType(EffectiveOutboundIPResponseArrayOutput{})
 	pulumi.RegisterOutputType(IngressProfileOutput{})
 	pulumi.RegisterOutputType(IngressProfileArrayOutput{})
 	pulumi.RegisterOutputType(IngressProfileResponseOutput{})
 	pulumi.RegisterOutputType(IngressProfileResponseArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerProfileOutput{})
+	pulumi.RegisterOutputType(LoadBalancerProfilePtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerProfileResponseOutput{})
+	pulumi.RegisterOutputType(LoadBalancerProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedOutboundIPsOutput{})
+	pulumi.RegisterOutputType(ManagedOutboundIPsPtrOutput{})
+	pulumi.RegisterOutputType(ManagedOutboundIPsResponseOutput{})
+	pulumi.RegisterOutputType(ManagedOutboundIPsResponsePtrOutput{})
 	pulumi.RegisterOutputType(MasterProfileOutput{})
 	pulumi.RegisterOutputType(MasterProfilePtrOutput{})
 	pulumi.RegisterOutputType(MasterProfileResponseOutput{})

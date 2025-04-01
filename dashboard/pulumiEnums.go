@@ -676,6 +676,172 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
+// The AutoRenew setting of the Enterprise subscription
+type MarketplaceAutoRenew string
+
+const (
+	MarketplaceAutoRenewDisabled = MarketplaceAutoRenew("Disabled")
+	MarketplaceAutoRenewEnabled  = MarketplaceAutoRenew("Enabled")
+)
+
+func (MarketplaceAutoRenew) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketplaceAutoRenew)(nil)).Elem()
+}
+
+func (e MarketplaceAutoRenew) ToMarketplaceAutoRenewOutput() MarketplaceAutoRenewOutput {
+	return pulumi.ToOutput(e).(MarketplaceAutoRenewOutput)
+}
+
+func (e MarketplaceAutoRenew) ToMarketplaceAutoRenewOutputWithContext(ctx context.Context) MarketplaceAutoRenewOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MarketplaceAutoRenewOutput)
+}
+
+func (e MarketplaceAutoRenew) ToMarketplaceAutoRenewPtrOutput() MarketplaceAutoRenewPtrOutput {
+	return e.ToMarketplaceAutoRenewPtrOutputWithContext(context.Background())
+}
+
+func (e MarketplaceAutoRenew) ToMarketplaceAutoRenewPtrOutputWithContext(ctx context.Context) MarketplaceAutoRenewPtrOutput {
+	return MarketplaceAutoRenew(e).ToMarketplaceAutoRenewOutputWithContext(ctx).ToMarketplaceAutoRenewPtrOutputWithContext(ctx)
+}
+
+func (e MarketplaceAutoRenew) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MarketplaceAutoRenew) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MarketplaceAutoRenew) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MarketplaceAutoRenew) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MarketplaceAutoRenewOutput struct{ *pulumi.OutputState }
+
+func (MarketplaceAutoRenewOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketplaceAutoRenew)(nil)).Elem()
+}
+
+func (o MarketplaceAutoRenewOutput) ToMarketplaceAutoRenewOutput() MarketplaceAutoRenewOutput {
+	return o
+}
+
+func (o MarketplaceAutoRenewOutput) ToMarketplaceAutoRenewOutputWithContext(ctx context.Context) MarketplaceAutoRenewOutput {
+	return o
+}
+
+func (o MarketplaceAutoRenewOutput) ToMarketplaceAutoRenewPtrOutput() MarketplaceAutoRenewPtrOutput {
+	return o.ToMarketplaceAutoRenewPtrOutputWithContext(context.Background())
+}
+
+func (o MarketplaceAutoRenewOutput) ToMarketplaceAutoRenewPtrOutputWithContext(ctx context.Context) MarketplaceAutoRenewPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MarketplaceAutoRenew) *MarketplaceAutoRenew {
+		return &v
+	}).(MarketplaceAutoRenewPtrOutput)
+}
+
+func (o MarketplaceAutoRenewOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MarketplaceAutoRenewOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MarketplaceAutoRenew) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MarketplaceAutoRenewOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MarketplaceAutoRenewOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MarketplaceAutoRenew) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MarketplaceAutoRenewPtrOutput struct{ *pulumi.OutputState }
+
+func (MarketplaceAutoRenewPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MarketplaceAutoRenew)(nil)).Elem()
+}
+
+func (o MarketplaceAutoRenewPtrOutput) ToMarketplaceAutoRenewPtrOutput() MarketplaceAutoRenewPtrOutput {
+	return o
+}
+
+func (o MarketplaceAutoRenewPtrOutput) ToMarketplaceAutoRenewPtrOutputWithContext(ctx context.Context) MarketplaceAutoRenewPtrOutput {
+	return o
+}
+
+func (o MarketplaceAutoRenewPtrOutput) Elem() MarketplaceAutoRenewOutput {
+	return o.ApplyT(func(v *MarketplaceAutoRenew) MarketplaceAutoRenew {
+		if v != nil {
+			return *v
+		}
+		var ret MarketplaceAutoRenew
+		return ret
+	}).(MarketplaceAutoRenewOutput)
+}
+
+func (o MarketplaceAutoRenewPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MarketplaceAutoRenewPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MarketplaceAutoRenew) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MarketplaceAutoRenewInput is an input type that accepts values of the MarketplaceAutoRenew enum
+// A concrete instance of `MarketplaceAutoRenewInput` can be one of the following:
+//
+//	MarketplaceAutoRenewDisabled
+//	MarketplaceAutoRenewEnabled
+type MarketplaceAutoRenewInput interface {
+	pulumi.Input
+
+	ToMarketplaceAutoRenewOutput() MarketplaceAutoRenewOutput
+	ToMarketplaceAutoRenewOutputWithContext(context.Context) MarketplaceAutoRenewOutput
+}
+
+var marketplaceAutoRenewPtrType = reflect.TypeOf((**MarketplaceAutoRenew)(nil)).Elem()
+
+type MarketplaceAutoRenewPtrInput interface {
+	pulumi.Input
+
+	ToMarketplaceAutoRenewPtrOutput() MarketplaceAutoRenewPtrOutput
+	ToMarketplaceAutoRenewPtrOutputWithContext(context.Context) MarketplaceAutoRenewPtrOutput
+}
+
+type marketplaceAutoRenewPtr string
+
+func MarketplaceAutoRenewPtr(v string) MarketplaceAutoRenewPtrInput {
+	return (*marketplaceAutoRenewPtr)(&v)
+}
+
+func (*marketplaceAutoRenewPtr) ElementType() reflect.Type {
+	return marketplaceAutoRenewPtrType
+}
+
+func (in *marketplaceAutoRenewPtr) ToMarketplaceAutoRenewPtrOutput() MarketplaceAutoRenewPtrOutput {
+	return pulumi.ToOutput(in).(MarketplaceAutoRenewPtrOutput)
+}
+
+func (in *marketplaceAutoRenewPtr) ToMarketplaceAutoRenewPtrOutputWithContext(ctx context.Context) MarketplaceAutoRenewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MarketplaceAutoRenewPtrOutput)
+}
+
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -1010,6 +1176,175 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
+// The StartTLSPolicy setting of the SMTP configuration
+// https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+type StartTLSPolicy string
+
+const (
+	StartTLSPolicyOpportunisticStartTLS = StartTLSPolicy("OpportunisticStartTLS")
+	StartTLSPolicyMandatoryStartTLS     = StartTLSPolicy("MandatoryStartTLS")
+	StartTLSPolicyNoStartTLS            = StartTLSPolicy("NoStartTLS")
+)
+
+func (StartTLSPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*StartTLSPolicy)(nil)).Elem()
+}
+
+func (e StartTLSPolicy) ToStartTLSPolicyOutput() StartTLSPolicyOutput {
+	return pulumi.ToOutput(e).(StartTLSPolicyOutput)
+}
+
+func (e StartTLSPolicy) ToStartTLSPolicyOutputWithContext(ctx context.Context) StartTLSPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StartTLSPolicyOutput)
+}
+
+func (e StartTLSPolicy) ToStartTLSPolicyPtrOutput() StartTLSPolicyPtrOutput {
+	return e.ToStartTLSPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e StartTLSPolicy) ToStartTLSPolicyPtrOutputWithContext(ctx context.Context) StartTLSPolicyPtrOutput {
+	return StartTLSPolicy(e).ToStartTLSPolicyOutputWithContext(ctx).ToStartTLSPolicyPtrOutputWithContext(ctx)
+}
+
+func (e StartTLSPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StartTLSPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StartTLSPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StartTLSPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StartTLSPolicyOutput struct{ *pulumi.OutputState }
+
+func (StartTLSPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StartTLSPolicy)(nil)).Elem()
+}
+
+func (o StartTLSPolicyOutput) ToStartTLSPolicyOutput() StartTLSPolicyOutput {
+	return o
+}
+
+func (o StartTLSPolicyOutput) ToStartTLSPolicyOutputWithContext(ctx context.Context) StartTLSPolicyOutput {
+	return o
+}
+
+func (o StartTLSPolicyOutput) ToStartTLSPolicyPtrOutput() StartTLSPolicyPtrOutput {
+	return o.ToStartTLSPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o StartTLSPolicyOutput) ToStartTLSPolicyPtrOutputWithContext(ctx context.Context) StartTLSPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StartTLSPolicy) *StartTLSPolicy {
+		return &v
+	}).(StartTLSPolicyPtrOutput)
+}
+
+func (o StartTLSPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StartTLSPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StartTLSPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StartTLSPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StartTLSPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StartTLSPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StartTLSPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (StartTLSPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StartTLSPolicy)(nil)).Elem()
+}
+
+func (o StartTLSPolicyPtrOutput) ToStartTLSPolicyPtrOutput() StartTLSPolicyPtrOutput {
+	return o
+}
+
+func (o StartTLSPolicyPtrOutput) ToStartTLSPolicyPtrOutputWithContext(ctx context.Context) StartTLSPolicyPtrOutput {
+	return o
+}
+
+func (o StartTLSPolicyPtrOutput) Elem() StartTLSPolicyOutput {
+	return o.ApplyT(func(v *StartTLSPolicy) StartTLSPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret StartTLSPolicy
+		return ret
+	}).(StartTLSPolicyOutput)
+}
+
+func (o StartTLSPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StartTLSPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StartTLSPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StartTLSPolicyInput is an input type that accepts values of the StartTLSPolicy enum
+// A concrete instance of `StartTLSPolicyInput` can be one of the following:
+//
+//	StartTLSPolicyOpportunisticStartTLS
+//	StartTLSPolicyMandatoryStartTLS
+//	StartTLSPolicyNoStartTLS
+type StartTLSPolicyInput interface {
+	pulumi.Input
+
+	ToStartTLSPolicyOutput() StartTLSPolicyOutput
+	ToStartTLSPolicyOutputWithContext(context.Context) StartTLSPolicyOutput
+}
+
+var startTLSPolicyPtrType = reflect.TypeOf((**StartTLSPolicy)(nil)).Elem()
+
+type StartTLSPolicyPtrInput interface {
+	pulumi.Input
+
+	ToStartTLSPolicyPtrOutput() StartTLSPolicyPtrOutput
+	ToStartTLSPolicyPtrOutputWithContext(context.Context) StartTLSPolicyPtrOutput
+}
+
+type startTLSPolicyPtr string
+
+func StartTLSPolicyPtr(v string) StartTLSPolicyPtrInput {
+	return (*startTLSPolicyPtr)(&v)
+}
+
+func (*startTLSPolicyPtr) ElementType() reflect.Type {
+	return startTLSPolicyPtrType
+}
+
+func (in *startTLSPolicyPtr) ToStartTLSPolicyPtrOutput() StartTLSPolicyPtrOutput {
+	return pulumi.ToOutput(in).(StartTLSPolicyPtrOutput)
+}
+
+func (in *startTLSPolicyPtr) ToStartTLSPolicyPtrOutputWithContext(ctx context.Context) StartTLSPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StartTLSPolicyPtrOutput)
+}
+
 // The zone redundancy setting of the Grafana instance.
 type ZoneRedundancy string
 
@@ -1185,10 +1520,14 @@ func init() {
 	pulumi.RegisterOutputType(DeterministicOutboundIPPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(MarketplaceAutoRenewOutput{})
+	pulumi.RegisterOutputType(MarketplaceAutoRenewPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
+	pulumi.RegisterOutputType(StartTLSPolicyOutput{})
+	pulumi.RegisterOutputType(StartTLSPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ZoneRedundancyOutput{})
 	pulumi.RegisterOutputType(ZoneRedundancyPtrOutput{})
 }

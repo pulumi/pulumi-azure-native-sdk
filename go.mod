@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/v2
+module github.com/pulumi/pulumi-azure-native-sdk/v3
 
 go 1.22
 
@@ -6,7 +6,8 @@ toolchain go1.23.1
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi/sdk/v3 v3.158.0
+	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.90.0
+	github.com/pulumi/pulumi/sdk/v3 v3.159.0
 )
 
 require (
@@ -69,7 +70,6 @@ require (
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/cobra v1.7.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/stretchr/objx v0.2.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect

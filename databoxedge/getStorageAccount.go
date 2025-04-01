@@ -13,9 +13,9 @@ import (
 
 // Represents a Storage Account on the  Data Box Edge/Gateway device.
 //
-// Uses Azure REST API version 2022-03-01.
+// Uses Azure REST API version 2023-07-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStorageAccount(ctx *pulumi.Context, args *LookupStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageAccountResult
@@ -37,6 +37,8 @@ type LookupStorageAccountArgs struct {
 
 // Represents a Storage Account on the  Data Box Edge/Gateway device.
 type LookupStorageAccountResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// BlobEndpoint of Storage Account
 	BlobEndpoint string `pulumi:"blobEndpoint"`
 	// The Container Count. Present only for Storage Accounts with DataPolicy set to Cloud.
@@ -94,6 +96,11 @@ func (o LookupStorageAccountResultOutput) ToLookupStorageAccountResultOutput() L
 
 func (o LookupStorageAccountResultOutput) ToLookupStorageAccountResultOutputWithContext(ctx context.Context) LookupStorageAccountResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStorageAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // BlobEndpoint of Storage Account

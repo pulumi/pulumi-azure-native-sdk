@@ -14,12 +14,14 @@ import (
 
 // Define the SAP Instance resource.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 type SapInstance struct {
 	pulumi.CustomResourceState
 
 	// Enter a business function/department identifier to group multiple SIDs.
 	Application pulumi.StringOutput `pulumi:"application"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Defines the errors related to SAP Instance resource.
@@ -160,6 +162,11 @@ func (o SapInstanceOutput) ToSapInstanceOutputWithContext(ctx context.Context) S
 // Enter a business function/department identifier to group multiple SIDs.
 func (o SapInstanceOutput) Application() pulumi.StringOutput {
 	return o.ApplyT(func(v *SapInstance) pulumi.StringOutput { return v.Application }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o SapInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SapInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.

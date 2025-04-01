@@ -14,12 +14,14 @@ import (
 
 // Describes the system within the agent.
 //
-// Uses Azure REST API version 2024-04-01-preview.
+// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-04-01-preview.
 //
-// Other available API versions: 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2024-04-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type System struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The configuration of the system.
 	Configuration SapSystemsConfigurationResponseOutput `pulumi:"configuration"`
 	DisplayName   pulumi.StringOutput                   `pulumi:"displayName"`
@@ -170,6 +172,11 @@ func (o SystemOutput) ToSystemOutput() SystemOutput {
 
 func (o SystemOutput) ToSystemOutputWithContext(ctx context.Context) SystemOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SystemOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *System) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The configuration of the system.

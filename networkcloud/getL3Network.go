@@ -13,9 +13,9 @@ import (
 
 // Get properties of the provided layer 3 (L3) network.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2025-02-01.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupL3Network(ctx *pulumi.Context, args *LookupL3NetworkArgs, opts ...pulumi.InvokeOption) (*LookupL3NetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupL3NetworkResult
@@ -36,12 +36,16 @@ type LookupL3NetworkArgs struct {
 type LookupL3NetworkResult struct {
 	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
 	AssociatedResourceIds []string `pulumi:"associatedResourceIds"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID of the Network Cloud cluster this L3 network is associated with.
 	ClusterId string `pulumi:"clusterId"`
 	// The more detailed status of the L3 network.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this L3 network.
@@ -141,6 +145,11 @@ func (o LookupL3NetworkResultOutput) AssociatedResourceIds() pulumi.StringArrayO
 	return o.ApplyT(func(v LookupL3NetworkResult) []string { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupL3NetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupL3NetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource ID of the Network Cloud cluster this L3 network is associated with.
 func (o LookupL3NetworkResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL3NetworkResult) string { return v.ClusterId }).(pulumi.StringOutput)
@@ -154,6 +163,11 @@ func (o LookupL3NetworkResultOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o LookupL3NetworkResultOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupL3NetworkResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o LookupL3NetworkResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupL3NetworkResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.

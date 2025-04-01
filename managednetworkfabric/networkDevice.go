@@ -12,31 +12,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The NetworkDevice resource definition.
+// The Network Device resource definition.
 //
-// Uses Azure REST API version 2023-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-06-15.
+// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NetworkDevice struct {
 	pulumi.CustomResourceState
 
+	// Administrative state of the resource.
+	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
-	// The host Name of the device.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Configuration state of the resource.
+	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
+	// The host name of the device.
 	HostName pulumi.StringPtrOutput `pulumi:"hostName"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Management IPv4 Address.
+	ManagementIpv4Address pulumi.StringOutput `pulumi:"managementIpv4Address"`
+	// Management IPv6 Address.
+	ManagementIpv6Address pulumi.StringOutput `pulumi:"managementIpv6Address"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// networkDeviceRole is the device role: Example: CE | ToR.
+	// NetworkDeviceRole is the device role: Example: CE | ToR.
 	NetworkDeviceRole pulumi.StringOutput `pulumi:"networkDeviceRole"`
 	// Network Device SKU name.
-	NetworkDeviceSku pulumi.StringOutput `pulumi:"networkDeviceSku"`
+	NetworkDeviceSku pulumi.StringPtrOutput `pulumi:"networkDeviceSku"`
 	// Reference to network rack resource id.
 	NetworkRackId pulumi.StringOutput `pulumi:"networkRackId"`
-	// Gets the provisioning state of the resource.
+	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// serialNumber of the format Make;Model;HardwareRevisionId;SerialNumber. Example: Arista;DCS-7280DR3-24;12.05;JPE21116969
+	// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
 	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -55,12 +65,6 @@ func NewNetworkDevice(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.NetworkDeviceRole == nil {
-		return nil, errors.New("invalid value for required argument 'NetworkDeviceRole'")
-	}
-	if args.NetworkDeviceSku == nil {
-		return nil, errors.New("invalid value for required argument 'NetworkDeviceSku'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -111,19 +115,17 @@ func (NetworkDeviceState) ElementType() reflect.Type {
 type networkDeviceArgs struct {
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// The host Name of the device.
+	// The host name of the device.
 	HostName *string `pulumi:"hostName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Name of the Network Device
+	// Name of the Network Device.
 	NetworkDeviceName *string `pulumi:"networkDeviceName"`
-	// networkDeviceRole is the device role: Example: CE | ToR.
-	NetworkDeviceRole string `pulumi:"networkDeviceRole"`
 	// Network Device SKU name.
-	NetworkDeviceSku string `pulumi:"networkDeviceSku"`
+	NetworkDeviceSku *string `pulumi:"networkDeviceSku"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// serialNumber of the format Make;Model;HardwareRevisionId;SerialNumber. Example: Arista;DCS-7280DR3-24;12.05;JPE21116969
+	// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
 	SerialNumber string `pulumi:"serialNumber"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -133,19 +135,17 @@ type networkDeviceArgs struct {
 type NetworkDeviceArgs struct {
 	// Switch configuration description.
 	Annotation pulumi.StringPtrInput
-	// The host Name of the device.
+	// The host name of the device.
 	HostName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Name of the Network Device
+	// Name of the Network Device.
 	NetworkDeviceName pulumi.StringPtrInput
-	// networkDeviceRole is the device role: Example: CE | ToR.
-	NetworkDeviceRole pulumi.StringInput
 	// Network Device SKU name.
-	NetworkDeviceSku pulumi.StringInput
+	NetworkDeviceSku pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// serialNumber of the format Make;Model;HardwareRevisionId;SerialNumber. Example: Arista;DCS-7280DR3-24;12.05;JPE21116969
+	// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
 	SerialNumber pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -188,12 +188,27 @@ func (o NetworkDeviceOutput) ToNetworkDeviceOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Administrative state of the resource.
+func (o NetworkDeviceOutput) AdministrativeState() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.AdministrativeState }).(pulumi.StringOutput)
+}
+
 // Switch configuration description.
 func (o NetworkDeviceOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkDevice) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// The host Name of the device.
+// The Azure API version of the resource.
+func (o NetworkDeviceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Configuration state of the resource.
+func (o NetworkDeviceOutput) ConfigurationState() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.ConfigurationState }).(pulumi.StringOutput)
+}
+
+// The host name of the device.
 func (o NetworkDeviceOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkDevice) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
 }
@@ -203,19 +218,29 @@ func (o NetworkDeviceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// Management IPv4 Address.
+func (o NetworkDeviceOutput) ManagementIpv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.ManagementIpv4Address }).(pulumi.StringOutput)
+}
+
+// Management IPv6 Address.
+func (o NetworkDeviceOutput) ManagementIpv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.ManagementIpv6Address }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o NetworkDeviceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// networkDeviceRole is the device role: Example: CE | ToR.
+// NetworkDeviceRole is the device role: Example: CE | ToR.
 func (o NetworkDeviceOutput) NetworkDeviceRole() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.NetworkDeviceRole }).(pulumi.StringOutput)
 }
 
 // Network Device SKU name.
-func (o NetworkDeviceOutput) NetworkDeviceSku() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.NetworkDeviceSku }).(pulumi.StringOutput)
+func (o NetworkDeviceOutput) NetworkDeviceSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkDevice) pulumi.StringPtrOutput { return v.NetworkDeviceSku }).(pulumi.StringPtrOutput)
 }
 
 // Reference to network rack resource id.
@@ -223,12 +248,12 @@ func (o NetworkDeviceOutput) NetworkRackId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.NetworkRackId }).(pulumi.StringOutput)
 }
 
-// Gets the provisioning state of the resource.
+// Provisioning state of the resource.
 func (o NetworkDeviceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// serialNumber of the format Make;Model;HardwareRevisionId;SerialNumber. Example: Arista;DCS-7280DR3-24;12.05;JPE21116969
+// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
 func (o NetworkDeviceOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkDevice) pulumi.StringOutput { return v.SerialNumber }).(pulumi.StringOutput)
 }

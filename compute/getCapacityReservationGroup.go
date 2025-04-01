@@ -13,9 +13,9 @@ import (
 
 // The operation that retrieves information about a capacity reservation group.
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCapacityReservationGroup(ctx *pulumi.Context, args *LookupCapacityReservationGroupArgs, opts ...pulumi.InvokeOption) (*LookupCapacityReservationGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapacityReservationGroupResult
@@ -37,6 +37,8 @@ type LookupCapacityReservationGroupArgs struct {
 
 // Specifies information about the capacity reservation group that the capacity reservations should be assigned to. Currently, a capacity reservation can only be added to a capacity reservation group at creation time. An existing capacity reservation cannot be added or moved to another capacity reservation group.
 type LookupCapacityReservationGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A list of all capacity reservation resource ids that belong to capacity reservation group.
 	CapacityReservations []SubResourceReadOnlyResponse `pulumi:"capacityReservations"`
 	// Resource Id
@@ -47,6 +49,8 @@ type LookupCapacityReservationGroupResult struct {
 	Location string `pulumi:"location"`
 	// Resource name
 	Name string `pulumi:"name"`
+	// Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. Pls. keep in mind the capacity reservation group resource generally can be shared across subscriptions belonging to a single azure AAD tenant or cross AAD tenant if there is a trust relationship established between the AAD tenants. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
+	SharingProfile *ResourceSharingProfileResponse `pulumi:"sharingProfile"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type
@@ -94,6 +98,11 @@ func (o LookupCapacityReservationGroupResultOutput) ToLookupCapacityReservationG
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupCapacityReservationGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCapacityReservationGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A list of all capacity reservation resource ids that belong to capacity reservation group.
 func (o LookupCapacityReservationGroupResultOutput) CapacityReservations() SubResourceReadOnlyResponseArrayOutput {
 	return o.ApplyT(func(v LookupCapacityReservationGroupResult) []SubResourceReadOnlyResponse {
@@ -121,6 +130,11 @@ func (o LookupCapacityReservationGroupResultOutput) Location() pulumi.StringOutp
 // Resource name
 func (o LookupCapacityReservationGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapacityReservationGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. Pls. keep in mind the capacity reservation group resource generally can be shared across subscriptions belonging to a single azure AAD tenant or cross AAD tenant if there is a trust relationship established between the AAD tenants. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
+func (o LookupCapacityReservationGroupResultOutput) SharingProfile() ResourceSharingProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupCapacityReservationGroupResult) *ResourceSharingProfileResponse { return v.SharingProfile }).(ResourceSharingProfileResponsePtrOutput)
 }
 
 // Resource tags

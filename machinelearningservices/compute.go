@@ -14,12 +14,14 @@ import (
 
 // Machine Learning compute object wrapped into ARM resource envelope.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2021-03-01-preview, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Compute struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Specifies the location of the resource.
@@ -102,6 +104,9 @@ func NewCompute(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210401:Compute"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20210401:MachineLearningCompute"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210701:Compute"),
@@ -274,6 +279,11 @@ func (o ComputeOutput) ToComputeOutput() ComputeOutput {
 
 func (o ComputeOutput) ToComputeOutputWithContext(ctx context.Context) ComputeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ComputeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity of the resource.

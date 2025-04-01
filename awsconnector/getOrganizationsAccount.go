@@ -33,6 +33,8 @@ type LookupOrganizationsAccountArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupOrganizationsAccountResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -92,6 +94,11 @@ func (o LookupOrganizationsAccountResultOutput) ToLookupOrganizationsAccountResu
 
 func (o LookupOrganizationsAccountResultOutput) ToLookupOrganizationsAccountResultOutputWithContext(ctx context.Context) LookupOrganizationsAccountResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOrganizationsAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationsAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

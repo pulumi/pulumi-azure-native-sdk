@@ -33,6 +33,8 @@ type LookupCloudFormationStackArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupCloudFormationStackResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -82,6 +84,11 @@ func (o LookupCloudFormationStackResultOutput) ToLookupCloudFormationStackResult
 
 func (o LookupCloudFormationStackResultOutput) ToLookupCloudFormationStackResultOutputWithContext(ctx context.Context) LookupCloudFormationStackResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCloudFormationStackResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationStackResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

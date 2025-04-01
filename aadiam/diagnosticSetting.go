@@ -13,12 +13,12 @@ import (
 
 // The diagnostic setting resource.
 //
-// Uses Azure REST API version 2017-04-01. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
-//
-// Other available API versions: 2017-04-01-preview.
+// Uses Azure REST API version 2017-04-01. In version 2.x of the Azure Native provider, it used API version 2017-04-01.
 type DiagnosticSetting struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource Id for the event hub authorization rule.
 	EventHubAuthorizationRuleId pulumi.StringPtrOutput `pulumi:"eventHubAuthorizationRuleId"`
 	// The name of the event hub. If none is specified, the default event hub will be selected.
@@ -155,6 +155,11 @@ func (o DiagnosticSettingOutput) ToDiagnosticSettingOutput() DiagnosticSettingOu
 
 func (o DiagnosticSettingOutput) ToDiagnosticSettingOutputWithContext(ctx context.Context) DiagnosticSettingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DiagnosticSettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiagnosticSetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource Id for the event hub authorization rule.

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-11-01.
 //
-// Other available API versions: 2025-01-15-preview.
+// Other available API versions: 2025-01-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native fabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFabricCapacity(ctx *pulumi.Context, args *LookupFabricCapacityArgs, opts ...pulumi.InvokeOption) (*LookupFabricCapacityResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFabricCapacityResult
@@ -37,6 +37,8 @@ type LookupFabricCapacityArgs struct {
 type LookupFabricCapacityResult struct {
 	// The capacity administration
 	Administration CapacityAdministrationResponse `pulumi:"administration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -95,6 +97,11 @@ func (o LookupFabricCapacityResultOutput) ToLookupFabricCapacityResultOutputWith
 // The capacity administration
 func (o LookupFabricCapacityResultOutput) Administration() CapacityAdministrationResponseOutput {
 	return o.ApplyT(func(v LookupFabricCapacityResult) CapacityAdministrationResponse { return v.Administration }).(CapacityAdministrationResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupFabricCapacityResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFabricCapacityResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

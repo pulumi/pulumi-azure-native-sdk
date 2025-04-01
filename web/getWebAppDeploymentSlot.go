@@ -13,9 +13,9 @@ import (
 
 // Description for Get a deployment by its ID for an app, or a deployment slot.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppDeploymentSlot(ctx *pulumi.Context, args *LookupWebAppDeploymentSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDeploymentSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppDeploymentSlotResult
@@ -45,6 +45,8 @@ type LookupWebAppDeploymentSlotResult struct {
 	Author *string `pulumi:"author"`
 	// Author email.
 	AuthorEmail *string `pulumi:"authorEmail"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Who performed the deployment.
 	Deployer *string `pulumi:"deployer"`
 	// Details on deployment.
@@ -119,6 +121,11 @@ func (o LookupWebAppDeploymentSlotResultOutput) Author() pulumi.StringPtrOutput 
 // Author email.
 func (o LookupWebAppDeploymentSlotResultOutput) AuthorEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentSlotResult) *string { return v.AuthorEmail }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppDeploymentSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppDeploymentSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Who performed the deployment.

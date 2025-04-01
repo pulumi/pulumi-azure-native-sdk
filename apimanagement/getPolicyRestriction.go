@@ -13,9 +13,9 @@ import (
 
 // Get the policy restriction of the Api Management service.
 //
-// Uses Azure REST API version 2023-05-01-preview.
+// Uses Azure REST API version 2024-06-01-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2023-05-01-preview, 2023-09-01-preview, 2024-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPolicyRestriction(ctx *pulumi.Context, args *LookupPolicyRestrictionArgs, opts ...pulumi.InvokeOption) (*LookupPolicyRestrictionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyRestrictionResult
@@ -37,6 +37,8 @@ type LookupPolicyRestrictionArgs struct {
 
 // Policy restriction contract details.
 type LookupPolicyRestrictionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -96,6 +98,11 @@ func (o LookupPolicyRestrictionResultOutput) ToLookupPolicyRestrictionResultOutp
 
 func (o LookupPolicyRestrictionResultOutput) ToLookupPolicyRestrictionResultOutputWithContext(ctx context.Context) LookupPolicyRestrictionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPolicyRestrictionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyRestrictionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

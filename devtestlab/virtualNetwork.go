@@ -14,12 +14,14 @@ import (
 
 // A virtual network.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 
 	// The allowed subnets of the virtual network.
 	AllowedSubnets SubnetResponseArrayOutput `pulumi:"allowedSubnets"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the virtual network.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// The description of the virtual network.
@@ -184,6 +186,11 @@ func (o VirtualNetworkOutput) ToVirtualNetworkOutputWithContext(ctx context.Cont
 // The allowed subnets of the virtual network.
 func (o VirtualNetworkOutput) AllowedSubnets() SubnetResponseArrayOutput {
 	return o.ApplyT(func(v *VirtualNetwork) SubnetResponseArrayOutput { return v.AllowedSubnets }).(SubnetResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o VirtualNetworkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the virtual network.

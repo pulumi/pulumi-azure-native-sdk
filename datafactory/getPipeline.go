@@ -39,6 +39,8 @@ type LookupPipelineResult struct {
 	Activities []interface{} `pulumi:"activities"`
 	// List of tags that can be used for describing the Pipeline.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The max number of concurrent runs for the pipeline.
 	Concurrency *int `pulumi:"concurrency"`
 	// The description of the pipeline.
@@ -108,6 +110,11 @@ func (o LookupPipelineResultOutput) Activities() pulumi.ArrayOutput {
 // List of tags that can be used for describing the Pipeline.
 func (o LookupPipelineResultOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupPipelineResult) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPipelineResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPipelineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The max number of concurrent runs for the pipeline.

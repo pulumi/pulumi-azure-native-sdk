@@ -13,9 +13,9 @@ import (
 
 // Implements GuestAgent GET method.
 //
-// Uses Azure REST API version 2023-03-01-preview.
+// Uses Azure REST API version 2023-12-01.
 //
-// Other available API versions: 2023-10-01, 2023-12-01.
+// Other available API versions: 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVMInstanceGuestAgent(ctx *pulumi.Context, args *LookupVMInstanceGuestAgentArgs, opts ...pulumi.InvokeOption) (*LookupVMInstanceGuestAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVMInstanceGuestAgentResult
@@ -33,6 +33,8 @@ type LookupVMInstanceGuestAgentArgs struct {
 
 // Defines the GuestAgent.
 type LookupVMInstanceGuestAgentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Username / Password Credentials to provision guest agent.
 	Credentials *GuestCredentialResponse `pulumi:"credentials"`
 	// Gets the name of the corresponding resource in Kubernetes.
@@ -92,6 +94,11 @@ func (o LookupVMInstanceGuestAgentResultOutput) ToLookupVMInstanceGuestAgentResu
 
 func (o LookupVMInstanceGuestAgentResultOutput) ToLookupVMInstanceGuestAgentResultOutputWithContext(ctx context.Context) LookupVMInstanceGuestAgentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVMInstanceGuestAgentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVMInstanceGuestAgentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Username / Password Credentials to provision guest agent.

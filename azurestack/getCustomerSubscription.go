@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-06-01.
 //
-// Other available API versions: 2020-06-01-preview.
+// Other available API versions: 2020-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestack [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCustomerSubscription(ctx *pulumi.Context, args *LookupCustomerSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupCustomerSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomerSubscriptionResult
@@ -37,6 +37,8 @@ type LookupCustomerSubscriptionArgs struct {
 
 // Customer subscription.
 type LookupCustomerSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The entity tag used for optimistic concurrency when modifying the resource.
 	Etag *string `pulumi:"etag"`
 	// ID of the resource.
@@ -84,6 +86,11 @@ func (o LookupCustomerSubscriptionResultOutput) ToLookupCustomerSubscriptionResu
 
 func (o LookupCustomerSubscriptionResultOutput) ToLookupCustomerSubscriptionResultOutputWithContext(ctx context.Context) LookupCustomerSubscriptionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCustomerSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomerSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The entity tag used for optimistic concurrency when modifying the resource.

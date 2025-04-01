@@ -14,6 +14,8 @@ import (
 // Gets a Transform.
 //
 // Uses Azure REST API version 2022-07-01.
+//
+// Other available API versions: 2018-03-30-preview, 2018-06-01-preview, 2018-07-01, 2020-05-01, 2021-06-01, 2021-11-01, 2022-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupTransform(ctx *pulumi.Context, args *LookupTransformArgs, opts ...pulumi.InvokeOption) (*LookupTransformResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTransformResult
@@ -35,6 +37,8 @@ type LookupTransformArgs struct {
 
 // A Transform encapsulates the rules or instructions for generating desired outputs from input media, such as by transcoding or by extracting insights. After the Transform is created, it can be applied to input media by creating Jobs.
 type LookupTransformResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The UTC date and time when the Transform was created, in 'YYYY-MM-DDThh:mm:ssZ' format.
 	Created string `pulumi:"created"`
 	// An optional verbose description of the Transform.
@@ -88,6 +92,11 @@ func (o LookupTransformResultOutput) ToLookupTransformResultOutput() LookupTrans
 
 func (o LookupTransformResultOutput) ToLookupTransformResultOutputWithContext(ctx context.Context) LookupTransformResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTransformResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTransformResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The UTC date and time when the Transform was created, in 'YYYY-MM-DDThh:mm:ssZ' format.

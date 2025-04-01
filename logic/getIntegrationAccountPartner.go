@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2019-05-01.
 //
-// Other available API versions: 2015-08-01-preview.
+// Other available API versions: 2015-08-01-preview, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIntegrationAccountPartner(ctx *pulumi.Context, args *LookupIntegrationAccountPartnerArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountPartnerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountPartnerResult
@@ -37,6 +37,8 @@ type LookupIntegrationAccountPartnerArgs struct {
 
 // The integration account partner.
 type LookupIntegrationAccountPartnerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime string `pulumi:"changedTime"`
 	// The partner content.
@@ -94,6 +96,11 @@ func (o LookupIntegrationAccountPartnerResultOutput) ToLookupIntegrationAccountP
 
 func (o LookupIntegrationAccountPartnerResultOutput) ToLookupIntegrationAccountPartnerResultOutputWithContext(ctx context.Context) LookupIntegrationAccountPartnerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationAccountPartnerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountPartnerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

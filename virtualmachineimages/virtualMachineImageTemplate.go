@@ -14,18 +14,24 @@ import (
 
 // Image template is an ARM resource managed by Microsoft.VirtualMachineImages provider
 //
-// Uses Azure REST API version 2022-07-01. In version 1.x of the Azure Native provider, it used API version 2020-02-14.
+// Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2022-07-01.
 //
-// Other available API versions: 2023-07-01, 2024-02-01.
+// Other available API versions: 2022-07-01, 2023-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native virtualmachineimages [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualMachineImageTemplate struct {
 	pulumi.CustomResourceState
 
+	// Indicates whether or not to automatically run the image template build on template creation or update.
+	AutoRun ImageTemplateAutoRunResponsePtrOutput `pulumi:"autoRun"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
 	BuildTimeoutInMinutes pulumi.IntPtrOutput `pulumi:"buildTimeoutInMinutes"`
 	// Specifies the properties used to describe the customization steps of the image, like Image source etc
 	Customize pulumi.ArrayOutput `pulumi:"customize"`
 	// The distribution targets where the image output needs to go to.
 	Distribute pulumi.ArrayOutput `pulumi:"distribute"`
+	// Error handling options upon a build failure
+	ErrorHandling ImageTemplatePropertiesResponseErrorHandlingPtrOutput `pulumi:"errorHandling"`
 	// The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
 	ExactStagingResourceGroup pulumi.StringOutput `pulumi:"exactStagingResourceGroup"`
 	// The identity of the image template, if configured.
@@ -34,6 +40,8 @@ type VirtualMachineImageTemplate struct {
 	LastRunStatus ImageTemplateLastRunStatusResponseOutput `pulumi:"lastRunStatus"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Tags that will be applied to the resource group and/or resources created by the service.
+	ManagedResourceTags pulumi.StringMapOutput `pulumi:"managedResourceTags"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies optimization to be performed on image.
@@ -79,6 +87,11 @@ func NewVirtualMachineImageTemplate(ctx *pulumi.Context,
 	}
 	if args.BuildTimeoutInMinutes == nil {
 		args.BuildTimeoutInMinutes = pulumi.IntPtr(0)
+	}
+	if args.ErrorHandling != nil {
+		args.ErrorHandling = args.ErrorHandling.ToImageTemplatePropertiesErrorHandlingPtrOutput().ApplyT(func(v *ImageTemplatePropertiesErrorHandling) *ImageTemplatePropertiesErrorHandling {
+			return v.Defaults()
+		}).(ImageTemplatePropertiesErrorHandlingPtrOutput)
 	}
 	if args.Validate != nil {
 		args.Validate = args.Validate.ToImageTemplatePropertiesValidatePtrOutput().ApplyT(func(v *ImageTemplatePropertiesValidate) *ImageTemplatePropertiesValidate { return v.Defaults() }).(ImageTemplatePropertiesValidatePtrOutput)
@@ -149,18 +162,24 @@ func (VirtualMachineImageTemplateState) ElementType() reflect.Type {
 }
 
 type virtualMachineImageTemplateArgs struct {
+	// Indicates whether or not to automatically run the image template build on template creation or update.
+	AutoRun *ImageTemplateAutoRun `pulumi:"autoRun"`
 	// Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
 	BuildTimeoutInMinutes *int `pulumi:"buildTimeoutInMinutes"`
 	// Specifies the properties used to describe the customization steps of the image, like Image source etc
 	Customize []interface{} `pulumi:"customize"`
 	// The distribution targets where the image output needs to go to.
 	Distribute []interface{} `pulumi:"distribute"`
+	// Error handling options upon a build failure
+	ErrorHandling *ImageTemplatePropertiesErrorHandling `pulumi:"errorHandling"`
 	// The identity of the image template, if configured.
 	Identity ImageTemplateIdentity `pulumi:"identity"`
 	// The name of the image Template
 	ImageTemplateName *string `pulumi:"imageTemplateName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Tags that will be applied to the resource group and/or resources created by the service.
+	ManagedResourceTags map[string]string `pulumi:"managedResourceTags"`
 	// Specifies optimization to be performed on image.
 	Optimize *ImageTemplatePropertiesOptimize `pulumi:"optimize"`
 	// The name of the resource group.
@@ -179,18 +198,24 @@ type virtualMachineImageTemplateArgs struct {
 
 // The set of arguments for constructing a VirtualMachineImageTemplate resource.
 type VirtualMachineImageTemplateArgs struct {
+	// Indicates whether or not to automatically run the image template build on template creation or update.
+	AutoRun ImageTemplateAutoRunPtrInput
 	// Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
 	BuildTimeoutInMinutes pulumi.IntPtrInput
 	// Specifies the properties used to describe the customization steps of the image, like Image source etc
 	Customize pulumi.ArrayInput
 	// The distribution targets where the image output needs to go to.
 	Distribute pulumi.ArrayInput
+	// Error handling options upon a build failure
+	ErrorHandling ImageTemplatePropertiesErrorHandlingPtrInput
 	// The identity of the image template, if configured.
 	Identity ImageTemplateIdentityInput
 	// The name of the image Template
 	ImageTemplateName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Tags that will be applied to the resource group and/or resources created by the service.
+	ManagedResourceTags pulumi.StringMapInput
 	// Specifies optimization to be performed on image.
 	Optimize ImageTemplatePropertiesOptimizePtrInput
 	// The name of the resource group.
@@ -244,6 +269,16 @@ func (o VirtualMachineImageTemplateOutput) ToVirtualMachineImageTemplateOutputWi
 	return o
 }
 
+// Indicates whether or not to automatically run the image template build on template creation or update.
+func (o VirtualMachineImageTemplateOutput) AutoRun() ImageTemplateAutoRunResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineImageTemplate) ImageTemplateAutoRunResponsePtrOutput { return v.AutoRun }).(ImageTemplateAutoRunResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o VirtualMachineImageTemplateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
 func (o VirtualMachineImageTemplateOutput) BuildTimeoutInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.IntPtrOutput { return v.BuildTimeoutInMinutes }).(pulumi.IntPtrOutput)
@@ -257,6 +292,13 @@ func (o VirtualMachineImageTemplateOutput) Customize() pulumi.ArrayOutput {
 // The distribution targets where the image output needs to go to.
 func (o VirtualMachineImageTemplateOutput) Distribute() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.ArrayOutput { return v.Distribute }).(pulumi.ArrayOutput)
+}
+
+// Error handling options upon a build failure
+func (o VirtualMachineImageTemplateOutput) ErrorHandling() ImageTemplatePropertiesResponseErrorHandlingPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineImageTemplate) ImageTemplatePropertiesResponseErrorHandlingPtrOutput {
+		return v.ErrorHandling
+	}).(ImageTemplatePropertiesResponseErrorHandlingPtrOutput)
 }
 
 // The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
@@ -277,6 +319,11 @@ func (o VirtualMachineImageTemplateOutput) LastRunStatus() ImageTemplateLastRunS
 // The geo-location where the resource lives
 func (o VirtualMachineImageTemplateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Tags that will be applied to the resource group and/or resources created by the service.
+func (o VirtualMachineImageTemplateOutput) ManagedResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VirtualMachineImageTemplate) pulumi.StringMapOutput { return v.ManagedResourceTags }).(pulumi.StringMapOutput)
 }
 
 // The name of the resource

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2024-09-01-preview.
+// Other available API versions: 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSuppressionList(ctx *pulumi.Context, args *LookupSuppressionListArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionListResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSuppressionListResult
@@ -39,6 +39,8 @@ type LookupSuppressionListArgs struct {
 
 // A class representing a SuppressionList resource.
 type LookupSuppressionListResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The date the resource was created.
 	CreatedTimeStamp string `pulumi:"createdTimeStamp"`
 	// The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.
@@ -94,6 +96,11 @@ func (o LookupSuppressionListResultOutput) ToLookupSuppressionListResultOutput()
 
 func (o LookupSuppressionListResultOutput) ToLookupSuppressionListResultOutputWithContext(ctx context.Context) LookupSuppressionListResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSuppressionListResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSuppressionListResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The date the resource was created.

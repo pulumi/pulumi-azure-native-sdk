@@ -14,9 +14,9 @@ import (
 
 // Information about managed application definition.
 //
-// Uses Azure REST API version 2021-07-01. In version 1.x of the Azure Native provider, it used API version 2019-07-01.
+// Uses Azure REST API version 2021-07-01. In version 2.x of the Azure Native provider, it used API version 2021-07-01.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ApplicationDefinition struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type ApplicationDefinition struct {
 	Artifacts ApplicationDefinitionArtifactResponseArrayOutput `pulumi:"artifacts"`
 	// The managed application provider authorizations.
 	Authorizations ApplicationAuthorizationResponseArrayOutput `pulumi:"authorizations"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The createUiDefinition json for the backing template with Microsoft.Solutions/applications resource. It can be a JObject or well-formed JSON string.
 	CreateUiDefinition pulumi.AnyOutput `pulumi:"createUiDefinition"`
 	// The managed application deployment policy.
@@ -286,6 +288,11 @@ func (o ApplicationDefinitionOutput) Artifacts() ApplicationDefinitionArtifactRe
 // The managed application provider authorizations.
 func (o ApplicationDefinitionOutput) Authorizations() ApplicationAuthorizationResponseArrayOutput {
 	return o.ApplyT(func(v *ApplicationDefinition) ApplicationAuthorizationResponseArrayOutput { return v.Authorizations }).(ApplicationAuthorizationResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o ApplicationDefinitionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationDefinition) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The createUiDefinition json for the backing template with Microsoft.Solutions/applications resource. It can be a JObject or well-formed JSON string.

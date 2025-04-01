@@ -13,9 +13,9 @@ import (
 
 // Description for Returns whether FTP is allowed on the site or not.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppFtpAllowed(ctx *pulumi.Context, args *LookupWebAppFtpAllowedArgs, opts ...pulumi.InvokeOption) (*LookupWebAppFtpAllowedResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppFtpAllowedResult
@@ -37,6 +37,8 @@ type LookupWebAppFtpAllowedArgs struct {
 type LookupWebAppFtpAllowedResult struct {
 	// <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
 	Allow bool `pulumi:"allow"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id.
 	Id string `pulumi:"id"`
 	// Kind of resource.
@@ -85,6 +87,11 @@ func (o LookupWebAppFtpAllowedResultOutput) ToLookupWebAppFtpAllowedResultOutput
 // <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
 func (o LookupWebAppFtpAllowedResultOutput) Allow() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWebAppFtpAllowedResult) bool { return v.Allow }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppFtpAllowedResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppFtpAllowedResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id.

@@ -33,6 +33,8 @@ type LookupIspCustomerArgs struct {
 
 // Represents the high level Nodes needed to provision isp customer resources
 type LookupIspCustomerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -82,6 +84,11 @@ func (o LookupIspCustomerResultOutput) ToLookupIspCustomerResultOutput() LookupI
 
 func (o LookupIspCustomerResultOutput) ToLookupIspCustomerResultOutputWithContext(ctx context.Context) LookupIspCustomerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIspCustomerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIspCustomerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

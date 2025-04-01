@@ -14,10 +14,12 @@ import (
 
 // Data store.
 //
-// Uses Azure REST API version 2019-06-01. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
+// Uses Azure REST API version 2019-06-01. In version 2.x of the Azure Native provider, it used API version 2019-06-01.
 type DataStore struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
 	CustomerSecrets CustomerSecretResponseArrayOutput `pulumi:"customerSecrets"`
 	// The arm id of the data store type.
@@ -168,6 +170,11 @@ func (o DataStoreOutput) ToDataStoreOutput() DataStoreOutput {
 
 func (o DataStoreOutput) ToDataStoreOutputWithContext(ctx context.Context) DataStoreOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DataStoreOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataStore) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.

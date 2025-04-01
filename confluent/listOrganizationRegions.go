@@ -13,9 +13,9 @@ import (
 
 // Result of POST request to list regions supported by confluent
 //
-// Uses Azure REST API version 2024-02-13.
+// Uses Azure REST API version 2024-07-01.
 //
-// Other available API versions: 2024-07-01.
+// Other available API versions: 2024-02-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListOrganizationRegions(ctx *pulumi.Context, args *ListOrganizationRegionsArgs, opts ...pulumi.InvokeOption) (*ListOrganizationRegionsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListOrganizationRegionsResult

@@ -35,6 +35,8 @@ type LookupPoolArgs struct {
 type LookupPoolResult struct {
 	// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
 	Assignments []AssignmentResponse `pulumi:"assignments"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -111,6 +113,11 @@ func (o LookupPoolResultOutput) ToLookupPoolResultOutputWithContext(ctx context.
 // List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
 func (o LookupPoolResultOutput) Assignments() AssignmentResponseArrayOutput {
 	return o.ApplyT(func(v LookupPoolResult) []AssignmentResponse { return v.Assignments }).(AssignmentResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

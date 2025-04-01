@@ -807,6 +807,242 @@ func (o AlertRulePropertiesResponsePtrOutput) WindowSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Configuration details of app service plan
+type AppServicePlanConfiguration struct {
+	// The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
+	Capacity *int `pulumi:"capacity"`
+	// The App Service plan tier.
+	Tier *string `pulumi:"tier"`
+}
+
+// AppServicePlanConfigurationInput is an input type that accepts AppServicePlanConfigurationArgs and AppServicePlanConfigurationOutput values.
+// You can construct a concrete instance of `AppServicePlanConfigurationInput` via:
+//
+//	AppServicePlanConfigurationArgs{...}
+type AppServicePlanConfigurationInput interface {
+	pulumi.Input
+
+	ToAppServicePlanConfigurationOutput() AppServicePlanConfigurationOutput
+	ToAppServicePlanConfigurationOutputWithContext(context.Context) AppServicePlanConfigurationOutput
+}
+
+// Configuration details of app service plan
+type AppServicePlanConfigurationArgs struct {
+	// The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
+	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
+	// The App Service plan tier.
+	Tier pulumi.StringPtrInput `pulumi:"tier"`
+}
+
+func (AppServicePlanConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppServicePlanConfiguration)(nil)).Elem()
+}
+
+func (i AppServicePlanConfigurationArgs) ToAppServicePlanConfigurationOutput() AppServicePlanConfigurationOutput {
+	return i.ToAppServicePlanConfigurationOutputWithContext(context.Background())
+}
+
+func (i AppServicePlanConfigurationArgs) ToAppServicePlanConfigurationOutputWithContext(ctx context.Context) AppServicePlanConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppServicePlanConfigurationOutput)
+}
+
+func (i AppServicePlanConfigurationArgs) ToAppServicePlanConfigurationPtrOutput() AppServicePlanConfigurationPtrOutput {
+	return i.ToAppServicePlanConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AppServicePlanConfigurationArgs) ToAppServicePlanConfigurationPtrOutputWithContext(ctx context.Context) AppServicePlanConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppServicePlanConfigurationOutput).ToAppServicePlanConfigurationPtrOutputWithContext(ctx)
+}
+
+// AppServicePlanConfigurationPtrInput is an input type that accepts AppServicePlanConfigurationArgs, AppServicePlanConfigurationPtr and AppServicePlanConfigurationPtrOutput values.
+// You can construct a concrete instance of `AppServicePlanConfigurationPtrInput` via:
+//
+//	        AppServicePlanConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppServicePlanConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAppServicePlanConfigurationPtrOutput() AppServicePlanConfigurationPtrOutput
+	ToAppServicePlanConfigurationPtrOutputWithContext(context.Context) AppServicePlanConfigurationPtrOutput
+}
+
+type appServicePlanConfigurationPtrType AppServicePlanConfigurationArgs
+
+func AppServicePlanConfigurationPtr(v *AppServicePlanConfigurationArgs) AppServicePlanConfigurationPtrInput {
+	return (*appServicePlanConfigurationPtrType)(v)
+}
+
+func (*appServicePlanConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppServicePlanConfiguration)(nil)).Elem()
+}
+
+func (i *appServicePlanConfigurationPtrType) ToAppServicePlanConfigurationPtrOutput() AppServicePlanConfigurationPtrOutput {
+	return i.ToAppServicePlanConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *appServicePlanConfigurationPtrType) ToAppServicePlanConfigurationPtrOutputWithContext(ctx context.Context) AppServicePlanConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppServicePlanConfigurationPtrOutput)
+}
+
+// Configuration details of app service plan
+type AppServicePlanConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AppServicePlanConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppServicePlanConfiguration)(nil)).Elem()
+}
+
+func (o AppServicePlanConfigurationOutput) ToAppServicePlanConfigurationOutput() AppServicePlanConfigurationOutput {
+	return o
+}
+
+func (o AppServicePlanConfigurationOutput) ToAppServicePlanConfigurationOutputWithContext(ctx context.Context) AppServicePlanConfigurationOutput {
+	return o
+}
+
+func (o AppServicePlanConfigurationOutput) ToAppServicePlanConfigurationPtrOutput() AppServicePlanConfigurationPtrOutput {
+	return o.ToAppServicePlanConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AppServicePlanConfigurationOutput) ToAppServicePlanConfigurationPtrOutputWithContext(ctx context.Context) AppServicePlanConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppServicePlanConfiguration) *AppServicePlanConfiguration {
+		return &v
+	}).(AppServicePlanConfigurationPtrOutput)
+}
+
+// The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
+func (o AppServicePlanConfigurationOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppServicePlanConfiguration) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// The App Service plan tier.
+func (o AppServicePlanConfigurationOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppServicePlanConfiguration) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type AppServicePlanConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AppServicePlanConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppServicePlanConfiguration)(nil)).Elem()
+}
+
+func (o AppServicePlanConfigurationPtrOutput) ToAppServicePlanConfigurationPtrOutput() AppServicePlanConfigurationPtrOutput {
+	return o
+}
+
+func (o AppServicePlanConfigurationPtrOutput) ToAppServicePlanConfigurationPtrOutputWithContext(ctx context.Context) AppServicePlanConfigurationPtrOutput {
+	return o
+}
+
+func (o AppServicePlanConfigurationPtrOutput) Elem() AppServicePlanConfigurationOutput {
+	return o.ApplyT(func(v *AppServicePlanConfiguration) AppServicePlanConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AppServicePlanConfiguration
+		return ret
+	}).(AppServicePlanConfigurationOutput)
+}
+
+// The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
+func (o AppServicePlanConfigurationPtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppServicePlanConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// The App Service plan tier.
+func (o AppServicePlanConfigurationPtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppServicePlanConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration details of app service plan
+type AppServicePlanConfigurationResponse struct {
+	// The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
+	Capacity *int `pulumi:"capacity"`
+	// The App Service plan tier.
+	Tier *string `pulumi:"tier"`
+}
+
+// Configuration details of app service plan
+type AppServicePlanConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AppServicePlanConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppServicePlanConfigurationResponse)(nil)).Elem()
+}
+
+func (o AppServicePlanConfigurationResponseOutput) ToAppServicePlanConfigurationResponseOutput() AppServicePlanConfigurationResponseOutput {
+	return o
+}
+
+func (o AppServicePlanConfigurationResponseOutput) ToAppServicePlanConfigurationResponseOutputWithContext(ctx context.Context) AppServicePlanConfigurationResponseOutput {
+	return o
+}
+
+// The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
+func (o AppServicePlanConfigurationResponseOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppServicePlanConfigurationResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// The App Service plan tier.
+func (o AppServicePlanConfigurationResponseOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppServicePlanConfigurationResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type AppServicePlanConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AppServicePlanConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppServicePlanConfigurationResponse)(nil)).Elem()
+}
+
+func (o AppServicePlanConfigurationResponsePtrOutput) ToAppServicePlanConfigurationResponsePtrOutput() AppServicePlanConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AppServicePlanConfigurationResponsePtrOutput) ToAppServicePlanConfigurationResponsePtrOutputWithContext(ctx context.Context) AppServicePlanConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AppServicePlanConfigurationResponsePtrOutput) Elem() AppServicePlanConfigurationResponseOutput {
+	return o.ApplyT(func(v *AppServicePlanConfigurationResponse) AppServicePlanConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppServicePlanConfigurationResponse
+		return ret
+	}).(AppServicePlanConfigurationResponseOutput)
+}
+
+// The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
+func (o AppServicePlanConfigurationResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppServicePlanConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// The App Service plan tier.
+func (o AppServicePlanConfigurationResponsePtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppServicePlanConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the application server configuration.
 type ApplicationServerConfiguration struct {
 	// The number of app server instances.
@@ -1326,7 +1562,8 @@ type ApplicationServerVmDetailsResponse struct {
 	// Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
 	StorageDetails []StorageInformationResponse `pulumi:"storageDetails"`
 	// Defines the type of application server VM.
-	Type             string `pulumi:"type"`
+	Type string `pulumi:"type"`
+	// The virtual machine id.
 	VirtualMachineId string `pulumi:"virtualMachineId"`
 }
 
@@ -1355,6 +1592,7 @@ func (o ApplicationServerVmDetailsResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationServerVmDetailsResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The virtual machine id.
 func (o ApplicationServerVmDetailsResponseOutput) VirtualMachineId() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationServerVmDetailsResponse) string { return v.VirtualMachineId }).(pulumi.StringOutput)
 }
@@ -1934,7 +2172,8 @@ type CentralServerVmDetailsResponse struct {
 	// Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage.
 	StorageDetails []StorageInformationResponse `pulumi:"storageDetails"`
 	// Defines the type of central server VM.
-	Type             string `pulumi:"type"`
+	Type string `pulumi:"type"`
+	// The virtual machine id.
 	VirtualMachineId string `pulumi:"virtualMachineId"`
 }
 
@@ -1963,6 +2202,7 @@ func (o CentralServerVmDetailsResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CentralServerVmDetailsResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The virtual machine id.
 func (o CentralServerVmDetailsResponseOutput) VirtualMachineId() pulumi.StringOutput {
 	return o.ApplyT(func(v CentralServerVmDetailsResponse) string { return v.VirtualMachineId }).(pulumi.StringOutput)
 }
@@ -2143,7 +2383,7 @@ func (o ConnectorErrorDefinitionResponseArrayOutput) Index(i pulumi.IntInput) Co
 	}).(ConnectorErrorDefinitionResponseOutput)
 }
 
-// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn't need to be pre-created.
 type CreateAndMountFileShareConfiguration struct {
 	// The type of file share config.
 	// Expected value is 'CreateAndMount'.
@@ -2165,7 +2405,7 @@ type CreateAndMountFileShareConfigurationInput interface {
 	ToCreateAndMountFileShareConfigurationOutputWithContext(context.Context) CreateAndMountFileShareConfigurationOutput
 }
 
-// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn't need to be pre-created.
 type CreateAndMountFileShareConfigurationArgs struct {
 	// The type of file share config.
 	// Expected value is 'CreateAndMount'.
@@ -2229,7 +2469,7 @@ func (i *createAndMountFileShareConfigurationPtrType) ToCreateAndMountFileShareC
 	return pulumi.ToOutputWithContext(ctx, i).(CreateAndMountFileShareConfigurationPtrOutput)
 }
 
-// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn't need to be pre-created.
 type CreateAndMountFileShareConfigurationOutput struct{ *pulumi.OutputState }
 
 func (CreateAndMountFileShareConfigurationOutput) ElementType() reflect.Type {
@@ -2325,7 +2565,7 @@ func (o CreateAndMountFileShareConfigurationPtrOutput) StorageAccountName() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn't need to be pre-created.
 type CreateAndMountFileShareConfigurationResponse struct {
 	// The type of file share config.
 	// Expected value is 'CreateAndMount'.
@@ -2336,7 +2576,7 @@ type CreateAndMountFileShareConfigurationResponse struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 }
 
-// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn't need to be pre-created.
 type CreateAndMountFileShareConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (CreateAndMountFileShareConfigurationResponseOutput) ElementType() reflect.Type {
@@ -2419,537 +2659,6 @@ func (o CreateAndMountFileShareConfigurationResponsePtrOutput) StorageAccountNam
 			return nil
 		}
 		return v.StorageAccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the DB2 provider properties.
-type DB2ProviderInstanceProperties struct {
-	// Gets or sets the db2 database name.
-	DbName *string `pulumi:"dbName"`
-	// Gets or sets the db2 database password.
-	DbPassword *string `pulumi:"dbPassword"`
-	// Gets or sets the key vault URI to secret with the database password.
-	DbPasswordUri *string `pulumi:"dbPasswordUri"`
-	// Gets or sets the db2 database sql port.
-	DbPort *string `pulumi:"dbPort"`
-	// Gets or sets the db2 database user name.
-	DbUsername *string `pulumi:"dbUsername"`
-	// Gets or sets the target virtual machine name.
-	Hostname *string `pulumi:"hostname"`
-	// The provider type. For example, the value can be SapHana.
-	// Expected value is 'Db2'.
-	ProviderType string `pulumi:"providerType"`
-	// Gets or sets the SAP System Identifier
-	SapSid *string `pulumi:"sapSid"`
-	// Gets or sets the blob URI to SSL certificate for the DB2 Database.
-	SslCertificateUri *string `pulumi:"sslCertificateUri"`
-	// Gets or sets certificate preference if secure communication is enabled.
-	SslPreference *string `pulumi:"sslPreference"`
-}
-
-// DB2ProviderInstancePropertiesInput is an input type that accepts DB2ProviderInstancePropertiesArgs and DB2ProviderInstancePropertiesOutput values.
-// You can construct a concrete instance of `DB2ProviderInstancePropertiesInput` via:
-//
-//	DB2ProviderInstancePropertiesArgs{...}
-type DB2ProviderInstancePropertiesInput interface {
-	pulumi.Input
-
-	ToDB2ProviderInstancePropertiesOutput() DB2ProviderInstancePropertiesOutput
-	ToDB2ProviderInstancePropertiesOutputWithContext(context.Context) DB2ProviderInstancePropertiesOutput
-}
-
-// Gets or sets the DB2 provider properties.
-type DB2ProviderInstancePropertiesArgs struct {
-	// Gets or sets the db2 database name.
-	DbName pulumi.StringPtrInput `pulumi:"dbName"`
-	// Gets or sets the db2 database password.
-	DbPassword pulumi.StringPtrInput `pulumi:"dbPassword"`
-	// Gets or sets the key vault URI to secret with the database password.
-	DbPasswordUri pulumi.StringPtrInput `pulumi:"dbPasswordUri"`
-	// Gets or sets the db2 database sql port.
-	DbPort pulumi.StringPtrInput `pulumi:"dbPort"`
-	// Gets or sets the db2 database user name.
-	DbUsername pulumi.StringPtrInput `pulumi:"dbUsername"`
-	// Gets or sets the target virtual machine name.
-	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	// The provider type. For example, the value can be SapHana.
-	// Expected value is 'Db2'.
-	ProviderType pulumi.StringInput `pulumi:"providerType"`
-	// Gets or sets the SAP System Identifier
-	SapSid pulumi.StringPtrInput `pulumi:"sapSid"`
-	// Gets or sets the blob URI to SSL certificate for the DB2 Database.
-	SslCertificateUri pulumi.StringPtrInput `pulumi:"sslCertificateUri"`
-	// Gets or sets certificate preference if secure communication is enabled.
-	SslPreference pulumi.StringPtrInput `pulumi:"sslPreference"`
-}
-
-func (DB2ProviderInstancePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DB2ProviderInstanceProperties)(nil)).Elem()
-}
-
-func (i DB2ProviderInstancePropertiesArgs) ToDB2ProviderInstancePropertiesOutput() DB2ProviderInstancePropertiesOutput {
-	return i.ToDB2ProviderInstancePropertiesOutputWithContext(context.Background())
-}
-
-func (i DB2ProviderInstancePropertiesArgs) ToDB2ProviderInstancePropertiesOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DB2ProviderInstancePropertiesOutput)
-}
-
-func (i DB2ProviderInstancePropertiesArgs) ToDB2ProviderInstancePropertiesPtrOutput() DB2ProviderInstancePropertiesPtrOutput {
-	return i.ToDB2ProviderInstancePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i DB2ProviderInstancePropertiesArgs) ToDB2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DB2ProviderInstancePropertiesOutput).ToDB2ProviderInstancePropertiesPtrOutputWithContext(ctx)
-}
-
-// DB2ProviderInstancePropertiesPtrInput is an input type that accepts DB2ProviderInstancePropertiesArgs, DB2ProviderInstancePropertiesPtr and DB2ProviderInstancePropertiesPtrOutput values.
-// You can construct a concrete instance of `DB2ProviderInstancePropertiesPtrInput` via:
-//
-//	        DB2ProviderInstancePropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type DB2ProviderInstancePropertiesPtrInput interface {
-	pulumi.Input
-
-	ToDB2ProviderInstancePropertiesPtrOutput() DB2ProviderInstancePropertiesPtrOutput
-	ToDB2ProviderInstancePropertiesPtrOutputWithContext(context.Context) DB2ProviderInstancePropertiesPtrOutput
-}
-
-type db2providerInstancePropertiesPtrType DB2ProviderInstancePropertiesArgs
-
-func DB2ProviderInstancePropertiesPtr(v *DB2ProviderInstancePropertiesArgs) DB2ProviderInstancePropertiesPtrInput {
-	return (*db2providerInstancePropertiesPtrType)(v)
-}
-
-func (*db2providerInstancePropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DB2ProviderInstanceProperties)(nil)).Elem()
-}
-
-func (i *db2providerInstancePropertiesPtrType) ToDB2ProviderInstancePropertiesPtrOutput() DB2ProviderInstancePropertiesPtrOutput {
-	return i.ToDB2ProviderInstancePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *db2providerInstancePropertiesPtrType) ToDB2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DB2ProviderInstancePropertiesPtrOutput)
-}
-
-// Gets or sets the DB2 provider properties.
-type DB2ProviderInstancePropertiesOutput struct{ *pulumi.OutputState }
-
-func (DB2ProviderInstancePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DB2ProviderInstanceProperties)(nil)).Elem()
-}
-
-func (o DB2ProviderInstancePropertiesOutput) ToDB2ProviderInstancePropertiesOutput() DB2ProviderInstancePropertiesOutput {
-	return o
-}
-
-func (o DB2ProviderInstancePropertiesOutput) ToDB2ProviderInstancePropertiesOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesOutput {
-	return o
-}
-
-func (o DB2ProviderInstancePropertiesOutput) ToDB2ProviderInstancePropertiesPtrOutput() DB2ProviderInstancePropertiesPtrOutput {
-	return o.ToDB2ProviderInstancePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o DB2ProviderInstancePropertiesOutput) ToDB2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DB2ProviderInstanceProperties) *DB2ProviderInstanceProperties {
-		return &v
-	}).(DB2ProviderInstancePropertiesPtrOutput)
-}
-
-// Gets or sets the db2 database name.
-func (o DB2ProviderInstancePropertiesOutput) DbName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.DbName }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database password.
-func (o DB2ProviderInstancePropertiesOutput) DbPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the key vault URI to secret with the database password.
-func (o DB2ProviderInstancePropertiesOutput) DbPasswordUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database sql port.
-func (o DB2ProviderInstancePropertiesOutput) DbPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.DbPort }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database user name.
-func (o DB2ProviderInstancePropertiesOutput) DbUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the target virtual machine name.
-func (o DB2ProviderInstancePropertiesOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
-}
-
-// The provider type. For example, the value can be SapHana.
-// Expected value is 'Db2'.
-func (o DB2ProviderInstancePropertiesOutput) ProviderType() pulumi.StringOutput {
-	return o.ApplyT(func(v DB2ProviderInstanceProperties) string { return v.ProviderType }).(pulumi.StringOutput)
-}
-
-// Gets or sets the SAP System Identifier
-func (o DB2ProviderInstancePropertiesOutput) SapSid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.SapSid }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the blob URI to SSL certificate for the DB2 Database.
-func (o DB2ProviderInstancePropertiesOutput) SslCertificateUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets certificate preference if secure communication is enabled.
-func (o DB2ProviderInstancePropertiesOutput) SslPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
-}
-
-type DB2ProviderInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (DB2ProviderInstancePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DB2ProviderInstanceProperties)(nil)).Elem()
-}
-
-func (o DB2ProviderInstancePropertiesPtrOutput) ToDB2ProviderInstancePropertiesPtrOutput() DB2ProviderInstancePropertiesPtrOutput {
-	return o
-}
-
-func (o DB2ProviderInstancePropertiesPtrOutput) ToDB2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesPtrOutput {
-	return o
-}
-
-func (o DB2ProviderInstancePropertiesPtrOutput) Elem() DB2ProviderInstancePropertiesOutput {
-	return o.ApplyT(func(v *DB2ProviderInstanceProperties) DB2ProviderInstanceProperties {
-		if v != nil {
-			return *v
-		}
-		var ret DB2ProviderInstanceProperties
-		return ret
-	}).(DB2ProviderInstancePropertiesOutput)
-}
-
-// Gets or sets the db2 database name.
-func (o DB2ProviderInstancePropertiesPtrOutput) DbName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DbName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database password.
-func (o DB2ProviderInstancePropertiesPtrOutput) DbPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DbPassword
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the key vault URI to secret with the database password.
-func (o DB2ProviderInstancePropertiesPtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DbPasswordUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database sql port.
-func (o DB2ProviderInstancePropertiesPtrOutput) DbPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DbPort
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database user name.
-func (o DB2ProviderInstancePropertiesPtrOutput) DbUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DbUsername
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the target virtual machine name.
-func (o DB2ProviderInstancePropertiesPtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Hostname
-	}).(pulumi.StringPtrOutput)
-}
-
-// The provider type. For example, the value can be SapHana.
-// Expected value is 'Db2'.
-func (o DB2ProviderInstancePropertiesPtrOutput) ProviderType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProviderType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the SAP System Identifier
-func (o DB2ProviderInstancePropertiesPtrOutput) SapSid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SapSid
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the blob URI to SSL certificate for the DB2 Database.
-func (o DB2ProviderInstancePropertiesPtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SslCertificateUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets certificate preference if secure communication is enabled.
-func (o DB2ProviderInstancePropertiesPtrOutput) SslPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SslPreference
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the DB2 provider properties.
-type DB2ProviderInstancePropertiesResponse struct {
-	// Gets or sets the db2 database name.
-	DbName *string `pulumi:"dbName"`
-	// Gets or sets the db2 database password.
-	DbPassword *string `pulumi:"dbPassword"`
-	// Gets or sets the key vault URI to secret with the database password.
-	DbPasswordUri *string `pulumi:"dbPasswordUri"`
-	// Gets or sets the db2 database sql port.
-	DbPort *string `pulumi:"dbPort"`
-	// Gets or sets the db2 database user name.
-	DbUsername *string `pulumi:"dbUsername"`
-	// Gets or sets the target virtual machine name.
-	Hostname *string `pulumi:"hostname"`
-	// The provider type. For example, the value can be SapHana.
-	// Expected value is 'Db2'.
-	ProviderType string `pulumi:"providerType"`
-	// Gets or sets the SAP System Identifier
-	SapSid *string `pulumi:"sapSid"`
-	// Gets or sets the blob URI to SSL certificate for the DB2 Database.
-	SslCertificateUri *string `pulumi:"sslCertificateUri"`
-	// Gets or sets certificate preference if secure communication is enabled.
-	SslPreference *string `pulumi:"sslPreference"`
-}
-
-// Gets or sets the DB2 provider properties.
-type DB2ProviderInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (DB2ProviderInstancePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DB2ProviderInstancePropertiesResponse)(nil)).Elem()
-}
-
-func (o DB2ProviderInstancePropertiesResponseOutput) ToDB2ProviderInstancePropertiesResponseOutput() DB2ProviderInstancePropertiesResponseOutput {
-	return o
-}
-
-func (o DB2ProviderInstancePropertiesResponseOutput) ToDB2ProviderInstancePropertiesResponseOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesResponseOutput {
-	return o
-}
-
-// Gets or sets the db2 database name.
-func (o DB2ProviderInstancePropertiesResponseOutput) DbName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.DbName }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database password.
-func (o DB2ProviderInstancePropertiesResponseOutput) DbPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the key vault URI to secret with the database password.
-func (o DB2ProviderInstancePropertiesResponseOutput) DbPasswordUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database sql port.
-func (o DB2ProviderInstancePropertiesResponseOutput) DbPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.DbPort }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database user name.
-func (o DB2ProviderInstancePropertiesResponseOutput) DbUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the target virtual machine name.
-func (o DB2ProviderInstancePropertiesResponseOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.Hostname }).(pulumi.StringPtrOutput)
-}
-
-// The provider type. For example, the value can be SapHana.
-// Expected value is 'Db2'.
-func (o DB2ProviderInstancePropertiesResponseOutput) ProviderType() pulumi.StringOutput {
-	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) string { return v.ProviderType }).(pulumi.StringOutput)
-}
-
-// Gets or sets the SAP System Identifier
-func (o DB2ProviderInstancePropertiesResponseOutput) SapSid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.SapSid }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the blob URI to SSL certificate for the DB2 Database.
-func (o DB2ProviderInstancePropertiesResponseOutput) SslCertificateUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets certificate preference if secure communication is enabled.
-func (o DB2ProviderInstancePropertiesResponseOutput) SslPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
-}
-
-type DB2ProviderInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DB2ProviderInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DB2ProviderInstancePropertiesResponse)(nil)).Elem()
-}
-
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) ToDB2ProviderInstancePropertiesResponsePtrOutput() DB2ProviderInstancePropertiesResponsePtrOutput {
-	return o
-}
-
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) ToDB2ProviderInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesResponsePtrOutput {
-	return o
-}
-
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) Elem() DB2ProviderInstancePropertiesResponseOutput {
-	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) DB2ProviderInstancePropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DB2ProviderInstancePropertiesResponse
-		return ret
-	}).(DB2ProviderInstancePropertiesResponseOutput)
-}
-
-// Gets or sets the db2 database name.
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) DbName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DbName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database password.
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) DbPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DbPassword
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the key vault URI to secret with the database password.
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DbPasswordUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database sql port.
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) DbPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DbPort
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the db2 database user name.
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) DbUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DbUsername
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the target virtual machine name.
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Hostname
-	}).(pulumi.StringPtrOutput)
-}
-
-// The provider type. For example, the value can be SapHana.
-// Expected value is 'Db2'.
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) ProviderType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProviderType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the SAP System Identifier
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) SapSid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SapSid
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the blob URI to SSL certificate for the DB2 Database.
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SslCertificateUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets certificate preference if secure communication is enabled.
-func (o DB2ProviderInstancePropertiesResponsePtrOutput) SslPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SslPreference
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4675,8 +4384,9 @@ type DatabaseVmDetailsResponse struct {
 	// Defines the SAP Instance status.
 	Status string `pulumi:"status"`
 	// Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage.
-	StorageDetails   []StorageInformationResponse `pulumi:"storageDetails"`
-	VirtualMachineId string                       `pulumi:"virtualMachineId"`
+	StorageDetails []StorageInformationResponse `pulumi:"storageDetails"`
+	// The virtual machine id.
+	VirtualMachineId string `pulumi:"virtualMachineId"`
 }
 
 // Database VM details.
@@ -4704,6 +4414,7 @@ func (o DatabaseVmDetailsResponseOutput) StorageDetails() StorageInformationResp
 	return o.ApplyT(func(v DatabaseVmDetailsResponse) []StorageInformationResponse { return v.StorageDetails }).(StorageInformationResponseArrayOutput)
 }
 
+// The virtual machine id.
 func (o DatabaseVmDetailsResponseOutput) VirtualMachineId() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseVmDetailsResponse) string { return v.VirtualMachineId }).(pulumi.StringOutput)
 }
@@ -4888,6 +4599,537 @@ func (o DayResponseArrayOutput) Index(i pulumi.IntInput) DayResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DayResponse {
 		return vs[0].([]DayResponse)[vs[1].(int)]
 	}).(DayResponseOutput)
+}
+
+// Gets or sets the DB2 provider properties.
+type Db2ProviderInstanceProperties struct {
+	// Gets or sets the db2 database name.
+	DbName *string `pulumi:"dbName"`
+	// Gets or sets the db2 database password.
+	DbPassword *string `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri *string `pulumi:"dbPasswordUri"`
+	// Gets or sets the db2 database sql port.
+	DbPort *string `pulumi:"dbPort"`
+	// Gets or sets the db2 database user name.
+	DbUsername *string `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine name.
+	Hostname *string `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'Db2'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Db2ProviderInstancePropertiesInput is an input type that accepts Db2ProviderInstancePropertiesArgs and Db2ProviderInstancePropertiesOutput values.
+// You can construct a concrete instance of `Db2ProviderInstancePropertiesInput` via:
+//
+//	Db2ProviderInstancePropertiesArgs{...}
+type Db2ProviderInstancePropertiesInput interface {
+	pulumi.Input
+
+	ToDb2ProviderInstancePropertiesOutput() Db2ProviderInstancePropertiesOutput
+	ToDb2ProviderInstancePropertiesOutputWithContext(context.Context) Db2ProviderInstancePropertiesOutput
+}
+
+// Gets or sets the DB2 provider properties.
+type Db2ProviderInstancePropertiesArgs struct {
+	// Gets or sets the db2 database name.
+	DbName pulumi.StringPtrInput `pulumi:"dbName"`
+	// Gets or sets the db2 database password.
+	DbPassword pulumi.StringPtrInput `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri pulumi.StringPtrInput `pulumi:"dbPasswordUri"`
+	// Gets or sets the db2 database sql port.
+	DbPort pulumi.StringPtrInput `pulumi:"dbPort"`
+	// Gets or sets the db2 database user name.
+	DbUsername pulumi.StringPtrInput `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine name.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'Db2'.
+	ProviderType pulumi.StringInput `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid pulumi.StringPtrInput `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+	SslCertificateUri pulumi.StringPtrInput `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference pulumi.StringPtrInput `pulumi:"sslPreference"`
+}
+
+func (Db2ProviderInstancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Db2ProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i Db2ProviderInstancePropertiesArgs) ToDb2ProviderInstancePropertiesOutput() Db2ProviderInstancePropertiesOutput {
+	return i.ToDb2ProviderInstancePropertiesOutputWithContext(context.Background())
+}
+
+func (i Db2ProviderInstancePropertiesArgs) ToDb2ProviderInstancePropertiesOutputWithContext(ctx context.Context) Db2ProviderInstancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Db2ProviderInstancePropertiesOutput)
+}
+
+func (i Db2ProviderInstancePropertiesArgs) ToDb2ProviderInstancePropertiesPtrOutput() Db2ProviderInstancePropertiesPtrOutput {
+	return i.ToDb2ProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i Db2ProviderInstancePropertiesArgs) ToDb2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) Db2ProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Db2ProviderInstancePropertiesOutput).ToDb2ProviderInstancePropertiesPtrOutputWithContext(ctx)
+}
+
+// Db2ProviderInstancePropertiesPtrInput is an input type that accepts Db2ProviderInstancePropertiesArgs, Db2ProviderInstancePropertiesPtr and Db2ProviderInstancePropertiesPtrOutput values.
+// You can construct a concrete instance of `Db2ProviderInstancePropertiesPtrInput` via:
+//
+//	        Db2ProviderInstancePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type Db2ProviderInstancePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDb2ProviderInstancePropertiesPtrOutput() Db2ProviderInstancePropertiesPtrOutput
+	ToDb2ProviderInstancePropertiesPtrOutputWithContext(context.Context) Db2ProviderInstancePropertiesPtrOutput
+}
+
+type db2ProviderInstancePropertiesPtrType Db2ProviderInstancePropertiesArgs
+
+func Db2ProviderInstancePropertiesPtr(v *Db2ProviderInstancePropertiesArgs) Db2ProviderInstancePropertiesPtrInput {
+	return (*db2ProviderInstancePropertiesPtrType)(v)
+}
+
+func (*db2ProviderInstancePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Db2ProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i *db2ProviderInstancePropertiesPtrType) ToDb2ProviderInstancePropertiesPtrOutput() Db2ProviderInstancePropertiesPtrOutput {
+	return i.ToDb2ProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *db2ProviderInstancePropertiesPtrType) ToDb2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) Db2ProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Db2ProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the DB2 provider properties.
+type Db2ProviderInstancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (Db2ProviderInstancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Db2ProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o Db2ProviderInstancePropertiesOutput) ToDb2ProviderInstancePropertiesOutput() Db2ProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o Db2ProviderInstancePropertiesOutput) ToDb2ProviderInstancePropertiesOutputWithContext(ctx context.Context) Db2ProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o Db2ProviderInstancePropertiesOutput) ToDb2ProviderInstancePropertiesPtrOutput() Db2ProviderInstancePropertiesPtrOutput {
+	return o.ToDb2ProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o Db2ProviderInstancePropertiesOutput) ToDb2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) Db2ProviderInstancePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Db2ProviderInstanceProperties) *Db2ProviderInstanceProperties {
+		return &v
+	}).(Db2ProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the db2 database name.
+func (o Db2ProviderInstancePropertiesOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstanceProperties) *string { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database password.
+func (o Db2ProviderInstancePropertiesOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstanceProperties) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o Db2ProviderInstancePropertiesOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstanceProperties) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database sql port.
+func (o Db2ProviderInstancePropertiesOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstanceProperties) *string { return v.DbPort }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database user name.
+func (o Db2ProviderInstancePropertiesOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstanceProperties) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o Db2ProviderInstancePropertiesOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstanceProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Db2'.
+func (o Db2ProviderInstancePropertiesOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v Db2ProviderInstanceProperties) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o Db2ProviderInstancePropertiesOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstanceProperties) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+func (o Db2ProviderInstancePropertiesOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstanceProperties) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o Db2ProviderInstancePropertiesOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstanceProperties) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type Db2ProviderInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (Db2ProviderInstancePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Db2ProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o Db2ProviderInstancePropertiesPtrOutput) ToDb2ProviderInstancePropertiesPtrOutput() Db2ProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o Db2ProviderInstancePropertiesPtrOutput) ToDb2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) Db2ProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o Db2ProviderInstancePropertiesPtrOutput) Elem() Db2ProviderInstancePropertiesOutput {
+	return o.ApplyT(func(v *Db2ProviderInstanceProperties) Db2ProviderInstanceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret Db2ProviderInstanceProperties
+		return ret
+	}).(Db2ProviderInstancePropertiesOutput)
+}
+
+// Gets or sets the db2 database name.
+func (o Db2ProviderInstancePropertiesPtrOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database password.
+func (o Db2ProviderInstancePropertiesPtrOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o Db2ProviderInstancePropertiesPtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database sql port.
+func (o Db2ProviderInstancePropertiesPtrOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database user name.
+func (o Db2ProviderInstancePropertiesPtrOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o Db2ProviderInstancePropertiesPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Db2'.
+func (o Db2ProviderInstancePropertiesPtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o Db2ProviderInstancePropertiesPtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+func (o Db2ProviderInstancePropertiesPtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o Db2ProviderInstancePropertiesPtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the DB2 provider properties.
+type Db2ProviderInstancePropertiesResponse struct {
+	// Gets or sets the db2 database name.
+	DbName *string `pulumi:"dbName"`
+	// Gets or sets the db2 database password.
+	DbPassword *string `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri *string `pulumi:"dbPasswordUri"`
+	// Gets or sets the db2 database sql port.
+	DbPort *string `pulumi:"dbPort"`
+	// Gets or sets the db2 database user name.
+	DbUsername *string `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine name.
+	Hostname *string `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'Db2'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Gets or sets the DB2 provider properties.
+type Db2ProviderInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (Db2ProviderInstancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Db2ProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o Db2ProviderInstancePropertiesResponseOutput) ToDb2ProviderInstancePropertiesResponseOutput() Db2ProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+func (o Db2ProviderInstancePropertiesResponseOutput) ToDb2ProviderInstancePropertiesResponseOutputWithContext(ctx context.Context) Db2ProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the db2 database name.
+func (o Db2ProviderInstancePropertiesResponseOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstancePropertiesResponse) *string { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database password.
+func (o Db2ProviderInstancePropertiesResponseOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstancePropertiesResponse) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o Db2ProviderInstancePropertiesResponseOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstancePropertiesResponse) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database sql port.
+func (o Db2ProviderInstancePropertiesResponseOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstancePropertiesResponse) *string { return v.DbPort }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database user name.
+func (o Db2ProviderInstancePropertiesResponseOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstancePropertiesResponse) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o Db2ProviderInstancePropertiesResponseOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstancePropertiesResponse) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Db2'.
+func (o Db2ProviderInstancePropertiesResponseOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v Db2ProviderInstancePropertiesResponse) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o Db2ProviderInstancePropertiesResponseOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstancePropertiesResponse) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+func (o Db2ProviderInstancePropertiesResponseOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstancePropertiesResponse) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o Db2ProviderInstancePropertiesResponseOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Db2ProviderInstancePropertiesResponse) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type Db2ProviderInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (Db2ProviderInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Db2ProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) ToDb2ProviderInstancePropertiesResponsePtrOutput() Db2ProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) ToDb2ProviderInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) Db2ProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) Elem() Db2ProviderInstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *Db2ProviderInstancePropertiesResponse) Db2ProviderInstancePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret Db2ProviderInstancePropertiesResponse
+		return ret
+	}).(Db2ProviderInstancePropertiesResponseOutput)
+}
+
+// Gets or sets the db2 database name.
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database password.
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database sql port.
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database user name.
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Db2'.
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o Db2ProviderInstancePropertiesResponsePtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Db2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the url and storage account ID where deployer VM packages are uploaded
@@ -7024,214 +7266,6 @@ func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResp
 	}).(ErrorDetailResponseOutput)
 }
 
-// Standard error object.
-type ErrorResponse struct {
-	// Server-defined set of error codes.
-	Code string `pulumi:"code"`
-	// Array of details about specific errors that led to this reported error.
-	Details []ErrorResponse `pulumi:"details"`
-	// Object containing more specific information than  the current object about the error.
-	InnerError ErrorResponseInnerError `pulumi:"innerError"`
-	// Human-readable representation of the error.
-	Message string `pulumi:"message"`
-	// Target of the error.
-	Target string `pulumi:"target"`
-}
-
-// Standard error object.
-type ErrorResponseOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorResponse)(nil)).Elem()
-}
-
-func (o ErrorResponseOutput) ToErrorResponseOutput() ErrorResponseOutput {
-	return o
-}
-
-func (o ErrorResponseOutput) ToErrorResponseOutputWithContext(ctx context.Context) ErrorResponseOutput {
-	return o
-}
-
-// Server-defined set of error codes.
-func (o ErrorResponseOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorResponse) string { return v.Code }).(pulumi.StringOutput)
-}
-
-// Array of details about specific errors that led to this reported error.
-func (o ErrorResponseOutput) Details() ErrorResponseArrayOutput {
-	return o.ApplyT(func(v ErrorResponse) []ErrorResponse { return v.Details }).(ErrorResponseArrayOutput)
-}
-
-// Object containing more specific information than  the current object about the error.
-func (o ErrorResponseOutput) InnerError() ErrorResponseInnerErrorOutput {
-	return o.ApplyT(func(v ErrorResponse) ErrorResponseInnerError { return v.InnerError }).(ErrorResponseInnerErrorOutput)
-}
-
-// Human-readable representation of the error.
-func (o ErrorResponseOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-// Target of the error.
-func (o ErrorResponseOutput) Target() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorResponse) string { return v.Target }).(pulumi.StringOutput)
-}
-
-type ErrorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorResponse)(nil)).Elem()
-}
-
-func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
-	return o
-}
-
-func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
-	return o
-}
-
-func (o ErrorResponsePtrOutput) Elem() ErrorResponseOutput {
-	return o.ApplyT(func(v *ErrorResponse) ErrorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ErrorResponse
-		return ret
-	}).(ErrorResponseOutput)
-}
-
-// Server-defined set of error codes.
-func (o ErrorResponsePtrOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.StringPtrOutput)
-}
-
-// Array of details about specific errors that led to this reported error.
-func (o ErrorResponsePtrOutput) Details() ErrorResponseArrayOutput {
-	return o.ApplyT(func(v *ErrorResponse) []ErrorResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(ErrorResponseArrayOutput)
-}
-
-// Object containing more specific information than  the current object about the error.
-func (o ErrorResponsePtrOutput) InnerError() ErrorResponseInnerErrorPtrOutput {
-	return o.ApplyT(func(v *ErrorResponse) *ErrorResponseInnerError {
-		if v == nil {
-			return nil
-		}
-		return &v.InnerError
-	}).(ErrorResponseInnerErrorPtrOutput)
-}
-
-// Human-readable representation of the error.
-func (o ErrorResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// Target of the error.
-func (o ErrorResponsePtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Target
-	}).(pulumi.StringPtrOutput)
-}
-
-type ErrorResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ErrorResponse)(nil)).Elem()
-}
-
-func (o ErrorResponseArrayOutput) ToErrorResponseArrayOutput() ErrorResponseArrayOutput {
-	return o
-}
-
-func (o ErrorResponseArrayOutput) ToErrorResponseArrayOutputWithContext(ctx context.Context) ErrorResponseArrayOutput {
-	return o
-}
-
-func (o ErrorResponseArrayOutput) Index(i pulumi.IntInput) ErrorResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorResponse {
-		return vs[0].([]ErrorResponse)[vs[1].(int)]
-	}).(ErrorResponseOutput)
-}
-
-// Object containing more specific information than  the current object about the error.
-type ErrorResponseInnerError struct {
-	// Standard error object.
-	InnerError *ErrorResponse `pulumi:"innerError"`
-}
-
-// Object containing more specific information than  the current object about the error.
-type ErrorResponseInnerErrorOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponseInnerErrorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorResponseInnerError)(nil)).Elem()
-}
-
-func (o ErrorResponseInnerErrorOutput) ToErrorResponseInnerErrorOutput() ErrorResponseInnerErrorOutput {
-	return o
-}
-
-func (o ErrorResponseInnerErrorOutput) ToErrorResponseInnerErrorOutputWithContext(ctx context.Context) ErrorResponseInnerErrorOutput {
-	return o
-}
-
-// Standard error object.
-func (o ErrorResponseInnerErrorOutput) InnerError() ErrorResponsePtrOutput {
-	return o.ApplyT(func(v ErrorResponseInnerError) *ErrorResponse { return v.InnerError }).(ErrorResponsePtrOutput)
-}
-
-type ErrorResponseInnerErrorPtrOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponseInnerErrorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorResponseInnerError)(nil)).Elem()
-}
-
-func (o ErrorResponseInnerErrorPtrOutput) ToErrorResponseInnerErrorPtrOutput() ErrorResponseInnerErrorPtrOutput {
-	return o
-}
-
-func (o ErrorResponseInnerErrorPtrOutput) ToErrorResponseInnerErrorPtrOutputWithContext(ctx context.Context) ErrorResponseInnerErrorPtrOutput {
-	return o
-}
-
-func (o ErrorResponseInnerErrorPtrOutput) Elem() ErrorResponseInnerErrorOutput {
-	return o.ApplyT(func(v *ErrorResponseInnerError) ErrorResponseInnerError {
-		if v != nil {
-			return *v
-		}
-		var ret ErrorResponseInnerError
-		return ret
-	}).(ErrorResponseInnerErrorOutput)
-}
-
-// Standard error object.
-func (o ErrorResponseInnerErrorPtrOutput) InnerError() ErrorResponsePtrOutput {
-	return o.ApplyT(func(v *ErrorResponseInnerError) *ErrorResponse {
-		if v == nil {
-			return nil
-		}
-		return v.InnerError
-	}).(ErrorResponsePtrOutput)
-}
-
 // The SAP instance specific performance data for Excel import.
 type ExcelPerformanceDataResponse struct {
 	// The data source for this resource.
@@ -9101,6 +9135,39 @@ func (o HanaDbProviderInstancePropertiesResponsePtrOutput) SslPreference() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Resource health details
+type HealthResponse struct {
+	// Health state of the resource
+	HealthState string `pulumi:"healthState"`
+	// Reasons impacting health state
+	ImpactingReasons string `pulumi:"impactingReasons"`
+}
+
+// Resource health details
+type HealthResponseOutput struct{ *pulumi.OutputState }
+
+func (HealthResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthResponse)(nil)).Elem()
+}
+
+func (o HealthResponseOutput) ToHealthResponseOutput() HealthResponseOutput {
+	return o
+}
+
+func (o HealthResponseOutput) ToHealthResponseOutputWithContext(ctx context.Context) HealthResponseOutput {
+	return o
+}
+
+// Health state of the resource
+func (o HealthResponseOutput) HealthState() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthResponse) string { return v.HealthState }).(pulumi.StringOutput)
+}
+
+// Reasons impacting health state
+func (o HealthResponseOutput) ImpactingReasons() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthResponse) string { return v.ImpactingReasons }).(pulumi.StringOutput)
+}
+
 // Gets or sets the high availability configuration.
 type HighAvailabilityConfiguration struct {
 	// The high availability type.
@@ -9822,6 +9889,8 @@ func (o HourlyScheduleResponsePtrOutput) ScheduleWindowStartTime() pulumi.String
 
 // Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
 type ImageReference struct {
+	// Specifies the ARM resource ID of the Azure Compute Gallery image version used for creating ACSS VMs. You will need to provide this input when you choose to deploy virtual machines in ACSS with OS image from the Azure Compute gallery.
+	Id *string `pulumi:"id"`
 	// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
 	Offer *string `pulumi:"offer"`
 	// The image publisher.
@@ -9845,6 +9914,8 @@ type ImageReferenceInput interface {
 
 // Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
 type ImageReferenceArgs struct {
+	// Specifies the ARM resource ID of the Azure Compute Gallery image version used for creating ACSS VMs. You will need to provide this input when you choose to deploy virtual machines in ACSS with OS image from the Azure Compute gallery.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
 	Offer pulumi.StringPtrInput `pulumi:"offer"`
 	// The image publisher.
@@ -9933,6 +10004,11 @@ func (o ImageReferenceOutput) ToImageReferencePtrOutputWithContext(ctx context.C
 	}).(ImageReferencePtrOutput)
 }
 
+// Specifies the ARM resource ID of the Azure Compute Gallery image version used for creating ACSS VMs. You will need to provide this input when you choose to deploy virtual machines in ACSS with OS image from the Azure Compute gallery.
+func (o ImageReferenceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReference) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
 // Specifies the offer of the platform image or marketplace image used to create the virtual machine.
 func (o ImageReferenceOutput) Offer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.Offer }).(pulumi.StringPtrOutput)
@@ -9977,6 +10053,16 @@ func (o ImageReferencePtrOutput) Elem() ImageReferenceOutput {
 	}).(ImageReferenceOutput)
 }
 
+// Specifies the ARM resource ID of the Azure Compute Gallery image version used for creating ACSS VMs. You will need to provide this input when you choose to deploy virtual machines in ACSS with OS image from the Azure Compute gallery.
+func (o ImageReferencePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies the offer of the platform image or marketplace image used to create the virtual machine.
 func (o ImageReferencePtrOutput) Offer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReference) *string {
@@ -10019,6 +10105,8 @@ func (o ImageReferencePtrOutput) Version() pulumi.StringPtrOutput {
 
 // Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
 type ImageReferenceResponse struct {
+	// Specifies the ARM resource ID of the Azure Compute Gallery image version used for creating ACSS VMs. You will need to provide this input when you choose to deploy virtual machines in ACSS with OS image from the Azure Compute gallery.
+	Id *string `pulumi:"id"`
 	// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
 	Offer *string `pulumi:"offer"`
 	// The image publisher.
@@ -10042,6 +10130,11 @@ func (o ImageReferenceResponseOutput) ToImageReferenceResponseOutput() ImageRefe
 
 func (o ImageReferenceResponseOutput) ToImageReferenceResponseOutputWithContext(ctx context.Context) ImageReferenceResponseOutput {
 	return o
+}
+
+// Specifies the ARM resource ID of the Azure Compute Gallery image version used for creating ACSS VMs. You will need to provide this input when you choose to deploy virtual machines in ACSS with OS image from the Azure Compute gallery.
+func (o ImageReferenceResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the offer of the platform image or marketplace image used to create the virtual machine.
@@ -10086,6 +10179,16 @@ func (o ImageReferenceResponsePtrOutput) Elem() ImageReferenceResponseOutput {
 		var ret ImageReferenceResponse
 		return ret
 	}).(ImageReferenceResponseOutput)
+}
+
+// Specifies the ARM resource ID of the Azure Compute Gallery image version used for creating ACSS VMs. You will need to provide this input when you choose to deploy virtual machines in ACSS with OS image from the Azure Compute gallery.
+func (o ImageReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies the offer of the platform image or marketplace image used to create the virtual machine.
@@ -10364,7 +10467,7 @@ func (o InstantRPAdditionalDetailsResponsePtrOutput) AzureBackupRGNameSuffix() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfiguration struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication *bool `pulumi:"disablePasswordAuthentication"`
@@ -10388,7 +10491,7 @@ type LinuxConfigurationInput interface {
 	ToLinuxConfigurationOutputWithContext(context.Context) LinuxConfigurationOutput
 }
 
-// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationArgs struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication pulumi.BoolPtrInput `pulumi:"disablePasswordAuthentication"`
@@ -10454,7 +10557,7 @@ func (i *linuxConfigurationPtrType) ToLinuxConfigurationPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(LinuxConfigurationPtrOutput)
 }
 
-// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationOutput struct{ *pulumi.OutputState }
 
 func (LinuxConfigurationOutput) ElementType() reflect.Type {
@@ -10565,7 +10668,7 @@ func (o LinuxConfigurationPtrOutput) SshKeyPair() SshKeyPairPtrOutput {
 	}).(SshKeyPairPtrOutput)
 }
 
-// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationResponse struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication *bool `pulumi:"disablePasswordAuthentication"`
@@ -10578,7 +10681,7 @@ type LinuxConfigurationResponse struct {
 	SshKeyPair *SshKeyPairResponse `pulumi:"sshKeyPair"`
 }
 
-// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (LinuxConfigurationResponseOutput) ElementType() reflect.Type {
@@ -10681,6 +10784,7 @@ func (o LinuxConfigurationResponsePtrOutput) SshKeyPair() SshKeyPairResponsePtrO
 
 // The Load Balancer details such as Load Balancer ID.
 type LoadBalancerDetailsResponse struct {
+	// Fully qualified resource ID for the load balancer.
 	Id string `pulumi:"id"`
 }
 
@@ -10699,6 +10803,7 @@ func (o LoadBalancerDetailsResponseOutput) ToLoadBalancerDetailsResponseOutputWi
 	return o
 }
 
+// Fully qualified resource ID for the load balancer.
 func (o LoadBalancerDetailsResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerDetailsResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -12012,25 +12117,497 @@ func (o ManagedRGConfigurationResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the SAP Message Server properties.
+// Managed resource group configuration
+type ManagedResourceGroupConfiguration struct {
+	// Managed resource group name
+	Name *string `pulumi:"name"`
+}
+
+// ManagedResourceGroupConfigurationInput is an input type that accepts ManagedResourceGroupConfigurationArgs and ManagedResourceGroupConfigurationOutput values.
+// You can construct a concrete instance of `ManagedResourceGroupConfigurationInput` via:
+//
+//	ManagedResourceGroupConfigurationArgs{...}
+type ManagedResourceGroupConfigurationInput interface {
+	pulumi.Input
+
+	ToManagedResourceGroupConfigurationOutput() ManagedResourceGroupConfigurationOutput
+	ToManagedResourceGroupConfigurationOutputWithContext(context.Context) ManagedResourceGroupConfigurationOutput
+}
+
+// Managed resource group configuration
+type ManagedResourceGroupConfigurationArgs struct {
+	// Managed resource group name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ManagedResourceGroupConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedResourceGroupConfiguration)(nil)).Elem()
+}
+
+func (i ManagedResourceGroupConfigurationArgs) ToManagedResourceGroupConfigurationOutput() ManagedResourceGroupConfigurationOutput {
+	return i.ToManagedResourceGroupConfigurationOutputWithContext(context.Background())
+}
+
+func (i ManagedResourceGroupConfigurationArgs) ToManagedResourceGroupConfigurationOutputWithContext(ctx context.Context) ManagedResourceGroupConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedResourceGroupConfigurationOutput)
+}
+
+func (i ManagedResourceGroupConfigurationArgs) ToManagedResourceGroupConfigurationPtrOutput() ManagedResourceGroupConfigurationPtrOutput {
+	return i.ToManagedResourceGroupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedResourceGroupConfigurationArgs) ToManagedResourceGroupConfigurationPtrOutputWithContext(ctx context.Context) ManagedResourceGroupConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedResourceGroupConfigurationOutput).ToManagedResourceGroupConfigurationPtrOutputWithContext(ctx)
+}
+
+// ManagedResourceGroupConfigurationPtrInput is an input type that accepts ManagedResourceGroupConfigurationArgs, ManagedResourceGroupConfigurationPtr and ManagedResourceGroupConfigurationPtrOutput values.
+// You can construct a concrete instance of `ManagedResourceGroupConfigurationPtrInput` via:
+//
+//	        ManagedResourceGroupConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedResourceGroupConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToManagedResourceGroupConfigurationPtrOutput() ManagedResourceGroupConfigurationPtrOutput
+	ToManagedResourceGroupConfigurationPtrOutputWithContext(context.Context) ManagedResourceGroupConfigurationPtrOutput
+}
+
+type managedResourceGroupConfigurationPtrType ManagedResourceGroupConfigurationArgs
+
+func ManagedResourceGroupConfigurationPtr(v *ManagedResourceGroupConfigurationArgs) ManagedResourceGroupConfigurationPtrInput {
+	return (*managedResourceGroupConfigurationPtrType)(v)
+}
+
+func (*managedResourceGroupConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedResourceGroupConfiguration)(nil)).Elem()
+}
+
+func (i *managedResourceGroupConfigurationPtrType) ToManagedResourceGroupConfigurationPtrOutput() ManagedResourceGroupConfigurationPtrOutput {
+	return i.ToManagedResourceGroupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *managedResourceGroupConfigurationPtrType) ToManagedResourceGroupConfigurationPtrOutputWithContext(ctx context.Context) ManagedResourceGroupConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedResourceGroupConfigurationPtrOutput)
+}
+
+// Managed resource group configuration
+type ManagedResourceGroupConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ManagedResourceGroupConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedResourceGroupConfiguration)(nil)).Elem()
+}
+
+func (o ManagedResourceGroupConfigurationOutput) ToManagedResourceGroupConfigurationOutput() ManagedResourceGroupConfigurationOutput {
+	return o
+}
+
+func (o ManagedResourceGroupConfigurationOutput) ToManagedResourceGroupConfigurationOutputWithContext(ctx context.Context) ManagedResourceGroupConfigurationOutput {
+	return o
+}
+
+func (o ManagedResourceGroupConfigurationOutput) ToManagedResourceGroupConfigurationPtrOutput() ManagedResourceGroupConfigurationPtrOutput {
+	return o.ToManagedResourceGroupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedResourceGroupConfigurationOutput) ToManagedResourceGroupConfigurationPtrOutputWithContext(ctx context.Context) ManagedResourceGroupConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedResourceGroupConfiguration) *ManagedResourceGroupConfiguration {
+		return &v
+	}).(ManagedResourceGroupConfigurationPtrOutput)
+}
+
+// Managed resource group name
+func (o ManagedResourceGroupConfigurationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedResourceGroupConfiguration) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ManagedResourceGroupConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedResourceGroupConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedResourceGroupConfiguration)(nil)).Elem()
+}
+
+func (o ManagedResourceGroupConfigurationPtrOutput) ToManagedResourceGroupConfigurationPtrOutput() ManagedResourceGroupConfigurationPtrOutput {
+	return o
+}
+
+func (o ManagedResourceGroupConfigurationPtrOutput) ToManagedResourceGroupConfigurationPtrOutputWithContext(ctx context.Context) ManagedResourceGroupConfigurationPtrOutput {
+	return o
+}
+
+func (o ManagedResourceGroupConfigurationPtrOutput) Elem() ManagedResourceGroupConfigurationOutput {
+	return o.ApplyT(func(v *ManagedResourceGroupConfiguration) ManagedResourceGroupConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedResourceGroupConfiguration
+		return ret
+	}).(ManagedResourceGroupConfigurationOutput)
+}
+
+// Managed resource group name
+func (o ManagedResourceGroupConfigurationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedResourceGroupConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Managed resource group configuration
+type ManagedResourceGroupConfigurationResponse struct {
+	// Managed resource group name
+	Name *string `pulumi:"name"`
+}
+
+// Managed resource group configuration
+type ManagedResourceGroupConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedResourceGroupConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedResourceGroupConfigurationResponse)(nil)).Elem()
+}
+
+func (o ManagedResourceGroupConfigurationResponseOutput) ToManagedResourceGroupConfigurationResponseOutput() ManagedResourceGroupConfigurationResponseOutput {
+	return o
+}
+
+func (o ManagedResourceGroupConfigurationResponseOutput) ToManagedResourceGroupConfigurationResponseOutputWithContext(ctx context.Context) ManagedResourceGroupConfigurationResponseOutput {
+	return o
+}
+
+// Managed resource group name
+func (o ManagedResourceGroupConfigurationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedResourceGroupConfigurationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ManagedResourceGroupConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedResourceGroupConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedResourceGroupConfigurationResponse)(nil)).Elem()
+}
+
+func (o ManagedResourceGroupConfigurationResponsePtrOutput) ToManagedResourceGroupConfigurationResponsePtrOutput() ManagedResourceGroupConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ManagedResourceGroupConfigurationResponsePtrOutput) ToManagedResourceGroupConfigurationResponsePtrOutputWithContext(ctx context.Context) ManagedResourceGroupConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ManagedResourceGroupConfigurationResponsePtrOutput) Elem() ManagedResourceGroupConfigurationResponseOutput {
+	return o.ApplyT(func(v *ManagedResourceGroupConfigurationResponse) ManagedResourceGroupConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedResourceGroupConfigurationResponse
+		return ret
+	}).(ManagedResourceGroupConfigurationResponseOutput)
+}
+
+// Managed resource group name
+func (o ManagedResourceGroupConfigurationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedResourceGroupConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentity struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+//
+//	ManagedServiceIdentityArgs{...}
+type ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
+	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityArgs struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+//
+//	        ManagedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
+	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+}
+
+type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+
+func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
+	return (*managedServiceIdentityPtrType)(v)
+}
+
+func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+		return &v
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentity
+		return ret
+	}).(ManagedServiceIdentityOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityResponse
+		return ret
+	}).(ManagedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+// Defines the SAP message server properties.
 type MessageServerPropertiesResponse struct {
 	// Defines the health of SAP Instances.
 	Health string `pulumi:"health"`
-	// Message Server SAP Hostname.
+	// message server SAP Hostname.
 	Hostname string `pulumi:"hostname"`
-	// Message Server HTTP Port.
+	// message server HTTP Port.
 	HttpPort float64 `pulumi:"httpPort"`
-	// Message Server HTTPS Port.
+	// message server HTTPS Port.
 	HttpsPort float64 `pulumi:"httpsPort"`
-	// Message Server internal MS port.
+	// message server internal MS port.
 	InternalMsPort float64 `pulumi:"internalMsPort"`
-	// Message server IP Address.
+	// message server IP Address.
 	IpAddress string `pulumi:"ipAddress"`
-	// Message Server port.
+	// message server port.
 	MsPort float64 `pulumi:"msPort"`
 }
 
-// Defines the SAP Message Server properties.
+// Defines the SAP message server properties.
 type MessageServerPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (MessageServerPropertiesResponseOutput) ElementType() reflect.Type {
@@ -12050,32 +12627,32 @@ func (o MessageServerPropertiesResponseOutput) Health() pulumi.StringOutput {
 	return o.ApplyT(func(v MessageServerPropertiesResponse) string { return v.Health }).(pulumi.StringOutput)
 }
 
-// Message Server SAP Hostname.
+// message server SAP Hostname.
 func (o MessageServerPropertiesResponseOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v MessageServerPropertiesResponse) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// Message Server HTTP Port.
+// message server HTTP Port.
 func (o MessageServerPropertiesResponseOutput) HttpPort() pulumi.Float64Output {
 	return o.ApplyT(func(v MessageServerPropertiesResponse) float64 { return v.HttpPort }).(pulumi.Float64Output)
 }
 
-// Message Server HTTPS Port.
+// message server HTTPS Port.
 func (o MessageServerPropertiesResponseOutput) HttpsPort() pulumi.Float64Output {
 	return o.ApplyT(func(v MessageServerPropertiesResponse) float64 { return v.HttpsPort }).(pulumi.Float64Output)
 }
 
-// Message Server internal MS port.
+// message server internal MS port.
 func (o MessageServerPropertiesResponseOutput) InternalMsPort() pulumi.Float64Output {
 	return o.ApplyT(func(v MessageServerPropertiesResponse) float64 { return v.InternalMsPort }).(pulumi.Float64Output)
 }
 
-// Message server IP Address.
+// message server IP Address.
 func (o MessageServerPropertiesResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v MessageServerPropertiesResponse) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// Message Server port.
+// message server port.
 func (o MessageServerPropertiesResponseOutput) MsPort() pulumi.Float64Output {
 	return o.ApplyT(func(v MessageServerPropertiesResponse) float64 { return v.MsPort }).(pulumi.Float64Output)
 }
@@ -12114,7 +12691,7 @@ func (o MessageServerPropertiesResponsePtrOutput) Health() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Message Server SAP Hostname.
+// message server SAP Hostname.
 func (o MessageServerPropertiesResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MessageServerPropertiesResponse) *string {
 		if v == nil {
@@ -12124,7 +12701,7 @@ func (o MessageServerPropertiesResponsePtrOutput) Hostname() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Message Server HTTP Port.
+// message server HTTP Port.
 func (o MessageServerPropertiesResponsePtrOutput) HttpPort() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *MessageServerPropertiesResponse) *float64 {
 		if v == nil {
@@ -12134,7 +12711,7 @@ func (o MessageServerPropertiesResponsePtrOutput) HttpPort() pulumi.Float64PtrOu
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Message Server HTTPS Port.
+// message server HTTPS Port.
 func (o MessageServerPropertiesResponsePtrOutput) HttpsPort() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *MessageServerPropertiesResponse) *float64 {
 		if v == nil {
@@ -12144,7 +12721,7 @@ func (o MessageServerPropertiesResponsePtrOutput) HttpsPort() pulumi.Float64PtrO
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Message Server internal MS port.
+// message server internal MS port.
 func (o MessageServerPropertiesResponsePtrOutput) InternalMsPort() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *MessageServerPropertiesResponse) *float64 {
 		if v == nil {
@@ -12154,7 +12731,7 @@ func (o MessageServerPropertiesResponsePtrOutput) InternalMsPort() pulumi.Float6
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Message server IP Address.
+// message server IP Address.
 func (o MessageServerPropertiesResponsePtrOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MessageServerPropertiesResponse) *string {
 		if v == nil {
@@ -12164,7 +12741,7 @@ func (o MessageServerPropertiesResponsePtrOutput) IpAddress() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Message Server port.
+// message server port.
 func (o MessageServerPropertiesResponsePtrOutput) MsPort() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *MessageServerPropertiesResponse) *float64 {
 		if v == nil {
@@ -12172,60 +12749,6 @@ func (o MessageServerPropertiesResponsePtrOutput) MsPort() pulumi.Float64PtrOutp
 		}
 		return &v.MsPort
 	}).(pulumi.Float64PtrOutput)
-}
-
-// Defines the SAP monitor errors.
-type MonitorPropertiesResponseErrors struct {
-	// Server-defined set of error codes.
-	Code string `pulumi:"code"`
-	// Array of details about specific errors that led to this reported error.
-	Details []ErrorResponse `pulumi:"details"`
-	// Object containing more specific information than  the current object about the error.
-	InnerError ErrorResponseInnerError `pulumi:"innerError"`
-	// Human-readable representation of the error.
-	Message string `pulumi:"message"`
-	// Target of the error.
-	Target string `pulumi:"target"`
-}
-
-// Defines the SAP monitor errors.
-type MonitorPropertiesResponseErrorsOutput struct{ *pulumi.OutputState }
-
-func (MonitorPropertiesResponseErrorsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorPropertiesResponseErrors)(nil)).Elem()
-}
-
-func (o MonitorPropertiesResponseErrorsOutput) ToMonitorPropertiesResponseErrorsOutput() MonitorPropertiesResponseErrorsOutput {
-	return o
-}
-
-func (o MonitorPropertiesResponseErrorsOutput) ToMonitorPropertiesResponseErrorsOutputWithContext(ctx context.Context) MonitorPropertiesResponseErrorsOutput {
-	return o
-}
-
-// Server-defined set of error codes.
-func (o MonitorPropertiesResponseErrorsOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v MonitorPropertiesResponseErrors) string { return v.Code }).(pulumi.StringOutput)
-}
-
-// Array of details about specific errors that led to this reported error.
-func (o MonitorPropertiesResponseErrorsOutput) Details() ErrorResponseArrayOutput {
-	return o.ApplyT(func(v MonitorPropertiesResponseErrors) []ErrorResponse { return v.Details }).(ErrorResponseArrayOutput)
-}
-
-// Object containing more specific information than  the current object about the error.
-func (o MonitorPropertiesResponseErrorsOutput) InnerError() ErrorResponseInnerErrorOutput {
-	return o.ApplyT(func(v MonitorPropertiesResponseErrors) ErrorResponseInnerError { return v.InnerError }).(ErrorResponseInnerErrorOutput)
-}
-
-// Human-readable representation of the error.
-func (o MonitorPropertiesResponseErrorsOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v MonitorPropertiesResponseErrors) string { return v.Message }).(pulumi.StringOutput)
-}
-
-// Target of the error.
-func (o MonitorPropertiesResponseErrorsOutput) Target() pulumi.StringOutput {
-	return o.ApplyT(func(v MonitorPropertiesResponseErrors) string { return v.Target }).(pulumi.StringOutput)
 }
 
 // Monthly retention schedule.
@@ -14042,7 +14565,7 @@ func (o NewRecoveryServicesVaultResponsePtrOutput) VaultType() pulumi.StringPtrO
 
 // Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
 type OSProfile struct {
-	// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+	// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 	AdminPassword *string `pulumi:"adminPassword"`
 	// Specifies the name of the administrator account. <br><br> This property cannot be updated after the VM is created. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters.
 	AdminUsername *string `pulumi:"adminUsername"`
@@ -14063,7 +14586,7 @@ type OSProfileInput interface {
 
 // Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
 type OSProfileArgs struct {
-	// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+	// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
 	// Specifies the name of the administrator account. <br><br> This property cannot be updated after the VM is created. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters.
 	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
@@ -14149,7 +14672,7 @@ func (o OSProfileOutput) ToOSProfilePtrOutputWithContext(ctx context.Context) OS
 	}).(OSProfilePtrOutput)
 }
 
-// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 func (o OSProfileOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfile) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
@@ -14188,7 +14711,7 @@ func (o OSProfilePtrOutput) Elem() OSProfileOutput {
 	}).(OSProfileOutput)
 }
 
-// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 func (o OSProfilePtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSProfile) *string {
 		if v == nil {
@@ -14220,7 +14743,7 @@ func (o OSProfilePtrOutput) OsConfiguration() pulumi.AnyOutput {
 
 // Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
 type OSProfileResponse struct {
-	// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+	// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 	AdminPassword *string `pulumi:"adminPassword"`
 	// Specifies the name of the administrator account. <br><br> This property cannot be updated after the VM is created. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters.
 	AdminUsername *string `pulumi:"adminUsername"`
@@ -14243,7 +14766,7 @@ func (o OSProfileResponseOutput) ToOSProfileResponseOutputWithContext(ctx contex
 	return o
 }
 
-// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 func (o OSProfileResponseOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfileResponse) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
@@ -14282,7 +14805,7 @@ func (o OSProfileResponsePtrOutput) Elem() OSProfileResponseOutput {
 	}).(OSProfileResponseOutput)
 }
 
-// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 func (o OSProfileResponsePtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSProfileResponse) *string {
 		if v == nil {
@@ -14310,6 +14833,537 @@ func (o OSProfileResponsePtrOutput) OsConfiguration() pulumi.AnyOutput {
 		}
 		return v.OsConfiguration
 	}).(pulumi.AnyOutput)
+}
+
+// Gets or sets the Oracle provider properties.
+type OracleProviderInstanceProperties struct {
+	// Gets or sets the oracle database name.
+	DbName *string `pulumi:"dbName"`
+	// Gets or sets the oracle database password.
+	DbPassword *string `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri *string `pulumi:"dbPasswordUri"`
+	// Gets or sets the oracle database sql port.
+	DbPort *string `pulumi:"dbPort"`
+	// Gets or sets the oracle database user name.
+	DbUsername *string `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine name.
+	Hostname *string `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'Oracle'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the Oracle Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// OracleProviderInstancePropertiesInput is an input type that accepts OracleProviderInstancePropertiesArgs and OracleProviderInstancePropertiesOutput values.
+// You can construct a concrete instance of `OracleProviderInstancePropertiesInput` via:
+//
+//	OracleProviderInstancePropertiesArgs{...}
+type OracleProviderInstancePropertiesInput interface {
+	pulumi.Input
+
+	ToOracleProviderInstancePropertiesOutput() OracleProviderInstancePropertiesOutput
+	ToOracleProviderInstancePropertiesOutputWithContext(context.Context) OracleProviderInstancePropertiesOutput
+}
+
+// Gets or sets the Oracle provider properties.
+type OracleProviderInstancePropertiesArgs struct {
+	// Gets or sets the oracle database name.
+	DbName pulumi.StringPtrInput `pulumi:"dbName"`
+	// Gets or sets the oracle database password.
+	DbPassword pulumi.StringPtrInput `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri pulumi.StringPtrInput `pulumi:"dbPasswordUri"`
+	// Gets or sets the oracle database sql port.
+	DbPort pulumi.StringPtrInput `pulumi:"dbPort"`
+	// Gets or sets the oracle database user name.
+	DbUsername pulumi.StringPtrInput `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine name.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'Oracle'.
+	ProviderType pulumi.StringInput `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid pulumi.StringPtrInput `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the Oracle Database.
+	SslCertificateUri pulumi.StringPtrInput `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference pulumi.StringPtrInput `pulumi:"sslPreference"`
+}
+
+func (OracleProviderInstancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i OracleProviderInstancePropertiesArgs) ToOracleProviderInstancePropertiesOutput() OracleProviderInstancePropertiesOutput {
+	return i.ToOracleProviderInstancePropertiesOutputWithContext(context.Background())
+}
+
+func (i OracleProviderInstancePropertiesArgs) ToOracleProviderInstancePropertiesOutputWithContext(ctx context.Context) OracleProviderInstancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleProviderInstancePropertiesOutput)
+}
+
+func (i OracleProviderInstancePropertiesArgs) ToOracleProviderInstancePropertiesPtrOutput() OracleProviderInstancePropertiesPtrOutput {
+	return i.ToOracleProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i OracleProviderInstancePropertiesArgs) ToOracleProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) OracleProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleProviderInstancePropertiesOutput).ToOracleProviderInstancePropertiesPtrOutputWithContext(ctx)
+}
+
+// OracleProviderInstancePropertiesPtrInput is an input type that accepts OracleProviderInstancePropertiesArgs, OracleProviderInstancePropertiesPtr and OracleProviderInstancePropertiesPtrOutput values.
+// You can construct a concrete instance of `OracleProviderInstancePropertiesPtrInput` via:
+//
+//	        OracleProviderInstancePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OracleProviderInstancePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToOracleProviderInstancePropertiesPtrOutput() OracleProviderInstancePropertiesPtrOutput
+	ToOracleProviderInstancePropertiesPtrOutputWithContext(context.Context) OracleProviderInstancePropertiesPtrOutput
+}
+
+type oracleProviderInstancePropertiesPtrType OracleProviderInstancePropertiesArgs
+
+func OracleProviderInstancePropertiesPtr(v *OracleProviderInstancePropertiesArgs) OracleProviderInstancePropertiesPtrInput {
+	return (*oracleProviderInstancePropertiesPtrType)(v)
+}
+
+func (*oracleProviderInstancePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i *oracleProviderInstancePropertiesPtrType) ToOracleProviderInstancePropertiesPtrOutput() OracleProviderInstancePropertiesPtrOutput {
+	return i.ToOracleProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *oracleProviderInstancePropertiesPtrType) ToOracleProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) OracleProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the Oracle provider properties.
+type OracleProviderInstancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (OracleProviderInstancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o OracleProviderInstancePropertiesOutput) ToOracleProviderInstancePropertiesOutput() OracleProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o OracleProviderInstancePropertiesOutput) ToOracleProviderInstancePropertiesOutputWithContext(ctx context.Context) OracleProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o OracleProviderInstancePropertiesOutput) ToOracleProviderInstancePropertiesPtrOutput() OracleProviderInstancePropertiesPtrOutput {
+	return o.ToOracleProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o OracleProviderInstancePropertiesOutput) ToOracleProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) OracleProviderInstancePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OracleProviderInstanceProperties) *OracleProviderInstanceProperties {
+		return &v
+	}).(OracleProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the oracle database name.
+func (o OracleProviderInstancePropertiesOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstanceProperties) *string { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database password.
+func (o OracleProviderInstancePropertiesOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstanceProperties) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o OracleProviderInstancePropertiesOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstanceProperties) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database sql port.
+func (o OracleProviderInstancePropertiesOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstanceProperties) *string { return v.DbPort }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database user name.
+func (o OracleProviderInstancePropertiesOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstanceProperties) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o OracleProviderInstancePropertiesOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstanceProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Oracle'.
+func (o OracleProviderInstancePropertiesOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v OracleProviderInstanceProperties) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o OracleProviderInstancePropertiesOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstanceProperties) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the Oracle Database.
+func (o OracleProviderInstancePropertiesOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstanceProperties) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o OracleProviderInstancePropertiesOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstanceProperties) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type OracleProviderInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (OracleProviderInstancePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o OracleProviderInstancePropertiesPtrOutput) ToOracleProviderInstancePropertiesPtrOutput() OracleProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o OracleProviderInstancePropertiesPtrOutput) ToOracleProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) OracleProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o OracleProviderInstancePropertiesPtrOutput) Elem() OracleProviderInstancePropertiesOutput {
+	return o.ApplyT(func(v *OracleProviderInstanceProperties) OracleProviderInstanceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret OracleProviderInstanceProperties
+		return ret
+	}).(OracleProviderInstancePropertiesOutput)
+}
+
+// Gets or sets the oracle database name.
+func (o OracleProviderInstancePropertiesPtrOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database password.
+func (o OracleProviderInstancePropertiesPtrOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o OracleProviderInstancePropertiesPtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database sql port.
+func (o OracleProviderInstancePropertiesPtrOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database user name.
+func (o OracleProviderInstancePropertiesPtrOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o OracleProviderInstancePropertiesPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Oracle'.
+func (o OracleProviderInstancePropertiesPtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o OracleProviderInstancePropertiesPtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the Oracle Database.
+func (o OracleProviderInstancePropertiesPtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o OracleProviderInstancePropertiesPtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Oracle provider properties.
+type OracleProviderInstancePropertiesResponse struct {
+	// Gets or sets the oracle database name.
+	DbName *string `pulumi:"dbName"`
+	// Gets or sets the oracle database password.
+	DbPassword *string `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri *string `pulumi:"dbPasswordUri"`
+	// Gets or sets the oracle database sql port.
+	DbPort *string `pulumi:"dbPort"`
+	// Gets or sets the oracle database user name.
+	DbUsername *string `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine name.
+	Hostname *string `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'Oracle'.
+	ProviderType string `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid *string `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the Oracle Database.
+	SslCertificateUri *string `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Gets or sets the Oracle provider properties.
+type OracleProviderInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (OracleProviderInstancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o OracleProviderInstancePropertiesResponseOutput) ToOracleProviderInstancePropertiesResponseOutput() OracleProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+func (o OracleProviderInstancePropertiesResponseOutput) ToOracleProviderInstancePropertiesResponseOutputWithContext(ctx context.Context) OracleProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the oracle database name.
+func (o OracleProviderInstancePropertiesResponseOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstancePropertiesResponse) *string { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database password.
+func (o OracleProviderInstancePropertiesResponseOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstancePropertiesResponse) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o OracleProviderInstancePropertiesResponseOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstancePropertiesResponse) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database sql port.
+func (o OracleProviderInstancePropertiesResponseOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstancePropertiesResponse) *string { return v.DbPort }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database user name.
+func (o OracleProviderInstancePropertiesResponseOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstancePropertiesResponse) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o OracleProviderInstancePropertiesResponseOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstancePropertiesResponse) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Oracle'.
+func (o OracleProviderInstancePropertiesResponseOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v OracleProviderInstancePropertiesResponse) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o OracleProviderInstancePropertiesResponseOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstancePropertiesResponse) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the Oracle Database.
+func (o OracleProviderInstancePropertiesResponseOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstancePropertiesResponse) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o OracleProviderInstancePropertiesResponseOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleProviderInstancePropertiesResponse) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type OracleProviderInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OracleProviderInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o OracleProviderInstancePropertiesResponsePtrOutput) ToOracleProviderInstancePropertiesResponsePtrOutput() OracleProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o OracleProviderInstancePropertiesResponsePtrOutput) ToOracleProviderInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) OracleProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o OracleProviderInstancePropertiesResponsePtrOutput) Elem() OracleProviderInstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *OracleProviderInstancePropertiesResponse) OracleProviderInstancePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OracleProviderInstancePropertiesResponse
+		return ret
+	}).(OracleProviderInstancePropertiesResponseOutput)
+}
+
+// Gets or sets the oracle database name.
+func (o OracleProviderInstancePropertiesResponsePtrOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database password.
+func (o OracleProviderInstancePropertiesResponsePtrOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o OracleProviderInstancePropertiesResponsePtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database sql port.
+func (o OracleProviderInstancePropertiesResponsePtrOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the oracle database user name.
+func (o OracleProviderInstancePropertiesResponsePtrOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o OracleProviderInstancePropertiesResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Oracle'.
+func (o OracleProviderInstancePropertiesResponsePtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o OracleProviderInstancePropertiesResponsePtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the Oracle Database.
+func (o OracleProviderInstancePropertiesResponsePtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o OracleProviderInstancePropertiesResponsePtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the OS and SAP Configurations for Deployment
@@ -14972,7 +16026,7 @@ func (o PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) SslPrefe
 }
 
 // Gets or sets the PrometheusOS provider properties.
-type PrometheusOSProviderInstanceProperties struct {
+type PrometheusOsProviderInstanceProperties struct {
 	// URL of the Node Exporter endpoint
 	PrometheusUrl *string `pulumi:"prometheusUrl"`
 	// The provider type. For example, the value can be SapHana.
@@ -14986,19 +16040,19 @@ type PrometheusOSProviderInstanceProperties struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
-// PrometheusOSProviderInstancePropertiesInput is an input type that accepts PrometheusOSProviderInstancePropertiesArgs and PrometheusOSProviderInstancePropertiesOutput values.
-// You can construct a concrete instance of `PrometheusOSProviderInstancePropertiesInput` via:
+// PrometheusOsProviderInstancePropertiesInput is an input type that accepts PrometheusOsProviderInstancePropertiesArgs and PrometheusOsProviderInstancePropertiesOutput values.
+// You can construct a concrete instance of `PrometheusOsProviderInstancePropertiesInput` via:
 //
-//	PrometheusOSProviderInstancePropertiesArgs{...}
-type PrometheusOSProviderInstancePropertiesInput interface {
+//	PrometheusOsProviderInstancePropertiesArgs{...}
+type PrometheusOsProviderInstancePropertiesInput interface {
 	pulumi.Input
 
-	ToPrometheusOSProviderInstancePropertiesOutput() PrometheusOSProviderInstancePropertiesOutput
-	ToPrometheusOSProviderInstancePropertiesOutputWithContext(context.Context) PrometheusOSProviderInstancePropertiesOutput
+	ToPrometheusOsProviderInstancePropertiesOutput() PrometheusOsProviderInstancePropertiesOutput
+	ToPrometheusOsProviderInstancePropertiesOutputWithContext(context.Context) PrometheusOsProviderInstancePropertiesOutput
 }
 
 // Gets or sets the PrometheusOS provider properties.
-type PrometheusOSProviderInstancePropertiesArgs struct {
+type PrometheusOsProviderInstancePropertiesArgs struct {
 	// URL of the Node Exporter endpoint
 	PrometheusUrl pulumi.StringPtrInput `pulumi:"prometheusUrl"`
 	// The provider type. For example, the value can be SapHana.
@@ -15012,137 +16066,137 @@ type PrometheusOSProviderInstancePropertiesArgs struct {
 	SslPreference pulumi.StringPtrInput `pulumi:"sslPreference"`
 }
 
-func (PrometheusOSProviderInstancePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrometheusOSProviderInstanceProperties)(nil)).Elem()
+func (PrometheusOsProviderInstancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusOsProviderInstanceProperties)(nil)).Elem()
 }
 
-func (i PrometheusOSProviderInstancePropertiesArgs) ToPrometheusOSProviderInstancePropertiesOutput() PrometheusOSProviderInstancePropertiesOutput {
-	return i.ToPrometheusOSProviderInstancePropertiesOutputWithContext(context.Background())
+func (i PrometheusOsProviderInstancePropertiesArgs) ToPrometheusOsProviderInstancePropertiesOutput() PrometheusOsProviderInstancePropertiesOutput {
+	return i.ToPrometheusOsProviderInstancePropertiesOutputWithContext(context.Background())
 }
 
-func (i PrometheusOSProviderInstancePropertiesArgs) ToPrometheusOSProviderInstancePropertiesOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrometheusOSProviderInstancePropertiesOutput)
+func (i PrometheusOsProviderInstancePropertiesArgs) ToPrometheusOsProviderInstancePropertiesOutputWithContext(ctx context.Context) PrometheusOsProviderInstancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusOsProviderInstancePropertiesOutput)
 }
 
-func (i PrometheusOSProviderInstancePropertiesArgs) ToPrometheusOSProviderInstancePropertiesPtrOutput() PrometheusOSProviderInstancePropertiesPtrOutput {
-	return i.ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(context.Background())
+func (i PrometheusOsProviderInstancePropertiesArgs) ToPrometheusOsProviderInstancePropertiesPtrOutput() PrometheusOsProviderInstancePropertiesPtrOutput {
+	return i.ToPrometheusOsProviderInstancePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i PrometheusOSProviderInstancePropertiesArgs) ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrometheusOSProviderInstancePropertiesOutput).ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(ctx)
+func (i PrometheusOsProviderInstancePropertiesArgs) ToPrometheusOsProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOsProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusOsProviderInstancePropertiesOutput).ToPrometheusOsProviderInstancePropertiesPtrOutputWithContext(ctx)
 }
 
-// PrometheusOSProviderInstancePropertiesPtrInput is an input type that accepts PrometheusOSProviderInstancePropertiesArgs, PrometheusOSProviderInstancePropertiesPtr and PrometheusOSProviderInstancePropertiesPtrOutput values.
-// You can construct a concrete instance of `PrometheusOSProviderInstancePropertiesPtrInput` via:
+// PrometheusOsProviderInstancePropertiesPtrInput is an input type that accepts PrometheusOsProviderInstancePropertiesArgs, PrometheusOsProviderInstancePropertiesPtr and PrometheusOsProviderInstancePropertiesPtrOutput values.
+// You can construct a concrete instance of `PrometheusOsProviderInstancePropertiesPtrInput` via:
 //
-//	        PrometheusOSProviderInstancePropertiesArgs{...}
+//	        PrometheusOsProviderInstancePropertiesArgs{...}
 //
 //	or:
 //
 //	        nil
-type PrometheusOSProviderInstancePropertiesPtrInput interface {
+type PrometheusOsProviderInstancePropertiesPtrInput interface {
 	pulumi.Input
 
-	ToPrometheusOSProviderInstancePropertiesPtrOutput() PrometheusOSProviderInstancePropertiesPtrOutput
-	ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(context.Context) PrometheusOSProviderInstancePropertiesPtrOutput
+	ToPrometheusOsProviderInstancePropertiesPtrOutput() PrometheusOsProviderInstancePropertiesPtrOutput
+	ToPrometheusOsProviderInstancePropertiesPtrOutputWithContext(context.Context) PrometheusOsProviderInstancePropertiesPtrOutput
 }
 
-type prometheusOSProviderInstancePropertiesPtrType PrometheusOSProviderInstancePropertiesArgs
+type prometheusOsProviderInstancePropertiesPtrType PrometheusOsProviderInstancePropertiesArgs
 
-func PrometheusOSProviderInstancePropertiesPtr(v *PrometheusOSProviderInstancePropertiesArgs) PrometheusOSProviderInstancePropertiesPtrInput {
-	return (*prometheusOSProviderInstancePropertiesPtrType)(v)
+func PrometheusOsProviderInstancePropertiesPtr(v *PrometheusOsProviderInstancePropertiesArgs) PrometheusOsProviderInstancePropertiesPtrInput {
+	return (*prometheusOsProviderInstancePropertiesPtrType)(v)
 }
 
-func (*prometheusOSProviderInstancePropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrometheusOSProviderInstanceProperties)(nil)).Elem()
+func (*prometheusOsProviderInstancePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusOsProviderInstanceProperties)(nil)).Elem()
 }
 
-func (i *prometheusOSProviderInstancePropertiesPtrType) ToPrometheusOSProviderInstancePropertiesPtrOutput() PrometheusOSProviderInstancePropertiesPtrOutput {
-	return i.ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(context.Background())
+func (i *prometheusOsProviderInstancePropertiesPtrType) ToPrometheusOsProviderInstancePropertiesPtrOutput() PrometheusOsProviderInstancePropertiesPtrOutput {
+	return i.ToPrometheusOsProviderInstancePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i *prometheusOSProviderInstancePropertiesPtrType) ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrometheusOSProviderInstancePropertiesPtrOutput)
+func (i *prometheusOsProviderInstancePropertiesPtrType) ToPrometheusOsProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOsProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusOsProviderInstancePropertiesPtrOutput)
 }
 
 // Gets or sets the PrometheusOS provider properties.
-type PrometheusOSProviderInstancePropertiesOutput struct{ *pulumi.OutputState }
+type PrometheusOsProviderInstancePropertiesOutput struct{ *pulumi.OutputState }
 
-func (PrometheusOSProviderInstancePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrometheusOSProviderInstanceProperties)(nil)).Elem()
+func (PrometheusOsProviderInstancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusOsProviderInstanceProperties)(nil)).Elem()
 }
 
-func (o PrometheusOSProviderInstancePropertiesOutput) ToPrometheusOSProviderInstancePropertiesOutput() PrometheusOSProviderInstancePropertiesOutput {
+func (o PrometheusOsProviderInstancePropertiesOutput) ToPrometheusOsProviderInstancePropertiesOutput() PrometheusOsProviderInstancePropertiesOutput {
 	return o
 }
 
-func (o PrometheusOSProviderInstancePropertiesOutput) ToPrometheusOSProviderInstancePropertiesOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesOutput {
+func (o PrometheusOsProviderInstancePropertiesOutput) ToPrometheusOsProviderInstancePropertiesOutputWithContext(ctx context.Context) PrometheusOsProviderInstancePropertiesOutput {
 	return o
 }
 
-func (o PrometheusOSProviderInstancePropertiesOutput) ToPrometheusOSProviderInstancePropertiesPtrOutput() PrometheusOSProviderInstancePropertiesPtrOutput {
-	return o.ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(context.Background())
+func (o PrometheusOsProviderInstancePropertiesOutput) ToPrometheusOsProviderInstancePropertiesPtrOutput() PrometheusOsProviderInstancePropertiesPtrOutput {
+	return o.ToPrometheusOsProviderInstancePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (o PrometheusOSProviderInstancePropertiesOutput) ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrometheusOSProviderInstanceProperties) *PrometheusOSProviderInstanceProperties {
+func (o PrometheusOsProviderInstancePropertiesOutput) ToPrometheusOsProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOsProviderInstancePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrometheusOsProviderInstanceProperties) *PrometheusOsProviderInstanceProperties {
 		return &v
-	}).(PrometheusOSProviderInstancePropertiesPtrOutput)
+	}).(PrometheusOsProviderInstancePropertiesPtrOutput)
 }
 
 // URL of the Node Exporter endpoint
-func (o PrometheusOSProviderInstancePropertiesOutput) PrometheusUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrometheusOSProviderInstanceProperties) *string { return v.PrometheusUrl }).(pulumi.StringPtrOutput)
+func (o PrometheusOsProviderInstancePropertiesOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOsProviderInstanceProperties) *string { return v.PrometheusUrl }).(pulumi.StringPtrOutput)
 }
 
 // The provider type. For example, the value can be SapHana.
 // Expected value is 'PrometheusOS'.
-func (o PrometheusOSProviderInstancePropertiesOutput) ProviderType() pulumi.StringOutput {
-	return o.ApplyT(func(v PrometheusOSProviderInstanceProperties) string { return v.ProviderType }).(pulumi.StringOutput)
+func (o PrometheusOsProviderInstancePropertiesOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusOsProviderInstanceProperties) string { return v.ProviderType }).(pulumi.StringOutput)
 }
 
 // Gets or sets the SAP System Identifier
-func (o PrometheusOSProviderInstancePropertiesOutput) SapSid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrometheusOSProviderInstanceProperties) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+func (o PrometheusOsProviderInstancePropertiesOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOsProviderInstanceProperties) *string { return v.SapSid }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
-func (o PrometheusOSProviderInstancePropertiesOutput) SslCertificateUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrometheusOSProviderInstanceProperties) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+func (o PrometheusOsProviderInstancePropertiesOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOsProviderInstanceProperties) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets certificate preference if secure communication is enabled.
-func (o PrometheusOSProviderInstancePropertiesOutput) SslPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrometheusOSProviderInstanceProperties) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+func (o PrometheusOsProviderInstancePropertiesOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOsProviderInstanceProperties) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
 }
 
-type PrometheusOSProviderInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
+type PrometheusOsProviderInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
 
-func (PrometheusOSProviderInstancePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrometheusOSProviderInstanceProperties)(nil)).Elem()
+func (PrometheusOsProviderInstancePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusOsProviderInstanceProperties)(nil)).Elem()
 }
 
-func (o PrometheusOSProviderInstancePropertiesPtrOutput) ToPrometheusOSProviderInstancePropertiesPtrOutput() PrometheusOSProviderInstancePropertiesPtrOutput {
+func (o PrometheusOsProviderInstancePropertiesPtrOutput) ToPrometheusOsProviderInstancePropertiesPtrOutput() PrometheusOsProviderInstancePropertiesPtrOutput {
 	return o
 }
 
-func (o PrometheusOSProviderInstancePropertiesPtrOutput) ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesPtrOutput {
+func (o PrometheusOsProviderInstancePropertiesPtrOutput) ToPrometheusOsProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOsProviderInstancePropertiesPtrOutput {
 	return o
 }
 
-func (o PrometheusOSProviderInstancePropertiesPtrOutput) Elem() PrometheusOSProviderInstancePropertiesOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) PrometheusOSProviderInstanceProperties {
+func (o PrometheusOsProviderInstancePropertiesPtrOutput) Elem() PrometheusOsProviderInstancePropertiesOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstanceProperties) PrometheusOsProviderInstanceProperties {
 		if v != nil {
 			return *v
 		}
-		var ret PrometheusOSProviderInstanceProperties
+		var ret PrometheusOsProviderInstanceProperties
 		return ret
-	}).(PrometheusOSProviderInstancePropertiesOutput)
+	}).(PrometheusOsProviderInstancePropertiesOutput)
 }
 
 // URL of the Node Exporter endpoint
-func (o PrometheusOSProviderInstancePropertiesPtrOutput) PrometheusUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) *string {
+func (o PrometheusOsProviderInstancePropertiesPtrOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstanceProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -15152,8 +16206,8 @@ func (o PrometheusOSProviderInstancePropertiesPtrOutput) PrometheusUrl() pulumi.
 
 // The provider type. For example, the value can be SapHana.
 // Expected value is 'PrometheusOS'.
-func (o PrometheusOSProviderInstancePropertiesPtrOutput) ProviderType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) *string {
+func (o PrometheusOsProviderInstancePropertiesPtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstanceProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -15162,8 +16216,8 @@ func (o PrometheusOSProviderInstancePropertiesPtrOutput) ProviderType() pulumi.S
 }
 
 // Gets or sets the SAP System Identifier
-func (o PrometheusOSProviderInstancePropertiesPtrOutput) SapSid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) *string {
+func (o PrometheusOsProviderInstancePropertiesPtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstanceProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -15172,8 +16226,8 @@ func (o PrometheusOSProviderInstancePropertiesPtrOutput) SapSid() pulumi.StringP
 }
 
 // Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
-func (o PrometheusOSProviderInstancePropertiesPtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) *string {
+func (o PrometheusOsProviderInstancePropertiesPtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstanceProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -15182,8 +16236,8 @@ func (o PrometheusOSProviderInstancePropertiesPtrOutput) SslCertificateUri() pul
 }
 
 // Gets or sets certificate preference if secure communication is enabled.
-func (o PrometheusOSProviderInstancePropertiesPtrOutput) SslPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) *string {
+func (o PrometheusOsProviderInstancePropertiesPtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstanceProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -15192,7 +16246,7 @@ func (o PrometheusOSProviderInstancePropertiesPtrOutput) SslPreference() pulumi.
 }
 
 // Gets or sets the PrometheusOS provider properties.
-type PrometheusOSProviderInstancePropertiesResponse struct {
+type PrometheusOsProviderInstancePropertiesResponse struct {
 	// URL of the Node Exporter endpoint
 	PrometheusUrl *string `pulumi:"prometheusUrl"`
 	// The provider type. For example, the value can be SapHana.
@@ -15207,73 +16261,73 @@ type PrometheusOSProviderInstancePropertiesResponse struct {
 }
 
 // Gets or sets the PrometheusOS provider properties.
-type PrometheusOSProviderInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
+type PrometheusOsProviderInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
 
-func (PrometheusOSProviderInstancePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrometheusOSProviderInstancePropertiesResponse)(nil)).Elem()
+func (PrometheusOsProviderInstancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusOsProviderInstancePropertiesResponse)(nil)).Elem()
 }
 
-func (o PrometheusOSProviderInstancePropertiesResponseOutput) ToPrometheusOSProviderInstancePropertiesResponseOutput() PrometheusOSProviderInstancePropertiesResponseOutput {
+func (o PrometheusOsProviderInstancePropertiesResponseOutput) ToPrometheusOsProviderInstancePropertiesResponseOutput() PrometheusOsProviderInstancePropertiesResponseOutput {
 	return o
 }
 
-func (o PrometheusOSProviderInstancePropertiesResponseOutput) ToPrometheusOSProviderInstancePropertiesResponseOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesResponseOutput {
+func (o PrometheusOsProviderInstancePropertiesResponseOutput) ToPrometheusOsProviderInstancePropertiesResponseOutputWithContext(ctx context.Context) PrometheusOsProviderInstancePropertiesResponseOutput {
 	return o
 }
 
 // URL of the Node Exporter endpoint
-func (o PrometheusOSProviderInstancePropertiesResponseOutput) PrometheusUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrometheusOSProviderInstancePropertiesResponse) *string { return v.PrometheusUrl }).(pulumi.StringPtrOutput)
+func (o PrometheusOsProviderInstancePropertiesResponseOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOsProviderInstancePropertiesResponse) *string { return v.PrometheusUrl }).(pulumi.StringPtrOutput)
 }
 
 // The provider type. For example, the value can be SapHana.
 // Expected value is 'PrometheusOS'.
-func (o PrometheusOSProviderInstancePropertiesResponseOutput) ProviderType() pulumi.StringOutput {
-	return o.ApplyT(func(v PrometheusOSProviderInstancePropertiesResponse) string { return v.ProviderType }).(pulumi.StringOutput)
+func (o PrometheusOsProviderInstancePropertiesResponseOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusOsProviderInstancePropertiesResponse) string { return v.ProviderType }).(pulumi.StringOutput)
 }
 
 // Gets or sets the SAP System Identifier
-func (o PrometheusOSProviderInstancePropertiesResponseOutput) SapSid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrometheusOSProviderInstancePropertiesResponse) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+func (o PrometheusOsProviderInstancePropertiesResponseOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOsProviderInstancePropertiesResponse) *string { return v.SapSid }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
-func (o PrometheusOSProviderInstancePropertiesResponseOutput) SslCertificateUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrometheusOSProviderInstancePropertiesResponse) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+func (o PrometheusOsProviderInstancePropertiesResponseOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOsProviderInstancePropertiesResponse) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets certificate preference if secure communication is enabled.
-func (o PrometheusOSProviderInstancePropertiesResponseOutput) SslPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrometheusOSProviderInstancePropertiesResponse) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+func (o PrometheusOsProviderInstancePropertiesResponseOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOsProviderInstancePropertiesResponse) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
 }
 
-type PrometheusOSProviderInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+type PrometheusOsProviderInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (PrometheusOSProviderInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrometheusOSProviderInstancePropertiesResponse)(nil)).Elem()
+func (PrometheusOsProviderInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusOsProviderInstancePropertiesResponse)(nil)).Elem()
 }
 
-func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) ToPrometheusOSProviderInstancePropertiesResponsePtrOutput() PrometheusOSProviderInstancePropertiesResponsePtrOutput {
+func (o PrometheusOsProviderInstancePropertiesResponsePtrOutput) ToPrometheusOsProviderInstancePropertiesResponsePtrOutput() PrometheusOsProviderInstancePropertiesResponsePtrOutput {
 	return o
 }
 
-func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) ToPrometheusOSProviderInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesResponsePtrOutput {
+func (o PrometheusOsProviderInstancePropertiesResponsePtrOutput) ToPrometheusOsProviderInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) PrometheusOsProviderInstancePropertiesResponsePtrOutput {
 	return o
 }
 
-func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) Elem() PrometheusOSProviderInstancePropertiesResponseOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) PrometheusOSProviderInstancePropertiesResponse {
+func (o PrometheusOsProviderInstancePropertiesResponsePtrOutput) Elem() PrometheusOsProviderInstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstancePropertiesResponse) PrometheusOsProviderInstancePropertiesResponse {
 		if v != nil {
 			return *v
 		}
-		var ret PrometheusOSProviderInstancePropertiesResponse
+		var ret PrometheusOsProviderInstancePropertiesResponse
 		return ret
-	}).(PrometheusOSProviderInstancePropertiesResponseOutput)
+	}).(PrometheusOsProviderInstancePropertiesResponseOutput)
 }
 
 // URL of the Node Exporter endpoint
-func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) PrometheusUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) *string {
+func (o PrometheusOsProviderInstancePropertiesResponsePtrOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstancePropertiesResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -15283,8 +16337,8 @@ func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) PrometheusUrl()
 
 // The provider type. For example, the value can be SapHana.
 // Expected value is 'PrometheusOS'.
-func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) ProviderType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) *string {
+func (o PrometheusOsProviderInstancePropertiesResponsePtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstancePropertiesResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -15293,8 +16347,8 @@ func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) ProviderType() 
 }
 
 // Gets or sets the SAP System Identifier
-func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) SapSid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) *string {
+func (o PrometheusOsProviderInstancePropertiesResponsePtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstancePropertiesResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -15303,8 +16357,8 @@ func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) SapSid() pulumi
 }
 
 // Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
-func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) *string {
+func (o PrometheusOsProviderInstancePropertiesResponsePtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstancePropertiesResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -15313,67 +16367,13 @@ func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) SslCertificateU
 }
 
 // Gets or sets certificate preference if secure communication is enabled.
-func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) SslPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) *string {
+func (o PrometheusOsProviderInstancePropertiesResponsePtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOsProviderInstancePropertiesResponse) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SslPreference
 	}).(pulumi.StringPtrOutput)
-}
-
-// Defines the provider instance errors.
-type ProviderInstancePropertiesResponseErrors struct {
-	// Server-defined set of error codes.
-	Code string `pulumi:"code"`
-	// Array of details about specific errors that led to this reported error.
-	Details []ErrorResponse `pulumi:"details"`
-	// Object containing more specific information than  the current object about the error.
-	InnerError ErrorResponseInnerError `pulumi:"innerError"`
-	// Human-readable representation of the error.
-	Message string `pulumi:"message"`
-	// Target of the error.
-	Target string `pulumi:"target"`
-}
-
-// Defines the provider instance errors.
-type ProviderInstancePropertiesResponseErrorsOutput struct{ *pulumi.OutputState }
-
-func (ProviderInstancePropertiesResponseErrorsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProviderInstancePropertiesResponseErrors)(nil)).Elem()
-}
-
-func (o ProviderInstancePropertiesResponseErrorsOutput) ToProviderInstancePropertiesResponseErrorsOutput() ProviderInstancePropertiesResponseErrorsOutput {
-	return o
-}
-
-func (o ProviderInstancePropertiesResponseErrorsOutput) ToProviderInstancePropertiesResponseErrorsOutputWithContext(ctx context.Context) ProviderInstancePropertiesResponseErrorsOutput {
-	return o
-}
-
-// Server-defined set of error codes.
-func (o ProviderInstancePropertiesResponseErrorsOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) string { return v.Code }).(pulumi.StringOutput)
-}
-
-// Array of details about specific errors that led to this reported error.
-func (o ProviderInstancePropertiesResponseErrorsOutput) Details() ErrorResponseArrayOutput {
-	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) []ErrorResponse { return v.Details }).(ErrorResponseArrayOutput)
-}
-
-// Object containing more specific information than  the current object about the error.
-func (o ProviderInstancePropertiesResponseErrorsOutput) InnerError() ErrorResponseInnerErrorOutput {
-	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) ErrorResponseInnerError { return v.InnerError }).(ErrorResponseInnerErrorOutput)
-}
-
-// Human-readable representation of the error.
-func (o ProviderInstancePropertiesResponseErrorsOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) string { return v.Message }).(pulumi.StringOutput)
-}
-
-// Target of the error.
-func (o ProviderInstancePropertiesResponseErrorsOutput) Target() pulumi.StringOutput {
-	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) string { return v.Target }).(pulumi.StringOutput)
 }
 
 // Retention duration.
@@ -16219,6 +17219,295 @@ func (o SAPVirtualInstanceErrorResponseOutput) Properties() ErrorDefinitionRespo
 	return o.ApplyT(func(v SAPVirtualInstanceErrorResponse) *ErrorDefinitionResponse { return v.Properties }).(ErrorDefinitionResponsePtrOutput)
 }
 
+// Managed service identity (user assigned identities)
+type SAPVirtualInstanceIdentity struct {
+	// The type of managed identity assigned to this resource.
+	Type string `pulumi:"type"`
+	// The identities assigned to this resource by the user.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// SAPVirtualInstanceIdentityInput is an input type that accepts SAPVirtualInstanceIdentityArgs and SAPVirtualInstanceIdentityOutput values.
+// You can construct a concrete instance of `SAPVirtualInstanceIdentityInput` via:
+//
+//	SAPVirtualInstanceIdentityArgs{...}
+type SAPVirtualInstanceIdentityInput interface {
+	pulumi.Input
+
+	ToSAPVirtualInstanceIdentityOutput() SAPVirtualInstanceIdentityOutput
+	ToSAPVirtualInstanceIdentityOutputWithContext(context.Context) SAPVirtualInstanceIdentityOutput
+}
+
+// Managed service identity (user assigned identities)
+type SAPVirtualInstanceIdentityArgs struct {
+	// The type of managed identity assigned to this resource.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The identities assigned to this resource by the user.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (SAPVirtualInstanceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPVirtualInstanceIdentity)(nil)).Elem()
+}
+
+func (i SAPVirtualInstanceIdentityArgs) ToSAPVirtualInstanceIdentityOutput() SAPVirtualInstanceIdentityOutput {
+	return i.ToSAPVirtualInstanceIdentityOutputWithContext(context.Background())
+}
+
+func (i SAPVirtualInstanceIdentityArgs) ToSAPVirtualInstanceIdentityOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SAPVirtualInstanceIdentityOutput)
+}
+
+func (i SAPVirtualInstanceIdentityArgs) ToSAPVirtualInstanceIdentityPtrOutput() SAPVirtualInstanceIdentityPtrOutput {
+	return i.ToSAPVirtualInstanceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i SAPVirtualInstanceIdentityArgs) ToSAPVirtualInstanceIdentityPtrOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SAPVirtualInstanceIdentityOutput).ToSAPVirtualInstanceIdentityPtrOutputWithContext(ctx)
+}
+
+// SAPVirtualInstanceIdentityPtrInput is an input type that accepts SAPVirtualInstanceIdentityArgs, SAPVirtualInstanceIdentityPtr and SAPVirtualInstanceIdentityPtrOutput values.
+// You can construct a concrete instance of `SAPVirtualInstanceIdentityPtrInput` via:
+//
+//	        SAPVirtualInstanceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type SAPVirtualInstanceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToSAPVirtualInstanceIdentityPtrOutput() SAPVirtualInstanceIdentityPtrOutput
+	ToSAPVirtualInstanceIdentityPtrOutputWithContext(context.Context) SAPVirtualInstanceIdentityPtrOutput
+}
+
+type sapvirtualInstanceIdentityPtrType SAPVirtualInstanceIdentityArgs
+
+func SAPVirtualInstanceIdentityPtr(v *SAPVirtualInstanceIdentityArgs) SAPVirtualInstanceIdentityPtrInput {
+	return (*sapvirtualInstanceIdentityPtrType)(v)
+}
+
+func (*sapvirtualInstanceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SAPVirtualInstanceIdentity)(nil)).Elem()
+}
+
+func (i *sapvirtualInstanceIdentityPtrType) ToSAPVirtualInstanceIdentityPtrOutput() SAPVirtualInstanceIdentityPtrOutput {
+	return i.ToSAPVirtualInstanceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *sapvirtualInstanceIdentityPtrType) ToSAPVirtualInstanceIdentityPtrOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SAPVirtualInstanceIdentityPtrOutput)
+}
+
+// Managed service identity (user assigned identities)
+type SAPVirtualInstanceIdentityOutput struct{ *pulumi.OutputState }
+
+func (SAPVirtualInstanceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPVirtualInstanceIdentity)(nil)).Elem()
+}
+
+func (o SAPVirtualInstanceIdentityOutput) ToSAPVirtualInstanceIdentityOutput() SAPVirtualInstanceIdentityOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityOutput) ToSAPVirtualInstanceIdentityOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityOutput) ToSAPVirtualInstanceIdentityPtrOutput() SAPVirtualInstanceIdentityPtrOutput {
+	return o.ToSAPVirtualInstanceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o SAPVirtualInstanceIdentityOutput) ToSAPVirtualInstanceIdentityPtrOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SAPVirtualInstanceIdentity) *SAPVirtualInstanceIdentity {
+		return &v
+	}).(SAPVirtualInstanceIdentityPtrOutput)
+}
+
+// The type of managed identity assigned to this resource.
+func (o SAPVirtualInstanceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPVirtualInstanceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The identities assigned to this resource by the user.
+func (o SAPVirtualInstanceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SAPVirtualInstanceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type SAPVirtualInstanceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (SAPVirtualInstanceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SAPVirtualInstanceIdentity)(nil)).Elem()
+}
+
+func (o SAPVirtualInstanceIdentityPtrOutput) ToSAPVirtualInstanceIdentityPtrOutput() SAPVirtualInstanceIdentityPtrOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityPtrOutput) ToSAPVirtualInstanceIdentityPtrOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityPtrOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityPtrOutput) Elem() SAPVirtualInstanceIdentityOutput {
+	return o.ApplyT(func(v *SAPVirtualInstanceIdentity) SAPVirtualInstanceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret SAPVirtualInstanceIdentity
+		return ret
+	}).(SAPVirtualInstanceIdentityOutput)
+}
+
+// The type of managed identity assigned to this resource.
+func (o SAPVirtualInstanceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SAPVirtualInstanceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identities assigned to this resource by the user.
+func (o SAPVirtualInstanceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SAPVirtualInstanceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Managed service identity (user assigned identities)
+type SAPVirtualInstanceIdentityResponse struct {
+	// The type of managed identity assigned to this resource.
+	Type string `pulumi:"type"`
+	// The identities assigned to this resource by the user.
+	UserAssignedIdentities map[string]SAPVirtualInstanceIdentityResponseUserAssignedIdentities `pulumi:"userAssignedIdentities"`
+}
+
+// Managed service identity (user assigned identities)
+type SAPVirtualInstanceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (SAPVirtualInstanceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPVirtualInstanceIdentityResponse)(nil)).Elem()
+}
+
+func (o SAPVirtualInstanceIdentityResponseOutput) ToSAPVirtualInstanceIdentityResponseOutput() SAPVirtualInstanceIdentityResponseOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityResponseOutput) ToSAPVirtualInstanceIdentityResponseOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityResponseOutput {
+	return o
+}
+
+// The type of managed identity assigned to this resource.
+func (o SAPVirtualInstanceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPVirtualInstanceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The identities assigned to this resource by the user.
+func (o SAPVirtualInstanceIdentityResponseOutput) UserAssignedIdentities() SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput {
+	return o.ApplyT(func(v SAPVirtualInstanceIdentityResponse) map[string]SAPVirtualInstanceIdentityResponseUserAssignedIdentities {
+		return v.UserAssignedIdentities
+	}).(SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput)
+}
+
+type SAPVirtualInstanceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SAPVirtualInstanceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SAPVirtualInstanceIdentityResponse)(nil)).Elem()
+}
+
+func (o SAPVirtualInstanceIdentityResponsePtrOutput) ToSAPVirtualInstanceIdentityResponsePtrOutput() SAPVirtualInstanceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityResponsePtrOutput) ToSAPVirtualInstanceIdentityResponsePtrOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityResponsePtrOutput) Elem() SAPVirtualInstanceIdentityResponseOutput {
+	return o.ApplyT(func(v *SAPVirtualInstanceIdentityResponse) SAPVirtualInstanceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SAPVirtualInstanceIdentityResponse
+		return ret
+	}).(SAPVirtualInstanceIdentityResponseOutput)
+}
+
+// The type of managed identity assigned to this resource.
+func (o SAPVirtualInstanceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SAPVirtualInstanceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identities assigned to this resource by the user.
+func (o SAPVirtualInstanceIdentityResponsePtrOutput) UserAssignedIdentities() SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput {
+	return o.ApplyT(func(v *SAPVirtualInstanceIdentityResponse) map[string]SAPVirtualInstanceIdentityResponseUserAssignedIdentities {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput)
+}
+
+type SAPVirtualInstanceIdentityResponseUserAssignedIdentities struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+type SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput struct{ *pulumi.OutputState }
+
+func (SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPVirtualInstanceIdentityResponseUserAssignedIdentities)(nil)).Elem()
+}
+
+func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput) ToSAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput() SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput) ToSAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPVirtualInstanceIdentityResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPVirtualInstanceIdentityResponseUserAssignedIdentities) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput struct{ *pulumi.OutputState }
+
+func (SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SAPVirtualInstanceIdentityResponseUserAssignedIdentities)(nil)).Elem()
+}
+
+func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput) ToSAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput() SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput) ToSAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SAPVirtualInstanceIdentityResponseUserAssignedIdentities {
+		return vs[0].(map[string]SAPVirtualInstanceIdentityResponseUserAssignedIdentities)[vs[1].(string)]
+	}).(SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput)
+}
+
 // Specify the HANA database TLS/SSL properties which will be used for enabling Azure Backup for this database. You need to specify these details if you have enabled secure communication for your HANA database.
 type SSLConfiguration struct {
 	// Specify the crypto provider being used (commoncrypto/openssl). If this argument is not provided, it is automatically determined by searching in the configuration files.
@@ -16881,7 +18170,7 @@ func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) SapApplication() SapLand
 }
 
 // Gets or sets the SID groupings by landscape and Environment.
-type SapLandscapeMonitorPropertiesResponseGrouping struct {
+type SapLandscapeMonitorPropertiesGroupingResponse struct {
 	// Gets or sets the list of landscape to SID mappings.
 	Landscape []SapLandscapeMonitorSidMappingResponse `pulumi:"landscape"`
 	// Gets or sets the list of Sap Applications to SID mappings.
@@ -16889,61 +18178,61 @@ type SapLandscapeMonitorPropertiesResponseGrouping struct {
 }
 
 // Gets or sets the SID groupings by landscape and Environment.
-type SapLandscapeMonitorPropertiesResponseGroupingOutput struct{ *pulumi.OutputState }
+type SapLandscapeMonitorPropertiesGroupingResponseOutput struct{ *pulumi.OutputState }
 
-func (SapLandscapeMonitorPropertiesResponseGroupingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SapLandscapeMonitorPropertiesResponseGrouping)(nil)).Elem()
+func (SapLandscapeMonitorPropertiesGroupingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapLandscapeMonitorPropertiesGroupingResponse)(nil)).Elem()
 }
 
-func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) ToSapLandscapeMonitorPropertiesResponseGroupingOutput() SapLandscapeMonitorPropertiesResponseGroupingOutput {
+func (o SapLandscapeMonitorPropertiesGroupingResponseOutput) ToSapLandscapeMonitorPropertiesGroupingResponseOutput() SapLandscapeMonitorPropertiesGroupingResponseOutput {
 	return o
 }
 
-func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) ToSapLandscapeMonitorPropertiesResponseGroupingOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesResponseGroupingOutput {
+func (o SapLandscapeMonitorPropertiesGroupingResponseOutput) ToSapLandscapeMonitorPropertiesGroupingResponseOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingResponseOutput {
 	return o
 }
 
 // Gets or sets the list of landscape to SID mappings.
-func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) Landscape() SapLandscapeMonitorSidMappingResponseArrayOutput {
-	return o.ApplyT(func(v SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+func (o SapLandscapeMonitorPropertiesGroupingResponseOutput) Landscape() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesGroupingResponse) []SapLandscapeMonitorSidMappingResponse {
 		return v.Landscape
 	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
 }
 
 // Gets or sets the list of Sap Applications to SID mappings.
-func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) SapApplication() SapLandscapeMonitorSidMappingResponseArrayOutput {
-	return o.ApplyT(func(v SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+func (o SapLandscapeMonitorPropertiesGroupingResponseOutput) SapApplication() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v SapLandscapeMonitorPropertiesGroupingResponse) []SapLandscapeMonitorSidMappingResponse {
 		return v.SapApplication
 	}).(SapLandscapeMonitorSidMappingResponseArrayOutput)
 }
 
-type SapLandscapeMonitorPropertiesResponseGroupingPtrOutput struct{ *pulumi.OutputState }
+type SapLandscapeMonitorPropertiesGroupingResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SapLandscapeMonitorPropertiesResponseGrouping)(nil)).Elem()
+func (SapLandscapeMonitorPropertiesGroupingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapLandscapeMonitorPropertiesGroupingResponse)(nil)).Elem()
 }
 
-func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToSapLandscapeMonitorPropertiesResponseGroupingPtrOutput() SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
+func (o SapLandscapeMonitorPropertiesGroupingResponsePtrOutput) ToSapLandscapeMonitorPropertiesGroupingResponsePtrOutput() SapLandscapeMonitorPropertiesGroupingResponsePtrOutput {
 	return o
 }
 
-func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToSapLandscapeMonitorPropertiesResponseGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
+func (o SapLandscapeMonitorPropertiesGroupingResponsePtrOutput) ToSapLandscapeMonitorPropertiesGroupingResponsePtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingResponsePtrOutput {
 	return o
 }
 
-func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) Elem() SapLandscapeMonitorPropertiesResponseGroupingOutput {
-	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) SapLandscapeMonitorPropertiesResponseGrouping {
+func (o SapLandscapeMonitorPropertiesGroupingResponsePtrOutput) Elem() SapLandscapeMonitorPropertiesGroupingResponseOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGroupingResponse) SapLandscapeMonitorPropertiesGroupingResponse {
 		if v != nil {
 			return *v
 		}
-		var ret SapLandscapeMonitorPropertiesResponseGrouping
+		var ret SapLandscapeMonitorPropertiesGroupingResponse
 		return ret
-	}).(SapLandscapeMonitorPropertiesResponseGroupingOutput)
+	}).(SapLandscapeMonitorPropertiesGroupingResponseOutput)
 }
 
 // Gets or sets the list of landscape to SID mappings.
-func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) Landscape() SapLandscapeMonitorSidMappingResponseArrayOutput {
-	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+func (o SapLandscapeMonitorPropertiesGroupingResponsePtrOutput) Landscape() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGroupingResponse) []SapLandscapeMonitorSidMappingResponse {
 		if v == nil {
 			return nil
 		}
@@ -16952,8 +18241,8 @@ func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) Landscape() SapL
 }
 
 // Gets or sets the list of Sap Applications to SID mappings.
-func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) SapApplication() SapLandscapeMonitorSidMappingResponseArrayOutput {
-	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
+func (o SapLandscapeMonitorPropertiesGroupingResponsePtrOutput) SapApplication() SapLandscapeMonitorSidMappingResponseArrayOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitorPropertiesGroupingResponse) []SapLandscapeMonitorSidMappingResponse {
 		if v == nil {
 			return nil
 		}
@@ -19649,7 +20938,7 @@ func (o SimpleSchedulePolicyV2ResponsePtrOutput) WeeklySchedule() WeeklySchedule
 	}).(WeeklyScheduleResponsePtrOutput)
 }
 
-// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type SingleServerConfiguration struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -19692,7 +20981,7 @@ type SingleServerConfigurationInput interface {
 	ToSingleServerConfigurationOutputWithContext(context.Context) SingleServerConfigurationOutput
 }
 
-// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type SingleServerConfigurationArgs struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup pulumi.StringInput `pulumi:"appResourceGroup"`
@@ -19775,7 +21064,7 @@ func (i *singleServerConfigurationPtrType) ToSingleServerConfigurationPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(SingleServerConfigurationPtrOutput)
 }
 
-// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type SingleServerConfigurationOutput struct{ *pulumi.OutputState }
 
 func (SingleServerConfigurationOutput) ElementType() reflect.Type {
@@ -19946,7 +21235,7 @@ func (o SingleServerConfigurationPtrOutput) VirtualMachineConfiguration() Virtua
 	}).(VirtualMachineConfigurationPtrOutput)
 }
 
-// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type SingleServerConfigurationResponse struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -19978,7 +21267,7 @@ func (val *SingleServerConfigurationResponse) Defaults() *SingleServerConfigurat
 	return &tmp
 }
 
-// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type SingleServerConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (SingleServerConfigurationResponseOutput) ElementType() reflect.Type {
@@ -21350,7 +22639,7 @@ func (o SshConfigurationResponsePtrOutput) PublicKeys() SshPublicKeyResponseArra
 	}).(SshPublicKeyResponseArrayOutput)
 }
 
-// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 type SshKeyPair struct {
 	// SSH private key.
 	PrivateKey *string `pulumi:"privateKey"`
@@ -21369,7 +22658,7 @@ type SshKeyPairInput interface {
 	ToSshKeyPairOutputWithContext(context.Context) SshKeyPairOutput
 }
 
-// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 type SshKeyPairArgs struct {
 	// SSH private key.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
@@ -21430,7 +22719,7 @@ func (i *sshKeyPairPtrType) ToSshKeyPairPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SshKeyPairPtrOutput)
 }
 
-// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 type SshKeyPairOutput struct{ *pulumi.OutputState }
 
 func (SshKeyPairOutput) ElementType() reflect.Type {
@@ -21509,7 +22798,7 @@ func (o SshKeyPairPtrOutput) PublicKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 type SshKeyPairResponse struct {
 	// SSH private key.
 	PrivateKey *string `pulumi:"privateKey"`
@@ -21517,7 +22806,7 @@ type SshKeyPairResponse struct {
 	PublicKey *string `pulumi:"publicKey"`
 }
 
-// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 type SshKeyPairResponseOutput struct{ *pulumi.OutputState }
 
 func (SshKeyPairResponseOutput) ElementType() reflect.Type {
@@ -21588,7 +22877,7 @@ func (o SshKeyPairResponsePtrOutput) PublicKey() pulumi.StringPtrOutput {
 
 // Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
 type SshPublicKey struct {
-	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData *string `pulumi:"keyData"`
 }
 
@@ -21605,7 +22894,7 @@ type SshPublicKeyInput interface {
 
 // Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
 type SshPublicKeyArgs struct {
-	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData pulumi.StringPtrInput `pulumi:"keyData"`
 }
 
@@ -21661,7 +22950,7 @@ func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 func (o SshPublicKeyOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKey) *string { return v.KeyData }).(pulumi.StringPtrOutput)
 }
@@ -21688,7 +22977,7 @@ func (o SshPublicKeyArrayOutput) Index(i pulumi.IntInput) SshPublicKeyOutput {
 
 // Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
 type SshPublicKeyResponse struct {
-	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData *string `pulumi:"keyData"`
 }
 
@@ -21707,7 +22996,7 @@ func (o SshPublicKeyResponseOutput) ToSshPublicKeyResponseOutputWithContext(ctx 
 	return o
 }
 
-// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 func (o SshPublicKeyResponseOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKeyResponse) *string { return v.KeyData }).(pulumi.StringPtrOutput)
 }
@@ -21934,6 +23223,7 @@ func (o StorageConfigurationResponsePtrOutput) TransportFileShareConfiguration()
 
 // Storage details of all the Storage accounts attached to the VM. For e.g. NFS on AFS Shared Storage.
 type StorageInformationResponse struct {
+	// Fully qualified resource ID for the storage account.
 	Id string `pulumi:"id"`
 }
 
@@ -21952,6 +23242,7 @@ func (o StorageInformationResponseOutput) ToStorageInformationResponseOutputWith
 	return o
 }
 
+// Fully qualified resource ID for the storage account.
 func (o StorageInformationResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageInformationResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -22259,7 +23550,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type ThreeTierConfiguration struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -22304,7 +23595,7 @@ type ThreeTierConfigurationInput interface {
 	ToThreeTierConfigurationOutputWithContext(context.Context) ThreeTierConfigurationOutput
 }
 
-// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type ThreeTierConfigurationArgs struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup pulumi.StringInput `pulumi:"appResourceGroup"`
@@ -22389,7 +23680,7 @@ func (i *threeTierConfigurationPtrType) ToThreeTierConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ThreeTierConfigurationPtrOutput)
 }
 
-// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type ThreeTierConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ThreeTierConfigurationOutput) ElementType() reflect.Type {
@@ -22575,7 +23866,7 @@ func (o ThreeTierConfigurationPtrOutput) StorageConfiguration() StorageConfigura
 	}).(StorageConfigurationPtrOutput)
 }
 
-// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type ThreeTierConfigurationResponse struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -22609,7 +23900,7 @@ func (val *ThreeTierConfigurationResponse) Defaults() *ThreeTierConfigurationRes
 	return &tmp
 }
 
-// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type ThreeTierConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (ThreeTierConfigurationResponseOutput) ElementType() reflect.Type {
@@ -23893,7 +25184,7 @@ func (o UserAssignedManagedIdentityDetailsResponsePtrOutput) UserAssignedIdentit
 	}).(UserAssignedIdentityPropertiesResponsePtrOutput)
 }
 
-// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
+// Managed service identity (user assigned identities)
 type UserAssignedServiceIdentity struct {
 	// Type of manage identity
 	Type string `pulumi:"type"`
@@ -23912,7 +25203,7 @@ type UserAssignedServiceIdentityInput interface {
 	ToUserAssignedServiceIdentityOutputWithContext(context.Context) UserAssignedServiceIdentityOutput
 }
 
-// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
+// Managed service identity (user assigned identities)
 type UserAssignedServiceIdentityArgs struct {
 	// Type of manage identity
 	Type pulumi.StringInput `pulumi:"type"`
@@ -23973,7 +25264,7 @@ func (i *userAssignedServiceIdentityPtrType) ToUserAssignedServiceIdentityPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedServiceIdentityPtrOutput)
 }
 
-// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
+// Managed service identity (user assigned identities)
 type UserAssignedServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedServiceIdentityOutput) ElementType() reflect.Type {
@@ -24052,7 +25343,7 @@ func (o UserAssignedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
+// Managed service identity (user assigned identities)
 type UserAssignedServiceIdentityResponse struct {
 	// Type of manage identity
 	Type string `pulumi:"type"`
@@ -24060,7 +25351,7 @@ type UserAssignedServiceIdentityResponse struct {
 	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
-// A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
+// Managed service identity (user assigned identities)
 type UserAssignedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedServiceIdentityResponseOutput) ElementType() reflect.Type {
@@ -27054,6 +28345,10 @@ func init() {
 	pulumi.RegisterOutputType(AlertRulePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AlertRulePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AlertRulePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(AppServicePlanConfigurationOutput{})
+	pulumi.RegisterOutputType(AppServicePlanConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AppServicePlanConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AppServicePlanConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ApplicationServerConfigurationOutput{})
 	pulumi.RegisterOutputType(ApplicationServerConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationServerConfigurationResponseOutput{})
@@ -27081,10 +28376,6 @@ func init() {
 	pulumi.RegisterOutputType(CreateAndMountFileShareConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(CreateAndMountFileShareConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(CreateAndMountFileShareConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(DB2ProviderInstancePropertiesOutput{})
-	pulumi.RegisterOutputType(DB2ProviderInstancePropertiesPtrOutput{})
-	pulumi.RegisterOutputType(DB2ProviderInstancePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(DB2ProviderInstancePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DBBackupPolicyPropertiesOutput{})
 	pulumi.RegisterOutputType(DBBackupPolicyPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DBBackupPolicyPropertiesResponseOutput{})
@@ -27115,6 +28406,10 @@ func init() {
 	pulumi.RegisterOutputType(DayArrayOutput{})
 	pulumi.RegisterOutputType(DayResponseOutput{})
 	pulumi.RegisterOutputType(DayResponseArrayOutput{})
+	pulumi.RegisterOutputType(Db2ProviderInstancePropertiesOutput{})
+	pulumi.RegisterOutputType(Db2ProviderInstancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(Db2ProviderInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(Db2ProviderInstancePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeployerVmPackagesOutput{})
 	pulumi.RegisterOutputType(DeployerVmPackagesPtrOutput{})
 	pulumi.RegisterOutputType(DeployerVmPackagesResponseOutput{})
@@ -27155,11 +28450,6 @@ func init() {
 	pulumi.RegisterOutputType(ErrorDefinitionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
-	pulumi.RegisterOutputType(ErrorResponseOutput{})
-	pulumi.RegisterOutputType(ErrorResponsePtrOutput{})
-	pulumi.RegisterOutputType(ErrorResponseArrayOutput{})
-	pulumi.RegisterOutputType(ErrorResponseInnerErrorOutput{})
-	pulumi.RegisterOutputType(ErrorResponseInnerErrorPtrOutput{})
 	pulumi.RegisterOutputType(ExcelPerformanceDataResponseOutput{})
 	pulumi.RegisterOutputType(ExistingRecoveryServicesVaultOutput{})
 	pulumi.RegisterOutputType(ExistingRecoveryServicesVaultPtrOutput{})
@@ -27183,6 +28473,7 @@ func init() {
 	pulumi.RegisterOutputType(HanaDbProviderInstancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(HanaDbProviderInstancePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(HanaDbProviderInstancePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(HealthResponseOutput{})
 	pulumi.RegisterOutputType(HighAvailabilityConfigurationOutput{})
 	pulumi.RegisterOutputType(HighAvailabilityConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(HighAvailabilityConfigurationResponseOutput{})
@@ -27228,9 +28519,16 @@ func init() {
 	pulumi.RegisterOutputType(ManagedRGConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationOutput{})
+	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(MessageServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MessageServerPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(MonitorPropertiesResponseErrorsOutput{})
 	pulumi.RegisterOutputType(MonthlyRetentionScheduleOutput{})
 	pulumi.RegisterOutputType(MonthlyRetentionSchedulePtrOutput{})
 	pulumi.RegisterOutputType(MonthlyRetentionScheduleResponseOutput{})
@@ -27260,6 +28558,10 @@ func init() {
 	pulumi.RegisterOutputType(OSProfilePtrOutput{})
 	pulumi.RegisterOutputType(OSProfileResponseOutput{})
 	pulumi.RegisterOutputType(OSProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(OracleProviderInstancePropertiesOutput{})
+	pulumi.RegisterOutputType(OracleProviderInstancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(OracleProviderInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OracleProviderInstancePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(OsSapConfigurationOutput{})
 	pulumi.RegisterOutputType(OsSapConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(OsSapConfigurationResponseOutput{})
@@ -27268,11 +28570,10 @@ func init() {
 	pulumi.RegisterOutputType(PrometheusHaClusterProviderInstancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(PrometheusHaClusterProviderInstancePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrometheusOSProviderInstancePropertiesOutput{})
-	pulumi.RegisterOutputType(PrometheusOSProviderInstancePropertiesPtrOutput{})
-	pulumi.RegisterOutputType(PrometheusOSProviderInstancePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(PrometheusOSProviderInstancePropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(ProviderInstancePropertiesResponseErrorsOutput{})
+	pulumi.RegisterOutputType(PrometheusOsProviderInstancePropertiesOutput{})
+	pulumi.RegisterOutputType(PrometheusOsProviderInstancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(PrometheusOsProviderInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PrometheusOsProviderInstancePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(RetentionDurationOutput{})
 	pulumi.RegisterOutputType(RetentionDurationPtrOutput{})
 	pulumi.RegisterOutputType(RetentionDurationResponseOutput{})
@@ -27289,6 +28590,12 @@ func init() {
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseOutput{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseArrayOutput{})
 	pulumi.RegisterOutputType(SAPVirtualInstanceErrorResponseOutput{})
+	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityOutput{})
+	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput{})
+	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput{})
 	pulumi.RegisterOutputType(SSLConfigurationOutput{})
 	pulumi.RegisterOutputType(SSLConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(SSLConfigurationResponseOutput{})
@@ -27299,8 +28606,8 @@ func init() {
 	pulumi.RegisterOutputType(SapLandscapeMonitorMetricThresholdsResponseArrayOutput{})
 	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesGroupingOutput{})
 	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesGroupingPtrOutput{})
-	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesResponseGroupingOutput{})
-	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesResponseGroupingPtrOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesGroupingResponseOutput{})
+	pulumi.RegisterOutputType(SapLandscapeMonitorPropertiesGroupingResponsePtrOutput{})
 	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingOutput{})
 	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingArrayOutput{})
 	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingResponseOutput{})

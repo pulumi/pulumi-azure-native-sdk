@@ -14,10 +14,12 @@ import (
 
 // MQ diagnostic services resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type DiagnosticService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The frequency at which the data will be exported.
 	DataExportFrequencySeconds pulumi.IntPtrOutput `pulumi:"dataExportFrequencySeconds"`
 	// Extended Location
@@ -223,6 +225,11 @@ func (o DiagnosticServiceOutput) ToDiagnosticServiceOutput() DiagnosticServiceOu
 
 func (o DiagnosticServiceOutput) ToDiagnosticServiceOutputWithContext(ctx context.Context) DiagnosticServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DiagnosticServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiagnosticService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The frequency at which the data will be exported.

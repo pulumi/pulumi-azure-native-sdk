@@ -13,12 +13,14 @@ import (
 
 // The policy definition.
 //
-// Uses Azure REST API version 2021-06-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
 //
-// Other available API versions: 2018-05-01, 2019-06-01, 2023-04-01, 2024-05-01, 2025-01-01, 2025-03-01.
+// Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PolicyDefinition struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The policy definition description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy definition.
@@ -39,6 +41,10 @@ type PolicyDefinition struct {
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policyDefinitions).
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The policy definition version in #.#.# format.
+	Version pulumi.StringPtrOutput `pulumi:"version"`
+	// A list of available versions for this policy definition.
+	Versions pulumi.StringArrayOutput `pulumi:"versions"`
 }
 
 // NewPolicyDefinition registers a new resource with the given unique name, arguments, and options.
@@ -148,6 +154,10 @@ type policyDefinitionArgs struct {
 	PolicyRule interface{} `pulumi:"policyRule"`
 	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType *string `pulumi:"policyType"`
+	// The policy definition version in #.#.# format.
+	Version *string `pulumi:"version"`
+	// A list of available versions for this policy definition.
+	Versions []string `pulumi:"versions"`
 }
 
 // The set of arguments for constructing a PolicyDefinition resource.
@@ -168,6 +178,10 @@ type PolicyDefinitionArgs struct {
 	PolicyRule pulumi.Input
 	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType pulumi.StringPtrInput
+	// The policy definition version in #.#.# format.
+	Version pulumi.StringPtrInput
+	// A list of available versions for this policy definition.
+	Versions pulumi.StringArrayInput
 }
 
 func (PolicyDefinitionArgs) ElementType() reflect.Type {
@@ -205,6 +219,11 @@ func (o PolicyDefinitionOutput) ToPolicyDefinitionOutput() PolicyDefinitionOutpu
 
 func (o PolicyDefinitionOutput) ToPolicyDefinitionOutputWithContext(ctx context.Context) PolicyDefinitionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PolicyDefinitionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyDefinition) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The policy definition description.
@@ -255,6 +274,16 @@ func (o PolicyDefinitionOutput) SystemData() SystemDataResponseOutput {
 // The type of the resource (Microsoft.Authorization/policyDefinitions).
 func (o PolicyDefinitionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyDefinition) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The policy definition version in #.#.# format.
+func (o PolicyDefinitionOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyDefinition) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// A list of available versions for this policy definition.
+func (o PolicyDefinitionOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PolicyDefinition) pulumi.StringArrayOutput { return v.Versions }).(pulumi.StringArrayOutput)
 }
 
 func init() {

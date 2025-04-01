@@ -14,10 +14,12 @@ import (
 
 // Default rollout definition.
 //
-// Uses Azure REST API version 2021-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-11-20.
+// Uses Azure REST API version 2021-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-09-01-preview.
 type DefaultRollout struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the rollout.
@@ -139,6 +141,11 @@ func (o DefaultRolloutOutput) ToDefaultRolloutOutput() DefaultRolloutOutput {
 
 func (o DefaultRolloutOutput) ToDefaultRolloutOutputWithContext(ctx context.Context) DefaultRolloutOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DefaultRolloutOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultRollout) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

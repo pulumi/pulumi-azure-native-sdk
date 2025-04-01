@@ -14,20 +14,20 @@ import (
 
 // Tag Inheritance Setting definition.
 //
-// Uses Azure REST API version 2022-10-05-preview.
+// Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-10-05-preview.
 type TagInheritanceSetting struct {
 	pulumi.CustomResourceState
 
-	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the kind of settings.
 	// Expected value is 'taginheritance'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The properties of the tag inheritance setting.
 	Properties TagInheritancePropertiesResponseOutput `pulumi:"properties"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -102,8 +102,6 @@ func (TagInheritanceSettingState) ElementType() reflect.Type {
 }
 
 type tagInheritanceSettingArgs struct {
-	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-	ETag *string `pulumi:"eTag"`
 	// Specifies the kind of settings.
 	// Expected value is 'taginheritance'.
 	Kind string `pulumi:"kind"`
@@ -117,8 +115,6 @@ type tagInheritanceSettingArgs struct {
 
 // The set of arguments for constructing a TagInheritanceSetting resource.
 type TagInheritanceSettingArgs struct {
-	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-	ETag pulumi.StringPtrInput
 	// Specifies the kind of settings.
 	// Expected value is 'taginheritance'.
 	Kind pulumi.StringInput
@@ -167,9 +163,9 @@ func (o TagInheritanceSettingOutput) ToTagInheritanceSettingOutputWithContext(ct
 	return o
 }
 
-// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-func (o TagInheritanceSettingOutput) ETag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TagInheritanceSetting) pulumi.StringPtrOutput { return v.ETag }).(pulumi.StringPtrOutput)
+// The Azure API version of the resource.
+func (o TagInheritanceSettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagInheritanceSetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the kind of settings.
@@ -178,7 +174,7 @@ func (o TagInheritanceSettingOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagInheritanceSetting) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o TagInheritanceSettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagInheritanceSetting) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -188,7 +184,7 @@ func (o TagInheritanceSettingOutput) Properties() TagInheritancePropertiesRespon
 	return o.ApplyT(func(v *TagInheritanceSetting) TagInheritancePropertiesResponseOutput { return v.Properties }).(TagInheritancePropertiesResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o TagInheritanceSettingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagInheritanceSetting) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

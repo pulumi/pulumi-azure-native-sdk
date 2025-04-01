@@ -14,18 +14,24 @@ import (
 
 // Registered Server resource.
 //
-// Uses Azure REST API version 2022-06-01. In version 1.x of the Azure Native provider, it used API version 2020-03-01.
+// Uses Azure REST API version 2022-09-01. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
 //
-// Other available API versions: 2022-09-01.
+// Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RegisteredServer struct {
 	pulumi.CustomResourceState
 
+	// Server auth type.
+	ActiveAuthType pulumi.StringOutput `pulumi:"activeAuthType"`
 	// Registered Server Agent Version
 	AgentVersion pulumi.StringPtrOutput `pulumi:"agentVersion"`
 	// Registered Server Agent Version Expiration Date
 	AgentVersionExpirationDate pulumi.StringOutput `pulumi:"agentVersionExpirationDate"`
 	// Registered Server Agent Version Status
 	AgentVersionStatus pulumi.StringOutput `pulumi:"agentVersionStatus"`
+	// Server Application Id
+	ApplicationId pulumi.StringPtrOutput `pulumi:"applicationId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Registered Server clusterId
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
 	// Registered Server clusterName
@@ -34,12 +40,16 @@ type RegisteredServer struct {
 	DiscoveryEndpointUri pulumi.StringPtrOutput `pulumi:"discoveryEndpointUri"`
 	// Friendly Name
 	FriendlyName pulumi.StringPtrOutput `pulumi:"friendlyName"`
+	// Apply server with newly discovered ApplicationId if available.
+	Identity pulumi.BoolOutput `pulumi:"identity"`
 	// Registered Server last heart beat
 	LastHeartBeat pulumi.StringPtrOutput `pulumi:"lastHeartBeat"`
 	// Resource Last Operation Name
 	LastOperationName pulumi.StringPtrOutput `pulumi:"lastOperationName"`
 	// Registered Server lastWorkflowId
 	LastWorkflowId pulumi.StringPtrOutput `pulumi:"lastWorkflowId"`
+	// Latest Server Application Id discovered from the server. It is not yet applied.
+	LatestApplicationId pulumi.StringPtrOutput `pulumi:"latestApplicationId"`
 	// Management Endpoint Uri
 	ManagementEndpointUri pulumi.StringPtrOutput `pulumi:"managementEndpointUri"`
 	// Monitoring Configuration
@@ -161,12 +171,16 @@ func (RegisteredServerState) ElementType() reflect.Type {
 type registeredServerArgs struct {
 	// Registered Server Agent Version
 	AgentVersion *string `pulumi:"agentVersion"`
+	// Server ServicePrincipal Id
+	ApplicationId *string `pulumi:"applicationId"`
 	// Registered Server clusterId
 	ClusterId *string `pulumi:"clusterId"`
 	// Registered Server clusterName
 	ClusterName *string `pulumi:"clusterName"`
 	// Friendly Name
 	FriendlyName *string `pulumi:"friendlyName"`
+	// Apply server with newly discovered ApplicationId if available.
+	Identity *bool `pulumi:"identity"`
 	// Registered Server last heart beat
 	LastHeartBeat *string `pulumi:"lastHeartBeat"`
 	// The name of the resource group. The name is case insensitive.
@@ -187,12 +201,16 @@ type registeredServerArgs struct {
 type RegisteredServerArgs struct {
 	// Registered Server Agent Version
 	AgentVersion pulumi.StringPtrInput
+	// Server ServicePrincipal Id
+	ApplicationId pulumi.StringPtrInput
 	// Registered Server clusterId
 	ClusterId pulumi.StringPtrInput
 	// Registered Server clusterName
 	ClusterName pulumi.StringPtrInput
 	// Friendly Name
 	FriendlyName pulumi.StringPtrInput
+	// Apply server with newly discovered ApplicationId if available.
+	Identity pulumi.BoolPtrInput
 	// Registered Server last heart beat
 	LastHeartBeat pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -246,6 +264,11 @@ func (o RegisteredServerOutput) ToRegisteredServerOutputWithContext(ctx context.
 	return o
 }
 
+// Server auth type.
+func (o RegisteredServerOutput) ActiveAuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegisteredServer) pulumi.StringOutput { return v.ActiveAuthType }).(pulumi.StringOutput)
+}
+
 // Registered Server Agent Version
 func (o RegisteredServerOutput) AgentVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredServer) pulumi.StringPtrOutput { return v.AgentVersion }).(pulumi.StringPtrOutput)
@@ -259,6 +282,16 @@ func (o RegisteredServerOutput) AgentVersionExpirationDate() pulumi.StringOutput
 // Registered Server Agent Version Status
 func (o RegisteredServerOutput) AgentVersionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegisteredServer) pulumi.StringOutput { return v.AgentVersionStatus }).(pulumi.StringOutput)
+}
+
+// Server Application Id
+func (o RegisteredServerOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegisteredServer) pulumi.StringPtrOutput { return v.ApplicationId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o RegisteredServerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegisteredServer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Registered Server clusterId
@@ -281,6 +314,11 @@ func (o RegisteredServerOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredServer) pulumi.StringPtrOutput { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
+// Apply server with newly discovered ApplicationId if available.
+func (o RegisteredServerOutput) Identity() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RegisteredServer) pulumi.BoolOutput { return v.Identity }).(pulumi.BoolOutput)
+}
+
 // Registered Server last heart beat
 func (o RegisteredServerOutput) LastHeartBeat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredServer) pulumi.StringPtrOutput { return v.LastHeartBeat }).(pulumi.StringPtrOutput)
@@ -294,6 +332,11 @@ func (o RegisteredServerOutput) LastOperationName() pulumi.StringPtrOutput {
 // Registered Server lastWorkflowId
 func (o RegisteredServerOutput) LastWorkflowId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredServer) pulumi.StringPtrOutput { return v.LastWorkflowId }).(pulumi.StringPtrOutput)
+}
+
+// Latest Server Application Id discovered from the server. It is not yet applied.
+func (o RegisteredServerOutput) LatestApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegisteredServer) pulumi.StringPtrOutput { return v.LatestApplicationId }).(pulumi.StringPtrOutput)
 }
 
 // Management Endpoint Uri

@@ -13,9 +13,9 @@ import (
 
 // Get configuration assignment for resource.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2023-10-01-preview.
+// Other available API versions: 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupConfigurationAssignmentsForSubscription(ctx *pulumi.Context, args *LookupConfigurationAssignmentsForSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentsForSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationAssignmentsForSubscriptionResult
@@ -33,6 +33,8 @@ type LookupConfigurationAssignmentsForSubscriptionArgs struct {
 
 // Configuration Assignment
 type LookupConfigurationAssignmentsForSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Properties of the configuration assignment
 	Filter *ConfigurationAssignmentFilterPropertiesResponse `pulumi:"filter"`
 	// Fully qualified identifier of the resource
@@ -82,6 +84,11 @@ func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) ToLookupConfi
 
 func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) ToLookupConfigurationAssignmentsForSubscriptionResultOutputWithContext(ctx context.Context) LookupConfigurationAssignmentsForSubscriptionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConfigurationAssignmentsForSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationAssignmentsForSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties of the configuration assignment

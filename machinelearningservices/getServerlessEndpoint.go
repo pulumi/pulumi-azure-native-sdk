@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServerlessEndpoint(ctx *pulumi.Context, args *LookupServerlessEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServerlessEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerlessEndpointResult
@@ -34,6 +34,8 @@ type LookupServerlessEndpointArgs struct {
 }
 
 type LookupServerlessEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
@@ -90,6 +92,11 @@ func (o LookupServerlessEndpointResultOutput) ToLookupServerlessEndpointResultOu
 
 func (o LookupServerlessEndpointResultOutput) ToLookupServerlessEndpointResultOutputWithContext(ctx context.Context) LookupServerlessEndpointResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServerlessEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerlessEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

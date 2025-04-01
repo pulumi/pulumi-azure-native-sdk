@@ -13,9 +13,9 @@ import (
 
 // Gets the properties of the specified container group in the specified subscription and resource group. The operation returns the properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-05-01-preview.
 //
-// Other available API versions: 2021-03-01, 2021-07-01, 2023-02-01-preview, 2024-05-01-preview, 2024-09-01-preview, 2024-10-01-preview, 2024-11-01-preview.
+// Other available API versions: 2023-05-01, 2024-09-01-preview, 2024-10-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupContainerGroup(ctx *pulumi.Context, args *LookupContainerGroupArgs, opts ...pulumi.InvokeOption) (*LookupContainerGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerGroupResult
@@ -29,14 +29,18 @@ func LookupContainerGroup(ctx *pulumi.Context, args *LookupContainerGroupArgs, o
 type LookupContainerGroupArgs struct {
 	// The name of the container group.
 	ContainerGroupName string `pulumi:"containerGroupName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A container group.
 type LookupContainerGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The properties for confidential container group
 	ConfidentialComputeProperties *ConfidentialComputePropertiesResponse `pulumi:"confidentialComputeProperties"`
+	// The reference container group profile properties.
+	ContainerGroupProfile *ContainerGroupProfileReferenceDefinitionResponse `pulumi:"containerGroupProfile"`
 	// The containers within the container group.
 	Containers []ContainerResponse `pulumi:"containers"`
 	// The diagnostic information for a container group.
@@ -59,12 +63,14 @@ type LookupContainerGroupResult struct {
 	InstanceView ContainerGroupPropertiesResponseInstanceView `pulumi:"instanceView"`
 	// The IP address type of the container group.
 	IpAddress *IpAddressResponse `pulumi:"ipAddress"`
+	// The flag indicating whether the container group is created by standby pool.
+	IsCreatedFromStandbyPool bool `pulumi:"isCreatedFromStandbyPool"`
 	// The resource location.
 	Location *string `pulumi:"location"`
 	// The resource name.
 	Name string `pulumi:"name"`
 	// The operating system type required by the containers in the container group.
-	OsType string `pulumi:"osType"`
+	OsType *string `pulumi:"osType"`
 	// The priority of the container group.
 	Priority *string `pulumi:"priority"`
 	// The provisioning state of the container group. This only appears in the response.
@@ -76,6 +82,8 @@ type LookupContainerGroupResult struct {
 	RestartPolicy *string `pulumi:"restartPolicy"`
 	// The SKU for a container group.
 	Sku *string `pulumi:"sku"`
+	// The reference standby pool profile properties.
+	StandbyPoolProfile *StandbyPoolProfileDefinitionResponse `pulumi:"standbyPoolProfile"`
 	// The subnet resource IDs for a container group.
 	SubnetIds []ContainerGroupSubnetIdResponse `pulumi:"subnetIds"`
 	// The resource tags.
@@ -110,7 +118,7 @@ func LookupContainerGroupOutput(ctx *pulumi.Context, args LookupContainerGroupOu
 type LookupContainerGroupOutputArgs struct {
 	// The name of the container group.
 	ContainerGroupName pulumi.StringInput `pulumi:"containerGroupName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -133,11 +141,23 @@ func (o LookupContainerGroupResultOutput) ToLookupContainerGroupResultOutputWith
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupContainerGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContainerGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The properties for confidential container group
 func (o LookupContainerGroupResultOutput) ConfidentialComputeProperties() ConfidentialComputePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupContainerGroupResult) *ConfidentialComputePropertiesResponse {
 		return v.ConfidentialComputeProperties
 	}).(ConfidentialComputePropertiesResponsePtrOutput)
+}
+
+// The reference container group profile properties.
+func (o LookupContainerGroupResultOutput) ContainerGroupProfile() ContainerGroupProfileReferenceDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v LookupContainerGroupResult) *ContainerGroupProfileReferenceDefinitionResponse {
+		return v.ContainerGroupProfile
+	}).(ContainerGroupProfileReferenceDefinitionResponsePtrOutput)
 }
 
 // The containers within the container group.
@@ -197,6 +217,11 @@ func (o LookupContainerGroupResultOutput) IpAddress() IpAddressResponsePtrOutput
 	return o.ApplyT(func(v LookupContainerGroupResult) *IpAddressResponse { return v.IpAddress }).(IpAddressResponsePtrOutput)
 }
 
+// The flag indicating whether the container group is created by standby pool.
+func (o LookupContainerGroupResultOutput) IsCreatedFromStandbyPool() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupContainerGroupResult) bool { return v.IsCreatedFromStandbyPool }).(pulumi.BoolOutput)
+}
+
 // The resource location.
 func (o LookupContainerGroupResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContainerGroupResult) *string { return v.Location }).(pulumi.StringPtrOutput)
@@ -208,8 +233,8 @@ func (o LookupContainerGroupResultOutput) Name() pulumi.StringOutput {
 }
 
 // The operating system type required by the containers in the container group.
-func (o LookupContainerGroupResultOutput) OsType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupContainerGroupResult) string { return v.OsType }).(pulumi.StringOutput)
+func (o LookupContainerGroupResultOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupContainerGroupResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
 // The priority of the container group.
@@ -233,6 +258,11 @@ func (o LookupContainerGroupResultOutput) RestartPolicy() pulumi.StringPtrOutput
 // The SKU for a container group.
 func (o LookupContainerGroupResultOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContainerGroupResult) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+// The reference standby pool profile properties.
+func (o LookupContainerGroupResultOutput) StandbyPoolProfile() StandbyPoolProfileDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v LookupContainerGroupResult) *StandbyPoolProfileDefinitionResponse { return v.StandbyPoolProfile }).(StandbyPoolProfileDefinitionResponsePtrOutput)
 }
 
 // The subnet resource IDs for a container group.

@@ -14,12 +14,14 @@ import (
 
 // A Service Fabric.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type ServiceFabric struct {
 	pulumi.CustomResourceState
 
 	// The applicable schedule for the virtual machine.
 	ApplicableSchedule ApplicableScheduleResponseOutput `pulumi:"applicableSchedule"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource id of the environment under which the service fabric resource is present
 	EnvironmentId pulumi.StringPtrOutput `pulumi:"environmentId"`
 	// The backing service fabric resource's id
@@ -171,6 +173,11 @@ func (o ServiceFabricOutput) ToServiceFabricOutputWithContext(ctx context.Contex
 // The applicable schedule for the virtual machine.
 func (o ServiceFabricOutput) ApplicableSchedule() ApplicableScheduleResponseOutput {
 	return o.ApplyT(func(v *ServiceFabric) ApplicableScheduleResponseOutput { return v.ApplicableSchedule }).(ApplicableScheduleResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o ServiceFabricOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceFabric) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id of the environment under which the service fabric resource is present

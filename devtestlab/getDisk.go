@@ -39,6 +39,8 @@ type LookupDiskArgs struct {
 
 // A Disk.
 type LookupDiskResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the disk.
 	CreatedDate string `pulumi:"createdDate"`
 	// When backed by a blob, the name of the VHD blob without extension.
@@ -112,6 +114,11 @@ func (o LookupDiskResultOutput) ToLookupDiskResultOutput() LookupDiskResultOutpu
 
 func (o LookupDiskResultOutput) ToLookupDiskResultOutputWithContext(ctx context.Context) LookupDiskResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDiskResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the disk.

@@ -37,6 +37,8 @@ type LookupBlobContainerDataSetArgs struct {
 
 // An Azure storage blob container data set.
 type LookupBlobContainerDataSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// BLOB Container name.
 	ContainerName string `pulumi:"containerName"`
 	// Unique id for identifying a data set resource
@@ -97,6 +99,11 @@ func (o LookupBlobContainerDataSetResultOutput) ToLookupBlobContainerDataSetResu
 
 func (o LookupBlobContainerDataSetResultOutput) ToLookupBlobContainerDataSetResultOutputWithContext(ctx context.Context) LookupBlobContainerDataSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBlobContainerDataSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBlobContainerDataSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // BLOB Container name.

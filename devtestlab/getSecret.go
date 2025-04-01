@@ -39,6 +39,8 @@ type LookupSecretArgs struct {
 
 // A secret.
 type LookupSecretResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The identifier of the resource.
 	Id string `pulumi:"id"`
 	// The location of the resource.
@@ -96,6 +98,11 @@ func (o LookupSecretResultOutput) ToLookupSecretResultOutput() LookupSecretResul
 
 func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx context.Context) LookupSecretResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSecretResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identifier of the resource.

@@ -14,10 +14,12 @@ import (
 
 // Information about the Maintenance Configuration resource.
 //
-// Uses Azure REST API version 2024-10-02-preview.
+// Uses Azure REST API version 2024-10-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-02-preview.
 type MaintenanceConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of maintenance schedules for a managed environment.
@@ -140,6 +142,11 @@ func (o MaintenanceConfigurationOutput) ToMaintenanceConfigurationOutput() Maint
 
 func (o MaintenanceConfigurationOutput) ToMaintenanceConfigurationOutputWithContext(ctx context.Context) MaintenanceConfigurationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MaintenanceConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

@@ -14,20 +14,24 @@ import (
 
 // Diagnostic details.
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
 //
-// Other available API versions: 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2023-09-01-preview, 2024-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WorkspaceDiagnostic struct {
 	pulumi.CustomResourceState
 
 	// Specifies for what type of messages sampling settings should not apply.
 	AlwaysLog pulumi.StringPtrOutput `pulumi:"alwaysLog"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Diagnostic settings for incoming/outgoing HTTP messages to the Backend
 	Backend PipelineDiagnosticSettingsResponsePtrOutput `pulumi:"backend"`
 	// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
 	Frontend PipelineDiagnosticSettingsResponsePtrOutput `pulumi:"frontend"`
 	// Sets correlation protocol to use for Application Insights diagnostics.
 	HttpCorrelationProtocol pulumi.StringPtrOutput `pulumi:"httpCorrelationProtocol"`
+	// Large Language Models diagnostic settings
+	LargeLanguageModel LLMDiagnosticSettingsResponsePtrOutput `pulumi:"largeLanguageModel"`
 	// Log the ClientIP. Default is false.
 	LogClientIp pulumi.BoolPtrOutput `pulumi:"logClientIp"`
 	// Resource Id of a target logger.
@@ -120,6 +124,8 @@ type workspaceDiagnosticArgs struct {
 	Frontend *PipelineDiagnosticSettings `pulumi:"frontend"`
 	// Sets correlation protocol to use for Application Insights diagnostics.
 	HttpCorrelationProtocol *string `pulumi:"httpCorrelationProtocol"`
+	// Large Language Models diagnostic settings
+	LargeLanguageModel *LLMDiagnosticSettings `pulumi:"largeLanguageModel"`
 	// Log the ClientIP. Default is false.
 	LogClientIp *bool `pulumi:"logClientIp"`
 	// Resource Id of a target logger.
@@ -152,6 +158,8 @@ type WorkspaceDiagnosticArgs struct {
 	Frontend PipelineDiagnosticSettingsPtrInput
 	// Sets correlation protocol to use for Application Insights diagnostics.
 	HttpCorrelationProtocol pulumi.StringPtrInput
+	// Large Language Models diagnostic settings
+	LargeLanguageModel LLMDiagnosticSettingsPtrInput
 	// Log the ClientIP. Default is false.
 	LogClientIp pulumi.BoolPtrInput
 	// Resource Id of a target logger.
@@ -214,6 +222,11 @@ func (o WorkspaceDiagnosticOutput) AlwaysLog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceDiagnostic) pulumi.StringPtrOutput { return v.AlwaysLog }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o WorkspaceDiagnosticOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceDiagnostic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Diagnostic settings for incoming/outgoing HTTP messages to the Backend
 func (o WorkspaceDiagnosticOutput) Backend() PipelineDiagnosticSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceDiagnostic) PipelineDiagnosticSettingsResponsePtrOutput { return v.Backend }).(PipelineDiagnosticSettingsResponsePtrOutput)
@@ -227,6 +240,11 @@ func (o WorkspaceDiagnosticOutput) Frontend() PipelineDiagnosticSettingsResponse
 // Sets correlation protocol to use for Application Insights diagnostics.
 func (o WorkspaceDiagnosticOutput) HttpCorrelationProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceDiagnostic) pulumi.StringPtrOutput { return v.HttpCorrelationProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Large Language Models diagnostic settings
+func (o WorkspaceDiagnosticOutput) LargeLanguageModel() LLMDiagnosticSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *WorkspaceDiagnostic) LLMDiagnosticSettingsResponsePtrOutput { return v.LargeLanguageModel }).(LLMDiagnosticSettingsResponsePtrOutput)
 }
 
 // Log the ClientIP. Default is false.

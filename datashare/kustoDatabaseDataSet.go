@@ -14,10 +14,12 @@ import (
 
 // A kusto database data set.
 //
-// Uses Azure REST API version 2021-08-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2021-08-01. In version 2.x of the Azure Native provider, it used API version 2021-08-01.
 type KustoDatabaseDataSet struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Unique id for identifying a data set resource
 	DataSetId pulumi.StringOutput `pulumi:"dataSetId"`
 	// Kind of data set.
@@ -71,10 +73,94 @@ func NewKustoDatabaseDataSet(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:datashare/v20200901:KustoDatabaseDataSet"),
 		},
 		{
+			Type: pulumi.String("azure-native:datashare/v20201001preview:ADLSGen2StorageAccountDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20201001preview:BlobStorageAccountDataSet"),
+		},
+		{
 			Type: pulumi.String("azure-native:datashare/v20201001preview:KustoDatabaseDataSet"),
 		},
 		{
+			Type: pulumi.String("azure-native:datashare/v20210801:ADLSGen1FileDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:ADLSGen1FolderDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:ADLSGen2FileDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:ADLSGen2FileSystemDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:ADLSGen2FolderDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:BlobContainerDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:BlobDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:BlobFolderDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:KustoClusterDataSet"),
+		},
+		{
 			Type: pulumi.String("azure-native:datashare/v20210801:KustoDatabaseDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:KustoTableDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:SqlDBTableDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:SqlDWTableDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:SynapseWorkspaceSqlPoolTableDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ADLSGen1FileDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ADLSGen1FolderDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ADLSGen2FileDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ADLSGen2FileSystemDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ADLSGen2FolderDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:BlobContainerDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:BlobDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:BlobFolderDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:KustoClusterDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:KustoTableDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:SqlDBTableDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:SqlDWTableDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:SynapseWorkspaceSqlPoolTableDataSet"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -178,6 +264,11 @@ func (o KustoDatabaseDataSetOutput) ToKustoDatabaseDataSetOutput() KustoDatabase
 
 func (o KustoDatabaseDataSetOutput) ToKustoDatabaseDataSetOutputWithContext(ctx context.Context) KustoDatabaseDataSetOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o KustoDatabaseDataSetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KustoDatabaseDataSet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Unique id for identifying a data set resource

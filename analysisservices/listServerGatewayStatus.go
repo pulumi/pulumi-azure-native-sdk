@@ -14,8 +14,6 @@ import (
 // Return the gateway status of the specified Analysis Services server instance.
 //
 // Uses Azure REST API version 2017-08-01.
-//
-// Other available API versions: 2017-08-01-beta.
 func ListServerGatewayStatus(ctx *pulumi.Context, args *ListServerGatewayStatusArgs, opts ...pulumi.InvokeOption) (*ListServerGatewayStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListServerGatewayStatusResult

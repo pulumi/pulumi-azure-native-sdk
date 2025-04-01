@@ -1539,6 +1539,61 @@ func (o L2ConnectionsPropertiesGroundStationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v L2ConnectionsPropertiesGroundStation) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the partner router to establish a connection to within the ground station.
+type L2ConnectionsPropertiesGroundStationPartnerRouter struct {
+	// The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
+	Name string `pulumi:"name"`
+}
+
+// L2ConnectionsPropertiesGroundStationPartnerRouterInput is an input type that accepts L2ConnectionsPropertiesGroundStationPartnerRouterArgs and L2ConnectionsPropertiesGroundStationPartnerRouterOutput values.
+// You can construct a concrete instance of `L2ConnectionsPropertiesGroundStationPartnerRouterInput` via:
+//
+//	L2ConnectionsPropertiesGroundStationPartnerRouterArgs{...}
+type L2ConnectionsPropertiesGroundStationPartnerRouterInput interface {
+	pulumi.Input
+
+	ToL2ConnectionsPropertiesGroundStationPartnerRouterOutput() L2ConnectionsPropertiesGroundStationPartnerRouterOutput
+	ToL2ConnectionsPropertiesGroundStationPartnerRouterOutputWithContext(context.Context) L2ConnectionsPropertiesGroundStationPartnerRouterOutput
+}
+
+// The name of the partner router to establish a connection to within the ground station.
+type L2ConnectionsPropertiesGroundStationPartnerRouterArgs struct {
+	// The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (L2ConnectionsPropertiesGroundStationPartnerRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*L2ConnectionsPropertiesGroundStationPartnerRouter)(nil)).Elem()
+}
+
+func (i L2ConnectionsPropertiesGroundStationPartnerRouterArgs) ToL2ConnectionsPropertiesGroundStationPartnerRouterOutput() L2ConnectionsPropertiesGroundStationPartnerRouterOutput {
+	return i.ToL2ConnectionsPropertiesGroundStationPartnerRouterOutputWithContext(context.Background())
+}
+
+func (i L2ConnectionsPropertiesGroundStationPartnerRouterArgs) ToL2ConnectionsPropertiesGroundStationPartnerRouterOutputWithContext(ctx context.Context) L2ConnectionsPropertiesGroundStationPartnerRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L2ConnectionsPropertiesGroundStationPartnerRouterOutput)
+}
+
+// The name of the partner router to establish a connection to within the ground station.
+type L2ConnectionsPropertiesGroundStationPartnerRouterOutput struct{ *pulumi.OutputState }
+
+func (L2ConnectionsPropertiesGroundStationPartnerRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L2ConnectionsPropertiesGroundStationPartnerRouter)(nil)).Elem()
+}
+
+func (o L2ConnectionsPropertiesGroundStationPartnerRouterOutput) ToL2ConnectionsPropertiesGroundStationPartnerRouterOutput() L2ConnectionsPropertiesGroundStationPartnerRouterOutput {
+	return o
+}
+
+func (o L2ConnectionsPropertiesGroundStationPartnerRouterOutput) ToL2ConnectionsPropertiesGroundStationPartnerRouterOutputWithContext(ctx context.Context) L2ConnectionsPropertiesGroundStationPartnerRouterOutput {
+	return o
+}
+
+// The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
+func (o L2ConnectionsPropertiesGroundStationPartnerRouterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v L2ConnectionsPropertiesGroundStationPartnerRouter) string { return v.Name }).(pulumi.StringOutput)
+}
+
 // A reference to an Microsoft.Orbital/edgeSites resource to route traffic for.
 type L2ConnectionsPropertiesResponseEdgeSite struct {
 	// Resource ID.
@@ -1589,6 +1644,32 @@ func (o L2ConnectionsPropertiesResponseGroundStationOutput) ToL2ConnectionsPrope
 // Resource ID.
 func (o L2ConnectionsPropertiesResponseGroundStationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v L2ConnectionsPropertiesResponseGroundStation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the partner router to establish a connection to within the ground station.
+type L2ConnectionsPropertiesResponseGroundStationPartnerRouter struct {
+	// The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
+	Name string `pulumi:"name"`
+}
+
+// The name of the partner router to establish a connection to within the ground station.
+type L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput struct{ *pulumi.OutputState }
+
+func (L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L2ConnectionsPropertiesResponseGroundStationPartnerRouter)(nil)).Elem()
+}
+
+func (o L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput) ToL2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput() L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput {
+	return o
+}
+
+func (o L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput) ToL2ConnectionsPropertiesResponseGroundStationPartnerRouterOutputWithContext(ctx context.Context) L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput {
+	return o
+}
+
+// The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
+func (o L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v L2ConnectionsPropertiesResponseGroundStationPartnerRouter) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type ResourceIdListResultResponseValue struct {
@@ -1946,8 +2027,10 @@ func init() {
 	pulumi.RegisterOutputType(GroundStationsPropertiesResponseGlobalCommunicationsSiteOutput{})
 	pulumi.RegisterOutputType(L2ConnectionsPropertiesEdgeSiteOutput{})
 	pulumi.RegisterOutputType(L2ConnectionsPropertiesGroundStationOutput{})
+	pulumi.RegisterOutputType(L2ConnectionsPropertiesGroundStationPartnerRouterOutput{})
 	pulumi.RegisterOutputType(L2ConnectionsPropertiesResponseEdgeSiteOutput{})
 	pulumi.RegisterOutputType(L2ConnectionsPropertiesResponseGroundStationOutput{})
+	pulumi.RegisterOutputType(L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput{})
 	pulumi.RegisterOutputType(ResourceIdListResultResponseValueOutput{})
 	pulumi.RegisterOutputType(ResourceIdListResultResponseValueArrayOutput{})
 	pulumi.RegisterOutputType(SpacecraftLinkOutput{})

@@ -14,12 +14,14 @@ import (
 
 // A host resource belonging to a site resource.
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type HypervHostController struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the timestamp marking Hyper-V host creation.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// Gets the errors.
@@ -165,6 +167,11 @@ func (o HypervHostControllerOutput) ToHypervHostControllerOutput() HypervHostCon
 
 func (o HypervHostControllerOutput) ToHypervHostControllerOutputWithContext(ctx context.Context) HypervHostControllerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HypervHostControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HypervHostController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the timestamp marking Hyper-V host creation.

@@ -35,6 +35,8 @@ type LookupEventHubEventSourceArgs struct {
 
 // An event source that receives its data from an Azure EventHub.
 type LookupEventHubEventSourceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name of the event hub's consumer group that holds the partitions from which events will be read.
 	ConsumerGroupName string `pulumi:"consumerGroupName"`
 	// The time the resource was created.
@@ -105,6 +107,11 @@ func (o LookupEventHubEventSourceResultOutput) ToLookupEventHubEventSourceResult
 
 func (o LookupEventHubEventSourceResultOutput) ToLookupEventHubEventSourceResultOutputWithContext(ctx context.Context) LookupEventHubEventSourceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEventHubEventSourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubEventSourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the event hub's consumer group that holds the partitions from which events will be read.

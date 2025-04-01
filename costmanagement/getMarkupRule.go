@@ -35,6 +35,8 @@ type LookupMarkupRuleArgs struct {
 
 // Markup rule
 type LookupMarkupRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Customer information for the markup rule.
 	CustomerDetails CustomerMetadataResponse `pulumi:"customerDetails"`
 	// The description of the markup rule.
@@ -90,6 +92,11 @@ func (o LookupMarkupRuleResultOutput) ToLookupMarkupRuleResultOutput() LookupMar
 
 func (o LookupMarkupRuleResultOutput) ToLookupMarkupRuleResultOutputWithContext(ctx context.Context) LookupMarkupRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMarkupRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMarkupRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Customer information for the markup rule.

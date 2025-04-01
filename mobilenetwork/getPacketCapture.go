@@ -13,9 +13,9 @@ import (
 
 // Gets information about the specified packet capture session.
 //
-// Uses Azure REST API version 2023-06-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
+// Other available API versions: 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPacketCapture(ctx *pulumi.Context, args *LookupPacketCaptureArgs, opts ...pulumi.InvokeOption) (*LookupPacketCaptureResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPacketCaptureResult
@@ -37,6 +37,8 @@ type LookupPacketCaptureArgs struct {
 
 // Packet capture session resource.
 type LookupPacketCaptureResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Number of bytes captured per packet, the remaining bytes are truncated. The default "0" means the entire packet is captured.
 	BytesToCapturePerPacket *float64 `pulumi:"bytesToCapturePerPacket"`
 	// The start time of the packet capture session.
@@ -47,6 +49,8 @@ type LookupPacketCaptureResult struct {
 	Name string `pulumi:"name"`
 	// List of network interfaces to capture on.
 	NetworkInterfaces []string `pulumi:"networkInterfaces"`
+	// The list of output files of a packet capture session.
+	OutputFiles []string `pulumi:"outputFiles"`
 	// The provisioning state of the packet capture session resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The reason the current packet capture session state.
@@ -120,6 +124,11 @@ func (o LookupPacketCaptureResultOutput) ToLookupPacketCaptureResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupPacketCaptureResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPacketCaptureResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Number of bytes captured per packet, the remaining bytes are truncated. The default "0" means the entire packet is captured.
 func (o LookupPacketCaptureResultOutput) BytesToCapturePerPacket() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupPacketCaptureResult) *float64 { return v.BytesToCapturePerPacket }).(pulumi.Float64PtrOutput)
@@ -143,6 +152,11 @@ func (o LookupPacketCaptureResultOutput) Name() pulumi.StringOutput {
 // List of network interfaces to capture on.
 func (o LookupPacketCaptureResultOutput) NetworkInterfaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPacketCaptureResult) []string { return v.NetworkInterfaces }).(pulumi.StringArrayOutput)
+}
+
+// The list of output files of a packet capture session.
+func (o LookupPacketCaptureResultOutput) OutputFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPacketCaptureResult) []string { return v.OutputFiles }).(pulumi.StringArrayOutput)
 }
 
 // The provisioning state of the packet capture session resource.

@@ -13,9 +13,9 @@ import (
 
 // Description for Gets a private endpoint connection
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppPrivateEndpointConnectionSlot(ctx *pulumi.Context, args *LookupWebAppPrivateEndpointConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPrivateEndpointConnectionSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppPrivateEndpointConnectionSlotResult
@@ -39,6 +39,8 @@ type LookupWebAppPrivateEndpointConnectionSlotArgs struct {
 
 // Remote Private Endpoint Connection ARM resource.
 type LookupWebAppPrivateEndpointConnectionSlotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id.
 	Id string `pulumi:"id"`
 	// Private IPAddresses mapped to the remote private endpoint
@@ -93,6 +95,11 @@ func (o LookupWebAppPrivateEndpointConnectionSlotResultOutput) ToLookupWebAppPri
 
 func (o LookupWebAppPrivateEndpointConnectionSlotResultOutput) ToLookupWebAppPrivateEndpointConnectionSlotResultOutputWithContext(ctx context.Context) LookupWebAppPrivateEndpointConnectionSlotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppPrivateEndpointConnectionSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppPrivateEndpointConnectionSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id.

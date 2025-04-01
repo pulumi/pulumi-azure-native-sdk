@@ -14,10 +14,12 @@ import (
 
 // Resource which represents the managed network connection between Azure Gateways and remote cloud gateways.
 //
-// Uses Azure REST API version 2023-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-01-01-preview.
+// Uses Azure REST API version 2023-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
 type CloudConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The cloud connector which discovered the remote resource.
 	CloudConnector ResourceReferenceResponsePtrOutput `pulumi:"cloudConnector"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -164,6 +166,11 @@ func (o CloudConnectionOutput) ToCloudConnectionOutput() CloudConnectionOutput {
 
 func (o CloudConnectionOutput) ToCloudConnectionOutputWithContext(ctx context.Context) CloudConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CloudConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cloud connector which discovered the remote resource.

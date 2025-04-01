@@ -710,6 +710,172 @@ const (
 	AzureOperatorNexusArtifactTypeArmTemplate = AzureOperatorNexusArtifactType("ArmTemplate")
 )
 
+// The artifact store backing resource network access type
+type BackingResourcePublicNetworkAccess string
+
+const (
+	BackingResourcePublicNetworkAccessEnabled  = BackingResourcePublicNetworkAccess("Enabled")
+	BackingResourcePublicNetworkAccessDisabled = BackingResourcePublicNetworkAccess("Disabled")
+)
+
+func (BackingResourcePublicNetworkAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackingResourcePublicNetworkAccess)(nil)).Elem()
+}
+
+func (e BackingResourcePublicNetworkAccess) ToBackingResourcePublicNetworkAccessOutput() BackingResourcePublicNetworkAccessOutput {
+	return pulumi.ToOutput(e).(BackingResourcePublicNetworkAccessOutput)
+}
+
+func (e BackingResourcePublicNetworkAccess) ToBackingResourcePublicNetworkAccessOutputWithContext(ctx context.Context) BackingResourcePublicNetworkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackingResourcePublicNetworkAccessOutput)
+}
+
+func (e BackingResourcePublicNetworkAccess) ToBackingResourcePublicNetworkAccessPtrOutput() BackingResourcePublicNetworkAccessPtrOutput {
+	return e.ToBackingResourcePublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (e BackingResourcePublicNetworkAccess) ToBackingResourcePublicNetworkAccessPtrOutputWithContext(ctx context.Context) BackingResourcePublicNetworkAccessPtrOutput {
+	return BackingResourcePublicNetworkAccess(e).ToBackingResourcePublicNetworkAccessOutputWithContext(ctx).ToBackingResourcePublicNetworkAccessPtrOutputWithContext(ctx)
+}
+
+func (e BackingResourcePublicNetworkAccess) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackingResourcePublicNetworkAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackingResourcePublicNetworkAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackingResourcePublicNetworkAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackingResourcePublicNetworkAccessOutput struct{ *pulumi.OutputState }
+
+func (BackingResourcePublicNetworkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackingResourcePublicNetworkAccess)(nil)).Elem()
+}
+
+func (o BackingResourcePublicNetworkAccessOutput) ToBackingResourcePublicNetworkAccessOutput() BackingResourcePublicNetworkAccessOutput {
+	return o
+}
+
+func (o BackingResourcePublicNetworkAccessOutput) ToBackingResourcePublicNetworkAccessOutputWithContext(ctx context.Context) BackingResourcePublicNetworkAccessOutput {
+	return o
+}
+
+func (o BackingResourcePublicNetworkAccessOutput) ToBackingResourcePublicNetworkAccessPtrOutput() BackingResourcePublicNetworkAccessPtrOutput {
+	return o.ToBackingResourcePublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o BackingResourcePublicNetworkAccessOutput) ToBackingResourcePublicNetworkAccessPtrOutputWithContext(ctx context.Context) BackingResourcePublicNetworkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackingResourcePublicNetworkAccess) *BackingResourcePublicNetworkAccess {
+		return &v
+	}).(BackingResourcePublicNetworkAccessPtrOutput)
+}
+
+func (o BackingResourcePublicNetworkAccessOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackingResourcePublicNetworkAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackingResourcePublicNetworkAccess) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackingResourcePublicNetworkAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackingResourcePublicNetworkAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackingResourcePublicNetworkAccess) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackingResourcePublicNetworkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (BackingResourcePublicNetworkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackingResourcePublicNetworkAccess)(nil)).Elem()
+}
+
+func (o BackingResourcePublicNetworkAccessPtrOutput) ToBackingResourcePublicNetworkAccessPtrOutput() BackingResourcePublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o BackingResourcePublicNetworkAccessPtrOutput) ToBackingResourcePublicNetworkAccessPtrOutputWithContext(ctx context.Context) BackingResourcePublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o BackingResourcePublicNetworkAccessPtrOutput) Elem() BackingResourcePublicNetworkAccessOutput {
+	return o.ApplyT(func(v *BackingResourcePublicNetworkAccess) BackingResourcePublicNetworkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret BackingResourcePublicNetworkAccess
+		return ret
+	}).(BackingResourcePublicNetworkAccessOutput)
+}
+
+func (o BackingResourcePublicNetworkAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackingResourcePublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackingResourcePublicNetworkAccess) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackingResourcePublicNetworkAccessInput is an input type that accepts values of the BackingResourcePublicNetworkAccess enum
+// A concrete instance of `BackingResourcePublicNetworkAccessInput` can be one of the following:
+//
+//	BackingResourcePublicNetworkAccessEnabled
+//	BackingResourcePublicNetworkAccessDisabled
+type BackingResourcePublicNetworkAccessInput interface {
+	pulumi.Input
+
+	ToBackingResourcePublicNetworkAccessOutput() BackingResourcePublicNetworkAccessOutput
+	ToBackingResourcePublicNetworkAccessOutputWithContext(context.Context) BackingResourcePublicNetworkAccessOutput
+}
+
+var backingResourcePublicNetworkAccessPtrType = reflect.TypeOf((**BackingResourcePublicNetworkAccess)(nil)).Elem()
+
+type BackingResourcePublicNetworkAccessPtrInput interface {
+	pulumi.Input
+
+	ToBackingResourcePublicNetworkAccessPtrOutput() BackingResourcePublicNetworkAccessPtrOutput
+	ToBackingResourcePublicNetworkAccessPtrOutputWithContext(context.Context) BackingResourcePublicNetworkAccessPtrOutput
+}
+
+type backingResourcePublicNetworkAccessPtr string
+
+func BackingResourcePublicNetworkAccessPtr(v string) BackingResourcePublicNetworkAccessPtrInput {
+	return (*backingResourcePublicNetworkAccessPtr)(&v)
+}
+
+func (*backingResourcePublicNetworkAccessPtr) ElementType() reflect.Type {
+	return backingResourcePublicNetworkAccessPtrType
+}
+
+func (in *backingResourcePublicNetworkAccessPtr) ToBackingResourcePublicNetworkAccessPtrOutput() BackingResourcePublicNetworkAccessPtrOutput {
+	return pulumi.ToOutput(in).(BackingResourcePublicNetworkAccessPtrOutput)
+}
+
+func (in *backingResourcePublicNetworkAccessPtr) ToBackingResourcePublicNetworkAccessPtrOutputWithContext(ctx context.Context) BackingResourcePublicNetworkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackingResourcePublicNetworkAccessPtrOutput)
+}
+
 // The value which indicates if configuration values are secrets
 type ConfigurationGroupValueConfigurationType string
 
@@ -1580,6 +1746,175 @@ const (
 	NFVITypeAzureArcKubernetes = NFVIType("AzureArcKubernetes")
 	NFVITypeAzureCore          = NFVIType("AzureCore")
 	NFVITypeAzureOperatorNexus = NFVIType("AzureOperatorNexus")
+)
+
+func (NFVIType) ElementType() reflect.Type {
+	return reflect.TypeOf((*NFVIType)(nil)).Elem()
+}
+
+func (e NFVIType) ToNFVITypeOutput() NFVITypeOutput {
+	return pulumi.ToOutput(e).(NFVITypeOutput)
+}
+
+func (e NFVIType) ToNFVITypeOutputWithContext(ctx context.Context) NFVITypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NFVITypeOutput)
+}
+
+func (e NFVIType) ToNFVITypePtrOutput() NFVITypePtrOutput {
+	return e.ToNFVITypePtrOutputWithContext(context.Background())
+}
+
+func (e NFVIType) ToNFVITypePtrOutputWithContext(ctx context.Context) NFVITypePtrOutput {
+	return NFVIType(e).ToNFVITypeOutputWithContext(ctx).ToNFVITypePtrOutputWithContext(ctx)
+}
+
+func (e NFVIType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NFVIType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NFVIType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NFVIType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NFVITypeOutput struct{ *pulumi.OutputState }
+
+func (NFVITypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NFVIType)(nil)).Elem()
+}
+
+func (o NFVITypeOutput) ToNFVITypeOutput() NFVITypeOutput {
+	return o
+}
+
+func (o NFVITypeOutput) ToNFVITypeOutputWithContext(ctx context.Context) NFVITypeOutput {
+	return o
+}
+
+func (o NFVITypeOutput) ToNFVITypePtrOutput() NFVITypePtrOutput {
+	return o.ToNFVITypePtrOutputWithContext(context.Background())
+}
+
+func (o NFVITypeOutput) ToNFVITypePtrOutputWithContext(ctx context.Context) NFVITypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NFVIType) *NFVIType {
+		return &v
+	}).(NFVITypePtrOutput)
+}
+
+func (o NFVITypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NFVITypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NFVIType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NFVITypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NFVITypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NFVIType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NFVITypePtrOutput struct{ *pulumi.OutputState }
+
+func (NFVITypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NFVIType)(nil)).Elem()
+}
+
+func (o NFVITypePtrOutput) ToNFVITypePtrOutput() NFVITypePtrOutput {
+	return o
+}
+
+func (o NFVITypePtrOutput) ToNFVITypePtrOutputWithContext(ctx context.Context) NFVITypePtrOutput {
+	return o
+}
+
+func (o NFVITypePtrOutput) Elem() NFVITypeOutput {
+	return o.ApplyT(func(v *NFVIType) NFVIType {
+		if v != nil {
+			return *v
+		}
+		var ret NFVIType
+		return ret
+	}).(NFVITypeOutput)
+}
+
+func (o NFVITypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NFVITypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NFVIType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NFVITypeInput is an input type that accepts values of the NFVIType enum
+// A concrete instance of `NFVITypeInput` can be one of the following:
+//
+//	NFVITypeUnknown
+//	NFVITypeAzureArcKubernetes
+//	NFVITypeAzureCore
+//	NFVITypeAzureOperatorNexus
+type NFVITypeInput interface {
+	pulumi.Input
+
+	ToNFVITypeOutput() NFVITypeOutput
+	ToNFVITypeOutputWithContext(context.Context) NFVITypeOutput
+}
+
+var nfvitypePtrType = reflect.TypeOf((**NFVIType)(nil)).Elem()
+
+type NFVITypePtrInput interface {
+	pulumi.Input
+
+	ToNFVITypePtrOutput() NFVITypePtrOutput
+	ToNFVITypePtrOutputWithContext(context.Context) NFVITypePtrOutput
+}
+
+type nfvitypePtr string
+
+func NFVITypePtr(v string) NFVITypePtrInput {
+	return (*nfvitypePtr)(&v)
+}
+
+func (*nfvitypePtr) ElementType() reflect.Type {
+	return nfvitypePtrType
+}
+
+func (in *nfvitypePtr) ToNFVITypePtrOutput() NFVITypePtrOutput {
+	return pulumi.ToOutput(in).(NFVITypePtrOutput)
+}
+
+func (in *nfvitypePtr) ToNFVITypePtrOutputWithContext(ctx context.Context) NFVITypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NFVITypePtrOutput)
+}
+
+// The value which indicates if NF  values are secrets
+type NetworkFunctionConfigurationType string
+
+const (
+	NetworkFunctionConfigurationTypeUnknown = NetworkFunctionConfigurationType("Unknown")
+	NetworkFunctionConfigurationTypeSecret  = NetworkFunctionConfigurationType("Secret")
+	NetworkFunctionConfigurationTypeOpen    = NetworkFunctionConfigurationType("Open")
 )
 
 // Role type.
@@ -3333,6 +3668,8 @@ func init() {
 	pulumi.RegisterOutputType(ArtifactStoreTypePtrOutput{})
 	pulumi.RegisterOutputType(ArtifactTypeOutput{})
 	pulumi.RegisterOutputType(ArtifactTypePtrOutput{})
+	pulumi.RegisterOutputType(BackingResourcePublicNetworkAccessOutput{})
+	pulumi.RegisterOutputType(BackingResourcePublicNetworkAccessPtrOutput{})
 	pulumi.RegisterOutputType(DeviceTypeOutput{})
 	pulumi.RegisterOutputType(DeviceTypePtrOutput{})
 	pulumi.RegisterOutputType(DiskCreateOptionTypesOutput{})
@@ -3343,6 +3680,8 @@ func init() {
 	pulumi.RegisterOutputType(IPVersionPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(NFVITypeOutput{})
+	pulumi.RegisterOutputType(NFVITypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkFunctionRoleConfigurationTypeOutput{})
 	pulumi.RegisterOutputType(NetworkFunctionRoleConfigurationTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkFunctionTypeOutput{})

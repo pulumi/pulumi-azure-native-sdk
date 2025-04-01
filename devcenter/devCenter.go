@@ -14,20 +14,28 @@ import (
 
 // Represents a devcenter resource.
 //
-// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DevCenter struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The URI of the Dev Center.
 	DevCenterUri pulumi.StringOutput `pulumi:"devCenterUri"`
+	// The display name of the devcenter.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
+	Encryption EncryptionResponsePtrOutput `pulumi:"encryption"`
 	// Managed identity properties
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Dev Center settings to be used when associating a project with a catalog.
+	ProjectCatalogSettings DevCenterProjectCatalogSettingsResponsePtrOutput `pulumi:"projectCatalogSettings"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -131,10 +139,16 @@ func (DevCenterState) ElementType() reflect.Type {
 type devCenterArgs struct {
 	// The name of the devcenter.
 	DevCenterName *string `pulumi:"devCenterName"`
+	// The display name of the devcenter.
+	DisplayName *string `pulumi:"displayName"`
+	// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
+	Encryption *Encryption `pulumi:"encryption"`
 	// Managed identity properties
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Dev Center settings to be used when associating a project with a catalog.
+	ProjectCatalogSettings *DevCenterProjectCatalogSettings `pulumi:"projectCatalogSettings"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -145,10 +159,16 @@ type devCenterArgs struct {
 type DevCenterArgs struct {
 	// The name of the devcenter.
 	DevCenterName pulumi.StringPtrInput
+	// The display name of the devcenter.
+	DisplayName pulumi.StringPtrInput
+	// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
+	Encryption EncryptionPtrInput
 	// Managed identity properties
 	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Dev Center settings to be used when associating a project with a catalog.
+	ProjectCatalogSettings DevCenterProjectCatalogSettingsPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -192,9 +212,24 @@ func (o DevCenterOutput) ToDevCenterOutputWithContext(ctx context.Context) DevCe
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DevCenterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DevCenter) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The URI of the Dev Center.
 func (o DevCenterOutput) DevCenterUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *DevCenter) pulumi.StringOutput { return v.DevCenterUri }).(pulumi.StringOutput)
+}
+
+// The display name of the devcenter.
+func (o DevCenterOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevCenter) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
+func (o DevCenterOutput) Encryption() EncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *DevCenter) EncryptionResponsePtrOutput { return v.Encryption }).(EncryptionResponsePtrOutput)
 }
 
 // Managed identity properties
@@ -210,6 +245,11 @@ func (o DevCenterOutput) Location() pulumi.StringOutput {
 // The name of the resource
 func (o DevCenterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DevCenter) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Dev Center settings to be used when associating a project with a catalog.
+func (o DevCenterOutput) ProjectCatalogSettings() DevCenterProjectCatalogSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *DevCenter) DevCenterProjectCatalogSettingsResponsePtrOutput { return v.ProjectCatalogSettings }).(DevCenterProjectCatalogSettingsResponsePtrOutput)
 }
 
 // The provisioning state of the resource.

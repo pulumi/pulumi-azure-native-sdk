@@ -13,9 +13,9 @@ import (
 
 // Gets the properties of the specified container registry.
 //
-// Uses Azure REST API version 2022-12-01.
+// Uses Azure REST API version 2023-01-01-preview.
 //
-// Other available API versions: 2017-03-01, 2019-05-01, 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-09-01, 2021-12-01-preview, 2022-02-01-preview, 2022-12-01, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulumi.InvokeOption) (*LookupRegistryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistryResult
@@ -37,6 +37,10 @@ type LookupRegistryArgs struct {
 type LookupRegistryResult struct {
 	// The value that indicates whether the admin user is enabled.
 	AdminUserEnabled *bool `pulumi:"adminUserEnabled"`
+	// Enables registry-wide pull from unauthenticated clients.
+	AnonymousPullEnabled *bool `pulumi:"anonymousPullEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the container registry in ISO8601 format.
 	CreationDate string `pulumi:"creationDate"`
 	// Enable a single data endpoint per region for serving data.
@@ -90,6 +94,10 @@ func (val *LookupRegistryResult) Defaults() *LookupRegistryResult {
 	if tmp.AdminUserEnabled == nil {
 		adminUserEnabled_ := false
 		tmp.AdminUserEnabled = &adminUserEnabled_
+	}
+	if tmp.AnonymousPullEnabled == nil {
+		anonymousPullEnabled_ := false
+		tmp.AnonymousPullEnabled = &anonymousPullEnabled_
 	}
 	if tmp.NetworkRuleBypassOptions == nil {
 		networkRuleBypassOptions_ := "AzureServices"
@@ -147,6 +155,16 @@ func (o LookupRegistryResultOutput) ToLookupRegistryResultOutputWithContext(ctx 
 // The value that indicates whether the admin user is enabled.
 func (o LookupRegistryResultOutput) AdminUserEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupRegistryResult) *bool { return v.AdminUserEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enables registry-wide pull from unauthenticated clients.
+func (o LookupRegistryResultOutput) AnonymousPullEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupRegistryResult) *bool { return v.AnonymousPullEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupRegistryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the container registry in ISO8601 format.

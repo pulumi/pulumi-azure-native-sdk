@@ -13,9 +13,9 @@ import (
 
 // Gets information about a server.
 //
-// Uses Azure REST API version 2022-12-01.
+// Uses Azure REST API version 2024-08-01.
 //
-// Other available API versions: 2017-12-01, 2017-12-01-preview, 2020-02-14-preview, 2021-04-10-privatepreview, 2021-06-15-privatepreview, 2022-03-08-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerResult
@@ -41,6 +41,8 @@ type LookupServerResult struct {
 	AuthConfig *AuthConfigResponse `pulumi:"authConfig"`
 	// availability zone information of the server.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Backup properties of a server.
 	Backup *BackupResponse `pulumi:"backup"`
 	// Data encryption properties of a server.
@@ -49,7 +51,7 @@ type LookupServerResult struct {
 	FullyQualifiedDomainName string `pulumi:"fullyQualifiedDomainName"`
 	// High availability properties of a server.
 	HighAvailability *HighAvailabilityResponse `pulumi:"highAvailability"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Describes the identity of the application.
 	Identity *UserAssignedIdentityResponse `pulumi:"identity"`
@@ -63,13 +65,17 @@ type LookupServerResult struct {
 	Name string `pulumi:"name"`
 	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
 	Network *NetworkResponse `pulumi:"network"`
+	// List of private endpoint connections associated with the specified resource.
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	// Replica properties of a server. These Replica properties are required to be passed only in case you want to Promote a server.
+	Replica *ReplicaResponse `pulumi:"replica"`
 	// Replicas allowed for a server.
 	ReplicaCapacity int `pulumi:"replicaCapacity"`
 	// Replication role of the server
 	ReplicationRole *string `pulumi:"replicationRole"`
 	// The SKU (pricing tier) of the server.
 	Sku *SkuResponse `pulumi:"sku"`
-	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica' or 'ReviveDropped'. This property is returned only for Replica server
 	SourceServerResourceId *string `pulumi:"sourceServerResourceId"`
 	// A state of a server that is visible to user.
 	State string `pulumi:"state"`
@@ -100,8 +106,6 @@ func (val *LookupServerResult) Defaults() *LookupServerResult {
 	tmp.Backup = tmp.Backup.Defaults()
 
 	tmp.HighAvailability = tmp.HighAvailability.Defaults()
-
-	tmp.MaintenanceWindow = tmp.MaintenanceWindow.Defaults()
 
 	return &tmp
 }
@@ -155,6 +159,11 @@ func (o LookupServerResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupServerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Backup properties of a server.
 func (o LookupServerResultOutput) Backup() BackupResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *BackupResponse { return v.Backup }).(BackupResponsePtrOutput)
@@ -175,7 +184,7 @@ func (o LookupServerResultOutput) HighAvailability() HighAvailabilityResponsePtr
 	return o.ApplyT(func(v LookupServerResult) *HighAvailabilityResponse { return v.HighAvailability }).(HighAvailabilityResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -210,6 +219,16 @@ func (o LookupServerResultOutput) Network() NetworkResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *NetworkResponse { return v.Network }).(NetworkResponsePtrOutput)
 }
 
+// List of private endpoint connections associated with the specified resource.
+func (o LookupServerResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupServerResult) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// Replica properties of a server. These Replica properties are required to be passed only in case you want to Promote a server.
+func (o LookupServerResultOutput) Replica() ReplicaResponsePtrOutput {
+	return o.ApplyT(func(v LookupServerResult) *ReplicaResponse { return v.Replica }).(ReplicaResponsePtrOutput)
+}
+
 // Replicas allowed for a server.
 func (o LookupServerResultOutput) ReplicaCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupServerResult) int { return v.ReplicaCapacity }).(pulumi.IntOutput)
@@ -225,7 +244,7 @@ func (o LookupServerResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
-// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica' or 'ReviveDropped'. This property is returned only for Replica server
 func (o LookupServerResultOutput) SourceServerResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.SourceServerResourceId }).(pulumi.StringPtrOutput)
 }

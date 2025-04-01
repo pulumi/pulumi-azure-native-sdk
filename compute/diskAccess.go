@@ -14,12 +14,14 @@ import (
 
 // disk access resource.
 //
-// Uses Azure REST API version 2022-07-02. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
 //
-// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DiskAccess struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The extended location where the disk access will be created. Extended location cannot be changed.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Resource location
@@ -184,6 +186,11 @@ func (o DiskAccessOutput) ToDiskAccessOutput() DiskAccessOutput {
 
 func (o DiskAccessOutput) ToDiskAccessOutputWithContext(ctx context.Context) DiskAccessOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DiskAccessOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskAccess) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extended location where the disk access will be created. Extended location cannot be changed.

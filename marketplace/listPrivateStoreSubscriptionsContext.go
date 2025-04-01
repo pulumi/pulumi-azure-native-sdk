@@ -14,8 +14,6 @@ import (
 // List all the subscriptions in the private store context
 //
 // Uses Azure REST API version 2023-01-01.
-//
-// Other available API versions: 2021-12-01, 2022-03-01, 2022-09-01.
 func ListPrivateStoreSubscriptionsContext(ctx *pulumi.Context, args *ListPrivateStoreSubscriptionsContextArgs, opts ...pulumi.InvokeOption) (*ListPrivateStoreSubscriptionsContextResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListPrivateStoreSubscriptionsContextResult

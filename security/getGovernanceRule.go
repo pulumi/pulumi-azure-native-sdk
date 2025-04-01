@@ -33,6 +33,8 @@ type LookupGovernanceRuleArgs struct {
 
 // Governance rule over a given scope
 type LookupGovernanceRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description of the governance rule
 	Description *string `pulumi:"description"`
 	// Display name of the governance rule
@@ -102,6 +104,11 @@ func (o LookupGovernanceRuleResultOutput) ToLookupGovernanceRuleResultOutput() L
 
 func (o LookupGovernanceRuleResultOutput) ToLookupGovernanceRuleResultOutputWithContext(ctx context.Context) LookupGovernanceRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGovernanceRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the governance rule

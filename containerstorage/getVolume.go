@@ -35,6 +35,8 @@ type LookupVolumeArgs struct {
 
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupVolumeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Requested capacity in GiB
 	CapacityGiB float64 `pulumi:"capacityGiB"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -90,6 +92,11 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutput() LookupVolumeResul
 
 func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx context.Context) LookupVolumeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVolumeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Requested capacity in GiB

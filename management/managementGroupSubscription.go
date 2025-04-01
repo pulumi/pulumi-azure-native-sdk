@@ -14,12 +14,14 @@ import (
 
 // The details of subscription under management group.
 //
-// Uses Azure REST API version 2021-04-01. In version 1.x of the Azure Native provider, it used API version 2020-05-01.
+// Uses Azure REST API version 2023-04-01. In version 2.x of the Azure Native provider, it used API version 2021-04-01.
 //
-// Other available API versions: 2023-04-01.
+// Other available API versions: 2021-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native management [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ManagementGroupSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The friendly name of the subscription.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The stringified id of the subscription. For example, 00000000-0000-0000-0000-000000000000
@@ -141,6 +143,11 @@ func (o ManagementGroupSubscriptionOutput) ToManagementGroupSubscriptionOutput()
 
 func (o ManagementGroupSubscriptionOutput) ToManagementGroupSubscriptionOutputWithContext(ctx context.Context) ManagementGroupSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagementGroupSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagementGroupSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The friendly name of the subscription.

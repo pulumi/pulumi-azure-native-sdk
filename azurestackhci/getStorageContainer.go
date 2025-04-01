@@ -13,9 +13,9 @@ import (
 
 // Gets a storage container
 //
-// Uses Azure REST API version 2022-12-15-preview.
+// Uses Azure REST API version 2025-02-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStorageContainer(ctx *pulumi.Context, args *LookupStorageContainerArgs, opts ...pulumi.InvokeOption) (*LookupStorageContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageContainerResult
@@ -35,16 +35,18 @@ type LookupStorageContainerArgs struct {
 
 // The storage container resource definition.
 type LookupStorageContainerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The extendedLocation of the resource.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Path of the storage container on the disk
-	Path *string `pulumi:"path"`
+	Path string `pulumi:"path"`
 	// Provisioning state of the storage container.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The observed state of storage containers
@@ -92,12 +94,17 @@ func (o LookupStorageContainerResultOutput) ToLookupStorageContainerResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupStorageContainerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageContainerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The extendedLocation of the resource.
 func (o LookupStorageContainerResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v LookupStorageContainerResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupStorageContainerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageContainerResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -113,8 +120,8 @@ func (o LookupStorageContainerResultOutput) Name() pulumi.StringOutput {
 }
 
 // Path of the storage container on the disk
-func (o LookupStorageContainerResultOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupStorageContainerResult) *string { return v.Path }).(pulumi.StringPtrOutput)
+func (o LookupStorageContainerResultOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageContainerResult) string { return v.Path }).(pulumi.StringOutput)
 }
 
 // Provisioning state of the storage container.

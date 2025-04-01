@@ -13,9 +13,9 @@ import (
 
 // List product families for the given subscription.
 //
-// Uses Azure REST API version 2022-05-01-preview.
+// Uses Azure REST API version 2024-02-01.
 //
-// Other available API versions: 2024-02-01.
+// Other available API versions: 2022-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edgeorder [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListProductsAndConfigurationProductFamilies(ctx *pulumi.Context, args *ListProductsAndConfigurationProductFamiliesArgs, opts ...pulumi.InvokeOption) (*ListProductsAndConfigurationProductFamiliesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListProductsAndConfigurationProductFamiliesResult

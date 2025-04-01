@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2024-01-01-preview.
 //
-// Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
+// Other available API versions: 2023-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCapacityReservationGroup(ctx *pulumi.Context, args *LookupCapacityReservationGroupArgs, opts ...pulumi.InvokeOption) (*LookupCapacityReservationGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapacityReservationGroupResult
@@ -25,12 +25,15 @@ func LookupCapacityReservationGroup(ctx *pulumi.Context, args *LookupCapacityRes
 }
 
 type LookupCapacityReservationGroupArgs struct {
+	// Group ID
 	GroupId string `pulumi:"groupId"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 type LookupCapacityReservationGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	CapacityReservationGroupProperties CapacityReservationGroupResponse `pulumi:"capacityReservationGroupProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -63,6 +66,7 @@ func LookupCapacityReservationGroupOutput(ctx *pulumi.Context, args LookupCapaci
 }
 
 type LookupCapacityReservationGroupOutputArgs struct {
+	// Group ID
 	GroupId pulumi.StringInput `pulumi:"groupId"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -84,6 +88,11 @@ func (o LookupCapacityReservationGroupResultOutput) ToLookupCapacityReservationG
 
 func (o LookupCapacityReservationGroupResultOutput) ToLookupCapacityReservationGroupResultOutputWithContext(ctx context.Context) LookupCapacityReservationGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCapacityReservationGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCapacityReservationGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

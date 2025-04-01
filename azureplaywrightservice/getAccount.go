@@ -13,9 +13,9 @@ import (
 
 // Get a Account
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2024-12-01.
 //
-// Other available API versions: 2024-02-01-preview, 2024-08-01-preview, 2024-12-01.
+// Other available API versions: 2023-10-01-preview, 2024-02-01-preview, 2024-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azureplaywrightservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult
@@ -27,18 +27,22 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 }
 
 type LookupAccountArgs struct {
-	// Name of account
-	Name string `pulumi:"name"`
+	// Name of account.
+	AccountName string `pulumi:"accountName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// An account resource
+// A Playwright service account resource.
 type LookupAccountResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Playwright testing dashboard URI for the account resource.
 	DashboardUri string `pulumi:"dashboardUri"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+	LocalAuth *string `pulumi:"localAuth"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -65,12 +69,16 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 		return nil
 	}
 	tmp := *val
+	if tmp.LocalAuth == nil {
+		localAuth_ := "Disabled"
+		tmp.LocalAuth = &localAuth_
+	}
 	if tmp.RegionalAffinity == nil {
 		regionalAffinity_ := "Enabled"
 		tmp.RegionalAffinity = &regionalAffinity_
 	}
 	if tmp.Reporting == nil {
-		reporting_ := "Disabled"
+		reporting_ := "Enabled"
 		tmp.Reporting = &reporting_
 	}
 	if tmp.ScalableExecution == nil {
@@ -89,8 +97,8 @@ func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts
 }
 
 type LookupAccountOutputArgs struct {
-	// Name of account
-	Name pulumi.StringInput `pulumi:"name"`
+	// Name of account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
@@ -99,7 +107,7 @@ func (LookupAccountOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupAccountArgs)(nil)).Elem()
 }
 
-// An account resource
+// A Playwright service account resource.
 type LookupAccountResultOutput struct{ *pulumi.OutputState }
 
 func (LookupAccountResultOutput) ElementType() reflect.Type {
@@ -114,14 +122,24 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The Playwright testing dashboard URI for the account resource.
 func (o LookupAccountResultOutput) DashboardUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.DashboardUri }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+func (o LookupAccountResultOutput) LocalAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *string { return v.LocalAuth }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives

@@ -14,12 +14,14 @@ import (
 
 // Represents an curation profile resource.
 //
-// Uses Azure REST API version 2024-08-01-preview.
+// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-01-preview.
 //
-// Other available API versions: 2024-10-01-preview.
+// Other available API versions: 2024-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CurationProfile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
@@ -150,6 +152,11 @@ func (o CurationProfileOutput) ToCurationProfileOutput() CurationProfileOutput {
 
 func (o CurationProfileOutput) ToCurationProfileOutputWithContext(ctx context.Context) CurationProfileOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CurationProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CurationProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

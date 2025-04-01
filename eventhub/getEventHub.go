@@ -13,9 +13,9 @@ import (
 
 // Gets an Event Hubs description for the specified Event Hub.
 //
-// Uses Azure REST API version 2022-10-01-preview.
+// Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupEventHub(ctx *pulumi.Context, args *LookupEventHubArgs, opts ...pulumi.InvokeOption) (*LookupEventHubResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEventHubResult
@@ -37,6 +37,8 @@ type LookupEventHubArgs struct {
 
 // Single item in List or Get Event Hub operation
 type LookupEventHubResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Properties of capture description
 	CaptureDescription *CaptureDescriptionResponse `pulumi:"captureDescription"`
 	// Exact time the Event Hub was created.
@@ -63,6 +65,8 @@ type LookupEventHubResult struct {
 	Type string `pulumi:"type"`
 	// The exact time the message was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
+	// Gets and Sets Metadata of User.
+	UserMetadata *string `pulumi:"userMetadata"`
 }
 
 func LookupEventHubOutput(ctx *pulumi.Context, args LookupEventHubOutputArgs, opts ...pulumi.InvokeOption) LookupEventHubResultOutput {
@@ -100,6 +104,11 @@ func (o LookupEventHubResultOutput) ToLookupEventHubResultOutput() LookupEventHu
 
 func (o LookupEventHubResultOutput) ToLookupEventHubResultOutputWithContext(ctx context.Context) LookupEventHubResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEventHubResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties of capture description
@@ -165,6 +174,11 @@ func (o LookupEventHubResultOutput) Type() pulumi.StringOutput {
 // The exact time the message was updated.
 func (o LookupEventHubResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventHubResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Gets and Sets Metadata of User.
+func (o LookupEventHubResultOutput) UserMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEventHubResult) *string { return v.UserMetadata }).(pulumi.StringPtrOutput)
 }
 
 func init() {

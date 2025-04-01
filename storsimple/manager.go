@@ -14,10 +14,12 @@ import (
 
 // The StorSimple Manager.
 //
-// Uses Azure REST API version 2017-06-01. In version 1.x of the Azure Native provider, it used API version 2017-06-01.
+// Uses Azure REST API version 2017-06-01. In version 2.x of the Azure Native provider, it used API version 2017-06-01.
 type Manager struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Represents the type of StorSimple Manager.
 	CisIntrinsicSettings ManagerIntrinsicSettingsResponsePtrOutput `pulumi:"cisIntrinsicSettings"`
 	// The etag of the manager.
@@ -157,6 +159,11 @@ func (o ManagerOutput) ToManagerOutput() ManagerOutput {
 
 func (o ManagerOutput) ToManagerOutputWithContext(ctx context.Context) ManagerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Manager) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Represents the type of StorSimple Manager.

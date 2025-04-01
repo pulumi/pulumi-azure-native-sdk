@@ -41,6 +41,8 @@ type LookupBrokerListenerResult struct {
 	AuthenticationEnabled *bool `pulumi:"authenticationEnabled"`
 	// The flag for enabling Authorization policies on Listener Port. false - AllowAll, true - Use Authorization resource rules if present.
 	AuthorizationEnabled *bool `pulumi:"authorizationEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The k8s cr/resource reference of mq/broker.
 	BrokerRef string `pulumi:"brokerRef"`
 	// Extended Location
@@ -144,6 +146,11 @@ func (o LookupBrokerListenerResultOutput) AuthenticationEnabled() pulumi.BoolPtr
 // The flag for enabling Authorization policies on Listener Port. false - AllowAll, true - Use Authorization resource rules if present.
 func (o LookupBrokerListenerResultOutput) AuthorizationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupBrokerListenerResult) *bool { return v.AuthorizationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupBrokerListenerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrokerListenerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The k8s cr/resource reference of mq/broker.

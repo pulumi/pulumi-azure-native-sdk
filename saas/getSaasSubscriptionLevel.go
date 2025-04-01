@@ -33,6 +33,8 @@ type LookupSaasSubscriptionLevelArgs struct {
 
 // SaaS REST API resource definition.
 type LookupSaasSubscriptionLevelResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource uri
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -78,6 +80,11 @@ func (o LookupSaasSubscriptionLevelResultOutput) ToLookupSaasSubscriptionLevelRe
 
 func (o LookupSaasSubscriptionLevelResultOutput) ToLookupSaasSubscriptionLevelResultOutputWithContext(ctx context.Context) LookupSaasSubscriptionLevelResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSaasSubscriptionLevelResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSaasSubscriptionLevelResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource uri

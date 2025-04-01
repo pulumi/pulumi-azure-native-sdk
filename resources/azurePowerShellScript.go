@@ -14,7 +14,7 @@ import (
 
 // Object model for the Azure PowerShell script.
 //
-// Uses Azure REST API version 2020-10-01. In version 1.x of the Azure Native provider, it used API version 2020-10-01.
+// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2020-10-01.
 type AzurePowerShellScript struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type AzurePowerShellScript struct {
 	Arguments pulumi.StringPtrOutput `pulumi:"arguments"`
 	// Azure PowerShell module version to be used.
 	AzPowerShellVersion pulumi.StringOutput `pulumi:"azPowerShellVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
 	CleanupPreference pulumi.StringPtrOutput `pulumi:"cleanupPreference"`
 	// Container settings.
@@ -93,13 +95,25 @@ func NewAzurePowerShellScript(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:resources/v20191001preview:AzureCliScript"),
+		},
+		{
 			Type: pulumi.String("azure-native:resources/v20191001preview:AzurePowerShellScript"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources/v20201001:AzureCliScript"),
 		},
 		{
 			Type: pulumi.String("azure-native:resources/v20201001:AzurePowerShellScript"),
 		},
 		{
+			Type: pulumi.String("azure-native:resources/v20230801:AzureCliScript"),
+		},
+		{
 			Type: pulumi.String("azure-native:resources/v20230801:AzurePowerShellScript"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources:AzureCliScript"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -261,6 +275,11 @@ func (o AzurePowerShellScriptOutput) Arguments() pulumi.StringPtrOutput {
 // Azure PowerShell module version to be used.
 func (o AzurePowerShellScriptOutput) AzPowerShellVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePowerShellScript) pulumi.StringOutput { return v.AzPowerShellVersion }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o AzurePowerShellScriptOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePowerShellScript) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.

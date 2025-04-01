@@ -14,27 +14,35 @@ import (
 
 // Response for Volume Group request.
 //
-// Uses Azure REST API version 2021-11-20-preview. In version 1.x of the Azure Native provider, it used API version 2021-11-20-preview.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2021-11-20-preview.
 //
-// Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2021-11-20-preview, 2022-12-01-preview, 2023-01-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elasticsan [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VolumeGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Type of encryption
 	Encryption pulumi.StringPtrOutput `pulumi:"encryption"`
-	// Azure resource name.
+	// Encryption Properties describing Key Vault and Identity information
+	EncryptionProperties EncryptionPropertiesResponsePtrOutput `pulumi:"encryptionProperties"`
+	// A boolean indicating whether or not Data Integrity Check is enabled
+	EnforceDataIntegrityCheckForIscsi pulumi.BoolPtrOutput `pulumi:"enforceDataIntegrityCheckForIscsi"`
+	// The identity of the resource.
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A collection of rules governing the accessibility from specific network locations.
 	NetworkAcls NetworkRuleSetResponsePtrOutput `pulumi:"networkAcls"`
+	// The list of Private Endpoint Connections.
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Type of storage target
 	ProtocolType pulumi.StringPtrOutput `pulumi:"protocolType"`
 	// State of the operation on the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Resource metadata required by ARM RPC
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Azure resource tags.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Azure resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -106,14 +114,18 @@ type volumeGroupArgs struct {
 	ElasticSanName string `pulumi:"elasticSanName"`
 	// Type of encryption
 	Encryption *string `pulumi:"encryption"`
+	// Encryption Properties describing Key Vault and Identity information
+	EncryptionProperties *EncryptionProperties `pulumi:"encryptionProperties"`
+	// A boolean indicating whether or not Data Integrity Check is enabled
+	EnforceDataIntegrityCheckForIscsi *bool `pulumi:"enforceDataIntegrityCheckForIscsi"`
+	// The identity of the resource.
+	Identity *Identity `pulumi:"identity"`
 	// A collection of rules governing the accessibility from specific network locations.
 	NetworkAcls *NetworkRuleSet `pulumi:"networkAcls"`
 	// Type of storage target
 	ProtocolType *string `pulumi:"protocolType"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure resource tags.
-	Tags map[string]string `pulumi:"tags"`
 	// The name of the VolumeGroup.
 	VolumeGroupName *string `pulumi:"volumeGroupName"`
 }
@@ -124,14 +136,18 @@ type VolumeGroupArgs struct {
 	ElasticSanName pulumi.StringInput
 	// Type of encryption
 	Encryption pulumi.StringPtrInput
+	// Encryption Properties describing Key Vault and Identity information
+	EncryptionProperties EncryptionPropertiesPtrInput
+	// A boolean indicating whether or not Data Integrity Check is enabled
+	EnforceDataIntegrityCheckForIscsi pulumi.BoolPtrInput
+	// The identity of the resource.
+	Identity IdentityPtrInput
 	// A collection of rules governing the accessibility from specific network locations.
 	NetworkAcls NetworkRuleSetPtrInput
 	// Type of storage target
 	ProtocolType pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Azure resource tags.
-	Tags pulumi.StringMapInput
 	// The name of the VolumeGroup.
 	VolumeGroupName pulumi.StringPtrInput
 }
@@ -173,12 +189,32 @@ func (o VolumeGroupOutput) ToVolumeGroupOutputWithContext(ctx context.Context) V
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VolumeGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Type of encryption
 func (o VolumeGroupOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VolumeGroup) pulumi.StringPtrOutput { return v.Encryption }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource name.
+// Encryption Properties describing Key Vault and Identity information
+func (o VolumeGroupOutput) EncryptionProperties() EncryptionPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *VolumeGroup) EncryptionPropertiesResponsePtrOutput { return v.EncryptionProperties }).(EncryptionPropertiesResponsePtrOutput)
+}
+
+// A boolean indicating whether or not Data Integrity Check is enabled
+func (o VolumeGroupOutput) EnforceDataIntegrityCheckForIscsi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeGroup) pulumi.BoolPtrOutput { return v.EnforceDataIntegrityCheckForIscsi }).(pulumi.BoolPtrOutput)
+}
+
+// The identity of the resource.
+func (o VolumeGroupOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *VolumeGroup) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+}
+
+// The name of the resource
 func (o VolumeGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -186,6 +222,11 @@ func (o VolumeGroupOutput) Name() pulumi.StringOutput {
 // A collection of rules governing the accessibility from specific network locations.
 func (o VolumeGroupOutput) NetworkAcls() NetworkRuleSetResponsePtrOutput {
 	return o.ApplyT(func(v *VolumeGroup) NetworkRuleSetResponsePtrOutput { return v.NetworkAcls }).(NetworkRuleSetResponsePtrOutput)
+}
+
+// The list of Private Endpoint Connections.
+func (o VolumeGroupOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *VolumeGroup) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Type of storage target
@@ -198,17 +239,12 @@ func (o VolumeGroupOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeGroup) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource metadata required by ARM RPC
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o VolumeGroupOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *VolumeGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource tags.
-func (o VolumeGroupOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *VolumeGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Azure resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o VolumeGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

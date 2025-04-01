@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2022-04-01-preview.
+// Uses Azure REST API version 2023-11-01-preview.
 //
-// Other available API versions: 2023-11-01-preview.
+// Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetBillingHubServiceFreeHourBalance(ctx *pulumi.Context, args *GetBillingHubServiceFreeHourBalanceArgs, opts ...pulumi.InvokeOption) (*GetBillingHubServiceFreeHourBalanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetBillingHubServiceFreeHourBalanceResult
@@ -25,7 +25,7 @@ func GetBillingHubServiceFreeHourBalance(ctx *pulumi.Context, args *GetBillingHu
 }
 
 type GetBillingHubServiceFreeHourBalanceArgs struct {
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
@@ -46,7 +46,7 @@ func GetBillingHubServiceFreeHourBalanceOutput(ctx *pulumi.Context, args GetBill
 }
 
 type GetBillingHubServiceFreeHourBalanceOutputArgs struct {
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`

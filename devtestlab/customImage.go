@@ -14,12 +14,14 @@ import (
 
 // A custom image.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type CustomImage struct {
 	pulumi.CustomResourceState
 
 	// The author of the custom image.
 	Author pulumi.StringPtrOutput `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the custom image.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// Storage information about the plan related to this custom image
@@ -212,6 +214,11 @@ func (o CustomImageOutput) ToCustomImageOutputWithContext(ctx context.Context) C
 // The author of the custom image.
 func (o CustomImageOutput) Author() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.Author }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o CustomImageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the custom image.

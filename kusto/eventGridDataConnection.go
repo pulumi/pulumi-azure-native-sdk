@@ -14,10 +14,12 @@ import (
 
 // Class representing an Event Grid data connection.
 //
-// Uses Azure REST API version 2022-12-29. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2022-12-29.
 type EventGridDataConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of blob storage event type to process.
 	BlobStorageEventType pulumi.StringPtrOutput `pulumi:"blobStorageEventType"`
 	// The event hub consumer group.
@@ -125,16 +127,61 @@ func NewEventGridDataConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:kusto/v20221111:EventGridDataConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:kusto/v20221229:CosmosDbDataConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:kusto/v20221229:EventGridDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20221229:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20221229:IotHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230502:CosmosDbDataConnection"),
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230502:EventGridDataConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:kusto/v20230502:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230502:IotHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230815:CosmosDbDataConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:kusto/v20230815:EventGridDataConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:kusto/v20230815:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230815:IotHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20240413:CosmosDbDataConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:kusto/v20240413:EventGridDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20240413:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20240413:IotHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:CosmosDbDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:IotHubDataConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -200,7 +247,7 @@ type eventGridDataConnectionArgs struct {
 	ManagedIdentityResourceId *string `pulumi:"managedIdentityResourceId"`
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 	MappingRuleName *string `pulumi:"mappingRuleName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource ID of the storage account where the data resides.
 	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
@@ -239,7 +286,7 @@ type EventGridDataConnectionArgs struct {
 	ManagedIdentityResourceId pulumi.StringPtrInput
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 	MappingRuleName pulumi.StringPtrInput
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The resource ID of the storage account where the data resides.
 	StorageAccountResourceId pulumi.StringInput
@@ -282,6 +329,11 @@ func (o EventGridDataConnectionOutput) ToEventGridDataConnectionOutput() EventGr
 
 func (o EventGridDataConnectionOutput) ToEventGridDataConnectionOutputWithContext(ctx context.Context) EventGridDataConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EventGridDataConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventGridDataConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of blob storage event type to process.

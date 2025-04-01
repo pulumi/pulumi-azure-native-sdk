@@ -14,23 +14,25 @@ import (
 
 // Confidential Ledger. Contains the properties of Confidential Ledger Resource.
 //
-// Uses Azure REST API version 2022-05-13. In version 1.x of the Azure Native provider, it used API version 2020-12-01-preview.
+// Uses Azure REST API version 2023-06-28-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-13.
 //
-// Other available API versions: 2023-01-26-preview, 2023-06-28-preview, 2024-07-09-preview, 2024-09-19-preview.
+// Other available API versions: 2022-05-13, 2022-09-08-preview, 2023-01-26-preview, 2024-07-09-preview, 2024-09-19-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confidentialledger [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Ledger struct {
 	pulumi.CustomResourceState
 
-	// The Azure location where the Confidential Ledger is running.
-	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Name of the Resource.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of Confidential Ledger Resource.
 	Properties LedgerPropertiesResponseOutput `pulumi:"properties"`
-	// Metadata pertaining to creation and last modification of the resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Additional tags for Confidential Ledger
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -106,13 +108,13 @@ func (LedgerState) ElementType() reflect.Type {
 type ledgerArgs struct {
 	// Name of the Confidential Ledger
 	LedgerName *string `pulumi:"ledgerName"`
-	// The Azure location where the Confidential Ledger is running.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Properties of Confidential Ledger Resource.
 	Properties *LedgerProperties `pulumi:"properties"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Additional tags for Confidential Ledger
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -120,13 +122,13 @@ type ledgerArgs struct {
 type LedgerArgs struct {
 	// Name of the Confidential Ledger
 	LedgerName pulumi.StringPtrInput
-	// The Azure location where the Confidential Ledger is running.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Properties of Confidential Ledger Resource.
 	Properties LedgerPropertiesPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Additional tags for Confidential Ledger
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -167,12 +169,17 @@ func (o LedgerOutput) ToLedgerOutputWithContext(ctx context.Context) LedgerOutpu
 	return o
 }
 
-// The Azure location where the Confidential Ledger is running.
-func (o LedgerOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Ledger) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+// The Azure API version of the resource.
+func (o LedgerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ledger) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Name of the Resource.
+// The geo-location where the resource lives
+func (o LedgerOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ledger) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o LedgerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ledger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -182,17 +189,17 @@ func (o LedgerOutput) Properties() LedgerPropertiesResponseOutput {
 	return o.ApplyT(func(v *Ledger) LedgerPropertiesResponseOutput { return v.Properties }).(LedgerPropertiesResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LedgerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Ledger) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Additional tags for Confidential Ledger
+// Resource tags.
 func (o LedgerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Ledger) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LedgerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ledger) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

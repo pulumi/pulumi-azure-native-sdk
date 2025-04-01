@@ -35,6 +35,8 @@ type LookupDataLakeConnectorArgs struct {
 
 // MQ dataLakeConnector resource
 type LookupDataLakeConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// DataLake database format to use.
 	DatabaseFormat string `pulumi:"databaseFormat"`
 	// Extended Location
@@ -114,6 +116,11 @@ func (o LookupDataLakeConnectorResultOutput) ToLookupDataLakeConnectorResultOutp
 
 func (o LookupDataLakeConnectorResultOutput) ToLookupDataLakeConnectorResultOutputWithContext(ctx context.Context) LookupDataLakeConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDataLakeConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataLakeConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // DataLake database format to use.

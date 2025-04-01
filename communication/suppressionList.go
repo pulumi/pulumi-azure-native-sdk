@@ -14,12 +14,14 @@ import (
 
 // A class representing a SuppressionList resource.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2024-09-01-preview.
+// Other available API versions: 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SuppressionList struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The date the resource was created.
 	CreatedTimeStamp pulumi.StringOutput `pulumi:"createdTimeStamp"`
 	// The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.
@@ -155,6 +157,11 @@ func (o SuppressionListOutput) ToSuppressionListOutput() SuppressionListOutput {
 
 func (o SuppressionListOutput) ToSuppressionListOutputWithContext(ctx context.Context) SuppressionListOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SuppressionListOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SuppressionList) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The date the resource was created.

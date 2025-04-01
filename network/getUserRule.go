@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-04-01-preview.
 //
-// Other available API versions: 2021-05-01-preview.
+// Other available API versions: 2021-02-01-preview, 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupUserRule(ctx *pulumi.Context, args *LookupUserRuleArgs, opts ...pulumi.InvokeOption) (*LookupUserRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserRuleResult
@@ -41,6 +41,8 @@ type LookupUserRuleArgs struct {
 
 // Network security user rule.
 type LookupUserRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description for this rule.
 	Description *string `pulumi:"description"`
 	// The destination port ranges.
@@ -111,6 +113,11 @@ func (o LookupUserRuleResultOutput) ToLookupUserRuleResultOutput() LookupUserRul
 
 func (o LookupUserRuleResultOutput) ToLookupUserRuleResultOutputWithContext(ctx context.Context) LookupUserRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupUserRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule.

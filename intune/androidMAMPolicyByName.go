@@ -14,9 +14,7 @@ import (
 
 // Android Policy entity for Intune MAM.
 //
-// Uses Azure REST API version 2015-01-14-preview. In version 1.x of the Azure Native provider, it used API version 2015-01-14-preview.
-//
-// Other available API versions: 2015-01-14-privatepreview.
+// Uses Azure REST API version 2015-01-14-preview. In version 2.x of the Azure Native provider, it used API version 2015-01-14-preview.
 type AndroidMAMPolicyByName struct {
 	pulumi.CustomResourceState
 
@@ -25,15 +23,17 @@ type AndroidMAMPolicyByName struct {
 	AppSharingFromLevel         pulumi.StringPtrOutput `pulumi:"appSharingFromLevel"`
 	AppSharingToLevel           pulumi.StringPtrOutput `pulumi:"appSharingToLevel"`
 	Authentication              pulumi.StringPtrOutput `pulumi:"authentication"`
-	ClipboardSharingLevel       pulumi.StringPtrOutput `pulumi:"clipboardSharingLevel"`
-	DataBackup                  pulumi.StringPtrOutput `pulumi:"dataBackup"`
-	Description                 pulumi.StringPtrOutput `pulumi:"description"`
-	DeviceCompliance            pulumi.StringPtrOutput `pulumi:"deviceCompliance"`
-	FileEncryption              pulumi.StringPtrOutput `pulumi:"fileEncryption"`
-	FileSharingSaveAs           pulumi.StringPtrOutput `pulumi:"fileSharingSaveAs"`
-	FriendlyName                pulumi.StringOutput    `pulumi:"friendlyName"`
-	GroupStatus                 pulumi.StringOutput    `pulumi:"groupStatus"`
-	LastModifiedTime            pulumi.StringOutput    `pulumi:"lastModifiedTime"`
+	// The Azure API version of the resource.
+	AzureApiVersion       pulumi.StringOutput    `pulumi:"azureApiVersion"`
+	ClipboardSharingLevel pulumi.StringPtrOutput `pulumi:"clipboardSharingLevel"`
+	DataBackup            pulumi.StringPtrOutput `pulumi:"dataBackup"`
+	Description           pulumi.StringPtrOutput `pulumi:"description"`
+	DeviceCompliance      pulumi.StringPtrOutput `pulumi:"deviceCompliance"`
+	FileEncryption        pulumi.StringPtrOutput `pulumi:"fileEncryption"`
+	FileSharingSaveAs     pulumi.StringPtrOutput `pulumi:"fileSharingSaveAs"`
+	FriendlyName          pulumi.StringOutput    `pulumi:"friendlyName"`
+	GroupStatus           pulumi.StringOutput    `pulumi:"groupStatus"`
+	LastModifiedTime      pulumi.StringOutput    `pulumi:"lastModifiedTime"`
 	// Resource Location
 	Location       pulumi.StringPtrOutput `pulumi:"location"`
 	ManagedBrowser pulumi.StringPtrOutput `pulumi:"managedBrowser"`
@@ -249,6 +249,11 @@ func (o AndroidMAMPolicyByNameOutput) AppSharingToLevel() pulumi.StringPtrOutput
 
 func (o AndroidMAMPolicyByNameOutput) Authentication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AndroidMAMPolicyByName) pulumi.StringPtrOutput { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o AndroidMAMPolicyByNameOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AndroidMAMPolicyByName) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o AndroidMAMPolicyByNameOutput) ClipboardSharingLevel() pulumi.StringPtrOutput {

@@ -14,16 +14,20 @@ import (
 
 // Specifies information about the Shared Image Gallery that you want to create or update.
 //
-// Uses Azure REST API version 2022-03-03. In version 1.x of the Azure Native provider, it used API version 2020-09-30.
+// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
 //
-// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Gallery struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The description of this Shared Image Gallery resource. This property is updatable.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Describes the gallery unique name.
 	Identifier GalleryIdentifierResponsePtrOutput `pulumi:"identifier"`
+	// The identity of the gallery, if configured.
+	Identity GalleryIdentityResponsePtrOutput `pulumi:"identity"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name
@@ -128,6 +132,8 @@ type galleryArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
 	GalleryName *string `pulumi:"galleryName"`
+	// The identity of the gallery, if configured.
+	Identity *GalleryIdentity `pulumi:"identity"`
 	// Resource location
 	Location *string `pulumi:"location"`
 	// The name of the resource group.
@@ -146,6 +152,8 @@ type GalleryArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
 	GalleryName pulumi.StringPtrInput
+	// The identity of the gallery, if configured.
+	Identity GalleryIdentityPtrInput
 	// Resource location
 	Location pulumi.StringPtrInput
 	// The name of the resource group.
@@ -195,6 +203,11 @@ func (o GalleryOutput) ToGalleryOutputWithContext(ctx context.Context) GalleryOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o GalleryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gallery) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The description of this Shared Image Gallery resource. This property is updatable.
 func (o GalleryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gallery) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -203,6 +216,11 @@ func (o GalleryOutput) Description() pulumi.StringPtrOutput {
 // Describes the gallery unique name.
 func (o GalleryOutput) Identifier() GalleryIdentifierResponsePtrOutput {
 	return o.ApplyT(func(v *Gallery) GalleryIdentifierResponsePtrOutput { return v.Identifier }).(GalleryIdentifierResponsePtrOutput)
+}
+
+// The identity of the gallery, if configured.
+func (o GalleryOutput) Identity() GalleryIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Gallery) GalleryIdentityResponsePtrOutput { return v.Identity }).(GalleryIdentityResponsePtrOutput)
 }
 
 // Resource location

@@ -14,10 +14,12 @@ import (
 
 // A Dataset resource belonging to an Instance resource.
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type Dataset struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Detailed description of the Dataset.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Edge location of the resource.
@@ -184,6 +186,11 @@ func (o DatasetOutput) ToDatasetOutput() DatasetOutput {
 
 func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DatasetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Detailed description of the Dataset.

@@ -13,9 +13,9 @@ import (
 
 // Lists a Channel registration for a Bot Service including secrets
 //
-// Uses Azure REST API version 2022-09-15.
+// Uses Azure REST API version 2023-09-15-preview.
 //
-// Other available API versions: 2023-09-15-preview.
+// Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListChannelWithKeys(ctx *pulumi.Context, args *ListChannelWithKeysArgs, opts ...pulumi.InvokeOption) (*ListChannelWithKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListChannelWithKeysResult

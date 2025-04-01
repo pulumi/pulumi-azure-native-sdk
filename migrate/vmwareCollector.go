@@ -12,14 +12,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2019-10-01. In version 1.x of the Azure Native provider, it used API version 2019-10-01.
+// Uses Azure REST API version 2019-10-01. In version 2.x of the Azure Native provider, it used API version 2019-10-01.
 type VMwareCollector struct {
 	pulumi.CustomResourceState
 
-	ETag       pulumi.StringPtrOutput            `pulumi:"eTag"`
-	Name       pulumi.StringOutput               `pulumi:"name"`
-	Properties CollectorPropertiesResponseOutput `pulumi:"properties"`
-	Type       pulumi.StringOutput               `pulumi:"type"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput               `pulumi:"azureApiVersion"`
+	ETag            pulumi.StringPtrOutput            `pulumi:"eTag"`
+	Name            pulumi.StringOutput               `pulumi:"name"`
+	Properties      CollectorPropertiesResponseOutput `pulumi:"properties"`
+	Type            pulumi.StringOutput               `pulumi:"type"`
 }
 
 // NewVMwareCollector registers a new resource with the given unique name, arguments, and options.
@@ -43,16 +45,34 @@ func NewVMwareCollector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20230315:VMwareCollector"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230315:VmwareCollectorsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:VMwareCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:VmwareCollectorsOperation"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:VMwareCollector"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230501preview:VmwareCollectorsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:VMwareCollector"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:VmwareCollectorsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:VMwareCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:VmwareCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:VmwareCollectorsOperation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -146,6 +166,11 @@ func (o VMwareCollectorOutput) ToVMwareCollectorOutput() VMwareCollectorOutput {
 
 func (o VMwareCollectorOutput) ToVMwareCollectorOutputWithContext(ctx context.Context) VMwareCollectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VMwareCollectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VMwareCollector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o VMwareCollectorOutput) ETag() pulumi.StringPtrOutput {

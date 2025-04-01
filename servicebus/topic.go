@@ -14,9 +14,9 @@ import (
 
 // Description of topic resource.
 //
-// Uses Azure REST API version 2022-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Topic struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type Topic struct {
 	AccessedAt pulumi.StringOutput `pulumi:"accessedAt"`
 	// ISO 8601 timespan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
 	AutoDeleteOnIdle pulumi.StringPtrOutput `pulumi:"autoDeleteOnIdle"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Message count details
 	CountDetails MessageCountDetailsResponseOutput `pulumi:"countDetails"`
 	// Exact time the message was created.
@@ -166,7 +168,7 @@ type topicArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// Value indicating if this topic requires duplicate detection.
 	RequiresDuplicateDetection *bool `pulumi:"requiresDuplicateDetection"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Enumerates the possible values for the status of a messaging entity.
 	Status *EntityStatus `pulumi:"status"`
@@ -198,7 +200,7 @@ type TopicArgs struct {
 	NamespaceName pulumi.StringInput
 	// Value indicating if this topic requires duplicate detection.
 	RequiresDuplicateDetection pulumi.BoolPtrInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Enumerates the possible values for the status of a messaging entity.
 	Status EntityStatusPtrInput
@@ -253,6 +255,11 @@ func (o TopicOutput) AccessedAt() pulumi.StringOutput {
 // ISO 8601 timespan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
 func (o TopicOutput) AutoDeleteOnIdle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.AutoDeleteOnIdle }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o TopicOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Message count details

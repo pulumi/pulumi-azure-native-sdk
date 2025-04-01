@@ -13,9 +13,9 @@ import (
 
 // Gets a datasource instance.
 //
-// Uses Azure REST API version 2020-08-01.
+// Uses Azure REST API version 2023-09-01.
 //
-// Other available API versions: 2015-11-01-preview, 2023-09-01, 2025-02-01.
+// Other available API versions: 2015-11-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDataSource(ctx *pulumi.Context, args *LookupDataSourceArgs, opts ...pulumi.InvokeOption) (*LookupDataSourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataSourceResult
@@ -37,6 +37,8 @@ type LookupDataSourceArgs struct {
 
 // Datasources under OMS Workspace.
 type LookupDataSourceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ETag of the data source.
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -88,6 +90,11 @@ func (o LookupDataSourceResultOutput) ToLookupDataSourceResultOutput() LookupDat
 
 func (o LookupDataSourceResultOutput) ToLookupDataSourceResultOutputWithContext(ctx context.Context) LookupDataSourceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDataSourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataSourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ETag of the data source.

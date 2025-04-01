@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2019-05-01.
 //
-// Other available API versions: 2015-08-01-preview.
+// Other available API versions: 2015-08-01-preview, 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIntegrationAccount(ctx *pulumi.Context, args *LookupIntegrationAccountArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountResult
@@ -35,6 +35,8 @@ type LookupIntegrationAccountArgs struct {
 
 // The integration account.
 type LookupIntegrationAccountResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id.
 	Id string `pulumi:"id"`
 	// The integration service environment.
@@ -86,6 +88,11 @@ func (o LookupIntegrationAccountResultOutput) ToLookupIntegrationAccountResultOu
 
 func (o LookupIntegrationAccountResultOutput) ToLookupIntegrationAccountResultOutputWithContext(ctx context.Context) LookupIntegrationAccountResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id.

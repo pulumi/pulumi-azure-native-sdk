@@ -19,9 +19,9 @@ import (
 //
 //	List Both of the 2 Keys of a Spatial Anchors Account
 //
-// Uses Azure REST API version 2021-01-01.
+// Uses Azure REST API version 2021-03-01-preview.
 //
-// Other available API versions: 2021-03-01-preview.
+// Other available API versions: 2021-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mixedreality [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListSpatialAnchorsAccountKeys(ctx *pulumi.Context, args *ListSpatialAnchorsAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListSpatialAnchorsAccountKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSpatialAnchorsAccountKeysResult

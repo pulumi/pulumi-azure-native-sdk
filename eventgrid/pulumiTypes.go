@@ -650,446 +650,6 @@ func (o BoolEqualsFilterResponseOutput) Value() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BoolEqualsFilterResponse) *bool { return v.Value }).(pulumi.BoolPtrOutput)
 }
 
-// The Authentication properties for the client.
-type ClientAuthentication struct {
-	// The CA certificate subject name used for authentication.
-	CertificateSubject *ClientCertificateSubjectDistinguishedName `pulumi:"certificateSubject"`
-	// The self signed certificate's thumbprints data used for authentication.
-	CertificateThumbprint *ClientCertificateThumbprint `pulumi:"certificateThumbprint"`
-}
-
-// ClientAuthenticationInput is an input type that accepts ClientAuthenticationArgs and ClientAuthenticationOutput values.
-// You can construct a concrete instance of `ClientAuthenticationInput` via:
-//
-//	ClientAuthenticationArgs{...}
-type ClientAuthenticationInput interface {
-	pulumi.Input
-
-	ToClientAuthenticationOutput() ClientAuthenticationOutput
-	ToClientAuthenticationOutputWithContext(context.Context) ClientAuthenticationOutput
-}
-
-// The Authentication properties for the client.
-type ClientAuthenticationArgs struct {
-	// The CA certificate subject name used for authentication.
-	CertificateSubject ClientCertificateSubjectDistinguishedNamePtrInput `pulumi:"certificateSubject"`
-	// The self signed certificate's thumbprints data used for authentication.
-	CertificateThumbprint ClientCertificateThumbprintPtrInput `pulumi:"certificateThumbprint"`
-}
-
-func (ClientAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientAuthentication)(nil)).Elem()
-}
-
-func (i ClientAuthenticationArgs) ToClientAuthenticationOutput() ClientAuthenticationOutput {
-	return i.ToClientAuthenticationOutputWithContext(context.Background())
-}
-
-func (i ClientAuthenticationArgs) ToClientAuthenticationOutputWithContext(ctx context.Context) ClientAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationOutput)
-}
-
-func (i ClientAuthenticationArgs) ToClientAuthenticationPtrOutput() ClientAuthenticationPtrOutput {
-	return i.ToClientAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i ClientAuthenticationArgs) ToClientAuthenticationPtrOutputWithContext(ctx context.Context) ClientAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationOutput).ToClientAuthenticationPtrOutputWithContext(ctx)
-}
-
-// ClientAuthenticationPtrInput is an input type that accepts ClientAuthenticationArgs, ClientAuthenticationPtr and ClientAuthenticationPtrOutput values.
-// You can construct a concrete instance of `ClientAuthenticationPtrInput` via:
-//
-//	        ClientAuthenticationArgs{...}
-//
-//	or:
-//
-//	        nil
-type ClientAuthenticationPtrInput interface {
-	pulumi.Input
-
-	ToClientAuthenticationPtrOutput() ClientAuthenticationPtrOutput
-	ToClientAuthenticationPtrOutputWithContext(context.Context) ClientAuthenticationPtrOutput
-}
-
-type clientAuthenticationPtrType ClientAuthenticationArgs
-
-func ClientAuthenticationPtr(v *ClientAuthenticationArgs) ClientAuthenticationPtrInput {
-	return (*clientAuthenticationPtrType)(v)
-}
-
-func (*clientAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientAuthentication)(nil)).Elem()
-}
-
-func (i *clientAuthenticationPtrType) ToClientAuthenticationPtrOutput() ClientAuthenticationPtrOutput {
-	return i.ToClientAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i *clientAuthenticationPtrType) ToClientAuthenticationPtrOutputWithContext(ctx context.Context) ClientAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationPtrOutput)
-}
-
-// The Authentication properties for the client.
-type ClientAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (ClientAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientAuthentication)(nil)).Elem()
-}
-
-func (o ClientAuthenticationOutput) ToClientAuthenticationOutput() ClientAuthenticationOutput {
-	return o
-}
-
-func (o ClientAuthenticationOutput) ToClientAuthenticationOutputWithContext(ctx context.Context) ClientAuthenticationOutput {
-	return o
-}
-
-func (o ClientAuthenticationOutput) ToClientAuthenticationPtrOutput() ClientAuthenticationPtrOutput {
-	return o.ToClientAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (o ClientAuthenticationOutput) ToClientAuthenticationPtrOutputWithContext(ctx context.Context) ClientAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAuthentication) *ClientAuthentication {
-		return &v
-	}).(ClientAuthenticationPtrOutput)
-}
-
-// The CA certificate subject name used for authentication.
-func (o ClientAuthenticationOutput) CertificateSubject() ClientCertificateSubjectDistinguishedNamePtrOutput {
-	return o.ApplyT(func(v ClientAuthentication) *ClientCertificateSubjectDistinguishedName { return v.CertificateSubject }).(ClientCertificateSubjectDistinguishedNamePtrOutput)
-}
-
-// The self signed certificate's thumbprints data used for authentication.
-func (o ClientAuthenticationOutput) CertificateThumbprint() ClientCertificateThumbprintPtrOutput {
-	return o.ApplyT(func(v ClientAuthentication) *ClientCertificateThumbprint { return v.CertificateThumbprint }).(ClientCertificateThumbprintPtrOutput)
-}
-
-type ClientAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (ClientAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientAuthentication)(nil)).Elem()
-}
-
-func (o ClientAuthenticationPtrOutput) ToClientAuthenticationPtrOutput() ClientAuthenticationPtrOutput {
-	return o
-}
-
-func (o ClientAuthenticationPtrOutput) ToClientAuthenticationPtrOutputWithContext(ctx context.Context) ClientAuthenticationPtrOutput {
-	return o
-}
-
-func (o ClientAuthenticationPtrOutput) Elem() ClientAuthenticationOutput {
-	return o.ApplyT(func(v *ClientAuthentication) ClientAuthentication {
-		if v != nil {
-			return *v
-		}
-		var ret ClientAuthentication
-		return ret
-	}).(ClientAuthenticationOutput)
-}
-
-// The CA certificate subject name used for authentication.
-func (o ClientAuthenticationPtrOutput) CertificateSubject() ClientCertificateSubjectDistinguishedNamePtrOutput {
-	return o.ApplyT(func(v *ClientAuthentication) *ClientCertificateSubjectDistinguishedName {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateSubject
-	}).(ClientCertificateSubjectDistinguishedNamePtrOutput)
-}
-
-// The self signed certificate's thumbprints data used for authentication.
-func (o ClientAuthenticationPtrOutput) CertificateThumbprint() ClientCertificateThumbprintPtrOutput {
-	return o.ApplyT(func(v *ClientAuthentication) *ClientCertificateThumbprint {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateThumbprint
-	}).(ClientCertificateThumbprintPtrOutput)
-}
-
-// The Authentication properties for the client.
-type ClientAuthenticationResponse struct {
-	// The CA certificate subject name used for authentication.
-	CertificateSubject *ClientCertificateSubjectDistinguishedNameResponse `pulumi:"certificateSubject"`
-	// The self signed certificate's thumbprints data used for authentication.
-	CertificateThumbprint *ClientCertificateThumbprintResponse `pulumi:"certificateThumbprint"`
-}
-
-// The Authentication properties for the client.
-type ClientAuthenticationResponseOutput struct{ *pulumi.OutputState }
-
-func (ClientAuthenticationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientAuthenticationResponse)(nil)).Elem()
-}
-
-func (o ClientAuthenticationResponseOutput) ToClientAuthenticationResponseOutput() ClientAuthenticationResponseOutput {
-	return o
-}
-
-func (o ClientAuthenticationResponseOutput) ToClientAuthenticationResponseOutputWithContext(ctx context.Context) ClientAuthenticationResponseOutput {
-	return o
-}
-
-// The CA certificate subject name used for authentication.
-func (o ClientAuthenticationResponseOutput) CertificateSubject() ClientCertificateSubjectDistinguishedNameResponsePtrOutput {
-	return o.ApplyT(func(v ClientAuthenticationResponse) *ClientCertificateSubjectDistinguishedNameResponse {
-		return v.CertificateSubject
-	}).(ClientCertificateSubjectDistinguishedNameResponsePtrOutput)
-}
-
-// The self signed certificate's thumbprints data used for authentication.
-func (o ClientAuthenticationResponseOutput) CertificateThumbprint() ClientCertificateThumbprintResponsePtrOutput {
-	return o.ApplyT(func(v ClientAuthenticationResponse) *ClientCertificateThumbprintResponse {
-		return v.CertificateThumbprint
-	}).(ClientCertificateThumbprintResponsePtrOutput)
-}
-
-type ClientAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ClientAuthenticationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientAuthenticationResponse)(nil)).Elem()
-}
-
-func (o ClientAuthenticationResponsePtrOutput) ToClientAuthenticationResponsePtrOutput() ClientAuthenticationResponsePtrOutput {
-	return o
-}
-
-func (o ClientAuthenticationResponsePtrOutput) ToClientAuthenticationResponsePtrOutputWithContext(ctx context.Context) ClientAuthenticationResponsePtrOutput {
-	return o
-}
-
-func (o ClientAuthenticationResponsePtrOutput) Elem() ClientAuthenticationResponseOutput {
-	return o.ApplyT(func(v *ClientAuthenticationResponse) ClientAuthenticationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ClientAuthenticationResponse
-		return ret
-	}).(ClientAuthenticationResponseOutput)
-}
-
-// The CA certificate subject name used for authentication.
-func (o ClientAuthenticationResponsePtrOutput) CertificateSubject() ClientCertificateSubjectDistinguishedNameResponsePtrOutput {
-	return o.ApplyT(func(v *ClientAuthenticationResponse) *ClientCertificateSubjectDistinguishedNameResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateSubject
-	}).(ClientCertificateSubjectDistinguishedNameResponsePtrOutput)
-}
-
-// The self signed certificate's thumbprints data used for authentication.
-func (o ClientAuthenticationResponsePtrOutput) CertificateThumbprint() ClientCertificateThumbprintResponsePtrOutput {
-	return o.ApplyT(func(v *ClientAuthenticationResponse) *ClientCertificateThumbprintResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateThumbprint
-	}).(ClientCertificateThumbprintResponsePtrOutput)
-}
-
-// Client authentication settings for namespace resource.
-type ClientAuthenticationSettings struct {
-	// Alternative authentication name sources related to client authentication settings for namespace resource.
-	AlternativeAuthenticationNameSources []string `pulumi:"alternativeAuthenticationNameSources"`
-}
-
-// ClientAuthenticationSettingsInput is an input type that accepts ClientAuthenticationSettingsArgs and ClientAuthenticationSettingsOutput values.
-// You can construct a concrete instance of `ClientAuthenticationSettingsInput` via:
-//
-//	ClientAuthenticationSettingsArgs{...}
-type ClientAuthenticationSettingsInput interface {
-	pulumi.Input
-
-	ToClientAuthenticationSettingsOutput() ClientAuthenticationSettingsOutput
-	ToClientAuthenticationSettingsOutputWithContext(context.Context) ClientAuthenticationSettingsOutput
-}
-
-// Client authentication settings for namespace resource.
-type ClientAuthenticationSettingsArgs struct {
-	// Alternative authentication name sources related to client authentication settings for namespace resource.
-	AlternativeAuthenticationNameSources pulumi.StringArrayInput `pulumi:"alternativeAuthenticationNameSources"`
-}
-
-func (ClientAuthenticationSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientAuthenticationSettings)(nil)).Elem()
-}
-
-func (i ClientAuthenticationSettingsArgs) ToClientAuthenticationSettingsOutput() ClientAuthenticationSettingsOutput {
-	return i.ToClientAuthenticationSettingsOutputWithContext(context.Background())
-}
-
-func (i ClientAuthenticationSettingsArgs) ToClientAuthenticationSettingsOutputWithContext(ctx context.Context) ClientAuthenticationSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationSettingsOutput)
-}
-
-func (i ClientAuthenticationSettingsArgs) ToClientAuthenticationSettingsPtrOutput() ClientAuthenticationSettingsPtrOutput {
-	return i.ToClientAuthenticationSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i ClientAuthenticationSettingsArgs) ToClientAuthenticationSettingsPtrOutputWithContext(ctx context.Context) ClientAuthenticationSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationSettingsOutput).ToClientAuthenticationSettingsPtrOutputWithContext(ctx)
-}
-
-// ClientAuthenticationSettingsPtrInput is an input type that accepts ClientAuthenticationSettingsArgs, ClientAuthenticationSettingsPtr and ClientAuthenticationSettingsPtrOutput values.
-// You can construct a concrete instance of `ClientAuthenticationSettingsPtrInput` via:
-//
-//	        ClientAuthenticationSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ClientAuthenticationSettingsPtrInput interface {
-	pulumi.Input
-
-	ToClientAuthenticationSettingsPtrOutput() ClientAuthenticationSettingsPtrOutput
-	ToClientAuthenticationSettingsPtrOutputWithContext(context.Context) ClientAuthenticationSettingsPtrOutput
-}
-
-type clientAuthenticationSettingsPtrType ClientAuthenticationSettingsArgs
-
-func ClientAuthenticationSettingsPtr(v *ClientAuthenticationSettingsArgs) ClientAuthenticationSettingsPtrInput {
-	return (*clientAuthenticationSettingsPtrType)(v)
-}
-
-func (*clientAuthenticationSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientAuthenticationSettings)(nil)).Elem()
-}
-
-func (i *clientAuthenticationSettingsPtrType) ToClientAuthenticationSettingsPtrOutput() ClientAuthenticationSettingsPtrOutput {
-	return i.ToClientAuthenticationSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *clientAuthenticationSettingsPtrType) ToClientAuthenticationSettingsPtrOutputWithContext(ctx context.Context) ClientAuthenticationSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientAuthenticationSettingsPtrOutput)
-}
-
-// Client authentication settings for namespace resource.
-type ClientAuthenticationSettingsOutput struct{ *pulumi.OutputState }
-
-func (ClientAuthenticationSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientAuthenticationSettings)(nil)).Elem()
-}
-
-func (o ClientAuthenticationSettingsOutput) ToClientAuthenticationSettingsOutput() ClientAuthenticationSettingsOutput {
-	return o
-}
-
-func (o ClientAuthenticationSettingsOutput) ToClientAuthenticationSettingsOutputWithContext(ctx context.Context) ClientAuthenticationSettingsOutput {
-	return o
-}
-
-func (o ClientAuthenticationSettingsOutput) ToClientAuthenticationSettingsPtrOutput() ClientAuthenticationSettingsPtrOutput {
-	return o.ToClientAuthenticationSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o ClientAuthenticationSettingsOutput) ToClientAuthenticationSettingsPtrOutputWithContext(ctx context.Context) ClientAuthenticationSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAuthenticationSettings) *ClientAuthenticationSettings {
-		return &v
-	}).(ClientAuthenticationSettingsPtrOutput)
-}
-
-// Alternative authentication name sources related to client authentication settings for namespace resource.
-func (o ClientAuthenticationSettingsOutput) AlternativeAuthenticationNameSources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ClientAuthenticationSettings) []string { return v.AlternativeAuthenticationNameSources }).(pulumi.StringArrayOutput)
-}
-
-type ClientAuthenticationSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ClientAuthenticationSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientAuthenticationSettings)(nil)).Elem()
-}
-
-func (o ClientAuthenticationSettingsPtrOutput) ToClientAuthenticationSettingsPtrOutput() ClientAuthenticationSettingsPtrOutput {
-	return o
-}
-
-func (o ClientAuthenticationSettingsPtrOutput) ToClientAuthenticationSettingsPtrOutputWithContext(ctx context.Context) ClientAuthenticationSettingsPtrOutput {
-	return o
-}
-
-func (o ClientAuthenticationSettingsPtrOutput) Elem() ClientAuthenticationSettingsOutput {
-	return o.ApplyT(func(v *ClientAuthenticationSettings) ClientAuthenticationSettings {
-		if v != nil {
-			return *v
-		}
-		var ret ClientAuthenticationSettings
-		return ret
-	}).(ClientAuthenticationSettingsOutput)
-}
-
-// Alternative authentication name sources related to client authentication settings for namespace resource.
-func (o ClientAuthenticationSettingsPtrOutput) AlternativeAuthenticationNameSources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ClientAuthenticationSettings) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AlternativeAuthenticationNameSources
-	}).(pulumi.StringArrayOutput)
-}
-
-// Client authentication settings for namespace resource.
-type ClientAuthenticationSettingsResponse struct {
-	// Alternative authentication name sources related to client authentication settings for namespace resource.
-	AlternativeAuthenticationNameSources []string `pulumi:"alternativeAuthenticationNameSources"`
-}
-
-// Client authentication settings for namespace resource.
-type ClientAuthenticationSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (ClientAuthenticationSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientAuthenticationSettingsResponse)(nil)).Elem()
-}
-
-func (o ClientAuthenticationSettingsResponseOutput) ToClientAuthenticationSettingsResponseOutput() ClientAuthenticationSettingsResponseOutput {
-	return o
-}
-
-func (o ClientAuthenticationSettingsResponseOutput) ToClientAuthenticationSettingsResponseOutputWithContext(ctx context.Context) ClientAuthenticationSettingsResponseOutput {
-	return o
-}
-
-// Alternative authentication name sources related to client authentication settings for namespace resource.
-func (o ClientAuthenticationSettingsResponseOutput) AlternativeAuthenticationNameSources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ClientAuthenticationSettingsResponse) []string { return v.AlternativeAuthenticationNameSources }).(pulumi.StringArrayOutput)
-}
-
-type ClientAuthenticationSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ClientAuthenticationSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientAuthenticationSettingsResponse)(nil)).Elem()
-}
-
-func (o ClientAuthenticationSettingsResponsePtrOutput) ToClientAuthenticationSettingsResponsePtrOutput() ClientAuthenticationSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ClientAuthenticationSettingsResponsePtrOutput) ToClientAuthenticationSettingsResponsePtrOutputWithContext(ctx context.Context) ClientAuthenticationSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ClientAuthenticationSettingsResponsePtrOutput) Elem() ClientAuthenticationSettingsResponseOutput {
-	return o.ApplyT(func(v *ClientAuthenticationSettingsResponse) ClientAuthenticationSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ClientAuthenticationSettingsResponse
-		return ret
-	}).(ClientAuthenticationSettingsResponseOutput)
-}
-
-// Alternative authentication name sources related to client authentication settings for namespace resource.
-func (o ClientAuthenticationSettingsResponsePtrOutput) AlternativeAuthenticationNameSources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ClientAuthenticationSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AlternativeAuthenticationNameSources
-	}).(pulumi.StringArrayOutput)
-}
-
 // The certificate authentication properties for the client.
 type ClientCertificateAuthentication struct {
 	// The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
@@ -1323,555 +883,6 @@ func (o ClientCertificateAuthenticationResponsePtrOutput) ValidationScheme() pul
 			return nil
 		}
 		return v.ValidationScheme
-	}).(pulumi.StringPtrOutput)
-}
-
-// CA certificate subject distinguished name information used by service to authenticate clients.
-// For more information, see https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x500distinguishedname?view=net-6.0#remarks
-type ClientCertificateSubjectDistinguishedName struct {
-	// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
-	CommonName *string `pulumi:"commonName"`
-	// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
-	CountryCode *string `pulumi:"countryCode"`
-	// The organization field in the subject name. If present, the allowed limit is 64 characters.
-	Organization *string `pulumi:"organization"`
-	// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
-	OrganizationUnit *string `pulumi:"organizationUnit"`
-}
-
-// ClientCertificateSubjectDistinguishedNameInput is an input type that accepts ClientCertificateSubjectDistinguishedNameArgs and ClientCertificateSubjectDistinguishedNameOutput values.
-// You can construct a concrete instance of `ClientCertificateSubjectDistinguishedNameInput` via:
-//
-//	ClientCertificateSubjectDistinguishedNameArgs{...}
-type ClientCertificateSubjectDistinguishedNameInput interface {
-	pulumi.Input
-
-	ToClientCertificateSubjectDistinguishedNameOutput() ClientCertificateSubjectDistinguishedNameOutput
-	ToClientCertificateSubjectDistinguishedNameOutputWithContext(context.Context) ClientCertificateSubjectDistinguishedNameOutput
-}
-
-// CA certificate subject distinguished name information used by service to authenticate clients.
-// For more information, see https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x500distinguishedname?view=net-6.0#remarks
-type ClientCertificateSubjectDistinguishedNameArgs struct {
-	// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
-	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
-	// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
-	CountryCode pulumi.StringPtrInput `pulumi:"countryCode"`
-	// The organization field in the subject name. If present, the allowed limit is 64 characters.
-	Organization pulumi.StringPtrInput `pulumi:"organization"`
-	// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
-	OrganizationUnit pulumi.StringPtrInput `pulumi:"organizationUnit"`
-}
-
-func (ClientCertificateSubjectDistinguishedNameArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientCertificateSubjectDistinguishedName)(nil)).Elem()
-}
-
-func (i ClientCertificateSubjectDistinguishedNameArgs) ToClientCertificateSubjectDistinguishedNameOutput() ClientCertificateSubjectDistinguishedNameOutput {
-	return i.ToClientCertificateSubjectDistinguishedNameOutputWithContext(context.Background())
-}
-
-func (i ClientCertificateSubjectDistinguishedNameArgs) ToClientCertificateSubjectDistinguishedNameOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNameOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateSubjectDistinguishedNameOutput)
-}
-
-func (i ClientCertificateSubjectDistinguishedNameArgs) ToClientCertificateSubjectDistinguishedNamePtrOutput() ClientCertificateSubjectDistinguishedNamePtrOutput {
-	return i.ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(context.Background())
-}
-
-func (i ClientCertificateSubjectDistinguishedNameArgs) ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNamePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateSubjectDistinguishedNameOutput).ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(ctx)
-}
-
-// ClientCertificateSubjectDistinguishedNamePtrInput is an input type that accepts ClientCertificateSubjectDistinguishedNameArgs, ClientCertificateSubjectDistinguishedNamePtr and ClientCertificateSubjectDistinguishedNamePtrOutput values.
-// You can construct a concrete instance of `ClientCertificateSubjectDistinguishedNamePtrInput` via:
-//
-//	        ClientCertificateSubjectDistinguishedNameArgs{...}
-//
-//	or:
-//
-//	        nil
-type ClientCertificateSubjectDistinguishedNamePtrInput interface {
-	pulumi.Input
-
-	ToClientCertificateSubjectDistinguishedNamePtrOutput() ClientCertificateSubjectDistinguishedNamePtrOutput
-	ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(context.Context) ClientCertificateSubjectDistinguishedNamePtrOutput
-}
-
-type clientCertificateSubjectDistinguishedNamePtrType ClientCertificateSubjectDistinguishedNameArgs
-
-func ClientCertificateSubjectDistinguishedNamePtr(v *ClientCertificateSubjectDistinguishedNameArgs) ClientCertificateSubjectDistinguishedNamePtrInput {
-	return (*clientCertificateSubjectDistinguishedNamePtrType)(v)
-}
-
-func (*clientCertificateSubjectDistinguishedNamePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientCertificateSubjectDistinguishedName)(nil)).Elem()
-}
-
-func (i *clientCertificateSubjectDistinguishedNamePtrType) ToClientCertificateSubjectDistinguishedNamePtrOutput() ClientCertificateSubjectDistinguishedNamePtrOutput {
-	return i.ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(context.Background())
-}
-
-func (i *clientCertificateSubjectDistinguishedNamePtrType) ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNamePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateSubjectDistinguishedNamePtrOutput)
-}
-
-// CA certificate subject distinguished name information used by service to authenticate clients.
-// For more information, see https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x500distinguishedname?view=net-6.0#remarks
-type ClientCertificateSubjectDistinguishedNameOutput struct{ *pulumi.OutputState }
-
-func (ClientCertificateSubjectDistinguishedNameOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientCertificateSubjectDistinguishedName)(nil)).Elem()
-}
-
-func (o ClientCertificateSubjectDistinguishedNameOutput) ToClientCertificateSubjectDistinguishedNameOutput() ClientCertificateSubjectDistinguishedNameOutput {
-	return o
-}
-
-func (o ClientCertificateSubjectDistinguishedNameOutput) ToClientCertificateSubjectDistinguishedNameOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNameOutput {
-	return o
-}
-
-func (o ClientCertificateSubjectDistinguishedNameOutput) ToClientCertificateSubjectDistinguishedNamePtrOutput() ClientCertificateSubjectDistinguishedNamePtrOutput {
-	return o.ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(context.Background())
-}
-
-func (o ClientCertificateSubjectDistinguishedNameOutput) ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNamePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCertificateSubjectDistinguishedName) *ClientCertificateSubjectDistinguishedName {
-		return &v
-	}).(ClientCertificateSubjectDistinguishedNamePtrOutput)
-}
-
-// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
-func (o ClientCertificateSubjectDistinguishedNameOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedName) *string { return v.CommonName }).(pulumi.StringPtrOutput)
-}
-
-// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
-func (o ClientCertificateSubjectDistinguishedNameOutput) CountryCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedName) *string { return v.CountryCode }).(pulumi.StringPtrOutput)
-}
-
-// The organization field in the subject name. If present, the allowed limit is 64 characters.
-func (o ClientCertificateSubjectDistinguishedNameOutput) Organization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedName) *string { return v.Organization }).(pulumi.StringPtrOutput)
-}
-
-// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
-func (o ClientCertificateSubjectDistinguishedNameOutput) OrganizationUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedName) *string { return v.OrganizationUnit }).(pulumi.StringPtrOutput)
-}
-
-type ClientCertificateSubjectDistinguishedNamePtrOutput struct{ *pulumi.OutputState }
-
-func (ClientCertificateSubjectDistinguishedNamePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientCertificateSubjectDistinguishedName)(nil)).Elem()
-}
-
-func (o ClientCertificateSubjectDistinguishedNamePtrOutput) ToClientCertificateSubjectDistinguishedNamePtrOutput() ClientCertificateSubjectDistinguishedNamePtrOutput {
-	return o
-}
-
-func (o ClientCertificateSubjectDistinguishedNamePtrOutput) ToClientCertificateSubjectDistinguishedNamePtrOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNamePtrOutput {
-	return o
-}
-
-func (o ClientCertificateSubjectDistinguishedNamePtrOutput) Elem() ClientCertificateSubjectDistinguishedNameOutput {
-	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedName) ClientCertificateSubjectDistinguishedName {
-		if v != nil {
-			return *v
-		}
-		var ret ClientCertificateSubjectDistinguishedName
-		return ret
-	}).(ClientCertificateSubjectDistinguishedNameOutput)
-}
-
-// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
-func (o ClientCertificateSubjectDistinguishedNamePtrOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedName) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CommonName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
-func (o ClientCertificateSubjectDistinguishedNamePtrOutput) CountryCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedName) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CountryCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The organization field in the subject name. If present, the allowed limit is 64 characters.
-func (o ClientCertificateSubjectDistinguishedNamePtrOutput) Organization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedName) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Organization
-	}).(pulumi.StringPtrOutput)
-}
-
-// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
-func (o ClientCertificateSubjectDistinguishedNamePtrOutput) OrganizationUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedName) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OrganizationUnit
-	}).(pulumi.StringPtrOutput)
-}
-
-// CA certificate subject distinguished name information used by service to authenticate clients.
-// For more information, see https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x500distinguishedname?view=net-6.0#remarks
-type ClientCertificateSubjectDistinguishedNameResponse struct {
-	// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
-	CommonName *string `pulumi:"commonName"`
-	// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
-	CountryCode *string `pulumi:"countryCode"`
-	// The organization field in the subject name. If present, the allowed limit is 64 characters.
-	Organization *string `pulumi:"organization"`
-	// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
-	OrganizationUnit *string `pulumi:"organizationUnit"`
-}
-
-// CA certificate subject distinguished name information used by service to authenticate clients.
-// For more information, see https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x500distinguishedname?view=net-6.0#remarks
-type ClientCertificateSubjectDistinguishedNameResponseOutput struct{ *pulumi.OutputState }
-
-func (ClientCertificateSubjectDistinguishedNameResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientCertificateSubjectDistinguishedNameResponse)(nil)).Elem()
-}
-
-func (o ClientCertificateSubjectDistinguishedNameResponseOutput) ToClientCertificateSubjectDistinguishedNameResponseOutput() ClientCertificateSubjectDistinguishedNameResponseOutput {
-	return o
-}
-
-func (o ClientCertificateSubjectDistinguishedNameResponseOutput) ToClientCertificateSubjectDistinguishedNameResponseOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNameResponseOutput {
-	return o
-}
-
-// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
-func (o ClientCertificateSubjectDistinguishedNameResponseOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedNameResponse) *string { return v.CommonName }).(pulumi.StringPtrOutput)
-}
-
-// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
-func (o ClientCertificateSubjectDistinguishedNameResponseOutput) CountryCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedNameResponse) *string { return v.CountryCode }).(pulumi.StringPtrOutput)
-}
-
-// The organization field in the subject name. If present, the allowed limit is 64 characters.
-func (o ClientCertificateSubjectDistinguishedNameResponseOutput) Organization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedNameResponse) *string { return v.Organization }).(pulumi.StringPtrOutput)
-}
-
-// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
-func (o ClientCertificateSubjectDistinguishedNameResponseOutput) OrganizationUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateSubjectDistinguishedNameResponse) *string { return v.OrganizationUnit }).(pulumi.StringPtrOutput)
-}
-
-type ClientCertificateSubjectDistinguishedNameResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ClientCertificateSubjectDistinguishedNameResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientCertificateSubjectDistinguishedNameResponse)(nil)).Elem()
-}
-
-func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) ToClientCertificateSubjectDistinguishedNameResponsePtrOutput() ClientCertificateSubjectDistinguishedNameResponsePtrOutput {
-	return o
-}
-
-func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) ToClientCertificateSubjectDistinguishedNameResponsePtrOutputWithContext(ctx context.Context) ClientCertificateSubjectDistinguishedNameResponsePtrOutput {
-	return o
-}
-
-func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) Elem() ClientCertificateSubjectDistinguishedNameResponseOutput {
-	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedNameResponse) ClientCertificateSubjectDistinguishedNameResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ClientCertificateSubjectDistinguishedNameResponse
-		return ret
-	}).(ClientCertificateSubjectDistinguishedNameResponseOutput)
-}
-
-// The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
-func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedNameResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CommonName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
-func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) CountryCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedNameResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CountryCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The organization field in the subject name. If present, the allowed limit is 64 characters.
-func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) Organization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedNameResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Organization
-	}).(pulumi.StringPtrOutput)
-}
-
-// The organization unit field in the subject name. If present, the allowed limit is 32 characters.
-func (o ClientCertificateSubjectDistinguishedNameResponsePtrOutput) OrganizationUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateSubjectDistinguishedNameResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OrganizationUnit
-	}).(pulumi.StringPtrOutput)
-}
-
-// Thumbprints are used by the service to validate the device permission when authentication is done using self signed certificate.
-type ClientCertificateThumbprint struct {
-	// The primary thumbprint used for validation.
-	Primary *string `pulumi:"primary"`
-	// The secondary thumbprint used for validation.
-	Secondary *string `pulumi:"secondary"`
-}
-
-// ClientCertificateThumbprintInput is an input type that accepts ClientCertificateThumbprintArgs and ClientCertificateThumbprintOutput values.
-// You can construct a concrete instance of `ClientCertificateThumbprintInput` via:
-//
-//	ClientCertificateThumbprintArgs{...}
-type ClientCertificateThumbprintInput interface {
-	pulumi.Input
-
-	ToClientCertificateThumbprintOutput() ClientCertificateThumbprintOutput
-	ToClientCertificateThumbprintOutputWithContext(context.Context) ClientCertificateThumbprintOutput
-}
-
-// Thumbprints are used by the service to validate the device permission when authentication is done using self signed certificate.
-type ClientCertificateThumbprintArgs struct {
-	// The primary thumbprint used for validation.
-	Primary pulumi.StringPtrInput `pulumi:"primary"`
-	// The secondary thumbprint used for validation.
-	Secondary pulumi.StringPtrInput `pulumi:"secondary"`
-}
-
-func (ClientCertificateThumbprintArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientCertificateThumbprint)(nil)).Elem()
-}
-
-func (i ClientCertificateThumbprintArgs) ToClientCertificateThumbprintOutput() ClientCertificateThumbprintOutput {
-	return i.ToClientCertificateThumbprintOutputWithContext(context.Background())
-}
-
-func (i ClientCertificateThumbprintArgs) ToClientCertificateThumbprintOutputWithContext(ctx context.Context) ClientCertificateThumbprintOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateThumbprintOutput)
-}
-
-func (i ClientCertificateThumbprintArgs) ToClientCertificateThumbprintPtrOutput() ClientCertificateThumbprintPtrOutput {
-	return i.ToClientCertificateThumbprintPtrOutputWithContext(context.Background())
-}
-
-func (i ClientCertificateThumbprintArgs) ToClientCertificateThumbprintPtrOutputWithContext(ctx context.Context) ClientCertificateThumbprintPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateThumbprintOutput).ToClientCertificateThumbprintPtrOutputWithContext(ctx)
-}
-
-// ClientCertificateThumbprintPtrInput is an input type that accepts ClientCertificateThumbprintArgs, ClientCertificateThumbprintPtr and ClientCertificateThumbprintPtrOutput values.
-// You can construct a concrete instance of `ClientCertificateThumbprintPtrInput` via:
-//
-//	        ClientCertificateThumbprintArgs{...}
-//
-//	or:
-//
-//	        nil
-type ClientCertificateThumbprintPtrInput interface {
-	pulumi.Input
-
-	ToClientCertificateThumbprintPtrOutput() ClientCertificateThumbprintPtrOutput
-	ToClientCertificateThumbprintPtrOutputWithContext(context.Context) ClientCertificateThumbprintPtrOutput
-}
-
-type clientCertificateThumbprintPtrType ClientCertificateThumbprintArgs
-
-func ClientCertificateThumbprintPtr(v *ClientCertificateThumbprintArgs) ClientCertificateThumbprintPtrInput {
-	return (*clientCertificateThumbprintPtrType)(v)
-}
-
-func (*clientCertificateThumbprintPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientCertificateThumbprint)(nil)).Elem()
-}
-
-func (i *clientCertificateThumbprintPtrType) ToClientCertificateThumbprintPtrOutput() ClientCertificateThumbprintPtrOutput {
-	return i.ToClientCertificateThumbprintPtrOutputWithContext(context.Background())
-}
-
-func (i *clientCertificateThumbprintPtrType) ToClientCertificateThumbprintPtrOutputWithContext(ctx context.Context) ClientCertificateThumbprintPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientCertificateThumbprintPtrOutput)
-}
-
-// Thumbprints are used by the service to validate the device permission when authentication is done using self signed certificate.
-type ClientCertificateThumbprintOutput struct{ *pulumi.OutputState }
-
-func (ClientCertificateThumbprintOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientCertificateThumbprint)(nil)).Elem()
-}
-
-func (o ClientCertificateThumbprintOutput) ToClientCertificateThumbprintOutput() ClientCertificateThumbprintOutput {
-	return o
-}
-
-func (o ClientCertificateThumbprintOutput) ToClientCertificateThumbprintOutputWithContext(ctx context.Context) ClientCertificateThumbprintOutput {
-	return o
-}
-
-func (o ClientCertificateThumbprintOutput) ToClientCertificateThumbprintPtrOutput() ClientCertificateThumbprintPtrOutput {
-	return o.ToClientCertificateThumbprintPtrOutputWithContext(context.Background())
-}
-
-func (o ClientCertificateThumbprintOutput) ToClientCertificateThumbprintPtrOutputWithContext(ctx context.Context) ClientCertificateThumbprintPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCertificateThumbprint) *ClientCertificateThumbprint {
-		return &v
-	}).(ClientCertificateThumbprintPtrOutput)
-}
-
-// The primary thumbprint used for validation.
-func (o ClientCertificateThumbprintOutput) Primary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateThumbprint) *string { return v.Primary }).(pulumi.StringPtrOutput)
-}
-
-// The secondary thumbprint used for validation.
-func (o ClientCertificateThumbprintOutput) Secondary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateThumbprint) *string { return v.Secondary }).(pulumi.StringPtrOutput)
-}
-
-type ClientCertificateThumbprintPtrOutput struct{ *pulumi.OutputState }
-
-func (ClientCertificateThumbprintPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientCertificateThumbprint)(nil)).Elem()
-}
-
-func (o ClientCertificateThumbprintPtrOutput) ToClientCertificateThumbprintPtrOutput() ClientCertificateThumbprintPtrOutput {
-	return o
-}
-
-func (o ClientCertificateThumbprintPtrOutput) ToClientCertificateThumbprintPtrOutputWithContext(ctx context.Context) ClientCertificateThumbprintPtrOutput {
-	return o
-}
-
-func (o ClientCertificateThumbprintPtrOutput) Elem() ClientCertificateThumbprintOutput {
-	return o.ApplyT(func(v *ClientCertificateThumbprint) ClientCertificateThumbprint {
-		if v != nil {
-			return *v
-		}
-		var ret ClientCertificateThumbprint
-		return ret
-	}).(ClientCertificateThumbprintOutput)
-}
-
-// The primary thumbprint used for validation.
-func (o ClientCertificateThumbprintPtrOutput) Primary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateThumbprint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Primary
-	}).(pulumi.StringPtrOutput)
-}
-
-// The secondary thumbprint used for validation.
-func (o ClientCertificateThumbprintPtrOutput) Secondary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateThumbprint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Secondary
-	}).(pulumi.StringPtrOutput)
-}
-
-// Thumbprints are used by the service to validate the device permission when authentication is done using self signed certificate.
-type ClientCertificateThumbprintResponse struct {
-	// The primary thumbprint used for validation.
-	Primary *string `pulumi:"primary"`
-	// The secondary thumbprint used for validation.
-	Secondary *string `pulumi:"secondary"`
-}
-
-// Thumbprints are used by the service to validate the device permission when authentication is done using self signed certificate.
-type ClientCertificateThumbprintResponseOutput struct{ *pulumi.OutputState }
-
-func (ClientCertificateThumbprintResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientCertificateThumbprintResponse)(nil)).Elem()
-}
-
-func (o ClientCertificateThumbprintResponseOutput) ToClientCertificateThumbprintResponseOutput() ClientCertificateThumbprintResponseOutput {
-	return o
-}
-
-func (o ClientCertificateThumbprintResponseOutput) ToClientCertificateThumbprintResponseOutputWithContext(ctx context.Context) ClientCertificateThumbprintResponseOutput {
-	return o
-}
-
-// The primary thumbprint used for validation.
-func (o ClientCertificateThumbprintResponseOutput) Primary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateThumbprintResponse) *string { return v.Primary }).(pulumi.StringPtrOutput)
-}
-
-// The secondary thumbprint used for validation.
-func (o ClientCertificateThumbprintResponseOutput) Secondary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientCertificateThumbprintResponse) *string { return v.Secondary }).(pulumi.StringPtrOutput)
-}
-
-type ClientCertificateThumbprintResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ClientCertificateThumbprintResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientCertificateThumbprintResponse)(nil)).Elem()
-}
-
-func (o ClientCertificateThumbprintResponsePtrOutput) ToClientCertificateThumbprintResponsePtrOutput() ClientCertificateThumbprintResponsePtrOutput {
-	return o
-}
-
-func (o ClientCertificateThumbprintResponsePtrOutput) ToClientCertificateThumbprintResponsePtrOutputWithContext(ctx context.Context) ClientCertificateThumbprintResponsePtrOutput {
-	return o
-}
-
-func (o ClientCertificateThumbprintResponsePtrOutput) Elem() ClientCertificateThumbprintResponseOutput {
-	return o.ApplyT(func(v *ClientCertificateThumbprintResponse) ClientCertificateThumbprintResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ClientCertificateThumbprintResponse
-		return ret
-	}).(ClientCertificateThumbprintResponseOutput)
-}
-
-// The primary thumbprint used for validation.
-func (o ClientCertificateThumbprintResponsePtrOutput) Primary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateThumbprintResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Primary
-	}).(pulumi.StringPtrOutput)
-}
-
-// The secondary thumbprint used for validation.
-func (o ClientCertificateThumbprintResponsePtrOutput) Secondary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientCertificateThumbprintResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Secondary
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2147,10 +1158,487 @@ func (o ConnectionStateResponsePtrOutput) Status() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A custom domain configuration that allows users to publish to their own domain name.
+type CustomDomainConfiguration struct {
+	// The URL for the certificate that is used for publishing to the custom domain. We currently support certificates stored in Azure Key Vault only. While certificate URL can be either
+	// versioned URL of the following format https://{key-vault-name}.vault.azure.net/certificates/{certificate-name}/{version-id}, or unversioned URL of the following format (e.g.,
+	// https://contosovault.vault.azure.net/certificates/contosocert, we support unversioned certificate URL only (e.g., https://contosovault.vault.azure.net/certificates/contosocert)
+	CertificateUrl *string `pulumi:"certificateUrl"`
+	// Expected DNS TXT record name. Event Grid will check for a TXT record with this name in the DNS record set of the custom domain name to prove ownership over the domain.
+	// The values under this TXT record must contain the expected TXT record value.
+	ExpectedTxtRecordName *string `pulumi:"expectedTxtRecordName"`
+	// Expected DNS TXT record value. Event Grid will check for a TXT record with this value in the DNS record set of the custom domain name to prove ownership over the domain.
+	ExpectedTxtRecordValue *string `pulumi:"expectedTxtRecordValue"`
+	// Fully Qualified Domain Name (FQDN) for the custom domain.
+	FullyQualifiedDomainName string `pulumi:"fullyQualifiedDomainName"`
+	// Identity info for accessing the certificate for the custom domain. This identity info must match an identity that has been set on the namespace.
+	Identity *CustomDomainIdentity `pulumi:"identity"`
+	// Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated.
+	ValidationState *string `pulumi:"validationState"`
+}
+
+// CustomDomainConfigurationInput is an input type that accepts CustomDomainConfigurationArgs and CustomDomainConfigurationOutput values.
+// You can construct a concrete instance of `CustomDomainConfigurationInput` via:
+//
+//	CustomDomainConfigurationArgs{...}
+type CustomDomainConfigurationInput interface {
+	pulumi.Input
+
+	ToCustomDomainConfigurationOutput() CustomDomainConfigurationOutput
+	ToCustomDomainConfigurationOutputWithContext(context.Context) CustomDomainConfigurationOutput
+}
+
+// A custom domain configuration that allows users to publish to their own domain name.
+type CustomDomainConfigurationArgs struct {
+	// The URL for the certificate that is used for publishing to the custom domain. We currently support certificates stored in Azure Key Vault only. While certificate URL can be either
+	// versioned URL of the following format https://{key-vault-name}.vault.azure.net/certificates/{certificate-name}/{version-id}, or unversioned URL of the following format (e.g.,
+	// https://contosovault.vault.azure.net/certificates/contosocert, we support unversioned certificate URL only (e.g., https://contosovault.vault.azure.net/certificates/contosocert)
+	CertificateUrl pulumi.StringPtrInput `pulumi:"certificateUrl"`
+	// Expected DNS TXT record name. Event Grid will check for a TXT record with this name in the DNS record set of the custom domain name to prove ownership over the domain.
+	// The values under this TXT record must contain the expected TXT record value.
+	ExpectedTxtRecordName pulumi.StringPtrInput `pulumi:"expectedTxtRecordName"`
+	// Expected DNS TXT record value. Event Grid will check for a TXT record with this value in the DNS record set of the custom domain name to prove ownership over the domain.
+	ExpectedTxtRecordValue pulumi.StringPtrInput `pulumi:"expectedTxtRecordValue"`
+	// Fully Qualified Domain Name (FQDN) for the custom domain.
+	FullyQualifiedDomainName pulumi.StringInput `pulumi:"fullyQualifiedDomainName"`
+	// Identity info for accessing the certificate for the custom domain. This identity info must match an identity that has been set on the namespace.
+	Identity CustomDomainIdentityPtrInput `pulumi:"identity"`
+	// Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated.
+	ValidationState pulumi.StringPtrInput `pulumi:"validationState"`
+}
+
+func (CustomDomainConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainConfiguration)(nil)).Elem()
+}
+
+func (i CustomDomainConfigurationArgs) ToCustomDomainConfigurationOutput() CustomDomainConfigurationOutput {
+	return i.ToCustomDomainConfigurationOutputWithContext(context.Background())
+}
+
+func (i CustomDomainConfigurationArgs) ToCustomDomainConfigurationOutputWithContext(ctx context.Context) CustomDomainConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainConfigurationOutput)
+}
+
+// CustomDomainConfigurationArrayInput is an input type that accepts CustomDomainConfigurationArray and CustomDomainConfigurationArrayOutput values.
+// You can construct a concrete instance of `CustomDomainConfigurationArrayInput` via:
+//
+//	CustomDomainConfigurationArray{ CustomDomainConfigurationArgs{...} }
+type CustomDomainConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToCustomDomainConfigurationArrayOutput() CustomDomainConfigurationArrayOutput
+	ToCustomDomainConfigurationArrayOutputWithContext(context.Context) CustomDomainConfigurationArrayOutput
+}
+
+type CustomDomainConfigurationArray []CustomDomainConfigurationInput
+
+func (CustomDomainConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDomainConfiguration)(nil)).Elem()
+}
+
+func (i CustomDomainConfigurationArray) ToCustomDomainConfigurationArrayOutput() CustomDomainConfigurationArrayOutput {
+	return i.ToCustomDomainConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i CustomDomainConfigurationArray) ToCustomDomainConfigurationArrayOutputWithContext(ctx context.Context) CustomDomainConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainConfigurationArrayOutput)
+}
+
+// A custom domain configuration that allows users to publish to their own domain name.
+type CustomDomainConfigurationOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainConfiguration)(nil)).Elem()
+}
+
+func (o CustomDomainConfigurationOutput) ToCustomDomainConfigurationOutput() CustomDomainConfigurationOutput {
+	return o
+}
+
+func (o CustomDomainConfigurationOutput) ToCustomDomainConfigurationOutputWithContext(ctx context.Context) CustomDomainConfigurationOutput {
+	return o
+}
+
+// The URL for the certificate that is used for publishing to the custom domain. We currently support certificates stored in Azure Key Vault only. While certificate URL can be either
+// versioned URL of the following format https://{key-vault-name}.vault.azure.net/certificates/{certificate-name}/{version-id}, or unversioned URL of the following format (e.g.,
+// https://contosovault.vault.azure.net/certificates/contosocert, we support unversioned certificate URL only (e.g., https://contosovault.vault.azure.net/certificates/contosocert)
+func (o CustomDomainConfigurationOutput) CertificateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainConfiguration) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
+}
+
+// Expected DNS TXT record name. Event Grid will check for a TXT record with this name in the DNS record set of the custom domain name to prove ownership over the domain.
+// The values under this TXT record must contain the expected TXT record value.
+func (o CustomDomainConfigurationOutput) ExpectedTxtRecordName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainConfiguration) *string { return v.ExpectedTxtRecordName }).(pulumi.StringPtrOutput)
+}
+
+// Expected DNS TXT record value. Event Grid will check for a TXT record with this value in the DNS record set of the custom domain name to prove ownership over the domain.
+func (o CustomDomainConfigurationOutput) ExpectedTxtRecordValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainConfiguration) *string { return v.ExpectedTxtRecordValue }).(pulumi.StringPtrOutput)
+}
+
+// Fully Qualified Domain Name (FQDN) for the custom domain.
+func (o CustomDomainConfigurationOutput) FullyQualifiedDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomDomainConfiguration) string { return v.FullyQualifiedDomainName }).(pulumi.StringOutput)
+}
+
+// Identity info for accessing the certificate for the custom domain. This identity info must match an identity that has been set on the namespace.
+func (o CustomDomainConfigurationOutput) Identity() CustomDomainIdentityPtrOutput {
+	return o.ApplyT(func(v CustomDomainConfiguration) *CustomDomainIdentity { return v.Identity }).(CustomDomainIdentityPtrOutput)
+}
+
+// Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated.
+func (o CustomDomainConfigurationOutput) ValidationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainConfiguration) *string { return v.ValidationState }).(pulumi.StringPtrOutput)
+}
+
+type CustomDomainConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDomainConfiguration)(nil)).Elem()
+}
+
+func (o CustomDomainConfigurationArrayOutput) ToCustomDomainConfigurationArrayOutput() CustomDomainConfigurationArrayOutput {
+	return o
+}
+
+func (o CustomDomainConfigurationArrayOutput) ToCustomDomainConfigurationArrayOutputWithContext(ctx context.Context) CustomDomainConfigurationArrayOutput {
+	return o
+}
+
+func (o CustomDomainConfigurationArrayOutput) Index(i pulumi.IntInput) CustomDomainConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomDomainConfiguration {
+		return vs[0].([]CustomDomainConfiguration)[vs[1].(int)]
+	}).(CustomDomainConfigurationOutput)
+}
+
+// A custom domain configuration that allows users to publish to their own domain name.
+type CustomDomainConfigurationResponse struct {
+	// The URL for the certificate that is used for publishing to the custom domain. We currently support certificates stored in Azure Key Vault only. While certificate URL can be either
+	// versioned URL of the following format https://{key-vault-name}.vault.azure.net/certificates/{certificate-name}/{version-id}, or unversioned URL of the following format (e.g.,
+	// https://contosovault.vault.azure.net/certificates/contosocert, we support unversioned certificate URL only (e.g., https://contosovault.vault.azure.net/certificates/contosocert)
+	CertificateUrl *string `pulumi:"certificateUrl"`
+	// Expected DNS TXT record name. Event Grid will check for a TXT record with this name in the DNS record set of the custom domain name to prove ownership over the domain.
+	// The values under this TXT record must contain the expected TXT record value.
+	ExpectedTxtRecordName *string `pulumi:"expectedTxtRecordName"`
+	// Expected DNS TXT record value. Event Grid will check for a TXT record with this value in the DNS record set of the custom domain name to prove ownership over the domain.
+	ExpectedTxtRecordValue *string `pulumi:"expectedTxtRecordValue"`
+	// Fully Qualified Domain Name (FQDN) for the custom domain.
+	FullyQualifiedDomainName string `pulumi:"fullyQualifiedDomainName"`
+	// Identity info for accessing the certificate for the custom domain. This identity info must match an identity that has been set on the namespace.
+	Identity *CustomDomainIdentityResponse `pulumi:"identity"`
+	// Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated.
+	ValidationState *string `pulumi:"validationState"`
+}
+
+// A custom domain configuration that allows users to publish to their own domain name.
+type CustomDomainConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainConfigurationResponse)(nil)).Elem()
+}
+
+func (o CustomDomainConfigurationResponseOutput) ToCustomDomainConfigurationResponseOutput() CustomDomainConfigurationResponseOutput {
+	return o
+}
+
+func (o CustomDomainConfigurationResponseOutput) ToCustomDomainConfigurationResponseOutputWithContext(ctx context.Context) CustomDomainConfigurationResponseOutput {
+	return o
+}
+
+// The URL for the certificate that is used for publishing to the custom domain. We currently support certificates stored in Azure Key Vault only. While certificate URL can be either
+// versioned URL of the following format https://{key-vault-name}.vault.azure.net/certificates/{certificate-name}/{version-id}, or unversioned URL of the following format (e.g.,
+// https://contosovault.vault.azure.net/certificates/contosocert, we support unversioned certificate URL only (e.g., https://contosovault.vault.azure.net/certificates/contosocert)
+func (o CustomDomainConfigurationResponseOutput) CertificateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainConfigurationResponse) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
+}
+
+// Expected DNS TXT record name. Event Grid will check for a TXT record with this name in the DNS record set of the custom domain name to prove ownership over the domain.
+// The values under this TXT record must contain the expected TXT record value.
+func (o CustomDomainConfigurationResponseOutput) ExpectedTxtRecordName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainConfigurationResponse) *string { return v.ExpectedTxtRecordName }).(pulumi.StringPtrOutput)
+}
+
+// Expected DNS TXT record value. Event Grid will check for a TXT record with this value in the DNS record set of the custom domain name to prove ownership over the domain.
+func (o CustomDomainConfigurationResponseOutput) ExpectedTxtRecordValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainConfigurationResponse) *string { return v.ExpectedTxtRecordValue }).(pulumi.StringPtrOutput)
+}
+
+// Fully Qualified Domain Name (FQDN) for the custom domain.
+func (o CustomDomainConfigurationResponseOutput) FullyQualifiedDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomDomainConfigurationResponse) string { return v.FullyQualifiedDomainName }).(pulumi.StringOutput)
+}
+
+// Identity info for accessing the certificate for the custom domain. This identity info must match an identity that has been set on the namespace.
+func (o CustomDomainConfigurationResponseOutput) Identity() CustomDomainIdentityResponsePtrOutput {
+	return o.ApplyT(func(v CustomDomainConfigurationResponse) *CustomDomainIdentityResponse { return v.Identity }).(CustomDomainIdentityResponsePtrOutput)
+}
+
+// Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated.
+func (o CustomDomainConfigurationResponseOutput) ValidationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainConfigurationResponse) *string { return v.ValidationState }).(pulumi.StringPtrOutput)
+}
+
+type CustomDomainConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDomainConfigurationResponse)(nil)).Elem()
+}
+
+func (o CustomDomainConfigurationResponseArrayOutput) ToCustomDomainConfigurationResponseArrayOutput() CustomDomainConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o CustomDomainConfigurationResponseArrayOutput) ToCustomDomainConfigurationResponseArrayOutputWithContext(ctx context.Context) CustomDomainConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o CustomDomainConfigurationResponseArrayOutput) Index(i pulumi.IntInput) CustomDomainConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomDomainConfigurationResponse {
+		return vs[0].([]CustomDomainConfigurationResponse)[vs[1].(int)]
+	}).(CustomDomainConfigurationResponseOutput)
+}
+
+// The identity information for retrieving the certificate for the custom domain.
+type CustomDomainIdentity struct {
+	// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
+	Type *string `pulumi:"type"`
+	// The user identity associated with the resource.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// CustomDomainIdentityInput is an input type that accepts CustomDomainIdentityArgs and CustomDomainIdentityOutput values.
+// You can construct a concrete instance of `CustomDomainIdentityInput` via:
+//
+//	CustomDomainIdentityArgs{...}
+type CustomDomainIdentityInput interface {
+	pulumi.Input
+
+	ToCustomDomainIdentityOutput() CustomDomainIdentityOutput
+	ToCustomDomainIdentityOutputWithContext(context.Context) CustomDomainIdentityOutput
+}
+
+// The identity information for retrieving the certificate for the custom domain.
+type CustomDomainIdentityArgs struct {
+	// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The user identity associated with the resource.
+	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
+}
+
+func (CustomDomainIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainIdentity)(nil)).Elem()
+}
+
+func (i CustomDomainIdentityArgs) ToCustomDomainIdentityOutput() CustomDomainIdentityOutput {
+	return i.ToCustomDomainIdentityOutputWithContext(context.Background())
+}
+
+func (i CustomDomainIdentityArgs) ToCustomDomainIdentityOutputWithContext(ctx context.Context) CustomDomainIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainIdentityOutput)
+}
+
+func (i CustomDomainIdentityArgs) ToCustomDomainIdentityPtrOutput() CustomDomainIdentityPtrOutput {
+	return i.ToCustomDomainIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i CustomDomainIdentityArgs) ToCustomDomainIdentityPtrOutputWithContext(ctx context.Context) CustomDomainIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainIdentityOutput).ToCustomDomainIdentityPtrOutputWithContext(ctx)
+}
+
+// CustomDomainIdentityPtrInput is an input type that accepts CustomDomainIdentityArgs, CustomDomainIdentityPtr and CustomDomainIdentityPtrOutput values.
+// You can construct a concrete instance of `CustomDomainIdentityPtrInput` via:
+//
+//	        CustomDomainIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomDomainIdentityPtrInput interface {
+	pulumi.Input
+
+	ToCustomDomainIdentityPtrOutput() CustomDomainIdentityPtrOutput
+	ToCustomDomainIdentityPtrOutputWithContext(context.Context) CustomDomainIdentityPtrOutput
+}
+
+type customDomainIdentityPtrType CustomDomainIdentityArgs
+
+func CustomDomainIdentityPtr(v *CustomDomainIdentityArgs) CustomDomainIdentityPtrInput {
+	return (*customDomainIdentityPtrType)(v)
+}
+
+func (*customDomainIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomainIdentity)(nil)).Elem()
+}
+
+func (i *customDomainIdentityPtrType) ToCustomDomainIdentityPtrOutput() CustomDomainIdentityPtrOutput {
+	return i.ToCustomDomainIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *customDomainIdentityPtrType) ToCustomDomainIdentityPtrOutputWithContext(ctx context.Context) CustomDomainIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainIdentityPtrOutput)
+}
+
+// The identity information for retrieving the certificate for the custom domain.
+type CustomDomainIdentityOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainIdentity)(nil)).Elem()
+}
+
+func (o CustomDomainIdentityOutput) ToCustomDomainIdentityOutput() CustomDomainIdentityOutput {
+	return o
+}
+
+func (o CustomDomainIdentityOutput) ToCustomDomainIdentityOutputWithContext(ctx context.Context) CustomDomainIdentityOutput {
+	return o
+}
+
+func (o CustomDomainIdentityOutput) ToCustomDomainIdentityPtrOutput() CustomDomainIdentityPtrOutput {
+	return o.ToCustomDomainIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainIdentityOutput) ToCustomDomainIdentityPtrOutputWithContext(ctx context.Context) CustomDomainIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDomainIdentity) *CustomDomainIdentity {
+		return &v
+	}).(CustomDomainIdentityPtrOutput)
+}
+
+// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
+func (o CustomDomainIdentityOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The user identity associated with the resource.
+func (o CustomDomainIdentityOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainIdentity) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type CustomDomainIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomainIdentity)(nil)).Elem()
+}
+
+func (o CustomDomainIdentityPtrOutput) ToCustomDomainIdentityPtrOutput() CustomDomainIdentityPtrOutput {
+	return o
+}
+
+func (o CustomDomainIdentityPtrOutput) ToCustomDomainIdentityPtrOutputWithContext(ctx context.Context) CustomDomainIdentityPtrOutput {
+	return o
+}
+
+func (o CustomDomainIdentityPtrOutput) Elem() CustomDomainIdentityOutput {
+	return o.ApplyT(func(v *CustomDomainIdentity) CustomDomainIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret CustomDomainIdentity
+		return ret
+	}).(CustomDomainIdentityOutput)
+}
+
+// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
+func (o CustomDomainIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomDomainIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user identity associated with the resource.
+func (o CustomDomainIdentityPtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomDomainIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity information for retrieving the certificate for the custom domain.
+type CustomDomainIdentityResponse struct {
+	// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
+	Type *string `pulumi:"type"`
+	// The user identity associated with the resource.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// The identity information for retrieving the certificate for the custom domain.
+type CustomDomainIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainIdentityResponse)(nil)).Elem()
+}
+
+func (o CustomDomainIdentityResponseOutput) ToCustomDomainIdentityResponseOutput() CustomDomainIdentityResponseOutput {
+	return o
+}
+
+func (o CustomDomainIdentityResponseOutput) ToCustomDomainIdentityResponseOutputWithContext(ctx context.Context) CustomDomainIdentityResponseOutput {
+	return o
+}
+
+// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
+func (o CustomDomainIdentityResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The user identity associated with the resource.
+func (o CustomDomainIdentityResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainIdentityResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type CustomDomainIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomainIdentityResponse)(nil)).Elem()
+}
+
+func (o CustomDomainIdentityResponsePtrOutput) ToCustomDomainIdentityResponsePtrOutput() CustomDomainIdentityResponsePtrOutput {
+	return o
+}
+
+func (o CustomDomainIdentityResponsePtrOutput) ToCustomDomainIdentityResponsePtrOutputWithContext(ctx context.Context) CustomDomainIdentityResponsePtrOutput {
+	return o
+}
+
+func (o CustomDomainIdentityResponsePtrOutput) Elem() CustomDomainIdentityResponseOutput {
+	return o.ApplyT(func(v *CustomDomainIdentityResponse) CustomDomainIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomDomainIdentityResponse
+		return ret
+	}).(CustomDomainIdentityResponseOutput)
+}
+
+// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
+func (o CustomDomainIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomDomainIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user identity associated with the resource.
+func (o CustomDomainIdentityResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomDomainIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information about the deadletter destination with resource identity.
 type DeadLetterWithResourceIdentity struct {
 	// Information about the destination where events have to be delivered for the event subscription.
-	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering.
 	DeadLetterDestination *StorageBlobDeadLetterDestination `pulumi:"deadLetterDestination"`
 	// The identity to use when dead-lettering events.
 	Identity *EventSubscriptionIdentity `pulumi:"identity"`
@@ -2170,7 +1658,7 @@ type DeadLetterWithResourceIdentityInput interface {
 // Information about the deadletter destination with resource identity.
 type DeadLetterWithResourceIdentityArgs struct {
 	// Information about the destination where events have to be delivered for the event subscription.
-	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering.
 	DeadLetterDestination StorageBlobDeadLetterDestinationPtrInput `pulumi:"deadLetterDestination"`
 	// The identity to use when dead-lettering events.
 	Identity EventSubscriptionIdentityPtrInput `pulumi:"identity"`
@@ -2255,7 +1743,7 @@ func (o DeadLetterWithResourceIdentityOutput) ToDeadLetterWithResourceIdentityPt
 }
 
 // Information about the destination where events have to be delivered for the event subscription.
-// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering.
 func (o DeadLetterWithResourceIdentityOutput) DeadLetterDestination() StorageBlobDeadLetterDestinationPtrOutput {
 	return o.ApplyT(func(v DeadLetterWithResourceIdentity) *StorageBlobDeadLetterDestination {
 		return v.DeadLetterDestination
@@ -2292,7 +1780,7 @@ func (o DeadLetterWithResourceIdentityPtrOutput) Elem() DeadLetterWithResourceId
 }
 
 // Information about the destination where events have to be delivered for the event subscription.
-// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering.
 func (o DeadLetterWithResourceIdentityPtrOutput) DeadLetterDestination() StorageBlobDeadLetterDestinationPtrOutput {
 	return o.ApplyT(func(v *DeadLetterWithResourceIdentity) *StorageBlobDeadLetterDestination {
 		if v == nil {
@@ -2315,7 +1803,7 @@ func (o DeadLetterWithResourceIdentityPtrOutput) Identity() EventSubscriptionIde
 // Information about the deadletter destination with resource identity.
 type DeadLetterWithResourceIdentityResponse struct {
 	// Information about the destination where events have to be delivered for the event subscription.
-	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering.
 	DeadLetterDestination *StorageBlobDeadLetterDestinationResponse `pulumi:"deadLetterDestination"`
 	// The identity to use when dead-lettering events.
 	Identity *EventSubscriptionIdentityResponse `pulumi:"identity"`
@@ -2337,7 +1825,7 @@ func (o DeadLetterWithResourceIdentityResponseOutput) ToDeadLetterWithResourceId
 }
 
 // Information about the destination where events have to be delivered for the event subscription.
-// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering.
 func (o DeadLetterWithResourceIdentityResponseOutput) DeadLetterDestination() StorageBlobDeadLetterDestinationResponsePtrOutput {
 	return o.ApplyT(func(v DeadLetterWithResourceIdentityResponse) *StorageBlobDeadLetterDestinationResponse {
 		return v.DeadLetterDestination
@@ -2374,7 +1862,7 @@ func (o DeadLetterWithResourceIdentityResponsePtrOutput) Elem() DeadLetterWithRe
 }
 
 // Information about the destination where events have to be delivered for the event subscription.
-// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering.
 func (o DeadLetterWithResourceIdentityResponsePtrOutput) DeadLetterDestination() StorageBlobDeadLetterDestinationResponsePtrOutput {
 	return o.ApplyT(func(v *DeadLetterWithResourceIdentityResponse) *StorageBlobDeadLetterDestinationResponse {
 		if v == nil {
@@ -2398,6 +1886,8 @@ func (o DeadLetterWithResourceIdentityResponsePtrOutput) Identity() EventSubscri
 type DeliveryConfiguration struct {
 	// Delivery mode of the event subscription.
 	DeliveryMode *string `pulumi:"deliveryMode"`
+	// This property should be populated when deliveryMode is push and represents information about the push subscription.
+	Push *PushInfo `pulumi:"push"`
 	// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
 	Queue *QueueInfo `pulumi:"queue"`
 }
@@ -2417,6 +1907,8 @@ type DeliveryConfigurationInput interface {
 type DeliveryConfigurationArgs struct {
 	// Delivery mode of the event subscription.
 	DeliveryMode pulumi.StringPtrInput `pulumi:"deliveryMode"`
+	// This property should be populated when deliveryMode is push and represents information about the push subscription.
+	Push PushInfoPtrInput `pulumi:"push"`
 	// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
 	Queue QueueInfoPtrInput `pulumi:"queue"`
 }
@@ -2504,6 +1996,11 @@ func (o DeliveryConfigurationOutput) DeliveryMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeliveryConfiguration) *string { return v.DeliveryMode }).(pulumi.StringPtrOutput)
 }
 
+// This property should be populated when deliveryMode is push and represents information about the push subscription.
+func (o DeliveryConfigurationOutput) Push() PushInfoPtrOutput {
+	return o.ApplyT(func(v DeliveryConfiguration) *PushInfo { return v.Push }).(PushInfoPtrOutput)
+}
+
 // This property should be populated when deliveryMode is queue and represents information about the queue subscription.
 func (o DeliveryConfigurationOutput) Queue() QueueInfoPtrOutput {
 	return o.ApplyT(func(v DeliveryConfiguration) *QueueInfo { return v.Queue }).(QueueInfoPtrOutput)
@@ -2543,6 +2040,16 @@ func (o DeliveryConfigurationPtrOutput) DeliveryMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// This property should be populated when deliveryMode is push and represents information about the push subscription.
+func (o DeliveryConfigurationPtrOutput) Push() PushInfoPtrOutput {
+	return o.ApplyT(func(v *DeliveryConfiguration) *PushInfo {
+		if v == nil {
+			return nil
+		}
+		return v.Push
+	}).(PushInfoPtrOutput)
+}
+
 // This property should be populated when deliveryMode is queue and represents information about the queue subscription.
 func (o DeliveryConfigurationPtrOutput) Queue() QueueInfoPtrOutput {
 	return o.ApplyT(func(v *DeliveryConfiguration) *QueueInfo {
@@ -2557,6 +2064,8 @@ func (o DeliveryConfigurationPtrOutput) Queue() QueueInfoPtrOutput {
 type DeliveryConfigurationResponse struct {
 	// Delivery mode of the event subscription.
 	DeliveryMode *string `pulumi:"deliveryMode"`
+	// This property should be populated when deliveryMode is push and represents information about the push subscription.
+	Push *PushInfoResponse `pulumi:"push"`
 	// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
 	Queue *QueueInfoResponse `pulumi:"queue"`
 }
@@ -2579,6 +2088,11 @@ func (o DeliveryConfigurationResponseOutput) ToDeliveryConfigurationResponseOutp
 // Delivery mode of the event subscription.
 func (o DeliveryConfigurationResponseOutput) DeliveryMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeliveryConfigurationResponse) *string { return v.DeliveryMode }).(pulumi.StringPtrOutput)
+}
+
+// This property should be populated when deliveryMode is push and represents information about the push subscription.
+func (o DeliveryConfigurationResponseOutput) Push() PushInfoResponsePtrOutput {
+	return o.ApplyT(func(v DeliveryConfigurationResponse) *PushInfoResponse { return v.Push }).(PushInfoResponsePtrOutput)
 }
 
 // This property should be populated when deliveryMode is queue and represents information about the queue subscription.
@@ -2620,6 +2134,16 @@ func (o DeliveryConfigurationResponsePtrOutput) DeliveryMode() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// This property should be populated when deliveryMode is push and represents information about the push subscription.
+func (o DeliveryConfigurationResponsePtrOutput) Push() PushInfoResponsePtrOutput {
+	return o.ApplyT(func(v *DeliveryConfigurationResponse) *PushInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Push
+	}).(PushInfoResponsePtrOutput)
+}
+
 // This property should be populated when deliveryMode is queue and represents information about the queue subscription.
 func (o DeliveryConfigurationResponsePtrOutput) Queue() QueueInfoResponsePtrOutput {
 	return o.ApplyT(func(v *DeliveryConfigurationResponse) *QueueInfoResponse {
@@ -2633,7 +2157,7 @@ func (o DeliveryConfigurationResponsePtrOutput) Queue() QueueInfoResponsePtrOutp
 // Information about the delivery for an event subscription with resource identity.
 type DeliveryWithResourceIdentity struct {
 	// Information about the destination where events have to be delivered for the event subscription.
-	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
 	Destination interface{} `pulumi:"destination"`
 	// The identity to use when delivering events.
 	Identity *EventSubscriptionIdentity `pulumi:"identity"`
@@ -2653,7 +2177,7 @@ type DeliveryWithResourceIdentityInput interface {
 // Information about the delivery for an event subscription with resource identity.
 type DeliveryWithResourceIdentityArgs struct {
 	// Information about the destination where events have to be delivered for the event subscription.
-	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
 	Destination pulumi.Input `pulumi:"destination"`
 	// The identity to use when delivering events.
 	Identity EventSubscriptionIdentityPtrInput `pulumi:"identity"`
@@ -2738,7 +2262,7 @@ func (o DeliveryWithResourceIdentityOutput) ToDeliveryWithResourceIdentityPtrOut
 }
 
 // Information about the destination where events have to be delivered for the event subscription.
-// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
 func (o DeliveryWithResourceIdentityOutput) Destination() pulumi.AnyOutput {
 	return o.ApplyT(func(v DeliveryWithResourceIdentity) interface{} { return v.Destination }).(pulumi.AnyOutput)
 }
@@ -2773,7 +2297,7 @@ func (o DeliveryWithResourceIdentityPtrOutput) Elem() DeliveryWithResourceIdenti
 }
 
 // Information about the destination where events have to be delivered for the event subscription.
-// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
 func (o DeliveryWithResourceIdentityPtrOutput) Destination() pulumi.AnyOutput {
 	return o.ApplyT(func(v *DeliveryWithResourceIdentity) interface{} {
 		if v == nil {
@@ -2796,7 +2320,7 @@ func (o DeliveryWithResourceIdentityPtrOutput) Identity() EventSubscriptionIdent
 // Information about the delivery for an event subscription with resource identity.
 type DeliveryWithResourceIdentityResponse struct {
 	// Information about the destination where events have to be delivered for the event subscription.
-	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
 	Destination interface{} `pulumi:"destination"`
 	// The identity to use when delivering events.
 	Identity *EventSubscriptionIdentityResponse `pulumi:"identity"`
@@ -2818,7 +2342,7 @@ func (o DeliveryWithResourceIdentityResponseOutput) ToDeliveryWithResourceIdenti
 }
 
 // Information about the destination where events have to be delivered for the event subscription.
-// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
 func (o DeliveryWithResourceIdentityResponseOutput) Destination() pulumi.AnyOutput {
 	return o.ApplyT(func(v DeliveryWithResourceIdentityResponse) interface{} { return v.Destination }).(pulumi.AnyOutput)
 }
@@ -2853,7 +2377,7 @@ func (o DeliveryWithResourceIdentityResponsePtrOutput) Elem() DeliveryWithResour
 }
 
 // Information about the destination where events have to be delivered for the event subscription.
-// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
 func (o DeliveryWithResourceIdentityResponsePtrOutput) Destination() pulumi.AnyOutput {
 	return o.ApplyT(func(v *DeliveryWithResourceIdentityResponse) interface{} {
 		if v == nil {
@@ -3874,7 +3398,7 @@ func (o EventSubscriptionFilterResponsePtrOutput) SubjectEndsWith() pulumi.Strin
 
 // The identity information with the event subscription.
 type EventSubscriptionIdentity struct {
-	// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+	// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
 	Type *string `pulumi:"type"`
 	// The user identity associated with the resource.
 	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
@@ -3893,7 +3417,7 @@ type EventSubscriptionIdentityInput interface {
 
 // The identity information with the event subscription.
 type EventSubscriptionIdentityArgs struct {
-	// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+	// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The user identity associated with the resource.
 	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
@@ -3977,7 +3501,7 @@ func (o EventSubscriptionIdentityOutput) ToEventSubscriptionIdentityPtrOutputWit
 	}).(EventSubscriptionIdentityPtrOutput)
 }
 
-// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
 func (o EventSubscriptionIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventSubscriptionIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -4011,7 +3535,7 @@ func (o EventSubscriptionIdentityPtrOutput) Elem() EventSubscriptionIdentityOutp
 	}).(EventSubscriptionIdentityOutput)
 }
 
-// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
 func (o EventSubscriptionIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventSubscriptionIdentity) *string {
 		if v == nil {
@@ -4033,7 +3557,7 @@ func (o EventSubscriptionIdentityPtrOutput) UserAssignedIdentity() pulumi.String
 
 // The identity information with the event subscription.
 type EventSubscriptionIdentityResponse struct {
-	// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+	// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
 	Type *string `pulumi:"type"`
 	// The user identity associated with the resource.
 	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
@@ -4054,7 +3578,7 @@ func (o EventSubscriptionIdentityResponseOutput) ToEventSubscriptionIdentityResp
 	return o
 }
 
-// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
 func (o EventSubscriptionIdentityResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventSubscriptionIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -4088,7 +3612,7 @@ func (o EventSubscriptionIdentityResponsePtrOutput) Elem() EventSubscriptionIden
 	}).(EventSubscriptionIdentityResponseOutput)
 }
 
-// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
 func (o EventSubscriptionIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventSubscriptionIdentityResponse) *string {
 		if v == nil {
@@ -6832,6 +6356,335 @@ func (o JsonInputSchemaMappingResponsePtrOutput) Topic() JsonFieldResponsePtrOut
 	}).(JsonFieldResponsePtrOutput)
 }
 
+// Information about the Monitor Alert destination for an event subscription.
+type MonitorAlertEventSubscriptionDestination struct {
+	// The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
+	// Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
+	ActionGroups []string `pulumi:"actionGroups"`
+	// The description that will be attached to every Alert fired through this event subscription.
+	Description *string `pulumi:"description"`
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'MonitorAlert'.
+	EndpointType string `pulumi:"endpointType"`
+	// The severity that will be attached to every Alert fired through this event subscription.
+	// This field must be provided.
+	Severity *string `pulumi:"severity"`
+}
+
+// MonitorAlertEventSubscriptionDestinationInput is an input type that accepts MonitorAlertEventSubscriptionDestinationArgs and MonitorAlertEventSubscriptionDestinationOutput values.
+// You can construct a concrete instance of `MonitorAlertEventSubscriptionDestinationInput` via:
+//
+//	MonitorAlertEventSubscriptionDestinationArgs{...}
+type MonitorAlertEventSubscriptionDestinationInput interface {
+	pulumi.Input
+
+	ToMonitorAlertEventSubscriptionDestinationOutput() MonitorAlertEventSubscriptionDestinationOutput
+	ToMonitorAlertEventSubscriptionDestinationOutputWithContext(context.Context) MonitorAlertEventSubscriptionDestinationOutput
+}
+
+// Information about the Monitor Alert destination for an event subscription.
+type MonitorAlertEventSubscriptionDestinationArgs struct {
+	// The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
+	// Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
+	ActionGroups pulumi.StringArrayInput `pulumi:"actionGroups"`
+	// The description that will be attached to every Alert fired through this event subscription.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'MonitorAlert'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The severity that will be attached to every Alert fired through this event subscription.
+	// This field must be provided.
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+}
+
+func (MonitorAlertEventSubscriptionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorAlertEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i MonitorAlertEventSubscriptionDestinationArgs) ToMonitorAlertEventSubscriptionDestinationOutput() MonitorAlertEventSubscriptionDestinationOutput {
+	return i.ToMonitorAlertEventSubscriptionDestinationOutputWithContext(context.Background())
+}
+
+func (i MonitorAlertEventSubscriptionDestinationArgs) ToMonitorAlertEventSubscriptionDestinationOutputWithContext(ctx context.Context) MonitorAlertEventSubscriptionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertEventSubscriptionDestinationOutput)
+}
+
+func (i MonitorAlertEventSubscriptionDestinationArgs) ToMonitorAlertEventSubscriptionDestinationPtrOutput() MonitorAlertEventSubscriptionDestinationPtrOutput {
+	return i.ToMonitorAlertEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorAlertEventSubscriptionDestinationArgs) ToMonitorAlertEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) MonitorAlertEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertEventSubscriptionDestinationOutput).ToMonitorAlertEventSubscriptionDestinationPtrOutputWithContext(ctx)
+}
+
+// MonitorAlertEventSubscriptionDestinationPtrInput is an input type that accepts MonitorAlertEventSubscriptionDestinationArgs, MonitorAlertEventSubscriptionDestinationPtr and MonitorAlertEventSubscriptionDestinationPtrOutput values.
+// You can construct a concrete instance of `MonitorAlertEventSubscriptionDestinationPtrInput` via:
+//
+//	        MonitorAlertEventSubscriptionDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type MonitorAlertEventSubscriptionDestinationPtrInput interface {
+	pulumi.Input
+
+	ToMonitorAlertEventSubscriptionDestinationPtrOutput() MonitorAlertEventSubscriptionDestinationPtrOutput
+	ToMonitorAlertEventSubscriptionDestinationPtrOutputWithContext(context.Context) MonitorAlertEventSubscriptionDestinationPtrOutput
+}
+
+type monitorAlertEventSubscriptionDestinationPtrType MonitorAlertEventSubscriptionDestinationArgs
+
+func MonitorAlertEventSubscriptionDestinationPtr(v *MonitorAlertEventSubscriptionDestinationArgs) MonitorAlertEventSubscriptionDestinationPtrInput {
+	return (*monitorAlertEventSubscriptionDestinationPtrType)(v)
+}
+
+func (*monitorAlertEventSubscriptionDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorAlertEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i *monitorAlertEventSubscriptionDestinationPtrType) ToMonitorAlertEventSubscriptionDestinationPtrOutput() MonitorAlertEventSubscriptionDestinationPtrOutput {
+	return i.ToMonitorAlertEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorAlertEventSubscriptionDestinationPtrType) ToMonitorAlertEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) MonitorAlertEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorAlertEventSubscriptionDestinationPtrOutput)
+}
+
+// Information about the Monitor Alert destination for an event subscription.
+type MonitorAlertEventSubscriptionDestinationOutput struct{ *pulumi.OutputState }
+
+func (MonitorAlertEventSubscriptionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorAlertEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o MonitorAlertEventSubscriptionDestinationOutput) ToMonitorAlertEventSubscriptionDestinationOutput() MonitorAlertEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o MonitorAlertEventSubscriptionDestinationOutput) ToMonitorAlertEventSubscriptionDestinationOutputWithContext(ctx context.Context) MonitorAlertEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o MonitorAlertEventSubscriptionDestinationOutput) ToMonitorAlertEventSubscriptionDestinationPtrOutput() MonitorAlertEventSubscriptionDestinationPtrOutput {
+	return o.ToMonitorAlertEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorAlertEventSubscriptionDestinationOutput) ToMonitorAlertEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) MonitorAlertEventSubscriptionDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorAlertEventSubscriptionDestination) *MonitorAlertEventSubscriptionDestination {
+		return &v
+	}).(MonitorAlertEventSubscriptionDestinationPtrOutput)
+}
+
+// The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
+// Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
+func (o MonitorAlertEventSubscriptionDestinationOutput) ActionGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MonitorAlertEventSubscriptionDestination) []string { return v.ActionGroups }).(pulumi.StringArrayOutput)
+}
+
+// The description that will be attached to every Alert fired through this event subscription.
+func (o MonitorAlertEventSubscriptionDestinationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorAlertEventSubscriptionDestination) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'MonitorAlert'.
+func (o MonitorAlertEventSubscriptionDestinationOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorAlertEventSubscriptionDestination) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The severity that will be attached to every Alert fired through this event subscription.
+// This field must be provided.
+func (o MonitorAlertEventSubscriptionDestinationOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorAlertEventSubscriptionDestination) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type MonitorAlertEventSubscriptionDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorAlertEventSubscriptionDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorAlertEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o MonitorAlertEventSubscriptionDestinationPtrOutput) ToMonitorAlertEventSubscriptionDestinationPtrOutput() MonitorAlertEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o MonitorAlertEventSubscriptionDestinationPtrOutput) ToMonitorAlertEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) MonitorAlertEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o MonitorAlertEventSubscriptionDestinationPtrOutput) Elem() MonitorAlertEventSubscriptionDestinationOutput {
+	return o.ApplyT(func(v *MonitorAlertEventSubscriptionDestination) MonitorAlertEventSubscriptionDestination {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorAlertEventSubscriptionDestination
+		return ret
+	}).(MonitorAlertEventSubscriptionDestinationOutput)
+}
+
+// The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
+// Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
+func (o MonitorAlertEventSubscriptionDestinationPtrOutput) ActionGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MonitorAlertEventSubscriptionDestination) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// The description that will be attached to every Alert fired through this event subscription.
+func (o MonitorAlertEventSubscriptionDestinationPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorAlertEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'MonitorAlert'.
+func (o MonitorAlertEventSubscriptionDestinationPtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorAlertEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The severity that will be attached to every Alert fired through this event subscription.
+// This field must be provided.
+func (o MonitorAlertEventSubscriptionDestinationPtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorAlertEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Severity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information about the Monitor Alert destination for an event subscription.
+type MonitorAlertEventSubscriptionDestinationResponse struct {
+	// The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
+	// Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
+	ActionGroups []string `pulumi:"actionGroups"`
+	// The description that will be attached to every Alert fired through this event subscription.
+	Description *string `pulumi:"description"`
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'MonitorAlert'.
+	EndpointType string `pulumi:"endpointType"`
+	// The severity that will be attached to every Alert fired through this event subscription.
+	// This field must be provided.
+	Severity *string `pulumi:"severity"`
+}
+
+// Information about the Monitor Alert destination for an event subscription.
+type MonitorAlertEventSubscriptionDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitorAlertEventSubscriptionDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorAlertEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o MonitorAlertEventSubscriptionDestinationResponseOutput) ToMonitorAlertEventSubscriptionDestinationResponseOutput() MonitorAlertEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+func (o MonitorAlertEventSubscriptionDestinationResponseOutput) ToMonitorAlertEventSubscriptionDestinationResponseOutputWithContext(ctx context.Context) MonitorAlertEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+// The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
+// Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
+func (o MonitorAlertEventSubscriptionDestinationResponseOutput) ActionGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MonitorAlertEventSubscriptionDestinationResponse) []string { return v.ActionGroups }).(pulumi.StringArrayOutput)
+}
+
+// The description that will be attached to every Alert fired through this event subscription.
+func (o MonitorAlertEventSubscriptionDestinationResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorAlertEventSubscriptionDestinationResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'MonitorAlert'.
+func (o MonitorAlertEventSubscriptionDestinationResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorAlertEventSubscriptionDestinationResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The severity that will be attached to every Alert fired through this event subscription.
+// This field must be provided.
+func (o MonitorAlertEventSubscriptionDestinationResponseOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorAlertEventSubscriptionDestinationResponse) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type MonitorAlertEventSubscriptionDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorAlertEventSubscriptionDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorAlertEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o MonitorAlertEventSubscriptionDestinationResponsePtrOutput) ToMonitorAlertEventSubscriptionDestinationResponsePtrOutput() MonitorAlertEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o MonitorAlertEventSubscriptionDestinationResponsePtrOutput) ToMonitorAlertEventSubscriptionDestinationResponsePtrOutputWithContext(ctx context.Context) MonitorAlertEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o MonitorAlertEventSubscriptionDestinationResponsePtrOutput) Elem() MonitorAlertEventSubscriptionDestinationResponseOutput {
+	return o.ApplyT(func(v *MonitorAlertEventSubscriptionDestinationResponse) MonitorAlertEventSubscriptionDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorAlertEventSubscriptionDestinationResponse
+		return ret
+	}).(MonitorAlertEventSubscriptionDestinationResponseOutput)
+}
+
+// The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
+// Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
+func (o MonitorAlertEventSubscriptionDestinationResponsePtrOutput) ActionGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MonitorAlertEventSubscriptionDestinationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// The description that will be attached to every Alert fired through this event subscription.
+func (o MonitorAlertEventSubscriptionDestinationResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorAlertEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'MonitorAlert'.
+func (o MonitorAlertEventSubscriptionDestinationResponsePtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorAlertEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The severity that will be attached to every Alert fired through this event subscription.
+// This field must be provided.
+func (o MonitorAlertEventSubscriptionDestinationResponsePtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorAlertEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Severity
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents available Sku pricing tiers.
 type NamespaceSku struct {
 	// Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
@@ -7079,6 +6932,263 @@ func (o NamespaceSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information about the Namespace Topic destination for an event subscription.
+type NamespaceTopicEventSubscriptionDestination struct {
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'NamespaceTopic'.
+	EndpointType string `pulumi:"endpointType"`
+	// The Azure resource Id that represents the endpoint of the Event Grid Namespace Topic destination of an event subscription.
+	// This field is required and the Namespace Topic resource listed must already exist.
+	// The resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.EventGrid/namespaces/{NamespaceName}/topics/{TopicName}.
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// NamespaceTopicEventSubscriptionDestinationInput is an input type that accepts NamespaceTopicEventSubscriptionDestinationArgs and NamespaceTopicEventSubscriptionDestinationOutput values.
+// You can construct a concrete instance of `NamespaceTopicEventSubscriptionDestinationInput` via:
+//
+//	NamespaceTopicEventSubscriptionDestinationArgs{...}
+type NamespaceTopicEventSubscriptionDestinationInput interface {
+	pulumi.Input
+
+	ToNamespaceTopicEventSubscriptionDestinationOutput() NamespaceTopicEventSubscriptionDestinationOutput
+	ToNamespaceTopicEventSubscriptionDestinationOutputWithContext(context.Context) NamespaceTopicEventSubscriptionDestinationOutput
+}
+
+// Information about the Namespace Topic destination for an event subscription.
+type NamespaceTopicEventSubscriptionDestinationArgs struct {
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'NamespaceTopic'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The Azure resource Id that represents the endpoint of the Event Grid Namespace Topic destination of an event subscription.
+	// This field is required and the Namespace Topic resource listed must already exist.
+	// The resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.EventGrid/namespaces/{NamespaceName}/topics/{TopicName}.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (NamespaceTopicEventSubscriptionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceTopicEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i NamespaceTopicEventSubscriptionDestinationArgs) ToNamespaceTopicEventSubscriptionDestinationOutput() NamespaceTopicEventSubscriptionDestinationOutput {
+	return i.ToNamespaceTopicEventSubscriptionDestinationOutputWithContext(context.Background())
+}
+
+func (i NamespaceTopicEventSubscriptionDestinationArgs) ToNamespaceTopicEventSubscriptionDestinationOutputWithContext(ctx context.Context) NamespaceTopicEventSubscriptionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceTopicEventSubscriptionDestinationOutput)
+}
+
+func (i NamespaceTopicEventSubscriptionDestinationArgs) ToNamespaceTopicEventSubscriptionDestinationPtrOutput() NamespaceTopicEventSubscriptionDestinationPtrOutput {
+	return i.ToNamespaceTopicEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i NamespaceTopicEventSubscriptionDestinationArgs) ToNamespaceTopicEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) NamespaceTopicEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceTopicEventSubscriptionDestinationOutput).ToNamespaceTopicEventSubscriptionDestinationPtrOutputWithContext(ctx)
+}
+
+// NamespaceTopicEventSubscriptionDestinationPtrInput is an input type that accepts NamespaceTopicEventSubscriptionDestinationArgs, NamespaceTopicEventSubscriptionDestinationPtr and NamespaceTopicEventSubscriptionDestinationPtrOutput values.
+// You can construct a concrete instance of `NamespaceTopicEventSubscriptionDestinationPtrInput` via:
+//
+//	        NamespaceTopicEventSubscriptionDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type NamespaceTopicEventSubscriptionDestinationPtrInput interface {
+	pulumi.Input
+
+	ToNamespaceTopicEventSubscriptionDestinationPtrOutput() NamespaceTopicEventSubscriptionDestinationPtrOutput
+	ToNamespaceTopicEventSubscriptionDestinationPtrOutputWithContext(context.Context) NamespaceTopicEventSubscriptionDestinationPtrOutput
+}
+
+type namespaceTopicEventSubscriptionDestinationPtrType NamespaceTopicEventSubscriptionDestinationArgs
+
+func NamespaceTopicEventSubscriptionDestinationPtr(v *NamespaceTopicEventSubscriptionDestinationArgs) NamespaceTopicEventSubscriptionDestinationPtrInput {
+	return (*namespaceTopicEventSubscriptionDestinationPtrType)(v)
+}
+
+func (*namespaceTopicEventSubscriptionDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceTopicEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i *namespaceTopicEventSubscriptionDestinationPtrType) ToNamespaceTopicEventSubscriptionDestinationPtrOutput() NamespaceTopicEventSubscriptionDestinationPtrOutput {
+	return i.ToNamespaceTopicEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *namespaceTopicEventSubscriptionDestinationPtrType) ToNamespaceTopicEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) NamespaceTopicEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceTopicEventSubscriptionDestinationPtrOutput)
+}
+
+// Information about the Namespace Topic destination for an event subscription.
+type NamespaceTopicEventSubscriptionDestinationOutput struct{ *pulumi.OutputState }
+
+func (NamespaceTopicEventSubscriptionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceTopicEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationOutput) ToNamespaceTopicEventSubscriptionDestinationOutput() NamespaceTopicEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationOutput) ToNamespaceTopicEventSubscriptionDestinationOutputWithContext(ctx context.Context) NamespaceTopicEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationOutput) ToNamespaceTopicEventSubscriptionDestinationPtrOutput() NamespaceTopicEventSubscriptionDestinationPtrOutput {
+	return o.ToNamespaceTopicEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationOutput) ToNamespaceTopicEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) NamespaceTopicEventSubscriptionDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceTopicEventSubscriptionDestination) *NamespaceTopicEventSubscriptionDestination {
+		return &v
+	}).(NamespaceTopicEventSubscriptionDestinationPtrOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'NamespaceTopic'.
+func (o NamespaceTopicEventSubscriptionDestinationOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceTopicEventSubscriptionDestination) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure resource Id that represents the endpoint of the Event Grid Namespace Topic destination of an event subscription.
+// This field is required and the Namespace Topic resource listed must already exist.
+// The resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.EventGrid/namespaces/{NamespaceName}/topics/{TopicName}.
+func (o NamespaceTopicEventSubscriptionDestinationOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceTopicEventSubscriptionDestination) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceTopicEventSubscriptionDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (NamespaceTopicEventSubscriptionDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceTopicEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationPtrOutput) ToNamespaceTopicEventSubscriptionDestinationPtrOutput() NamespaceTopicEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationPtrOutput) ToNamespaceTopicEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) NamespaceTopicEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationPtrOutput) Elem() NamespaceTopicEventSubscriptionDestinationOutput {
+	return o.ApplyT(func(v *NamespaceTopicEventSubscriptionDestination) NamespaceTopicEventSubscriptionDestination {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceTopicEventSubscriptionDestination
+		return ret
+	}).(NamespaceTopicEventSubscriptionDestinationOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'NamespaceTopic'.
+func (o NamespaceTopicEventSubscriptionDestinationPtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceTopicEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure resource Id that represents the endpoint of the Event Grid Namespace Topic destination of an event subscription.
+// This field is required and the Namespace Topic resource listed must already exist.
+// The resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.EventGrid/namespaces/{NamespaceName}/topics/{TopicName}.
+func (o NamespaceTopicEventSubscriptionDestinationPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceTopicEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information about the Namespace Topic destination for an event subscription.
+type NamespaceTopicEventSubscriptionDestinationResponse struct {
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'NamespaceTopic'.
+	EndpointType string `pulumi:"endpointType"`
+	// The Azure resource Id that represents the endpoint of the Event Grid Namespace Topic destination of an event subscription.
+	// This field is required and the Namespace Topic resource listed must already exist.
+	// The resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.EventGrid/namespaces/{NamespaceName}/topics/{TopicName}.
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// Information about the Namespace Topic destination for an event subscription.
+type NamespaceTopicEventSubscriptionDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceTopicEventSubscriptionDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceTopicEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationResponseOutput) ToNamespaceTopicEventSubscriptionDestinationResponseOutput() NamespaceTopicEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationResponseOutput) ToNamespaceTopicEventSubscriptionDestinationResponseOutputWithContext(ctx context.Context) NamespaceTopicEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'NamespaceTopic'.
+func (o NamespaceTopicEventSubscriptionDestinationResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceTopicEventSubscriptionDestinationResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure resource Id that represents the endpoint of the Event Grid Namespace Topic destination of an event subscription.
+// This field is required and the Namespace Topic resource listed must already exist.
+// The resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.EventGrid/namespaces/{NamespaceName}/topics/{TopicName}.
+func (o NamespaceTopicEventSubscriptionDestinationResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceTopicEventSubscriptionDestinationResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceTopicEventSubscriptionDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NamespaceTopicEventSubscriptionDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceTopicEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationResponsePtrOutput) ToNamespaceTopicEventSubscriptionDestinationResponsePtrOutput() NamespaceTopicEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationResponsePtrOutput) ToNamespaceTopicEventSubscriptionDestinationResponsePtrOutputWithContext(ctx context.Context) NamespaceTopicEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o NamespaceTopicEventSubscriptionDestinationResponsePtrOutput) Elem() NamespaceTopicEventSubscriptionDestinationResponseOutput {
+	return o.ApplyT(func(v *NamespaceTopicEventSubscriptionDestinationResponse) NamespaceTopicEventSubscriptionDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceTopicEventSubscriptionDestinationResponse
+		return ret
+	}).(NamespaceTopicEventSubscriptionDestinationResponseOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'NamespaceTopic'.
+func (o NamespaceTopicEventSubscriptionDestinationResponsePtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceTopicEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure resource Id that represents the endpoint of the Event Grid Namespace Topic destination of an event subscription.
+// This field is required and the Namespace Topic resource listed must already exist.
+// The resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.EventGrid/namespaces/{NamespaceName}/topics/{TopicName}.
+func (o NamespaceTopicEventSubscriptionDestinationResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceTopicEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10192,6 +10302,482 @@ func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Properties of the destination info for event subscription supporting push.
+type PushInfo struct {
+	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+	// Uses the managed identity setup on the parent resource (namely, namespace) to acquire the authentication tokens being used during dead-lettering.
+	DeadLetterDestinationWithResourceIdentity *DeadLetterWithResourceIdentity `pulumi:"deadLetterDestinationWithResourceIdentity"`
+	// Information about the destination where events have to be delivered for the event subscription.
+	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
+	DeliveryWithResourceIdentity *DeliveryWithResourceIdentity `pulumi:"deliveryWithResourceIdentity"`
+	// Information about the destination where events have to be delivered for the event subscription.
+	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery.
+	Destination interface{} `pulumi:"destination"`
+	// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+	// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+	//     - (n) is replaced by the value of each time element that follows the (n).
+	//     - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+	//     - Y is the year designator, and it follows the value for the number of years.
+	//     - M is the month designator, and it follows the value for the number of months.
+	//     - W is the week designator, and it follows the value for the number of weeks.
+	//     - D is the day designator, and it follows the value for the number of days.
+	//     - T is the time designator, and it precedes the time components.
+	//     - H is the hour designator, and it follows the value for the number of hours.
+	//     - M is the minute designator, and it follows the value for the number of minutes.
+	//     - S is the second designator, and it follows the value for the number of seconds.
+	// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+	// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+	//     - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+	//     - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+	EventTimeToLive *string `pulumi:"eventTimeToLive"`
+	// The maximum delivery count of the events.
+	MaxDeliveryCount *int `pulumi:"maxDeliveryCount"`
+}
+
+// PushInfoInput is an input type that accepts PushInfoArgs and PushInfoOutput values.
+// You can construct a concrete instance of `PushInfoInput` via:
+//
+//	PushInfoArgs{...}
+type PushInfoInput interface {
+	pulumi.Input
+
+	ToPushInfoOutput() PushInfoOutput
+	ToPushInfoOutputWithContext(context.Context) PushInfoOutput
+}
+
+// Properties of the destination info for event subscription supporting push.
+type PushInfoArgs struct {
+	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+	// Uses the managed identity setup on the parent resource (namely, namespace) to acquire the authentication tokens being used during dead-lettering.
+	DeadLetterDestinationWithResourceIdentity DeadLetterWithResourceIdentityPtrInput `pulumi:"deadLetterDestinationWithResourceIdentity"`
+	// Information about the destination where events have to be delivered for the event subscription.
+	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
+	DeliveryWithResourceIdentity DeliveryWithResourceIdentityPtrInput `pulumi:"deliveryWithResourceIdentity"`
+	// Information about the destination where events have to be delivered for the event subscription.
+	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery.
+	Destination pulumi.Input `pulumi:"destination"`
+	// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+	// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+	//     - (n) is replaced by the value of each time element that follows the (n).
+	//     - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+	//     - Y is the year designator, and it follows the value for the number of years.
+	//     - M is the month designator, and it follows the value for the number of months.
+	//     - W is the week designator, and it follows the value for the number of weeks.
+	//     - D is the day designator, and it follows the value for the number of days.
+	//     - T is the time designator, and it precedes the time components.
+	//     - H is the hour designator, and it follows the value for the number of hours.
+	//     - M is the minute designator, and it follows the value for the number of minutes.
+	//     - S is the second designator, and it follows the value for the number of seconds.
+	// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+	// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+	//     - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+	//     - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+	EventTimeToLive pulumi.StringPtrInput `pulumi:"eventTimeToLive"`
+	// The maximum delivery count of the events.
+	MaxDeliveryCount pulumi.IntPtrInput `pulumi:"maxDeliveryCount"`
+}
+
+func (PushInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PushInfo)(nil)).Elem()
+}
+
+func (i PushInfoArgs) ToPushInfoOutput() PushInfoOutput {
+	return i.ToPushInfoOutputWithContext(context.Background())
+}
+
+func (i PushInfoArgs) ToPushInfoOutputWithContext(ctx context.Context) PushInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PushInfoOutput)
+}
+
+func (i PushInfoArgs) ToPushInfoPtrOutput() PushInfoPtrOutput {
+	return i.ToPushInfoPtrOutputWithContext(context.Background())
+}
+
+func (i PushInfoArgs) ToPushInfoPtrOutputWithContext(ctx context.Context) PushInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PushInfoOutput).ToPushInfoPtrOutputWithContext(ctx)
+}
+
+// PushInfoPtrInput is an input type that accepts PushInfoArgs, PushInfoPtr and PushInfoPtrOutput values.
+// You can construct a concrete instance of `PushInfoPtrInput` via:
+//
+//	        PushInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type PushInfoPtrInput interface {
+	pulumi.Input
+
+	ToPushInfoPtrOutput() PushInfoPtrOutput
+	ToPushInfoPtrOutputWithContext(context.Context) PushInfoPtrOutput
+}
+
+type pushInfoPtrType PushInfoArgs
+
+func PushInfoPtr(v *PushInfoArgs) PushInfoPtrInput {
+	return (*pushInfoPtrType)(v)
+}
+
+func (*pushInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PushInfo)(nil)).Elem()
+}
+
+func (i *pushInfoPtrType) ToPushInfoPtrOutput() PushInfoPtrOutput {
+	return i.ToPushInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *pushInfoPtrType) ToPushInfoPtrOutputWithContext(ctx context.Context) PushInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PushInfoPtrOutput)
+}
+
+// Properties of the destination info for event subscription supporting push.
+type PushInfoOutput struct{ *pulumi.OutputState }
+
+func (PushInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PushInfo)(nil)).Elem()
+}
+
+func (o PushInfoOutput) ToPushInfoOutput() PushInfoOutput {
+	return o
+}
+
+func (o PushInfoOutput) ToPushInfoOutputWithContext(ctx context.Context) PushInfoOutput {
+	return o
+}
+
+func (o PushInfoOutput) ToPushInfoPtrOutput() PushInfoPtrOutput {
+	return o.ToPushInfoPtrOutputWithContext(context.Background())
+}
+
+func (o PushInfoOutput) ToPushInfoPtrOutputWithContext(ctx context.Context) PushInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushInfo) *PushInfo {
+		return &v
+	}).(PushInfoPtrOutput)
+}
+
+// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+// Uses the managed identity setup on the parent resource (namely, namespace) to acquire the authentication tokens being used during dead-lettering.
+func (o PushInfoOutput) DeadLetterDestinationWithResourceIdentity() DeadLetterWithResourceIdentityPtrOutput {
+	return o.ApplyT(func(v PushInfo) *DeadLetterWithResourceIdentity { return v.DeadLetterDestinationWithResourceIdentity }).(DeadLetterWithResourceIdentityPtrOutput)
+}
+
+// Information about the destination where events have to be delivered for the event subscription.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
+func (o PushInfoOutput) DeliveryWithResourceIdentity() DeliveryWithResourceIdentityPtrOutput {
+	return o.ApplyT(func(v PushInfo) *DeliveryWithResourceIdentity { return v.DeliveryWithResourceIdentity }).(DeliveryWithResourceIdentityPtrOutput)
+}
+
+// Information about the destination where events have to be delivered for the event subscription.
+// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery.
+func (o PushInfoOutput) Destination() pulumi.AnyOutput {
+	return o.ApplyT(func(v PushInfo) interface{} { return v.Destination }).(pulumi.AnyOutput)
+}
+
+// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+//   - (n) is replaced by the value of each time element that follows the (n).
+//   - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+//   - Y is the year designator, and it follows the value for the number of years.
+//   - M is the month designator, and it follows the value for the number of months.
+//   - W is the week designator, and it follows the value for the number of weeks.
+//   - D is the day designator, and it follows the value for the number of days.
+//   - T is the time designator, and it precedes the time components.
+//   - H is the hour designator, and it follows the value for the number of hours.
+//   - M is the minute designator, and it follows the value for the number of minutes.
+//   - S is the second designator, and it follows the value for the number of seconds.
+//
+// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+//   - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+//   - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+func (o PushInfoOutput) EventTimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PushInfo) *string { return v.EventTimeToLive }).(pulumi.StringPtrOutput)
+}
+
+// The maximum delivery count of the events.
+func (o PushInfoOutput) MaxDeliveryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PushInfo) *int { return v.MaxDeliveryCount }).(pulumi.IntPtrOutput)
+}
+
+type PushInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (PushInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PushInfo)(nil)).Elem()
+}
+
+func (o PushInfoPtrOutput) ToPushInfoPtrOutput() PushInfoPtrOutput {
+	return o
+}
+
+func (o PushInfoPtrOutput) ToPushInfoPtrOutputWithContext(ctx context.Context) PushInfoPtrOutput {
+	return o
+}
+
+func (o PushInfoPtrOutput) Elem() PushInfoOutput {
+	return o.ApplyT(func(v *PushInfo) PushInfo {
+		if v != nil {
+			return *v
+		}
+		var ret PushInfo
+		return ret
+	}).(PushInfoOutput)
+}
+
+// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+// Uses the managed identity setup on the parent resource (namely, namespace) to acquire the authentication tokens being used during dead-lettering.
+func (o PushInfoPtrOutput) DeadLetterDestinationWithResourceIdentity() DeadLetterWithResourceIdentityPtrOutput {
+	return o.ApplyT(func(v *PushInfo) *DeadLetterWithResourceIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterDestinationWithResourceIdentity
+	}).(DeadLetterWithResourceIdentityPtrOutput)
+}
+
+// Information about the destination where events have to be delivered for the event subscription.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
+func (o PushInfoPtrOutput) DeliveryWithResourceIdentity() DeliveryWithResourceIdentityPtrOutput {
+	return o.ApplyT(func(v *PushInfo) *DeliveryWithResourceIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryWithResourceIdentity
+	}).(DeliveryWithResourceIdentityPtrOutput)
+}
+
+// Information about the destination where events have to be delivered for the event subscription.
+// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery.
+func (o PushInfoPtrOutput) Destination() pulumi.AnyOutput {
+	return o.ApplyT(func(v *PushInfo) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
+	}).(pulumi.AnyOutput)
+}
+
+// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+//   - (n) is replaced by the value of each time element that follows the (n).
+//   - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+//   - Y is the year designator, and it follows the value for the number of years.
+//   - M is the month designator, and it follows the value for the number of months.
+//   - W is the week designator, and it follows the value for the number of weeks.
+//   - D is the day designator, and it follows the value for the number of days.
+//   - T is the time designator, and it precedes the time components.
+//   - H is the hour designator, and it follows the value for the number of hours.
+//   - M is the minute designator, and it follows the value for the number of minutes.
+//   - S is the second designator, and it follows the value for the number of seconds.
+//
+// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+//   - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+//   - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+func (o PushInfoPtrOutput) EventTimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PushInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventTimeToLive
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum delivery count of the events.
+func (o PushInfoPtrOutput) MaxDeliveryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PushInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDeliveryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Properties of the destination info for event subscription supporting push.
+type PushInfoResponse struct {
+	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+	// Uses the managed identity setup on the parent resource (namely, namespace) to acquire the authentication tokens being used during dead-lettering.
+	DeadLetterDestinationWithResourceIdentity *DeadLetterWithResourceIdentityResponse `pulumi:"deadLetterDestinationWithResourceIdentity"`
+	// Information about the destination where events have to be delivered for the event subscription.
+	// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
+	DeliveryWithResourceIdentity *DeliveryWithResourceIdentityResponse `pulumi:"deliveryWithResourceIdentity"`
+	// Information about the destination where events have to be delivered for the event subscription.
+	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery.
+	Destination interface{} `pulumi:"destination"`
+	// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+	// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+	//     - (n) is replaced by the value of each time element that follows the (n).
+	//     - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+	//     - Y is the year designator, and it follows the value for the number of years.
+	//     - M is the month designator, and it follows the value for the number of months.
+	//     - W is the week designator, and it follows the value for the number of weeks.
+	//     - D is the day designator, and it follows the value for the number of days.
+	//     - T is the time designator, and it precedes the time components.
+	//     - H is the hour designator, and it follows the value for the number of hours.
+	//     - M is the minute designator, and it follows the value for the number of minutes.
+	//     - S is the second designator, and it follows the value for the number of seconds.
+	// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+	// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+	//     - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+	//     - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+	EventTimeToLive *string `pulumi:"eventTimeToLive"`
+	// The maximum delivery count of the events.
+	MaxDeliveryCount *int `pulumi:"maxDeliveryCount"`
+}
+
+// Properties of the destination info for event subscription supporting push.
+type PushInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (PushInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PushInfoResponse)(nil)).Elem()
+}
+
+func (o PushInfoResponseOutput) ToPushInfoResponseOutput() PushInfoResponseOutput {
+	return o
+}
+
+func (o PushInfoResponseOutput) ToPushInfoResponseOutputWithContext(ctx context.Context) PushInfoResponseOutput {
+	return o
+}
+
+// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+// Uses the managed identity setup on the parent resource (namely, namespace) to acquire the authentication tokens being used during dead-lettering.
+func (o PushInfoResponseOutput) DeadLetterDestinationWithResourceIdentity() DeadLetterWithResourceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v PushInfoResponse) *DeadLetterWithResourceIdentityResponse {
+		return v.DeadLetterDestinationWithResourceIdentity
+	}).(DeadLetterWithResourceIdentityResponsePtrOutput)
+}
+
+// Information about the destination where events have to be delivered for the event subscription.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
+func (o PushInfoResponseOutput) DeliveryWithResourceIdentity() DeliveryWithResourceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v PushInfoResponse) *DeliveryWithResourceIdentityResponse { return v.DeliveryWithResourceIdentity }).(DeliveryWithResourceIdentityResponsePtrOutput)
+}
+
+// Information about the destination where events have to be delivered for the event subscription.
+// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery.
+func (o PushInfoResponseOutput) Destination() pulumi.AnyOutput {
+	return o.ApplyT(func(v PushInfoResponse) interface{} { return v.Destination }).(pulumi.AnyOutput)
+}
+
+// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+//   - (n) is replaced by the value of each time element that follows the (n).
+//   - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+//   - Y is the year designator, and it follows the value for the number of years.
+//   - M is the month designator, and it follows the value for the number of months.
+//   - W is the week designator, and it follows the value for the number of weeks.
+//   - D is the day designator, and it follows the value for the number of days.
+//   - T is the time designator, and it precedes the time components.
+//   - H is the hour designator, and it follows the value for the number of hours.
+//   - M is the minute designator, and it follows the value for the number of minutes.
+//   - S is the second designator, and it follows the value for the number of seconds.
+//
+// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+//   - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+//   - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+func (o PushInfoResponseOutput) EventTimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PushInfoResponse) *string { return v.EventTimeToLive }).(pulumi.StringPtrOutput)
+}
+
+// The maximum delivery count of the events.
+func (o PushInfoResponseOutput) MaxDeliveryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PushInfoResponse) *int { return v.MaxDeliveryCount }).(pulumi.IntPtrOutput)
+}
+
+type PushInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PushInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PushInfoResponse)(nil)).Elem()
+}
+
+func (o PushInfoResponsePtrOutput) ToPushInfoResponsePtrOutput() PushInfoResponsePtrOutput {
+	return o
+}
+
+func (o PushInfoResponsePtrOutput) ToPushInfoResponsePtrOutputWithContext(ctx context.Context) PushInfoResponsePtrOutput {
+	return o
+}
+
+func (o PushInfoResponsePtrOutput) Elem() PushInfoResponseOutput {
+	return o.ApplyT(func(v *PushInfoResponse) PushInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PushInfoResponse
+		return ret
+	}).(PushInfoResponseOutput)
+}
+
+// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+// Uses the managed identity setup on the parent resource (namely, namespace) to acquire the authentication tokens being used during dead-lettering.
+func (o PushInfoResponsePtrOutput) DeadLetterDestinationWithResourceIdentity() DeadLetterWithResourceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *PushInfoResponse) *DeadLetterWithResourceIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterDestinationWithResourceIdentity
+	}).(DeadLetterWithResourceIdentityResponsePtrOutput)
+}
+
+// Information about the destination where events have to be delivered for the event subscription.
+// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
+func (o PushInfoResponsePtrOutput) DeliveryWithResourceIdentity() DeliveryWithResourceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *PushInfoResponse) *DeliveryWithResourceIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryWithResourceIdentity
+	}).(DeliveryWithResourceIdentityResponsePtrOutput)
+}
+
+// Information about the destination where events have to be delivered for the event subscription.
+// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery.
+func (o PushInfoResponsePtrOutput) Destination() pulumi.AnyOutput {
+	return o.ApplyT(func(v *PushInfoResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
+	}).(pulumi.AnyOutput)
+}
+
+// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+//   - (n) is replaced by the value of each time element that follows the (n).
+//   - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+//   - Y is the year designator, and it follows the value for the number of years.
+//   - M is the month designator, and it follows the value for the number of months.
+//   - W is the week designator, and it follows the value for the number of weeks.
+//   - D is the day designator, and it follows the value for the number of days.
+//   - T is the time designator, and it precedes the time components.
+//   - H is the hour designator, and it follows the value for the number of hours.
+//   - M is the minute designator, and it follows the value for the number of minutes.
+//   - S is the second designator, and it follows the value for the number of seconds.
+//
+// This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+// by topic’s EventRetentionInDays value. The followings are examples of valid values:
+//   - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+//   - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+func (o PushInfoResponsePtrOutput) EventTimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PushInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventTimeToLive
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum delivery count of the events.
+func (o PushInfoResponsePtrOutput) MaxDeliveryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PushInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDeliveryCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // Properties of the Queue info for event subscription.
 type QueueInfo struct {
 	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
@@ -10917,8 +11503,8 @@ func (o RetryPolicyResponsePtrOutput) MaxDeliveryAttempts() pulumi.IntPtrOutput 
 }
 
 type RoutingEnrichments struct {
-	Dynamic []DynamicRoutingEnrichment `pulumi:"dynamic"`
-	Static  []StaticRoutingEnrichment  `pulumi:"static"`
+	Dynamic []DynamicRoutingEnrichment      `pulumi:"dynamic"`
+	Static  []StaticStringRoutingEnrichment `pulumi:"static"`
 }
 
 // RoutingEnrichmentsInput is an input type that accepts RoutingEnrichmentsArgs and RoutingEnrichmentsOutput values.
@@ -10933,8 +11519,8 @@ type RoutingEnrichmentsInput interface {
 }
 
 type RoutingEnrichmentsArgs struct {
-	Dynamic DynamicRoutingEnrichmentArrayInput `pulumi:"dynamic"`
-	Static  StaticRoutingEnrichmentArrayInput  `pulumi:"static"`
+	Dynamic DynamicRoutingEnrichmentArrayInput      `pulumi:"dynamic"`
+	Static  StaticStringRoutingEnrichmentArrayInput `pulumi:"static"`
 }
 
 func (RoutingEnrichmentsArgs) ElementType() reflect.Type {
@@ -11018,8 +11604,8 @@ func (o RoutingEnrichmentsOutput) Dynamic() DynamicRoutingEnrichmentArrayOutput 
 	return o.ApplyT(func(v RoutingEnrichments) []DynamicRoutingEnrichment { return v.Dynamic }).(DynamicRoutingEnrichmentArrayOutput)
 }
 
-func (o RoutingEnrichmentsOutput) Static() StaticRoutingEnrichmentArrayOutput {
-	return o.ApplyT(func(v RoutingEnrichments) []StaticRoutingEnrichment { return v.Static }).(StaticRoutingEnrichmentArrayOutput)
+func (o RoutingEnrichmentsOutput) Static() StaticStringRoutingEnrichmentArrayOutput {
+	return o.ApplyT(func(v RoutingEnrichments) []StaticStringRoutingEnrichment { return v.Static }).(StaticStringRoutingEnrichmentArrayOutput)
 }
 
 type RoutingEnrichmentsPtrOutput struct{ *pulumi.OutputState }
@@ -11055,18 +11641,18 @@ func (o RoutingEnrichmentsPtrOutput) Dynamic() DynamicRoutingEnrichmentArrayOutp
 	}).(DynamicRoutingEnrichmentArrayOutput)
 }
 
-func (o RoutingEnrichmentsPtrOutput) Static() StaticRoutingEnrichmentArrayOutput {
-	return o.ApplyT(func(v *RoutingEnrichments) []StaticRoutingEnrichment {
+func (o RoutingEnrichmentsPtrOutput) Static() StaticStringRoutingEnrichmentArrayOutput {
+	return o.ApplyT(func(v *RoutingEnrichments) []StaticStringRoutingEnrichment {
 		if v == nil {
 			return nil
 		}
 		return v.Static
-	}).(StaticRoutingEnrichmentArrayOutput)
+	}).(StaticStringRoutingEnrichmentArrayOutput)
 }
 
 type RoutingEnrichmentsResponse struct {
-	Dynamic []DynamicRoutingEnrichmentResponse `pulumi:"dynamic"`
-	Static  []StaticRoutingEnrichmentResponse  `pulumi:"static"`
+	Dynamic []DynamicRoutingEnrichmentResponse      `pulumi:"dynamic"`
+	Static  []StaticStringRoutingEnrichmentResponse `pulumi:"static"`
 }
 
 type RoutingEnrichmentsResponseOutput struct{ *pulumi.OutputState }
@@ -11087,8 +11673,8 @@ func (o RoutingEnrichmentsResponseOutput) Dynamic() DynamicRoutingEnrichmentResp
 	return o.ApplyT(func(v RoutingEnrichmentsResponse) []DynamicRoutingEnrichmentResponse { return v.Dynamic }).(DynamicRoutingEnrichmentResponseArrayOutput)
 }
 
-func (o RoutingEnrichmentsResponseOutput) Static() StaticRoutingEnrichmentResponseArrayOutput {
-	return o.ApplyT(func(v RoutingEnrichmentsResponse) []StaticRoutingEnrichmentResponse { return v.Static }).(StaticRoutingEnrichmentResponseArrayOutput)
+func (o RoutingEnrichmentsResponseOutput) Static() StaticStringRoutingEnrichmentResponseArrayOutput {
+	return o.ApplyT(func(v RoutingEnrichmentsResponse) []StaticStringRoutingEnrichmentResponse { return v.Static }).(StaticStringRoutingEnrichmentResponseArrayOutput)
 }
 
 type RoutingEnrichmentsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -11124,17 +11710,18 @@ func (o RoutingEnrichmentsResponsePtrOutput) Dynamic() DynamicRoutingEnrichmentR
 	}).(DynamicRoutingEnrichmentResponseArrayOutput)
 }
 
-func (o RoutingEnrichmentsResponsePtrOutput) Static() StaticRoutingEnrichmentResponseArrayOutput {
-	return o.ApplyT(func(v *RoutingEnrichmentsResponse) []StaticRoutingEnrichmentResponse {
+func (o RoutingEnrichmentsResponsePtrOutput) Static() StaticStringRoutingEnrichmentResponseArrayOutput {
+	return o.ApplyT(func(v *RoutingEnrichmentsResponse) []StaticStringRoutingEnrichmentResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Static
-	}).(StaticRoutingEnrichmentResponseArrayOutput)
+	}).(StaticStringRoutingEnrichmentResponseArrayOutput)
 }
 
 // Routing identity info for topic spaces configuration.
 type RoutingIdentityInfo struct {
+	// Routing identity type for topic spaces configuration.
 	Type                 *string `pulumi:"type"`
 	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
 }
@@ -11152,6 +11739,7 @@ type RoutingIdentityInfoInput interface {
 
 // Routing identity info for topic spaces configuration.
 type RoutingIdentityInfoArgs struct {
+	// Routing identity type for topic spaces configuration.
 	Type                 pulumi.StringPtrInput `pulumi:"type"`
 	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
 }
@@ -11234,6 +11822,7 @@ func (o RoutingIdentityInfoOutput) ToRoutingIdentityInfoPtrOutputWithContext(ctx
 	}).(RoutingIdentityInfoPtrOutput)
 }
 
+// Routing identity type for topic spaces configuration.
 func (o RoutingIdentityInfoOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoutingIdentityInfo) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -11266,6 +11855,7 @@ func (o RoutingIdentityInfoPtrOutput) Elem() RoutingIdentityInfoOutput {
 	}).(RoutingIdentityInfoOutput)
 }
 
+// Routing identity type for topic spaces configuration.
 func (o RoutingIdentityInfoPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoutingIdentityInfo) *string {
 		if v == nil {
@@ -11286,6 +11876,7 @@ func (o RoutingIdentityInfoPtrOutput) UserAssignedIdentity() pulumi.StringPtrOut
 
 // Routing identity info for topic spaces configuration.
 type RoutingIdentityInfoResponse struct {
+	// Routing identity type for topic spaces configuration.
 	Type                 *string `pulumi:"type"`
 	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
 }
@@ -11305,6 +11896,7 @@ func (o RoutingIdentityInfoResponseOutput) ToRoutingIdentityInfoResponseOutputWi
 	return o
 }
 
+// Routing identity type for topic spaces configuration.
 func (o RoutingIdentityInfoResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoutingIdentityInfoResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -11337,6 +11929,7 @@ func (o RoutingIdentityInfoResponsePtrOutput) Elem() RoutingIdentityInfoResponse
 	}).(RoutingIdentityInfoResponseOutput)
 }
 
+// Routing identity type for topic spaces configuration.
 func (o RoutingIdentityInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoutingIdentityInfoResponse) *string {
 		if v == nil {
@@ -12088,161 +12681,182 @@ func (o StaticDeliveryAttributeMappingResponseOutput) Value() pulumi.StringPtrOu
 	return o.ApplyT(func(v StaticDeliveryAttributeMappingResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type StaticRoutingEnrichment struct {
+type StaticStringRoutingEnrichment struct {
 	// Static routing enrichment key.
 	Key *string `pulumi:"key"`
+	// String type routing enrichment value.
+	Value *string `pulumi:"value"`
 	// Static routing enrichment value type. For e.g. this property value can be 'String'.
-	ValueType *string `pulumi:"valueType"`
+	// Expected value is 'String'.
+	ValueType string `pulumi:"valueType"`
 }
 
-// StaticRoutingEnrichmentInput is an input type that accepts StaticRoutingEnrichmentArgs and StaticRoutingEnrichmentOutput values.
-// You can construct a concrete instance of `StaticRoutingEnrichmentInput` via:
+// StaticStringRoutingEnrichmentInput is an input type that accepts StaticStringRoutingEnrichmentArgs and StaticStringRoutingEnrichmentOutput values.
+// You can construct a concrete instance of `StaticStringRoutingEnrichmentInput` via:
 //
-//	StaticRoutingEnrichmentArgs{...}
-type StaticRoutingEnrichmentInput interface {
+//	StaticStringRoutingEnrichmentArgs{...}
+type StaticStringRoutingEnrichmentInput interface {
 	pulumi.Input
 
-	ToStaticRoutingEnrichmentOutput() StaticRoutingEnrichmentOutput
-	ToStaticRoutingEnrichmentOutputWithContext(context.Context) StaticRoutingEnrichmentOutput
+	ToStaticStringRoutingEnrichmentOutput() StaticStringRoutingEnrichmentOutput
+	ToStaticStringRoutingEnrichmentOutputWithContext(context.Context) StaticStringRoutingEnrichmentOutput
 }
 
-type StaticRoutingEnrichmentArgs struct {
+type StaticStringRoutingEnrichmentArgs struct {
 	// Static routing enrichment key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
+	// String type routing enrichment value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 	// Static routing enrichment value type. For e.g. this property value can be 'String'.
-	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
+	// Expected value is 'String'.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
 }
 
-func (StaticRoutingEnrichmentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRoutingEnrichment)(nil)).Elem()
+func (StaticStringRoutingEnrichmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticStringRoutingEnrichment)(nil)).Elem()
 }
 
-func (i StaticRoutingEnrichmentArgs) ToStaticRoutingEnrichmentOutput() StaticRoutingEnrichmentOutput {
-	return i.ToStaticRoutingEnrichmentOutputWithContext(context.Background())
+func (i StaticStringRoutingEnrichmentArgs) ToStaticStringRoutingEnrichmentOutput() StaticStringRoutingEnrichmentOutput {
+	return i.ToStaticStringRoutingEnrichmentOutputWithContext(context.Background())
 }
 
-func (i StaticRoutingEnrichmentArgs) ToStaticRoutingEnrichmentOutputWithContext(ctx context.Context) StaticRoutingEnrichmentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticRoutingEnrichmentOutput)
+func (i StaticStringRoutingEnrichmentArgs) ToStaticStringRoutingEnrichmentOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticStringRoutingEnrichmentOutput)
 }
 
-// StaticRoutingEnrichmentArrayInput is an input type that accepts StaticRoutingEnrichmentArray and StaticRoutingEnrichmentArrayOutput values.
-// You can construct a concrete instance of `StaticRoutingEnrichmentArrayInput` via:
+// StaticStringRoutingEnrichmentArrayInput is an input type that accepts StaticStringRoutingEnrichmentArray and StaticStringRoutingEnrichmentArrayOutput values.
+// You can construct a concrete instance of `StaticStringRoutingEnrichmentArrayInput` via:
 //
-//	StaticRoutingEnrichmentArray{ StaticRoutingEnrichmentArgs{...} }
-type StaticRoutingEnrichmentArrayInput interface {
+//	StaticStringRoutingEnrichmentArray{ StaticStringRoutingEnrichmentArgs{...} }
+type StaticStringRoutingEnrichmentArrayInput interface {
 	pulumi.Input
 
-	ToStaticRoutingEnrichmentArrayOutput() StaticRoutingEnrichmentArrayOutput
-	ToStaticRoutingEnrichmentArrayOutputWithContext(context.Context) StaticRoutingEnrichmentArrayOutput
+	ToStaticStringRoutingEnrichmentArrayOutput() StaticStringRoutingEnrichmentArrayOutput
+	ToStaticStringRoutingEnrichmentArrayOutputWithContext(context.Context) StaticStringRoutingEnrichmentArrayOutput
 }
 
-type StaticRoutingEnrichmentArray []StaticRoutingEnrichmentInput
+type StaticStringRoutingEnrichmentArray []StaticStringRoutingEnrichmentInput
 
-func (StaticRoutingEnrichmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StaticRoutingEnrichment)(nil)).Elem()
+func (StaticStringRoutingEnrichmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticStringRoutingEnrichment)(nil)).Elem()
 }
 
-func (i StaticRoutingEnrichmentArray) ToStaticRoutingEnrichmentArrayOutput() StaticRoutingEnrichmentArrayOutput {
-	return i.ToStaticRoutingEnrichmentArrayOutputWithContext(context.Background())
+func (i StaticStringRoutingEnrichmentArray) ToStaticStringRoutingEnrichmentArrayOutput() StaticStringRoutingEnrichmentArrayOutput {
+	return i.ToStaticStringRoutingEnrichmentArrayOutputWithContext(context.Background())
 }
 
-func (i StaticRoutingEnrichmentArray) ToStaticRoutingEnrichmentArrayOutputWithContext(ctx context.Context) StaticRoutingEnrichmentArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticRoutingEnrichmentArrayOutput)
+func (i StaticStringRoutingEnrichmentArray) ToStaticStringRoutingEnrichmentArrayOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticStringRoutingEnrichmentArrayOutput)
 }
 
-type StaticRoutingEnrichmentOutput struct{ *pulumi.OutputState }
+type StaticStringRoutingEnrichmentOutput struct{ *pulumi.OutputState }
 
-func (StaticRoutingEnrichmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRoutingEnrichment)(nil)).Elem()
+func (StaticStringRoutingEnrichmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticStringRoutingEnrichment)(nil)).Elem()
 }
 
-func (o StaticRoutingEnrichmentOutput) ToStaticRoutingEnrichmentOutput() StaticRoutingEnrichmentOutput {
+func (o StaticStringRoutingEnrichmentOutput) ToStaticStringRoutingEnrichmentOutput() StaticStringRoutingEnrichmentOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentOutput) ToStaticRoutingEnrichmentOutputWithContext(ctx context.Context) StaticRoutingEnrichmentOutput {
+func (o StaticStringRoutingEnrichmentOutput) ToStaticStringRoutingEnrichmentOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentOutput {
 	return o
 }
 
 // Static routing enrichment key.
-func (o StaticRoutingEnrichmentOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticRoutingEnrichment) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o StaticStringRoutingEnrichmentOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichment) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// String type routing enrichment value.
+func (o StaticStringRoutingEnrichmentOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichment) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 // Static routing enrichment value type. For e.g. this property value can be 'String'.
-func (o StaticRoutingEnrichmentOutput) ValueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticRoutingEnrichment) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+// Expected value is 'String'.
+func (o StaticStringRoutingEnrichmentOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichment) string { return v.ValueType }).(pulumi.StringOutput)
 }
 
-type StaticRoutingEnrichmentArrayOutput struct{ *pulumi.OutputState }
+type StaticStringRoutingEnrichmentArrayOutput struct{ *pulumi.OutputState }
 
-func (StaticRoutingEnrichmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StaticRoutingEnrichment)(nil)).Elem()
+func (StaticStringRoutingEnrichmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticStringRoutingEnrichment)(nil)).Elem()
 }
 
-func (o StaticRoutingEnrichmentArrayOutput) ToStaticRoutingEnrichmentArrayOutput() StaticRoutingEnrichmentArrayOutput {
+func (o StaticStringRoutingEnrichmentArrayOutput) ToStaticStringRoutingEnrichmentArrayOutput() StaticStringRoutingEnrichmentArrayOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentArrayOutput) ToStaticRoutingEnrichmentArrayOutputWithContext(ctx context.Context) StaticRoutingEnrichmentArrayOutput {
+func (o StaticStringRoutingEnrichmentArrayOutput) ToStaticStringRoutingEnrichmentArrayOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentArrayOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentArrayOutput) Index(i pulumi.IntInput) StaticRoutingEnrichmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticRoutingEnrichment {
-		return vs[0].([]StaticRoutingEnrichment)[vs[1].(int)]
-	}).(StaticRoutingEnrichmentOutput)
+func (o StaticStringRoutingEnrichmentArrayOutput) Index(i pulumi.IntInput) StaticStringRoutingEnrichmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticStringRoutingEnrichment {
+		return vs[0].([]StaticStringRoutingEnrichment)[vs[1].(int)]
+	}).(StaticStringRoutingEnrichmentOutput)
 }
 
-type StaticRoutingEnrichmentResponse struct {
+type StaticStringRoutingEnrichmentResponse struct {
 	// Static routing enrichment key.
 	Key *string `pulumi:"key"`
+	// String type routing enrichment value.
+	Value *string `pulumi:"value"`
 	// Static routing enrichment value type. For e.g. this property value can be 'String'.
-	ValueType *string `pulumi:"valueType"`
+	// Expected value is 'String'.
+	ValueType string `pulumi:"valueType"`
 }
 
-type StaticRoutingEnrichmentResponseOutput struct{ *pulumi.OutputState }
+type StaticStringRoutingEnrichmentResponseOutput struct{ *pulumi.OutputState }
 
-func (StaticRoutingEnrichmentResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRoutingEnrichmentResponse)(nil)).Elem()
+func (StaticStringRoutingEnrichmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticStringRoutingEnrichmentResponse)(nil)).Elem()
 }
 
-func (o StaticRoutingEnrichmentResponseOutput) ToStaticRoutingEnrichmentResponseOutput() StaticRoutingEnrichmentResponseOutput {
+func (o StaticStringRoutingEnrichmentResponseOutput) ToStaticStringRoutingEnrichmentResponseOutput() StaticStringRoutingEnrichmentResponseOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentResponseOutput) ToStaticRoutingEnrichmentResponseOutputWithContext(ctx context.Context) StaticRoutingEnrichmentResponseOutput {
+func (o StaticStringRoutingEnrichmentResponseOutput) ToStaticStringRoutingEnrichmentResponseOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentResponseOutput {
 	return o
 }
 
 // Static routing enrichment key.
-func (o StaticRoutingEnrichmentResponseOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticRoutingEnrichmentResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o StaticStringRoutingEnrichmentResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichmentResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// String type routing enrichment value.
+func (o StaticStringRoutingEnrichmentResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichmentResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 // Static routing enrichment value type. For e.g. this property value can be 'String'.
-func (o StaticRoutingEnrichmentResponseOutput) ValueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StaticRoutingEnrichmentResponse) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+// Expected value is 'String'.
+func (o StaticStringRoutingEnrichmentResponseOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticStringRoutingEnrichmentResponse) string { return v.ValueType }).(pulumi.StringOutput)
 }
 
-type StaticRoutingEnrichmentResponseArrayOutput struct{ *pulumi.OutputState }
+type StaticStringRoutingEnrichmentResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (StaticRoutingEnrichmentResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StaticRoutingEnrichmentResponse)(nil)).Elem()
+func (StaticStringRoutingEnrichmentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticStringRoutingEnrichmentResponse)(nil)).Elem()
 }
 
-func (o StaticRoutingEnrichmentResponseArrayOutput) ToStaticRoutingEnrichmentResponseArrayOutput() StaticRoutingEnrichmentResponseArrayOutput {
+func (o StaticStringRoutingEnrichmentResponseArrayOutput) ToStaticStringRoutingEnrichmentResponseArrayOutput() StaticStringRoutingEnrichmentResponseArrayOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentResponseArrayOutput) ToStaticRoutingEnrichmentResponseArrayOutputWithContext(ctx context.Context) StaticRoutingEnrichmentResponseArrayOutput {
+func (o StaticStringRoutingEnrichmentResponseArrayOutput) ToStaticStringRoutingEnrichmentResponseArrayOutputWithContext(ctx context.Context) StaticStringRoutingEnrichmentResponseArrayOutput {
 	return o
 }
 
-func (o StaticRoutingEnrichmentResponseArrayOutput) Index(i pulumi.IntInput) StaticRoutingEnrichmentResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticRoutingEnrichmentResponse {
-		return vs[0].([]StaticRoutingEnrichmentResponse)[vs[1].(int)]
-	}).(StaticRoutingEnrichmentResponseOutput)
+func (o StaticStringRoutingEnrichmentResponseArrayOutput) Index(i pulumi.IntInput) StaticStringRoutingEnrichmentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticStringRoutingEnrichmentResponse {
+		return vs[0].([]StaticStringRoutingEnrichmentResponse)[vs[1].(int)]
+	}).(StaticStringRoutingEnrichmentResponseOutput)
 }
 
 // Information about the storage blob based dead letter destination.
@@ -12529,7 +13143,7 @@ type StorageQueueEventSubscriptionDestination struct {
 	// Type of the endpoint for the event subscription destination.
 	// Expected value is 'StorageQueue'.
 	EndpointType string `pulumi:"endpointType"`
-	// Storage queue message time to live in seconds.
+	// Storage queue message time to live in seconds. This value cannot be zero or negative with the exception of using -1 to indicate that the Time To Live of the message is Infinite.
 	QueueMessageTimeToLiveInSeconds *float64 `pulumi:"queueMessageTimeToLiveInSeconds"`
 	// The name of the Storage queue under a storage account that is the destination of an event subscription.
 	QueueName *string `pulumi:"queueName"`
@@ -12553,7 +13167,7 @@ type StorageQueueEventSubscriptionDestinationArgs struct {
 	// Type of the endpoint for the event subscription destination.
 	// Expected value is 'StorageQueue'.
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
-	// Storage queue message time to live in seconds.
+	// Storage queue message time to live in seconds. This value cannot be zero or negative with the exception of using -1 to indicate that the Time To Live of the message is Infinite.
 	QueueMessageTimeToLiveInSeconds pulumi.Float64PtrInput `pulumi:"queueMessageTimeToLiveInSeconds"`
 	// The name of the Storage queue under a storage account that is the destination of an event subscription.
 	QueueName pulumi.StringPtrInput `pulumi:"queueName"`
@@ -12645,7 +13259,7 @@ func (o StorageQueueEventSubscriptionDestinationOutput) EndpointType() pulumi.St
 	return o.ApplyT(func(v StorageQueueEventSubscriptionDestination) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
-// Storage queue message time to live in seconds.
+// Storage queue message time to live in seconds. This value cannot be zero or negative with the exception of using -1 to indicate that the Time To Live of the message is Infinite.
 func (o StorageQueueEventSubscriptionDestinationOutput) QueueMessageTimeToLiveInSeconds() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v StorageQueueEventSubscriptionDestination) *float64 { return v.QueueMessageTimeToLiveInSeconds }).(pulumi.Float64PtrOutput)
 }
@@ -12695,7 +13309,7 @@ func (o StorageQueueEventSubscriptionDestinationPtrOutput) EndpointType() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Storage queue message time to live in seconds.
+// Storage queue message time to live in seconds. This value cannot be zero or negative with the exception of using -1 to indicate that the Time To Live of the message is Infinite.
 func (o StorageQueueEventSubscriptionDestinationPtrOutput) QueueMessageTimeToLiveInSeconds() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestination) *float64 {
 		if v == nil {
@@ -12730,7 +13344,7 @@ type StorageQueueEventSubscriptionDestinationResponse struct {
 	// Type of the endpoint for the event subscription destination.
 	// Expected value is 'StorageQueue'.
 	EndpointType string `pulumi:"endpointType"`
-	// Storage queue message time to live in seconds.
+	// Storage queue message time to live in seconds. This value cannot be zero or negative with the exception of using -1 to indicate that the Time To Live of the message is Infinite.
 	QueueMessageTimeToLiveInSeconds *float64 `pulumi:"queueMessageTimeToLiveInSeconds"`
 	// The name of the Storage queue under a storage account that is the destination of an event subscription.
 	QueueName *string `pulumi:"queueName"`
@@ -12759,7 +13373,7 @@ func (o StorageQueueEventSubscriptionDestinationResponseOutput) EndpointType() p
 	return o.ApplyT(func(v StorageQueueEventSubscriptionDestinationResponse) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
-// Storage queue message time to live in seconds.
+// Storage queue message time to live in seconds. This value cannot be zero or negative with the exception of using -1 to indicate that the Time To Live of the message is Infinite.
 func (o StorageQueueEventSubscriptionDestinationResponseOutput) QueueMessageTimeToLiveInSeconds() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v StorageQueueEventSubscriptionDestinationResponse) *float64 {
 		return v.QueueMessageTimeToLiveInSeconds
@@ -12811,7 +13425,7 @@ func (o StorageQueueEventSubscriptionDestinationResponsePtrOutput) EndpointType(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Storage queue message time to live in seconds.
+// Storage queue message time to live in seconds. This value cannot be zero or negative with the exception of using -1 to indicate that the Time To Live of the message is Infinite.
 func (o StorageQueueEventSubscriptionDestinationResponsePtrOutput) QueueMessageTimeToLiveInSeconds() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestinationResponse) *float64 {
 		if v == nil {
@@ -14792,8 +15406,8 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 
 // Properties of the Topic Spaces Configuration.
 type TopicSpacesConfiguration struct {
-	// Client authentication settings for topic spaces configuration.
-	ClientAuthentication *ClientAuthenticationSettings `pulumi:"clientAuthentication"`
+	// List of custom domain configurations for the namespace.
+	CustomDomains []CustomDomainConfiguration `pulumi:"customDomains"`
 	// The maximum number of sessions per authentication name. The property default value is 1.
 	// Min allowed value is 1 and max allowed value is 100.
 	MaximumClientSessionsPerAuthenticationName *int `pulumi:"maximumClientSessionsPerAuthenticationName"`
@@ -14838,8 +15452,8 @@ type TopicSpacesConfigurationInput interface {
 
 // Properties of the Topic Spaces Configuration.
 type TopicSpacesConfigurationArgs struct {
-	// Client authentication settings for topic spaces configuration.
-	ClientAuthentication ClientAuthenticationSettingsPtrInput `pulumi:"clientAuthentication"`
+	// List of custom domain configurations for the namespace.
+	CustomDomains CustomDomainConfigurationArrayInput `pulumi:"customDomains"`
 	// The maximum number of sessions per authentication name. The property default value is 1.
 	// Min allowed value is 1 and max allowed value is 100.
 	MaximumClientSessionsPerAuthenticationName pulumi.IntPtrInput `pulumi:"maximumClientSessionsPerAuthenticationName"`
@@ -14947,9 +15561,9 @@ func (o TopicSpacesConfigurationOutput) ToTopicSpacesConfigurationPtrOutputWithC
 	}).(TopicSpacesConfigurationPtrOutput)
 }
 
-// Client authentication settings for topic spaces configuration.
-func (o TopicSpacesConfigurationOutput) ClientAuthentication() ClientAuthenticationSettingsPtrOutput {
-	return o.ApplyT(func(v TopicSpacesConfiguration) *ClientAuthenticationSettings { return v.ClientAuthentication }).(ClientAuthenticationSettingsPtrOutput)
+// List of custom domain configurations for the namespace.
+func (o TopicSpacesConfigurationOutput) CustomDomains() CustomDomainConfigurationArrayOutput {
+	return o.ApplyT(func(v TopicSpacesConfiguration) []CustomDomainConfiguration { return v.CustomDomains }).(CustomDomainConfigurationArrayOutput)
 }
 
 // The maximum number of sessions per authentication name. The property default value is 1.
@@ -15010,14 +15624,14 @@ func (o TopicSpacesConfigurationPtrOutput) Elem() TopicSpacesConfigurationOutput
 	}).(TopicSpacesConfigurationOutput)
 }
 
-// Client authentication settings for topic spaces configuration.
-func (o TopicSpacesConfigurationPtrOutput) ClientAuthentication() ClientAuthenticationSettingsPtrOutput {
-	return o.ApplyT(func(v *TopicSpacesConfiguration) *ClientAuthenticationSettings {
+// List of custom domain configurations for the namespace.
+func (o TopicSpacesConfigurationPtrOutput) CustomDomains() CustomDomainConfigurationArrayOutput {
+	return o.ApplyT(func(v *TopicSpacesConfiguration) []CustomDomainConfiguration {
 		if v == nil {
 			return nil
 		}
-		return v.ClientAuthentication
-	}).(ClientAuthenticationSettingsPtrOutput)
+		return v.CustomDomains
+	}).(CustomDomainConfigurationArrayOutput)
 }
 
 // The maximum number of sessions per authentication name. The property default value is 1.
@@ -15086,8 +15700,8 @@ func (o TopicSpacesConfigurationPtrOutput) State() pulumi.StringPtrOutput {
 
 // Properties of the Topic Spaces Configuration.
 type TopicSpacesConfigurationResponse struct {
-	// Client authentication settings for topic spaces configuration.
-	ClientAuthentication *ClientAuthenticationSettingsResponse `pulumi:"clientAuthentication"`
+	// List of custom domain configurations for the namespace.
+	CustomDomains []CustomDomainConfigurationResponse `pulumi:"customDomains"`
 	// The endpoint for the topic spaces configuration. This is a read-only property.
 	Hostname string `pulumi:"hostname"`
 	// The maximum number of sessions per authentication name. The property default value is 1.
@@ -15136,11 +15750,9 @@ func (o TopicSpacesConfigurationResponseOutput) ToTopicSpacesConfigurationRespon
 	return o
 }
 
-// Client authentication settings for topic spaces configuration.
-func (o TopicSpacesConfigurationResponseOutput) ClientAuthentication() ClientAuthenticationSettingsResponsePtrOutput {
-	return o.ApplyT(func(v TopicSpacesConfigurationResponse) *ClientAuthenticationSettingsResponse {
-		return v.ClientAuthentication
-	}).(ClientAuthenticationSettingsResponsePtrOutput)
+// List of custom domain configurations for the namespace.
+func (o TopicSpacesConfigurationResponseOutput) CustomDomains() CustomDomainConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v TopicSpacesConfigurationResponse) []CustomDomainConfigurationResponse { return v.CustomDomains }).(CustomDomainConfigurationResponseArrayOutput)
 }
 
 // The endpoint for the topic spaces configuration. This is a read-only property.
@@ -15206,14 +15818,14 @@ func (o TopicSpacesConfigurationResponsePtrOutput) Elem() TopicSpacesConfigurati
 	}).(TopicSpacesConfigurationResponseOutput)
 }
 
-// Client authentication settings for topic spaces configuration.
-func (o TopicSpacesConfigurationResponsePtrOutput) ClientAuthentication() ClientAuthenticationSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *TopicSpacesConfigurationResponse) *ClientAuthenticationSettingsResponse {
+// List of custom domain configurations for the namespace.
+func (o TopicSpacesConfigurationResponsePtrOutput) CustomDomains() CustomDomainConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *TopicSpacesConfigurationResponse) []CustomDomainConfigurationResponse {
 		if v == nil {
 			return nil
 		}
-		return v.ClientAuthentication
-	}).(ClientAuthenticationSettingsResponsePtrOutput)
+		return v.CustomDomains
+	}).(CustomDomainConfigurationResponseArrayOutput)
 }
 
 // The endpoint for the topic spaces configuration. This is a read-only property.
@@ -15291,7 +15903,149 @@ func (o TopicSpacesConfigurationResponsePtrOutput) State() pulumi.StringPtrOutpu
 }
 
 // Properties of the Topics Configuration.
+type TopicsConfiguration struct {
+	// List of custom domain configurations for the namespace.
+	CustomDomains []CustomDomainConfiguration `pulumi:"customDomains"`
+}
+
+// TopicsConfigurationInput is an input type that accepts TopicsConfigurationArgs and TopicsConfigurationOutput values.
+// You can construct a concrete instance of `TopicsConfigurationInput` via:
+//
+//	TopicsConfigurationArgs{...}
+type TopicsConfigurationInput interface {
+	pulumi.Input
+
+	ToTopicsConfigurationOutput() TopicsConfigurationOutput
+	ToTopicsConfigurationOutputWithContext(context.Context) TopicsConfigurationOutput
+}
+
+// Properties of the Topics Configuration.
+type TopicsConfigurationArgs struct {
+	// List of custom domain configurations for the namespace.
+	CustomDomains CustomDomainConfigurationArrayInput `pulumi:"customDomains"`
+}
+
+func (TopicsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicsConfiguration)(nil)).Elem()
+}
+
+func (i TopicsConfigurationArgs) ToTopicsConfigurationOutput() TopicsConfigurationOutput {
+	return i.ToTopicsConfigurationOutputWithContext(context.Background())
+}
+
+func (i TopicsConfigurationArgs) ToTopicsConfigurationOutputWithContext(ctx context.Context) TopicsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicsConfigurationOutput)
+}
+
+func (i TopicsConfigurationArgs) ToTopicsConfigurationPtrOutput() TopicsConfigurationPtrOutput {
+	return i.ToTopicsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i TopicsConfigurationArgs) ToTopicsConfigurationPtrOutputWithContext(ctx context.Context) TopicsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicsConfigurationOutput).ToTopicsConfigurationPtrOutputWithContext(ctx)
+}
+
+// TopicsConfigurationPtrInput is an input type that accepts TopicsConfigurationArgs, TopicsConfigurationPtr and TopicsConfigurationPtrOutput values.
+// You can construct a concrete instance of `TopicsConfigurationPtrInput` via:
+//
+//	        TopicsConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicsConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToTopicsConfigurationPtrOutput() TopicsConfigurationPtrOutput
+	ToTopicsConfigurationPtrOutputWithContext(context.Context) TopicsConfigurationPtrOutput
+}
+
+type topicsConfigurationPtrType TopicsConfigurationArgs
+
+func TopicsConfigurationPtr(v *TopicsConfigurationArgs) TopicsConfigurationPtrInput {
+	return (*topicsConfigurationPtrType)(v)
+}
+
+func (*topicsConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicsConfiguration)(nil)).Elem()
+}
+
+func (i *topicsConfigurationPtrType) ToTopicsConfigurationPtrOutput() TopicsConfigurationPtrOutput {
+	return i.ToTopicsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *topicsConfigurationPtrType) ToTopicsConfigurationPtrOutputWithContext(ctx context.Context) TopicsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicsConfigurationPtrOutput)
+}
+
+// Properties of the Topics Configuration.
+type TopicsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (TopicsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicsConfiguration)(nil)).Elem()
+}
+
+func (o TopicsConfigurationOutput) ToTopicsConfigurationOutput() TopicsConfigurationOutput {
+	return o
+}
+
+func (o TopicsConfigurationOutput) ToTopicsConfigurationOutputWithContext(ctx context.Context) TopicsConfigurationOutput {
+	return o
+}
+
+func (o TopicsConfigurationOutput) ToTopicsConfigurationPtrOutput() TopicsConfigurationPtrOutput {
+	return o.ToTopicsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o TopicsConfigurationOutput) ToTopicsConfigurationPtrOutputWithContext(ctx context.Context) TopicsConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicsConfiguration) *TopicsConfiguration {
+		return &v
+	}).(TopicsConfigurationPtrOutput)
+}
+
+// List of custom domain configurations for the namespace.
+func (o TopicsConfigurationOutput) CustomDomains() CustomDomainConfigurationArrayOutput {
+	return o.ApplyT(func(v TopicsConfiguration) []CustomDomainConfiguration { return v.CustomDomains }).(CustomDomainConfigurationArrayOutput)
+}
+
+type TopicsConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicsConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicsConfiguration)(nil)).Elem()
+}
+
+func (o TopicsConfigurationPtrOutput) ToTopicsConfigurationPtrOutput() TopicsConfigurationPtrOutput {
+	return o
+}
+
+func (o TopicsConfigurationPtrOutput) ToTopicsConfigurationPtrOutputWithContext(ctx context.Context) TopicsConfigurationPtrOutput {
+	return o
+}
+
+func (o TopicsConfigurationPtrOutput) Elem() TopicsConfigurationOutput {
+	return o.ApplyT(func(v *TopicsConfiguration) TopicsConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret TopicsConfiguration
+		return ret
+	}).(TopicsConfigurationOutput)
+}
+
+// List of custom domain configurations for the namespace.
+func (o TopicsConfigurationPtrOutput) CustomDomains() CustomDomainConfigurationArrayOutput {
+	return o.ApplyT(func(v *TopicsConfiguration) []CustomDomainConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDomains
+	}).(CustomDomainConfigurationArrayOutput)
+}
+
+// Properties of the Topics Configuration.
 type TopicsConfigurationResponse struct {
+	// List of custom domain configurations for the namespace.
+	CustomDomains []CustomDomainConfigurationResponse `pulumi:"customDomains"`
 	// The hostname for the topics configuration. This is a read-only property.
 	Hostname string `pulumi:"hostname"`
 }
@@ -15309,6 +16063,11 @@ func (o TopicsConfigurationResponseOutput) ToTopicsConfigurationResponseOutput()
 
 func (o TopicsConfigurationResponseOutput) ToTopicsConfigurationResponseOutputWithContext(ctx context.Context) TopicsConfigurationResponseOutput {
 	return o
+}
+
+// List of custom domain configurations for the namespace.
+func (o TopicsConfigurationResponseOutput) CustomDomains() CustomDomainConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v TopicsConfigurationResponse) []CustomDomainConfigurationResponse { return v.CustomDomains }).(CustomDomainConfigurationResponseArrayOutput)
 }
 
 // The hostname for the topics configuration. This is a read-only property.
@@ -15338,6 +16097,16 @@ func (o TopicsConfigurationResponsePtrOutput) Elem() TopicsConfigurationResponse
 		var ret TopicsConfigurationResponse
 		return ret
 	}).(TopicsConfigurationResponseOutput)
+}
+
+// List of custom domain configurations for the namespace.
+func (o TopicsConfigurationResponsePtrOutput) CustomDomains() CustomDomainConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *TopicsConfigurationResponse) []CustomDomainConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDomains
+	}).(CustomDomainConfigurationResponseArrayOutput)
 }
 
 // The hostname for the topics configuration. This is a read-only property.
@@ -15527,6 +16296,8 @@ type WebHookEventSubscriptionDestination struct {
 	EndpointUrl *string `pulumi:"endpointUrl"`
 	// Maximum number of events per batch.
 	MaxEventsPerBatch *int `pulumi:"maxEventsPerBatch"`
+	// Minimum TLS version that should be supported by webhook endpoint
+	MinimumTlsVersionAllowed *string `pulumi:"minimumTlsVersionAllowed"`
 	// Preferred batch size in Kilobytes.
 	PreferredBatchSizeInKilobytes *int `pulumi:"preferredBatchSizeInKilobytes"`
 }
@@ -15574,6 +16345,8 @@ type WebHookEventSubscriptionDestinationArgs struct {
 	EndpointUrl pulumi.StringPtrInput `pulumi:"endpointUrl"`
 	// Maximum number of events per batch.
 	MaxEventsPerBatch pulumi.IntPtrInput `pulumi:"maxEventsPerBatch"`
+	// Minimum TLS version that should be supported by webhook endpoint
+	MinimumTlsVersionAllowed pulumi.StringPtrInput `pulumi:"minimumTlsVersionAllowed"`
 	// Preferred batch size in Kilobytes.
 	PreferredBatchSizeInKilobytes pulumi.IntPtrInput `pulumi:"preferredBatchSizeInKilobytes"`
 }
@@ -15701,6 +16474,11 @@ func (o WebHookEventSubscriptionDestinationOutput) MaxEventsPerBatch() pulumi.In
 	return o.ApplyT(func(v WebHookEventSubscriptionDestination) *int { return v.MaxEventsPerBatch }).(pulumi.IntPtrOutput)
 }
 
+// Minimum TLS version that should be supported by webhook endpoint
+func (o WebHookEventSubscriptionDestinationOutput) MinimumTlsVersionAllowed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestination) *string { return v.MinimumTlsVersionAllowed }).(pulumi.StringPtrOutput)
+}
+
 // Preferred batch size in Kilobytes.
 func (o WebHookEventSubscriptionDestinationOutput) PreferredBatchSizeInKilobytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WebHookEventSubscriptionDestination) *int { return v.PreferredBatchSizeInKilobytes }).(pulumi.IntPtrOutput)
@@ -15791,6 +16569,16 @@ func (o WebHookEventSubscriptionDestinationPtrOutput) MaxEventsPerBatch() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+// Minimum TLS version that should be supported by webhook endpoint
+func (o WebHookEventSubscriptionDestinationPtrOutput) MinimumTlsVersionAllowed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumTlsVersionAllowed
+	}).(pulumi.StringPtrOutput)
+}
+
 // Preferred batch size in Kilobytes.
 func (o WebHookEventSubscriptionDestinationPtrOutput) PreferredBatchSizeInKilobytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WebHookEventSubscriptionDestination) *int {
@@ -15818,6 +16606,8 @@ type WebHookEventSubscriptionDestinationResponse struct {
 	EndpointUrl *string `pulumi:"endpointUrl"`
 	// Maximum number of events per batch.
 	MaxEventsPerBatch *int `pulumi:"maxEventsPerBatch"`
+	// Minimum TLS version that should be supported by webhook endpoint
+	MinimumTlsVersionAllowed *string `pulumi:"minimumTlsVersionAllowed"`
 	// Preferred batch size in Kilobytes.
 	PreferredBatchSizeInKilobytes *int `pulumi:"preferredBatchSizeInKilobytes"`
 }
@@ -15890,6 +16680,11 @@ func (o WebHookEventSubscriptionDestinationResponseOutput) EndpointUrl() pulumi.
 // Maximum number of events per batch.
 func (o WebHookEventSubscriptionDestinationResponseOutput) MaxEventsPerBatch() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WebHookEventSubscriptionDestinationResponse) *int { return v.MaxEventsPerBatch }).(pulumi.IntPtrOutput)
+}
+
+// Minimum TLS version that should be supported by webhook endpoint
+func (o WebHookEventSubscriptionDestinationResponseOutput) MinimumTlsVersionAllowed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestinationResponse) *string { return v.MinimumTlsVersionAllowed }).(pulumi.StringPtrOutput)
 }
 
 // Preferred batch size in Kilobytes.
@@ -15992,6 +16787,16 @@ func (o WebHookEventSubscriptionDestinationResponsePtrOutput) MaxEventsPerBatch(
 	}).(pulumi.IntPtrOutput)
 }
 
+// Minimum TLS version that should be supported by webhook endpoint
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) MinimumTlsVersionAllowed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumTlsVersionAllowed
+	}).(pulumi.StringPtrOutput)
+}
+
 // Preferred batch size in Kilobytes.
 func (o WebHookEventSubscriptionDestinationResponsePtrOutput) PreferredBatchSizeInKilobytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WebHookEventSubscriptionDestinationResponse) *int {
@@ -16011,30 +16816,22 @@ func init() {
 	pulumi.RegisterOutputType(BoolEqualsAdvancedFilterResponseOutput{})
 	pulumi.RegisterOutputType(BoolEqualsFilterOutput{})
 	pulumi.RegisterOutputType(BoolEqualsFilterResponseOutput{})
-	pulumi.RegisterOutputType(ClientAuthenticationOutput{})
-	pulumi.RegisterOutputType(ClientAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(ClientAuthenticationResponseOutput{})
-	pulumi.RegisterOutputType(ClientAuthenticationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ClientAuthenticationSettingsOutput{})
-	pulumi.RegisterOutputType(ClientAuthenticationSettingsPtrOutput{})
-	pulumi.RegisterOutputType(ClientAuthenticationSettingsResponseOutput{})
-	pulumi.RegisterOutputType(ClientAuthenticationSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClientCertificateAuthenticationOutput{})
 	pulumi.RegisterOutputType(ClientCertificateAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(ClientCertificateAuthenticationResponseOutput{})
 	pulumi.RegisterOutputType(ClientCertificateAuthenticationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ClientCertificateSubjectDistinguishedNameOutput{})
-	pulumi.RegisterOutputType(ClientCertificateSubjectDistinguishedNamePtrOutput{})
-	pulumi.RegisterOutputType(ClientCertificateSubjectDistinguishedNameResponseOutput{})
-	pulumi.RegisterOutputType(ClientCertificateSubjectDistinguishedNameResponsePtrOutput{})
-	pulumi.RegisterOutputType(ClientCertificateThumbprintOutput{})
-	pulumi.RegisterOutputType(ClientCertificateThumbprintPtrOutput{})
-	pulumi.RegisterOutputType(ClientCertificateThumbprintResponseOutput{})
-	pulumi.RegisterOutputType(ClientCertificateThumbprintResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStateOutput{})
 	pulumi.RegisterOutputType(ConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(ConnectionStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(CustomDomainConfigurationOutput{})
+	pulumi.RegisterOutputType(CustomDomainConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(CustomDomainConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(CustomDomainConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(CustomDomainIdentityOutput{})
+	pulumi.RegisterOutputType(CustomDomainIdentityPtrOutput{})
+	pulumi.RegisterOutputType(CustomDomainIdentityResponseOutput{})
+	pulumi.RegisterOutputType(CustomDomainIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeadLetterWithResourceIdentityOutput{})
 	pulumi.RegisterOutputType(DeadLetterWithResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(DeadLetterWithResourceIdentityResponseOutput{})
@@ -16109,10 +16906,18 @@ func init() {
 	pulumi.RegisterOutputType(JsonInputSchemaMappingPtrOutput{})
 	pulumi.RegisterOutputType(JsonInputSchemaMappingResponseOutput{})
 	pulumi.RegisterOutputType(JsonInputSchemaMappingResponsePtrOutput{})
+	pulumi.RegisterOutputType(MonitorAlertEventSubscriptionDestinationOutput{})
+	pulumi.RegisterOutputType(MonitorAlertEventSubscriptionDestinationPtrOutput{})
+	pulumi.RegisterOutputType(MonitorAlertEventSubscriptionDestinationResponseOutput{})
+	pulumi.RegisterOutputType(MonitorAlertEventSubscriptionDestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(NamespaceSkuOutput{})
 	pulumi.RegisterOutputType(NamespaceSkuPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceSkuResponseOutput{})
 	pulumi.RegisterOutputType(NamespaceSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(NamespaceTopicEventSubscriptionDestinationOutput{})
+	pulumi.RegisterOutputType(NamespaceTopicEventSubscriptionDestinationPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceTopicEventSubscriptionDestinationResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceTopicEventSubscriptionDestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(NumberGreaterThanAdvancedFilterOutput{})
 	pulumi.RegisterOutputType(NumberGreaterThanAdvancedFilterResponseOutput{})
 	pulumi.RegisterOutputType(NumberGreaterThanFilterOutput{})
@@ -16165,6 +16970,10 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
+	pulumi.RegisterOutputType(PushInfoOutput{})
+	pulumi.RegisterOutputType(PushInfoPtrOutput{})
+	pulumi.RegisterOutputType(PushInfoResponseOutput{})
+	pulumi.RegisterOutputType(PushInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(QueueInfoOutput{})
 	pulumi.RegisterOutputType(QueueInfoPtrOutput{})
 	pulumi.RegisterOutputType(QueueInfoResponseOutput{})
@@ -16191,10 +17000,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(StaticDeliveryAttributeMappingOutput{})
 	pulumi.RegisterOutputType(StaticDeliveryAttributeMappingResponseOutput{})
-	pulumi.RegisterOutputType(StaticRoutingEnrichmentOutput{})
-	pulumi.RegisterOutputType(StaticRoutingEnrichmentArrayOutput{})
-	pulumi.RegisterOutputType(StaticRoutingEnrichmentResponseOutput{})
-	pulumi.RegisterOutputType(StaticRoutingEnrichmentResponseArrayOutput{})
+	pulumi.RegisterOutputType(StaticStringRoutingEnrichmentOutput{})
+	pulumi.RegisterOutputType(StaticStringRoutingEnrichmentArrayOutput{})
+	pulumi.RegisterOutputType(StaticStringRoutingEnrichmentResponseOutput{})
+	pulumi.RegisterOutputType(StaticStringRoutingEnrichmentResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationPtrOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationResponseOutput{})
@@ -16240,6 +17049,8 @@ func init() {
 	pulumi.RegisterOutputType(TopicSpacesConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TopicSpacesConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(TopicSpacesConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(TopicsConfigurationOutput{})
+	pulumi.RegisterOutputType(TopicsConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TopicsConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(TopicsConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserIdentityPropertiesOutput{})

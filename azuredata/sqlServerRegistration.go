@@ -14,10 +14,12 @@ import (
 
 // A SQL server registration.
 //
-// Uses Azure REST API version 2019-07-24-preview. In version 1.x of the Azure Native provider, it used API version 2019-07-24-preview.
+// Uses Azure REST API version 2019-07-24-preview. In version 2.x of the Azure Native provider, it used API version 2019-07-24-preview.
 type SqlServerRegistration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -157,6 +159,11 @@ func (o SqlServerRegistrationOutput) ToSqlServerRegistrationOutput() SqlServerRe
 
 func (o SqlServerRegistrationOutput) ToSqlServerRegistrationOutputWithContext(ctx context.Context) SqlServerRegistrationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SqlServerRegistrationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlServerRegistration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

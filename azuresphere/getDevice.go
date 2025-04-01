@@ -13,9 +13,9 @@ import (
 
 // Get a Device. Use '.unassigned' or '.default' for the device group and product names when a device does not belong to a device group and product.
 //
-// Uses Azure REST API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2024-04-01.
+// Other available API versions: 2022-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuresphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.InvokeOption) (*LookupDeviceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeviceResult
@@ -41,6 +41,8 @@ type LookupDeviceArgs struct {
 
 // An device resource belonging to a device group resource.
 type LookupDeviceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// SKU of the chip
 	ChipSku string `pulumi:"chipSku"`
 	// Device ID
@@ -104,6 +106,11 @@ func (o LookupDeviceResultOutput) ToLookupDeviceResultOutput() LookupDeviceResul
 
 func (o LookupDeviceResultOutput) ToLookupDeviceResultOutputWithContext(ctx context.Context) LookupDeviceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDeviceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // SKU of the chip

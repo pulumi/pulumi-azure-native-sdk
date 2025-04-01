@@ -13,9 +13,9 @@ import (
 
 // Gets an IPv6 firewall rule.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIPv6FirewallRule(ctx *pulumi.Context, args *LookupIPv6FirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupIPv6FirewallRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIPv6FirewallRuleResult
@@ -37,7 +37,9 @@ type LookupIPv6FirewallRuleArgs struct {
 
 // An IPv6 server firewall rule.
 type LookupIPv6FirewallRuleResult struct {
-	// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpv6Address.
 	EndIPv6Address *string `pulumi:"endIPv6Address"`
 	// Resource ID.
 	Id string `pulumi:"id"`
@@ -86,7 +88,12 @@ func (o LookupIPv6FirewallRuleResultOutput) ToLookupIPv6FirewallRuleResultOutput
 	return o
 }
 
-// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.
+// The Azure API version of the resource.
+func (o LookupIPv6FirewallRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIPv6FirewallRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpv6Address.
 func (o LookupIPv6FirewallRuleResultOutput) EndIPv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIPv6FirewallRuleResult) *string { return v.EndIPv6Address }).(pulumi.StringPtrOutput)
 }

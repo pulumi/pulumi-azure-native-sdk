@@ -14,12 +14,14 @@ import (
 
 // Device Update instance details.
 //
-// Uses Azure REST API version 2023-07-01. In version 1.x of the Azure Native provider, it used API version 2020-03-01-preview.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2023-07-01.
 type Instance struct {
 	pulumi.CustomResourceState
 
 	// Parent Device Update Account name which Instance belongs to.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Customer-initiated diagnostic log collection storage properties
 	DiagnosticStorageProperties DiagnosticStoragePropertiesResponsePtrOutput `pulumi:"diagnosticStorageProperties"`
 	// Enables or Disables the diagnostic logs collection
@@ -182,6 +184,11 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 // Parent Device Update Account name which Instance belongs to.
 func (o InstanceOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o InstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Customer-initiated diagnostic log collection storage properties

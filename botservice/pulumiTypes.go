@@ -1718,6 +1718,8 @@ type BotPropertiesResponse struct {
 	MsaAppTenantId *string `pulumi:"msaAppTenantId"`
 	// Microsoft App Type for the bot
 	MsaAppType *string `pulumi:"msaAppType"`
+	// List of Network Security Perimeter configurations for the bot
+	NetworkSecurityPerimeterConfigurations []NetworkSecurityPerimeterConfigurationResponse `pulumi:"networkSecurityPerimeterConfigurations"`
 	// The hint to browser (e.g. protocol handler) on how to open the bot for authoring
 	OpenWithHint *string `pulumi:"openWithHint"`
 	// Contains resource parameters defined as key/value pairs.
@@ -1906,6 +1908,13 @@ func (o BotPropertiesResponseOutput) MsaAppTenantId() pulumi.StringPtrOutput {
 // Microsoft App Type for the bot
 func (o BotPropertiesResponseOutput) MsaAppType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BotPropertiesResponse) *string { return v.MsaAppType }).(pulumi.StringPtrOutput)
+}
+
+// List of Network Security Perimeter configurations for the bot
+func (o BotPropertiesResponseOutput) NetworkSecurityPerimeterConfigurations() NetworkSecurityPerimeterConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v BotPropertiesResponse) []NetworkSecurityPerimeterConfigurationResponse {
+		return v.NetworkSecurityPerimeterConfigurations
+	}).(NetworkSecurityPerimeterConfigurationResponseArrayOutput)
 }
 
 // The hint to browser (e.g. protocol handler) on how to open the bot for authoring
@@ -8345,7 +8354,7 @@ func (val *MsTeamsChannelProperties) Defaults() *MsTeamsChannelProperties {
 	}
 	tmp := *val
 	if tmp.DeploymentEnvironment == nil {
-		deploymentEnvironment_ := "FallbackDeploymentEnvironment"
+		deploymentEnvironment_ := "CommercialDeployment"
 		tmp.DeploymentEnvironment = &deploymentEnvironment_
 	}
 	if tmp.EnableCalling == nil {
@@ -8389,7 +8398,7 @@ func (val *MsTeamsChannelPropertiesArgs) Defaults() *MsTeamsChannelPropertiesArg
 	}
 	tmp := *val
 	if tmp.DeploymentEnvironment == nil {
-		tmp.DeploymentEnvironment = pulumi.StringPtr("FallbackDeploymentEnvironment")
+		tmp.DeploymentEnvironment = pulumi.StringPtr("CommercialDeployment")
 	}
 	if tmp.EnableCalling == nil {
 		tmp.EnableCalling = pulumi.BoolPtr(false)
@@ -8611,7 +8620,7 @@ func (val *MsTeamsChannelPropertiesResponse) Defaults() *MsTeamsChannelPropertie
 	}
 	tmp := *val
 	if tmp.DeploymentEnvironment == nil {
-		deploymentEnvironment_ := "FallbackDeploymentEnvironment"
+		deploymentEnvironment_ := "CommercialDeployment"
 		tmp.DeploymentEnvironment = &deploymentEnvironment_
 	}
 	if tmp.EnableCalling == nil {
@@ -8894,6 +8903,386 @@ func (o MsTeamsChannelResponsePtrOutput) ProvisioningState() pulumi.StringPtrOut
 		}
 		return &v.ProvisioningState
 	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of Network Security Perimeter configuration
+type NetworkSecurityPerimeterConfigurationPropertiesResponse struct {
+	// Information about Network Security Perimeter
+	NetworkSecurityPerimeter NetworkSecurityPerimeterResponse `pulumi:"networkSecurityPerimeter"`
+	// Information about profile
+	Profile ProfileResponse `pulumi:"profile"`
+	// List of Provisioning Issues if any
+	ProvisioningIssues []ProvisioningIssueResponse `pulumi:"provisioningIssues"`
+	ProvisioningState  *string                     `pulumi:"provisioningState"`
+	// Information about resource association
+	ResourceAssociation ResourceAssociationResponse `pulumi:"resourceAssociation"`
+}
+
+// Defaults sets the appropriate defaults for NetworkSecurityPerimeterConfigurationPropertiesResponse
+func (val *NetworkSecurityPerimeterConfigurationPropertiesResponse) Defaults() *NetworkSecurityPerimeterConfigurationPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ProvisioningState == nil {
+		provisioningState_ := "Succeeded"
+		tmp.ProvisioningState = &provisioningState_
+	}
+	return &tmp
+}
+
+// Properties of Network Security Perimeter configuration
+type NetworkSecurityPerimeterConfigurationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkSecurityPerimeterConfigurationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkSecurityPerimeterConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponseOutput) ToNetworkSecurityPerimeterConfigurationPropertiesResponseOutput() NetworkSecurityPerimeterConfigurationPropertiesResponseOutput {
+	return o
+}
+
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponseOutput) ToNetworkSecurityPerimeterConfigurationPropertiesResponseOutputWithContext(ctx context.Context) NetworkSecurityPerimeterConfigurationPropertiesResponseOutput {
+	return o
+}
+
+// Information about Network Security Perimeter
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponseOutput) NetworkSecurityPerimeter() NetworkSecurityPerimeterResponseOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationPropertiesResponse) NetworkSecurityPerimeterResponse {
+		return v.NetworkSecurityPerimeter
+	}).(NetworkSecurityPerimeterResponseOutput)
+}
+
+// Information about profile
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponseOutput) Profile() ProfileResponseOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationPropertiesResponse) ProfileResponse { return v.Profile }).(ProfileResponseOutput)
+}
+
+// List of Provisioning Issues if any
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponseOutput) ProvisioningIssues() ProvisioningIssueResponseArrayOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationPropertiesResponse) []ProvisioningIssueResponse {
+		return v.ProvisioningIssues
+	}).(ProvisioningIssueResponseArrayOutput)
+}
+
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+// Information about resource association
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponseOutput) ResourceAssociation() ResourceAssociationResponseOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationPropertiesResponse) ResourceAssociationResponse {
+		return v.ResourceAssociation
+	}).(ResourceAssociationResponseOutput)
+}
+
+// Network Security Perimeter configuration
+type NetworkSecurityPerimeterConfigurationResponse struct {
+	// Fully qualified identifier of the resource
+	Id *string `pulumi:"id"`
+	// Name of the resource
+	Name *string `pulumi:"name"`
+	// Properties of the Network Security Perimeter configuration
+	Properties NetworkSecurityPerimeterConfigurationPropertiesResponse `pulumi:"properties"`
+	// Type of the resource
+	Type *string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for NetworkSecurityPerimeterConfigurationResponse
+func (val *NetworkSecurityPerimeterConfigurationResponse) Defaults() *NetworkSecurityPerimeterConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = *tmp.Properties.Defaults()
+
+	return &tmp
+}
+
+// Network Security Perimeter configuration
+type NetworkSecurityPerimeterConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkSecurityPerimeterConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkSecurityPerimeterConfigurationResponse)(nil)).Elem()
+}
+
+func (o NetworkSecurityPerimeterConfigurationResponseOutput) ToNetworkSecurityPerimeterConfigurationResponseOutput() NetworkSecurityPerimeterConfigurationResponseOutput {
+	return o
+}
+
+func (o NetworkSecurityPerimeterConfigurationResponseOutput) ToNetworkSecurityPerimeterConfigurationResponseOutputWithContext(ctx context.Context) NetworkSecurityPerimeterConfigurationResponseOutput {
+	return o
+}
+
+// Fully qualified identifier of the resource
+func (o NetworkSecurityPerimeterConfigurationResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource
+func (o NetworkSecurityPerimeterConfigurationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Properties of the Network Security Perimeter configuration
+func (o NetworkSecurityPerimeterConfigurationResponseOutput) Properties() NetworkSecurityPerimeterConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) NetworkSecurityPerimeterConfigurationPropertiesResponse {
+		return v.Properties
+	}).(NetworkSecurityPerimeterConfigurationPropertiesResponseOutput)
+}
+
+// Type of the resource
+func (o NetworkSecurityPerimeterConfigurationResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type NetworkSecurityPerimeterConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkSecurityPerimeterConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkSecurityPerimeterConfigurationResponse)(nil)).Elem()
+}
+
+func (o NetworkSecurityPerimeterConfigurationResponseArrayOutput) ToNetworkSecurityPerimeterConfigurationResponseArrayOutput() NetworkSecurityPerimeterConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o NetworkSecurityPerimeterConfigurationResponseArrayOutput) ToNetworkSecurityPerimeterConfigurationResponseArrayOutputWithContext(ctx context.Context) NetworkSecurityPerimeterConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o NetworkSecurityPerimeterConfigurationResponseArrayOutput) Index(i pulumi.IntInput) NetworkSecurityPerimeterConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkSecurityPerimeterConfigurationResponse {
+		return vs[0].([]NetworkSecurityPerimeterConfigurationResponse)[vs[1].(int)]
+	}).(NetworkSecurityPerimeterConfigurationResponseOutput)
+}
+
+// Information about Network Security Perimeter
+type NetworkSecurityPerimeterResponse struct {
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
+	// Location of the Network Security Perimeter
+	Location *string `pulumi:"location"`
+	// Guid of the Network Security Perimeter
+	PerimeterGuid *string `pulumi:"perimeterGuid"`
+}
+
+// Information about Network Security Perimeter
+type NetworkSecurityPerimeterResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkSecurityPerimeterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkSecurityPerimeterResponse)(nil)).Elem()
+}
+
+func (o NetworkSecurityPerimeterResponseOutput) ToNetworkSecurityPerimeterResponseOutput() NetworkSecurityPerimeterResponseOutput {
+	return o
+}
+
+func (o NetworkSecurityPerimeterResponseOutput) ToNetworkSecurityPerimeterResponseOutputWithContext(ctx context.Context) NetworkSecurityPerimeterResponseOutput {
+	return o
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o NetworkSecurityPerimeterResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Location of the Network Security Perimeter
+func (o NetworkSecurityPerimeterResponseOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Guid of the Network Security Perimeter
+func (o NetworkSecurityPerimeterResponseOutput) PerimeterGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterResponse) *string { return v.PerimeterGuid }).(pulumi.StringPtrOutput)
+}
+
+type NetworkSecurityPerimeterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkSecurityPerimeterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkSecurityPerimeterResponse)(nil)).Elem()
+}
+
+func (o NetworkSecurityPerimeterResponseArrayOutput) ToNetworkSecurityPerimeterResponseArrayOutput() NetworkSecurityPerimeterResponseArrayOutput {
+	return o
+}
+
+func (o NetworkSecurityPerimeterResponseArrayOutput) ToNetworkSecurityPerimeterResponseArrayOutputWithContext(ctx context.Context) NetworkSecurityPerimeterResponseArrayOutput {
+	return o
+}
+
+func (o NetworkSecurityPerimeterResponseArrayOutput) Index(i pulumi.IntInput) NetworkSecurityPerimeterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkSecurityPerimeterResponse {
+		return vs[0].([]NetworkSecurityPerimeterResponse)[vs[1].(int)]
+	}).(NetworkSecurityPerimeterResponseOutput)
+}
+
+// Information of Access Rule in a profile
+type NspAccessRuleResponse struct {
+	// Name of the access rule
+	Name *string `pulumi:"name"`
+	// Properties of Access Rule
+	Properties NspAccessRuleResponseProperties `pulumi:"properties"`
+}
+
+// Information of Access Rule in a profile
+type NspAccessRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (NspAccessRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NspAccessRuleResponse)(nil)).Elem()
+}
+
+func (o NspAccessRuleResponseOutput) ToNspAccessRuleResponseOutput() NspAccessRuleResponseOutput {
+	return o
+}
+
+func (o NspAccessRuleResponseOutput) ToNspAccessRuleResponseOutputWithContext(ctx context.Context) NspAccessRuleResponseOutput {
+	return o
+}
+
+// Name of the access rule
+func (o NspAccessRuleResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NspAccessRuleResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Properties of Access Rule
+func (o NspAccessRuleResponseOutput) Properties() NspAccessRuleResponsePropertiesOutput {
+	return o.ApplyT(func(v NspAccessRuleResponse) NspAccessRuleResponseProperties { return v.Properties }).(NspAccessRuleResponsePropertiesOutput)
+}
+
+type NspAccessRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NspAccessRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NspAccessRuleResponse)(nil)).Elem()
+}
+
+func (o NspAccessRuleResponseArrayOutput) ToNspAccessRuleResponseArrayOutput() NspAccessRuleResponseArrayOutput {
+	return o
+}
+
+func (o NspAccessRuleResponseArrayOutput) ToNspAccessRuleResponseArrayOutputWithContext(ctx context.Context) NspAccessRuleResponseArrayOutput {
+	return o
+}
+
+func (o NspAccessRuleResponseArrayOutput) Index(i pulumi.IntInput) NspAccessRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NspAccessRuleResponse {
+		return vs[0].([]NspAccessRuleResponse)[vs[1].(int)]
+	}).(NspAccessRuleResponseOutput)
+}
+
+// Properties of Access Rule
+type NspAccessRuleResponseProperties struct {
+	// Address prefixes in the CIDR format for inbound rules
+	AddressPrefixes []string `pulumi:"addressPrefixes"`
+	// Direction of Access Rule
+	Direction *string `pulumi:"direction"`
+	// Email addresses for outbound rules
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// FQDN for outbound rules
+	FullyQualifiedDomainNames []string `pulumi:"fullyQualifiedDomainNames"`
+	// NetworkSecurityPerimeters for inbound rules
+	NetworkSecurityPerimeters []NetworkSecurityPerimeterResponse `pulumi:"networkSecurityPerimeters"`
+	// Phone numbers for outbound rules
+	PhoneNumbers []string `pulumi:"phoneNumbers"`
+	// Subscriptions for inbound rules
+	Subscriptions []NspAccessRuleResponseSubscriptions `pulumi:"subscriptions"`
+}
+
+// Properties of Access Rule
+type NspAccessRuleResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (NspAccessRuleResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NspAccessRuleResponseProperties)(nil)).Elem()
+}
+
+func (o NspAccessRuleResponsePropertiesOutput) ToNspAccessRuleResponsePropertiesOutput() NspAccessRuleResponsePropertiesOutput {
+	return o
+}
+
+func (o NspAccessRuleResponsePropertiesOutput) ToNspAccessRuleResponsePropertiesOutputWithContext(ctx context.Context) NspAccessRuleResponsePropertiesOutput {
+	return o
+}
+
+// Address prefixes in the CIDR format for inbound rules
+func (o NspAccessRuleResponsePropertiesOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NspAccessRuleResponseProperties) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Direction of Access Rule
+func (o NspAccessRuleResponsePropertiesOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NspAccessRuleResponseProperties) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Email addresses for outbound rules
+func (o NspAccessRuleResponsePropertiesOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NspAccessRuleResponseProperties) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// FQDN for outbound rules
+func (o NspAccessRuleResponsePropertiesOutput) FullyQualifiedDomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NspAccessRuleResponseProperties) []string { return v.FullyQualifiedDomainNames }).(pulumi.StringArrayOutput)
+}
+
+// NetworkSecurityPerimeters for inbound rules
+func (o NspAccessRuleResponsePropertiesOutput) NetworkSecurityPerimeters() NetworkSecurityPerimeterResponseArrayOutput {
+	return o.ApplyT(func(v NspAccessRuleResponseProperties) []NetworkSecurityPerimeterResponse {
+		return v.NetworkSecurityPerimeters
+	}).(NetworkSecurityPerimeterResponseArrayOutput)
+}
+
+// Phone numbers for outbound rules
+func (o NspAccessRuleResponsePropertiesOutput) PhoneNumbers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NspAccessRuleResponseProperties) []string { return v.PhoneNumbers }).(pulumi.StringArrayOutput)
+}
+
+// Subscriptions for inbound rules
+func (o NspAccessRuleResponsePropertiesOutput) Subscriptions() NspAccessRuleResponseSubscriptionsArrayOutput {
+	return o.ApplyT(func(v NspAccessRuleResponseProperties) []NspAccessRuleResponseSubscriptions { return v.Subscriptions }).(NspAccessRuleResponseSubscriptionsArrayOutput)
+}
+
+// Subscription for inbound rule
+type NspAccessRuleResponseSubscriptions struct {
+	// Fully qualified identifier of subscription
+	Id *string `pulumi:"id"`
+}
+
+// Subscription for inbound rule
+type NspAccessRuleResponseSubscriptionsOutput struct{ *pulumi.OutputState }
+
+func (NspAccessRuleResponseSubscriptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NspAccessRuleResponseSubscriptions)(nil)).Elem()
+}
+
+func (o NspAccessRuleResponseSubscriptionsOutput) ToNspAccessRuleResponseSubscriptionsOutput() NspAccessRuleResponseSubscriptionsOutput {
+	return o
+}
+
+func (o NspAccessRuleResponseSubscriptionsOutput) ToNspAccessRuleResponseSubscriptionsOutputWithContext(ctx context.Context) NspAccessRuleResponseSubscriptionsOutput {
+	return o
+}
+
+// Fully qualified identifier of subscription
+func (o NspAccessRuleResponseSubscriptionsOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NspAccessRuleResponseSubscriptions) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type NspAccessRuleResponseSubscriptionsArrayOutput struct{ *pulumi.OutputState }
+
+func (NspAccessRuleResponseSubscriptionsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NspAccessRuleResponseSubscriptions)(nil)).Elem()
+}
+
+func (o NspAccessRuleResponseSubscriptionsArrayOutput) ToNspAccessRuleResponseSubscriptionsArrayOutput() NspAccessRuleResponseSubscriptionsArrayOutput {
+	return o
+}
+
+func (o NspAccessRuleResponseSubscriptionsArrayOutput) ToNspAccessRuleResponseSubscriptionsArrayOutputWithContext(ctx context.Context) NspAccessRuleResponseSubscriptionsArrayOutput {
+	return o
+}
+
+func (o NspAccessRuleResponseSubscriptionsArrayOutput) Index(i pulumi.IntInput) NspAccessRuleResponseSubscriptionsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NspAccessRuleResponseSubscriptions {
+		return vs[0].([]NspAccessRuleResponseSubscriptions)[vs[1].(int)]
+	}).(NspAccessRuleResponseSubscriptionsOutput)
 }
 
 // Omnichannel channel definition
@@ -9823,6 +10212,200 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.St
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Information about profile
+type ProfileResponse struct {
+	// List of Access Rules
+	AccessRules []NspAccessRuleResponse `pulumi:"accessRules"`
+	// Current access rules version
+	AccessRulesVersion *float64 `pulumi:"accessRulesVersion"`
+	// Current diagnostic settings version
+	DiagnosticSettingsVersion *float64 `pulumi:"diagnosticSettingsVersion"`
+	// List of log categories
+	EnabledLogCategories []string `pulumi:"enabledLogCategories"`
+	// Name of the profile
+	Name *string `pulumi:"name"`
+}
+
+// Information about profile
+type ProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (ProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProfileResponse)(nil)).Elem()
+}
+
+func (o ProfileResponseOutput) ToProfileResponseOutput() ProfileResponseOutput {
+	return o
+}
+
+func (o ProfileResponseOutput) ToProfileResponseOutputWithContext(ctx context.Context) ProfileResponseOutput {
+	return o
+}
+
+// List of Access Rules
+func (o ProfileResponseOutput) AccessRules() NspAccessRuleResponseArrayOutput {
+	return o.ApplyT(func(v ProfileResponse) []NspAccessRuleResponse { return v.AccessRules }).(NspAccessRuleResponseArrayOutput)
+}
+
+// Current access rules version
+func (o ProfileResponseOutput) AccessRulesVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ProfileResponse) *float64 { return v.AccessRulesVersion }).(pulumi.Float64PtrOutput)
+}
+
+// Current diagnostic settings version
+func (o ProfileResponseOutput) DiagnosticSettingsVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ProfileResponse) *float64 { return v.DiagnosticSettingsVersion }).(pulumi.Float64PtrOutput)
+}
+
+// List of log categories
+func (o ProfileResponseOutput) EnabledLogCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProfileResponse) []string { return v.EnabledLogCategories }).(pulumi.StringArrayOutput)
+}
+
+// Name of the profile
+func (o ProfileResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProfileResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Describes Provisioning issue for given Network Security Perimeter configuration
+type ProvisioningIssueResponse struct {
+	// Name of the issue
+	Name *string `pulumi:"name"`
+	// Properties of Provisioning Issue
+	Properties ProvisioningIssueResponseProperties `pulumi:"properties"`
+}
+
+// Describes Provisioning issue for given Network Security Perimeter configuration
+type ProvisioningIssueResponseOutput struct{ *pulumi.OutputState }
+
+func (ProvisioningIssueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProvisioningIssueResponse)(nil)).Elem()
+}
+
+func (o ProvisioningIssueResponseOutput) ToProvisioningIssueResponseOutput() ProvisioningIssueResponseOutput {
+	return o
+}
+
+func (o ProvisioningIssueResponseOutput) ToProvisioningIssueResponseOutputWithContext(ctx context.Context) ProvisioningIssueResponseOutput {
+	return o
+}
+
+// Name of the issue
+func (o ProvisioningIssueResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProvisioningIssueResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Properties of Provisioning Issue
+func (o ProvisioningIssueResponseOutput) Properties() ProvisioningIssueResponsePropertiesOutput {
+	return o.ApplyT(func(v ProvisioningIssueResponse) ProvisioningIssueResponseProperties { return v.Properties }).(ProvisioningIssueResponsePropertiesOutput)
+}
+
+type ProvisioningIssueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ProvisioningIssueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProvisioningIssueResponse)(nil)).Elem()
+}
+
+func (o ProvisioningIssueResponseArrayOutput) ToProvisioningIssueResponseArrayOutput() ProvisioningIssueResponseArrayOutput {
+	return o
+}
+
+func (o ProvisioningIssueResponseArrayOutput) ToProvisioningIssueResponseArrayOutputWithContext(ctx context.Context) ProvisioningIssueResponseArrayOutput {
+	return o
+}
+
+func (o ProvisioningIssueResponseArrayOutput) Index(i pulumi.IntInput) ProvisioningIssueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProvisioningIssueResponse {
+		return vs[0].([]ProvisioningIssueResponse)[vs[1].(int)]
+	}).(ProvisioningIssueResponseOutput)
+}
+
+// Properties of Provisioning Issue
+type ProvisioningIssueResponseProperties struct {
+	// Description of the issue
+	Description *string `pulumi:"description"`
+	// Type of Issue
+	IssueType *string `pulumi:"issueType"`
+	// Provisioning state of Network Security Perimeter configuration propagation
+	Severity *string `pulumi:"severity"`
+	// Access rules that can be added to the same profile to remediate the issue.
+	SuggestedAccessRules []NspAccessRuleResponse `pulumi:"suggestedAccessRules"`
+	// ARM IDs of resources that can be associated to the same perimeter to remediate the issue.
+	SuggestedResourceIds []string `pulumi:"suggestedResourceIds"`
+}
+
+// Properties of Provisioning Issue
+type ProvisioningIssueResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ProvisioningIssueResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProvisioningIssueResponseProperties)(nil)).Elem()
+}
+
+func (o ProvisioningIssueResponsePropertiesOutput) ToProvisioningIssueResponsePropertiesOutput() ProvisioningIssueResponsePropertiesOutput {
+	return o
+}
+
+func (o ProvisioningIssueResponsePropertiesOutput) ToProvisioningIssueResponsePropertiesOutputWithContext(ctx context.Context) ProvisioningIssueResponsePropertiesOutput {
+	return o
+}
+
+// Description of the issue
+func (o ProvisioningIssueResponsePropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProvisioningIssueResponseProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Type of Issue
+func (o ProvisioningIssueResponsePropertiesOutput) IssueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProvisioningIssueResponseProperties) *string { return v.IssueType }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning state of Network Security Perimeter configuration propagation
+func (o ProvisioningIssueResponsePropertiesOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProvisioningIssueResponseProperties) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Access rules that can be added to the same profile to remediate the issue.
+func (o ProvisioningIssueResponsePropertiesOutput) SuggestedAccessRules() NspAccessRuleResponseArrayOutput {
+	return o.ApplyT(func(v ProvisioningIssueResponseProperties) []NspAccessRuleResponse { return v.SuggestedAccessRules }).(NspAccessRuleResponseArrayOutput)
+}
+
+// ARM IDs of resources that can be associated to the same perimeter to remediate the issue.
+func (o ProvisioningIssueResponsePropertiesOutput) SuggestedResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProvisioningIssueResponseProperties) []string { return v.SuggestedResourceIds }).(pulumi.StringArrayOutput)
+}
+
+// Information about resource association
+type ResourceAssociationResponse struct {
+	// Access Mode of the resource association
+	AccessMode *string `pulumi:"accessMode"`
+	// Name of the resource association
+	Name *string `pulumi:"name"`
+}
+
+// Information about resource association
+type ResourceAssociationResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceAssociationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAssociationResponse)(nil)).Elem()
+}
+
+func (o ResourceAssociationResponseOutput) ToResourceAssociationResponseOutput() ResourceAssociationResponseOutput {
+	return o
+}
+
+func (o ResourceAssociationResponseOutput) ToResourceAssociationResponseOutputWithContext(ctx context.Context) ResourceAssociationResponseOutput {
+	return o
+}
+
+// Access Mode of the resource association
+func (o ResourceAssociationResponseOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAssociationResponse) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource association
+func (o ResourceAssociationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAssociationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // SearchAssistant definition
@@ -16550,6 +17133,16 @@ func init() {
 	pulumi.RegisterOutputType(MsTeamsChannelPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MsTeamsChannelResponseOutput{})
 	pulumi.RegisterOutputType(MsTeamsChannelResponsePtrOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityPerimeterConfigurationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityPerimeterConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityPerimeterConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityPerimeterResponseOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityPerimeterResponseArrayOutput{})
+	pulumi.RegisterOutputType(NspAccessRuleResponseOutput{})
+	pulumi.RegisterOutputType(NspAccessRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(NspAccessRuleResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(NspAccessRuleResponseSubscriptionsOutput{})
+	pulumi.RegisterOutputType(NspAccessRuleResponseSubscriptionsArrayOutput{})
 	pulumi.RegisterOutputType(OmnichannelOutput{})
 	pulumi.RegisterOutputType(OmnichannelPtrOutput{})
 	pulumi.RegisterOutputType(OmnichannelResponseOutput{})
@@ -16564,6 +17157,11 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
+	pulumi.RegisterOutputType(ProfileResponseOutput{})
+	pulumi.RegisterOutputType(ProvisioningIssueResponseOutput{})
+	pulumi.RegisterOutputType(ProvisioningIssueResponseArrayOutput{})
+	pulumi.RegisterOutputType(ProvisioningIssueResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(ResourceAssociationResponseOutput{})
 	pulumi.RegisterOutputType(SearchAssistantOutput{})
 	pulumi.RegisterOutputType(SearchAssistantPtrOutput{})
 	pulumi.RegisterOutputType(SearchAssistantResponseOutput{})

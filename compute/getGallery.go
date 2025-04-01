@@ -13,9 +13,9 @@ import (
 
 // Retrieves information about a Shared Image Gallery.
 //
-// Uses Azure REST API version 2022-03-03.
+// Uses Azure REST API version 2024-03-03.
 //
-// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGallery(ctx *pulumi.Context, args *LookupGalleryArgs, opts ...pulumi.InvokeOption) (*LookupGalleryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryResult
@@ -39,12 +39,16 @@ type LookupGalleryArgs struct {
 
 // Specifies information about the Shared Image Gallery that you want to create or update.
 type LookupGalleryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The description of this Shared Image Gallery resource. This property is updatable.
 	Description *string `pulumi:"description"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Describes the gallery unique name.
 	Identifier *GalleryIdentifierResponse `pulumi:"identifier"`
+	// The identity of the gallery, if configured.
+	Identity *GalleryIdentityResponse `pulumi:"identity"`
 	// Resource location
 	Location string `pulumi:"location"`
 	// Resource name
@@ -102,6 +106,11 @@ func (o LookupGalleryResultOutput) ToLookupGalleryResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupGalleryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGalleryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The description of this Shared Image Gallery resource. This property is updatable.
 func (o LookupGalleryResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGalleryResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -115,6 +124,11 @@ func (o LookupGalleryResultOutput) Id() pulumi.StringOutput {
 // Describes the gallery unique name.
 func (o LookupGalleryResultOutput) Identifier() GalleryIdentifierResponsePtrOutput {
 	return o.ApplyT(func(v LookupGalleryResult) *GalleryIdentifierResponse { return v.Identifier }).(GalleryIdentifierResponsePtrOutput)
+}
+
+// The identity of the gallery, if configured.
+func (o LookupGalleryResultOutput) Identity() GalleryIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupGalleryResult) *GalleryIdentityResponse { return v.Identity }).(GalleryIdentityResponsePtrOutput)
 }
 
 // Resource location

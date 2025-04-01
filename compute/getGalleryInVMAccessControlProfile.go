@@ -35,6 +35,8 @@ type LookupGalleryInVMAccessControlProfileArgs struct {
 
 // Specifies information about the gallery inVMAccessControlProfile that you want to create or update.
 type LookupGalleryInVMAccessControlProfileResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource location
@@ -84,6 +86,11 @@ func (o LookupGalleryInVMAccessControlProfileResultOutput) ToLookupGalleryInVMAc
 
 func (o LookupGalleryInVMAccessControlProfileResultOutput) ToLookupGalleryInVMAccessControlProfileResultOutputWithContext(ctx context.Context) LookupGalleryInVMAccessControlProfileResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGalleryInVMAccessControlProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGalleryInVMAccessControlProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

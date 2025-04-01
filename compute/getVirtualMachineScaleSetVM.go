@@ -13,9 +13,9 @@ import (
 
 // Gets a virtual machine from a VM scale set.
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVirtualMachineScaleSetVM(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetVMArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetVMResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineScaleSetVMResult
@@ -27,7 +27,7 @@ func LookupVirtualMachineScaleSetVM(ctx *pulumi.Context, args *LookupVirtualMach
 }
 
 type LookupVirtualMachineScaleSetVMArgs struct {
-	// The expand expression to apply on the operation. 'InstanceView' will retrieve the instance view of the virtual machine. 'UserData' will retrieve the UserData of the virtual machine.
+	// The expand expression to apply on the operation. 'InstanceView' will retrieve the instance view of the virtual machine. 'UserData' will retrieve the UserData of the virtual machine. 'resiliencyView' will retrieve the instance view of the Virtual machine (if applicable) and include 'resilientVMDeletionStatus' as part of it.
 	Expand *string `pulumi:"expand"`
 	// The instance ID of the virtual machine.
 	InstanceId string `pulumi:"instanceId"`
@@ -43,8 +43,12 @@ type LookupVirtualMachineScaleSetVMResult struct {
 	AdditionalCapabilities *AdditionalCapabilitiesResponse `pulumi:"additionalCapabilities"`
 	// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
 	AvailabilitySet *SubResourceResponse `pulumi:"availabilitySet"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 	DiagnosticsProfile *DiagnosticsProfileResponse `pulumi:"diagnosticsProfile"`
+	// Etag is property returned in Update/Get response of the VMSS VM, so that customer can supply it in the header to ensure optimistic updates.
+	Etag string `pulumi:"etag"`
 	// Specifies the hardware settings for the virtual machine.
 	HardwareProfile *HardwareProfileResponse `pulumi:"hardwareProfile"`
 	// Resource Id
@@ -77,6 +81,8 @@ type LookupVirtualMachineScaleSetVMResult struct {
 	ProtectionPolicy *VirtualMachineScaleSetVMProtectionPolicyResponse `pulumi:"protectionPolicy"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Specifies the resilient VM deletion status for the virtual machine.
+	ResilientVMDeletionStatus *string `pulumi:"resilientVMDeletionStatus"`
 	// The virtual machine child extension resources.
 	Resources []VirtualMachineExtensionResponse `pulumi:"resources"`
 	// Specifies the Security related profile settings for the virtual machine.
@@ -87,9 +93,11 @@ type LookupVirtualMachineScaleSetVMResult struct {
 	StorageProfile *StorageProfileResponse `pulumi:"storageProfile"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
+	// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
+	TimeCreated string `pulumi:"timeCreated"`
 	// Resource type
 	Type string `pulumi:"type"`
-	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. <br><br>Minimum api-version: 2021-03-01
+	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01
 	UserData *string `pulumi:"userData"`
 	// Azure VM unique ID.
 	VmId string `pulumi:"vmId"`
@@ -107,7 +115,7 @@ func LookupVirtualMachineScaleSetVMOutput(ctx *pulumi.Context, args LookupVirtua
 }
 
 type LookupVirtualMachineScaleSetVMOutputArgs struct {
-	// The expand expression to apply on the operation. 'InstanceView' will retrieve the instance view of the virtual machine. 'UserData' will retrieve the UserData of the virtual machine.
+	// The expand expression to apply on the operation. 'InstanceView' will retrieve the instance view of the virtual machine. 'UserData' will retrieve the UserData of the virtual machine. 'resiliencyView' will retrieve the instance view of the Virtual machine (if applicable) and include 'resilientVMDeletionStatus' as part of it.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The instance ID of the virtual machine.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
@@ -148,9 +156,19 @@ func (o LookupVirtualMachineScaleSetVMResultOutput) AvailabilitySet() SubResourc
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) *SubResourceResponse { return v.AvailabilitySet }).(SubResourceResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupVirtualMachineScaleSetVMResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 func (o LookupVirtualMachineScaleSetVMResultOutput) DiagnosticsProfile() DiagnosticsProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) *DiagnosticsProfileResponse { return v.DiagnosticsProfile }).(DiagnosticsProfileResponsePtrOutput)
+}
+
+// Etag is property returned in Update/Get response of the VMSS VM, so that customer can supply it in the header to ensure optimistic updates.
+func (o LookupVirtualMachineScaleSetVMResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Specifies the hardware settings for the virtual machine.
@@ -239,6 +257,11 @@ func (o LookupVirtualMachineScaleSetVMResultOutput) ProvisioningState() pulumi.S
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Specifies the resilient VM deletion status for the virtual machine.
+func (o LookupVirtualMachineScaleSetVMResultOutput) ResilientVMDeletionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) *string { return v.ResilientVMDeletionStatus }).(pulumi.StringPtrOutput)
+}
+
 // The virtual machine child extension resources.
 func (o LookupVirtualMachineScaleSetVMResultOutput) Resources() VirtualMachineExtensionResponseArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) []VirtualMachineExtensionResponse { return v.Resources }).(VirtualMachineExtensionResponseArrayOutput)
@@ -264,12 +287,17 @@ func (o LookupVirtualMachineScaleSetVMResultOutput) Tags() pulumi.StringMapOutpu
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
+func (o LookupVirtualMachineScaleSetVMResultOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) string { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
 // Resource type
 func (o LookupVirtualMachineScaleSetVMResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. <br><br>Minimum api-version: 2021-03-01
+// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01
 func (o LookupVirtualMachineScaleSetVMResultOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMResult) *string { return v.UserData }).(pulumi.StringPtrOutput)
 }

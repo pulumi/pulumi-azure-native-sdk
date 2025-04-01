@@ -14,10 +14,12 @@ import (
 
 // The volume container.
 //
-// Uses Azure REST API version 2017-06-01. In version 1.x of the Azure Native provider, it used API version 2017-06-01.
+// Uses Azure REST API version 2017-06-01. In version 2.x of the Azure Native provider, it used API version 2017-06-01.
 type VolumeContainer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The bandwidth-rate set on the volume container.
 	BandWidthRateInMbps pulumi.IntPtrOutput `pulumi:"bandWidthRateInMbps"`
 	// The ID of the bandwidth setting associated with the volume container.
@@ -177,6 +179,11 @@ func (o VolumeContainerOutput) ToVolumeContainerOutput() VolumeContainerOutput {
 
 func (o VolumeContainerOutput) ToVolumeContainerOutputWithContext(ctx context.Context) VolumeContainerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VolumeContainerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The bandwidth-rate set on the volume container.

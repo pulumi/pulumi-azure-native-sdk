@@ -13,9 +13,9 @@ import (
 
 // Gets the detailed information for a given pipeline run.
 //
-// Uses Azure REST API version 2023-01-01-preview.
+// Uses Azure REST API version 2024-11-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPipelineRun(ctx *pulumi.Context, args *LookupPipelineRunArgs, opts ...pulumi.InvokeOption) (*LookupPipelineRunResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineRunResult
@@ -37,6 +37,8 @@ type LookupPipelineRunArgs struct {
 
 // An object that represents a pipeline run for a container registry.
 type LookupPipelineRunResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.
 	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
 	// The resource ID.
@@ -102,6 +104,11 @@ func (o LookupPipelineRunResultOutput) ToLookupPipelineRunResultOutput() LookupP
 
 func (o LookupPipelineRunResultOutput) ToLookupPipelineRunResultOutputWithContext(ctx context.Context) LookupPipelineRunResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPipelineRunResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPipelineRunResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.

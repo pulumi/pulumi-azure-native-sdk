@@ -13,9 +13,9 @@ import (
 
 // Returns the properties of a lab Schedule.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2023-06-07.
 //
-// Other available API versions: 2023-06-07.
+// Other available API versions: 2021-10-01-preview, 2021-11-15-preview, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native labservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduleResult
@@ -37,6 +37,8 @@ type LookupScheduleArgs struct {
 
 // Schedule for automatically turning virtual machines in a lab on and off at specified times.
 type LookupScheduleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -47,6 +49,8 @@ type LookupScheduleResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The recurrence pattern of the scheduled actions.
 	RecurrencePattern *RecurrencePatternResponse `pulumi:"recurrencePattern"`
+	// Error details of last operation done on schedule.
+	ResourceOperationError ResourceOperationErrorResponse `pulumi:"resourceOperationError"`
 	// When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
 	StartAt *string `pulumi:"startAt"`
 	// When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
@@ -96,6 +100,11 @@ func (o LookupScheduleResultOutput) ToLookupScheduleResultOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Id }).(pulumi.StringOutput)
@@ -119,6 +128,11 @@ func (o LookupScheduleResultOutput) ProvisioningState() pulumi.StringOutput {
 // The recurrence pattern of the scheduled actions.
 func (o LookupScheduleResultOutput) RecurrencePattern() RecurrencePatternResponsePtrOutput {
 	return o.ApplyT(func(v LookupScheduleResult) *RecurrencePatternResponse { return v.RecurrencePattern }).(RecurrencePatternResponsePtrOutput)
+}
+
+// Error details of last operation done on schedule.
+func (o LookupScheduleResultOutput) ResourceOperationError() ResourceOperationErrorResponseOutput {
+	return o.ApplyT(func(v LookupScheduleResult) ResourceOperationErrorResponse { return v.ResourceOperationError }).(ResourceOperationErrorResponseOutput)
 }
 
 // When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.

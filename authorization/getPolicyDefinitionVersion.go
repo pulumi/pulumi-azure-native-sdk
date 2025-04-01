@@ -13,9 +13,9 @@ import (
 
 // This operation retrieves the policy definition version in the given subscription with the given name.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2025-01-01.
 //
-// Other available API versions: 2024-05-01, 2025-01-01, 2025-03-01.
+// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPolicyDefinitionVersion(ctx *pulumi.Context, args *LookupPolicyDefinitionVersionArgs, opts ...pulumi.InvokeOption) (*LookupPolicyDefinitionVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyDefinitionVersionResult
@@ -35,6 +35,8 @@ type LookupPolicyDefinitionVersionArgs struct {
 
 // The ID of the policy definition version.
 type LookupPolicyDefinitionVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The policy definition description.
 	Description *string `pulumi:"description"`
 	// The display name of the policy definition.
@@ -106,6 +108,11 @@ func (o LookupPolicyDefinitionVersionResultOutput) ToLookupPolicyDefinitionVersi
 
 func (o LookupPolicyDefinitionVersionResultOutput) ToLookupPolicyDefinitionVersionResultOutputWithContext(ctx context.Context) LookupPolicyDefinitionVersionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPolicyDefinitionVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyDefinitionVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The policy definition description.

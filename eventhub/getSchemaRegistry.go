@@ -13,9 +13,9 @@ import (
 
 // Gets the details of an EventHub schema group.
 //
-// Uses Azure REST API version 2022-10-01-preview.
+// Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Other available API versions: 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSchemaRegistry(ctx *pulumi.Context, args *LookupSchemaRegistryArgs, opts ...pulumi.InvokeOption) (*LookupSchemaRegistryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaRegistryResult
@@ -37,6 +37,8 @@ type LookupSchemaRegistryArgs struct {
 
 // Single item in List or Get Schema Group operation
 type LookupSchemaRegistryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Exact time the Schema Group was created.
 	CreatedAtUtc string `pulumi:"createdAtUtc"`
 	// The ETag value.
@@ -94,6 +96,11 @@ func (o LookupSchemaRegistryResultOutput) ToLookupSchemaRegistryResultOutput() L
 
 func (o LookupSchemaRegistryResultOutput) ToLookupSchemaRegistryResultOutputWithContext(ctx context.Context) LookupSchemaRegistryResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSchemaRegistryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSchemaRegistryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Exact time the Schema Group was created.

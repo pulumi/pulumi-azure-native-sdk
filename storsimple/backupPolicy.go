@@ -14,10 +14,12 @@ import (
 
 // The backup policy.
 //
-// Uses Azure REST API version 2017-06-01. In version 1.x of the Azure Native provider, it used API version 2017-06-01.
+// Uses Azure REST API version 2017-06-01. In version 2.x of the Azure Native provider, it used API version 2017-06-01.
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The backup policy creation type. Indicates whether this was created through SaaS or through StorSimple Snapshot Manager.
 	BackupPolicyCreationType pulumi.StringOutput `pulumi:"backupPolicyCreationType"`
 	// The Kind of the object. Currently only Series8000 is supported
@@ -163,6 +165,11 @@ func (o BackupPolicyOutput) ToBackupPolicyOutput() BackupPolicyOutput {
 
 func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BackupPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The backup policy creation type. Indicates whether this was created through SaaS or through StorSimple Snapshot Manager.

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-09-04.
 //
-// Other available API versions: 2024-11-04.
+// Other available API versions: 2022-04-04, 2024-11-04. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCloudService(ctx *pulumi.Context, args *LookupCloudServiceArgs, opts ...pulumi.InvokeOption) (*LookupCloudServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudServiceResult
@@ -35,6 +35,8 @@ type LookupCloudServiceArgs struct {
 
 // Describes the cloud service.
 type LookupCloudServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id.
 	Id string `pulumi:"id"`
 	// Resource location.
@@ -86,6 +88,11 @@ func (o LookupCloudServiceResultOutput) ToLookupCloudServiceResultOutput() Looku
 
 func (o LookupCloudServiceResultOutput) ToLookupCloudServiceResultOutputWithContext(ctx context.Context) LookupCloudServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCloudServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id.

@@ -14,12 +14,14 @@ import (
 
 // Represents a ScalingPlanPooledSchedule definition.
 //
-// Uses Azure REST API version 2022-09-09. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+// Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2022-09-09.
 //
-// Other available API versions: 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
+// Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ScalingPlanPooledSchedule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Set of days of the week on which this schedule is active.
 	DaysOfWeek pulumi.StringArrayOutput `pulumi:"daysOfWeek"`
 	// The name of the resource
@@ -56,7 +58,7 @@ type ScalingPlanPooledSchedule struct {
 	RampUpMinimumHostsPct pulumi.IntPtrOutput `pulumi:"rampUpMinimumHostsPct"`
 	// Starting time for ramp up period.
 	RampUpStartTime TimeResponsePtrOutput `pulumi:"rampUpStartTime"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -84,6 +86,9 @@ func NewScalingPlanPooledSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:ScalingPlanPooledSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:ScalingPlanPooledSchedule"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ScalingPlanPooledSchedule"),
@@ -270,6 +275,11 @@ func (o ScalingPlanPooledScheduleOutput) ToScalingPlanPooledScheduleOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ScalingPlanPooledScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingPlanPooledSchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Set of days of the week on which this schedule is active.
 func (o ScalingPlanPooledScheduleOutput) DaysOfWeek() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingPlanPooledSchedule) pulumi.StringArrayOutput { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
@@ -360,7 +370,7 @@ func (o ScalingPlanPooledScheduleOutput) RampUpStartTime() TimeResponsePtrOutput
 	return o.ApplyT(func(v *ScalingPlanPooledSchedule) TimeResponsePtrOutput { return v.RampUpStartTime }).(TimeResponsePtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ScalingPlanPooledScheduleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ScalingPlanPooledSchedule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

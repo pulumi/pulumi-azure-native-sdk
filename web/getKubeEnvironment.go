@@ -13,9 +13,9 @@ import (
 
 // Description for Get the properties of a Kubernetes Environment.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupKubeEnvironment(ctx *pulumi.Context, args *LookupKubeEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupKubeEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubeEnvironmentResult
@@ -44,6 +44,8 @@ type LookupKubeEnvironmentResult struct {
 	// components types. Eg: Choosing between BuildService kind,
 	// FrontEnd Service ArtifactsStorageType etc.
 	ArcConfiguration *ArcConfigurationResponse `pulumi:"arcConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
 	ContainerAppsConfiguration *ContainerAppsConfigurationResponse `pulumi:"containerAppsConfiguration"`
 	// Default Domain Name for the cluster
@@ -58,7 +60,7 @@ type LookupKubeEnvironmentResult struct {
 	Id string `pulumi:"id"`
 	// Only visible within Vnet/Subnet
 	InternalLoadBalancerEnabled *bool `pulumi:"internalLoadBalancerEnabled"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location string `pulumi:"location"`
@@ -127,6 +129,11 @@ func (o LookupKubeEnvironmentResultOutput) ArcConfiguration() ArcConfigurationRe
 	return o.ApplyT(func(v LookupKubeEnvironmentResult) *ArcConfigurationResponse { return v.ArcConfiguration }).(ArcConfigurationResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupKubeEnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubeEnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
 func (o LookupKubeEnvironmentResultOutput) ContainerAppsConfiguration() ContainerAppsConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupKubeEnvironmentResult) *ContainerAppsConfigurationResponse {
@@ -164,7 +171,7 @@ func (o LookupKubeEnvironmentResultOutput) InternalLoadBalancerEnabled() pulumi.
 	return o.ApplyT(func(v LookupKubeEnvironmentResult) *bool { return v.InternalLoadBalancerEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o LookupKubeEnvironmentResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKubeEnvironmentResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

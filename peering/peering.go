@@ -14,10 +14,12 @@ import (
 
 // Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location.
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 type Peering struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The properties that define a direct peering.
 	Direct PeeringPropertiesDirectResponsePtrOutput `pulumi:"direct"`
 	// The properties that define an exchange peering.
@@ -199,6 +201,11 @@ func (o PeeringOutput) ToPeeringOutput() PeeringOutput {
 
 func (o PeeringOutput) ToPeeringOutputWithContext(ctx context.Context) PeeringOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PeeringOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The properties that define a direct peering.

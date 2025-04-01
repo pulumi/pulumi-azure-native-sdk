@@ -35,6 +35,8 @@ type LookupVendorSkuPreviewArgs struct {
 
 // Customer subscription which can use a sku.
 type LookupVendorSkuPreviewResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ARM ID of the resource.
 	Id string `pulumi:"id"`
 	// The preview subscription ID.
@@ -82,6 +84,11 @@ func (o LookupVendorSkuPreviewResultOutput) ToLookupVendorSkuPreviewResultOutput
 
 func (o LookupVendorSkuPreviewResultOutput) ToLookupVendorSkuPreviewResultOutputWithContext(ctx context.Context) LookupVendorSkuPreviewResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVendorSkuPreviewResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVendorSkuPreviewResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ARM ID of the resource.

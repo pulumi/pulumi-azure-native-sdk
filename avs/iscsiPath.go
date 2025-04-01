@@ -14,10 +14,12 @@ import (
 
 // An iSCSI path resource
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
 type IscsiPath struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// CIDR Block for iSCSI path.
@@ -138,6 +140,11 @@ func (o IscsiPathOutput) ToIscsiPathOutput() IscsiPathOutput {
 
 func (o IscsiPathOutput) ToIscsiPathOutputWithContext(ctx context.Context) IscsiPathOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o IscsiPathOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IscsiPath) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

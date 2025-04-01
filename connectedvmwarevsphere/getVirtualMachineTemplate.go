@@ -13,9 +13,9 @@ import (
 
 // Implements virtual machine template GET method.
 //
-// Uses Azure REST API version 2022-07-15-preview.
+// Uses Azure REST API version 2023-12-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Other available API versions: 2022-07-15-preview, 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVirtualMachineTemplate(ctx *pulumi.Context, args *LookupVirtualMachineTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineTemplateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineTemplateResult
@@ -35,6 +35,8 @@ type LookupVirtualMachineTemplateArgs struct {
 
 // Define the virtualMachineTemplate.
 type LookupVirtualMachineTemplateResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
 	// Gets or sets the disks the template.
@@ -73,7 +75,7 @@ type LookupVirtualMachineTemplateResult struct {
 	OsName string `pulumi:"osName"`
 	// Gets or sets the type of the os.
 	OsType string `pulumi:"osType"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource status information.
 	Statuses []ResourceStatusResponse `pulumi:"statuses"`
@@ -126,6 +128,11 @@ func (o LookupVirtualMachineTemplateResultOutput) ToLookupVirtualMachineTemplate
 
 func (o LookupVirtualMachineTemplateResultOutput) ToLookupVirtualMachineTemplateResultOutputWithContext(ctx context.Context) LookupVirtualMachineTemplateResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualMachineTemplateResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineTemplateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the name of the corresponding resource in Kubernetes.
@@ -220,7 +227,7 @@ func (o LookupVirtualMachineTemplateResultOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineTemplateResult) string { return v.OsType }).(pulumi.StringOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o LookupVirtualMachineTemplateResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineTemplateResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

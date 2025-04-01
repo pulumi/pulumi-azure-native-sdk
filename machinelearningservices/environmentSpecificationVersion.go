@@ -14,10 +14,12 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2021-03-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
+// Uses Azure REST API version 2021-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-03-01-preview.
 type EnvironmentSpecificationVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
@@ -55,6 +57,9 @@ func NewEnvironmentSpecificationVersion(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:EnvironmentSpecificationVersion"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:EnvironmentVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220501:EnvironmentSpecificationVersion"),
 		},
 		{
@@ -76,37 +81,73 @@ func NewEnvironmentSpecificationVersion(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401:EnvironmentSpecificationVersion"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:EnvironmentVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:EnvironmentSpecificationVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:EnvironmentVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:EnvironmentSpecificationVersion"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:EnvironmentVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:EnvironmentSpecificationVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:EnvironmentVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20231001:EnvironmentSpecificationVersion"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20231001:EnvironmentVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:EnvironmentSpecificationVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:EnvironmentVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401:EnvironmentSpecificationVersion"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401:EnvironmentVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:EnvironmentSpecificationVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:EnvironmentVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:EnvironmentSpecificationVersion"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:EnvironmentVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:EnvironmentSpecificationVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001:EnvironmentVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:EnvironmentSpecificationVersion"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:EnvironmentVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:EnvironmentSpecificationVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:EnvironmentVersion"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -204,6 +245,11 @@ func (o EnvironmentSpecificationVersionOutput) ToEnvironmentSpecificationVersion
 
 func (o EnvironmentSpecificationVersionOutput) ToEnvironmentSpecificationVersionOutputWithContext(ctx context.Context) EnvironmentSpecificationVersionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EnvironmentSpecificationVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvironmentSpecificationVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

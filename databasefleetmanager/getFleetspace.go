@@ -35,6 +35,8 @@ type LookupFleetspaceArgs struct {
 
 // A fleetspace.
 type LookupFleetspaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -82,6 +84,11 @@ func (o LookupFleetspaceResultOutput) ToLookupFleetspaceResultOutput() LookupFle
 
 func (o LookupFleetspaceResultOutput) ToLookupFleetspaceResultOutputWithContext(ctx context.Context) LookupFleetspaceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFleetspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFleetspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

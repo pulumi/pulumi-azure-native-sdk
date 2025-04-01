@@ -14,9 +14,9 @@ import (
 
 // Update details
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Update struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type Update struct {
 	AdditionalProperties pulumi.StringPtrOutput `pulumi:"additionalProperties"`
 	// Indicates the way the update content can be downloaded.
 	AvailabilityType pulumi.StringPtrOutput `pulumi:"availabilityType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description of the update.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the Update
@@ -34,6 +36,8 @@ type Update struct {
 	InstalledDate pulumi.StringPtrOutput `pulumi:"installedDate"`
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// Minimum Sbe Version of the update.
+	MinSbeVersionRequired pulumi.StringPtrOutput `pulumi:"minSbeVersionRequired"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Brief message with instructions for updates of AvailabilityType Notify.
@@ -168,6 +172,8 @@ type updateArgs struct {
 	InstalledDate *string `pulumi:"installedDate"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Minimum Sbe Version of the update.
+	MinSbeVersionRequired *string `pulumi:"minSbeVersionRequired"`
 	// Brief message with instructions for updates of AvailabilityType Notify.
 	NotifyMessage *string `pulumi:"notifyMessage"`
 	// Path where the update package is available.
@@ -212,6 +218,8 @@ type UpdateArgs struct {
 	InstalledDate pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Minimum Sbe Version of the update.
+	MinSbeVersionRequired pulumi.StringPtrInput
 	// Brief message with instructions for updates of AvailabilityType Notify.
 	NotifyMessage pulumi.StringPtrInput
 	// Path where the update package is available.
@@ -285,6 +293,11 @@ func (o UpdateOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Update) pulumi.StringPtrOutput { return v.AvailabilityType }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o UpdateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Update) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Description of the update.
 func (o UpdateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Update) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -308,6 +321,11 @@ func (o UpdateOutput) InstalledDate() pulumi.StringPtrOutput {
 // The geo-location where the resource lives
 func (o UpdateOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Update) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Minimum Sbe Version of the update.
+func (o UpdateOutput) MinSbeVersionRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Update) pulumi.StringPtrOutput { return v.MinSbeVersionRequired }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource

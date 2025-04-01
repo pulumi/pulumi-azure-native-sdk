@@ -14,12 +14,12 @@ import (
 
 // The provisionedClusters resource definition.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
-//
-// Other available API versions: 2022-05-01-preview.
+// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 type ProvisionedCluster struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion  pulumi.StringOutput                                          `pulumi:"azureApiVersion"`
 	ExtendedLocation ProvisionedClustersResponseResponseExtendedLocationPtrOutput `pulumi:"extendedLocation"`
 	// Identity for the Provisioned cluster.
 	Identity ProvisionedClusterIdentityResponsePtrOutput `pulumi:"identity"`
@@ -158,6 +158,11 @@ func (o ProvisionedClusterOutput) ToProvisionedClusterOutput() ProvisionedCluste
 
 func (o ProvisionedClusterOutput) ToProvisionedClusterOutputWithContext(ctx context.Context) ProvisionedClusterOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ProvisionedClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisionedCluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o ProvisionedClusterOutput) ExtendedLocation() ProvisionedClustersResponseResponseExtendedLocationPtrOutput {

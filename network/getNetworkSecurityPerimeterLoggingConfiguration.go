@@ -35,6 +35,8 @@ type LookupNetworkSecurityPerimeterLoggingConfigurationArgs struct {
 
 // The NSP logging configuration
 type LookupNetworkSecurityPerimeterLoggingConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -82,6 +84,11 @@ func (o LookupNetworkSecurityPerimeterLoggingConfigurationResultOutput) ToLookup
 
 func (o LookupNetworkSecurityPerimeterLoggingConfigurationResultOutput) ToLookupNetworkSecurityPerimeterLoggingConfigurationResultOutputWithContext(ctx context.Context) LookupNetworkSecurityPerimeterLoggingConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkSecurityPerimeterLoggingConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityPerimeterLoggingConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
