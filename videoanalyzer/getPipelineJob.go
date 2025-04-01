@@ -35,6 +35,8 @@ type LookupPipelineJobArgs struct {
 
 // Pipeline job represents a unique instance of a batch topology, used for offline processing of selected portions of archived content.
 type LookupPipelineJobResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An optional description for the pipeline.
 	Description *string `pulumi:"description"`
 	// Details about the error, in case the pipeline job fails.
@@ -92,6 +94,11 @@ func (o LookupPipelineJobResultOutput) ToLookupPipelineJobResultOutput() LookupP
 
 func (o LookupPipelineJobResultOutput) ToLookupPipelineJobResultOutputWithContext(ctx context.Context) LookupPipelineJobResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPipelineJobResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPipelineJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An optional description for the pipeline.

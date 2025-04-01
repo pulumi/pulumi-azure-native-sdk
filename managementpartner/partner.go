@@ -13,10 +13,12 @@ import (
 
 // this is the management partner operations response
 //
-// Uses Azure REST API version 2018-02-01. In version 1.x of the Azure Native provider, it used API version 2018-02-01.
+// Uses Azure REST API version 2018-02-01. In version 2.x of the Azure Native provider, it used API version 2018-02-01.
 type Partner struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// This is the DateTime when the partner was created.
 	CreatedTime pulumi.StringPtrOutput `pulumi:"createdTime"`
 	// Type of the partner
@@ -130,6 +132,11 @@ func (o PartnerOutput) ToPartnerOutput() PartnerOutput {
 
 func (o PartnerOutput) ToPartnerOutputWithContext(ctx context.Context) PartnerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PartnerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Partner) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // This is the DateTime when the partner was created.

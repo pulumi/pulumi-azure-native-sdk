@@ -14,10 +14,12 @@ import (
 
 // The link resource format.
 //
-// Uses Azure REST API version 2017-04-26. In version 1.x of the Azure Native provider, it used API version 2017-04-26.
+// Uses Azure REST API version 2017-04-26. In version 2.x of the Azure Native provider, it used API version 2017-04-26.
 type Link struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Localized descriptions for the Link.
 	Description pulumi.StringMapOutput `pulumi:"description"`
 	// Localized display name for the Link.
@@ -213,6 +215,11 @@ func (o LinkOutput) ToLinkOutput() LinkOutput {
 
 func (o LinkOutput) ToLinkOutputWithContext(ctx context.Context) LinkOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LinkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Link) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Localized descriptions for the Link.

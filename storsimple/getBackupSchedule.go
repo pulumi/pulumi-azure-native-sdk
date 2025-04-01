@@ -39,6 +39,8 @@ type LookupBackupScheduleArgs struct {
 
 // The backup schedule.
 type LookupBackupScheduleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The type of backup which needs to be taken.
 	BackupType string `pulumi:"backupType"`
 	// The path ID that uniquely identifies the object.
@@ -100,6 +102,11 @@ func (o LookupBackupScheduleResultOutput) ToLookupBackupScheduleResultOutput() L
 
 func (o LookupBackupScheduleResultOutput) ToLookupBackupScheduleResultOutputWithContext(ctx context.Context) LookupBackupScheduleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBackupScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The type of backup which needs to be taken.

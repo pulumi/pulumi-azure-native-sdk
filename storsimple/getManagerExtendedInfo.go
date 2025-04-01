@@ -35,6 +35,8 @@ type LookupManagerExtendedInfoArgs struct {
 type LookupManagerExtendedInfoResult struct {
 	// Represents the encryption algorithm used to encrypt the keys. None - if Key is saved in plain text format. Algorithm name - if key is encrypted
 	Algorithm string `pulumi:"algorithm"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Represents the CEK of the resource.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Represents the Cert thumbprint that was used to encrypt the CEK.
@@ -95,6 +97,11 @@ func (o LookupManagerExtendedInfoResultOutput) ToLookupManagerExtendedInfoResult
 // Represents the encryption algorithm used to encrypt the keys. None - if Key is saved in plain text format. Algorithm name - if key is encrypted
 func (o LookupManagerExtendedInfoResultOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagerExtendedInfoResult) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupManagerExtendedInfoResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagerExtendedInfoResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Represents the CEK of the resource.

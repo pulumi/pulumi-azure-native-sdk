@@ -35,6 +35,8 @@ type LookupDatasetArgs struct {
 
 // Dataset resource type.
 type LookupDatasetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag identifies change in the resource.
 	Etag string `pulumi:"etag"`
 	// The resource identifier.
@@ -82,6 +84,11 @@ func (o LookupDatasetResultOutput) ToLookupDatasetResultOutput() LookupDatasetRe
 
 func (o LookupDatasetResultOutput) ToLookupDatasetResultOutputWithContext(ctx context.Context) LookupDatasetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDatasetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag identifies change in the resource.

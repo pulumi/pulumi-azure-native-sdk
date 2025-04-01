@@ -13,9 +13,9 @@ import (
 
 // Hybrid connection authorization rule for a hybrid connection by name.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2017-04-01, 2024-01-01.
+// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupHybridConnectionAuthorizationRule(ctx *pulumi.Context, args *LookupHybridConnectionAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupHybridConnectionAuthorizationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridConnectionAuthorizationRuleResult
@@ -39,6 +39,8 @@ type LookupHybridConnectionAuthorizationRuleArgs struct {
 
 // Single item in a List or Get AuthorizationRule operation
 type LookupHybridConnectionAuthorizationRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -90,6 +92,11 @@ func (o LookupHybridConnectionAuthorizationRuleResultOutput) ToLookupHybridConne
 
 func (o LookupHybridConnectionAuthorizationRuleResultOutput) ToLookupHybridConnectionAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupHybridConnectionAuthorizationRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHybridConnectionAuthorizationRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHybridConnectionAuthorizationRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

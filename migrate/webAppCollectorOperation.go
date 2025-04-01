@@ -14,14 +14,16 @@ import (
 
 // The web app collector REST object.
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppCollectorOperation struct {
 	pulumi.CustomResourceState
 
 	// Gets or sets the collector agent properties.
 	AgentProperties CollectorAgentPropertiesBaseResponsePtrOutput `pulumi:"agentProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the Timestamp when collector was created.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// Gets the discovery site id.
@@ -167,6 +169,11 @@ func (o WebAppCollectorOperationOutput) AgentProperties() CollectorAgentProperti
 	return o.ApplyT(func(v *WebAppCollectorOperation) CollectorAgentPropertiesBaseResponsePtrOutput {
 		return v.AgentProperties
 	}).(CollectorAgentPropertiesBaseResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o WebAppCollectorOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppCollectorOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the Timestamp when collector was created.

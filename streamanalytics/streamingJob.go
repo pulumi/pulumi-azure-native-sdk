@@ -14,12 +14,14 @@ import (
 
 // A streaming job object, containing all information associated with the named streaming job.
 //
-// Uses Azure REST API version 2020-03-01. In version 1.x of the Azure Native provider, it used API version 2016-03-01.
+// Uses Azure REST API version 2020-03-01. In version 2.x of the Azure Native provider, it used API version 2020-03-01.
 //
-// Other available API versions: 2017-04-01-preview, 2021-10-01-preview.
+// Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native streamanalytics [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type StreamingJob struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The cluster which streaming jobs will run on.
 	Cluster ClusterInfoResponsePtrOutput `pulumi:"cluster"`
 	// Controls certain runtime behaviors of the streaming job.
@@ -268,6 +270,11 @@ func (o StreamingJobOutput) ToStreamingJobOutput() StreamingJobOutput {
 
 func (o StreamingJobOutput) ToStreamingJobOutputWithContext(ctx context.Context) StreamingJobOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StreamingJobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StreamingJob) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cluster which streaming jobs will run on.

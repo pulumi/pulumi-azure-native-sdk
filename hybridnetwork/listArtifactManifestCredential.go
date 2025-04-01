@@ -13,9 +13,9 @@ import (
 
 // List credential for publishing artifacts defined in artifact manifest.
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2024-04-15.
 //
-// Other available API versions: 2024-04-15.
+// Other available API versions: 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListArtifactManifestCredential(ctx *pulumi.Context, args *ListArtifactManifestCredentialArgs, opts ...pulumi.InvokeOption) (*ListArtifactManifestCredentialResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListArtifactManifestCredentialResult

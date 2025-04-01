@@ -14,10 +14,12 @@ import (
 
 // MQ kafkaConnector resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type KafkaConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The client id prefix of the dynamically generated client ids.
 	ClientIdPrefix pulumi.StringPtrOutput `pulumi:"clientIdPrefix"`
 	// Extended Location
@@ -205,6 +207,11 @@ func (o KafkaConnectorOutput) ToKafkaConnectorOutput() KafkaConnectorOutput {
 
 func (o KafkaConnectorOutput) ToKafkaConnectorOutputWithContext(ctx context.Context) KafkaConnectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o KafkaConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The client id prefix of the dynamically generated client ids.

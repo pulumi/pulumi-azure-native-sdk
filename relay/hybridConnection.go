@@ -14,12 +14,14 @@ import (
 
 // Description of hybrid connection resource.
 //
-// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 //
-// Other available API versions: 2024-01-01.
+// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type HybridConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the hybrid connection was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The number of listeners for this hybrid connection. Note that min : 1 and max:25 are supported.
@@ -162,6 +164,11 @@ func (o HybridConnectionOutput) ToHybridConnectionOutput() HybridConnectionOutpu
 
 func (o HybridConnectionOutput) ToHybridConnectionOutputWithContext(ctx context.Context) HybridConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HybridConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HybridConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the hybrid connection was created.

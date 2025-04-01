@@ -14,12 +14,14 @@ import (
 
 // Azure Health Bot resource definition
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-12-08.
+// Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2020-12-08-preview, 2024-02-01.
+// Other available API versions: 2023-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native healthbot [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Bot struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the Azure Health Bot.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -183,6 +185,11 @@ func (o BotOutput) ToBotOutput() BotOutput {
 
 func (o BotOutput) ToBotOutputWithContext(ctx context.Context) BotOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity of the Azure Health Bot.

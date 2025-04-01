@@ -14,7 +14,7 @@ import (
 
 // A virtual machine.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +26,8 @@ type VirtualMachine struct {
 	ArtifactDeploymentStatus ArtifactDeploymentStatusPropertiesResponseOutput `pulumi:"artifactDeploymentStatus"`
 	// The artifacts to be installed on the virtual machine.
 	Artifacts ArtifactInstallPropertiesResponseArrayOutput `pulumi:"artifacts"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource identifier (Microsoft.Compute) of the virtual machine.
 	ComputeId pulumi.StringOutput `pulumi:"computeId"`
 	// The compute virtual machine properties.
@@ -343,6 +345,11 @@ func (o VirtualMachineOutput) ArtifactDeploymentStatus() ArtifactDeploymentStatu
 // The artifacts to be installed on the virtual machine.
 func (o VirtualMachineOutput) Artifacts() ArtifactInstallPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) ArtifactInstallPropertiesResponseArrayOutput { return v.Artifacts }).(ArtifactInstallPropertiesResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o VirtualMachineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource identifier (Microsoft.Compute) of the virtual machine.

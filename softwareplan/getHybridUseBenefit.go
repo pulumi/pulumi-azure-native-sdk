@@ -33,6 +33,8 @@ type LookupHybridUseBenefitArgs struct {
 
 // Response on GET of a hybrid use benefit
 type LookupHybridUseBenefitResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Created date
 	CreatedDate string `pulumi:"createdDate"`
 	// Indicates the revision of the hybrid use benefit
@@ -84,6 +86,11 @@ func (o LookupHybridUseBenefitResultOutput) ToLookupHybridUseBenefitResultOutput
 
 func (o LookupHybridUseBenefitResultOutput) ToLookupHybridUseBenefitResultOutputWithContext(ctx context.Context) LookupHybridUseBenefitResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHybridUseBenefitResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHybridUseBenefitResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Created date

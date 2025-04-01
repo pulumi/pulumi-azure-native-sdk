@@ -14,10 +14,12 @@ import (
 
 // Details of cluster record
 //
-// Uses Azure REST API version 2024-07-01.
+// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
 type OrganizationClusterById struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Type of cluster
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Metadata of the record
@@ -172,6 +174,11 @@ func (o OrganizationClusterByIdOutput) ToOrganizationClusterByIdOutput() Organiz
 
 func (o OrganizationClusterByIdOutput) ToOrganizationClusterByIdOutputWithContext(ctx context.Context) OrganizationClusterByIdOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o OrganizationClusterByIdOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationClusterById) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Type of cluster

@@ -14,12 +14,12 @@ import (
 
 // Represents a Database.
 //
-// Uses Azure REST API version 2018-06-01. In version 1.x of the Azure Native provider, it used API version 2018-06-01.
-//
-// Other available API versions: 2018-06-01-preview.
+// Uses Azure REST API version 2018-06-01. In version 2.x of the Azure Native provider, it used API version 2018-06-01.
 type Database struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The charset of the database.
 	Charset pulumi.StringPtrOutput `pulumi:"charset"`
 	// The collation of the database.
@@ -146,6 +146,11 @@ func (o DatabaseOutput) ToDatabaseOutput() DatabaseOutput {
 
 func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DatabaseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The charset of the database.

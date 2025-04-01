@@ -13,9 +13,9 @@ import (
 
 // Returns details of the API definition.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2024-03-15-preview.
 //
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Other available API versions: 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApiDefinition(ctx *pulumi.Context, args *LookupApiDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupApiDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiDefinitionResult
@@ -43,6 +43,8 @@ type LookupApiDefinitionArgs struct {
 
 // API definition entity.
 type LookupApiDefinitionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// API definition description.
 	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -100,6 +102,11 @@ func (o LookupApiDefinitionResultOutput) ToLookupApiDefinitionResultOutput() Loo
 
 func (o LookupApiDefinitionResultOutput) ToLookupApiDefinitionResultOutputWithContext(ctx context.Context) LookupApiDefinitionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // API definition description.

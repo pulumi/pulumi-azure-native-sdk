@@ -14,6 +14,8 @@ import (
 // Gets the Advanced Threat Protection settings for the specified resource.
 //
 // Uses Azure REST API version 2019-01-01.
+//
+// Other available API versions: 2017-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAdvancedThreatProtection(ctx *pulumi.Context, args *LookupAdvancedThreatProtectionArgs, opts ...pulumi.InvokeOption) (*LookupAdvancedThreatProtectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAdvancedThreatProtectionResult
@@ -33,6 +35,8 @@ type LookupAdvancedThreatProtectionArgs struct {
 
 // The Advanced Threat Protection resource.
 type LookupAdvancedThreatProtectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Indicates whether Advanced Threat Protection is enabled.
@@ -76,6 +80,11 @@ func (o LookupAdvancedThreatProtectionResultOutput) ToLookupAdvancedThreatProtec
 
 func (o LookupAdvancedThreatProtectionResultOutput) ToLookupAdvancedThreatProtectionResultOutputWithContext(ctx context.Context) LookupAdvancedThreatProtectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAdvancedThreatProtectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

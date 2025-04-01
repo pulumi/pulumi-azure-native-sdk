@@ -14,12 +14,14 @@ import (
 
 // Definition of the job schedule.
 //
-// Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
+// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type JobSchedule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the id of job schedule.
 	JobScheduleId pulumi.StringPtrOutput `pulumi:"jobScheduleId"`
 	// Gets the name of the variable.
@@ -181,6 +183,11 @@ func (o JobScheduleOutput) ToJobScheduleOutput() JobScheduleOutput {
 
 func (o JobScheduleOutput) ToJobScheduleOutputWithContext(ctx context.Context) JobScheduleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o JobScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobSchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the id of job schedule.

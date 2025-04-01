@@ -35,6 +35,8 @@ type LookupHubArgs struct {
 type LookupHubResult struct {
 	// API endpoint URL of the hub.
 	ApiEndpoint string `pulumi:"apiEndpoint"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Billing settings of the hub.
 	HubBillingInfo *HubBillingInfoFormatResponse `pulumi:"hubBillingInfo"`
 	// Resource ID.
@@ -93,6 +95,11 @@ func (o LookupHubResultOutput) ToLookupHubResultOutputWithContext(ctx context.Co
 // API endpoint URL of the hub.
 func (o LookupHubResultOutput) ApiEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubResult) string { return v.ApiEndpoint }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupHubResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Billing settings of the hub.

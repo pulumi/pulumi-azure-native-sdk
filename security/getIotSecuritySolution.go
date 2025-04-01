@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2019-08-01.
 //
-// Other available API versions: 2017-08-01-preview.
+// Other available API versions: 2017-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIotSecuritySolution(ctx *pulumi.Context, args *LookupIotSecuritySolutionArgs, opts ...pulumi.InvokeOption) (*LookupIotSecuritySolutionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIotSecuritySolutionResult
@@ -39,6 +39,8 @@ type LookupIotSecuritySolutionResult struct {
 	AdditionalWorkspaces []AdditionalWorkspacesPropertiesResponse `pulumi:"additionalWorkspaces"`
 	// List of resources that were automatically discovered as relevant to the security solution.
 	AutoDiscoveredResources []string `pulumi:"autoDiscoveredResources"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Disabled data sources. Disabling these data sources compromises the system.
 	DisabledDataSources []string `pulumi:"disabledDataSources"`
 	// Resource display name.
@@ -132,6 +134,11 @@ func (o LookupIotSecuritySolutionResultOutput) AdditionalWorkspaces() Additional
 // List of resources that were automatically discovered as relevant to the security solution.
 func (o LookupIotSecuritySolutionResultOutput) AutoDiscoveredResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupIotSecuritySolutionResult) []string { return v.AutoDiscoveredResources }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupIotSecuritySolutionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIotSecuritySolutionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Disabled data sources. Disabling these data sources compromises the system.

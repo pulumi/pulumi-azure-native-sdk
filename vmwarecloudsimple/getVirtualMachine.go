@@ -35,6 +35,8 @@ type LookupVirtualMachineArgs struct {
 type LookupVirtualMachineResult struct {
 	// The amount of memory
 	AmountOfRam int `pulumi:"amountOfRam"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The list of Virtual Disks' Controllers
 	Controllers []VirtualDiskControllerResponse `pulumi:"controllers"`
 	// Virtual machine properties
@@ -127,6 +129,11 @@ func (o LookupVirtualMachineResultOutput) ToLookupVirtualMachineResultOutputWith
 // The amount of memory
 func (o LookupVirtualMachineResultOutput) AmountOfRam() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) int { return v.AmountOfRam }).(pulumi.IntOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualMachineResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The list of Virtual Disks' Controllers

@@ -12,14 +12,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-12-12-preview.
+// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type BareMetalMachine struct {
 	pulumi.CustomResourceState
 
 	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
 	AssociatedResourceIds pulumi.StringArrayOutput `pulumi:"associatedResourceIds"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The connection string for the baseboard management controller including IP address and protocol.
 	BmcConnectionString pulumi.StringOutput `pulumi:"bmcConnectionString"`
 	// The credentials of the baseboard management controller on this bare metal machine.
@@ -36,6 +38,8 @@ type BareMetalMachine struct {
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The hardware inventory, including information acquired from the model/sku information and from the ironic inspector.
@@ -50,6 +54,8 @@ type BareMetalMachine struct {
 	KubernetesVersion pulumi.StringOutput `pulumi:"kubernetesVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The cluster version that has been applied to this machine during deployment or a version update.
+	MachineClusterVersion pulumi.StringPtrOutput `pulumi:"machineClusterVersion"`
 	// The custom details provided by the customer.
 	MachineDetails pulumi.StringOutput `pulumi:"machineDetails"`
 	// The OS-level hostname assigned to this machine.
@@ -78,6 +84,8 @@ type BareMetalMachine struct {
 	ReadyState pulumi.StringOutput `pulumi:"readyState"`
 	// The runtime protection status of the bare metal machine.
 	RuntimeProtectionStatus RuntimeProtectionStatusResponseOutput `pulumi:"runtimeProtectionStatus"`
+	// The list of statuses that represent secret rotation activity.
+	SecretRotationStatus SecretRotationStatusResponseArrayOutput `pulumi:"secretRotationStatus"`
 	// The serial number of the bare metal machine.
 	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
 	// The discovered value of the machine's service tag.
@@ -203,6 +211,8 @@ type bareMetalMachineArgs struct {
 	ExtendedLocation ExtendedLocation `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// The cluster version that has been applied to this machine during deployment or a version update.
+	MachineClusterVersion *string `pulumi:"machineClusterVersion"`
 	// The custom details provided by the customer.
 	MachineDetails string `pulumi:"machineDetails"`
 	// The OS-level hostname assigned to this machine.
@@ -237,6 +247,8 @@ type BareMetalMachineArgs struct {
 	ExtendedLocation ExtendedLocationInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// The cluster version that has been applied to this machine during deployment or a version update.
+	MachineClusterVersion pulumi.StringPtrInput
 	// The custom details provided by the customer.
 	MachineDetails pulumi.StringInput
 	// The OS-level hostname assigned to this machine.
@@ -297,6 +309,11 @@ func (o BareMetalMachineOutput) AssociatedResourceIds() pulumi.StringArrayOutput
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringArrayOutput { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o BareMetalMachineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The connection string for the baseboard management controller including IP address and protocol.
 func (o BareMetalMachineOutput) BmcConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringOutput { return v.BmcConnectionString }).(pulumi.StringOutput)
@@ -337,6 +354,11 @@ func (o BareMetalMachineOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringOutput { return v.DetailedStatusMessage }).(pulumi.StringOutput)
 }
 
+// Resource ETag.
+func (o BareMetalMachineOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
 // The extended location of the cluster associated with the resource.
 func (o BareMetalMachineOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *BareMetalMachine) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
@@ -370,6 +392,11 @@ func (o BareMetalMachineOutput) KubernetesVersion() pulumi.StringOutput {
 // The geo-location where the resource lives
 func (o BareMetalMachineOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The cluster version that has been applied to this machine during deployment or a version update.
+func (o BareMetalMachineOutput) MachineClusterVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringPtrOutput { return v.MachineClusterVersion }).(pulumi.StringPtrOutput)
 }
 
 // The custom details provided by the customer.
@@ -440,6 +467,11 @@ func (o BareMetalMachineOutput) ReadyState() pulumi.StringOutput {
 // The runtime protection status of the bare metal machine.
 func (o BareMetalMachineOutput) RuntimeProtectionStatus() RuntimeProtectionStatusResponseOutput {
 	return o.ApplyT(func(v *BareMetalMachine) RuntimeProtectionStatusResponseOutput { return v.RuntimeProtectionStatus }).(RuntimeProtectionStatusResponseOutput)
+}
+
+// The list of statuses that represent secret rotation activity.
+func (o BareMetalMachineOutput) SecretRotationStatus() SecretRotationStatusResponseArrayOutput {
+	return o.ApplyT(func(v *BareMetalMachine) SecretRotationStatusResponseArrayOutput { return v.SecretRotationStatus }).(SecretRotationStatusResponseArrayOutput)
 }
 
 // The serial number of the bare metal machine.

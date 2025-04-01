@@ -14,16 +14,20 @@ import (
 
 // The Fleet resource.
 //
-// Uses Azure REST API version 2023-03-15-preview.
+// Uses Azure REST API version 2024-05-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-15-preview.
 //
-// Other available API versions: 2022-07-02-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01, 2024-05-02-preview.
+// Other available API versions: 2022-06-02-preview, 2022-07-02-preview, 2022-09-02-preview, 2023-03-15-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Fleet struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The FleetHubProfile configures the Fleet's hub.
 	HubProfile FleetHubProfileResponsePtrOutput `pulumi:"hubProfile"`
+	// Managed identity.
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -118,6 +122,8 @@ type fleetArgs struct {
 	FleetName *string `pulumi:"fleetName"`
 	// The FleetHubProfile configures the Fleet's hub.
 	HubProfile *FleetHubProfile `pulumi:"hubProfile"`
+	// Managed identity.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -132,6 +138,8 @@ type FleetArgs struct {
 	FleetName pulumi.StringPtrInput
 	// The FleetHubProfile configures the Fleet's hub.
 	HubProfile FleetHubProfilePtrInput
+	// Managed identity.
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -177,6 +185,11 @@ func (o FleetOutput) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FleetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 func (o FleetOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.ETag }).(pulumi.StringOutput)
@@ -185,6 +198,11 @@ func (o FleetOutput) ETag() pulumi.StringOutput {
 // The FleetHubProfile configures the Fleet's hub.
 func (o FleetOutput) HubProfile() FleetHubProfileResponsePtrOutput {
 	return o.ApplyT(func(v *Fleet) FleetHubProfileResponsePtrOutput { return v.HubProfile }).(FleetHubProfileResponsePtrOutput)
+}
+
+// Managed identity.
+func (o FleetOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Fleet) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

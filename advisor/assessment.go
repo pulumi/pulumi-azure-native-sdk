@@ -13,12 +13,14 @@ import (
 
 // The Advisor assessment result data structure.
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2023-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
 type Assessment struct {
 	pulumi.CustomResourceState
 
 	// Assessment Id.
 	AssessmentId pulumi.StringOutput `pulumi:"assessmentId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Assessment Type Description.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Assessment Type Locale.
@@ -151,6 +153,11 @@ func (o AssessmentOutput) ToAssessmentOutputWithContext(ctx context.Context) Ass
 // Assessment Id.
 func (o AssessmentOutput) AssessmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Assessment) pulumi.StringOutput { return v.AssessmentId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o AssessmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Assessment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Assessment Type Description.

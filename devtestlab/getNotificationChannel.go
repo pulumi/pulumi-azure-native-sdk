@@ -37,6 +37,8 @@ type LookupNotificationChannelArgs struct {
 
 // A notification.
 type LookupNotificationChannelResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the notification channel.
 	CreatedDate string `pulumi:"createdDate"`
 	// Description of notification.
@@ -102,6 +104,11 @@ func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResult
 
 func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResultOutputWithContext(ctx context.Context) LookupNotificationChannelResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNotificationChannelResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the notification channel.

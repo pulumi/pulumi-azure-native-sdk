@@ -1279,6 +1279,243 @@ func (o AuthInfoResponsePtrOutput) TokenType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The policy for using ARM audience token for a container registry.
+type AzureADAuthenticationAsArmPolicy struct {
+	// The value that indicates whether the policy is enabled or not.
+	Status *string `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for AzureADAuthenticationAsArmPolicy
+func (val *AzureADAuthenticationAsArmPolicy) Defaults() *AzureADAuthenticationAsArmPolicy {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Status == nil {
+		status_ := "enabled"
+		tmp.Status = &status_
+	}
+	return &tmp
+}
+
+// AzureADAuthenticationAsArmPolicyInput is an input type that accepts AzureADAuthenticationAsArmPolicyArgs and AzureADAuthenticationAsArmPolicyOutput values.
+// You can construct a concrete instance of `AzureADAuthenticationAsArmPolicyInput` via:
+//
+//	AzureADAuthenticationAsArmPolicyArgs{...}
+type AzureADAuthenticationAsArmPolicyInput interface {
+	pulumi.Input
+
+	ToAzureADAuthenticationAsArmPolicyOutput() AzureADAuthenticationAsArmPolicyOutput
+	ToAzureADAuthenticationAsArmPolicyOutputWithContext(context.Context) AzureADAuthenticationAsArmPolicyOutput
+}
+
+// The policy for using ARM audience token for a container registry.
+type AzureADAuthenticationAsArmPolicyArgs struct {
+	// The value that indicates whether the policy is enabled or not.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for AzureADAuthenticationAsArmPolicyArgs
+func (val *AzureADAuthenticationAsArmPolicyArgs) Defaults() *AzureADAuthenticationAsArmPolicyArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Status == nil {
+		tmp.Status = pulumi.StringPtr("enabled")
+	}
+	return &tmp
+}
+func (AzureADAuthenticationAsArmPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureADAuthenticationAsArmPolicy)(nil)).Elem()
+}
+
+func (i AzureADAuthenticationAsArmPolicyArgs) ToAzureADAuthenticationAsArmPolicyOutput() AzureADAuthenticationAsArmPolicyOutput {
+	return i.ToAzureADAuthenticationAsArmPolicyOutputWithContext(context.Background())
+}
+
+func (i AzureADAuthenticationAsArmPolicyArgs) ToAzureADAuthenticationAsArmPolicyOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureADAuthenticationAsArmPolicyOutput)
+}
+
+func (i AzureADAuthenticationAsArmPolicyArgs) ToAzureADAuthenticationAsArmPolicyPtrOutput() AzureADAuthenticationAsArmPolicyPtrOutput {
+	return i.ToAzureADAuthenticationAsArmPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AzureADAuthenticationAsArmPolicyArgs) ToAzureADAuthenticationAsArmPolicyPtrOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureADAuthenticationAsArmPolicyOutput).ToAzureADAuthenticationAsArmPolicyPtrOutputWithContext(ctx)
+}
+
+// AzureADAuthenticationAsArmPolicyPtrInput is an input type that accepts AzureADAuthenticationAsArmPolicyArgs, AzureADAuthenticationAsArmPolicyPtr and AzureADAuthenticationAsArmPolicyPtrOutput values.
+// You can construct a concrete instance of `AzureADAuthenticationAsArmPolicyPtrInput` via:
+//
+//	        AzureADAuthenticationAsArmPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureADAuthenticationAsArmPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAzureADAuthenticationAsArmPolicyPtrOutput() AzureADAuthenticationAsArmPolicyPtrOutput
+	ToAzureADAuthenticationAsArmPolicyPtrOutputWithContext(context.Context) AzureADAuthenticationAsArmPolicyPtrOutput
+}
+
+type azureADAuthenticationAsArmPolicyPtrType AzureADAuthenticationAsArmPolicyArgs
+
+func AzureADAuthenticationAsArmPolicyPtr(v *AzureADAuthenticationAsArmPolicyArgs) AzureADAuthenticationAsArmPolicyPtrInput {
+	return (*azureADAuthenticationAsArmPolicyPtrType)(v)
+}
+
+func (*azureADAuthenticationAsArmPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureADAuthenticationAsArmPolicy)(nil)).Elem()
+}
+
+func (i *azureADAuthenticationAsArmPolicyPtrType) ToAzureADAuthenticationAsArmPolicyPtrOutput() AzureADAuthenticationAsArmPolicyPtrOutput {
+	return i.ToAzureADAuthenticationAsArmPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *azureADAuthenticationAsArmPolicyPtrType) ToAzureADAuthenticationAsArmPolicyPtrOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureADAuthenticationAsArmPolicyPtrOutput)
+}
+
+// The policy for using ARM audience token for a container registry.
+type AzureADAuthenticationAsArmPolicyOutput struct{ *pulumi.OutputState }
+
+func (AzureADAuthenticationAsArmPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureADAuthenticationAsArmPolicy)(nil)).Elem()
+}
+
+func (o AzureADAuthenticationAsArmPolicyOutput) ToAzureADAuthenticationAsArmPolicyOutput() AzureADAuthenticationAsArmPolicyOutput {
+	return o
+}
+
+func (o AzureADAuthenticationAsArmPolicyOutput) ToAzureADAuthenticationAsArmPolicyOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyOutput {
+	return o
+}
+
+func (o AzureADAuthenticationAsArmPolicyOutput) ToAzureADAuthenticationAsArmPolicyPtrOutput() AzureADAuthenticationAsArmPolicyPtrOutput {
+	return o.ToAzureADAuthenticationAsArmPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AzureADAuthenticationAsArmPolicyOutput) ToAzureADAuthenticationAsArmPolicyPtrOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureADAuthenticationAsArmPolicy) *AzureADAuthenticationAsArmPolicy {
+		return &v
+	}).(AzureADAuthenticationAsArmPolicyPtrOutput)
+}
+
+// The value that indicates whether the policy is enabled or not.
+func (o AzureADAuthenticationAsArmPolicyOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureADAuthenticationAsArmPolicy) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type AzureADAuthenticationAsArmPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureADAuthenticationAsArmPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureADAuthenticationAsArmPolicy)(nil)).Elem()
+}
+
+func (o AzureADAuthenticationAsArmPolicyPtrOutput) ToAzureADAuthenticationAsArmPolicyPtrOutput() AzureADAuthenticationAsArmPolicyPtrOutput {
+	return o
+}
+
+func (o AzureADAuthenticationAsArmPolicyPtrOutput) ToAzureADAuthenticationAsArmPolicyPtrOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyPtrOutput {
+	return o
+}
+
+func (o AzureADAuthenticationAsArmPolicyPtrOutput) Elem() AzureADAuthenticationAsArmPolicyOutput {
+	return o.ApplyT(func(v *AzureADAuthenticationAsArmPolicy) AzureADAuthenticationAsArmPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AzureADAuthenticationAsArmPolicy
+		return ret
+	}).(AzureADAuthenticationAsArmPolicyOutput)
+}
+
+// The value that indicates whether the policy is enabled or not.
+func (o AzureADAuthenticationAsArmPolicyPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureADAuthenticationAsArmPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The policy for using ARM audience token for a container registry.
+type AzureADAuthenticationAsArmPolicyResponse struct {
+	// The value that indicates whether the policy is enabled or not.
+	Status *string `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for AzureADAuthenticationAsArmPolicyResponse
+func (val *AzureADAuthenticationAsArmPolicyResponse) Defaults() *AzureADAuthenticationAsArmPolicyResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Status == nil {
+		status_ := "enabled"
+		tmp.Status = &status_
+	}
+	return &tmp
+}
+
+// The policy for using ARM audience token for a container registry.
+type AzureADAuthenticationAsArmPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureADAuthenticationAsArmPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureADAuthenticationAsArmPolicyResponse)(nil)).Elem()
+}
+
+func (o AzureADAuthenticationAsArmPolicyResponseOutput) ToAzureADAuthenticationAsArmPolicyResponseOutput() AzureADAuthenticationAsArmPolicyResponseOutput {
+	return o
+}
+
+func (o AzureADAuthenticationAsArmPolicyResponseOutput) ToAzureADAuthenticationAsArmPolicyResponseOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyResponseOutput {
+	return o
+}
+
+// The value that indicates whether the policy is enabled or not.
+func (o AzureADAuthenticationAsArmPolicyResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureADAuthenticationAsArmPolicyResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type AzureADAuthenticationAsArmPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureADAuthenticationAsArmPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureADAuthenticationAsArmPolicyResponse)(nil)).Elem()
+}
+
+func (o AzureADAuthenticationAsArmPolicyResponsePtrOutput) ToAzureADAuthenticationAsArmPolicyResponsePtrOutput() AzureADAuthenticationAsArmPolicyResponsePtrOutput {
+	return o
+}
+
+func (o AzureADAuthenticationAsArmPolicyResponsePtrOutput) ToAzureADAuthenticationAsArmPolicyResponsePtrOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyResponsePtrOutput {
+	return o
+}
+
+func (o AzureADAuthenticationAsArmPolicyResponsePtrOutput) Elem() AzureADAuthenticationAsArmPolicyResponseOutput {
+	return o.ApplyT(func(v *AzureADAuthenticationAsArmPolicyResponse) AzureADAuthenticationAsArmPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureADAuthenticationAsArmPolicyResponse
+		return ret
+	}).(AzureADAuthenticationAsArmPolicyResponseOutput)
+}
+
+// The value that indicates whether the policy is enabled or not.
+func (o AzureADAuthenticationAsArmPolicyResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureADAuthenticationAsArmPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties that describe a base image dependency.
 type BaseImageDependencyResponse struct {
 	// The sha256-based digest of the image manifest.
@@ -6824,6 +7061,242 @@ func (o FileTaskStepResponsePtrOutput) ValuesFilePath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The garbage collection properties of the connected registry.
+type GarbageCollectionProperties struct {
+	// Indicates whether garbage collection is enabled for the connected registry.
+	Enabled *bool `pulumi:"enabled"`
+	// The cron expression indicating the schedule that the connected registry will run garbage collection.
+	Schedule *string `pulumi:"schedule"`
+}
+
+// GarbageCollectionPropertiesInput is an input type that accepts GarbageCollectionPropertiesArgs and GarbageCollectionPropertiesOutput values.
+// You can construct a concrete instance of `GarbageCollectionPropertiesInput` via:
+//
+//	GarbageCollectionPropertiesArgs{...}
+type GarbageCollectionPropertiesInput interface {
+	pulumi.Input
+
+	ToGarbageCollectionPropertiesOutput() GarbageCollectionPropertiesOutput
+	ToGarbageCollectionPropertiesOutputWithContext(context.Context) GarbageCollectionPropertiesOutput
+}
+
+// The garbage collection properties of the connected registry.
+type GarbageCollectionPropertiesArgs struct {
+	// Indicates whether garbage collection is enabled for the connected registry.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The cron expression indicating the schedule that the connected registry will run garbage collection.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+}
+
+func (GarbageCollectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GarbageCollectionProperties)(nil)).Elem()
+}
+
+func (i GarbageCollectionPropertiesArgs) ToGarbageCollectionPropertiesOutput() GarbageCollectionPropertiesOutput {
+	return i.ToGarbageCollectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i GarbageCollectionPropertiesArgs) ToGarbageCollectionPropertiesOutputWithContext(ctx context.Context) GarbageCollectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GarbageCollectionPropertiesOutput)
+}
+
+func (i GarbageCollectionPropertiesArgs) ToGarbageCollectionPropertiesPtrOutput() GarbageCollectionPropertiesPtrOutput {
+	return i.ToGarbageCollectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GarbageCollectionPropertiesArgs) ToGarbageCollectionPropertiesPtrOutputWithContext(ctx context.Context) GarbageCollectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GarbageCollectionPropertiesOutput).ToGarbageCollectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// GarbageCollectionPropertiesPtrInput is an input type that accepts GarbageCollectionPropertiesArgs, GarbageCollectionPropertiesPtr and GarbageCollectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `GarbageCollectionPropertiesPtrInput` via:
+//
+//	        GarbageCollectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GarbageCollectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGarbageCollectionPropertiesPtrOutput() GarbageCollectionPropertiesPtrOutput
+	ToGarbageCollectionPropertiesPtrOutputWithContext(context.Context) GarbageCollectionPropertiesPtrOutput
+}
+
+type garbageCollectionPropertiesPtrType GarbageCollectionPropertiesArgs
+
+func GarbageCollectionPropertiesPtr(v *GarbageCollectionPropertiesArgs) GarbageCollectionPropertiesPtrInput {
+	return (*garbageCollectionPropertiesPtrType)(v)
+}
+
+func (*garbageCollectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GarbageCollectionProperties)(nil)).Elem()
+}
+
+func (i *garbageCollectionPropertiesPtrType) ToGarbageCollectionPropertiesPtrOutput() GarbageCollectionPropertiesPtrOutput {
+	return i.ToGarbageCollectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *garbageCollectionPropertiesPtrType) ToGarbageCollectionPropertiesPtrOutputWithContext(ctx context.Context) GarbageCollectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GarbageCollectionPropertiesPtrOutput)
+}
+
+// The garbage collection properties of the connected registry.
+type GarbageCollectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GarbageCollectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GarbageCollectionProperties)(nil)).Elem()
+}
+
+func (o GarbageCollectionPropertiesOutput) ToGarbageCollectionPropertiesOutput() GarbageCollectionPropertiesOutput {
+	return o
+}
+
+func (o GarbageCollectionPropertiesOutput) ToGarbageCollectionPropertiesOutputWithContext(ctx context.Context) GarbageCollectionPropertiesOutput {
+	return o
+}
+
+func (o GarbageCollectionPropertiesOutput) ToGarbageCollectionPropertiesPtrOutput() GarbageCollectionPropertiesPtrOutput {
+	return o.ToGarbageCollectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GarbageCollectionPropertiesOutput) ToGarbageCollectionPropertiesPtrOutputWithContext(ctx context.Context) GarbageCollectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GarbageCollectionProperties) *GarbageCollectionProperties {
+		return &v
+	}).(GarbageCollectionPropertiesPtrOutput)
+}
+
+// Indicates whether garbage collection is enabled for the connected registry.
+func (o GarbageCollectionPropertiesOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GarbageCollectionProperties) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The cron expression indicating the schedule that the connected registry will run garbage collection.
+func (o GarbageCollectionPropertiesOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GarbageCollectionProperties) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+type GarbageCollectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GarbageCollectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GarbageCollectionProperties)(nil)).Elem()
+}
+
+func (o GarbageCollectionPropertiesPtrOutput) ToGarbageCollectionPropertiesPtrOutput() GarbageCollectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GarbageCollectionPropertiesPtrOutput) ToGarbageCollectionPropertiesPtrOutputWithContext(ctx context.Context) GarbageCollectionPropertiesPtrOutput {
+	return o
+}
+
+func (o GarbageCollectionPropertiesPtrOutput) Elem() GarbageCollectionPropertiesOutput {
+	return o.ApplyT(func(v *GarbageCollectionProperties) GarbageCollectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GarbageCollectionProperties
+		return ret
+	}).(GarbageCollectionPropertiesOutput)
+}
+
+// Indicates whether garbage collection is enabled for the connected registry.
+func (o GarbageCollectionPropertiesPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GarbageCollectionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The cron expression indicating the schedule that the connected registry will run garbage collection.
+func (o GarbageCollectionPropertiesPtrOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GarbageCollectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(pulumi.StringPtrOutput)
+}
+
+// The garbage collection properties of the connected registry.
+type GarbageCollectionPropertiesResponse struct {
+	// Indicates whether garbage collection is enabled for the connected registry.
+	Enabled *bool `pulumi:"enabled"`
+	// The cron expression indicating the schedule that the connected registry will run garbage collection.
+	Schedule *string `pulumi:"schedule"`
+}
+
+// The garbage collection properties of the connected registry.
+type GarbageCollectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (GarbageCollectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GarbageCollectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o GarbageCollectionPropertiesResponseOutput) ToGarbageCollectionPropertiesResponseOutput() GarbageCollectionPropertiesResponseOutput {
+	return o
+}
+
+func (o GarbageCollectionPropertiesResponseOutput) ToGarbageCollectionPropertiesResponseOutputWithContext(ctx context.Context) GarbageCollectionPropertiesResponseOutput {
+	return o
+}
+
+// Indicates whether garbage collection is enabled for the connected registry.
+func (o GarbageCollectionPropertiesResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GarbageCollectionPropertiesResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The cron expression indicating the schedule that the connected registry will run garbage collection.
+func (o GarbageCollectionPropertiesResponseOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GarbageCollectionPropertiesResponse) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+type GarbageCollectionPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GarbageCollectionPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GarbageCollectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o GarbageCollectionPropertiesResponsePtrOutput) ToGarbageCollectionPropertiesResponsePtrOutput() GarbageCollectionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o GarbageCollectionPropertiesResponsePtrOutput) ToGarbageCollectionPropertiesResponsePtrOutputWithContext(ctx context.Context) GarbageCollectionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o GarbageCollectionPropertiesResponsePtrOutput) Elem() GarbageCollectionPropertiesResponseOutput {
+	return o.ApplyT(func(v *GarbageCollectionPropertiesResponse) GarbageCollectionPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GarbageCollectionPropertiesResponse
+		return ret
+	}).(GarbageCollectionPropertiesResponseOutput)
+}
+
+// Indicates whether garbage collection is enabled for the connected registry.
+func (o GarbageCollectionPropertiesResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GarbageCollectionPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The cron expression indicating the schedule that the connected registry will run garbage collection.
+func (o GarbageCollectionPropertiesResponsePtrOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GarbageCollectionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(pulumi.StringPtrOutput)
+}
+
 // IP rule with specific IP or IP range in CIDR format.
 type IPRule struct {
 	// The action of IP ACL rule.
@@ -11014,12 +11487,16 @@ func (o PlatformPropertiesResponsePtrOutput) Variant() pulumi.StringPtrOutput {
 
 // The policies for a container registry.
 type Policies struct {
+	// The policy for using ARM audience token for a container registry.
+	AzureADAuthenticationAsArmPolicy *AzureADAuthenticationAsArmPolicy `pulumi:"azureADAuthenticationAsArmPolicy"`
 	// The export policy for a container registry.
 	ExportPolicy *ExportPolicy `pulumi:"exportPolicy"`
 	// The quarantine policy for a container registry.
 	QuarantinePolicy *QuarantinePolicy `pulumi:"quarantinePolicy"`
 	// The retention policy for a container registry.
 	RetentionPolicy *RetentionPolicy `pulumi:"retentionPolicy"`
+	// The soft delete policy for a container registry.
+	SoftDeletePolicy *SoftDeletePolicy `pulumi:"softDeletePolicy"`
 	// The content trust policy for a container registry.
 	TrustPolicy *TrustPolicy `pulumi:"trustPolicy"`
 }
@@ -11030,11 +11507,15 @@ func (val *Policies) Defaults() *Policies {
 		return nil
 	}
 	tmp := *val
+	tmp.AzureADAuthenticationAsArmPolicy = tmp.AzureADAuthenticationAsArmPolicy.Defaults()
+
 	tmp.ExportPolicy = tmp.ExportPolicy.Defaults()
 
 	tmp.QuarantinePolicy = tmp.QuarantinePolicy.Defaults()
 
 	tmp.RetentionPolicy = tmp.RetentionPolicy.Defaults()
+
+	tmp.SoftDeletePolicy = tmp.SoftDeletePolicy.Defaults()
 
 	tmp.TrustPolicy = tmp.TrustPolicy.Defaults()
 
@@ -11054,12 +11535,16 @@ type PoliciesInput interface {
 
 // The policies for a container registry.
 type PoliciesArgs struct {
+	// The policy for using ARM audience token for a container registry.
+	AzureADAuthenticationAsArmPolicy AzureADAuthenticationAsArmPolicyPtrInput `pulumi:"azureADAuthenticationAsArmPolicy"`
 	// The export policy for a container registry.
 	ExportPolicy ExportPolicyPtrInput `pulumi:"exportPolicy"`
 	// The quarantine policy for a container registry.
 	QuarantinePolicy QuarantinePolicyPtrInput `pulumi:"quarantinePolicy"`
 	// The retention policy for a container registry.
 	RetentionPolicy RetentionPolicyPtrInput `pulumi:"retentionPolicy"`
+	// The soft delete policy for a container registry.
+	SoftDeletePolicy SoftDeletePolicyPtrInput `pulumi:"softDeletePolicy"`
 	// The content trust policy for a container registry.
 	TrustPolicy TrustPolicyPtrInput `pulumi:"trustPolicy"`
 }
@@ -11151,6 +11636,11 @@ func (o PoliciesOutput) ToPoliciesPtrOutputWithContext(ctx context.Context) Poli
 	}).(PoliciesPtrOutput)
 }
 
+// The policy for using ARM audience token for a container registry.
+func (o PoliciesOutput) AzureADAuthenticationAsArmPolicy() AzureADAuthenticationAsArmPolicyPtrOutput {
+	return o.ApplyT(func(v Policies) *AzureADAuthenticationAsArmPolicy { return v.AzureADAuthenticationAsArmPolicy }).(AzureADAuthenticationAsArmPolicyPtrOutput)
+}
+
 // The export policy for a container registry.
 func (o PoliciesOutput) ExportPolicy() ExportPolicyPtrOutput {
 	return o.ApplyT(func(v Policies) *ExportPolicy { return v.ExportPolicy }).(ExportPolicyPtrOutput)
@@ -11164,6 +11654,11 @@ func (o PoliciesOutput) QuarantinePolicy() QuarantinePolicyPtrOutput {
 // The retention policy for a container registry.
 func (o PoliciesOutput) RetentionPolicy() RetentionPolicyPtrOutput {
 	return o.ApplyT(func(v Policies) *RetentionPolicy { return v.RetentionPolicy }).(RetentionPolicyPtrOutput)
+}
+
+// The soft delete policy for a container registry.
+func (o PoliciesOutput) SoftDeletePolicy() SoftDeletePolicyPtrOutput {
+	return o.ApplyT(func(v Policies) *SoftDeletePolicy { return v.SoftDeletePolicy }).(SoftDeletePolicyPtrOutput)
 }
 
 // The content trust policy for a container registry.
@@ -11193,6 +11688,16 @@ func (o PoliciesPtrOutput) Elem() PoliciesOutput {
 		var ret Policies
 		return ret
 	}).(PoliciesOutput)
+}
+
+// The policy for using ARM audience token for a container registry.
+func (o PoliciesPtrOutput) AzureADAuthenticationAsArmPolicy() AzureADAuthenticationAsArmPolicyPtrOutput {
+	return o.ApplyT(func(v *Policies) *AzureADAuthenticationAsArmPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AzureADAuthenticationAsArmPolicy
+	}).(AzureADAuthenticationAsArmPolicyPtrOutput)
 }
 
 // The export policy for a container registry.
@@ -11225,6 +11730,16 @@ func (o PoliciesPtrOutput) RetentionPolicy() RetentionPolicyPtrOutput {
 	}).(RetentionPolicyPtrOutput)
 }
 
+// The soft delete policy for a container registry.
+func (o PoliciesPtrOutput) SoftDeletePolicy() SoftDeletePolicyPtrOutput {
+	return o.ApplyT(func(v *Policies) *SoftDeletePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.SoftDeletePolicy
+	}).(SoftDeletePolicyPtrOutput)
+}
+
 // The content trust policy for a container registry.
 func (o PoliciesPtrOutput) TrustPolicy() TrustPolicyPtrOutput {
 	return o.ApplyT(func(v *Policies) *TrustPolicy {
@@ -11237,12 +11752,16 @@ func (o PoliciesPtrOutput) TrustPolicy() TrustPolicyPtrOutput {
 
 // The policies for a container registry.
 type PoliciesResponse struct {
+	// The policy for using ARM audience token for a container registry.
+	AzureADAuthenticationAsArmPolicy *AzureADAuthenticationAsArmPolicyResponse `pulumi:"azureADAuthenticationAsArmPolicy"`
 	// The export policy for a container registry.
 	ExportPolicy *ExportPolicyResponse `pulumi:"exportPolicy"`
 	// The quarantine policy for a container registry.
 	QuarantinePolicy *QuarantinePolicyResponse `pulumi:"quarantinePolicy"`
 	// The retention policy for a container registry.
 	RetentionPolicy *RetentionPolicyResponse `pulumi:"retentionPolicy"`
+	// The soft delete policy for a container registry.
+	SoftDeletePolicy *SoftDeletePolicyResponse `pulumi:"softDeletePolicy"`
 	// The content trust policy for a container registry.
 	TrustPolicy *TrustPolicyResponse `pulumi:"trustPolicy"`
 }
@@ -11253,11 +11772,15 @@ func (val *PoliciesResponse) Defaults() *PoliciesResponse {
 		return nil
 	}
 	tmp := *val
+	tmp.AzureADAuthenticationAsArmPolicy = tmp.AzureADAuthenticationAsArmPolicy.Defaults()
+
 	tmp.ExportPolicy = tmp.ExportPolicy.Defaults()
 
 	tmp.QuarantinePolicy = tmp.QuarantinePolicy.Defaults()
 
 	tmp.RetentionPolicy = tmp.RetentionPolicy.Defaults()
+
+	tmp.SoftDeletePolicy = tmp.SoftDeletePolicy.Defaults()
 
 	tmp.TrustPolicy = tmp.TrustPolicy.Defaults()
 
@@ -11279,6 +11802,13 @@ func (o PoliciesResponseOutput) ToPoliciesResponseOutputWithContext(ctx context.
 	return o
 }
 
+// The policy for using ARM audience token for a container registry.
+func (o PoliciesResponseOutput) AzureADAuthenticationAsArmPolicy() AzureADAuthenticationAsArmPolicyResponsePtrOutput {
+	return o.ApplyT(func(v PoliciesResponse) *AzureADAuthenticationAsArmPolicyResponse {
+		return v.AzureADAuthenticationAsArmPolicy
+	}).(AzureADAuthenticationAsArmPolicyResponsePtrOutput)
+}
+
 // The export policy for a container registry.
 func (o PoliciesResponseOutput) ExportPolicy() ExportPolicyResponsePtrOutput {
 	return o.ApplyT(func(v PoliciesResponse) *ExportPolicyResponse { return v.ExportPolicy }).(ExportPolicyResponsePtrOutput)
@@ -11292,6 +11822,11 @@ func (o PoliciesResponseOutput) QuarantinePolicy() QuarantinePolicyResponsePtrOu
 // The retention policy for a container registry.
 func (o PoliciesResponseOutput) RetentionPolicy() RetentionPolicyResponsePtrOutput {
 	return o.ApplyT(func(v PoliciesResponse) *RetentionPolicyResponse { return v.RetentionPolicy }).(RetentionPolicyResponsePtrOutput)
+}
+
+// The soft delete policy for a container registry.
+func (o PoliciesResponseOutput) SoftDeletePolicy() SoftDeletePolicyResponsePtrOutput {
+	return o.ApplyT(func(v PoliciesResponse) *SoftDeletePolicyResponse { return v.SoftDeletePolicy }).(SoftDeletePolicyResponsePtrOutput)
 }
 
 // The content trust policy for a container registry.
@@ -11323,6 +11858,16 @@ func (o PoliciesResponsePtrOutput) Elem() PoliciesResponseOutput {
 	}).(PoliciesResponseOutput)
 }
 
+// The policy for using ARM audience token for a container registry.
+func (o PoliciesResponsePtrOutput) AzureADAuthenticationAsArmPolicy() AzureADAuthenticationAsArmPolicyResponsePtrOutput {
+	return o.ApplyT(func(v *PoliciesResponse) *AzureADAuthenticationAsArmPolicyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureADAuthenticationAsArmPolicy
+	}).(AzureADAuthenticationAsArmPolicyResponsePtrOutput)
+}
+
 // The export policy for a container registry.
 func (o PoliciesResponsePtrOutput) ExportPolicy() ExportPolicyResponsePtrOutput {
 	return o.ApplyT(func(v *PoliciesResponse) *ExportPolicyResponse {
@@ -11351,6 +11896,16 @@ func (o PoliciesResponsePtrOutput) RetentionPolicy() RetentionPolicyResponsePtrO
 		}
 		return v.RetentionPolicy
 	}).(RetentionPolicyResponsePtrOutput)
+}
+
+// The soft delete policy for a container registry.
+func (o PoliciesResponsePtrOutput) SoftDeletePolicy() SoftDeletePolicyResponsePtrOutput {
+	return o.ApplyT(func(v *PoliciesResponse) *SoftDeletePolicyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SoftDeletePolicy
+	}).(SoftDeletePolicyResponsePtrOutput)
 }
 
 // The content trust policy for a container registry.
@@ -13474,6 +14029,307 @@ func (o SkuResponseOutput) Name() pulumi.StringOutput {
 // The SKU tier based on the SKU name.
 func (o SkuResponseOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+// The soft delete policy for a container registry
+type SoftDeletePolicy struct {
+	// The number of days after which a soft-deleted item is permanently deleted.
+	RetentionDays *int `pulumi:"retentionDays"`
+	// The value that indicates whether the policy is enabled or not.
+	Status *string `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for SoftDeletePolicy
+func (val *SoftDeletePolicy) Defaults() *SoftDeletePolicy {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RetentionDays == nil {
+		retentionDays_ := 7
+		tmp.RetentionDays = &retentionDays_
+	}
+	if tmp.Status == nil {
+		status_ := "disabled"
+		tmp.Status = &status_
+	}
+	return &tmp
+}
+
+// SoftDeletePolicyInput is an input type that accepts SoftDeletePolicyArgs and SoftDeletePolicyOutput values.
+// You can construct a concrete instance of `SoftDeletePolicyInput` via:
+//
+//	SoftDeletePolicyArgs{...}
+type SoftDeletePolicyInput interface {
+	pulumi.Input
+
+	ToSoftDeletePolicyOutput() SoftDeletePolicyOutput
+	ToSoftDeletePolicyOutputWithContext(context.Context) SoftDeletePolicyOutput
+}
+
+// The soft delete policy for a container registry
+type SoftDeletePolicyArgs struct {
+	// The number of days after which a soft-deleted item is permanently deleted.
+	RetentionDays pulumi.IntPtrInput `pulumi:"retentionDays"`
+	// The value that indicates whether the policy is enabled or not.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for SoftDeletePolicyArgs
+func (val *SoftDeletePolicyArgs) Defaults() *SoftDeletePolicyArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RetentionDays == nil {
+		tmp.RetentionDays = pulumi.IntPtr(7)
+	}
+	if tmp.Status == nil {
+		tmp.Status = pulumi.StringPtr("disabled")
+	}
+	return &tmp
+}
+func (SoftDeletePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftDeletePolicy)(nil)).Elem()
+}
+
+func (i SoftDeletePolicyArgs) ToSoftDeletePolicyOutput() SoftDeletePolicyOutput {
+	return i.ToSoftDeletePolicyOutputWithContext(context.Background())
+}
+
+func (i SoftDeletePolicyArgs) ToSoftDeletePolicyOutputWithContext(ctx context.Context) SoftDeletePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftDeletePolicyOutput)
+}
+
+func (i SoftDeletePolicyArgs) ToSoftDeletePolicyPtrOutput() SoftDeletePolicyPtrOutput {
+	return i.ToSoftDeletePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i SoftDeletePolicyArgs) ToSoftDeletePolicyPtrOutputWithContext(ctx context.Context) SoftDeletePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftDeletePolicyOutput).ToSoftDeletePolicyPtrOutputWithContext(ctx)
+}
+
+// SoftDeletePolicyPtrInput is an input type that accepts SoftDeletePolicyArgs, SoftDeletePolicyPtr and SoftDeletePolicyPtrOutput values.
+// You can construct a concrete instance of `SoftDeletePolicyPtrInput` via:
+//
+//	        SoftDeletePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SoftDeletePolicyPtrInput interface {
+	pulumi.Input
+
+	ToSoftDeletePolicyPtrOutput() SoftDeletePolicyPtrOutput
+	ToSoftDeletePolicyPtrOutputWithContext(context.Context) SoftDeletePolicyPtrOutput
+}
+
+type softDeletePolicyPtrType SoftDeletePolicyArgs
+
+func SoftDeletePolicyPtr(v *SoftDeletePolicyArgs) SoftDeletePolicyPtrInput {
+	return (*softDeletePolicyPtrType)(v)
+}
+
+func (*softDeletePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoftDeletePolicy)(nil)).Elem()
+}
+
+func (i *softDeletePolicyPtrType) ToSoftDeletePolicyPtrOutput() SoftDeletePolicyPtrOutput {
+	return i.ToSoftDeletePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *softDeletePolicyPtrType) ToSoftDeletePolicyPtrOutputWithContext(ctx context.Context) SoftDeletePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftDeletePolicyPtrOutput)
+}
+
+// The soft delete policy for a container registry
+type SoftDeletePolicyOutput struct{ *pulumi.OutputState }
+
+func (SoftDeletePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftDeletePolicy)(nil)).Elem()
+}
+
+func (o SoftDeletePolicyOutput) ToSoftDeletePolicyOutput() SoftDeletePolicyOutput {
+	return o
+}
+
+func (o SoftDeletePolicyOutput) ToSoftDeletePolicyOutputWithContext(ctx context.Context) SoftDeletePolicyOutput {
+	return o
+}
+
+func (o SoftDeletePolicyOutput) ToSoftDeletePolicyPtrOutput() SoftDeletePolicyPtrOutput {
+	return o.ToSoftDeletePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o SoftDeletePolicyOutput) ToSoftDeletePolicyPtrOutputWithContext(ctx context.Context) SoftDeletePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftDeletePolicy) *SoftDeletePolicy {
+		return &v
+	}).(SoftDeletePolicyPtrOutput)
+}
+
+// The number of days after which a soft-deleted item is permanently deleted.
+func (o SoftDeletePolicyOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SoftDeletePolicy) *int { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// The value that indicates whether the policy is enabled or not.
+func (o SoftDeletePolicyOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SoftDeletePolicy) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SoftDeletePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (SoftDeletePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoftDeletePolicy)(nil)).Elem()
+}
+
+func (o SoftDeletePolicyPtrOutput) ToSoftDeletePolicyPtrOutput() SoftDeletePolicyPtrOutput {
+	return o
+}
+
+func (o SoftDeletePolicyPtrOutput) ToSoftDeletePolicyPtrOutputWithContext(ctx context.Context) SoftDeletePolicyPtrOutput {
+	return o
+}
+
+func (o SoftDeletePolicyPtrOutput) Elem() SoftDeletePolicyOutput {
+	return o.ApplyT(func(v *SoftDeletePolicy) SoftDeletePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SoftDeletePolicy
+		return ret
+	}).(SoftDeletePolicyOutput)
+}
+
+// The number of days after which a soft-deleted item is permanently deleted.
+func (o SoftDeletePolicyPtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SoftDeletePolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value that indicates whether the policy is enabled or not.
+func (o SoftDeletePolicyPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SoftDeletePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The soft delete policy for a container registry
+type SoftDeletePolicyResponse struct {
+	// The timestamp when the policy was last updated.
+	LastUpdatedTime string `pulumi:"lastUpdatedTime"`
+	// The number of days after which a soft-deleted item is permanently deleted.
+	RetentionDays *int `pulumi:"retentionDays"`
+	// The value that indicates whether the policy is enabled or not.
+	Status *string `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for SoftDeletePolicyResponse
+func (val *SoftDeletePolicyResponse) Defaults() *SoftDeletePolicyResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RetentionDays == nil {
+		retentionDays_ := 7
+		tmp.RetentionDays = &retentionDays_
+	}
+	if tmp.Status == nil {
+		status_ := "disabled"
+		tmp.Status = &status_
+	}
+	return &tmp
+}
+
+// The soft delete policy for a container registry
+type SoftDeletePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftDeletePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftDeletePolicyResponse)(nil)).Elem()
+}
+
+func (o SoftDeletePolicyResponseOutput) ToSoftDeletePolicyResponseOutput() SoftDeletePolicyResponseOutput {
+	return o
+}
+
+func (o SoftDeletePolicyResponseOutput) ToSoftDeletePolicyResponseOutputWithContext(ctx context.Context) SoftDeletePolicyResponseOutput {
+	return o
+}
+
+// The timestamp when the policy was last updated.
+func (o SoftDeletePolicyResponseOutput) LastUpdatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftDeletePolicyResponse) string { return v.LastUpdatedTime }).(pulumi.StringOutput)
+}
+
+// The number of days after which a soft-deleted item is permanently deleted.
+func (o SoftDeletePolicyResponseOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SoftDeletePolicyResponse) *int { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// The value that indicates whether the policy is enabled or not.
+func (o SoftDeletePolicyResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SoftDeletePolicyResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SoftDeletePolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SoftDeletePolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoftDeletePolicyResponse)(nil)).Elem()
+}
+
+func (o SoftDeletePolicyResponsePtrOutput) ToSoftDeletePolicyResponsePtrOutput() SoftDeletePolicyResponsePtrOutput {
+	return o
+}
+
+func (o SoftDeletePolicyResponsePtrOutput) ToSoftDeletePolicyResponsePtrOutputWithContext(ctx context.Context) SoftDeletePolicyResponsePtrOutput {
+	return o
+}
+
+func (o SoftDeletePolicyResponsePtrOutput) Elem() SoftDeletePolicyResponseOutput {
+	return o.ApplyT(func(v *SoftDeletePolicyResponse) SoftDeletePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SoftDeletePolicyResponse
+		return ret
+	}).(SoftDeletePolicyResponseOutput)
+}
+
+// The timestamp when the policy was last updated.
+func (o SoftDeletePolicyResponsePtrOutput) LastUpdatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SoftDeletePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastUpdatedTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of days after which a soft-deleted item is permanently deleted.
+func (o SoftDeletePolicyResponsePtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SoftDeletePolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value that indicates whether the policy is enabled or not.
+func (o SoftDeletePolicyResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SoftDeletePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
 }
 
 // The properties of the source code repository.
@@ -17042,6 +17898,10 @@ func init() {
 	pulumi.RegisterOutputType(AuthInfoPtrOutput{})
 	pulumi.RegisterOutputType(AuthInfoResponseOutput{})
 	pulumi.RegisterOutputType(AuthInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureADAuthenticationAsArmPolicyOutput{})
+	pulumi.RegisterOutputType(AzureADAuthenticationAsArmPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AzureADAuthenticationAsArmPolicyResponseOutput{})
+	pulumi.RegisterOutputType(AzureADAuthenticationAsArmPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(BaseImageDependencyResponseOutput{})
 	pulumi.RegisterOutputType(BaseImageDependencyResponseArrayOutput{})
 	pulumi.RegisterOutputType(BaseImageTriggerOutput{})
@@ -17100,6 +17960,10 @@ func init() {
 	pulumi.RegisterOutputType(FileTaskStepPtrOutput{})
 	pulumi.RegisterOutputType(FileTaskStepResponseOutput{})
 	pulumi.RegisterOutputType(FileTaskStepResponsePtrOutput{})
+	pulumi.RegisterOutputType(GarbageCollectionPropertiesOutput{})
+	pulumi.RegisterOutputType(GarbageCollectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GarbageCollectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(GarbageCollectionPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(IPRuleOutput{})
 	pulumi.RegisterOutputType(IPRuleArrayOutput{})
 	pulumi.RegisterOutputType(IPRuleResponseOutput{})
@@ -17203,6 +18067,10 @@ func init() {
 	pulumi.RegisterOutputType(SetValueResponseArrayOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(SoftDeletePolicyOutput{})
+	pulumi.RegisterOutputType(SoftDeletePolicyPtrOutput{})
+	pulumi.RegisterOutputType(SoftDeletePolicyResponseOutput{})
+	pulumi.RegisterOutputType(SoftDeletePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourcePropertiesOutput{})
 	pulumi.RegisterOutputType(SourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SourceRegistryCredentialsOutput{})

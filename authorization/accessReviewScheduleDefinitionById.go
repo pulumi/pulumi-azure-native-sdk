@@ -13,14 +13,16 @@ import (
 
 // Access Review Schedule Definition.
 //
-// Uses Azure REST API version 2021-12-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
+// Uses Azure REST API version 2021-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-12-01-preview.
+//
+// Other available API versions: 2021-03-01-preview, 2021-07-01-preview, 2021-11-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AccessReviewScheduleDefinitionById struct {
 	pulumi.CustomResourceState
 
-	// The role assignment state eligible/active to review
-	AssignmentState pulumi.StringOutput `pulumi:"assignmentState"`
 	// Flag to indicate whether auto-apply capability, to automatically change the target object access resource, is enabled. If not enabled, a user must, after the review completes, apply the access review.
 	AutoApplyDecisionsEnabled pulumi.BoolPtrOutput `pulumi:"autoApplyDecisionsEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// This is the collection of backup reviewers.
 	BackupReviewers AccessReviewReviewerResponseArrayOutput `pulumi:"backupReviewers"`
 	// This specifies the behavior for the autoReview feature when an access review completes.
@@ -33,20 +35,6 @@ type AccessReviewScheduleDefinitionById struct {
 	DescriptionForReviewers pulumi.StringPtrOutput `pulumi:"descriptionForReviewers"`
 	// The display name for the schedule definition.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The DateTime when the review is scheduled to end. Required if type is endDate
-	EndDate pulumi.StringPtrOutput `pulumi:"endDate"`
-	// This is used to indicate the resource id(s) to exclude
-	ExcludeResourceId pulumi.StringPtrOutput `pulumi:"excludeResourceId"`
-	// This is used to indicate the role definition id(s) to exclude
-	ExcludeRoleDefinitionId pulumi.StringPtrOutput `pulumi:"excludeRoleDefinitionId"`
-	// Flag to indicate whether to expand nested memberships or not.
-	ExpandNestedMemberships pulumi.BoolPtrOutput `pulumi:"expandNestedMemberships"`
-	// Duration users are inactive for. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
-	InactiveDuration pulumi.StringPtrOutput `pulumi:"inactiveDuration"`
-	// Flag to indicate whether to expand nested memberships or not.
-	IncludeAccessBelowResource pulumi.BoolPtrOutput `pulumi:"includeAccessBelowResource"`
-	// Flag to indicate whether to expand nested memberships or not.
-	IncludeInheritedAccess pulumi.BoolPtrOutput `pulumi:"includeInheritedAccess"`
 	// The duration in days for an instance.
 	InstanceDurationInDays pulumi.IntPtrOutput `pulumi:"instanceDurationInDays"`
 	// This is the collection of instances returned when one does an expand on it.
@@ -59,30 +47,26 @@ type AccessReviewScheduleDefinitionById struct {
 	MailNotificationsEnabled pulumi.BoolPtrOutput `pulumi:"mailNotificationsEnabled"`
 	// The access review schedule definition unique id.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The number of times to repeat the access review. Required and must be positive if type is numbered.
-	NumberOfOccurrences pulumi.IntPtrOutput `pulumi:"numberOfOccurrences"`
 	// The identity id
 	PrincipalId pulumi.StringOutput `pulumi:"principalId"`
 	// The identity display name
 	PrincipalName pulumi.StringOutput `pulumi:"principalName"`
-	// The identity type user/servicePrincipal to review
+	// The identity type : user/servicePrincipal
 	PrincipalType pulumi.StringOutput `pulumi:"principalType"`
+	// Access Review schedule definition recurrence range.
+	Range AccessReviewRecurrenceRangeResponsePtrOutput `pulumi:"range"`
 	// Recommendations for access reviews are calculated by looking back at 30 days of data(w.r.t the start date of the review) by default. However, in some scenarios, customers want to change how far back to look at and want to configure 60 days, 90 days, etc. instead. This setting allows customers to configure this duration. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
 	RecommendationLookBackDuration pulumi.StringPtrOutput `pulumi:"recommendationLookBackDuration"`
 	// Flag to indicate whether showing recommendations to reviewers is enabled.
 	RecommendationsEnabled pulumi.BoolPtrOutput `pulumi:"recommendationsEnabled"`
 	// Flag to indicate whether sending reminder emails to reviewers are enabled.
 	ReminderNotificationsEnabled pulumi.BoolPtrOutput `pulumi:"reminderNotificationsEnabled"`
-	// ResourceId in which this review is getting created
-	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// This is the collection of reviewers.
 	Reviewers AccessReviewReviewerResponseArrayOutput `pulumi:"reviewers"`
 	// This field specifies the type of reviewers for a review. Usually for a review, reviewers are explicitly assigned. However, in some cases, the reviewers may not be assigned and instead be chosen dynamically. For example managers review or self review.
 	ReviewersType pulumi.StringOutput `pulumi:"reviewersType"`
-	// This is used to indicate the role being reviewed
-	RoleDefinitionId pulumi.StringOutput `pulumi:"roleDefinitionId"`
-	// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
-	StartDate pulumi.StringPtrOutput `pulumi:"startDate"`
+	// This is used to define what to include in scope of the review. The scope definition includes the resourceId and roleDefinitionId.
+	Scope AccessReviewScopeResponseOutput `pulumi:"scope"`
 	// This read-only field specifies the status of an accessReview.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The resource type.
@@ -163,8 +147,6 @@ type accessReviewScheduleDefinitionByIdArgs struct {
 	DescriptionForReviewers *string `pulumi:"descriptionForReviewers"`
 	// The display name for the schedule definition.
 	DisplayName *string `pulumi:"displayName"`
-	// The DateTime when the review is scheduled to end. Required if type is endDate
-	EndDate *string `pulumi:"endDate"`
 	// This is used to indicate the resource id(s) to exclude
 	ExcludeResourceId *string `pulumi:"excludeResourceId"`
 	// This is used to indicate the role definition id(s) to exclude
@@ -187,8 +169,8 @@ type accessReviewScheduleDefinitionByIdArgs struct {
 	JustificationRequiredOnApproval *bool `pulumi:"justificationRequiredOnApproval"`
 	// Flag to indicate whether sending mails to reviewers and the review creator is enabled.
 	MailNotificationsEnabled *bool `pulumi:"mailNotificationsEnabled"`
-	// The number of times to repeat the access review. Required and must be positive if type is numbered.
-	NumberOfOccurrences *int `pulumi:"numberOfOccurrences"`
+	// Access Review schedule definition recurrence range.
+	Range *AccessReviewRecurrenceRange `pulumi:"range"`
 	// Recommendations for access reviews are calculated by looking back at 30 days of data(w.r.t the start date of the review) by default. However, in some scenarios, customers want to change how far back to look at and want to configure 60 days, 90 days, etc. instead. This setting allows customers to configure this duration. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
 	RecommendationLookBackDuration *string `pulumi:"recommendationLookBackDuration"`
 	// Flag to indicate whether showing recommendations to reviewers is enabled.
@@ -199,9 +181,7 @@ type accessReviewScheduleDefinitionByIdArgs struct {
 	Reviewers []AccessReviewReviewer `pulumi:"reviewers"`
 	// The id of the access review schedule definition.
 	ScheduleDefinitionId *string `pulumi:"scheduleDefinitionId"`
-	// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
-	StartDate *string `pulumi:"startDate"`
-	// The recurrence range type. The possible values are: endDate, noEnd, numbered.
+	// The recurrence type : weekly, monthly, etc.
 	Type *string `pulumi:"type"`
 }
 
@@ -221,8 +201,6 @@ type AccessReviewScheduleDefinitionByIdArgs struct {
 	DescriptionForReviewers pulumi.StringPtrInput
 	// The display name for the schedule definition.
 	DisplayName pulumi.StringPtrInput
-	// The DateTime when the review is scheduled to end. Required if type is endDate
-	EndDate pulumi.StringPtrInput
 	// This is used to indicate the resource id(s) to exclude
 	ExcludeResourceId pulumi.StringPtrInput
 	// This is used to indicate the role definition id(s) to exclude
@@ -245,8 +223,8 @@ type AccessReviewScheduleDefinitionByIdArgs struct {
 	JustificationRequiredOnApproval pulumi.BoolPtrInput
 	// Flag to indicate whether sending mails to reviewers and the review creator is enabled.
 	MailNotificationsEnabled pulumi.BoolPtrInput
-	// The number of times to repeat the access review. Required and must be positive if type is numbered.
-	NumberOfOccurrences pulumi.IntPtrInput
+	// Access Review schedule definition recurrence range.
+	Range AccessReviewRecurrenceRangePtrInput
 	// Recommendations for access reviews are calculated by looking back at 30 days of data(w.r.t the start date of the review) by default. However, in some scenarios, customers want to change how far back to look at and want to configure 60 days, 90 days, etc. instead. This setting allows customers to configure this duration. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
 	RecommendationLookBackDuration pulumi.StringPtrInput
 	// Flag to indicate whether showing recommendations to reviewers is enabled.
@@ -257,9 +235,7 @@ type AccessReviewScheduleDefinitionByIdArgs struct {
 	Reviewers AccessReviewReviewerArrayInput
 	// The id of the access review schedule definition.
 	ScheduleDefinitionId pulumi.StringPtrInput
-	// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
-	StartDate pulumi.StringPtrInput
-	// The recurrence range type. The possible values are: endDate, noEnd, numbered.
+	// The recurrence type : weekly, monthly, etc.
 	Type pulumi.StringPtrInput
 }
 
@@ -300,14 +276,14 @@ func (o AccessReviewScheduleDefinitionByIdOutput) ToAccessReviewScheduleDefiniti
 	return o
 }
 
-// The role assignment state eligible/active to review
-func (o AccessReviewScheduleDefinitionByIdOutput) AssignmentState() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringOutput { return v.AssignmentState }).(pulumi.StringOutput)
-}
-
 // Flag to indicate whether auto-apply capability, to automatically change the target object access resource, is enabled. If not enabled, a user must, after the review completes, apply the access review.
 func (o AccessReviewScheduleDefinitionByIdOutput) AutoApplyDecisionsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.BoolPtrOutput { return v.AutoApplyDecisionsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o AccessReviewScheduleDefinitionByIdOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // This is the collection of backup reviewers.
@@ -340,41 +316,6 @@ func (o AccessReviewScheduleDefinitionByIdOutput) DescriptionForReviewers() pulu
 // The display name for the schedule definition.
 func (o AccessReviewScheduleDefinitionByIdOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The DateTime when the review is scheduled to end. Required if type is endDate
-func (o AccessReviewScheduleDefinitionByIdOutput) EndDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringPtrOutput { return v.EndDate }).(pulumi.StringPtrOutput)
-}
-
-// This is used to indicate the resource id(s) to exclude
-func (o AccessReviewScheduleDefinitionByIdOutput) ExcludeResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringPtrOutput { return v.ExcludeResourceId }).(pulumi.StringPtrOutput)
-}
-
-// This is used to indicate the role definition id(s) to exclude
-func (o AccessReviewScheduleDefinitionByIdOutput) ExcludeRoleDefinitionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringPtrOutput { return v.ExcludeRoleDefinitionId }).(pulumi.StringPtrOutput)
-}
-
-// Flag to indicate whether to expand nested memberships or not.
-func (o AccessReviewScheduleDefinitionByIdOutput) ExpandNestedMemberships() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.BoolPtrOutput { return v.ExpandNestedMemberships }).(pulumi.BoolPtrOutput)
-}
-
-// Duration users are inactive for. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
-func (o AccessReviewScheduleDefinitionByIdOutput) InactiveDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringPtrOutput { return v.InactiveDuration }).(pulumi.StringPtrOutput)
-}
-
-// Flag to indicate whether to expand nested memberships or not.
-func (o AccessReviewScheduleDefinitionByIdOutput) IncludeAccessBelowResource() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.BoolPtrOutput { return v.IncludeAccessBelowResource }).(pulumi.BoolPtrOutput)
-}
-
-// Flag to indicate whether to expand nested memberships or not.
-func (o AccessReviewScheduleDefinitionByIdOutput) IncludeInheritedAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.BoolPtrOutput { return v.IncludeInheritedAccess }).(pulumi.BoolPtrOutput)
 }
 
 // The duration in days for an instance.
@@ -411,11 +352,6 @@ func (o AccessReviewScheduleDefinitionByIdOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The number of times to repeat the access review. Required and must be positive if type is numbered.
-func (o AccessReviewScheduleDefinitionByIdOutput) NumberOfOccurrences() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.IntPtrOutput { return v.NumberOfOccurrences }).(pulumi.IntPtrOutput)
-}
-
 // The identity id
 func (o AccessReviewScheduleDefinitionByIdOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringOutput { return v.PrincipalId }).(pulumi.StringOutput)
@@ -426,9 +362,16 @@ func (o AccessReviewScheduleDefinitionByIdOutput) PrincipalName() pulumi.StringO
 	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringOutput { return v.PrincipalName }).(pulumi.StringOutput)
 }
 
-// The identity type user/servicePrincipal to review
+// The identity type : user/servicePrincipal
 func (o AccessReviewScheduleDefinitionByIdOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringOutput { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+// Access Review schedule definition recurrence range.
+func (o AccessReviewScheduleDefinitionByIdOutput) Range() AccessReviewRecurrenceRangeResponsePtrOutput {
+	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) AccessReviewRecurrenceRangeResponsePtrOutput {
+		return v.Range
+	}).(AccessReviewRecurrenceRangeResponsePtrOutput)
 }
 
 // Recommendations for access reviews are calculated by looking back at 30 days of data(w.r.t the start date of the review) by default. However, in some scenarios, customers want to change how far back to look at and want to configure 60 days, 90 days, etc. instead. This setting allows customers to configure this duration. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
@@ -450,11 +393,6 @@ func (o AccessReviewScheduleDefinitionByIdOutput) ReminderNotificationsEnabled()
 	}).(pulumi.BoolPtrOutput)
 }
 
-// ResourceId in which this review is getting created
-func (o AccessReviewScheduleDefinitionByIdOutput) ResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
-}
-
 // This is the collection of reviewers.
 func (o AccessReviewScheduleDefinitionByIdOutput) Reviewers() AccessReviewReviewerResponseArrayOutput {
 	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) AccessReviewReviewerResponseArrayOutput {
@@ -467,14 +405,9 @@ func (o AccessReviewScheduleDefinitionByIdOutput) ReviewersType() pulumi.StringO
 	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringOutput { return v.ReviewersType }).(pulumi.StringOutput)
 }
 
-// This is used to indicate the role being reviewed
-func (o AccessReviewScheduleDefinitionByIdOutput) RoleDefinitionId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringOutput { return v.RoleDefinitionId }).(pulumi.StringOutput)
-}
-
-// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
-func (o AccessReviewScheduleDefinitionByIdOutput) StartDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) pulumi.StringPtrOutput { return v.StartDate }).(pulumi.StringPtrOutput)
+// This is used to define what to include in scope of the review. The scope definition includes the resourceId and roleDefinitionId.
+func (o AccessReviewScheduleDefinitionByIdOutput) Scope() AccessReviewScopeResponseOutput {
+	return o.ApplyT(func(v *AccessReviewScheduleDefinitionById) AccessReviewScopeResponseOutput { return v.Scope }).(AccessReviewScopeResponseOutput)
 }
 
 // This read-only field specifies the status of an accessReview.

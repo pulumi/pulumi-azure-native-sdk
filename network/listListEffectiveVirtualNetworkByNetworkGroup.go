@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-04-01-preview.
 //
-// Other available API versions: 2021-05-01-preview.
+// Other available API versions: 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListListEffectiveVirtualNetworkByNetworkGroup(ctx *pulumi.Context, args *ListListEffectiveVirtualNetworkByNetworkGroupArgs, opts ...pulumi.InvokeOption) (*ListListEffectiveVirtualNetworkByNetworkGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListListEffectiveVirtualNetworkByNetworkGroupResult

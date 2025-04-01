@@ -14,12 +14,14 @@ import (
 
 // Represents a Database.
 //
-// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2017-12-01.
+// Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
 //
-// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Database struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The charset of the database.
 	Charset pulumi.StringPtrOutput `pulumi:"charset"`
 	// The collation of the database.
@@ -46,6 +48,9 @@ func NewDatabase(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20171201:Database"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20201105preview:Database"),
 		},
@@ -178,6 +183,11 @@ func (o DatabaseOutput) ToDatabaseOutput() DatabaseOutput {
 
 func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DatabaseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The charset of the database.

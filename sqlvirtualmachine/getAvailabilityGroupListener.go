@@ -13,9 +13,9 @@ import (
 
 // Gets an availability group listener.
 //
-// Uses Azure REST API version 2022-02-01.
+// Uses Azure REST API version 2023-10-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-10-01.
+// Other available API versions: 2022-02-01, 2022-07-01-preview, 2022-08-01-preview, 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sqlvirtualmachine [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAvailabilityGroupListener(ctx *pulumi.Context, args *LookupAvailabilityGroupListenerArgs, opts ...pulumi.InvokeOption) (*LookupAvailabilityGroupListenerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAvailabilityGroupListenerResult
@@ -43,6 +43,8 @@ type LookupAvailabilityGroupListenerResult struct {
 	AvailabilityGroupConfiguration *AgConfigurationResponse `pulumi:"availabilityGroupConfiguration"`
 	// Name of the availability group.
 	AvailabilityGroupName *string `pulumi:"availabilityGroupName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Create a default availability group if it does not exist.
 	CreateDefaultAvailabilityGroupIfNotExist *bool `pulumi:"createDefaultAvailabilityGroupIfNotExist"`
 	// Resource ID.
@@ -112,6 +114,11 @@ func (o LookupAvailabilityGroupListenerResultOutput) AvailabilityGroupConfigurat
 // Name of the availability group.
 func (o LookupAvailabilityGroupListenerResultOutput) AvailabilityGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) *string { return v.AvailabilityGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAvailabilityGroupListenerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Create a default availability group if it does not exist.

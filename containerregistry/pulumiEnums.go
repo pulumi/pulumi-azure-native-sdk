@@ -678,6 +678,172 @@ func (in *auditLogStatusPtr) ToAuditLogStatusPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogStatusPtrOutput)
 }
 
+// The value that indicates whether the policy is enabled or not.
+type AzureADAuthenticationAsArmPolicyStatus string
+
+const (
+	AzureADAuthenticationAsArmPolicyStatusEnabled  = AzureADAuthenticationAsArmPolicyStatus("enabled")
+	AzureADAuthenticationAsArmPolicyStatusDisabled = AzureADAuthenticationAsArmPolicyStatus("disabled")
+)
+
+func (AzureADAuthenticationAsArmPolicyStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureADAuthenticationAsArmPolicyStatus)(nil)).Elem()
+}
+
+func (e AzureADAuthenticationAsArmPolicyStatus) ToAzureADAuthenticationAsArmPolicyStatusOutput() AzureADAuthenticationAsArmPolicyStatusOutput {
+	return pulumi.ToOutput(e).(AzureADAuthenticationAsArmPolicyStatusOutput)
+}
+
+func (e AzureADAuthenticationAsArmPolicyStatus) ToAzureADAuthenticationAsArmPolicyStatusOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureADAuthenticationAsArmPolicyStatusOutput)
+}
+
+func (e AzureADAuthenticationAsArmPolicyStatus) ToAzureADAuthenticationAsArmPolicyStatusPtrOutput() AzureADAuthenticationAsArmPolicyStatusPtrOutput {
+	return e.ToAzureADAuthenticationAsArmPolicyStatusPtrOutputWithContext(context.Background())
+}
+
+func (e AzureADAuthenticationAsArmPolicyStatus) ToAzureADAuthenticationAsArmPolicyStatusPtrOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyStatusPtrOutput {
+	return AzureADAuthenticationAsArmPolicyStatus(e).ToAzureADAuthenticationAsArmPolicyStatusOutputWithContext(ctx).ToAzureADAuthenticationAsArmPolicyStatusPtrOutputWithContext(ctx)
+}
+
+func (e AzureADAuthenticationAsArmPolicyStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureADAuthenticationAsArmPolicyStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureADAuthenticationAsArmPolicyStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureADAuthenticationAsArmPolicyStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureADAuthenticationAsArmPolicyStatusOutput struct{ *pulumi.OutputState }
+
+func (AzureADAuthenticationAsArmPolicyStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureADAuthenticationAsArmPolicyStatus)(nil)).Elem()
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusOutput) ToAzureADAuthenticationAsArmPolicyStatusOutput() AzureADAuthenticationAsArmPolicyStatusOutput {
+	return o
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusOutput) ToAzureADAuthenticationAsArmPolicyStatusOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyStatusOutput {
+	return o
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusOutput) ToAzureADAuthenticationAsArmPolicyStatusPtrOutput() AzureADAuthenticationAsArmPolicyStatusPtrOutput {
+	return o.ToAzureADAuthenticationAsArmPolicyStatusPtrOutputWithContext(context.Background())
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusOutput) ToAzureADAuthenticationAsArmPolicyStatusPtrOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureADAuthenticationAsArmPolicyStatus) *AzureADAuthenticationAsArmPolicyStatus {
+		return &v
+	}).(AzureADAuthenticationAsArmPolicyStatusPtrOutput)
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureADAuthenticationAsArmPolicyStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureADAuthenticationAsArmPolicyStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureADAuthenticationAsArmPolicyStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureADAuthenticationAsArmPolicyStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureADAuthenticationAsArmPolicyStatus)(nil)).Elem()
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusPtrOutput) ToAzureADAuthenticationAsArmPolicyStatusPtrOutput() AzureADAuthenticationAsArmPolicyStatusPtrOutput {
+	return o
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusPtrOutput) ToAzureADAuthenticationAsArmPolicyStatusPtrOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyStatusPtrOutput {
+	return o
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusPtrOutput) Elem() AzureADAuthenticationAsArmPolicyStatusOutput {
+	return o.ApplyT(func(v *AzureADAuthenticationAsArmPolicyStatus) AzureADAuthenticationAsArmPolicyStatus {
+		if v != nil {
+			return *v
+		}
+		var ret AzureADAuthenticationAsArmPolicyStatus
+		return ret
+	}).(AzureADAuthenticationAsArmPolicyStatusOutput)
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureADAuthenticationAsArmPolicyStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureADAuthenticationAsArmPolicyStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureADAuthenticationAsArmPolicyStatusInput is an input type that accepts values of the AzureADAuthenticationAsArmPolicyStatus enum
+// A concrete instance of `AzureADAuthenticationAsArmPolicyStatusInput` can be one of the following:
+//
+//	AzureADAuthenticationAsArmPolicyStatusEnabled
+//	AzureADAuthenticationAsArmPolicyStatusDisabled
+type AzureADAuthenticationAsArmPolicyStatusInput interface {
+	pulumi.Input
+
+	ToAzureADAuthenticationAsArmPolicyStatusOutput() AzureADAuthenticationAsArmPolicyStatusOutput
+	ToAzureADAuthenticationAsArmPolicyStatusOutputWithContext(context.Context) AzureADAuthenticationAsArmPolicyStatusOutput
+}
+
+var azureADAuthenticationAsArmPolicyStatusPtrType = reflect.TypeOf((**AzureADAuthenticationAsArmPolicyStatus)(nil)).Elem()
+
+type AzureADAuthenticationAsArmPolicyStatusPtrInput interface {
+	pulumi.Input
+
+	ToAzureADAuthenticationAsArmPolicyStatusPtrOutput() AzureADAuthenticationAsArmPolicyStatusPtrOutput
+	ToAzureADAuthenticationAsArmPolicyStatusPtrOutputWithContext(context.Context) AzureADAuthenticationAsArmPolicyStatusPtrOutput
+}
+
+type azureADAuthenticationAsArmPolicyStatusPtr string
+
+func AzureADAuthenticationAsArmPolicyStatusPtr(v string) AzureADAuthenticationAsArmPolicyStatusPtrInput {
+	return (*azureADAuthenticationAsArmPolicyStatusPtr)(&v)
+}
+
+func (*azureADAuthenticationAsArmPolicyStatusPtr) ElementType() reflect.Type {
+	return azureADAuthenticationAsArmPolicyStatusPtrType
+}
+
+func (in *azureADAuthenticationAsArmPolicyStatusPtr) ToAzureADAuthenticationAsArmPolicyStatusPtrOutput() AzureADAuthenticationAsArmPolicyStatusPtrOutput {
+	return pulumi.ToOutput(in).(AzureADAuthenticationAsArmPolicyStatusPtrOutput)
+}
+
+func (in *azureADAuthenticationAsArmPolicyStatusPtr) ToAzureADAuthenticationAsArmPolicyStatusPtrOutputWithContext(ctx context.Context) AzureADAuthenticationAsArmPolicyStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureADAuthenticationAsArmPolicyStatusPtrOutput)
+}
+
 // The type of the auto trigger for base image dependency updates.
 type BaseImageTriggerType string
 
@@ -6527,6 +6693,8 @@ func init() {
 	pulumi.RegisterOutputType(ArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(AuditLogStatusOutput{})
 	pulumi.RegisterOutputType(AuditLogStatusPtrOutput{})
+	pulumi.RegisterOutputType(AzureADAuthenticationAsArmPolicyStatusOutput{})
+	pulumi.RegisterOutputType(AzureADAuthenticationAsArmPolicyStatusPtrOutput{})
 	pulumi.RegisterOutputType(BaseImageTriggerTypeOutput{})
 	pulumi.RegisterOutputType(BaseImageTriggerTypePtrOutput{})
 	pulumi.RegisterOutputType(ConnectedRegistryModeOutput{})

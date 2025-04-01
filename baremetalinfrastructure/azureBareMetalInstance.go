@@ -14,10 +14,12 @@ import (
 
 // AzureBareMetal instance info on Azure (ARM properties and AzureBareMetal properties)
 //
-// Uses Azure REST API version 2024-08-01-preview.
+// Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-01-preview.
 type AzureBareMetalInstance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the Azure Bare Metal Instance unique ID.
 	AzureBareMetalInstanceId pulumi.StringPtrOutput `pulumi:"azureBareMetalInstanceId"`
 	// Specifies the hardware settings for the Azure Bare Metal Instance.
@@ -192,6 +194,11 @@ func (o AzureBareMetalInstanceOutput) ToAzureBareMetalInstanceOutput() AzureBare
 
 func (o AzureBareMetalInstanceOutput) ToAzureBareMetalInstanceOutputWithContext(ctx context.Context) AzureBareMetalInstanceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AzureBareMetalInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureBareMetalInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the Azure Bare Metal Instance unique ID.

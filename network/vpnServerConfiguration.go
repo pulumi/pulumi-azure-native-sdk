@@ -14,50 +14,26 @@ import (
 
 // VpnServerConfiguration Resource.
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VpnServerConfiguration struct {
 	pulumi.CustomResourceState
 
-	// The set of aad vpn authentication parameters.
-	AadAuthenticationParameters AadAuthenticationParametersResponsePtrOutput `pulumi:"aadAuthenticationParameters"`
-	// List of all VpnServerConfigurationPolicyGroups.
-	ConfigurationPolicyGroups VpnServerConfigurationPolicyGroupResponseArrayOutput `pulumi:"configurationPolicyGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// List of references to P2SVpnGateways.
-	P2SVpnGateways P2SVpnGatewayResponseArrayOutput `pulumi:"p2SVpnGateways"`
-	// The provisioning state of the VpnServerConfiguration resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Radius client root certificate of VpnServerConfiguration.
-	RadiusClientRootCertificates VpnServerConfigRadiusClientRootCertificateResponseArrayOutput `pulumi:"radiusClientRootCertificates"`
-	// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
-	RadiusServerAddress pulumi.StringPtrOutput `pulumi:"radiusServerAddress"`
-	// Radius Server root certificate of VpnServerConfiguration.
-	RadiusServerRootCertificates VpnServerConfigRadiusServerRootCertificateResponseArrayOutput `pulumi:"radiusServerRootCertificates"`
-	// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
-	RadiusServerSecret pulumi.StringPtrOutput `pulumi:"radiusServerSecret"`
-	// Multiple Radius Server configuration for VpnServerConfiguration.
-	RadiusServers RadiusServerResponseArrayOutput `pulumi:"radiusServers"`
+	// Properties of the P2SVpnServer configuration.
+	Properties VpnServerConfigurationPropertiesResponseOutput `pulumi:"properties"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// VPN authentication types for the VpnServerConfiguration.
-	VpnAuthenticationTypes pulumi.StringArrayOutput `pulumi:"vpnAuthenticationTypes"`
-	// VpnClientIpsecPolicies for VpnServerConfiguration.
-	VpnClientIpsecPolicies IpsecPolicyResponseArrayOutput `pulumi:"vpnClientIpsecPolicies"`
-	// VPN client revoked certificate of VpnServerConfiguration.
-	VpnClientRevokedCertificates VpnServerConfigVpnClientRevokedCertificateResponseArrayOutput `pulumi:"vpnClientRevokedCertificates"`
-	// VPN client root certificate of VpnServerConfiguration.
-	VpnClientRootCertificates VpnServerConfigVpnClientRootCertificateResponseArrayOutput `pulumi:"vpnClientRootCertificates"`
-	// VPN protocols for the VpnServerConfiguration.
-	VpnProtocols pulumi.StringArrayOutput `pulumi:"vpnProtocols"`
 }
 
 // NewVpnServerConfiguration registers a new resource with the given unique name, arguments, and options.
@@ -193,82 +169,36 @@ func (VpnServerConfigurationState) ElementType() reflect.Type {
 }
 
 type vpnServerConfigurationArgs struct {
-	// The set of aad vpn authentication parameters.
-	AadAuthenticationParameters *AadAuthenticationParameters `pulumi:"aadAuthenticationParameters"`
-	// List of all VpnServerConfigurationPolicyGroups.
-	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-	ConfigurationPolicyGroups []VpnServerConfigurationPolicyGroup `pulumi:"configurationPolicyGroups"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// Resource location.
 	Location *string `pulumi:"location"`
-	// The name of the VpnServerConfiguration that is unique within a resource group.
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
-	// Radius client root certificate of VpnServerConfiguration.
-	RadiusClientRootCertificates []VpnServerConfigRadiusClientRootCertificate `pulumi:"radiusClientRootCertificates"`
-	// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
-	RadiusServerAddress *string `pulumi:"radiusServerAddress"`
-	// Radius Server root certificate of VpnServerConfiguration.
-	RadiusServerRootCertificates []VpnServerConfigRadiusServerRootCertificate `pulumi:"radiusServerRootCertificates"`
-	// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
-	RadiusServerSecret *string `pulumi:"radiusServerSecret"`
-	// Multiple Radius Server configuration for VpnServerConfiguration.
-	RadiusServers []RadiusServer `pulumi:"radiusServers"`
+	// Properties of the P2SVpnServer configuration.
+	Properties *VpnServerConfigurationProperties `pulumi:"properties"`
 	// The resource group name of the VpnServerConfiguration.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// VPN authentication types for the VpnServerConfiguration.
-	VpnAuthenticationTypes []string `pulumi:"vpnAuthenticationTypes"`
-	// VpnClientIpsecPolicies for VpnServerConfiguration.
-	VpnClientIpsecPolicies []IpsecPolicy `pulumi:"vpnClientIpsecPolicies"`
-	// VPN client revoked certificate of VpnServerConfiguration.
-	VpnClientRevokedCertificates []VpnServerConfigVpnClientRevokedCertificate `pulumi:"vpnClientRevokedCertificates"`
-	// VPN client root certificate of VpnServerConfiguration.
-	VpnClientRootCertificates []VpnServerConfigVpnClientRootCertificate `pulumi:"vpnClientRootCertificates"`
-	// VPN protocols for the VpnServerConfiguration.
-	VpnProtocols []string `pulumi:"vpnProtocols"`
 	// The name of the VpnServerConfiguration being created or updated.
 	VpnServerConfigurationName *string `pulumi:"vpnServerConfigurationName"`
 }
 
 // The set of arguments for constructing a VpnServerConfiguration resource.
 type VpnServerConfigurationArgs struct {
-	// The set of aad vpn authentication parameters.
-	AadAuthenticationParameters AadAuthenticationParametersPtrInput
-	// List of all VpnServerConfigurationPolicyGroups.
-	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-	ConfigurationPolicyGroups VpnServerConfigurationPolicyGroupArrayInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
 	// Resource location.
 	Location pulumi.StringPtrInput
-	// The name of the VpnServerConfiguration that is unique within a resource group.
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrInput
-	// Radius client root certificate of VpnServerConfiguration.
-	RadiusClientRootCertificates VpnServerConfigRadiusClientRootCertificateArrayInput
-	// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
-	RadiusServerAddress pulumi.StringPtrInput
-	// Radius Server root certificate of VpnServerConfiguration.
-	RadiusServerRootCertificates VpnServerConfigRadiusServerRootCertificateArrayInput
-	// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
-	RadiusServerSecret pulumi.StringPtrInput
-	// Multiple Radius Server configuration for VpnServerConfiguration.
-	RadiusServers RadiusServerArrayInput
+	// Properties of the P2SVpnServer configuration.
+	Properties VpnServerConfigurationPropertiesPtrInput
 	// The resource group name of the VpnServerConfiguration.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// VPN authentication types for the VpnServerConfiguration.
-	VpnAuthenticationTypes pulumi.StringArrayInput
-	// VpnClientIpsecPolicies for VpnServerConfiguration.
-	VpnClientIpsecPolicies IpsecPolicyArrayInput
-	// VPN client revoked certificate of VpnServerConfiguration.
-	VpnClientRevokedCertificates VpnServerConfigVpnClientRevokedCertificateArrayInput
-	// VPN client root certificate of VpnServerConfiguration.
-	VpnClientRootCertificates VpnServerConfigVpnClientRootCertificateArrayInput
-	// VPN protocols for the VpnServerConfiguration.
-	VpnProtocols pulumi.StringArrayInput
 	// The name of the VpnServerConfiguration being created or updated.
 	VpnServerConfigurationName pulumi.StringPtrInput
 }
@@ -310,18 +240,9 @@ func (o VpnServerConfigurationOutput) ToVpnServerConfigurationOutputWithContext(
 	return o
 }
 
-// The set of aad vpn authentication parameters.
-func (o VpnServerConfigurationOutput) AadAuthenticationParameters() AadAuthenticationParametersResponsePtrOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) AadAuthenticationParametersResponsePtrOutput {
-		return v.AadAuthenticationParameters
-	}).(AadAuthenticationParametersResponsePtrOutput)
-}
-
-// List of all VpnServerConfigurationPolicyGroups.
-func (o VpnServerConfigurationOutput) ConfigurationPolicyGroups() VpnServerConfigurationPolicyGroupResponseArrayOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) VpnServerConfigurationPolicyGroupResponseArrayOutput {
-		return v.ConfigurationPolicyGroups
-	}).(VpnServerConfigurationPolicyGroupResponseArrayOutput)
+// The Azure API version of the resource.
+func (o VpnServerConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpnServerConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -339,43 +260,9 @@ func (o VpnServerConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnServerConfiguration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of references to P2SVpnGateways.
-func (o VpnServerConfigurationOutput) P2SVpnGateways() P2SVpnGatewayResponseArrayOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) P2SVpnGatewayResponseArrayOutput { return v.P2SVpnGateways }).(P2SVpnGatewayResponseArrayOutput)
-}
-
-// The provisioning state of the VpnServerConfiguration resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-func (o VpnServerConfigurationOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Radius client root certificate of VpnServerConfiguration.
-func (o VpnServerConfigurationOutput) RadiusClientRootCertificates() VpnServerConfigRadiusClientRootCertificateResponseArrayOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) VpnServerConfigRadiusClientRootCertificateResponseArrayOutput {
-		return v.RadiusClientRootCertificates
-	}).(VpnServerConfigRadiusClientRootCertificateResponseArrayOutput)
-}
-
-// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
-func (o VpnServerConfigurationOutput) RadiusServerAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) pulumi.StringPtrOutput { return v.RadiusServerAddress }).(pulumi.StringPtrOutput)
-}
-
-// Radius Server root certificate of VpnServerConfiguration.
-func (o VpnServerConfigurationOutput) RadiusServerRootCertificates() VpnServerConfigRadiusServerRootCertificateResponseArrayOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) VpnServerConfigRadiusServerRootCertificateResponseArrayOutput {
-		return v.RadiusServerRootCertificates
-	}).(VpnServerConfigRadiusServerRootCertificateResponseArrayOutput)
-}
-
-// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
-func (o VpnServerConfigurationOutput) RadiusServerSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) pulumi.StringPtrOutput { return v.RadiusServerSecret }).(pulumi.StringPtrOutput)
-}
-
-// Multiple Radius Server configuration for VpnServerConfiguration.
-func (o VpnServerConfigurationOutput) RadiusServers() RadiusServerResponseArrayOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) RadiusServerResponseArrayOutput { return v.RadiusServers }).(RadiusServerResponseArrayOutput)
+// Properties of the P2SVpnServer configuration.
+func (o VpnServerConfigurationOutput) Properties() VpnServerConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v *VpnServerConfiguration) VpnServerConfigurationPropertiesResponseOutput { return v.Properties }).(VpnServerConfigurationPropertiesResponseOutput)
 }
 
 // Resource tags.
@@ -386,35 +273,6 @@ func (o VpnServerConfigurationOutput) Tags() pulumi.StringMapOutput {
 // Resource type.
 func (o VpnServerConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnServerConfiguration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
-}
-
-// VPN authentication types for the VpnServerConfiguration.
-func (o VpnServerConfigurationOutput) VpnAuthenticationTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) pulumi.StringArrayOutput { return v.VpnAuthenticationTypes }).(pulumi.StringArrayOutput)
-}
-
-// VpnClientIpsecPolicies for VpnServerConfiguration.
-func (o VpnServerConfigurationOutput) VpnClientIpsecPolicies() IpsecPolicyResponseArrayOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) IpsecPolicyResponseArrayOutput { return v.VpnClientIpsecPolicies }).(IpsecPolicyResponseArrayOutput)
-}
-
-// VPN client revoked certificate of VpnServerConfiguration.
-func (o VpnServerConfigurationOutput) VpnClientRevokedCertificates() VpnServerConfigVpnClientRevokedCertificateResponseArrayOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) VpnServerConfigVpnClientRevokedCertificateResponseArrayOutput {
-		return v.VpnClientRevokedCertificates
-	}).(VpnServerConfigVpnClientRevokedCertificateResponseArrayOutput)
-}
-
-// VPN client root certificate of VpnServerConfiguration.
-func (o VpnServerConfigurationOutput) VpnClientRootCertificates() VpnServerConfigVpnClientRootCertificateResponseArrayOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) VpnServerConfigVpnClientRootCertificateResponseArrayOutput {
-		return v.VpnClientRootCertificates
-	}).(VpnServerConfigVpnClientRootCertificateResponseArrayOutput)
-}
-
-// VPN protocols for the VpnServerConfiguration.
-func (o VpnServerConfigurationOutput) VpnProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VpnServerConfiguration) pulumi.StringArrayOutput { return v.VpnProtocols }).(pulumi.StringArrayOutput)
 }
 
 func init() {

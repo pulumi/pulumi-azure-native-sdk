@@ -14,12 +14,14 @@ import (
 
 // Definition of the module type.
 //
-// Uses Azure REST API version 2023-11-01.
+// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01.
 type PowerShell72Module struct {
 	pulumi.CustomResourceState
 
 	// Gets the activity count of the module.
 	ActivityCount pulumi.IntPtrOutput `pulumi:"activityCount"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the creation time.
 	CreationTime pulumi.StringPtrOutput `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -179,6 +181,11 @@ func (o PowerShell72ModuleOutput) ToPowerShell72ModuleOutputWithContext(ctx cont
 // Gets the activity count of the module.
 func (o PowerShell72ModuleOutput) ActivityCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PowerShell72Module) pulumi.IntPtrOutput { return v.ActivityCount }).(pulumi.IntPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o PowerShell72ModuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PowerShell72Module) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the creation time.

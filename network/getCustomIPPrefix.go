@@ -13,9 +13,9 @@ import (
 
 // Gets the specified custom IP prefix in a specified resource group.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2021-03-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCustomIPPrefix(ctx *pulumi.Context, args *LookupCustomIPPrefixArgs, opts ...pulumi.InvokeOption) (*LookupCustomIPPrefixResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomIPPrefixResult
@@ -41,6 +41,8 @@ type LookupCustomIPPrefixResult struct {
 	Asn *string `pulumi:"asn"`
 	// Authorization message for WAN validation.
 	AuthorizationMessage *string `pulumi:"authorizationMessage"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The list of all Children for IPv6 /48 CustomIpPrefix.
 	ChildCustomIpPrefixes []SubResourceResponse `pulumi:"childCustomIpPrefixes"`
 	// The prefix range in CIDR notation. Should include the start address and the prefix length.
@@ -130,6 +132,11 @@ func (o LookupCustomIPPrefixResultOutput) Asn() pulumi.StringPtrOutput {
 // Authorization message for WAN validation.
 func (o LookupCustomIPPrefixResultOutput) AuthorizationMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomIPPrefixResult) *string { return v.AuthorizationMessage }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupCustomIPPrefixResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomIPPrefixResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The list of all Children for IPv6 /48 CustomIpPrefix.

@@ -14,7 +14,7 @@ import (
 
 // The Test Base Draft Package resource.
 //
-// Uses Azure REST API version 2023-11-01-preview.
+// Uses Azure REST API version 2023-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-01-preview.
 type DraftPackage struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type DraftPackage struct {
 	AppFileName pulumi.StringPtrOutput `pulumi:"appFileName"`
 	// Application name
 	ApplicationName pulumi.StringPtrOutput `pulumi:"applicationName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Comments added by user.
 	Comments pulumi.StringPtrOutput `pulumi:"comments"`
 	// The relative path of the folder hosting package files.
@@ -293,6 +295,11 @@ func (o DraftPackageOutput) AppFileName() pulumi.StringPtrOutput {
 // Application name
 func (o DraftPackageOutput) ApplicationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DraftPackage) pulumi.StringPtrOutput { return v.ApplicationName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o DraftPackageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DraftPackage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Comments added by user.

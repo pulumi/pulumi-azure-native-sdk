@@ -13,9 +13,9 @@ import (
 
 // Gets Business Application Agent.
 //
-// Uses Azure REST API version 2024-04-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 //
-// Other available API versions: 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2024-04-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBusinessApplicationAgent(ctx *pulumi.Context, args *LookupBusinessApplicationAgentArgs, opts ...pulumi.InvokeOption) (*LookupBusinessApplicationAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBusinessApplicationAgentResult
@@ -38,6 +38,8 @@ type LookupBusinessApplicationAgentArgs struct {
 // Describes the configuration of a Business Application Agent.
 type LookupBusinessApplicationAgentResult struct {
 	AgentSystems []AgentSystemResponse `pulumi:"agentSystems"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Describes the configuration of a Business Application Agent.
 	Configuration SapAgentConfigurationResponse `pulumi:"configuration"`
 	DisplayName   string                        `pulumi:"displayName"`
@@ -93,6 +95,11 @@ func (o LookupBusinessApplicationAgentResultOutput) ToLookupBusinessApplicationA
 
 func (o LookupBusinessApplicationAgentResultOutput) AgentSystems() AgentSystemResponseArrayOutput {
 	return o.ApplyT(func(v LookupBusinessApplicationAgentResult) []AgentSystemResponse { return v.AgentSystems }).(AgentSystemResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupBusinessApplicationAgentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBusinessApplicationAgentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Describes the configuration of a Business Application Agent.

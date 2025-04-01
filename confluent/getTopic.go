@@ -39,6 +39,8 @@ type LookupTopicArgs struct {
 
 // Details of topic record
 type LookupTopicResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Config Specification of the topic
 	Configs *TopicsRelatedLinkResponse `pulumi:"configs"`
 	// The ARM Resource Id of the Topic
@@ -104,6 +106,11 @@ func (o LookupTopicResultOutput) ToLookupTopicResultOutput() LookupTopicResultOu
 
 func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx context.Context) LookupTopicResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTopicResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Config Specification of the topic

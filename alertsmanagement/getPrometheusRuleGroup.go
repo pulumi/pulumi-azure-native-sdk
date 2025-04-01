@@ -14,6 +14,8 @@ import (
 // Retrieve a Prometheus rule group definition.
 //
 // Uses Azure REST API version 2023-03-01.
+//
+// Other available API versions: 2021-07-22-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native alertsmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPrometheusRuleGroup(ctx *pulumi.Context, args *LookupPrometheusRuleGroupArgs, opts ...pulumi.InvokeOption) (*LookupPrometheusRuleGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrometheusRuleGroupResult
@@ -33,6 +35,8 @@ type LookupPrometheusRuleGroupArgs struct {
 
 // The Prometheus rule group resource.
 type LookupPrometheusRuleGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Apply rule to data from a specific cluster.
 	ClusterName *string `pulumi:"clusterName"`
 	// Rule group description.
@@ -92,6 +96,11 @@ func (o LookupPrometheusRuleGroupResultOutput) ToLookupPrometheusRuleGroupResult
 
 func (o LookupPrometheusRuleGroupResultOutput) ToLookupPrometheusRuleGroupResultOutputWithContext(ctx context.Context) LookupPrometheusRuleGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrometheusRuleGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrometheusRuleGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Apply rule to data from a specific cluster.

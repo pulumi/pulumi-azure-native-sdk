@@ -14,10 +14,12 @@ import (
 
 // The AzureKeyVaultSecretProviderClass resource.
 //
-// Uses Azure REST API version 2024-08-21-preview.
+// Uses Azure REST API version 2024-08-21-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-21-preview.
 type AzureKeyVaultSecretProviderClass struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The user assigned managed identity client ID that should be used to access the Azure Key Vault.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// The complex type of the extended location.
@@ -177,6 +179,11 @@ func (o AzureKeyVaultSecretProviderClassOutput) ToAzureKeyVaultSecretProviderCla
 
 func (o AzureKeyVaultSecretProviderClassOutput) ToAzureKeyVaultSecretProviderClassOutputWithContext(ctx context.Context) AzureKeyVaultSecretProviderClassOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AzureKeyVaultSecretProviderClassOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSecretProviderClass) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The user assigned managed identity client ID that should be used to access the Azure Key Vault.

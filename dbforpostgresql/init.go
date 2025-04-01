@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Administrator{}
 	case "azure-native:dbforpostgresql:Backup":
 		r = &Backup{}
-	case "azure-native:dbforpostgresql:Cluster":
-		r = &Cluster{}
 	case "azure-native:dbforpostgresql:Configuration":
 		r = &Configuration{}
 	case "azure-native:dbforpostgresql:Database":
@@ -37,10 +35,30 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Migration{}
 	case "azure-native:dbforpostgresql:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
-	case "azure-native:dbforpostgresql:Role":
-		r = &Role{}
 	case "azure-native:dbforpostgresql:Server":
 		r = &Server{}
+	case "azure-native:dbforpostgresql:ServerGroupCluster":
+		r = &ServerGroupCluster{}
+	case "azure-native:dbforpostgresql:ServerGroupFirewallRule":
+		r = &ServerGroupFirewallRule{}
+	case "azure-native:dbforpostgresql:ServerGroupPrivateEndpointConnection":
+		r = &ServerGroupPrivateEndpointConnection{}
+	case "azure-native:dbforpostgresql:ServerGroupRole":
+		r = &ServerGroupRole{}
+	case "azure-native:dbforpostgresql:SingleServer":
+		r = &SingleServer{}
+	case "azure-native:dbforpostgresql:SingleServerConfiguration":
+		r = &SingleServerConfiguration{}
+	case "azure-native:dbforpostgresql:SingleServerDatabase":
+		r = &SingleServerDatabase{}
+	case "azure-native:dbforpostgresql:SingleServerFirewallRule":
+		r = &SingleServerFirewallRule{}
+	case "azure-native:dbforpostgresql:SingleServerServerAdministrator":
+		r = &SingleServerServerAdministrator{}
+	case "azure-native:dbforpostgresql:SingleServerServerSecurityAlertPolicy":
+		r = &SingleServerServerSecurityAlertPolicy{}
+	case "azure-native:dbforpostgresql:SingleServerVirtualNetworkRule":
+		r = &SingleServerVirtualNetworkRule{}
 	case "azure-native:dbforpostgresql:VirtualEndpoint":
 		r = &VirtualEndpoint{}
 	default:

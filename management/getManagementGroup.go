@@ -13,9 +13,9 @@ import (
 
 // Get the details of the management group.
 //
-// Uses Azure REST API version 2021-04-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2023-04-01.
+// Other available API versions: 2021-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native management [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagementGroup(ctx *pulumi.Context, args *LookupManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementGroupResult
@@ -39,6 +39,8 @@ type LookupManagementGroupArgs struct {
 
 // The management group details.
 type LookupManagementGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The list of children.
 	Children []ManagementGroupChildInfoResponse `pulumi:"children"`
 	// The details of a management group.
@@ -92,6 +94,11 @@ func (o LookupManagementGroupResultOutput) ToLookupManagementGroupResultOutput()
 
 func (o LookupManagementGroupResultOutput) ToLookupManagementGroupResultOutputWithContext(ctx context.Context) LookupManagementGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagementGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The list of children.

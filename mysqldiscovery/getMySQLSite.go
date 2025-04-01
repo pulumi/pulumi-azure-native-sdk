@@ -33,6 +33,8 @@ type LookupMySQLSiteArgs struct {
 
 // The MySQLSite resource definition.
 type LookupMySQLSiteResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The extended location.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -88,6 +90,11 @@ func (o LookupMySQLSiteResultOutput) ToLookupMySQLSiteResultOutput() LookupMySQL
 
 func (o LookupMySQLSiteResultOutput) ToLookupMySQLSiteResultOutputWithContext(ctx context.Context) LookupMySQLSiteResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMySQLSiteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMySQLSiteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extended location.

@@ -13,9 +13,9 @@ import (
 
 // Gets the details of the Wiki for an API specified by its identifier.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApiWiki(ctx *pulumi.Context, args *LookupApiWikiArgs, opts ...pulumi.InvokeOption) (*LookupApiWikiResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiWikiResult
@@ -37,6 +37,8 @@ type LookupApiWikiArgs struct {
 
 // Wiki properties
 type LookupApiWikiResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Collection wiki documents included into this wiki.
 	Documents []WikiDocumentationContractResponse `pulumi:"documents"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -82,6 +84,11 @@ func (o LookupApiWikiResultOutput) ToLookupApiWikiResultOutput() LookupApiWikiRe
 
 func (o LookupApiWikiResultOutput) ToLookupApiWikiResultOutputWithContext(ctx context.Context) LookupApiWikiResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiWikiResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiWikiResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collection wiki documents included into this wiki.

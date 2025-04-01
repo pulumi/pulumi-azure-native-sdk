@@ -14,10 +14,14 @@ import (
 
 // The SourceControl Configuration object returned in Get & Put response.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+// Uses Azure REST API version 2023-05-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+//
+// Other available API versions: 2022-07-01, 2022-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetesconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SourceControlConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Compliance Status of the Configuration
 	ComplianceStatus ComplianceStatusResponseOutput `pulumi:"complianceStatus"`
 	// Name-value pairs of protected configuration settings for the configuration
@@ -244,6 +248,11 @@ func (o SourceControlConfigurationOutput) ToSourceControlConfigurationOutput() S
 
 func (o SourceControlConfigurationOutput) ToSourceControlConfigurationOutputWithContext(ctx context.Context) SourceControlConfigurationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SourceControlConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SourceControlConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Compliance Status of the Configuration

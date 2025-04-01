@@ -31,6 +31,8 @@ type LookupPartnerArgs struct {
 
 // this is the management partner operations response
 type LookupPartnerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// This is the DateTime when the partner was created.
 	CreatedTime *string `pulumi:"createdTime"`
 	// Type of the partner
@@ -86,6 +88,11 @@ func (o LookupPartnerResultOutput) ToLookupPartnerResultOutput() LookupPartnerRe
 
 func (o LookupPartnerResultOutput) ToLookupPartnerResultOutputWithContext(ctx context.Context) LookupPartnerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPartnerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPartnerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // This is the DateTime when the partner was created.

@@ -14,12 +14,14 @@ import (
 
 // An deployment resource belonging to a device group resource.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 //
-// Other available API versions: 2024-04-01.
+// Other available API versions: 2022-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuresphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Deployment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Images deployed
 	DeployedImages ImageResponseArrayOutput `pulumi:"deployedImages"`
 	// Deployment date UTC
@@ -166,6 +168,11 @@ func (o DeploymentOutput) ToDeploymentOutput() DeploymentOutput {
 
 func (o DeploymentOutput) ToDeploymentOutputWithContext(ctx context.Context) DeploymentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DeploymentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Images deployed

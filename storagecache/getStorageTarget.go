@@ -13,9 +13,9 @@ import (
 
 // Returns a Storage Target from a cache.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2021-03-01, 2023-11-01-preview, 2024-03-01, 2024-07-01.
+// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStorageTarget(ctx *pulumi.Context, args *LookupStorageTargetArgs, opts ...pulumi.InvokeOption) (*LookupStorageTargetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageTargetResult
@@ -39,6 +39,8 @@ type LookupStorageTargetArgs struct {
 type LookupStorageTargetResult struct {
 	// The percentage of cache space allocated for this storage target
 	AllocationPercentage int `pulumi:"allocationPercentage"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Properties when targetType is blobNfs.
 	BlobNfs *BlobNfsTargetResponse `pulumi:"blobNfs"`
 	// Properties when targetType is clfs.
@@ -107,6 +109,11 @@ func (o LookupStorageTargetResultOutput) ToLookupStorageTargetResultOutputWithCo
 // The percentage of cache space allocated for this storage target
 func (o LookupStorageTargetResultOutput) AllocationPercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupStorageTargetResult) int { return v.AllocationPercentage }).(pulumi.IntOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupStorageTargetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageTargetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties when targetType is blobNfs.

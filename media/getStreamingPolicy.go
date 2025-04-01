@@ -14,6 +14,8 @@ import (
 // Get the details of a Streaming Policy in the Media Services account
 //
 // Uses Azure REST API version 2023-01-01.
+//
+// Other available API versions: 2018-03-30-preview, 2018-06-01-preview, 2018-07-01, 2020-05-01, 2021-06-01, 2021-11-01, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStreamingPolicy(ctx *pulumi.Context, args *LookupStreamingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupStreamingPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStreamingPolicyResult
@@ -35,6 +37,8 @@ type LookupStreamingPolicyArgs struct {
 
 // A Streaming Policy resource
 type LookupStreamingPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configuration of CommonEncryptionCbcs
 	CommonEncryptionCbcs *CommonEncryptionCbcsResponse `pulumi:"commonEncryptionCbcs"`
 	// Configuration of CommonEncryptionCenc
@@ -92,6 +96,11 @@ func (o LookupStreamingPolicyResultOutput) ToLookupStreamingPolicyResultOutput()
 
 func (o LookupStreamingPolicyResultOutput) ToLookupStreamingPolicyResultOutputWithContext(ctx context.Context) LookupStreamingPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStreamingPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamingPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration of CommonEncryptionCbcs

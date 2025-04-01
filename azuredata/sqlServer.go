@@ -14,10 +14,12 @@ import (
 
 // A SQL server.
 //
-// Uses Azure REST API version 2019-07-24-preview. In version 1.x of the Azure Native provider, it used API version 2019-07-24-preview.
+// Uses Azure REST API version 2019-07-24-preview. In version 2.x of the Azure Native provider, it used API version 2019-07-24-preview.
 type SqlServer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Cores of the Sql Server.
 	Cores pulumi.IntPtrOutput `pulumi:"cores"`
 	// Sql Server Edition.
@@ -162,6 +164,11 @@ func (o SqlServerOutput) ToSqlServerOutput() SqlServerOutput {
 
 func (o SqlServerOutput) ToSqlServerOutputWithContext(ctx context.Context) SqlServerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SqlServerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlServer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Cores of the Sql Server.

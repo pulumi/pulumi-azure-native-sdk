@@ -13,9 +13,9 @@ import (
 
 // Gets an existing origin group within an endpoint.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-09-01.
 //
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupOriginGroup(ctx *pulumi.Context, args *LookupOriginGroupArgs, opts ...pulumi.InvokeOption) (*LookupOriginGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOriginGroupResult
@@ -39,6 +39,8 @@ type LookupOriginGroupArgs struct {
 
 // Origin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN.
 type LookupOriginGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Health probe settings to the origin that is used to determine the health of the origin.
 	HealthProbeSettings *HealthProbeParametersResponse `pulumi:"healthProbeSettings"`
 	// Resource ID.
@@ -98,6 +100,11 @@ func (o LookupOriginGroupResultOutput) ToLookupOriginGroupResultOutput() LookupO
 
 func (o LookupOriginGroupResultOutput) ToLookupOriginGroupResultOutputWithContext(ctx context.Context) LookupOriginGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOriginGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOriginGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Health probe settings to the origin that is used to determine the health of the origin.

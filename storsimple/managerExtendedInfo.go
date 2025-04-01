@@ -14,12 +14,14 @@ import (
 
 // The extended info of the manager.
 //
-// Uses Azure REST API version 2017-06-01. In version 1.x of the Azure Native provider, it used API version 2017-06-01.
+// Uses Azure REST API version 2017-06-01. In version 2.x of the Azure Native provider, it used API version 2017-06-01.
 type ManagerExtendedInfo struct {
 	pulumi.CustomResourceState
 
 	// Represents the encryption algorithm used to encrypt the keys. None - if Key is saved in plain text format. Algorithm name - if key is encrypted
 	Algorithm pulumi.StringOutput `pulumi:"algorithm"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Represents the CEK of the resource.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
 	// Represents the Cert thumbprint that was used to encrypt the CEK.
@@ -183,6 +185,11 @@ func (o ManagerExtendedInfoOutput) ToManagerExtendedInfoOutputWithContext(ctx co
 // Represents the encryption algorithm used to encrypt the keys. None - if Key is saved in plain text format. Algorithm name - if key is encrypted
 func (o ManagerExtendedInfoOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagerExtendedInfo) pulumi.StringOutput { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o ManagerExtendedInfoOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagerExtendedInfo) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Represents the CEK of the resource.

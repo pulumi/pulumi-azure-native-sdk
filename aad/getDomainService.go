@@ -33,6 +33,8 @@ type LookupDomainServiceArgs struct {
 
 // Domain service.
 type LookupDomainServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configuration diagnostics data containing latest execution from client.
 	ConfigDiagnostics *ConfigDiagnosticsResponse `pulumi:"configDiagnostics"`
 	// Deployment Id
@@ -134,6 +136,11 @@ func (o LookupDomainServiceResultOutput) ToLookupDomainServiceResultOutput() Loo
 
 func (o LookupDomainServiceResultOutput) ToLookupDomainServiceResultOutputWithContext(ctx context.Context) LookupDomainServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDomainServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration diagnostics data containing latest execution from client.

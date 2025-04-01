@@ -13,9 +13,9 @@ import (
 
 // Gets the details about the service to the resource.
 //
-// Uses Azure REST API version 2023-03-15.
+// Uses Azure REST API version 2024-12-01.
 //
-// Other available API versions: 2024-12-01.
+// Other available API versions: 2023-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServiceConfiguration(ctx *pulumi.Context, args *LookupServiceConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupServiceConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceConfigurationResult
@@ -29,7 +29,7 @@ func LookupServiceConfiguration(ctx *pulumi.Context, args *LookupServiceConfigur
 type LookupServiceConfigurationArgs struct {
 	// The endpoint name.
 	EndpointName string `pulumi:"endpointName"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 	// The service name.
 	ServiceConfigurationName string `pulumi:"serviceConfigurationName"`
@@ -37,20 +37,10 @@ type LookupServiceConfigurationArgs struct {
 
 // The service configuration details associated with the target resource.
 type LookupServiceConfigurationResult struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The port on which service is enabled.
@@ -79,7 +69,7 @@ func LookupServiceConfigurationOutput(ctx *pulumi.Context, args LookupServiceCon
 type LookupServiceConfigurationOutputArgs struct {
 	// The endpoint name.
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 	// The service name.
 	ServiceConfigurationName pulumi.StringInput `pulumi:"serviceConfigurationName"`
@@ -104,39 +94,14 @@ func (o LookupServiceConfigurationResultOutput) ToLookupServiceConfigurationResu
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o LookupServiceConfigurationResultOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceConfigurationResult) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o LookupServiceConfigurationResultOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceConfigurationResult) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o LookupServiceConfigurationResultOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceConfigurationResult) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// The Azure API version of the resource.
+func (o LookupServiceConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupServiceConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o LookupServiceConfigurationResultOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceConfigurationResult) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o LookupServiceConfigurationResultOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceConfigurationResult) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o LookupServiceConfigurationResultOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceConfigurationResult) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource

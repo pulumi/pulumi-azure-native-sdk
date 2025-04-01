@@ -13,9 +13,9 @@ import (
 
 // Gets the association of the Cognitive Services commitment plan.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview.
+// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCommitmentPlanAssociation(ctx *pulumi.Context, args *LookupCommitmentPlanAssociationArgs, opts ...pulumi.InvokeOption) (*LookupCommitmentPlanAssociationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCommitmentPlanAssociationResult
@@ -39,6 +39,8 @@ type LookupCommitmentPlanAssociationArgs struct {
 type LookupCommitmentPlanAssociationResult struct {
 	// The Azure resource id of the account.
 	AccountId *string `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -47,6 +49,8 @@ type LookupCommitmentPlanAssociationResult struct {
 	Name string `pulumi:"name"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -93,6 +97,11 @@ func (o LookupCommitmentPlanAssociationResultOutput) AccountId() pulumi.StringPt
 	return o.ApplyT(func(v LookupCommitmentPlanAssociationResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupCommitmentPlanAssociationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCommitmentPlanAssociationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Etag.
 func (o LookupCommitmentPlanAssociationResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanAssociationResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -111,6 +120,11 @@ func (o LookupCommitmentPlanAssociationResultOutput) Name() pulumi.StringOutput 
 // Metadata pertaining to creation and last modification of the resource.
 func (o LookupCommitmentPlanAssociationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCommitmentPlanAssociationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
+func (o LookupCommitmentPlanAssociationResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCommitmentPlanAssociationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

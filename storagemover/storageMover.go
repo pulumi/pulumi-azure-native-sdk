@@ -14,12 +14,14 @@ import (
 
 // The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
 //
-// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2022-07-01-preview.
+// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2023-07-01-preview, 2023-10-01, 2024-07-01.
+// Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type StorageMover struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description for the Storage Mover.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The geo-location where the resource lives
@@ -28,7 +30,7 @@ type StorageMover struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of this resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Resource system metadata.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -160,6 +162,11 @@ func (o StorageMoverOutput) ToStorageMoverOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Azure API version of the resource.
+func (o StorageMoverOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageMover) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A description for the Storage Mover.
 func (o StorageMoverOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageMover) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -180,7 +187,7 @@ func (o StorageMoverOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageMover) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource system metadata.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o StorageMoverOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *StorageMover) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

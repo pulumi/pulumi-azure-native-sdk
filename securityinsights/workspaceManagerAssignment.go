@@ -14,12 +14,14 @@ import (
 
 // The workspace manager assignment
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WorkspaceManagerAssignment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// List of resources included in this workspace manager assignment
@@ -190,6 +192,11 @@ func (o WorkspaceManagerAssignmentOutput) ToWorkspaceManagerAssignmentOutput() W
 
 func (o WorkspaceManagerAssignmentOutput) ToWorkspaceManagerAssignmentOutputWithContext(ctx context.Context) WorkspaceManagerAssignmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceManagerAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceManagerAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Etag.

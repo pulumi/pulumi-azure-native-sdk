@@ -13,9 +13,9 @@ import (
 
 // Gets the specified private endpoint connection associated with the Elastic San
 //
-// Uses Azure REST API version 2022-12-01-preview.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2023-01-01, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elasticsan [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult
@@ -37,6 +37,8 @@ type LookupPrivateEndpointConnectionArgs struct {
 
 // Response for PrivateEndpoint Connection object
 type LookupPrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	//  List of resources private endpoint is mapped
 	GroupIds []string `pulumi:"groupIds"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -90,6 +92,11 @@ func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConn
 
 func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of resources private endpoint is mapped

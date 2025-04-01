@@ -14,10 +14,12 @@ import (
 
 // The AutoUpgradeProfile resource.
 //
-// Uses Azure REST API version 2024-05-02-preview.
+// Uses Azure REST API version 2024-05-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-02-preview.
 type AutoUpgradeProfile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Configures how auto-upgrade will be run.
 	Channel pulumi.StringOutput `pulumi:"channel"`
 	// If set to False: the auto upgrade has effect - target managed clusters will be upgraded on schedule.
@@ -171,6 +173,11 @@ func (o AutoUpgradeProfileOutput) ToAutoUpgradeProfileOutput() AutoUpgradeProfil
 
 func (o AutoUpgradeProfileOutput) ToAutoUpgradeProfileOutputWithContext(ctx context.Context) AutoUpgradeProfileOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AutoUpgradeProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoUpgradeProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configures how auto-upgrade will be run.

@@ -35,6 +35,8 @@ type LookupChannelArgs struct {
 
 // The EngagementFabric channel
 type LookupChannelResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The functions to be enabled for the channel
 	ChannelFunctions []string `pulumi:"channelFunctions"`
 	// The channel type
@@ -84,6 +86,11 @@ func (o LookupChannelResultOutput) ToLookupChannelResultOutput() LookupChannelRe
 
 func (o LookupChannelResultOutput) ToLookupChannelResultOutputWithContext(ctx context.Context) LookupChannelResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupChannelResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupChannelResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The functions to be enabled for the channel

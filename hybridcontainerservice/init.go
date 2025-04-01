@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:hybridcontainerservice:AgentPool":
 		r = &AgentPool{}
+	case "azure-native:hybridcontainerservice:ClusterInstanceHybridIdentityMetadatum":
+		r = &ClusterInstanceHybridIdentityMetadatum{}
 	case "azure-native:hybridcontainerservice:HybridIdentityMetadatum":
 		r = &HybridIdentityMetadatum{}
 	case "azure-native:hybridcontainerservice:ProvisionedCluster":

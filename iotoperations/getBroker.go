@@ -13,9 +13,9 @@ import (
 
 // Get a BrokerResource
 //
-// Uses Azure REST API version 2024-07-01-preview.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01, 2025-04-01.
+// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBroker(ctx *pulumi.Context, args *LookupBrokerArgs, opts ...pulumi.InvokeOption) (*LookupBrokerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBrokerResult
@@ -37,6 +37,8 @@ type LookupBrokerArgs struct {
 
 // Instance broker resource
 type LookupBrokerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Edge location of the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -96,6 +98,11 @@ func (o LookupBrokerResultOutput) ToLookupBrokerResultOutput() LookupBrokerResul
 
 func (o LookupBrokerResultOutput) ToLookupBrokerResultOutputWithContext(ctx context.Context) LookupBrokerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBrokerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrokerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Edge location of the resource.

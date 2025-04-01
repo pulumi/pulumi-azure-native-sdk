@@ -35,6 +35,8 @@ type LookupAFDTargetGroupArgs struct {
 
 // AFDTargetGroup comprises a list of Endpoints that is used for tunnelling protocols to allow certain traffic.
 type LookupAFDTargetGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion  string `pulumi:"azureApiVersion"`
 	DeploymentStatus string `pulumi:"deploymentStatus"`
 	// Resource ID.
 	Id string `pulumi:"id"`
@@ -85,6 +87,11 @@ func (o LookupAFDTargetGroupResultOutput) ToLookupAFDTargetGroupResultOutput() L
 
 func (o LookupAFDTargetGroupResultOutput) ToLookupAFDTargetGroupResultOutputWithContext(ctx context.Context) LookupAFDTargetGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAFDTargetGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAFDTargetGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupAFDTargetGroupResultOutput) DeploymentStatus() pulumi.StringOutput {

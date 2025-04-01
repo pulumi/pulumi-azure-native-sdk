@@ -14,9 +14,9 @@ import (
 
 // Machine assessment resource.
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-03-15, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AssessmentsOperation struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +26,8 @@ type AssessmentsOperation struct {
 	AssessmentErrorSummary pulumi.IntMapOutput `pulumi:"assessmentErrorSummary"`
 	// Assessment type of the assessment.
 	AssessmentType pulumi.StringOutput `pulumi:"assessmentType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the azure storage type. Premium, Standard etc.
 	AzureDiskTypes pulumi.StringArrayOutput `pulumi:"azureDiskTypes"`
 	// Gets or sets the user configurable setting to display the azure hybrid use
@@ -142,6 +144,9 @@ func NewAssessmentsOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:migrate/v20191001:Assessment"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20191001:AssessmentsOperation"),
 		},
 		{
@@ -158,6 +163,9 @@ func NewAssessmentsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:AssessmentsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:Assessment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -357,6 +365,11 @@ func (o AssessmentsOperationOutput) AssessmentErrorSummary() pulumi.IntMapOutput
 // Assessment type of the assessment.
 func (o AssessmentsOperationOutput) AssessmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssessmentsOperation) pulumi.StringOutput { return v.AssessmentType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o AssessmentsOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AssessmentsOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the azure storage type. Premium, Standard etc.

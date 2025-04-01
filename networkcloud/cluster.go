@@ -12,18 +12,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-12-12-preview.
+// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Cluster struct {
 	pulumi.CustomResourceState
 
 	// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
 	AggregatorOrSingleRackDefinition RackDefinitionResponseOutput `pulumi:"aggregatorOrSingleRackDefinition"`
-	// The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
+	// The settings for the log analytics workspace used for output of logs from this cluster.
+	AnalyticsOutputSettings AnalyticsOutputSettingsResponsePtrOutput `pulumi:"analyticsOutputSettings"`
+	// Field Deprecated. The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
 	AnalyticsWorkspaceId pulumi.StringPtrOutput `pulumi:"analyticsWorkspaceId"`
 	// The list of cluster runtime version upgrades available for this cluster.
 	AvailableUpgradeVersions ClusterAvailableUpgradeVersionResponseArrayOutput `pulumi:"availableUpgradeVersions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The capacity supported by this cluster.
 	ClusterCapacity ClusterCapacityResponseOutput `pulumi:"clusterCapacity"`
 	// The latest heartbeat status between the cluster manager and the cluster.
@@ -42,6 +46,8 @@ type Cluster struct {
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
 	// The current runtime version of the cluster.
 	ClusterVersion pulumi.StringOutput `pulumi:"clusterVersion"`
+	// The settings for commands run in this cluster, such as bare metal machine run read only commands and data extracts.
+	CommandOutputSettings CommandOutputSettingsResponsePtrOutput `pulumi:"commandOutputSettings"`
 	// The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
 	ComputeDeploymentThreshold ValidationThresholdResponsePtrOutput `pulumi:"computeDeploymentThreshold"`
 	// The list of rack definitions for the compute racks in a multi-rack
@@ -51,10 +57,14 @@ type Cluster struct {
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the cluster manager associated with the cluster.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// Field Deprecated. This field will not be populated in an upcoming version. The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
 	HybridAksExtendedLocation ExtendedLocationResponseOutput `pulumi:"hybridAksExtendedLocation"`
+	// The identity for the resource.
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The configuration of the managed resource group associated with the resource.
@@ -71,6 +81,8 @@ type Cluster struct {
 	RuntimeProtectionConfiguration RuntimeProtectionConfigurationResponsePtrOutput `pulumi:"runtimeProtectionConfiguration"`
 	// The configuration for use of a key vault to store secrets for later retrieval by the operator.
 	SecretArchive ClusterSecretArchiveResponsePtrOutput `pulumi:"secretArchive"`
+	// The settings for the secret archive used to hold credentials for the cluster.
+	SecretArchiveSettings SecretArchiveSettingsResponsePtrOutput `pulumi:"secretArchiveSettings"`
 	// The support end date of the runtime version of the cluster.
 	SupportExpiryDate pulumi.StringOutput `pulumi:"supportExpiryDate"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -81,6 +93,8 @@ type Cluster struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The strategy for updating the cluster.
 	UpdateStrategy ClusterUpdateStrategyResponsePtrOutput `pulumi:"updateStrategy"`
+	// The settings for how security vulnerability scanning is applied to the cluster.
+	VulnerabilityScanningSettings VulnerabilityScanningSettingsResponsePtrOutput `pulumi:"vulnerabilityScanningSettings"`
 	// The list of workload resource IDs that are hosted within this cluster.
 	WorkloadResourceIds pulumi.StringArrayOutput `pulumi:"workloadResourceIds"`
 }
@@ -118,6 +132,9 @@ func NewCluster(ctx *pulumi.Context,
 	}
 	if args.UpdateStrategy != nil {
 		args.UpdateStrategy = args.UpdateStrategy.ToClusterUpdateStrategyPtrOutput().ApplyT(func(v *ClusterUpdateStrategy) *ClusterUpdateStrategy { return v.Defaults() }).(ClusterUpdateStrategyPtrOutput)
+	}
+	if args.VulnerabilityScanningSettings != nil {
+		args.VulnerabilityScanningSettings = args.VulnerabilityScanningSettings.ToVulnerabilityScanningSettingsPtrOutput().ApplyT(func(v *VulnerabilityScanningSettings) *VulnerabilityScanningSettings { return v.Defaults() }).(VulnerabilityScanningSettingsPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -175,7 +192,9 @@ func (ClusterState) ElementType() reflect.Type {
 type clusterArgs struct {
 	// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
 	AggregatorOrSingleRackDefinition RackDefinition `pulumi:"aggregatorOrSingleRackDefinition"`
-	// The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
+	// The settings for the log analytics workspace used for output of logs from this cluster.
+	AnalyticsOutputSettings *AnalyticsOutputSettings `pulumi:"analyticsOutputSettings"`
+	// Field Deprecated. The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
 	AnalyticsWorkspaceId *string `pulumi:"analyticsWorkspaceId"`
 	// The customer-provided location information to identify where the cluster resides.
 	ClusterLocation *string `pulumi:"clusterLocation"`
@@ -187,6 +206,8 @@ type clusterArgs struct {
 	ClusterType string `pulumi:"clusterType"`
 	// The current runtime version of the cluster.
 	ClusterVersion string `pulumi:"clusterVersion"`
+	// The settings for commands run in this cluster, such as bare metal machine run read only commands and data extracts.
+	CommandOutputSettings *CommandOutputSettings `pulumi:"commandOutputSettings"`
 	// The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
 	ComputeDeploymentThreshold *ValidationThreshold `pulumi:"computeDeploymentThreshold"`
 	// The list of rack definitions for the compute racks in a multi-rack
@@ -194,6 +215,8 @@ type clusterArgs struct {
 	ComputeRackDefinitions []RackDefinition `pulumi:"computeRackDefinitions"`
 	// The extended location of the cluster manager associated with the cluster.
 	ExtendedLocation ExtendedLocation `pulumi:"extendedLocation"`
+	// The identity for the resource.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The configuration of the managed resource group associated with the resource.
@@ -206,17 +229,23 @@ type clusterArgs struct {
 	RuntimeProtectionConfiguration *RuntimeProtectionConfiguration `pulumi:"runtimeProtectionConfiguration"`
 	// The configuration for use of a key vault to store secrets for later retrieval by the operator.
 	SecretArchive *ClusterSecretArchive `pulumi:"secretArchive"`
+	// The settings for the secret archive used to hold credentials for the cluster.
+	SecretArchiveSettings *SecretArchiveSettings `pulumi:"secretArchiveSettings"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The strategy for updating the cluster.
 	UpdateStrategy *ClusterUpdateStrategy `pulumi:"updateStrategy"`
+	// The settings for how security vulnerability scanning is applied to the cluster.
+	VulnerabilityScanningSettings *VulnerabilityScanningSettings `pulumi:"vulnerabilityScanningSettings"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
 	// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
 	AggregatorOrSingleRackDefinition RackDefinitionInput
-	// The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
+	// The settings for the log analytics workspace used for output of logs from this cluster.
+	AnalyticsOutputSettings AnalyticsOutputSettingsPtrInput
+	// Field Deprecated. The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
 	AnalyticsWorkspaceId pulumi.StringPtrInput
 	// The customer-provided location information to identify where the cluster resides.
 	ClusterLocation pulumi.StringPtrInput
@@ -228,6 +257,8 @@ type ClusterArgs struct {
 	ClusterType pulumi.StringInput
 	// The current runtime version of the cluster.
 	ClusterVersion pulumi.StringInput
+	// The settings for commands run in this cluster, such as bare metal machine run read only commands and data extracts.
+	CommandOutputSettings CommandOutputSettingsPtrInput
 	// The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
 	ComputeDeploymentThreshold ValidationThresholdPtrInput
 	// The list of rack definitions for the compute racks in a multi-rack
@@ -235,6 +266,8 @@ type ClusterArgs struct {
 	ComputeRackDefinitions RackDefinitionArrayInput
 	// The extended location of the cluster manager associated with the cluster.
 	ExtendedLocation ExtendedLocationInput
+	// The identity for the resource.
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The configuration of the managed resource group associated with the resource.
@@ -247,10 +280,14 @@ type ClusterArgs struct {
 	RuntimeProtectionConfiguration RuntimeProtectionConfigurationPtrInput
 	// The configuration for use of a key vault to store secrets for later retrieval by the operator.
 	SecretArchive ClusterSecretArchivePtrInput
+	// The settings for the secret archive used to hold credentials for the cluster.
+	SecretArchiveSettings SecretArchiveSettingsPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The strategy for updating the cluster.
 	UpdateStrategy ClusterUpdateStrategyPtrInput
+	// The settings for how security vulnerability scanning is applied to the cluster.
+	VulnerabilityScanningSettings VulnerabilityScanningSettingsPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -295,7 +332,12 @@ func (o ClusterOutput) AggregatorOrSingleRackDefinition() RackDefinitionResponse
 	return o.ApplyT(func(v *Cluster) RackDefinitionResponseOutput { return v.AggregatorOrSingleRackDefinition }).(RackDefinitionResponseOutput)
 }
 
-// The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
+// The settings for the log analytics workspace used for output of logs from this cluster.
+func (o ClusterOutput) AnalyticsOutputSettings() AnalyticsOutputSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) AnalyticsOutputSettingsResponsePtrOutput { return v.AnalyticsOutputSettings }).(AnalyticsOutputSettingsResponsePtrOutput)
+}
+
+// Field Deprecated. The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
 func (o ClusterOutput) AnalyticsWorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AnalyticsWorkspaceId }).(pulumi.StringPtrOutput)
 }
@@ -303,6 +345,11 @@ func (o ClusterOutput) AnalyticsWorkspaceId() pulumi.StringPtrOutput {
 // The list of cluster runtime version upgrades available for this cluster.
 func (o ClusterOutput) AvailableUpgradeVersions() ClusterAvailableUpgradeVersionResponseArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterAvailableUpgradeVersionResponseArrayOutput { return v.AvailableUpgradeVersions }).(ClusterAvailableUpgradeVersionResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o ClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The capacity supported by this cluster.
@@ -350,6 +397,11 @@ func (o ClusterOutput) ClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterVersion }).(pulumi.StringOutput)
 }
 
+// The settings for commands run in this cluster, such as bare metal machine run read only commands and data extracts.
+func (o ClusterOutput) CommandOutputSettings() CommandOutputSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) CommandOutputSettingsResponsePtrOutput { return v.CommandOutputSettings }).(CommandOutputSettingsResponsePtrOutput)
+}
+
 // The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
 func (o ClusterOutput) ComputeDeploymentThreshold() ValidationThresholdResponsePtrOutput {
 	return o.ApplyT(func(v *Cluster) ValidationThresholdResponsePtrOutput { return v.ComputeDeploymentThreshold }).(ValidationThresholdResponsePtrOutput)
@@ -371,6 +423,11 @@ func (o ClusterOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DetailedStatusMessage }).(pulumi.StringOutput)
 }
 
+// Resource ETag.
+func (o ClusterOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
 // The extended location of the cluster manager associated with the cluster.
 func (o ClusterOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *Cluster) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
@@ -379,6 +436,11 @@ func (o ClusterOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 // Field Deprecated. This field will not be populated in an upcoming version. The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
 func (o ClusterOutput) HybridAksExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *Cluster) ExtendedLocationResponseOutput { return v.HybridAksExtendedLocation }).(ExtendedLocationResponseOutput)
+}
+
+// The identity for the resource.
+func (o ClusterOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -425,6 +487,11 @@ func (o ClusterOutput) SecretArchive() ClusterSecretArchiveResponsePtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterSecretArchiveResponsePtrOutput { return v.SecretArchive }).(ClusterSecretArchiveResponsePtrOutput)
 }
 
+// The settings for the secret archive used to hold credentials for the cluster.
+func (o ClusterOutput) SecretArchiveSettings() SecretArchiveSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) SecretArchiveSettingsResponsePtrOutput { return v.SecretArchiveSettings }).(SecretArchiveSettingsResponsePtrOutput)
+}
+
 // The support end date of the runtime version of the cluster.
 func (o ClusterOutput) SupportExpiryDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SupportExpiryDate }).(pulumi.StringOutput)
@@ -448,6 +515,13 @@ func (o ClusterOutput) Type() pulumi.StringOutput {
 // The strategy for updating the cluster.
 func (o ClusterOutput) UpdateStrategy() ClusterUpdateStrategyResponsePtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterUpdateStrategyResponsePtrOutput { return v.UpdateStrategy }).(ClusterUpdateStrategyResponsePtrOutput)
+}
+
+// The settings for how security vulnerability scanning is applied to the cluster.
+func (o ClusterOutput) VulnerabilityScanningSettings() VulnerabilityScanningSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) VulnerabilityScanningSettingsResponsePtrOutput {
+		return v.VulnerabilityScanningSettings
+	}).(VulnerabilityScanningSettingsResponsePtrOutput)
 }
 
 // The list of workload resource IDs that are hosted within this cluster.

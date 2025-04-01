@@ -14,14 +14,14 @@ import (
 
 // Response for iSCSI Target requests.
 //
-// Uses Azure REST API version 2021-08-01. In version 1.x of the Azure Native provider, it used API version 2020-03-15-preview.
-//
-// Other available API versions: 2020-03-15-preview.
+// Uses Azure REST API version 2021-08-01. In version 2.x of the Azure Native provider, it used API version 2021-08-01.
 type IscsiTarget struct {
 	pulumi.CustomResourceState
 
 	// Mode for Target connectivity.
 	AclMode pulumi.StringOutput `pulumi:"aclMode"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of private IPv4 addresses to connect to the iSCSI Target.
 	Endpoints pulumi.StringArrayOutput `pulumi:"endpoints"`
 	// List of LUNs to be exposed through iSCSI Target.
@@ -193,6 +193,11 @@ func (o IscsiTargetOutput) ToIscsiTargetOutputWithContext(ctx context.Context) I
 // Mode for Target connectivity.
 func (o IscsiTargetOutput) AclMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *IscsiTarget) pulumi.StringOutput { return v.AclMode }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o IscsiTargetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IscsiTarget) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of private IPv4 addresses to connect to the iSCSI Target.

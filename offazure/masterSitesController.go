@@ -14,15 +14,17 @@ import (
 
 // A MasterSite
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MasterSitesController struct {
 	pulumi.CustomResourceState
 
 	// Gets or sets a value indicating whether multiple sites per site type are
 	// allowed.
 	AllowMultipleSites pulumi.BoolPtrOutput `pulumi:"allowMultipleSites"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets a value for customer storage account ARM id.
 	CustomerStorageAccountArmId pulumi.StringPtrOutput `pulumi:"customerStorageAccountArmId"`
 	// The geo-location where the resource lives
@@ -192,6 +194,11 @@ func (o MasterSitesControllerOutput) ToMasterSitesControllerOutputWithContext(ct
 // allowed.
 func (o MasterSitesControllerOutput) AllowMultipleSites() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MasterSitesController) pulumi.BoolPtrOutput { return v.AllowMultipleSites }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o MasterSitesControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MasterSitesController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets a value for customer storage account ARM id.

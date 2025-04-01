@@ -14,10 +14,12 @@ import (
 
 // The storageSpaces resource definition.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
+// Uses Azure REST API version 2022-09-01-preview.
 type StorageSpaceRetrieve struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion  pulumi.StringOutput                            `pulumi:"azureApiVersion"`
 	ExtendedLocation StorageSpacesResponseExtendedLocationPtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -48,16 +50,7 @@ func NewStorageSpaceRetrieve(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:StorageSpaceRetrieve"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:storageSpaceRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:StorageSpaceRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:storageSpaceRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:hybridcontainerservice:storageSpaceRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -157,6 +150,11 @@ func (o StorageSpaceRetrieveOutput) ToStorageSpaceRetrieveOutput() StorageSpaceR
 
 func (o StorageSpaceRetrieveOutput) ToStorageSpaceRetrieveOutputWithContext(ctx context.Context) StorageSpaceRetrieveOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StorageSpaceRetrieveOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageSpaceRetrieve) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o StorageSpaceRetrieveOutput) ExtendedLocation() StorageSpacesResponseExtendedLocationPtrOutput {

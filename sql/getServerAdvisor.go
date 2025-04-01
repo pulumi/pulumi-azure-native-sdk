@@ -13,9 +13,9 @@ import (
 
 // Gets a server advisor.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2014-04-01, 2015-05-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServerAdvisor(ctx *pulumi.Context, args *LookupServerAdvisorArgs, opts ...pulumi.InvokeOption) (*LookupServerAdvisorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerAdvisorResult
@@ -43,6 +43,8 @@ type LookupServerAdvisorResult struct {
 	AutoExecuteStatus string `pulumi:"autoExecuteStatus"`
 	// Gets the resource from which current value of auto-execute status is inherited. Auto-execute status can be set on (and inherited from) different levels in the resource hierarchy. Possible values are 'Subscription', 'Server', 'ElasticPool', 'Database' and 'Default' (when status is not explicitly set on any level).
 	AutoExecuteStatusInheritedFrom string `pulumi:"autoExecuteStatusInheritedFrom"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource kind.
@@ -111,6 +113,11 @@ func (o LookupServerAdvisorResultOutput) AutoExecuteStatus() pulumi.StringOutput
 // Gets the resource from which current value of auto-execute status is inherited. Auto-execute status can be set on (and inherited from) different levels in the resource hierarchy. Possible values are 'Subscription', 'Server', 'ElasticPool', 'Database' and 'Default' (when status is not explicitly set on any level).
 func (o LookupServerAdvisorResultOutput) AutoExecuteStatusInheritedFrom() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerAdvisorResult) string { return v.AutoExecuteStatusInheritedFrom }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServerAdvisorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerAdvisorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

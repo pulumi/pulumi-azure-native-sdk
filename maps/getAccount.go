@@ -13,9 +13,9 @@ import (
 
 // Get a Maps Account.
 //
-// Uses Azure REST API version 2021-02-01.
+// Uses Azure REST API version 2024-07-01-preview.
 //
-// Other available API versions: 2018-05-01, 2021-12-01-preview, 2023-06-01, 2023-08-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-07-01-preview.
+// Other available API versions: 2020-02-01-preview, 2021-02-01, 2021-07-01-preview, 2021-12-01-preview, 2023-06-01, 2023-08-01-preview, 2023-12-01-preview, 2024-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maps [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult
@@ -35,8 +35,12 @@ type LookupAccountArgs struct {
 
 // An Azure resource which represents access to a suite of Maps REST APIs.
 type LookupAccountResult struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Get or Set Kind property.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -47,7 +51,7 @@ type LookupAccountResult struct {
 	Properties MapsAccountPropertiesResponse `pulumi:"properties"`
 	// The SKU of this account.
 	Sku SkuResponse `pulumi:"sku"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -100,9 +104,19 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+func (o LookupAccountResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Get or Set Kind property.
@@ -130,7 +144,7 @@ func (o LookupAccountResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupAccountResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAccountResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAccountResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -41,6 +41,8 @@ type LookupVolumeArgs struct {
 type LookupVolumeResult struct {
 	// The IDs of the access control records, associated with the volume.
 	AccessControlRecordIds []string `pulumi:"accessControlRecordIds"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The IDs of the backup policies, in which this volume is part of.
 	BackupPolicyIds []string `pulumi:"backupPolicyIds"`
 	// The backup status of the volume.
@@ -111,6 +113,11 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx cont
 // The IDs of the access control records, associated with the volume.
 func (o LookupVolumeResultOutput) AccessControlRecordIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVolumeResult) []string { return v.AccessControlRecordIds }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVolumeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The IDs of the backup policies, in which this volume is part of.

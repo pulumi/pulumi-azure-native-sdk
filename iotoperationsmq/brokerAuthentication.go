@@ -14,12 +14,14 @@ import (
 
 // MQ broker/authentication resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type BrokerAuthentication struct {
 	pulumi.CustomResourceState
 
 	// The list of authentication methods supported by the Authentication Resource. For each array element, NOTE - Enum only authenticator type supported.
 	AuthenticationMethods BrokerAuthenticatorMethodsResponseArrayOutput `pulumi:"authenticationMethods"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Extended Location
 	ExtendedLocation ExtendedLocationPropertyResponseOutput `pulumi:"extendedLocation"`
 	// The array of listener Resources it supports.
@@ -186,6 +188,11 @@ func (o BrokerAuthenticationOutput) AuthenticationMethods() BrokerAuthenticatorM
 	return o.ApplyT(func(v *BrokerAuthentication) BrokerAuthenticatorMethodsResponseArrayOutput {
 		return v.AuthenticationMethods
 	}).(BrokerAuthenticatorMethodsResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o BrokerAuthenticationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BrokerAuthentication) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Extended Location

@@ -14,10 +14,12 @@ import (
 
 // Data Manager For Agriculture ARM Resource.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 type DataManagerForAgricultureResource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identity for the resource.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Uri of the Data Manager For Agriculture instance.
@@ -57,7 +59,13 @@ func NewDataManagerForAgricultureResource(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:agfoodplatform/v20200512preview:DataManagerForAgricultureResource"),
 		},
 		{
+			Type: pulumi.String("azure-native:agfoodplatform/v20200512preview:FarmBeatsModel"),
+		},
+		{
 			Type: pulumi.String("azure-native:agfoodplatform/v20210901preview:DataManagerForAgricultureResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:agfoodplatform/v20210901preview:FarmBeatsModel"),
 		},
 		{
 			Type: pulumi.String("azure-native:agfoodplatform/v20230601preview:DataManagerForAgricultureResource"),
@@ -166,6 +174,11 @@ func (o DataManagerForAgricultureResourceOutput) ToDataManagerForAgricultureReso
 
 func (o DataManagerForAgricultureResourceOutput) ToDataManagerForAgricultureResourceOutputWithContext(ctx context.Context) DataManagerForAgricultureResourceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DataManagerForAgricultureResourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataManagerForAgricultureResource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Identity for the resource.

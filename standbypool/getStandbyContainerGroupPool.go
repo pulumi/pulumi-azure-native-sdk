@@ -13,9 +13,9 @@ import (
 
 // Get a StandbyContainerGroupPoolResource
 //
-// Uses Azure REST API version 2023-12-01-preview.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2024-03-01, 2024-03-01-preview, 2025-03-01.
+// Other available API versions: 2023-12-01-preview, 2024-03-01-preview, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native standbypool [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStandbyContainerGroupPool(ctx *pulumi.Context, args *LookupStandbyContainerGroupPoolArgs, opts ...pulumi.InvokeOption) (*LookupStandbyContainerGroupPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStandbyContainerGroupPoolResult
@@ -35,6 +35,8 @@ type LookupStandbyContainerGroupPoolArgs struct {
 
 // A StandbyContainerGroupPoolResource.
 type LookupStandbyContainerGroupPoolResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies container group properties of standby container group pools.
 	ContainerGroupProperties ContainerGroupPropertiesResponse `pulumi:"containerGroupProperties"`
 	// Specifies elasticity profile of standby container group pools.
@@ -88,6 +90,11 @@ func (o LookupStandbyContainerGroupPoolResultOutput) ToLookupStandbyContainerGro
 
 func (o LookupStandbyContainerGroupPoolResultOutput) ToLookupStandbyContainerGroupPoolResultOutputWithContext(ctx context.Context) LookupStandbyContainerGroupPoolResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStandbyContainerGroupPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStandbyContainerGroupPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies container group properties of standby container group pools.

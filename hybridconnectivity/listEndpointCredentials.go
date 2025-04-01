@@ -13,9 +13,9 @@ import (
 
 // Gets the endpoint access credentials to the resource.
 //
-// Uses Azure REST API version 2023-03-15.
+// Uses Azure REST API version 2024-12-01.
 //
-// Other available API versions: 2022-05-01-preview, 2024-12-01.
+// Other available API versions: 2023-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListEndpointCredentials(ctx *pulumi.Context, args *ListEndpointCredentialsArgs, opts ...pulumi.InvokeOption) (*ListEndpointCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEndpointCredentialsResult
@@ -31,7 +31,7 @@ type ListEndpointCredentialsArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// The is how long the endpoint access token is valid (in seconds).
 	Expiresin *int `pulumi:"expiresin"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 	// The name of the service. If not provided, the request will by pass the generation of service configuration token
 	ServiceName *string `pulumi:"serviceName"`
@@ -67,7 +67,7 @@ type ListEndpointCredentialsOutputArgs struct {
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The is how long the endpoint access token is valid (in seconds).
 	Expiresin pulumi.IntPtrInput `pulumi:"expiresin"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 	// The name of the service. If not provided, the request will by pass the generation of service configuration token
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`

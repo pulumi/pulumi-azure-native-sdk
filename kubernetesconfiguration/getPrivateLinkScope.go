@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-04-02-preview.
 //
-// Other available API versions: 2024-11-01-preview.
+// Other available API versions: 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetesconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPrivateLinkScope(ctx *pulumi.Context, args *LookupPrivateLinkScopeArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkScopeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkScopeResult
@@ -35,6 +35,8 @@ type LookupPrivateLinkScopeArgs struct {
 
 // An Azure Arc PrivateLinkScope definition.
 type LookupPrivateLinkScopeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -84,6 +86,11 @@ func (o LookupPrivateLinkScopeResultOutput) ToLookupPrivateLinkScopeResultOutput
 
 func (o LookupPrivateLinkScopeResultOutput) ToLookupPrivateLinkScopeResultOutputWithContext(ctx context.Context) LookupPrivateLinkScopeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateLinkScopeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -14,10 +14,12 @@ import (
 
 // The Connection Monitor Test class.
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-06-01.
+// Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 type ConnectionMonitorTest struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Connection Monitor test destination
 	Destination pulumi.StringPtrOutput `pulumi:"destination"`
 	// The Connection Monitor test destination port
@@ -168,6 +170,11 @@ func (o ConnectionMonitorTestOutput) ToConnectionMonitorTestOutput() ConnectionM
 
 func (o ConnectionMonitorTestOutput) ToConnectionMonitorTestOutputWithContext(ctx context.Context) ConnectionMonitorTestOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConnectionMonitorTestOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionMonitorTest) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Connection Monitor test destination

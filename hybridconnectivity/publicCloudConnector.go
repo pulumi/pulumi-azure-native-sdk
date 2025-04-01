@@ -14,12 +14,14 @@ import (
 
 // Public Cloud Connector
 //
-// Uses Azure REST API version 2024-12-01.
+// Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2024-12-01.
 type PublicCloudConnector struct {
 	pulumi.CustomResourceState
 
 	// Cloud profile for AWS.
 	AwsCloudProfile AwsCloudProfileResponseOutput `pulumi:"awsCloudProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Connector primary identifier.
 	ConnectorPrimaryIdentifier pulumi.StringOutput `pulumi:"connectorPrimaryIdentifier"`
 	// Host cloud the public cloud connector.
@@ -164,6 +166,11 @@ func (o PublicCloudConnectorOutput) ToPublicCloudConnectorOutputWithContext(ctx 
 // Cloud profile for AWS.
 func (o PublicCloudConnectorOutput) AwsCloudProfile() AwsCloudProfileResponseOutput {
 	return o.ApplyT(func(v *PublicCloudConnector) AwsCloudProfileResponseOutput { return v.AwsCloudProfile }).(AwsCloudProfileResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o PublicCloudConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicCloudConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Connector primary identifier.

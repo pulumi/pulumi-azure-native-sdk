@@ -13,9 +13,9 @@ import (
 
 // Get a Vcenter
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVcenterController(ctx *pulumi.Context, args *LookupVcenterControllerArgs, opts ...pulumi.InvokeOption) (*LookupVcenterControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVcenterControllerResult
@@ -37,6 +37,8 @@ type LookupVcenterControllerArgs struct {
 
 // A vcenter resource belonging to a site resource.
 type LookupVcenterControllerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the timestamp marking vCenter creation.
 	CreatedTimestamp string `pulumi:"createdTimestamp"`
 	// Gets the errors.
@@ -104,6 +106,11 @@ func (o LookupVcenterControllerResultOutput) ToLookupVcenterControllerResultOutp
 
 func (o LookupVcenterControllerResultOutput) ToLookupVcenterControllerResultOutputWithContext(ctx context.Context) LookupVcenterControllerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVcenterControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVcenterControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the timestamp marking vCenter creation.

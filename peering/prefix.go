@@ -14,10 +14,12 @@ import (
 
 // The peering service prefix class.
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 type Prefix struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The error message for validation state
 	ErrorMessage pulumi.StringOutput `pulumi:"errorMessage"`
 	// The list of events for peering service prefix
@@ -178,6 +180,11 @@ func (o PrefixOutput) ToPrefixOutput() PrefixOutput {
 
 func (o PrefixOutput) ToPrefixOutputWithContext(ctx context.Context) PrefixOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrefixOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Prefix) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The error message for validation state

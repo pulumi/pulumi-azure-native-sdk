@@ -13,9 +13,9 @@ import (
 
 // Get a Employee
 //
-// Uses Azure REST API version 2021-10-01-preview.
+// Uses Azure REST API version 2021-11-01.
 //
-// Other available API versions: 2021-11-01.
+// Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native contoso [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupEmployee(ctx *pulumi.Context, args *LookupEmployeeArgs, opts ...pulumi.InvokeOption) (*LookupEmployeeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmployeeResult
@@ -35,6 +35,8 @@ type LookupEmployeeArgs struct {
 
 // Employee resource
 type LookupEmployeeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -84,6 +86,11 @@ func (o LookupEmployeeResultOutput) ToLookupEmployeeResultOutput() LookupEmploye
 
 func (o LookupEmployeeResultOutput) ToLookupEmployeeResultOutputWithContext(ctx context.Context) LookupEmployeeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEmployeeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmployeeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

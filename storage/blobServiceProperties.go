@@ -14,14 +14,16 @@ import (
 
 // The properties of a storage account’s Blob service.
 //
-// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2021-02-01.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type BlobServiceProperties struct {
 	pulumi.CustomResourceState
 
 	// Deprecated in favor of isVersioningEnabled property.
 	AutomaticSnapshotPolicyEnabled pulumi.BoolPtrOutput `pulumi:"automaticSnapshotPolicyEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The blob service properties for change feed events.
 	ChangeFeed ChangeFeedResponsePtrOutput `pulumi:"changeFeed"`
 	// The blob service properties for container soft delete.
@@ -240,6 +242,11 @@ func (o BlobServicePropertiesOutput) ToBlobServicePropertiesOutputWithContext(ct
 // Deprecated in favor of isVersioningEnabled property.
 func (o BlobServicePropertiesOutput) AutomaticSnapshotPolicyEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BlobServiceProperties) pulumi.BoolPtrOutput { return v.AutomaticSnapshotPolicyEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o BlobServicePropertiesOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BlobServiceProperties) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The blob service properties for change feed events.

@@ -13,9 +13,9 @@ import (
 
 // Gets information about a snapshot.
 //
-// Uses Azure REST API version 2022-07-02.
+// Uses Azure REST API version 2024-03-02.
 //
-// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnapshotResult
@@ -35,6 +35,8 @@ type LookupSnapshotArgs struct {
 
 // Snapshot resource.
 type LookupSnapshotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Percentage complete for the background copy when a resource is created via the CopyStart operation.
 	CompletionPercent *float64 `pulumi:"completionPercent"`
 	// Indicates the error details if the background copy of a resource created via the CopyStart operation fails.
@@ -132,6 +134,11 @@ func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutput() LookupSnapsho
 
 func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutputWithContext(ctx context.Context) LookupSnapshotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSnapshotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Percentage complete for the background copy when a resource is created via the CopyStart operation.

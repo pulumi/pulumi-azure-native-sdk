@@ -35,6 +35,8 @@ type LookupPolicyAssignmentArtifactArgs struct {
 
 // Blueprint artifact that applies a Policy assignment.
 type LookupPolicyAssignmentArtifactResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Artifacts which need to be deployed before the specified artifact.
 	DependsOn []string `pulumi:"dependsOn"`
 	// Multi-line explain this resource.
@@ -93,6 +95,11 @@ func (o LookupPolicyAssignmentArtifactResultOutput) ToLookupPolicyAssignmentArti
 
 func (o LookupPolicyAssignmentArtifactResultOutput) ToLookupPolicyAssignmentArtifactResultOutputWithContext(ctx context.Context) LookupPolicyAssignmentArtifactResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPolicyAssignmentArtifactResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyAssignmentArtifactResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Artifacts which need to be deployed before the specified artifact.

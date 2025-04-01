@@ -14,12 +14,14 @@ import (
 
 // Protected item model.
 //
-// Uses Azure REST API version 2021-02-16-preview.
+// Uses Azure REST API version 2021-02-16-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-16-preview.
 //
-// Other available API versions: 2024-09-01.
+// Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ProtectedItem struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Protected item model properties.
@@ -144,6 +146,11 @@ func (o ProtectedItemOutput) ToProtectedItemOutput() ProtectedItemOutput {
 
 func (o ProtectedItemOutput) ToProtectedItemOutputWithContext(ctx context.Context) ProtectedItemOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ProtectedItemOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProtectedItem) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the name of the resource.

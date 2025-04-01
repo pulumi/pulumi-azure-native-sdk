@@ -14,9 +14,9 @@ import (
 
 // Class representing a Kusto cluster.
 //
-// Uses Azure REST API version 2022-12-29. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2022-12-29.
 //
-// Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15, 2024-04-13.
+// Other available API versions: 2018-09-07-preview, 2019-01-21, 2019-05-15, 2019-09-07, 2019-11-09, 2020-02-15, 2020-06-14, 2020-09-18, 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +26,10 @@ type Cluster struct {
 	AllowedFqdnList pulumi.StringArrayOutput `pulumi:"allowedFqdnList"`
 	// The list of ips in the format of CIDR allowed to connect to the cluster.
 	AllowedIpRangeList pulumi.StringArrayOutput `pulumi:"allowedIpRangeList"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// List of callout policies for egress from Cluster.
+	CalloutPolicies CalloutPolicyResponseArrayOutput `pulumi:"calloutPolicies"`
 	// The cluster data ingestion URI.
 	DataIngestionUri pulumi.StringOutput `pulumi:"dataIngestionUri"`
 	// A boolean value that indicates if the cluster could be automatically stopped (due to lack of data or no activity for many days).
@@ -50,6 +54,8 @@ type Cluster struct {
 	LanguageExtensions LanguageExtensionsListResponsePtrOutput `pulumi:"languageExtensions"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Properties of the peer cluster involved in a migration to/from this cluster.
+	MigrationCluster MigrationClusterPropertiesResponseOutput `pulumi:"migrationCluster"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optimized auto scale definition.
@@ -82,6 +88,8 @@ type Cluster struct {
 	Uri pulumi.StringOutput `pulumi:"uri"`
 	// Virtual network definition.
 	VirtualNetworkConfiguration VirtualNetworkConfigurationResponsePtrOutput `pulumi:"virtualNetworkConfiguration"`
+	// Indicates whether the cluster is zonal or non-zonal.
+	ZoneStatus pulumi.StringOutput `pulumi:"zoneStatus"`
 	// The availability zones of the cluster.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
@@ -125,6 +133,9 @@ func NewCluster(ctx *pulumi.Context,
 	}
 	if args.RestrictOutboundNetworkAccess == nil {
 		args.RestrictOutboundNetworkAccess = pulumi.StringPtr("Disabled")
+	}
+	if args.VirtualNetworkConfiguration != nil {
+		args.VirtualNetworkConfiguration = args.VirtualNetworkConfiguration.ToVirtualNetworkConfigurationPtrOutput().ApplyT(func(v *VirtualNetworkConfiguration) *VirtualNetworkConfiguration { return v.Defaults() }).(VirtualNetworkConfigurationPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -222,6 +233,8 @@ type clusterArgs struct {
 	AllowedFqdnList []string `pulumi:"allowedFqdnList"`
 	// The list of ips in the format of CIDR allowed to connect to the cluster.
 	AllowedIpRangeList []string `pulumi:"allowedIpRangeList"`
+	// List of callout policies for egress from Cluster.
+	CalloutPolicies []CalloutPolicy `pulumi:"calloutPolicies"`
 	// The name of the Kusto cluster.
 	ClusterName *string `pulumi:"clusterName"`
 	// A boolean value that indicates if the cluster could be automatically stopped (due to lack of data or no activity for many days).
@@ -250,7 +263,7 @@ type clusterArgs struct {
 	PublicIPType *string `pulumi:"publicIPType"`
 	// Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 	RestrictOutboundNetworkAccess *string `pulumi:"restrictOutboundNetworkAccess"`
@@ -276,6 +289,8 @@ type ClusterArgs struct {
 	AllowedFqdnList pulumi.StringArrayInput
 	// The list of ips in the format of CIDR allowed to connect to the cluster.
 	AllowedIpRangeList pulumi.StringArrayInput
+	// List of callout policies for egress from Cluster.
+	CalloutPolicies CalloutPolicyArrayInput
 	// The name of the Kusto cluster.
 	ClusterName pulumi.StringPtrInput
 	// A boolean value that indicates if the cluster could be automatically stopped (due to lack of data or no activity for many days).
@@ -304,7 +319,7 @@ type ClusterArgs struct {
 	PublicIPType pulumi.StringPtrInput
 	// Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed
 	PublicNetworkAccess pulumi.StringPtrInput
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 	RestrictOutboundNetworkAccess pulumi.StringPtrInput
@@ -374,6 +389,16 @@ func (o ClusterOutput) AllowedIpRangeList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.AllowedIpRangeList }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o ClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// List of callout policies for egress from Cluster.
+func (o ClusterOutput) CalloutPolicies() CalloutPolicyResponseArrayOutput {
+	return o.ApplyT(func(v *Cluster) CalloutPolicyResponseArrayOutput { return v.CalloutPolicies }).(CalloutPolicyResponseArrayOutput)
+}
+
 // The cluster data ingestion URI.
 func (o ClusterOutput) DataIngestionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DataIngestionUri }).(pulumi.StringOutput)
@@ -432,6 +457,11 @@ func (o ClusterOutput) LanguageExtensions() LanguageExtensionsListResponsePtrOut
 // The geo-location where the resource lives
 func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Properties of the peer cluster involved in a migration to/from this cluster.
+func (o ClusterOutput) MigrationCluster() MigrationClusterPropertiesResponseOutput {
+	return o.ApplyT(func(v *Cluster) MigrationClusterPropertiesResponseOutput { return v.MigrationCluster }).(MigrationClusterPropertiesResponseOutput)
 }
 
 // The name of the resource
@@ -512,6 +542,11 @@ func (o ClusterOutput) Uri() pulumi.StringOutput {
 // Virtual network definition.
 func (o ClusterOutput) VirtualNetworkConfiguration() VirtualNetworkConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *Cluster) VirtualNetworkConfigurationResponsePtrOutput { return v.VirtualNetworkConfiguration }).(VirtualNetworkConfigurationResponsePtrOutput)
+}
+
+// Indicates whether the cluster is zonal or non-zonal.
+func (o ClusterOutput) ZoneStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ZoneStatus }).(pulumi.StringOutput)
 }
 
 // The availability zones of the cluster.

@@ -37,6 +37,8 @@ type LookupBackupPolicyArgs struct {
 
 // The backup policy.
 type LookupBackupPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The backup policy creation type. Indicates whether this was created through SaaS or through StorSimple Snapshot Manager.
 	BackupPolicyCreationType string `pulumi:"backupPolicyCreationType"`
 	// The path ID that uniquely identifies the object.
@@ -98,6 +100,11 @@ func (o LookupBackupPolicyResultOutput) ToLookupBackupPolicyResultOutput() Looku
 
 func (o LookupBackupPolicyResultOutput) ToLookupBackupPolicyResultOutputWithContext(ctx context.Context) LookupBackupPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBackupPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The backup policy creation type. Indicates whether this was created through SaaS or through StorSimple Snapshot Manager.

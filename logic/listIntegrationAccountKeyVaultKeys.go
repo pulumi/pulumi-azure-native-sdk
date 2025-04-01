@@ -14,6 +14,8 @@ import (
 // Gets the integration account's Key Vault keys.
 //
 // Uses Azure REST API version 2019-05-01.
+//
+// Other available API versions: 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListIntegrationAccountKeyVaultKeys(ctx *pulumi.Context, args *ListIntegrationAccountKeyVaultKeysArgs, opts ...pulumi.InvokeOption) (*ListIntegrationAccountKeyVaultKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListIntegrationAccountKeyVaultKeysResult

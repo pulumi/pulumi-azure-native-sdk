@@ -13,9 +13,9 @@ import (
 
 // Implements virtual machine GET method.
 //
-// Uses Azure REST API version 2022-07-15-preview.
+// Uses Azure REST API version 2023-03-01-preview.
 //
-// Other available API versions: 2023-03-01-preview.
+// Other available API versions: 2022-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineResult
@@ -35,6 +35,8 @@ type LookupVirtualMachineArgs struct {
 
 // Define the virtualMachine.
 type LookupVirtualMachineResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
 	// Gets or sets the extended location.
@@ -73,7 +75,7 @@ type LookupVirtualMachineResult struct {
 	PlacementProfile *PlacementProfileResponse `pulumi:"placementProfile"`
 	// Gets the power state of the virtual machine.
 	PowerState string `pulumi:"powerState"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will
 	// deploy.
@@ -135,6 +137,11 @@ func (o LookupVirtualMachineResultOutput) ToLookupVirtualMachineResultOutput() L
 
 func (o LookupVirtualMachineResultOutput) ToLookupVirtualMachineResultOutputWithContext(ctx context.Context) LookupVirtualMachineResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualMachineResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the name of the corresponding resource in Kubernetes.
@@ -232,7 +239,7 @@ func (o LookupVirtualMachineResultOutput) PowerState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.PowerState }).(pulumi.StringOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o LookupVirtualMachineResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

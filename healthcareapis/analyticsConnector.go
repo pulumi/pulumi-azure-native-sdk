@@ -14,10 +14,12 @@ import (
 
 // Analytics Connector definition.
 //
-// Uses Azure REST API version 2022-10-01-preview.
+// Uses Azure REST API version 2022-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
 type AnalyticsConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Data destination configuration for Analytics Connector.
 	DataDestinationConfiguration AnalyticsConnectorDataLakeDataDestinationResponseOutput `pulumi:"dataDestinationConfiguration"`
 	// Data mapping configuration for Analytics Connector.
@@ -180,6 +182,11 @@ func (o AnalyticsConnectorOutput) ToAnalyticsConnectorOutput() AnalyticsConnecto
 
 func (o AnalyticsConnectorOutput) ToAnalyticsConnectorOutputWithContext(ctx context.Context) AnalyticsConnectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AnalyticsConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnalyticsConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Data destination configuration for Analytics Connector.

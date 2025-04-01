@@ -13,9 +13,9 @@ import (
 
 // Gets pipeline resource.
 //
-// Uses Azure REST API version 2023-10-11-preview.
+// Uses Azure REST API version 2024-09-27.
 //
-// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27, 2025-03-01-preview.
+// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPipeline(ctx *pulumi.Context, args *LookupPipelineArgs, opts ...pulumi.InvokeOption) (*LookupPipelineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineResult
@@ -35,6 +35,8 @@ type LookupPipelineArgs struct {
 
 // The pipeline resource definition.
 type LookupPipelineResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -84,6 +86,11 @@ func (o LookupPipelineResultOutput) ToLookupPipelineResultOutput() LookupPipelin
 
 func (o LookupPipelineResultOutput) ToLookupPipelineResultOutputWithContext(ctx context.Context) LookupPipelineResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPipelineResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPipelineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

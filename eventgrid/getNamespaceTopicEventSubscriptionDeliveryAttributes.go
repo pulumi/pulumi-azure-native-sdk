@@ -13,9 +13,9 @@ import (
 
 // Get all delivery attributes for an event subscription of a namespace topic.
 //
-// Uses Azure REST API version 2023-12-15-preview.
+// Uses Azure REST API version 2025-02-15.
 //
-// Other available API versions: 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetNamespaceTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetNamespaceTopicEventSubscriptionDeliveryAttributesArgs, opts ...pulumi.InvokeOption) (*GetNamespaceTopicEventSubscriptionDeliveryAttributesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetNamespaceTopicEventSubscriptionDeliveryAttributesResult
@@ -27,7 +27,7 @@ func GetNamespaceTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, a
 }
 
 type GetNamespaceTopicEventSubscriptionDeliveryAttributesArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
 	// Name of the namespace.
 	NamespaceName string `pulumi:"namespaceName"`
@@ -53,7 +53,7 @@ func GetNamespaceTopicEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Cont
 }
 
 type GetNamespaceTopicEventSubscriptionDeliveryAttributesOutputArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
 	// Name of the namespace.
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`

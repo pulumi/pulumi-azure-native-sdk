@@ -39,6 +39,8 @@ type LookupArtifactSourceArgs struct {
 type LookupArtifactSourceResult struct {
 	// The folder containing Azure Resource Manager templates.
 	ArmTemplateFolderPath *string `pulumi:"armTemplateFolderPath"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The artifact source's branch reference.
 	BranchRef *string `pulumi:"branchRef"`
 	// The artifact source's creation date.
@@ -113,6 +115,11 @@ func (o LookupArtifactSourceResultOutput) ToLookupArtifactSourceResultOutputWith
 // The folder containing Azure Resource Manager templates.
 func (o LookupArtifactSourceResultOutput) ArmTemplateFolderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) *string { return v.ArmTemplateFolderPath }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupArtifactSourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArtifactSourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The artifact source's branch reference.

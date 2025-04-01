@@ -14,12 +14,14 @@ import (
 
 // Firmware definition
 //
-// Uses Azure REST API version 2023-02-08-preview.
+// Uses Azure REST API version 2024-01-10. In version 2.x of the Azure Native provider, it used API version 2023-02-08-preview.
 //
-// Other available API versions: 2024-01-10, 2025-04-01-preview.
+// Other available API versions: 2023-02-08-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Firmware struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// User-specified description of the firmware.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// File name for a firmware that user uploaded.
@@ -35,7 +37,7 @@ type Firmware struct {
 	// The status of firmware scan.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// A list of errors or other messages generated during firmware analysis
-	StatusMessages pulumi.ArrayOutput `pulumi:"statusMessages"`
+	StatusMessages StatusMessageResponseArrayOutput `pulumi:"statusMessages"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -122,7 +124,7 @@ type firmwareArgs struct {
 	// The status of firmware scan.
 	Status *string `pulumi:"status"`
 	// A list of errors or other messages generated during firmware analysis
-	StatusMessages []interface{} `pulumi:"statusMessages"`
+	StatusMessages []StatusMessage `pulumi:"statusMessages"`
 	// Firmware vendor.
 	Vendor *string `pulumi:"vendor"`
 	// Firmware version.
@@ -148,7 +150,7 @@ type FirmwareArgs struct {
 	// The status of firmware scan.
 	Status pulumi.StringPtrInput
 	// A list of errors or other messages generated during firmware analysis
-	StatusMessages pulumi.ArrayInput
+	StatusMessages StatusMessageArrayInput
 	// Firmware vendor.
 	Vendor pulumi.StringPtrInput
 	// Firmware version.
@@ -194,6 +196,11 @@ func (o FirmwareOutput) ToFirmwareOutputWithContext(ctx context.Context) Firmwar
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FirmwareOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firmware) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // User-specified description of the firmware.
 func (o FirmwareOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Firmware) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -230,8 +237,8 @@ func (o FirmwareOutput) Status() pulumi.StringPtrOutput {
 }
 
 // A list of errors or other messages generated during firmware analysis
-func (o FirmwareOutput) StatusMessages() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *Firmware) pulumi.ArrayOutput { return v.StatusMessages }).(pulumi.ArrayOutput)
+func (o FirmwareOutput) StatusMessages() StatusMessageResponseArrayOutput {
+	return o.ApplyT(func(v *Firmware) StatusMessageResponseArrayOutput { return v.StatusMessages }).(StatusMessageResponseArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -13,12 +13,12 @@ import (
 
 // The essential information related to the peer's ASN.
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
-//
-// Other available API versions: 2021-01-01.
+// Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 type PeerAsn struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The error message for the validation state
 	ErrorMessage pulumi.StringOutput `pulumi:"errorMessage"`
 	// The name of the resource.
@@ -165,6 +165,11 @@ func (o PeerAsnOutput) ToPeerAsnOutput() PeerAsnOutput {
 
 func (o PeerAsnOutput) ToPeerAsnOutputWithContext(ctx context.Context) PeerAsnOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PeerAsnOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PeerAsn) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The error message for the validation state

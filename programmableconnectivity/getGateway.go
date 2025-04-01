@@ -33,6 +33,8 @@ type LookupGatewayArgs struct {
 
 // A Programmable Connectivity Gateway resource
 type LookupGatewayResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Base URL of the Gateway resource. This is the URL that the users would use to make Open API Gateway requests to the Operators via Azure.
 	GatewayBaseUrl string `pulumi:"gatewayBaseUrl"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -86,6 +88,11 @@ func (o LookupGatewayResultOutput) ToLookupGatewayResultOutput() LookupGatewayRe
 
 func (o LookupGatewayResultOutput) ToLookupGatewayResultOutputWithContext(ctx context.Context) LookupGatewayResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Base URL of the Gateway resource. This is the URL that the users would use to make Open API Gateway requests to the Operators via Azure.

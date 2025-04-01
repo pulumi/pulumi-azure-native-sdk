@@ -37,6 +37,8 @@ type LookupConnectorMappingArgs struct {
 
 // The connector mapping resource format.
 type LookupConnectorMappingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The connector mapping name
 	ConnectorMappingName string `pulumi:"connectorMappingName"`
 	// The connector name.
@@ -112,6 +114,11 @@ func (o LookupConnectorMappingResultOutput) ToLookupConnectorMappingResultOutput
 
 func (o LookupConnectorMappingResultOutput) ToLookupConnectorMappingResultOutputWithContext(ctx context.Context) LookupConnectorMappingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectorMappingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorMappingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The connector mapping name

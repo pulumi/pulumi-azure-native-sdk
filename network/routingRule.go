@@ -14,12 +14,14 @@ import (
 
 // Network routing rule.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
 //
-// Other available API versions: 2024-05-01.
+// Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RoutingRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description for this rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Indicates the destination for this particular rule.
@@ -180,6 +182,11 @@ func (o RoutingRuleOutput) ToRoutingRuleOutput() RoutingRuleOutput {
 
 func (o RoutingRuleOutput) ToRoutingRuleOutputWithContext(ctx context.Context) RoutingRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RoutingRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutingRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule.

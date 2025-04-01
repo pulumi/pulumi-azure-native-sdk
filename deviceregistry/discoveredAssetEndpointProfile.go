@@ -14,12 +14,14 @@ import (
 
 // Discovered Asset Endpoint Profile definition.
 //
-// Uses Azure REST API version 2024-09-01-preview.
+// Uses Azure REST API version 2024-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
 type DiscoveredAssetEndpointProfile struct {
 	pulumi.CustomResourceState
 
 	// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 	AdditionalConfiguration pulumi.StringPtrOutput `pulumi:"additionalConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identifier used to detect changes in the asset endpoint profile.
 	DiscoveryId pulumi.StringOutput `pulumi:"discoveryId"`
 	// Defines the configuration for the connector type that is being used with the endpoint profile.
@@ -200,6 +202,11 @@ func (o DiscoveredAssetEndpointProfileOutput) ToDiscoveredAssetEndpointProfileOu
 // Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 func (o DiscoveredAssetEndpointProfileOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiscoveredAssetEndpointProfile) pulumi.StringPtrOutput { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o DiscoveredAssetEndpointProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiscoveredAssetEndpointProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Identifier used to detect changes in the asset endpoint profile.

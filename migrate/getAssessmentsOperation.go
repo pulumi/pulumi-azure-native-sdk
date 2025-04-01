@@ -13,9 +13,9 @@ import (
 
 // Get a Assessment
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-01-01-preview.
 //
-// Other available API versions: 2023-03-15, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAssessmentsOperation(ctx *pulumi.Context, args *LookupAssessmentsOperationArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentsOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssessmentsOperationResult
@@ -45,6 +45,8 @@ type LookupAssessmentsOperationResult struct {
 	AssessmentErrorSummary map[string]int `pulumi:"assessmentErrorSummary"`
 	// Assessment type of the assessment.
 	AssessmentType string `pulumi:"assessmentType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the azure storage type. Premium, Standard etc.
 	AzureDiskTypes []string `pulumi:"azureDiskTypes"`
 	// Gets or sets the user configurable setting to display the azure hybrid use
@@ -196,6 +198,11 @@ func (o LookupAssessmentsOperationResultOutput) AssessmentErrorSummary() pulumi.
 // Assessment type of the assessment.
 func (o LookupAssessmentsOperationResultOutput) AssessmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentsOperationResult) string { return v.AssessmentType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAssessmentsOperationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssessmentsOperationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the azure storage type. Premium, Standard etc.

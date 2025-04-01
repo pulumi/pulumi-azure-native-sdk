@@ -14,12 +14,14 @@ import (
 
 // The Private Endpoint Connection resource.
 //
-// Uses Azure REST API version 2022-07-02. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
 //
-// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DiskAccessAPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// private endpoint connection name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource of private end point.
@@ -174,6 +176,11 @@ func (o DiskAccessAPrivateEndpointConnectionOutput) ToDiskAccessAPrivateEndpoint
 
 func (o DiskAccessAPrivateEndpointConnectionOutput) ToDiskAccessAPrivateEndpointConnectionOutputWithContext(ctx context.Context) DiskAccessAPrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DiskAccessAPrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskAccessAPrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // private endpoint connection name

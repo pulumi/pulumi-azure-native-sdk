@@ -13,9 +13,9 @@ import (
 
 // Get the AppComplianceAutomation report and its properties.
 //
-// Uses Azure REST API version 2022-11-16-preview.
+// Uses Azure REST API version 2024-06-27.
 //
-// Other available API versions: 2024-06-27.
+// Other available API versions: 2022-11-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appcomplianceautomation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupReport(ctx *pulumi.Context, args *LookupReportArgs, opts ...pulumi.InvokeOption) (*LookupReportResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReportResult
@@ -33,14 +33,43 @@ type LookupReportArgs struct {
 
 // A class represent an AppComplianceAutomation report resource.
 type LookupReportResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// List of synchronized certification records.
+	CertRecords []CertSyncRecordResponse `pulumi:"certRecords"`
+	// Report compliance status.
+	ComplianceStatus ReportComplianceStatusResponse `pulumi:"complianceStatus"`
+	// List of report error codes.
+	Errors []string `pulumi:"errors"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// Report last collection trigger time.
+	LastTriggerTime string `pulumi:"lastTriggerTime"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Report property.
-	Properties ReportPropertiesResponse `pulumi:"properties"`
+	// Report next collection trigger time.
+	NextTriggerTime string `pulumi:"nextTriggerTime"`
+	// A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003".
+	OfferGuid *string `pulumi:"offerGuid"`
+	// Azure lifecycle management
+	ProvisioningState string `pulumi:"provisioningState"`
+	// List of resource data.
+	Resources []ResourceMetadataResponse `pulumi:"resources"`
+	// Report status.
+	Status string `pulumi:"status"`
+	// The information of 'bring your own storage' binding to the report
+	StorageInfo *StorageInfoResponse `pulumi:"storageInfo"`
+	// List of subscription Ids.
+	Subscriptions []string `pulumi:"subscriptions"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Report's tenant id.
+	TenantId string `pulumi:"tenantId"`
+	// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
+	// An example of valid timezone id is "Pacific Standard Time".
+	TimeZone string `pulumi:"timeZone"`
+	// Report collection trigger time.
+	TriggerTime string `pulumi:"triggerTime"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -78,9 +107,34 @@ func (o LookupReportResultOutput) ToLookupReportResultOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupReportResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReportResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// List of synchronized certification records.
+func (o LookupReportResultOutput) CertRecords() CertSyncRecordResponseArrayOutput {
+	return o.ApplyT(func(v LookupReportResult) []CertSyncRecordResponse { return v.CertRecords }).(CertSyncRecordResponseArrayOutput)
+}
+
+// Report compliance status.
+func (o LookupReportResultOutput) ComplianceStatus() ReportComplianceStatusResponseOutput {
+	return o.ApplyT(func(v LookupReportResult) ReportComplianceStatusResponse { return v.ComplianceStatus }).(ReportComplianceStatusResponseOutput)
+}
+
+// List of report error codes.
+func (o LookupReportResultOutput) Errors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupReportResult) []string { return v.Errors }).(pulumi.StringArrayOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupReportResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReportResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Report last collection trigger time.
+func (o LookupReportResultOutput) LastTriggerTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReportResult) string { return v.LastTriggerTime }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -88,14 +142,60 @@ func (o LookupReportResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReportResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Report property.
-func (o LookupReportResultOutput) Properties() ReportPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupReportResult) ReportPropertiesResponse { return v.Properties }).(ReportPropertiesResponseOutput)
+// Report next collection trigger time.
+func (o LookupReportResultOutput) NextTriggerTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReportResult) string { return v.NextTriggerTime }).(pulumi.StringOutput)
+}
+
+// A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003".
+func (o LookupReportResultOutput) OfferGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupReportResult) *string { return v.OfferGuid }).(pulumi.StringPtrOutput)
+}
+
+// Azure lifecycle management
+func (o LookupReportResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReportResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// List of resource data.
+func (o LookupReportResultOutput) Resources() ResourceMetadataResponseArrayOutput {
+	return o.ApplyT(func(v LookupReportResult) []ResourceMetadataResponse { return v.Resources }).(ResourceMetadataResponseArrayOutput)
+}
+
+// Report status.
+func (o LookupReportResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReportResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The information of 'bring your own storage' binding to the report
+func (o LookupReportResultOutput) StorageInfo() StorageInfoResponsePtrOutput {
+	return o.ApplyT(func(v LookupReportResult) *StorageInfoResponse { return v.StorageInfo }).(StorageInfoResponsePtrOutput)
+}
+
+// List of subscription Ids.
+func (o LookupReportResultOutput) Subscriptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupReportResult) []string { return v.Subscriptions }).(pulumi.StringArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupReportResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupReportResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Report's tenant id.
+func (o LookupReportResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReportResult) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
+// An example of valid timezone id is "Pacific Standard Time".
+func (o LookupReportResultOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReportResult) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Report collection trigger time.
+func (o LookupReportResultOutput) TriggerTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReportResult) string { return v.TriggerTime }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

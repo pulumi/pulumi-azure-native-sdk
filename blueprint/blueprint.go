@@ -14,10 +14,12 @@ import (
 
 // Represents a Blueprint definition.
 //
-// Uses Azure REST API version 2018-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-11-01-preview.
+// Uses Azure REST API version 2018-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-11-01-preview.
 type Blueprint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Multi-line explain this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// One-liner string explain this resource.
@@ -165,6 +167,11 @@ func (o BlueprintOutput) ToBlueprintOutput() BlueprintOutput {
 
 func (o BlueprintOutput) ToBlueprintOutputWithContext(ctx context.Context) BlueprintOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BlueprintOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Blueprint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Multi-line explain this resource.

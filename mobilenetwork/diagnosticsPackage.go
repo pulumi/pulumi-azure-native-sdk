@@ -14,12 +14,14 @@ import (
 
 // Diagnostics package resource.
 //
-// Uses Azure REST API version 2023-06-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
 //
-// Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
+// Other available API versions: 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DiagnosticsPackage struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the diagnostics package resource.
@@ -148,6 +150,11 @@ func (o DiagnosticsPackageOutput) ToDiagnosticsPackageOutput() DiagnosticsPackag
 
 func (o DiagnosticsPackageOutput) ToDiagnosticsPackageOutputWithContext(ctx context.Context) DiagnosticsPackageOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DiagnosticsPackageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiagnosticsPackage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

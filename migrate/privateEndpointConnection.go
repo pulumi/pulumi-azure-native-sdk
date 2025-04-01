@@ -14,10 +14,12 @@ import (
 
 // A private endpoint connection for a project.
 //
-// Uses Azure REST API version 2019-10-01. In version 1.x of the Azure Native provider, it used API version 2019-10-01.
+// Uses Azure REST API version 2019-10-01. In version 2.x of the Azure Native provider, it used API version 2019-10-01.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// For optimistic concurrency control.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// Name of the private endpoint endpoint connection.
@@ -52,16 +54,34 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20230315:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230315:PrivateEndpointConnectionOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:PrivateEndpointConnectionOperation"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230501preview:PrivateEndpointConnectionOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:PrivateEndpointConnectionOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:PrivateEndpointConnectionOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:PrivateEndpointConnectionOperation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -159,6 +179,11 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() Pri
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // For optimistic concurrency control.

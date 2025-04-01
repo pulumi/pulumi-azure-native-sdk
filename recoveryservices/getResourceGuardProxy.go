@@ -13,9 +13,9 @@ import (
 
 // Returns ResourceGuardProxy under vault and with the name referenced in request
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-10-01, 2024-11-01-preview.
+// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupResourceGuardProxy(ctx *pulumi.Context, args *LookupResourceGuardProxyArgs, opts ...pulumi.InvokeOption) (*LookupResourceGuardProxyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceGuardProxyResult
@@ -35,6 +35,8 @@ type LookupResourceGuardProxyArgs struct {
 }
 
 type LookupResourceGuardProxyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	ETag *string `pulumi:"eTag"`
 	// Resource Id represents the complete path to the resource.
@@ -84,6 +86,11 @@ func (o LookupResourceGuardProxyResultOutput) ToLookupResourceGuardProxyResultOu
 
 func (o LookupResourceGuardProxyResultOutput) ToLookupResourceGuardProxyResultOutputWithContext(ctx context.Context) LookupResourceGuardProxyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupResourceGuardProxyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceGuardProxyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional ETag.

@@ -13,7 +13,7 @@ import (
 
 // Gets a specific role by name.
 //
-// Uses Azure REST API version 2022-03-01.
+// Uses Azure REST API version 2023-07-01.
 func LookupMECRole(ctx *pulumi.Context, args *LookupMECRoleArgs, opts ...pulumi.InvokeOption) (*LookupMECRoleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMECRoleResult
@@ -35,6 +35,8 @@ type LookupMECRoleArgs struct {
 
 // MEC role.
 type LookupMECRoleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Activation key of the MEC.
 	ConnectionString *AsymmetricEncryptedSecretResponse `pulumi:"connectionString"`
 	// Controller Endpoint.
@@ -91,6 +93,11 @@ func (o LookupMECRoleResultOutput) ToLookupMECRoleResultOutput() LookupMECRoleRe
 
 func (o LookupMECRoleResultOutput) ToLookupMECRoleResultOutputWithContext(ctx context.Context) LookupMECRoleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMECRoleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMECRoleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Activation key of the MEC.

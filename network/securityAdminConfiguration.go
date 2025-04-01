@@ -14,20 +14,24 @@ import (
 
 // Defines the security admin configuration
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01, 2024-05-01.
+// Other available API versions: 2021-02-01-preview, 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SecurityAdminConfiguration struct {
 	pulumi.CustomResourceState
 
 	// Enum list of network intent policy based services.
 	ApplyOnNetworkIntentPolicyBasedServices pulumi.StringArrayOutput `pulumi:"applyOnNetworkIntentPolicyBasedServices"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description of the security configuration.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Determine update behavior for changes to network groups referenced within the rules in this configuration.
+	NetworkGroupAddressSpaceAggregationOption pulumi.StringPtrOutput `pulumi:"networkGroupAddressSpaceAggregationOption"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Unique identifier for this resource.
@@ -150,6 +154,8 @@ type securityAdminConfigurationArgs struct {
 	ConfigurationName *string `pulumi:"configurationName"`
 	// A description of the security configuration.
 	Description *string `pulumi:"description"`
+	// Determine update behavior for changes to network groups referenced within the rules in this configuration.
+	NetworkGroupAddressSpaceAggregationOption *string `pulumi:"networkGroupAddressSpaceAggregationOption"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
 	// The name of the resource group.
@@ -164,6 +170,8 @@ type SecurityAdminConfigurationArgs struct {
 	ConfigurationName pulumi.StringPtrInput
 	// A description of the security configuration.
 	Description pulumi.StringPtrInput
+	// Determine update behavior for changes to network groups referenced within the rules in this configuration.
+	NetworkGroupAddressSpaceAggregationOption pulumi.StringPtrInput
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput
 	// The name of the resource group.
@@ -214,6 +222,11 @@ func (o SecurityAdminConfigurationOutput) ApplyOnNetworkIntentPolicyBasedService
 	}).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o SecurityAdminConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityAdminConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A description of the security configuration.
 func (o SecurityAdminConfigurationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityAdminConfiguration) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -227,6 +240,13 @@ func (o SecurityAdminConfigurationOutput) Etag() pulumi.StringOutput {
 // Resource name.
 func (o SecurityAdminConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityAdminConfiguration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Determine update behavior for changes to network groups referenced within the rules in this configuration.
+func (o SecurityAdminConfigurationOutput) NetworkGroupAddressSpaceAggregationOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityAdminConfiguration) pulumi.StringPtrOutput {
+		return v.NetworkGroupAddressSpaceAggregationOption
+	}).(pulumi.StringPtrOutput)
 }
 
 // The provisioning state of the resource.

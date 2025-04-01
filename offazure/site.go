@@ -14,10 +14,12 @@ import (
 
 // Site REST Resource.
 //
-// Uses Azure REST API version 2020-07-07. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
+// Uses Azure REST API version 2020-07-07. In version 2.x of the Azure Native provider, it used API version 2020-07-07.
 type Site struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// eTag for concurrency control.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// Azure location in which Sites is created.
@@ -54,10 +56,22 @@ func NewSite(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazure/v20230606:Site"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20230606:SitesController"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:Site"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20231001preview:SitesController"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:Site"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:SitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:SitesController"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -161,6 +175,11 @@ func (o SiteOutput) ToSiteOutput() SiteOutput {
 
 func (o SiteOutput) ToSiteOutputWithContext(ctx context.Context) SiteOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // eTag for concurrency control.

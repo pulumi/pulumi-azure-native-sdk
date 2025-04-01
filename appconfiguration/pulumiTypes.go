@@ -94,6 +94,242 @@ func (o ApiKeyResponseArrayOutput) Index(i pulumi.IntInput) ApiKeyResponseOutput
 	}).(ApiKeyResponseOutput)
 }
 
+// The data plane proxy settings for a configuration store.
+type DataPlaneProxyProperties struct {
+	// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+	AuthenticationMode *string `pulumi:"authenticationMode"`
+	// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+	PrivateLinkDelegation *string `pulumi:"privateLinkDelegation"`
+}
+
+// DataPlaneProxyPropertiesInput is an input type that accepts DataPlaneProxyPropertiesArgs and DataPlaneProxyPropertiesOutput values.
+// You can construct a concrete instance of `DataPlaneProxyPropertiesInput` via:
+//
+//	DataPlaneProxyPropertiesArgs{...}
+type DataPlaneProxyPropertiesInput interface {
+	pulumi.Input
+
+	ToDataPlaneProxyPropertiesOutput() DataPlaneProxyPropertiesOutput
+	ToDataPlaneProxyPropertiesOutputWithContext(context.Context) DataPlaneProxyPropertiesOutput
+}
+
+// The data plane proxy settings for a configuration store.
+type DataPlaneProxyPropertiesArgs struct {
+	// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+	AuthenticationMode pulumi.StringPtrInput `pulumi:"authenticationMode"`
+	// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+	PrivateLinkDelegation pulumi.StringPtrInput `pulumi:"privateLinkDelegation"`
+}
+
+func (DataPlaneProxyPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPlaneProxyProperties)(nil)).Elem()
+}
+
+func (i DataPlaneProxyPropertiesArgs) ToDataPlaneProxyPropertiesOutput() DataPlaneProxyPropertiesOutput {
+	return i.ToDataPlaneProxyPropertiesOutputWithContext(context.Background())
+}
+
+func (i DataPlaneProxyPropertiesArgs) ToDataPlaneProxyPropertiesOutputWithContext(ctx context.Context) DataPlaneProxyPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneProxyPropertiesOutput)
+}
+
+func (i DataPlaneProxyPropertiesArgs) ToDataPlaneProxyPropertiesPtrOutput() DataPlaneProxyPropertiesPtrOutput {
+	return i.ToDataPlaneProxyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DataPlaneProxyPropertiesArgs) ToDataPlaneProxyPropertiesPtrOutputWithContext(ctx context.Context) DataPlaneProxyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneProxyPropertiesOutput).ToDataPlaneProxyPropertiesPtrOutputWithContext(ctx)
+}
+
+// DataPlaneProxyPropertiesPtrInput is an input type that accepts DataPlaneProxyPropertiesArgs, DataPlaneProxyPropertiesPtr and DataPlaneProxyPropertiesPtrOutput values.
+// You can construct a concrete instance of `DataPlaneProxyPropertiesPtrInput` via:
+//
+//	        DataPlaneProxyPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataPlaneProxyPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDataPlaneProxyPropertiesPtrOutput() DataPlaneProxyPropertiesPtrOutput
+	ToDataPlaneProxyPropertiesPtrOutputWithContext(context.Context) DataPlaneProxyPropertiesPtrOutput
+}
+
+type dataPlaneProxyPropertiesPtrType DataPlaneProxyPropertiesArgs
+
+func DataPlaneProxyPropertiesPtr(v *DataPlaneProxyPropertiesArgs) DataPlaneProxyPropertiesPtrInput {
+	return (*dataPlaneProxyPropertiesPtrType)(v)
+}
+
+func (*dataPlaneProxyPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataPlaneProxyProperties)(nil)).Elem()
+}
+
+func (i *dataPlaneProxyPropertiesPtrType) ToDataPlaneProxyPropertiesPtrOutput() DataPlaneProxyPropertiesPtrOutput {
+	return i.ToDataPlaneProxyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *dataPlaneProxyPropertiesPtrType) ToDataPlaneProxyPropertiesPtrOutputWithContext(ctx context.Context) DataPlaneProxyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataPlaneProxyPropertiesPtrOutput)
+}
+
+// The data plane proxy settings for a configuration store.
+type DataPlaneProxyPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneProxyPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPlaneProxyProperties)(nil)).Elem()
+}
+
+func (o DataPlaneProxyPropertiesOutput) ToDataPlaneProxyPropertiesOutput() DataPlaneProxyPropertiesOutput {
+	return o
+}
+
+func (o DataPlaneProxyPropertiesOutput) ToDataPlaneProxyPropertiesOutputWithContext(ctx context.Context) DataPlaneProxyPropertiesOutput {
+	return o
+}
+
+func (o DataPlaneProxyPropertiesOutput) ToDataPlaneProxyPropertiesPtrOutput() DataPlaneProxyPropertiesPtrOutput {
+	return o.ToDataPlaneProxyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DataPlaneProxyPropertiesOutput) ToDataPlaneProxyPropertiesPtrOutputWithContext(ctx context.Context) DataPlaneProxyPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataPlaneProxyProperties) *DataPlaneProxyProperties {
+		return &v
+	}).(DataPlaneProxyPropertiesPtrOutput)
+}
+
+// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+func (o DataPlaneProxyPropertiesOutput) AuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPlaneProxyProperties) *string { return v.AuthenticationMode }).(pulumi.StringPtrOutput)
+}
+
+// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+func (o DataPlaneProxyPropertiesOutput) PrivateLinkDelegation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPlaneProxyProperties) *string { return v.PrivateLinkDelegation }).(pulumi.StringPtrOutput)
+}
+
+type DataPlaneProxyPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneProxyPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataPlaneProxyProperties)(nil)).Elem()
+}
+
+func (o DataPlaneProxyPropertiesPtrOutput) ToDataPlaneProxyPropertiesPtrOutput() DataPlaneProxyPropertiesPtrOutput {
+	return o
+}
+
+func (o DataPlaneProxyPropertiesPtrOutput) ToDataPlaneProxyPropertiesPtrOutputWithContext(ctx context.Context) DataPlaneProxyPropertiesPtrOutput {
+	return o
+}
+
+func (o DataPlaneProxyPropertiesPtrOutput) Elem() DataPlaneProxyPropertiesOutput {
+	return o.ApplyT(func(v *DataPlaneProxyProperties) DataPlaneProxyProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DataPlaneProxyProperties
+		return ret
+	}).(DataPlaneProxyPropertiesOutput)
+}
+
+// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+func (o DataPlaneProxyPropertiesPtrOutput) AuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataPlaneProxyProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+func (o DataPlaneProxyPropertiesPtrOutput) PrivateLinkDelegation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataPlaneProxyProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateLinkDelegation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The data plane proxy settings for a configuration store.
+type DataPlaneProxyPropertiesResponse struct {
+	// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+	AuthenticationMode *string `pulumi:"authenticationMode"`
+	// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+	PrivateLinkDelegation *string `pulumi:"privateLinkDelegation"`
+}
+
+// The data plane proxy settings for a configuration store.
+type DataPlaneProxyPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneProxyPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPlaneProxyPropertiesResponse)(nil)).Elem()
+}
+
+func (o DataPlaneProxyPropertiesResponseOutput) ToDataPlaneProxyPropertiesResponseOutput() DataPlaneProxyPropertiesResponseOutput {
+	return o
+}
+
+func (o DataPlaneProxyPropertiesResponseOutput) ToDataPlaneProxyPropertiesResponseOutputWithContext(ctx context.Context) DataPlaneProxyPropertiesResponseOutput {
+	return o
+}
+
+// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+func (o DataPlaneProxyPropertiesResponseOutput) AuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPlaneProxyPropertiesResponse) *string { return v.AuthenticationMode }).(pulumi.StringPtrOutput)
+}
+
+// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+func (o DataPlaneProxyPropertiesResponseOutput) PrivateLinkDelegation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPlaneProxyPropertiesResponse) *string { return v.PrivateLinkDelegation }).(pulumi.StringPtrOutput)
+}
+
+type DataPlaneProxyPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataPlaneProxyPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataPlaneProxyPropertiesResponse)(nil)).Elem()
+}
+
+func (o DataPlaneProxyPropertiesResponsePtrOutput) ToDataPlaneProxyPropertiesResponsePtrOutput() DataPlaneProxyPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DataPlaneProxyPropertiesResponsePtrOutput) ToDataPlaneProxyPropertiesResponsePtrOutputWithContext(ctx context.Context) DataPlaneProxyPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DataPlaneProxyPropertiesResponsePtrOutput) Elem() DataPlaneProxyPropertiesResponseOutput {
+	return o.ApplyT(func(v *DataPlaneProxyPropertiesResponse) DataPlaneProxyPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataPlaneProxyPropertiesResponse
+		return ret
+	}).(DataPlaneProxyPropertiesResponseOutput)
+}
+
+// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+func (o DataPlaneProxyPropertiesResponsePtrOutput) AuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataPlaneProxyPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+func (o DataPlaneProxyPropertiesResponsePtrOutput) PrivateLinkDelegation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataPlaneProxyPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateLinkDelegation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The encryption settings for a configuration store.
 type EncryptionProperties struct {
 	// Key vault properties.
@@ -1385,6 +1621,10 @@ func (o UserIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserIdenti
 func init() {
 	pulumi.RegisterOutputType(ApiKeyResponseOutput{})
 	pulumi.RegisterOutputType(ApiKeyResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataPlaneProxyPropertiesOutput{})
+	pulumi.RegisterOutputType(DataPlaneProxyPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DataPlaneProxyPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DataPlaneProxyPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesResponseOutput{})

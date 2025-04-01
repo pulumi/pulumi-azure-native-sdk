@@ -13,9 +13,9 @@ import (
 
 // Get baseboard management controller key set of the provided cluster.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2025-02-01.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBmcKeySet(ctx *pulumi.Context, args *LookupBmcKeySetArgs, opts ...pulumi.InvokeOption) (*LookupBmcKeySetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBmcKeySetResult
@@ -36,12 +36,16 @@ type LookupBmcKeySetArgs struct {
 }
 
 type LookupBmcKeySetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
 	AzureGroupId string `pulumi:"azureGroupId"`
 	// The more detailed status of the key set.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// The date and time after which the users in this key set will be removed from the baseboard management controllers.
 	Expiration string `pulumi:"expiration"`
 	// The extended location of the cluster associated with the resource.
@@ -106,6 +110,11 @@ func (o LookupBmcKeySetResultOutput) ToLookupBmcKeySetResultOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupBmcKeySetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBmcKeySetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
 func (o LookupBmcKeySetResultOutput) AzureGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBmcKeySetResult) string { return v.AzureGroupId }).(pulumi.StringOutput)
@@ -119,6 +128,11 @@ func (o LookupBmcKeySetResultOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o LookupBmcKeySetResultOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBmcKeySetResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o LookupBmcKeySetResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBmcKeySetResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The date and time after which the users in this key set will be removed from the baseboard management controllers.

@@ -14,10 +14,12 @@ import (
 
 // Schema registry definition.
 //
-// Uses Azure REST API version 2024-09-01-preview.
+// Uses Azure REST API version 2024-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
 type SchemaRegistry struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Human-readable description of the schema registry.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Human-readable display name.
@@ -176,6 +178,11 @@ func (o SchemaRegistryOutput) ToSchemaRegistryOutput() SchemaRegistryOutput {
 
 func (o SchemaRegistryOutput) ToSchemaRegistryOutputWithContext(ctx context.Context) SchemaRegistryOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SchemaRegistryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SchemaRegistry) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Human-readable description of the schema registry.

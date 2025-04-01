@@ -13,9 +13,9 @@ import (
 
 // Gets Build details
 //
-// Uses Azure REST API version 2024-07-01-preview.
+// Uses Azure REST API version 2024-10-01-preview.
 //
-// Other available API versions: 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01-preview, 2024-08-01-preview, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetProjectCatalogImageDefinitionBuildDetails(ctx *pulumi.Context, args *GetProjectCatalogImageDefinitionBuildDetailsArgs, opts ...pulumi.InvokeOption) (*GetProjectCatalogImageDefinitionBuildDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectCatalogImageDefinitionBuildDetailsResult

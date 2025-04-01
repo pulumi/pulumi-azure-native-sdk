@@ -13,9 +13,9 @@ import (
 
 // A managed cluster snapshot resource.
 //
-// Uses Azure REST API version 2023-05-02-preview.
+// Uses Azure REST API version 2024-10-02-preview.
 //
-// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-02-preview, 2023-10-02-preview, 2023-11-02-preview, 2024-01-02-preview, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview, 2024-10-02-preview.
+// Other available API versions: 2022-02-02-preview, 2022-03-02-preview, 2022-04-02-preview, 2022-05-02-preview, 2022-06-02-preview, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-02-preview, 2022-10-02-preview, 2022-11-02-preview, 2023-01-02-preview, 2023-02-02-preview, 2023-03-02-preview, 2023-04-02-preview, 2023-05-02-preview, 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-02-preview, 2023-10-02-preview, 2023-11-02-preview, 2024-01-02-preview, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagedClusterSnapshot(ctx *pulumi.Context, args *LookupManagedClusterSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterSnapshotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedClusterSnapshotResult
@@ -35,9 +35,11 @@ type LookupManagedClusterSnapshotArgs struct {
 
 // A managed cluster snapshot resource.
 type LookupManagedClusterSnapshotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// CreationData to be used to specify the source resource ID to create this snapshot.
 	CreationData *CreationDataResponse `pulumi:"creationData"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -90,12 +92,17 @@ func (o LookupManagedClusterSnapshotResultOutput) ToLookupManagedClusterSnapshot
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupManagedClusterSnapshotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedClusterSnapshotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // CreationData to be used to specify the source resource ID to create this snapshot.
 func (o LookupManagedClusterSnapshotResultOutput) CreationData() CreationDataResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagedClusterSnapshotResult) *CreationDataResponse { return v.CreationData }).(CreationDataResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupManagedClusterSnapshotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedClusterSnapshotResult) string { return v.Id }).(pulumi.StringOutput)
 }

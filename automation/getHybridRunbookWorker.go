@@ -13,9 +13,9 @@ import (
 
 // Retrieve a hybrid runbook worker.
 //
-// Uses Azure REST API version 2022-08-08.
+// Uses Azure REST API version 2023-11-01.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupHybridRunbookWorker(ctx *pulumi.Context, args *LookupHybridRunbookWorkerArgs, opts ...pulumi.InvokeOption) (*LookupHybridRunbookWorkerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridRunbookWorkerResult
@@ -39,6 +39,8 @@ type LookupHybridRunbookWorkerArgs struct {
 
 // Definition of hybrid runbook worker.
 type LookupHybridRunbookWorkerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource
 	Id string `pulumi:"id"`
 	// Gets or sets the assigned machine IP address.
@@ -98,6 +100,11 @@ func (o LookupHybridRunbookWorkerResultOutput) ToLookupHybridRunbookWorkerResult
 
 func (o LookupHybridRunbookWorkerResultOutput) ToLookupHybridRunbookWorkerResultOutputWithContext(ctx context.Context) LookupHybridRunbookWorkerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHybridRunbookWorkerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHybridRunbookWorkerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource

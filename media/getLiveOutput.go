@@ -14,6 +14,8 @@ import (
 // Gets a live output.
 //
 // Uses Azure REST API version 2022-11-01.
+//
+// Other available API versions: 2018-03-30-preview, 2018-06-01-preview, 2018-07-01, 2019-05-01-preview, 2020-05-01, 2021-06-01, 2021-11-01, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupLiveOutput(ctx *pulumi.Context, args *LookupLiveOutputArgs, opts ...pulumi.InvokeOption) (*LookupLiveOutputResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLiveOutputResult
@@ -41,6 +43,8 @@ type LookupLiveOutputResult struct {
 	ArchiveWindowLength string `pulumi:"archiveWindowLength"`
 	// The asset that the live output will write to.
 	AssetName string `pulumi:"assetName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation time the live output.
 	Created string `pulumi:"created"`
 	// The description of the live output.
@@ -116,6 +120,11 @@ func (o LookupLiveOutputResultOutput) ArchiveWindowLength() pulumi.StringOutput 
 // The asset that the live output will write to.
 func (o LookupLiveOutputResultOutput) AssetName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLiveOutputResult) string { return v.AssetName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupLiveOutputResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLiveOutputResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation time the live output.

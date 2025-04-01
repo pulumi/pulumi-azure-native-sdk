@@ -13,9 +13,9 @@ import (
 
 // Get the policy configuration at the API level.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2016-10-10, 2018-06-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApiPolicy(ctx *pulumi.Context, args *LookupApiPolicyArgs, opts ...pulumi.InvokeOption) (*LookupApiPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiPolicyResult
@@ -41,6 +41,8 @@ type LookupApiPolicyArgs struct {
 
 // Policy Contract details.
 type LookupApiPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Format of the policyContent.
 	Format *string `pulumi:"format"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -104,6 +106,11 @@ func (o LookupApiPolicyResultOutput) ToLookupApiPolicyResultOutput() LookupApiPo
 
 func (o LookupApiPolicyResultOutput) ToLookupApiPolicyResultOutputWithContext(ctx context.Context) LookupApiPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Format of the policyContent.

@@ -14,9 +14,9 @@ import (
 
 // A VmwareSite
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SitesController struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type SitesController struct {
 	AgentDetails SiteAgentPropertiesResponsePtrOutput `pulumi:"agentDetails"`
 	// Gets or sets the Appliance Name.
 	ApplianceName pulumi.StringPtrOutput `pulumi:"applianceName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the ARM ID of migration hub solution for SDS.
 	DiscoverySolutionId pulumi.StringPtrOutput `pulumi:"discoverySolutionId"`
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
@@ -65,6 +67,9 @@ func NewSitesController(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazure/v20200101:SitesController"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20200707:Site"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure/v20200707:SitesController"),
 		},
 		{
@@ -75,6 +80,9 @@ func NewSitesController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:SitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:Site"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -198,6 +206,11 @@ func (o SitesControllerOutput) AgentDetails() SiteAgentPropertiesResponsePtrOutp
 // Gets or sets the Appliance Name.
 func (o SitesControllerOutput) ApplianceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SitesController) pulumi.StringPtrOutput { return v.ApplianceName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o SitesControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SitesController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the ARM ID of migration hub solution for SDS.

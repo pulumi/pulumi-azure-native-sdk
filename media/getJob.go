@@ -14,6 +14,8 @@ import (
 // Gets a Job.
 //
 // Uses Azure REST API version 2022-07-01.
+//
+// Other available API versions: 2018-03-30-preview, 2018-06-01-preview, 2018-07-01, 2020-05-01, 2021-06-01, 2021-11-01, 2022-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobResult
@@ -37,6 +39,8 @@ type LookupJobArgs struct {
 
 // A Job resource type. The progress and state can be obtained by polling a Job or subscribing to events using EventGrid.
 type LookupJobResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Customer provided key, value pairs that will be returned in Job and JobOutput state events.
 	CorrelationData map[string]string `pulumi:"correlationData"`
 	// The UTC date and time when the customer has created the Job, in 'YYYY-MM-DDThh:mm:ssZ' format.
@@ -104,6 +108,11 @@ func (o LookupJobResultOutput) ToLookupJobResultOutput() LookupJobResultOutput {
 
 func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Context) LookupJobResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupJobResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Customer provided key, value pairs that will be returned in Job and JobOutput state events.

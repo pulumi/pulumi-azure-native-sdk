@@ -34,6 +34,8 @@ type LookupPrivateEndpointConnectionArgs struct {
 }
 
 type LookupPrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the id of the resource.
 	Id string `pulumi:"id"`
 	// Specifies the name of the resource.
@@ -84,6 +86,11 @@ func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConn
 
 func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the id of the resource.

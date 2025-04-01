@@ -13,9 +13,9 @@ import (
 
 // Gets an existing custom domain within an endpoint.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-09-01.
 //
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCustomDomain(ctx *pulumi.Context, args *LookupCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupCustomDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomDomainResult
@@ -39,6 +39,8 @@ type LookupCustomDomainArgs struct {
 
 // Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
 type LookupCustomDomainResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Certificate parameters for securing custom HTTPS
 	CustomHttpsParameters interface{} `pulumi:"customHttpsParameters"`
 	// Provisioning status of the custom domain.
@@ -100,6 +102,11 @@ func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutput() Looku
 
 func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutputWithContext(ctx context.Context) LookupCustomDomainResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCustomDomainResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Certificate parameters for securing custom HTTPS

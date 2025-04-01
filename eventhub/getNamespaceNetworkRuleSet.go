@@ -13,9 +13,9 @@ import (
 
 // Gets NetworkRuleSet for a Namespace.
 //
-// Uses Azure REST API version 2022-10-01-preview.
+// Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNamespaceNetworkRuleSet(ctx *pulumi.Context, args *LookupNamespaceNetworkRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceNetworkRuleSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceNetworkRuleSetResult
@@ -35,6 +35,8 @@ type LookupNamespaceNetworkRuleSetArgs struct {
 
 // Description of topic resource.
 type LookupNamespaceNetworkRuleSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Default Action for Network Rule Set
 	DefaultAction *string `pulumi:"defaultAction"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -102,6 +104,11 @@ func (o LookupNamespaceNetworkRuleSetResultOutput) ToLookupNamespaceNetworkRuleS
 
 func (o LookupNamespaceNetworkRuleSetResultOutput) ToLookupNamespaceNetworkRuleSetResultOutputWithContext(ctx context.Context) LookupNamespaceNetworkRuleSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNamespaceNetworkRuleSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Default Action for Network Rule Set

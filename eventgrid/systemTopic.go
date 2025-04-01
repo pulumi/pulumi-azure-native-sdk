@@ -14,12 +14,14 @@ import (
 
 // EventGrid System Topic.
 //
-// Uses Azure REST API version 2022-06-15. In version 1.x of the Azure Native provider, it used API version 2021-06-01-preview.
+// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SystemTopic struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identity information for the resource.
 	Identity IdentityInfoResponsePtrOutput `pulumi:"identity"`
 	// Location of the resource.
@@ -32,7 +34,7 @@ type SystemTopic struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Source for the system topic.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
-	// The system metadata relating to System Topic resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -192,6 +194,11 @@ func (o SystemTopicOutput) ToSystemTopicOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SystemTopicOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemTopic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Identity information for the resource.
 func (o SystemTopicOutput) Identity() IdentityInfoResponsePtrOutput {
 	return o.ApplyT(func(v *SystemTopic) IdentityInfoResponsePtrOutput { return v.Identity }).(IdentityInfoResponsePtrOutput)
@@ -222,7 +229,7 @@ func (o SystemTopicOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SystemTopic) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to System Topic resource.
+// The system metadata relating to the Event Grid resource.
 func (o SystemTopicOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SystemTopic) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

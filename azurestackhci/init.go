@@ -27,14 +27,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "azure-native:azurestackhci:DeploymentSetting":
 		r = &DeploymentSetting{}
-	case "azure-native:azurestackhci:EdgeDevice":
-		r = &EdgeDevice{}
 	case "azure-native:azurestackhci:Extension":
 		r = &Extension{}
 	case "azure-native:azurestackhci:GalleryImage":
 		r = &GalleryImage{}
 	case "azure-native:azurestackhci:GuestAgent":
 		r = &GuestAgent{}
+	case "azure-native:azurestackhci:HciEdgeDevice":
+		r = &HciEdgeDevice{}
 	case "azure-native:azurestackhci:HciEdgeDeviceJob":
 		r = &HciEdgeDeviceJob{}
 	case "azure-native:azurestackhci:HybridIdentityMetadatum":

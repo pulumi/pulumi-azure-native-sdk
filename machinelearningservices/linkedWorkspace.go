@@ -14,10 +14,14 @@ import (
 
 // Linked workspace.
 //
-// Uses Azure REST API version 2020-05-15-preview. In version 1.x of the Azure Native provider, it used API version 2020-03-01.
+// Uses Azure REST API version 2020-05-15-preview. In version 2.x of the Azure Native provider, it used API version 2020-05-15-preview.
+//
+// Other available API versions: 2020-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type LinkedWorkspace struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Friendly name of the linked workspace.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// LinkedWorkspace specific properties.
@@ -142,6 +146,11 @@ func (o LinkedWorkspaceOutput) ToLinkedWorkspaceOutput() LinkedWorkspaceOutput {
 
 func (o LinkedWorkspaceOutput) ToLinkedWorkspaceOutputWithContext(ctx context.Context) LinkedWorkspaceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LinkedWorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LinkedWorkspace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Friendly name of the linked workspace.

@@ -33,6 +33,8 @@ type LookupSubscriptionFeatureRegistrationArgs struct {
 
 // Subscription feature registration details
 type LookupSubscriptionFeatureRegistrationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure resource Id.
 	Id string `pulumi:"id"`
 	// Azure resource name.
@@ -85,6 +87,11 @@ func (o LookupSubscriptionFeatureRegistrationResultOutput) ToLookupSubscriptionF
 
 func (o LookupSubscriptionFeatureRegistrationResultOutput) ToLookupSubscriptionFeatureRegistrationResultOutputWithContext(ctx context.Context) LookupSubscriptionFeatureRegistrationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSubscriptionFeatureRegistrationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionFeatureRegistrationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure resource Id.

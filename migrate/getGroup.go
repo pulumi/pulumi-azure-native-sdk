@@ -14,8 +14,6 @@ import (
 // Get information related to a specific group in the project. Returns a json object of type 'group' as specified in the models section.
 //
 // Uses Azure REST API version 2019-10-01.
-//
-// Other available API versions: 2018-02-02.
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupResult
@@ -37,6 +35,8 @@ type LookupGroupArgs struct {
 
 // A group created in a Migration project.
 type LookupGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// For optimistic concurrency control.
 	ETag *string `pulumi:"eTag"`
 	// Path reference to this group. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}
@@ -84,6 +84,11 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOu
 
 func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // For optimistic concurrency control.

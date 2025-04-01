@@ -35,6 +35,8 @@ type LookupTemplateArtifactArgs struct {
 
 // Blueprint artifact that deploys a Resource Manager template.
 type LookupTemplateArtifactResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Artifacts which need to be deployed before the specified artifact.
 	DependsOn []string `pulumi:"dependsOn"`
 	// Multi-line explain this resource.
@@ -93,6 +95,11 @@ func (o LookupTemplateArtifactResultOutput) ToLookupTemplateArtifactResultOutput
 
 func (o LookupTemplateArtifactResultOutput) ToLookupTemplateArtifactResultOutputWithContext(ctx context.Context) LookupTemplateArtifactResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTemplateArtifactResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTemplateArtifactResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Artifacts which need to be deployed before the specified artifact.

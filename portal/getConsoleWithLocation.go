@@ -33,6 +33,8 @@ type LookupConsoleWithLocationArgs struct {
 
 // Cloud shell console
 type LookupConsoleWithLocationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Cloud shell console properties.
 	Properties ConsolePropertiesResponse `pulumi:"properties"`
 }
@@ -70,6 +72,11 @@ func (o LookupConsoleWithLocationResultOutput) ToLookupConsoleWithLocationResult
 
 func (o LookupConsoleWithLocationResultOutput) ToLookupConsoleWithLocationResultOutputWithContext(ctx context.Context) LookupConsoleWithLocationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConsoleWithLocationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConsoleWithLocationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Cloud shell console properties.

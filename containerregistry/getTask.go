@@ -14,8 +14,6 @@ import (
 // Get the properties of a specified task.
 //
 // Uses Azure REST API version 2019-06-01-preview.
-//
-// Other available API versions: 2018-09-01, 2019-04-01.
 func LookupTask(ctx *pulumi.Context, args *LookupTaskArgs, opts ...pulumi.InvokeOption) (*LookupTaskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTaskResult
@@ -42,6 +40,8 @@ type LookupTaskResult struct {
 	AgentConfiguration *AgentPropertiesResponse `pulumi:"agentConfiguration"`
 	// The dedicated agent pool for the task.
 	AgentPoolName *string `pulumi:"agentPoolName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of task.
 	CreationDate string `pulumi:"creationDate"`
 	// The properties that describes a set of credentials that will be used when this run is invoked.
@@ -142,6 +142,11 @@ func (o LookupTaskResultOutput) AgentConfiguration() AgentPropertiesResponsePtrO
 // The dedicated agent pool for the task.
 func (o LookupTaskResultOutput) AgentPoolName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTaskResult) *string { return v.AgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupTaskResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTaskResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of task.

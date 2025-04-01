@@ -14,12 +14,12 @@ import (
 
 // An assessment created for a group in the Migration project.
 //
-// Uses Azure REST API version 2019-10-01. In version 1.x of the Azure Native provider, it used API version 2019-10-01.
-//
-// Other available API versions: 2018-02-02.
+// Uses Azure REST API version 2019-10-01. In version 2.x of the Azure Native provider, it used API version 2019-10-01.
 type Assessment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// For optimistic concurrency control.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// Unique name of an assessment.
@@ -51,22 +51,43 @@ func NewAssessment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:migrate/v20180202:Assessment"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20191001:Assessment"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230315:Assessment"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230315:AssessmentsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:Assessment"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:AssessmentsOperation"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:Assessment"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230501preview:AssessmentsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:Assessment"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:AssessmentsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:Assessment"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:AssessmentsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:AssessmentsOperation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -168,6 +189,11 @@ func (o AssessmentOutput) ToAssessmentOutput() AssessmentOutput {
 
 func (o AssessmentOutput) ToAssessmentOutputWithContext(ctx context.Context) AssessmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AssessmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Assessment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // For optimistic concurrency control.

@@ -14,8 +14,6 @@ import (
 // Gets the collector policy in a specified Traffic Collector
 //
 // Uses Azure REST API version 2022-11-01.
-//
-// Other available API versions: 2022-05-01.
 func LookupCollectorPolicy(ctx *pulumi.Context, args *LookupCollectorPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCollectorPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCollectorPolicyResult
@@ -37,6 +35,8 @@ type LookupCollectorPolicyArgs struct {
 
 // Collector policy resource.
 type LookupCollectorPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Emission policies.
 	EmissionPolicies []EmissionPoliciesPropertiesFormatResponse `pulumi:"emissionPolicies"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -94,6 +94,11 @@ func (o LookupCollectorPolicyResultOutput) ToLookupCollectorPolicyResultOutput()
 
 func (o LookupCollectorPolicyResultOutput) ToLookupCollectorPolicyResultOutputWithContext(ctx context.Context) LookupCollectorPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCollectorPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCollectorPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Emission policies.

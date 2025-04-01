@@ -14,12 +14,14 @@ import (
 
 // API version entity.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2024-03-15-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
 //
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Other available API versions: 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ApiVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Current lifecycle stage of the API.
 	LifecycleStage pulumi.StringOutput `pulumi:"lifecycleStage"`
 	// The name of the resource
@@ -171,6 +173,11 @@ func (o ApiVersionOutput) ToApiVersionOutput() ApiVersionOutput {
 
 func (o ApiVersionOutput) ToApiVersionOutputWithContext(ctx context.Context) ApiVersionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApiVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Current lifecycle stage of the API.

@@ -14,10 +14,12 @@ import (
 
 // A long term retention policy.
 //
-// Uses Azure REST API version 2017-03-01-preview.
+// Uses Azure REST API version 2017-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2017-03-01-preview.
 type BackupLongTermRetentionPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The monthly retention policy for an LTR backup in an ISO 8601 format.
 	MonthlyRetention pulumi.StringPtrOutput `pulumi:"monthlyRetention"`
 	// Resource name.
@@ -74,6 +76,9 @@ func NewBackupLongTermRetentionPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20211101:BackupLongTermRetentionPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20211101:LongTermRetentionPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20211101preview:BackupLongTermRetentionPolicy"),
 		},
 		{
@@ -89,10 +94,19 @@ func NewBackupLongTermRetentionPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20221101preview:BackupLongTermRetentionPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:LongTermRetentionPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230201preview:BackupLongTermRetentionPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230201preview:LongTermRetentionPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:BackupLongTermRetentionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:LongTermRetentionPolicy"),
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801:BackupLongTermRetentionPolicy"),
@@ -101,7 +115,16 @@ func NewBackupLongTermRetentionPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20230801preview:BackupLongTermRetentionPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230801preview:LongTermRetentionPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:BackupLongTermRetentionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20240501preview:LongTermRetentionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:LongTermRetentionPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -211,6 +234,11 @@ func (o BackupLongTermRetentionPolicyOutput) ToBackupLongTermRetentionPolicyOutp
 
 func (o BackupLongTermRetentionPolicyOutput) ToBackupLongTermRetentionPolicyOutputWithContext(ctx context.Context) BackupLongTermRetentionPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BackupLongTermRetentionPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupLongTermRetentionPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The monthly retention policy for an LTR backup in an ISO 8601 format.

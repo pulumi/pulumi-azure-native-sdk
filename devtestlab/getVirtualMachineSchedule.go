@@ -39,6 +39,8 @@ type LookupVirtualMachineScheduleArgs struct {
 
 // A schedule.
 type LookupVirtualMachineScheduleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate string `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
@@ -126,6 +128,11 @@ func (o LookupVirtualMachineScheduleResultOutput) ToLookupVirtualMachineSchedule
 
 func (o LookupVirtualMachineScheduleResultOutput) ToLookupVirtualMachineScheduleResultOutputWithContext(ctx context.Context) LookupVirtualMachineScheduleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualMachineScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the schedule.

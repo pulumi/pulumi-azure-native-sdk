@@ -37,6 +37,8 @@ type LookupPrefixArgs struct {
 
 // The peering service prefix class.
 type LookupPrefixResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The error message for validation state
 	ErrorMessage string `pulumi:"errorMessage"`
 	// The list of events for peering service prefix
@@ -96,6 +98,11 @@ func (o LookupPrefixResultOutput) ToLookupPrefixResultOutput() LookupPrefixResul
 
 func (o LookupPrefixResultOutput) ToLookupPrefixResultOutputWithContext(ctx context.Context) LookupPrefixResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrefixResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrefixResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The error message for validation state

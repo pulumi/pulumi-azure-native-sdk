@@ -13,9 +13,9 @@ import (
 
 // Container App Job
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
+// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobResult
@@ -35,6 +35,8 @@ type LookupJobArgs struct {
 
 // Container App Job
 type LookupJobResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Container Apps Job configuration properties.
 	Configuration *JobConfigurationResponse `pulumi:"configuration"`
 	// Resource ID of environment.
@@ -108,6 +110,11 @@ func (o LookupJobResultOutput) ToLookupJobResultOutput() LookupJobResultOutput {
 
 func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Context) LookupJobResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupJobResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Container Apps Job configuration properties.

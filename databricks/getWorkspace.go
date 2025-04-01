@@ -13,9 +13,9 @@ import (
 
 // Gets the workspace.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2023-09-15-preview, 2024-05-01, 2024-09-01-preview, 2025-03-01-preview.
+// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceResult
@@ -35,18 +35,30 @@ type LookupWorkspaceArgs struct {
 
 // Information about workspace.
 type LookupWorkspaceResult struct {
+	// Access Connector Resource that is going to be associated with Databricks Workspace
+	AccessConnector *WorkspacePropertiesResponseAccessConnector `pulumi:"accessConnector"`
 	// The workspace provider authorizations.
 	Authorizations []WorkspaceProviderAuthorizationResponse `pulumi:"authorizations"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Indicates the Object ID, PUID and Application ID of entity that created the workspace.
 	CreatedBy *CreatedByResponse `pulumi:"createdBy"`
 	// Specifies the date and time when the workspace is created.
 	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Properties for Default Catalog configuration during workspace creation.
+	DefaultCatalog *DefaultCatalogPropertiesResponse `pulumi:"defaultCatalog"`
+	// Gets or Sets Default Storage Firewall configuration information
+	DefaultStorageFirewall *string `pulumi:"defaultStorageFirewall"`
 	// The resource Id of the managed disk encryption set.
 	DiskEncryptionSetId string `pulumi:"diskEncryptionSetId"`
 	// Encryption properties for databricks workspace
 	Encryption *WorkspacePropertiesResponseEncryption `pulumi:"encryption"`
+	// Contains settings related to the Enhanced Security and Compliance Add-On.
+	EnhancedSecurityCompliance *EnhancedSecurityComplianceDefinitionResponse `pulumi:"enhancedSecurityCompliance"`
 	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// Indicates whether unity catalog enabled for the workspace or not.
+	IsUcEnabled bool `pulumi:"isUcEnabled"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
@@ -91,6 +103,8 @@ func (val *LookupWorkspaceResult) Defaults() *LookupWorkspaceResult {
 		return nil
 	}
 	tmp := *val
+	tmp.DefaultCatalog = tmp.DefaultCatalog.Defaults()
+
 	tmp.Parameters = tmp.Parameters.Defaults()
 
 	return &tmp
@@ -130,9 +144,19 @@ func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ct
 	return o
 }
 
+// Access Connector Resource that is going to be associated with Databricks Workspace
+func (o LookupWorkspaceResultOutput) AccessConnector() WorkspacePropertiesResponseAccessConnectorPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *WorkspacePropertiesResponseAccessConnector { return v.AccessConnector }).(WorkspacePropertiesResponseAccessConnectorPtrOutput)
+}
+
 // The workspace provider authorizations.
 func (o LookupWorkspaceResultOutput) Authorizations() WorkspaceProviderAuthorizationResponseArrayOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) []WorkspaceProviderAuthorizationResponse { return v.Authorizations }).(WorkspaceProviderAuthorizationResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Indicates the Object ID, PUID and Application ID of entity that created the workspace.
@@ -145,6 +169,16 @@ func (o LookupWorkspaceResultOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
+// Properties for Default Catalog configuration during workspace creation.
+func (o LookupWorkspaceResultOutput) DefaultCatalog() DefaultCatalogPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *DefaultCatalogPropertiesResponse { return v.DefaultCatalog }).(DefaultCatalogPropertiesResponsePtrOutput)
+}
+
+// Gets or Sets Default Storage Firewall configuration information
+func (o LookupWorkspaceResultOutput) DefaultStorageFirewall() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.DefaultStorageFirewall }).(pulumi.StringPtrOutput)
+}
+
 // The resource Id of the managed disk encryption set.
 func (o LookupWorkspaceResultOutput) DiskEncryptionSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.DiskEncryptionSetId }).(pulumi.StringOutput)
@@ -155,9 +189,21 @@ func (o LookupWorkspaceResultOutput) Encryption() WorkspacePropertiesResponseEnc
 	return o.ApplyT(func(v LookupWorkspaceResult) *WorkspacePropertiesResponseEncryption { return v.Encryption }).(WorkspacePropertiesResponseEncryptionPtrOutput)
 }
 
+// Contains settings related to the Enhanced Security and Compliance Add-On.
+func (o LookupWorkspaceResultOutput) EnhancedSecurityCompliance() EnhancedSecurityComplianceDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *EnhancedSecurityComplianceDefinitionResponse {
+		return v.EnhancedSecurityCompliance
+	}).(EnhancedSecurityComplianceDefinitionResponsePtrOutput)
+}
+
 // Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Indicates whether unity catalog enabled for the workspace or not.
+func (o LookupWorkspaceResultOutput) IsUcEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) bool { return v.IsUcEnabled }).(pulumi.BoolOutput)
 }
 
 // The geo-location where the resource lives

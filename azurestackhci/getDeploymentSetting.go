@@ -13,9 +13,9 @@ import (
 
 // Get a DeploymentSetting
 //
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Other available API versions: 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDeploymentSetting(ctx *pulumi.Context, args *LookupDeploymentSettingArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentSettingResult
@@ -23,7 +23,7 @@ func LookupDeploymentSetting(ctx *pulumi.Context, args *LookupDeploymentSettingA
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupDeploymentSettingArgs struct {
@@ -39,24 +39,40 @@ type LookupDeploymentSettingArgs struct {
 type LookupDeploymentSettingResult struct {
 	// Azure resource ids of Arc machines to be part of cluster.
 	ArcNodeResourceIds []string `pulumi:"arcNodeResourceIds"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Scale units will contains list of deployment data
 	DeploymentConfiguration DeploymentConfigurationResponse `pulumi:"deploymentConfiguration"`
 	// The deployment mode for cluster deployment.
 	DeploymentMode string `pulumi:"deploymentMode"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// The intended operation for a cluster.
+	OperationType *string `pulumi:"operationType"`
 	// DeploymentSetting provisioning state
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Deployment Status reported from cluster.
-	ReportedProperties ReportedPropertiesResponse `pulumi:"reportedProperties"`
+	ReportedProperties EceReportedPropertiesResponse `pulumi:"reportedProperties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupDeploymentSettingResult
+func (val *LookupDeploymentSettingResult) Defaults() *LookupDeploymentSettingResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.OperationType == nil {
+		operationType_ := "ClusterProvisioning"
+		tmp.OperationType = &operationType_
+	}
+	return &tmp
+}
 func LookupDeploymentSettingOutput(ctx *pulumi.Context, args LookupDeploymentSettingOutputArgs, opts ...pulumi.InvokeOption) LookupDeploymentSettingResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDeploymentSettingResultOutput, error) {
@@ -99,6 +115,11 @@ func (o LookupDeploymentSettingResultOutput) ArcNodeResourceIds() pulumi.StringA
 	return o.ApplyT(func(v LookupDeploymentSettingResult) []string { return v.ArcNodeResourceIds }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupDeploymentSettingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeploymentSettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Scale units will contains list of deployment data
 func (o LookupDeploymentSettingResultOutput) DeploymentConfiguration() DeploymentConfigurationResponseOutput {
 	return o.ApplyT(func(v LookupDeploymentSettingResult) DeploymentConfigurationResponse {
@@ -111,7 +132,7 @@ func (o LookupDeploymentSettingResultOutput) DeploymentMode() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupDeploymentSettingResult) string { return v.DeploymentMode }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupDeploymentSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -121,14 +142,19 @@ func (o LookupDeploymentSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The intended operation for a cluster.
+func (o LookupDeploymentSettingResultOutput) OperationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDeploymentSettingResult) *string { return v.OperationType }).(pulumi.StringPtrOutput)
+}
+
 // DeploymentSetting provisioning state
 func (o LookupDeploymentSettingResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentSettingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Deployment Status reported from cluster.
-func (o LookupDeploymentSettingResultOutput) ReportedProperties() ReportedPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupDeploymentSettingResult) ReportedPropertiesResponse { return v.ReportedProperties }).(ReportedPropertiesResponseOutput)
+func (o LookupDeploymentSettingResultOutput) ReportedProperties() EceReportedPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupDeploymentSettingResult) EceReportedPropertiesResponse { return v.ReportedProperties }).(EceReportedPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

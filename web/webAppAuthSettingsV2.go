@@ -14,12 +14,14 @@ import (
 
 // Configuration settings for the Azure App Service Authentication / Authorization V2 feature.
 //
-// Uses Azure REST API version 2021-02-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2021-02-01. In version 2.x of the Azure Native provider, it used API version 2021-02-01.
 //
-// Other available API versions: 2020-10-01.
+// Other available API versions: 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppAuthSettingsV2 struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
 	GlobalValidation GlobalValidationResponsePtrOutput `pulumi:"globalValidation"`
 	// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
@@ -181,6 +183,11 @@ func (o WebAppAuthSettingsV2Output) ToWebAppAuthSettingsV2Output() WebAppAuthSet
 
 func (o WebAppAuthSettingsV2Output) ToWebAppAuthSettingsV2OutputWithContext(ctx context.Context) WebAppAuthSettingsV2Output {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebAppAuthSettingsV2Output) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppAuthSettingsV2) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.

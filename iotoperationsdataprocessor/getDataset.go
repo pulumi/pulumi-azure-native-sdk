@@ -35,6 +35,8 @@ type LookupDatasetArgs struct {
 
 // A Dataset resource belonging to an Instance resource.
 type LookupDatasetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Detailed description of the Dataset.
 	Description *string `pulumi:"description"`
 	// Edge location of the resource.
@@ -98,6 +100,11 @@ func (o LookupDatasetResultOutput) ToLookupDatasetResultOutput() LookupDatasetRe
 
 func (o LookupDatasetResultOutput) ToLookupDatasetResultOutputWithContext(ctx context.Context) LookupDatasetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDatasetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Detailed description of the Dataset.

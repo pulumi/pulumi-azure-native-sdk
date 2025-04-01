@@ -13,9 +13,9 @@ import (
 
 // Gets the configuration details of the identity Provider configured in specified service instance.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2016-10-10, 2019-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIdentityProvider(ctx *pulumi.Context, args *LookupIdentityProviderArgs, opts ...pulumi.InvokeOption) (*LookupIdentityProviderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIdentityProviderResult
@@ -41,6 +41,8 @@ type LookupIdentityProviderResult struct {
 	AllowedTenants []string `pulumi:"allowedTenants"`
 	// OpenID Connect discovery endpoint hostname for AAD or AAD B2C.
 	Authority *string `pulumi:"authority"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.
 	ClientId string `pulumi:"clientId"`
 	// The client library to be used in the developer portal. Only applies to AAD and AAD B2C Identity Provider.
@@ -110,6 +112,11 @@ func (o LookupIdentityProviderResultOutput) AllowedTenants() pulumi.StringArrayO
 // OpenID Connect discovery endpoint hostname for AAD or AAD B2C.
 func (o LookupIdentityProviderResultOutput) Authority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIdentityProviderResult) *string { return v.Authority }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupIdentityProviderResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIdentityProviderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.

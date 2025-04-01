@@ -13,7 +13,7 @@ import (
 
 // Gets a data connector definition.
 //
-// Uses Azure REST API version 2023-07-01-preview.
+// Uses Azure REST API version 2024-09-01.
 func LookupCustomizableConnectorDefinition(ctx *pulumi.Context, args *LookupCustomizableConnectorDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupCustomizableConnectorDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomizableConnectorDefinitionResult
@@ -35,6 +35,8 @@ type LookupCustomizableConnectorDefinitionArgs struct {
 
 // Connector definition for kind 'Customizable'.
 type LookupCustomizableConnectorDefinitionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The UiConfig for 'Customizable' connector definition kind.
 	ConnectionsConfig *CustomizableConnectionsConfigResponse `pulumi:"connectionsConfig"`
 	// The UiConfig for 'Customizable' connector definition kind.
@@ -93,6 +95,11 @@ func (o LookupCustomizableConnectorDefinitionResultOutput) ToLookupCustomizableC
 
 func (o LookupCustomizableConnectorDefinitionResultOutput) ToLookupCustomizableConnectorDefinitionResultOutputWithContext(ctx context.Context) LookupCustomizableConnectorDefinitionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCustomizableConnectorDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomizableConnectorDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The UiConfig for 'Customizable' connector definition kind.

@@ -14,10 +14,12 @@ import (
 
 // Details about environment name, metadata and environment id of an environment
 //
-// Uses Azure REST API version 2024-07-01.
+// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
 type OrganizationEnvironmentById struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Type of environment
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Metadata of the record
@@ -159,6 +161,11 @@ func (o OrganizationEnvironmentByIdOutput) ToOrganizationEnvironmentByIdOutput()
 
 func (o OrganizationEnvironmentByIdOutput) ToOrganizationEnvironmentByIdOutputWithContext(ctx context.Context) OrganizationEnvironmentByIdOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o OrganizationEnvironmentByIdOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationEnvironmentById) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Type of environment

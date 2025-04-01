@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-01-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Other available API versions: 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCredentialSet(ctx *pulumi.Context, args *LookupCredentialSetArgs, opts ...pulumi.InvokeOption) (*LookupCredentialSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCredentialSetResult
@@ -40,6 +40,8 @@ type LookupCredentialSetResult struct {
 	// List of authentication credentials stored for an upstream.
 	// Usually consists of a primary and an optional secondary credential.
 	AuthCredentials []AuthCredentialResponse `pulumi:"authCredentials"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of credential store resource.
 	CreationDate string `pulumi:"creationDate"`
 	// The resource ID.
@@ -99,6 +101,11 @@ func (o LookupCredentialSetResultOutput) ToLookupCredentialSetResultOutputWithCo
 // Usually consists of a primary and an optional secondary credential.
 func (o LookupCredentialSetResultOutput) AuthCredentials() AuthCredentialResponseArrayOutput {
 	return o.ApplyT(func(v LookupCredentialSetResult) []AuthCredentialResponse { return v.AuthCredentials }).(AuthCredentialResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupCredentialSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCredentialSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of credential store resource.

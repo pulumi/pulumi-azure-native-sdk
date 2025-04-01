@@ -14,12 +14,14 @@ import (
 
 // The variable.
 //
-// Uses Azure REST API version 2022-08-01-preview.
+// Uses Azure REST API version 2022-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01-preview.
 //
-// Other available API versions: 2024-12-01-preview.
+// Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Variable struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Variable column definitions.
 	Columns PolicyVariableColumnResponseArrayOutput `pulumi:"columns"`
 	// The name of the variable.
@@ -131,6 +133,11 @@ func (o VariableOutput) ToVariableOutput() VariableOutput {
 
 func (o VariableOutput) ToVariableOutputWithContext(ctx context.Context) VariableOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VariableOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Variable) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Variable column definitions.

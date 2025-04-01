@@ -14,12 +14,14 @@ import (
 
 // An object that represents a archive for a container registry.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Archife struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The package source of the archive.
@@ -167,6 +169,11 @@ func (o ArchifeOutput) ToArchifeOutput() ArchifeOutput {
 
 func (o ArchifeOutput) ToArchifeOutputWithContext(ctx context.Context) ArchifeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ArchifeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Archife) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource.

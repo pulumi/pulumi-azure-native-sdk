@@ -35,6 +35,8 @@ type LookupDigitalTwinsEndpointArgs struct {
 
 // DigitalTwinsInstance endpoint resource.
 type LookupDigitalTwinsEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource identifier.
 	Id string `pulumi:"id"`
 	// Extension resource name.
@@ -82,6 +84,11 @@ func (o LookupDigitalTwinsEndpointResultOutput) ToLookupDigitalTwinsEndpointResu
 
 func (o LookupDigitalTwinsEndpointResultOutput) ToLookupDigitalTwinsEndpointResultOutputWithContext(ctx context.Context) LookupDigitalTwinsEndpointResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDigitalTwinsEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDigitalTwinsEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource identifier.

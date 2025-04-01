@@ -14,10 +14,12 @@ import (
 
 // A schedule.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type VirtualMachineSchedule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
@@ -211,6 +213,11 @@ func (o VirtualMachineScheduleOutput) ToVirtualMachineScheduleOutput() VirtualMa
 
 func (o VirtualMachineScheduleOutput) ToVirtualMachineScheduleOutputWithContext(ctx context.Context) VirtualMachineScheduleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VirtualMachineScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the schedule.

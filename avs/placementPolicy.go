@@ -14,17 +14,25 @@ import (
 
 // A vSphere Distributed Resource Scheduler (DRS) placement policy
 //
-// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2021-12-01.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
 //
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PlacementPolicy struct {
 	pulumi.CustomResourceState
 
-	// Resource name.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Display name of the placement policy
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// placement policy properties
-	Properties pulumi.AnyOutput `pulumi:"properties"`
-	// Resource type.
+	// The provisioning state
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Whether the placement policy is enabled or disabled
+	State pulumi.StringPtrOutput `pulumi:"state"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -43,6 +51,9 @@ func NewPlacementPolicy(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -92,30 +103,38 @@ func (PlacementPolicyState) ElementType() reflect.Type {
 }
 
 type placementPolicyArgs struct {
-	// Name of the cluster in the private cloud
+	// Name of the cluster
 	ClusterName string `pulumi:"clusterName"`
-	// Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+	// Display name of the placement policy
+	DisplayName *string `pulumi:"displayName"`
+	// Name of the placement policy.
 	PlacementPolicyName *string `pulumi:"placementPolicyName"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
-	// placement policy properties
-	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Whether the placement policy is enabled or disabled
+	State *string `pulumi:"state"`
+	// Placement Policy type
+	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a PlacementPolicy resource.
 type PlacementPolicyArgs struct {
-	// Name of the cluster in the private cloud
+	// Name of the cluster
 	ClusterName pulumi.StringInput
-	// Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+	// Display name of the placement policy
+	DisplayName pulumi.StringPtrInput
+	// Name of the placement policy.
 	PlacementPolicyName pulumi.StringPtrInput
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
-	// placement policy properties
-	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Whether the placement policy is enabled or disabled
+	State pulumi.StringPtrInput
+	// Placement Policy type
+	Type pulumi.StringInput
 }
 
 func (PlacementPolicyArgs) ElementType() reflect.Type {
@@ -155,17 +174,37 @@ func (o PlacementPolicyOutput) ToPlacementPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-// Resource name.
+// The Azure API version of the resource.
+func (o PlacementPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PlacementPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Display name of the placement policy
+func (o PlacementPolicyOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlacementPolicy) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource
 func (o PlacementPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlacementPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// placement policy properties
-func (o PlacementPolicyOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v *PlacementPolicy) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
+// The provisioning state
+func (o PlacementPolicyOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *PlacementPolicy) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Whether the placement policy is enabled or disabled
+func (o PlacementPolicyOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlacementPolicy) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PlacementPolicyOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PlacementPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PlacementPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlacementPolicy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

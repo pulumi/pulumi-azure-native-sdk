@@ -14,10 +14,12 @@ import (
 
 // REST model used to encapsulate the user visible state of a PrivateEndpoint.
 //
-// Uses Azure REST API version 2020-07-07. In version 1.x of the Azure Native provider, it used API version 2020-07-07.
+// Uses Azure REST API version 2020-07-07. In version 2.x of the Azure Native provider, it used API version 2020-07-07.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the tag for optimistic concurrency control.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// Gets the name of the resource.
@@ -51,10 +53,22 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazure/v20230606:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20230606:PrivateEndpointConnectionController"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20231001preview:PrivateEndpointConnectionController"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:PrivateEndpointConnectionController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:PrivateEndpointConnectionController"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -144,6 +158,11 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() Pri
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the tag for optimistic concurrency control.

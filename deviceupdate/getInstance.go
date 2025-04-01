@@ -37,6 +37,8 @@ type LookupInstanceArgs struct {
 type LookupInstanceResult struct {
 	// Parent Device Update Account name which Instance belongs to.
 	AccountName string `pulumi:"accountName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Customer-initiated diagnostic log collection storage properties
 	DiagnosticStorageProperties *DiagnosticStoragePropertiesResponse `pulumi:"diagnosticStorageProperties"`
 	// Enables or Disables the diagnostic logs collection
@@ -99,6 +101,11 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 // Parent Device Update Account name which Instance belongs to.
 func (o LookupInstanceResultOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Customer-initiated diagnostic log collection storage properties

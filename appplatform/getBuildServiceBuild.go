@@ -13,9 +13,9 @@ import (
 
 // Get a KPack build.
 //
-// Uses Azure REST API version 2023-05-01-preview.
+// Uses Azure REST API version 2024-01-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-05-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appplatform [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBuildServiceBuild(ctx *pulumi.Context, args *LookupBuildServiceBuildArgs, opts ...pulumi.InvokeOption) (*LookupBuildServiceBuildResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuildServiceBuildResult
@@ -39,6 +39,8 @@ type LookupBuildServiceBuildArgs struct {
 
 // Build resource payload
 type LookupBuildServiceBuildResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
 	// The name of the resource.
@@ -98,6 +100,11 @@ func (o LookupBuildServiceBuildResultOutput) ToLookupBuildServiceBuildResultOutp
 
 func (o LookupBuildServiceBuildResultOutput) ToLookupBuildServiceBuildResultOutputWithContext(ctx context.Context) LookupBuildServiceBuildResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBuildServiceBuildResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBuildServiceBuildResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource.

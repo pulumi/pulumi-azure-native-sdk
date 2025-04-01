@@ -35,6 +35,8 @@ type LookupPrivateEndpointConnectionArgs struct {
 
 // Private Endpoint Connection ARM resource.
 type LookupPrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag identifies change in the resource.
 	Etag string `pulumi:"etag"`
 	// The resource identifier.
@@ -82,6 +84,11 @@ func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConn
 
 func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag identifies change in the resource.

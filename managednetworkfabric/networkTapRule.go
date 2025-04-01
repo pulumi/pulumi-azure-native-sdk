@@ -14,7 +14,7 @@ import (
 
 // The NetworkTapRule resource definition.
 //
-// Uses Azure REST API version 2023-06-15.
+// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
 type NetworkTapRule struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type NetworkTapRule struct {
 	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Configuration state of the resource.
 	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
 	// Input method to configure Network Tap Rule.
@@ -198,6 +200,11 @@ func (o NetworkTapRuleOutput) AdministrativeState() pulumi.StringOutput {
 // Switch configuration description.
 func (o NetworkTapRuleOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkTapRule) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o NetworkTapRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkTapRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration state of the resource.

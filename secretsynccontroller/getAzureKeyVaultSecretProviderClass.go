@@ -33,6 +33,8 @@ type LookupAzureKeyVaultSecretProviderClassArgs struct {
 
 // The AzureKeyVaultSecretProviderClass resource.
 type LookupAzureKeyVaultSecretProviderClassResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The user assigned managed identity client ID that should be used to access the Azure Key Vault.
 	ClientId string `pulumi:"clientId"`
 	// The complex type of the extended location.
@@ -92,6 +94,11 @@ func (o LookupAzureKeyVaultSecretProviderClassResultOutput) ToLookupAzureKeyVaul
 
 func (o LookupAzureKeyVaultSecretProviderClassResultOutput) ToLookupAzureKeyVaultSecretProviderClassResultOutputWithContext(ctx context.Context) LookupAzureKeyVaultSecretProviderClassResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAzureKeyVaultSecretProviderClassResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureKeyVaultSecretProviderClassResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The user assigned managed identity client ID that should be used to access the Azure Key Vault.

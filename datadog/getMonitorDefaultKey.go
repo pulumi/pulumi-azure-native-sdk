@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2022-06-01.
+// Uses Azure REST API version 2023-10-20.
 //
-// Other available API versions: 2022-08-01, 2023-01-01, 2023-07-07, 2023-10-20.
+// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetMonitorDefaultKey(ctx *pulumi.Context, args *GetMonitorDefaultKeyArgs, opts ...pulumi.InvokeOption) (*GetMonitorDefaultKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetMonitorDefaultKeyResult

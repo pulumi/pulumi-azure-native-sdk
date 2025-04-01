@@ -15,10 +15,12 @@ import (
 // The agentpool that has the ARM resource and properties.
 // The agentpool will have all information to create an agent pool.
 //
-// Uses Azure REST API version 2019-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2019-06-01-preview.
+// Uses Azure REST API version 2019-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01-preview.
 type AgentPool struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The count of agent machine
 	Count pulumi.IntPtrOutput `pulumi:"count"`
 	// The location of the resource. This cannot be changed after the resource is created.
@@ -170,6 +172,11 @@ func (o AgentPoolOutput) ToAgentPoolOutput() AgentPoolOutput {
 
 func (o AgentPoolOutput) ToAgentPoolOutputWithContext(ctx context.Context) AgentPoolOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AgentPoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The count of agent machine

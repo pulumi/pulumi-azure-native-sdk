@@ -13,40 +13,40 @@ import (
 
 // Access Review History Definition.
 //
-// Uses Azure REST API version 2021-12-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-11-16-preview.
+// Uses Azure REST API version 2021-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-12-01-preview.
+//
+// Other available API versions: 2021-11-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AccessReviewHistoryDefinitionById struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Date time when history definition was created
 	CreatedDateTime pulumi.StringOutput `pulumi:"createdDateTime"`
 	// Collection of review decisions which the history data should be filtered on. For example if Approve and Deny are supplied the data will only contain review results in which the decision maker approved or denied a review request.
 	Decisions pulumi.StringArrayOutput `pulumi:"decisions"`
 	// The display name for the history definition.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The DateTime when the review is scheduled to end. Required if type is endDate
-	EndDate pulumi.StringPtrOutput `pulumi:"endDate"`
 	// Set of access review history instances for this history definition.
 	Instances AccessReviewHistoryInstanceResponseArrayOutput `pulumi:"instances"`
 	// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
 	Interval pulumi.IntPtrOutput `pulumi:"interval"`
 	// The access review history definition unique id.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The number of times to repeat the access review. Required and must be positive if type is numbered.
-	NumberOfOccurrences pulumi.IntPtrOutput `pulumi:"numberOfOccurrences"`
 	// The identity id
 	PrincipalId pulumi.StringOutput `pulumi:"principalId"`
 	// The identity display name
 	PrincipalName pulumi.StringOutput `pulumi:"principalName"`
 	// The identity type : user/servicePrincipal
 	PrincipalType pulumi.StringOutput `pulumi:"principalType"`
+	// Access Review History Definition recurrence settings.
+	Range AccessReviewRecurrenceRangeResponsePtrOutput `pulumi:"range"`
 	// Date time used when selecting review data, all reviews included in data end on or before this date. For use only with one-time/non-recurring reports.
 	ReviewHistoryPeriodEndDateTime pulumi.StringOutput `pulumi:"reviewHistoryPeriodEndDateTime"`
 	// Date time used when selecting review data, all reviews included in data start on or after this date. For use only with one-time/non-recurring reports.
 	ReviewHistoryPeriodStartDateTime pulumi.StringOutput `pulumi:"reviewHistoryPeriodStartDateTime"`
 	// A collection of scopes used when selecting review history data
 	Scopes AccessReviewScopeResponseArrayOutput `pulumi:"scopes"`
-	// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
-	StartDate pulumi.StringPtrOutput `pulumi:"startDate"`
 	// This read-only field specifies the of the requested review history data. This is either requested, in-progress, done or error.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The resource type.
@@ -108,21 +108,17 @@ type accessReviewHistoryDefinitionByIdArgs struct {
 	Decisions []string `pulumi:"decisions"`
 	// The display name for the history definition.
 	DisplayName *string `pulumi:"displayName"`
-	// The DateTime when the review is scheduled to end. Required if type is endDate
-	EndDate *string `pulumi:"endDate"`
 	// The id of the access review history definition.
 	HistoryDefinitionId *string `pulumi:"historyDefinitionId"`
 	// Set of access review history instances for this history definition.
 	Instances []AccessReviewHistoryInstance `pulumi:"instances"`
 	// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
 	Interval *int `pulumi:"interval"`
-	// The number of times to repeat the access review. Required and must be positive if type is numbered.
-	NumberOfOccurrences *int `pulumi:"numberOfOccurrences"`
+	// Access Review History Definition recurrence settings.
+	Range *AccessReviewRecurrenceRange `pulumi:"range"`
 	// A collection of scopes used when selecting review history data
 	Scopes []AccessReviewScope `pulumi:"scopes"`
-	// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
-	StartDate *string `pulumi:"startDate"`
-	// The recurrence range type. The possible values are: endDate, noEnd, numbered.
+	// The recurrence type : weekly, monthly, etc.
 	Type *string `pulumi:"type"`
 }
 
@@ -132,21 +128,17 @@ type AccessReviewHistoryDefinitionByIdArgs struct {
 	Decisions pulumi.StringArrayInput
 	// The display name for the history definition.
 	DisplayName pulumi.StringPtrInput
-	// The DateTime when the review is scheduled to end. Required if type is endDate
-	EndDate pulumi.StringPtrInput
 	// The id of the access review history definition.
 	HistoryDefinitionId pulumi.StringPtrInput
 	// Set of access review history instances for this history definition.
 	Instances AccessReviewHistoryInstanceArrayInput
 	// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
 	Interval pulumi.IntPtrInput
-	// The number of times to repeat the access review. Required and must be positive if type is numbered.
-	NumberOfOccurrences pulumi.IntPtrInput
+	// Access Review History Definition recurrence settings.
+	Range AccessReviewRecurrenceRangePtrInput
 	// A collection of scopes used when selecting review history data
 	Scopes AccessReviewScopeArrayInput
-	// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
-	StartDate pulumi.StringPtrInput
-	// The recurrence range type. The possible values are: endDate, noEnd, numbered.
+	// The recurrence type : weekly, monthly, etc.
 	Type pulumi.StringPtrInput
 }
 
@@ -187,6 +179,11 @@ func (o AccessReviewHistoryDefinitionByIdOutput) ToAccessReviewHistoryDefinition
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AccessReviewHistoryDefinitionByIdOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessReviewHistoryDefinitionById) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Date time when history definition was created
 func (o AccessReviewHistoryDefinitionByIdOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessReviewHistoryDefinitionById) pulumi.StringOutput { return v.CreatedDateTime }).(pulumi.StringOutput)
@@ -200,11 +197,6 @@ func (o AccessReviewHistoryDefinitionByIdOutput) Decisions() pulumi.StringArrayO
 // The display name for the history definition.
 func (o AccessReviewHistoryDefinitionByIdOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessReviewHistoryDefinitionById) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The DateTime when the review is scheduled to end. Required if type is endDate
-func (o AccessReviewHistoryDefinitionByIdOutput) EndDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessReviewHistoryDefinitionById) pulumi.StringPtrOutput { return v.EndDate }).(pulumi.StringPtrOutput)
 }
 
 // Set of access review history instances for this history definition.
@@ -224,11 +216,6 @@ func (o AccessReviewHistoryDefinitionByIdOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessReviewHistoryDefinitionById) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The number of times to repeat the access review. Required and must be positive if type is numbered.
-func (o AccessReviewHistoryDefinitionByIdOutput) NumberOfOccurrences() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AccessReviewHistoryDefinitionById) pulumi.IntPtrOutput { return v.NumberOfOccurrences }).(pulumi.IntPtrOutput)
-}
-
 // The identity id
 func (o AccessReviewHistoryDefinitionByIdOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessReviewHistoryDefinitionById) pulumi.StringOutput { return v.PrincipalId }).(pulumi.StringOutput)
@@ -242,6 +229,13 @@ func (o AccessReviewHistoryDefinitionByIdOutput) PrincipalName() pulumi.StringOu
 // The identity type : user/servicePrincipal
 func (o AccessReviewHistoryDefinitionByIdOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessReviewHistoryDefinitionById) pulumi.StringOutput { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+// Access Review History Definition recurrence settings.
+func (o AccessReviewHistoryDefinitionByIdOutput) Range() AccessReviewRecurrenceRangeResponsePtrOutput {
+	return o.ApplyT(func(v *AccessReviewHistoryDefinitionById) AccessReviewRecurrenceRangeResponsePtrOutput {
+		return v.Range
+	}).(AccessReviewRecurrenceRangeResponsePtrOutput)
 }
 
 // Date time used when selecting review data, all reviews included in data end on or before this date. For use only with one-time/non-recurring reports.
@@ -261,11 +255,6 @@ func (o AccessReviewHistoryDefinitionByIdOutput) ReviewHistoryPeriodStartDateTim
 // A collection of scopes used when selecting review history data
 func (o AccessReviewHistoryDefinitionByIdOutput) Scopes() AccessReviewScopeResponseArrayOutput {
 	return o.ApplyT(func(v *AccessReviewHistoryDefinitionById) AccessReviewScopeResponseArrayOutput { return v.Scopes }).(AccessReviewScopeResponseArrayOutput)
-}
-
-// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
-func (o AccessReviewHistoryDefinitionByIdOutput) StartDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessReviewHistoryDefinitionById) pulumi.StringPtrOutput { return v.StartDate }).(pulumi.StringPtrOutput)
 }
 
 // This read-only field specifies the of the requested review history data. This is either requested, in-progress, done or error.

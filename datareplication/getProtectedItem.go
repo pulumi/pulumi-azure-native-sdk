@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2021-02-16-preview.
 //
-// Other available API versions: 2024-09-01.
+// Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupProtectedItem(ctx *pulumi.Context, args *LookupProtectedItemArgs, opts ...pulumi.InvokeOption) (*LookupProtectedItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectedItemResult
@@ -37,6 +37,8 @@ type LookupProtectedItemArgs struct {
 
 // Protected item model.
 type LookupProtectedItemResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the Id of the resource.
 	Id string `pulumi:"id"`
 	// Gets or sets the name of the resource.
@@ -83,6 +85,11 @@ func (o LookupProtectedItemResultOutput) ToLookupProtectedItemResultOutput() Loo
 
 func (o LookupProtectedItemResultOutput) ToLookupProtectedItemResultOutputWithContext(ctx context.Context) LookupProtectedItemResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProtectedItemResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProtectedItemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the Id of the resource.

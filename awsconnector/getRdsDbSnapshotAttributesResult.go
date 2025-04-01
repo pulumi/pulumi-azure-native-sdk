@@ -33,6 +33,8 @@ type LookupRdsDbSnapshotAttributesResultArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupRdsDbSnapshotAttributesResultResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -82,6 +84,11 @@ func (o LookupRdsDbSnapshotAttributesResultResultOutput) ToLookupRdsDbSnapshotAt
 
 func (o LookupRdsDbSnapshotAttributesResultResultOutput) ToLookupRdsDbSnapshotAttributesResultResultOutputWithContext(ctx context.Context) LookupRdsDbSnapshotAttributesResultResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRdsDbSnapshotAttributesResultResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRdsDbSnapshotAttributesResultResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

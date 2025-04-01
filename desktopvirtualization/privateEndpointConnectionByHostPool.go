@@ -14,21 +14,25 @@ import (
 
 // The Private Endpoint Connection resource.
 //
-// Uses Azure REST API version 2022-10-14-preview. In version 1.x of the Azure Native provider, it used API version 2021-04-01-preview.
+// Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2022-10-14-preview.
 //
-// Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
+// Other available API versions: 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PrivateEndpointConnectionByHostPool struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The group ids for the private endpoint resource.
+	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource of private end point.
+	// The private endpoint resource.
 	PrivateEndpoint PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -65,6 +69,9 @@ func NewPrivateEndpointConnectionByHostPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:PrivateEndpointConnectionByHostPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:PrivateEndpointConnectionByHostPool"),
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:PrivateEndpointConnectionByHostPool"),
@@ -130,7 +137,7 @@ func (PrivateEndpointConnectionByHostPoolState) ElementType() reflect.Type {
 type privateEndpointConnectionByHostPoolArgs struct {
 	// The name of the host pool within the specified resource group
 	HostPoolName string `pulumi:"hostPoolName"`
-	// The name of the private endpoint connection associated with the Azure resource
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
@@ -142,7 +149,7 @@ type privateEndpointConnectionByHostPoolArgs struct {
 type PrivateEndpointConnectionByHostPoolArgs struct {
 	// The name of the host pool within the specified resource group
 	HostPoolName pulumi.StringInput
-	// The name of the private endpoint connection associated with the Azure resource
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput
@@ -187,12 +194,22 @@ func (o PrivateEndpointConnectionByHostPoolOutput) ToPrivateEndpointConnectionBy
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionByHostPoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionByHostPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The group ids for the private endpoint resource.
+func (o PrivateEndpointConnectionByHostPoolOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionByHostPool) pulumi.StringArrayOutput { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
 // The name of the resource
 func (o PrivateEndpointConnectionByHostPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnectionByHostPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource of private end point.
+// The private endpoint resource.
 func (o PrivateEndpointConnectionByHostPoolOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnectionByHostPool) PrivateEndpointResponsePtrOutput {
 		return v.PrivateEndpoint
@@ -211,7 +228,7 @@ func (o PrivateEndpointConnectionByHostPoolOutput) ProvisioningState() pulumi.St
 	return o.ApplyT(func(v *PrivateEndpointConnectionByHostPool) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o PrivateEndpointConnectionByHostPoolOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnectionByHostPool) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

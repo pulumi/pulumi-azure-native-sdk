@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A cloud link resource
+// Get a CloudLink
 //
-// Uses Azure REST API version 2022-05-01.
+// Uses Azure REST API version 2023-09-01.
 //
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCloudLink(ctx *pulumi.Context, args *LookupCloudLinkArgs, opts ...pulumi.InvokeOption) (*LookupCloudLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudLinkResult
@@ -27,7 +27,7 @@ func LookupCloudLink(ctx *pulumi.Context, args *LookupCloudLinkArgs, opts ...pul
 }
 
 type LookupCloudLinkArgs struct {
-	// Name of the cloud link resource
+	// Name of the cloud link.
 	CloudLinkName string `pulumi:"cloudLinkName"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
@@ -37,15 +37,21 @@ type LookupCloudLinkArgs struct {
 
 // A cloud link resource
 type LookupCloudLinkResult struct {
-	// Resource ID.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Identifier of the other private cloud participating in the link.
 	LinkedCloud *string `pulumi:"linkedCloud"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
 	// The state of the cloud link.
 	Status string `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -59,7 +65,7 @@ func LookupCloudLinkOutput(ctx *pulumi.Context, args LookupCloudLinkOutputArgs, 
 }
 
 type LookupCloudLinkOutputArgs struct {
-	// Name of the cloud link resource
+	// Name of the cloud link.
 	CloudLinkName pulumi.StringInput `pulumi:"cloudLinkName"`
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
@@ -86,7 +92,12 @@ func (o LookupCloudLinkResultOutput) ToLookupCloudLinkResultOutputWithContext(ct
 	return o
 }
 
-// Resource ID.
+// The Azure API version of the resource.
+func (o LookupCloudLinkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudLinkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupCloudLinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudLinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -96,9 +107,14 @@ func (o LookupCloudLinkResultOutput) LinkedCloud() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCloudLinkResult) *string { return v.LinkedCloud }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupCloudLinkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudLinkResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the resource.
+func (o LookupCloudLinkResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudLinkResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The state of the cloud link.
@@ -106,7 +122,12 @@ func (o LookupCloudLinkResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudLinkResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupCloudLinkResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCloudLinkResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupCloudLinkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudLinkResult) string { return v.Type }).(pulumi.StringOutput)
 }

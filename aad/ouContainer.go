@@ -14,12 +14,14 @@ import (
 
 // Resource for OuContainer.
 //
-// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+// Uses Azure REST API version 2022-12-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
 type OuContainer struct {
 	pulumi.CustomResourceState
 
 	// The list of container accounts
 	Accounts ContainerAccountResponseArrayOutput `pulumi:"accounts"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The OuContainer name
 	ContainerId pulumi.StringOutput `pulumi:"containerId"`
 	// The Deployment id
@@ -185,6 +187,11 @@ func (o OuContainerOutput) ToOuContainerOutputWithContext(ctx context.Context) O
 // The list of container accounts
 func (o OuContainerOutput) Accounts() ContainerAccountResponseArrayOutput {
 	return o.ApplyT(func(v *OuContainer) ContainerAccountResponseArrayOutput { return v.Accounts }).(ContainerAccountResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o OuContainerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OuContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The OuContainer name

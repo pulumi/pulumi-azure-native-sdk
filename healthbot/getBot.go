@@ -13,9 +13,9 @@ import (
 
 // Get a HealthBot.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-02-01.
 //
-// Other available API versions: 2020-12-08-preview, 2024-02-01.
+// Other available API versions: 2023-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native healthbot [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOption) (*LookupBotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBotResult
@@ -35,6 +35,8 @@ type LookupBotArgs struct {
 
 // Azure Health Bot resource definition
 type LookupBotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
 	// The identity of the Azure Health Bot.
@@ -88,6 +90,11 @@ func (o LookupBotResultOutput) ToLookupBotResultOutput() LookupBotResultOutput {
 
 func (o LookupBotResultOutput) ToLookupBotResultOutputWithContext(ctx context.Context) LookupBotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource.

@@ -37,6 +37,8 @@ type LookupGalleryInVMAccessControlProfileVersionArgs struct {
 
 // Specifies information about the gallery inVMAccessControlProfile version that you want to create or update.
 type LookupGalleryInVMAccessControlProfileVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// This property allows you to specify if the requests will be allowed to access the host endpoints. Possible values are: 'Allow', 'Deny'.
 	DefaultAccess string `pulumi:"defaultAccess"`
 	// If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.
@@ -102,6 +104,11 @@ func (o LookupGalleryInVMAccessControlProfileVersionResultOutput) ToLookupGaller
 
 func (o LookupGalleryInVMAccessControlProfileVersionResultOutput) ToLookupGalleryInVMAccessControlProfileVersionResultOutputWithContext(ctx context.Context) LookupGalleryInVMAccessControlProfileVersionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGalleryInVMAccessControlProfileVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGalleryInVMAccessControlProfileVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // This property allows you to specify if the requests will be allowed to access the host endpoints. Possible values are: 'Allow', 'Deny'.

@@ -14,10 +14,12 @@ import (
 
 // Specifies information about the gallery inVMAccessControlProfile version that you want to create or update.
 //
-// Uses Azure REST API version 2024-03-03.
+// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2024-03-03.
 type GalleryInVMAccessControlProfileVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// This property allows you to specify if the requests will be allowed to access the host endpoints. Possible values are: 'Allow', 'Deny'.
 	DefaultAccess pulumi.StringOutput `pulumi:"defaultAccess"`
 	// If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.
@@ -190,6 +192,11 @@ func (o GalleryInVMAccessControlProfileVersionOutput) ToGalleryInVMAccessControl
 
 func (o GalleryInVMAccessControlProfileVersionOutput) ToGalleryInVMAccessControlProfileVersionOutputWithContext(ctx context.Context) GalleryInVMAccessControlProfileVersionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GalleryInVMAccessControlProfileVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GalleryInVMAccessControlProfileVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // This property allows you to specify if the requests will be allowed to access the host endpoints. Possible values are: 'Allow', 'Deny'.

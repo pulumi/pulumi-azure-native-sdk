@@ -14,12 +14,14 @@ import (
 
 // This represents a Azure subscriptionId that is associated with a GroupQuotasEntity.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-03-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2024-10-15-preview, 2024-12-18-preview, 2025-03-01, 2025-03-15-preview.
+// Other available API versions: 2023-06-01-preview, 2024-10-15-preview, 2024-12-18-preview, 2025-03-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quota [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GroupQuotaSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name       pulumi.StringOutput                              `pulumi:"name"`
 	Properties GroupQuotaSubscriptionIdResponsePropertiesOutput `pulumi:"properties"`
@@ -142,6 +144,11 @@ func (o GroupQuotaSubscriptionOutput) ToGroupQuotaSubscriptionOutput() GroupQuot
 
 func (o GroupQuotaSubscriptionOutput) ToGroupQuotaSubscriptionOutputWithContext(ctx context.Context) GroupQuotaSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GroupQuotaSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupQuotaSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

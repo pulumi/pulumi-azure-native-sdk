@@ -14,9 +14,7 @@ import (
 
 // Response for Disk Pool request.
 //
-// Uses Azure REST API version 2021-08-01. In version 1.x of the Azure Native provider, it used API version 2020-03-15-preview.
-//
-// Other available API versions: 2020-03-15-preview.
+// Uses Azure REST API version 2021-08-01. In version 2.x of the Azure Native provider, it used API version 2021-08-01.
 type DiskPool struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +22,8 @@ type DiskPool struct {
 	AdditionalCapabilities pulumi.StringArrayOutput `pulumi:"additionalCapabilities"`
 	// Logical zone for Disk Pool resource; example: ["1"].
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of Azure Managed Disks to attach to a Disk Pool.
 	Disks DiskResponseArrayOutput `pulumi:"disks"`
 	// The geo-location where the resource lives.
@@ -206,6 +206,11 @@ func (o DiskPoolOutput) AdditionalCapabilities() pulumi.StringArrayOutput {
 // Logical zone for Disk Pool resource; example: ["1"].
 func (o DiskPoolOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DiskPool) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o DiskPoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Azure Managed Disks to attach to a Disk Pool.

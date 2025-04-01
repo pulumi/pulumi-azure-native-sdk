@@ -14,12 +14,14 @@ import (
 
 // MQ broker resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type Broker struct {
 	pulumi.CustomResourceState
 
 	// The details of Authentication Docker Image.
 	AuthImage ContainerImageResponseOutput `pulumi:"authImage"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The details of Broker Docker Image.
 	BrokerImage ContainerImageResponseOutput `pulumi:"brokerImage"`
 	// The details of Node Tolerations for Broker Pods.
@@ -258,6 +260,11 @@ func (o BrokerOutput) ToBrokerOutputWithContext(ctx context.Context) BrokerOutpu
 // The details of Authentication Docker Image.
 func (o BrokerOutput) AuthImage() ContainerImageResponseOutput {
 	return o.ApplyT(func(v *Broker) ContainerImageResponseOutput { return v.AuthImage }).(ContainerImageResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o BrokerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Broker) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The details of Broker Docker Image.

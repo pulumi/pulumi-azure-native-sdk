@@ -14,12 +14,12 @@ import (
 
 // Defines the hybridIdentityMetadata.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
-//
-// Other available API versions: 2022-05-01-preview, 2023-11-15-preview, 2024-01-01.
+// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 type HybridIdentityMetadatum struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the provisioned cluster.
 	Identity ProvisionedClusterIdentityResponsePtrOutput `pulumi:"identity"`
 	// The name of the resource
@@ -55,6 +55,12 @@ func NewHybridIdentityMetadatum(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:HybridIdentityMetadatum"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20231115preview:HybridIdentityMetadatum"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:HybridIdentityMetadatum"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -156,6 +162,11 @@ func (o HybridIdentityMetadatumOutput) ToHybridIdentityMetadatumOutput() HybridI
 
 func (o HybridIdentityMetadatumOutput) ToHybridIdentityMetadatumOutputWithContext(ctx context.Context) HybridIdentityMetadatumOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HybridIdentityMetadatumOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HybridIdentityMetadatum) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity of the provisioned cluster.

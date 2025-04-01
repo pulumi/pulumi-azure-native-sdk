@@ -13,271 +13,1013 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// Access Control List condition model.
-type AccessControlListConditionProperties struct {
-	// action. Example: allow | deny.
-	Action string `pulumi:"action"`
-	// Switch configuration description.
-	Annotation *string `pulumi:"annotation"`
-	// destinationAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
-	DestinationAddress string `pulumi:"destinationAddress"`
-	// destinationPort. Example: any | 1253
-	DestinationPort string `pulumi:"destinationPort"`
-	// TCP/IP protocol as defined in the list of IP protocol numbers. Example: 255 (any) | 0 | 1.
-	Protocol int `pulumi:"protocol"`
-	// sequenceNumber of the Access Control List.
-	SequenceNumber int `pulumi:"sequenceNumber"`
-	// sourceAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
-	SourceAddress string `pulumi:"sourceAddress"`
-	// sourcePort. Example: any | 1253
-	SourcePort string `pulumi:"sourcePort"`
+// Action that need to performed.
+type AccessControlListAction struct {
+	// Name of the counter block to get match count information.
+	CounterName *string `pulumi:"counterName"`
+	// Type of actions that can be performed.
+	Type *string `pulumi:"type"`
 }
 
-// AccessControlListConditionPropertiesInput is an input type that accepts AccessControlListConditionPropertiesArgs and AccessControlListConditionPropertiesOutput values.
-// You can construct a concrete instance of `AccessControlListConditionPropertiesInput` via:
+// AccessControlListActionInput is an input type that accepts AccessControlListActionArgs and AccessControlListActionOutput values.
+// You can construct a concrete instance of `AccessControlListActionInput` via:
 //
-//	AccessControlListConditionPropertiesArgs{...}
-type AccessControlListConditionPropertiesInput interface {
+//	AccessControlListActionArgs{...}
+type AccessControlListActionInput interface {
 	pulumi.Input
 
-	ToAccessControlListConditionPropertiesOutput() AccessControlListConditionPropertiesOutput
-	ToAccessControlListConditionPropertiesOutputWithContext(context.Context) AccessControlListConditionPropertiesOutput
+	ToAccessControlListActionOutput() AccessControlListActionOutput
+	ToAccessControlListActionOutputWithContext(context.Context) AccessControlListActionOutput
 }
 
-// Access Control List condition model.
-type AccessControlListConditionPropertiesArgs struct {
-	// action. Example: allow | deny.
-	Action pulumi.StringInput `pulumi:"action"`
-	// Switch configuration description.
-	Annotation pulumi.StringPtrInput `pulumi:"annotation"`
-	// destinationAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
-	DestinationAddress pulumi.StringInput `pulumi:"destinationAddress"`
-	// destinationPort. Example: any | 1253
-	DestinationPort pulumi.StringInput `pulumi:"destinationPort"`
-	// TCP/IP protocol as defined in the list of IP protocol numbers. Example: 255 (any) | 0 | 1.
-	Protocol pulumi.IntInput `pulumi:"protocol"`
-	// sequenceNumber of the Access Control List.
-	SequenceNumber pulumi.IntInput `pulumi:"sequenceNumber"`
-	// sourceAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
-	SourceAddress pulumi.StringInput `pulumi:"sourceAddress"`
-	// sourcePort. Example: any | 1253
-	SourcePort pulumi.StringInput `pulumi:"sourcePort"`
+// Action that need to performed.
+type AccessControlListActionArgs struct {
+	// Name of the counter block to get match count information.
+	CounterName pulumi.StringPtrInput `pulumi:"counterName"`
+	// Type of actions that can be performed.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
-func (AccessControlListConditionPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessControlListConditionProperties)(nil)).Elem()
+func (AccessControlListActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListAction)(nil)).Elem()
 }
 
-func (i AccessControlListConditionPropertiesArgs) ToAccessControlListConditionPropertiesOutput() AccessControlListConditionPropertiesOutput {
-	return i.ToAccessControlListConditionPropertiesOutputWithContext(context.Background())
+func (i AccessControlListActionArgs) ToAccessControlListActionOutput() AccessControlListActionOutput {
+	return i.ToAccessControlListActionOutputWithContext(context.Background())
 }
 
-func (i AccessControlListConditionPropertiesArgs) ToAccessControlListConditionPropertiesOutputWithContext(ctx context.Context) AccessControlListConditionPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListConditionPropertiesOutput)
+func (i AccessControlListActionArgs) ToAccessControlListActionOutputWithContext(ctx context.Context) AccessControlListActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListActionOutput)
 }
 
-// AccessControlListConditionPropertiesArrayInput is an input type that accepts AccessControlListConditionPropertiesArray and AccessControlListConditionPropertiesArrayOutput values.
-// You can construct a concrete instance of `AccessControlListConditionPropertiesArrayInput` via:
+// AccessControlListActionArrayInput is an input type that accepts AccessControlListActionArray and AccessControlListActionArrayOutput values.
+// You can construct a concrete instance of `AccessControlListActionArrayInput` via:
 //
-//	AccessControlListConditionPropertiesArray{ AccessControlListConditionPropertiesArgs{...} }
-type AccessControlListConditionPropertiesArrayInput interface {
+//	AccessControlListActionArray{ AccessControlListActionArgs{...} }
+type AccessControlListActionArrayInput interface {
 	pulumi.Input
 
-	ToAccessControlListConditionPropertiesArrayOutput() AccessControlListConditionPropertiesArrayOutput
-	ToAccessControlListConditionPropertiesArrayOutputWithContext(context.Context) AccessControlListConditionPropertiesArrayOutput
+	ToAccessControlListActionArrayOutput() AccessControlListActionArrayOutput
+	ToAccessControlListActionArrayOutputWithContext(context.Context) AccessControlListActionArrayOutput
 }
 
-type AccessControlListConditionPropertiesArray []AccessControlListConditionPropertiesInput
+type AccessControlListActionArray []AccessControlListActionInput
 
-func (AccessControlListConditionPropertiesArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessControlListConditionProperties)(nil)).Elem()
+func (AccessControlListActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlListAction)(nil)).Elem()
 }
 
-func (i AccessControlListConditionPropertiesArray) ToAccessControlListConditionPropertiesArrayOutput() AccessControlListConditionPropertiesArrayOutput {
-	return i.ToAccessControlListConditionPropertiesArrayOutputWithContext(context.Background())
+func (i AccessControlListActionArray) ToAccessControlListActionArrayOutput() AccessControlListActionArrayOutput {
+	return i.ToAccessControlListActionArrayOutputWithContext(context.Background())
 }
 
-func (i AccessControlListConditionPropertiesArray) ToAccessControlListConditionPropertiesArrayOutputWithContext(ctx context.Context) AccessControlListConditionPropertiesArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListConditionPropertiesArrayOutput)
+func (i AccessControlListActionArray) ToAccessControlListActionArrayOutputWithContext(ctx context.Context) AccessControlListActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListActionArrayOutput)
 }
 
-// Access Control List condition model.
-type AccessControlListConditionPropertiesOutput struct{ *pulumi.OutputState }
+// Action that need to performed.
+type AccessControlListActionOutput struct{ *pulumi.OutputState }
 
-func (AccessControlListConditionPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessControlListConditionProperties)(nil)).Elem()
+func (AccessControlListActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListAction)(nil)).Elem()
 }
 
-func (o AccessControlListConditionPropertiesOutput) ToAccessControlListConditionPropertiesOutput() AccessControlListConditionPropertiesOutput {
+func (o AccessControlListActionOutput) ToAccessControlListActionOutput() AccessControlListActionOutput {
 	return o
 }
 
-func (o AccessControlListConditionPropertiesOutput) ToAccessControlListConditionPropertiesOutputWithContext(ctx context.Context) AccessControlListConditionPropertiesOutput {
+func (o AccessControlListActionOutput) ToAccessControlListActionOutputWithContext(ctx context.Context) AccessControlListActionOutput {
 	return o
 }
 
-// action. Example: allow | deny.
-func (o AccessControlListConditionPropertiesOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessControlListConditionProperties) string { return v.Action }).(pulumi.StringOutput)
+// Name of the counter block to get match count information.
+func (o AccessControlListActionOutput) CounterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListAction) *string { return v.CounterName }).(pulumi.StringPtrOutput)
 }
 
-// Switch configuration description.
-func (o AccessControlListConditionPropertiesOutput) Annotation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessControlListConditionProperties) *string { return v.Annotation }).(pulumi.StringPtrOutput)
+// Type of actions that can be performed.
+func (o AccessControlListActionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListAction) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// destinationAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
-func (o AccessControlListConditionPropertiesOutput) DestinationAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessControlListConditionProperties) string { return v.DestinationAddress }).(pulumi.StringOutput)
+type AccessControlListActionArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlListAction)(nil)).Elem()
 }
 
-// destinationPort. Example: any | 1253
-func (o AccessControlListConditionPropertiesOutput) DestinationPort() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessControlListConditionProperties) string { return v.DestinationPort }).(pulumi.StringOutput)
-}
-
-// TCP/IP protocol as defined in the list of IP protocol numbers. Example: 255 (any) | 0 | 1.
-func (o AccessControlListConditionPropertiesOutput) Protocol() pulumi.IntOutput {
-	return o.ApplyT(func(v AccessControlListConditionProperties) int { return v.Protocol }).(pulumi.IntOutput)
-}
-
-// sequenceNumber of the Access Control List.
-func (o AccessControlListConditionPropertiesOutput) SequenceNumber() pulumi.IntOutput {
-	return o.ApplyT(func(v AccessControlListConditionProperties) int { return v.SequenceNumber }).(pulumi.IntOutput)
-}
-
-// sourceAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
-func (o AccessControlListConditionPropertiesOutput) SourceAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessControlListConditionProperties) string { return v.SourceAddress }).(pulumi.StringOutput)
-}
-
-// sourcePort. Example: any | 1253
-func (o AccessControlListConditionPropertiesOutput) SourcePort() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessControlListConditionProperties) string { return v.SourcePort }).(pulumi.StringOutput)
-}
-
-type AccessControlListConditionPropertiesArrayOutput struct{ *pulumi.OutputState }
-
-func (AccessControlListConditionPropertiesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessControlListConditionProperties)(nil)).Elem()
-}
-
-func (o AccessControlListConditionPropertiesArrayOutput) ToAccessControlListConditionPropertiesArrayOutput() AccessControlListConditionPropertiesArrayOutput {
+func (o AccessControlListActionArrayOutput) ToAccessControlListActionArrayOutput() AccessControlListActionArrayOutput {
 	return o
 }
 
-func (o AccessControlListConditionPropertiesArrayOutput) ToAccessControlListConditionPropertiesArrayOutputWithContext(ctx context.Context) AccessControlListConditionPropertiesArrayOutput {
+func (o AccessControlListActionArrayOutput) ToAccessControlListActionArrayOutputWithContext(ctx context.Context) AccessControlListActionArrayOutput {
 	return o
 }
 
-func (o AccessControlListConditionPropertiesArrayOutput) Index(i pulumi.IntInput) AccessControlListConditionPropertiesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessControlListConditionProperties {
-		return vs[0].([]AccessControlListConditionProperties)[vs[1].(int)]
-	}).(AccessControlListConditionPropertiesOutput)
+func (o AccessControlListActionArrayOutput) Index(i pulumi.IntInput) AccessControlListActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessControlListAction {
+		return vs[0].([]AccessControlListAction)[vs[1].(int)]
+	}).(AccessControlListActionOutput)
 }
 
-// Access Control List condition model.
-type AccessControlListConditionPropertiesResponse struct {
-	// action. Example: allow | deny.
-	Action string `pulumi:"action"`
-	// Switch configuration description.
-	Annotation *string `pulumi:"annotation"`
-	// destinationAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
-	DestinationAddress string `pulumi:"destinationAddress"`
-	// destinationPort. Example: any | 1253
-	DestinationPort string `pulumi:"destinationPort"`
-	// TCP/IP protocol as defined in the list of IP protocol numbers. Example: 255 (any) | 0 | 1.
-	Protocol int `pulumi:"protocol"`
-	// sequenceNumber of the Access Control List.
-	SequenceNumber int `pulumi:"sequenceNumber"`
-	// sourceAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
-	SourceAddress string `pulumi:"sourceAddress"`
-	// sourcePort. Example: any | 1253
-	SourcePort string `pulumi:"sourcePort"`
+// Action that need to performed.
+type AccessControlListActionResponse struct {
+	// Name of the counter block to get match count information.
+	CounterName *string `pulumi:"counterName"`
+	// Type of actions that can be performed.
+	Type *string `pulumi:"type"`
 }
 
-// Access Control List condition model.
-type AccessControlListConditionPropertiesResponseOutput struct{ *pulumi.OutputState }
+// Action that need to performed.
+type AccessControlListActionResponseOutput struct{ *pulumi.OutputState }
 
-func (AccessControlListConditionPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessControlListConditionPropertiesResponse)(nil)).Elem()
+func (AccessControlListActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListActionResponse)(nil)).Elem()
 }
 
-func (o AccessControlListConditionPropertiesResponseOutput) ToAccessControlListConditionPropertiesResponseOutput() AccessControlListConditionPropertiesResponseOutput {
+func (o AccessControlListActionResponseOutput) ToAccessControlListActionResponseOutput() AccessControlListActionResponseOutput {
 	return o
 }
 
-func (o AccessControlListConditionPropertiesResponseOutput) ToAccessControlListConditionPropertiesResponseOutputWithContext(ctx context.Context) AccessControlListConditionPropertiesResponseOutput {
+func (o AccessControlListActionResponseOutput) ToAccessControlListActionResponseOutputWithContext(ctx context.Context) AccessControlListActionResponseOutput {
 	return o
 }
 
-// action. Example: allow | deny.
-func (o AccessControlListConditionPropertiesResponseOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessControlListConditionPropertiesResponse) string { return v.Action }).(pulumi.StringOutput)
+// Name of the counter block to get match count information.
+func (o AccessControlListActionResponseOutput) CounterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListActionResponse) *string { return v.CounterName }).(pulumi.StringPtrOutput)
 }
 
-// Switch configuration description.
-func (o AccessControlListConditionPropertiesResponseOutput) Annotation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessControlListConditionPropertiesResponse) *string { return v.Annotation }).(pulumi.StringPtrOutput)
+// Type of actions that can be performed.
+func (o AccessControlListActionResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListActionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// destinationAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
-func (o AccessControlListConditionPropertiesResponseOutput) DestinationAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessControlListConditionPropertiesResponse) string { return v.DestinationAddress }).(pulumi.StringOutput)
+type AccessControlListActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlListActionResponse)(nil)).Elem()
 }
 
-// destinationPort. Example: any | 1253
-func (o AccessControlListConditionPropertiesResponseOutput) DestinationPort() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessControlListConditionPropertiesResponse) string { return v.DestinationPort }).(pulumi.StringOutput)
-}
-
-// TCP/IP protocol as defined in the list of IP protocol numbers. Example: 255 (any) | 0 | 1.
-func (o AccessControlListConditionPropertiesResponseOutput) Protocol() pulumi.IntOutput {
-	return o.ApplyT(func(v AccessControlListConditionPropertiesResponse) int { return v.Protocol }).(pulumi.IntOutput)
-}
-
-// sequenceNumber of the Access Control List.
-func (o AccessControlListConditionPropertiesResponseOutput) SequenceNumber() pulumi.IntOutput {
-	return o.ApplyT(func(v AccessControlListConditionPropertiesResponse) int { return v.SequenceNumber }).(pulumi.IntOutput)
-}
-
-// sourceAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
-func (o AccessControlListConditionPropertiesResponseOutput) SourceAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessControlListConditionPropertiesResponse) string { return v.SourceAddress }).(pulumi.StringOutput)
-}
-
-// sourcePort. Example: any | 1253
-func (o AccessControlListConditionPropertiesResponseOutput) SourcePort() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessControlListConditionPropertiesResponse) string { return v.SourcePort }).(pulumi.StringOutput)
-}
-
-type AccessControlListConditionPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (AccessControlListConditionPropertiesResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessControlListConditionPropertiesResponse)(nil)).Elem()
-}
-
-func (o AccessControlListConditionPropertiesResponseArrayOutput) ToAccessControlListConditionPropertiesResponseArrayOutput() AccessControlListConditionPropertiesResponseArrayOutput {
+func (o AccessControlListActionResponseArrayOutput) ToAccessControlListActionResponseArrayOutput() AccessControlListActionResponseArrayOutput {
 	return o
 }
 
-func (o AccessControlListConditionPropertiesResponseArrayOutput) ToAccessControlListConditionPropertiesResponseArrayOutputWithContext(ctx context.Context) AccessControlListConditionPropertiesResponseArrayOutput {
+func (o AccessControlListActionResponseArrayOutput) ToAccessControlListActionResponseArrayOutputWithContext(ctx context.Context) AccessControlListActionResponseArrayOutput {
 	return o
 }
 
-func (o AccessControlListConditionPropertiesResponseArrayOutput) Index(i pulumi.IntInput) AccessControlListConditionPropertiesResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessControlListConditionPropertiesResponse {
-		return vs[0].([]AccessControlListConditionPropertiesResponse)[vs[1].(int)]
-	}).(AccessControlListConditionPropertiesResponseOutput)
+func (o AccessControlListActionResponseArrayOutput) Index(i pulumi.IntInput) AccessControlListActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessControlListActionResponse {
+		return vs[0].([]AccessControlListActionResponse)[vs[1].(int)]
+	}).(AccessControlListActionResponseOutput)
+}
+
+// Defines the match condition that is supported to filter the traffic.
+type AccessControlListMatchCondition struct {
+	// List of DSCP Markings that need to be matched.
+	DscpMarkings []string `pulumi:"dscpMarkings"`
+	// List of ether type values that need to be matched.
+	EtherTypes []string `pulumi:"etherTypes"`
+	// List of IP fragment packets that need to be matched.
+	Fragments []string `pulumi:"fragments"`
+	// IP condition that needs to be matched.
+	IpCondition *IpMatchCondition `pulumi:"ipCondition"`
+	// List of IP Lengths that need to be matched.
+	IpLengths []string `pulumi:"ipLengths"`
+	// Defines the port condition that needs to be matched.
+	PortCondition *AccessControlListPortCondition `pulumi:"portCondition"`
+	// List of the protocols that need to be matched.
+	ProtocolTypes []string `pulumi:"protocolTypes"`
+	// List of TTL [Time To Live] values that need to be matched.
+	TtlValues []string `pulumi:"ttlValues"`
+	// Vlan match condition that needs to be matched.
+	VlanMatchCondition *VlanMatchCondition `pulumi:"vlanMatchCondition"`
+}
+
+// AccessControlListMatchConditionInput is an input type that accepts AccessControlListMatchConditionArgs and AccessControlListMatchConditionOutput values.
+// You can construct a concrete instance of `AccessControlListMatchConditionInput` via:
+//
+//	AccessControlListMatchConditionArgs{...}
+type AccessControlListMatchConditionInput interface {
+	pulumi.Input
+
+	ToAccessControlListMatchConditionOutput() AccessControlListMatchConditionOutput
+	ToAccessControlListMatchConditionOutputWithContext(context.Context) AccessControlListMatchConditionOutput
+}
+
+// Defines the match condition that is supported to filter the traffic.
+type AccessControlListMatchConditionArgs struct {
+	// List of DSCP Markings that need to be matched.
+	DscpMarkings pulumi.StringArrayInput `pulumi:"dscpMarkings"`
+	// List of ether type values that need to be matched.
+	EtherTypes pulumi.StringArrayInput `pulumi:"etherTypes"`
+	// List of IP fragment packets that need to be matched.
+	Fragments pulumi.StringArrayInput `pulumi:"fragments"`
+	// IP condition that needs to be matched.
+	IpCondition IpMatchConditionPtrInput `pulumi:"ipCondition"`
+	// List of IP Lengths that need to be matched.
+	IpLengths pulumi.StringArrayInput `pulumi:"ipLengths"`
+	// Defines the port condition that needs to be matched.
+	PortCondition AccessControlListPortConditionPtrInput `pulumi:"portCondition"`
+	// List of the protocols that need to be matched.
+	ProtocolTypes pulumi.StringArrayInput `pulumi:"protocolTypes"`
+	// List of TTL [Time To Live] values that need to be matched.
+	TtlValues pulumi.StringArrayInput `pulumi:"ttlValues"`
+	// Vlan match condition that needs to be matched.
+	VlanMatchCondition VlanMatchConditionPtrInput `pulumi:"vlanMatchCondition"`
+}
+
+func (AccessControlListMatchConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListMatchCondition)(nil)).Elem()
+}
+
+func (i AccessControlListMatchConditionArgs) ToAccessControlListMatchConditionOutput() AccessControlListMatchConditionOutput {
+	return i.ToAccessControlListMatchConditionOutputWithContext(context.Background())
+}
+
+func (i AccessControlListMatchConditionArgs) ToAccessControlListMatchConditionOutputWithContext(ctx context.Context) AccessControlListMatchConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListMatchConditionOutput)
+}
+
+// AccessControlListMatchConditionArrayInput is an input type that accepts AccessControlListMatchConditionArray and AccessControlListMatchConditionArrayOutput values.
+// You can construct a concrete instance of `AccessControlListMatchConditionArrayInput` via:
+//
+//	AccessControlListMatchConditionArray{ AccessControlListMatchConditionArgs{...} }
+type AccessControlListMatchConditionArrayInput interface {
+	pulumi.Input
+
+	ToAccessControlListMatchConditionArrayOutput() AccessControlListMatchConditionArrayOutput
+	ToAccessControlListMatchConditionArrayOutputWithContext(context.Context) AccessControlListMatchConditionArrayOutput
+}
+
+type AccessControlListMatchConditionArray []AccessControlListMatchConditionInput
+
+func (AccessControlListMatchConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlListMatchCondition)(nil)).Elem()
+}
+
+func (i AccessControlListMatchConditionArray) ToAccessControlListMatchConditionArrayOutput() AccessControlListMatchConditionArrayOutput {
+	return i.ToAccessControlListMatchConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AccessControlListMatchConditionArray) ToAccessControlListMatchConditionArrayOutputWithContext(ctx context.Context) AccessControlListMatchConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListMatchConditionArrayOutput)
+}
+
+// Defines the match condition that is supported to filter the traffic.
+type AccessControlListMatchConditionOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListMatchConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListMatchCondition)(nil)).Elem()
+}
+
+func (o AccessControlListMatchConditionOutput) ToAccessControlListMatchConditionOutput() AccessControlListMatchConditionOutput {
+	return o
+}
+
+func (o AccessControlListMatchConditionOutput) ToAccessControlListMatchConditionOutputWithContext(ctx context.Context) AccessControlListMatchConditionOutput {
+	return o
+}
+
+// List of DSCP Markings that need to be matched.
+func (o AccessControlListMatchConditionOutput) DscpMarkings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.DscpMarkings }).(pulumi.StringArrayOutput)
+}
+
+// List of ether type values that need to be matched.
+func (o AccessControlListMatchConditionOutput) EtherTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.EtherTypes }).(pulumi.StringArrayOutput)
+}
+
+// List of IP fragment packets that need to be matched.
+func (o AccessControlListMatchConditionOutput) Fragments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.Fragments }).(pulumi.StringArrayOutput)
+}
+
+// IP condition that needs to be matched.
+func (o AccessControlListMatchConditionOutput) IpCondition() IpMatchConditionPtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchCondition) *IpMatchCondition { return v.IpCondition }).(IpMatchConditionPtrOutput)
+}
+
+// List of IP Lengths that need to be matched.
+func (o AccessControlListMatchConditionOutput) IpLengths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.IpLengths }).(pulumi.StringArrayOutput)
+}
+
+// Defines the port condition that needs to be matched.
+func (o AccessControlListMatchConditionOutput) PortCondition() AccessControlListPortConditionPtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchCondition) *AccessControlListPortCondition { return v.PortCondition }).(AccessControlListPortConditionPtrOutput)
+}
+
+// List of the protocols that need to be matched.
+func (o AccessControlListMatchConditionOutput) ProtocolTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
+}
+
+// List of TTL [Time To Live] values that need to be matched.
+func (o AccessControlListMatchConditionOutput) TtlValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchCondition) []string { return v.TtlValues }).(pulumi.StringArrayOutput)
+}
+
+// Vlan match condition that needs to be matched.
+func (o AccessControlListMatchConditionOutput) VlanMatchCondition() VlanMatchConditionPtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchCondition) *VlanMatchCondition { return v.VlanMatchCondition }).(VlanMatchConditionPtrOutput)
+}
+
+type AccessControlListMatchConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListMatchConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlListMatchCondition)(nil)).Elem()
+}
+
+func (o AccessControlListMatchConditionArrayOutput) ToAccessControlListMatchConditionArrayOutput() AccessControlListMatchConditionArrayOutput {
+	return o
+}
+
+func (o AccessControlListMatchConditionArrayOutput) ToAccessControlListMatchConditionArrayOutputWithContext(ctx context.Context) AccessControlListMatchConditionArrayOutput {
+	return o
+}
+
+func (o AccessControlListMatchConditionArrayOutput) Index(i pulumi.IntInput) AccessControlListMatchConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessControlListMatchCondition {
+		return vs[0].([]AccessControlListMatchCondition)[vs[1].(int)]
+	}).(AccessControlListMatchConditionOutput)
+}
+
+// Defines the match condition that is supported to filter the traffic.
+type AccessControlListMatchConditionResponse struct {
+	// List of DSCP Markings that need to be matched.
+	DscpMarkings []string `pulumi:"dscpMarkings"`
+	// List of ether type values that need to be matched.
+	EtherTypes []string `pulumi:"etherTypes"`
+	// List of IP fragment packets that need to be matched.
+	Fragments []string `pulumi:"fragments"`
+	// IP condition that needs to be matched.
+	IpCondition *IpMatchConditionResponse `pulumi:"ipCondition"`
+	// List of IP Lengths that need to be matched.
+	IpLengths []string `pulumi:"ipLengths"`
+	// Defines the port condition that needs to be matched.
+	PortCondition *AccessControlListPortConditionResponse `pulumi:"portCondition"`
+	// List of the protocols that need to be matched.
+	ProtocolTypes []string `pulumi:"protocolTypes"`
+	// List of TTL [Time To Live] values that need to be matched.
+	TtlValues []string `pulumi:"ttlValues"`
+	// Vlan match condition that needs to be matched.
+	VlanMatchCondition *VlanMatchConditionResponse `pulumi:"vlanMatchCondition"`
+}
+
+// Defines the match condition that is supported to filter the traffic.
+type AccessControlListMatchConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListMatchConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListMatchConditionResponse)(nil)).Elem()
+}
+
+func (o AccessControlListMatchConditionResponseOutput) ToAccessControlListMatchConditionResponseOutput() AccessControlListMatchConditionResponseOutput {
+	return o
+}
+
+func (o AccessControlListMatchConditionResponseOutput) ToAccessControlListMatchConditionResponseOutputWithContext(ctx context.Context) AccessControlListMatchConditionResponseOutput {
+	return o
+}
+
+// List of DSCP Markings that need to be matched.
+func (o AccessControlListMatchConditionResponseOutput) DscpMarkings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.DscpMarkings }).(pulumi.StringArrayOutput)
+}
+
+// List of ether type values that need to be matched.
+func (o AccessControlListMatchConditionResponseOutput) EtherTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.EtherTypes }).(pulumi.StringArrayOutput)
+}
+
+// List of IP fragment packets that need to be matched.
+func (o AccessControlListMatchConditionResponseOutput) Fragments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.Fragments }).(pulumi.StringArrayOutput)
+}
+
+// IP condition that needs to be matched.
+func (o AccessControlListMatchConditionResponseOutput) IpCondition() IpMatchConditionResponsePtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchConditionResponse) *IpMatchConditionResponse { return v.IpCondition }).(IpMatchConditionResponsePtrOutput)
+}
+
+// List of IP Lengths that need to be matched.
+func (o AccessControlListMatchConditionResponseOutput) IpLengths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.IpLengths }).(pulumi.StringArrayOutput)
+}
+
+// Defines the port condition that needs to be matched.
+func (o AccessControlListMatchConditionResponseOutput) PortCondition() AccessControlListPortConditionResponsePtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchConditionResponse) *AccessControlListPortConditionResponse {
+		return v.PortCondition
+	}).(AccessControlListPortConditionResponsePtrOutput)
+}
+
+// List of the protocols that need to be matched.
+func (o AccessControlListMatchConditionResponseOutput) ProtocolTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.ProtocolTypes }).(pulumi.StringArrayOutput)
+}
+
+// List of TTL [Time To Live] values that need to be matched.
+func (o AccessControlListMatchConditionResponseOutput) TtlValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchConditionResponse) []string { return v.TtlValues }).(pulumi.StringArrayOutput)
+}
+
+// Vlan match condition that needs to be matched.
+func (o AccessControlListMatchConditionResponseOutput) VlanMatchCondition() VlanMatchConditionResponsePtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchConditionResponse) *VlanMatchConditionResponse {
+		return v.VlanMatchCondition
+	}).(VlanMatchConditionResponsePtrOutput)
+}
+
+type AccessControlListMatchConditionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListMatchConditionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlListMatchConditionResponse)(nil)).Elem()
+}
+
+func (o AccessControlListMatchConditionResponseArrayOutput) ToAccessControlListMatchConditionResponseArrayOutput() AccessControlListMatchConditionResponseArrayOutput {
+	return o
+}
+
+func (o AccessControlListMatchConditionResponseArrayOutput) ToAccessControlListMatchConditionResponseArrayOutputWithContext(ctx context.Context) AccessControlListMatchConditionResponseArrayOutput {
+	return o
+}
+
+func (o AccessControlListMatchConditionResponseArrayOutput) Index(i pulumi.IntInput) AccessControlListMatchConditionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessControlListMatchConditionResponse {
+		return vs[0].([]AccessControlListMatchConditionResponse)[vs[1].(int)]
+	}).(AccessControlListMatchConditionResponseOutput)
+}
+
+// Defines the match configuration that are supported to filter the traffic.
+type AccessControlListMatchConfiguration struct {
+	// List of actions that need to be performed for the matched conditions.
+	Actions []AccessControlListAction `pulumi:"actions"`
+	// Type of IP Address. IPv4 or IPv6
+	IpAddressType *string `pulumi:"ipAddressType"`
+	// List of the match conditions.
+	MatchConditions []AccessControlListMatchCondition `pulumi:"matchConditions"`
+	// The name of the match configuration.
+	MatchConfigurationName *string `pulumi:"matchConfigurationName"`
+	// Sequence Number of the match configuration.
+	SequenceNumber *float64 `pulumi:"sequenceNumber"`
+}
+
+// AccessControlListMatchConfigurationInput is an input type that accepts AccessControlListMatchConfigurationArgs and AccessControlListMatchConfigurationOutput values.
+// You can construct a concrete instance of `AccessControlListMatchConfigurationInput` via:
+//
+//	AccessControlListMatchConfigurationArgs{...}
+type AccessControlListMatchConfigurationInput interface {
+	pulumi.Input
+
+	ToAccessControlListMatchConfigurationOutput() AccessControlListMatchConfigurationOutput
+	ToAccessControlListMatchConfigurationOutputWithContext(context.Context) AccessControlListMatchConfigurationOutput
+}
+
+// Defines the match configuration that are supported to filter the traffic.
+type AccessControlListMatchConfigurationArgs struct {
+	// List of actions that need to be performed for the matched conditions.
+	Actions AccessControlListActionArrayInput `pulumi:"actions"`
+	// Type of IP Address. IPv4 or IPv6
+	IpAddressType pulumi.StringPtrInput `pulumi:"ipAddressType"`
+	// List of the match conditions.
+	MatchConditions AccessControlListMatchConditionArrayInput `pulumi:"matchConditions"`
+	// The name of the match configuration.
+	MatchConfigurationName pulumi.StringPtrInput `pulumi:"matchConfigurationName"`
+	// Sequence Number of the match configuration.
+	SequenceNumber pulumi.Float64PtrInput `pulumi:"sequenceNumber"`
+}
+
+func (AccessControlListMatchConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListMatchConfiguration)(nil)).Elem()
+}
+
+func (i AccessControlListMatchConfigurationArgs) ToAccessControlListMatchConfigurationOutput() AccessControlListMatchConfigurationOutput {
+	return i.ToAccessControlListMatchConfigurationOutputWithContext(context.Background())
+}
+
+func (i AccessControlListMatchConfigurationArgs) ToAccessControlListMatchConfigurationOutputWithContext(ctx context.Context) AccessControlListMatchConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListMatchConfigurationOutput)
+}
+
+// AccessControlListMatchConfigurationArrayInput is an input type that accepts AccessControlListMatchConfigurationArray and AccessControlListMatchConfigurationArrayOutput values.
+// You can construct a concrete instance of `AccessControlListMatchConfigurationArrayInput` via:
+//
+//	AccessControlListMatchConfigurationArray{ AccessControlListMatchConfigurationArgs{...} }
+type AccessControlListMatchConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToAccessControlListMatchConfigurationArrayOutput() AccessControlListMatchConfigurationArrayOutput
+	ToAccessControlListMatchConfigurationArrayOutputWithContext(context.Context) AccessControlListMatchConfigurationArrayOutput
+}
+
+type AccessControlListMatchConfigurationArray []AccessControlListMatchConfigurationInput
+
+func (AccessControlListMatchConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlListMatchConfiguration)(nil)).Elem()
+}
+
+func (i AccessControlListMatchConfigurationArray) ToAccessControlListMatchConfigurationArrayOutput() AccessControlListMatchConfigurationArrayOutput {
+	return i.ToAccessControlListMatchConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i AccessControlListMatchConfigurationArray) ToAccessControlListMatchConfigurationArrayOutputWithContext(ctx context.Context) AccessControlListMatchConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListMatchConfigurationArrayOutput)
+}
+
+// Defines the match configuration that are supported to filter the traffic.
+type AccessControlListMatchConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListMatchConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListMatchConfiguration)(nil)).Elem()
+}
+
+func (o AccessControlListMatchConfigurationOutput) ToAccessControlListMatchConfigurationOutput() AccessControlListMatchConfigurationOutput {
+	return o
+}
+
+func (o AccessControlListMatchConfigurationOutput) ToAccessControlListMatchConfigurationOutputWithContext(ctx context.Context) AccessControlListMatchConfigurationOutput {
+	return o
+}
+
+// List of actions that need to be performed for the matched conditions.
+func (o AccessControlListMatchConfigurationOutput) Actions() AccessControlListActionArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchConfiguration) []AccessControlListAction { return v.Actions }).(AccessControlListActionArrayOutput)
+}
+
+// Type of IP Address. IPv4 or IPv6
+func (o AccessControlListMatchConfigurationOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchConfiguration) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
+}
+
+// List of the match conditions.
+func (o AccessControlListMatchConfigurationOutput) MatchConditions() AccessControlListMatchConditionArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchConfiguration) []AccessControlListMatchCondition {
+		return v.MatchConditions
+	}).(AccessControlListMatchConditionArrayOutput)
+}
+
+// The name of the match configuration.
+func (o AccessControlListMatchConfigurationOutput) MatchConfigurationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchConfiguration) *string { return v.MatchConfigurationName }).(pulumi.StringPtrOutput)
+}
+
+// Sequence Number of the match configuration.
+func (o AccessControlListMatchConfigurationOutput) SequenceNumber() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchConfiguration) *float64 { return v.SequenceNumber }).(pulumi.Float64PtrOutput)
+}
+
+type AccessControlListMatchConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListMatchConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlListMatchConfiguration)(nil)).Elem()
+}
+
+func (o AccessControlListMatchConfigurationArrayOutput) ToAccessControlListMatchConfigurationArrayOutput() AccessControlListMatchConfigurationArrayOutput {
+	return o
+}
+
+func (o AccessControlListMatchConfigurationArrayOutput) ToAccessControlListMatchConfigurationArrayOutputWithContext(ctx context.Context) AccessControlListMatchConfigurationArrayOutput {
+	return o
+}
+
+func (o AccessControlListMatchConfigurationArrayOutput) Index(i pulumi.IntInput) AccessControlListMatchConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessControlListMatchConfiguration {
+		return vs[0].([]AccessControlListMatchConfiguration)[vs[1].(int)]
+	}).(AccessControlListMatchConfigurationOutput)
+}
+
+// Defines the match configuration that are supported to filter the traffic.
+type AccessControlListMatchConfigurationResponse struct {
+	// List of actions that need to be performed for the matched conditions.
+	Actions []AccessControlListActionResponse `pulumi:"actions"`
+	// Type of IP Address. IPv4 or IPv6
+	IpAddressType *string `pulumi:"ipAddressType"`
+	// List of the match conditions.
+	MatchConditions []AccessControlListMatchConditionResponse `pulumi:"matchConditions"`
+	// The name of the match configuration.
+	MatchConfigurationName *string `pulumi:"matchConfigurationName"`
+	// Sequence Number of the match configuration.
+	SequenceNumber *float64 `pulumi:"sequenceNumber"`
+}
+
+// Defines the match configuration that are supported to filter the traffic.
+type AccessControlListMatchConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListMatchConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListMatchConfigurationResponse)(nil)).Elem()
+}
+
+func (o AccessControlListMatchConfigurationResponseOutput) ToAccessControlListMatchConfigurationResponseOutput() AccessControlListMatchConfigurationResponseOutput {
+	return o
+}
+
+func (o AccessControlListMatchConfigurationResponseOutput) ToAccessControlListMatchConfigurationResponseOutputWithContext(ctx context.Context) AccessControlListMatchConfigurationResponseOutput {
+	return o
+}
+
+// List of actions that need to be performed for the matched conditions.
+func (o AccessControlListMatchConfigurationResponseOutput) Actions() AccessControlListActionResponseArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchConfigurationResponse) []AccessControlListActionResponse {
+		return v.Actions
+	}).(AccessControlListActionResponseArrayOutput)
+}
+
+// Type of IP Address. IPv4 or IPv6
+func (o AccessControlListMatchConfigurationResponseOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchConfigurationResponse) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
+}
+
+// List of the match conditions.
+func (o AccessControlListMatchConfigurationResponseOutput) MatchConditions() AccessControlListMatchConditionResponseArrayOutput {
+	return o.ApplyT(func(v AccessControlListMatchConfigurationResponse) []AccessControlListMatchConditionResponse {
+		return v.MatchConditions
+	}).(AccessControlListMatchConditionResponseArrayOutput)
+}
+
+// The name of the match configuration.
+func (o AccessControlListMatchConfigurationResponseOutput) MatchConfigurationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchConfigurationResponse) *string { return v.MatchConfigurationName }).(pulumi.StringPtrOutput)
+}
+
+// Sequence Number of the match configuration.
+func (o AccessControlListMatchConfigurationResponseOutput) SequenceNumber() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AccessControlListMatchConfigurationResponse) *float64 { return v.SequenceNumber }).(pulumi.Float64PtrOutput)
+}
+
+type AccessControlListMatchConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListMatchConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlListMatchConfigurationResponse)(nil)).Elem()
+}
+
+func (o AccessControlListMatchConfigurationResponseArrayOutput) ToAccessControlListMatchConfigurationResponseArrayOutput() AccessControlListMatchConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o AccessControlListMatchConfigurationResponseArrayOutput) ToAccessControlListMatchConfigurationResponseArrayOutputWithContext(ctx context.Context) AccessControlListMatchConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o AccessControlListMatchConfigurationResponseArrayOutput) Index(i pulumi.IntInput) AccessControlListMatchConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessControlListMatchConfigurationResponse {
+		return vs[0].([]AccessControlListMatchConfigurationResponse)[vs[1].(int)]
+	}).(AccessControlListMatchConfigurationResponseOutput)
+}
+
+// Defines the port condition that needs to be matched.
+type AccessControlListPortCondition struct {
+	// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+	Flags []string `pulumi:"flags"`
+	// Layer4 protocol type that needs to be matched.
+	Layer4Protocol string `pulumi:"layer4Protocol"`
+	// List of the port Group Names that need to be matched.
+	PortGroupNames []string `pulumi:"portGroupNames"`
+	// Port type that needs to be matched.
+	PortType *string `pulumi:"portType"`
+	// List of the Ports that need to be matched.
+	Ports []string `pulumi:"ports"`
+}
+
+// AccessControlListPortConditionInput is an input type that accepts AccessControlListPortConditionArgs and AccessControlListPortConditionOutput values.
+// You can construct a concrete instance of `AccessControlListPortConditionInput` via:
+//
+//	AccessControlListPortConditionArgs{...}
+type AccessControlListPortConditionInput interface {
+	pulumi.Input
+
+	ToAccessControlListPortConditionOutput() AccessControlListPortConditionOutput
+	ToAccessControlListPortConditionOutputWithContext(context.Context) AccessControlListPortConditionOutput
+}
+
+// Defines the port condition that needs to be matched.
+type AccessControlListPortConditionArgs struct {
+	// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+	Flags pulumi.StringArrayInput `pulumi:"flags"`
+	// Layer4 protocol type that needs to be matched.
+	Layer4Protocol pulumi.StringInput `pulumi:"layer4Protocol"`
+	// List of the port Group Names that need to be matched.
+	PortGroupNames pulumi.StringArrayInput `pulumi:"portGroupNames"`
+	// Port type that needs to be matched.
+	PortType pulumi.StringPtrInput `pulumi:"portType"`
+	// List of the Ports that need to be matched.
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (AccessControlListPortConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListPortCondition)(nil)).Elem()
+}
+
+func (i AccessControlListPortConditionArgs) ToAccessControlListPortConditionOutput() AccessControlListPortConditionOutput {
+	return i.ToAccessControlListPortConditionOutputWithContext(context.Background())
+}
+
+func (i AccessControlListPortConditionArgs) ToAccessControlListPortConditionOutputWithContext(ctx context.Context) AccessControlListPortConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListPortConditionOutput)
+}
+
+func (i AccessControlListPortConditionArgs) ToAccessControlListPortConditionPtrOutput() AccessControlListPortConditionPtrOutput {
+	return i.ToAccessControlListPortConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AccessControlListPortConditionArgs) ToAccessControlListPortConditionPtrOutputWithContext(ctx context.Context) AccessControlListPortConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListPortConditionOutput).ToAccessControlListPortConditionPtrOutputWithContext(ctx)
+}
+
+// AccessControlListPortConditionPtrInput is an input type that accepts AccessControlListPortConditionArgs, AccessControlListPortConditionPtr and AccessControlListPortConditionPtrOutput values.
+// You can construct a concrete instance of `AccessControlListPortConditionPtrInput` via:
+//
+//	        AccessControlListPortConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessControlListPortConditionPtrInput interface {
+	pulumi.Input
+
+	ToAccessControlListPortConditionPtrOutput() AccessControlListPortConditionPtrOutput
+	ToAccessControlListPortConditionPtrOutputWithContext(context.Context) AccessControlListPortConditionPtrOutput
+}
+
+type accessControlListPortConditionPtrType AccessControlListPortConditionArgs
+
+func AccessControlListPortConditionPtr(v *AccessControlListPortConditionArgs) AccessControlListPortConditionPtrInput {
+	return (*accessControlListPortConditionPtrType)(v)
+}
+
+func (*accessControlListPortConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessControlListPortCondition)(nil)).Elem()
+}
+
+func (i *accessControlListPortConditionPtrType) ToAccessControlListPortConditionPtrOutput() AccessControlListPortConditionPtrOutput {
+	return i.ToAccessControlListPortConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *accessControlListPortConditionPtrType) ToAccessControlListPortConditionPtrOutputWithContext(ctx context.Context) AccessControlListPortConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListPortConditionPtrOutput)
+}
+
+// Defines the port condition that needs to be matched.
+type AccessControlListPortConditionOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListPortConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListPortCondition)(nil)).Elem()
+}
+
+func (o AccessControlListPortConditionOutput) ToAccessControlListPortConditionOutput() AccessControlListPortConditionOutput {
+	return o
+}
+
+func (o AccessControlListPortConditionOutput) ToAccessControlListPortConditionOutputWithContext(ctx context.Context) AccessControlListPortConditionOutput {
+	return o
+}
+
+func (o AccessControlListPortConditionOutput) ToAccessControlListPortConditionPtrOutput() AccessControlListPortConditionPtrOutput {
+	return o.ToAccessControlListPortConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AccessControlListPortConditionOutput) ToAccessControlListPortConditionPtrOutputWithContext(ctx context.Context) AccessControlListPortConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessControlListPortCondition) *AccessControlListPortCondition {
+		return &v
+	}).(AccessControlListPortConditionPtrOutput)
+}
+
+// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+func (o AccessControlListPortConditionOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListPortCondition) []string { return v.Flags }).(pulumi.StringArrayOutput)
+}
+
+// Layer4 protocol type that needs to be matched.
+func (o AccessControlListPortConditionOutput) Layer4Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessControlListPortCondition) string { return v.Layer4Protocol }).(pulumi.StringOutput)
+}
+
+// List of the port Group Names that need to be matched.
+func (o AccessControlListPortConditionOutput) PortGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListPortCondition) []string { return v.PortGroupNames }).(pulumi.StringArrayOutput)
+}
+
+// Port type that needs to be matched.
+func (o AccessControlListPortConditionOutput) PortType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListPortCondition) *string { return v.PortType }).(pulumi.StringPtrOutput)
+}
+
+// List of the Ports that need to be matched.
+func (o AccessControlListPortConditionOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListPortCondition) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type AccessControlListPortConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListPortConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessControlListPortCondition)(nil)).Elem()
+}
+
+func (o AccessControlListPortConditionPtrOutput) ToAccessControlListPortConditionPtrOutput() AccessControlListPortConditionPtrOutput {
+	return o
+}
+
+func (o AccessControlListPortConditionPtrOutput) ToAccessControlListPortConditionPtrOutputWithContext(ctx context.Context) AccessControlListPortConditionPtrOutput {
+	return o
+}
+
+func (o AccessControlListPortConditionPtrOutput) Elem() AccessControlListPortConditionOutput {
+	return o.ApplyT(func(v *AccessControlListPortCondition) AccessControlListPortCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AccessControlListPortCondition
+		return ret
+	}).(AccessControlListPortConditionOutput)
+}
+
+// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+func (o AccessControlListPortConditionPtrOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessControlListPortCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Layer4 protocol type that needs to be matched.
+func (o AccessControlListPortConditionPtrOutput) Layer4Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessControlListPortCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Layer4Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of the port Group Names that need to be matched.
+func (o AccessControlListPortConditionPtrOutput) PortGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessControlListPortCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PortGroupNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Port type that needs to be matched.
+func (o AccessControlListPortConditionPtrOutput) PortType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessControlListPortCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of the Ports that need to be matched.
+func (o AccessControlListPortConditionPtrOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessControlListPortCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ports
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines the port condition that needs to be matched.
+type AccessControlListPortConditionResponse struct {
+	// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+	Flags []string `pulumi:"flags"`
+	// Layer4 protocol type that needs to be matched.
+	Layer4Protocol string `pulumi:"layer4Protocol"`
+	// List of the port Group Names that need to be matched.
+	PortGroupNames []string `pulumi:"portGroupNames"`
+	// Port type that needs to be matched.
+	PortType *string `pulumi:"portType"`
+	// List of the Ports that need to be matched.
+	Ports []string `pulumi:"ports"`
+}
+
+// Defines the port condition that needs to be matched.
+type AccessControlListPortConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListPortConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListPortConditionResponse)(nil)).Elem()
+}
+
+func (o AccessControlListPortConditionResponseOutput) ToAccessControlListPortConditionResponseOutput() AccessControlListPortConditionResponseOutput {
+	return o
+}
+
+func (o AccessControlListPortConditionResponseOutput) ToAccessControlListPortConditionResponseOutputWithContext(ctx context.Context) AccessControlListPortConditionResponseOutput {
+	return o
+}
+
+// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+func (o AccessControlListPortConditionResponseOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListPortConditionResponse) []string { return v.Flags }).(pulumi.StringArrayOutput)
+}
+
+// Layer4 protocol type that needs to be matched.
+func (o AccessControlListPortConditionResponseOutput) Layer4Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessControlListPortConditionResponse) string { return v.Layer4Protocol }).(pulumi.StringOutput)
+}
+
+// List of the port Group Names that need to be matched.
+func (o AccessControlListPortConditionResponseOutput) PortGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListPortConditionResponse) []string { return v.PortGroupNames }).(pulumi.StringArrayOutput)
+}
+
+// Port type that needs to be matched.
+func (o AccessControlListPortConditionResponseOutput) PortType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListPortConditionResponse) *string { return v.PortType }).(pulumi.StringPtrOutput)
+}
+
+// List of the Ports that need to be matched.
+func (o AccessControlListPortConditionResponseOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlListPortConditionResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type AccessControlListPortConditionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListPortConditionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessControlListPortConditionResponse)(nil)).Elem()
+}
+
+func (o AccessControlListPortConditionResponsePtrOutput) ToAccessControlListPortConditionResponsePtrOutput() AccessControlListPortConditionResponsePtrOutput {
+	return o
+}
+
+func (o AccessControlListPortConditionResponsePtrOutput) ToAccessControlListPortConditionResponsePtrOutputWithContext(ctx context.Context) AccessControlListPortConditionResponsePtrOutput {
+	return o
+}
+
+func (o AccessControlListPortConditionResponsePtrOutput) Elem() AccessControlListPortConditionResponseOutput {
+	return o.ApplyT(func(v *AccessControlListPortConditionResponse) AccessControlListPortConditionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AccessControlListPortConditionResponse
+		return ret
+	}).(AccessControlListPortConditionResponseOutput)
+}
+
+// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+func (o AccessControlListPortConditionResponsePtrOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessControlListPortConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Layer4 protocol type that needs to be matched.
+func (o AccessControlListPortConditionResponsePtrOutput) Layer4Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessControlListPortConditionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Layer4Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of the port Group Names that need to be matched.
+func (o AccessControlListPortConditionResponsePtrOutput) PortGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessControlListPortConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PortGroupNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Port type that needs to be matched.
+func (o AccessControlListPortConditionResponsePtrOutput) PortType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessControlListPortConditionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of the Ports that need to be matched.
+func (o AccessControlListPortConditionResponsePtrOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessControlListPortConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ports
+	}).(pulumi.StringArrayOutput)
 }
 
 // IP Community Properties.
 type ActionIpCommunityProperties struct {
-	// IP Community ID list properties.
+	// List of IP Community IDs.
 	Add *IpCommunityIdList `pulumi:"add"`
-	// IP Community ID list properties.
+	// List of IP Community IDs.
 	Delete *IpCommunityIdList `pulumi:"delete"`
-	// IP Community ID list properties.
+	// List of IP Community IDs.
 	Set *IpCommunityIdList `pulumi:"set"`
 }
 
@@ -294,11 +1036,11 @@ type ActionIpCommunityPropertiesInput interface {
 
 // IP Community Properties.
 type ActionIpCommunityPropertiesArgs struct {
-	// IP Community ID list properties.
+	// List of IP Community IDs.
 	Add IpCommunityIdListPtrInput `pulumi:"add"`
-	// IP Community ID list properties.
+	// List of IP Community IDs.
 	Delete IpCommunityIdListPtrInput `pulumi:"delete"`
-	// IP Community ID list properties.
+	// List of IP Community IDs.
 	Set IpCommunityIdListPtrInput `pulumi:"set"`
 }
 
@@ -380,17 +1122,17 @@ func (o ActionIpCommunityPropertiesOutput) ToActionIpCommunityPropertiesPtrOutpu
 	}).(ActionIpCommunityPropertiesPtrOutput)
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesOutput) Add() IpCommunityIdListPtrOutput {
 	return o.ApplyT(func(v ActionIpCommunityProperties) *IpCommunityIdList { return v.Add }).(IpCommunityIdListPtrOutput)
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesOutput) Delete() IpCommunityIdListPtrOutput {
 	return o.ApplyT(func(v ActionIpCommunityProperties) *IpCommunityIdList { return v.Delete }).(IpCommunityIdListPtrOutput)
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesOutput) Set() IpCommunityIdListPtrOutput {
 	return o.ApplyT(func(v ActionIpCommunityProperties) *IpCommunityIdList { return v.Set }).(IpCommunityIdListPtrOutput)
 }
@@ -419,7 +1161,7 @@ func (o ActionIpCommunityPropertiesPtrOutput) Elem() ActionIpCommunityProperties
 	}).(ActionIpCommunityPropertiesOutput)
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesPtrOutput) Add() IpCommunityIdListPtrOutput {
 	return o.ApplyT(func(v *ActionIpCommunityProperties) *IpCommunityIdList {
 		if v == nil {
@@ -429,7 +1171,7 @@ func (o ActionIpCommunityPropertiesPtrOutput) Add() IpCommunityIdListPtrOutput {
 	}).(IpCommunityIdListPtrOutput)
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesPtrOutput) Delete() IpCommunityIdListPtrOutput {
 	return o.ApplyT(func(v *ActionIpCommunityProperties) *IpCommunityIdList {
 		if v == nil {
@@ -439,7 +1181,7 @@ func (o ActionIpCommunityPropertiesPtrOutput) Delete() IpCommunityIdListPtrOutpu
 	}).(IpCommunityIdListPtrOutput)
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesPtrOutput) Set() IpCommunityIdListPtrOutput {
 	return o.ApplyT(func(v *ActionIpCommunityProperties) *IpCommunityIdList {
 		if v == nil {
@@ -451,11 +1193,11 @@ func (o ActionIpCommunityPropertiesPtrOutput) Set() IpCommunityIdListPtrOutput {
 
 // IP Community Properties.
 type ActionIpCommunityPropertiesResponse struct {
-	// IP Community ID list properties.
+	// List of IP Community IDs.
 	Add *IpCommunityIdListResponse `pulumi:"add"`
-	// IP Community ID list properties.
+	// List of IP Community IDs.
 	Delete *IpCommunityIdListResponse `pulumi:"delete"`
-	// IP Community ID list properties.
+	// List of IP Community IDs.
 	Set *IpCommunityIdListResponse `pulumi:"set"`
 }
 
@@ -474,17 +1216,17 @@ func (o ActionIpCommunityPropertiesResponseOutput) ToActionIpCommunityProperties
 	return o
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesResponseOutput) Add() IpCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v ActionIpCommunityPropertiesResponse) *IpCommunityIdListResponse { return v.Add }).(IpCommunityIdListResponsePtrOutput)
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesResponseOutput) Delete() IpCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v ActionIpCommunityPropertiesResponse) *IpCommunityIdListResponse { return v.Delete }).(IpCommunityIdListResponsePtrOutput)
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesResponseOutput) Set() IpCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v ActionIpCommunityPropertiesResponse) *IpCommunityIdListResponse { return v.Set }).(IpCommunityIdListResponsePtrOutput)
 }
@@ -513,7 +1255,7 @@ func (o ActionIpCommunityPropertiesResponsePtrOutput) Elem() ActionIpCommunityPr
 	}).(ActionIpCommunityPropertiesResponseOutput)
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesResponsePtrOutput) Add() IpCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v *ActionIpCommunityPropertiesResponse) *IpCommunityIdListResponse {
 		if v == nil {
@@ -523,7 +1265,7 @@ func (o ActionIpCommunityPropertiesResponsePtrOutput) Add() IpCommunityIdListRes
 	}).(IpCommunityIdListResponsePtrOutput)
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesResponsePtrOutput) Delete() IpCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v *ActionIpCommunityPropertiesResponse) *IpCommunityIdListResponse {
 		if v == nil {
@@ -533,7 +1275,7 @@ func (o ActionIpCommunityPropertiesResponsePtrOutput) Delete() IpCommunityIdList
 	}).(IpCommunityIdListResponsePtrOutput)
 }
 
-// IP Community ID list properties.
+// List of IP Community IDs.
 func (o ActionIpCommunityPropertiesResponsePtrOutput) Set() IpCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v *ActionIpCommunityPropertiesResponse) *IpCommunityIdListResponse {
 		if v == nil {
@@ -545,11 +1287,11 @@ func (o ActionIpCommunityPropertiesResponsePtrOutput) Set() IpCommunityIdListRes
 
 // IP Extended Community Properties.
 type ActionIpExtendedCommunityProperties struct {
-	// IP Extended Community Id list properties.
+	// List of IP Extended Community IDs.
 	Add *IpExtendedCommunityIdList `pulumi:"add"`
-	// IP Extended Community Id list properties.
+	// List of IP Extended Community IDs.
 	Delete *IpExtendedCommunityIdList `pulumi:"delete"`
-	// IP Extended Community Id list properties.
+	// List of IP Extended Community IDs.
 	Set *IpExtendedCommunityIdList `pulumi:"set"`
 }
 
@@ -566,11 +1308,11 @@ type ActionIpExtendedCommunityPropertiesInput interface {
 
 // IP Extended Community Properties.
 type ActionIpExtendedCommunityPropertiesArgs struct {
-	// IP Extended Community Id list properties.
+	// List of IP Extended Community IDs.
 	Add IpExtendedCommunityIdListPtrInput `pulumi:"add"`
-	// IP Extended Community Id list properties.
+	// List of IP Extended Community IDs.
 	Delete IpExtendedCommunityIdListPtrInput `pulumi:"delete"`
-	// IP Extended Community Id list properties.
+	// List of IP Extended Community IDs.
 	Set IpExtendedCommunityIdListPtrInput `pulumi:"set"`
 }
 
@@ -652,17 +1394,17 @@ func (o ActionIpExtendedCommunityPropertiesOutput) ToActionIpExtendedCommunityPr
 	}).(ActionIpExtendedCommunityPropertiesPtrOutput)
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesOutput) Add() IpExtendedCommunityIdListPtrOutput {
 	return o.ApplyT(func(v ActionIpExtendedCommunityProperties) *IpExtendedCommunityIdList { return v.Add }).(IpExtendedCommunityIdListPtrOutput)
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesOutput) Delete() IpExtendedCommunityIdListPtrOutput {
 	return o.ApplyT(func(v ActionIpExtendedCommunityProperties) *IpExtendedCommunityIdList { return v.Delete }).(IpExtendedCommunityIdListPtrOutput)
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesOutput) Set() IpExtendedCommunityIdListPtrOutput {
 	return o.ApplyT(func(v ActionIpExtendedCommunityProperties) *IpExtendedCommunityIdList { return v.Set }).(IpExtendedCommunityIdListPtrOutput)
 }
@@ -691,7 +1433,7 @@ func (o ActionIpExtendedCommunityPropertiesPtrOutput) Elem() ActionIpExtendedCom
 	}).(ActionIpExtendedCommunityPropertiesOutput)
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesPtrOutput) Add() IpExtendedCommunityIdListPtrOutput {
 	return o.ApplyT(func(v *ActionIpExtendedCommunityProperties) *IpExtendedCommunityIdList {
 		if v == nil {
@@ -701,7 +1443,7 @@ func (o ActionIpExtendedCommunityPropertiesPtrOutput) Add() IpExtendedCommunityI
 	}).(IpExtendedCommunityIdListPtrOutput)
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesPtrOutput) Delete() IpExtendedCommunityIdListPtrOutput {
 	return o.ApplyT(func(v *ActionIpExtendedCommunityProperties) *IpExtendedCommunityIdList {
 		if v == nil {
@@ -711,7 +1453,7 @@ func (o ActionIpExtendedCommunityPropertiesPtrOutput) Delete() IpExtendedCommuni
 	}).(IpExtendedCommunityIdListPtrOutput)
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesPtrOutput) Set() IpExtendedCommunityIdListPtrOutput {
 	return o.ApplyT(func(v *ActionIpExtendedCommunityProperties) *IpExtendedCommunityIdList {
 		if v == nil {
@@ -723,11 +1465,11 @@ func (o ActionIpExtendedCommunityPropertiesPtrOutput) Set() IpExtendedCommunityI
 
 // IP Extended Community Properties.
 type ActionIpExtendedCommunityPropertiesResponse struct {
-	// IP Extended Community Id list properties.
+	// List of IP Extended Community IDs.
 	Add *IpExtendedCommunityIdListResponse `pulumi:"add"`
-	// IP Extended Community Id list properties.
+	// List of IP Extended Community IDs.
 	Delete *IpExtendedCommunityIdListResponse `pulumi:"delete"`
-	// IP Extended Community Id list properties.
+	// List of IP Extended Community IDs.
 	Set *IpExtendedCommunityIdListResponse `pulumi:"set"`
 }
 
@@ -746,19 +1488,19 @@ func (o ActionIpExtendedCommunityPropertiesResponseOutput) ToActionIpExtendedCom
 	return o
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesResponseOutput) Add() IpExtendedCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v ActionIpExtendedCommunityPropertiesResponse) *IpExtendedCommunityIdListResponse { return v.Add }).(IpExtendedCommunityIdListResponsePtrOutput)
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesResponseOutput) Delete() IpExtendedCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v ActionIpExtendedCommunityPropertiesResponse) *IpExtendedCommunityIdListResponse {
 		return v.Delete
 	}).(IpExtendedCommunityIdListResponsePtrOutput)
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesResponseOutput) Set() IpExtendedCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v ActionIpExtendedCommunityPropertiesResponse) *IpExtendedCommunityIdListResponse { return v.Set }).(IpExtendedCommunityIdListResponsePtrOutput)
 }
@@ -787,7 +1529,7 @@ func (o ActionIpExtendedCommunityPropertiesResponsePtrOutput) Elem() ActionIpExt
 	}).(ActionIpExtendedCommunityPropertiesResponseOutput)
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesResponsePtrOutput) Add() IpExtendedCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v *ActionIpExtendedCommunityPropertiesResponse) *IpExtendedCommunityIdListResponse {
 		if v == nil {
@@ -797,7 +1539,7 @@ func (o ActionIpExtendedCommunityPropertiesResponsePtrOutput) Add() IpExtendedCo
 	}).(IpExtendedCommunityIdListResponsePtrOutput)
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesResponsePtrOutput) Delete() IpExtendedCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v *ActionIpExtendedCommunityPropertiesResponse) *IpExtendedCommunityIdListResponse {
 		if v == nil {
@@ -807,7 +1549,7 @@ func (o ActionIpExtendedCommunityPropertiesResponsePtrOutput) Delete() IpExtende
 	}).(IpExtendedCommunityIdListResponsePtrOutput)
 }
 
-// IP Extended Community Id list properties.
+// List of IP Extended Community IDs.
 func (o ActionIpExtendedCommunityPropertiesResponsePtrOutput) Set() IpExtendedCommunityIdListResponsePtrOutput {
 	return o.ApplyT(func(v *ActionIpExtendedCommunityPropertiesResponse) *IpExtendedCommunityIdListResponse {
 		if v == nil {
@@ -817,10 +1559,10 @@ func (o ActionIpExtendedCommunityPropertiesResponsePtrOutput) Set() IpExtendedCo
 	}).(IpExtendedCommunityIdListResponsePtrOutput)
 }
 
-// Aggregate Route properties.
+// aggregateIpv4Route model.
 type AggregateRoute struct {
-	// Prefix of the aggregate Route.
-	Prefix *string `pulumi:"prefix"`
+	// IPv4 Prefix of the aggregate Ipv4Route.
+	Prefix string `pulumi:"prefix"`
 }
 
 // AggregateRouteInput is an input type that accepts AggregateRouteArgs and AggregateRouteOutput values.
@@ -834,10 +1576,10 @@ type AggregateRouteInput interface {
 	ToAggregateRouteOutputWithContext(context.Context) AggregateRouteOutput
 }
 
-// Aggregate Route properties.
+// aggregateIpv4Route model.
 type AggregateRouteArgs struct {
-	// Prefix of the aggregate Route.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// IPv4 Prefix of the aggregate Ipv4Route.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
 }
 
 func (AggregateRouteArgs) ElementType() reflect.Type {
@@ -877,7 +1619,7 @@ func (i AggregateRouteArray) ToAggregateRouteArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateRouteArrayOutput)
 }
 
-// Aggregate Route properties.
+// aggregateIpv4Route model.
 type AggregateRouteOutput struct{ *pulumi.OutputState }
 
 func (AggregateRouteOutput) ElementType() reflect.Type {
@@ -892,9 +1634,9 @@ func (o AggregateRouteOutput) ToAggregateRouteOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Prefix of the aggregate Route.
-func (o AggregateRouteOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AggregateRoute) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+// IPv4 Prefix of the aggregate Ipv4Route.
+func (o AggregateRouteOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregateRoute) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
 type AggregateRouteArrayOutput struct{ *pulumi.OutputState }
@@ -917,11 +1659,11 @@ func (o AggregateRouteArrayOutput) Index(i pulumi.IntInput) AggregateRouteOutput
 	}).(AggregateRouteOutput)
 }
 
-// List of IPv4 and IPv6 route configurations.
+// List of IPv4 and IPv6 aggregate routes.
 type AggregateRouteConfiguration struct {
 	// List of IPv4 Route prefixes.
 	Ipv4Routes []AggregateRoute `pulumi:"ipv4Routes"`
-	// List of IPv6 Routes prefixes.
+	// List of Ipv6Routes prefixes.
 	Ipv6Routes []AggregateRoute `pulumi:"ipv6Routes"`
 }
 
@@ -936,11 +1678,11 @@ type AggregateRouteConfigurationInput interface {
 	ToAggregateRouteConfigurationOutputWithContext(context.Context) AggregateRouteConfigurationOutput
 }
 
-// List of IPv4 and IPv6 route configurations.
+// List of IPv4 and IPv6 aggregate routes.
 type AggregateRouteConfigurationArgs struct {
 	// List of IPv4 Route prefixes.
 	Ipv4Routes AggregateRouteArrayInput `pulumi:"ipv4Routes"`
-	// List of IPv6 Routes prefixes.
+	// List of Ipv6Routes prefixes.
 	Ipv6Routes AggregateRouteArrayInput `pulumi:"ipv6Routes"`
 }
 
@@ -997,7 +1739,7 @@ func (i *aggregateRouteConfigurationPtrType) ToAggregateRouteConfigurationPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateRouteConfigurationPtrOutput)
 }
 
-// List of IPv4 and IPv6 route configurations.
+// List of IPv4 and IPv6 aggregate routes.
 type AggregateRouteConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AggregateRouteConfigurationOutput) ElementType() reflect.Type {
@@ -1027,7 +1769,7 @@ func (o AggregateRouteConfigurationOutput) Ipv4Routes() AggregateRouteArrayOutpu
 	return o.ApplyT(func(v AggregateRouteConfiguration) []AggregateRoute { return v.Ipv4Routes }).(AggregateRouteArrayOutput)
 }
 
-// List of IPv6 Routes prefixes.
+// List of Ipv6Routes prefixes.
 func (o AggregateRouteConfigurationOutput) Ipv6Routes() AggregateRouteArrayOutput {
 	return o.ApplyT(func(v AggregateRouteConfiguration) []AggregateRoute { return v.Ipv6Routes }).(AggregateRouteArrayOutput)
 }
@@ -1066,7 +1808,7 @@ func (o AggregateRouteConfigurationPtrOutput) Ipv4Routes() AggregateRouteArrayOu
 	}).(AggregateRouteArrayOutput)
 }
 
-// List of IPv6 Routes prefixes.
+// List of Ipv6Routes prefixes.
 func (o AggregateRouteConfigurationPtrOutput) Ipv6Routes() AggregateRouteArrayOutput {
 	return o.ApplyT(func(v *AggregateRouteConfiguration) []AggregateRoute {
 		if v == nil {
@@ -1076,15 +1818,15 @@ func (o AggregateRouteConfigurationPtrOutput) Ipv6Routes() AggregateRouteArrayOu
 	}).(AggregateRouteArrayOutput)
 }
 
-// List of IPv4 and IPv6 route configurations.
+// List of IPv4 and IPv6 aggregate routes.
 type AggregateRouteConfigurationResponse struct {
 	// List of IPv4 Route prefixes.
 	Ipv4Routes []AggregateRouteResponse `pulumi:"ipv4Routes"`
-	// List of IPv6 Routes prefixes.
+	// List of Ipv6Routes prefixes.
 	Ipv6Routes []AggregateRouteResponse `pulumi:"ipv6Routes"`
 }
 
-// List of IPv4 and IPv6 route configurations.
+// List of IPv4 and IPv6 aggregate routes.
 type AggregateRouteConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (AggregateRouteConfigurationResponseOutput) ElementType() reflect.Type {
@@ -1104,7 +1846,7 @@ func (o AggregateRouteConfigurationResponseOutput) Ipv4Routes() AggregateRouteRe
 	return o.ApplyT(func(v AggregateRouteConfigurationResponse) []AggregateRouteResponse { return v.Ipv4Routes }).(AggregateRouteResponseArrayOutput)
 }
 
-// List of IPv6 Routes prefixes.
+// List of Ipv6Routes prefixes.
 func (o AggregateRouteConfigurationResponseOutput) Ipv6Routes() AggregateRouteResponseArrayOutput {
 	return o.ApplyT(func(v AggregateRouteConfigurationResponse) []AggregateRouteResponse { return v.Ipv6Routes }).(AggregateRouteResponseArrayOutput)
 }
@@ -1143,7 +1885,7 @@ func (o AggregateRouteConfigurationResponsePtrOutput) Ipv4Routes() AggregateRout
 	}).(AggregateRouteResponseArrayOutput)
 }
 
-// List of IPv6 Routes prefixes.
+// List of Ipv6Routes prefixes.
 func (o AggregateRouteConfigurationResponsePtrOutput) Ipv6Routes() AggregateRouteResponseArrayOutput {
 	return o.ApplyT(func(v *AggregateRouteConfigurationResponse) []AggregateRouteResponse {
 		if v == nil {
@@ -1153,13 +1895,13 @@ func (o AggregateRouteConfigurationResponsePtrOutput) Ipv6Routes() AggregateRout
 	}).(AggregateRouteResponseArrayOutput)
 }
 
-// Aggregate Route properties.
+// aggregateIpv4Route model.
 type AggregateRouteResponse struct {
-	// Prefix of the aggregate Route.
-	Prefix *string `pulumi:"prefix"`
+	// IPv4 Prefix of the aggregate Ipv4Route.
+	Prefix string `pulumi:"prefix"`
 }
 
-// Aggregate Route properties.
+// aggregateIpv4Route model.
 type AggregateRouteResponseOutput struct{ *pulumi.OutputState }
 
 func (AggregateRouteResponseOutput) ElementType() reflect.Type {
@@ -1174,9 +1916,9 @@ func (o AggregateRouteResponseOutput) ToAggregateRouteResponseOutputWithContext(
 	return o
 }
 
-// Prefix of the aggregate Route.
-func (o AggregateRouteResponseOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AggregateRouteResponse) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+// IPv4 Prefix of the aggregate Ipv4Route.
+func (o AggregateRouteResponseOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregateRouteResponse) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
 type AggregateRouteResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1200,13 +1942,223 @@ func (o AggregateRouteResponseArrayOutput) Index(i pulumi.IntInput) AggregateRou
 }
 
 // BFD configuration properties
+type BfdConfiguration struct {
+	// Interval in milliseconds. Example: 300.
+	IntervalInMilliSeconds *int `pulumi:"intervalInMilliSeconds"`
+	// Multiplier for the Bfd Configuration. Example: 5.
+	Multiplier *int `pulumi:"multiplier"`
+}
+
+// Defaults sets the appropriate defaults for BfdConfiguration
+func (val *BfdConfiguration) Defaults() *BfdConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IntervalInMilliSeconds == nil {
+		intervalInMilliSeconds_ := 300
+		tmp.IntervalInMilliSeconds = &intervalInMilliSeconds_
+	}
+	if tmp.Multiplier == nil {
+		multiplier_ := 5
+		tmp.Multiplier = &multiplier_
+	}
+	return &tmp
+}
+
+// BfdConfigurationInput is an input type that accepts BfdConfigurationArgs and BfdConfigurationOutput values.
+// You can construct a concrete instance of `BfdConfigurationInput` via:
+//
+//	BfdConfigurationArgs{...}
+type BfdConfigurationInput interface {
+	pulumi.Input
+
+	ToBfdConfigurationOutput() BfdConfigurationOutput
+	ToBfdConfigurationOutputWithContext(context.Context) BfdConfigurationOutput
+}
+
+// BFD configuration properties
+type BfdConfigurationArgs struct {
+	// Interval in milliseconds. Example: 300.
+	IntervalInMilliSeconds pulumi.IntPtrInput `pulumi:"intervalInMilliSeconds"`
+	// Multiplier for the Bfd Configuration. Example: 5.
+	Multiplier pulumi.IntPtrInput `pulumi:"multiplier"`
+}
+
+// Defaults sets the appropriate defaults for BfdConfigurationArgs
+func (val *BfdConfigurationArgs) Defaults() *BfdConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IntervalInMilliSeconds == nil {
+		tmp.IntervalInMilliSeconds = pulumi.IntPtr(300)
+	}
+	if tmp.Multiplier == nil {
+		tmp.Multiplier = pulumi.IntPtr(5)
+	}
+	return &tmp
+}
+func (BfdConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BfdConfiguration)(nil)).Elem()
+}
+
+func (i BfdConfigurationArgs) ToBfdConfigurationOutput() BfdConfigurationOutput {
+	return i.ToBfdConfigurationOutputWithContext(context.Background())
+}
+
+func (i BfdConfigurationArgs) ToBfdConfigurationOutputWithContext(ctx context.Context) BfdConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BfdConfigurationOutput)
+}
+
+func (i BfdConfigurationArgs) ToBfdConfigurationPtrOutput() BfdConfigurationPtrOutput {
+	return i.ToBfdConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i BfdConfigurationArgs) ToBfdConfigurationPtrOutputWithContext(ctx context.Context) BfdConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BfdConfigurationOutput).ToBfdConfigurationPtrOutputWithContext(ctx)
+}
+
+// BfdConfigurationPtrInput is an input type that accepts BfdConfigurationArgs, BfdConfigurationPtr and BfdConfigurationPtrOutput values.
+// You can construct a concrete instance of `BfdConfigurationPtrInput` via:
+//
+//	        BfdConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BfdConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToBfdConfigurationPtrOutput() BfdConfigurationPtrOutput
+	ToBfdConfigurationPtrOutputWithContext(context.Context) BfdConfigurationPtrOutput
+}
+
+type bfdConfigurationPtrType BfdConfigurationArgs
+
+func BfdConfigurationPtr(v *BfdConfigurationArgs) BfdConfigurationPtrInput {
+	return (*bfdConfigurationPtrType)(v)
+}
+
+func (*bfdConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BfdConfiguration)(nil)).Elem()
+}
+
+func (i *bfdConfigurationPtrType) ToBfdConfigurationPtrOutput() BfdConfigurationPtrOutput {
+	return i.ToBfdConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *bfdConfigurationPtrType) ToBfdConfigurationPtrOutputWithContext(ctx context.Context) BfdConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BfdConfigurationPtrOutput)
+}
+
+// BFD configuration properties
+type BfdConfigurationOutput struct{ *pulumi.OutputState }
+
+func (BfdConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BfdConfiguration)(nil)).Elem()
+}
+
+func (o BfdConfigurationOutput) ToBfdConfigurationOutput() BfdConfigurationOutput {
+	return o
+}
+
+func (o BfdConfigurationOutput) ToBfdConfigurationOutputWithContext(ctx context.Context) BfdConfigurationOutput {
+	return o
+}
+
+func (o BfdConfigurationOutput) ToBfdConfigurationPtrOutput() BfdConfigurationPtrOutput {
+	return o.ToBfdConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o BfdConfigurationOutput) ToBfdConfigurationPtrOutputWithContext(ctx context.Context) BfdConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BfdConfiguration) *BfdConfiguration {
+		return &v
+	}).(BfdConfigurationPtrOutput)
+}
+
+// Interval in milliseconds. Example: 300.
+func (o BfdConfigurationOutput) IntervalInMilliSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BfdConfiguration) *int { return v.IntervalInMilliSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Multiplier for the Bfd Configuration. Example: 5.
+func (o BfdConfigurationOutput) Multiplier() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BfdConfiguration) *int { return v.Multiplier }).(pulumi.IntPtrOutput)
+}
+
+type BfdConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (BfdConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BfdConfiguration)(nil)).Elem()
+}
+
+func (o BfdConfigurationPtrOutput) ToBfdConfigurationPtrOutput() BfdConfigurationPtrOutput {
+	return o
+}
+
+func (o BfdConfigurationPtrOutput) ToBfdConfigurationPtrOutputWithContext(ctx context.Context) BfdConfigurationPtrOutput {
+	return o
+}
+
+func (o BfdConfigurationPtrOutput) Elem() BfdConfigurationOutput {
+	return o.ApplyT(func(v *BfdConfiguration) BfdConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret BfdConfiguration
+		return ret
+	}).(BfdConfigurationOutput)
+}
+
+// Interval in milliseconds. Example: 300.
+func (o BfdConfigurationPtrOutput) IntervalInMilliSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BfdConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IntervalInMilliSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Multiplier for the Bfd Configuration. Example: 5.
+func (o BfdConfigurationPtrOutput) Multiplier() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BfdConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Multiplier
+	}).(pulumi.IntPtrOutput)
+}
+
+// BFD configuration properties
 type BfdConfigurationResponse struct {
 	// Administrative state of the BfdConfiguration. Example: Enabled | Disabled.
 	AdministrativeState string `pulumi:"administrativeState"`
-	// interval in milliseconds. Example: 300.
-	Interval int `pulumi:"interval"`
-	// Multiplier for the Bfd Configuration. Example: 3.
-	Multiplier int `pulumi:"multiplier"`
+	// Interval in milliseconds. Example: 300.
+	IntervalInMilliSeconds *int `pulumi:"intervalInMilliSeconds"`
+	// Multiplier for the Bfd Configuration. Example: 5.
+	Multiplier *int `pulumi:"multiplier"`
+}
+
+// Defaults sets the appropriate defaults for BfdConfigurationResponse
+func (val *BfdConfigurationResponse) Defaults() *BfdConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.AdministrativeState) {
+		tmp.AdministrativeState = "Disabled"
+	}
+	if tmp.IntervalInMilliSeconds == nil {
+		intervalInMilliSeconds_ := 300
+		tmp.IntervalInMilliSeconds = &intervalInMilliSeconds_
+	}
+	if tmp.Multiplier == nil {
+		multiplier_ := 5
+		tmp.Multiplier = &multiplier_
+	}
+	return &tmp
 }
 
 // BFD configuration properties
@@ -1229,14 +2181,14 @@ func (o BfdConfigurationResponseOutput) AdministrativeState() pulumi.StringOutpu
 	return o.ApplyT(func(v BfdConfigurationResponse) string { return v.AdministrativeState }).(pulumi.StringOutput)
 }
 
-// interval in milliseconds. Example: 300.
-func (o BfdConfigurationResponseOutput) Interval() pulumi.IntOutput {
-	return o.ApplyT(func(v BfdConfigurationResponse) int { return v.Interval }).(pulumi.IntOutput)
+// Interval in milliseconds. Example: 300.
+func (o BfdConfigurationResponseOutput) IntervalInMilliSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BfdConfigurationResponse) *int { return v.IntervalInMilliSeconds }).(pulumi.IntPtrOutput)
 }
 
-// Multiplier for the Bfd Configuration. Example: 3.
-func (o BfdConfigurationResponseOutput) Multiplier() pulumi.IntOutput {
-	return o.ApplyT(func(v BfdConfigurationResponse) int { return v.Multiplier }).(pulumi.IntOutput)
+// Multiplier for the Bfd Configuration. Example: 5.
+func (o BfdConfigurationResponseOutput) Multiplier() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BfdConfigurationResponse) *int { return v.Multiplier }).(pulumi.IntPtrOutput)
 }
 
 type BfdConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1273,582 +2225,23 @@ func (o BfdConfigurationResponsePtrOutput) AdministrativeState() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// interval in milliseconds. Example: 300.
-func (o BfdConfigurationResponsePtrOutput) Interval() pulumi.IntPtrOutput {
+// Interval in milliseconds. Example: 300.
+func (o BfdConfigurationResponsePtrOutput) IntervalInMilliSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BfdConfigurationResponse) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.Interval
+		return v.IntervalInMilliSeconds
 	}).(pulumi.IntPtrOutput)
 }
 
-// Multiplier for the Bfd Configuration. Example: 3.
+// Multiplier for the Bfd Configuration. Example: 5.
 func (o BfdConfigurationResponsePtrOutput) Multiplier() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BfdConfigurationResponse) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.Multiplier
-	}).(pulumi.IntPtrOutput)
-}
-
-// BGP configuration properties
-type BgpConfiguration struct {
-	// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
-	AllowAS *int `pulumi:"allowAS"`
-	// Enable Or Disable state.
-	AllowASOverride *string `pulumi:"allowASOverride"`
-	// Switch configuration description.
-	Annotation *string `pulumi:"annotation"`
-	// Originate a defaultRoute. Ex: "True" | "False".
-	DefaultRouteOriginate *string `pulumi:"defaultRouteOriginate"`
-	// BGP Ipv4 ListenRange.
-	Ipv4ListenRangePrefixes []string `pulumi:"ipv4ListenRangePrefixes"`
-	// List with stringified ipv4NeighborAddresses.
-	Ipv4NeighborAddress []NeighborAddress `pulumi:"ipv4NeighborAddress"`
-	// BGP Ipv6 ListenRange.
-	Ipv6ListenRangePrefixes []string `pulumi:"ipv6ListenRangePrefixes"`
-	// List with stringified IPv6 Neighbor Address.
-	Ipv6NeighborAddress []NeighborAddress `pulumi:"ipv6NeighborAddress"`
-	// Peer ASN. Example: 65047.
-	PeerASN int `pulumi:"peerASN"`
-}
-
-// Defaults sets the appropriate defaults for BgpConfiguration
-func (val *BgpConfiguration) Defaults() *BgpConfiguration {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.AllowAS == nil {
-		allowAS_ := 2
-		tmp.AllowAS = &allowAS_
-	}
-	return &tmp
-}
-
-// BgpConfigurationInput is an input type that accepts BgpConfigurationArgs and BgpConfigurationOutput values.
-// You can construct a concrete instance of `BgpConfigurationInput` via:
-//
-//	BgpConfigurationArgs{...}
-type BgpConfigurationInput interface {
-	pulumi.Input
-
-	ToBgpConfigurationOutput() BgpConfigurationOutput
-	ToBgpConfigurationOutputWithContext(context.Context) BgpConfigurationOutput
-}
-
-// BGP configuration properties
-type BgpConfigurationArgs struct {
-	// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
-	AllowAS pulumi.IntPtrInput `pulumi:"allowAS"`
-	// Enable Or Disable state.
-	AllowASOverride pulumi.StringPtrInput `pulumi:"allowASOverride"`
-	// Switch configuration description.
-	Annotation pulumi.StringPtrInput `pulumi:"annotation"`
-	// Originate a defaultRoute. Ex: "True" | "False".
-	DefaultRouteOriginate pulumi.StringPtrInput `pulumi:"defaultRouteOriginate"`
-	// BGP Ipv4 ListenRange.
-	Ipv4ListenRangePrefixes pulumi.StringArrayInput `pulumi:"ipv4ListenRangePrefixes"`
-	// List with stringified ipv4NeighborAddresses.
-	Ipv4NeighborAddress NeighborAddressArrayInput `pulumi:"ipv4NeighborAddress"`
-	// BGP Ipv6 ListenRange.
-	Ipv6ListenRangePrefixes pulumi.StringArrayInput `pulumi:"ipv6ListenRangePrefixes"`
-	// List with stringified IPv6 Neighbor Address.
-	Ipv6NeighborAddress NeighborAddressArrayInput `pulumi:"ipv6NeighborAddress"`
-	// Peer ASN. Example: 65047.
-	PeerASN pulumi.IntInput `pulumi:"peerASN"`
-}
-
-// Defaults sets the appropriate defaults for BgpConfigurationArgs
-func (val *BgpConfigurationArgs) Defaults() *BgpConfigurationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.AllowAS == nil {
-		tmp.AllowAS = pulumi.IntPtr(2)
-	}
-	return &tmp
-}
-func (BgpConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BgpConfiguration)(nil)).Elem()
-}
-
-func (i BgpConfigurationArgs) ToBgpConfigurationOutput() BgpConfigurationOutput {
-	return i.ToBgpConfigurationOutputWithContext(context.Background())
-}
-
-func (i BgpConfigurationArgs) ToBgpConfigurationOutputWithContext(ctx context.Context) BgpConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BgpConfigurationOutput)
-}
-
-func (i BgpConfigurationArgs) ToBgpConfigurationPtrOutput() BgpConfigurationPtrOutput {
-	return i.ToBgpConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i BgpConfigurationArgs) ToBgpConfigurationPtrOutputWithContext(ctx context.Context) BgpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BgpConfigurationOutput).ToBgpConfigurationPtrOutputWithContext(ctx)
-}
-
-// BgpConfigurationPtrInput is an input type that accepts BgpConfigurationArgs, BgpConfigurationPtr and BgpConfigurationPtrOutput values.
-// You can construct a concrete instance of `BgpConfigurationPtrInput` via:
-//
-//	        BgpConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type BgpConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToBgpConfigurationPtrOutput() BgpConfigurationPtrOutput
-	ToBgpConfigurationPtrOutputWithContext(context.Context) BgpConfigurationPtrOutput
-}
-
-type bgpConfigurationPtrType BgpConfigurationArgs
-
-func BgpConfigurationPtr(v *BgpConfigurationArgs) BgpConfigurationPtrInput {
-	return (*bgpConfigurationPtrType)(v)
-}
-
-func (*bgpConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BgpConfiguration)(nil)).Elem()
-}
-
-func (i *bgpConfigurationPtrType) ToBgpConfigurationPtrOutput() BgpConfigurationPtrOutput {
-	return i.ToBgpConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *bgpConfigurationPtrType) ToBgpConfigurationPtrOutputWithContext(ctx context.Context) BgpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BgpConfigurationPtrOutput)
-}
-
-// BGP configuration properties
-type BgpConfigurationOutput struct{ *pulumi.OutputState }
-
-func (BgpConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BgpConfiguration)(nil)).Elem()
-}
-
-func (o BgpConfigurationOutput) ToBgpConfigurationOutput() BgpConfigurationOutput {
-	return o
-}
-
-func (o BgpConfigurationOutput) ToBgpConfigurationOutputWithContext(ctx context.Context) BgpConfigurationOutput {
-	return o
-}
-
-func (o BgpConfigurationOutput) ToBgpConfigurationPtrOutput() BgpConfigurationPtrOutput {
-	return o.ToBgpConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o BgpConfigurationOutput) ToBgpConfigurationPtrOutputWithContext(ctx context.Context) BgpConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BgpConfiguration) *BgpConfiguration {
-		return &v
-	}).(BgpConfigurationPtrOutput)
-}
-
-// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
-func (o BgpConfigurationOutput) AllowAS() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BgpConfiguration) *int { return v.AllowAS }).(pulumi.IntPtrOutput)
-}
-
-// Enable Or Disable state.
-func (o BgpConfigurationOutput) AllowASOverride() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BgpConfiguration) *string { return v.AllowASOverride }).(pulumi.StringPtrOutput)
-}
-
-// Switch configuration description.
-func (o BgpConfigurationOutput) Annotation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BgpConfiguration) *string { return v.Annotation }).(pulumi.StringPtrOutput)
-}
-
-// Originate a defaultRoute. Ex: "True" | "False".
-func (o BgpConfigurationOutput) DefaultRouteOriginate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BgpConfiguration) *string { return v.DefaultRouteOriginate }).(pulumi.StringPtrOutput)
-}
-
-// BGP Ipv4 ListenRange.
-func (o BgpConfigurationOutput) Ipv4ListenRangePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BgpConfiguration) []string { return v.Ipv4ListenRangePrefixes }).(pulumi.StringArrayOutput)
-}
-
-// List with stringified ipv4NeighborAddresses.
-func (o BgpConfigurationOutput) Ipv4NeighborAddress() NeighborAddressArrayOutput {
-	return o.ApplyT(func(v BgpConfiguration) []NeighborAddress { return v.Ipv4NeighborAddress }).(NeighborAddressArrayOutput)
-}
-
-// BGP Ipv6 ListenRange.
-func (o BgpConfigurationOutput) Ipv6ListenRangePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BgpConfiguration) []string { return v.Ipv6ListenRangePrefixes }).(pulumi.StringArrayOutput)
-}
-
-// List with stringified IPv6 Neighbor Address.
-func (o BgpConfigurationOutput) Ipv6NeighborAddress() NeighborAddressArrayOutput {
-	return o.ApplyT(func(v BgpConfiguration) []NeighborAddress { return v.Ipv6NeighborAddress }).(NeighborAddressArrayOutput)
-}
-
-// Peer ASN. Example: 65047.
-func (o BgpConfigurationOutput) PeerASN() pulumi.IntOutput {
-	return o.ApplyT(func(v BgpConfiguration) int { return v.PeerASN }).(pulumi.IntOutput)
-}
-
-type BgpConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (BgpConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BgpConfiguration)(nil)).Elem()
-}
-
-func (o BgpConfigurationPtrOutput) ToBgpConfigurationPtrOutput() BgpConfigurationPtrOutput {
-	return o
-}
-
-func (o BgpConfigurationPtrOutput) ToBgpConfigurationPtrOutputWithContext(ctx context.Context) BgpConfigurationPtrOutput {
-	return o
-}
-
-func (o BgpConfigurationPtrOutput) Elem() BgpConfigurationOutput {
-	return o.ApplyT(func(v *BgpConfiguration) BgpConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret BgpConfiguration
-		return ret
-	}).(BgpConfigurationOutput)
-}
-
-// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
-func (o BgpConfigurationPtrOutput) AllowAS() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *BgpConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AllowAS
-	}).(pulumi.IntPtrOutput)
-}
-
-// Enable Or Disable state.
-func (o BgpConfigurationPtrOutput) AllowASOverride() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BgpConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowASOverride
-	}).(pulumi.StringPtrOutput)
-}
-
-// Switch configuration description.
-func (o BgpConfigurationPtrOutput) Annotation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BgpConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Annotation
-	}).(pulumi.StringPtrOutput)
-}
-
-// Originate a defaultRoute. Ex: "True" | "False".
-func (o BgpConfigurationPtrOutput) DefaultRouteOriginate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BgpConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultRouteOriginate
-	}).(pulumi.StringPtrOutput)
-}
-
-// BGP Ipv4 ListenRange.
-func (o BgpConfigurationPtrOutput) Ipv4ListenRangePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BgpConfiguration) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv4ListenRangePrefixes
-	}).(pulumi.StringArrayOutput)
-}
-
-// List with stringified ipv4NeighborAddresses.
-func (o BgpConfigurationPtrOutput) Ipv4NeighborAddress() NeighborAddressArrayOutput {
-	return o.ApplyT(func(v *BgpConfiguration) []NeighborAddress {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv4NeighborAddress
-	}).(NeighborAddressArrayOutput)
-}
-
-// BGP Ipv6 ListenRange.
-func (o BgpConfigurationPtrOutput) Ipv6ListenRangePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BgpConfiguration) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv6ListenRangePrefixes
-	}).(pulumi.StringArrayOutput)
-}
-
-// List with stringified IPv6 Neighbor Address.
-func (o BgpConfigurationPtrOutput) Ipv6NeighborAddress() NeighborAddressArrayOutput {
-	return o.ApplyT(func(v *BgpConfiguration) []NeighborAddress {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv6NeighborAddress
-	}).(NeighborAddressArrayOutput)
-}
-
-// Peer ASN. Example: 65047.
-func (o BgpConfigurationPtrOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *BgpConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.PeerASN
-	}).(pulumi.IntPtrOutput)
-}
-
-// BGP configuration properties
-type BgpConfigurationResponse struct {
-	// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
-	AllowAS *int `pulumi:"allowAS"`
-	// Enable Or Disable state.
-	AllowASOverride *string `pulumi:"allowASOverride"`
-	// Switch configuration description.
-	Annotation *string `pulumi:"annotation"`
-	// BFD configuration properties
-	BfdConfiguration *BfdConfigurationResponse `pulumi:"bfdConfiguration"`
-	// Originate a defaultRoute. Ex: "True" | "False".
-	DefaultRouteOriginate *string `pulumi:"defaultRouteOriginate"`
-	// ASN of Network Fabric. Example: 65048.
-	FabricASN int `pulumi:"fabricASN"`
-	// BGP Ipv4 ListenRange.
-	Ipv4ListenRangePrefixes []string `pulumi:"ipv4ListenRangePrefixes"`
-	// List with stringified ipv4NeighborAddresses.
-	Ipv4NeighborAddress []NeighborAddressResponse `pulumi:"ipv4NeighborAddress"`
-	// BGP Ipv6 ListenRange.
-	Ipv6ListenRangePrefixes []string `pulumi:"ipv6ListenRangePrefixes"`
-	// List with stringified IPv6 Neighbor Address.
-	Ipv6NeighborAddress []NeighborAddressResponse `pulumi:"ipv6NeighborAddress"`
-	// Peer ASN. Example: 65047.
-	PeerASN int `pulumi:"peerASN"`
-}
-
-// Defaults sets the appropriate defaults for BgpConfigurationResponse
-func (val *BgpConfigurationResponse) Defaults() *BgpConfigurationResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.AllowAS == nil {
-		allowAS_ := 2
-		tmp.AllowAS = &allowAS_
-	}
-	return &tmp
-}
-
-// BGP configuration properties
-type BgpConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (BgpConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BgpConfigurationResponse)(nil)).Elem()
-}
-
-func (o BgpConfigurationResponseOutput) ToBgpConfigurationResponseOutput() BgpConfigurationResponseOutput {
-	return o
-}
-
-func (o BgpConfigurationResponseOutput) ToBgpConfigurationResponseOutputWithContext(ctx context.Context) BgpConfigurationResponseOutput {
-	return o
-}
-
-// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
-func (o BgpConfigurationResponseOutput) AllowAS() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BgpConfigurationResponse) *int { return v.AllowAS }).(pulumi.IntPtrOutput)
-}
-
-// Enable Or Disable state.
-func (o BgpConfigurationResponseOutput) AllowASOverride() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BgpConfigurationResponse) *string { return v.AllowASOverride }).(pulumi.StringPtrOutput)
-}
-
-// Switch configuration description.
-func (o BgpConfigurationResponseOutput) Annotation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BgpConfigurationResponse) *string { return v.Annotation }).(pulumi.StringPtrOutput)
-}
-
-// BFD configuration properties
-func (o BgpConfigurationResponseOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v BgpConfigurationResponse) *BfdConfigurationResponse { return v.BfdConfiguration }).(BfdConfigurationResponsePtrOutput)
-}
-
-// Originate a defaultRoute. Ex: "True" | "False".
-func (o BgpConfigurationResponseOutput) DefaultRouteOriginate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BgpConfigurationResponse) *string { return v.DefaultRouteOriginate }).(pulumi.StringPtrOutput)
-}
-
-// ASN of Network Fabric. Example: 65048.
-func (o BgpConfigurationResponseOutput) FabricASN() pulumi.IntOutput {
-	return o.ApplyT(func(v BgpConfigurationResponse) int { return v.FabricASN }).(pulumi.IntOutput)
-}
-
-// BGP Ipv4 ListenRange.
-func (o BgpConfigurationResponseOutput) Ipv4ListenRangePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BgpConfigurationResponse) []string { return v.Ipv4ListenRangePrefixes }).(pulumi.StringArrayOutput)
-}
-
-// List with stringified ipv4NeighborAddresses.
-func (o BgpConfigurationResponseOutput) Ipv4NeighborAddress() NeighborAddressResponseArrayOutput {
-	return o.ApplyT(func(v BgpConfigurationResponse) []NeighborAddressResponse { return v.Ipv4NeighborAddress }).(NeighborAddressResponseArrayOutput)
-}
-
-// BGP Ipv6 ListenRange.
-func (o BgpConfigurationResponseOutput) Ipv6ListenRangePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BgpConfigurationResponse) []string { return v.Ipv6ListenRangePrefixes }).(pulumi.StringArrayOutput)
-}
-
-// List with stringified IPv6 Neighbor Address.
-func (o BgpConfigurationResponseOutput) Ipv6NeighborAddress() NeighborAddressResponseArrayOutput {
-	return o.ApplyT(func(v BgpConfigurationResponse) []NeighborAddressResponse { return v.Ipv6NeighborAddress }).(NeighborAddressResponseArrayOutput)
-}
-
-// Peer ASN. Example: 65047.
-func (o BgpConfigurationResponseOutput) PeerASN() pulumi.IntOutput {
-	return o.ApplyT(func(v BgpConfigurationResponse) int { return v.PeerASN }).(pulumi.IntOutput)
-}
-
-type BgpConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BgpConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BgpConfigurationResponse)(nil)).Elem()
-}
-
-func (o BgpConfigurationResponsePtrOutput) ToBgpConfigurationResponsePtrOutput() BgpConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o BgpConfigurationResponsePtrOutput) ToBgpConfigurationResponsePtrOutputWithContext(ctx context.Context) BgpConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o BgpConfigurationResponsePtrOutput) Elem() BgpConfigurationResponseOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) BgpConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BgpConfigurationResponse
-		return ret
-	}).(BgpConfigurationResponseOutput)
-}
-
-// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
-func (o BgpConfigurationResponsePtrOutput) AllowAS() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AllowAS
-	}).(pulumi.IntPtrOutput)
-}
-
-// Enable Or Disable state.
-func (o BgpConfigurationResponsePtrOutput) AllowASOverride() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowASOverride
-	}).(pulumi.StringPtrOutput)
-}
-
-// Switch configuration description.
-func (o BgpConfigurationResponsePtrOutput) Annotation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Annotation
-	}).(pulumi.StringPtrOutput)
-}
-
-// BFD configuration properties
-func (o BgpConfigurationResponsePtrOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) *BfdConfigurationResponse {
-		if v == nil {
-			return nil
-		}
-		return v.BfdConfiguration
-	}).(BfdConfigurationResponsePtrOutput)
-}
-
-// Originate a defaultRoute. Ex: "True" | "False".
-func (o BgpConfigurationResponsePtrOutput) DefaultRouteOriginate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultRouteOriginate
-	}).(pulumi.StringPtrOutput)
-}
-
-// ASN of Network Fabric. Example: 65048.
-func (o BgpConfigurationResponsePtrOutput) FabricASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.FabricASN
-	}).(pulumi.IntPtrOutput)
-}
-
-// BGP Ipv4 ListenRange.
-func (o BgpConfigurationResponsePtrOutput) Ipv4ListenRangePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv4ListenRangePrefixes
-	}).(pulumi.StringArrayOutput)
-}
-
-// List with stringified ipv4NeighborAddresses.
-func (o BgpConfigurationResponsePtrOutput) Ipv4NeighborAddress() NeighborAddressResponseArrayOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) []NeighborAddressResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv4NeighborAddress
-	}).(NeighborAddressResponseArrayOutput)
-}
-
-// BGP Ipv6 ListenRange.
-func (o BgpConfigurationResponsePtrOutput) Ipv6ListenRangePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv6ListenRangePrefixes
-	}).(pulumi.StringArrayOutput)
-}
-
-// List with stringified IPv6 Neighbor Address.
-func (o BgpConfigurationResponsePtrOutput) Ipv6NeighborAddress() NeighborAddressResponseArrayOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) []NeighborAddressResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv6NeighborAddress
-	}).(NeighborAddressResponseArrayOutput)
-}
-
-// Peer ASN. Example: 65047.
-func (o BgpConfigurationResponsePtrOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *BgpConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.PeerASN
+		return v.Multiplier
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -2034,8 +2427,8 @@ func (o CommonDynamicMatchConfigurationResponseArrayOutput) Index(i pulumi.IntIn
 type ConnectedSubnet struct {
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// Prefix of the connected Subnet.
-	Prefix *string `pulumi:"prefix"`
+	// Prefix of the Connected Subnet.
+	Prefix string `pulumi:"prefix"`
 }
 
 // ConnectedSubnetInput is an input type that accepts ConnectedSubnetArgs and ConnectedSubnetOutput values.
@@ -2053,8 +2446,8 @@ type ConnectedSubnetInput interface {
 type ConnectedSubnetArgs struct {
 	// Switch configuration description.
 	Annotation pulumi.StringPtrInput `pulumi:"annotation"`
-	// Prefix of the connected Subnet.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// Prefix of the Connected Subnet.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
 }
 
 func (ConnectedSubnetArgs) ElementType() reflect.Type {
@@ -2114,9 +2507,9 @@ func (o ConnectedSubnetOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectedSubnet) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// Prefix of the connected Subnet.
-func (o ConnectedSubnetOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectedSubnet) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+// Prefix of the Connected Subnet.
+func (o ConnectedSubnetOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectedSubnet) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
 type ConnectedSubnetArrayOutput struct{ *pulumi.OutputState }
@@ -2143,8 +2536,8 @@ func (o ConnectedSubnetArrayOutput) Index(i pulumi.IntInput) ConnectedSubnetOutp
 type ConnectedSubnetResponse struct {
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// Prefix of the connected Subnet.
-	Prefix *string `pulumi:"prefix"`
+	// Prefix of the Connected Subnet.
+	Prefix string `pulumi:"prefix"`
 }
 
 // Connected Subnet properties.
@@ -2167,9 +2560,9 @@ func (o ConnectedSubnetResponseOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectedSubnetResponse) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// Prefix of the connected Subnet.
-func (o ConnectedSubnetResponseOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectedSubnetResponse) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+// Prefix of the Connected Subnet.
+func (o ConnectedSubnetResponseOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectedSubnetResponse) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
 type ConnectedSubnetResponseArrayOutput struct{ *pulumi.OutputState }
@@ -2190,6 +2583,275 @@ func (o ConnectedSubnetResponseArrayOutput) Index(i pulumi.IntInput) ConnectedSu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectedSubnetResponse {
 		return vs[0].([]ConnectedSubnetResponse)[vs[1].(int)]
 	}).(ConnectedSubnetResponseOutput)
+}
+
+// Connected Subnet Route Policy properties.
+type ConnectedSubnetRoutePolicy struct {
+	// Array of ARM Resource ID of the RoutePolicies.
+	ExportRoutePolicy *L3ExportRoutePolicy `pulumi:"exportRoutePolicy"`
+	// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
+	ExportRoutePolicyId *string `pulumi:"exportRoutePolicyId"`
+}
+
+// ConnectedSubnetRoutePolicyInput is an input type that accepts ConnectedSubnetRoutePolicyArgs and ConnectedSubnetRoutePolicyOutput values.
+// You can construct a concrete instance of `ConnectedSubnetRoutePolicyInput` via:
+//
+//	ConnectedSubnetRoutePolicyArgs{...}
+type ConnectedSubnetRoutePolicyInput interface {
+	pulumi.Input
+
+	ToConnectedSubnetRoutePolicyOutput() ConnectedSubnetRoutePolicyOutput
+	ToConnectedSubnetRoutePolicyOutputWithContext(context.Context) ConnectedSubnetRoutePolicyOutput
+}
+
+// Connected Subnet Route Policy properties.
+type ConnectedSubnetRoutePolicyArgs struct {
+	// Array of ARM Resource ID of the RoutePolicies.
+	ExportRoutePolicy L3ExportRoutePolicyPtrInput `pulumi:"exportRoutePolicy"`
+	// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
+	ExportRoutePolicyId pulumi.StringPtrInput `pulumi:"exportRoutePolicyId"`
+}
+
+func (ConnectedSubnetRoutePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectedSubnetRoutePolicy)(nil)).Elem()
+}
+
+func (i ConnectedSubnetRoutePolicyArgs) ToConnectedSubnetRoutePolicyOutput() ConnectedSubnetRoutePolicyOutput {
+	return i.ToConnectedSubnetRoutePolicyOutputWithContext(context.Background())
+}
+
+func (i ConnectedSubnetRoutePolicyArgs) ToConnectedSubnetRoutePolicyOutputWithContext(ctx context.Context) ConnectedSubnetRoutePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectedSubnetRoutePolicyOutput)
+}
+
+func (i ConnectedSubnetRoutePolicyArgs) ToConnectedSubnetRoutePolicyPtrOutput() ConnectedSubnetRoutePolicyPtrOutput {
+	return i.ToConnectedSubnetRoutePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectedSubnetRoutePolicyArgs) ToConnectedSubnetRoutePolicyPtrOutputWithContext(ctx context.Context) ConnectedSubnetRoutePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectedSubnetRoutePolicyOutput).ToConnectedSubnetRoutePolicyPtrOutputWithContext(ctx)
+}
+
+// ConnectedSubnetRoutePolicyPtrInput is an input type that accepts ConnectedSubnetRoutePolicyArgs, ConnectedSubnetRoutePolicyPtr and ConnectedSubnetRoutePolicyPtrOutput values.
+// You can construct a concrete instance of `ConnectedSubnetRoutePolicyPtrInput` via:
+//
+//	        ConnectedSubnetRoutePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectedSubnetRoutePolicyPtrInput interface {
+	pulumi.Input
+
+	ToConnectedSubnetRoutePolicyPtrOutput() ConnectedSubnetRoutePolicyPtrOutput
+	ToConnectedSubnetRoutePolicyPtrOutputWithContext(context.Context) ConnectedSubnetRoutePolicyPtrOutput
+}
+
+type connectedSubnetRoutePolicyPtrType ConnectedSubnetRoutePolicyArgs
+
+func ConnectedSubnetRoutePolicyPtr(v *ConnectedSubnetRoutePolicyArgs) ConnectedSubnetRoutePolicyPtrInput {
+	return (*connectedSubnetRoutePolicyPtrType)(v)
+}
+
+func (*connectedSubnetRoutePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectedSubnetRoutePolicy)(nil)).Elem()
+}
+
+func (i *connectedSubnetRoutePolicyPtrType) ToConnectedSubnetRoutePolicyPtrOutput() ConnectedSubnetRoutePolicyPtrOutput {
+	return i.ToConnectedSubnetRoutePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectedSubnetRoutePolicyPtrType) ToConnectedSubnetRoutePolicyPtrOutputWithContext(ctx context.Context) ConnectedSubnetRoutePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectedSubnetRoutePolicyPtrOutput)
+}
+
+// Connected Subnet Route Policy properties.
+type ConnectedSubnetRoutePolicyOutput struct{ *pulumi.OutputState }
+
+func (ConnectedSubnetRoutePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectedSubnetRoutePolicy)(nil)).Elem()
+}
+
+func (o ConnectedSubnetRoutePolicyOutput) ToConnectedSubnetRoutePolicyOutput() ConnectedSubnetRoutePolicyOutput {
+	return o
+}
+
+func (o ConnectedSubnetRoutePolicyOutput) ToConnectedSubnetRoutePolicyOutputWithContext(ctx context.Context) ConnectedSubnetRoutePolicyOutput {
+	return o
+}
+
+func (o ConnectedSubnetRoutePolicyOutput) ToConnectedSubnetRoutePolicyPtrOutput() ConnectedSubnetRoutePolicyPtrOutput {
+	return o.ToConnectedSubnetRoutePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectedSubnetRoutePolicyOutput) ToConnectedSubnetRoutePolicyPtrOutputWithContext(ctx context.Context) ConnectedSubnetRoutePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectedSubnetRoutePolicy) *ConnectedSubnetRoutePolicy {
+		return &v
+	}).(ConnectedSubnetRoutePolicyPtrOutput)
+}
+
+// Array of ARM Resource ID of the RoutePolicies.
+func (o ConnectedSubnetRoutePolicyOutput) ExportRoutePolicy() L3ExportRoutePolicyPtrOutput {
+	return o.ApplyT(func(v ConnectedSubnetRoutePolicy) *L3ExportRoutePolicy { return v.ExportRoutePolicy }).(L3ExportRoutePolicyPtrOutput)
+}
+
+// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
+func (o ConnectedSubnetRoutePolicyOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectedSubnetRoutePolicy) *string { return v.ExportRoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type ConnectedSubnetRoutePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectedSubnetRoutePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectedSubnetRoutePolicy)(nil)).Elem()
+}
+
+func (o ConnectedSubnetRoutePolicyPtrOutput) ToConnectedSubnetRoutePolicyPtrOutput() ConnectedSubnetRoutePolicyPtrOutput {
+	return o
+}
+
+func (o ConnectedSubnetRoutePolicyPtrOutput) ToConnectedSubnetRoutePolicyPtrOutputWithContext(ctx context.Context) ConnectedSubnetRoutePolicyPtrOutput {
+	return o
+}
+
+func (o ConnectedSubnetRoutePolicyPtrOutput) Elem() ConnectedSubnetRoutePolicyOutput {
+	return o.ApplyT(func(v *ConnectedSubnetRoutePolicy) ConnectedSubnetRoutePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectedSubnetRoutePolicy
+		return ret
+	}).(ConnectedSubnetRoutePolicyOutput)
+}
+
+// Array of ARM Resource ID of the RoutePolicies.
+func (o ConnectedSubnetRoutePolicyPtrOutput) ExportRoutePolicy() L3ExportRoutePolicyPtrOutput {
+	return o.ApplyT(func(v *ConnectedSubnetRoutePolicy) *L3ExportRoutePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ExportRoutePolicy
+	}).(L3ExportRoutePolicyPtrOutput)
+}
+
+// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
+func (o ConnectedSubnetRoutePolicyPtrOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectedSubnetRoutePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportRoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connected Subnet Route Policy properties.
+type ConnectedSubnetRoutePolicyResponse struct {
+	// Array of ARM Resource ID of the RoutePolicies.
+	ExportRoutePolicy *L3ExportRoutePolicyResponse `pulumi:"exportRoutePolicy"`
+	// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
+	ExportRoutePolicyId *string `pulumi:"exportRoutePolicyId"`
+}
+
+// Connected Subnet Route Policy properties.
+type ConnectedSubnetRoutePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectedSubnetRoutePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectedSubnetRoutePolicyResponse)(nil)).Elem()
+}
+
+func (o ConnectedSubnetRoutePolicyResponseOutput) ToConnectedSubnetRoutePolicyResponseOutput() ConnectedSubnetRoutePolicyResponseOutput {
+	return o
+}
+
+func (o ConnectedSubnetRoutePolicyResponseOutput) ToConnectedSubnetRoutePolicyResponseOutputWithContext(ctx context.Context) ConnectedSubnetRoutePolicyResponseOutput {
+	return o
+}
+
+// Array of ARM Resource ID of the RoutePolicies.
+func (o ConnectedSubnetRoutePolicyResponseOutput) ExportRoutePolicy() L3ExportRoutePolicyResponsePtrOutput {
+	return o.ApplyT(func(v ConnectedSubnetRoutePolicyResponse) *L3ExportRoutePolicyResponse { return v.ExportRoutePolicy }).(L3ExportRoutePolicyResponsePtrOutput)
+}
+
+// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
+func (o ConnectedSubnetRoutePolicyResponseOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectedSubnetRoutePolicyResponse) *string { return v.ExportRoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type ConnectedSubnetRoutePolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectedSubnetRoutePolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectedSubnetRoutePolicyResponse)(nil)).Elem()
+}
+
+func (o ConnectedSubnetRoutePolicyResponsePtrOutput) ToConnectedSubnetRoutePolicyResponsePtrOutput() ConnectedSubnetRoutePolicyResponsePtrOutput {
+	return o
+}
+
+func (o ConnectedSubnetRoutePolicyResponsePtrOutput) ToConnectedSubnetRoutePolicyResponsePtrOutputWithContext(ctx context.Context) ConnectedSubnetRoutePolicyResponsePtrOutput {
+	return o
+}
+
+func (o ConnectedSubnetRoutePolicyResponsePtrOutput) Elem() ConnectedSubnetRoutePolicyResponseOutput {
+	return o.ApplyT(func(v *ConnectedSubnetRoutePolicyResponse) ConnectedSubnetRoutePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectedSubnetRoutePolicyResponse
+		return ret
+	}).(ConnectedSubnetRoutePolicyResponseOutput)
+}
+
+// Array of ARM Resource ID of the RoutePolicies.
+func (o ConnectedSubnetRoutePolicyResponsePtrOutput) ExportRoutePolicy() L3ExportRoutePolicyResponsePtrOutput {
+	return o.ApplyT(func(v *ConnectedSubnetRoutePolicyResponse) *L3ExportRoutePolicyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ExportRoutePolicy
+	}).(L3ExportRoutePolicyResponsePtrOutput)
+}
+
+// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
+func (o ConnectedSubnetRoutePolicyResponsePtrOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectedSubnetRoutePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportRoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network Fabric Controller services.
+type ControllerServicesResponse struct {
+	// The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.
+	Ipv4AddressSpaces []string `pulumi:"ipv4AddressSpaces"`
+	// The IPv6 is not supported right now.
+	Ipv6AddressSpaces []string `pulumi:"ipv6AddressSpaces"`
+}
+
+// Network Fabric Controller services.
+type ControllerServicesResponseOutput struct{ *pulumi.OutputState }
+
+func (ControllerServicesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControllerServicesResponse)(nil)).Elem()
+}
+
+func (o ControllerServicesResponseOutput) ToControllerServicesResponseOutput() ControllerServicesResponseOutput {
+	return o
+}
+
+func (o ControllerServicesResponseOutput) ToControllerServicesResponseOutputWithContext(ctx context.Context) ControllerServicesResponseOutput {
+	return o
+}
+
+// The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.
+func (o ControllerServicesResponseOutput) Ipv4AddressSpaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControllerServicesResponse) []string { return v.Ipv4AddressSpaces }).(pulumi.StringArrayOutput)
+}
+
+// The IPv6 is not supported right now.
+func (o ControllerServicesResponseOutput) Ipv6AddressSpaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControllerServicesResponse) []string { return v.Ipv6AddressSpaces }).(pulumi.StringArrayOutput)
 }
 
 // The resource management error additional info.
@@ -2393,6 +3055,478 @@ func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResp
 	}).(ErrorDetailResponseOutput)
 }
 
+// Export Route Policy either IPv4 or IPv6.
+type ExportRoutePolicy struct {
+	// ARM resource ID of RoutePolicy.
+	ExportIpv4RoutePolicyId *string `pulumi:"exportIpv4RoutePolicyId"`
+	// ARM resource ID of RoutePolicy.
+	ExportIpv6RoutePolicyId *string `pulumi:"exportIpv6RoutePolicyId"`
+}
+
+// ExportRoutePolicyInput is an input type that accepts ExportRoutePolicyArgs and ExportRoutePolicyOutput values.
+// You can construct a concrete instance of `ExportRoutePolicyInput` via:
+//
+//	ExportRoutePolicyArgs{...}
+type ExportRoutePolicyInput interface {
+	pulumi.Input
+
+	ToExportRoutePolicyOutput() ExportRoutePolicyOutput
+	ToExportRoutePolicyOutputWithContext(context.Context) ExportRoutePolicyOutput
+}
+
+// Export Route Policy either IPv4 or IPv6.
+type ExportRoutePolicyArgs struct {
+	// ARM resource ID of RoutePolicy.
+	ExportIpv4RoutePolicyId pulumi.StringPtrInput `pulumi:"exportIpv4RoutePolicyId"`
+	// ARM resource ID of RoutePolicy.
+	ExportIpv6RoutePolicyId pulumi.StringPtrInput `pulumi:"exportIpv6RoutePolicyId"`
+}
+
+func (ExportRoutePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportRoutePolicy)(nil)).Elem()
+}
+
+func (i ExportRoutePolicyArgs) ToExportRoutePolicyOutput() ExportRoutePolicyOutput {
+	return i.ToExportRoutePolicyOutputWithContext(context.Background())
+}
+
+func (i ExportRoutePolicyArgs) ToExportRoutePolicyOutputWithContext(ctx context.Context) ExportRoutePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExportRoutePolicyOutput)
+}
+
+func (i ExportRoutePolicyArgs) ToExportRoutePolicyPtrOutput() ExportRoutePolicyPtrOutput {
+	return i.ToExportRoutePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ExportRoutePolicyArgs) ToExportRoutePolicyPtrOutputWithContext(ctx context.Context) ExportRoutePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExportRoutePolicyOutput).ToExportRoutePolicyPtrOutputWithContext(ctx)
+}
+
+// ExportRoutePolicyPtrInput is an input type that accepts ExportRoutePolicyArgs, ExportRoutePolicyPtr and ExportRoutePolicyPtrOutput values.
+// You can construct a concrete instance of `ExportRoutePolicyPtrInput` via:
+//
+//	        ExportRoutePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExportRoutePolicyPtrInput interface {
+	pulumi.Input
+
+	ToExportRoutePolicyPtrOutput() ExportRoutePolicyPtrOutput
+	ToExportRoutePolicyPtrOutputWithContext(context.Context) ExportRoutePolicyPtrOutput
+}
+
+type exportRoutePolicyPtrType ExportRoutePolicyArgs
+
+func ExportRoutePolicyPtr(v *ExportRoutePolicyArgs) ExportRoutePolicyPtrInput {
+	return (*exportRoutePolicyPtrType)(v)
+}
+
+func (*exportRoutePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExportRoutePolicy)(nil)).Elem()
+}
+
+func (i *exportRoutePolicyPtrType) ToExportRoutePolicyPtrOutput() ExportRoutePolicyPtrOutput {
+	return i.ToExportRoutePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *exportRoutePolicyPtrType) ToExportRoutePolicyPtrOutputWithContext(ctx context.Context) ExportRoutePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExportRoutePolicyPtrOutput)
+}
+
+// Export Route Policy either IPv4 or IPv6.
+type ExportRoutePolicyOutput struct{ *pulumi.OutputState }
+
+func (ExportRoutePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportRoutePolicy)(nil)).Elem()
+}
+
+func (o ExportRoutePolicyOutput) ToExportRoutePolicyOutput() ExportRoutePolicyOutput {
+	return o
+}
+
+func (o ExportRoutePolicyOutput) ToExportRoutePolicyOutputWithContext(ctx context.Context) ExportRoutePolicyOutput {
+	return o
+}
+
+func (o ExportRoutePolicyOutput) ToExportRoutePolicyPtrOutput() ExportRoutePolicyPtrOutput {
+	return o.ToExportRoutePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ExportRoutePolicyOutput) ToExportRoutePolicyPtrOutputWithContext(ctx context.Context) ExportRoutePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExportRoutePolicy) *ExportRoutePolicy {
+		return &v
+	}).(ExportRoutePolicyPtrOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ExportRoutePolicyOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRoutePolicy) *string { return v.ExportIpv4RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ExportRoutePolicyOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRoutePolicy) *string { return v.ExportIpv6RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type ExportRoutePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ExportRoutePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExportRoutePolicy)(nil)).Elem()
+}
+
+func (o ExportRoutePolicyPtrOutput) ToExportRoutePolicyPtrOutput() ExportRoutePolicyPtrOutput {
+	return o
+}
+
+func (o ExportRoutePolicyPtrOutput) ToExportRoutePolicyPtrOutputWithContext(ctx context.Context) ExportRoutePolicyPtrOutput {
+	return o
+}
+
+func (o ExportRoutePolicyPtrOutput) Elem() ExportRoutePolicyOutput {
+	return o.ApplyT(func(v *ExportRoutePolicy) ExportRoutePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ExportRoutePolicy
+		return ret
+	}).(ExportRoutePolicyOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ExportRoutePolicyPtrOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExportRoutePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv4RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ExportRoutePolicyPtrOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExportRoutePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv6RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Export Route Policy Configuration.
+type ExportRoutePolicyInformation struct {
+	// Export IPv4 Route Policy Id.
+	ExportIpv4RoutePolicyId *string `pulumi:"exportIpv4RoutePolicyId"`
+	// Export IPv6 Route Policy Id.
+	ExportIpv6RoutePolicyId *string `pulumi:"exportIpv6RoutePolicyId"`
+}
+
+// ExportRoutePolicyInformationInput is an input type that accepts ExportRoutePolicyInformationArgs and ExportRoutePolicyInformationOutput values.
+// You can construct a concrete instance of `ExportRoutePolicyInformationInput` via:
+//
+//	ExportRoutePolicyInformationArgs{...}
+type ExportRoutePolicyInformationInput interface {
+	pulumi.Input
+
+	ToExportRoutePolicyInformationOutput() ExportRoutePolicyInformationOutput
+	ToExportRoutePolicyInformationOutputWithContext(context.Context) ExportRoutePolicyInformationOutput
+}
+
+// Export Route Policy Configuration.
+type ExportRoutePolicyInformationArgs struct {
+	// Export IPv4 Route Policy Id.
+	ExportIpv4RoutePolicyId pulumi.StringPtrInput `pulumi:"exportIpv4RoutePolicyId"`
+	// Export IPv6 Route Policy Id.
+	ExportIpv6RoutePolicyId pulumi.StringPtrInput `pulumi:"exportIpv6RoutePolicyId"`
+}
+
+func (ExportRoutePolicyInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportRoutePolicyInformation)(nil)).Elem()
+}
+
+func (i ExportRoutePolicyInformationArgs) ToExportRoutePolicyInformationOutput() ExportRoutePolicyInformationOutput {
+	return i.ToExportRoutePolicyInformationOutputWithContext(context.Background())
+}
+
+func (i ExportRoutePolicyInformationArgs) ToExportRoutePolicyInformationOutputWithContext(ctx context.Context) ExportRoutePolicyInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExportRoutePolicyInformationOutput)
+}
+
+func (i ExportRoutePolicyInformationArgs) ToExportRoutePolicyInformationPtrOutput() ExportRoutePolicyInformationPtrOutput {
+	return i.ToExportRoutePolicyInformationPtrOutputWithContext(context.Background())
+}
+
+func (i ExportRoutePolicyInformationArgs) ToExportRoutePolicyInformationPtrOutputWithContext(ctx context.Context) ExportRoutePolicyInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExportRoutePolicyInformationOutput).ToExportRoutePolicyInformationPtrOutputWithContext(ctx)
+}
+
+// ExportRoutePolicyInformationPtrInput is an input type that accepts ExportRoutePolicyInformationArgs, ExportRoutePolicyInformationPtr and ExportRoutePolicyInformationPtrOutput values.
+// You can construct a concrete instance of `ExportRoutePolicyInformationPtrInput` via:
+//
+//	        ExportRoutePolicyInformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExportRoutePolicyInformationPtrInput interface {
+	pulumi.Input
+
+	ToExportRoutePolicyInformationPtrOutput() ExportRoutePolicyInformationPtrOutput
+	ToExportRoutePolicyInformationPtrOutputWithContext(context.Context) ExportRoutePolicyInformationPtrOutput
+}
+
+type exportRoutePolicyInformationPtrType ExportRoutePolicyInformationArgs
+
+func ExportRoutePolicyInformationPtr(v *ExportRoutePolicyInformationArgs) ExportRoutePolicyInformationPtrInput {
+	return (*exportRoutePolicyInformationPtrType)(v)
+}
+
+func (*exportRoutePolicyInformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExportRoutePolicyInformation)(nil)).Elem()
+}
+
+func (i *exportRoutePolicyInformationPtrType) ToExportRoutePolicyInformationPtrOutput() ExportRoutePolicyInformationPtrOutput {
+	return i.ToExportRoutePolicyInformationPtrOutputWithContext(context.Background())
+}
+
+func (i *exportRoutePolicyInformationPtrType) ToExportRoutePolicyInformationPtrOutputWithContext(ctx context.Context) ExportRoutePolicyInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExportRoutePolicyInformationPtrOutput)
+}
+
+// Export Route Policy Configuration.
+type ExportRoutePolicyInformationOutput struct{ *pulumi.OutputState }
+
+func (ExportRoutePolicyInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportRoutePolicyInformation)(nil)).Elem()
+}
+
+func (o ExportRoutePolicyInformationOutput) ToExportRoutePolicyInformationOutput() ExportRoutePolicyInformationOutput {
+	return o
+}
+
+func (o ExportRoutePolicyInformationOutput) ToExportRoutePolicyInformationOutputWithContext(ctx context.Context) ExportRoutePolicyInformationOutput {
+	return o
+}
+
+func (o ExportRoutePolicyInformationOutput) ToExportRoutePolicyInformationPtrOutput() ExportRoutePolicyInformationPtrOutput {
+	return o.ToExportRoutePolicyInformationPtrOutputWithContext(context.Background())
+}
+
+func (o ExportRoutePolicyInformationOutput) ToExportRoutePolicyInformationPtrOutputWithContext(ctx context.Context) ExportRoutePolicyInformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExportRoutePolicyInformation) *ExportRoutePolicyInformation {
+		return &v
+	}).(ExportRoutePolicyInformationPtrOutput)
+}
+
+// Export IPv4 Route Policy Id.
+func (o ExportRoutePolicyInformationOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRoutePolicyInformation) *string { return v.ExportIpv4RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Export IPv6 Route Policy Id.
+func (o ExportRoutePolicyInformationOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRoutePolicyInformation) *string { return v.ExportIpv6RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type ExportRoutePolicyInformationPtrOutput struct{ *pulumi.OutputState }
+
+func (ExportRoutePolicyInformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExportRoutePolicyInformation)(nil)).Elem()
+}
+
+func (o ExportRoutePolicyInformationPtrOutput) ToExportRoutePolicyInformationPtrOutput() ExportRoutePolicyInformationPtrOutput {
+	return o
+}
+
+func (o ExportRoutePolicyInformationPtrOutput) ToExportRoutePolicyInformationPtrOutputWithContext(ctx context.Context) ExportRoutePolicyInformationPtrOutput {
+	return o
+}
+
+func (o ExportRoutePolicyInformationPtrOutput) Elem() ExportRoutePolicyInformationOutput {
+	return o.ApplyT(func(v *ExportRoutePolicyInformation) ExportRoutePolicyInformation {
+		if v != nil {
+			return *v
+		}
+		var ret ExportRoutePolicyInformation
+		return ret
+	}).(ExportRoutePolicyInformationOutput)
+}
+
+// Export IPv4 Route Policy Id.
+func (o ExportRoutePolicyInformationPtrOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExportRoutePolicyInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv4RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Export IPv6 Route Policy Id.
+func (o ExportRoutePolicyInformationPtrOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExportRoutePolicyInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv6RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Export Route Policy Configuration.
+type ExportRoutePolicyInformationResponse struct {
+	// Export IPv4 Route Policy Id.
+	ExportIpv4RoutePolicyId *string `pulumi:"exportIpv4RoutePolicyId"`
+	// Export IPv6 Route Policy Id.
+	ExportIpv6RoutePolicyId *string `pulumi:"exportIpv6RoutePolicyId"`
+}
+
+// Export Route Policy Configuration.
+type ExportRoutePolicyInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (ExportRoutePolicyInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportRoutePolicyInformationResponse)(nil)).Elem()
+}
+
+func (o ExportRoutePolicyInformationResponseOutput) ToExportRoutePolicyInformationResponseOutput() ExportRoutePolicyInformationResponseOutput {
+	return o
+}
+
+func (o ExportRoutePolicyInformationResponseOutput) ToExportRoutePolicyInformationResponseOutputWithContext(ctx context.Context) ExportRoutePolicyInformationResponseOutput {
+	return o
+}
+
+// Export IPv4 Route Policy Id.
+func (o ExportRoutePolicyInformationResponseOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRoutePolicyInformationResponse) *string { return v.ExportIpv4RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Export IPv6 Route Policy Id.
+func (o ExportRoutePolicyInformationResponseOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRoutePolicyInformationResponse) *string { return v.ExportIpv6RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type ExportRoutePolicyInformationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExportRoutePolicyInformationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExportRoutePolicyInformationResponse)(nil)).Elem()
+}
+
+func (o ExportRoutePolicyInformationResponsePtrOutput) ToExportRoutePolicyInformationResponsePtrOutput() ExportRoutePolicyInformationResponsePtrOutput {
+	return o
+}
+
+func (o ExportRoutePolicyInformationResponsePtrOutput) ToExportRoutePolicyInformationResponsePtrOutputWithContext(ctx context.Context) ExportRoutePolicyInformationResponsePtrOutput {
+	return o
+}
+
+func (o ExportRoutePolicyInformationResponsePtrOutput) Elem() ExportRoutePolicyInformationResponseOutput {
+	return o.ApplyT(func(v *ExportRoutePolicyInformationResponse) ExportRoutePolicyInformationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExportRoutePolicyInformationResponse
+		return ret
+	}).(ExportRoutePolicyInformationResponseOutput)
+}
+
+// Export IPv4 Route Policy Id.
+func (o ExportRoutePolicyInformationResponsePtrOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExportRoutePolicyInformationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv4RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Export IPv6 Route Policy Id.
+func (o ExportRoutePolicyInformationResponsePtrOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExportRoutePolicyInformationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv6RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Export Route Policy either IPv4 or IPv6.
+type ExportRoutePolicyResponse struct {
+	// ARM resource ID of RoutePolicy.
+	ExportIpv4RoutePolicyId *string `pulumi:"exportIpv4RoutePolicyId"`
+	// ARM resource ID of RoutePolicy.
+	ExportIpv6RoutePolicyId *string `pulumi:"exportIpv6RoutePolicyId"`
+}
+
+// Export Route Policy either IPv4 or IPv6.
+type ExportRoutePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ExportRoutePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportRoutePolicyResponse)(nil)).Elem()
+}
+
+func (o ExportRoutePolicyResponseOutput) ToExportRoutePolicyResponseOutput() ExportRoutePolicyResponseOutput {
+	return o
+}
+
+func (o ExportRoutePolicyResponseOutput) ToExportRoutePolicyResponseOutputWithContext(ctx context.Context) ExportRoutePolicyResponseOutput {
+	return o
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ExportRoutePolicyResponseOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRoutePolicyResponse) *string { return v.ExportIpv4RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ExportRoutePolicyResponseOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportRoutePolicyResponse) *string { return v.ExportIpv6RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type ExportRoutePolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExportRoutePolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExportRoutePolicyResponse)(nil)).Elem()
+}
+
+func (o ExportRoutePolicyResponsePtrOutput) ToExportRoutePolicyResponsePtrOutput() ExportRoutePolicyResponsePtrOutput {
+	return o
+}
+
+func (o ExportRoutePolicyResponsePtrOutput) ToExportRoutePolicyResponsePtrOutputWithContext(ctx context.Context) ExportRoutePolicyResponsePtrOutput {
+	return o
+}
+
+func (o ExportRoutePolicyResponsePtrOutput) Elem() ExportRoutePolicyResponseOutput {
+	return o.ApplyT(func(v *ExportRoutePolicyResponse) ExportRoutePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExportRoutePolicyResponse
+		return ret
+	}).(ExportRoutePolicyResponseOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ExportRoutePolicyResponsePtrOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExportRoutePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv4RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ExportRoutePolicyResponsePtrOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExportRoutePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv6RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The ExpressRoute circuit ID and the Auth Key are required for you to successfully deploy NFC service.
 type ExpressRouteConnectionInformation struct {
 	// Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations. The Auth Key is a mandatory attribute.
@@ -2557,17 +3691,23 @@ func (o ExpressRouteConnectionInformationResponseArrayOutput) Index(i pulumi.Int
 
 // option A properties object
 type ExternalNetworkPropertiesOptionAProperties struct {
+	// BFD configuration properties
+	BfdConfiguration *BfdConfiguration `pulumi:"bfdConfiguration"`
+	// Egress Acl. ARM resource ID of Access Control Lists.
+	EgressAclId *string `pulumi:"egressAclId"`
+	// Ingress Acl. ARM resource ID of Access Control Lists.
+	IngressAclId *string `pulumi:"ingressAclId"`
 	// MTU to use for option A peering.
 	Mtu *int `pulumi:"mtu"`
 	// Peer ASN number.Example : 28
-	PeerASN int `pulumi:"peerASN"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	PeerASN float64 `pulumi:"peerASN"`
+	// IPv4 Address Prefix.
 	PrimaryIpv4Prefix *string `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv6 Address Prefix.
 	PrimaryIpv6Prefix *string `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv4 Address Prefix.
 	SecondaryIpv4Prefix *string `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv6 Address Prefix.
 	SecondaryIpv6Prefix *string `pulumi:"secondaryIpv6Prefix"`
 	// Vlan identifier. Example : 501
 	VlanId int `pulumi:"vlanId"`
@@ -2579,6 +3719,8 @@ func (val *ExternalNetworkPropertiesOptionAProperties) Defaults() *ExternalNetwo
 		return nil
 	}
 	tmp := *val
+	tmp.BfdConfiguration = tmp.BfdConfiguration.Defaults()
+
 	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
@@ -2599,17 +3741,23 @@ type ExternalNetworkPropertiesOptionAPropertiesInput interface {
 
 // option A properties object
 type ExternalNetworkPropertiesOptionAPropertiesArgs struct {
+	// BFD configuration properties
+	BfdConfiguration BfdConfigurationPtrInput `pulumi:"bfdConfiguration"`
+	// Egress Acl. ARM resource ID of Access Control Lists.
+	EgressAclId pulumi.StringPtrInput `pulumi:"egressAclId"`
+	// Ingress Acl. ARM resource ID of Access Control Lists.
+	IngressAclId pulumi.StringPtrInput `pulumi:"ingressAclId"`
 	// MTU to use for option A peering.
 	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
 	// Peer ASN number.Example : 28
-	PeerASN pulumi.IntInput `pulumi:"peerASN"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	PeerASN pulumi.Float64Input `pulumi:"peerASN"`
+	// IPv4 Address Prefix.
 	PrimaryIpv4Prefix pulumi.StringPtrInput `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv6 Address Prefix.
 	PrimaryIpv6Prefix pulumi.StringPtrInput `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv4 Address Prefix.
 	SecondaryIpv4Prefix pulumi.StringPtrInput `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv6 Address Prefix.
 	SecondaryIpv6Prefix pulumi.StringPtrInput `pulumi:"secondaryIpv6Prefix"`
 	// Vlan identifier. Example : 501
 	VlanId pulumi.IntInput `pulumi:"vlanId"`
@@ -2621,6 +3769,7 @@ func (val *ExternalNetworkPropertiesOptionAPropertiesArgs) Defaults() *ExternalN
 		return nil
 	}
 	tmp := *val
+
 	if tmp.Mtu == nil {
 		tmp.Mtu = pulumi.IntPtr(1500)
 	}
@@ -2704,32 +3853,47 @@ func (o ExternalNetworkPropertiesOptionAPropertiesOutput) ToExternalNetworkPrope
 	}).(ExternalNetworkPropertiesOptionAPropertiesPtrOutput)
 }
 
+// BFD configuration properties
+func (o ExternalNetworkPropertiesOptionAPropertiesOutput) BfdConfiguration() BfdConfigurationPtrOutput {
+	return o.ApplyT(func(v ExternalNetworkPropertiesOptionAProperties) *BfdConfiguration { return v.BfdConfiguration }).(BfdConfigurationPtrOutput)
+}
+
+// Egress Acl. ARM resource ID of Access Control Lists.
+func (o ExternalNetworkPropertiesOptionAPropertiesOutput) EgressAclId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalNetworkPropertiesOptionAProperties) *string { return v.EgressAclId }).(pulumi.StringPtrOutput)
+}
+
+// Ingress Acl. ARM resource ID of Access Control Lists.
+func (o ExternalNetworkPropertiesOptionAPropertiesOutput) IngressAclId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalNetworkPropertiesOptionAProperties) *string { return v.IngressAclId }).(pulumi.StringPtrOutput)
+}
+
 // MTU to use for option A peering.
 func (o ExternalNetworkPropertiesOptionAPropertiesOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ExternalNetworkPropertiesOptionAProperties) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 // Peer ASN number.Example : 28
-func (o ExternalNetworkPropertiesOptionAPropertiesOutput) PeerASN() pulumi.IntOutput {
-	return o.ApplyT(func(v ExternalNetworkPropertiesOptionAProperties) int { return v.PeerASN }).(pulumi.IntOutput)
+func (o ExternalNetworkPropertiesOptionAPropertiesOutput) PeerASN() pulumi.Float64Output {
+	return o.ApplyT(func(v ExternalNetworkPropertiesOptionAProperties) float64 { return v.PeerASN }).(pulumi.Float64Output)
 }
 
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv4 Address Prefix.
 func (o ExternalNetworkPropertiesOptionAPropertiesOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalNetworkPropertiesOptionAProperties) *string { return v.PrimaryIpv4Prefix }).(pulumi.StringPtrOutput)
 }
 
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv6 Address Prefix.
 func (o ExternalNetworkPropertiesOptionAPropertiesOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalNetworkPropertiesOptionAProperties) *string { return v.PrimaryIpv6Prefix }).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv4 Address Prefix.
 func (o ExternalNetworkPropertiesOptionAPropertiesOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalNetworkPropertiesOptionAProperties) *string { return v.SecondaryIpv4Prefix }).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv6 Address Prefix.
 func (o ExternalNetworkPropertiesOptionAPropertiesOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalNetworkPropertiesOptionAProperties) *string { return v.SecondaryIpv6Prefix }).(pulumi.StringPtrOutput)
 }
@@ -2763,6 +3927,36 @@ func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) Elem() ExternalNetw
 	}).(ExternalNetworkPropertiesOptionAPropertiesOutput)
 }
 
+// BFD configuration properties
+func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) BfdConfiguration() BfdConfigurationPtrOutput {
+	return o.ApplyT(func(v *ExternalNetworkPropertiesOptionAProperties) *BfdConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.BfdConfiguration
+	}).(BfdConfigurationPtrOutput)
+}
+
+// Egress Acl. ARM resource ID of Access Control Lists.
+func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) EgressAclId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalNetworkPropertiesOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressAclId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ingress Acl. ARM resource ID of Access Control Lists.
+func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) IngressAclId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalNetworkPropertiesOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IngressAclId
+	}).(pulumi.StringPtrOutput)
+}
+
 // MTU to use for option A peering.
 func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ExternalNetworkPropertiesOptionAProperties) *int {
@@ -2774,16 +3968,16 @@ func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) Mtu() pulumi.IntPtr
 }
 
 // Peer ASN number.Example : 28
-func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ExternalNetworkPropertiesOptionAProperties) *int {
+func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) PeerASN() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ExternalNetworkPropertiesOptionAProperties) *float64 {
 		if v == nil {
 			return nil
 		}
 		return &v.PeerASN
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv4 Address Prefix.
 func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalNetworkPropertiesOptionAProperties) *string {
 		if v == nil {
@@ -2793,7 +3987,7 @@ func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) PrimaryIpv4Prefix()
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv6 Address Prefix.
 func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalNetworkPropertiesOptionAProperties) *string {
 		if v == nil {
@@ -2803,7 +3997,7 @@ func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) PrimaryIpv6Prefix()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv4 Address Prefix.
 func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalNetworkPropertiesOptionAProperties) *string {
 		if v == nil {
@@ -2813,7 +4007,7 @@ func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) SecondaryIpv4Prefix
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv6 Address Prefix.
 func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalNetworkPropertiesOptionAProperties) *string {
 		if v == nil {
@@ -2837,19 +4031,23 @@ func (o ExternalNetworkPropertiesOptionAPropertiesPtrOutput) VlanId() pulumi.Int
 type ExternalNetworkPropertiesResponseOptionAProperties struct {
 	// BFD configuration properties
 	BfdConfiguration *BfdConfigurationResponse `pulumi:"bfdConfiguration"`
+	// Egress Acl. ARM resource ID of Access Control Lists.
+	EgressAclId *string `pulumi:"egressAclId"`
 	// Fabric ASN number. Example 65001
-	FabricASN int `pulumi:"fabricASN"`
+	FabricASN float64 `pulumi:"fabricASN"`
+	// Ingress Acl. ARM resource ID of Access Control Lists.
+	IngressAclId *string `pulumi:"ingressAclId"`
 	// MTU to use for option A peering.
 	Mtu *int `pulumi:"mtu"`
 	// Peer ASN number.Example : 28
-	PeerASN int `pulumi:"peerASN"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	PeerASN float64 `pulumi:"peerASN"`
+	// IPv4 Address Prefix.
 	PrimaryIpv4Prefix *string `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv6 Address Prefix.
 	PrimaryIpv6Prefix *string `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv4 Address Prefix.
 	SecondaryIpv4Prefix *string `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv6 Address Prefix.
 	SecondaryIpv6Prefix *string `pulumi:"secondaryIpv6Prefix"`
 	// Vlan identifier. Example : 501
 	VlanId int `pulumi:"vlanId"`
@@ -2861,6 +4059,8 @@ func (val *ExternalNetworkPropertiesResponseOptionAProperties) Defaults() *Exter
 		return nil
 	}
 	tmp := *val
+	tmp.BfdConfiguration = tmp.BfdConfiguration.Defaults()
+
 	if tmp.Mtu == nil {
 		mtu_ := 1500
 		tmp.Mtu = &mtu_
@@ -2890,9 +4090,19 @@ func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) BfdConfigurati
 	}).(BfdConfigurationResponsePtrOutput)
 }
 
+// Egress Acl. ARM resource ID of Access Control Lists.
+func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) EgressAclId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalNetworkPropertiesResponseOptionAProperties) *string { return v.EgressAclId }).(pulumi.StringPtrOutput)
+}
+
 // Fabric ASN number. Example 65001
-func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) FabricASN() pulumi.IntOutput {
-	return o.ApplyT(func(v ExternalNetworkPropertiesResponseOptionAProperties) int { return v.FabricASN }).(pulumi.IntOutput)
+func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) FabricASN() pulumi.Float64Output {
+	return o.ApplyT(func(v ExternalNetworkPropertiesResponseOptionAProperties) float64 { return v.FabricASN }).(pulumi.Float64Output)
+}
+
+// Ingress Acl. ARM resource ID of Access Control Lists.
+func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) IngressAclId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalNetworkPropertiesResponseOptionAProperties) *string { return v.IngressAclId }).(pulumi.StringPtrOutput)
 }
 
 // MTU to use for option A peering.
@@ -2901,26 +4111,26 @@ func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) Mtu() pulumi.I
 }
 
 // Peer ASN number.Example : 28
-func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) PeerASN() pulumi.IntOutput {
-	return o.ApplyT(func(v ExternalNetworkPropertiesResponseOptionAProperties) int { return v.PeerASN }).(pulumi.IntOutput)
+func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) PeerASN() pulumi.Float64Output {
+	return o.ApplyT(func(v ExternalNetworkPropertiesResponseOptionAProperties) float64 { return v.PeerASN }).(pulumi.Float64Output)
 }
 
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv4 Address Prefix.
 func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalNetworkPropertiesResponseOptionAProperties) *string { return v.PrimaryIpv4Prefix }).(pulumi.StringPtrOutput)
 }
 
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv6 Address Prefix.
 func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalNetworkPropertiesResponseOptionAProperties) *string { return v.PrimaryIpv6Prefix }).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv4 Address Prefix.
 func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalNetworkPropertiesResponseOptionAProperties) *string { return v.SecondaryIpv4Prefix }).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv6 Address Prefix.
 func (o ExternalNetworkPropertiesResponseOptionAPropertiesOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalNetworkPropertiesResponseOptionAProperties) *string { return v.SecondaryIpv6Prefix }).(pulumi.StringPtrOutput)
 }
@@ -2964,14 +4174,34 @@ func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) BfdConfigur
 	}).(BfdConfigurationResponsePtrOutput)
 }
 
+// Egress Acl. ARM resource ID of Access Control Lists.
+func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) EgressAclId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalNetworkPropertiesResponseOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressAclId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Fabric ASN number. Example 65001
-func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) FabricASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ExternalNetworkPropertiesResponseOptionAProperties) *int {
+func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) FabricASN() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ExternalNetworkPropertiesResponseOptionAProperties) *float64 {
 		if v == nil {
 			return nil
 		}
 		return &v.FabricASN
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Ingress Acl. ARM resource ID of Access Control Lists.
+func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) IngressAclId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalNetworkPropertiesResponseOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IngressAclId
+	}).(pulumi.StringPtrOutput)
 }
 
 // MTU to use for option A peering.
@@ -2985,16 +4215,16 @@ func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) Mtu() pulum
 }
 
 // Peer ASN number.Example : 28
-func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ExternalNetworkPropertiesResponseOptionAProperties) *int {
+func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) PeerASN() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ExternalNetworkPropertiesResponseOptionAProperties) *float64 {
 		if v == nil {
 			return nil
 		}
 		return &v.PeerASN
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv4 Address Prefix.
 func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalNetworkPropertiesResponseOptionAProperties) *string {
 		if v == nil {
@@ -3004,7 +4234,7 @@ func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) PrimaryIpv4
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv6 Address Prefix.
 func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalNetworkPropertiesResponseOptionAProperties) *string {
 		if v == nil {
@@ -3014,7 +4244,7 @@ func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) PrimaryIpv6
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv4 Address Prefix.
 func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalNetworkPropertiesResponseOptionAProperties) *string {
 		if v == nil {
@@ -3024,7 +4254,7 @@ func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) SecondaryIp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv6 Address Prefix.
 func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalNetworkPropertiesResponseOptionAProperties) *string {
 		if v == nil {
@@ -3044,89 +4274,14 @@ func (o ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput) VlanId() pu
 	}).(pulumi.IntPtrOutput)
 }
 
-// BFD Configuration properties.
-type FabricBfdConfigurationResponse struct {
-	// interval in seconds. Example: 300.
-	Interval int `pulumi:"interval"`
-	// multiplier. Example: 3.
-	Multiplier int `pulumi:"multiplier"`
-}
-
-// BFD Configuration properties.
-type FabricBfdConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (FabricBfdConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FabricBfdConfigurationResponse)(nil)).Elem()
-}
-
-func (o FabricBfdConfigurationResponseOutput) ToFabricBfdConfigurationResponseOutput() FabricBfdConfigurationResponseOutput {
-	return o
-}
-
-func (o FabricBfdConfigurationResponseOutput) ToFabricBfdConfigurationResponseOutputWithContext(ctx context.Context) FabricBfdConfigurationResponseOutput {
-	return o
-}
-
-// interval in seconds. Example: 300.
-func (o FabricBfdConfigurationResponseOutput) Interval() pulumi.IntOutput {
-	return o.ApplyT(func(v FabricBfdConfigurationResponse) int { return v.Interval }).(pulumi.IntOutput)
-}
-
-// multiplier. Example: 3.
-func (o FabricBfdConfigurationResponseOutput) Multiplier() pulumi.IntOutput {
-	return o.ApplyT(func(v FabricBfdConfigurationResponse) int { return v.Multiplier }).(pulumi.IntOutput)
-}
-
-type FabricBfdConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (FabricBfdConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FabricBfdConfigurationResponse)(nil)).Elem()
-}
-
-func (o FabricBfdConfigurationResponsePtrOutput) ToFabricBfdConfigurationResponsePtrOutput() FabricBfdConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o FabricBfdConfigurationResponsePtrOutput) ToFabricBfdConfigurationResponsePtrOutputWithContext(ctx context.Context) FabricBfdConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o FabricBfdConfigurationResponsePtrOutput) Elem() FabricBfdConfigurationResponseOutput {
-	return o.ApplyT(func(v *FabricBfdConfigurationResponse) FabricBfdConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret FabricBfdConfigurationResponse
-		return ret
-	}).(FabricBfdConfigurationResponseOutput)
-}
-
-// interval in seconds. Example: 300.
-func (o FabricBfdConfigurationResponsePtrOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *FabricBfdConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Interval
-	}).(pulumi.IntPtrOutput)
-}
-
-// multiplier. Example: 3.
-func (o FabricBfdConfigurationResponsePtrOutput) Multiplier() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *FabricBfdConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Multiplier
-	}).(pulumi.IntPtrOutput)
-}
-
-// Option B configuration.
+// Option B configuration to be used for Management VPN.
 type FabricOptionBProperties struct {
-	// Route Targets to be applied for outgoing routes from CE.
+	// Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
 	ExportRouteTargets []string `pulumi:"exportRouteTargets"`
-	// Route Targets to be applied for incoming routes into CE.
+	// Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
 	ImportRouteTargets []string `pulumi:"importRouteTargets"`
+	// Route Targets to be applied.
+	RouteTargets *RouteTargetInformation `pulumi:"routeTargets"`
 }
 
 // FabricOptionBPropertiesInput is an input type that accepts FabricOptionBPropertiesArgs and FabricOptionBPropertiesOutput values.
@@ -3140,12 +4295,14 @@ type FabricOptionBPropertiesInput interface {
 	ToFabricOptionBPropertiesOutputWithContext(context.Context) FabricOptionBPropertiesOutput
 }
 
-// Option B configuration.
+// Option B configuration to be used for Management VPN.
 type FabricOptionBPropertiesArgs struct {
-	// Route Targets to be applied for outgoing routes from CE.
+	// Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
 	ExportRouteTargets pulumi.StringArrayInput `pulumi:"exportRouteTargets"`
-	// Route Targets to be applied for incoming routes into CE.
+	// Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
 	ImportRouteTargets pulumi.StringArrayInput `pulumi:"importRouteTargets"`
+	// Route Targets to be applied.
+	RouteTargets RouteTargetInformationPtrInput `pulumi:"routeTargets"`
 }
 
 func (FabricOptionBPropertiesArgs) ElementType() reflect.Type {
@@ -3201,7 +4358,7 @@ func (i *fabricOptionBPropertiesPtrType) ToFabricOptionBPropertiesPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(FabricOptionBPropertiesPtrOutput)
 }
 
-// Option B configuration.
+// Option B configuration to be used for Management VPN.
 type FabricOptionBPropertiesOutput struct{ *pulumi.OutputState }
 
 func (FabricOptionBPropertiesOutput) ElementType() reflect.Type {
@@ -3226,14 +4383,19 @@ func (o FabricOptionBPropertiesOutput) ToFabricOptionBPropertiesPtrOutputWithCon
 	}).(FabricOptionBPropertiesPtrOutput)
 }
 
-// Route Targets to be applied for outgoing routes from CE.
+// Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
 func (o FabricOptionBPropertiesOutput) ExportRouteTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FabricOptionBProperties) []string { return v.ExportRouteTargets }).(pulumi.StringArrayOutput)
 }
 
-// Route Targets to be applied for incoming routes into CE.
+// Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
 func (o FabricOptionBPropertiesOutput) ImportRouteTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FabricOptionBProperties) []string { return v.ImportRouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied.
+func (o FabricOptionBPropertiesOutput) RouteTargets() RouteTargetInformationPtrOutput {
+	return o.ApplyT(func(v FabricOptionBProperties) *RouteTargetInformation { return v.RouteTargets }).(RouteTargetInformationPtrOutput)
 }
 
 type FabricOptionBPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -3260,7 +4422,7 @@ func (o FabricOptionBPropertiesPtrOutput) Elem() FabricOptionBPropertiesOutput {
 	}).(FabricOptionBPropertiesOutput)
 }
 
-// Route Targets to be applied for outgoing routes from CE.
+// Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
 func (o FabricOptionBPropertiesPtrOutput) ExportRouteTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FabricOptionBProperties) []string {
 		if v == nil {
@@ -3270,7 +4432,7 @@ func (o FabricOptionBPropertiesPtrOutput) ExportRouteTargets() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// Route Targets to be applied for incoming routes into CE.
+// Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
 func (o FabricOptionBPropertiesPtrOutput) ImportRouteTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FabricOptionBProperties) []string {
 		if v == nil {
@@ -3280,15 +4442,27 @@ func (o FabricOptionBPropertiesPtrOutput) ImportRouteTargets() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// Option B configuration.
-type FabricOptionBPropertiesResponse struct {
-	// Route Targets to be applied for outgoing routes from CE.
-	ExportRouteTargets []string `pulumi:"exportRouteTargets"`
-	// Route Targets to be applied for incoming routes into CE.
-	ImportRouteTargets []string `pulumi:"importRouteTargets"`
+// Route Targets to be applied.
+func (o FabricOptionBPropertiesPtrOutput) RouteTargets() RouteTargetInformationPtrOutput {
+	return o.ApplyT(func(v *FabricOptionBProperties) *RouteTargetInformation {
+		if v == nil {
+			return nil
+		}
+		return v.RouteTargets
+	}).(RouteTargetInformationPtrOutput)
 }
 
-// Option B configuration.
+// Option B configuration to be used for Management VPN.
+type FabricOptionBPropertiesResponse struct {
+	// Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
+	ExportRouteTargets []string `pulumi:"exportRouteTargets"`
+	// Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
+	ImportRouteTargets []string `pulumi:"importRouteTargets"`
+	// Route Targets to be applied.
+	RouteTargets *RouteTargetInformationResponse `pulumi:"routeTargets"`
+}
+
+// Option B configuration to be used for Management VPN.
 type FabricOptionBPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (FabricOptionBPropertiesResponseOutput) ElementType() reflect.Type {
@@ -3303,14 +4477,19 @@ func (o FabricOptionBPropertiesResponseOutput) ToFabricOptionBPropertiesResponse
 	return o
 }
 
-// Route Targets to be applied for outgoing routes from CE.
+// Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
 func (o FabricOptionBPropertiesResponseOutput) ExportRouteTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FabricOptionBPropertiesResponse) []string { return v.ExportRouteTargets }).(pulumi.StringArrayOutput)
 }
 
-// Route Targets to be applied for incoming routes into CE.
+// Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
 func (o FabricOptionBPropertiesResponseOutput) ImportRouteTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FabricOptionBPropertiesResponse) []string { return v.ImportRouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied.
+func (o FabricOptionBPropertiesResponseOutput) RouteTargets() RouteTargetInformationResponsePtrOutput {
+	return o.ApplyT(func(v FabricOptionBPropertiesResponse) *RouteTargetInformationResponse { return v.RouteTargets }).(RouteTargetInformationResponsePtrOutput)
 }
 
 type FabricOptionBPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -3337,7 +4516,7 @@ func (o FabricOptionBPropertiesResponsePtrOutput) Elem() FabricOptionBProperties
 	}).(FabricOptionBPropertiesResponseOutput)
 }
 
-// Route Targets to be applied for outgoing routes from CE.
+// Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
 func (o FabricOptionBPropertiesResponsePtrOutput) ExportRouteTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FabricOptionBPropertiesResponse) []string {
 		if v == nil {
@@ -3347,7 +4526,7 @@ func (o FabricOptionBPropertiesResponsePtrOutput) ExportRouteTargets() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// Route Targets to be applied for incoming routes into CE.
+// Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
 func (o FabricOptionBPropertiesResponsePtrOutput) ImportRouteTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FabricOptionBPropertiesResponse) []string {
 		if v == nil {
@@ -3357,37 +4536,1431 @@ func (o FabricOptionBPropertiesResponsePtrOutput) ImportRouteTargets() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// InfrastructureServices IP ranges.
-type InfrastructureServicesResponse struct {
-	// The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.
-	Ipv4AddressSpaces []string `pulumi:"ipv4AddressSpaces"`
-	// The IPv6 is not supported right now.
-	Ipv6AddressSpaces []string `pulumi:"ipv6AddressSpaces"`
+// Route Targets to be applied.
+func (o FabricOptionBPropertiesResponsePtrOutput) RouteTargets() RouteTargetInformationResponsePtrOutput {
+	return o.ApplyT(func(v *FabricOptionBPropertiesResponse) *RouteTargetInformationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RouteTargets
+	}).(RouteTargetInformationResponsePtrOutput)
 }
 
-// InfrastructureServices IP ranges.
-type InfrastructureServicesResponseOutput struct{ *pulumi.OutputState }
-
-func (InfrastructureServicesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InfrastructureServicesResponse)(nil)).Elem()
+// Import Route Policy either IPv4 or IPv6.
+type ImportRoutePolicy struct {
+	// ARM resource ID of RoutePolicy.
+	ImportIpv4RoutePolicyId *string `pulumi:"importIpv4RoutePolicyId"`
+	// ARM resource ID of RoutePolicy.
+	ImportIpv6RoutePolicyId *string `pulumi:"importIpv6RoutePolicyId"`
 }
 
-func (o InfrastructureServicesResponseOutput) ToInfrastructureServicesResponseOutput() InfrastructureServicesResponseOutput {
+// ImportRoutePolicyInput is an input type that accepts ImportRoutePolicyArgs and ImportRoutePolicyOutput values.
+// You can construct a concrete instance of `ImportRoutePolicyInput` via:
+//
+//	ImportRoutePolicyArgs{...}
+type ImportRoutePolicyInput interface {
+	pulumi.Input
+
+	ToImportRoutePolicyOutput() ImportRoutePolicyOutput
+	ToImportRoutePolicyOutputWithContext(context.Context) ImportRoutePolicyOutput
+}
+
+// Import Route Policy either IPv4 or IPv6.
+type ImportRoutePolicyArgs struct {
+	// ARM resource ID of RoutePolicy.
+	ImportIpv4RoutePolicyId pulumi.StringPtrInput `pulumi:"importIpv4RoutePolicyId"`
+	// ARM resource ID of RoutePolicy.
+	ImportIpv6RoutePolicyId pulumi.StringPtrInput `pulumi:"importIpv6RoutePolicyId"`
+}
+
+func (ImportRoutePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportRoutePolicy)(nil)).Elem()
+}
+
+func (i ImportRoutePolicyArgs) ToImportRoutePolicyOutput() ImportRoutePolicyOutput {
+	return i.ToImportRoutePolicyOutputWithContext(context.Background())
+}
+
+func (i ImportRoutePolicyArgs) ToImportRoutePolicyOutputWithContext(ctx context.Context) ImportRoutePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportRoutePolicyOutput)
+}
+
+func (i ImportRoutePolicyArgs) ToImportRoutePolicyPtrOutput() ImportRoutePolicyPtrOutput {
+	return i.ToImportRoutePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ImportRoutePolicyArgs) ToImportRoutePolicyPtrOutputWithContext(ctx context.Context) ImportRoutePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportRoutePolicyOutput).ToImportRoutePolicyPtrOutputWithContext(ctx)
+}
+
+// ImportRoutePolicyPtrInput is an input type that accepts ImportRoutePolicyArgs, ImportRoutePolicyPtr and ImportRoutePolicyPtrOutput values.
+// You can construct a concrete instance of `ImportRoutePolicyPtrInput` via:
+//
+//	        ImportRoutePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImportRoutePolicyPtrInput interface {
+	pulumi.Input
+
+	ToImportRoutePolicyPtrOutput() ImportRoutePolicyPtrOutput
+	ToImportRoutePolicyPtrOutputWithContext(context.Context) ImportRoutePolicyPtrOutput
+}
+
+type importRoutePolicyPtrType ImportRoutePolicyArgs
+
+func ImportRoutePolicyPtr(v *ImportRoutePolicyArgs) ImportRoutePolicyPtrInput {
+	return (*importRoutePolicyPtrType)(v)
+}
+
+func (*importRoutePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImportRoutePolicy)(nil)).Elem()
+}
+
+func (i *importRoutePolicyPtrType) ToImportRoutePolicyPtrOutput() ImportRoutePolicyPtrOutput {
+	return i.ToImportRoutePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *importRoutePolicyPtrType) ToImportRoutePolicyPtrOutputWithContext(ctx context.Context) ImportRoutePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportRoutePolicyPtrOutput)
+}
+
+// Import Route Policy either IPv4 or IPv6.
+type ImportRoutePolicyOutput struct{ *pulumi.OutputState }
+
+func (ImportRoutePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportRoutePolicy)(nil)).Elem()
+}
+
+func (o ImportRoutePolicyOutput) ToImportRoutePolicyOutput() ImportRoutePolicyOutput {
 	return o
 }
 
-func (o InfrastructureServicesResponseOutput) ToInfrastructureServicesResponseOutputWithContext(ctx context.Context) InfrastructureServicesResponseOutput {
+func (o ImportRoutePolicyOutput) ToImportRoutePolicyOutputWithContext(ctx context.Context) ImportRoutePolicyOutput {
 	return o
 }
 
-// The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.
-func (o InfrastructureServicesResponseOutput) Ipv4AddressSpaces() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InfrastructureServicesResponse) []string { return v.Ipv4AddressSpaces }).(pulumi.StringArrayOutput)
+func (o ImportRoutePolicyOutput) ToImportRoutePolicyPtrOutput() ImportRoutePolicyPtrOutput {
+	return o.ToImportRoutePolicyPtrOutputWithContext(context.Background())
 }
 
-// The IPv6 is not supported right now.
-func (o InfrastructureServicesResponseOutput) Ipv6AddressSpaces() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InfrastructureServicesResponse) []string { return v.Ipv6AddressSpaces }).(pulumi.StringArrayOutput)
+func (o ImportRoutePolicyOutput) ToImportRoutePolicyPtrOutputWithContext(ctx context.Context) ImportRoutePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImportRoutePolicy) *ImportRoutePolicy {
+		return &v
+	}).(ImportRoutePolicyPtrOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ImportRoutePolicyOutput) ImportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportRoutePolicy) *string { return v.ImportIpv4RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ImportRoutePolicyOutput) ImportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportRoutePolicy) *string { return v.ImportIpv6RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type ImportRoutePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ImportRoutePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImportRoutePolicy)(nil)).Elem()
+}
+
+func (o ImportRoutePolicyPtrOutput) ToImportRoutePolicyPtrOutput() ImportRoutePolicyPtrOutput {
+	return o
+}
+
+func (o ImportRoutePolicyPtrOutput) ToImportRoutePolicyPtrOutputWithContext(ctx context.Context) ImportRoutePolicyPtrOutput {
+	return o
+}
+
+func (o ImportRoutePolicyPtrOutput) Elem() ImportRoutePolicyOutput {
+	return o.ApplyT(func(v *ImportRoutePolicy) ImportRoutePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ImportRoutePolicy
+		return ret
+	}).(ImportRoutePolicyOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ImportRoutePolicyPtrOutput) ImportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImportRoutePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv4RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ImportRoutePolicyPtrOutput) ImportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImportRoutePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv6RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Import Route Policy Configuration.
+type ImportRoutePolicyInformation struct {
+	// Import IPv4 Route Policy Id.
+	ImportIpv4RoutePolicyId *string `pulumi:"importIpv4RoutePolicyId"`
+	// Import IPv6 Route Policy Id.
+	ImportIpv6RoutePolicyId *string `pulumi:"importIpv6RoutePolicyId"`
+}
+
+// ImportRoutePolicyInformationInput is an input type that accepts ImportRoutePolicyInformationArgs and ImportRoutePolicyInformationOutput values.
+// You can construct a concrete instance of `ImportRoutePolicyInformationInput` via:
+//
+//	ImportRoutePolicyInformationArgs{...}
+type ImportRoutePolicyInformationInput interface {
+	pulumi.Input
+
+	ToImportRoutePolicyInformationOutput() ImportRoutePolicyInformationOutput
+	ToImportRoutePolicyInformationOutputWithContext(context.Context) ImportRoutePolicyInformationOutput
+}
+
+// Import Route Policy Configuration.
+type ImportRoutePolicyInformationArgs struct {
+	// Import IPv4 Route Policy Id.
+	ImportIpv4RoutePolicyId pulumi.StringPtrInput `pulumi:"importIpv4RoutePolicyId"`
+	// Import IPv6 Route Policy Id.
+	ImportIpv6RoutePolicyId pulumi.StringPtrInput `pulumi:"importIpv6RoutePolicyId"`
+}
+
+func (ImportRoutePolicyInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportRoutePolicyInformation)(nil)).Elem()
+}
+
+func (i ImportRoutePolicyInformationArgs) ToImportRoutePolicyInformationOutput() ImportRoutePolicyInformationOutput {
+	return i.ToImportRoutePolicyInformationOutputWithContext(context.Background())
+}
+
+func (i ImportRoutePolicyInformationArgs) ToImportRoutePolicyInformationOutputWithContext(ctx context.Context) ImportRoutePolicyInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportRoutePolicyInformationOutput)
+}
+
+func (i ImportRoutePolicyInformationArgs) ToImportRoutePolicyInformationPtrOutput() ImportRoutePolicyInformationPtrOutput {
+	return i.ToImportRoutePolicyInformationPtrOutputWithContext(context.Background())
+}
+
+func (i ImportRoutePolicyInformationArgs) ToImportRoutePolicyInformationPtrOutputWithContext(ctx context.Context) ImportRoutePolicyInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportRoutePolicyInformationOutput).ToImportRoutePolicyInformationPtrOutputWithContext(ctx)
+}
+
+// ImportRoutePolicyInformationPtrInput is an input type that accepts ImportRoutePolicyInformationArgs, ImportRoutePolicyInformationPtr and ImportRoutePolicyInformationPtrOutput values.
+// You can construct a concrete instance of `ImportRoutePolicyInformationPtrInput` via:
+//
+//	        ImportRoutePolicyInformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImportRoutePolicyInformationPtrInput interface {
+	pulumi.Input
+
+	ToImportRoutePolicyInformationPtrOutput() ImportRoutePolicyInformationPtrOutput
+	ToImportRoutePolicyInformationPtrOutputWithContext(context.Context) ImportRoutePolicyInformationPtrOutput
+}
+
+type importRoutePolicyInformationPtrType ImportRoutePolicyInformationArgs
+
+func ImportRoutePolicyInformationPtr(v *ImportRoutePolicyInformationArgs) ImportRoutePolicyInformationPtrInput {
+	return (*importRoutePolicyInformationPtrType)(v)
+}
+
+func (*importRoutePolicyInformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImportRoutePolicyInformation)(nil)).Elem()
+}
+
+func (i *importRoutePolicyInformationPtrType) ToImportRoutePolicyInformationPtrOutput() ImportRoutePolicyInformationPtrOutput {
+	return i.ToImportRoutePolicyInformationPtrOutputWithContext(context.Background())
+}
+
+func (i *importRoutePolicyInformationPtrType) ToImportRoutePolicyInformationPtrOutputWithContext(ctx context.Context) ImportRoutePolicyInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportRoutePolicyInformationPtrOutput)
+}
+
+// Import Route Policy Configuration.
+type ImportRoutePolicyInformationOutput struct{ *pulumi.OutputState }
+
+func (ImportRoutePolicyInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportRoutePolicyInformation)(nil)).Elem()
+}
+
+func (o ImportRoutePolicyInformationOutput) ToImportRoutePolicyInformationOutput() ImportRoutePolicyInformationOutput {
+	return o
+}
+
+func (o ImportRoutePolicyInformationOutput) ToImportRoutePolicyInformationOutputWithContext(ctx context.Context) ImportRoutePolicyInformationOutput {
+	return o
+}
+
+func (o ImportRoutePolicyInformationOutput) ToImportRoutePolicyInformationPtrOutput() ImportRoutePolicyInformationPtrOutput {
+	return o.ToImportRoutePolicyInformationPtrOutputWithContext(context.Background())
+}
+
+func (o ImportRoutePolicyInformationOutput) ToImportRoutePolicyInformationPtrOutputWithContext(ctx context.Context) ImportRoutePolicyInformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImportRoutePolicyInformation) *ImportRoutePolicyInformation {
+		return &v
+	}).(ImportRoutePolicyInformationPtrOutput)
+}
+
+// Import IPv4 Route Policy Id.
+func (o ImportRoutePolicyInformationOutput) ImportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportRoutePolicyInformation) *string { return v.ImportIpv4RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Import IPv6 Route Policy Id.
+func (o ImportRoutePolicyInformationOutput) ImportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportRoutePolicyInformation) *string { return v.ImportIpv6RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type ImportRoutePolicyInformationPtrOutput struct{ *pulumi.OutputState }
+
+func (ImportRoutePolicyInformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImportRoutePolicyInformation)(nil)).Elem()
+}
+
+func (o ImportRoutePolicyInformationPtrOutput) ToImportRoutePolicyInformationPtrOutput() ImportRoutePolicyInformationPtrOutput {
+	return o
+}
+
+func (o ImportRoutePolicyInformationPtrOutput) ToImportRoutePolicyInformationPtrOutputWithContext(ctx context.Context) ImportRoutePolicyInformationPtrOutput {
+	return o
+}
+
+func (o ImportRoutePolicyInformationPtrOutput) Elem() ImportRoutePolicyInformationOutput {
+	return o.ApplyT(func(v *ImportRoutePolicyInformation) ImportRoutePolicyInformation {
+		if v != nil {
+			return *v
+		}
+		var ret ImportRoutePolicyInformation
+		return ret
+	}).(ImportRoutePolicyInformationOutput)
+}
+
+// Import IPv4 Route Policy Id.
+func (o ImportRoutePolicyInformationPtrOutput) ImportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImportRoutePolicyInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv4RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Import IPv6 Route Policy Id.
+func (o ImportRoutePolicyInformationPtrOutput) ImportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImportRoutePolicyInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv6RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Import Route Policy Configuration.
+type ImportRoutePolicyInformationResponse struct {
+	// Import IPv4 Route Policy Id.
+	ImportIpv4RoutePolicyId *string `pulumi:"importIpv4RoutePolicyId"`
+	// Import IPv6 Route Policy Id.
+	ImportIpv6RoutePolicyId *string `pulumi:"importIpv6RoutePolicyId"`
+}
+
+// Import Route Policy Configuration.
+type ImportRoutePolicyInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (ImportRoutePolicyInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportRoutePolicyInformationResponse)(nil)).Elem()
+}
+
+func (o ImportRoutePolicyInformationResponseOutput) ToImportRoutePolicyInformationResponseOutput() ImportRoutePolicyInformationResponseOutput {
+	return o
+}
+
+func (o ImportRoutePolicyInformationResponseOutput) ToImportRoutePolicyInformationResponseOutputWithContext(ctx context.Context) ImportRoutePolicyInformationResponseOutput {
+	return o
+}
+
+// Import IPv4 Route Policy Id.
+func (o ImportRoutePolicyInformationResponseOutput) ImportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportRoutePolicyInformationResponse) *string { return v.ImportIpv4RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Import IPv6 Route Policy Id.
+func (o ImportRoutePolicyInformationResponseOutput) ImportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportRoutePolicyInformationResponse) *string { return v.ImportIpv6RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type ImportRoutePolicyInformationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ImportRoutePolicyInformationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImportRoutePolicyInformationResponse)(nil)).Elem()
+}
+
+func (o ImportRoutePolicyInformationResponsePtrOutput) ToImportRoutePolicyInformationResponsePtrOutput() ImportRoutePolicyInformationResponsePtrOutput {
+	return o
+}
+
+func (o ImportRoutePolicyInformationResponsePtrOutput) ToImportRoutePolicyInformationResponsePtrOutputWithContext(ctx context.Context) ImportRoutePolicyInformationResponsePtrOutput {
+	return o
+}
+
+func (o ImportRoutePolicyInformationResponsePtrOutput) Elem() ImportRoutePolicyInformationResponseOutput {
+	return o.ApplyT(func(v *ImportRoutePolicyInformationResponse) ImportRoutePolicyInformationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ImportRoutePolicyInformationResponse
+		return ret
+	}).(ImportRoutePolicyInformationResponseOutput)
+}
+
+// Import IPv4 Route Policy Id.
+func (o ImportRoutePolicyInformationResponsePtrOutput) ImportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImportRoutePolicyInformationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv4RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Import IPv6 Route Policy Id.
+func (o ImportRoutePolicyInformationResponsePtrOutput) ImportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImportRoutePolicyInformationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv6RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Import Route Policy either IPv4 or IPv6.
+type ImportRoutePolicyResponse struct {
+	// ARM resource ID of RoutePolicy.
+	ImportIpv4RoutePolicyId *string `pulumi:"importIpv4RoutePolicyId"`
+	// ARM resource ID of RoutePolicy.
+	ImportIpv6RoutePolicyId *string `pulumi:"importIpv6RoutePolicyId"`
+}
+
+// Import Route Policy either IPv4 or IPv6.
+type ImportRoutePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ImportRoutePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportRoutePolicyResponse)(nil)).Elem()
+}
+
+func (o ImportRoutePolicyResponseOutput) ToImportRoutePolicyResponseOutput() ImportRoutePolicyResponseOutput {
+	return o
+}
+
+func (o ImportRoutePolicyResponseOutput) ToImportRoutePolicyResponseOutputWithContext(ctx context.Context) ImportRoutePolicyResponseOutput {
+	return o
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ImportRoutePolicyResponseOutput) ImportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportRoutePolicyResponse) *string { return v.ImportIpv4RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ImportRoutePolicyResponseOutput) ImportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportRoutePolicyResponse) *string { return v.ImportIpv6RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type ImportRoutePolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ImportRoutePolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImportRoutePolicyResponse)(nil)).Elem()
+}
+
+func (o ImportRoutePolicyResponsePtrOutput) ToImportRoutePolicyResponsePtrOutput() ImportRoutePolicyResponsePtrOutput {
+	return o
+}
+
+func (o ImportRoutePolicyResponsePtrOutput) ToImportRoutePolicyResponsePtrOutputWithContext(ctx context.Context) ImportRoutePolicyResponsePtrOutput {
+	return o
+}
+
+func (o ImportRoutePolicyResponsePtrOutput) Elem() ImportRoutePolicyResponseOutput {
+	return o.ApplyT(func(v *ImportRoutePolicyResponse) ImportRoutePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ImportRoutePolicyResponse
+		return ret
+	}).(ImportRoutePolicyResponseOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ImportRoutePolicyResponsePtrOutput) ImportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImportRoutePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv4RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of RoutePolicy.
+func (o ImportRoutePolicyResponsePtrOutput) ImportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImportRoutePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv6RoutePolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// BGP configuration properties.
+type InternalNetworkPropertiesBgpConfiguration struct {
+	// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
+	AllowAS *int `pulumi:"allowAS"`
+	// Enable Or Disable state.
+	AllowASOverride *string `pulumi:"allowASOverride"`
+	// Switch configuration description.
+	Annotation *string `pulumi:"annotation"`
+	// BFD configuration properties
+	BfdConfiguration *BfdConfiguration `pulumi:"bfdConfiguration"`
+	// Originate a defaultRoute. Ex: "True" | "False".
+	DefaultRouteOriginate *string `pulumi:"defaultRouteOriginate"`
+	// List of BGP IPv4 Listen Range prefixes.
+	Ipv4ListenRangePrefixes []string `pulumi:"ipv4ListenRangePrefixes"`
+	// List with stringified IPv4 Neighbor Addresses.
+	Ipv4NeighborAddress []NeighborAddress `pulumi:"ipv4NeighborAddress"`
+	// List of BGP IPv6 Listen Ranges prefixes.
+	Ipv6ListenRangePrefixes []string `pulumi:"ipv6ListenRangePrefixes"`
+	// List with stringified IPv6 Neighbor Address.
+	Ipv6NeighborAddress []NeighborAddress `pulumi:"ipv6NeighborAddress"`
+	// Peer ASN. Example: 65047.
+	PeerASN float64 `pulumi:"peerASN"`
+}
+
+// Defaults sets the appropriate defaults for InternalNetworkPropertiesBgpConfiguration
+func (val *InternalNetworkPropertiesBgpConfiguration) Defaults() *InternalNetworkPropertiesBgpConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AllowAS == nil {
+		allowAS_ := 2
+		tmp.AllowAS = &allowAS_
+	}
+	tmp.BfdConfiguration = tmp.BfdConfiguration.Defaults()
+
+	return &tmp
+}
+
+// InternalNetworkPropertiesBgpConfigurationInput is an input type that accepts InternalNetworkPropertiesBgpConfigurationArgs and InternalNetworkPropertiesBgpConfigurationOutput values.
+// You can construct a concrete instance of `InternalNetworkPropertiesBgpConfigurationInput` via:
+//
+//	InternalNetworkPropertiesBgpConfigurationArgs{...}
+type InternalNetworkPropertiesBgpConfigurationInput interface {
+	pulumi.Input
+
+	ToInternalNetworkPropertiesBgpConfigurationOutput() InternalNetworkPropertiesBgpConfigurationOutput
+	ToInternalNetworkPropertiesBgpConfigurationOutputWithContext(context.Context) InternalNetworkPropertiesBgpConfigurationOutput
+}
+
+// BGP configuration properties.
+type InternalNetworkPropertiesBgpConfigurationArgs struct {
+	// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
+	AllowAS pulumi.IntPtrInput `pulumi:"allowAS"`
+	// Enable Or Disable state.
+	AllowASOverride pulumi.StringPtrInput `pulumi:"allowASOverride"`
+	// Switch configuration description.
+	Annotation pulumi.StringPtrInput `pulumi:"annotation"`
+	// BFD configuration properties
+	BfdConfiguration BfdConfigurationPtrInput `pulumi:"bfdConfiguration"`
+	// Originate a defaultRoute. Ex: "True" | "False".
+	DefaultRouteOriginate pulumi.StringPtrInput `pulumi:"defaultRouteOriginate"`
+	// List of BGP IPv4 Listen Range prefixes.
+	Ipv4ListenRangePrefixes pulumi.StringArrayInput `pulumi:"ipv4ListenRangePrefixes"`
+	// List with stringified IPv4 Neighbor Addresses.
+	Ipv4NeighborAddress NeighborAddressArrayInput `pulumi:"ipv4NeighborAddress"`
+	// List of BGP IPv6 Listen Ranges prefixes.
+	Ipv6ListenRangePrefixes pulumi.StringArrayInput `pulumi:"ipv6ListenRangePrefixes"`
+	// List with stringified IPv6 Neighbor Address.
+	Ipv6NeighborAddress NeighborAddressArrayInput `pulumi:"ipv6NeighborAddress"`
+	// Peer ASN. Example: 65047.
+	PeerASN pulumi.Float64Input `pulumi:"peerASN"`
+}
+
+// Defaults sets the appropriate defaults for InternalNetworkPropertiesBgpConfigurationArgs
+func (val *InternalNetworkPropertiesBgpConfigurationArgs) Defaults() *InternalNetworkPropertiesBgpConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AllowAS == nil {
+		tmp.AllowAS = pulumi.IntPtr(2)
+	}
+
+	return &tmp
+}
+func (InternalNetworkPropertiesBgpConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalNetworkPropertiesBgpConfiguration)(nil)).Elem()
+}
+
+func (i InternalNetworkPropertiesBgpConfigurationArgs) ToInternalNetworkPropertiesBgpConfigurationOutput() InternalNetworkPropertiesBgpConfigurationOutput {
+	return i.ToInternalNetworkPropertiesBgpConfigurationOutputWithContext(context.Background())
+}
+
+func (i InternalNetworkPropertiesBgpConfigurationArgs) ToInternalNetworkPropertiesBgpConfigurationOutputWithContext(ctx context.Context) InternalNetworkPropertiesBgpConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalNetworkPropertiesBgpConfigurationOutput)
+}
+
+func (i InternalNetworkPropertiesBgpConfigurationArgs) ToInternalNetworkPropertiesBgpConfigurationPtrOutput() InternalNetworkPropertiesBgpConfigurationPtrOutput {
+	return i.ToInternalNetworkPropertiesBgpConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i InternalNetworkPropertiesBgpConfigurationArgs) ToInternalNetworkPropertiesBgpConfigurationPtrOutputWithContext(ctx context.Context) InternalNetworkPropertiesBgpConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalNetworkPropertiesBgpConfigurationOutput).ToInternalNetworkPropertiesBgpConfigurationPtrOutputWithContext(ctx)
+}
+
+// InternalNetworkPropertiesBgpConfigurationPtrInput is an input type that accepts InternalNetworkPropertiesBgpConfigurationArgs, InternalNetworkPropertiesBgpConfigurationPtr and InternalNetworkPropertiesBgpConfigurationPtrOutput values.
+// You can construct a concrete instance of `InternalNetworkPropertiesBgpConfigurationPtrInput` via:
+//
+//	        InternalNetworkPropertiesBgpConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InternalNetworkPropertiesBgpConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToInternalNetworkPropertiesBgpConfigurationPtrOutput() InternalNetworkPropertiesBgpConfigurationPtrOutput
+	ToInternalNetworkPropertiesBgpConfigurationPtrOutputWithContext(context.Context) InternalNetworkPropertiesBgpConfigurationPtrOutput
+}
+
+type internalNetworkPropertiesBgpConfigurationPtrType InternalNetworkPropertiesBgpConfigurationArgs
+
+func InternalNetworkPropertiesBgpConfigurationPtr(v *InternalNetworkPropertiesBgpConfigurationArgs) InternalNetworkPropertiesBgpConfigurationPtrInput {
+	return (*internalNetworkPropertiesBgpConfigurationPtrType)(v)
+}
+
+func (*internalNetworkPropertiesBgpConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalNetworkPropertiesBgpConfiguration)(nil)).Elem()
+}
+
+func (i *internalNetworkPropertiesBgpConfigurationPtrType) ToInternalNetworkPropertiesBgpConfigurationPtrOutput() InternalNetworkPropertiesBgpConfigurationPtrOutput {
+	return i.ToInternalNetworkPropertiesBgpConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *internalNetworkPropertiesBgpConfigurationPtrType) ToInternalNetworkPropertiesBgpConfigurationPtrOutputWithContext(ctx context.Context) InternalNetworkPropertiesBgpConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalNetworkPropertiesBgpConfigurationPtrOutput)
+}
+
+// BGP configuration properties.
+type InternalNetworkPropertiesBgpConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InternalNetworkPropertiesBgpConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalNetworkPropertiesBgpConfiguration)(nil)).Elem()
+}
+
+func (o InternalNetworkPropertiesBgpConfigurationOutput) ToInternalNetworkPropertiesBgpConfigurationOutput() InternalNetworkPropertiesBgpConfigurationOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesBgpConfigurationOutput) ToInternalNetworkPropertiesBgpConfigurationOutputWithContext(ctx context.Context) InternalNetworkPropertiesBgpConfigurationOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesBgpConfigurationOutput) ToInternalNetworkPropertiesBgpConfigurationPtrOutput() InternalNetworkPropertiesBgpConfigurationPtrOutput {
+	return o.ToInternalNetworkPropertiesBgpConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o InternalNetworkPropertiesBgpConfigurationOutput) ToInternalNetworkPropertiesBgpConfigurationPtrOutputWithContext(ctx context.Context) InternalNetworkPropertiesBgpConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InternalNetworkPropertiesBgpConfiguration) *InternalNetworkPropertiesBgpConfiguration {
+		return &v
+	}).(InternalNetworkPropertiesBgpConfigurationPtrOutput)
+}
+
+// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
+func (o InternalNetworkPropertiesBgpConfigurationOutput) AllowAS() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesBgpConfiguration) *int { return v.AllowAS }).(pulumi.IntPtrOutput)
+}
+
+// Enable Or Disable state.
+func (o InternalNetworkPropertiesBgpConfigurationOutput) AllowASOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesBgpConfiguration) *string { return v.AllowASOverride }).(pulumi.StringPtrOutput)
+}
+
+// Switch configuration description.
+func (o InternalNetworkPropertiesBgpConfigurationOutput) Annotation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesBgpConfiguration) *string { return v.Annotation }).(pulumi.StringPtrOutput)
+}
+
+// BFD configuration properties
+func (o InternalNetworkPropertiesBgpConfigurationOutput) BfdConfiguration() BfdConfigurationPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesBgpConfiguration) *BfdConfiguration { return v.BfdConfiguration }).(BfdConfigurationPtrOutput)
+}
+
+// Originate a defaultRoute. Ex: "True" | "False".
+func (o InternalNetworkPropertiesBgpConfigurationOutput) DefaultRouteOriginate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesBgpConfiguration) *string { return v.DefaultRouteOriginate }).(pulumi.StringPtrOutput)
+}
+
+// List of BGP IPv4 Listen Range prefixes.
+func (o InternalNetworkPropertiesBgpConfigurationOutput) Ipv4ListenRangePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesBgpConfiguration) []string { return v.Ipv4ListenRangePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// List with stringified IPv4 Neighbor Addresses.
+func (o InternalNetworkPropertiesBgpConfigurationOutput) Ipv4NeighborAddress() NeighborAddressArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesBgpConfiguration) []NeighborAddress { return v.Ipv4NeighborAddress }).(NeighborAddressArrayOutput)
+}
+
+// List of BGP IPv6 Listen Ranges prefixes.
+func (o InternalNetworkPropertiesBgpConfigurationOutput) Ipv6ListenRangePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesBgpConfiguration) []string { return v.Ipv6ListenRangePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// List with stringified IPv6 Neighbor Address.
+func (o InternalNetworkPropertiesBgpConfigurationOutput) Ipv6NeighborAddress() NeighborAddressArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesBgpConfiguration) []NeighborAddress { return v.Ipv6NeighborAddress }).(NeighborAddressArrayOutput)
+}
+
+// Peer ASN. Example: 65047.
+func (o InternalNetworkPropertiesBgpConfigurationOutput) PeerASN() pulumi.Float64Output {
+	return o.ApplyT(func(v InternalNetworkPropertiesBgpConfiguration) float64 { return v.PeerASN }).(pulumi.Float64Output)
+}
+
+type InternalNetworkPropertiesBgpConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (InternalNetworkPropertiesBgpConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalNetworkPropertiesBgpConfiguration)(nil)).Elem()
+}
+
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) ToInternalNetworkPropertiesBgpConfigurationPtrOutput() InternalNetworkPropertiesBgpConfigurationPtrOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) ToInternalNetworkPropertiesBgpConfigurationPtrOutputWithContext(ctx context.Context) InternalNetworkPropertiesBgpConfigurationPtrOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) Elem() InternalNetworkPropertiesBgpConfigurationOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesBgpConfiguration) InternalNetworkPropertiesBgpConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret InternalNetworkPropertiesBgpConfiguration
+		return ret
+	}).(InternalNetworkPropertiesBgpConfigurationOutput)
+}
+
+// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) AllowAS() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesBgpConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowAS
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable Or Disable state.
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) AllowASOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesBgpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowASOverride
+	}).(pulumi.StringPtrOutput)
+}
+
+// Switch configuration description.
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) Annotation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesBgpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Annotation
+	}).(pulumi.StringPtrOutput)
+}
+
+// BFD configuration properties
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) BfdConfiguration() BfdConfigurationPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesBgpConfiguration) *BfdConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.BfdConfiguration
+	}).(BfdConfigurationPtrOutput)
+}
+
+// Originate a defaultRoute. Ex: "True" | "False".
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) DefaultRouteOriginate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesBgpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRouteOriginate
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of BGP IPv4 Listen Range prefixes.
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) Ipv4ListenRangePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesBgpConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4ListenRangePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List with stringified IPv4 Neighbor Addresses.
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) Ipv4NeighborAddress() NeighborAddressArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesBgpConfiguration) []NeighborAddress {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4NeighborAddress
+	}).(NeighborAddressArrayOutput)
+}
+
+// List of BGP IPv6 Listen Ranges prefixes.
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) Ipv6ListenRangePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesBgpConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6ListenRangePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List with stringified IPv6 Neighbor Address.
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) Ipv6NeighborAddress() NeighborAddressArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesBgpConfiguration) []NeighborAddress {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6NeighborAddress
+	}).(NeighborAddressArrayOutput)
+}
+
+// Peer ASN. Example: 65047.
+func (o InternalNetworkPropertiesBgpConfigurationPtrOutput) PeerASN() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesBgpConfiguration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.PeerASN
+	}).(pulumi.Float64PtrOutput)
+}
+
+// BGP configuration properties.
+type InternalNetworkPropertiesResponseBgpConfiguration struct {
+	// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
+	AllowAS *int `pulumi:"allowAS"`
+	// Enable Or Disable state.
+	AllowASOverride *string `pulumi:"allowASOverride"`
+	// Switch configuration description.
+	Annotation *string `pulumi:"annotation"`
+	// BFD configuration properties
+	BfdConfiguration *BfdConfigurationResponse `pulumi:"bfdConfiguration"`
+	// Originate a defaultRoute. Ex: "True" | "False".
+	DefaultRouteOriginate *string `pulumi:"defaultRouteOriginate"`
+	// ASN of Network Fabric. Example: 65048.
+	FabricASN float64 `pulumi:"fabricASN"`
+	// List of BGP IPv4 Listen Range prefixes.
+	Ipv4ListenRangePrefixes []string `pulumi:"ipv4ListenRangePrefixes"`
+	// List with stringified IPv4 Neighbor Addresses.
+	Ipv4NeighborAddress []NeighborAddressResponse `pulumi:"ipv4NeighborAddress"`
+	// List of BGP IPv6 Listen Ranges prefixes.
+	Ipv6ListenRangePrefixes []string `pulumi:"ipv6ListenRangePrefixes"`
+	// List with stringified IPv6 Neighbor Address.
+	Ipv6NeighborAddress []NeighborAddressResponse `pulumi:"ipv6NeighborAddress"`
+	// Peer ASN. Example: 65047.
+	PeerASN float64 `pulumi:"peerASN"`
+}
+
+// Defaults sets the appropriate defaults for InternalNetworkPropertiesResponseBgpConfiguration
+func (val *InternalNetworkPropertiesResponseBgpConfiguration) Defaults() *InternalNetworkPropertiesResponseBgpConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AllowAS == nil {
+		allowAS_ := 2
+		tmp.AllowAS = &allowAS_
+	}
+	tmp.BfdConfiguration = tmp.BfdConfiguration.Defaults()
+
+	return &tmp
+}
+
+// BGP configuration properties.
+type InternalNetworkPropertiesResponseBgpConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InternalNetworkPropertiesResponseBgpConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalNetworkPropertiesResponseBgpConfiguration)(nil)).Elem()
+}
+
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) ToInternalNetworkPropertiesResponseBgpConfigurationOutput() InternalNetworkPropertiesResponseBgpConfigurationOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) ToInternalNetworkPropertiesResponseBgpConfigurationOutputWithContext(ctx context.Context) InternalNetworkPropertiesResponseBgpConfigurationOutput {
+	return o
+}
+
+// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) AllowAS() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseBgpConfiguration) *int { return v.AllowAS }).(pulumi.IntPtrOutput)
+}
+
+// Enable Or Disable state.
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) AllowASOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseBgpConfiguration) *string { return v.AllowASOverride }).(pulumi.StringPtrOutput)
+}
+
+// Switch configuration description.
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) Annotation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseBgpConfiguration) *string { return v.Annotation }).(pulumi.StringPtrOutput)
+}
+
+// BFD configuration properties
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseBgpConfiguration) *BfdConfigurationResponse {
+		return v.BfdConfiguration
+	}).(BfdConfigurationResponsePtrOutput)
+}
+
+// Originate a defaultRoute. Ex: "True" | "False".
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) DefaultRouteOriginate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseBgpConfiguration) *string { return v.DefaultRouteOriginate }).(pulumi.StringPtrOutput)
+}
+
+// ASN of Network Fabric. Example: 65048.
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) FabricASN() pulumi.Float64Output {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseBgpConfiguration) float64 { return v.FabricASN }).(pulumi.Float64Output)
+}
+
+// List of BGP IPv4 Listen Range prefixes.
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) Ipv4ListenRangePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseBgpConfiguration) []string { return v.Ipv4ListenRangePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// List with stringified IPv4 Neighbor Addresses.
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) Ipv4NeighborAddress() NeighborAddressResponseArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseBgpConfiguration) []NeighborAddressResponse {
+		return v.Ipv4NeighborAddress
+	}).(NeighborAddressResponseArrayOutput)
+}
+
+// List of BGP IPv6 Listen Ranges prefixes.
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) Ipv6ListenRangePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseBgpConfiguration) []string { return v.Ipv6ListenRangePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// List with stringified IPv6 Neighbor Address.
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) Ipv6NeighborAddress() NeighborAddressResponseArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseBgpConfiguration) []NeighborAddressResponse {
+		return v.Ipv6NeighborAddress
+	}).(NeighborAddressResponseArrayOutput)
+}
+
+// Peer ASN. Example: 65047.
+func (o InternalNetworkPropertiesResponseBgpConfigurationOutput) PeerASN() pulumi.Float64Output {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseBgpConfiguration) float64 { return v.PeerASN }).(pulumi.Float64Output)
+}
+
+type InternalNetworkPropertiesResponseBgpConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalNetworkPropertiesResponseBgpConfiguration)(nil)).Elem()
+}
+
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) ToInternalNetworkPropertiesResponseBgpConfigurationPtrOutput() InternalNetworkPropertiesResponseBgpConfigurationPtrOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) ToInternalNetworkPropertiesResponseBgpConfigurationPtrOutputWithContext(ctx context.Context) InternalNetworkPropertiesResponseBgpConfigurationPtrOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) Elem() InternalNetworkPropertiesResponseBgpConfigurationOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) InternalNetworkPropertiesResponseBgpConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret InternalNetworkPropertiesResponseBgpConfiguration
+		return ret
+	}).(InternalNetworkPropertiesResponseBgpConfigurationOutput)
+}
+
+// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) AllowAS() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowAS
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable Or Disable state.
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) AllowASOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowASOverride
+	}).(pulumi.StringPtrOutput)
+}
+
+// Switch configuration description.
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) Annotation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Annotation
+	}).(pulumi.StringPtrOutput)
+}
+
+// BFD configuration properties
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) *BfdConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BfdConfiguration
+	}).(BfdConfigurationResponsePtrOutput)
+}
+
+// Originate a defaultRoute. Ex: "True" | "False".
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) DefaultRouteOriginate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRouteOriginate
+	}).(pulumi.StringPtrOutput)
+}
+
+// ASN of Network Fabric. Example: 65048.
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) FabricASN() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.FabricASN
+	}).(pulumi.Float64PtrOutput)
+}
+
+// List of BGP IPv4 Listen Range prefixes.
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) Ipv4ListenRangePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4ListenRangePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List with stringified IPv4 Neighbor Addresses.
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) Ipv4NeighborAddress() NeighborAddressResponseArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) []NeighborAddressResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4NeighborAddress
+	}).(NeighborAddressResponseArrayOutput)
+}
+
+// List of BGP IPv6 Listen Ranges prefixes.
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) Ipv6ListenRangePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6ListenRangePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List with stringified IPv6 Neighbor Address.
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) Ipv6NeighborAddress() NeighborAddressResponseArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) []NeighborAddressResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6NeighborAddress
+	}).(NeighborAddressResponseArrayOutput)
+}
+
+// Peer ASN. Example: 65047.
+func (o InternalNetworkPropertiesResponseBgpConfigurationPtrOutput) PeerASN() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseBgpConfiguration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.PeerASN
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Static Route Configuration properties.
+type InternalNetworkPropertiesResponseStaticRouteConfiguration struct {
+	// BFD configuration properties
+	BfdConfiguration *BfdConfigurationResponse `pulumi:"bfdConfiguration"`
+	// Extension. Example: NoExtension | NPB.
+	Extension *string `pulumi:"extension"`
+	// List of IPv4 Routes.
+	Ipv4Routes []StaticRoutePropertiesResponse `pulumi:"ipv4Routes"`
+	// List of IPv6 Routes.
+	Ipv6Routes []StaticRoutePropertiesResponse `pulumi:"ipv6Routes"`
+}
+
+// Defaults sets the appropriate defaults for InternalNetworkPropertiesResponseStaticRouteConfiguration
+func (val *InternalNetworkPropertiesResponseStaticRouteConfiguration) Defaults() *InternalNetworkPropertiesResponseStaticRouteConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.BfdConfiguration = tmp.BfdConfiguration.Defaults()
+
+	if tmp.Extension == nil {
+		extension_ := "NoExtension"
+		tmp.Extension = &extension_
+	}
+	return &tmp
+}
+
+// Static Route Configuration properties.
+type InternalNetworkPropertiesResponseStaticRouteConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InternalNetworkPropertiesResponseStaticRouteConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalNetworkPropertiesResponseStaticRouteConfiguration)(nil)).Elem()
+}
+
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationOutput) ToInternalNetworkPropertiesResponseStaticRouteConfigurationOutput() InternalNetworkPropertiesResponseStaticRouteConfigurationOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationOutput) ToInternalNetworkPropertiesResponseStaticRouteConfigurationOutputWithContext(ctx context.Context) InternalNetworkPropertiesResponseStaticRouteConfigurationOutput {
+	return o
+}
+
+// BFD configuration properties
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseStaticRouteConfiguration) *BfdConfigurationResponse {
+		return v.BfdConfiguration
+	}).(BfdConfigurationResponsePtrOutput)
+}
+
+// Extension. Example: NoExtension | NPB.
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationOutput) Extension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseStaticRouteConfiguration) *string { return v.Extension }).(pulumi.StringPtrOutput)
+}
+
+// List of IPv4 Routes.
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationOutput) Ipv4Routes() StaticRoutePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseStaticRouteConfiguration) []StaticRoutePropertiesResponse {
+		return v.Ipv4Routes
+	}).(StaticRoutePropertiesResponseArrayOutput)
+}
+
+// List of IPv6 Routes.
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationOutput) Ipv6Routes() StaticRoutePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesResponseStaticRouteConfiguration) []StaticRoutePropertiesResponse {
+		return v.Ipv6Routes
+	}).(StaticRoutePropertiesResponseArrayOutput)
+}
+
+type InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalNetworkPropertiesResponseStaticRouteConfiguration)(nil)).Elem()
+}
+
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput) ToInternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput() InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput) ToInternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput) Elem() InternalNetworkPropertiesResponseStaticRouteConfigurationOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseStaticRouteConfiguration) InternalNetworkPropertiesResponseStaticRouteConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret InternalNetworkPropertiesResponseStaticRouteConfiguration
+		return ret
+	}).(InternalNetworkPropertiesResponseStaticRouteConfigurationOutput)
+}
+
+// BFD configuration properties
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseStaticRouteConfiguration) *BfdConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BfdConfiguration
+	}).(BfdConfigurationResponsePtrOutput)
+}
+
+// Extension. Example: NoExtension | NPB.
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput) Extension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseStaticRouteConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Extension
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of IPv4 Routes.
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput) Ipv4Routes() StaticRoutePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseStaticRouteConfiguration) []StaticRoutePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4Routes
+	}).(StaticRoutePropertiesResponseArrayOutput)
+}
+
+// List of IPv6 Routes.
+func (o InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput) Ipv6Routes() StaticRoutePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesResponseStaticRouteConfiguration) []StaticRoutePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6Routes
+	}).(StaticRoutePropertiesResponseArrayOutput)
+}
+
+// Static Route Configuration properties.
+type InternalNetworkPropertiesStaticRouteConfiguration struct {
+	// BFD configuration properties
+	BfdConfiguration *BfdConfiguration `pulumi:"bfdConfiguration"`
+	// Extension. Example: NoExtension | NPB.
+	Extension *string `pulumi:"extension"`
+	// List of IPv4 Routes.
+	Ipv4Routes []StaticRouteProperties `pulumi:"ipv4Routes"`
+	// List of IPv6 Routes.
+	Ipv6Routes []StaticRouteProperties `pulumi:"ipv6Routes"`
+}
+
+// Defaults sets the appropriate defaults for InternalNetworkPropertiesStaticRouteConfiguration
+func (val *InternalNetworkPropertiesStaticRouteConfiguration) Defaults() *InternalNetworkPropertiesStaticRouteConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.BfdConfiguration = tmp.BfdConfiguration.Defaults()
+
+	if tmp.Extension == nil {
+		extension_ := "NoExtension"
+		tmp.Extension = &extension_
+	}
+	return &tmp
+}
+
+// InternalNetworkPropertiesStaticRouteConfigurationInput is an input type that accepts InternalNetworkPropertiesStaticRouteConfigurationArgs and InternalNetworkPropertiesStaticRouteConfigurationOutput values.
+// You can construct a concrete instance of `InternalNetworkPropertiesStaticRouteConfigurationInput` via:
+//
+//	InternalNetworkPropertiesStaticRouteConfigurationArgs{...}
+type InternalNetworkPropertiesStaticRouteConfigurationInput interface {
+	pulumi.Input
+
+	ToInternalNetworkPropertiesStaticRouteConfigurationOutput() InternalNetworkPropertiesStaticRouteConfigurationOutput
+	ToInternalNetworkPropertiesStaticRouteConfigurationOutputWithContext(context.Context) InternalNetworkPropertiesStaticRouteConfigurationOutput
+}
+
+// Static Route Configuration properties.
+type InternalNetworkPropertiesStaticRouteConfigurationArgs struct {
+	// BFD configuration properties
+	BfdConfiguration BfdConfigurationPtrInput `pulumi:"bfdConfiguration"`
+	// Extension. Example: NoExtension | NPB.
+	Extension pulumi.StringPtrInput `pulumi:"extension"`
+	// List of IPv4 Routes.
+	Ipv4Routes StaticRoutePropertiesArrayInput `pulumi:"ipv4Routes"`
+	// List of IPv6 Routes.
+	Ipv6Routes StaticRoutePropertiesArrayInput `pulumi:"ipv6Routes"`
+}
+
+// Defaults sets the appropriate defaults for InternalNetworkPropertiesStaticRouteConfigurationArgs
+func (val *InternalNetworkPropertiesStaticRouteConfigurationArgs) Defaults() *InternalNetworkPropertiesStaticRouteConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	if tmp.Extension == nil {
+		tmp.Extension = pulumi.StringPtr("NoExtension")
+	}
+	return &tmp
+}
+func (InternalNetworkPropertiesStaticRouteConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalNetworkPropertiesStaticRouteConfiguration)(nil)).Elem()
+}
+
+func (i InternalNetworkPropertiesStaticRouteConfigurationArgs) ToInternalNetworkPropertiesStaticRouteConfigurationOutput() InternalNetworkPropertiesStaticRouteConfigurationOutput {
+	return i.ToInternalNetworkPropertiesStaticRouteConfigurationOutputWithContext(context.Background())
+}
+
+func (i InternalNetworkPropertiesStaticRouteConfigurationArgs) ToInternalNetworkPropertiesStaticRouteConfigurationOutputWithContext(ctx context.Context) InternalNetworkPropertiesStaticRouteConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalNetworkPropertiesStaticRouteConfigurationOutput)
+}
+
+func (i InternalNetworkPropertiesStaticRouteConfigurationArgs) ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutput() InternalNetworkPropertiesStaticRouteConfigurationPtrOutput {
+	return i.ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i InternalNetworkPropertiesStaticRouteConfigurationArgs) ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) InternalNetworkPropertiesStaticRouteConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalNetworkPropertiesStaticRouteConfigurationOutput).ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutputWithContext(ctx)
+}
+
+// InternalNetworkPropertiesStaticRouteConfigurationPtrInput is an input type that accepts InternalNetworkPropertiesStaticRouteConfigurationArgs, InternalNetworkPropertiesStaticRouteConfigurationPtr and InternalNetworkPropertiesStaticRouteConfigurationPtrOutput values.
+// You can construct a concrete instance of `InternalNetworkPropertiesStaticRouteConfigurationPtrInput` via:
+//
+//	        InternalNetworkPropertiesStaticRouteConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InternalNetworkPropertiesStaticRouteConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutput() InternalNetworkPropertiesStaticRouteConfigurationPtrOutput
+	ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutputWithContext(context.Context) InternalNetworkPropertiesStaticRouteConfigurationPtrOutput
+}
+
+type internalNetworkPropertiesStaticRouteConfigurationPtrType InternalNetworkPropertiesStaticRouteConfigurationArgs
+
+func InternalNetworkPropertiesStaticRouteConfigurationPtr(v *InternalNetworkPropertiesStaticRouteConfigurationArgs) InternalNetworkPropertiesStaticRouteConfigurationPtrInput {
+	return (*internalNetworkPropertiesStaticRouteConfigurationPtrType)(v)
+}
+
+func (*internalNetworkPropertiesStaticRouteConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalNetworkPropertiesStaticRouteConfiguration)(nil)).Elem()
+}
+
+func (i *internalNetworkPropertiesStaticRouteConfigurationPtrType) ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutput() InternalNetworkPropertiesStaticRouteConfigurationPtrOutput {
+	return i.ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *internalNetworkPropertiesStaticRouteConfigurationPtrType) ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) InternalNetworkPropertiesStaticRouteConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalNetworkPropertiesStaticRouteConfigurationPtrOutput)
+}
+
+// Static Route Configuration properties.
+type InternalNetworkPropertiesStaticRouteConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InternalNetworkPropertiesStaticRouteConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalNetworkPropertiesStaticRouteConfiguration)(nil)).Elem()
+}
+
+func (o InternalNetworkPropertiesStaticRouteConfigurationOutput) ToInternalNetworkPropertiesStaticRouteConfigurationOutput() InternalNetworkPropertiesStaticRouteConfigurationOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesStaticRouteConfigurationOutput) ToInternalNetworkPropertiesStaticRouteConfigurationOutputWithContext(ctx context.Context) InternalNetworkPropertiesStaticRouteConfigurationOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesStaticRouteConfigurationOutput) ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutput() InternalNetworkPropertiesStaticRouteConfigurationPtrOutput {
+	return o.ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o InternalNetworkPropertiesStaticRouteConfigurationOutput) ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) InternalNetworkPropertiesStaticRouteConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InternalNetworkPropertiesStaticRouteConfiguration) *InternalNetworkPropertiesStaticRouteConfiguration {
+		return &v
+	}).(InternalNetworkPropertiesStaticRouteConfigurationPtrOutput)
+}
+
+// BFD configuration properties
+func (o InternalNetworkPropertiesStaticRouteConfigurationOutput) BfdConfiguration() BfdConfigurationPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesStaticRouteConfiguration) *BfdConfiguration { return v.BfdConfiguration }).(BfdConfigurationPtrOutput)
+}
+
+// Extension. Example: NoExtension | NPB.
+func (o InternalNetworkPropertiesStaticRouteConfigurationOutput) Extension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesStaticRouteConfiguration) *string { return v.Extension }).(pulumi.StringPtrOutput)
+}
+
+// List of IPv4 Routes.
+func (o InternalNetworkPropertiesStaticRouteConfigurationOutput) Ipv4Routes() StaticRoutePropertiesArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesStaticRouteConfiguration) []StaticRouteProperties { return v.Ipv4Routes }).(StaticRoutePropertiesArrayOutput)
+}
+
+// List of IPv6 Routes.
+func (o InternalNetworkPropertiesStaticRouteConfigurationOutput) Ipv6Routes() StaticRoutePropertiesArrayOutput {
+	return o.ApplyT(func(v InternalNetworkPropertiesStaticRouteConfiguration) []StaticRouteProperties { return v.Ipv6Routes }).(StaticRoutePropertiesArrayOutput)
+}
+
+type InternalNetworkPropertiesStaticRouteConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (InternalNetworkPropertiesStaticRouteConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalNetworkPropertiesStaticRouteConfiguration)(nil)).Elem()
+}
+
+func (o InternalNetworkPropertiesStaticRouteConfigurationPtrOutput) ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutput() InternalNetworkPropertiesStaticRouteConfigurationPtrOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesStaticRouteConfigurationPtrOutput) ToInternalNetworkPropertiesStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) InternalNetworkPropertiesStaticRouteConfigurationPtrOutput {
+	return o
+}
+
+func (o InternalNetworkPropertiesStaticRouteConfigurationPtrOutput) Elem() InternalNetworkPropertiesStaticRouteConfigurationOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesStaticRouteConfiguration) InternalNetworkPropertiesStaticRouteConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret InternalNetworkPropertiesStaticRouteConfiguration
+		return ret
+	}).(InternalNetworkPropertiesStaticRouteConfigurationOutput)
+}
+
+// BFD configuration properties
+func (o InternalNetworkPropertiesStaticRouteConfigurationPtrOutput) BfdConfiguration() BfdConfigurationPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesStaticRouteConfiguration) *BfdConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.BfdConfiguration
+	}).(BfdConfigurationPtrOutput)
+}
+
+// Extension. Example: NoExtension | NPB.
+func (o InternalNetworkPropertiesStaticRouteConfigurationPtrOutput) Extension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesStaticRouteConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Extension
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of IPv4 Routes.
+func (o InternalNetworkPropertiesStaticRouteConfigurationPtrOutput) Ipv4Routes() StaticRoutePropertiesArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesStaticRouteConfiguration) []StaticRouteProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4Routes
+	}).(StaticRoutePropertiesArrayOutput)
+}
+
+// List of IPv6 Routes.
+func (o InternalNetworkPropertiesStaticRouteConfigurationPtrOutput) Ipv6Routes() StaticRoutePropertiesArrayOutput {
+	return o.ApplyT(func(v *InternalNetworkPropertiesStaticRouteConfiguration) []StaticRouteProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6Routes
+	}).(StaticRoutePropertiesArrayOutput)
 }
 
 // IP Community ID list properties.
@@ -3590,6 +6163,200 @@ func (o IpCommunityIdListResponsePtrOutput) IpCommunityIds() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// IP Community patchable properties.
+type IpCommunityRule struct {
+	// Action to be taken on the configuration. Example: Permit | Deny.
+	Action string `pulumi:"action"`
+	// List the community members of IP Community.
+	CommunityMembers []string `pulumi:"communityMembers"`
+	// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+	SequenceNumber float64 `pulumi:"sequenceNumber"`
+	// Supported well known Community List.
+	WellKnownCommunities []string `pulumi:"wellKnownCommunities"`
+}
+
+// IpCommunityRuleInput is an input type that accepts IpCommunityRuleArgs and IpCommunityRuleOutput values.
+// You can construct a concrete instance of `IpCommunityRuleInput` via:
+//
+//	IpCommunityRuleArgs{...}
+type IpCommunityRuleInput interface {
+	pulumi.Input
+
+	ToIpCommunityRuleOutput() IpCommunityRuleOutput
+	ToIpCommunityRuleOutputWithContext(context.Context) IpCommunityRuleOutput
+}
+
+// IP Community patchable properties.
+type IpCommunityRuleArgs struct {
+	// Action to be taken on the configuration. Example: Permit | Deny.
+	Action pulumi.StringInput `pulumi:"action"`
+	// List the community members of IP Community.
+	CommunityMembers pulumi.StringArrayInput `pulumi:"communityMembers"`
+	// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+	SequenceNumber pulumi.Float64Input `pulumi:"sequenceNumber"`
+	// Supported well known Community List.
+	WellKnownCommunities pulumi.StringArrayInput `pulumi:"wellKnownCommunities"`
+}
+
+func (IpCommunityRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpCommunityRule)(nil)).Elem()
+}
+
+func (i IpCommunityRuleArgs) ToIpCommunityRuleOutput() IpCommunityRuleOutput {
+	return i.ToIpCommunityRuleOutputWithContext(context.Background())
+}
+
+func (i IpCommunityRuleArgs) ToIpCommunityRuleOutputWithContext(ctx context.Context) IpCommunityRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpCommunityRuleOutput)
+}
+
+// IpCommunityRuleArrayInput is an input type that accepts IpCommunityRuleArray and IpCommunityRuleArrayOutput values.
+// You can construct a concrete instance of `IpCommunityRuleArrayInput` via:
+//
+//	IpCommunityRuleArray{ IpCommunityRuleArgs{...} }
+type IpCommunityRuleArrayInput interface {
+	pulumi.Input
+
+	ToIpCommunityRuleArrayOutput() IpCommunityRuleArrayOutput
+	ToIpCommunityRuleArrayOutputWithContext(context.Context) IpCommunityRuleArrayOutput
+}
+
+type IpCommunityRuleArray []IpCommunityRuleInput
+
+func (IpCommunityRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpCommunityRule)(nil)).Elem()
+}
+
+func (i IpCommunityRuleArray) ToIpCommunityRuleArrayOutput() IpCommunityRuleArrayOutput {
+	return i.ToIpCommunityRuleArrayOutputWithContext(context.Background())
+}
+
+func (i IpCommunityRuleArray) ToIpCommunityRuleArrayOutputWithContext(ctx context.Context) IpCommunityRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpCommunityRuleArrayOutput)
+}
+
+// IP Community patchable properties.
+type IpCommunityRuleOutput struct{ *pulumi.OutputState }
+
+func (IpCommunityRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpCommunityRule)(nil)).Elem()
+}
+
+func (o IpCommunityRuleOutput) ToIpCommunityRuleOutput() IpCommunityRuleOutput {
+	return o
+}
+
+func (o IpCommunityRuleOutput) ToIpCommunityRuleOutputWithContext(ctx context.Context) IpCommunityRuleOutput {
+	return o
+}
+
+// Action to be taken on the configuration. Example: Permit | Deny.
+func (o IpCommunityRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v IpCommunityRule) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// List the community members of IP Community.
+func (o IpCommunityRuleOutput) CommunityMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpCommunityRule) []string { return v.CommunityMembers }).(pulumi.StringArrayOutput)
+}
+
+// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+func (o IpCommunityRuleOutput) SequenceNumber() pulumi.Float64Output {
+	return o.ApplyT(func(v IpCommunityRule) float64 { return v.SequenceNumber }).(pulumi.Float64Output)
+}
+
+// Supported well known Community List.
+func (o IpCommunityRuleOutput) WellKnownCommunities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpCommunityRule) []string { return v.WellKnownCommunities }).(pulumi.StringArrayOutput)
+}
+
+type IpCommunityRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (IpCommunityRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpCommunityRule)(nil)).Elem()
+}
+
+func (o IpCommunityRuleArrayOutput) ToIpCommunityRuleArrayOutput() IpCommunityRuleArrayOutput {
+	return o
+}
+
+func (o IpCommunityRuleArrayOutput) ToIpCommunityRuleArrayOutputWithContext(ctx context.Context) IpCommunityRuleArrayOutput {
+	return o
+}
+
+func (o IpCommunityRuleArrayOutput) Index(i pulumi.IntInput) IpCommunityRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpCommunityRule {
+		return vs[0].([]IpCommunityRule)[vs[1].(int)]
+	}).(IpCommunityRuleOutput)
+}
+
+// IP Community patchable properties.
+type IpCommunityRuleResponse struct {
+	// Action to be taken on the configuration. Example: Permit | Deny.
+	Action string `pulumi:"action"`
+	// List the community members of IP Community.
+	CommunityMembers []string `pulumi:"communityMembers"`
+	// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+	SequenceNumber float64 `pulumi:"sequenceNumber"`
+	// Supported well known Community List.
+	WellKnownCommunities []string `pulumi:"wellKnownCommunities"`
+}
+
+// IP Community patchable properties.
+type IpCommunityRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (IpCommunityRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpCommunityRuleResponse)(nil)).Elem()
+}
+
+func (o IpCommunityRuleResponseOutput) ToIpCommunityRuleResponseOutput() IpCommunityRuleResponseOutput {
+	return o
+}
+
+func (o IpCommunityRuleResponseOutput) ToIpCommunityRuleResponseOutputWithContext(ctx context.Context) IpCommunityRuleResponseOutput {
+	return o
+}
+
+// Action to be taken on the configuration. Example: Permit | Deny.
+func (o IpCommunityRuleResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v IpCommunityRuleResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// List the community members of IP Community.
+func (o IpCommunityRuleResponseOutput) CommunityMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpCommunityRuleResponse) []string { return v.CommunityMembers }).(pulumi.StringArrayOutput)
+}
+
+// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+func (o IpCommunityRuleResponseOutput) SequenceNumber() pulumi.Float64Output {
+	return o.ApplyT(func(v IpCommunityRuleResponse) float64 { return v.SequenceNumber }).(pulumi.Float64Output)
+}
+
+// Supported well known Community List.
+func (o IpCommunityRuleResponseOutput) WellKnownCommunities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpCommunityRuleResponse) []string { return v.WellKnownCommunities }).(pulumi.StringArrayOutput)
+}
+
+type IpCommunityRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IpCommunityRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpCommunityRuleResponse)(nil)).Elem()
+}
+
+func (o IpCommunityRuleResponseArrayOutput) ToIpCommunityRuleResponseArrayOutput() IpCommunityRuleResponseArrayOutput {
+	return o
+}
+
+func (o IpCommunityRuleResponseArrayOutput) ToIpCommunityRuleResponseArrayOutputWithContext(ctx context.Context) IpCommunityRuleResponseArrayOutput {
+	return o
+}
+
+func (o IpCommunityRuleResponseArrayOutput) Index(i pulumi.IntInput) IpCommunityRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpCommunityRuleResponse {
+		return vs[0].([]IpCommunityRuleResponse)[vs[1].(int)]
+	}).(IpCommunityRuleResponseOutput)
+}
+
 // IP Extended Community Id list properties.
 type IpExtendedCommunityIdList struct {
 	// List of IP Extended Community resource IDs.
@@ -3788,6 +6555,184 @@ func (o IpExtendedCommunityIdListResponsePtrOutput) IpExtendedCommunityIds() pul
 		}
 		return v.IpExtendedCommunityIds
 	}).(pulumi.StringArrayOutput)
+}
+
+// List of IP Extended Community Rules.
+type IpExtendedCommunityRule struct {
+	// Action to be taken on the configuration. Example: Permit | Deny.
+	Action string `pulumi:"action"`
+	// Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+	RouteTargets []string `pulumi:"routeTargets"`
+	// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+	SequenceNumber float64 `pulumi:"sequenceNumber"`
+}
+
+// IpExtendedCommunityRuleInput is an input type that accepts IpExtendedCommunityRuleArgs and IpExtendedCommunityRuleOutput values.
+// You can construct a concrete instance of `IpExtendedCommunityRuleInput` via:
+//
+//	IpExtendedCommunityRuleArgs{...}
+type IpExtendedCommunityRuleInput interface {
+	pulumi.Input
+
+	ToIpExtendedCommunityRuleOutput() IpExtendedCommunityRuleOutput
+	ToIpExtendedCommunityRuleOutputWithContext(context.Context) IpExtendedCommunityRuleOutput
+}
+
+// List of IP Extended Community Rules.
+type IpExtendedCommunityRuleArgs struct {
+	// Action to be taken on the configuration. Example: Permit | Deny.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+	RouteTargets pulumi.StringArrayInput `pulumi:"routeTargets"`
+	// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+	SequenceNumber pulumi.Float64Input `pulumi:"sequenceNumber"`
+}
+
+func (IpExtendedCommunityRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpExtendedCommunityRule)(nil)).Elem()
+}
+
+func (i IpExtendedCommunityRuleArgs) ToIpExtendedCommunityRuleOutput() IpExtendedCommunityRuleOutput {
+	return i.ToIpExtendedCommunityRuleOutputWithContext(context.Background())
+}
+
+func (i IpExtendedCommunityRuleArgs) ToIpExtendedCommunityRuleOutputWithContext(ctx context.Context) IpExtendedCommunityRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpExtendedCommunityRuleOutput)
+}
+
+// IpExtendedCommunityRuleArrayInput is an input type that accepts IpExtendedCommunityRuleArray and IpExtendedCommunityRuleArrayOutput values.
+// You can construct a concrete instance of `IpExtendedCommunityRuleArrayInput` via:
+//
+//	IpExtendedCommunityRuleArray{ IpExtendedCommunityRuleArgs{...} }
+type IpExtendedCommunityRuleArrayInput interface {
+	pulumi.Input
+
+	ToIpExtendedCommunityRuleArrayOutput() IpExtendedCommunityRuleArrayOutput
+	ToIpExtendedCommunityRuleArrayOutputWithContext(context.Context) IpExtendedCommunityRuleArrayOutput
+}
+
+type IpExtendedCommunityRuleArray []IpExtendedCommunityRuleInput
+
+func (IpExtendedCommunityRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpExtendedCommunityRule)(nil)).Elem()
+}
+
+func (i IpExtendedCommunityRuleArray) ToIpExtendedCommunityRuleArrayOutput() IpExtendedCommunityRuleArrayOutput {
+	return i.ToIpExtendedCommunityRuleArrayOutputWithContext(context.Background())
+}
+
+func (i IpExtendedCommunityRuleArray) ToIpExtendedCommunityRuleArrayOutputWithContext(ctx context.Context) IpExtendedCommunityRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpExtendedCommunityRuleArrayOutput)
+}
+
+// List of IP Extended Community Rules.
+type IpExtendedCommunityRuleOutput struct{ *pulumi.OutputState }
+
+func (IpExtendedCommunityRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpExtendedCommunityRule)(nil)).Elem()
+}
+
+func (o IpExtendedCommunityRuleOutput) ToIpExtendedCommunityRuleOutput() IpExtendedCommunityRuleOutput {
+	return o
+}
+
+func (o IpExtendedCommunityRuleOutput) ToIpExtendedCommunityRuleOutputWithContext(ctx context.Context) IpExtendedCommunityRuleOutput {
+	return o
+}
+
+// Action to be taken on the configuration. Example: Permit | Deny.
+func (o IpExtendedCommunityRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v IpExtendedCommunityRule) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+func (o IpExtendedCommunityRuleOutput) RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpExtendedCommunityRule) []string { return v.RouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+func (o IpExtendedCommunityRuleOutput) SequenceNumber() pulumi.Float64Output {
+	return o.ApplyT(func(v IpExtendedCommunityRule) float64 { return v.SequenceNumber }).(pulumi.Float64Output)
+}
+
+type IpExtendedCommunityRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (IpExtendedCommunityRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpExtendedCommunityRule)(nil)).Elem()
+}
+
+func (o IpExtendedCommunityRuleArrayOutput) ToIpExtendedCommunityRuleArrayOutput() IpExtendedCommunityRuleArrayOutput {
+	return o
+}
+
+func (o IpExtendedCommunityRuleArrayOutput) ToIpExtendedCommunityRuleArrayOutputWithContext(ctx context.Context) IpExtendedCommunityRuleArrayOutput {
+	return o
+}
+
+func (o IpExtendedCommunityRuleArrayOutput) Index(i pulumi.IntInput) IpExtendedCommunityRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpExtendedCommunityRule {
+		return vs[0].([]IpExtendedCommunityRule)[vs[1].(int)]
+	}).(IpExtendedCommunityRuleOutput)
+}
+
+// List of IP Extended Community Rules.
+type IpExtendedCommunityRuleResponse struct {
+	// Action to be taken on the configuration. Example: Permit | Deny.
+	Action string `pulumi:"action"`
+	// Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+	RouteTargets []string `pulumi:"routeTargets"`
+	// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+	SequenceNumber float64 `pulumi:"sequenceNumber"`
+}
+
+// List of IP Extended Community Rules.
+type IpExtendedCommunityRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (IpExtendedCommunityRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpExtendedCommunityRuleResponse)(nil)).Elem()
+}
+
+func (o IpExtendedCommunityRuleResponseOutput) ToIpExtendedCommunityRuleResponseOutput() IpExtendedCommunityRuleResponseOutput {
+	return o
+}
+
+func (o IpExtendedCommunityRuleResponseOutput) ToIpExtendedCommunityRuleResponseOutputWithContext(ctx context.Context) IpExtendedCommunityRuleResponseOutput {
+	return o
+}
+
+// Action to be taken on the configuration. Example: Permit | Deny.
+func (o IpExtendedCommunityRuleResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v IpExtendedCommunityRuleResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+func (o IpExtendedCommunityRuleResponseOutput) RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IpExtendedCommunityRuleResponse) []string { return v.RouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+func (o IpExtendedCommunityRuleResponseOutput) SequenceNumber() pulumi.Float64Output {
+	return o.ApplyT(func(v IpExtendedCommunityRuleResponse) float64 { return v.SequenceNumber }).(pulumi.Float64Output)
+}
+
+type IpExtendedCommunityRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IpExtendedCommunityRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpExtendedCommunityRuleResponse)(nil)).Elem()
+}
+
+func (o IpExtendedCommunityRuleResponseArrayOutput) ToIpExtendedCommunityRuleResponseArrayOutput() IpExtendedCommunityRuleResponseArrayOutput {
+	return o
+}
+
+func (o IpExtendedCommunityRuleResponseArrayOutput) ToIpExtendedCommunityRuleResponseArrayOutputWithContext(ctx context.Context) IpExtendedCommunityRuleResponseArrayOutput {
+	return o
+}
+
+func (o IpExtendedCommunityRuleResponseArrayOutput) Index(i pulumi.IntInput) IpExtendedCommunityRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpExtendedCommunityRuleResponse {
+		return vs[0].([]IpExtendedCommunityRuleResponse)[vs[1].(int)]
+	}).(IpExtendedCommunityRuleResponseOutput)
 }
 
 // IP Group properties.
@@ -4276,7 +7221,8 @@ func (o IpMatchConditionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type IpPrefixPropertiesIpPrefixRules struct {
+// IP Prefix Rule properties.
+type IpPrefixRule struct {
 	// Action to be taken on the configuration. Example: Permit | Deny.
 	Action string `pulumi:"action"`
 	// Specify prefix-list bounds.
@@ -4285,22 +7231,23 @@ type IpPrefixPropertiesIpPrefixRules struct {
 	NetworkPrefix string `pulumi:"networkPrefix"`
 	// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
 	SequenceNumber float64 `pulumi:"sequenceNumber"`
-	// SubnetMaskLength gives the minimum NetworkPrefix length to be matched.Possible values for IPv4 are 1 - 32. Possible values of IPv6 are 1 - 128.
-	SubnetMaskLength *int `pulumi:"subnetMaskLength"`
+	// SubnetMaskLength gives the minimum NetworkPrefix length to be matched. Possible values for IPv4 are 1 - 32 . Possible values of IPv6 are 1 - 128.
+	SubnetMaskLength *string `pulumi:"subnetMaskLength"`
 }
 
-// IpPrefixPropertiesIpPrefixRulesInput is an input type that accepts IpPrefixPropertiesIpPrefixRulesArgs and IpPrefixPropertiesIpPrefixRulesOutput values.
-// You can construct a concrete instance of `IpPrefixPropertiesIpPrefixRulesInput` via:
+// IpPrefixRuleInput is an input type that accepts IpPrefixRuleArgs and IpPrefixRuleOutput values.
+// You can construct a concrete instance of `IpPrefixRuleInput` via:
 //
-//	IpPrefixPropertiesIpPrefixRulesArgs{...}
-type IpPrefixPropertiesIpPrefixRulesInput interface {
+//	IpPrefixRuleArgs{...}
+type IpPrefixRuleInput interface {
 	pulumi.Input
 
-	ToIpPrefixPropertiesIpPrefixRulesOutput() IpPrefixPropertiesIpPrefixRulesOutput
-	ToIpPrefixPropertiesIpPrefixRulesOutputWithContext(context.Context) IpPrefixPropertiesIpPrefixRulesOutput
+	ToIpPrefixRuleOutput() IpPrefixRuleOutput
+	ToIpPrefixRuleOutputWithContext(context.Context) IpPrefixRuleOutput
 }
 
-type IpPrefixPropertiesIpPrefixRulesArgs struct {
+// IP Prefix Rule properties.
+type IpPrefixRuleArgs struct {
 	// Action to be taken on the configuration. Example: Permit | Deny.
 	Action pulumi.StringInput `pulumi:"action"`
 	// Specify prefix-list bounds.
@@ -4309,107 +7256,109 @@ type IpPrefixPropertiesIpPrefixRulesArgs struct {
 	NetworkPrefix pulumi.StringInput `pulumi:"networkPrefix"`
 	// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
 	SequenceNumber pulumi.Float64Input `pulumi:"sequenceNumber"`
-	// SubnetMaskLength gives the minimum NetworkPrefix length to be matched.Possible values for IPv4 are 1 - 32. Possible values of IPv6 are 1 - 128.
-	SubnetMaskLength pulumi.IntPtrInput `pulumi:"subnetMaskLength"`
+	// SubnetMaskLength gives the minimum NetworkPrefix length to be matched. Possible values for IPv4 are 1 - 32 . Possible values of IPv6 are 1 - 128.
+	SubnetMaskLength pulumi.StringPtrInput `pulumi:"subnetMaskLength"`
 }
 
-func (IpPrefixPropertiesIpPrefixRulesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpPrefixPropertiesIpPrefixRules)(nil)).Elem()
+func (IpPrefixRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpPrefixRule)(nil)).Elem()
 }
 
-func (i IpPrefixPropertiesIpPrefixRulesArgs) ToIpPrefixPropertiesIpPrefixRulesOutput() IpPrefixPropertiesIpPrefixRulesOutput {
-	return i.ToIpPrefixPropertiesIpPrefixRulesOutputWithContext(context.Background())
+func (i IpPrefixRuleArgs) ToIpPrefixRuleOutput() IpPrefixRuleOutput {
+	return i.ToIpPrefixRuleOutputWithContext(context.Background())
 }
 
-func (i IpPrefixPropertiesIpPrefixRulesArgs) ToIpPrefixPropertiesIpPrefixRulesOutputWithContext(ctx context.Context) IpPrefixPropertiesIpPrefixRulesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IpPrefixPropertiesIpPrefixRulesOutput)
+func (i IpPrefixRuleArgs) ToIpPrefixRuleOutputWithContext(ctx context.Context) IpPrefixRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpPrefixRuleOutput)
 }
 
-// IpPrefixPropertiesIpPrefixRulesArrayInput is an input type that accepts IpPrefixPropertiesIpPrefixRulesArray and IpPrefixPropertiesIpPrefixRulesArrayOutput values.
-// You can construct a concrete instance of `IpPrefixPropertiesIpPrefixRulesArrayInput` via:
+// IpPrefixRuleArrayInput is an input type that accepts IpPrefixRuleArray and IpPrefixRuleArrayOutput values.
+// You can construct a concrete instance of `IpPrefixRuleArrayInput` via:
 //
-//	IpPrefixPropertiesIpPrefixRulesArray{ IpPrefixPropertiesIpPrefixRulesArgs{...} }
-type IpPrefixPropertiesIpPrefixRulesArrayInput interface {
+//	IpPrefixRuleArray{ IpPrefixRuleArgs{...} }
+type IpPrefixRuleArrayInput interface {
 	pulumi.Input
 
-	ToIpPrefixPropertiesIpPrefixRulesArrayOutput() IpPrefixPropertiesIpPrefixRulesArrayOutput
-	ToIpPrefixPropertiesIpPrefixRulesArrayOutputWithContext(context.Context) IpPrefixPropertiesIpPrefixRulesArrayOutput
+	ToIpPrefixRuleArrayOutput() IpPrefixRuleArrayOutput
+	ToIpPrefixRuleArrayOutputWithContext(context.Context) IpPrefixRuleArrayOutput
 }
 
-type IpPrefixPropertiesIpPrefixRulesArray []IpPrefixPropertiesIpPrefixRulesInput
+type IpPrefixRuleArray []IpPrefixRuleInput
 
-func (IpPrefixPropertiesIpPrefixRulesArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IpPrefixPropertiesIpPrefixRules)(nil)).Elem()
+func (IpPrefixRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpPrefixRule)(nil)).Elem()
 }
 
-func (i IpPrefixPropertiesIpPrefixRulesArray) ToIpPrefixPropertiesIpPrefixRulesArrayOutput() IpPrefixPropertiesIpPrefixRulesArrayOutput {
-	return i.ToIpPrefixPropertiesIpPrefixRulesArrayOutputWithContext(context.Background())
+func (i IpPrefixRuleArray) ToIpPrefixRuleArrayOutput() IpPrefixRuleArrayOutput {
+	return i.ToIpPrefixRuleArrayOutputWithContext(context.Background())
 }
 
-func (i IpPrefixPropertiesIpPrefixRulesArray) ToIpPrefixPropertiesIpPrefixRulesArrayOutputWithContext(ctx context.Context) IpPrefixPropertiesIpPrefixRulesArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IpPrefixPropertiesIpPrefixRulesArrayOutput)
+func (i IpPrefixRuleArray) ToIpPrefixRuleArrayOutputWithContext(ctx context.Context) IpPrefixRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpPrefixRuleArrayOutput)
 }
 
-type IpPrefixPropertiesIpPrefixRulesOutput struct{ *pulumi.OutputState }
+// IP Prefix Rule properties.
+type IpPrefixRuleOutput struct{ *pulumi.OutputState }
 
-func (IpPrefixPropertiesIpPrefixRulesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpPrefixPropertiesIpPrefixRules)(nil)).Elem()
+func (IpPrefixRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpPrefixRule)(nil)).Elem()
 }
 
-func (o IpPrefixPropertiesIpPrefixRulesOutput) ToIpPrefixPropertiesIpPrefixRulesOutput() IpPrefixPropertiesIpPrefixRulesOutput {
+func (o IpPrefixRuleOutput) ToIpPrefixRuleOutput() IpPrefixRuleOutput {
 	return o
 }
 
-func (o IpPrefixPropertiesIpPrefixRulesOutput) ToIpPrefixPropertiesIpPrefixRulesOutputWithContext(ctx context.Context) IpPrefixPropertiesIpPrefixRulesOutput {
+func (o IpPrefixRuleOutput) ToIpPrefixRuleOutputWithContext(ctx context.Context) IpPrefixRuleOutput {
 	return o
 }
 
 // Action to be taken on the configuration. Example: Permit | Deny.
-func (o IpPrefixPropertiesIpPrefixRulesOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v IpPrefixPropertiesIpPrefixRules) string { return v.Action }).(pulumi.StringOutput)
+func (o IpPrefixRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v IpPrefixRule) string { return v.Action }).(pulumi.StringOutput)
 }
 
 // Specify prefix-list bounds.
-func (o IpPrefixPropertiesIpPrefixRulesOutput) Condition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpPrefixPropertiesIpPrefixRules) *string { return v.Condition }).(pulumi.StringPtrOutput)
+func (o IpPrefixRuleOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpPrefixRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
 // Network Prefix specifying IPv4/IPv6 packets to be permitted or denied. Example: 1.1.1.0/24 | 3FFE:FFFF:0:CD30::/126
-func (o IpPrefixPropertiesIpPrefixRulesOutput) NetworkPrefix() pulumi.StringOutput {
-	return o.ApplyT(func(v IpPrefixPropertiesIpPrefixRules) string { return v.NetworkPrefix }).(pulumi.StringOutput)
+func (o IpPrefixRuleOutput) NetworkPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v IpPrefixRule) string { return v.NetworkPrefix }).(pulumi.StringOutput)
 }
 
 // Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
-func (o IpPrefixPropertiesIpPrefixRulesOutput) SequenceNumber() pulumi.Float64Output {
-	return o.ApplyT(func(v IpPrefixPropertiesIpPrefixRules) float64 { return v.SequenceNumber }).(pulumi.Float64Output)
+func (o IpPrefixRuleOutput) SequenceNumber() pulumi.Float64Output {
+	return o.ApplyT(func(v IpPrefixRule) float64 { return v.SequenceNumber }).(pulumi.Float64Output)
 }
 
-// SubnetMaskLength gives the minimum NetworkPrefix length to be matched.Possible values for IPv4 are 1 - 32. Possible values of IPv6 are 1 - 128.
-func (o IpPrefixPropertiesIpPrefixRulesOutput) SubnetMaskLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v IpPrefixPropertiesIpPrefixRules) *int { return v.SubnetMaskLength }).(pulumi.IntPtrOutput)
+// SubnetMaskLength gives the minimum NetworkPrefix length to be matched. Possible values for IPv4 are 1 - 32 . Possible values of IPv6 are 1 - 128.
+func (o IpPrefixRuleOutput) SubnetMaskLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpPrefixRule) *string { return v.SubnetMaskLength }).(pulumi.StringPtrOutput)
 }
 
-type IpPrefixPropertiesIpPrefixRulesArrayOutput struct{ *pulumi.OutputState }
+type IpPrefixRuleArrayOutput struct{ *pulumi.OutputState }
 
-func (IpPrefixPropertiesIpPrefixRulesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IpPrefixPropertiesIpPrefixRules)(nil)).Elem()
+func (IpPrefixRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpPrefixRule)(nil)).Elem()
 }
 
-func (o IpPrefixPropertiesIpPrefixRulesArrayOutput) ToIpPrefixPropertiesIpPrefixRulesArrayOutput() IpPrefixPropertiesIpPrefixRulesArrayOutput {
+func (o IpPrefixRuleArrayOutput) ToIpPrefixRuleArrayOutput() IpPrefixRuleArrayOutput {
 	return o
 }
 
-func (o IpPrefixPropertiesIpPrefixRulesArrayOutput) ToIpPrefixPropertiesIpPrefixRulesArrayOutputWithContext(ctx context.Context) IpPrefixPropertiesIpPrefixRulesArrayOutput {
+func (o IpPrefixRuleArrayOutput) ToIpPrefixRuleArrayOutputWithContext(ctx context.Context) IpPrefixRuleArrayOutput {
 	return o
 }
 
-func (o IpPrefixPropertiesIpPrefixRulesArrayOutput) Index(i pulumi.IntInput) IpPrefixPropertiesIpPrefixRulesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpPrefixPropertiesIpPrefixRules {
-		return vs[0].([]IpPrefixPropertiesIpPrefixRules)[vs[1].(int)]
-	}).(IpPrefixPropertiesIpPrefixRulesOutput)
+func (o IpPrefixRuleArrayOutput) Index(i pulumi.IntInput) IpPrefixRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpPrefixRule {
+		return vs[0].([]IpPrefixRule)[vs[1].(int)]
+	}).(IpPrefixRuleOutput)
 }
 
-type IpPrefixPropertiesResponseIpPrefixRules struct {
+// IP Prefix Rule properties.
+type IpPrefixRuleResponse struct {
 	// Action to be taken on the configuration. Example: Permit | Deny.
 	Action string `pulumi:"action"`
 	// Specify prefix-list bounds.
@@ -4418,67 +7367,68 @@ type IpPrefixPropertiesResponseIpPrefixRules struct {
 	NetworkPrefix string `pulumi:"networkPrefix"`
 	// Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
 	SequenceNumber float64 `pulumi:"sequenceNumber"`
-	// SubnetMaskLength gives the minimum NetworkPrefix length to be matched.Possible values for IPv4 are 1 - 32. Possible values of IPv6 are 1 - 128.
-	SubnetMaskLength *int `pulumi:"subnetMaskLength"`
+	// SubnetMaskLength gives the minimum NetworkPrefix length to be matched. Possible values for IPv4 are 1 - 32 . Possible values of IPv6 are 1 - 128.
+	SubnetMaskLength *string `pulumi:"subnetMaskLength"`
 }
 
-type IpPrefixPropertiesResponseIpPrefixRulesOutput struct{ *pulumi.OutputState }
+// IP Prefix Rule properties.
+type IpPrefixRuleResponseOutput struct{ *pulumi.OutputState }
 
-func (IpPrefixPropertiesResponseIpPrefixRulesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpPrefixPropertiesResponseIpPrefixRules)(nil)).Elem()
+func (IpPrefixRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpPrefixRuleResponse)(nil)).Elem()
 }
 
-func (o IpPrefixPropertiesResponseIpPrefixRulesOutput) ToIpPrefixPropertiesResponseIpPrefixRulesOutput() IpPrefixPropertiesResponseIpPrefixRulesOutput {
+func (o IpPrefixRuleResponseOutput) ToIpPrefixRuleResponseOutput() IpPrefixRuleResponseOutput {
 	return o
 }
 
-func (o IpPrefixPropertiesResponseIpPrefixRulesOutput) ToIpPrefixPropertiesResponseIpPrefixRulesOutputWithContext(ctx context.Context) IpPrefixPropertiesResponseIpPrefixRulesOutput {
+func (o IpPrefixRuleResponseOutput) ToIpPrefixRuleResponseOutputWithContext(ctx context.Context) IpPrefixRuleResponseOutput {
 	return o
 }
 
 // Action to be taken on the configuration. Example: Permit | Deny.
-func (o IpPrefixPropertiesResponseIpPrefixRulesOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v IpPrefixPropertiesResponseIpPrefixRules) string { return v.Action }).(pulumi.StringOutput)
+func (o IpPrefixRuleResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v IpPrefixRuleResponse) string { return v.Action }).(pulumi.StringOutput)
 }
 
 // Specify prefix-list bounds.
-func (o IpPrefixPropertiesResponseIpPrefixRulesOutput) Condition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpPrefixPropertiesResponseIpPrefixRules) *string { return v.Condition }).(pulumi.StringPtrOutput)
+func (o IpPrefixRuleResponseOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpPrefixRuleResponse) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
 // Network Prefix specifying IPv4/IPv6 packets to be permitted or denied. Example: 1.1.1.0/24 | 3FFE:FFFF:0:CD30::/126
-func (o IpPrefixPropertiesResponseIpPrefixRulesOutput) NetworkPrefix() pulumi.StringOutput {
-	return o.ApplyT(func(v IpPrefixPropertiesResponseIpPrefixRules) string { return v.NetworkPrefix }).(pulumi.StringOutput)
+func (o IpPrefixRuleResponseOutput) NetworkPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v IpPrefixRuleResponse) string { return v.NetworkPrefix }).(pulumi.StringOutput)
 }
 
 // Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
-func (o IpPrefixPropertiesResponseIpPrefixRulesOutput) SequenceNumber() pulumi.Float64Output {
-	return o.ApplyT(func(v IpPrefixPropertiesResponseIpPrefixRules) float64 { return v.SequenceNumber }).(pulumi.Float64Output)
+func (o IpPrefixRuleResponseOutput) SequenceNumber() pulumi.Float64Output {
+	return o.ApplyT(func(v IpPrefixRuleResponse) float64 { return v.SequenceNumber }).(pulumi.Float64Output)
 }
 
-// SubnetMaskLength gives the minimum NetworkPrefix length to be matched.Possible values for IPv4 are 1 - 32. Possible values of IPv6 are 1 - 128.
-func (o IpPrefixPropertiesResponseIpPrefixRulesOutput) SubnetMaskLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v IpPrefixPropertiesResponseIpPrefixRules) *int { return v.SubnetMaskLength }).(pulumi.IntPtrOutput)
+// SubnetMaskLength gives the minimum NetworkPrefix length to be matched. Possible values for IPv4 are 1 - 32 . Possible values of IPv6 are 1 - 128.
+func (o IpPrefixRuleResponseOutput) SubnetMaskLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpPrefixRuleResponse) *string { return v.SubnetMaskLength }).(pulumi.StringPtrOutput)
 }
 
-type IpPrefixPropertiesResponseIpPrefixRulesArrayOutput struct{ *pulumi.OutputState }
+type IpPrefixRuleResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (IpPrefixPropertiesResponseIpPrefixRulesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IpPrefixPropertiesResponseIpPrefixRules)(nil)).Elem()
+func (IpPrefixRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpPrefixRuleResponse)(nil)).Elem()
 }
 
-func (o IpPrefixPropertiesResponseIpPrefixRulesArrayOutput) ToIpPrefixPropertiesResponseIpPrefixRulesArrayOutput() IpPrefixPropertiesResponseIpPrefixRulesArrayOutput {
+func (o IpPrefixRuleResponseArrayOutput) ToIpPrefixRuleResponseArrayOutput() IpPrefixRuleResponseArrayOutput {
 	return o
 }
 
-func (o IpPrefixPropertiesResponseIpPrefixRulesArrayOutput) ToIpPrefixPropertiesResponseIpPrefixRulesArrayOutputWithContext(ctx context.Context) IpPrefixPropertiesResponseIpPrefixRulesArrayOutput {
+func (o IpPrefixRuleResponseArrayOutput) ToIpPrefixRuleResponseArrayOutputWithContext(ctx context.Context) IpPrefixRuleResponseArrayOutput {
 	return o
 }
 
-func (o IpPrefixPropertiesResponseIpPrefixRulesArrayOutput) Index(i pulumi.IntInput) IpPrefixPropertiesResponseIpPrefixRulesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpPrefixPropertiesResponseIpPrefixRules {
-		return vs[0].([]IpPrefixPropertiesResponseIpPrefixRules)[vs[1].(int)]
-	}).(IpPrefixPropertiesResponseIpPrefixRulesOutput)
+func (o IpPrefixRuleResponseArrayOutput) Index(i pulumi.IntInput) IpPrefixRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpPrefixRuleResponse {
+		return vs[0].([]IpPrefixRuleResponse)[vs[1].(int)]
+	}).(IpPrefixRuleResponseOutput)
 }
 
 // Isolation Domain Properties.
@@ -4717,235 +7667,520 @@ func (o IsolationDomainPropertiesResponsePtrOutput) NeighborGroupIds() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// Connected Subnet RoutePolicy
-type L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy struct {
-	// exportRoutePolicyId value.
-	ExportRoutePolicyId *string `pulumi:"exportRoutePolicyId"`
+// Array of ARM Resource ID of the RoutePolicies.
+type L3ExportRoutePolicy struct {
+	// ARM Resource ID of the RoutePolicy.
+	ExportIpv4RoutePolicyId *string `pulumi:"exportIpv4RoutePolicyId"`
+	// ARM Resource ID of the RoutePolicy.
+	ExportIpv6RoutePolicyId *string `pulumi:"exportIpv6RoutePolicyId"`
 }
 
-// L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyInput is an input type that accepts L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs and L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput values.
-// You can construct a concrete instance of `L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyInput` via:
+// L3ExportRoutePolicyInput is an input type that accepts L3ExportRoutePolicyArgs and L3ExportRoutePolicyOutput values.
+// You can construct a concrete instance of `L3ExportRoutePolicyInput` via:
 //
-//	L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs{...}
-type L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyInput interface {
+//	L3ExportRoutePolicyArgs{...}
+type L3ExportRoutePolicyInput interface {
 	pulumi.Input
 
-	ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput() L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput
-	ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutputWithContext(context.Context) L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput
+	ToL3ExportRoutePolicyOutput() L3ExportRoutePolicyOutput
+	ToL3ExportRoutePolicyOutputWithContext(context.Context) L3ExportRoutePolicyOutput
 }
 
-// Connected Subnet RoutePolicy
-type L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs struct {
-	// exportRoutePolicyId value.
-	ExportRoutePolicyId pulumi.StringPtrInput `pulumi:"exportRoutePolicyId"`
+// Array of ARM Resource ID of the RoutePolicies.
+type L3ExportRoutePolicyArgs struct {
+	// ARM Resource ID of the RoutePolicy.
+	ExportIpv4RoutePolicyId pulumi.StringPtrInput `pulumi:"exportIpv4RoutePolicyId"`
+	// ARM Resource ID of the RoutePolicy.
+	ExportIpv6RoutePolicyId pulumi.StringPtrInput `pulumi:"exportIpv6RoutePolicyId"`
 }
 
-func (L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy)(nil)).Elem()
+func (L3ExportRoutePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*L3ExportRoutePolicy)(nil)).Elem()
 }
 
-func (i L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput() L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput {
-	return i.ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutputWithContext(context.Background())
+func (i L3ExportRoutePolicyArgs) ToL3ExportRoutePolicyOutput() L3ExportRoutePolicyOutput {
+	return i.ToL3ExportRoutePolicyOutputWithContext(context.Background())
 }
 
-func (i L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutputWithContext(ctx context.Context) L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput)
+func (i L3ExportRoutePolicyArgs) ToL3ExportRoutePolicyOutputWithContext(ctx context.Context) L3ExportRoutePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L3ExportRoutePolicyOutput)
 }
 
-func (i L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput() L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput {
-	return i.ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutputWithContext(context.Background())
+func (i L3ExportRoutePolicyArgs) ToL3ExportRoutePolicyPtrOutput() L3ExportRoutePolicyPtrOutput {
+	return i.ToL3ExportRoutePolicyPtrOutputWithContext(context.Background())
 }
 
-func (i L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutputWithContext(ctx context.Context) L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput).ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutputWithContext(ctx)
+func (i L3ExportRoutePolicyArgs) ToL3ExportRoutePolicyPtrOutputWithContext(ctx context.Context) L3ExportRoutePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L3ExportRoutePolicyOutput).ToL3ExportRoutePolicyPtrOutputWithContext(ctx)
 }
 
-// L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrInput is an input type that accepts L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs, L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtr and L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput values.
-// You can construct a concrete instance of `L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrInput` via:
+// L3ExportRoutePolicyPtrInput is an input type that accepts L3ExportRoutePolicyArgs, L3ExportRoutePolicyPtr and L3ExportRoutePolicyPtrOutput values.
+// You can construct a concrete instance of `L3ExportRoutePolicyPtrInput` via:
 //
-//	        L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs{...}
+//	        L3ExportRoutePolicyArgs{...}
 //
 //	or:
 //
 //	        nil
-type L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrInput interface {
+type L3ExportRoutePolicyPtrInput interface {
 	pulumi.Input
 
-	ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput() L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput
-	ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutputWithContext(context.Context) L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput
+	ToL3ExportRoutePolicyPtrOutput() L3ExportRoutePolicyPtrOutput
+	ToL3ExportRoutePolicyPtrOutputWithContext(context.Context) L3ExportRoutePolicyPtrOutput
 }
 
-type l3isolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrType L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs
+type l3exportRoutePolicyPtrType L3ExportRoutePolicyArgs
 
-func L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtr(v *L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs) L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrInput {
-	return (*l3isolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrType)(v)
+func L3ExportRoutePolicyPtr(v *L3ExportRoutePolicyArgs) L3ExportRoutePolicyPtrInput {
+	return (*l3exportRoutePolicyPtrType)(v)
 }
 
-func (*l3isolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy)(nil)).Elem()
+func (*l3exportRoutePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**L3ExportRoutePolicy)(nil)).Elem()
 }
 
-func (i *l3isolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrType) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput() L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput {
-	return i.ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutputWithContext(context.Background())
+func (i *l3exportRoutePolicyPtrType) ToL3ExportRoutePolicyPtrOutput() L3ExportRoutePolicyPtrOutput {
+	return i.ToL3ExportRoutePolicyPtrOutputWithContext(context.Background())
 }
 
-func (i *l3isolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrType) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutputWithContext(ctx context.Context) L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput)
+func (i *l3exportRoutePolicyPtrType) ToL3ExportRoutePolicyPtrOutputWithContext(ctx context.Context) L3ExportRoutePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L3ExportRoutePolicyPtrOutput)
 }
 
-// Connected Subnet RoutePolicy
-type L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput struct{ *pulumi.OutputState }
+// Array of ARM Resource ID of the RoutePolicies.
+type L3ExportRoutePolicyOutput struct{ *pulumi.OutputState }
 
-func (L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy)(nil)).Elem()
+func (L3ExportRoutePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L3ExportRoutePolicy)(nil)).Elem()
 }
 
-func (o L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput() L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput {
+func (o L3ExportRoutePolicyOutput) ToL3ExportRoutePolicyOutput() L3ExportRoutePolicyOutput {
 	return o
 }
 
-func (o L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutputWithContext(ctx context.Context) L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput {
+func (o L3ExportRoutePolicyOutput) ToL3ExportRoutePolicyOutputWithContext(ctx context.Context) L3ExportRoutePolicyOutput {
 	return o
 }
 
-func (o L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput() L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput {
-	return o.ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutputWithContext(context.Background())
+func (o L3ExportRoutePolicyOutput) ToL3ExportRoutePolicyPtrOutput() L3ExportRoutePolicyPtrOutput {
+	return o.ToL3ExportRoutePolicyPtrOutputWithContext(context.Background())
 }
 
-func (o L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutputWithContext(ctx context.Context) L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy) *L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy {
+func (o L3ExportRoutePolicyOutput) ToL3ExportRoutePolicyPtrOutputWithContext(ctx context.Context) L3ExportRoutePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v L3ExportRoutePolicy) *L3ExportRoutePolicy {
 		return &v
-	}).(L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput)
+	}).(L3ExportRoutePolicyPtrOutput)
 }
 
-// exportRoutePolicyId value.
-func (o L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy) *string {
-		return v.ExportRoutePolicyId
-	}).(pulumi.StringPtrOutput)
+// ARM Resource ID of the RoutePolicy.
+func (o L3ExportRoutePolicyOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v L3ExportRoutePolicy) *string { return v.ExportIpv4RoutePolicyId }).(pulumi.StringPtrOutput)
 }
 
-type L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy)(nil)).Elem()
+// ARM Resource ID of the RoutePolicy.
+func (o L3ExportRoutePolicyOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v L3ExportRoutePolicy) *string { return v.ExportIpv6RoutePolicyId }).(pulumi.StringPtrOutput)
 }
 
-func (o L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput() L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput {
+type L3ExportRoutePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (L3ExportRoutePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**L3ExportRoutePolicy)(nil)).Elem()
+}
+
+func (o L3ExportRoutePolicyPtrOutput) ToL3ExportRoutePolicyPtrOutput() L3ExportRoutePolicyPtrOutput {
 	return o
 }
 
-func (o L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput) ToL3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutputWithContext(ctx context.Context) L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput {
+func (o L3ExportRoutePolicyPtrOutput) ToL3ExportRoutePolicyPtrOutputWithContext(ctx context.Context) L3ExportRoutePolicyPtrOutput {
 	return o
 }
 
-func (o L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput) Elem() L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput {
-	return o.ApplyT(func(v *L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy) L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy {
+func (o L3ExportRoutePolicyPtrOutput) Elem() L3ExportRoutePolicyOutput {
+	return o.ApplyT(func(v *L3ExportRoutePolicy) L3ExportRoutePolicy {
 		if v != nil {
 			return *v
 		}
-		var ret L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy
+		var ret L3ExportRoutePolicy
 		return ret
-	}).(L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput)
+	}).(L3ExportRoutePolicyOutput)
 }
 
-// exportRoutePolicyId value.
-func (o L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicy) *string {
+// ARM Resource ID of the RoutePolicy.
+func (o L3ExportRoutePolicyPtrOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *L3ExportRoutePolicy) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ExportRoutePolicyId
+		return v.ExportIpv4RoutePolicyId
 	}).(pulumi.StringPtrOutput)
 }
 
-// Connected Subnet RoutePolicy
-type L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy struct {
-	// Enabled/Disabled connected subnet route policy. Ex: Enabled | Disabled.
-	AdministrativeState string `pulumi:"administrativeState"`
-	// exportRoutePolicyId value.
-	ExportRoutePolicyId *string `pulumi:"exportRoutePolicyId"`
-}
-
-// Connected Subnet RoutePolicy
-type L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput struct{ *pulumi.OutputState }
-
-func (L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy)(nil)).Elem()
-}
-
-func (o L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput) ToL3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput() L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput {
-	return o
-}
-
-func (o L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput) ToL3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutputWithContext(ctx context.Context) L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput {
-	return o
-}
-
-// Enabled/Disabled connected subnet route policy. Ex: Enabled | Disabled.
-func (o L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput) AdministrativeState() pulumi.StringOutput {
-	return o.ApplyT(func(v L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy) string {
-		return v.AdministrativeState
-	}).(pulumi.StringOutput)
-}
-
-// exportRoutePolicyId value.
-func (o L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy) *string {
-		return v.ExportRoutePolicyId
+// ARM Resource ID of the RoutePolicy.
+func (o L3ExportRoutePolicyPtrOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *L3ExportRoutePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv6RoutePolicyId
 	}).(pulumi.StringPtrOutput)
 }
 
-type L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy)(nil)).Elem()
+// Array of ARM Resource ID of the RoutePolicies.
+type L3ExportRoutePolicyResponse struct {
+	// ARM Resource ID of the RoutePolicy.
+	ExportIpv4RoutePolicyId *string `pulumi:"exportIpv4RoutePolicyId"`
+	// ARM Resource ID of the RoutePolicy.
+	ExportIpv6RoutePolicyId *string `pulumi:"exportIpv6RoutePolicyId"`
 }
 
-func (o L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput) ToL3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput() L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput {
+// Array of ARM Resource ID of the RoutePolicies.
+type L3ExportRoutePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (L3ExportRoutePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L3ExportRoutePolicyResponse)(nil)).Elem()
+}
+
+func (o L3ExportRoutePolicyResponseOutput) ToL3ExportRoutePolicyResponseOutput() L3ExportRoutePolicyResponseOutput {
 	return o
 }
 
-func (o L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput) ToL3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutputWithContext(ctx context.Context) L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput {
+func (o L3ExportRoutePolicyResponseOutput) ToL3ExportRoutePolicyResponseOutputWithContext(ctx context.Context) L3ExportRoutePolicyResponseOutput {
 	return o
 }
 
-func (o L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput) Elem() L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput {
-	return o.ApplyT(func(v *L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy) L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy {
+// ARM Resource ID of the RoutePolicy.
+func (o L3ExportRoutePolicyResponseOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v L3ExportRoutePolicyResponse) *string { return v.ExportIpv4RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+// ARM Resource ID of the RoutePolicy.
+func (o L3ExportRoutePolicyResponseOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v L3ExportRoutePolicyResponse) *string { return v.ExportIpv6RoutePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type L3ExportRoutePolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (L3ExportRoutePolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**L3ExportRoutePolicyResponse)(nil)).Elem()
+}
+
+func (o L3ExportRoutePolicyResponsePtrOutput) ToL3ExportRoutePolicyResponsePtrOutput() L3ExportRoutePolicyResponsePtrOutput {
+	return o
+}
+
+func (o L3ExportRoutePolicyResponsePtrOutput) ToL3ExportRoutePolicyResponsePtrOutputWithContext(ctx context.Context) L3ExportRoutePolicyResponsePtrOutput {
+	return o
+}
+
+func (o L3ExportRoutePolicyResponsePtrOutput) Elem() L3ExportRoutePolicyResponseOutput {
+	return o.ApplyT(func(v *L3ExportRoutePolicyResponse) L3ExportRoutePolicyResponse {
 		if v != nil {
 			return *v
 		}
-		var ret L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy
+		var ret L3ExportRoutePolicyResponse
 		return ret
-	}).(L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput)
+	}).(L3ExportRoutePolicyResponseOutput)
 }
 
-// Enabled/Disabled connected subnet route policy. Ex: Enabled | Disabled.
-func (o L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput) AdministrativeState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy) *string {
+// ARM Resource ID of the RoutePolicy.
+func (o L3ExportRoutePolicyResponsePtrOutput) ExportIpv4RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *L3ExportRoutePolicyResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.AdministrativeState
+		return v.ExportIpv4RoutePolicyId
 	}).(pulumi.StringPtrOutput)
 }
 
-// exportRoutePolicyId value.
-func (o L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy) *string {
+// ARM Resource ID of the RoutePolicy.
+func (o L3ExportRoutePolicyResponsePtrOutput) ExportIpv6RoutePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *L3ExportRoutePolicyResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ExportRoutePolicyId
+		return v.ExportIpv6RoutePolicyId
 	}).(pulumi.StringPtrOutput)
 }
 
-// layer2Configuration
+// Option B configuration.
+type L3OptionBProperties struct {
+	// RouteTargets to be applied. This is used for the backward compatibility.
+	ExportRouteTargets []string `pulumi:"exportRouteTargets"`
+	// RouteTargets to be applied. This is used for the backward compatibility.
+	ImportRouteTargets []string `pulumi:"importRouteTargets"`
+	// RouteTargets to be applied.
+	RouteTargets *RouteTargetInformation `pulumi:"routeTargets"`
+}
+
+// L3OptionBPropertiesInput is an input type that accepts L3OptionBPropertiesArgs and L3OptionBPropertiesOutput values.
+// You can construct a concrete instance of `L3OptionBPropertiesInput` via:
+//
+//	L3OptionBPropertiesArgs{...}
+type L3OptionBPropertiesInput interface {
+	pulumi.Input
+
+	ToL3OptionBPropertiesOutput() L3OptionBPropertiesOutput
+	ToL3OptionBPropertiesOutputWithContext(context.Context) L3OptionBPropertiesOutput
+}
+
+// Option B configuration.
+type L3OptionBPropertiesArgs struct {
+	// RouteTargets to be applied. This is used for the backward compatibility.
+	ExportRouteTargets pulumi.StringArrayInput `pulumi:"exportRouteTargets"`
+	// RouteTargets to be applied. This is used for the backward compatibility.
+	ImportRouteTargets pulumi.StringArrayInput `pulumi:"importRouteTargets"`
+	// RouteTargets to be applied.
+	RouteTargets RouteTargetInformationPtrInput `pulumi:"routeTargets"`
+}
+
+func (L3OptionBPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*L3OptionBProperties)(nil)).Elem()
+}
+
+func (i L3OptionBPropertiesArgs) ToL3OptionBPropertiesOutput() L3OptionBPropertiesOutput {
+	return i.ToL3OptionBPropertiesOutputWithContext(context.Background())
+}
+
+func (i L3OptionBPropertiesArgs) ToL3OptionBPropertiesOutputWithContext(ctx context.Context) L3OptionBPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L3OptionBPropertiesOutput)
+}
+
+func (i L3OptionBPropertiesArgs) ToL3OptionBPropertiesPtrOutput() L3OptionBPropertiesPtrOutput {
+	return i.ToL3OptionBPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i L3OptionBPropertiesArgs) ToL3OptionBPropertiesPtrOutputWithContext(ctx context.Context) L3OptionBPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L3OptionBPropertiesOutput).ToL3OptionBPropertiesPtrOutputWithContext(ctx)
+}
+
+// L3OptionBPropertiesPtrInput is an input type that accepts L3OptionBPropertiesArgs, L3OptionBPropertiesPtr and L3OptionBPropertiesPtrOutput values.
+// You can construct a concrete instance of `L3OptionBPropertiesPtrInput` via:
+//
+//	        L3OptionBPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type L3OptionBPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToL3OptionBPropertiesPtrOutput() L3OptionBPropertiesPtrOutput
+	ToL3OptionBPropertiesPtrOutputWithContext(context.Context) L3OptionBPropertiesPtrOutput
+}
+
+type l3optionBPropertiesPtrType L3OptionBPropertiesArgs
+
+func L3OptionBPropertiesPtr(v *L3OptionBPropertiesArgs) L3OptionBPropertiesPtrInput {
+	return (*l3optionBPropertiesPtrType)(v)
+}
+
+func (*l3optionBPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**L3OptionBProperties)(nil)).Elem()
+}
+
+func (i *l3optionBPropertiesPtrType) ToL3OptionBPropertiesPtrOutput() L3OptionBPropertiesPtrOutput {
+	return i.ToL3OptionBPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *l3optionBPropertiesPtrType) ToL3OptionBPropertiesPtrOutputWithContext(ctx context.Context) L3OptionBPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(L3OptionBPropertiesPtrOutput)
+}
+
+// Option B configuration.
+type L3OptionBPropertiesOutput struct{ *pulumi.OutputState }
+
+func (L3OptionBPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L3OptionBProperties)(nil)).Elem()
+}
+
+func (o L3OptionBPropertiesOutput) ToL3OptionBPropertiesOutput() L3OptionBPropertiesOutput {
+	return o
+}
+
+func (o L3OptionBPropertiesOutput) ToL3OptionBPropertiesOutputWithContext(ctx context.Context) L3OptionBPropertiesOutput {
+	return o
+}
+
+func (o L3OptionBPropertiesOutput) ToL3OptionBPropertiesPtrOutput() L3OptionBPropertiesPtrOutput {
+	return o.ToL3OptionBPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o L3OptionBPropertiesOutput) ToL3OptionBPropertiesPtrOutputWithContext(ctx context.Context) L3OptionBPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v L3OptionBProperties) *L3OptionBProperties {
+		return &v
+	}).(L3OptionBPropertiesPtrOutput)
+}
+
+// RouteTargets to be applied. This is used for the backward compatibility.
+func (o L3OptionBPropertiesOutput) ExportRouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v L3OptionBProperties) []string { return v.ExportRouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// RouteTargets to be applied. This is used for the backward compatibility.
+func (o L3OptionBPropertiesOutput) ImportRouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v L3OptionBProperties) []string { return v.ImportRouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// RouteTargets to be applied.
+func (o L3OptionBPropertiesOutput) RouteTargets() RouteTargetInformationPtrOutput {
+	return o.ApplyT(func(v L3OptionBProperties) *RouteTargetInformation { return v.RouteTargets }).(RouteTargetInformationPtrOutput)
+}
+
+type L3OptionBPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (L3OptionBPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**L3OptionBProperties)(nil)).Elem()
+}
+
+func (o L3OptionBPropertiesPtrOutput) ToL3OptionBPropertiesPtrOutput() L3OptionBPropertiesPtrOutput {
+	return o
+}
+
+func (o L3OptionBPropertiesPtrOutput) ToL3OptionBPropertiesPtrOutputWithContext(ctx context.Context) L3OptionBPropertiesPtrOutput {
+	return o
+}
+
+func (o L3OptionBPropertiesPtrOutput) Elem() L3OptionBPropertiesOutput {
+	return o.ApplyT(func(v *L3OptionBProperties) L3OptionBProperties {
+		if v != nil {
+			return *v
+		}
+		var ret L3OptionBProperties
+		return ret
+	}).(L3OptionBPropertiesOutput)
+}
+
+// RouteTargets to be applied. This is used for the backward compatibility.
+func (o L3OptionBPropertiesPtrOutput) ExportRouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *L3OptionBProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportRouteTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// RouteTargets to be applied. This is used for the backward compatibility.
+func (o L3OptionBPropertiesPtrOutput) ImportRouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *L3OptionBProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportRouteTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// RouteTargets to be applied.
+func (o L3OptionBPropertiesPtrOutput) RouteTargets() RouteTargetInformationPtrOutput {
+	return o.ApplyT(func(v *L3OptionBProperties) *RouteTargetInformation {
+		if v == nil {
+			return nil
+		}
+		return v.RouteTargets
+	}).(RouteTargetInformationPtrOutput)
+}
+
+// Option B configuration.
+type L3OptionBPropertiesResponse struct {
+	// RouteTargets to be applied. This is used for the backward compatibility.
+	ExportRouteTargets []string `pulumi:"exportRouteTargets"`
+	// RouteTargets to be applied. This is used for the backward compatibility.
+	ImportRouteTargets []string `pulumi:"importRouteTargets"`
+	// RouteTargets to be applied.
+	RouteTargets *RouteTargetInformationResponse `pulumi:"routeTargets"`
+}
+
+// Option B configuration.
+type L3OptionBPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (L3OptionBPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*L3OptionBPropertiesResponse)(nil)).Elem()
+}
+
+func (o L3OptionBPropertiesResponseOutput) ToL3OptionBPropertiesResponseOutput() L3OptionBPropertiesResponseOutput {
+	return o
+}
+
+func (o L3OptionBPropertiesResponseOutput) ToL3OptionBPropertiesResponseOutputWithContext(ctx context.Context) L3OptionBPropertiesResponseOutput {
+	return o
+}
+
+// RouteTargets to be applied. This is used for the backward compatibility.
+func (o L3OptionBPropertiesResponseOutput) ExportRouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v L3OptionBPropertiesResponse) []string { return v.ExportRouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// RouteTargets to be applied. This is used for the backward compatibility.
+func (o L3OptionBPropertiesResponseOutput) ImportRouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v L3OptionBPropertiesResponse) []string { return v.ImportRouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// RouteTargets to be applied.
+func (o L3OptionBPropertiesResponseOutput) RouteTargets() RouteTargetInformationResponsePtrOutput {
+	return o.ApplyT(func(v L3OptionBPropertiesResponse) *RouteTargetInformationResponse { return v.RouteTargets }).(RouteTargetInformationResponsePtrOutput)
+}
+
+type L3OptionBPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (L3OptionBPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**L3OptionBPropertiesResponse)(nil)).Elem()
+}
+
+func (o L3OptionBPropertiesResponsePtrOutput) ToL3OptionBPropertiesResponsePtrOutput() L3OptionBPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o L3OptionBPropertiesResponsePtrOutput) ToL3OptionBPropertiesResponsePtrOutputWithContext(ctx context.Context) L3OptionBPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o L3OptionBPropertiesResponsePtrOutput) Elem() L3OptionBPropertiesResponseOutput {
+	return o.ApplyT(func(v *L3OptionBPropertiesResponse) L3OptionBPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret L3OptionBPropertiesResponse
+		return ret
+	}).(L3OptionBPropertiesResponseOutput)
+}
+
+// RouteTargets to be applied. This is used for the backward compatibility.
+func (o L3OptionBPropertiesResponsePtrOutput) ExportRouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *L3OptionBPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportRouteTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// RouteTargets to be applied. This is used for the backward compatibility.
+func (o L3OptionBPropertiesResponsePtrOutput) ImportRouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *L3OptionBPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportRouteTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// RouteTargets to be applied.
+func (o L3OptionBPropertiesResponsePtrOutput) RouteTargets() RouteTargetInformationResponsePtrOutput {
+	return o.ApplyT(func(v *L3OptionBPropertiesResponse) *RouteTargetInformationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RouteTargets
+	}).(RouteTargetInformationResponsePtrOutput)
+}
+
+// Common properties for Layer2 Configuration.
 type Layer2Configuration struct {
+	// List of network device interfaces resource IDs.
+	Interfaces []string `pulumi:"interfaces"`
 	// MTU of the packets between PE & CE.
-	Mtu int `pulumi:"mtu"`
-	// Number of ports connected between PE/CE. Maximum value depends on FabricSKU.
-	PortCount *int `pulumi:"portCount"`
+	Mtu *int `pulumi:"mtu"`
 }
 
 // Defaults sets the appropriate defaults for Layer2Configuration
@@ -4954,8 +8189,9 @@ func (val *Layer2Configuration) Defaults() *Layer2Configuration {
 		return nil
 	}
 	tmp := *val
-	if utilities.IsZero(tmp.Mtu) {
-		tmp.Mtu = 1500
+	if tmp.Mtu == nil {
+		mtu_ := 1500
+		tmp.Mtu = &mtu_
 	}
 	return &tmp
 }
@@ -4971,12 +8207,12 @@ type Layer2ConfigurationInput interface {
 	ToLayer2ConfigurationOutputWithContext(context.Context) Layer2ConfigurationOutput
 }
 
-// layer2Configuration
+// Common properties for Layer2 Configuration.
 type Layer2ConfigurationArgs struct {
+	// List of network device interfaces resource IDs.
+	Interfaces pulumi.StringArrayInput `pulumi:"interfaces"`
 	// MTU of the packets between PE & CE.
-	Mtu pulumi.IntInput `pulumi:"mtu"`
-	// Number of ports connected between PE/CE. Maximum value depends on FabricSKU.
-	PortCount pulumi.IntPtrInput `pulumi:"portCount"`
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
 }
 
 // Defaults sets the appropriate defaults for Layer2ConfigurationArgs
@@ -4986,7 +8222,7 @@ func (val *Layer2ConfigurationArgs) Defaults() *Layer2ConfigurationArgs {
 	}
 	tmp := *val
 	if tmp.Mtu == nil {
-		tmp.Mtu = pulumi.Int(1500)
+		tmp.Mtu = pulumi.IntPtr(1500)
 	}
 	return &tmp
 }
@@ -5043,7 +8279,7 @@ func (i *layer2ConfigurationPtrType) ToLayer2ConfigurationPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(Layer2ConfigurationPtrOutput)
 }
 
-// layer2Configuration
+// Common properties for Layer2 Configuration.
 type Layer2ConfigurationOutput struct{ *pulumi.OutputState }
 
 func (Layer2ConfigurationOutput) ElementType() reflect.Type {
@@ -5068,14 +8304,14 @@ func (o Layer2ConfigurationOutput) ToLayer2ConfigurationPtrOutputWithContext(ctx
 	}).(Layer2ConfigurationPtrOutput)
 }
 
-// MTU of the packets between PE & CE.
-func (o Layer2ConfigurationOutput) Mtu() pulumi.IntOutput {
-	return o.ApplyT(func(v Layer2Configuration) int { return v.Mtu }).(pulumi.IntOutput)
+// List of network device interfaces resource IDs.
+func (o Layer2ConfigurationOutput) Interfaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Layer2Configuration) []string { return v.Interfaces }).(pulumi.StringArrayOutput)
 }
 
-// Number of ports connected between PE/CE. Maximum value depends on FabricSKU.
-func (o Layer2ConfigurationOutput) PortCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Layer2Configuration) *int { return v.PortCount }).(pulumi.IntPtrOutput)
+// MTU of the packets between PE & CE.
+func (o Layer2ConfigurationOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Layer2Configuration) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 type Layer2ConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -5102,34 +8338,32 @@ func (o Layer2ConfigurationPtrOutput) Elem() Layer2ConfigurationOutput {
 	}).(Layer2ConfigurationOutput)
 }
 
+// List of network device interfaces resource IDs.
+func (o Layer2ConfigurationPtrOutput) Interfaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Layer2Configuration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Interfaces
+	}).(pulumi.StringArrayOutput)
+}
+
 // MTU of the packets between PE & CE.
 func (o Layer2ConfigurationPtrOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Layer2Configuration) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.Mtu
+		return v.Mtu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Number of ports connected between PE/CE. Maximum value depends on FabricSKU.
-func (o Layer2ConfigurationPtrOutput) PortCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Layer2Configuration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PortCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// layer2Configuration
+// Common properties for Layer2 Configuration.
 type Layer2ConfigurationResponse struct {
 	// List of network device interfaces resource IDs.
 	Interfaces []string `pulumi:"interfaces"`
 	// MTU of the packets between PE & CE.
-	Mtu int `pulumi:"mtu"`
-	// Number of ports connected between PE/CE. Maximum value depends on FabricSKU.
-	PortCount *int `pulumi:"portCount"`
+	Mtu *int `pulumi:"mtu"`
 }
 
 // Defaults sets the appropriate defaults for Layer2ConfigurationResponse
@@ -5138,13 +8372,14 @@ func (val *Layer2ConfigurationResponse) Defaults() *Layer2ConfigurationResponse 
 		return nil
 	}
 	tmp := *val
-	if utilities.IsZero(tmp.Mtu) {
-		tmp.Mtu = 1500
+	if tmp.Mtu == nil {
+		mtu_ := 1500
+		tmp.Mtu = &mtu_
 	}
 	return &tmp
 }
 
-// layer2Configuration
+// Common properties for Layer2 Configuration.
 type Layer2ConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (Layer2ConfigurationResponseOutput) ElementType() reflect.Type {
@@ -5165,13 +8400,8 @@ func (o Layer2ConfigurationResponseOutput) Interfaces() pulumi.StringArrayOutput
 }
 
 // MTU of the packets between PE & CE.
-func (o Layer2ConfigurationResponseOutput) Mtu() pulumi.IntOutput {
-	return o.ApplyT(func(v Layer2ConfigurationResponse) int { return v.Mtu }).(pulumi.IntOutput)
-}
-
-// Number of ports connected between PE/CE. Maximum value depends on FabricSKU.
-func (o Layer2ConfigurationResponseOutput) PortCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Layer2ConfigurationResponse) *int { return v.PortCount }).(pulumi.IntPtrOutput)
+func (o Layer2ConfigurationResponseOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Layer2ConfigurationResponse) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 type Layer2ConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -5214,486 +8444,7 @@ func (o Layer2ConfigurationResponsePtrOutput) Mtu() pulumi.IntPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Mtu
-	}).(pulumi.IntPtrOutput)
-}
-
-// Number of ports connected between PE/CE. Maximum value depends on FabricSKU.
-func (o Layer2ConfigurationResponsePtrOutput) PortCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Layer2ConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PortCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// layer3Configuration
-type Layer3Configuration struct {
-	// exportRoutePolicyId
-	ExportRoutePolicyId *string `pulumi:"exportRoutePolicyId"`
-	// importRoutePolicyId
-	ImportRoutePolicyId *string `pulumi:"importRoutePolicyId"`
-	// ASN of PE devices for CE/PE connectivity.Example : 28
-	PeerASN *int `pulumi:"peerASN"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	PrimaryIpv4Prefix *string `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	PrimaryIpv6Prefix *string `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	SecondaryIpv4Prefix *string `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	SecondaryIpv6Prefix *string `pulumi:"secondaryIpv6Prefix"`
-	// VLAN for CE/PE Layer 3 connectivity.Example : 501
-	VlanId *int `pulumi:"vlanId"`
-}
-
-// Layer3ConfigurationInput is an input type that accepts Layer3ConfigurationArgs and Layer3ConfigurationOutput values.
-// You can construct a concrete instance of `Layer3ConfigurationInput` via:
-//
-//	Layer3ConfigurationArgs{...}
-type Layer3ConfigurationInput interface {
-	pulumi.Input
-
-	ToLayer3ConfigurationOutput() Layer3ConfigurationOutput
-	ToLayer3ConfigurationOutputWithContext(context.Context) Layer3ConfigurationOutput
-}
-
-// layer3Configuration
-type Layer3ConfigurationArgs struct {
-	// exportRoutePolicyId
-	ExportRoutePolicyId pulumi.StringPtrInput `pulumi:"exportRoutePolicyId"`
-	// importRoutePolicyId
-	ImportRoutePolicyId pulumi.StringPtrInput `pulumi:"importRoutePolicyId"`
-	// ASN of PE devices for CE/PE connectivity.Example : 28
-	PeerASN pulumi.IntPtrInput `pulumi:"peerASN"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	PrimaryIpv4Prefix pulumi.StringPtrInput `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	PrimaryIpv6Prefix pulumi.StringPtrInput `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	SecondaryIpv4Prefix pulumi.StringPtrInput `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	SecondaryIpv6Prefix pulumi.StringPtrInput `pulumi:"secondaryIpv6Prefix"`
-	// VLAN for CE/PE Layer 3 connectivity.Example : 501
-	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
-}
-
-func (Layer3ConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Layer3Configuration)(nil)).Elem()
-}
-
-func (i Layer3ConfigurationArgs) ToLayer3ConfigurationOutput() Layer3ConfigurationOutput {
-	return i.ToLayer3ConfigurationOutputWithContext(context.Background())
-}
-
-func (i Layer3ConfigurationArgs) ToLayer3ConfigurationOutputWithContext(ctx context.Context) Layer3ConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Layer3ConfigurationOutput)
-}
-
-func (i Layer3ConfigurationArgs) ToLayer3ConfigurationPtrOutput() Layer3ConfigurationPtrOutput {
-	return i.ToLayer3ConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i Layer3ConfigurationArgs) ToLayer3ConfigurationPtrOutputWithContext(ctx context.Context) Layer3ConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Layer3ConfigurationOutput).ToLayer3ConfigurationPtrOutputWithContext(ctx)
-}
-
-// Layer3ConfigurationPtrInput is an input type that accepts Layer3ConfigurationArgs, Layer3ConfigurationPtr and Layer3ConfigurationPtrOutput values.
-// You can construct a concrete instance of `Layer3ConfigurationPtrInput` via:
-//
-//	        Layer3ConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type Layer3ConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToLayer3ConfigurationPtrOutput() Layer3ConfigurationPtrOutput
-	ToLayer3ConfigurationPtrOutputWithContext(context.Context) Layer3ConfigurationPtrOutput
-}
-
-type layer3ConfigurationPtrType Layer3ConfigurationArgs
-
-func Layer3ConfigurationPtr(v *Layer3ConfigurationArgs) Layer3ConfigurationPtrInput {
-	return (*layer3ConfigurationPtrType)(v)
-}
-
-func (*layer3ConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Layer3Configuration)(nil)).Elem()
-}
-
-func (i *layer3ConfigurationPtrType) ToLayer3ConfigurationPtrOutput() Layer3ConfigurationPtrOutput {
-	return i.ToLayer3ConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *layer3ConfigurationPtrType) ToLayer3ConfigurationPtrOutputWithContext(ctx context.Context) Layer3ConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Layer3ConfigurationPtrOutput)
-}
-
-// layer3Configuration
-type Layer3ConfigurationOutput struct{ *pulumi.OutputState }
-
-func (Layer3ConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Layer3Configuration)(nil)).Elem()
-}
-
-func (o Layer3ConfigurationOutput) ToLayer3ConfigurationOutput() Layer3ConfigurationOutput {
-	return o
-}
-
-func (o Layer3ConfigurationOutput) ToLayer3ConfigurationOutputWithContext(ctx context.Context) Layer3ConfigurationOutput {
-	return o
-}
-
-func (o Layer3ConfigurationOutput) ToLayer3ConfigurationPtrOutput() Layer3ConfigurationPtrOutput {
-	return o.ToLayer3ConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o Layer3ConfigurationOutput) ToLayer3ConfigurationPtrOutputWithContext(ctx context.Context) Layer3ConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Layer3Configuration) *Layer3Configuration {
-		return &v
-	}).(Layer3ConfigurationPtrOutput)
-}
-
-// exportRoutePolicyId
-func (o Layer3ConfigurationOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3Configuration) *string { return v.ExportRoutePolicyId }).(pulumi.StringPtrOutput)
-}
-
-// importRoutePolicyId
-func (o Layer3ConfigurationOutput) ImportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3Configuration) *string { return v.ImportRoutePolicyId }).(pulumi.StringPtrOutput)
-}
-
-// ASN of PE devices for CE/PE connectivity.Example : 28
-func (o Layer3ConfigurationOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Layer3Configuration) *int { return v.PeerASN }).(pulumi.IntPtrOutput)
-}
-
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3Configuration) *string { return v.PrimaryIpv4Prefix }).(pulumi.StringPtrOutput)
-}
-
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3Configuration) *string { return v.PrimaryIpv6Prefix }).(pulumi.StringPtrOutput)
-}
-
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3Configuration) *string { return v.SecondaryIpv4Prefix }).(pulumi.StringPtrOutput)
-}
-
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3Configuration) *string { return v.SecondaryIpv6Prefix }).(pulumi.StringPtrOutput)
-}
-
-// VLAN for CE/PE Layer 3 connectivity.Example : 501
-func (o Layer3ConfigurationOutput) VlanId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Layer3Configuration) *int { return v.VlanId }).(pulumi.IntPtrOutput)
-}
-
-type Layer3ConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (Layer3ConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Layer3Configuration)(nil)).Elem()
-}
-
-func (o Layer3ConfigurationPtrOutput) ToLayer3ConfigurationPtrOutput() Layer3ConfigurationPtrOutput {
-	return o
-}
-
-func (o Layer3ConfigurationPtrOutput) ToLayer3ConfigurationPtrOutputWithContext(ctx context.Context) Layer3ConfigurationPtrOutput {
-	return o
-}
-
-func (o Layer3ConfigurationPtrOutput) Elem() Layer3ConfigurationOutput {
-	return o.ApplyT(func(v *Layer3Configuration) Layer3Configuration {
-		if v != nil {
-			return *v
-		}
-		var ret Layer3Configuration
-		return ret
-	}).(Layer3ConfigurationOutput)
-}
-
-// exportRoutePolicyId
-func (o Layer3ConfigurationPtrOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3Configuration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ExportRoutePolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// importRoutePolicyId
-func (o Layer3ConfigurationPtrOutput) ImportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3Configuration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ImportRoutePolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// ASN of PE devices for CE/PE connectivity.Example : 28
-func (o Layer3ConfigurationPtrOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Layer3Configuration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PeerASN
-	}).(pulumi.IntPtrOutput)
-}
-
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationPtrOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3Configuration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrimaryIpv4Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationPtrOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3Configuration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrimaryIpv6Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationPtrOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3Configuration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecondaryIpv4Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationPtrOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3Configuration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecondaryIpv6Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// VLAN for CE/PE Layer 3 connectivity.Example : 501
-func (o Layer3ConfigurationPtrOutput) VlanId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Layer3Configuration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.VlanId
-	}).(pulumi.IntPtrOutput)
-}
-
-// layer3Configuration
-type Layer3ConfigurationResponse struct {
-	// exportRoutePolicyId
-	ExportRoutePolicyId *string `pulumi:"exportRoutePolicyId"`
-	// ASN of CE devices for CE/PE connectivity.
-	FabricASN int `pulumi:"fabricASN"`
-	// importRoutePolicyId
-	ImportRoutePolicyId *string `pulumi:"importRoutePolicyId"`
-	// ASN of PE devices for CE/PE connectivity.Example : 28
-	PeerASN *int `pulumi:"peerASN"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	PrimaryIpv4Prefix *string `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	PrimaryIpv6Prefix *string `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	SecondaryIpv4Prefix *string `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-	SecondaryIpv6Prefix *string `pulumi:"secondaryIpv6Prefix"`
-	// VLAN for CE/PE Layer 3 connectivity.Example : 501
-	VlanId *int `pulumi:"vlanId"`
-}
-
-// layer3Configuration
-type Layer3ConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (Layer3ConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Layer3ConfigurationResponse)(nil)).Elem()
-}
-
-func (o Layer3ConfigurationResponseOutput) ToLayer3ConfigurationResponseOutput() Layer3ConfigurationResponseOutput {
-	return o
-}
-
-func (o Layer3ConfigurationResponseOutput) ToLayer3ConfigurationResponseOutputWithContext(ctx context.Context) Layer3ConfigurationResponseOutput {
-	return o
-}
-
-// exportRoutePolicyId
-func (o Layer3ConfigurationResponseOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3ConfigurationResponse) *string { return v.ExportRoutePolicyId }).(pulumi.StringPtrOutput)
-}
-
-// ASN of CE devices for CE/PE connectivity.
-func (o Layer3ConfigurationResponseOutput) FabricASN() pulumi.IntOutput {
-	return o.ApplyT(func(v Layer3ConfigurationResponse) int { return v.FabricASN }).(pulumi.IntOutput)
-}
-
-// importRoutePolicyId
-func (o Layer3ConfigurationResponseOutput) ImportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3ConfigurationResponse) *string { return v.ImportRoutePolicyId }).(pulumi.StringPtrOutput)
-}
-
-// ASN of PE devices for CE/PE connectivity.Example : 28
-func (o Layer3ConfigurationResponseOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Layer3ConfigurationResponse) *int { return v.PeerASN }).(pulumi.IntPtrOutput)
-}
-
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationResponseOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3ConfigurationResponse) *string { return v.PrimaryIpv4Prefix }).(pulumi.StringPtrOutput)
-}
-
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationResponseOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3ConfigurationResponse) *string { return v.PrimaryIpv6Prefix }).(pulumi.StringPtrOutput)
-}
-
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationResponseOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3ConfigurationResponse) *string { return v.SecondaryIpv4Prefix }).(pulumi.StringPtrOutput)
-}
-
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationResponseOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer3ConfigurationResponse) *string { return v.SecondaryIpv6Prefix }).(pulumi.StringPtrOutput)
-}
-
-// VLAN for CE/PE Layer 3 connectivity.Example : 501
-func (o Layer3ConfigurationResponseOutput) VlanId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Layer3ConfigurationResponse) *int { return v.VlanId }).(pulumi.IntPtrOutput)
-}
-
-type Layer3ConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (Layer3ConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Layer3ConfigurationResponse)(nil)).Elem()
-}
-
-func (o Layer3ConfigurationResponsePtrOutput) ToLayer3ConfigurationResponsePtrOutput() Layer3ConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o Layer3ConfigurationResponsePtrOutput) ToLayer3ConfigurationResponsePtrOutputWithContext(ctx context.Context) Layer3ConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o Layer3ConfigurationResponsePtrOutput) Elem() Layer3ConfigurationResponseOutput {
-	return o.ApplyT(func(v *Layer3ConfigurationResponse) Layer3ConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret Layer3ConfigurationResponse
-		return ret
-	}).(Layer3ConfigurationResponseOutput)
-}
-
-// exportRoutePolicyId
-func (o Layer3ConfigurationResponsePtrOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3ConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ExportRoutePolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// ASN of CE devices for CE/PE connectivity.
-func (o Layer3ConfigurationResponsePtrOutput) FabricASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Layer3ConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.FabricASN
-	}).(pulumi.IntPtrOutput)
-}
-
-// importRoutePolicyId
-func (o Layer3ConfigurationResponsePtrOutput) ImportRoutePolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3ConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ImportRoutePolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// ASN of PE devices for CE/PE connectivity.Example : 28
-func (o Layer3ConfigurationResponsePtrOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Layer3ConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PeerASN
-	}).(pulumi.IntPtrOutput)
-}
-
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationResponsePtrOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3ConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrimaryIpv4Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationResponsePtrOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3ConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrimaryIpv6Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationResponsePtrOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3ConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecondaryIpv4Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o Layer3ConfigurationResponsePtrOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Layer3ConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecondaryIpv6Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// VLAN for CE/PE Layer 3 connectivity.Example : 501
-func (o Layer3ConfigurationResponsePtrOutput) VlanId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Layer3ConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.VlanId
+		return v.Mtu
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -5934,15 +8685,15 @@ func (o ManagedResourceGroupConfigurationResponsePtrOutput) Name() pulumi.String
 }
 
 // Configuration to be used to setup the management network.
-type ManagementNetworkConfiguration struct {
-	// Configuration for infrastructure vpn.
+type ManagementNetworkConfigurationProperties struct {
+	// VPN Configuration properties.
 	InfrastructureVpnConfiguration VpnConfigurationProperties `pulumi:"infrastructureVpnConfiguration"`
-	// Configuration for workload vpn.
+	// VPN Configuration properties.
 	WorkloadVpnConfiguration VpnConfigurationProperties `pulumi:"workloadVpnConfiguration"`
 }
 
-// Defaults sets the appropriate defaults for ManagementNetworkConfiguration
-func (val *ManagementNetworkConfiguration) Defaults() *ManagementNetworkConfiguration {
+// Defaults sets the appropriate defaults for ManagementNetworkConfigurationProperties
+func (val *ManagementNetworkConfigurationProperties) Defaults() *ManagementNetworkConfigurationProperties {
 	if val == nil {
 		return nil
 	}
@@ -5954,27 +8705,27 @@ func (val *ManagementNetworkConfiguration) Defaults() *ManagementNetworkConfigur
 	return &tmp
 }
 
-// ManagementNetworkConfigurationInput is an input type that accepts ManagementNetworkConfigurationArgs and ManagementNetworkConfigurationOutput values.
-// You can construct a concrete instance of `ManagementNetworkConfigurationInput` via:
+// ManagementNetworkConfigurationPropertiesInput is an input type that accepts ManagementNetworkConfigurationPropertiesArgs and ManagementNetworkConfigurationPropertiesOutput values.
+// You can construct a concrete instance of `ManagementNetworkConfigurationPropertiesInput` via:
 //
-//	ManagementNetworkConfigurationArgs{...}
-type ManagementNetworkConfigurationInput interface {
+//	ManagementNetworkConfigurationPropertiesArgs{...}
+type ManagementNetworkConfigurationPropertiesInput interface {
 	pulumi.Input
 
-	ToManagementNetworkConfigurationOutput() ManagementNetworkConfigurationOutput
-	ToManagementNetworkConfigurationOutputWithContext(context.Context) ManagementNetworkConfigurationOutput
+	ToManagementNetworkConfigurationPropertiesOutput() ManagementNetworkConfigurationPropertiesOutput
+	ToManagementNetworkConfigurationPropertiesOutputWithContext(context.Context) ManagementNetworkConfigurationPropertiesOutput
 }
 
 // Configuration to be used to setup the management network.
-type ManagementNetworkConfigurationArgs struct {
-	// Configuration for infrastructure vpn.
+type ManagementNetworkConfigurationPropertiesArgs struct {
+	// VPN Configuration properties.
 	InfrastructureVpnConfiguration VpnConfigurationPropertiesInput `pulumi:"infrastructureVpnConfiguration"`
-	// Configuration for workload vpn.
+	// VPN Configuration properties.
 	WorkloadVpnConfiguration VpnConfigurationPropertiesInput `pulumi:"workloadVpnConfiguration"`
 }
 
-// Defaults sets the appropriate defaults for ManagementNetworkConfigurationArgs
-func (val *ManagementNetworkConfigurationArgs) Defaults() *ManagementNetworkConfigurationArgs {
+// Defaults sets the appropriate defaults for ManagementNetworkConfigurationPropertiesArgs
+func (val *ManagementNetworkConfigurationPropertiesArgs) Defaults() *ManagementNetworkConfigurationPropertiesArgs {
 	if val == nil {
 		return nil
 	}
@@ -5982,55 +8733,57 @@ func (val *ManagementNetworkConfigurationArgs) Defaults() *ManagementNetworkConf
 
 	return &tmp
 }
-func (ManagementNetworkConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagementNetworkConfiguration)(nil)).Elem()
+func (ManagementNetworkConfigurationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementNetworkConfigurationProperties)(nil)).Elem()
 }
 
-func (i ManagementNetworkConfigurationArgs) ToManagementNetworkConfigurationOutput() ManagementNetworkConfigurationOutput {
-	return i.ToManagementNetworkConfigurationOutputWithContext(context.Background())
+func (i ManagementNetworkConfigurationPropertiesArgs) ToManagementNetworkConfigurationPropertiesOutput() ManagementNetworkConfigurationPropertiesOutput {
+	return i.ToManagementNetworkConfigurationPropertiesOutputWithContext(context.Background())
 }
 
-func (i ManagementNetworkConfigurationArgs) ToManagementNetworkConfigurationOutputWithContext(ctx context.Context) ManagementNetworkConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagementNetworkConfigurationOutput)
+func (i ManagementNetworkConfigurationPropertiesArgs) ToManagementNetworkConfigurationPropertiesOutputWithContext(ctx context.Context) ManagementNetworkConfigurationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementNetworkConfigurationPropertiesOutput)
 }
 
 // Configuration to be used to setup the management network.
-type ManagementNetworkConfigurationOutput struct{ *pulumi.OutputState }
+type ManagementNetworkConfigurationPropertiesOutput struct{ *pulumi.OutputState }
 
-func (ManagementNetworkConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagementNetworkConfiguration)(nil)).Elem()
+func (ManagementNetworkConfigurationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementNetworkConfigurationProperties)(nil)).Elem()
 }
 
-func (o ManagementNetworkConfigurationOutput) ToManagementNetworkConfigurationOutput() ManagementNetworkConfigurationOutput {
+func (o ManagementNetworkConfigurationPropertiesOutput) ToManagementNetworkConfigurationPropertiesOutput() ManagementNetworkConfigurationPropertiesOutput {
 	return o
 }
 
-func (o ManagementNetworkConfigurationOutput) ToManagementNetworkConfigurationOutputWithContext(ctx context.Context) ManagementNetworkConfigurationOutput {
+func (o ManagementNetworkConfigurationPropertiesOutput) ToManagementNetworkConfigurationPropertiesOutputWithContext(ctx context.Context) ManagementNetworkConfigurationPropertiesOutput {
 	return o
 }
 
-// Configuration for infrastructure vpn.
-func (o ManagementNetworkConfigurationOutput) InfrastructureVpnConfiguration() VpnConfigurationPropertiesOutput {
-	return o.ApplyT(func(v ManagementNetworkConfiguration) VpnConfigurationProperties {
+// VPN Configuration properties.
+func (o ManagementNetworkConfigurationPropertiesOutput) InfrastructureVpnConfiguration() VpnConfigurationPropertiesOutput {
+	return o.ApplyT(func(v ManagementNetworkConfigurationProperties) VpnConfigurationProperties {
 		return v.InfrastructureVpnConfiguration
 	}).(VpnConfigurationPropertiesOutput)
 }
 
-// Configuration for workload vpn.
-func (o ManagementNetworkConfigurationOutput) WorkloadVpnConfiguration() VpnConfigurationPropertiesOutput {
-	return o.ApplyT(func(v ManagementNetworkConfiguration) VpnConfigurationProperties { return v.WorkloadVpnConfiguration }).(VpnConfigurationPropertiesOutput)
+// VPN Configuration properties.
+func (o ManagementNetworkConfigurationPropertiesOutput) WorkloadVpnConfiguration() VpnConfigurationPropertiesOutput {
+	return o.ApplyT(func(v ManagementNetworkConfigurationProperties) VpnConfigurationProperties {
+		return v.WorkloadVpnConfiguration
+	}).(VpnConfigurationPropertiesOutput)
 }
 
 // Configuration to be used to setup the management network.
-type ManagementNetworkConfigurationResponse struct {
-	// Configuration for infrastructure vpn.
+type ManagementNetworkConfigurationPropertiesResponse struct {
+	// VPN Configuration properties.
 	InfrastructureVpnConfiguration VpnConfigurationPropertiesResponse `pulumi:"infrastructureVpnConfiguration"`
-	// Configuration for workload vpn.
+	// VPN Configuration properties.
 	WorkloadVpnConfiguration VpnConfigurationPropertiesResponse `pulumi:"workloadVpnConfiguration"`
 }
 
-// Defaults sets the appropriate defaults for ManagementNetworkConfigurationResponse
-func (val *ManagementNetworkConfigurationResponse) Defaults() *ManagementNetworkConfigurationResponse {
+// Defaults sets the appropriate defaults for ManagementNetworkConfigurationPropertiesResponse
+func (val *ManagementNetworkConfigurationPropertiesResponse) Defaults() *ManagementNetworkConfigurationPropertiesResponse {
 	if val == nil {
 		return nil
 	}
@@ -6043,30 +8796,30 @@ func (val *ManagementNetworkConfigurationResponse) Defaults() *ManagementNetwork
 }
 
 // Configuration to be used to setup the management network.
-type ManagementNetworkConfigurationResponseOutput struct{ *pulumi.OutputState }
+type ManagementNetworkConfigurationPropertiesResponseOutput struct{ *pulumi.OutputState }
 
-func (ManagementNetworkConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagementNetworkConfigurationResponse)(nil)).Elem()
+func (ManagementNetworkConfigurationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementNetworkConfigurationPropertiesResponse)(nil)).Elem()
 }
 
-func (o ManagementNetworkConfigurationResponseOutput) ToManagementNetworkConfigurationResponseOutput() ManagementNetworkConfigurationResponseOutput {
+func (o ManagementNetworkConfigurationPropertiesResponseOutput) ToManagementNetworkConfigurationPropertiesResponseOutput() ManagementNetworkConfigurationPropertiesResponseOutput {
 	return o
 }
 
-func (o ManagementNetworkConfigurationResponseOutput) ToManagementNetworkConfigurationResponseOutputWithContext(ctx context.Context) ManagementNetworkConfigurationResponseOutput {
+func (o ManagementNetworkConfigurationPropertiesResponseOutput) ToManagementNetworkConfigurationPropertiesResponseOutputWithContext(ctx context.Context) ManagementNetworkConfigurationPropertiesResponseOutput {
 	return o
 }
 
-// Configuration for infrastructure vpn.
-func (o ManagementNetworkConfigurationResponseOutput) InfrastructureVpnConfiguration() VpnConfigurationPropertiesResponseOutput {
-	return o.ApplyT(func(v ManagementNetworkConfigurationResponse) VpnConfigurationPropertiesResponse {
+// VPN Configuration properties.
+func (o ManagementNetworkConfigurationPropertiesResponseOutput) InfrastructureVpnConfiguration() VpnConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v ManagementNetworkConfigurationPropertiesResponse) VpnConfigurationPropertiesResponse {
 		return v.InfrastructureVpnConfiguration
 	}).(VpnConfigurationPropertiesResponseOutput)
 }
 
-// Configuration for workload vpn.
-func (o ManagementNetworkConfigurationResponseOutput) WorkloadVpnConfiguration() VpnConfigurationPropertiesResponseOutput {
-	return o.ApplyT(func(v ManagementNetworkConfigurationResponse) VpnConfigurationPropertiesResponse {
+// VPN Configuration properties.
+func (o ManagementNetworkConfigurationPropertiesResponseOutput) WorkloadVpnConfiguration() VpnConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v ManagementNetworkConfigurationPropertiesResponse) VpnConfigurationPropertiesResponse {
 		return v.WorkloadVpnConfiguration
 	}).(VpnConfigurationPropertiesResponseOutput)
 }
@@ -6175,8 +8928,8 @@ func (o NeighborAddressArrayOutput) Index(i pulumi.IntInput) NeighborAddressOutp
 type NeighborAddressResponse struct {
 	// IP Address.
 	Address *string `pulumi:"address"`
-	// OperationalState of the NeighborAddress.
-	OperationalState string `pulumi:"operationalState"`
+	// Configuration state of the resource.
+	ConfigurationState string `pulumi:"configurationState"`
 }
 
 // Neighbor Address properties.
@@ -6199,9 +8952,9 @@ func (o NeighborAddressResponseOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NeighborAddressResponse) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// OperationalState of the NeighborAddress.
-func (o NeighborAddressResponseOutput) OperationalState() pulumi.StringOutput {
-	return o.ApplyT(func(v NeighborAddressResponse) string { return v.OperationalState }).(pulumi.StringOutput)
+// Configuration state of the resource.
+func (o NeighborAddressResponseOutput) ConfigurationState() pulumi.StringOutput {
+	return o.ApplyT(func(v NeighborAddressResponse) string { return v.ConfigurationState }).(pulumi.StringOutput)
 }
 
 type NeighborAddressResponseArrayOutput struct{ *pulumi.OutputState }
@@ -7204,237 +9957,202 @@ func (o NetworkTapRuleMatchConfigurationResponseArrayOutput) Index(i pulumi.IntI
 	}).(NetworkTapRuleMatchConfigurationResponseOutput)
 }
 
-// Peering optionA properties
-type OptionAProperties struct {
-	// MTU to use for option A peering.
-	Mtu *int `pulumi:"mtu"`
-	// Peer ASN number.Example : 28
-	PeerASN *int `pulumi:"peerASN"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Common properties for Layer3Configuration.
+type NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration struct {
+	// ASN of PE devices for CE/PE connectivity.Example : 28
+	PeerASN float64 `pulumi:"peerASN"`
+	// IPv4 Address Prefix.
 	PrimaryIpv4Prefix *string `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv6 Address Prefix.
 	PrimaryIpv6Prefix *string `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv4 Address Prefix.
 	SecondaryIpv4Prefix *string `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv6 Address Prefix.
 	SecondaryIpv6Prefix *string `pulumi:"secondaryIpv6Prefix"`
-	// Vlan identifier. Example : 501
-	VlanId *int `pulumi:"vlanId"`
+	// VLAN for CE/PE Layer 3 connectivity.Example : 501
+	VlanId int `pulumi:"vlanId"`
 }
 
-// Defaults sets the appropriate defaults for OptionAProperties
-func (val *OptionAProperties) Defaults() *OptionAProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mtu == nil {
-		mtu_ := 1500
-		tmp.Mtu = &mtu_
-	}
-	return &tmp
-}
-
-// OptionAPropertiesInput is an input type that accepts OptionAPropertiesArgs and OptionAPropertiesOutput values.
-// You can construct a concrete instance of `OptionAPropertiesInput` via:
+// NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationInput is an input type that accepts NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs and NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput values.
+// You can construct a concrete instance of `NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationInput` via:
 //
-//	OptionAPropertiesArgs{...}
-type OptionAPropertiesInput interface {
+//	NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs{...}
+type NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationInput interface {
 	pulumi.Input
 
-	ToOptionAPropertiesOutput() OptionAPropertiesOutput
-	ToOptionAPropertiesOutputWithContext(context.Context) OptionAPropertiesOutput
+	ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput() NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput
+	ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutputWithContext(context.Context) NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput
 }
 
-// Peering optionA properties
-type OptionAPropertiesArgs struct {
-	// MTU to use for option A peering.
-	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
-	// Peer ASN number.Example : 28
-	PeerASN pulumi.IntPtrInput `pulumi:"peerASN"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Common properties for Layer3Configuration.
+type NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs struct {
+	// ASN of PE devices for CE/PE connectivity.Example : 28
+	PeerASN pulumi.Float64Input `pulumi:"peerASN"`
+	// IPv4 Address Prefix.
 	PrimaryIpv4Prefix pulumi.StringPtrInput `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv6 Address Prefix.
 	PrimaryIpv6Prefix pulumi.StringPtrInput `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv4 Address Prefix.
 	SecondaryIpv4Prefix pulumi.StringPtrInput `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv6 Address Prefix.
 	SecondaryIpv6Prefix pulumi.StringPtrInput `pulumi:"secondaryIpv6Prefix"`
-	// Vlan identifier. Example : 501
-	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
+	// VLAN for CE/PE Layer 3 connectivity.Example : 501
+	VlanId pulumi.IntInput `pulumi:"vlanId"`
 }
 
-// Defaults sets the appropriate defaults for OptionAPropertiesArgs
-func (val *OptionAPropertiesArgs) Defaults() *OptionAPropertiesArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mtu == nil {
-		tmp.Mtu = pulumi.IntPtr(1500)
-	}
-	return &tmp
-}
-func (OptionAPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OptionAProperties)(nil)).Elem()
+func (NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration)(nil)).Elem()
 }
 
-func (i OptionAPropertiesArgs) ToOptionAPropertiesOutput() OptionAPropertiesOutput {
-	return i.ToOptionAPropertiesOutputWithContext(context.Background())
+func (i NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput() NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput {
+	return i.ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutputWithContext(context.Background())
 }
 
-func (i OptionAPropertiesArgs) ToOptionAPropertiesOutputWithContext(ctx context.Context) OptionAPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OptionAPropertiesOutput)
+func (i NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutputWithContext(ctx context.Context) NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput)
 }
 
-func (i OptionAPropertiesArgs) ToOptionAPropertiesPtrOutput() OptionAPropertiesPtrOutput {
-	return i.ToOptionAPropertiesPtrOutputWithContext(context.Background())
+func (i NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput() NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput {
+	return i.ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutputWithContext(context.Background())
 }
 
-func (i OptionAPropertiesArgs) ToOptionAPropertiesPtrOutputWithContext(ctx context.Context) OptionAPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OptionAPropertiesOutput).ToOptionAPropertiesPtrOutputWithContext(ctx)
+func (i NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutputWithContext(ctx context.Context) NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput).ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutputWithContext(ctx)
 }
 
-// OptionAPropertiesPtrInput is an input type that accepts OptionAPropertiesArgs, OptionAPropertiesPtr and OptionAPropertiesPtrOutput values.
-// You can construct a concrete instance of `OptionAPropertiesPtrInput` via:
+// NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrInput is an input type that accepts NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs, NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtr and NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput values.
+// You can construct a concrete instance of `NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrInput` via:
 //
-//	        OptionAPropertiesArgs{...}
+//	        NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs{...}
 //
 //	or:
 //
 //	        nil
-type OptionAPropertiesPtrInput interface {
+type NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrInput interface {
 	pulumi.Input
 
-	ToOptionAPropertiesPtrOutput() OptionAPropertiesPtrOutput
-	ToOptionAPropertiesPtrOutputWithContext(context.Context) OptionAPropertiesPtrOutput
+	ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput() NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput
+	ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutputWithContext(context.Context) NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput
 }
 
-type optionAPropertiesPtrType OptionAPropertiesArgs
+type networkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrType NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs
 
-func OptionAPropertiesPtr(v *OptionAPropertiesArgs) OptionAPropertiesPtrInput {
-	return (*optionAPropertiesPtrType)(v)
+func NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtr(v *NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs) NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrInput {
+	return (*networkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrType)(v)
 }
 
-func (*optionAPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OptionAProperties)(nil)).Elem()
+func (*networkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration)(nil)).Elem()
 }
 
-func (i *optionAPropertiesPtrType) ToOptionAPropertiesPtrOutput() OptionAPropertiesPtrOutput {
-	return i.ToOptionAPropertiesPtrOutputWithContext(context.Background())
+func (i *networkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrType) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput() NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput {
+	return i.ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutputWithContext(context.Background())
 }
 
-func (i *optionAPropertiesPtrType) ToOptionAPropertiesPtrOutputWithContext(ctx context.Context) OptionAPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OptionAPropertiesPtrOutput)
+func (i *networkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrType) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutputWithContext(ctx context.Context) NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput)
 }
 
-// Peering optionA properties
-type OptionAPropertiesOutput struct{ *pulumi.OutputState }
+// Common properties for Layer3Configuration.
+type NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput struct{ *pulumi.OutputState }
 
-func (OptionAPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OptionAProperties)(nil)).Elem()
+func (NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration)(nil)).Elem()
 }
 
-func (o OptionAPropertiesOutput) ToOptionAPropertiesOutput() OptionAPropertiesOutput {
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput() NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput {
 	return o
 }
 
-func (o OptionAPropertiesOutput) ToOptionAPropertiesOutputWithContext(ctx context.Context) OptionAPropertiesOutput {
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutputWithContext(ctx context.Context) NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput {
 	return o
 }
 
-func (o OptionAPropertiesOutput) ToOptionAPropertiesPtrOutput() OptionAPropertiesPtrOutput {
-	return o.ToOptionAPropertiesPtrOutputWithContext(context.Background())
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput() NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput {
+	return o.ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutputWithContext(context.Background())
 }
 
-func (o OptionAPropertiesOutput) ToOptionAPropertiesPtrOutputWithContext(ctx context.Context) OptionAPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OptionAProperties) *OptionAProperties {
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutputWithContext(ctx context.Context) NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) *NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration {
 		return &v
-	}).(OptionAPropertiesPtrOutput)
+	}).(NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput)
 }
 
-// MTU to use for option A peering.
-func (o OptionAPropertiesOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OptionAProperties) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+// ASN of PE devices for CE/PE connectivity.Example : 28
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput) PeerASN() pulumi.Float64Output {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) float64 { return v.PeerASN }).(pulumi.Float64Output)
 }
 
-// Peer ASN number.Example : 28
-func (o OptionAPropertiesOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OptionAProperties) *int { return v.PeerASN }).(pulumi.IntPtrOutput)
+// IPv4 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) *string {
+		return v.PrimaryIpv4Prefix
+	}).(pulumi.StringPtrOutput)
 }
 
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OptionAProperties) *string { return v.PrimaryIpv4Prefix }).(pulumi.StringPtrOutput)
+// IPv6 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) *string {
+		return v.PrimaryIpv6Prefix
+	}).(pulumi.StringPtrOutput)
 }
 
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OptionAProperties) *string { return v.PrimaryIpv6Prefix }).(pulumi.StringPtrOutput)
+// Secondary IPv4 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) *string {
+		return v.SecondaryIpv4Prefix
+	}).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OptionAProperties) *string { return v.SecondaryIpv4Prefix }).(pulumi.StringPtrOutput)
+// Secondary IPv6 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) *string {
+		return v.SecondaryIpv6Prefix
+	}).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OptionAProperties) *string { return v.SecondaryIpv6Prefix }).(pulumi.StringPtrOutput)
+// VLAN for CE/PE Layer 3 connectivity.Example : 501
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput) VlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) int { return v.VlanId }).(pulumi.IntOutput)
 }
 
-// Vlan identifier. Example : 501
-func (o OptionAPropertiesOutput) VlanId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OptionAProperties) *int { return v.VlanId }).(pulumi.IntPtrOutput)
+type NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration)(nil)).Elem()
 }
 
-type OptionAPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (OptionAPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OptionAProperties)(nil)).Elem()
-}
-
-func (o OptionAPropertiesPtrOutput) ToOptionAPropertiesPtrOutput() OptionAPropertiesPtrOutput {
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput() NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput {
 	return o
 }
 
-func (o OptionAPropertiesPtrOutput) ToOptionAPropertiesPtrOutputWithContext(ctx context.Context) OptionAPropertiesPtrOutput {
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput) ToNetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutputWithContext(ctx context.Context) NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput {
 	return o
 }
 
-func (o OptionAPropertiesPtrOutput) Elem() OptionAPropertiesOutput {
-	return o.ApplyT(func(v *OptionAProperties) OptionAProperties {
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput) Elem() NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration {
 		if v != nil {
 			return *v
 		}
-		var ret OptionAProperties
+		var ret NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration
 		return ret
-	}).(OptionAPropertiesOutput)
+	}).(NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput)
 }
 
-// MTU to use for option A peering.
-func (o OptionAPropertiesPtrOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OptionAProperties) *int {
+// ASN of PE devices for CE/PE connectivity.Example : 28
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput) PeerASN() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) *float64 {
 		if v == nil {
 			return nil
 		}
-		return v.Mtu
-	}).(pulumi.IntPtrOutput)
+		return &v.PeerASN
+	}).(pulumi.Float64PtrOutput)
 }
 
-// Peer ASN number.Example : 28
-func (o OptionAPropertiesPtrOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OptionAProperties) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PeerASN
-	}).(pulumi.IntPtrOutput)
-}
-
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesPtrOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OptionAProperties) *string {
+// IPv4 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) *string {
 		if v == nil {
 			return nil
 		}
@@ -7442,9 +10160,9 @@ func (o OptionAPropertiesPtrOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesPtrOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OptionAProperties) *string {
+// IPv6 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) *string {
 		if v == nil {
 			return nil
 		}
@@ -7452,9 +10170,9 @@ func (o OptionAPropertiesPtrOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesPtrOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OptionAProperties) *string {
+// Secondary IPv4 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) *string {
 		if v == nil {
 			return nil
 		}
@@ -7462,9 +10180,9 @@ func (o OptionAPropertiesPtrOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesPtrOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OptionAProperties) *string {
+// Secondary IPv6 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) *string {
 		if v == nil {
 			return nil
 		}
@@ -7472,442 +10190,491 @@ func (o OptionAPropertiesPtrOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Vlan identifier. Example : 501
-func (o OptionAPropertiesPtrOutput) VlanId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OptionAProperties) *int {
+// VLAN for CE/PE Layer 3 connectivity.Example : 501
+func (o NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration) *int {
 		if v == nil {
 			return nil
 		}
-		return v.VlanId
+		return &v.VlanId
 	}).(pulumi.IntPtrOutput)
 }
 
-// Peering optionA properties
-type OptionAPropertiesResponse struct {
-	// BFD Configuration properties.
-	BfdConfiguration *FabricBfdConfigurationResponse `pulumi:"bfdConfiguration"`
-	// MTU to use for option A peering.
-	Mtu *int `pulumi:"mtu"`
-	// Peer ASN number.Example : 28
-	PeerASN *int `pulumi:"peerASN"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Common properties for Layer3Configuration.
+type NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration struct {
+	// ASN of CE devices for CE/PE connectivity.
+	FabricASN float64 `pulumi:"fabricASN"`
+	// ASN of PE devices for CE/PE connectivity.Example : 28
+	PeerASN float64 `pulumi:"peerASN"`
+	// IPv4 Address Prefix.
 	PrimaryIpv4Prefix *string `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv6 Address Prefix.
 	PrimaryIpv6Prefix *string `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv4 Address Prefix.
 	SecondaryIpv4Prefix *string `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv6 Address Prefix.
 	SecondaryIpv6Prefix *string `pulumi:"secondaryIpv6Prefix"`
-	// Vlan identifier. Example : 501
-	VlanId *int `pulumi:"vlanId"`
+	// VLAN for CE/PE Layer 3 connectivity.Example : 501
+	VlanId int `pulumi:"vlanId"`
 }
 
-// Defaults sets the appropriate defaults for OptionAPropertiesResponse
-func (val *OptionAPropertiesResponse) Defaults() *OptionAPropertiesResponse {
+// Common properties for Layer3Configuration.
+type NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration)(nil)).Elem()
+}
+
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput) ToNetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput() NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput {
+	return o
+}
+
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput) ToNetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutputWithContext(ctx context.Context) NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput {
+	return o
+}
+
+// ASN of CE devices for CE/PE connectivity.
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput) FabricASN() pulumi.Float64Output {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) float64 {
+		return v.FabricASN
+	}).(pulumi.Float64Output)
+}
+
+// ASN of PE devices for CE/PE connectivity.Example : 28
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput) PeerASN() pulumi.Float64Output {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) float64 {
+		return v.PeerASN
+	}).(pulumi.Float64Output)
+}
+
+// IPv4 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) *string {
+		return v.PrimaryIpv4Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPv6 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) *string {
+		return v.PrimaryIpv6Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv4 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) *string {
+		return v.SecondaryIpv4Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv6 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) *string {
+		return v.SecondaryIpv6Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// VLAN for CE/PE Layer 3 connectivity.Example : 501
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput) VlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) int { return v.VlanId }).(pulumi.IntOutput)
+}
+
+type NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration)(nil)).Elem()
+}
+
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput) ToNetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput() NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput {
+	return o
+}
+
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput) ToNetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutputWithContext(ctx context.Context) NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput {
+	return o
+}
+
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput) Elem() NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration
+		return ret
+	}).(NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput)
+}
+
+// ASN of CE devices for CE/PE connectivity.
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput) FabricASN() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.FabricASN
+	}).(pulumi.Float64PtrOutput)
+}
+
+// ASN of PE devices for CE/PE connectivity.Example : 28
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput) PeerASN() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.PeerASN
+	}).(pulumi.Float64PtrOutput)
+}
+
+// IPv4 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryIpv4Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPv6 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryIpv6Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv4 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryIpv4Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv6 Address Prefix.
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryIpv6Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// VLAN for CE/PE Layer 3 connectivity.Example : 501
+func (o NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VlanId
+	}).(pulumi.IntPtrOutput)
+}
+
+// NPB Static Route Configuration properties.
+type NpbStaticRouteConfiguration struct {
+	// BFD Configuration properties.
+	BfdConfiguration *BfdConfiguration `pulumi:"bfdConfiguration"`
+	// List of IPv4 Routes.
+	Ipv4Routes []StaticRouteProperties `pulumi:"ipv4Routes"`
+	// List of IPv6 Routes.
+	Ipv6Routes []StaticRouteProperties `pulumi:"ipv6Routes"`
+}
+
+// Defaults sets the appropriate defaults for NpbStaticRouteConfiguration
+func (val *NpbStaticRouteConfiguration) Defaults() *NpbStaticRouteConfiguration {
 	if val == nil {
 		return nil
 	}
 	tmp := *val
-	if tmp.Mtu == nil {
-		mtu_ := 1500
-		tmp.Mtu = &mtu_
-	}
+	tmp.BfdConfiguration = tmp.BfdConfiguration.Defaults()
+
 	return &tmp
 }
 
-// Peering optionA properties
-type OptionAPropertiesResponseOutput struct{ *pulumi.OutputState }
+// NpbStaticRouteConfigurationInput is an input type that accepts NpbStaticRouteConfigurationArgs and NpbStaticRouteConfigurationOutput values.
+// You can construct a concrete instance of `NpbStaticRouteConfigurationInput` via:
+//
+//	NpbStaticRouteConfigurationArgs{...}
+type NpbStaticRouteConfigurationInput interface {
+	pulumi.Input
 
-func (OptionAPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OptionAPropertiesResponse)(nil)).Elem()
+	ToNpbStaticRouteConfigurationOutput() NpbStaticRouteConfigurationOutput
+	ToNpbStaticRouteConfigurationOutputWithContext(context.Context) NpbStaticRouteConfigurationOutput
 }
 
-func (o OptionAPropertiesResponseOutput) ToOptionAPropertiesResponseOutput() OptionAPropertiesResponseOutput {
+// NPB Static Route Configuration properties.
+type NpbStaticRouteConfigurationArgs struct {
+	// BFD Configuration properties.
+	BfdConfiguration BfdConfigurationPtrInput `pulumi:"bfdConfiguration"`
+	// List of IPv4 Routes.
+	Ipv4Routes StaticRoutePropertiesArrayInput `pulumi:"ipv4Routes"`
+	// List of IPv6 Routes.
+	Ipv6Routes StaticRoutePropertiesArrayInput `pulumi:"ipv6Routes"`
+}
+
+// Defaults sets the appropriate defaults for NpbStaticRouteConfigurationArgs
+func (val *NpbStaticRouteConfigurationArgs) Defaults() *NpbStaticRouteConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (NpbStaticRouteConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NpbStaticRouteConfiguration)(nil)).Elem()
+}
+
+func (i NpbStaticRouteConfigurationArgs) ToNpbStaticRouteConfigurationOutput() NpbStaticRouteConfigurationOutput {
+	return i.ToNpbStaticRouteConfigurationOutputWithContext(context.Background())
+}
+
+func (i NpbStaticRouteConfigurationArgs) ToNpbStaticRouteConfigurationOutputWithContext(ctx context.Context) NpbStaticRouteConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NpbStaticRouteConfigurationOutput)
+}
+
+func (i NpbStaticRouteConfigurationArgs) ToNpbStaticRouteConfigurationPtrOutput() NpbStaticRouteConfigurationPtrOutput {
+	return i.ToNpbStaticRouteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i NpbStaticRouteConfigurationArgs) ToNpbStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) NpbStaticRouteConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NpbStaticRouteConfigurationOutput).ToNpbStaticRouteConfigurationPtrOutputWithContext(ctx)
+}
+
+// NpbStaticRouteConfigurationPtrInput is an input type that accepts NpbStaticRouteConfigurationArgs, NpbStaticRouteConfigurationPtr and NpbStaticRouteConfigurationPtrOutput values.
+// You can construct a concrete instance of `NpbStaticRouteConfigurationPtrInput` via:
+//
+//	        NpbStaticRouteConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type NpbStaticRouteConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToNpbStaticRouteConfigurationPtrOutput() NpbStaticRouteConfigurationPtrOutput
+	ToNpbStaticRouteConfigurationPtrOutputWithContext(context.Context) NpbStaticRouteConfigurationPtrOutput
+}
+
+type npbStaticRouteConfigurationPtrType NpbStaticRouteConfigurationArgs
+
+func NpbStaticRouteConfigurationPtr(v *NpbStaticRouteConfigurationArgs) NpbStaticRouteConfigurationPtrInput {
+	return (*npbStaticRouteConfigurationPtrType)(v)
+}
+
+func (*npbStaticRouteConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NpbStaticRouteConfiguration)(nil)).Elem()
+}
+
+func (i *npbStaticRouteConfigurationPtrType) ToNpbStaticRouteConfigurationPtrOutput() NpbStaticRouteConfigurationPtrOutput {
+	return i.ToNpbStaticRouteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *npbStaticRouteConfigurationPtrType) ToNpbStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) NpbStaticRouteConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NpbStaticRouteConfigurationPtrOutput)
+}
+
+// NPB Static Route Configuration properties.
+type NpbStaticRouteConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NpbStaticRouteConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NpbStaticRouteConfiguration)(nil)).Elem()
+}
+
+func (o NpbStaticRouteConfigurationOutput) ToNpbStaticRouteConfigurationOutput() NpbStaticRouteConfigurationOutput {
 	return o
 }
 
-func (o OptionAPropertiesResponseOutput) ToOptionAPropertiesResponseOutputWithContext(ctx context.Context) OptionAPropertiesResponseOutput {
+func (o NpbStaticRouteConfigurationOutput) ToNpbStaticRouteConfigurationOutputWithContext(ctx context.Context) NpbStaticRouteConfigurationOutput {
 	return o
+}
+
+func (o NpbStaticRouteConfigurationOutput) ToNpbStaticRouteConfigurationPtrOutput() NpbStaticRouteConfigurationPtrOutput {
+	return o.ToNpbStaticRouteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o NpbStaticRouteConfigurationOutput) ToNpbStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) NpbStaticRouteConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NpbStaticRouteConfiguration) *NpbStaticRouteConfiguration {
+		return &v
+	}).(NpbStaticRouteConfigurationPtrOutput)
 }
 
 // BFD Configuration properties.
-func (o OptionAPropertiesResponseOutput) BfdConfiguration() FabricBfdConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v OptionAPropertiesResponse) *FabricBfdConfigurationResponse { return v.BfdConfiguration }).(FabricBfdConfigurationResponsePtrOutput)
+func (o NpbStaticRouteConfigurationOutput) BfdConfiguration() BfdConfigurationPtrOutput {
+	return o.ApplyT(func(v NpbStaticRouteConfiguration) *BfdConfiguration { return v.BfdConfiguration }).(BfdConfigurationPtrOutput)
 }
 
-// MTU to use for option A peering.
-func (o OptionAPropertiesResponseOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OptionAPropertiesResponse) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+// List of IPv4 Routes.
+func (o NpbStaticRouteConfigurationOutput) Ipv4Routes() StaticRoutePropertiesArrayOutput {
+	return o.ApplyT(func(v NpbStaticRouteConfiguration) []StaticRouteProperties { return v.Ipv4Routes }).(StaticRoutePropertiesArrayOutput)
 }
 
-// Peer ASN number.Example : 28
-func (o OptionAPropertiesResponseOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OptionAPropertiesResponse) *int { return v.PeerASN }).(pulumi.IntPtrOutput)
+// List of IPv6 Routes.
+func (o NpbStaticRouteConfigurationOutput) Ipv6Routes() StaticRoutePropertiesArrayOutput {
+	return o.ApplyT(func(v NpbStaticRouteConfiguration) []StaticRouteProperties { return v.Ipv6Routes }).(StaticRoutePropertiesArrayOutput)
 }
 
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesResponseOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OptionAPropertiesResponse) *string { return v.PrimaryIpv4Prefix }).(pulumi.StringPtrOutput)
+type NpbStaticRouteConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (NpbStaticRouteConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NpbStaticRouteConfiguration)(nil)).Elem()
 }
 
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesResponseOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OptionAPropertiesResponse) *string { return v.PrimaryIpv6Prefix }).(pulumi.StringPtrOutput)
-}
-
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesResponseOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OptionAPropertiesResponse) *string { return v.SecondaryIpv4Prefix }).(pulumi.StringPtrOutput)
-}
-
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesResponseOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OptionAPropertiesResponse) *string { return v.SecondaryIpv6Prefix }).(pulumi.StringPtrOutput)
-}
-
-// Vlan identifier. Example : 501
-func (o OptionAPropertiesResponseOutput) VlanId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OptionAPropertiesResponse) *int { return v.VlanId }).(pulumi.IntPtrOutput)
-}
-
-type OptionAPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OptionAPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OptionAPropertiesResponse)(nil)).Elem()
-}
-
-func (o OptionAPropertiesResponsePtrOutput) ToOptionAPropertiesResponsePtrOutput() OptionAPropertiesResponsePtrOutput {
+func (o NpbStaticRouteConfigurationPtrOutput) ToNpbStaticRouteConfigurationPtrOutput() NpbStaticRouteConfigurationPtrOutput {
 	return o
 }
 
-func (o OptionAPropertiesResponsePtrOutput) ToOptionAPropertiesResponsePtrOutputWithContext(ctx context.Context) OptionAPropertiesResponsePtrOutput {
+func (o NpbStaticRouteConfigurationPtrOutput) ToNpbStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) NpbStaticRouteConfigurationPtrOutput {
 	return o
 }
 
-func (o OptionAPropertiesResponsePtrOutput) Elem() OptionAPropertiesResponseOutput {
-	return o.ApplyT(func(v *OptionAPropertiesResponse) OptionAPropertiesResponse {
+func (o NpbStaticRouteConfigurationPtrOutput) Elem() NpbStaticRouteConfigurationOutput {
+	return o.ApplyT(func(v *NpbStaticRouteConfiguration) NpbStaticRouteConfiguration {
 		if v != nil {
 			return *v
 		}
-		var ret OptionAPropertiesResponse
+		var ret NpbStaticRouteConfiguration
 		return ret
-	}).(OptionAPropertiesResponseOutput)
+	}).(NpbStaticRouteConfigurationOutput)
 }
 
 // BFD Configuration properties.
-func (o OptionAPropertiesResponsePtrOutput) BfdConfiguration() FabricBfdConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *OptionAPropertiesResponse) *FabricBfdConfigurationResponse {
+func (o NpbStaticRouteConfigurationPtrOutput) BfdConfiguration() BfdConfigurationPtrOutput {
+	return o.ApplyT(func(v *NpbStaticRouteConfiguration) *BfdConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.BfdConfiguration
-	}).(FabricBfdConfigurationResponsePtrOutput)
+	}).(BfdConfigurationPtrOutput)
 }
 
-// MTU to use for option A peering.
-func (o OptionAPropertiesResponsePtrOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OptionAPropertiesResponse) *int {
+// List of IPv4 Routes.
+func (o NpbStaticRouteConfigurationPtrOutput) Ipv4Routes() StaticRoutePropertiesArrayOutput {
+	return o.ApplyT(func(v *NpbStaticRouteConfiguration) []StaticRouteProperties {
 		if v == nil {
 			return nil
 		}
-		return v.Mtu
-	}).(pulumi.IntPtrOutput)
+		return v.Ipv4Routes
+	}).(StaticRoutePropertiesArrayOutput)
 }
 
-// Peer ASN number.Example : 28
-func (o OptionAPropertiesResponsePtrOutput) PeerASN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OptionAPropertiesResponse) *int {
+// List of IPv6 Routes.
+func (o NpbStaticRouteConfigurationPtrOutput) Ipv6Routes() StaticRoutePropertiesArrayOutput {
+	return o.ApplyT(func(v *NpbStaticRouteConfiguration) []StaticRouteProperties {
 		if v == nil {
 			return nil
 		}
-		return v.PeerASN
-	}).(pulumi.IntPtrOutput)
+		return v.Ipv6Routes
+	}).(StaticRoutePropertiesArrayOutput)
 }
 
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesResponsePtrOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OptionAPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrimaryIpv4Prefix
-	}).(pulumi.StringPtrOutput)
+// NPB Static Route Configuration properties.
+type NpbStaticRouteConfigurationResponse struct {
+	// BFD Configuration properties.
+	BfdConfiguration *BfdConfigurationResponse `pulumi:"bfdConfiguration"`
+	// List of IPv4 Routes.
+	Ipv4Routes []StaticRoutePropertiesResponse `pulumi:"ipv4Routes"`
+	// List of IPv6 Routes.
+	Ipv6Routes []StaticRoutePropertiesResponse `pulumi:"ipv6Routes"`
 }
 
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesResponsePtrOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OptionAPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrimaryIpv6Prefix
-	}).(pulumi.StringPtrOutput)
+// Defaults sets the appropriate defaults for NpbStaticRouteConfigurationResponse
+func (val *NpbStaticRouteConfigurationResponse) Defaults() *NpbStaticRouteConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.BfdConfiguration = tmp.BfdConfiguration.Defaults()
+
+	return &tmp
 }
 
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesResponsePtrOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OptionAPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecondaryIpv4Prefix
-	}).(pulumi.StringPtrOutput)
+// NPB Static Route Configuration properties.
+type NpbStaticRouteConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (NpbStaticRouteConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NpbStaticRouteConfigurationResponse)(nil)).Elem()
 }
 
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-func (o OptionAPropertiesResponsePtrOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OptionAPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecondaryIpv6Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Vlan identifier. Example : 501
-func (o OptionAPropertiesResponsePtrOutput) VlanId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OptionAPropertiesResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.VlanId
-	}).(pulumi.IntPtrOutput)
-}
-
-// Option B configuration.
-type OptionBProperties struct {
-	// Route Targets to be applied for outgoing routes from CE.
-	ExportRouteTargets []string `pulumi:"exportRouteTargets"`
-	// Route Targets to be applied for incoming routes into CE.
-	ImportRouteTargets []string `pulumi:"importRouteTargets"`
-}
-
-// OptionBPropertiesInput is an input type that accepts OptionBPropertiesArgs and OptionBPropertiesOutput values.
-// You can construct a concrete instance of `OptionBPropertiesInput` via:
-//
-//	OptionBPropertiesArgs{...}
-type OptionBPropertiesInput interface {
-	pulumi.Input
-
-	ToOptionBPropertiesOutput() OptionBPropertiesOutput
-	ToOptionBPropertiesOutputWithContext(context.Context) OptionBPropertiesOutput
-}
-
-// Option B configuration.
-type OptionBPropertiesArgs struct {
-	// Route Targets to be applied for outgoing routes from CE.
-	ExportRouteTargets pulumi.StringArrayInput `pulumi:"exportRouteTargets"`
-	// Route Targets to be applied for incoming routes into CE.
-	ImportRouteTargets pulumi.StringArrayInput `pulumi:"importRouteTargets"`
-}
-
-func (OptionBPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OptionBProperties)(nil)).Elem()
-}
-
-func (i OptionBPropertiesArgs) ToOptionBPropertiesOutput() OptionBPropertiesOutput {
-	return i.ToOptionBPropertiesOutputWithContext(context.Background())
-}
-
-func (i OptionBPropertiesArgs) ToOptionBPropertiesOutputWithContext(ctx context.Context) OptionBPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OptionBPropertiesOutput)
-}
-
-func (i OptionBPropertiesArgs) ToOptionBPropertiesPtrOutput() OptionBPropertiesPtrOutput {
-	return i.ToOptionBPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i OptionBPropertiesArgs) ToOptionBPropertiesPtrOutputWithContext(ctx context.Context) OptionBPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OptionBPropertiesOutput).ToOptionBPropertiesPtrOutputWithContext(ctx)
-}
-
-// OptionBPropertiesPtrInput is an input type that accepts OptionBPropertiesArgs, OptionBPropertiesPtr and OptionBPropertiesPtrOutput values.
-// You can construct a concrete instance of `OptionBPropertiesPtrInput` via:
-//
-//	        OptionBPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type OptionBPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToOptionBPropertiesPtrOutput() OptionBPropertiesPtrOutput
-	ToOptionBPropertiesPtrOutputWithContext(context.Context) OptionBPropertiesPtrOutput
-}
-
-type optionBPropertiesPtrType OptionBPropertiesArgs
-
-func OptionBPropertiesPtr(v *OptionBPropertiesArgs) OptionBPropertiesPtrInput {
-	return (*optionBPropertiesPtrType)(v)
-}
-
-func (*optionBPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OptionBProperties)(nil)).Elem()
-}
-
-func (i *optionBPropertiesPtrType) ToOptionBPropertiesPtrOutput() OptionBPropertiesPtrOutput {
-	return i.ToOptionBPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *optionBPropertiesPtrType) ToOptionBPropertiesPtrOutputWithContext(ctx context.Context) OptionBPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OptionBPropertiesPtrOutput)
-}
-
-// Option B configuration.
-type OptionBPropertiesOutput struct{ *pulumi.OutputState }
-
-func (OptionBPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OptionBProperties)(nil)).Elem()
-}
-
-func (o OptionBPropertiesOutput) ToOptionBPropertiesOutput() OptionBPropertiesOutput {
+func (o NpbStaticRouteConfigurationResponseOutput) ToNpbStaticRouteConfigurationResponseOutput() NpbStaticRouteConfigurationResponseOutput {
 	return o
 }
 
-func (o OptionBPropertiesOutput) ToOptionBPropertiesOutputWithContext(ctx context.Context) OptionBPropertiesOutput {
+func (o NpbStaticRouteConfigurationResponseOutput) ToNpbStaticRouteConfigurationResponseOutputWithContext(ctx context.Context) NpbStaticRouteConfigurationResponseOutput {
 	return o
 }
 
-func (o OptionBPropertiesOutput) ToOptionBPropertiesPtrOutput() OptionBPropertiesPtrOutput {
-	return o.ToOptionBPropertiesPtrOutputWithContext(context.Background())
+// BFD Configuration properties.
+func (o NpbStaticRouteConfigurationResponseOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v NpbStaticRouteConfigurationResponse) *BfdConfigurationResponse { return v.BfdConfiguration }).(BfdConfigurationResponsePtrOutput)
 }
 
-func (o OptionBPropertiesOutput) ToOptionBPropertiesPtrOutputWithContext(ctx context.Context) OptionBPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OptionBProperties) *OptionBProperties {
-		return &v
-	}).(OptionBPropertiesPtrOutput)
+// List of IPv4 Routes.
+func (o NpbStaticRouteConfigurationResponseOutput) Ipv4Routes() StaticRoutePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v NpbStaticRouteConfigurationResponse) []StaticRoutePropertiesResponse { return v.Ipv4Routes }).(StaticRoutePropertiesResponseArrayOutput)
 }
 
-// Route Targets to be applied for outgoing routes from CE.
-func (o OptionBPropertiesOutput) ExportRouteTargets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v OptionBProperties) []string { return v.ExportRouteTargets }).(pulumi.StringArrayOutput)
+// List of IPv6 Routes.
+func (o NpbStaticRouteConfigurationResponseOutput) Ipv6Routes() StaticRoutePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v NpbStaticRouteConfigurationResponse) []StaticRoutePropertiesResponse { return v.Ipv6Routes }).(StaticRoutePropertiesResponseArrayOutput)
 }
 
-// Route Targets to be applied for incoming routes into CE.
-func (o OptionBPropertiesOutput) ImportRouteTargets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v OptionBProperties) []string { return v.ImportRouteTargets }).(pulumi.StringArrayOutput)
+type NpbStaticRouteConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NpbStaticRouteConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NpbStaticRouteConfigurationResponse)(nil)).Elem()
 }
 
-type OptionBPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (OptionBPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OptionBProperties)(nil)).Elem()
-}
-
-func (o OptionBPropertiesPtrOutput) ToOptionBPropertiesPtrOutput() OptionBPropertiesPtrOutput {
+func (o NpbStaticRouteConfigurationResponsePtrOutput) ToNpbStaticRouteConfigurationResponsePtrOutput() NpbStaticRouteConfigurationResponsePtrOutput {
 	return o
 }
 
-func (o OptionBPropertiesPtrOutput) ToOptionBPropertiesPtrOutputWithContext(ctx context.Context) OptionBPropertiesPtrOutput {
+func (o NpbStaticRouteConfigurationResponsePtrOutput) ToNpbStaticRouteConfigurationResponsePtrOutputWithContext(ctx context.Context) NpbStaticRouteConfigurationResponsePtrOutput {
 	return o
 }
 
-func (o OptionBPropertiesPtrOutput) Elem() OptionBPropertiesOutput {
-	return o.ApplyT(func(v *OptionBProperties) OptionBProperties {
+func (o NpbStaticRouteConfigurationResponsePtrOutput) Elem() NpbStaticRouteConfigurationResponseOutput {
+	return o.ApplyT(func(v *NpbStaticRouteConfigurationResponse) NpbStaticRouteConfigurationResponse {
 		if v != nil {
 			return *v
 		}
-		var ret OptionBProperties
+		var ret NpbStaticRouteConfigurationResponse
 		return ret
-	}).(OptionBPropertiesOutput)
+	}).(NpbStaticRouteConfigurationResponseOutput)
 }
 
-// Route Targets to be applied for outgoing routes from CE.
-func (o OptionBPropertiesPtrOutput) ExportRouteTargets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *OptionBProperties) []string {
+// BFD Configuration properties.
+func (o NpbStaticRouteConfigurationResponsePtrOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *NpbStaticRouteConfigurationResponse) *BfdConfigurationResponse {
 		if v == nil {
 			return nil
 		}
-		return v.ExportRouteTargets
-	}).(pulumi.StringArrayOutput)
+		return v.BfdConfiguration
+	}).(BfdConfigurationResponsePtrOutput)
 }
 
-// Route Targets to be applied for incoming routes into CE.
-func (o OptionBPropertiesPtrOutput) ImportRouteTargets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *OptionBProperties) []string {
+// List of IPv4 Routes.
+func (o NpbStaticRouteConfigurationResponsePtrOutput) Ipv4Routes() StaticRoutePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *NpbStaticRouteConfigurationResponse) []StaticRoutePropertiesResponse {
 		if v == nil {
 			return nil
 		}
-		return v.ImportRouteTargets
-	}).(pulumi.StringArrayOutput)
+		return v.Ipv4Routes
+	}).(StaticRoutePropertiesResponseArrayOutput)
 }
 
-// Option B configuration.
-type OptionBPropertiesResponse struct {
-	// Route Targets to be applied for outgoing routes from CE.
-	ExportRouteTargets []string `pulumi:"exportRouteTargets"`
-	// Route Targets to be applied for incoming routes into CE.
-	ImportRouteTargets []string `pulumi:"importRouteTargets"`
-}
-
-// Option B configuration.
-type OptionBPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (OptionBPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OptionBPropertiesResponse)(nil)).Elem()
-}
-
-func (o OptionBPropertiesResponseOutput) ToOptionBPropertiesResponseOutput() OptionBPropertiesResponseOutput {
-	return o
-}
-
-func (o OptionBPropertiesResponseOutput) ToOptionBPropertiesResponseOutputWithContext(ctx context.Context) OptionBPropertiesResponseOutput {
-	return o
-}
-
-// Route Targets to be applied for outgoing routes from CE.
-func (o OptionBPropertiesResponseOutput) ExportRouteTargets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v OptionBPropertiesResponse) []string { return v.ExportRouteTargets }).(pulumi.StringArrayOutput)
-}
-
-// Route Targets to be applied for incoming routes into CE.
-func (o OptionBPropertiesResponseOutput) ImportRouteTargets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v OptionBPropertiesResponse) []string { return v.ImportRouteTargets }).(pulumi.StringArrayOutput)
-}
-
-type OptionBPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OptionBPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OptionBPropertiesResponse)(nil)).Elem()
-}
-
-func (o OptionBPropertiesResponsePtrOutput) ToOptionBPropertiesResponsePtrOutput() OptionBPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o OptionBPropertiesResponsePtrOutput) ToOptionBPropertiesResponsePtrOutputWithContext(ctx context.Context) OptionBPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o OptionBPropertiesResponsePtrOutput) Elem() OptionBPropertiesResponseOutput {
-	return o.ApplyT(func(v *OptionBPropertiesResponse) OptionBPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OptionBPropertiesResponse
-		return ret
-	}).(OptionBPropertiesResponseOutput)
-}
-
-// Route Targets to be applied for outgoing routes from CE.
-func (o OptionBPropertiesResponsePtrOutput) ExportRouteTargets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *OptionBPropertiesResponse) []string {
+// List of IPv6 Routes.
+func (o NpbStaticRouteConfigurationResponsePtrOutput) Ipv6Routes() StaticRoutePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *NpbStaticRouteConfigurationResponse) []StaticRoutePropertiesResponse {
 		if v == nil {
 			return nil
 		}
-		return v.ExportRouteTargets
-	}).(pulumi.StringArrayOutput)
-}
-
-// Route Targets to be applied for incoming routes into CE.
-func (o OptionBPropertiesResponsePtrOutput) ImportRouteTargets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *OptionBPropertiesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ImportRouteTargets
-	}).(pulumi.StringArrayOutput)
+		return v.Ipv6Routes
+	}).(StaticRoutePropertiesResponseArrayOutput)
 }
 
 // Port condition that needs to be matched.
@@ -8380,7 +11147,7 @@ func (o PortGroupPropertiesResponseArrayOutput) Index(i pulumi.IntInput) PortGro
 	}).(PortGroupPropertiesResponseOutput)
 }
 
-// Route Policy Statement properties..
+// Route Policy Statement properties.
 type RoutePolicyStatementProperties struct {
 	// Route policy action properties.
 	Action StatementActionProperties `pulumi:"action"`
@@ -8390,6 +11157,17 @@ type RoutePolicyStatementProperties struct {
 	Condition StatementConditionProperties `pulumi:"condition"`
 	// Sequence to insert to/delete from existing route.
 	SequenceNumber float64 `pulumi:"sequenceNumber"`
+}
+
+// Defaults sets the appropriate defaults for RoutePolicyStatementProperties
+func (val *RoutePolicyStatementProperties) Defaults() *RoutePolicyStatementProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Condition = *tmp.Condition.Defaults()
+
+	return &tmp
 }
 
 // RoutePolicyStatementPropertiesInput is an input type that accepts RoutePolicyStatementPropertiesArgs and RoutePolicyStatementPropertiesOutput values.
@@ -8403,7 +11181,7 @@ type RoutePolicyStatementPropertiesInput interface {
 	ToRoutePolicyStatementPropertiesOutputWithContext(context.Context) RoutePolicyStatementPropertiesOutput
 }
 
-// Route Policy Statement properties..
+// Route Policy Statement properties.
 type RoutePolicyStatementPropertiesArgs struct {
 	// Route policy action properties.
 	Action StatementActionPropertiesInput `pulumi:"action"`
@@ -8415,6 +11193,15 @@ type RoutePolicyStatementPropertiesArgs struct {
 	SequenceNumber pulumi.Float64Input `pulumi:"sequenceNumber"`
 }
 
+// Defaults sets the appropriate defaults for RoutePolicyStatementPropertiesArgs
+func (val *RoutePolicyStatementPropertiesArgs) Defaults() *RoutePolicyStatementPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
 func (RoutePolicyStatementPropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*RoutePolicyStatementProperties)(nil)).Elem()
 }
@@ -8452,7 +11239,7 @@ func (i RoutePolicyStatementPropertiesArray) ToRoutePolicyStatementPropertiesArr
 	return pulumi.ToOutputWithContext(ctx, i).(RoutePolicyStatementPropertiesArrayOutput)
 }
 
-// Route Policy Statement properties..
+// Route Policy Statement properties.
 type RoutePolicyStatementPropertiesOutput struct{ *pulumi.OutputState }
 
 func (RoutePolicyStatementPropertiesOutput) ElementType() reflect.Type {
@@ -8507,7 +11294,7 @@ func (o RoutePolicyStatementPropertiesArrayOutput) Index(i pulumi.IntInput) Rout
 	}).(RoutePolicyStatementPropertiesOutput)
 }
 
-// Route Policy Statement properties..
+// Route Policy Statement properties.
 type RoutePolicyStatementPropertiesResponse struct {
 	// Route policy action properties.
 	Action StatementActionPropertiesResponse `pulumi:"action"`
@@ -8519,7 +11306,18 @@ type RoutePolicyStatementPropertiesResponse struct {
 	SequenceNumber float64 `pulumi:"sequenceNumber"`
 }
 
-// Route Policy Statement properties..
+// Defaults sets the appropriate defaults for RoutePolicyStatementPropertiesResponse
+func (val *RoutePolicyStatementPropertiesResponse) Defaults() *RoutePolicyStatementPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Condition = *tmp.Condition.Defaults()
+
+	return &tmp
+}
+
+// Route Policy Statement properties.
 type RoutePolicyStatementPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (RoutePolicyStatementPropertiesResponseOutput) ElementType() reflect.Type {
@@ -8574,6 +11372,314 @@ func (o RoutePolicyStatementPropertiesResponseArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutePolicyStatementPropertiesResponse {
 		return vs[0].([]RoutePolicyStatementPropertiesResponse)[vs[1].(int)]
 	}).(RoutePolicyStatementPropertiesResponseOutput)
+}
+
+// Route Target Configuration.
+type RouteTargetInformation struct {
+	// Route Targets to be applied for outgoing routes into CE.
+	ExportIpv4RouteTargets []string `pulumi:"exportIpv4RouteTargets"`
+	// Route Targets to be applied for outgoing routes from CE.
+	ExportIpv6RouteTargets []string `pulumi:"exportIpv6RouteTargets"`
+	// Route Targets to be applied for incoming routes into CE.
+	ImportIpv4RouteTargets []string `pulumi:"importIpv4RouteTargets"`
+	// Route Targets to be applied for incoming routes from CE.
+	ImportIpv6RouteTargets []string `pulumi:"importIpv6RouteTargets"`
+}
+
+// RouteTargetInformationInput is an input type that accepts RouteTargetInformationArgs and RouteTargetInformationOutput values.
+// You can construct a concrete instance of `RouteTargetInformationInput` via:
+//
+//	RouteTargetInformationArgs{...}
+type RouteTargetInformationInput interface {
+	pulumi.Input
+
+	ToRouteTargetInformationOutput() RouteTargetInformationOutput
+	ToRouteTargetInformationOutputWithContext(context.Context) RouteTargetInformationOutput
+}
+
+// Route Target Configuration.
+type RouteTargetInformationArgs struct {
+	// Route Targets to be applied for outgoing routes into CE.
+	ExportIpv4RouteTargets pulumi.StringArrayInput `pulumi:"exportIpv4RouteTargets"`
+	// Route Targets to be applied for outgoing routes from CE.
+	ExportIpv6RouteTargets pulumi.StringArrayInput `pulumi:"exportIpv6RouteTargets"`
+	// Route Targets to be applied for incoming routes into CE.
+	ImportIpv4RouteTargets pulumi.StringArrayInput `pulumi:"importIpv4RouteTargets"`
+	// Route Targets to be applied for incoming routes from CE.
+	ImportIpv6RouteTargets pulumi.StringArrayInput `pulumi:"importIpv6RouteTargets"`
+}
+
+func (RouteTargetInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTargetInformation)(nil)).Elem()
+}
+
+func (i RouteTargetInformationArgs) ToRouteTargetInformationOutput() RouteTargetInformationOutput {
+	return i.ToRouteTargetInformationOutputWithContext(context.Background())
+}
+
+func (i RouteTargetInformationArgs) ToRouteTargetInformationOutputWithContext(ctx context.Context) RouteTargetInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTargetInformationOutput)
+}
+
+func (i RouteTargetInformationArgs) ToRouteTargetInformationPtrOutput() RouteTargetInformationPtrOutput {
+	return i.ToRouteTargetInformationPtrOutputWithContext(context.Background())
+}
+
+func (i RouteTargetInformationArgs) ToRouteTargetInformationPtrOutputWithContext(ctx context.Context) RouteTargetInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTargetInformationOutput).ToRouteTargetInformationPtrOutputWithContext(ctx)
+}
+
+// RouteTargetInformationPtrInput is an input type that accepts RouteTargetInformationArgs, RouteTargetInformationPtr and RouteTargetInformationPtrOutput values.
+// You can construct a concrete instance of `RouteTargetInformationPtrInput` via:
+//
+//	        RouteTargetInformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteTargetInformationPtrInput interface {
+	pulumi.Input
+
+	ToRouteTargetInformationPtrOutput() RouteTargetInformationPtrOutput
+	ToRouteTargetInformationPtrOutputWithContext(context.Context) RouteTargetInformationPtrOutput
+}
+
+type routeTargetInformationPtrType RouteTargetInformationArgs
+
+func RouteTargetInformationPtr(v *RouteTargetInformationArgs) RouteTargetInformationPtrInput {
+	return (*routeTargetInformationPtrType)(v)
+}
+
+func (*routeTargetInformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTargetInformation)(nil)).Elem()
+}
+
+func (i *routeTargetInformationPtrType) ToRouteTargetInformationPtrOutput() RouteTargetInformationPtrOutput {
+	return i.ToRouteTargetInformationPtrOutputWithContext(context.Background())
+}
+
+func (i *routeTargetInformationPtrType) ToRouteTargetInformationPtrOutputWithContext(ctx context.Context) RouteTargetInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTargetInformationPtrOutput)
+}
+
+// Route Target Configuration.
+type RouteTargetInformationOutput struct{ *pulumi.OutputState }
+
+func (RouteTargetInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTargetInformation)(nil)).Elem()
+}
+
+func (o RouteTargetInformationOutput) ToRouteTargetInformationOutput() RouteTargetInformationOutput {
+	return o
+}
+
+func (o RouteTargetInformationOutput) ToRouteTargetInformationOutputWithContext(ctx context.Context) RouteTargetInformationOutput {
+	return o
+}
+
+func (o RouteTargetInformationOutput) ToRouteTargetInformationPtrOutput() RouteTargetInformationPtrOutput {
+	return o.ToRouteTargetInformationPtrOutputWithContext(context.Background())
+}
+
+func (o RouteTargetInformationOutput) ToRouteTargetInformationPtrOutputWithContext(ctx context.Context) RouteTargetInformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteTargetInformation) *RouteTargetInformation {
+		return &v
+	}).(RouteTargetInformationPtrOutput)
+}
+
+// Route Targets to be applied for outgoing routes into CE.
+func (o RouteTargetInformationOutput) ExportIpv4RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteTargetInformation) []string { return v.ExportIpv4RouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for outgoing routes from CE.
+func (o RouteTargetInformationOutput) ExportIpv6RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteTargetInformation) []string { return v.ExportIpv6RouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for incoming routes into CE.
+func (o RouteTargetInformationOutput) ImportIpv4RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteTargetInformation) []string { return v.ImportIpv4RouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for incoming routes from CE.
+func (o RouteTargetInformationOutput) ImportIpv6RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteTargetInformation) []string { return v.ImportIpv6RouteTargets }).(pulumi.StringArrayOutput)
+}
+
+type RouteTargetInformationPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteTargetInformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTargetInformation)(nil)).Elem()
+}
+
+func (o RouteTargetInformationPtrOutput) ToRouteTargetInformationPtrOutput() RouteTargetInformationPtrOutput {
+	return o
+}
+
+func (o RouteTargetInformationPtrOutput) ToRouteTargetInformationPtrOutputWithContext(ctx context.Context) RouteTargetInformationPtrOutput {
+	return o
+}
+
+func (o RouteTargetInformationPtrOutput) Elem() RouteTargetInformationOutput {
+	return o.ApplyT(func(v *RouteTargetInformation) RouteTargetInformation {
+		if v != nil {
+			return *v
+		}
+		var ret RouteTargetInformation
+		return ret
+	}).(RouteTargetInformationOutput)
+}
+
+// Route Targets to be applied for outgoing routes into CE.
+func (o RouteTargetInformationPtrOutput) ExportIpv4RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteTargetInformation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv4RouteTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for outgoing routes from CE.
+func (o RouteTargetInformationPtrOutput) ExportIpv6RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteTargetInformation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv6RouteTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for incoming routes into CE.
+func (o RouteTargetInformationPtrOutput) ImportIpv4RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteTargetInformation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv4RouteTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for incoming routes from CE.
+func (o RouteTargetInformationPtrOutput) ImportIpv6RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteTargetInformation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv6RouteTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Route Target Configuration.
+type RouteTargetInformationResponse struct {
+	// Route Targets to be applied for outgoing routes into CE.
+	ExportIpv4RouteTargets []string `pulumi:"exportIpv4RouteTargets"`
+	// Route Targets to be applied for outgoing routes from CE.
+	ExportIpv6RouteTargets []string `pulumi:"exportIpv6RouteTargets"`
+	// Route Targets to be applied for incoming routes into CE.
+	ImportIpv4RouteTargets []string `pulumi:"importIpv4RouteTargets"`
+	// Route Targets to be applied for incoming routes from CE.
+	ImportIpv6RouteTargets []string `pulumi:"importIpv6RouteTargets"`
+}
+
+// Route Target Configuration.
+type RouteTargetInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (RouteTargetInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTargetInformationResponse)(nil)).Elem()
+}
+
+func (o RouteTargetInformationResponseOutput) ToRouteTargetInformationResponseOutput() RouteTargetInformationResponseOutput {
+	return o
+}
+
+func (o RouteTargetInformationResponseOutput) ToRouteTargetInformationResponseOutputWithContext(ctx context.Context) RouteTargetInformationResponseOutput {
+	return o
+}
+
+// Route Targets to be applied for outgoing routes into CE.
+func (o RouteTargetInformationResponseOutput) ExportIpv4RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteTargetInformationResponse) []string { return v.ExportIpv4RouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for outgoing routes from CE.
+func (o RouteTargetInformationResponseOutput) ExportIpv6RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteTargetInformationResponse) []string { return v.ExportIpv6RouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for incoming routes into CE.
+func (o RouteTargetInformationResponseOutput) ImportIpv4RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteTargetInformationResponse) []string { return v.ImportIpv4RouteTargets }).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for incoming routes from CE.
+func (o RouteTargetInformationResponseOutput) ImportIpv6RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteTargetInformationResponse) []string { return v.ImportIpv6RouteTargets }).(pulumi.StringArrayOutput)
+}
+
+type RouteTargetInformationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RouteTargetInformationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTargetInformationResponse)(nil)).Elem()
+}
+
+func (o RouteTargetInformationResponsePtrOutput) ToRouteTargetInformationResponsePtrOutput() RouteTargetInformationResponsePtrOutput {
+	return o
+}
+
+func (o RouteTargetInformationResponsePtrOutput) ToRouteTargetInformationResponsePtrOutputWithContext(ctx context.Context) RouteTargetInformationResponsePtrOutput {
+	return o
+}
+
+func (o RouteTargetInformationResponsePtrOutput) Elem() RouteTargetInformationResponseOutput {
+	return o.ApplyT(func(v *RouteTargetInformationResponse) RouteTargetInformationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RouteTargetInformationResponse
+		return ret
+	}).(RouteTargetInformationResponseOutput)
+}
+
+// Route Targets to be applied for outgoing routes into CE.
+func (o RouteTargetInformationResponsePtrOutput) ExportIpv4RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteTargetInformationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv4RouteTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for outgoing routes from CE.
+func (o RouteTargetInformationResponsePtrOutput) ExportIpv6RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteTargetInformationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportIpv6RouteTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for incoming routes into CE.
+func (o RouteTargetInformationResponsePtrOutput) ImportIpv4RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteTargetInformationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv4RouteTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Route Targets to be applied for incoming routes from CE.
+func (o RouteTargetInformationResponsePtrOutput) ImportIpv6RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouteTargetInformationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportIpv6RouteTargets
+	}).(pulumi.StringArrayOutput)
 }
 
 // Rules for the InternetGateways
@@ -8675,13 +11781,13 @@ func (o RulePropertiesResponseOutput) AddressList() pulumi.StringArrayOutput {
 
 // Route policy action properties.
 type StatementActionProperties struct {
-	// action. Example: Permit | Deny.
+	// Action type. Example: Permit | Deny | Continue.
 	ActionType string `pulumi:"actionType"`
 	// IP Community Properties.
 	IpCommunityProperties *ActionIpCommunityProperties `pulumi:"ipCommunityProperties"`
 	// IP Extended Community Properties.
 	IpExtendedCommunityProperties *ActionIpExtendedCommunityProperties `pulumi:"ipExtendedCommunityProperties"`
-	// localPreference of the route policy.
+	// Local Preference of the route policy.
 	LocalPreference *float64 `pulumi:"localPreference"`
 }
 
@@ -8698,13 +11804,13 @@ type StatementActionPropertiesInput interface {
 
 // Route policy action properties.
 type StatementActionPropertiesArgs struct {
-	// action. Example: Permit | Deny.
+	// Action type. Example: Permit | Deny | Continue.
 	ActionType pulumi.StringInput `pulumi:"actionType"`
 	// IP Community Properties.
 	IpCommunityProperties ActionIpCommunityPropertiesPtrInput `pulumi:"ipCommunityProperties"`
 	// IP Extended Community Properties.
 	IpExtendedCommunityProperties ActionIpExtendedCommunityPropertiesPtrInput `pulumi:"ipExtendedCommunityProperties"`
-	// localPreference of the route policy.
+	// Local Preference of the route policy.
 	LocalPreference pulumi.Float64PtrInput `pulumi:"localPreference"`
 }
 
@@ -8735,7 +11841,7 @@ func (o StatementActionPropertiesOutput) ToStatementActionPropertiesOutputWithCo
 	return o
 }
 
-// action. Example: Permit | Deny.
+// Action type. Example: Permit | Deny | Continue.
 func (o StatementActionPropertiesOutput) ActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v StatementActionProperties) string { return v.ActionType }).(pulumi.StringOutput)
 }
@@ -8752,20 +11858,20 @@ func (o StatementActionPropertiesOutput) IpExtendedCommunityProperties() ActionI
 	}).(ActionIpExtendedCommunityPropertiesPtrOutput)
 }
 
-// localPreference of the route policy.
+// Local Preference of the route policy.
 func (o StatementActionPropertiesOutput) LocalPreference() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v StatementActionProperties) *float64 { return v.LocalPreference }).(pulumi.Float64PtrOutput)
 }
 
 // Route policy action properties.
 type StatementActionPropertiesResponse struct {
-	// action. Example: Permit | Deny.
+	// Action type. Example: Permit | Deny | Continue.
 	ActionType string `pulumi:"actionType"`
 	// IP Community Properties.
 	IpCommunityProperties *ActionIpCommunityPropertiesResponse `pulumi:"ipCommunityProperties"`
 	// IP Extended Community Properties.
 	IpExtendedCommunityProperties *ActionIpExtendedCommunityPropertiesResponse `pulumi:"ipExtendedCommunityProperties"`
-	// localPreference of the route policy.
+	// Local Preference of the route policy.
 	LocalPreference *float64 `pulumi:"localPreference"`
 }
 
@@ -8784,7 +11890,7 @@ func (o StatementActionPropertiesResponseOutput) ToStatementActionPropertiesResp
 	return o
 }
 
-// action. Example: Permit | Deny.
+// Action type. Example: Permit | Deny | Continue.
 func (o StatementActionPropertiesResponseOutput) ActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v StatementActionPropertiesResponse) string { return v.ActionType }).(pulumi.StringOutput)
 }
@@ -8803,7 +11909,7 @@ func (o StatementActionPropertiesResponseOutput) IpExtendedCommunityProperties()
 	}).(ActionIpExtendedCommunityPropertiesResponsePtrOutput)
 }
 
-// localPreference of the route policy.
+// Local Preference of the route policy.
 func (o StatementActionPropertiesResponseOutput) LocalPreference() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v StatementActionPropertiesResponse) *float64 { return v.LocalPreference }).(pulumi.Float64PtrOutput)
 }
@@ -8816,6 +11922,21 @@ type StatementConditionProperties struct {
 	IpExtendedCommunityIds []string `pulumi:"ipExtendedCommunityIds"`
 	// Arm Resource Id of IpPrefix.
 	IpPrefixId *string `pulumi:"ipPrefixId"`
+	// Type of the condition used.
+	Type *string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for StatementConditionProperties
+func (val *StatementConditionProperties) Defaults() *StatementConditionProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Type == nil {
+		type_ := "Or"
+		tmp.Type = &type_
+	}
+	return &tmp
 }
 
 // StatementConditionPropertiesInput is an input type that accepts StatementConditionPropertiesArgs and StatementConditionPropertiesOutput values.
@@ -8837,8 +11958,21 @@ type StatementConditionPropertiesArgs struct {
 	IpExtendedCommunityIds pulumi.StringArrayInput `pulumi:"ipExtendedCommunityIds"`
 	// Arm Resource Id of IpPrefix.
 	IpPrefixId pulumi.StringPtrInput `pulumi:"ipPrefixId"`
+	// Type of the condition used.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for StatementConditionPropertiesArgs
+func (val *StatementConditionPropertiesArgs) Defaults() *StatementConditionPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Type == nil {
+		tmp.Type = pulumi.StringPtr("Or")
+	}
+	return &tmp
+}
 func (StatementConditionPropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*StatementConditionProperties)(nil)).Elem()
 }
@@ -8881,6 +12015,11 @@ func (o StatementConditionPropertiesOutput) IpPrefixId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v StatementConditionProperties) *string { return v.IpPrefixId }).(pulumi.StringPtrOutput)
 }
 
+// Type of the condition used.
+func (o StatementConditionPropertiesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatementConditionProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 // Route policy statement condition properties.
 type StatementConditionPropertiesResponse struct {
 	// List of IP Community resource IDs.
@@ -8889,6 +12028,21 @@ type StatementConditionPropertiesResponse struct {
 	IpExtendedCommunityIds []string `pulumi:"ipExtendedCommunityIds"`
 	// Arm Resource Id of IpPrefix.
 	IpPrefixId *string `pulumi:"ipPrefixId"`
+	// Type of the condition used.
+	Type *string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for StatementConditionPropertiesResponse
+func (val *StatementConditionPropertiesResponse) Defaults() *StatementConditionPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Type == nil {
+		type_ := "Or"
+		tmp.Type = &type_
+	}
+	return &tmp
 }
 
 // Route policy statement condition properties.
@@ -8921,264 +12075,16 @@ func (o StatementConditionPropertiesResponseOutput) IpPrefixId() pulumi.StringPt
 	return o.ApplyT(func(v StatementConditionPropertiesResponse) *string { return v.IpPrefixId }).(pulumi.StringPtrOutput)
 }
 
-// staticRouteConfiguration model.
-type StaticRouteConfiguration struct {
-	// List with object IPv4Routes.
-	Ipv4Routes []StaticRouteProperties `pulumi:"ipv4Routes"`
-	// List with object IPv6Routes.
-	Ipv6Routes []StaticRouteProperties `pulumi:"ipv6Routes"`
+// Type of the condition used.
+func (o StatementConditionPropertiesResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatementConditionPropertiesResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// StaticRouteConfigurationInput is an input type that accepts StaticRouteConfigurationArgs and StaticRouteConfigurationOutput values.
-// You can construct a concrete instance of `StaticRouteConfigurationInput` via:
-//
-//	StaticRouteConfigurationArgs{...}
-type StaticRouteConfigurationInput interface {
-	pulumi.Input
-
-	ToStaticRouteConfigurationOutput() StaticRouteConfigurationOutput
-	ToStaticRouteConfigurationOutputWithContext(context.Context) StaticRouteConfigurationOutput
-}
-
-// staticRouteConfiguration model.
-type StaticRouteConfigurationArgs struct {
-	// List with object IPv4Routes.
-	Ipv4Routes StaticRoutePropertiesArrayInput `pulumi:"ipv4Routes"`
-	// List with object IPv6Routes.
-	Ipv6Routes StaticRoutePropertiesArrayInput `pulumi:"ipv6Routes"`
-}
-
-func (StaticRouteConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRouteConfiguration)(nil)).Elem()
-}
-
-func (i StaticRouteConfigurationArgs) ToStaticRouteConfigurationOutput() StaticRouteConfigurationOutput {
-	return i.ToStaticRouteConfigurationOutputWithContext(context.Background())
-}
-
-func (i StaticRouteConfigurationArgs) ToStaticRouteConfigurationOutputWithContext(ctx context.Context) StaticRouteConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticRouteConfigurationOutput)
-}
-
-func (i StaticRouteConfigurationArgs) ToStaticRouteConfigurationPtrOutput() StaticRouteConfigurationPtrOutput {
-	return i.ToStaticRouteConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i StaticRouteConfigurationArgs) ToStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) StaticRouteConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticRouteConfigurationOutput).ToStaticRouteConfigurationPtrOutputWithContext(ctx)
-}
-
-// StaticRouteConfigurationPtrInput is an input type that accepts StaticRouteConfigurationArgs, StaticRouteConfigurationPtr and StaticRouteConfigurationPtrOutput values.
-// You can construct a concrete instance of `StaticRouteConfigurationPtrInput` via:
-//
-//	        StaticRouteConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type StaticRouteConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToStaticRouteConfigurationPtrOutput() StaticRouteConfigurationPtrOutput
-	ToStaticRouteConfigurationPtrOutputWithContext(context.Context) StaticRouteConfigurationPtrOutput
-}
-
-type staticRouteConfigurationPtrType StaticRouteConfigurationArgs
-
-func StaticRouteConfigurationPtr(v *StaticRouteConfigurationArgs) StaticRouteConfigurationPtrInput {
-	return (*staticRouteConfigurationPtrType)(v)
-}
-
-func (*staticRouteConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StaticRouteConfiguration)(nil)).Elem()
-}
-
-func (i *staticRouteConfigurationPtrType) ToStaticRouteConfigurationPtrOutput() StaticRouteConfigurationPtrOutput {
-	return i.ToStaticRouteConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *staticRouteConfigurationPtrType) ToStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) StaticRouteConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticRouteConfigurationPtrOutput)
-}
-
-// staticRouteConfiguration model.
-type StaticRouteConfigurationOutput struct{ *pulumi.OutputState }
-
-func (StaticRouteConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRouteConfiguration)(nil)).Elem()
-}
-
-func (o StaticRouteConfigurationOutput) ToStaticRouteConfigurationOutput() StaticRouteConfigurationOutput {
-	return o
-}
-
-func (o StaticRouteConfigurationOutput) ToStaticRouteConfigurationOutputWithContext(ctx context.Context) StaticRouteConfigurationOutput {
-	return o
-}
-
-func (o StaticRouteConfigurationOutput) ToStaticRouteConfigurationPtrOutput() StaticRouteConfigurationPtrOutput {
-	return o.ToStaticRouteConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o StaticRouteConfigurationOutput) ToStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) StaticRouteConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StaticRouteConfiguration) *StaticRouteConfiguration {
-		return &v
-	}).(StaticRouteConfigurationPtrOutput)
-}
-
-// List with object IPv4Routes.
-func (o StaticRouteConfigurationOutput) Ipv4Routes() StaticRoutePropertiesArrayOutput {
-	return o.ApplyT(func(v StaticRouteConfiguration) []StaticRouteProperties { return v.Ipv4Routes }).(StaticRoutePropertiesArrayOutput)
-}
-
-// List with object IPv6Routes.
-func (o StaticRouteConfigurationOutput) Ipv6Routes() StaticRoutePropertiesArrayOutput {
-	return o.ApplyT(func(v StaticRouteConfiguration) []StaticRouteProperties { return v.Ipv6Routes }).(StaticRoutePropertiesArrayOutput)
-}
-
-type StaticRouteConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (StaticRouteConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StaticRouteConfiguration)(nil)).Elem()
-}
-
-func (o StaticRouteConfigurationPtrOutput) ToStaticRouteConfigurationPtrOutput() StaticRouteConfigurationPtrOutput {
-	return o
-}
-
-func (o StaticRouteConfigurationPtrOutput) ToStaticRouteConfigurationPtrOutputWithContext(ctx context.Context) StaticRouteConfigurationPtrOutput {
-	return o
-}
-
-func (o StaticRouteConfigurationPtrOutput) Elem() StaticRouteConfigurationOutput {
-	return o.ApplyT(func(v *StaticRouteConfiguration) StaticRouteConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret StaticRouteConfiguration
-		return ret
-	}).(StaticRouteConfigurationOutput)
-}
-
-// List with object IPv4Routes.
-func (o StaticRouteConfigurationPtrOutput) Ipv4Routes() StaticRoutePropertiesArrayOutput {
-	return o.ApplyT(func(v *StaticRouteConfiguration) []StaticRouteProperties {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv4Routes
-	}).(StaticRoutePropertiesArrayOutput)
-}
-
-// List with object IPv6Routes.
-func (o StaticRouteConfigurationPtrOutput) Ipv6Routes() StaticRoutePropertiesArrayOutput {
-	return o.ApplyT(func(v *StaticRouteConfiguration) []StaticRouteProperties {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv6Routes
-	}).(StaticRoutePropertiesArrayOutput)
-}
-
-// staticRouteConfiguration model.
-type StaticRouteConfigurationResponse struct {
-	// BFD configuration properties
-	BfdConfiguration *BfdConfigurationResponse `pulumi:"bfdConfiguration"`
-	// List with object IPv4Routes.
-	Ipv4Routes []StaticRoutePropertiesResponse `pulumi:"ipv4Routes"`
-	// List with object IPv6Routes.
-	Ipv6Routes []StaticRoutePropertiesResponse `pulumi:"ipv6Routes"`
-}
-
-// staticRouteConfiguration model.
-type StaticRouteConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (StaticRouteConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRouteConfigurationResponse)(nil)).Elem()
-}
-
-func (o StaticRouteConfigurationResponseOutput) ToStaticRouteConfigurationResponseOutput() StaticRouteConfigurationResponseOutput {
-	return o
-}
-
-func (o StaticRouteConfigurationResponseOutput) ToStaticRouteConfigurationResponseOutputWithContext(ctx context.Context) StaticRouteConfigurationResponseOutput {
-	return o
-}
-
-// BFD configuration properties
-func (o StaticRouteConfigurationResponseOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v StaticRouteConfigurationResponse) *BfdConfigurationResponse { return v.BfdConfiguration }).(BfdConfigurationResponsePtrOutput)
-}
-
-// List with object IPv4Routes.
-func (o StaticRouteConfigurationResponseOutput) Ipv4Routes() StaticRoutePropertiesResponseArrayOutput {
-	return o.ApplyT(func(v StaticRouteConfigurationResponse) []StaticRoutePropertiesResponse { return v.Ipv4Routes }).(StaticRoutePropertiesResponseArrayOutput)
-}
-
-// List with object IPv6Routes.
-func (o StaticRouteConfigurationResponseOutput) Ipv6Routes() StaticRoutePropertiesResponseArrayOutput {
-	return o.ApplyT(func(v StaticRouteConfigurationResponse) []StaticRoutePropertiesResponse { return v.Ipv6Routes }).(StaticRoutePropertiesResponseArrayOutput)
-}
-
-type StaticRouteConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StaticRouteConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StaticRouteConfigurationResponse)(nil)).Elem()
-}
-
-func (o StaticRouteConfigurationResponsePtrOutput) ToStaticRouteConfigurationResponsePtrOutput() StaticRouteConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o StaticRouteConfigurationResponsePtrOutput) ToStaticRouteConfigurationResponsePtrOutputWithContext(ctx context.Context) StaticRouteConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o StaticRouteConfigurationResponsePtrOutput) Elem() StaticRouteConfigurationResponseOutput {
-	return o.ApplyT(func(v *StaticRouteConfigurationResponse) StaticRouteConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StaticRouteConfigurationResponse
-		return ret
-	}).(StaticRouteConfigurationResponseOutput)
-}
-
-// BFD configuration properties
-func (o StaticRouteConfigurationResponsePtrOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *StaticRouteConfigurationResponse) *BfdConfigurationResponse {
-		if v == nil {
-			return nil
-		}
-		return v.BfdConfiguration
-	}).(BfdConfigurationResponsePtrOutput)
-}
-
-// List with object IPv4Routes.
-func (o StaticRouteConfigurationResponsePtrOutput) Ipv4Routes() StaticRoutePropertiesResponseArrayOutput {
-	return o.ApplyT(func(v *StaticRouteConfigurationResponse) []StaticRoutePropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv4Routes
-	}).(StaticRoutePropertiesResponseArrayOutput)
-}
-
-// List with object IPv6Routes.
-func (o StaticRouteConfigurationResponsePtrOutput) Ipv6Routes() StaticRoutePropertiesResponseArrayOutput {
-	return o.ApplyT(func(v *StaticRouteConfigurationResponse) []StaticRoutePropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv6Routes
-	}).(StaticRoutePropertiesResponseArrayOutput)
-}
-
-// Static Route properties.
+// Route Properties.
 type StaticRouteProperties struct {
-	// List of next hop IPv4 | IPv6 addresses.
+	// List of next hop addresses.
 	NextHop []string `pulumi:"nextHop"`
-	// IPv4 | IPv6 Prefix.
+	// Prefix of the route.
 	Prefix string `pulumi:"prefix"`
 }
 
@@ -9193,11 +12099,11 @@ type StaticRoutePropertiesInput interface {
 	ToStaticRoutePropertiesOutputWithContext(context.Context) StaticRoutePropertiesOutput
 }
 
-// Static Route properties.
+// Route Properties.
 type StaticRoutePropertiesArgs struct {
-	// List of next hop IPv4 | IPv6 addresses.
+	// List of next hop addresses.
 	NextHop pulumi.StringArrayInput `pulumi:"nextHop"`
-	// IPv4 | IPv6 Prefix.
+	// Prefix of the route.
 	Prefix pulumi.StringInput `pulumi:"prefix"`
 }
 
@@ -9238,7 +12144,7 @@ func (i StaticRoutePropertiesArray) ToStaticRoutePropertiesArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(StaticRoutePropertiesArrayOutput)
 }
 
-// Static Route properties.
+// Route Properties.
 type StaticRoutePropertiesOutput struct{ *pulumi.OutputState }
 
 func (StaticRoutePropertiesOutput) ElementType() reflect.Type {
@@ -9253,12 +12159,12 @@ func (o StaticRoutePropertiesOutput) ToStaticRoutePropertiesOutputWithContext(ct
 	return o
 }
 
-// List of next hop IPv4 | IPv6 addresses.
+// List of next hop addresses.
 func (o StaticRoutePropertiesOutput) NextHop() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StaticRouteProperties) []string { return v.NextHop }).(pulumi.StringArrayOutput)
 }
 
-// IPv4 | IPv6 Prefix.
+// Prefix of the route.
 func (o StaticRoutePropertiesOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v StaticRouteProperties) string { return v.Prefix }).(pulumi.StringOutput)
 }
@@ -9283,15 +12189,15 @@ func (o StaticRoutePropertiesArrayOutput) Index(i pulumi.IntInput) StaticRoutePr
 	}).(StaticRoutePropertiesOutput)
 }
 
-// Static Route properties.
+// Route Properties.
 type StaticRoutePropertiesResponse struct {
-	// List of next hop IPv4 | IPv6 addresses.
+	// List of next hop addresses.
 	NextHop []string `pulumi:"nextHop"`
-	// IPv4 | IPv6 Prefix.
+	// Prefix of the route.
 	Prefix string `pulumi:"prefix"`
 }
 
-// Static Route properties.
+// Route Properties.
 type StaticRoutePropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (StaticRoutePropertiesResponseOutput) ElementType() reflect.Type {
@@ -9306,12 +12212,12 @@ func (o StaticRoutePropertiesResponseOutput) ToStaticRoutePropertiesResponseOutp
 	return o
 }
 
-// List of next hop IPv4 | IPv6 addresses.
+// List of next hop addresses.
 func (o StaticRoutePropertiesResponseOutput) NextHop() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StaticRoutePropertiesResponse) []string { return v.NextHop }).(pulumi.StringArrayOutput)
 }
 
-// IPv4 | IPv6 Prefix.
+// Prefix of the route.
 func (o StaticRoutePropertiesResponseOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v StaticRoutePropertiesResponse) string { return v.Prefix }).(pulumi.StringOutput)
 }
@@ -9401,13 +12307,13 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 type TerminalServerConfiguration struct {
 	// Password for the terminal server connection.
 	Password string `pulumi:"password"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv4 Address Prefix.
 	PrimaryIpv4Prefix string `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv6 Address Prefix.
 	PrimaryIpv6Prefix *string `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv4 Address Prefix.
 	SecondaryIpv4Prefix string `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv6 Address Prefix.
 	SecondaryIpv6Prefix *string `pulumi:"secondaryIpv6Prefix"`
 	// Serial Number of Terminal server.
 	SerialNumber *string `pulumi:"serialNumber"`
@@ -9430,13 +12336,13 @@ type TerminalServerConfigurationInput interface {
 type TerminalServerConfigurationArgs struct {
 	// Password for the terminal server connection.
 	Password pulumi.StringInput `pulumi:"password"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv4 Address Prefix.
 	PrimaryIpv4Prefix pulumi.StringInput `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv6 Address Prefix.
 	PrimaryIpv6Prefix pulumi.StringPtrInput `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv4 Address Prefix.
 	SecondaryIpv4Prefix pulumi.StringInput `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv6 Address Prefix.
 	SecondaryIpv6Prefix pulumi.StringPtrInput `pulumi:"secondaryIpv6Prefix"`
 	// Serial Number of Terminal server.
 	SerialNumber pulumi.StringPtrInput `pulumi:"serialNumber"`
@@ -9476,22 +12382,22 @@ func (o TerminalServerConfigurationOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v TerminalServerConfiguration) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv4 Address Prefix.
 func (o TerminalServerConfigurationOutput) PrimaryIpv4Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v TerminalServerConfiguration) string { return v.PrimaryIpv4Prefix }).(pulumi.StringOutput)
 }
 
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv6 Address Prefix.
 func (o TerminalServerConfigurationOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TerminalServerConfiguration) *string { return v.PrimaryIpv6Prefix }).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv4 Address Prefix.
 func (o TerminalServerConfigurationOutput) SecondaryIpv4Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v TerminalServerConfiguration) string { return v.SecondaryIpv4Prefix }).(pulumi.StringOutput)
 }
 
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv6 Address Prefix.
 func (o TerminalServerConfigurationOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TerminalServerConfiguration) *string { return v.SecondaryIpv6Prefix }).(pulumi.StringPtrOutput)
 }
@@ -9512,13 +12418,13 @@ type TerminalServerConfigurationResponse struct {
 	NetworkDeviceId string `pulumi:"networkDeviceId"`
 	// Password for the terminal server connection.
 	Password string `pulumi:"password"`
-	// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv4 Address Prefix.
 	PrimaryIpv4Prefix string `pulumi:"primaryIpv4Prefix"`
-	// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// IPv6 Address Prefix.
 	PrimaryIpv6Prefix *string `pulumi:"primaryIpv6Prefix"`
-	// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv4 Address Prefix.
 	SecondaryIpv4Prefix string `pulumi:"secondaryIpv4Prefix"`
-	// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+	// Secondary IPv6 Address Prefix.
 	SecondaryIpv6Prefix *string `pulumi:"secondaryIpv6Prefix"`
 	// Serial Number of Terminal server.
 	SerialNumber *string `pulumi:"serialNumber"`
@@ -9551,22 +12457,22 @@ func (o TerminalServerConfigurationResponseOutput) Password() pulumi.StringOutpu
 	return o.ApplyT(func(v TerminalServerConfigurationResponse) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv4 Address Prefix.
 func (o TerminalServerConfigurationResponseOutput) PrimaryIpv4Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v TerminalServerConfigurationResponse) string { return v.PrimaryIpv4Prefix }).(pulumi.StringOutput)
 }
 
-// IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// IPv6 Address Prefix.
 func (o TerminalServerConfigurationResponseOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TerminalServerConfigurationResponse) *string { return v.PrimaryIpv6Prefix }).(pulumi.StringPtrOutput)
 }
 
-// Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv4 Address Prefix.
 func (o TerminalServerConfigurationResponseOutput) SecondaryIpv4Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v TerminalServerConfigurationResponse) string { return v.SecondaryIpv4Prefix }).(pulumi.StringOutput)
 }
 
-// Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+// Secondary IPv6 Address Prefix.
 func (o TerminalServerConfigurationResponseOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TerminalServerConfigurationResponse) *string { return v.SecondaryIpv6Prefix }).(pulumi.StringPtrOutput)
 }
@@ -10015,10 +12921,12 @@ func (o VlanMatchConditionResponsePtrOutput) Vlans() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Configuration for infrastructure vpn.
+// Network and credential configuration currently applied on terminal server.
 type VpnConfigurationProperties struct {
+	// ARM Resource ID of the Network To Network Interconnect.
+	NetworkToNetworkInterconnectId *string `pulumi:"networkToNetworkInterconnectId"`
 	// option A properties
-	OptionAProperties *OptionAProperties `pulumi:"optionAProperties"`
+	OptionAProperties *VpnConfigurationPropertiesOptionAProperties `pulumi:"optionAProperties"`
 	// option B properties
 	OptionBProperties *FabricOptionBProperties `pulumi:"optionBProperties"`
 	// Peering option list.
@@ -10047,10 +12955,12 @@ type VpnConfigurationPropertiesInput interface {
 	ToVpnConfigurationPropertiesOutputWithContext(context.Context) VpnConfigurationPropertiesOutput
 }
 
-// Configuration for infrastructure vpn.
+// Network and credential configuration currently applied on terminal server.
 type VpnConfigurationPropertiesArgs struct {
+	// ARM Resource ID of the Network To Network Interconnect.
+	NetworkToNetworkInterconnectId pulumi.StringPtrInput `pulumi:"networkToNetworkInterconnectId"`
 	// option A properties
-	OptionAProperties OptionAPropertiesPtrInput `pulumi:"optionAProperties"`
+	OptionAProperties VpnConfigurationPropertiesOptionAPropertiesPtrInput `pulumi:"optionAProperties"`
 	// option B properties
 	OptionBProperties FabricOptionBPropertiesPtrInput `pulumi:"optionBProperties"`
 	// Peering option list.
@@ -10078,7 +12988,7 @@ func (i VpnConfigurationPropertiesArgs) ToVpnConfigurationPropertiesOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(VpnConfigurationPropertiesOutput)
 }
 
-// Configuration for infrastructure vpn.
+// Network and credential configuration currently applied on terminal server.
 type VpnConfigurationPropertiesOutput struct{ *pulumi.OutputState }
 
 func (VpnConfigurationPropertiesOutput) ElementType() reflect.Type {
@@ -10093,9 +13003,16 @@ func (o VpnConfigurationPropertiesOutput) ToVpnConfigurationPropertiesOutputWith
 	return o
 }
 
+// ARM Resource ID of the Network To Network Interconnect.
+func (o VpnConfigurationPropertiesOutput) NetworkToNetworkInterconnectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationProperties) *string { return v.NetworkToNetworkInterconnectId }).(pulumi.StringPtrOutput)
+}
+
 // option A properties
-func (o VpnConfigurationPropertiesOutput) OptionAProperties() OptionAPropertiesPtrOutput {
-	return o.ApplyT(func(v VpnConfigurationProperties) *OptionAProperties { return v.OptionAProperties }).(OptionAPropertiesPtrOutput)
+func (o VpnConfigurationPropertiesOutput) OptionAProperties() VpnConfigurationPropertiesOptionAPropertiesPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationProperties) *VpnConfigurationPropertiesOptionAProperties {
+		return v.OptionAProperties
+	}).(VpnConfigurationPropertiesOptionAPropertiesPtrOutput)
 }
 
 // option B properties
@@ -10108,14 +13025,314 @@ func (o VpnConfigurationPropertiesOutput) PeeringOption() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnConfigurationProperties) string { return v.PeeringOption }).(pulumi.StringOutput)
 }
 
-// Configuration for infrastructure vpn.
+// option A properties
+type VpnConfigurationPropertiesOptionAProperties struct {
+	// BFD Configuration properties.
+	BfdConfiguration *BfdConfiguration `pulumi:"bfdConfiguration"`
+	// MTU to use for option A peering.
+	Mtu *int `pulumi:"mtu"`
+	// Peer ASN number.Example : 28
+	PeerASN float64 `pulumi:"peerASN"`
+	// IPv4 Address Prefix.
+	PrimaryIpv4Prefix *string `pulumi:"primaryIpv4Prefix"`
+	// IPv6 Address Prefix.
+	PrimaryIpv6Prefix *string `pulumi:"primaryIpv6Prefix"`
+	// Secondary IPv4 Address Prefix.
+	SecondaryIpv4Prefix *string `pulumi:"secondaryIpv4Prefix"`
+	// Secondary IPv6 Address Prefix.
+	SecondaryIpv6Prefix *string `pulumi:"secondaryIpv6Prefix"`
+	// Vlan Id.Example : 501
+	VlanId int `pulumi:"vlanId"`
+}
+
+// Defaults sets the appropriate defaults for VpnConfigurationPropertiesOptionAProperties
+func (val *VpnConfigurationPropertiesOptionAProperties) Defaults() *VpnConfigurationPropertiesOptionAProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.BfdConfiguration = tmp.BfdConfiguration.Defaults()
+
+	if tmp.Mtu == nil {
+		mtu_ := 1500
+		tmp.Mtu = &mtu_
+	}
+	return &tmp
+}
+
+// VpnConfigurationPropertiesOptionAPropertiesInput is an input type that accepts VpnConfigurationPropertiesOptionAPropertiesArgs and VpnConfigurationPropertiesOptionAPropertiesOutput values.
+// You can construct a concrete instance of `VpnConfigurationPropertiesOptionAPropertiesInput` via:
+//
+//	VpnConfigurationPropertiesOptionAPropertiesArgs{...}
+type VpnConfigurationPropertiesOptionAPropertiesInput interface {
+	pulumi.Input
+
+	ToVpnConfigurationPropertiesOptionAPropertiesOutput() VpnConfigurationPropertiesOptionAPropertiesOutput
+	ToVpnConfigurationPropertiesOptionAPropertiesOutputWithContext(context.Context) VpnConfigurationPropertiesOptionAPropertiesOutput
+}
+
+// option A properties
+type VpnConfigurationPropertiesOptionAPropertiesArgs struct {
+	// BFD Configuration properties.
+	BfdConfiguration BfdConfigurationPtrInput `pulumi:"bfdConfiguration"`
+	// MTU to use for option A peering.
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// Peer ASN number.Example : 28
+	PeerASN pulumi.Float64Input `pulumi:"peerASN"`
+	// IPv4 Address Prefix.
+	PrimaryIpv4Prefix pulumi.StringPtrInput `pulumi:"primaryIpv4Prefix"`
+	// IPv6 Address Prefix.
+	PrimaryIpv6Prefix pulumi.StringPtrInput `pulumi:"primaryIpv6Prefix"`
+	// Secondary IPv4 Address Prefix.
+	SecondaryIpv4Prefix pulumi.StringPtrInput `pulumi:"secondaryIpv4Prefix"`
+	// Secondary IPv6 Address Prefix.
+	SecondaryIpv6Prefix pulumi.StringPtrInput `pulumi:"secondaryIpv6Prefix"`
+	// Vlan Id.Example : 501
+	VlanId pulumi.IntInput `pulumi:"vlanId"`
+}
+
+// Defaults sets the appropriate defaults for VpnConfigurationPropertiesOptionAPropertiesArgs
+func (val *VpnConfigurationPropertiesOptionAPropertiesArgs) Defaults() *VpnConfigurationPropertiesOptionAPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	if tmp.Mtu == nil {
+		tmp.Mtu = pulumi.IntPtr(1500)
+	}
+	return &tmp
+}
+func (VpnConfigurationPropertiesOptionAPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConfigurationPropertiesOptionAProperties)(nil)).Elem()
+}
+
+func (i VpnConfigurationPropertiesOptionAPropertiesArgs) ToVpnConfigurationPropertiesOptionAPropertiesOutput() VpnConfigurationPropertiesOptionAPropertiesOutput {
+	return i.ToVpnConfigurationPropertiesOptionAPropertiesOutputWithContext(context.Background())
+}
+
+func (i VpnConfigurationPropertiesOptionAPropertiesArgs) ToVpnConfigurationPropertiesOptionAPropertiesOutputWithContext(ctx context.Context) VpnConfigurationPropertiesOptionAPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConfigurationPropertiesOptionAPropertiesOutput)
+}
+
+func (i VpnConfigurationPropertiesOptionAPropertiesArgs) ToVpnConfigurationPropertiesOptionAPropertiesPtrOutput() VpnConfigurationPropertiesOptionAPropertiesPtrOutput {
+	return i.ToVpnConfigurationPropertiesOptionAPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VpnConfigurationPropertiesOptionAPropertiesArgs) ToVpnConfigurationPropertiesOptionAPropertiesPtrOutputWithContext(ctx context.Context) VpnConfigurationPropertiesOptionAPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConfigurationPropertiesOptionAPropertiesOutput).ToVpnConfigurationPropertiesOptionAPropertiesPtrOutputWithContext(ctx)
+}
+
+// VpnConfigurationPropertiesOptionAPropertiesPtrInput is an input type that accepts VpnConfigurationPropertiesOptionAPropertiesArgs, VpnConfigurationPropertiesOptionAPropertiesPtr and VpnConfigurationPropertiesOptionAPropertiesPtrOutput values.
+// You can construct a concrete instance of `VpnConfigurationPropertiesOptionAPropertiesPtrInput` via:
+//
+//	        VpnConfigurationPropertiesOptionAPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpnConfigurationPropertiesOptionAPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVpnConfigurationPropertiesOptionAPropertiesPtrOutput() VpnConfigurationPropertiesOptionAPropertiesPtrOutput
+	ToVpnConfigurationPropertiesOptionAPropertiesPtrOutputWithContext(context.Context) VpnConfigurationPropertiesOptionAPropertiesPtrOutput
+}
+
+type vpnConfigurationPropertiesOptionAPropertiesPtrType VpnConfigurationPropertiesOptionAPropertiesArgs
+
+func VpnConfigurationPropertiesOptionAPropertiesPtr(v *VpnConfigurationPropertiesOptionAPropertiesArgs) VpnConfigurationPropertiesOptionAPropertiesPtrInput {
+	return (*vpnConfigurationPropertiesOptionAPropertiesPtrType)(v)
+}
+
+func (*vpnConfigurationPropertiesOptionAPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConfigurationPropertiesOptionAProperties)(nil)).Elem()
+}
+
+func (i *vpnConfigurationPropertiesOptionAPropertiesPtrType) ToVpnConfigurationPropertiesOptionAPropertiesPtrOutput() VpnConfigurationPropertiesOptionAPropertiesPtrOutput {
+	return i.ToVpnConfigurationPropertiesOptionAPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConfigurationPropertiesOptionAPropertiesPtrType) ToVpnConfigurationPropertiesOptionAPropertiesPtrOutputWithContext(ctx context.Context) VpnConfigurationPropertiesOptionAPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConfigurationPropertiesOptionAPropertiesPtrOutput)
+}
+
+// option A properties
+type VpnConfigurationPropertiesOptionAPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VpnConfigurationPropertiesOptionAPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConfigurationPropertiesOptionAProperties)(nil)).Elem()
+}
+
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) ToVpnConfigurationPropertiesOptionAPropertiesOutput() VpnConfigurationPropertiesOptionAPropertiesOutput {
+	return o
+}
+
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) ToVpnConfigurationPropertiesOptionAPropertiesOutputWithContext(ctx context.Context) VpnConfigurationPropertiesOptionAPropertiesOutput {
+	return o
+}
+
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) ToVpnConfigurationPropertiesOptionAPropertiesPtrOutput() VpnConfigurationPropertiesOptionAPropertiesPtrOutput {
+	return o.ToVpnConfigurationPropertiesOptionAPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) ToVpnConfigurationPropertiesOptionAPropertiesPtrOutputWithContext(ctx context.Context) VpnConfigurationPropertiesOptionAPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConfigurationPropertiesOptionAProperties) *VpnConfigurationPropertiesOptionAProperties {
+		return &v
+	}).(VpnConfigurationPropertiesOptionAPropertiesPtrOutput)
+}
+
+// BFD Configuration properties.
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) BfdConfiguration() BfdConfigurationPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesOptionAProperties) *BfdConfiguration { return v.BfdConfiguration }).(BfdConfigurationPtrOutput)
+}
+
+// MTU to use for option A peering.
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesOptionAProperties) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+// Peer ASN number.Example : 28
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) PeerASN() pulumi.Float64Output {
+	return o.ApplyT(func(v VpnConfigurationPropertiesOptionAProperties) float64 { return v.PeerASN }).(pulumi.Float64Output)
+}
+
+// IPv4 Address Prefix.
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesOptionAProperties) *string { return v.PrimaryIpv4Prefix }).(pulumi.StringPtrOutput)
+}
+
+// IPv6 Address Prefix.
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesOptionAProperties) *string { return v.PrimaryIpv6Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv4 Address Prefix.
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesOptionAProperties) *string { return v.SecondaryIpv4Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv6 Address Prefix.
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesOptionAProperties) *string { return v.SecondaryIpv6Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Vlan Id.Example : 501
+func (o VpnConfigurationPropertiesOptionAPropertiesOutput) VlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesOptionAProperties) int { return v.VlanId }).(pulumi.IntOutput)
+}
+
+type VpnConfigurationPropertiesOptionAPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConfigurationPropertiesOptionAPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConfigurationPropertiesOptionAProperties)(nil)).Elem()
+}
+
+func (o VpnConfigurationPropertiesOptionAPropertiesPtrOutput) ToVpnConfigurationPropertiesOptionAPropertiesPtrOutput() VpnConfigurationPropertiesOptionAPropertiesPtrOutput {
+	return o
+}
+
+func (o VpnConfigurationPropertiesOptionAPropertiesPtrOutput) ToVpnConfigurationPropertiesOptionAPropertiesPtrOutputWithContext(ctx context.Context) VpnConfigurationPropertiesOptionAPropertiesPtrOutput {
+	return o
+}
+
+func (o VpnConfigurationPropertiesOptionAPropertiesPtrOutput) Elem() VpnConfigurationPropertiesOptionAPropertiesOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesOptionAProperties) VpnConfigurationPropertiesOptionAProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConfigurationPropertiesOptionAProperties
+		return ret
+	}).(VpnConfigurationPropertiesOptionAPropertiesOutput)
+}
+
+// BFD Configuration properties.
+func (o VpnConfigurationPropertiesOptionAPropertiesPtrOutput) BfdConfiguration() BfdConfigurationPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesOptionAProperties) *BfdConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.BfdConfiguration
+	}).(BfdConfigurationPtrOutput)
+}
+
+// MTU to use for option A peering.
+func (o VpnConfigurationPropertiesOptionAPropertiesPtrOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesOptionAProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Mtu
+	}).(pulumi.IntPtrOutput)
+}
+
+// Peer ASN number.Example : 28
+func (o VpnConfigurationPropertiesOptionAPropertiesPtrOutput) PeerASN() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesOptionAProperties) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.PeerASN
+	}).(pulumi.Float64PtrOutput)
+}
+
+// IPv4 Address Prefix.
+func (o VpnConfigurationPropertiesOptionAPropertiesPtrOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryIpv4Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPv6 Address Prefix.
+func (o VpnConfigurationPropertiesOptionAPropertiesPtrOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryIpv6Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv4 Address Prefix.
+func (o VpnConfigurationPropertiesOptionAPropertiesPtrOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryIpv4Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv6 Address Prefix.
+func (o VpnConfigurationPropertiesOptionAPropertiesPtrOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryIpv6Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Vlan Id.Example : 501
+func (o VpnConfigurationPropertiesOptionAPropertiesPtrOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesOptionAProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VlanId
+	}).(pulumi.IntPtrOutput)
+}
+
+// Network and credential configuration currently applied on terminal server.
 type VpnConfigurationPropertiesResponse struct {
-	// Indicates configuration state. Example: Enabled | Disabled.
+	// Administrative state of the resource.
 	AdministrativeState string `pulumi:"administrativeState"`
-	// Gets the networkToNetworkInterconnectId of the resource.
-	NetworkToNetworkInterconnectId string `pulumi:"networkToNetworkInterconnectId"`
+	// ARM Resource ID of the Network To Network Interconnect.
+	NetworkToNetworkInterconnectId *string `pulumi:"networkToNetworkInterconnectId"`
 	// option A properties
-	OptionAProperties *OptionAPropertiesResponse `pulumi:"optionAProperties"`
+	OptionAProperties *VpnConfigurationPropertiesResponseOptionAProperties `pulumi:"optionAProperties"`
 	// option B properties
 	OptionBProperties *FabricOptionBPropertiesResponse `pulumi:"optionBProperties"`
 	// Peering option list.
@@ -10133,7 +13350,7 @@ func (val *VpnConfigurationPropertiesResponse) Defaults() *VpnConfigurationPrope
 	return &tmp
 }
 
-// Configuration for infrastructure vpn.
+// Network and credential configuration currently applied on terminal server.
 type VpnConfigurationPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (VpnConfigurationPropertiesResponseOutput) ElementType() reflect.Type {
@@ -10148,19 +13365,21 @@ func (o VpnConfigurationPropertiesResponseOutput) ToVpnConfigurationPropertiesRe
 	return o
 }
 
-// Indicates configuration state. Example: Enabled | Disabled.
+// Administrative state of the resource.
 func (o VpnConfigurationPropertiesResponseOutput) AdministrativeState() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnConfigurationPropertiesResponse) string { return v.AdministrativeState }).(pulumi.StringOutput)
 }
 
-// Gets the networkToNetworkInterconnectId of the resource.
-func (o VpnConfigurationPropertiesResponseOutput) NetworkToNetworkInterconnectId() pulumi.StringOutput {
-	return o.ApplyT(func(v VpnConfigurationPropertiesResponse) string { return v.NetworkToNetworkInterconnectId }).(pulumi.StringOutput)
+// ARM Resource ID of the Network To Network Interconnect.
+func (o VpnConfigurationPropertiesResponseOutput) NetworkToNetworkInterconnectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesResponse) *string { return v.NetworkToNetworkInterconnectId }).(pulumi.StringPtrOutput)
 }
 
 // option A properties
-func (o VpnConfigurationPropertiesResponseOutput) OptionAProperties() OptionAPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v VpnConfigurationPropertiesResponse) *OptionAPropertiesResponse { return v.OptionAProperties }).(OptionAPropertiesResponsePtrOutput)
+func (o VpnConfigurationPropertiesResponseOutput) OptionAProperties() VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesResponse) *VpnConfigurationPropertiesResponseOptionAProperties {
+		return v.OptionAProperties
+	}).(VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput)
 }
 
 // option B properties
@@ -10175,44 +13394,219 @@ func (o VpnConfigurationPropertiesResponseOutput) PeeringOption() pulumi.StringO
 	return o.ApplyT(func(v VpnConfigurationPropertiesResponse) string { return v.PeeringOption }).(pulumi.StringOutput)
 }
 
-// WorkloadServices IP ranges.
-type WorkloadServicesResponse struct {
-	// The IPv4 Address space is optional, if the value is defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.
-	Ipv4AddressSpaces []string `pulumi:"ipv4AddressSpaces"`
-	// The IPv6 is not supported right now.
-	Ipv6AddressSpaces []string `pulumi:"ipv6AddressSpaces"`
+// option A properties
+type VpnConfigurationPropertiesResponseOptionAProperties struct {
+	// BFD Configuration properties.
+	BfdConfiguration *BfdConfigurationResponse `pulumi:"bfdConfiguration"`
+	// MTU to use for option A peering.
+	Mtu *int `pulumi:"mtu"`
+	// Peer ASN number.Example : 28
+	PeerASN float64 `pulumi:"peerASN"`
+	// IPv4 Address Prefix.
+	PrimaryIpv4Prefix *string `pulumi:"primaryIpv4Prefix"`
+	// IPv6 Address Prefix.
+	PrimaryIpv6Prefix *string `pulumi:"primaryIpv6Prefix"`
+	// Secondary IPv4 Address Prefix.
+	SecondaryIpv4Prefix *string `pulumi:"secondaryIpv4Prefix"`
+	// Secondary IPv6 Address Prefix.
+	SecondaryIpv6Prefix *string `pulumi:"secondaryIpv6Prefix"`
+	// Vlan Id.Example : 501
+	VlanId int `pulumi:"vlanId"`
 }
 
-// WorkloadServices IP ranges.
-type WorkloadServicesResponseOutput struct{ *pulumi.OutputState }
+// Defaults sets the appropriate defaults for VpnConfigurationPropertiesResponseOptionAProperties
+func (val *VpnConfigurationPropertiesResponseOptionAProperties) Defaults() *VpnConfigurationPropertiesResponseOptionAProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.BfdConfiguration = tmp.BfdConfiguration.Defaults()
 
-func (WorkloadServicesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadServicesResponse)(nil)).Elem()
+	if tmp.Mtu == nil {
+		mtu_ := 1500
+		tmp.Mtu = &mtu_
+	}
+	return &tmp
 }
 
-func (o WorkloadServicesResponseOutput) ToWorkloadServicesResponseOutput() WorkloadServicesResponseOutput {
+// option A properties
+type VpnConfigurationPropertiesResponseOptionAPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VpnConfigurationPropertiesResponseOptionAPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConfigurationPropertiesResponseOptionAProperties)(nil)).Elem()
+}
+
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesOutput) ToVpnConfigurationPropertiesResponseOptionAPropertiesOutput() VpnConfigurationPropertiesResponseOptionAPropertiesOutput {
 	return o
 }
 
-func (o WorkloadServicesResponseOutput) ToWorkloadServicesResponseOutputWithContext(ctx context.Context) WorkloadServicesResponseOutput {
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesOutput) ToVpnConfigurationPropertiesResponseOptionAPropertiesOutputWithContext(ctx context.Context) VpnConfigurationPropertiesResponseOptionAPropertiesOutput {
 	return o
 }
 
-// The IPv4 Address space is optional, if the value is defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.
-func (o WorkloadServicesResponseOutput) Ipv4AddressSpaces() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WorkloadServicesResponse) []string { return v.Ipv4AddressSpaces }).(pulumi.StringArrayOutput)
+// BFD Configuration properties.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesResponseOptionAProperties) *BfdConfigurationResponse {
+		return v.BfdConfiguration
+	}).(BfdConfigurationResponsePtrOutput)
 }
 
-// The IPv6 is not supported right now.
-func (o WorkloadServicesResponseOutput) Ipv6AddressSpaces() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WorkloadServicesResponse) []string { return v.Ipv6AddressSpaces }).(pulumi.StringArrayOutput)
+// MTU to use for option A peering.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesResponseOptionAProperties) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+// Peer ASN number.Example : 28
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesOutput) PeerASN() pulumi.Float64Output {
+	return o.ApplyT(func(v VpnConfigurationPropertiesResponseOptionAProperties) float64 { return v.PeerASN }).(pulumi.Float64Output)
+}
+
+// IPv4 Address Prefix.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesResponseOptionAProperties) *string { return v.PrimaryIpv4Prefix }).(pulumi.StringPtrOutput)
+}
+
+// IPv6 Address Prefix.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesResponseOptionAProperties) *string { return v.PrimaryIpv6Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv4 Address Prefix.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesResponseOptionAProperties) *string { return v.SecondaryIpv4Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv6 Address Prefix.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesResponseOptionAProperties) *string { return v.SecondaryIpv6Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Vlan Id.Example : 501
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesOutput) VlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v VpnConfigurationPropertiesResponseOptionAProperties) int { return v.VlanId }).(pulumi.IntOutput)
+}
+
+type VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConfigurationPropertiesResponseOptionAProperties)(nil)).Elem()
+}
+
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) ToVpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput() VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput {
+	return o
+}
+
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) ToVpnConfigurationPropertiesResponseOptionAPropertiesPtrOutputWithContext(ctx context.Context) VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput {
+	return o
+}
+
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) Elem() VpnConfigurationPropertiesResponseOptionAPropertiesOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesResponseOptionAProperties) VpnConfigurationPropertiesResponseOptionAProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConfigurationPropertiesResponseOptionAProperties
+		return ret
+	}).(VpnConfigurationPropertiesResponseOptionAPropertiesOutput)
+}
+
+// BFD Configuration properties.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) BfdConfiguration() BfdConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesResponseOptionAProperties) *BfdConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BfdConfiguration
+	}).(BfdConfigurationResponsePtrOutput)
+}
+
+// MTU to use for option A peering.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesResponseOptionAProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Mtu
+	}).(pulumi.IntPtrOutput)
+}
+
+// Peer ASN number.Example : 28
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) PeerASN() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesResponseOptionAProperties) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.PeerASN
+	}).(pulumi.Float64PtrOutput)
+}
+
+// IPv4 Address Prefix.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) PrimaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesResponseOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryIpv4Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPv6 Address Prefix.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) PrimaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesResponseOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryIpv6Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv4 Address Prefix.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) SecondaryIpv4Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesResponseOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryIpv4Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secondary IPv6 Address Prefix.
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) SecondaryIpv6Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesResponseOptionAProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryIpv6Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Vlan Id.Example : 501
+func (o VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConfigurationPropertiesResponseOptionAProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VlanId
+	}).(pulumi.IntPtrOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(AccessControlListConditionPropertiesOutput{})
-	pulumi.RegisterOutputType(AccessControlListConditionPropertiesArrayOutput{})
-	pulumi.RegisterOutputType(AccessControlListConditionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(AccessControlListConditionPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(AccessControlListActionOutput{})
+	pulumi.RegisterOutputType(AccessControlListActionArrayOutput{})
+	pulumi.RegisterOutputType(AccessControlListActionResponseOutput{})
+	pulumi.RegisterOutputType(AccessControlListActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(AccessControlListMatchConditionOutput{})
+	pulumi.RegisterOutputType(AccessControlListMatchConditionArrayOutput{})
+	pulumi.RegisterOutputType(AccessControlListMatchConditionResponseOutput{})
+	pulumi.RegisterOutputType(AccessControlListMatchConditionResponseArrayOutput{})
+	pulumi.RegisterOutputType(AccessControlListMatchConfigurationOutput{})
+	pulumi.RegisterOutputType(AccessControlListMatchConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(AccessControlListMatchConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AccessControlListMatchConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(AccessControlListPortConditionOutput{})
+	pulumi.RegisterOutputType(AccessControlListPortConditionPtrOutput{})
+	pulumi.RegisterOutputType(AccessControlListPortConditionResponseOutput{})
+	pulumi.RegisterOutputType(AccessControlListPortConditionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ActionIpCommunityPropertiesOutput{})
 	pulumi.RegisterOutputType(ActionIpCommunityPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ActionIpCommunityPropertiesResponseOutput{})
@@ -10229,12 +13623,10 @@ func init() {
 	pulumi.RegisterOutputType(AggregateRouteConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(AggregateRouteResponseOutput{})
 	pulumi.RegisterOutputType(AggregateRouteResponseArrayOutput{})
+	pulumi.RegisterOutputType(BfdConfigurationOutput{})
+	pulumi.RegisterOutputType(BfdConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(BfdConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(BfdConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(BgpConfigurationOutput{})
-	pulumi.RegisterOutputType(BgpConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(BgpConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(BgpConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(CommonDynamicMatchConfigurationOutput{})
 	pulumi.RegisterOutputType(CommonDynamicMatchConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(CommonDynamicMatchConfigurationResponseOutput{})
@@ -10243,11 +13635,24 @@ func init() {
 	pulumi.RegisterOutputType(ConnectedSubnetArrayOutput{})
 	pulumi.RegisterOutputType(ConnectedSubnetResponseOutput{})
 	pulumi.RegisterOutputType(ConnectedSubnetResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConnectedSubnetRoutePolicyOutput{})
+	pulumi.RegisterOutputType(ConnectedSubnetRoutePolicyPtrOutput{})
+	pulumi.RegisterOutputType(ConnectedSubnetRoutePolicyResponseOutput{})
+	pulumi.RegisterOutputType(ConnectedSubnetRoutePolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ControllerServicesResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
+	pulumi.RegisterOutputType(ExportRoutePolicyOutput{})
+	pulumi.RegisterOutputType(ExportRoutePolicyPtrOutput{})
+	pulumi.RegisterOutputType(ExportRoutePolicyInformationOutput{})
+	pulumi.RegisterOutputType(ExportRoutePolicyInformationPtrOutput{})
+	pulumi.RegisterOutputType(ExportRoutePolicyInformationResponseOutput{})
+	pulumi.RegisterOutputType(ExportRoutePolicyInformationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ExportRoutePolicyResponseOutput{})
+	pulumi.RegisterOutputType(ExportRoutePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExpressRouteConnectionInformationOutput{})
 	pulumi.RegisterOutputType(ExpressRouteConnectionInformationArrayOutput{})
 	pulumi.RegisterOutputType(ExpressRouteConnectionInformationResponseOutput{})
@@ -10256,21 +13661,42 @@ func init() {
 	pulumi.RegisterOutputType(ExternalNetworkPropertiesOptionAPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ExternalNetworkPropertiesResponseOptionAPropertiesOutput{})
 	pulumi.RegisterOutputType(ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(FabricBfdConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(FabricBfdConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(FabricOptionBPropertiesOutput{})
 	pulumi.RegisterOutputType(FabricOptionBPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(FabricOptionBPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(FabricOptionBPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(InfrastructureServicesResponseOutput{})
+	pulumi.RegisterOutputType(ImportRoutePolicyOutput{})
+	pulumi.RegisterOutputType(ImportRoutePolicyPtrOutput{})
+	pulumi.RegisterOutputType(ImportRoutePolicyInformationOutput{})
+	pulumi.RegisterOutputType(ImportRoutePolicyInformationPtrOutput{})
+	pulumi.RegisterOutputType(ImportRoutePolicyInformationResponseOutput{})
+	pulumi.RegisterOutputType(ImportRoutePolicyInformationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ImportRoutePolicyResponseOutput{})
+	pulumi.RegisterOutputType(ImportRoutePolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(InternalNetworkPropertiesBgpConfigurationOutput{})
+	pulumi.RegisterOutputType(InternalNetworkPropertiesBgpConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(InternalNetworkPropertiesResponseBgpConfigurationOutput{})
+	pulumi.RegisterOutputType(InternalNetworkPropertiesResponseBgpConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(InternalNetworkPropertiesResponseStaticRouteConfigurationOutput{})
+	pulumi.RegisterOutputType(InternalNetworkPropertiesResponseStaticRouteConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(InternalNetworkPropertiesStaticRouteConfigurationOutput{})
+	pulumi.RegisterOutputType(InternalNetworkPropertiesStaticRouteConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(IpCommunityIdListOutput{})
 	pulumi.RegisterOutputType(IpCommunityIdListPtrOutput{})
 	pulumi.RegisterOutputType(IpCommunityIdListResponseOutput{})
 	pulumi.RegisterOutputType(IpCommunityIdListResponsePtrOutput{})
+	pulumi.RegisterOutputType(IpCommunityRuleOutput{})
+	pulumi.RegisterOutputType(IpCommunityRuleArrayOutput{})
+	pulumi.RegisterOutputType(IpCommunityRuleResponseOutput{})
+	pulumi.RegisterOutputType(IpCommunityRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(IpExtendedCommunityIdListOutput{})
 	pulumi.RegisterOutputType(IpExtendedCommunityIdListPtrOutput{})
 	pulumi.RegisterOutputType(IpExtendedCommunityIdListResponseOutput{})
 	pulumi.RegisterOutputType(IpExtendedCommunityIdListResponsePtrOutput{})
+	pulumi.RegisterOutputType(IpExtendedCommunityRuleOutput{})
+	pulumi.RegisterOutputType(IpExtendedCommunityRuleArrayOutput{})
+	pulumi.RegisterOutputType(IpExtendedCommunityRuleResponseOutput{})
+	pulumi.RegisterOutputType(IpExtendedCommunityRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(IpGroupPropertiesOutput{})
 	pulumi.RegisterOutputType(IpGroupPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(IpGroupPropertiesResponseOutput{})
@@ -10279,32 +13705,32 @@ func init() {
 	pulumi.RegisterOutputType(IpMatchConditionPtrOutput{})
 	pulumi.RegisterOutputType(IpMatchConditionResponseOutput{})
 	pulumi.RegisterOutputType(IpMatchConditionResponsePtrOutput{})
-	pulumi.RegisterOutputType(IpPrefixPropertiesIpPrefixRulesOutput{})
-	pulumi.RegisterOutputType(IpPrefixPropertiesIpPrefixRulesArrayOutput{})
-	pulumi.RegisterOutputType(IpPrefixPropertiesResponseIpPrefixRulesOutput{})
-	pulumi.RegisterOutputType(IpPrefixPropertiesResponseIpPrefixRulesArrayOutput{})
+	pulumi.RegisterOutputType(IpPrefixRuleOutput{})
+	pulumi.RegisterOutputType(IpPrefixRuleArrayOutput{})
+	pulumi.RegisterOutputType(IpPrefixRuleResponseOutput{})
+	pulumi.RegisterOutputType(IpPrefixRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(IsolationDomainPropertiesOutput{})
 	pulumi.RegisterOutputType(IsolationDomainPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(IsolationDomainPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(IsolationDomainPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyOutput{})
-	pulumi.RegisterOutputType(L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyPtrOutput{})
-	pulumi.RegisterOutputType(L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyOutput{})
-	pulumi.RegisterOutputType(L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicyPtrOutput{})
+	pulumi.RegisterOutputType(L3ExportRoutePolicyOutput{})
+	pulumi.RegisterOutputType(L3ExportRoutePolicyPtrOutput{})
+	pulumi.RegisterOutputType(L3ExportRoutePolicyResponseOutput{})
+	pulumi.RegisterOutputType(L3ExportRoutePolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(L3OptionBPropertiesOutput{})
+	pulumi.RegisterOutputType(L3OptionBPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(L3OptionBPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(L3OptionBPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(Layer2ConfigurationOutput{})
 	pulumi.RegisterOutputType(Layer2ConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(Layer2ConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(Layer2ConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(Layer3ConfigurationOutput{})
-	pulumi.RegisterOutputType(Layer3ConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(Layer3ConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(Layer3ConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ManagementNetworkConfigurationOutput{})
-	pulumi.RegisterOutputType(ManagementNetworkConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ManagementNetworkConfigurationPropertiesOutput{})
+	pulumi.RegisterOutputType(ManagementNetworkConfigurationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(NeighborAddressOutput{})
 	pulumi.RegisterOutputType(NeighborAddressArrayOutput{})
 	pulumi.RegisterOutputType(NeighborAddressResponseOutput{})
@@ -10327,14 +13753,14 @@ func init() {
 	pulumi.RegisterOutputType(NetworkTapRuleMatchConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(NetworkTapRuleMatchConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(NetworkTapRuleMatchConfigurationResponseArrayOutput{})
-	pulumi.RegisterOutputType(OptionAPropertiesOutput{})
-	pulumi.RegisterOutputType(OptionAPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(OptionAPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(OptionAPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(OptionBPropertiesOutput{})
-	pulumi.RegisterOutputType(OptionBPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(OptionBPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(OptionBPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationOutput{})
+	pulumi.RegisterOutputType(NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationOutput{})
+	pulumi.RegisterOutputType(NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3ConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(NpbStaticRouteConfigurationOutput{})
+	pulumi.RegisterOutputType(NpbStaticRouteConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(NpbStaticRouteConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(NpbStaticRouteConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(PortConditionOutput{})
 	pulumi.RegisterOutputType(PortConditionPtrOutput{})
 	pulumi.RegisterOutputType(PortConditionResponseOutput{})
@@ -10347,16 +13773,16 @@ func init() {
 	pulumi.RegisterOutputType(RoutePolicyStatementPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(RoutePolicyStatementPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RoutePolicyStatementPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(RouteTargetInformationOutput{})
+	pulumi.RegisterOutputType(RouteTargetInformationPtrOutput{})
+	pulumi.RegisterOutputType(RouteTargetInformationResponseOutput{})
+	pulumi.RegisterOutputType(RouteTargetInformationResponsePtrOutput{})
 	pulumi.RegisterOutputType(RulePropertiesOutput{})
 	pulumi.RegisterOutputType(RulePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(StatementActionPropertiesOutput{})
 	pulumi.RegisterOutputType(StatementActionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(StatementConditionPropertiesOutput{})
 	pulumi.RegisterOutputType(StatementConditionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(StaticRouteConfigurationOutput{})
-	pulumi.RegisterOutputType(StaticRouteConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(StaticRouteConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(StaticRouteConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(StaticRoutePropertiesOutput{})
 	pulumi.RegisterOutputType(StaticRoutePropertiesArrayOutput{})
 	pulumi.RegisterOutputType(StaticRoutePropertiesResponseOutput{})
@@ -10373,6 +13799,9 @@ func init() {
 	pulumi.RegisterOutputType(VlanMatchConditionResponseOutput{})
 	pulumi.RegisterOutputType(VlanMatchConditionResponsePtrOutput{})
 	pulumi.RegisterOutputType(VpnConfigurationPropertiesOutput{})
+	pulumi.RegisterOutputType(VpnConfigurationPropertiesOptionAPropertiesOutput{})
+	pulumi.RegisterOutputType(VpnConfigurationPropertiesOptionAPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(VpnConfigurationPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(WorkloadServicesResponseOutput{})
+	pulumi.RegisterOutputType(VpnConfigurationPropertiesResponseOptionAPropertiesOutput{})
+	pulumi.RegisterOutputType(VpnConfigurationPropertiesResponseOptionAPropertiesPtrOutput{})
 }

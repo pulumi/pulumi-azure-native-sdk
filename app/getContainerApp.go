@@ -13,9 +13,9 @@ import (
 
 // Container App.
 //
-// Uses Azure REST API version 2022-10-01.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
+// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupContainerApp(ctx *pulumi.Context, args *LookupContainerAppArgs, opts ...pulumi.InvokeOption) (*LookupContainerAppResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerAppResult
@@ -35,6 +35,8 @@ type LookupContainerAppArgs struct {
 
 // Container App.
 type LookupContainerAppResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Non versioned Container App configuration properties.
 	Configuration *ConfigurationResponse `pulumi:"configuration"`
 	// Id used to verify domain name ownership
@@ -57,6 +59,8 @@ type LookupContainerAppResult struct {
 	LatestRevisionName string `pulumi:"latestRevisionName"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
+	ManagedBy *string `pulumi:"managedBy"`
 	// Deprecated. Resource ID of the Container App's environment.
 	ManagedEnvironmentId *string `pulumi:"managedEnvironmentId"`
 	// The name of the resource
@@ -73,8 +77,8 @@ type LookupContainerAppResult struct {
 	Template *TemplateResponse `pulumi:"template"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Workload profile type to pin for container app execution.
-	WorkloadProfileType *string `pulumi:"workloadProfileType"`
+	// Workload profile name to pin for container app execution.
+	WorkloadProfileName *string `pulumi:"workloadProfileName"`
 }
 
 // Defaults sets the appropriate defaults for LookupContainerAppResult
@@ -122,6 +126,11 @@ func (o LookupContainerAppResultOutput) ToLookupContainerAppResultOutput() Looku
 
 func (o LookupContainerAppResultOutput) ToLookupContainerAppResultOutputWithContext(ctx context.Context) LookupContainerAppResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupContainerAppResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Non versioned Container App configuration properties.
@@ -179,6 +188,11 @@ func (o LookupContainerAppResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
+func (o LookupContainerAppResultOutput) ManagedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) *string { return v.ManagedBy }).(pulumi.StringPtrOutput)
+}
+
 // Deprecated. Resource ID of the Container App's environment.
 func (o LookupContainerAppResultOutput) ManagedEnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) *string { return v.ManagedEnvironmentId }).(pulumi.StringPtrOutput)
@@ -219,9 +233,9 @@ func (o LookupContainerAppResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Workload profile type to pin for container app execution.
-func (o LookupContainerAppResultOutput) WorkloadProfileType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupContainerAppResult) *string { return v.WorkloadProfileType }).(pulumi.StringPtrOutput)
+// Workload profile name to pin for container app execution.
+func (o LookupContainerAppResultOutput) WorkloadProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) *string { return v.WorkloadProfileName }).(pulumi.StringPtrOutput)
 }
 
 func init() {

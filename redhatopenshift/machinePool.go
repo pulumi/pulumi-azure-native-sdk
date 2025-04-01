@@ -14,12 +14,14 @@ import (
 
 // MachinePool represents a MachinePool
 //
-// Uses Azure REST API version 2022-09-04.
+// Uses Azure REST API version 2023-11-22. In version 2.x of the Azure Native provider, it used API version 2022-09-04.
 //
-// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22.
+// Other available API versions: 2022-09-04, 2023-04-01, 2023-07-01-preview, 2023-09-04. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redhatopenshift [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MachinePool struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name      pulumi.StringOutput    `pulumi:"name"`
 	Resources pulumi.StringPtrOutput `pulumi:"resources"`
@@ -148,6 +150,11 @@ func (o MachinePoolOutput) ToMachinePoolOutput() MachinePoolOutput {
 
 func (o MachinePoolOutput) ToMachinePoolOutputWithContext(ctx context.Context) MachinePoolOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MachinePoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachinePool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

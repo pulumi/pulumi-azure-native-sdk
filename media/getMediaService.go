@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-01-01.
 //
-// Other available API versions: 2015-10-01.
+// Other available API versions: 2015-10-01, 2018-03-30-preview, 2018-06-01-preview, 2018-07-01, 2020-05-01, 2021-05-01, 2021-06-01, 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMediaService(ctx *pulumi.Context, args *LookupMediaServiceArgs, opts ...pulumi.InvokeOption) (*LookupMediaServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMediaServiceResult
@@ -35,6 +35,8 @@ type LookupMediaServiceArgs struct {
 
 // A Media Services account.
 type LookupMediaServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The account encryption properties.
 	Encryption *AccountEncryptionResponse `pulumi:"encryption"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -113,6 +115,11 @@ func (o LookupMediaServiceResultOutput) ToLookupMediaServiceResultOutput() Looku
 
 func (o LookupMediaServiceResultOutput) ToLookupMediaServiceResultOutputWithContext(ctx context.Context) LookupMediaServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMediaServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMediaServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The account encryption properties.

@@ -14,16 +14,18 @@ import (
 
 // Azure Active Directory administrator.
 //
-// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
+// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 //
-// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2014-04-01, 2018-06-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ServerAzureADAdministrator struct {
 	pulumi.CustomResourceState
 
 	// Type of the sever administrator.
-	AdministratorType pulumi.StringOutput `pulumi:"administratorType"`
+	AdministratorType pulumi.StringPtrOutput `pulumi:"administratorType"`
 	// Azure Active Directory only Authentication enabled.
 	AzureADOnlyAuthentication pulumi.BoolOutput `pulumi:"azureADOnlyAuthentication"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Login name of the server administrator.
 	Login pulumi.StringOutput `pulumi:"login"`
 	// Resource name.
@@ -43,9 +45,6 @@ func NewServerAzureADAdministrator(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AdministratorType == nil {
-		return nil, errors.New("invalid value for required argument 'AdministratorType'")
-	}
 	if args.Login == nil {
 		return nil, errors.New("invalid value for required argument 'Login'")
 	}
@@ -157,7 +156,7 @@ type serverAzureADAdministratorArgs struct {
 	// The name of server active directory administrator.
 	AdministratorName *string `pulumi:"administratorName"`
 	// Type of the sever administrator.
-	AdministratorType string `pulumi:"administratorType"`
+	AdministratorType *string `pulumi:"administratorType"`
 	// Login name of the server administrator.
 	Login string `pulumi:"login"`
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -175,7 +174,7 @@ type ServerAzureADAdministratorArgs struct {
 	// The name of server active directory administrator.
 	AdministratorName pulumi.StringPtrInput
 	// Type of the sever administrator.
-	AdministratorType pulumi.StringInput
+	AdministratorType pulumi.StringPtrInput
 	// Login name of the server administrator.
 	Login pulumi.StringInput
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -226,13 +225,18 @@ func (o ServerAzureADAdministratorOutput) ToServerAzureADAdministratorOutputWith
 }
 
 // Type of the sever administrator.
-func (o ServerAzureADAdministratorOutput) AdministratorType() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServerAzureADAdministrator) pulumi.StringOutput { return v.AdministratorType }).(pulumi.StringOutput)
+func (o ServerAzureADAdministratorOutput) AdministratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerAzureADAdministrator) pulumi.StringPtrOutput { return v.AdministratorType }).(pulumi.StringPtrOutput)
 }
 
 // Azure Active Directory only Authentication enabled.
 func (o ServerAzureADAdministratorOutput) AzureADOnlyAuthentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServerAzureADAdministrator) pulumi.BoolOutput { return v.AzureADOnlyAuthentication }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o ServerAzureADAdministratorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerAzureADAdministrator) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Login name of the server administrator.

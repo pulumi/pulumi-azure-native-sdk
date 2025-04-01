@@ -13,9 +13,9 @@ import (
 
 // Get a trusted Signing Account.
 //
-// Uses Azure REST API version 2024-02-05-preview.
+// Uses Azure REST API version 2024-09-30-preview.
 //
-// Other available API versions: 2024-09-30-preview.
+// Other available API versions: 2024-02-05-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCodeSigningAccount(ctx *pulumi.Context, args *LookupCodeSigningAccountArgs, opts ...pulumi.InvokeOption) (*LookupCodeSigningAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCodeSigningAccountResult
@@ -37,6 +37,8 @@ type LookupCodeSigningAccountArgs struct {
 type LookupCodeSigningAccountResult struct {
 	// The URI of the trusted signing account which is used during signing files.
 	AccountUri string `pulumi:"accountUri"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -93,6 +95,11 @@ func (o LookupCodeSigningAccountResultOutput) ToLookupCodeSigningAccountResultOu
 // The URI of the trusted signing account which is used during signing files.
 func (o LookupCodeSigningAccountResultOutput) AccountUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCodeSigningAccountResult) string { return v.AccountUri }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupCodeSigningAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCodeSigningAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

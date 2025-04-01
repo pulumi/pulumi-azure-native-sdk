@@ -14,10 +14,12 @@ import (
 
 // A notification.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type NotificationChannel struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the notification channel.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// Description of notification.
@@ -180,6 +182,11 @@ func (o NotificationChannelOutput) ToNotificationChannelOutput() NotificationCha
 
 func (o NotificationChannelOutput) ToNotificationChannelOutputWithContext(ctx context.Context) NotificationChannelOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NotificationChannelOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationChannel) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the notification channel.

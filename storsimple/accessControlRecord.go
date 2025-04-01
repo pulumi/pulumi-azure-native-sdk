@@ -14,10 +14,12 @@ import (
 
 // The access control record.
 //
-// Uses Azure REST API version 2017-06-01. In version 1.x of the Azure Native provider, it used API version 2017-06-01.
+// Uses Azure REST API version 2017-06-01. In version 2.x of the Azure Native provider, it used API version 2017-06-01.
 type AccessControlRecord struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The iSCSI initiator name (IQN).
 	InitiatorName pulumi.StringOutput `pulumi:"initiatorName"`
 	// The Kind of the object. Currently only Series8000 is supported
@@ -149,6 +151,11 @@ func (o AccessControlRecordOutput) ToAccessControlRecordOutput() AccessControlRe
 
 func (o AccessControlRecordOutput) ToAccessControlRecordOutputWithContext(ctx context.Context) AccessControlRecordOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AccessControlRecordOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessControlRecord) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The iSCSI initiator name (IQN).

@@ -13,9 +13,9 @@ import (
 
 // Gets a description for the specified namespace.
 //
-// Uses Azure REST API version 2022-01-01-preview.
+// Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceResult
@@ -29,7 +29,7 @@ func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pul
 type LookupNamespaceArgs struct {
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -37,6 +37,8 @@ type LookupNamespaceArgs struct {
 type LookupNamespaceResult struct {
 	// Alternate name for namespace
 	AlternateName *string `pulumi:"alternateName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The time the namespace was created
 	CreatedAt string `pulumi:"createdAt"`
 	// This property disables SAS authentication for the Service Bus namespace.
@@ -55,6 +57,8 @@ type LookupNamespaceResult struct {
 	MinimumTlsVersion *string `pulumi:"minimumTlsVersion"`
 	// Resource name
 	Name string `pulumi:"name"`
+	// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
+	PremiumMessagingPartitions *int `pulumi:"premiumMessagingPartitions"`
 	// List of private endpoint connections.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the namespace.
@@ -105,7 +109,7 @@ func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, 
 type LookupNamespaceOutputArgs struct {
 	// The namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -131,6 +135,11 @@ func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ct
 // Alternate name for namespace
 func (o LookupNamespaceResultOutput) AlternateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.AlternateName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNamespaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the namespace was created
@@ -176,6 +185,11 @@ func (o LookupNamespaceResultOutput) MinimumTlsVersion() pulumi.StringPtrOutput 
 // Resource name
 func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
+func (o LookupNamespaceResultOutput) PremiumMessagingPartitions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) *int { return v.PremiumMessagingPartitions }).(pulumi.IntPtrOutput)
 }
 
 // List of private endpoint connections.

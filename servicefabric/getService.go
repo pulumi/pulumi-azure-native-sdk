@@ -14,8 +14,6 @@ import (
 // Get a Service Fabric service resource created or in the process of being created in the Service Fabric managed application resource.
 //
 // Uses Azure REST API version 2024-11-01-preview.
-//
-// Other available API versions: 2021-06-01.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceResult
@@ -39,6 +37,8 @@ type LookupServiceArgs struct {
 
 // The service resource.
 type LookupServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -92,6 +92,11 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceRe
 
 func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

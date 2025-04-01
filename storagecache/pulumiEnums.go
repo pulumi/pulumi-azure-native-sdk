@@ -176,6 +176,174 @@ func (in *amlFilesystemIdentityTypePtr) ToAmlFilesystemIdentityTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(AmlFilesystemIdentityTypePtrOutput)
 }
 
+// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
+type AmlFilesystemSquashMode string
+
+const (
+	AmlFilesystemSquashModeNone     = AmlFilesystemSquashMode("None")
+	AmlFilesystemSquashModeRootOnly = AmlFilesystemSquashMode("RootOnly")
+	AmlFilesystemSquashModeAll      = AmlFilesystemSquashMode("All")
+)
+
+func (AmlFilesystemSquashMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemSquashMode)(nil)).Elem()
+}
+
+func (e AmlFilesystemSquashMode) ToAmlFilesystemSquashModeOutput() AmlFilesystemSquashModeOutput {
+	return pulumi.ToOutput(e).(AmlFilesystemSquashModeOutput)
+}
+
+func (e AmlFilesystemSquashMode) ToAmlFilesystemSquashModeOutputWithContext(ctx context.Context) AmlFilesystemSquashModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AmlFilesystemSquashModeOutput)
+}
+
+func (e AmlFilesystemSquashMode) ToAmlFilesystemSquashModePtrOutput() AmlFilesystemSquashModePtrOutput {
+	return e.ToAmlFilesystemSquashModePtrOutputWithContext(context.Background())
+}
+
+func (e AmlFilesystemSquashMode) ToAmlFilesystemSquashModePtrOutputWithContext(ctx context.Context) AmlFilesystemSquashModePtrOutput {
+	return AmlFilesystemSquashMode(e).ToAmlFilesystemSquashModeOutputWithContext(ctx).ToAmlFilesystemSquashModePtrOutputWithContext(ctx)
+}
+
+func (e AmlFilesystemSquashMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AmlFilesystemSquashMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AmlFilesystemSquashMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AmlFilesystemSquashMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AmlFilesystemSquashModeOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemSquashModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmlFilesystemSquashMode)(nil)).Elem()
+}
+
+func (o AmlFilesystemSquashModeOutput) ToAmlFilesystemSquashModeOutput() AmlFilesystemSquashModeOutput {
+	return o
+}
+
+func (o AmlFilesystemSquashModeOutput) ToAmlFilesystemSquashModeOutputWithContext(ctx context.Context) AmlFilesystemSquashModeOutput {
+	return o
+}
+
+func (o AmlFilesystemSquashModeOutput) ToAmlFilesystemSquashModePtrOutput() AmlFilesystemSquashModePtrOutput {
+	return o.ToAmlFilesystemSquashModePtrOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemSquashModeOutput) ToAmlFilesystemSquashModePtrOutputWithContext(ctx context.Context) AmlFilesystemSquashModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AmlFilesystemSquashMode) *AmlFilesystemSquashMode {
+		return &v
+	}).(AmlFilesystemSquashModePtrOutput)
+}
+
+func (o AmlFilesystemSquashModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemSquashModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AmlFilesystemSquashMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AmlFilesystemSquashModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemSquashModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AmlFilesystemSquashMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AmlFilesystemSquashModePtrOutput struct{ *pulumi.OutputState }
+
+func (AmlFilesystemSquashModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmlFilesystemSquashMode)(nil)).Elem()
+}
+
+func (o AmlFilesystemSquashModePtrOutput) ToAmlFilesystemSquashModePtrOutput() AmlFilesystemSquashModePtrOutput {
+	return o
+}
+
+func (o AmlFilesystemSquashModePtrOutput) ToAmlFilesystemSquashModePtrOutputWithContext(ctx context.Context) AmlFilesystemSquashModePtrOutput {
+	return o
+}
+
+func (o AmlFilesystemSquashModePtrOutput) Elem() AmlFilesystemSquashModeOutput {
+	return o.ApplyT(func(v *AmlFilesystemSquashMode) AmlFilesystemSquashMode {
+		if v != nil {
+			return *v
+		}
+		var ret AmlFilesystemSquashMode
+		return ret
+	}).(AmlFilesystemSquashModeOutput)
+}
+
+func (o AmlFilesystemSquashModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AmlFilesystemSquashModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AmlFilesystemSquashMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AmlFilesystemSquashModeInput is an input type that accepts values of the AmlFilesystemSquashMode enum
+// A concrete instance of `AmlFilesystemSquashModeInput` can be one of the following:
+//
+//	AmlFilesystemSquashModeNone
+//	AmlFilesystemSquashModeRootOnly
+//	AmlFilesystemSquashModeAll
+type AmlFilesystemSquashModeInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemSquashModeOutput() AmlFilesystemSquashModeOutput
+	ToAmlFilesystemSquashModeOutputWithContext(context.Context) AmlFilesystemSquashModeOutput
+}
+
+var amlFilesystemSquashModePtrType = reflect.TypeOf((**AmlFilesystemSquashMode)(nil)).Elem()
+
+type AmlFilesystemSquashModePtrInput interface {
+	pulumi.Input
+
+	ToAmlFilesystemSquashModePtrOutput() AmlFilesystemSquashModePtrOutput
+	ToAmlFilesystemSquashModePtrOutputWithContext(context.Context) AmlFilesystemSquashModePtrOutput
+}
+
+type amlFilesystemSquashModePtr string
+
+func AmlFilesystemSquashModePtr(v string) AmlFilesystemSquashModePtrInput {
+	return (*amlFilesystemSquashModePtr)(&v)
+}
+
+func (*amlFilesystemSquashModePtr) ElementType() reflect.Type {
+	return amlFilesystemSquashModePtrType
+}
+
+func (in *amlFilesystemSquashModePtr) ToAmlFilesystemSquashModePtrOutput() AmlFilesystemSquashModePtrOutput {
+	return pulumi.ToOutput(in).(AmlFilesystemSquashModePtrOutput)
+}
+
+func (in *amlFilesystemSquashModePtr) ToAmlFilesystemSquashModePtrOutputWithContext(ctx context.Context) AmlFilesystemSquashModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AmlFilesystemSquashModePtrOutput)
+}
+
 // The type of identity used for the cache
 type CacheIdentityType string
 
@@ -1541,6 +1709,8 @@ func (in *usernameSourcePtr) ToUsernameSourcePtrOutputWithContext(ctx context.Co
 func init() {
 	pulumi.RegisterOutputType(AmlFilesystemIdentityTypeOutput{})
 	pulumi.RegisterOutputType(AmlFilesystemIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemSquashModeOutput{})
+	pulumi.RegisterOutputType(AmlFilesystemSquashModePtrOutput{})
 	pulumi.RegisterOutputType(CacheIdentityTypeOutput{})
 	pulumi.RegisterOutputType(CacheIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(ConflictResolutionModeOutput{})

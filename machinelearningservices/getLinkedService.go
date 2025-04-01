@@ -35,6 +35,8 @@ type LookupLinkedServiceArgs struct {
 
 // Linked service.
 type LookupLinkedServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ResourceId of the link of the linked service.
 	Id string `pulumi:"id"`
 	// Identity for the resource.
@@ -84,6 +86,11 @@ func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutput() Loo
 
 func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutputWithContext(ctx context.Context) LookupLinkedServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLinkedServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ResourceId of the link of the linked service.

@@ -33,6 +33,8 @@ type LookupNetworkArgs struct {
 
 // This type describes a network resource.
 type LookupNetworkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -80,6 +82,11 @@ func (o LookupNetworkResultOutput) ToLookupNetworkResultOutput() LookupNetworkRe
 
 func (o LookupNetworkResultOutput) ToLookupNetworkResultOutputWithContext(ctx context.Context) LookupNetworkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

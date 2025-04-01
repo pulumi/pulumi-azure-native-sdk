@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-05-15-preview.
 //
-// Other available API versions: 2024-10-23.
+// Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPackage(ctx *pulumi.Context, args *LookupPackageArgs, opts ...pulumi.InvokeOption) (*LookupPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPackageResult
@@ -41,6 +41,8 @@ type LookupPackageArgs struct {
 type LookupPackageResult struct {
 	// Metadata pertaining to creation and last modification of the resource.
 	AllOf SystemDataResponse `pulumi:"allOf"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the contentLink of the Package.
 	ContentLink *ContentLinkResponse `pulumi:"contentLink"`
 	// Gets or sets the isGlobal flag of the package.
@@ -109,6 +111,11 @@ func (o LookupPackageResultOutput) ToLookupPackageResultOutputWithContext(ctx co
 // Metadata pertaining to creation and last modification of the resource.
 func (o LookupPackageResultOutput) AllOf() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPackageResult) SystemDataResponse { return v.AllOf }).(SystemDataResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPackageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPackageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the contentLink of the Package.

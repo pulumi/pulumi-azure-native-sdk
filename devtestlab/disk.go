@@ -14,10 +14,12 @@ import (
 
 // A Disk.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type Disk struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the disk.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// When backed by a blob, the name of the VHD blob without extension.
@@ -205,6 +207,11 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DiskOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the disk.

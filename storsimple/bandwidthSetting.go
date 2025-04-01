@@ -14,10 +14,12 @@ import (
 
 // The bandwidth setting.
 //
-// Uses Azure REST API version 2017-06-01. In version 1.x of the Azure Native provider, it used API version 2017-06-01.
+// Uses Azure REST API version 2017-06-01. In version 2.x of the Azure Native provider, it used API version 2017-06-01.
 type BandwidthSetting struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Kind of the object. Currently only Series8000 is supported
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The name of the object.
@@ -146,6 +148,11 @@ func (o BandwidthSettingOutput) ToBandwidthSettingOutput() BandwidthSettingOutpu
 
 func (o BandwidthSettingOutput) ToBandwidthSettingOutputWithContext(ctx context.Context) BandwidthSettingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BandwidthSettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthSetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Kind of the object. Currently only Series8000 is supported

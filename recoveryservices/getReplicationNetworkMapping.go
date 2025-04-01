@@ -13,9 +13,9 @@ import (
 
 // Gets the details of an ASR network mapping.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2021-03-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-10-01.
+// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupReplicationNetworkMapping(ctx *pulumi.Context, args *LookupReplicationNetworkMappingArgs, opts ...pulumi.InvokeOption) (*LookupReplicationNetworkMappingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationNetworkMappingResult
@@ -41,6 +41,8 @@ type LookupReplicationNetworkMappingArgs struct {
 
 // Network Mapping model. Ideally it should have been possible to inherit this class from prev version in InheritedModels as long as there is no difference in structure or method signature. Since there were no base Models for certain fields and methods viz NetworkMappingProperties and Load with required return type, the class has been introduced in its entirety with references to base models to facilitate extensions in subsequent versions.
 type LookupReplicationNetworkMappingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource Location
@@ -92,6 +94,11 @@ func (o LookupReplicationNetworkMappingResultOutput) ToLookupReplicationNetworkM
 
 func (o LookupReplicationNetworkMappingResultOutput) ToLookupReplicationNetworkMappingResultOutputWithContext(ctx context.Context) LookupReplicationNetworkMappingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupReplicationNetworkMappingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationNetworkMappingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

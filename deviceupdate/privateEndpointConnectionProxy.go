@@ -14,10 +14,12 @@ import (
 
 // Private endpoint connection proxy details.
 //
-// Uses Azure REST API version 2023-07-01. In version 1.x of the Azure Native provider, it used API version 2020-03-01-preview.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2023-07-01.
 type PrivateEndpointConnectionProxy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// ETag from NRP.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The name of the resource
@@ -159,6 +161,11 @@ func (o PrivateEndpointConnectionProxyOutput) ToPrivateEndpointConnectionProxyOu
 
 func (o PrivateEndpointConnectionProxyOutput) ToPrivateEndpointConnectionProxyOutputWithContext(ctx context.Context) PrivateEndpointConnectionProxyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionProxyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionProxy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ETag from NRP.

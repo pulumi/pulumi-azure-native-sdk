@@ -13,9 +13,9 @@ import (
 
 // Gets the specified managed HSM Pool.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
+// Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagedHsm(ctx *pulumi.Context, args *LookupManagedHsmArgs, opts ...pulumi.InvokeOption) (*LookupManagedHsmResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedHsmResult
@@ -35,8 +35,12 @@ type LookupManagedHsmArgs struct {
 
 // Resource information with extended details.
 type LookupManagedHsmResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Azure Resource Manager resource ID for the managed HSM Pool.
 	Id string `pulumi:"id"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location *string `pulumi:"location"`
 	// The name of the managed HSM Pool.
@@ -98,9 +102,19 @@ func (o LookupManagedHsmResultOutput) ToLookupManagedHsmResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupManagedHsmResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedHsmResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The Azure Resource Manager resource ID for the managed HSM Pool.
 func (o LookupManagedHsmResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedHsmResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+func (o LookupManagedHsmResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupManagedHsmResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The supported Azure location where the managed HSM Pool should be created.

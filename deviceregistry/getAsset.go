@@ -13,9 +13,9 @@ import (
 
 // Get a Asset
 //
-// Uses Azure REST API version 2023-11-01-preview.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2024-09-01-preview, 2024-11-01.
+// Other available API versions: 2023-11-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAsset(ctx *pulumi.Context, args *LookupAssetArgs, opts ...pulumi.InvokeOption) (*LookupAssetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssetResult
@@ -23,7 +23,7 @@ func LookupAsset(ctx *pulumi.Context, args *LookupAssetArgs, opts ...pulumi.Invo
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupAssetArgs struct {
@@ -35,20 +35,24 @@ type LookupAssetArgs struct {
 
 // Asset definition.
 type LookupAssetResult struct {
-	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-	AssetEndpointProfileUri string `pulumi:"assetEndpointProfileUri"`
-	// Resource path to asset type (model) definition.
-	AssetType *string `pulumi:"assetType"`
+	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
+	AssetEndpointProfileRef string `pulumi:"assetEndpointProfileRef"`
 	// A set of key-value pairs that contain custom attributes set by the customer.
 	Attributes interface{} `pulumi:"attributes"`
-	// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration.
-	DataPoints []DataPointResponse `pulumi:"dataPoints"`
-	// Stringified JSON that contains protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here.
-	DefaultDataPointsConfiguration *string `pulumi:"defaultDataPointsConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
+	Datasets []DatasetResponse `pulumi:"datasets"`
+	// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
+	DefaultDatasetsConfiguration *string `pulumi:"defaultDatasetsConfiguration"`
 	// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
 	DefaultEventsConfiguration *string `pulumi:"defaultEventsConfiguration"`
+	// Object that describes the default topic information for the asset.
+	DefaultTopic *TopicResponse `pulumi:"defaultTopic"`
 	// Human-readable description of the asset.
 	Description *string `pulumi:"description"`
+	// Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
+	DiscoveredAssetRefs []string `pulumi:"discoveredAssetRefs"`
 	// Human-readable display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Reference to the documentation.
@@ -63,7 +67,7 @@ type LookupAssetResult struct {
 	ExternalAssetId *string `pulumi:"externalAssetId"`
 	// Revision number of the hardware.
 	HardwareRevision *string `pulumi:"hardwareRevision"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -94,9 +98,19 @@ type LookupAssetResult struct {
 	// Globally unique, immutable, non-reusable id.
 	Uuid string `pulumi:"uuid"`
 	// An integer that is incremented each time the resource is modified.
-	Version int `pulumi:"version"`
+	Version float64 `pulumi:"version"`
 }
 
+// Defaults sets the appropriate defaults for LookupAssetResult
+func (val *LookupAssetResult) Defaults() *LookupAssetResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.DefaultTopic = tmp.DefaultTopic.Defaults()
+
+	return &tmp
+}
 func LookupAssetOutput(ctx *pulumi.Context, args LookupAssetOutputArgs, opts ...pulumi.InvokeOption) LookupAssetResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAssetResultOutput, error) {
@@ -132,14 +146,9 @@ func (o LookupAssetResultOutput) ToLookupAssetResultOutputWithContext(ctx contex
 	return o
 }
 
-// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-func (o LookupAssetResultOutput) AssetEndpointProfileUri() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAssetResult) string { return v.AssetEndpointProfileUri }).(pulumi.StringOutput)
-}
-
-// Resource path to asset type (model) definition.
-func (o LookupAssetResultOutput) AssetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAssetResult) *string { return v.AssetType }).(pulumi.StringPtrOutput)
+// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
+func (o LookupAssetResultOutput) AssetEndpointProfileRef() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssetResult) string { return v.AssetEndpointProfileRef }).(pulumi.StringOutput)
 }
 
 // A set of key-value pairs that contain custom attributes set by the customer.
@@ -147,14 +156,19 @@ func (o LookupAssetResultOutput) Attributes() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupAssetResult) interface{} { return v.Attributes }).(pulumi.AnyOutput)
 }
 
-// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration.
-func (o LookupAssetResultOutput) DataPoints() DataPointResponseArrayOutput {
-	return o.ApplyT(func(v LookupAssetResult) []DataPointResponse { return v.DataPoints }).(DataPointResponseArrayOutput)
+// The Azure API version of the resource.
+func (o LookupAssetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Stringified JSON that contains protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here.
-func (o LookupAssetResultOutput) DefaultDataPointsConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAssetResult) *string { return v.DefaultDataPointsConfiguration }).(pulumi.StringPtrOutput)
+// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
+func (o LookupAssetResultOutput) Datasets() DatasetResponseArrayOutput {
+	return o.ApplyT(func(v LookupAssetResult) []DatasetResponse { return v.Datasets }).(DatasetResponseArrayOutput)
+}
+
+// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
+func (o LookupAssetResultOutput) DefaultDatasetsConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.DefaultDatasetsConfiguration }).(pulumi.StringPtrOutput)
 }
 
 // Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
@@ -162,9 +176,19 @@ func (o LookupAssetResultOutput) DefaultEventsConfiguration() pulumi.StringPtrOu
 	return o.ApplyT(func(v LookupAssetResult) *string { return v.DefaultEventsConfiguration }).(pulumi.StringPtrOutput)
 }
 
+// Object that describes the default topic information for the asset.
+func (o LookupAssetResultOutput) DefaultTopic() TopicResponsePtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *TopicResponse { return v.DefaultTopic }).(TopicResponsePtrOutput)
+}
+
 // Human-readable description of the asset.
 func (o LookupAssetResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssetResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
+func (o LookupAssetResultOutput) DiscoveredAssetRefs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAssetResult) []string { return v.DiscoveredAssetRefs }).(pulumi.StringArrayOutput)
 }
 
 // Human-readable display name.
@@ -202,7 +226,7 @@ func (o LookupAssetResultOutput) HardwareRevision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssetResult) *string { return v.HardwareRevision }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAssetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssetResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -278,8 +302,8 @@ func (o LookupAssetResultOutput) Uuid() pulumi.StringOutput {
 }
 
 // An integer that is incremented each time the resource is modified.
-func (o LookupAssetResultOutput) Version() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupAssetResult) int { return v.Version }).(pulumi.IntOutput)
+func (o LookupAssetResultOutput) Version() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupAssetResult) float64 { return v.Version }).(pulumi.Float64Output)
 }
 
 func init() {

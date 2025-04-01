@@ -14,12 +14,14 @@ import (
 
 // A sensitivity label.
 //
-// Uses Azure REST API version 2021-06-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+// Uses Azure REST API version 2021-06-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
 //
-// Other available API versions: 2021-06-01-preview.
+// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SqlPoolSensitivityLabel struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The column name.
 	ColumnName pulumi.StringOutput `pulumi:"columnName"`
 	// The information type.
@@ -214,6 +216,11 @@ func (o SqlPoolSensitivityLabelOutput) ToSqlPoolSensitivityLabelOutput() SqlPool
 
 func (o SqlPoolSensitivityLabelOutput) ToSqlPoolSensitivityLabelOutputWithContext(ctx context.Context) SqlPoolSensitivityLabelOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SqlPoolSensitivityLabelOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlPoolSensitivityLabel) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The column name.

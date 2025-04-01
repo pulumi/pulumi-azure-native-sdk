@@ -13,9 +13,9 @@ import (
 
 // Gets information about the specified Batch account.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-07-01.
 //
-// Other available API versions: 2022-01-01, 2023-11-01, 2024-02-01, 2024-07-01.
+// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBatchAccount(ctx *pulumi.Context, args *LookupBatchAccountArgs, opts ...pulumi.InvokeOption) (*LookupBatchAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBatchAccountResult
@@ -42,6 +42,8 @@ type LookupBatchAccountResult struct {
 	AllowedAuthenticationModes []string `pulumi:"allowedAuthenticationModes"`
 	// Contains information about the auto-storage account associated with a Batch account.
 	AutoStorage AutoStoragePropertiesResponse `pulumi:"autoStorage"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
 	DedicatedCoreQuota int `pulumi:"dedicatedCoreQuota"`
 	// A list of the dedicated core quota per Virtual Machine family for the Batch account. For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
@@ -143,6 +145,11 @@ func (o LookupBatchAccountResultOutput) AllowedAuthenticationModes() pulumi.Stri
 // Contains information about the auto-storage account associated with a Batch account.
 func (o LookupBatchAccountResultOutput) AutoStorage() AutoStoragePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupBatchAccountResult) AutoStoragePropertiesResponse { return v.AutoStorage }).(AutoStoragePropertiesResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupBatchAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBatchAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.

@@ -14,8 +14,6 @@ import (
 // Gets the Hybrid AKS provisioned cluster
 //
 // Uses Azure REST API version 2022-09-01-preview.
-//
-// Other available API versions: 2022-05-01-preview.
 func LookupProvisionedCluster(ctx *pulumi.Context, args *LookupProvisionedClusterArgs, opts ...pulumi.InvokeOption) (*LookupProvisionedClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProvisionedClusterResult
@@ -35,6 +33,8 @@ type LookupProvisionedClusterArgs struct {
 
 // The provisionedClusters resource definition.
 type LookupProvisionedClusterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion  string                                               `pulumi:"azureApiVersion"`
 	ExtendedLocation *ProvisionedClustersResponseResponseExtendedLocation `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
@@ -96,6 +96,11 @@ func (o LookupProvisionedClusterResultOutput) ToLookupProvisionedClusterResultOu
 
 func (o LookupProvisionedClusterResultOutput) ToLookupProvisionedClusterResultOutputWithContext(ctx context.Context) LookupProvisionedClusterResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProvisionedClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProvisionedClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupProvisionedClusterResultOutput) ExtendedLocation() ProvisionedClustersResponseResponseExtendedLocationPtrOutput {

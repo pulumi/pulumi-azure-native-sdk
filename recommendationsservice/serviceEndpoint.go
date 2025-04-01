@@ -14,12 +14,14 @@ import (
 
 // ServiceEndpoint resource details.
 //
-// Uses Azure REST API version 2022-02-01. In version 1.x of the Azure Native provider, it used API version 2022-02-01.
+// Uses Azure REST API version 2022-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-02-01.
 //
-// Other available API versions: 2022-03-01-preview.
+// Other available API versions: 2022-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recommendationsservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ServiceEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -154,6 +156,11 @@ func (o ServiceEndpointOutput) ToServiceEndpointOutput() ServiceEndpointOutput {
 
 func (o ServiceEndpointOutput) ToServiceEndpointOutputWithContext(ctx context.Context) ServiceEndpointOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ServiceEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

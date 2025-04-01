@@ -14,10 +14,12 @@ import (
 
 // An integration space.
 //
-// Uses Azure REST API version 2023-11-14-preview.
+// Uses Azure REST API version 2023-11-14-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-14-preview.
 type Space struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The geo-location where the resource lives
@@ -144,6 +146,11 @@ func (o SpaceOutput) ToSpaceOutput() SpaceOutput {
 
 func (o SpaceOutput) ToSpaceOutputWithContext(ctx context.Context) SpaceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SpaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Space) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of the resource.

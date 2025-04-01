@@ -14,13 +14,15 @@ import (
 
 // Database Migration Resource for SQL Database.
 //
-// Uses Azure REST API version 2022-03-30-preview. In version 1.x of the Azure Native provider, it used API version 2022-03-30-preview.
+// Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2022-03-30-preview.
 //
-// Other available API versions: 2023-07-15-preview.
+// Other available API versions: 2022-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DatabaseMigrationsSqlDb struct {
 	pulumi.CustomResourceState
 
-	Name pulumi.StringOutput `pulumi:"name"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	Name            pulumi.StringOutput `pulumi:"name"`
 	// Database Migration Resource properties for SQL database.
 	Properties DatabaseMigrationPropertiesSqlDbResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
@@ -138,6 +140,11 @@ func (o DatabaseMigrationsSqlDbOutput) ToDatabaseMigrationsSqlDbOutput() Databas
 
 func (o DatabaseMigrationsSqlDbOutput) ToDatabaseMigrationsSqlDbOutputWithContext(ctx context.Context) DatabaseMigrationsSqlDbOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DatabaseMigrationsSqlDbOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseMigrationsSqlDb) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o DatabaseMigrationsSqlDbOutput) Name() pulumi.StringOutput {

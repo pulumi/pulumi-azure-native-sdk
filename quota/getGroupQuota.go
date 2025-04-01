@@ -13,9 +13,9 @@ import (
 
 // Gets the GroupQuotas for the name passed. It will return the GroupQuotas properties only. The details on group quota can be access from the group quota APIs.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-03-01.
 //
-// Other available API versions: 2024-10-15-preview, 2024-12-18-preview, 2025-03-01, 2025-03-15-preview.
+// Other available API versions: 2023-06-01-preview, 2024-10-15-preview, 2024-12-18-preview, 2025-03-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quota [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGroupQuota(ctx *pulumi.Context, args *LookupGroupQuotaArgs, opts ...pulumi.InvokeOption) (*LookupGroupQuotaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupQuotaResult
@@ -35,12 +35,13 @@ type LookupGroupQuotaArgs struct {
 
 // Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
 type LookupGroupQuotaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
-	Name string `pulumi:"name"`
-	// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
-	Properties GroupQuotasEntityBaseResponse `pulumi:"properties"`
+	Name       string                              `pulumi:"name"`
+	Properties GroupQuotasEntityResponseProperties `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -82,6 +83,11 @@ func (o LookupGroupQuotaResultOutput) ToLookupGroupQuotaResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupGroupQuotaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupQuotaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupGroupQuotaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupQuotaResult) string { return v.Id }).(pulumi.StringOutput)
@@ -92,9 +98,8 @@ func (o LookupGroupQuotaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupQuotaResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
-func (o LookupGroupQuotaResultOutput) Properties() GroupQuotasEntityBaseResponseOutput {
-	return o.ApplyT(func(v LookupGroupQuotaResult) GroupQuotasEntityBaseResponse { return v.Properties }).(GroupQuotasEntityBaseResponseOutput)
+func (o LookupGroupQuotaResultOutput) Properties() GroupQuotasEntityResponsePropertiesOutput {
+	return o.ApplyT(func(v LookupGroupQuotaResult) GroupQuotasEntityResponseProperties { return v.Properties }).(GroupQuotasEntityResponsePropertiesOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

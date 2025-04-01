@@ -14,19 +14,25 @@ import (
 
 // An HCX Enterprise Site resource
 //
-// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2020-03-20.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
 //
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type HcxEnterpriseSite struct {
 	pulumi.CustomResourceState
 
 	// The activation key
 	ActivationKey pulumi.StringOutput `pulumi:"activationKey"`
-	// Resource name.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The status of the HCX Enterprise Site
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -103,9 +109,9 @@ func (HcxEnterpriseSiteState) ElementType() reflect.Type {
 }
 
 type hcxEnterpriseSiteArgs struct {
-	// Name of the HCX Enterprise Site in the private cloud
+	// Name of the HCX Enterprise Site
 	HcxEnterpriseSiteName *string `pulumi:"hcxEnterpriseSiteName"`
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -113,9 +119,9 @@ type hcxEnterpriseSiteArgs struct {
 
 // The set of arguments for constructing a HcxEnterpriseSite resource.
 type HcxEnterpriseSiteArgs struct {
-	// Name of the HCX Enterprise Site in the private cloud
+	// Name of the HCX Enterprise Site
 	HcxEnterpriseSiteName pulumi.StringPtrInput
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -163,9 +169,19 @@ func (o HcxEnterpriseSiteOutput) ActivationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *HcxEnterpriseSite) pulumi.StringOutput { return v.ActivationKey }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The Azure API version of the resource.
+func (o HcxEnterpriseSiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HcxEnterpriseSite) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o HcxEnterpriseSiteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HcxEnterpriseSite) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the resource.
+func (o HcxEnterpriseSiteOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *HcxEnterpriseSite) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The status of the HCX Enterprise Site
@@ -173,7 +189,12 @@ func (o HcxEnterpriseSiteOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *HcxEnterpriseSite) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o HcxEnterpriseSiteOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *HcxEnterpriseSite) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o HcxEnterpriseSiteOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *HcxEnterpriseSite) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

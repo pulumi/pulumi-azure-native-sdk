@@ -13,9 +13,9 @@ import (
 
 // Gets details about the specified dnc controller.
 //
-// Uses Azure REST API version 2021-03-15.
+// Uses Azure REST API version 2023-06-27-preview.
 //
-// Other available API versions: 2023-05-18-preview, 2023-06-27-preview.
+// Other available API versions: 2021-03-15, 2023-05-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native delegatednetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupControllerDetails(ctx *pulumi.Context, args *LookupControllerDetailsArgs, opts ...pulumi.InvokeOption) (*LookupControllerDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupControllerDetailsResult
@@ -23,7 +23,7 @@ func LookupControllerDetails(ctx *pulumi.Context, args *LookupControllerDetailsA
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupControllerDetailsArgs struct {
@@ -35,6 +35,8 @@ type LookupControllerDetailsArgs struct {
 
 // Represents an instance of a DNC controller.
 type LookupControllerDetailsResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// dnc application id should be used by customer to authenticate with dnc gateway.
 	DncAppId string `pulumi:"dncAppId"`
 	// dnc endpoint url that customers can use to connect to
@@ -49,6 +51,8 @@ type LookupControllerDetailsResult struct {
 	Name string `pulumi:"name"`
 	// The current state of dnc controller resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// The purpose of the dnc controller resource.
+	Purpose *string `pulumi:"purpose"`
 	// Resource guid.
 	ResourceGuid string `pulumi:"resourceGuid"`
 	// The resource tags.
@@ -57,6 +61,18 @@ type LookupControllerDetailsResult struct {
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupControllerDetailsResult
+func (val *LookupControllerDetailsResult) Defaults() *LookupControllerDetailsResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Purpose == nil {
+		purpose_ := "prod"
+		tmp.Purpose = &purpose_
+	}
+	return &tmp
+}
 func LookupControllerDetailsOutput(ctx *pulumi.Context, args LookupControllerDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupControllerDetailsResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupControllerDetailsResultOutput, error) {
@@ -92,6 +108,11 @@ func (o LookupControllerDetailsResultOutput) ToLookupControllerDetailsResultOutp
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupControllerDetailsResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupControllerDetailsResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // dnc application id should be used by customer to authenticate with dnc gateway.
 func (o LookupControllerDetailsResultOutput) DncAppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupControllerDetailsResult) string { return v.DncAppId }).(pulumi.StringOutput)
@@ -125,6 +146,11 @@ func (o LookupControllerDetailsResultOutput) Name() pulumi.StringOutput {
 // The current state of dnc controller resource.
 func (o LookupControllerDetailsResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupControllerDetailsResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The purpose of the dnc controller resource.
+func (o LookupControllerDetailsResultOutput) Purpose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupControllerDetailsResult) *string { return v.Purpose }).(pulumi.StringPtrOutput)
 }
 
 // Resource guid.

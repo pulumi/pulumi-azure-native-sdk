@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2020-03-01.
 //
-// Other available API versions: 2019-06-01.
+// Other available API versions: 2019-11-01, 2020-01-01, 2020-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListManagedClusterAccessProfile(ctx *pulumi.Context, args *ListManagedClusterAccessProfileArgs, opts ...pulumi.InvokeOption) (*ListManagedClusterAccessProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListManagedClusterAccessProfileResult

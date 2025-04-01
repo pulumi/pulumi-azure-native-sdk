@@ -14,6 +14,8 @@ import (
 // Get the details of an Asset Filter associated with the specified Asset.
 //
 // Uses Azure REST API version 2023-01-01.
+//
+// Other available API versions: 2018-07-01, 2020-05-01, 2021-06-01, 2021-11-01, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAssetFilter(ctx *pulumi.Context, args *LookupAssetFilterArgs, opts ...pulumi.InvokeOption) (*LookupAssetFilterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssetFilterResult
@@ -37,6 +39,8 @@ type LookupAssetFilterArgs struct {
 
 // An Asset Filter.
 type LookupAssetFilterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The first quality.
 	FirstQuality *FirstQualityResponse `pulumi:"firstQuality"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -90,6 +94,11 @@ func (o LookupAssetFilterResultOutput) ToLookupAssetFilterResultOutput() LookupA
 
 func (o LookupAssetFilterResultOutput) ToLookupAssetFilterResultOutputWithContext(ctx context.Context) LookupAssetFilterResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAssetFilterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssetFilterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The first quality.

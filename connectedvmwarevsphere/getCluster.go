@@ -13,9 +13,9 @@ import (
 
 // Implements cluster GET method.
 //
-// Uses Azure REST API version 2022-07-15-preview.
+// Uses Azure REST API version 2023-12-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Other available API versions: 2022-07-15-preview, 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
@@ -35,9 +35,11 @@ type LookupClusterArgs struct {
 
 // Define the cluster.
 type LookupClusterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
-	// Gets or sets the datastore ARM ids.
+	// Gets the datastore ARM ids.
 	DatastoreIds []string `pulumi:"datastoreIds"`
 	// Gets or sets the extended location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
@@ -55,9 +57,9 @@ type LookupClusterResult struct {
 	MoRefId *string `pulumi:"moRefId"`
 	// Gets or sets the name.
 	Name string `pulumi:"name"`
-	// Gets or sets the network ARM ids.
+	// Gets the network ARM ids.
 	NetworkIds []string `pulumi:"networkIds"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource status information.
 	Statuses []ResourceStatusResponse `pulumi:"statuses"`
@@ -65,8 +67,16 @@ type LookupClusterResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Gets or sets the Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Gets the max CPU usage across all cores on the cluster in MHz.
+	TotalCpuMHz float64 `pulumi:"totalCpuMHz"`
+	// Gets the total amount of physical memory on the cluster in GB.
+	TotalMemoryGB float64 `pulumi:"totalMemoryGB"`
 	// Gets or sets the type of the resource.
 	Type string `pulumi:"type"`
+	// Gets the used CPU usage across all cores on the cluster in MHz.
+	UsedCpuMHz float64 `pulumi:"usedCpuMHz"`
+	// Gets the used physical memory on the cluster in GB.
+	UsedMemoryGB float64 `pulumi:"usedMemoryGB"`
 	// Gets or sets a unique identifier for this resource.
 	Uuid string `pulumi:"uuid"`
 	// Gets or sets the ARM Id of the vCenter resource in which this cluster resides.
@@ -108,12 +118,17 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the name of the corresponding resource in Kubernetes.
 func (o LookupClusterResultOutput) CustomResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.CustomResourceName }).(pulumi.StringOutput)
 }
 
-// Gets or sets the datastore ARM ids.
+// Gets the datastore ARM ids.
 func (o LookupClusterResultOutput) DatastoreIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []string { return v.DatastoreIds }).(pulumi.StringArrayOutput)
 }
@@ -158,12 +173,12 @@ func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets the network ARM ids.
+// Gets the network ARM ids.
 func (o LookupClusterResultOutput) NetworkIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []string { return v.NetworkIds }).(pulumi.StringArrayOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o LookupClusterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -183,9 +198,29 @@ func (o LookupClusterResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Gets the max CPU usage across all cores on the cluster in MHz.
+func (o LookupClusterResultOutput) TotalCpuMHz() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupClusterResult) float64 { return v.TotalCpuMHz }).(pulumi.Float64Output)
+}
+
+// Gets the total amount of physical memory on the cluster in GB.
+func (o LookupClusterResultOutput) TotalMemoryGB() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupClusterResult) float64 { return v.TotalMemoryGB }).(pulumi.Float64Output)
+}
+
 // Gets or sets the type of the resource.
 func (o LookupClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Gets the used CPU usage across all cores on the cluster in MHz.
+func (o LookupClusterResultOutput) UsedCpuMHz() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupClusterResult) float64 { return v.UsedCpuMHz }).(pulumi.Float64Output)
+}
+
+// Gets the used physical memory on the cluster in GB.
+func (o LookupClusterResultOutput) UsedMemoryGB() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupClusterResult) float64 { return v.UsedMemoryGB }).(pulumi.Float64Output)
 }
 
 // Gets or sets a unique identifier for this resource.

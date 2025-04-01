@@ -35,6 +35,8 @@ type LookupRelationshipLinkArgs struct {
 
 // The relationship link resource format.
 type LookupRelationshipLinkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Localized descriptions for the Relationship Link.
 	Description map[string]string `pulumi:"description"`
 	// Localized display name for the Relationship Link.
@@ -100,6 +102,11 @@ func (o LookupRelationshipLinkResultOutput) ToLookupRelationshipLinkResultOutput
 
 func (o LookupRelationshipLinkResultOutput) ToLookupRelationshipLinkResultOutputWithContext(ctx context.Context) LookupRelationshipLinkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRelationshipLinkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRelationshipLinkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Localized descriptions for the Relationship Link.

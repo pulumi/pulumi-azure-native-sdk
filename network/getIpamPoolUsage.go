@@ -13,9 +13,9 @@ import (
 
 // IpamPool usage information.
 //
-// Uses Azure REST API version 2024-01-01-preview.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2024-05-01.
+// Other available API versions: 2024-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetIpamPoolUsage(ctx *pulumi.Context, args *GetIpamPoolUsageArgs, opts ...pulumi.InvokeOption) (*GetIpamPoolUsageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetIpamPoolUsageResult

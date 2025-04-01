@@ -14,19 +14,21 @@ import (
 
 // A favorite process identifier.
 //
-// Uses Azure REST API version 2022-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+// Uses Azure REST API version 2023-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-04-01-preview.
 //
-// Other available API versions: 2023-11-01-preview.
+// Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FavoriteProcess struct {
 	pulumi.CustomResourceState
 
 	// The actual name of the favorite process. It will be equal to resource name except for the scenario that the process name contains characters that are not allowed in the resource name.
 	ActualProcessName pulumi.StringOutput `pulumi:"actualProcessName"`
-	// Resource name.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The system metadata relating to this resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -100,7 +102,7 @@ type favoriteProcessArgs struct {
 	FavoriteProcessResourceName *string `pulumi:"favoriteProcessResourceName"`
 	// The resource name of the Test Base Package.
 	PackageName string `pulumi:"packageName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
@@ -114,7 +116,7 @@ type FavoriteProcessArgs struct {
 	FavoriteProcessResourceName pulumi.StringPtrInput
 	// The resource name of the Test Base Package.
 	PackageName pulumi.StringInput
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput
@@ -162,17 +164,22 @@ func (o FavoriteProcessOutput) ActualProcessName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FavoriteProcess) pulumi.StringOutput { return v.ActualProcessName }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The Azure API version of the resource.
+func (o FavoriteProcessOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FavoriteProcess) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o FavoriteProcessOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FavoriteProcess) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to this resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o FavoriteProcessOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *FavoriteProcess) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o FavoriteProcessOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *FavoriteProcess) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

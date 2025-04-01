@@ -14,12 +14,14 @@ import (
 
 // MAK key details.
 //
-// Uses Azure REST API version 2019-09-16-preview. In version 1.x of the Azure Native provider, it used API version 2019-09-16-preview.
+// Uses Azure REST API version 2019-09-16-preview. In version 2.x of the Azure Native provider, it used API version 2019-09-16-preview.
 type MultipleActivationKey struct {
 	pulumi.CustomResourceState
 
 	// Agreement number under which the key is requested.
 	AgreementNumber pulumi.StringPtrOutput `pulumi:"agreementNumber"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// End of support of security updates activated by the MAK key.
 	ExpirationDate pulumi.StringOutput `pulumi:"expirationDate"`
 	// Number of activations/servers using the MAK key.
@@ -177,6 +179,11 @@ func (o MultipleActivationKeyOutput) ToMultipleActivationKeyOutputWithContext(ct
 // Agreement number under which the key is requested.
 func (o MultipleActivationKeyOutput) AgreementNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MultipleActivationKey) pulumi.StringPtrOutput { return v.AgreementNumber }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o MultipleActivationKeyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MultipleActivationKey) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // End of support of security updates activated by the MAK key.

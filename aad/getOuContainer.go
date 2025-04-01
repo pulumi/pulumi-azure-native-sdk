@@ -37,6 +37,8 @@ type LookupOuContainerArgs struct {
 type LookupOuContainerResult struct {
 	// The list of container accounts
 	Accounts []ContainerAccountResponse `pulumi:"accounts"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The OuContainer name
 	ContainerId string `pulumi:"containerId"`
 	// The Deployment id
@@ -107,6 +109,11 @@ func (o LookupOuContainerResultOutput) ToLookupOuContainerResultOutputWithContex
 // The list of container accounts
 func (o LookupOuContainerResultOutput) Accounts() ContainerAccountResponseArrayOutput {
 	return o.ApplyT(func(v LookupOuContainerResult) []ContainerAccountResponse { return v.Accounts }).(ContainerAccountResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupOuContainerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOuContainerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The OuContainer name

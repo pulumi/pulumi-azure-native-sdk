@@ -14,12 +14,12 @@ import (
 
 // Represents a server firewall rule.
 //
-// Uses Azure REST API version 2018-06-01. In version 1.x of the Azure Native provider, it used API version 2018-06-01.
-//
-// Other available API versions: 2018-06-01-preview.
+// Uses Azure REST API version 2018-06-01. In version 2.x of the Azure Native provider, it used API version 2018-06-01.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The end IP address of the server firewall rule. Must be IPv4 format.
 	EndIpAddress pulumi.StringOutput `pulumi:"endIpAddress"`
 	// The name of the resource
@@ -152,6 +152,11 @@ func (o FirewallRuleOutput) ToFirewallRuleOutput() FirewallRuleOutput {
 
 func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FirewallRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The end IP address of the server firewall rule. Must be IPv4 format.

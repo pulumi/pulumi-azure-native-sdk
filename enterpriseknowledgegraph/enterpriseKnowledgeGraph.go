@@ -14,10 +14,12 @@ import (
 
 // EnterpriseKnowledgeGraph resource definition
 //
-// Uses Azure REST API version 2018-12-03. In version 1.x of the Azure Native provider, it used API version 2018-12-03.
+// Uses Azure REST API version 2018-12-03. In version 2.x of the Azure Native provider, it used API version 2018-12-03.
 type EnterpriseKnowledgeGraph struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Specifies the name of the resource.
@@ -146,6 +148,11 @@ func (o EnterpriseKnowledgeGraphOutput) ToEnterpriseKnowledgeGraphOutput() Enter
 
 func (o EnterpriseKnowledgeGraphOutput) ToEnterpriseKnowledgeGraphOutputWithContext(ctx context.Context) EnterpriseKnowledgeGraphOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EnterpriseKnowledgeGraphOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseKnowledgeGraph) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the location of the resource.

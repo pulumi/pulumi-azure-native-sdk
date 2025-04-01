@@ -14,10 +14,12 @@ import (
 
 // A Microsoft.AwsConnector resource
 //
-// Uses Azure REST API version 2024-12-01.
+// Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2024-12-01.
 type IamPolicyVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -142,6 +144,11 @@ func (o IamPolicyVersionOutput) ToIamPolicyVersionOutput() IamPolicyVersionOutpu
 
 func (o IamPolicyVersionOutput) ToIamPolicyVersionOutputWithContext(ctx context.Context) IamPolicyVersionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o IamPolicyVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamPolicyVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

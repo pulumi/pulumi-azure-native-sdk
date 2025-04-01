@@ -13,9 +13,9 @@ import (
 
 // Gets an existing KeyGroup within a profile.
 //
-// Uses Azure REST API version 2023-07-01-preview.
+// Uses Azure REST API version 2024-06-01-preview.
 //
-// Other available API versions: 2024-05-01-preview, 2024-06-01-preview.
+// Other available API versions: 2023-07-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupKeyGroup(ctx *pulumi.Context, args *LookupKeyGroupArgs, opts ...pulumi.InvokeOption) (*LookupKeyGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeyGroupResult
@@ -31,12 +31,14 @@ type LookupKeyGroupArgs struct {
 	KeyGroupName string `pulumi:"keyGroupName"`
 	// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Contains a list of references of UrlSigningKey type secret objects.
 type LookupKeyGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion  string `pulumi:"azureApiVersion"`
 	DeploymentStatus string `pulumi:"deploymentStatus"`
 	// Resource ID.
 	Id string `pulumi:"id"`
@@ -66,7 +68,7 @@ type LookupKeyGroupOutputArgs struct {
 	KeyGroupName pulumi.StringInput `pulumi:"keyGroupName"`
 	// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -87,6 +89,11 @@ func (o LookupKeyGroupResultOutput) ToLookupKeyGroupResultOutput() LookupKeyGrou
 
 func (o LookupKeyGroupResultOutput) ToLookupKeyGroupResultOutputWithContext(ctx context.Context) LookupKeyGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKeyGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeyGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupKeyGroupResultOutput) DeploymentStatus() pulumi.StringOutput {

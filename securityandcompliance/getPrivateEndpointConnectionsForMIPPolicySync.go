@@ -35,6 +35,8 @@ type LookupPrivateEndpointConnectionsForMIPPolicySyncArgs struct {
 
 // The Private Endpoint Connection resource.
 type LookupPrivateEndpointConnectionsForMIPPolicySyncResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -86,6 +88,11 @@ func (o LookupPrivateEndpointConnectionsForMIPPolicySyncResultOutput) ToLookupPr
 
 func (o LookupPrivateEndpointConnectionsForMIPPolicySyncResultOutput) ToLookupPrivateEndpointConnectionsForMIPPolicySyncResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionsForMIPPolicySyncResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionsForMIPPolicySyncResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionsForMIPPolicySyncResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

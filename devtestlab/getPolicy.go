@@ -39,6 +39,8 @@ type LookupPolicyArgs struct {
 
 // A Policy.
 type LookupPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the policy.
 	CreatedDate string `pulumi:"createdDate"`
 	// The description of the policy.
@@ -108,6 +110,11 @@ func (o LookupPolicyResultOutput) ToLookupPolicyResultOutput() LookupPolicyResul
 
 func (o LookupPolicyResultOutput) ToLookupPolicyResultOutputWithContext(ctx context.Context) LookupPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the policy.

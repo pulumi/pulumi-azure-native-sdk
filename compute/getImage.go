@@ -13,9 +13,9 @@ import (
 
 // Gets an image.
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupImageResult
@@ -37,6 +37,8 @@ type LookupImageArgs struct {
 
 // The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
 type LookupImageResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The extended location of the Image.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Specifies the HyperVGenerationType of the VirtualMachine created from the image. From API Version 2019-03-01 if the image source is a blob, then we need the user to specify the value, if the source is managed resource like disk or snapshot, we may require the user to specify the property if we cannot deduce it from the source managed resource.
@@ -94,6 +96,11 @@ func (o LookupImageResultOutput) ToLookupImageResultOutput() LookupImageResultOu
 
 func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx context.Context) LookupImageResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupImageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extended location of the Image.

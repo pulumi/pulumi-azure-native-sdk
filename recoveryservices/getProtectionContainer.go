@@ -13,9 +13,9 @@ import (
 
 // Gets details of the specific container registered to your Recovery Services Vault.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-10-01, 2024-11-01-preview.
+// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupProtectionContainer(ctx *pulumi.Context, args *LookupProtectionContainerArgs, opts ...pulumi.InvokeOption) (*LookupProtectionContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectionContainerResult
@@ -39,6 +39,8 @@ type LookupProtectionContainerArgs struct {
 
 // Base class for container with backup items. Containers with specific workloads are derived from this class.
 type LookupProtectionContainerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	ETag *string `pulumi:"eTag"`
 	// Resource Id represents the complete path to the resource.
@@ -92,6 +94,11 @@ func (o LookupProtectionContainerResultOutput) ToLookupProtectionContainerResult
 
 func (o LookupProtectionContainerResultOutput) ToLookupProtectionContainerResultOutputWithContext(ctx context.Context) LookupProtectionContainerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProtectionContainerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProtectionContainerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional ETag.

@@ -14,9 +14,9 @@ import (
 
 // disk encryption set resource.
 //
-// Uses Azure REST API version 2022-07-02. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
 //
-// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DiskEncryptionSet struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type DiskEncryptionSet struct {
 	ActiveKey KeyForDiskEncryptionSetResponsePtrOutput `pulumi:"activeKey"`
 	// The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
 	AutoKeyRotationError ApiErrorResponseOutput `pulumi:"autoKeyRotationError"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The type of key used to encrypt the data of the disk.
 	EncryptionType pulumi.StringPtrOutput `pulumi:"encryptionType"`
 	// Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property.
@@ -226,6 +228,11 @@ func (o DiskEncryptionSetOutput) ActiveKey() KeyForDiskEncryptionSetResponsePtrO
 // The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
 func (o DiskEncryptionSetOutput) AutoKeyRotationError() ApiErrorResponseOutput {
 	return o.ApplyT(func(v *DiskEncryptionSet) ApiErrorResponseOutput { return v.AutoKeyRotationError }).(ApiErrorResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o DiskEncryptionSetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskEncryptionSet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The type of key used to encrypt the data of the disk.

@@ -14,10 +14,12 @@ import (
 
 // Specifies information about the gallery inVMAccessControlProfile that you want to create or update.
 //
-// Uses Azure REST API version 2024-03-03.
+// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2024-03-03.
 type GalleryInVMAccessControlProfile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name
@@ -147,6 +149,11 @@ func (o GalleryInVMAccessControlProfileOutput) ToGalleryInVMAccessControlProfile
 
 func (o GalleryInVMAccessControlProfileOutput) ToGalleryInVMAccessControlProfileOutputWithContext(ctx context.Context) GalleryInVMAccessControlProfileOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GalleryInVMAccessControlProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource location

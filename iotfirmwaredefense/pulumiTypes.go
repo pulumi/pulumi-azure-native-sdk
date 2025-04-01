@@ -13,6 +13,168 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Error and status message
+type StatusMessage struct {
+	// The error code
+	ErrorCode *float64 `pulumi:"errorCode"`
+	// The error or status message
+	Message *string `pulumi:"message"`
+}
+
+// StatusMessageInput is an input type that accepts StatusMessageArgs and StatusMessageOutput values.
+// You can construct a concrete instance of `StatusMessageInput` via:
+//
+//	StatusMessageArgs{...}
+type StatusMessageInput interface {
+	pulumi.Input
+
+	ToStatusMessageOutput() StatusMessageOutput
+	ToStatusMessageOutputWithContext(context.Context) StatusMessageOutput
+}
+
+// Error and status message
+type StatusMessageArgs struct {
+	// The error code
+	ErrorCode pulumi.Float64PtrInput `pulumi:"errorCode"`
+	// The error or status message
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (StatusMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusMessage)(nil)).Elem()
+}
+
+func (i StatusMessageArgs) ToStatusMessageOutput() StatusMessageOutput {
+	return i.ToStatusMessageOutputWithContext(context.Background())
+}
+
+func (i StatusMessageArgs) ToStatusMessageOutputWithContext(ctx context.Context) StatusMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusMessageOutput)
+}
+
+// StatusMessageArrayInput is an input type that accepts StatusMessageArray and StatusMessageArrayOutput values.
+// You can construct a concrete instance of `StatusMessageArrayInput` via:
+//
+//	StatusMessageArray{ StatusMessageArgs{...} }
+type StatusMessageArrayInput interface {
+	pulumi.Input
+
+	ToStatusMessageArrayOutput() StatusMessageArrayOutput
+	ToStatusMessageArrayOutputWithContext(context.Context) StatusMessageArrayOutput
+}
+
+type StatusMessageArray []StatusMessageInput
+
+func (StatusMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatusMessage)(nil)).Elem()
+}
+
+func (i StatusMessageArray) ToStatusMessageArrayOutput() StatusMessageArrayOutput {
+	return i.ToStatusMessageArrayOutputWithContext(context.Background())
+}
+
+func (i StatusMessageArray) ToStatusMessageArrayOutputWithContext(ctx context.Context) StatusMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusMessageArrayOutput)
+}
+
+// Error and status message
+type StatusMessageOutput struct{ *pulumi.OutputState }
+
+func (StatusMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusMessage)(nil)).Elem()
+}
+
+func (o StatusMessageOutput) ToStatusMessageOutput() StatusMessageOutput {
+	return o
+}
+
+func (o StatusMessageOutput) ToStatusMessageOutputWithContext(ctx context.Context) StatusMessageOutput {
+	return o
+}
+
+// The error code
+func (o StatusMessageOutput) ErrorCode() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StatusMessage) *float64 { return v.ErrorCode }).(pulumi.Float64PtrOutput)
+}
+
+// The error or status message
+func (o StatusMessageOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatusMessage) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type StatusMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (StatusMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatusMessage)(nil)).Elem()
+}
+
+func (o StatusMessageArrayOutput) ToStatusMessageArrayOutput() StatusMessageArrayOutput {
+	return o
+}
+
+func (o StatusMessageArrayOutput) ToStatusMessageArrayOutputWithContext(ctx context.Context) StatusMessageArrayOutput {
+	return o
+}
+
+func (o StatusMessageArrayOutput) Index(i pulumi.IntInput) StatusMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatusMessage {
+		return vs[0].([]StatusMessage)[vs[1].(int)]
+	}).(StatusMessageOutput)
+}
+
+// Error and status message
+type StatusMessageResponse struct {
+	// The error code
+	ErrorCode *float64 `pulumi:"errorCode"`
+	// The error or status message
+	Message *string `pulumi:"message"`
+}
+
+// Error and status message
+type StatusMessageResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusMessageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusMessageResponse)(nil)).Elem()
+}
+
+func (o StatusMessageResponseOutput) ToStatusMessageResponseOutput() StatusMessageResponseOutput {
+	return o
+}
+
+func (o StatusMessageResponseOutput) ToStatusMessageResponseOutputWithContext(ctx context.Context) StatusMessageResponseOutput {
+	return o
+}
+
+// The error code
+func (o StatusMessageResponseOutput) ErrorCode() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StatusMessageResponse) *float64 { return v.ErrorCode }).(pulumi.Float64PtrOutput)
+}
+
+// The error or status message
+func (o StatusMessageResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatusMessageResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type StatusMessageResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StatusMessageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatusMessageResponse)(nil)).Elem()
+}
+
+func (o StatusMessageResponseArrayOutput) ToStatusMessageResponseArrayOutput() StatusMessageResponseArrayOutput {
+	return o
+}
+
+func (o StatusMessageResponseArrayOutput) ToStatusMessageResponseArrayOutputWithContext(ctx context.Context) StatusMessageResponseArrayOutput {
+	return o
+}
+
+func (o StatusMessageResponseArrayOutput) Index(i pulumi.IntInput) StatusMessageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatusMessageResponse {
+		return vs[0].([]StatusMessageResponse)[vs[1].(int)]
+	}).(StatusMessageResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -75,5 +237,9 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(StatusMessageOutput{})
+	pulumi.RegisterOutputType(StatusMessageArrayOutput{})
+	pulumi.RegisterOutputType(StatusMessageResponseOutput{})
+	pulumi.RegisterOutputType(StatusMessageResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

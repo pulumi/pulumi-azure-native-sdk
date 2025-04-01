@@ -14,10 +14,12 @@ import (
 
 // MEC role.
 //
-// Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
 type MECRole struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Activation key of the MEC.
 	ConnectionString AsymmetricEncryptedSecretResponsePtrOutput `pulumi:"connectionString"`
 	// Controller Endpoint.
@@ -101,13 +103,49 @@ func NewMECRole(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:databoxedge/v20221201preview:MECRole"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:CloudEdgeManagementRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:KubernetesRole"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20230101preview:MECRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:CloudEdgeManagementRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:KubernetesRole"),
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:MECRole"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:CloudEdgeManagementRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:KubernetesRole"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:MECRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:CloudEdgeManagementRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:KubernetesRole"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -219,6 +257,11 @@ func (o MECRoleOutput) ToMECRoleOutput() MECRoleOutput {
 
 func (o MECRoleOutput) ToMECRoleOutputWithContext(ctx context.Context) MECRoleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MECRoleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MECRole) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Activation key of the MEC.

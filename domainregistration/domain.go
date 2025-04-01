@@ -14,15 +14,17 @@ import (
 
 // Information about a domain.
 //
-// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2020-10-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native domainregistration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Domain struct {
 	pulumi.CustomResourceState
 
 	AuthCode pulumi.StringPtrOutput `pulumi:"authCode"`
 	// <code>true</code> if the domain should be automatically renewed; otherwise, <code>false</code>.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Domain creation timestamp.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
 	// Current DNS type
@@ -33,7 +35,7 @@ type Domain struct {
 	DomainNotRenewableReasons pulumi.StringArrayOutput `pulumi:"domainNotRenewableReasons"`
 	// Domain expiration timestamp.
 	ExpirationTime pulumi.StringOutput `pulumi:"expirationTime"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Timestamp when the domain was renewed last time.
 	LastRenewedTime pulumi.StringOutput `pulumi:"lastRenewedTime"`
@@ -193,7 +195,7 @@ type domainArgs struct {
 	DnsZoneId *string `pulumi:"dnsZoneId"`
 	// Name of the domain.
 	DomainName *string `pulumi:"domainName"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location *string `pulumi:"location"`
@@ -228,7 +230,7 @@ type DomainArgs struct {
 	DnsZoneId pulumi.StringPtrInput
 	// Name of the domain.
 	DomainName pulumi.StringPtrInput
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrInput
 	// Resource Location.
 	Location pulumi.StringPtrInput
@@ -288,6 +290,11 @@ func (o DomainOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o DomainOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Domain creation timestamp.
 func (o DomainOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CreatedTime }).(pulumi.StringOutput)
@@ -313,7 +320,7 @@ func (o DomainOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o DomainOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }

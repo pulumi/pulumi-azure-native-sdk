@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2020-05-01.
 //
-// Other available API versions: 2023-01-01.
+// Other available API versions: 2023-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPrivateEndpointConnectionControllerPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResult
@@ -37,6 +37,8 @@ type LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs stru
 
 // REST model used to encapsulate the user visible state of a PrivateEndpoint.
 type LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the tag for optimistic concurrency control.
 	ETag string `pulumi:"eTag"`
 	// Relative URL to get this Sites.
@@ -86,6 +88,13 @@ func (o LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResult
 
 func (o LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResult) string {
+		return v.AzureApiVersion
+	}).(pulumi.StringOutput)
 }
 
 // Gets the tag for optimistic concurrency control.

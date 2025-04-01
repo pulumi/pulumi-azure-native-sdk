@@ -34,11 +34,13 @@ type LookupServerCollectorArgs struct {
 }
 
 type LookupServerCollectorResult struct {
-	ETag       *string                     `pulumi:"eTag"`
-	Id         string                      `pulumi:"id"`
-	Name       string                      `pulumi:"name"`
-	Properties CollectorPropertiesResponse `pulumi:"properties"`
-	Type       string                      `pulumi:"type"`
+	// The Azure API version of the resource.
+	AzureApiVersion string                      `pulumi:"azureApiVersion"`
+	ETag            *string                     `pulumi:"eTag"`
+	Id              string                      `pulumi:"id"`
+	Name            string                      `pulumi:"name"`
+	Properties      CollectorPropertiesResponse `pulumi:"properties"`
+	Type            string                      `pulumi:"type"`
 }
 
 func LookupServerCollectorOutput(ctx *pulumi.Context, args LookupServerCollectorOutputArgs, opts ...pulumi.InvokeOption) LookupServerCollectorResultOutput {
@@ -75,6 +77,11 @@ func (o LookupServerCollectorResultOutput) ToLookupServerCollectorResultOutput()
 
 func (o LookupServerCollectorResultOutput) ToLookupServerCollectorResultOutputWithContext(ctx context.Context) LookupServerCollectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServerCollectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerCollectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupServerCollectorResultOutput) ETag() pulumi.StringPtrOutput {

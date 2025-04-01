@@ -13,9 +13,9 @@ import (
 
 // Gets a partner registration with the specified parameters.
 //
-// Uses Azure REST API version 2022-06-15.
+// Uses Azure REST API version 2025-02-15.
 //
-// Other available API versions: 2021-10-15-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPartnerRegistration(ctx *pulumi.Context, args *LookupPartnerRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerRegistrationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerRegistrationResult
@@ -35,6 +35,8 @@ type LookupPartnerRegistrationArgs struct {
 
 // Information about a partner registration.
 type LookupPartnerRegistrationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified identifier of the resource.
 	Id string `pulumi:"id"`
 	// Location of the resource.
@@ -46,7 +48,7 @@ type LookupPartnerRegistrationResult struct {
 	PartnerRegistrationImmutableId *string `pulumi:"partnerRegistrationImmutableId"`
 	// Provisioning state of the partner registration.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The system metadata relating to Partner Registration resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -89,6 +91,11 @@ func (o LookupPartnerRegistrationResultOutput) ToLookupPartnerRegistrationResult
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupPartnerRegistrationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPartnerRegistrationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified identifier of the resource.
 func (o LookupPartnerRegistrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerRegistrationResult) string { return v.Id }).(pulumi.StringOutput)
@@ -115,7 +122,7 @@ func (o LookupPartnerRegistrationResultOutput) ProvisioningState() pulumi.String
 	return o.ApplyT(func(v LookupPartnerRegistrationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to Partner Registration resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupPartnerRegistrationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPartnerRegistrationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

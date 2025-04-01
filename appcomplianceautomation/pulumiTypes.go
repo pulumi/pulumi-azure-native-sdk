@@ -13,14 +13,138 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// A class represent the certification record synchronized from app compliance.
+type CertSyncRecordResponse struct {
+	// Indicates the status of certification process.
+	CertificationStatus *string `pulumi:"certificationStatus"`
+	// The control records list to be synchronized.
+	Controls []ControlSyncRecordResponse `pulumi:"controls"`
+	// Indicates the status of compliance process.
+	IngestionStatus *string `pulumi:"ingestionStatus"`
+	// The offerGuid which mapping to the reports.
+	OfferGuid *string `pulumi:"offerGuid"`
+}
+
+// A class represent the certification record synchronized from app compliance.
+type CertSyncRecordResponseOutput struct{ *pulumi.OutputState }
+
+func (CertSyncRecordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertSyncRecordResponse)(nil)).Elem()
+}
+
+func (o CertSyncRecordResponseOutput) ToCertSyncRecordResponseOutput() CertSyncRecordResponseOutput {
+	return o
+}
+
+func (o CertSyncRecordResponseOutput) ToCertSyncRecordResponseOutputWithContext(ctx context.Context) CertSyncRecordResponseOutput {
+	return o
+}
+
+// Indicates the status of certification process.
+func (o CertSyncRecordResponseOutput) CertificationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertSyncRecordResponse) *string { return v.CertificationStatus }).(pulumi.StringPtrOutput)
+}
+
+// The control records list to be synchronized.
+func (o CertSyncRecordResponseOutput) Controls() ControlSyncRecordResponseArrayOutput {
+	return o.ApplyT(func(v CertSyncRecordResponse) []ControlSyncRecordResponse { return v.Controls }).(ControlSyncRecordResponseArrayOutput)
+}
+
+// Indicates the status of compliance process.
+func (o CertSyncRecordResponseOutput) IngestionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertSyncRecordResponse) *string { return v.IngestionStatus }).(pulumi.StringPtrOutput)
+}
+
+// The offerGuid which mapping to the reports.
+func (o CertSyncRecordResponseOutput) OfferGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertSyncRecordResponse) *string { return v.OfferGuid }).(pulumi.StringPtrOutput)
+}
+
+type CertSyncRecordResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CertSyncRecordResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertSyncRecordResponse)(nil)).Elem()
+}
+
+func (o CertSyncRecordResponseArrayOutput) ToCertSyncRecordResponseArrayOutput() CertSyncRecordResponseArrayOutput {
+	return o
+}
+
+func (o CertSyncRecordResponseArrayOutput) ToCertSyncRecordResponseArrayOutputWithContext(ctx context.Context) CertSyncRecordResponseArrayOutput {
+	return o
+}
+
+func (o CertSyncRecordResponseArrayOutput) Index(i pulumi.IntInput) CertSyncRecordResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertSyncRecordResponse {
+		return vs[0].([]CertSyncRecordResponse)[vs[1].(int)]
+	}).(CertSyncRecordResponseOutput)
+}
+
+// A class represent the control record synchronized from app compliance.
+type ControlSyncRecordResponse struct {
+	// The Id of the control. e.g. "Operational_Security_10"
+	ControlId *string `pulumi:"controlId"`
+	// Control status synchronized from app compliance.
+	ControlStatus *string `pulumi:"controlStatus"`
+}
+
+// A class represent the control record synchronized from app compliance.
+type ControlSyncRecordResponseOutput struct{ *pulumi.OutputState }
+
+func (ControlSyncRecordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlSyncRecordResponse)(nil)).Elem()
+}
+
+func (o ControlSyncRecordResponseOutput) ToControlSyncRecordResponseOutput() ControlSyncRecordResponseOutput {
+	return o
+}
+
+func (o ControlSyncRecordResponseOutput) ToControlSyncRecordResponseOutputWithContext(ctx context.Context) ControlSyncRecordResponseOutput {
+	return o
+}
+
+// The Id of the control. e.g. "Operational_Security_10"
+func (o ControlSyncRecordResponseOutput) ControlId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlSyncRecordResponse) *string { return v.ControlId }).(pulumi.StringPtrOutput)
+}
+
+// Control status synchronized from app compliance.
+func (o ControlSyncRecordResponseOutput) ControlStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlSyncRecordResponse) *string { return v.ControlStatus }).(pulumi.StringPtrOutput)
+}
+
+type ControlSyncRecordResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ControlSyncRecordResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlSyncRecordResponse)(nil)).Elem()
+}
+
+func (o ControlSyncRecordResponseArrayOutput) ToControlSyncRecordResponseArrayOutput() ControlSyncRecordResponseArrayOutput {
+	return o
+}
+
+func (o ControlSyncRecordResponseArrayOutput) ToControlSyncRecordResponseArrayOutputWithContext(ctx context.Context) ControlSyncRecordResponseArrayOutput {
+	return o
+}
+
+func (o ControlSyncRecordResponseArrayOutput) Index(i pulumi.IntInput) ControlSyncRecordResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ControlSyncRecordResponse {
+		return vs[0].([]ControlSyncRecordResponse)[vs[1].(int)]
+	}).(ControlSyncRecordResponseOutput)
+}
+
 // The overview of the compliance result for one report.
 type OverviewStatusResponse struct {
-	// The count of all failed full automation control.
-	FailedCount *int `pulumi:"failedCount"`
+	// The count of all failed control.
+	FailedCount int `pulumi:"failedCount"`
 	// The count of all manual control.
-	ManualCount *int `pulumi:"manualCount"`
-	// The count of all passed full automation control.
-	PassedCount *int `pulumi:"passedCount"`
+	ManualCount int `pulumi:"manualCount"`
+	// The count of all not applicable control.
+	NotApplicableCount int `pulumi:"notApplicableCount"`
+	// The count of all passed control.
+	PassedCount int `pulumi:"passedCount"`
+	// The count of all pending for approval control.
+	PendingCount int `pulumi:"pendingCount"`
 }
 
 // The overview of the compliance result for one report.
@@ -38,79 +162,35 @@ func (o OverviewStatusResponseOutput) ToOverviewStatusResponseOutputWithContext(
 	return o
 }
 
-// The count of all failed full automation control.
-func (o OverviewStatusResponseOutput) FailedCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OverviewStatusResponse) *int { return v.FailedCount }).(pulumi.IntPtrOutput)
+// The count of all failed control.
+func (o OverviewStatusResponseOutput) FailedCount() pulumi.IntOutput {
+	return o.ApplyT(func(v OverviewStatusResponse) int { return v.FailedCount }).(pulumi.IntOutput)
 }
 
 // The count of all manual control.
-func (o OverviewStatusResponseOutput) ManualCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OverviewStatusResponse) *int { return v.ManualCount }).(pulumi.IntPtrOutput)
+func (o OverviewStatusResponseOutput) ManualCount() pulumi.IntOutput {
+	return o.ApplyT(func(v OverviewStatusResponse) int { return v.ManualCount }).(pulumi.IntOutput)
 }
 
-// The count of all passed full automation control.
-func (o OverviewStatusResponseOutput) PassedCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OverviewStatusResponse) *int { return v.PassedCount }).(pulumi.IntPtrOutput)
+// The count of all not applicable control.
+func (o OverviewStatusResponseOutput) NotApplicableCount() pulumi.IntOutput {
+	return o.ApplyT(func(v OverviewStatusResponse) int { return v.NotApplicableCount }).(pulumi.IntOutput)
 }
 
-type OverviewStatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OverviewStatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OverviewStatusResponse)(nil)).Elem()
+// The count of all passed control.
+func (o OverviewStatusResponseOutput) PassedCount() pulumi.IntOutput {
+	return o.ApplyT(func(v OverviewStatusResponse) int { return v.PassedCount }).(pulumi.IntOutput)
 }
 
-func (o OverviewStatusResponsePtrOutput) ToOverviewStatusResponsePtrOutput() OverviewStatusResponsePtrOutput {
-	return o
-}
-
-func (o OverviewStatusResponsePtrOutput) ToOverviewStatusResponsePtrOutputWithContext(ctx context.Context) OverviewStatusResponsePtrOutput {
-	return o
-}
-
-func (o OverviewStatusResponsePtrOutput) Elem() OverviewStatusResponseOutput {
-	return o.ApplyT(func(v *OverviewStatusResponse) OverviewStatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OverviewStatusResponse
-		return ret
-	}).(OverviewStatusResponseOutput)
-}
-
-// The count of all failed full automation control.
-func (o OverviewStatusResponsePtrOutput) FailedCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OverviewStatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.FailedCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// The count of all manual control.
-func (o OverviewStatusResponsePtrOutput) ManualCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OverviewStatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ManualCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// The count of all passed full automation control.
-func (o OverviewStatusResponsePtrOutput) PassedCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OverviewStatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PassedCount
-	}).(pulumi.IntPtrOutput)
+// The count of all pending for approval control.
+func (o OverviewStatusResponseOutput) PendingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v OverviewStatusResponse) int { return v.PendingCount }).(pulumi.IntOutput)
 }
 
 // A list which includes all the compliance result for one report.
 type ReportComplianceStatusResponse struct {
 	// The Microsoft 365 certification name.
-	M365 *OverviewStatusResponse `pulumi:"m365"`
+	M365 OverviewStatusResponse `pulumi:"m365"`
 }
 
 // A list which includes all the compliance result for one report.
@@ -129,219 +209,22 @@ func (o ReportComplianceStatusResponseOutput) ToReportComplianceStatusResponseOu
 }
 
 // The Microsoft 365 certification name.
-func (o ReportComplianceStatusResponseOutput) M365() OverviewStatusResponsePtrOutput {
-	return o.ApplyT(func(v ReportComplianceStatusResponse) *OverviewStatusResponse { return v.M365 }).(OverviewStatusResponsePtrOutput)
-}
-
-// Report's properties.
-type ReportProperties struct {
-	// Report offer Guid.
-	OfferGuid *string `pulumi:"offerGuid"`
-	// List of resource data.
-	Resources []ResourceMetadata `pulumi:"resources"`
-	// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
-	// An example of valid timezone id is "Pacific Standard Time".
-	TimeZone string `pulumi:"timeZone"`
-	// Report collection trigger time.
-	TriggerTime string `pulumi:"triggerTime"`
-}
-
-// ReportPropertiesInput is an input type that accepts ReportPropertiesArgs and ReportPropertiesOutput values.
-// You can construct a concrete instance of `ReportPropertiesInput` via:
-//
-//	ReportPropertiesArgs{...}
-type ReportPropertiesInput interface {
-	pulumi.Input
-
-	ToReportPropertiesOutput() ReportPropertiesOutput
-	ToReportPropertiesOutputWithContext(context.Context) ReportPropertiesOutput
-}
-
-// Report's properties.
-type ReportPropertiesArgs struct {
-	// Report offer Guid.
-	OfferGuid pulumi.StringPtrInput `pulumi:"offerGuid"`
-	// List of resource data.
-	Resources ResourceMetadataArrayInput `pulumi:"resources"`
-	// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
-	// An example of valid timezone id is "Pacific Standard Time".
-	TimeZone pulumi.StringInput `pulumi:"timeZone"`
-	// Report collection trigger time.
-	TriggerTime pulumi.StringInput `pulumi:"triggerTime"`
-}
-
-func (ReportPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReportProperties)(nil)).Elem()
-}
-
-func (i ReportPropertiesArgs) ToReportPropertiesOutput() ReportPropertiesOutput {
-	return i.ToReportPropertiesOutputWithContext(context.Background())
-}
-
-func (i ReportPropertiesArgs) ToReportPropertiesOutputWithContext(ctx context.Context) ReportPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReportPropertiesOutput)
-}
-
-// Report's properties.
-type ReportPropertiesOutput struct{ *pulumi.OutputState }
-
-func (ReportPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReportProperties)(nil)).Elem()
-}
-
-func (o ReportPropertiesOutput) ToReportPropertiesOutput() ReportPropertiesOutput {
-	return o
-}
-
-func (o ReportPropertiesOutput) ToReportPropertiesOutputWithContext(ctx context.Context) ReportPropertiesOutput {
-	return o
-}
-
-// Report offer Guid.
-func (o ReportPropertiesOutput) OfferGuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReportProperties) *string { return v.OfferGuid }).(pulumi.StringPtrOutput)
-}
-
-// List of resource data.
-func (o ReportPropertiesOutput) Resources() ResourceMetadataArrayOutput {
-	return o.ApplyT(func(v ReportProperties) []ResourceMetadata { return v.Resources }).(ResourceMetadataArrayOutput)
-}
-
-// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
-// An example of valid timezone id is "Pacific Standard Time".
-func (o ReportPropertiesOutput) TimeZone() pulumi.StringOutput {
-	return o.ApplyT(func(v ReportProperties) string { return v.TimeZone }).(pulumi.StringOutput)
-}
-
-// Report collection trigger time.
-func (o ReportPropertiesOutput) TriggerTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ReportProperties) string { return v.TriggerTime }).(pulumi.StringOutput)
-}
-
-// Report's properties.
-type ReportPropertiesResponse struct {
-	// Report compliance status.
-	ComplianceStatus ReportComplianceStatusResponse `pulumi:"complianceStatus"`
-	// Report id in database.
-	Id string `pulumi:"id"`
-	// Report last collection trigger time.
-	LastTriggerTime string `pulumi:"lastTriggerTime"`
-	// Report next collection trigger time.
-	NextTriggerTime string `pulumi:"nextTriggerTime"`
-	// Report offer Guid.
-	OfferGuid *string `pulumi:"offerGuid"`
-	// Azure lifecycle management
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Report name.
-	ReportName string `pulumi:"reportName"`
-	// List of resource data.
-	Resources []ResourceMetadataResponse `pulumi:"resources"`
-	// Report status.
-	Status string `pulumi:"status"`
-	// List of subscription Ids.
-	Subscriptions []string `pulumi:"subscriptions"`
-	// Report's tenant id.
-	TenantId string `pulumi:"tenantId"`
-	// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
-	// An example of valid timezone id is "Pacific Standard Time".
-	TimeZone string `pulumi:"timeZone"`
-	// Report collection trigger time.
-	TriggerTime string `pulumi:"triggerTime"`
-}
-
-// Report's properties.
-type ReportPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (ReportPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReportPropertiesResponse)(nil)).Elem()
-}
-
-func (o ReportPropertiesResponseOutput) ToReportPropertiesResponseOutput() ReportPropertiesResponseOutput {
-	return o
-}
-
-func (o ReportPropertiesResponseOutput) ToReportPropertiesResponseOutputWithContext(ctx context.Context) ReportPropertiesResponseOutput {
-	return o
-}
-
-// Report compliance status.
-func (o ReportPropertiesResponseOutput) ComplianceStatus() ReportComplianceStatusResponseOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) ReportComplianceStatusResponse { return v.ComplianceStatus }).(ReportComplianceStatusResponseOutput)
-}
-
-// Report id in database.
-func (o ReportPropertiesResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Report last collection trigger time.
-func (o ReportPropertiesResponseOutput) LastTriggerTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) string { return v.LastTriggerTime }).(pulumi.StringOutput)
-}
-
-// Report next collection trigger time.
-func (o ReportPropertiesResponseOutput) NextTriggerTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) string { return v.NextTriggerTime }).(pulumi.StringOutput)
-}
-
-// Report offer Guid.
-func (o ReportPropertiesResponseOutput) OfferGuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) *string { return v.OfferGuid }).(pulumi.StringPtrOutput)
-}
-
-// Azure lifecycle management
-func (o ReportPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Report name.
-func (o ReportPropertiesResponseOutput) ReportName() pulumi.StringOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) string { return v.ReportName }).(pulumi.StringOutput)
-}
-
-// List of resource data.
-func (o ReportPropertiesResponseOutput) Resources() ResourceMetadataResponseArrayOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) []ResourceMetadataResponse { return v.Resources }).(ResourceMetadataResponseArrayOutput)
-}
-
-// Report status.
-func (o ReportPropertiesResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// List of subscription Ids.
-func (o ReportPropertiesResponseOutput) Subscriptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) []string { return v.Subscriptions }).(pulumi.StringArrayOutput)
-}
-
-// Report's tenant id.
-func (o ReportPropertiesResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
-// An example of valid timezone id is "Pacific Standard Time".
-func (o ReportPropertiesResponseOutput) TimeZone() pulumi.StringOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) string { return v.TimeZone }).(pulumi.StringOutput)
-}
-
-// Report collection trigger time.
-func (o ReportPropertiesResponseOutput) TriggerTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ReportPropertiesResponse) string { return v.TriggerTime }).(pulumi.StringOutput)
+func (o ReportComplianceStatusResponseOutput) M365() OverviewStatusResponseOutput {
+	return o.ApplyT(func(v ReportComplianceStatusResponse) OverviewStatusResponse { return v.M365 }).(OverviewStatusResponseOutput)
 }
 
 // Single resource Id's metadata.
 type ResourceMetadata struct {
+	// Account Id. For example - the AWS account id.
+	AccountId *string `pulumi:"accountId"`
 	// Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
 	ResourceId string `pulumi:"resourceId"`
 	// Resource kind.
 	ResourceKind *string `pulumi:"resourceKind"`
-	// Resource name.
-	ResourceName *string `pulumi:"resourceName"`
-	// Resource type.
+	// Resource Origin.
+	ResourceOrigin *string `pulumi:"resourceOrigin"`
+	// Resource type. e.g. "Microsoft.Compute/virtualMachines"
 	ResourceType *string `pulumi:"resourceType"`
-	// Resource's tag type.
-	Tags map[string]string `pulumi:"tags"`
 }
 
 // ResourceMetadataInput is an input type that accepts ResourceMetadataArgs and ResourceMetadataOutput values.
@@ -357,16 +240,16 @@ type ResourceMetadataInput interface {
 
 // Single resource Id's metadata.
 type ResourceMetadataArgs struct {
+	// Account Id. For example - the AWS account id.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// Resource kind.
 	ResourceKind pulumi.StringPtrInput `pulumi:"resourceKind"`
-	// Resource name.
-	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
-	// Resource type.
+	// Resource Origin.
+	ResourceOrigin pulumi.StringPtrInput `pulumi:"resourceOrigin"`
+	// Resource type. e.g. "Microsoft.Compute/virtualMachines"
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
-	// Resource's tag type.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (ResourceMetadataArgs) ElementType() reflect.Type {
@@ -421,6 +304,11 @@ func (o ResourceMetadataOutput) ToResourceMetadataOutputWithContext(ctx context.
 	return o
 }
 
+// Account Id. For example - the AWS account id.
+func (o ResourceMetadataOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetadata) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
 func (o ResourceMetadataOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceMetadata) string { return v.ResourceId }).(pulumi.StringOutput)
@@ -431,19 +319,14 @@ func (o ResourceMetadataOutput) ResourceKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMetadata) *string { return v.ResourceKind }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
-func (o ResourceMetadataOutput) ResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMetadata) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+// Resource Origin.
+func (o ResourceMetadataOutput) ResourceOrigin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetadata) *string { return v.ResourceOrigin }).(pulumi.StringPtrOutput)
 }
 
-// Resource type.
+// Resource type. e.g. "Microsoft.Compute/virtualMachines"
 func (o ResourceMetadataOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMetadata) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
-}
-
-// Resource's tag type.
-func (o ResourceMetadataOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceMetadata) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ResourceMetadataArrayOutput struct{ *pulumi.OutputState }
@@ -468,16 +351,16 @@ func (o ResourceMetadataArrayOutput) Index(i pulumi.IntInput) ResourceMetadataOu
 
 // Single resource Id's metadata.
 type ResourceMetadataResponse struct {
+	// Account Id. For example - the AWS account id.
+	AccountId *string `pulumi:"accountId"`
 	// Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
 	ResourceId string `pulumi:"resourceId"`
 	// Resource kind.
 	ResourceKind *string `pulumi:"resourceKind"`
-	// Resource name.
-	ResourceName *string `pulumi:"resourceName"`
-	// Resource type.
+	// Resource Origin.
+	ResourceOrigin *string `pulumi:"resourceOrigin"`
+	// Resource type. e.g. "Microsoft.Compute/virtualMachines"
 	ResourceType *string `pulumi:"resourceType"`
-	// Resource's tag type.
-	Tags map[string]string `pulumi:"tags"`
 }
 
 // Single resource Id's metadata.
@@ -495,6 +378,11 @@ func (o ResourceMetadataResponseOutput) ToResourceMetadataResponseOutputWithCont
 	return o
 }
 
+// Account Id. For example - the AWS account id.
+func (o ResourceMetadataResponseOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetadataResponse) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
 func (o ResourceMetadataResponseOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceMetadataResponse) string { return v.ResourceId }).(pulumi.StringOutput)
@@ -505,19 +393,14 @@ func (o ResourceMetadataResponseOutput) ResourceKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMetadataResponse) *string { return v.ResourceKind }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
-func (o ResourceMetadataResponseOutput) ResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMetadataResponse) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+// Resource Origin.
+func (o ResourceMetadataResponseOutput) ResourceOrigin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetadataResponse) *string { return v.ResourceOrigin }).(pulumi.StringPtrOutput)
 }
 
-// Resource type.
+// Resource type. e.g. "Microsoft.Compute/virtualMachines"
 func (o ResourceMetadataResponseOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMetadataResponse) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
-}
-
-// Resource's tag type.
-func (o ResourceMetadataResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceMetadataResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ResourceMetadataResponseArrayOutput struct{ *pulumi.OutputState }
@@ -837,6 +720,203 @@ func (o StatusItemResponseArrayOutput) Index(i pulumi.IntInput) StatusItemRespon
 }
 
 // The information of 'bring your own storage' account binding to the report
+type StorageInfo struct {
+	// 'bring your own storage' account name
+	AccountName *string `pulumi:"accountName"`
+	// The region of 'bring your own storage' account
+	Location *string `pulumi:"location"`
+	// The resourceGroup which 'bring your own storage' account belongs to
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// The subscription id which 'bring your own storage' account belongs to
+	SubscriptionId *string `pulumi:"subscriptionId"`
+}
+
+// StorageInfoInput is an input type that accepts StorageInfoArgs and StorageInfoOutput values.
+// You can construct a concrete instance of `StorageInfoInput` via:
+//
+//	StorageInfoArgs{...}
+type StorageInfoInput interface {
+	pulumi.Input
+
+	ToStorageInfoOutput() StorageInfoOutput
+	ToStorageInfoOutputWithContext(context.Context) StorageInfoOutput
+}
+
+// The information of 'bring your own storage' account binding to the report
+type StorageInfoArgs struct {
+	// 'bring your own storage' account name
+	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
+	// The region of 'bring your own storage' account
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The resourceGroup which 'bring your own storage' account belongs to
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// The subscription id which 'bring your own storage' account belongs to
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+}
+
+func (StorageInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageInfo)(nil)).Elem()
+}
+
+func (i StorageInfoArgs) ToStorageInfoOutput() StorageInfoOutput {
+	return i.ToStorageInfoOutputWithContext(context.Background())
+}
+
+func (i StorageInfoArgs) ToStorageInfoOutputWithContext(ctx context.Context) StorageInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageInfoOutput)
+}
+
+func (i StorageInfoArgs) ToStorageInfoPtrOutput() StorageInfoPtrOutput {
+	return i.ToStorageInfoPtrOutputWithContext(context.Background())
+}
+
+func (i StorageInfoArgs) ToStorageInfoPtrOutputWithContext(ctx context.Context) StorageInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageInfoOutput).ToStorageInfoPtrOutputWithContext(ctx)
+}
+
+// StorageInfoPtrInput is an input type that accepts StorageInfoArgs, StorageInfoPtr and StorageInfoPtrOutput values.
+// You can construct a concrete instance of `StorageInfoPtrInput` via:
+//
+//	        StorageInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageInfoPtrInput interface {
+	pulumi.Input
+
+	ToStorageInfoPtrOutput() StorageInfoPtrOutput
+	ToStorageInfoPtrOutputWithContext(context.Context) StorageInfoPtrOutput
+}
+
+type storageInfoPtrType StorageInfoArgs
+
+func StorageInfoPtr(v *StorageInfoArgs) StorageInfoPtrInput {
+	return (*storageInfoPtrType)(v)
+}
+
+func (*storageInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageInfo)(nil)).Elem()
+}
+
+func (i *storageInfoPtrType) ToStorageInfoPtrOutput() StorageInfoPtrOutput {
+	return i.ToStorageInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *storageInfoPtrType) ToStorageInfoPtrOutputWithContext(ctx context.Context) StorageInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageInfoPtrOutput)
+}
+
+// The information of 'bring your own storage' account binding to the report
+type StorageInfoOutput struct{ *pulumi.OutputState }
+
+func (StorageInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageInfo)(nil)).Elem()
+}
+
+func (o StorageInfoOutput) ToStorageInfoOutput() StorageInfoOutput {
+	return o
+}
+
+func (o StorageInfoOutput) ToStorageInfoOutputWithContext(ctx context.Context) StorageInfoOutput {
+	return o
+}
+
+func (o StorageInfoOutput) ToStorageInfoPtrOutput() StorageInfoPtrOutput {
+	return o.ToStorageInfoPtrOutputWithContext(context.Background())
+}
+
+func (o StorageInfoOutput) ToStorageInfoPtrOutputWithContext(ctx context.Context) StorageInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageInfo) *StorageInfo {
+		return &v
+	}).(StorageInfoPtrOutput)
+}
+
+// 'bring your own storage' account name
+func (o StorageInfoOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageInfo) *string { return v.AccountName }).(pulumi.StringPtrOutput)
+}
+
+// The region of 'bring your own storage' account
+func (o StorageInfoOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageInfo) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The resourceGroup which 'bring your own storage' account belongs to
+func (o StorageInfoOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageInfo) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// The subscription id which 'bring your own storage' account belongs to
+func (o StorageInfoOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageInfo) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+type StorageInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageInfo)(nil)).Elem()
+}
+
+func (o StorageInfoPtrOutput) ToStorageInfoPtrOutput() StorageInfoPtrOutput {
+	return o
+}
+
+func (o StorageInfoPtrOutput) ToStorageInfoPtrOutputWithContext(ctx context.Context) StorageInfoPtrOutput {
+	return o
+}
+
+func (o StorageInfoPtrOutput) Elem() StorageInfoOutput {
+	return o.ApplyT(func(v *StorageInfo) StorageInfo {
+		if v != nil {
+			return *v
+		}
+		var ret StorageInfo
+		return ret
+	}).(StorageInfoOutput)
+}
+
+// 'bring your own storage' account name
+func (o StorageInfoPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of 'bring your own storage' account
+func (o StorageInfoPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resourceGroup which 'bring your own storage' account belongs to
+func (o StorageInfoPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subscription id which 'bring your own storage' account belongs to
+func (o StorageInfoPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The information of 'bring your own storage' account binding to the report
 type StorageInfoResponse struct {
 	// 'bring your own storage' account name
 	AccountName *string `pulumi:"accountName"`
@@ -881,6 +961,70 @@ func (o StorageInfoResponseOutput) ResourceGroup() pulumi.StringPtrOutput {
 // The subscription id which 'bring your own storage' account belongs to
 func (o StorageInfoResponseOutput) SubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageInfoResponse) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+type StorageInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageInfoResponse)(nil)).Elem()
+}
+
+func (o StorageInfoResponsePtrOutput) ToStorageInfoResponsePtrOutput() StorageInfoResponsePtrOutput {
+	return o
+}
+
+func (o StorageInfoResponsePtrOutput) ToStorageInfoResponsePtrOutputWithContext(ctx context.Context) StorageInfoResponsePtrOutput {
+	return o
+}
+
+func (o StorageInfoResponsePtrOutput) Elem() StorageInfoResponseOutput {
+	return o.ApplyT(func(v *StorageInfoResponse) StorageInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StorageInfoResponse
+		return ret
+	}).(StorageInfoResponseOutput)
+}
+
+// 'bring your own storage' account name
+func (o StorageInfoResponsePtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of 'bring your own storage' account
+func (o StorageInfoResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resourceGroup which 'bring your own storage' account belongs to
+func (o StorageInfoResponsePtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subscription id which 'bring your own storage' account belongs to
+func (o StorageInfoResponsePtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
 }
 
 type StorageInfoResponseArrayOutput struct{ *pulumi.OutputState }
@@ -965,11 +1109,12 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(CertSyncRecordResponseOutput{})
+	pulumi.RegisterOutputType(CertSyncRecordResponseArrayOutput{})
+	pulumi.RegisterOutputType(ControlSyncRecordResponseOutput{})
+	pulumi.RegisterOutputType(ControlSyncRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(OverviewStatusResponseOutput{})
-	pulumi.RegisterOutputType(OverviewStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReportComplianceStatusResponseOutput{})
-	pulumi.RegisterOutputType(ReportPropertiesOutput{})
-	pulumi.RegisterOutputType(ReportPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ResourceMetadataOutput{})
 	pulumi.RegisterOutputType(ResourceMetadataArrayOutput{})
 	pulumi.RegisterOutputType(ResourceMetadataResponseOutput{})
@@ -982,7 +1127,10 @@ func init() {
 	pulumi.RegisterOutputType(ScopingQuestionResponseArrayOutput{})
 	pulumi.RegisterOutputType(StatusItemResponseOutput{})
 	pulumi.RegisterOutputType(StatusItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(StorageInfoOutput{})
+	pulumi.RegisterOutputType(StorageInfoPtrOutput{})
 	pulumi.RegisterOutputType(StorageInfoResponseOutput{})
+	pulumi.RegisterOutputType(StorageInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(StorageInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

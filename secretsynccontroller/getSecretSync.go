@@ -33,6 +33,8 @@ type LookupSecretSyncArgs struct {
 
 // The SecretSync resource.
 type LookupSecretSyncResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The complex type of the extended location.
 	ExtendedLocation *AzureResourceManagerCommonTypesExtendedLocationResponse `pulumi:"extendedLocation"`
 	// ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.
@@ -96,6 +98,11 @@ func (o LookupSecretSyncResultOutput) ToLookupSecretSyncResultOutput() LookupSec
 
 func (o LookupSecretSyncResultOutput) ToLookupSecretSyncResultOutputWithContext(ctx context.Context) LookupSecretSyncResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSecretSyncResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretSyncResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The complex type of the extended location.

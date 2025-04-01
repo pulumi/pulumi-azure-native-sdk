@@ -14,12 +14,14 @@ import (
 
 // Configuration information or intent on which to do the analysis on.
 //
-// Uses Azure REST API version 2024-01-01-preview.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2024-01-01-preview.
 //
-// Other available API versions: 2024-05-01.
+// Other available API versions: 2024-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ReachabilityAnalysisIntent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Represents the Reachability Analysis Intent properties.
@@ -152,6 +154,11 @@ func (o ReachabilityAnalysisIntentOutput) ToReachabilityAnalysisIntentOutput() R
 
 func (o ReachabilityAnalysisIntentOutput) ToReachabilityAnalysisIntentOutputWithContext(ctx context.Context) ReachabilityAnalysisIntentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ReachabilityAnalysisIntentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReachabilityAnalysisIntent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

@@ -13,9 +13,9 @@ import (
 
 // Get information about the specified address.
 //
-// Uses Azure REST API version 2022-05-01-preview.
+// Uses Azure REST API version 2024-02-01.
 //
-// Other available API versions: 2024-02-01.
+// Other available API versions: 2022-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edgeorder [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.InvokeOption) (*LookupAddressResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAddressResult
@@ -35,19 +35,25 @@ type LookupAddressArgs struct {
 
 // Address Resource.
 type LookupAddressResult struct {
+	// Type of address based on its usage context.
+	AddressClassification *string `pulumi:"addressClassification"`
 	// Status of address validation.
 	AddressValidationStatus string `pulumi:"addressValidationStatus"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Contact details for the address.
-	ContactDetails ContactDetailsResponse `pulumi:"contactDetails"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	ContactDetails *ContactDetailsResponse `pulumi:"contactDetails"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// Provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Shipping details for the address.
 	ShippingAddress *ShippingAddressResponse `pulumi:"shippingAddress"`
-	// Represents resource creation and update time.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -90,17 +96,27 @@ func (o LookupAddressResultOutput) ToLookupAddressResultOutputWithContext(ctx co
 	return o
 }
 
+// Type of address based on its usage context.
+func (o LookupAddressResultOutput) AddressClassification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAddressResult) *string { return v.AddressClassification }).(pulumi.StringPtrOutput)
+}
+
 // Status of address validation.
 func (o LookupAddressResultOutput) AddressValidationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.AddressValidationStatus }).(pulumi.StringOutput)
 }
 
-// Contact details for the address.
-func (o LookupAddressResultOutput) ContactDetails() ContactDetailsResponseOutput {
-	return o.ApplyT(func(v LookupAddressResult) ContactDetailsResponse { return v.ContactDetails }).(ContactDetailsResponseOutput)
+// The Azure API version of the resource.
+func (o LookupAddressResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Contact details for the address.
+func (o LookupAddressResultOutput) ContactDetails() ContactDetailsResponsePtrOutput {
+	return o.ApplyT(func(v LookupAddressResult) *ContactDetailsResponse { return v.ContactDetails }).(ContactDetailsResponsePtrOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAddressResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -115,12 +131,17 @@ func (o LookupAddressResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Provisioning state
+func (o LookupAddressResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // Shipping details for the address.
 func (o LookupAddressResultOutput) ShippingAddress() ShippingAddressResponsePtrOutput {
 	return o.ApplyT(func(v LookupAddressResult) *ShippingAddressResponse { return v.ShippingAddress }).(ShippingAddressResponsePtrOutput)
 }
 
-// Represents resource creation and update time.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAddressResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAddressResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

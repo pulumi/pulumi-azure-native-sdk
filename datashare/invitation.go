@@ -14,10 +14,12 @@ import (
 
 // A Invitation data transfer object.
 //
-// Uses Azure REST API version 2021-08-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2021-08-01. In version 2.x of the Azure Native provider, it used API version 2021-08-01.
 type Invitation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The expiration date for the invitation and share subscription.
 	ExpirationDate pulumi.StringPtrOutput `pulumi:"expirationDate"`
 	// unique invitation id
@@ -192,6 +194,11 @@ func (o InvitationOutput) ToInvitationOutput() InvitationOutput {
 
 func (o InvitationOutput) ToInvitationOutputWithContext(ctx context.Context) InvitationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o InvitationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Invitation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The expiration date for the invitation and share subscription.

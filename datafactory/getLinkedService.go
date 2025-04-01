@@ -35,6 +35,8 @@ type LookupLinkedServiceArgs struct {
 
 // Linked service resource type.
 type LookupLinkedServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag identifies change in the resource.
 	Etag string `pulumi:"etag"`
 	// The resource identifier.
@@ -82,6 +84,11 @@ func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutput() Loo
 
 func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutputWithContext(ctx context.Context) LookupLinkedServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLinkedServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag identifies change in the resource.

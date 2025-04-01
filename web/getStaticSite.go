@@ -13,9 +13,9 @@ import (
 
 // Description for Gets the details of a static site.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2020-10-01, 2021-02-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStaticSite(ctx *pulumi.Context, args *LookupStaticSiteArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteResult
@@ -37,6 +37,8 @@ type LookupStaticSiteArgs struct {
 type LookupStaticSiteResult struct {
 	// <code>false</code> if config file is locked for this static web app; otherwise, <code>true</code>.
 	AllowConfigFileUpdates *bool `pulumi:"allowConfigFileUpdates"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The target branch in the repository.
 	Branch *string `pulumi:"branch"`
 	// Build properties to configure on the repository.
@@ -57,7 +59,7 @@ type LookupStaticSiteResult struct {
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Identity to use for Key Vault Reference authentication.
 	KeyVaultReferenceIdentity string `pulumi:"keyVaultReferenceIdentity"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Backends linked to the static side
 	LinkedBackends []StaticSiteLinkedBackendResponse `pulumi:"linkedBackends"`
@@ -129,6 +131,11 @@ func (o LookupStaticSiteResultOutput) AllowConfigFileUpdates() pulumi.BoolPtrOut
 	return o.ApplyT(func(v LookupStaticSiteResult) *bool { return v.AllowConfigFileUpdates }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupStaticSiteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStaticSiteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The target branch in the repository.
 func (o LookupStaticSiteResultOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStaticSiteResult) *string { return v.Branch }).(pulumi.StringPtrOutput)
@@ -179,7 +186,7 @@ func (o LookupStaticSiteResultOutput) KeyVaultReferenceIdentity() pulumi.StringO
 	return o.ApplyT(func(v LookupStaticSiteResult) string { return v.KeyVaultReferenceIdentity }).(pulumi.StringOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o LookupStaticSiteResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStaticSiteResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

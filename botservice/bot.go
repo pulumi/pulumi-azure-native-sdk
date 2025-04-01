@@ -14,12 +14,14 @@ import (
 
 // Bot resource definition
 //
-// Uses Azure REST API version 2022-09-15. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+// Uses Azure REST API version 2023-09-15-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-15.
 //
-// Other available API versions: 2023-09-15-preview.
+// Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Bot struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Entity Tag.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Required. Gets or sets the Kind of the resource.
@@ -182,6 +184,11 @@ func (o BotOutput) ToBotOutput() BotOutput {
 
 func (o BotOutput) ToBotOutputWithContext(ctx context.Context) BotOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Entity Tag.

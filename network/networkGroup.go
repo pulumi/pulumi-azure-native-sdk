@@ -14,16 +14,20 @@ import (
 
 // The network group resource
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2022-04-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2021-02-01-preview, 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NetworkGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description of the network group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The type of the group member.
+	MemberType pulumi.StringPtrOutput `pulumi:"memberType"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the scope assignment resource.
@@ -141,6 +145,8 @@ func (NetworkGroupState) ElementType() reflect.Type {
 type networkGroupArgs struct {
 	// A description of the network group.
 	Description *string `pulumi:"description"`
+	// The type of the group member.
+	MemberType *string `pulumi:"memberType"`
 	// The name of the network group.
 	NetworkGroupName *string `pulumi:"networkGroupName"`
 	// The name of the network manager.
@@ -153,6 +159,8 @@ type networkGroupArgs struct {
 type NetworkGroupArgs struct {
 	// A description of the network group.
 	Description pulumi.StringPtrInput
+	// The type of the group member.
+	MemberType pulumi.StringPtrInput
 	// The name of the network group.
 	NetworkGroupName pulumi.StringPtrInput
 	// The name of the network manager.
@@ -198,6 +206,11 @@ func (o NetworkGroupOutput) ToNetworkGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Azure API version of the resource.
+func (o NetworkGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A description of the network group.
 func (o NetworkGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -206,6 +219,11 @@ func (o NetworkGroupOutput) Description() pulumi.StringPtrOutput {
 // A unique read-only string that changes whenever the resource is updated.
 func (o NetworkGroupOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkGroup) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The type of the group member.
+func (o NetworkGroupOutput) MemberType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkGroup) pulumi.StringPtrOutput { return v.MemberType }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.

@@ -43,6 +43,8 @@ type LookupObjectAnchorsAccountResult struct {
 	AccountDomain string `pulumi:"accountDomain"`
 	// unique id of certain account.
 	AccountId string `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id       string                                `pulumi:"id"`
 	Identity *ObjectAnchorsAccountResponseIdentity `pulumi:"identity"`
@@ -109,6 +111,11 @@ func (o LookupObjectAnchorsAccountResultOutput) AccountDomain() pulumi.StringOut
 // unique id of certain account.
 func (o LookupObjectAnchorsAccountResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObjectAnchorsAccountResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupObjectAnchorsAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAnchorsAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

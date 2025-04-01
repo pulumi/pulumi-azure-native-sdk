@@ -14,12 +14,14 @@ import (
 
 // A managed database resource.
 //
-// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
+// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2017-03-01-preview, 2018-06-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ManagedDatabase struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Collation of the metadata catalog.
 	CatalogCollation pulumi.StringPtrOutput `pulumi:"catalogCollation"`
 	// Collation of the managed database.
@@ -32,6 +34,8 @@ type ManagedDatabase struct {
 	EarliestRestorePoint pulumi.StringOutput `pulumi:"earliestRestorePoint"`
 	// Instance Failover Group resource identifier that this managed database belongs to.
 	FailoverGroupId pulumi.StringOutput `pulumi:"failoverGroupId"`
+	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
+	IsLedgerOn pulumi.BoolPtrOutput `pulumi:"isLedgerOn"`
 	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name.
@@ -161,8 +165,16 @@ type managedDatabaseArgs struct {
 	Collation *string `pulumi:"collation"`
 	// Managed database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. SourceDatabaseName, SourceManagedInstanceName and PointInTime must be specified. RestoreExternalBackup: Create a database by restoring from external backup files. Collation, StorageContainerUri and StorageContainerSasToken must be specified. Recovery: Creates a database by restoring a geo-replicated backup. RecoverableDatabaseId must be specified as the recoverable database resource ID to restore. RestoreLongTermRetentionBackup: Create a database by restoring from a long term retention backup (longTermRetentionBackupResourceId required).
 	CreateMode *string `pulumi:"createMode"`
+	// The restorable cross-subscription dropped database resource id to restore when creating this database.
+	CrossSubscriptionRestorableDroppedDatabaseId *string `pulumi:"crossSubscriptionRestorableDroppedDatabaseId"`
+	// The resource identifier of the cross-subscription source database associated with create operation of this database.
+	CrossSubscriptionSourceDatabaseId *string `pulumi:"crossSubscriptionSourceDatabaseId"`
+	// Target managed instance id used in cross-subscription restore.
+	CrossSubscriptionTargetManagedInstanceId *string `pulumi:"crossSubscriptionTargetManagedInstanceId"`
 	// The name of the database.
 	DatabaseName *string `pulumi:"databaseName"`
+	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
+	IsLedgerOn *bool `pulumi:"isLedgerOn"`
 	// Last backup file name for restore of this managed database.
 	LastBackupName *string `pulumi:"lastBackupName"`
 	// Resource location.
@@ -181,7 +193,9 @@ type managedDatabaseArgs struct {
 	RestorePointInTime *string `pulumi:"restorePointInTime"`
 	// The resource identifier of the source database associated with create operation of this database.
 	SourceDatabaseId *string `pulumi:"sourceDatabaseId"`
-	// Conditional. If createMode is RestoreExternalBackup, this value is required. Specifies the storage container sas token.
+	// Conditional. If createMode is RestoreExternalBackup, this value is used. Specifies the identity used for storage container authentication. Can be 'SharedAccessSignature' or 'ManagedIdentity'; if not specified 'SharedAccessSignature' is assumed.
+	StorageContainerIdentity *string `pulumi:"storageContainerIdentity"`
+	// Conditional. If createMode is RestoreExternalBackup and storageContainerIdentity is not ManagedIdentity, this value is required. Specifies the storage container sas token.
 	StorageContainerSasToken *string `pulumi:"storageContainerSasToken"`
 	// Conditional. If createMode is RestoreExternalBackup, this value is required. Specifies the uri of the storage container where backups for this restore are stored.
 	StorageContainerUri *string `pulumi:"storageContainerUri"`
@@ -199,8 +213,16 @@ type ManagedDatabaseArgs struct {
 	Collation pulumi.StringPtrInput
 	// Managed database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. SourceDatabaseName, SourceManagedInstanceName and PointInTime must be specified. RestoreExternalBackup: Create a database by restoring from external backup files. Collation, StorageContainerUri and StorageContainerSasToken must be specified. Recovery: Creates a database by restoring a geo-replicated backup. RecoverableDatabaseId must be specified as the recoverable database resource ID to restore. RestoreLongTermRetentionBackup: Create a database by restoring from a long term retention backup (longTermRetentionBackupResourceId required).
 	CreateMode pulumi.StringPtrInput
+	// The restorable cross-subscription dropped database resource id to restore when creating this database.
+	CrossSubscriptionRestorableDroppedDatabaseId pulumi.StringPtrInput
+	// The resource identifier of the cross-subscription source database associated with create operation of this database.
+	CrossSubscriptionSourceDatabaseId pulumi.StringPtrInput
+	// Target managed instance id used in cross-subscription restore.
+	CrossSubscriptionTargetManagedInstanceId pulumi.StringPtrInput
 	// The name of the database.
 	DatabaseName pulumi.StringPtrInput
+	// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
+	IsLedgerOn pulumi.BoolPtrInput
 	// Last backup file name for restore of this managed database.
 	LastBackupName pulumi.StringPtrInput
 	// Resource location.
@@ -219,7 +241,9 @@ type ManagedDatabaseArgs struct {
 	RestorePointInTime pulumi.StringPtrInput
 	// The resource identifier of the source database associated with create operation of this database.
 	SourceDatabaseId pulumi.StringPtrInput
-	// Conditional. If createMode is RestoreExternalBackup, this value is required. Specifies the storage container sas token.
+	// Conditional. If createMode is RestoreExternalBackup, this value is used. Specifies the identity used for storage container authentication. Can be 'SharedAccessSignature' or 'ManagedIdentity'; if not specified 'SharedAccessSignature' is assumed.
+	StorageContainerIdentity pulumi.StringPtrInput
+	// Conditional. If createMode is RestoreExternalBackup and storageContainerIdentity is not ManagedIdentity, this value is required. Specifies the storage container sas token.
 	StorageContainerSasToken pulumi.StringPtrInput
 	// Conditional. If createMode is RestoreExternalBackup, this value is required. Specifies the uri of the storage container where backups for this restore are stored.
 	StorageContainerUri pulumi.StringPtrInput
@@ -264,6 +288,11 @@ func (o ManagedDatabaseOutput) ToManagedDatabaseOutputWithContext(ctx context.Co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ManagedDatabaseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedDatabase) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Collation of the metadata catalog.
 func (o ManagedDatabaseOutput) CatalogCollation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedDatabase) pulumi.StringPtrOutput { return v.CatalogCollation }).(pulumi.StringPtrOutput)
@@ -292,6 +321,11 @@ func (o ManagedDatabaseOutput) EarliestRestorePoint() pulumi.StringOutput {
 // Instance Failover Group resource identifier that this managed database belongs to.
 func (o ManagedDatabaseOutput) FailoverGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedDatabase) pulumi.StringOutput { return v.FailoverGroupId }).(pulumi.StringOutput)
+}
+
+// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
+func (o ManagedDatabaseOutput) IsLedgerOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedDatabase) pulumi.BoolPtrOutput { return v.IsLedgerOn }).(pulumi.BoolPtrOutput)
 }
 
 // Resource location.

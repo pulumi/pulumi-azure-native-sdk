@@ -14,12 +14,14 @@ import (
 
 // CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Origin struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Origin is enabled for load balancing or not
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
@@ -257,6 +259,11 @@ func (o OriginOutput) ToOriginOutput() OriginOutput {
 
 func (o OriginOutput) ToOriginOutputWithContext(ctx context.Context) OriginOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o OriginOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Origin) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Origin is enabled for load balancing or not

@@ -13,9 +13,9 @@ import (
 
 // Gets an instance pool.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupInstancePool(ctx *pulumi.Context, args *LookupInstancePoolArgs, opts ...pulumi.InvokeOption) (*LookupInstancePoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstancePoolResult
@@ -35,12 +35,18 @@ type LookupInstancePoolArgs struct {
 
 // An Azure SQL instance pool.
 type LookupInstancePoolResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The Dns Zone that the managed instance pool is in.
+	DnsZone string `pulumi:"dnsZone"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
 	LicenseType string `pulumi:"licenseType"`
 	// Resource location.
 	Location string `pulumi:"location"`
+	// Specifies maintenance configuration id to apply to this managed instance.
+	MaintenanceConfigurationId *string `pulumi:"maintenanceConfigurationId"`
 	// Resource name.
 	Name string `pulumi:"name"`
 	// The name and tier of the SKU.
@@ -90,6 +96,16 @@ func (o LookupInstancePoolResultOutput) ToLookupInstancePoolResultOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupInstancePoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The Dns Zone that the managed instance pool is in.
+func (o LookupInstancePoolResultOutput) DnsZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.DnsZone }).(pulumi.StringOutput)
+}
+
 // Resource ID.
 func (o LookupInstancePoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.Id }).(pulumi.StringOutput)
@@ -103,6 +119,11 @@ func (o LookupInstancePoolResultOutput) LicenseType() pulumi.StringOutput {
 // Resource location.
 func (o LookupInstancePoolResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Specifies maintenance configuration id to apply to this managed instance.
+func (o LookupInstancePoolResultOutput) MaintenanceConfigurationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInstancePoolResult) *string { return v.MaintenanceConfigurationId }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.

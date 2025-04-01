@@ -14,10 +14,12 @@ import (
 
 // A Programmable Connectivity Gateway resource
 //
-// Uses Azure REST API version 2024-01-15-preview.
+// Uses Azure REST API version 2024-01-15-preview. In version 2.x of the Azure Native provider, it used API version 2024-01-15-preview.
 type Gateway struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Base URL of the Gateway resource. This is the URL that the users would use to make Open API Gateway requests to the Operators via Azure.
 	GatewayBaseUrl pulumi.StringOutput `pulumi:"gatewayBaseUrl"`
 	// The geo-location where the resource lives
@@ -142,6 +144,11 @@ func (o GatewayOutput) ToGatewayOutput() GatewayOutput {
 
 func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GatewayOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Base URL of the Gateway resource. This is the URL that the users would use to make Open API Gateway requests to the Operators via Azure.

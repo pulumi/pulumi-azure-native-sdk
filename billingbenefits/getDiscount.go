@@ -35,6 +35,8 @@ type LookupDiscountArgs struct {
 type LookupDiscountResult struct {
 	// List of applied scopes supported for discounts.
 	AppliedScopeType *string `pulumi:"appliedScopeType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully-qualified identifier of the benefit under applicable benefit list.
 	BenefitResourceId string `pulumi:"benefitResourceId"`
 	// Billing account resource id where the discount metadata is present.
@@ -121,6 +123,11 @@ func (o LookupDiscountResultOutput) ToLookupDiscountResultOutputWithContext(ctx 
 // List of applied scopes supported for discounts.
 func (o LookupDiscountResultOutput) AppliedScopeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiscountResult) *string { return v.AppliedScopeType }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDiscountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully-qualified identifier of the benefit under applicable benefit list.

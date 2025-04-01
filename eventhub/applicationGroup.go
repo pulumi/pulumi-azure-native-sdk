@@ -14,12 +14,14 @@ import (
 
 // The Application Group object
 //
-// Uses Azure REST API version 2022-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-01-01-preview.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
 //
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Other available API versions: 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ApplicationGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)
 	ClientAppGroupIdentifier pulumi.StringOutput `pulumi:"clientAppGroupIdentifier"`
 	// Determines if Application Group is allowed to create connection with namespace or not. Once the isEnabled is set to false, all the existing connections of application group gets dropped and no new connections will be allowed
@@ -168,6 +170,11 @@ func (o ApplicationGroupOutput) ToApplicationGroupOutput() ApplicationGroupOutpu
 
 func (o ApplicationGroupOutput) ToApplicationGroupOutputWithContext(ctx context.Context) ApplicationGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApplicationGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)

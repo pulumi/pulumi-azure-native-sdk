@@ -13,9 +13,9 @@ import (
 
 // Gets a network interface
 //
-// Uses Azure REST API version 2022-12-15-preview.
+// Uses Azure REST API version 2025-02-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNetworkInterface(ctx *pulumi.Context, args *LookupNetworkInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkInterfaceResult
@@ -23,7 +23,7 @@ func LookupNetworkInterface(ctx *pulumi.Context, args *LookupNetworkInterfaceArg
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupNetworkInterfaceArgs struct {
@@ -35,11 +35,15 @@ type LookupNetworkInterfaceArgs struct {
 
 // The network interface resource definition.
 type LookupNetworkInterfaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Boolean indicating whether this is a existing local network interface or if one should be created.
+	CreateFromLocal *bool `pulumi:"createFromLocal"`
 	// DNS Settings for the interface
 	DnsSettings *InterfaceDNSSettingsResponse `pulumi:"dnsSettings"`
 	// The extendedLocation of the resource.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// IPConfigurations - A list of IPConfigurations of the network interface.
 	IpConfigurations []IPConfigurationResponse `pulumi:"ipConfigurations"`
@@ -49,6 +53,8 @@ type LookupNetworkInterfaceResult struct {
 	MacAddress *string `pulumi:"macAddress"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// NetworkSecurityGroup - Network Security Group attached to the network interface.
+	NetworkSecurityGroup *NetworkSecurityGroupArmReferenceResponse `pulumi:"networkSecurityGroup"`
 	// Provisioning state of the network interface.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The observed state of network interfaces
@@ -61,6 +67,18 @@ type LookupNetworkInterfaceResult struct {
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupNetworkInterfaceResult
+func (val *LookupNetworkInterfaceResult) Defaults() *LookupNetworkInterfaceResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.CreateFromLocal == nil {
+		createFromLocal_ := false
+		tmp.CreateFromLocal = &createFromLocal_
+	}
+	return &tmp
+}
 func LookupNetworkInterfaceOutput(ctx *pulumi.Context, args LookupNetworkInterfaceOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkInterfaceResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkInterfaceResultOutput, error) {
@@ -96,6 +114,16 @@ func (o LookupNetworkInterfaceResultOutput) ToLookupNetworkInterfaceResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupNetworkInterfaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Boolean indicating whether this is a existing local network interface or if one should be created.
+func (o LookupNetworkInterfaceResultOutput) CreateFromLocal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupNetworkInterfaceResult) *bool { return v.CreateFromLocal }).(pulumi.BoolPtrOutput)
+}
+
 // DNS Settings for the interface
 func (o LookupNetworkInterfaceResultOutput) DnsSettings() InterfaceDNSSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) *InterfaceDNSSettingsResponse { return v.DnsSettings }).(InterfaceDNSSettingsResponsePtrOutput)
@@ -106,7 +134,7 @@ func (o LookupNetworkInterfaceResultOutput) ExtendedLocation() ExtendedLocationR
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupNetworkInterfaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -129,6 +157,13 @@ func (o LookupNetworkInterfaceResultOutput) MacAddress() pulumi.StringPtrOutput 
 // The name of the resource
 func (o LookupNetworkInterfaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// NetworkSecurityGroup - Network Security Group attached to the network interface.
+func (o LookupNetworkInterfaceResultOutput) NetworkSecurityGroup() NetworkSecurityGroupArmReferenceResponsePtrOutput {
+	return o.ApplyT(func(v LookupNetworkInterfaceResult) *NetworkSecurityGroupArmReferenceResponse {
+		return v.NetworkSecurityGroup
+	}).(NetworkSecurityGroupArmReferenceResponsePtrOutput)
 }
 
 // Provisioning state of the network interface.

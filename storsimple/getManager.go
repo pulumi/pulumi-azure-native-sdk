@@ -33,6 +33,8 @@ type LookupManagerArgs struct {
 
 // The StorSimple Manager.
 type LookupManagerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Represents the type of StorSimple Manager.
 	CisIntrinsicSettings *ManagerIntrinsicSettingsResponse `pulumi:"cisIntrinsicSettings"`
 	// The etag of the manager.
@@ -86,6 +88,11 @@ func (o LookupManagerResultOutput) ToLookupManagerResultOutput() LookupManagerRe
 
 func (o LookupManagerResultOutput) ToLookupManagerResultOutputWithContext(ctx context.Context) LookupManagerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Represents the type of StorSimple Manager.

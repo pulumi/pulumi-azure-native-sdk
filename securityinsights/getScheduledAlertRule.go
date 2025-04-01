@@ -13,7 +13,7 @@ import (
 
 // Gets the alert rule.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-09-01.
 func LookupScheduledAlertRule(ctx *pulumi.Context, args *LookupScheduledAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupScheduledAlertRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduledAlertRuleResult
@@ -39,6 +39,8 @@ type LookupScheduledAlertRuleResult struct {
 	AlertDetailsOverride *AlertDetailsOverrideResponse `pulumi:"alertDetailsOverride"`
 	// The Name of the alert rule template used to create this rule.
 	AlertRuleTemplateName *string `pulumi:"alertRuleTemplateName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Dictionary of string key-value pairs of columns to be attached to the alert
 	CustomDetails map[string]string `pulumi:"customDetails"`
 	// The description of the alert rule.
@@ -137,6 +139,11 @@ func (o LookupScheduledAlertRuleResultOutput) AlertDetailsOverride() AlertDetail
 // The Name of the alert rule template used to create this rule.
 func (o LookupScheduledAlertRuleResultOutput) AlertRuleTemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScheduledAlertRuleResult) *string { return v.AlertRuleTemplateName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupScheduledAlertRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Dictionary of string key-value pairs of columns to be attached to the alert

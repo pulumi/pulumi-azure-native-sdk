@@ -13,6 +13,449 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// AdditionalCapabilities for VM.
+type AdditionalCapabilities struct {
+	// The flag that enables or disables hibernation capability on the VM.
+	HibernationEnabled *bool `pulumi:"hibernationEnabled"`
+	// The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.
+	// Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+	UltraSSDEnabled *bool `pulumi:"ultraSSDEnabled"`
+}
+
+// AdditionalCapabilitiesInput is an input type that accepts AdditionalCapabilitiesArgs and AdditionalCapabilitiesOutput values.
+// You can construct a concrete instance of `AdditionalCapabilitiesInput` via:
+//
+//	AdditionalCapabilitiesArgs{...}
+type AdditionalCapabilitiesInput interface {
+	pulumi.Input
+
+	ToAdditionalCapabilitiesOutput() AdditionalCapabilitiesOutput
+	ToAdditionalCapabilitiesOutputWithContext(context.Context) AdditionalCapabilitiesOutput
+}
+
+// AdditionalCapabilities for VM.
+type AdditionalCapabilitiesArgs struct {
+	// The flag that enables or disables hibernation capability on the VM.
+	HibernationEnabled pulumi.BoolPtrInput `pulumi:"hibernationEnabled"`
+	// The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.
+	// Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+	UltraSSDEnabled pulumi.BoolPtrInput `pulumi:"ultraSSDEnabled"`
+}
+
+func (AdditionalCapabilitiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalCapabilities)(nil)).Elem()
+}
+
+func (i AdditionalCapabilitiesArgs) ToAdditionalCapabilitiesOutput() AdditionalCapabilitiesOutput {
+	return i.ToAdditionalCapabilitiesOutputWithContext(context.Background())
+}
+
+func (i AdditionalCapabilitiesArgs) ToAdditionalCapabilitiesOutputWithContext(ctx context.Context) AdditionalCapabilitiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalCapabilitiesOutput)
+}
+
+func (i AdditionalCapabilitiesArgs) ToAdditionalCapabilitiesPtrOutput() AdditionalCapabilitiesPtrOutput {
+	return i.ToAdditionalCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (i AdditionalCapabilitiesArgs) ToAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) AdditionalCapabilitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalCapabilitiesOutput).ToAdditionalCapabilitiesPtrOutputWithContext(ctx)
+}
+
+// AdditionalCapabilitiesPtrInput is an input type that accepts AdditionalCapabilitiesArgs, AdditionalCapabilitiesPtr and AdditionalCapabilitiesPtrOutput values.
+// You can construct a concrete instance of `AdditionalCapabilitiesPtrInput` via:
+//
+//	        AdditionalCapabilitiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AdditionalCapabilitiesPtrInput interface {
+	pulumi.Input
+
+	ToAdditionalCapabilitiesPtrOutput() AdditionalCapabilitiesPtrOutput
+	ToAdditionalCapabilitiesPtrOutputWithContext(context.Context) AdditionalCapabilitiesPtrOutput
+}
+
+type additionalCapabilitiesPtrType AdditionalCapabilitiesArgs
+
+func AdditionalCapabilitiesPtr(v *AdditionalCapabilitiesArgs) AdditionalCapabilitiesPtrInput {
+	return (*additionalCapabilitiesPtrType)(v)
+}
+
+func (*additionalCapabilitiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdditionalCapabilities)(nil)).Elem()
+}
+
+func (i *additionalCapabilitiesPtrType) ToAdditionalCapabilitiesPtrOutput() AdditionalCapabilitiesPtrOutput {
+	return i.ToAdditionalCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (i *additionalCapabilitiesPtrType) ToAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) AdditionalCapabilitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalCapabilitiesPtrOutput)
+}
+
+// AdditionalCapabilities for VM.
+type AdditionalCapabilitiesOutput struct{ *pulumi.OutputState }
+
+func (AdditionalCapabilitiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalCapabilities)(nil)).Elem()
+}
+
+func (o AdditionalCapabilitiesOutput) ToAdditionalCapabilitiesOutput() AdditionalCapabilitiesOutput {
+	return o
+}
+
+func (o AdditionalCapabilitiesOutput) ToAdditionalCapabilitiesOutputWithContext(ctx context.Context) AdditionalCapabilitiesOutput {
+	return o
+}
+
+func (o AdditionalCapabilitiesOutput) ToAdditionalCapabilitiesPtrOutput() AdditionalCapabilitiesPtrOutput {
+	return o.ToAdditionalCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (o AdditionalCapabilitiesOutput) ToAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) AdditionalCapabilitiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdditionalCapabilities) *AdditionalCapabilities {
+		return &v
+	}).(AdditionalCapabilitiesPtrOutput)
+}
+
+// The flag that enables or disables hibernation capability on the VM.
+func (o AdditionalCapabilitiesOutput) HibernationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AdditionalCapabilities) *bool { return v.HibernationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.
+// Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+func (o AdditionalCapabilitiesOutput) UltraSSDEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AdditionalCapabilities) *bool { return v.UltraSSDEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type AdditionalCapabilitiesPtrOutput struct{ *pulumi.OutputState }
+
+func (AdditionalCapabilitiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdditionalCapabilities)(nil)).Elem()
+}
+
+func (o AdditionalCapabilitiesPtrOutput) ToAdditionalCapabilitiesPtrOutput() AdditionalCapabilitiesPtrOutput {
+	return o
+}
+
+func (o AdditionalCapabilitiesPtrOutput) ToAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) AdditionalCapabilitiesPtrOutput {
+	return o
+}
+
+func (o AdditionalCapabilitiesPtrOutput) Elem() AdditionalCapabilitiesOutput {
+	return o.ApplyT(func(v *AdditionalCapabilities) AdditionalCapabilities {
+		if v != nil {
+			return *v
+		}
+		var ret AdditionalCapabilities
+		return ret
+	}).(AdditionalCapabilitiesOutput)
+}
+
+// The flag that enables or disables hibernation capability on the VM.
+func (o AdditionalCapabilitiesPtrOutput) HibernationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdditionalCapabilities) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HibernationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.
+// Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+func (o AdditionalCapabilitiesPtrOutput) UltraSSDEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdditionalCapabilities) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UltraSSDEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// AdditionalCapabilities for VM.
+type AdditionalCapabilitiesResponse struct {
+	// The flag that enables or disables hibernation capability on the VM.
+	HibernationEnabled *bool `pulumi:"hibernationEnabled"`
+	// The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.
+	// Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+	UltraSSDEnabled *bool `pulumi:"ultraSSDEnabled"`
+}
+
+// AdditionalCapabilities for VM.
+type AdditionalCapabilitiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AdditionalCapabilitiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalCapabilitiesResponse)(nil)).Elem()
+}
+
+func (o AdditionalCapabilitiesResponseOutput) ToAdditionalCapabilitiesResponseOutput() AdditionalCapabilitiesResponseOutput {
+	return o
+}
+
+func (o AdditionalCapabilitiesResponseOutput) ToAdditionalCapabilitiesResponseOutputWithContext(ctx context.Context) AdditionalCapabilitiesResponseOutput {
+	return o
+}
+
+// The flag that enables or disables hibernation capability on the VM.
+func (o AdditionalCapabilitiesResponseOutput) HibernationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AdditionalCapabilitiesResponse) *bool { return v.HibernationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.
+// Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+func (o AdditionalCapabilitiesResponseOutput) UltraSSDEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AdditionalCapabilitiesResponse) *bool { return v.UltraSSDEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type AdditionalCapabilitiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AdditionalCapabilitiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdditionalCapabilitiesResponse)(nil)).Elem()
+}
+
+func (o AdditionalCapabilitiesResponsePtrOutput) ToAdditionalCapabilitiesResponsePtrOutput() AdditionalCapabilitiesResponsePtrOutput {
+	return o
+}
+
+func (o AdditionalCapabilitiesResponsePtrOutput) ToAdditionalCapabilitiesResponsePtrOutputWithContext(ctx context.Context) AdditionalCapabilitiesResponsePtrOutput {
+	return o
+}
+
+func (o AdditionalCapabilitiesResponsePtrOutput) Elem() AdditionalCapabilitiesResponseOutput {
+	return o.ApplyT(func(v *AdditionalCapabilitiesResponse) AdditionalCapabilitiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AdditionalCapabilitiesResponse
+		return ret
+	}).(AdditionalCapabilitiesResponseOutput)
+}
+
+// The flag that enables or disables hibernation capability on the VM.
+func (o AdditionalCapabilitiesResponsePtrOutput) HibernationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdditionalCapabilitiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HibernationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.
+// Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+func (o AdditionalCapabilitiesResponsePtrOutput) UltraSSDEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdditionalCapabilitiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UltraSSDEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents the configuration for additional locations where Fleet resources may be deployed.
+type AdditionalLocationsProfile struct {
+	// The list of location profiles.
+	LocationProfiles []LocationProfile `pulumi:"locationProfiles"`
+}
+
+// AdditionalLocationsProfileInput is an input type that accepts AdditionalLocationsProfileArgs and AdditionalLocationsProfileOutput values.
+// You can construct a concrete instance of `AdditionalLocationsProfileInput` via:
+//
+//	AdditionalLocationsProfileArgs{...}
+type AdditionalLocationsProfileInput interface {
+	pulumi.Input
+
+	ToAdditionalLocationsProfileOutput() AdditionalLocationsProfileOutput
+	ToAdditionalLocationsProfileOutputWithContext(context.Context) AdditionalLocationsProfileOutput
+}
+
+// Represents the configuration for additional locations where Fleet resources may be deployed.
+type AdditionalLocationsProfileArgs struct {
+	// The list of location profiles.
+	LocationProfiles LocationProfileArrayInput `pulumi:"locationProfiles"`
+}
+
+func (AdditionalLocationsProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalLocationsProfile)(nil)).Elem()
+}
+
+func (i AdditionalLocationsProfileArgs) ToAdditionalLocationsProfileOutput() AdditionalLocationsProfileOutput {
+	return i.ToAdditionalLocationsProfileOutputWithContext(context.Background())
+}
+
+func (i AdditionalLocationsProfileArgs) ToAdditionalLocationsProfileOutputWithContext(ctx context.Context) AdditionalLocationsProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalLocationsProfileOutput)
+}
+
+func (i AdditionalLocationsProfileArgs) ToAdditionalLocationsProfilePtrOutput() AdditionalLocationsProfilePtrOutput {
+	return i.ToAdditionalLocationsProfilePtrOutputWithContext(context.Background())
+}
+
+func (i AdditionalLocationsProfileArgs) ToAdditionalLocationsProfilePtrOutputWithContext(ctx context.Context) AdditionalLocationsProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalLocationsProfileOutput).ToAdditionalLocationsProfilePtrOutputWithContext(ctx)
+}
+
+// AdditionalLocationsProfilePtrInput is an input type that accepts AdditionalLocationsProfileArgs, AdditionalLocationsProfilePtr and AdditionalLocationsProfilePtrOutput values.
+// You can construct a concrete instance of `AdditionalLocationsProfilePtrInput` via:
+//
+//	        AdditionalLocationsProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type AdditionalLocationsProfilePtrInput interface {
+	pulumi.Input
+
+	ToAdditionalLocationsProfilePtrOutput() AdditionalLocationsProfilePtrOutput
+	ToAdditionalLocationsProfilePtrOutputWithContext(context.Context) AdditionalLocationsProfilePtrOutput
+}
+
+type additionalLocationsProfilePtrType AdditionalLocationsProfileArgs
+
+func AdditionalLocationsProfilePtr(v *AdditionalLocationsProfileArgs) AdditionalLocationsProfilePtrInput {
+	return (*additionalLocationsProfilePtrType)(v)
+}
+
+func (*additionalLocationsProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdditionalLocationsProfile)(nil)).Elem()
+}
+
+func (i *additionalLocationsProfilePtrType) ToAdditionalLocationsProfilePtrOutput() AdditionalLocationsProfilePtrOutput {
+	return i.ToAdditionalLocationsProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *additionalLocationsProfilePtrType) ToAdditionalLocationsProfilePtrOutputWithContext(ctx context.Context) AdditionalLocationsProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalLocationsProfilePtrOutput)
+}
+
+// Represents the configuration for additional locations where Fleet resources may be deployed.
+type AdditionalLocationsProfileOutput struct{ *pulumi.OutputState }
+
+func (AdditionalLocationsProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalLocationsProfile)(nil)).Elem()
+}
+
+func (o AdditionalLocationsProfileOutput) ToAdditionalLocationsProfileOutput() AdditionalLocationsProfileOutput {
+	return o
+}
+
+func (o AdditionalLocationsProfileOutput) ToAdditionalLocationsProfileOutputWithContext(ctx context.Context) AdditionalLocationsProfileOutput {
+	return o
+}
+
+func (o AdditionalLocationsProfileOutput) ToAdditionalLocationsProfilePtrOutput() AdditionalLocationsProfilePtrOutput {
+	return o.ToAdditionalLocationsProfilePtrOutputWithContext(context.Background())
+}
+
+func (o AdditionalLocationsProfileOutput) ToAdditionalLocationsProfilePtrOutputWithContext(ctx context.Context) AdditionalLocationsProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdditionalLocationsProfile) *AdditionalLocationsProfile {
+		return &v
+	}).(AdditionalLocationsProfilePtrOutput)
+}
+
+// The list of location profiles.
+func (o AdditionalLocationsProfileOutput) LocationProfiles() LocationProfileArrayOutput {
+	return o.ApplyT(func(v AdditionalLocationsProfile) []LocationProfile { return v.LocationProfiles }).(LocationProfileArrayOutput)
+}
+
+type AdditionalLocationsProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (AdditionalLocationsProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdditionalLocationsProfile)(nil)).Elem()
+}
+
+func (o AdditionalLocationsProfilePtrOutput) ToAdditionalLocationsProfilePtrOutput() AdditionalLocationsProfilePtrOutput {
+	return o
+}
+
+func (o AdditionalLocationsProfilePtrOutput) ToAdditionalLocationsProfilePtrOutputWithContext(ctx context.Context) AdditionalLocationsProfilePtrOutput {
+	return o
+}
+
+func (o AdditionalLocationsProfilePtrOutput) Elem() AdditionalLocationsProfileOutput {
+	return o.ApplyT(func(v *AdditionalLocationsProfile) AdditionalLocationsProfile {
+		if v != nil {
+			return *v
+		}
+		var ret AdditionalLocationsProfile
+		return ret
+	}).(AdditionalLocationsProfileOutput)
+}
+
+// The list of location profiles.
+func (o AdditionalLocationsProfilePtrOutput) LocationProfiles() LocationProfileArrayOutput {
+	return o.ApplyT(func(v *AdditionalLocationsProfile) []LocationProfile {
+		if v == nil {
+			return nil
+		}
+		return v.LocationProfiles
+	}).(LocationProfileArrayOutput)
+}
+
+// Represents the configuration for additional locations where Fleet resources may be deployed.
+type AdditionalLocationsProfileResponse struct {
+	// The list of location profiles.
+	LocationProfiles []LocationProfileResponse `pulumi:"locationProfiles"`
+}
+
+// Represents the configuration for additional locations where Fleet resources may be deployed.
+type AdditionalLocationsProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (AdditionalLocationsProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalLocationsProfileResponse)(nil)).Elem()
+}
+
+func (o AdditionalLocationsProfileResponseOutput) ToAdditionalLocationsProfileResponseOutput() AdditionalLocationsProfileResponseOutput {
+	return o
+}
+
+func (o AdditionalLocationsProfileResponseOutput) ToAdditionalLocationsProfileResponseOutputWithContext(ctx context.Context) AdditionalLocationsProfileResponseOutput {
+	return o
+}
+
+// The list of location profiles.
+func (o AdditionalLocationsProfileResponseOutput) LocationProfiles() LocationProfileResponseArrayOutput {
+	return o.ApplyT(func(v AdditionalLocationsProfileResponse) []LocationProfileResponse { return v.LocationProfiles }).(LocationProfileResponseArrayOutput)
+}
+
+type AdditionalLocationsProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AdditionalLocationsProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdditionalLocationsProfileResponse)(nil)).Elem()
+}
+
+func (o AdditionalLocationsProfileResponsePtrOutput) ToAdditionalLocationsProfileResponsePtrOutput() AdditionalLocationsProfileResponsePtrOutput {
+	return o
+}
+
+func (o AdditionalLocationsProfileResponsePtrOutput) ToAdditionalLocationsProfileResponsePtrOutputWithContext(ctx context.Context) AdditionalLocationsProfileResponsePtrOutput {
+	return o
+}
+
+func (o AdditionalLocationsProfileResponsePtrOutput) Elem() AdditionalLocationsProfileResponseOutput {
+	return o.ApplyT(func(v *AdditionalLocationsProfileResponse) AdditionalLocationsProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AdditionalLocationsProfileResponse
+		return ret
+	}).(AdditionalLocationsProfileResponseOutput)
+}
+
+// The list of location profiles.
+func (o AdditionalLocationsProfileResponsePtrOutput) LocationProfiles() LocationProfileResponseArrayOutput {
+	return o.ApplyT(func(v *AdditionalLocationsProfileResponse) []LocationProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LocationProfiles
+	}).(LocationProfileResponseArrayOutput)
+}
+
 // Specifies additional XML formatted information that can be included in the
 // Unattend.xml file, which is used by Windows Setup. Contents are defined by
 // setting name, component name, and the pass in which the content is applied.
@@ -765,6 +1208,47 @@ func (i BaseVirtualMachineProfileArgs) ToBaseVirtualMachineProfileOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BaseVirtualMachineProfileOutput)
 }
 
+func (i BaseVirtualMachineProfileArgs) ToBaseVirtualMachineProfilePtrOutput() BaseVirtualMachineProfilePtrOutput {
+	return i.ToBaseVirtualMachineProfilePtrOutputWithContext(context.Background())
+}
+
+func (i BaseVirtualMachineProfileArgs) ToBaseVirtualMachineProfilePtrOutputWithContext(ctx context.Context) BaseVirtualMachineProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BaseVirtualMachineProfileOutput).ToBaseVirtualMachineProfilePtrOutputWithContext(ctx)
+}
+
+// BaseVirtualMachineProfilePtrInput is an input type that accepts BaseVirtualMachineProfileArgs, BaseVirtualMachineProfilePtr and BaseVirtualMachineProfilePtrOutput values.
+// You can construct a concrete instance of `BaseVirtualMachineProfilePtrInput` via:
+//
+//	        BaseVirtualMachineProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type BaseVirtualMachineProfilePtrInput interface {
+	pulumi.Input
+
+	ToBaseVirtualMachineProfilePtrOutput() BaseVirtualMachineProfilePtrOutput
+	ToBaseVirtualMachineProfilePtrOutputWithContext(context.Context) BaseVirtualMachineProfilePtrOutput
+}
+
+type baseVirtualMachineProfilePtrType BaseVirtualMachineProfileArgs
+
+func BaseVirtualMachineProfilePtr(v *BaseVirtualMachineProfileArgs) BaseVirtualMachineProfilePtrInput {
+	return (*baseVirtualMachineProfilePtrType)(v)
+}
+
+func (*baseVirtualMachineProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BaseVirtualMachineProfile)(nil)).Elem()
+}
+
+func (i *baseVirtualMachineProfilePtrType) ToBaseVirtualMachineProfilePtrOutput() BaseVirtualMachineProfilePtrOutput {
+	return i.ToBaseVirtualMachineProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *baseVirtualMachineProfilePtrType) ToBaseVirtualMachineProfilePtrOutputWithContext(ctx context.Context) BaseVirtualMachineProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BaseVirtualMachineProfilePtrOutput)
+}
+
 // Describes the base virtual machine profile for fleet
 type BaseVirtualMachineProfileOutput struct{ *pulumi.OutputState }
 
@@ -778,6 +1262,16 @@ func (o BaseVirtualMachineProfileOutput) ToBaseVirtualMachineProfileOutput() Bas
 
 func (o BaseVirtualMachineProfileOutput) ToBaseVirtualMachineProfileOutputWithContext(ctx context.Context) BaseVirtualMachineProfileOutput {
 	return o
+}
+
+func (o BaseVirtualMachineProfileOutput) ToBaseVirtualMachineProfilePtrOutput() BaseVirtualMachineProfilePtrOutput {
+	return o.ToBaseVirtualMachineProfilePtrOutputWithContext(context.Background())
+}
+
+func (o BaseVirtualMachineProfileOutput) ToBaseVirtualMachineProfilePtrOutputWithContext(ctx context.Context) BaseVirtualMachineProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BaseVirtualMachineProfile) *BaseVirtualMachineProfile {
+		return &v
+	}).(BaseVirtualMachineProfilePtrOutput)
 }
 
 // Specifies the gallery applications that should be made available to the VM/VMSS
@@ -868,6 +1362,190 @@ func (o BaseVirtualMachineProfileOutput) StorageProfile() VirtualMachineScaleSet
 // 2021-03-01.
 func (o BaseVirtualMachineProfileOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BaseVirtualMachineProfile) *string { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+type BaseVirtualMachineProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (BaseVirtualMachineProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BaseVirtualMachineProfile)(nil)).Elem()
+}
+
+func (o BaseVirtualMachineProfilePtrOutput) ToBaseVirtualMachineProfilePtrOutput() BaseVirtualMachineProfilePtrOutput {
+	return o
+}
+
+func (o BaseVirtualMachineProfilePtrOutput) ToBaseVirtualMachineProfilePtrOutputWithContext(ctx context.Context) BaseVirtualMachineProfilePtrOutput {
+	return o
+}
+
+func (o BaseVirtualMachineProfilePtrOutput) Elem() BaseVirtualMachineProfileOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) BaseVirtualMachineProfile {
+		if v != nil {
+			return *v
+		}
+		var ret BaseVirtualMachineProfile
+		return ret
+	}).(BaseVirtualMachineProfileOutput)
+}
+
+// Specifies the gallery applications that should be made available to the VM/VMSS
+func (o BaseVirtualMachineProfilePtrOutput) ApplicationProfile() ApplicationProfilePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *ApplicationProfile {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationProfile
+	}).(ApplicationProfilePtrOutput)
+}
+
+// Specifies the capacity reservation related details of a scale set. Minimum
+// api-version: 2021-04-01.
+func (o BaseVirtualMachineProfilePtrOutput) CapacityReservation() CapacityReservationProfilePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *CapacityReservationProfile {
+		if v == nil {
+			return nil
+		}
+		return v.CapacityReservation
+	}).(CapacityReservationProfilePtrOutput)
+}
+
+// Specifies the boot diagnostic settings state.
+func (o BaseVirtualMachineProfilePtrOutput) DiagnosticsProfile() DiagnosticsProfilePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *DiagnosticsProfile {
+		if v == nil {
+			return nil
+		}
+		return v.DiagnosticsProfile
+	}).(DiagnosticsProfilePtrOutput)
+}
+
+// Specifies a collection of settings for extensions installed on virtual machines
+// in the scale set.
+func (o BaseVirtualMachineProfilePtrOutput) ExtensionProfile() VirtualMachineScaleSetExtensionProfilePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *VirtualMachineScaleSetExtensionProfile {
+		if v == nil {
+			return nil
+		}
+		return v.ExtensionProfile
+	}).(VirtualMachineScaleSetExtensionProfilePtrOutput)
+}
+
+// Specifies the hardware profile related details of a scale set. Minimum
+// api-version: 2021-11-01.
+func (o BaseVirtualMachineProfilePtrOutput) HardwareProfile() VirtualMachineScaleSetHardwareProfilePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *VirtualMachineScaleSetHardwareProfile {
+		if v == nil {
+			return nil
+		}
+		return v.HardwareProfile
+	}).(VirtualMachineScaleSetHardwareProfilePtrOutput)
+}
+
+// Specifies that the image or disk that is being used was licensed on-premises.
+// <br><br> Possible values for Windows Server operating system are: <br><br>
+// Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux
+// Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
+// (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
+// Windows
+// Server](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+// <br><br> [Azure Hybrid Use Benefit for Linux
+// Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+// <br><br> Minimum api-version: 2015-06-15
+func (o BaseVirtualMachineProfilePtrOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies properties of the network interfaces of the virtual machines in the
+// scale set.
+func (o BaseVirtualMachineProfilePtrOutput) NetworkProfile() VirtualMachineScaleSetNetworkProfilePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *VirtualMachineScaleSetNetworkProfile {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkProfile
+	}).(VirtualMachineScaleSetNetworkProfilePtrOutput)
+}
+
+// Specifies the operating system settings for the virtual machines in the scale
+// set.
+func (o BaseVirtualMachineProfilePtrOutput) OsProfile() VirtualMachineScaleSetOSProfilePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *VirtualMachineScaleSetOSProfile {
+		if v == nil {
+			return nil
+		}
+		return v.OsProfile
+	}).(VirtualMachineScaleSetOSProfilePtrOutput)
+}
+
+// Specifies Scheduled Event related configurations.
+func (o BaseVirtualMachineProfilePtrOutput) ScheduledEventsProfile() ScheduledEventsProfilePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *ScheduledEventsProfile {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledEventsProfile
+	}).(ScheduledEventsProfilePtrOutput)
+}
+
+// Specifies the security posture to be used for all virtual machines in the scale
+// set. Minimum api-version: 2023-03-01
+func (o BaseVirtualMachineProfilePtrOutput) SecurityPostureReference() SecurityPostureReferencePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *SecurityPostureReference {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityPostureReference
+	}).(SecurityPostureReferencePtrOutput)
+}
+
+// Specifies the Security related profile settings for the virtual machines in the
+// scale set.
+func (o BaseVirtualMachineProfilePtrOutput) SecurityProfile() SecurityProfilePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *SecurityProfile {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProfile
+	}).(SecurityProfilePtrOutput)
+}
+
+// Specifies the service artifact reference id used to set same image version for
+// all virtual machines in the scale set when using 'latest' image version.
+// Minimum api-version: 2022-11-01
+func (o BaseVirtualMachineProfilePtrOutput) ServiceArtifactReference() ServiceArtifactReferencePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *ServiceArtifactReference {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceArtifactReference
+	}).(ServiceArtifactReferencePtrOutput)
+}
+
+// Specifies the storage settings for the virtual machine disks.
+func (o BaseVirtualMachineProfilePtrOutput) StorageProfile() VirtualMachineScaleSetStorageProfilePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *VirtualMachineScaleSetStorageProfile {
+		if v == nil {
+			return nil
+		}
+		return v.StorageProfile
+	}).(VirtualMachineScaleSetStorageProfilePtrOutput)
+}
+
+// UserData for the virtual machines in the scale set, which must be base-64
+// encoded. Customer should not pass any secrets in here. Minimum api-version:
+// 2021-03-01.
+func (o BaseVirtualMachineProfilePtrOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserData
+	}).(pulumi.StringPtrOutput)
 }
 
 // Describes the base virtual machine profile for fleet
@@ -1054,6 +1732,203 @@ func (o BaseVirtualMachineProfileResponseOutput) TimeCreated() pulumi.StringOutp
 // 2021-03-01.
 func (o BaseVirtualMachineProfileResponseOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *string { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+type BaseVirtualMachineProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BaseVirtualMachineProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BaseVirtualMachineProfileResponse)(nil)).Elem()
+}
+
+func (o BaseVirtualMachineProfileResponsePtrOutput) ToBaseVirtualMachineProfileResponsePtrOutput() BaseVirtualMachineProfileResponsePtrOutput {
+	return o
+}
+
+func (o BaseVirtualMachineProfileResponsePtrOutput) ToBaseVirtualMachineProfileResponsePtrOutputWithContext(ctx context.Context) BaseVirtualMachineProfileResponsePtrOutput {
+	return o
+}
+
+func (o BaseVirtualMachineProfileResponsePtrOutput) Elem() BaseVirtualMachineProfileResponseOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) BaseVirtualMachineProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BaseVirtualMachineProfileResponse
+		return ret
+	}).(BaseVirtualMachineProfileResponseOutput)
+}
+
+// Specifies the gallery applications that should be made available to the VM/VMSS
+func (o BaseVirtualMachineProfileResponsePtrOutput) ApplicationProfile() ApplicationProfileResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *ApplicationProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationProfile
+	}).(ApplicationProfileResponsePtrOutput)
+}
+
+// Specifies the capacity reservation related details of a scale set. Minimum
+// api-version: 2021-04-01.
+func (o BaseVirtualMachineProfileResponsePtrOutput) CapacityReservation() CapacityReservationProfileResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *CapacityReservationProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CapacityReservation
+	}).(CapacityReservationProfileResponsePtrOutput)
+}
+
+// Specifies the boot diagnostic settings state.
+func (o BaseVirtualMachineProfileResponsePtrOutput) DiagnosticsProfile() DiagnosticsProfileResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *DiagnosticsProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DiagnosticsProfile
+	}).(DiagnosticsProfileResponsePtrOutput)
+}
+
+// Specifies a collection of settings for extensions installed on virtual machines
+// in the scale set.
+func (o BaseVirtualMachineProfileResponsePtrOutput) ExtensionProfile() VirtualMachineScaleSetExtensionProfileResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *VirtualMachineScaleSetExtensionProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ExtensionProfile
+	}).(VirtualMachineScaleSetExtensionProfileResponsePtrOutput)
+}
+
+// Specifies the hardware profile related details of a scale set. Minimum
+// api-version: 2021-11-01.
+func (o BaseVirtualMachineProfileResponsePtrOutput) HardwareProfile() VirtualMachineScaleSetHardwareProfileResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *VirtualMachineScaleSetHardwareProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.HardwareProfile
+	}).(VirtualMachineScaleSetHardwareProfileResponsePtrOutput)
+}
+
+// Specifies that the image or disk that is being used was licensed on-premises.
+// <br><br> Possible values for Windows Server operating system are: <br><br>
+// Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux
+// Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
+// (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
+// Windows
+// Server](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+// <br><br> [Azure Hybrid Use Benefit for Linux
+// Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+// <br><br> Minimum api-version: 2015-06-15
+func (o BaseVirtualMachineProfileResponsePtrOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies properties of the network interfaces of the virtual machines in the
+// scale set.
+func (o BaseVirtualMachineProfileResponsePtrOutput) NetworkProfile() VirtualMachineScaleSetNetworkProfileResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *VirtualMachineScaleSetNetworkProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkProfile
+	}).(VirtualMachineScaleSetNetworkProfileResponsePtrOutput)
+}
+
+// Specifies the operating system settings for the virtual machines in the scale
+// set.
+func (o BaseVirtualMachineProfileResponsePtrOutput) OsProfile() VirtualMachineScaleSetOSProfileResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *VirtualMachineScaleSetOSProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.OsProfile
+	}).(VirtualMachineScaleSetOSProfileResponsePtrOutput)
+}
+
+// Specifies Scheduled Event related configurations.
+func (o BaseVirtualMachineProfileResponsePtrOutput) ScheduledEventsProfile() ScheduledEventsProfileResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *ScheduledEventsProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledEventsProfile
+	}).(ScheduledEventsProfileResponsePtrOutput)
+}
+
+// Specifies the security posture to be used for all virtual machines in the scale
+// set. Minimum api-version: 2023-03-01
+func (o BaseVirtualMachineProfileResponsePtrOutput) SecurityPostureReference() SecurityPostureReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *SecurityPostureReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityPostureReference
+	}).(SecurityPostureReferenceResponsePtrOutput)
+}
+
+// Specifies the Security related profile settings for the virtual machines in the
+// scale set.
+func (o BaseVirtualMachineProfileResponsePtrOutput) SecurityProfile() SecurityProfileResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *SecurityProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProfile
+	}).(SecurityProfileResponsePtrOutput)
+}
+
+// Specifies the service artifact reference id used to set same image version for
+// all virtual machines in the scale set when using 'latest' image version.
+// Minimum api-version: 2022-11-01
+func (o BaseVirtualMachineProfileResponsePtrOutput) ServiceArtifactReference() ServiceArtifactReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *ServiceArtifactReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceArtifactReference
+	}).(ServiceArtifactReferenceResponsePtrOutput)
+}
+
+// Specifies the storage settings for the virtual machine disks.
+func (o BaseVirtualMachineProfileResponsePtrOutput) StorageProfile() VirtualMachineScaleSetStorageProfileResponsePtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *VirtualMachineScaleSetStorageProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StorageProfile
+	}).(VirtualMachineScaleSetStorageProfileResponsePtrOutput)
+}
+
+// Specifies the time in which this VM profile for the Virtual Machine Scale Set
+// was created. Minimum API version for this property is 2023-09-01. This value
+// will be added to VMSS Flex VM tags when creating/updating the VMSS VM Profile
+// with minimum api-version 2023-09-01. Examples: "2024-07-01T00:00:01.1234567+00:00"
+func (o BaseVirtualMachineProfileResponsePtrOutput) TimeCreated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeCreated
+	}).(pulumi.StringPtrOutput)
+}
+
+// UserData for the virtual machines in the scale set, which must be base-64
+// encoded. Customer should not pass any secrets in here. Minimum api-version:
+// 2021-03-01.
+func (o BaseVirtualMachineProfileResponsePtrOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BaseVirtualMachineProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserData
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boot Diagnostics is a debugging feature which allows you to view Console Output
@@ -1544,6 +2419,11 @@ func (o CapacityReservationProfileResponsePtrOutput) CapacityReservationGroup() 
 
 // Compute Profile to use for running user's workloads.
 type ComputeProfile struct {
+	// Specifies VMSS and VM API entity models support two additional capabilities as of today: ultraSSDEnabled and hibernationEnabled.
+	// ultraSSDEnabled: Enables UltraSSD_LRS storage account type on the VMSS VMs.
+	// hibernationEnabled: Enables the hibernation capability on the VMSS VMs.
+	// Default value is null if not specified. This property cannot be updated once set.
+	AdditionalVirtualMachineCapabilities *AdditionalCapabilities `pulumi:"additionalVirtualMachineCapabilities"`
 	// Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
 	BaseVirtualMachineProfile BaseVirtualMachineProfile `pulumi:"baseVirtualMachineProfile"`
 	// Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
@@ -1570,6 +2450,11 @@ type ComputeProfileInput interface {
 
 // Compute Profile to use for running user's workloads.
 type ComputeProfileArgs struct {
+	// Specifies VMSS and VM API entity models support two additional capabilities as of today: ultraSSDEnabled and hibernationEnabled.
+	// ultraSSDEnabled: Enables UltraSSD_LRS storage account type on the VMSS VMs.
+	// hibernationEnabled: Enables the hibernation capability on the VMSS VMs.
+	// Default value is null if not specified. This property cannot be updated once set.
+	AdditionalVirtualMachineCapabilities AdditionalCapabilitiesPtrInput `pulumi:"additionalVirtualMachineCapabilities"`
 	// Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
 	BaseVirtualMachineProfile BaseVirtualMachineProfileInput `pulumi:"baseVirtualMachineProfile"`
 	// Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
@@ -1610,6 +2495,14 @@ func (o ComputeProfileOutput) ToComputeProfileOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Specifies VMSS and VM API entity models support two additional capabilities as of today: ultraSSDEnabled and hibernationEnabled.
+// ultraSSDEnabled: Enables UltraSSD_LRS storage account type on the VMSS VMs.
+// hibernationEnabled: Enables the hibernation capability on the VMSS VMs.
+// Default value is null if not specified. This property cannot be updated once set.
+func (o ComputeProfileOutput) AdditionalVirtualMachineCapabilities() AdditionalCapabilitiesPtrOutput {
+	return o.ApplyT(func(v ComputeProfile) *AdditionalCapabilities { return v.AdditionalVirtualMachineCapabilities }).(AdditionalCapabilitiesPtrOutput)
+}
+
 // Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
 func (o ComputeProfileOutput) BaseVirtualMachineProfile() BaseVirtualMachineProfileOutput {
 	return o.ApplyT(func(v ComputeProfile) BaseVirtualMachineProfile { return v.BaseVirtualMachineProfile }).(BaseVirtualMachineProfileOutput)
@@ -1632,6 +2525,11 @@ func (o ComputeProfileOutput) PlatformFaultDomainCount() pulumi.IntPtrOutput {
 
 // Compute Profile to use for running user's workloads.
 type ComputeProfileResponse struct {
+	// Specifies VMSS and VM API entity models support two additional capabilities as of today: ultraSSDEnabled and hibernationEnabled.
+	// ultraSSDEnabled: Enables UltraSSD_LRS storage account type on the VMSS VMs.
+	// hibernationEnabled: Enables the hibernation capability on the VMSS VMs.
+	// Default value is null if not specified. This property cannot be updated once set.
+	AdditionalVirtualMachineCapabilities *AdditionalCapabilitiesResponse `pulumi:"additionalVirtualMachineCapabilities"`
 	// Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
 	BaseVirtualMachineProfile BaseVirtualMachineProfileResponse `pulumi:"baseVirtualMachineProfile"`
 	// Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
@@ -1658,6 +2556,16 @@ func (o ComputeProfileResponseOutput) ToComputeProfileResponseOutput() ComputePr
 
 func (o ComputeProfileResponseOutput) ToComputeProfileResponseOutputWithContext(ctx context.Context) ComputeProfileResponseOutput {
 	return o
+}
+
+// Specifies VMSS and VM API entity models support two additional capabilities as of today: ultraSSDEnabled and hibernationEnabled.
+// ultraSSDEnabled: Enables UltraSSD_LRS storage account type on the VMSS VMs.
+// hibernationEnabled: Enables the hibernation capability on the VMSS VMs.
+// Default value is null if not specified. This property cannot be updated once set.
+func (o ComputeProfileResponseOutput) AdditionalVirtualMachineCapabilities() AdditionalCapabilitiesResponsePtrOutput {
+	return o.ApplyT(func(v ComputeProfileResponse) *AdditionalCapabilitiesResponse {
+		return v.AdditionalVirtualMachineCapabilities
+	}).(AdditionalCapabilitiesResponsePtrOutput)
 }
 
 // Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
@@ -4373,6 +5281,175 @@ func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) RebootSet
 		}
 		return v.RebootSetting
 	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional).
+type LocationProfile struct {
+	// The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+	Location string `pulumi:"location"`
+	// An override for computeProfile.baseVirtualMachineProfile specific to this region.
+	// This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
+	VirtualMachineProfileOverride *BaseVirtualMachineProfile `pulumi:"virtualMachineProfileOverride"`
+}
+
+// LocationProfileInput is an input type that accepts LocationProfileArgs and LocationProfileOutput values.
+// You can construct a concrete instance of `LocationProfileInput` via:
+//
+//	LocationProfileArgs{...}
+type LocationProfileInput interface {
+	pulumi.Input
+
+	ToLocationProfileOutput() LocationProfileOutput
+	ToLocationProfileOutputWithContext(context.Context) LocationProfileOutput
+}
+
+// Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional).
+type LocationProfileArgs struct {
+	// The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+	Location pulumi.StringInput `pulumi:"location"`
+	// An override for computeProfile.baseVirtualMachineProfile specific to this region.
+	// This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
+	VirtualMachineProfileOverride BaseVirtualMachineProfilePtrInput `pulumi:"virtualMachineProfileOverride"`
+}
+
+func (LocationProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationProfile)(nil)).Elem()
+}
+
+func (i LocationProfileArgs) ToLocationProfileOutput() LocationProfileOutput {
+	return i.ToLocationProfileOutputWithContext(context.Background())
+}
+
+func (i LocationProfileArgs) ToLocationProfileOutputWithContext(ctx context.Context) LocationProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationProfileOutput)
+}
+
+// LocationProfileArrayInput is an input type that accepts LocationProfileArray and LocationProfileArrayOutput values.
+// You can construct a concrete instance of `LocationProfileArrayInput` via:
+//
+//	LocationProfileArray{ LocationProfileArgs{...} }
+type LocationProfileArrayInput interface {
+	pulumi.Input
+
+	ToLocationProfileArrayOutput() LocationProfileArrayOutput
+	ToLocationProfileArrayOutputWithContext(context.Context) LocationProfileArrayOutput
+}
+
+type LocationProfileArray []LocationProfileInput
+
+func (LocationProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocationProfile)(nil)).Elem()
+}
+
+func (i LocationProfileArray) ToLocationProfileArrayOutput() LocationProfileArrayOutput {
+	return i.ToLocationProfileArrayOutputWithContext(context.Background())
+}
+
+func (i LocationProfileArray) ToLocationProfileArrayOutputWithContext(ctx context.Context) LocationProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationProfileArrayOutput)
+}
+
+// Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional).
+type LocationProfileOutput struct{ *pulumi.OutputState }
+
+func (LocationProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationProfile)(nil)).Elem()
+}
+
+func (o LocationProfileOutput) ToLocationProfileOutput() LocationProfileOutput {
+	return o
+}
+
+func (o LocationProfileOutput) ToLocationProfileOutputWithContext(ctx context.Context) LocationProfileOutput {
+	return o
+}
+
+// The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+func (o LocationProfileOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationProfile) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// An override for computeProfile.baseVirtualMachineProfile specific to this region.
+// This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
+func (o LocationProfileOutput) VirtualMachineProfileOverride() BaseVirtualMachineProfilePtrOutput {
+	return o.ApplyT(func(v LocationProfile) *BaseVirtualMachineProfile { return v.VirtualMachineProfileOverride }).(BaseVirtualMachineProfilePtrOutput)
+}
+
+type LocationProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (LocationProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocationProfile)(nil)).Elem()
+}
+
+func (o LocationProfileArrayOutput) ToLocationProfileArrayOutput() LocationProfileArrayOutput {
+	return o
+}
+
+func (o LocationProfileArrayOutput) ToLocationProfileArrayOutputWithContext(ctx context.Context) LocationProfileArrayOutput {
+	return o
+}
+
+func (o LocationProfileArrayOutput) Index(i pulumi.IntInput) LocationProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocationProfile {
+		return vs[0].([]LocationProfile)[vs[1].(int)]
+	}).(LocationProfileOutput)
+}
+
+// Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional).
+type LocationProfileResponse struct {
+	// The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+	Location string `pulumi:"location"`
+	// An override for computeProfile.baseVirtualMachineProfile specific to this region.
+	// This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
+	VirtualMachineProfileOverride *BaseVirtualMachineProfileResponse `pulumi:"virtualMachineProfileOverride"`
+}
+
+// Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional).
+type LocationProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationProfileResponse)(nil)).Elem()
+}
+
+func (o LocationProfileResponseOutput) ToLocationProfileResponseOutput() LocationProfileResponseOutput {
+	return o
+}
+
+func (o LocationProfileResponseOutput) ToLocationProfileResponseOutputWithContext(ctx context.Context) LocationProfileResponseOutput {
+	return o
+}
+
+// The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+func (o LocationProfileResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationProfileResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// An override for computeProfile.baseVirtualMachineProfile specific to this region.
+// This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
+func (o LocationProfileResponseOutput) VirtualMachineProfileOverride() BaseVirtualMachineProfileResponsePtrOutput {
+	return o.ApplyT(func(v LocationProfileResponse) *BaseVirtualMachineProfileResponse {
+		return v.VirtualMachineProfileOverride
+	}).(BaseVirtualMachineProfileResponsePtrOutput)
+}
+
+type LocationProfileResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LocationProfileResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocationProfileResponse)(nil)).Elem()
+}
+
+func (o LocationProfileResponseArrayOutput) ToLocationProfileResponseArrayOutput() LocationProfileResponseArrayOutput {
+	return o
+}
+
+func (o LocationProfileResponseArrayOutput) ToLocationProfileResponseArrayOutputWithContext(ctx context.Context) LocationProfileResponseArrayOutput {
+	return o
+}
+
+func (o LocationProfileResponseArrayOutput) Index(i pulumi.IntInput) LocationProfileResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocationProfileResponse {
+		return vs[0].([]LocationProfileResponse)[vs[1].(int)]
+	}).(LocationProfileResponseOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -9358,6 +10435,1446 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
 		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
 	}).(UserAssignedIdentityResponseOutput)
+}
+
+// VMAttributes using double values.
+type VMAttributeMinMaxDouble struct {
+	// Maximum value. Double.MaxValue(1.7976931348623157E+308)
+	Max *float64 `pulumi:"max"`
+	// Minimum value. default 0. Double.MinValue()
+	Min *float64 `pulumi:"min"`
+}
+
+// VMAttributeMinMaxDoubleInput is an input type that accepts VMAttributeMinMaxDoubleArgs and VMAttributeMinMaxDoubleOutput values.
+// You can construct a concrete instance of `VMAttributeMinMaxDoubleInput` via:
+//
+//	VMAttributeMinMaxDoubleArgs{...}
+type VMAttributeMinMaxDoubleInput interface {
+	pulumi.Input
+
+	ToVMAttributeMinMaxDoubleOutput() VMAttributeMinMaxDoubleOutput
+	ToVMAttributeMinMaxDoubleOutputWithContext(context.Context) VMAttributeMinMaxDoubleOutput
+}
+
+// VMAttributes using double values.
+type VMAttributeMinMaxDoubleArgs struct {
+	// Maximum value. Double.MaxValue(1.7976931348623157E+308)
+	Max pulumi.Float64PtrInput `pulumi:"max"`
+	// Minimum value. default 0. Double.MinValue()
+	Min pulumi.Float64PtrInput `pulumi:"min"`
+}
+
+func (VMAttributeMinMaxDoubleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMAttributeMinMaxDouble)(nil)).Elem()
+}
+
+func (i VMAttributeMinMaxDoubleArgs) ToVMAttributeMinMaxDoubleOutput() VMAttributeMinMaxDoubleOutput {
+	return i.ToVMAttributeMinMaxDoubleOutputWithContext(context.Background())
+}
+
+func (i VMAttributeMinMaxDoubleArgs) ToVMAttributeMinMaxDoubleOutputWithContext(ctx context.Context) VMAttributeMinMaxDoubleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMAttributeMinMaxDoubleOutput)
+}
+
+func (i VMAttributeMinMaxDoubleArgs) ToVMAttributeMinMaxDoublePtrOutput() VMAttributeMinMaxDoublePtrOutput {
+	return i.ToVMAttributeMinMaxDoublePtrOutputWithContext(context.Background())
+}
+
+func (i VMAttributeMinMaxDoubleArgs) ToVMAttributeMinMaxDoublePtrOutputWithContext(ctx context.Context) VMAttributeMinMaxDoublePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMAttributeMinMaxDoubleOutput).ToVMAttributeMinMaxDoublePtrOutputWithContext(ctx)
+}
+
+// VMAttributeMinMaxDoublePtrInput is an input type that accepts VMAttributeMinMaxDoubleArgs, VMAttributeMinMaxDoublePtr and VMAttributeMinMaxDoublePtrOutput values.
+// You can construct a concrete instance of `VMAttributeMinMaxDoublePtrInput` via:
+//
+//	        VMAttributeMinMaxDoubleArgs{...}
+//
+//	or:
+//
+//	        nil
+type VMAttributeMinMaxDoublePtrInput interface {
+	pulumi.Input
+
+	ToVMAttributeMinMaxDoublePtrOutput() VMAttributeMinMaxDoublePtrOutput
+	ToVMAttributeMinMaxDoublePtrOutputWithContext(context.Context) VMAttributeMinMaxDoublePtrOutput
+}
+
+type vmattributeMinMaxDoublePtrType VMAttributeMinMaxDoubleArgs
+
+func VMAttributeMinMaxDoublePtr(v *VMAttributeMinMaxDoubleArgs) VMAttributeMinMaxDoublePtrInput {
+	return (*vmattributeMinMaxDoublePtrType)(v)
+}
+
+func (*vmattributeMinMaxDoublePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMAttributeMinMaxDouble)(nil)).Elem()
+}
+
+func (i *vmattributeMinMaxDoublePtrType) ToVMAttributeMinMaxDoublePtrOutput() VMAttributeMinMaxDoublePtrOutput {
+	return i.ToVMAttributeMinMaxDoublePtrOutputWithContext(context.Background())
+}
+
+func (i *vmattributeMinMaxDoublePtrType) ToVMAttributeMinMaxDoublePtrOutputWithContext(ctx context.Context) VMAttributeMinMaxDoublePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMAttributeMinMaxDoublePtrOutput)
+}
+
+// VMAttributes using double values.
+type VMAttributeMinMaxDoubleOutput struct{ *pulumi.OutputState }
+
+func (VMAttributeMinMaxDoubleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMAttributeMinMaxDouble)(nil)).Elem()
+}
+
+func (o VMAttributeMinMaxDoubleOutput) ToVMAttributeMinMaxDoubleOutput() VMAttributeMinMaxDoubleOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxDoubleOutput) ToVMAttributeMinMaxDoubleOutputWithContext(ctx context.Context) VMAttributeMinMaxDoubleOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxDoubleOutput) ToVMAttributeMinMaxDoublePtrOutput() VMAttributeMinMaxDoublePtrOutput {
+	return o.ToVMAttributeMinMaxDoublePtrOutputWithContext(context.Background())
+}
+
+func (o VMAttributeMinMaxDoubleOutput) ToVMAttributeMinMaxDoublePtrOutputWithContext(ctx context.Context) VMAttributeMinMaxDoublePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMAttributeMinMaxDouble) *VMAttributeMinMaxDouble {
+		return &v
+	}).(VMAttributeMinMaxDoublePtrOutput)
+}
+
+// Maximum value. Double.MaxValue(1.7976931348623157E+308)
+func (o VMAttributeMinMaxDoubleOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VMAttributeMinMaxDouble) *float64 { return v.Max }).(pulumi.Float64PtrOutput)
+}
+
+// Minimum value. default 0. Double.MinValue()
+func (o VMAttributeMinMaxDoubleOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VMAttributeMinMaxDouble) *float64 { return v.Min }).(pulumi.Float64PtrOutput)
+}
+
+type VMAttributeMinMaxDoublePtrOutput struct{ *pulumi.OutputState }
+
+func (VMAttributeMinMaxDoublePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMAttributeMinMaxDouble)(nil)).Elem()
+}
+
+func (o VMAttributeMinMaxDoublePtrOutput) ToVMAttributeMinMaxDoublePtrOutput() VMAttributeMinMaxDoublePtrOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxDoublePtrOutput) ToVMAttributeMinMaxDoublePtrOutputWithContext(ctx context.Context) VMAttributeMinMaxDoublePtrOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxDoublePtrOutput) Elem() VMAttributeMinMaxDoubleOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxDouble) VMAttributeMinMaxDouble {
+		if v != nil {
+			return *v
+		}
+		var ret VMAttributeMinMaxDouble
+		return ret
+	}).(VMAttributeMinMaxDoubleOutput)
+}
+
+// Maximum value. Double.MaxValue(1.7976931348623157E+308)
+func (o VMAttributeMinMaxDoublePtrOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxDouble) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Minimum value. default 0. Double.MinValue()
+func (o VMAttributeMinMaxDoublePtrOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxDouble) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.Float64PtrOutput)
+}
+
+// VMAttributes using double values.
+type VMAttributeMinMaxDoubleResponse struct {
+	// Maximum value. Double.MaxValue(1.7976931348623157E+308)
+	Max *float64 `pulumi:"max"`
+	// Minimum value. default 0. Double.MinValue()
+	Min *float64 `pulumi:"min"`
+}
+
+// VMAttributes using double values.
+type VMAttributeMinMaxDoubleResponseOutput struct{ *pulumi.OutputState }
+
+func (VMAttributeMinMaxDoubleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMAttributeMinMaxDoubleResponse)(nil)).Elem()
+}
+
+func (o VMAttributeMinMaxDoubleResponseOutput) ToVMAttributeMinMaxDoubleResponseOutput() VMAttributeMinMaxDoubleResponseOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxDoubleResponseOutput) ToVMAttributeMinMaxDoubleResponseOutputWithContext(ctx context.Context) VMAttributeMinMaxDoubleResponseOutput {
+	return o
+}
+
+// Maximum value. Double.MaxValue(1.7976931348623157E+308)
+func (o VMAttributeMinMaxDoubleResponseOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VMAttributeMinMaxDoubleResponse) *float64 { return v.Max }).(pulumi.Float64PtrOutput)
+}
+
+// Minimum value. default 0. Double.MinValue()
+func (o VMAttributeMinMaxDoubleResponseOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VMAttributeMinMaxDoubleResponse) *float64 { return v.Min }).(pulumi.Float64PtrOutput)
+}
+
+type VMAttributeMinMaxDoubleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VMAttributeMinMaxDoubleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMAttributeMinMaxDoubleResponse)(nil)).Elem()
+}
+
+func (o VMAttributeMinMaxDoubleResponsePtrOutput) ToVMAttributeMinMaxDoubleResponsePtrOutput() VMAttributeMinMaxDoubleResponsePtrOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxDoubleResponsePtrOutput) ToVMAttributeMinMaxDoubleResponsePtrOutputWithContext(ctx context.Context) VMAttributeMinMaxDoubleResponsePtrOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxDoubleResponsePtrOutput) Elem() VMAttributeMinMaxDoubleResponseOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxDoubleResponse) VMAttributeMinMaxDoubleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VMAttributeMinMaxDoubleResponse
+		return ret
+	}).(VMAttributeMinMaxDoubleResponseOutput)
+}
+
+// Maximum value. Double.MaxValue(1.7976931348623157E+308)
+func (o VMAttributeMinMaxDoubleResponsePtrOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxDoubleResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Minimum value. default 0. Double.MinValue()
+func (o VMAttributeMinMaxDoubleResponsePtrOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxDoubleResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.Float64PtrOutput)
+}
+
+// While retrieving VMSizes from CRS, Min = 0 (uint.MinValue) if not specified, Max = 4294967295 (uint.MaxValue) if not specified. This allows to filter VMAttributes on all available VMSizes.
+type VMAttributeMinMaxInteger struct {
+	// Max VMSize from CRS, Max = 4294967295 (uint.MaxValue) if not specified.
+	Max *int `pulumi:"max"`
+	// Min VMSize from CRS, Min = 0 (uint.MinValue) if not specified.
+	Min *int `pulumi:"min"`
+}
+
+// VMAttributeMinMaxIntegerInput is an input type that accepts VMAttributeMinMaxIntegerArgs and VMAttributeMinMaxIntegerOutput values.
+// You can construct a concrete instance of `VMAttributeMinMaxIntegerInput` via:
+//
+//	VMAttributeMinMaxIntegerArgs{...}
+type VMAttributeMinMaxIntegerInput interface {
+	pulumi.Input
+
+	ToVMAttributeMinMaxIntegerOutput() VMAttributeMinMaxIntegerOutput
+	ToVMAttributeMinMaxIntegerOutputWithContext(context.Context) VMAttributeMinMaxIntegerOutput
+}
+
+// While retrieving VMSizes from CRS, Min = 0 (uint.MinValue) if not specified, Max = 4294967295 (uint.MaxValue) if not specified. This allows to filter VMAttributes on all available VMSizes.
+type VMAttributeMinMaxIntegerArgs struct {
+	// Max VMSize from CRS, Max = 4294967295 (uint.MaxValue) if not specified.
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// Min VMSize from CRS, Min = 0 (uint.MinValue) if not specified.
+	Min pulumi.IntPtrInput `pulumi:"min"`
+}
+
+func (VMAttributeMinMaxIntegerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMAttributeMinMaxInteger)(nil)).Elem()
+}
+
+func (i VMAttributeMinMaxIntegerArgs) ToVMAttributeMinMaxIntegerOutput() VMAttributeMinMaxIntegerOutput {
+	return i.ToVMAttributeMinMaxIntegerOutputWithContext(context.Background())
+}
+
+func (i VMAttributeMinMaxIntegerArgs) ToVMAttributeMinMaxIntegerOutputWithContext(ctx context.Context) VMAttributeMinMaxIntegerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMAttributeMinMaxIntegerOutput)
+}
+
+func (i VMAttributeMinMaxIntegerArgs) ToVMAttributeMinMaxIntegerPtrOutput() VMAttributeMinMaxIntegerPtrOutput {
+	return i.ToVMAttributeMinMaxIntegerPtrOutputWithContext(context.Background())
+}
+
+func (i VMAttributeMinMaxIntegerArgs) ToVMAttributeMinMaxIntegerPtrOutputWithContext(ctx context.Context) VMAttributeMinMaxIntegerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMAttributeMinMaxIntegerOutput).ToVMAttributeMinMaxIntegerPtrOutputWithContext(ctx)
+}
+
+// VMAttributeMinMaxIntegerPtrInput is an input type that accepts VMAttributeMinMaxIntegerArgs, VMAttributeMinMaxIntegerPtr and VMAttributeMinMaxIntegerPtrOutput values.
+// You can construct a concrete instance of `VMAttributeMinMaxIntegerPtrInput` via:
+//
+//	        VMAttributeMinMaxIntegerArgs{...}
+//
+//	or:
+//
+//	        nil
+type VMAttributeMinMaxIntegerPtrInput interface {
+	pulumi.Input
+
+	ToVMAttributeMinMaxIntegerPtrOutput() VMAttributeMinMaxIntegerPtrOutput
+	ToVMAttributeMinMaxIntegerPtrOutputWithContext(context.Context) VMAttributeMinMaxIntegerPtrOutput
+}
+
+type vmattributeMinMaxIntegerPtrType VMAttributeMinMaxIntegerArgs
+
+func VMAttributeMinMaxIntegerPtr(v *VMAttributeMinMaxIntegerArgs) VMAttributeMinMaxIntegerPtrInput {
+	return (*vmattributeMinMaxIntegerPtrType)(v)
+}
+
+func (*vmattributeMinMaxIntegerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMAttributeMinMaxInteger)(nil)).Elem()
+}
+
+func (i *vmattributeMinMaxIntegerPtrType) ToVMAttributeMinMaxIntegerPtrOutput() VMAttributeMinMaxIntegerPtrOutput {
+	return i.ToVMAttributeMinMaxIntegerPtrOutputWithContext(context.Background())
+}
+
+func (i *vmattributeMinMaxIntegerPtrType) ToVMAttributeMinMaxIntegerPtrOutputWithContext(ctx context.Context) VMAttributeMinMaxIntegerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMAttributeMinMaxIntegerPtrOutput)
+}
+
+// While retrieving VMSizes from CRS, Min = 0 (uint.MinValue) if not specified, Max = 4294967295 (uint.MaxValue) if not specified. This allows to filter VMAttributes on all available VMSizes.
+type VMAttributeMinMaxIntegerOutput struct{ *pulumi.OutputState }
+
+func (VMAttributeMinMaxIntegerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMAttributeMinMaxInteger)(nil)).Elem()
+}
+
+func (o VMAttributeMinMaxIntegerOutput) ToVMAttributeMinMaxIntegerOutput() VMAttributeMinMaxIntegerOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxIntegerOutput) ToVMAttributeMinMaxIntegerOutputWithContext(ctx context.Context) VMAttributeMinMaxIntegerOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxIntegerOutput) ToVMAttributeMinMaxIntegerPtrOutput() VMAttributeMinMaxIntegerPtrOutput {
+	return o.ToVMAttributeMinMaxIntegerPtrOutputWithContext(context.Background())
+}
+
+func (o VMAttributeMinMaxIntegerOutput) ToVMAttributeMinMaxIntegerPtrOutputWithContext(ctx context.Context) VMAttributeMinMaxIntegerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMAttributeMinMaxInteger) *VMAttributeMinMaxInteger {
+		return &v
+	}).(VMAttributeMinMaxIntegerPtrOutput)
+}
+
+// Max VMSize from CRS, Max = 4294967295 (uint.MaxValue) if not specified.
+func (o VMAttributeMinMaxIntegerOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VMAttributeMinMaxInteger) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// Min VMSize from CRS, Min = 0 (uint.MinValue) if not specified.
+func (o VMAttributeMinMaxIntegerOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VMAttributeMinMaxInteger) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type VMAttributeMinMaxIntegerPtrOutput struct{ *pulumi.OutputState }
+
+func (VMAttributeMinMaxIntegerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMAttributeMinMaxInteger)(nil)).Elem()
+}
+
+func (o VMAttributeMinMaxIntegerPtrOutput) ToVMAttributeMinMaxIntegerPtrOutput() VMAttributeMinMaxIntegerPtrOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxIntegerPtrOutput) ToVMAttributeMinMaxIntegerPtrOutputWithContext(ctx context.Context) VMAttributeMinMaxIntegerPtrOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxIntegerPtrOutput) Elem() VMAttributeMinMaxIntegerOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxInteger) VMAttributeMinMaxInteger {
+		if v != nil {
+			return *v
+		}
+		var ret VMAttributeMinMaxInteger
+		return ret
+	}).(VMAttributeMinMaxIntegerOutput)
+}
+
+// Max VMSize from CRS, Max = 4294967295 (uint.MaxValue) if not specified.
+func (o VMAttributeMinMaxIntegerPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxInteger) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Min VMSize from CRS, Min = 0 (uint.MinValue) if not specified.
+func (o VMAttributeMinMaxIntegerPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxInteger) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+// While retrieving VMSizes from CRS, Min = 0 (uint.MinValue) if not specified, Max = 4294967295 (uint.MaxValue) if not specified. This allows to filter VMAttributes on all available VMSizes.
+type VMAttributeMinMaxIntegerResponse struct {
+	// Max VMSize from CRS, Max = 4294967295 (uint.MaxValue) if not specified.
+	Max *int `pulumi:"max"`
+	// Min VMSize from CRS, Min = 0 (uint.MinValue) if not specified.
+	Min *int `pulumi:"min"`
+}
+
+// While retrieving VMSizes from CRS, Min = 0 (uint.MinValue) if not specified, Max = 4294967295 (uint.MaxValue) if not specified. This allows to filter VMAttributes on all available VMSizes.
+type VMAttributeMinMaxIntegerResponseOutput struct{ *pulumi.OutputState }
+
+func (VMAttributeMinMaxIntegerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMAttributeMinMaxIntegerResponse)(nil)).Elem()
+}
+
+func (o VMAttributeMinMaxIntegerResponseOutput) ToVMAttributeMinMaxIntegerResponseOutput() VMAttributeMinMaxIntegerResponseOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxIntegerResponseOutput) ToVMAttributeMinMaxIntegerResponseOutputWithContext(ctx context.Context) VMAttributeMinMaxIntegerResponseOutput {
+	return o
+}
+
+// Max VMSize from CRS, Max = 4294967295 (uint.MaxValue) if not specified.
+func (o VMAttributeMinMaxIntegerResponseOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VMAttributeMinMaxIntegerResponse) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// Min VMSize from CRS, Min = 0 (uint.MinValue) if not specified.
+func (o VMAttributeMinMaxIntegerResponseOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VMAttributeMinMaxIntegerResponse) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type VMAttributeMinMaxIntegerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VMAttributeMinMaxIntegerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMAttributeMinMaxIntegerResponse)(nil)).Elem()
+}
+
+func (o VMAttributeMinMaxIntegerResponsePtrOutput) ToVMAttributeMinMaxIntegerResponsePtrOutput() VMAttributeMinMaxIntegerResponsePtrOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxIntegerResponsePtrOutput) ToVMAttributeMinMaxIntegerResponsePtrOutputWithContext(ctx context.Context) VMAttributeMinMaxIntegerResponsePtrOutput {
+	return o
+}
+
+func (o VMAttributeMinMaxIntegerResponsePtrOutput) Elem() VMAttributeMinMaxIntegerResponseOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxIntegerResponse) VMAttributeMinMaxIntegerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VMAttributeMinMaxIntegerResponse
+		return ret
+	}).(VMAttributeMinMaxIntegerResponseOutput)
+}
+
+// Max VMSize from CRS, Max = 4294967295 (uint.MaxValue) if not specified.
+func (o VMAttributeMinMaxIntegerResponsePtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxIntegerResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Min VMSize from CRS, Min = 0 (uint.MinValue) if not specified.
+func (o VMAttributeMinMaxIntegerResponsePtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VMAttributeMinMaxIntegerResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+// VMAttributes that will be used to filter VMSizes which will be used to build Fleet.
+type VMAttributes struct {
+	// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorCount *VMAttributeMinMaxInteger `pulumi:"acceleratorCount"`
+	// The accelerator manufacturers specified as a list.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorManufacturers []string `pulumi:"acceleratorManufacturers"`
+	// Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorSupport *string `pulumi:"acceleratorSupport"`
+	// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorTypes []string `pulumi:"acceleratorTypes"`
+	// The VM architecture types specified as a list. Optional parameter.
+	ArchitectureTypes []string `pulumi:"architectureTypes"`
+	// Specifies whether the VMSize supporting burstable capability should be used to build Fleet or not.
+	BurstableSupport *string `pulumi:"burstableSupport"`
+	// The VM CPU manufacturers specified as a list. Optional parameter.
+	CpuManufacturers []string `pulumi:"cpuManufacturers"`
+	// The range of data disk count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	DataDiskCount *VMAttributeMinMaxInteger `pulumi:"dataDiskCount"`
+	// Specifies which VMSizes should be excluded while building Fleet. Optional parameter.
+	ExcludedVMSizes []string `pulumi:"excludedVMSizes"`
+	// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+	LocalStorageDiskTypes []string `pulumi:"localStorageDiskTypes"`
+	// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+	LocalStorageInGiB *VMAttributeMinMaxDouble `pulumi:"localStorageInGiB"`
+	// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+	// Included - Default if not specified as most Azure VMs support local storage.
+	LocalStorageSupport *string `pulumi:"localStorageSupport"`
+	// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+	MemoryInGiB VMAttributeMinMaxDouble `pulumi:"memoryInGiB"`
+	// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	MemoryInGiBPerVCpu *VMAttributeMinMaxDouble `pulumi:"memoryInGiBPerVCpu"`
+	// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	NetworkBandwidthInMbps *VMAttributeMinMaxDouble `pulumi:"networkBandwidthInMbps"`
+	// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	NetworkInterfaceCount *VMAttributeMinMaxInteger `pulumi:"networkInterfaceCount"`
+	// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If rdmaSupport is "Excluded", this VMAttribute can not be used.
+	RdmaNetworkInterfaceCount *VMAttributeMinMaxInteger `pulumi:"rdmaNetworkInterfaceCount"`
+	// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
+	RdmaSupport *string `pulumi:"rdmaSupport"`
+	// The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+	VCpuCount VMAttributeMinMaxInteger `pulumi:"vCpuCount"`
+	// The VM category specified as a list. Optional parameter.
+	VmCategories []string `pulumi:"vmCategories"`
+}
+
+// VMAttributesInput is an input type that accepts VMAttributesArgs and VMAttributesOutput values.
+// You can construct a concrete instance of `VMAttributesInput` via:
+//
+//	VMAttributesArgs{...}
+type VMAttributesInput interface {
+	pulumi.Input
+
+	ToVMAttributesOutput() VMAttributesOutput
+	ToVMAttributesOutputWithContext(context.Context) VMAttributesOutput
+}
+
+// VMAttributes that will be used to filter VMSizes which will be used to build Fleet.
+type VMAttributesArgs struct {
+	// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorCount VMAttributeMinMaxIntegerPtrInput `pulumi:"acceleratorCount"`
+	// The accelerator manufacturers specified as a list.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorManufacturers pulumi.StringArrayInput `pulumi:"acceleratorManufacturers"`
+	// Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorSupport pulumi.StringPtrInput `pulumi:"acceleratorSupport"`
+	// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorTypes pulumi.StringArrayInput `pulumi:"acceleratorTypes"`
+	// The VM architecture types specified as a list. Optional parameter.
+	ArchitectureTypes pulumi.StringArrayInput `pulumi:"architectureTypes"`
+	// Specifies whether the VMSize supporting burstable capability should be used to build Fleet or not.
+	BurstableSupport pulumi.StringPtrInput `pulumi:"burstableSupport"`
+	// The VM CPU manufacturers specified as a list. Optional parameter.
+	CpuManufacturers pulumi.StringArrayInput `pulumi:"cpuManufacturers"`
+	// The range of data disk count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	DataDiskCount VMAttributeMinMaxIntegerPtrInput `pulumi:"dataDiskCount"`
+	// Specifies which VMSizes should be excluded while building Fleet. Optional parameter.
+	ExcludedVMSizes pulumi.StringArrayInput `pulumi:"excludedVMSizes"`
+	// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+	LocalStorageDiskTypes pulumi.StringArrayInput `pulumi:"localStorageDiskTypes"`
+	// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+	LocalStorageInGiB VMAttributeMinMaxDoublePtrInput `pulumi:"localStorageInGiB"`
+	// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+	// Included - Default if not specified as most Azure VMs support local storage.
+	LocalStorageSupport pulumi.StringPtrInput `pulumi:"localStorageSupport"`
+	// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+	MemoryInGiB VMAttributeMinMaxDoubleInput `pulumi:"memoryInGiB"`
+	// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	MemoryInGiBPerVCpu VMAttributeMinMaxDoublePtrInput `pulumi:"memoryInGiBPerVCpu"`
+	// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	NetworkBandwidthInMbps VMAttributeMinMaxDoublePtrInput `pulumi:"networkBandwidthInMbps"`
+	// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	NetworkInterfaceCount VMAttributeMinMaxIntegerPtrInput `pulumi:"networkInterfaceCount"`
+	// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If rdmaSupport is "Excluded", this VMAttribute can not be used.
+	RdmaNetworkInterfaceCount VMAttributeMinMaxIntegerPtrInput `pulumi:"rdmaNetworkInterfaceCount"`
+	// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
+	RdmaSupport pulumi.StringPtrInput `pulumi:"rdmaSupport"`
+	// The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+	VCpuCount VMAttributeMinMaxIntegerInput `pulumi:"vCpuCount"`
+	// The VM category specified as a list. Optional parameter.
+	VmCategories pulumi.StringArrayInput `pulumi:"vmCategories"`
+}
+
+func (VMAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMAttributes)(nil)).Elem()
+}
+
+func (i VMAttributesArgs) ToVMAttributesOutput() VMAttributesOutput {
+	return i.ToVMAttributesOutputWithContext(context.Background())
+}
+
+func (i VMAttributesArgs) ToVMAttributesOutputWithContext(ctx context.Context) VMAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMAttributesOutput)
+}
+
+func (i VMAttributesArgs) ToVMAttributesPtrOutput() VMAttributesPtrOutput {
+	return i.ToVMAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i VMAttributesArgs) ToVMAttributesPtrOutputWithContext(ctx context.Context) VMAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMAttributesOutput).ToVMAttributesPtrOutputWithContext(ctx)
+}
+
+// VMAttributesPtrInput is an input type that accepts VMAttributesArgs, VMAttributesPtr and VMAttributesPtrOutput values.
+// You can construct a concrete instance of `VMAttributesPtrInput` via:
+//
+//	        VMAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VMAttributesPtrInput interface {
+	pulumi.Input
+
+	ToVMAttributesPtrOutput() VMAttributesPtrOutput
+	ToVMAttributesPtrOutputWithContext(context.Context) VMAttributesPtrOutput
+}
+
+type vmattributesPtrType VMAttributesArgs
+
+func VMAttributesPtr(v *VMAttributesArgs) VMAttributesPtrInput {
+	return (*vmattributesPtrType)(v)
+}
+
+func (*vmattributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMAttributes)(nil)).Elem()
+}
+
+func (i *vmattributesPtrType) ToVMAttributesPtrOutput() VMAttributesPtrOutput {
+	return i.ToVMAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *vmattributesPtrType) ToVMAttributesPtrOutputWithContext(ctx context.Context) VMAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMAttributesPtrOutput)
+}
+
+// VMAttributes that will be used to filter VMSizes which will be used to build Fleet.
+type VMAttributesOutput struct{ *pulumi.OutputState }
+
+func (VMAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMAttributes)(nil)).Elem()
+}
+
+func (o VMAttributesOutput) ToVMAttributesOutput() VMAttributesOutput {
+	return o
+}
+
+func (o VMAttributesOutput) ToVMAttributesOutputWithContext(ctx context.Context) VMAttributesOutput {
+	return o
+}
+
+func (o VMAttributesOutput) ToVMAttributesPtrOutput() VMAttributesPtrOutput {
+	return o.ToVMAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o VMAttributesOutput) ToVMAttributesPtrOutputWithContext(ctx context.Context) VMAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMAttributes) *VMAttributes {
+		return &v
+	}).(VMAttributesPtrOutput)
+}
+
+// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesOutput) AcceleratorCount() VMAttributeMinMaxIntegerPtrOutput {
+	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxInteger { return v.AcceleratorCount }).(VMAttributeMinMaxIntegerPtrOutput)
+}
+
+// The accelerator manufacturers specified as a list.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesOutput) AcceleratorManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributes) []string { return v.AcceleratorManufacturers }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesOutput) AcceleratorSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMAttributes) *string { return v.AcceleratorSupport }).(pulumi.StringPtrOutput)
+}
+
+// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesOutput) AcceleratorTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributes) []string { return v.AcceleratorTypes }).(pulumi.StringArrayOutput)
+}
+
+// The VM architecture types specified as a list. Optional parameter.
+func (o VMAttributesOutput) ArchitectureTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributes) []string { return v.ArchitectureTypes }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether the VMSize supporting burstable capability should be used to build Fleet or not.
+func (o VMAttributesOutput) BurstableSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMAttributes) *string { return v.BurstableSupport }).(pulumi.StringPtrOutput)
+}
+
+// The VM CPU manufacturers specified as a list. Optional parameter.
+func (o VMAttributesOutput) CpuManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributes) []string { return v.CpuManufacturers }).(pulumi.StringArrayOutput)
+}
+
+// The range of data disk count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesOutput) DataDiskCount() VMAttributeMinMaxIntegerPtrOutput {
+	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxInteger { return v.DataDiskCount }).(VMAttributeMinMaxIntegerPtrOutput)
+}
+
+// Specifies which VMSizes should be excluded while building Fleet. Optional parameter.
+func (o VMAttributesOutput) ExcludedVMSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributes) []string { return v.ExcludedVMSizes }).(pulumi.StringArrayOutput)
+}
+
+// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesOutput) LocalStorageDiskTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributes) []string { return v.LocalStorageDiskTypes }).(pulumi.StringArrayOutput)
+}
+
+// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesOutput) LocalStorageInGiB() VMAttributeMinMaxDoublePtrOutput {
+	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxDouble { return v.LocalStorageInGiB }).(VMAttributeMinMaxDoublePtrOutput)
+}
+
+// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+// Included - Default if not specified as most Azure VMs support local storage.
+func (o VMAttributesOutput) LocalStorageSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMAttributes) *string { return v.LocalStorageSupport }).(pulumi.StringPtrOutput)
+}
+
+// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+func (o VMAttributesOutput) MemoryInGiB() VMAttributeMinMaxDoubleOutput {
+	return o.ApplyT(func(v VMAttributes) VMAttributeMinMaxDouble { return v.MemoryInGiB }).(VMAttributeMinMaxDoubleOutput)
+}
+
+// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesOutput) MemoryInGiBPerVCpu() VMAttributeMinMaxDoublePtrOutput {
+	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxDouble { return v.MemoryInGiBPerVCpu }).(VMAttributeMinMaxDoublePtrOutput)
+}
+
+// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesOutput) NetworkBandwidthInMbps() VMAttributeMinMaxDoublePtrOutput {
+	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxDouble { return v.NetworkBandwidthInMbps }).(VMAttributeMinMaxDoublePtrOutput)
+}
+
+// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesOutput) NetworkInterfaceCount() VMAttributeMinMaxIntegerPtrOutput {
+	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxInteger { return v.NetworkInterfaceCount }).(VMAttributeMinMaxIntegerPtrOutput)
+}
+
+// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If rdmaSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesOutput) RdmaNetworkInterfaceCount() VMAttributeMinMaxIntegerPtrOutput {
+	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxInteger { return v.RdmaNetworkInterfaceCount }).(VMAttributeMinMaxIntegerPtrOutput)
+}
+
+// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
+func (o VMAttributesOutput) RdmaSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMAttributes) *string { return v.RdmaSupport }).(pulumi.StringPtrOutput)
+}
+
+// The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+func (o VMAttributesOutput) VCpuCount() VMAttributeMinMaxIntegerOutput {
+	return o.ApplyT(func(v VMAttributes) VMAttributeMinMaxInteger { return v.VCpuCount }).(VMAttributeMinMaxIntegerOutput)
+}
+
+// The VM category specified as a list. Optional parameter.
+func (o VMAttributesOutput) VmCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributes) []string { return v.VmCategories }).(pulumi.StringArrayOutput)
+}
+
+type VMAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (VMAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMAttributes)(nil)).Elem()
+}
+
+func (o VMAttributesPtrOutput) ToVMAttributesPtrOutput() VMAttributesPtrOutput {
+	return o
+}
+
+func (o VMAttributesPtrOutput) ToVMAttributesPtrOutputWithContext(ctx context.Context) VMAttributesPtrOutput {
+	return o
+}
+
+func (o VMAttributesPtrOutput) Elem() VMAttributesOutput {
+	return o.ApplyT(func(v *VMAttributes) VMAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret VMAttributes
+		return ret
+	}).(VMAttributesOutput)
+}
+
+// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesPtrOutput) AcceleratorCount() VMAttributeMinMaxIntegerPtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxInteger {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorCount
+	}).(VMAttributeMinMaxIntegerPtrOutput)
+}
+
+// The accelerator manufacturers specified as a list.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesPtrOutput) AcceleratorManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorManufacturers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesPtrOutput) AcceleratorSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorSupport
+	}).(pulumi.StringPtrOutput)
+}
+
+// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesPtrOutput) AcceleratorTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The VM architecture types specified as a list. Optional parameter.
+func (o VMAttributesPtrOutput) ArchitectureTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchitectureTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether the VMSize supporting burstable capability should be used to build Fleet or not.
+func (o VMAttributesPtrOutput) BurstableSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BurstableSupport
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VM CPU manufacturers specified as a list. Optional parameter.
+func (o VMAttributesPtrOutput) CpuManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuManufacturers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The range of data disk count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesPtrOutput) DataDiskCount() VMAttributeMinMaxIntegerPtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxInteger {
+		if v == nil {
+			return nil
+		}
+		return v.DataDiskCount
+	}).(VMAttributeMinMaxIntegerPtrOutput)
+}
+
+// Specifies which VMSizes should be excluded while building Fleet. Optional parameter.
+func (o VMAttributesPtrOutput) ExcludedVMSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedVMSizes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesPtrOutput) LocalStorageDiskTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalStorageDiskTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesPtrOutput) LocalStorageInGiB() VMAttributeMinMaxDoublePtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxDouble {
+		if v == nil {
+			return nil
+		}
+		return v.LocalStorageInGiB
+	}).(VMAttributeMinMaxDoublePtrOutput)
+}
+
+// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+// Included - Default if not specified as most Azure VMs support local storage.
+func (o VMAttributesPtrOutput) LocalStorageSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalStorageSupport
+	}).(pulumi.StringPtrOutput)
+}
+
+// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+func (o VMAttributesPtrOutput) MemoryInGiB() VMAttributeMinMaxDoublePtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxDouble {
+		if v == nil {
+			return nil
+		}
+		return &v.MemoryInGiB
+	}).(VMAttributeMinMaxDoublePtrOutput)
+}
+
+// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesPtrOutput) MemoryInGiBPerVCpu() VMAttributeMinMaxDoublePtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxDouble {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryInGiBPerVCpu
+	}).(VMAttributeMinMaxDoublePtrOutput)
+}
+
+// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesPtrOutput) NetworkBandwidthInMbps() VMAttributeMinMaxDoublePtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxDouble {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkBandwidthInMbps
+	}).(VMAttributeMinMaxDoublePtrOutput)
+}
+
+// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesPtrOutput) NetworkInterfaceCount() VMAttributeMinMaxIntegerPtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxInteger {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaceCount
+	}).(VMAttributeMinMaxIntegerPtrOutput)
+}
+
+// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If rdmaSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesPtrOutput) RdmaNetworkInterfaceCount() VMAttributeMinMaxIntegerPtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxInteger {
+		if v == nil {
+			return nil
+		}
+		return v.RdmaNetworkInterfaceCount
+	}).(VMAttributeMinMaxIntegerPtrOutput)
+}
+
+// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
+func (o VMAttributesPtrOutput) RdmaSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RdmaSupport
+	}).(pulumi.StringPtrOutput)
+}
+
+// The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+func (o VMAttributesPtrOutput) VCpuCount() VMAttributeMinMaxIntegerPtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxInteger {
+		if v == nil {
+			return nil
+		}
+		return &v.VCpuCount
+	}).(VMAttributeMinMaxIntegerPtrOutput)
+}
+
+// The VM category specified as a list. Optional parameter.
+func (o VMAttributesPtrOutput) VmCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VmCategories
+	}).(pulumi.StringArrayOutput)
+}
+
+// VMAttributes that will be used to filter VMSizes which will be used to build Fleet.
+type VMAttributesResponse struct {
+	// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorCount *VMAttributeMinMaxIntegerResponse `pulumi:"acceleratorCount"`
+	// The accelerator manufacturers specified as a list.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorManufacturers []string `pulumi:"acceleratorManufacturers"`
+	// Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorSupport *string `pulumi:"acceleratorSupport"`
+	// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+	AcceleratorTypes []string `pulumi:"acceleratorTypes"`
+	// The VM architecture types specified as a list. Optional parameter.
+	ArchitectureTypes []string `pulumi:"architectureTypes"`
+	// Specifies whether the VMSize supporting burstable capability should be used to build Fleet or not.
+	BurstableSupport *string `pulumi:"burstableSupport"`
+	// The VM CPU manufacturers specified as a list. Optional parameter.
+	CpuManufacturers []string `pulumi:"cpuManufacturers"`
+	// The range of data disk count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	DataDiskCount *VMAttributeMinMaxIntegerResponse `pulumi:"dataDiskCount"`
+	// Specifies which VMSizes should be excluded while building Fleet. Optional parameter.
+	ExcludedVMSizes []string `pulumi:"excludedVMSizes"`
+	// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+	LocalStorageDiskTypes []string `pulumi:"localStorageDiskTypes"`
+	// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+	LocalStorageInGiB *VMAttributeMinMaxDoubleResponse `pulumi:"localStorageInGiB"`
+	// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+	// Included - Default if not specified as most Azure VMs support local storage.
+	LocalStorageSupport *string `pulumi:"localStorageSupport"`
+	// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+	MemoryInGiB VMAttributeMinMaxDoubleResponse `pulumi:"memoryInGiB"`
+	// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	MemoryInGiBPerVCpu *VMAttributeMinMaxDoubleResponse `pulumi:"memoryInGiBPerVCpu"`
+	// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	NetworkBandwidthInMbps *VMAttributeMinMaxDoubleResponse `pulumi:"networkBandwidthInMbps"`
+	// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	NetworkInterfaceCount *VMAttributeMinMaxIntegerResponse `pulumi:"networkInterfaceCount"`
+	// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If rdmaSupport is "Excluded", this VMAttribute can not be used.
+	RdmaNetworkInterfaceCount *VMAttributeMinMaxIntegerResponse `pulumi:"rdmaNetworkInterfaceCount"`
+	// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
+	RdmaSupport *string `pulumi:"rdmaSupport"`
+	// The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+	VCpuCount VMAttributeMinMaxIntegerResponse `pulumi:"vCpuCount"`
+	// The VM category specified as a list. Optional parameter.
+	VmCategories []string `pulumi:"vmCategories"`
+}
+
+// VMAttributes that will be used to filter VMSizes which will be used to build Fleet.
+type VMAttributesResponseOutput struct{ *pulumi.OutputState }
+
+func (VMAttributesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMAttributesResponse)(nil)).Elem()
+}
+
+func (o VMAttributesResponseOutput) ToVMAttributesResponseOutput() VMAttributesResponseOutput {
+	return o
+}
+
+func (o VMAttributesResponseOutput) ToVMAttributesResponseOutputWithContext(ctx context.Context) VMAttributesResponseOutput {
+	return o
+}
+
+// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponseOutput) AcceleratorCount() VMAttributeMinMaxIntegerResponsePtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxIntegerResponse { return v.AcceleratorCount }).(VMAttributeMinMaxIntegerResponsePtrOutput)
+}
+
+// The accelerator manufacturers specified as a list.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponseOutput) AcceleratorManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributesResponse) []string { return v.AcceleratorManufacturers }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponseOutput) AcceleratorSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *string { return v.AcceleratorSupport }).(pulumi.StringPtrOutput)
+}
+
+// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponseOutput) AcceleratorTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributesResponse) []string { return v.AcceleratorTypes }).(pulumi.StringArrayOutput)
+}
+
+// The VM architecture types specified as a list. Optional parameter.
+func (o VMAttributesResponseOutput) ArchitectureTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributesResponse) []string { return v.ArchitectureTypes }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether the VMSize supporting burstable capability should be used to build Fleet or not.
+func (o VMAttributesResponseOutput) BurstableSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *string { return v.BurstableSupport }).(pulumi.StringPtrOutput)
+}
+
+// The VM CPU manufacturers specified as a list. Optional parameter.
+func (o VMAttributesResponseOutput) CpuManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributesResponse) []string { return v.CpuManufacturers }).(pulumi.StringArrayOutput)
+}
+
+// The range of data disk count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesResponseOutput) DataDiskCount() VMAttributeMinMaxIntegerResponsePtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxIntegerResponse { return v.DataDiskCount }).(VMAttributeMinMaxIntegerResponsePtrOutput)
+}
+
+// Specifies which VMSizes should be excluded while building Fleet. Optional parameter.
+func (o VMAttributesResponseOutput) ExcludedVMSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributesResponse) []string { return v.ExcludedVMSizes }).(pulumi.StringArrayOutput)
+}
+
+// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponseOutput) LocalStorageDiskTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributesResponse) []string { return v.LocalStorageDiskTypes }).(pulumi.StringArrayOutput)
+}
+
+// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponseOutput) LocalStorageInGiB() VMAttributeMinMaxDoubleResponsePtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxDoubleResponse { return v.LocalStorageInGiB }).(VMAttributeMinMaxDoubleResponsePtrOutput)
+}
+
+// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+// Included - Default if not specified as most Azure VMs support local storage.
+func (o VMAttributesResponseOutput) LocalStorageSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *string { return v.LocalStorageSupport }).(pulumi.StringPtrOutput)
+}
+
+// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+func (o VMAttributesResponseOutput) MemoryInGiB() VMAttributeMinMaxDoubleResponseOutput {
+	return o.ApplyT(func(v VMAttributesResponse) VMAttributeMinMaxDoubleResponse { return v.MemoryInGiB }).(VMAttributeMinMaxDoubleResponseOutput)
+}
+
+// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesResponseOutput) MemoryInGiBPerVCpu() VMAttributeMinMaxDoubleResponsePtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxDoubleResponse { return v.MemoryInGiBPerVCpu }).(VMAttributeMinMaxDoubleResponsePtrOutput)
+}
+
+// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesResponseOutput) NetworkBandwidthInMbps() VMAttributeMinMaxDoubleResponsePtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxDoubleResponse { return v.NetworkBandwidthInMbps }).(VMAttributeMinMaxDoubleResponsePtrOutput)
+}
+
+// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesResponseOutput) NetworkInterfaceCount() VMAttributeMinMaxIntegerResponsePtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxIntegerResponse { return v.NetworkInterfaceCount }).(VMAttributeMinMaxIntegerResponsePtrOutput)
+}
+
+// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If rdmaSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponseOutput) RdmaNetworkInterfaceCount() VMAttributeMinMaxIntegerResponsePtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxIntegerResponse { return v.RdmaNetworkInterfaceCount }).(VMAttributeMinMaxIntegerResponsePtrOutput)
+}
+
+// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
+func (o VMAttributesResponseOutput) RdmaSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *string { return v.RdmaSupport }).(pulumi.StringPtrOutput)
+}
+
+// The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+func (o VMAttributesResponseOutput) VCpuCount() VMAttributeMinMaxIntegerResponseOutput {
+	return o.ApplyT(func(v VMAttributesResponse) VMAttributeMinMaxIntegerResponse { return v.VCpuCount }).(VMAttributeMinMaxIntegerResponseOutput)
+}
+
+// The VM category specified as a list. Optional parameter.
+func (o VMAttributesResponseOutput) VmCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMAttributesResponse) []string { return v.VmCategories }).(pulumi.StringArrayOutput)
+}
+
+type VMAttributesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VMAttributesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMAttributesResponse)(nil)).Elem()
+}
+
+func (o VMAttributesResponsePtrOutput) ToVMAttributesResponsePtrOutput() VMAttributesResponsePtrOutput {
+	return o
+}
+
+func (o VMAttributesResponsePtrOutput) ToVMAttributesResponsePtrOutputWithContext(ctx context.Context) VMAttributesResponsePtrOutput {
+	return o
+}
+
+func (o VMAttributesResponsePtrOutput) Elem() VMAttributesResponseOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) VMAttributesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VMAttributesResponse
+		return ret
+	}).(VMAttributesResponseOutput)
+}
+
+// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponsePtrOutput) AcceleratorCount() VMAttributeMinMaxIntegerResponsePtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxIntegerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorCount
+	}).(VMAttributeMinMaxIntegerResponsePtrOutput)
+}
+
+// The accelerator manufacturers specified as a list.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponsePtrOutput) AcceleratorManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorManufacturers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponsePtrOutput) AcceleratorSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorSupport
+	}).(pulumi.StringPtrOutput)
+}
+
+// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponsePtrOutput) AcceleratorTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The VM architecture types specified as a list. Optional parameter.
+func (o VMAttributesResponsePtrOutput) ArchitectureTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchitectureTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether the VMSize supporting burstable capability should be used to build Fleet or not.
+func (o VMAttributesResponsePtrOutput) BurstableSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BurstableSupport
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VM CPU manufacturers specified as a list. Optional parameter.
+func (o VMAttributesResponsePtrOutput) CpuManufacturers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuManufacturers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The range of data disk count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesResponsePtrOutput) DataDiskCount() VMAttributeMinMaxIntegerResponsePtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxIntegerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DataDiskCount
+	}).(VMAttributeMinMaxIntegerResponsePtrOutput)
+}
+
+// Specifies which VMSizes should be excluded while building Fleet. Optional parameter.
+func (o VMAttributesResponsePtrOutput) ExcludedVMSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedVMSizes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponsePtrOutput) LocalStorageDiskTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalStorageDiskTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponsePtrOutput) LocalStorageInGiB() VMAttributeMinMaxDoubleResponsePtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxDoubleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LocalStorageInGiB
+	}).(VMAttributeMinMaxDoubleResponsePtrOutput)
+}
+
+// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+// Included - Default if not specified as most Azure VMs support local storage.
+func (o VMAttributesResponsePtrOutput) LocalStorageSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalStorageSupport
+	}).(pulumi.StringPtrOutput)
+}
+
+// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+func (o VMAttributesResponsePtrOutput) MemoryInGiB() VMAttributeMinMaxDoubleResponsePtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxDoubleResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MemoryInGiB
+	}).(VMAttributeMinMaxDoubleResponsePtrOutput)
+}
+
+// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesResponsePtrOutput) MemoryInGiBPerVCpu() VMAttributeMinMaxDoubleResponsePtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxDoubleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryInGiBPerVCpu
+	}).(VMAttributeMinMaxDoubleResponsePtrOutput)
+}
+
+// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesResponsePtrOutput) NetworkBandwidthInMbps() VMAttributeMinMaxDoubleResponsePtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxDoubleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkBandwidthInMbps
+	}).(VMAttributeMinMaxDoubleResponsePtrOutput)
+}
+
+// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesResponsePtrOutput) NetworkInterfaceCount() VMAttributeMinMaxIntegerResponsePtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxIntegerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaceCount
+	}).(VMAttributeMinMaxIntegerResponsePtrOutput)
+}
+
+// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If rdmaSupport is "Excluded", this VMAttribute can not be used.
+func (o VMAttributesResponsePtrOutput) RdmaNetworkInterfaceCount() VMAttributeMinMaxIntegerResponsePtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxIntegerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RdmaNetworkInterfaceCount
+	}).(VMAttributeMinMaxIntegerResponsePtrOutput)
+}
+
+// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
+func (o VMAttributesResponsePtrOutput) RdmaSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RdmaSupport
+	}).(pulumi.StringPtrOutput)
+}
+
+// The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+func (o VMAttributesResponsePtrOutput) VCpuCount() VMAttributeMinMaxIntegerResponsePtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxIntegerResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.VCpuCount
+	}).(VMAttributeMinMaxIntegerResponsePtrOutput)
+}
+
+// The VM category specified as a list. Optional parameter.
+func (o VMAttributesResponsePtrOutput) VmCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VmCategories
+	}).(pulumi.StringArrayOutput)
 }
 
 // Specifies the security profile settings for the managed disk. **Note:** It can
@@ -18992,6 +21509,14 @@ func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) RebootS
 }
 
 func init() {
+	pulumi.RegisterOutputType(AdditionalCapabilitiesOutput{})
+	pulumi.RegisterOutputType(AdditionalCapabilitiesPtrOutput{})
+	pulumi.RegisterOutputType(AdditionalCapabilitiesResponseOutput{})
+	pulumi.RegisterOutputType(AdditionalCapabilitiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(AdditionalLocationsProfileOutput{})
+	pulumi.RegisterOutputType(AdditionalLocationsProfilePtrOutput{})
+	pulumi.RegisterOutputType(AdditionalLocationsProfileResponseOutput{})
+	pulumi.RegisterOutputType(AdditionalLocationsProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(AdditionalUnattendContentOutput{})
 	pulumi.RegisterOutputType(AdditionalUnattendContentArrayOutput{})
 	pulumi.RegisterOutputType(AdditionalUnattendContentResponseOutput{})
@@ -19005,7 +21530,9 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationProfileResponseOutput{})
 	pulumi.RegisterOutputType(ApplicationProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(BaseVirtualMachineProfileOutput{})
+	pulumi.RegisterOutputType(BaseVirtualMachineProfilePtrOutput{})
 	pulumi.RegisterOutputType(BaseVirtualMachineProfileResponseOutput{})
+	pulumi.RegisterOutputType(BaseVirtualMachineProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(BootDiagnosticsOutput{})
 	pulumi.RegisterOutputType(BootDiagnosticsPtrOutput{})
 	pulumi.RegisterOutputType(BootDiagnosticsResponseOutput{})
@@ -19052,6 +21579,10 @@ func init() {
 	pulumi.RegisterOutputType(LinuxVMGuestPatchAutomaticByPlatformSettingsPtrOutput{})
 	pulumi.RegisterOutputType(LinuxVMGuestPatchAutomaticByPlatformSettingsResponseOutput{})
 	pulumi.RegisterOutputType(LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(LocationProfileOutput{})
+	pulumi.RegisterOutputType(LocationProfileArrayOutput{})
+	pulumi.RegisterOutputType(LocationProfileResponseOutput{})
+	pulumi.RegisterOutputType(LocationProfileResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
@@ -19125,6 +21656,18 @@ func init() {
 	pulumi.RegisterOutputType(UefiSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(VMAttributeMinMaxDoubleOutput{})
+	pulumi.RegisterOutputType(VMAttributeMinMaxDoublePtrOutput{})
+	pulumi.RegisterOutputType(VMAttributeMinMaxDoubleResponseOutput{})
+	pulumi.RegisterOutputType(VMAttributeMinMaxDoubleResponsePtrOutput{})
+	pulumi.RegisterOutputType(VMAttributeMinMaxIntegerOutput{})
+	pulumi.RegisterOutputType(VMAttributeMinMaxIntegerPtrOutput{})
+	pulumi.RegisterOutputType(VMAttributeMinMaxIntegerResponseOutput{})
+	pulumi.RegisterOutputType(VMAttributeMinMaxIntegerResponsePtrOutput{})
+	pulumi.RegisterOutputType(VMAttributesOutput{})
+	pulumi.RegisterOutputType(VMAttributesPtrOutput{})
+	pulumi.RegisterOutputType(VMAttributesResponseOutput{})
+	pulumi.RegisterOutputType(VMAttributesResponsePtrOutput{})
 	pulumi.RegisterOutputType(VMDiskSecurityProfileOutput{})
 	pulumi.RegisterOutputType(VMDiskSecurityProfilePtrOutput{})
 	pulumi.RegisterOutputType(VMDiskSecurityProfileResponseOutput{})

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2021-06-01.
 //
-// Other available API versions: 2021-06-01-preview.
+// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIntegrationRuntime(ctx *pulumi.Context, args *LookupIntegrationRuntimeArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationRuntimeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationRuntimeResult
@@ -37,6 +37,8 @@ type LookupIntegrationRuntimeArgs struct {
 
 // Integration runtime resource type.
 type LookupIntegrationRuntimeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -84,6 +86,11 @@ func (o LookupIntegrationRuntimeResultOutput) ToLookupIntegrationRuntimeResultOu
 
 func (o LookupIntegrationRuntimeResultOutput) ToLookupIntegrationRuntimeResultOutputWithContext(ctx context.Context) LookupIntegrationRuntimeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationRuntimeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationRuntimeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Etag.

@@ -14,9 +14,9 @@ import (
 
 // An Azure Video Indexer account.
 //
-// Uses Azure REST API version 2022-08-01. In version 1.x of the Azure Native provider, it used API version 2021-10-18-preview.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 //
-// Other available API versions: 2024-01-01, 2024-04-01-preview, 2024-06-01-preview, 2024-09-23-preview, 2025-01-01, 2025-03-01.
+// Other available API versions: 2022-08-01, 2024-04-01-preview, 2024-06-01-preview, 2024-09-23-preview, 2025-01-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native videoindexer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Account struct {
 	pulumi.CustomResourceState
 
@@ -24,16 +24,18 @@ type Account struct {
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The account's name
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The media services details
-	MediaServices MediaServicesForPutRequestResponsePtrOutput `pulumi:"mediaServices"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets the status of the account at the time the operation was called.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The storage services details
+	StorageServices StorageServicesForPutRequestResponsePtrOutput `pulumi:"storageServices"`
 	// The system meta data relating to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -139,10 +141,10 @@ type accountArgs struct {
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The media services details
-	MediaServices *MediaServicesForPutRequest `pulumi:"mediaServices"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The storage services details
+	StorageServices *StorageServicesForPutRequest `pulumi:"storageServices"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -157,10 +159,10 @@ type AccountArgs struct {
 	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The media services details
-	MediaServices MediaServicesForPutRequestPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// The storage services details
+	StorageServices StorageServicesForPutRequestPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -212,6 +214,11 @@ func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o AccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 func (o AccountOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *Account) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
@@ -222,11 +229,6 @@ func (o AccountOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The media services details
-func (o AccountOutput) MediaServices() MediaServicesForPutRequestResponsePtrOutput {
-	return o.ApplyT(func(v *Account) MediaServicesForPutRequestResponsePtrOutput { return v.MediaServices }).(MediaServicesForPutRequestResponsePtrOutput)
-}
-
 // The name of the resource
 func (o AccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -235,6 +237,11 @@ func (o AccountOutput) Name() pulumi.StringOutput {
 // Gets the status of the account at the time the operation was called.
 func (o AccountOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The storage services details
+func (o AccountOutput) StorageServices() StorageServicesForPutRequestResponsePtrOutput {
+	return o.ApplyT(func(v *Account) StorageServicesForPutRequestResponsePtrOutput { return v.StorageServices }).(StorageServicesForPutRequestResponsePtrOutput)
 }
 
 // The system meta data relating to this resource.

@@ -14,9 +14,9 @@ import (
 
 // NetworkVirtualAppliance Resource.
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2020-04-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Other available API versions: 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NetworkVirtualAppliance struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +24,8 @@ type NetworkVirtualAppliance struct {
 	AdditionalNics VirtualApplianceAdditionalNicPropertiesResponseArrayOutput `pulumi:"additionalNics"`
 	// Address Prefix.
 	AddressPrefix pulumi.StringOutput `pulumi:"addressPrefix"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// BootStrapConfigurationBlobs storage URLs.
 	BootStrapConfigurationBlobs pulumi.StringArrayOutput `pulumi:"bootStrapConfigurationBlobs"`
 	// CloudInitConfiguration string in plain text.
@@ -40,10 +42,14 @@ type NetworkVirtualAppliance struct {
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// List of references to InboundSecurityRules.
 	InboundSecurityRules SubResourceResponseArrayOutput `pulumi:"inboundSecurityRules"`
+	// List of Resource Uri of Public IPs for Internet Ingress Scenario.
+	InternetIngressPublicIps InternetIngressPublicIpsPropertiesResponseArrayOutput `pulumi:"internetIngressPublicIps"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Network Profile containing configurations for Public and Private NIC.
+	NetworkProfile NetworkVirtualAppliancePropertiesFormatResponseNetworkProfilePtrOutput `pulumi:"networkProfile"`
 	// Network Virtual Appliance SKU.
 	NvaSku VirtualApplianceSkuPropertiesResponsePtrOutput `pulumi:"nvaSku"`
 	// The delegation for the Virtual Appliance
@@ -58,6 +64,8 @@ type NetworkVirtualAppliance struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
 	VirtualApplianceAsn pulumi.Float64PtrOutput `pulumi:"virtualApplianceAsn"`
+	// List of references to VirtualApplianceConnections.
+	VirtualApplianceConnections SubResourceResponseArrayOutput `pulumi:"virtualApplianceConnections"`
 	// List of Virtual Appliance Network Interfaces.
 	VirtualApplianceNics VirtualApplianceNicPropertiesResponseArrayOutput `pulumi:"virtualApplianceNics"`
 	// List of references to VirtualApplianceSite.
@@ -204,8 +212,12 @@ type networkVirtualApplianceArgs struct {
 	Id *string `pulumi:"id"`
 	// The service principal that has read access to cloud-init and config blob.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	// List of Resource Uri of Public IPs for Internet Ingress Scenario.
+	InternetIngressPublicIps []InternetIngressPublicIpsProperties `pulumi:"internetIngressPublicIps"`
 	// Resource location.
 	Location *string `pulumi:"location"`
+	// Network Profile containing configurations for Public and Private NIC.
+	NetworkProfile *NetworkVirtualAppliancePropertiesFormatNetworkProfile `pulumi:"networkProfile"`
 	// The name of Network Virtual Appliance.
 	NetworkVirtualApplianceName *string `pulumi:"networkVirtualApplianceName"`
 	// Network Virtual Appliance SKU.
@@ -238,8 +250,12 @@ type NetworkVirtualApplianceArgs struct {
 	Id pulumi.StringPtrInput
 	// The service principal that has read access to cloud-init and config blob.
 	Identity ManagedServiceIdentityPtrInput
+	// List of Resource Uri of Public IPs for Internet Ingress Scenario.
+	InternetIngressPublicIps InternetIngressPublicIpsPropertiesArrayInput
 	// Resource location.
 	Location pulumi.StringPtrInput
+	// Network Profile containing configurations for Public and Private NIC.
+	NetworkProfile NetworkVirtualAppliancePropertiesFormatNetworkProfilePtrInput
 	// The name of Network Virtual Appliance.
 	NetworkVirtualApplianceName pulumi.StringPtrInput
 	// Network Virtual Appliance SKU.
@@ -305,6 +321,11 @@ func (o NetworkVirtualApplianceOutput) AddressPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.StringOutput { return v.AddressPrefix }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o NetworkVirtualApplianceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // BootStrapConfigurationBlobs storage URLs.
 func (o NetworkVirtualApplianceOutput) BootStrapConfigurationBlobs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.StringArrayOutput { return v.BootStrapConfigurationBlobs }).(pulumi.StringArrayOutput)
@@ -345,6 +366,13 @@ func (o NetworkVirtualApplianceOutput) InboundSecurityRules() SubResourceRespons
 	return o.ApplyT(func(v *NetworkVirtualAppliance) SubResourceResponseArrayOutput { return v.InboundSecurityRules }).(SubResourceResponseArrayOutput)
 }
 
+// List of Resource Uri of Public IPs for Internet Ingress Scenario.
+func (o NetworkVirtualApplianceOutput) InternetIngressPublicIps() InternetIngressPublicIpsPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *NetworkVirtualAppliance) InternetIngressPublicIpsPropertiesResponseArrayOutput {
+		return v.InternetIngressPublicIps
+	}).(InternetIngressPublicIpsPropertiesResponseArrayOutput)
+}
+
 // Resource location.
 func (o NetworkVirtualApplianceOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
@@ -353,6 +381,13 @@ func (o NetworkVirtualApplianceOutput) Location() pulumi.StringPtrOutput {
 // Resource name.
 func (o NetworkVirtualApplianceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network Profile containing configurations for Public and Private NIC.
+func (o NetworkVirtualApplianceOutput) NetworkProfile() NetworkVirtualAppliancePropertiesFormatResponseNetworkProfilePtrOutput {
+	return o.ApplyT(func(v *NetworkVirtualAppliance) NetworkVirtualAppliancePropertiesFormatResponseNetworkProfilePtrOutput {
+		return v.NetworkProfile
+	}).(NetworkVirtualAppliancePropertiesFormatResponseNetworkProfilePtrOutput)
 }
 
 // Network Virtual Appliance SKU.
@@ -390,6 +425,11 @@ func (o NetworkVirtualApplianceOutput) Type() pulumi.StringOutput {
 // VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
 func (o NetworkVirtualApplianceOutput) VirtualApplianceAsn() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *NetworkVirtualAppliance) pulumi.Float64PtrOutput { return v.VirtualApplianceAsn }).(pulumi.Float64PtrOutput)
+}
+
+// List of references to VirtualApplianceConnections.
+func (o NetworkVirtualApplianceOutput) VirtualApplianceConnections() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v *NetworkVirtualAppliance) SubResourceResponseArrayOutput { return v.VirtualApplianceConnections }).(SubResourceResponseArrayOutput)
 }
 
 // List of Virtual Appliance Network Interfaces.

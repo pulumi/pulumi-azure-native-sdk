@@ -13,9 +13,9 @@ import (
 
 // Returns a BotService specified by the parameters.
 //
-// Uses Azure REST API version 2022-09-15.
+// Uses Azure REST API version 2023-09-15-preview.
 //
-// Other available API versions: 2023-09-15-preview.
+// Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOption) (*LookupBotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBotResult
@@ -35,6 +35,8 @@ type LookupBotArgs struct {
 
 // Bot resource definition
 type LookupBotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
@@ -100,6 +102,11 @@ func (o LookupBotResultOutput) ToLookupBotResultOutput() LookupBotResultOutput {
 
 func (o LookupBotResultOutput) ToLookupBotResultOutputWithContext(ctx context.Context) LookupBotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Entity Tag.

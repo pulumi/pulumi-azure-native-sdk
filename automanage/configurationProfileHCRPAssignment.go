@@ -14,10 +14,14 @@ import (
 
 // Configuration profile assignment is an association between a VM and automanage profile configuration.
 //
-// Uses Azure REST API version 2022-05-04.
+// Uses Azure REST API version 2022-05-04. In version 2.x of the Azure Native provider, it used API version 2022-05-04.
+//
+// Other available API versions: 2021-04-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automanage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ConfigurationProfileHCRPAssignment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Azure resource id. Indicates if this resource is managed by another Azure resource.
 	ManagedBy pulumi.StringOutput `pulumi:"managedBy"`
 	// The name of the resource
@@ -142,6 +146,11 @@ func (o ConfigurationProfileHCRPAssignmentOutput) ToConfigurationProfileHCRPAssi
 
 func (o ConfigurationProfileHCRPAssignmentOutput) ToConfigurationProfileHCRPAssignmentOutputWithContext(ctx context.Context) ConfigurationProfileHCRPAssignmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConfigurationProfileHCRPAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigurationProfileHCRPAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure resource id. Indicates if this resource is managed by another Azure resource.

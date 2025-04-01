@@ -14,12 +14,16 @@ import (
 
 // Role definition.
 //
-// Uses Azure REST API version 2022-05-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-01-01-preview.
+// Uses Azure REST API version 2022-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-01-preview.
+//
+// Other available API versions: 2022-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RoleDefinition struct {
 	pulumi.CustomResourceState
 
 	// Role definition assignable scopes.
 	AssignableScopes pulumi.StringArrayOutput `pulumi:"assignableScopes"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Id of the user who created the assignment
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Time it was created
@@ -174,6 +178,11 @@ func (o RoleDefinitionOutput) ToRoleDefinitionOutputWithContext(ctx context.Cont
 // Role definition assignable scopes.
 func (o RoleDefinitionOutput) AssignableScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RoleDefinition) pulumi.StringArrayOutput { return v.AssignableScopes }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o RoleDefinitionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleDefinition) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Id of the user who created the assignment

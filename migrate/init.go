@@ -63,8 +63,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateEndpointConnectionControllerPrivateEndpointConnection{}
 	case "azure-native:migrate:PrivateEndpointConnectionOperation":
 		r = &PrivateEndpointConnectionOperation{}
-	case "azure-native:migrate:PrivateEndpointConnectionProxyController":
-		r = &PrivateEndpointConnectionProxyController{}
 	case "azure-native:migrate:Project":
 		r = &Project{}
 	case "azure-native:migrate:ServerCollector":
@@ -73,8 +71,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServerCollectorsOperation{}
 	case "azure-native:migrate:Solution":
 		r = &Solution{}
-	case "azure-native:migrate:SolutionsControllerSolution":
-		r = &SolutionsControllerSolution{}
 	case "azure-native:migrate:SqlAssessmentV2Operation":
 		r = &SqlAssessmentV2Operation{}
 	case "azure-native:migrate:SqlCollectorOperation":

@@ -33,6 +33,8 @@ type ConnectionProperties struct {
 	RemoteSubscriptionId *string `pulumi:"remoteSubscriptionId"`
 	// Requirement ID of the connection
 	RequirementId *string `pulumi:"requirementId"`
+	// The schema URIs for this connection
+	SchemaUris []string `pulumi:"schemaUris"`
 	// The schemas for this connection
 	Schemas []Schema `pulumi:"schemas"`
 	// The secondary contacts for this connection request
@@ -70,6 +72,8 @@ type ConnectionPropertiesArgs struct {
 	RemoteSubscriptionId pulumi.StringPtrInput `pulumi:"remoteSubscriptionId"`
 	// Requirement ID of the connection
 	RequirementId pulumi.StringPtrInput `pulumi:"requirementId"`
+	// The schema URIs for this connection
+	SchemaUris pulumi.StringArrayInput `pulumi:"schemaUris"`
 	// The schemas for this connection
 	Schemas SchemaArrayInput `pulumi:"schemas"`
 	// The secondary contacts for this connection request
@@ -199,6 +203,11 @@ func (o ConnectionPropertiesOutput) RequirementId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProperties) *string { return v.RequirementId }).(pulumi.StringPtrOutput)
 }
 
+// The schema URIs for this connection
+func (o ConnectionPropertiesOutput) SchemaUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProperties) []string { return v.SchemaUris }).(pulumi.StringArrayOutput)
+}
+
 // The schemas for this connection
 func (o ConnectionPropertiesOutput) Schemas() SchemaArrayOutput {
 	return o.ApplyT(func(v ConnectionProperties) []Schema { return v.Schemas }).(SchemaArrayOutput)
@@ -323,6 +332,16 @@ func (o ConnectionPropertiesPtrOutput) RequirementId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The schema URIs for this connection
+func (o ConnectionPropertiesPtrOutput) SchemaUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaUris
+	}).(pulumi.StringArrayOutput)
+}
+
 // The schemas for this connection
 func (o ConnectionPropertiesPtrOutput) Schemas() SchemaArrayOutput {
 	return o.ApplyT(func(v *ConnectionProperties) []Schema {
@@ -373,6 +392,8 @@ type ConnectionPropertiesResponse struct {
 	RemoteSubscriptionId *string `pulumi:"remoteSubscriptionId"`
 	// Requirement ID of the connection
 	RequirementId *string `pulumi:"requirementId"`
+	// The schema URIs for this connection
+	SchemaUris []string `pulumi:"schemaUris"`
 	// The schemas for this connection
 	Schemas []SchemaResponse `pulumi:"schemas"`
 	// The secondary contacts for this connection request
@@ -468,6 +489,11 @@ func (o ConnectionPropertiesResponseOutput) RequirementId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ConnectionPropertiesResponse) *string { return v.RequirementId }).(pulumi.StringPtrOutput)
 }
 
+// The schema URIs for this connection
+func (o ConnectionPropertiesResponseOutput) SchemaUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionPropertiesResponse) []string { return v.SchemaUris }).(pulumi.StringArrayOutput)
+}
+
 // The schemas for this connection
 func (o ConnectionPropertiesResponseOutput) Schemas() SchemaResponseArrayOutput {
 	return o.ApplyT(func(v ConnectionPropertiesResponse) []SchemaResponse { return v.Schemas }).(SchemaResponseArrayOutput)
@@ -492,18 +518,30 @@ func (o ConnectionPropertiesResponseOutput) StatusReason() pulumi.StringOutput {
 type FlowProperties struct {
 	// The connection associated with this flow
 	Connection *SelectedResource `pulumi:"connection"`
+	// The URI to the customer managed key for this flow
+	CustomerManagedKeyVaultUri *string `pulumi:"customerManagedKeyVaultUri"`
 	// Transfer Storage Blobs or Tables
 	DataType *string `pulumi:"dataType"`
+	// The destination endpoint ports of the stream
+	DestinationEndpointPorts []float64 `pulumi:"destinationEndpointPorts"`
+	// The destination endpoints of the stream
+	DestinationEndpoints []string `pulumi:"destinationEndpoints"`
 	// The flow type for this flow
 	FlowType *string `pulumi:"flowType"`
 	// AME, PME, or TORUS only! AKV Chain Containing SAS Token
 	KeyVaultUri *string `pulumi:"keyVaultUri"`
+	// The messaging options for this flow
+	MessagingOptions *MessagingOptions `pulumi:"messagingOptions"`
+	// The passphrase used for SRT streams
+	Passphrase *string `pulumi:"passphrase"`
 	// The policies for this flow
 	Policies []string `pulumi:"policies"`
 	// The selected schema for this flow
 	Schema *Schema `pulumi:"schema"`
 	// Service Bus Queue ID
 	ServiceBusQueueId *string `pulumi:"serviceBusQueueId"`
+	// The source IP address and CIDR ranges of the stream
+	SourceAddresses *StreamSourceAddresses `pulumi:"sourceAddresses"`
 	// Status of the current flow
 	Status *string `pulumi:"status"`
 	// Storage Account ID
@@ -512,6 +550,12 @@ type FlowProperties struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 	// Storage Container Name
 	StorageContainerName *string `pulumi:"storageContainerName"`
+	// The flow stream identifier
+	StreamId *string `pulumi:"streamId"`
+	// The latency of the stream in milliseconds
+	StreamLatency *float64 `pulumi:"streamLatency"`
+	// The protocol of the stream
+	StreamProtocol *string `pulumi:"streamProtocol"`
 }
 
 // FlowPropertiesInput is an input type that accepts FlowPropertiesArgs and FlowPropertiesOutput values.
@@ -529,18 +573,30 @@ type FlowPropertiesInput interface {
 type FlowPropertiesArgs struct {
 	// The connection associated with this flow
 	Connection SelectedResourcePtrInput `pulumi:"connection"`
+	// The URI to the customer managed key for this flow
+	CustomerManagedKeyVaultUri pulumi.StringPtrInput `pulumi:"customerManagedKeyVaultUri"`
 	// Transfer Storage Blobs or Tables
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// The destination endpoint ports of the stream
+	DestinationEndpointPorts pulumi.Float64ArrayInput `pulumi:"destinationEndpointPorts"`
+	// The destination endpoints of the stream
+	DestinationEndpoints pulumi.StringArrayInput `pulumi:"destinationEndpoints"`
 	// The flow type for this flow
 	FlowType pulumi.StringPtrInput `pulumi:"flowType"`
 	// AME, PME, or TORUS only! AKV Chain Containing SAS Token
 	KeyVaultUri pulumi.StringPtrInput `pulumi:"keyVaultUri"`
+	// The messaging options for this flow
+	MessagingOptions MessagingOptionsPtrInput `pulumi:"messagingOptions"`
+	// The passphrase used for SRT streams
+	Passphrase pulumi.StringPtrInput `pulumi:"passphrase"`
 	// The policies for this flow
 	Policies pulumi.StringArrayInput `pulumi:"policies"`
 	// The selected schema for this flow
 	Schema SchemaPtrInput `pulumi:"schema"`
 	// Service Bus Queue ID
 	ServiceBusQueueId pulumi.StringPtrInput `pulumi:"serviceBusQueueId"`
+	// The source IP address and CIDR ranges of the stream
+	SourceAddresses StreamSourceAddressesPtrInput `pulumi:"sourceAddresses"`
 	// Status of the current flow
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Storage Account ID
@@ -549,6 +605,12 @@ type FlowPropertiesArgs struct {
 	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
 	// Storage Container Name
 	StorageContainerName pulumi.StringPtrInput `pulumi:"storageContainerName"`
+	// The flow stream identifier
+	StreamId pulumi.StringPtrInput `pulumi:"streamId"`
+	// The latency of the stream in milliseconds
+	StreamLatency pulumi.Float64PtrInput `pulumi:"streamLatency"`
+	// The protocol of the stream
+	StreamProtocol pulumi.StringPtrInput `pulumi:"streamProtocol"`
 }
 
 func (FlowPropertiesArgs) ElementType() reflect.Type {
@@ -634,9 +696,24 @@ func (o FlowPropertiesOutput) Connection() SelectedResourcePtrOutput {
 	return o.ApplyT(func(v FlowProperties) *SelectedResource { return v.Connection }).(SelectedResourcePtrOutput)
 }
 
+// The URI to the customer managed key for this flow
+func (o FlowPropertiesOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *string { return v.CustomerManagedKeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
 // Transfer Storage Blobs or Tables
 func (o FlowPropertiesOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowProperties) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint ports of the stream
+func (o FlowPropertiesOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v FlowProperties) []float64 { return v.DestinationEndpointPorts }).(pulumi.Float64ArrayOutput)
+}
+
+// The destination endpoints of the stream
+func (o FlowPropertiesOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlowProperties) []string { return v.DestinationEndpoints }).(pulumi.StringArrayOutput)
 }
 
 // The flow type for this flow
@@ -647,6 +724,16 @@ func (o FlowPropertiesOutput) FlowType() pulumi.StringPtrOutput {
 // AME, PME, or TORUS only! AKV Chain Containing SAS Token
 func (o FlowPropertiesOutput) KeyVaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowProperties) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
+// The messaging options for this flow
+func (o FlowPropertiesOutput) MessagingOptions() MessagingOptionsPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *MessagingOptions { return v.MessagingOptions }).(MessagingOptionsPtrOutput)
+}
+
+// The passphrase used for SRT streams
+func (o FlowPropertiesOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
 }
 
 // The policies for this flow
@@ -662,6 +749,11 @@ func (o FlowPropertiesOutput) Schema() SchemaPtrOutput {
 // Service Bus Queue ID
 func (o FlowPropertiesOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowProperties) *string { return v.ServiceBusQueueId }).(pulumi.StringPtrOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+func (o FlowPropertiesOutput) SourceAddresses() StreamSourceAddressesPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *StreamSourceAddresses { return v.SourceAddresses }).(StreamSourceAddressesPtrOutput)
 }
 
 // Status of the current flow
@@ -682,6 +774,21 @@ func (o FlowPropertiesOutput) StorageAccountName() pulumi.StringPtrOutput {
 // Storage Container Name
 func (o FlowPropertiesOutput) StorageContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowProperties) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+}
+
+// The flow stream identifier
+func (o FlowPropertiesOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *string { return v.StreamId }).(pulumi.StringPtrOutput)
+}
+
+// The latency of the stream in milliseconds
+func (o FlowPropertiesOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlowProperties) *float64 { return v.StreamLatency }).(pulumi.Float64PtrOutput)
+}
+
+// The protocol of the stream
+func (o FlowPropertiesOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowProperties) *string { return v.StreamProtocol }).(pulumi.StringPtrOutput)
 }
 
 type FlowPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -718,6 +825,16 @@ func (o FlowPropertiesPtrOutput) Connection() SelectedResourcePtrOutput {
 	}).(SelectedResourcePtrOutput)
 }
 
+// The URI to the customer managed key for this flow
+func (o FlowPropertiesPtrOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerManagedKeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // Transfer Storage Blobs or Tables
 func (o FlowPropertiesPtrOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlowProperties) *string {
@@ -726,6 +843,26 @@ func (o FlowPropertiesPtrOutput) DataType() pulumi.StringPtrOutput {
 		}
 		return v.DataType
 	}).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint ports of the stream
+func (o FlowPropertiesPtrOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *FlowProperties) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationEndpointPorts
+	}).(pulumi.Float64ArrayOutput)
+}
+
+// The destination endpoints of the stream
+func (o FlowPropertiesPtrOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlowProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationEndpoints
+	}).(pulumi.StringArrayOutput)
 }
 
 // The flow type for this flow
@@ -745,6 +882,26 @@ func (o FlowPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The messaging options for this flow
+func (o FlowPropertiesPtrOutput) MessagingOptions() MessagingOptionsPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *MessagingOptions {
+		if v == nil {
+			return nil
+		}
+		return v.MessagingOptions
+	}).(MessagingOptionsPtrOutput)
+}
+
+// The passphrase used for SRT streams
+func (o FlowPropertiesPtrOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Passphrase
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -776,6 +933,16 @@ func (o FlowPropertiesPtrOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
 		}
 		return v.ServiceBusQueueId
 	}).(pulumi.StringPtrOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+func (o FlowPropertiesPtrOutput) SourceAddresses() StreamSourceAddressesPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *StreamSourceAddresses {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAddresses
+	}).(StreamSourceAddressesPtrOutput)
 }
 
 // Status of the current flow
@@ -818,12 +985,48 @@ func (o FlowPropertiesPtrOutput) StorageContainerName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The flow stream identifier
+func (o FlowPropertiesPtrOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreamId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The latency of the stream in milliseconds
+func (o FlowPropertiesPtrOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StreamLatency
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The protocol of the stream
+func (o FlowPropertiesPtrOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreamProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties of flow
 type FlowPropertiesResponse struct {
 	// The connection associated with this flow
 	Connection *SelectedResourceResponse `pulumi:"connection"`
+	// The URI to the customer managed key for this flow
+	CustomerManagedKeyVaultUri *string `pulumi:"customerManagedKeyVaultUri"`
 	// Transfer Storage Blobs or Tables
 	DataType *string `pulumi:"dataType"`
+	// The destination endpoint ports of the stream
+	DestinationEndpointPorts []float64 `pulumi:"destinationEndpointPorts"`
+	// The destination endpoints of the stream
+	DestinationEndpoints []string `pulumi:"destinationEndpoints"`
 	// Dataflow GUID associated with this flow
 	FlowId string `pulumi:"flowId"`
 	// The flow type for this flow
@@ -834,6 +1037,10 @@ type FlowPropertiesResponse struct {
 	LinkStatus string `pulumi:"linkStatus"`
 	// Resource ID of the linked flow
 	LinkedFlowId string `pulumi:"linkedFlowId"`
+	// The messaging options for this flow
+	MessagingOptions *MessagingOptionsResponse `pulumi:"messagingOptions"`
+	// The passphrase used for SRT streams
+	Passphrase *string `pulumi:"passphrase"`
 	// The policies for this flow
 	Policies []string `pulumi:"policies"`
 	// Provisioning state of the flow
@@ -842,6 +1049,8 @@ type FlowPropertiesResponse struct {
 	Schema *SchemaResponse `pulumi:"schema"`
 	// Service Bus Queue ID
 	ServiceBusQueueId *string `pulumi:"serviceBusQueueId"`
+	// The source IP address and CIDR ranges of the stream
+	SourceAddresses *StreamSourceAddressesResponse `pulumi:"sourceAddresses"`
 	// Status of the current flow
 	Status *string `pulumi:"status"`
 	// Storage Account ID
@@ -850,6 +1059,12 @@ type FlowPropertiesResponse struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 	// Storage Container Name
 	StorageContainerName *string `pulumi:"storageContainerName"`
+	// The flow stream identifier
+	StreamId *string `pulumi:"streamId"`
+	// The latency of the stream in milliseconds
+	StreamLatency *float64 `pulumi:"streamLatency"`
+	// The protocol of the stream
+	StreamProtocol *string `pulumi:"streamProtocol"`
 }
 
 // Properties of flow
@@ -872,9 +1087,24 @@ func (o FlowPropertiesResponseOutput) Connection() SelectedResourceResponsePtrOu
 	return o.ApplyT(func(v FlowPropertiesResponse) *SelectedResourceResponse { return v.Connection }).(SelectedResourceResponsePtrOutput)
 }
 
+// The URI to the customer managed key for this flow
+func (o FlowPropertiesResponseOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.CustomerManagedKeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
 // Transfer Storage Blobs or Tables
 func (o FlowPropertiesResponseOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint ports of the stream
+func (o FlowPropertiesResponseOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) []float64 { return v.DestinationEndpointPorts }).(pulumi.Float64ArrayOutput)
+}
+
+// The destination endpoints of the stream
+func (o FlowPropertiesResponseOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.DestinationEndpoints }).(pulumi.StringArrayOutput)
 }
 
 // Dataflow GUID associated with this flow
@@ -902,6 +1132,16 @@ func (o FlowPropertiesResponseOutput) LinkedFlowId() pulumi.StringOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.LinkedFlowId }).(pulumi.StringOutput)
 }
 
+// The messaging options for this flow
+func (o FlowPropertiesResponseOutput) MessagingOptions() MessagingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *MessagingOptionsResponse { return v.MessagingOptions }).(MessagingOptionsResponsePtrOutput)
+}
+
+// The passphrase used for SRT streams
+func (o FlowPropertiesResponseOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
+}
+
 // The policies for this flow
 func (o FlowPropertiesResponseOutput) Policies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.Policies }).(pulumi.StringArrayOutput)
@@ -922,6 +1162,11 @@ func (o FlowPropertiesResponseOutput) ServiceBusQueueId() pulumi.StringPtrOutput
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.ServiceBusQueueId }).(pulumi.StringPtrOutput)
 }
 
+// The source IP address and CIDR ranges of the stream
+func (o FlowPropertiesResponseOutput) SourceAddresses() StreamSourceAddressesResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *StreamSourceAddressesResponse { return v.SourceAddresses }).(StreamSourceAddressesResponsePtrOutput)
+}
+
 // Status of the current flow
 func (o FlowPropertiesResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
@@ -940,6 +1185,21 @@ func (o FlowPropertiesResponseOutput) StorageAccountName() pulumi.StringPtrOutpu
 // Storage Container Name
 func (o FlowPropertiesResponseOutput) StorageContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+}
+
+// The flow stream identifier
+func (o FlowPropertiesResponseOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StreamId }).(pulumi.StringPtrOutput)
+}
+
+// The latency of the stream in milliseconds
+func (o FlowPropertiesResponseOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *float64 { return v.StreamLatency }).(pulumi.Float64PtrOutput)
+}
+
+// The protocol of the stream
+func (o FlowPropertiesResponseOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StreamProtocol }).(pulumi.StringPtrOutput)
 }
 
 // Internal metadata of the connection inside pipeline.
@@ -1293,6 +1553,206 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
+// The option associated with messaging flows.
+type MessagingOptions struct {
+	// Billing tier for this messaging flow
+	BillingTier *string `pulumi:"billingTier"`
+}
+
+// MessagingOptionsInput is an input type that accepts MessagingOptionsArgs and MessagingOptionsOutput values.
+// You can construct a concrete instance of `MessagingOptionsInput` via:
+//
+//	MessagingOptionsArgs{...}
+type MessagingOptionsInput interface {
+	pulumi.Input
+
+	ToMessagingOptionsOutput() MessagingOptionsOutput
+	ToMessagingOptionsOutputWithContext(context.Context) MessagingOptionsOutput
+}
+
+// The option associated with messaging flows.
+type MessagingOptionsArgs struct {
+	// Billing tier for this messaging flow
+	BillingTier pulumi.StringPtrInput `pulumi:"billingTier"`
+}
+
+func (MessagingOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingOptions)(nil)).Elem()
+}
+
+func (i MessagingOptionsArgs) ToMessagingOptionsOutput() MessagingOptionsOutput {
+	return i.ToMessagingOptionsOutputWithContext(context.Background())
+}
+
+func (i MessagingOptionsArgs) ToMessagingOptionsOutputWithContext(ctx context.Context) MessagingOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingOptionsOutput)
+}
+
+func (i MessagingOptionsArgs) ToMessagingOptionsPtrOutput() MessagingOptionsPtrOutput {
+	return i.ToMessagingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i MessagingOptionsArgs) ToMessagingOptionsPtrOutputWithContext(ctx context.Context) MessagingOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingOptionsOutput).ToMessagingOptionsPtrOutputWithContext(ctx)
+}
+
+// MessagingOptionsPtrInput is an input type that accepts MessagingOptionsArgs, MessagingOptionsPtr and MessagingOptionsPtrOutput values.
+// You can construct a concrete instance of `MessagingOptionsPtrInput` via:
+//
+//	        MessagingOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MessagingOptionsPtrInput interface {
+	pulumi.Input
+
+	ToMessagingOptionsPtrOutput() MessagingOptionsPtrOutput
+	ToMessagingOptionsPtrOutputWithContext(context.Context) MessagingOptionsPtrOutput
+}
+
+type messagingOptionsPtrType MessagingOptionsArgs
+
+func MessagingOptionsPtr(v *MessagingOptionsArgs) MessagingOptionsPtrInput {
+	return (*messagingOptionsPtrType)(v)
+}
+
+func (*messagingOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessagingOptions)(nil)).Elem()
+}
+
+func (i *messagingOptionsPtrType) ToMessagingOptionsPtrOutput() MessagingOptionsPtrOutput {
+	return i.ToMessagingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *messagingOptionsPtrType) ToMessagingOptionsPtrOutputWithContext(ctx context.Context) MessagingOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagingOptionsPtrOutput)
+}
+
+// The option associated with messaging flows.
+type MessagingOptionsOutput struct{ *pulumi.OutputState }
+
+func (MessagingOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingOptions)(nil)).Elem()
+}
+
+func (o MessagingOptionsOutput) ToMessagingOptionsOutput() MessagingOptionsOutput {
+	return o
+}
+
+func (o MessagingOptionsOutput) ToMessagingOptionsOutputWithContext(ctx context.Context) MessagingOptionsOutput {
+	return o
+}
+
+func (o MessagingOptionsOutput) ToMessagingOptionsPtrOutput() MessagingOptionsPtrOutput {
+	return o.ToMessagingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o MessagingOptionsOutput) ToMessagingOptionsPtrOutputWithContext(ctx context.Context) MessagingOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MessagingOptions) *MessagingOptions {
+		return &v
+	}).(MessagingOptionsPtrOutput)
+}
+
+// Billing tier for this messaging flow
+func (o MessagingOptionsOutput) BillingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MessagingOptions) *string { return v.BillingTier }).(pulumi.StringPtrOutput)
+}
+
+type MessagingOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (MessagingOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessagingOptions)(nil)).Elem()
+}
+
+func (o MessagingOptionsPtrOutput) ToMessagingOptionsPtrOutput() MessagingOptionsPtrOutput {
+	return o
+}
+
+func (o MessagingOptionsPtrOutput) ToMessagingOptionsPtrOutputWithContext(ctx context.Context) MessagingOptionsPtrOutput {
+	return o
+}
+
+func (o MessagingOptionsPtrOutput) Elem() MessagingOptionsOutput {
+	return o.ApplyT(func(v *MessagingOptions) MessagingOptions {
+		if v != nil {
+			return *v
+		}
+		var ret MessagingOptions
+		return ret
+	}).(MessagingOptionsOutput)
+}
+
+// Billing tier for this messaging flow
+func (o MessagingOptionsPtrOutput) BillingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MessagingOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The option associated with messaging flows.
+type MessagingOptionsResponse struct {
+	// Billing tier for this messaging flow
+	BillingTier *string `pulumi:"billingTier"`
+}
+
+// The option associated with messaging flows.
+type MessagingOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (MessagingOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessagingOptionsResponse)(nil)).Elem()
+}
+
+func (o MessagingOptionsResponseOutput) ToMessagingOptionsResponseOutput() MessagingOptionsResponseOutput {
+	return o
+}
+
+func (o MessagingOptionsResponseOutput) ToMessagingOptionsResponseOutputWithContext(ctx context.Context) MessagingOptionsResponseOutput {
+	return o
+}
+
+// Billing tier for this messaging flow
+func (o MessagingOptionsResponseOutput) BillingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MessagingOptionsResponse) *string { return v.BillingTier }).(pulumi.StringPtrOutput)
+}
+
+type MessagingOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MessagingOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessagingOptionsResponse)(nil)).Elem()
+}
+
+func (o MessagingOptionsResponsePtrOutput) ToMessagingOptionsResponsePtrOutput() MessagingOptionsResponsePtrOutput {
+	return o
+}
+
+func (o MessagingOptionsResponsePtrOutput) ToMessagingOptionsResponsePtrOutputWithContext(ctx context.Context) MessagingOptionsResponsePtrOutput {
+	return o
+}
+
+func (o MessagingOptionsResponsePtrOutput) Elem() MessagingOptionsResponseOutput {
+	return o.ApplyT(func(v *MessagingOptionsResponse) MessagingOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MessagingOptionsResponse
+		return ret
+	}).(MessagingOptionsResponseOutput)
+}
+
+// Billing tier for this messaging flow
+func (o MessagingOptionsResponsePtrOutput) BillingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MessagingOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingTier
+	}).(pulumi.StringPtrOutput)
+}
+
 // Operation status associated with the last patch request
 type OperationStatusPropertiesResponse struct {
 	// Operation status ID of the last patch request for this connection.
@@ -1423,6 +1883,8 @@ type PendingConnectionResponse struct {
 	RemoteSubscriptionId *string `pulumi:"remoteSubscriptionId"`
 	// Requirement ID of the connection
 	RequirementId *string `pulumi:"requirementId"`
+	// The schema URIs for this connection
+	SchemaUris []string `pulumi:"schemaUris"`
 	// The schemas for this connection
 	Schemas []SchemaResponse `pulumi:"schemas"`
 	// The secondary contacts for this connection request
@@ -1541,6 +2003,11 @@ func (o PendingConnectionResponseOutput) RequirementId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v PendingConnectionResponse) *string { return v.RequirementId }).(pulumi.StringPtrOutput)
 }
 
+// The schema URIs for this connection
+func (o PendingConnectionResponseOutput) SchemaUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PendingConnectionResponse) []string { return v.SchemaUris }).(pulumi.StringArrayOutput)
+}
+
 // The schemas for this connection
 func (o PendingConnectionResponseOutput) Schemas() SchemaResponseArrayOutput {
 	return o.ApplyT(func(v PendingConnectionResponse) []SchemaResponse { return v.Schemas }).(SchemaResponseArrayOutput)
@@ -1607,8 +2074,14 @@ type PendingFlowResponse struct {
 	Connection *SelectedResourceResponse `pulumi:"connection"`
 	// Connection ID of the pending flow.
 	ConnectionId string `pulumi:"connectionId"`
+	// The URI to the customer managed key for this flow
+	CustomerManagedKeyVaultUri *string `pulumi:"customerManagedKeyVaultUri"`
 	// Transfer Storage Blobs or Tables
 	DataType *string `pulumi:"dataType"`
+	// The destination endpoint ports of the stream
+	DestinationEndpointPorts []float64 `pulumi:"destinationEndpointPorts"`
+	// The destination endpoints of the stream
+	DestinationEndpoints []string `pulumi:"destinationEndpoints"`
 	// Dataflow GUID associated with this flow
 	FlowId string `pulumi:"flowId"`
 	// The flow type for this flow
@@ -1623,8 +2096,12 @@ type PendingFlowResponse struct {
 	LinkedFlowId string `pulumi:"linkedFlowId"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// The messaging options for this flow
+	MessagingOptions *MessagingOptionsResponse `pulumi:"messagingOptions"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// The passphrase used for SRT streams
+	Passphrase *string `pulumi:"passphrase"`
 	// The policies for this flow
 	Policies []string `pulumi:"policies"`
 	// Provisioning state of the flow
@@ -1633,6 +2110,8 @@ type PendingFlowResponse struct {
 	Schema *SchemaResponse `pulumi:"schema"`
 	// Service Bus Queue ID
 	ServiceBusQueueId *string `pulumi:"serviceBusQueueId"`
+	// The source IP address and CIDR ranges of the stream
+	SourceAddresses *StreamSourceAddressesResponse `pulumi:"sourceAddresses"`
 	// Status of the current flow
 	Status *string `pulumi:"status"`
 	// Storage Account ID
@@ -1641,6 +2120,12 @@ type PendingFlowResponse struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 	// Storage Container Name
 	StorageContainerName *string `pulumi:"storageContainerName"`
+	// The flow stream identifier
+	StreamId *string `pulumi:"streamId"`
+	// The latency of the stream in milliseconds
+	StreamLatency *float64 `pulumi:"streamLatency"`
+	// The protocol of the stream
+	StreamProtocol *string `pulumi:"streamProtocol"`
 	// Subscription ID of the pending flow.
 	SubscriptionId string `pulumi:"subscriptionId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -1676,9 +2161,24 @@ func (o PendingFlowResponseOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v PendingFlowResponse) string { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
+// The URI to the customer managed key for this flow
+func (o PendingFlowResponseOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *string { return v.CustomerManagedKeyVaultUri }).(pulumi.StringPtrOutput)
+}
+
 // Transfer Storage Blobs or Tables
 func (o PendingFlowResponseOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PendingFlowResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint ports of the stream
+func (o PendingFlowResponseOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v PendingFlowResponse) []float64 { return v.DestinationEndpointPorts }).(pulumi.Float64ArrayOutput)
+}
+
+// The destination endpoints of the stream
+func (o PendingFlowResponseOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PendingFlowResponse) []string { return v.DestinationEndpoints }).(pulumi.StringArrayOutput)
 }
 
 // Dataflow GUID associated with this flow
@@ -1716,9 +2216,19 @@ func (o PendingFlowResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v PendingFlowResponse) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The messaging options for this flow
+func (o PendingFlowResponseOutput) MessagingOptions() MessagingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *MessagingOptionsResponse { return v.MessagingOptions }).(MessagingOptionsResponsePtrOutput)
+}
+
 // The name of the resource
 func (o PendingFlowResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PendingFlowResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The passphrase used for SRT streams
+func (o PendingFlowResponseOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
 }
 
 // The policies for this flow
@@ -1741,6 +2251,11 @@ func (o PendingFlowResponseOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PendingFlowResponse) *string { return v.ServiceBusQueueId }).(pulumi.StringPtrOutput)
 }
 
+// The source IP address and CIDR ranges of the stream
+func (o PendingFlowResponseOutput) SourceAddresses() StreamSourceAddressesResponsePtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *StreamSourceAddressesResponse { return v.SourceAddresses }).(StreamSourceAddressesResponsePtrOutput)
+}
+
 // Status of the current flow
 func (o PendingFlowResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PendingFlowResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
@@ -1759,6 +2274,21 @@ func (o PendingFlowResponseOutput) StorageAccountName() pulumi.StringPtrOutput {
 // Storage Container Name
 func (o PendingFlowResponseOutput) StorageContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PendingFlowResponse) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+}
+
+// The flow stream identifier
+func (o PendingFlowResponseOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *string { return v.StreamId }).(pulumi.StringPtrOutput)
+}
+
+// The latency of the stream in milliseconds
+func (o PendingFlowResponseOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *float64 { return v.StreamLatency }).(pulumi.Float64PtrOutput)
+}
+
+// The protocol of the stream
+func (o PendingFlowResponseOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PendingFlowResponse) *string { return v.StreamProtocol }).(pulumi.StringPtrOutput)
 }
 
 // Subscription ID of the pending flow.
@@ -2585,10 +3115,16 @@ type Schema struct {
 	ConnectionId *string `pulumi:"connectionId"`
 	// Content of the schema
 	Content *string `pulumi:"content"`
+	// The direction of the schema.
+	Direction *string `pulumi:"direction"`
 	// ID associated with this schema
 	Id *string `pulumi:"id"`
 	// Name of the schema
 	Name *string `pulumi:"name"`
+	// The Schema Type
+	SchemaType *string `pulumi:"schemaType"`
+	// Uri containing SAS token for the zipped schema
+	SchemaUri *string `pulumi:"schemaUri"`
 	// Status of the schema
 	Status *string `pulumi:"status"`
 }
@@ -2610,10 +3146,16 @@ type SchemaArgs struct {
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
 	// Content of the schema
 	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The direction of the schema.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// ID associated with this schema
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Name of the schema
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The Schema Type
+	SchemaType pulumi.StringPtrInput `pulumi:"schemaType"`
+	// Uri containing SAS token for the zipped schema
+	SchemaUri pulumi.StringPtrInput `pulumi:"schemaUri"`
 	// Status of the schema
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
@@ -2731,6 +3273,11 @@ func (o SchemaOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schema) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// The direction of the schema.
+func (o SchemaOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Schema) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
 // ID associated with this schema
 func (o SchemaOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schema) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2739,6 +3286,16 @@ func (o SchemaOutput) Id() pulumi.StringPtrOutput {
 // Name of the schema
 func (o SchemaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schema) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Schema Type
+func (o SchemaOutput) SchemaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Schema) *string { return v.SchemaType }).(pulumi.StringPtrOutput)
+}
+
+// Uri containing SAS token for the zipped schema
+func (o SchemaOutput) SchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Schema) *string { return v.SchemaUri }).(pulumi.StringPtrOutput)
 }
 
 // Status of the schema
@@ -2790,6 +3347,16 @@ func (o SchemaPtrOutput) Content() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the schema.
+func (o SchemaPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID associated with this schema
 func (o SchemaPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) *string {
@@ -2807,6 +3374,26 @@ func (o SchemaPtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Schema Type
+func (o SchemaPtrOutput) SchemaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Uri containing SAS token for the zipped schema
+func (o SchemaPtrOutput) SchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2846,10 +3433,16 @@ type SchemaResponse struct {
 	ConnectionId *string `pulumi:"connectionId"`
 	// Content of the schema
 	Content *string `pulumi:"content"`
+	// The direction of the schema.
+	Direction *string `pulumi:"direction"`
 	// ID associated with this schema
 	Id *string `pulumi:"id"`
 	// Name of the schema
 	Name *string `pulumi:"name"`
+	// The Schema Type
+	SchemaType *string `pulumi:"schemaType"`
+	// Uri containing SAS token for the zipped schema
+	SchemaUri *string `pulumi:"schemaUri"`
 	// Status of the schema
 	Status *string `pulumi:"status"`
 }
@@ -2879,6 +3472,11 @@ func (o SchemaResponseOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchemaResponse) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// The direction of the schema.
+func (o SchemaResponseOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaResponse) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
 // ID associated with this schema
 func (o SchemaResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchemaResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2887,6 +3485,16 @@ func (o SchemaResponseOutput) Id() pulumi.StringPtrOutput {
 // Name of the schema
 func (o SchemaResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchemaResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Schema Type
+func (o SchemaResponseOutput) SchemaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaResponse) *string { return v.SchemaType }).(pulumi.StringPtrOutput)
+}
+
+// Uri containing SAS token for the zipped schema
+func (o SchemaResponseOutput) SchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaResponse) *string { return v.SchemaUri }).(pulumi.StringPtrOutput)
 }
 
 // Status of the schema
@@ -2938,6 +3546,16 @@ func (o SchemaResponsePtrOutput) Content() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the schema.
+func (o SchemaResponsePtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID associated with this schema
 func (o SchemaResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SchemaResponse) *string {
@@ -2955,6 +3573,26 @@ func (o SchemaResponsePtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Schema Type
+func (o SchemaResponsePtrOutput) SchemaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Uri containing SAS token for the zipped schema
+func (o SchemaResponsePtrOutput) SchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3296,6 +3934,206 @@ func (o SelectedResourceResponsePtrOutput) SubscriptionName() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The source IP address and CIDR ranges of the stream
+type StreamSourceAddresses struct {
+	// A source IP address or CIDR range
+	SourceAddresses []string `pulumi:"sourceAddresses"`
+}
+
+// StreamSourceAddressesInput is an input type that accepts StreamSourceAddressesArgs and StreamSourceAddressesOutput values.
+// You can construct a concrete instance of `StreamSourceAddressesInput` via:
+//
+//	StreamSourceAddressesArgs{...}
+type StreamSourceAddressesInput interface {
+	pulumi.Input
+
+	ToStreamSourceAddressesOutput() StreamSourceAddressesOutput
+	ToStreamSourceAddressesOutputWithContext(context.Context) StreamSourceAddressesOutput
+}
+
+// The source IP address and CIDR ranges of the stream
+type StreamSourceAddressesArgs struct {
+	// A source IP address or CIDR range
+	SourceAddresses pulumi.StringArrayInput `pulumi:"sourceAddresses"`
+}
+
+func (StreamSourceAddressesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceAddresses)(nil)).Elem()
+}
+
+func (i StreamSourceAddressesArgs) ToStreamSourceAddressesOutput() StreamSourceAddressesOutput {
+	return i.ToStreamSourceAddressesOutputWithContext(context.Background())
+}
+
+func (i StreamSourceAddressesArgs) ToStreamSourceAddressesOutputWithContext(ctx context.Context) StreamSourceAddressesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceAddressesOutput)
+}
+
+func (i StreamSourceAddressesArgs) ToStreamSourceAddressesPtrOutput() StreamSourceAddressesPtrOutput {
+	return i.ToStreamSourceAddressesPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceAddressesArgs) ToStreamSourceAddressesPtrOutputWithContext(ctx context.Context) StreamSourceAddressesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceAddressesOutput).ToStreamSourceAddressesPtrOutputWithContext(ctx)
+}
+
+// StreamSourceAddressesPtrInput is an input type that accepts StreamSourceAddressesArgs, StreamSourceAddressesPtr and StreamSourceAddressesPtrOutput values.
+// You can construct a concrete instance of `StreamSourceAddressesPtrInput` via:
+//
+//	        StreamSourceAddressesArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceAddressesPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceAddressesPtrOutput() StreamSourceAddressesPtrOutput
+	ToStreamSourceAddressesPtrOutputWithContext(context.Context) StreamSourceAddressesPtrOutput
+}
+
+type streamSourceAddressesPtrType StreamSourceAddressesArgs
+
+func StreamSourceAddressesPtr(v *StreamSourceAddressesArgs) StreamSourceAddressesPtrInput {
+	return (*streamSourceAddressesPtrType)(v)
+}
+
+func (*streamSourceAddressesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceAddresses)(nil)).Elem()
+}
+
+func (i *streamSourceAddressesPtrType) ToStreamSourceAddressesPtrOutput() StreamSourceAddressesPtrOutput {
+	return i.ToStreamSourceAddressesPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceAddressesPtrType) ToStreamSourceAddressesPtrOutputWithContext(ctx context.Context) StreamSourceAddressesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceAddressesPtrOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+type StreamSourceAddressesOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceAddressesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceAddresses)(nil)).Elem()
+}
+
+func (o StreamSourceAddressesOutput) ToStreamSourceAddressesOutput() StreamSourceAddressesOutput {
+	return o
+}
+
+func (o StreamSourceAddressesOutput) ToStreamSourceAddressesOutputWithContext(ctx context.Context) StreamSourceAddressesOutput {
+	return o
+}
+
+func (o StreamSourceAddressesOutput) ToStreamSourceAddressesPtrOutput() StreamSourceAddressesPtrOutput {
+	return o.ToStreamSourceAddressesPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceAddressesOutput) ToStreamSourceAddressesPtrOutputWithContext(ctx context.Context) StreamSourceAddressesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceAddresses) *StreamSourceAddresses {
+		return &v
+	}).(StreamSourceAddressesPtrOutput)
+}
+
+// A source IP address or CIDR range
+func (o StreamSourceAddressesOutput) SourceAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamSourceAddresses) []string { return v.SourceAddresses }).(pulumi.StringArrayOutput)
+}
+
+type StreamSourceAddressesPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceAddressesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceAddresses)(nil)).Elem()
+}
+
+func (o StreamSourceAddressesPtrOutput) ToStreamSourceAddressesPtrOutput() StreamSourceAddressesPtrOutput {
+	return o
+}
+
+func (o StreamSourceAddressesPtrOutput) ToStreamSourceAddressesPtrOutputWithContext(ctx context.Context) StreamSourceAddressesPtrOutput {
+	return o
+}
+
+func (o StreamSourceAddressesPtrOutput) Elem() StreamSourceAddressesOutput {
+	return o.ApplyT(func(v *StreamSourceAddresses) StreamSourceAddresses {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceAddresses
+		return ret
+	}).(StreamSourceAddressesOutput)
+}
+
+// A source IP address or CIDR range
+func (o StreamSourceAddressesPtrOutput) SourceAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StreamSourceAddresses) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+type StreamSourceAddressesResponse struct {
+	// A source IP address or CIDR range
+	SourceAddresses []string `pulumi:"sourceAddresses"`
+}
+
+// The source IP address and CIDR ranges of the stream
+type StreamSourceAddressesResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceAddressesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceAddressesResponse)(nil)).Elem()
+}
+
+func (o StreamSourceAddressesResponseOutput) ToStreamSourceAddressesResponseOutput() StreamSourceAddressesResponseOutput {
+	return o
+}
+
+func (o StreamSourceAddressesResponseOutput) ToStreamSourceAddressesResponseOutputWithContext(ctx context.Context) StreamSourceAddressesResponseOutput {
+	return o
+}
+
+// A source IP address or CIDR range
+func (o StreamSourceAddressesResponseOutput) SourceAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamSourceAddressesResponse) []string { return v.SourceAddresses }).(pulumi.StringArrayOutput)
+}
+
+type StreamSourceAddressesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceAddressesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceAddressesResponse)(nil)).Elem()
+}
+
+func (o StreamSourceAddressesResponsePtrOutput) ToStreamSourceAddressesResponsePtrOutput() StreamSourceAddressesResponsePtrOutput {
+	return o
+}
+
+func (o StreamSourceAddressesResponsePtrOutput) ToStreamSourceAddressesResponsePtrOutputWithContext(ctx context.Context) StreamSourceAddressesResponsePtrOutput {
+	return o
+}
+
+func (o StreamSourceAddressesResponsePtrOutput) Elem() StreamSourceAddressesResponseOutput {
+	return o.ApplyT(func(v *StreamSourceAddressesResponse) StreamSourceAddressesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceAddressesResponse
+		return ret
+	}).(StreamSourceAddressesResponseOutput)
+}
+
+// A source IP address or CIDR range
+func (o StreamSourceAddressesResponsePtrOutput) SourceAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StreamSourceAddressesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
 type Subscriber struct {
 	// Email of the subscriber
 	Email *string `pulumi:"email"`
@@ -3580,6 +4418,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(MessagingOptionsOutput{})
+	pulumi.RegisterOutputType(MessagingOptionsPtrOutput{})
+	pulumi.RegisterOutputType(MessagingOptionsResponseOutput{})
+	pulumi.RegisterOutputType(MessagingOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(OperationStatusPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(OperationStatusPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(PendingConnectionResponseOutput{})
@@ -3607,6 +4449,10 @@ func init() {
 	pulumi.RegisterOutputType(SelectedResourcePtrOutput{})
 	pulumi.RegisterOutputType(SelectedResourceResponseOutput{})
 	pulumi.RegisterOutputType(SelectedResourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceAddressesOutput{})
+	pulumi.RegisterOutputType(StreamSourceAddressesPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceAddressesResponseOutput{})
+	pulumi.RegisterOutputType(StreamSourceAddressesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubscriberOutput{})
 	pulumi.RegisterOutputType(SubscriberArrayOutput{})
 	pulumi.RegisterOutputType(SubscriberResponseOutput{})

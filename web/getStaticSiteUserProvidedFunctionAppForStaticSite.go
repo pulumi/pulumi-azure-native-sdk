@@ -13,9 +13,9 @@ import (
 
 // Description for Gets the details of the user provided function app registered with a static site
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStaticSiteUserProvidedFunctionAppForStaticSite(ctx *pulumi.Context, args *LookupStaticSiteUserProvidedFunctionAppForStaticSiteArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteUserProvidedFunctionAppForStaticSiteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteUserProvidedFunctionAppForStaticSiteResult
@@ -37,6 +37,8 @@ type LookupStaticSiteUserProvidedFunctionAppForStaticSiteArgs struct {
 
 // Static Site User Provided Function App ARM resource.
 type LookupStaticSiteUserProvidedFunctionAppForStaticSiteResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The date and time on which the function app was registered with the static site.
 	CreatedOn string `pulumi:"createdOn"`
 	// The region of the function app registered with the static site
@@ -88,6 +90,11 @@ func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteResultOutput) ToLook
 
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteResultOutput) ToLookupStaticSiteUserProvidedFunctionAppForStaticSiteResultOutputWithContext(ctx context.Context) LookupStaticSiteUserProvidedFunctionAppForStaticSiteResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The date and time on which the function app was registered with the static site.

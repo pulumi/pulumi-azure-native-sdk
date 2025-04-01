@@ -13,9 +13,9 @@ import (
 
 // Method to get a Web app data source in site.
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppDiscoverySiteDataSourcesController(ctx *pulumi.Context, args *LookupWebAppDiscoverySiteDataSourcesControllerArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDiscoverySiteDataSourcesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppDiscoverySiteDataSourcesControllerResult
@@ -39,6 +39,8 @@ type LookupWebAppDiscoverySiteDataSourcesControllerArgs struct {
 
 // Web app data source web model.
 type LookupWebAppDiscoverySiteDataSourcesControllerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the discovery site Id.
 	DiscoverySiteId *string `pulumi:"discoverySiteId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -90,6 +92,11 @@ func (o LookupWebAppDiscoverySiteDataSourcesControllerResultOutput) ToLookupWebA
 
 func (o LookupWebAppDiscoverySiteDataSourcesControllerResultOutput) ToLookupWebAppDiscoverySiteDataSourcesControllerResultOutputWithContext(ctx context.Context) LookupWebAppDiscoverySiteDataSourcesControllerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppDiscoverySiteDataSourcesControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppDiscoverySiteDataSourcesControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the discovery site Id.

@@ -14,12 +14,14 @@ import (
 
 // Disk resource.
 //
-// Uses Azure REST API version 2022-07-02. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
 //
-// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Disk struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
 	BurstingEnabled pulumi.BoolPtrOutput `pulumi:"burstingEnabled"`
 	// Latest time when bursting was last enabled on a disk.
@@ -54,6 +56,8 @@ type Disk struct {
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
 	HyperVGeneration pulumi.StringPtrOutput `pulumi:"hyperVGeneration"`
+	// The UTC time when the ownership state of the disk was last changed i.e., the time the disk was last attached or detached from a VM or the time when the VM to which the disk was attached was deallocated or started.
+	LastOwnershipUpdateTime pulumi.StringOutput `pulumi:"lastOwnershipUpdateTime"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// A relative URI containing the ID of the VM that has the disk attached.
@@ -377,6 +381,11 @@ func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DiskOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
 func (o DiskOutput) BurstingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.BurstingEnabled }).(pulumi.BoolPtrOutput)
@@ -460,6 +469,11 @@ func (o DiskOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 // The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
 func (o DiskOutput) HyperVGeneration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.HyperVGeneration }).(pulumi.StringPtrOutput)
+}
+
+// The UTC time when the ownership state of the disk was last changed i.e., the time the disk was last attached or detached from a VM or the time when the VM to which the disk was attached was deallocated or started.
+func (o DiskOutput) LastOwnershipUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.LastOwnershipUpdateTime }).(pulumi.StringOutput)
 }
 
 // Resource location

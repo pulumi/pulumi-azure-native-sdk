@@ -12,10 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2020-05-01. In version 1.x of the Azure Native provider, it used API version 2020-05-01.
+// Uses Azure REST API version 2020-05-01. In version 2.x of the Azure Native provider, it used API version 2020-05-01.
 type ResourceManagementPrivateLink struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// the region of the rmpl
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The rmpl Name.
@@ -127,6 +129,11 @@ func (o ResourceManagementPrivateLinkOutput) ToResourceManagementPrivateLinkOutp
 
 func (o ResourceManagementPrivateLinkOutput) ToResourceManagementPrivateLinkOutputWithContext(ctx context.Context) ResourceManagementPrivateLinkOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ResourceManagementPrivateLinkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceManagementPrivateLink) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // the region of the rmpl

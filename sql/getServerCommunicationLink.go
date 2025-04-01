@@ -35,6 +35,8 @@ type LookupServerCommunicationLinkArgs struct {
 
 // Server communication link.
 type LookupServerCommunicationLinkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Communication link kind.  This property is used for Azure Portal metadata.
@@ -86,6 +88,11 @@ func (o LookupServerCommunicationLinkResultOutput) ToLookupServerCommunicationLi
 
 func (o LookupServerCommunicationLinkResultOutput) ToLookupServerCommunicationLinkResultOutputWithContext(ctx context.Context) LookupServerCommunicationLinkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServerCommunicationLinkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerCommunicationLinkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

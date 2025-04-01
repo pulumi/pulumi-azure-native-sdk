@@ -13,9 +13,9 @@ import (
 
 // Gets the properties of the specified token.
 //
-// Uses Azure REST API version 2022-12-01.
+// Uses Azure REST API version 2024-11-01-preview.
 //
-// Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Other available API versions: 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2022-12-01, 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupToken(ctx *pulumi.Context, args *LookupTokenArgs, opts ...pulumi.InvokeOption) (*LookupTokenResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTokenResult
@@ -37,6 +37,8 @@ type LookupTokenArgs struct {
 
 // An object that represents a token for a container registry.
 type LookupTokenResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of scope map.
 	CreationDate string `pulumi:"creationDate"`
 	// The credentials that can be used for authenticating the token.
@@ -92,6 +94,11 @@ func (o LookupTokenResultOutput) ToLookupTokenResultOutput() LookupTokenResultOu
 
 func (o LookupTokenResultOutput) ToLookupTokenResultOutputWithContext(ctx context.Context) LookupTokenResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTokenResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTokenResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of scope map.

@@ -21,16 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:labservices:Environment":
-		r = &Environment{}
-	case "azure-native:labservices:EnvironmentSetting":
-		r = &EnvironmentSetting{}
-	case "azure-native:labservices:GalleryImage":
-		r = &GalleryImage{}
 	case "azure-native:labservices:Lab":
 		r = &Lab{}
-	case "azure-native:labservices:LabAccount":
-		r = &LabAccount{}
 	case "azure-native:labservices:LabPlan":
 		r = &LabPlan{}
 	case "azure-native:labservices:Schedule":

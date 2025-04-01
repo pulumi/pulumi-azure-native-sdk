@@ -14,10 +14,12 @@ import (
 
 // The MySQLServer resource definition.
 //
-// Uses Azure REST API version 2024-09-30-preview.
+// Uses Azure REST API version 2024-09-30-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-30-preview.
 type MySQLServer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// mysql server edition.
 	Edition pulumi.StringPtrOutput `pulumi:"edition"`
 	// The list of errors.
@@ -215,6 +217,11 @@ func (o MySQLServerOutput) ToMySQLServerOutput() MySQLServerOutput {
 
 func (o MySQLServerOutput) ToMySQLServerOutputWithContext(ctx context.Context) MySQLServerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MySQLServerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MySQLServer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // mysql server edition.

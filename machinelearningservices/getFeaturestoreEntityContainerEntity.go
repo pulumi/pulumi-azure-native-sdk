@@ -13,9 +13,9 @@ import (
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFeaturestoreEntityContainerEntity(ctx *pulumi.Context, args *LookupFeaturestoreEntityContainerEntityArgs, opts ...pulumi.InvokeOption) (*LookupFeaturestoreEntityContainerEntityResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFeaturestoreEntityContainerEntityResult
@@ -37,6 +37,8 @@ type LookupFeaturestoreEntityContainerEntityArgs struct {
 
 // Azure Resource Manager resource envelope.
 type LookupFeaturestoreEntityContainerEntityResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	FeaturestoreEntityContainerProperties FeaturestoreEntityContainerResponse `pulumi:"featurestoreEntityContainerProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -94,6 +96,11 @@ func (o LookupFeaturestoreEntityContainerEntityResultOutput) ToLookupFeaturestor
 
 func (o LookupFeaturestoreEntityContainerEntityResultOutput) ToLookupFeaturestoreEntityContainerEntityResultOutputWithContext(ctx context.Context) LookupFeaturestoreEntityContainerEntityResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFeaturestoreEntityContainerEntityResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeaturestoreEntityContainerEntityResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

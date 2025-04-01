@@ -14,10 +14,12 @@ import (
 
 // This type describes an application resource.
 //
-// Uses Azure REST API version 2018-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-09-01-preview.
+// Uses Azure REST API version 2018-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-09-01-preview.
 type Application struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Internal - used by Visual Studio to setup the debugging session on the local development environment.
 	DebugParams pulumi.StringPtrOutput `pulumi:"debugParams"`
 	// User readable description of the application.
@@ -173,6 +175,11 @@ func (o ApplicationOutput) ToApplicationOutput() ApplicationOutput {
 
 func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Internal - used by Visual Studio to setup the debugging session on the local development environment.

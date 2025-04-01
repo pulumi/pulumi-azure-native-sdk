@@ -39,6 +39,8 @@ type LookupEventGridDataConnectionArgs struct {
 
 // Class representing an Event Grid data connection.
 type LookupEventGridDataConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name of blob storage event type to process.
 	BlobStorageEventType *string `pulumi:"blobStorageEventType"`
 	// The event hub consumer group.
@@ -111,6 +113,11 @@ func (o LookupEventGridDataConnectionResultOutput) ToLookupEventGridDataConnecti
 
 func (o LookupEventGridDataConnectionResultOutput) ToLookupEventGridDataConnectionResultOutputWithContext(ctx context.Context) LookupEventGridDataConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEventGridDataConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of blob storage event type to process.

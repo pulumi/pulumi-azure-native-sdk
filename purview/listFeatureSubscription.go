@@ -13,9 +13,9 @@ import (
 
 // Gets details from a list of feature names.
 //
-// Uses Azure REST API version 2021-12-01.
+// Uses Azure REST API version 2024-04-01-preview.
 //
-// Other available API versions: 2023-05-01-preview, 2024-04-01-preview.
+// Other available API versions: 2021-12-01, 2023-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native purview [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListFeatureSubscription(ctx *pulumi.Context, args *ListFeatureSubscriptionArgs, opts ...pulumi.InvokeOption) (*ListFeatureSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFeatureSubscriptionResult

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2020-03-01.
 //
-// Other available API versions: 2017-04-01-preview, 2021-10-01-preview.
+// Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native streamanalytics [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStreamingJob(ctx *pulumi.Context, args *LookupStreamingJobArgs, opts ...pulumi.InvokeOption) (*LookupStreamingJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStreamingJobResult
@@ -37,6 +37,8 @@ type LookupStreamingJobArgs struct {
 
 // A streaming job object, containing all information associated with the named streaming job.
 type LookupStreamingJobResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The cluster which streaming jobs will run on.
 	Cluster *ClusterInfoResponse `pulumi:"cluster"`
 	// Controls certain runtime behaviors of the streaming job.
@@ -142,6 +144,11 @@ func (o LookupStreamingJobResultOutput) ToLookupStreamingJobResultOutput() Looku
 
 func (o LookupStreamingJobResultOutput) ToLookupStreamingJobResultOutputWithContext(ctx context.Context) LookupStreamingJobResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStreamingJobResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamingJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cluster which streaming jobs will run on.

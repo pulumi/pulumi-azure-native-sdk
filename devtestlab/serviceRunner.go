@@ -14,10 +14,12 @@ import (
 
 // A container for a managed identity to execute DevTest lab services.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type ServiceRunner struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
 	Identity IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
 	// The location of the resource.
@@ -150,6 +152,11 @@ func (o ServiceRunnerOutput) ToServiceRunnerOutput() ServiceRunnerOutput {
 
 func (o ServiceRunnerOutput) ToServiceRunnerOutputWithContext(ctx context.Context) ServiceRunnerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ServiceRunnerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceRunner) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity of the resource.

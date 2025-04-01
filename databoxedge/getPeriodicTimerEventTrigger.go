@@ -13,7 +13,7 @@ import (
 
 // Get a specific trigger by name.
 //
-// Uses Azure REST API version 2022-03-01.
+// Uses Azure REST API version 2023-07-01.
 func LookupPeriodicTimerEventTrigger(ctx *pulumi.Context, args *LookupPeriodicTimerEventTriggerArgs, opts ...pulumi.InvokeOption) (*LookupPeriodicTimerEventTriggerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPeriodicTimerEventTriggerResult
@@ -35,6 +35,8 @@ type LookupPeriodicTimerEventTriggerArgs struct {
 
 // Trigger details.
 type LookupPeriodicTimerEventTriggerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.
 	CustomContextTag *string `pulumi:"customContextTag"`
 	// The path ID that uniquely identifies the object.
@@ -89,6 +91,11 @@ func (o LookupPeriodicTimerEventTriggerResultOutput) ToLookupPeriodicTimerEventT
 
 func (o LookupPeriodicTimerEventTriggerResultOutput) ToLookupPeriodicTimerEventTriggerResultOutputWithContext(ctx context.Context) LookupPeriodicTimerEventTriggerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPeriodicTimerEventTriggerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeriodicTimerEventTriggerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.

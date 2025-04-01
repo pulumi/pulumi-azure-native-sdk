@@ -33,6 +33,8 @@ type LookupAcmCertificateSummaryArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupAcmCertificateSummaryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -82,6 +84,11 @@ func (o LookupAcmCertificateSummaryResultOutput) ToLookupAcmCertificateSummaryRe
 
 func (o LookupAcmCertificateSummaryResultOutput) ToLookupAcmCertificateSummaryResultOutputWithContext(ctx context.Context) LookupAcmCertificateSummaryResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAcmCertificateSummaryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAcmCertificateSummaryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

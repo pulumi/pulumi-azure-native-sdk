@@ -13,9 +13,9 @@ import (
 
 // Gets the details of the issue Comment for an API specified by its identifier.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApiIssueComment(ctx *pulumi.Context, args *LookupApiIssueCommentArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueCommentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiIssueCommentResult
@@ -41,6 +41,8 @@ type LookupApiIssueCommentArgs struct {
 
 // Issue Comment Contract details.
 type LookupApiIssueCommentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Date and time when the comment was created.
 	CreatedDate *string `pulumi:"createdDate"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -94,6 +96,11 @@ func (o LookupApiIssueCommentResultOutput) ToLookupApiIssueCommentResultOutput()
 
 func (o LookupApiIssueCommentResultOutput) ToLookupApiIssueCommentResultOutputWithContext(ctx context.Context) LookupApiIssueCommentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiIssueCommentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiIssueCommentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Date and time when the comment was created.

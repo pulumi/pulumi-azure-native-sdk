@@ -14,12 +14,14 @@ import (
 
 // A class represent an AppComplianceAutomation scoping configuration resource.
 //
-// Uses Azure REST API version 2024-06-27.
+// Uses Azure REST API version 2024-06-27. In version 2.x of the Azure Native provider, it used API version 2024-06-27.
 type ScopingConfiguration struct {
 	pulumi.CustomResourceState
 
 	// List of scoping question answers.
 	Answers ScopingAnswerResponseArrayOutput `pulumi:"answers"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure lifecycle management
@@ -137,6 +139,11 @@ func (o ScopingConfigurationOutput) ToScopingConfigurationOutputWithContext(ctx 
 // List of scoping question answers.
 func (o ScopingConfigurationOutput) Answers() ScopingAnswerResponseArrayOutput {
 	return o.ApplyT(func(v *ScopingConfiguration) ScopingAnswerResponseArrayOutput { return v.Answers }).(ScopingAnswerResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o ScopingConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScopingConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

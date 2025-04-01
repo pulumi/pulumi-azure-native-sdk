@@ -35,6 +35,8 @@ type LookupJobArgs struct {
 
 // Job resource payload
 type LookupJobResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
 	// The name of the resource.
@@ -92,6 +94,11 @@ func (o LookupJobResultOutput) ToLookupJobResultOutput() LookupJobResultOutput {
 
 func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Context) LookupJobResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupJobResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource.

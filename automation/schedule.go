@@ -14,14 +14,16 @@ import (
 
 // Definition of the schedule.
 //
-// Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
+// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Schedule struct {
 	pulumi.CustomResourceState
 
 	// Gets or sets the advanced schedule.
 	AdvancedSchedule AdvancedScheduleResponsePtrOutput `pulumi:"advancedSchedule"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the creation time.
 	CreationTime pulumi.StringPtrOutput `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -223,6 +225,11 @@ func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) Schedul
 // Gets or sets the advanced schedule.
 func (o ScheduleOutput) AdvancedSchedule() AdvancedScheduleResponsePtrOutput {
 	return o.ApplyT(func(v *Schedule) AdvancedScheduleResponsePtrOutput { return v.AdvancedSchedule }).(AdvancedScheduleResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the creation time.

@@ -14,12 +14,14 @@ import (
 
 // Define the virtualNetwork.
 //
-// Uses Azure REST API version 2022-07-15-preview. In version 1.x of the Azure Native provider, it used API version 2020-10-01-preview.
+// Uses Azure REST API version 2023-12-01. In version 2.x of the Azure Native provider, it used API version 2022-07-15-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Other available API versions: 2022-07-15-preview, 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName pulumi.StringOutput `pulumi:"customResourceName"`
 	// Gets or sets the extended location.
@@ -36,7 +38,7 @@ type VirtualNetwork struct {
 	MoRefId pulumi.StringPtrOutput `pulumi:"moRefId"`
 	// Gets or sets the name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The resource status information.
 	Statuses ResourceStatusResponseArrayOutput `pulumi:"statuses"`
@@ -195,6 +197,11 @@ func (o VirtualNetworkOutput) ToVirtualNetworkOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VirtualNetworkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the name of the corresponding resource in Kubernetes.
 func (o VirtualNetworkOutput) CustomResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.CustomResourceName }).(pulumi.StringOutput)
@@ -235,7 +242,7 @@ func (o VirtualNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o VirtualNetworkOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

@@ -14,12 +14,14 @@ import (
 
 // Private endpoint connection resource.
 //
-// Uses Azure REST API version 2023-03-15.
+// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-15.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PrivateEndpointConnectionOperation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The group ids for the private endpoint resource.
 	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
 	// The name of the resource
@@ -54,6 +56,9 @@ func NewPrivateEndpointConnectionOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:migrate/v20191001:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20191001:PrivateEndpointConnectionOperation"),
 		},
 		{
@@ -70,6 +75,9 @@ func NewPrivateEndpointConnectionOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:PrivateEndpointConnectionOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -163,6 +171,11 @@ func (o PrivateEndpointConnectionOperationOutput) ToPrivateEndpointConnectionOpe
 
 func (o PrivateEndpointConnectionOperationOutput) ToPrivateEndpointConnectionOperationOutputWithContext(ctx context.Context) PrivateEndpointConnectionOperationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The group ids for the private endpoint resource.

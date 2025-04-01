@@ -14,14 +14,16 @@ import (
 
 // Definition of the Package type.
 //
-// Uses Azure REST API version 2023-05-15-preview.
+// Uses Azure REST API version 2023-05-15-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-15-preview.
 //
-// Other available API versions: 2024-10-23.
+// Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Package struct {
 	pulumi.CustomResourceState
 
 	// Metadata pertaining to creation and last modification of the resource.
 	AllOf SystemDataResponseOutput `pulumi:"allOf"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the contentLink of the Package.
 	ContentLink ContentLinkResponsePtrOutput `pulumi:"contentLink"`
 	// Gets or sets the isGlobal flag of the package.
@@ -177,6 +179,11 @@ func (o PackageOutput) ToPackageOutputWithContext(ctx context.Context) PackageOu
 // Metadata pertaining to creation and last modification of the resource.
 func (o PackageOutput) AllOf() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Package) SystemDataResponseOutput { return v.AllOf }).(SystemDataResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o PackageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the contentLink of the Package.

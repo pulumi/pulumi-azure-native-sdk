@@ -14,19 +14,21 @@ import (
 
 // The Project resource.
 //
-// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2022-07-01-preview.
+// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2023-07-01-preview, 2023-10-01, 2024-07-01.
+// Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Project struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description for the Project.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of this resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Resource system metadata.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -155,6 +157,11 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ProjectOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A description for the Project.
 func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -170,7 +177,7 @@ func (o ProjectOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource system metadata.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ProjectOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Project) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
