@@ -27,6 +27,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AutoscaleSetting{}
 	case "azure-native:monitor:AzureMonitorWorkspace":
 		r = &AzureMonitorWorkspace{}
+	case "azure-native:monitor:DataCollectionEndpoint":
+		r = &DataCollectionEndpoint{}
+	case "azure-native:monitor:DataCollectionRule":
+		r = &DataCollectionRule{}
+	case "azure-native:monitor:DataCollectionRuleAssociation":
+		r = &DataCollectionRuleAssociation{}
 	case "azure-native:monitor:DiagnosticSetting":
 		r = &DiagnosticSetting{}
 	case "azure-native:monitor:ManagementGroupDiagnosticSetting":
