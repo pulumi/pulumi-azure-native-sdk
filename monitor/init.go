@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,8 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:monitor:ActionGroup":
 		r = &ActionGroup{}
+	case "azure-native:monitor:AutoscaleSetting":
+		r = &AutoscaleSetting{}
 	case "azure-native:monitor:AzureMonitorWorkspace":
 		r = &AzureMonitorWorkspace{}
+	case "azure-native:monitor:DiagnosticSetting":
+		r = &DiagnosticSetting{}
+	case "azure-native:monitor:ManagementGroupDiagnosticSetting":
+		r = &ManagementGroupDiagnosticSetting{}
 	case "azure-native:monitor:PipelineGroup":
 		r = &PipelineGroup{}
 	case "azure-native:monitor:PrivateEndpointConnection":
@@ -35,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateLinkScopedResource{}
 	case "azure-native:monitor:ScheduledQueryRule":
 		r = &ScheduledQueryRule{}
+	case "azure-native:monitor:SubscriptionDiagnosticSetting":
+		r = &SubscriptionDiagnosticSetting{}
 	case "azure-native:monitor:TenantActionGroup":
 		r = &TenantActionGroup{}
 	default:
