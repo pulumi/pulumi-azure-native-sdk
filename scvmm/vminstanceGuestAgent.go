@@ -68,6 +68,9 @@ func NewVMInstanceGuestAgent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:scvmm/v20240601:VMInstanceGuestAgent"),
 		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20250313:VMInstanceGuestAgent"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

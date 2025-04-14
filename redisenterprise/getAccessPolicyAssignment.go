@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-09-01-preview.
 //
-// Other available API versions: 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAccessPolicyAssignment(ctx *pulumi.Context, args *LookupAccessPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessPolicyAssignmentResult

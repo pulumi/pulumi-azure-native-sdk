@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EmailService{}
 	case "azure-native:communication:SenderUsername":
 		r = &SenderUsername{}
+	case "azure-native:communication:SmtpUsername":
+		r = &SmtpUsername{}
 	case "azure-native:communication:SuppressionList":
 		r = &SuppressionList{}
 	case "azure-native:communication:SuppressionListAddress":

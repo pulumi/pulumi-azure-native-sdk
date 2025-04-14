@@ -72,6 +72,9 @@ func NewServerCollector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20240101preview:ServerCollectorsOperation"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20240303preview:ServerCollector"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate:ServerCollectorsOperation"),
 		},
 	})

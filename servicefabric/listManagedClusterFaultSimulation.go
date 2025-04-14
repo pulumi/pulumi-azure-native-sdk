@@ -14,6 +14,8 @@ import (
 // Gets the list of recent fault simulations for the cluster.
 //
 // Uses Azure REST API version 2024-11-01-preview.
+//
+// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListManagedClusterFaultSimulation(ctx *pulumi.Context, args *ListManagedClusterFaultSimulationArgs, opts ...pulumi.InvokeOption) (*ListManagedClusterFaultSimulationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListManagedClusterFaultSimulationResult

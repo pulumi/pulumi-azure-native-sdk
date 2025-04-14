@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-01-preview.
 //
-// Other available API versions: 2022-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-12-01-preview, 2024-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DefenderForStorage struct {
 	pulumi.CustomResourceState
 
@@ -43,6 +43,9 @@ func NewDefenderForStorage(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:security/v20221201preview:DefenderForStorage"),
+		},
+		{
+			Type: pulumi.String("azure-native:security/v20240801preview:DefenderForStorage"),
 		},
 		{
 			Type: pulumi.String("azure-native:security/v20241001preview:DefenderForStorage"),

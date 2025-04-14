@@ -7772,6 +7772,7 @@ type NetworkApiVersion string
 
 const (
 	NetworkApiVersion_2020_11_01 = NetworkApiVersion("2020-11-01")
+	NetworkApiVersion_2022_11_01 = NetworkApiVersion("2022-11-01")
 )
 
 func (NetworkApiVersion) ElementType() reflect.Type {
@@ -7897,6 +7898,7 @@ func (o NetworkApiVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // A concrete instance of `NetworkApiVersionInput` can be one of the following:
 //
 //	NetworkApiVersion_2020_11_01
+//	NetworkApiVersion_2022_11_01
 type NetworkApiVersionInput interface {
 	pulumi.Input
 

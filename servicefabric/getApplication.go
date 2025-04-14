@@ -14,6 +14,8 @@ import (
 // Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.
 //
 // Uses Azure REST API version 2024-11-01-preview.
+//
+// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationResult

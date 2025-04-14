@@ -13,6 +13,224 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// This connection type covers the AAD auth for any applicable Azure service
+type AADAuthTypeConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'AAD'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category      *string `pulumi:"category"`
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// AADAuthTypeConnectionPropertiesInput is an input type that accepts AADAuthTypeConnectionPropertiesArgs and AADAuthTypeConnectionPropertiesOutput values.
+// You can construct a concrete instance of `AADAuthTypeConnectionPropertiesInput` via:
+//
+//	AADAuthTypeConnectionPropertiesArgs{...}
+type AADAuthTypeConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToAADAuthTypeConnectionPropertiesOutput() AADAuthTypeConnectionPropertiesOutput
+	ToAADAuthTypeConnectionPropertiesOutputWithContext(context.Context) AADAuthTypeConnectionPropertiesOutput
+}
+
+// This connection type covers the AAD auth for any applicable Azure service
+type AADAuthTypeConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'AAD'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category      pulumi.StringPtrInput `pulumi:"category"`
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (AADAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AADAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (i AADAuthTypeConnectionPropertiesArgs) ToAADAuthTypeConnectionPropertiesOutput() AADAuthTypeConnectionPropertiesOutput {
+	return i.ToAADAuthTypeConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i AADAuthTypeConnectionPropertiesArgs) ToAADAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) AADAuthTypeConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AADAuthTypeConnectionPropertiesOutput)
+}
+
+// This connection type covers the AAD auth for any applicable Azure service
+type AADAuthTypeConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AADAuthTypeConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AADAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (o AADAuthTypeConnectionPropertiesOutput) ToAADAuthTypeConnectionPropertiesOutput() AADAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+func (o AADAuthTypeConnectionPropertiesOutput) ToAADAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) AADAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'AAD'.
+func (o AADAuthTypeConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o AADAuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o AADAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// This connection type covers the AAD auth for any applicable Azure service
+type AADAuthTypeConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'AAD'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string `pulumi:"category"`
+	CreatedByWorkspaceArmId string  `pulumi:"createdByWorkspaceArmId"`
+	Error                   *string `pulumi:"error"`
+	ExpiryTime              *string `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// This connection type covers the AAD auth for any applicable Azure service
+type AADAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AADAuthTypeConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AADAuthTypeConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o AADAuthTypeConnectionPropertiesResponseOutput) ToAADAuthTypeConnectionPropertiesResponseOutput() AADAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o AADAuthTypeConnectionPropertiesResponseOutput) ToAADAuthTypeConnectionPropertiesResponseOutputWithContext(ctx context.Context) AADAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'AAD'.
+func (o AADAuthTypeConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o AADAuthTypeConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o AADAuthTypeConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o AADAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o AADAuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AADAuthTypeConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
 // The abuse penalty.
 type AbusePenaltyResponse struct {
 	// The action of AbusePenalty.
@@ -51,6 +269,468 @@ func (o AbusePenaltyResponseOutput) Expiration() pulumi.StringPtrOutput {
 // The percentage of rate limit.
 func (o AbusePenaltyResponseOutput) RateLimitPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v AbusePenaltyResponse) *float64 { return v.RateLimitPercentage }).(pulumi.Float64PtrOutput)
+}
+
+type AccessKeyAuthTypeConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'AccessKey'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category      *string              `pulumi:"category"`
+	Credentials   *ConnectionAccessKey `pulumi:"credentials"`
+	Error         *string              `pulumi:"error"`
+	ExpiryTime    *string              `pulumi:"expiryTime"`
+	IsSharedToAll *bool                `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// AccessKeyAuthTypeConnectionPropertiesInput is an input type that accepts AccessKeyAuthTypeConnectionPropertiesArgs and AccessKeyAuthTypeConnectionPropertiesOutput values.
+// You can construct a concrete instance of `AccessKeyAuthTypeConnectionPropertiesInput` via:
+//
+//	AccessKeyAuthTypeConnectionPropertiesArgs{...}
+type AccessKeyAuthTypeConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToAccessKeyAuthTypeConnectionPropertiesOutput() AccessKeyAuthTypeConnectionPropertiesOutput
+	ToAccessKeyAuthTypeConnectionPropertiesOutputWithContext(context.Context) AccessKeyAuthTypeConnectionPropertiesOutput
+}
+
+type AccessKeyAuthTypeConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'AccessKey'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category      pulumi.StringPtrInput       `pulumi:"category"`
+	Credentials   ConnectionAccessKeyPtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput       `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput       `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput         `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (AccessKeyAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeyAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (i AccessKeyAuthTypeConnectionPropertiesArgs) ToAccessKeyAuthTypeConnectionPropertiesOutput() AccessKeyAuthTypeConnectionPropertiesOutput {
+	return i.ToAccessKeyAuthTypeConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i AccessKeyAuthTypeConnectionPropertiesArgs) ToAccessKeyAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) AccessKeyAuthTypeConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessKeyAuthTypeConnectionPropertiesOutput)
+}
+
+type AccessKeyAuthTypeConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AccessKeyAuthTypeConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeyAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) ToAccessKeyAuthTypeConnectionPropertiesOutput() AccessKeyAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) ToAccessKeyAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) AccessKeyAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'AccessKey'.
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) Credentials() ConnectionAccessKeyPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *ConnectionAccessKey { return v.Credentials }).(ConnectionAccessKeyPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type AccessKeyAuthTypeConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'AccessKey'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string                      `pulumi:"category"`
+	CreatedByWorkspaceArmId string                       `pulumi:"createdByWorkspaceArmId"`
+	Credentials             *ConnectionAccessKeyResponse `pulumi:"credentials"`
+	Error                   *string                      `pulumi:"error"`
+	ExpiryTime              *string                      `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+type AccessKeyAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AccessKeyAuthTypeConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeyAuthTypeConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) ToAccessKeyAuthTypeConnectionPropertiesResponseOutput() AccessKeyAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) ToAccessKeyAuthTypeConnectionPropertiesResponseOutputWithContext(ctx context.Context) AccessKeyAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'AccessKey'.
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) Credentials() ConnectionAccessKeyResponsePtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *ConnectionAccessKeyResponse {
+		return v.Credentials
+	}).(ConnectionAccessKeyResponsePtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessKeyAuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessKeyAuthTypeConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// This connection type covers the account key connection for Azure storage
+type AccountKeyAuthTypeConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'AccountKey'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category *string `pulumi:"category"`
+	// Account key object for connection credential.
+	Credentials   *ConnectionAccountKey `pulumi:"credentials"`
+	Error         *string               `pulumi:"error"`
+	ExpiryTime    *string               `pulumi:"expiryTime"`
+	IsSharedToAll *bool                 `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// AccountKeyAuthTypeConnectionPropertiesInput is an input type that accepts AccountKeyAuthTypeConnectionPropertiesArgs and AccountKeyAuthTypeConnectionPropertiesOutput values.
+// You can construct a concrete instance of `AccountKeyAuthTypeConnectionPropertiesInput` via:
+//
+//	AccountKeyAuthTypeConnectionPropertiesArgs{...}
+type AccountKeyAuthTypeConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToAccountKeyAuthTypeConnectionPropertiesOutput() AccountKeyAuthTypeConnectionPropertiesOutput
+	ToAccountKeyAuthTypeConnectionPropertiesOutputWithContext(context.Context) AccountKeyAuthTypeConnectionPropertiesOutput
+}
+
+// This connection type covers the account key connection for Azure storage
+type AccountKeyAuthTypeConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'AccountKey'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Account key object for connection credential.
+	Credentials   ConnectionAccountKeyPtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput        `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput        `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput          `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (AccountKeyAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountKeyAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (i AccountKeyAuthTypeConnectionPropertiesArgs) ToAccountKeyAuthTypeConnectionPropertiesOutput() AccountKeyAuthTypeConnectionPropertiesOutput {
+	return i.ToAccountKeyAuthTypeConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i AccountKeyAuthTypeConnectionPropertiesArgs) ToAccountKeyAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) AccountKeyAuthTypeConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountKeyAuthTypeConnectionPropertiesOutput)
+}
+
+// This connection type covers the account key connection for Azure storage
+type AccountKeyAuthTypeConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AccountKeyAuthTypeConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountKeyAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) ToAccountKeyAuthTypeConnectionPropertiesOutput() AccountKeyAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) ToAccountKeyAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) AccountKeyAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'AccountKey'.
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Account key object for connection credential.
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) Credentials() ConnectionAccountKeyPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *ConnectionAccountKey { return v.Credentials }).(ConnectionAccountKeyPtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// This connection type covers the account key connection for Azure storage
+type AccountKeyAuthTypeConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'AccountKey'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string `pulumi:"category"`
+	CreatedByWorkspaceArmId string  `pulumi:"createdByWorkspaceArmId"`
+	// Account key object for connection credential.
+	Credentials *ConnectionAccountKeyResponse `pulumi:"credentials"`
+	Error       *string                       `pulumi:"error"`
+	ExpiryTime  *string                       `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// This connection type covers the account key connection for Azure storage
+type AccountKeyAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AccountKeyAuthTypeConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountKeyAuthTypeConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) ToAccountKeyAuthTypeConnectionPropertiesResponseOutput() AccountKeyAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) ToAccountKeyAuthTypeConnectionPropertiesResponseOutputWithContext(ctx context.Context) AccountKeyAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'AccountKey'.
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+// Account key object for connection credential.
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) Credentials() ConnectionAccountKeyResponsePtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *ConnectionAccountKeyResponse {
+		return v.Credentials
+	}).(ConnectionAccountKeyResponsePtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountKeyAuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
 }
 
 // Properties of Cognitive Services account.
@@ -690,6 +1370,350 @@ func (o AccountPropertiesResponseOutput) UserOwnedStorage() UserOwnedStorageResp
 	return o.ApplyT(func(v AccountPropertiesResponse) []UserOwnedStorageResponse { return v.UserOwnedStorage }).(UserOwnedStorageResponseArrayOutput)
 }
 
+// This connection type covers the generic ApiKey auth connection categories, for examples:
+// AzureOpenAI:
+//
+//	Category:= AzureOpenAI
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {ApiKey} as .ApiKey
+//	Target:= {ApiBase}
+//
+// CognitiveService:
+//
+//	Category:= CognitiveService
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {SubscriptionKey} as ApiKey
+//	Target:= ServiceRegion={serviceRegion}
+//
+// CognitiveSearch:
+//
+//	Category:= CognitiveSearch
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {Key} as ApiKey
+//	Target:= {Endpoint}
+//
+// Use Metadata property bag for ApiType, ApiVersion, Kind and other metadata fields
+type ApiKeyAuthConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'ApiKey'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category *string `pulumi:"category"`
+	// Api key object for connection credential.
+	Credentials   *ConnectionApiKey `pulumi:"credentials"`
+	Error         *string           `pulumi:"error"`
+	ExpiryTime    *string           `pulumi:"expiryTime"`
+	IsSharedToAll *bool             `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// ApiKeyAuthConnectionPropertiesInput is an input type that accepts ApiKeyAuthConnectionPropertiesArgs and ApiKeyAuthConnectionPropertiesOutput values.
+// You can construct a concrete instance of `ApiKeyAuthConnectionPropertiesInput` via:
+//
+//	ApiKeyAuthConnectionPropertiesArgs{...}
+type ApiKeyAuthConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToApiKeyAuthConnectionPropertiesOutput() ApiKeyAuthConnectionPropertiesOutput
+	ToApiKeyAuthConnectionPropertiesOutputWithContext(context.Context) ApiKeyAuthConnectionPropertiesOutput
+}
+
+// This connection type covers the generic ApiKey auth connection categories, for examples:
+// AzureOpenAI:
+//
+//	Category:= AzureOpenAI
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {ApiKey} as .ApiKey
+//	Target:= {ApiBase}
+//
+// CognitiveService:
+//
+//	Category:= CognitiveService
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {SubscriptionKey} as ApiKey
+//	Target:= ServiceRegion={serviceRegion}
+//
+// CognitiveSearch:
+//
+//	Category:= CognitiveSearch
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {Key} as ApiKey
+//	Target:= {Endpoint}
+//
+// Use Metadata property bag for ApiType, ApiVersion, Kind and other metadata fields
+type ApiKeyAuthConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'ApiKey'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Api key object for connection credential.
+	Credentials   ConnectionApiKeyPtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput    `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput    `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput      `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (ApiKeyAuthConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyAuthConnectionProperties)(nil)).Elem()
+}
+
+func (i ApiKeyAuthConnectionPropertiesArgs) ToApiKeyAuthConnectionPropertiesOutput() ApiKeyAuthConnectionPropertiesOutput {
+	return i.ToApiKeyAuthConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i ApiKeyAuthConnectionPropertiesArgs) ToApiKeyAuthConnectionPropertiesOutputWithContext(ctx context.Context) ApiKeyAuthConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyAuthConnectionPropertiesOutput)
+}
+
+// This connection type covers the generic ApiKey auth connection categories, for examples:
+// AzureOpenAI:
+//
+//	Category:= AzureOpenAI
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {ApiKey} as .ApiKey
+//	Target:= {ApiBase}
+//
+// CognitiveService:
+//
+//	Category:= CognitiveService
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {SubscriptionKey} as ApiKey
+//	Target:= ServiceRegion={serviceRegion}
+//
+// CognitiveSearch:
+//
+//	Category:= CognitiveSearch
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {Key} as ApiKey
+//	Target:= {Endpoint}
+//
+// Use Metadata property bag for ApiType, ApiVersion, Kind and other metadata fields
+type ApiKeyAuthConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyAuthConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyAuthConnectionProperties)(nil)).Elem()
+}
+
+func (o ApiKeyAuthConnectionPropertiesOutput) ToApiKeyAuthConnectionPropertiesOutput() ApiKeyAuthConnectionPropertiesOutput {
+	return o
+}
+
+func (o ApiKeyAuthConnectionPropertiesOutput) ToApiKeyAuthConnectionPropertiesOutputWithContext(ctx context.Context) ApiKeyAuthConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'ApiKey'.
+func (o ApiKeyAuthConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o ApiKeyAuthConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Api key object for connection credential.
+func (o ApiKeyAuthConnectionPropertiesOutput) Credentials() ConnectionApiKeyPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *ConnectionApiKey { return v.Credentials }).(ConnectionApiKeyPtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o ApiKeyAuthConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// This connection type covers the generic ApiKey auth connection categories, for examples:
+// AzureOpenAI:
+//
+//	Category:= AzureOpenAI
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {ApiKey} as .ApiKey
+//	Target:= {ApiBase}
+//
+// CognitiveService:
+//
+//	Category:= CognitiveService
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {SubscriptionKey} as ApiKey
+//	Target:= ServiceRegion={serviceRegion}
+//
+// CognitiveSearch:
+//
+//	Category:= CognitiveSearch
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {Key} as ApiKey
+//	Target:= {Endpoint}
+//
+// Use Metadata property bag for ApiType, ApiVersion, Kind and other metadata fields
+type ApiKeyAuthConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'ApiKey'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string `pulumi:"category"`
+	CreatedByWorkspaceArmId string  `pulumi:"createdByWorkspaceArmId"`
+	// Api key object for connection credential.
+	Credentials *ConnectionApiKeyResponse `pulumi:"credentials"`
+	Error       *string                   `pulumi:"error"`
+	ExpiryTime  *string                   `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// This connection type covers the generic ApiKey auth connection categories, for examples:
+// AzureOpenAI:
+//
+//	Category:= AzureOpenAI
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {ApiKey} as .ApiKey
+//	Target:= {ApiBase}
+//
+// CognitiveService:
+//
+//	Category:= CognitiveService
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {SubscriptionKey} as ApiKey
+//	Target:= ServiceRegion={serviceRegion}
+//
+// CognitiveSearch:
+//
+//	Category:= CognitiveSearch
+//	AuthType:= ApiKey (as type discriminator)
+//	Credentials:= {Key} as ApiKey
+//	Target:= {Endpoint}
+//
+// Use Metadata property bag for ApiType, ApiVersion, Kind and other metadata fields
+type ApiKeyAuthConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyAuthConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyAuthConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) ToApiKeyAuthConnectionPropertiesResponseOutput() ApiKeyAuthConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) ToApiKeyAuthConnectionPropertiesResponseOutputWithContext(ctx context.Context) ApiKeyAuthConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'ApiKey'.
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+// Api key object for connection credential.
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) Credentials() ConnectionApiKeyResponsePtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *ConnectionApiKeyResponse { return v.Credentials }).(ConnectionApiKeyResponsePtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiKeyAuthConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApiKeyAuthConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
 // The api properties for special APIs.
 type ApiProperties struct {
 	// (Metrics Advisor Only) The Azure AD Client Id (Application Id).
@@ -1303,6 +2327,238 @@ func (o CallRateLimitResponsePtrOutput) Rules() ThrottlingRuleResponseArrayOutpu
 		}
 		return v.Rules
 	}).(ThrottlingRuleResponseArrayOutput)
+}
+
+type CapabilityHost struct {
+	// List of AI services connections.
+	AiServicesConnections []string `pulumi:"aiServicesConnections"`
+	// Kind of this capability host.
+	CapabilityHostKind *string `pulumi:"capabilityHostKind"`
+	// Customer subnet info to help set up this capability host.
+	CustomerSubnet *string `pulumi:"customerSubnet"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// List of Storage connections.
+	StorageConnections []string `pulumi:"storageConnections"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+	// List of Thread storage connections.
+	ThreadStorageConnections []string `pulumi:"threadStorageConnections"`
+	// List of VectorStore connections.
+	VectorStoreConnections []string `pulumi:"vectorStoreConnections"`
+}
+
+// Defaults sets the appropriate defaults for CapabilityHost
+func (val *CapabilityHost) Defaults() *CapabilityHost {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.CapabilityHostKind == nil {
+		capabilityHostKind_ := "Agents"
+		tmp.CapabilityHostKind = &capabilityHostKind_
+	}
+	return &tmp
+}
+
+// CapabilityHostInput is an input type that accepts CapabilityHostArgs and CapabilityHostOutput values.
+// You can construct a concrete instance of `CapabilityHostInput` via:
+//
+//	CapabilityHostArgs{...}
+type CapabilityHostInput interface {
+	pulumi.Input
+
+	ToCapabilityHostOutput() CapabilityHostOutput
+	ToCapabilityHostOutputWithContext(context.Context) CapabilityHostOutput
+}
+
+type CapabilityHostArgs struct {
+	// List of AI services connections.
+	AiServicesConnections pulumi.StringArrayInput `pulumi:"aiServicesConnections"`
+	// Kind of this capability host.
+	CapabilityHostKind pulumi.StringPtrInput `pulumi:"capabilityHostKind"`
+	// Customer subnet info to help set up this capability host.
+	CustomerSubnet pulumi.StringPtrInput `pulumi:"customerSubnet"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// List of Storage connections.
+	StorageConnections pulumi.StringArrayInput `pulumi:"storageConnections"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// List of Thread storage connections.
+	ThreadStorageConnections pulumi.StringArrayInput `pulumi:"threadStorageConnections"`
+	// List of VectorStore connections.
+	VectorStoreConnections pulumi.StringArrayInput `pulumi:"vectorStoreConnections"`
+}
+
+// Defaults sets the appropriate defaults for CapabilityHostArgs
+func (val *CapabilityHostArgs) Defaults() *CapabilityHostArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.CapabilityHostKind == nil {
+		tmp.CapabilityHostKind = pulumi.StringPtr("Agents")
+	}
+	return &tmp
+}
+func (CapabilityHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapabilityHost)(nil)).Elem()
+}
+
+func (i CapabilityHostArgs) ToCapabilityHostOutput() CapabilityHostOutput {
+	return i.ToCapabilityHostOutputWithContext(context.Background())
+}
+
+func (i CapabilityHostArgs) ToCapabilityHostOutputWithContext(ctx context.Context) CapabilityHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapabilityHostOutput)
+}
+
+type CapabilityHostOutput struct{ *pulumi.OutputState }
+
+func (CapabilityHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapabilityHost)(nil)).Elem()
+}
+
+func (o CapabilityHostOutput) ToCapabilityHostOutput() CapabilityHostOutput {
+	return o
+}
+
+func (o CapabilityHostOutput) ToCapabilityHostOutputWithContext(ctx context.Context) CapabilityHostOutput {
+	return o
+}
+
+// List of AI services connections.
+func (o CapabilityHostOutput) AiServicesConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHost) []string { return v.AiServicesConnections }).(pulumi.StringArrayOutput)
+}
+
+// Kind of this capability host.
+func (o CapabilityHostOutput) CapabilityHostKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHost) *string { return v.CapabilityHostKind }).(pulumi.StringPtrOutput)
+}
+
+// Customer subnet info to help set up this capability host.
+func (o CapabilityHostOutput) CustomerSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHost) *string { return v.CustomerSubnet }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o CapabilityHostOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHost) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of Storage connections.
+func (o CapabilityHostOutput) StorageConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHost) []string { return v.StorageConnections }).(pulumi.StringArrayOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o CapabilityHostOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CapabilityHost) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// List of Thread storage connections.
+func (o CapabilityHostOutput) ThreadStorageConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHost) []string { return v.ThreadStorageConnections }).(pulumi.StringArrayOutput)
+}
+
+// List of VectorStore connections.
+func (o CapabilityHostOutput) VectorStoreConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHost) []string { return v.VectorStoreConnections }).(pulumi.StringArrayOutput)
+}
+
+type CapabilityHostResponse struct {
+	// List of AI services connections.
+	AiServicesConnections []string `pulumi:"aiServicesConnections"`
+	// Kind of this capability host.
+	CapabilityHostKind *string `pulumi:"capabilityHostKind"`
+	// Customer subnet info to help set up this capability host.
+	CustomerSubnet *string `pulumi:"customerSubnet"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Provisioning state for the CapabilityHost.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// List of Storage connections.
+	StorageConnections []string `pulumi:"storageConnections"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+	// List of Thread storage connections.
+	ThreadStorageConnections []string `pulumi:"threadStorageConnections"`
+	// List of VectorStore connections.
+	VectorStoreConnections []string `pulumi:"vectorStoreConnections"`
+}
+
+// Defaults sets the appropriate defaults for CapabilityHostResponse
+func (val *CapabilityHostResponse) Defaults() *CapabilityHostResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.CapabilityHostKind == nil {
+		capabilityHostKind_ := "Agents"
+		tmp.CapabilityHostKind = &capabilityHostKind_
+	}
+	return &tmp
+}
+
+type CapabilityHostResponseOutput struct{ *pulumi.OutputState }
+
+func (CapabilityHostResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapabilityHostResponse)(nil)).Elem()
+}
+
+func (o CapabilityHostResponseOutput) ToCapabilityHostResponseOutput() CapabilityHostResponseOutput {
+	return o
+}
+
+func (o CapabilityHostResponseOutput) ToCapabilityHostResponseOutputWithContext(ctx context.Context) CapabilityHostResponseOutput {
+	return o
+}
+
+// List of AI services connections.
+func (o CapabilityHostResponseOutput) AiServicesConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) []string { return v.AiServicesConnections }).(pulumi.StringArrayOutput)
+}
+
+// Kind of this capability host.
+func (o CapabilityHostResponseOutput) CapabilityHostKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) *string { return v.CapabilityHostKind }).(pulumi.StringPtrOutput)
+}
+
+// Customer subnet info to help set up this capability host.
+func (o CapabilityHostResponseOutput) CustomerSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) *string { return v.CustomerSubnet }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o CapabilityHostResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning state for the CapabilityHost.
+func (o CapabilityHostResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// List of Storage connections.
+func (o CapabilityHostResponseOutput) StorageConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) []string { return v.StorageConnections }).(pulumi.StringArrayOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o CapabilityHostResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// List of Thread storage connections.
+func (o CapabilityHostResponseOutput) ThreadStorageConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) []string { return v.ThreadStorageConnections }).(pulumi.StringArrayOutput)
+}
+
+// List of VectorStore connections.
+func (o CapabilityHostResponseOutput) VectorStoreConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) []string { return v.VectorStoreConnections }).(pulumi.StringArrayOutput)
 }
 
 // Cognitive Services account commitment period.
@@ -2039,6 +3295,2158 @@ func (o CommitmentQuotaResponsePtrOutput) Unit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionAccessKey struct {
+	AccessKeyId     *string `pulumi:"accessKeyId"`
+	SecretAccessKey *string `pulumi:"secretAccessKey"`
+}
+
+// ConnectionAccessKeyInput is an input type that accepts ConnectionAccessKeyArgs and ConnectionAccessKeyOutput values.
+// You can construct a concrete instance of `ConnectionAccessKeyInput` via:
+//
+//	ConnectionAccessKeyArgs{...}
+type ConnectionAccessKeyInput interface {
+	pulumi.Input
+
+	ToConnectionAccessKeyOutput() ConnectionAccessKeyOutput
+	ToConnectionAccessKeyOutputWithContext(context.Context) ConnectionAccessKeyOutput
+}
+
+type ConnectionAccessKeyArgs struct {
+	AccessKeyId     pulumi.StringPtrInput `pulumi:"accessKeyId"`
+	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
+}
+
+func (ConnectionAccessKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAccessKey)(nil)).Elem()
+}
+
+func (i ConnectionAccessKeyArgs) ToConnectionAccessKeyOutput() ConnectionAccessKeyOutput {
+	return i.ToConnectionAccessKeyOutputWithContext(context.Background())
+}
+
+func (i ConnectionAccessKeyArgs) ToConnectionAccessKeyOutputWithContext(ctx context.Context) ConnectionAccessKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAccessKeyOutput)
+}
+
+func (i ConnectionAccessKeyArgs) ToConnectionAccessKeyPtrOutput() ConnectionAccessKeyPtrOutput {
+	return i.ToConnectionAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionAccessKeyArgs) ToConnectionAccessKeyPtrOutputWithContext(ctx context.Context) ConnectionAccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAccessKeyOutput).ToConnectionAccessKeyPtrOutputWithContext(ctx)
+}
+
+// ConnectionAccessKeyPtrInput is an input type that accepts ConnectionAccessKeyArgs, ConnectionAccessKeyPtr and ConnectionAccessKeyPtrOutput values.
+// You can construct a concrete instance of `ConnectionAccessKeyPtrInput` via:
+//
+//	        ConnectionAccessKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionAccessKeyPtrInput interface {
+	pulumi.Input
+
+	ToConnectionAccessKeyPtrOutput() ConnectionAccessKeyPtrOutput
+	ToConnectionAccessKeyPtrOutputWithContext(context.Context) ConnectionAccessKeyPtrOutput
+}
+
+type connectionAccessKeyPtrType ConnectionAccessKeyArgs
+
+func ConnectionAccessKeyPtr(v *ConnectionAccessKeyArgs) ConnectionAccessKeyPtrInput {
+	return (*connectionAccessKeyPtrType)(v)
+}
+
+func (*connectionAccessKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAccessKey)(nil)).Elem()
+}
+
+func (i *connectionAccessKeyPtrType) ToConnectionAccessKeyPtrOutput() ConnectionAccessKeyPtrOutput {
+	return i.ToConnectionAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionAccessKeyPtrType) ToConnectionAccessKeyPtrOutputWithContext(ctx context.Context) ConnectionAccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAccessKeyPtrOutput)
+}
+
+type ConnectionAccessKeyOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAccessKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAccessKey)(nil)).Elem()
+}
+
+func (o ConnectionAccessKeyOutput) ToConnectionAccessKeyOutput() ConnectionAccessKeyOutput {
+	return o
+}
+
+func (o ConnectionAccessKeyOutput) ToConnectionAccessKeyOutputWithContext(ctx context.Context) ConnectionAccessKeyOutput {
+	return o
+}
+
+func (o ConnectionAccessKeyOutput) ToConnectionAccessKeyPtrOutput() ConnectionAccessKeyPtrOutput {
+	return o.ToConnectionAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionAccessKeyOutput) ToConnectionAccessKeyPtrOutputWithContext(ctx context.Context) ConnectionAccessKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionAccessKey) *ConnectionAccessKey {
+		return &v
+	}).(ConnectionAccessKeyPtrOutput)
+}
+
+func (o ConnectionAccessKeyOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAccessKey) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionAccessKeyOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAccessKey) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionAccessKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAccessKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAccessKey)(nil)).Elem()
+}
+
+func (o ConnectionAccessKeyPtrOutput) ToConnectionAccessKeyPtrOutput() ConnectionAccessKeyPtrOutput {
+	return o
+}
+
+func (o ConnectionAccessKeyPtrOutput) ToConnectionAccessKeyPtrOutputWithContext(ctx context.Context) ConnectionAccessKeyPtrOutput {
+	return o
+}
+
+func (o ConnectionAccessKeyPtrOutput) Elem() ConnectionAccessKeyOutput {
+	return o.ApplyT(func(v *ConnectionAccessKey) ConnectionAccessKey {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionAccessKey
+		return ret
+	}).(ConnectionAccessKeyOutput)
+}
+
+func (o ConnectionAccessKeyPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccessKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionAccessKeyPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccessKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionAccessKeyResponse struct {
+	AccessKeyId     *string `pulumi:"accessKeyId"`
+	SecretAccessKey *string `pulumi:"secretAccessKey"`
+}
+
+type ConnectionAccessKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAccessKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAccessKeyResponse)(nil)).Elem()
+}
+
+func (o ConnectionAccessKeyResponseOutput) ToConnectionAccessKeyResponseOutput() ConnectionAccessKeyResponseOutput {
+	return o
+}
+
+func (o ConnectionAccessKeyResponseOutput) ToConnectionAccessKeyResponseOutputWithContext(ctx context.Context) ConnectionAccessKeyResponseOutput {
+	return o
+}
+
+func (o ConnectionAccessKeyResponseOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAccessKeyResponse) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionAccessKeyResponseOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAccessKeyResponse) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionAccessKeyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAccessKeyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAccessKeyResponse)(nil)).Elem()
+}
+
+func (o ConnectionAccessKeyResponsePtrOutput) ToConnectionAccessKeyResponsePtrOutput() ConnectionAccessKeyResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionAccessKeyResponsePtrOutput) ToConnectionAccessKeyResponsePtrOutputWithContext(ctx context.Context) ConnectionAccessKeyResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionAccessKeyResponsePtrOutput) Elem() ConnectionAccessKeyResponseOutput {
+	return o.ApplyT(func(v *ConnectionAccessKeyResponse) ConnectionAccessKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionAccessKeyResponse
+		return ret
+	}).(ConnectionAccessKeyResponseOutput)
+}
+
+func (o ConnectionAccessKeyResponsePtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccessKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionAccessKeyResponsePtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccessKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Account key object for connection credential.
+type ConnectionAccountKey struct {
+	Key *string `pulumi:"key"`
+}
+
+// ConnectionAccountKeyInput is an input type that accepts ConnectionAccountKeyArgs and ConnectionAccountKeyOutput values.
+// You can construct a concrete instance of `ConnectionAccountKeyInput` via:
+//
+//	ConnectionAccountKeyArgs{...}
+type ConnectionAccountKeyInput interface {
+	pulumi.Input
+
+	ToConnectionAccountKeyOutput() ConnectionAccountKeyOutput
+	ToConnectionAccountKeyOutputWithContext(context.Context) ConnectionAccountKeyOutput
+}
+
+// Account key object for connection credential.
+type ConnectionAccountKeyArgs struct {
+	Key pulumi.StringPtrInput `pulumi:"key"`
+}
+
+func (ConnectionAccountKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAccountKey)(nil)).Elem()
+}
+
+func (i ConnectionAccountKeyArgs) ToConnectionAccountKeyOutput() ConnectionAccountKeyOutput {
+	return i.ToConnectionAccountKeyOutputWithContext(context.Background())
+}
+
+func (i ConnectionAccountKeyArgs) ToConnectionAccountKeyOutputWithContext(ctx context.Context) ConnectionAccountKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAccountKeyOutput)
+}
+
+func (i ConnectionAccountKeyArgs) ToConnectionAccountKeyPtrOutput() ConnectionAccountKeyPtrOutput {
+	return i.ToConnectionAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionAccountKeyArgs) ToConnectionAccountKeyPtrOutputWithContext(ctx context.Context) ConnectionAccountKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAccountKeyOutput).ToConnectionAccountKeyPtrOutputWithContext(ctx)
+}
+
+// ConnectionAccountKeyPtrInput is an input type that accepts ConnectionAccountKeyArgs, ConnectionAccountKeyPtr and ConnectionAccountKeyPtrOutput values.
+// You can construct a concrete instance of `ConnectionAccountKeyPtrInput` via:
+//
+//	        ConnectionAccountKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionAccountKeyPtrInput interface {
+	pulumi.Input
+
+	ToConnectionAccountKeyPtrOutput() ConnectionAccountKeyPtrOutput
+	ToConnectionAccountKeyPtrOutputWithContext(context.Context) ConnectionAccountKeyPtrOutput
+}
+
+type connectionAccountKeyPtrType ConnectionAccountKeyArgs
+
+func ConnectionAccountKeyPtr(v *ConnectionAccountKeyArgs) ConnectionAccountKeyPtrInput {
+	return (*connectionAccountKeyPtrType)(v)
+}
+
+func (*connectionAccountKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAccountKey)(nil)).Elem()
+}
+
+func (i *connectionAccountKeyPtrType) ToConnectionAccountKeyPtrOutput() ConnectionAccountKeyPtrOutput {
+	return i.ToConnectionAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionAccountKeyPtrType) ToConnectionAccountKeyPtrOutputWithContext(ctx context.Context) ConnectionAccountKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAccountKeyPtrOutput)
+}
+
+// Account key object for connection credential.
+type ConnectionAccountKeyOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAccountKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAccountKey)(nil)).Elem()
+}
+
+func (o ConnectionAccountKeyOutput) ToConnectionAccountKeyOutput() ConnectionAccountKeyOutput {
+	return o
+}
+
+func (o ConnectionAccountKeyOutput) ToConnectionAccountKeyOutputWithContext(ctx context.Context) ConnectionAccountKeyOutput {
+	return o
+}
+
+func (o ConnectionAccountKeyOutput) ToConnectionAccountKeyPtrOutput() ConnectionAccountKeyPtrOutput {
+	return o.ToConnectionAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionAccountKeyOutput) ToConnectionAccountKeyPtrOutputWithContext(ctx context.Context) ConnectionAccountKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionAccountKey) *ConnectionAccountKey {
+		return &v
+	}).(ConnectionAccountKeyPtrOutput)
+}
+
+func (o ConnectionAccountKeyOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAccountKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionAccountKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAccountKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAccountKey)(nil)).Elem()
+}
+
+func (o ConnectionAccountKeyPtrOutput) ToConnectionAccountKeyPtrOutput() ConnectionAccountKeyPtrOutput {
+	return o
+}
+
+func (o ConnectionAccountKeyPtrOutput) ToConnectionAccountKeyPtrOutputWithContext(ctx context.Context) ConnectionAccountKeyPtrOutput {
+	return o
+}
+
+func (o ConnectionAccountKeyPtrOutput) Elem() ConnectionAccountKeyOutput {
+	return o.ApplyT(func(v *ConnectionAccountKey) ConnectionAccountKey {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionAccountKey
+		return ret
+	}).(ConnectionAccountKeyOutput)
+}
+
+func (o ConnectionAccountKeyPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccountKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Account key object for connection credential.
+type ConnectionAccountKeyResponse struct {
+	Key *string `pulumi:"key"`
+}
+
+// Account key object for connection credential.
+type ConnectionAccountKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAccountKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAccountKeyResponse)(nil)).Elem()
+}
+
+func (o ConnectionAccountKeyResponseOutput) ToConnectionAccountKeyResponseOutput() ConnectionAccountKeyResponseOutput {
+	return o
+}
+
+func (o ConnectionAccountKeyResponseOutput) ToConnectionAccountKeyResponseOutputWithContext(ctx context.Context) ConnectionAccountKeyResponseOutput {
+	return o
+}
+
+func (o ConnectionAccountKeyResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAccountKeyResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionAccountKeyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAccountKeyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAccountKeyResponse)(nil)).Elem()
+}
+
+func (o ConnectionAccountKeyResponsePtrOutput) ToConnectionAccountKeyResponsePtrOutput() ConnectionAccountKeyResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionAccountKeyResponsePtrOutput) ToConnectionAccountKeyResponsePtrOutputWithContext(ctx context.Context) ConnectionAccountKeyResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionAccountKeyResponsePtrOutput) Elem() ConnectionAccountKeyResponseOutput {
+	return o.ApplyT(func(v *ConnectionAccountKeyResponse) ConnectionAccountKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionAccountKeyResponse
+		return ret
+	}).(ConnectionAccountKeyResponseOutput)
+}
+
+func (o ConnectionAccountKeyResponsePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccountKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Api key object for connection credential.
+type ConnectionApiKey struct {
+	Key *string `pulumi:"key"`
+}
+
+// ConnectionApiKeyInput is an input type that accepts ConnectionApiKeyArgs and ConnectionApiKeyOutput values.
+// You can construct a concrete instance of `ConnectionApiKeyInput` via:
+//
+//	ConnectionApiKeyArgs{...}
+type ConnectionApiKeyInput interface {
+	pulumi.Input
+
+	ToConnectionApiKeyOutput() ConnectionApiKeyOutput
+	ToConnectionApiKeyOutputWithContext(context.Context) ConnectionApiKeyOutput
+}
+
+// Api key object for connection credential.
+type ConnectionApiKeyArgs struct {
+	Key pulumi.StringPtrInput `pulumi:"key"`
+}
+
+func (ConnectionApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionApiKey)(nil)).Elem()
+}
+
+func (i ConnectionApiKeyArgs) ToConnectionApiKeyOutput() ConnectionApiKeyOutput {
+	return i.ToConnectionApiKeyOutputWithContext(context.Background())
+}
+
+func (i ConnectionApiKeyArgs) ToConnectionApiKeyOutputWithContext(ctx context.Context) ConnectionApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionApiKeyOutput)
+}
+
+func (i ConnectionApiKeyArgs) ToConnectionApiKeyPtrOutput() ConnectionApiKeyPtrOutput {
+	return i.ToConnectionApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionApiKeyArgs) ToConnectionApiKeyPtrOutputWithContext(ctx context.Context) ConnectionApiKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionApiKeyOutput).ToConnectionApiKeyPtrOutputWithContext(ctx)
+}
+
+// ConnectionApiKeyPtrInput is an input type that accepts ConnectionApiKeyArgs, ConnectionApiKeyPtr and ConnectionApiKeyPtrOutput values.
+// You can construct a concrete instance of `ConnectionApiKeyPtrInput` via:
+//
+//	        ConnectionApiKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionApiKeyPtrInput interface {
+	pulumi.Input
+
+	ToConnectionApiKeyPtrOutput() ConnectionApiKeyPtrOutput
+	ToConnectionApiKeyPtrOutputWithContext(context.Context) ConnectionApiKeyPtrOutput
+}
+
+type connectionApiKeyPtrType ConnectionApiKeyArgs
+
+func ConnectionApiKeyPtr(v *ConnectionApiKeyArgs) ConnectionApiKeyPtrInput {
+	return (*connectionApiKeyPtrType)(v)
+}
+
+func (*connectionApiKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionApiKey)(nil)).Elem()
+}
+
+func (i *connectionApiKeyPtrType) ToConnectionApiKeyPtrOutput() ConnectionApiKeyPtrOutput {
+	return i.ToConnectionApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionApiKeyPtrType) ToConnectionApiKeyPtrOutputWithContext(ctx context.Context) ConnectionApiKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionApiKeyPtrOutput)
+}
+
+// Api key object for connection credential.
+type ConnectionApiKeyOutput struct{ *pulumi.OutputState }
+
+func (ConnectionApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionApiKey)(nil)).Elem()
+}
+
+func (o ConnectionApiKeyOutput) ToConnectionApiKeyOutput() ConnectionApiKeyOutput {
+	return o
+}
+
+func (o ConnectionApiKeyOutput) ToConnectionApiKeyOutputWithContext(ctx context.Context) ConnectionApiKeyOutput {
+	return o
+}
+
+func (o ConnectionApiKeyOutput) ToConnectionApiKeyPtrOutput() ConnectionApiKeyPtrOutput {
+	return o.ToConnectionApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionApiKeyOutput) ToConnectionApiKeyPtrOutputWithContext(ctx context.Context) ConnectionApiKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionApiKey) *ConnectionApiKey {
+		return &v
+	}).(ConnectionApiKeyPtrOutput)
+}
+
+func (o ConnectionApiKeyOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionApiKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionApiKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionApiKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionApiKey)(nil)).Elem()
+}
+
+func (o ConnectionApiKeyPtrOutput) ToConnectionApiKeyPtrOutput() ConnectionApiKeyPtrOutput {
+	return o
+}
+
+func (o ConnectionApiKeyPtrOutput) ToConnectionApiKeyPtrOutputWithContext(ctx context.Context) ConnectionApiKeyPtrOutput {
+	return o
+}
+
+func (o ConnectionApiKeyPtrOutput) Elem() ConnectionApiKeyOutput {
+	return o.ApplyT(func(v *ConnectionApiKey) ConnectionApiKey {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionApiKey
+		return ret
+	}).(ConnectionApiKeyOutput)
+}
+
+func (o ConnectionApiKeyPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionApiKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Api key object for connection credential.
+type ConnectionApiKeyResponse struct {
+	Key *string `pulumi:"key"`
+}
+
+// Api key object for connection credential.
+type ConnectionApiKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectionApiKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionApiKeyResponse)(nil)).Elem()
+}
+
+func (o ConnectionApiKeyResponseOutput) ToConnectionApiKeyResponseOutput() ConnectionApiKeyResponseOutput {
+	return o
+}
+
+func (o ConnectionApiKeyResponseOutput) ToConnectionApiKeyResponseOutputWithContext(ctx context.Context) ConnectionApiKeyResponseOutput {
+	return o
+}
+
+func (o ConnectionApiKeyResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionApiKeyResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionApiKeyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionApiKeyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionApiKeyResponse)(nil)).Elem()
+}
+
+func (o ConnectionApiKeyResponsePtrOutput) ToConnectionApiKeyResponsePtrOutput() ConnectionApiKeyResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionApiKeyResponsePtrOutput) ToConnectionApiKeyResponsePtrOutputWithContext(ctx context.Context) ConnectionApiKeyResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionApiKeyResponsePtrOutput) Elem() ConnectionApiKeyResponseOutput {
+	return o.ApplyT(func(v *ConnectionApiKeyResponse) ConnectionApiKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionApiKeyResponse
+		return ret
+	}).(ConnectionApiKeyResponseOutput)
+}
+
+func (o ConnectionApiKeyResponsePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionApiKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionManagedIdentity struct {
+	ClientId   *string `pulumi:"clientId"`
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// ConnectionManagedIdentityInput is an input type that accepts ConnectionManagedIdentityArgs and ConnectionManagedIdentityOutput values.
+// You can construct a concrete instance of `ConnectionManagedIdentityInput` via:
+//
+//	ConnectionManagedIdentityArgs{...}
+type ConnectionManagedIdentityInput interface {
+	pulumi.Input
+
+	ToConnectionManagedIdentityOutput() ConnectionManagedIdentityOutput
+	ToConnectionManagedIdentityOutputWithContext(context.Context) ConnectionManagedIdentityOutput
+}
+
+type ConnectionManagedIdentityArgs struct {
+	ClientId   pulumi.StringPtrInput `pulumi:"clientId"`
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (ConnectionManagedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionManagedIdentity)(nil)).Elem()
+}
+
+func (i ConnectionManagedIdentityArgs) ToConnectionManagedIdentityOutput() ConnectionManagedIdentityOutput {
+	return i.ToConnectionManagedIdentityOutputWithContext(context.Background())
+}
+
+func (i ConnectionManagedIdentityArgs) ToConnectionManagedIdentityOutputWithContext(ctx context.Context) ConnectionManagedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionManagedIdentityOutput)
+}
+
+func (i ConnectionManagedIdentityArgs) ToConnectionManagedIdentityPtrOutput() ConnectionManagedIdentityPtrOutput {
+	return i.ToConnectionManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionManagedIdentityArgs) ToConnectionManagedIdentityPtrOutputWithContext(ctx context.Context) ConnectionManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionManagedIdentityOutput).ToConnectionManagedIdentityPtrOutputWithContext(ctx)
+}
+
+// ConnectionManagedIdentityPtrInput is an input type that accepts ConnectionManagedIdentityArgs, ConnectionManagedIdentityPtr and ConnectionManagedIdentityPtrOutput values.
+// You can construct a concrete instance of `ConnectionManagedIdentityPtrInput` via:
+//
+//	        ConnectionManagedIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionManagedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToConnectionManagedIdentityPtrOutput() ConnectionManagedIdentityPtrOutput
+	ToConnectionManagedIdentityPtrOutputWithContext(context.Context) ConnectionManagedIdentityPtrOutput
+}
+
+type connectionManagedIdentityPtrType ConnectionManagedIdentityArgs
+
+func ConnectionManagedIdentityPtr(v *ConnectionManagedIdentityArgs) ConnectionManagedIdentityPtrInput {
+	return (*connectionManagedIdentityPtrType)(v)
+}
+
+func (*connectionManagedIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionManagedIdentity)(nil)).Elem()
+}
+
+func (i *connectionManagedIdentityPtrType) ToConnectionManagedIdentityPtrOutput() ConnectionManagedIdentityPtrOutput {
+	return i.ToConnectionManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionManagedIdentityPtrType) ToConnectionManagedIdentityPtrOutputWithContext(ctx context.Context) ConnectionManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionManagedIdentityPtrOutput)
+}
+
+type ConnectionManagedIdentityOutput struct{ *pulumi.OutputState }
+
+func (ConnectionManagedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionManagedIdentity)(nil)).Elem()
+}
+
+func (o ConnectionManagedIdentityOutput) ToConnectionManagedIdentityOutput() ConnectionManagedIdentityOutput {
+	return o
+}
+
+func (o ConnectionManagedIdentityOutput) ToConnectionManagedIdentityOutputWithContext(ctx context.Context) ConnectionManagedIdentityOutput {
+	return o
+}
+
+func (o ConnectionManagedIdentityOutput) ToConnectionManagedIdentityPtrOutput() ConnectionManagedIdentityPtrOutput {
+	return o.ToConnectionManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionManagedIdentityOutput) ToConnectionManagedIdentityPtrOutputWithContext(ctx context.Context) ConnectionManagedIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionManagedIdentity) *ConnectionManagedIdentity {
+		return &v
+	}).(ConnectionManagedIdentityPtrOutput)
+}
+
+func (o ConnectionManagedIdentityOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionManagedIdentity) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionManagedIdentityOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionManagedIdentity) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionManagedIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionManagedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionManagedIdentity)(nil)).Elem()
+}
+
+func (o ConnectionManagedIdentityPtrOutput) ToConnectionManagedIdentityPtrOutput() ConnectionManagedIdentityPtrOutput {
+	return o
+}
+
+func (o ConnectionManagedIdentityPtrOutput) ToConnectionManagedIdentityPtrOutputWithContext(ctx context.Context) ConnectionManagedIdentityPtrOutput {
+	return o
+}
+
+func (o ConnectionManagedIdentityPtrOutput) Elem() ConnectionManagedIdentityOutput {
+	return o.ApplyT(func(v *ConnectionManagedIdentity) ConnectionManagedIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionManagedIdentity
+		return ret
+	}).(ConnectionManagedIdentityOutput)
+}
+
+func (o ConnectionManagedIdentityPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionManagedIdentityPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionManagedIdentityResponse struct {
+	ClientId   *string `pulumi:"clientId"`
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+type ConnectionManagedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectionManagedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o ConnectionManagedIdentityResponseOutput) ToConnectionManagedIdentityResponseOutput() ConnectionManagedIdentityResponseOutput {
+	return o
+}
+
+func (o ConnectionManagedIdentityResponseOutput) ToConnectionManagedIdentityResponseOutputWithContext(ctx context.Context) ConnectionManagedIdentityResponseOutput {
+	return o
+}
+
+func (o ConnectionManagedIdentityResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionManagedIdentityResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionManagedIdentityResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionManagedIdentityResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionManagedIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionManagedIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o ConnectionManagedIdentityResponsePtrOutput) ToConnectionManagedIdentityResponsePtrOutput() ConnectionManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionManagedIdentityResponsePtrOutput) ToConnectionManagedIdentityResponsePtrOutputWithContext(ctx context.Context) ConnectionManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionManagedIdentityResponsePtrOutput) Elem() ConnectionManagedIdentityResponseOutput {
+	return o.ApplyT(func(v *ConnectionManagedIdentityResponse) ConnectionManagedIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionManagedIdentityResponse
+		return ret
+	}).(ConnectionManagedIdentityResponseOutput)
+}
+
+func (o ConnectionManagedIdentityResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionManagedIdentityResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClientId and ClientSecret are required. Other properties are optional
+// depending on each OAuth2 provider's implementation.
+type ConnectionOAuth2 struct {
+	// Required by Concur connection category
+	AuthUrl *string `pulumi:"authUrl"`
+	// Client id in the format of UUID
+	ClientId     *string `pulumi:"clientId"`
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Required by GoogleAdWords connection category
+	DeveloperToken *string `pulumi:"developerToken"`
+	Password       *string `pulumi:"password"`
+	// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
+	// where user needs to get RefreshToken offline
+	RefreshToken *string `pulumi:"refreshToken"`
+	// Required by QuickBooks and Xero connection categories
+	TenantId *string `pulumi:"tenantId"`
+	// Concur, ServiceNow auth server AccessToken grant type is 'Password'
+	// which requires UsernamePassword
+	Username *string `pulumi:"username"`
+}
+
+// ConnectionOAuth2Input is an input type that accepts ConnectionOAuth2Args and ConnectionOAuth2Output values.
+// You can construct a concrete instance of `ConnectionOAuth2Input` via:
+//
+//	ConnectionOAuth2Args{...}
+type ConnectionOAuth2Input interface {
+	pulumi.Input
+
+	ToConnectionOAuth2Output() ConnectionOAuth2Output
+	ToConnectionOAuth2OutputWithContext(context.Context) ConnectionOAuth2Output
+}
+
+// ClientId and ClientSecret are required. Other properties are optional
+// depending on each OAuth2 provider's implementation.
+type ConnectionOAuth2Args struct {
+	// Required by Concur connection category
+	AuthUrl pulumi.StringPtrInput `pulumi:"authUrl"`
+	// Client id in the format of UUID
+	ClientId     pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Required by GoogleAdWords connection category
+	DeveloperToken pulumi.StringPtrInput `pulumi:"developerToken"`
+	Password       pulumi.StringPtrInput `pulumi:"password"`
+	// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
+	// where user needs to get RefreshToken offline
+	RefreshToken pulumi.StringPtrInput `pulumi:"refreshToken"`
+	// Required by QuickBooks and Xero connection categories
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+	// Concur, ServiceNow auth server AccessToken grant type is 'Password'
+	// which requires UsernamePassword
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ConnectionOAuth2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOAuth2)(nil)).Elem()
+}
+
+func (i ConnectionOAuth2Args) ToConnectionOAuth2Output() ConnectionOAuth2Output {
+	return i.ToConnectionOAuth2OutputWithContext(context.Background())
+}
+
+func (i ConnectionOAuth2Args) ToConnectionOAuth2OutputWithContext(ctx context.Context) ConnectionOAuth2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOAuth2Output)
+}
+
+func (i ConnectionOAuth2Args) ToConnectionOAuth2PtrOutput() ConnectionOAuth2PtrOutput {
+	return i.ToConnectionOAuth2PtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOAuth2Args) ToConnectionOAuth2PtrOutputWithContext(ctx context.Context) ConnectionOAuth2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOAuth2Output).ToConnectionOAuth2PtrOutputWithContext(ctx)
+}
+
+// ConnectionOAuth2PtrInput is an input type that accepts ConnectionOAuth2Args, ConnectionOAuth2Ptr and ConnectionOAuth2PtrOutput values.
+// You can construct a concrete instance of `ConnectionOAuth2PtrInput` via:
+//
+//	        ConnectionOAuth2Args{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOAuth2PtrInput interface {
+	pulumi.Input
+
+	ToConnectionOAuth2PtrOutput() ConnectionOAuth2PtrOutput
+	ToConnectionOAuth2PtrOutputWithContext(context.Context) ConnectionOAuth2PtrOutput
+}
+
+type connectionOAuth2PtrType ConnectionOAuth2Args
+
+func ConnectionOAuth2Ptr(v *ConnectionOAuth2Args) ConnectionOAuth2PtrInput {
+	return (*connectionOAuth2PtrType)(v)
+}
+
+func (*connectionOAuth2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOAuth2)(nil)).Elem()
+}
+
+func (i *connectionOAuth2PtrType) ToConnectionOAuth2PtrOutput() ConnectionOAuth2PtrOutput {
+	return i.ToConnectionOAuth2PtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOAuth2PtrType) ToConnectionOAuth2PtrOutputWithContext(ctx context.Context) ConnectionOAuth2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOAuth2PtrOutput)
+}
+
+// ClientId and ClientSecret are required. Other properties are optional
+// depending on each OAuth2 provider's implementation.
+type ConnectionOAuth2Output struct{ *pulumi.OutputState }
+
+func (ConnectionOAuth2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOAuth2)(nil)).Elem()
+}
+
+func (o ConnectionOAuth2Output) ToConnectionOAuth2Output() ConnectionOAuth2Output {
+	return o
+}
+
+func (o ConnectionOAuth2Output) ToConnectionOAuth2OutputWithContext(ctx context.Context) ConnectionOAuth2Output {
+	return o
+}
+
+func (o ConnectionOAuth2Output) ToConnectionOAuth2PtrOutput() ConnectionOAuth2PtrOutput {
+	return o.ToConnectionOAuth2PtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOAuth2Output) ToConnectionOAuth2PtrOutputWithContext(ctx context.Context) ConnectionOAuth2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOAuth2) *ConnectionOAuth2 {
+		return &v
+	}).(ConnectionOAuth2PtrOutput)
+}
+
+// Required by Concur connection category
+func (o ConnectionOAuth2Output) AuthUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
+}
+
+// Client id in the format of UUID
+func (o ConnectionOAuth2Output) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOAuth2Output) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Required by GoogleAdWords connection category
+func (o ConnectionOAuth2Output) DeveloperToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2) *string { return v.DeveloperToken }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOAuth2Output) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
+// where user needs to get RefreshToken offline
+func (o ConnectionOAuth2Output) RefreshToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2) *string { return v.RefreshToken }).(pulumi.StringPtrOutput)
+}
+
+// Required by QuickBooks and Xero connection categories
+func (o ConnectionOAuth2Output) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+// Concur, ServiceNow auth server AccessToken grant type is 'Password'
+// which requires UsernamePassword
+func (o ConnectionOAuth2Output) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOAuth2PtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOAuth2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOAuth2)(nil)).Elem()
+}
+
+func (o ConnectionOAuth2PtrOutput) ToConnectionOAuth2PtrOutput() ConnectionOAuth2PtrOutput {
+	return o
+}
+
+func (o ConnectionOAuth2PtrOutput) ToConnectionOAuth2PtrOutputWithContext(ctx context.Context) ConnectionOAuth2PtrOutput {
+	return o
+}
+
+func (o ConnectionOAuth2PtrOutput) Elem() ConnectionOAuth2Output {
+	return o.ApplyT(func(v *ConnectionOAuth2) ConnectionOAuth2 {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOAuth2
+		return ret
+	}).(ConnectionOAuth2Output)
+}
+
+// Required by Concur connection category
+func (o ConnectionOAuth2PtrOutput) AuthUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client id in the format of UUID
+func (o ConnectionOAuth2PtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOAuth2PtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required by GoogleAdWords connection category
+func (o ConnectionOAuth2PtrOutput) DeveloperToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeveloperToken
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOAuth2PtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
+// where user needs to get RefreshToken offline
+func (o ConnectionOAuth2PtrOutput) RefreshToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required by QuickBooks and Xero connection categories
+func (o ConnectionOAuth2PtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Concur, ServiceNow auth server AccessToken grant type is 'Password'
+// which requires UsernamePassword
+func (o ConnectionOAuth2PtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClientId and ClientSecret are required. Other properties are optional
+// depending on each OAuth2 provider's implementation.
+type ConnectionOAuth2Response struct {
+	// Required by Concur connection category
+	AuthUrl *string `pulumi:"authUrl"`
+	// Client id in the format of UUID
+	ClientId     *string `pulumi:"clientId"`
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Required by GoogleAdWords connection category
+	DeveloperToken *string `pulumi:"developerToken"`
+	Password       *string `pulumi:"password"`
+	// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
+	// where user needs to get RefreshToken offline
+	RefreshToken *string `pulumi:"refreshToken"`
+	// Required by QuickBooks and Xero connection categories
+	TenantId *string `pulumi:"tenantId"`
+	// Concur, ServiceNow auth server AccessToken grant type is 'Password'
+	// which requires UsernamePassword
+	Username *string `pulumi:"username"`
+}
+
+// ClientId and ClientSecret are required. Other properties are optional
+// depending on each OAuth2 provider's implementation.
+type ConnectionOAuth2ResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOAuth2ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOAuth2Response)(nil)).Elem()
+}
+
+func (o ConnectionOAuth2ResponseOutput) ToConnectionOAuth2ResponseOutput() ConnectionOAuth2ResponseOutput {
+	return o
+}
+
+func (o ConnectionOAuth2ResponseOutput) ToConnectionOAuth2ResponseOutputWithContext(ctx context.Context) ConnectionOAuth2ResponseOutput {
+	return o
+}
+
+// Required by Concur connection category
+func (o ConnectionOAuth2ResponseOutput) AuthUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2Response) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
+}
+
+// Client id in the format of UUID
+func (o ConnectionOAuth2ResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2Response) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOAuth2ResponseOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2Response) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Required by GoogleAdWords connection category
+func (o ConnectionOAuth2ResponseOutput) DeveloperToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2Response) *string { return v.DeveloperToken }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOAuth2ResponseOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2Response) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
+// where user needs to get RefreshToken offline
+func (o ConnectionOAuth2ResponseOutput) RefreshToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2Response) *string { return v.RefreshToken }).(pulumi.StringPtrOutput)
+}
+
+// Required by QuickBooks and Xero connection categories
+func (o ConnectionOAuth2ResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2Response) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+// Concur, ServiceNow auth server AccessToken grant type is 'Password'
+// which requires UsernamePassword
+func (o ConnectionOAuth2ResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOAuth2Response) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOAuth2ResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOAuth2ResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOAuth2Response)(nil)).Elem()
+}
+
+func (o ConnectionOAuth2ResponsePtrOutput) ToConnectionOAuth2ResponsePtrOutput() ConnectionOAuth2ResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionOAuth2ResponsePtrOutput) ToConnectionOAuth2ResponsePtrOutputWithContext(ctx context.Context) ConnectionOAuth2ResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionOAuth2ResponsePtrOutput) Elem() ConnectionOAuth2ResponseOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2Response) ConnectionOAuth2Response {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOAuth2Response
+		return ret
+	}).(ConnectionOAuth2ResponseOutput)
+}
+
+// Required by Concur connection category
+func (o ConnectionOAuth2ResponsePtrOutput) AuthUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client id in the format of UUID
+func (o ConnectionOAuth2ResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOAuth2ResponsePtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required by GoogleAdWords connection category
+func (o ConnectionOAuth2ResponsePtrOutput) DeveloperToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeveloperToken
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOAuth2ResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
+// where user needs to get RefreshToken offline
+func (o ConnectionOAuth2ResponsePtrOutput) RefreshToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required by QuickBooks and Xero connection categories
+func (o ConnectionOAuth2ResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Concur, ServiceNow auth server AccessToken grant type is 'Password'
+// which requires UsernamePassword
+func (o ConnectionOAuth2ResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOAuth2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionPersonalAccessToken struct {
+	Pat *string `pulumi:"pat"`
+}
+
+// ConnectionPersonalAccessTokenInput is an input type that accepts ConnectionPersonalAccessTokenArgs and ConnectionPersonalAccessTokenOutput values.
+// You can construct a concrete instance of `ConnectionPersonalAccessTokenInput` via:
+//
+//	ConnectionPersonalAccessTokenArgs{...}
+type ConnectionPersonalAccessTokenInput interface {
+	pulumi.Input
+
+	ToConnectionPersonalAccessTokenOutput() ConnectionPersonalAccessTokenOutput
+	ToConnectionPersonalAccessTokenOutputWithContext(context.Context) ConnectionPersonalAccessTokenOutput
+}
+
+type ConnectionPersonalAccessTokenArgs struct {
+	Pat pulumi.StringPtrInput `pulumi:"pat"`
+}
+
+func (ConnectionPersonalAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPersonalAccessToken)(nil)).Elem()
+}
+
+func (i ConnectionPersonalAccessTokenArgs) ToConnectionPersonalAccessTokenOutput() ConnectionPersonalAccessTokenOutput {
+	return i.ToConnectionPersonalAccessTokenOutputWithContext(context.Background())
+}
+
+func (i ConnectionPersonalAccessTokenArgs) ToConnectionPersonalAccessTokenOutputWithContext(ctx context.Context) ConnectionPersonalAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPersonalAccessTokenOutput)
+}
+
+func (i ConnectionPersonalAccessTokenArgs) ToConnectionPersonalAccessTokenPtrOutput() ConnectionPersonalAccessTokenPtrOutput {
+	return i.ToConnectionPersonalAccessTokenPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionPersonalAccessTokenArgs) ToConnectionPersonalAccessTokenPtrOutputWithContext(ctx context.Context) ConnectionPersonalAccessTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPersonalAccessTokenOutput).ToConnectionPersonalAccessTokenPtrOutputWithContext(ctx)
+}
+
+// ConnectionPersonalAccessTokenPtrInput is an input type that accepts ConnectionPersonalAccessTokenArgs, ConnectionPersonalAccessTokenPtr and ConnectionPersonalAccessTokenPtrOutput values.
+// You can construct a concrete instance of `ConnectionPersonalAccessTokenPtrInput` via:
+//
+//	        ConnectionPersonalAccessTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionPersonalAccessTokenPtrInput interface {
+	pulumi.Input
+
+	ToConnectionPersonalAccessTokenPtrOutput() ConnectionPersonalAccessTokenPtrOutput
+	ToConnectionPersonalAccessTokenPtrOutputWithContext(context.Context) ConnectionPersonalAccessTokenPtrOutput
+}
+
+type connectionPersonalAccessTokenPtrType ConnectionPersonalAccessTokenArgs
+
+func ConnectionPersonalAccessTokenPtr(v *ConnectionPersonalAccessTokenArgs) ConnectionPersonalAccessTokenPtrInput {
+	return (*connectionPersonalAccessTokenPtrType)(v)
+}
+
+func (*connectionPersonalAccessTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionPersonalAccessToken)(nil)).Elem()
+}
+
+func (i *connectionPersonalAccessTokenPtrType) ToConnectionPersonalAccessTokenPtrOutput() ConnectionPersonalAccessTokenPtrOutput {
+	return i.ToConnectionPersonalAccessTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionPersonalAccessTokenPtrType) ToConnectionPersonalAccessTokenPtrOutputWithContext(ctx context.Context) ConnectionPersonalAccessTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPersonalAccessTokenPtrOutput)
+}
+
+type ConnectionPersonalAccessTokenOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPersonalAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPersonalAccessToken)(nil)).Elem()
+}
+
+func (o ConnectionPersonalAccessTokenOutput) ToConnectionPersonalAccessTokenOutput() ConnectionPersonalAccessTokenOutput {
+	return o
+}
+
+func (o ConnectionPersonalAccessTokenOutput) ToConnectionPersonalAccessTokenOutputWithContext(ctx context.Context) ConnectionPersonalAccessTokenOutput {
+	return o
+}
+
+func (o ConnectionPersonalAccessTokenOutput) ToConnectionPersonalAccessTokenPtrOutput() ConnectionPersonalAccessTokenPtrOutput {
+	return o.ToConnectionPersonalAccessTokenPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionPersonalAccessTokenOutput) ToConnectionPersonalAccessTokenPtrOutputWithContext(ctx context.Context) ConnectionPersonalAccessTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionPersonalAccessToken) *ConnectionPersonalAccessToken {
+		return &v
+	}).(ConnectionPersonalAccessTokenPtrOutput)
+}
+
+func (o ConnectionPersonalAccessTokenOutput) Pat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionPersonalAccessToken) *string { return v.Pat }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionPersonalAccessTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPersonalAccessTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionPersonalAccessToken)(nil)).Elem()
+}
+
+func (o ConnectionPersonalAccessTokenPtrOutput) ToConnectionPersonalAccessTokenPtrOutput() ConnectionPersonalAccessTokenPtrOutput {
+	return o
+}
+
+func (o ConnectionPersonalAccessTokenPtrOutput) ToConnectionPersonalAccessTokenPtrOutputWithContext(ctx context.Context) ConnectionPersonalAccessTokenPtrOutput {
+	return o
+}
+
+func (o ConnectionPersonalAccessTokenPtrOutput) Elem() ConnectionPersonalAccessTokenOutput {
+	return o.ApplyT(func(v *ConnectionPersonalAccessToken) ConnectionPersonalAccessToken {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionPersonalAccessToken
+		return ret
+	}).(ConnectionPersonalAccessTokenOutput)
+}
+
+func (o ConnectionPersonalAccessTokenPtrOutput) Pat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionPersonalAccessToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pat
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionPersonalAccessTokenResponse struct {
+	Pat *string `pulumi:"pat"`
+}
+
+type ConnectionPersonalAccessTokenResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPersonalAccessTokenResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPersonalAccessTokenResponse)(nil)).Elem()
+}
+
+func (o ConnectionPersonalAccessTokenResponseOutput) ToConnectionPersonalAccessTokenResponseOutput() ConnectionPersonalAccessTokenResponseOutput {
+	return o
+}
+
+func (o ConnectionPersonalAccessTokenResponseOutput) ToConnectionPersonalAccessTokenResponseOutputWithContext(ctx context.Context) ConnectionPersonalAccessTokenResponseOutput {
+	return o
+}
+
+func (o ConnectionPersonalAccessTokenResponseOutput) Pat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionPersonalAccessTokenResponse) *string { return v.Pat }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionPersonalAccessTokenResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPersonalAccessTokenResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionPersonalAccessTokenResponse)(nil)).Elem()
+}
+
+func (o ConnectionPersonalAccessTokenResponsePtrOutput) ToConnectionPersonalAccessTokenResponsePtrOutput() ConnectionPersonalAccessTokenResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionPersonalAccessTokenResponsePtrOutput) ToConnectionPersonalAccessTokenResponsePtrOutputWithContext(ctx context.Context) ConnectionPersonalAccessTokenResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionPersonalAccessTokenResponsePtrOutput) Elem() ConnectionPersonalAccessTokenResponseOutput {
+	return o.ApplyT(func(v *ConnectionPersonalAccessTokenResponse) ConnectionPersonalAccessTokenResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionPersonalAccessTokenResponse
+		return ret
+	}).(ConnectionPersonalAccessTokenResponseOutput)
+}
+
+func (o ConnectionPersonalAccessTokenResponsePtrOutput) Pat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionPersonalAccessTokenResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pat
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionServicePrincipal struct {
+	ClientId     *string `pulumi:"clientId"`
+	ClientSecret *string `pulumi:"clientSecret"`
+	TenantId     *string `pulumi:"tenantId"`
+}
+
+// ConnectionServicePrincipalInput is an input type that accepts ConnectionServicePrincipalArgs and ConnectionServicePrincipalOutput values.
+// You can construct a concrete instance of `ConnectionServicePrincipalInput` via:
+//
+//	ConnectionServicePrincipalArgs{...}
+type ConnectionServicePrincipalInput interface {
+	pulumi.Input
+
+	ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput
+	ToConnectionServicePrincipalOutputWithContext(context.Context) ConnectionServicePrincipalOutput
+}
+
+type ConnectionServicePrincipalArgs struct {
+	ClientId     pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	TenantId     pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (ConnectionServicePrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionServicePrincipal)(nil)).Elem()
+}
+
+func (i ConnectionServicePrincipalArgs) ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput {
+	return i.ToConnectionServicePrincipalOutputWithContext(context.Background())
+}
+
+func (i ConnectionServicePrincipalArgs) ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionServicePrincipalOutput)
+}
+
+func (i ConnectionServicePrincipalArgs) ToConnectionServicePrincipalPtrOutput() ConnectionServicePrincipalPtrOutput {
+	return i.ToConnectionServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionServicePrincipalArgs) ToConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) ConnectionServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionServicePrincipalOutput).ToConnectionServicePrincipalPtrOutputWithContext(ctx)
+}
+
+// ConnectionServicePrincipalPtrInput is an input type that accepts ConnectionServicePrincipalArgs, ConnectionServicePrincipalPtr and ConnectionServicePrincipalPtrOutput values.
+// You can construct a concrete instance of `ConnectionServicePrincipalPtrInput` via:
+//
+//	        ConnectionServicePrincipalArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionServicePrincipalPtrInput interface {
+	pulumi.Input
+
+	ToConnectionServicePrincipalPtrOutput() ConnectionServicePrincipalPtrOutput
+	ToConnectionServicePrincipalPtrOutputWithContext(context.Context) ConnectionServicePrincipalPtrOutput
+}
+
+type connectionServicePrincipalPtrType ConnectionServicePrincipalArgs
+
+func ConnectionServicePrincipalPtr(v *ConnectionServicePrincipalArgs) ConnectionServicePrincipalPtrInput {
+	return (*connectionServicePrincipalPtrType)(v)
+}
+
+func (*connectionServicePrincipalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionServicePrincipal)(nil)).Elem()
+}
+
+func (i *connectionServicePrincipalPtrType) ToConnectionServicePrincipalPtrOutput() ConnectionServicePrincipalPtrOutput {
+	return i.ToConnectionServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionServicePrincipalPtrType) ToConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) ConnectionServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionServicePrincipalPtrOutput)
+}
+
+type ConnectionServicePrincipalOutput struct{ *pulumi.OutputState }
+
+func (ConnectionServicePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionServicePrincipal)(nil)).Elem()
+}
+
+func (o ConnectionServicePrincipalOutput) ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalOutput) ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalOutput) ToConnectionServicePrincipalPtrOutput() ConnectionServicePrincipalPtrOutput {
+	return o.ToConnectionServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionServicePrincipalOutput) ToConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) ConnectionServicePrincipalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionServicePrincipal) *ConnectionServicePrincipal {
+		return &v
+	}).(ConnectionServicePrincipalPtrOutput)
+}
+
+func (o ConnectionServicePrincipalOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionServicePrincipal) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionServicePrincipalOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionServicePrincipal) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionServicePrincipalOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionServicePrincipal) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionServicePrincipalPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionServicePrincipalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionServicePrincipal)(nil)).Elem()
+}
+
+func (o ConnectionServicePrincipalPtrOutput) ToConnectionServicePrincipalPtrOutput() ConnectionServicePrincipalPtrOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalPtrOutput) ToConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) ConnectionServicePrincipalPtrOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalPtrOutput) Elem() ConnectionServicePrincipalOutput {
+	return o.ApplyT(func(v *ConnectionServicePrincipal) ConnectionServicePrincipal {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionServicePrincipal
+		return ret
+	}).(ConnectionServicePrincipalOutput)
+}
+
+func (o ConnectionServicePrincipalPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionServicePrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionServicePrincipalPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionServicePrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionServicePrincipalPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionServicePrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionServicePrincipalResponse struct {
+	ClientId     *string `pulumi:"clientId"`
+	ClientSecret *string `pulumi:"clientSecret"`
+	TenantId     *string `pulumi:"tenantId"`
+}
+
+type ConnectionServicePrincipalResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectionServicePrincipalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionServicePrincipalResponse)(nil)).Elem()
+}
+
+func (o ConnectionServicePrincipalResponseOutput) ToConnectionServicePrincipalResponseOutput() ConnectionServicePrincipalResponseOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalResponseOutput) ToConnectionServicePrincipalResponseOutputWithContext(ctx context.Context) ConnectionServicePrincipalResponseOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionServicePrincipalResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionServicePrincipalResponseOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionServicePrincipalResponse) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionServicePrincipalResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionServicePrincipalResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionServicePrincipalResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionServicePrincipalResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionServicePrincipalResponse)(nil)).Elem()
+}
+
+func (o ConnectionServicePrincipalResponsePtrOutput) ToConnectionServicePrincipalResponsePtrOutput() ConnectionServicePrincipalResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalResponsePtrOutput) ToConnectionServicePrincipalResponsePtrOutputWithContext(ctx context.Context) ConnectionServicePrincipalResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalResponsePtrOutput) Elem() ConnectionServicePrincipalResponseOutput {
+	return o.ApplyT(func(v *ConnectionServicePrincipalResponse) ConnectionServicePrincipalResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionServicePrincipalResponse
+		return ret
+	}).(ConnectionServicePrincipalResponseOutput)
+}
+
+func (o ConnectionServicePrincipalResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionServicePrincipalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionServicePrincipalResponsePtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionServicePrincipalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionServicePrincipalResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionServicePrincipalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionSharedAccessSignature struct {
+	Sas *string `pulumi:"sas"`
+}
+
+// ConnectionSharedAccessSignatureInput is an input type that accepts ConnectionSharedAccessSignatureArgs and ConnectionSharedAccessSignatureOutput values.
+// You can construct a concrete instance of `ConnectionSharedAccessSignatureInput` via:
+//
+//	ConnectionSharedAccessSignatureArgs{...}
+type ConnectionSharedAccessSignatureInput interface {
+	pulumi.Input
+
+	ToConnectionSharedAccessSignatureOutput() ConnectionSharedAccessSignatureOutput
+	ToConnectionSharedAccessSignatureOutputWithContext(context.Context) ConnectionSharedAccessSignatureOutput
+}
+
+type ConnectionSharedAccessSignatureArgs struct {
+	Sas pulumi.StringPtrInput `pulumi:"sas"`
+}
+
+func (ConnectionSharedAccessSignatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSharedAccessSignature)(nil)).Elem()
+}
+
+func (i ConnectionSharedAccessSignatureArgs) ToConnectionSharedAccessSignatureOutput() ConnectionSharedAccessSignatureOutput {
+	return i.ToConnectionSharedAccessSignatureOutputWithContext(context.Background())
+}
+
+func (i ConnectionSharedAccessSignatureArgs) ToConnectionSharedAccessSignatureOutputWithContext(ctx context.Context) ConnectionSharedAccessSignatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSharedAccessSignatureOutput)
+}
+
+func (i ConnectionSharedAccessSignatureArgs) ToConnectionSharedAccessSignaturePtrOutput() ConnectionSharedAccessSignaturePtrOutput {
+	return i.ToConnectionSharedAccessSignaturePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionSharedAccessSignatureArgs) ToConnectionSharedAccessSignaturePtrOutputWithContext(ctx context.Context) ConnectionSharedAccessSignaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSharedAccessSignatureOutput).ToConnectionSharedAccessSignaturePtrOutputWithContext(ctx)
+}
+
+// ConnectionSharedAccessSignaturePtrInput is an input type that accepts ConnectionSharedAccessSignatureArgs, ConnectionSharedAccessSignaturePtr and ConnectionSharedAccessSignaturePtrOutput values.
+// You can construct a concrete instance of `ConnectionSharedAccessSignaturePtrInput` via:
+//
+//	        ConnectionSharedAccessSignatureArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionSharedAccessSignaturePtrInput interface {
+	pulumi.Input
+
+	ToConnectionSharedAccessSignaturePtrOutput() ConnectionSharedAccessSignaturePtrOutput
+	ToConnectionSharedAccessSignaturePtrOutputWithContext(context.Context) ConnectionSharedAccessSignaturePtrOutput
+}
+
+type connectionSharedAccessSignaturePtrType ConnectionSharedAccessSignatureArgs
+
+func ConnectionSharedAccessSignaturePtr(v *ConnectionSharedAccessSignatureArgs) ConnectionSharedAccessSignaturePtrInput {
+	return (*connectionSharedAccessSignaturePtrType)(v)
+}
+
+func (*connectionSharedAccessSignaturePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSharedAccessSignature)(nil)).Elem()
+}
+
+func (i *connectionSharedAccessSignaturePtrType) ToConnectionSharedAccessSignaturePtrOutput() ConnectionSharedAccessSignaturePtrOutput {
+	return i.ToConnectionSharedAccessSignaturePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionSharedAccessSignaturePtrType) ToConnectionSharedAccessSignaturePtrOutputWithContext(ctx context.Context) ConnectionSharedAccessSignaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSharedAccessSignaturePtrOutput)
+}
+
+type ConnectionSharedAccessSignatureOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSharedAccessSignatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSharedAccessSignature)(nil)).Elem()
+}
+
+func (o ConnectionSharedAccessSignatureOutput) ToConnectionSharedAccessSignatureOutput() ConnectionSharedAccessSignatureOutput {
+	return o
+}
+
+func (o ConnectionSharedAccessSignatureOutput) ToConnectionSharedAccessSignatureOutputWithContext(ctx context.Context) ConnectionSharedAccessSignatureOutput {
+	return o
+}
+
+func (o ConnectionSharedAccessSignatureOutput) ToConnectionSharedAccessSignaturePtrOutput() ConnectionSharedAccessSignaturePtrOutput {
+	return o.ToConnectionSharedAccessSignaturePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionSharedAccessSignatureOutput) ToConnectionSharedAccessSignaturePtrOutputWithContext(ctx context.Context) ConnectionSharedAccessSignaturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionSharedAccessSignature) *ConnectionSharedAccessSignature {
+		return &v
+	}).(ConnectionSharedAccessSignaturePtrOutput)
+}
+
+func (o ConnectionSharedAccessSignatureOutput) Sas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSharedAccessSignature) *string { return v.Sas }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionSharedAccessSignaturePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSharedAccessSignaturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSharedAccessSignature)(nil)).Elem()
+}
+
+func (o ConnectionSharedAccessSignaturePtrOutput) ToConnectionSharedAccessSignaturePtrOutput() ConnectionSharedAccessSignaturePtrOutput {
+	return o
+}
+
+func (o ConnectionSharedAccessSignaturePtrOutput) ToConnectionSharedAccessSignaturePtrOutputWithContext(ctx context.Context) ConnectionSharedAccessSignaturePtrOutput {
+	return o
+}
+
+func (o ConnectionSharedAccessSignaturePtrOutput) Elem() ConnectionSharedAccessSignatureOutput {
+	return o.ApplyT(func(v *ConnectionSharedAccessSignature) ConnectionSharedAccessSignature {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionSharedAccessSignature
+		return ret
+	}).(ConnectionSharedAccessSignatureOutput)
+}
+
+func (o ConnectionSharedAccessSignaturePtrOutput) Sas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSharedAccessSignature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sas
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionSharedAccessSignatureResponse struct {
+	Sas *string `pulumi:"sas"`
+}
+
+type ConnectionSharedAccessSignatureResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSharedAccessSignatureResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSharedAccessSignatureResponse)(nil)).Elem()
+}
+
+func (o ConnectionSharedAccessSignatureResponseOutput) ToConnectionSharedAccessSignatureResponseOutput() ConnectionSharedAccessSignatureResponseOutput {
+	return o
+}
+
+func (o ConnectionSharedAccessSignatureResponseOutput) ToConnectionSharedAccessSignatureResponseOutputWithContext(ctx context.Context) ConnectionSharedAccessSignatureResponseOutput {
+	return o
+}
+
+func (o ConnectionSharedAccessSignatureResponseOutput) Sas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSharedAccessSignatureResponse) *string { return v.Sas }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionSharedAccessSignatureResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSharedAccessSignatureResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSharedAccessSignatureResponse)(nil)).Elem()
+}
+
+func (o ConnectionSharedAccessSignatureResponsePtrOutput) ToConnectionSharedAccessSignatureResponsePtrOutput() ConnectionSharedAccessSignatureResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionSharedAccessSignatureResponsePtrOutput) ToConnectionSharedAccessSignatureResponsePtrOutputWithContext(ctx context.Context) ConnectionSharedAccessSignatureResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionSharedAccessSignatureResponsePtrOutput) Elem() ConnectionSharedAccessSignatureResponseOutput {
+	return o.ApplyT(func(v *ConnectionSharedAccessSignatureResponse) ConnectionSharedAccessSignatureResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionSharedAccessSignatureResponse
+		return ret
+	}).(ConnectionSharedAccessSignatureResponseOutput)
+}
+
+func (o ConnectionSharedAccessSignatureResponsePtrOutput) Sas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSharedAccessSignatureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sas
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionUsernamePassword struct {
+	Password *string `pulumi:"password"`
+	// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
+	SecurityToken *string `pulumi:"securityToken"`
+	Username      *string `pulumi:"username"`
+}
+
+// ConnectionUsernamePasswordInput is an input type that accepts ConnectionUsernamePasswordArgs and ConnectionUsernamePasswordOutput values.
+// You can construct a concrete instance of `ConnectionUsernamePasswordInput` via:
+//
+//	ConnectionUsernamePasswordArgs{...}
+type ConnectionUsernamePasswordInput interface {
+	pulumi.Input
+
+	ToConnectionUsernamePasswordOutput() ConnectionUsernamePasswordOutput
+	ToConnectionUsernamePasswordOutputWithContext(context.Context) ConnectionUsernamePasswordOutput
+}
+
+type ConnectionUsernamePasswordArgs struct {
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
+	SecurityToken pulumi.StringPtrInput `pulumi:"securityToken"`
+	Username      pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ConnectionUsernamePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionUsernamePassword)(nil)).Elem()
+}
+
+func (i ConnectionUsernamePasswordArgs) ToConnectionUsernamePasswordOutput() ConnectionUsernamePasswordOutput {
+	return i.ToConnectionUsernamePasswordOutputWithContext(context.Background())
+}
+
+func (i ConnectionUsernamePasswordArgs) ToConnectionUsernamePasswordOutputWithContext(ctx context.Context) ConnectionUsernamePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionUsernamePasswordOutput)
+}
+
+func (i ConnectionUsernamePasswordArgs) ToConnectionUsernamePasswordPtrOutput() ConnectionUsernamePasswordPtrOutput {
+	return i.ToConnectionUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionUsernamePasswordArgs) ToConnectionUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectionUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionUsernamePasswordOutput).ToConnectionUsernamePasswordPtrOutputWithContext(ctx)
+}
+
+// ConnectionUsernamePasswordPtrInput is an input type that accepts ConnectionUsernamePasswordArgs, ConnectionUsernamePasswordPtr and ConnectionUsernamePasswordPtrOutput values.
+// You can construct a concrete instance of `ConnectionUsernamePasswordPtrInput` via:
+//
+//	        ConnectionUsernamePasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionUsernamePasswordPtrInput interface {
+	pulumi.Input
+
+	ToConnectionUsernamePasswordPtrOutput() ConnectionUsernamePasswordPtrOutput
+	ToConnectionUsernamePasswordPtrOutputWithContext(context.Context) ConnectionUsernamePasswordPtrOutput
+}
+
+type connectionUsernamePasswordPtrType ConnectionUsernamePasswordArgs
+
+func ConnectionUsernamePasswordPtr(v *ConnectionUsernamePasswordArgs) ConnectionUsernamePasswordPtrInput {
+	return (*connectionUsernamePasswordPtrType)(v)
+}
+
+func (*connectionUsernamePasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionUsernamePassword)(nil)).Elem()
+}
+
+func (i *connectionUsernamePasswordPtrType) ToConnectionUsernamePasswordPtrOutput() ConnectionUsernamePasswordPtrOutput {
+	return i.ToConnectionUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionUsernamePasswordPtrType) ToConnectionUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectionUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionUsernamePasswordPtrOutput)
+}
+
+type ConnectionUsernamePasswordOutput struct{ *pulumi.OutputState }
+
+func (ConnectionUsernamePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionUsernamePassword)(nil)).Elem()
+}
+
+func (o ConnectionUsernamePasswordOutput) ToConnectionUsernamePasswordOutput() ConnectionUsernamePasswordOutput {
+	return o
+}
+
+func (o ConnectionUsernamePasswordOutput) ToConnectionUsernamePasswordOutputWithContext(ctx context.Context) ConnectionUsernamePasswordOutput {
+	return o
+}
+
+func (o ConnectionUsernamePasswordOutput) ToConnectionUsernamePasswordPtrOutput() ConnectionUsernamePasswordPtrOutput {
+	return o.ToConnectionUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionUsernamePasswordOutput) ToConnectionUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectionUsernamePasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionUsernamePassword) *ConnectionUsernamePassword {
+		return &v
+	}).(ConnectionUsernamePasswordPtrOutput)
+}
+
+func (o ConnectionUsernamePasswordOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionUsernamePassword) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
+func (o ConnectionUsernamePasswordOutput) SecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionUsernamePassword) *string { return v.SecurityToken }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionUsernamePasswordOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionUsernamePassword) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionUsernamePasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionUsernamePasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionUsernamePassword)(nil)).Elem()
+}
+
+func (o ConnectionUsernamePasswordPtrOutput) ToConnectionUsernamePasswordPtrOutput() ConnectionUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o ConnectionUsernamePasswordPtrOutput) ToConnectionUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectionUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o ConnectionUsernamePasswordPtrOutput) Elem() ConnectionUsernamePasswordOutput {
+	return o.ApplyT(func(v *ConnectionUsernamePassword) ConnectionUsernamePassword {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionUsernamePassword
+		return ret
+	}).(ConnectionUsernamePasswordOutput)
+}
+
+func (o ConnectionUsernamePasswordPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
+func (o ConnectionUsernamePasswordPtrOutput) SecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityToken
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionUsernamePasswordPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionUsernamePasswordResponse struct {
+	Password *string `pulumi:"password"`
+	// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
+	SecurityToken *string `pulumi:"securityToken"`
+	Username      *string `pulumi:"username"`
+}
+
+type ConnectionUsernamePasswordResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectionUsernamePasswordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionUsernamePasswordResponse)(nil)).Elem()
+}
+
+func (o ConnectionUsernamePasswordResponseOutput) ToConnectionUsernamePasswordResponseOutput() ConnectionUsernamePasswordResponseOutput {
+	return o
+}
+
+func (o ConnectionUsernamePasswordResponseOutput) ToConnectionUsernamePasswordResponseOutputWithContext(ctx context.Context) ConnectionUsernamePasswordResponseOutput {
+	return o
+}
+
+func (o ConnectionUsernamePasswordResponseOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionUsernamePasswordResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
+func (o ConnectionUsernamePasswordResponseOutput) SecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionUsernamePasswordResponse) *string { return v.SecurityToken }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionUsernamePasswordResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionUsernamePasswordResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionUsernamePasswordResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionUsernamePasswordResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionUsernamePasswordResponse)(nil)).Elem()
+}
+
+func (o ConnectionUsernamePasswordResponsePtrOutput) ToConnectionUsernamePasswordResponsePtrOutput() ConnectionUsernamePasswordResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionUsernamePasswordResponsePtrOutput) ToConnectionUsernamePasswordResponsePtrOutputWithContext(ctx context.Context) ConnectionUsernamePasswordResponsePtrOutput {
+	return o
+}
+
+func (o ConnectionUsernamePasswordResponsePtrOutput) Elem() ConnectionUsernamePasswordResponseOutput {
+	return o.ApplyT(func(v *ConnectionUsernamePasswordResponse) ConnectionUsernamePasswordResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionUsernamePasswordResponse
+		return ret
+	}).(ConnectionUsernamePasswordResponseOutput)
+}
+
+func (o ConnectionUsernamePasswordResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionUsernamePasswordResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
+func (o ConnectionUsernamePasswordResponsePtrOutput) SecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionUsernamePasswordResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityToken
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionUsernamePasswordResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionUsernamePasswordResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the source to which filter applies.
 type CustomBlocklistConfig struct {
 	// If blocking would occur.
@@ -2215,6 +5623,453 @@ func (o CustomBlocklistConfigResponseArrayOutput) Index(i pulumi.IntInput) Custo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomBlocklistConfigResponse {
 		return vs[0].([]CustomBlocklistConfigResponse)[vs[1].(int)]
 	}).(CustomBlocklistConfigResponseOutput)
+}
+
+// Custom Keys credential object
+type CustomKeys struct {
+	Keys map[string]string `pulumi:"keys"`
+}
+
+// CustomKeysInput is an input type that accepts CustomKeysArgs and CustomKeysOutput values.
+// You can construct a concrete instance of `CustomKeysInput` via:
+//
+//	CustomKeysArgs{...}
+type CustomKeysInput interface {
+	pulumi.Input
+
+	ToCustomKeysOutput() CustomKeysOutput
+	ToCustomKeysOutputWithContext(context.Context) CustomKeysOutput
+}
+
+// Custom Keys credential object
+type CustomKeysArgs struct {
+	Keys pulumi.StringMapInput `pulumi:"keys"`
+}
+
+func (CustomKeysArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomKeys)(nil)).Elem()
+}
+
+func (i CustomKeysArgs) ToCustomKeysOutput() CustomKeysOutput {
+	return i.ToCustomKeysOutputWithContext(context.Background())
+}
+
+func (i CustomKeysArgs) ToCustomKeysOutputWithContext(ctx context.Context) CustomKeysOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomKeysOutput)
+}
+
+func (i CustomKeysArgs) ToCustomKeysPtrOutput() CustomKeysPtrOutput {
+	return i.ToCustomKeysPtrOutputWithContext(context.Background())
+}
+
+func (i CustomKeysArgs) ToCustomKeysPtrOutputWithContext(ctx context.Context) CustomKeysPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomKeysOutput).ToCustomKeysPtrOutputWithContext(ctx)
+}
+
+// CustomKeysPtrInput is an input type that accepts CustomKeysArgs, CustomKeysPtr and CustomKeysPtrOutput values.
+// You can construct a concrete instance of `CustomKeysPtrInput` via:
+//
+//	        CustomKeysArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomKeysPtrInput interface {
+	pulumi.Input
+
+	ToCustomKeysPtrOutput() CustomKeysPtrOutput
+	ToCustomKeysPtrOutputWithContext(context.Context) CustomKeysPtrOutput
+}
+
+type customKeysPtrType CustomKeysArgs
+
+func CustomKeysPtr(v *CustomKeysArgs) CustomKeysPtrInput {
+	return (*customKeysPtrType)(v)
+}
+
+func (*customKeysPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomKeys)(nil)).Elem()
+}
+
+func (i *customKeysPtrType) ToCustomKeysPtrOutput() CustomKeysPtrOutput {
+	return i.ToCustomKeysPtrOutputWithContext(context.Background())
+}
+
+func (i *customKeysPtrType) ToCustomKeysPtrOutputWithContext(ctx context.Context) CustomKeysPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomKeysPtrOutput)
+}
+
+// Custom Keys credential object
+type CustomKeysOutput struct{ *pulumi.OutputState }
+
+func (CustomKeysOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomKeys)(nil)).Elem()
+}
+
+func (o CustomKeysOutput) ToCustomKeysOutput() CustomKeysOutput {
+	return o
+}
+
+func (o CustomKeysOutput) ToCustomKeysOutputWithContext(ctx context.Context) CustomKeysOutput {
+	return o
+}
+
+func (o CustomKeysOutput) ToCustomKeysPtrOutput() CustomKeysPtrOutput {
+	return o.ToCustomKeysPtrOutputWithContext(context.Background())
+}
+
+func (o CustomKeysOutput) ToCustomKeysPtrOutputWithContext(ctx context.Context) CustomKeysPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomKeys) *CustomKeys {
+		return &v
+	}).(CustomKeysPtrOutput)
+}
+
+func (o CustomKeysOutput) Keys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CustomKeys) map[string]string { return v.Keys }).(pulumi.StringMapOutput)
+}
+
+type CustomKeysPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomKeysPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomKeys)(nil)).Elem()
+}
+
+func (o CustomKeysPtrOutput) ToCustomKeysPtrOutput() CustomKeysPtrOutput {
+	return o
+}
+
+func (o CustomKeysPtrOutput) ToCustomKeysPtrOutputWithContext(ctx context.Context) CustomKeysPtrOutput {
+	return o
+}
+
+func (o CustomKeysPtrOutput) Elem() CustomKeysOutput {
+	return o.ApplyT(func(v *CustomKeys) CustomKeys {
+		if v != nil {
+			return *v
+		}
+		var ret CustomKeys
+		return ret
+	}).(CustomKeysOutput)
+}
+
+func (o CustomKeysPtrOutput) Keys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomKeys) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Keys
+	}).(pulumi.StringMapOutput)
+}
+
+// Category:= CustomKeys
+// AuthType:= CustomKeys (as type discriminator)
+// Credentials:= {CustomKeys} as CustomKeys
+// Target:= {any value}
+// Use Metadata property bag for ApiVersion and other metadata fields
+type CustomKeysConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'CustomKeys'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category *string `pulumi:"category"`
+	// Custom Keys credential object
+	Credentials   *CustomKeys `pulumi:"credentials"`
+	Error         *string     `pulumi:"error"`
+	ExpiryTime    *string     `pulumi:"expiryTime"`
+	IsSharedToAll *bool       `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// CustomKeysConnectionPropertiesInput is an input type that accepts CustomKeysConnectionPropertiesArgs and CustomKeysConnectionPropertiesOutput values.
+// You can construct a concrete instance of `CustomKeysConnectionPropertiesInput` via:
+//
+//	CustomKeysConnectionPropertiesArgs{...}
+type CustomKeysConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToCustomKeysConnectionPropertiesOutput() CustomKeysConnectionPropertiesOutput
+	ToCustomKeysConnectionPropertiesOutputWithContext(context.Context) CustomKeysConnectionPropertiesOutput
+}
+
+// Category:= CustomKeys
+// AuthType:= CustomKeys (as type discriminator)
+// Credentials:= {CustomKeys} as CustomKeys
+// Target:= {any value}
+// Use Metadata property bag for ApiVersion and other metadata fields
+type CustomKeysConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'CustomKeys'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Custom Keys credential object
+	Credentials   CustomKeysPtrInput    `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (CustomKeysConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomKeysConnectionProperties)(nil)).Elem()
+}
+
+func (i CustomKeysConnectionPropertiesArgs) ToCustomKeysConnectionPropertiesOutput() CustomKeysConnectionPropertiesOutput {
+	return i.ToCustomKeysConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i CustomKeysConnectionPropertiesArgs) ToCustomKeysConnectionPropertiesOutputWithContext(ctx context.Context) CustomKeysConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomKeysConnectionPropertiesOutput)
+}
+
+// Category:= CustomKeys
+// AuthType:= CustomKeys (as type discriminator)
+// Credentials:= {CustomKeys} as CustomKeys
+// Target:= {any value}
+// Use Metadata property bag for ApiVersion and other metadata fields
+type CustomKeysConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (CustomKeysConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomKeysConnectionProperties)(nil)).Elem()
+}
+
+func (o CustomKeysConnectionPropertiesOutput) ToCustomKeysConnectionPropertiesOutput() CustomKeysConnectionPropertiesOutput {
+	return o
+}
+
+func (o CustomKeysConnectionPropertiesOutput) ToCustomKeysConnectionPropertiesOutputWithContext(ctx context.Context) CustomKeysConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'CustomKeys'.
+func (o CustomKeysConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o CustomKeysConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Custom Keys credential object
+func (o CustomKeysConnectionPropertiesOutput) Credentials() CustomKeysPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) *CustomKeys { return v.Credentials }).(CustomKeysPtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o CustomKeysConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o CustomKeysConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o CustomKeysConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// Category:= CustomKeys
+// AuthType:= CustomKeys (as type discriminator)
+// Credentials:= {CustomKeys} as CustomKeys
+// Target:= {any value}
+// Use Metadata property bag for ApiVersion and other metadata fields
+type CustomKeysConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'CustomKeys'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string `pulumi:"category"`
+	CreatedByWorkspaceArmId string  `pulumi:"createdByWorkspaceArmId"`
+	// Custom Keys credential object
+	Credentials *CustomKeysResponse `pulumi:"credentials"`
+	Error       *string             `pulumi:"error"`
+	ExpiryTime  *string             `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// Category:= CustomKeys
+// AuthType:= CustomKeys (as type discriminator)
+// Credentials:= {CustomKeys} as CustomKeys
+// Target:= {any value}
+// Use Metadata property bag for ApiVersion and other metadata fields
+type CustomKeysConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomKeysConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomKeysConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o CustomKeysConnectionPropertiesResponseOutput) ToCustomKeysConnectionPropertiesResponseOutput() CustomKeysConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o CustomKeysConnectionPropertiesResponseOutput) ToCustomKeysConnectionPropertiesResponseOutputWithContext(ctx context.Context) CustomKeysConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'CustomKeys'.
+func (o CustomKeysConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o CustomKeysConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+// Custom Keys credential object
+func (o CustomKeysConnectionPropertiesResponseOutput) Credentials() CustomKeysResponsePtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *CustomKeysResponse { return v.Credentials }).(CustomKeysResponsePtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o CustomKeysConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o CustomKeysConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o CustomKeysConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o CustomKeysConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o CustomKeysConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomKeysConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomKeysConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// Custom Keys credential object
+type CustomKeysResponse struct {
+	Keys map[string]string `pulumi:"keys"`
+}
+
+// Custom Keys credential object
+type CustomKeysResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomKeysResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomKeysResponse)(nil)).Elem()
+}
+
+func (o CustomKeysResponseOutput) ToCustomKeysResponseOutput() CustomKeysResponseOutput {
+	return o
+}
+
+func (o CustomKeysResponseOutput) ToCustomKeysResponseOutputWithContext(ctx context.Context) CustomKeysResponseOutput {
+	return o
+}
+
+func (o CustomKeysResponseOutput) Keys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CustomKeysResponse) map[string]string { return v.Keys }).(pulumi.StringMapOutput)
+}
+
+type CustomKeysResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomKeysResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomKeysResponse)(nil)).Elem()
+}
+
+func (o CustomKeysResponsePtrOutput) ToCustomKeysResponsePtrOutput() CustomKeysResponsePtrOutput {
+	return o
+}
+
+func (o CustomKeysResponsePtrOutput) ToCustomKeysResponsePtrOutputWithContext(ctx context.Context) CustomKeysResponsePtrOutput {
+	return o
+}
+
+func (o CustomKeysResponsePtrOutput) Elem() CustomKeysResponseOutput {
+	return o.ApplyT(func(v *CustomKeysResponse) CustomKeysResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomKeysResponse
+		return ret
+	}).(CustomKeysResponseOutput)
+}
+
+func (o CustomKeysResponsePtrOutput) Keys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomKeysResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Keys
+	}).(pulumi.StringMapOutput)
 }
 
 // Internal use only.
@@ -4710,6 +8565,234 @@ func (o KeyVaultPropertiesResponsePtrOutput) KeyVersion() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedIdentityAuthTypeConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'ManagedIdentity'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category      *string                    `pulumi:"category"`
+	Credentials   *ConnectionManagedIdentity `pulumi:"credentials"`
+	Error         *string                    `pulumi:"error"`
+	ExpiryTime    *string                    `pulumi:"expiryTime"`
+	IsSharedToAll *bool                      `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// ManagedIdentityAuthTypeConnectionPropertiesInput is an input type that accepts ManagedIdentityAuthTypeConnectionPropertiesArgs and ManagedIdentityAuthTypeConnectionPropertiesOutput values.
+// You can construct a concrete instance of `ManagedIdentityAuthTypeConnectionPropertiesInput` via:
+//
+//	ManagedIdentityAuthTypeConnectionPropertiesArgs{...}
+type ManagedIdentityAuthTypeConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToManagedIdentityAuthTypeConnectionPropertiesOutput() ManagedIdentityAuthTypeConnectionPropertiesOutput
+	ToManagedIdentityAuthTypeConnectionPropertiesOutputWithContext(context.Context) ManagedIdentityAuthTypeConnectionPropertiesOutput
+}
+
+type ManagedIdentityAuthTypeConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'ManagedIdentity'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category      pulumi.StringPtrInput             `pulumi:"category"`
+	Credentials   ConnectionManagedIdentityPtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput             `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput             `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput               `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (ManagedIdentityAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (i ManagedIdentityAuthTypeConnectionPropertiesArgs) ToManagedIdentityAuthTypeConnectionPropertiesOutput() ManagedIdentityAuthTypeConnectionPropertiesOutput {
+	return i.ToManagedIdentityAuthTypeConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentityAuthTypeConnectionPropertiesArgs) ToManagedIdentityAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) ManagedIdentityAuthTypeConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityAuthTypeConnectionPropertiesOutput)
+}
+
+type ManagedIdentityAuthTypeConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityAuthTypeConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) ToManagedIdentityAuthTypeConnectionPropertiesOutput() ManagedIdentityAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) ToManagedIdentityAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) ManagedIdentityAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'ManagedIdentity'.
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) Credentials() ConnectionManagedIdentityPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *ConnectionManagedIdentity { return v.Credentials }).(ConnectionManagedIdentityPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedIdentityAuthTypeConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'ManagedIdentity'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string                            `pulumi:"category"`
+	CreatedByWorkspaceArmId string                             `pulumi:"createdByWorkspaceArmId"`
+	Credentials             *ConnectionManagedIdentityResponse `pulumi:"credentials"`
+	Error                   *string                            `pulumi:"error"`
+	ExpiryTime              *string                            `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+type ManagedIdentityAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityAuthTypeConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) ToManagedIdentityAuthTypeConnectionPropertiesResponseOutput() ManagedIdentityAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) ToManagedIdentityAuthTypeConnectionPropertiesResponseOutputWithContext(ctx context.Context) ManagedIdentityAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'ManagedIdentity'.
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) Credentials() ConnectionManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *ConnectionManagedIdentityResponse {
+		return v.Credentials
+	}).(ConnectionManagedIdentityResponsePtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedIdentityAuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthTypeConnectionPropertiesResponse) *bool {
+		return v.UseWorkspaceManagedIdentity
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The multiregion settings Cognitive Services account.
 type MultiRegionSettings struct {
 	Regions []RegionSetting `pulumi:"regions"`
@@ -5245,6 +9328,679 @@ func (o NetworkRuleSetResponsePtrOutput) VirtualNetworkRules() VirtualNetworkRul
 		}
 		return v.VirtualNetworkRules
 	}).(VirtualNetworkRuleResponseArrayOutput)
+}
+
+type NoneAuthTypeConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'None'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category      *string `pulumi:"category"`
+	Error         *string `pulumi:"error"`
+	ExpiryTime    *string `pulumi:"expiryTime"`
+	IsSharedToAll *bool   `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// NoneAuthTypeConnectionPropertiesInput is an input type that accepts NoneAuthTypeConnectionPropertiesArgs and NoneAuthTypeConnectionPropertiesOutput values.
+// You can construct a concrete instance of `NoneAuthTypeConnectionPropertiesInput` via:
+//
+//	NoneAuthTypeConnectionPropertiesArgs{...}
+type NoneAuthTypeConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToNoneAuthTypeConnectionPropertiesOutput() NoneAuthTypeConnectionPropertiesOutput
+	ToNoneAuthTypeConnectionPropertiesOutputWithContext(context.Context) NoneAuthTypeConnectionPropertiesOutput
+}
+
+type NoneAuthTypeConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'None'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category      pulumi.StringPtrInput `pulumi:"category"`
+	Error         pulumi.StringPtrInput `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (NoneAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoneAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (i NoneAuthTypeConnectionPropertiesArgs) ToNoneAuthTypeConnectionPropertiesOutput() NoneAuthTypeConnectionPropertiesOutput {
+	return i.ToNoneAuthTypeConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i NoneAuthTypeConnectionPropertiesArgs) ToNoneAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) NoneAuthTypeConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoneAuthTypeConnectionPropertiesOutput)
+}
+
+type NoneAuthTypeConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (NoneAuthTypeConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoneAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (o NoneAuthTypeConnectionPropertiesOutput) ToNoneAuthTypeConnectionPropertiesOutput() NoneAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+func (o NoneAuthTypeConnectionPropertiesOutput) ToNoneAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) NoneAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'None'.
+func (o NoneAuthTypeConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o NoneAuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o NoneAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type NoneAuthTypeConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'None'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string `pulumi:"category"`
+	CreatedByWorkspaceArmId string  `pulumi:"createdByWorkspaceArmId"`
+	Error                   *string `pulumi:"error"`
+	ExpiryTime              *string `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+type NoneAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (NoneAuthTypeConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoneAuthTypeConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) ToNoneAuthTypeConnectionPropertiesResponseOutput() NoneAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) ToNoneAuthTypeConnectionPropertiesResponseOutputWithContext(ctx context.Context) NoneAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'None'.
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o NoneAuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NoneAuthTypeConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type OAuth2AuthTypeConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'OAuth2'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category *string `pulumi:"category"`
+	// ClientId and ClientSecret are required. Other properties are optional
+	// depending on each OAuth2 provider's implementation.
+	Credentials   *ConnectionOAuth2 `pulumi:"credentials"`
+	Error         *string           `pulumi:"error"`
+	ExpiryTime    *string           `pulumi:"expiryTime"`
+	IsSharedToAll *bool             `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// OAuth2AuthTypeConnectionPropertiesInput is an input type that accepts OAuth2AuthTypeConnectionPropertiesArgs and OAuth2AuthTypeConnectionPropertiesOutput values.
+// You can construct a concrete instance of `OAuth2AuthTypeConnectionPropertiesInput` via:
+//
+//	OAuth2AuthTypeConnectionPropertiesArgs{...}
+type OAuth2AuthTypeConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToOAuth2AuthTypeConnectionPropertiesOutput() OAuth2AuthTypeConnectionPropertiesOutput
+	ToOAuth2AuthTypeConnectionPropertiesOutputWithContext(context.Context) OAuth2AuthTypeConnectionPropertiesOutput
+}
+
+type OAuth2AuthTypeConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'OAuth2'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// ClientId and ClientSecret are required. Other properties are optional
+	// depending on each OAuth2 provider's implementation.
+	Credentials   ConnectionOAuth2PtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput    `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput    `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput      `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (OAuth2AuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OAuth2AuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (i OAuth2AuthTypeConnectionPropertiesArgs) ToOAuth2AuthTypeConnectionPropertiesOutput() OAuth2AuthTypeConnectionPropertiesOutput {
+	return i.ToOAuth2AuthTypeConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i OAuth2AuthTypeConnectionPropertiesArgs) ToOAuth2AuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) OAuth2AuthTypeConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OAuth2AuthTypeConnectionPropertiesOutput)
+}
+
+type OAuth2AuthTypeConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (OAuth2AuthTypeConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OAuth2AuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesOutput) ToOAuth2AuthTypeConnectionPropertiesOutput() OAuth2AuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesOutput) ToOAuth2AuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) OAuth2AuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'OAuth2'.
+func (o OAuth2AuthTypeConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o OAuth2AuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// ClientId and ClientSecret are required. Other properties are optional
+// depending on each OAuth2 provider's implementation.
+func (o OAuth2AuthTypeConnectionPropertiesOutput) Credentials() ConnectionOAuth2PtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *ConnectionOAuth2 { return v.Credentials }).(ConnectionOAuth2PtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o OAuth2AuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type OAuth2AuthTypeConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'OAuth2'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string `pulumi:"category"`
+	CreatedByWorkspaceArmId string  `pulumi:"createdByWorkspaceArmId"`
+	// ClientId and ClientSecret are required. Other properties are optional
+	// depending on each OAuth2 provider's implementation.
+	Credentials *ConnectionOAuth2Response `pulumi:"credentials"`
+	Error       *string                   `pulumi:"error"`
+	ExpiryTime  *string                   `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+type OAuth2AuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (OAuth2AuthTypeConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OAuth2AuthTypeConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) ToOAuth2AuthTypeConnectionPropertiesResponseOutput() OAuth2AuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) ToOAuth2AuthTypeConnectionPropertiesResponseOutputWithContext(ctx context.Context) OAuth2AuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'OAuth2'.
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+// ClientId and ClientSecret are required. Other properties are optional
+// depending on each OAuth2 provider's implementation.
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) Credentials() ConnectionOAuth2ResponsePtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *ConnectionOAuth2Response { return v.Credentials }).(ConnectionOAuth2ResponsePtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o OAuth2AuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OAuth2AuthTypeConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type PATAuthTypeConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'PAT'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category      *string                        `pulumi:"category"`
+	Credentials   *ConnectionPersonalAccessToken `pulumi:"credentials"`
+	Error         *string                        `pulumi:"error"`
+	ExpiryTime    *string                        `pulumi:"expiryTime"`
+	IsSharedToAll *bool                          `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// PATAuthTypeConnectionPropertiesInput is an input type that accepts PATAuthTypeConnectionPropertiesArgs and PATAuthTypeConnectionPropertiesOutput values.
+// You can construct a concrete instance of `PATAuthTypeConnectionPropertiesInput` via:
+//
+//	PATAuthTypeConnectionPropertiesArgs{...}
+type PATAuthTypeConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToPATAuthTypeConnectionPropertiesOutput() PATAuthTypeConnectionPropertiesOutput
+	ToPATAuthTypeConnectionPropertiesOutputWithContext(context.Context) PATAuthTypeConnectionPropertiesOutput
+}
+
+type PATAuthTypeConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'PAT'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category      pulumi.StringPtrInput                 `pulumi:"category"`
+	Credentials   ConnectionPersonalAccessTokenPtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput                 `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput                 `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput                   `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (PATAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PATAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (i PATAuthTypeConnectionPropertiesArgs) ToPATAuthTypeConnectionPropertiesOutput() PATAuthTypeConnectionPropertiesOutput {
+	return i.ToPATAuthTypeConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i PATAuthTypeConnectionPropertiesArgs) ToPATAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) PATAuthTypeConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PATAuthTypeConnectionPropertiesOutput)
+}
+
+type PATAuthTypeConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (PATAuthTypeConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PATAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (o PATAuthTypeConnectionPropertiesOutput) ToPATAuthTypeConnectionPropertiesOutput() PATAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+func (o PATAuthTypeConnectionPropertiesOutput) ToPATAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) PATAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'PAT'.
+func (o PATAuthTypeConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o PATAuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesOutput) Credentials() ConnectionPersonalAccessTokenPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *ConnectionPersonalAccessToken { return v.Credentials }).(ConnectionPersonalAccessTokenPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o PATAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type PATAuthTypeConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'PAT'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string                                `pulumi:"category"`
+	CreatedByWorkspaceArmId string                                 `pulumi:"createdByWorkspaceArmId"`
+	Credentials             *ConnectionPersonalAccessTokenResponse `pulumi:"credentials"`
+	Error                   *string                                `pulumi:"error"`
+	ExpiryTime              *string                                `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+type PATAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PATAuthTypeConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PATAuthTypeConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) ToPATAuthTypeConnectionPropertiesResponseOutput() PATAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) ToPATAuthTypeConnectionPropertiesResponseOutputWithContext(ctx context.Context) PATAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'PAT'.
+func (o PATAuthTypeConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o PATAuthTypeConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) Credentials() ConnectionPersonalAccessTokenResponsePtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *ConnectionPersonalAccessTokenResponse {
+		return v.Credentials
+	}).(ConnectionPersonalAccessTokenResponsePtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o PATAuthTypeConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o PATAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o PATAuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PATAuthTypeConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
 }
 
 // Properties of the PrivateEndpointConnectProperties.
@@ -5941,6 +10697,219 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.Stri
 		}
 		return v.Status
 	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of Cognitive Services Project'.
+type ProjectProperties struct {
+	// The description of the Cognitive Services Project.
+	Description *string `pulumi:"description"`
+	// The display name of the Cognitive Services Project.
+	DisplayName *string `pulumi:"displayName"`
+}
+
+// ProjectPropertiesInput is an input type that accepts ProjectPropertiesArgs and ProjectPropertiesOutput values.
+// You can construct a concrete instance of `ProjectPropertiesInput` via:
+//
+//	ProjectPropertiesArgs{...}
+type ProjectPropertiesInput interface {
+	pulumi.Input
+
+	ToProjectPropertiesOutput() ProjectPropertiesOutput
+	ToProjectPropertiesOutputWithContext(context.Context) ProjectPropertiesOutput
+}
+
+// Properties of Cognitive Services Project'.
+type ProjectPropertiesArgs struct {
+	// The description of the Cognitive Services Project.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The display name of the Cognitive Services Project.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+}
+
+func (ProjectPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectProperties)(nil)).Elem()
+}
+
+func (i ProjectPropertiesArgs) ToProjectPropertiesOutput() ProjectPropertiesOutput {
+	return i.ToProjectPropertiesOutputWithContext(context.Background())
+}
+
+func (i ProjectPropertiesArgs) ToProjectPropertiesOutputWithContext(ctx context.Context) ProjectPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPropertiesOutput)
+}
+
+func (i ProjectPropertiesArgs) ToProjectPropertiesPtrOutput() ProjectPropertiesPtrOutput {
+	return i.ToProjectPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectPropertiesArgs) ToProjectPropertiesPtrOutputWithContext(ctx context.Context) ProjectPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPropertiesOutput).ToProjectPropertiesPtrOutputWithContext(ctx)
+}
+
+// ProjectPropertiesPtrInput is an input type that accepts ProjectPropertiesArgs, ProjectPropertiesPtr and ProjectPropertiesPtrOutput values.
+// You can construct a concrete instance of `ProjectPropertiesPtrInput` via:
+//
+//	        ProjectPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToProjectPropertiesPtrOutput() ProjectPropertiesPtrOutput
+	ToProjectPropertiesPtrOutputWithContext(context.Context) ProjectPropertiesPtrOutput
+}
+
+type projectPropertiesPtrType ProjectPropertiesArgs
+
+func ProjectPropertiesPtr(v *ProjectPropertiesArgs) ProjectPropertiesPtrInput {
+	return (*projectPropertiesPtrType)(v)
+}
+
+func (*projectPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectProperties)(nil)).Elem()
+}
+
+func (i *projectPropertiesPtrType) ToProjectPropertiesPtrOutput() ProjectPropertiesPtrOutput {
+	return i.ToProjectPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *projectPropertiesPtrType) ToProjectPropertiesPtrOutputWithContext(ctx context.Context) ProjectPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPropertiesPtrOutput)
+}
+
+// Properties of Cognitive Services Project'.
+type ProjectPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ProjectPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectProperties)(nil)).Elem()
+}
+
+func (o ProjectPropertiesOutput) ToProjectPropertiesOutput() ProjectPropertiesOutput {
+	return o
+}
+
+func (o ProjectPropertiesOutput) ToProjectPropertiesOutputWithContext(ctx context.Context) ProjectPropertiesOutput {
+	return o
+}
+
+func (o ProjectPropertiesOutput) ToProjectPropertiesPtrOutput() ProjectPropertiesPtrOutput {
+	return o.ToProjectPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectPropertiesOutput) ToProjectPropertiesPtrOutputWithContext(ctx context.Context) ProjectPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectProperties) *ProjectProperties {
+		return &v
+	}).(ProjectPropertiesPtrOutput)
+}
+
+// The description of the Cognitive Services Project.
+func (o ProjectPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the Cognitive Services Project.
+func (o ProjectPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+type ProjectPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectProperties)(nil)).Elem()
+}
+
+func (o ProjectPropertiesPtrOutput) ToProjectPropertiesPtrOutput() ProjectPropertiesPtrOutput {
+	return o
+}
+
+func (o ProjectPropertiesPtrOutput) ToProjectPropertiesPtrOutputWithContext(ctx context.Context) ProjectPropertiesPtrOutput {
+	return o
+}
+
+func (o ProjectPropertiesPtrOutput) Elem() ProjectPropertiesOutput {
+	return o.ApplyT(func(v *ProjectProperties) ProjectProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectProperties
+		return ret
+	}).(ProjectPropertiesOutput)
+}
+
+// The description of the Cognitive Services Project.
+func (o ProjectPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name of the Cognitive Services Project.
+func (o ProjectPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of Cognitive Services Project'.
+type ProjectPropertiesResponse struct {
+	// The description of the Cognitive Services Project.
+	Description *string `pulumi:"description"`
+	// The display name of the Cognitive Services Project.
+	DisplayName *string `pulumi:"displayName"`
+	// The list of endpoint for this Cognitive Services Project.
+	Endpoints map[string]string `pulumi:"endpoints"`
+	// Indicates whether the project is the default project for the account.
+	IsDefault bool `pulumi:"isDefault"`
+	// Gets the status of the cognitive services project at the time the operation was called.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Properties of Cognitive Services Project'.
+type ProjectPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ProjectPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectPropertiesResponse)(nil)).Elem()
+}
+
+func (o ProjectPropertiesResponseOutput) ToProjectPropertiesResponseOutput() ProjectPropertiesResponseOutput {
+	return o
+}
+
+func (o ProjectPropertiesResponseOutput) ToProjectPropertiesResponseOutputWithContext(ctx context.Context) ProjectPropertiesResponseOutput {
+	return o
+}
+
+// The description of the Cognitive Services Project.
+func (o ProjectPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the Cognitive Services Project.
+func (o ProjectPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The list of endpoint for this Cognitive Services Project.
+func (o ProjectPropertiesResponseOutput) Endpoints() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ProjectPropertiesResponse) map[string]string { return v.Endpoints }).(pulumi.StringMapOutput)
+}
+
+// Indicates whether the project is the default project for the account.
+func (o ProjectPropertiesResponseOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v ProjectPropertiesResponse) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// Gets the status of the cognitive services project at the time the operation was called.
+func (o ProjectPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 type QuotaLimitResponse struct {
@@ -7255,6 +12224,460 @@ func (o RequestMatchPatternResponseArrayOutput) Index(i pulumi.IntInput) Request
 	}).(RequestMatchPatternResponseOutput)
 }
 
+type SASAuthTypeConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'SAS'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category      *string                          `pulumi:"category"`
+	Credentials   *ConnectionSharedAccessSignature `pulumi:"credentials"`
+	Error         *string                          `pulumi:"error"`
+	ExpiryTime    *string                          `pulumi:"expiryTime"`
+	IsSharedToAll *bool                            `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// SASAuthTypeConnectionPropertiesInput is an input type that accepts SASAuthTypeConnectionPropertiesArgs and SASAuthTypeConnectionPropertiesOutput values.
+// You can construct a concrete instance of `SASAuthTypeConnectionPropertiesInput` via:
+//
+//	SASAuthTypeConnectionPropertiesArgs{...}
+type SASAuthTypeConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToSASAuthTypeConnectionPropertiesOutput() SASAuthTypeConnectionPropertiesOutput
+	ToSASAuthTypeConnectionPropertiesOutputWithContext(context.Context) SASAuthTypeConnectionPropertiesOutput
+}
+
+type SASAuthTypeConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'SAS'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category      pulumi.StringPtrInput                   `pulumi:"category"`
+	Credentials   ConnectionSharedAccessSignaturePtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput                   `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput                   `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput                     `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (SASAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SASAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (i SASAuthTypeConnectionPropertiesArgs) ToSASAuthTypeConnectionPropertiesOutput() SASAuthTypeConnectionPropertiesOutput {
+	return i.ToSASAuthTypeConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i SASAuthTypeConnectionPropertiesArgs) ToSASAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) SASAuthTypeConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SASAuthTypeConnectionPropertiesOutput)
+}
+
+type SASAuthTypeConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SASAuthTypeConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SASAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (o SASAuthTypeConnectionPropertiesOutput) ToSASAuthTypeConnectionPropertiesOutput() SASAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+func (o SASAuthTypeConnectionPropertiesOutput) ToSASAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) SASAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'SAS'.
+func (o SASAuthTypeConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o SASAuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesOutput) Credentials() ConnectionSharedAccessSignaturePtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *ConnectionSharedAccessSignature { return v.Credentials }).(ConnectionSharedAccessSignaturePtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o SASAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type SASAuthTypeConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'SAS'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string                                  `pulumi:"category"`
+	CreatedByWorkspaceArmId string                                   `pulumi:"createdByWorkspaceArmId"`
+	Credentials             *ConnectionSharedAccessSignatureResponse `pulumi:"credentials"`
+	Error                   *string                                  `pulumi:"error"`
+	ExpiryTime              *string                                  `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+type SASAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SASAuthTypeConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SASAuthTypeConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) ToSASAuthTypeConnectionPropertiesResponseOutput() SASAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) ToSASAuthTypeConnectionPropertiesResponseOutputWithContext(ctx context.Context) SASAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'SAS'.
+func (o SASAuthTypeConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o SASAuthTypeConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) Credentials() ConnectionSharedAccessSignatureResponsePtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *ConnectionSharedAccessSignatureResponse {
+		return v.Credentials
+	}).(ConnectionSharedAccessSignatureResponsePtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o SASAuthTypeConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o SASAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeConnectionPropertiesResponse) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type ServicePrincipalAuthTypeConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'ServicePrincipal'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category      *string                     `pulumi:"category"`
+	Credentials   *ConnectionServicePrincipal `pulumi:"credentials"`
+	Error         *string                     `pulumi:"error"`
+	ExpiryTime    *string                     `pulumi:"expiryTime"`
+	IsSharedToAll *bool                       `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// ServicePrincipalAuthTypeConnectionPropertiesInput is an input type that accepts ServicePrincipalAuthTypeConnectionPropertiesArgs and ServicePrincipalAuthTypeConnectionPropertiesOutput values.
+// You can construct a concrete instance of `ServicePrincipalAuthTypeConnectionPropertiesInput` via:
+//
+//	ServicePrincipalAuthTypeConnectionPropertiesArgs{...}
+type ServicePrincipalAuthTypeConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToServicePrincipalAuthTypeConnectionPropertiesOutput() ServicePrincipalAuthTypeConnectionPropertiesOutput
+	ToServicePrincipalAuthTypeConnectionPropertiesOutputWithContext(context.Context) ServicePrincipalAuthTypeConnectionPropertiesOutput
+}
+
+type ServicePrincipalAuthTypeConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'ServicePrincipal'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category      pulumi.StringPtrInput              `pulumi:"category"`
+	Credentials   ConnectionServicePrincipalPtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput              `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput              `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput                `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (ServicePrincipalAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (i ServicePrincipalAuthTypeConnectionPropertiesArgs) ToServicePrincipalAuthTypeConnectionPropertiesOutput() ServicePrincipalAuthTypeConnectionPropertiesOutput {
+	return i.ToServicePrincipalAuthTypeConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalAuthTypeConnectionPropertiesArgs) ToServicePrincipalAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) ServicePrincipalAuthTypeConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalAuthTypeConnectionPropertiesOutput)
+}
+
+type ServicePrincipalAuthTypeConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalAuthTypeConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) ToServicePrincipalAuthTypeConnectionPropertiesOutput() ServicePrincipalAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) ToServicePrincipalAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) ServicePrincipalAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'ServicePrincipal'.
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) Credentials() ConnectionServicePrincipalPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *ConnectionServicePrincipal { return v.Credentials }).(ConnectionServicePrincipalPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type ServicePrincipalAuthTypeConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'ServicePrincipal'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string                             `pulumi:"category"`
+	CreatedByWorkspaceArmId string                              `pulumi:"createdByWorkspaceArmId"`
+	Credentials             *ConnectionServicePrincipalResponse `pulumi:"credentials"`
+	Error                   *string                             `pulumi:"error"`
+	ExpiryTime              *string                             `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+type ServicePrincipalAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalAuthTypeConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) ToServicePrincipalAuthTypeConnectionPropertiesResponseOutput() ServicePrincipalAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) ToServicePrincipalAuthTypeConnectionPropertiesResponseOutputWithContext(ctx context.Context) ServicePrincipalAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'ServicePrincipal'.
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) Credentials() ConnectionServicePrincipalResponsePtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *ConnectionServicePrincipalResponse {
+		return v.Credentials
+	}).(ConnectionServicePrincipalResponsePtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeConnectionPropertiesResponse) *bool {
+		return v.UseWorkspaceManagedIdentity
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The resource model definition representing SKU
 type Sku struct {
 	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
@@ -8266,6 +13689,234 @@ func (o UserOwnedStorageResponseArrayOutput) Index(i pulumi.IntInput) UserOwnedS
 	}).(UserOwnedStorageResponseOutput)
 }
 
+type UsernamePasswordAuthTypeConnectionProperties struct {
+	// Authentication type of the connection target
+	// Expected value is 'UsernamePassword'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category      *string                     `pulumi:"category"`
+	Credentials   *ConnectionUsernamePassword `pulumi:"credentials"`
+	Error         *string                     `pulumi:"error"`
+	ExpiryTime    *string                     `pulumi:"expiryTime"`
+	IsSharedToAll *bool                       `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+// UsernamePasswordAuthTypeConnectionPropertiesInput is an input type that accepts UsernamePasswordAuthTypeConnectionPropertiesArgs and UsernamePasswordAuthTypeConnectionPropertiesOutput values.
+// You can construct a concrete instance of `UsernamePasswordAuthTypeConnectionPropertiesInput` via:
+//
+//	UsernamePasswordAuthTypeConnectionPropertiesArgs{...}
+type UsernamePasswordAuthTypeConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToUsernamePasswordAuthTypeConnectionPropertiesOutput() UsernamePasswordAuthTypeConnectionPropertiesOutput
+	ToUsernamePasswordAuthTypeConnectionPropertiesOutputWithContext(context.Context) UsernamePasswordAuthTypeConnectionPropertiesOutput
+}
+
+type UsernamePasswordAuthTypeConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'UsernamePassword'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category      pulumi.StringPtrInput              `pulumi:"category"`
+	Credentials   ConnectionUsernamePasswordPtrInput `pulumi:"credentials"`
+	Error         pulumi.StringPtrInput              `pulumi:"error"`
+	ExpiryTime    pulumi.StringPtrInput              `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput                `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    pulumi.StringMapInput   `pulumi:"metadata"`
+	PeRequirement               pulumi.StringPtrInput   `pulumi:"peRequirement"`
+	PeStatus                    pulumi.StringPtrInput   `pulumi:"peStatus"`
+	SharedUserList              pulumi.StringArrayInput `pulumi:"sharedUserList"`
+	Target                      pulumi.StringPtrInput   `pulumi:"target"`
+	UseWorkspaceManagedIdentity pulumi.BoolPtrInput     `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+func (UsernamePasswordAuthTypeConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (i UsernamePasswordAuthTypeConnectionPropertiesArgs) ToUsernamePasswordAuthTypeConnectionPropertiesOutput() UsernamePasswordAuthTypeConnectionPropertiesOutput {
+	return i.ToUsernamePasswordAuthTypeConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i UsernamePasswordAuthTypeConnectionPropertiesArgs) ToUsernamePasswordAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) UsernamePasswordAuthTypeConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsernamePasswordAuthTypeConnectionPropertiesOutput)
+}
+
+type UsernamePasswordAuthTypeConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordAuthTypeConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordAuthTypeConnectionProperties)(nil)).Elem()
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) ToUsernamePasswordAuthTypeConnectionPropertiesOutput() UsernamePasswordAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) ToUsernamePasswordAuthTypeConnectionPropertiesOutputWithContext(ctx context.Context) UsernamePasswordAuthTypeConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'UsernamePassword'.
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) Credentials() ConnectionUsernamePasswordPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *ConnectionUsernamePassword { return v.Credentials }).(ConnectionUsernamePasswordPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionProperties) *bool { return v.UseWorkspaceManagedIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type UsernamePasswordAuthTypeConnectionPropertiesResponse struct {
+	// Authentication type of the connection target
+	// Expected value is 'UsernamePassword'.
+	AuthType string `pulumi:"authType"`
+	// Category of the connection
+	Category                *string                             `pulumi:"category"`
+	CreatedByWorkspaceArmId string                              `pulumi:"createdByWorkspaceArmId"`
+	Credentials             *ConnectionUsernamePasswordResponse `pulumi:"credentials"`
+	Error                   *string                             `pulumi:"error"`
+	ExpiryTime              *string                             `pulumi:"expiryTime"`
+	// Group based on connection category
+	Group         string `pulumi:"group"`
+	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
+	// Store user metadata for this connection
+	Metadata                    map[string]string `pulumi:"metadata"`
+	PeRequirement               *string           `pulumi:"peRequirement"`
+	PeStatus                    *string           `pulumi:"peStatus"`
+	SharedUserList              []string          `pulumi:"sharedUserList"`
+	Target                      *string           `pulumi:"target"`
+	UseWorkspaceManagedIdentity *bool             `pulumi:"useWorkspaceManagedIdentity"`
+}
+
+type UsernamePasswordAuthTypeConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordAuthTypeConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) ToUsernamePasswordAuthTypeConnectionPropertiesResponseOutput() UsernamePasswordAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) ToUsernamePasswordAuthTypeConnectionPropertiesResponseOutputWithContext(ctx context.Context) UsernamePasswordAuthTypeConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'UsernamePassword'.
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) Credentials() ConnectionUsernamePasswordResponsePtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *ConnectionUsernamePasswordResponse {
+		return v.Credentials
+	}).(ConnectionUsernamePasswordResponsePtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// Group based on connection category
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+// Store user metadata for this connection
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) PeRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *string { return v.PeRequirement }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) PeStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *string { return v.PeStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) SharedUserList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) []string { return v.SharedUserList }).(pulumi.StringArrayOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeConnectionPropertiesResponseOutput) UseWorkspaceManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeConnectionPropertiesResponse) *bool {
+		return v.UseWorkspaceManagedIdentity
+	}).(pulumi.BoolPtrOutput)
+}
+
 // A rule governing the accessibility from a specific virtual network.
 type VirtualNetworkRule struct {
 	// Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
@@ -8445,16 +14096,26 @@ func (o VirtualNetworkRuleResponseArrayOutput) Index(i pulumi.IntInput) VirtualN
 }
 
 func init() {
+	pulumi.RegisterOutputType(AADAuthTypeConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(AADAuthTypeConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AbusePenaltyResponseOutput{})
+	pulumi.RegisterOutputType(AccessKeyAuthTypeConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(AccessKeyAuthTypeConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AccountKeyAuthTypeConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(AccountKeyAuthTypeConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AccountPropertiesOutput{})
 	pulumi.RegisterOutputType(AccountPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AccountPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ApiKeyAuthConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(ApiKeyAuthConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CallRateLimitResponseOutput{})
 	pulumi.RegisterOutputType(CallRateLimitResponsePtrOutput{})
+	pulumi.RegisterOutputType(CapabilityHostOutput{})
+	pulumi.RegisterOutputType(CapabilityHostResponseOutput{})
 	pulumi.RegisterOutputType(CommitmentPeriodOutput{})
 	pulumi.RegisterOutputType(CommitmentPeriodPtrOutput{})
 	pulumi.RegisterOutputType(CommitmentPeriodResponseOutput{})
@@ -8466,10 +14127,52 @@ func init() {
 	pulumi.RegisterOutputType(CommitmentPlanPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(CommitmentQuotaResponseOutput{})
 	pulumi.RegisterOutputType(CommitmentQuotaResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionAccessKeyOutput{})
+	pulumi.RegisterOutputType(ConnectionAccessKeyPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionAccessKeyResponseOutput{})
+	pulumi.RegisterOutputType(ConnectionAccessKeyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionAccountKeyOutput{})
+	pulumi.RegisterOutputType(ConnectionAccountKeyPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionAccountKeyResponseOutput{})
+	pulumi.RegisterOutputType(ConnectionAccountKeyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionApiKeyOutput{})
+	pulumi.RegisterOutputType(ConnectionApiKeyPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionApiKeyResponseOutput{})
+	pulumi.RegisterOutputType(ConnectionApiKeyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionManagedIdentityOutput{})
+	pulumi.RegisterOutputType(ConnectionManagedIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionManagedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ConnectionManagedIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOAuth2Output{})
+	pulumi.RegisterOutputType(ConnectionOAuth2PtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOAuth2ResponseOutput{})
+	pulumi.RegisterOutputType(ConnectionOAuth2ResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionPersonalAccessTokenOutput{})
+	pulumi.RegisterOutputType(ConnectionPersonalAccessTokenPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionPersonalAccessTokenResponseOutput{})
+	pulumi.RegisterOutputType(ConnectionPersonalAccessTokenResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionServicePrincipalOutput{})
+	pulumi.RegisterOutputType(ConnectionServicePrincipalPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionServicePrincipalResponseOutput{})
+	pulumi.RegisterOutputType(ConnectionServicePrincipalResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionSharedAccessSignatureOutput{})
+	pulumi.RegisterOutputType(ConnectionSharedAccessSignaturePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionSharedAccessSignatureResponseOutput{})
+	pulumi.RegisterOutputType(ConnectionSharedAccessSignatureResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionUsernamePasswordOutput{})
+	pulumi.RegisterOutputType(ConnectionUsernamePasswordPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionUsernamePasswordResponseOutput{})
+	pulumi.RegisterOutputType(ConnectionUsernamePasswordResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomBlocklistConfigOutput{})
 	pulumi.RegisterOutputType(CustomBlocklistConfigArrayOutput{})
 	pulumi.RegisterOutputType(CustomBlocklistConfigResponseOutput{})
 	pulumi.RegisterOutputType(CustomBlocklistConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(CustomKeysOutput{})
+	pulumi.RegisterOutputType(CustomKeysPtrOutput{})
+	pulumi.RegisterOutputType(CustomKeysConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(CustomKeysConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CustomKeysResponseOutput{})
+	pulumi.RegisterOutputType(CustomKeysResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentCapacitySettingsOutput{})
 	pulumi.RegisterOutputType(DeploymentCapacitySettingsPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentCapacitySettingsResponseOutput{})
@@ -8504,6 +14207,8 @@ func init() {
 	pulumi.RegisterOutputType(KeyVaultPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityAuthTypeConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityAuthTypeConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MultiRegionSettingsOutput{})
 	pulumi.RegisterOutputType(MultiRegionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(MultiRegionSettingsResponseOutput{})
@@ -8512,6 +14217,12 @@ func init() {
 	pulumi.RegisterOutputType(NetworkRuleSetPtrOutput{})
 	pulumi.RegisterOutputType(NetworkRuleSetResponseOutput{})
 	pulumi.RegisterOutputType(NetworkRuleSetResponsePtrOutput{})
+	pulumi.RegisterOutputType(NoneAuthTypeConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(NoneAuthTypeConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OAuth2AuthTypeConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(OAuth2AuthTypeConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PATAuthTypeConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(PATAuthTypeConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponseOutput{})
@@ -8524,6 +14235,9 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(ProjectPropertiesOutput{})
+	pulumi.RegisterOutputType(ProjectPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ProjectPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(QuotaLimitResponseOutput{})
 	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesOutput{})
 	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesPtrOutput{})
@@ -8548,6 +14262,10 @@ func init() {
 	pulumi.RegisterOutputType(RegionSettingResponseArrayOutput{})
 	pulumi.RegisterOutputType(RequestMatchPatternResponseOutput{})
 	pulumi.RegisterOutputType(RequestMatchPatternResponseArrayOutput{})
+	pulumi.RegisterOutputType(SASAuthTypeConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(SASAuthTypeConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalAuthTypeConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalAuthTypeConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuCapabilityResponseOutput{})
@@ -8568,6 +14286,8 @@ func init() {
 	pulumi.RegisterOutputType(UserOwnedStorageArrayOutput{})
 	pulumi.RegisterOutputType(UserOwnedStorageResponseOutput{})
 	pulumi.RegisterOutputType(UserOwnedStorageResponseArrayOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordAuthTypeConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordAuthTypeConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkRuleOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkRuleArrayOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkRuleResponseOutput{})

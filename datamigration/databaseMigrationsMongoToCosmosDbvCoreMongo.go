@@ -15,6 +15,8 @@ import (
 // Database Migration Resource for Mongo to CosmosDb.
 //
 // Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-15-preview.
+//
+// Other available API versions: 2025-03-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DatabaseMigrationsMongoToCosmosDbvCoreMongo struct {
 	pulumi.CustomResourceState
 
@@ -74,6 +76,9 @@ func NewDatabaseMigrationsMongoToCosmosDbvCoreMongo(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datamigration/v20230715preview:DatabaseMigrationsMongoToCosmosDbvCoreMongo"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250315preview:DatabaseMigrationsMongoToCosmosDbvCoreMongo"),
 		},
 	})
 	opts = append(opts, aliases)

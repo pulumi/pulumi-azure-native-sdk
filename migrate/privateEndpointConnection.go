@@ -81,6 +81,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20240101preview:PrivateEndpointConnectionOperation"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20240303preview:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate:PrivateEndpointConnectionOperation"),
 		},
 	})
