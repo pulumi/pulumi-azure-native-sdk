@@ -344,6 +344,344 @@ func (in *amlFilesystemSquashModePtr) ToAmlFilesystemSquashModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(AmlFilesystemSquashModePtrOutput)
 }
 
+// The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'.
+type AutoExportJobAdminStatus string
+
+const (
+	AutoExportJobAdminStatusEnable  = AutoExportJobAdminStatus("Enable")
+	AutoExportJobAdminStatusDisable = AutoExportJobAdminStatus("Disable")
+)
+
+func (AutoExportJobAdminStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoExportJobAdminStatus)(nil)).Elem()
+}
+
+func (e AutoExportJobAdminStatus) ToAutoExportJobAdminStatusOutput() AutoExportJobAdminStatusOutput {
+	return pulumi.ToOutput(e).(AutoExportJobAdminStatusOutput)
+}
+
+func (e AutoExportJobAdminStatus) ToAutoExportJobAdminStatusOutputWithContext(ctx context.Context) AutoExportJobAdminStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AutoExportJobAdminStatusOutput)
+}
+
+func (e AutoExportJobAdminStatus) ToAutoExportJobAdminStatusPtrOutput() AutoExportJobAdminStatusPtrOutput {
+	return e.ToAutoExportJobAdminStatusPtrOutputWithContext(context.Background())
+}
+
+func (e AutoExportJobAdminStatus) ToAutoExportJobAdminStatusPtrOutputWithContext(ctx context.Context) AutoExportJobAdminStatusPtrOutput {
+	return AutoExportJobAdminStatus(e).ToAutoExportJobAdminStatusOutputWithContext(ctx).ToAutoExportJobAdminStatusPtrOutputWithContext(ctx)
+}
+
+func (e AutoExportJobAdminStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AutoExportJobAdminStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AutoExportJobAdminStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AutoExportJobAdminStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AutoExportJobAdminStatusOutput struct{ *pulumi.OutputState }
+
+func (AutoExportJobAdminStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoExportJobAdminStatus)(nil)).Elem()
+}
+
+func (o AutoExportJobAdminStatusOutput) ToAutoExportJobAdminStatusOutput() AutoExportJobAdminStatusOutput {
+	return o
+}
+
+func (o AutoExportJobAdminStatusOutput) ToAutoExportJobAdminStatusOutputWithContext(ctx context.Context) AutoExportJobAdminStatusOutput {
+	return o
+}
+
+func (o AutoExportJobAdminStatusOutput) ToAutoExportJobAdminStatusPtrOutput() AutoExportJobAdminStatusPtrOutput {
+	return o.ToAutoExportJobAdminStatusPtrOutputWithContext(context.Background())
+}
+
+func (o AutoExportJobAdminStatusOutput) ToAutoExportJobAdminStatusPtrOutputWithContext(ctx context.Context) AutoExportJobAdminStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoExportJobAdminStatus) *AutoExportJobAdminStatus {
+		return &v
+	}).(AutoExportJobAdminStatusPtrOutput)
+}
+
+func (o AutoExportJobAdminStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AutoExportJobAdminStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AutoExportJobAdminStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AutoExportJobAdminStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AutoExportJobAdminStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AutoExportJobAdminStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AutoExportJobAdminStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoExportJobAdminStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoExportJobAdminStatus)(nil)).Elem()
+}
+
+func (o AutoExportJobAdminStatusPtrOutput) ToAutoExportJobAdminStatusPtrOutput() AutoExportJobAdminStatusPtrOutput {
+	return o
+}
+
+func (o AutoExportJobAdminStatusPtrOutput) ToAutoExportJobAdminStatusPtrOutputWithContext(ctx context.Context) AutoExportJobAdminStatusPtrOutput {
+	return o
+}
+
+func (o AutoExportJobAdminStatusPtrOutput) Elem() AutoExportJobAdminStatusOutput {
+	return o.ApplyT(func(v *AutoExportJobAdminStatus) AutoExportJobAdminStatus {
+		if v != nil {
+			return *v
+		}
+		var ret AutoExportJobAdminStatus
+		return ret
+	}).(AutoExportJobAdminStatusOutput)
+}
+
+func (o AutoExportJobAdminStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AutoExportJobAdminStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AutoExportJobAdminStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AutoExportJobAdminStatusInput is an input type that accepts values of the AutoExportJobAdminStatus enum
+// A concrete instance of `AutoExportJobAdminStatusInput` can be one of the following:
+//
+//	AutoExportJobAdminStatusEnable
+//	AutoExportJobAdminStatusDisable
+type AutoExportJobAdminStatusInput interface {
+	pulumi.Input
+
+	ToAutoExportJobAdminStatusOutput() AutoExportJobAdminStatusOutput
+	ToAutoExportJobAdminStatusOutputWithContext(context.Context) AutoExportJobAdminStatusOutput
+}
+
+var autoExportJobAdminStatusPtrType = reflect.TypeOf((**AutoExportJobAdminStatus)(nil)).Elem()
+
+type AutoExportJobAdminStatusPtrInput interface {
+	pulumi.Input
+
+	ToAutoExportJobAdminStatusPtrOutput() AutoExportJobAdminStatusPtrOutput
+	ToAutoExportJobAdminStatusPtrOutputWithContext(context.Context) AutoExportJobAdminStatusPtrOutput
+}
+
+type autoExportJobAdminStatusPtr string
+
+func AutoExportJobAdminStatusPtr(v string) AutoExportJobAdminStatusPtrInput {
+	return (*autoExportJobAdminStatusPtr)(&v)
+}
+
+func (*autoExportJobAdminStatusPtr) ElementType() reflect.Type {
+	return autoExportJobAdminStatusPtrType
+}
+
+func (in *autoExportJobAdminStatusPtr) ToAutoExportJobAdminStatusPtrOutput() AutoExportJobAdminStatusPtrOutput {
+	return pulumi.ToOutput(in).(AutoExportJobAdminStatusPtrOutput)
+}
+
+func (in *autoExportJobAdminStatusPtr) ToAutoExportJobAdminStatusPtrOutputWithContext(ctx context.Context) AutoExportJobAdminStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AutoExportJobAdminStatusPtrOutput)
+}
+
+// The operational state of auto export. InProgress indicates the export is running.  Disabling indicates the user has requested to disable the export but the disabling is still in progress. Disabled indicates auto export has been disabled.  DisableFailed indicates the disabling has failed.  Failed means the export was unable to continue, due to a fatal error.
+type AutoExportStatusType string
+
+const (
+	AutoExportStatusTypeInProgress    = AutoExportStatusType("InProgress")
+	AutoExportStatusTypeDisabling     = AutoExportStatusType("Disabling")
+	AutoExportStatusTypeDisabled      = AutoExportStatusType("Disabled")
+	AutoExportStatusTypeDisableFailed = AutoExportStatusType("DisableFailed")
+	AutoExportStatusTypeFailed        = AutoExportStatusType("Failed")
+)
+
+func (AutoExportStatusType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoExportStatusType)(nil)).Elem()
+}
+
+func (e AutoExportStatusType) ToAutoExportStatusTypeOutput() AutoExportStatusTypeOutput {
+	return pulumi.ToOutput(e).(AutoExportStatusTypeOutput)
+}
+
+func (e AutoExportStatusType) ToAutoExportStatusTypeOutputWithContext(ctx context.Context) AutoExportStatusTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AutoExportStatusTypeOutput)
+}
+
+func (e AutoExportStatusType) ToAutoExportStatusTypePtrOutput() AutoExportStatusTypePtrOutput {
+	return e.ToAutoExportStatusTypePtrOutputWithContext(context.Background())
+}
+
+func (e AutoExportStatusType) ToAutoExportStatusTypePtrOutputWithContext(ctx context.Context) AutoExportStatusTypePtrOutput {
+	return AutoExportStatusType(e).ToAutoExportStatusTypeOutputWithContext(ctx).ToAutoExportStatusTypePtrOutputWithContext(ctx)
+}
+
+func (e AutoExportStatusType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AutoExportStatusType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AutoExportStatusType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AutoExportStatusType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AutoExportStatusTypeOutput struct{ *pulumi.OutputState }
+
+func (AutoExportStatusTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoExportStatusType)(nil)).Elem()
+}
+
+func (o AutoExportStatusTypeOutput) ToAutoExportStatusTypeOutput() AutoExportStatusTypeOutput {
+	return o
+}
+
+func (o AutoExportStatusTypeOutput) ToAutoExportStatusTypeOutputWithContext(ctx context.Context) AutoExportStatusTypeOutput {
+	return o
+}
+
+func (o AutoExportStatusTypeOutput) ToAutoExportStatusTypePtrOutput() AutoExportStatusTypePtrOutput {
+	return o.ToAutoExportStatusTypePtrOutputWithContext(context.Background())
+}
+
+func (o AutoExportStatusTypeOutput) ToAutoExportStatusTypePtrOutputWithContext(ctx context.Context) AutoExportStatusTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoExportStatusType) *AutoExportStatusType {
+		return &v
+	}).(AutoExportStatusTypePtrOutput)
+}
+
+func (o AutoExportStatusTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AutoExportStatusTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AutoExportStatusType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AutoExportStatusTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AutoExportStatusTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AutoExportStatusType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AutoExportStatusTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AutoExportStatusTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoExportStatusType)(nil)).Elem()
+}
+
+func (o AutoExportStatusTypePtrOutput) ToAutoExportStatusTypePtrOutput() AutoExportStatusTypePtrOutput {
+	return o
+}
+
+func (o AutoExportStatusTypePtrOutput) ToAutoExportStatusTypePtrOutputWithContext(ctx context.Context) AutoExportStatusTypePtrOutput {
+	return o
+}
+
+func (o AutoExportStatusTypePtrOutput) Elem() AutoExportStatusTypeOutput {
+	return o.ApplyT(func(v *AutoExportStatusType) AutoExportStatusType {
+		if v != nil {
+			return *v
+		}
+		var ret AutoExportStatusType
+		return ret
+	}).(AutoExportStatusTypeOutput)
+}
+
+func (o AutoExportStatusTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AutoExportStatusTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AutoExportStatusType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AutoExportStatusTypeInput is an input type that accepts values of the AutoExportStatusType enum
+// A concrete instance of `AutoExportStatusTypeInput` can be one of the following:
+//
+//	AutoExportStatusTypeInProgress
+//	AutoExportStatusTypeDisabling
+//	AutoExportStatusTypeDisabled
+//	AutoExportStatusTypeDisableFailed
+//	AutoExportStatusTypeFailed
+type AutoExportStatusTypeInput interface {
+	pulumi.Input
+
+	ToAutoExportStatusTypeOutput() AutoExportStatusTypeOutput
+	ToAutoExportStatusTypeOutputWithContext(context.Context) AutoExportStatusTypeOutput
+}
+
+var autoExportStatusTypePtrType = reflect.TypeOf((**AutoExportStatusType)(nil)).Elem()
+
+type AutoExportStatusTypePtrInput interface {
+	pulumi.Input
+
+	ToAutoExportStatusTypePtrOutput() AutoExportStatusTypePtrOutput
+	ToAutoExportStatusTypePtrOutputWithContext(context.Context) AutoExportStatusTypePtrOutput
+}
+
+type autoExportStatusTypePtr string
+
+func AutoExportStatusTypePtr(v string) AutoExportStatusTypePtrInput {
+	return (*autoExportStatusTypePtr)(&v)
+}
+
+func (*autoExportStatusTypePtr) ElementType() reflect.Type {
+	return autoExportStatusTypePtrType
+}
+
+func (in *autoExportStatusTypePtr) ToAutoExportStatusTypePtrOutput() AutoExportStatusTypePtrOutput {
+	return pulumi.ToOutput(in).(AutoExportStatusTypePtrOutput)
+}
+
+func (in *autoExportStatusTypePtr) ToAutoExportStatusTypePtrOutputWithContext(ctx context.Context) AutoExportStatusTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AutoExportStatusTypePtrOutput)
+}
+
 // The type of identity used for the cache
 type CacheIdentityType string
 
@@ -1711,6 +2049,10 @@ func init() {
 	pulumi.RegisterOutputType(AmlFilesystemIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(AmlFilesystemSquashModeOutput{})
 	pulumi.RegisterOutputType(AmlFilesystemSquashModePtrOutput{})
+	pulumi.RegisterOutputType(AutoExportJobAdminStatusOutput{})
+	pulumi.RegisterOutputType(AutoExportJobAdminStatusPtrOutput{})
+	pulumi.RegisterOutputType(AutoExportStatusTypeOutput{})
+	pulumi.RegisterOutputType(AutoExportStatusTypePtrOutput{})
 	pulumi.RegisterOutputType(CacheIdentityTypeOutput{})
 	pulumi.RegisterOutputType(CacheIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(ConflictResolutionModeOutput{})

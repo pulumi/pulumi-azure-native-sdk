@@ -31,12 +31,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AssessmentsOperation{}
 	case "azure-native:migrate:AvsAssessmentsOperation":
 		r = &AvsAssessmentsOperation{}
+	case "azure-native:migrate:AvsAssessmentsV2Operation":
+		r = &AvsAssessmentsV2Operation{}
 	case "azure-native:migrate:BusinessCaseOperation":
 		r = &BusinessCaseOperation{}
+	case "azure-native:migrate:CompoundAssessmentOperation":
+		r = &CompoundAssessmentOperation{}
 	case "azure-native:migrate:Group":
 		r = &Group{}
 	case "azure-native:migrate:GroupsOperation":
 		r = &GroupsOperation{}
+	case "azure-native:migrate:HeterogeneousAssessmentOperation":
+		r = &HeterogeneousAssessmentOperation{}
 	case "azure-native:migrate:HyperVCollector":
 		r = &HyperVCollector{}
 	case "azure-native:migrate:HypervCollectorsOperation":
@@ -45,6 +51,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ImportCollector{}
 	case "azure-native:migrate:ImportCollectorsOperation":
 		r = &ImportCollectorsOperation{}
+	case "azure-native:migrate:ImportSqlCollectorOperation":
+		r = &ImportSqlCollectorOperation{}
+	case "azure-native:migrate:MachineAssessmentsV2Operation":
+		r = &MachineAssessmentsV2Operation{}
 	case "azure-native:migrate:MigrateAgent":
 		r = &MigrateAgent{}
 	case "azure-native:migrate:MigrateProject":
@@ -73,6 +83,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Solution{}
 	case "azure-native:migrate:SqlAssessmentV2Operation":
 		r = &SqlAssessmentV2Operation{}
+	case "azure-native:migrate:SqlAssessmentV3Operation":
+		r = &SqlAssessmentV3Operation{}
 	case "azure-native:migrate:SqlCollectorOperation":
 		r = &SqlCollectorOperation{}
 	case "azure-native:migrate:VMwareCollector":
@@ -81,6 +93,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VmwareCollectorsOperation{}
 	case "azure-native:migrate:WebAppAssessmentV2Operation":
 		r = &WebAppAssessmentV2Operation{}
+	case "azure-native:migrate:WebAppAssessmentV3Operation":
+		r = &WebAppAssessmentV3Operation{}
 	case "azure-native:migrate:WebAppCollectorOperation":
 		r = &WebAppCollectorOperation{}
 	case "azure-native:migrate:WorkloadDeployment":

@@ -1685,6 +1685,172 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
 }
 
+// The priority of the container group.
+type Priority string
+
+const (
+	PriorityRegular = Priority("Regular")
+	PrioritySpot    = Priority("Spot")
+)
+
+func (Priority) ElementType() reflect.Type {
+	return reflect.TypeOf((*Priority)(nil)).Elem()
+}
+
+func (e Priority) ToPriorityOutput() PriorityOutput {
+	return pulumi.ToOutput(e).(PriorityOutput)
+}
+
+func (e Priority) ToPriorityOutputWithContext(ctx context.Context) PriorityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PriorityOutput)
+}
+
+func (e Priority) ToPriorityPtrOutput() PriorityPtrOutput {
+	return e.ToPriorityPtrOutputWithContext(context.Background())
+}
+
+func (e Priority) ToPriorityPtrOutputWithContext(ctx context.Context) PriorityPtrOutput {
+	return Priority(e).ToPriorityOutputWithContext(ctx).ToPriorityPtrOutputWithContext(ctx)
+}
+
+func (e Priority) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Priority) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Priority) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e Priority) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PriorityOutput struct{ *pulumi.OutputState }
+
+func (PriorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Priority)(nil)).Elem()
+}
+
+func (o PriorityOutput) ToPriorityOutput() PriorityOutput {
+	return o
+}
+
+func (o PriorityOutput) ToPriorityOutputWithContext(ctx context.Context) PriorityOutput {
+	return o
+}
+
+func (o PriorityOutput) ToPriorityPtrOutput() PriorityPtrOutput {
+	return o.ToPriorityPtrOutputWithContext(context.Background())
+}
+
+func (o PriorityOutput) ToPriorityPtrOutputWithContext(ctx context.Context) PriorityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Priority) *Priority {
+		return &v
+	}).(PriorityPtrOutput)
+}
+
+func (o PriorityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PriorityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Priority) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PriorityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PriorityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Priority) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PriorityPtrOutput struct{ *pulumi.OutputState }
+
+func (PriorityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Priority)(nil)).Elem()
+}
+
+func (o PriorityPtrOutput) ToPriorityPtrOutput() PriorityPtrOutput {
+	return o
+}
+
+func (o PriorityPtrOutput) ToPriorityPtrOutputWithContext(ctx context.Context) PriorityPtrOutput {
+	return o
+}
+
+func (o PriorityPtrOutput) Elem() PriorityOutput {
+	return o.ApplyT(func(v *Priority) Priority {
+		if v != nil {
+			return *v
+		}
+		var ret Priority
+		return ret
+	}).(PriorityOutput)
+}
+
+func (o PriorityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PriorityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Priority) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PriorityInput is an input type that accepts values of the Priority enum
+// A concrete instance of `PriorityInput` can be one of the following:
+//
+//	PriorityRegular
+//	PrioritySpot
+type PriorityInput interface {
+	pulumi.Input
+
+	ToPriorityOutput() PriorityOutput
+	ToPriorityOutputWithContext(context.Context) PriorityOutput
+}
+
+var priorityPtrType = reflect.TypeOf((**Priority)(nil)).Elem()
+
+type PriorityPtrInput interface {
+	pulumi.Input
+
+	ToPriorityPtrOutput() PriorityPtrOutput
+	ToPriorityPtrOutputWithContext(context.Context) PriorityPtrOutput
+}
+
+type priorityPtr string
+
+func PriorityPtr(v string) PriorityPtrInput {
+	return (*priorityPtr)(&v)
+}
+
+func (*priorityPtr) ElementType() reflect.Type {
+	return priorityPtrType
+}
+
+func (in *priorityPtr) ToPriorityPtrOutput() PriorityPtrOutput {
+	return pulumi.ToOutput(in).(PriorityPtrOutput)
+}
+
+func (in *priorityPtr) ToPriorityPtrOutputWithContext(ctx context.Context) PriorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PriorityPtrOutput)
+}
+
 // The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group.
 type ResourceIdentityType string
 
@@ -2042,6 +2208,8 @@ func init() {
 	pulumi.RegisterOutputType(LogAnalyticsLogTypePtrOutput{})
 	pulumi.RegisterOutputType(OperatingSystemTypesOutput{})
 	pulumi.RegisterOutputType(OperatingSystemTypesPtrOutput{})
+	pulumi.RegisterOutputType(PriorityOutput{})
+	pulumi.RegisterOutputType(PriorityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(SchemeOutput{})

@@ -522,8 +522,11 @@ func (in *assessmentTypePtr) ToAssessmentTypePtrOutputWithContext(ctx context.Co
 type AsyncCommitModeIntent string
 
 const (
-	AsyncCommitModeIntentNone             = AsyncCommitModeIntent("None")
+	// None - Async Commit Mode Intent
+	AsyncCommitModeIntentNone = AsyncCommitModeIntent("None")
+	// HighAvailability - Async Commit Mode Intent
 	AsyncCommitModeIntentHighAvailability = AsyncCommitModeIntent("HighAvailability")
+	// DisasterRecovery - Async Commit Mode Intent
 	AsyncCommitModeIntentDisasterRecovery = AsyncCommitModeIntent("DisasterRecovery")
 )
 
@@ -1194,14 +1197,20 @@ func (in *azureArcStatePtr) ToAzureArcStatePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureArcStatePtrOutput)
 }
 
+// Azure AVS Node type
 type AzureAvsNodeType string
 
 const (
+	// Unknown Node type
 	AzureAvsNodeTypeUnknown = AzureAvsNodeType("Unknown")
-	AzureAvsNodeTypeAV36    = AzureAvsNodeType("AV36")
-	AzureAvsNodeTypeAV36P   = AzureAvsNodeType("AV36P")
-	AzureAvsNodeTypeAV52    = AzureAvsNodeType("AV52")
-	AzureAvsNodeTypeAV64    = AzureAvsNodeType("AV64")
+	// AVS36 Node type
+	AzureAvsNodeTypeAV36 = AzureAvsNodeType("AV36")
+	// AV36P Node type
+	AzureAvsNodeTypeAV36P = AzureAvsNodeType("AV36P")
+	// AV52 Node type
+	AzureAvsNodeTypeAV52 = AzureAvsNodeType("AV52")
+	// AV64 Node type
+	AzureAvsNodeTypeAV64 = AzureAvsNodeType("AV64")
 )
 
 func (AzureAvsNodeType) ElementType() reflect.Type {
@@ -1369,32 +1378,58 @@ func (in *azureAvsNodeTypePtr) ToAzureAvsNodeTypePtrOutputWithContext(ctx contex
 type AzureCurrency string
 
 const (
+	// Unknown Currency for Azure
 	AzureCurrencyUnknown = AzureCurrency("Unknown")
-	AzureCurrencyUSD     = AzureCurrency("USD")
-	AzureCurrencyDKK     = AzureCurrency("DKK")
-	AzureCurrencyCAD     = AzureCurrency("CAD")
-	AzureCurrencyIDR     = AzureCurrency("IDR")
-	AzureCurrencyJPY     = AzureCurrency("JPY")
-	AzureCurrencyKRW     = AzureCurrency("KRW")
-	AzureCurrencyNZD     = AzureCurrency("NZD")
-	AzureCurrencyNOK     = AzureCurrency("NOK")
-	AzureCurrencyRUB     = AzureCurrency("RUB")
-	AzureCurrencySAR     = AzureCurrency("SAR")
-	AzureCurrencyZAR     = AzureCurrency("ZAR")
-	AzureCurrencySEK     = AzureCurrency("SEK")
-	AzureCurrencyTRY     = AzureCurrency("TRY")
-	AzureCurrencyGBP     = AzureCurrency("GBP")
-	AzureCurrencyMXN     = AzureCurrency("MXN")
-	AzureCurrencyMYR     = AzureCurrency("MYR")
-	AzureCurrencyINR     = AzureCurrency("INR")
-	AzureCurrencyHKD     = AzureCurrency("HKD")
-	AzureCurrencyBRL     = AzureCurrency("BRL")
-	AzureCurrencyTWD     = AzureCurrency("TWD")
-	AzureCurrencyEUR     = AzureCurrency("EUR")
-	AzureCurrencyCHF     = AzureCurrency("CHF")
-	AzureCurrencyARS     = AzureCurrency("ARS")
-	AzureCurrencyAUD     = AzureCurrency("AUD")
-	AzureCurrencyCNY     = AzureCurrency("CNY")
+	// USD Currency for Azure
+	AzureCurrencyUSD = AzureCurrency("USD")
+	// DKK Currency for Azure
+	AzureCurrencyDKK = AzureCurrency("DKK")
+	// CAD Currency for Azure
+	AzureCurrencyCAD = AzureCurrency("CAD")
+	// IDR Currency for Azure
+	AzureCurrencyIDR = AzureCurrency("IDR")
+	// JPY Currency for Azure
+	AzureCurrencyJPY = AzureCurrency("JPY")
+	// KRW Currency for Azure
+	AzureCurrencyKRW = AzureCurrency("KRW")
+	// NZD Currency for Azure
+	AzureCurrencyNZD = AzureCurrency("NZD")
+	// NOK Currency for Azure
+	AzureCurrencyNOK = AzureCurrency("NOK")
+	// RUB Currency for Azure
+	AzureCurrencyRUB = AzureCurrency("RUB")
+	// SAR Currency for Azure
+	AzureCurrencySAR = AzureCurrency("SAR")
+	// ZAR Currency for Azure
+	AzureCurrencyZAR = AzureCurrency("ZAR")
+	// SEK Currency for Azure
+	AzureCurrencySEK = AzureCurrency("SEK")
+	// TRY Currency for Azure
+	AzureCurrencyTRY = AzureCurrency("TRY")
+	// GBP Currency for Azure
+	AzureCurrencyGBP = AzureCurrency("GBP")
+	// MXN Currency for Azure
+	AzureCurrencyMXN = AzureCurrency("MXN")
+	// MYR Currency for Azure
+	AzureCurrencyMYR = AzureCurrency("MYR")
+	// INR Currency for Azure
+	AzureCurrencyINR = AzureCurrency("INR")
+	// HKD Currency for Azure
+	AzureCurrencyHKD = AzureCurrency("HKD")
+	// BRL Currency for Azure
+	AzureCurrencyBRL = AzureCurrency("BRL")
+	// TWD Currency for Azure
+	AzureCurrencyTWD = AzureCurrency("TWD")
+	// EUR Currency for Azure
+	AzureCurrencyEUR = AzureCurrency("EUR")
+	// CHF Currency for Azure
+	AzureCurrencyCHF = AzureCurrency("CHF")
+	// ARS Currency for Azure
+	AzureCurrencyARS = AzureCurrency("ARS")
+	// AUD Currency for Azure
+	AzureCurrencyAUD = AzureCurrency("AUD")
+	// CNY Currency for Azure
+	AzureCurrencyCNY = AzureCurrency("CNY")
 )
 
 func (AzureCurrency) ElementType() reflect.Type {
@@ -1579,16 +1614,24 @@ func (in *azureCurrencyPtr) ToAzureCurrencyPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureCurrencyPtrOutput)
 }
 
+// Azure Disk Type
 type AzureDiskType string
 
 const (
-	AzureDiskTypeUnknown           = AzureDiskType("Unknown")
-	AzureDiskTypeStandard          = AzureDiskType("Standard")
-	AzureDiskTypeStandardSSD       = AzureDiskType("StandardSSD")
-	AzureDiskTypePremium           = AzureDiskType("Premium")
+	// Unknown Azure Disk Type
+	AzureDiskTypeUnknown = AzureDiskType("Unknown")
+	// Standard Azure Disk Type
+	AzureDiskTypeStandard = AzureDiskType("Standard")
+	// StandardSSD Azure Disk Type
+	AzureDiskTypeStandardSSD = AzureDiskType("StandardSSD")
+	// Premium Azure Disk Type
+	AzureDiskTypePremium = AzureDiskType("Premium")
+	// StandardOrPremium Azure Disk Type
 	AzureDiskTypeStandardOrPremium = AzureDiskType("StandardOrPremium")
-	AzureDiskTypeUltra             = AzureDiskType("Ultra")
-	AzureDiskTypePremiumV2         = AzureDiskType("PremiumV2")
+	// Ultra Azure Disk Type
+	AzureDiskTypeUltra = AzureDiskType("Ultra")
+	// PremiumV2 Azure Disk Type
+	AzureDiskTypePremiumV2 = AzureDiskType("PremiumV2")
 )
 
 func (AzureDiskType) ElementType() reflect.Type {
@@ -1930,9 +1973,12 @@ func (in *azureEnvironmentTypePtr) ToAzureEnvironmentTypePtrOutputWithContext(ct
 type AzureHybridUseBenefit string
 
 const (
+	// Unknown Azure Hybrid Use Benefit
 	AzureHybridUseBenefitUnknown = AzureHybridUseBenefit("Unknown")
-	AzureHybridUseBenefitYes     = AzureHybridUseBenefit("Yes")
-	AzureHybridUseBenefitNo      = AzureHybridUseBenefit("No")
+	// Yes Azure Hybrid Use Benefit
+	AzureHybridUseBenefitYes = AzureHybridUseBenefit("Yes")
+	// No Azure Hybrid Use Benefit
+	AzureHybridUseBenefitNo = AzureHybridUseBenefit("No")
 )
 
 func (AzureHybridUseBenefit) ElementType() reflect.Type {
@@ -2099,66 +2145,140 @@ func (in *azureHybridUseBenefitPtr) ToAzureHybridUseBenefitPtrOutputWithContext(
 type AzureLocation string
 
 const (
-	AzureLocationUnknown            = AzureLocation("Unknown")
-	AzureLocationEastAsia           = AzureLocation("EastAsia")
-	AzureLocationSoutheastAsia      = AzureLocation("SoutheastAsia")
-	AzureLocationAustraliaEast      = AzureLocation("AustraliaEast")
+	// Unknown Location for Azure
+	AzureLocationUnknown = AzureLocation("Unknown")
+	// EastAsia Location for Azure
+	AzureLocationEastAsia = AzureLocation("EastAsia")
+	// SoutheastAsia Location for Azure
+	AzureLocationSoutheastAsia = AzureLocation("SoutheastAsia")
+	// AustraliaEast Location for Azure
+	AzureLocationAustraliaEast = AzureLocation("AustraliaEast")
+	// AustraliaSoutheast Location for Azure
 	AzureLocationAustraliaSoutheast = AzureLocation("AustraliaSoutheast")
-	AzureLocationBrazilSouth        = AzureLocation("BrazilSouth")
-	AzureLocationCanadaCentral      = AzureLocation("CanadaCentral")
-	AzureLocationCanadaEast         = AzureLocation("CanadaEast")
-	AzureLocationWestEurope         = AzureLocation("WestEurope")
-	AzureLocationNorthEurope        = AzureLocation("NorthEurope")
-	AzureLocationCentralIndia       = AzureLocation("CentralIndia")
-	AzureLocationSouthIndia         = AzureLocation("SouthIndia")
-	AzureLocationWestIndia          = AzureLocation("WestIndia")
-	AzureLocationJapanEast          = AzureLocation("JapanEast")
-	AzureLocationJapanWest          = AzureLocation("JapanWest")
-	AzureLocationKoreaCentral       = AzureLocation("KoreaCentral")
-	AzureLocationKoreaSouth         = AzureLocation("KoreaSouth")
-	AzureLocationUkWest             = AzureLocation("UkWest")
-	AzureLocationUkSouth            = AzureLocation("UkSouth")
-	AzureLocationNorthCentralUs     = AzureLocation("NorthCentralUs")
-	AzureLocationEastUs             = AzureLocation("EastUs")
-	AzureLocationWestUs2            = AzureLocation("WestUs2")
-	AzureLocationSouthCentralUs     = AzureLocation("SouthCentralUs")
-	AzureLocationCentralUs          = AzureLocation("CentralUs")
-	AzureLocationEastUs2            = AzureLocation("EastUs2")
-	AzureLocationWestUs             = AzureLocation("WestUs")
-	AzureLocationWestCentralUs      = AzureLocation("WestCentralUs")
-	AzureLocationGermanyCentral     = AzureLocation("GermanyCentral")
-	AzureLocationGermanyNortheast   = AzureLocation("GermanyNortheast")
-	AzureLocationChinaNorth         = AzureLocation("ChinaNorth")
-	AzureLocationChinaEast          = AzureLocation("ChinaEast")
-	AzureLocationUSGovArizona       = AzureLocation("USGovArizona")
-	AzureLocationUSGovTexas         = AzureLocation("USGovTexas")
-	AzureLocationUSGovIowa          = AzureLocation("USGovIowa")
-	AzureLocationUSGovVirginia      = AzureLocation("USGovVirginia")
-	AzureLocationUSDoDCentral       = AzureLocation("USDoDCentral")
-	AzureLocationUSDoDEast          = AzureLocation("USDoDEast")
-	AzureLocationFranceCentral      = AzureLocation("FranceCentral")
-	AzureLocationAustraliaCentral   = AzureLocation("AustraliaCentral")
-	AzureLocationSouthAfricaNorth   = AzureLocation("SouthAfricaNorth")
-	AzureLocationFranceSouth        = AzureLocation("FranceSouth")
-	AzureLocationAustraliaCentral2  = AzureLocation("AustraliaCentral2")
-	AzureLocationSouthAfricaWest    = AzureLocation("SouthAfricaWest")
-	AzureLocationGermanyNorth       = AzureLocation("GermanyNorth")
+	// BrazilSouth Location for Azure
+	AzureLocationBrazilSouth = AzureLocation("BrazilSouth")
+	// CanadaCentral Location for Azure
+	AzureLocationCanadaCentral = AzureLocation("CanadaCentral")
+	// CanadaEast Location for Azure
+	AzureLocationCanadaEast = AzureLocation("CanadaEast")
+	// WestEurope Location for Azure
+	AzureLocationWestEurope = AzureLocation("WestEurope")
+	// NorthEurope Location for Azure
+	AzureLocationNorthEurope = AzureLocation("NorthEurope")
+	// CentralIndia Location for Azure
+	AzureLocationCentralIndia = AzureLocation("CentralIndia")
+	// SouthIndia Location for Azure
+	AzureLocationSouthIndia = AzureLocation("SouthIndia")
+	// WestIndia Location for Azure
+	AzureLocationWestIndia = AzureLocation("WestIndia")
+	// JapanEast Location for Azure
+	AzureLocationJapanEast = AzureLocation("JapanEast")
+	// JapanWest Location for Azure
+	AzureLocationJapanWest = AzureLocation("JapanWest")
+	// KoreaCentral Location for Azure
+	AzureLocationKoreaCentral = AzureLocation("KoreaCentral")
+	// KoreaSouth Location for Azure
+	AzureLocationKoreaSouth = AzureLocation("KoreaSouth")
+	// UkWest Location for Azure
+	AzureLocationUkWest = AzureLocation("UkWest")
+	// UkSouth Location for Azure
+	AzureLocationUkSouth = AzureLocation("UkSouth")
+	// NorthCentralUs Location for Azure
+	AzureLocationNorthCentralUs = AzureLocation("NorthCentralUs")
+	// EastUs Location for Azure
+	AzureLocationEastUs = AzureLocation("EastUs")
+	// WestUs2 Location for Azure
+	AzureLocationWestUs2 = AzureLocation("WestUs2")
+	// SouthCentralUs Location for Azure
+	AzureLocationSouthCentralUs = AzureLocation("SouthCentralUs")
+	// CentralUs Location for Azure
+	AzureLocationCentralUs = AzureLocation("CentralUs")
+	// EastUs2 Location for Azure
+	AzureLocationEastUs2 = AzureLocation("EastUs2")
+	// WestUs Location for Azure
+	AzureLocationWestUs = AzureLocation("WestUs")
+	// WestCentralUs Location for Azure
+	AzureLocationWestCentralUs = AzureLocation("WestCentralUs")
+	// GermanyCentral Location for Azure
+	AzureLocationGermanyCentral = AzureLocation("GermanyCentral")
+	// GermanyNortheast Location for Azure
+	AzureLocationGermanyNortheast = AzureLocation("GermanyNortheast")
+	// ChinaNorth Location for Azure
+	AzureLocationChinaNorth = AzureLocation("ChinaNorth")
+	// ChinaEast Location for Azure
+	AzureLocationChinaEast = AzureLocation("ChinaEast")
+	// USGovArizona Location for Azure
+	AzureLocationUSGovArizona = AzureLocation("USGovArizona")
+	// USGovTexas Location for Azure
+	AzureLocationUSGovTexas = AzureLocation("USGovTexas")
+	// USGovIowa Location for Azure
+	AzureLocationUSGovIowa = AzureLocation("USGovIowa")
+	// USGovVirginia Location for Azure
+	AzureLocationUSGovVirginia = AzureLocation("USGovVirginia")
+	// USDoDCentral Location for Azure
+	AzureLocationUSDoDCentral = AzureLocation("USDoDCentral")
+	// USDoDEast Location for Azure
+	AzureLocationUSDoDEast = AzureLocation("USDoDEast")
+	// FranceCentral Location for Azure
+	AzureLocationFranceCentral = AzureLocation("FranceCentral")
+	// AustraliaCentral Location for Azure
+	AzureLocationAustraliaCentral = AzureLocation("AustraliaCentral")
+	// SouthAfricaNorth Location for Azure
+	AzureLocationSouthAfricaNorth = AzureLocation("SouthAfricaNorth")
+	// FranceSouth Location for Azure
+	AzureLocationFranceSouth = AzureLocation("FranceSouth")
+	// AustraliaCentral2 Location for Azure
+	AzureLocationAustraliaCentral2 = AzureLocation("AustraliaCentral2")
+	// SouthAfricaWest Location for Azure
+	AzureLocationSouthAfricaWest = AzureLocation("SouthAfricaWest")
+	// GermanyNorth Location for Azure
+	AzureLocationGermanyNorth = AzureLocation("GermanyNorth")
+	// GermanyWestCentral Location for Azure
 	AzureLocationGermanyWestCentral = AzureLocation("GermanyWestCentral")
-	AzureLocationNorwayEast         = AzureLocation("NorwayEast")
-	AzureLocationNorwayWest         = AzureLocation("NorwayWest")
-	AzureLocationChinaEast2         = AzureLocation("ChinaEast2")
-	AzureLocationChinaNorth2        = AzureLocation("ChinaNorth2")
-	AzureLocationSwitzerlandNorth   = AzureLocation("SwitzerlandNorth")
-	AzureLocationSwitzerlandWest    = AzureLocation("SwitzerlandWest")
-	AzureLocationUAENorth           = AzureLocation("UAENorth")
-	AzureLocationUAECentral         = AzureLocation("UAECentral")
-	AzureLocationUsNatEast          = AzureLocation("UsNatEast")
-	AzureLocationUsNatWest          = AzureLocation("UsNatWest")
-	AzureLocationUsSecEast          = AzureLocation("UsSecEast")
-	AzureLocationUsSecCentral       = AzureLocation("UsSecCentral")
-	AzureLocationUsSecWest          = AzureLocation("UsSecWest")
-	AzureLocationSwedenCentral      = AzureLocation("SwedenCentral")
-	AzureLocationQatarCentral       = AzureLocation("QatarCentral")
+	// NorwayEast Location for Azure
+	AzureLocationNorwayEast = AzureLocation("NorwayEast")
+	// NorwayWest Location for Azure
+	AzureLocationNorwayWest = AzureLocation("NorwayWest")
+	// ChinaEast2 Location for Azure
+	AzureLocationChinaEast2 = AzureLocation("ChinaEast2")
+	// ChinaNorth2 Location for Azure
+	AzureLocationChinaNorth2 = AzureLocation("ChinaNorth2")
+	// SwitzerlandNorth Location for Azure
+	AzureLocationSwitzerlandNorth = AzureLocation("SwitzerlandNorth")
+	// SwitzerlandWest Location for Azure
+	AzureLocationSwitzerlandWest = AzureLocation("SwitzerlandWest")
+	// UAENorth Location for Azure
+	AzureLocationUAENorth = AzureLocation("UAENorth")
+	// UAECentral Location for Azure
+	AzureLocationUAECentral = AzureLocation("UAECentral")
+	// UsNatEast Location for Azure
+	AzureLocationUsNatEast = AzureLocation("UsNatEast")
+	// UsNatWest Location for Azure
+	AzureLocationUsNatWest = AzureLocation("UsNatWest")
+	// UsSecEast Location for Azure
+	AzureLocationUsSecEast = AzureLocation("UsSecEast")
+	// UsSecCentral Location for Azure
+	AzureLocationUsSecCentral = AzureLocation("UsSecCentral")
+	// UsSecWest Location for Azure
+	AzureLocationUsSecWest = AzureLocation("UsSecWest")
+	// SwedenCentral Location for Azure
+	AzureLocationSwedenCentral = AzureLocation("SwedenCentral")
+	// QatarCentral Location for Azure
+	AzureLocationQatarCentral = AzureLocation("QatarCentral")
+	// JioIndiaWest Location for Azure
+	AzureLocationJioIndiaWest = AzureLocation("JioIndiaWest")
+	// ItalyNorth Location for Azure
+	AzureLocationItalyNorth = AzureLocation("ItalyNorth")
+	// PolandCentral Location for Azure
+	AzureLocationPolandCentral = AzureLocation("PolandCentral")
+	// IsraelCentral Location for Azure
+	AzureLocationIsraelCentral = AzureLocation("IsraelCentral")
+	// MexicoCentral Location for Azure
+	AzureLocationMexicoCentral = AzureLocation("MexicoCentral")
+	// NewZealandNorth Location for Azure
+	AzureLocationNewZealandNorth = AzureLocation("NewZealandNorth")
+	// SpainCentral Location for Azure
+	AzureLocationSpainCentral = AzureLocation("SpainCentral")
 )
 
 func (AzureLocation) ElementType() reflect.Type {
@@ -2343,6 +2463,13 @@ func (o AzureLocationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 //	AzureLocationUsSecWest
 //	AzureLocationSwedenCentral
 //	AzureLocationQatarCentral
+//	AzureLocationJioIndiaWest
+//	AzureLocationItalyNorth
+//	AzureLocationPolandCentral
+//	AzureLocationIsraelCentral
+//	AzureLocationMexicoCentral
+//	AzureLocationNewZealandNorth
+//	AzureLocationSpainCentral
 type AzureLocationInput interface {
 	pulumi.Input
 
@@ -2375,6 +2502,201 @@ func (in *azureLocationPtr) ToAzureLocationPtrOutput() AzureLocationPtrOutput {
 
 func (in *azureLocationPtr) ToAzureLocationPtrOutputWithContext(ctx context.Context) AzureLocationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureLocationPtrOutput)
+}
+
+// Gets or sets the Azure offer code.
+type AzureOffer string
+
+const (
+	// Unknown - Azure Offer
+	AzureOfferUnknown = AzureOffer("Unknown")
+	// MSAZR0003P Azure Offer
+	AzureOfferMsazr0003P = AzureOffer("MSAZR0003P")
+	// MSAZR0023P Azure Offer
+	AzureOfferMsazr0023P = AzureOffer("MSAZR0023P")
+	// MSMCAZR0044P Azure Offer
+	AzureOfferMsmcazr0044P = AzureOffer("MSMCAZR0044P")
+	// MSMCAZR0059P Azure Offer
+	AzureOfferMsmcazr0059P = AzureOffer("MSMCAZR0059P")
+	// MSMCAZR0060P Azure Offer
+	AzureOfferMsmcazr0060P = AzureOffer("MSMCAZR0060P")
+	// MSMCAZR0063P Azure Offer
+	AzureOfferMsmcazr0063P = AzureOffer("MSMCAZR0063P")
+	// MSAZRUSGOV0003P Azure Offer
+	AzureOfferMsazrusgov0003P = AzureOffer("MSAZRUSGOV0003P")
+	// EA Azure Offer
+	AzureOfferEA = AzureOffer("EA")
+	// SavingsPlan1Year Azure Offer
+	AzureOfferSavingsPlan1Year = AzureOffer("SavingsPlan1Year")
+	// SavingsPlan3Year Azure Offer
+	AzureOfferSavingsPlan3Year = AzureOffer("SavingsPlan3Year")
+)
+
+func (AzureOffer) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureOffer)(nil)).Elem()
+}
+
+func (e AzureOffer) ToAzureOfferOutput() AzureOfferOutput {
+	return pulumi.ToOutput(e).(AzureOfferOutput)
+}
+
+func (e AzureOffer) ToAzureOfferOutputWithContext(ctx context.Context) AzureOfferOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureOfferOutput)
+}
+
+func (e AzureOffer) ToAzureOfferPtrOutput() AzureOfferPtrOutput {
+	return e.ToAzureOfferPtrOutputWithContext(context.Background())
+}
+
+func (e AzureOffer) ToAzureOfferPtrOutputWithContext(ctx context.Context) AzureOfferPtrOutput {
+	return AzureOffer(e).ToAzureOfferOutputWithContext(ctx).ToAzureOfferPtrOutputWithContext(ctx)
+}
+
+func (e AzureOffer) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureOffer) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureOffer) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureOffer) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureOfferOutput struct{ *pulumi.OutputState }
+
+func (AzureOfferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureOffer)(nil)).Elem()
+}
+
+func (o AzureOfferOutput) ToAzureOfferOutput() AzureOfferOutput {
+	return o
+}
+
+func (o AzureOfferOutput) ToAzureOfferOutputWithContext(ctx context.Context) AzureOfferOutput {
+	return o
+}
+
+func (o AzureOfferOutput) ToAzureOfferPtrOutput() AzureOfferPtrOutput {
+	return o.ToAzureOfferPtrOutputWithContext(context.Background())
+}
+
+func (o AzureOfferOutput) ToAzureOfferPtrOutputWithContext(ctx context.Context) AzureOfferPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureOffer) *AzureOffer {
+		return &v
+	}).(AzureOfferPtrOutput)
+}
+
+func (o AzureOfferOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureOfferOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureOffer) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureOfferOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureOfferOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureOffer) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureOfferPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureOfferPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureOffer)(nil)).Elem()
+}
+
+func (o AzureOfferPtrOutput) ToAzureOfferPtrOutput() AzureOfferPtrOutput {
+	return o
+}
+
+func (o AzureOfferPtrOutput) ToAzureOfferPtrOutputWithContext(ctx context.Context) AzureOfferPtrOutput {
+	return o
+}
+
+func (o AzureOfferPtrOutput) Elem() AzureOfferOutput {
+	return o.ApplyT(func(v *AzureOffer) AzureOffer {
+		if v != nil {
+			return *v
+		}
+		var ret AzureOffer
+		return ret
+	}).(AzureOfferOutput)
+}
+
+func (o AzureOfferPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureOfferPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureOffer) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureOfferInput is an input type that accepts values of the AzureOffer enum
+// A concrete instance of `AzureOfferInput` can be one of the following:
+//
+//	AzureOfferUnknown
+//	AzureOfferMsazr0003P
+//	AzureOfferMsazr0023P
+//	AzureOfferMsmcazr0044P
+//	AzureOfferMsmcazr0059P
+//	AzureOfferMsmcazr0060P
+//	AzureOfferMsmcazr0063P
+//	AzureOfferMsazrusgov0003P
+//	AzureOfferEA
+//	AzureOfferSavingsPlan1Year
+//	AzureOfferSavingsPlan3Year
+type AzureOfferInput interface {
+	pulumi.Input
+
+	ToAzureOfferOutput() AzureOfferOutput
+	ToAzureOfferOutputWithContext(context.Context) AzureOfferOutput
+}
+
+var azureOfferPtrType = reflect.TypeOf((**AzureOffer)(nil)).Elem()
+
+type AzureOfferPtrInput interface {
+	pulumi.Input
+
+	ToAzureOfferPtrOutput() AzureOfferPtrOutput
+	ToAzureOfferPtrOutputWithContext(context.Context) AzureOfferPtrOutput
+}
+
+type azureOfferPtr string
+
+func AzureOfferPtr(v string) AzureOfferPtrInput {
+	return (*azureOfferPtr)(&v)
+}
+
+func (*azureOfferPtr) ElementType() reflect.Type {
+	return azureOfferPtrType
+}
+
+func (in *azureOfferPtr) ToAzureOfferPtrOutput() AzureOfferPtrOutput {
+	return pulumi.ToOutput(in).(AzureOfferPtrOutput)
+}
+
+func (in *azureOfferPtr) ToAzureOfferPtrOutputWithContext(ctx context.Context) AzureOfferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureOfferPtrOutput)
 }
 
 // Azure Offer Code.
@@ -2629,8 +2951,10 @@ func (in *azureOfferCodePtr) ToAzureOfferCodePtrOutputWithContext(ctx context.Co
 type AzurePricingTier string
 
 const (
+	// Standard Azure Pricing Tier
 	AzurePricingTierStandard = AzurePricingTier("Standard")
-	AzurePricingTierBasic    = AzurePricingTier("Basic")
+	// Basic Azure Pricing Tier
+	AzurePricingTierBasic = AzurePricingTier("Basic")
 )
 
 func (AzurePricingTier) ElementType() reflect.Type {
@@ -2959,11 +3283,13 @@ func (in *azureReservedInstancePtr) ToAzureReservedInstancePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AzureReservedInstancePtrOutput)
 }
 
-// Gets or sets a value indicating azure security offering type.
+// Azure security offering type.
 type AzureSecurityOfferingType string
 
 const (
-	AzureSecurityOfferingTypeNO  = AzureSecurityOfferingType("NO")
+	// NO - Azure Security Offering Type
+	AzureSecurityOfferingTypeNO = AzureSecurityOfferingType("NO")
+	// MDC - Azure Security Offering Type
 	AzureSecurityOfferingTypeMDC = AzureSecurityOfferingType("MDC")
 )
 
@@ -3129,10 +3455,14 @@ func (in *azureSecurityOfferingTypePtr) ToAzureSecurityOfferingTypePtrOutputWith
 type AzureSqlDataBaseType string
 
 const (
-	AzureSqlDataBaseTypeUnknown        = AzureSqlDataBaseType("Unknown")
-	AzureSqlDataBaseTypeAutomatic      = AzureSqlDataBaseType("Automatic")
+	// Unknown Data Base Type
+	AzureSqlDataBaseTypeUnknown = AzureSqlDataBaseType("Unknown")
+	// Automatic Data Base Type
+	AzureSqlDataBaseTypeAutomatic = AzureSqlDataBaseType("Automatic")
+	// SingleDatabase Data Base Type
 	AzureSqlDataBaseTypeSingleDatabase = AzureSqlDataBaseType("SingleDatabase")
-	AzureSqlDataBaseTypeElasticPool    = AzureSqlDataBaseType("ElasticPool")
+	// ElasticPool Data Base Type
+	AzureSqlDataBaseTypeElasticPool = AzureSqlDataBaseType("ElasticPool")
 )
 
 func (AzureSqlDataBaseType) ElementType() reflect.Type {
@@ -3299,10 +3629,14 @@ func (in *azureSqlDataBaseTypePtr) ToAzureSqlDataBaseTypePtrOutputWithContext(ct
 type AzureSqlInstanceType string
 
 const (
-	AzureSqlInstanceTypeUnknown        = AzureSqlInstanceType("Unknown")
-	AzureSqlInstanceTypeAutomatic      = AzureSqlInstanceType("Automatic")
+	// Unknown Azure Sql Instance Type
+	AzureSqlInstanceTypeUnknown = AzureSqlInstanceType("Unknown")
+	// Automatic Azure Sql Instance Type
+	AzureSqlInstanceTypeAutomatic = AzureSqlInstanceType("Automatic")
+	// SingleInstance Azure Sql Instance Type
 	AzureSqlInstanceTypeSingleInstance = AzureSqlInstanceType("SingleInstance")
-	AzureSqlInstanceTypeInstancePools  = AzureSqlInstanceType("InstancePools")
+	// InstancePools Azure Sql Instance Type
+	AzureSqlInstanceTypeInstancePools = AzureSqlInstanceType("InstancePools")
 )
 
 func (AzureSqlInstanceType) ElementType() reflect.Type {
@@ -3469,9 +3803,12 @@ func (in *azureSqlInstanceTypePtr) ToAzureSqlInstanceTypePtrOutputWithContext(ct
 type AzureSqlPurchaseModel string
 
 const (
+	// Unknown Purchase Model
 	AzureSqlPurchaseModelUnknown = AzureSqlPurchaseModel("Unknown")
-	AzureSqlPurchaseModelVCore   = AzureSqlPurchaseModel("VCore")
-	AzureSqlPurchaseModelDTU     = AzureSqlPurchaseModel("DTU")
+	// VCore Purchase Model
+	AzureSqlPurchaseModelVCore = AzureSqlPurchaseModel("VCore")
+	// DTU Purchase Model
+	AzureSqlPurchaseModelDTU = AzureSqlPurchaseModel("DTU")
 )
 
 func (AzureSqlPurchaseModel) ElementType() reflect.Type {
@@ -3805,14 +4142,196 @@ func (in *azureSqlServiceTierPtr) ToAzureSqlServiceTierPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSqlServiceTierPtrOutput)
 }
 
+// Gets or sets the azure SQL service tier.
+type AzureSqlServiceTierV3 string
+
+const (
+	// SqlService_Unknown Sql Service Tier V3
+	AzureSqlServiceTierV3_SqlService_Unknown = AzureSqlServiceTierV3("SqlService_Unknown")
+	// SqlService_Automatic Sql Service Tier V3
+	AzureSqlServiceTierV3_SqlService_Automatic = AzureSqlServiceTierV3("SqlService_Automatic")
+	// SqlService_GeneralPurpose Sql Service Tier V3
+	AzureSqlServiceTierV3_SqlService_GeneralPurpose = AzureSqlServiceTierV3("SqlService_GeneralPurpose")
+	// SqlService_BusinessCritical Sql Service Tier V3
+	AzureSqlServiceTierV3_SqlService_BusinessCritical = AzureSqlServiceTierV3("SqlService_BusinessCritical")
+	// SqlService_HyperScale Sql Service Tier V3
+	AzureSqlServiceTierV3_SqlService_HyperScale = AzureSqlServiceTierV3("SqlService_HyperScale")
+)
+
+func (AzureSqlServiceTierV3) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSqlServiceTierV3)(nil)).Elem()
+}
+
+func (e AzureSqlServiceTierV3) ToAzureSqlServiceTierV3Output() AzureSqlServiceTierV3Output {
+	return pulumi.ToOutput(e).(AzureSqlServiceTierV3Output)
+}
+
+func (e AzureSqlServiceTierV3) ToAzureSqlServiceTierV3OutputWithContext(ctx context.Context) AzureSqlServiceTierV3Output {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureSqlServiceTierV3Output)
+}
+
+func (e AzureSqlServiceTierV3) ToAzureSqlServiceTierV3PtrOutput() AzureSqlServiceTierV3PtrOutput {
+	return e.ToAzureSqlServiceTierV3PtrOutputWithContext(context.Background())
+}
+
+func (e AzureSqlServiceTierV3) ToAzureSqlServiceTierV3PtrOutputWithContext(ctx context.Context) AzureSqlServiceTierV3PtrOutput {
+	return AzureSqlServiceTierV3(e).ToAzureSqlServiceTierV3OutputWithContext(ctx).ToAzureSqlServiceTierV3PtrOutputWithContext(ctx)
+}
+
+func (e AzureSqlServiceTierV3) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureSqlServiceTierV3) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureSqlServiceTierV3) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureSqlServiceTierV3) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureSqlServiceTierV3Output struct{ *pulumi.OutputState }
+
+func (AzureSqlServiceTierV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSqlServiceTierV3)(nil)).Elem()
+}
+
+func (o AzureSqlServiceTierV3Output) ToAzureSqlServiceTierV3Output() AzureSqlServiceTierV3Output {
+	return o
+}
+
+func (o AzureSqlServiceTierV3Output) ToAzureSqlServiceTierV3OutputWithContext(ctx context.Context) AzureSqlServiceTierV3Output {
+	return o
+}
+
+func (o AzureSqlServiceTierV3Output) ToAzureSqlServiceTierV3PtrOutput() AzureSqlServiceTierV3PtrOutput {
+	return o.ToAzureSqlServiceTierV3PtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlServiceTierV3Output) ToAzureSqlServiceTierV3PtrOutputWithContext(ctx context.Context) AzureSqlServiceTierV3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureSqlServiceTierV3) *AzureSqlServiceTierV3 {
+		return &v
+	}).(AzureSqlServiceTierV3PtrOutput)
+}
+
+func (o AzureSqlServiceTierV3Output) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureSqlServiceTierV3Output) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureSqlServiceTierV3) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureSqlServiceTierV3Output) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlServiceTierV3Output) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureSqlServiceTierV3) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureSqlServiceTierV3PtrOutput struct{ *pulumi.OutputState }
+
+func (AzureSqlServiceTierV3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureSqlServiceTierV3)(nil)).Elem()
+}
+
+func (o AzureSqlServiceTierV3PtrOutput) ToAzureSqlServiceTierV3PtrOutput() AzureSqlServiceTierV3PtrOutput {
+	return o
+}
+
+func (o AzureSqlServiceTierV3PtrOutput) ToAzureSqlServiceTierV3PtrOutputWithContext(ctx context.Context) AzureSqlServiceTierV3PtrOutput {
+	return o
+}
+
+func (o AzureSqlServiceTierV3PtrOutput) Elem() AzureSqlServiceTierV3Output {
+	return o.ApplyT(func(v *AzureSqlServiceTierV3) AzureSqlServiceTierV3 {
+		if v != nil {
+			return *v
+		}
+		var ret AzureSqlServiceTierV3
+		return ret
+	}).(AzureSqlServiceTierV3Output)
+}
+
+func (o AzureSqlServiceTierV3PtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlServiceTierV3PtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureSqlServiceTierV3) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureSqlServiceTierV3Input is an input type that accepts values of the AzureSqlServiceTierV3 enum
+// A concrete instance of `AzureSqlServiceTierV3Input` can be one of the following:
+//
+//	AzureSqlServiceTierV3_SqlService_Unknown
+//	AzureSqlServiceTierV3_SqlService_Automatic
+//	AzureSqlServiceTierV3_SqlService_GeneralPurpose
+//	AzureSqlServiceTierV3_SqlService_BusinessCritical
+//	AzureSqlServiceTierV3_SqlService_HyperScale
+type AzureSqlServiceTierV3Input interface {
+	pulumi.Input
+
+	ToAzureSqlServiceTierV3Output() AzureSqlServiceTierV3Output
+	ToAzureSqlServiceTierV3OutputWithContext(context.Context) AzureSqlServiceTierV3Output
+}
+
+var azureSqlServiceTierV3PtrType = reflect.TypeOf((**AzureSqlServiceTierV3)(nil)).Elem()
+
+type AzureSqlServiceTierV3PtrInput interface {
+	pulumi.Input
+
+	ToAzureSqlServiceTierV3PtrOutput() AzureSqlServiceTierV3PtrOutput
+	ToAzureSqlServiceTierV3PtrOutputWithContext(context.Context) AzureSqlServiceTierV3PtrOutput
+}
+
+type azureSqlServiceTierV3Ptr string
+
+func AzureSqlServiceTierV3Ptr(v string) AzureSqlServiceTierV3PtrInput {
+	return (*azureSqlServiceTierV3Ptr)(&v)
+}
+
+func (*azureSqlServiceTierV3Ptr) ElementType() reflect.Type {
+	return azureSqlServiceTierV3PtrType
+}
+
+func (in *azureSqlServiceTierV3Ptr) ToAzureSqlServiceTierV3PtrOutput() AzureSqlServiceTierV3PtrOutput {
+	return pulumi.ToOutput(in).(AzureSqlServiceTierV3PtrOutput)
+}
+
+func (in *azureSqlServiceTierV3Ptr) ToAzureSqlServiceTierV3PtrOutputWithContext(ctx context.Context) AzureSqlServiceTierV3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureSqlServiceTierV3PtrOutput)
+}
+
 // Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
 type AzureStorageRedundancy string
 
 const (
-	AzureStorageRedundancyUnknown                = AzureStorageRedundancy("Unknown")
-	AzureStorageRedundancyLocallyRedundant       = AzureStorageRedundancy("LocallyRedundant")
-	AzureStorageRedundancyZoneRedundant          = AzureStorageRedundancy("ZoneRedundant")
-	AzureStorageRedundancyGeoRedundant           = AzureStorageRedundancy("GeoRedundant")
+	// Unknown Azure Storage Redundancy
+	AzureStorageRedundancyUnknown = AzureStorageRedundancy("Unknown")
+	// LocallyRedundant Azure Storage Redundancy
+	AzureStorageRedundancyLocallyRedundant = AzureStorageRedundancy("LocallyRedundant")
+	// ZoneRedundant Azure Storage Redundancy
+	AzureStorageRedundancyZoneRedundant = AzureStorageRedundancy("ZoneRedundant")
+	// GeoRedundant Azure Storage Redundancy
+	AzureStorageRedundancyGeoRedundant = AzureStorageRedundancy("GeoRedundant")
+	// ReadAccessGeoRedundant Azure Storage Redundancy
 	AzureStorageRedundancyReadAccessGeoRedundant = AzureStorageRedundancy("ReadAccessGeoRedundant")
 )
 
@@ -3975,6 +4494,210 @@ func (in *azureStorageRedundancyPtr) ToAzureStorageRedundancyPtrOutput() AzureSt
 
 func (in *azureStorageRedundancyPtr) ToAzureStorageRedundancyPtrOutputWithContext(ctx context.Context) AzureStorageRedundancyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureStorageRedundancyPtrOutput)
+}
+
+// Azure Target
+type AzureTarget string
+
+const (
+	// Unknown - Azure Target
+	AzureTargetUnknown = AzureTarget("Unknown")
+	// SqlDatabase - Azure Target
+	AzureTargetSqlDatabase = AzureTarget("SqlDatabase")
+	// SqlMI - Azure Target
+	AzureTargetSqlMI = AzureTarget("SqlMI")
+	// FlexServerPG - Azure Target
+	AzureTargetFlexServerPG = AzureTarget("FlexServerPG")
+	// OracleIaasVM - Azure Target
+	AzureTargetOracleIaasVM = AzureTarget("OracleIaasVM")
+	// AzureSpringApps - Azure Target
+	AzureTargetAzureSpringApps = AzureTarget("AzureSpringApps")
+	// SAPAzureInstance - Azure Target
+	AzureTargetSAPAzureInstance = AzureTarget("SAPAzureInstance")
+	// AKS - Azure Target
+	AzureTargetAKS = AzureTarget("AKS")
+	// MySQLAzureFlexServer - Azure Target
+	AzureTargetMySQLAzureFlexServer = AzureTarget("MySQLAzureFlexServer")
+	// AzureSQLVM - Azure Target
+	AzureTargetAzureSQLVM = AzureTarget("AzureSQLVM")
+	// AzureVM - Azure Target
+	AzureTargetAzureVM = AzureTarget("AzureVM")
+	// AzureAppService - Azure Target
+	AzureTargetAzureAppService = AzureTarget("AzureAppService")
+	// AzureAppServiceContainer - Azure Target
+	AzureTargetAzureAppServiceContainer = AzureTarget("AzureAppServiceContainer")
+	// Avs - Azure Target
+	AzureTargetAvs = AzureTarget("Avs")
+)
+
+func (AzureTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureTarget)(nil)).Elem()
+}
+
+func (e AzureTarget) ToAzureTargetOutput() AzureTargetOutput {
+	return pulumi.ToOutput(e).(AzureTargetOutput)
+}
+
+func (e AzureTarget) ToAzureTargetOutputWithContext(ctx context.Context) AzureTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureTargetOutput)
+}
+
+func (e AzureTarget) ToAzureTargetPtrOutput() AzureTargetPtrOutput {
+	return e.ToAzureTargetPtrOutputWithContext(context.Background())
+}
+
+func (e AzureTarget) ToAzureTargetPtrOutputWithContext(ctx context.Context) AzureTargetPtrOutput {
+	return AzureTarget(e).ToAzureTargetOutputWithContext(ctx).ToAzureTargetPtrOutputWithContext(ctx)
+}
+
+func (e AzureTarget) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureTarget) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureTarget) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureTarget) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureTargetOutput struct{ *pulumi.OutputState }
+
+func (AzureTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureTarget)(nil)).Elem()
+}
+
+func (o AzureTargetOutput) ToAzureTargetOutput() AzureTargetOutput {
+	return o
+}
+
+func (o AzureTargetOutput) ToAzureTargetOutputWithContext(ctx context.Context) AzureTargetOutput {
+	return o
+}
+
+func (o AzureTargetOutput) ToAzureTargetPtrOutput() AzureTargetPtrOutput {
+	return o.ToAzureTargetPtrOutputWithContext(context.Background())
+}
+
+func (o AzureTargetOutput) ToAzureTargetPtrOutputWithContext(ctx context.Context) AzureTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureTarget) *AzureTarget {
+		return &v
+	}).(AzureTargetPtrOutput)
+}
+
+func (o AzureTargetOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureTargetOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureTarget) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureTargetOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureTargetOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureTarget) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureTarget)(nil)).Elem()
+}
+
+func (o AzureTargetPtrOutput) ToAzureTargetPtrOutput() AzureTargetPtrOutput {
+	return o
+}
+
+func (o AzureTargetPtrOutput) ToAzureTargetPtrOutputWithContext(ctx context.Context) AzureTargetPtrOutput {
+	return o
+}
+
+func (o AzureTargetPtrOutput) Elem() AzureTargetOutput {
+	return o.ApplyT(func(v *AzureTarget) AzureTarget {
+		if v != nil {
+			return *v
+		}
+		var ret AzureTarget
+		return ret
+	}).(AzureTargetOutput)
+}
+
+func (o AzureTargetPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureTargetPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureTarget) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureTargetInput is an input type that accepts values of the AzureTarget enum
+// A concrete instance of `AzureTargetInput` can be one of the following:
+//
+//	AzureTargetUnknown
+//	AzureTargetSqlDatabase
+//	AzureTargetSqlMI
+//	AzureTargetFlexServerPG
+//	AzureTargetOracleIaasVM
+//	AzureTargetAzureSpringApps
+//	AzureTargetSAPAzureInstance
+//	AzureTargetAKS
+//	AzureTargetMySQLAzureFlexServer
+//	AzureTargetAzureSQLVM
+//	AzureTargetAzureVM
+//	AzureTargetAzureAppService
+//	AzureTargetAzureAppServiceContainer
+//	AzureTargetAvs
+type AzureTargetInput interface {
+	pulumi.Input
+
+	ToAzureTargetOutput() AzureTargetOutput
+	ToAzureTargetOutputWithContext(context.Context) AzureTargetOutput
+}
+
+var azureTargetPtrType = reflect.TypeOf((**AzureTarget)(nil)).Elem()
+
+type AzureTargetPtrInput interface {
+	pulumi.Input
+
+	ToAzureTargetPtrOutput() AzureTargetPtrOutput
+	ToAzureTargetPtrOutputWithContext(context.Context) AzureTargetPtrOutput
+}
+
+type azureTargetPtr string
+
+func AzureTargetPtr(v string) AzureTargetPtrInput {
+	return (*azureTargetPtr)(&v)
+}
+
+func (*azureTargetPtr) ElementType() reflect.Type {
+	return azureTargetPtrType
+}
+
+func (in *azureTargetPtr) ToAzureTargetPtrOutput() AzureTargetPtrOutput {
+	return pulumi.ToOutput(in).(AzureTargetPtrOutput)
+}
+
+func (in *azureTargetPtr) ToAzureTargetPtrOutputWithContext(ctx context.Context) AzureTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureTargetPtrOutput)
 }
 
 // Gets or sets azure VM category.
@@ -4163,61 +4886,114 @@ func (in *azureVmCategoryPtr) ToAzureVmCategoryPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(AzureVmCategoryPtrOutput)
 }
 
+// Azure VM Family
 type AzureVmFamily string
 
 const (
-	AzureVmFamilyUnknown       = AzureVmFamily("Unknown")
-	AzureVmFamilyBasicA0A4     = AzureVmFamily("Basic_A0_A4")
-	AzureVmFamilyStandardA0A7  = AzureVmFamily("Standard_A0_A7")
+	// Unknown - Azure VM Family
+	AzureVmFamilyUnknown = AzureVmFamily("Unknown")
+	// Basic_A0_A4
+	AzureVmFamilyBasicA0A4 = AzureVmFamily("Basic_A0_A4")
+	// Standard_A0_A7
+	AzureVmFamilyStandardA0A7 = AzureVmFamily("Standard_A0_A7")
+	// Standard_A8_A11
 	AzureVmFamilyStandardA8A11 = AzureVmFamily("Standard_A8_A11")
-	AzureVmFamilyAv2Series     = AzureVmFamily("Av2_series")
-	AzureVmFamilyDSeries       = AzureVmFamily("D_series")
-	AzureVmFamilyDv2Series     = AzureVmFamily("Dv2_series")
-	AzureVmFamilyDSSeries      = AzureVmFamily("DS_series")
-	AzureVmFamilyDSv2Series    = AzureVmFamily("DSv2_series")
-	AzureVmFamilyFSeries       = AzureVmFamily("F_series")
-	AzureVmFamilyFsSeries      = AzureVmFamily("Fs_series")
-	AzureVmFamilyGSeries       = AzureVmFamily("G_series")
-	AzureVmFamilyGSSeries      = AzureVmFamily("GS_series")
-	AzureVmFamilyHSeries       = AzureVmFamily("H_series")
-	AzureVmFamilyLsSeries      = AzureVmFamily("Ls_series")
-	AzureVmFamilyDsv3Series    = AzureVmFamily("Dsv3_series")
-	AzureVmFamilyDv3Series     = AzureVmFamily("Dv3_series")
-	AzureVmFamilyFsv2Series    = AzureVmFamily("Fsv2_series")
-	AzureVmFamilyEv3Series     = AzureVmFamily("Ev3_series")
-	AzureVmFamilyEsv3Series    = AzureVmFamily("Esv3_series")
-	AzureVmFamilyMSeries       = AzureVmFamily("M_series")
-	AzureVmFamilyDCSeries      = AzureVmFamily("DC_Series")
-	AzureVmFamilyLsv2Series    = AzureVmFamily("Lsv2_series")
-	AzureVmFamilyEv4Series     = AzureVmFamily("Ev4_series")
-	AzureVmFamilyEsv4Series    = AzureVmFamily("Esv4_series")
-	AzureVmFamilyEdv4Series    = AzureVmFamily("Edv4_series")
-	AzureVmFamilyEdsv4Series   = AzureVmFamily("Edsv4_series")
-	AzureVmFamilyDv4Series     = AzureVmFamily("Dv4_series")
-	AzureVmFamilyDsv4Series    = AzureVmFamily("Dsv4_series")
-	AzureVmFamilyDdv4Series    = AzureVmFamily("Ddv4_series")
-	AzureVmFamilyDdsv4Series   = AzureVmFamily("Ddsv4_series")
-	AzureVmFamilyEasv4Series   = AzureVmFamily("Easv4_series")
-	AzureVmFamilyDasv4Series   = AzureVmFamily("Dasv4_series")
-	AzureVmFamilyMv2Series     = AzureVmFamily("Mv2_series")
-	AzureVmFamilyEav4Series    = AzureVmFamily("Eav4_series")
-	AzureVmFamilyDav4Series    = AzureVmFamily("Dav4_series")
-	AzureVmFamilyMsv2Series    = AzureVmFamily("Msv2_series")
-	AzureVmFamilyMdsv2Series   = AzureVmFamily("Mdsv2_series")
-	AzureVmFamilyDv5Series     = AzureVmFamily("Dv5_series")
-	AzureVmFamilyDsv5Series    = AzureVmFamily("Dsv5_series")
-	AzureVmFamilyDdv5Series    = AzureVmFamily("Ddv5_series")
-	AzureVmFamilyDdsv5Series   = AzureVmFamily("Ddsv5_series")
-	AzureVmFamilyDasv5Series   = AzureVmFamily("Dasv5_series")
-	AzureVmFamilyDadsv5Series  = AzureVmFamily("Dadsv5_series")
-	AzureVmFamilyEv5Series     = AzureVmFamily("Ev5_series")
-	AzureVmFamilyEsv5Series    = AzureVmFamily("Esv5_series")
-	AzureVmFamilyEdv5Series    = AzureVmFamily("Edv5_series")
-	AzureVmFamilyEdsv5Series   = AzureVmFamily("Edsv5_series")
-	AzureVmFamilyEasv5Series   = AzureVmFamily("Easv5_series")
-	AzureVmFamilyEadsv5Series  = AzureVmFamily("Eadsv5_series")
-	AzureVmFamilyEbsv5Series   = AzureVmFamily("Ebsv5_series")
-	AzureVmFamilyEbdsv5Series  = AzureVmFamily("Ebdsv5_series")
+	// Av2_series
+	AzureVmFamilyAv2Series = AzureVmFamily("Av2_series")
+	// D_series
+	AzureVmFamilyDSeries = AzureVmFamily("D_series")
+	// Dv2_series
+	AzureVmFamilyDv2Series = AzureVmFamily("Dv2_series")
+	// DS_series
+	AzureVmFamilyDSSeries = AzureVmFamily("DS_series")
+	// DSv2_series
+	AzureVmFamilyDSv2Series = AzureVmFamily("DSv2_series")
+	// F_series
+	AzureVmFamilyFSeries = AzureVmFamily("F_series")
+	// Fs_series
+	AzureVmFamilyFsSeries = AzureVmFamily("Fs_series")
+	// G_series
+	AzureVmFamilyGSeries = AzureVmFamily("G_series")
+	// GS_series
+	AzureVmFamilyGSSeries = AzureVmFamily("GS_series")
+	// H_series
+	AzureVmFamilyHSeries = AzureVmFamily("H_series")
+	// Ls_series
+	AzureVmFamilyLsSeries = AzureVmFamily("Ls_series")
+	// Dsv3_series
+	AzureVmFamilyDsv3Series = AzureVmFamily("Dsv3_series")
+	// Dv3_series
+	AzureVmFamilyDv3Series = AzureVmFamily("Dv3_series")
+	// Fsv2_series
+	AzureVmFamilyFsv2Series = AzureVmFamily("Fsv2_series")
+	// Ev3_series
+	AzureVmFamilyEv3Series = AzureVmFamily("Ev3_series")
+	// Esv3_series
+	AzureVmFamilyEsv3Series = AzureVmFamily("Esv3_series")
+	// M_series
+	AzureVmFamilyMSeries = AzureVmFamily("M_series")
+	// DC_Series
+	AzureVmFamilyDCSeries = AzureVmFamily("DC_Series")
+	// Lsv2_series
+	AzureVmFamilyLsv2Series = AzureVmFamily("Lsv2_series")
+	// Ev4_series
+	AzureVmFamilyEv4Series = AzureVmFamily("Ev4_series")
+	// Esv4_series
+	AzureVmFamilyEsv4Series = AzureVmFamily("Esv4_series")
+	// Edv4_series
+	AzureVmFamilyEdv4Series = AzureVmFamily("Edv4_series")
+	// Edsv4_series
+	AzureVmFamilyEdsv4Series = AzureVmFamily("Edsv4_series")
+	// Dv4_series
+	AzureVmFamilyDv4Series = AzureVmFamily("Dv4_series")
+	// Dsv4_series
+	AzureVmFamilyDsv4Series = AzureVmFamily("Dsv4_series")
+	// Ddv4_series
+	AzureVmFamilyDdv4Series = AzureVmFamily("Ddv4_series")
+	// Ddsv4_series
+	AzureVmFamilyDdsv4Series = AzureVmFamily("Ddsv4_series")
+	// Easv4_series
+	AzureVmFamilyEasv4Series = AzureVmFamily("Easv4_series")
+	// Dasv4_series
+	AzureVmFamilyDasv4Series = AzureVmFamily("Dasv4_series")
+	// Mv2_series
+	AzureVmFamilyMv2Series = AzureVmFamily("Mv2_series")
+	// Eav4_series
+	AzureVmFamilyEav4Series = AzureVmFamily("Eav4_series")
+	// Dav4_series
+	AzureVmFamilyDav4Series = AzureVmFamily("Dav4_series")
+	// Msv2_series
+	AzureVmFamilyMsv2Series = AzureVmFamily("Msv2_series")
+	// Mdsv2_series
+	AzureVmFamilyMdsv2Series = AzureVmFamily("Mdsv2_series")
+	// Dv5_series
+	AzureVmFamilyDv5Series = AzureVmFamily("Dv5_series")
+	// Dsv5_series
+	AzureVmFamilyDsv5Series = AzureVmFamily("Dsv5_series")
+	// Ddv5_series
+	AzureVmFamilyDdv5Series = AzureVmFamily("Ddv5_series")
+	// Ddsv5_series
+	AzureVmFamilyDdsv5Series = AzureVmFamily("Ddsv5_series")
+	// Dasv5_series
+	AzureVmFamilyDasv5Series = AzureVmFamily("Dasv5_series")
+	// Dadsv5_series
+	AzureVmFamilyDadsv5Series = AzureVmFamily("Dadsv5_series")
+	// Ev5_series
+	AzureVmFamilyEv5Series = AzureVmFamily("Ev5_series")
+	// Esv5_series
+	AzureVmFamilyEsv5Series = AzureVmFamily("Esv5_series")
+	// Edv5_series
+	AzureVmFamilyEdv5Series = AzureVmFamily("Edv5_series")
+	// Edsv5_series
+	AzureVmFamilyEdsv5Series = AzureVmFamily("Edsv5_series")
+	// Easv5_series
+	AzureVmFamilyEasv5Series = AzureVmFamily("Easv5_series")
+	// Eadsv5_series
+	AzureVmFamilyEadsv5Series = AzureVmFamily("Eadsv5_series")
+	// Ebsv5_series
+	AzureVmFamilyEbsv5Series = AzureVmFamily("Ebsv5_series")
+	// Ebdsv5_series
+	AzureVmFamilyEbdsv5Series = AzureVmFamily("Ebdsv5_series")
 )
 
 func (AzureVmFamily) ElementType() reflect.Type {
@@ -4672,10 +5448,14 @@ func (in *businessCaseCurrencyPtr) ToBusinessCaseCurrencyPtrOutputWithContext(ct
 type ComputeTier string
 
 const (
-	ComputeTierUnknown     = ComputeTier("Unknown")
-	ComputeTierAutomatic   = ComputeTier("Automatic")
+	// Unknown - Compute Tier
+	ComputeTierUnknown = ComputeTier("Unknown")
+	// Automatic - Compute Tier
+	ComputeTierAutomatic = ComputeTier("Automatic")
+	// Provisioned - Compute Tier
 	ComputeTierProvisioned = ComputeTier("Provisioned")
-	ComputeTierServerless  = ComputeTier("Serverless")
+	// Serverless - Compute Tier
+	ComputeTierServerless = ComputeTier("Serverless")
 )
 
 func (ComputeTier) ElementType() reflect.Type {
@@ -5563,8 +6343,12 @@ func (in *discoverySourcePtr) ToDiscoverySourcePtrOutputWithContext(ctx context.
 type EnvironmentType string
 
 const (
+	// Production - Environment Type
 	EnvironmentTypeProduction = EnvironmentType("Production")
-	EnvironmentTypeTest       = EnvironmentType("Test")
+	// Unknown - Environment Type
+	EnvironmentTypeUnknown = EnvironmentType("Unknown")
+	// DevTest - Environment Type
+	EnvironmentTypeDevTest = EnvironmentType("DevTest")
 )
 
 func (EnvironmentType) ElementType() reflect.Type {
@@ -5690,7 +6474,8 @@ func (o EnvironmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // A concrete instance of `EnvironmentTypeInput` can be one of the following:
 //
 //	EnvironmentTypeProduction
-//	EnvironmentTypeTest
+//	EnvironmentTypeUnknown
+//	EnvironmentTypeDevTest
 type EnvironmentTypeInput interface {
 	pulumi.Input
 
@@ -6419,14 +7204,18 @@ func (in *hyperVLicenseTypePtr) ToHyperVLicenseTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(HyperVLicenseTypePtrOutput)
 }
 
-// Gets or sets licensing program.
+// Gets or sets the licensing program.
 type LicensingProgram string
 
 const (
-	// Default value. Indicates Pay As You Go.
-	LicensingProgramDefault = LicensingProgram("Default")
-	// Enterprise Agreement.
+	// Retail/Pay as you go.
+	LicensingProgramRetail = LicensingProgram("Retail")
+	// Not known
+	LicensingProgramUnknown = LicensingProgram("Unknown")
+	// Enterprise agreement.
 	LicensingProgramEA = LicensingProgram("EA")
+	// Microsoft customer agreement.
+	LicensingProgramMCA = LicensingProgram("MCA")
 )
 
 func (LicensingProgram) ElementType() reflect.Type {
@@ -6551,8 +7340,10 @@ func (o LicensingProgramPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // LicensingProgramInput is an input type that accepts values of the LicensingProgram enum
 // A concrete instance of `LicensingProgramInput` can be one of the following:
 //
-//	LicensingProgramDefault
+//	LicensingProgramRetail
+//	LicensingProgramUnknown
 //	LicensingProgramEA
+//	LicensingProgramMCA
 type LicensingProgramInput interface {
 	pulumi.Input
 
@@ -7100,8 +7891,11 @@ func (in *moveTypePtr) ToMoveTypePtrOutputWithContext(ctx context.Context) MoveT
 type MultiSubnetIntent string
 
 const (
-	MultiSubnetIntentNone             = MultiSubnetIntent("None")
+	// None - Multi Subnet Intent
+	MultiSubnetIntentNone = MultiSubnetIntent("None")
+	// HighAvailability - Multi Subnet Intent
 	MultiSubnetIntentHighAvailability = MultiSubnetIntent("HighAvailability")
+	// DisasterRecovery - Multi Subnet Intent
 	MultiSubnetIntentDisasterRecovery = MultiSubnetIntent("DisasterRecovery")
 )
 
@@ -7603,9 +8397,12 @@ func (in *optimizationLogicPtr) ToOptimizationLogicPtrOutputWithContext(ctx cont
 type OsLicense string
 
 const (
+	// Unknown Os License
 	OsLicenseUnknown = OsLicense("Unknown")
-	OsLicenseYes     = OsLicense("Yes")
-	OsLicenseNo      = OsLicense("No")
+	// Yes Os License
+	OsLicenseYes = OsLicense("Yes")
+	// No Os License
+	OsLicenseNo = OsLicense("No")
 )
 
 func (OsLicense) ElementType() reflect.Type {
@@ -7780,6 +8577,8 @@ const (
 	PercentilePercentile95 = Percentile("Percentile95")
 	// Percentile 99.
 	PercentilePercentile99 = Percentile("Percentile99")
+	// Percentile unknown.
+	PercentilePercentileUnknown = Percentile("PercentileUnknown")
 )
 
 func (Percentile) ElementType() reflect.Type {
@@ -7908,6 +8707,7 @@ func (o PercentilePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 //	PercentilePercentile90
 //	PercentilePercentile95
 //	PercentilePercentile99
+//	PercentilePercentileUnknown
 type PercentileInput interface {
 	pulumi.Input
 
@@ -9301,20 +10101,22 @@ func (in *savingsOptionPtr) ToSavingsOptionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(SavingsOptionPtrOutput)
 }
 
-// Gets or sets savings options.
+// Gets or sets the savings options.
 type SavingsOptions string
 
 const (
-	// Savings Options is not applicable.
+	// No savings options.
 	SavingsOptionsNone = SavingsOptions("None")
-	// One Year Savings Plan.
-	SavingsOptionsOneYearSavings = SavingsOptions("OneYearSavings")
-	// Three Years Savings Plan.
-	SavingsOptionsThreeYearsSavings = SavingsOptions("ThreeYearsSavings")
-	// One Year Reserved Instances.
-	SavingsOptionsOneYearReserved = SavingsOptions("OneYearReserved")
-	// Three Years Reserved Instances.
-	SavingsOptionsThreeYearsReserved = SavingsOptions("ThreeYearsReserved")
+	// Reserved Instance for 1 year.
+	SavingsOptionsRI1Year = SavingsOptions("RI1Year")
+	// Reserved Instance for 3 years.
+	SavingsOptionsRI3Year = SavingsOptions("RI3Year")
+	// The savings plan for 1 year.
+	SavingsOptionsSavingsPlan1Year = SavingsOptions("SavingsPlan1Year")
+	// The savings plan for 3  years.
+	SavingsOptionsSavingsPlan3Year = SavingsOptions("SavingsPlan3Year")
+	// Custom azure offer code.
+	SavingsOptionsCustomAzureOfferCode = SavingsOptions("CustomAzureOfferCode")
 )
 
 func (SavingsOptions) ElementType() reflect.Type {
@@ -9440,10 +10242,11 @@ func (o SavingsOptionsPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // A concrete instance of `SavingsOptionsInput` can be one of the following:
 //
 //	SavingsOptionsNone
-//	SavingsOptionsOneYearSavings
-//	SavingsOptionsThreeYearsSavings
-//	SavingsOptionsOneYearReserved
-//	SavingsOptionsThreeYearsReserved
+//	SavingsOptionsRI1Year
+//	SavingsOptionsRI3Year
+//	SavingsOptionsSavingsPlan1Year
+//	SavingsOptionsSavingsPlan3Year
+//	SavingsOptionsCustomAzureOfferCode
 type SavingsOptionsInput interface {
 	pulumi.Input
 
@@ -9476,6 +10279,174 @@ func (in *savingsOptionsPtr) ToSavingsOptionsPtrOutput() SavingsOptionsPtrOutput
 
 func (in *savingsOptionsPtr) ToSavingsOptionsPtrOutputWithContext(ctx context.Context) SavingsOptionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SavingsOptionsPtrOutput)
+}
+
+// The scope type
+type ScopeType string
+
+const (
+	// ServerGroupId - Scope type
+	ScopeTypeServerGroupId = ScopeType("ServerGroupId")
+	// AzureResourceGraphQuery - Scope type
+	ScopeTypeAzureResourceGraphQuery = ScopeType("AzureResourceGraphQuery")
+)
+
+func (ScopeType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeType)(nil)).Elem()
+}
+
+func (e ScopeType) ToScopeTypeOutput() ScopeTypeOutput {
+	return pulumi.ToOutput(e).(ScopeTypeOutput)
+}
+
+func (e ScopeType) ToScopeTypeOutputWithContext(ctx context.Context) ScopeTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ScopeTypeOutput)
+}
+
+func (e ScopeType) ToScopeTypePtrOutput() ScopeTypePtrOutput {
+	return e.ToScopeTypePtrOutputWithContext(context.Background())
+}
+
+func (e ScopeType) ToScopeTypePtrOutputWithContext(ctx context.Context) ScopeTypePtrOutput {
+	return ScopeType(e).ToScopeTypeOutputWithContext(ctx).ToScopeTypePtrOutputWithContext(ctx)
+}
+
+func (e ScopeType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScopeType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScopeType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ScopeType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ScopeTypeOutput struct{ *pulumi.OutputState }
+
+func (ScopeTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeType)(nil)).Elem()
+}
+
+func (o ScopeTypeOutput) ToScopeTypeOutput() ScopeTypeOutput {
+	return o
+}
+
+func (o ScopeTypeOutput) ToScopeTypeOutputWithContext(ctx context.Context) ScopeTypeOutput {
+	return o
+}
+
+func (o ScopeTypeOutput) ToScopeTypePtrOutput() ScopeTypePtrOutput {
+	return o.ToScopeTypePtrOutputWithContext(context.Background())
+}
+
+func (o ScopeTypeOutput) ToScopeTypePtrOutputWithContext(ctx context.Context) ScopeTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScopeType) *ScopeType {
+		return &v
+	}).(ScopeTypePtrOutput)
+}
+
+func (o ScopeTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ScopeTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScopeType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ScopeTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScopeTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScopeType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScopeTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ScopeTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScopeType)(nil)).Elem()
+}
+
+func (o ScopeTypePtrOutput) ToScopeTypePtrOutput() ScopeTypePtrOutput {
+	return o
+}
+
+func (o ScopeTypePtrOutput) ToScopeTypePtrOutputWithContext(ctx context.Context) ScopeTypePtrOutput {
+	return o
+}
+
+func (o ScopeTypePtrOutput) Elem() ScopeTypeOutput {
+	return o.ApplyT(func(v *ScopeType) ScopeType {
+		if v != nil {
+			return *v
+		}
+		var ret ScopeType
+		return ret
+	}).(ScopeTypeOutput)
+}
+
+func (o ScopeTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScopeTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ScopeType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ScopeTypeInput is an input type that accepts values of the ScopeType enum
+// A concrete instance of `ScopeTypeInput` can be one of the following:
+//
+//	ScopeTypeServerGroupId
+//	ScopeTypeAzureResourceGraphQuery
+type ScopeTypeInput interface {
+	pulumi.Input
+
+	ToScopeTypeOutput() ScopeTypeOutput
+	ToScopeTypeOutputWithContext(context.Context) ScopeTypeOutput
+}
+
+var scopeTypePtrType = reflect.TypeOf((**ScopeType)(nil)).Elem()
+
+type ScopeTypePtrInput interface {
+	pulumi.Input
+
+	ToScopeTypePtrOutput() ScopeTypePtrOutput
+	ToScopeTypePtrOutputWithContext(context.Context) ScopeTypePtrOutput
+}
+
+type scopeTypePtr string
+
+func ScopeTypePtr(v string) ScopeTypePtrInput {
+	return (*scopeTypePtr)(&v)
+}
+
+func (*scopeTypePtr) ElementType() reflect.Type {
+	return scopeTypePtrType
+}
+
+func (in *scopeTypePtr) ToScopeTypePtrOutput() ScopeTypePtrOutput {
+	return pulumi.ToOutput(in).(ScopeTypePtrOutput)
+}
+
+func (in *scopeTypePtr) ToScopeTypePtrOutputWithContext(ctx context.Context) ScopeTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ScopeTypePtrOutput)
 }
 
 type SecretStoreType string
@@ -9651,9 +10622,12 @@ func (in *secretStoreTypePtr) ToSecretStoreTypePtrOutputWithContext(ctx context.
 type SqlServerLicense string
 
 const (
+	// Unknown - Sql Server License
 	SqlServerLicenseUnknown = SqlServerLicense("Unknown")
-	SqlServerLicenseYes     = SqlServerLicense("Yes")
-	SqlServerLicenseNo      = SqlServerLicense("No")
+	// Has Sql Server License
+	SqlServerLicenseYes = SqlServerLicense("Yes")
+	// No Sql Server License
+	SqlServerLicenseNo = SqlServerLicense("No")
 )
 
 func (SqlServerLicense) ElementType() reflect.Type {
@@ -11375,6 +12349,8 @@ func init() {
 	pulumi.RegisterOutputType(AzureHybridUseBenefitPtrOutput{})
 	pulumi.RegisterOutputType(AzureLocationOutput{})
 	pulumi.RegisterOutputType(AzureLocationPtrOutput{})
+	pulumi.RegisterOutputType(AzureOfferOutput{})
+	pulumi.RegisterOutputType(AzureOfferPtrOutput{})
 	pulumi.RegisterOutputType(AzureOfferCodeOutput{})
 	pulumi.RegisterOutputType(AzureOfferCodePtrOutput{})
 	pulumi.RegisterOutputType(AzurePricingTierOutput{})
@@ -11391,8 +12367,12 @@ func init() {
 	pulumi.RegisterOutputType(AzureSqlPurchaseModelPtrOutput{})
 	pulumi.RegisterOutputType(AzureSqlServiceTierOutput{})
 	pulumi.RegisterOutputType(AzureSqlServiceTierPtrOutput{})
+	pulumi.RegisterOutputType(AzureSqlServiceTierV3Output{})
+	pulumi.RegisterOutputType(AzureSqlServiceTierV3PtrOutput{})
 	pulumi.RegisterOutputType(AzureStorageRedundancyOutput{})
 	pulumi.RegisterOutputType(AzureStorageRedundancyPtrOutput{})
+	pulumi.RegisterOutputType(AzureTargetOutput{})
+	pulumi.RegisterOutputType(AzureTargetPtrOutput{})
 	pulumi.RegisterOutputType(AzureVmCategoryOutput{})
 	pulumi.RegisterOutputType(AzureVmCategoryPtrOutput{})
 	pulumi.RegisterOutputType(AzureVmFamilyOutput{})
@@ -11455,6 +12435,8 @@ func init() {
 	pulumi.RegisterOutputType(SavingsOptionPtrOutput{})
 	pulumi.RegisterOutputType(SavingsOptionsOutput{})
 	pulumi.RegisterOutputType(SavingsOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ScopeTypeOutput{})
+	pulumi.RegisterOutputType(ScopeTypePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreTypeOutput{})
 	pulumi.RegisterOutputType(SecretStoreTypePtrOutput{})
 	pulumi.RegisterOutputType(SqlServerLicenseOutput{})

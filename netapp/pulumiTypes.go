@@ -839,6 +839,476 @@ func (o ActiveDirectoryResponseArrayOutput) Index(i pulumi.IntInput) ActiveDirec
 	}).(ActiveDirectoryResponseOutput)
 }
 
+// Properties of the server managing the lifecycle of volume buckets
+type BucketServerProperties struct {
+	// A base64-encoded PEM file, which includes both the bucket server's certificate and private key. It is used to authenticate the user and allows access to volume data in a read-only manner.
+	CertificateObject *string `pulumi:"certificateObject"`
+	// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
+	Fqdn *string `pulumi:"fqdn"`
+}
+
+// BucketServerPropertiesInput is an input type that accepts BucketServerPropertiesArgs and BucketServerPropertiesOutput values.
+// You can construct a concrete instance of `BucketServerPropertiesInput` via:
+//
+//	BucketServerPropertiesArgs{...}
+type BucketServerPropertiesInput interface {
+	pulumi.Input
+
+	ToBucketServerPropertiesOutput() BucketServerPropertiesOutput
+	ToBucketServerPropertiesOutputWithContext(context.Context) BucketServerPropertiesOutput
+}
+
+// Properties of the server managing the lifecycle of volume buckets
+type BucketServerPropertiesArgs struct {
+	// A base64-encoded PEM file, which includes both the bucket server's certificate and private key. It is used to authenticate the user and allows access to volume data in a read-only manner.
+	CertificateObject pulumi.StringPtrInput `pulumi:"certificateObject"`
+	// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
+	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
+}
+
+func (BucketServerPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketServerProperties)(nil)).Elem()
+}
+
+func (i BucketServerPropertiesArgs) ToBucketServerPropertiesOutput() BucketServerPropertiesOutput {
+	return i.ToBucketServerPropertiesOutputWithContext(context.Background())
+}
+
+func (i BucketServerPropertiesArgs) ToBucketServerPropertiesOutputWithContext(ctx context.Context) BucketServerPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketServerPropertiesOutput)
+}
+
+func (i BucketServerPropertiesArgs) ToBucketServerPropertiesPtrOutput() BucketServerPropertiesPtrOutput {
+	return i.ToBucketServerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i BucketServerPropertiesArgs) ToBucketServerPropertiesPtrOutputWithContext(ctx context.Context) BucketServerPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketServerPropertiesOutput).ToBucketServerPropertiesPtrOutputWithContext(ctx)
+}
+
+// BucketServerPropertiesPtrInput is an input type that accepts BucketServerPropertiesArgs, BucketServerPropertiesPtr and BucketServerPropertiesPtrOutput values.
+// You can construct a concrete instance of `BucketServerPropertiesPtrInput` via:
+//
+//	        BucketServerPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketServerPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToBucketServerPropertiesPtrOutput() BucketServerPropertiesPtrOutput
+	ToBucketServerPropertiesPtrOutputWithContext(context.Context) BucketServerPropertiesPtrOutput
+}
+
+type bucketServerPropertiesPtrType BucketServerPropertiesArgs
+
+func BucketServerPropertiesPtr(v *BucketServerPropertiesArgs) BucketServerPropertiesPtrInput {
+	return (*bucketServerPropertiesPtrType)(v)
+}
+
+func (*bucketServerPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketServerProperties)(nil)).Elem()
+}
+
+func (i *bucketServerPropertiesPtrType) ToBucketServerPropertiesPtrOutput() BucketServerPropertiesPtrOutput {
+	return i.ToBucketServerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketServerPropertiesPtrType) ToBucketServerPropertiesPtrOutputWithContext(ctx context.Context) BucketServerPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketServerPropertiesPtrOutput)
+}
+
+// Properties of the server managing the lifecycle of volume buckets
+type BucketServerPropertiesOutput struct{ *pulumi.OutputState }
+
+func (BucketServerPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketServerProperties)(nil)).Elem()
+}
+
+func (o BucketServerPropertiesOutput) ToBucketServerPropertiesOutput() BucketServerPropertiesOutput {
+	return o
+}
+
+func (o BucketServerPropertiesOutput) ToBucketServerPropertiesOutputWithContext(ctx context.Context) BucketServerPropertiesOutput {
+	return o
+}
+
+func (o BucketServerPropertiesOutput) ToBucketServerPropertiesPtrOutput() BucketServerPropertiesPtrOutput {
+	return o.ToBucketServerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o BucketServerPropertiesOutput) ToBucketServerPropertiesPtrOutputWithContext(ctx context.Context) BucketServerPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketServerProperties) *BucketServerProperties {
+		return &v
+	}).(BucketServerPropertiesPtrOutput)
+}
+
+// A base64-encoded PEM file, which includes both the bucket server's certificate and private key. It is used to authenticate the user and allows access to volume data in a read-only manner.
+func (o BucketServerPropertiesOutput) CertificateObject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketServerProperties) *string { return v.CertificateObject }).(pulumi.StringPtrOutput)
+}
+
+// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
+func (o BucketServerPropertiesOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketServerProperties) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+type BucketServerPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketServerPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketServerProperties)(nil)).Elem()
+}
+
+func (o BucketServerPropertiesPtrOutput) ToBucketServerPropertiesPtrOutput() BucketServerPropertiesPtrOutput {
+	return o
+}
+
+func (o BucketServerPropertiesPtrOutput) ToBucketServerPropertiesPtrOutputWithContext(ctx context.Context) BucketServerPropertiesPtrOutput {
+	return o
+}
+
+func (o BucketServerPropertiesPtrOutput) Elem() BucketServerPropertiesOutput {
+	return o.ApplyT(func(v *BucketServerProperties) BucketServerProperties {
+		if v != nil {
+			return *v
+		}
+		var ret BucketServerProperties
+		return ret
+	}).(BucketServerPropertiesOutput)
+}
+
+// A base64-encoded PEM file, which includes both the bucket server's certificate and private key. It is used to authenticate the user and allows access to volume data in a read-only manner.
+func (o BucketServerPropertiesPtrOutput) CertificateObject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketServerProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateObject
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
+func (o BucketServerPropertiesPtrOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketServerProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of the server managing the lifecycle of volume buckets
+type BucketServerPropertiesResponse struct {
+	// Certificate Common Name taken from the certificate installed on the bucket server
+	CertificateCommonName string `pulumi:"certificateCommonName"`
+	// The bucket server's certificate expiry date.
+	CertificateExpiryDate string `pulumi:"certificateExpiryDate"`
+	// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
+	Fqdn *string `pulumi:"fqdn"`
+	// The bucket server's IPv4 address
+	IpAddress string `pulumi:"ipAddress"`
+}
+
+// Properties of the server managing the lifecycle of volume buckets
+type BucketServerPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (BucketServerPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketServerPropertiesResponse)(nil)).Elem()
+}
+
+func (o BucketServerPropertiesResponseOutput) ToBucketServerPropertiesResponseOutput() BucketServerPropertiesResponseOutput {
+	return o
+}
+
+func (o BucketServerPropertiesResponseOutput) ToBucketServerPropertiesResponseOutputWithContext(ctx context.Context) BucketServerPropertiesResponseOutput {
+	return o
+}
+
+// Certificate Common Name taken from the certificate installed on the bucket server
+func (o BucketServerPropertiesResponseOutput) CertificateCommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketServerPropertiesResponse) string { return v.CertificateCommonName }).(pulumi.StringOutput)
+}
+
+// The bucket server's certificate expiry date.
+func (o BucketServerPropertiesResponseOutput) CertificateExpiryDate() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketServerPropertiesResponse) string { return v.CertificateExpiryDate }).(pulumi.StringOutput)
+}
+
+// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
+func (o BucketServerPropertiesResponseOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketServerPropertiesResponse) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+// The bucket server's IPv4 address
+func (o BucketServerPropertiesResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketServerPropertiesResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+type BucketServerPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BucketServerPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketServerPropertiesResponse)(nil)).Elem()
+}
+
+func (o BucketServerPropertiesResponsePtrOutput) ToBucketServerPropertiesResponsePtrOutput() BucketServerPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o BucketServerPropertiesResponsePtrOutput) ToBucketServerPropertiesResponsePtrOutputWithContext(ctx context.Context) BucketServerPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o BucketServerPropertiesResponsePtrOutput) Elem() BucketServerPropertiesResponseOutput {
+	return o.ApplyT(func(v *BucketServerPropertiesResponse) BucketServerPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketServerPropertiesResponse
+		return ret
+	}).(BucketServerPropertiesResponseOutput)
+}
+
+// Certificate Common Name taken from the certificate installed on the bucket server
+func (o BucketServerPropertiesResponsePtrOutput) CertificateCommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketServerPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateCommonName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The bucket server's certificate expiry date.
+func (o BucketServerPropertiesResponsePtrOutput) CertificateExpiryDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketServerPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateExpiryDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
+func (o BucketServerPropertiesResponsePtrOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketServerPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The bucket server's IPv4 address
+func (o BucketServerPropertiesResponsePtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketServerPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The effective CIFS username when accessing the volume data.
+type CifsUser struct {
+	// The CIFS user's username
+	Username *string `pulumi:"username"`
+}
+
+// CifsUserInput is an input type that accepts CifsUserArgs and CifsUserOutput values.
+// You can construct a concrete instance of `CifsUserInput` via:
+//
+//	CifsUserArgs{...}
+type CifsUserInput interface {
+	pulumi.Input
+
+	ToCifsUserOutput() CifsUserOutput
+	ToCifsUserOutputWithContext(context.Context) CifsUserOutput
+}
+
+// The effective CIFS username when accessing the volume data.
+type CifsUserArgs struct {
+	// The CIFS user's username
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (CifsUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CifsUser)(nil)).Elem()
+}
+
+func (i CifsUserArgs) ToCifsUserOutput() CifsUserOutput {
+	return i.ToCifsUserOutputWithContext(context.Background())
+}
+
+func (i CifsUserArgs) ToCifsUserOutputWithContext(ctx context.Context) CifsUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsUserOutput)
+}
+
+func (i CifsUserArgs) ToCifsUserPtrOutput() CifsUserPtrOutput {
+	return i.ToCifsUserPtrOutputWithContext(context.Background())
+}
+
+func (i CifsUserArgs) ToCifsUserPtrOutputWithContext(ctx context.Context) CifsUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsUserOutput).ToCifsUserPtrOutputWithContext(ctx)
+}
+
+// CifsUserPtrInput is an input type that accepts CifsUserArgs, CifsUserPtr and CifsUserPtrOutput values.
+// You can construct a concrete instance of `CifsUserPtrInput` via:
+//
+//	        CifsUserArgs{...}
+//
+//	or:
+//
+//	        nil
+type CifsUserPtrInput interface {
+	pulumi.Input
+
+	ToCifsUserPtrOutput() CifsUserPtrOutput
+	ToCifsUserPtrOutputWithContext(context.Context) CifsUserPtrOutput
+}
+
+type cifsUserPtrType CifsUserArgs
+
+func CifsUserPtr(v *CifsUserArgs) CifsUserPtrInput {
+	return (*cifsUserPtrType)(v)
+}
+
+func (*cifsUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CifsUser)(nil)).Elem()
+}
+
+func (i *cifsUserPtrType) ToCifsUserPtrOutput() CifsUserPtrOutput {
+	return i.ToCifsUserPtrOutputWithContext(context.Background())
+}
+
+func (i *cifsUserPtrType) ToCifsUserPtrOutputWithContext(ctx context.Context) CifsUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsUserPtrOutput)
+}
+
+// The effective CIFS username when accessing the volume data.
+type CifsUserOutput struct{ *pulumi.OutputState }
+
+func (CifsUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CifsUser)(nil)).Elem()
+}
+
+func (o CifsUserOutput) ToCifsUserOutput() CifsUserOutput {
+	return o
+}
+
+func (o CifsUserOutput) ToCifsUserOutputWithContext(ctx context.Context) CifsUserOutput {
+	return o
+}
+
+func (o CifsUserOutput) ToCifsUserPtrOutput() CifsUserPtrOutput {
+	return o.ToCifsUserPtrOutputWithContext(context.Background())
+}
+
+func (o CifsUserOutput) ToCifsUserPtrOutputWithContext(ctx context.Context) CifsUserPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CifsUser) *CifsUser {
+		return &v
+	}).(CifsUserPtrOutput)
+}
+
+// The CIFS user's username
+func (o CifsUserOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CifsUser) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type CifsUserPtrOutput struct{ *pulumi.OutputState }
+
+func (CifsUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CifsUser)(nil)).Elem()
+}
+
+func (o CifsUserPtrOutput) ToCifsUserPtrOutput() CifsUserPtrOutput {
+	return o
+}
+
+func (o CifsUserPtrOutput) ToCifsUserPtrOutputWithContext(ctx context.Context) CifsUserPtrOutput {
+	return o
+}
+
+func (o CifsUserPtrOutput) Elem() CifsUserOutput {
+	return o.ApplyT(func(v *CifsUser) CifsUser {
+		if v != nil {
+			return *v
+		}
+		var ret CifsUser
+		return ret
+	}).(CifsUserOutput)
+}
+
+// The CIFS user's username
+func (o CifsUserPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CifsUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// The effective CIFS username when accessing the volume data.
+type CifsUserResponse struct {
+	// The CIFS user's username
+	Username *string `pulumi:"username"`
+}
+
+// The effective CIFS username when accessing the volume data.
+type CifsUserResponseOutput struct{ *pulumi.OutputState }
+
+func (CifsUserResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CifsUserResponse)(nil)).Elem()
+}
+
+func (o CifsUserResponseOutput) ToCifsUserResponseOutput() CifsUserResponseOutput {
+	return o
+}
+
+func (o CifsUserResponseOutput) ToCifsUserResponseOutputWithContext(ctx context.Context) CifsUserResponseOutput {
+	return o
+}
+
+// The CIFS user's username
+func (o CifsUserResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CifsUserResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type CifsUserResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CifsUserResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CifsUserResponse)(nil)).Elem()
+}
+
+func (o CifsUserResponsePtrOutput) ToCifsUserResponsePtrOutput() CifsUserResponsePtrOutput {
+	return o
+}
+
+func (o CifsUserResponsePtrOutput) ToCifsUserResponsePtrOutputWithContext(ctx context.Context) CifsUserResponsePtrOutput {
+	return o
+}
+
+func (o CifsUserResponsePtrOutput) Elem() CifsUserResponseOutput {
+	return o.ApplyT(func(v *CifsUserResponse) CifsUserResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CifsUserResponse
+		return ret
+	}).(CifsUserResponseOutput)
+}
+
+// The CIFS user's username
+func (o CifsUserResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CifsUserResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 // Daily Schedule properties
 type DailySchedule struct {
 	// Indicates which hour in UTC timezone a snapshot should be taken
@@ -1846,6 +2316,242 @@ func (o ExportPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) ExportPoli
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExportPolicyRuleResponse {
 		return vs[0].([]ExportPolicyRuleResponse)[vs[1].(int)]
 	}).(ExportPolicyRuleResponseOutput)
+}
+
+// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
+type FileSystemUser struct {
+	// The effective CIFS username when accessing the volume data.
+	CifsUser *CifsUser `pulumi:"cifsUser"`
+	// The effective NFS User ID and Group ID when accessing the volume data.
+	NfsUser *NfsUser `pulumi:"nfsUser"`
+}
+
+// FileSystemUserInput is an input type that accepts FileSystemUserArgs and FileSystemUserOutput values.
+// You can construct a concrete instance of `FileSystemUserInput` via:
+//
+//	FileSystemUserArgs{...}
+type FileSystemUserInput interface {
+	pulumi.Input
+
+	ToFileSystemUserOutput() FileSystemUserOutput
+	ToFileSystemUserOutputWithContext(context.Context) FileSystemUserOutput
+}
+
+// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
+type FileSystemUserArgs struct {
+	// The effective CIFS username when accessing the volume data.
+	CifsUser CifsUserPtrInput `pulumi:"cifsUser"`
+	// The effective NFS User ID and Group ID when accessing the volume data.
+	NfsUser NfsUserPtrInput `pulumi:"nfsUser"`
+}
+
+func (FileSystemUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemUser)(nil)).Elem()
+}
+
+func (i FileSystemUserArgs) ToFileSystemUserOutput() FileSystemUserOutput {
+	return i.ToFileSystemUserOutputWithContext(context.Background())
+}
+
+func (i FileSystemUserArgs) ToFileSystemUserOutputWithContext(ctx context.Context) FileSystemUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemUserOutput)
+}
+
+func (i FileSystemUserArgs) ToFileSystemUserPtrOutput() FileSystemUserPtrOutput {
+	return i.ToFileSystemUserPtrOutputWithContext(context.Background())
+}
+
+func (i FileSystemUserArgs) ToFileSystemUserPtrOutputWithContext(ctx context.Context) FileSystemUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemUserOutput).ToFileSystemUserPtrOutputWithContext(ctx)
+}
+
+// FileSystemUserPtrInput is an input type that accepts FileSystemUserArgs, FileSystemUserPtr and FileSystemUserPtrOutput values.
+// You can construct a concrete instance of `FileSystemUserPtrInput` via:
+//
+//	        FileSystemUserArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileSystemUserPtrInput interface {
+	pulumi.Input
+
+	ToFileSystemUserPtrOutput() FileSystemUserPtrOutput
+	ToFileSystemUserPtrOutputWithContext(context.Context) FileSystemUserPtrOutput
+}
+
+type fileSystemUserPtrType FileSystemUserArgs
+
+func FileSystemUserPtr(v *FileSystemUserArgs) FileSystemUserPtrInput {
+	return (*fileSystemUserPtrType)(v)
+}
+
+func (*fileSystemUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemUser)(nil)).Elem()
+}
+
+func (i *fileSystemUserPtrType) ToFileSystemUserPtrOutput() FileSystemUserPtrOutput {
+	return i.ToFileSystemUserPtrOutputWithContext(context.Background())
+}
+
+func (i *fileSystemUserPtrType) ToFileSystemUserPtrOutputWithContext(ctx context.Context) FileSystemUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemUserPtrOutput)
+}
+
+// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
+type FileSystemUserOutput struct{ *pulumi.OutputState }
+
+func (FileSystemUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemUser)(nil)).Elem()
+}
+
+func (o FileSystemUserOutput) ToFileSystemUserOutput() FileSystemUserOutput {
+	return o
+}
+
+func (o FileSystemUserOutput) ToFileSystemUserOutputWithContext(ctx context.Context) FileSystemUserOutput {
+	return o
+}
+
+func (o FileSystemUserOutput) ToFileSystemUserPtrOutput() FileSystemUserPtrOutput {
+	return o.ToFileSystemUserPtrOutputWithContext(context.Background())
+}
+
+func (o FileSystemUserOutput) ToFileSystemUserPtrOutputWithContext(ctx context.Context) FileSystemUserPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSystemUser) *FileSystemUser {
+		return &v
+	}).(FileSystemUserPtrOutput)
+}
+
+// The effective CIFS username when accessing the volume data.
+func (o FileSystemUserOutput) CifsUser() CifsUserPtrOutput {
+	return o.ApplyT(func(v FileSystemUser) *CifsUser { return v.CifsUser }).(CifsUserPtrOutput)
+}
+
+// The effective NFS User ID and Group ID when accessing the volume data.
+func (o FileSystemUserOutput) NfsUser() NfsUserPtrOutput {
+	return o.ApplyT(func(v FileSystemUser) *NfsUser { return v.NfsUser }).(NfsUserPtrOutput)
+}
+
+type FileSystemUserPtrOutput struct{ *pulumi.OutputState }
+
+func (FileSystemUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemUser)(nil)).Elem()
+}
+
+func (o FileSystemUserPtrOutput) ToFileSystemUserPtrOutput() FileSystemUserPtrOutput {
+	return o
+}
+
+func (o FileSystemUserPtrOutput) ToFileSystemUserPtrOutputWithContext(ctx context.Context) FileSystemUserPtrOutput {
+	return o
+}
+
+func (o FileSystemUserPtrOutput) Elem() FileSystemUserOutput {
+	return o.ApplyT(func(v *FileSystemUser) FileSystemUser {
+		if v != nil {
+			return *v
+		}
+		var ret FileSystemUser
+		return ret
+	}).(FileSystemUserOutput)
+}
+
+// The effective CIFS username when accessing the volume data.
+func (o FileSystemUserPtrOutput) CifsUser() CifsUserPtrOutput {
+	return o.ApplyT(func(v *FileSystemUser) *CifsUser {
+		if v == nil {
+			return nil
+		}
+		return v.CifsUser
+	}).(CifsUserPtrOutput)
+}
+
+// The effective NFS User ID and Group ID when accessing the volume data.
+func (o FileSystemUserPtrOutput) NfsUser() NfsUserPtrOutput {
+	return o.ApplyT(func(v *FileSystemUser) *NfsUser {
+		if v == nil {
+			return nil
+		}
+		return v.NfsUser
+	}).(NfsUserPtrOutput)
+}
+
+// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
+type FileSystemUserResponse struct {
+	// The effective CIFS username when accessing the volume data.
+	CifsUser *CifsUserResponse `pulumi:"cifsUser"`
+	// The effective NFS User ID and Group ID when accessing the volume data.
+	NfsUser *NfsUserResponse `pulumi:"nfsUser"`
+}
+
+// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
+type FileSystemUserResponseOutput struct{ *pulumi.OutputState }
+
+func (FileSystemUserResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemUserResponse)(nil)).Elem()
+}
+
+func (o FileSystemUserResponseOutput) ToFileSystemUserResponseOutput() FileSystemUserResponseOutput {
+	return o
+}
+
+func (o FileSystemUserResponseOutput) ToFileSystemUserResponseOutputWithContext(ctx context.Context) FileSystemUserResponseOutput {
+	return o
+}
+
+// The effective CIFS username when accessing the volume data.
+func (o FileSystemUserResponseOutput) CifsUser() CifsUserResponsePtrOutput {
+	return o.ApplyT(func(v FileSystemUserResponse) *CifsUserResponse { return v.CifsUser }).(CifsUserResponsePtrOutput)
+}
+
+// The effective NFS User ID and Group ID when accessing the volume data.
+func (o FileSystemUserResponseOutput) NfsUser() NfsUserResponsePtrOutput {
+	return o.ApplyT(func(v FileSystemUserResponse) *NfsUserResponse { return v.NfsUser }).(NfsUserResponsePtrOutput)
+}
+
+type FileSystemUserResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FileSystemUserResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemUserResponse)(nil)).Elem()
+}
+
+func (o FileSystemUserResponsePtrOutput) ToFileSystemUserResponsePtrOutput() FileSystemUserResponsePtrOutput {
+	return o
+}
+
+func (o FileSystemUserResponsePtrOutput) ToFileSystemUserResponsePtrOutputWithContext(ctx context.Context) FileSystemUserResponsePtrOutput {
+	return o
+}
+
+func (o FileSystemUserResponsePtrOutput) Elem() FileSystemUserResponseOutput {
+	return o.ApplyT(func(v *FileSystemUserResponse) FileSystemUserResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FileSystemUserResponse
+		return ret
+	}).(FileSystemUserResponseOutput)
+}
+
+// The effective CIFS username when accessing the volume data.
+func (o FileSystemUserResponsePtrOutput) CifsUser() CifsUserResponsePtrOutput {
+	return o.ApplyT(func(v *FileSystemUserResponse) *CifsUserResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CifsUser
+	}).(CifsUserResponsePtrOutput)
+}
+
+// The effective NFS User ID and Group ID when accessing the volume data.
+func (o FileSystemUserResponsePtrOutput) NfsUser() NfsUserResponsePtrOutput {
+	return o.ApplyT(func(v *FileSystemUserResponse) *NfsUserResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NfsUser
+	}).(NfsUserResponsePtrOutput)
 }
 
 // Hourly Schedule properties
@@ -3432,6 +4138,242 @@ func (o MountTargetPropertiesResponseArrayOutput) Index(i pulumi.IntInput) Mount
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MountTargetPropertiesResponse {
 		return vs[0].([]MountTargetPropertiesResponse)[vs[1].(int)]
 	}).(MountTargetPropertiesResponseOutput)
+}
+
+// The effective NFS User ID and Group ID when accessing the volume data.
+type NfsUser struct {
+	// The NFS user's GID
+	GroupId *float64 `pulumi:"groupId"`
+	// The NFS user's UID
+	UserId *float64 `pulumi:"userId"`
+}
+
+// NfsUserInput is an input type that accepts NfsUserArgs and NfsUserOutput values.
+// You can construct a concrete instance of `NfsUserInput` via:
+//
+//	NfsUserArgs{...}
+type NfsUserInput interface {
+	pulumi.Input
+
+	ToNfsUserOutput() NfsUserOutput
+	ToNfsUserOutputWithContext(context.Context) NfsUserOutput
+}
+
+// The effective NFS User ID and Group ID when accessing the volume data.
+type NfsUserArgs struct {
+	// The NFS user's GID
+	GroupId pulumi.Float64PtrInput `pulumi:"groupId"`
+	// The NFS user's UID
+	UserId pulumi.Float64PtrInput `pulumi:"userId"`
+}
+
+func (NfsUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsUser)(nil)).Elem()
+}
+
+func (i NfsUserArgs) ToNfsUserOutput() NfsUserOutput {
+	return i.ToNfsUserOutputWithContext(context.Background())
+}
+
+func (i NfsUserArgs) ToNfsUserOutputWithContext(ctx context.Context) NfsUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsUserOutput)
+}
+
+func (i NfsUserArgs) ToNfsUserPtrOutput() NfsUserPtrOutput {
+	return i.ToNfsUserPtrOutputWithContext(context.Background())
+}
+
+func (i NfsUserArgs) ToNfsUserPtrOutputWithContext(ctx context.Context) NfsUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsUserOutput).ToNfsUserPtrOutputWithContext(ctx)
+}
+
+// NfsUserPtrInput is an input type that accepts NfsUserArgs, NfsUserPtr and NfsUserPtrOutput values.
+// You can construct a concrete instance of `NfsUserPtrInput` via:
+//
+//	        NfsUserArgs{...}
+//
+//	or:
+//
+//	        nil
+type NfsUserPtrInput interface {
+	pulumi.Input
+
+	ToNfsUserPtrOutput() NfsUserPtrOutput
+	ToNfsUserPtrOutputWithContext(context.Context) NfsUserPtrOutput
+}
+
+type nfsUserPtrType NfsUserArgs
+
+func NfsUserPtr(v *NfsUserArgs) NfsUserPtrInput {
+	return (*nfsUserPtrType)(v)
+}
+
+func (*nfsUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsUser)(nil)).Elem()
+}
+
+func (i *nfsUserPtrType) ToNfsUserPtrOutput() NfsUserPtrOutput {
+	return i.ToNfsUserPtrOutputWithContext(context.Background())
+}
+
+func (i *nfsUserPtrType) ToNfsUserPtrOutputWithContext(ctx context.Context) NfsUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsUserPtrOutput)
+}
+
+// The effective NFS User ID and Group ID when accessing the volume data.
+type NfsUserOutput struct{ *pulumi.OutputState }
+
+func (NfsUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsUser)(nil)).Elem()
+}
+
+func (o NfsUserOutput) ToNfsUserOutput() NfsUserOutput {
+	return o
+}
+
+func (o NfsUserOutput) ToNfsUserOutputWithContext(ctx context.Context) NfsUserOutput {
+	return o
+}
+
+func (o NfsUserOutput) ToNfsUserPtrOutput() NfsUserPtrOutput {
+	return o.ToNfsUserPtrOutputWithContext(context.Background())
+}
+
+func (o NfsUserOutput) ToNfsUserPtrOutputWithContext(ctx context.Context) NfsUserPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NfsUser) *NfsUser {
+		return &v
+	}).(NfsUserPtrOutput)
+}
+
+// The NFS user's GID
+func (o NfsUserOutput) GroupId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NfsUser) *float64 { return v.GroupId }).(pulumi.Float64PtrOutput)
+}
+
+// The NFS user's UID
+func (o NfsUserOutput) UserId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NfsUser) *float64 { return v.UserId }).(pulumi.Float64PtrOutput)
+}
+
+type NfsUserPtrOutput struct{ *pulumi.OutputState }
+
+func (NfsUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsUser)(nil)).Elem()
+}
+
+func (o NfsUserPtrOutput) ToNfsUserPtrOutput() NfsUserPtrOutput {
+	return o
+}
+
+func (o NfsUserPtrOutput) ToNfsUserPtrOutputWithContext(ctx context.Context) NfsUserPtrOutput {
+	return o
+}
+
+func (o NfsUserPtrOutput) Elem() NfsUserOutput {
+	return o.ApplyT(func(v *NfsUser) NfsUser {
+		if v != nil {
+			return *v
+		}
+		var ret NfsUser
+		return ret
+	}).(NfsUserOutput)
+}
+
+// The NFS user's GID
+func (o NfsUserPtrOutput) GroupId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *NfsUser) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The NFS user's UID
+func (o NfsUserPtrOutput) UserId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *NfsUser) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.UserId
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The effective NFS User ID and Group ID when accessing the volume data.
+type NfsUserResponse struct {
+	// The NFS user's GID
+	GroupId *float64 `pulumi:"groupId"`
+	// The NFS user's UID
+	UserId *float64 `pulumi:"userId"`
+}
+
+// The effective NFS User ID and Group ID when accessing the volume data.
+type NfsUserResponseOutput struct{ *pulumi.OutputState }
+
+func (NfsUserResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsUserResponse)(nil)).Elem()
+}
+
+func (o NfsUserResponseOutput) ToNfsUserResponseOutput() NfsUserResponseOutput {
+	return o
+}
+
+func (o NfsUserResponseOutput) ToNfsUserResponseOutputWithContext(ctx context.Context) NfsUserResponseOutput {
+	return o
+}
+
+// The NFS user's GID
+func (o NfsUserResponseOutput) GroupId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NfsUserResponse) *float64 { return v.GroupId }).(pulumi.Float64PtrOutput)
+}
+
+// The NFS user's UID
+func (o NfsUserResponseOutput) UserId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NfsUserResponse) *float64 { return v.UserId }).(pulumi.Float64PtrOutput)
+}
+
+type NfsUserResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NfsUserResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsUserResponse)(nil)).Elem()
+}
+
+func (o NfsUserResponsePtrOutput) ToNfsUserResponsePtrOutput() NfsUserResponsePtrOutput {
+	return o
+}
+
+func (o NfsUserResponsePtrOutput) ToNfsUserResponsePtrOutputWithContext(ctx context.Context) NfsUserResponsePtrOutput {
+	return o
+}
+
+func (o NfsUserResponsePtrOutput) Elem() NfsUserResponseOutput {
+	return o.ApplyT(func(v *NfsUserResponse) NfsUserResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NfsUserResponse
+		return ret
+	}).(NfsUserResponseOutput)
+}
+
+// The NFS user's GID
+func (o NfsUserResponsePtrOutput) GroupId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *NfsUserResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The NFS user's UID
+func (o NfsUserResponsePtrOutput) UserId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *NfsUserResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.UserId
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Application specific parameters for the placement of volumes in the volume group
@@ -7585,6 +8527,14 @@ func init() {
 	pulumi.RegisterOutputType(ActiveDirectoryArrayOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryResponseOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryResponseArrayOutput{})
+	pulumi.RegisterOutputType(BucketServerPropertiesOutput{})
+	pulumi.RegisterOutputType(BucketServerPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(BucketServerPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(BucketServerPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(CifsUserOutput{})
+	pulumi.RegisterOutputType(CifsUserPtrOutput{})
+	pulumi.RegisterOutputType(CifsUserResponseOutput{})
+	pulumi.RegisterOutputType(CifsUserResponsePtrOutput{})
 	pulumi.RegisterOutputType(DailyScheduleOutput{})
 	pulumi.RegisterOutputType(DailySchedulePtrOutput{})
 	pulumi.RegisterOutputType(DailyScheduleResponseOutput{})
@@ -7597,6 +8547,10 @@ func init() {
 	pulumi.RegisterOutputType(ExportPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleResponseOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(FileSystemUserOutput{})
+	pulumi.RegisterOutputType(FileSystemUserPtrOutput{})
+	pulumi.RegisterOutputType(FileSystemUserResponseOutput{})
+	pulumi.RegisterOutputType(FileSystemUserResponsePtrOutput{})
 	pulumi.RegisterOutputType(HourlyScheduleOutput{})
 	pulumi.RegisterOutputType(HourlySchedulePtrOutput{})
 	pulumi.RegisterOutputType(HourlyScheduleResponseOutput{})
@@ -7621,6 +8575,10 @@ func init() {
 	pulumi.RegisterOutputType(MonthlyScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(MountTargetPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MountTargetPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(NfsUserOutput{})
+	pulumi.RegisterOutputType(NfsUserPtrOutput{})
+	pulumi.RegisterOutputType(NfsUserResponseOutput{})
+	pulumi.RegisterOutputType(NfsUserResponsePtrOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsArrayOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsResponseOutput{})

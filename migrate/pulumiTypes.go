@@ -3922,6 +3922,134 @@ func (o AppSvcNativeSettingsResponsePtrOutput) IsolationRequired() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Assessment details class.
+type AssessmentDetailsResponse struct {
+	// Confidence Rating in Percentage.
+	ConfidenceRatingInPercentage float64 `pulumi:"confidenceRatingInPercentage"`
+	// Date and Time when assessment was created.
+	CreatedTimestamp string `pulumi:"createdTimestamp"`
+	// Last time when rates were queried.
+	PricesTimestamp string `pulumi:"pricesTimestamp"`
+	// Whether assessment is in valid state and all machines have been assessed.
+	Status string `pulumi:"status"`
+	// Date and Time when assessment was last updated.
+	UpdatedTimestamp string `pulumi:"updatedTimestamp"`
+}
+
+// Assessment details class.
+type AssessmentDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (AssessmentDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentDetailsResponse)(nil)).Elem()
+}
+
+func (o AssessmentDetailsResponseOutput) ToAssessmentDetailsResponseOutput() AssessmentDetailsResponseOutput {
+	return o
+}
+
+func (o AssessmentDetailsResponseOutput) ToAssessmentDetailsResponseOutputWithContext(ctx context.Context) AssessmentDetailsResponseOutput {
+	return o
+}
+
+// Confidence Rating in Percentage.
+func (o AssessmentDetailsResponseOutput) ConfidenceRatingInPercentage() pulumi.Float64Output {
+	return o.ApplyT(func(v AssessmentDetailsResponse) float64 { return v.ConfidenceRatingInPercentage }).(pulumi.Float64Output)
+}
+
+// Date and Time when assessment was created.
+func (o AssessmentDetailsResponseOutput) CreatedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentDetailsResponse) string { return v.CreatedTimestamp }).(pulumi.StringOutput)
+}
+
+// Last time when rates were queried.
+func (o AssessmentDetailsResponseOutput) PricesTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentDetailsResponse) string { return v.PricesTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether assessment is in valid state and all machines have been assessed.
+func (o AssessmentDetailsResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentDetailsResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Date and Time when assessment was last updated.
+func (o AssessmentDetailsResponseOutput) UpdatedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentDetailsResponse) string { return v.UpdatedTimestamp }).(pulumi.StringOutput)
+}
+
+type AssessmentDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AssessmentDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssessmentDetailsResponse)(nil)).Elem()
+}
+
+func (o AssessmentDetailsResponsePtrOutput) ToAssessmentDetailsResponsePtrOutput() AssessmentDetailsResponsePtrOutput {
+	return o
+}
+
+func (o AssessmentDetailsResponsePtrOutput) ToAssessmentDetailsResponsePtrOutputWithContext(ctx context.Context) AssessmentDetailsResponsePtrOutput {
+	return o
+}
+
+func (o AssessmentDetailsResponsePtrOutput) Elem() AssessmentDetailsResponseOutput {
+	return o.ApplyT(func(v *AssessmentDetailsResponse) AssessmentDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AssessmentDetailsResponse
+		return ret
+	}).(AssessmentDetailsResponseOutput)
+}
+
+// Confidence Rating in Percentage.
+func (o AssessmentDetailsResponsePtrOutput) ConfidenceRatingInPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AssessmentDetailsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfidenceRatingInPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Date and Time when assessment was created.
+func (o AssessmentDetailsResponsePtrOutput) CreatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssessmentDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreatedTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last time when rates were queried.
+func (o AssessmentDetailsResponsePtrOutput) PricesTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssessmentDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PricesTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether assessment is in valid state and all machines have been assessed.
+func (o AssessmentDetailsResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssessmentDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Date and Time when assessment was last updated.
+func (o AssessmentDetailsResponsePtrOutput) UpdatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssessmentDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdatedTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties of an assessment.
 type AssessmentProperties struct {
 	// Storage type selected for this disk.
@@ -5270,6 +5398,1093 @@ func (o AvailabilitySetResourceSettingsResponsePtrOutput) UpdateDomain() pulumi.
 		}
 		return v.UpdateDomain
 	}).(pulumi.IntPtrOutput)
+}
+
+// Assessment properties class.
+type AvsAssessmentPropertiesV2 struct {
+	// Gets or sets the machine assessment ARM ID for VM fallback.
+	FallbackMachineAssessmentArmId *string `pulumi:"fallbackMachineAssessmentArmId"`
+	// Gets or sets the scope of assessment.
+	Scope *Scope `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings *AvsAssessmentSettings `pulumi:"settings"`
+}
+
+// AvsAssessmentPropertiesV2Input is an input type that accepts AvsAssessmentPropertiesV2Args and AvsAssessmentPropertiesV2Output values.
+// You can construct a concrete instance of `AvsAssessmentPropertiesV2Input` via:
+//
+//	AvsAssessmentPropertiesV2Args{...}
+type AvsAssessmentPropertiesV2Input interface {
+	pulumi.Input
+
+	ToAvsAssessmentPropertiesV2Output() AvsAssessmentPropertiesV2Output
+	ToAvsAssessmentPropertiesV2OutputWithContext(context.Context) AvsAssessmentPropertiesV2Output
+}
+
+// Assessment properties class.
+type AvsAssessmentPropertiesV2Args struct {
+	// Gets or sets the machine assessment ARM ID for VM fallback.
+	FallbackMachineAssessmentArmId pulumi.StringPtrInput `pulumi:"fallbackMachineAssessmentArmId"`
+	// Gets or sets the scope of assessment.
+	Scope ScopePtrInput `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings AvsAssessmentSettingsPtrInput `pulumi:"settings"`
+}
+
+func (AvsAssessmentPropertiesV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvsAssessmentPropertiesV2)(nil)).Elem()
+}
+
+func (i AvsAssessmentPropertiesV2Args) ToAvsAssessmentPropertiesV2Output() AvsAssessmentPropertiesV2Output {
+	return i.ToAvsAssessmentPropertiesV2OutputWithContext(context.Background())
+}
+
+func (i AvsAssessmentPropertiesV2Args) ToAvsAssessmentPropertiesV2OutputWithContext(ctx context.Context) AvsAssessmentPropertiesV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(AvsAssessmentPropertiesV2Output)
+}
+
+func (i AvsAssessmentPropertiesV2Args) ToAvsAssessmentPropertiesV2PtrOutput() AvsAssessmentPropertiesV2PtrOutput {
+	return i.ToAvsAssessmentPropertiesV2PtrOutputWithContext(context.Background())
+}
+
+func (i AvsAssessmentPropertiesV2Args) ToAvsAssessmentPropertiesV2PtrOutputWithContext(ctx context.Context) AvsAssessmentPropertiesV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvsAssessmentPropertiesV2Output).ToAvsAssessmentPropertiesV2PtrOutputWithContext(ctx)
+}
+
+// AvsAssessmentPropertiesV2PtrInput is an input type that accepts AvsAssessmentPropertiesV2Args, AvsAssessmentPropertiesV2Ptr and AvsAssessmentPropertiesV2PtrOutput values.
+// You can construct a concrete instance of `AvsAssessmentPropertiesV2PtrInput` via:
+//
+//	        AvsAssessmentPropertiesV2Args{...}
+//
+//	or:
+//
+//	        nil
+type AvsAssessmentPropertiesV2PtrInput interface {
+	pulumi.Input
+
+	ToAvsAssessmentPropertiesV2PtrOutput() AvsAssessmentPropertiesV2PtrOutput
+	ToAvsAssessmentPropertiesV2PtrOutputWithContext(context.Context) AvsAssessmentPropertiesV2PtrOutput
+}
+
+type avsAssessmentPropertiesV2PtrType AvsAssessmentPropertiesV2Args
+
+func AvsAssessmentPropertiesV2Ptr(v *AvsAssessmentPropertiesV2Args) AvsAssessmentPropertiesV2PtrInput {
+	return (*avsAssessmentPropertiesV2PtrType)(v)
+}
+
+func (*avsAssessmentPropertiesV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvsAssessmentPropertiesV2)(nil)).Elem()
+}
+
+func (i *avsAssessmentPropertiesV2PtrType) ToAvsAssessmentPropertiesV2PtrOutput() AvsAssessmentPropertiesV2PtrOutput {
+	return i.ToAvsAssessmentPropertiesV2PtrOutputWithContext(context.Background())
+}
+
+func (i *avsAssessmentPropertiesV2PtrType) ToAvsAssessmentPropertiesV2PtrOutputWithContext(ctx context.Context) AvsAssessmentPropertiesV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvsAssessmentPropertiesV2PtrOutput)
+}
+
+// Assessment properties class.
+type AvsAssessmentPropertiesV2Output struct{ *pulumi.OutputState }
+
+func (AvsAssessmentPropertiesV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvsAssessmentPropertiesV2)(nil)).Elem()
+}
+
+func (o AvsAssessmentPropertiesV2Output) ToAvsAssessmentPropertiesV2Output() AvsAssessmentPropertiesV2Output {
+	return o
+}
+
+func (o AvsAssessmentPropertiesV2Output) ToAvsAssessmentPropertiesV2OutputWithContext(ctx context.Context) AvsAssessmentPropertiesV2Output {
+	return o
+}
+
+func (o AvsAssessmentPropertiesV2Output) ToAvsAssessmentPropertiesV2PtrOutput() AvsAssessmentPropertiesV2PtrOutput {
+	return o.ToAvsAssessmentPropertiesV2PtrOutputWithContext(context.Background())
+}
+
+func (o AvsAssessmentPropertiesV2Output) ToAvsAssessmentPropertiesV2PtrOutputWithContext(ctx context.Context) AvsAssessmentPropertiesV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvsAssessmentPropertiesV2) *AvsAssessmentPropertiesV2 {
+		return &v
+	}).(AvsAssessmentPropertiesV2PtrOutput)
+}
+
+// Gets or sets the machine assessment ARM ID for VM fallback.
+func (o AvsAssessmentPropertiesV2Output) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentPropertiesV2) *string { return v.FallbackMachineAssessmentArmId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o AvsAssessmentPropertiesV2Output) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v AvsAssessmentPropertiesV2) *Scope { return v.Scope }).(ScopePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o AvsAssessmentPropertiesV2Output) Settings() AvsAssessmentSettingsPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentPropertiesV2) *AvsAssessmentSettings { return v.Settings }).(AvsAssessmentSettingsPtrOutput)
+}
+
+type AvsAssessmentPropertiesV2PtrOutput struct{ *pulumi.OutputState }
+
+func (AvsAssessmentPropertiesV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvsAssessmentPropertiesV2)(nil)).Elem()
+}
+
+func (o AvsAssessmentPropertiesV2PtrOutput) ToAvsAssessmentPropertiesV2PtrOutput() AvsAssessmentPropertiesV2PtrOutput {
+	return o
+}
+
+func (o AvsAssessmentPropertiesV2PtrOutput) ToAvsAssessmentPropertiesV2PtrOutputWithContext(ctx context.Context) AvsAssessmentPropertiesV2PtrOutput {
+	return o
+}
+
+func (o AvsAssessmentPropertiesV2PtrOutput) Elem() AvsAssessmentPropertiesV2Output {
+	return o.ApplyT(func(v *AvsAssessmentPropertiesV2) AvsAssessmentPropertiesV2 {
+		if v != nil {
+			return *v
+		}
+		var ret AvsAssessmentPropertiesV2
+		return ret
+	}).(AvsAssessmentPropertiesV2Output)
+}
+
+// Gets or sets the machine assessment ARM ID for VM fallback.
+func (o AvsAssessmentPropertiesV2PtrOutput) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentPropertiesV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FallbackMachineAssessmentArmId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o AvsAssessmentPropertiesV2PtrOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentPropertiesV2) *Scope {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(ScopePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o AvsAssessmentPropertiesV2PtrOutput) Settings() AvsAssessmentSettingsPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentPropertiesV2) *AvsAssessmentSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(AvsAssessmentSettingsPtrOutput)
+}
+
+// Assessment properties class.
+type AvsAssessmentPropertiesV2Response struct {
+	// Gets or sets the details of the assessment.
+	Details *AssessmentDetailsResponse `pulumi:"details"`
+	// Gets or sets the machine assessment ARM ID for VM fallback.
+	FallbackMachineAssessmentArmId *string `pulumi:"fallbackMachineAssessmentArmId"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Gets or sets the scope of assessment.
+	Scope *ScopeResponse `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings *AvsAssessmentSettingsResponse `pulumi:"settings"`
+}
+
+// Assessment properties class.
+type AvsAssessmentPropertiesV2ResponseOutput struct{ *pulumi.OutputState }
+
+func (AvsAssessmentPropertiesV2ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvsAssessmentPropertiesV2Response)(nil)).Elem()
+}
+
+func (o AvsAssessmentPropertiesV2ResponseOutput) ToAvsAssessmentPropertiesV2ResponseOutput() AvsAssessmentPropertiesV2ResponseOutput {
+	return o
+}
+
+func (o AvsAssessmentPropertiesV2ResponseOutput) ToAvsAssessmentPropertiesV2ResponseOutputWithContext(ctx context.Context) AvsAssessmentPropertiesV2ResponseOutput {
+	return o
+}
+
+// Gets or sets the details of the assessment.
+func (o AvsAssessmentPropertiesV2ResponseOutput) Details() AssessmentDetailsResponsePtrOutput {
+	return o.ApplyT(func(v AvsAssessmentPropertiesV2Response) *AssessmentDetailsResponse { return v.Details }).(AssessmentDetailsResponsePtrOutput)
+}
+
+// Gets or sets the machine assessment ARM ID for VM fallback.
+func (o AvsAssessmentPropertiesV2ResponseOutput) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentPropertiesV2Response) *string { return v.FallbackMachineAssessmentArmId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the last operation.
+func (o AvsAssessmentPropertiesV2ResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AvsAssessmentPropertiesV2Response) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o AvsAssessmentPropertiesV2ResponseOutput) Scope() ScopeResponsePtrOutput {
+	return o.ApplyT(func(v AvsAssessmentPropertiesV2Response) *ScopeResponse { return v.Scope }).(ScopeResponsePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o AvsAssessmentPropertiesV2ResponseOutput) Settings() AvsAssessmentSettingsResponsePtrOutput {
+	return o.ApplyT(func(v AvsAssessmentPropertiesV2Response) *AvsAssessmentSettingsResponse { return v.Settings }).(AvsAssessmentSettingsResponsePtrOutput)
+}
+
+// Properties of the AVS assessment.
+type AvsAssessmentSettings struct {
+	// AVS Assessment Scenario.
+	AvsAssessmentScenario *string `pulumi:"avsAssessmentScenario"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation *string `pulumi:"azureLocation"`
+	// Gets or sets the billing settings.
+	BillingSettings *BillingSettings `pulumi:"billingSettings"`
+	// Gets or sets the CPU headroom.
+	CpuHeadroom *float64 `pulumi:"cpuHeadroom"`
+	// Currency in which prices should be reported.
+	Currency *string `pulumi:"currency"`
+	// De-duplication compression.
+	DedupeCompression *float64 `pulumi:"dedupeCompression"`
+	// Custom discount percentage.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType *string `pulumi:"environmentType"`
+	// List of AVS external storage types.
+	ExternalStorageTypes []string `pulumi:"externalStorageTypes"`
+	// List of Failures to tolerate and RAID levels in a common property.
+	FailuresToTolerateAndRaidLevelList []string `pulumi:"failuresToTolerateAndRaidLevelList"`
+	// Is Stretch Cluster Enabled.
+	IsStretchClusterEnabled *bool `pulumi:"isStretchClusterEnabled"`
+	// Is VCF license applied
+	IsVcfByolEnabled *bool `pulumi:"isVcfByolEnabled"`
+	// Memory overcommit.
+	MemOvercommit *float64 `pulumi:"memOvercommit"`
+	// AVS node types.
+	NodeTypes []string `pulumi:"nodeTypes"`
+	// Gets or sets the performance data.
+	PerformanceData *PerformanceData `pulumi:"performanceData"`
+	// Gets or sets the savings settings.
+	SavingsSettings *SavingsSettings `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor *float64 `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion *string `pulumi:"sizingCriterion"`
+	// VCPU over subscription.
+	VcpuOversubscription *float64 `pulumi:"vcpuOversubscription"`
+}
+
+// AvsAssessmentSettingsInput is an input type that accepts AvsAssessmentSettingsArgs and AvsAssessmentSettingsOutput values.
+// You can construct a concrete instance of `AvsAssessmentSettingsInput` via:
+//
+//	AvsAssessmentSettingsArgs{...}
+type AvsAssessmentSettingsInput interface {
+	pulumi.Input
+
+	ToAvsAssessmentSettingsOutput() AvsAssessmentSettingsOutput
+	ToAvsAssessmentSettingsOutputWithContext(context.Context) AvsAssessmentSettingsOutput
+}
+
+// Properties of the AVS assessment.
+type AvsAssessmentSettingsArgs struct {
+	// AVS Assessment Scenario.
+	AvsAssessmentScenario pulumi.StringPtrInput `pulumi:"avsAssessmentScenario"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation pulumi.StringPtrInput `pulumi:"azureLocation"`
+	// Gets or sets the billing settings.
+	BillingSettings BillingSettingsPtrInput `pulumi:"billingSettings"`
+	// Gets or sets the CPU headroom.
+	CpuHeadroom pulumi.Float64PtrInput `pulumi:"cpuHeadroom"`
+	// Currency in which prices should be reported.
+	Currency pulumi.StringPtrInput `pulumi:"currency"`
+	// De-duplication compression.
+	DedupeCompression pulumi.Float64PtrInput `pulumi:"dedupeCompression"`
+	// Custom discount percentage.
+	DiscountPercentage pulumi.Float64PtrInput `pulumi:"discountPercentage"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType pulumi.StringPtrInput `pulumi:"environmentType"`
+	// List of AVS external storage types.
+	ExternalStorageTypes pulumi.StringArrayInput `pulumi:"externalStorageTypes"`
+	// List of Failures to tolerate and RAID levels in a common property.
+	FailuresToTolerateAndRaidLevelList pulumi.StringArrayInput `pulumi:"failuresToTolerateAndRaidLevelList"`
+	// Is Stretch Cluster Enabled.
+	IsStretchClusterEnabled pulumi.BoolPtrInput `pulumi:"isStretchClusterEnabled"`
+	// Is VCF license applied
+	IsVcfByolEnabled pulumi.BoolPtrInput `pulumi:"isVcfByolEnabled"`
+	// Memory overcommit.
+	MemOvercommit pulumi.Float64PtrInput `pulumi:"memOvercommit"`
+	// AVS node types.
+	NodeTypes pulumi.StringArrayInput `pulumi:"nodeTypes"`
+	// Gets or sets the performance data.
+	PerformanceData PerformanceDataPtrInput `pulumi:"performanceData"`
+	// Gets or sets the savings settings.
+	SavingsSettings SavingsSettingsPtrInput `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor pulumi.Float64PtrInput `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion pulumi.StringPtrInput `pulumi:"sizingCriterion"`
+	// VCPU over subscription.
+	VcpuOversubscription pulumi.Float64PtrInput `pulumi:"vcpuOversubscription"`
+}
+
+func (AvsAssessmentSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvsAssessmentSettings)(nil)).Elem()
+}
+
+func (i AvsAssessmentSettingsArgs) ToAvsAssessmentSettingsOutput() AvsAssessmentSettingsOutput {
+	return i.ToAvsAssessmentSettingsOutputWithContext(context.Background())
+}
+
+func (i AvsAssessmentSettingsArgs) ToAvsAssessmentSettingsOutputWithContext(ctx context.Context) AvsAssessmentSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvsAssessmentSettingsOutput)
+}
+
+func (i AvsAssessmentSettingsArgs) ToAvsAssessmentSettingsPtrOutput() AvsAssessmentSettingsPtrOutput {
+	return i.ToAvsAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AvsAssessmentSettingsArgs) ToAvsAssessmentSettingsPtrOutputWithContext(ctx context.Context) AvsAssessmentSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvsAssessmentSettingsOutput).ToAvsAssessmentSettingsPtrOutputWithContext(ctx)
+}
+
+// AvsAssessmentSettingsPtrInput is an input type that accepts AvsAssessmentSettingsArgs, AvsAssessmentSettingsPtr and AvsAssessmentSettingsPtrOutput values.
+// You can construct a concrete instance of `AvsAssessmentSettingsPtrInput` via:
+//
+//	        AvsAssessmentSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AvsAssessmentSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAvsAssessmentSettingsPtrOutput() AvsAssessmentSettingsPtrOutput
+	ToAvsAssessmentSettingsPtrOutputWithContext(context.Context) AvsAssessmentSettingsPtrOutput
+}
+
+type avsAssessmentSettingsPtrType AvsAssessmentSettingsArgs
+
+func AvsAssessmentSettingsPtr(v *AvsAssessmentSettingsArgs) AvsAssessmentSettingsPtrInput {
+	return (*avsAssessmentSettingsPtrType)(v)
+}
+
+func (*avsAssessmentSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvsAssessmentSettings)(nil)).Elem()
+}
+
+func (i *avsAssessmentSettingsPtrType) ToAvsAssessmentSettingsPtrOutput() AvsAssessmentSettingsPtrOutput {
+	return i.ToAvsAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *avsAssessmentSettingsPtrType) ToAvsAssessmentSettingsPtrOutputWithContext(ctx context.Context) AvsAssessmentSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvsAssessmentSettingsPtrOutput)
+}
+
+// Properties of the AVS assessment.
+type AvsAssessmentSettingsOutput struct{ *pulumi.OutputState }
+
+func (AvsAssessmentSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvsAssessmentSettings)(nil)).Elem()
+}
+
+func (o AvsAssessmentSettingsOutput) ToAvsAssessmentSettingsOutput() AvsAssessmentSettingsOutput {
+	return o
+}
+
+func (o AvsAssessmentSettingsOutput) ToAvsAssessmentSettingsOutputWithContext(ctx context.Context) AvsAssessmentSettingsOutput {
+	return o
+}
+
+func (o AvsAssessmentSettingsOutput) ToAvsAssessmentSettingsPtrOutput() AvsAssessmentSettingsPtrOutput {
+	return o.ToAvsAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AvsAssessmentSettingsOutput) ToAvsAssessmentSettingsPtrOutputWithContext(ctx context.Context) AvsAssessmentSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvsAssessmentSettings) *AvsAssessmentSettings {
+		return &v
+	}).(AvsAssessmentSettingsPtrOutput)
+}
+
+// AVS Assessment Scenario.
+func (o AvsAssessmentSettingsOutput) AvsAssessmentScenario() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *string { return v.AvsAssessmentScenario }).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o AvsAssessmentSettingsOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *string { return v.AzureLocation }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the billing settings.
+func (o AvsAssessmentSettingsOutput) BillingSettings() BillingSettingsPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *BillingSettings { return v.BillingSettings }).(BillingSettingsPtrOutput)
+}
+
+// Gets or sets the CPU headroom.
+func (o AvsAssessmentSettingsOutput) CpuHeadroom() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *float64 { return v.CpuHeadroom }).(pulumi.Float64PtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o AvsAssessmentSettingsOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// De-duplication compression.
+func (o AvsAssessmentSettingsOutput) DedupeCompression() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *float64 { return v.DedupeCompression }).(pulumi.Float64PtrOutput)
+}
+
+// Custom discount percentage.
+func (o AvsAssessmentSettingsOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o AvsAssessmentSettingsOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *string { return v.EnvironmentType }).(pulumi.StringPtrOutput)
+}
+
+// List of AVS external storage types.
+func (o AvsAssessmentSettingsOutput) ExternalStorageTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) []string { return v.ExternalStorageTypes }).(pulumi.StringArrayOutput)
+}
+
+// List of Failures to tolerate and RAID levels in a common property.
+func (o AvsAssessmentSettingsOutput) FailuresToTolerateAndRaidLevelList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) []string { return v.FailuresToTolerateAndRaidLevelList }).(pulumi.StringArrayOutput)
+}
+
+// Is Stretch Cluster Enabled.
+func (o AvsAssessmentSettingsOutput) IsStretchClusterEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *bool { return v.IsStretchClusterEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Is VCF license applied
+func (o AvsAssessmentSettingsOutput) IsVcfByolEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *bool { return v.IsVcfByolEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Memory overcommit.
+func (o AvsAssessmentSettingsOutput) MemOvercommit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *float64 { return v.MemOvercommit }).(pulumi.Float64PtrOutput)
+}
+
+// AVS node types.
+func (o AvsAssessmentSettingsOutput) NodeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) []string { return v.NodeTypes }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the performance data.
+func (o AvsAssessmentSettingsOutput) PerformanceData() PerformanceDataPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *PerformanceData { return v.PerformanceData }).(PerformanceDataPtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o AvsAssessmentSettingsOutput) SavingsSettings() SavingsSettingsPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *SavingsSettings { return v.SavingsSettings }).(SavingsSettingsPtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o AvsAssessmentSettingsOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *float64 { return v.ScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o AvsAssessmentSettingsOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *string { return v.SizingCriterion }).(pulumi.StringPtrOutput)
+}
+
+// VCPU over subscription.
+func (o AvsAssessmentSettingsOutput) VcpuOversubscription() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettings) *float64 { return v.VcpuOversubscription }).(pulumi.Float64PtrOutput)
+}
+
+type AvsAssessmentSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AvsAssessmentSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvsAssessmentSettings)(nil)).Elem()
+}
+
+func (o AvsAssessmentSettingsPtrOutput) ToAvsAssessmentSettingsPtrOutput() AvsAssessmentSettingsPtrOutput {
+	return o
+}
+
+func (o AvsAssessmentSettingsPtrOutput) ToAvsAssessmentSettingsPtrOutputWithContext(ctx context.Context) AvsAssessmentSettingsPtrOutput {
+	return o
+}
+
+func (o AvsAssessmentSettingsPtrOutput) Elem() AvsAssessmentSettingsOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) AvsAssessmentSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AvsAssessmentSettings
+		return ret
+	}).(AvsAssessmentSettingsOutput)
+}
+
+// AVS Assessment Scenario.
+func (o AvsAssessmentSettingsPtrOutput) AvsAssessmentScenario() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvsAssessmentScenario
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o AvsAssessmentSettingsPtrOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the billing settings.
+func (o AvsAssessmentSettingsPtrOutput) BillingSettings() BillingSettingsPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *BillingSettings {
+		if v == nil {
+			return nil
+		}
+		return v.BillingSettings
+	}).(BillingSettingsPtrOutput)
+}
+
+// Gets or sets the CPU headroom.
+func (o AvsAssessmentSettingsPtrOutput) CpuHeadroom() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CpuHeadroom
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o AvsAssessmentSettingsPtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+// De-duplication compression.
+func (o AvsAssessmentSettingsPtrOutput) DedupeCompression() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DedupeCompression
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Custom discount percentage.
+func (o AvsAssessmentSettingsPtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o AvsAssessmentSettingsPtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of AVS external storage types.
+func (o AvsAssessmentSettingsPtrOutput) ExternalStorageTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalStorageTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of Failures to tolerate and RAID levels in a common property.
+func (o AvsAssessmentSettingsPtrOutput) FailuresToTolerateAndRaidLevelList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FailuresToTolerateAndRaidLevelList
+	}).(pulumi.StringArrayOutput)
+}
+
+// Is Stretch Cluster Enabled.
+func (o AvsAssessmentSettingsPtrOutput) IsStretchClusterEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsStretchClusterEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Is VCF license applied
+func (o AvsAssessmentSettingsPtrOutput) IsVcfByolEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsVcfByolEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Memory overcommit.
+func (o AvsAssessmentSettingsPtrOutput) MemOvercommit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MemOvercommit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// AVS node types.
+func (o AvsAssessmentSettingsPtrOutput) NodeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the performance data.
+func (o AvsAssessmentSettingsPtrOutput) PerformanceData() PerformanceDataPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *PerformanceData {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceData
+	}).(PerformanceDataPtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o AvsAssessmentSettingsPtrOutput) SavingsSettings() SavingsSettingsPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *SavingsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.SavingsSettings
+	}).(SavingsSettingsPtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o AvsAssessmentSettingsPtrOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o AvsAssessmentSettingsPtrOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizingCriterion
+	}).(pulumi.StringPtrOutput)
+}
+
+// VCPU over subscription.
+func (o AvsAssessmentSettingsPtrOutput) VcpuOversubscription() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.VcpuOversubscription
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Properties of the AVS assessment.
+type AvsAssessmentSettingsResponse struct {
+	// AVS Assessment Scenario.
+	AvsAssessmentScenario *string `pulumi:"avsAssessmentScenario"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation *string `pulumi:"azureLocation"`
+	// Gets or sets the billing settings.
+	BillingSettings *BillingSettingsResponse `pulumi:"billingSettings"`
+	// Gets or sets the CPU headroom.
+	CpuHeadroom *float64 `pulumi:"cpuHeadroom"`
+	// Currency in which prices should be reported.
+	Currency *string `pulumi:"currency"`
+	// De-duplication compression.
+	DedupeCompression *float64 `pulumi:"dedupeCompression"`
+	// Custom discount percentage.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType *string `pulumi:"environmentType"`
+	// List of AVS external storage types.
+	ExternalStorageTypes []string `pulumi:"externalStorageTypes"`
+	// List of Failures to tolerate and RAID levels in a common property.
+	FailuresToTolerateAndRaidLevelList []string `pulumi:"failuresToTolerateAndRaidLevelList"`
+	// Is Stretch Cluster Enabled.
+	IsStretchClusterEnabled *bool `pulumi:"isStretchClusterEnabled"`
+	// Is VCF license applied
+	IsVcfByolEnabled *bool `pulumi:"isVcfByolEnabled"`
+	// Memory overcommit.
+	MemOvercommit *float64 `pulumi:"memOvercommit"`
+	// AVS node types.
+	NodeTypes []string `pulumi:"nodeTypes"`
+	// Gets or sets the performance data.
+	PerformanceData *PerformanceDataResponse `pulumi:"performanceData"`
+	// Gets or sets the savings settings.
+	SavingsSettings *SavingsSettingsResponse `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor *float64 `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion *string `pulumi:"sizingCriterion"`
+	// VCPU over subscription.
+	VcpuOversubscription *float64 `pulumi:"vcpuOversubscription"`
+}
+
+// Properties of the AVS assessment.
+type AvsAssessmentSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AvsAssessmentSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvsAssessmentSettingsResponse)(nil)).Elem()
+}
+
+func (o AvsAssessmentSettingsResponseOutput) ToAvsAssessmentSettingsResponseOutput() AvsAssessmentSettingsResponseOutput {
+	return o
+}
+
+func (o AvsAssessmentSettingsResponseOutput) ToAvsAssessmentSettingsResponseOutputWithContext(ctx context.Context) AvsAssessmentSettingsResponseOutput {
+	return o
+}
+
+// AVS Assessment Scenario.
+func (o AvsAssessmentSettingsResponseOutput) AvsAssessmentScenario() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *string { return v.AvsAssessmentScenario }).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o AvsAssessmentSettingsResponseOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *string { return v.AzureLocation }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the billing settings.
+func (o AvsAssessmentSettingsResponseOutput) BillingSettings() BillingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *BillingSettingsResponse { return v.BillingSettings }).(BillingSettingsResponsePtrOutput)
+}
+
+// Gets or sets the CPU headroom.
+func (o AvsAssessmentSettingsResponseOutput) CpuHeadroom() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *float64 { return v.CpuHeadroom }).(pulumi.Float64PtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o AvsAssessmentSettingsResponseOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// De-duplication compression.
+func (o AvsAssessmentSettingsResponseOutput) DedupeCompression() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *float64 { return v.DedupeCompression }).(pulumi.Float64PtrOutput)
+}
+
+// Custom discount percentage.
+func (o AvsAssessmentSettingsResponseOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o AvsAssessmentSettingsResponseOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *string { return v.EnvironmentType }).(pulumi.StringPtrOutput)
+}
+
+// List of AVS external storage types.
+func (o AvsAssessmentSettingsResponseOutput) ExternalStorageTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) []string { return v.ExternalStorageTypes }).(pulumi.StringArrayOutput)
+}
+
+// List of Failures to tolerate and RAID levels in a common property.
+func (o AvsAssessmentSettingsResponseOutput) FailuresToTolerateAndRaidLevelList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) []string { return v.FailuresToTolerateAndRaidLevelList }).(pulumi.StringArrayOutput)
+}
+
+// Is Stretch Cluster Enabled.
+func (o AvsAssessmentSettingsResponseOutput) IsStretchClusterEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *bool { return v.IsStretchClusterEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Is VCF license applied
+func (o AvsAssessmentSettingsResponseOutput) IsVcfByolEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *bool { return v.IsVcfByolEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Memory overcommit.
+func (o AvsAssessmentSettingsResponseOutput) MemOvercommit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *float64 { return v.MemOvercommit }).(pulumi.Float64PtrOutput)
+}
+
+// AVS node types.
+func (o AvsAssessmentSettingsResponseOutput) NodeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) []string { return v.NodeTypes }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the performance data.
+func (o AvsAssessmentSettingsResponseOutput) PerformanceData() PerformanceDataResponsePtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *PerformanceDataResponse { return v.PerformanceData }).(PerformanceDataResponsePtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o AvsAssessmentSettingsResponseOutput) SavingsSettings() SavingsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *SavingsSettingsResponse { return v.SavingsSettings }).(SavingsSettingsResponsePtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o AvsAssessmentSettingsResponseOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *float64 { return v.ScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o AvsAssessmentSettingsResponseOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *string { return v.SizingCriterion }).(pulumi.StringPtrOutput)
+}
+
+// VCPU over subscription.
+func (o AvsAssessmentSettingsResponseOutput) VcpuOversubscription() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsAssessmentSettingsResponse) *float64 { return v.VcpuOversubscription }).(pulumi.Float64PtrOutput)
+}
+
+type AvsAssessmentSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AvsAssessmentSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvsAssessmentSettingsResponse)(nil)).Elem()
+}
+
+func (o AvsAssessmentSettingsResponsePtrOutput) ToAvsAssessmentSettingsResponsePtrOutput() AvsAssessmentSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AvsAssessmentSettingsResponsePtrOutput) ToAvsAssessmentSettingsResponsePtrOutputWithContext(ctx context.Context) AvsAssessmentSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AvsAssessmentSettingsResponsePtrOutput) Elem() AvsAssessmentSettingsResponseOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) AvsAssessmentSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AvsAssessmentSettingsResponse
+		return ret
+	}).(AvsAssessmentSettingsResponseOutput)
+}
+
+// AVS Assessment Scenario.
+func (o AvsAssessmentSettingsResponsePtrOutput) AvsAssessmentScenario() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvsAssessmentScenario
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o AvsAssessmentSettingsResponsePtrOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the billing settings.
+func (o AvsAssessmentSettingsResponsePtrOutput) BillingSettings() BillingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *BillingSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BillingSettings
+	}).(BillingSettingsResponsePtrOutput)
+}
+
+// Gets or sets the CPU headroom.
+func (o AvsAssessmentSettingsResponsePtrOutput) CpuHeadroom() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CpuHeadroom
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o AvsAssessmentSettingsResponsePtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+// De-duplication compression.
+func (o AvsAssessmentSettingsResponsePtrOutput) DedupeCompression() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DedupeCompression
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Custom discount percentage.
+func (o AvsAssessmentSettingsResponsePtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o AvsAssessmentSettingsResponsePtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of AVS external storage types.
+func (o AvsAssessmentSettingsResponsePtrOutput) ExternalStorageTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalStorageTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of Failures to tolerate and RAID levels in a common property.
+func (o AvsAssessmentSettingsResponsePtrOutput) FailuresToTolerateAndRaidLevelList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FailuresToTolerateAndRaidLevelList
+	}).(pulumi.StringArrayOutput)
+}
+
+// Is Stretch Cluster Enabled.
+func (o AvsAssessmentSettingsResponsePtrOutput) IsStretchClusterEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsStretchClusterEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Is VCF license applied
+func (o AvsAssessmentSettingsResponsePtrOutput) IsVcfByolEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsVcfByolEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Memory overcommit.
+func (o AvsAssessmentSettingsResponsePtrOutput) MemOvercommit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MemOvercommit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// AVS node types.
+func (o AvsAssessmentSettingsResponsePtrOutput) NodeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the performance data.
+func (o AvsAssessmentSettingsResponsePtrOutput) PerformanceData() PerformanceDataResponsePtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *PerformanceDataResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceData
+	}).(PerformanceDataResponsePtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o AvsAssessmentSettingsResponsePtrOutput) SavingsSettings() SavingsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *SavingsSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SavingsSettings
+	}).(SavingsSettingsResponsePtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o AvsAssessmentSettingsResponsePtrOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o AvsAssessmentSettingsResponsePtrOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizingCriterion
+	}).(pulumi.StringPtrOutput)
+}
+
+// VCPU over subscription.
+func (o AvsAssessmentSettingsResponsePtrOutput) VcpuOversubscription() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AvsAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.VcpuOversubscription
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Details on the Estimated External Storage for AVS Assessment.
@@ -7488,6 +8703,242 @@ func (o AzureSettingsResponsePtrOutput) WorkloadDiscoverySource() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Billing settings class.
+type BillingSettings struct {
+	// Gets or sets the licensing program.
+	LicensingProgram *string `pulumi:"licensingProgram"`
+	// Gets or sets the subscription ID for licensing program selected.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+}
+
+// BillingSettingsInput is an input type that accepts BillingSettingsArgs and BillingSettingsOutput values.
+// You can construct a concrete instance of `BillingSettingsInput` via:
+//
+//	BillingSettingsArgs{...}
+type BillingSettingsInput interface {
+	pulumi.Input
+
+	ToBillingSettingsOutput() BillingSettingsOutput
+	ToBillingSettingsOutputWithContext(context.Context) BillingSettingsOutput
+}
+
+// Billing settings class.
+type BillingSettingsArgs struct {
+	// Gets or sets the licensing program.
+	LicensingProgram pulumi.StringPtrInput `pulumi:"licensingProgram"`
+	// Gets or sets the subscription ID for licensing program selected.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+}
+
+func (BillingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingSettings)(nil)).Elem()
+}
+
+func (i BillingSettingsArgs) ToBillingSettingsOutput() BillingSettingsOutput {
+	return i.ToBillingSettingsOutputWithContext(context.Background())
+}
+
+func (i BillingSettingsArgs) ToBillingSettingsOutputWithContext(ctx context.Context) BillingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingSettingsOutput)
+}
+
+func (i BillingSettingsArgs) ToBillingSettingsPtrOutput() BillingSettingsPtrOutput {
+	return i.ToBillingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i BillingSettingsArgs) ToBillingSettingsPtrOutputWithContext(ctx context.Context) BillingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingSettingsOutput).ToBillingSettingsPtrOutputWithContext(ctx)
+}
+
+// BillingSettingsPtrInput is an input type that accepts BillingSettingsArgs, BillingSettingsPtr and BillingSettingsPtrOutput values.
+// You can construct a concrete instance of `BillingSettingsPtrInput` via:
+//
+//	        BillingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BillingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToBillingSettingsPtrOutput() BillingSettingsPtrOutput
+	ToBillingSettingsPtrOutputWithContext(context.Context) BillingSettingsPtrOutput
+}
+
+type billingSettingsPtrType BillingSettingsArgs
+
+func BillingSettingsPtr(v *BillingSettingsArgs) BillingSettingsPtrInput {
+	return (*billingSettingsPtrType)(v)
+}
+
+func (*billingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingSettings)(nil)).Elem()
+}
+
+func (i *billingSettingsPtrType) ToBillingSettingsPtrOutput() BillingSettingsPtrOutput {
+	return i.ToBillingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *billingSettingsPtrType) ToBillingSettingsPtrOutputWithContext(ctx context.Context) BillingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingSettingsPtrOutput)
+}
+
+// Billing settings class.
+type BillingSettingsOutput struct{ *pulumi.OutputState }
+
+func (BillingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingSettings)(nil)).Elem()
+}
+
+func (o BillingSettingsOutput) ToBillingSettingsOutput() BillingSettingsOutput {
+	return o
+}
+
+func (o BillingSettingsOutput) ToBillingSettingsOutputWithContext(ctx context.Context) BillingSettingsOutput {
+	return o
+}
+
+func (o BillingSettingsOutput) ToBillingSettingsPtrOutput() BillingSettingsPtrOutput {
+	return o.ToBillingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o BillingSettingsOutput) ToBillingSettingsPtrOutputWithContext(ctx context.Context) BillingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingSettings) *BillingSettings {
+		return &v
+	}).(BillingSettingsPtrOutput)
+}
+
+// Gets or sets the licensing program.
+func (o BillingSettingsOutput) LicensingProgram() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingSettings) *string { return v.LicensingProgram }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the subscription ID for licensing program selected.
+func (o BillingSettingsOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingSettings) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+type BillingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingSettings)(nil)).Elem()
+}
+
+func (o BillingSettingsPtrOutput) ToBillingSettingsPtrOutput() BillingSettingsPtrOutput {
+	return o
+}
+
+func (o BillingSettingsPtrOutput) ToBillingSettingsPtrOutputWithContext(ctx context.Context) BillingSettingsPtrOutput {
+	return o
+}
+
+func (o BillingSettingsPtrOutput) Elem() BillingSettingsOutput {
+	return o.ApplyT(func(v *BillingSettings) BillingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret BillingSettings
+		return ret
+	}).(BillingSettingsOutput)
+}
+
+// Gets or sets the licensing program.
+func (o BillingSettingsPtrOutput) LicensingProgram() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicensingProgram
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the subscription ID for licensing program selected.
+func (o BillingSettingsPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Billing settings class.
+type BillingSettingsResponse struct {
+	// Gets or sets the licensing program.
+	LicensingProgram *string `pulumi:"licensingProgram"`
+	// Gets or sets the subscription ID for licensing program selected.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+}
+
+// Billing settings class.
+type BillingSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (BillingSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingSettingsResponse)(nil)).Elem()
+}
+
+func (o BillingSettingsResponseOutput) ToBillingSettingsResponseOutput() BillingSettingsResponseOutput {
+	return o
+}
+
+func (o BillingSettingsResponseOutput) ToBillingSettingsResponseOutputWithContext(ctx context.Context) BillingSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets the licensing program.
+func (o BillingSettingsResponseOutput) LicensingProgram() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingSettingsResponse) *string { return v.LicensingProgram }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the subscription ID for licensing program selected.
+func (o BillingSettingsResponseOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingSettingsResponse) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+type BillingSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BillingSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingSettingsResponse)(nil)).Elem()
+}
+
+func (o BillingSettingsResponsePtrOutput) ToBillingSettingsResponsePtrOutput() BillingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o BillingSettingsResponsePtrOutput) ToBillingSettingsResponsePtrOutputWithContext(ctx context.Context) BillingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o BillingSettingsResponsePtrOutput) Elem() BillingSettingsResponseOutput {
+	return o.ApplyT(func(v *BillingSettingsResponse) BillingSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BillingSettingsResponse
+		return ret
+	}).(BillingSettingsResponseOutput)
+}
+
+// Gets or sets the licensing program.
+func (o BillingSettingsResponsePtrOutput) LicensingProgram() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicensingProgram
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the subscription ID for licensing program selected.
+func (o BillingSettingsResponsePtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Binding for a web application.
 type Binding struct {
 	// WebApplication certificate.
@@ -9445,6 +10896,254 @@ func (o CollectorPropertiesResponseOutput) DiscoverySiteId() pulumi.StringPtrOut
 // Time when this collector was updated. Date-Time represented in ISO-8601 format.
 func (o CollectorPropertiesResponseOutput) UpdatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v CollectorPropertiesResponse) string { return v.UpdatedTimestamp }).(pulumi.StringOutput)
+}
+
+// Details of the compound assessment.
+type CompoundAssessmentDetailsResponse struct {
+	// Timestamp when the assessment was created.
+	CreatedTimestamp *string `pulumi:"createdTimestamp"`
+	// Status of the assessment.
+	Status string `pulumi:"status"`
+	// Timestamp when the assessment was last updated.
+	UpdatedTimestamp *string `pulumi:"updatedTimestamp"`
+}
+
+// Details of the compound assessment.
+type CompoundAssessmentDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (CompoundAssessmentDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompoundAssessmentDetailsResponse)(nil)).Elem()
+}
+
+func (o CompoundAssessmentDetailsResponseOutput) ToCompoundAssessmentDetailsResponseOutput() CompoundAssessmentDetailsResponseOutput {
+	return o
+}
+
+func (o CompoundAssessmentDetailsResponseOutput) ToCompoundAssessmentDetailsResponseOutputWithContext(ctx context.Context) CompoundAssessmentDetailsResponseOutput {
+	return o
+}
+
+// Timestamp when the assessment was created.
+func (o CompoundAssessmentDetailsResponseOutput) CreatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompoundAssessmentDetailsResponse) *string { return v.CreatedTimestamp }).(pulumi.StringPtrOutput)
+}
+
+// Status of the assessment.
+func (o CompoundAssessmentDetailsResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v CompoundAssessmentDetailsResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Timestamp when the assessment was last updated.
+func (o CompoundAssessmentDetailsResponseOutput) UpdatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompoundAssessmentDetailsResponse) *string { return v.UpdatedTimestamp }).(pulumi.StringPtrOutput)
+}
+
+// Properties of a compound assessment.
+type CompoundAssessmentProperties struct {
+	// Fallback machine assessment ARM ID.
+	FallbackMachineAssessmentArmId *string `pulumi:"fallbackMachineAssessmentArmId"`
+	// ARM IDs of the target assessments.
+	TargetAssessmentArmIds TargetAssessmentArmIds `pulumi:"targetAssessmentArmIds"`
+}
+
+// CompoundAssessmentPropertiesInput is an input type that accepts CompoundAssessmentPropertiesArgs and CompoundAssessmentPropertiesOutput values.
+// You can construct a concrete instance of `CompoundAssessmentPropertiesInput` via:
+//
+//	CompoundAssessmentPropertiesArgs{...}
+type CompoundAssessmentPropertiesInput interface {
+	pulumi.Input
+
+	ToCompoundAssessmentPropertiesOutput() CompoundAssessmentPropertiesOutput
+	ToCompoundAssessmentPropertiesOutputWithContext(context.Context) CompoundAssessmentPropertiesOutput
+}
+
+// Properties of a compound assessment.
+type CompoundAssessmentPropertiesArgs struct {
+	// Fallback machine assessment ARM ID.
+	FallbackMachineAssessmentArmId pulumi.StringPtrInput `pulumi:"fallbackMachineAssessmentArmId"`
+	// ARM IDs of the target assessments.
+	TargetAssessmentArmIds TargetAssessmentArmIdsInput `pulumi:"targetAssessmentArmIds"`
+}
+
+func (CompoundAssessmentPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompoundAssessmentProperties)(nil)).Elem()
+}
+
+func (i CompoundAssessmentPropertiesArgs) ToCompoundAssessmentPropertiesOutput() CompoundAssessmentPropertiesOutput {
+	return i.ToCompoundAssessmentPropertiesOutputWithContext(context.Background())
+}
+
+func (i CompoundAssessmentPropertiesArgs) ToCompoundAssessmentPropertiesOutputWithContext(ctx context.Context) CompoundAssessmentPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompoundAssessmentPropertiesOutput)
+}
+
+func (i CompoundAssessmentPropertiesArgs) ToCompoundAssessmentPropertiesPtrOutput() CompoundAssessmentPropertiesPtrOutput {
+	return i.ToCompoundAssessmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i CompoundAssessmentPropertiesArgs) ToCompoundAssessmentPropertiesPtrOutputWithContext(ctx context.Context) CompoundAssessmentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompoundAssessmentPropertiesOutput).ToCompoundAssessmentPropertiesPtrOutputWithContext(ctx)
+}
+
+// CompoundAssessmentPropertiesPtrInput is an input type that accepts CompoundAssessmentPropertiesArgs, CompoundAssessmentPropertiesPtr and CompoundAssessmentPropertiesPtrOutput values.
+// You can construct a concrete instance of `CompoundAssessmentPropertiesPtrInput` via:
+//
+//	        CompoundAssessmentPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CompoundAssessmentPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToCompoundAssessmentPropertiesPtrOutput() CompoundAssessmentPropertiesPtrOutput
+	ToCompoundAssessmentPropertiesPtrOutputWithContext(context.Context) CompoundAssessmentPropertiesPtrOutput
+}
+
+type compoundAssessmentPropertiesPtrType CompoundAssessmentPropertiesArgs
+
+func CompoundAssessmentPropertiesPtr(v *CompoundAssessmentPropertiesArgs) CompoundAssessmentPropertiesPtrInput {
+	return (*compoundAssessmentPropertiesPtrType)(v)
+}
+
+func (*compoundAssessmentPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CompoundAssessmentProperties)(nil)).Elem()
+}
+
+func (i *compoundAssessmentPropertiesPtrType) ToCompoundAssessmentPropertiesPtrOutput() CompoundAssessmentPropertiesPtrOutput {
+	return i.ToCompoundAssessmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *compoundAssessmentPropertiesPtrType) ToCompoundAssessmentPropertiesPtrOutputWithContext(ctx context.Context) CompoundAssessmentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompoundAssessmentPropertiesPtrOutput)
+}
+
+// Properties of a compound assessment.
+type CompoundAssessmentPropertiesOutput struct{ *pulumi.OutputState }
+
+func (CompoundAssessmentPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompoundAssessmentProperties)(nil)).Elem()
+}
+
+func (o CompoundAssessmentPropertiesOutput) ToCompoundAssessmentPropertiesOutput() CompoundAssessmentPropertiesOutput {
+	return o
+}
+
+func (o CompoundAssessmentPropertiesOutput) ToCompoundAssessmentPropertiesOutputWithContext(ctx context.Context) CompoundAssessmentPropertiesOutput {
+	return o
+}
+
+func (o CompoundAssessmentPropertiesOutput) ToCompoundAssessmentPropertiesPtrOutput() CompoundAssessmentPropertiesPtrOutput {
+	return o.ToCompoundAssessmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o CompoundAssessmentPropertiesOutput) ToCompoundAssessmentPropertiesPtrOutputWithContext(ctx context.Context) CompoundAssessmentPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompoundAssessmentProperties) *CompoundAssessmentProperties {
+		return &v
+	}).(CompoundAssessmentPropertiesPtrOutput)
+}
+
+// Fallback machine assessment ARM ID.
+func (o CompoundAssessmentPropertiesOutput) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompoundAssessmentProperties) *string { return v.FallbackMachineAssessmentArmId }).(pulumi.StringPtrOutput)
+}
+
+// ARM IDs of the target assessments.
+func (o CompoundAssessmentPropertiesOutput) TargetAssessmentArmIds() TargetAssessmentArmIdsOutput {
+	return o.ApplyT(func(v CompoundAssessmentProperties) TargetAssessmentArmIds { return v.TargetAssessmentArmIds }).(TargetAssessmentArmIdsOutput)
+}
+
+type CompoundAssessmentPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (CompoundAssessmentPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CompoundAssessmentProperties)(nil)).Elem()
+}
+
+func (o CompoundAssessmentPropertiesPtrOutput) ToCompoundAssessmentPropertiesPtrOutput() CompoundAssessmentPropertiesPtrOutput {
+	return o
+}
+
+func (o CompoundAssessmentPropertiesPtrOutput) ToCompoundAssessmentPropertiesPtrOutputWithContext(ctx context.Context) CompoundAssessmentPropertiesPtrOutput {
+	return o
+}
+
+func (o CompoundAssessmentPropertiesPtrOutput) Elem() CompoundAssessmentPropertiesOutput {
+	return o.ApplyT(func(v *CompoundAssessmentProperties) CompoundAssessmentProperties {
+		if v != nil {
+			return *v
+		}
+		var ret CompoundAssessmentProperties
+		return ret
+	}).(CompoundAssessmentPropertiesOutput)
+}
+
+// Fallback machine assessment ARM ID.
+func (o CompoundAssessmentPropertiesPtrOutput) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CompoundAssessmentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FallbackMachineAssessmentArmId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM IDs of the target assessments.
+func (o CompoundAssessmentPropertiesPtrOutput) TargetAssessmentArmIds() TargetAssessmentArmIdsPtrOutput {
+	return o.ApplyT(func(v *CompoundAssessmentProperties) *TargetAssessmentArmIds {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetAssessmentArmIds
+	}).(TargetAssessmentArmIdsPtrOutput)
+}
+
+// Properties of a compound assessment.
+type CompoundAssessmentPropertiesResponse struct {
+	// Details of the compound assessment.
+	Details CompoundAssessmentDetailsResponse `pulumi:"details"`
+	// Fallback machine assessment ARM ID.
+	FallbackMachineAssessmentArmId *string `pulumi:"fallbackMachineAssessmentArmId"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// ARM IDs of the target assessments.
+	TargetAssessmentArmIds TargetAssessmentArmIdsResponse `pulumi:"targetAssessmentArmIds"`
+}
+
+// Properties of a compound assessment.
+type CompoundAssessmentPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (CompoundAssessmentPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompoundAssessmentPropertiesResponse)(nil)).Elem()
+}
+
+func (o CompoundAssessmentPropertiesResponseOutput) ToCompoundAssessmentPropertiesResponseOutput() CompoundAssessmentPropertiesResponseOutput {
+	return o
+}
+
+func (o CompoundAssessmentPropertiesResponseOutput) ToCompoundAssessmentPropertiesResponseOutputWithContext(ctx context.Context) CompoundAssessmentPropertiesResponseOutput {
+	return o
+}
+
+// Details of the compound assessment.
+func (o CompoundAssessmentPropertiesResponseOutput) Details() CompoundAssessmentDetailsResponseOutput {
+	return o.ApplyT(func(v CompoundAssessmentPropertiesResponse) CompoundAssessmentDetailsResponse { return v.Details }).(CompoundAssessmentDetailsResponseOutput)
+}
+
+// Fallback machine assessment ARM ID.
+func (o CompoundAssessmentPropertiesResponseOutput) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompoundAssessmentPropertiesResponse) *string { return v.FallbackMachineAssessmentArmId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the last operation.
+func (o CompoundAssessmentPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v CompoundAssessmentPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// ARM IDs of the target assessments.
+func (o CompoundAssessmentPropertiesResponseOutput) TargetAssessmentArmIds() TargetAssessmentArmIdsResponseOutput {
+	return o.ApplyT(func(v CompoundAssessmentPropertiesResponse) TargetAssessmentArmIdsResponse {
+		return v.TargetAssessmentArmIds
+	}).(TargetAssessmentArmIdsResponseOutput)
 }
 
 // Compute settings.
@@ -12908,6 +14607,221 @@ func (o HealthErrorModelResponseArrayOutput) Index(i pulumi.IntInput) HealthErro
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HealthErrorModelResponse {
 		return vs[0].([]HealthErrorModelResponse)[vs[1].(int)]
 	}).(HealthErrorModelResponseOutput)
+}
+
+// Properties of an assessment.
+type HeterogeneousAssessmentProperties struct {
+	// Arm id of partner assessments.
+	AssessmentArmIds []string `pulumi:"assessmentArmIds"`
+}
+
+// HeterogeneousAssessmentPropertiesInput is an input type that accepts HeterogeneousAssessmentPropertiesArgs and HeterogeneousAssessmentPropertiesOutput values.
+// You can construct a concrete instance of `HeterogeneousAssessmentPropertiesInput` via:
+//
+//	HeterogeneousAssessmentPropertiesArgs{...}
+type HeterogeneousAssessmentPropertiesInput interface {
+	pulumi.Input
+
+	ToHeterogeneousAssessmentPropertiesOutput() HeterogeneousAssessmentPropertiesOutput
+	ToHeterogeneousAssessmentPropertiesOutputWithContext(context.Context) HeterogeneousAssessmentPropertiesOutput
+}
+
+// Properties of an assessment.
+type HeterogeneousAssessmentPropertiesArgs struct {
+	// Arm id of partner assessments.
+	AssessmentArmIds pulumi.StringArrayInput `pulumi:"assessmentArmIds"`
+}
+
+func (HeterogeneousAssessmentPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeterogeneousAssessmentProperties)(nil)).Elem()
+}
+
+func (i HeterogeneousAssessmentPropertiesArgs) ToHeterogeneousAssessmentPropertiesOutput() HeterogeneousAssessmentPropertiesOutput {
+	return i.ToHeterogeneousAssessmentPropertiesOutputWithContext(context.Background())
+}
+
+func (i HeterogeneousAssessmentPropertiesArgs) ToHeterogeneousAssessmentPropertiesOutputWithContext(ctx context.Context) HeterogeneousAssessmentPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeterogeneousAssessmentPropertiesOutput)
+}
+
+func (i HeterogeneousAssessmentPropertiesArgs) ToHeterogeneousAssessmentPropertiesPtrOutput() HeterogeneousAssessmentPropertiesPtrOutput {
+	return i.ToHeterogeneousAssessmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i HeterogeneousAssessmentPropertiesArgs) ToHeterogeneousAssessmentPropertiesPtrOutputWithContext(ctx context.Context) HeterogeneousAssessmentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeterogeneousAssessmentPropertiesOutput).ToHeterogeneousAssessmentPropertiesPtrOutputWithContext(ctx)
+}
+
+// HeterogeneousAssessmentPropertiesPtrInput is an input type that accepts HeterogeneousAssessmentPropertiesArgs, HeterogeneousAssessmentPropertiesPtr and HeterogeneousAssessmentPropertiesPtrOutput values.
+// You can construct a concrete instance of `HeterogeneousAssessmentPropertiesPtrInput` via:
+//
+//	        HeterogeneousAssessmentPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type HeterogeneousAssessmentPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToHeterogeneousAssessmentPropertiesPtrOutput() HeterogeneousAssessmentPropertiesPtrOutput
+	ToHeterogeneousAssessmentPropertiesPtrOutputWithContext(context.Context) HeterogeneousAssessmentPropertiesPtrOutput
+}
+
+type heterogeneousAssessmentPropertiesPtrType HeterogeneousAssessmentPropertiesArgs
+
+func HeterogeneousAssessmentPropertiesPtr(v *HeterogeneousAssessmentPropertiesArgs) HeterogeneousAssessmentPropertiesPtrInput {
+	return (*heterogeneousAssessmentPropertiesPtrType)(v)
+}
+
+func (*heterogeneousAssessmentPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HeterogeneousAssessmentProperties)(nil)).Elem()
+}
+
+func (i *heterogeneousAssessmentPropertiesPtrType) ToHeterogeneousAssessmentPropertiesPtrOutput() HeterogeneousAssessmentPropertiesPtrOutput {
+	return i.ToHeterogeneousAssessmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *heterogeneousAssessmentPropertiesPtrType) ToHeterogeneousAssessmentPropertiesPtrOutputWithContext(ctx context.Context) HeterogeneousAssessmentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeterogeneousAssessmentPropertiesPtrOutput)
+}
+
+// Properties of an assessment.
+type HeterogeneousAssessmentPropertiesOutput struct{ *pulumi.OutputState }
+
+func (HeterogeneousAssessmentPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeterogeneousAssessmentProperties)(nil)).Elem()
+}
+
+func (o HeterogeneousAssessmentPropertiesOutput) ToHeterogeneousAssessmentPropertiesOutput() HeterogeneousAssessmentPropertiesOutput {
+	return o
+}
+
+func (o HeterogeneousAssessmentPropertiesOutput) ToHeterogeneousAssessmentPropertiesOutputWithContext(ctx context.Context) HeterogeneousAssessmentPropertiesOutput {
+	return o
+}
+
+func (o HeterogeneousAssessmentPropertiesOutput) ToHeterogeneousAssessmentPropertiesPtrOutput() HeterogeneousAssessmentPropertiesPtrOutput {
+	return o.ToHeterogeneousAssessmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o HeterogeneousAssessmentPropertiesOutput) ToHeterogeneousAssessmentPropertiesPtrOutputWithContext(ctx context.Context) HeterogeneousAssessmentPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HeterogeneousAssessmentProperties) *HeterogeneousAssessmentProperties {
+		return &v
+	}).(HeterogeneousAssessmentPropertiesPtrOutput)
+}
+
+// Arm id of partner assessments.
+func (o HeterogeneousAssessmentPropertiesOutput) AssessmentArmIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HeterogeneousAssessmentProperties) []string { return v.AssessmentArmIds }).(pulumi.StringArrayOutput)
+}
+
+type HeterogeneousAssessmentPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (HeterogeneousAssessmentPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HeterogeneousAssessmentProperties)(nil)).Elem()
+}
+
+func (o HeterogeneousAssessmentPropertiesPtrOutput) ToHeterogeneousAssessmentPropertiesPtrOutput() HeterogeneousAssessmentPropertiesPtrOutput {
+	return o
+}
+
+func (o HeterogeneousAssessmentPropertiesPtrOutput) ToHeterogeneousAssessmentPropertiesPtrOutputWithContext(ctx context.Context) HeterogeneousAssessmentPropertiesPtrOutput {
+	return o
+}
+
+func (o HeterogeneousAssessmentPropertiesPtrOutput) Elem() HeterogeneousAssessmentPropertiesOutput {
+	return o.ApplyT(func(v *HeterogeneousAssessmentProperties) HeterogeneousAssessmentProperties {
+		if v != nil {
+			return *v
+		}
+		var ret HeterogeneousAssessmentProperties
+		return ret
+	}).(HeterogeneousAssessmentPropertiesOutput)
+}
+
+// Arm id of partner assessments.
+func (o HeterogeneousAssessmentPropertiesPtrOutput) AssessmentArmIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HeterogeneousAssessmentProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AssessmentArmIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Properties of an assessment.
+type HeterogeneousAssessmentPropertiesResponse struct {
+	// Arm id of partner assessments.
+	AssessmentArmIds []string `pulumi:"assessmentArmIds"`
+	// Azure location for assessment.
+	AzureLocation string `pulumi:"azureLocation"`
+	// Confidence rating in percentage.
+	ConfidenceRatingInPercentage float64 `pulumi:"confidenceRatingInPercentage"`
+	// Timestamp for the last successfully calculated summary for the assessment.
+	LastCalculatedOn string `pulumi:"lastCalculatedOn"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Schema version.
+	SchemaVersion string `pulumi:"schemaVersion"`
+	// Sizing criterion for assessment.
+	SizingCriterion string `pulumi:"sizingCriterion"`
+	// Whether assessment is in valid state and all machines have been assessed.
+	Status string `pulumi:"status"`
+}
+
+// Properties of an assessment.
+type HeterogeneousAssessmentPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HeterogeneousAssessmentPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeterogeneousAssessmentPropertiesResponse)(nil)).Elem()
+}
+
+func (o HeterogeneousAssessmentPropertiesResponseOutput) ToHeterogeneousAssessmentPropertiesResponseOutput() HeterogeneousAssessmentPropertiesResponseOutput {
+	return o
+}
+
+func (o HeterogeneousAssessmentPropertiesResponseOutput) ToHeterogeneousAssessmentPropertiesResponseOutputWithContext(ctx context.Context) HeterogeneousAssessmentPropertiesResponseOutput {
+	return o
+}
+
+// Arm id of partner assessments.
+func (o HeterogeneousAssessmentPropertiesResponseOutput) AssessmentArmIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HeterogeneousAssessmentPropertiesResponse) []string { return v.AssessmentArmIds }).(pulumi.StringArrayOutput)
+}
+
+// Azure location for assessment.
+func (o HeterogeneousAssessmentPropertiesResponseOutput) AzureLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v HeterogeneousAssessmentPropertiesResponse) string { return v.AzureLocation }).(pulumi.StringOutput)
+}
+
+// Confidence rating in percentage.
+func (o HeterogeneousAssessmentPropertiesResponseOutput) ConfidenceRatingInPercentage() pulumi.Float64Output {
+	return o.ApplyT(func(v HeterogeneousAssessmentPropertiesResponse) float64 { return v.ConfidenceRatingInPercentage }).(pulumi.Float64Output)
+}
+
+// Timestamp for the last successfully calculated summary for the assessment.
+func (o HeterogeneousAssessmentPropertiesResponseOutput) LastCalculatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v HeterogeneousAssessmentPropertiesResponse) string { return v.LastCalculatedOn }).(pulumi.StringOutput)
+}
+
+// The status of the last operation.
+func (o HeterogeneousAssessmentPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v HeterogeneousAssessmentPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Schema version.
+func (o HeterogeneousAssessmentPropertiesResponseOutput) SchemaVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v HeterogeneousAssessmentPropertiesResponse) string { return v.SchemaVersion }).(pulumi.StringOutput)
+}
+
+// Sizing criterion for assessment.
+func (o HeterogeneousAssessmentPropertiesResponseOutput) SizingCriterion() pulumi.StringOutput {
+	return o.ApplyT(func(v HeterogeneousAssessmentPropertiesResponse) string { return v.SizingCriterion }).(pulumi.StringOutput)
+}
+
+// Whether assessment is in valid state and all machines have been assessed.
+func (o HeterogeneousAssessmentPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v HeterogeneousAssessmentPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Representation of a licence.
@@ -17207,6 +19121,193 @@ func (o ImportCollectorPropertiesResponseOutput) UpdatedTimestamp() pulumi.Strin
 	return o.ApplyT(func(v ImportCollectorPropertiesResponse) string { return v.UpdatedTimestamp }).(pulumi.StringOutput)
 }
 
+// Import SQL Collector properties class.
+type ImportSqlCollectorProperties struct {
+	// The sql db extended details.
+	DiscoverySiteId *string `pulumi:"discoverySiteId"`
+}
+
+// ImportSqlCollectorPropertiesInput is an input type that accepts ImportSqlCollectorPropertiesArgs and ImportSqlCollectorPropertiesOutput values.
+// You can construct a concrete instance of `ImportSqlCollectorPropertiesInput` via:
+//
+//	ImportSqlCollectorPropertiesArgs{...}
+type ImportSqlCollectorPropertiesInput interface {
+	pulumi.Input
+
+	ToImportSqlCollectorPropertiesOutput() ImportSqlCollectorPropertiesOutput
+	ToImportSqlCollectorPropertiesOutputWithContext(context.Context) ImportSqlCollectorPropertiesOutput
+}
+
+// Import SQL Collector properties class.
+type ImportSqlCollectorPropertiesArgs struct {
+	// The sql db extended details.
+	DiscoverySiteId pulumi.StringPtrInput `pulumi:"discoverySiteId"`
+}
+
+func (ImportSqlCollectorPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportSqlCollectorProperties)(nil)).Elem()
+}
+
+func (i ImportSqlCollectorPropertiesArgs) ToImportSqlCollectorPropertiesOutput() ImportSqlCollectorPropertiesOutput {
+	return i.ToImportSqlCollectorPropertiesOutputWithContext(context.Background())
+}
+
+func (i ImportSqlCollectorPropertiesArgs) ToImportSqlCollectorPropertiesOutputWithContext(ctx context.Context) ImportSqlCollectorPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportSqlCollectorPropertiesOutput)
+}
+
+func (i ImportSqlCollectorPropertiesArgs) ToImportSqlCollectorPropertiesPtrOutput() ImportSqlCollectorPropertiesPtrOutput {
+	return i.ToImportSqlCollectorPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ImportSqlCollectorPropertiesArgs) ToImportSqlCollectorPropertiesPtrOutputWithContext(ctx context.Context) ImportSqlCollectorPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportSqlCollectorPropertiesOutput).ToImportSqlCollectorPropertiesPtrOutputWithContext(ctx)
+}
+
+// ImportSqlCollectorPropertiesPtrInput is an input type that accepts ImportSqlCollectorPropertiesArgs, ImportSqlCollectorPropertiesPtr and ImportSqlCollectorPropertiesPtrOutput values.
+// You can construct a concrete instance of `ImportSqlCollectorPropertiesPtrInput` via:
+//
+//	        ImportSqlCollectorPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImportSqlCollectorPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToImportSqlCollectorPropertiesPtrOutput() ImportSqlCollectorPropertiesPtrOutput
+	ToImportSqlCollectorPropertiesPtrOutputWithContext(context.Context) ImportSqlCollectorPropertiesPtrOutput
+}
+
+type importSqlCollectorPropertiesPtrType ImportSqlCollectorPropertiesArgs
+
+func ImportSqlCollectorPropertiesPtr(v *ImportSqlCollectorPropertiesArgs) ImportSqlCollectorPropertiesPtrInput {
+	return (*importSqlCollectorPropertiesPtrType)(v)
+}
+
+func (*importSqlCollectorPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImportSqlCollectorProperties)(nil)).Elem()
+}
+
+func (i *importSqlCollectorPropertiesPtrType) ToImportSqlCollectorPropertiesPtrOutput() ImportSqlCollectorPropertiesPtrOutput {
+	return i.ToImportSqlCollectorPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *importSqlCollectorPropertiesPtrType) ToImportSqlCollectorPropertiesPtrOutputWithContext(ctx context.Context) ImportSqlCollectorPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImportSqlCollectorPropertiesPtrOutput)
+}
+
+// Import SQL Collector properties class.
+type ImportSqlCollectorPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ImportSqlCollectorPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportSqlCollectorProperties)(nil)).Elem()
+}
+
+func (o ImportSqlCollectorPropertiesOutput) ToImportSqlCollectorPropertiesOutput() ImportSqlCollectorPropertiesOutput {
+	return o
+}
+
+func (o ImportSqlCollectorPropertiesOutput) ToImportSqlCollectorPropertiesOutputWithContext(ctx context.Context) ImportSqlCollectorPropertiesOutput {
+	return o
+}
+
+func (o ImportSqlCollectorPropertiesOutput) ToImportSqlCollectorPropertiesPtrOutput() ImportSqlCollectorPropertiesPtrOutput {
+	return o.ToImportSqlCollectorPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ImportSqlCollectorPropertiesOutput) ToImportSqlCollectorPropertiesPtrOutputWithContext(ctx context.Context) ImportSqlCollectorPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImportSqlCollectorProperties) *ImportSqlCollectorProperties {
+		return &v
+	}).(ImportSqlCollectorPropertiesPtrOutput)
+}
+
+// The sql db extended details.
+func (o ImportSqlCollectorPropertiesOutput) DiscoverySiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportSqlCollectorProperties) *string { return v.DiscoverySiteId }).(pulumi.StringPtrOutput)
+}
+
+type ImportSqlCollectorPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ImportSqlCollectorPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImportSqlCollectorProperties)(nil)).Elem()
+}
+
+func (o ImportSqlCollectorPropertiesPtrOutput) ToImportSqlCollectorPropertiesPtrOutput() ImportSqlCollectorPropertiesPtrOutput {
+	return o
+}
+
+func (o ImportSqlCollectorPropertiesPtrOutput) ToImportSqlCollectorPropertiesPtrOutputWithContext(ctx context.Context) ImportSqlCollectorPropertiesPtrOutput {
+	return o
+}
+
+func (o ImportSqlCollectorPropertiesPtrOutput) Elem() ImportSqlCollectorPropertiesOutput {
+	return o.ApplyT(func(v *ImportSqlCollectorProperties) ImportSqlCollectorProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ImportSqlCollectorProperties
+		return ret
+	}).(ImportSqlCollectorPropertiesOutput)
+}
+
+// The sql db extended details.
+func (o ImportSqlCollectorPropertiesPtrOutput) DiscoverySiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImportSqlCollectorProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoverySiteId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Import SQL Collector properties class.
+type ImportSqlCollectorPropertiesResponse struct {
+	// When was import SQL collector first created.
+	CreatedTimestamp string `pulumi:"createdTimestamp"`
+	// The sql db extended details.
+	DiscoverySiteId *string `pulumi:"discoverySiteId"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// When was import SQL collector last updated.
+	UpdatedTimestamp string `pulumi:"updatedTimestamp"`
+}
+
+// Import SQL Collector properties class.
+type ImportSqlCollectorPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ImportSqlCollectorPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportSqlCollectorPropertiesResponse)(nil)).Elem()
+}
+
+func (o ImportSqlCollectorPropertiesResponseOutput) ToImportSqlCollectorPropertiesResponseOutput() ImportSqlCollectorPropertiesResponseOutput {
+	return o
+}
+
+func (o ImportSqlCollectorPropertiesResponseOutput) ToImportSqlCollectorPropertiesResponseOutputWithContext(ctx context.Context) ImportSqlCollectorPropertiesResponseOutput {
+	return o
+}
+
+// When was import SQL collector first created.
+func (o ImportSqlCollectorPropertiesResponseOutput) CreatedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v ImportSqlCollectorPropertiesResponse) string { return v.CreatedTimestamp }).(pulumi.StringOutput)
+}
+
+// The sql db extended details.
+func (o ImportSqlCollectorPropertiesResponseOutput) DiscoverySiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImportSqlCollectorPropertiesResponse) *string { return v.DiscoverySiteId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the last operation.
+func (o ImportSqlCollectorPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ImportSqlCollectorPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// When was import SQL collector last updated.
+func (o ImportSqlCollectorPropertiesResponseOutput) UpdatedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v ImportSqlCollectorPropertiesResponse) string { return v.UpdatedTimestamp }).(pulumi.StringOutput)
+}
+
 // Inner health error model.
 type InnerHealthErrorModelResponse struct {
 	// Gets or sets the error category.
@@ -19668,6 +21769,1016 @@ func (o LoadBalancerResourceSettingsResponsePtrOutput) Zones() pulumi.StringPtrO
 		}
 		return v.Zones
 	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of an assessment.
+type MachineAssessmentSettings struct {
+	// The disk type for the assessment.
+	AzureDiskTypes []string `pulumi:"azureDiskTypes"`
+	// Gets or sets the user configurable setting to display the azure hybrid use
+	// benefit.
+	AzureHybridUseBenefit *string `pulumi:"azureHybridUseBenefit"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation *string `pulumi:"azureLocation"`
+	// Gets or sets Azure Pricing Tier - Free, Basic, etc.
+	AzurePricingTier *string `pulumi:"azurePricingTier"`
+	// The azure security offering type.
+	AzureSecurityOfferingType *string `pulumi:"azureSecurityOfferingType"`
+	// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
+	AzureStorageRedundancy *string `pulumi:"azureStorageRedundancy"`
+	// Gets or sets the Azure VM families.
+	AzureVmFamilies []string `pulumi:"azureVmFamilies"`
+	// Gets or sets the billing settings.
+	BillingSettings *BillingSettings `pulumi:"billingSettings"`
+	// Currency in which prices should be reported.
+	Currency *string `pulumi:"currency"`
+	// Custom discount percentage.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType *string `pulumi:"environmentType"`
+	// Gets or sets the user configurable setting to display the linux azure hybrid use
+	// benefit.
+	LinuxAzureHybridUseBenefit *string `pulumi:"linuxAzureHybridUseBenefit"`
+	// Gets or sets the performance data.
+	PerformanceData *PerformanceData `pulumi:"performanceData"`
+	// Gets or sets the savings settings.
+	SavingsSettings *SavingsSettings `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor *float64 `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion *string `pulumi:"sizingCriterion"`
+	// Gets or sets the duration for which the VMs are up in the on-premises
+	// environment.
+	VmUptime *VmUptime `pulumi:"vmUptime"`
+}
+
+// MachineAssessmentSettingsInput is an input type that accepts MachineAssessmentSettingsArgs and MachineAssessmentSettingsOutput values.
+// You can construct a concrete instance of `MachineAssessmentSettingsInput` via:
+//
+//	MachineAssessmentSettingsArgs{...}
+type MachineAssessmentSettingsInput interface {
+	pulumi.Input
+
+	ToMachineAssessmentSettingsOutput() MachineAssessmentSettingsOutput
+	ToMachineAssessmentSettingsOutputWithContext(context.Context) MachineAssessmentSettingsOutput
+}
+
+// Properties of an assessment.
+type MachineAssessmentSettingsArgs struct {
+	// The disk type for the assessment.
+	AzureDiskTypes pulumi.StringArrayInput `pulumi:"azureDiskTypes"`
+	// Gets or sets the user configurable setting to display the azure hybrid use
+	// benefit.
+	AzureHybridUseBenefit pulumi.StringPtrInput `pulumi:"azureHybridUseBenefit"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation pulumi.StringPtrInput `pulumi:"azureLocation"`
+	// Gets or sets Azure Pricing Tier - Free, Basic, etc.
+	AzurePricingTier pulumi.StringPtrInput `pulumi:"azurePricingTier"`
+	// The azure security offering type.
+	AzureSecurityOfferingType pulumi.StringPtrInput `pulumi:"azureSecurityOfferingType"`
+	// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
+	AzureStorageRedundancy pulumi.StringPtrInput `pulumi:"azureStorageRedundancy"`
+	// Gets or sets the Azure VM families.
+	AzureVmFamilies pulumi.StringArrayInput `pulumi:"azureVmFamilies"`
+	// Gets or sets the billing settings.
+	BillingSettings BillingSettingsPtrInput `pulumi:"billingSettings"`
+	// Currency in which prices should be reported.
+	Currency pulumi.StringPtrInput `pulumi:"currency"`
+	// Custom discount percentage.
+	DiscountPercentage pulumi.Float64PtrInput `pulumi:"discountPercentage"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType pulumi.StringPtrInput `pulumi:"environmentType"`
+	// Gets or sets the user configurable setting to display the linux azure hybrid use
+	// benefit.
+	LinuxAzureHybridUseBenefit pulumi.StringPtrInput `pulumi:"linuxAzureHybridUseBenefit"`
+	// Gets or sets the performance data.
+	PerformanceData PerformanceDataPtrInput `pulumi:"performanceData"`
+	// Gets or sets the savings settings.
+	SavingsSettings SavingsSettingsPtrInput `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor pulumi.Float64PtrInput `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion pulumi.StringPtrInput `pulumi:"sizingCriterion"`
+	// Gets or sets the duration for which the VMs are up in the on-premises
+	// environment.
+	VmUptime VmUptimePtrInput `pulumi:"vmUptime"`
+}
+
+func (MachineAssessmentSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineAssessmentSettings)(nil)).Elem()
+}
+
+func (i MachineAssessmentSettingsArgs) ToMachineAssessmentSettingsOutput() MachineAssessmentSettingsOutput {
+	return i.ToMachineAssessmentSettingsOutputWithContext(context.Background())
+}
+
+func (i MachineAssessmentSettingsArgs) ToMachineAssessmentSettingsOutputWithContext(ctx context.Context) MachineAssessmentSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineAssessmentSettingsOutput)
+}
+
+func (i MachineAssessmentSettingsArgs) ToMachineAssessmentSettingsPtrOutput() MachineAssessmentSettingsPtrOutput {
+	return i.ToMachineAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i MachineAssessmentSettingsArgs) ToMachineAssessmentSettingsPtrOutputWithContext(ctx context.Context) MachineAssessmentSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineAssessmentSettingsOutput).ToMachineAssessmentSettingsPtrOutputWithContext(ctx)
+}
+
+// MachineAssessmentSettingsPtrInput is an input type that accepts MachineAssessmentSettingsArgs, MachineAssessmentSettingsPtr and MachineAssessmentSettingsPtrOutput values.
+// You can construct a concrete instance of `MachineAssessmentSettingsPtrInput` via:
+//
+//	        MachineAssessmentSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MachineAssessmentSettingsPtrInput interface {
+	pulumi.Input
+
+	ToMachineAssessmentSettingsPtrOutput() MachineAssessmentSettingsPtrOutput
+	ToMachineAssessmentSettingsPtrOutputWithContext(context.Context) MachineAssessmentSettingsPtrOutput
+}
+
+type machineAssessmentSettingsPtrType MachineAssessmentSettingsArgs
+
+func MachineAssessmentSettingsPtr(v *MachineAssessmentSettingsArgs) MachineAssessmentSettingsPtrInput {
+	return (*machineAssessmentSettingsPtrType)(v)
+}
+
+func (*machineAssessmentSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineAssessmentSettings)(nil)).Elem()
+}
+
+func (i *machineAssessmentSettingsPtrType) ToMachineAssessmentSettingsPtrOutput() MachineAssessmentSettingsPtrOutput {
+	return i.ToMachineAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *machineAssessmentSettingsPtrType) ToMachineAssessmentSettingsPtrOutputWithContext(ctx context.Context) MachineAssessmentSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineAssessmentSettingsPtrOutput)
+}
+
+// Properties of an assessment.
+type MachineAssessmentSettingsOutput struct{ *pulumi.OutputState }
+
+func (MachineAssessmentSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineAssessmentSettings)(nil)).Elem()
+}
+
+func (o MachineAssessmentSettingsOutput) ToMachineAssessmentSettingsOutput() MachineAssessmentSettingsOutput {
+	return o
+}
+
+func (o MachineAssessmentSettingsOutput) ToMachineAssessmentSettingsOutputWithContext(ctx context.Context) MachineAssessmentSettingsOutput {
+	return o
+}
+
+func (o MachineAssessmentSettingsOutput) ToMachineAssessmentSettingsPtrOutput() MachineAssessmentSettingsPtrOutput {
+	return o.ToMachineAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o MachineAssessmentSettingsOutput) ToMachineAssessmentSettingsPtrOutputWithContext(ctx context.Context) MachineAssessmentSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineAssessmentSettings) *MachineAssessmentSettings {
+		return &v
+	}).(MachineAssessmentSettingsPtrOutput)
+}
+
+// The disk type for the assessment.
+func (o MachineAssessmentSettingsOutput) AzureDiskTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) []string { return v.AzureDiskTypes }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the user configurable setting to display the azure hybrid use
+// benefit.
+func (o MachineAssessmentSettingsOutput) AzureHybridUseBenefit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *string { return v.AzureHybridUseBenefit }).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o MachineAssessmentSettingsOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *string { return v.AzureLocation }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets Azure Pricing Tier - Free, Basic, etc.
+func (o MachineAssessmentSettingsOutput) AzurePricingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *string { return v.AzurePricingTier }).(pulumi.StringPtrOutput)
+}
+
+// The azure security offering type.
+func (o MachineAssessmentSettingsOutput) AzureSecurityOfferingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *string { return v.AzureSecurityOfferingType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
+func (o MachineAssessmentSettingsOutput) AzureStorageRedundancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *string { return v.AzureStorageRedundancy }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure VM families.
+func (o MachineAssessmentSettingsOutput) AzureVmFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) []string { return v.AzureVmFamilies }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the billing settings.
+func (o MachineAssessmentSettingsOutput) BillingSettings() BillingSettingsPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *BillingSettings { return v.BillingSettings }).(BillingSettingsPtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o MachineAssessmentSettingsOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o MachineAssessmentSettingsOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o MachineAssessmentSettingsOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *string { return v.EnvironmentType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the user configurable setting to display the linux azure hybrid use
+// benefit.
+func (o MachineAssessmentSettingsOutput) LinuxAzureHybridUseBenefit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *string { return v.LinuxAzureHybridUseBenefit }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o MachineAssessmentSettingsOutput) PerformanceData() PerformanceDataPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *PerformanceData { return v.PerformanceData }).(PerformanceDataPtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o MachineAssessmentSettingsOutput) SavingsSettings() SavingsSettingsPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *SavingsSettings { return v.SavingsSettings }).(SavingsSettingsPtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o MachineAssessmentSettingsOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *float64 { return v.ScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o MachineAssessmentSettingsOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *string { return v.SizingCriterion }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the duration for which the VMs are up in the on-premises
+// environment.
+func (o MachineAssessmentSettingsOutput) VmUptime() VmUptimePtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) *VmUptime { return v.VmUptime }).(VmUptimePtrOutput)
+}
+
+type MachineAssessmentSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (MachineAssessmentSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineAssessmentSettings)(nil)).Elem()
+}
+
+func (o MachineAssessmentSettingsPtrOutput) ToMachineAssessmentSettingsPtrOutput() MachineAssessmentSettingsPtrOutput {
+	return o
+}
+
+func (o MachineAssessmentSettingsPtrOutput) ToMachineAssessmentSettingsPtrOutputWithContext(ctx context.Context) MachineAssessmentSettingsPtrOutput {
+	return o
+}
+
+func (o MachineAssessmentSettingsPtrOutput) Elem() MachineAssessmentSettingsOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) MachineAssessmentSettings {
+		if v != nil {
+			return *v
+		}
+		var ret MachineAssessmentSettings
+		return ret
+	}).(MachineAssessmentSettingsOutput)
+}
+
+// The disk type for the assessment.
+func (o MachineAssessmentSettingsPtrOutput) AzureDiskTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureDiskTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the user configurable setting to display the azure hybrid use
+// benefit.
+func (o MachineAssessmentSettingsPtrOutput) AzureHybridUseBenefit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureHybridUseBenefit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o MachineAssessmentSettingsPtrOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets Azure Pricing Tier - Free, Basic, etc.
+func (o MachineAssessmentSettingsPtrOutput) AzurePricingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzurePricingTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The azure security offering type.
+func (o MachineAssessmentSettingsPtrOutput) AzureSecurityOfferingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSecurityOfferingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
+func (o MachineAssessmentSettingsPtrOutput) AzureStorageRedundancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureStorageRedundancy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure VM families.
+func (o MachineAssessmentSettingsPtrOutput) AzureVmFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureVmFamilies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the billing settings.
+func (o MachineAssessmentSettingsPtrOutput) BillingSettings() BillingSettingsPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *BillingSettings {
+		if v == nil {
+			return nil
+		}
+		return v.BillingSettings
+	}).(BillingSettingsPtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o MachineAssessmentSettingsPtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o MachineAssessmentSettingsPtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o MachineAssessmentSettingsPtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the user configurable setting to display the linux azure hybrid use
+// benefit.
+func (o MachineAssessmentSettingsPtrOutput) LinuxAzureHybridUseBenefit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxAzureHybridUseBenefit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o MachineAssessmentSettingsPtrOutput) PerformanceData() PerformanceDataPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *PerformanceData {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceData
+	}).(PerformanceDataPtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o MachineAssessmentSettingsPtrOutput) SavingsSettings() SavingsSettingsPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *SavingsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.SavingsSettings
+	}).(SavingsSettingsPtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o MachineAssessmentSettingsPtrOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o MachineAssessmentSettingsPtrOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizingCriterion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the duration for which the VMs are up in the on-premises
+// environment.
+func (o MachineAssessmentSettingsPtrOutput) VmUptime() VmUptimePtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) *VmUptime {
+		if v == nil {
+			return nil
+		}
+		return v.VmUptime
+	}).(VmUptimePtrOutput)
+}
+
+// Properties of an assessment.
+type MachineAssessmentSettingsResponse struct {
+	// The disk type for the assessment.
+	AzureDiskTypes []string `pulumi:"azureDiskTypes"`
+	// Gets or sets the user configurable setting to display the azure hybrid use
+	// benefit.
+	AzureHybridUseBenefit *string `pulumi:"azureHybridUseBenefit"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation *string `pulumi:"azureLocation"`
+	// Gets or sets Azure Pricing Tier - Free, Basic, etc.
+	AzurePricingTier *string `pulumi:"azurePricingTier"`
+	// The azure security offering type.
+	AzureSecurityOfferingType *string `pulumi:"azureSecurityOfferingType"`
+	// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
+	AzureStorageRedundancy *string `pulumi:"azureStorageRedundancy"`
+	// Gets or sets the Azure VM families.
+	AzureVmFamilies []string `pulumi:"azureVmFamilies"`
+	// Gets or sets the billing settings.
+	BillingSettings *BillingSettingsResponse `pulumi:"billingSettings"`
+	// Currency in which prices should be reported.
+	Currency *string `pulumi:"currency"`
+	// Custom discount percentage.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType *string `pulumi:"environmentType"`
+	// Gets or sets the user configurable setting to display the linux azure hybrid use
+	// benefit.
+	LinuxAzureHybridUseBenefit *string `pulumi:"linuxAzureHybridUseBenefit"`
+	// Gets or sets the performance data.
+	PerformanceData *PerformanceDataResponse `pulumi:"performanceData"`
+	// Gets or sets the savings settings.
+	SavingsSettings *SavingsSettingsResponse `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor *float64 `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion *string `pulumi:"sizingCriterion"`
+	// Gets or sets the duration for which the VMs are up in the on-premises
+	// environment.
+	VmUptime *VmUptimeResponse `pulumi:"vmUptime"`
+}
+
+// Properties of an assessment.
+type MachineAssessmentSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (MachineAssessmentSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineAssessmentSettingsResponse)(nil)).Elem()
+}
+
+func (o MachineAssessmentSettingsResponseOutput) ToMachineAssessmentSettingsResponseOutput() MachineAssessmentSettingsResponseOutput {
+	return o
+}
+
+func (o MachineAssessmentSettingsResponseOutput) ToMachineAssessmentSettingsResponseOutputWithContext(ctx context.Context) MachineAssessmentSettingsResponseOutput {
+	return o
+}
+
+// The disk type for the assessment.
+func (o MachineAssessmentSettingsResponseOutput) AzureDiskTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) []string { return v.AzureDiskTypes }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the user configurable setting to display the azure hybrid use
+// benefit.
+func (o MachineAssessmentSettingsResponseOutput) AzureHybridUseBenefit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *string { return v.AzureHybridUseBenefit }).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o MachineAssessmentSettingsResponseOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *string { return v.AzureLocation }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets Azure Pricing Tier - Free, Basic, etc.
+func (o MachineAssessmentSettingsResponseOutput) AzurePricingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *string { return v.AzurePricingTier }).(pulumi.StringPtrOutput)
+}
+
+// The azure security offering type.
+func (o MachineAssessmentSettingsResponseOutput) AzureSecurityOfferingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *string { return v.AzureSecurityOfferingType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
+func (o MachineAssessmentSettingsResponseOutput) AzureStorageRedundancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *string { return v.AzureStorageRedundancy }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure VM families.
+func (o MachineAssessmentSettingsResponseOutput) AzureVmFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) []string { return v.AzureVmFamilies }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the billing settings.
+func (o MachineAssessmentSettingsResponseOutput) BillingSettings() BillingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *BillingSettingsResponse { return v.BillingSettings }).(BillingSettingsResponsePtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o MachineAssessmentSettingsResponseOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o MachineAssessmentSettingsResponseOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o MachineAssessmentSettingsResponseOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *string { return v.EnvironmentType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the user configurable setting to display the linux azure hybrid use
+// benefit.
+func (o MachineAssessmentSettingsResponseOutput) LinuxAzureHybridUseBenefit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *string { return v.LinuxAzureHybridUseBenefit }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o MachineAssessmentSettingsResponseOutput) PerformanceData() PerformanceDataResponsePtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *PerformanceDataResponse { return v.PerformanceData }).(PerformanceDataResponsePtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o MachineAssessmentSettingsResponseOutput) SavingsSettings() SavingsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *SavingsSettingsResponse { return v.SavingsSettings }).(SavingsSettingsResponsePtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o MachineAssessmentSettingsResponseOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *float64 { return v.ScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o MachineAssessmentSettingsResponseOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *string { return v.SizingCriterion }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the duration for which the VMs are up in the on-premises
+// environment.
+func (o MachineAssessmentSettingsResponseOutput) VmUptime() VmUptimeResponsePtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *VmUptimeResponse { return v.VmUptime }).(VmUptimeResponsePtrOutput)
+}
+
+type MachineAssessmentSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MachineAssessmentSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineAssessmentSettingsResponse)(nil)).Elem()
+}
+
+func (o MachineAssessmentSettingsResponsePtrOutput) ToMachineAssessmentSettingsResponsePtrOutput() MachineAssessmentSettingsResponsePtrOutput {
+	return o
+}
+
+func (o MachineAssessmentSettingsResponsePtrOutput) ToMachineAssessmentSettingsResponsePtrOutputWithContext(ctx context.Context) MachineAssessmentSettingsResponsePtrOutput {
+	return o
+}
+
+func (o MachineAssessmentSettingsResponsePtrOutput) Elem() MachineAssessmentSettingsResponseOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) MachineAssessmentSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MachineAssessmentSettingsResponse
+		return ret
+	}).(MachineAssessmentSettingsResponseOutput)
+}
+
+// The disk type for the assessment.
+func (o MachineAssessmentSettingsResponsePtrOutput) AzureDiskTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureDiskTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the user configurable setting to display the azure hybrid use
+// benefit.
+func (o MachineAssessmentSettingsResponsePtrOutput) AzureHybridUseBenefit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureHybridUseBenefit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o MachineAssessmentSettingsResponsePtrOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets Azure Pricing Tier - Free, Basic, etc.
+func (o MachineAssessmentSettingsResponsePtrOutput) AzurePricingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzurePricingTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The azure security offering type.
+func (o MachineAssessmentSettingsResponsePtrOutput) AzureSecurityOfferingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSecurityOfferingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
+func (o MachineAssessmentSettingsResponsePtrOutput) AzureStorageRedundancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureStorageRedundancy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure VM families.
+func (o MachineAssessmentSettingsResponsePtrOutput) AzureVmFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureVmFamilies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the billing settings.
+func (o MachineAssessmentSettingsResponsePtrOutput) BillingSettings() BillingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *BillingSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BillingSettings
+	}).(BillingSettingsResponsePtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o MachineAssessmentSettingsResponsePtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o MachineAssessmentSettingsResponsePtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o MachineAssessmentSettingsResponsePtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the user configurable setting to display the linux azure hybrid use
+// benefit.
+func (o MachineAssessmentSettingsResponsePtrOutput) LinuxAzureHybridUseBenefit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxAzureHybridUseBenefit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o MachineAssessmentSettingsResponsePtrOutput) PerformanceData() PerformanceDataResponsePtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *PerformanceDataResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceData
+	}).(PerformanceDataResponsePtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o MachineAssessmentSettingsResponsePtrOutput) SavingsSettings() SavingsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *SavingsSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SavingsSettings
+	}).(SavingsSettingsResponsePtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o MachineAssessmentSettingsResponsePtrOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o MachineAssessmentSettingsResponsePtrOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizingCriterion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the duration for which the VMs are up in the on-premises
+// environment.
+func (o MachineAssessmentSettingsResponsePtrOutput) VmUptime() VmUptimeResponsePtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *VmUptimeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.VmUptime
+	}).(VmUptimeResponsePtrOutput)
+}
+
+// Assessment properties class.
+type MachineAssessmentV2Properties struct {
+	// Gets or sets the scope of assessment.
+	Scope *Scope `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings *MachineAssessmentSettings `pulumi:"settings"`
+}
+
+// MachineAssessmentV2PropertiesInput is an input type that accepts MachineAssessmentV2PropertiesArgs and MachineAssessmentV2PropertiesOutput values.
+// You can construct a concrete instance of `MachineAssessmentV2PropertiesInput` via:
+//
+//	MachineAssessmentV2PropertiesArgs{...}
+type MachineAssessmentV2PropertiesInput interface {
+	pulumi.Input
+
+	ToMachineAssessmentV2PropertiesOutput() MachineAssessmentV2PropertiesOutput
+	ToMachineAssessmentV2PropertiesOutputWithContext(context.Context) MachineAssessmentV2PropertiesOutput
+}
+
+// Assessment properties class.
+type MachineAssessmentV2PropertiesArgs struct {
+	// Gets or sets the scope of assessment.
+	Scope ScopePtrInput `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings MachineAssessmentSettingsPtrInput `pulumi:"settings"`
+}
+
+func (MachineAssessmentV2PropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineAssessmentV2Properties)(nil)).Elem()
+}
+
+func (i MachineAssessmentV2PropertiesArgs) ToMachineAssessmentV2PropertiesOutput() MachineAssessmentV2PropertiesOutput {
+	return i.ToMachineAssessmentV2PropertiesOutputWithContext(context.Background())
+}
+
+func (i MachineAssessmentV2PropertiesArgs) ToMachineAssessmentV2PropertiesOutputWithContext(ctx context.Context) MachineAssessmentV2PropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineAssessmentV2PropertiesOutput)
+}
+
+func (i MachineAssessmentV2PropertiesArgs) ToMachineAssessmentV2PropertiesPtrOutput() MachineAssessmentV2PropertiesPtrOutput {
+	return i.ToMachineAssessmentV2PropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i MachineAssessmentV2PropertiesArgs) ToMachineAssessmentV2PropertiesPtrOutputWithContext(ctx context.Context) MachineAssessmentV2PropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineAssessmentV2PropertiesOutput).ToMachineAssessmentV2PropertiesPtrOutputWithContext(ctx)
+}
+
+// MachineAssessmentV2PropertiesPtrInput is an input type that accepts MachineAssessmentV2PropertiesArgs, MachineAssessmentV2PropertiesPtr and MachineAssessmentV2PropertiesPtrOutput values.
+// You can construct a concrete instance of `MachineAssessmentV2PropertiesPtrInput` via:
+//
+//	        MachineAssessmentV2PropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MachineAssessmentV2PropertiesPtrInput interface {
+	pulumi.Input
+
+	ToMachineAssessmentV2PropertiesPtrOutput() MachineAssessmentV2PropertiesPtrOutput
+	ToMachineAssessmentV2PropertiesPtrOutputWithContext(context.Context) MachineAssessmentV2PropertiesPtrOutput
+}
+
+type machineAssessmentV2PropertiesPtrType MachineAssessmentV2PropertiesArgs
+
+func MachineAssessmentV2PropertiesPtr(v *MachineAssessmentV2PropertiesArgs) MachineAssessmentV2PropertiesPtrInput {
+	return (*machineAssessmentV2PropertiesPtrType)(v)
+}
+
+func (*machineAssessmentV2PropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineAssessmentV2Properties)(nil)).Elem()
+}
+
+func (i *machineAssessmentV2PropertiesPtrType) ToMachineAssessmentV2PropertiesPtrOutput() MachineAssessmentV2PropertiesPtrOutput {
+	return i.ToMachineAssessmentV2PropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *machineAssessmentV2PropertiesPtrType) ToMachineAssessmentV2PropertiesPtrOutputWithContext(ctx context.Context) MachineAssessmentV2PropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineAssessmentV2PropertiesPtrOutput)
+}
+
+// Assessment properties class.
+type MachineAssessmentV2PropertiesOutput struct{ *pulumi.OutputState }
+
+func (MachineAssessmentV2PropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineAssessmentV2Properties)(nil)).Elem()
+}
+
+func (o MachineAssessmentV2PropertiesOutput) ToMachineAssessmentV2PropertiesOutput() MachineAssessmentV2PropertiesOutput {
+	return o
+}
+
+func (o MachineAssessmentV2PropertiesOutput) ToMachineAssessmentV2PropertiesOutputWithContext(ctx context.Context) MachineAssessmentV2PropertiesOutput {
+	return o
+}
+
+func (o MachineAssessmentV2PropertiesOutput) ToMachineAssessmentV2PropertiesPtrOutput() MachineAssessmentV2PropertiesPtrOutput {
+	return o.ToMachineAssessmentV2PropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o MachineAssessmentV2PropertiesOutput) ToMachineAssessmentV2PropertiesPtrOutputWithContext(ctx context.Context) MachineAssessmentV2PropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineAssessmentV2Properties) *MachineAssessmentV2Properties {
+		return &v
+	}).(MachineAssessmentV2PropertiesPtrOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o MachineAssessmentV2PropertiesOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v MachineAssessmentV2Properties) *Scope { return v.Scope }).(ScopePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o MachineAssessmentV2PropertiesOutput) Settings() MachineAssessmentSettingsPtrOutput {
+	return o.ApplyT(func(v MachineAssessmentV2Properties) *MachineAssessmentSettings { return v.Settings }).(MachineAssessmentSettingsPtrOutput)
+}
+
+type MachineAssessmentV2PropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MachineAssessmentV2PropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineAssessmentV2Properties)(nil)).Elem()
+}
+
+func (o MachineAssessmentV2PropertiesPtrOutput) ToMachineAssessmentV2PropertiesPtrOutput() MachineAssessmentV2PropertiesPtrOutput {
+	return o
+}
+
+func (o MachineAssessmentV2PropertiesPtrOutput) ToMachineAssessmentV2PropertiesPtrOutputWithContext(ctx context.Context) MachineAssessmentV2PropertiesPtrOutput {
+	return o
+}
+
+func (o MachineAssessmentV2PropertiesPtrOutput) Elem() MachineAssessmentV2PropertiesOutput {
+	return o.ApplyT(func(v *MachineAssessmentV2Properties) MachineAssessmentV2Properties {
+		if v != nil {
+			return *v
+		}
+		var ret MachineAssessmentV2Properties
+		return ret
+	}).(MachineAssessmentV2PropertiesOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o MachineAssessmentV2PropertiesPtrOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentV2Properties) *Scope {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(ScopePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o MachineAssessmentV2PropertiesPtrOutput) Settings() MachineAssessmentSettingsPtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentV2Properties) *MachineAssessmentSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(MachineAssessmentSettingsPtrOutput)
+}
+
+// Assessment properties class.
+type MachineAssessmentV2PropertiesResponse struct {
+	// Gets or sets the details of the assessment.
+	Details *AssessmentDetailsResponse `pulumi:"details"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Gets or sets the scope of assessment.
+	Scope *ScopeResponse `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings *MachineAssessmentSettingsResponse `pulumi:"settings"`
+}
+
+// Assessment properties class.
+type MachineAssessmentV2PropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MachineAssessmentV2PropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineAssessmentV2PropertiesResponse)(nil)).Elem()
+}
+
+func (o MachineAssessmentV2PropertiesResponseOutput) ToMachineAssessmentV2PropertiesResponseOutput() MachineAssessmentV2PropertiesResponseOutput {
+	return o
+}
+
+func (o MachineAssessmentV2PropertiesResponseOutput) ToMachineAssessmentV2PropertiesResponseOutputWithContext(ctx context.Context) MachineAssessmentV2PropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the details of the assessment.
+func (o MachineAssessmentV2PropertiesResponseOutput) Details() AssessmentDetailsResponsePtrOutput {
+	return o.ApplyT(func(v MachineAssessmentV2PropertiesResponse) *AssessmentDetailsResponse { return v.Details }).(AssessmentDetailsResponsePtrOutput)
+}
+
+// The status of the last operation.
+func (o MachineAssessmentV2PropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineAssessmentV2PropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o MachineAssessmentV2PropertiesResponseOutput) Scope() ScopeResponsePtrOutput {
+	return o.ApplyT(func(v MachineAssessmentV2PropertiesResponse) *ScopeResponse { return v.Scope }).(ScopeResponsePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o MachineAssessmentV2PropertiesResponseOutput) Settings() MachineAssessmentSettingsResponsePtrOutput {
+	return o.ApplyT(func(v MachineAssessmentV2PropertiesResponse) *MachineAssessmentSettingsResponse { return v.Settings }).(MachineAssessmentSettingsResponsePtrOutput)
 }
 
 type ManagedIdentityProperties struct {
@@ -25896,6 +29007,328 @@ func (o PerfDataSettingsResponsePtrOutput) TimeRange() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Performance data class.
+type PerformanceData struct {
+	// Percentile of the utilization data values to be considered while assessing
+	// machines.
+	Percentile *string `pulumi:"percentile"`
+	// Gets or sets the end time to consider performance data for assessment.
+	PerfDataEndTime *string `pulumi:"perfDataEndTime"`
+	// Gets or sets the start time to consider performance data for assessment.
+	PerfDataStartTime *string `pulumi:"perfDataStartTime"`
+	// Time Range for which the historic utilization data should be considered for
+	// assessment.
+	TimeRange *string `pulumi:"timeRange"`
+}
+
+// PerformanceDataInput is an input type that accepts PerformanceDataArgs and PerformanceDataOutput values.
+// You can construct a concrete instance of `PerformanceDataInput` via:
+//
+//	PerformanceDataArgs{...}
+type PerformanceDataInput interface {
+	pulumi.Input
+
+	ToPerformanceDataOutput() PerformanceDataOutput
+	ToPerformanceDataOutputWithContext(context.Context) PerformanceDataOutput
+}
+
+// Performance data class.
+type PerformanceDataArgs struct {
+	// Percentile of the utilization data values to be considered while assessing
+	// machines.
+	Percentile pulumi.StringPtrInput `pulumi:"percentile"`
+	// Gets or sets the end time to consider performance data for assessment.
+	PerfDataEndTime pulumi.StringPtrInput `pulumi:"perfDataEndTime"`
+	// Gets or sets the start time to consider performance data for assessment.
+	PerfDataStartTime pulumi.StringPtrInput `pulumi:"perfDataStartTime"`
+	// Time Range for which the historic utilization data should be considered for
+	// assessment.
+	TimeRange pulumi.StringPtrInput `pulumi:"timeRange"`
+}
+
+func (PerformanceDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerformanceData)(nil)).Elem()
+}
+
+func (i PerformanceDataArgs) ToPerformanceDataOutput() PerformanceDataOutput {
+	return i.ToPerformanceDataOutputWithContext(context.Background())
+}
+
+func (i PerformanceDataArgs) ToPerformanceDataOutputWithContext(ctx context.Context) PerformanceDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerformanceDataOutput)
+}
+
+func (i PerformanceDataArgs) ToPerformanceDataPtrOutput() PerformanceDataPtrOutput {
+	return i.ToPerformanceDataPtrOutputWithContext(context.Background())
+}
+
+func (i PerformanceDataArgs) ToPerformanceDataPtrOutputWithContext(ctx context.Context) PerformanceDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerformanceDataOutput).ToPerformanceDataPtrOutputWithContext(ctx)
+}
+
+// PerformanceDataPtrInput is an input type that accepts PerformanceDataArgs, PerformanceDataPtr and PerformanceDataPtrOutput values.
+// You can construct a concrete instance of `PerformanceDataPtrInput` via:
+//
+//	        PerformanceDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type PerformanceDataPtrInput interface {
+	pulumi.Input
+
+	ToPerformanceDataPtrOutput() PerformanceDataPtrOutput
+	ToPerformanceDataPtrOutputWithContext(context.Context) PerformanceDataPtrOutput
+}
+
+type performanceDataPtrType PerformanceDataArgs
+
+func PerformanceDataPtr(v *PerformanceDataArgs) PerformanceDataPtrInput {
+	return (*performanceDataPtrType)(v)
+}
+
+func (*performanceDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerformanceData)(nil)).Elem()
+}
+
+func (i *performanceDataPtrType) ToPerformanceDataPtrOutput() PerformanceDataPtrOutput {
+	return i.ToPerformanceDataPtrOutputWithContext(context.Background())
+}
+
+func (i *performanceDataPtrType) ToPerformanceDataPtrOutputWithContext(ctx context.Context) PerformanceDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerformanceDataPtrOutput)
+}
+
+// Performance data class.
+type PerformanceDataOutput struct{ *pulumi.OutputState }
+
+func (PerformanceDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerformanceData)(nil)).Elem()
+}
+
+func (o PerformanceDataOutput) ToPerformanceDataOutput() PerformanceDataOutput {
+	return o
+}
+
+func (o PerformanceDataOutput) ToPerformanceDataOutputWithContext(ctx context.Context) PerformanceDataOutput {
+	return o
+}
+
+func (o PerformanceDataOutput) ToPerformanceDataPtrOutput() PerformanceDataPtrOutput {
+	return o.ToPerformanceDataPtrOutputWithContext(context.Background())
+}
+
+func (o PerformanceDataOutput) ToPerformanceDataPtrOutputWithContext(ctx context.Context) PerformanceDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PerformanceData) *PerformanceData {
+		return &v
+	}).(PerformanceDataPtrOutput)
+}
+
+// Percentile of the utilization data values to be considered while assessing
+// machines.
+func (o PerformanceDataOutput) Percentile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PerformanceData) *string { return v.Percentile }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the end time to consider performance data for assessment.
+func (o PerformanceDataOutput) PerfDataEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PerformanceData) *string { return v.PerfDataEndTime }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the start time to consider performance data for assessment.
+func (o PerformanceDataOutput) PerfDataStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PerformanceData) *string { return v.PerfDataStartTime }).(pulumi.StringPtrOutput)
+}
+
+// Time Range for which the historic utilization data should be considered for
+// assessment.
+func (o PerformanceDataOutput) TimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PerformanceData) *string { return v.TimeRange }).(pulumi.StringPtrOutput)
+}
+
+type PerformanceDataPtrOutput struct{ *pulumi.OutputState }
+
+func (PerformanceDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerformanceData)(nil)).Elem()
+}
+
+func (o PerformanceDataPtrOutput) ToPerformanceDataPtrOutput() PerformanceDataPtrOutput {
+	return o
+}
+
+func (o PerformanceDataPtrOutput) ToPerformanceDataPtrOutputWithContext(ctx context.Context) PerformanceDataPtrOutput {
+	return o
+}
+
+func (o PerformanceDataPtrOutput) Elem() PerformanceDataOutput {
+	return o.ApplyT(func(v *PerformanceData) PerformanceData {
+		if v != nil {
+			return *v
+		}
+		var ret PerformanceData
+		return ret
+	}).(PerformanceDataOutput)
+}
+
+// Percentile of the utilization data values to be considered while assessing
+// machines.
+func (o PerformanceDataPtrOutput) Percentile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PerformanceData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Percentile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the end time to consider performance data for assessment.
+func (o PerformanceDataPtrOutput) PerfDataEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PerformanceData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfDataEndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the start time to consider performance data for assessment.
+func (o PerformanceDataPtrOutput) PerfDataStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PerformanceData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfDataStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time Range for which the historic utilization data should be considered for
+// assessment.
+func (o PerformanceDataPtrOutput) TimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PerformanceData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeRange
+	}).(pulumi.StringPtrOutput)
+}
+
+// Performance data class.
+type PerformanceDataResponse struct {
+	// Percentile of the utilization data values to be considered while assessing
+	// machines.
+	Percentile *string `pulumi:"percentile"`
+	// Gets or sets the end time to consider performance data for assessment.
+	PerfDataEndTime *string `pulumi:"perfDataEndTime"`
+	// Gets or sets the start time to consider performance data for assessment.
+	PerfDataStartTime *string `pulumi:"perfDataStartTime"`
+	// Time Range for which the historic utilization data should be considered for
+	// assessment.
+	TimeRange *string `pulumi:"timeRange"`
+}
+
+// Performance data class.
+type PerformanceDataResponseOutput struct{ *pulumi.OutputState }
+
+func (PerformanceDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerformanceDataResponse)(nil)).Elem()
+}
+
+func (o PerformanceDataResponseOutput) ToPerformanceDataResponseOutput() PerformanceDataResponseOutput {
+	return o
+}
+
+func (o PerformanceDataResponseOutput) ToPerformanceDataResponseOutputWithContext(ctx context.Context) PerformanceDataResponseOutput {
+	return o
+}
+
+// Percentile of the utilization data values to be considered while assessing
+// machines.
+func (o PerformanceDataResponseOutput) Percentile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PerformanceDataResponse) *string { return v.Percentile }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the end time to consider performance data for assessment.
+func (o PerformanceDataResponseOutput) PerfDataEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PerformanceDataResponse) *string { return v.PerfDataEndTime }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the start time to consider performance data for assessment.
+func (o PerformanceDataResponseOutput) PerfDataStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PerformanceDataResponse) *string { return v.PerfDataStartTime }).(pulumi.StringPtrOutput)
+}
+
+// Time Range for which the historic utilization data should be considered for
+// assessment.
+func (o PerformanceDataResponseOutput) TimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PerformanceDataResponse) *string { return v.TimeRange }).(pulumi.StringPtrOutput)
+}
+
+type PerformanceDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PerformanceDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerformanceDataResponse)(nil)).Elem()
+}
+
+func (o PerformanceDataResponsePtrOutput) ToPerformanceDataResponsePtrOutput() PerformanceDataResponsePtrOutput {
+	return o
+}
+
+func (o PerformanceDataResponsePtrOutput) ToPerformanceDataResponsePtrOutputWithContext(ctx context.Context) PerformanceDataResponsePtrOutput {
+	return o
+}
+
+func (o PerformanceDataResponsePtrOutput) Elem() PerformanceDataResponseOutput {
+	return o.ApplyT(func(v *PerformanceDataResponse) PerformanceDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PerformanceDataResponse
+		return ret
+	}).(PerformanceDataResponseOutput)
+}
+
+// Percentile of the utilization data values to be considered while assessing
+// machines.
+func (o PerformanceDataResponsePtrOutput) Percentile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PerformanceDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Percentile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the end time to consider performance data for assessment.
+func (o PerformanceDataResponsePtrOutput) PerfDataEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PerformanceDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfDataEndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the start time to consider performance data for assessment.
+func (o PerformanceDataResponsePtrOutput) PerfDataStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PerformanceDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerfDataStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time Range for which the historic utilization data should be considered for
+// assessment.
+func (o PerformanceDataResponsePtrOutput) TimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PerformanceDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeRange
+	}).(pulumi.StringPtrOutput)
+}
+
 // WebApplication port mapping.
 type PortMapping struct {
 	// Gets or sets the External Port.
@@ -28648,6 +32081,514 @@ func (o ResourceRequirementsResponsePtrOutput) Memory() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Savings settings class.
+type SavingsSettings struct {
+	// Gets or sets the Azure offer code.
+	AzureOfferCode *string `pulumi:"azureOfferCode"`
+	// Gets or sets the savings options.
+	SavingsOptions *string `pulumi:"savingsOptions"`
+}
+
+// SavingsSettingsInput is an input type that accepts SavingsSettingsArgs and SavingsSettingsOutput values.
+// You can construct a concrete instance of `SavingsSettingsInput` via:
+//
+//	SavingsSettingsArgs{...}
+type SavingsSettingsInput interface {
+	pulumi.Input
+
+	ToSavingsSettingsOutput() SavingsSettingsOutput
+	ToSavingsSettingsOutputWithContext(context.Context) SavingsSettingsOutput
+}
+
+// Savings settings class.
+type SavingsSettingsArgs struct {
+	// Gets or sets the Azure offer code.
+	AzureOfferCode pulumi.StringPtrInput `pulumi:"azureOfferCode"`
+	// Gets or sets the savings options.
+	SavingsOptions pulumi.StringPtrInput `pulumi:"savingsOptions"`
+}
+
+func (SavingsSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavingsSettings)(nil)).Elem()
+}
+
+func (i SavingsSettingsArgs) ToSavingsSettingsOutput() SavingsSettingsOutput {
+	return i.ToSavingsSettingsOutputWithContext(context.Background())
+}
+
+func (i SavingsSettingsArgs) ToSavingsSettingsOutputWithContext(ctx context.Context) SavingsSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavingsSettingsOutput)
+}
+
+func (i SavingsSettingsArgs) ToSavingsSettingsPtrOutput() SavingsSettingsPtrOutput {
+	return i.ToSavingsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SavingsSettingsArgs) ToSavingsSettingsPtrOutputWithContext(ctx context.Context) SavingsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavingsSettingsOutput).ToSavingsSettingsPtrOutputWithContext(ctx)
+}
+
+// SavingsSettingsPtrInput is an input type that accepts SavingsSettingsArgs, SavingsSettingsPtr and SavingsSettingsPtrOutput values.
+// You can construct a concrete instance of `SavingsSettingsPtrInput` via:
+//
+//	        SavingsSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SavingsSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSavingsSettingsPtrOutput() SavingsSettingsPtrOutput
+	ToSavingsSettingsPtrOutputWithContext(context.Context) SavingsSettingsPtrOutput
+}
+
+type savingsSettingsPtrType SavingsSettingsArgs
+
+func SavingsSettingsPtr(v *SavingsSettingsArgs) SavingsSettingsPtrInput {
+	return (*savingsSettingsPtrType)(v)
+}
+
+func (*savingsSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SavingsSettings)(nil)).Elem()
+}
+
+func (i *savingsSettingsPtrType) ToSavingsSettingsPtrOutput() SavingsSettingsPtrOutput {
+	return i.ToSavingsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *savingsSettingsPtrType) ToSavingsSettingsPtrOutputWithContext(ctx context.Context) SavingsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavingsSettingsPtrOutput)
+}
+
+// Savings settings class.
+type SavingsSettingsOutput struct{ *pulumi.OutputState }
+
+func (SavingsSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavingsSettings)(nil)).Elem()
+}
+
+func (o SavingsSettingsOutput) ToSavingsSettingsOutput() SavingsSettingsOutput {
+	return o
+}
+
+func (o SavingsSettingsOutput) ToSavingsSettingsOutputWithContext(ctx context.Context) SavingsSettingsOutput {
+	return o
+}
+
+func (o SavingsSettingsOutput) ToSavingsSettingsPtrOutput() SavingsSettingsPtrOutput {
+	return o.ToSavingsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SavingsSettingsOutput) ToSavingsSettingsPtrOutputWithContext(ctx context.Context) SavingsSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SavingsSettings) *SavingsSettings {
+		return &v
+	}).(SavingsSettingsPtrOutput)
+}
+
+// Gets or sets the Azure offer code.
+func (o SavingsSettingsOutput) AzureOfferCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SavingsSettings) *string { return v.AzureOfferCode }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the savings options.
+func (o SavingsSettingsOutput) SavingsOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SavingsSettings) *string { return v.SavingsOptions }).(pulumi.StringPtrOutput)
+}
+
+type SavingsSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SavingsSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SavingsSettings)(nil)).Elem()
+}
+
+func (o SavingsSettingsPtrOutput) ToSavingsSettingsPtrOutput() SavingsSettingsPtrOutput {
+	return o
+}
+
+func (o SavingsSettingsPtrOutput) ToSavingsSettingsPtrOutputWithContext(ctx context.Context) SavingsSettingsPtrOutput {
+	return o
+}
+
+func (o SavingsSettingsPtrOutput) Elem() SavingsSettingsOutput {
+	return o.ApplyT(func(v *SavingsSettings) SavingsSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SavingsSettings
+		return ret
+	}).(SavingsSettingsOutput)
+}
+
+// Gets or sets the Azure offer code.
+func (o SavingsSettingsPtrOutput) AzureOfferCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SavingsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureOfferCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the savings options.
+func (o SavingsSettingsPtrOutput) SavingsOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SavingsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SavingsOptions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Savings settings class.
+type SavingsSettingsResponse struct {
+	// Gets or sets the Azure offer code.
+	AzureOfferCode *string `pulumi:"azureOfferCode"`
+	// Gets or sets the savings options.
+	SavingsOptions *string `pulumi:"savingsOptions"`
+}
+
+// Savings settings class.
+type SavingsSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SavingsSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavingsSettingsResponse)(nil)).Elem()
+}
+
+func (o SavingsSettingsResponseOutput) ToSavingsSettingsResponseOutput() SavingsSettingsResponseOutput {
+	return o
+}
+
+func (o SavingsSettingsResponseOutput) ToSavingsSettingsResponseOutputWithContext(ctx context.Context) SavingsSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets the Azure offer code.
+func (o SavingsSettingsResponseOutput) AzureOfferCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SavingsSettingsResponse) *string { return v.AzureOfferCode }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the savings options.
+func (o SavingsSettingsResponseOutput) SavingsOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SavingsSettingsResponse) *string { return v.SavingsOptions }).(pulumi.StringPtrOutput)
+}
+
+type SavingsSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SavingsSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SavingsSettingsResponse)(nil)).Elem()
+}
+
+func (o SavingsSettingsResponsePtrOutput) ToSavingsSettingsResponsePtrOutput() SavingsSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SavingsSettingsResponsePtrOutput) ToSavingsSettingsResponsePtrOutputWithContext(ctx context.Context) SavingsSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SavingsSettingsResponsePtrOutput) Elem() SavingsSettingsResponseOutput {
+	return o.ApplyT(func(v *SavingsSettingsResponse) SavingsSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SavingsSettingsResponse
+		return ret
+	}).(SavingsSettingsResponseOutput)
+}
+
+// Gets or sets the Azure offer code.
+func (o SavingsSettingsResponsePtrOutput) AzureOfferCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SavingsSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureOfferCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the savings options.
+func (o SavingsSettingsResponsePtrOutput) SavingsOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SavingsSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SavingsOptions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scope of the assessment.
+type Scope struct {
+	// The ARG query.
+	AzureResourceGraphQuery *string `pulumi:"azureResourceGraphQuery"`
+	// The scope type
+	ScopeType *string `pulumi:"scopeType"`
+	// The server group arm id.
+	ServerGroupId *string `pulumi:"serverGroupId"`
+}
+
+// ScopeInput is an input type that accepts ScopeArgs and ScopeOutput values.
+// You can construct a concrete instance of `ScopeInput` via:
+//
+//	ScopeArgs{...}
+type ScopeInput interface {
+	pulumi.Input
+
+	ToScopeOutput() ScopeOutput
+	ToScopeOutputWithContext(context.Context) ScopeOutput
+}
+
+// Scope of the assessment.
+type ScopeArgs struct {
+	// The ARG query.
+	AzureResourceGraphQuery pulumi.StringPtrInput `pulumi:"azureResourceGraphQuery"`
+	// The scope type
+	ScopeType pulumi.StringPtrInput `pulumi:"scopeType"`
+	// The server group arm id.
+	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
+}
+
+func (ScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Scope)(nil)).Elem()
+}
+
+func (i ScopeArgs) ToScopeOutput() ScopeOutput {
+	return i.ToScopeOutputWithContext(context.Background())
+}
+
+func (i ScopeArgs) ToScopeOutputWithContext(ctx context.Context) ScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeOutput)
+}
+
+func (i ScopeArgs) ToScopePtrOutput() ScopePtrOutput {
+	return i.ToScopePtrOutputWithContext(context.Background())
+}
+
+func (i ScopeArgs) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeOutput).ToScopePtrOutputWithContext(ctx)
+}
+
+// ScopePtrInput is an input type that accepts ScopeArgs, ScopePtr and ScopePtrOutput values.
+// You can construct a concrete instance of `ScopePtrInput` via:
+//
+//	        ScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScopePtrInput interface {
+	pulumi.Input
+
+	ToScopePtrOutput() ScopePtrOutput
+	ToScopePtrOutputWithContext(context.Context) ScopePtrOutput
+}
+
+type scopePtrType ScopeArgs
+
+func ScopePtr(v *ScopeArgs) ScopePtrInput {
+	return (*scopePtrType)(v)
+}
+
+func (*scopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Scope)(nil)).Elem()
+}
+
+func (i *scopePtrType) ToScopePtrOutput() ScopePtrOutput {
+	return i.ToScopePtrOutputWithContext(context.Background())
+}
+
+func (i *scopePtrType) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopePtrOutput)
+}
+
+// Scope of the assessment.
+type ScopeOutput struct{ *pulumi.OutputState }
+
+func (ScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Scope)(nil)).Elem()
+}
+
+func (o ScopeOutput) ToScopeOutput() ScopeOutput {
+	return o
+}
+
+func (o ScopeOutput) ToScopeOutputWithContext(ctx context.Context) ScopeOutput {
+	return o
+}
+
+func (o ScopeOutput) ToScopePtrOutput() ScopePtrOutput {
+	return o.ToScopePtrOutputWithContext(context.Background())
+}
+
+func (o ScopeOutput) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Scope) *Scope {
+		return &v
+	}).(ScopePtrOutput)
+}
+
+// The ARG query.
+func (o ScopeOutput) AzureResourceGraphQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Scope) *string { return v.AzureResourceGraphQuery }).(pulumi.StringPtrOutput)
+}
+
+// The scope type
+func (o ScopeOutput) ScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Scope) *string { return v.ScopeType }).(pulumi.StringPtrOutput)
+}
+
+// The server group arm id.
+func (o ScopeOutput) ServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Scope) *string { return v.ServerGroupId }).(pulumi.StringPtrOutput)
+}
+
+type ScopePtrOutput struct{ *pulumi.OutputState }
+
+func (ScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Scope)(nil)).Elem()
+}
+
+func (o ScopePtrOutput) ToScopePtrOutput() ScopePtrOutput {
+	return o
+}
+
+func (o ScopePtrOutput) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOutput {
+	return o
+}
+
+func (o ScopePtrOutput) Elem() ScopeOutput {
+	return o.ApplyT(func(v *Scope) Scope {
+		if v != nil {
+			return *v
+		}
+		var ret Scope
+		return ret
+	}).(ScopeOutput)
+}
+
+// The ARG query.
+func (o ScopePtrOutput) AzureResourceGraphQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Scope) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureResourceGraphQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+// The scope type
+func (o ScopePtrOutput) ScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Scope) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScopeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The server group arm id.
+func (o ScopePtrOutput) ServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Scope) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scope of the assessment.
+type ScopeResponse struct {
+	// The ARG query.
+	AzureResourceGraphQuery *string `pulumi:"azureResourceGraphQuery"`
+	// The scope type
+	ScopeType *string `pulumi:"scopeType"`
+	// The server group arm id.
+	ServerGroupId *string `pulumi:"serverGroupId"`
+}
+
+// Scope of the assessment.
+type ScopeResponseOutput struct{ *pulumi.OutputState }
+
+func (ScopeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeResponse)(nil)).Elem()
+}
+
+func (o ScopeResponseOutput) ToScopeResponseOutput() ScopeResponseOutput {
+	return o
+}
+
+func (o ScopeResponseOutput) ToScopeResponseOutputWithContext(ctx context.Context) ScopeResponseOutput {
+	return o
+}
+
+// The ARG query.
+func (o ScopeResponseOutput) AzureResourceGraphQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScopeResponse) *string { return v.AzureResourceGraphQuery }).(pulumi.StringPtrOutput)
+}
+
+// The scope type
+func (o ScopeResponseOutput) ScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScopeResponse) *string { return v.ScopeType }).(pulumi.StringPtrOutput)
+}
+
+// The server group arm id.
+func (o ScopeResponseOutput) ServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScopeResponse) *string { return v.ServerGroupId }).(pulumi.StringPtrOutput)
+}
+
+type ScopeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ScopeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScopeResponse)(nil)).Elem()
+}
+
+func (o ScopeResponsePtrOutput) ToScopeResponsePtrOutput() ScopeResponsePtrOutput {
+	return o
+}
+
+func (o ScopeResponsePtrOutput) ToScopeResponsePtrOutputWithContext(ctx context.Context) ScopeResponsePtrOutput {
+	return o
+}
+
+func (o ScopeResponsePtrOutput) Elem() ScopeResponseOutput {
+	return o.ApplyT(func(v *ScopeResponse) ScopeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScopeResponse
+		return ret
+	}).(ScopeResponseOutput)
+}
+
+// The ARG query.
+func (o ScopeResponsePtrOutput) AzureResourceGraphQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureResourceGraphQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+// The scope type
+func (o ScopeResponsePtrOutput) ScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScopeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The server group arm id.
+func (o ScopeResponsePtrOutput) ServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecretStoreDetails struct {
 	SecretStore           *string                `pulumi:"secretStore"`
 	SecretStoreProperties *SecretStoreProperties `pulumi:"secretStoreProperties"`
@@ -30413,6 +34354,1217 @@ func (o SolutionPropertiesResponseOutput) Tool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SolutionPropertiesResponse) *string { return v.Tool }).(pulumi.StringPtrOutput)
 }
 
+// SQL assessment settings class.
+type SqlAssessmentSettings struct {
+	// Gets or sets user preference indicating intent of async commit mode.
+	AsyncCommitModeIntent *string `pulumi:"asyncCommitModeIntent"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation *string `pulumi:"azureLocation"`
+	// Gets or sets a value indicating azure security offering type.
+	AzureSecurityOfferingType *string `pulumi:"azureSecurityOfferingType"`
+	// Gets or sets user configurable SQL database settings.
+	AzureSqlDatabaseSettings *SqlDbSettingsV3 `pulumi:"azureSqlDatabaseSettings"`
+	// Gets or sets user configurable SQL managed instance settings.
+	AzureSqlManagedInstanceSettings *SqlMiSettingsV3 `pulumi:"azureSqlManagedInstanceSettings"`
+	// Gets or sets user configurable SQL VM settings.
+	AzureSqlVmSettings *SqlVmSettings `pulumi:"azureSqlVmSettings"`
+	// Gets or sets the billing settings.
+	BillingSettings *BillingSettings `pulumi:"billingSettings"`
+	// Currency in which prices should be reported.
+	Currency *string `pulumi:"currency"`
+	// Gets or sets the Azure Location or Azure region where to which the machines
+	// will be migrated.
+	DisasterRecoveryLocation *string `pulumi:"disasterRecoveryLocation"`
+	// Custom discount percentage.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Gets or sets a value indicating whether HADR assessments needs to be created.
+	EnableHadrAssessment *bool `pulumi:"enableHadrAssessment"`
+	// Gets or sets the duration for which the entity (SQL, VMs) are up in the
+	// on-premises environment.
+	EntityUptime *EntityUptime `pulumi:"entityUptime"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType *string `pulumi:"environmentType"`
+	// Gets or sets a value indicating whether internet access is available.
+	IsInternetAccessAvailable *bool `pulumi:"isInternetAccessAvailable"`
+	// Gets or sets user preference indicating intent of multi-subnet configuration.
+	MultiSubnetIntent *string `pulumi:"multiSubnetIntent"`
+	// Gets or sets user configurable setting to display the azure hybrid use benefit.
+	OsLicense *string `pulumi:"osLicense"`
+	// Gets or sets the performance data.
+	PerformanceData *PerformanceData `pulumi:"performanceData"`
+	// Gets or sets SQL the preferred azure targets.
+	PreferredTargets []string `pulumi:"preferredTargets"`
+	// Gets or sets the savings settings.
+	SavingsSettings *SavingsSettings `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor *float64 `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion *string `pulumi:"sizingCriterion"`
+	// SQL server license.
+	SqlServerLicense *string `pulumi:"sqlServerLicense"`
+}
+
+// SqlAssessmentSettingsInput is an input type that accepts SqlAssessmentSettingsArgs and SqlAssessmentSettingsOutput values.
+// You can construct a concrete instance of `SqlAssessmentSettingsInput` via:
+//
+//	SqlAssessmentSettingsArgs{...}
+type SqlAssessmentSettingsInput interface {
+	pulumi.Input
+
+	ToSqlAssessmentSettingsOutput() SqlAssessmentSettingsOutput
+	ToSqlAssessmentSettingsOutputWithContext(context.Context) SqlAssessmentSettingsOutput
+}
+
+// SQL assessment settings class.
+type SqlAssessmentSettingsArgs struct {
+	// Gets or sets user preference indicating intent of async commit mode.
+	AsyncCommitModeIntent pulumi.StringPtrInput `pulumi:"asyncCommitModeIntent"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation pulumi.StringPtrInput `pulumi:"azureLocation"`
+	// Gets or sets a value indicating azure security offering type.
+	AzureSecurityOfferingType pulumi.StringPtrInput `pulumi:"azureSecurityOfferingType"`
+	// Gets or sets user configurable SQL database settings.
+	AzureSqlDatabaseSettings SqlDbSettingsV3PtrInput `pulumi:"azureSqlDatabaseSettings"`
+	// Gets or sets user configurable SQL managed instance settings.
+	AzureSqlManagedInstanceSettings SqlMiSettingsV3PtrInput `pulumi:"azureSqlManagedInstanceSettings"`
+	// Gets or sets user configurable SQL VM settings.
+	AzureSqlVmSettings SqlVmSettingsPtrInput `pulumi:"azureSqlVmSettings"`
+	// Gets or sets the billing settings.
+	BillingSettings BillingSettingsPtrInput `pulumi:"billingSettings"`
+	// Currency in which prices should be reported.
+	Currency pulumi.StringPtrInput `pulumi:"currency"`
+	// Gets or sets the Azure Location or Azure region where to which the machines
+	// will be migrated.
+	DisasterRecoveryLocation pulumi.StringPtrInput `pulumi:"disasterRecoveryLocation"`
+	// Custom discount percentage.
+	DiscountPercentage pulumi.Float64PtrInput `pulumi:"discountPercentage"`
+	// Gets or sets a value indicating whether HADR assessments needs to be created.
+	EnableHadrAssessment pulumi.BoolPtrInput `pulumi:"enableHadrAssessment"`
+	// Gets or sets the duration for which the entity (SQL, VMs) are up in the
+	// on-premises environment.
+	EntityUptime EntityUptimePtrInput `pulumi:"entityUptime"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType pulumi.StringPtrInput `pulumi:"environmentType"`
+	// Gets or sets a value indicating whether internet access is available.
+	IsInternetAccessAvailable pulumi.BoolPtrInput `pulumi:"isInternetAccessAvailable"`
+	// Gets or sets user preference indicating intent of multi-subnet configuration.
+	MultiSubnetIntent pulumi.StringPtrInput `pulumi:"multiSubnetIntent"`
+	// Gets or sets user configurable setting to display the azure hybrid use benefit.
+	OsLicense pulumi.StringPtrInput `pulumi:"osLicense"`
+	// Gets or sets the performance data.
+	PerformanceData PerformanceDataPtrInput `pulumi:"performanceData"`
+	// Gets or sets SQL the preferred azure targets.
+	PreferredTargets pulumi.StringArrayInput `pulumi:"preferredTargets"`
+	// Gets or sets the savings settings.
+	SavingsSettings SavingsSettingsPtrInput `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor pulumi.Float64PtrInput `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion pulumi.StringPtrInput `pulumi:"sizingCriterion"`
+	// SQL server license.
+	SqlServerLicense pulumi.StringPtrInput `pulumi:"sqlServerLicense"`
+}
+
+func (SqlAssessmentSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAssessmentSettings)(nil)).Elem()
+}
+
+func (i SqlAssessmentSettingsArgs) ToSqlAssessmentSettingsOutput() SqlAssessmentSettingsOutput {
+	return i.ToSqlAssessmentSettingsOutputWithContext(context.Background())
+}
+
+func (i SqlAssessmentSettingsArgs) ToSqlAssessmentSettingsOutputWithContext(ctx context.Context) SqlAssessmentSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAssessmentSettingsOutput)
+}
+
+func (i SqlAssessmentSettingsArgs) ToSqlAssessmentSettingsPtrOutput() SqlAssessmentSettingsPtrOutput {
+	return i.ToSqlAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SqlAssessmentSettingsArgs) ToSqlAssessmentSettingsPtrOutputWithContext(ctx context.Context) SqlAssessmentSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAssessmentSettingsOutput).ToSqlAssessmentSettingsPtrOutputWithContext(ctx)
+}
+
+// SqlAssessmentSettingsPtrInput is an input type that accepts SqlAssessmentSettingsArgs, SqlAssessmentSettingsPtr and SqlAssessmentSettingsPtrOutput values.
+// You can construct a concrete instance of `SqlAssessmentSettingsPtrInput` via:
+//
+//	        SqlAssessmentSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlAssessmentSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSqlAssessmentSettingsPtrOutput() SqlAssessmentSettingsPtrOutput
+	ToSqlAssessmentSettingsPtrOutputWithContext(context.Context) SqlAssessmentSettingsPtrOutput
+}
+
+type sqlAssessmentSettingsPtrType SqlAssessmentSettingsArgs
+
+func SqlAssessmentSettingsPtr(v *SqlAssessmentSettingsArgs) SqlAssessmentSettingsPtrInput {
+	return (*sqlAssessmentSettingsPtrType)(v)
+}
+
+func (*sqlAssessmentSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAssessmentSettings)(nil)).Elem()
+}
+
+func (i *sqlAssessmentSettingsPtrType) ToSqlAssessmentSettingsPtrOutput() SqlAssessmentSettingsPtrOutput {
+	return i.ToSqlAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlAssessmentSettingsPtrType) ToSqlAssessmentSettingsPtrOutputWithContext(ctx context.Context) SqlAssessmentSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAssessmentSettingsPtrOutput)
+}
+
+// SQL assessment settings class.
+type SqlAssessmentSettingsOutput struct{ *pulumi.OutputState }
+
+func (SqlAssessmentSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAssessmentSettings)(nil)).Elem()
+}
+
+func (o SqlAssessmentSettingsOutput) ToSqlAssessmentSettingsOutput() SqlAssessmentSettingsOutput {
+	return o
+}
+
+func (o SqlAssessmentSettingsOutput) ToSqlAssessmentSettingsOutputWithContext(ctx context.Context) SqlAssessmentSettingsOutput {
+	return o
+}
+
+func (o SqlAssessmentSettingsOutput) ToSqlAssessmentSettingsPtrOutput() SqlAssessmentSettingsPtrOutput {
+	return o.ToSqlAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SqlAssessmentSettingsOutput) ToSqlAssessmentSettingsPtrOutputWithContext(ctx context.Context) SqlAssessmentSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlAssessmentSettings) *SqlAssessmentSettings {
+		return &v
+	}).(SqlAssessmentSettingsPtrOutput)
+}
+
+// Gets or sets user preference indicating intent of async commit mode.
+func (o SqlAssessmentSettingsOutput) AsyncCommitModeIntent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *string { return v.AsyncCommitModeIntent }).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o SqlAssessmentSettingsOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *string { return v.AzureLocation }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a value indicating azure security offering type.
+func (o SqlAssessmentSettingsOutput) AzureSecurityOfferingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *string { return v.AzureSecurityOfferingType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user configurable SQL database settings.
+func (o SqlAssessmentSettingsOutput) AzureSqlDatabaseSettings() SqlDbSettingsV3PtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *SqlDbSettingsV3 { return v.AzureSqlDatabaseSettings }).(SqlDbSettingsV3PtrOutput)
+}
+
+// Gets or sets user configurable SQL managed instance settings.
+func (o SqlAssessmentSettingsOutput) AzureSqlManagedInstanceSettings() SqlMiSettingsV3PtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *SqlMiSettingsV3 { return v.AzureSqlManagedInstanceSettings }).(SqlMiSettingsV3PtrOutput)
+}
+
+// Gets or sets user configurable SQL VM settings.
+func (o SqlAssessmentSettingsOutput) AzureSqlVmSettings() SqlVmSettingsPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *SqlVmSettings { return v.AzureSqlVmSettings }).(SqlVmSettingsPtrOutput)
+}
+
+// Gets or sets the billing settings.
+func (o SqlAssessmentSettingsOutput) BillingSettings() BillingSettingsPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *BillingSettings { return v.BillingSettings }).(BillingSettingsPtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o SqlAssessmentSettingsOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure Location or Azure region where to which the machines
+// will be migrated.
+func (o SqlAssessmentSettingsOutput) DisasterRecoveryLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *string { return v.DisasterRecoveryLocation }).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o SqlAssessmentSettingsOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets a value indicating whether HADR assessments needs to be created.
+func (o SqlAssessmentSettingsOutput) EnableHadrAssessment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *bool { return v.EnableHadrAssessment }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the duration for which the entity (SQL, VMs) are up in the
+// on-premises environment.
+func (o SqlAssessmentSettingsOutput) EntityUptime() EntityUptimePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *EntityUptime { return v.EntityUptime }).(EntityUptimePtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o SqlAssessmentSettingsOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *string { return v.EnvironmentType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a value indicating whether internet access is available.
+func (o SqlAssessmentSettingsOutput) IsInternetAccessAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *bool { return v.IsInternetAccessAvailable }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets user preference indicating intent of multi-subnet configuration.
+func (o SqlAssessmentSettingsOutput) MultiSubnetIntent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *string { return v.MultiSubnetIntent }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user configurable setting to display the azure hybrid use benefit.
+func (o SqlAssessmentSettingsOutput) OsLicense() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *string { return v.OsLicense }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o SqlAssessmentSettingsOutput) PerformanceData() PerformanceDataPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *PerformanceData { return v.PerformanceData }).(PerformanceDataPtrOutput)
+}
+
+// Gets or sets SQL the preferred azure targets.
+func (o SqlAssessmentSettingsOutput) PreferredTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) []string { return v.PreferredTargets }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the savings settings.
+func (o SqlAssessmentSettingsOutput) SavingsSettings() SavingsSettingsPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *SavingsSettings { return v.SavingsSettings }).(SavingsSettingsPtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o SqlAssessmentSettingsOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *float64 { return v.ScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o SqlAssessmentSettingsOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *string { return v.SizingCriterion }).(pulumi.StringPtrOutput)
+}
+
+// SQL server license.
+func (o SqlAssessmentSettingsOutput) SqlServerLicense() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettings) *string { return v.SqlServerLicense }).(pulumi.StringPtrOutput)
+}
+
+type SqlAssessmentSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlAssessmentSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAssessmentSettings)(nil)).Elem()
+}
+
+func (o SqlAssessmentSettingsPtrOutput) ToSqlAssessmentSettingsPtrOutput() SqlAssessmentSettingsPtrOutput {
+	return o
+}
+
+func (o SqlAssessmentSettingsPtrOutput) ToSqlAssessmentSettingsPtrOutputWithContext(ctx context.Context) SqlAssessmentSettingsPtrOutput {
+	return o
+}
+
+func (o SqlAssessmentSettingsPtrOutput) Elem() SqlAssessmentSettingsOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) SqlAssessmentSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SqlAssessmentSettings
+		return ret
+	}).(SqlAssessmentSettingsOutput)
+}
+
+// Gets or sets user preference indicating intent of async commit mode.
+func (o SqlAssessmentSettingsPtrOutput) AsyncCommitModeIntent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AsyncCommitModeIntent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o SqlAssessmentSettingsPtrOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a value indicating azure security offering type.
+func (o SqlAssessmentSettingsPtrOutput) AzureSecurityOfferingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSecurityOfferingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user configurable SQL database settings.
+func (o SqlAssessmentSettingsPtrOutput) AzureSqlDatabaseSettings() SqlDbSettingsV3PtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *SqlDbSettingsV3 {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlDatabaseSettings
+	}).(SqlDbSettingsV3PtrOutput)
+}
+
+// Gets or sets user configurable SQL managed instance settings.
+func (o SqlAssessmentSettingsPtrOutput) AzureSqlManagedInstanceSettings() SqlMiSettingsV3PtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *SqlMiSettingsV3 {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlManagedInstanceSettings
+	}).(SqlMiSettingsV3PtrOutput)
+}
+
+// Gets or sets user configurable SQL VM settings.
+func (o SqlAssessmentSettingsPtrOutput) AzureSqlVmSettings() SqlVmSettingsPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *SqlVmSettings {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlVmSettings
+	}).(SqlVmSettingsPtrOutput)
+}
+
+// Gets or sets the billing settings.
+func (o SqlAssessmentSettingsPtrOutput) BillingSettings() BillingSettingsPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *BillingSettings {
+		if v == nil {
+			return nil
+		}
+		return v.BillingSettings
+	}).(BillingSettingsPtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o SqlAssessmentSettingsPtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure Location or Azure region where to which the machines
+// will be migrated.
+func (o SqlAssessmentSettingsPtrOutput) DisasterRecoveryLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisasterRecoveryLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o SqlAssessmentSettingsPtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets a value indicating whether HADR assessments needs to be created.
+func (o SqlAssessmentSettingsPtrOutput) EnableHadrAssessment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableHadrAssessment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the duration for which the entity (SQL, VMs) are up in the
+// on-premises environment.
+func (o SqlAssessmentSettingsPtrOutput) EntityUptime() EntityUptimePtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *EntityUptime {
+		if v == nil {
+			return nil
+		}
+		return v.EntityUptime
+	}).(EntityUptimePtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o SqlAssessmentSettingsPtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a value indicating whether internet access is available.
+func (o SqlAssessmentSettingsPtrOutput) IsInternetAccessAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsInternetAccessAvailable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets user preference indicating intent of multi-subnet configuration.
+func (o SqlAssessmentSettingsPtrOutput) MultiSubnetIntent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MultiSubnetIntent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user configurable setting to display the azure hybrid use benefit.
+func (o SqlAssessmentSettingsPtrOutput) OsLicense() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OsLicense
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o SqlAssessmentSettingsPtrOutput) PerformanceData() PerformanceDataPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *PerformanceData {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceData
+	}).(PerformanceDataPtrOutput)
+}
+
+// Gets or sets SQL the preferred azure targets.
+func (o SqlAssessmentSettingsPtrOutput) PreferredTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the savings settings.
+func (o SqlAssessmentSettingsPtrOutput) SavingsSettings() SavingsSettingsPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *SavingsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.SavingsSettings
+	}).(SavingsSettingsPtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o SqlAssessmentSettingsPtrOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o SqlAssessmentSettingsPtrOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizingCriterion
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL server license.
+func (o SqlAssessmentSettingsPtrOutput) SqlServerLicense() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServerLicense
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL assessment settings class.
+type SqlAssessmentSettingsResponse struct {
+	// Gets or sets user preference indicating intent of async commit mode.
+	AsyncCommitModeIntent *string `pulumi:"asyncCommitModeIntent"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation *string `pulumi:"azureLocation"`
+	// Gets or sets a value indicating azure security offering type.
+	AzureSecurityOfferingType *string `pulumi:"azureSecurityOfferingType"`
+	// Gets or sets user configurable SQL database settings.
+	AzureSqlDatabaseSettings *SqlDbSettingsV3Response `pulumi:"azureSqlDatabaseSettings"`
+	// Gets or sets user configurable SQL managed instance settings.
+	AzureSqlManagedInstanceSettings *SqlMiSettingsV3Response `pulumi:"azureSqlManagedInstanceSettings"`
+	// Gets or sets user configurable SQL VM settings.
+	AzureSqlVmSettings *SqlVmSettingsResponse `pulumi:"azureSqlVmSettings"`
+	// Gets or sets the billing settings.
+	BillingSettings *BillingSettingsResponse `pulumi:"billingSettings"`
+	// Currency in which prices should be reported.
+	Currency *string `pulumi:"currency"`
+	// Gets or sets the Azure Location or Azure region where to which the machines
+	// will be migrated.
+	DisasterRecoveryLocation *string `pulumi:"disasterRecoveryLocation"`
+	// Custom discount percentage.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Gets or sets a value indicating whether HADR assessments needs to be created.
+	EnableHadrAssessment *bool `pulumi:"enableHadrAssessment"`
+	// Gets or sets the duration for which the entity (SQL, VMs) are up in the
+	// on-premises environment.
+	EntityUptime *EntityUptimeResponse `pulumi:"entityUptime"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType *string `pulumi:"environmentType"`
+	// Gets or sets a value indicating whether internet access is available.
+	IsInternetAccessAvailable *bool `pulumi:"isInternetAccessAvailable"`
+	// Gets or sets user preference indicating intent of multi-subnet configuration.
+	MultiSubnetIntent *string `pulumi:"multiSubnetIntent"`
+	// Gets or sets user configurable setting to display the azure hybrid use benefit.
+	OsLicense *string `pulumi:"osLicense"`
+	// Gets or sets the performance data.
+	PerformanceData *PerformanceDataResponse `pulumi:"performanceData"`
+	// Gets or sets SQL the preferred azure targets.
+	PreferredTargets []string `pulumi:"preferredTargets"`
+	// Gets or sets the savings settings.
+	SavingsSettings *SavingsSettingsResponse `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor *float64 `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion *string `pulumi:"sizingCriterion"`
+	// SQL server license.
+	SqlServerLicense *string `pulumi:"sqlServerLicense"`
+}
+
+// SQL assessment settings class.
+type SqlAssessmentSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlAssessmentSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAssessmentSettingsResponse)(nil)).Elem()
+}
+
+func (o SqlAssessmentSettingsResponseOutput) ToSqlAssessmentSettingsResponseOutput() SqlAssessmentSettingsResponseOutput {
+	return o
+}
+
+func (o SqlAssessmentSettingsResponseOutput) ToSqlAssessmentSettingsResponseOutputWithContext(ctx context.Context) SqlAssessmentSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets user preference indicating intent of async commit mode.
+func (o SqlAssessmentSettingsResponseOutput) AsyncCommitModeIntent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *string { return v.AsyncCommitModeIntent }).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o SqlAssessmentSettingsResponseOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *string { return v.AzureLocation }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a value indicating azure security offering type.
+func (o SqlAssessmentSettingsResponseOutput) AzureSecurityOfferingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *string { return v.AzureSecurityOfferingType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user configurable SQL database settings.
+func (o SqlAssessmentSettingsResponseOutput) AzureSqlDatabaseSettings() SqlDbSettingsV3ResponsePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *SqlDbSettingsV3Response { return v.AzureSqlDatabaseSettings }).(SqlDbSettingsV3ResponsePtrOutput)
+}
+
+// Gets or sets user configurable SQL managed instance settings.
+func (o SqlAssessmentSettingsResponseOutput) AzureSqlManagedInstanceSettings() SqlMiSettingsV3ResponsePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *SqlMiSettingsV3Response {
+		return v.AzureSqlManagedInstanceSettings
+	}).(SqlMiSettingsV3ResponsePtrOutput)
+}
+
+// Gets or sets user configurable SQL VM settings.
+func (o SqlAssessmentSettingsResponseOutput) AzureSqlVmSettings() SqlVmSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *SqlVmSettingsResponse { return v.AzureSqlVmSettings }).(SqlVmSettingsResponsePtrOutput)
+}
+
+// Gets or sets the billing settings.
+func (o SqlAssessmentSettingsResponseOutput) BillingSettings() BillingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *BillingSettingsResponse { return v.BillingSettings }).(BillingSettingsResponsePtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o SqlAssessmentSettingsResponseOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure Location or Azure region where to which the machines
+// will be migrated.
+func (o SqlAssessmentSettingsResponseOutput) DisasterRecoveryLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *string { return v.DisasterRecoveryLocation }).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o SqlAssessmentSettingsResponseOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets a value indicating whether HADR assessments needs to be created.
+func (o SqlAssessmentSettingsResponseOutput) EnableHadrAssessment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *bool { return v.EnableHadrAssessment }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the duration for which the entity (SQL, VMs) are up in the
+// on-premises environment.
+func (o SqlAssessmentSettingsResponseOutput) EntityUptime() EntityUptimeResponsePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *EntityUptimeResponse { return v.EntityUptime }).(EntityUptimeResponsePtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o SqlAssessmentSettingsResponseOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *string { return v.EnvironmentType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a value indicating whether internet access is available.
+func (o SqlAssessmentSettingsResponseOutput) IsInternetAccessAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *bool { return v.IsInternetAccessAvailable }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets user preference indicating intent of multi-subnet configuration.
+func (o SqlAssessmentSettingsResponseOutput) MultiSubnetIntent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *string { return v.MultiSubnetIntent }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user configurable setting to display the azure hybrid use benefit.
+func (o SqlAssessmentSettingsResponseOutput) OsLicense() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *string { return v.OsLicense }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o SqlAssessmentSettingsResponseOutput) PerformanceData() PerformanceDataResponsePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *PerformanceDataResponse { return v.PerformanceData }).(PerformanceDataResponsePtrOutput)
+}
+
+// Gets or sets SQL the preferred azure targets.
+func (o SqlAssessmentSettingsResponseOutput) PreferredTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) []string { return v.PreferredTargets }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the savings settings.
+func (o SqlAssessmentSettingsResponseOutput) SavingsSettings() SavingsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *SavingsSettingsResponse { return v.SavingsSettings }).(SavingsSettingsResponsePtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o SqlAssessmentSettingsResponseOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *float64 { return v.ScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o SqlAssessmentSettingsResponseOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *string { return v.SizingCriterion }).(pulumi.StringPtrOutput)
+}
+
+// SQL server license.
+func (o SqlAssessmentSettingsResponseOutput) SqlServerLicense() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentSettingsResponse) *string { return v.SqlServerLicense }).(pulumi.StringPtrOutput)
+}
+
+type SqlAssessmentSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlAssessmentSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAssessmentSettingsResponse)(nil)).Elem()
+}
+
+func (o SqlAssessmentSettingsResponsePtrOutput) ToSqlAssessmentSettingsResponsePtrOutput() SqlAssessmentSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SqlAssessmentSettingsResponsePtrOutput) ToSqlAssessmentSettingsResponsePtrOutputWithContext(ctx context.Context) SqlAssessmentSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SqlAssessmentSettingsResponsePtrOutput) Elem() SqlAssessmentSettingsResponseOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) SqlAssessmentSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlAssessmentSettingsResponse
+		return ret
+	}).(SqlAssessmentSettingsResponseOutput)
+}
+
+// Gets or sets user preference indicating intent of async commit mode.
+func (o SqlAssessmentSettingsResponsePtrOutput) AsyncCommitModeIntent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AsyncCommitModeIntent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o SqlAssessmentSettingsResponsePtrOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a value indicating azure security offering type.
+func (o SqlAssessmentSettingsResponsePtrOutput) AzureSecurityOfferingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSecurityOfferingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user configurable SQL database settings.
+func (o SqlAssessmentSettingsResponsePtrOutput) AzureSqlDatabaseSettings() SqlDbSettingsV3ResponsePtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *SqlDbSettingsV3Response {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlDatabaseSettings
+	}).(SqlDbSettingsV3ResponsePtrOutput)
+}
+
+// Gets or sets user configurable SQL managed instance settings.
+func (o SqlAssessmentSettingsResponsePtrOutput) AzureSqlManagedInstanceSettings() SqlMiSettingsV3ResponsePtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *SqlMiSettingsV3Response {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlManagedInstanceSettings
+	}).(SqlMiSettingsV3ResponsePtrOutput)
+}
+
+// Gets or sets user configurable SQL VM settings.
+func (o SqlAssessmentSettingsResponsePtrOutput) AzureSqlVmSettings() SqlVmSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *SqlVmSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlVmSettings
+	}).(SqlVmSettingsResponsePtrOutput)
+}
+
+// Gets or sets the billing settings.
+func (o SqlAssessmentSettingsResponsePtrOutput) BillingSettings() BillingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *BillingSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BillingSettings
+	}).(BillingSettingsResponsePtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o SqlAssessmentSettingsResponsePtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Azure Location or Azure region where to which the machines
+// will be migrated.
+func (o SqlAssessmentSettingsResponsePtrOutput) DisasterRecoveryLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisasterRecoveryLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o SqlAssessmentSettingsResponsePtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets a value indicating whether HADR assessments needs to be created.
+func (o SqlAssessmentSettingsResponsePtrOutput) EnableHadrAssessment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableHadrAssessment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the duration for which the entity (SQL, VMs) are up in the
+// on-premises environment.
+func (o SqlAssessmentSettingsResponsePtrOutput) EntityUptime() EntityUptimeResponsePtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *EntityUptimeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EntityUptime
+	}).(EntityUptimeResponsePtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o SqlAssessmentSettingsResponsePtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a value indicating whether internet access is available.
+func (o SqlAssessmentSettingsResponsePtrOutput) IsInternetAccessAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsInternetAccessAvailable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets user preference indicating intent of multi-subnet configuration.
+func (o SqlAssessmentSettingsResponsePtrOutput) MultiSubnetIntent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MultiSubnetIntent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user configurable setting to display the azure hybrid use benefit.
+func (o SqlAssessmentSettingsResponsePtrOutput) OsLicense() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OsLicense
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o SqlAssessmentSettingsResponsePtrOutput) PerformanceData() PerformanceDataResponsePtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *PerformanceDataResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceData
+	}).(PerformanceDataResponsePtrOutput)
+}
+
+// Gets or sets SQL the preferred azure targets.
+func (o SqlAssessmentSettingsResponsePtrOutput) PreferredTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the savings settings.
+func (o SqlAssessmentSettingsResponsePtrOutput) SavingsSettings() SavingsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *SavingsSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SavingsSettings
+	}).(SavingsSettingsResponsePtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o SqlAssessmentSettingsResponsePtrOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o SqlAssessmentSettingsResponsePtrOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizingCriterion
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL server license.
+func (o SqlAssessmentSettingsResponsePtrOutput) SqlServerLicense() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServerLicense
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL assessment properties class.
+type SqlAssessmentV3Properties struct {
+	// Gets or sets the machine assessment ARM ID for VM fallback.
+	FallbackMachineAssessmentArmId *string `pulumi:"fallbackMachineAssessmentArmId"`
+	// Gets or sets the scope of assessment.
+	Scope *Scope `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings *SqlAssessmentSettings `pulumi:"settings"`
+}
+
+// SqlAssessmentV3PropertiesInput is an input type that accepts SqlAssessmentV3PropertiesArgs and SqlAssessmentV3PropertiesOutput values.
+// You can construct a concrete instance of `SqlAssessmentV3PropertiesInput` via:
+//
+//	SqlAssessmentV3PropertiesArgs{...}
+type SqlAssessmentV3PropertiesInput interface {
+	pulumi.Input
+
+	ToSqlAssessmentV3PropertiesOutput() SqlAssessmentV3PropertiesOutput
+	ToSqlAssessmentV3PropertiesOutputWithContext(context.Context) SqlAssessmentV3PropertiesOutput
+}
+
+// SQL assessment properties class.
+type SqlAssessmentV3PropertiesArgs struct {
+	// Gets or sets the machine assessment ARM ID for VM fallback.
+	FallbackMachineAssessmentArmId pulumi.StringPtrInput `pulumi:"fallbackMachineAssessmentArmId"`
+	// Gets or sets the scope of assessment.
+	Scope ScopePtrInput `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings SqlAssessmentSettingsPtrInput `pulumi:"settings"`
+}
+
+func (SqlAssessmentV3PropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAssessmentV3Properties)(nil)).Elem()
+}
+
+func (i SqlAssessmentV3PropertiesArgs) ToSqlAssessmentV3PropertiesOutput() SqlAssessmentV3PropertiesOutput {
+	return i.ToSqlAssessmentV3PropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlAssessmentV3PropertiesArgs) ToSqlAssessmentV3PropertiesOutputWithContext(ctx context.Context) SqlAssessmentV3PropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAssessmentV3PropertiesOutput)
+}
+
+func (i SqlAssessmentV3PropertiesArgs) ToSqlAssessmentV3PropertiesPtrOutput() SqlAssessmentV3PropertiesPtrOutput {
+	return i.ToSqlAssessmentV3PropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SqlAssessmentV3PropertiesArgs) ToSqlAssessmentV3PropertiesPtrOutputWithContext(ctx context.Context) SqlAssessmentV3PropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAssessmentV3PropertiesOutput).ToSqlAssessmentV3PropertiesPtrOutputWithContext(ctx)
+}
+
+// SqlAssessmentV3PropertiesPtrInput is an input type that accepts SqlAssessmentV3PropertiesArgs, SqlAssessmentV3PropertiesPtr and SqlAssessmentV3PropertiesPtrOutput values.
+// You can construct a concrete instance of `SqlAssessmentV3PropertiesPtrInput` via:
+//
+//	        SqlAssessmentV3PropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlAssessmentV3PropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSqlAssessmentV3PropertiesPtrOutput() SqlAssessmentV3PropertiesPtrOutput
+	ToSqlAssessmentV3PropertiesPtrOutputWithContext(context.Context) SqlAssessmentV3PropertiesPtrOutput
+}
+
+type sqlAssessmentV3PropertiesPtrType SqlAssessmentV3PropertiesArgs
+
+func SqlAssessmentV3PropertiesPtr(v *SqlAssessmentV3PropertiesArgs) SqlAssessmentV3PropertiesPtrInput {
+	return (*sqlAssessmentV3PropertiesPtrType)(v)
+}
+
+func (*sqlAssessmentV3PropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAssessmentV3Properties)(nil)).Elem()
+}
+
+func (i *sqlAssessmentV3PropertiesPtrType) ToSqlAssessmentV3PropertiesPtrOutput() SqlAssessmentV3PropertiesPtrOutput {
+	return i.ToSqlAssessmentV3PropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlAssessmentV3PropertiesPtrType) ToSqlAssessmentV3PropertiesPtrOutputWithContext(ctx context.Context) SqlAssessmentV3PropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAssessmentV3PropertiesPtrOutput)
+}
+
+// SQL assessment properties class.
+type SqlAssessmentV3PropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlAssessmentV3PropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAssessmentV3Properties)(nil)).Elem()
+}
+
+func (o SqlAssessmentV3PropertiesOutput) ToSqlAssessmentV3PropertiesOutput() SqlAssessmentV3PropertiesOutput {
+	return o
+}
+
+func (o SqlAssessmentV3PropertiesOutput) ToSqlAssessmentV3PropertiesOutputWithContext(ctx context.Context) SqlAssessmentV3PropertiesOutput {
+	return o
+}
+
+func (o SqlAssessmentV3PropertiesOutput) ToSqlAssessmentV3PropertiesPtrOutput() SqlAssessmentV3PropertiesPtrOutput {
+	return o.ToSqlAssessmentV3PropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SqlAssessmentV3PropertiesOutput) ToSqlAssessmentV3PropertiesPtrOutputWithContext(ctx context.Context) SqlAssessmentV3PropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlAssessmentV3Properties) *SqlAssessmentV3Properties {
+		return &v
+	}).(SqlAssessmentV3PropertiesPtrOutput)
+}
+
+// Gets or sets the machine assessment ARM ID for VM fallback.
+func (o SqlAssessmentV3PropertiesOutput) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentV3Properties) *string { return v.FallbackMachineAssessmentArmId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o SqlAssessmentV3PropertiesOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentV3Properties) *Scope { return v.Scope }).(ScopePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o SqlAssessmentV3PropertiesOutput) Settings() SqlAssessmentSettingsPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentV3Properties) *SqlAssessmentSettings { return v.Settings }).(SqlAssessmentSettingsPtrOutput)
+}
+
+type SqlAssessmentV3PropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlAssessmentV3PropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAssessmentV3Properties)(nil)).Elem()
+}
+
+func (o SqlAssessmentV3PropertiesPtrOutput) ToSqlAssessmentV3PropertiesPtrOutput() SqlAssessmentV3PropertiesPtrOutput {
+	return o
+}
+
+func (o SqlAssessmentV3PropertiesPtrOutput) ToSqlAssessmentV3PropertiesPtrOutputWithContext(ctx context.Context) SqlAssessmentV3PropertiesPtrOutput {
+	return o
+}
+
+func (o SqlAssessmentV3PropertiesPtrOutput) Elem() SqlAssessmentV3PropertiesOutput {
+	return o.ApplyT(func(v *SqlAssessmentV3Properties) SqlAssessmentV3Properties {
+		if v != nil {
+			return *v
+		}
+		var ret SqlAssessmentV3Properties
+		return ret
+	}).(SqlAssessmentV3PropertiesOutput)
+}
+
+// Gets or sets the machine assessment ARM ID for VM fallback.
+func (o SqlAssessmentV3PropertiesPtrOutput) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentV3Properties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FallbackMachineAssessmentArmId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o SqlAssessmentV3PropertiesPtrOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentV3Properties) *Scope {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(ScopePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o SqlAssessmentV3PropertiesPtrOutput) Settings() SqlAssessmentSettingsPtrOutput {
+	return o.ApplyT(func(v *SqlAssessmentV3Properties) *SqlAssessmentSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(SqlAssessmentSettingsPtrOutput)
+}
+
+// SQL assessment properties class.
+type SqlAssessmentV3PropertiesResponse struct {
+	// Gets or sets the details of the assessment.
+	Details *AssessmentDetailsResponse `pulumi:"details"`
+	// Gets or sets the machine assessment ARM ID for VM fallback.
+	FallbackMachineAssessmentArmId *string `pulumi:"fallbackMachineAssessmentArmId"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Gets or sets the scope of assessment.
+	Scope *ScopeResponse `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings *SqlAssessmentSettingsResponse `pulumi:"settings"`
+}
+
+// SQL assessment properties class.
+type SqlAssessmentV3PropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlAssessmentV3PropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAssessmentV3PropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAssessmentV3PropertiesResponseOutput) ToSqlAssessmentV3PropertiesResponseOutput() SqlAssessmentV3PropertiesResponseOutput {
+	return o
+}
+
+func (o SqlAssessmentV3PropertiesResponseOutput) ToSqlAssessmentV3PropertiesResponseOutputWithContext(ctx context.Context) SqlAssessmentV3PropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the details of the assessment.
+func (o SqlAssessmentV3PropertiesResponseOutput) Details() AssessmentDetailsResponsePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentV3PropertiesResponse) *AssessmentDetailsResponse { return v.Details }).(AssessmentDetailsResponsePtrOutput)
+}
+
+// Gets or sets the machine assessment ARM ID for VM fallback.
+func (o SqlAssessmentV3PropertiesResponseOutput) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAssessmentV3PropertiesResponse) *string { return v.FallbackMachineAssessmentArmId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the last operation.
+func (o SqlAssessmentV3PropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAssessmentV3PropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o SqlAssessmentV3PropertiesResponseOutput) Scope() ScopeResponsePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentV3PropertiesResponse) *ScopeResponse { return v.Scope }).(ScopeResponsePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o SqlAssessmentV3PropertiesResponseOutput) Settings() SqlAssessmentSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SqlAssessmentV3PropertiesResponse) *SqlAssessmentSettingsResponse { return v.Settings }).(SqlAssessmentSettingsResponsePtrOutput)
+}
+
 // Defines the Sql Database resource settings.
 type SqlDatabaseResourceSettings struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -31072,6 +36224,314 @@ func (o SqlDbSettingsResponsePtrOutput) AzureSqlServiceTier() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// SQL database assessment settings V3.
+type SqlDbSettingsV3 struct {
+	// Gets or sets the azure SQL compute tier.
+	AzureSqlComputeTier *string `pulumi:"azureSqlComputeTier"`
+	// Gets or sets the azure PAAS SQL instance type.
+	AzureSqlDataBaseType *string `pulumi:"azureSqlDataBaseType"`
+	// Gets or sets the azure SQL purchase model.
+	AzureSqlPurchaseModel *string `pulumi:"azureSqlPurchaseModel"`
+	// Gets or sets the azure SQL service tier.
+	AzureSqlServiceTier *string `pulumi:"azureSqlServiceTier"`
+}
+
+// SqlDbSettingsV3Input is an input type that accepts SqlDbSettingsV3Args and SqlDbSettingsV3Output values.
+// You can construct a concrete instance of `SqlDbSettingsV3Input` via:
+//
+//	SqlDbSettingsV3Args{...}
+type SqlDbSettingsV3Input interface {
+	pulumi.Input
+
+	ToSqlDbSettingsV3Output() SqlDbSettingsV3Output
+	ToSqlDbSettingsV3OutputWithContext(context.Context) SqlDbSettingsV3Output
+}
+
+// SQL database assessment settings V3.
+type SqlDbSettingsV3Args struct {
+	// Gets or sets the azure SQL compute tier.
+	AzureSqlComputeTier pulumi.StringPtrInput `pulumi:"azureSqlComputeTier"`
+	// Gets or sets the azure PAAS SQL instance type.
+	AzureSqlDataBaseType pulumi.StringPtrInput `pulumi:"azureSqlDataBaseType"`
+	// Gets or sets the azure SQL purchase model.
+	AzureSqlPurchaseModel pulumi.StringPtrInput `pulumi:"azureSqlPurchaseModel"`
+	// Gets or sets the azure SQL service tier.
+	AzureSqlServiceTier pulumi.StringPtrInput `pulumi:"azureSqlServiceTier"`
+}
+
+func (SqlDbSettingsV3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDbSettingsV3)(nil)).Elem()
+}
+
+func (i SqlDbSettingsV3Args) ToSqlDbSettingsV3Output() SqlDbSettingsV3Output {
+	return i.ToSqlDbSettingsV3OutputWithContext(context.Background())
+}
+
+func (i SqlDbSettingsV3Args) ToSqlDbSettingsV3OutputWithContext(ctx context.Context) SqlDbSettingsV3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDbSettingsV3Output)
+}
+
+func (i SqlDbSettingsV3Args) ToSqlDbSettingsV3PtrOutput() SqlDbSettingsV3PtrOutput {
+	return i.ToSqlDbSettingsV3PtrOutputWithContext(context.Background())
+}
+
+func (i SqlDbSettingsV3Args) ToSqlDbSettingsV3PtrOutputWithContext(ctx context.Context) SqlDbSettingsV3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDbSettingsV3Output).ToSqlDbSettingsV3PtrOutputWithContext(ctx)
+}
+
+// SqlDbSettingsV3PtrInput is an input type that accepts SqlDbSettingsV3Args, SqlDbSettingsV3Ptr and SqlDbSettingsV3PtrOutput values.
+// You can construct a concrete instance of `SqlDbSettingsV3PtrInput` via:
+//
+//	        SqlDbSettingsV3Args{...}
+//
+//	or:
+//
+//	        nil
+type SqlDbSettingsV3PtrInput interface {
+	pulumi.Input
+
+	ToSqlDbSettingsV3PtrOutput() SqlDbSettingsV3PtrOutput
+	ToSqlDbSettingsV3PtrOutputWithContext(context.Context) SqlDbSettingsV3PtrOutput
+}
+
+type sqlDbSettingsV3PtrType SqlDbSettingsV3Args
+
+func SqlDbSettingsV3Ptr(v *SqlDbSettingsV3Args) SqlDbSettingsV3PtrInput {
+	return (*sqlDbSettingsV3PtrType)(v)
+}
+
+func (*sqlDbSettingsV3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDbSettingsV3)(nil)).Elem()
+}
+
+func (i *sqlDbSettingsV3PtrType) ToSqlDbSettingsV3PtrOutput() SqlDbSettingsV3PtrOutput {
+	return i.ToSqlDbSettingsV3PtrOutputWithContext(context.Background())
+}
+
+func (i *sqlDbSettingsV3PtrType) ToSqlDbSettingsV3PtrOutputWithContext(ctx context.Context) SqlDbSettingsV3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDbSettingsV3PtrOutput)
+}
+
+// SQL database assessment settings V3.
+type SqlDbSettingsV3Output struct{ *pulumi.OutputState }
+
+func (SqlDbSettingsV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDbSettingsV3)(nil)).Elem()
+}
+
+func (o SqlDbSettingsV3Output) ToSqlDbSettingsV3Output() SqlDbSettingsV3Output {
+	return o
+}
+
+func (o SqlDbSettingsV3Output) ToSqlDbSettingsV3OutputWithContext(ctx context.Context) SqlDbSettingsV3Output {
+	return o
+}
+
+func (o SqlDbSettingsV3Output) ToSqlDbSettingsV3PtrOutput() SqlDbSettingsV3PtrOutput {
+	return o.ToSqlDbSettingsV3PtrOutputWithContext(context.Background())
+}
+
+func (o SqlDbSettingsV3Output) ToSqlDbSettingsV3PtrOutputWithContext(ctx context.Context) SqlDbSettingsV3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlDbSettingsV3) *SqlDbSettingsV3 {
+		return &v
+	}).(SqlDbSettingsV3PtrOutput)
+}
+
+// Gets or sets the azure SQL compute tier.
+func (o SqlDbSettingsV3Output) AzureSqlComputeTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDbSettingsV3) *string { return v.AzureSqlComputeTier }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure PAAS SQL instance type.
+func (o SqlDbSettingsV3Output) AzureSqlDataBaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDbSettingsV3) *string { return v.AzureSqlDataBaseType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL purchase model.
+func (o SqlDbSettingsV3Output) AzureSqlPurchaseModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDbSettingsV3) *string { return v.AzureSqlPurchaseModel }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL service tier.
+func (o SqlDbSettingsV3Output) AzureSqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDbSettingsV3) *string { return v.AzureSqlServiceTier }).(pulumi.StringPtrOutput)
+}
+
+type SqlDbSettingsV3PtrOutput struct{ *pulumi.OutputState }
+
+func (SqlDbSettingsV3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDbSettingsV3)(nil)).Elem()
+}
+
+func (o SqlDbSettingsV3PtrOutput) ToSqlDbSettingsV3PtrOutput() SqlDbSettingsV3PtrOutput {
+	return o
+}
+
+func (o SqlDbSettingsV3PtrOutput) ToSqlDbSettingsV3PtrOutputWithContext(ctx context.Context) SqlDbSettingsV3PtrOutput {
+	return o
+}
+
+func (o SqlDbSettingsV3PtrOutput) Elem() SqlDbSettingsV3Output {
+	return o.ApplyT(func(v *SqlDbSettingsV3) SqlDbSettingsV3 {
+		if v != nil {
+			return *v
+		}
+		var ret SqlDbSettingsV3
+		return ret
+	}).(SqlDbSettingsV3Output)
+}
+
+// Gets or sets the azure SQL compute tier.
+func (o SqlDbSettingsV3PtrOutput) AzureSqlComputeTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSettingsV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlComputeTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure PAAS SQL instance type.
+func (o SqlDbSettingsV3PtrOutput) AzureSqlDataBaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSettingsV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlDataBaseType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL purchase model.
+func (o SqlDbSettingsV3PtrOutput) AzureSqlPurchaseModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSettingsV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlPurchaseModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL service tier.
+func (o SqlDbSettingsV3PtrOutput) AzureSqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSettingsV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlServiceTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL database assessment settings V3.
+type SqlDbSettingsV3Response struct {
+	// Gets or sets the azure SQL compute tier.
+	AzureSqlComputeTier *string `pulumi:"azureSqlComputeTier"`
+	// Gets or sets the azure PAAS SQL instance type.
+	AzureSqlDataBaseType *string `pulumi:"azureSqlDataBaseType"`
+	// Gets or sets the azure SQL purchase model.
+	AzureSqlPurchaseModel *string `pulumi:"azureSqlPurchaseModel"`
+	// Gets or sets the azure SQL service tier.
+	AzureSqlServiceTier *string `pulumi:"azureSqlServiceTier"`
+}
+
+// SQL database assessment settings V3.
+type SqlDbSettingsV3ResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlDbSettingsV3ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDbSettingsV3Response)(nil)).Elem()
+}
+
+func (o SqlDbSettingsV3ResponseOutput) ToSqlDbSettingsV3ResponseOutput() SqlDbSettingsV3ResponseOutput {
+	return o
+}
+
+func (o SqlDbSettingsV3ResponseOutput) ToSqlDbSettingsV3ResponseOutputWithContext(ctx context.Context) SqlDbSettingsV3ResponseOutput {
+	return o
+}
+
+// Gets or sets the azure SQL compute tier.
+func (o SqlDbSettingsV3ResponseOutput) AzureSqlComputeTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDbSettingsV3Response) *string { return v.AzureSqlComputeTier }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure PAAS SQL instance type.
+func (o SqlDbSettingsV3ResponseOutput) AzureSqlDataBaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDbSettingsV3Response) *string { return v.AzureSqlDataBaseType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL purchase model.
+func (o SqlDbSettingsV3ResponseOutput) AzureSqlPurchaseModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDbSettingsV3Response) *string { return v.AzureSqlPurchaseModel }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL service tier.
+func (o SqlDbSettingsV3ResponseOutput) AzureSqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDbSettingsV3Response) *string { return v.AzureSqlServiceTier }).(pulumi.StringPtrOutput)
+}
+
+type SqlDbSettingsV3ResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlDbSettingsV3ResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDbSettingsV3Response)(nil)).Elem()
+}
+
+func (o SqlDbSettingsV3ResponsePtrOutput) ToSqlDbSettingsV3ResponsePtrOutput() SqlDbSettingsV3ResponsePtrOutput {
+	return o
+}
+
+func (o SqlDbSettingsV3ResponsePtrOutput) ToSqlDbSettingsV3ResponsePtrOutputWithContext(ctx context.Context) SqlDbSettingsV3ResponsePtrOutput {
+	return o
+}
+
+func (o SqlDbSettingsV3ResponsePtrOutput) Elem() SqlDbSettingsV3ResponseOutput {
+	return o.ApplyT(func(v *SqlDbSettingsV3Response) SqlDbSettingsV3Response {
+		if v != nil {
+			return *v
+		}
+		var ret SqlDbSettingsV3Response
+		return ret
+	}).(SqlDbSettingsV3ResponseOutput)
+}
+
+// Gets or sets the azure SQL compute tier.
+func (o SqlDbSettingsV3ResponsePtrOutput) AzureSqlComputeTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSettingsV3Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlComputeTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure PAAS SQL instance type.
+func (o SqlDbSettingsV3ResponsePtrOutput) AzureSqlDataBaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSettingsV3Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlDataBaseType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL purchase model.
+func (o SqlDbSettingsV3ResponsePtrOutput) AzureSqlPurchaseModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSettingsV3Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlPurchaseModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL service tier.
+func (o SqlDbSettingsV3ResponsePtrOutput) AzureSqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSettingsV3Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlServiceTier
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the Sql ElasticPool resource settings.
 type SqlElasticPoolResourceSettings struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -31652,6 +37112,242 @@ func (o SqlMiSettingsResponsePtrOutput) AzureSqlInstanceType() pulumi.StringPtrO
 // Gets or sets the azure SQL service tier.
 func (o SqlMiSettingsResponsePtrOutput) AzureSqlServiceTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlMiSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlServiceTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL managed instance assessment settings V3.
+type SqlMiSettingsV3 struct {
+	// Gets or sets the azure PAAS SQL instance type.
+	AzureSqlInstanceType *string `pulumi:"azureSqlInstanceType"`
+	// Gets or sets the azure SQL service tier.
+	AzureSqlServiceTier *string `pulumi:"azureSqlServiceTier"`
+}
+
+// SqlMiSettingsV3Input is an input type that accepts SqlMiSettingsV3Args and SqlMiSettingsV3Output values.
+// You can construct a concrete instance of `SqlMiSettingsV3Input` via:
+//
+//	SqlMiSettingsV3Args{...}
+type SqlMiSettingsV3Input interface {
+	pulumi.Input
+
+	ToSqlMiSettingsV3Output() SqlMiSettingsV3Output
+	ToSqlMiSettingsV3OutputWithContext(context.Context) SqlMiSettingsV3Output
+}
+
+// SQL managed instance assessment settings V3.
+type SqlMiSettingsV3Args struct {
+	// Gets or sets the azure PAAS SQL instance type.
+	AzureSqlInstanceType pulumi.StringPtrInput `pulumi:"azureSqlInstanceType"`
+	// Gets or sets the azure SQL service tier.
+	AzureSqlServiceTier pulumi.StringPtrInput `pulumi:"azureSqlServiceTier"`
+}
+
+func (SqlMiSettingsV3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlMiSettingsV3)(nil)).Elem()
+}
+
+func (i SqlMiSettingsV3Args) ToSqlMiSettingsV3Output() SqlMiSettingsV3Output {
+	return i.ToSqlMiSettingsV3OutputWithContext(context.Background())
+}
+
+func (i SqlMiSettingsV3Args) ToSqlMiSettingsV3OutputWithContext(ctx context.Context) SqlMiSettingsV3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlMiSettingsV3Output)
+}
+
+func (i SqlMiSettingsV3Args) ToSqlMiSettingsV3PtrOutput() SqlMiSettingsV3PtrOutput {
+	return i.ToSqlMiSettingsV3PtrOutputWithContext(context.Background())
+}
+
+func (i SqlMiSettingsV3Args) ToSqlMiSettingsV3PtrOutputWithContext(ctx context.Context) SqlMiSettingsV3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlMiSettingsV3Output).ToSqlMiSettingsV3PtrOutputWithContext(ctx)
+}
+
+// SqlMiSettingsV3PtrInput is an input type that accepts SqlMiSettingsV3Args, SqlMiSettingsV3Ptr and SqlMiSettingsV3PtrOutput values.
+// You can construct a concrete instance of `SqlMiSettingsV3PtrInput` via:
+//
+//	        SqlMiSettingsV3Args{...}
+//
+//	or:
+//
+//	        nil
+type SqlMiSettingsV3PtrInput interface {
+	pulumi.Input
+
+	ToSqlMiSettingsV3PtrOutput() SqlMiSettingsV3PtrOutput
+	ToSqlMiSettingsV3PtrOutputWithContext(context.Context) SqlMiSettingsV3PtrOutput
+}
+
+type sqlMiSettingsV3PtrType SqlMiSettingsV3Args
+
+func SqlMiSettingsV3Ptr(v *SqlMiSettingsV3Args) SqlMiSettingsV3PtrInput {
+	return (*sqlMiSettingsV3PtrType)(v)
+}
+
+func (*sqlMiSettingsV3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlMiSettingsV3)(nil)).Elem()
+}
+
+func (i *sqlMiSettingsV3PtrType) ToSqlMiSettingsV3PtrOutput() SqlMiSettingsV3PtrOutput {
+	return i.ToSqlMiSettingsV3PtrOutputWithContext(context.Background())
+}
+
+func (i *sqlMiSettingsV3PtrType) ToSqlMiSettingsV3PtrOutputWithContext(ctx context.Context) SqlMiSettingsV3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlMiSettingsV3PtrOutput)
+}
+
+// SQL managed instance assessment settings V3.
+type SqlMiSettingsV3Output struct{ *pulumi.OutputState }
+
+func (SqlMiSettingsV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlMiSettingsV3)(nil)).Elem()
+}
+
+func (o SqlMiSettingsV3Output) ToSqlMiSettingsV3Output() SqlMiSettingsV3Output {
+	return o
+}
+
+func (o SqlMiSettingsV3Output) ToSqlMiSettingsV3OutputWithContext(ctx context.Context) SqlMiSettingsV3Output {
+	return o
+}
+
+func (o SqlMiSettingsV3Output) ToSqlMiSettingsV3PtrOutput() SqlMiSettingsV3PtrOutput {
+	return o.ToSqlMiSettingsV3PtrOutputWithContext(context.Background())
+}
+
+func (o SqlMiSettingsV3Output) ToSqlMiSettingsV3PtrOutputWithContext(ctx context.Context) SqlMiSettingsV3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlMiSettingsV3) *SqlMiSettingsV3 {
+		return &v
+	}).(SqlMiSettingsV3PtrOutput)
+}
+
+// Gets or sets the azure PAAS SQL instance type.
+func (o SqlMiSettingsV3Output) AzureSqlInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlMiSettingsV3) *string { return v.AzureSqlInstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL service tier.
+func (o SqlMiSettingsV3Output) AzureSqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlMiSettingsV3) *string { return v.AzureSqlServiceTier }).(pulumi.StringPtrOutput)
+}
+
+type SqlMiSettingsV3PtrOutput struct{ *pulumi.OutputState }
+
+func (SqlMiSettingsV3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlMiSettingsV3)(nil)).Elem()
+}
+
+func (o SqlMiSettingsV3PtrOutput) ToSqlMiSettingsV3PtrOutput() SqlMiSettingsV3PtrOutput {
+	return o
+}
+
+func (o SqlMiSettingsV3PtrOutput) ToSqlMiSettingsV3PtrOutputWithContext(ctx context.Context) SqlMiSettingsV3PtrOutput {
+	return o
+}
+
+func (o SqlMiSettingsV3PtrOutput) Elem() SqlMiSettingsV3Output {
+	return o.ApplyT(func(v *SqlMiSettingsV3) SqlMiSettingsV3 {
+		if v != nil {
+			return *v
+		}
+		var ret SqlMiSettingsV3
+		return ret
+	}).(SqlMiSettingsV3Output)
+}
+
+// Gets or sets the azure PAAS SQL instance type.
+func (o SqlMiSettingsV3PtrOutput) AzureSqlInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlMiSettingsV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlInstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL service tier.
+func (o SqlMiSettingsV3PtrOutput) AzureSqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlMiSettingsV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlServiceTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL managed instance assessment settings V3.
+type SqlMiSettingsV3Response struct {
+	// Gets or sets the azure PAAS SQL instance type.
+	AzureSqlInstanceType *string `pulumi:"azureSqlInstanceType"`
+	// Gets or sets the azure SQL service tier.
+	AzureSqlServiceTier *string `pulumi:"azureSqlServiceTier"`
+}
+
+// SQL managed instance assessment settings V3.
+type SqlMiSettingsV3ResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlMiSettingsV3ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlMiSettingsV3Response)(nil)).Elem()
+}
+
+func (o SqlMiSettingsV3ResponseOutput) ToSqlMiSettingsV3ResponseOutput() SqlMiSettingsV3ResponseOutput {
+	return o
+}
+
+func (o SqlMiSettingsV3ResponseOutput) ToSqlMiSettingsV3ResponseOutputWithContext(ctx context.Context) SqlMiSettingsV3ResponseOutput {
+	return o
+}
+
+// Gets or sets the azure PAAS SQL instance type.
+func (o SqlMiSettingsV3ResponseOutput) AzureSqlInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlMiSettingsV3Response) *string { return v.AzureSqlInstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL service tier.
+func (o SqlMiSettingsV3ResponseOutput) AzureSqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlMiSettingsV3Response) *string { return v.AzureSqlServiceTier }).(pulumi.StringPtrOutput)
+}
+
+type SqlMiSettingsV3ResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlMiSettingsV3ResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlMiSettingsV3Response)(nil)).Elem()
+}
+
+func (o SqlMiSettingsV3ResponsePtrOutput) ToSqlMiSettingsV3ResponsePtrOutput() SqlMiSettingsV3ResponsePtrOutput {
+	return o
+}
+
+func (o SqlMiSettingsV3ResponsePtrOutput) ToSqlMiSettingsV3ResponsePtrOutputWithContext(ctx context.Context) SqlMiSettingsV3ResponsePtrOutput {
+	return o
+}
+
+func (o SqlMiSettingsV3ResponsePtrOutput) Elem() SqlMiSettingsV3ResponseOutput {
+	return o.ApplyT(func(v *SqlMiSettingsV3Response) SqlMiSettingsV3Response {
+		if v != nil {
+			return *v
+		}
+		var ret SqlMiSettingsV3Response
+		return ret
+	}).(SqlMiSettingsV3ResponseOutput)
+}
+
+// Gets or sets the azure PAAS SQL instance type.
+func (o SqlMiSettingsV3ResponsePtrOutput) AzureSqlInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlMiSettingsV3Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSqlInstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the azure SQL service tier.
+func (o SqlMiSettingsV3ResponsePtrOutput) AzureSqlServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlMiSettingsV3Response) *string {
 		if v == nil {
 			return nil
 		}
@@ -33116,6 +38812,224 @@ func (o SystemDataResponsePtrOutput) LastModifiedByType() pulumi.StringPtrOutput
 		}
 		return v.LastModifiedByType
 	}).(pulumi.StringPtrOutput)
+}
+
+// ARM IDs of the target assessments.
+type TargetAssessmentArmIds struct {
+	// ARM ID for Azure Kubernetes Service assessment.
+	Aks *string `pulumi:"aks"`
+	// ARM ID for Azure App Service assessment.
+	AzureAppService *string `pulumi:"azureAppService"`
+	// ARM ID for Azure App Service Container assessment.
+	AzureAppServiceContainer *string `pulumi:"azureAppServiceContainer"`
+}
+
+// TargetAssessmentArmIdsInput is an input type that accepts TargetAssessmentArmIdsArgs and TargetAssessmentArmIdsOutput values.
+// You can construct a concrete instance of `TargetAssessmentArmIdsInput` via:
+//
+//	TargetAssessmentArmIdsArgs{...}
+type TargetAssessmentArmIdsInput interface {
+	pulumi.Input
+
+	ToTargetAssessmentArmIdsOutput() TargetAssessmentArmIdsOutput
+	ToTargetAssessmentArmIdsOutputWithContext(context.Context) TargetAssessmentArmIdsOutput
+}
+
+// ARM IDs of the target assessments.
+type TargetAssessmentArmIdsArgs struct {
+	// ARM ID for Azure Kubernetes Service assessment.
+	Aks pulumi.StringPtrInput `pulumi:"aks"`
+	// ARM ID for Azure App Service assessment.
+	AzureAppService pulumi.StringPtrInput `pulumi:"azureAppService"`
+	// ARM ID for Azure App Service Container assessment.
+	AzureAppServiceContainer pulumi.StringPtrInput `pulumi:"azureAppServiceContainer"`
+}
+
+func (TargetAssessmentArmIdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAssessmentArmIds)(nil)).Elem()
+}
+
+func (i TargetAssessmentArmIdsArgs) ToTargetAssessmentArmIdsOutput() TargetAssessmentArmIdsOutput {
+	return i.ToTargetAssessmentArmIdsOutputWithContext(context.Background())
+}
+
+func (i TargetAssessmentArmIdsArgs) ToTargetAssessmentArmIdsOutputWithContext(ctx context.Context) TargetAssessmentArmIdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetAssessmentArmIdsOutput)
+}
+
+func (i TargetAssessmentArmIdsArgs) ToTargetAssessmentArmIdsPtrOutput() TargetAssessmentArmIdsPtrOutput {
+	return i.ToTargetAssessmentArmIdsPtrOutputWithContext(context.Background())
+}
+
+func (i TargetAssessmentArmIdsArgs) ToTargetAssessmentArmIdsPtrOutputWithContext(ctx context.Context) TargetAssessmentArmIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetAssessmentArmIdsOutput).ToTargetAssessmentArmIdsPtrOutputWithContext(ctx)
+}
+
+// TargetAssessmentArmIdsPtrInput is an input type that accepts TargetAssessmentArmIdsArgs, TargetAssessmentArmIdsPtr and TargetAssessmentArmIdsPtrOutput values.
+// You can construct a concrete instance of `TargetAssessmentArmIdsPtrInput` via:
+//
+//	        TargetAssessmentArmIdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TargetAssessmentArmIdsPtrInput interface {
+	pulumi.Input
+
+	ToTargetAssessmentArmIdsPtrOutput() TargetAssessmentArmIdsPtrOutput
+	ToTargetAssessmentArmIdsPtrOutputWithContext(context.Context) TargetAssessmentArmIdsPtrOutput
+}
+
+type targetAssessmentArmIdsPtrType TargetAssessmentArmIdsArgs
+
+func TargetAssessmentArmIdsPtr(v *TargetAssessmentArmIdsArgs) TargetAssessmentArmIdsPtrInput {
+	return (*targetAssessmentArmIdsPtrType)(v)
+}
+
+func (*targetAssessmentArmIdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetAssessmentArmIds)(nil)).Elem()
+}
+
+func (i *targetAssessmentArmIdsPtrType) ToTargetAssessmentArmIdsPtrOutput() TargetAssessmentArmIdsPtrOutput {
+	return i.ToTargetAssessmentArmIdsPtrOutputWithContext(context.Background())
+}
+
+func (i *targetAssessmentArmIdsPtrType) ToTargetAssessmentArmIdsPtrOutputWithContext(ctx context.Context) TargetAssessmentArmIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetAssessmentArmIdsPtrOutput)
+}
+
+// ARM IDs of the target assessments.
+type TargetAssessmentArmIdsOutput struct{ *pulumi.OutputState }
+
+func (TargetAssessmentArmIdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAssessmentArmIds)(nil)).Elem()
+}
+
+func (o TargetAssessmentArmIdsOutput) ToTargetAssessmentArmIdsOutput() TargetAssessmentArmIdsOutput {
+	return o
+}
+
+func (o TargetAssessmentArmIdsOutput) ToTargetAssessmentArmIdsOutputWithContext(ctx context.Context) TargetAssessmentArmIdsOutput {
+	return o
+}
+
+func (o TargetAssessmentArmIdsOutput) ToTargetAssessmentArmIdsPtrOutput() TargetAssessmentArmIdsPtrOutput {
+	return o.ToTargetAssessmentArmIdsPtrOutputWithContext(context.Background())
+}
+
+func (o TargetAssessmentArmIdsOutput) ToTargetAssessmentArmIdsPtrOutputWithContext(ctx context.Context) TargetAssessmentArmIdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetAssessmentArmIds) *TargetAssessmentArmIds {
+		return &v
+	}).(TargetAssessmentArmIdsPtrOutput)
+}
+
+// ARM ID for Azure Kubernetes Service assessment.
+func (o TargetAssessmentArmIdsOutput) Aks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetAssessmentArmIds) *string { return v.Aks }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID for Azure App Service assessment.
+func (o TargetAssessmentArmIdsOutput) AzureAppService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetAssessmentArmIds) *string { return v.AzureAppService }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID for Azure App Service Container assessment.
+func (o TargetAssessmentArmIdsOutput) AzureAppServiceContainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetAssessmentArmIds) *string { return v.AzureAppServiceContainer }).(pulumi.StringPtrOutput)
+}
+
+type TargetAssessmentArmIdsPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetAssessmentArmIdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetAssessmentArmIds)(nil)).Elem()
+}
+
+func (o TargetAssessmentArmIdsPtrOutput) ToTargetAssessmentArmIdsPtrOutput() TargetAssessmentArmIdsPtrOutput {
+	return o
+}
+
+func (o TargetAssessmentArmIdsPtrOutput) ToTargetAssessmentArmIdsPtrOutputWithContext(ctx context.Context) TargetAssessmentArmIdsPtrOutput {
+	return o
+}
+
+func (o TargetAssessmentArmIdsPtrOutput) Elem() TargetAssessmentArmIdsOutput {
+	return o.ApplyT(func(v *TargetAssessmentArmIds) TargetAssessmentArmIds {
+		if v != nil {
+			return *v
+		}
+		var ret TargetAssessmentArmIds
+		return ret
+	}).(TargetAssessmentArmIdsOutput)
+}
+
+// ARM ID for Azure Kubernetes Service assessment.
+func (o TargetAssessmentArmIdsPtrOutput) Aks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetAssessmentArmIds) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Aks
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM ID for Azure App Service assessment.
+func (o TargetAssessmentArmIdsPtrOutput) AzureAppService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetAssessmentArmIds) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureAppService
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM ID for Azure App Service Container assessment.
+func (o TargetAssessmentArmIdsPtrOutput) AzureAppServiceContainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetAssessmentArmIds) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureAppServiceContainer
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM IDs of the target assessments.
+type TargetAssessmentArmIdsResponse struct {
+	// ARM ID for Azure Kubernetes Service assessment.
+	Aks *string `pulumi:"aks"`
+	// ARM ID for Azure App Service assessment.
+	AzureAppService *string `pulumi:"azureAppService"`
+	// ARM ID for Azure App Service Container assessment.
+	AzureAppServiceContainer *string `pulumi:"azureAppServiceContainer"`
+}
+
+// ARM IDs of the target assessments.
+type TargetAssessmentArmIdsResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetAssessmentArmIdsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAssessmentArmIdsResponse)(nil)).Elem()
+}
+
+func (o TargetAssessmentArmIdsResponseOutput) ToTargetAssessmentArmIdsResponseOutput() TargetAssessmentArmIdsResponseOutput {
+	return o
+}
+
+func (o TargetAssessmentArmIdsResponseOutput) ToTargetAssessmentArmIdsResponseOutputWithContext(ctx context.Context) TargetAssessmentArmIdsResponseOutput {
+	return o
+}
+
+// ARM ID for Azure Kubernetes Service assessment.
+func (o TargetAssessmentArmIdsResponseOutput) Aks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetAssessmentArmIdsResponse) *string { return v.Aks }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID for Azure App Service assessment.
+func (o TargetAssessmentArmIdsResponseOutput) AzureAppService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetAssessmentArmIdsResponse) *string { return v.AzureAppService }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID for Azure App Service Container assessment.
+func (o TargetAssessmentArmIdsResponseOutput) AzureAppServiceContainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetAssessmentArmIdsResponse) *string { return v.AzureAppServiceContainer }).(pulumi.StringPtrOutput)
 }
 
 // Storage profile for the directory on the target container.
@@ -35608,6 +41522,843 @@ func (o VmUptimeResponsePtrOutput) HoursPerDay() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Web app assessment settings class.
+type WebAppAssessmentSettings struct {
+	// App Service container settings.
+	AppSvcContainerSettings AppSvcContainerSettings `pulumi:"appSvcContainerSettings"`
+	// App Service native settings.
+	AppSvcNativeSettings AppSvcNativeSettings `pulumi:"appSvcNativeSettings"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation *string `pulumi:"azureLocation"`
+	// Azure security offering type.
+	AzureSecurityOfferingType string `pulumi:"azureSecurityOfferingType"`
+	// Gets or sets the billing settings.
+	BillingSettings *BillingSettings `pulumi:"billingSettings"`
+	// Currency in which prices should be reported.
+	Currency *string `pulumi:"currency"`
+	// Custom discount percentage.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType *string `pulumi:"environmentType"`
+	// Gets or sets the performance data.
+	PerformanceData *PerformanceData `pulumi:"performanceData"`
+	// Gets or sets the savings settings.
+	SavingsSettings *SavingsSettings `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor *float64 `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion *string `pulumi:"sizingCriterion"`
+}
+
+// WebAppAssessmentSettingsInput is an input type that accepts WebAppAssessmentSettingsArgs and WebAppAssessmentSettingsOutput values.
+// You can construct a concrete instance of `WebAppAssessmentSettingsInput` via:
+//
+//	WebAppAssessmentSettingsArgs{...}
+type WebAppAssessmentSettingsInput interface {
+	pulumi.Input
+
+	ToWebAppAssessmentSettingsOutput() WebAppAssessmentSettingsOutput
+	ToWebAppAssessmentSettingsOutputWithContext(context.Context) WebAppAssessmentSettingsOutput
+}
+
+// Web app assessment settings class.
+type WebAppAssessmentSettingsArgs struct {
+	// App Service container settings.
+	AppSvcContainerSettings AppSvcContainerSettingsInput `pulumi:"appSvcContainerSettings"`
+	// App Service native settings.
+	AppSvcNativeSettings AppSvcNativeSettingsInput `pulumi:"appSvcNativeSettings"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation pulumi.StringPtrInput `pulumi:"azureLocation"`
+	// Azure security offering type.
+	AzureSecurityOfferingType pulumi.StringInput `pulumi:"azureSecurityOfferingType"`
+	// Gets or sets the billing settings.
+	BillingSettings BillingSettingsPtrInput `pulumi:"billingSettings"`
+	// Currency in which prices should be reported.
+	Currency pulumi.StringPtrInput `pulumi:"currency"`
+	// Custom discount percentage.
+	DiscountPercentage pulumi.Float64PtrInput `pulumi:"discountPercentage"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType pulumi.StringPtrInput `pulumi:"environmentType"`
+	// Gets or sets the performance data.
+	PerformanceData PerformanceDataPtrInput `pulumi:"performanceData"`
+	// Gets or sets the savings settings.
+	SavingsSettings SavingsSettingsPtrInput `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor pulumi.Float64PtrInput `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion pulumi.StringPtrInput `pulumi:"sizingCriterion"`
+}
+
+func (WebAppAssessmentSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppAssessmentSettings)(nil)).Elem()
+}
+
+func (i WebAppAssessmentSettingsArgs) ToWebAppAssessmentSettingsOutput() WebAppAssessmentSettingsOutput {
+	return i.ToWebAppAssessmentSettingsOutputWithContext(context.Background())
+}
+
+func (i WebAppAssessmentSettingsArgs) ToWebAppAssessmentSettingsOutputWithContext(ctx context.Context) WebAppAssessmentSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAppAssessmentSettingsOutput)
+}
+
+func (i WebAppAssessmentSettingsArgs) ToWebAppAssessmentSettingsPtrOutput() WebAppAssessmentSettingsPtrOutput {
+	return i.ToWebAppAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i WebAppAssessmentSettingsArgs) ToWebAppAssessmentSettingsPtrOutputWithContext(ctx context.Context) WebAppAssessmentSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAppAssessmentSettingsOutput).ToWebAppAssessmentSettingsPtrOutputWithContext(ctx)
+}
+
+// WebAppAssessmentSettingsPtrInput is an input type that accepts WebAppAssessmentSettingsArgs, WebAppAssessmentSettingsPtr and WebAppAssessmentSettingsPtrOutput values.
+// You can construct a concrete instance of `WebAppAssessmentSettingsPtrInput` via:
+//
+//	        WebAppAssessmentSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebAppAssessmentSettingsPtrInput interface {
+	pulumi.Input
+
+	ToWebAppAssessmentSettingsPtrOutput() WebAppAssessmentSettingsPtrOutput
+	ToWebAppAssessmentSettingsPtrOutputWithContext(context.Context) WebAppAssessmentSettingsPtrOutput
+}
+
+type webAppAssessmentSettingsPtrType WebAppAssessmentSettingsArgs
+
+func WebAppAssessmentSettingsPtr(v *WebAppAssessmentSettingsArgs) WebAppAssessmentSettingsPtrInput {
+	return (*webAppAssessmentSettingsPtrType)(v)
+}
+
+func (*webAppAssessmentSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAppAssessmentSettings)(nil)).Elem()
+}
+
+func (i *webAppAssessmentSettingsPtrType) ToWebAppAssessmentSettingsPtrOutput() WebAppAssessmentSettingsPtrOutput {
+	return i.ToWebAppAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *webAppAssessmentSettingsPtrType) ToWebAppAssessmentSettingsPtrOutputWithContext(ctx context.Context) WebAppAssessmentSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAppAssessmentSettingsPtrOutput)
+}
+
+// Web app assessment settings class.
+type WebAppAssessmentSettingsOutput struct{ *pulumi.OutputState }
+
+func (WebAppAssessmentSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppAssessmentSettings)(nil)).Elem()
+}
+
+func (o WebAppAssessmentSettingsOutput) ToWebAppAssessmentSettingsOutput() WebAppAssessmentSettingsOutput {
+	return o
+}
+
+func (o WebAppAssessmentSettingsOutput) ToWebAppAssessmentSettingsOutputWithContext(ctx context.Context) WebAppAssessmentSettingsOutput {
+	return o
+}
+
+func (o WebAppAssessmentSettingsOutput) ToWebAppAssessmentSettingsPtrOutput() WebAppAssessmentSettingsPtrOutput {
+	return o.ToWebAppAssessmentSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o WebAppAssessmentSettingsOutput) ToWebAppAssessmentSettingsPtrOutputWithContext(ctx context.Context) WebAppAssessmentSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebAppAssessmentSettings) *WebAppAssessmentSettings {
+		return &v
+	}).(WebAppAssessmentSettingsPtrOutput)
+}
+
+// App Service container settings.
+func (o WebAppAssessmentSettingsOutput) AppSvcContainerSettings() AppSvcContainerSettingsOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) AppSvcContainerSettings { return v.AppSvcContainerSettings }).(AppSvcContainerSettingsOutput)
+}
+
+// App Service native settings.
+func (o WebAppAssessmentSettingsOutput) AppSvcNativeSettings() AppSvcNativeSettingsOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) AppSvcNativeSettings { return v.AppSvcNativeSettings }).(AppSvcNativeSettingsOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o WebAppAssessmentSettingsOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) *string { return v.AzureLocation }).(pulumi.StringPtrOutput)
+}
+
+// Azure security offering type.
+func (o WebAppAssessmentSettingsOutput) AzureSecurityOfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) string { return v.AzureSecurityOfferingType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the billing settings.
+func (o WebAppAssessmentSettingsOutput) BillingSettings() BillingSettingsPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) *BillingSettings { return v.BillingSettings }).(BillingSettingsPtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o WebAppAssessmentSettingsOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o WebAppAssessmentSettingsOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o WebAppAssessmentSettingsOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) *string { return v.EnvironmentType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o WebAppAssessmentSettingsOutput) PerformanceData() PerformanceDataPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) *PerformanceData { return v.PerformanceData }).(PerformanceDataPtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o WebAppAssessmentSettingsOutput) SavingsSettings() SavingsSettingsPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) *SavingsSettings { return v.SavingsSettings }).(SavingsSettingsPtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o WebAppAssessmentSettingsOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) *float64 { return v.ScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o WebAppAssessmentSettingsOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettings) *string { return v.SizingCriterion }).(pulumi.StringPtrOutput)
+}
+
+type WebAppAssessmentSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (WebAppAssessmentSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAppAssessmentSettings)(nil)).Elem()
+}
+
+func (o WebAppAssessmentSettingsPtrOutput) ToWebAppAssessmentSettingsPtrOutput() WebAppAssessmentSettingsPtrOutput {
+	return o
+}
+
+func (o WebAppAssessmentSettingsPtrOutput) ToWebAppAssessmentSettingsPtrOutputWithContext(ctx context.Context) WebAppAssessmentSettingsPtrOutput {
+	return o
+}
+
+func (o WebAppAssessmentSettingsPtrOutput) Elem() WebAppAssessmentSettingsOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) WebAppAssessmentSettings {
+		if v != nil {
+			return *v
+		}
+		var ret WebAppAssessmentSettings
+		return ret
+	}).(WebAppAssessmentSettingsOutput)
+}
+
+// App Service container settings.
+func (o WebAppAssessmentSettingsPtrOutput) AppSvcContainerSettings() AppSvcContainerSettingsPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *AppSvcContainerSettings {
+		if v == nil {
+			return nil
+		}
+		return &v.AppSvcContainerSettings
+	}).(AppSvcContainerSettingsPtrOutput)
+}
+
+// App Service native settings.
+func (o WebAppAssessmentSettingsPtrOutput) AppSvcNativeSettings() AppSvcNativeSettingsPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *AppSvcNativeSettings {
+		if v == nil {
+			return nil
+		}
+		return &v.AppSvcNativeSettings
+	}).(AppSvcNativeSettingsPtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o WebAppAssessmentSettingsPtrOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure security offering type.
+func (o WebAppAssessmentSettingsPtrOutput) AzureSecurityOfferingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureSecurityOfferingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the billing settings.
+func (o WebAppAssessmentSettingsPtrOutput) BillingSettings() BillingSettingsPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *BillingSettings {
+		if v == nil {
+			return nil
+		}
+		return v.BillingSettings
+	}).(BillingSettingsPtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o WebAppAssessmentSettingsPtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o WebAppAssessmentSettingsPtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o WebAppAssessmentSettingsPtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o WebAppAssessmentSettingsPtrOutput) PerformanceData() PerformanceDataPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *PerformanceData {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceData
+	}).(PerformanceDataPtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o WebAppAssessmentSettingsPtrOutput) SavingsSettings() SavingsSettingsPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *SavingsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.SavingsSettings
+	}).(SavingsSettingsPtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o WebAppAssessmentSettingsPtrOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o WebAppAssessmentSettingsPtrOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizingCriterion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Web app assessment settings class.
+type WebAppAssessmentSettingsResponse struct {
+	// App Service container settings.
+	AppSvcContainerSettings AppSvcContainerSettingsResponse `pulumi:"appSvcContainerSettings"`
+	// App Service native settings.
+	AppSvcNativeSettings AppSvcNativeSettingsResponse `pulumi:"appSvcNativeSettings"`
+	// Azure Location or Azure region where to which the machines will be migrated.
+	AzureLocation *string `pulumi:"azureLocation"`
+	// Azure security offering type.
+	AzureSecurityOfferingType string `pulumi:"azureSecurityOfferingType"`
+	// Gets or sets the billing settings.
+	BillingSettings *BillingSettingsResponse `pulumi:"billingSettings"`
+	// Currency in which prices should be reported.
+	Currency *string `pulumi:"currency"`
+	// Custom discount percentage.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Gets or sets user configurable setting to display the environment type.
+	EnvironmentType *string `pulumi:"environmentType"`
+	// Gets or sets the performance data.
+	PerformanceData *PerformanceDataResponse `pulumi:"performanceData"`
+	// Gets or sets the savings settings.
+	SavingsSettings *SavingsSettingsResponse `pulumi:"savingsSettings"`
+	// Percentage of buffer that user wants on performance metrics when recommending
+	// Azure sizes.
+	ScalingFactor *float64 `pulumi:"scalingFactor"`
+	// Assessment sizing criterion.
+	SizingCriterion *string `pulumi:"sizingCriterion"`
+}
+
+// Web app assessment settings class.
+type WebAppAssessmentSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (WebAppAssessmentSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppAssessmentSettingsResponse)(nil)).Elem()
+}
+
+func (o WebAppAssessmentSettingsResponseOutput) ToWebAppAssessmentSettingsResponseOutput() WebAppAssessmentSettingsResponseOutput {
+	return o
+}
+
+func (o WebAppAssessmentSettingsResponseOutput) ToWebAppAssessmentSettingsResponseOutputWithContext(ctx context.Context) WebAppAssessmentSettingsResponseOutput {
+	return o
+}
+
+// App Service container settings.
+func (o WebAppAssessmentSettingsResponseOutput) AppSvcContainerSettings() AppSvcContainerSettingsResponseOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) AppSvcContainerSettingsResponse {
+		return v.AppSvcContainerSettings
+	}).(AppSvcContainerSettingsResponseOutput)
+}
+
+// App Service native settings.
+func (o WebAppAssessmentSettingsResponseOutput) AppSvcNativeSettings() AppSvcNativeSettingsResponseOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) AppSvcNativeSettingsResponse { return v.AppSvcNativeSettings }).(AppSvcNativeSettingsResponseOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o WebAppAssessmentSettingsResponseOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) *string { return v.AzureLocation }).(pulumi.StringPtrOutput)
+}
+
+// Azure security offering type.
+func (o WebAppAssessmentSettingsResponseOutput) AzureSecurityOfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) string { return v.AzureSecurityOfferingType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the billing settings.
+func (o WebAppAssessmentSettingsResponseOutput) BillingSettings() BillingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) *BillingSettingsResponse { return v.BillingSettings }).(BillingSettingsResponsePtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o WebAppAssessmentSettingsResponseOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o WebAppAssessmentSettingsResponseOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o WebAppAssessmentSettingsResponseOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) *string { return v.EnvironmentType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o WebAppAssessmentSettingsResponseOutput) PerformanceData() PerformanceDataResponsePtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) *PerformanceDataResponse { return v.PerformanceData }).(PerformanceDataResponsePtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o WebAppAssessmentSettingsResponseOutput) SavingsSettings() SavingsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) *SavingsSettingsResponse { return v.SavingsSettings }).(SavingsSettingsResponsePtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o WebAppAssessmentSettingsResponseOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) *float64 { return v.ScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o WebAppAssessmentSettingsResponseOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentSettingsResponse) *string { return v.SizingCriterion }).(pulumi.StringPtrOutput)
+}
+
+type WebAppAssessmentSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WebAppAssessmentSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAppAssessmentSettingsResponse)(nil)).Elem()
+}
+
+func (o WebAppAssessmentSettingsResponsePtrOutput) ToWebAppAssessmentSettingsResponsePtrOutput() WebAppAssessmentSettingsResponsePtrOutput {
+	return o
+}
+
+func (o WebAppAssessmentSettingsResponsePtrOutput) ToWebAppAssessmentSettingsResponsePtrOutputWithContext(ctx context.Context) WebAppAssessmentSettingsResponsePtrOutput {
+	return o
+}
+
+func (o WebAppAssessmentSettingsResponsePtrOutput) Elem() WebAppAssessmentSettingsResponseOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) WebAppAssessmentSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WebAppAssessmentSettingsResponse
+		return ret
+	}).(WebAppAssessmentSettingsResponseOutput)
+}
+
+// App Service container settings.
+func (o WebAppAssessmentSettingsResponsePtrOutput) AppSvcContainerSettings() AppSvcContainerSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *AppSvcContainerSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AppSvcContainerSettings
+	}).(AppSvcContainerSettingsResponsePtrOutput)
+}
+
+// App Service native settings.
+func (o WebAppAssessmentSettingsResponsePtrOutput) AppSvcNativeSettings() AppSvcNativeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *AppSvcNativeSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AppSvcNativeSettings
+	}).(AppSvcNativeSettingsResponsePtrOutput)
+}
+
+// Azure Location or Azure region where to which the machines will be migrated.
+func (o WebAppAssessmentSettingsResponsePtrOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure security offering type.
+func (o WebAppAssessmentSettingsResponsePtrOutput) AzureSecurityOfferingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureSecurityOfferingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the billing settings.
+func (o WebAppAssessmentSettingsResponsePtrOutput) BillingSettings() BillingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *BillingSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BillingSettings
+	}).(BillingSettingsResponsePtrOutput)
+}
+
+// Currency in which prices should be reported.
+func (o WebAppAssessmentSettingsResponsePtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom discount percentage.
+func (o WebAppAssessmentSettingsResponsePtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets user configurable setting to display the environment type.
+func (o WebAppAssessmentSettingsResponsePtrOutput) EnvironmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the performance data.
+func (o WebAppAssessmentSettingsResponsePtrOutput) PerformanceData() PerformanceDataResponsePtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *PerformanceDataResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceData
+	}).(PerformanceDataResponsePtrOutput)
+}
+
+// Gets or sets the savings settings.
+func (o WebAppAssessmentSettingsResponsePtrOutput) SavingsSettings() SavingsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *SavingsSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SavingsSettings
+	}).(SavingsSettingsResponsePtrOutput)
+}
+
+// Percentage of buffer that user wants on performance metrics when recommending
+// Azure sizes.
+func (o WebAppAssessmentSettingsResponsePtrOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Assessment sizing criterion.
+func (o WebAppAssessmentSettingsResponsePtrOutput) SizingCriterion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizingCriterion
+	}).(pulumi.StringPtrOutput)
+}
+
+// WebApp assessment resource properties.
+type WebAppAssessmentV3Properties struct {
+	// Gets or sets the machine assessment ARM ID for VM fallback.
+	FallbackMachineAssessmentArmId *string `pulumi:"fallbackMachineAssessmentArmId"`
+	// Gets or sets the scope of assessment.
+	Scope *Scope `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings *WebAppAssessmentSettings `pulumi:"settings"`
+}
+
+// WebAppAssessmentV3PropertiesInput is an input type that accepts WebAppAssessmentV3PropertiesArgs and WebAppAssessmentV3PropertiesOutput values.
+// You can construct a concrete instance of `WebAppAssessmentV3PropertiesInput` via:
+//
+//	WebAppAssessmentV3PropertiesArgs{...}
+type WebAppAssessmentV3PropertiesInput interface {
+	pulumi.Input
+
+	ToWebAppAssessmentV3PropertiesOutput() WebAppAssessmentV3PropertiesOutput
+	ToWebAppAssessmentV3PropertiesOutputWithContext(context.Context) WebAppAssessmentV3PropertiesOutput
+}
+
+// WebApp assessment resource properties.
+type WebAppAssessmentV3PropertiesArgs struct {
+	// Gets or sets the machine assessment ARM ID for VM fallback.
+	FallbackMachineAssessmentArmId pulumi.StringPtrInput `pulumi:"fallbackMachineAssessmentArmId"`
+	// Gets or sets the scope of assessment.
+	Scope ScopePtrInput `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings WebAppAssessmentSettingsPtrInput `pulumi:"settings"`
+}
+
+func (WebAppAssessmentV3PropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppAssessmentV3Properties)(nil)).Elem()
+}
+
+func (i WebAppAssessmentV3PropertiesArgs) ToWebAppAssessmentV3PropertiesOutput() WebAppAssessmentV3PropertiesOutput {
+	return i.ToWebAppAssessmentV3PropertiesOutputWithContext(context.Background())
+}
+
+func (i WebAppAssessmentV3PropertiesArgs) ToWebAppAssessmentV3PropertiesOutputWithContext(ctx context.Context) WebAppAssessmentV3PropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAppAssessmentV3PropertiesOutput)
+}
+
+func (i WebAppAssessmentV3PropertiesArgs) ToWebAppAssessmentV3PropertiesPtrOutput() WebAppAssessmentV3PropertiesPtrOutput {
+	return i.ToWebAppAssessmentV3PropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i WebAppAssessmentV3PropertiesArgs) ToWebAppAssessmentV3PropertiesPtrOutputWithContext(ctx context.Context) WebAppAssessmentV3PropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAppAssessmentV3PropertiesOutput).ToWebAppAssessmentV3PropertiesPtrOutputWithContext(ctx)
+}
+
+// WebAppAssessmentV3PropertiesPtrInput is an input type that accepts WebAppAssessmentV3PropertiesArgs, WebAppAssessmentV3PropertiesPtr and WebAppAssessmentV3PropertiesPtrOutput values.
+// You can construct a concrete instance of `WebAppAssessmentV3PropertiesPtrInput` via:
+//
+//	        WebAppAssessmentV3PropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebAppAssessmentV3PropertiesPtrInput interface {
+	pulumi.Input
+
+	ToWebAppAssessmentV3PropertiesPtrOutput() WebAppAssessmentV3PropertiesPtrOutput
+	ToWebAppAssessmentV3PropertiesPtrOutputWithContext(context.Context) WebAppAssessmentV3PropertiesPtrOutput
+}
+
+type webAppAssessmentV3PropertiesPtrType WebAppAssessmentV3PropertiesArgs
+
+func WebAppAssessmentV3PropertiesPtr(v *WebAppAssessmentV3PropertiesArgs) WebAppAssessmentV3PropertiesPtrInput {
+	return (*webAppAssessmentV3PropertiesPtrType)(v)
+}
+
+func (*webAppAssessmentV3PropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAppAssessmentV3Properties)(nil)).Elem()
+}
+
+func (i *webAppAssessmentV3PropertiesPtrType) ToWebAppAssessmentV3PropertiesPtrOutput() WebAppAssessmentV3PropertiesPtrOutput {
+	return i.ToWebAppAssessmentV3PropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *webAppAssessmentV3PropertiesPtrType) ToWebAppAssessmentV3PropertiesPtrOutputWithContext(ctx context.Context) WebAppAssessmentV3PropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAppAssessmentV3PropertiesPtrOutput)
+}
+
+// WebApp assessment resource properties.
+type WebAppAssessmentV3PropertiesOutput struct{ *pulumi.OutputState }
+
+func (WebAppAssessmentV3PropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppAssessmentV3Properties)(nil)).Elem()
+}
+
+func (o WebAppAssessmentV3PropertiesOutput) ToWebAppAssessmentV3PropertiesOutput() WebAppAssessmentV3PropertiesOutput {
+	return o
+}
+
+func (o WebAppAssessmentV3PropertiesOutput) ToWebAppAssessmentV3PropertiesOutputWithContext(ctx context.Context) WebAppAssessmentV3PropertiesOutput {
+	return o
+}
+
+func (o WebAppAssessmentV3PropertiesOutput) ToWebAppAssessmentV3PropertiesPtrOutput() WebAppAssessmentV3PropertiesPtrOutput {
+	return o.ToWebAppAssessmentV3PropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o WebAppAssessmentV3PropertiesOutput) ToWebAppAssessmentV3PropertiesPtrOutputWithContext(ctx context.Context) WebAppAssessmentV3PropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebAppAssessmentV3Properties) *WebAppAssessmentV3Properties {
+		return &v
+	}).(WebAppAssessmentV3PropertiesPtrOutput)
+}
+
+// Gets or sets the machine assessment ARM ID for VM fallback.
+func (o WebAppAssessmentV3PropertiesOutput) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentV3Properties) *string { return v.FallbackMachineAssessmentArmId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o WebAppAssessmentV3PropertiesOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentV3Properties) *Scope { return v.Scope }).(ScopePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o WebAppAssessmentV3PropertiesOutput) Settings() WebAppAssessmentSettingsPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentV3Properties) *WebAppAssessmentSettings { return v.Settings }).(WebAppAssessmentSettingsPtrOutput)
+}
+
+type WebAppAssessmentV3PropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (WebAppAssessmentV3PropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAppAssessmentV3Properties)(nil)).Elem()
+}
+
+func (o WebAppAssessmentV3PropertiesPtrOutput) ToWebAppAssessmentV3PropertiesPtrOutput() WebAppAssessmentV3PropertiesPtrOutput {
+	return o
+}
+
+func (o WebAppAssessmentV3PropertiesPtrOutput) ToWebAppAssessmentV3PropertiesPtrOutputWithContext(ctx context.Context) WebAppAssessmentV3PropertiesPtrOutput {
+	return o
+}
+
+func (o WebAppAssessmentV3PropertiesPtrOutput) Elem() WebAppAssessmentV3PropertiesOutput {
+	return o.ApplyT(func(v *WebAppAssessmentV3Properties) WebAppAssessmentV3Properties {
+		if v != nil {
+			return *v
+		}
+		var ret WebAppAssessmentV3Properties
+		return ret
+	}).(WebAppAssessmentV3PropertiesOutput)
+}
+
+// Gets or sets the machine assessment ARM ID for VM fallback.
+func (o WebAppAssessmentV3PropertiesPtrOutput) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentV3Properties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FallbackMachineAssessmentArmId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o WebAppAssessmentV3PropertiesPtrOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentV3Properties) *Scope {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(ScopePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o WebAppAssessmentV3PropertiesPtrOutput) Settings() WebAppAssessmentSettingsPtrOutput {
+	return o.ApplyT(func(v *WebAppAssessmentV3Properties) *WebAppAssessmentSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(WebAppAssessmentSettingsPtrOutput)
+}
+
+// WebApp assessment resource properties.
+type WebAppAssessmentV3PropertiesResponse struct {
+	// Gets or sets the details of the assessment.
+	Details *AssessmentDetailsResponse `pulumi:"details"`
+	// Gets or sets the machine assessment ARM ID for VM fallback.
+	FallbackMachineAssessmentArmId *string `pulumi:"fallbackMachineAssessmentArmId"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Gets or sets the scope of assessment.
+	Scope *ScopeResponse `pulumi:"scope"`
+	// Gets or sets the settings for the assessment.
+	Settings *WebAppAssessmentSettingsResponse `pulumi:"settings"`
+}
+
+// WebApp assessment resource properties.
+type WebAppAssessmentV3PropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (WebAppAssessmentV3PropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppAssessmentV3PropertiesResponse)(nil)).Elem()
+}
+
+func (o WebAppAssessmentV3PropertiesResponseOutput) ToWebAppAssessmentV3PropertiesResponseOutput() WebAppAssessmentV3PropertiesResponseOutput {
+	return o
+}
+
+func (o WebAppAssessmentV3PropertiesResponseOutput) ToWebAppAssessmentV3PropertiesResponseOutputWithContext(ctx context.Context) WebAppAssessmentV3PropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the details of the assessment.
+func (o WebAppAssessmentV3PropertiesResponseOutput) Details() AssessmentDetailsResponsePtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentV3PropertiesResponse) *AssessmentDetailsResponse { return v.Details }).(AssessmentDetailsResponsePtrOutput)
+}
+
+// Gets or sets the machine assessment ARM ID for VM fallback.
+func (o WebAppAssessmentV3PropertiesResponseOutput) FallbackMachineAssessmentArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentV3PropertiesResponse) *string { return v.FallbackMachineAssessmentArmId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the last operation.
+func (o WebAppAssessmentV3PropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAppAssessmentV3PropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Gets or sets the scope of assessment.
+func (o WebAppAssessmentV3PropertiesResponseOutput) Scope() ScopeResponsePtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentV3PropertiesResponse) *ScopeResponse { return v.Scope }).(ScopeResponsePtrOutput)
+}
+
+// Gets or sets the settings for the assessment.
+func (o WebAppAssessmentV3PropertiesResponseOutput) Settings() WebAppAssessmentSettingsResponsePtrOutput {
+	return o.ApplyT(func(v WebAppAssessmentV3PropertiesResponse) *WebAppAssessmentSettingsResponse { return v.Settings }).(WebAppAssessmentSettingsResponsePtrOutput)
+}
+
 // Class for web application configurations.
 type WebApplicationConfiguration struct {
 	// Gets or sets the configuration file path.
@@ -37987,6 +44738,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSvcNativeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AppSvcNativeSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AppSvcNativeSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AssessmentDetailsResponseOutput{})
+	pulumi.RegisterOutputType(AssessmentDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(AssessmentPropertiesOutput{})
 	pulumi.RegisterOutputType(AssessmentPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AssessmentScopeParametersOutput{})
@@ -38003,6 +44756,13 @@ func init() {
 	pulumi.RegisterOutputType(AvailabilitySetResourceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AvailabilitySetResourceSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AvailabilitySetResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AvsAssessmentPropertiesV2Output{})
+	pulumi.RegisterOutputType(AvsAssessmentPropertiesV2PtrOutput{})
+	pulumi.RegisterOutputType(AvsAssessmentPropertiesV2ResponseOutput{})
+	pulumi.RegisterOutputType(AvsAssessmentSettingsOutput{})
+	pulumi.RegisterOutputType(AvsAssessmentSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AvsAssessmentSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AvsAssessmentSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(AvsEstimatedExternalStorageResponseOutput{})
 	pulumi.RegisterOutputType(AvsEstimatedExternalStorageResponseArrayOutput{})
 	pulumi.RegisterOutputType(AvsEstimatedNetworkResponseOutput{})
@@ -38029,6 +44789,10 @@ func init() {
 	pulumi.RegisterOutputType(AzureSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AzureSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AzureSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(BillingSettingsOutput{})
+	pulumi.RegisterOutputType(BillingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(BillingSettingsResponseOutput{})
+	pulumi.RegisterOutputType(BillingSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -38056,6 +44820,10 @@ func init() {
 	pulumi.RegisterOutputType(CollectorPropertiesOutput{})
 	pulumi.RegisterOutputType(CollectorPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CollectorPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CompoundAssessmentDetailsResponseOutput{})
+	pulumi.RegisterOutputType(CompoundAssessmentPropertiesOutput{})
+	pulumi.RegisterOutputType(CompoundAssessmentPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(CompoundAssessmentPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ComputeSettingsOutput{})
 	pulumi.RegisterOutputType(ComputeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ComputeSettingsResponseOutput{})
@@ -38105,6 +44873,9 @@ func init() {
 	pulumi.RegisterOutputType(GroupPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(HealthErrorModelResponseOutput{})
 	pulumi.RegisterOutputType(HealthErrorModelResponseArrayOutput{})
+	pulumi.RegisterOutputType(HeterogeneousAssessmentPropertiesOutput{})
+	pulumi.RegisterOutputType(HeterogeneousAssessmentPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(HeterogeneousAssessmentPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(HypervLicenseOutput{})
 	pulumi.RegisterOutputType(HypervLicenseArrayOutput{})
 	pulumi.RegisterOutputType(HypervLicenseResponseOutput{})
@@ -38152,6 +44923,9 @@ func init() {
 	pulumi.RegisterOutputType(ImportCollectorPropertiesOutput{})
 	pulumi.RegisterOutputType(ImportCollectorPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ImportCollectorPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ImportSqlCollectorPropertiesOutput{})
+	pulumi.RegisterOutputType(ImportSqlCollectorPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ImportSqlCollectorPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(InnerHealthErrorModelResponseOutput{})
 	pulumi.RegisterOutputType(InnerHealthErrorModelResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
@@ -38192,6 +44966,13 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerResourceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerResourceSettingsResponseOutput{})
 	pulumi.RegisterOutputType(LoadBalancerResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(MachineAssessmentSettingsOutput{})
+	pulumi.RegisterOutputType(MachineAssessmentSettingsPtrOutput{})
+	pulumi.RegisterOutputType(MachineAssessmentSettingsResponseOutput{})
+	pulumi.RegisterOutputType(MachineAssessmentSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(MachineAssessmentV2PropertiesOutput{})
+	pulumi.RegisterOutputType(MachineAssessmentV2PropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MachineAssessmentV2PropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesResponseOutput{})
@@ -38281,6 +45062,10 @@ func init() {
 	pulumi.RegisterOutputType(PerfDataSettingsPtrOutput{})
 	pulumi.RegisterOutputType(PerfDataSettingsResponseOutput{})
 	pulumi.RegisterOutputType(PerfDataSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(PerformanceDataOutput{})
+	pulumi.RegisterOutputType(PerformanceDataPtrOutput{})
+	pulumi.RegisterOutputType(PerformanceDataResponseOutput{})
+	pulumi.RegisterOutputType(PerformanceDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(PortMappingOutput{})
 	pulumi.RegisterOutputType(PortMappingPtrOutput{})
 	pulumi.RegisterOutputType(PortMappingResponseOutput{})
@@ -38322,6 +45107,14 @@ func init() {
 	pulumi.RegisterOutputType(ResourceRequirementsPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRequirementsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceRequirementsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SavingsSettingsOutput{})
+	pulumi.RegisterOutputType(SavingsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SavingsSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SavingsSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ScopeOutput{})
+	pulumi.RegisterOutputType(ScopePtrOutput{})
+	pulumi.RegisterOutputType(ScopeResponseOutput{})
+	pulumi.RegisterOutputType(ScopeResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreDetailsOutput{})
 	pulumi.RegisterOutputType(SecretStoreDetailsPtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreDetailsResponseOutput{})
@@ -38348,6 +45141,13 @@ func init() {
 	pulumi.RegisterOutputType(SolutionPropertiesOutput{})
 	pulumi.RegisterOutputType(SolutionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SolutionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlAssessmentSettingsOutput{})
+	pulumi.RegisterOutputType(SqlAssessmentSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SqlAssessmentSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SqlAssessmentSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlAssessmentV3PropertiesOutput{})
+	pulumi.RegisterOutputType(SqlAssessmentV3PropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SqlAssessmentV3PropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SqlDatabaseResourceSettingsOutput{})
 	pulumi.RegisterOutputType(SqlDatabaseResourceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SqlDatabaseResourceSettingsResponseOutput{})
@@ -38356,6 +45156,10 @@ func init() {
 	pulumi.RegisterOutputType(SqlDbSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SqlDbSettingsResponseOutput{})
 	pulumi.RegisterOutputType(SqlDbSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlDbSettingsV3Output{})
+	pulumi.RegisterOutputType(SqlDbSettingsV3PtrOutput{})
+	pulumi.RegisterOutputType(SqlDbSettingsV3ResponseOutput{})
+	pulumi.RegisterOutputType(SqlDbSettingsV3ResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlElasticPoolResourceSettingsOutput{})
 	pulumi.RegisterOutputType(SqlElasticPoolResourceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SqlElasticPoolResourceSettingsResponseOutput{})
@@ -38364,6 +45168,10 @@ func init() {
 	pulumi.RegisterOutputType(SqlMiSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SqlMiSettingsResponseOutput{})
 	pulumi.RegisterOutputType(SqlMiSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlMiSettingsV3Output{})
+	pulumi.RegisterOutputType(SqlMiSettingsV3PtrOutput{})
+	pulumi.RegisterOutputType(SqlMiSettingsV3ResponseOutput{})
+	pulumi.RegisterOutputType(SqlMiSettingsV3ResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlServerLicensingSettingsOutput{})
 	pulumi.RegisterOutputType(SqlServerLicensingSettingsArrayOutput{})
 	pulumi.RegisterOutputType(SqlServerLicensingSettingsResponseOutput{})
@@ -38390,6 +45198,9 @@ func init() {
 	pulumi.RegisterOutputType(SubnetResourceSettingsResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponsePtrOutput{})
+	pulumi.RegisterOutputType(TargetAssessmentArmIdsOutput{})
+	pulumi.RegisterOutputType(TargetAssessmentArmIdsPtrOutput{})
+	pulumi.RegisterOutputType(TargetAssessmentArmIdsResponseOutput{})
 	pulumi.RegisterOutputType(TargetStorageProfileOutput{})
 	pulumi.RegisterOutputType(TargetStorageProfilePtrOutput{})
 	pulumi.RegisterOutputType(TargetStorageProfileResponseOutput{})
@@ -38422,6 +45233,13 @@ func init() {
 	pulumi.RegisterOutputType(VmUptimePtrOutput{})
 	pulumi.RegisterOutputType(VmUptimeResponseOutput{})
 	pulumi.RegisterOutputType(VmUptimeResponsePtrOutput{})
+	pulumi.RegisterOutputType(WebAppAssessmentSettingsOutput{})
+	pulumi.RegisterOutputType(WebAppAssessmentSettingsPtrOutput{})
+	pulumi.RegisterOutputType(WebAppAssessmentSettingsResponseOutput{})
+	pulumi.RegisterOutputType(WebAppAssessmentSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(WebAppAssessmentV3PropertiesOutput{})
+	pulumi.RegisterOutputType(WebAppAssessmentV3PropertiesPtrOutput{})
+	pulumi.RegisterOutputType(WebAppAssessmentV3PropertiesResponseOutput{})
 	pulumi.RegisterOutputType(WebApplicationConfigurationOutput{})
 	pulumi.RegisterOutputType(WebApplicationConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(WebApplicationConfigurationResponseOutput{})

@@ -14,6 +14,8 @@ import (
 // List all the subscriptions in the private store context
 //
 // Uses Azure REST API version 2023-01-01.
+//
+// Other available API versions: 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native marketplace [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListPrivateStoreSubscriptionsContext(ctx *pulumi.Context, args *ListPrivateStoreSubscriptionsContextArgs, opts ...pulumi.InvokeOption) (*ListPrivateStoreSubscriptionsContextResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListPrivateStoreSubscriptionsContextResult

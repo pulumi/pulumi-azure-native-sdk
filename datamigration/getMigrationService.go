@@ -14,6 +14,8 @@ import (
 // Retrieve the Database Migration Service
 //
 // Uses Azure REST API version 2023-07-15-preview.
+//
+// Other available API versions: 2025-03-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMigrationService(ctx *pulumi.Context, args *LookupMigrationServiceArgs, opts ...pulumi.InvokeOption) (*LookupMigrationServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigrationServiceResult

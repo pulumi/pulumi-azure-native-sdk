@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-21-preview.
 //
-// Other available API versions: 2022-05-21-preview, 2023-10-07, 2024-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-05-21-preview, 2023-10-07, 2024-06-01, 2025-03-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualMachineTemplate struct {
 	pulumi.CustomResourceState
 
@@ -100,6 +100,9 @@ func NewVirtualMachineTemplate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:scvmm/v20240601:VirtualMachineTemplate"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20250313:VirtualMachineTemplate"),
 		},
 	})
 	opts = append(opts, aliases)

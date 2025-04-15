@@ -72,6 +72,9 @@ func NewVMwareCollector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20240101preview:VmwareCollectorsOperation"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20240303preview:VMwareCollector"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate:VmwareCollectorsOperation"),
 		},
 	})

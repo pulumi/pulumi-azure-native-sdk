@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:storagecache:AmlFilesystem":
 		r = &AmlFilesystem{}
+	case "azure-native:storagecache:AutoExportJob":
+		r = &AutoExportJob{}
 	case "azure-native:storagecache:Cache":
 		r = &Cache{}
 	case "azure-native:storagecache:ImportJob":

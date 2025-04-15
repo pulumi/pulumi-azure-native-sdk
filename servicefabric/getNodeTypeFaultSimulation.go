@@ -14,6 +14,8 @@ import (
 // Gets a fault simulation by the simulationId.
 //
 // Uses Azure REST API version 2024-11-01-preview.
+//
+// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetNodeTypeFaultSimulation(ctx *pulumi.Context, args *GetNodeTypeFaultSimulationArgs, opts ...pulumi.InvokeOption) (*GetNodeTypeFaultSimulationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetNodeTypeFaultSimulationResult

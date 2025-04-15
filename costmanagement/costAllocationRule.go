@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2020-03-01-preview.
 //
-// Other available API versions: 2020-03-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native costmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-03-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-10-01-preview, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native costmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CostAllocationRule struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +58,9 @@ func NewCostAllocationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20241001preview:CostAllocationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20250301:CostAllocationRule"),
 		},
 	})
 	opts = append(opts, aliases)

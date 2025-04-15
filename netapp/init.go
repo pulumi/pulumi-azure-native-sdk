@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CapacityPool{}
 	case "azure-native:netapp:CapacityPoolBackup":
 		r = &CapacityPoolBackup{}
+	case "azure-native:netapp:CapacityPoolBucket":
+		r = &CapacityPoolBucket{}
 	case "azure-native:netapp:CapacityPoolSnapshot":
 		r = &CapacityPoolSnapshot{}
 	case "azure-native:netapp:CapacityPoolSubvolume":
