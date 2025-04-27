@@ -14,6 +14,8 @@ import (
 // The Advisor assessment result data structure.
 //
 // Uses Azure REST API version 2023-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
+//
+// Other available API versions: 2024-11-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Assessment struct {
 	pulumi.CustomResourceState
 
@@ -55,6 +57,9 @@ func NewAssessment(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:advisor/v20230901preview:Assessment"),
+		},
+		{
+			Type: pulumi.String("azure-native:advisor/v20241118preview:Assessment"),
 		},
 	})
 	opts = append(opts, aliases)

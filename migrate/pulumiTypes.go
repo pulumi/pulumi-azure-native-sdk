@@ -21788,6 +21788,8 @@ type MachineAssessmentSettings struct {
 	AzureStorageRedundancy *string `pulumi:"azureStorageRedundancy"`
 	// Gets or sets the Azure VM families.
 	AzureVmFamilies []string `pulumi:"azureVmFamilies"`
+	// Gets or sets the Azure VM security options.
+	AzureVmSecurityOptions []string `pulumi:"azureVmSecurityOptions"`
 	// Gets or sets the billing settings.
 	BillingSettings *BillingSettings `pulumi:"billingSettings"`
 	// Currency in which prices should be reported.
@@ -21841,6 +21843,8 @@ type MachineAssessmentSettingsArgs struct {
 	AzureStorageRedundancy pulumi.StringPtrInput `pulumi:"azureStorageRedundancy"`
 	// Gets or sets the Azure VM families.
 	AzureVmFamilies pulumi.StringArrayInput `pulumi:"azureVmFamilies"`
+	// Gets or sets the Azure VM security options.
+	AzureVmSecurityOptions pulumi.StringArrayInput `pulumi:"azureVmSecurityOptions"`
 	// Gets or sets the billing settings.
 	BillingSettings BillingSettingsPtrInput `pulumi:"billingSettings"`
 	// Currency in which prices should be reported.
@@ -21978,6 +21982,11 @@ func (o MachineAssessmentSettingsOutput) AzureStorageRedundancy() pulumi.StringP
 // Gets or sets the Azure VM families.
 func (o MachineAssessmentSettingsOutput) AzureVmFamilies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MachineAssessmentSettings) []string { return v.AzureVmFamilies }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the Azure VM security options.
+func (o MachineAssessmentSettingsOutput) AzureVmSecurityOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MachineAssessmentSettings) []string { return v.AzureVmSecurityOptions }).(pulumi.StringArrayOutput)
 }
 
 // Gets or sets the billing settings.
@@ -22128,6 +22137,16 @@ func (o MachineAssessmentSettingsPtrOutput) AzureVmFamilies() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// Gets or sets the Azure VM security options.
+func (o MachineAssessmentSettingsPtrOutput) AzureVmSecurityOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureVmSecurityOptions
+	}).(pulumi.StringArrayOutput)
+}
+
 // Gets or sets the billing settings.
 func (o MachineAssessmentSettingsPtrOutput) BillingSettings() BillingSettingsPtrOutput {
 	return o.ApplyT(func(v *MachineAssessmentSettings) *BillingSettings {
@@ -22248,6 +22267,8 @@ type MachineAssessmentSettingsResponse struct {
 	AzureStorageRedundancy *string `pulumi:"azureStorageRedundancy"`
 	// Gets or sets the Azure VM families.
 	AzureVmFamilies []string `pulumi:"azureVmFamilies"`
+	// Gets or sets the Azure VM security options.
+	AzureVmSecurityOptions []string `pulumi:"azureVmSecurityOptions"`
 	// Gets or sets the billing settings.
 	BillingSettings *BillingSettingsResponse `pulumi:"billingSettings"`
 	// Currency in which prices should be reported.
@@ -22322,6 +22343,11 @@ func (o MachineAssessmentSettingsResponseOutput) AzureStorageRedundancy() pulumi
 // Gets or sets the Azure VM families.
 func (o MachineAssessmentSettingsResponseOutput) AzureVmFamilies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MachineAssessmentSettingsResponse) []string { return v.AzureVmFamilies }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the Azure VM security options.
+func (o MachineAssessmentSettingsResponseOutput) AzureVmSecurityOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) []string { return v.AzureVmSecurityOptions }).(pulumi.StringArrayOutput)
 }
 
 // Gets or sets the billing settings.
@@ -22469,6 +22495,16 @@ func (o MachineAssessmentSettingsResponsePtrOutput) AzureVmFamilies() pulumi.Str
 			return nil
 		}
 		return v.AzureVmFamilies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the Azure VM security options.
+func (o MachineAssessmentSettingsResponsePtrOutput) AzureVmSecurityOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureVmSecurityOptions
 	}).(pulumi.StringArrayOutput)
 }
 

@@ -12,34 +12,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An Azure Monitor Workspace definition.
+// An Azure Monitor Workspace definition
 //
-// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-03.
+// Uses Azure REST API version 2023-04-03. In version 2.x of the Azure Native provider, it used API version 2023-04-03.
 //
-// Other available API versions: 2023-04-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AzureMonitorWorkspace struct {
 	pulumi.CustomResourceState
 
-	// The immutable ID of the Azure Monitor workspace. This property is read-only.
+	// The immutable Id of the Azure Monitor Workspace. This property is read-only.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Data Collection Rule and Endpoint used for ingestion by default.
-	DefaultIngestionSettings IngestionSettingsResponseOutput `pulumi:"defaultIngestionSettings"`
+	DefaultIngestionSettings AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput `pulumi:"defaultIngestionSettings"`
 	// Resource entity tag (ETag)
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Information about metrics for the Azure Monitor workspace
-	Metrics MetricsResponsePtrOutput `pulumi:"metrics"`
+	// Properties related to the metrics container in the Azure Monitor Workspace
+	Metrics AzureMonitorWorkspaceResponseMetricsOutput `pulumi:"metrics"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// List of private endpoint connections.
+	// List of private endpoint connections
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
-	// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
+	// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Gets or sets allow or disallow public network access to workspace
-	PublicNetworkAccess pulumi.StringOutput `pulumi:"publicNetworkAccess"`
+	// Gets or sets allow or disallow public network access to Azure Monitor Workspace
+	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -103,10 +103,12 @@ func (AzureMonitorWorkspaceState) ElementType() reflect.Type {
 }
 
 type azureMonitorWorkspaceArgs struct {
-	// The name of the Azure Monitor workspace. The name is case insensitive.
+	// The name of the Azure Monitor Workspace. The name is case insensitive
 	AzureMonitorWorkspaceName *string `pulumi:"azureMonitorWorkspaceName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Gets or sets allow or disallow public network access to Azure Monitor Workspace
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -115,10 +117,12 @@ type azureMonitorWorkspaceArgs struct {
 
 // The set of arguments for constructing a AzureMonitorWorkspace resource.
 type AzureMonitorWorkspaceArgs struct {
-	// The name of the Azure Monitor workspace. The name is case insensitive.
+	// The name of the Azure Monitor Workspace. The name is case insensitive
 	AzureMonitorWorkspaceName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Gets or sets allow or disallow public network access to Azure Monitor Workspace
+	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -162,7 +166,7 @@ func (o AzureMonitorWorkspaceOutput) ToAzureMonitorWorkspaceOutputWithContext(ct
 	return o
 }
 
-// The immutable ID of the Azure Monitor workspace. This property is read-only.
+// The immutable Id of the Azure Monitor Workspace. This property is read-only.
 func (o AzureMonitorWorkspaceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -173,8 +177,10 @@ func (o AzureMonitorWorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The Data Collection Rule and Endpoint used for ingestion by default.
-func (o AzureMonitorWorkspaceOutput) DefaultIngestionSettings() IngestionSettingsResponseOutput {
-	return o.ApplyT(func(v *AzureMonitorWorkspace) IngestionSettingsResponseOutput { return v.DefaultIngestionSettings }).(IngestionSettingsResponseOutput)
+func (o AzureMonitorWorkspaceOutput) DefaultIngestionSettings() AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspace) AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
+		return v.DefaultIngestionSettings
+	}).(AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput)
 }
 
 // Resource entity tag (ETag)
@@ -187,9 +193,9 @@ func (o AzureMonitorWorkspaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Information about metrics for the Azure Monitor workspace
-func (o AzureMonitorWorkspaceOutput) Metrics() MetricsResponsePtrOutput {
-	return o.ApplyT(func(v *AzureMonitorWorkspace) MetricsResponsePtrOutput { return v.Metrics }).(MetricsResponsePtrOutput)
+// Properties related to the metrics container in the Azure Monitor Workspace
+func (o AzureMonitorWorkspaceOutput) Metrics() AzureMonitorWorkspaceResponseMetricsOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspace) AzureMonitorWorkspaceResponseMetricsOutput { return v.Metrics }).(AzureMonitorWorkspaceResponseMetricsOutput)
 }
 
 // The name of the resource
@@ -197,21 +203,21 @@ func (o AzureMonitorWorkspaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of private endpoint connections.
+// List of private endpoint connections
 func (o AzureMonitorWorkspaceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v *AzureMonitorWorkspace) PrivateEndpointConnectionResponseArrayOutput {
 		return v.PrivateEndpointConnections
 	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
-// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
+// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
 func (o AzureMonitorWorkspaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Gets or sets allow or disallow public network access to workspace
-func (o AzureMonitorWorkspaceOutput) PublicNetworkAccess() pulumi.StringOutput {
-	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.PublicNetworkAccess }).(pulumi.StringOutput)
+// Gets or sets allow or disallow public network access to Azure Monitor Workspace
+func (o AzureMonitorWorkspaceOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

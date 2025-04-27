@@ -25,7 +25,7 @@ type ServerGroupCluster struct {
 	// The administrator's login name of the servers in the cluster.
 	AdministratorLogin pulumi.StringOutput `pulumi:"administratorLogin"`
 	// Authentication configuration of a cluster.
-	AuthConfig AuthConfigResponsePtrOutput `pulumi:"authConfig"`
+	AuthConfig ServerGroupClusterAuthConfigResponsePtrOutput `pulumi:"authConfig"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Citus extension version on all cluster servers.
@@ -39,7 +39,7 @@ type ServerGroupCluster struct {
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 	CoordinatorVCores pulumi.IntPtrOutput `pulumi:"coordinatorVCores"`
 	// The data encryption properties of a cluster.
-	DataEncryption DataEncryptionResponsePtrOutput `pulumi:"dataEncryption"`
+	DataEncryption ServerGroupClusterDataEncryptionResponsePtrOutput `pulumi:"dataEncryption"`
 	// The database name of the cluster. Only one database per cluster is supported.
 	DatabaseName pulumi.StringPtrOutput `pulumi:"databaseName"`
 	// The earliest restore point time (ISO8601 format) for the cluster.
@@ -55,7 +55,7 @@ type ServerGroupCluster struct {
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Maintenance window of a cluster.
-	MaintenanceWindow MaintenanceWindowResponsePtrOutput `pulumi:"maintenanceWindow"`
+	MaintenanceWindow ServerGroupClusterMaintenanceWindowResponsePtrOutput `pulumi:"maintenanceWindow"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
@@ -107,9 +107,6 @@ func NewServerGroupCluster(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
-	}
-	if args.AuthConfig != nil {
-		args.AuthConfig = args.AuthConfig.ToAuthConfigPtrOutput().ApplyT(func(v *AuthConfig) *AuthConfig { return v.Defaults() }).(AuthConfigPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -171,7 +168,7 @@ type serverGroupClusterArgs struct {
 	// The password of the administrator login. Required for creation.
 	AdministratorLoginPassword *string `pulumi:"administratorLoginPassword"`
 	// Authentication configuration of a cluster.
-	AuthConfig *AuthConfig `pulumi:"authConfig"`
+	AuthConfig *ServerGroupClusterAuthConfig `pulumi:"authConfig"`
 	// The Citus extension version on all cluster servers.
 	CitusVersion *string `pulumi:"citusVersion"`
 	// The name of the cluster.
@@ -185,7 +182,7 @@ type serverGroupClusterArgs struct {
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 	CoordinatorVCores *int `pulumi:"coordinatorVCores"`
 	// The data encryption properties of a cluster.
-	DataEncryption *DataEncryption `pulumi:"dataEncryption"`
+	DataEncryption *ServerGroupClusterDataEncryption `pulumi:"dataEncryption"`
 	// The database name of the cluster. Only one database per cluster is supported.
 	DatabaseName *string `pulumi:"databaseName"`
 	// If cluster backup is stored in another Azure region in addition to the copy of the backup stored in the cluster's region. Enabled only at the time of cluster creation.
@@ -199,7 +196,7 @@ type serverGroupClusterArgs struct {
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Maintenance window of a cluster.
-	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
+	MaintenanceWindow *ServerGroupClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
 	NodeCount *int `pulumi:"nodeCount"`
 	// If public access is enabled on worker nodes.
@@ -231,7 +228,7 @@ type ServerGroupClusterArgs struct {
 	// The password of the administrator login. Required for creation.
 	AdministratorLoginPassword pulumi.StringPtrInput
 	// Authentication configuration of a cluster.
-	AuthConfig AuthConfigPtrInput
+	AuthConfig ServerGroupClusterAuthConfigPtrInput
 	// The Citus extension version on all cluster servers.
 	CitusVersion pulumi.StringPtrInput
 	// The name of the cluster.
@@ -245,7 +242,7 @@ type ServerGroupClusterArgs struct {
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 	CoordinatorVCores pulumi.IntPtrInput
 	// The data encryption properties of a cluster.
-	DataEncryption DataEncryptionPtrInput
+	DataEncryption ServerGroupClusterDataEncryptionPtrInput
 	// The database name of the cluster. Only one database per cluster is supported.
 	DatabaseName pulumi.StringPtrInput
 	// If cluster backup is stored in another Azure region in addition to the copy of the backup stored in the cluster's region. Enabled only at the time of cluster creation.
@@ -259,7 +256,7 @@ type ServerGroupClusterArgs struct {
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Maintenance window of a cluster.
-	MaintenanceWindow MaintenanceWindowPtrInput
+	MaintenanceWindow ServerGroupClusterMaintenanceWindowPtrInput
 	// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
 	NodeCount pulumi.IntPtrInput
 	// If public access is enabled on worker nodes.
@@ -334,8 +331,8 @@ func (o ServerGroupClusterOutput) AdministratorLogin() pulumi.StringOutput {
 }
 
 // Authentication configuration of a cluster.
-func (o ServerGroupClusterOutput) AuthConfig() AuthConfigResponsePtrOutput {
-	return o.ApplyT(func(v *ServerGroupCluster) AuthConfigResponsePtrOutput { return v.AuthConfig }).(AuthConfigResponsePtrOutput)
+func (o ServerGroupClusterOutput) AuthConfig() ServerGroupClusterAuthConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ServerGroupCluster) ServerGroupClusterAuthConfigResponsePtrOutput { return v.AuthConfig }).(ServerGroupClusterAuthConfigResponsePtrOutput)
 }
 
 // The Azure API version of the resource.
@@ -369,8 +366,8 @@ func (o ServerGroupClusterOutput) CoordinatorVCores() pulumi.IntPtrOutput {
 }
 
 // The data encryption properties of a cluster.
-func (o ServerGroupClusterOutput) DataEncryption() DataEncryptionResponsePtrOutput {
-	return o.ApplyT(func(v *ServerGroupCluster) DataEncryptionResponsePtrOutput { return v.DataEncryption }).(DataEncryptionResponsePtrOutput)
+func (o ServerGroupClusterOutput) DataEncryption() ServerGroupClusterDataEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *ServerGroupCluster) ServerGroupClusterDataEncryptionResponsePtrOutput { return v.DataEncryption }).(ServerGroupClusterDataEncryptionResponsePtrOutput)
 }
 
 // The database name of the cluster. Only one database per cluster is supported.
@@ -409,8 +406,10 @@ func (o ServerGroupClusterOutput) Location() pulumi.StringOutput {
 }
 
 // Maintenance window of a cluster.
-func (o ServerGroupClusterOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
-	return o.ApplyT(func(v *ServerGroupCluster) MaintenanceWindowResponsePtrOutput { return v.MaintenanceWindow }).(MaintenanceWindowResponsePtrOutput)
+func (o ServerGroupClusterOutput) MaintenanceWindow() ServerGroupClusterMaintenanceWindowResponsePtrOutput {
+	return o.ApplyT(func(v *ServerGroupCluster) ServerGroupClusterMaintenanceWindowResponsePtrOutput {
+		return v.MaintenanceWindow
+	}).(ServerGroupClusterMaintenanceWindowResponsePtrOutput)
 }
 
 // The name of the resource
