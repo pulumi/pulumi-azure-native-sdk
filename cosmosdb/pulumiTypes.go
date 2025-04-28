@@ -8184,6 +8184,314 @@ func (o FailoverPolicyResponseArrayOutput) Index(i pulumi.IntInput) FailoverPoli
 	}).(FailoverPolicyResponseOutput)
 }
 
+// Configuration for throughput pool in the fleetspace.
+type FleetspacePropertiesResponseThroughputPoolConfiguration struct {
+	// List of data regions assigned to the fleetspace. Eg [westus2]
+	DataRegions []string `pulumi:"dataRegions"`
+	// Maximum throughput for the pool.
+	MaxThroughput *int `pulumi:"maxThroughput"`
+	// Minimum throughput for the pool.
+	MinThroughput *int `pulumi:"minThroughput"`
+	// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+	ServiceTier *string `pulumi:"serviceTier"`
+}
+
+// Configuration for throughput pool in the fleetspace.
+type FleetspacePropertiesResponseThroughputPoolConfigurationOutput struct{ *pulumi.OutputState }
+
+func (FleetspacePropertiesResponseThroughputPoolConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetspacePropertiesResponseThroughputPoolConfiguration)(nil)).Elem()
+}
+
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) ToFleetspacePropertiesResponseThroughputPoolConfigurationOutput() FleetspacePropertiesResponseThroughputPoolConfigurationOutput {
+	return o
+}
+
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) ToFleetspacePropertiesResponseThroughputPoolConfigurationOutputWithContext(ctx context.Context) FleetspacePropertiesResponseThroughputPoolConfigurationOutput {
+	return o
+}
+
+// List of data regions assigned to the fleetspace. Eg [westus2]
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) DataRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FleetspacePropertiesResponseThroughputPoolConfiguration) []string { return v.DataRegions }).(pulumi.StringArrayOutput)
+}
+
+// Maximum throughput for the pool.
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) MaxThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetspacePropertiesResponseThroughputPoolConfiguration) *int { return v.MaxThroughput }).(pulumi.IntPtrOutput)
+}
+
+// Minimum throughput for the pool.
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) MinThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetspacePropertiesResponseThroughputPoolConfiguration) *int { return v.MinThroughput }).(pulumi.IntPtrOutput)
+}
+
+// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationOutput) ServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetspacePropertiesResponseThroughputPoolConfiguration) *string { return v.ServiceTier }).(pulumi.StringPtrOutput)
+}
+
+type FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetspacePropertiesResponseThroughputPoolConfiguration)(nil)).Elem()
+}
+
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) ToFleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput() FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput {
+	return o
+}
+
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) ToFleetspacePropertiesResponseThroughputPoolConfigurationPtrOutputWithContext(ctx context.Context) FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput {
+	return o
+}
+
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) Elem() FleetspacePropertiesResponseThroughputPoolConfigurationOutput {
+	return o.ApplyT(func(v *FleetspacePropertiesResponseThroughputPoolConfiguration) FleetspacePropertiesResponseThroughputPoolConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret FleetspacePropertiesResponseThroughputPoolConfiguration
+		return ret
+	}).(FleetspacePropertiesResponseThroughputPoolConfigurationOutput)
+}
+
+// List of data regions assigned to the fleetspace. Eg [westus2]
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) DataRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FleetspacePropertiesResponseThroughputPoolConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DataRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Maximum throughput for the pool.
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) MaxThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FleetspacePropertiesResponseThroughputPoolConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum throughput for the pool.
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) MinThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FleetspacePropertiesResponseThroughputPoolConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+func (o FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput) ServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetspacePropertiesResponseThroughputPoolConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for throughput pool in the fleetspace.
+type FleetspacePropertiesThroughputPoolConfiguration struct {
+	// List of data regions assigned to the fleetspace. Eg [westus2]
+	DataRegions []string `pulumi:"dataRegions"`
+	// Maximum throughput for the pool.
+	MaxThroughput *int `pulumi:"maxThroughput"`
+	// Minimum throughput for the pool.
+	MinThroughput *int `pulumi:"minThroughput"`
+	// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+	ServiceTier *string `pulumi:"serviceTier"`
+}
+
+// FleetspacePropertiesThroughputPoolConfigurationInput is an input type that accepts FleetspacePropertiesThroughputPoolConfigurationArgs and FleetspacePropertiesThroughputPoolConfigurationOutput values.
+// You can construct a concrete instance of `FleetspacePropertiesThroughputPoolConfigurationInput` via:
+//
+//	FleetspacePropertiesThroughputPoolConfigurationArgs{...}
+type FleetspacePropertiesThroughputPoolConfigurationInput interface {
+	pulumi.Input
+
+	ToFleetspacePropertiesThroughputPoolConfigurationOutput() FleetspacePropertiesThroughputPoolConfigurationOutput
+	ToFleetspacePropertiesThroughputPoolConfigurationOutputWithContext(context.Context) FleetspacePropertiesThroughputPoolConfigurationOutput
+}
+
+// Configuration for throughput pool in the fleetspace.
+type FleetspacePropertiesThroughputPoolConfigurationArgs struct {
+	// List of data regions assigned to the fleetspace. Eg [westus2]
+	DataRegions pulumi.StringArrayInput `pulumi:"dataRegions"`
+	// Maximum throughput for the pool.
+	MaxThroughput pulumi.IntPtrInput `pulumi:"maxThroughput"`
+	// Minimum throughput for the pool.
+	MinThroughput pulumi.IntPtrInput `pulumi:"minThroughput"`
+	// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+	ServiceTier pulumi.StringPtrInput `pulumi:"serviceTier"`
+}
+
+func (FleetspacePropertiesThroughputPoolConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetspacePropertiesThroughputPoolConfiguration)(nil)).Elem()
+}
+
+func (i FleetspacePropertiesThroughputPoolConfigurationArgs) ToFleetspacePropertiesThroughputPoolConfigurationOutput() FleetspacePropertiesThroughputPoolConfigurationOutput {
+	return i.ToFleetspacePropertiesThroughputPoolConfigurationOutputWithContext(context.Background())
+}
+
+func (i FleetspacePropertiesThroughputPoolConfigurationArgs) ToFleetspacePropertiesThroughputPoolConfigurationOutputWithContext(ctx context.Context) FleetspacePropertiesThroughputPoolConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetspacePropertiesThroughputPoolConfigurationOutput)
+}
+
+func (i FleetspacePropertiesThroughputPoolConfigurationArgs) ToFleetspacePropertiesThroughputPoolConfigurationPtrOutput() FleetspacePropertiesThroughputPoolConfigurationPtrOutput {
+	return i.ToFleetspacePropertiesThroughputPoolConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i FleetspacePropertiesThroughputPoolConfigurationArgs) ToFleetspacePropertiesThroughputPoolConfigurationPtrOutputWithContext(ctx context.Context) FleetspacePropertiesThroughputPoolConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetspacePropertiesThroughputPoolConfigurationOutput).ToFleetspacePropertiesThroughputPoolConfigurationPtrOutputWithContext(ctx)
+}
+
+// FleetspacePropertiesThroughputPoolConfigurationPtrInput is an input type that accepts FleetspacePropertiesThroughputPoolConfigurationArgs, FleetspacePropertiesThroughputPoolConfigurationPtr and FleetspacePropertiesThroughputPoolConfigurationPtrOutput values.
+// You can construct a concrete instance of `FleetspacePropertiesThroughputPoolConfigurationPtrInput` via:
+//
+//	        FleetspacePropertiesThroughputPoolConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetspacePropertiesThroughputPoolConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToFleetspacePropertiesThroughputPoolConfigurationPtrOutput() FleetspacePropertiesThroughputPoolConfigurationPtrOutput
+	ToFleetspacePropertiesThroughputPoolConfigurationPtrOutputWithContext(context.Context) FleetspacePropertiesThroughputPoolConfigurationPtrOutput
+}
+
+type fleetspacePropertiesThroughputPoolConfigurationPtrType FleetspacePropertiesThroughputPoolConfigurationArgs
+
+func FleetspacePropertiesThroughputPoolConfigurationPtr(v *FleetspacePropertiesThroughputPoolConfigurationArgs) FleetspacePropertiesThroughputPoolConfigurationPtrInput {
+	return (*fleetspacePropertiesThroughputPoolConfigurationPtrType)(v)
+}
+
+func (*fleetspacePropertiesThroughputPoolConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetspacePropertiesThroughputPoolConfiguration)(nil)).Elem()
+}
+
+func (i *fleetspacePropertiesThroughputPoolConfigurationPtrType) ToFleetspacePropertiesThroughputPoolConfigurationPtrOutput() FleetspacePropertiesThroughputPoolConfigurationPtrOutput {
+	return i.ToFleetspacePropertiesThroughputPoolConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetspacePropertiesThroughputPoolConfigurationPtrType) ToFleetspacePropertiesThroughputPoolConfigurationPtrOutputWithContext(ctx context.Context) FleetspacePropertiesThroughputPoolConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetspacePropertiesThroughputPoolConfigurationPtrOutput)
+}
+
+// Configuration for throughput pool in the fleetspace.
+type FleetspacePropertiesThroughputPoolConfigurationOutput struct{ *pulumi.OutputState }
+
+func (FleetspacePropertiesThroughputPoolConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetspacePropertiesThroughputPoolConfiguration)(nil)).Elem()
+}
+
+func (o FleetspacePropertiesThroughputPoolConfigurationOutput) ToFleetspacePropertiesThroughputPoolConfigurationOutput() FleetspacePropertiesThroughputPoolConfigurationOutput {
+	return o
+}
+
+func (o FleetspacePropertiesThroughputPoolConfigurationOutput) ToFleetspacePropertiesThroughputPoolConfigurationOutputWithContext(ctx context.Context) FleetspacePropertiesThroughputPoolConfigurationOutput {
+	return o
+}
+
+func (o FleetspacePropertiesThroughputPoolConfigurationOutput) ToFleetspacePropertiesThroughputPoolConfigurationPtrOutput() FleetspacePropertiesThroughputPoolConfigurationPtrOutput {
+	return o.ToFleetspacePropertiesThroughputPoolConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o FleetspacePropertiesThroughputPoolConfigurationOutput) ToFleetspacePropertiesThroughputPoolConfigurationPtrOutputWithContext(ctx context.Context) FleetspacePropertiesThroughputPoolConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetspacePropertiesThroughputPoolConfiguration) *FleetspacePropertiesThroughputPoolConfiguration {
+		return &v
+	}).(FleetspacePropertiesThroughputPoolConfigurationPtrOutput)
+}
+
+// List of data regions assigned to the fleetspace. Eg [westus2]
+func (o FleetspacePropertiesThroughputPoolConfigurationOutput) DataRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FleetspacePropertiesThroughputPoolConfiguration) []string { return v.DataRegions }).(pulumi.StringArrayOutput)
+}
+
+// Maximum throughput for the pool.
+func (o FleetspacePropertiesThroughputPoolConfigurationOutput) MaxThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetspacePropertiesThroughputPoolConfiguration) *int { return v.MaxThroughput }).(pulumi.IntPtrOutput)
+}
+
+// Minimum throughput for the pool.
+func (o FleetspacePropertiesThroughputPoolConfigurationOutput) MinThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetspacePropertiesThroughputPoolConfiguration) *int { return v.MinThroughput }).(pulumi.IntPtrOutput)
+}
+
+// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+func (o FleetspacePropertiesThroughputPoolConfigurationOutput) ServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetspacePropertiesThroughputPoolConfiguration) *string { return v.ServiceTier }).(pulumi.StringPtrOutput)
+}
+
+type FleetspacePropertiesThroughputPoolConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetspacePropertiesThroughputPoolConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetspacePropertiesThroughputPoolConfiguration)(nil)).Elem()
+}
+
+func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) ToFleetspacePropertiesThroughputPoolConfigurationPtrOutput() FleetspacePropertiesThroughputPoolConfigurationPtrOutput {
+	return o
+}
+
+func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) ToFleetspacePropertiesThroughputPoolConfigurationPtrOutputWithContext(ctx context.Context) FleetspacePropertiesThroughputPoolConfigurationPtrOutput {
+	return o
+}
+
+func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) Elem() FleetspacePropertiesThroughputPoolConfigurationOutput {
+	return o.ApplyT(func(v *FleetspacePropertiesThroughputPoolConfiguration) FleetspacePropertiesThroughputPoolConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret FleetspacePropertiesThroughputPoolConfiguration
+		return ret
+	}).(FleetspacePropertiesThroughputPoolConfigurationOutput)
+}
+
+// List of data regions assigned to the fleetspace. Eg [westus2]
+func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) DataRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FleetspacePropertiesThroughputPoolConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DataRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Maximum throughput for the pool.
+func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) MaxThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FleetspacePropertiesThroughputPoolConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum throughput for the pool.
+func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) MinThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FleetspacePropertiesThroughputPoolConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+func (o FleetspacePropertiesThroughputPoolConfigurationPtrOutput) ServiceTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetspacePropertiesThroughputPoolConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceTier
+	}).(pulumi.StringPtrOutput)
+}
+
 // Resource for a regional service location.
 type GraphAPIComputeRegionalServiceResourceResponse struct {
 	// The regional endpoint for GraphAPICompute.
@@ -19767,6 +20075,10 @@ func init() {
 	pulumi.RegisterOutputType(ExcludedPathResponseArrayOutput{})
 	pulumi.RegisterOutputType(FailoverPolicyResponseOutput{})
 	pulumi.RegisterOutputType(FailoverPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(FleetspacePropertiesResponseThroughputPoolConfigurationOutput{})
+	pulumi.RegisterOutputType(FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(FleetspacePropertiesThroughputPoolConfigurationOutput{})
+	pulumi.RegisterOutputType(FleetspacePropertiesThroughputPoolConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeRegionalServiceResourceResponseOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeRegionalServiceResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput{})

@@ -5204,6 +5204,180 @@ func (in *azureVmFamilyPtr) ToAzureVmFamilyPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureVmFamilyPtrOutput)
 }
 
+// Azure Vm Security Type
+type AzureVmSecurityType string
+
+const (
+	// Unknown - Azure Vm Security Type
+	AzureVmSecurityTypeUnknown = AzureVmSecurityType("Unknown")
+	// Standard Azure Vm Security Type
+	AzureVmSecurityTypeStandard = AzureVmSecurityType("Standard")
+	// TVM Azure Vm Security Type
+	AzureVmSecurityTypeTVM = AzureVmSecurityType("TVM")
+	// CVM Azure Vm Security Type
+	AzureVmSecurityTypeCVM = AzureVmSecurityType("CVM")
+)
+
+func (AzureVmSecurityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmSecurityType)(nil)).Elem()
+}
+
+func (e AzureVmSecurityType) ToAzureVmSecurityTypeOutput() AzureVmSecurityTypeOutput {
+	return pulumi.ToOutput(e).(AzureVmSecurityTypeOutput)
+}
+
+func (e AzureVmSecurityType) ToAzureVmSecurityTypeOutputWithContext(ctx context.Context) AzureVmSecurityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureVmSecurityTypeOutput)
+}
+
+func (e AzureVmSecurityType) ToAzureVmSecurityTypePtrOutput() AzureVmSecurityTypePtrOutput {
+	return e.ToAzureVmSecurityTypePtrOutputWithContext(context.Background())
+}
+
+func (e AzureVmSecurityType) ToAzureVmSecurityTypePtrOutputWithContext(ctx context.Context) AzureVmSecurityTypePtrOutput {
+	return AzureVmSecurityType(e).ToAzureVmSecurityTypeOutputWithContext(ctx).ToAzureVmSecurityTypePtrOutputWithContext(ctx)
+}
+
+func (e AzureVmSecurityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureVmSecurityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureVmSecurityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureVmSecurityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureVmSecurityTypeOutput struct{ *pulumi.OutputState }
+
+func (AzureVmSecurityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmSecurityType)(nil)).Elem()
+}
+
+func (o AzureVmSecurityTypeOutput) ToAzureVmSecurityTypeOutput() AzureVmSecurityTypeOutput {
+	return o
+}
+
+func (o AzureVmSecurityTypeOutput) ToAzureVmSecurityTypeOutputWithContext(ctx context.Context) AzureVmSecurityTypeOutput {
+	return o
+}
+
+func (o AzureVmSecurityTypeOutput) ToAzureVmSecurityTypePtrOutput() AzureVmSecurityTypePtrOutput {
+	return o.ToAzureVmSecurityTypePtrOutputWithContext(context.Background())
+}
+
+func (o AzureVmSecurityTypeOutput) ToAzureVmSecurityTypePtrOutputWithContext(ctx context.Context) AzureVmSecurityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureVmSecurityType) *AzureVmSecurityType {
+		return &v
+	}).(AzureVmSecurityTypePtrOutput)
+}
+
+func (o AzureVmSecurityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureVmSecurityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureVmSecurityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureVmSecurityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureVmSecurityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureVmSecurityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureVmSecurityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureVmSecurityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureVmSecurityType)(nil)).Elem()
+}
+
+func (o AzureVmSecurityTypePtrOutput) ToAzureVmSecurityTypePtrOutput() AzureVmSecurityTypePtrOutput {
+	return o
+}
+
+func (o AzureVmSecurityTypePtrOutput) ToAzureVmSecurityTypePtrOutputWithContext(ctx context.Context) AzureVmSecurityTypePtrOutput {
+	return o
+}
+
+func (o AzureVmSecurityTypePtrOutput) Elem() AzureVmSecurityTypeOutput {
+	return o.ApplyT(func(v *AzureVmSecurityType) AzureVmSecurityType {
+		if v != nil {
+			return *v
+		}
+		var ret AzureVmSecurityType
+		return ret
+	}).(AzureVmSecurityTypeOutput)
+}
+
+func (o AzureVmSecurityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureVmSecurityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureVmSecurityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureVmSecurityTypeInput is an input type that accepts values of the AzureVmSecurityType enum
+// A concrete instance of `AzureVmSecurityTypeInput` can be one of the following:
+//
+//	AzureVmSecurityTypeUnknown
+//	AzureVmSecurityTypeStandard
+//	AzureVmSecurityTypeTVM
+//	AzureVmSecurityTypeCVM
+type AzureVmSecurityTypeInput interface {
+	pulumi.Input
+
+	ToAzureVmSecurityTypeOutput() AzureVmSecurityTypeOutput
+	ToAzureVmSecurityTypeOutputWithContext(context.Context) AzureVmSecurityTypeOutput
+}
+
+var azureVmSecurityTypePtrType = reflect.TypeOf((**AzureVmSecurityType)(nil)).Elem()
+
+type AzureVmSecurityTypePtrInput interface {
+	pulumi.Input
+
+	ToAzureVmSecurityTypePtrOutput() AzureVmSecurityTypePtrOutput
+	ToAzureVmSecurityTypePtrOutputWithContext(context.Context) AzureVmSecurityTypePtrOutput
+}
+
+type azureVmSecurityTypePtr string
+
+func AzureVmSecurityTypePtr(v string) AzureVmSecurityTypePtrInput {
+	return (*azureVmSecurityTypePtr)(&v)
+}
+
+func (*azureVmSecurityTypePtr) ElementType() reflect.Type {
+	return azureVmSecurityTypePtrType
+}
+
+func (in *azureVmSecurityTypePtr) ToAzureVmSecurityTypePtrOutput() AzureVmSecurityTypePtrOutput {
+	return pulumi.ToOutput(in).(AzureVmSecurityTypePtrOutput)
+}
+
+func (in *azureVmSecurityTypePtr) ToAzureVmSecurityTypePtrOutputWithContext(ctx context.Context) AzureVmSecurityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureVmSecurityTypePtrOutput)
+}
+
 // Business case Currency.
 type BusinessCaseCurrency string
 
@@ -12377,6 +12551,8 @@ func init() {
 	pulumi.RegisterOutputType(AzureVmCategoryPtrOutput{})
 	pulumi.RegisterOutputType(AzureVmFamilyOutput{})
 	pulumi.RegisterOutputType(AzureVmFamilyPtrOutput{})
+	pulumi.RegisterOutputType(AzureVmSecurityTypeOutput{})
+	pulumi.RegisterOutputType(AzureVmSecurityTypePtrOutput{})
 	pulumi.RegisterOutputType(BusinessCaseCurrencyOutput{})
 	pulumi.RegisterOutputType(BusinessCaseCurrencyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeTierOutput{})

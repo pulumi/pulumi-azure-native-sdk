@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ManagedCluster{}
 	case "azure-native:containerservice:ManagedClusterSnapshot":
 		r = &ManagedClusterSnapshot{}
+	case "azure-native:containerservice:Namespace":
+		r = &Namespace{}
 	case "azure-native:containerservice:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	case "azure-native:containerservice:Snapshot":

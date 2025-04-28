@@ -1257,25 +1257,53 @@ func (o AmazonMWSSourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AmazonMWSSourceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// AmazonRdsForOracle database.
+// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type AmazonRdsForOracleLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	CryptoChecksumClient interface{} `pulumi:"cryptoChecksumClient"`
+	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+	CryptoChecksumTypesClient interface{} `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+	EnableBulkLoad interface{} `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	EncryptionClient interface{} `pulumi:"encryptionClient"`
+	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+	EncryptionTypesClient interface{} `pulumi:"encryptionTypesClient"`
+	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+	FetchSize interface{} `pulumi:"fetchSize"`
+	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+	FetchTswtzAsTimestamp interface{} `pulumi:"fetchTswtzAsTimestamp"`
+	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+	InitialLobFetchSize interface{} `pulumi:"initialLobFetchSize"`
+	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+	InitializationString interface{} `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password interface{} `pulumi:"password"`
+	// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+	Server interface{} `pulumi:"server"`
+	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+	StatementCacheSize interface{} `pulumi:"statementCacheSize"`
+	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+	SupportV1DataTypes interface{} `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForOracle'.
 	Type string `pulumi:"type"`
+	// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
+	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
@@ -1291,25 +1319,53 @@ type AmazonRdsForOracleLinkedServiceInput interface {
 	ToAmazonRdsForOracleLinkedServiceOutputWithContext(context.Context) AmazonRdsForOracleLinkedServiceOutput
 }
 
-// AmazonRdsForOracle database.
+// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type AmazonRdsForOracleLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	CryptoChecksumClient pulumi.Input `pulumi:"cryptoChecksumClient"`
+	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+	CryptoChecksumTypesClient pulumi.Input `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+	EnableBulkLoad pulumi.Input `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	EncryptionClient pulumi.Input `pulumi:"encryptionClient"`
+	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+	EncryptionTypesClient pulumi.Input `pulumi:"encryptionTypesClient"`
+	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+	FetchSize pulumi.Input `pulumi:"fetchSize"`
+	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+	FetchTswtzAsTimestamp pulumi.Input `pulumi:"fetchTswtzAsTimestamp"`
+	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+	InitialLobFetchSize pulumi.Input `pulumi:"initialLobFetchSize"`
+	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+	InitializationString pulumi.Input `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password pulumi.Input `pulumi:"password"`
+	// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+	Server pulumi.Input `pulumi:"server"`
+	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+	StatementCacheSize pulumi.Input `pulumi:"statementCacheSize"`
+	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+	SupportV1DataTypes pulumi.Input `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForOracle'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
+	Username pulumi.Input `pulumi:"username"`
 	// Version of the linked service.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -1326,7 +1382,7 @@ func (i AmazonRdsForOracleLinkedServiceArgs) ToAmazonRdsForOracleLinkedServiceOu
 	return pulumi.ToOutputWithContext(ctx, i).(AmazonRdsForOracleLinkedServiceOutput)
 }
 
-// AmazonRdsForOracle database.
+// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type AmazonRdsForOracleLinkedServiceOutput struct{ *pulumi.OutputState }
 
 func (AmazonRdsForOracleLinkedServiceOutput) ElementType() reflect.Type {
@@ -1346,14 +1402,29 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Annotations() pulumi.ArrayOutput 
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // The integration runtime reference.
 func (o AmazonRdsForOracleLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
 }
 
-// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 func (o AmazonRdsForOracleLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) CryptoChecksumClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.CryptoChecksumClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) CryptoChecksumTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.CryptoChecksumTypesClient }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -1361,9 +1432,44 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Description() pulumi.StringPtrOut
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) EnableBulkLoad() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.EnableBulkLoad }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AmazonRdsForOracleLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) EncryptionClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.EncryptionClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) EncryptionTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.EncryptionTypesClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) FetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.FetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) FetchTswtzAsTimestamp() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.FetchTswtzAsTimestamp }).(pulumi.AnyOutput)
+}
+
+// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) InitialLobFetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.InitialLobFetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) InitializationString() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.InitializationString }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -1376,10 +1482,30 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
+// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) StatementCacheSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.StatementCacheSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) SupportV1DataTypes() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.SupportV1DataTypes }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AmazonRdsForOracle'.
 func (o AmazonRdsForOracleLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
@@ -1387,30 +1513,58 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Version() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// AmazonRdsForOracle database.
+// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type AmazonRdsForOracleLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	CryptoChecksumClient interface{} `pulumi:"cryptoChecksumClient"`
+	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+	CryptoChecksumTypesClient interface{} `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+	EnableBulkLoad interface{} `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	EncryptionClient interface{} `pulumi:"encryptionClient"`
+	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+	EncryptionTypesClient interface{} `pulumi:"encryptionTypesClient"`
+	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+	FetchSize interface{} `pulumi:"fetchSize"`
+	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+	FetchTswtzAsTimestamp interface{} `pulumi:"fetchTswtzAsTimestamp"`
+	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+	InitialLobFetchSize interface{} `pulumi:"initialLobFetchSize"`
+	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+	InitializationString interface{} `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password interface{} `pulumi:"password"`
+	// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+	Server interface{} `pulumi:"server"`
+	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+	StatementCacheSize interface{} `pulumi:"statementCacheSize"`
+	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+	SupportV1DataTypes interface{} `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForOracle'.
 	Type string `pulumi:"type"`
+	// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
+	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
 
-// AmazonRdsForOracle database.
+// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type AmazonRdsForOracleLinkedServiceResponseOutput struct{ *pulumi.OutputState }
 
 func (AmazonRdsForOracleLinkedServiceResponseOutput) ElementType() reflect.Type {
@@ -1430,6 +1584,11 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) Annotations() pulumi.Arra
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // The integration runtime reference.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *IntegrationRuntimeReferenceResponse {
@@ -1437,9 +1596,19 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) ConnectVia() IntegrationR
 	}).(IntegrationRuntimeReferenceResponsePtrOutput)
 }
 
-// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) CryptoChecksumClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.CryptoChecksumClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) CryptoChecksumTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.CryptoChecksumTypesClient }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -1447,9 +1616,44 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) Description() pulumi.Stri
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) EnableBulkLoad() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.EnableBulkLoad }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) EncryptionClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.EncryptionClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) EncryptionTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.EncryptionTypesClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) FetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.FetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) FetchTswtzAsTimestamp() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.FetchTswtzAsTimestamp }).(pulumi.AnyOutput)
+}
+
+// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) InitialLobFetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.InitialLobFetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) InitializationString() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.InitializationString }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -1464,10 +1668,30 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) Password() pulumi.AnyOutp
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
+// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) StatementCacheSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.StatementCacheSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) SupportV1DataTypes() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.SupportV1DataTypes }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AmazonRdsForOracle'.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
@@ -17899,6 +18123,8 @@ type AzureDatabricksLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReference `pulumi:"credential"`
+	// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
+	DataSecurityMode interface{} `pulumi:"dataSecurityMode"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
@@ -17965,6 +18191,8 @@ type AzureDatabricksLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The credential reference containing authentication information.
 	Credential CredentialReferencePtrInput `pulumi:"credential"`
+	// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
+	DataSecurityMode pulumi.Input `pulumi:"dataSecurityMode"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
@@ -18058,6 +18286,11 @@ func (o AzureDatabricksLinkedServiceOutput) ConnectVia() IntegrationRuntimeRefer
 // The credential reference containing authentication information.
 func (o AzureDatabricksLinkedServiceOutput) Credential() CredentialReferencePtrOutput {
 	return o.ApplyT(func(v AzureDatabricksLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
+}
+
+// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
+func (o AzureDatabricksLinkedServiceOutput) DataSecurityMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedService) interface{} { return v.DataSecurityMode }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -18173,6 +18406,8 @@ type AzureDatabricksLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
+	// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
+	DataSecurityMode interface{} `pulumi:"dataSecurityMode"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
@@ -18254,6 +18489,11 @@ func (o AzureDatabricksLinkedServiceResponseOutput) ConnectVia() IntegrationRunt
 // The credential reference containing authentication information.
 func (o AzureDatabricksLinkedServiceResponseOutput) Credential() CredentialReferenceResponsePtrOutput {
 	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
+}
+
+// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
+func (o AzureDatabricksLinkedServiceResponseOutput) DataSecurityMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) interface{} { return v.DataSecurityMode }).(pulumi.AnyOutput)
 }
 
 // Linked service description.

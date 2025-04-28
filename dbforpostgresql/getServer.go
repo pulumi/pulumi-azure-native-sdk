@@ -107,6 +107,8 @@ func (val *LookupServerResult) Defaults() *LookupServerResult {
 
 	tmp.HighAvailability = tmp.HighAvailability.Defaults()
 
+	tmp.MaintenanceWindow = tmp.MaintenanceWindow.Defaults()
+
 	return &tmp
 }
 func LookupServerOutput(ctx *pulumi.Context, args LookupServerOutputArgs, opts ...pulumi.InvokeOption) LookupServerResultOutput {

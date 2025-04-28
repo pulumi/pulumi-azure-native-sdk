@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CassandraDataCenter{}
 	case "azure-native:cosmosdb:CassandraResourceCassandraKeyspace":
 		r = &CassandraResourceCassandraKeyspace{}
+	case "azure-native:cosmosdb:CassandraResourceCassandraRoleAssignment":
+		r = &CassandraResourceCassandraRoleAssignment{}
+	case "azure-native:cosmosdb:CassandraResourceCassandraRoleDefinition":
+		r = &CassandraResourceCassandraRoleDefinition{}
 	case "azure-native:cosmosdb:CassandraResourceCassandraTable":
 		r = &CassandraResourceCassandraTable{}
 	case "azure-native:cosmosdb:CassandraResourceCassandraView":
@@ -51,12 +55,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseAccountSqlDatabase{}
 	case "azure-native:cosmosdb:DatabaseAccountTable":
 		r = &DatabaseAccountTable{}
+	case "azure-native:cosmosdb:Fleet":
+		r = &Fleet{}
+	case "azure-native:cosmosdb:FleetAnalytic":
+		r = &FleetAnalytic{}
+	case "azure-native:cosmosdb:Fleetspace":
+		r = &Fleetspace{}
+	case "azure-native:cosmosdb:FleetspaceAccount":
+		r = &FleetspaceAccount{}
 	case "azure-native:cosmosdb:GraphResourceGraph":
 		r = &GraphResourceGraph{}
 	case "azure-native:cosmosdb:GremlinResourceGremlinDatabase":
 		r = &GremlinResourceGremlinDatabase{}
 	case "azure-native:cosmosdb:GremlinResourceGremlinGraph":
 		r = &GremlinResourceGremlinGraph{}
+	case "azure-native:cosmosdb:GremlinResourceGremlinRoleAssignment":
+		r = &GremlinResourceGremlinRoleAssignment{}
+	case "azure-native:cosmosdb:GremlinResourceGremlinRoleDefinition":
+		r = &GremlinResourceGremlinRoleDefinition{}
 	case "azure-native:cosmosdb:MongoCluster":
 		r = &MongoCluster{}
 	case "azure-native:cosmosdb:MongoClusterFirewallRule":
@@ -69,6 +85,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MongoDBResourceMongoRoleDefinition{}
 	case "azure-native:cosmosdb:MongoDBResourceMongoUserDefinition":
 		r = &MongoDBResourceMongoUserDefinition{}
+	case "azure-native:cosmosdb:MongoMIResourceMongoMIRoleAssignment":
+		r = &MongoMIResourceMongoMIRoleAssignment{}
+	case "azure-native:cosmosdb:MongoMIResourceMongoMIRoleDefinition":
+		r = &MongoMIResourceMongoMIRoleDefinition{}
 	case "azure-native:cosmosdb:NotebookWorkspace":
 		r = &NotebookWorkspace{}
 	case "azure-native:cosmosdb:PrivateEndpointConnection":

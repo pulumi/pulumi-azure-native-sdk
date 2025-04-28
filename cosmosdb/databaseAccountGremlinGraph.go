@@ -205,6 +205,12 @@ func NewDatabaseAccountGremlinGraph(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cosmosdb/v20241201preview:DatabaseAccountGremlinGraph"),
 		},
 		{
+			Type: pulumi.String("azure-native:cosmosdb/v20250415:DatabaseAccountGremlinGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:cosmosdb/v20250501preview:DatabaseAccountGremlinGraph"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315preview:GremlinResourceGremlinGraph"),
 		},
 		{

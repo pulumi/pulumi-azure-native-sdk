@@ -344,6 +344,170 @@ func (in *activityStatePtr) ToActivityStatePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ActivityStatePtrOutput)
 }
 
+// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+type AmazonRdsForOracleAuthenticationType string
+
+const (
+	AmazonRdsForOracleAuthenticationTypeBasic = AmazonRdsForOracleAuthenticationType("Basic")
+)
+
+func (AmazonRdsForOracleAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmazonRdsForOracleAuthenticationType)(nil)).Elem()
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToAmazonRdsForOracleAuthenticationTypeOutput() AmazonRdsForOracleAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(AmazonRdsForOracleAuthenticationTypeOutput)
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToAmazonRdsForOracleAuthenticationTypeOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AmazonRdsForOracleAuthenticationTypeOutput)
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToAmazonRdsForOracleAuthenticationTypePtrOutput() AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return e.ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return AmazonRdsForOracleAuthenticationType(e).ToAmazonRdsForOracleAuthenticationTypeOutputWithContext(ctx).ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AmazonRdsForOracleAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (AmazonRdsForOracleAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmazonRdsForOracleAuthenticationType)(nil)).Elem()
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToAmazonRdsForOracleAuthenticationTypeOutput() AmazonRdsForOracleAuthenticationTypeOutput {
+	return o
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToAmazonRdsForOracleAuthenticationTypeOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypeOutput {
+	return o
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToAmazonRdsForOracleAuthenticationTypePtrOutput() AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return o.ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AmazonRdsForOracleAuthenticationType) *AmazonRdsForOracleAuthenticationType {
+		return &v
+	}).(AmazonRdsForOracleAuthenticationTypePtrOutput)
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AmazonRdsForOracleAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AmazonRdsForOracleAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AmazonRdsForOracleAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AmazonRdsForOracleAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmazonRdsForOracleAuthenticationType)(nil)).Elem()
+}
+
+func (o AmazonRdsForOracleAuthenticationTypePtrOutput) ToAmazonRdsForOracleAuthenticationTypePtrOutput() AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AmazonRdsForOracleAuthenticationTypePtrOutput) ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AmazonRdsForOracleAuthenticationTypePtrOutput) Elem() AmazonRdsForOracleAuthenticationTypeOutput {
+	return o.ApplyT(func(v *AmazonRdsForOracleAuthenticationType) AmazonRdsForOracleAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret AmazonRdsForOracleAuthenticationType
+		return ret
+	}).(AmazonRdsForOracleAuthenticationTypeOutput)
+}
+
+func (o AmazonRdsForOracleAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForOracleAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AmazonRdsForOracleAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AmazonRdsForOracleAuthenticationTypeInput is an input type that accepts values of the AmazonRdsForOracleAuthenticationType enum
+// A concrete instance of `AmazonRdsForOracleAuthenticationTypeInput` can be one of the following:
+//
+//	AmazonRdsForOracleAuthenticationTypeBasic
+type AmazonRdsForOracleAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToAmazonRdsForOracleAuthenticationTypeOutput() AmazonRdsForOracleAuthenticationTypeOutput
+	ToAmazonRdsForOracleAuthenticationTypeOutputWithContext(context.Context) AmazonRdsForOracleAuthenticationTypeOutput
+}
+
+var amazonRdsForOracleAuthenticationTypePtrType = reflect.TypeOf((**AmazonRdsForOracleAuthenticationType)(nil)).Elem()
+
+type AmazonRdsForOracleAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToAmazonRdsForOracleAuthenticationTypePtrOutput() AmazonRdsForOracleAuthenticationTypePtrOutput
+	ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(context.Context) AmazonRdsForOracleAuthenticationTypePtrOutput
+}
+
+type amazonRdsForOracleAuthenticationTypePtr string
+
+func AmazonRdsForOracleAuthenticationTypePtr(v string) AmazonRdsForOracleAuthenticationTypePtrInput {
+	return (*amazonRdsForOracleAuthenticationTypePtr)(&v)
+}
+
+func (*amazonRdsForOracleAuthenticationTypePtr) ElementType() reflect.Type {
+	return amazonRdsForOracleAuthenticationTypePtrType
+}
+
+func (in *amazonRdsForOracleAuthenticationTypePtr) ToAmazonRdsForOracleAuthenticationTypePtrOutput() AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(AmazonRdsForOracleAuthenticationTypePtrOutput)
+}
+
+func (in *amazonRdsForOracleAuthenticationTypePtr) ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AmazonRdsForOracleAuthenticationTypePtrOutput)
+}
+
 // The type used for authentication. Type: string.
 type AmazonRdsForSqlAuthenticationType string
 
@@ -15188,6 +15352,8 @@ func init() {
 	pulumi.RegisterOutputType(ActivityOnInactiveMarkAsPtrOutput{})
 	pulumi.RegisterOutputType(ActivityStateOutput{})
 	pulumi.RegisterOutputType(ActivityStatePtrOutput{})
+	pulumi.RegisterOutputType(AmazonRdsForOracleAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(AmazonRdsForOracleAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(AmazonRdsForSqlAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(AmazonRdsForSqlAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(AzureFunctionActivityMethodOutput{})

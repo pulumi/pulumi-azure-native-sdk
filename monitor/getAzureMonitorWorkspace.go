@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specific Azure Monitor workspace
+// Returns the specified Azure Monitor Workspace
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2023-04-03.
 //
-// Other available API versions: 2023-04-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAzureMonitorWorkspace(ctx *pulumi.Context, args *LookupAzureMonitorWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupAzureMonitorWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureMonitorWorkspaceResult
@@ -27,36 +27,36 @@ func LookupAzureMonitorWorkspace(ctx *pulumi.Context, args *LookupAzureMonitorWo
 }
 
 type LookupAzureMonitorWorkspaceArgs struct {
-	// The name of the Azure Monitor workspace. The name is case insensitive.
+	// The name of the Azure Monitor Workspace. The name is case insensitive
 	AzureMonitorWorkspaceName string `pulumi:"azureMonitorWorkspaceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// An Azure Monitor Workspace definition.
+// An Azure Monitor Workspace definition
 type LookupAzureMonitorWorkspaceResult struct {
-	// The immutable ID of the Azure Monitor workspace. This property is read-only.
+	// The immutable Id of the Azure Monitor Workspace. This property is read-only.
 	AccountId string `pulumi:"accountId"`
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Data Collection Rule and Endpoint used for ingestion by default.
-	DefaultIngestionSettings IngestionSettingsResponse `pulumi:"defaultIngestionSettings"`
+	DefaultIngestionSettings AzureMonitorWorkspaceResponseDefaultIngestionSettings `pulumi:"defaultIngestionSettings"`
 	// Resource entity tag (ETag)
 	Etag string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Information about metrics for the Azure Monitor workspace
-	Metrics *MetricsResponse `pulumi:"metrics"`
+	// Properties related to the metrics container in the Azure Monitor Workspace
+	Metrics AzureMonitorWorkspaceResponseMetrics `pulumi:"metrics"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// List of private endpoint connections.
+	// List of private endpoint connections
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
-	// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
+	// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Gets or sets allow or disallow public network access to workspace
-	PublicNetworkAccess string `pulumi:"publicNetworkAccess"`
+	// Gets or sets allow or disallow public network access to Azure Monitor Workspace
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -75,7 +75,7 @@ func LookupAzureMonitorWorkspaceOutput(ctx *pulumi.Context, args LookupAzureMoni
 }
 
 type LookupAzureMonitorWorkspaceOutputArgs struct {
-	// The name of the Azure Monitor workspace. The name is case insensitive.
+	// The name of the Azure Monitor Workspace. The name is case insensitive
 	AzureMonitorWorkspaceName pulumi.StringInput `pulumi:"azureMonitorWorkspaceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -85,7 +85,7 @@ func (LookupAzureMonitorWorkspaceOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupAzureMonitorWorkspaceArgs)(nil)).Elem()
 }
 
-// An Azure Monitor Workspace definition.
+// An Azure Monitor Workspace definition
 type LookupAzureMonitorWorkspaceResultOutput struct{ *pulumi.OutputState }
 
 func (LookupAzureMonitorWorkspaceResultOutput) ElementType() reflect.Type {
@@ -100,7 +100,7 @@ func (o LookupAzureMonitorWorkspaceResultOutput) ToLookupAzureMonitorWorkspaceRe
 	return o
 }
 
-// The immutable ID of the Azure Monitor workspace. This property is read-only.
+// The immutable Id of the Azure Monitor Workspace. This property is read-only.
 func (o LookupAzureMonitorWorkspaceResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -111,8 +111,10 @@ func (o LookupAzureMonitorWorkspaceResultOutput) AzureApiVersion() pulumi.String
 }
 
 // The Data Collection Rule and Endpoint used for ingestion by default.
-func (o LookupAzureMonitorWorkspaceResultOutput) DefaultIngestionSettings() IngestionSettingsResponseOutput {
-	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) IngestionSettingsResponse { return v.DefaultIngestionSettings }).(IngestionSettingsResponseOutput)
+func (o LookupAzureMonitorWorkspaceResultOutput) DefaultIngestionSettings() AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) AzureMonitorWorkspaceResponseDefaultIngestionSettings {
+		return v.DefaultIngestionSettings
+	}).(AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput)
 }
 
 // Resource entity tag (ETag)
@@ -120,7 +122,7 @@ func (o LookupAzureMonitorWorkspaceResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAzureMonitorWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -130,9 +132,9 @@ func (o LookupAzureMonitorWorkspaceResultOutput) Location() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Information about metrics for the Azure Monitor workspace
-func (o LookupAzureMonitorWorkspaceResultOutput) Metrics() MetricsResponsePtrOutput {
-	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) *MetricsResponse { return v.Metrics }).(MetricsResponsePtrOutput)
+// Properties related to the metrics container in the Azure Monitor Workspace
+func (o LookupAzureMonitorWorkspaceResultOutput) Metrics() AzureMonitorWorkspaceResponseMetricsOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) AzureMonitorWorkspaceResponseMetrics { return v.Metrics }).(AzureMonitorWorkspaceResponseMetricsOutput)
 }
 
 // The name of the resource
@@ -140,21 +142,21 @@ func (o LookupAzureMonitorWorkspaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of private endpoint connections.
+// List of private endpoint connections
 func (o LookupAzureMonitorWorkspaceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
 	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
-// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
+// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
 func (o LookupAzureMonitorWorkspaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Gets or sets allow or disallow public network access to workspace
-func (o LookupAzureMonitorWorkspaceResultOutput) PublicNetworkAccess() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.PublicNetworkAccess }).(pulumi.StringOutput)
+// Gets or sets allow or disallow public network access to Azure Monitor Workspace
+func (o LookupAzureMonitorWorkspaceResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

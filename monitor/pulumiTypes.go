@@ -3369,6 +3369,76 @@ func (o AzureMonitorWorkspaceLogsExporterResponsePtrOutput) Concurrency() Concur
 	}).(ConcurrencyConfigurationResponsePtrOutput)
 }
 
+// The Data Collection Rule and Endpoint used for ingestion by default.
+type AzureMonitorWorkspaceResponseDefaultIngestionSettings struct {
+	// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
+	DataCollectionEndpointResourceId string `pulumi:"dataCollectionEndpointResourceId"`
+	// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
+	DataCollectionRuleResourceId string `pulumi:"dataCollectionRuleResourceId"`
+}
+
+// The Data Collection Rule and Endpoint used for ingestion by default.
+type AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorWorkspaceResponseDefaultIngestionSettings)(nil)).Elem()
+}
+
+func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) ToAzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput() AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
+	return o
+}
+
+func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) ToAzureMonitorWorkspaceResponseDefaultIngestionSettingsOutputWithContext(ctx context.Context) AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
+	return o
+}
+
+// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
+func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) DataCollectionEndpointResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceResponseDefaultIngestionSettings) string {
+		return v.DataCollectionEndpointResourceId
+	}).(pulumi.StringOutput)
+}
+
+// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
+func (o AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput) DataCollectionRuleResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceResponseDefaultIngestionSettings) string {
+		return v.DataCollectionRuleResourceId
+	}).(pulumi.StringOutput)
+}
+
+// Properties related to the metrics container in the Azure Monitor Workspace
+type AzureMonitorWorkspaceResponseMetrics struct {
+	// An internal identifier for the metrics container. Only to be used by the system
+	InternalId string `pulumi:"internalId"`
+	// The Prometheus query endpoint for the Azure Monitor Workspace
+	PrometheusQueryEndpoint string `pulumi:"prometheusQueryEndpoint"`
+}
+
+// Properties related to the metrics container in the Azure Monitor Workspace
+type AzureMonitorWorkspaceResponseMetricsOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorWorkspaceResponseMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorWorkspaceResponseMetrics)(nil)).Elem()
+}
+
+func (o AzureMonitorWorkspaceResponseMetricsOutput) ToAzureMonitorWorkspaceResponseMetricsOutput() AzureMonitorWorkspaceResponseMetricsOutput {
+	return o
+}
+
+func (o AzureMonitorWorkspaceResponseMetricsOutput) ToAzureMonitorWorkspaceResponseMetricsOutputWithContext(ctx context.Context) AzureMonitorWorkspaceResponseMetricsOutput {
+	return o
+}
+
+// An internal identifier for the metrics container. Only to be used by the system
+func (o AzureMonitorWorkspaceResponseMetricsOutput) InternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceResponseMetrics) string { return v.InternalId }).(pulumi.StringOutput)
+}
+
+// The Prometheus query endpoint for the Azure Monitor Workspace
+func (o AzureMonitorWorkspaceResponseMetricsOutput) PrometheusQueryEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceResponseMetrics) string { return v.PrometheusQueryEndpoint }).(pulumi.StringOutput)
+}
+
 // The complex type of the extended location.
 type AzureResourceManagerCommonTypesExtendedLocation struct {
 	// The name of the extended location.
@@ -11303,39 +11373,6 @@ func (o IncidentServiceConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v IncidentServiceConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Settings for data ingestion
-type IngestionSettingsResponse struct {
-	// The Azure resource Id of the default data collection endpoint for this workspace.
-	DataCollectionEndpointResourceId string `pulumi:"dataCollectionEndpointResourceId"`
-	// The Azure resource Id of the default data collection rule for this workspace.
-	DataCollectionRuleResourceId string `pulumi:"dataCollectionRuleResourceId"`
-}
-
-// Settings for data ingestion
-type IngestionSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (IngestionSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IngestionSettingsResponse)(nil)).Elem()
-}
-
-func (o IngestionSettingsResponseOutput) ToIngestionSettingsResponseOutput() IngestionSettingsResponseOutput {
-	return o
-}
-
-func (o IngestionSettingsResponseOutput) ToIngestionSettingsResponseOutputWithContext(ctx context.Context) IngestionSettingsResponseOutput {
-	return o
-}
-
-// The Azure resource Id of the default data collection endpoint for this workspace.
-func (o IngestionSettingsResponseOutput) DataCollectionEndpointResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v IngestionSettingsResponse) string { return v.DataCollectionEndpointResourceId }).(pulumi.StringOutput)
-}
-
-// The Azure resource Id of the default data collection rule for this workspace.
-func (o IngestionSettingsResponseOutput) DataCollectionRuleResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v IngestionSettingsResponse) string { return v.DataCollectionRuleResourceId }).(pulumi.StringOutput)
-}
-
 // An Itsm receiver.
 type ItsmReceiver struct {
 	// Unique identification of ITSM connection among multiple defined in above workspace.
@@ -15332,83 +15369,6 @@ func (o MetricTriggerResponseOutput) TimeGrain() pulumi.StringOutput {
 // the range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.
 func (o MetricTriggerResponseOutput) TimeWindow() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricTriggerResponse) string { return v.TimeWindow }).(pulumi.StringOutput)
-}
-
-// Information about metrics for the workspace
-type MetricsResponse struct {
-	// An internal identifier for the metrics container. Only to be used by the system
-	InternalId string `pulumi:"internalId"`
-	// The Prometheus query endpoint for the workspace
-	PrometheusQueryEndpoint string `pulumi:"prometheusQueryEndpoint"`
-}
-
-// Information about metrics for the workspace
-type MetricsResponseOutput struct{ *pulumi.OutputState }
-
-func (MetricsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricsResponse)(nil)).Elem()
-}
-
-func (o MetricsResponseOutput) ToMetricsResponseOutput() MetricsResponseOutput {
-	return o
-}
-
-func (o MetricsResponseOutput) ToMetricsResponseOutputWithContext(ctx context.Context) MetricsResponseOutput {
-	return o
-}
-
-// An internal identifier for the metrics container. Only to be used by the system
-func (o MetricsResponseOutput) InternalId() pulumi.StringOutput {
-	return o.ApplyT(func(v MetricsResponse) string { return v.InternalId }).(pulumi.StringOutput)
-}
-
-// The Prometheus query endpoint for the workspace
-func (o MetricsResponseOutput) PrometheusQueryEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v MetricsResponse) string { return v.PrometheusQueryEndpoint }).(pulumi.StringOutput)
-}
-
-type MetricsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MetricsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetricsResponse)(nil)).Elem()
-}
-
-func (o MetricsResponsePtrOutput) ToMetricsResponsePtrOutput() MetricsResponsePtrOutput {
-	return o
-}
-
-func (o MetricsResponsePtrOutput) ToMetricsResponsePtrOutputWithContext(ctx context.Context) MetricsResponsePtrOutput {
-	return o
-}
-
-func (o MetricsResponsePtrOutput) Elem() MetricsResponseOutput {
-	return o.ApplyT(func(v *MetricsResponse) MetricsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MetricsResponse
-		return ret
-	}).(MetricsResponseOutput)
-}
-
-// An internal identifier for the metrics container. Only to be used by the system
-func (o MetricsResponsePtrOutput) InternalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetricsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InternalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Prometheus query endpoint for the workspace
-func (o MetricsResponsePtrOutput) PrometheusQueryEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetricsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrometheusQueryEndpoint
-	}).(pulumi.StringPtrOutput)
 }
 
 // Monitoring account destination.
@@ -24790,6 +24750,8 @@ func init() {
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceLogsExporterPtrOutput{})
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceLogsExporterResponseOutput{})
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceLogsExporterResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput{})
+	pulumi.RegisterOutputType(AzureMonitorWorkspaceResponseMetricsOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationResponseOutput{})
@@ -24919,7 +24881,6 @@ func init() {
 	pulumi.RegisterOutputType(IncidentReceiverResponseArrayOutput{})
 	pulumi.RegisterOutputType(IncidentServiceConnectionOutput{})
 	pulumi.RegisterOutputType(IncidentServiceConnectionResponseOutput{})
-	pulumi.RegisterOutputType(IngestionSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ItsmReceiverOutput{})
 	pulumi.RegisterOutputType(ItsmReceiverArrayOutput{})
 	pulumi.RegisterOutputType(ItsmReceiverResponseOutput{})
@@ -24992,8 +24953,6 @@ func init() {
 	pulumi.RegisterOutputType(MetricSettingsResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetricTriggerOutput{})
 	pulumi.RegisterOutputType(MetricTriggerResponseOutput{})
-	pulumi.RegisterOutputType(MetricsResponseOutput{})
-	pulumi.RegisterOutputType(MetricsResponsePtrOutput{})
 	pulumi.RegisterOutputType(MonitoringAccountDestinationOutput{})
 	pulumi.RegisterOutputType(MonitoringAccountDestinationArrayOutput{})
 	pulumi.RegisterOutputType(MonitoringAccountDestinationResponseOutput{})

@@ -2854,6 +2854,170 @@ func (in *distanceFunctionPtr) ToDistanceFunctionPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(DistanceFunctionPtrOutput)
 }
 
+// The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'
+type FleetspaceApiKind string
+
+const (
+	FleetspaceApiKindNoSQL = FleetspaceApiKind("NoSQL")
+)
+
+func (FleetspaceApiKind) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetspaceApiKind)(nil)).Elem()
+}
+
+func (e FleetspaceApiKind) ToFleetspaceApiKindOutput() FleetspaceApiKindOutput {
+	return pulumi.ToOutput(e).(FleetspaceApiKindOutput)
+}
+
+func (e FleetspaceApiKind) ToFleetspaceApiKindOutputWithContext(ctx context.Context) FleetspaceApiKindOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FleetspaceApiKindOutput)
+}
+
+func (e FleetspaceApiKind) ToFleetspaceApiKindPtrOutput() FleetspaceApiKindPtrOutput {
+	return e.ToFleetspaceApiKindPtrOutputWithContext(context.Background())
+}
+
+func (e FleetspaceApiKind) ToFleetspaceApiKindPtrOutputWithContext(ctx context.Context) FleetspaceApiKindPtrOutput {
+	return FleetspaceApiKind(e).ToFleetspaceApiKindOutputWithContext(ctx).ToFleetspaceApiKindPtrOutputWithContext(ctx)
+}
+
+func (e FleetspaceApiKind) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FleetspaceApiKind) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FleetspaceApiKind) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FleetspaceApiKind) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FleetspaceApiKindOutput struct{ *pulumi.OutputState }
+
+func (FleetspaceApiKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetspaceApiKind)(nil)).Elem()
+}
+
+func (o FleetspaceApiKindOutput) ToFleetspaceApiKindOutput() FleetspaceApiKindOutput {
+	return o
+}
+
+func (o FleetspaceApiKindOutput) ToFleetspaceApiKindOutputWithContext(ctx context.Context) FleetspaceApiKindOutput {
+	return o
+}
+
+func (o FleetspaceApiKindOutput) ToFleetspaceApiKindPtrOutput() FleetspaceApiKindPtrOutput {
+	return o.ToFleetspaceApiKindPtrOutputWithContext(context.Background())
+}
+
+func (o FleetspaceApiKindOutput) ToFleetspaceApiKindPtrOutputWithContext(ctx context.Context) FleetspaceApiKindPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetspaceApiKind) *FleetspaceApiKind {
+		return &v
+	}).(FleetspaceApiKindPtrOutput)
+}
+
+func (o FleetspaceApiKindOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FleetspaceApiKindOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FleetspaceApiKind) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FleetspaceApiKindOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FleetspaceApiKindOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FleetspaceApiKind) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FleetspaceApiKindPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetspaceApiKindPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetspaceApiKind)(nil)).Elem()
+}
+
+func (o FleetspaceApiKindPtrOutput) ToFleetspaceApiKindPtrOutput() FleetspaceApiKindPtrOutput {
+	return o
+}
+
+func (o FleetspaceApiKindPtrOutput) ToFleetspaceApiKindPtrOutputWithContext(ctx context.Context) FleetspaceApiKindPtrOutput {
+	return o
+}
+
+func (o FleetspaceApiKindPtrOutput) Elem() FleetspaceApiKindOutput {
+	return o.ApplyT(func(v *FleetspaceApiKind) FleetspaceApiKind {
+		if v != nil {
+			return *v
+		}
+		var ret FleetspaceApiKind
+		return ret
+	}).(FleetspaceApiKindOutput)
+}
+
+func (o FleetspaceApiKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FleetspaceApiKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FleetspaceApiKind) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FleetspaceApiKindInput is an input type that accepts values of the FleetspaceApiKind enum
+// A concrete instance of `FleetspaceApiKindInput` can be one of the following:
+//
+//	FleetspaceApiKindNoSQL
+type FleetspaceApiKindInput interface {
+	pulumi.Input
+
+	ToFleetspaceApiKindOutput() FleetspaceApiKindOutput
+	ToFleetspaceApiKindOutputWithContext(context.Context) FleetspaceApiKindOutput
+}
+
+var fleetspaceApiKindPtrType = reflect.TypeOf((**FleetspaceApiKind)(nil)).Elem()
+
+type FleetspaceApiKindPtrInput interface {
+	pulumi.Input
+
+	ToFleetspaceApiKindPtrOutput() FleetspaceApiKindPtrOutput
+	ToFleetspaceApiKindPtrOutputWithContext(context.Context) FleetspaceApiKindPtrOutput
+}
+
+type fleetspaceApiKindPtr string
+
+func FleetspaceApiKindPtr(v string) FleetspaceApiKindPtrInput {
+	return (*fleetspaceApiKindPtr)(&v)
+}
+
+func (*fleetspaceApiKindPtr) ElementType() reflect.Type {
+	return fleetspaceApiKindPtrType
+}
+
+func (in *fleetspaceApiKindPtr) ToFleetspaceApiKindPtrOutput() FleetspaceApiKindPtrOutput {
+	return pulumi.ToOutput(in).(FleetspaceApiKindPtrOutput)
+}
+
+func (in *fleetspaceApiKindPtr) ToFleetspaceApiKindPtrOutputWithContext(ctx context.Context) FleetspaceApiKindPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FleetspaceApiKindPtrOutput)
+}
+
 // Indicates the type of index.
 type IndexKind string
 
@@ -5540,6 +5704,172 @@ func (in *serviceSizePtr) ToServiceSizePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceSizePtrOutput)
 }
 
+// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+type ServiceTier string
+
+const (
+	ServiceTierGeneralPurpose   = ServiceTier("GeneralPurpose")
+	ServiceTierBusinessCritical = ServiceTier("BusinessCritical")
+)
+
+func (ServiceTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTier)(nil)).Elem()
+}
+
+func (e ServiceTier) ToServiceTierOutput() ServiceTierOutput {
+	return pulumi.ToOutput(e).(ServiceTierOutput)
+}
+
+func (e ServiceTier) ToServiceTierOutputWithContext(ctx context.Context) ServiceTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServiceTierOutput)
+}
+
+func (e ServiceTier) ToServiceTierPtrOutput() ServiceTierPtrOutput {
+	return e.ToServiceTierPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceTier) ToServiceTierPtrOutputWithContext(ctx context.Context) ServiceTierPtrOutput {
+	return ServiceTier(e).ToServiceTierOutputWithContext(ctx).ToServiceTierPtrOutputWithContext(ctx)
+}
+
+func (e ServiceTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServiceTierOutput struct{ *pulumi.OutputState }
+
+func (ServiceTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTier)(nil)).Elem()
+}
+
+func (o ServiceTierOutput) ToServiceTierOutput() ServiceTierOutput {
+	return o
+}
+
+func (o ServiceTierOutput) ToServiceTierOutputWithContext(ctx context.Context) ServiceTierOutput {
+	return o
+}
+
+func (o ServiceTierOutput) ToServiceTierPtrOutput() ServiceTierPtrOutput {
+	return o.ToServiceTierPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTierOutput) ToServiceTierPtrOutputWithContext(ctx context.Context) ServiceTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTier) *ServiceTier {
+		return &v
+	}).(ServiceTierPtrOutput)
+}
+
+func (o ServiceTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServiceTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServiceTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTierPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTier)(nil)).Elem()
+}
+
+func (o ServiceTierPtrOutput) ToServiceTierPtrOutput() ServiceTierPtrOutput {
+	return o
+}
+
+func (o ServiceTierPtrOutput) ToServiceTierPtrOutputWithContext(ctx context.Context) ServiceTierPtrOutput {
+	return o
+}
+
+func (o ServiceTierPtrOutput) Elem() ServiceTierOutput {
+	return o.ApplyT(func(v *ServiceTier) ServiceTier {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTier
+		return ret
+	}).(ServiceTierOutput)
+}
+
+func (o ServiceTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceTierInput is an input type that accepts values of the ServiceTier enum
+// A concrete instance of `ServiceTierInput` can be one of the following:
+//
+//	ServiceTierGeneralPurpose
+//	ServiceTierBusinessCritical
+type ServiceTierInput interface {
+	pulumi.Input
+
+	ToServiceTierOutput() ServiceTierOutput
+	ToServiceTierOutputWithContext(context.Context) ServiceTierOutput
+}
+
+var serviceTierPtrType = reflect.TypeOf((**ServiceTier)(nil)).Elem()
+
+type ServiceTierPtrInput interface {
+	pulumi.Input
+
+	ToServiceTierPtrOutput() ServiceTierPtrOutput
+	ToServiceTierPtrOutputWithContext(context.Context) ServiceTierPtrOutput
+}
+
+type serviceTierPtr string
+
+func ServiceTierPtr(v string) ServiceTierPtrInput {
+	return (*serviceTierPtr)(&v)
+}
+
+func (*serviceTierPtr) ElementType() reflect.Type {
+	return serviceTierPtrType
+}
+
+func (in *serviceTierPtr) ToServiceTierPtrOutput() ServiceTierPtrOutput {
+	return pulumi.ToOutput(in).(ServiceTierPtrOutput)
+}
+
+func (in *serviceTierPtr) ToServiceTierPtrOutputWithContext(ctx context.Context) ServiceTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServiceTierPtrOutput)
+}
+
 // ServiceType for the service.
 type ServiceType string
 
@@ -5718,6 +6048,172 @@ func (in *spatialTypePtr) ToSpatialTypePtrOutput() SpatialTypePtrOutput {
 
 func (in *spatialTypePtr) ToSpatialTypePtrOutputWithContext(ctx context.Context) SpatialTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SpatialTypePtrOutput)
+}
+
+// The type of the fleet analytics resource.
+type StorageLocationType string
+
+const (
+	StorageLocationTypeStorageAccount  = StorageLocationType("StorageAccount")
+	StorageLocationTypeFabricLakehouse = StorageLocationType("FabricLakehouse")
+)
+
+func (StorageLocationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageLocationType)(nil)).Elem()
+}
+
+func (e StorageLocationType) ToStorageLocationTypeOutput() StorageLocationTypeOutput {
+	return pulumi.ToOutput(e).(StorageLocationTypeOutput)
+}
+
+func (e StorageLocationType) ToStorageLocationTypeOutputWithContext(ctx context.Context) StorageLocationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StorageLocationTypeOutput)
+}
+
+func (e StorageLocationType) ToStorageLocationTypePtrOutput() StorageLocationTypePtrOutput {
+	return e.ToStorageLocationTypePtrOutputWithContext(context.Background())
+}
+
+func (e StorageLocationType) ToStorageLocationTypePtrOutputWithContext(ctx context.Context) StorageLocationTypePtrOutput {
+	return StorageLocationType(e).ToStorageLocationTypeOutputWithContext(ctx).ToStorageLocationTypePtrOutputWithContext(ctx)
+}
+
+func (e StorageLocationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageLocationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageLocationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StorageLocationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StorageLocationTypeOutput struct{ *pulumi.OutputState }
+
+func (StorageLocationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageLocationType)(nil)).Elem()
+}
+
+func (o StorageLocationTypeOutput) ToStorageLocationTypeOutput() StorageLocationTypeOutput {
+	return o
+}
+
+func (o StorageLocationTypeOutput) ToStorageLocationTypeOutputWithContext(ctx context.Context) StorageLocationTypeOutput {
+	return o
+}
+
+func (o StorageLocationTypeOutput) ToStorageLocationTypePtrOutput() StorageLocationTypePtrOutput {
+	return o.ToStorageLocationTypePtrOutputWithContext(context.Background())
+}
+
+func (o StorageLocationTypeOutput) ToStorageLocationTypePtrOutputWithContext(ctx context.Context) StorageLocationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageLocationType) *StorageLocationType {
+		return &v
+	}).(StorageLocationTypePtrOutput)
+}
+
+func (o StorageLocationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StorageLocationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageLocationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StorageLocationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageLocationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageLocationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageLocationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageLocationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageLocationType)(nil)).Elem()
+}
+
+func (o StorageLocationTypePtrOutput) ToStorageLocationTypePtrOutput() StorageLocationTypePtrOutput {
+	return o
+}
+
+func (o StorageLocationTypePtrOutput) ToStorageLocationTypePtrOutputWithContext(ctx context.Context) StorageLocationTypePtrOutput {
+	return o
+}
+
+func (o StorageLocationTypePtrOutput) Elem() StorageLocationTypeOutput {
+	return o.ApplyT(func(v *StorageLocationType) StorageLocationType {
+		if v != nil {
+			return *v
+		}
+		var ret StorageLocationType
+		return ret
+	}).(StorageLocationTypeOutput)
+}
+
+func (o StorageLocationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageLocationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StorageLocationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StorageLocationTypeInput is an input type that accepts values of the StorageLocationType enum
+// A concrete instance of `StorageLocationTypeInput` can be one of the following:
+//
+//	StorageLocationTypeStorageAccount
+//	StorageLocationTypeFabricLakehouse
+type StorageLocationTypeInput interface {
+	pulumi.Input
+
+	ToStorageLocationTypeOutput() StorageLocationTypeOutput
+	ToStorageLocationTypeOutputWithContext(context.Context) StorageLocationTypeOutput
+}
+
+var storageLocationTypePtrType = reflect.TypeOf((**StorageLocationType)(nil)).Elem()
+
+type StorageLocationTypePtrInput interface {
+	pulumi.Input
+
+	ToStorageLocationTypePtrOutput() StorageLocationTypePtrOutput
+	ToStorageLocationTypePtrOutputWithContext(context.Context) StorageLocationTypePtrOutput
+}
+
+type storageLocationTypePtr string
+
+func StorageLocationTypePtr(v string) StorageLocationTypePtrInput {
+	return (*storageLocationTypePtr)(&v)
+}
+
+func (*storageLocationTypePtr) ElementType() reflect.Type {
+	return storageLocationTypePtrType
+}
+
+func (in *storageLocationTypePtr) ToStorageLocationTypePtrOutput() StorageLocationTypePtrOutput {
+	return pulumi.ToOutput(in).(StorageLocationTypePtrOutput)
+}
+
+func (in *storageLocationTypePtr) ToStorageLocationTypePtrOutputWithContext(ctx context.Context) StorageLocationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StorageLocationTypePtrOutput)
 }
 
 // The operation the trigger is associated with
@@ -6429,6 +6925,8 @@ func init() {
 	pulumi.RegisterOutputType(DefaultConsistencyLevelPtrOutput{})
 	pulumi.RegisterOutputType(DistanceFunctionOutput{})
 	pulumi.RegisterOutputType(DistanceFunctionPtrOutput{})
+	pulumi.RegisterOutputType(FleetspaceApiKindOutput{})
+	pulumi.RegisterOutputType(FleetspaceApiKindPtrOutput{})
 	pulumi.RegisterOutputType(IndexKindOutput{})
 	pulumi.RegisterOutputType(IndexKindPtrOutput{})
 	pulumi.RegisterOutputType(IndexingModeOutput{})
@@ -6461,8 +6959,12 @@ func init() {
 	pulumi.RegisterOutputType(ServerVersionPtrOutput{})
 	pulumi.RegisterOutputType(ServiceSizeOutput{})
 	pulumi.RegisterOutputType(ServiceSizePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTierOutput{})
+	pulumi.RegisterOutputType(ServiceTierPtrOutput{})
 	pulumi.RegisterOutputType(SpatialTypeOutput{})
 	pulumi.RegisterOutputType(SpatialTypePtrOutput{})
+	pulumi.RegisterOutputType(StorageLocationTypeOutput{})
+	pulumi.RegisterOutputType(StorageLocationTypePtrOutput{})
 	pulumi.RegisterOutputType(TriggerOperationOutput{})
 	pulumi.RegisterOutputType(TriggerOperationPtrOutput{})
 	pulumi.RegisterOutputType(TriggerTypeOutput{})

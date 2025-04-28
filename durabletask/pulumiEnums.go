@@ -20,7 +20,7 @@ const (
 	PurgeableOrchestrationStateFailed = PurgeableOrchestrationState("Failed")
 	// The orchestration is terminated
 	PurgeableOrchestrationStateTerminated = PurgeableOrchestrationState("Terminated")
-	// The orchestration is terminated
+	// The orchestration is canceled
 	PurgeableOrchestrationStateCanceled = PurgeableOrchestrationState("Canceled")
 )
 
