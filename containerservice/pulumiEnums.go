@@ -10,6 +10,177 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Action if Kubernetes namespace with same name already exists.
+type AdoptionPolicy string
+
+const (
+	// If the namespace already exists in Kubernetes, attempts to create that same namespace in ARM will fail.
+	AdoptionPolicyNever = AdoptionPolicy("Never")
+	// Take over the existing namespace to be managed by ARM, if there is no difference.
+	AdoptionPolicyIfIdentical = AdoptionPolicy("IfIdentical")
+	// Always take over the existing namespace to be managed by ARM, some fields might be overwritten.
+	AdoptionPolicyAlways = AdoptionPolicy("Always")
+)
+
+func (AdoptionPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdoptionPolicy)(nil)).Elem()
+}
+
+func (e AdoptionPolicy) ToAdoptionPolicyOutput() AdoptionPolicyOutput {
+	return pulumi.ToOutput(e).(AdoptionPolicyOutput)
+}
+
+func (e AdoptionPolicy) ToAdoptionPolicyOutputWithContext(ctx context.Context) AdoptionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AdoptionPolicyOutput)
+}
+
+func (e AdoptionPolicy) ToAdoptionPolicyPtrOutput() AdoptionPolicyPtrOutput {
+	return e.ToAdoptionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e AdoptionPolicy) ToAdoptionPolicyPtrOutputWithContext(ctx context.Context) AdoptionPolicyPtrOutput {
+	return AdoptionPolicy(e).ToAdoptionPolicyOutputWithContext(ctx).ToAdoptionPolicyPtrOutputWithContext(ctx)
+}
+
+func (e AdoptionPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AdoptionPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AdoptionPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AdoptionPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AdoptionPolicyOutput struct{ *pulumi.OutputState }
+
+func (AdoptionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdoptionPolicy)(nil)).Elem()
+}
+
+func (o AdoptionPolicyOutput) ToAdoptionPolicyOutput() AdoptionPolicyOutput {
+	return o
+}
+
+func (o AdoptionPolicyOutput) ToAdoptionPolicyOutputWithContext(ctx context.Context) AdoptionPolicyOutput {
+	return o
+}
+
+func (o AdoptionPolicyOutput) ToAdoptionPolicyPtrOutput() AdoptionPolicyPtrOutput {
+	return o.ToAdoptionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AdoptionPolicyOutput) ToAdoptionPolicyPtrOutputWithContext(ctx context.Context) AdoptionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdoptionPolicy) *AdoptionPolicy {
+		return &v
+	}).(AdoptionPolicyPtrOutput)
+}
+
+func (o AdoptionPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AdoptionPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AdoptionPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AdoptionPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AdoptionPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AdoptionPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AdoptionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AdoptionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdoptionPolicy)(nil)).Elem()
+}
+
+func (o AdoptionPolicyPtrOutput) ToAdoptionPolicyPtrOutput() AdoptionPolicyPtrOutput {
+	return o
+}
+
+func (o AdoptionPolicyPtrOutput) ToAdoptionPolicyPtrOutputWithContext(ctx context.Context) AdoptionPolicyPtrOutput {
+	return o
+}
+
+func (o AdoptionPolicyPtrOutput) Elem() AdoptionPolicyOutput {
+	return o.ApplyT(func(v *AdoptionPolicy) AdoptionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AdoptionPolicy
+		return ret
+	}).(AdoptionPolicyOutput)
+}
+
+func (o AdoptionPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AdoptionPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AdoptionPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AdoptionPolicyInput is an input type that accepts values of the AdoptionPolicy enum
+// A concrete instance of `AdoptionPolicyInput` can be one of the following:
+//
+//	AdoptionPolicyNever
+//	AdoptionPolicyIfIdentical
+//	AdoptionPolicyAlways
+type AdoptionPolicyInput interface {
+	pulumi.Input
+
+	ToAdoptionPolicyOutput() AdoptionPolicyOutput
+	ToAdoptionPolicyOutputWithContext(context.Context) AdoptionPolicyOutput
+}
+
+var adoptionPolicyPtrType = reflect.TypeOf((**AdoptionPolicy)(nil)).Elem()
+
+type AdoptionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAdoptionPolicyPtrOutput() AdoptionPolicyPtrOutput
+	ToAdoptionPolicyPtrOutputWithContext(context.Context) AdoptionPolicyPtrOutput
+}
+
+type adoptionPolicyPtr string
+
+func AdoptionPolicyPtr(v string) AdoptionPolicyPtrInput {
+	return (*adoptionPolicyPtr)(&v)
+}
+
+func (*adoptionPolicyPtr) ElementType() reflect.Type {
+	return adoptionPolicyPtrType
+}
+
+func (in *adoptionPolicyPtr) ToAdoptionPolicyPtrOutput() AdoptionPolicyPtrOutput {
+	return pulumi.ToOutput(in).(AdoptionPolicyPtrOutput)
+}
+
+func (in *adoptionPolicyPtr) ToAdoptionPolicyPtrOutputWithContext(ctx context.Context) AdoptionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AdoptionPolicyPtrOutput)
+}
+
 // A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
 type AgentPoolMode string
 
@@ -1018,6 +1189,174 @@ func (in *connectionStatusPtr) ToConnectionStatusPtrOutput() ConnectionStatusPtr
 
 func (in *connectionStatusPtr) ToConnectionStatusPtrOutputWithContext(ctx context.Context) ConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionStatusPtrOutput)
+}
+
+// Delete options of a namespace.
+type DeletePolicy string
+
+const (
+	// Only delete the ARM resource, keep the Kubernetes namespace. Also delete the ManagedByARM label.
+	DeletePolicyKeep = DeletePolicy("Keep")
+	// Delete both the ARM resource and the Kubernetes namespace together.
+	DeletePolicyDelete = DeletePolicy("Delete")
+)
+
+func (DeletePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeletePolicy)(nil)).Elem()
+}
+
+func (e DeletePolicy) ToDeletePolicyOutput() DeletePolicyOutput {
+	return pulumi.ToOutput(e).(DeletePolicyOutput)
+}
+
+func (e DeletePolicy) ToDeletePolicyOutputWithContext(ctx context.Context) DeletePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DeletePolicyOutput)
+}
+
+func (e DeletePolicy) ToDeletePolicyPtrOutput() DeletePolicyPtrOutput {
+	return e.ToDeletePolicyPtrOutputWithContext(context.Background())
+}
+
+func (e DeletePolicy) ToDeletePolicyPtrOutputWithContext(ctx context.Context) DeletePolicyPtrOutput {
+	return DeletePolicy(e).ToDeletePolicyOutputWithContext(ctx).ToDeletePolicyPtrOutputWithContext(ctx)
+}
+
+func (e DeletePolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DeletePolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DeletePolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DeletePolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DeletePolicyOutput struct{ *pulumi.OutputState }
+
+func (DeletePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeletePolicy)(nil)).Elem()
+}
+
+func (o DeletePolicyOutput) ToDeletePolicyOutput() DeletePolicyOutput {
+	return o
+}
+
+func (o DeletePolicyOutput) ToDeletePolicyOutputWithContext(ctx context.Context) DeletePolicyOutput {
+	return o
+}
+
+func (o DeletePolicyOutput) ToDeletePolicyPtrOutput() DeletePolicyPtrOutput {
+	return o.ToDeletePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o DeletePolicyOutput) ToDeletePolicyPtrOutputWithContext(ctx context.Context) DeletePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeletePolicy) *DeletePolicy {
+		return &v
+	}).(DeletePolicyPtrOutput)
+}
+
+func (o DeletePolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DeletePolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeletePolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DeletePolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeletePolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeletePolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeletePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (DeletePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeletePolicy)(nil)).Elem()
+}
+
+func (o DeletePolicyPtrOutput) ToDeletePolicyPtrOutput() DeletePolicyPtrOutput {
+	return o
+}
+
+func (o DeletePolicyPtrOutput) ToDeletePolicyPtrOutputWithContext(ctx context.Context) DeletePolicyPtrOutput {
+	return o
+}
+
+func (o DeletePolicyPtrOutput) Elem() DeletePolicyOutput {
+	return o.ApplyT(func(v *DeletePolicy) DeletePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret DeletePolicy
+		return ret
+	}).(DeletePolicyOutput)
+}
+
+func (o DeletePolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeletePolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DeletePolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DeletePolicyInput is an input type that accepts values of the DeletePolicy enum
+// A concrete instance of `DeletePolicyInput` can be one of the following:
+//
+//	DeletePolicyKeep
+//	DeletePolicyDelete
+type DeletePolicyInput interface {
+	pulumi.Input
+
+	ToDeletePolicyOutput() DeletePolicyOutput
+	ToDeletePolicyOutputWithContext(context.Context) DeletePolicyOutput
+}
+
+var deletePolicyPtrType = reflect.TypeOf((**DeletePolicy)(nil)).Elem()
+
+type DeletePolicyPtrInput interface {
+	pulumi.Input
+
+	ToDeletePolicyPtrOutput() DeletePolicyPtrOutput
+	ToDeletePolicyPtrOutputWithContext(context.Context) DeletePolicyPtrOutput
+}
+
+type deletePolicyPtr string
+
+func DeletePolicyPtr(v string) DeletePolicyPtrInput {
+	return (*deletePolicyPtr)(&v)
+}
+
+func (*deletePolicyPtr) ElementType() reflect.Type {
+	return deletePolicyPtrType
+}
+
+func (in *deletePolicyPtr) ToDeletePolicyPtrOutput() DeletePolicyPtrOutput {
+	return pulumi.ToOutput(in).(DeletePolicyPtrOutput)
+}
+
+func (in *deletePolicyPtr) ToDeletePolicyPtrOutputWithContext(ctx context.Context) DeletePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DeletePolicyPtrOutput)
 }
 
 // If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
@@ -5431,6 +5770,177 @@ func (in *outboundTypePtr) ToOutboundTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(OutboundTypePtrOutput)
 }
 
+// Ingress policy for the network.
+type PolicyRule string
+
+const (
+	// Deny all network traffic.
+	PolicyRuleDenyAll = PolicyRule("DenyAll")
+	// Allow all network traffic.
+	PolicyRuleAllowAll = PolicyRule("AllowAll")
+	// Allow traffic within the same namespace.
+	PolicyRuleAllowSameNamespace = PolicyRule("AllowSameNamespace")
+)
+
+func (PolicyRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyRule)(nil)).Elem()
+}
+
+func (e PolicyRule) ToPolicyRuleOutput() PolicyRuleOutput {
+	return pulumi.ToOutput(e).(PolicyRuleOutput)
+}
+
+func (e PolicyRule) ToPolicyRuleOutputWithContext(ctx context.Context) PolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PolicyRuleOutput)
+}
+
+func (e PolicyRule) ToPolicyRulePtrOutput() PolicyRulePtrOutput {
+	return e.ToPolicyRulePtrOutputWithContext(context.Background())
+}
+
+func (e PolicyRule) ToPolicyRulePtrOutputWithContext(ctx context.Context) PolicyRulePtrOutput {
+	return PolicyRule(e).ToPolicyRuleOutputWithContext(ctx).ToPolicyRulePtrOutputWithContext(ctx)
+}
+
+func (e PolicyRule) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PolicyRule) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PolicyRule) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PolicyRule) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (PolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyRule)(nil)).Elem()
+}
+
+func (o PolicyRuleOutput) ToPolicyRuleOutput() PolicyRuleOutput {
+	return o
+}
+
+func (o PolicyRuleOutput) ToPolicyRuleOutputWithContext(ctx context.Context) PolicyRuleOutput {
+	return o
+}
+
+func (o PolicyRuleOutput) ToPolicyRulePtrOutput() PolicyRulePtrOutput {
+	return o.ToPolicyRulePtrOutputWithContext(context.Background())
+}
+
+func (o PolicyRuleOutput) ToPolicyRulePtrOutputWithContext(ctx context.Context) PolicyRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyRule) *PolicyRule {
+		return &v
+	}).(PolicyRulePtrOutput)
+}
+
+func (o PolicyRuleOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PolicyRuleOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PolicyRule) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyRuleOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyRuleOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PolicyRule) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyRulePtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyRule)(nil)).Elem()
+}
+
+func (o PolicyRulePtrOutput) ToPolicyRulePtrOutput() PolicyRulePtrOutput {
+	return o
+}
+
+func (o PolicyRulePtrOutput) ToPolicyRulePtrOutputWithContext(ctx context.Context) PolicyRulePtrOutput {
+	return o
+}
+
+func (o PolicyRulePtrOutput) Elem() PolicyRuleOutput {
+	return o.ApplyT(func(v *PolicyRule) PolicyRule {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyRule
+		return ret
+	}).(PolicyRuleOutput)
+}
+
+func (o PolicyRulePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyRulePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PolicyRule) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PolicyRuleInput is an input type that accepts values of the PolicyRule enum
+// A concrete instance of `PolicyRuleInput` can be one of the following:
+//
+//	PolicyRuleDenyAll
+//	PolicyRuleAllowAll
+//	PolicyRuleAllowSameNamespace
+type PolicyRuleInput interface {
+	pulumi.Input
+
+	ToPolicyRuleOutput() PolicyRuleOutput
+	ToPolicyRuleOutputWithContext(context.Context) PolicyRuleOutput
+}
+
+var policyRulePtrType = reflect.TypeOf((**PolicyRule)(nil)).Elem()
+
+type PolicyRulePtrInput interface {
+	pulumi.Input
+
+	ToPolicyRulePtrOutput() PolicyRulePtrOutput
+	ToPolicyRulePtrOutputWithContext(context.Context) PolicyRulePtrOutput
+}
+
+type policyRulePtr string
+
+func PolicyRulePtr(v string) PolicyRulePtrInput {
+	return (*policyRulePtr)(&v)
+}
+
+func (*policyRulePtr) ElementType() reflect.Type {
+	return policyRulePtrType
+}
+
+func (in *policyRulePtr) ToPolicyRulePtrOutput() PolicyRulePtrOutput {
+	return pulumi.ToOutput(in).(PolicyRulePtrOutput)
+}
+
+func (in *policyRulePtr) ToPolicyRulePtrOutputWithContext(ctx context.Context) PolicyRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PolicyRulePtrOutput)
+}
+
 // The network protocol of the port.
 type Protocol string
 
@@ -7640,6 +8150,8 @@ func (in *workloadRuntimePtr) ToWorkloadRuntimePtrOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterOutputType(AdoptionPolicyOutput{})
+	pulumi.RegisterOutputType(AdoptionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AgentPoolModeOutput{})
 	pulumi.RegisterOutputType(AgentPoolModePtrOutput{})
 	pulumi.RegisterOutputType(AgentPoolTypeOutput{})
@@ -7652,6 +8164,8 @@ func init() {
 	pulumi.RegisterOutputType(CodePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStatusOutput{})
 	pulumi.RegisterOutputType(ConnectionStatusPtrOutput{})
+	pulumi.RegisterOutputType(DeletePolicyOutput{})
+	pulumi.RegisterOutputType(DeletePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ExpanderOutput{})
 	pulumi.RegisterOutputType(ExpanderPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationTypesOutput{})
@@ -7704,6 +8218,8 @@ func init() {
 	pulumi.RegisterOutputType(OperatorPtrOutput{})
 	pulumi.RegisterOutputType(OutboundTypeOutput{})
 	pulumi.RegisterOutputType(OutboundTypePtrOutput{})
+	pulumi.RegisterOutputType(PolicyRuleOutput{})
+	pulumi.RegisterOutputType(PolicyRulePtrOutput{})
 	pulumi.RegisterOutputType(ProtocolOutput{})
 	pulumi.RegisterOutputType(ProtocolPtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})

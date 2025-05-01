@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-02-01.
 //
-// Other available API versions: 2019-03-01, 2019-10-01, 2020-04-01, 2020-11-01, 2021-06-01, 2022-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2019-03-01, 2019-10-01, 2020-04-01, 2020-11-01, 2021-06-01, 2022-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Policy struct {
 	pulumi.CustomResourceState
 
@@ -82,6 +82,9 @@ func NewPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:frontdoor/v20240201:Policy"),
+		},
+		{
+			Type: pulumi.String("azure-native:frontdoor/v20250301:Policy"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20210601:Policy"),

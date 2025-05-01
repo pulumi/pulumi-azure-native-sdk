@@ -23,7 +23,7 @@ func LookupServerGroupCluster(ctx *pulumi.Context, args *LookupServerGroupCluste
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupServerGroupClusterArgs struct {
@@ -40,7 +40,7 @@ type LookupServerGroupClusterResult struct {
 	// The administrator's login name of the servers in the cluster.
 	AdministratorLogin string `pulumi:"administratorLogin"`
 	// Authentication configuration of a cluster.
-	AuthConfig *AuthConfigResponse `pulumi:"authConfig"`
+	AuthConfig *ServerGroupClusterAuthConfigResponse `pulumi:"authConfig"`
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Citus extension version on all cluster servers.
@@ -54,7 +54,7 @@ type LookupServerGroupClusterResult struct {
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 	CoordinatorVCores *int `pulumi:"coordinatorVCores"`
 	// The data encryption properties of a cluster.
-	DataEncryption *DataEncryptionResponse `pulumi:"dataEncryption"`
+	DataEncryption *ServerGroupClusterDataEncryptionResponse `pulumi:"dataEncryption"`
 	// The database name of the cluster. Only one database per cluster is supported.
 	DatabaseName *string `pulumi:"databaseName"`
 	// The earliest restore point time (ISO8601 format) for the cluster.
@@ -72,7 +72,7 @@ type LookupServerGroupClusterResult struct {
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Maintenance window of a cluster.
-	MaintenanceWindow *MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
+	MaintenanceWindow *ServerGroupClusterMaintenanceWindowResponse `pulumi:"maintenanceWindow"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
@@ -115,16 +115,6 @@ type LookupServerGroupClusterResult struct {
 	Type string `pulumi:"type"`
 }
 
-// Defaults sets the appropriate defaults for LookupServerGroupClusterResult
-func (val *LookupServerGroupClusterResult) Defaults() *LookupServerGroupClusterResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.AuthConfig = tmp.AuthConfig.Defaults()
-
-	return &tmp
-}
 func LookupServerGroupClusterOutput(ctx *pulumi.Context, args LookupServerGroupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupServerGroupClusterResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerGroupClusterResultOutput, error) {
@@ -171,8 +161,8 @@ func (o LookupServerGroupClusterResultOutput) AdministratorLogin() pulumi.String
 }
 
 // Authentication configuration of a cluster.
-func (o LookupServerGroupClusterResultOutput) AuthConfig() AuthConfigResponsePtrOutput {
-	return o.ApplyT(func(v LookupServerGroupClusterResult) *AuthConfigResponse { return v.AuthConfig }).(AuthConfigResponsePtrOutput)
+func (o LookupServerGroupClusterResultOutput) AuthConfig() ServerGroupClusterAuthConfigResponsePtrOutput {
+	return o.ApplyT(func(v LookupServerGroupClusterResult) *ServerGroupClusterAuthConfigResponse { return v.AuthConfig }).(ServerGroupClusterAuthConfigResponsePtrOutput)
 }
 
 // The Azure API version of the resource.
@@ -206,8 +196,10 @@ func (o LookupServerGroupClusterResultOutput) CoordinatorVCores() pulumi.IntPtrO
 }
 
 // The data encryption properties of a cluster.
-func (o LookupServerGroupClusterResultOutput) DataEncryption() DataEncryptionResponsePtrOutput {
-	return o.ApplyT(func(v LookupServerGroupClusterResult) *DataEncryptionResponse { return v.DataEncryption }).(DataEncryptionResponsePtrOutput)
+func (o LookupServerGroupClusterResultOutput) DataEncryption() ServerGroupClusterDataEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v LookupServerGroupClusterResult) *ServerGroupClusterDataEncryptionResponse {
+		return v.DataEncryption
+	}).(ServerGroupClusterDataEncryptionResponsePtrOutput)
 }
 
 // The database name of the cluster. Only one database per cluster is supported.
@@ -251,8 +243,10 @@ func (o LookupServerGroupClusterResultOutput) Location() pulumi.StringOutput {
 }
 
 // Maintenance window of a cluster.
-func (o LookupServerGroupClusterResultOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
-	return o.ApplyT(func(v LookupServerGroupClusterResult) *MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponsePtrOutput)
+func (o LookupServerGroupClusterResultOutput) MaintenanceWindow() ServerGroupClusterMaintenanceWindowResponsePtrOutput {
+	return o.ApplyT(func(v LookupServerGroupClusterResult) *ServerGroupClusterMaintenanceWindowResponse {
+		return v.MaintenanceWindow
+	}).(ServerGroupClusterMaintenanceWindowResponsePtrOutput)
 }
 
 // The name of the resource

@@ -192,6 +192,12 @@ func NewDatabaseAccountCassandraTable(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cosmosdb/v20241201preview:DatabaseAccountCassandraTable"),
 		},
 		{
+			Type: pulumi.String("azure-native:cosmosdb/v20250415:DatabaseAccountCassandraTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:cosmosdb/v20250501preview:DatabaseAccountCassandraTable"),
+		},
+		{
 			Type: pulumi.String("azure-native:documentdb/v20230315preview:CassandraResourceCassandraTable"),
 		},
 		{

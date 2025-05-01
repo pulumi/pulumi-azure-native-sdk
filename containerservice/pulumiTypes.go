@@ -22092,6 +22092,624 @@ func (o MemberUpdateStatusResponseArrayOutput) Index(i pulumi.IntInput) MemberUp
 	}).(MemberUpdateStatusResponseOutput)
 }
 
+// Properties of a namespace managed by ARM
+type NamespaceProperties struct {
+	// Action if Kubernetes namespace with same name already exists.
+	AdoptionPolicy *string `pulumi:"adoptionPolicy"`
+	// The annotations of managed namespace.
+	Annotations map[string]string `pulumi:"annotations"`
+	// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
+	DefaultNetworkPolicy *NetworkPolicies `pulumi:"defaultNetworkPolicy"`
+	// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
+	DefaultResourceQuota *ResourceQuota `pulumi:"defaultResourceQuota"`
+	// Delete options of a namespace.
+	DeletePolicy *string `pulumi:"deletePolicy"`
+	// The labels of managed namespace.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// Defaults sets the appropriate defaults for NamespaceProperties
+func (val *NamespaceProperties) Defaults() *NamespaceProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.DefaultNetworkPolicy = tmp.DefaultNetworkPolicy.Defaults()
+
+	return &tmp
+}
+
+// NamespacePropertiesInput is an input type that accepts NamespacePropertiesArgs and NamespacePropertiesOutput values.
+// You can construct a concrete instance of `NamespacePropertiesInput` via:
+//
+//	NamespacePropertiesArgs{...}
+type NamespacePropertiesInput interface {
+	pulumi.Input
+
+	ToNamespacePropertiesOutput() NamespacePropertiesOutput
+	ToNamespacePropertiesOutputWithContext(context.Context) NamespacePropertiesOutput
+}
+
+// Properties of a namespace managed by ARM
+type NamespacePropertiesArgs struct {
+	// Action if Kubernetes namespace with same name already exists.
+	AdoptionPolicy pulumi.StringPtrInput `pulumi:"adoptionPolicy"`
+	// The annotations of managed namespace.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
+	DefaultNetworkPolicy NetworkPoliciesPtrInput `pulumi:"defaultNetworkPolicy"`
+	// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
+	DefaultResourceQuota ResourceQuotaPtrInput `pulumi:"defaultResourceQuota"`
+	// Delete options of a namespace.
+	DeletePolicy pulumi.StringPtrInput `pulumi:"deletePolicy"`
+	// The labels of managed namespace.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+// Defaults sets the appropriate defaults for NamespacePropertiesArgs
+func (val *NamespacePropertiesArgs) Defaults() *NamespacePropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (NamespacePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceProperties)(nil)).Elem()
+}
+
+func (i NamespacePropertiesArgs) ToNamespacePropertiesOutput() NamespacePropertiesOutput {
+	return i.ToNamespacePropertiesOutputWithContext(context.Background())
+}
+
+func (i NamespacePropertiesArgs) ToNamespacePropertiesOutputWithContext(ctx context.Context) NamespacePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespacePropertiesOutput)
+}
+
+func (i NamespacePropertiesArgs) ToNamespacePropertiesPtrOutput() NamespacePropertiesPtrOutput {
+	return i.ToNamespacePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i NamespacePropertiesArgs) ToNamespacePropertiesPtrOutputWithContext(ctx context.Context) NamespacePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespacePropertiesOutput).ToNamespacePropertiesPtrOutputWithContext(ctx)
+}
+
+// NamespacePropertiesPtrInput is an input type that accepts NamespacePropertiesArgs, NamespacePropertiesPtr and NamespacePropertiesPtrOutput values.
+// You can construct a concrete instance of `NamespacePropertiesPtrInput` via:
+//
+//	        NamespacePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type NamespacePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToNamespacePropertiesPtrOutput() NamespacePropertiesPtrOutput
+	ToNamespacePropertiesPtrOutputWithContext(context.Context) NamespacePropertiesPtrOutput
+}
+
+type namespacePropertiesPtrType NamespacePropertiesArgs
+
+func NamespacePropertiesPtr(v *NamespacePropertiesArgs) NamespacePropertiesPtrInput {
+	return (*namespacePropertiesPtrType)(v)
+}
+
+func (*namespacePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceProperties)(nil)).Elem()
+}
+
+func (i *namespacePropertiesPtrType) ToNamespacePropertiesPtrOutput() NamespacePropertiesPtrOutput {
+	return i.ToNamespacePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *namespacePropertiesPtrType) ToNamespacePropertiesPtrOutputWithContext(ctx context.Context) NamespacePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespacePropertiesPtrOutput)
+}
+
+// Properties of a namespace managed by ARM
+type NamespacePropertiesOutput struct{ *pulumi.OutputState }
+
+func (NamespacePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceProperties)(nil)).Elem()
+}
+
+func (o NamespacePropertiesOutput) ToNamespacePropertiesOutput() NamespacePropertiesOutput {
+	return o
+}
+
+func (o NamespacePropertiesOutput) ToNamespacePropertiesOutputWithContext(ctx context.Context) NamespacePropertiesOutput {
+	return o
+}
+
+func (o NamespacePropertiesOutput) ToNamespacePropertiesPtrOutput() NamespacePropertiesPtrOutput {
+	return o.ToNamespacePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o NamespacePropertiesOutput) ToNamespacePropertiesPtrOutputWithContext(ctx context.Context) NamespacePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceProperties) *NamespaceProperties {
+		return &v
+	}).(NamespacePropertiesPtrOutput)
+}
+
+// Action if Kubernetes namespace with same name already exists.
+func (o NamespacePropertiesOutput) AdoptionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceProperties) *string { return v.AdoptionPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The annotations of managed namespace.
+func (o NamespacePropertiesOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NamespaceProperties) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
+func (o NamespacePropertiesOutput) DefaultNetworkPolicy() NetworkPoliciesPtrOutput {
+	return o.ApplyT(func(v NamespaceProperties) *NetworkPolicies { return v.DefaultNetworkPolicy }).(NetworkPoliciesPtrOutput)
+}
+
+// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
+func (o NamespacePropertiesOutput) DefaultResourceQuota() ResourceQuotaPtrOutput {
+	return o.ApplyT(func(v NamespaceProperties) *ResourceQuota { return v.DefaultResourceQuota }).(ResourceQuotaPtrOutput)
+}
+
+// Delete options of a namespace.
+func (o NamespacePropertiesOutput) DeletePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceProperties) *string { return v.DeletePolicy }).(pulumi.StringPtrOutput)
+}
+
+// The labels of managed namespace.
+func (o NamespacePropertiesOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NamespaceProperties) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type NamespacePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (NamespacePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceProperties)(nil)).Elem()
+}
+
+func (o NamespacePropertiesPtrOutput) ToNamespacePropertiesPtrOutput() NamespacePropertiesPtrOutput {
+	return o
+}
+
+func (o NamespacePropertiesPtrOutput) ToNamespacePropertiesPtrOutputWithContext(ctx context.Context) NamespacePropertiesPtrOutput {
+	return o
+}
+
+func (o NamespacePropertiesPtrOutput) Elem() NamespacePropertiesOutput {
+	return o.ApplyT(func(v *NamespaceProperties) NamespaceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceProperties
+		return ret
+	}).(NamespacePropertiesOutput)
+}
+
+// Action if Kubernetes namespace with same name already exists.
+func (o NamespacePropertiesPtrOutput) AdoptionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdoptionPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The annotations of managed namespace.
+func (o NamespacePropertiesPtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NamespaceProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Annotations
+	}).(pulumi.StringMapOutput)
+}
+
+// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
+func (o NamespacePropertiesPtrOutput) DefaultNetworkPolicy() NetworkPoliciesPtrOutput {
+	return o.ApplyT(func(v *NamespaceProperties) *NetworkPolicies {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultNetworkPolicy
+	}).(NetworkPoliciesPtrOutput)
+}
+
+// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
+func (o NamespacePropertiesPtrOutput) DefaultResourceQuota() ResourceQuotaPtrOutput {
+	return o.ApplyT(func(v *NamespaceProperties) *ResourceQuota {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultResourceQuota
+	}).(ResourceQuotaPtrOutput)
+}
+
+// Delete options of a namespace.
+func (o NamespacePropertiesPtrOutput) DeletePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletePolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The labels of managed namespace.
+func (o NamespacePropertiesPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NamespaceProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Properties of a namespace managed by ARM
+type NamespacePropertiesResponse struct {
+	// Action if Kubernetes namespace with same name already exists.
+	AdoptionPolicy *string `pulumi:"adoptionPolicy"`
+	// The annotations of managed namespace.
+	Annotations map[string]string `pulumi:"annotations"`
+	// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
+	DefaultNetworkPolicy *NetworkPoliciesResponse `pulumi:"defaultNetworkPolicy"`
+	// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
+	DefaultResourceQuota *ResourceQuotaResponse `pulumi:"defaultResourceQuota"`
+	// Delete options of a namespace.
+	DeletePolicy *string `pulumi:"deletePolicy"`
+	// The labels of managed namespace.
+	Labels map[string]string `pulumi:"labels"`
+	// The current provisioning state of the namespace.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Defaults sets the appropriate defaults for NamespacePropertiesResponse
+func (val *NamespacePropertiesResponse) Defaults() *NamespacePropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.DefaultNetworkPolicy = tmp.DefaultNetworkPolicy.Defaults()
+
+	return &tmp
+}
+
+// Properties of a namespace managed by ARM
+type NamespacePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespacePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespacePropertiesResponse)(nil)).Elem()
+}
+
+func (o NamespacePropertiesResponseOutput) ToNamespacePropertiesResponseOutput() NamespacePropertiesResponseOutput {
+	return o
+}
+
+func (o NamespacePropertiesResponseOutput) ToNamespacePropertiesResponseOutputWithContext(ctx context.Context) NamespacePropertiesResponseOutput {
+	return o
+}
+
+// Action if Kubernetes namespace with same name already exists.
+func (o NamespacePropertiesResponseOutput) AdoptionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespacePropertiesResponse) *string { return v.AdoptionPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The annotations of managed namespace.
+func (o NamespacePropertiesResponseOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NamespacePropertiesResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
+func (o NamespacePropertiesResponseOutput) DefaultNetworkPolicy() NetworkPoliciesResponsePtrOutput {
+	return o.ApplyT(func(v NamespacePropertiesResponse) *NetworkPoliciesResponse { return v.DefaultNetworkPolicy }).(NetworkPoliciesResponsePtrOutput)
+}
+
+// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
+func (o NamespacePropertiesResponseOutput) DefaultResourceQuota() ResourceQuotaResponsePtrOutput {
+	return o.ApplyT(func(v NamespacePropertiesResponse) *ResourceQuotaResponse { return v.DefaultResourceQuota }).(ResourceQuotaResponsePtrOutput)
+}
+
+// Delete options of a namespace.
+func (o NamespacePropertiesResponseOutput) DeletePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespacePropertiesResponse) *string { return v.DeletePolicy }).(pulumi.StringPtrOutput)
+}
+
+// The labels of managed namespace.
+func (o NamespacePropertiesResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NamespacePropertiesResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The current provisioning state of the namespace.
+func (o NamespacePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespacePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Default network policy of the namespace, specifying ingress and egress rules.
+type NetworkPolicies struct {
+	// Egress policy for the network.
+	Egress *string `pulumi:"egress"`
+	// Ingress policy for the network.
+	Ingress *string `pulumi:"ingress"`
+}
+
+// Defaults sets the appropriate defaults for NetworkPolicies
+func (val *NetworkPolicies) Defaults() *NetworkPolicies {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Egress == nil {
+		egress_ := "AllowAll"
+		tmp.Egress = &egress_
+	}
+	if tmp.Ingress == nil {
+		ingress_ := "AllowSameNamespace"
+		tmp.Ingress = &ingress_
+	}
+	return &tmp
+}
+
+// NetworkPoliciesInput is an input type that accepts NetworkPoliciesArgs and NetworkPoliciesOutput values.
+// You can construct a concrete instance of `NetworkPoliciesInput` via:
+//
+//	NetworkPoliciesArgs{...}
+type NetworkPoliciesInput interface {
+	pulumi.Input
+
+	ToNetworkPoliciesOutput() NetworkPoliciesOutput
+	ToNetworkPoliciesOutputWithContext(context.Context) NetworkPoliciesOutput
+}
+
+// Default network policy of the namespace, specifying ingress and egress rules.
+type NetworkPoliciesArgs struct {
+	// Egress policy for the network.
+	Egress pulumi.StringPtrInput `pulumi:"egress"`
+	// Ingress policy for the network.
+	Ingress pulumi.StringPtrInput `pulumi:"ingress"`
+}
+
+// Defaults sets the appropriate defaults for NetworkPoliciesArgs
+func (val *NetworkPoliciesArgs) Defaults() *NetworkPoliciesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Egress == nil {
+		tmp.Egress = pulumi.StringPtr("AllowAll")
+	}
+	if tmp.Ingress == nil {
+		tmp.Ingress = pulumi.StringPtr("AllowSameNamespace")
+	}
+	return &tmp
+}
+func (NetworkPoliciesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicies)(nil)).Elem()
+}
+
+func (i NetworkPoliciesArgs) ToNetworkPoliciesOutput() NetworkPoliciesOutput {
+	return i.ToNetworkPoliciesOutputWithContext(context.Background())
+}
+
+func (i NetworkPoliciesArgs) ToNetworkPoliciesOutputWithContext(ctx context.Context) NetworkPoliciesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPoliciesOutput)
+}
+
+func (i NetworkPoliciesArgs) ToNetworkPoliciesPtrOutput() NetworkPoliciesPtrOutput {
+	return i.ToNetworkPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkPoliciesArgs) ToNetworkPoliciesPtrOutputWithContext(ctx context.Context) NetworkPoliciesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPoliciesOutput).ToNetworkPoliciesPtrOutputWithContext(ctx)
+}
+
+// NetworkPoliciesPtrInput is an input type that accepts NetworkPoliciesArgs, NetworkPoliciesPtr and NetworkPoliciesPtrOutput values.
+// You can construct a concrete instance of `NetworkPoliciesPtrInput` via:
+//
+//	        NetworkPoliciesArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkPoliciesPtrInput interface {
+	pulumi.Input
+
+	ToNetworkPoliciesPtrOutput() NetworkPoliciesPtrOutput
+	ToNetworkPoliciesPtrOutputWithContext(context.Context) NetworkPoliciesPtrOutput
+}
+
+type networkPoliciesPtrType NetworkPoliciesArgs
+
+func NetworkPoliciesPtr(v *NetworkPoliciesArgs) NetworkPoliciesPtrInput {
+	return (*networkPoliciesPtrType)(v)
+}
+
+func (*networkPoliciesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPolicies)(nil)).Elem()
+}
+
+func (i *networkPoliciesPtrType) ToNetworkPoliciesPtrOutput() NetworkPoliciesPtrOutput {
+	return i.ToNetworkPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (i *networkPoliciesPtrType) ToNetworkPoliciesPtrOutputWithContext(ctx context.Context) NetworkPoliciesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPoliciesPtrOutput)
+}
+
+// Default network policy of the namespace, specifying ingress and egress rules.
+type NetworkPoliciesOutput struct{ *pulumi.OutputState }
+
+func (NetworkPoliciesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicies)(nil)).Elem()
+}
+
+func (o NetworkPoliciesOutput) ToNetworkPoliciesOutput() NetworkPoliciesOutput {
+	return o
+}
+
+func (o NetworkPoliciesOutput) ToNetworkPoliciesOutputWithContext(ctx context.Context) NetworkPoliciesOutput {
+	return o
+}
+
+func (o NetworkPoliciesOutput) ToNetworkPoliciesPtrOutput() NetworkPoliciesPtrOutput {
+	return o.ToNetworkPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkPoliciesOutput) ToNetworkPoliciesPtrOutputWithContext(ctx context.Context) NetworkPoliciesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPolicies) *NetworkPolicies {
+		return &v
+	}).(NetworkPoliciesPtrOutput)
+}
+
+// Egress policy for the network.
+func (o NetworkPoliciesOutput) Egress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkPolicies) *string { return v.Egress }).(pulumi.StringPtrOutput)
+}
+
+// Ingress policy for the network.
+func (o NetworkPoliciesOutput) Ingress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkPolicies) *string { return v.Ingress }).(pulumi.StringPtrOutput)
+}
+
+type NetworkPoliciesPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkPoliciesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPolicies)(nil)).Elem()
+}
+
+func (o NetworkPoliciesPtrOutput) ToNetworkPoliciesPtrOutput() NetworkPoliciesPtrOutput {
+	return o
+}
+
+func (o NetworkPoliciesPtrOutput) ToNetworkPoliciesPtrOutputWithContext(ctx context.Context) NetworkPoliciesPtrOutput {
+	return o
+}
+
+func (o NetworkPoliciesPtrOutput) Elem() NetworkPoliciesOutput {
+	return o.ApplyT(func(v *NetworkPolicies) NetworkPolicies {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPolicies
+		return ret
+	}).(NetworkPoliciesOutput)
+}
+
+// Egress policy for the network.
+func (o NetworkPoliciesPtrOutput) Egress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkPolicies) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Egress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ingress policy for the network.
+func (o NetworkPoliciesPtrOutput) Ingress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkPolicies) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ingress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Default network policy of the namespace, specifying ingress and egress rules.
+type NetworkPoliciesResponse struct {
+	// Egress policy for the network.
+	Egress *string `pulumi:"egress"`
+	// Ingress policy for the network.
+	Ingress *string `pulumi:"ingress"`
+}
+
+// Defaults sets the appropriate defaults for NetworkPoliciesResponse
+func (val *NetworkPoliciesResponse) Defaults() *NetworkPoliciesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Egress == nil {
+		egress_ := "AllowAll"
+		tmp.Egress = &egress_
+	}
+	if tmp.Ingress == nil {
+		ingress_ := "AllowSameNamespace"
+		tmp.Ingress = &ingress_
+	}
+	return &tmp
+}
+
+// Default network policy of the namespace, specifying ingress and egress rules.
+type NetworkPoliciesResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkPoliciesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPoliciesResponse)(nil)).Elem()
+}
+
+func (o NetworkPoliciesResponseOutput) ToNetworkPoliciesResponseOutput() NetworkPoliciesResponseOutput {
+	return o
+}
+
+func (o NetworkPoliciesResponseOutput) ToNetworkPoliciesResponseOutputWithContext(ctx context.Context) NetworkPoliciesResponseOutput {
+	return o
+}
+
+// Egress policy for the network.
+func (o NetworkPoliciesResponseOutput) Egress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkPoliciesResponse) *string { return v.Egress }).(pulumi.StringPtrOutput)
+}
+
+// Ingress policy for the network.
+func (o NetworkPoliciesResponseOutput) Ingress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkPoliciesResponse) *string { return v.Ingress }).(pulumi.StringPtrOutput)
+}
+
+type NetworkPoliciesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkPoliciesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPoliciesResponse)(nil)).Elem()
+}
+
+func (o NetworkPoliciesResponsePtrOutput) ToNetworkPoliciesResponsePtrOutput() NetworkPoliciesResponsePtrOutput {
+	return o
+}
+
+func (o NetworkPoliciesResponsePtrOutput) ToNetworkPoliciesResponsePtrOutputWithContext(ctx context.Context) NetworkPoliciesResponsePtrOutput {
+	return o
+}
+
+func (o NetworkPoliciesResponsePtrOutput) Elem() NetworkPoliciesResponseOutput {
+	return o.ApplyT(func(v *NetworkPoliciesResponse) NetworkPoliciesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPoliciesResponse
+		return ret
+	}).(NetworkPoliciesResponseOutput)
+}
+
+// Egress policy for the network.
+func (o NetworkPoliciesResponsePtrOutput) Egress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkPoliciesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Egress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ingress policy for the network.
+func (o NetworkPoliciesResponsePtrOutput) Ingress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkPoliciesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ingress
+	}).(pulumi.StringPtrOutput)
+}
+
 // network profile for managed cluster snapshot, these properties are read only.
 type NetworkProfileForSnapshotResponse struct {
 	// loadBalancerSku for managed cluster snapshot.
@@ -23598,6 +24216,314 @@ func (o RelativeMonthlyScheduleResponsePtrOutput) WeekIndex() pulumi.StringPtrOu
 			return nil
 		}
 		return &v.WeekIndex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource quota for the namespace.
+type ResourceQuota struct {
+	// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+	CpuLimit *string `pulumi:"cpuLimit"`
+	// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+	CpuRequest *string `pulumi:"cpuRequest"`
+	// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+	MemoryLimit *string `pulumi:"memoryLimit"`
+	// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+	MemoryRequest *string `pulumi:"memoryRequest"`
+}
+
+// ResourceQuotaInput is an input type that accepts ResourceQuotaArgs and ResourceQuotaOutput values.
+// You can construct a concrete instance of `ResourceQuotaInput` via:
+//
+//	ResourceQuotaArgs{...}
+type ResourceQuotaInput interface {
+	pulumi.Input
+
+	ToResourceQuotaOutput() ResourceQuotaOutput
+	ToResourceQuotaOutputWithContext(context.Context) ResourceQuotaOutput
+}
+
+// Resource quota for the namespace.
+type ResourceQuotaArgs struct {
+	// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+	CpuLimit pulumi.StringPtrInput `pulumi:"cpuLimit"`
+	// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+	CpuRequest pulumi.StringPtrInput `pulumi:"cpuRequest"`
+	// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+	MemoryLimit pulumi.StringPtrInput `pulumi:"memoryLimit"`
+	// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+	MemoryRequest pulumi.StringPtrInput `pulumi:"memoryRequest"`
+}
+
+func (ResourceQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceQuota)(nil)).Elem()
+}
+
+func (i ResourceQuotaArgs) ToResourceQuotaOutput() ResourceQuotaOutput {
+	return i.ToResourceQuotaOutputWithContext(context.Background())
+}
+
+func (i ResourceQuotaArgs) ToResourceQuotaOutputWithContext(ctx context.Context) ResourceQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceQuotaOutput)
+}
+
+func (i ResourceQuotaArgs) ToResourceQuotaPtrOutput() ResourceQuotaPtrOutput {
+	return i.ToResourceQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceQuotaArgs) ToResourceQuotaPtrOutputWithContext(ctx context.Context) ResourceQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceQuotaOutput).ToResourceQuotaPtrOutputWithContext(ctx)
+}
+
+// ResourceQuotaPtrInput is an input type that accepts ResourceQuotaArgs, ResourceQuotaPtr and ResourceQuotaPtrOutput values.
+// You can construct a concrete instance of `ResourceQuotaPtrInput` via:
+//
+//	        ResourceQuotaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceQuotaPtrInput interface {
+	pulumi.Input
+
+	ToResourceQuotaPtrOutput() ResourceQuotaPtrOutput
+	ToResourceQuotaPtrOutputWithContext(context.Context) ResourceQuotaPtrOutput
+}
+
+type resourceQuotaPtrType ResourceQuotaArgs
+
+func ResourceQuotaPtr(v *ResourceQuotaArgs) ResourceQuotaPtrInput {
+	return (*resourceQuotaPtrType)(v)
+}
+
+func (*resourceQuotaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceQuota)(nil)).Elem()
+}
+
+func (i *resourceQuotaPtrType) ToResourceQuotaPtrOutput() ResourceQuotaPtrOutput {
+	return i.ToResourceQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceQuotaPtrType) ToResourceQuotaPtrOutputWithContext(ctx context.Context) ResourceQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceQuotaPtrOutput)
+}
+
+// Resource quota for the namespace.
+type ResourceQuotaOutput struct{ *pulumi.OutputState }
+
+func (ResourceQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceQuota)(nil)).Elem()
+}
+
+func (o ResourceQuotaOutput) ToResourceQuotaOutput() ResourceQuotaOutput {
+	return o
+}
+
+func (o ResourceQuotaOutput) ToResourceQuotaOutputWithContext(ctx context.Context) ResourceQuotaOutput {
+	return o
+}
+
+func (o ResourceQuotaOutput) ToResourceQuotaPtrOutput() ResourceQuotaPtrOutput {
+	return o.ToResourceQuotaPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceQuotaOutput) ToResourceQuotaPtrOutputWithContext(ctx context.Context) ResourceQuotaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceQuota) *ResourceQuota {
+		return &v
+	}).(ResourceQuotaPtrOutput)
+}
+
+// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+func (o ResourceQuotaOutput) CpuLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceQuota) *string { return v.CpuLimit }).(pulumi.StringPtrOutput)
+}
+
+// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+func (o ResourceQuotaOutput) CpuRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceQuota) *string { return v.CpuRequest }).(pulumi.StringPtrOutput)
+}
+
+// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+func (o ResourceQuotaOutput) MemoryLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceQuota) *string { return v.MemoryLimit }).(pulumi.StringPtrOutput)
+}
+
+// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+func (o ResourceQuotaOutput) MemoryRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceQuota) *string { return v.MemoryRequest }).(pulumi.StringPtrOutput)
+}
+
+type ResourceQuotaPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceQuotaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceQuota)(nil)).Elem()
+}
+
+func (o ResourceQuotaPtrOutput) ToResourceQuotaPtrOutput() ResourceQuotaPtrOutput {
+	return o
+}
+
+func (o ResourceQuotaPtrOutput) ToResourceQuotaPtrOutputWithContext(ctx context.Context) ResourceQuotaPtrOutput {
+	return o
+}
+
+func (o ResourceQuotaPtrOutput) Elem() ResourceQuotaOutput {
+	return o.ApplyT(func(v *ResourceQuota) ResourceQuota {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceQuota
+		return ret
+	}).(ResourceQuotaOutput)
+}
+
+// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+func (o ResourceQuotaPtrOutput) CpuLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+func (o ResourceQuotaPtrOutput) CpuRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuRequest
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+func (o ResourceQuotaPtrOutput) MemoryLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+func (o ResourceQuotaPtrOutput) MemoryRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryRequest
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource quota for the namespace.
+type ResourceQuotaResponse struct {
+	// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+	CpuLimit *string `pulumi:"cpuLimit"`
+	// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+	CpuRequest *string `pulumi:"cpuRequest"`
+	// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+	MemoryLimit *string `pulumi:"memoryLimit"`
+	// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+	MemoryRequest *string `pulumi:"memoryRequest"`
+}
+
+// Resource quota for the namespace.
+type ResourceQuotaResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceQuotaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceQuotaResponse)(nil)).Elem()
+}
+
+func (o ResourceQuotaResponseOutput) ToResourceQuotaResponseOutput() ResourceQuotaResponseOutput {
+	return o
+}
+
+func (o ResourceQuotaResponseOutput) ToResourceQuotaResponseOutputWithContext(ctx context.Context) ResourceQuotaResponseOutput {
+	return o
+}
+
+// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+func (o ResourceQuotaResponseOutput) CpuLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceQuotaResponse) *string { return v.CpuLimit }).(pulumi.StringPtrOutput)
+}
+
+// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+func (o ResourceQuotaResponseOutput) CpuRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceQuotaResponse) *string { return v.CpuRequest }).(pulumi.StringPtrOutput)
+}
+
+// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+func (o ResourceQuotaResponseOutput) MemoryLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceQuotaResponse) *string { return v.MemoryLimit }).(pulumi.StringPtrOutput)
+}
+
+// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+func (o ResourceQuotaResponseOutput) MemoryRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceQuotaResponse) *string { return v.MemoryRequest }).(pulumi.StringPtrOutput)
+}
+
+type ResourceQuotaResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceQuotaResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceQuotaResponse)(nil)).Elem()
+}
+
+func (o ResourceQuotaResponsePtrOutput) ToResourceQuotaResponsePtrOutput() ResourceQuotaResponsePtrOutput {
+	return o
+}
+
+func (o ResourceQuotaResponsePtrOutput) ToResourceQuotaResponsePtrOutputWithContext(ctx context.Context) ResourceQuotaResponsePtrOutput {
+	return o
+}
+
+func (o ResourceQuotaResponsePtrOutput) Elem() ResourceQuotaResponseOutput {
+	return o.ApplyT(func(v *ResourceQuotaResponse) ResourceQuotaResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceQuotaResponse
+		return ret
+	}).(ResourceQuotaResponseOutput)
+}
+
+// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+func (o ResourceQuotaResponsePtrOutput) CpuLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceQuotaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+func (o ResourceQuotaResponsePtrOutput) CpuRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceQuotaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuRequest
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+func (o ResourceQuotaResponsePtrOutput) MemoryLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceQuotaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+func (o ResourceQuotaResponsePtrOutput) MemoryRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceQuotaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryRequest
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27984,6 +28910,13 @@ func init() {
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(MemberUpdateStatusResponseOutput{})
 	pulumi.RegisterOutputType(MemberUpdateStatusResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespacePropertiesOutput{})
+	pulumi.RegisterOutputType(NamespacePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(NamespacePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(NetworkPoliciesOutput{})
+	pulumi.RegisterOutputType(NetworkPoliciesPtrOutput{})
+	pulumi.RegisterOutputType(NetworkPoliciesResponseOutput{})
+	pulumi.RegisterOutputType(NetworkPoliciesResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkProfileForSnapshotResponseOutput{})
 	pulumi.RegisterOutputType(NodeImageSelectionOutput{})
 	pulumi.RegisterOutputType(NodeImageSelectionPtrOutput{})
@@ -28014,6 +28947,10 @@ func init() {
 	pulumi.RegisterOutputType(RelativeMonthlySchedulePtrOutput{})
 	pulumi.RegisterOutputType(RelativeMonthlyScheduleResponseOutput{})
 	pulumi.RegisterOutputType(RelativeMonthlyScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(ResourceQuotaOutput{})
+	pulumi.RegisterOutputType(ResourceQuotaPtrOutput{})
+	pulumi.RegisterOutputType(ResourceQuotaResponseOutput{})
+	pulumi.RegisterOutputType(ResourceQuotaResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceReferenceOutput{})
 	pulumi.RegisterOutputType(ResourceReferenceArrayOutput{})
 	pulumi.RegisterOutputType(ResourceReferenceResponseOutput{})

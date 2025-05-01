@@ -172,10 +172,12 @@ func (o AdminCredentialsPtrOutput) TargetServerPassword() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Authentication configuration of a cluster.
+// Authentication configuration properties of a server
 type AuthConfig struct {
+	// If Enabled, Azure Active Directory authentication is enabled.
 	ActiveDirectoryAuth *string `pulumi:"activeDirectoryAuth"`
-	PasswordAuth        *string `pulumi:"passwordAuth"`
+	// If Enabled, Password authentication is enabled.
+	PasswordAuth *string `pulumi:"passwordAuth"`
 	// Tenant id of the server.
 	TenantId *string `pulumi:"tenantId"`
 }
@@ -186,6 +188,10 @@ func (val *AuthConfig) Defaults() *AuthConfig {
 		return nil
 	}
 	tmp := *val
+	if tmp.PasswordAuth == nil {
+		passwordAuth_ := "Enabled"
+		tmp.PasswordAuth = &passwordAuth_
+	}
 	if tmp.TenantId == nil {
 		tenantId_ := ""
 		tmp.TenantId = &tenantId_
@@ -204,10 +210,12 @@ type AuthConfigInput interface {
 	ToAuthConfigOutputWithContext(context.Context) AuthConfigOutput
 }
 
-// Authentication configuration of a cluster.
+// Authentication configuration properties of a server
 type AuthConfigArgs struct {
+	// If Enabled, Azure Active Directory authentication is enabled.
 	ActiveDirectoryAuth pulumi.StringPtrInput `pulumi:"activeDirectoryAuth"`
-	PasswordAuth        pulumi.StringPtrInput `pulumi:"passwordAuth"`
+	// If Enabled, Password authentication is enabled.
+	PasswordAuth pulumi.StringPtrInput `pulumi:"passwordAuth"`
 	// Tenant id of the server.
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
@@ -218,6 +226,9 @@ func (val *AuthConfigArgs) Defaults() *AuthConfigArgs {
 		return nil
 	}
 	tmp := *val
+	if tmp.PasswordAuth == nil {
+		tmp.PasswordAuth = pulumi.StringPtr("Enabled")
+	}
 	if tmp.TenantId == nil {
 		tmp.TenantId = pulumi.StringPtr("")
 	}
@@ -276,7 +287,7 @@ func (i *authConfigPtrType) ToAuthConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigPtrOutput)
 }
 
-// Authentication configuration of a cluster.
+// Authentication configuration properties of a server
 type AuthConfigOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOutput) ElementType() reflect.Type {
@@ -301,10 +312,12 @@ func (o AuthConfigOutput) ToAuthConfigPtrOutputWithContext(ctx context.Context) 
 	}).(AuthConfigPtrOutput)
 }
 
+// If Enabled, Azure Active Directory authentication is enabled.
 func (o AuthConfigOutput) ActiveDirectoryAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthConfig) *string { return v.ActiveDirectoryAuth }).(pulumi.StringPtrOutput)
 }
 
+// If Enabled, Password authentication is enabled.
 func (o AuthConfigOutput) PasswordAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthConfig) *string { return v.PasswordAuth }).(pulumi.StringPtrOutput)
 }
@@ -338,6 +351,7 @@ func (o AuthConfigPtrOutput) Elem() AuthConfigOutput {
 	}).(AuthConfigOutput)
 }
 
+// If Enabled, Azure Active Directory authentication is enabled.
 func (o AuthConfigPtrOutput) ActiveDirectoryAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthConfig) *string {
 		if v == nil {
@@ -347,6 +361,7 @@ func (o AuthConfigPtrOutput) ActiveDirectoryAuth() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// If Enabled, Password authentication is enabled.
 func (o AuthConfigPtrOutput) PasswordAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthConfig) *string {
 		if v == nil {
@@ -366,10 +381,12 @@ func (o AuthConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Authentication configuration of a cluster.
+// Authentication configuration properties of a server
 type AuthConfigResponse struct {
+	// If Enabled, Azure Active Directory authentication is enabled.
 	ActiveDirectoryAuth *string `pulumi:"activeDirectoryAuth"`
-	PasswordAuth        *string `pulumi:"passwordAuth"`
+	// If Enabled, Password authentication is enabled.
+	PasswordAuth *string `pulumi:"passwordAuth"`
 	// Tenant id of the server.
 	TenantId *string `pulumi:"tenantId"`
 }
@@ -380,6 +397,10 @@ func (val *AuthConfigResponse) Defaults() *AuthConfigResponse {
 		return nil
 	}
 	tmp := *val
+	if tmp.PasswordAuth == nil {
+		passwordAuth_ := "Enabled"
+		tmp.PasswordAuth = &passwordAuth_
+	}
 	if tmp.TenantId == nil {
 		tenantId_ := ""
 		tmp.TenantId = &tenantId_
@@ -387,7 +408,7 @@ func (val *AuthConfigResponse) Defaults() *AuthConfigResponse {
 	return &tmp
 }
 
-// Authentication configuration of a cluster.
+// Authentication configuration properties of a server
 type AuthConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigResponseOutput) ElementType() reflect.Type {
@@ -402,10 +423,12 @@ func (o AuthConfigResponseOutput) ToAuthConfigResponseOutputWithContext(ctx cont
 	return o
 }
 
+// If Enabled, Azure Active Directory authentication is enabled.
 func (o AuthConfigResponseOutput) ActiveDirectoryAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthConfigResponse) *string { return v.ActiveDirectoryAuth }).(pulumi.StringPtrOutput)
 }
 
+// If Enabled, Password authentication is enabled.
 func (o AuthConfigResponseOutput) PasswordAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthConfigResponse) *string { return v.PasswordAuth }).(pulumi.StringPtrOutput)
 }
@@ -439,6 +462,7 @@ func (o AuthConfigResponsePtrOutput) Elem() AuthConfigResponseOutput {
 	}).(AuthConfigResponseOutput)
 }
 
+// If Enabled, Azure Active Directory authentication is enabled.
 func (o AuthConfigResponsePtrOutput) ActiveDirectoryAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthConfigResponse) *string {
 		if v == nil {
@@ -448,6 +472,7 @@ func (o AuthConfigResponsePtrOutput) ActiveDirectoryAuth() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// If Enabled, Password authentication is enabled.
 func (o AuthConfigResponsePtrOutput) PasswordAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthConfigResponse) *string {
 		if v == nil {
@@ -768,7 +793,7 @@ func (o BackupResponsePtrOutput) GeoRedundantBackup() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The data encryption properties of a cluster.
+// Data encryption properties of a server
 type DataEncryption struct {
 	// Geo-backup encryption key status for Data encryption enabled server.
 	GeoBackupEncryptionKeyStatus *string `pulumi:"geoBackupEncryptionKeyStatus"`
@@ -780,11 +805,10 @@ type DataEncryption struct {
 	PrimaryEncryptionKeyStatus *string `pulumi:"primaryEncryptionKeyStatus"`
 	// URI for the key in keyvault for data encryption of the primary server.
 	PrimaryKeyURI *string `pulumi:"primaryKeyURI"`
-	// URI for the key in keyvault for data encryption of the primary server.
-	PrimaryKeyUri *string `pulumi:"primaryKeyUri"`
 	// Resource Id for the User assigned identity to be used for data encryption of the primary server.
 	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
-	Type                          *string `pulumi:"type"`
+	// Data encryption type to depict if it is System Managed vs Azure Key vault.
+	Type *string `pulumi:"type"`
 }
 
 // DataEncryptionInput is an input type that accepts DataEncryptionArgs and DataEncryptionOutput values.
@@ -798,7 +822,7 @@ type DataEncryptionInput interface {
 	ToDataEncryptionOutputWithContext(context.Context) DataEncryptionOutput
 }
 
-// The data encryption properties of a cluster.
+// Data encryption properties of a server
 type DataEncryptionArgs struct {
 	// Geo-backup encryption key status for Data encryption enabled server.
 	GeoBackupEncryptionKeyStatus pulumi.StringPtrInput `pulumi:"geoBackupEncryptionKeyStatus"`
@@ -810,11 +834,10 @@ type DataEncryptionArgs struct {
 	PrimaryEncryptionKeyStatus pulumi.StringPtrInput `pulumi:"primaryEncryptionKeyStatus"`
 	// URI for the key in keyvault for data encryption of the primary server.
 	PrimaryKeyURI pulumi.StringPtrInput `pulumi:"primaryKeyURI"`
-	// URI for the key in keyvault for data encryption of the primary server.
-	PrimaryKeyUri pulumi.StringPtrInput `pulumi:"primaryKeyUri"`
 	// Resource Id for the User assigned identity to be used for data encryption of the primary server.
 	PrimaryUserAssignedIdentityId pulumi.StringPtrInput `pulumi:"primaryUserAssignedIdentityId"`
-	Type                          pulumi.StringPtrInput `pulumi:"type"`
+	// Data encryption type to depict if it is System Managed vs Azure Key vault.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (DataEncryptionArgs) ElementType() reflect.Type {
@@ -870,7 +893,7 @@ func (i *dataEncryptionPtrType) ToDataEncryptionPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DataEncryptionPtrOutput)
 }
 
-// The data encryption properties of a cluster.
+// Data encryption properties of a server
 type DataEncryptionOutput struct{ *pulumi.OutputState }
 
 func (DataEncryptionOutput) ElementType() reflect.Type {
@@ -920,16 +943,12 @@ func (o DataEncryptionOutput) PrimaryKeyURI() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryption) *string { return v.PrimaryKeyURI }).(pulumi.StringPtrOutput)
 }
 
-// URI for the key in keyvault for data encryption of the primary server.
-func (o DataEncryptionOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataEncryption) *string { return v.PrimaryKeyUri }).(pulumi.StringPtrOutput)
-}
-
 // Resource Id for the User assigned identity to be used for data encryption of the primary server.
 func (o DataEncryptionOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryption) *string { return v.PrimaryUserAssignedIdentityId }).(pulumi.StringPtrOutput)
 }
 
+// Data encryption type to depict if it is System Managed vs Azure Key vault.
 func (o DataEncryptionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryption) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1008,16 +1027,6 @@ func (o DataEncryptionPtrOutput) PrimaryKeyURI() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// URI for the key in keyvault for data encryption of the primary server.
-func (o DataEncryptionPtrOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataEncryption) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrimaryKeyUri
-	}).(pulumi.StringPtrOutput)
-}
-
 // Resource Id for the User assigned identity to be used for data encryption of the primary server.
 func (o DataEncryptionPtrOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryption) *string {
@@ -1028,6 +1037,7 @@ func (o DataEncryptionPtrOutput) PrimaryUserAssignedIdentityId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Data encryption type to depict if it is System Managed vs Azure Key vault.
 func (o DataEncryptionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryption) *string {
 		if v == nil {
@@ -1037,7 +1047,7 @@ func (o DataEncryptionPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The data encryption properties of a cluster.
+// Data encryption properties of a server
 type DataEncryptionResponse struct {
 	// Geo-backup encryption key status for Data encryption enabled server.
 	GeoBackupEncryptionKeyStatus *string `pulumi:"geoBackupEncryptionKeyStatus"`
@@ -1049,14 +1059,13 @@ type DataEncryptionResponse struct {
 	PrimaryEncryptionKeyStatus *string `pulumi:"primaryEncryptionKeyStatus"`
 	// URI for the key in keyvault for data encryption of the primary server.
 	PrimaryKeyURI *string `pulumi:"primaryKeyURI"`
-	// URI for the key in keyvault for data encryption of the primary server.
-	PrimaryKeyUri *string `pulumi:"primaryKeyUri"`
 	// Resource Id for the User assigned identity to be used for data encryption of the primary server.
 	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
-	Type                          *string `pulumi:"type"`
+	// Data encryption type to depict if it is System Managed vs Azure Key vault.
+	Type *string `pulumi:"type"`
 }
 
-// The data encryption properties of a cluster.
+// Data encryption properties of a server
 type DataEncryptionResponseOutput struct{ *pulumi.OutputState }
 
 func (DataEncryptionResponseOutput) ElementType() reflect.Type {
@@ -1096,16 +1105,12 @@ func (o DataEncryptionResponseOutput) PrimaryKeyURI() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.PrimaryKeyURI }).(pulumi.StringPtrOutput)
 }
 
-// URI for the key in keyvault for data encryption of the primary server.
-func (o DataEncryptionResponseOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.PrimaryKeyUri }).(pulumi.StringPtrOutput)
-}
-
 // Resource Id for the User assigned identity to be used for data encryption of the primary server.
 func (o DataEncryptionResponseOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.PrimaryUserAssignedIdentityId }).(pulumi.StringPtrOutput)
 }
 
+// Data encryption type to depict if it is System Managed vs Azure Key vault.
 func (o DataEncryptionResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1184,16 +1189,6 @@ func (o DataEncryptionResponsePtrOutput) PrimaryKeyURI() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// URI for the key in keyvault for data encryption of the primary server.
-func (o DataEncryptionResponsePtrOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataEncryptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrimaryKeyUri
-	}).(pulumi.StringPtrOutput)
-}
-
 // Resource Id for the User assigned identity to be used for data encryption of the primary server.
 func (o DataEncryptionResponsePtrOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryptionResponse) *string {
@@ -1204,6 +1199,7 @@ func (o DataEncryptionResponsePtrOutput) PrimaryUserAssignedIdentityId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Data encryption type to depict if it is System Managed vs Azure Key vault.
 func (o DataEncryptionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataEncryptionResponse) *string {
 		if v == nil {
@@ -2010,16 +2006,41 @@ func (o IdentityPropertiesResponsePtrOutput) UserAssignedIdentities() UserAssign
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
-// Schedule settings for regular cluster updates.
+// Maintenance window properties of a server.
 type MaintenanceWindow struct {
-	// Indicates whether custom maintenance window is enabled or not.
+	// indicates whether custom window is enabled or disabled
 	CustomWindow *string `pulumi:"customWindow"`
-	// Preferred day of the week for maintenance window.
+	// day of week for maintenance window
 	DayOfWeek *int `pulumi:"dayOfWeek"`
-	// Start hour within preferred day of the week for maintenance window.
+	// start hour for maintenance window
 	StartHour *int `pulumi:"startHour"`
-	// Start minute within the start hour for maintenance window.
+	// start minute for maintenance window
 	StartMinute *int `pulumi:"startMinute"`
+}
+
+// Defaults sets the appropriate defaults for MaintenanceWindow
+func (val *MaintenanceWindow) Defaults() *MaintenanceWindow {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.CustomWindow == nil {
+		customWindow_ := "Disabled"
+		tmp.CustomWindow = &customWindow_
+	}
+	if tmp.DayOfWeek == nil {
+		dayOfWeek_ := 0
+		tmp.DayOfWeek = &dayOfWeek_
+	}
+	if tmp.StartHour == nil {
+		startHour_ := 0
+		tmp.StartHour = &startHour_
+	}
+	if tmp.StartMinute == nil {
+		startMinute_ := 0
+		tmp.StartMinute = &startMinute_
+	}
+	return &tmp
 }
 
 // MaintenanceWindowInput is an input type that accepts MaintenanceWindowArgs and MaintenanceWindowOutput values.
@@ -2033,18 +2054,38 @@ type MaintenanceWindowInput interface {
 	ToMaintenanceWindowOutputWithContext(context.Context) MaintenanceWindowOutput
 }
 
-// Schedule settings for regular cluster updates.
+// Maintenance window properties of a server.
 type MaintenanceWindowArgs struct {
-	// Indicates whether custom maintenance window is enabled or not.
+	// indicates whether custom window is enabled or disabled
 	CustomWindow pulumi.StringPtrInput `pulumi:"customWindow"`
-	// Preferred day of the week for maintenance window.
+	// day of week for maintenance window
 	DayOfWeek pulumi.IntPtrInput `pulumi:"dayOfWeek"`
-	// Start hour within preferred day of the week for maintenance window.
+	// start hour for maintenance window
 	StartHour pulumi.IntPtrInput `pulumi:"startHour"`
-	// Start minute within the start hour for maintenance window.
+	// start minute for maintenance window
 	StartMinute pulumi.IntPtrInput `pulumi:"startMinute"`
 }
 
+// Defaults sets the appropriate defaults for MaintenanceWindowArgs
+func (val *MaintenanceWindowArgs) Defaults() *MaintenanceWindowArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.CustomWindow == nil {
+		tmp.CustomWindow = pulumi.StringPtr("Disabled")
+	}
+	if tmp.DayOfWeek == nil {
+		tmp.DayOfWeek = pulumi.IntPtr(0)
+	}
+	if tmp.StartHour == nil {
+		tmp.StartHour = pulumi.IntPtr(0)
+	}
+	if tmp.StartMinute == nil {
+		tmp.StartMinute = pulumi.IntPtr(0)
+	}
+	return &tmp
+}
 func (MaintenanceWindowArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*MaintenanceWindow)(nil)).Elem()
 }
@@ -2098,7 +2139,7 @@ func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
 }
 
-// Schedule settings for regular cluster updates.
+// Maintenance window properties of a server.
 type MaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (MaintenanceWindowOutput) ElementType() reflect.Type {
@@ -2123,22 +2164,22 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx con
 	}).(MaintenanceWindowPtrOutput)
 }
 
-// Indicates whether custom maintenance window is enabled or not.
+// indicates whether custom window is enabled or disabled
 func (o MaintenanceWindowOutput) CustomWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindow) *string { return v.CustomWindow }).(pulumi.StringPtrOutput)
 }
 
-// Preferred day of the week for maintenance window.
+// day of week for maintenance window
 func (o MaintenanceWindowOutput) DayOfWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindow) *int { return v.DayOfWeek }).(pulumi.IntPtrOutput)
 }
 
-// Start hour within preferred day of the week for maintenance window.
+// start hour for maintenance window
 func (o MaintenanceWindowOutput) StartHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindow) *int { return v.StartHour }).(pulumi.IntPtrOutput)
 }
 
-// Start minute within the start hour for maintenance window.
+// start minute for maintenance window
 func (o MaintenanceWindowOutput) StartMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindow) *int { return v.StartMinute }).(pulumi.IntPtrOutput)
 }
@@ -2167,7 +2208,7 @@ func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
 	}).(MaintenanceWindowOutput)
 }
 
-// Indicates whether custom maintenance window is enabled or not.
+// indicates whether custom window is enabled or disabled
 func (o MaintenanceWindowPtrOutput) CustomWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindow) *string {
 		if v == nil {
@@ -2177,7 +2218,7 @@ func (o MaintenanceWindowPtrOutput) CustomWindow() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Preferred day of the week for maintenance window.
+// day of week for maintenance window
 func (o MaintenanceWindowPtrOutput) DayOfWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindow) *int {
 		if v == nil {
@@ -2187,7 +2228,7 @@ func (o MaintenanceWindowPtrOutput) DayOfWeek() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Start hour within preferred day of the week for maintenance window.
+// start hour for maintenance window
 func (o MaintenanceWindowPtrOutput) StartHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindow) *int {
 		if v == nil {
@@ -2197,7 +2238,7 @@ func (o MaintenanceWindowPtrOutput) StartHour() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Start minute within the start hour for maintenance window.
+// start minute for maintenance window
 func (o MaintenanceWindowPtrOutput) StartMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindow) *int {
 		if v == nil {
@@ -2207,19 +2248,44 @@ func (o MaintenanceWindowPtrOutput) StartMinute() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Schedule settings for regular cluster updates.
+// Maintenance window properties of a server.
 type MaintenanceWindowResponse struct {
-	// Indicates whether custom maintenance window is enabled or not.
+	// indicates whether custom window is enabled or disabled
 	CustomWindow *string `pulumi:"customWindow"`
-	// Preferred day of the week for maintenance window.
+	// day of week for maintenance window
 	DayOfWeek *int `pulumi:"dayOfWeek"`
-	// Start hour within preferred day of the week for maintenance window.
+	// start hour for maintenance window
 	StartHour *int `pulumi:"startHour"`
-	// Start minute within the start hour for maintenance window.
+	// start minute for maintenance window
 	StartMinute *int `pulumi:"startMinute"`
 }
 
-// Schedule settings for regular cluster updates.
+// Defaults sets the appropriate defaults for MaintenanceWindowResponse
+func (val *MaintenanceWindowResponse) Defaults() *MaintenanceWindowResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.CustomWindow == nil {
+		customWindow_ := "Disabled"
+		tmp.CustomWindow = &customWindow_
+	}
+	if tmp.DayOfWeek == nil {
+		dayOfWeek_ := 0
+		tmp.DayOfWeek = &dayOfWeek_
+	}
+	if tmp.StartHour == nil {
+		startHour_ := 0
+		tmp.StartHour = &startHour_
+	}
+	if tmp.StartMinute == nil {
+		startMinute_ := 0
+		tmp.StartMinute = &startMinute_
+	}
+	return &tmp
+}
+
+// Maintenance window properties of a server.
 type MaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
 
 func (MaintenanceWindowResponseOutput) ElementType() reflect.Type {
@@ -2234,22 +2300,22 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithCo
 	return o
 }
 
-// Indicates whether custom maintenance window is enabled or not.
+// indicates whether custom window is enabled or disabled
 func (o MaintenanceWindowResponseOutput) CustomWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) *string { return v.CustomWindow }).(pulumi.StringPtrOutput)
 }
 
-// Preferred day of the week for maintenance window.
+// day of week for maintenance window
 func (o MaintenanceWindowResponseOutput) DayOfWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) *int { return v.DayOfWeek }).(pulumi.IntPtrOutput)
 }
 
-// Start hour within preferred day of the week for maintenance window.
+// start hour for maintenance window
 func (o MaintenanceWindowResponseOutput) StartHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) *int { return v.StartHour }).(pulumi.IntPtrOutput)
 }
 
-// Start minute within the start hour for maintenance window.
+// start minute for maintenance window
 func (o MaintenanceWindowResponseOutput) StartMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) *int { return v.StartMinute }).(pulumi.IntPtrOutput)
 }
@@ -2278,7 +2344,7 @@ func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutp
 	}).(MaintenanceWindowResponseOutput)
 }
 
-// Indicates whether custom maintenance window is enabled or not.
+// indicates whether custom window is enabled or disabled
 func (o MaintenanceWindowResponsePtrOutput) CustomWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
 		if v == nil {
@@ -2288,7 +2354,7 @@ func (o MaintenanceWindowResponsePtrOutput) CustomWindow() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Preferred day of the week for maintenance window.
+// day of week for maintenance window
 func (o MaintenanceWindowResponsePtrOutput) DayOfWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindowResponse) *int {
 		if v == nil {
@@ -2298,7 +2364,7 @@ func (o MaintenanceWindowResponsePtrOutput) DayOfWeek() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Start hour within preferred day of the week for maintenance window.
+// start hour for maintenance window
 func (o MaintenanceWindowResponsePtrOutput) StartHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindowResponse) *int {
 		if v == nil {
@@ -2308,7 +2374,7 @@ func (o MaintenanceWindowResponsePtrOutput) StartHour() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Start minute within the start hour for maintenance window.
+// start minute for maintenance window
 func (o MaintenanceWindowResponsePtrOutput) StartMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindowResponse) *int {
 		if v == nil {
@@ -3732,6 +3798,801 @@ func (o ResourceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication configuration of a cluster.
+type ServerGroupClusterAuthConfig struct {
+	ActiveDirectoryAuth *string `pulumi:"activeDirectoryAuth"`
+	PasswordAuth        *string `pulumi:"passwordAuth"`
+}
+
+// ServerGroupClusterAuthConfigInput is an input type that accepts ServerGroupClusterAuthConfigArgs and ServerGroupClusterAuthConfigOutput values.
+// You can construct a concrete instance of `ServerGroupClusterAuthConfigInput` via:
+//
+//	ServerGroupClusterAuthConfigArgs{...}
+type ServerGroupClusterAuthConfigInput interface {
+	pulumi.Input
+
+	ToServerGroupClusterAuthConfigOutput() ServerGroupClusterAuthConfigOutput
+	ToServerGroupClusterAuthConfigOutputWithContext(context.Context) ServerGroupClusterAuthConfigOutput
+}
+
+// Authentication configuration of a cluster.
+type ServerGroupClusterAuthConfigArgs struct {
+	ActiveDirectoryAuth pulumi.StringPtrInput `pulumi:"activeDirectoryAuth"`
+	PasswordAuth        pulumi.StringPtrInput `pulumi:"passwordAuth"`
+}
+
+func (ServerGroupClusterAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupClusterAuthConfig)(nil)).Elem()
+}
+
+func (i ServerGroupClusterAuthConfigArgs) ToServerGroupClusterAuthConfigOutput() ServerGroupClusterAuthConfigOutput {
+	return i.ToServerGroupClusterAuthConfigOutputWithContext(context.Background())
+}
+
+func (i ServerGroupClusterAuthConfigArgs) ToServerGroupClusterAuthConfigOutputWithContext(ctx context.Context) ServerGroupClusterAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupClusterAuthConfigOutput)
+}
+
+func (i ServerGroupClusterAuthConfigArgs) ToServerGroupClusterAuthConfigPtrOutput() ServerGroupClusterAuthConfigPtrOutput {
+	return i.ToServerGroupClusterAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServerGroupClusterAuthConfigArgs) ToServerGroupClusterAuthConfigPtrOutputWithContext(ctx context.Context) ServerGroupClusterAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupClusterAuthConfigOutput).ToServerGroupClusterAuthConfigPtrOutputWithContext(ctx)
+}
+
+// ServerGroupClusterAuthConfigPtrInput is an input type that accepts ServerGroupClusterAuthConfigArgs, ServerGroupClusterAuthConfigPtr and ServerGroupClusterAuthConfigPtrOutput values.
+// You can construct a concrete instance of `ServerGroupClusterAuthConfigPtrInput` via:
+//
+//	        ServerGroupClusterAuthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerGroupClusterAuthConfigPtrInput interface {
+	pulumi.Input
+
+	ToServerGroupClusterAuthConfigPtrOutput() ServerGroupClusterAuthConfigPtrOutput
+	ToServerGroupClusterAuthConfigPtrOutputWithContext(context.Context) ServerGroupClusterAuthConfigPtrOutput
+}
+
+type serverGroupClusterAuthConfigPtrType ServerGroupClusterAuthConfigArgs
+
+func ServerGroupClusterAuthConfigPtr(v *ServerGroupClusterAuthConfigArgs) ServerGroupClusterAuthConfigPtrInput {
+	return (*serverGroupClusterAuthConfigPtrType)(v)
+}
+
+func (*serverGroupClusterAuthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupClusterAuthConfig)(nil)).Elem()
+}
+
+func (i *serverGroupClusterAuthConfigPtrType) ToServerGroupClusterAuthConfigPtrOutput() ServerGroupClusterAuthConfigPtrOutput {
+	return i.ToServerGroupClusterAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serverGroupClusterAuthConfigPtrType) ToServerGroupClusterAuthConfigPtrOutputWithContext(ctx context.Context) ServerGroupClusterAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupClusterAuthConfigPtrOutput)
+}
+
+// Authentication configuration of a cluster.
+type ServerGroupClusterAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupClusterAuthConfig)(nil)).Elem()
+}
+
+func (o ServerGroupClusterAuthConfigOutput) ToServerGroupClusterAuthConfigOutput() ServerGroupClusterAuthConfigOutput {
+	return o
+}
+
+func (o ServerGroupClusterAuthConfigOutput) ToServerGroupClusterAuthConfigOutputWithContext(ctx context.Context) ServerGroupClusterAuthConfigOutput {
+	return o
+}
+
+func (o ServerGroupClusterAuthConfigOutput) ToServerGroupClusterAuthConfigPtrOutput() ServerGroupClusterAuthConfigPtrOutput {
+	return o.ToServerGroupClusterAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServerGroupClusterAuthConfigOutput) ToServerGroupClusterAuthConfigPtrOutputWithContext(ctx context.Context) ServerGroupClusterAuthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerGroupClusterAuthConfig) *ServerGroupClusterAuthConfig {
+		return &v
+	}).(ServerGroupClusterAuthConfigPtrOutput)
+}
+
+func (o ServerGroupClusterAuthConfigOutput) ActiveDirectoryAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterAuthConfig) *string { return v.ActiveDirectoryAuth }).(pulumi.StringPtrOutput)
+}
+
+func (o ServerGroupClusterAuthConfigOutput) PasswordAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterAuthConfig) *string { return v.PasswordAuth }).(pulumi.StringPtrOutput)
+}
+
+type ServerGroupClusterAuthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterAuthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupClusterAuthConfig)(nil)).Elem()
+}
+
+func (o ServerGroupClusterAuthConfigPtrOutput) ToServerGroupClusterAuthConfigPtrOutput() ServerGroupClusterAuthConfigPtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterAuthConfigPtrOutput) ToServerGroupClusterAuthConfigPtrOutputWithContext(ctx context.Context) ServerGroupClusterAuthConfigPtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterAuthConfigPtrOutput) Elem() ServerGroupClusterAuthConfigOutput {
+	return o.ApplyT(func(v *ServerGroupClusterAuthConfig) ServerGroupClusterAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupClusterAuthConfig
+		return ret
+	}).(ServerGroupClusterAuthConfigOutput)
+}
+
+func (o ServerGroupClusterAuthConfigPtrOutput) ActiveDirectoryAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterAuthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveDirectoryAuth
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServerGroupClusterAuthConfigPtrOutput) PasswordAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterAuthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordAuth
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication configuration of a cluster.
+type ServerGroupClusterAuthConfigResponse struct {
+	ActiveDirectoryAuth *string `pulumi:"activeDirectoryAuth"`
+	PasswordAuth        *string `pulumi:"passwordAuth"`
+}
+
+// Authentication configuration of a cluster.
+type ServerGroupClusterAuthConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterAuthConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupClusterAuthConfigResponse)(nil)).Elem()
+}
+
+func (o ServerGroupClusterAuthConfigResponseOutput) ToServerGroupClusterAuthConfigResponseOutput() ServerGroupClusterAuthConfigResponseOutput {
+	return o
+}
+
+func (o ServerGroupClusterAuthConfigResponseOutput) ToServerGroupClusterAuthConfigResponseOutputWithContext(ctx context.Context) ServerGroupClusterAuthConfigResponseOutput {
+	return o
+}
+
+func (o ServerGroupClusterAuthConfigResponseOutput) ActiveDirectoryAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterAuthConfigResponse) *string { return v.ActiveDirectoryAuth }).(pulumi.StringPtrOutput)
+}
+
+func (o ServerGroupClusterAuthConfigResponseOutput) PasswordAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterAuthConfigResponse) *string { return v.PasswordAuth }).(pulumi.StringPtrOutput)
+}
+
+type ServerGroupClusterAuthConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterAuthConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupClusterAuthConfigResponse)(nil)).Elem()
+}
+
+func (o ServerGroupClusterAuthConfigResponsePtrOutput) ToServerGroupClusterAuthConfigResponsePtrOutput() ServerGroupClusterAuthConfigResponsePtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterAuthConfigResponsePtrOutput) ToServerGroupClusterAuthConfigResponsePtrOutputWithContext(ctx context.Context) ServerGroupClusterAuthConfigResponsePtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterAuthConfigResponsePtrOutput) Elem() ServerGroupClusterAuthConfigResponseOutput {
+	return o.ApplyT(func(v *ServerGroupClusterAuthConfigResponse) ServerGroupClusterAuthConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupClusterAuthConfigResponse
+		return ret
+	}).(ServerGroupClusterAuthConfigResponseOutput)
+}
+
+func (o ServerGroupClusterAuthConfigResponsePtrOutput) ActiveDirectoryAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterAuthConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveDirectoryAuth
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServerGroupClusterAuthConfigResponsePtrOutput) PasswordAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterAuthConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordAuth
+	}).(pulumi.StringPtrOutput)
+}
+
+// The data encryption properties of a cluster.
+type ServerGroupClusterDataEncryption struct {
+	// URI for the key in keyvault for data encryption of the primary server.
+	PrimaryKeyUri *string `pulumi:"primaryKeyUri"`
+	// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
+	Type                          *string `pulumi:"type"`
+}
+
+// ServerGroupClusterDataEncryptionInput is an input type that accepts ServerGroupClusterDataEncryptionArgs and ServerGroupClusterDataEncryptionOutput values.
+// You can construct a concrete instance of `ServerGroupClusterDataEncryptionInput` via:
+//
+//	ServerGroupClusterDataEncryptionArgs{...}
+type ServerGroupClusterDataEncryptionInput interface {
+	pulumi.Input
+
+	ToServerGroupClusterDataEncryptionOutput() ServerGroupClusterDataEncryptionOutput
+	ToServerGroupClusterDataEncryptionOutputWithContext(context.Context) ServerGroupClusterDataEncryptionOutput
+}
+
+// The data encryption properties of a cluster.
+type ServerGroupClusterDataEncryptionArgs struct {
+	// URI for the key in keyvault for data encryption of the primary server.
+	PrimaryKeyUri pulumi.StringPtrInput `pulumi:"primaryKeyUri"`
+	// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+	PrimaryUserAssignedIdentityId pulumi.StringPtrInput `pulumi:"primaryUserAssignedIdentityId"`
+	Type                          pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ServerGroupClusterDataEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupClusterDataEncryption)(nil)).Elem()
+}
+
+func (i ServerGroupClusterDataEncryptionArgs) ToServerGroupClusterDataEncryptionOutput() ServerGroupClusterDataEncryptionOutput {
+	return i.ToServerGroupClusterDataEncryptionOutputWithContext(context.Background())
+}
+
+func (i ServerGroupClusterDataEncryptionArgs) ToServerGroupClusterDataEncryptionOutputWithContext(ctx context.Context) ServerGroupClusterDataEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupClusterDataEncryptionOutput)
+}
+
+func (i ServerGroupClusterDataEncryptionArgs) ToServerGroupClusterDataEncryptionPtrOutput() ServerGroupClusterDataEncryptionPtrOutput {
+	return i.ToServerGroupClusterDataEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i ServerGroupClusterDataEncryptionArgs) ToServerGroupClusterDataEncryptionPtrOutputWithContext(ctx context.Context) ServerGroupClusterDataEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupClusterDataEncryptionOutput).ToServerGroupClusterDataEncryptionPtrOutputWithContext(ctx)
+}
+
+// ServerGroupClusterDataEncryptionPtrInput is an input type that accepts ServerGroupClusterDataEncryptionArgs, ServerGroupClusterDataEncryptionPtr and ServerGroupClusterDataEncryptionPtrOutput values.
+// You can construct a concrete instance of `ServerGroupClusterDataEncryptionPtrInput` via:
+//
+//	        ServerGroupClusterDataEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerGroupClusterDataEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToServerGroupClusterDataEncryptionPtrOutput() ServerGroupClusterDataEncryptionPtrOutput
+	ToServerGroupClusterDataEncryptionPtrOutputWithContext(context.Context) ServerGroupClusterDataEncryptionPtrOutput
+}
+
+type serverGroupClusterDataEncryptionPtrType ServerGroupClusterDataEncryptionArgs
+
+func ServerGroupClusterDataEncryptionPtr(v *ServerGroupClusterDataEncryptionArgs) ServerGroupClusterDataEncryptionPtrInput {
+	return (*serverGroupClusterDataEncryptionPtrType)(v)
+}
+
+func (*serverGroupClusterDataEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupClusterDataEncryption)(nil)).Elem()
+}
+
+func (i *serverGroupClusterDataEncryptionPtrType) ToServerGroupClusterDataEncryptionPtrOutput() ServerGroupClusterDataEncryptionPtrOutput {
+	return i.ToServerGroupClusterDataEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *serverGroupClusterDataEncryptionPtrType) ToServerGroupClusterDataEncryptionPtrOutputWithContext(ctx context.Context) ServerGroupClusterDataEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupClusterDataEncryptionPtrOutput)
+}
+
+// The data encryption properties of a cluster.
+type ServerGroupClusterDataEncryptionOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterDataEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupClusterDataEncryption)(nil)).Elem()
+}
+
+func (o ServerGroupClusterDataEncryptionOutput) ToServerGroupClusterDataEncryptionOutput() ServerGroupClusterDataEncryptionOutput {
+	return o
+}
+
+func (o ServerGroupClusterDataEncryptionOutput) ToServerGroupClusterDataEncryptionOutputWithContext(ctx context.Context) ServerGroupClusterDataEncryptionOutput {
+	return o
+}
+
+func (o ServerGroupClusterDataEncryptionOutput) ToServerGroupClusterDataEncryptionPtrOutput() ServerGroupClusterDataEncryptionPtrOutput {
+	return o.ToServerGroupClusterDataEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o ServerGroupClusterDataEncryptionOutput) ToServerGroupClusterDataEncryptionPtrOutputWithContext(ctx context.Context) ServerGroupClusterDataEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerGroupClusterDataEncryption) *ServerGroupClusterDataEncryption {
+		return &v
+	}).(ServerGroupClusterDataEncryptionPtrOutput)
+}
+
+// URI for the key in keyvault for data encryption of the primary server.
+func (o ServerGroupClusterDataEncryptionOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterDataEncryption) *string { return v.PrimaryKeyUri }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+func (o ServerGroupClusterDataEncryptionOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterDataEncryption) *string { return v.PrimaryUserAssignedIdentityId }).(pulumi.StringPtrOutput)
+}
+
+func (o ServerGroupClusterDataEncryptionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterDataEncryption) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ServerGroupClusterDataEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterDataEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupClusterDataEncryption)(nil)).Elem()
+}
+
+func (o ServerGroupClusterDataEncryptionPtrOutput) ToServerGroupClusterDataEncryptionPtrOutput() ServerGroupClusterDataEncryptionPtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterDataEncryptionPtrOutput) ToServerGroupClusterDataEncryptionPtrOutputWithContext(ctx context.Context) ServerGroupClusterDataEncryptionPtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterDataEncryptionPtrOutput) Elem() ServerGroupClusterDataEncryptionOutput {
+	return o.ApplyT(func(v *ServerGroupClusterDataEncryption) ServerGroupClusterDataEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupClusterDataEncryption
+		return ret
+	}).(ServerGroupClusterDataEncryptionOutput)
+}
+
+// URI for the key in keyvault for data encryption of the primary server.
+func (o ServerGroupClusterDataEncryptionPtrOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterDataEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryKeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+func (o ServerGroupClusterDataEncryptionPtrOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterDataEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryUserAssignedIdentityId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServerGroupClusterDataEncryptionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterDataEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The data encryption properties of a cluster.
+type ServerGroupClusterDataEncryptionResponse struct {
+	// URI for the key in keyvault for data encryption of the primary server.
+	PrimaryKeyUri *string `pulumi:"primaryKeyUri"`
+	// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
+	Type                          *string `pulumi:"type"`
+}
+
+// The data encryption properties of a cluster.
+type ServerGroupClusterDataEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterDataEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupClusterDataEncryptionResponse)(nil)).Elem()
+}
+
+func (o ServerGroupClusterDataEncryptionResponseOutput) ToServerGroupClusterDataEncryptionResponseOutput() ServerGroupClusterDataEncryptionResponseOutput {
+	return o
+}
+
+func (o ServerGroupClusterDataEncryptionResponseOutput) ToServerGroupClusterDataEncryptionResponseOutputWithContext(ctx context.Context) ServerGroupClusterDataEncryptionResponseOutput {
+	return o
+}
+
+// URI for the key in keyvault for data encryption of the primary server.
+func (o ServerGroupClusterDataEncryptionResponseOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterDataEncryptionResponse) *string { return v.PrimaryKeyUri }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+func (o ServerGroupClusterDataEncryptionResponseOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterDataEncryptionResponse) *string { return v.PrimaryUserAssignedIdentityId }).(pulumi.StringPtrOutput)
+}
+
+func (o ServerGroupClusterDataEncryptionResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterDataEncryptionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ServerGroupClusterDataEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterDataEncryptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupClusterDataEncryptionResponse)(nil)).Elem()
+}
+
+func (o ServerGroupClusterDataEncryptionResponsePtrOutput) ToServerGroupClusterDataEncryptionResponsePtrOutput() ServerGroupClusterDataEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterDataEncryptionResponsePtrOutput) ToServerGroupClusterDataEncryptionResponsePtrOutputWithContext(ctx context.Context) ServerGroupClusterDataEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterDataEncryptionResponsePtrOutput) Elem() ServerGroupClusterDataEncryptionResponseOutput {
+	return o.ApplyT(func(v *ServerGroupClusterDataEncryptionResponse) ServerGroupClusterDataEncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupClusterDataEncryptionResponse
+		return ret
+	}).(ServerGroupClusterDataEncryptionResponseOutput)
+}
+
+// URI for the key in keyvault for data encryption of the primary server.
+func (o ServerGroupClusterDataEncryptionResponsePtrOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterDataEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryKeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+func (o ServerGroupClusterDataEncryptionResponsePtrOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterDataEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryUserAssignedIdentityId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServerGroupClusterDataEncryptionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterDataEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schedule settings for regular cluster updates.
+type ServerGroupClusterMaintenanceWindow struct {
+	// Indicates whether custom maintenance window is enabled or not.
+	CustomWindow *string `pulumi:"customWindow"`
+	// Preferred day of the week for maintenance window.
+	DayOfWeek *int `pulumi:"dayOfWeek"`
+	// Start hour within preferred day of the week for maintenance window.
+	StartHour *int `pulumi:"startHour"`
+	// Start minute within the start hour for maintenance window.
+	StartMinute *int `pulumi:"startMinute"`
+}
+
+// ServerGroupClusterMaintenanceWindowInput is an input type that accepts ServerGroupClusterMaintenanceWindowArgs and ServerGroupClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `ServerGroupClusterMaintenanceWindowInput` via:
+//
+//	ServerGroupClusterMaintenanceWindowArgs{...}
+type ServerGroupClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToServerGroupClusterMaintenanceWindowOutput() ServerGroupClusterMaintenanceWindowOutput
+	ToServerGroupClusterMaintenanceWindowOutputWithContext(context.Context) ServerGroupClusterMaintenanceWindowOutput
+}
+
+// Schedule settings for regular cluster updates.
+type ServerGroupClusterMaintenanceWindowArgs struct {
+	// Indicates whether custom maintenance window is enabled or not.
+	CustomWindow pulumi.StringPtrInput `pulumi:"customWindow"`
+	// Preferred day of the week for maintenance window.
+	DayOfWeek pulumi.IntPtrInput `pulumi:"dayOfWeek"`
+	// Start hour within preferred day of the week for maintenance window.
+	StartHour pulumi.IntPtrInput `pulumi:"startHour"`
+	// Start minute within the start hour for maintenance window.
+	StartMinute pulumi.IntPtrInput `pulumi:"startMinute"`
+}
+
+func (ServerGroupClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i ServerGroupClusterMaintenanceWindowArgs) ToServerGroupClusterMaintenanceWindowOutput() ServerGroupClusterMaintenanceWindowOutput {
+	return i.ToServerGroupClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i ServerGroupClusterMaintenanceWindowArgs) ToServerGroupClusterMaintenanceWindowOutputWithContext(ctx context.Context) ServerGroupClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupClusterMaintenanceWindowOutput)
+}
+
+func (i ServerGroupClusterMaintenanceWindowArgs) ToServerGroupClusterMaintenanceWindowPtrOutput() ServerGroupClusterMaintenanceWindowPtrOutput {
+	return i.ToServerGroupClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i ServerGroupClusterMaintenanceWindowArgs) ToServerGroupClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) ServerGroupClusterMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupClusterMaintenanceWindowOutput).ToServerGroupClusterMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// ServerGroupClusterMaintenanceWindowPtrInput is an input type that accepts ServerGroupClusterMaintenanceWindowArgs, ServerGroupClusterMaintenanceWindowPtr and ServerGroupClusterMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `ServerGroupClusterMaintenanceWindowPtrInput` via:
+//
+//	        ServerGroupClusterMaintenanceWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerGroupClusterMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToServerGroupClusterMaintenanceWindowPtrOutput() ServerGroupClusterMaintenanceWindowPtrOutput
+	ToServerGroupClusterMaintenanceWindowPtrOutputWithContext(context.Context) ServerGroupClusterMaintenanceWindowPtrOutput
+}
+
+type serverGroupClusterMaintenanceWindowPtrType ServerGroupClusterMaintenanceWindowArgs
+
+func ServerGroupClusterMaintenanceWindowPtr(v *ServerGroupClusterMaintenanceWindowArgs) ServerGroupClusterMaintenanceWindowPtrInput {
+	return (*serverGroupClusterMaintenanceWindowPtrType)(v)
+}
+
+func (*serverGroupClusterMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *serverGroupClusterMaintenanceWindowPtrType) ToServerGroupClusterMaintenanceWindowPtrOutput() ServerGroupClusterMaintenanceWindowPtrOutput {
+	return i.ToServerGroupClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *serverGroupClusterMaintenanceWindowPtrType) ToServerGroupClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) ServerGroupClusterMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupClusterMaintenanceWindowPtrOutput)
+}
+
+// Schedule settings for regular cluster updates.
+type ServerGroupClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o ServerGroupClusterMaintenanceWindowOutput) ToServerGroupClusterMaintenanceWindowOutput() ServerGroupClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o ServerGroupClusterMaintenanceWindowOutput) ToServerGroupClusterMaintenanceWindowOutputWithContext(ctx context.Context) ServerGroupClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o ServerGroupClusterMaintenanceWindowOutput) ToServerGroupClusterMaintenanceWindowPtrOutput() ServerGroupClusterMaintenanceWindowPtrOutput {
+	return o.ToServerGroupClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o ServerGroupClusterMaintenanceWindowOutput) ToServerGroupClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) ServerGroupClusterMaintenanceWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerGroupClusterMaintenanceWindow) *ServerGroupClusterMaintenanceWindow {
+		return &v
+	}).(ServerGroupClusterMaintenanceWindowPtrOutput)
+}
+
+// Indicates whether custom maintenance window is enabled or not.
+func (o ServerGroupClusterMaintenanceWindowOutput) CustomWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterMaintenanceWindow) *string { return v.CustomWindow }).(pulumi.StringPtrOutput)
+}
+
+// Preferred day of the week for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowOutput) DayOfWeek() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterMaintenanceWindow) *int { return v.DayOfWeek }).(pulumi.IntPtrOutput)
+}
+
+// Start hour within preferred day of the week for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterMaintenanceWindow) *int { return v.StartHour }).(pulumi.IntPtrOutput)
+}
+
+// Start minute within the start hour for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowOutput) StartMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterMaintenanceWindow) *int { return v.StartMinute }).(pulumi.IntPtrOutput)
+}
+
+type ServerGroupClusterMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o ServerGroupClusterMaintenanceWindowPtrOutput) ToServerGroupClusterMaintenanceWindowPtrOutput() ServerGroupClusterMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterMaintenanceWindowPtrOutput) ToServerGroupClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) ServerGroupClusterMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterMaintenanceWindowPtrOutput) Elem() ServerGroupClusterMaintenanceWindowOutput {
+	return o.ApplyT(func(v *ServerGroupClusterMaintenanceWindow) ServerGroupClusterMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupClusterMaintenanceWindow
+		return ret
+	}).(ServerGroupClusterMaintenanceWindowOutput)
+}
+
+// Indicates whether custom maintenance window is enabled or not.
+func (o ServerGroupClusterMaintenanceWindowPtrOutput) CustomWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomWindow
+	}).(pulumi.StringPtrOutput)
+}
+
+// Preferred day of the week for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowPtrOutput) DayOfWeek() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterMaintenanceWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeek
+	}).(pulumi.IntPtrOutput)
+}
+
+// Start hour within preferred day of the week for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowPtrOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterMaintenanceWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartHour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Start minute within the start hour for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowPtrOutput) StartMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterMaintenanceWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartMinute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Schedule settings for regular cluster updates.
+type ServerGroupClusterMaintenanceWindowResponse struct {
+	// Indicates whether custom maintenance window is enabled or not.
+	CustomWindow *string `pulumi:"customWindow"`
+	// Preferred day of the week for maintenance window.
+	DayOfWeek *int `pulumi:"dayOfWeek"`
+	// Start hour within preferred day of the week for maintenance window.
+	StartHour *int `pulumi:"startHour"`
+	// Start minute within the start hour for maintenance window.
+	StartMinute *int `pulumi:"startMinute"`
+}
+
+// Schedule settings for regular cluster updates.
+type ServerGroupClusterMaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterMaintenanceWindowResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupClusterMaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o ServerGroupClusterMaintenanceWindowResponseOutput) ToServerGroupClusterMaintenanceWindowResponseOutput() ServerGroupClusterMaintenanceWindowResponseOutput {
+	return o
+}
+
+func (o ServerGroupClusterMaintenanceWindowResponseOutput) ToServerGroupClusterMaintenanceWindowResponseOutputWithContext(ctx context.Context) ServerGroupClusterMaintenanceWindowResponseOutput {
+	return o
+}
+
+// Indicates whether custom maintenance window is enabled or not.
+func (o ServerGroupClusterMaintenanceWindowResponseOutput) CustomWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterMaintenanceWindowResponse) *string { return v.CustomWindow }).(pulumi.StringPtrOutput)
+}
+
+// Preferred day of the week for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowResponseOutput) DayOfWeek() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterMaintenanceWindowResponse) *int { return v.DayOfWeek }).(pulumi.IntPtrOutput)
+}
+
+// Start hour within preferred day of the week for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowResponseOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterMaintenanceWindowResponse) *int { return v.StartHour }).(pulumi.IntPtrOutput)
+}
+
+// Start minute within the start hour for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowResponseOutput) StartMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerGroupClusterMaintenanceWindowResponse) *int { return v.StartMinute }).(pulumi.IntPtrOutput)
+}
+
+type ServerGroupClusterMaintenanceWindowResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupClusterMaintenanceWindowResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupClusterMaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o ServerGroupClusterMaintenanceWindowResponsePtrOutput) ToServerGroupClusterMaintenanceWindowResponsePtrOutput() ServerGroupClusterMaintenanceWindowResponsePtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterMaintenanceWindowResponsePtrOutput) ToServerGroupClusterMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) ServerGroupClusterMaintenanceWindowResponsePtrOutput {
+	return o
+}
+
+func (o ServerGroupClusterMaintenanceWindowResponsePtrOutput) Elem() ServerGroupClusterMaintenanceWindowResponseOutput {
+	return o.ApplyT(func(v *ServerGroupClusterMaintenanceWindowResponse) ServerGroupClusterMaintenanceWindowResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupClusterMaintenanceWindowResponse
+		return ret
+	}).(ServerGroupClusterMaintenanceWindowResponseOutput)
+}
+
+// Indicates whether custom maintenance window is enabled or not.
+func (o ServerGroupClusterMaintenanceWindowResponsePtrOutput) CustomWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterMaintenanceWindowResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomWindow
+	}).(pulumi.StringPtrOutput)
+}
+
+// Preferred day of the week for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowResponsePtrOutput) DayOfWeek() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterMaintenanceWindowResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeek
+	}).(pulumi.IntPtrOutput)
+}
+
+// Start hour within preferred day of the week for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowResponsePtrOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterMaintenanceWindowResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartHour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Start minute within the start hour for maintenance window.
+func (o ServerGroupClusterMaintenanceWindowResponsePtrOutput) StartMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerGroupClusterMaintenanceWindowResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartMinute
+	}).(pulumi.IntPtrOutput)
 }
 
 // The name object for a server.
@@ -6766,6 +7627,18 @@ func init() {
 	pulumi.RegisterOutputType(ResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterAuthConfigOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterAuthConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterAuthConfigResponseOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterAuthConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterDataEncryptionOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterDataEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterDataEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterDataEncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterMaintenanceWindowResponseOutput{})
+	pulumi.RegisterOutputType(ServerGroupClusterMaintenanceWindowResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServerNameItemResponseOutput{})
 	pulumi.RegisterOutputType(ServerNameItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServerPrivateEndpointConnectionPropertiesResponseOutput{})
