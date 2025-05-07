@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ManagementGroup{}
 	case "azure-native:management:ManagementGroupSubscription":
 		r = &ManagementGroupSubscription{}
+	case "azure-native:management:ServiceGroup":
+		r = &ServiceGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

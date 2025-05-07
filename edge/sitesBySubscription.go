@@ -14,6 +14,8 @@ import (
 // Site as ARM Resource
 //
 // Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-01-preview.
+//
+// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SitesBySubscription struct {
 	pulumi.CustomResourceState
 
@@ -39,6 +41,9 @@ func NewSitesBySubscription(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:edge/v20240201preview:SitesBySubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:edge/v20250301preview:SitesBySubscription"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PlacementPolicy{}
 	case "azure-native:avs:PrivateCloud":
 		r = &PrivateCloud{}
+	case "azure-native:avs:PureStoragePolicy":
+		r = &PureStoragePolicy{}
 	case "azure-native:avs:ScriptExecution":
 		r = &ScriptExecution{}
 	case "azure-native:avs:WorkloadNetworkDhcp":

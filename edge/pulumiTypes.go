@@ -13,6 +13,386 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Site address properties
+type SiteAddressProperties struct {
+	// City of the address
+	City *string `pulumi:"city"`
+	// Country of the address
+	Country *string `pulumi:"country"`
+	// Postal or ZIP code of the address
+	PostalCode *string `pulumi:"postalCode"`
+	// State or province of the address
+	StateOrProvince *string `pulumi:"stateOrProvince"`
+	// First line of the street address
+	StreetAddress1 *string `pulumi:"streetAddress1"`
+	// Second line of the street address
+	StreetAddress2 *string `pulumi:"streetAddress2"`
+}
+
+// SiteAddressPropertiesInput is an input type that accepts SiteAddressPropertiesArgs and SiteAddressPropertiesOutput values.
+// You can construct a concrete instance of `SiteAddressPropertiesInput` via:
+//
+//	SiteAddressPropertiesArgs{...}
+type SiteAddressPropertiesInput interface {
+	pulumi.Input
+
+	ToSiteAddressPropertiesOutput() SiteAddressPropertiesOutput
+	ToSiteAddressPropertiesOutputWithContext(context.Context) SiteAddressPropertiesOutput
+}
+
+// Site address properties
+type SiteAddressPropertiesArgs struct {
+	// City of the address
+	City pulumi.StringPtrInput `pulumi:"city"`
+	// Country of the address
+	Country pulumi.StringPtrInput `pulumi:"country"`
+	// Postal or ZIP code of the address
+	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
+	// State or province of the address
+	StateOrProvince pulumi.StringPtrInput `pulumi:"stateOrProvince"`
+	// First line of the street address
+	StreetAddress1 pulumi.StringPtrInput `pulumi:"streetAddress1"`
+	// Second line of the street address
+	StreetAddress2 pulumi.StringPtrInput `pulumi:"streetAddress2"`
+}
+
+func (SiteAddressPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteAddressProperties)(nil)).Elem()
+}
+
+func (i SiteAddressPropertiesArgs) ToSiteAddressPropertiesOutput() SiteAddressPropertiesOutput {
+	return i.ToSiteAddressPropertiesOutputWithContext(context.Background())
+}
+
+func (i SiteAddressPropertiesArgs) ToSiteAddressPropertiesOutputWithContext(ctx context.Context) SiteAddressPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteAddressPropertiesOutput)
+}
+
+func (i SiteAddressPropertiesArgs) ToSiteAddressPropertiesPtrOutput() SiteAddressPropertiesPtrOutput {
+	return i.ToSiteAddressPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SiteAddressPropertiesArgs) ToSiteAddressPropertiesPtrOutputWithContext(ctx context.Context) SiteAddressPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteAddressPropertiesOutput).ToSiteAddressPropertiesPtrOutputWithContext(ctx)
+}
+
+// SiteAddressPropertiesPtrInput is an input type that accepts SiteAddressPropertiesArgs, SiteAddressPropertiesPtr and SiteAddressPropertiesPtrOutput values.
+// You can construct a concrete instance of `SiteAddressPropertiesPtrInput` via:
+//
+//	        SiteAddressPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteAddressPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSiteAddressPropertiesPtrOutput() SiteAddressPropertiesPtrOutput
+	ToSiteAddressPropertiesPtrOutputWithContext(context.Context) SiteAddressPropertiesPtrOutput
+}
+
+type siteAddressPropertiesPtrType SiteAddressPropertiesArgs
+
+func SiteAddressPropertiesPtr(v *SiteAddressPropertiesArgs) SiteAddressPropertiesPtrInput {
+	return (*siteAddressPropertiesPtrType)(v)
+}
+
+func (*siteAddressPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteAddressProperties)(nil)).Elem()
+}
+
+func (i *siteAddressPropertiesPtrType) ToSiteAddressPropertiesPtrOutput() SiteAddressPropertiesPtrOutput {
+	return i.ToSiteAddressPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *siteAddressPropertiesPtrType) ToSiteAddressPropertiesPtrOutputWithContext(ctx context.Context) SiteAddressPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteAddressPropertiesPtrOutput)
+}
+
+// Site address properties
+type SiteAddressPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SiteAddressPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteAddressProperties)(nil)).Elem()
+}
+
+func (o SiteAddressPropertiesOutput) ToSiteAddressPropertiesOutput() SiteAddressPropertiesOutput {
+	return o
+}
+
+func (o SiteAddressPropertiesOutput) ToSiteAddressPropertiesOutputWithContext(ctx context.Context) SiteAddressPropertiesOutput {
+	return o
+}
+
+func (o SiteAddressPropertiesOutput) ToSiteAddressPropertiesPtrOutput() SiteAddressPropertiesPtrOutput {
+	return o.ToSiteAddressPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SiteAddressPropertiesOutput) ToSiteAddressPropertiesPtrOutputWithContext(ctx context.Context) SiteAddressPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteAddressProperties) *SiteAddressProperties {
+		return &v
+	}).(SiteAddressPropertiesPtrOutput)
+}
+
+// City of the address
+func (o SiteAddressPropertiesOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressProperties) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// Country of the address
+func (o SiteAddressPropertiesOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressProperties) *string { return v.Country }).(pulumi.StringPtrOutput)
+}
+
+// Postal or ZIP code of the address
+func (o SiteAddressPropertiesOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressProperties) *string { return v.PostalCode }).(pulumi.StringPtrOutput)
+}
+
+// State or province of the address
+func (o SiteAddressPropertiesOutput) StateOrProvince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressProperties) *string { return v.StateOrProvince }).(pulumi.StringPtrOutput)
+}
+
+// First line of the street address
+func (o SiteAddressPropertiesOutput) StreetAddress1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressProperties) *string { return v.StreetAddress1 }).(pulumi.StringPtrOutput)
+}
+
+// Second line of the street address
+func (o SiteAddressPropertiesOutput) StreetAddress2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressProperties) *string { return v.StreetAddress2 }).(pulumi.StringPtrOutput)
+}
+
+type SiteAddressPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteAddressPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteAddressProperties)(nil)).Elem()
+}
+
+func (o SiteAddressPropertiesPtrOutput) ToSiteAddressPropertiesPtrOutput() SiteAddressPropertiesPtrOutput {
+	return o
+}
+
+func (o SiteAddressPropertiesPtrOutput) ToSiteAddressPropertiesPtrOutputWithContext(ctx context.Context) SiteAddressPropertiesPtrOutput {
+	return o
+}
+
+func (o SiteAddressPropertiesPtrOutput) Elem() SiteAddressPropertiesOutput {
+	return o.ApplyT(func(v *SiteAddressProperties) SiteAddressProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SiteAddressProperties
+		return ret
+	}).(SiteAddressPropertiesOutput)
+}
+
+// City of the address
+func (o SiteAddressPropertiesPtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+// Country of the address
+func (o SiteAddressPropertiesPtrOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Country
+	}).(pulumi.StringPtrOutput)
+}
+
+// Postal or ZIP code of the address
+func (o SiteAddressPropertiesPtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// State or province of the address
+func (o SiteAddressPropertiesPtrOutput) StateOrProvince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StateOrProvince
+	}).(pulumi.StringPtrOutput)
+}
+
+// First line of the street address
+func (o SiteAddressPropertiesPtrOutput) StreetAddress1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreetAddress1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Second line of the street address
+func (o SiteAddressPropertiesPtrOutput) StreetAddress2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreetAddress2
+	}).(pulumi.StringPtrOutput)
+}
+
+// Site address properties
+type SiteAddressPropertiesResponse struct {
+	// City of the address
+	City *string `pulumi:"city"`
+	// Country of the address
+	Country *string `pulumi:"country"`
+	// Postal or ZIP code of the address
+	PostalCode *string `pulumi:"postalCode"`
+	// State or province of the address
+	StateOrProvince *string `pulumi:"stateOrProvince"`
+	// First line of the street address
+	StreetAddress1 *string `pulumi:"streetAddress1"`
+	// Second line of the street address
+	StreetAddress2 *string `pulumi:"streetAddress2"`
+}
+
+// Site address properties
+type SiteAddressPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SiteAddressPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteAddressPropertiesResponse)(nil)).Elem()
+}
+
+func (o SiteAddressPropertiesResponseOutput) ToSiteAddressPropertiesResponseOutput() SiteAddressPropertiesResponseOutput {
+	return o
+}
+
+func (o SiteAddressPropertiesResponseOutput) ToSiteAddressPropertiesResponseOutputWithContext(ctx context.Context) SiteAddressPropertiesResponseOutput {
+	return o
+}
+
+// City of the address
+func (o SiteAddressPropertiesResponseOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressPropertiesResponse) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// Country of the address
+func (o SiteAddressPropertiesResponseOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressPropertiesResponse) *string { return v.Country }).(pulumi.StringPtrOutput)
+}
+
+// Postal or ZIP code of the address
+func (o SiteAddressPropertiesResponseOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressPropertiesResponse) *string { return v.PostalCode }).(pulumi.StringPtrOutput)
+}
+
+// State or province of the address
+func (o SiteAddressPropertiesResponseOutput) StateOrProvince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressPropertiesResponse) *string { return v.StateOrProvince }).(pulumi.StringPtrOutput)
+}
+
+// First line of the street address
+func (o SiteAddressPropertiesResponseOutput) StreetAddress1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressPropertiesResponse) *string { return v.StreetAddress1 }).(pulumi.StringPtrOutput)
+}
+
+// Second line of the street address
+func (o SiteAddressPropertiesResponseOutput) StreetAddress2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteAddressPropertiesResponse) *string { return v.StreetAddress2 }).(pulumi.StringPtrOutput)
+}
+
+type SiteAddressPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SiteAddressPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteAddressPropertiesResponse)(nil)).Elem()
+}
+
+func (o SiteAddressPropertiesResponsePtrOutput) ToSiteAddressPropertiesResponsePtrOutput() SiteAddressPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SiteAddressPropertiesResponsePtrOutput) ToSiteAddressPropertiesResponsePtrOutputWithContext(ctx context.Context) SiteAddressPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SiteAddressPropertiesResponsePtrOutput) Elem() SiteAddressPropertiesResponseOutput {
+	return o.ApplyT(func(v *SiteAddressPropertiesResponse) SiteAddressPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SiteAddressPropertiesResponse
+		return ret
+	}).(SiteAddressPropertiesResponseOutput)
+}
+
+// City of the address
+func (o SiteAddressPropertiesResponsePtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+// Country of the address
+func (o SiteAddressPropertiesResponsePtrOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Country
+	}).(pulumi.StringPtrOutput)
+}
+
+// Postal or ZIP code of the address
+func (o SiteAddressPropertiesResponsePtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// State or province of the address
+func (o SiteAddressPropertiesResponsePtrOutput) StateOrProvince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StateOrProvince
+	}).(pulumi.StringPtrOutput)
+}
+
+// First line of the street address
+func (o SiteAddressPropertiesResponsePtrOutput) StreetAddress1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreetAddress1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Second line of the street address
+func (o SiteAddressPropertiesResponsePtrOutput) StreetAddress2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteAddressPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreetAddress2
+	}).(pulumi.StringPtrOutput)
+}
+
 // Site properties
 type SiteProperties struct {
 	// AddressResource ArmId of Site resource
@@ -21,6 +401,10 @@ type SiteProperties struct {
 	Description *string `pulumi:"description"`
 	// displayName of Site resource
 	DisplayName *string `pulumi:"displayName"`
+	// Key-value pairs for labeling the site resource.
+	Labels map[string]string `pulumi:"labels"`
+	// Physical address of the site
+	SiteAddress *SiteAddressProperties `pulumi:"siteAddress"`
 }
 
 // SitePropertiesInput is an input type that accepts SitePropertiesArgs and SitePropertiesOutput values.
@@ -42,6 +426,10 @@ type SitePropertiesArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// displayName of Site resource
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Key-value pairs for labeling the site resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Physical address of the site
+	SiteAddress SiteAddressPropertiesPtrInput `pulumi:"siteAddress"`
 }
 
 func (SitePropertiesArgs) ElementType() reflect.Type {
@@ -137,6 +525,16 @@ func (o SitePropertiesOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Key-value pairs for labeling the site resource.
+func (o SitePropertiesOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SiteProperties) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Physical address of the site
+func (o SitePropertiesOutput) SiteAddress() SiteAddressPropertiesPtrOutput {
+	return o.ApplyT(func(v SiteProperties) *SiteAddressProperties { return v.SiteAddress }).(SiteAddressPropertiesPtrOutput)
+}
+
 type SitePropertiesPtrOutput struct{ *pulumi.OutputState }
 
 func (SitePropertiesPtrOutput) ElementType() reflect.Type {
@@ -191,6 +589,26 @@ func (o SitePropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Key-value pairs for labeling the site resource.
+func (o SitePropertiesPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SiteProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Physical address of the site
+func (o SitePropertiesPtrOutput) SiteAddress() SiteAddressPropertiesPtrOutput {
+	return o.ApplyT(func(v *SiteProperties) *SiteAddressProperties {
+		if v == nil {
+			return nil
+		}
+		return v.SiteAddress
+	}).(SiteAddressPropertiesPtrOutput)
+}
+
 // Site properties
 type SitePropertiesResponse struct {
 	// AddressResource ArmId of Site resource
@@ -199,8 +617,12 @@ type SitePropertiesResponse struct {
 	Description *string `pulumi:"description"`
 	// displayName of Site resource
 	DisplayName *string `pulumi:"displayName"`
+	// Key-value pairs for labeling the site resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Provisioning state of last operation
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Physical address of the site
+	SiteAddress *SiteAddressPropertiesResponse `pulumi:"siteAddress"`
 }
 
 // Site properties
@@ -233,9 +655,19 @@ func (o SitePropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SitePropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Key-value pairs for labeling the site resource.
+func (o SitePropertiesResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SitePropertiesResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 // Provisioning state of last operation
 func (o SitePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v SitePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Physical address of the site
+func (o SitePropertiesResponseOutput) SiteAddress() SiteAddressPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SitePropertiesResponse) *SiteAddressPropertiesResponse { return v.SiteAddress }).(SiteAddressPropertiesResponsePtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -300,6 +732,10 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(SiteAddressPropertiesOutput{})
+	pulumi.RegisterOutputType(SiteAddressPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SiteAddressPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SiteAddressPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SitePropertiesOutput{})
 	pulumi.RegisterOutputType(SitePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SitePropertiesResponseOutput{})

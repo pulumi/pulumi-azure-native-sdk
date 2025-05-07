@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ActionRuleByName{}
 	case "azure-native:alertsmanagement:AlertProcessingRuleByName":
 		r = &AlertProcessingRuleByName{}
+	case "azure-native:alertsmanagement:Issue":
+		r = &Issue{}
 	case "azure-native:alertsmanagement:PrometheusRuleGroup":
 		r = &PrometheusRuleGroup{}
 	case "azure-native:alertsmanagement:SmartDetectorAlertRule":

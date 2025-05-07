@@ -8752,6 +8752,8 @@ type ImpalaLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specify whether to enable server SSL certificate validation when you connect.Always use System Trust Store (for V2 only). The default value is true.
+	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl interface{} `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -8764,6 +8766,8 @@ type ImpalaLinkedService struct {
 	Password interface{} `pulumi:"password"`
 	// The TCP port that the Impala server uses to listen for client connections. The default value is 21050.
 	Port interface{} `pulumi:"port"`
+	// The transport protocol to use in the Thrift layer (for V2 only). Default value is Binary.
+	ThriftTransportProtocol *string `pulumi:"thriftTransportProtocol"`
 	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
 	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
 	// Type of linked service.
@@ -8802,6 +8806,8 @@ type ImpalaLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specify whether to enable server SSL certificate validation when you connect.Always use System Trust Store (for V2 only). The default value is true.
+	EnableServerCertificateValidation pulumi.Input `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl pulumi.Input `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -8814,6 +8820,8 @@ type ImpalaLinkedServiceArgs struct {
 	Password pulumi.Input `pulumi:"password"`
 	// The TCP port that the Impala server uses to listen for client connections. The default value is 21050.
 	Port pulumi.Input `pulumi:"port"`
+	// The transport protocol to use in the Thrift layer (for V2 only). Default value is Binary.
+	ThriftTransportProtocol pulumi.StringPtrInput `pulumi:"thriftTransportProtocol"`
 	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
 	TrustedCertPath pulumi.Input `pulumi:"trustedCertPath"`
 	// Type of linked service.
@@ -8884,6 +8892,11 @@ func (o ImpalaLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImpalaLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Specify whether to enable server SSL certificate validation when you connect.Always use System Trust Store (for V2 only). The default value is true.
+func (o ImpalaLinkedServiceOutput) EnableServerCertificateValidation() pulumi.AnyOutput {
+	return o.ApplyT(func(v ImpalaLinkedService) interface{} { return v.EnableServerCertificateValidation }).(pulumi.AnyOutput)
+}
+
 // Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 func (o ImpalaLinkedServiceOutput) EnableSsl() pulumi.AnyOutput {
 	return o.ApplyT(func(v ImpalaLinkedService) interface{} { return v.EnableSsl }).(pulumi.AnyOutput)
@@ -8912,6 +8925,11 @@ func (o ImpalaLinkedServiceOutput) Password() pulumi.AnyOutput {
 // The TCP port that the Impala server uses to listen for client connections. The default value is 21050.
 func (o ImpalaLinkedServiceOutput) Port() pulumi.AnyOutput {
 	return o.ApplyT(func(v ImpalaLinkedService) interface{} { return v.Port }).(pulumi.AnyOutput)
+}
+
+// The transport protocol to use in the Thrift layer (for V2 only). Default value is Binary.
+func (o ImpalaLinkedServiceOutput) ThriftTransportProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImpalaLinkedService) *string { return v.ThriftTransportProtocol }).(pulumi.StringPtrOutput)
 }
 
 // The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
@@ -8954,6 +8972,8 @@ type ImpalaLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specify whether to enable server SSL certificate validation when you connect.Always use System Trust Store (for V2 only). The default value is true.
+	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl interface{} `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -8966,6 +8986,8 @@ type ImpalaLinkedServiceResponse struct {
 	Password interface{} `pulumi:"password"`
 	// The TCP port that the Impala server uses to listen for client connections. The default value is 21050.
 	Port interface{} `pulumi:"port"`
+	// The transport protocol to use in the Thrift layer (for V2 only). Default value is Binary.
+	ThriftTransportProtocol *string `pulumi:"thriftTransportProtocol"`
 	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
 	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
 	// Type of linked service.
@@ -9024,6 +9046,11 @@ func (o ImpalaLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ImpalaLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Specify whether to enable server SSL certificate validation when you connect.Always use System Trust Store (for V2 only). The default value is true.
+func (o ImpalaLinkedServiceResponseOutput) EnableServerCertificateValidation() pulumi.AnyOutput {
+	return o.ApplyT(func(v ImpalaLinkedServiceResponse) interface{} { return v.EnableServerCertificateValidation }).(pulumi.AnyOutput)
+}
+
 // Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 func (o ImpalaLinkedServiceResponseOutput) EnableSsl() pulumi.AnyOutput {
 	return o.ApplyT(func(v ImpalaLinkedServiceResponse) interface{} { return v.EnableSsl }).(pulumi.AnyOutput)
@@ -9052,6 +9079,11 @@ func (o ImpalaLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
 // The TCP port that the Impala server uses to listen for client connections. The default value is 21050.
 func (o ImpalaLinkedServiceResponseOutput) Port() pulumi.AnyOutput {
 	return o.ApplyT(func(v ImpalaLinkedServiceResponse) interface{} { return v.Port }).(pulumi.AnyOutput)
+}
+
+// The transport protocol to use in the Thrift layer (for V2 only). Default value is Binary.
+func (o ImpalaLinkedServiceResponseOutput) ThriftTransportProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImpalaLinkedServiceResponse) *string { return v.ThriftTransportProtocol }).(pulumi.StringPtrOutput)
 }
 
 // The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
