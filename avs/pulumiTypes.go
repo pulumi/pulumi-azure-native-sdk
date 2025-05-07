@@ -1610,7 +1610,7 @@ type IdentitySource struct {
 	BaseGroupDN *string `pulumi:"baseGroupDN"`
 	// The base distinguished name for users
 	BaseUserDN *string `pulumi:"baseUserDN"`
-	// The domain's dns name
+	// The domain's DNS name
 	Domain *string `pulumi:"domain"`
 	// The name of the identity source
 	Name *string `pulumi:"name"`
@@ -1647,7 +1647,7 @@ type IdentitySourceArgs struct {
 	BaseGroupDN pulumi.StringPtrInput `pulumi:"baseGroupDN"`
 	// The base distinguished name for users
 	BaseUserDN pulumi.StringPtrInput `pulumi:"baseUserDN"`
-	// The domain's dns name
+	// The domain's DNS name
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// The name of the identity source
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -1732,7 +1732,7 @@ func (o IdentitySourceOutput) BaseUserDN() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySource) *string { return v.BaseUserDN }).(pulumi.StringPtrOutput)
 }
 
-// The domain's dns name
+// The domain's DNS name
 func (o IdentitySourceOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySource) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
@@ -1797,7 +1797,7 @@ type IdentitySourceResponse struct {
 	BaseGroupDN *string `pulumi:"baseGroupDN"`
 	// The base distinguished name for users
 	BaseUserDN *string `pulumi:"baseUserDN"`
-	// The domain's dns name
+	// The domain's DNS name
 	Domain *string `pulumi:"domain"`
 	// The name of the identity source
 	Name *string `pulumi:"name"`
@@ -1845,7 +1845,7 @@ func (o IdentitySourceResponseOutput) BaseUserDN() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySourceResponse) *string { return v.BaseUserDN }).(pulumi.StringPtrOutput)
 }
 
-// The domain's dns name
+// The domain's DNS name
 func (o IdentitySourceResponseOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentitySourceResponse) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }

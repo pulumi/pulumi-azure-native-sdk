@@ -2234,6 +2234,59 @@ func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Details of a Redis Enterprise cluster SKU.
+type SkuDetailsResponse struct {
+	// The name of the SKU.
+	Name string `pulumi:"name"`
+	// The cache size in GB.
+	SizeInGB float64 `pulumi:"sizeInGB"`
+}
+
+// Details of a Redis Enterprise cluster SKU.
+type SkuDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuDetailsResponse)(nil)).Elem()
+}
+
+func (o SkuDetailsResponseOutput) ToSkuDetailsResponseOutput() SkuDetailsResponseOutput {
+	return o
+}
+
+func (o SkuDetailsResponseOutput) ToSkuDetailsResponseOutputWithContext(ctx context.Context) SkuDetailsResponseOutput {
+	return o
+}
+
+// The name of the SKU.
+func (o SkuDetailsResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SkuDetailsResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The cache size in GB.
+func (o SkuDetailsResponseOutput) SizeInGB() pulumi.Float64Output {
+	return o.ApplyT(func(v SkuDetailsResponse) float64 { return v.SizeInGB }).(pulumi.Float64Output)
+}
+
+type SkuDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SkuDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SkuDetailsResponse)(nil)).Elem()
+}
+
+func (o SkuDetailsResponseArrayOutput) ToSkuDetailsResponseArrayOutput() SkuDetailsResponseArrayOutput {
+	return o
+}
+
+func (o SkuDetailsResponseArrayOutput) ToSkuDetailsResponseArrayOutputWithContext(ctx context.Context) SkuDetailsResponseArrayOutput {
+	return o
+}
+
+func (o SkuDetailsResponseArrayOutput) Index(i pulumi.IntInput) SkuDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SkuDetailsResponse {
+		return vs[0].([]SkuDetailsResponse)[vs[1].(int)]
+	}).(SkuDetailsResponseOutput)
+}
+
 // SKU parameters supplied to the create RedisEnterprise operation.
 type SkuResponse struct {
 	// The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
@@ -2362,6 +2415,8 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
+	pulumi.RegisterOutputType(SkuDetailsResponseOutput{})
+	pulumi.RegisterOutputType(SkuDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})

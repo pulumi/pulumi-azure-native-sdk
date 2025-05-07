@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:edge:Site":
 		r = &Site{}
+	case "azure-native:edge:SitesByServiceGroup":
+		r = &SitesByServiceGroup{}
 	case "azure-native:edge:SitesBySubscription":
 		r = &SitesBySubscription{}
 	default:

@@ -15,6 +15,8 @@ import (
 // An iSCSI path resource
 //
 // Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
+//
+// Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type IscsiPath struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,9 @@ func NewIscsiPath(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:IscsiPath"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20240901:IscsiPath"),
 		},
 	})
 	opts = append(opts, aliases)

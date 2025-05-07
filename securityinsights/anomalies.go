@@ -234,6 +234,9 @@ func NewAnomalies(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:Anomalies"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250401preview:Anomalies"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:EntityAnalytics"),
 		},
 		{

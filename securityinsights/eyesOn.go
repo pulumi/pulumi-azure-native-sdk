@@ -234,6 +234,9 @@ func NewEyesOn(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:EyesOn"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250401preview:EyesOn"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:Anomalies"),
 		},
 		{

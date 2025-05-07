@@ -6954,6 +6954,172 @@ func (in *impalaAuthenticationTypePtr) ToImpalaAuthenticationTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ImpalaAuthenticationTypePtrOutput)
 }
 
+// The transport protocol to use in the Thrift layer (for V2 only). Default value is Binary.
+type ImpalaThriftTransportProtocol string
+
+const (
+	ImpalaThriftTransportProtocolBinary = ImpalaThriftTransportProtocol("Binary")
+	ImpalaThriftTransportProtocolHTTP   = ImpalaThriftTransportProtocol("HTTP")
+)
+
+func (ImpalaThriftTransportProtocol) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImpalaThriftTransportProtocol)(nil)).Elem()
+}
+
+func (e ImpalaThriftTransportProtocol) ToImpalaThriftTransportProtocolOutput() ImpalaThriftTransportProtocolOutput {
+	return pulumi.ToOutput(e).(ImpalaThriftTransportProtocolOutput)
+}
+
+func (e ImpalaThriftTransportProtocol) ToImpalaThriftTransportProtocolOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ImpalaThriftTransportProtocolOutput)
+}
+
+func (e ImpalaThriftTransportProtocol) ToImpalaThriftTransportProtocolPtrOutput() ImpalaThriftTransportProtocolPtrOutput {
+	return e.ToImpalaThriftTransportProtocolPtrOutputWithContext(context.Background())
+}
+
+func (e ImpalaThriftTransportProtocol) ToImpalaThriftTransportProtocolPtrOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolPtrOutput {
+	return ImpalaThriftTransportProtocol(e).ToImpalaThriftTransportProtocolOutputWithContext(ctx).ToImpalaThriftTransportProtocolPtrOutputWithContext(ctx)
+}
+
+func (e ImpalaThriftTransportProtocol) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImpalaThriftTransportProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImpalaThriftTransportProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ImpalaThriftTransportProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ImpalaThriftTransportProtocolOutput struct{ *pulumi.OutputState }
+
+func (ImpalaThriftTransportProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImpalaThriftTransportProtocol)(nil)).Elem()
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToImpalaThriftTransportProtocolOutput() ImpalaThriftTransportProtocolOutput {
+	return o
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToImpalaThriftTransportProtocolOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolOutput {
+	return o
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToImpalaThriftTransportProtocolPtrOutput() ImpalaThriftTransportProtocolPtrOutput {
+	return o.ToImpalaThriftTransportProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToImpalaThriftTransportProtocolPtrOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImpalaThriftTransportProtocol) *ImpalaThriftTransportProtocol {
+		return &v
+	}).(ImpalaThriftTransportProtocolPtrOutput)
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImpalaThriftTransportProtocol) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImpalaThriftTransportProtocol) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImpalaThriftTransportProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (ImpalaThriftTransportProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImpalaThriftTransportProtocol)(nil)).Elem()
+}
+
+func (o ImpalaThriftTransportProtocolPtrOutput) ToImpalaThriftTransportProtocolPtrOutput() ImpalaThriftTransportProtocolPtrOutput {
+	return o
+}
+
+func (o ImpalaThriftTransportProtocolPtrOutput) ToImpalaThriftTransportProtocolPtrOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolPtrOutput {
+	return o
+}
+
+func (o ImpalaThriftTransportProtocolPtrOutput) Elem() ImpalaThriftTransportProtocolOutput {
+	return o.ApplyT(func(v *ImpalaThriftTransportProtocol) ImpalaThriftTransportProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret ImpalaThriftTransportProtocol
+		return ret
+	}).(ImpalaThriftTransportProtocolOutput)
+}
+
+func (o ImpalaThriftTransportProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImpalaThriftTransportProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ImpalaThriftTransportProtocol) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ImpalaThriftTransportProtocolInput is an input type that accepts values of the ImpalaThriftTransportProtocol enum
+// A concrete instance of `ImpalaThriftTransportProtocolInput` can be one of the following:
+//
+//	ImpalaThriftTransportProtocolBinary
+//	ImpalaThriftTransportProtocolHTTP
+type ImpalaThriftTransportProtocolInput interface {
+	pulumi.Input
+
+	ToImpalaThriftTransportProtocolOutput() ImpalaThriftTransportProtocolOutput
+	ToImpalaThriftTransportProtocolOutputWithContext(context.Context) ImpalaThriftTransportProtocolOutput
+}
+
+var impalaThriftTransportProtocolPtrType = reflect.TypeOf((**ImpalaThriftTransportProtocol)(nil)).Elem()
+
+type ImpalaThriftTransportProtocolPtrInput interface {
+	pulumi.Input
+
+	ToImpalaThriftTransportProtocolPtrOutput() ImpalaThriftTransportProtocolPtrOutput
+	ToImpalaThriftTransportProtocolPtrOutputWithContext(context.Context) ImpalaThriftTransportProtocolPtrOutput
+}
+
+type impalaThriftTransportProtocolPtr string
+
+func ImpalaThriftTransportProtocolPtr(v string) ImpalaThriftTransportProtocolPtrInput {
+	return (*impalaThriftTransportProtocolPtr)(&v)
+}
+
+func (*impalaThriftTransportProtocolPtr) ElementType() reflect.Type {
+	return impalaThriftTransportProtocolPtrType
+}
+
+func (in *impalaThriftTransportProtocolPtr) ToImpalaThriftTransportProtocolPtrOutput() ImpalaThriftTransportProtocolPtrOutput {
+	return pulumi.ToOutput(in).(ImpalaThriftTransportProtocolPtrOutput)
+}
+
+func (in *impalaThriftTransportProtocolPtr) ToImpalaThriftTransportProtocolPtrOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ImpalaThriftTransportProtocolPtrOutput)
+}
+
 // The edition for the SSIS Integration Runtime
 type IntegrationRuntimeEdition string
 
@@ -15431,6 +15597,8 @@ func init() {
 	pulumi.RegisterOutputType(HttpAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(ImpalaAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(ImpalaAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(ImpalaThriftTransportProtocolOutput{})
+	pulumi.RegisterOutputType(ImpalaThriftTransportProtocolPtrOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeEditionOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeEditionPtrOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeEntityReferenceTypeOutput{})

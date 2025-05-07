@@ -926,6 +926,608 @@ func (o ParentGroupInfoResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The details of the parent serviceGroup.
+type ParentServiceGroupProperties struct {
+	// The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// ParentServiceGroupPropertiesInput is an input type that accepts ParentServiceGroupPropertiesArgs and ParentServiceGroupPropertiesOutput values.
+// You can construct a concrete instance of `ParentServiceGroupPropertiesInput` via:
+//
+//	ParentServiceGroupPropertiesArgs{...}
+type ParentServiceGroupPropertiesInput interface {
+	pulumi.Input
+
+	ToParentServiceGroupPropertiesOutput() ParentServiceGroupPropertiesOutput
+	ToParentServiceGroupPropertiesOutputWithContext(context.Context) ParentServiceGroupPropertiesOutput
+}
+
+// The details of the parent serviceGroup.
+type ParentServiceGroupPropertiesArgs struct {
+	// The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (ParentServiceGroupPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParentServiceGroupProperties)(nil)).Elem()
+}
+
+func (i ParentServiceGroupPropertiesArgs) ToParentServiceGroupPropertiesOutput() ParentServiceGroupPropertiesOutput {
+	return i.ToParentServiceGroupPropertiesOutputWithContext(context.Background())
+}
+
+func (i ParentServiceGroupPropertiesArgs) ToParentServiceGroupPropertiesOutputWithContext(ctx context.Context) ParentServiceGroupPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParentServiceGroupPropertiesOutput)
+}
+
+func (i ParentServiceGroupPropertiesArgs) ToParentServiceGroupPropertiesPtrOutput() ParentServiceGroupPropertiesPtrOutput {
+	return i.ToParentServiceGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ParentServiceGroupPropertiesArgs) ToParentServiceGroupPropertiesPtrOutputWithContext(ctx context.Context) ParentServiceGroupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParentServiceGroupPropertiesOutput).ToParentServiceGroupPropertiesPtrOutputWithContext(ctx)
+}
+
+// ParentServiceGroupPropertiesPtrInput is an input type that accepts ParentServiceGroupPropertiesArgs, ParentServiceGroupPropertiesPtr and ParentServiceGroupPropertiesPtrOutput values.
+// You can construct a concrete instance of `ParentServiceGroupPropertiesPtrInput` via:
+//
+//	        ParentServiceGroupPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ParentServiceGroupPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToParentServiceGroupPropertiesPtrOutput() ParentServiceGroupPropertiesPtrOutput
+	ToParentServiceGroupPropertiesPtrOutputWithContext(context.Context) ParentServiceGroupPropertiesPtrOutput
+}
+
+type parentServiceGroupPropertiesPtrType ParentServiceGroupPropertiesArgs
+
+func ParentServiceGroupPropertiesPtr(v *ParentServiceGroupPropertiesArgs) ParentServiceGroupPropertiesPtrInput {
+	return (*parentServiceGroupPropertiesPtrType)(v)
+}
+
+func (*parentServiceGroupPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParentServiceGroupProperties)(nil)).Elem()
+}
+
+func (i *parentServiceGroupPropertiesPtrType) ToParentServiceGroupPropertiesPtrOutput() ParentServiceGroupPropertiesPtrOutput {
+	return i.ToParentServiceGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *parentServiceGroupPropertiesPtrType) ToParentServiceGroupPropertiesPtrOutputWithContext(ctx context.Context) ParentServiceGroupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParentServiceGroupPropertiesPtrOutput)
+}
+
+// The details of the parent serviceGroup.
+type ParentServiceGroupPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ParentServiceGroupPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParentServiceGroupProperties)(nil)).Elem()
+}
+
+func (o ParentServiceGroupPropertiesOutput) ToParentServiceGroupPropertiesOutput() ParentServiceGroupPropertiesOutput {
+	return o
+}
+
+func (o ParentServiceGroupPropertiesOutput) ToParentServiceGroupPropertiesOutputWithContext(ctx context.Context) ParentServiceGroupPropertiesOutput {
+	return o
+}
+
+func (o ParentServiceGroupPropertiesOutput) ToParentServiceGroupPropertiesPtrOutput() ParentServiceGroupPropertiesPtrOutput {
+	return o.ToParentServiceGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ParentServiceGroupPropertiesOutput) ToParentServiceGroupPropertiesPtrOutputWithContext(ctx context.Context) ParentServiceGroupPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParentServiceGroupProperties) *ParentServiceGroupProperties {
+		return &v
+	}).(ParentServiceGroupPropertiesPtrOutput)
+}
+
+// The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
+func (o ParentServiceGroupPropertiesOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParentServiceGroupProperties) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ParentServiceGroupPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ParentServiceGroupPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParentServiceGroupProperties)(nil)).Elem()
+}
+
+func (o ParentServiceGroupPropertiesPtrOutput) ToParentServiceGroupPropertiesPtrOutput() ParentServiceGroupPropertiesPtrOutput {
+	return o
+}
+
+func (o ParentServiceGroupPropertiesPtrOutput) ToParentServiceGroupPropertiesPtrOutputWithContext(ctx context.Context) ParentServiceGroupPropertiesPtrOutput {
+	return o
+}
+
+func (o ParentServiceGroupPropertiesPtrOutput) Elem() ParentServiceGroupPropertiesOutput {
+	return o.ApplyT(func(v *ParentServiceGroupProperties) ParentServiceGroupProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ParentServiceGroupProperties
+		return ret
+	}).(ParentServiceGroupPropertiesOutput)
+}
+
+// The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
+func (o ParentServiceGroupPropertiesPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParentServiceGroupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The details of the parent serviceGroup.
+type ParentServiceGroupPropertiesResponse struct {
+	// The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// The details of the parent serviceGroup.
+type ParentServiceGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ParentServiceGroupPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParentServiceGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o ParentServiceGroupPropertiesResponseOutput) ToParentServiceGroupPropertiesResponseOutput() ParentServiceGroupPropertiesResponseOutput {
+	return o
+}
+
+func (o ParentServiceGroupPropertiesResponseOutput) ToParentServiceGroupPropertiesResponseOutputWithContext(ctx context.Context) ParentServiceGroupPropertiesResponseOutput {
+	return o
+}
+
+// The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
+func (o ParentServiceGroupPropertiesResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParentServiceGroupPropertiesResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ParentServiceGroupPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ParentServiceGroupPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParentServiceGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o ParentServiceGroupPropertiesResponsePtrOutput) ToParentServiceGroupPropertiesResponsePtrOutput() ParentServiceGroupPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ParentServiceGroupPropertiesResponsePtrOutput) ToParentServiceGroupPropertiesResponsePtrOutputWithContext(ctx context.Context) ParentServiceGroupPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ParentServiceGroupPropertiesResponsePtrOutput) Elem() ParentServiceGroupPropertiesResponseOutput {
+	return o.ApplyT(func(v *ParentServiceGroupPropertiesResponse) ParentServiceGroupPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ParentServiceGroupPropertiesResponse
+		return ret
+	}).(ParentServiceGroupPropertiesResponseOutput)
+}
+
+// The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
+func (o ParentServiceGroupPropertiesResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParentServiceGroupPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceGroup creation request body parameters.
+type ServiceGroupProperties struct {
+	// The display name of the serviceGroup. For example, ServiceGroupTest1
+	DisplayName *string `pulumi:"displayName"`
+	// The details of the parent serviceGroup.
+	Parent *ParentServiceGroupProperties `pulumi:"parent"`
+}
+
+// ServiceGroupPropertiesInput is an input type that accepts ServiceGroupPropertiesArgs and ServiceGroupPropertiesOutput values.
+// You can construct a concrete instance of `ServiceGroupPropertiesInput` via:
+//
+//	ServiceGroupPropertiesArgs{...}
+type ServiceGroupPropertiesInput interface {
+	pulumi.Input
+
+	ToServiceGroupPropertiesOutput() ServiceGroupPropertiesOutput
+	ToServiceGroupPropertiesOutputWithContext(context.Context) ServiceGroupPropertiesOutput
+}
+
+// ServiceGroup creation request body parameters.
+type ServiceGroupPropertiesArgs struct {
+	// The display name of the serviceGroup. For example, ServiceGroupTest1
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The details of the parent serviceGroup.
+	Parent ParentServiceGroupPropertiesPtrInput `pulumi:"parent"`
+}
+
+func (ServiceGroupPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceGroupProperties)(nil)).Elem()
+}
+
+func (i ServiceGroupPropertiesArgs) ToServiceGroupPropertiesOutput() ServiceGroupPropertiesOutput {
+	return i.ToServiceGroupPropertiesOutputWithContext(context.Background())
+}
+
+func (i ServiceGroupPropertiesArgs) ToServiceGroupPropertiesOutputWithContext(ctx context.Context) ServiceGroupPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceGroupPropertiesOutput)
+}
+
+func (i ServiceGroupPropertiesArgs) ToServiceGroupPropertiesPtrOutput() ServiceGroupPropertiesPtrOutput {
+	return i.ToServiceGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceGroupPropertiesArgs) ToServiceGroupPropertiesPtrOutputWithContext(ctx context.Context) ServiceGroupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceGroupPropertiesOutput).ToServiceGroupPropertiesPtrOutputWithContext(ctx)
+}
+
+// ServiceGroupPropertiesPtrInput is an input type that accepts ServiceGroupPropertiesArgs, ServiceGroupPropertiesPtr and ServiceGroupPropertiesPtrOutput values.
+// You can construct a concrete instance of `ServiceGroupPropertiesPtrInput` via:
+//
+//	        ServiceGroupPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceGroupPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToServiceGroupPropertiesPtrOutput() ServiceGroupPropertiesPtrOutput
+	ToServiceGroupPropertiesPtrOutputWithContext(context.Context) ServiceGroupPropertiesPtrOutput
+}
+
+type serviceGroupPropertiesPtrType ServiceGroupPropertiesArgs
+
+func ServiceGroupPropertiesPtr(v *ServiceGroupPropertiesArgs) ServiceGroupPropertiesPtrInput {
+	return (*serviceGroupPropertiesPtrType)(v)
+}
+
+func (*serviceGroupPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceGroupProperties)(nil)).Elem()
+}
+
+func (i *serviceGroupPropertiesPtrType) ToServiceGroupPropertiesPtrOutput() ServiceGroupPropertiesPtrOutput {
+	return i.ToServiceGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceGroupPropertiesPtrType) ToServiceGroupPropertiesPtrOutputWithContext(ctx context.Context) ServiceGroupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceGroupPropertiesPtrOutput)
+}
+
+// ServiceGroup creation request body parameters.
+type ServiceGroupPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ServiceGroupPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceGroupProperties)(nil)).Elem()
+}
+
+func (o ServiceGroupPropertiesOutput) ToServiceGroupPropertiesOutput() ServiceGroupPropertiesOutput {
+	return o
+}
+
+func (o ServiceGroupPropertiesOutput) ToServiceGroupPropertiesOutputWithContext(ctx context.Context) ServiceGroupPropertiesOutput {
+	return o
+}
+
+func (o ServiceGroupPropertiesOutput) ToServiceGroupPropertiesPtrOutput() ServiceGroupPropertiesPtrOutput {
+	return o.ToServiceGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceGroupPropertiesOutput) ToServiceGroupPropertiesPtrOutputWithContext(ctx context.Context) ServiceGroupPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceGroupProperties) *ServiceGroupProperties {
+		return &v
+	}).(ServiceGroupPropertiesPtrOutput)
+}
+
+// The display name of the serviceGroup. For example, ServiceGroupTest1
+func (o ServiceGroupPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGroupProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The details of the parent serviceGroup.
+func (o ServiceGroupPropertiesOutput) Parent() ParentServiceGroupPropertiesPtrOutput {
+	return o.ApplyT(func(v ServiceGroupProperties) *ParentServiceGroupProperties { return v.Parent }).(ParentServiceGroupPropertiesPtrOutput)
+}
+
+type ServiceGroupPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceGroupPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceGroupProperties)(nil)).Elem()
+}
+
+func (o ServiceGroupPropertiesPtrOutput) ToServiceGroupPropertiesPtrOutput() ServiceGroupPropertiesPtrOutput {
+	return o
+}
+
+func (o ServiceGroupPropertiesPtrOutput) ToServiceGroupPropertiesPtrOutputWithContext(ctx context.Context) ServiceGroupPropertiesPtrOutput {
+	return o
+}
+
+func (o ServiceGroupPropertiesPtrOutput) Elem() ServiceGroupPropertiesOutput {
+	return o.ApplyT(func(v *ServiceGroupProperties) ServiceGroupProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceGroupProperties
+		return ret
+	}).(ServiceGroupPropertiesOutput)
+}
+
+// The display name of the serviceGroup. For example, ServiceGroupTest1
+func (o ServiceGroupPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGroupProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The details of the parent serviceGroup.
+func (o ServiceGroupPropertiesPtrOutput) Parent() ParentServiceGroupPropertiesPtrOutput {
+	return o.ApplyT(func(v *ServiceGroupProperties) *ParentServiceGroupProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Parent
+	}).(ParentServiceGroupPropertiesPtrOutput)
+}
+
+// ServiceGroup creation request body parameters.
+type ServiceGroupPropertiesResponse struct {
+	// The display name of the serviceGroup. For example, ServiceGroupTest1
+	DisplayName *string `pulumi:"displayName"`
+	// The details of the parent serviceGroup.
+	Parent *ParentServiceGroupPropertiesResponse `pulumi:"parent"`
+	// The provisioning state of the serviceGroup. For example, Running
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// ServiceGroup creation request body parameters.
+type ServiceGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceGroupPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o ServiceGroupPropertiesResponseOutput) ToServiceGroupPropertiesResponseOutput() ServiceGroupPropertiesResponseOutput {
+	return o
+}
+
+func (o ServiceGroupPropertiesResponseOutput) ToServiceGroupPropertiesResponseOutputWithContext(ctx context.Context) ServiceGroupPropertiesResponseOutput {
+	return o
+}
+
+// The display name of the serviceGroup. For example, ServiceGroupTest1
+func (o ServiceGroupPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGroupPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The details of the parent serviceGroup.
+func (o ServiceGroupPropertiesResponseOutput) Parent() ParentServiceGroupPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ServiceGroupPropertiesResponse) *ParentServiceGroupPropertiesResponse { return v.Parent }).(ParentServiceGroupPropertiesResponsePtrOutput)
+}
+
+// The provisioning state of the serviceGroup. For example, Running
+func (o ServiceGroupPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceGroupPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+type ServiceGroupPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceGroupPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o ServiceGroupPropertiesResponsePtrOutput) ToServiceGroupPropertiesResponsePtrOutput() ServiceGroupPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ServiceGroupPropertiesResponsePtrOutput) ToServiceGroupPropertiesResponsePtrOutputWithContext(ctx context.Context) ServiceGroupPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ServiceGroupPropertiesResponsePtrOutput) Elem() ServiceGroupPropertiesResponseOutput {
+	return o.ApplyT(func(v *ServiceGroupPropertiesResponse) ServiceGroupPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceGroupPropertiesResponse
+		return ret
+	}).(ServiceGroupPropertiesResponseOutput)
+}
+
+// The display name of the serviceGroup. For example, ServiceGroupTest1
+func (o ServiceGroupPropertiesResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGroupPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The details of the parent serviceGroup.
+func (o ServiceGroupPropertiesResponsePtrOutput) Parent() ParentServiceGroupPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ServiceGroupPropertiesResponse) *ParentServiceGroupPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Parent
+	}).(ParentServiceGroupPropertiesResponsePtrOutput)
+}
+
+// The provisioning state of the serviceGroup. For example, Running
+func (o ServiceGroupPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGroupPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The serviceGroup details.
+type ServiceGroupResponse struct {
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
+	// The kind of the serviceGroup.
+	Kind *string `pulumi:"kind"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// ServiceGroup creation request body parameters.
+	Properties *ServiceGroupPropertiesResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The serviceGroup tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The serviceGroup details.
+type ServiceGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceGroupResponse)(nil)).Elem()
+}
+
+func (o ServiceGroupResponseOutput) ToServiceGroupResponseOutput() ServiceGroupResponseOutput {
+	return o
+}
+
+func (o ServiceGroupResponseOutput) ToServiceGroupResponseOutputWithContext(ctx context.Context) ServiceGroupResponseOutput {
+	return o
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o ServiceGroupResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceGroupResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The kind of the serviceGroup.
+func (o ServiceGroupResponseOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGroupResponse) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource
+func (o ServiceGroupResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceGroupResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ServiceGroup creation request body parameters.
+func (o ServiceGroupResponseOutput) Properties() ServiceGroupPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ServiceGroupResponse) *ServiceGroupPropertiesResponse { return v.Properties }).(ServiceGroupPropertiesResponsePtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ServiceGroupResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v ServiceGroupResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The serviceGroup tags.
+func (o ServiceGroupResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceGroupResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o ServiceGroupResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceGroupResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServiceGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceGroupResponse)(nil)).Elem()
+}
+
+func (o ServiceGroupResponseArrayOutput) ToServiceGroupResponseArrayOutput() ServiceGroupResponseArrayOutput {
+	return o
+}
+
+func (o ServiceGroupResponseArrayOutput) ToServiceGroupResponseArrayOutputWithContext(ctx context.Context) ServiceGroupResponseArrayOutput {
+	return o
+}
+
+func (o ServiceGroupResponseArrayOutput) Index(i pulumi.IntInput) ServiceGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceGroupResponse {
+		return vs[0].([]ServiceGroupResponse)[vs[1].(int)]
+	}).(ServiceGroupResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CreateManagementGroupDetailsOutput{})
 	pulumi.RegisterOutputType(CreateManagementGroupDetailsPtrOutput{})
@@ -945,4 +1547,15 @@ func init() {
 	pulumi.RegisterOutputType(ManagementGroupPathElementResponseArrayOutput{})
 	pulumi.RegisterOutputType(ParentGroupInfoResponseOutput{})
 	pulumi.RegisterOutputType(ParentGroupInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(ParentServiceGroupPropertiesOutput{})
+	pulumi.RegisterOutputType(ParentServiceGroupPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ParentServiceGroupPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ParentServiceGroupPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceGroupPropertiesOutput{})
+	pulumi.RegisterOutputType(ServiceGroupPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ServiceGroupPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ServiceGroupPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceGroupResponseOutput{})
+	pulumi.RegisterOutputType(ServiceGroupResponseArrayOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }
