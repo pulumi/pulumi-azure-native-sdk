@@ -795,166 +795,166 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
-// The properties of an online experiment workspace.
-type OnlineExperimentWorkspaceProperties struct {
-	// The resource identifier of App Configuration with which this online experiment workspace is tied for experimentation. This is a required field for creating an online experiment workspace.
+// The properties of an online experimentation workspace.
+type OnlineExperimentationWorkspaceProperties struct {
+	// The resource identifier of App Configuration with which this online experimentation workspace is tied for experimentation. This is a required field for creating an online experimentation workspace.
 	AppConfigurationResourceId string `pulumi:"appConfigurationResourceId"`
-	// The encryption configuration for the online experiment workspace resource.
+	// The encryption configuration for the online experimentation workspace resource.
 	Encryption *ResourceEncryptionConfiguration `pulumi:"encryption"`
-	// The resource identifier of the Log Analytics workspace which online experiment workspace uses for generating experiment analysis results.
+	// The resource identifier of the Log Analytics workspace which online experimentation workspace uses for generating experiment analysis results.
 	LogAnalyticsWorkspaceResourceId string `pulumi:"logAnalyticsWorkspaceResourceId"`
-	// The resource identifier of storage account where logs are exported from Log Analytics workspace. Online Experiment workspace uses it generating experiment analysis results.
+	// The resource identifier of storage account where logs are exported from Log Analytics workspace. online experimentation workspace uses it generating experiment analysis results.
 	LogsExporterStorageAccountResourceId string `pulumi:"logsExporterStorageAccountResourceId"`
 }
 
-// OnlineExperimentWorkspacePropertiesInput is an input type that accepts OnlineExperimentWorkspacePropertiesArgs and OnlineExperimentWorkspacePropertiesOutput values.
-// You can construct a concrete instance of `OnlineExperimentWorkspacePropertiesInput` via:
+// OnlineExperimentationWorkspacePropertiesInput is an input type that accepts OnlineExperimentationWorkspacePropertiesArgs and OnlineExperimentationWorkspacePropertiesOutput values.
+// You can construct a concrete instance of `OnlineExperimentationWorkspacePropertiesInput` via:
 //
-//	OnlineExperimentWorkspacePropertiesArgs{...}
-type OnlineExperimentWorkspacePropertiesInput interface {
+//	OnlineExperimentationWorkspacePropertiesArgs{...}
+type OnlineExperimentationWorkspacePropertiesInput interface {
 	pulumi.Input
 
-	ToOnlineExperimentWorkspacePropertiesOutput() OnlineExperimentWorkspacePropertiesOutput
-	ToOnlineExperimentWorkspacePropertiesOutputWithContext(context.Context) OnlineExperimentWorkspacePropertiesOutput
+	ToOnlineExperimentationWorkspacePropertiesOutput() OnlineExperimentationWorkspacePropertiesOutput
+	ToOnlineExperimentationWorkspacePropertiesOutputWithContext(context.Context) OnlineExperimentationWorkspacePropertiesOutput
 }
 
-// The properties of an online experiment workspace.
-type OnlineExperimentWorkspacePropertiesArgs struct {
-	// The resource identifier of App Configuration with which this online experiment workspace is tied for experimentation. This is a required field for creating an online experiment workspace.
+// The properties of an online experimentation workspace.
+type OnlineExperimentationWorkspacePropertiesArgs struct {
+	// The resource identifier of App Configuration with which this online experimentation workspace is tied for experimentation. This is a required field for creating an online experimentation workspace.
 	AppConfigurationResourceId pulumi.StringInput `pulumi:"appConfigurationResourceId"`
-	// The encryption configuration for the online experiment workspace resource.
+	// The encryption configuration for the online experimentation workspace resource.
 	Encryption ResourceEncryptionConfigurationPtrInput `pulumi:"encryption"`
-	// The resource identifier of the Log Analytics workspace which online experiment workspace uses for generating experiment analysis results.
+	// The resource identifier of the Log Analytics workspace which online experimentation workspace uses for generating experiment analysis results.
 	LogAnalyticsWorkspaceResourceId pulumi.StringInput `pulumi:"logAnalyticsWorkspaceResourceId"`
-	// The resource identifier of storage account where logs are exported from Log Analytics workspace. Online Experiment workspace uses it generating experiment analysis results.
+	// The resource identifier of storage account where logs are exported from Log Analytics workspace. online experimentation workspace uses it generating experiment analysis results.
 	LogsExporterStorageAccountResourceId pulumi.StringInput `pulumi:"logsExporterStorageAccountResourceId"`
 }
 
-func (OnlineExperimentWorkspacePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OnlineExperimentWorkspaceProperties)(nil)).Elem()
+func (OnlineExperimentationWorkspacePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnlineExperimentationWorkspaceProperties)(nil)).Elem()
 }
 
-func (i OnlineExperimentWorkspacePropertiesArgs) ToOnlineExperimentWorkspacePropertiesOutput() OnlineExperimentWorkspacePropertiesOutput {
-	return i.ToOnlineExperimentWorkspacePropertiesOutputWithContext(context.Background())
+func (i OnlineExperimentationWorkspacePropertiesArgs) ToOnlineExperimentationWorkspacePropertiesOutput() OnlineExperimentationWorkspacePropertiesOutput {
+	return i.ToOnlineExperimentationWorkspacePropertiesOutputWithContext(context.Background())
 }
 
-func (i OnlineExperimentWorkspacePropertiesArgs) ToOnlineExperimentWorkspacePropertiesOutputWithContext(ctx context.Context) OnlineExperimentWorkspacePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OnlineExperimentWorkspacePropertiesOutput)
+func (i OnlineExperimentationWorkspacePropertiesArgs) ToOnlineExperimentationWorkspacePropertiesOutputWithContext(ctx context.Context) OnlineExperimentationWorkspacePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnlineExperimentationWorkspacePropertiesOutput)
 }
 
-func (i OnlineExperimentWorkspacePropertiesArgs) ToOnlineExperimentWorkspacePropertiesPtrOutput() OnlineExperimentWorkspacePropertiesPtrOutput {
-	return i.ToOnlineExperimentWorkspacePropertiesPtrOutputWithContext(context.Background())
+func (i OnlineExperimentationWorkspacePropertiesArgs) ToOnlineExperimentationWorkspacePropertiesPtrOutput() OnlineExperimentationWorkspacePropertiesPtrOutput {
+	return i.ToOnlineExperimentationWorkspacePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i OnlineExperimentWorkspacePropertiesArgs) ToOnlineExperimentWorkspacePropertiesPtrOutputWithContext(ctx context.Context) OnlineExperimentWorkspacePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OnlineExperimentWorkspacePropertiesOutput).ToOnlineExperimentWorkspacePropertiesPtrOutputWithContext(ctx)
+func (i OnlineExperimentationWorkspacePropertiesArgs) ToOnlineExperimentationWorkspacePropertiesPtrOutputWithContext(ctx context.Context) OnlineExperimentationWorkspacePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnlineExperimentationWorkspacePropertiesOutput).ToOnlineExperimentationWorkspacePropertiesPtrOutputWithContext(ctx)
 }
 
-// OnlineExperimentWorkspacePropertiesPtrInput is an input type that accepts OnlineExperimentWorkspacePropertiesArgs, OnlineExperimentWorkspacePropertiesPtr and OnlineExperimentWorkspacePropertiesPtrOutput values.
-// You can construct a concrete instance of `OnlineExperimentWorkspacePropertiesPtrInput` via:
+// OnlineExperimentationWorkspacePropertiesPtrInput is an input type that accepts OnlineExperimentationWorkspacePropertiesArgs, OnlineExperimentationWorkspacePropertiesPtr and OnlineExperimentationWorkspacePropertiesPtrOutput values.
+// You can construct a concrete instance of `OnlineExperimentationWorkspacePropertiesPtrInput` via:
 //
-//	        OnlineExperimentWorkspacePropertiesArgs{...}
+//	        OnlineExperimentationWorkspacePropertiesArgs{...}
 //
 //	or:
 //
 //	        nil
-type OnlineExperimentWorkspacePropertiesPtrInput interface {
+type OnlineExperimentationWorkspacePropertiesPtrInput interface {
 	pulumi.Input
 
-	ToOnlineExperimentWorkspacePropertiesPtrOutput() OnlineExperimentWorkspacePropertiesPtrOutput
-	ToOnlineExperimentWorkspacePropertiesPtrOutputWithContext(context.Context) OnlineExperimentWorkspacePropertiesPtrOutput
+	ToOnlineExperimentationWorkspacePropertiesPtrOutput() OnlineExperimentationWorkspacePropertiesPtrOutput
+	ToOnlineExperimentationWorkspacePropertiesPtrOutputWithContext(context.Context) OnlineExperimentationWorkspacePropertiesPtrOutput
 }
 
-type onlineExperimentWorkspacePropertiesPtrType OnlineExperimentWorkspacePropertiesArgs
+type onlineExperimentationWorkspacePropertiesPtrType OnlineExperimentationWorkspacePropertiesArgs
 
-func OnlineExperimentWorkspacePropertiesPtr(v *OnlineExperimentWorkspacePropertiesArgs) OnlineExperimentWorkspacePropertiesPtrInput {
-	return (*onlineExperimentWorkspacePropertiesPtrType)(v)
+func OnlineExperimentationWorkspacePropertiesPtr(v *OnlineExperimentationWorkspacePropertiesArgs) OnlineExperimentationWorkspacePropertiesPtrInput {
+	return (*onlineExperimentationWorkspacePropertiesPtrType)(v)
 }
 
-func (*onlineExperimentWorkspacePropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OnlineExperimentWorkspaceProperties)(nil)).Elem()
+func (*onlineExperimentationWorkspacePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnlineExperimentationWorkspaceProperties)(nil)).Elem()
 }
 
-func (i *onlineExperimentWorkspacePropertiesPtrType) ToOnlineExperimentWorkspacePropertiesPtrOutput() OnlineExperimentWorkspacePropertiesPtrOutput {
-	return i.ToOnlineExperimentWorkspacePropertiesPtrOutputWithContext(context.Background())
+func (i *onlineExperimentationWorkspacePropertiesPtrType) ToOnlineExperimentationWorkspacePropertiesPtrOutput() OnlineExperimentationWorkspacePropertiesPtrOutput {
+	return i.ToOnlineExperimentationWorkspacePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i *onlineExperimentWorkspacePropertiesPtrType) ToOnlineExperimentWorkspacePropertiesPtrOutputWithContext(ctx context.Context) OnlineExperimentWorkspacePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OnlineExperimentWorkspacePropertiesPtrOutput)
+func (i *onlineExperimentationWorkspacePropertiesPtrType) ToOnlineExperimentationWorkspacePropertiesPtrOutputWithContext(ctx context.Context) OnlineExperimentationWorkspacePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnlineExperimentationWorkspacePropertiesPtrOutput)
 }
 
-// The properties of an online experiment workspace.
-type OnlineExperimentWorkspacePropertiesOutput struct{ *pulumi.OutputState }
+// The properties of an online experimentation workspace.
+type OnlineExperimentationWorkspacePropertiesOutput struct{ *pulumi.OutputState }
 
-func (OnlineExperimentWorkspacePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OnlineExperimentWorkspaceProperties)(nil)).Elem()
+func (OnlineExperimentationWorkspacePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnlineExperimentationWorkspaceProperties)(nil)).Elem()
 }
 
-func (o OnlineExperimentWorkspacePropertiesOutput) ToOnlineExperimentWorkspacePropertiesOutput() OnlineExperimentWorkspacePropertiesOutput {
+func (o OnlineExperimentationWorkspacePropertiesOutput) ToOnlineExperimentationWorkspacePropertiesOutput() OnlineExperimentationWorkspacePropertiesOutput {
 	return o
 }
 
-func (o OnlineExperimentWorkspacePropertiesOutput) ToOnlineExperimentWorkspacePropertiesOutputWithContext(ctx context.Context) OnlineExperimentWorkspacePropertiesOutput {
+func (o OnlineExperimentationWorkspacePropertiesOutput) ToOnlineExperimentationWorkspacePropertiesOutputWithContext(ctx context.Context) OnlineExperimentationWorkspacePropertiesOutput {
 	return o
 }
 
-func (o OnlineExperimentWorkspacePropertiesOutput) ToOnlineExperimentWorkspacePropertiesPtrOutput() OnlineExperimentWorkspacePropertiesPtrOutput {
-	return o.ToOnlineExperimentWorkspacePropertiesPtrOutputWithContext(context.Background())
+func (o OnlineExperimentationWorkspacePropertiesOutput) ToOnlineExperimentationWorkspacePropertiesPtrOutput() OnlineExperimentationWorkspacePropertiesPtrOutput {
+	return o.ToOnlineExperimentationWorkspacePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (o OnlineExperimentWorkspacePropertiesOutput) ToOnlineExperimentWorkspacePropertiesPtrOutputWithContext(ctx context.Context) OnlineExperimentWorkspacePropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnlineExperimentWorkspaceProperties) *OnlineExperimentWorkspaceProperties {
+func (o OnlineExperimentationWorkspacePropertiesOutput) ToOnlineExperimentationWorkspacePropertiesPtrOutputWithContext(ctx context.Context) OnlineExperimentationWorkspacePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnlineExperimentationWorkspaceProperties) *OnlineExperimentationWorkspaceProperties {
 		return &v
-	}).(OnlineExperimentWorkspacePropertiesPtrOutput)
+	}).(OnlineExperimentationWorkspacePropertiesPtrOutput)
 }
 
-// The resource identifier of App Configuration with which this online experiment workspace is tied for experimentation. This is a required field for creating an online experiment workspace.
-func (o OnlineExperimentWorkspacePropertiesOutput) AppConfigurationResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v OnlineExperimentWorkspaceProperties) string { return v.AppConfigurationResourceId }).(pulumi.StringOutput)
+// The resource identifier of App Configuration with which this online experimentation workspace is tied for experimentation. This is a required field for creating an online experimentation workspace.
+func (o OnlineExperimentationWorkspacePropertiesOutput) AppConfigurationResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OnlineExperimentationWorkspaceProperties) string { return v.AppConfigurationResourceId }).(pulumi.StringOutput)
 }
 
-// The encryption configuration for the online experiment workspace resource.
-func (o OnlineExperimentWorkspacePropertiesOutput) Encryption() ResourceEncryptionConfigurationPtrOutput {
-	return o.ApplyT(func(v OnlineExperimentWorkspaceProperties) *ResourceEncryptionConfiguration { return v.Encryption }).(ResourceEncryptionConfigurationPtrOutput)
+// The encryption configuration for the online experimentation workspace resource.
+func (o OnlineExperimentationWorkspacePropertiesOutput) Encryption() ResourceEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v OnlineExperimentationWorkspaceProperties) *ResourceEncryptionConfiguration { return v.Encryption }).(ResourceEncryptionConfigurationPtrOutput)
 }
 
-// The resource identifier of the Log Analytics workspace which online experiment workspace uses for generating experiment analysis results.
-func (o OnlineExperimentWorkspacePropertiesOutput) LogAnalyticsWorkspaceResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v OnlineExperimentWorkspaceProperties) string { return v.LogAnalyticsWorkspaceResourceId }).(pulumi.StringOutput)
+// The resource identifier of the Log Analytics workspace which online experimentation workspace uses for generating experiment analysis results.
+func (o OnlineExperimentationWorkspacePropertiesOutput) LogAnalyticsWorkspaceResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OnlineExperimentationWorkspaceProperties) string { return v.LogAnalyticsWorkspaceResourceId }).(pulumi.StringOutput)
 }
 
-// The resource identifier of storage account where logs are exported from Log Analytics workspace. Online Experiment workspace uses it generating experiment analysis results.
-func (o OnlineExperimentWorkspacePropertiesOutput) LogsExporterStorageAccountResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v OnlineExperimentWorkspaceProperties) string { return v.LogsExporterStorageAccountResourceId }).(pulumi.StringOutput)
+// The resource identifier of storage account where logs are exported from Log Analytics workspace. online experimentation workspace uses it generating experiment analysis results.
+func (o OnlineExperimentationWorkspacePropertiesOutput) LogsExporterStorageAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OnlineExperimentationWorkspaceProperties) string { return v.LogsExporterStorageAccountResourceId }).(pulumi.StringOutput)
 }
 
-type OnlineExperimentWorkspacePropertiesPtrOutput struct{ *pulumi.OutputState }
+type OnlineExperimentationWorkspacePropertiesPtrOutput struct{ *pulumi.OutputState }
 
-func (OnlineExperimentWorkspacePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OnlineExperimentWorkspaceProperties)(nil)).Elem()
+func (OnlineExperimentationWorkspacePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnlineExperimentationWorkspaceProperties)(nil)).Elem()
 }
 
-func (o OnlineExperimentWorkspacePropertiesPtrOutput) ToOnlineExperimentWorkspacePropertiesPtrOutput() OnlineExperimentWorkspacePropertiesPtrOutput {
+func (o OnlineExperimentationWorkspacePropertiesPtrOutput) ToOnlineExperimentationWorkspacePropertiesPtrOutput() OnlineExperimentationWorkspacePropertiesPtrOutput {
 	return o
 }
 
-func (o OnlineExperimentWorkspacePropertiesPtrOutput) ToOnlineExperimentWorkspacePropertiesPtrOutputWithContext(ctx context.Context) OnlineExperimentWorkspacePropertiesPtrOutput {
+func (o OnlineExperimentationWorkspacePropertiesPtrOutput) ToOnlineExperimentationWorkspacePropertiesPtrOutputWithContext(ctx context.Context) OnlineExperimentationWorkspacePropertiesPtrOutput {
 	return o
 }
 
-func (o OnlineExperimentWorkspacePropertiesPtrOutput) Elem() OnlineExperimentWorkspacePropertiesOutput {
-	return o.ApplyT(func(v *OnlineExperimentWorkspaceProperties) OnlineExperimentWorkspaceProperties {
+func (o OnlineExperimentationWorkspacePropertiesPtrOutput) Elem() OnlineExperimentationWorkspacePropertiesOutput {
+	return o.ApplyT(func(v *OnlineExperimentationWorkspaceProperties) OnlineExperimentationWorkspaceProperties {
 		if v != nil {
 			return *v
 		}
-		var ret OnlineExperimentWorkspaceProperties
+		var ret OnlineExperimentationWorkspaceProperties
 		return ret
-	}).(OnlineExperimentWorkspacePropertiesOutput)
+	}).(OnlineExperimentationWorkspacePropertiesOutput)
 }
 
-// The resource identifier of App Configuration with which this online experiment workspace is tied for experimentation. This is a required field for creating an online experiment workspace.
-func (o OnlineExperimentWorkspacePropertiesPtrOutput) AppConfigurationResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OnlineExperimentWorkspaceProperties) *string {
+// The resource identifier of App Configuration with which this online experimentation workspace is tied for experimentation. This is a required field for creating an online experimentation workspace.
+func (o OnlineExperimentationWorkspacePropertiesPtrOutput) AppConfigurationResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnlineExperimentationWorkspaceProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -962,9 +962,9 @@ func (o OnlineExperimentWorkspacePropertiesPtrOutput) AppConfigurationResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
-// The encryption configuration for the online experiment workspace resource.
-func (o OnlineExperimentWorkspacePropertiesPtrOutput) Encryption() ResourceEncryptionConfigurationPtrOutput {
-	return o.ApplyT(func(v *OnlineExperimentWorkspaceProperties) *ResourceEncryptionConfiguration {
+// The encryption configuration for the online experimentation workspace resource.
+func (o OnlineExperimentationWorkspacePropertiesPtrOutput) Encryption() ResourceEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *OnlineExperimentationWorkspaceProperties) *ResourceEncryptionConfiguration {
 		if v == nil {
 			return nil
 		}
@@ -972,9 +972,9 @@ func (o OnlineExperimentWorkspacePropertiesPtrOutput) Encryption() ResourceEncry
 	}).(ResourceEncryptionConfigurationPtrOutput)
 }
 
-// The resource identifier of the Log Analytics workspace which online experiment workspace uses for generating experiment analysis results.
-func (o OnlineExperimentWorkspacePropertiesPtrOutput) LogAnalyticsWorkspaceResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OnlineExperimentWorkspaceProperties) *string {
+// The resource identifier of the Log Analytics workspace which online experimentation workspace uses for generating experiment analysis results.
+func (o OnlineExperimentationWorkspacePropertiesPtrOutput) LogAnalyticsWorkspaceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnlineExperimentationWorkspaceProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -982,9 +982,9 @@ func (o OnlineExperimentWorkspacePropertiesPtrOutput) LogAnalyticsWorkspaceResou
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource identifier of storage account where logs are exported from Log Analytics workspace. Online Experiment workspace uses it generating experiment analysis results.
-func (o OnlineExperimentWorkspacePropertiesPtrOutput) LogsExporterStorageAccountResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OnlineExperimentWorkspaceProperties) *string {
+// The resource identifier of storage account where logs are exported from Log Analytics workspace. online experimentation workspace uses it generating experiment analysis results.
+func (o OnlineExperimentationWorkspacePropertiesPtrOutput) LogsExporterStorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnlineExperimentationWorkspaceProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -992,17 +992,17 @@ func (o OnlineExperimentWorkspacePropertiesPtrOutput) LogsExporterStorageAccount
 	}).(pulumi.StringPtrOutput)
 }
 
-// The properties of an online experiment workspace.
-type OnlineExperimentWorkspacePropertiesResponse struct {
-	// The resource identifier of App Configuration with which this online experiment workspace is tied for experimentation. This is a required field for creating an online experiment workspace.
+// The properties of an online experimentation workspace.
+type OnlineExperimentationWorkspacePropertiesResponse struct {
+	// The resource identifier of App Configuration with which this online experimentation workspace is tied for experimentation. This is a required field for creating an online experimentation workspace.
 	AppConfigurationResourceId string `pulumi:"appConfigurationResourceId"`
-	// The encryption configuration for the online experiment workspace resource.
+	// The encryption configuration for the online experimentation workspace resource.
 	Encryption *ResourceEncryptionConfigurationResponse `pulumi:"encryption"`
-	// The data plane endpoint for the online experiment workspace resource.
+	// The data plane endpoint for the online experimentation workspace resource.
 	Endpoint string `pulumi:"endpoint"`
-	// The resource identifier of the Log Analytics workspace which online experiment workspace uses for generating experiment analysis results.
+	// The resource identifier of the Log Analytics workspace which online experimentation workspace uses for generating experiment analysis results.
 	LogAnalyticsWorkspaceResourceId string `pulumi:"logAnalyticsWorkspaceResourceId"`
-	// The resource identifier of storage account where logs are exported from Log Analytics workspace. Online Experiment workspace uses it generating experiment analysis results.
+	// The resource identifier of storage account where logs are exported from Log Analytics workspace. online experimentation workspace uses it generating experiment analysis results.
 	LogsExporterStorageAccountResourceId string `pulumi:"logsExporterStorageAccountResourceId"`
 	// The provisioning state for the resource
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -1010,58 +1010,60 @@ type OnlineExperimentWorkspacePropertiesResponse struct {
 	WorkspaceId string `pulumi:"workspaceId"`
 }
 
-// The properties of an online experiment workspace.
-type OnlineExperimentWorkspacePropertiesResponseOutput struct{ *pulumi.OutputState }
+// The properties of an online experimentation workspace.
+type OnlineExperimentationWorkspacePropertiesResponseOutput struct{ *pulumi.OutputState }
 
-func (OnlineExperimentWorkspacePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OnlineExperimentWorkspacePropertiesResponse)(nil)).Elem()
+func (OnlineExperimentationWorkspacePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnlineExperimentationWorkspacePropertiesResponse)(nil)).Elem()
 }
 
-func (o OnlineExperimentWorkspacePropertiesResponseOutput) ToOnlineExperimentWorkspacePropertiesResponseOutput() OnlineExperimentWorkspacePropertiesResponseOutput {
+func (o OnlineExperimentationWorkspacePropertiesResponseOutput) ToOnlineExperimentationWorkspacePropertiesResponseOutput() OnlineExperimentationWorkspacePropertiesResponseOutput {
 	return o
 }
 
-func (o OnlineExperimentWorkspacePropertiesResponseOutput) ToOnlineExperimentWorkspacePropertiesResponseOutputWithContext(ctx context.Context) OnlineExperimentWorkspacePropertiesResponseOutput {
+func (o OnlineExperimentationWorkspacePropertiesResponseOutput) ToOnlineExperimentationWorkspacePropertiesResponseOutputWithContext(ctx context.Context) OnlineExperimentationWorkspacePropertiesResponseOutput {
 	return o
 }
 
-// The resource identifier of App Configuration with which this online experiment workspace is tied for experimentation. This is a required field for creating an online experiment workspace.
-func (o OnlineExperimentWorkspacePropertiesResponseOutput) AppConfigurationResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v OnlineExperimentWorkspacePropertiesResponse) string { return v.AppConfigurationResourceId }).(pulumi.StringOutput)
+// The resource identifier of App Configuration with which this online experimentation workspace is tied for experimentation. This is a required field for creating an online experimentation workspace.
+func (o OnlineExperimentationWorkspacePropertiesResponseOutput) AppConfigurationResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OnlineExperimentationWorkspacePropertiesResponse) string { return v.AppConfigurationResourceId }).(pulumi.StringOutput)
 }
 
-// The encryption configuration for the online experiment workspace resource.
-func (o OnlineExperimentWorkspacePropertiesResponseOutput) Encryption() ResourceEncryptionConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v OnlineExperimentWorkspacePropertiesResponse) *ResourceEncryptionConfigurationResponse {
+// The encryption configuration for the online experimentation workspace resource.
+func (o OnlineExperimentationWorkspacePropertiesResponseOutput) Encryption() ResourceEncryptionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v OnlineExperimentationWorkspacePropertiesResponse) *ResourceEncryptionConfigurationResponse {
 		return v.Encryption
 	}).(ResourceEncryptionConfigurationResponsePtrOutput)
 }
 
-// The data plane endpoint for the online experiment workspace resource.
-func (o OnlineExperimentWorkspacePropertiesResponseOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v OnlineExperimentWorkspacePropertiesResponse) string { return v.Endpoint }).(pulumi.StringOutput)
+// The data plane endpoint for the online experimentation workspace resource.
+func (o OnlineExperimentationWorkspacePropertiesResponseOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v OnlineExperimentationWorkspacePropertiesResponse) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// The resource identifier of the Log Analytics workspace which online experiment workspace uses for generating experiment analysis results.
-func (o OnlineExperimentWorkspacePropertiesResponseOutput) LogAnalyticsWorkspaceResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v OnlineExperimentWorkspacePropertiesResponse) string { return v.LogAnalyticsWorkspaceResourceId }).(pulumi.StringOutput)
+// The resource identifier of the Log Analytics workspace which online experimentation workspace uses for generating experiment analysis results.
+func (o OnlineExperimentationWorkspacePropertiesResponseOutput) LogAnalyticsWorkspaceResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OnlineExperimentationWorkspacePropertiesResponse) string {
+		return v.LogAnalyticsWorkspaceResourceId
+	}).(pulumi.StringOutput)
 }
 
-// The resource identifier of storage account where logs are exported from Log Analytics workspace. Online Experiment workspace uses it generating experiment analysis results.
-func (o OnlineExperimentWorkspacePropertiesResponseOutput) LogsExporterStorageAccountResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v OnlineExperimentWorkspacePropertiesResponse) string {
+// The resource identifier of storage account where logs are exported from Log Analytics workspace. online experimentation workspace uses it generating experiment analysis results.
+func (o OnlineExperimentationWorkspacePropertiesResponseOutput) LogsExporterStorageAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OnlineExperimentationWorkspacePropertiesResponse) string {
 		return v.LogsExporterStorageAccountResourceId
 	}).(pulumi.StringOutput)
 }
 
 // The provisioning state for the resource
-func (o OnlineExperimentWorkspacePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v OnlineExperimentWorkspacePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o OnlineExperimentationWorkspacePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v OnlineExperimentationWorkspacePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The Id of the workspace.
-func (o OnlineExperimentWorkspacePropertiesResponseOutput) WorkspaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v OnlineExperimentWorkspacePropertiesResponse) string { return v.WorkspaceId }).(pulumi.StringOutput)
+func (o OnlineExperimentationWorkspacePropertiesResponseOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OnlineExperimentationWorkspacePropertiesResponse) string { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
 // The SKU (Stock Keeping Unit) assigned to this resource.
@@ -1281,7 +1283,7 @@ func (o OnlineExperimentationWorkspaceSkuResponsePtrOutput) Tier() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The encryption configuration for the online experiment workspace resource.
+// The encryption configuration for the online experimentation workspace resource.
 type ResourceEncryptionConfiguration struct {
 	// All Customer-managed key encryption properties for the resource.
 	CustomerManagedKeyEncryption *CustomerManagedKeyEncryption `pulumi:"customerManagedKeyEncryption"`
@@ -1298,7 +1300,7 @@ type ResourceEncryptionConfigurationInput interface {
 	ToResourceEncryptionConfigurationOutputWithContext(context.Context) ResourceEncryptionConfigurationOutput
 }
 
-// The encryption configuration for the online experiment workspace resource.
+// The encryption configuration for the online experimentation workspace resource.
 type ResourceEncryptionConfigurationArgs struct {
 	// All Customer-managed key encryption properties for the resource.
 	CustomerManagedKeyEncryption CustomerManagedKeyEncryptionPtrInput `pulumi:"customerManagedKeyEncryption"`
@@ -1357,7 +1359,7 @@ func (i *resourceEncryptionConfigurationPtrType) ToResourceEncryptionConfigurati
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceEncryptionConfigurationPtrOutput)
 }
 
-// The encryption configuration for the online experiment workspace resource.
+// The encryption configuration for the online experimentation workspace resource.
 type ResourceEncryptionConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ResourceEncryptionConfigurationOutput) ElementType() reflect.Type {
@@ -1423,13 +1425,13 @@ func (o ResourceEncryptionConfigurationPtrOutput) CustomerManagedKeyEncryption()
 	}).(CustomerManagedKeyEncryptionPtrOutput)
 }
 
-// The encryption configuration for the online experiment workspace resource.
+// The encryption configuration for the online experimentation workspace resource.
 type ResourceEncryptionConfigurationResponse struct {
 	// All Customer-managed key encryption properties for the resource.
 	CustomerManagedKeyEncryption *CustomerManagedKeyEncryptionResponse `pulumi:"customerManagedKeyEncryption"`
 }
 
-// The encryption configuration for the online experiment workspace resource.
+// The encryption configuration for the online experimentation workspace resource.
 type ResourceEncryptionConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (ResourceEncryptionConfigurationResponseOutput) ElementType() reflect.Type {
@@ -1612,9 +1614,9 @@ func init() {
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(OnlineExperimentWorkspacePropertiesOutput{})
-	pulumi.RegisterOutputType(OnlineExperimentWorkspacePropertiesPtrOutput{})
-	pulumi.RegisterOutputType(OnlineExperimentWorkspacePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OnlineExperimentationWorkspacePropertiesOutput{})
+	pulumi.RegisterOutputType(OnlineExperimentationWorkspacePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(OnlineExperimentationWorkspacePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(OnlineExperimentationWorkspaceSkuOutput{})
 	pulumi.RegisterOutputType(OnlineExperimentationWorkspaceSkuPtrOutput{})
 	pulumi.RegisterOutputType(OnlineExperimentationWorkspaceSkuResponseOutput{})

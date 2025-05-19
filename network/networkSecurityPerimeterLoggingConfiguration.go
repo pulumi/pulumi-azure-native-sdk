@@ -15,6 +15,8 @@ import (
 // The NSP logging configuration
 //
 // Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
+//
+// Other available API versions: 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NetworkSecurityPerimeterLoggingConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +48,9 @@ func NewNetworkSecurityPerimeterLoggingConfiguration(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:network/v20240601preview:NetworkSecurityPerimeterLoggingConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20240701:NetworkSecurityPerimeterLoggingConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

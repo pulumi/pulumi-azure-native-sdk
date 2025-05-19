@@ -4942,6 +4942,8 @@ type HiveLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl interface{} `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -5004,6 +5006,8 @@ type HiveLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+	EnableServerCertificateValidation pulumi.Input `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl pulumi.Input `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -5096,6 +5100,11 @@ func (o HiveLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutp
 // Linked service description.
 func (o HiveLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HiveLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+func (o HiveLinkedServiceOutput) EnableServerCertificateValidation() pulumi.AnyOutput {
+	return o.ApplyT(func(v HiveLinkedService) interface{} { return v.EnableServerCertificateValidation }).(pulumi.AnyOutput)
 }
 
 // Specifies whether the connections to the server are encrypted using SSL. The default value is false.
@@ -5198,6 +5207,8 @@ type HiveLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl interface{} `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -5278,6 +5289,11 @@ func (o HiveLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenc
 // Linked service description.
 func (o HiveLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HiveLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+func (o HiveLinkedServiceResponseOutput) EnableServerCertificateValidation() pulumi.AnyOutput {
+	return o.ApplyT(func(v HiveLinkedServiceResponse) interface{} { return v.EnableServerCertificateValidation }).(pulumi.AnyOutput)
 }
 
 // Specifies whether the connections to the server are encrypted using SSL. The default value is false.

@@ -11824,6 +11824,8 @@ type SparkLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl interface{} `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -11880,6 +11882,8 @@ type SparkLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+	EnableServerCertificateValidation pulumi.Input `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl pulumi.Input `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -11968,6 +11972,11 @@ func (o SparkLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+func (o SparkLinkedServiceOutput) EnableServerCertificateValidation() pulumi.AnyOutput {
+	return o.ApplyT(func(v SparkLinkedService) interface{} { return v.EnableServerCertificateValidation }).(pulumi.AnyOutput)
+}
+
 // Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 func (o SparkLinkedServiceOutput) EnableSsl() pulumi.AnyOutput {
 	return o.ApplyT(func(v SparkLinkedService) interface{} { return v.EnableSsl }).(pulumi.AnyOutput)
@@ -12053,6 +12062,8 @@ type SparkLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl interface{} `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -12127,6 +12138,11 @@ func (o SparkLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferen
 // Linked service description.
 func (o SparkLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+func (o SparkLinkedServiceResponseOutput) EnableServerCertificateValidation() pulumi.AnyOutput {
+	return o.ApplyT(func(v SparkLinkedServiceResponse) interface{} { return v.EnableServerCertificateValidation }).(pulumi.AnyOutput)
 }
 
 // Specifies whether the connections to the server are encrypted using SSL. The default value is false.

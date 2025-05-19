@@ -62,6 +62,9 @@ func NewNspProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240601preview:NspProfile"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240701:NspProfile"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

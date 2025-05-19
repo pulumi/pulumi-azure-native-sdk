@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-09-27.
 //
-// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-03-01-preview, 2025-04-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetFlowStreamConnectionString(ctx *pulumi.Context, args *GetFlowStreamConnectionStringArgs, opts ...pulumi.InvokeOption) (*GetFlowStreamConnectionStringResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetFlowStreamConnectionStringResult
