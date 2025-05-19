@@ -14,6 +14,8 @@ import (
 // Gets the specified NSP link resource.
 //
 // Uses Azure REST API version 2024-06-01-preview.
+//
+// Other available API versions: 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNetworkSecurityPerimeterLink(ctx *pulumi.Context, args *LookupNetworkSecurityPerimeterLinkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkSecurityPerimeterLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkSecurityPerimeterLinkResult

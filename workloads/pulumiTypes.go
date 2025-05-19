@@ -17383,7 +17383,7 @@ type SAPVirtualInstanceIdentityResponse struct {
 	// The type of managed identity assigned to this resource.
 	Type string `pulumi:"type"`
 	// The identities assigned to this resource by the user.
-	UserAssignedIdentities map[string]SAPVirtualInstanceIdentityResponseUserAssignedIdentities `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 // Managed service identity (user assigned identities)
@@ -17407,10 +17407,10 @@ func (o SAPVirtualInstanceIdentityResponseOutput) Type() pulumi.StringOutput {
 }
 
 // The identities assigned to this resource by the user.
-func (o SAPVirtualInstanceIdentityResponseOutput) UserAssignedIdentities() SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput {
-	return o.ApplyT(func(v SAPVirtualInstanceIdentityResponse) map[string]SAPVirtualInstanceIdentityResponseUserAssignedIdentities {
+func (o SAPVirtualInstanceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v SAPVirtualInstanceIdentityResponse) map[string]UserAssignedIdentityResponse {
 		return v.UserAssignedIdentities
-	}).(SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput)
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 type SAPVirtualInstanceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -17448,64 +17448,13 @@ func (o SAPVirtualInstanceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutp
 }
 
 // The identities assigned to this resource by the user.
-func (o SAPVirtualInstanceIdentityResponsePtrOutput) UserAssignedIdentities() SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput {
-	return o.ApplyT(func(v *SAPVirtualInstanceIdentityResponse) map[string]SAPVirtualInstanceIdentityResponseUserAssignedIdentities {
+func (o SAPVirtualInstanceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *SAPVirtualInstanceIdentityResponse) map[string]UserAssignedIdentityResponse {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput)
-}
-
-type SAPVirtualInstanceIdentityResponseUserAssignedIdentities struct {
-	// The client ID of the assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal ID of the assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-}
-
-type SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput struct{ *pulumi.OutputState }
-
-func (SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SAPVirtualInstanceIdentityResponseUserAssignedIdentities)(nil)).Elem()
-}
-
-func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput) ToSAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput() SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput {
-	return o
-}
-
-func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput) ToSAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput {
-	return o
-}
-
-// The client ID of the assigned identity.
-func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v SAPVirtualInstanceIdentityResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal ID of the assigned identity.
-func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v SAPVirtualInstanceIdentityResponseUserAssignedIdentities) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-type SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput struct{ *pulumi.OutputState }
-
-func (SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SAPVirtualInstanceIdentityResponseUserAssignedIdentities)(nil)).Elem()
-}
-
-func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput) ToSAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput() SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput {
-	return o
-}
-
-func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput) ToSAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput {
-	return o
-}
-
-func (o SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SAPVirtualInstanceIdentityResponseUserAssignedIdentities {
-		return vs[0].(map[string]SAPVirtualInstanceIdentityResponseUserAssignedIdentities)[vs[1].(string)]
-	}).(SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput)
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // Specify the HANA database TLS/SSL properties which will be used for enabling Azure Backup for this database. You need to specify these details if you have enabled secure communication for your HANA database.
@@ -28594,8 +28543,6 @@ func init() {
 	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesOutput{})
-	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityResponseUserAssignedIdentitiesMapOutput{})
 	pulumi.RegisterOutputType(SSLConfigurationOutput{})
 	pulumi.RegisterOutputType(SSLConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(SSLConfigurationResponseOutput{})

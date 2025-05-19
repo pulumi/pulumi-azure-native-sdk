@@ -18886,6 +18886,64 @@ func (o BreakOutCategoryPoliciesResponsePtrOutput) Optimize() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+type CircuitMetadataMapResponse struct {
+	// Link to the Express Route circuit
+	Link *string `pulumi:"link"`
+	// Peering location of the Express Route Circuit
+	Location *string `pulumi:"location"`
+	// Express Route Circuit Name
+	Name *string `pulumi:"name"`
+}
+
+type CircuitMetadataMapResponseOutput struct{ *pulumi.OutputState }
+
+func (CircuitMetadataMapResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CircuitMetadataMapResponse)(nil)).Elem()
+}
+
+func (o CircuitMetadataMapResponseOutput) ToCircuitMetadataMapResponseOutput() CircuitMetadataMapResponseOutput {
+	return o
+}
+
+func (o CircuitMetadataMapResponseOutput) ToCircuitMetadataMapResponseOutputWithContext(ctx context.Context) CircuitMetadataMapResponseOutput {
+	return o
+}
+
+// Link to the Express Route circuit
+func (o CircuitMetadataMapResponseOutput) Link() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CircuitMetadataMapResponse) *string { return v.Link }).(pulumi.StringPtrOutput)
+}
+
+// Peering location of the Express Route Circuit
+func (o CircuitMetadataMapResponseOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CircuitMetadataMapResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Express Route Circuit Name
+func (o CircuitMetadataMapResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CircuitMetadataMapResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type CircuitMetadataMapResponseMapOutput struct{ *pulumi.OutputState }
+
+func (CircuitMetadataMapResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CircuitMetadataMapResponse)(nil)).Elem()
+}
+
+func (o CircuitMetadataMapResponseMapOutput) ToCircuitMetadataMapResponseMapOutput() CircuitMetadataMapResponseMapOutput {
+	return o
+}
+
+func (o CircuitMetadataMapResponseMapOutput) ToCircuitMetadataMapResponseMapOutputWithContext(ctx context.Context) CircuitMetadataMapResponseMapOutput {
+	return o
+}
+
+func (o CircuitMetadataMapResponseMapOutput) MapIndex(k pulumi.StringInput) CircuitMetadataMapResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CircuitMetadataMapResponse {
+		return vs[0].(map[string]CircuitMetadataMapResponse)[vs[1].(string)]
+	}).(CircuitMetadataMapResponseOutput)
+}
+
 // The network configuration group resource
 type ConfigurationGroupResponse struct {
 	// Network group conditional filter.
@@ -37401,6 +37459,87 @@ func (o GatewayLoadBalancerTunnelInterfaceResponseArrayOutput) Index(i pulumi.In
 	}).(GatewayLoadBalancerTunnelInterfaceResponseOutput)
 }
 
+// Resiliency Recommendation details
+type GatewayResiliencyRecommendationResponse struct {
+	// Link to the public documentation for the associated recommendation
+	CallToActionLink *string `pulumi:"callToActionLink"`
+	// Acton items to apply the recommendation
+	CallToActionText *string `pulumi:"callToActionText"`
+	// Recommendation Id
+	RecommendationId *string `pulumi:"recommendationId"`
+	// Recommendation details
+	RecommendationText *string `pulumi:"recommendationText"`
+	// Recommendation Title
+	RecommendationTitle *string `pulumi:"recommendationTitle"`
+	// Impact associated with the recommendation
+	Severity *string `pulumi:"severity"`
+}
+
+// Resiliency Recommendation details
+type GatewayResiliencyRecommendationResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayResiliencyRecommendationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayResiliencyRecommendationResponse)(nil)).Elem()
+}
+
+func (o GatewayResiliencyRecommendationResponseOutput) ToGatewayResiliencyRecommendationResponseOutput() GatewayResiliencyRecommendationResponseOutput {
+	return o
+}
+
+func (o GatewayResiliencyRecommendationResponseOutput) ToGatewayResiliencyRecommendationResponseOutputWithContext(ctx context.Context) GatewayResiliencyRecommendationResponseOutput {
+	return o
+}
+
+// Link to the public documentation for the associated recommendation
+func (o GatewayResiliencyRecommendationResponseOutput) CallToActionLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayResiliencyRecommendationResponse) *string { return v.CallToActionLink }).(pulumi.StringPtrOutput)
+}
+
+// Acton items to apply the recommendation
+func (o GatewayResiliencyRecommendationResponseOutput) CallToActionText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayResiliencyRecommendationResponse) *string { return v.CallToActionText }).(pulumi.StringPtrOutput)
+}
+
+// Recommendation Id
+func (o GatewayResiliencyRecommendationResponseOutput) RecommendationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayResiliencyRecommendationResponse) *string { return v.RecommendationId }).(pulumi.StringPtrOutput)
+}
+
+// Recommendation details
+func (o GatewayResiliencyRecommendationResponseOutput) RecommendationText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayResiliencyRecommendationResponse) *string { return v.RecommendationText }).(pulumi.StringPtrOutput)
+}
+
+// Recommendation Title
+func (o GatewayResiliencyRecommendationResponseOutput) RecommendationTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayResiliencyRecommendationResponse) *string { return v.RecommendationTitle }).(pulumi.StringPtrOutput)
+}
+
+// Impact associated with the recommendation
+func (o GatewayResiliencyRecommendationResponseOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayResiliencyRecommendationResponse) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type GatewayResiliencyRecommendationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayResiliencyRecommendationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayResiliencyRecommendationResponse)(nil)).Elem()
+}
+
+func (o GatewayResiliencyRecommendationResponseArrayOutput) ToGatewayResiliencyRecommendationResponseArrayOutput() GatewayResiliencyRecommendationResponseArrayOutput {
+	return o
+}
+
+func (o GatewayResiliencyRecommendationResponseArrayOutput) ToGatewayResiliencyRecommendationResponseArrayOutputWithContext(ctx context.Context) GatewayResiliencyRecommendationResponseArrayOutput {
+	return o
+}
+
+func (o GatewayResiliencyRecommendationResponseArrayOutput) Index(i pulumi.IntInput) GatewayResiliencyRecommendationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayResiliencyRecommendationResponse {
+		return vs[0].([]GatewayResiliencyRecommendationResponse)[vs[1].(int)]
+	}).(GatewayResiliencyRecommendationResponseOutput)
+}
+
 // Gateway routing details.
 type GatewayRouteResponse struct {
 	// The route's AS path sequence.
@@ -37487,6 +37626,64 @@ func (o GatewayRouteResponseArrayOutput) Index(i pulumi.IntInput) GatewayRouteRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayRouteResponse {
 		return vs[0].([]GatewayRouteResponse)[vs[1].(int)]
 	}).(GatewayRouteResponseOutput)
+}
+
+type GatewayRouteSetResponse struct {
+	// List of different Route Sources
+	Details map[string][]RouteSourceDetailsResponse `pulumi:"details"`
+	// List of different locations from where the routes are learned
+	Locations []string `pulumi:"locations"`
+	// Route Set name
+	Name *string `pulumi:"name"`
+}
+
+type GatewayRouteSetResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayRouteSetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayRouteSetResponse)(nil)).Elem()
+}
+
+func (o GatewayRouteSetResponseOutput) ToGatewayRouteSetResponseOutput() GatewayRouteSetResponseOutput {
+	return o
+}
+
+func (o GatewayRouteSetResponseOutput) ToGatewayRouteSetResponseOutputWithContext(ctx context.Context) GatewayRouteSetResponseOutput {
+	return o
+}
+
+// List of different Route Sources
+func (o GatewayRouteSetResponseOutput) Details() RouteSourceDetailsResponseArrayMapOutput {
+	return o.ApplyT(func(v GatewayRouteSetResponse) map[string][]RouteSourceDetailsResponse { return v.Details }).(RouteSourceDetailsResponseArrayMapOutput)
+}
+
+// List of different locations from where the routes are learned
+func (o GatewayRouteSetResponseOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayRouteSetResponse) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// Route Set name
+func (o GatewayRouteSetResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayRouteSetResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GatewayRouteSetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayRouteSetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayRouteSetResponse)(nil)).Elem()
+}
+
+func (o GatewayRouteSetResponseArrayOutput) ToGatewayRouteSetResponseArrayOutput() GatewayRouteSetResponseArrayOutput {
+	return o
+}
+
+func (o GatewayRouteSetResponseArrayOutput) ToGatewayRouteSetResponseArrayOutputWithContext(ctx context.Context) GatewayRouteSetResponseArrayOutput {
+	return o
+}
+
+func (o GatewayRouteSetResponseArrayOutput) Index(i pulumi.IntInput) GatewayRouteSetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayRouteSetResponse {
+		return vs[0].([]GatewayRouteSetResponse)[vs[1].(int)]
+	}).(GatewayRouteSetResponseOutput)
 }
 
 // Define user session identifier group by clauses.
@@ -62003,230 +62200,24 @@ func (o RecordSetResponseArrayOutput) Index(i pulumi.IntInput) RecordSetResponse
 	}).(RecordSetResponseOutput)
 }
 
-// Reference to a public IP address.
-type ReferencedPublicIpAddressResponse struct {
-	// The PublicIPAddress Reference.
-	Id *string `pulumi:"id"`
+type RouteSourceDetailsResponseArrayMapOutput struct{ *pulumi.OutputState }
+
+func (RouteSourceDetailsResponseArrayMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string][]RouteSourceDetailsResponse)(nil)).Elem()
 }
 
-// Reference to a public IP address.
-type ReferencedPublicIpAddressResponseOutput struct{ *pulumi.OutputState }
-
-func (ReferencedPublicIpAddressResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReferencedPublicIpAddressResponse)(nil)).Elem()
-}
-
-func (o ReferencedPublicIpAddressResponseOutput) ToReferencedPublicIpAddressResponseOutput() ReferencedPublicIpAddressResponseOutput {
+func (o RouteSourceDetailsResponseArrayMapOutput) ToRouteSourceDetailsResponseArrayMapOutput() RouteSourceDetailsResponseArrayMapOutput {
 	return o
 }
 
-func (o ReferencedPublicIpAddressResponseOutput) ToReferencedPublicIpAddressResponseOutputWithContext(ctx context.Context) ReferencedPublicIpAddressResponseOutput {
+func (o RouteSourceDetailsResponseArrayMapOutput) ToRouteSourceDetailsResponseArrayMapOutputWithContext(ctx context.Context) RouteSourceDetailsResponseArrayMapOutput {
 	return o
 }
 
-// The PublicIPAddress Reference.
-func (o ReferencedPublicIpAddressResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReferencedPublicIpAddressResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type ReferencedPublicIpAddressResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ReferencedPublicIpAddressResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ReferencedPublicIpAddressResponse)(nil)).Elem()
-}
-
-func (o ReferencedPublicIpAddressResponseArrayOutput) ToReferencedPublicIpAddressResponseArrayOutput() ReferencedPublicIpAddressResponseArrayOutput {
-	return o
-}
-
-func (o ReferencedPublicIpAddressResponseArrayOutput) ToReferencedPublicIpAddressResponseArrayOutputWithContext(ctx context.Context) ReferencedPublicIpAddressResponseArrayOutput {
-	return o
-}
-
-func (o ReferencedPublicIpAddressResponseArrayOutput) Index(i pulumi.IntInput) ReferencedPublicIpAddressResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReferencedPublicIpAddressResponse {
-		return vs[0].([]ReferencedPublicIpAddressResponse)[vs[1].(int)]
-	}).(ReferencedPublicIpAddressResponseOutput)
-}
-
-// Representation of basic resource information.
-type ResourceBasicsResponse struct {
-	// List of IP address prefixes of the resource.
-	AddressPrefixes []string `pulumi:"addressPrefixes"`
-	// ResourceId of the Azure resource.
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// Representation of basic resource information.
-type ResourceBasicsResponseOutput struct{ *pulumi.OutputState }
-
-func (ResourceBasicsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceBasicsResponse)(nil)).Elem()
-}
-
-func (o ResourceBasicsResponseOutput) ToResourceBasicsResponseOutput() ResourceBasicsResponseOutput {
-	return o
-}
-
-func (o ResourceBasicsResponseOutput) ToResourceBasicsResponseOutputWithContext(ctx context.Context) ResourceBasicsResponseOutput {
-	return o
-}
-
-// List of IP address prefixes of the resource.
-func (o ResourceBasicsResponseOutput) AddressPrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ResourceBasicsResponse) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
-}
-
-// ResourceId of the Azure resource.
-func (o ResourceBasicsResponseOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceBasicsResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-type ResourceBasicsResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ResourceBasicsResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceBasicsResponse)(nil)).Elem()
-}
-
-func (o ResourceBasicsResponseArrayOutput) ToResourceBasicsResponseArrayOutput() ResourceBasicsResponseArrayOutput {
-	return o
-}
-
-func (o ResourceBasicsResponseArrayOutput) ToResourceBasicsResponseArrayOutputWithContext(ctx context.Context) ResourceBasicsResponseArrayOutput {
-	return o
-}
-
-func (o ResourceBasicsResponseArrayOutput) Index(i pulumi.IntInput) ResourceBasicsResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceBasicsResponse {
-		return vs[0].([]ResourceBasicsResponse)[vs[1].(int)]
-	}).(ResourceBasicsResponseOutput)
-}
-
-// ResourceNavigationLink resource.
-type ResourceNavigationLink struct {
-	// Resource ID.
-	Id *string `pulumi:"id"`
-	// Link to the external resource
-	Link *string `pulumi:"link"`
-	// Resource type of the linked resource.
-	LinkedResourceType *string `pulumi:"linkedResourceType"`
-	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-	Name *string `pulumi:"name"`
-}
-
-// ResourceNavigationLinkInput is an input type that accepts ResourceNavigationLinkArgs and ResourceNavigationLinkOutput values.
-// You can construct a concrete instance of `ResourceNavigationLinkInput` via:
-//
-//	ResourceNavigationLinkArgs{...}
-type ResourceNavigationLinkInput interface {
-	pulumi.Input
-
-	ToResourceNavigationLinkOutput() ResourceNavigationLinkOutput
-	ToResourceNavigationLinkOutputWithContext(context.Context) ResourceNavigationLinkOutput
-}
-
-// ResourceNavigationLink resource.
-type ResourceNavigationLinkArgs struct {
-	// Resource ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Link to the external resource
-	Link pulumi.StringPtrInput `pulumi:"link"`
-	// Resource type of the linked resource.
-	LinkedResourceType pulumi.StringPtrInput `pulumi:"linkedResourceType"`
-	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (ResourceNavigationLinkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceNavigationLink)(nil)).Elem()
-}
-
-func (i ResourceNavigationLinkArgs) ToResourceNavigationLinkOutput() ResourceNavigationLinkOutput {
-	return i.ToResourceNavigationLinkOutputWithContext(context.Background())
-}
-
-func (i ResourceNavigationLinkArgs) ToResourceNavigationLinkOutputWithContext(ctx context.Context) ResourceNavigationLinkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceNavigationLinkOutput)
-}
-
-// ResourceNavigationLinkArrayInput is an input type that accepts ResourceNavigationLinkArray and ResourceNavigationLinkArrayOutput values.
-// You can construct a concrete instance of `ResourceNavigationLinkArrayInput` via:
-//
-//	ResourceNavigationLinkArray{ ResourceNavigationLinkArgs{...} }
-type ResourceNavigationLinkArrayInput interface {
-	pulumi.Input
-
-	ToResourceNavigationLinkArrayOutput() ResourceNavigationLinkArrayOutput
-	ToResourceNavigationLinkArrayOutputWithContext(context.Context) ResourceNavigationLinkArrayOutput
-}
-
-type ResourceNavigationLinkArray []ResourceNavigationLinkInput
-
-func (ResourceNavigationLinkArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceNavigationLink)(nil)).Elem()
-}
-
-func (i ResourceNavigationLinkArray) ToResourceNavigationLinkArrayOutput() ResourceNavigationLinkArrayOutput {
-	return i.ToResourceNavigationLinkArrayOutputWithContext(context.Background())
-}
-
-func (i ResourceNavigationLinkArray) ToResourceNavigationLinkArrayOutputWithContext(ctx context.Context) ResourceNavigationLinkArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceNavigationLinkArrayOutput)
-}
-
-// ResourceNavigationLink resource.
-type ResourceNavigationLinkOutput struct{ *pulumi.OutputState }
-
-func (ResourceNavigationLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceNavigationLink)(nil)).Elem()
-}
-
-func (o ResourceNavigationLinkOutput) ToResourceNavigationLinkOutput() ResourceNavigationLinkOutput {
-	return o
-}
-
-func (o ResourceNavigationLinkOutput) ToResourceNavigationLinkOutputWithContext(ctx context.Context) ResourceNavigationLinkOutput {
-	return o
-}
-
-// Resource ID.
-func (o ResourceNavigationLinkOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNavigationLink) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Link to the external resource
-func (o ResourceNavigationLinkOutput) Link() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNavigationLink) *string { return v.Link }).(pulumi.StringPtrOutput)
-}
-
-// Resource type of the linked resource.
-func (o ResourceNavigationLinkOutput) LinkedResourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNavigationLink) *string { return v.LinkedResourceType }).(pulumi.StringPtrOutput)
-}
-
-// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-func (o ResourceNavigationLinkOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNavigationLink) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type ResourceNavigationLinkArrayOutput struct{ *pulumi.OutputState }
-
-func (ResourceNavigationLinkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceNavigationLink)(nil)).Elem()
-}
-
-func (o ResourceNavigationLinkArrayOutput) ToResourceNavigationLinkArrayOutput() ResourceNavigationLinkArrayOutput {
-	return o
-}
-
-func (o ResourceNavigationLinkArrayOutput) ToResourceNavigationLinkArrayOutputWithContext(ctx context.Context) ResourceNavigationLinkArrayOutput {
-	return o
-}
-
-func (o ResourceNavigationLinkArrayOutput) Index(i pulumi.IntInput) ResourceNavigationLinkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceNavigationLink {
-		return vs[0].([]ResourceNavigationLink)[vs[1].(int)]
-	}).(ResourceNavigationLinkOutput)
+func (o RouteSourceDetailsResponseArrayMapOutput) MapIndex(k pulumi.StringInput) RouteSourceDetailsResponseArrayOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) []RouteSourceDetailsResponse {
+		return vs[0].(map[string][]RouteSourceDetailsResponse)[vs[1].(string)]
+	}).(RouteSourceDetailsResponseArrayOutput)
 }
 
 func init() {
@@ -62522,6 +62513,8 @@ func init() {
 	pulumi.RegisterOutputType(BreakOutCategoryPoliciesPtrOutput{})
 	pulumi.RegisterOutputType(BreakOutCategoryPoliciesResponseOutput{})
 	pulumi.RegisterOutputType(BreakOutCategoryPoliciesResponsePtrOutput{})
+	pulumi.RegisterOutputType(CircuitMetadataMapResponseOutput{})
+	pulumi.RegisterOutputType(CircuitMetadataMapResponseMapOutput{})
 	pulumi.RegisterOutputType(ConfigurationGroupResponseOutput{})
 	pulumi.RegisterOutputType(ConfigurationGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionMonitorDestinationOutput{})
@@ -62832,8 +62825,12 @@ func init() {
 	pulumi.RegisterOutputType(GatewayLoadBalancerTunnelInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GatewayLoadBalancerTunnelInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(GatewayLoadBalancerTunnelInterfaceResponseArrayOutput{})
+	pulumi.RegisterOutputType(GatewayResiliencyRecommendationResponseOutput{})
+	pulumi.RegisterOutputType(GatewayResiliencyRecommendationResponseArrayOutput{})
 	pulumi.RegisterOutputType(GatewayRouteResponseOutput{})
 	pulumi.RegisterOutputType(GatewayRouteResponseArrayOutput{})
+	pulumi.RegisterOutputType(GatewayRouteSetResponseOutput{})
+	pulumi.RegisterOutputType(GatewayRouteSetResponseArrayOutput{})
 	pulumi.RegisterOutputType(GroupByUserSessionOutput{})
 	pulumi.RegisterOutputType(GroupByUserSessionArrayOutput{})
 	pulumi.RegisterOutputType(GroupByUserSessionResponseOutput{})
@@ -63194,10 +63191,5 @@ func init() {
 	pulumi.RegisterOutputType(ReachabilityAnalysisRunPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RecordSetResponseOutput{})
 	pulumi.RegisterOutputType(RecordSetResponseArrayOutput{})
-	pulumi.RegisterOutputType(ReferencedPublicIpAddressResponseOutput{})
-	pulumi.RegisterOutputType(ReferencedPublicIpAddressResponseArrayOutput{})
-	pulumi.RegisterOutputType(ResourceBasicsResponseOutput{})
-	pulumi.RegisterOutputType(ResourceBasicsResponseArrayOutput{})
-	pulumi.RegisterOutputType(ResourceNavigationLinkOutput{})
-	pulumi.RegisterOutputType(ResourceNavigationLinkArrayOutput{})
+	pulumi.RegisterOutputType(RouteSourceDetailsResponseArrayMapOutput{})
 }
