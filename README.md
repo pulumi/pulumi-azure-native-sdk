@@ -2,7 +2,6 @@
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fazure-native.svg)](https://npmjs.com/package/@pulumi/azure-native)
 [![Python version](https://badge.fury.io/py/pulumi-azure-native.svg)](https://pypi.org/project/pulumi-azure-native)
 [![NuGet version](https://badge.fury.io/nu/pulumi.azurenative.svg)](https://badge.fury.io/nu/pulumi.azurenative)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-azure-native/sdk/go)](https://pkg.go.dev/github.com/pulumi/pulumi-azure-native/sdk/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fazure-native.svg)](https://github.com/pulumi/pulumi-azure-native/blob/master/LICENSE)
 
 # Native Azure Pulumi Provider
@@ -38,7 +37,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    go get github.com/pulumi/pulumi-azure-native/sdk
+    go get github.com/pulumi/pulumi-azure-native-sdk
 
 ### .NET
 
