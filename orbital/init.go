@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContactProfile{}
 	case "azure-native:orbital:EdgeSite":
 		r = &EdgeSite{}
+	case "azure-native:orbital:GeoCatalog":
+		r = &GeoCatalog{}
 	case "azure-native:orbital:GroundStation":
 		r = &GroundStation{}
 	case "azure-native:orbital:L2Connection":

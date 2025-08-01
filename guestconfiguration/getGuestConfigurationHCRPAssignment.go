@@ -31,7 +31,7 @@ type LookupGuestConfigurationHCRPAssignmentArgs struct {
 	GuestConfigurationAssignmentName string `pulumi:"guestConfigurationAssignmentName"`
 	// The name of the ARC machine.
 	MachineName string `pulumi:"machineName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -43,8 +43,8 @@ type LookupGuestConfigurationHCRPAssignmentResult struct {
 	Id string `pulumi:"id"`
 	// Region where the VM is located.
 	Location *string `pulumi:"location"`
-	// Name of the guest configuration assignment.
-	Name *string `pulumi:"name"`
+	// The guest configuration assignment name.
+	Name string `pulumi:"name"`
 	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -77,7 +77,7 @@ type LookupGuestConfigurationHCRPAssignmentOutputArgs struct {
 	GuestConfigurationAssignmentName pulumi.StringInput `pulumi:"guestConfigurationAssignmentName"`
 	// The name of the ARC machine.
 	MachineName pulumi.StringInput `pulumi:"machineName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -115,9 +115,9 @@ func (o LookupGuestConfigurationHCRPAssignmentResultOutput) Location() pulumi.St
 	return o.ApplyT(func(v LookupGuestConfigurationHCRPAssignmentResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Name of the guest configuration assignment.
-func (o LookupGuestConfigurationHCRPAssignmentResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupGuestConfigurationHCRPAssignmentResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The guest configuration assignment name.
+func (o LookupGuestConfigurationHCRPAssignmentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGuestConfigurationHCRPAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Properties of the Guest configuration assignment.

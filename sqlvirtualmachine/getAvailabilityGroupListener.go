@@ -31,7 +31,7 @@ type LookupAvailabilityGroupListenerArgs struct {
 	AvailabilityGroupListenerName string `pulumi:"availabilityGroupListenerName"`
 	// The child resources to include in the response.
 	Expand *string `pulumi:"expand"`
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the SQL virtual machine group.
 	SqlVirtualMachineGroupName string `pulumi:"sqlVirtualMachineGroupName"`
@@ -47,21 +47,21 @@ type LookupAvailabilityGroupListenerResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Create a default availability group if it does not exist.
 	CreateDefaultAvailabilityGroupIfNotExist *bool `pulumi:"createDefaultAvailabilityGroupIfNotExist"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// List of load balancer configurations for an availability group listener.
 	LoadBalancerConfigurations []LoadBalancerConfigurationResponse `pulumi:"loadBalancerConfigurations"`
 	// List of multi subnet IP configurations for an AG listener.
 	MultiSubnetIpConfigurations []MultiSubnetIpConfigurationResponse `pulumi:"multiSubnetIpConfigurations"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Listener port.
 	Port *int `pulumi:"port"`
 	// Provisioning state to track the async operation status.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -79,7 +79,7 @@ type LookupAvailabilityGroupListenerOutputArgs struct {
 	AvailabilityGroupListenerName pulumi.StringInput `pulumi:"availabilityGroupListenerName"`
 	// The child resources to include in the response.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of the SQL virtual machine group.
 	SqlVirtualMachineGroupName pulumi.StringInput `pulumi:"sqlVirtualMachineGroupName"`
@@ -126,7 +126,7 @@ func (o LookupAvailabilityGroupListenerResultOutput) CreateDefaultAvailabilityGr
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) *bool { return v.CreateDefaultAvailabilityGroupIfNotExist }).(pulumi.BoolPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAvailabilityGroupListenerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -145,7 +145,7 @@ func (o LookupAvailabilityGroupListenerResultOutput) MultiSubnetIpConfigurations
 	}).(MultiSubnetIpConfigurationResponseArrayOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupAvailabilityGroupListenerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -160,12 +160,12 @@ func (o LookupAvailabilityGroupListenerResultOutput) ProvisioningState() pulumi.
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAvailabilityGroupListenerResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAvailabilityGroupListenerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvailabilityGroupListenerResult) string { return v.Type }).(pulumi.StringOutput)
 }

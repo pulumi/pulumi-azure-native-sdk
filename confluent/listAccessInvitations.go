@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List invitations success response
+// Organization accounts invitation details
 //
 // Uses Azure REST API version 2024-07-01.
 //
@@ -29,7 +29,7 @@ func ListAccessInvitations(ctx *pulumi.Context, args *ListAccessInvitationsArgs,
 type ListAccessInvitationsArgs struct {
 	// Organization resource name
 	OrganizationName string `pulumi:"organizationName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Search filters for the request
 	SearchFilters map[string]string `pulumi:"searchFilters"`
@@ -57,7 +57,7 @@ func ListAccessInvitationsOutput(ctx *pulumi.Context, args ListAccessInvitations
 type ListAccessInvitationsOutputArgs struct {
 	// Organization resource name
 	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Search filters for the request
 	SearchFilters pulumi.StringMapInput `pulumi:"searchFilters"`

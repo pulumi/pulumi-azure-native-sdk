@@ -84,6 +84,9 @@ func NewGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20240101preview:GroupsOperation"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20240115:Group"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate:GroupsOperation"),
 		},
 	})

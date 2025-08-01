@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Details of the environments returned on successful response
+// Environment list of an organization
 //
 // Uses Azure REST API version 2024-07-01.
 //

@@ -27,9 +27,9 @@ func ListVirtualMachineApplicableSchedules(ctx *pulumi.Context, args *ListVirtua
 type ListVirtualMachineApplicableSchedulesArgs struct {
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the virtual machine.
+	// The name of the LabVirtualMachine
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -75,9 +75,9 @@ func ListVirtualMachineApplicableSchedulesOutput(ctx *pulumi.Context, args ListV
 type ListVirtualMachineApplicableSchedulesOutputArgs struct {
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the virtual machine.
+	// The name of the LabVirtualMachine
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

@@ -79,7 +79,7 @@ type LookupNamespaceResult struct {
 	Type string `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
-	// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+	// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
 	ZoneRedundant *bool `pulumi:"zoneRedundant"`
 }
 
@@ -242,7 +242,7 @@ func (o LookupNamespaceResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
 func (o LookupNamespaceResultOutput) ZoneRedundant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *bool { return v.ZoneRedundant }).(pulumi.BoolPtrOutput)
 }

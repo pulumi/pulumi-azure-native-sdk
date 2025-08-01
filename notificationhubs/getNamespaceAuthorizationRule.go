@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for POST requests that return single SharedAccessAuthorizationRule.
+// Gets an authorization rule for a namespace by name.
 //
 // Uses Azure REST API version 2023-10-01-preview.
 //
@@ -48,8 +48,7 @@ type LookupNamespaceAuthorizationRuleResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Gets a string that describes the authorization rule.
-	KeyName string `pulumi:"keyName"`
-	// Deprecated - only for compatibility.
+	KeyName  string  `pulumi:"keyName"`
 	Location *string `pulumi:"location"`
 	// Gets the last modified time for this rule
 	ModifiedTime string `pulumi:"modifiedTime"`
@@ -67,8 +66,7 @@ type LookupNamespaceAuthorizationRuleResult struct {
 	SecondaryKey *string `pulumi:"secondaryKey"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Deprecated - only for compatibility.
-	Tags map[string]string `pulumi:"tags"`
+	Tags       map[string]string  `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -140,7 +138,6 @@ func (o LookupNamespaceAuthorizationRuleResultOutput) KeyName() pulumi.StringOut
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// Deprecated - only for compatibility.
 func (o LookupNamespaceAuthorizationRuleResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -182,7 +179,6 @@ func (o LookupNamespaceAuthorizationRuleResultOutput) SystemData() SystemDataRes
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Deprecated - only for compatibility.
 func (o LookupNamespaceAuthorizationRuleResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

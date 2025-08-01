@@ -13,6 +13,168 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Properties specific to API Flow Type
+type ApiFlowOptionsResponse struct {
+	// Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked
+	ApiMode *string `pulumi:"apiMode"`
+	// Optional field to override the audience of the remote endpoint
+	AudienceOverride *string `pulumi:"audienceOverride"`
+	// Unique CNAME to represent the Azure Data Transfer API Flow instance
+	Cname *string `pulumi:"cname"`
+	// Flag for if Azure Data Transfer API Flow should extract the user token
+	IdentityTranslation *string `pulumi:"identityTranslation"`
+	// Remote stub app registration Client ID
+	RemoteCallingModeClientId *string `pulumi:"remoteCallingModeClientId"`
+	// Remote host to which communication needs to be made
+	RemoteEndpoint *string `pulumi:"remoteEndpoint"`
+	// Sender's app user assigned Manage Identity client ID
+	SenderClientId *string `pulumi:"senderClientId"`
+}
+
+// Properties specific to API Flow Type
+type ApiFlowOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiFlowOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiFlowOptionsResponse)(nil)).Elem()
+}
+
+func (o ApiFlowOptionsResponseOutput) ToApiFlowOptionsResponseOutput() ApiFlowOptionsResponseOutput {
+	return o
+}
+
+func (o ApiFlowOptionsResponseOutput) ToApiFlowOptionsResponseOutputWithContext(ctx context.Context) ApiFlowOptionsResponseOutput {
+	return o
+}
+
+// Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked
+func (o ApiFlowOptionsResponseOutput) ApiMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.ApiMode }).(pulumi.StringPtrOutput)
+}
+
+// Optional field to override the audience of the remote endpoint
+func (o ApiFlowOptionsResponseOutput) AudienceOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.AudienceOverride }).(pulumi.StringPtrOutput)
+}
+
+// Unique CNAME to represent the Azure Data Transfer API Flow instance
+func (o ApiFlowOptionsResponseOutput) Cname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.Cname }).(pulumi.StringPtrOutput)
+}
+
+// Flag for if Azure Data Transfer API Flow should extract the user token
+func (o ApiFlowOptionsResponseOutput) IdentityTranslation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.IdentityTranslation }).(pulumi.StringPtrOutput)
+}
+
+// Remote stub app registration Client ID
+func (o ApiFlowOptionsResponseOutput) RemoteCallingModeClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.RemoteCallingModeClientId }).(pulumi.StringPtrOutput)
+}
+
+// Remote host to which communication needs to be made
+func (o ApiFlowOptionsResponseOutput) RemoteEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.RemoteEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Sender's app user assigned Manage Identity client ID
+func (o ApiFlowOptionsResponseOutput) SenderClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.SenderClientId }).(pulumi.StringPtrOutput)
+}
+
+type ApiFlowOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiFlowOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiFlowOptionsResponse)(nil)).Elem()
+}
+
+func (o ApiFlowOptionsResponsePtrOutput) ToApiFlowOptionsResponsePtrOutput() ApiFlowOptionsResponsePtrOutput {
+	return o
+}
+
+func (o ApiFlowOptionsResponsePtrOutput) ToApiFlowOptionsResponsePtrOutputWithContext(ctx context.Context) ApiFlowOptionsResponsePtrOutput {
+	return o
+}
+
+func (o ApiFlowOptionsResponsePtrOutput) Elem() ApiFlowOptionsResponseOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) ApiFlowOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApiFlowOptionsResponse
+		return ret
+	}).(ApiFlowOptionsResponseOutput)
+}
+
+// Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked
+func (o ApiFlowOptionsResponsePtrOutput) ApiMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional field to override the audience of the remote endpoint
+func (o ApiFlowOptionsResponsePtrOutput) AudienceOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AudienceOverride
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique CNAME to represent the Azure Data Transfer API Flow instance
+func (o ApiFlowOptionsResponsePtrOutput) Cname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Flag for if Azure Data Transfer API Flow should extract the user token
+func (o ApiFlowOptionsResponsePtrOutput) IdentityTranslation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityTranslation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Remote stub app registration Client ID
+func (o ApiFlowOptionsResponsePtrOutput) RemoteCallingModeClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteCallingModeClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Remote host to which communication needs to be made
+func (o ApiFlowOptionsResponsePtrOutput) RemoteEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sender's app user assigned Manage Identity client ID
+func (o ApiFlowOptionsResponsePtrOutput) SenderClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SenderClientId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties of connection
 type ConnectionProperties struct {
 	// Direction of data movement
@@ -1017,21 +1179,29 @@ func (o FlowPropertiesPtrOutput) StreamProtocol() pulumi.StringPtrOutput {
 
 // Properties of flow
 type FlowPropertiesResponse struct {
+	// The API Flow configuration options for Azure Data Transfer API Flow type.
+	ApiFlowOptions *ApiFlowOptionsResponse `pulumi:"apiFlowOptions"`
 	// The connection associated with this flow
 	Connection *SelectedResourceResponse `pulumi:"connection"`
+	// Event Hub Consumer Group
+	ConsumerGroup *string `pulumi:"consumerGroup"`
 	// The URI to the customer managed key for this flow
 	CustomerManagedKeyVaultUri *string `pulumi:"customerManagedKeyVaultUri"`
-	// Transfer Storage Blobs or Tables
+	// Type of data to transfer via the flow.
 	DataType *string `pulumi:"dataType"`
 	// The destination endpoint ports of the stream
 	DestinationEndpointPorts []float64 `pulumi:"destinationEndpointPorts"`
 	// The destination endpoints of the stream
 	DestinationEndpoints []string `pulumi:"destinationEndpoints"`
+	// Event Hub ID
+	EventHubId *string `pulumi:"eventHubId"`
 	// Dataflow GUID associated with this flow
 	FlowId string `pulumi:"flowId"`
 	// The flow type for this flow
 	FlowType *string `pulumi:"flowType"`
-	// AME, PME, or TORUS only! AKV Chain Containing SAS Token
+	// Force disablement status of the current flow
+	ForceDisabledStatus []string `pulumi:"forceDisabledStatus"`
+	// URI to a Key Vault Secret containing a SAS token.
 	KeyVaultUri *string `pulumi:"keyVaultUri"`
 	// Link status of the current flow
 	LinkStatus string `pulumi:"linkStatus"`
@@ -1059,6 +1229,8 @@ type FlowPropertiesResponse struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 	// Storage Container Name
 	StorageContainerName *string `pulumi:"storageContainerName"`
+	// Storage Table Name
+	StorageTableName *string `pulumi:"storageTableName"`
 	// The flow stream identifier
 	StreamId *string `pulumi:"streamId"`
 	// The latency of the stream in milliseconds
@@ -1082,9 +1254,19 @@ func (o FlowPropertiesResponseOutput) ToFlowPropertiesResponseOutputWithContext(
 	return o
 }
 
+// The API Flow configuration options for Azure Data Transfer API Flow type.
+func (o FlowPropertiesResponseOutput) ApiFlowOptions() ApiFlowOptionsResponsePtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *ApiFlowOptionsResponse { return v.ApiFlowOptions }).(ApiFlowOptionsResponsePtrOutput)
+}
+
 // The connection associated with this flow
 func (o FlowPropertiesResponseOutput) Connection() SelectedResourceResponsePtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *SelectedResourceResponse { return v.Connection }).(SelectedResourceResponsePtrOutput)
+}
+
+// Event Hub Consumer Group
+func (o FlowPropertiesResponseOutput) ConsumerGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
 }
 
 // The URI to the customer managed key for this flow
@@ -1092,7 +1274,7 @@ func (o FlowPropertiesResponseOutput) CustomerManagedKeyVaultUri() pulumi.String
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.CustomerManagedKeyVaultUri }).(pulumi.StringPtrOutput)
 }
 
-// Transfer Storage Blobs or Tables
+// Type of data to transfer via the flow.
 func (o FlowPropertiesResponseOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
 }
@@ -1107,6 +1289,11 @@ func (o FlowPropertiesResponseOutput) DestinationEndpoints() pulumi.StringArrayO
 	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.DestinationEndpoints }).(pulumi.StringArrayOutput)
 }
 
+// Event Hub ID
+func (o FlowPropertiesResponseOutput) EventHubId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.EventHubId }).(pulumi.StringPtrOutput)
+}
+
 // Dataflow GUID associated with this flow
 func (o FlowPropertiesResponseOutput) FlowId() pulumi.StringOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.FlowId }).(pulumi.StringOutput)
@@ -1117,7 +1304,12 @@ func (o FlowPropertiesResponseOutput) FlowType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.FlowType }).(pulumi.StringPtrOutput)
 }
 
-// AME, PME, or TORUS only! AKV Chain Containing SAS Token
+// Force disablement status of the current flow
+func (o FlowPropertiesResponseOutput) ForceDisabledStatus() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.ForceDisabledStatus }).(pulumi.StringArrayOutput)
+}
+
+// URI to a Key Vault Secret containing a SAS token.
 func (o FlowPropertiesResponseOutput) KeyVaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.KeyVaultUri }).(pulumi.StringPtrOutput)
 }
@@ -1187,6 +1379,11 @@ func (o FlowPropertiesResponseOutput) StorageContainerName() pulumi.StringPtrOut
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
 }
 
+// Storage Table Name
+func (o FlowPropertiesResponseOutput) StorageTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StorageTableName }).(pulumi.StringPtrOutput)
+}
+
 // The flow stream identifier
 func (o FlowPropertiesResponseOutput) StreamId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StreamId }).(pulumi.StringPtrOutput)
@@ -1200,6 +1397,422 @@ func (o FlowPropertiesResponseOutput) StreamLatency() pulumi.Float64PtrOutput {
 // The protocol of the stream
 func (o FlowPropertiesResponseOutput) StreamProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.StreamProtocol }).(pulumi.StringPtrOutput)
+}
+
+type FlowPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FlowPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowPropertiesResponse)(nil)).Elem()
+}
+
+func (o FlowPropertiesResponsePtrOutput) ToFlowPropertiesResponsePtrOutput() FlowPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o FlowPropertiesResponsePtrOutput) ToFlowPropertiesResponsePtrOutputWithContext(ctx context.Context) FlowPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o FlowPropertiesResponsePtrOutput) Elem() FlowPropertiesResponseOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) FlowPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FlowPropertiesResponse
+		return ret
+	}).(FlowPropertiesResponseOutput)
+}
+
+// The API Flow configuration options for Azure Data Transfer API Flow type.
+func (o FlowPropertiesResponsePtrOutput) ApiFlowOptions() ApiFlowOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *ApiFlowOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApiFlowOptions
+	}).(ApiFlowOptionsResponsePtrOutput)
+}
+
+// The connection associated with this flow
+func (o FlowPropertiesResponsePtrOutput) Connection() SelectedResourceResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *SelectedResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Connection
+	}).(SelectedResourceResponsePtrOutput)
+}
+
+// Event Hub Consumer Group
+func (o FlowPropertiesResponsePtrOutput) ConsumerGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI to the customer managed key for this flow
+func (o FlowPropertiesResponsePtrOutput) CustomerManagedKeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerManagedKeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of data to transfer via the flow.
+func (o FlowPropertiesResponsePtrOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The destination endpoint ports of the stream
+func (o FlowPropertiesResponsePtrOutput) DestinationEndpointPorts() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationEndpointPorts
+	}).(pulumi.Float64ArrayOutput)
+}
+
+// The destination endpoints of the stream
+func (o FlowPropertiesResponsePtrOutput) DestinationEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationEndpoints
+	}).(pulumi.StringArrayOutput)
+}
+
+// Event Hub ID
+func (o FlowPropertiesResponsePtrOutput) EventHubId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventHubId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dataflow GUID associated with this flow
+func (o FlowPropertiesResponsePtrOutput) FlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FlowId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The flow type for this flow
+func (o FlowPropertiesResponsePtrOutput) FlowType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlowType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Force disablement status of the current flow
+func (o FlowPropertiesResponsePtrOutput) ForceDisabledStatus() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ForceDisabledStatus
+	}).(pulumi.StringArrayOutput)
+}
+
+// URI to a Key Vault Secret containing a SAS token.
+func (o FlowPropertiesResponsePtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Link status of the current flow
+func (o FlowPropertiesResponsePtrOutput) LinkStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LinkStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource ID of the linked flow
+func (o FlowPropertiesResponsePtrOutput) LinkedFlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LinkedFlowId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The messaging options for this flow
+func (o FlowPropertiesResponsePtrOutput) MessagingOptions() MessagingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *MessagingOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MessagingOptions
+	}).(MessagingOptionsResponsePtrOutput)
+}
+
+// The passphrase used for SRT streams
+func (o FlowPropertiesResponsePtrOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Passphrase
+	}).(pulumi.StringPtrOutput)
+}
+
+// The policies for this flow
+func (o FlowPropertiesResponsePtrOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Policies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Provisioning state of the flow
+func (o FlowPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The selected schema for this flow
+func (o FlowPropertiesResponsePtrOutput) Schema() SchemaResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *SchemaResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(SchemaResponsePtrOutput)
+}
+
+// Service Bus Queue ID
+func (o FlowPropertiesResponsePtrOutput) ServiceBusQueueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceBusQueueId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The source IP address and CIDR ranges of the stream
+func (o FlowPropertiesResponsePtrOutput) SourceAddresses() StreamSourceAddressesResponsePtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *StreamSourceAddressesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAddresses
+	}).(StreamSourceAddressesResponsePtrOutput)
+}
+
+// Status of the current flow
+func (o FlowPropertiesResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Account ID
+func (o FlowPropertiesResponsePtrOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Account
+func (o FlowPropertiesResponsePtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Container Name
+func (o FlowPropertiesResponsePtrOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage Table Name
+func (o FlowPropertiesResponsePtrOutput) StorageTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageTableName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The flow stream identifier
+func (o FlowPropertiesResponsePtrOutput) StreamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreamId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The latency of the stream in milliseconds
+func (o FlowPropertiesResponsePtrOutput) StreamLatency() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StreamLatency
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The protocol of the stream
+func (o FlowPropertiesResponsePtrOutput) StreamProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreamProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// The flow resource definition.
+type FlowResponse struct {
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
+	// The managed service identities assigned to this resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// Details of the resource plan.
+	Plan *PlanResponse `pulumi:"plan"`
+	// Properties of flow
+	Properties *FlowPropertiesResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The flow resource definition.
+type FlowResponseOutput struct{ *pulumi.OutputState }
+
+func (FlowResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlowResponse)(nil)).Elem()
+}
+
+func (o FlowResponseOutput) ToFlowResponseOutput() FlowResponseOutput {
+	return o
+}
+
+func (o FlowResponseOutput) ToFlowResponseOutputWithContext(ctx context.Context) FlowResponseOutput {
+	return o
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o FlowResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The managed service identities assigned to this resource.
+func (o FlowResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v FlowResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// The geo-location where the resource lives
+func (o FlowResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o FlowResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Details of the resource plan.
+func (o FlowResponseOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v FlowResponse) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
+}
+
+// Properties of flow
+func (o FlowResponseOutput) Properties() FlowPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v FlowResponse) *FlowPropertiesResponse { return v.Properties }).(FlowPropertiesResponsePtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o FlowResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v FlowResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
+func (o FlowResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FlowResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o FlowResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FlowResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type FlowResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FlowResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlowResponse)(nil)).Elem()
+}
+
+func (o FlowResponseArrayOutput) ToFlowResponseArrayOutput() FlowResponseArrayOutput {
+	return o
+}
+
+func (o FlowResponseArrayOutput) ToFlowResponseArrayOutputWithContext(ctx context.Context) FlowResponseArrayOutput {
+	return o
+}
+
+func (o FlowResponseArrayOutput) Index(i pulumi.IntInput) FlowResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlowResponse {
+		return vs[0].([]FlowResponse)[vs[1].(int)]
+	}).(FlowResponseOutput)
 }
 
 // Internal metadata of the connection inside pipeline.
@@ -1279,6 +1892,59 @@ func (o InternalMetadataPropertiesResponsePtrOutput) StatusSetBy() pulumi.String
 		}
 		return &v.StatusSetBy
 	}).(pulumi.StringPtrOutput)
+}
+
+// A connection resource id in addition to all child flow resources under this connection.
+type ListFlowsByPipelineConnectionResponse struct {
+	// List of flows associated with the connection.
+	Flows []FlowResponse `pulumi:"flows"`
+	// ID of the connection.
+	Id *string `pulumi:"id"`
+}
+
+// A connection resource id in addition to all child flow resources under this connection.
+type ListFlowsByPipelineConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (ListFlowsByPipelineConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListFlowsByPipelineConnectionResponse)(nil)).Elem()
+}
+
+func (o ListFlowsByPipelineConnectionResponseOutput) ToListFlowsByPipelineConnectionResponseOutput() ListFlowsByPipelineConnectionResponseOutput {
+	return o
+}
+
+func (o ListFlowsByPipelineConnectionResponseOutput) ToListFlowsByPipelineConnectionResponseOutputWithContext(ctx context.Context) ListFlowsByPipelineConnectionResponseOutput {
+	return o
+}
+
+// List of flows associated with the connection.
+func (o ListFlowsByPipelineConnectionResponseOutput) Flows() FlowResponseArrayOutput {
+	return o.ApplyT(func(v ListFlowsByPipelineConnectionResponse) []FlowResponse { return v.Flows }).(FlowResponseArrayOutput)
+}
+
+// ID of the connection.
+func (o ListFlowsByPipelineConnectionResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListFlowsByPipelineConnectionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type ListFlowsByPipelineConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ListFlowsByPipelineConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListFlowsByPipelineConnectionResponse)(nil)).Elem()
+}
+
+func (o ListFlowsByPipelineConnectionResponseArrayOutput) ToListFlowsByPipelineConnectionResponseArrayOutput() ListFlowsByPipelineConnectionResponseArrayOutput {
+	return o
+}
+
+func (o ListFlowsByPipelineConnectionResponseArrayOutput) ToListFlowsByPipelineConnectionResponseArrayOutputWithContext(ctx context.Context) ListFlowsByPipelineConnectionResponseArrayOutput {
+	return o
+}
+
+func (o ListFlowsByPipelineConnectionResponseArrayOutput) Index(i pulumi.IntInput) ListFlowsByPipelineConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListFlowsByPipelineConnectionResponse {
+		return vs[0].([]ListFlowsByPipelineConnectionResponse)[vs[1].(int)]
+	}).(ListFlowsByPipelineConnectionResponseOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -4406,14 +5072,21 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 }
 
 func init() {
+	pulumi.RegisterOutputType(ApiFlowOptionsResponseOutput{})
+	pulumi.RegisterOutputType(ApiFlowOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(FlowPropertiesOutput{})
 	pulumi.RegisterOutputType(FlowPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(FlowPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(FlowPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(FlowResponseOutput{})
+	pulumi.RegisterOutputType(FlowResponseArrayOutput{})
 	pulumi.RegisterOutputType(InternalMetadataPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(InternalMetadataPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ListFlowsByPipelineConnectionResponseOutput{})
+	pulumi.RegisterOutputType(ListFlowsByPipelineConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Notification Hub Resource.
+// Gets the notification hub.
 //
 // Uses Azure REST API version 2023-10-01-preview.
 //

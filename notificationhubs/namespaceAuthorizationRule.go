@@ -29,8 +29,7 @@ type NamespaceAuthorizationRule struct {
 	// Gets the created time for this rule
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
 	// Gets a string that describes the authorization rule.
-	KeyName pulumi.StringOutput `pulumi:"keyName"`
-	// Deprecated - only for compatibility.
+	KeyName  pulumi.StringOutput    `pulumi:"keyName"`
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Gets the last modified time for this rule
 	ModifiedTime pulumi.StringOutput `pulumi:"modifiedTime"`
@@ -48,8 +47,7 @@ type NamespaceAuthorizationRule struct {
 	SecondaryKey pulumi.StringPtrOutput `pulumi:"secondaryKey"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Deprecated - only for compatibility.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Tags       pulumi.StringMapOutput   `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -123,8 +121,7 @@ func (NamespaceAuthorizationRuleState) ElementType() reflect.Type {
 type namespaceAuthorizationRuleArgs struct {
 	// Authorization Rule Name
 	AuthorizationRuleName *string `pulumi:"authorizationRuleName"`
-	// Deprecated - only for compatibility.
-	Location *string `pulumi:"location"`
+	Location              *string `pulumi:"location"`
 	// Namespace name
 	NamespaceName string `pulumi:"namespaceName"`
 	// Gets a base64-encoded 256-bit primary key for signing and
@@ -136,17 +133,15 @@ type namespaceAuthorizationRuleArgs struct {
 	Rights []string `pulumi:"rights"`
 	// Gets a base64-encoded 256-bit primary key for signing and
 	// validating the SAS token.
-	SecondaryKey *string `pulumi:"secondaryKey"`
-	// Deprecated - only for compatibility.
-	Tags map[string]string `pulumi:"tags"`
+	SecondaryKey *string           `pulumi:"secondaryKey"`
+	Tags         map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a NamespaceAuthorizationRule resource.
 type NamespaceAuthorizationRuleArgs struct {
 	// Authorization Rule Name
 	AuthorizationRuleName pulumi.StringPtrInput
-	// Deprecated - only for compatibility.
-	Location pulumi.StringPtrInput
+	Location              pulumi.StringPtrInput
 	// Namespace name
 	NamespaceName pulumi.StringInput
 	// Gets a base64-encoded 256-bit primary key for signing and
@@ -159,8 +154,7 @@ type NamespaceAuthorizationRuleArgs struct {
 	// Gets a base64-encoded 256-bit primary key for signing and
 	// validating the SAS token.
 	SecondaryKey pulumi.StringPtrInput
-	// Deprecated - only for compatibility.
-	Tags pulumi.StringMapInput
+	Tags         pulumi.StringMapInput
 }
 
 func (NamespaceAuthorizationRuleArgs) ElementType() reflect.Type {
@@ -225,7 +219,6 @@ func (o NamespaceAuthorizationRuleOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// Deprecated - only for compatibility.
 func (o NamespaceAuthorizationRuleOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -267,7 +260,6 @@ func (o NamespaceAuthorizationRuleOutput) SystemData() SystemDataResponseOutput 
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Deprecated - only for compatibility.
 func (o NamespaceAuthorizationRuleOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

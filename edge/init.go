@@ -21,12 +21,52 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:edge:ConfigTemplate":
+		r = &ConfigTemplate{}
+	case "azure-native:edge:Configuration":
+		r = &Configuration{}
+	case "azure-native:edge:ConfigurationReference":
+		r = &ConfigurationReference{}
+	case "azure-native:edge:Context":
+		r = &Context{}
+	case "azure-native:edge:Diagnostic":
+		r = &Diagnostic{}
+	case "azure-native:edge:DynamicConfiguration":
+		r = &DynamicConfiguration{}
+	case "azure-native:edge:DynamicConfigurationVersion":
+		r = &DynamicConfigurationVersion{}
+	case "azure-native:edge:DynamicSchema":
+		r = &DynamicSchema{}
+	case "azure-native:edge:DynamicSchemaVersion":
+		r = &DynamicSchemaVersion{}
+	case "azure-native:edge:Execution":
+		r = &Execution{}
+	case "azure-native:edge:Instance":
+		r = &Instance{}
+	case "azure-native:edge:Schema":
+		r = &Schema{}
+	case "azure-native:edge:SchemaVersion":
+		r = &SchemaVersion{}
 	case "azure-native:edge:Site":
 		r = &Site{}
+	case "azure-native:edge:SiteReference":
+		r = &SiteReference{}
 	case "azure-native:edge:SitesByServiceGroup":
 		r = &SitesByServiceGroup{}
 	case "azure-native:edge:SitesBySubscription":
 		r = &SitesBySubscription{}
+	case "azure-native:edge:Solution":
+		r = &Solution{}
+	case "azure-native:edge:SolutionTemplate":
+		r = &SolutionTemplate{}
+	case "azure-native:edge:SolutionVersion":
+		r = &SolutionVersion{}
+	case "azure-native:edge:Target":
+		r = &Target{}
+	case "azure-native:edge:Workflow":
+		r = &Workflow{}
+	case "azure-native:edge:WorkflowVersion":
+		r = &WorkflowVersion{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

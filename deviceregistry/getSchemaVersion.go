@@ -14,6 +14,8 @@ import (
 // Get a SchemaVersion
 //
 // Uses Azure REST API version 2024-09-01-preview.
+//
+// Other available API versions: 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSchemaVersion(ctx *pulumi.Context, args *LookupSchemaVersionArgs, opts ...pulumi.InvokeOption) (*LookupSchemaVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaVersionResult

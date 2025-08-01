@@ -89,6 +89,12 @@ func NewNamespace(ctx *pulumi.Context,
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
+	if args.PublicNetworkAccess == nil {
+		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
+	}
+	if args.ZoneRedundancy == nil {
+		args.ZoneRedundancy = pulumi.StringPtr("Disabled")
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:notificationhubs/v20140901:Namespace"),

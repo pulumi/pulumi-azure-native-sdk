@@ -28,13 +28,13 @@ type ConfigurationAssignment struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The maintenance configuration Id
 	MaintenanceConfigurationId pulumi.StringPtrOutput `pulumi:"maintenanceConfigurationId"`
-	// Name of the resource
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique resourceId
 	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Type of the resource
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -114,7 +114,7 @@ func (ConfigurationAssignmentState) ElementType() reflect.Type {
 }
 
 type configurationAssignmentArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName *string `pulumi:"configurationAssignmentName"`
 	// Properties of the configuration assignment
 	Filter *ConfigurationAssignmentFilterProperties `pulumi:"filter"`
@@ -124,19 +124,19 @@ type configurationAssignmentArgs struct {
 	MaintenanceConfigurationId *string `pulumi:"maintenanceConfigurationId"`
 	// Resource provider name
 	ProviderName string `pulumi:"providerName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The unique resourceId
 	ResourceId *string `pulumi:"resourceId"`
-	// Resource identifier
+	// Resource parent name
 	ResourceName string `pulumi:"resourceName"`
-	// Resource type
+	// Resource parent type
 	ResourceType string `pulumi:"resourceType"`
 }
 
 // The set of arguments for constructing a ConfigurationAssignment resource.
 type ConfigurationAssignmentArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName pulumi.StringPtrInput
 	// Properties of the configuration assignment
 	Filter ConfigurationAssignmentFilterPropertiesPtrInput
@@ -146,13 +146,13 @@ type ConfigurationAssignmentArgs struct {
 	MaintenanceConfigurationId pulumi.StringPtrInput
 	// Resource provider name
 	ProviderName pulumi.StringInput
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The unique resourceId
 	ResourceId pulumi.StringPtrInput
-	// Resource identifier
+	// Resource parent name
 	ResourceName pulumi.StringInput
-	// Resource type
+	// Resource parent type
 	ResourceType pulumi.StringInput
 }
 
@@ -215,7 +215,7 @@ func (o ConfigurationAssignmentOutput) MaintenanceConfigurationId() pulumi.Strin
 	return o.ApplyT(func(v *ConfigurationAssignment) pulumi.StringPtrOutput { return v.MaintenanceConfigurationId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the resource
+// The name of the resource
 func (o ConfigurationAssignmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -230,7 +230,7 @@ func (o ConfigurationAssignmentOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ConfigurationAssignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Type of the resource
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ConfigurationAssignmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationAssignment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

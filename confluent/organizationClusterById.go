@@ -24,14 +24,16 @@ type OrganizationClusterById struct {
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Metadata of the record
 	Metadata SCMetadataEntityResponsePtrOutput `pulumi:"metadata"`
-	// Display name of the cluster
-	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// The name of the resource
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Specification of the cluster
 	Spec SCClusterSpecEntityResponsePtrOutput `pulumi:"spec"`
 	// Specification of the cluster status
 	Status ClusterStatusEntityResponsePtrOutput `pulumi:"status"`
-	// Type of the resource
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewOrganizationClusterById registers a new resource with the given unique name, arguments, and options.
@@ -93,14 +95,10 @@ type organizationClusterByIdArgs struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Confluent environment id
 	EnvironmentId string `pulumi:"environmentId"`
-	// Id of the cluster
-	Id *string `pulumi:"id"`
 	// Type of cluster
 	Kind *string `pulumi:"kind"`
 	// Metadata of the record
 	Metadata *SCMetadataEntity `pulumi:"metadata"`
-	// Display name of the cluster
-	Name *string `pulumi:"name"`
 	// Organization resource name
 	OrganizationName string `pulumi:"organizationName"`
 	// The name of the resource group. The name is case insensitive.
@@ -109,8 +107,6 @@ type organizationClusterByIdArgs struct {
 	Spec *SCClusterSpecEntity `pulumi:"spec"`
 	// Specification of the cluster status
 	Status *ClusterStatusEntity `pulumi:"status"`
-	// Type of the resource
-	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a OrganizationClusterById resource.
@@ -119,14 +115,10 @@ type OrganizationClusterByIdArgs struct {
 	ClusterId pulumi.StringPtrInput
 	// Confluent environment id
 	EnvironmentId pulumi.StringInput
-	// Id of the cluster
-	Id pulumi.StringPtrInput
 	// Type of cluster
 	Kind pulumi.StringPtrInput
 	// Metadata of the record
 	Metadata SCMetadataEntityPtrInput
-	// Display name of the cluster
-	Name pulumi.StringPtrInput
 	// Organization resource name
 	OrganizationName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
@@ -135,8 +127,6 @@ type OrganizationClusterByIdArgs struct {
 	Spec SCClusterSpecEntityPtrInput
 	// Specification of the cluster status
 	Status ClusterStatusEntityPtrInput
-	// Type of the resource
-	Type pulumi.StringPtrInput
 }
 
 func (OrganizationClusterByIdArgs) ElementType() reflect.Type {
@@ -191,9 +181,9 @@ func (o OrganizationClusterByIdOutput) Metadata() SCMetadataEntityResponsePtrOut
 	return o.ApplyT(func(v *OrganizationClusterById) SCMetadataEntityResponsePtrOutput { return v.Metadata }).(SCMetadataEntityResponsePtrOutput)
 }
 
-// Display name of the cluster
-func (o OrganizationClusterByIdOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OrganizationClusterById) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the resource
+func (o OrganizationClusterByIdOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationClusterById) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Specification of the cluster
@@ -206,9 +196,14 @@ func (o OrganizationClusterByIdOutput) Status() ClusterStatusEntityResponsePtrOu
 	return o.ApplyT(func(v *OrganizationClusterById) ClusterStatusEntityResponsePtrOutput { return v.Status }).(ClusterStatusEntityResponsePtrOutput)
 }
 
-// Type of the resource
-func (o OrganizationClusterByIdOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OrganizationClusterById) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o OrganizationClusterByIdOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *OrganizationClusterById) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o OrganizationClusterByIdOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationClusterById) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

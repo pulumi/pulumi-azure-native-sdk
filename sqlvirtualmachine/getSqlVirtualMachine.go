@@ -29,7 +29,7 @@ func LookupSqlVirtualMachine(ctx *pulumi.Context, args *LookupSqlVirtualMachineA
 type LookupSqlVirtualMachineArgs struct {
 	// The child resources to include in the response.
 	Expand *string `pulumi:"expand"`
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the SQL virtual machine.
 	SqlVirtualMachineName string `pulumi:"sqlVirtualMachineName"`
@@ -49,7 +49,7 @@ type LookupSqlVirtualMachineResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Enable automatic upgrade of Sql IaaS extension Agent.
 	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
 	Identity *ResourceIdentityResponse `pulumi:"identity"`
@@ -57,9 +57,9 @@ type LookupSqlVirtualMachineResult struct {
 	KeyVaultCredentialSettings *KeyVaultCredentialSettingsResponse `pulumi:"keyVaultCredentialSettings"`
 	// SQL IaaS Agent least privilege mode.
 	LeastPrivilegeMode *string `pulumi:"leastPrivilegeMode"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Operating System of the current SQL Virtual Machine.
 	OsType string `pulumi:"osType"`
@@ -79,13 +79,13 @@ type LookupSqlVirtualMachineResult struct {
 	SqlVirtualMachineGroupResourceId *string `pulumi:"sqlVirtualMachineGroupResourceId"`
 	// Storage Configuration Settings.
 	StorageConfigurationSettings *StorageConfigurationSettingsResponse `pulumi:"storageConfigurationSettings"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Troubleshooting status
 	TroubleshootingStatus TroubleshootingStatusResponse `pulumi:"troubleshootingStatus"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Virtual Machine Identity details used for Sql IaaS extension configurations.
 	VirtualMachineIdentitySettings *VirtualMachineIdentityResponse `pulumi:"virtualMachineIdentitySettings"`
@@ -129,7 +129,7 @@ func LookupSqlVirtualMachineOutput(ctx *pulumi.Context, args LookupSqlVirtualMac
 type LookupSqlVirtualMachineOutputArgs struct {
 	// The child resources to include in the response.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of the SQL virtual machine.
 	SqlVirtualMachineName pulumi.StringInput `pulumi:"sqlVirtualMachineName"`
@@ -184,7 +184,7 @@ func (o LookupSqlVirtualMachineResultOutput) EnableAutomaticUpgrade() pulumi.Boo
 	return o.ApplyT(func(v LookupSqlVirtualMachineResult) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSqlVirtualMachineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -206,12 +206,12 @@ func (o LookupSqlVirtualMachineResultOutput) LeastPrivilegeMode() pulumi.StringP
 	return o.ApplyT(func(v LookupSqlVirtualMachineResult) *string { return v.LeastPrivilegeMode }).(pulumi.StringPtrOutput)
 }
 
-// Resource location.
+// The geo-location where the resource lives
 func (o LookupSqlVirtualMachineResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupSqlVirtualMachineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -265,7 +265,7 @@ func (o LookupSqlVirtualMachineResultOutput) StorageConfigurationSettings() Stor
 	}).(StorageConfigurationSettingsResponsePtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSqlVirtualMachineResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -280,7 +280,7 @@ func (o LookupSqlVirtualMachineResultOutput) TroubleshootingStatus() Troubleshoo
 	return o.ApplyT(func(v LookupSqlVirtualMachineResult) TroubleshootingStatusResponse { return v.TroubleshootingStatus }).(TroubleshootingStatusResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSqlVirtualMachineResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2021-06-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
 //
-// Other available API versions: 2020-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-01-01, 2025-05-04-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AssessmentMetadataInSubscription struct {
 	pulumi.CustomResourceState
 
@@ -82,6 +82,9 @@ func NewAssessmentMetadataInSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:security/v20210601:AssessmentMetadataInSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:security/v20250504preview:AssessmentMetadataInSubscription"),
 		},
 		{
 			Type: pulumi.String("azure-native:security:AssessmentsMetadataSubscription"),

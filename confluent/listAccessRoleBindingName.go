@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Details of the role binding names returned on successful response
+// Organization role bindings
 //
 // Uses Azure REST API version 2024-07-01.
 //

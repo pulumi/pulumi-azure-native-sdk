@@ -184,6 +184,174 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
+// The principal type of the user.
+type EntraPrincipalType string
+
+const (
+	// Entra user type.
+	EntraPrincipalTypeUser = EntraPrincipalType("user")
+	// Entra service principal type.
+	EntraPrincipalTypeServicePrincipal = EntraPrincipalType("servicePrincipal")
+)
+
+func (EntraPrincipalType) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntraPrincipalType)(nil)).Elem()
+}
+
+func (e EntraPrincipalType) ToEntraPrincipalTypeOutput() EntraPrincipalTypeOutput {
+	return pulumi.ToOutput(e).(EntraPrincipalTypeOutput)
+}
+
+func (e EntraPrincipalType) ToEntraPrincipalTypeOutputWithContext(ctx context.Context) EntraPrincipalTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EntraPrincipalTypeOutput)
+}
+
+func (e EntraPrincipalType) ToEntraPrincipalTypePtrOutput() EntraPrincipalTypePtrOutput {
+	return e.ToEntraPrincipalTypePtrOutputWithContext(context.Background())
+}
+
+func (e EntraPrincipalType) ToEntraPrincipalTypePtrOutputWithContext(ctx context.Context) EntraPrincipalTypePtrOutput {
+	return EntraPrincipalType(e).ToEntraPrincipalTypeOutputWithContext(ctx).ToEntraPrincipalTypePtrOutputWithContext(ctx)
+}
+
+func (e EntraPrincipalType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EntraPrincipalType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EntraPrincipalType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EntraPrincipalType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EntraPrincipalTypeOutput struct{ *pulumi.OutputState }
+
+func (EntraPrincipalTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntraPrincipalType)(nil)).Elem()
+}
+
+func (o EntraPrincipalTypeOutput) ToEntraPrincipalTypeOutput() EntraPrincipalTypeOutput {
+	return o
+}
+
+func (o EntraPrincipalTypeOutput) ToEntraPrincipalTypeOutputWithContext(ctx context.Context) EntraPrincipalTypeOutput {
+	return o
+}
+
+func (o EntraPrincipalTypeOutput) ToEntraPrincipalTypePtrOutput() EntraPrincipalTypePtrOutput {
+	return o.ToEntraPrincipalTypePtrOutputWithContext(context.Background())
+}
+
+func (o EntraPrincipalTypeOutput) ToEntraPrincipalTypePtrOutputWithContext(ctx context.Context) EntraPrincipalTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntraPrincipalType) *EntraPrincipalType {
+		return &v
+	}).(EntraPrincipalTypePtrOutput)
+}
+
+func (o EntraPrincipalTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EntraPrincipalTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EntraPrincipalType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EntraPrincipalTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EntraPrincipalTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EntraPrincipalType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EntraPrincipalTypePtrOutput struct{ *pulumi.OutputState }
+
+func (EntraPrincipalTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntraPrincipalType)(nil)).Elem()
+}
+
+func (o EntraPrincipalTypePtrOutput) ToEntraPrincipalTypePtrOutput() EntraPrincipalTypePtrOutput {
+	return o
+}
+
+func (o EntraPrincipalTypePtrOutput) ToEntraPrincipalTypePtrOutputWithContext(ctx context.Context) EntraPrincipalTypePtrOutput {
+	return o
+}
+
+func (o EntraPrincipalTypePtrOutput) Elem() EntraPrincipalTypeOutput {
+	return o.ApplyT(func(v *EntraPrincipalType) EntraPrincipalType {
+		if v != nil {
+			return *v
+		}
+		var ret EntraPrincipalType
+		return ret
+	}).(EntraPrincipalTypeOutput)
+}
+
+func (o EntraPrincipalTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EntraPrincipalTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EntraPrincipalType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EntraPrincipalTypeInput is an input type that accepts values of the EntraPrincipalType enum
+// A concrete instance of `EntraPrincipalTypeInput` can be one of the following:
+//
+//	EntraPrincipalTypeUser
+//	EntraPrincipalTypeServicePrincipal
+type EntraPrincipalTypeInput interface {
+	pulumi.Input
+
+	ToEntraPrincipalTypeOutput() EntraPrincipalTypeOutput
+	ToEntraPrincipalTypeOutputWithContext(context.Context) EntraPrincipalTypeOutput
+}
+
+var entraPrincipalTypePtrType = reflect.TypeOf((**EntraPrincipalType)(nil)).Elem()
+
+type EntraPrincipalTypePtrInput interface {
+	pulumi.Input
+
+	ToEntraPrincipalTypePtrOutput() EntraPrincipalTypePtrOutput
+	ToEntraPrincipalTypePtrOutputWithContext(context.Context) EntraPrincipalTypePtrOutput
+}
+
+type entraPrincipalTypePtr string
+
+func EntraPrincipalTypePtr(v string) EntraPrincipalTypePtrInput {
+	return (*entraPrincipalTypePtr)(&v)
+}
+
+func (*entraPrincipalTypePtr) ElementType() reflect.Type {
+	return entraPrincipalTypePtrType
+}
+
+func (in *entraPrincipalTypePtr) ToEntraPrincipalTypePtrOutput() EntraPrincipalTypePtrOutput {
+	return pulumi.ToOutput(in).(EntraPrincipalTypePtrOutput)
+}
+
+func (in *entraPrincipalTypePtr) ToEntraPrincipalTypePtrOutputWithContext(ctx context.Context) EntraPrincipalTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EntraPrincipalTypePtrOutput)
+}
+
 // The target high availability mode requested for the cluster.
 type HighAvailabilityMode string
 
@@ -354,6 +522,14 @@ func (in *highAvailabilityModePtr) ToHighAvailabilityModePtrOutput() HighAvailab
 func (in *highAvailabilityModePtr) ToHighAvailabilityModePtrOutputWithContext(ctx context.Context) HighAvailabilityModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HighAvailabilityModePtrOutput)
 }
+
+// The type of identity provider that the user belongs to.
+type IdentityProviderType string
+
+const (
+	// Microsoft Entra ID provider.
+	IdentityProviderTypeMicrosoftEntraID = IdentityProviderType("MicrosoftEntraID")
+)
 
 // Preview features that can be enabled on a mongo cluster.
 type PreviewFeature string
@@ -856,9 +1032,176 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
+// The role that is assigned to the user on the database scope.
+type UserRole string
+
+const (
+	// Datbase owner role permissions on the target scope.
+	UserRoleDatabaseOwner = UserRole("dbOwner")
+)
+
+func (UserRole) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserRole)(nil)).Elem()
+}
+
+func (e UserRole) ToUserRoleOutput() UserRoleOutput {
+	return pulumi.ToOutput(e).(UserRoleOutput)
+}
+
+func (e UserRole) ToUserRoleOutputWithContext(ctx context.Context) UserRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UserRoleOutput)
+}
+
+func (e UserRole) ToUserRolePtrOutput() UserRolePtrOutput {
+	return e.ToUserRolePtrOutputWithContext(context.Background())
+}
+
+func (e UserRole) ToUserRolePtrOutputWithContext(ctx context.Context) UserRolePtrOutput {
+	return UserRole(e).ToUserRoleOutputWithContext(ctx).ToUserRolePtrOutputWithContext(ctx)
+}
+
+func (e UserRole) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UserRole) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UserRole) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e UserRole) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type UserRoleOutput struct{ *pulumi.OutputState }
+
+func (UserRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserRole)(nil)).Elem()
+}
+
+func (o UserRoleOutput) ToUserRoleOutput() UserRoleOutput {
+	return o
+}
+
+func (o UserRoleOutput) ToUserRoleOutputWithContext(ctx context.Context) UserRoleOutput {
+	return o
+}
+
+func (o UserRoleOutput) ToUserRolePtrOutput() UserRolePtrOutput {
+	return o.ToUserRolePtrOutputWithContext(context.Background())
+}
+
+func (o UserRoleOutput) ToUserRolePtrOutputWithContext(ctx context.Context) UserRolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserRole) *UserRole {
+		return &v
+	}).(UserRolePtrOutput)
+}
+
+func (o UserRoleOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o UserRoleOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UserRole) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o UserRoleOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UserRoleOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UserRole) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type UserRolePtrOutput struct{ *pulumi.OutputState }
+
+func (UserRolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserRole)(nil)).Elem()
+}
+
+func (o UserRolePtrOutput) ToUserRolePtrOutput() UserRolePtrOutput {
+	return o
+}
+
+func (o UserRolePtrOutput) ToUserRolePtrOutputWithContext(ctx context.Context) UserRolePtrOutput {
+	return o
+}
+
+func (o UserRolePtrOutput) Elem() UserRoleOutput {
+	return o.ApplyT(func(v *UserRole) UserRole {
+		if v != nil {
+			return *v
+		}
+		var ret UserRole
+		return ret
+	}).(UserRoleOutput)
+}
+
+func (o UserRolePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UserRolePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UserRole) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// UserRoleInput is an input type that accepts values of the UserRole enum
+// A concrete instance of `UserRoleInput` can be one of the following:
+//
+//	UserRoleDatabaseOwner
+type UserRoleInput interface {
+	pulumi.Input
+
+	ToUserRoleOutput() UserRoleOutput
+	ToUserRoleOutputWithContext(context.Context) UserRoleOutput
+}
+
+var userRolePtrType = reflect.TypeOf((**UserRole)(nil)).Elem()
+
+type UserRolePtrInput interface {
+	pulumi.Input
+
+	ToUserRolePtrOutput() UserRolePtrOutput
+	ToUserRolePtrOutputWithContext(context.Context) UserRolePtrOutput
+}
+
+type userRolePtr string
+
+func UserRolePtr(v string) UserRolePtrInput {
+	return (*userRolePtr)(&v)
+}
+
+func (*userRolePtr) ElementType() reflect.Type {
+	return userRolePtrType
+}
+
+func (in *userRolePtr) ToUserRolePtrOutput() UserRolePtrOutput {
+	return pulumi.ToOutput(in).(UserRolePtrOutput)
+}
+
+func (in *userRolePtr) ToUserRolePtrOutputWithContext(ctx context.Context) UserRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UserRolePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CreateModeOutput{})
 	pulumi.RegisterOutputType(CreateModePtrOutput{})
+	pulumi.RegisterOutputType(EntraPrincipalTypeOutput{})
+	pulumi.RegisterOutputType(EntraPrincipalTypePtrOutput{})
 	pulumi.RegisterOutputType(HighAvailabilityModeOutput{})
 	pulumi.RegisterOutputType(HighAvailabilityModePtrOutput{})
 	pulumi.RegisterOutputType(PreviewFeatureOutput{})
@@ -867,4 +1210,6 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
+	pulumi.RegisterOutputType(UserRoleOutput{})
+	pulumi.RegisterOutputType(UserRolePtrOutput{})
 }

@@ -32,15 +32,15 @@ type AvailabilityGroupListener struct {
 	LoadBalancerConfigurations LoadBalancerConfigurationResponseArrayOutput `pulumi:"loadBalancerConfigurations"`
 	// List of multi subnet IP configurations for an AG listener.
 	MultiSubnetIpConfigurations MultiSubnetIpConfigurationResponseArrayOutput `pulumi:"multiSubnetIpConfigurations"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Listener port.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// Provisioning state to track the async operation status.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -131,7 +131,7 @@ type availabilityGroupListenerArgs struct {
 	MultiSubnetIpConfigurations []MultiSubnetIpConfiguration `pulumi:"multiSubnetIpConfigurations"`
 	// Listener port.
 	Port *int `pulumi:"port"`
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the SQL virtual machine group.
 	SqlVirtualMachineGroupName string `pulumi:"sqlVirtualMachineGroupName"`
@@ -153,7 +153,7 @@ type AvailabilityGroupListenerArgs struct {
 	MultiSubnetIpConfigurations MultiSubnetIpConfigurationArrayInput
 	// Listener port.
 	Port pulumi.IntPtrInput
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Name of the SQL virtual machine group.
 	SqlVirtualMachineGroupName pulumi.StringInput
@@ -234,7 +234,7 @@ func (o AvailabilityGroupListenerOutput) MultiSubnetIpConfigurations() MultiSubn
 	}).(MultiSubnetIpConfigurationResponseArrayOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o AvailabilityGroupListenerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AvailabilityGroupListener) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -249,12 +249,12 @@ func (o AvailabilityGroupListenerOutput) ProvisioningState() pulumi.StringOutput
 	return o.ApplyT(func(v *AvailabilityGroupListener) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o AvailabilityGroupListenerOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *AvailabilityGroupListener) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AvailabilityGroupListenerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AvailabilityGroupListener) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

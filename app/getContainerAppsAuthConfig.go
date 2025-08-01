@@ -13,9 +13,9 @@ import (
 
 // Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2025-01-01.
 //
-// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupContainerAppsAuthConfig(ctx *pulumi.Context, args *LookupContainerAppsAuthConfigArgs, opts ...pulumi.InvokeOption) (*LookupContainerAppsAuthConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerAppsAuthConfigResult
@@ -45,7 +45,7 @@ type LookupContainerAppsAuthConfigResult struct {
 	GlobalValidation *GlobalValidationResponse `pulumi:"globalValidation"`
 	// The configuration settings of the HTTP requests for authentication and authorization requests made against ContainerApp Service Authentication/Authorization.
 	HttpSettings *HttpSettingsResponse `pulumi:"httpSettings"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
 	IdentityProviders *IdentityProvidersResponse `pulumi:"identityProviders"`
@@ -118,7 +118,7 @@ func (o LookupContainerAppsAuthConfigResultOutput) HttpSettings() HttpSettingsRe
 	return o.ApplyT(func(v LookupContainerAppsAuthConfigResult) *HttpSettingsResponse { return v.HttpSettings }).(HttpSettingsResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupContainerAppsAuthConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppsAuthConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }

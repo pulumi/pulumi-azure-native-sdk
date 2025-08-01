@@ -117,15 +117,15 @@ type policyArgs struct {
 	FactData *string `pulumi:"factData"`
 	// The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
 	FactName *string `pulumi:"factName"`
-	// The name of the lab.
+	// labs
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the policy.
+	// The name of the Schedule
 	Name *string `pulumi:"name"`
-	// The name of the policy set.
+	// policysets
 	PolicySetName string `pulumi:"policySetName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The status of the policy.
 	Status *string `pulumi:"status"`
@@ -145,15 +145,15 @@ type PolicyArgs struct {
 	FactData pulumi.StringPtrInput
 	// The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
 	FactName pulumi.StringPtrInput
-	// The name of the lab.
+	// labs
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the policy.
+	// The name of the Schedule
 	Name pulumi.StringPtrInput
-	// The name of the policy set.
+	// policysets
 	PolicySetName pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The status of the policy.
 	Status pulumi.StringPtrInput

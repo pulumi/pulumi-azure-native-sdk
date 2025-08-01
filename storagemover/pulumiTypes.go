@@ -13,35 +13,35 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-type AgentPropertiesResponseErrorDetails struct {
+type AgentPropertiesErrorDetailsResponse struct {
 	// Error code reported by Agent
 	Code *string `pulumi:"code"`
 	// Expanded description of reported error code
 	Message *string `pulumi:"message"`
 }
 
-type AgentPropertiesResponseErrorDetailsOutput struct{ *pulumi.OutputState }
+type AgentPropertiesErrorDetailsResponseOutput struct{ *pulumi.OutputState }
 
-func (AgentPropertiesResponseErrorDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPropertiesResponseErrorDetails)(nil)).Elem()
+func (AgentPropertiesErrorDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentPropertiesErrorDetailsResponse)(nil)).Elem()
 }
 
-func (o AgentPropertiesResponseErrorDetailsOutput) ToAgentPropertiesResponseErrorDetailsOutput() AgentPropertiesResponseErrorDetailsOutput {
+func (o AgentPropertiesErrorDetailsResponseOutput) ToAgentPropertiesErrorDetailsResponseOutput() AgentPropertiesErrorDetailsResponseOutput {
 	return o
 }
 
-func (o AgentPropertiesResponseErrorDetailsOutput) ToAgentPropertiesResponseErrorDetailsOutputWithContext(ctx context.Context) AgentPropertiesResponseErrorDetailsOutput {
+func (o AgentPropertiesErrorDetailsResponseOutput) ToAgentPropertiesErrorDetailsResponseOutputWithContext(ctx context.Context) AgentPropertiesErrorDetailsResponseOutput {
 	return o
 }
 
 // Error code reported by Agent
-func (o AgentPropertiesResponseErrorDetailsOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgentPropertiesResponseErrorDetails) *string { return v.Code }).(pulumi.StringPtrOutput)
+func (o AgentPropertiesErrorDetailsResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentPropertiesErrorDetailsResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
 // Expanded description of reported error code
-func (o AgentPropertiesResponseErrorDetailsOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgentPropertiesResponseErrorDetails) *string { return v.Message }).(pulumi.StringPtrOutput)
+func (o AgentPropertiesErrorDetailsResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentPropertiesErrorDetailsResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
 // The Azure Key Vault secret URIs which store the credentials.
@@ -985,7 +985,7 @@ type Time struct {
 	// The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.
 	Hour int `pulumi:"hour"`
 	// The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
-	Minute *int `pulumi:"minute"`
+	Minute *float64 `pulumi:"minute"`
 }
 
 // Defaults sets the appropriate defaults for Time
@@ -995,7 +995,7 @@ func (val *Time) Defaults() *Time {
 	}
 	tmp := *val
 	if tmp.Minute == nil {
-		minute_ := 0
+		minute_ := 0.0
 		tmp.Minute = &minute_
 	}
 	return &tmp
@@ -1017,7 +1017,7 @@ type TimeArgs struct {
 	// The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.
 	Hour pulumi.IntInput `pulumi:"hour"`
 	// The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
-	Minute pulumi.IntPtrInput `pulumi:"minute"`
+	Minute pulumi.Float64PtrInput `pulumi:"minute"`
 }
 
 // Defaults sets the appropriate defaults for TimeArgs
@@ -1027,7 +1027,7 @@ func (val *TimeArgs) Defaults() *TimeArgs {
 	}
 	tmp := *val
 	if tmp.Minute == nil {
-		tmp.Minute = pulumi.IntPtr(0)
+		tmp.Minute = pulumi.Float64Ptr(0.0)
 	}
 	return &tmp
 }
@@ -1064,8 +1064,8 @@ func (o TimeOutput) Hour() pulumi.IntOutput {
 }
 
 // The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
-func (o TimeOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Time) *int { return v.Minute }).(pulumi.IntPtrOutput)
+func (o TimeOutput) Minute() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Time) *float64 { return v.Minute }).(pulumi.Float64PtrOutput)
 }
 
 // The time of day.
@@ -1073,7 +1073,7 @@ type TimeResponse struct {
 	// The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.
 	Hour int `pulumi:"hour"`
 	// The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
-	Minute *int `pulumi:"minute"`
+	Minute *float64 `pulumi:"minute"`
 }
 
 // Defaults sets the appropriate defaults for TimeResponse
@@ -1083,7 +1083,7 @@ func (val *TimeResponse) Defaults() *TimeResponse {
 	}
 	tmp := *val
 	if tmp.Minute == nil {
-		minute_ := 0
+		minute_ := 0.0
 		tmp.Minute = &minute_
 	}
 	return &tmp
@@ -1110,8 +1110,8 @@ func (o TimeResponseOutput) Hour() pulumi.IntOutput {
 }
 
 // The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
-func (o TimeResponseOutput) Minute() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TimeResponse) *int { return v.Minute }).(pulumi.IntPtrOutput)
+func (o TimeResponseOutput) Minute() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TimeResponse) *float64 { return v.Minute }).(pulumi.Float64PtrOutput)
 }
 
 // The WAN-link upload limit schedule. Overlapping recurrences are not allowed.
@@ -1544,7 +1544,7 @@ func (o UploadLimitWeeklyRecurrenceResponseArrayOutput) Index(i pulumi.IntInput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(AgentPropertiesResponseErrorDetailsOutput{})
+	pulumi.RegisterOutputType(AgentPropertiesErrorDetailsResponseOutput{})
 	pulumi.RegisterOutputType(AzureKeyVaultSmbCredentialsOutput{})
 	pulumi.RegisterOutputType(AzureKeyVaultSmbCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(AzureKeyVaultSmbCredentialsResponseOutput{})

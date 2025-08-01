@@ -114,9 +114,9 @@ type virtualNetworkArgs struct {
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the virtual network.
+	// The name of the VirtualNetwork
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The subnet overrides of the virtual network.
 	SubnetOverrides []SubnetOverride `pulumi:"subnetOverrides"`
@@ -136,9 +136,9 @@ type VirtualNetworkArgs struct {
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the virtual network.
+	// The name of the VirtualNetwork
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The subnet overrides of the virtual network.
 	SubnetOverrides SubnetOverrideArrayInput

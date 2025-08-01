@@ -27,7 +27,7 @@ func LookupCapacityDetails(ctx *pulumi.Context, args *LookupCapacityDetailsArgs,
 type LookupCapacityDetailsArgs struct {
 	// The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
 	DedicatedCapacityName string `pulumi:"dedicatedCapacityName"`
-	// The name of the Azure Resource group of which a given PowerBIDedicated capacity is part. This name must be at least 1 character in length, and no more than 90.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,13 +39,13 @@ type LookupCapacityDetailsResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Capacity name
 	FriendlyName string `pulumi:"friendlyName"`
-	// An identifier that represents the PowerBI Dedicated resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Location of the PowerBI Dedicated resource.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2)
 	Mode *string `pulumi:"mode"`
-	// The name of the PowerBI Dedicated resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The current deployment state of PowerBI Dedicated resource. The provisioningState is to indicate states for resource provisioning.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -53,13 +53,13 @@ type LookupCapacityDetailsResult struct {
 	Sku CapacitySkuResponse `pulumi:"sku"`
 	// The current state of PowerBI Dedicated resource. The state is to indicate more states outside of resource provisioning.
 	State string `pulumi:"state"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData *SystemDataResponse `pulumi:"systemData"`
-	// Key-value pairs of additional resource provisioning properties.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Tenant ID for the capacity. Used for creating Pro Plus capacity.
 	TenantId string `pulumi:"tenantId"`
-	// The type of the PowerBI Dedicated resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -75,7 +75,7 @@ func LookupCapacityDetailsOutput(ctx *pulumi.Context, args LookupCapacityDetails
 type LookupCapacityDetailsOutputArgs struct {
 	// The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
 	DedicatedCapacityName pulumi.StringInput `pulumi:"dedicatedCapacityName"`
-	// The name of the Azure Resource group of which a given PowerBIDedicated capacity is part. This name must be at least 1 character in length, and no more than 90.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -113,12 +113,12 @@ func (o LookupCapacityDetailsResultOutput) FriendlyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapacityDetailsResult) string { return v.FriendlyName }).(pulumi.StringOutput)
 }
 
-// An identifier that represents the PowerBI Dedicated resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupCapacityDetailsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapacityDetailsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Location of the PowerBI Dedicated resource.
+// The geo-location where the resource lives
 func (o LookupCapacityDetailsResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapacityDetailsResult) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -128,7 +128,7 @@ func (o LookupCapacityDetailsResultOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCapacityDetailsResult) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// The name of the PowerBI Dedicated resource.
+// The name of the resource
 func (o LookupCapacityDetailsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapacityDetailsResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -148,12 +148,12 @@ func (o LookupCapacityDetailsResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapacityDetailsResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o LookupCapacityDetailsResultOutput) SystemData() SystemDataResponsePtrOutput {
-	return o.ApplyT(func(v LookupCapacityDetailsResult) *SystemDataResponse { return v.SystemData }).(SystemDataResponsePtrOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupCapacityDetailsResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCapacityDetailsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Key-value pairs of additional resource provisioning properties.
+// Resource tags.
 func (o LookupCapacityDetailsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCapacityDetailsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -163,7 +163,7 @@ func (o LookupCapacityDetailsResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapacityDetailsResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// The type of the PowerBI Dedicated resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupCapacityDetailsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapacityDetailsResult) string { return v.Type }).(pulumi.StringOutput)
 }

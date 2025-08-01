@@ -13,7 +13,9 @@ import (
 
 // Gets the sku details for the given resource type and sku name.
 //
-// Uses Azure REST API version 2021-09-01-preview.
+// Uses Azure REST API version 2024-09-01.
+//
+// Other available API versions: 2021-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native providerhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSkus(ctx *pulumi.Context, args *LookupSkusArgs, opts ...pulumi.InvokeOption) (*LookupSkusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSkusResult
@@ -36,12 +38,12 @@ type LookupSkusArgs struct {
 type LookupSkusResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name       string                        `pulumi:"name"`
 	Properties SkuResourceResponseProperties `pulumi:"properties"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -88,7 +90,7 @@ func (o LookupSkusResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSkusResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -102,7 +104,7 @@ func (o LookupSkusResultOutput) Properties() SkuResourceResponsePropertiesOutput
 	return o.ApplyT(func(v LookupSkusResult) SkuResourceResponseProperties { return v.Properties }).(SkuResourceResponsePropertiesOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSkusResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSkusResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

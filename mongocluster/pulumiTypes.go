@@ -552,6 +552,611 @@ func (o ConnectionStringResponseArrayOutput) Index(i pulumi.IntInput) Connection
 	}).(ConnectionStringResponseOutput)
 }
 
+// Database role definition that is assigned to a user.
+type DatabaseRole struct {
+	// Database scope that the role is assigned to.
+	Db string `pulumi:"db"`
+	// The role that is assigned to the user on the database scope.
+	Role string `pulumi:"role"`
+}
+
+// DatabaseRoleInput is an input type that accepts DatabaseRoleArgs and DatabaseRoleOutput values.
+// You can construct a concrete instance of `DatabaseRoleInput` via:
+//
+//	DatabaseRoleArgs{...}
+type DatabaseRoleInput interface {
+	pulumi.Input
+
+	ToDatabaseRoleOutput() DatabaseRoleOutput
+	ToDatabaseRoleOutputWithContext(context.Context) DatabaseRoleOutput
+}
+
+// Database role definition that is assigned to a user.
+type DatabaseRoleArgs struct {
+	// Database scope that the role is assigned to.
+	Db pulumi.StringInput `pulumi:"db"`
+	// The role that is assigned to the user on the database scope.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (DatabaseRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseRole)(nil)).Elem()
+}
+
+func (i DatabaseRoleArgs) ToDatabaseRoleOutput() DatabaseRoleOutput {
+	return i.ToDatabaseRoleOutputWithContext(context.Background())
+}
+
+func (i DatabaseRoleArgs) ToDatabaseRoleOutputWithContext(ctx context.Context) DatabaseRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseRoleOutput)
+}
+
+// DatabaseRoleArrayInput is an input type that accepts DatabaseRoleArray and DatabaseRoleArrayOutput values.
+// You can construct a concrete instance of `DatabaseRoleArrayInput` via:
+//
+//	DatabaseRoleArray{ DatabaseRoleArgs{...} }
+type DatabaseRoleArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseRoleArrayOutput() DatabaseRoleArrayOutput
+	ToDatabaseRoleArrayOutputWithContext(context.Context) DatabaseRoleArrayOutput
+}
+
+type DatabaseRoleArray []DatabaseRoleInput
+
+func (DatabaseRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseRole)(nil)).Elem()
+}
+
+func (i DatabaseRoleArray) ToDatabaseRoleArrayOutput() DatabaseRoleArrayOutput {
+	return i.ToDatabaseRoleArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseRoleArray) ToDatabaseRoleArrayOutputWithContext(ctx context.Context) DatabaseRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseRoleArrayOutput)
+}
+
+// Database role definition that is assigned to a user.
+type DatabaseRoleOutput struct{ *pulumi.OutputState }
+
+func (DatabaseRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseRole)(nil)).Elem()
+}
+
+func (o DatabaseRoleOutput) ToDatabaseRoleOutput() DatabaseRoleOutput {
+	return o
+}
+
+func (o DatabaseRoleOutput) ToDatabaseRoleOutputWithContext(ctx context.Context) DatabaseRoleOutput {
+	return o
+}
+
+// Database scope that the role is assigned to.
+func (o DatabaseRoleOutput) Db() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseRole) string { return v.Db }).(pulumi.StringOutput)
+}
+
+// The role that is assigned to the user on the database scope.
+func (o DatabaseRoleOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseRole) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type DatabaseRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseRole)(nil)).Elem()
+}
+
+func (o DatabaseRoleArrayOutput) ToDatabaseRoleArrayOutput() DatabaseRoleArrayOutput {
+	return o
+}
+
+func (o DatabaseRoleArrayOutput) ToDatabaseRoleArrayOutputWithContext(ctx context.Context) DatabaseRoleArrayOutput {
+	return o
+}
+
+func (o DatabaseRoleArrayOutput) Index(i pulumi.IntInput) DatabaseRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseRole {
+		return vs[0].([]DatabaseRole)[vs[1].(int)]
+	}).(DatabaseRoleOutput)
+}
+
+// Database role definition that is assigned to a user.
+type DatabaseRoleResponse struct {
+	// Database scope that the role is assigned to.
+	Db string `pulumi:"db"`
+	// The role that is assigned to the user on the database scope.
+	Role string `pulumi:"role"`
+}
+
+// Database role definition that is assigned to a user.
+type DatabaseRoleResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseRoleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseRoleResponse)(nil)).Elem()
+}
+
+func (o DatabaseRoleResponseOutput) ToDatabaseRoleResponseOutput() DatabaseRoleResponseOutput {
+	return o
+}
+
+func (o DatabaseRoleResponseOutput) ToDatabaseRoleResponseOutputWithContext(ctx context.Context) DatabaseRoleResponseOutput {
+	return o
+}
+
+// Database scope that the role is assigned to.
+func (o DatabaseRoleResponseOutput) Db() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseRoleResponse) string { return v.Db }).(pulumi.StringOutput)
+}
+
+// The role that is assigned to the user on the database scope.
+func (o DatabaseRoleResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseRoleResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type DatabaseRoleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseRoleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseRoleResponse)(nil)).Elem()
+}
+
+func (o DatabaseRoleResponseArrayOutput) ToDatabaseRoleResponseArrayOutput() DatabaseRoleResponseArrayOutput {
+	return o
+}
+
+func (o DatabaseRoleResponseArrayOutput) ToDatabaseRoleResponseArrayOutputWithContext(ctx context.Context) DatabaseRoleResponseArrayOutput {
+	return o
+}
+
+func (o DatabaseRoleResponseArrayOutput) Index(i pulumi.IntInput) DatabaseRoleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseRoleResponse {
+		return vs[0].([]DatabaseRoleResponse)[vs[1].(int)]
+	}).(DatabaseRoleResponseOutput)
+}
+
+// Defines a Microsoft Entra ID Mongo user.
+type EntraIdentityProvider struct {
+	// The Entra identity properties for the user.
+	Properties EntraIdentityProviderProperties `pulumi:"properties"`
+	// Identity provider types that a a user identity can belong to.
+	// Expected value is 'MicrosoftEntraID'.
+	Type string `pulumi:"type"`
+}
+
+// EntraIdentityProviderInput is an input type that accepts EntraIdentityProviderArgs and EntraIdentityProviderOutput values.
+// You can construct a concrete instance of `EntraIdentityProviderInput` via:
+//
+//	EntraIdentityProviderArgs{...}
+type EntraIdentityProviderInput interface {
+	pulumi.Input
+
+	ToEntraIdentityProviderOutput() EntraIdentityProviderOutput
+	ToEntraIdentityProviderOutputWithContext(context.Context) EntraIdentityProviderOutput
+}
+
+// Defines a Microsoft Entra ID Mongo user.
+type EntraIdentityProviderArgs struct {
+	// The Entra identity properties for the user.
+	Properties EntraIdentityProviderPropertiesInput `pulumi:"properties"`
+	// Identity provider types that a a user identity can belong to.
+	// Expected value is 'MicrosoftEntraID'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (EntraIdentityProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntraIdentityProvider)(nil)).Elem()
+}
+
+func (i EntraIdentityProviderArgs) ToEntraIdentityProviderOutput() EntraIdentityProviderOutput {
+	return i.ToEntraIdentityProviderOutputWithContext(context.Background())
+}
+
+func (i EntraIdentityProviderArgs) ToEntraIdentityProviderOutputWithContext(ctx context.Context) EntraIdentityProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntraIdentityProviderOutput)
+}
+
+func (i EntraIdentityProviderArgs) ToEntraIdentityProviderPtrOutput() EntraIdentityProviderPtrOutput {
+	return i.ToEntraIdentityProviderPtrOutputWithContext(context.Background())
+}
+
+func (i EntraIdentityProviderArgs) ToEntraIdentityProviderPtrOutputWithContext(ctx context.Context) EntraIdentityProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntraIdentityProviderOutput).ToEntraIdentityProviderPtrOutputWithContext(ctx)
+}
+
+// EntraIdentityProviderPtrInput is an input type that accepts EntraIdentityProviderArgs, EntraIdentityProviderPtr and EntraIdentityProviderPtrOutput values.
+// You can construct a concrete instance of `EntraIdentityProviderPtrInput` via:
+//
+//	        EntraIdentityProviderArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntraIdentityProviderPtrInput interface {
+	pulumi.Input
+
+	ToEntraIdentityProviderPtrOutput() EntraIdentityProviderPtrOutput
+	ToEntraIdentityProviderPtrOutputWithContext(context.Context) EntraIdentityProviderPtrOutput
+}
+
+type entraIdentityProviderPtrType EntraIdentityProviderArgs
+
+func EntraIdentityProviderPtr(v *EntraIdentityProviderArgs) EntraIdentityProviderPtrInput {
+	return (*entraIdentityProviderPtrType)(v)
+}
+
+func (*entraIdentityProviderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntraIdentityProvider)(nil)).Elem()
+}
+
+func (i *entraIdentityProviderPtrType) ToEntraIdentityProviderPtrOutput() EntraIdentityProviderPtrOutput {
+	return i.ToEntraIdentityProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *entraIdentityProviderPtrType) ToEntraIdentityProviderPtrOutputWithContext(ctx context.Context) EntraIdentityProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntraIdentityProviderPtrOutput)
+}
+
+// Defines a Microsoft Entra ID Mongo user.
+type EntraIdentityProviderOutput struct{ *pulumi.OutputState }
+
+func (EntraIdentityProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntraIdentityProvider)(nil)).Elem()
+}
+
+func (o EntraIdentityProviderOutput) ToEntraIdentityProviderOutput() EntraIdentityProviderOutput {
+	return o
+}
+
+func (o EntraIdentityProviderOutput) ToEntraIdentityProviderOutputWithContext(ctx context.Context) EntraIdentityProviderOutput {
+	return o
+}
+
+func (o EntraIdentityProviderOutput) ToEntraIdentityProviderPtrOutput() EntraIdentityProviderPtrOutput {
+	return o.ToEntraIdentityProviderPtrOutputWithContext(context.Background())
+}
+
+func (o EntraIdentityProviderOutput) ToEntraIdentityProviderPtrOutputWithContext(ctx context.Context) EntraIdentityProviderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntraIdentityProvider) *EntraIdentityProvider {
+		return &v
+	}).(EntraIdentityProviderPtrOutput)
+}
+
+// The Entra identity properties for the user.
+func (o EntraIdentityProviderOutput) Properties() EntraIdentityProviderPropertiesOutput {
+	return o.ApplyT(func(v EntraIdentityProvider) EntraIdentityProviderProperties { return v.Properties }).(EntraIdentityProviderPropertiesOutput)
+}
+
+// Identity provider types that a a user identity can belong to.
+// Expected value is 'MicrosoftEntraID'.
+func (o EntraIdentityProviderOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EntraIdentityProvider) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type EntraIdentityProviderPtrOutput struct{ *pulumi.OutputState }
+
+func (EntraIdentityProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntraIdentityProvider)(nil)).Elem()
+}
+
+func (o EntraIdentityProviderPtrOutput) ToEntraIdentityProviderPtrOutput() EntraIdentityProviderPtrOutput {
+	return o
+}
+
+func (o EntraIdentityProviderPtrOutput) ToEntraIdentityProviderPtrOutputWithContext(ctx context.Context) EntraIdentityProviderPtrOutput {
+	return o
+}
+
+func (o EntraIdentityProviderPtrOutput) Elem() EntraIdentityProviderOutput {
+	return o.ApplyT(func(v *EntraIdentityProvider) EntraIdentityProvider {
+		if v != nil {
+			return *v
+		}
+		var ret EntraIdentityProvider
+		return ret
+	}).(EntraIdentityProviderOutput)
+}
+
+// The Entra identity properties for the user.
+func (o EntraIdentityProviderPtrOutput) Properties() EntraIdentityProviderPropertiesPtrOutput {
+	return o.ApplyT(func(v *EntraIdentityProvider) *EntraIdentityProviderProperties {
+		if v == nil {
+			return nil
+		}
+		return &v.Properties
+	}).(EntraIdentityProviderPropertiesPtrOutput)
+}
+
+// Identity provider types that a a user identity can belong to.
+// Expected value is 'MicrosoftEntraID'.
+func (o EntraIdentityProviderPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntraIdentityProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Microsoft Entra ID provider properties.
+type EntraIdentityProviderProperties struct {
+	// The principal type of the user.
+	PrincipalType string `pulumi:"principalType"`
+}
+
+// EntraIdentityProviderPropertiesInput is an input type that accepts EntraIdentityProviderPropertiesArgs and EntraIdentityProviderPropertiesOutput values.
+// You can construct a concrete instance of `EntraIdentityProviderPropertiesInput` via:
+//
+//	EntraIdentityProviderPropertiesArgs{...}
+type EntraIdentityProviderPropertiesInput interface {
+	pulumi.Input
+
+	ToEntraIdentityProviderPropertiesOutput() EntraIdentityProviderPropertiesOutput
+	ToEntraIdentityProviderPropertiesOutputWithContext(context.Context) EntraIdentityProviderPropertiesOutput
+}
+
+// Microsoft Entra ID provider properties.
+type EntraIdentityProviderPropertiesArgs struct {
+	// The principal type of the user.
+	PrincipalType pulumi.StringInput `pulumi:"principalType"`
+}
+
+func (EntraIdentityProviderPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntraIdentityProviderProperties)(nil)).Elem()
+}
+
+func (i EntraIdentityProviderPropertiesArgs) ToEntraIdentityProviderPropertiesOutput() EntraIdentityProviderPropertiesOutput {
+	return i.ToEntraIdentityProviderPropertiesOutputWithContext(context.Background())
+}
+
+func (i EntraIdentityProviderPropertiesArgs) ToEntraIdentityProviderPropertiesOutputWithContext(ctx context.Context) EntraIdentityProviderPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntraIdentityProviderPropertiesOutput)
+}
+
+func (i EntraIdentityProviderPropertiesArgs) ToEntraIdentityProviderPropertiesPtrOutput() EntraIdentityProviderPropertiesPtrOutput {
+	return i.ToEntraIdentityProviderPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i EntraIdentityProviderPropertiesArgs) ToEntraIdentityProviderPropertiesPtrOutputWithContext(ctx context.Context) EntraIdentityProviderPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntraIdentityProviderPropertiesOutput).ToEntraIdentityProviderPropertiesPtrOutputWithContext(ctx)
+}
+
+// EntraIdentityProviderPropertiesPtrInput is an input type that accepts EntraIdentityProviderPropertiesArgs, EntraIdentityProviderPropertiesPtr and EntraIdentityProviderPropertiesPtrOutput values.
+// You can construct a concrete instance of `EntraIdentityProviderPropertiesPtrInput` via:
+//
+//	        EntraIdentityProviderPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntraIdentityProviderPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToEntraIdentityProviderPropertiesPtrOutput() EntraIdentityProviderPropertiesPtrOutput
+	ToEntraIdentityProviderPropertiesPtrOutputWithContext(context.Context) EntraIdentityProviderPropertiesPtrOutput
+}
+
+type entraIdentityProviderPropertiesPtrType EntraIdentityProviderPropertiesArgs
+
+func EntraIdentityProviderPropertiesPtr(v *EntraIdentityProviderPropertiesArgs) EntraIdentityProviderPropertiesPtrInput {
+	return (*entraIdentityProviderPropertiesPtrType)(v)
+}
+
+func (*entraIdentityProviderPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntraIdentityProviderProperties)(nil)).Elem()
+}
+
+func (i *entraIdentityProviderPropertiesPtrType) ToEntraIdentityProviderPropertiesPtrOutput() EntraIdentityProviderPropertiesPtrOutput {
+	return i.ToEntraIdentityProviderPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *entraIdentityProviderPropertiesPtrType) ToEntraIdentityProviderPropertiesPtrOutputWithContext(ctx context.Context) EntraIdentityProviderPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntraIdentityProviderPropertiesPtrOutput)
+}
+
+// Microsoft Entra ID provider properties.
+type EntraIdentityProviderPropertiesOutput struct{ *pulumi.OutputState }
+
+func (EntraIdentityProviderPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntraIdentityProviderProperties)(nil)).Elem()
+}
+
+func (o EntraIdentityProviderPropertiesOutput) ToEntraIdentityProviderPropertiesOutput() EntraIdentityProviderPropertiesOutput {
+	return o
+}
+
+func (o EntraIdentityProviderPropertiesOutput) ToEntraIdentityProviderPropertiesOutputWithContext(ctx context.Context) EntraIdentityProviderPropertiesOutput {
+	return o
+}
+
+func (o EntraIdentityProviderPropertiesOutput) ToEntraIdentityProviderPropertiesPtrOutput() EntraIdentityProviderPropertiesPtrOutput {
+	return o.ToEntraIdentityProviderPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o EntraIdentityProviderPropertiesOutput) ToEntraIdentityProviderPropertiesPtrOutputWithContext(ctx context.Context) EntraIdentityProviderPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntraIdentityProviderProperties) *EntraIdentityProviderProperties {
+		return &v
+	}).(EntraIdentityProviderPropertiesPtrOutput)
+}
+
+// The principal type of the user.
+func (o EntraIdentityProviderPropertiesOutput) PrincipalType() pulumi.StringOutput {
+	return o.ApplyT(func(v EntraIdentityProviderProperties) string { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+type EntraIdentityProviderPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (EntraIdentityProviderPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntraIdentityProviderProperties)(nil)).Elem()
+}
+
+func (o EntraIdentityProviderPropertiesPtrOutput) ToEntraIdentityProviderPropertiesPtrOutput() EntraIdentityProviderPropertiesPtrOutput {
+	return o
+}
+
+func (o EntraIdentityProviderPropertiesPtrOutput) ToEntraIdentityProviderPropertiesPtrOutputWithContext(ctx context.Context) EntraIdentityProviderPropertiesPtrOutput {
+	return o
+}
+
+func (o EntraIdentityProviderPropertiesPtrOutput) Elem() EntraIdentityProviderPropertiesOutput {
+	return o.ApplyT(func(v *EntraIdentityProviderProperties) EntraIdentityProviderProperties {
+		if v != nil {
+			return *v
+		}
+		var ret EntraIdentityProviderProperties
+		return ret
+	}).(EntraIdentityProviderPropertiesOutput)
+}
+
+// The principal type of the user.
+func (o EntraIdentityProviderPropertiesPtrOutput) PrincipalType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntraIdentityProviderProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Microsoft Entra ID provider properties.
+type EntraIdentityProviderPropertiesResponse struct {
+	// The principal type of the user.
+	PrincipalType string `pulumi:"principalType"`
+}
+
+// Microsoft Entra ID provider properties.
+type EntraIdentityProviderPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EntraIdentityProviderPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntraIdentityProviderPropertiesResponse)(nil)).Elem()
+}
+
+func (o EntraIdentityProviderPropertiesResponseOutput) ToEntraIdentityProviderPropertiesResponseOutput() EntraIdentityProviderPropertiesResponseOutput {
+	return o
+}
+
+func (o EntraIdentityProviderPropertiesResponseOutput) ToEntraIdentityProviderPropertiesResponseOutputWithContext(ctx context.Context) EntraIdentityProviderPropertiesResponseOutput {
+	return o
+}
+
+// The principal type of the user.
+func (o EntraIdentityProviderPropertiesResponseOutput) PrincipalType() pulumi.StringOutput {
+	return o.ApplyT(func(v EntraIdentityProviderPropertiesResponse) string { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+type EntraIdentityProviderPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EntraIdentityProviderPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntraIdentityProviderPropertiesResponse)(nil)).Elem()
+}
+
+func (o EntraIdentityProviderPropertiesResponsePtrOutput) ToEntraIdentityProviderPropertiesResponsePtrOutput() EntraIdentityProviderPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o EntraIdentityProviderPropertiesResponsePtrOutput) ToEntraIdentityProviderPropertiesResponsePtrOutputWithContext(ctx context.Context) EntraIdentityProviderPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o EntraIdentityProviderPropertiesResponsePtrOutput) Elem() EntraIdentityProviderPropertiesResponseOutput {
+	return o.ApplyT(func(v *EntraIdentityProviderPropertiesResponse) EntraIdentityProviderPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EntraIdentityProviderPropertiesResponse
+		return ret
+	}).(EntraIdentityProviderPropertiesResponseOutput)
+}
+
+// The principal type of the user.
+func (o EntraIdentityProviderPropertiesResponsePtrOutput) PrincipalType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntraIdentityProviderPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines a Microsoft Entra ID Mongo user.
+type EntraIdentityProviderResponse struct {
+	// The Entra identity properties for the user.
+	Properties EntraIdentityProviderPropertiesResponse `pulumi:"properties"`
+	// Identity provider types that a a user identity can belong to.
+	// Expected value is 'MicrosoftEntraID'.
+	Type string `pulumi:"type"`
+}
+
+// Defines a Microsoft Entra ID Mongo user.
+type EntraIdentityProviderResponseOutput struct{ *pulumi.OutputState }
+
+func (EntraIdentityProviderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntraIdentityProviderResponse)(nil)).Elem()
+}
+
+func (o EntraIdentityProviderResponseOutput) ToEntraIdentityProviderResponseOutput() EntraIdentityProviderResponseOutput {
+	return o
+}
+
+func (o EntraIdentityProviderResponseOutput) ToEntraIdentityProviderResponseOutputWithContext(ctx context.Context) EntraIdentityProviderResponseOutput {
+	return o
+}
+
+// The Entra identity properties for the user.
+func (o EntraIdentityProviderResponseOutput) Properties() EntraIdentityProviderPropertiesResponseOutput {
+	return o.ApplyT(func(v EntraIdentityProviderResponse) EntraIdentityProviderPropertiesResponse { return v.Properties }).(EntraIdentityProviderPropertiesResponseOutput)
+}
+
+// Identity provider types that a a user identity can belong to.
+// Expected value is 'MicrosoftEntraID'.
+func (o EntraIdentityProviderResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EntraIdentityProviderResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type EntraIdentityProviderResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EntraIdentityProviderResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntraIdentityProviderResponse)(nil)).Elem()
+}
+
+func (o EntraIdentityProviderResponsePtrOutput) ToEntraIdentityProviderResponsePtrOutput() EntraIdentityProviderResponsePtrOutput {
+	return o
+}
+
+func (o EntraIdentityProviderResponsePtrOutput) ToEntraIdentityProviderResponsePtrOutputWithContext(ctx context.Context) EntraIdentityProviderResponsePtrOutput {
+	return o
+}
+
+func (o EntraIdentityProviderResponsePtrOutput) Elem() EntraIdentityProviderResponseOutput {
+	return o.ApplyT(func(v *EntraIdentityProviderResponse) EntraIdentityProviderResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EntraIdentityProviderResponse
+		return ret
+	}).(EntraIdentityProviderResponseOutput)
+}
+
+// The Entra identity properties for the user.
+func (o EntraIdentityProviderResponsePtrOutput) Properties() EntraIdentityProviderPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *EntraIdentityProviderResponse) *EntraIdentityProviderPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Properties
+	}).(EntraIdentityProviderPropertiesResponsePtrOutput)
+}
+
+// Identity provider types that a a user identity can belong to.
+// Expected value is 'MicrosoftEntraID'.
+func (o EntraIdentityProviderResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntraIdentityProviderResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The properties of a mongo cluster firewall rule.
 type FirewallRuleProperties struct {
 	// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
@@ -2792,6 +3397,205 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// Definition of Mongo user resource on a cluster.
+type UserProperties struct {
+	// The user's identity provider definition.
+	IdentityProvider *EntraIdentityProvider `pulumi:"identityProvider"`
+	// Database roles that are assigned to the user.
+	Roles []DatabaseRole `pulumi:"roles"`
+}
+
+// UserPropertiesInput is an input type that accepts UserPropertiesArgs and UserPropertiesOutput values.
+// You can construct a concrete instance of `UserPropertiesInput` via:
+//
+//	UserPropertiesArgs{...}
+type UserPropertiesInput interface {
+	pulumi.Input
+
+	ToUserPropertiesOutput() UserPropertiesOutput
+	ToUserPropertiesOutputWithContext(context.Context) UserPropertiesOutput
+}
+
+// Definition of Mongo user resource on a cluster.
+type UserPropertiesArgs struct {
+	// The user's identity provider definition.
+	IdentityProvider EntraIdentityProviderPtrInput `pulumi:"identityProvider"`
+	// Database roles that are assigned to the user.
+	Roles DatabaseRoleArrayInput `pulumi:"roles"`
+}
+
+func (UserPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserProperties)(nil)).Elem()
+}
+
+func (i UserPropertiesArgs) ToUserPropertiesOutput() UserPropertiesOutput {
+	return i.ToUserPropertiesOutputWithContext(context.Background())
+}
+
+func (i UserPropertiesArgs) ToUserPropertiesOutputWithContext(ctx context.Context) UserPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPropertiesOutput)
+}
+
+func (i UserPropertiesArgs) ToUserPropertiesPtrOutput() UserPropertiesPtrOutput {
+	return i.ToUserPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i UserPropertiesArgs) ToUserPropertiesPtrOutputWithContext(ctx context.Context) UserPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPropertiesOutput).ToUserPropertiesPtrOutputWithContext(ctx)
+}
+
+// UserPropertiesPtrInput is an input type that accepts UserPropertiesArgs, UserPropertiesPtr and UserPropertiesPtrOutput values.
+// You can construct a concrete instance of `UserPropertiesPtrInput` via:
+//
+//	        UserPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToUserPropertiesPtrOutput() UserPropertiesPtrOutput
+	ToUserPropertiesPtrOutputWithContext(context.Context) UserPropertiesPtrOutput
+}
+
+type userPropertiesPtrType UserPropertiesArgs
+
+func UserPropertiesPtr(v *UserPropertiesArgs) UserPropertiesPtrInput {
+	return (*userPropertiesPtrType)(v)
+}
+
+func (*userPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserProperties)(nil)).Elem()
+}
+
+func (i *userPropertiesPtrType) ToUserPropertiesPtrOutput() UserPropertiesPtrOutput {
+	return i.ToUserPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *userPropertiesPtrType) ToUserPropertiesPtrOutputWithContext(ctx context.Context) UserPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPropertiesPtrOutput)
+}
+
+// Definition of Mongo user resource on a cluster.
+type UserPropertiesOutput struct{ *pulumi.OutputState }
+
+func (UserPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserProperties)(nil)).Elem()
+}
+
+func (o UserPropertiesOutput) ToUserPropertiesOutput() UserPropertiesOutput {
+	return o
+}
+
+func (o UserPropertiesOutput) ToUserPropertiesOutputWithContext(ctx context.Context) UserPropertiesOutput {
+	return o
+}
+
+func (o UserPropertiesOutput) ToUserPropertiesPtrOutput() UserPropertiesPtrOutput {
+	return o.ToUserPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o UserPropertiesOutput) ToUserPropertiesPtrOutputWithContext(ctx context.Context) UserPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserProperties) *UserProperties {
+		return &v
+	}).(UserPropertiesPtrOutput)
+}
+
+// The user's identity provider definition.
+func (o UserPropertiesOutput) IdentityProvider() EntraIdentityProviderPtrOutput {
+	return o.ApplyT(func(v UserProperties) *EntraIdentityProvider { return v.IdentityProvider }).(EntraIdentityProviderPtrOutput)
+}
+
+// Database roles that are assigned to the user.
+func (o UserPropertiesOutput) Roles() DatabaseRoleArrayOutput {
+	return o.ApplyT(func(v UserProperties) []DatabaseRole { return v.Roles }).(DatabaseRoleArrayOutput)
+}
+
+type UserPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserProperties)(nil)).Elem()
+}
+
+func (o UserPropertiesPtrOutput) ToUserPropertiesPtrOutput() UserPropertiesPtrOutput {
+	return o
+}
+
+func (o UserPropertiesPtrOutput) ToUserPropertiesPtrOutputWithContext(ctx context.Context) UserPropertiesPtrOutput {
+	return o
+}
+
+func (o UserPropertiesPtrOutput) Elem() UserPropertiesOutput {
+	return o.ApplyT(func(v *UserProperties) UserProperties {
+		if v != nil {
+			return *v
+		}
+		var ret UserProperties
+		return ret
+	}).(UserPropertiesOutput)
+}
+
+// The user's identity provider definition.
+func (o UserPropertiesPtrOutput) IdentityProvider() EntraIdentityProviderPtrOutput {
+	return o.ApplyT(func(v *UserProperties) *EntraIdentityProvider {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityProvider
+	}).(EntraIdentityProviderPtrOutput)
+}
+
+// Database roles that are assigned to the user.
+func (o UserPropertiesPtrOutput) Roles() DatabaseRoleArrayOutput {
+	return o.ApplyT(func(v *UserProperties) []DatabaseRole {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(DatabaseRoleArrayOutput)
+}
+
+// Definition of Mongo user resource on a cluster.
+type UserPropertiesResponse struct {
+	// The user's identity provider definition.
+	IdentityProvider *EntraIdentityProviderResponse `pulumi:"identityProvider"`
+	// The provisioning state of the user.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Database roles that are assigned to the user.
+	Roles []DatabaseRoleResponse `pulumi:"roles"`
+}
+
+// Definition of Mongo user resource on a cluster.
+type UserPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (UserPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPropertiesResponse)(nil)).Elem()
+}
+
+func (o UserPropertiesResponseOutput) ToUserPropertiesResponseOutput() UserPropertiesResponseOutput {
+	return o
+}
+
+func (o UserPropertiesResponseOutput) ToUserPropertiesResponseOutputWithContext(ctx context.Context) UserPropertiesResponseOutput {
+	return o
+}
+
+// The user's identity provider definition.
+func (o UserPropertiesResponseOutput) IdentityProvider() EntraIdentityProviderResponsePtrOutput {
+	return o.ApplyT(func(v UserPropertiesResponse) *EntraIdentityProviderResponse { return v.IdentityProvider }).(EntraIdentityProviderResponsePtrOutput)
+}
+
+// The provisioning state of the user.
+func (o UserPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Database roles that are assigned to the user.
+func (o UserPropertiesResponseOutput) Roles() DatabaseRoleResponseArrayOutput {
+	return o.ApplyT(func(v UserPropertiesResponse) []DatabaseRoleResponse { return v.Roles }).(DatabaseRoleResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AdministratorPropertiesOutput{})
 	pulumi.RegisterOutputType(AdministratorPropertiesPtrOutput{})
@@ -2805,6 +3609,18 @@ func init() {
 	pulumi.RegisterOutputType(ComputePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStringResponseOutput{})
 	pulumi.RegisterOutputType(ConnectionStringResponseArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseRoleOutput{})
+	pulumi.RegisterOutputType(DatabaseRoleArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseRoleResponseOutput{})
+	pulumi.RegisterOutputType(DatabaseRoleResponseArrayOutput{})
+	pulumi.RegisterOutputType(EntraIdentityProviderOutput{})
+	pulumi.RegisterOutputType(EntraIdentityProviderPtrOutput{})
+	pulumi.RegisterOutputType(EntraIdentityProviderPropertiesOutput{})
+	pulumi.RegisterOutputType(EntraIdentityProviderPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(EntraIdentityProviderPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EntraIdentityProviderPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(EntraIdentityProviderResponseOutput{})
+	pulumi.RegisterOutputType(EntraIdentityProviderResponsePtrOutput{})
 	pulumi.RegisterOutputType(FirewallRulePropertiesOutput{})
 	pulumi.RegisterOutputType(FirewallRulePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(FirewallRulePropertiesResponseOutput{})
@@ -2839,4 +3655,7 @@ func init() {
 	pulumi.RegisterOutputType(StoragePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(StoragePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UserPropertiesOutput{})
+	pulumi.RegisterOutputType(UserPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(UserPropertiesResponseOutput{})
 }

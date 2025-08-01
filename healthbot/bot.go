@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2023-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native healthbot [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-01, 2025-05-25. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native healthbot [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Bot struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +80,9 @@ func NewBot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthbot/v20240201:Bot"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthbot/v20250525:Bot"),
 		},
 	})
 	opts = append(opts, aliases)

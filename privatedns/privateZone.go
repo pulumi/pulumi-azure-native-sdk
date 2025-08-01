@@ -44,9 +44,11 @@ type PrivateZone struct {
 	NumberOfVirtualNetworkLinksWithRegistration pulumi.Float64Output `pulumi:"numberOfVirtualNetworkLinksWithRegistration"`
 	// The provisioning state of the resource. This is a read-only property and any attempt to set this value will be ignored.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -121,7 +123,7 @@ type privateZoneArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the Private DNS zone (without a terminating dot).
 	PrivateZoneName *string `pulumi:"privateZoneName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -133,7 +135,7 @@ type PrivateZoneArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the Private DNS zone (without a terminating dot).
 	PrivateZoneName pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -236,12 +238,17 @@ func (o PrivateZoneOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateZoneOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateZone) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o PrivateZoneOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PrivateZone) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateZoneOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppAssessmentV2Operation struct {
 	pulumi.CustomResourceState
 
@@ -118,6 +118,9 @@ func NewWebAppAssessmentV2Operation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:WebAppAssessmentV2Operation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240115:WebAppAssessmentV2Operation"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -82,6 +82,9 @@ func NewProject(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20240101preview:Project"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20240115:Project"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20240303preview:Project"),
 		},
 		{

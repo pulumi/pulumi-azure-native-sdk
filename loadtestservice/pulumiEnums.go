@@ -10,6 +10,174 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This property sets the connection region for client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
+type EnablementStatus string
+
+const (
+	// The feature is Enabled.
+	EnablementStatusEnabled = EnablementStatus("Enabled")
+	// The feature is Disabled.
+	EnablementStatusDisabled = EnablementStatus("Disabled")
+)
+
+func (EnablementStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnablementStatus)(nil)).Elem()
+}
+
+func (e EnablementStatus) ToEnablementStatusOutput() EnablementStatusOutput {
+	return pulumi.ToOutput(e).(EnablementStatusOutput)
+}
+
+func (e EnablementStatus) ToEnablementStatusOutputWithContext(ctx context.Context) EnablementStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnablementStatusOutput)
+}
+
+func (e EnablementStatus) ToEnablementStatusPtrOutput() EnablementStatusPtrOutput {
+	return e.ToEnablementStatusPtrOutputWithContext(context.Background())
+}
+
+func (e EnablementStatus) ToEnablementStatusPtrOutputWithContext(ctx context.Context) EnablementStatusPtrOutput {
+	return EnablementStatus(e).ToEnablementStatusOutputWithContext(ctx).ToEnablementStatusPtrOutputWithContext(ctx)
+}
+
+func (e EnablementStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnablementStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnablementStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EnablementStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EnablementStatusOutput struct{ *pulumi.OutputState }
+
+func (EnablementStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnablementStatus)(nil)).Elem()
+}
+
+func (o EnablementStatusOutput) ToEnablementStatusOutput() EnablementStatusOutput {
+	return o
+}
+
+func (o EnablementStatusOutput) ToEnablementStatusOutputWithContext(ctx context.Context) EnablementStatusOutput {
+	return o
+}
+
+func (o EnablementStatusOutput) ToEnablementStatusPtrOutput() EnablementStatusPtrOutput {
+	return o.ToEnablementStatusPtrOutputWithContext(context.Background())
+}
+
+func (o EnablementStatusOutput) ToEnablementStatusPtrOutputWithContext(ctx context.Context) EnablementStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnablementStatus) *EnablementStatus {
+		return &v
+	}).(EnablementStatusPtrOutput)
+}
+
+func (o EnablementStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EnablementStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnablementStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EnablementStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnablementStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnablementStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnablementStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (EnablementStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnablementStatus)(nil)).Elem()
+}
+
+func (o EnablementStatusPtrOutput) ToEnablementStatusPtrOutput() EnablementStatusPtrOutput {
+	return o
+}
+
+func (o EnablementStatusPtrOutput) ToEnablementStatusPtrOutputWithContext(ctx context.Context) EnablementStatusPtrOutput {
+	return o
+}
+
+func (o EnablementStatusPtrOutput) Elem() EnablementStatusOutput {
+	return o.ApplyT(func(v *EnablementStatus) EnablementStatus {
+		if v != nil {
+			return *v
+		}
+		var ret EnablementStatus
+		return ret
+	}).(EnablementStatusOutput)
+}
+
+func (o EnablementStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnablementStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnablementStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EnablementStatusInput is an input type that accepts values of the EnablementStatus enum
+// A concrete instance of `EnablementStatusInput` can be one of the following:
+//
+//	EnablementStatusEnabled
+//	EnablementStatusDisabled
+type EnablementStatusInput interface {
+	pulumi.Input
+
+	ToEnablementStatusOutput() EnablementStatusOutput
+	ToEnablementStatusOutputWithContext(context.Context) EnablementStatusOutput
+}
+
+var enablementStatusPtrType = reflect.TypeOf((**EnablementStatus)(nil)).Elem()
+
+type EnablementStatusPtrInput interface {
+	pulumi.Input
+
+	ToEnablementStatusPtrOutput() EnablementStatusPtrOutput
+	ToEnablementStatusPtrOutputWithContext(context.Context) EnablementStatusPtrOutput
+}
+
+type enablementStatusPtr string
+
+func EnablementStatusPtr(v string) EnablementStatusPtrInput {
+	return (*enablementStatusPtr)(&v)
+}
+
+func (*enablementStatusPtr) ElementType() reflect.Type {
+	return enablementStatusPtrType
+}
+
+func (in *enablementStatusPtr) ToEnablementStatusPtrOutput() EnablementStatusPtrOutput {
+	return pulumi.ToOutput(in).(EnablementStatusPtrOutput)
+}
+
+func (in *enablementStatusPtr) ToEnablementStatusPtrOutputWithContext(ctx context.Context) EnablementStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnablementStatusPtrOutput)
+}
+
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
@@ -349,6 +517,8 @@ func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput
 }
 
 func init() {
+	pulumi.RegisterOutputType(EnablementStatusOutput{})
+	pulumi.RegisterOutputType(EnablementStatusPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(TypeOutput{})

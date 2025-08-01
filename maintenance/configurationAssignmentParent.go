@@ -28,13 +28,13 @@ type ConfigurationAssignmentParent struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The maintenance configuration Id
 	MaintenanceConfigurationId pulumi.StringPtrOutput `pulumi:"maintenanceConfigurationId"`
-	// Name of the resource
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique resourceId
 	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Type of the resource
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -120,7 +120,7 @@ func (ConfigurationAssignmentParentState) ElementType() reflect.Type {
 }
 
 type configurationAssignmentParentArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName *string `pulumi:"configurationAssignmentName"`
 	// Properties of the configuration assignment
 	Filter *ConfigurationAssignmentFilterProperties `pulumi:"filter"`
@@ -130,13 +130,13 @@ type configurationAssignmentParentArgs struct {
 	MaintenanceConfigurationId *string `pulumi:"maintenanceConfigurationId"`
 	// Resource provider name
 	ProviderName string `pulumi:"providerName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The unique resourceId
 	ResourceId *string `pulumi:"resourceId"`
-	// Resource identifier
+	// Resource name
 	ResourceName string `pulumi:"resourceName"`
-	// Resource parent identifier
+	// Resource parent name
 	ResourceParentName string `pulumi:"resourceParentName"`
 	// Resource parent type
 	ResourceParentType string `pulumi:"resourceParentType"`
@@ -146,7 +146,7 @@ type configurationAssignmentParentArgs struct {
 
 // The set of arguments for constructing a ConfigurationAssignmentParent resource.
 type ConfigurationAssignmentParentArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName pulumi.StringPtrInput
 	// Properties of the configuration assignment
 	Filter ConfigurationAssignmentFilterPropertiesPtrInput
@@ -156,13 +156,13 @@ type ConfigurationAssignmentParentArgs struct {
 	MaintenanceConfigurationId pulumi.StringPtrInput
 	// Resource provider name
 	ProviderName pulumi.StringInput
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The unique resourceId
 	ResourceId pulumi.StringPtrInput
-	// Resource identifier
+	// Resource name
 	ResourceName pulumi.StringInput
-	// Resource parent identifier
+	// Resource parent name
 	ResourceParentName pulumi.StringInput
 	// Resource parent type
 	ResourceParentType pulumi.StringInput
@@ -229,7 +229,7 @@ func (o ConfigurationAssignmentParentOutput) MaintenanceConfigurationId() pulumi
 	return o.ApplyT(func(v *ConfigurationAssignmentParent) pulumi.StringPtrOutput { return v.MaintenanceConfigurationId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the resource
+// The name of the resource
 func (o ConfigurationAssignmentParentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationAssignmentParent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -244,7 +244,7 @@ func (o ConfigurationAssignmentParentOutput) SystemData() SystemDataResponseOutp
 	return o.ApplyT(func(v *ConfigurationAssignmentParent) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Type of the resource
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ConfigurationAssignmentParentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationAssignmentParent) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

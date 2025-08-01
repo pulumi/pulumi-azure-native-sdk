@@ -29,7 +29,7 @@ func LookupGuestConfigurationConnectedVMwarevSphereAssignment(ctx *pulumi.Contex
 type LookupGuestConfigurationConnectedVMwarevSphereAssignmentArgs struct {
 	// The guest configuration assignment name.
 	GuestConfigurationAssignmentName string `pulumi:"guestConfigurationAssignmentName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the virtual machine.
 	VmName string `pulumi:"vmName"`
@@ -43,8 +43,8 @@ type LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult struct {
 	Id string `pulumi:"id"`
 	// Region where the VM is located.
 	Location *string `pulumi:"location"`
-	// Name of the guest configuration assignment.
-	Name *string `pulumi:"name"`
+	// The guest configuration assignment name.
+	Name string `pulumi:"name"`
 	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -75,7 +75,7 @@ func LookupGuestConfigurationConnectedVMwarevSphereAssignmentOutput(ctx *pulumi.
 type LookupGuestConfigurationConnectedVMwarevSphereAssignmentOutputArgs struct {
 	// The guest configuration assignment name.
 	GuestConfigurationAssignmentName pulumi.StringInput `pulumi:"guestConfigurationAssignmentName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the virtual machine.
 	VmName pulumi.StringInput `pulumi:"vmName"`
@@ -117,9 +117,9 @@ func (o LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput) Lo
 	return o.ApplyT(func(v LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Name of the guest configuration assignment.
-func (o LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The guest configuration assignment name.
+func (o LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Properties of the Guest configuration assignment.

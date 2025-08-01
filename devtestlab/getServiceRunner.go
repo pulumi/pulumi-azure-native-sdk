@@ -27,9 +27,9 @@ func LookupServiceRunner(ctx *pulumi.Context, args *LookupServiceRunnerArgs, opt
 type LookupServiceRunnerArgs struct {
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the service runner.
+	// The name of the ServiceRunner
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -63,9 +63,9 @@ func LookupServiceRunnerOutput(ctx *pulumi.Context, args LookupServiceRunnerOutp
 type LookupServiceRunnerOutputArgs struct {
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the service runner.
+	// The name of the ServiceRunner
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

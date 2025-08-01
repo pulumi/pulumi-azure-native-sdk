@@ -29,7 +29,7 @@ func LookupBotConnection(ctx *pulumi.Context, args *LookupBotConnectionArgs, opt
 type LookupBotConnectionArgs struct {
 	// The name of the Bot Service Connection Setting resource.
 	ConnectionName string `pulumi:"connectionName"`
-	// The name of the Bot resource group in the user subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Bot resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -41,21 +41,23 @@ type LookupBotConnectionResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Entity Tag.
 	Etag *string `pulumi:"etag"`
-	// Specifies the resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind *string `pulumi:"kind"`
 	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
-	// Specifies the name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The set of properties specific to bot channel resource
 	Properties ConnectionSettingPropertiesResponse `pulumi:"properties"`
 	// Gets or sets the SKU of the resource.
 	Sku *SkuResponse `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// Specifies the type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Entity zones
 	Zones []string `pulumi:"zones"`
@@ -83,7 +85,7 @@ func LookupBotConnectionOutput(ctx *pulumi.Context, args LookupBotConnectionOutp
 type LookupBotConnectionOutputArgs struct {
 	// The name of the Bot Service Connection Setting resource.
 	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
-	// The name of the Bot resource group in the user subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the Bot resource.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
@@ -118,7 +120,7 @@ func (o LookupBotConnectionResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupBotConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -133,7 +135,7 @@ func (o LookupBotConnectionResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the resource.
+// The name of the resource
 func (o LookupBotConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -148,12 +150,17 @@ func (o LookupBotConnectionResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupBotConnectionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBotConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Contains resource tags defined as key/value pairs.
 func (o LookupBotConnectionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupBotConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

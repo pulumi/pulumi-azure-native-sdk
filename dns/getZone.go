@@ -39,15 +39,15 @@ type LookupZoneResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The etag of the zone.
 	Etag *string `pulumi:"etag"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The maximum number of record sets that can be created in this DNS zone.  This is a read-only property and any attempt to set this value will be ignored.
 	MaxNumberOfRecordSets float64 `pulumi:"maxNumberOfRecordSets"`
 	// The maximum number of records per record set that can be created in this DNS zone.  This is a read-only property and any attempt to set this value will be ignored.
 	MaxNumberOfRecordsPerRecordSet float64 `pulumi:"maxNumberOfRecordsPerRecordSet"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The name servers for this DNS zone. This is a read-only property and any attempt to set this value will be ignored.
 	NameServers []string `pulumi:"nameServers"`
@@ -59,11 +59,11 @@ type LookupZoneResult struct {
 	ResolutionVirtualNetworks []SubResourceResponse `pulumi:"resolutionVirtualNetworks"`
 	// The list of signing keys.
 	SigningKeys []SigningKeyResponse `pulumi:"signingKeys"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The type of this DNS zone (Public or Private).
 	ZoneType *string `pulumi:"zoneType"`
@@ -126,12 +126,12 @@ func (o LookupZoneResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZoneResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupZoneResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource location.
+// The geo-location where the resource lives
 func (o LookupZoneResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -146,7 +146,7 @@ func (o LookupZoneResultOutput) MaxNumberOfRecordsPerRecordSet() pulumi.Float64O
 	return o.ApplyT(func(v LookupZoneResult) float64 { return v.MaxNumberOfRecordsPerRecordSet }).(pulumi.Float64Output)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupZoneResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -176,7 +176,7 @@ func (o LookupZoneResultOutput) SigningKeys() SigningKeyResponseArrayOutput {
 	return o.ApplyT(func(v LookupZoneResult) []SigningKeyResponse { return v.SigningKeys }).(SigningKeyResponseArrayOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupZoneResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupZoneResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -186,7 +186,7 @@ func (o LookupZoneResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupZoneResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupZoneResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -26,17 +26,19 @@ type Bot struct {
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Specifies the location of the resource.
-	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Specifies the name of the resource.
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The set of properties specific to bot resource
 	Properties BotPropertiesResponseOutput `pulumi:"properties"`
 	// Gets or sets the SKU of the resource.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
-	// Contains resource tags defined as key/value pairs.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Specifies the type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Entity zones
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
@@ -117,17 +119,17 @@ func (BotState) ElementType() reflect.Type {
 type botArgs struct {
 	// Required. Gets or sets the Kind of the resource.
 	Kind *string `pulumi:"kind"`
-	// Specifies the location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The set of properties specific to bot resource
 	Properties *BotProperties `pulumi:"properties"`
-	// The name of the Bot resource group in the user subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Bot resource.
 	ResourceName *string `pulumi:"resourceName"`
 	// Gets or sets the SKU of the resource.
 	Sku *Sku `pulumi:"sku"`
-	// Contains resource tags defined as key/value pairs.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -135,17 +137,17 @@ type botArgs struct {
 type BotArgs struct {
 	// Required. Gets or sets the Kind of the resource.
 	Kind pulumi.StringPtrInput
-	// Specifies the location of the resource.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The set of properties specific to bot resource
 	Properties BotPropertiesPtrInput
-	// The name of the Bot resource group in the user subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the Bot resource.
 	ResourceName pulumi.StringPtrInput
 	// Gets or sets the SKU of the resource.
 	Sku SkuPtrInput
-	// Contains resource tags defined as key/value pairs.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -201,12 +203,12 @@ func (o BotOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bot) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the location of the resource.
-func (o BotOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Bot) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+// The geo-location where the resource lives
+func (o BotOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bot) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the resource.
+// The name of the resource
 func (o BotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -221,12 +223,17 @@ func (o BotOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v *Bot) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
-// Contains resource tags defined as key/value pairs.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o BotOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Bot) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o BotOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Bot) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o BotOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bot) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

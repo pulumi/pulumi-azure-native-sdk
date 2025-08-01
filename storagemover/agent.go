@@ -32,7 +32,7 @@ type Agent struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description for the Agent.
 	Description  pulumi.StringPtrOutput                    `pulumi:"description"`
-	ErrorDetails AgentPropertiesResponseErrorDetailsOutput `pulumi:"errorDetails"`
+	ErrorDetails AgentPropertiesErrorDetailsResponseOutput `pulumi:"errorDetails"`
 	// The last updated time of the Agent status.
 	LastStatusUpdate pulumi.StringOutput `pulumi:"lastStatusUpdate"`
 	// Local IP address reported by the Agent.
@@ -228,8 +228,8 @@ func (o AgentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o AgentOutput) ErrorDetails() AgentPropertiesResponseErrorDetailsOutput {
-	return o.ApplyT(func(v *Agent) AgentPropertiesResponseErrorDetailsOutput { return v.ErrorDetails }).(AgentPropertiesResponseErrorDetailsOutput)
+func (o AgentOutput) ErrorDetails() AgentPropertiesErrorDetailsResponseOutput {
+	return o.ApplyT(func(v *Agent) AgentPropertiesErrorDetailsResponseOutput { return v.ErrorDetails }).(AgentPropertiesErrorDetailsResponseOutput)
 }
 
 // The last updated time of the Agent status.

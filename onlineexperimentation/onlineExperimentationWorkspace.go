@@ -15,6 +15,8 @@ import (
 // An online experimentation workspace resource.
 //
 // Uses Azure REST API version 2025-05-31-preview.
+//
+// Other available API versions: 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native onlineexperimentation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type OnlineExperimentationWorkspace struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,9 @@ func NewOnlineExperimentationWorkspace(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:onlineexperimentation/v20250531preview:OnlineExperimentationWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:onlineexperimentation/v20250801preview:OnlineExperimentationWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)

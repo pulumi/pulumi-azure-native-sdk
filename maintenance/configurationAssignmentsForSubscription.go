@@ -27,13 +27,13 @@ type ConfigurationAssignmentsForSubscription struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The maintenance configuration Id
 	MaintenanceConfigurationId pulumi.StringPtrOutput `pulumi:"maintenanceConfigurationId"`
-	// Name of the resource
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique resourceId
 	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Type of the resource
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -89,7 +89,7 @@ func (ConfigurationAssignmentsForSubscriptionState) ElementType() reflect.Type {
 }
 
 type configurationAssignmentsForSubscriptionArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName *string `pulumi:"configurationAssignmentName"`
 	// Properties of the configuration assignment
 	Filter *ConfigurationAssignmentFilterProperties `pulumi:"filter"`
@@ -103,7 +103,7 @@ type configurationAssignmentsForSubscriptionArgs struct {
 
 // The set of arguments for constructing a ConfigurationAssignmentsForSubscription resource.
 type ConfigurationAssignmentsForSubscriptionArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName pulumi.StringPtrInput
 	// Properties of the configuration assignment
 	Filter ConfigurationAssignmentFilterPropertiesPtrInput
@@ -176,7 +176,7 @@ func (o ConfigurationAssignmentsForSubscriptionOutput) MaintenanceConfigurationI
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the resource
+// The name of the resource
 func (o ConfigurationAssignmentsForSubscriptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationAssignmentsForSubscription) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -191,7 +191,7 @@ func (o ConfigurationAssignmentsForSubscriptionOutput) SystemData() SystemDataRe
 	return o.ApplyT(func(v *ConfigurationAssignmentsForSubscription) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Type of the resource
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ConfigurationAssignmentsForSubscriptionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationAssignmentsForSubscription) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

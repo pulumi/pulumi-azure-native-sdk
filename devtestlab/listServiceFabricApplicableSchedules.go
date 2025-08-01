@@ -27,9 +27,9 @@ func ListServiceFabricApplicableSchedules(ctx *pulumi.Context, args *ListService
 type ListServiceFabricApplicableSchedulesArgs struct {
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the service fabric.
+	// The name of the ServiceFabric
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName string `pulumi:"userName"`
@@ -77,9 +77,9 @@ func ListServiceFabricApplicableSchedulesOutput(ctx *pulumi.Context, args ListSe
 type ListServiceFabricApplicableSchedulesOutputArgs struct {
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the service fabric.
+	// The name of the ServiceFabric
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName pulumi.StringInput `pulumi:"userName"`

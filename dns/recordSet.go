@@ -40,7 +40,7 @@ type RecordSet struct {
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The list of MX records in the record set.
 	MxRecords MxRecordResponseArrayOutput `pulumi:"mxRecords"`
-	// The name of the record set.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The list of NAPTR records in the record set.
 	NaptrRecords NaptrRecordResponseArrayOutput `pulumi:"naptrRecords"`
@@ -54,6 +54,8 @@ type RecordSet struct {
 	SoaRecord SoaRecordResponsePtrOutput `pulumi:"soaRecord"`
 	// The list of SRV records in the record set.
 	SrvRecords SrvRecordResponseArrayOutput `pulumi:"srvRecords"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// A reference to an azure resource from where the dns resource value is taken.
 	TargetResource SubResourceResponsePtrOutput `pulumi:"targetResource"`
 	// The list of TLSA records in the record set.
@@ -64,7 +66,7 @@ type RecordSet struct {
 	Ttl pulumi.Float64PtrOutput `pulumi:"ttl"`
 	// The list of TXT records in the record set.
 	TxtRecords TxtRecordResponseArrayOutput `pulumi:"txtRecords"`
-	// The type of the record set.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -327,7 +329,7 @@ func (o RecordSetOutput) MxRecords() MxRecordResponseArrayOutput {
 	return o.ApplyT(func(v *RecordSet) MxRecordResponseArrayOutput { return v.MxRecords }).(MxRecordResponseArrayOutput)
 }
 
-// The name of the record set.
+// The name of the resource
 func (o RecordSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -362,6 +364,11 @@ func (o RecordSetOutput) SrvRecords() SrvRecordResponseArrayOutput {
 	return o.ApplyT(func(v *RecordSet) SrvRecordResponseArrayOutput { return v.SrvRecords }).(SrvRecordResponseArrayOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o RecordSetOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *RecordSet) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // A reference to an azure resource from where the dns resource value is taken.
 func (o RecordSetOutput) TargetResource() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v *RecordSet) SubResourceResponsePtrOutput { return v.TargetResource }).(SubResourceResponsePtrOutput)
@@ -387,7 +394,7 @@ func (o RecordSetOutput) TxtRecords() TxtRecordResponseArrayOutput {
 	return o.ApplyT(func(v *RecordSet) TxtRecordResponseArrayOutput { return v.TxtRecords }).(TxtRecordResponseArrayOutput)
 }
 
-// The type of the record set.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o RecordSetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

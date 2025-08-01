@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The notification registration definition.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2021-09-01-preview.
 //
-// Uses Azure REST API version 2021-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-09-01-preview.
+// Other available API versions: 2021-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native providerhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NotificationRegistration struct {
 	pulumi.CustomResourceState
 
@@ -22,8 +22,8 @@ type NotificationRegistration struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name       pulumi.StringOutput                              `pulumi:"name"`
-	Properties NotificationRegistrationResponsePropertiesOutput `pulumi:"properties"`
-	// Metadata pertaining to creation and last modification of the resource.
+	Properties NotificationRegistrationPropertiesResponseOutput `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -51,6 +51,9 @@ func NewNotificationRegistration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:providerhub/v20210901preview:NotificationRegistration"),
+		},
+		{
+			Type: pulumi.String("azure-native:providerhub/v20240901:NotificationRegistration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -150,13 +153,13 @@ func (o NotificationRegistrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationRegistration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o NotificationRegistrationOutput) Properties() NotificationRegistrationResponsePropertiesOutput {
-	return o.ApplyT(func(v *NotificationRegistration) NotificationRegistrationResponsePropertiesOutput {
+func (o NotificationRegistrationOutput) Properties() NotificationRegistrationPropertiesResponseOutput {
+	return o.ApplyT(func(v *NotificationRegistration) NotificationRegistrationPropertiesResponseOutput {
 		return v.Properties
-	}).(NotificationRegistrationResponsePropertiesOutput)
+	}).(NotificationRegistrationPropertiesResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o NotificationRegistrationOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *NotificationRegistration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

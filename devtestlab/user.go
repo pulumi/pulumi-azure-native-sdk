@@ -101,9 +101,9 @@ type userArgs struct {
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the user profile.
+	// The name of the User
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The secret store of the user.
 	SecretStore *UserSecretStore `pulumi:"secretStore"`
@@ -119,9 +119,9 @@ type UserArgs struct {
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the user profile.
+	// The name of the User
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The secret store of the user.
 	SecretStore UserSecretStorePtrInput

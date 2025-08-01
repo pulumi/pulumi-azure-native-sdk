@@ -29,7 +29,7 @@ func LookupVirtualNetworkLink(ctx *pulumi.Context, args *LookupVirtualNetworkLin
 type LookupVirtualNetworkLinkArgs struct {
 	// The name of the Private DNS zone (without a terminating dot).
 	PrivateZoneName string `pulumi:"privateZoneName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the virtual network link.
 	VirtualNetworkLinkName string `pulumi:"virtualNetworkLinkName"`
@@ -41,7 +41,7 @@ type LookupVirtualNetworkLinkResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ETag of the virtual network link.
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource Id for the resource. Example - '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateDnsZoneName}'.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The Azure Region where the resource lives
 	Location *string `pulumi:"location"`
@@ -53,9 +53,11 @@ type LookupVirtualNetworkLinkResult struct {
 	RegistrationEnabled *bool `pulumi:"registrationEnabled"`
 	// The resolution policy on the virtual network link. Only applicable for virtual network links to privatelink zones, and for A,AAAA,CNAME queries. When set to 'NxDomainRedirect', Azure DNS resolver falls back to public resolution if private dns query resolution results in non-existent domain response.
 	ResolutionPolicy *string `pulumi:"resolutionPolicy"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The reference of the virtual network.
 	VirtualNetwork *SubResourceResponse `pulumi:"virtualNetwork"`
@@ -75,7 +77,7 @@ func LookupVirtualNetworkLinkOutput(ctx *pulumi.Context, args LookupVirtualNetwo
 type LookupVirtualNetworkLinkOutputArgs struct {
 	// The name of the Private DNS zone (without a terminating dot).
 	PrivateZoneName pulumi.StringInput `pulumi:"privateZoneName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the virtual network link.
 	VirtualNetworkLinkName pulumi.StringInput `pulumi:"virtualNetworkLinkName"`
@@ -110,7 +112,7 @@ func (o LookupVirtualNetworkLinkResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource Id for the resource. Example - '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateDnsZoneName}'.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupVirtualNetworkLinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -140,12 +142,17 @@ func (o LookupVirtualNetworkLinkResultOutput) ResolutionPolicy() pulumi.StringPt
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) *string { return v.ResolutionPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupVirtualNetworkLinkResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o LookupVirtualNetworkLinkResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupVirtualNetworkLinkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkLinkResult) string { return v.Type }).(pulumi.StringOutput)
 }

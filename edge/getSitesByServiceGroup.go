@@ -14,6 +14,8 @@ import (
 // Get Site at SG scope
 //
 // Uses Azure REST API version 2025-03-01-preview.
+//
+// Other available API versions: 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSitesByServiceGroup(ctx *pulumi.Context, args *LookupSitesByServiceGroupArgs, opts ...pulumi.InvokeOption) (*LookupSitesByServiceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSitesByServiceGroupResult

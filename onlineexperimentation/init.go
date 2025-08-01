@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:onlineexperimentation:OnlineExperimentationWorkspace":
 		r = &OnlineExperimentationWorkspace{}
+	case "azure-native:onlineexperimentation:PrivateEndpointConnection":
+		r = &PrivateEndpointConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -46,11 +46,13 @@ type PrivateRecordSet struct {
 	SoaRecord SoaRecordResponsePtrOutput `pulumi:"soaRecord"`
 	// The list of SRV records in the record set.
 	SrvRecords SrvRecordResponseArrayOutput `pulumi:"srvRecords"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The TTL (time-to-live) of the records in the record set.
 	Ttl pulumi.Float64PtrOutput `pulumi:"ttl"`
 	// The list of TXT records in the record set.
 	TxtRecords TxtRecordResponseArrayOutput `pulumi:"txtRecords"`
-	// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -137,15 +139,15 @@ type privateRecordSetArgs struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// The list of MX records in the record set.
 	MxRecords []MxRecord `pulumi:"mxRecords"`
-	// The name of the Private DNS zone (without a terminating dot).
+	// The name of the DNS zone (without a terminating dot).
 	PrivateZoneName string `pulumi:"privateZoneName"`
 	// The list of PTR records in the record set.
 	PtrRecords []PtrRecord `pulumi:"ptrRecords"`
-	// The type of DNS record in this record set. Record sets of type SOA can be updated but not created (they are created when the Private DNS zone is created).
+	// The type of DNS record in this record set.
 	RecordType string `pulumi:"recordType"`
 	// The name of the record set, relative to the name of the zone.
 	RelativeRecordSetName *string `pulumi:"relativeRecordSetName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SOA record in the record set.
 	SoaRecord *SoaRecord `pulumi:"soaRecord"`
@@ -169,15 +171,15 @@ type PrivateRecordSetArgs struct {
 	Metadata pulumi.StringMapInput
 	// The list of MX records in the record set.
 	MxRecords MxRecordArrayInput
-	// The name of the Private DNS zone (without a terminating dot).
+	// The name of the DNS zone (without a terminating dot).
 	PrivateZoneName pulumi.StringInput
 	// The list of PTR records in the record set.
 	PtrRecords PtrRecordArrayInput
-	// The type of DNS record in this record set. Record sets of type SOA can be updated but not created (they are created when the Private DNS zone is created).
+	// The type of DNS record in this record set.
 	RecordType pulumi.StringInput
 	// The name of the record set, relative to the name of the zone.
 	RelativeRecordSetName pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SOA record in the record set.
 	SoaRecord SoaRecordPtrInput
@@ -291,6 +293,11 @@ func (o PrivateRecordSetOutput) SrvRecords() SrvRecordResponseArrayOutput {
 	return o.ApplyT(func(v *PrivateRecordSet) SrvRecordResponseArrayOutput { return v.SrvRecords }).(SrvRecordResponseArrayOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateRecordSetOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateRecordSet) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The TTL (time-to-live) of the records in the record set.
 func (o PrivateRecordSetOutput) Ttl() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *PrivateRecordSet) pulumi.Float64PtrOutput { return v.Ttl }).(pulumi.Float64PtrOutput)
@@ -301,7 +308,7 @@ func (o PrivateRecordSetOutput) TxtRecords() TxtRecordResponseArrayOutput {
 	return o.ApplyT(func(v *PrivateRecordSet) TxtRecordResponseArrayOutput { return v.TxtRecords }).(TxtRecordResponseArrayOutput)
 }
 
-// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateRecordSetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateRecordSet) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

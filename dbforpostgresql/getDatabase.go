@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about a database.
+// Gets information about an existing database.
 //
 // Uses Azure REST API version 2024-08-01.
 //
@@ -27,7 +27,7 @@ func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulum
 }
 
 type LookupDatabaseArgs struct {
-	// The name of the database.
+	// Name of the database.
 	DatabaseName string `pulumi:"databaseName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -39,9 +39,9 @@ type LookupDatabaseArgs struct {
 type LookupDatabaseResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The charset of the database.
+	// Character set of the database.
 	Charset *string `pulumi:"charset"`
-	// The collation of the database.
+	// Collation of the database.
 	Collation *string `pulumi:"collation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
@@ -63,7 +63,7 @@ func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, op
 }
 
 type LookupDatabaseOutputArgs struct {
-	// The name of the database.
+	// Name of the database.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -95,12 +95,12 @@ func (o LookupDatabaseResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// The charset of the database.
+// Character set of the database.
 func (o LookupDatabaseResultOutput) Charset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.Charset }).(pulumi.StringPtrOutput)
 }
 
-// The collation of the database.
+// Collation of the database.
 func (o LookupDatabaseResultOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.Collation }).(pulumi.StringPtrOutput)
 }

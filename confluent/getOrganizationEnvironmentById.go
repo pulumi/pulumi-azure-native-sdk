@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Details about environment name, metadata and environment id of an environment
+// Get Environment details by environment Id
 //
 // Uses Azure REST API version 2024-07-01.
 func LookupOrganizationEnvironmentById(ctx *pulumi.Context, args *LookupOrganizationEnvironmentByIdArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationEnvironmentByIdResult, error) {
@@ -37,18 +37,20 @@ type LookupOrganizationEnvironmentByIdArgs struct {
 type LookupOrganizationEnvironmentByIdResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Id of the environment
-	Id *string `pulumi:"id"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
 	// Type of environment
 	Kind *string `pulumi:"kind"`
 	// Metadata of the record
 	Metadata *SCMetadataEntityResponse `pulumi:"metadata"`
-	// Display name of the environment
-	Name *string `pulumi:"name"`
+	// The name of the resource
+	Name string `pulumi:"name"`
 	// Stream governance configuration
 	StreamGovernanceConfig *StreamGovernanceConfigResponse `pulumi:"streamGovernanceConfig"`
-	// Type of the resource
-	Type *string `pulumi:"type"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupOrganizationEnvironmentByIdOutput(ctx *pulumi.Context, args LookupOrganizationEnvironmentByIdOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationEnvironmentByIdResultOutput {
@@ -93,9 +95,9 @@ func (o LookupOrganizationEnvironmentByIdResultOutput) AzureApiVersion() pulumi.
 	return o.ApplyT(func(v LookupOrganizationEnvironmentByIdResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Id of the environment
-func (o LookupOrganizationEnvironmentByIdResultOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOrganizationEnvironmentByIdResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o LookupOrganizationEnvironmentByIdResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationEnvironmentByIdResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of environment
@@ -108,9 +110,9 @@ func (o LookupOrganizationEnvironmentByIdResultOutput) Metadata() SCMetadataEnti
 	return o.ApplyT(func(v LookupOrganizationEnvironmentByIdResult) *SCMetadataEntityResponse { return v.Metadata }).(SCMetadataEntityResponsePtrOutput)
 }
 
-// Display name of the environment
-func (o LookupOrganizationEnvironmentByIdResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOrganizationEnvironmentByIdResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the resource
+func (o LookupOrganizationEnvironmentByIdResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationEnvironmentByIdResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Stream governance configuration
@@ -120,9 +122,14 @@ func (o LookupOrganizationEnvironmentByIdResultOutput) StreamGovernanceConfig() 
 	}).(StreamGovernanceConfigResponsePtrOutput)
 }
 
-// Type of the resource
-func (o LookupOrganizationEnvironmentByIdResultOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOrganizationEnvironmentByIdResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupOrganizationEnvironmentByIdResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupOrganizationEnvironmentByIdResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o LookupOrganizationEnvironmentByIdResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationEnvironmentByIdResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

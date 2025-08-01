@@ -27,13 +27,13 @@ func LookupPrivateRecordSet(ctx *pulumi.Context, args *LookupPrivateRecordSetArg
 }
 
 type LookupPrivateRecordSetArgs struct {
-	// The name of the Private DNS zone (without a terminating dot).
+	// The name of the DNS zone (without a terminating dot).
 	PrivateZoneName string `pulumi:"privateZoneName"`
 	// The type of DNS record in this record set.
 	RecordType string `pulumi:"recordType"`
 	// The name of the record set, relative to the name of the zone.
 	RelativeRecordSetName string `pulumi:"relativeRecordSetName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -51,7 +51,7 @@ type LookupPrivateRecordSetResult struct {
 	Etag *string `pulumi:"etag"`
 	// Fully qualified domain name of the record set.
 	Fqdn string `pulumi:"fqdn"`
-	// Fully qualified resource Id for the resource. Example - '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateDnsZoneName}'.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Is the record set auto-registered in the Private DNS zone through a virtual network link?
 	IsAutoRegistered bool `pulumi:"isAutoRegistered"`
@@ -67,11 +67,13 @@ type LookupPrivateRecordSetResult struct {
 	SoaRecord *SoaRecordResponse `pulumi:"soaRecord"`
 	// The list of SRV records in the record set.
 	SrvRecords []SrvRecordResponse `pulumi:"srvRecords"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The TTL (time-to-live) of the records in the record set.
 	Ttl *float64 `pulumi:"ttl"`
 	// The list of TXT records in the record set.
 	TxtRecords []TxtRecordResponse `pulumi:"txtRecords"`
-	// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -85,13 +87,13 @@ func LookupPrivateRecordSetOutput(ctx *pulumi.Context, args LookupPrivateRecordS
 }
 
 type LookupPrivateRecordSetOutputArgs struct {
-	// The name of the Private DNS zone (without a terminating dot).
+	// The name of the DNS zone (without a terminating dot).
 	PrivateZoneName pulumi.StringInput `pulumi:"privateZoneName"`
 	// The type of DNS record in this record set.
 	RecordType pulumi.StringInput `pulumi:"recordType"`
 	// The name of the record set, relative to the name of the zone.
 	RelativeRecordSetName pulumi.StringInput `pulumi:"relativeRecordSetName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -144,7 +146,7 @@ func (o LookupPrivateRecordSetResultOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateRecordSetResult) string { return v.Fqdn }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource Id for the resource. Example - '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateDnsZoneName}'.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPrivateRecordSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateRecordSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -184,6 +186,11 @@ func (o LookupPrivateRecordSetResultOutput) SrvRecords() SrvRecordResponseArrayO
 	return o.ApplyT(func(v LookupPrivateRecordSetResult) []SrvRecordResponse { return v.SrvRecords }).(SrvRecordResponseArrayOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupPrivateRecordSetResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateRecordSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The TTL (time-to-live) of the records in the record set.
 func (o LookupPrivateRecordSetResultOutput) Ttl() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupPrivateRecordSetResult) *float64 { return v.Ttl }).(pulumi.Float64PtrOutput)
@@ -194,7 +201,7 @@ func (o LookupPrivateRecordSetResultOutput) TxtRecords() TxtRecordResponseArrayO
 	return o.ApplyT(func(v LookupPrivateRecordSetResult) []TxtRecordResponse { return v.TxtRecords }).(TxtRecordResponseArrayOutput)
 }
 
-// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPrivateRecordSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateRecordSetResult) string { return v.Type }).(pulumi.StringOutput)
 }

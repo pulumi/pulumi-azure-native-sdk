@@ -37,9 +37,9 @@ type ListProductsAndConfigurationsArgs struct {
 
 // The list of configurations.
 type ListProductsAndConfigurationsResult struct {
-	// Link for the next set of configurations.
+	// The link to the next page of items
 	NextLink *string `pulumi:"nextLink"`
-	// List of configurations.
+	// The Configuration items on this page
 	Value []ConfigurationResponse `pulumi:"value"`
 }
 
@@ -80,12 +80,12 @@ func (o ListProductsAndConfigurationsResultOutput) ToListProductsAndConfiguratio
 	return o
 }
 
-// Link for the next set of configurations.
+// The link to the next page of items
 func (o ListProductsAndConfigurationsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListProductsAndConfigurationsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// List of configurations.
+// The Configuration items on this page
 func (o ListProductsAndConfigurationsResultOutput) Value() ConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v ListProductsAndConfigurationsResult) []ConfigurationResponse { return v.Value }).(ConfigurationResponseArrayOutput)
 }

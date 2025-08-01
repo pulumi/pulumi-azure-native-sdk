@@ -128,9 +128,9 @@ type diskArgs struct {
 	Location *string `pulumi:"location"`
 	// When backed by managed disk, this is the ID of the compute disk resource.
 	ManagedDiskId *string `pulumi:"managedDiskId"`
-	// The name of the disk.
+	// The name of the Disk
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// When backed by a blob, the storage account where the blob is.
 	StorageAccountId *string `pulumi:"storageAccountId"`
@@ -160,9 +160,9 @@ type DiskArgs struct {
 	Location pulumi.StringPtrInput
 	// When backed by managed disk, this is the ID of the compute disk resource.
 	ManagedDiskId pulumi.StringPtrInput
-	// The name of the disk.
+	// The name of the Disk
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// When backed by a blob, the storage account where the blob is.
 	StorageAccountId pulumi.StringPtrInput

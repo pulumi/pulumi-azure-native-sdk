@@ -22,15 +22,15 @@ type DnssecConfig struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The etag of the DNSSEC configuration.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
-	// The name of the DNSSEC configuration.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning State of the DNSSEC configuration.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The list of signing keys.
 	SigningKeys SigningKeyResponseArrayOutput `pulumi:"signingKeys"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the DNSSEC configuration.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -153,7 +153,7 @@ func (o DnssecConfigOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnssecConfig) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// The name of the DNSSEC configuration.
+// The name of the resource
 func (o DnssecConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnssecConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -168,12 +168,12 @@ func (o DnssecConfigOutput) SigningKeys() SigningKeyResponseArrayOutput {
 	return o.ApplyT(func(v *DnssecConfig) SigningKeyResponseArrayOutput { return v.SigningKeys }).(SigningKeyResponseArrayOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o DnssecConfigOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *DnssecConfig) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the DNSSEC configuration.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o DnssecConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnssecConfig) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

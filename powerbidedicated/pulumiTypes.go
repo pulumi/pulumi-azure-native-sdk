@@ -440,253 +440,18 @@ func (o DedicatedCapacityAdministratorsResponsePtrOutput) Members() pulumi.Strin
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-type SystemData struct {
-	// The timestamp of resource creation (UTC)
-	CreatedAt *string `pulumi:"createdAt"`
-	// An identifier for the identity that created the resource
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// An identifier for the identity that last modified the resource
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// SystemDataInput is an input type that accepts SystemDataArgs and SystemDataOutput values.
-// You can construct a concrete instance of `SystemDataInput` via:
-//
-//	SystemDataArgs{...}
-type SystemDataInput interface {
-	pulumi.Input
-
-	ToSystemDataOutput() SystemDataOutput
-	ToSystemDataOutputWithContext(context.Context) SystemDataOutput
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataArgs struct {
-	// The timestamp of resource creation (UTC)
-	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// An identifier for the identity that created the resource
-	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
-	// The type of identity that created the resource
-	CreatedByType pulumi.StringPtrInput `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt pulumi.StringPtrInput `pulumi:"lastModifiedAt"`
-	// An identifier for the identity that last modified the resource
-	LastModifiedBy pulumi.StringPtrInput `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource
-	LastModifiedByType pulumi.StringPtrInput `pulumi:"lastModifiedByType"`
-}
-
-func (SystemDataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemData)(nil)).Elem()
-}
-
-func (i SystemDataArgs) ToSystemDataOutput() SystemDataOutput {
-	return i.ToSystemDataOutputWithContext(context.Background())
-}
-
-func (i SystemDataArgs) ToSystemDataOutputWithContext(ctx context.Context) SystemDataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemDataOutput)
-}
-
-func (i SystemDataArgs) ToSystemDataPtrOutput() SystemDataPtrOutput {
-	return i.ToSystemDataPtrOutputWithContext(context.Background())
-}
-
-func (i SystemDataArgs) ToSystemDataPtrOutputWithContext(ctx context.Context) SystemDataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemDataOutput).ToSystemDataPtrOutputWithContext(ctx)
-}
-
-// SystemDataPtrInput is an input type that accepts SystemDataArgs, SystemDataPtr and SystemDataPtrOutput values.
-// You can construct a concrete instance of `SystemDataPtrInput` via:
-//
-//	        SystemDataArgs{...}
-//
-//	or:
-//
-//	        nil
-type SystemDataPtrInput interface {
-	pulumi.Input
-
-	ToSystemDataPtrOutput() SystemDataPtrOutput
-	ToSystemDataPtrOutputWithContext(context.Context) SystemDataPtrOutput
-}
-
-type systemDataPtrType SystemDataArgs
-
-func SystemDataPtr(v *SystemDataArgs) SystemDataPtrInput {
-	return (*systemDataPtrType)(v)
-}
-
-func (*systemDataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemData)(nil)).Elem()
-}
-
-func (i *systemDataPtrType) ToSystemDataPtrOutput() SystemDataPtrOutput {
-	return i.ToSystemDataPtrOutputWithContext(context.Background())
-}
-
-func (i *systemDataPtrType) ToSystemDataPtrOutputWithContext(ctx context.Context) SystemDataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemDataPtrOutput)
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataOutput struct{ *pulumi.OutputState }
-
-func (SystemDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemData)(nil)).Elem()
-}
-
-func (o SystemDataOutput) ToSystemDataOutput() SystemDataOutput {
-	return o
-}
-
-func (o SystemDataOutput) ToSystemDataOutputWithContext(ctx context.Context) SystemDataOutput {
-	return o
-}
-
-func (o SystemDataOutput) ToSystemDataPtrOutput() SystemDataPtrOutput {
-	return o.ToSystemDataPtrOutputWithContext(context.Background())
-}
-
-func (o SystemDataOutput) ToSystemDataPtrOutputWithContext(ctx context.Context) SystemDataPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemData) *SystemData {
-		return &v
-	}).(SystemDataPtrOutput)
-}
-
-// The timestamp of resource creation (UTC)
-func (o SystemDataOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemData) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// An identifier for the identity that created the resource
-func (o SystemDataOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemData) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource
-func (o SystemDataOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemData) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemData) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// An identifier for the identity that last modified the resource
-func (o SystemDataOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemData) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource
-func (o SystemDataOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemData) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
-type SystemDataPtrOutput struct{ *pulumi.OutputState }
-
-func (SystemDataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemData)(nil)).Elem()
-}
-
-func (o SystemDataPtrOutput) ToSystemDataPtrOutput() SystemDataPtrOutput {
-	return o
-}
-
-func (o SystemDataPtrOutput) ToSystemDataPtrOutputWithContext(ctx context.Context) SystemDataPtrOutput {
-	return o
-}
-
-func (o SystemDataPtrOutput) Elem() SystemDataOutput {
-	return o.ApplyT(func(v *SystemData) SystemData {
-		if v != nil {
-			return *v
-		}
-		var ret SystemData
-		return ret
-	}).(SystemDataOutput)
-}
-
-// The timestamp of resource creation (UTC)
-func (o SystemDataPtrOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedAt
-	}).(pulumi.StringPtrOutput)
-}
-
-// An identifier for the identity that created the resource
-func (o SystemDataPtrOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource
-func (o SystemDataPtrOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedByType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataPtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedAt
-	}).(pulumi.StringPtrOutput)
-}
-
-// An identifier for the identity that last modified the resource
-func (o SystemDataPtrOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource
-func (o SystemDataPtrOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedByType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC)
+	// The timestamp of resource creation (UTC).
 	CreatedAt *string `pulumi:"createdAt"`
-	// An identifier for the identity that created the resource
+	// The identity that created the resource.
 	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource
+	// The type of identity that created the resource.
 	CreatedByType *string `pulumi:"createdByType"`
 	// The timestamp of resource last modification (UTC)
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// An identifier for the identity that last modified the resource
+	// The identity that last modified the resource.
 	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource
+	// The type of identity that last modified the resource.
 	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 }
 
@@ -705,17 +470,17 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-// The timestamp of resource creation (UTC)
+// The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
-// An identifier for the identity that created the resource
+// The identity that created the resource.
 func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that created the resource
+// The type of identity that created the resource.
 func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
@@ -725,98 +490,14 @@ func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }
 
-// An identifier for the identity that last modified the resource
+// The identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that last modified the resource
+// The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
-type SystemDataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutput() SystemDataResponsePtrOutput {
-	return o
-}
-
-func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutputWithContext(ctx context.Context) SystemDataResponsePtrOutput {
-	return o
-}
-
-func (o SystemDataResponsePtrOutput) Elem() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SystemDataResponse) SystemDataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SystemDataResponse
-		return ret
-	}).(SystemDataResponseOutput)
-}
-
-// The timestamp of resource creation (UTC)
-func (o SystemDataResponsePtrOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedAt
-	}).(pulumi.StringPtrOutput)
-}
-
-// An identifier for the identity that created the resource
-func (o SystemDataResponsePtrOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource
-func (o SystemDataResponsePtrOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedByType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponsePtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedAt
-	}).(pulumi.StringPtrOutput)
-}
-
-// An identifier for the identity that last modified the resource
-func (o SystemDataResponsePtrOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource
-func (o SystemDataResponsePtrOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedByType
-	}).(pulumi.StringPtrOutput)
 }
 
 func init() {
@@ -828,8 +509,5 @@ func init() {
 	pulumi.RegisterOutputType(DedicatedCapacityAdministratorsPtrOutput{})
 	pulumi.RegisterOutputType(DedicatedCapacityAdministratorsResponseOutput{})
 	pulumi.RegisterOutputType(DedicatedCapacityAdministratorsResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataOutput{})
-	pulumi.RegisterOutputType(SystemDataPtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(SystemDataResponsePtrOutput{})
 }

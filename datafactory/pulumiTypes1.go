@@ -13,6 +13,204 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// A copy activity Greenplum Database source.
+type GreenplumSource struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'GreenplumSource'.
+	Type string `pulumi:"type"`
+}
+
+// GreenplumSourceInput is an input type that accepts GreenplumSourceArgs and GreenplumSourceOutput values.
+// You can construct a concrete instance of `GreenplumSourceInput` via:
+//
+//	GreenplumSourceArgs{...}
+type GreenplumSourceInput interface {
+	pulumi.Input
+
+	ToGreenplumSourceOutput() GreenplumSourceOutput
+	ToGreenplumSourceOutputWithContext(context.Context) GreenplumSourceOutput
+}
+
+// A copy activity Greenplum Database source.
+type GreenplumSourceArgs struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query pulumi.Input `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'GreenplumSource'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GreenplumSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreenplumSource)(nil)).Elem()
+}
+
+func (i GreenplumSourceArgs) ToGreenplumSourceOutput() GreenplumSourceOutput {
+	return i.ToGreenplumSourceOutputWithContext(context.Background())
+}
+
+func (i GreenplumSourceArgs) ToGreenplumSourceOutputWithContext(ctx context.Context) GreenplumSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GreenplumSourceOutput)
+}
+
+// A copy activity Greenplum Database source.
+type GreenplumSourceOutput struct{ *pulumi.OutputState }
+
+func (GreenplumSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreenplumSource)(nil)).Elem()
+}
+
+func (o GreenplumSourceOutput) ToGreenplumSourceOutput() GreenplumSourceOutput {
+	return o
+}
+
+func (o GreenplumSourceOutput) ToGreenplumSourceOutputWithContext(ctx context.Context) GreenplumSourceOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o GreenplumSourceOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o GreenplumSourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o GreenplumSourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// A query to retrieve data from source. Type: string (or Expression with resultType string).
+func (o GreenplumSourceOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GreenplumSourceOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o GreenplumSourceOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GreenplumSourceOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'GreenplumSource'.
+func (o GreenplumSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GreenplumSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A copy activity Greenplum Database source.
+type GreenplumSourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'GreenplumSource'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity Greenplum Database source.
+type GreenplumSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GreenplumSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreenplumSourceResponse)(nil)).Elem()
+}
+
+func (o GreenplumSourceResponseOutput) ToGreenplumSourceResponseOutput() GreenplumSourceResponseOutput {
+	return o
+}
+
+func (o GreenplumSourceResponseOutput) ToGreenplumSourceResponseOutputWithContext(ctx context.Context) GreenplumSourceResponseOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o GreenplumSourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o GreenplumSourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o GreenplumSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// A query to retrieve data from source. Type: string (or Expression with resultType string).
+func (o GreenplumSourceResponseOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GreenplumSourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o GreenplumSourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GreenplumSourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'GreenplumSource'.
+func (o GreenplumSourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Greenplum Database dataset.
 type GreenplumTableDataset struct {
 	// List of tags that can be used for describing the Dataset.
@@ -36608,6 +36806,10 @@ type OracleSource struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberPrecision interface{} `pulumi:"numberPrecision"`
+	// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberScale interface{} `pulumi:"numberScale"`
 	// Oracle reader query. Type: string (or Expression with resultType string).
 	OracleReaderQuery interface{} `pulumi:"oracleReaderQuery"`
 	// The partition mechanism that will be used for Oracle read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -36644,6 +36846,10 @@ type OracleSourceArgs struct {
 	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberPrecision pulumi.Input `pulumi:"numberPrecision"`
+	// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberScale pulumi.Input `pulumi:"numberScale"`
 	// Oracle reader query. Type: string (or Expression with resultType string).
 	OracleReaderQuery pulumi.Input `pulumi:"oracleReaderQuery"`
 	// The partition mechanism that will be used for Oracle read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -36703,6 +36909,16 @@ func (o OracleSourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v OracleSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
 }
 
+// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+func (o OracleSourceOutput) NumberPrecision() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleSource) interface{} { return v.NumberPrecision }).(pulumi.AnyOutput)
+}
+
+// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+func (o OracleSourceOutput) NumberScale() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleSource) interface{} { return v.NumberScale }).(pulumi.AnyOutput)
+}
+
 // Oracle reader query. Type: string (or Expression with resultType string).
 func (o OracleSourceOutput) OracleReaderQuery() pulumi.AnyOutput {
 	return o.ApplyT(func(v OracleSource) interface{} { return v.OracleReaderQuery }).(pulumi.AnyOutput)
@@ -36747,6 +36963,10 @@ type OracleSourceResponse struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberPrecision interface{} `pulumi:"numberPrecision"`
+	// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberScale interface{} `pulumi:"numberScale"`
 	// Oracle reader query. Type: string (or Expression with resultType string).
 	OracleReaderQuery interface{} `pulumi:"oracleReaderQuery"`
 	// The partition mechanism that will be used for Oracle read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
@@ -36792,6 +37012,16 @@ func (o OracleSourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput 
 // The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 func (o OracleSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v OracleSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+func (o OracleSourceResponseOutput) NumberPrecision() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleSourceResponse) interface{} { return v.NumberPrecision }).(pulumi.AnyOutput)
+}
+
+// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+func (o OracleSourceResponseOutput) NumberScale() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleSourceResponse) interface{} { return v.NumberScale }).(pulumi.AnyOutput)
 }
 
 // Oracle reader query. Type: string (or Expression with resultType string).
@@ -46882,11 +47112,11 @@ func (o PurviewConfigurationResponsePtrOutput) PurviewResourceId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// QuickBooks server linked service.
+// QuickBooks server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type QuickBooksLinkedService struct {
-	// The access token for OAuth 1.0 authentication.
+	// The access token for OAuth 2.0 authentication.
 	AccessToken interface{} `pulumi:"accessToken"`
-	// The access token secret for OAuth 1.0 authentication.
+	// The access token secret is deprecated for OAuth 1.0 authentication. Only used for version 1.0.
 	AccessTokenSecret interface{} `pulumi:"accessTokenSecret"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
@@ -46896,9 +47126,9 @@ type QuickBooksLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Properties used to connect to QuickBooks. It is mutually exclusive with any other properties in the linked service. Type: object.
 	ConnectionProperties interface{} `pulumi:"connectionProperties"`
-	// The consumer key for OAuth 1.0 authentication.
+	// The consumer key for OAuth 2.0 authentication.
 	ConsumerKey interface{} `pulumi:"consumerKey"`
-	// The consumer secret for OAuth 1.0 authentication.
+	// The consumer secret for OAuth 2.0 authentication.
 	ConsumerSecret interface{} `pulumi:"consumerSecret"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
@@ -46908,10 +47138,12 @@ type QuickBooksLinkedService struct {
 	Endpoint interface{} `pulumi:"endpoint"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The refresh token for OAuth 2.0 authentication.
+	RefreshToken interface{} `pulumi:"refreshToken"`
 	// Type of linked service.
 	// Expected value is 'QuickBooks'.
 	Type string `pulumi:"type"`
-	// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
+	// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true. Only used for version 1.0.
 	UseEncryptedEndpoints interface{} `pulumi:"useEncryptedEndpoints"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
@@ -46928,11 +47160,11 @@ type QuickBooksLinkedServiceInput interface {
 	ToQuickBooksLinkedServiceOutputWithContext(context.Context) QuickBooksLinkedServiceOutput
 }
 
-// QuickBooks server linked service.
+// QuickBooks server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type QuickBooksLinkedServiceArgs struct {
-	// The access token for OAuth 1.0 authentication.
+	// The access token for OAuth 2.0 authentication.
 	AccessToken pulumi.Input `pulumi:"accessToken"`
-	// The access token secret for OAuth 1.0 authentication.
+	// The access token secret is deprecated for OAuth 1.0 authentication. Only used for version 1.0.
 	AccessTokenSecret pulumi.Input `pulumi:"accessTokenSecret"`
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
@@ -46942,9 +47174,9 @@ type QuickBooksLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// Properties used to connect to QuickBooks. It is mutually exclusive with any other properties in the linked service. Type: object.
 	ConnectionProperties pulumi.Input `pulumi:"connectionProperties"`
-	// The consumer key for OAuth 1.0 authentication.
+	// The consumer key for OAuth 2.0 authentication.
 	ConsumerKey pulumi.Input `pulumi:"consumerKey"`
-	// The consumer secret for OAuth 1.0 authentication.
+	// The consumer secret for OAuth 2.0 authentication.
 	ConsumerSecret pulumi.Input `pulumi:"consumerSecret"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -46954,10 +47186,12 @@ type QuickBooksLinkedServiceArgs struct {
 	Endpoint pulumi.Input `pulumi:"endpoint"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// The refresh token for OAuth 2.0 authentication.
+	RefreshToken pulumi.Input `pulumi:"refreshToken"`
 	// Type of linked service.
 	// Expected value is 'QuickBooks'.
 	Type pulumi.StringInput `pulumi:"type"`
-	// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
+	// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true. Only used for version 1.0.
 	UseEncryptedEndpoints pulumi.Input `pulumi:"useEncryptedEndpoints"`
 	// Version of the linked service.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -46975,7 +47209,7 @@ func (i QuickBooksLinkedServiceArgs) ToQuickBooksLinkedServiceOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(QuickBooksLinkedServiceOutput)
 }
 
-// QuickBooks server linked service.
+// QuickBooks server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type QuickBooksLinkedServiceOutput struct{ *pulumi.OutputState }
 
 func (QuickBooksLinkedServiceOutput) ElementType() reflect.Type {
@@ -46990,12 +47224,12 @@ func (o QuickBooksLinkedServiceOutput) ToQuickBooksLinkedServiceOutputWithContex
 	return o
 }
 
-// The access token for OAuth 1.0 authentication.
+// The access token for OAuth 2.0 authentication.
 func (o QuickBooksLinkedServiceOutput) AccessToken() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedService) interface{} { return v.AccessToken }).(pulumi.AnyOutput)
 }
 
-// The access token secret for OAuth 1.0 authentication.
+// The access token secret is deprecated for OAuth 1.0 authentication. Only used for version 1.0.
 func (o QuickBooksLinkedServiceOutput) AccessTokenSecret() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedService) interface{} { return v.AccessTokenSecret }).(pulumi.AnyOutput)
 }
@@ -47020,12 +47254,12 @@ func (o QuickBooksLinkedServiceOutput) ConnectionProperties() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedService) interface{} { return v.ConnectionProperties }).(pulumi.AnyOutput)
 }
 
-// The consumer key for OAuth 1.0 authentication.
+// The consumer key for OAuth 2.0 authentication.
 func (o QuickBooksLinkedServiceOutput) ConsumerKey() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedService) interface{} { return v.ConsumerKey }).(pulumi.AnyOutput)
 }
 
-// The consumer secret for OAuth 1.0 authentication.
+// The consumer secret for OAuth 2.0 authentication.
 func (o QuickBooksLinkedServiceOutput) ConsumerSecret() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedService) interface{} { return v.ConsumerSecret }).(pulumi.AnyOutput)
 }
@@ -47050,13 +47284,18 @@ func (o QuickBooksLinkedServiceOutput) Parameters() ParameterSpecificationMapOut
 	return o.ApplyT(func(v QuickBooksLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
 }
 
+// The refresh token for OAuth 2.0 authentication.
+func (o QuickBooksLinkedServiceOutput) RefreshToken() pulumi.AnyOutput {
+	return o.ApplyT(func(v QuickBooksLinkedService) interface{} { return v.RefreshToken }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'QuickBooks'.
 func (o QuickBooksLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v QuickBooksLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
+// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true. Only used for version 1.0.
 func (o QuickBooksLinkedServiceOutput) UseEncryptedEndpoints() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedService) interface{} { return v.UseEncryptedEndpoints }).(pulumi.AnyOutput)
 }
@@ -47066,11 +47305,11 @@ func (o QuickBooksLinkedServiceOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QuickBooksLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// QuickBooks server linked service.
+// QuickBooks server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type QuickBooksLinkedServiceResponse struct {
-	// The access token for OAuth 1.0 authentication.
+	// The access token for OAuth 2.0 authentication.
 	AccessToken interface{} `pulumi:"accessToken"`
-	// The access token secret for OAuth 1.0 authentication.
+	// The access token secret is deprecated for OAuth 1.0 authentication. Only used for version 1.0.
 	AccessTokenSecret interface{} `pulumi:"accessTokenSecret"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
@@ -47080,9 +47319,9 @@ type QuickBooksLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Properties used to connect to QuickBooks. It is mutually exclusive with any other properties in the linked service. Type: object.
 	ConnectionProperties interface{} `pulumi:"connectionProperties"`
-	// The consumer key for OAuth 1.0 authentication.
+	// The consumer key for OAuth 2.0 authentication.
 	ConsumerKey interface{} `pulumi:"consumerKey"`
-	// The consumer secret for OAuth 1.0 authentication.
+	// The consumer secret for OAuth 2.0 authentication.
 	ConsumerSecret interface{} `pulumi:"consumerSecret"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
@@ -47092,16 +47331,18 @@ type QuickBooksLinkedServiceResponse struct {
 	Endpoint interface{} `pulumi:"endpoint"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The refresh token for OAuth 2.0 authentication.
+	RefreshToken interface{} `pulumi:"refreshToken"`
 	// Type of linked service.
 	// Expected value is 'QuickBooks'.
 	Type string `pulumi:"type"`
-	// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
+	// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true. Only used for version 1.0.
 	UseEncryptedEndpoints interface{} `pulumi:"useEncryptedEndpoints"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
 
-// QuickBooks server linked service.
+// QuickBooks server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type QuickBooksLinkedServiceResponseOutput struct{ *pulumi.OutputState }
 
 func (QuickBooksLinkedServiceResponseOutput) ElementType() reflect.Type {
@@ -47116,12 +47357,12 @@ func (o QuickBooksLinkedServiceResponseOutput) ToQuickBooksLinkedServiceResponse
 	return o
 }
 
-// The access token for OAuth 1.0 authentication.
+// The access token for OAuth 2.0 authentication.
 func (o QuickBooksLinkedServiceResponseOutput) AccessToken() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedServiceResponse) interface{} { return v.AccessToken }).(pulumi.AnyOutput)
 }
 
-// The access token secret for OAuth 1.0 authentication.
+// The access token secret is deprecated for OAuth 1.0 authentication. Only used for version 1.0.
 func (o QuickBooksLinkedServiceResponseOutput) AccessTokenSecret() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedServiceResponse) interface{} { return v.AccessTokenSecret }).(pulumi.AnyOutput)
 }
@@ -47146,12 +47387,12 @@ func (o QuickBooksLinkedServiceResponseOutput) ConnectionProperties() pulumi.Any
 	return o.ApplyT(func(v QuickBooksLinkedServiceResponse) interface{} { return v.ConnectionProperties }).(pulumi.AnyOutput)
 }
 
-// The consumer key for OAuth 1.0 authentication.
+// The consumer key for OAuth 2.0 authentication.
 func (o QuickBooksLinkedServiceResponseOutput) ConsumerKey() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedServiceResponse) interface{} { return v.ConsumerKey }).(pulumi.AnyOutput)
 }
 
-// The consumer secret for OAuth 1.0 authentication.
+// The consumer secret for OAuth 2.0 authentication.
 func (o QuickBooksLinkedServiceResponseOutput) ConsumerSecret() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedServiceResponse) interface{} { return v.ConsumerSecret }).(pulumi.AnyOutput)
 }
@@ -47176,13 +47417,18 @@ func (o QuickBooksLinkedServiceResponseOutput) Parameters() ParameterSpecificati
 	return o.ApplyT(func(v QuickBooksLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
 }
 
+// The refresh token for OAuth 2.0 authentication.
+func (o QuickBooksLinkedServiceResponseOutput) RefreshToken() pulumi.AnyOutput {
+	return o.ApplyT(func(v QuickBooksLinkedServiceResponse) interface{} { return v.RefreshToken }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'QuickBooks'.
 func (o QuickBooksLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v QuickBooksLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
+// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true. Only used for version 1.0.
 func (o QuickBooksLinkedServiceResponseOutput) UseEncryptedEndpoints() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedServiceResponse) interface{} { return v.UseEncryptedEndpoints }).(pulumi.AnyOutput)
 }
@@ -62086,253 +62332,9 @@ func (o SapOpenHubLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// A copy activity source for SAP Business Warehouse Open Hub Destination source.
-type SapOpenHubSource struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-	BaseRequestId interface{} `pulumi:"baseRequestId"`
-	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-	CustomRfcReadTableFunctionModule interface{} `pulumi:"customRfcReadTableFunctionModule"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-	ExcludeLastRequest interface{} `pulumi:"excludeLastRequest"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-	SapDataColumnDelimiter interface{} `pulumi:"sapDataColumnDelimiter"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'SapOpenHubSource'.
-	Type string `pulumi:"type"`
-}
-
-// SapOpenHubSourceInput is an input type that accepts SapOpenHubSourceArgs and SapOpenHubSourceOutput values.
-// You can construct a concrete instance of `SapOpenHubSourceInput` via:
-//
-//	SapOpenHubSourceArgs{...}
-type SapOpenHubSourceInput interface {
-	pulumi.Input
-
-	ToSapOpenHubSourceOutput() SapOpenHubSourceOutput
-	ToSapOpenHubSourceOutputWithContext(context.Context) SapOpenHubSourceOutput
-}
-
-// A copy activity source for SAP Business Warehouse Open Hub Destination source.
-type SapOpenHubSourceArgs struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
-	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-	BaseRequestId pulumi.Input `pulumi:"baseRequestId"`
-	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-	CustomRfcReadTableFunctionModule pulumi.Input `pulumi:"customRfcReadTableFunctionModule"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
-	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-	ExcludeLastRequest pulumi.Input `pulumi:"excludeLastRequest"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
-	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-	SapDataColumnDelimiter pulumi.Input `pulumi:"sapDataColumnDelimiter"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'SapOpenHubSource'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (SapOpenHubSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SapOpenHubSource)(nil)).Elem()
-}
-
-func (i SapOpenHubSourceArgs) ToSapOpenHubSourceOutput() SapOpenHubSourceOutput {
-	return i.ToSapOpenHubSourceOutputWithContext(context.Background())
-}
-
-func (i SapOpenHubSourceArgs) ToSapOpenHubSourceOutputWithContext(ctx context.Context) SapOpenHubSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SapOpenHubSourceOutput)
-}
-
-// A copy activity source for SAP Business Warehouse Open Hub Destination source.
-type SapOpenHubSourceOutput struct{ *pulumi.OutputState }
-
-func (SapOpenHubSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SapOpenHubSource)(nil)).Elem()
-}
-
-func (o SapOpenHubSourceOutput) ToSapOpenHubSourceOutput() SapOpenHubSourceOutput {
-	return o
-}
-
-func (o SapOpenHubSourceOutput) ToSapOpenHubSourceOutputWithContext(ctx context.Context) SapOpenHubSourceOutput {
-	return o
-}
-
-// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-func (o SapOpenHubSourceOutput) AdditionalColumns() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
-}
-
-// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-func (o SapOpenHubSourceOutput) BaseRequestId() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.BaseRequestId }).(pulumi.AnyOutput)
-}
-
-// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-func (o SapOpenHubSourceOutput) CustomRfcReadTableFunctionModule() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.CustomRfcReadTableFunctionModule }).(pulumi.AnyOutput)
-}
-
-// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-func (o SapOpenHubSourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
-}
-
-// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-func (o SapOpenHubSourceOutput) ExcludeLastRequest() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.ExcludeLastRequest }).(pulumi.AnyOutput)
-}
-
-// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-func (o SapOpenHubSourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
-}
-
-// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o SapOpenHubSourceOutput) QueryTimeout() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
-}
-
-// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-func (o SapOpenHubSourceOutput) SapDataColumnDelimiter() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.SapDataColumnDelimiter }).(pulumi.AnyOutput)
-}
-
-// Source retry count. Type: integer (or Expression with resultType integer).
-func (o SapOpenHubSourceOutput) SourceRetryCount() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
-}
-
-// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o SapOpenHubSourceOutput) SourceRetryWait() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
-}
-
-// Copy source type.
-// Expected value is 'SapOpenHubSource'.
-func (o SapOpenHubSourceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SapOpenHubSource) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// A copy activity source for SAP Business Warehouse Open Hub Destination source.
-type SapOpenHubSourceResponse struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-	BaseRequestId interface{} `pulumi:"baseRequestId"`
-	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-	CustomRfcReadTableFunctionModule interface{} `pulumi:"customRfcReadTableFunctionModule"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-	ExcludeLastRequest interface{} `pulumi:"excludeLastRequest"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-	SapDataColumnDelimiter interface{} `pulumi:"sapDataColumnDelimiter"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'SapOpenHubSource'.
-	Type string `pulumi:"type"`
-}
-
-// A copy activity source for SAP Business Warehouse Open Hub Destination source.
-type SapOpenHubSourceResponseOutput struct{ *pulumi.OutputState }
-
-func (SapOpenHubSourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SapOpenHubSourceResponse)(nil)).Elem()
-}
-
-func (o SapOpenHubSourceResponseOutput) ToSapOpenHubSourceResponseOutput() SapOpenHubSourceResponseOutput {
-	return o
-}
-
-func (o SapOpenHubSourceResponseOutput) ToSapOpenHubSourceResponseOutputWithContext(ctx context.Context) SapOpenHubSourceResponseOutput {
-	return o
-}
-
-// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-func (o SapOpenHubSourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
-}
-
-// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-func (o SapOpenHubSourceResponseOutput) BaseRequestId() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.BaseRequestId }).(pulumi.AnyOutput)
-}
-
-// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-func (o SapOpenHubSourceResponseOutput) CustomRfcReadTableFunctionModule() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.CustomRfcReadTableFunctionModule }).(pulumi.AnyOutput)
-}
-
-// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-func (o SapOpenHubSourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
-}
-
-// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-func (o SapOpenHubSourceResponseOutput) ExcludeLastRequest() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.ExcludeLastRequest }).(pulumi.AnyOutput)
-}
-
-// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-func (o SapOpenHubSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
-}
-
-// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o SapOpenHubSourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
-}
-
-// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-func (o SapOpenHubSourceResponseOutput) SapDataColumnDelimiter() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.SapDataColumnDelimiter }).(pulumi.AnyOutput)
-}
-
-// Source retry count. Type: integer (or Expression with resultType integer).
-func (o SapOpenHubSourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
-}
-
-// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o SapOpenHubSourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
-}
-
-// Copy source type.
-// Expected value is 'SapOpenHubSource'.
-func (o SapOpenHubSourceResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
 func init() {
+	pulumi.RegisterOutputType(GreenplumSourceOutput{})
+	pulumi.RegisterOutputType(GreenplumSourceResponseOutput{})
 	pulumi.RegisterOutputType(GreenplumTableDatasetOutput{})
 	pulumi.RegisterOutputType(GreenplumTableDatasetResponseOutput{})
 	pulumi.RegisterOutputType(HBaseLinkedServiceOutput{})
@@ -62988,6 +62990,4 @@ func init() {
 	pulumi.RegisterOutputType(SapOdpSourceResponseOutput{})
 	pulumi.RegisterOutputType(SapOpenHubLinkedServiceOutput{})
 	pulumi.RegisterOutputType(SapOpenHubLinkedServiceResponseOutput{})
-	pulumi.RegisterOutputType(SapOpenHubSourceOutput{})
-	pulumi.RegisterOutputType(SapOpenHubSourceResponseOutput{})
 }

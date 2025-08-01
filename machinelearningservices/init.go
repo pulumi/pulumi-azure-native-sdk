@@ -99,6 +99,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OnlineDeployment{}
 	case "azure-native:machinelearningservices:OnlineEndpoint":
 		r = &OnlineEndpoint{}
+	case "azure-native:machinelearningservices:OutboundRule":
+		r = &OutboundRule{}
 	case "azure-native:machinelearningservices:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
 	case "azure-native:machinelearningservices:RaiPolicy":

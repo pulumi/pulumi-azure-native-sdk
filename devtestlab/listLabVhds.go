@@ -27,15 +27,15 @@ func ListLabVhds(ctx *pulumi.Context, args *ListLabVhdsArgs, opts ...pulumi.Invo
 type ListLabVhdsArgs struct {
 	// The name of the lab.
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The response of a list operation.
 type ListLabVhdsResult struct {
-	// Link for next set of results.
+	// The link to the next page of items
 	NextLink *string `pulumi:"nextLink"`
-	// Results of the list operation.
+	// The LabVhd items on this page
 	Value []LabVhdResponse `pulumi:"value"`
 }
 
@@ -51,7 +51,7 @@ func ListLabVhdsOutput(ctx *pulumi.Context, args ListLabVhdsOutputArgs, opts ...
 type ListLabVhdsOutputArgs struct {
 	// The name of the lab.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,12 +74,12 @@ func (o ListLabVhdsResultOutput) ToListLabVhdsResultOutputWithContext(ctx contex
 	return o
 }
 
-// Link for next set of results.
+// The link to the next page of items
 func (o ListLabVhdsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListLabVhdsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// Results of the list operation.
+// The LabVhd items on this page
 func (o ListLabVhdsResultOutput) Value() LabVhdResponseArrayOutput {
 	return o.ApplyT(func(v ListLabVhdsResult) []LabVhdResponse { return v.Value }).(LabVhdResponseArrayOutput)
 }

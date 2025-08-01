@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List users success response
+// Organization users details
 //
 // Uses Azure REST API version 2024-07-01.
 //
@@ -29,7 +29,7 @@ func ListAccessUsers(ctx *pulumi.Context, args *ListAccessUsersArgs, opts ...pul
 type ListAccessUsersArgs struct {
 	// Organization resource name
 	OrganizationName string `pulumi:"organizationName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Search filters for the request
 	SearchFilters map[string]string `pulumi:"searchFilters"`
@@ -57,7 +57,7 @@ func ListAccessUsersOutput(ctx *pulumi.Context, args ListAccessUsersOutputArgs, 
 type ListAccessUsersOutputArgs struct {
 	// Organization resource name
 	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Search filters for the request
 	SearchFilters pulumi.StringMapInput `pulumi:"searchFilters"`

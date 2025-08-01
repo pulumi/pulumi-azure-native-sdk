@@ -122,9 +122,9 @@ type artifactSourceArgs struct {
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the artifact source.
+	// The name of the ArtifactSource
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The security token to authenticate to the artifact source.
 	SecurityToken *string `pulumi:"securityToken"`
@@ -152,9 +152,9 @@ type ArtifactSourceArgs struct {
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the artifact source.
+	// The name of the ArtifactSource
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The security token to authenticate to the artifact source.
 	SecurityToken pulumi.StringPtrInput

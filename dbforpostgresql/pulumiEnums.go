@@ -175,7 +175,7 @@ func (in *activeDirectoryAuthPtr) ToActiveDirectoryAuthPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ActiveDirectoryAuthPtrOutput)
 }
 
-// If Enabled, Azure Active Directory authentication is enabled.
+// Indicates if the server supports Microsoft Entra authentication.
 type ActiveDirectoryAuthEnum string
 
 const (
@@ -505,7 +505,7 @@ func (in *administratorTypePtr) ToAdministratorTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(AdministratorTypePtrOutput)
 }
 
-// Data encryption type to depict if it is System Managed vs Azure Key vault.
+// Data encryption type used by a flexible server.
 type ArmServerKeyType string
 
 const (
@@ -671,7 +671,7 @@ func (in *armServerKeyTypePtr) ToArmServerKeyTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ArmServerKeyTypePtrOutput)
 }
 
-// Name of storage tier for IOPS.
+// Storage tier of a flexible server.
 type AzureManagedDiskPerformanceTiers string
 
 const (
@@ -861,7 +861,7 @@ func (in *azureManagedDiskPerformanceTiersPtr) ToAzureManagedDiskPerformanceTier
 	return pulumi.ToOutputWithContext(ctx, in).(AzureManagedDiskPerformanceTiersPtrOutput)
 }
 
-// To trigger cancel for entire migration we need to send this flag as True
+// Indicates if cancel must be triggered for the entire migration.
 type CancelEnum string
 
 const (
@@ -1027,7 +1027,7 @@ func (in *cancelEnumPtr) ToCancelEnumPtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CancelEnumPtrOutput)
 }
 
-// The mode to create a new PostgreSQL server.
+// Creation mode of a new flexible server.
 type CreateMode string
 
 const (
@@ -1534,7 +1534,7 @@ func (in *geoRedundantBackupPtr) ToGeoRedundantBackupPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(GeoRedundantBackupPtrOutput)
 }
 
-// A value indicating whether Geo-Redundant backup is enabled on the server.
+// Indicates if the server is configured to create geographically redundant backups.
 type GeoRedundantBackupEnum string
 
 const (
@@ -1700,7 +1700,7 @@ func (in *geoRedundantBackupEnumPtr) ToGeoRedundantBackupEnumPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(GeoRedundantBackupEnumPtrOutput)
 }
 
-// The HA mode for the server.
+// High availability mode for a flexible server.
 type HighAvailabilityMode string
 
 const (
@@ -2201,7 +2201,7 @@ func (in *infrastructureEncryptionPtr) ToInfrastructureEncryptionPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(InfrastructureEncryptionPtrOutput)
 }
 
-// Primary encryption key status for Data encryption enabled server.
+// Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
 type KeyStatusEnum string
 
 const (
@@ -2367,7 +2367,7 @@ func (in *keyStatusEnumPtr) ToKeyStatusEnumPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(KeyStatusEnumPtrOutput)
 }
 
-// Indicates whether to setup LogicalReplicationOnSourceDb, if needed
+// Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
 type LogicalReplicationOnSourceDbEnum string
 
 const (
@@ -2533,7 +2533,7 @@ func (in *logicalReplicationOnSourceDbEnumPtr) ToLogicalReplicationOnSourceDbEnu
 	return pulumi.ToOutputWithContext(ctx, in).(LogicalReplicationOnSourceDbEnumPtrOutput)
 }
 
-// To migrate roles and permissions we need to send this flag as True
+// Indicates if roles and permissions must be migrated.
 type MigrateRolesEnum string
 
 const (
@@ -2699,7 +2699,7 @@ func (in *migrateRolesEnumPtr) ToMigrateRolesEnumPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(MigrateRolesEnumPtrOutput)
 }
 
-// There are two types of migration modes Online and Offline
+// Mode used to perform the migration: Online or Offline.
 type MigrationMode string
 
 const (
@@ -2865,7 +2865,7 @@ func (in *migrationModePtr) ToMigrationModePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(MigrationModePtrOutput)
 }
 
-// This indicates the supported Migration option for the migration
+// Supported option for a migration.
 type MigrationOption string
 
 const (
@@ -3203,7 +3203,7 @@ func (in *minimalTlsVersionEnumPtr) ToMinimalTlsVersionEnumPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(MinimalTlsVersionEnumPtrOutput)
 }
 
-// Indicates whether the databases on the target server can be overwritten, if already present. If set to False, the migration workflow will wait for a confirmation, if it detects that the database already exists.
+// Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation.
 type OverwriteDbsInTargetEnum string
 
 const (
@@ -3534,7 +3534,7 @@ func (in *passwordAuthPtr) ToPasswordAuthPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(PasswordAuthPtrOutput)
 }
 
-// If Enabled, Password authentication is enabled.
+// Indicates if the server supports password based authentication.
 type PasswordAuthEnum string
 
 const (
@@ -4201,7 +4201,7 @@ func (in *publicNetworkAccessEnumPtr) ToPublicNetworkAccessEnumPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessEnumPtrOutput)
 }
 
-// Sets the promote mode for a replica server. This is a write only property.
+// Type of operation to apply on the read replica. This property is write only. Standalone means that the read replica will be promoted to a standalone server, and will become a completely independent entity from the replication set. Switchover means that the read replica will roles with the primary server.
 type ReadReplicaPromoteMode string
 
 const (
@@ -4367,7 +4367,7 @@ func (in *readReplicaPromoteModePtr) ToReadReplicaPromoteModePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ReadReplicaPromoteModePtrOutput)
 }
 
-// Sets the promote options for a replica server. This is a write only property.
+// Data synchronization option to use when processing the operation specified in the promoteMode property This property is write only. Planned means that the operation will wait for data in the read replica to be fully synchronized with its source server before it initiates the operation. Forced means that the operation will not wait for data in the read replica to be synchronized with its source server before it initiates the operation.
 type ReplicationPromoteOption string
 
 const (
@@ -4533,7 +4533,7 @@ func (in *replicationPromoteOptionPtr) ToReplicationPromoteOptionPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationPromoteOptionPtrOutput)
 }
 
-// Replication role of the server
+// Role of the server in a replication set.
 type ReplicationRole string
 
 const (
@@ -4868,7 +4868,7 @@ func (in *roleTypePtr) ToRoleTypePtrOutputWithContext(ctx context.Context) RoleT
 	return pulumi.ToOutputWithContext(ctx, in).(RoleTypePtrOutput)
 }
 
-// public network access is enabled or not
+// Indicates if public network access is enabled or not.
 type ServerPublicNetworkAccessState string
 
 const (
@@ -5200,7 +5200,7 @@ func (in *serverSecurityAlertPolicyStatePtr) ToServerSecurityAlertPolicyStatePtr
 	return pulumi.ToOutputWithContext(ctx, in).(ServerSecurityAlertPolicyStatePtrOutput)
 }
 
-// PostgreSQL Server version.
+// Major version of PostgreSQL database engine.
 type ServerVersion string
 
 const (
@@ -5890,7 +5890,7 @@ func (in *singleServerVersionPtr) ToSingleServerVersionPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(SingleServerVersionPtrOutput)
 }
 
-// The tier of the particular SKU, e.g. Burstable.
+// Tier of the compute assigned to a flexible server.
 type SkuTier string
 
 const (
@@ -6058,7 +6058,7 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-// migration source server type : OnPremises, AWS, GCP, AzureVM, PostgreSQLSingleServer, AWS_RDS, AWS_AURORA, AWS_EC2, GCP_CloudSQL, GCP_AlloyDB, GCP_Compute, or EDB
+// Source server type used for the migration: ApsaraDB_RDS, AWS, AWS_AURORA, AWS_EC2, AWS_RDS, AzureVM, Crunchy_PostgreSQL, Digital_Ocean_Droplets, Digital_Ocean_PostgreSQL, EDB, EDB_Oracle_Server, EDB_PostgreSQL, GCP, GCP_AlloyDB, GCP_CloudSQL, GCP_Compute, Heroku_PostgreSQL, Huawei_Compute, Huawei_RDS, OnPremises, PostgreSQLCosmosDB, PostgreSQLFlexibleServer, PostgreSQLSingleServer, or Supabase_PostgreSQL
 type SourceType string
 
 const (
@@ -6410,7 +6410,7 @@ func (in *sslEnforcementEnumPtr) ToSslEnforcementEnumPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SslEnforcementEnumPtrOutput)
 }
 
-// SSL modes for migration. Default SSL mode for PostgreSQLSingleServer is VerifyFull and Prefer for other source types
+// SSL mode used by a migration. Default SSL mode for 'PostgreSQLSingleServer' is 'VerifyFull'. Default SSL mode for other source types is 'Prefer'.
 type SslMode string
 
 const (
@@ -6580,7 +6580,7 @@ func (in *sslModePtr) ToSslModePtrOutputWithContext(ctx context.Context) SslMode
 	return pulumi.ToOutputWithContext(ctx, in).(SslModePtrOutput)
 }
 
-// Indicates whether the data migration should start right away
+// Indicates if data migration must start right away.
 type StartDataMigrationEnum string
 
 const (
@@ -6746,7 +6746,7 @@ func (in *startDataMigrationEnumPtr) ToStartDataMigrationEnumPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(StartDataMigrationEnumPtrOutput)
 }
 
-// Flag to enable / disable Storage Auto grow for flexible server.
+// Flag to enable or disable the automatic growth of storage size of a flexible server when available space is nearing zero and conditions allow for automatically growing storage size.
 type StorageAutoGrow string
 
 const (
@@ -7078,7 +7078,7 @@ func (in *storageAutogrowPtr) ToStorageAutogrowPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAutogrowPtrOutput)
 }
 
-// Storage type for the server. Allowed values are Premium_LRS and PremiumV2_LRS, and default is Premium_LRS if not specified
+// Type of storage assigned to a flexible server. Allowed values are Premium_LRS or PremiumV2_LRS. If not specified, it defaults to Premium_LRS.
 type StorageType string
 
 const (
@@ -7244,7 +7244,7 @@ func (in *storageTypePtr) ToStorageTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(StorageTypePtrOutput)
 }
 
-// To trigger cutover for entire migration we need to send this flag as True
+// Indicates if cutover must be triggered for the entire migration.
 type TriggerCutoverEnum string
 
 const (
@@ -7410,7 +7410,7 @@ func (in *triggerCutoverEnumPtr) ToTriggerCutoverEnumPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerCutoverEnumPtrOutput)
 }
 
-// The endpoint type for the virtual endpoint.
+// Type of endpoint for the virtual endpoints.
 type VirtualEndpointType string
 
 const (
