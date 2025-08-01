@@ -24,8 +24,8 @@ type GuestConfigurationConnectedVMwarevSphereAssignment struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Region where the VM is located.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Name of the guest configuration assignment.
-	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// The guest configuration assignment name.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -41,6 +41,9 @@ func NewGuestConfigurationConnectedVMwarevSphereAssignment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -92,15 +95,15 @@ func (GuestConfigurationConnectedVMwarevSphereAssignmentState) ElementType() ref
 }
 
 type guestConfigurationConnectedVMwarevSphereAssignmentArgs struct {
-	// Name of the guest configuration assignment.
+	// The guest configuration assignment name.
 	GuestConfigurationAssignmentName *string `pulumi:"guestConfigurationAssignmentName"`
 	// Region where the VM is located.
 	Location *string `pulumi:"location"`
-	// Name of the guest configuration assignment.
-	Name *string `pulumi:"name"`
+	// The guest configuration assignment name.
+	Name string `pulumi:"name"`
 	// Properties of the Guest configuration assignment.
 	Properties *GuestConfigurationAssignmentProperties `pulumi:"properties"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the virtual machine.
 	VmName string `pulumi:"vmName"`
@@ -108,15 +111,15 @@ type guestConfigurationConnectedVMwarevSphereAssignmentArgs struct {
 
 // The set of arguments for constructing a GuestConfigurationConnectedVMwarevSphereAssignment resource.
 type GuestConfigurationConnectedVMwarevSphereAssignmentArgs struct {
-	// Name of the guest configuration assignment.
+	// The guest configuration assignment name.
 	GuestConfigurationAssignmentName pulumi.StringPtrInput
 	// Region where the VM is located.
 	Location pulumi.StringPtrInput
-	// Name of the guest configuration assignment.
-	Name pulumi.StringPtrInput
+	// The guest configuration assignment name.
+	Name pulumi.StringInput
 	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesPtrInput
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the virtual machine.
 	VmName pulumi.StringInput
@@ -171,9 +174,9 @@ func (o GuestConfigurationConnectedVMwarevSphereAssignmentOutput) Location() pul
 	return o.ApplyT(func(v *GuestConfigurationConnectedVMwarevSphereAssignment) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Name of the guest configuration assignment.
-func (o GuestConfigurationConnectedVMwarevSphereAssignmentOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GuestConfigurationConnectedVMwarevSphereAssignment) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+// The guest configuration assignment name.
+func (o GuestConfigurationConnectedVMwarevSphereAssignmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestConfigurationConnectedVMwarevSphereAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Properties of the Guest configuration assignment.

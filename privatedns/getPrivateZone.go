@@ -29,7 +29,7 @@ func LookupPrivateZone(ctx *pulumi.Context, args *LookupPrivateZoneArgs, opts ..
 type LookupPrivateZoneArgs struct {
 	// The name of the Private DNS zone (without a terminating dot).
 	PrivateZoneName string `pulumi:"privateZoneName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,7 +39,7 @@ type LookupPrivateZoneResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ETag of the zone.
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource Id for the resource. Example - '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateDnsZoneName}'.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Private zone internal Id
 	InternalId string `pulumi:"internalId"`
@@ -61,9 +61,11 @@ type LookupPrivateZoneResult struct {
 	NumberOfVirtualNetworkLinksWithRegistration float64 `pulumi:"numberOfVirtualNetworkLinksWithRegistration"`
 	// The provisioning state of the resource. This is a read-only property and any attempt to set this value will be ignored.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -79,7 +81,7 @@ func LookupPrivateZoneOutput(ctx *pulumi.Context, args LookupPrivateZoneOutputAr
 type LookupPrivateZoneOutputArgs struct {
 	// The name of the Private DNS zone (without a terminating dot).
 	PrivateZoneName pulumi.StringInput `pulumi:"privateZoneName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -112,7 +114,7 @@ func (o LookupPrivateZoneResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateZoneResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource Id for the resource. Example - '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateDnsZoneName}'.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupPrivateZoneResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateZoneResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -167,12 +169,17 @@ func (o LookupPrivateZoneResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateZoneResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupPrivateZoneResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateZoneResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o LookupPrivateZoneResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPrivateZoneResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPrivateZoneResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateZoneResult) string { return v.Type }).(pulumi.StringOutput)
 }

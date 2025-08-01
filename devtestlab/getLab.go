@@ -29,7 +29,7 @@ type LookupLabArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -117,7 +117,7 @@ type LookupLabOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

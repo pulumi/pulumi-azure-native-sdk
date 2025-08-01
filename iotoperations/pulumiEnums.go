@@ -10,6 +10,408 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The allocation policy type.
+type AkriConnectorTemplateAllocationPolicy string
+
+const (
+	// Bucketized allocation policy.
+	AkriConnectorTemplateAllocationPolicyBucketized = AkriConnectorTemplateAllocationPolicy("Bucketized")
+)
+
+// AkriConnectorTemplateHelmRegistrySettingsType values.
+type AkriConnectorTemplateHelmRegistrySettingsType string
+
+const (
+	// A Registry Endpoint reference.
+	AkriConnectorTemplateHelmRegistrySettingsTypeRegistryEndpointRef = AkriConnectorTemplateHelmRegistrySettingsType("RegistryEndpointRef")
+	// A Container Registry reference.
+	AkriConnectorTemplateHelmRegistrySettingsTypeContainerRegistry = AkriConnectorTemplateHelmRegistrySettingsType("ContainerRegistry")
+)
+
+// The type of the managed configuration.
+type AkriConnectorTemplateManagedConfigurationType string
+
+const (
+	// Image Configuration Type.
+	AkriConnectorTemplateManagedConfigurationTypeImageConfiguration = AkriConnectorTemplateManagedConfigurationType("ImageConfiguration")
+	// StatefulSet Configuration Type.
+	AkriConnectorTemplateManagedConfigurationTypeStatefulSetConfiguration = AkriConnectorTemplateManagedConfigurationType("StatefulSetConfiguration")
+)
+
+// Runtime configuration type for the Connector template.
+type AkriConnectorTemplateRuntimeConfigurationType string
+
+const (
+	// Helm Configuration Type.
+	AkriConnectorTemplateRuntimeConfigurationTypeHelmConfiguration = AkriConnectorTemplateRuntimeConfigurationType("HelmConfiguration")
+	// Managed Configuration Type.
+	AkriConnectorTemplateRuntimeConfigurationTypeManagedConfiguration = AkriConnectorTemplateRuntimeConfigurationType("ManagedConfiguration")
+)
+
+// The pull policy of the image.
+type AkriConnectorsImagePullPolicy string
+
+const (
+	// Always pull the image.
+	AkriConnectorsImagePullPolicyAlways = AkriConnectorsImagePullPolicy("Always")
+	// IfNotPresent pull the image.
+	AkriConnectorsImagePullPolicyIfNotPresent = AkriConnectorsImagePullPolicy("IfNotPresent")
+	// Never pull the image.
+	AkriConnectorsImagePullPolicyNever = AkriConnectorsImagePullPolicy("Never")
+)
+
+func (AkriConnectorsImagePullPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsImagePullPolicy)(nil)).Elem()
+}
+
+func (e AkriConnectorsImagePullPolicy) ToAkriConnectorsImagePullPolicyOutput() AkriConnectorsImagePullPolicyOutput {
+	return pulumi.ToOutput(e).(AkriConnectorsImagePullPolicyOutput)
+}
+
+func (e AkriConnectorsImagePullPolicy) ToAkriConnectorsImagePullPolicyOutputWithContext(ctx context.Context) AkriConnectorsImagePullPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AkriConnectorsImagePullPolicyOutput)
+}
+
+func (e AkriConnectorsImagePullPolicy) ToAkriConnectorsImagePullPolicyPtrOutput() AkriConnectorsImagePullPolicyPtrOutput {
+	return e.ToAkriConnectorsImagePullPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e AkriConnectorsImagePullPolicy) ToAkriConnectorsImagePullPolicyPtrOutputWithContext(ctx context.Context) AkriConnectorsImagePullPolicyPtrOutput {
+	return AkriConnectorsImagePullPolicy(e).ToAkriConnectorsImagePullPolicyOutputWithContext(ctx).ToAkriConnectorsImagePullPolicyPtrOutputWithContext(ctx)
+}
+
+func (e AkriConnectorsImagePullPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AkriConnectorsImagePullPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AkriConnectorsImagePullPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AkriConnectorsImagePullPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AkriConnectorsImagePullPolicyOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsImagePullPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsImagePullPolicy)(nil)).Elem()
+}
+
+func (o AkriConnectorsImagePullPolicyOutput) ToAkriConnectorsImagePullPolicyOutput() AkriConnectorsImagePullPolicyOutput {
+	return o
+}
+
+func (o AkriConnectorsImagePullPolicyOutput) ToAkriConnectorsImagePullPolicyOutputWithContext(ctx context.Context) AkriConnectorsImagePullPolicyOutput {
+	return o
+}
+
+func (o AkriConnectorsImagePullPolicyOutput) ToAkriConnectorsImagePullPolicyPtrOutput() AkriConnectorsImagePullPolicyPtrOutput {
+	return o.ToAkriConnectorsImagePullPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsImagePullPolicyOutput) ToAkriConnectorsImagePullPolicyPtrOutputWithContext(ctx context.Context) AkriConnectorsImagePullPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorsImagePullPolicy) *AkriConnectorsImagePullPolicy {
+		return &v
+	}).(AkriConnectorsImagePullPolicyPtrOutput)
+}
+
+func (o AkriConnectorsImagePullPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsImagePullPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AkriConnectorsImagePullPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AkriConnectorsImagePullPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsImagePullPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AkriConnectorsImagePullPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AkriConnectorsImagePullPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsImagePullPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsImagePullPolicy)(nil)).Elem()
+}
+
+func (o AkriConnectorsImagePullPolicyPtrOutput) ToAkriConnectorsImagePullPolicyPtrOutput() AkriConnectorsImagePullPolicyPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsImagePullPolicyPtrOutput) ToAkriConnectorsImagePullPolicyPtrOutputWithContext(ctx context.Context) AkriConnectorsImagePullPolicyPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsImagePullPolicyPtrOutput) Elem() AkriConnectorsImagePullPolicyOutput {
+	return o.ApplyT(func(v *AkriConnectorsImagePullPolicy) AkriConnectorsImagePullPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsImagePullPolicy
+		return ret
+	}).(AkriConnectorsImagePullPolicyOutput)
+}
+
+func (o AkriConnectorsImagePullPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsImagePullPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AkriConnectorsImagePullPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsImagePullPolicyInput is an input type that accepts values of the AkriConnectorsImagePullPolicy enum
+// A concrete instance of `AkriConnectorsImagePullPolicyInput` can be one of the following:
+//
+//	AkriConnectorsImagePullPolicyAlways
+//	AkriConnectorsImagePullPolicyIfNotPresent
+//	AkriConnectorsImagePullPolicyNever
+type AkriConnectorsImagePullPolicyInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsImagePullPolicyOutput() AkriConnectorsImagePullPolicyOutput
+	ToAkriConnectorsImagePullPolicyOutputWithContext(context.Context) AkriConnectorsImagePullPolicyOutput
+}
+
+var akriConnectorsImagePullPolicyPtrType = reflect.TypeOf((**AkriConnectorsImagePullPolicy)(nil)).Elem()
+
+type AkriConnectorsImagePullPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsImagePullPolicyPtrOutput() AkriConnectorsImagePullPolicyPtrOutput
+	ToAkriConnectorsImagePullPolicyPtrOutputWithContext(context.Context) AkriConnectorsImagePullPolicyPtrOutput
+}
+
+type akriConnectorsImagePullPolicyPtr string
+
+func AkriConnectorsImagePullPolicyPtr(v string) AkriConnectorsImagePullPolicyPtrInput {
+	return (*akriConnectorsImagePullPolicyPtr)(&v)
+}
+
+func (*akriConnectorsImagePullPolicyPtr) ElementType() reflect.Type {
+	return akriConnectorsImagePullPolicyPtrType
+}
+
+func (in *akriConnectorsImagePullPolicyPtr) ToAkriConnectorsImagePullPolicyPtrOutput() AkriConnectorsImagePullPolicyPtrOutput {
+	return pulumi.ToOutput(in).(AkriConnectorsImagePullPolicyPtrOutput)
+}
+
+func (in *akriConnectorsImagePullPolicyPtr) ToAkriConnectorsImagePullPolicyPtrOutputWithContext(ctx context.Context) AkriConnectorsImagePullPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AkriConnectorsImagePullPolicyPtrOutput)
+}
+
+// The authentication method for the MQTT connection.
+type AkriConnectorsMqttAuthenticationMethod string
+
+const (
+	// Service Account Token authentication.
+	AkriConnectorsMqttAuthenticationMethodServiceAccountToken = AkriConnectorsMqttAuthenticationMethod("ServiceAccountToken")
+)
+
+// The protocol to use for the connection. Currently only `mqtt` is supported.
+type AkriConnectorsMqttProtocolType string
+
+const (
+	// Mqtt protocol.
+	AkriConnectorsMqttProtocolTypeMqtt = AkriConnectorsMqttProtocolType("Mqtt")
+)
+
+func (AkriConnectorsMqttProtocolType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsMqttProtocolType)(nil)).Elem()
+}
+
+func (e AkriConnectorsMqttProtocolType) ToAkriConnectorsMqttProtocolTypeOutput() AkriConnectorsMqttProtocolTypeOutput {
+	return pulumi.ToOutput(e).(AkriConnectorsMqttProtocolTypeOutput)
+}
+
+func (e AkriConnectorsMqttProtocolType) ToAkriConnectorsMqttProtocolTypeOutputWithContext(ctx context.Context) AkriConnectorsMqttProtocolTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AkriConnectorsMqttProtocolTypeOutput)
+}
+
+func (e AkriConnectorsMqttProtocolType) ToAkriConnectorsMqttProtocolTypePtrOutput() AkriConnectorsMqttProtocolTypePtrOutput {
+	return e.ToAkriConnectorsMqttProtocolTypePtrOutputWithContext(context.Background())
+}
+
+func (e AkriConnectorsMqttProtocolType) ToAkriConnectorsMqttProtocolTypePtrOutputWithContext(ctx context.Context) AkriConnectorsMqttProtocolTypePtrOutput {
+	return AkriConnectorsMqttProtocolType(e).ToAkriConnectorsMqttProtocolTypeOutputWithContext(ctx).ToAkriConnectorsMqttProtocolTypePtrOutputWithContext(ctx)
+}
+
+func (e AkriConnectorsMqttProtocolType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AkriConnectorsMqttProtocolType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AkriConnectorsMqttProtocolType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AkriConnectorsMqttProtocolType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AkriConnectorsMqttProtocolTypeOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsMqttProtocolTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsMqttProtocolType)(nil)).Elem()
+}
+
+func (o AkriConnectorsMqttProtocolTypeOutput) ToAkriConnectorsMqttProtocolTypeOutput() AkriConnectorsMqttProtocolTypeOutput {
+	return o
+}
+
+func (o AkriConnectorsMqttProtocolTypeOutput) ToAkriConnectorsMqttProtocolTypeOutputWithContext(ctx context.Context) AkriConnectorsMqttProtocolTypeOutput {
+	return o
+}
+
+func (o AkriConnectorsMqttProtocolTypeOutput) ToAkriConnectorsMqttProtocolTypePtrOutput() AkriConnectorsMqttProtocolTypePtrOutput {
+	return o.ToAkriConnectorsMqttProtocolTypePtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsMqttProtocolTypeOutput) ToAkriConnectorsMqttProtocolTypePtrOutputWithContext(ctx context.Context) AkriConnectorsMqttProtocolTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorsMqttProtocolType) *AkriConnectorsMqttProtocolType {
+		return &v
+	}).(AkriConnectorsMqttProtocolTypePtrOutput)
+}
+
+func (o AkriConnectorsMqttProtocolTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsMqttProtocolTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AkriConnectorsMqttProtocolType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AkriConnectorsMqttProtocolTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsMqttProtocolTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AkriConnectorsMqttProtocolType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AkriConnectorsMqttProtocolTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsMqttProtocolTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsMqttProtocolType)(nil)).Elem()
+}
+
+func (o AkriConnectorsMqttProtocolTypePtrOutput) ToAkriConnectorsMqttProtocolTypePtrOutput() AkriConnectorsMqttProtocolTypePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsMqttProtocolTypePtrOutput) ToAkriConnectorsMqttProtocolTypePtrOutputWithContext(ctx context.Context) AkriConnectorsMqttProtocolTypePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsMqttProtocolTypePtrOutput) Elem() AkriConnectorsMqttProtocolTypeOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttProtocolType) AkriConnectorsMqttProtocolType {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsMqttProtocolType
+		return ret
+	}).(AkriConnectorsMqttProtocolTypeOutput)
+}
+
+func (o AkriConnectorsMqttProtocolTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsMqttProtocolTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AkriConnectorsMqttProtocolType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsMqttProtocolTypeInput is an input type that accepts values of the AkriConnectorsMqttProtocolType enum
+// A concrete instance of `AkriConnectorsMqttProtocolTypeInput` can be one of the following:
+//
+//	AkriConnectorsMqttProtocolTypeMqtt
+type AkriConnectorsMqttProtocolTypeInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsMqttProtocolTypeOutput() AkriConnectorsMqttProtocolTypeOutput
+	ToAkriConnectorsMqttProtocolTypeOutputWithContext(context.Context) AkriConnectorsMqttProtocolTypeOutput
+}
+
+var akriConnectorsMqttProtocolTypePtrType = reflect.TypeOf((**AkriConnectorsMqttProtocolType)(nil)).Elem()
+
+type AkriConnectorsMqttProtocolTypePtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsMqttProtocolTypePtrOutput() AkriConnectorsMqttProtocolTypePtrOutput
+	ToAkriConnectorsMqttProtocolTypePtrOutputWithContext(context.Context) AkriConnectorsMqttProtocolTypePtrOutput
+}
+
+type akriConnectorsMqttProtocolTypePtr string
+
+func AkriConnectorsMqttProtocolTypePtr(v string) AkriConnectorsMqttProtocolTypePtrInput {
+	return (*akriConnectorsMqttProtocolTypePtr)(&v)
+}
+
+func (*akriConnectorsMqttProtocolTypePtr) ElementType() reflect.Type {
+	return akriConnectorsMqttProtocolTypePtrType
+}
+
+func (in *akriConnectorsMqttProtocolTypePtr) ToAkriConnectorsMqttProtocolTypePtrOutput() AkriConnectorsMqttProtocolTypePtrOutput {
+	return pulumi.ToOutput(in).(AkriConnectorsMqttProtocolTypePtrOutput)
+}
+
+func (in *akriConnectorsMqttProtocolTypePtr) ToAkriConnectorsMqttProtocolTypePtrOutputWithContext(ctx context.Context) AkriConnectorsMqttProtocolTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AkriConnectorsMqttProtocolTypePtrOutput)
+}
+
+// AkriConnectorsRegistrySettings properties.
+type AkriConnectorsRegistrySettingsType string
+
+const (
+	// A Registry Endpoint reference.
+	AkriConnectorsRegistrySettingsTypeRegistryEndpointRef = AkriConnectorsRegistrySettingsType("RegistryEndpointRef")
+	// A Container Registry reference.
+	AkriConnectorsRegistrySettingsTypeContainerRegistry = AkriConnectorsRegistrySettingsType("ContainerRegistry")
+)
+
+// The tag or digest type.
+type AkriConnectorsTagDigestType string
+
+const (
+	// Indicates that a tag should be specified.
+	AkriConnectorsTagDigestTypeTag = AkriConnectorsTagDigestType("Tag")
+	// Indicates that a digest should be specified.
+	AkriConnectorsTagDigestTypeDigest = AkriConnectorsTagDigestType("Digest")
+)
+
 // Custom authentication configuration.
 type BrokerAuthenticationMethod string
 
@@ -2059,6 +2461,360 @@ func (in *dataflowEndpointKafkaPartitionStrategyPtr) ToDataflowEndpointKafkaPart
 	return pulumi.ToOutputWithContext(ctx, in).(DataflowEndpointKafkaPartitionStrategyPtrOutput)
 }
 
+// Output serialization format.
+type DataflowGraphConnectionSchemaSerializationFormat string
+
+const (
+	// Delta Format
+	DataflowGraphConnectionSchemaSerializationFormatDelta = DataflowGraphConnectionSchemaSerializationFormat("Delta")
+	// JSON Format
+	DataflowGraphConnectionSchemaSerializationFormatJson = DataflowGraphConnectionSchemaSerializationFormat("Json")
+	// Parquet Format
+	DataflowGraphConnectionSchemaSerializationFormatParquet = DataflowGraphConnectionSchemaSerializationFormat("Parquet")
+	// Avro serialization format.
+	DataflowGraphConnectionSchemaSerializationFormatAvro = DataflowGraphConnectionSchemaSerializationFormat("Avro")
+)
+
+func (DataflowGraphConnectionSchemaSerializationFormat) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphConnectionSchemaSerializationFormat)(nil)).Elem()
+}
+
+func (e DataflowGraphConnectionSchemaSerializationFormat) ToDataflowGraphConnectionSchemaSerializationFormatOutput() DataflowGraphConnectionSchemaSerializationFormatOutput {
+	return pulumi.ToOutput(e).(DataflowGraphConnectionSchemaSerializationFormatOutput)
+}
+
+func (e DataflowGraphConnectionSchemaSerializationFormat) ToDataflowGraphConnectionSchemaSerializationFormatOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSerializationFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DataflowGraphConnectionSchemaSerializationFormatOutput)
+}
+
+func (e DataflowGraphConnectionSchemaSerializationFormat) ToDataflowGraphConnectionSchemaSerializationFormatPtrOutput() DataflowGraphConnectionSchemaSerializationFormatPtrOutput {
+	return e.ToDataflowGraphConnectionSchemaSerializationFormatPtrOutputWithContext(context.Background())
+}
+
+func (e DataflowGraphConnectionSchemaSerializationFormat) ToDataflowGraphConnectionSchemaSerializationFormatPtrOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSerializationFormatPtrOutput {
+	return DataflowGraphConnectionSchemaSerializationFormat(e).ToDataflowGraphConnectionSchemaSerializationFormatOutputWithContext(ctx).ToDataflowGraphConnectionSchemaSerializationFormatPtrOutputWithContext(ctx)
+}
+
+func (e DataflowGraphConnectionSchemaSerializationFormat) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataflowGraphConnectionSchemaSerializationFormat) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataflowGraphConnectionSchemaSerializationFormat) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DataflowGraphConnectionSchemaSerializationFormat) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DataflowGraphConnectionSchemaSerializationFormatOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphConnectionSchemaSerializationFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphConnectionSchemaSerializationFormat)(nil)).Elem()
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatOutput) ToDataflowGraphConnectionSchemaSerializationFormatOutput() DataflowGraphConnectionSchemaSerializationFormatOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatOutput) ToDataflowGraphConnectionSchemaSerializationFormatOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSerializationFormatOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatOutput) ToDataflowGraphConnectionSchemaSerializationFormatPtrOutput() DataflowGraphConnectionSchemaSerializationFormatPtrOutput {
+	return o.ToDataflowGraphConnectionSchemaSerializationFormatPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatOutput) ToDataflowGraphConnectionSchemaSerializationFormatPtrOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSerializationFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowGraphConnectionSchemaSerializationFormat) *DataflowGraphConnectionSchemaSerializationFormat {
+		return &v
+	}).(DataflowGraphConnectionSchemaSerializationFormatPtrOutput)
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataflowGraphConnectionSchemaSerializationFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataflowGraphConnectionSchemaSerializationFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataflowGraphConnectionSchemaSerializationFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphConnectionSchemaSerializationFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowGraphConnectionSchemaSerializationFormat)(nil)).Elem()
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatPtrOutput) ToDataflowGraphConnectionSchemaSerializationFormatPtrOutput() DataflowGraphConnectionSchemaSerializationFormatPtrOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatPtrOutput) ToDataflowGraphConnectionSchemaSerializationFormatPtrOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSerializationFormatPtrOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatPtrOutput) Elem() DataflowGraphConnectionSchemaSerializationFormatOutput {
+	return o.ApplyT(func(v *DataflowGraphConnectionSchemaSerializationFormat) DataflowGraphConnectionSchemaSerializationFormat {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowGraphConnectionSchemaSerializationFormat
+		return ret
+	}).(DataflowGraphConnectionSchemaSerializationFormatOutput)
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowGraphConnectionSchemaSerializationFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DataflowGraphConnectionSchemaSerializationFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowGraphConnectionSchemaSerializationFormatInput is an input type that accepts values of the DataflowGraphConnectionSchemaSerializationFormat enum
+// A concrete instance of `DataflowGraphConnectionSchemaSerializationFormatInput` can be one of the following:
+//
+//	DataflowGraphConnectionSchemaSerializationFormatDelta
+//	DataflowGraphConnectionSchemaSerializationFormatJson
+//	DataflowGraphConnectionSchemaSerializationFormatParquet
+//	DataflowGraphConnectionSchemaSerializationFormatAvro
+type DataflowGraphConnectionSchemaSerializationFormatInput interface {
+	pulumi.Input
+
+	ToDataflowGraphConnectionSchemaSerializationFormatOutput() DataflowGraphConnectionSchemaSerializationFormatOutput
+	ToDataflowGraphConnectionSchemaSerializationFormatOutputWithContext(context.Context) DataflowGraphConnectionSchemaSerializationFormatOutput
+}
+
+var dataflowGraphConnectionSchemaSerializationFormatPtrType = reflect.TypeOf((**DataflowGraphConnectionSchemaSerializationFormat)(nil)).Elem()
+
+type DataflowGraphConnectionSchemaSerializationFormatPtrInput interface {
+	pulumi.Input
+
+	ToDataflowGraphConnectionSchemaSerializationFormatPtrOutput() DataflowGraphConnectionSchemaSerializationFormatPtrOutput
+	ToDataflowGraphConnectionSchemaSerializationFormatPtrOutputWithContext(context.Context) DataflowGraphConnectionSchemaSerializationFormatPtrOutput
+}
+
+type dataflowGraphConnectionSchemaSerializationFormatPtr string
+
+func DataflowGraphConnectionSchemaSerializationFormatPtr(v string) DataflowGraphConnectionSchemaSerializationFormatPtrInput {
+	return (*dataflowGraphConnectionSchemaSerializationFormatPtr)(&v)
+}
+
+func (*dataflowGraphConnectionSchemaSerializationFormatPtr) ElementType() reflect.Type {
+	return dataflowGraphConnectionSchemaSerializationFormatPtrType
+}
+
+func (in *dataflowGraphConnectionSchemaSerializationFormatPtr) ToDataflowGraphConnectionSchemaSerializationFormatPtrOutput() DataflowGraphConnectionSchemaSerializationFormatPtrOutput {
+	return pulumi.ToOutput(in).(DataflowGraphConnectionSchemaSerializationFormatPtrOutput)
+}
+
+func (in *dataflowGraphConnectionSchemaSerializationFormatPtr) ToDataflowGraphConnectionSchemaSerializationFormatPtrOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSerializationFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DataflowGraphConnectionSchemaSerializationFormatPtrOutput)
+}
+
+// The format of the output data.
+type DataflowGraphDestinationSchemaSerializationFormat string
+
+const (
+	// Parquet serialization format.
+	DataflowGraphDestinationSchemaSerializationFormatParquet = DataflowGraphDestinationSchemaSerializationFormat("Parquet")
+	// Delta serialization format.
+	DataflowGraphDestinationSchemaSerializationFormatDelta = DataflowGraphDestinationSchemaSerializationFormat("Delta")
+)
+
+func (DataflowGraphDestinationSchemaSerializationFormat) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphDestinationSchemaSerializationFormat)(nil)).Elem()
+}
+
+func (e DataflowGraphDestinationSchemaSerializationFormat) ToDataflowGraphDestinationSchemaSerializationFormatOutput() DataflowGraphDestinationSchemaSerializationFormatOutput {
+	return pulumi.ToOutput(e).(DataflowGraphDestinationSchemaSerializationFormatOutput)
+}
+
+func (e DataflowGraphDestinationSchemaSerializationFormat) ToDataflowGraphDestinationSchemaSerializationFormatOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSerializationFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DataflowGraphDestinationSchemaSerializationFormatOutput)
+}
+
+func (e DataflowGraphDestinationSchemaSerializationFormat) ToDataflowGraphDestinationSchemaSerializationFormatPtrOutput() DataflowGraphDestinationSchemaSerializationFormatPtrOutput {
+	return e.ToDataflowGraphDestinationSchemaSerializationFormatPtrOutputWithContext(context.Background())
+}
+
+func (e DataflowGraphDestinationSchemaSerializationFormat) ToDataflowGraphDestinationSchemaSerializationFormatPtrOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSerializationFormatPtrOutput {
+	return DataflowGraphDestinationSchemaSerializationFormat(e).ToDataflowGraphDestinationSchemaSerializationFormatOutputWithContext(ctx).ToDataflowGraphDestinationSchemaSerializationFormatPtrOutputWithContext(ctx)
+}
+
+func (e DataflowGraphDestinationSchemaSerializationFormat) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataflowGraphDestinationSchemaSerializationFormat) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataflowGraphDestinationSchemaSerializationFormat) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DataflowGraphDestinationSchemaSerializationFormat) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DataflowGraphDestinationSchemaSerializationFormatOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphDestinationSchemaSerializationFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphDestinationSchemaSerializationFormat)(nil)).Elem()
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatOutput) ToDataflowGraphDestinationSchemaSerializationFormatOutput() DataflowGraphDestinationSchemaSerializationFormatOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatOutput) ToDataflowGraphDestinationSchemaSerializationFormatOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSerializationFormatOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatOutput) ToDataflowGraphDestinationSchemaSerializationFormatPtrOutput() DataflowGraphDestinationSchemaSerializationFormatPtrOutput {
+	return o.ToDataflowGraphDestinationSchemaSerializationFormatPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatOutput) ToDataflowGraphDestinationSchemaSerializationFormatPtrOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSerializationFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowGraphDestinationSchemaSerializationFormat) *DataflowGraphDestinationSchemaSerializationFormat {
+		return &v
+	}).(DataflowGraphDestinationSchemaSerializationFormatPtrOutput)
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataflowGraphDestinationSchemaSerializationFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataflowGraphDestinationSchemaSerializationFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataflowGraphDestinationSchemaSerializationFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphDestinationSchemaSerializationFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowGraphDestinationSchemaSerializationFormat)(nil)).Elem()
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatPtrOutput) ToDataflowGraphDestinationSchemaSerializationFormatPtrOutput() DataflowGraphDestinationSchemaSerializationFormatPtrOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatPtrOutput) ToDataflowGraphDestinationSchemaSerializationFormatPtrOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSerializationFormatPtrOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatPtrOutput) Elem() DataflowGraphDestinationSchemaSerializationFormatOutput {
+	return o.ApplyT(func(v *DataflowGraphDestinationSchemaSerializationFormat) DataflowGraphDestinationSchemaSerializationFormat {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowGraphDestinationSchemaSerializationFormat
+		return ret
+	}).(DataflowGraphDestinationSchemaSerializationFormatOutput)
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowGraphDestinationSchemaSerializationFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DataflowGraphDestinationSchemaSerializationFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowGraphDestinationSchemaSerializationFormatInput is an input type that accepts values of the DataflowGraphDestinationSchemaSerializationFormat enum
+// A concrete instance of `DataflowGraphDestinationSchemaSerializationFormatInput` can be one of the following:
+//
+//	DataflowGraphDestinationSchemaSerializationFormatParquet
+//	DataflowGraphDestinationSchemaSerializationFormatDelta
+type DataflowGraphDestinationSchemaSerializationFormatInput interface {
+	pulumi.Input
+
+	ToDataflowGraphDestinationSchemaSerializationFormatOutput() DataflowGraphDestinationSchemaSerializationFormatOutput
+	ToDataflowGraphDestinationSchemaSerializationFormatOutputWithContext(context.Context) DataflowGraphDestinationSchemaSerializationFormatOutput
+}
+
+var dataflowGraphDestinationSchemaSerializationFormatPtrType = reflect.TypeOf((**DataflowGraphDestinationSchemaSerializationFormat)(nil)).Elem()
+
+type DataflowGraphDestinationSchemaSerializationFormatPtrInput interface {
+	pulumi.Input
+
+	ToDataflowGraphDestinationSchemaSerializationFormatPtrOutput() DataflowGraphDestinationSchemaSerializationFormatPtrOutput
+	ToDataflowGraphDestinationSchemaSerializationFormatPtrOutputWithContext(context.Context) DataflowGraphDestinationSchemaSerializationFormatPtrOutput
+}
+
+type dataflowGraphDestinationSchemaSerializationFormatPtr string
+
+func DataflowGraphDestinationSchemaSerializationFormatPtr(v string) DataflowGraphDestinationSchemaSerializationFormatPtrInput {
+	return (*dataflowGraphDestinationSchemaSerializationFormatPtr)(&v)
+}
+
+func (*dataflowGraphDestinationSchemaSerializationFormatPtr) ElementType() reflect.Type {
+	return dataflowGraphDestinationSchemaSerializationFormatPtrType
+}
+
+func (in *dataflowGraphDestinationSchemaSerializationFormatPtr) ToDataflowGraphDestinationSchemaSerializationFormatPtrOutput() DataflowGraphDestinationSchemaSerializationFormatPtrOutput {
+	return pulumi.ToOutput(in).(DataflowGraphDestinationSchemaSerializationFormatPtrOutput)
+}
+
+func (in *dataflowGraphDestinationSchemaSerializationFormatPtr) ToDataflowGraphDestinationSchemaSerializationFormatPtrOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSerializationFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DataflowGraphDestinationSchemaSerializationFormatPtrOutput)
+}
+
+// Type of the node.
+type DataflowGraphNodeType string
+
+const (
+	// Dataflow source node.
+	DataflowGraphNodeTypeSource = DataflowGraphNodeType("Source")
+	// Dataflow graph node.
+	DataflowGraphNodeTypeGraph = DataflowGraphNodeType("Graph")
+	// Dataflow destination node.
+	DataflowGraphNodeTypeDestination = DataflowGraphNodeType("Destination")
+)
+
 // Type of transformation.
 type DataflowMappingType string
 
@@ -3609,7 +4365,7 @@ func (in *operationTypePtr) ToOperationTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(OperationTypePtrOutput)
 }
 
-// Mode for TLS.
+// Disk persistence mode.
 type OperationalMode string
 
 const (
@@ -4301,6 +5057,30 @@ func (in *privateKeyRotationPolicyPtr) ToPrivateKeyRotationPolicyPtrOutput() Pri
 func (in *privateKeyRotationPolicyPtr) ToPrivateKeyRotationPolicyPtrOutputWithContext(ctx context.Context) PrivateKeyRotationPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateKeyRotationPolicyPtrOutput)
 }
+
+// The authentication method.
+type RegistryEndpointAuthenticationMethod string
+
+const (
+	// SystemAssignedManagedIdentity type
+	RegistryEndpointAuthenticationMethodSystemAssignedManagedIdentity = RegistryEndpointAuthenticationMethod("SystemAssignedManagedIdentity")
+	// UserAssignedManagedIdentity type
+	RegistryEndpointAuthenticationMethodUserAssignedManagedIdentity = RegistryEndpointAuthenticationMethod("UserAssignedManagedIdentity")
+	// Anonymous Option
+	RegistryEndpointAuthenticationMethodAnonymous = RegistryEndpointAuthenticationMethod("Anonymous")
+	// Artifact Pull Secret authentication
+	RegistryEndpointAuthenticationMethodArtifactPullSecret = RegistryEndpointAuthenticationMethod("ArtifactPullSecret")
+)
+
+// The trust type for the registry endpoint.
+type RegistryEndpointTrustedSigningKeyType string
+
+const (
+	// Trust settings stored in a Kubernetes Secret.
+	RegistryEndpointTrustedSigningKeyTypeSecret = RegistryEndpointTrustedSigningKeyType("Secret")
+	// Trust settings stored in a Kubernetes ConfigMap.
+	RegistryEndpointTrustedSigningKeyTypeConfigMap = RegistryEndpointTrustedSigningKeyType("ConfigMap")
+)
 
 // Kubernetes Service type of this listener.
 type ServiceType string
@@ -5488,6 +6268,10 @@ func (in *transformationSerializationFormatPtr) ToTransformationSerializationFor
 }
 
 func init() {
+	pulumi.RegisterOutputType(AkriConnectorsImagePullPolicyOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsImagePullPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsMqttProtocolTypeOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsMqttProtocolTypePtrOutput{})
 	pulumi.RegisterOutputType(BrokerAuthenticationMethodOutput{})
 	pulumi.RegisterOutputType(BrokerAuthenticationMethodPtrOutput{})
 	pulumi.RegisterOutputType(BrokerMemoryProfileOutput{})
@@ -5512,6 +6296,10 @@ func init() {
 	pulumi.RegisterOutputType(DataflowEndpointKafkaCompressionPtrOutput{})
 	pulumi.RegisterOutputType(DataflowEndpointKafkaPartitionStrategyOutput{})
 	pulumi.RegisterOutputType(DataflowEndpointKafkaPartitionStrategyPtrOutput{})
+	pulumi.RegisterOutputType(DataflowGraphConnectionSchemaSerializationFormatOutput{})
+	pulumi.RegisterOutputType(DataflowGraphConnectionSchemaSerializationFormatPtrOutput{})
+	pulumi.RegisterOutputType(DataflowGraphDestinationSchemaSerializationFormatOutput{})
+	pulumi.RegisterOutputType(DataflowGraphDestinationSchemaSerializationFormatPtrOutput{})
 	pulumi.RegisterOutputType(DataflowMappingTypeOutput{})
 	pulumi.RegisterOutputType(DataflowMappingTypePtrOutput{})
 	pulumi.RegisterOutputType(EndpointTypeOutput{})

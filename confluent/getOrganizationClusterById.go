@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Details of cluster record
+// Get cluster by Id
 //
 // Uses Azure REST API version 2024-07-01.
 func LookupOrganizationClusterById(ctx *pulumi.Context, args *LookupOrganizationClusterByIdArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationClusterByIdResult, error) {
@@ -39,20 +39,22 @@ type LookupOrganizationClusterByIdArgs struct {
 type LookupOrganizationClusterByIdResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Id of the cluster
-	Id *string `pulumi:"id"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
 	// Type of cluster
 	Kind *string `pulumi:"kind"`
 	// Metadata of the record
 	Metadata *SCMetadataEntityResponse `pulumi:"metadata"`
-	// Display name of the cluster
-	Name *string `pulumi:"name"`
+	// The name of the resource
+	Name string `pulumi:"name"`
 	// Specification of the cluster
 	Spec *SCClusterSpecEntityResponse `pulumi:"spec"`
 	// Specification of the cluster status
 	Status *ClusterStatusEntityResponse `pulumi:"status"`
-	// Type of the resource
-	Type *string `pulumi:"type"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 func LookupOrganizationClusterByIdOutput(ctx *pulumi.Context, args LookupOrganizationClusterByIdOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationClusterByIdResultOutput {
@@ -99,9 +101,9 @@ func (o LookupOrganizationClusterByIdResultOutput) AzureApiVersion() pulumi.Stri
 	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Id of the cluster
-func (o LookupOrganizationClusterByIdResultOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o LookupOrganizationClusterByIdResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of cluster
@@ -114,9 +116,9 @@ func (o LookupOrganizationClusterByIdResultOutput) Metadata() SCMetadataEntityRe
 	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) *SCMetadataEntityResponse { return v.Metadata }).(SCMetadataEntityResponsePtrOutput)
 }
 
-// Display name of the cluster
-func (o LookupOrganizationClusterByIdResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the resource
+func (o LookupOrganizationClusterByIdResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Specification of the cluster
@@ -129,9 +131,14 @@ func (o LookupOrganizationClusterByIdResultOutput) Status() ClusterStatusEntityR
 	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) *ClusterStatusEntityResponse { return v.Status }).(ClusterStatusEntityResponsePtrOutput)
 }
 
-// Type of the resource
-func (o LookupOrganizationClusterByIdResultOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupOrganizationClusterByIdResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o LookupOrganizationClusterByIdResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

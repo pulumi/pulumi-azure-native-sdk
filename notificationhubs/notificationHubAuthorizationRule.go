@@ -29,8 +29,7 @@ type NotificationHubAuthorizationRule struct {
 	// Gets the created time for this rule
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
 	// Gets a string that describes the authorization rule.
-	KeyName pulumi.StringOutput `pulumi:"keyName"`
-	// Deprecated - only for compatibility.
+	KeyName  pulumi.StringOutput    `pulumi:"keyName"`
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Gets the last modified time for this rule
 	ModifiedTime pulumi.StringOutput `pulumi:"modifiedTime"`
@@ -48,8 +47,7 @@ type NotificationHubAuthorizationRule struct {
 	SecondaryKey pulumi.StringPtrOutput `pulumi:"secondaryKey"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Deprecated - only for compatibility.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Tags       pulumi.StringMapOutput   `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -126,8 +124,7 @@ func (NotificationHubAuthorizationRuleState) ElementType() reflect.Type {
 type notificationHubAuthorizationRuleArgs struct {
 	// Authorization Rule Name
 	AuthorizationRuleName *string `pulumi:"authorizationRuleName"`
-	// Deprecated - only for compatibility.
-	Location *string `pulumi:"location"`
+	Location              *string `pulumi:"location"`
 	// Namespace name
 	NamespaceName string `pulumi:"namespaceName"`
 	// Notification Hub name
@@ -141,17 +138,15 @@ type notificationHubAuthorizationRuleArgs struct {
 	Rights []string `pulumi:"rights"`
 	// Gets a base64-encoded 256-bit primary key for signing and
 	// validating the SAS token.
-	SecondaryKey *string `pulumi:"secondaryKey"`
-	// Deprecated - only for compatibility.
-	Tags map[string]string `pulumi:"tags"`
+	SecondaryKey *string           `pulumi:"secondaryKey"`
+	Tags         map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a NotificationHubAuthorizationRule resource.
 type NotificationHubAuthorizationRuleArgs struct {
 	// Authorization Rule Name
 	AuthorizationRuleName pulumi.StringPtrInput
-	// Deprecated - only for compatibility.
-	Location pulumi.StringPtrInput
+	Location              pulumi.StringPtrInput
 	// Namespace name
 	NamespaceName pulumi.StringInput
 	// Notification Hub name
@@ -166,8 +161,7 @@ type NotificationHubAuthorizationRuleArgs struct {
 	// Gets a base64-encoded 256-bit primary key for signing and
 	// validating the SAS token.
 	SecondaryKey pulumi.StringPtrInput
-	// Deprecated - only for compatibility.
-	Tags pulumi.StringMapInput
+	Tags         pulumi.StringMapInput
 }
 
 func (NotificationHubAuthorizationRuleArgs) ElementType() reflect.Type {
@@ -232,7 +226,6 @@ func (o NotificationHubAuthorizationRuleOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationHubAuthorizationRule) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// Deprecated - only for compatibility.
 func (o NotificationHubAuthorizationRuleOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationHubAuthorizationRule) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -274,7 +267,6 @@ func (o NotificationHubAuthorizationRuleOutput) SystemData() SystemDataResponseO
 	return o.ApplyT(func(v *NotificationHubAuthorizationRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Deprecated - only for compatibility.
 func (o NotificationHubAuthorizationRuleOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NotificationHubAuthorizationRule) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

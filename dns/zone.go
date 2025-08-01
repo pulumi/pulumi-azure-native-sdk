@@ -24,13 +24,13 @@ type Zone struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The etag of the zone.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The maximum number of record sets that can be created in this DNS zone.  This is a read-only property and any attempt to set this value will be ignored.
 	MaxNumberOfRecordSets pulumi.Float64Output `pulumi:"maxNumberOfRecordSets"`
 	// The maximum number of records per record set that can be created in this DNS zone.  This is a read-only property and any attempt to set this value will be ignored.
 	MaxNumberOfRecordsPerRecordSet pulumi.Float64Output `pulumi:"maxNumberOfRecordsPerRecordSet"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name servers for this DNS zone. This is a read-only property and any attempt to set this value will be ignored.
 	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
@@ -42,11 +42,11 @@ type Zone struct {
 	ResolutionVirtualNetworks SubResourceResponseArrayOutput `pulumi:"resolutionVirtualNetworks"`
 	// The list of signing keys.
 	SigningKeys SigningKeyResponseArrayOutput `pulumi:"signingKeys"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The type of this DNS zone (Public or Private).
 	ZoneType pulumi.StringPtrOutput `pulumi:"zoneType"`
@@ -131,7 +131,7 @@ func (ZoneState) ElementType() reflect.Type {
 }
 
 type zoneArgs struct {
-	// Resource location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
 	RegistrationVirtualNetworks []SubResource `pulumi:"registrationVirtualNetworks"`
@@ -149,7 +149,7 @@ type zoneArgs struct {
 
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
-	// Resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
 	RegistrationVirtualNetworks SubResourceArrayInput
@@ -212,7 +212,7 @@ func (o ZoneOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Resource location.
+// The geo-location where the resource lives
 func (o ZoneOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -227,7 +227,7 @@ func (o ZoneOutput) MaxNumberOfRecordsPerRecordSet() pulumi.Float64Output {
 	return o.ApplyT(func(v *Zone) pulumi.Float64Output { return v.MaxNumberOfRecordsPerRecordSet }).(pulumi.Float64Output)
 }
 
-// Resource name.
+// The name of the resource
 func (o ZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -257,7 +257,7 @@ func (o ZoneOutput) SigningKeys() SigningKeyResponseArrayOutput {
 	return o.ApplyT(func(v *Zone) SigningKeyResponseArrayOutput { return v.SigningKeys }).(SigningKeyResponseArrayOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ZoneOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Zone) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -267,7 +267,7 @@ func (o ZoneOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ZoneOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

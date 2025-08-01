@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MongoCluster{}
 	case "azure-native:mongocluster:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:mongocluster:User":
+		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

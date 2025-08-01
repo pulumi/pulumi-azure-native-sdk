@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2024-02-01.
 //
-// Other available API versions: 2024-02-01, 2024-04-01, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ReplicationProtectionCluster struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewReplicationProtectionCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20250101:ReplicationProtectionCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20250201:ReplicationProtectionCluster"),
 		},
 	})
 	opts = append(opts, aliases)

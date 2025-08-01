@@ -150,7 +150,7 @@ type labArgs struct {
 	// When its value is 'Enabled', creation of standard or premium data disks is allowed.
 	// When its value is 'Disabled', only creation of standard data disks is allowed.
 	PremiumDataDisks *string `pulumi:"premiumDataDisks"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The properties of any lab support message associated with this lab
 	Support *LabSupportProperties `pulumi:"support"`
@@ -180,7 +180,7 @@ type LabArgs struct {
 	// When its value is 'Enabled', creation of standard or premium data disks is allowed.
 	// When its value is 'Disabled', only creation of standard data disks is allowed.
 	PremiumDataDisks pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The properties of any lab support message associated with this lab
 	Support LabSupportPropertiesPtrInput

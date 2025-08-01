@@ -120,15 +120,15 @@ type scheduleArgs struct {
 	DailyRecurrence *DayDetails `pulumi:"dailyRecurrence"`
 	// If the schedule will occur multiple times a day, specify the hourly recurrence.
 	HourlyRecurrence *HourDetails `pulumi:"hourlyRecurrence"`
-	// The name of the lab.
+	// labs
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the schedule.
+	// The name of the Schedule
 	Name *string `pulumi:"name"`
 	// Notification settings.
 	NotificationSettings *NotificationSettings `pulumi:"notificationSettings"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status *string `pulumi:"status"`
@@ -150,15 +150,15 @@ type ScheduleArgs struct {
 	DailyRecurrence DayDetailsPtrInput
 	// If the schedule will occur multiple times a day, specify the hourly recurrence.
 	HourlyRecurrence HourDetailsPtrInput
-	// The name of the lab.
+	// labs
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the schedule.
+	// The name of the Schedule
 	Name pulumi.StringPtrInput
 	// Notification settings.
 	NotificationSettings NotificationSettingsPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status pulumi.StringPtrInput

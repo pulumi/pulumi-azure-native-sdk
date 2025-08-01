@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Notification Hubs Namespace Resource.
+// Returns the given namespace.
 //
 // Uses Azure REST API version 2023-10-01-preview.
 //
@@ -23,7 +23,7 @@ func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pul
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupNamespaceArgs struct {
@@ -93,6 +93,22 @@ type LookupNamespaceResult struct {
 	ZoneRedundancy *string `pulumi:"zoneRedundancy"`
 }
 
+// Defaults sets the appropriate defaults for LookupNamespaceResult
+func (val *LookupNamespaceResult) Defaults() *LookupNamespaceResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PublicNetworkAccess == nil {
+		publicNetworkAccess_ := "Enabled"
+		tmp.PublicNetworkAccess = &publicNetworkAccess_
+	}
+	if tmp.ZoneRedundancy == nil {
+		zoneRedundancy_ := "Disabled"
+		tmp.ZoneRedundancy = &zoneRedundancy_
+	}
+	return &tmp
+}
 func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNamespaceResultOutput, error) {

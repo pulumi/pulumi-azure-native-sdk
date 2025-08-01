@@ -39,9 +39,9 @@ type ListProductsAndConfigurationProductFamiliesArgs struct {
 
 // The list of product families.
 type ListProductsAndConfigurationProductFamiliesResult struct {
-	// Link for the next set of product families.
+	// The link to the next page of items
 	NextLink *string `pulumi:"nextLink"`
-	// List of product families.
+	// The ProductFamily items on this page
 	Value []ProductFamilyResponse `pulumi:"value"`
 }
 
@@ -84,12 +84,12 @@ func (o ListProductsAndConfigurationProductFamiliesResultOutput) ToListProductsA
 	return o
 }
 
-// Link for the next set of product families.
+// The link to the next page of items
 func (o ListProductsAndConfigurationProductFamiliesResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListProductsAndConfigurationProductFamiliesResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// List of product families.
+// The ProductFamily items on this page
 func (o ListProductsAndConfigurationProductFamiliesResultOutput) Value() ProductFamilyResponseArrayOutput {
 	return o.ApplyT(func(v ListProductsAndConfigurationProductFamiliesResult) []ProductFamilyResponse { return v.Value }).(ProductFamilyResponseArrayOutput)
 }

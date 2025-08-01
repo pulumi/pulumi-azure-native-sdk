@@ -14,9 +14,9 @@ import (
 
 // An environment for hosting container apps
 //
-// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 //
-// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ManagedEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -38,6 +38,8 @@ type ManagedEnvironment struct {
 	DeploymentErrors pulumi.StringOutput `pulumi:"deploymentErrors"`
 	// The endpoint of the eventstream of the Environment.
 	EventStreamEndpoint pulumi.StringOutput `pulumi:"eventStreamEndpoint"`
+	// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
 	InfrastructureResourceGroup pulumi.StringPtrOutput `pulumi:"infrastructureResourceGroup"`
 	// The configuration of Keda component.
@@ -174,6 +176,8 @@ type managedEnvironmentArgs struct {
 	DaprAIInstrumentationKey *string `pulumi:"daprAIInstrumentationKey"`
 	// Name of the Environment.
 	EnvironmentName *string `pulumi:"environmentName"`
+	// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
 	InfrastructureResourceGroup *string `pulumi:"infrastructureResourceGroup"`
 	// Kind of the Environment.
@@ -208,6 +212,8 @@ type ManagedEnvironmentArgs struct {
 	DaprAIInstrumentationKey pulumi.StringPtrInput
 	// Name of the Environment.
 	EnvironmentName pulumi.StringPtrInput
+	// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
+	Identity ManagedServiceIdentityPtrInput
 	// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
 	InfrastructureResourceGroup pulumi.StringPtrInput
 	// Kind of the Environment.
@@ -312,6 +318,11 @@ func (o ManagedEnvironmentOutput) DeploymentErrors() pulumi.StringOutput {
 // The endpoint of the eventstream of the Environment.
 func (o ManagedEnvironmentOutput) EventStreamEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.EventStreamEndpoint }).(pulumi.StringOutput)
+}
+
+// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
+func (o ManagedEnvironmentOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.

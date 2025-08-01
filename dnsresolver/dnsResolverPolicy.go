@@ -15,6 +15,8 @@ import (
 // Describes a DNS resolver policy.
 //
 // Uses Azure REST API version 2023-07-01-preview.
+//
+// Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DnsResolverPolicy struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,9 @@ func NewDnsResolverPolicy(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:dnsresolver/v20230701preview:DnsResolverPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:dnsresolver/v20250501:DnsResolverPolicy"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230701preview:DnsResolverPolicy"),

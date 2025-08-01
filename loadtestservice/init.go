@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LoadTestMapping{}
 	case "azure-native:loadtestservice:LoadTestProfileMapping":
 		r = &LoadTestProfileMapping{}
+	case "azure-native:loadtestservice:PlaywrightWorkspace":
+		r = &PlaywrightWorkspace{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Maintenance configuration record type
+// Get Configuration record
 //
 // Uses Azure REST API version 2023-10-01-preview.
 //
@@ -27,9 +27,9 @@ func LookupMaintenanceConfiguration(ctx *pulumi.Context, args *LookupMaintenance
 }
 
 type LookupMaintenanceConfigurationArgs struct {
-	// Resource Group Name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Maintenance Configuration Name
+	// The name of the MaintenanceConfiguration
 	ResourceName string `pulumi:"resourceName"`
 }
 
@@ -43,15 +43,15 @@ type LookupMaintenanceConfigurationResult struct {
 	ExpirationDateTime *string `pulumi:"expirationDateTime"`
 	// Gets or sets extensionProperties of the maintenanceConfiguration
 	ExtensionProperties map[string]string `pulumi:"extensionProperties"`
-	// Fully qualified identifier of the resource
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The input parameters to be passed to the patch run operation.
 	InstallPatches *InputPatchConfigurationResponse `pulumi:"installPatches"`
-	// Gets or sets location of the resource
-	Location *string `pulumi:"location"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
 	// Gets or sets maintenanceScope of the configuration
 	MaintenanceScope *string `pulumi:"maintenanceScope"`
-	// Name of the resource
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Gets or sets namespace of the resource
 	Namespace *string `pulumi:"namespace"`
@@ -61,11 +61,11 @@ type LookupMaintenanceConfigurationResult struct {
 	StartDateTime *string `pulumi:"startDateTime"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Gets or sets tags of the resource
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
 	TimeZone *string `pulumi:"timeZone"`
-	// Type of the resource
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Gets or sets the visibility of the configuration. The default value is 'Custom'
 	Visibility *string `pulumi:"visibility"`
@@ -91,9 +91,9 @@ func LookupMaintenanceConfigurationOutput(ctx *pulumi.Context, args LookupMainte
 }
 
 type LookupMaintenanceConfigurationOutputArgs struct {
-	// Resource Group Name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Maintenance Configuration Name
+	// The name of the MaintenanceConfiguration
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
@@ -136,7 +136,7 @@ func (o LookupMaintenanceConfigurationResultOutput) ExtensionProperties() pulumi
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) map[string]string { return v.ExtensionProperties }).(pulumi.StringMapOutput)
 }
 
-// Fully qualified identifier of the resource
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMaintenanceConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -146,9 +146,9 @@ func (o LookupMaintenanceConfigurationResultOutput) InstallPatches() InputPatchC
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) *InputPatchConfigurationResponse { return v.InstallPatches }).(InputPatchConfigurationResponsePtrOutput)
 }
 
-// Gets or sets location of the resource
-func (o LookupMaintenanceConfigurationResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+// The geo-location where the resource lives
+func (o LookupMaintenanceConfigurationResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // Gets or sets maintenanceScope of the configuration
@@ -156,7 +156,7 @@ func (o LookupMaintenanceConfigurationResultOutput) MaintenanceScope() pulumi.St
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) *string { return v.MaintenanceScope }).(pulumi.StringPtrOutput)
 }
 
-// Name of the resource
+// The name of the resource
 func (o LookupMaintenanceConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -181,7 +181,7 @@ func (o LookupMaintenanceConfigurationResultOutput) SystemData() SystemDataRespo
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Gets or sets tags of the resource
+// Resource tags.
 func (o LookupMaintenanceConfigurationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -191,7 +191,7 @@ func (o LookupMaintenanceConfigurationResultOutput) TimeZone() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
-// Type of the resource
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupMaintenanceConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

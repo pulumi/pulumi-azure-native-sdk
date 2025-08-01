@@ -37,17 +37,17 @@ type LookupDnssecConfigResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The etag of the DNSSEC configuration.
 	Etag *string `pulumi:"etag"`
-	// The ID of the DNSSEC configuration.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The name of the DNSSEC configuration.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Provisioning State of the DNSSEC configuration.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The list of signing keys.
 	SigningKeys []SigningKeyResponse `pulumi:"signingKeys"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the DNSSEC configuration.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -96,12 +96,12 @@ func (o LookupDnssecConfigResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDnssecConfigResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the DNSSEC configuration.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDnssecConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnssecConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the DNSSEC configuration.
+// The name of the resource
 func (o LookupDnssecConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnssecConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -116,12 +116,12 @@ func (o LookupDnssecConfigResultOutput) SigningKeys() SigningKeyResponseArrayOut
 	return o.ApplyT(func(v LookupDnssecConfigResult) []SigningKeyResponse { return v.SigningKeys }).(SigningKeyResponseArrayOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupDnssecConfigResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDnssecConfigResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the DNSSEC configuration.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDnssecConfigResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnssecConfigResult) string { return v.Type }).(pulumi.StringOutput)
 }

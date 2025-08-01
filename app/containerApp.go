@@ -14,9 +14,9 @@ import (
 
 // Container App.
 //
-// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 //
-// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ContainerApp struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +52,8 @@ type ContainerApp struct {
 	OutboundIpAddresses pulumi.StringArrayOutput `pulumi:"outboundIpAddresses"`
 	// Provisioning state of the Container App.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Running status of the Container App.
+	RunningStatus pulumi.StringOutput `pulumi:"runningStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -333,6 +335,11 @@ func (o ContainerAppOutput) OutboundIpAddresses() pulumi.StringArrayOutput {
 // Provisioning state of the Container App.
 func (o ContainerAppOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerApp) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Running status of the Container App.
+func (o ContainerAppOutput) RunningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerApp) pulumi.StringOutput { return v.RunningStatus }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

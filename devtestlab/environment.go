@@ -108,9 +108,9 @@ type environmentArgs struct {
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the environment.
+	// The name of the DtlEnvironment
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -128,9 +128,9 @@ type EnvironmentArgs struct {
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the environment.
+	// The name of the DtlEnvironment
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tags of the resource.
 	Tags pulumi.StringMapInput

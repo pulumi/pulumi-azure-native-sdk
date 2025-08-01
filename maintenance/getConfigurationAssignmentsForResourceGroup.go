@@ -27,9 +27,9 @@ func LookupConfigurationAssignmentsForResourceGroup(ctx *pulumi.Context, args *L
 }
 
 type LookupConfigurationAssignmentsForResourceGroupArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName string `pulumi:"configurationAssignmentName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,19 +39,19 @@ type LookupConfigurationAssignmentsForResourceGroupResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Properties of the configuration assignment
 	Filter *ConfigurationAssignmentFilterPropertiesResponse `pulumi:"filter"`
-	// Fully qualified identifier of the resource
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Location of the resource
 	Location *string `pulumi:"location"`
 	// The maintenance configuration Id
 	MaintenanceConfigurationId *string `pulumi:"maintenanceConfigurationId"`
-	// Name of the resource
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The unique resourceId
 	ResourceId *string `pulumi:"resourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Type of the resource
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -65,9 +65,9 @@ func LookupConfigurationAssignmentsForResourceGroupOutput(ctx *pulumi.Context, a
 }
 
 type LookupConfigurationAssignmentsForResourceGroupOutputArgs struct {
-	// Configuration assignment name
+	// The name of the ConfigurationAssignment
 	ConfigurationAssignmentName pulumi.StringInput `pulumi:"configurationAssignmentName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -102,7 +102,7 @@ func (o LookupConfigurationAssignmentsForResourceGroupResultOutput) Filter() Con
 	}).(ConfigurationAssignmentFilterPropertiesResponsePtrOutput)
 }
 
-// Fully qualified identifier of the resource
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupConfigurationAssignmentsForResourceGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentsForResourceGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -119,7 +119,7 @@ func (o LookupConfigurationAssignmentsForResourceGroupResultOutput) MaintenanceC
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the resource
+// The name of the resource
 func (o LookupConfigurationAssignmentsForResourceGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentsForResourceGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -134,7 +134,7 @@ func (o LookupConfigurationAssignmentsForResourceGroupResultOutput) SystemData()
 	return o.ApplyT(func(v LookupConfigurationAssignmentsForResourceGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Type of the resource
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupConfigurationAssignmentsForResourceGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentsForResourceGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

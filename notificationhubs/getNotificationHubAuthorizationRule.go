@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Response for POST requests that return single SharedAccessAuthorizationRule.
+// Gets an authorization rule for a NotificationHub by name.
 //
 // Uses Azure REST API version 2023-10-01-preview.
 //
@@ -50,8 +50,7 @@ type LookupNotificationHubAuthorizationRuleResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Gets a string that describes the authorization rule.
-	KeyName string `pulumi:"keyName"`
-	// Deprecated - only for compatibility.
+	KeyName  string  `pulumi:"keyName"`
 	Location *string `pulumi:"location"`
 	// Gets the last modified time for this rule
 	ModifiedTime string `pulumi:"modifiedTime"`
@@ -69,8 +68,7 @@ type LookupNotificationHubAuthorizationRuleResult struct {
 	SecondaryKey *string `pulumi:"secondaryKey"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Deprecated - only for compatibility.
-	Tags map[string]string `pulumi:"tags"`
+	Tags       map[string]string  `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -144,7 +142,6 @@ func (o LookupNotificationHubAuthorizationRuleResultOutput) KeyName() pulumi.Str
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// Deprecated - only for compatibility.
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -186,7 +183,6 @@ func (o LookupNotificationHubAuthorizationRuleResultOutput) SystemData() SystemD
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Deprecated - only for compatibility.
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

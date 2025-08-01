@@ -3521,9 +3521,9 @@ type DirectLineSite struct {
 	// Whether this site is enabled for authentication with Bot Framework.
 	IsSecureSiteEnabled *bool `pulumi:"isSecureSiteEnabled"`
 	// Whether this site is enabled for Bot Framework V1 protocol.
-	IsV1Enabled bool `pulumi:"isV1Enabled"`
+	IsV1Enabled *bool `pulumi:"isV1Enabled"`
 	// Whether this site is enabled for Bot Framework V3 protocol.
-	IsV3Enabled bool `pulumi:"isV3Enabled"`
+	IsV3Enabled *bool `pulumi:"isV3Enabled"`
 	// Whether this site is enabled for Webchat Speech
 	IsWebChatSpeechEnabled *bool `pulumi:"isWebChatSpeechEnabled"`
 	// Whether this site is enabled for preview versions of Webchat
@@ -3583,9 +3583,9 @@ type DirectLineSiteArgs struct {
 	// Whether this site is enabled for authentication with Bot Framework.
 	IsSecureSiteEnabled pulumi.BoolPtrInput `pulumi:"isSecureSiteEnabled"`
 	// Whether this site is enabled for Bot Framework V1 protocol.
-	IsV1Enabled pulumi.BoolInput `pulumi:"isV1Enabled"`
+	IsV1Enabled pulumi.BoolPtrInput `pulumi:"isV1Enabled"`
 	// Whether this site is enabled for Bot Framework V3 protocol.
-	IsV3Enabled pulumi.BoolInput `pulumi:"isV3Enabled"`
+	IsV3Enabled pulumi.BoolPtrInput `pulumi:"isV3Enabled"`
 	// Whether this site is enabled for Webchat Speech
 	IsWebChatSpeechEnabled pulumi.BoolPtrInput `pulumi:"isWebChatSpeechEnabled"`
 	// Whether this site is enabled for preview versions of Webchat
@@ -3705,13 +3705,13 @@ func (o DirectLineSiteOutput) IsSecureSiteEnabled() pulumi.BoolPtrOutput {
 }
 
 // Whether this site is enabled for Bot Framework V1 protocol.
-func (o DirectLineSiteOutput) IsV1Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v DirectLineSite) bool { return v.IsV1Enabled }).(pulumi.BoolOutput)
+func (o DirectLineSiteOutput) IsV1Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectLineSite) *bool { return v.IsV1Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether this site is enabled for Bot Framework V3 protocol.
-func (o DirectLineSiteOutput) IsV3Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v DirectLineSite) bool { return v.IsV3Enabled }).(pulumi.BoolOutput)
+func (o DirectLineSiteOutput) IsV3Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectLineSite) *bool { return v.IsV3Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether this site is enabled for Webchat Speech
@@ -3780,9 +3780,9 @@ type DirectLineSiteResponse struct {
 	// Whether this site is token enabled for channel
 	IsTokenEnabled bool `pulumi:"isTokenEnabled"`
 	// Whether this site is enabled for Bot Framework V1 protocol.
-	IsV1Enabled bool `pulumi:"isV1Enabled"`
+	IsV1Enabled *bool `pulumi:"isV1Enabled"`
 	// Whether this site is enabled for Bot Framework V3 protocol.
-	IsV3Enabled bool `pulumi:"isV3Enabled"`
+	IsV3Enabled *bool `pulumi:"isV3Enabled"`
 	// Whether this site is enabled for Webchat Speech
 	IsWebChatSpeechEnabled *bool `pulumi:"isWebChatSpeechEnabled"`
 	// Whether this site is enabled for preview versions of Webchat
@@ -3879,13 +3879,13 @@ func (o DirectLineSiteResponseOutput) IsTokenEnabled() pulumi.BoolOutput {
 }
 
 // Whether this site is enabled for Bot Framework V1 protocol.
-func (o DirectLineSiteResponseOutput) IsV1Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v DirectLineSiteResponse) bool { return v.IsV1Enabled }).(pulumi.BoolOutput)
+func (o DirectLineSiteResponseOutput) IsV1Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectLineSiteResponse) *bool { return v.IsV1Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether this site is enabled for Bot Framework V3 protocol.
-func (o DirectLineSiteResponseOutput) IsV3Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v DirectLineSiteResponse) bool { return v.IsV3Enabled }).(pulumi.BoolOutput)
+func (o DirectLineSiteResponseOutput) IsV3Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectLineSiteResponse) *bool { return v.IsV3Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether this site is enabled for Webchat Speech
@@ -8976,16 +8976,91 @@ func (o NetworkSecurityPerimeterConfigurationPropertiesResponseOutput) ResourceA
 	}).(ResourceAssociationResponseOutput)
 }
 
+type NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkSecurityPerimeterConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput) ToNetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput() NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput) ToNetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutputWithContext(ctx context.Context) NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput) Elem() NetworkSecurityPerimeterConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterConfigurationPropertiesResponse) NetworkSecurityPerimeterConfigurationPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkSecurityPerimeterConfigurationPropertiesResponse
+		return ret
+	}).(NetworkSecurityPerimeterConfigurationPropertiesResponseOutput)
+}
+
+// Information about Network Security Perimeter
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput) NetworkSecurityPerimeter() NetworkSecurityPerimeterResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterConfigurationPropertiesResponse) *NetworkSecurityPerimeterResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkSecurityPerimeter
+	}).(NetworkSecurityPerimeterResponsePtrOutput)
+}
+
+// Information about profile
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput) Profile() ProfileResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterConfigurationPropertiesResponse) *ProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Profile
+	}).(ProfileResponsePtrOutput)
+}
+
+// List of Provisioning Issues if any
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput) ProvisioningIssues() ProvisioningIssueResponseArrayOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterConfigurationPropertiesResponse) []ProvisioningIssueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningIssues
+	}).(ProvisioningIssueResponseArrayOutput)
+}
+
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information about resource association
+func (o NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput) ResourceAssociation() ResourceAssociationResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterConfigurationPropertiesResponse) *ResourceAssociationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceAssociation
+	}).(ResourceAssociationResponsePtrOutput)
+}
+
 // Network Security Perimeter configuration
 type NetworkSecurityPerimeterConfigurationResponse struct {
-	// Fully qualified identifier of the resource
-	Id *string `pulumi:"id"`
-	// Name of the resource
-	Name *string `pulumi:"name"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
 	// Properties of the Network Security Perimeter configuration
-	Properties NetworkSecurityPerimeterConfigurationPropertiesResponse `pulumi:"properties"`
-	// Type of the resource
-	Type *string `pulumi:"type"`
+	Properties *NetworkSecurityPerimeterConfigurationPropertiesResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
 }
 
 // Defaults sets the appropriate defaults for NetworkSecurityPerimeterConfigurationResponse
@@ -8994,7 +9069,7 @@ func (val *NetworkSecurityPerimeterConfigurationResponse) Defaults() *NetworkSec
 		return nil
 	}
 	tmp := *val
-	tmp.Properties = *tmp.Properties.Defaults()
+	tmp.Properties = tmp.Properties.Defaults()
 
 	return &tmp
 }
@@ -9014,26 +9089,31 @@ func (o NetworkSecurityPerimeterConfigurationResponseOutput) ToNetworkSecurityPe
 	return o
 }
 
-// Fully qualified identifier of the resource
-func (o NetworkSecurityPerimeterConfigurationResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+func (o NetworkSecurityPerimeterConfigurationResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the resource
-func (o NetworkSecurityPerimeterConfigurationResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the resource
+func (o NetworkSecurityPerimeterConfigurationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Properties of the Network Security Perimeter configuration
-func (o NetworkSecurityPerimeterConfigurationResponseOutput) Properties() NetworkSecurityPerimeterConfigurationPropertiesResponseOutput {
-	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) NetworkSecurityPerimeterConfigurationPropertiesResponse {
+func (o NetworkSecurityPerimeterConfigurationResponseOutput) Properties() NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) *NetworkSecurityPerimeterConfigurationPropertiesResponse {
 		return v.Properties
-	}).(NetworkSecurityPerimeterConfigurationPropertiesResponseOutput)
+	}).(NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput)
 }
 
-// Type of the resource
-func (o NetworkSecurityPerimeterConfigurationResponseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o NetworkSecurityPerimeterConfigurationResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o NetworkSecurityPerimeterConfigurationResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkSecurityPerimeterConfigurationResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type NetworkSecurityPerimeterConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
@@ -9096,6 +9176,60 @@ func (o NetworkSecurityPerimeterResponseOutput) PerimeterGuid() pulumi.StringPtr
 	return o.ApplyT(func(v NetworkSecurityPerimeterResponse) *string { return v.PerimeterGuid }).(pulumi.StringPtrOutput)
 }
 
+type NetworkSecurityPerimeterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkSecurityPerimeterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkSecurityPerimeterResponse)(nil)).Elem()
+}
+
+func (o NetworkSecurityPerimeterResponsePtrOutput) ToNetworkSecurityPerimeterResponsePtrOutput() NetworkSecurityPerimeterResponsePtrOutput {
+	return o
+}
+
+func (o NetworkSecurityPerimeterResponsePtrOutput) ToNetworkSecurityPerimeterResponsePtrOutputWithContext(ctx context.Context) NetworkSecurityPerimeterResponsePtrOutput {
+	return o
+}
+
+func (o NetworkSecurityPerimeterResponsePtrOutput) Elem() NetworkSecurityPerimeterResponseOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterResponse) NetworkSecurityPerimeterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkSecurityPerimeterResponse
+		return ret
+	}).(NetworkSecurityPerimeterResponseOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o NetworkSecurityPerimeterResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location of the Network Security Perimeter
+func (o NetworkSecurityPerimeterResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Guid of the Network Security Perimeter
+func (o NetworkSecurityPerimeterResponsePtrOutput) PerimeterGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerimeterGuid
+	}).(pulumi.StringPtrOutput)
+}
+
 type NetworkSecurityPerimeterResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkSecurityPerimeterResponseArrayOutput) ElementType() reflect.Type {
@@ -9116,12 +9250,130 @@ func (o NetworkSecurityPerimeterResponseArrayOutput) Index(i pulumi.IntInput) Ne
 	}).(NetworkSecurityPerimeterResponseOutput)
 }
 
+// Properties of Access Rule
+type NspAccessRulePropertiesResponse struct {
+	// Address prefixes in the CIDR format for inbound rules
+	AddressPrefixes []string `pulumi:"addressPrefixes"`
+	// Direction of Access Rule
+	Direction *string `pulumi:"direction"`
+	// Email addresses for outbound rules
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// FQDN for outbound rules
+	FullyQualifiedDomainNames []string `pulumi:"fullyQualifiedDomainNames"`
+	// NetworkSecurityPerimeters for inbound rules
+	NetworkSecurityPerimeters []NetworkSecurityPerimeterResponse `pulumi:"networkSecurityPerimeters"`
+	// Phone numbers for outbound rules
+	PhoneNumbers []string `pulumi:"phoneNumbers"`
+	// Subscriptions for inbound rules
+	Subscriptions []NspAccessRulePropertiesSubscriptionsItemResponse `pulumi:"subscriptions"`
+}
+
+// Properties of Access Rule
+type NspAccessRulePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (NspAccessRulePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NspAccessRulePropertiesResponse)(nil)).Elem()
+}
+
+func (o NspAccessRulePropertiesResponseOutput) ToNspAccessRulePropertiesResponseOutput() NspAccessRulePropertiesResponseOutput {
+	return o
+}
+
+func (o NspAccessRulePropertiesResponseOutput) ToNspAccessRulePropertiesResponseOutputWithContext(ctx context.Context) NspAccessRulePropertiesResponseOutput {
+	return o
+}
+
+// Address prefixes in the CIDR format for inbound rules
+func (o NspAccessRulePropertiesResponseOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NspAccessRulePropertiesResponse) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Direction of Access Rule
+func (o NspAccessRulePropertiesResponseOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NspAccessRulePropertiesResponse) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Email addresses for outbound rules
+func (o NspAccessRulePropertiesResponseOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NspAccessRulePropertiesResponse) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// FQDN for outbound rules
+func (o NspAccessRulePropertiesResponseOutput) FullyQualifiedDomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NspAccessRulePropertiesResponse) []string { return v.FullyQualifiedDomainNames }).(pulumi.StringArrayOutput)
+}
+
+// NetworkSecurityPerimeters for inbound rules
+func (o NspAccessRulePropertiesResponseOutput) NetworkSecurityPerimeters() NetworkSecurityPerimeterResponseArrayOutput {
+	return o.ApplyT(func(v NspAccessRulePropertiesResponse) []NetworkSecurityPerimeterResponse {
+		return v.NetworkSecurityPerimeters
+	}).(NetworkSecurityPerimeterResponseArrayOutput)
+}
+
+// Phone numbers for outbound rules
+func (o NspAccessRulePropertiesResponseOutput) PhoneNumbers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NspAccessRulePropertiesResponse) []string { return v.PhoneNumbers }).(pulumi.StringArrayOutput)
+}
+
+// Subscriptions for inbound rules
+func (o NspAccessRulePropertiesResponseOutput) Subscriptions() NspAccessRulePropertiesSubscriptionsItemResponseArrayOutput {
+	return o.ApplyT(func(v NspAccessRulePropertiesResponse) []NspAccessRulePropertiesSubscriptionsItemResponse {
+		return v.Subscriptions
+	}).(NspAccessRulePropertiesSubscriptionsItemResponseArrayOutput)
+}
+
+// Subscription for inbound rule
+type NspAccessRulePropertiesSubscriptionsItemResponse struct {
+	// Fully qualified identifier of subscription
+	Id *string `pulumi:"id"`
+}
+
+// Subscription for inbound rule
+type NspAccessRulePropertiesSubscriptionsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (NspAccessRulePropertiesSubscriptionsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NspAccessRulePropertiesSubscriptionsItemResponse)(nil)).Elem()
+}
+
+func (o NspAccessRulePropertiesSubscriptionsItemResponseOutput) ToNspAccessRulePropertiesSubscriptionsItemResponseOutput() NspAccessRulePropertiesSubscriptionsItemResponseOutput {
+	return o
+}
+
+func (o NspAccessRulePropertiesSubscriptionsItemResponseOutput) ToNspAccessRulePropertiesSubscriptionsItemResponseOutputWithContext(ctx context.Context) NspAccessRulePropertiesSubscriptionsItemResponseOutput {
+	return o
+}
+
+// Fully qualified identifier of subscription
+func (o NspAccessRulePropertiesSubscriptionsItemResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NspAccessRulePropertiesSubscriptionsItemResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type NspAccessRulePropertiesSubscriptionsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NspAccessRulePropertiesSubscriptionsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NspAccessRulePropertiesSubscriptionsItemResponse)(nil)).Elem()
+}
+
+func (o NspAccessRulePropertiesSubscriptionsItemResponseArrayOutput) ToNspAccessRulePropertiesSubscriptionsItemResponseArrayOutput() NspAccessRulePropertiesSubscriptionsItemResponseArrayOutput {
+	return o
+}
+
+func (o NspAccessRulePropertiesSubscriptionsItemResponseArrayOutput) ToNspAccessRulePropertiesSubscriptionsItemResponseArrayOutputWithContext(ctx context.Context) NspAccessRulePropertiesSubscriptionsItemResponseArrayOutput {
+	return o
+}
+
+func (o NspAccessRulePropertiesSubscriptionsItemResponseArrayOutput) Index(i pulumi.IntInput) NspAccessRulePropertiesSubscriptionsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NspAccessRulePropertiesSubscriptionsItemResponse {
+		return vs[0].([]NspAccessRulePropertiesSubscriptionsItemResponse)[vs[1].(int)]
+	}).(NspAccessRulePropertiesSubscriptionsItemResponseOutput)
+}
+
 // Information of Access Rule in a profile
 type NspAccessRuleResponse struct {
 	// Name of the access rule
 	Name *string `pulumi:"name"`
 	// Properties of Access Rule
-	Properties NspAccessRuleResponseProperties `pulumi:"properties"`
+	Properties NspAccessRulePropertiesResponse `pulumi:"properties"`
 }
 
 // Information of Access Rule in a profile
@@ -9145,8 +9397,8 @@ func (o NspAccessRuleResponseOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Properties of Access Rule
-func (o NspAccessRuleResponseOutput) Properties() NspAccessRuleResponsePropertiesOutput {
-	return o.ApplyT(func(v NspAccessRuleResponse) NspAccessRuleResponseProperties { return v.Properties }).(NspAccessRuleResponsePropertiesOutput)
+func (o NspAccessRuleResponseOutput) Properties() NspAccessRulePropertiesResponseOutput {
+	return o.ApplyT(func(v NspAccessRuleResponse) NspAccessRulePropertiesResponse { return v.Properties }).(NspAccessRulePropertiesResponseOutput)
 }
 
 type NspAccessRuleResponseArrayOutput struct{ *pulumi.OutputState }
@@ -9167,122 +9419,6 @@ func (o NspAccessRuleResponseArrayOutput) Index(i pulumi.IntInput) NspAccessRule
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NspAccessRuleResponse {
 		return vs[0].([]NspAccessRuleResponse)[vs[1].(int)]
 	}).(NspAccessRuleResponseOutput)
-}
-
-// Properties of Access Rule
-type NspAccessRuleResponseProperties struct {
-	// Address prefixes in the CIDR format for inbound rules
-	AddressPrefixes []string `pulumi:"addressPrefixes"`
-	// Direction of Access Rule
-	Direction *string `pulumi:"direction"`
-	// Email addresses for outbound rules
-	EmailAddresses []string `pulumi:"emailAddresses"`
-	// FQDN for outbound rules
-	FullyQualifiedDomainNames []string `pulumi:"fullyQualifiedDomainNames"`
-	// NetworkSecurityPerimeters for inbound rules
-	NetworkSecurityPerimeters []NetworkSecurityPerimeterResponse `pulumi:"networkSecurityPerimeters"`
-	// Phone numbers for outbound rules
-	PhoneNumbers []string `pulumi:"phoneNumbers"`
-	// Subscriptions for inbound rules
-	Subscriptions []NspAccessRuleResponseSubscriptions `pulumi:"subscriptions"`
-}
-
-// Properties of Access Rule
-type NspAccessRuleResponsePropertiesOutput struct{ *pulumi.OutputState }
-
-func (NspAccessRuleResponsePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NspAccessRuleResponseProperties)(nil)).Elem()
-}
-
-func (o NspAccessRuleResponsePropertiesOutput) ToNspAccessRuleResponsePropertiesOutput() NspAccessRuleResponsePropertiesOutput {
-	return o
-}
-
-func (o NspAccessRuleResponsePropertiesOutput) ToNspAccessRuleResponsePropertiesOutputWithContext(ctx context.Context) NspAccessRuleResponsePropertiesOutput {
-	return o
-}
-
-// Address prefixes in the CIDR format for inbound rules
-func (o NspAccessRuleResponsePropertiesOutput) AddressPrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NspAccessRuleResponseProperties) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
-}
-
-// Direction of Access Rule
-func (o NspAccessRuleResponsePropertiesOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NspAccessRuleResponseProperties) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Email addresses for outbound rules
-func (o NspAccessRuleResponsePropertiesOutput) EmailAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NspAccessRuleResponseProperties) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
-}
-
-// FQDN for outbound rules
-func (o NspAccessRuleResponsePropertiesOutput) FullyQualifiedDomainNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NspAccessRuleResponseProperties) []string { return v.FullyQualifiedDomainNames }).(pulumi.StringArrayOutput)
-}
-
-// NetworkSecurityPerimeters for inbound rules
-func (o NspAccessRuleResponsePropertiesOutput) NetworkSecurityPerimeters() NetworkSecurityPerimeterResponseArrayOutput {
-	return o.ApplyT(func(v NspAccessRuleResponseProperties) []NetworkSecurityPerimeterResponse {
-		return v.NetworkSecurityPerimeters
-	}).(NetworkSecurityPerimeterResponseArrayOutput)
-}
-
-// Phone numbers for outbound rules
-func (o NspAccessRuleResponsePropertiesOutput) PhoneNumbers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NspAccessRuleResponseProperties) []string { return v.PhoneNumbers }).(pulumi.StringArrayOutput)
-}
-
-// Subscriptions for inbound rules
-func (o NspAccessRuleResponsePropertiesOutput) Subscriptions() NspAccessRuleResponseSubscriptionsArrayOutput {
-	return o.ApplyT(func(v NspAccessRuleResponseProperties) []NspAccessRuleResponseSubscriptions { return v.Subscriptions }).(NspAccessRuleResponseSubscriptionsArrayOutput)
-}
-
-// Subscription for inbound rule
-type NspAccessRuleResponseSubscriptions struct {
-	// Fully qualified identifier of subscription
-	Id *string `pulumi:"id"`
-}
-
-// Subscription for inbound rule
-type NspAccessRuleResponseSubscriptionsOutput struct{ *pulumi.OutputState }
-
-func (NspAccessRuleResponseSubscriptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NspAccessRuleResponseSubscriptions)(nil)).Elem()
-}
-
-func (o NspAccessRuleResponseSubscriptionsOutput) ToNspAccessRuleResponseSubscriptionsOutput() NspAccessRuleResponseSubscriptionsOutput {
-	return o
-}
-
-func (o NspAccessRuleResponseSubscriptionsOutput) ToNspAccessRuleResponseSubscriptionsOutputWithContext(ctx context.Context) NspAccessRuleResponseSubscriptionsOutput {
-	return o
-}
-
-// Fully qualified identifier of subscription
-func (o NspAccessRuleResponseSubscriptionsOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NspAccessRuleResponseSubscriptions) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type NspAccessRuleResponseSubscriptionsArrayOutput struct{ *pulumi.OutputState }
-
-func (NspAccessRuleResponseSubscriptionsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NspAccessRuleResponseSubscriptions)(nil)).Elem()
-}
-
-func (o NspAccessRuleResponseSubscriptionsArrayOutput) ToNspAccessRuleResponseSubscriptionsArrayOutput() NspAccessRuleResponseSubscriptionsArrayOutput {
-	return o
-}
-
-func (o NspAccessRuleResponseSubscriptionsArrayOutput) ToNspAccessRuleResponseSubscriptionsArrayOutputWithContext(ctx context.Context) NspAccessRuleResponseSubscriptionsArrayOutput {
-	return o
-}
-
-func (o NspAccessRuleResponseSubscriptionsArrayOutput) Index(i pulumi.IntInput) NspAccessRuleResponseSubscriptionsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NspAccessRuleResponseSubscriptions {
-		return vs[0].([]NspAccessRuleResponseSubscriptions)[vs[1].(int)]
-	}).(NspAccessRuleResponseSubscriptionsOutput)
 }
 
 // Omnichannel channel definition
@@ -9965,6 +10101,8 @@ type PrivateEndpointConnectionResponse struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -10014,6 +10152,11 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionSta
 // The provisioning state of the private endpoint connection resource.
 func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -10268,12 +10411,140 @@ func (o ProfileResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProfileResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+type ProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProfileResponse)(nil)).Elem()
+}
+
+func (o ProfileResponsePtrOutput) ToProfileResponsePtrOutput() ProfileResponsePtrOutput {
+	return o
+}
+
+func (o ProfileResponsePtrOutput) ToProfileResponsePtrOutputWithContext(ctx context.Context) ProfileResponsePtrOutput {
+	return o
+}
+
+func (o ProfileResponsePtrOutput) Elem() ProfileResponseOutput {
+	return o.ApplyT(func(v *ProfileResponse) ProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ProfileResponse
+		return ret
+	}).(ProfileResponseOutput)
+}
+
+// List of Access Rules
+func (o ProfileResponsePtrOutput) AccessRules() NspAccessRuleResponseArrayOutput {
+	return o.ApplyT(func(v *ProfileResponse) []NspAccessRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AccessRules
+	}).(NspAccessRuleResponseArrayOutput)
+}
+
+// Current access rules version
+func (o ProfileResponsePtrOutput) AccessRulesVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ProfileResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AccessRulesVersion
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Current diagnostic settings version
+func (o ProfileResponsePtrOutput) DiagnosticSettingsVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ProfileResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiagnosticSettingsVersion
+	}).(pulumi.Float64PtrOutput)
+}
+
+// List of log categories
+func (o ProfileResponsePtrOutput) EnabledLogCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProfileResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledLogCategories
+	}).(pulumi.StringArrayOutput)
+}
+
+// Name of the profile
+func (o ProfileResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of Provisioning Issue
+type ProvisioningIssuePropertiesResponse struct {
+	// Description of the issue
+	Description *string `pulumi:"description"`
+	// Type of Issue
+	IssueType *string `pulumi:"issueType"`
+	// Provisioning state of Network Security Perimeter configuration propagation
+	Severity *string `pulumi:"severity"`
+	// Access rules that can be added to the same profile to remediate the issue.
+	SuggestedAccessRules []NspAccessRuleResponse `pulumi:"suggestedAccessRules"`
+	// ARM IDs of resources that can be associated to the same perimeter to remediate the issue.
+	SuggestedResourceIds []string `pulumi:"suggestedResourceIds"`
+}
+
+// Properties of Provisioning Issue
+type ProvisioningIssuePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ProvisioningIssuePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProvisioningIssuePropertiesResponse)(nil)).Elem()
+}
+
+func (o ProvisioningIssuePropertiesResponseOutput) ToProvisioningIssuePropertiesResponseOutput() ProvisioningIssuePropertiesResponseOutput {
+	return o
+}
+
+func (o ProvisioningIssuePropertiesResponseOutput) ToProvisioningIssuePropertiesResponseOutputWithContext(ctx context.Context) ProvisioningIssuePropertiesResponseOutput {
+	return o
+}
+
+// Description of the issue
+func (o ProvisioningIssuePropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProvisioningIssuePropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Type of Issue
+func (o ProvisioningIssuePropertiesResponseOutput) IssueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProvisioningIssuePropertiesResponse) *string { return v.IssueType }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning state of Network Security Perimeter configuration propagation
+func (o ProvisioningIssuePropertiesResponseOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProvisioningIssuePropertiesResponse) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Access rules that can be added to the same profile to remediate the issue.
+func (o ProvisioningIssuePropertiesResponseOutput) SuggestedAccessRules() NspAccessRuleResponseArrayOutput {
+	return o.ApplyT(func(v ProvisioningIssuePropertiesResponse) []NspAccessRuleResponse { return v.SuggestedAccessRules }).(NspAccessRuleResponseArrayOutput)
+}
+
+// ARM IDs of resources that can be associated to the same perimeter to remediate the issue.
+func (o ProvisioningIssuePropertiesResponseOutput) SuggestedResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProvisioningIssuePropertiesResponse) []string { return v.SuggestedResourceIds }).(pulumi.StringArrayOutput)
+}
+
 // Describes Provisioning issue for given Network Security Perimeter configuration
 type ProvisioningIssueResponse struct {
 	// Name of the issue
 	Name *string `pulumi:"name"`
 	// Properties of Provisioning Issue
-	Properties ProvisioningIssueResponseProperties `pulumi:"properties"`
+	Properties ProvisioningIssuePropertiesResponse `pulumi:"properties"`
 }
 
 // Describes Provisioning issue for given Network Security Perimeter configuration
@@ -10297,8 +10568,8 @@ func (o ProvisioningIssueResponseOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Properties of Provisioning Issue
-func (o ProvisioningIssueResponseOutput) Properties() ProvisioningIssueResponsePropertiesOutput {
-	return o.ApplyT(func(v ProvisioningIssueResponse) ProvisioningIssueResponseProperties { return v.Properties }).(ProvisioningIssueResponsePropertiesOutput)
+func (o ProvisioningIssueResponseOutput) Properties() ProvisioningIssuePropertiesResponseOutput {
+	return o.ApplyT(func(v ProvisioningIssueResponse) ProvisioningIssuePropertiesResponse { return v.Properties }).(ProvisioningIssuePropertiesResponseOutput)
 }
 
 type ProvisioningIssueResponseArrayOutput struct{ *pulumi.OutputState }
@@ -10319,60 +10590,6 @@ func (o ProvisioningIssueResponseArrayOutput) Index(i pulumi.IntInput) Provision
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProvisioningIssueResponse {
 		return vs[0].([]ProvisioningIssueResponse)[vs[1].(int)]
 	}).(ProvisioningIssueResponseOutput)
-}
-
-// Properties of Provisioning Issue
-type ProvisioningIssueResponseProperties struct {
-	// Description of the issue
-	Description *string `pulumi:"description"`
-	// Type of Issue
-	IssueType *string `pulumi:"issueType"`
-	// Provisioning state of Network Security Perimeter configuration propagation
-	Severity *string `pulumi:"severity"`
-	// Access rules that can be added to the same profile to remediate the issue.
-	SuggestedAccessRules []NspAccessRuleResponse `pulumi:"suggestedAccessRules"`
-	// ARM IDs of resources that can be associated to the same perimeter to remediate the issue.
-	SuggestedResourceIds []string `pulumi:"suggestedResourceIds"`
-}
-
-// Properties of Provisioning Issue
-type ProvisioningIssueResponsePropertiesOutput struct{ *pulumi.OutputState }
-
-func (ProvisioningIssueResponsePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProvisioningIssueResponseProperties)(nil)).Elem()
-}
-
-func (o ProvisioningIssueResponsePropertiesOutput) ToProvisioningIssueResponsePropertiesOutput() ProvisioningIssueResponsePropertiesOutput {
-	return o
-}
-
-func (o ProvisioningIssueResponsePropertiesOutput) ToProvisioningIssueResponsePropertiesOutputWithContext(ctx context.Context) ProvisioningIssueResponsePropertiesOutput {
-	return o
-}
-
-// Description of the issue
-func (o ProvisioningIssueResponsePropertiesOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProvisioningIssueResponseProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Type of Issue
-func (o ProvisioningIssueResponsePropertiesOutput) IssueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProvisioningIssueResponseProperties) *string { return v.IssueType }).(pulumi.StringPtrOutput)
-}
-
-// Provisioning state of Network Security Perimeter configuration propagation
-func (o ProvisioningIssueResponsePropertiesOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProvisioningIssueResponseProperties) *string { return v.Severity }).(pulumi.StringPtrOutput)
-}
-
-// Access rules that can be added to the same profile to remediate the issue.
-func (o ProvisioningIssueResponsePropertiesOutput) SuggestedAccessRules() NspAccessRuleResponseArrayOutput {
-	return o.ApplyT(func(v ProvisioningIssueResponseProperties) []NspAccessRuleResponse { return v.SuggestedAccessRules }).(NspAccessRuleResponseArrayOutput)
-}
-
-// ARM IDs of resources that can be associated to the same perimeter to remediate the issue.
-func (o ProvisioningIssueResponsePropertiesOutput) SuggestedResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ProvisioningIssueResponseProperties) []string { return v.SuggestedResourceIds }).(pulumi.StringArrayOutput)
 }
 
 // Information about resource association
@@ -10406,6 +10623,50 @@ func (o ResourceAssociationResponseOutput) AccessMode() pulumi.StringPtrOutput {
 // Name of the resource association
 func (o ResourceAssociationResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAssociationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ResourceAssociationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAssociationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAssociationResponse)(nil)).Elem()
+}
+
+func (o ResourceAssociationResponsePtrOutput) ToResourceAssociationResponsePtrOutput() ResourceAssociationResponsePtrOutput {
+	return o
+}
+
+func (o ResourceAssociationResponsePtrOutput) ToResourceAssociationResponsePtrOutputWithContext(ctx context.Context) ResourceAssociationResponsePtrOutput {
+	return o
+}
+
+func (o ResourceAssociationResponsePtrOutput) Elem() ResourceAssociationResponseOutput {
+	return o.ApplyT(func(v *ResourceAssociationResponse) ResourceAssociationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAssociationResponse
+		return ret
+	}).(ResourceAssociationResponseOutput)
+}
+
+// Access Mode of the resource association
+func (o ResourceAssociationResponsePtrOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAssociationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource association
+func (o ResourceAssociationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAssociationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 // SearchAssistant definition
@@ -10741,6 +11002,94 @@ func (o SearchAssistantResponsePtrOutput) ProvisioningState() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// the constraints of the bot meta data.
+type ServiceProviderParameterMetadataConstraintsResponse struct {
+	// Whether required the constraints of the bot meta data.
+	Required *bool `pulumi:"required"`
+}
+
+// the constraints of the bot meta data.
+type ServiceProviderParameterMetadataConstraintsResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceProviderParameterMetadataConstraintsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceProviderParameterMetadataConstraintsResponse)(nil)).Elem()
+}
+
+func (o ServiceProviderParameterMetadataConstraintsResponseOutput) ToServiceProviderParameterMetadataConstraintsResponseOutput() ServiceProviderParameterMetadataConstraintsResponseOutput {
+	return o
+}
+
+func (o ServiceProviderParameterMetadataConstraintsResponseOutput) ToServiceProviderParameterMetadataConstraintsResponseOutputWithContext(ctx context.Context) ServiceProviderParameterMetadataConstraintsResponseOutput {
+	return o
+}
+
+// Whether required the constraints of the bot meta data.
+func (o ServiceProviderParameterMetadataConstraintsResponseOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceProviderParameterMetadataConstraintsResponse) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+type ServiceProviderParameterMetadataConstraintsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceProviderParameterMetadataConstraintsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProviderParameterMetadataConstraintsResponse)(nil)).Elem()
+}
+
+func (o ServiceProviderParameterMetadataConstraintsResponsePtrOutput) ToServiceProviderParameterMetadataConstraintsResponsePtrOutput() ServiceProviderParameterMetadataConstraintsResponsePtrOutput {
+	return o
+}
+
+func (o ServiceProviderParameterMetadataConstraintsResponsePtrOutput) ToServiceProviderParameterMetadataConstraintsResponsePtrOutputWithContext(ctx context.Context) ServiceProviderParameterMetadataConstraintsResponsePtrOutput {
+	return o
+}
+
+func (o ServiceProviderParameterMetadataConstraintsResponsePtrOutput) Elem() ServiceProviderParameterMetadataConstraintsResponseOutput {
+	return o.ApplyT(func(v *ServiceProviderParameterMetadataConstraintsResponse) ServiceProviderParameterMetadataConstraintsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceProviderParameterMetadataConstraintsResponse
+		return ret
+	}).(ServiceProviderParameterMetadataConstraintsResponseOutput)
+}
+
+// Whether required the constraints of the bot meta data.
+func (o ServiceProviderParameterMetadataConstraintsResponsePtrOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceProviderParameterMetadataConstraintsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Required
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Meta data for the Service Provider
+type ServiceProviderParameterMetadataResponse struct {
+	// the constraints of the bot meta data.
+	Constraints *ServiceProviderParameterMetadataConstraintsResponse `pulumi:"constraints"`
+}
+
+// Meta data for the Service Provider
+type ServiceProviderParameterMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceProviderParameterMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceProviderParameterMetadataResponse)(nil)).Elem()
+}
+
+func (o ServiceProviderParameterMetadataResponseOutput) ToServiceProviderParameterMetadataResponseOutput() ServiceProviderParameterMetadataResponseOutput {
+	return o
+}
+
+func (o ServiceProviderParameterMetadataResponseOutput) ToServiceProviderParameterMetadataResponseOutputWithContext(ctx context.Context) ServiceProviderParameterMetadataResponseOutput {
+	return o
+}
+
+// the constraints of the bot meta data.
+func (o ServiceProviderParameterMetadataResponseOutput) Constraints() ServiceProviderParameterMetadataConstraintsResponsePtrOutput {
+	return o.ApplyT(func(v ServiceProviderParameterMetadataResponse) *ServiceProviderParameterMetadataConstraintsResponse {
+		return v.Constraints
+	}).(ServiceProviderParameterMetadataConstraintsResponsePtrOutput)
+}
+
 // Extra Parameters specific to each Service Provider
 type ServiceProviderParameterResponse struct {
 	// Default Name for the Service Provider
@@ -10752,7 +11101,7 @@ type ServiceProviderParameterResponse struct {
 	// Help Url for the  Service Provider
 	HelpUrl string `pulumi:"helpUrl"`
 	// Meta data for the Service Provider
-	Metadata ServiceProviderParameterResponseMetadata `pulumi:"metadata"`
+	Metadata ServiceProviderParameterMetadataResponse `pulumi:"metadata"`
 	// Name of the Service Provider
 	Name string `pulumi:"name"`
 	// Type of the Service Provider
@@ -10795,8 +11144,8 @@ func (o ServiceProviderParameterResponseOutput) HelpUrl() pulumi.StringOutput {
 }
 
 // Meta data for the Service Provider
-func (o ServiceProviderParameterResponseOutput) Metadata() ServiceProviderParameterResponseMetadataOutput {
-	return o.ApplyT(func(v ServiceProviderParameterResponse) ServiceProviderParameterResponseMetadata { return v.Metadata }).(ServiceProviderParameterResponseMetadataOutput)
+func (o ServiceProviderParameterResponseOutput) Metadata() ServiceProviderParameterMetadataResponseOutput {
+	return o.ApplyT(func(v ServiceProviderParameterResponse) ServiceProviderParameterMetadataResponse { return v.Metadata }).(ServiceProviderParameterMetadataResponseOutput)
 }
 
 // Name of the Service Provider
@@ -10827,94 +11176,6 @@ func (o ServiceProviderParameterResponseArrayOutput) Index(i pulumi.IntInput) Se
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProviderParameterResponse {
 		return vs[0].([]ServiceProviderParameterResponse)[vs[1].(int)]
 	}).(ServiceProviderParameterResponseOutput)
-}
-
-// the constraints of the bot meta data.
-type ServiceProviderParameterResponseConstraints struct {
-	// Whether required the constraints of the bot meta data.
-	Required *bool `pulumi:"required"`
-}
-
-// the constraints of the bot meta data.
-type ServiceProviderParameterResponseConstraintsOutput struct{ *pulumi.OutputState }
-
-func (ServiceProviderParameterResponseConstraintsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceProviderParameterResponseConstraints)(nil)).Elem()
-}
-
-func (o ServiceProviderParameterResponseConstraintsOutput) ToServiceProviderParameterResponseConstraintsOutput() ServiceProviderParameterResponseConstraintsOutput {
-	return o
-}
-
-func (o ServiceProviderParameterResponseConstraintsOutput) ToServiceProviderParameterResponseConstraintsOutputWithContext(ctx context.Context) ServiceProviderParameterResponseConstraintsOutput {
-	return o
-}
-
-// Whether required the constraints of the bot meta data.
-func (o ServiceProviderParameterResponseConstraintsOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceProviderParameterResponseConstraints) *bool { return v.Required }).(pulumi.BoolPtrOutput)
-}
-
-type ServiceProviderParameterResponseConstraintsPtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceProviderParameterResponseConstraintsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceProviderParameterResponseConstraints)(nil)).Elem()
-}
-
-func (o ServiceProviderParameterResponseConstraintsPtrOutput) ToServiceProviderParameterResponseConstraintsPtrOutput() ServiceProviderParameterResponseConstraintsPtrOutput {
-	return o
-}
-
-func (o ServiceProviderParameterResponseConstraintsPtrOutput) ToServiceProviderParameterResponseConstraintsPtrOutputWithContext(ctx context.Context) ServiceProviderParameterResponseConstraintsPtrOutput {
-	return o
-}
-
-func (o ServiceProviderParameterResponseConstraintsPtrOutput) Elem() ServiceProviderParameterResponseConstraintsOutput {
-	return o.ApplyT(func(v *ServiceProviderParameterResponseConstraints) ServiceProviderParameterResponseConstraints {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceProviderParameterResponseConstraints
-		return ret
-	}).(ServiceProviderParameterResponseConstraintsOutput)
-}
-
-// Whether required the constraints of the bot meta data.
-func (o ServiceProviderParameterResponseConstraintsPtrOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceProviderParameterResponseConstraints) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Required
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Meta data for the Service Provider
-type ServiceProviderParameterResponseMetadata struct {
-	// the constraints of the bot meta data.
-	Constraints *ServiceProviderParameterResponseConstraints `pulumi:"constraints"`
-}
-
-// Meta data for the Service Provider
-type ServiceProviderParameterResponseMetadataOutput struct{ *pulumi.OutputState }
-
-func (ServiceProviderParameterResponseMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceProviderParameterResponseMetadata)(nil)).Elem()
-}
-
-func (o ServiceProviderParameterResponseMetadataOutput) ToServiceProviderParameterResponseMetadataOutput() ServiceProviderParameterResponseMetadataOutput {
-	return o
-}
-
-func (o ServiceProviderParameterResponseMetadataOutput) ToServiceProviderParameterResponseMetadataOutputWithContext(ctx context.Context) ServiceProviderParameterResponseMetadataOutput {
-	return o
-}
-
-// the constraints of the bot meta data.
-func (o ServiceProviderParameterResponseMetadataOutput) Constraints() ServiceProviderParameterResponseConstraintsPtrOutput {
-	return o.ApplyT(func(v ServiceProviderParameterResponseMetadata) *ServiceProviderParameterResponseConstraints {
-		return v.Constraints
-	}).(ServiceProviderParameterResponseConstraintsPtrOutput)
 }
 
 // The Object used to describe a Service Provider supported by Bot Service
@@ -14058,6 +14319,67 @@ func (o SmsChannelResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
 // Telegram channel definition
 type TelegramChannel struct {
 	// The channel name
@@ -16617,7 +16939,7 @@ type WebChatSite struct {
 	// Whether this site is enabled for Webchat Speech
 	IsWebChatSpeechEnabled *bool `pulumi:"isWebChatSpeechEnabled"`
 	// Whether this site is enabled for preview versions of Webchat
-	IsWebchatPreviewEnabled bool `pulumi:"isWebchatPreviewEnabled"`
+	IsWebchatPreviewEnabled *bool `pulumi:"isWebchatPreviewEnabled"`
 	// Site name
 	SiteName string `pulumi:"siteName"`
 	// Tenant Id
@@ -16636,8 +16958,9 @@ func (val *WebChatSite) Defaults() *WebChatSite {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}
-	if utilities.IsZero(tmp.IsWebchatPreviewEnabled) {
-		tmp.IsWebchatPreviewEnabled = false
+	if tmp.IsWebchatPreviewEnabled == nil {
+		isWebchatPreviewEnabled_ := false
+		tmp.IsWebchatPreviewEnabled = &isWebchatPreviewEnabled_
 	}
 	return &tmp
 }
@@ -16678,7 +17001,7 @@ type WebChatSiteArgs struct {
 	// Whether this site is enabled for Webchat Speech
 	IsWebChatSpeechEnabled pulumi.BoolPtrInput `pulumi:"isWebChatSpeechEnabled"`
 	// Whether this site is enabled for preview versions of Webchat
-	IsWebchatPreviewEnabled pulumi.BoolInput `pulumi:"isWebchatPreviewEnabled"`
+	IsWebchatPreviewEnabled pulumi.BoolPtrInput `pulumi:"isWebchatPreviewEnabled"`
 	// Site name
 	SiteName pulumi.StringInput `pulumi:"siteName"`
 	// Tenant Id
@@ -16697,7 +17020,7 @@ func (val *WebChatSiteArgs) Defaults() *WebChatSiteArgs {
 		tmp.IsWebChatSpeechEnabled = pulumi.BoolPtr(false)
 	}
 	if tmp.IsWebchatPreviewEnabled == nil {
-		tmp.IsWebchatPreviewEnabled = pulumi.Bool(false)
+		tmp.IsWebchatPreviewEnabled = pulumi.BoolPtr(false)
 	}
 	return &tmp
 }
@@ -16809,8 +17132,8 @@ func (o WebChatSiteOutput) IsWebChatSpeechEnabled() pulumi.BoolPtrOutput {
 }
 
 // Whether this site is enabled for preview versions of Webchat
-func (o WebChatSiteOutput) IsWebchatPreviewEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v WebChatSite) bool { return v.IsWebchatPreviewEnabled }).(pulumi.BoolOutput)
+func (o WebChatSiteOutput) IsWebchatPreviewEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WebChatSite) *bool { return v.IsWebchatPreviewEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Site name
@@ -16875,7 +17198,7 @@ type WebChatSiteResponse struct {
 	// Whether this site is enabled for Webchat Speech
 	IsWebChatSpeechEnabled *bool `pulumi:"isWebChatSpeechEnabled"`
 	// Whether this site is enabled for preview versions of Webchat
-	IsWebchatPreviewEnabled bool `pulumi:"isWebchatPreviewEnabled"`
+	IsWebchatPreviewEnabled *bool `pulumi:"isWebchatPreviewEnabled"`
 	// Primary key. Value only returned through POST to the action Channel List API, otherwise empty.
 	Key string `pulumi:"key"`
 	// Secondary key. Value only returned through POST to the action Channel List API, otherwise empty.
@@ -16900,8 +17223,9 @@ func (val *WebChatSiteResponse) Defaults() *WebChatSiteResponse {
 		isWebChatSpeechEnabled_ := false
 		tmp.IsWebChatSpeechEnabled = &isWebChatSpeechEnabled_
 	}
-	if utilities.IsZero(tmp.IsWebchatPreviewEnabled) {
-		tmp.IsWebchatPreviewEnabled = false
+	if tmp.IsWebchatPreviewEnabled == nil {
+		isWebchatPreviewEnabled_ := false
+		tmp.IsWebchatPreviewEnabled = &isWebchatPreviewEnabled_
 	}
 	return &tmp
 }
@@ -16982,8 +17306,8 @@ func (o WebChatSiteResponseOutput) IsWebChatSpeechEnabled() pulumi.BoolPtrOutput
 }
 
 // Whether this site is enabled for preview versions of Webchat
-func (o WebChatSiteResponseOutput) IsWebchatPreviewEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v WebChatSiteResponse) bool { return v.IsWebchatPreviewEnabled }).(pulumi.BoolOutput)
+func (o WebChatSiteResponseOutput) IsWebchatPreviewEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WebChatSiteResponse) *bool { return v.IsWebchatPreviewEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Primary key. Value only returned through POST to the action Channel List API, otherwise empty.
@@ -17134,15 +17458,17 @@ func init() {
 	pulumi.RegisterOutputType(MsTeamsChannelResponseOutput{})
 	pulumi.RegisterOutputType(MsTeamsChannelResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkSecurityPerimeterConfigurationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityPerimeterConfigurationPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkSecurityPerimeterConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(NetworkSecurityPerimeterConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkSecurityPerimeterResponseOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityPerimeterResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkSecurityPerimeterResponseArrayOutput{})
+	pulumi.RegisterOutputType(NspAccessRulePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(NspAccessRulePropertiesSubscriptionsItemResponseOutput{})
+	pulumi.RegisterOutputType(NspAccessRulePropertiesSubscriptionsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(NspAccessRuleResponseOutput{})
 	pulumi.RegisterOutputType(NspAccessRuleResponseArrayOutput{})
-	pulumi.RegisterOutputType(NspAccessRuleResponsePropertiesOutput{})
-	pulumi.RegisterOutputType(NspAccessRuleResponseSubscriptionsOutput{})
-	pulumi.RegisterOutputType(NspAccessRuleResponseSubscriptionsArrayOutput{})
 	pulumi.RegisterOutputType(OmnichannelOutput{})
 	pulumi.RegisterOutputType(OmnichannelPtrOutput{})
 	pulumi.RegisterOutputType(OmnichannelResponseOutput{})
@@ -17158,19 +17484,21 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(ProfileResponseOutput{})
+	pulumi.RegisterOutputType(ProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(ProvisioningIssuePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ProvisioningIssueResponseOutput{})
 	pulumi.RegisterOutputType(ProvisioningIssueResponseArrayOutput{})
-	pulumi.RegisterOutputType(ProvisioningIssueResponsePropertiesOutput{})
 	pulumi.RegisterOutputType(ResourceAssociationResponseOutput{})
+	pulumi.RegisterOutputType(ResourceAssociationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SearchAssistantOutput{})
 	pulumi.RegisterOutputType(SearchAssistantPtrOutput{})
 	pulumi.RegisterOutputType(SearchAssistantResponseOutput{})
 	pulumi.RegisterOutputType(SearchAssistantResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceProviderParameterMetadataConstraintsResponseOutput{})
+	pulumi.RegisterOutputType(ServiceProviderParameterMetadataConstraintsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceProviderParameterMetadataResponseOutput{})
 	pulumi.RegisterOutputType(ServiceProviderParameterResponseOutput{})
 	pulumi.RegisterOutputType(ServiceProviderParameterResponseArrayOutput{})
-	pulumi.RegisterOutputType(ServiceProviderParameterResponseConstraintsOutput{})
-	pulumi.RegisterOutputType(ServiceProviderParameterResponseConstraintsPtrOutput{})
-	pulumi.RegisterOutputType(ServiceProviderParameterResponseMetadataOutput{})
 	pulumi.RegisterOutputType(ServiceProviderPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ServiceProviderPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServiceProviderResponseOutput{})
@@ -17205,6 +17533,7 @@ func init() {
 	pulumi.RegisterOutputType(SmsChannelPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SmsChannelResponseOutput{})
 	pulumi.RegisterOutputType(SmsChannelResponsePtrOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TelegramChannelOutput{})
 	pulumi.RegisterOutputType(TelegramChannelPtrOutput{})
 	pulumi.RegisterOutputType(TelegramChannelPropertiesOutput{})

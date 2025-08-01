@@ -55,13 +55,13 @@ type LookupRecordSetResult struct {
 	Etag *string `pulumi:"etag"`
 	// Fully qualified domain name of the record set.
 	Fqdn string `pulumi:"fqdn"`
-	// The ID of the record set.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The metadata attached to the record set.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The list of MX records in the record set.
 	MxRecords []MxRecordResponse `pulumi:"mxRecords"`
-	// The name of the record set.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The list of NAPTR records in the record set.
 	NaptrRecords []NaptrRecordResponse `pulumi:"naptrRecords"`
@@ -75,6 +75,8 @@ type LookupRecordSetResult struct {
 	SoaRecord *SoaRecordResponse `pulumi:"soaRecord"`
 	// The list of SRV records in the record set.
 	SrvRecords []SrvRecordResponse `pulumi:"srvRecords"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// A reference to an azure resource from where the dns resource value is taken.
 	TargetResource *SubResourceResponse `pulumi:"targetResource"`
 	// The list of TLSA records in the record set.
@@ -85,7 +87,7 @@ type LookupRecordSetResult struct {
 	Ttl *float64 `pulumi:"ttl"`
 	// The list of TXT records in the record set.
 	TxtRecords []TxtRecordResponse `pulumi:"txtRecords"`
-	// The type of the record set.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -168,7 +170,7 @@ func (o LookupRecordSetResultOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) string { return v.Fqdn }).(pulumi.StringOutput)
 }
 
-// The ID of the record set.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupRecordSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -183,7 +185,7 @@ func (o LookupRecordSetResultOutput) MxRecords() MxRecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []MxRecordResponse { return v.MxRecords }).(MxRecordResponseArrayOutput)
 }
 
-// The name of the record set.
+// The name of the resource
 func (o LookupRecordSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -218,6 +220,11 @@ func (o LookupRecordSetResultOutput) SrvRecords() SrvRecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []SrvRecordResponse { return v.SrvRecords }).(SrvRecordResponseArrayOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupRecordSetResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRecordSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // A reference to an azure resource from where the dns resource value is taken.
 func (o LookupRecordSetResultOutput) TargetResource() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) *SubResourceResponse { return v.TargetResource }).(SubResourceResponsePtrOutput)
@@ -243,7 +250,7 @@ func (o LookupRecordSetResultOutput) TxtRecords() TxtRecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []TxtRecordResponse { return v.TxtRecords }).(TxtRecordResponseArrayOutput)
 }
 
-// The type of the record set.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupRecordSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) string { return v.Type }).(pulumi.StringOutput)
 }

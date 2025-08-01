@@ -87,6 +87,9 @@ func NewAssessment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20240101preview:AssessmentsOperation"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20240115:Assessment"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate:AssessmentsOperation"),
 		},
 	})

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Result of POST request to list regions supported by confluent
+// cloud provider regions available for creating Schema Registry clusters.
 //
 // Uses Azure REST API version 2024-07-01.
 //

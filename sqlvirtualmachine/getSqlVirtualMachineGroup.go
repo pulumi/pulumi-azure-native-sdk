@@ -27,7 +27,7 @@ func LookupSqlVirtualMachineGroup(ctx *pulumi.Context, args *LookupSqlVirtualMac
 }
 
 type LookupSqlVirtualMachineGroupArgs struct {
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the SQL virtual machine group.
 	SqlVirtualMachineGroupName string `pulumi:"sqlVirtualMachineGroupName"`
@@ -41,11 +41,11 @@ type LookupSqlVirtualMachineGroupResult struct {
 	ClusterConfiguration string `pulumi:"clusterConfiguration"`
 	// Type of cluster manager: Windows Server Failover Cluster (WSFC), implied by the scale type of the group and the OS type.
 	ClusterManagerType string `pulumi:"clusterManagerType"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Provisioning state to track the async operation status.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -55,11 +55,11 @@ type LookupSqlVirtualMachineGroupResult struct {
 	SqlImageOffer *string `pulumi:"sqlImageOffer"`
 	// SQL image sku.
 	SqlImageSku *string `pulumi:"sqlImageSku"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Cluster Active Directory domain profile.
 	WsfcDomainProfile *WsfcDomainProfileResponse `pulumi:"wsfcDomainProfile"`
@@ -75,7 +75,7 @@ func LookupSqlVirtualMachineGroupOutput(ctx *pulumi.Context, args LookupSqlVirtu
 }
 
 type LookupSqlVirtualMachineGroupOutputArgs struct {
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of the SQL virtual machine group.
 	SqlVirtualMachineGroupName pulumi.StringInput `pulumi:"sqlVirtualMachineGroupName"`
@@ -115,17 +115,17 @@ func (o LookupSqlVirtualMachineGroupResultOutput) ClusterManagerType() pulumi.St
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.ClusterManagerType }).(pulumi.StringOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSqlVirtualMachineGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource location.
+// The geo-location where the resource lives
 func (o LookupSqlVirtualMachineGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupSqlVirtualMachineGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -150,7 +150,7 @@ func (o LookupSqlVirtualMachineGroupResultOutput) SqlImageSku() pulumi.StringPtr
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) *string { return v.SqlImageSku }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSqlVirtualMachineGroupResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -160,7 +160,7 @@ func (o LookupSqlVirtualMachineGroupResultOutput) Tags() pulumi.StringMapOutput 
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSqlVirtualMachineGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

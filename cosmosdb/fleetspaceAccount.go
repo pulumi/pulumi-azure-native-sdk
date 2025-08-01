@@ -18,12 +18,10 @@ import (
 type FleetspaceAccount struct {
 	pulumi.CustomResourceState
 
-	// The location of  global database account in the Fleetspace Account.
-	AccountLocation pulumi.StringPtrOutput `pulumi:"accountLocation"`
-	// The resource identifier of global database account in the Fleetspace Account.
-	AccountResourceIdentifier pulumi.StringPtrOutput `pulumi:"accountResourceIdentifier"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Configuration for fleetspace Account in the fleetspace.
+	GlobalDatabaseAccountProperties FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput `pulumi:"globalDatabaseAccountProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A provisioning state of the Fleetspace Account.
@@ -89,32 +87,28 @@ func (FleetspaceAccountState) ElementType() reflect.Type {
 }
 
 type fleetspaceAccountArgs struct {
-	// The location of  global database account in the Fleetspace Account.
-	AccountLocation *string `pulumi:"accountLocation"`
-	// The resource identifier of global database account in the Fleetspace Account.
-	AccountResourceIdentifier *string `pulumi:"accountResourceIdentifier"`
 	// Cosmos DB fleet name. Needs to be unique under a subscription.
 	FleetName string `pulumi:"fleetName"`
 	// Cosmos DB fleetspace account name.
 	FleetspaceAccountName *string `pulumi:"fleetspaceAccountName"`
 	// Cosmos DB fleetspace name. Needs to be unique under a fleet.
 	FleetspaceName string `pulumi:"fleetspaceName"`
+	// Configuration for fleetspace Account in the fleetspace.
+	GlobalDatabaseAccountProperties *FleetspaceAccountPropertiesGlobalDatabaseAccountProperties `pulumi:"globalDatabaseAccountProperties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The set of arguments for constructing a FleetspaceAccount resource.
 type FleetspaceAccountArgs struct {
-	// The location of  global database account in the Fleetspace Account.
-	AccountLocation pulumi.StringPtrInput
-	// The resource identifier of global database account in the Fleetspace Account.
-	AccountResourceIdentifier pulumi.StringPtrInput
 	// Cosmos DB fleet name. Needs to be unique under a subscription.
 	FleetName pulumi.StringInput
 	// Cosmos DB fleetspace account name.
 	FleetspaceAccountName pulumi.StringPtrInput
 	// Cosmos DB fleetspace name. Needs to be unique under a fleet.
 	FleetspaceName pulumi.StringInput
+	// Configuration for fleetspace Account in the fleetspace.
+	GlobalDatabaseAccountProperties FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
@@ -156,19 +150,16 @@ func (o FleetspaceAccountOutput) ToFleetspaceAccountOutputWithContext(ctx contex
 	return o
 }
 
-// The location of  global database account in the Fleetspace Account.
-func (o FleetspaceAccountOutput) AccountLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FleetspaceAccount) pulumi.StringPtrOutput { return v.AccountLocation }).(pulumi.StringPtrOutput)
-}
-
-// The resource identifier of global database account in the Fleetspace Account.
-func (o FleetspaceAccountOutput) AccountResourceIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FleetspaceAccount) pulumi.StringPtrOutput { return v.AccountResourceIdentifier }).(pulumi.StringPtrOutput)
-}
-
 // The Azure API version of the resource.
 func (o FleetspaceAccountOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *FleetspaceAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Configuration for fleetspace Account in the fleetspace.
+func (o FleetspaceAccountOutput) GlobalDatabaseAccountProperties() FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput {
+	return o.ApplyT(func(v *FleetspaceAccount) FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput {
+		return v.GlobalDatabaseAccountProperties
+	}).(FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput)
 }
 
 // The name of the resource

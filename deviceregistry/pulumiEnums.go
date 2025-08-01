@@ -358,6 +358,28 @@ func (in *dataPointObservabilityModePtr) ToDataPointObservabilityModePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(DataPointObservabilityModePtrOutput)
 }
 
+// Target destination.
+type DatasetDestinationTarget string
+
+const (
+	// MQTT target.
+	DatasetDestinationTargetMqtt = DatasetDestinationTarget("Mqtt")
+	// Broker State Store target.
+	DatasetDestinationTargetBrokerStateStore = DatasetDestinationTarget("BrokerStateStore")
+	// Storage target.
+	DatasetDestinationTargetStorage = DatasetDestinationTarget("Storage")
+)
+
+// Target destination.
+type EventDestinationTarget string
+
+const (
+	// MQTT target.
+	EventDestinationTargetMqtt = EventDestinationTarget("Mqtt")
+	// Storage target.
+	EventDestinationTargetStorage = EventDestinationTarget("Storage")
+)
+
 // An indication of how the event should be mapped to OpenTelemetry.
 type EventObservabilityMode string
 
@@ -694,6 +716,516 @@ func (in *formatPtr) ToFormatPtrOutputWithContext(ctx context.Context) FormatPtr
 	return pulumi.ToOutputWithContext(ctx, in).(FormatPtrOutput)
 }
 
+// The type of the action.
+type ManagementActionType string
+
+const (
+	// Call action type.
+	ManagementActionTypeCall = ManagementActionType("Call")
+	// Read action type.
+	ManagementActionTypeRead = ManagementActionType("Read")
+	// Write action type.
+	ManagementActionTypeWrite = ManagementActionType("Write")
+)
+
+func (ManagementActionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementActionType)(nil)).Elem()
+}
+
+func (e ManagementActionType) ToManagementActionTypeOutput() ManagementActionTypeOutput {
+	return pulumi.ToOutput(e).(ManagementActionTypeOutput)
+}
+
+func (e ManagementActionType) ToManagementActionTypeOutputWithContext(ctx context.Context) ManagementActionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ManagementActionTypeOutput)
+}
+
+func (e ManagementActionType) ToManagementActionTypePtrOutput() ManagementActionTypePtrOutput {
+	return e.ToManagementActionTypePtrOutputWithContext(context.Background())
+}
+
+func (e ManagementActionType) ToManagementActionTypePtrOutputWithContext(ctx context.Context) ManagementActionTypePtrOutput {
+	return ManagementActionType(e).ToManagementActionTypeOutputWithContext(ctx).ToManagementActionTypePtrOutputWithContext(ctx)
+}
+
+func (e ManagementActionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagementActionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagementActionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ManagementActionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ManagementActionTypeOutput struct{ *pulumi.OutputState }
+
+func (ManagementActionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementActionType)(nil)).Elem()
+}
+
+func (o ManagementActionTypeOutput) ToManagementActionTypeOutput() ManagementActionTypeOutput {
+	return o
+}
+
+func (o ManagementActionTypeOutput) ToManagementActionTypeOutputWithContext(ctx context.Context) ManagementActionTypeOutput {
+	return o
+}
+
+func (o ManagementActionTypeOutput) ToManagementActionTypePtrOutput() ManagementActionTypePtrOutput {
+	return o.ToManagementActionTypePtrOutputWithContext(context.Background())
+}
+
+func (o ManagementActionTypeOutput) ToManagementActionTypePtrOutputWithContext(ctx context.Context) ManagementActionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagementActionType) *ManagementActionType {
+		return &v
+	}).(ManagementActionTypePtrOutput)
+}
+
+func (o ManagementActionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ManagementActionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagementActionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ManagementActionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagementActionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagementActionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagementActionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagementActionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagementActionType)(nil)).Elem()
+}
+
+func (o ManagementActionTypePtrOutput) ToManagementActionTypePtrOutput() ManagementActionTypePtrOutput {
+	return o
+}
+
+func (o ManagementActionTypePtrOutput) ToManagementActionTypePtrOutputWithContext(ctx context.Context) ManagementActionTypePtrOutput {
+	return o
+}
+
+func (o ManagementActionTypePtrOutput) Elem() ManagementActionTypeOutput {
+	return o.ApplyT(func(v *ManagementActionType) ManagementActionType {
+		if v != nil {
+			return *v
+		}
+		var ret ManagementActionType
+		return ret
+	}).(ManagementActionTypeOutput)
+}
+
+func (o ManagementActionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagementActionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagementActionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ManagementActionTypeInput is an input type that accepts values of the ManagementActionType enum
+// A concrete instance of `ManagementActionTypeInput` can be one of the following:
+//
+//	ManagementActionTypeCall
+//	ManagementActionTypeRead
+//	ManagementActionTypeWrite
+type ManagementActionTypeInput interface {
+	pulumi.Input
+
+	ToManagementActionTypeOutput() ManagementActionTypeOutput
+	ToManagementActionTypeOutputWithContext(context.Context) ManagementActionTypeOutput
+}
+
+var managementActionTypePtrType = reflect.TypeOf((**ManagementActionType)(nil)).Elem()
+
+type ManagementActionTypePtrInput interface {
+	pulumi.Input
+
+	ToManagementActionTypePtrOutput() ManagementActionTypePtrOutput
+	ToManagementActionTypePtrOutputWithContext(context.Context) ManagementActionTypePtrOutput
+}
+
+type managementActionTypePtr string
+
+func ManagementActionTypePtr(v string) ManagementActionTypePtrInput {
+	return (*managementActionTypePtr)(&v)
+}
+
+func (*managementActionTypePtr) ElementType() reflect.Type {
+	return managementActionTypePtrType
+}
+
+func (in *managementActionTypePtr) ToManagementActionTypePtrOutput() ManagementActionTypePtrOutput {
+	return pulumi.ToOutput(in).(ManagementActionTypePtrOutput)
+}
+
+func (in *managementActionTypePtr) ToManagementActionTypePtrOutputWithContext(ctx context.Context) ManagementActionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ManagementActionTypePtrOutput)
+}
+
+// The MQTT QoS setting. Defaults to QoS 1.
+type MqttDestinationQos string
+
+const (
+	// QoS 0.
+	MqttDestinationQosQos0 = MqttDestinationQos("Qos0")
+	// QoS 1.
+	MqttDestinationQosQos1 = MqttDestinationQos("Qos1")
+)
+
+func (MqttDestinationQos) ElementType() reflect.Type {
+	return reflect.TypeOf((*MqttDestinationQos)(nil)).Elem()
+}
+
+func (e MqttDestinationQos) ToMqttDestinationQosOutput() MqttDestinationQosOutput {
+	return pulumi.ToOutput(e).(MqttDestinationQosOutput)
+}
+
+func (e MqttDestinationQos) ToMqttDestinationQosOutputWithContext(ctx context.Context) MqttDestinationQosOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MqttDestinationQosOutput)
+}
+
+func (e MqttDestinationQos) ToMqttDestinationQosPtrOutput() MqttDestinationQosPtrOutput {
+	return e.ToMqttDestinationQosPtrOutputWithContext(context.Background())
+}
+
+func (e MqttDestinationQos) ToMqttDestinationQosPtrOutputWithContext(ctx context.Context) MqttDestinationQosPtrOutput {
+	return MqttDestinationQos(e).ToMqttDestinationQosOutputWithContext(ctx).ToMqttDestinationQosPtrOutputWithContext(ctx)
+}
+
+func (e MqttDestinationQos) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MqttDestinationQos) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MqttDestinationQos) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MqttDestinationQos) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MqttDestinationQosOutput struct{ *pulumi.OutputState }
+
+func (MqttDestinationQosOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MqttDestinationQos)(nil)).Elem()
+}
+
+func (o MqttDestinationQosOutput) ToMqttDestinationQosOutput() MqttDestinationQosOutput {
+	return o
+}
+
+func (o MqttDestinationQosOutput) ToMqttDestinationQosOutputWithContext(ctx context.Context) MqttDestinationQosOutput {
+	return o
+}
+
+func (o MqttDestinationQosOutput) ToMqttDestinationQosPtrOutput() MqttDestinationQosPtrOutput {
+	return o.ToMqttDestinationQosPtrOutputWithContext(context.Background())
+}
+
+func (o MqttDestinationQosOutput) ToMqttDestinationQosPtrOutputWithContext(ctx context.Context) MqttDestinationQosPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MqttDestinationQos) *MqttDestinationQos {
+		return &v
+	}).(MqttDestinationQosPtrOutput)
+}
+
+func (o MqttDestinationQosOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MqttDestinationQosOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MqttDestinationQos) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MqttDestinationQosOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MqttDestinationQosOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MqttDestinationQos) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MqttDestinationQosPtrOutput struct{ *pulumi.OutputState }
+
+func (MqttDestinationQosPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MqttDestinationQos)(nil)).Elem()
+}
+
+func (o MqttDestinationQosPtrOutput) ToMqttDestinationQosPtrOutput() MqttDestinationQosPtrOutput {
+	return o
+}
+
+func (o MqttDestinationQosPtrOutput) ToMqttDestinationQosPtrOutputWithContext(ctx context.Context) MqttDestinationQosPtrOutput {
+	return o
+}
+
+func (o MqttDestinationQosPtrOutput) Elem() MqttDestinationQosOutput {
+	return o.ApplyT(func(v *MqttDestinationQos) MqttDestinationQos {
+		if v != nil {
+			return *v
+		}
+		var ret MqttDestinationQos
+		return ret
+	}).(MqttDestinationQosOutput)
+}
+
+func (o MqttDestinationQosPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MqttDestinationQosPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MqttDestinationQos) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MqttDestinationQosInput is an input type that accepts values of the MqttDestinationQos enum
+// A concrete instance of `MqttDestinationQosInput` can be one of the following:
+//
+//	MqttDestinationQosQos0
+//	MqttDestinationQosQos1
+type MqttDestinationQosInput interface {
+	pulumi.Input
+
+	ToMqttDestinationQosOutput() MqttDestinationQosOutput
+	ToMqttDestinationQosOutputWithContext(context.Context) MqttDestinationQosOutput
+}
+
+var mqttDestinationQosPtrType = reflect.TypeOf((**MqttDestinationQos)(nil)).Elem()
+
+type MqttDestinationQosPtrInput interface {
+	pulumi.Input
+
+	ToMqttDestinationQosPtrOutput() MqttDestinationQosPtrOutput
+	ToMqttDestinationQosPtrOutputWithContext(context.Context) MqttDestinationQosPtrOutput
+}
+
+type mqttDestinationQosPtr string
+
+func MqttDestinationQosPtr(v string) MqttDestinationQosPtrInput {
+	return (*mqttDestinationQosPtr)(&v)
+}
+
+func (*mqttDestinationQosPtr) ElementType() reflect.Type {
+	return mqttDestinationQosPtrType
+}
+
+func (in *mqttDestinationQosPtr) ToMqttDestinationQosPtrOutput() MqttDestinationQosPtrOutput {
+	return pulumi.ToOutput(in).(MqttDestinationQosPtrOutput)
+}
+
+func (in *mqttDestinationQosPtr) ToMqttDestinationQosPtrOutputWithContext(ctx context.Context) MqttDestinationQosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MqttDestinationQosPtrOutput)
+}
+
+// The type of the action.
+type NamespaceDiscoveredManagementActionType string
+
+const (
+	// Call action type.
+	NamespaceDiscoveredManagementActionTypeCall = NamespaceDiscoveredManagementActionType("Call")
+	// Read action type.
+	NamespaceDiscoveredManagementActionTypeRead = NamespaceDiscoveredManagementActionType("Read")
+	// Write action type.
+	NamespaceDiscoveredManagementActionTypeWrite = NamespaceDiscoveredManagementActionType("Write")
+)
+
+func (NamespaceDiscoveredManagementActionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredManagementActionType)(nil)).Elem()
+}
+
+func (e NamespaceDiscoveredManagementActionType) ToNamespaceDiscoveredManagementActionTypeOutput() NamespaceDiscoveredManagementActionTypeOutput {
+	return pulumi.ToOutput(e).(NamespaceDiscoveredManagementActionTypeOutput)
+}
+
+func (e NamespaceDiscoveredManagementActionType) ToNamespaceDiscoveredManagementActionTypeOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NamespaceDiscoveredManagementActionTypeOutput)
+}
+
+func (e NamespaceDiscoveredManagementActionType) ToNamespaceDiscoveredManagementActionTypePtrOutput() NamespaceDiscoveredManagementActionTypePtrOutput {
+	return e.ToNamespaceDiscoveredManagementActionTypePtrOutputWithContext(context.Background())
+}
+
+func (e NamespaceDiscoveredManagementActionType) ToNamespaceDiscoveredManagementActionTypePtrOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionTypePtrOutput {
+	return NamespaceDiscoveredManagementActionType(e).ToNamespaceDiscoveredManagementActionTypeOutputWithContext(ctx).ToNamespaceDiscoveredManagementActionTypePtrOutputWithContext(ctx)
+}
+
+func (e NamespaceDiscoveredManagementActionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NamespaceDiscoveredManagementActionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NamespaceDiscoveredManagementActionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NamespaceDiscoveredManagementActionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NamespaceDiscoveredManagementActionTypeOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredManagementActionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceDiscoveredManagementActionType)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredManagementActionTypeOutput) ToNamespaceDiscoveredManagementActionTypeOutput() NamespaceDiscoveredManagementActionTypeOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementActionTypeOutput) ToNamespaceDiscoveredManagementActionTypeOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionTypeOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementActionTypeOutput) ToNamespaceDiscoveredManagementActionTypePtrOutput() NamespaceDiscoveredManagementActionTypePtrOutput {
+	return o.ToNamespaceDiscoveredManagementActionTypePtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceDiscoveredManagementActionTypeOutput) ToNamespaceDiscoveredManagementActionTypePtrOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceDiscoveredManagementActionType) *NamespaceDiscoveredManagementActionType {
+		return &v
+	}).(NamespaceDiscoveredManagementActionTypePtrOutput)
+}
+
+func (o NamespaceDiscoveredManagementActionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NamespaceDiscoveredManagementActionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NamespaceDiscoveredManagementActionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NamespaceDiscoveredManagementActionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceDiscoveredManagementActionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NamespaceDiscoveredManagementActionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NamespaceDiscoveredManagementActionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (NamespaceDiscoveredManagementActionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceDiscoveredManagementActionType)(nil)).Elem()
+}
+
+func (o NamespaceDiscoveredManagementActionTypePtrOutput) ToNamespaceDiscoveredManagementActionTypePtrOutput() NamespaceDiscoveredManagementActionTypePtrOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementActionTypePtrOutput) ToNamespaceDiscoveredManagementActionTypePtrOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionTypePtrOutput {
+	return o
+}
+
+func (o NamespaceDiscoveredManagementActionTypePtrOutput) Elem() NamespaceDiscoveredManagementActionTypeOutput {
+	return o.ApplyT(func(v *NamespaceDiscoveredManagementActionType) NamespaceDiscoveredManagementActionType {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceDiscoveredManagementActionType
+		return ret
+	}).(NamespaceDiscoveredManagementActionTypeOutput)
+}
+
+func (o NamespaceDiscoveredManagementActionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceDiscoveredManagementActionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NamespaceDiscoveredManagementActionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NamespaceDiscoveredManagementActionTypeInput is an input type that accepts values of the NamespaceDiscoveredManagementActionType enum
+// A concrete instance of `NamespaceDiscoveredManagementActionTypeInput` can be one of the following:
+//
+//	NamespaceDiscoveredManagementActionTypeCall
+//	NamespaceDiscoveredManagementActionTypeRead
+//	NamespaceDiscoveredManagementActionTypeWrite
+type NamespaceDiscoveredManagementActionTypeInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredManagementActionTypeOutput() NamespaceDiscoveredManagementActionTypeOutput
+	ToNamespaceDiscoveredManagementActionTypeOutputWithContext(context.Context) NamespaceDiscoveredManagementActionTypeOutput
+}
+
+var namespaceDiscoveredManagementActionTypePtrType = reflect.TypeOf((**NamespaceDiscoveredManagementActionType)(nil)).Elem()
+
+type NamespaceDiscoveredManagementActionTypePtrInput interface {
+	pulumi.Input
+
+	ToNamespaceDiscoveredManagementActionTypePtrOutput() NamespaceDiscoveredManagementActionTypePtrOutput
+	ToNamespaceDiscoveredManagementActionTypePtrOutputWithContext(context.Context) NamespaceDiscoveredManagementActionTypePtrOutput
+}
+
+type namespaceDiscoveredManagementActionTypePtr string
+
+func NamespaceDiscoveredManagementActionTypePtr(v string) NamespaceDiscoveredManagementActionTypePtrInput {
+	return (*namespaceDiscoveredManagementActionTypePtr)(&v)
+}
+
+func (*namespaceDiscoveredManagementActionTypePtr) ElementType() reflect.Type {
+	return namespaceDiscoveredManagementActionTypePtrType
+}
+
+func (in *namespaceDiscoveredManagementActionTypePtr) ToNamespaceDiscoveredManagementActionTypePtrOutput() NamespaceDiscoveredManagementActionTypePtrOutput {
+	return pulumi.ToOutput(in).(NamespaceDiscoveredManagementActionTypePtrOutput)
+}
+
+func (in *namespaceDiscoveredManagementActionTypePtr) ToNamespaceDiscoveredManagementActionTypePtrOutputWithContext(ctx context.Context) NamespaceDiscoveredManagementActionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NamespaceDiscoveredManagementActionTypePtrOutput)
+}
+
 // Type of the schema.
 type SchemaType string
 
@@ -858,6 +1390,16 @@ func (in *schemaTypePtr) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
 func (in *schemaTypePtr) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaTypePtrOutput)
 }
+
+// Target destination.
+type StreamDestinationTarget string
+
+const (
+	// MQTT target.
+	StreamDestinationTargetMqtt = StreamDestinationTarget("Mqtt")
+	// Storage target.
+	StreamDestinationTargetStorage = StreamDestinationTarget("Storage")
+)
 
 // Type of managed service identity (either system assigned, or none).
 type SystemAssignedServiceIdentityType string
@@ -1202,6 +1744,12 @@ func init() {
 	pulumi.RegisterOutputType(EventObservabilityModePtrOutput{})
 	pulumi.RegisterOutputType(FormatOutput{})
 	pulumi.RegisterOutputType(FormatPtrOutput{})
+	pulumi.RegisterOutputType(ManagementActionTypeOutput{})
+	pulumi.RegisterOutputType(ManagementActionTypePtrOutput{})
+	pulumi.RegisterOutputType(MqttDestinationQosOutput{})
+	pulumi.RegisterOutputType(MqttDestinationQosPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredManagementActionTypeOutput{})
+	pulumi.RegisterOutputType(NamespaceDiscoveredManagementActionTypePtrOutput{})
 	pulumi.RegisterOutputType(SchemaTypeOutput{})
 	pulumi.RegisterOutputType(SchemaTypePtrOutput{})
 	pulumi.RegisterOutputType(SystemAssignedServiceIdentityTypeOutput{})

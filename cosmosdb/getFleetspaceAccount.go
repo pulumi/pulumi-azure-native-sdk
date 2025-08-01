@@ -37,12 +37,10 @@ type LookupFleetspaceAccountArgs struct {
 
 // An Azure Cosmos DB Fleetspace Account
 type LookupFleetspaceAccountResult struct {
-	// The location of  global database account in the Fleetspace Account.
-	AccountLocation *string `pulumi:"accountLocation"`
-	// The resource identifier of global database account in the Fleetspace Account.
-	AccountResourceIdentifier *string `pulumi:"accountResourceIdentifier"`
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Configuration for fleetspace Account in the fleetspace.
+	GlobalDatabaseAccountProperties *FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties `pulumi:"globalDatabaseAccountProperties"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -94,19 +92,16 @@ func (o LookupFleetspaceAccountResultOutput) ToLookupFleetspaceAccountResultOutp
 	return o
 }
 
-// The location of  global database account in the Fleetspace Account.
-func (o LookupFleetspaceAccountResultOutput) AccountLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupFleetspaceAccountResult) *string { return v.AccountLocation }).(pulumi.StringPtrOutput)
-}
-
-// The resource identifier of global database account in the Fleetspace Account.
-func (o LookupFleetspaceAccountResultOutput) AccountResourceIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupFleetspaceAccountResult) *string { return v.AccountResourceIdentifier }).(pulumi.StringPtrOutput)
-}
-
 // The Azure API version of the resource.
 func (o LookupFleetspaceAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetspaceAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Configuration for fleetspace Account in the fleetspace.
+func (o LookupFleetspaceAccountResultOutput) GlobalDatabaseAccountProperties() FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput {
+	return o.ApplyT(func(v LookupFleetspaceAccountResult) *FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties {
+		return v.GlobalDatabaseAccountProperties
+	}).(FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

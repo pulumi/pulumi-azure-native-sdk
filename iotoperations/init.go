@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:iotoperations:AkriConnector":
+		r = &AkriConnector{}
+	case "azure-native:iotoperations:AkriConnectorTemplate":
+		r = &AkriConnectorTemplate{}
 	case "azure-native:iotoperations:Broker":
 		r = &Broker{}
 	case "azure-native:iotoperations:BrokerAuthentication":
@@ -33,10 +37,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Dataflow{}
 	case "azure-native:iotoperations:DataflowEndpoint":
 		r = &DataflowEndpoint{}
+	case "azure-native:iotoperations:DataflowGraph":
+		r = &DataflowGraph{}
 	case "azure-native:iotoperations:DataflowProfile":
 		r = &DataflowProfile{}
 	case "azure-native:iotoperations:Instance":
 		r = &Instance{}
+	case "azure-native:iotoperations:RegistryEndpoint":
+		r = &RegistryEndpoint{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

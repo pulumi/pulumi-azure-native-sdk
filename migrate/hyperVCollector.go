@@ -72,6 +72,9 @@ func NewHyperVCollector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20240101preview:HypervCollectorsOperation"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20240115:HyperVCollector"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20240303preview:HyperVCollector"),
 		},
 		{

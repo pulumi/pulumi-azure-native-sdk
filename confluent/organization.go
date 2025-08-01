@@ -24,9 +24,9 @@ type Organization struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation time of the resource.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
-	// Location of Organization resource
-	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The name of the resource.
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Confluent offer detail
 	OfferDetail OfferDetailResponseOutput `pulumi:"offerDetail"`
@@ -36,11 +36,11 @@ type Organization struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// SSO url for the Confluent organization.
 	SsoUrl pulumi.StringOutput `pulumi:"ssoUrl"`
-	// Metadata pertaining to creation and last modification of the resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Organization resource tags
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Subscriber detail
 	UserDetail UserDetailResponseOutput `pulumi:"userDetail"`
@@ -124,15 +124,15 @@ func (OrganizationState) ElementType() reflect.Type {
 type organizationArgs struct {
 	// Link an existing Confluent organization
 	LinkOrganization *LinkOrganization `pulumi:"linkOrganization"`
-	// Location of Organization resource
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Confluent offer detail
 	OfferDetail OfferDetail `pulumi:"offerDetail"`
 	// Organization resource name
 	OrganizationName *string `pulumi:"organizationName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Organization resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Subscriber detail
 	UserDetail UserDetail `pulumi:"userDetail"`
@@ -142,15 +142,15 @@ type organizationArgs struct {
 type OrganizationArgs struct {
 	// Link an existing Confluent organization
 	LinkOrganization LinkOrganizationPtrInput
-	// Location of Organization resource
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Confluent offer detail
 	OfferDetail OfferDetailInput
 	// Organization resource name
 	OrganizationName pulumi.StringPtrInput
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Organization resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Subscriber detail
 	UserDetail UserDetailInput
@@ -203,12 +203,12 @@ func (o OrganizationOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
-// Location of Organization resource
-func (o OrganizationOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+// The geo-location where the resource lives
+func (o OrganizationOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -233,17 +233,17 @@ func (o OrganizationOutput) SsoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.SsoUrl }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o OrganizationOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Organization) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Organization resource tags
+// Resource tags.
 func (o OrganizationOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o OrganizationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

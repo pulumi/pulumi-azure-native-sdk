@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List all the firewall rules in a given server.
+// Gets information about a firewall rule in a flexible server.
 //
 // Uses Azure REST API version 2024-08-01.
 //
@@ -27,7 +27,7 @@ func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts 
 }
 
 type LookupFirewallRuleArgs struct {
-	// The name of the server firewall rule.
+	// Name of the firewall rule.
 	FirewallRuleName string `pulumi:"firewallRuleName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -35,17 +35,17 @@ type LookupFirewallRuleArgs struct {
 	ServerName string `pulumi:"serverName"`
 }
 
-// Represents a server firewall rule.
+// Firewall rule.
 type LookupFirewallRuleResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The end IP address of the server firewall rule. Must be IPv4 format.
+	// IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
 	EndIpAddress string `pulumi:"endIpAddress"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The start IP address of the server firewall rule. Must be IPv4 format.
+	// IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
 	StartIpAddress string `pulumi:"startIpAddress"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -63,7 +63,7 @@ func LookupFirewallRuleOutput(ctx *pulumi.Context, args LookupFirewallRuleOutput
 }
 
 type LookupFirewallRuleOutputArgs struct {
-	// The name of the server firewall rule.
+	// Name of the firewall rule.
 	FirewallRuleName pulumi.StringInput `pulumi:"firewallRuleName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -75,7 +75,7 @@ func (LookupFirewallRuleOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupFirewallRuleArgs)(nil)).Elem()
 }
 
-// Represents a server firewall rule.
+// Firewall rule.
 type LookupFirewallRuleResultOutput struct{ *pulumi.OutputState }
 
 func (LookupFirewallRuleResultOutput) ElementType() reflect.Type {
@@ -95,7 +95,7 @@ func (o LookupFirewallRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// The end IP address of the server firewall rule. Must be IPv4 format.
+// IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
 func (o LookupFirewallRuleResultOutput) EndIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.EndIpAddress }).(pulumi.StringOutput)
 }
@@ -110,7 +110,7 @@ func (o LookupFirewallRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The start IP address of the server firewall rule. Must be IPv4 format.
+// IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
 func (o LookupFirewallRuleResultOutput) StartIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.StartIpAddress }).(pulumi.StringOutput)
 }

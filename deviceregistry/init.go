@@ -29,6 +29,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DiscoveredAsset{}
 	case "azure-native:deviceregistry:DiscoveredAssetEndpointProfile":
 		r = &DiscoveredAssetEndpointProfile{}
+	case "azure-native:deviceregistry:Namespace":
+		r = &Namespace{}
+	case "azure-native:deviceregistry:NamespaceAsset":
+		r = &NamespaceAsset{}
+	case "azure-native:deviceregistry:NamespaceDevice":
+		r = &NamespaceDevice{}
+	case "azure-native:deviceregistry:NamespaceDiscoveredAsset":
+		r = &NamespaceDiscoveredAsset{}
+	case "azure-native:deviceregistry:NamespaceDiscoveredDevice":
+		r = &NamespaceDiscoveredDevice{}
 	case "azure-native:deviceregistry:Schema":
 		r = &Schema{}
 	case "azure-native:deviceregistry:SchemaRegistry":

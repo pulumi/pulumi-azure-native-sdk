@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get private DNS zone suffix in the cloud
+// Gets the private DNS zone suffix.
 //
 // Uses Azure REST API version 2024-08-01.
 //
@@ -29,7 +29,7 @@ func GetGetPrivateDnsZoneSuffixExecute(ctx *pulumi.Context, args *GetGetPrivateD
 type GetGetPrivateDnsZoneSuffixExecuteArgs struct {
 }
 
-// Represents a resource name availability.
+// Private DNS suffix.
 type GetGetPrivateDnsZoneSuffixExecuteResult struct {
 	Value *string `pulumi:"value"`
 }
@@ -50,7 +50,7 @@ func (GetGetPrivateDnsZoneSuffixExecuteOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetGetPrivateDnsZoneSuffixExecuteArgs)(nil)).Elem()
 }
 
-// Represents a resource name availability.
+// Private DNS suffix.
 type GetGetPrivateDnsZoneSuffixExecuteResultOutput struct{ *pulumi.OutputState }
 
 func (GetGetPrivateDnsZoneSuffixExecuteResultOutput) ElementType() reflect.Type {

@@ -34,9 +34,11 @@ type VirtualNetworkLink struct {
 	RegistrationEnabled pulumi.BoolPtrOutput `pulumi:"registrationEnabled"`
 	// The resolution policy on the virtual network link. Only applicable for virtual network links to privatelink zones, and for A,AAAA,CNAME queries. When set to 'NxDomainRedirect', Azure DNS resolver falls back to public resolution if private dns query resolution results in non-existent domain response.
 	ResolutionPolicy pulumi.StringPtrOutput `pulumi:"resolutionPolicy"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The reference of the virtual network.
 	VirtualNetwork SubResourceResponsePtrOutput `pulumi:"virtualNetwork"`
@@ -122,7 +124,7 @@ type virtualNetworkLinkArgs struct {
 	RegistrationEnabled *bool `pulumi:"registrationEnabled"`
 	// The resolution policy on the virtual network link. Only applicable for virtual network links to privatelink zones, and for A,AAAA,CNAME queries. When set to 'NxDomainRedirect', Azure DNS resolver falls back to public resolution if private dns query resolution results in non-existent domain response.
 	ResolutionPolicy *string `pulumi:"resolutionPolicy"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -142,7 +144,7 @@ type VirtualNetworkLinkArgs struct {
 	RegistrationEnabled pulumi.BoolPtrInput
 	// The resolution policy on the virtual network link. Only applicable for virtual network links to privatelink zones, and for A,AAAA,CNAME queries. When set to 'NxDomainRedirect', Azure DNS resolver falls back to public resolution if private dns query resolution results in non-existent domain response.
 	ResolutionPolicy pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -224,12 +226,17 @@ func (o VirtualNetworkLinkOutput) ResolutionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkLink) pulumi.StringPtrOutput { return v.ResolutionPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o VirtualNetworkLinkOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualNetworkLink) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o VirtualNetworkLinkOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualNetworkLink) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o VirtualNetworkLinkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetworkLink) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

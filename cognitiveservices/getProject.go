@@ -14,6 +14,8 @@ import (
 // Returns a Cognitive Services project specified by the parameters.
 //
 // Uses Azure REST API version 2025-04-01-preview.
+//
+// Other available API versions: 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult

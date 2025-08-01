@@ -15,6 +15,8 @@ import (
 // Domain service.
 //
 // Uses Azure REST API version 2022-12-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
+//
+// Other available API versions: 2025-05-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native aad [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DomainService struct {
 	pulumi.CustomResourceState
 
@@ -110,6 +112,12 @@ func NewDomainService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:aad/v20221201:DomainService"),
+		},
+		{
+			Type: pulumi.String("azure-native:aad/v20250501:DomainService"),
+		},
+		{
+			Type: pulumi.String("azure-native:aad/v20250601:DomainService"),
 		},
 	})
 	opts = append(opts, aliases)

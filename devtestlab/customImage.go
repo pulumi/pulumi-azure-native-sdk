@@ -130,9 +130,9 @@ type customImageArgs struct {
 	ManagedImageId *string `pulumi:"managedImageId"`
 	// The Managed Snapshot Id backing the custom image.
 	ManagedSnapshotId *string `pulumi:"managedSnapshotId"`
-	// The name of the custom image.
+	// The name of the CustomImage
 	Name *string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -162,9 +162,9 @@ type CustomImageArgs struct {
 	ManagedImageId pulumi.StringPtrInput
 	// The Managed Snapshot Id backing the custom image.
 	ManagedSnapshotId pulumi.StringPtrInput
-	// The name of the custom image.
+	// The name of the CustomImage
 	Name pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The tags of the resource.
 	Tags pulumi.StringMapInput

@@ -13,6 +13,252 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// A copy activity source for SAP Business Warehouse Open Hub Destination source.
+type SapOpenHubSource struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
+	BaseRequestId interface{} `pulumi:"baseRequestId"`
+	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
+	CustomRfcReadTableFunctionModule interface{} `pulumi:"customRfcReadTableFunctionModule"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
+	ExcludeLastRequest interface{} `pulumi:"excludeLastRequest"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
+	SapDataColumnDelimiter interface{} `pulumi:"sapDataColumnDelimiter"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SapOpenHubSource'.
+	Type string `pulumi:"type"`
+}
+
+// SapOpenHubSourceInput is an input type that accepts SapOpenHubSourceArgs and SapOpenHubSourceOutput values.
+// You can construct a concrete instance of `SapOpenHubSourceInput` via:
+//
+//	SapOpenHubSourceArgs{...}
+type SapOpenHubSourceInput interface {
+	pulumi.Input
+
+	ToSapOpenHubSourceOutput() SapOpenHubSourceOutput
+	ToSapOpenHubSourceOutputWithContext(context.Context) SapOpenHubSourceOutput
+}
+
+// A copy activity source for SAP Business Warehouse Open Hub Destination source.
+type SapOpenHubSourceArgs struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
+	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
+	BaseRequestId pulumi.Input `pulumi:"baseRequestId"`
+	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
+	CustomRfcReadTableFunctionModule pulumi.Input `pulumi:"customRfcReadTableFunctionModule"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
+	ExcludeLastRequest pulumi.Input `pulumi:"excludeLastRequest"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
+	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
+	SapDataColumnDelimiter pulumi.Input `pulumi:"sapDataColumnDelimiter"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SapOpenHubSource'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SapOpenHubSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapOpenHubSource)(nil)).Elem()
+}
+
+func (i SapOpenHubSourceArgs) ToSapOpenHubSourceOutput() SapOpenHubSourceOutput {
+	return i.ToSapOpenHubSourceOutputWithContext(context.Background())
+}
+
+func (i SapOpenHubSourceArgs) ToSapOpenHubSourceOutputWithContext(ctx context.Context) SapOpenHubSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapOpenHubSourceOutput)
+}
+
+// A copy activity source for SAP Business Warehouse Open Hub Destination source.
+type SapOpenHubSourceOutput struct{ *pulumi.OutputState }
+
+func (SapOpenHubSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapOpenHubSource)(nil)).Elem()
+}
+
+func (o SapOpenHubSourceOutput) ToSapOpenHubSourceOutput() SapOpenHubSourceOutput {
+	return o
+}
+
+func (o SapOpenHubSourceOutput) ToSapOpenHubSourceOutputWithContext(ctx context.Context) SapOpenHubSourceOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o SapOpenHubSourceOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
+func (o SapOpenHubSourceOutput) BaseRequestId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.BaseRequestId }).(pulumi.AnyOutput)
+}
+
+// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
+func (o SapOpenHubSourceOutput) CustomRfcReadTableFunctionModule() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.CustomRfcReadTableFunctionModule }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SapOpenHubSourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
+func (o SapOpenHubSourceOutput) ExcludeLastRequest() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.ExcludeLastRequest }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o SapOpenHubSourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SapOpenHubSourceOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
+func (o SapOpenHubSourceOutput) SapDataColumnDelimiter() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.SapDataColumnDelimiter }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o SapOpenHubSourceOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SapOpenHubSourceOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'SapOpenHubSource'.
+func (o SapOpenHubSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapOpenHubSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A copy activity source for SAP Business Warehouse Open Hub Destination source.
+type SapOpenHubSourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
+	BaseRequestId interface{} `pulumi:"baseRequestId"`
+	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
+	CustomRfcReadTableFunctionModule interface{} `pulumi:"customRfcReadTableFunctionModule"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
+	ExcludeLastRequest interface{} `pulumi:"excludeLastRequest"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
+	SapDataColumnDelimiter interface{} `pulumi:"sapDataColumnDelimiter"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SapOpenHubSource'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity source for SAP Business Warehouse Open Hub Destination source.
+type SapOpenHubSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SapOpenHubSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapOpenHubSourceResponse)(nil)).Elem()
+}
+
+func (o SapOpenHubSourceResponseOutput) ToSapOpenHubSourceResponseOutput() SapOpenHubSourceResponseOutput {
+	return o
+}
+
+func (o SapOpenHubSourceResponseOutput) ToSapOpenHubSourceResponseOutputWithContext(ctx context.Context) SapOpenHubSourceResponseOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o SapOpenHubSourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
+func (o SapOpenHubSourceResponseOutput) BaseRequestId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.BaseRequestId }).(pulumi.AnyOutput)
+}
+
+// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
+func (o SapOpenHubSourceResponseOutput) CustomRfcReadTableFunctionModule() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.CustomRfcReadTableFunctionModule }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SapOpenHubSourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
+func (o SapOpenHubSourceResponseOutput) ExcludeLastRequest() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.ExcludeLastRequest }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o SapOpenHubSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SapOpenHubSourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
+func (o SapOpenHubSourceResponseOutput) SapDataColumnDelimiter() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.SapDataColumnDelimiter }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o SapOpenHubSourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SapOpenHubSourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'SapOpenHubSource'.
+func (o SapOpenHubSourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapOpenHubSourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Sap Business Warehouse Open Hub Destination Table properties.
 type SapOpenHubTableDataset struct {
 	// List of tags that can be used for describing the Dataset.
@@ -33066,6 +33312,8 @@ func (o ZohoSourceResponseOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(SapOpenHubSourceOutput{})
+	pulumi.RegisterOutputType(SapOpenHubSourceResponseOutput{})
 	pulumi.RegisterOutputType(SapOpenHubTableDatasetOutput{})
 	pulumi.RegisterOutputType(SapOpenHubTableDatasetResponseOutput{})
 	pulumi.RegisterOutputType(SapTableLinkedServiceOutput{})

@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-06-30-preview.
 //
-// Other available API versions: 2022-08-31-preview, 2023-12-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-08-31-preview, 2023-12-10-preview, 2025-03-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCloudHsmCluster(ctx *pulumi.Context, args *LookupCloudHsmClusterArgs, opts ...pulumi.InvokeOption) (*LookupCloudHsmClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudHsmClusterResult

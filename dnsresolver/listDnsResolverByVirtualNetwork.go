@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-07-01-preview.
 //
-// Other available API versions: 2020-04-01-preview, 2022-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-04-01-preview, 2022-07-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListDnsResolverByVirtualNetwork(ctx *pulumi.Context, args *ListDnsResolverByVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*ListDnsResolverByVirtualNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDnsResolverByVirtualNetworkResult

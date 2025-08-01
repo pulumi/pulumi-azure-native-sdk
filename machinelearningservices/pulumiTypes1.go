@@ -3010,6 +3010,8 @@ type RegistryType struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Details of each region the registry is in
 	RegionDetails []RegistryRegionArmDetails `pulumi:"regionDetails"`
+	// RegistryId Guid for this registry
+	RegistryId *string `pulumi:"registryId"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnection `pulumi:"registryPrivateEndpointConnections"`
 }
@@ -3040,6 +3042,8 @@ type RegistryTypeArgs struct {
 	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
 	// Details of each region the registry is in
 	RegionDetails RegistryRegionArmDetailsArrayInput `pulumi:"regionDetails"`
+	// RegistryId Guid for this registry
+	RegistryId pulumi.StringPtrInput `pulumi:"registryId"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections RegistryPrivateEndpointConnectionArrayInput `pulumi:"registryPrivateEndpointConnections"`
 }
@@ -3100,6 +3104,11 @@ func (o RegistryTypeOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 // Details of each region the registry is in
 func (o RegistryTypeOutput) RegionDetails() RegistryRegionArmDetailsArrayOutput {
 	return o.ApplyT(func(v RegistryType) []RegistryRegionArmDetails { return v.RegionDetails }).(RegistryRegionArmDetailsArrayOutput)
+}
+
+// RegistryId Guid for this registry
+func (o RegistryTypeOutput) RegistryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryType) *string { return v.RegistryId }).(pulumi.StringPtrOutput)
 }
 
 // Private endpoint connections info used for pending connections in private link portal
@@ -4107,6 +4116,8 @@ type RegistryResponse struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Details of each region the registry is in
 	RegionDetails []RegistryRegionArmDetailsResponse `pulumi:"regionDetails"`
+	// RegistryId Guid for this registry
+	RegistryId *string `pulumi:"registryId"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnectionResponse `pulumi:"registryPrivateEndpointConnections"`
 }
@@ -4155,6 +4166,11 @@ func (o RegistryResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 // Details of each region the registry is in
 func (o RegistryResponseOutput) RegionDetails() RegistryRegionArmDetailsResponseArrayOutput {
 	return o.ApplyT(func(v RegistryResponse) []RegistryRegionArmDetailsResponse { return v.RegionDetails }).(RegistryRegionArmDetailsResponseArrayOutput)
+}
+
+// RegistryId Guid for this registry
+func (o RegistryResponseOutput) RegistryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryResponse) *string { return v.RegistryId }).(pulumi.StringPtrOutput)
 }
 
 // Private endpoint connections info used for pending connections in private link portal
@@ -9721,10 +9737,12 @@ func (o ServicePrincipalDatastoreSecretsOutput) SecretsType() pulumi.StringOutpu
 // Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 type ServiceTagDestination struct {
 	// The action enum for networking rule.
-	Action     *string `pulumi:"action"`
-	PortRanges *string `pulumi:"portRanges"`
-	Protocol   *string `pulumi:"protocol"`
-	ServiceTag *string `pulumi:"serviceTag"`
+	Action *string `pulumi:"action"`
+	// Optional, if provided, the ServiceTag property will be ignored.
+	AddressPrefixes []string `pulumi:"addressPrefixes"`
+	PortRanges      *string  `pulumi:"portRanges"`
+	Protocol        *string  `pulumi:"protocol"`
+	ServiceTag      *string  `pulumi:"serviceTag"`
 }
 
 // ServiceTagDestinationInput is an input type that accepts ServiceTagDestinationArgs and ServiceTagDestinationOutput values.
@@ -9741,10 +9759,12 @@ type ServiceTagDestinationInput interface {
 // Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 type ServiceTagDestinationArgs struct {
 	// The action enum for networking rule.
-	Action     pulumi.StringPtrInput `pulumi:"action"`
-	PortRanges pulumi.StringPtrInput `pulumi:"portRanges"`
-	Protocol   pulumi.StringPtrInput `pulumi:"protocol"`
-	ServiceTag pulumi.StringPtrInput `pulumi:"serviceTag"`
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Optional, if provided, the ServiceTag property will be ignored.
+	AddressPrefixes pulumi.StringArrayInput `pulumi:"addressPrefixes"`
+	PortRanges      pulumi.StringPtrInput   `pulumi:"portRanges"`
+	Protocol        pulumi.StringPtrInput   `pulumi:"protocol"`
+	ServiceTag      pulumi.StringPtrInput   `pulumi:"serviceTag"`
 }
 
 func (ServiceTagDestinationArgs) ElementType() reflect.Type {
@@ -9830,6 +9850,11 @@ func (o ServiceTagDestinationOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTagDestination) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
+// Optional, if provided, the ServiceTag property will be ignored.
+func (o ServiceTagDestinationOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceTagDestination) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
 func (o ServiceTagDestinationOutput) PortRanges() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTagDestination) *string { return v.PortRanges }).(pulumi.StringPtrOutput)
 }
@@ -9874,6 +9899,16 @@ func (o ServiceTagDestinationPtrOutput) Action() pulumi.StringPtrOutput {
 		}
 		return v.Action
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, if provided, the ServiceTag property will be ignored.
+func (o ServiceTagDestinationPtrOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceTagDestination) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressPrefixes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceTagDestinationPtrOutput) PortRanges() pulumi.StringPtrOutput {
@@ -10113,6 +10148,9 @@ type ServiceTagOutboundRuleResponse struct {
 	Category *string `pulumi:"category"`
 	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 	Destination *ServiceTagDestinationResponse `pulumi:"destination"`
+	// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
+	ErrorInformation *string  `pulumi:"errorInformation"`
+	ParentRuleNames  []string `pulumi:"parentRuleNames"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	Status *string `pulumi:"status"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
@@ -10143,6 +10181,15 @@ func (o ServiceTagOutboundRuleResponseOutput) Category() pulumi.StringPtrOutput 
 // Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 func (o ServiceTagOutboundRuleResponseOutput) Destination() ServiceTagDestinationResponsePtrOutput {
 	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *ServiceTagDestinationResponse { return v.Destination }).(ServiceTagDestinationResponsePtrOutput)
+}
+
+// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
+func (o ServiceTagOutboundRuleResponseOutput) ErrorInformation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *string { return v.ErrorInformation }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) []string { return v.ParentRuleNames }).(pulumi.StringArrayOutput)
 }
 
 // Type of a managed network Outbound Rule of a machine learning workspace.

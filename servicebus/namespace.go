@@ -62,7 +62,7 @@ type Namespace struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+	// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
 	ZoneRedundant pulumi.BoolPtrOutput `pulumi:"zoneRedundant"`
 }
 
@@ -178,7 +178,7 @@ type namespaceArgs struct {
 	Sku *SBSku `pulumi:"sku"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
-	// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+	// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
 	ZoneRedundant *bool `pulumi:"zoneRedundant"`
 }
 
@@ -211,7 +211,7 @@ type NamespaceArgs struct {
 	Sku SBSkuPtrInput
 	// Resource tags
 	Tags pulumi.StringMapInput
-	// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+	// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
 	ZoneRedundant pulumi.BoolPtrInput
 }
 
@@ -357,7 +357,7 @@ func (o NamespaceOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
 func (o NamespaceOutput) ZoneRedundant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.BoolPtrOutput { return v.ZoneRedundant }).(pulumi.BoolPtrOutput)
 }

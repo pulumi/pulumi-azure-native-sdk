@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2021-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-09-01-preview.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2021-09-01-preview.
+//
+// Other available API versions: 2021-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native providerhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SkusNestedResourceTypeThird struct {
 	pulumi.CustomResourceState
 
@@ -21,7 +23,7 @@ type SkusNestedResourceTypeThird struct {
 	// The name of the resource
 	Name       pulumi.StringOutput                 `pulumi:"name"`
 	Properties SkuResourceResponsePropertiesOutput `pulumi:"properties"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -61,6 +63,9 @@ func NewSkusNestedResourceTypeThird(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:providerhub/v20210901preview:SkusNestedResourceTypeThird"),
+		},
+		{
+			Type: pulumi.String("azure-native:providerhub/v20240901:SkusNestedResourceTypeThird"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -180,7 +185,7 @@ func (o SkusNestedResourceTypeThirdOutput) Properties() SkuResourceResponsePrope
 	return o.ApplyT(func(v *SkusNestedResourceTypeThird) SkuResourceResponsePropertiesOutput { return v.Properties }).(SkuResourceResponsePropertiesOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SkusNestedResourceTypeThirdOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SkusNestedResourceTypeThird) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -15,6 +15,8 @@ import (
 // Schema definition.
 //
 // Uses Azure REST API version 2024-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
+//
+// Other available API versions: 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Schema struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +66,9 @@ func NewSchema(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:deviceregistry/v20240901preview:Schema"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20250701preview:Schema"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -14,6 +14,8 @@ import (
 // Gets an online experimentation workspace.
 //
 // Uses Azure REST API version 2025-05-31-preview.
+//
+// Other available API versions: 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native onlineexperimentation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupOnlineExperimentationWorkspace(ctx *pulumi.Context, args *LookupOnlineExperimentationWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupOnlineExperimentationWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOnlineExperimentationWorkspaceResult

@@ -198,7 +198,7 @@ type virtualMachineArgs struct {
 	LabVirtualNetworkId *string `pulumi:"labVirtualNetworkId"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the virtual machine.
+	// The name of the LabVirtualMachine
 	Name *string `pulumi:"name"`
 	// The network interface properties.
 	NetworkInterface *NetworkInterfaceProperties `pulumi:"networkInterface"`
@@ -212,7 +212,7 @@ type virtualMachineArgs struct {
 	Password *string `pulumi:"password"`
 	// The id of the plan associated with the virtual machine image
 	PlanId *string `pulumi:"planId"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Virtual Machine schedules to be created
 	ScheduleParameters []ScheduleCreationParameter `pulumi:"scheduleParameters"`
@@ -258,7 +258,7 @@ type VirtualMachineArgs struct {
 	LabVirtualNetworkId pulumi.StringPtrInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the virtual machine.
+	// The name of the LabVirtualMachine
 	Name pulumi.StringPtrInput
 	// The network interface properties.
 	NetworkInterface NetworkInterfacePropertiesPtrInput
@@ -272,7 +272,7 @@ type VirtualMachineArgs struct {
 	Password pulumi.StringPtrInput
 	// The id of the plan associated with the virtual machine image
 	PlanId pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Virtual Machine schedules to be created
 	ScheduleParameters ScheduleCreationParameterArrayInput

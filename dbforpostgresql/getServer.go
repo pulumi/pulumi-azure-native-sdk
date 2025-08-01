@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about a server.
+// Gets information about an existing flexible server.
 //
 // Uses Azure REST API version 2024-08-01.
 //
@@ -33,53 +33,53 @@ type LookupServerArgs struct {
 	ServerName string `pulumi:"serverName"`
 }
 
-// Represents a server.
+// Flexible server.
 type LookupServerResult struct {
-	// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
+	// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
 	AdministratorLogin *string `pulumi:"administratorLogin"`
-	// AuthConfig properties of a server.
+	// Authentication configuration properties of a flexible server.
 	AuthConfig *AuthConfigResponse `pulumi:"authConfig"`
-	// availability zone information of the server.
+	// Availability zone of a flexible server.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Backup properties of a server.
+	// Backup properties of a flexible server.
 	Backup *BackupResponse `pulumi:"backup"`
-	// Data encryption properties of a server.
+	// Data encryption properties of a flexible server.
 	DataEncryption *DataEncryptionResponse `pulumi:"dataEncryption"`
-	// The fully qualified domain name of a server.
+	// Fully qualified domain name of a flexible server.
 	FullyQualifiedDomainName string `pulumi:"fullyQualifiedDomainName"`
-	// High availability properties of a server.
+	// High availability properties of a flexible server.
 	HighAvailability *HighAvailabilityResponse `pulumi:"highAvailability"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Describes the identity of the application.
+	// User assigned managed identities assigned to the flexible server.
 	Identity *UserAssignedIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Maintenance window properties of a server.
+	// Maintenance window properties of a flexible server.
 	MaintenanceWindow *MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
-	// The minor version of the server.
+	// Minor version of PostgreSQL database engine.
 	MinorVersion string `pulumi:"minorVersion"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
+	// Network properties of a flexible server. Only required if you want your server to be integrated into a virtual network provided by customer.
 	Network *NetworkResponse `pulumi:"network"`
-	// List of private endpoint connections associated with the specified resource.
+	// List of private endpoint connections associated with the specified flexible server.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
-	// Replica properties of a server. These Replica properties are required to be passed only in case you want to Promote a server.
+	// Read replica properties of a flexible server. Required only in case that you want to promote a server.
 	Replica *ReplicaResponse `pulumi:"replica"`
-	// Replicas allowed for a server.
+	// Maximum number of read replicas allowed for a flexible server.
 	ReplicaCapacity int `pulumi:"replicaCapacity"`
-	// Replication role of the server
+	// Role of the server in a replication set.
 	ReplicationRole *string `pulumi:"replicationRole"`
-	// The SKU (pricing tier) of the server.
+	// Compute tier and size of a flexible server.
 	Sku *SkuResponse `pulumi:"sku"`
-	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica' or 'ReviveDropped'. This property is returned only for Replica server
+	// Identifier of the flexible server to be used as the source of the new flexible server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target flexible server is a read replica.
 	SourceServerResourceId *string `pulumi:"sourceServerResourceId"`
-	// A state of a server that is visible to user.
+	// Possible states of a flexible server.
 	State string `pulumi:"state"`
-	// Storage properties of a server.
+	// Storage properties of a flexible server.
 	Storage *StorageResponse `pulumi:"storage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -87,7 +87,7 @@ type LookupServerResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// PostgreSQL Server version.
+	// Major version of PostgreSQL database engine.
 	Version *string `pulumi:"version"`
 }
 
@@ -131,7 +131,7 @@ func (LookupServerOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupServerArgs)(nil)).Elem()
 }
 
-// Represents a server.
+// Flexible server.
 type LookupServerResultOutput struct{ *pulumi.OutputState }
 
 func (LookupServerResultOutput) ElementType() reflect.Type {
@@ -146,17 +146,17 @@ func (o LookupServerResultOutput) ToLookupServerResultOutputWithContext(ctx cont
 	return o
 }
 
-// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
+// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
 func (o LookupServerResultOutput) AdministratorLogin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
 }
 
-// AuthConfig properties of a server.
+// Authentication configuration properties of a flexible server.
 func (o LookupServerResultOutput) AuthConfig() AuthConfigResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *AuthConfigResponse { return v.AuthConfig }).(AuthConfigResponsePtrOutput)
 }
 
-// availability zone information of the server.
+// Availability zone of a flexible server.
 func (o LookupServerResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
@@ -166,22 +166,22 @@ func (o LookupServerResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Backup properties of a server.
+// Backup properties of a flexible server.
 func (o LookupServerResultOutput) Backup() BackupResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *BackupResponse { return v.Backup }).(BackupResponsePtrOutput)
 }
 
-// Data encryption properties of a server.
+// Data encryption properties of a flexible server.
 func (o LookupServerResultOutput) DataEncryption() DataEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *DataEncryptionResponse { return v.DataEncryption }).(DataEncryptionResponsePtrOutput)
 }
 
-// The fully qualified domain name of a server.
+// Fully qualified domain name of a flexible server.
 func (o LookupServerResultOutput) FullyQualifiedDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.FullyQualifiedDomainName }).(pulumi.StringOutput)
 }
 
-// High availability properties of a server.
+// High availability properties of a flexible server.
 func (o LookupServerResultOutput) HighAvailability() HighAvailabilityResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *HighAvailabilityResponse { return v.HighAvailability }).(HighAvailabilityResponsePtrOutput)
 }
@@ -191,7 +191,7 @@ func (o LookupServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Describes the identity of the application.
+// User assigned managed identities assigned to the flexible server.
 func (o LookupServerResultOutput) Identity() UserAssignedIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *UserAssignedIdentityResponse { return v.Identity }).(UserAssignedIdentityResponsePtrOutput)
 }
@@ -201,12 +201,12 @@ func (o LookupServerResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Maintenance window properties of a server.
+// Maintenance window properties of a flexible server.
 func (o LookupServerResultOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponsePtrOutput)
 }
 
-// The minor version of the server.
+// Minor version of PostgreSQL database engine.
 func (o LookupServerResultOutput) MinorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.MinorVersion }).(pulumi.StringOutput)
 }
@@ -216,47 +216,47 @@ func (o LookupServerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
+// Network properties of a flexible server. Only required if you want your server to be integrated into a virtual network provided by customer.
 func (o LookupServerResultOutput) Network() NetworkResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *NetworkResponse { return v.Network }).(NetworkResponsePtrOutput)
 }
 
-// List of private endpoint connections associated with the specified resource.
+// List of private endpoint connections associated with the specified flexible server.
 func (o LookupServerResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupServerResult) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
-// Replica properties of a server. These Replica properties are required to be passed only in case you want to Promote a server.
+// Read replica properties of a flexible server. Required only in case that you want to promote a server.
 func (o LookupServerResultOutput) Replica() ReplicaResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *ReplicaResponse { return v.Replica }).(ReplicaResponsePtrOutput)
 }
 
-// Replicas allowed for a server.
+// Maximum number of read replicas allowed for a flexible server.
 func (o LookupServerResultOutput) ReplicaCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupServerResult) int { return v.ReplicaCapacity }).(pulumi.IntOutput)
 }
 
-// Replication role of the server
+// Role of the server in a replication set.
 func (o LookupServerResultOutput) ReplicationRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.ReplicationRole }).(pulumi.StringPtrOutput)
 }
 
-// The SKU (pricing tier) of the server.
+// Compute tier and size of a flexible server.
 func (o LookupServerResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
-// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica' or 'ReviveDropped'. This property is returned only for Replica server
+// Identifier of the flexible server to be used as the source of the new flexible server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target flexible server is a read replica.
 func (o LookupServerResultOutput) SourceServerResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.SourceServerResourceId }).(pulumi.StringPtrOutput)
 }
 
-// A state of a server that is visible to user.
+// Possible states of a flexible server.
 func (o LookupServerResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Storage properties of a server.
+// Storage properties of a flexible server.
 func (o LookupServerResultOutput) Storage() StorageResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *StorageResponse { return v.Storage }).(StorageResponsePtrOutput)
 }
@@ -276,7 +276,7 @@ func (o LookupServerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// PostgreSQL Server version.
+// Major version of PostgreSQL database engine.
 func (o LookupServerResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

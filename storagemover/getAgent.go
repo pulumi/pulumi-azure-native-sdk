@@ -49,7 +49,7 @@ type LookupAgentResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description for the Agent.
 	Description  *string                             `pulumi:"description"`
-	ErrorDetails AgentPropertiesResponseErrorDetails `pulumi:"errorDetails"`
+	ErrorDetails AgentPropertiesErrorDetailsResponse `pulumi:"errorDetails"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The last updated time of the Agent status.
@@ -143,8 +143,8 @@ func (o LookupAgentResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAgentResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupAgentResultOutput) ErrorDetails() AgentPropertiesResponseErrorDetailsOutput {
-	return o.ApplyT(func(v LookupAgentResult) AgentPropertiesResponseErrorDetails { return v.ErrorDetails }).(AgentPropertiesResponseErrorDetailsOutput)
+func (o LookupAgentResultOutput) ErrorDetails() AgentPropertiesErrorDetailsResponseOutput {
+	return o.ApplyT(func(v LookupAgentResult) AgentPropertiesErrorDetailsResponse { return v.ErrorDetails }).(AgentPropertiesErrorDetailsResponseOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

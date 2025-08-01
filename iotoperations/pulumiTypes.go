@@ -327,6 +327,8749 @@ func (o AdvancedSettingsResponsePtrOutput) InternalCerts() CertManagerCertOption
 	}).(CertManagerCertOptionsResponsePtrOutput)
 }
 
+// AkriConnector properties.
+type AkriConnectorPropertiesResponse struct {
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// AkriConnector properties.
+type AkriConnectorPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorPropertiesResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorPropertiesResponseOutput) ToAkriConnectorPropertiesResponseOutput() AkriConnectorPropertiesResponseOutput {
+	return o
+}
+
+func (o AkriConnectorPropertiesResponseOutput) ToAkriConnectorPropertiesResponseOutputWithContext(ctx context.Context) AkriConnectorPropertiesResponseOutput {
+	return o
+}
+
+// The status of the last operation.
+func (o AkriConnectorPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// AkriConnectorTemplateAioMetadata properties.
+type AkriConnectorTemplateAioMetadata struct {
+	// The maximum version of AIO required for the connector.
+	AioMaxVersion *string `pulumi:"aioMaxVersion"`
+	// The minimum version of AIO required for the connector.
+	AioMinVersion *string `pulumi:"aioMinVersion"`
+}
+
+// AkriConnectorTemplateAioMetadataInput is an input type that accepts AkriConnectorTemplateAioMetadataArgs and AkriConnectorTemplateAioMetadataOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateAioMetadataInput` via:
+//
+//	AkriConnectorTemplateAioMetadataArgs{...}
+type AkriConnectorTemplateAioMetadataInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateAioMetadataOutput() AkriConnectorTemplateAioMetadataOutput
+	ToAkriConnectorTemplateAioMetadataOutputWithContext(context.Context) AkriConnectorTemplateAioMetadataOutput
+}
+
+// AkriConnectorTemplateAioMetadata properties.
+type AkriConnectorTemplateAioMetadataArgs struct {
+	// The maximum version of AIO required for the connector.
+	AioMaxVersion pulumi.StringPtrInput `pulumi:"aioMaxVersion"`
+	// The minimum version of AIO required for the connector.
+	AioMinVersion pulumi.StringPtrInput `pulumi:"aioMinVersion"`
+}
+
+func (AkriConnectorTemplateAioMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateAioMetadata)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateAioMetadataArgs) ToAkriConnectorTemplateAioMetadataOutput() AkriConnectorTemplateAioMetadataOutput {
+	return i.ToAkriConnectorTemplateAioMetadataOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateAioMetadataArgs) ToAkriConnectorTemplateAioMetadataOutputWithContext(ctx context.Context) AkriConnectorTemplateAioMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateAioMetadataOutput)
+}
+
+func (i AkriConnectorTemplateAioMetadataArgs) ToAkriConnectorTemplateAioMetadataPtrOutput() AkriConnectorTemplateAioMetadataPtrOutput {
+	return i.ToAkriConnectorTemplateAioMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateAioMetadataArgs) ToAkriConnectorTemplateAioMetadataPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateAioMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateAioMetadataOutput).ToAkriConnectorTemplateAioMetadataPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateAioMetadataPtrInput is an input type that accepts AkriConnectorTemplateAioMetadataArgs, AkriConnectorTemplateAioMetadataPtr and AkriConnectorTemplateAioMetadataPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateAioMetadataPtrInput` via:
+//
+//	        AkriConnectorTemplateAioMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateAioMetadataPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateAioMetadataPtrOutput() AkriConnectorTemplateAioMetadataPtrOutput
+	ToAkriConnectorTemplateAioMetadataPtrOutputWithContext(context.Context) AkriConnectorTemplateAioMetadataPtrOutput
+}
+
+type akriConnectorTemplateAioMetadataPtrType AkriConnectorTemplateAioMetadataArgs
+
+func AkriConnectorTemplateAioMetadataPtr(v *AkriConnectorTemplateAioMetadataArgs) AkriConnectorTemplateAioMetadataPtrInput {
+	return (*akriConnectorTemplateAioMetadataPtrType)(v)
+}
+
+func (*akriConnectorTemplateAioMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateAioMetadata)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateAioMetadataPtrType) ToAkriConnectorTemplateAioMetadataPtrOutput() AkriConnectorTemplateAioMetadataPtrOutput {
+	return i.ToAkriConnectorTemplateAioMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateAioMetadataPtrType) ToAkriConnectorTemplateAioMetadataPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateAioMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateAioMetadataPtrOutput)
+}
+
+// AkriConnectorTemplateAioMetadata properties.
+type AkriConnectorTemplateAioMetadataOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateAioMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateAioMetadata)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateAioMetadataOutput) ToAkriConnectorTemplateAioMetadataOutput() AkriConnectorTemplateAioMetadataOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateAioMetadataOutput) ToAkriConnectorTemplateAioMetadataOutputWithContext(ctx context.Context) AkriConnectorTemplateAioMetadataOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateAioMetadataOutput) ToAkriConnectorTemplateAioMetadataPtrOutput() AkriConnectorTemplateAioMetadataPtrOutput {
+	return o.ToAkriConnectorTemplateAioMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateAioMetadataOutput) ToAkriConnectorTemplateAioMetadataPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateAioMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateAioMetadata) *AkriConnectorTemplateAioMetadata {
+		return &v
+	}).(AkriConnectorTemplateAioMetadataPtrOutput)
+}
+
+// The maximum version of AIO required for the connector.
+func (o AkriConnectorTemplateAioMetadataOutput) AioMaxVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateAioMetadata) *string { return v.AioMaxVersion }).(pulumi.StringPtrOutput)
+}
+
+// The minimum version of AIO required for the connector.
+func (o AkriConnectorTemplateAioMetadataOutput) AioMinVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateAioMetadata) *string { return v.AioMinVersion }).(pulumi.StringPtrOutput)
+}
+
+type AkriConnectorTemplateAioMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateAioMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateAioMetadata)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateAioMetadataPtrOutput) ToAkriConnectorTemplateAioMetadataPtrOutput() AkriConnectorTemplateAioMetadataPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateAioMetadataPtrOutput) ToAkriConnectorTemplateAioMetadataPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateAioMetadataPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateAioMetadataPtrOutput) Elem() AkriConnectorTemplateAioMetadataOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateAioMetadata) AkriConnectorTemplateAioMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateAioMetadata
+		return ret
+	}).(AkriConnectorTemplateAioMetadataOutput)
+}
+
+// The maximum version of AIO required for the connector.
+func (o AkriConnectorTemplateAioMetadataPtrOutput) AioMaxVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateAioMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AioMaxVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum version of AIO required for the connector.
+func (o AkriConnectorTemplateAioMetadataPtrOutput) AioMinVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateAioMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AioMinVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateAioMetadata properties.
+type AkriConnectorTemplateAioMetadataResponse struct {
+	// The maximum version of AIO required for the connector.
+	AioMaxVersion *string `pulumi:"aioMaxVersion"`
+	// The minimum version of AIO required for the connector.
+	AioMinVersion *string `pulumi:"aioMinVersion"`
+}
+
+// AkriConnectorTemplateAioMetadata properties.
+type AkriConnectorTemplateAioMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateAioMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateAioMetadataResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateAioMetadataResponseOutput) ToAkriConnectorTemplateAioMetadataResponseOutput() AkriConnectorTemplateAioMetadataResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateAioMetadataResponseOutput) ToAkriConnectorTemplateAioMetadataResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateAioMetadataResponseOutput {
+	return o
+}
+
+// The maximum version of AIO required for the connector.
+func (o AkriConnectorTemplateAioMetadataResponseOutput) AioMaxVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateAioMetadataResponse) *string { return v.AioMaxVersion }).(pulumi.StringPtrOutput)
+}
+
+// The minimum version of AIO required for the connector.
+func (o AkriConnectorTemplateAioMetadataResponseOutput) AioMinVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateAioMetadataResponse) *string { return v.AioMinVersion }).(pulumi.StringPtrOutput)
+}
+
+type AkriConnectorTemplateAioMetadataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateAioMetadataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateAioMetadataResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateAioMetadataResponsePtrOutput) ToAkriConnectorTemplateAioMetadataResponsePtrOutput() AkriConnectorTemplateAioMetadataResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateAioMetadataResponsePtrOutput) ToAkriConnectorTemplateAioMetadataResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateAioMetadataResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateAioMetadataResponsePtrOutput) Elem() AkriConnectorTemplateAioMetadataResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateAioMetadataResponse) AkriConnectorTemplateAioMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateAioMetadataResponse
+		return ret
+	}).(AkriConnectorTemplateAioMetadataResponseOutput)
+}
+
+// The maximum version of AIO required for the connector.
+func (o AkriConnectorTemplateAioMetadataResponsePtrOutput) AioMaxVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateAioMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AioMaxVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum version of AIO required for the connector.
+func (o AkriConnectorTemplateAioMetadataResponsePtrOutput) AioMinVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateAioMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AioMinVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateBucketizedAllocation properties.
+type AkriConnectorTemplateBucketizedAllocation struct {
+	// The bucketized allocation of AEPs for connectors.
+	BucketSize int `pulumi:"bucketSize"`
+	// AkriConnectorTemplateAllocationPolicy properties.
+	// Expected value is 'Bucketized'.
+	Policy string `pulumi:"policy"`
+}
+
+// AkriConnectorTemplateBucketizedAllocationInput is an input type that accepts AkriConnectorTemplateBucketizedAllocationArgs and AkriConnectorTemplateBucketizedAllocationOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateBucketizedAllocationInput` via:
+//
+//	AkriConnectorTemplateBucketizedAllocationArgs{...}
+type AkriConnectorTemplateBucketizedAllocationInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateBucketizedAllocationOutput() AkriConnectorTemplateBucketizedAllocationOutput
+	ToAkriConnectorTemplateBucketizedAllocationOutputWithContext(context.Context) AkriConnectorTemplateBucketizedAllocationOutput
+}
+
+// AkriConnectorTemplateBucketizedAllocation properties.
+type AkriConnectorTemplateBucketizedAllocationArgs struct {
+	// The bucketized allocation of AEPs for connectors.
+	BucketSize pulumi.IntInput `pulumi:"bucketSize"`
+	// AkriConnectorTemplateAllocationPolicy properties.
+	// Expected value is 'Bucketized'.
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (AkriConnectorTemplateBucketizedAllocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateBucketizedAllocation)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateBucketizedAllocationArgs) ToAkriConnectorTemplateBucketizedAllocationOutput() AkriConnectorTemplateBucketizedAllocationOutput {
+	return i.ToAkriConnectorTemplateBucketizedAllocationOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateBucketizedAllocationArgs) ToAkriConnectorTemplateBucketizedAllocationOutputWithContext(ctx context.Context) AkriConnectorTemplateBucketizedAllocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateBucketizedAllocationOutput)
+}
+
+func (i AkriConnectorTemplateBucketizedAllocationArgs) ToAkriConnectorTemplateBucketizedAllocationPtrOutput() AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return i.ToAkriConnectorTemplateBucketizedAllocationPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateBucketizedAllocationArgs) ToAkriConnectorTemplateBucketizedAllocationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateBucketizedAllocationOutput).ToAkriConnectorTemplateBucketizedAllocationPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateBucketizedAllocationPtrInput is an input type that accepts AkriConnectorTemplateBucketizedAllocationArgs, AkriConnectorTemplateBucketizedAllocationPtr and AkriConnectorTemplateBucketizedAllocationPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateBucketizedAllocationPtrInput` via:
+//
+//	        AkriConnectorTemplateBucketizedAllocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateBucketizedAllocationPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateBucketizedAllocationPtrOutput() AkriConnectorTemplateBucketizedAllocationPtrOutput
+	ToAkriConnectorTemplateBucketizedAllocationPtrOutputWithContext(context.Context) AkriConnectorTemplateBucketizedAllocationPtrOutput
+}
+
+type akriConnectorTemplateBucketizedAllocationPtrType AkriConnectorTemplateBucketizedAllocationArgs
+
+func AkriConnectorTemplateBucketizedAllocationPtr(v *AkriConnectorTemplateBucketizedAllocationArgs) AkriConnectorTemplateBucketizedAllocationPtrInput {
+	return (*akriConnectorTemplateBucketizedAllocationPtrType)(v)
+}
+
+func (*akriConnectorTemplateBucketizedAllocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateBucketizedAllocation)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateBucketizedAllocationPtrType) ToAkriConnectorTemplateBucketizedAllocationPtrOutput() AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return i.ToAkriConnectorTemplateBucketizedAllocationPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateBucketizedAllocationPtrType) ToAkriConnectorTemplateBucketizedAllocationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateBucketizedAllocationPtrOutput)
+}
+
+// AkriConnectorTemplateBucketizedAllocation properties.
+type AkriConnectorTemplateBucketizedAllocationOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateBucketizedAllocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateBucketizedAllocation)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationOutput) ToAkriConnectorTemplateBucketizedAllocationOutput() AkriConnectorTemplateBucketizedAllocationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationOutput) ToAkriConnectorTemplateBucketizedAllocationOutputWithContext(ctx context.Context) AkriConnectorTemplateBucketizedAllocationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationOutput) ToAkriConnectorTemplateBucketizedAllocationPtrOutput() AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return o.ToAkriConnectorTemplateBucketizedAllocationPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationOutput) ToAkriConnectorTemplateBucketizedAllocationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateBucketizedAllocation) *AkriConnectorTemplateBucketizedAllocation {
+		return &v
+	}).(AkriConnectorTemplateBucketizedAllocationPtrOutput)
+}
+
+// The bucketized allocation of AEPs for connectors.
+func (o AkriConnectorTemplateBucketizedAllocationOutput) BucketSize() pulumi.IntOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateBucketizedAllocation) int { return v.BucketSize }).(pulumi.IntOutput)
+}
+
+// AkriConnectorTemplateAllocationPolicy properties.
+// Expected value is 'Bucketized'.
+func (o AkriConnectorTemplateBucketizedAllocationOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateBucketizedAllocation) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateBucketizedAllocationPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateBucketizedAllocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateBucketizedAllocation)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationPtrOutput) ToAkriConnectorTemplateBucketizedAllocationPtrOutput() AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationPtrOutput) ToAkriConnectorTemplateBucketizedAllocationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationPtrOutput) Elem() AkriConnectorTemplateBucketizedAllocationOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateBucketizedAllocation) AkriConnectorTemplateBucketizedAllocation {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateBucketizedAllocation
+		return ret
+	}).(AkriConnectorTemplateBucketizedAllocationOutput)
+}
+
+// The bucketized allocation of AEPs for connectors.
+func (o AkriConnectorTemplateBucketizedAllocationPtrOutput) BucketSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateBucketizedAllocation) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// AkriConnectorTemplateAllocationPolicy properties.
+// Expected value is 'Bucketized'.
+func (o AkriConnectorTemplateBucketizedAllocationPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateBucketizedAllocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateBucketizedAllocation properties.
+type AkriConnectorTemplateBucketizedAllocationResponse struct {
+	// The bucketized allocation of AEPs for connectors.
+	BucketSize int `pulumi:"bucketSize"`
+	// AkriConnectorTemplateAllocationPolicy properties.
+	// Expected value is 'Bucketized'.
+	Policy string `pulumi:"policy"`
+}
+
+// AkriConnectorTemplateBucketizedAllocation properties.
+type AkriConnectorTemplateBucketizedAllocationResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateBucketizedAllocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateBucketizedAllocationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationResponseOutput) ToAkriConnectorTemplateBucketizedAllocationResponseOutput() AkriConnectorTemplateBucketizedAllocationResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationResponseOutput) ToAkriConnectorTemplateBucketizedAllocationResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateBucketizedAllocationResponseOutput {
+	return o
+}
+
+// The bucketized allocation of AEPs for connectors.
+func (o AkriConnectorTemplateBucketizedAllocationResponseOutput) BucketSize() pulumi.IntOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateBucketizedAllocationResponse) int { return v.BucketSize }).(pulumi.IntOutput)
+}
+
+// AkriConnectorTemplateAllocationPolicy properties.
+// Expected value is 'Bucketized'.
+func (o AkriConnectorTemplateBucketizedAllocationResponseOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateBucketizedAllocationResponse) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateBucketizedAllocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateBucketizedAllocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateBucketizedAllocationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationResponsePtrOutput) ToAkriConnectorTemplateBucketizedAllocationResponsePtrOutput() AkriConnectorTemplateBucketizedAllocationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationResponsePtrOutput) ToAkriConnectorTemplateBucketizedAllocationResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateBucketizedAllocationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateBucketizedAllocationResponsePtrOutput) Elem() AkriConnectorTemplateBucketizedAllocationResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateBucketizedAllocationResponse) AkriConnectorTemplateBucketizedAllocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateBucketizedAllocationResponse
+		return ret
+	}).(AkriConnectorTemplateBucketizedAllocationResponseOutput)
+}
+
+// The bucketized allocation of AEPs for connectors.
+func (o AkriConnectorTemplateBucketizedAllocationResponsePtrOutput) BucketSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateBucketizedAllocationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// AkriConnectorTemplateAllocationPolicy properties.
+// Expected value is 'Bucketized'.
+func (o AkriConnectorTemplateBucketizedAllocationResponsePtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateBucketizedAllocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs properties.
+type AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs struct {
+	// The additional configuration schema reference.
+	AdditionalConfigSchemaRef *string `pulumi:"additionalConfigSchemaRef"`
+	// The default configuration schema reference for datasets.
+	DefaultDatasetConfigSchemaRef *string `pulumi:"defaultDatasetConfigSchemaRef"`
+	// The default configuration schema reference for events.
+	DefaultEventsConfigSchemaRef *string `pulumi:"defaultEventsConfigSchemaRef"`
+	// The default configuration schema reference for process control.
+	DefaultProcessControlConfigSchemaRef *string `pulumi:"defaultProcessControlConfigSchemaRef"`
+	// The default configuration schema reference for streams.
+	DefaultStreamsConfigSchemaRef *string `pulumi:"defaultStreamsConfigSchemaRef"`
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsInput is an input type that accepts AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs and AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsInput` via:
+//
+//	AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs{...}
+type AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput
+	ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutputWithContext(context.Context) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs properties.
+type AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs struct {
+	// The additional configuration schema reference.
+	AdditionalConfigSchemaRef pulumi.StringPtrInput `pulumi:"additionalConfigSchemaRef"`
+	// The default configuration schema reference for datasets.
+	DefaultDatasetConfigSchemaRef pulumi.StringPtrInput `pulumi:"defaultDatasetConfigSchemaRef"`
+	// The default configuration schema reference for events.
+	DefaultEventsConfigSchemaRef pulumi.StringPtrInput `pulumi:"defaultEventsConfigSchemaRef"`
+	// The default configuration schema reference for process control.
+	DefaultProcessControlConfigSchemaRef pulumi.StringPtrInput `pulumi:"defaultProcessControlConfigSchemaRef"`
+	// The default configuration schema reference for streams.
+	DefaultStreamsConfigSchemaRef pulumi.StringPtrInput `pulumi:"defaultStreamsConfigSchemaRef"`
+}
+
+func (AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput {
+	return i.ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput)
+}
+
+func (i AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput {
+	return i.ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput).ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrInput is an input type that accepts AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs, AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtr and AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrInput` via:
+//
+//	        AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput
+	ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutputWithContext(context.Context) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput
+}
+
+type akriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrType AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs
+
+func AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtr(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrInput {
+	return (*akriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrType)(v)
+}
+
+func (*akriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrType) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput {
+	return i.ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrType) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput)
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs properties.
+type AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput {
+	return o.ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs {
+		return &v
+	}).(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput)
+}
+
+// The additional configuration schema reference.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput) AdditionalConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) *string {
+		return v.AdditionalConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for datasets.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput) DefaultDatasetConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) *string {
+		return v.DefaultDatasetConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for events.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput) DefaultEventsConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) *string {
+		return v.DefaultEventsConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for process control.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput) DefaultProcessControlConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) *string {
+		return v.DefaultProcessControlConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for streams.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput) DefaultStreamsConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) *string {
+		return v.DefaultStreamsConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput) Elem() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs
+		return ret
+	}).(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput)
+}
+
+// The additional configuration schema reference.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput) AdditionalConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for datasets.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput) DefaultDatasetConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDatasetConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for events.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput) DefaultEventsConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultEventsConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for process control.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput) DefaultProcessControlConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultProcessControlConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for streams.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput) DefaultStreamsConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultStreamsConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs properties.
+type AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse struct {
+	// The additional configuration schema reference.
+	AdditionalConfigSchemaRef *string `pulumi:"additionalConfigSchemaRef"`
+	// The default configuration schema reference for datasets.
+	DefaultDatasetConfigSchemaRef *string `pulumi:"defaultDatasetConfigSchemaRef"`
+	// The default configuration schema reference for events.
+	DefaultEventsConfigSchemaRef *string `pulumi:"defaultEventsConfigSchemaRef"`
+	// The default configuration schema reference for process control.
+	DefaultProcessControlConfigSchemaRef *string `pulumi:"defaultProcessControlConfigSchemaRef"`
+	// The default configuration schema reference for streams.
+	DefaultStreamsConfigSchemaRef *string `pulumi:"defaultStreamsConfigSchemaRef"`
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs properties.
+type AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput {
+	return o
+}
+
+// The additional configuration schema reference.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput) AdditionalConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse) *string {
+		return v.AdditionalConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for datasets.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput) DefaultDatasetConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse) *string {
+		return v.DefaultDatasetConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for events.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput) DefaultEventsConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse) *string {
+		return v.DefaultEventsConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for process control.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput) DefaultProcessControlConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse) *string {
+		return v.DefaultProcessControlConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for streams.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput) DefaultStreamsConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse) *string {
+		return v.DefaultStreamsConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput) ToAkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput) Elem() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse) AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse
+		return ret
+	}).(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput)
+}
+
+// The additional configuration schema reference.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput) AdditionalConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for datasets.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput) DefaultDatasetConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDatasetConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for events.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput) DefaultEventsConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultEventsConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for process control.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput) DefaultProcessControlConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultProcessControlConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default configuration schema reference for streams.
+func (o AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput) DefaultStreamsConfigSchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultStreamsConfigSchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointType properties.
+type AkriConnectorTemplateDeviceInboundEndpointType struct {
+	// The configuration schema references for the device inbound endpoint.
+	ConfigurationSchemaRefs *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs `pulumi:"configurationSchemaRefs"`
+	// A description of the device inbound endpoint.
+	Description *string `pulumi:"description"`
+	// The type of the device inbound endpoint.
+	EndpointType string `pulumi:"endpointType"`
+	// The version of the device inbound endpoint.
+	Version *string `pulumi:"version"`
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointTypeInput is an input type that accepts AkriConnectorTemplateDeviceInboundEndpointTypeArgs and AkriConnectorTemplateDeviceInboundEndpointTypeOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateDeviceInboundEndpointTypeInput` via:
+//
+//	AkriConnectorTemplateDeviceInboundEndpointTypeArgs{...}
+type AkriConnectorTemplateDeviceInboundEndpointTypeInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateDeviceInboundEndpointTypeOutput() AkriConnectorTemplateDeviceInboundEndpointTypeOutput
+	ToAkriConnectorTemplateDeviceInboundEndpointTypeOutputWithContext(context.Context) AkriConnectorTemplateDeviceInboundEndpointTypeOutput
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointType properties.
+type AkriConnectorTemplateDeviceInboundEndpointTypeArgs struct {
+	// The configuration schema references for the device inbound endpoint.
+	ConfigurationSchemaRefs AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrInput `pulumi:"configurationSchemaRefs"`
+	// A description of the device inbound endpoint.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The type of the device inbound endpoint.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The version of the device inbound endpoint.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (AkriConnectorTemplateDeviceInboundEndpointTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateDeviceInboundEndpointType)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateDeviceInboundEndpointTypeArgs) ToAkriConnectorTemplateDeviceInboundEndpointTypeOutput() AkriConnectorTemplateDeviceInboundEndpointTypeOutput {
+	return i.ToAkriConnectorTemplateDeviceInboundEndpointTypeOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateDeviceInboundEndpointTypeArgs) ToAkriConnectorTemplateDeviceInboundEndpointTypeOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateDeviceInboundEndpointTypeOutput)
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointTypeArrayInput is an input type that accepts AkriConnectorTemplateDeviceInboundEndpointTypeArray and AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateDeviceInboundEndpointTypeArrayInput` via:
+//
+//	AkriConnectorTemplateDeviceInboundEndpointTypeArray{ AkriConnectorTemplateDeviceInboundEndpointTypeArgs{...} }
+type AkriConnectorTemplateDeviceInboundEndpointTypeArrayInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput() AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput
+	ToAkriConnectorTemplateDeviceInboundEndpointTypeArrayOutputWithContext(context.Context) AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput
+}
+
+type AkriConnectorTemplateDeviceInboundEndpointTypeArray []AkriConnectorTemplateDeviceInboundEndpointTypeInput
+
+func (AkriConnectorTemplateDeviceInboundEndpointTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorTemplateDeviceInboundEndpointType)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateDeviceInboundEndpointTypeArray) ToAkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput() AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput {
+	return i.ToAkriConnectorTemplateDeviceInboundEndpointTypeArrayOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateDeviceInboundEndpointTypeArray) ToAkriConnectorTemplateDeviceInboundEndpointTypeArrayOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput)
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointType properties.
+type AkriConnectorTemplateDeviceInboundEndpointTypeOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDeviceInboundEndpointTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateDeviceInboundEndpointType)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeOutput) ToAkriConnectorTemplateDeviceInboundEndpointTypeOutput() AkriConnectorTemplateDeviceInboundEndpointTypeOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeOutput) ToAkriConnectorTemplateDeviceInboundEndpointTypeOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointTypeOutput {
+	return o
+}
+
+// The configuration schema references for the device inbound endpoint.
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeOutput) ConfigurationSchemaRefs() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointType) *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs {
+		return v.ConfigurationSchemaRefs
+	}).(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput)
+}
+
+// A description of the device inbound endpoint.
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The type of the device inbound endpoint.
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointType) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The version of the device inbound endpoint.
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointType) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorTemplateDeviceInboundEndpointType)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput) ToAkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput() AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput) ToAkriConnectorTemplateDeviceInboundEndpointTypeArrayOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput) Index(i pulumi.IntInput) AkriConnectorTemplateDeviceInboundEndpointTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AkriConnectorTemplateDeviceInboundEndpointType {
+		return vs[0].([]AkriConnectorTemplateDeviceInboundEndpointType)[vs[1].(int)]
+	}).(AkriConnectorTemplateDeviceInboundEndpointTypeOutput)
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointType properties.
+type AkriConnectorTemplateDeviceInboundEndpointTypeResponse struct {
+	// The configuration schema references for the device inbound endpoint.
+	ConfigurationSchemaRefs *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse `pulumi:"configurationSchemaRefs"`
+	// A description of the device inbound endpoint.
+	Description *string `pulumi:"description"`
+	// The type of the device inbound endpoint.
+	EndpointType string `pulumi:"endpointType"`
+	// The version of the device inbound endpoint.
+	Version *string `pulumi:"version"`
+}
+
+// AkriConnectorTemplateDeviceInboundEndpointType properties.
+type AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateDeviceInboundEndpointTypeResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput) ToAkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput() AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput) ToAkriConnectorTemplateDeviceInboundEndpointTypeResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput {
+	return o
+}
+
+// The configuration schema references for the device inbound endpoint.
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput) ConfigurationSchemaRefs() AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointTypeResponse) *AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse {
+		return v.ConfigurationSchemaRefs
+	}).(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput)
+}
+
+// A description of the device inbound endpoint.
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointTypeResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The type of the device inbound endpoint.
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointTypeResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The version of the device inbound endpoint.
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDeviceInboundEndpointTypeResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorTemplateDeviceInboundEndpointTypeResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutput) ToAkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutput() AkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutput) ToAkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutputWithContext(ctx context.Context) AkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutput) Index(i pulumi.IntInput) AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AkriConnectorTemplateDeviceInboundEndpointTypeResponse {
+		return vs[0].([]AkriConnectorTemplateDeviceInboundEndpointTypeResponse)[vs[1].(int)]
+	}).(AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput)
+}
+
+// AkriConnectorTemplateDiagnostics properties.
+type AkriConnectorTemplateDiagnostics struct {
+	// The log settings for the Connector template.
+	Logs AkriConnectorsDiagnosticsLogs `pulumi:"logs"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorTemplateDiagnostics
+func (val *AkriConnectorTemplateDiagnostics) Defaults() *AkriConnectorTemplateDiagnostics {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Logs = *tmp.Logs.Defaults()
+
+	return &tmp
+}
+
+// AkriConnectorTemplateDiagnosticsInput is an input type that accepts AkriConnectorTemplateDiagnosticsArgs and AkriConnectorTemplateDiagnosticsOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateDiagnosticsInput` via:
+//
+//	AkriConnectorTemplateDiagnosticsArgs{...}
+type AkriConnectorTemplateDiagnosticsInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateDiagnosticsOutput() AkriConnectorTemplateDiagnosticsOutput
+	ToAkriConnectorTemplateDiagnosticsOutputWithContext(context.Context) AkriConnectorTemplateDiagnosticsOutput
+}
+
+// AkriConnectorTemplateDiagnostics properties.
+type AkriConnectorTemplateDiagnosticsArgs struct {
+	// The log settings for the Connector template.
+	Logs AkriConnectorsDiagnosticsLogsInput `pulumi:"logs"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorTemplateDiagnosticsArgs
+func (val *AkriConnectorTemplateDiagnosticsArgs) Defaults() *AkriConnectorTemplateDiagnosticsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (AkriConnectorTemplateDiagnosticsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateDiagnostics)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateDiagnosticsArgs) ToAkriConnectorTemplateDiagnosticsOutput() AkriConnectorTemplateDiagnosticsOutput {
+	return i.ToAkriConnectorTemplateDiagnosticsOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateDiagnosticsArgs) ToAkriConnectorTemplateDiagnosticsOutputWithContext(ctx context.Context) AkriConnectorTemplateDiagnosticsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateDiagnosticsOutput)
+}
+
+func (i AkriConnectorTemplateDiagnosticsArgs) ToAkriConnectorTemplateDiagnosticsPtrOutput() AkriConnectorTemplateDiagnosticsPtrOutput {
+	return i.ToAkriConnectorTemplateDiagnosticsPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateDiagnosticsArgs) ToAkriConnectorTemplateDiagnosticsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateDiagnosticsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateDiagnosticsOutput).ToAkriConnectorTemplateDiagnosticsPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateDiagnosticsPtrInput is an input type that accepts AkriConnectorTemplateDiagnosticsArgs, AkriConnectorTemplateDiagnosticsPtr and AkriConnectorTemplateDiagnosticsPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateDiagnosticsPtrInput` via:
+//
+//	        AkriConnectorTemplateDiagnosticsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateDiagnosticsPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateDiagnosticsPtrOutput() AkriConnectorTemplateDiagnosticsPtrOutput
+	ToAkriConnectorTemplateDiagnosticsPtrOutputWithContext(context.Context) AkriConnectorTemplateDiagnosticsPtrOutput
+}
+
+type akriConnectorTemplateDiagnosticsPtrType AkriConnectorTemplateDiagnosticsArgs
+
+func AkriConnectorTemplateDiagnosticsPtr(v *AkriConnectorTemplateDiagnosticsArgs) AkriConnectorTemplateDiagnosticsPtrInput {
+	return (*akriConnectorTemplateDiagnosticsPtrType)(v)
+}
+
+func (*akriConnectorTemplateDiagnosticsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateDiagnostics)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateDiagnosticsPtrType) ToAkriConnectorTemplateDiagnosticsPtrOutput() AkriConnectorTemplateDiagnosticsPtrOutput {
+	return i.ToAkriConnectorTemplateDiagnosticsPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateDiagnosticsPtrType) ToAkriConnectorTemplateDiagnosticsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateDiagnosticsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateDiagnosticsPtrOutput)
+}
+
+// AkriConnectorTemplateDiagnostics properties.
+type AkriConnectorTemplateDiagnosticsOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDiagnosticsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateDiagnostics)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDiagnosticsOutput) ToAkriConnectorTemplateDiagnosticsOutput() AkriConnectorTemplateDiagnosticsOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDiagnosticsOutput) ToAkriConnectorTemplateDiagnosticsOutputWithContext(ctx context.Context) AkriConnectorTemplateDiagnosticsOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDiagnosticsOutput) ToAkriConnectorTemplateDiagnosticsPtrOutput() AkriConnectorTemplateDiagnosticsPtrOutput {
+	return o.ToAkriConnectorTemplateDiagnosticsPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateDiagnosticsOutput) ToAkriConnectorTemplateDiagnosticsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateDiagnosticsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateDiagnostics) *AkriConnectorTemplateDiagnostics {
+		return &v
+	}).(AkriConnectorTemplateDiagnosticsPtrOutput)
+}
+
+// The log settings for the Connector template.
+func (o AkriConnectorTemplateDiagnosticsOutput) Logs() AkriConnectorsDiagnosticsLogsOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDiagnostics) AkriConnectorsDiagnosticsLogs { return v.Logs }).(AkriConnectorsDiagnosticsLogsOutput)
+}
+
+type AkriConnectorTemplateDiagnosticsPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDiagnosticsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateDiagnostics)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDiagnosticsPtrOutput) ToAkriConnectorTemplateDiagnosticsPtrOutput() AkriConnectorTemplateDiagnosticsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDiagnosticsPtrOutput) ToAkriConnectorTemplateDiagnosticsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateDiagnosticsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDiagnosticsPtrOutput) Elem() AkriConnectorTemplateDiagnosticsOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDiagnostics) AkriConnectorTemplateDiagnostics {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateDiagnostics
+		return ret
+	}).(AkriConnectorTemplateDiagnosticsOutput)
+}
+
+// The log settings for the Connector template.
+func (o AkriConnectorTemplateDiagnosticsPtrOutput) Logs() AkriConnectorsDiagnosticsLogsPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDiagnostics) *AkriConnectorsDiagnosticsLogs {
+		if v == nil {
+			return nil
+		}
+		return &v.Logs
+	}).(AkriConnectorsDiagnosticsLogsPtrOutput)
+}
+
+// AkriConnectorTemplateDiagnostics properties.
+type AkriConnectorTemplateDiagnosticsResponse struct {
+	// The log settings for the Connector template.
+	Logs AkriConnectorsDiagnosticsLogsResponse `pulumi:"logs"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorTemplateDiagnosticsResponse
+func (val *AkriConnectorTemplateDiagnosticsResponse) Defaults() *AkriConnectorTemplateDiagnosticsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Logs = *tmp.Logs.Defaults()
+
+	return &tmp
+}
+
+// AkriConnectorTemplateDiagnostics properties.
+type AkriConnectorTemplateDiagnosticsResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDiagnosticsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateDiagnosticsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDiagnosticsResponseOutput) ToAkriConnectorTemplateDiagnosticsResponseOutput() AkriConnectorTemplateDiagnosticsResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDiagnosticsResponseOutput) ToAkriConnectorTemplateDiagnosticsResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateDiagnosticsResponseOutput {
+	return o
+}
+
+// The log settings for the Connector template.
+func (o AkriConnectorTemplateDiagnosticsResponseOutput) Logs() AkriConnectorsDiagnosticsLogsResponseOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateDiagnosticsResponse) AkriConnectorsDiagnosticsLogsResponse { return v.Logs }).(AkriConnectorsDiagnosticsLogsResponseOutput)
+}
+
+type AkriConnectorTemplateDiagnosticsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateDiagnosticsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateDiagnosticsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateDiagnosticsResponsePtrOutput) ToAkriConnectorTemplateDiagnosticsResponsePtrOutput() AkriConnectorTemplateDiagnosticsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDiagnosticsResponsePtrOutput) ToAkriConnectorTemplateDiagnosticsResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateDiagnosticsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateDiagnosticsResponsePtrOutput) Elem() AkriConnectorTemplateDiagnosticsResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDiagnosticsResponse) AkriConnectorTemplateDiagnosticsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateDiagnosticsResponse
+		return ret
+	}).(AkriConnectorTemplateDiagnosticsResponseOutput)
+}
+
+// The log settings for the Connector template.
+func (o AkriConnectorTemplateDiagnosticsResponsePtrOutput) Logs() AkriConnectorsDiagnosticsLogsResponsePtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateDiagnosticsResponse) *AkriConnectorsDiagnosticsLogsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Logs
+	}).(AkriConnectorsDiagnosticsLogsResponsePtrOutput)
+}
+
+// AkriConnectorTemplateHelmAdvancedConfiguration properties.
+type AkriConnectorTemplateHelmAdvancedConfiguration struct {
+	// Delete operation configuration for the Helm chart.
+	Delete *AkriConnectorTemplateHelmDeleteConfiguration `pulumi:"delete"`
+	// Install operation configuration for the Helm chart.
+	Install *AkriConnectorTemplateHelmInstallConfiguration `pulumi:"install"`
+	// Upgrade operation configuration for the Helm chart.
+	Upgrade *AkriConnectorTemplateHelmUpgradeConfiguration `pulumi:"upgrade"`
+}
+
+// AkriConnectorTemplateHelmAdvancedConfigurationInput is an input type that accepts AkriConnectorTemplateHelmAdvancedConfigurationArgs and AkriConnectorTemplateHelmAdvancedConfigurationOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmAdvancedConfigurationInput` via:
+//
+//	AkriConnectorTemplateHelmAdvancedConfigurationArgs{...}
+type AkriConnectorTemplateHelmAdvancedConfigurationInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmAdvancedConfigurationOutput() AkriConnectorTemplateHelmAdvancedConfigurationOutput
+	ToAkriConnectorTemplateHelmAdvancedConfigurationOutputWithContext(context.Context) AkriConnectorTemplateHelmAdvancedConfigurationOutput
+}
+
+// AkriConnectorTemplateHelmAdvancedConfiguration properties.
+type AkriConnectorTemplateHelmAdvancedConfigurationArgs struct {
+	// Delete operation configuration for the Helm chart.
+	Delete AkriConnectorTemplateHelmDeleteConfigurationPtrInput `pulumi:"delete"`
+	// Install operation configuration for the Helm chart.
+	Install AkriConnectorTemplateHelmInstallConfigurationPtrInput `pulumi:"install"`
+	// Upgrade operation configuration for the Helm chart.
+	Upgrade AkriConnectorTemplateHelmUpgradeConfigurationPtrInput `pulumi:"upgrade"`
+}
+
+func (AkriConnectorTemplateHelmAdvancedConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateHelmAdvancedConfigurationArgs) ToAkriConnectorTemplateHelmAdvancedConfigurationOutput() AkriConnectorTemplateHelmAdvancedConfigurationOutput {
+	return i.ToAkriConnectorTemplateHelmAdvancedConfigurationOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmAdvancedConfigurationArgs) ToAkriConnectorTemplateHelmAdvancedConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAdvancedConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmAdvancedConfigurationOutput)
+}
+
+func (i AkriConnectorTemplateHelmAdvancedConfigurationArgs) ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutput() AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmAdvancedConfigurationArgs) ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmAdvancedConfigurationOutput).ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateHelmAdvancedConfigurationPtrInput is an input type that accepts AkriConnectorTemplateHelmAdvancedConfigurationArgs, AkriConnectorTemplateHelmAdvancedConfigurationPtr and AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmAdvancedConfigurationPtrInput` via:
+//
+//	        AkriConnectorTemplateHelmAdvancedConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateHelmAdvancedConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutput() AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput
+	ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutputWithContext(context.Context) AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput
+}
+
+type akriConnectorTemplateHelmAdvancedConfigurationPtrType AkriConnectorTemplateHelmAdvancedConfigurationArgs
+
+func AkriConnectorTemplateHelmAdvancedConfigurationPtr(v *AkriConnectorTemplateHelmAdvancedConfigurationArgs) AkriConnectorTemplateHelmAdvancedConfigurationPtrInput {
+	return (*akriConnectorTemplateHelmAdvancedConfigurationPtrType)(v)
+}
+
+func (*akriConnectorTemplateHelmAdvancedConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateHelmAdvancedConfigurationPtrType) ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutput() AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateHelmAdvancedConfigurationPtrType) ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput)
+}
+
+// AkriConnectorTemplateHelmAdvancedConfiguration properties.
+type AkriConnectorTemplateHelmAdvancedConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmAdvancedConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationOutput) ToAkriConnectorTemplateHelmAdvancedConfigurationOutput() AkriConnectorTemplateHelmAdvancedConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationOutput) ToAkriConnectorTemplateHelmAdvancedConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAdvancedConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationOutput) ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutput() AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput {
+	return o.ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationOutput) ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateHelmAdvancedConfiguration) *AkriConnectorTemplateHelmAdvancedConfiguration {
+		return &v
+	}).(AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput)
+}
+
+// Delete operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationOutput) Delete() AkriConnectorTemplateHelmDeleteConfigurationPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAdvancedConfiguration) *AkriConnectorTemplateHelmDeleteConfiguration {
+		return v.Delete
+	}).(AkriConnectorTemplateHelmDeleteConfigurationPtrOutput)
+}
+
+// Install operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationOutput) Install() AkriConnectorTemplateHelmInstallConfigurationPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAdvancedConfiguration) *AkriConnectorTemplateHelmInstallConfiguration {
+		return v.Install
+	}).(AkriConnectorTemplateHelmInstallConfigurationPtrOutput)
+}
+
+// Upgrade operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationOutput) Upgrade() AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAdvancedConfiguration) *AkriConnectorTemplateHelmUpgradeConfiguration {
+		return v.Upgrade
+	}).(AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput)
+}
+
+type AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput) ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutput() AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput) ToAkriConnectorTemplateHelmAdvancedConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput) Elem() AkriConnectorTemplateHelmAdvancedConfigurationOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAdvancedConfiguration) AkriConnectorTemplateHelmAdvancedConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmAdvancedConfiguration
+		return ret
+	}).(AkriConnectorTemplateHelmAdvancedConfigurationOutput)
+}
+
+// Delete operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput) Delete() AkriConnectorTemplateHelmDeleteConfigurationPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAdvancedConfiguration) *AkriConnectorTemplateHelmDeleteConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(AkriConnectorTemplateHelmDeleteConfigurationPtrOutput)
+}
+
+// Install operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput) Install() AkriConnectorTemplateHelmInstallConfigurationPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAdvancedConfiguration) *AkriConnectorTemplateHelmInstallConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Install
+	}).(AkriConnectorTemplateHelmInstallConfigurationPtrOutput)
+}
+
+// Upgrade operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput) Upgrade() AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAdvancedConfiguration) *AkriConnectorTemplateHelmUpgradeConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Upgrade
+	}).(AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput)
+}
+
+// AkriConnectorTemplateHelmAdvancedConfiguration properties.
+type AkriConnectorTemplateHelmAdvancedConfigurationResponse struct {
+	// Delete operation configuration for the Helm chart.
+	Delete *AkriConnectorTemplateHelmDeleteConfigurationResponse `pulumi:"delete"`
+	// Install operation configuration for the Helm chart.
+	Install *AkriConnectorTemplateHelmInstallConfigurationResponse `pulumi:"install"`
+	// Upgrade operation configuration for the Helm chart.
+	Upgrade *AkriConnectorTemplateHelmUpgradeConfigurationResponse `pulumi:"upgrade"`
+}
+
+// AkriConnectorTemplateHelmAdvancedConfiguration properties.
+type AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmAdvancedConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput) ToAkriConnectorTemplateHelmAdvancedConfigurationResponseOutput() AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput) ToAkriConnectorTemplateHelmAdvancedConfigurationResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput {
+	return o
+}
+
+// Delete operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput) Delete() AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAdvancedConfigurationResponse) *AkriConnectorTemplateHelmDeleteConfigurationResponse {
+		return v.Delete
+	}).(AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput)
+}
+
+// Install operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput) Install() AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAdvancedConfigurationResponse) *AkriConnectorTemplateHelmInstallConfigurationResponse {
+		return v.Install
+	}).(AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput)
+}
+
+// Upgrade operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput) Upgrade() AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAdvancedConfigurationResponse) *AkriConnectorTemplateHelmUpgradeConfigurationResponse {
+		return v.Upgrade
+	}).(AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput)
+}
+
+type AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmAdvancedConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput) ToAkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput() AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput) ToAkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput) Elem() AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAdvancedConfigurationResponse) AkriConnectorTemplateHelmAdvancedConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmAdvancedConfigurationResponse
+		return ret
+	}).(AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput)
+}
+
+// Delete operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput) Delete() AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAdvancedConfigurationResponse) *AkriConnectorTemplateHelmDeleteConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput)
+}
+
+// Install operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput) Install() AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAdvancedConfigurationResponse) *AkriConnectorTemplateHelmInstallConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Install
+	}).(AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput)
+}
+
+// Upgrade operation configuration for the Helm chart.
+func (o AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput) Upgrade() AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAdvancedConfigurationResponse) *AkriConnectorTemplateHelmUpgradeConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Upgrade
+	}).(AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput)
+}
+
+// AkriConnectorTemplateHelmAuthSecretRef properties.
+type AkriConnectorTemplateHelmAuthSecretRef struct {
+	// The key of the password in the secret.
+	PasswordKey string `pulumi:"passwordKey"`
+	// The name of the secret.
+	SecretRef string `pulumi:"secretRef"`
+	// The key of the username in the secret.
+	UsernameKey string `pulumi:"usernameKey"`
+}
+
+// AkriConnectorTemplateHelmAuthSecretRefInput is an input type that accepts AkriConnectorTemplateHelmAuthSecretRefArgs and AkriConnectorTemplateHelmAuthSecretRefOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmAuthSecretRefInput` via:
+//
+//	AkriConnectorTemplateHelmAuthSecretRefArgs{...}
+type AkriConnectorTemplateHelmAuthSecretRefInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmAuthSecretRefOutput() AkriConnectorTemplateHelmAuthSecretRefOutput
+	ToAkriConnectorTemplateHelmAuthSecretRefOutputWithContext(context.Context) AkriConnectorTemplateHelmAuthSecretRefOutput
+}
+
+// AkriConnectorTemplateHelmAuthSecretRef properties.
+type AkriConnectorTemplateHelmAuthSecretRefArgs struct {
+	// The key of the password in the secret.
+	PasswordKey pulumi.StringInput `pulumi:"passwordKey"`
+	// The name of the secret.
+	SecretRef pulumi.StringInput `pulumi:"secretRef"`
+	// The key of the username in the secret.
+	UsernameKey pulumi.StringInput `pulumi:"usernameKey"`
+}
+
+func (AkriConnectorTemplateHelmAuthSecretRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmAuthSecretRef)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateHelmAuthSecretRefArgs) ToAkriConnectorTemplateHelmAuthSecretRefOutput() AkriConnectorTemplateHelmAuthSecretRefOutput {
+	return i.ToAkriConnectorTemplateHelmAuthSecretRefOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmAuthSecretRefArgs) ToAkriConnectorTemplateHelmAuthSecretRefOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAuthSecretRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmAuthSecretRefOutput)
+}
+
+func (i AkriConnectorTemplateHelmAuthSecretRefArgs) ToAkriConnectorTemplateHelmAuthSecretRefPtrOutput() AkriConnectorTemplateHelmAuthSecretRefPtrOutput {
+	return i.ToAkriConnectorTemplateHelmAuthSecretRefPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmAuthSecretRefArgs) ToAkriConnectorTemplateHelmAuthSecretRefPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAuthSecretRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmAuthSecretRefOutput).ToAkriConnectorTemplateHelmAuthSecretRefPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateHelmAuthSecretRefPtrInput is an input type that accepts AkriConnectorTemplateHelmAuthSecretRefArgs, AkriConnectorTemplateHelmAuthSecretRefPtr and AkriConnectorTemplateHelmAuthSecretRefPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmAuthSecretRefPtrInput` via:
+//
+//	        AkriConnectorTemplateHelmAuthSecretRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateHelmAuthSecretRefPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmAuthSecretRefPtrOutput() AkriConnectorTemplateHelmAuthSecretRefPtrOutput
+	ToAkriConnectorTemplateHelmAuthSecretRefPtrOutputWithContext(context.Context) AkriConnectorTemplateHelmAuthSecretRefPtrOutput
+}
+
+type akriConnectorTemplateHelmAuthSecretRefPtrType AkriConnectorTemplateHelmAuthSecretRefArgs
+
+func AkriConnectorTemplateHelmAuthSecretRefPtr(v *AkriConnectorTemplateHelmAuthSecretRefArgs) AkriConnectorTemplateHelmAuthSecretRefPtrInput {
+	return (*akriConnectorTemplateHelmAuthSecretRefPtrType)(v)
+}
+
+func (*akriConnectorTemplateHelmAuthSecretRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmAuthSecretRef)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateHelmAuthSecretRefPtrType) ToAkriConnectorTemplateHelmAuthSecretRefPtrOutput() AkriConnectorTemplateHelmAuthSecretRefPtrOutput {
+	return i.ToAkriConnectorTemplateHelmAuthSecretRefPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateHelmAuthSecretRefPtrType) ToAkriConnectorTemplateHelmAuthSecretRefPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAuthSecretRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmAuthSecretRefPtrOutput)
+}
+
+// AkriConnectorTemplateHelmAuthSecretRef properties.
+type AkriConnectorTemplateHelmAuthSecretRefOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmAuthSecretRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmAuthSecretRef)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefOutput) ToAkriConnectorTemplateHelmAuthSecretRefOutput() AkriConnectorTemplateHelmAuthSecretRefOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefOutput) ToAkriConnectorTemplateHelmAuthSecretRefOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAuthSecretRefOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefOutput) ToAkriConnectorTemplateHelmAuthSecretRefPtrOutput() AkriConnectorTemplateHelmAuthSecretRefPtrOutput {
+	return o.ToAkriConnectorTemplateHelmAuthSecretRefPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefOutput) ToAkriConnectorTemplateHelmAuthSecretRefPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAuthSecretRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateHelmAuthSecretRef) *AkriConnectorTemplateHelmAuthSecretRef {
+		return &v
+	}).(AkriConnectorTemplateHelmAuthSecretRefPtrOutput)
+}
+
+// The key of the password in the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefOutput) PasswordKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAuthSecretRef) string { return v.PasswordKey }).(pulumi.StringOutput)
+}
+
+// The name of the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAuthSecretRef) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+// The key of the username in the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefOutput) UsernameKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAuthSecretRef) string { return v.UsernameKey }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateHelmAuthSecretRefPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmAuthSecretRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmAuthSecretRef)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefPtrOutput) ToAkriConnectorTemplateHelmAuthSecretRefPtrOutput() AkriConnectorTemplateHelmAuthSecretRefPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefPtrOutput) ToAkriConnectorTemplateHelmAuthSecretRefPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAuthSecretRefPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefPtrOutput) Elem() AkriConnectorTemplateHelmAuthSecretRefOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAuthSecretRef) AkriConnectorTemplateHelmAuthSecretRef {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmAuthSecretRef
+		return ret
+	}).(AkriConnectorTemplateHelmAuthSecretRefOutput)
+}
+
+// The key of the password in the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefPtrOutput) PasswordKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAuthSecretRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefPtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAuthSecretRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The key of the username in the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefPtrOutput) UsernameKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAuthSecretRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UsernameKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmAuthSecretRef properties.
+type AkriConnectorTemplateHelmAuthSecretRefResponse struct {
+	// The key of the password in the secret.
+	PasswordKey string `pulumi:"passwordKey"`
+	// The name of the secret.
+	SecretRef string `pulumi:"secretRef"`
+	// The key of the username in the secret.
+	UsernameKey string `pulumi:"usernameKey"`
+}
+
+// AkriConnectorTemplateHelmAuthSecretRef properties.
+type AkriConnectorTemplateHelmAuthSecretRefResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmAuthSecretRefResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmAuthSecretRefResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefResponseOutput) ToAkriConnectorTemplateHelmAuthSecretRefResponseOutput() AkriConnectorTemplateHelmAuthSecretRefResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefResponseOutput) ToAkriConnectorTemplateHelmAuthSecretRefResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAuthSecretRefResponseOutput {
+	return o
+}
+
+// The key of the password in the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefResponseOutput) PasswordKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAuthSecretRefResponse) string { return v.PasswordKey }).(pulumi.StringOutput)
+}
+
+// The name of the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefResponseOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAuthSecretRefResponse) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+// The key of the username in the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefResponseOutput) UsernameKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmAuthSecretRefResponse) string { return v.UsernameKey }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmAuthSecretRefResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput) ToAkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput() AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput) ToAkriConnectorTemplateHelmAuthSecretRefResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput) Elem() AkriConnectorTemplateHelmAuthSecretRefResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAuthSecretRefResponse) AkriConnectorTemplateHelmAuthSecretRefResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmAuthSecretRefResponse
+		return ret
+	}).(AkriConnectorTemplateHelmAuthSecretRefResponseOutput)
+}
+
+// The key of the password in the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput) PasswordKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAuthSecretRefResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAuthSecretRefResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The key of the username in the secret.
+func (o AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput) UsernameKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmAuthSecretRefResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UsernameKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmConfiguration properties.
+type AkriConnectorTemplateHelmConfiguration struct {
+	// The Helm configuration settings.
+	HelmConfigurationSettings AkriConnectorTemplateHelmConfigurationSettings `pulumi:"helmConfigurationSettings"`
+	// Runtime configuration types.
+	// Expected value is 'HelmConfiguration'.
+	RuntimeConfigurationType string `pulumi:"runtimeConfigurationType"`
+}
+
+// AkriConnectorTemplateHelmConfigurationInput is an input type that accepts AkriConnectorTemplateHelmConfigurationArgs and AkriConnectorTemplateHelmConfigurationOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmConfigurationInput` via:
+//
+//	AkriConnectorTemplateHelmConfigurationArgs{...}
+type AkriConnectorTemplateHelmConfigurationInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmConfigurationOutput() AkriConnectorTemplateHelmConfigurationOutput
+	ToAkriConnectorTemplateHelmConfigurationOutputWithContext(context.Context) AkriConnectorTemplateHelmConfigurationOutput
+}
+
+// AkriConnectorTemplateHelmConfiguration properties.
+type AkriConnectorTemplateHelmConfigurationArgs struct {
+	// The Helm configuration settings.
+	HelmConfigurationSettings AkriConnectorTemplateHelmConfigurationSettingsInput `pulumi:"helmConfigurationSettings"`
+	// Runtime configuration types.
+	// Expected value is 'HelmConfiguration'.
+	RuntimeConfigurationType pulumi.StringInput `pulumi:"runtimeConfigurationType"`
+}
+
+func (AkriConnectorTemplateHelmConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmConfiguration)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateHelmConfigurationArgs) ToAkriConnectorTemplateHelmConfigurationOutput() AkriConnectorTemplateHelmConfigurationOutput {
+	return i.ToAkriConnectorTemplateHelmConfigurationOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmConfigurationArgs) ToAkriConnectorTemplateHelmConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmConfigurationOutput)
+}
+
+func (i AkriConnectorTemplateHelmConfigurationArgs) ToAkriConnectorTemplateHelmConfigurationPtrOutput() AkriConnectorTemplateHelmConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateHelmConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmConfigurationArgs) ToAkriConnectorTemplateHelmConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmConfigurationOutput).ToAkriConnectorTemplateHelmConfigurationPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateHelmConfigurationPtrInput is an input type that accepts AkriConnectorTemplateHelmConfigurationArgs, AkriConnectorTemplateHelmConfigurationPtr and AkriConnectorTemplateHelmConfigurationPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmConfigurationPtrInput` via:
+//
+//	        AkriConnectorTemplateHelmConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateHelmConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmConfigurationPtrOutput() AkriConnectorTemplateHelmConfigurationPtrOutput
+	ToAkriConnectorTemplateHelmConfigurationPtrOutputWithContext(context.Context) AkriConnectorTemplateHelmConfigurationPtrOutput
+}
+
+type akriConnectorTemplateHelmConfigurationPtrType AkriConnectorTemplateHelmConfigurationArgs
+
+func AkriConnectorTemplateHelmConfigurationPtr(v *AkriConnectorTemplateHelmConfigurationArgs) AkriConnectorTemplateHelmConfigurationPtrInput {
+	return (*akriConnectorTemplateHelmConfigurationPtrType)(v)
+}
+
+func (*akriConnectorTemplateHelmConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmConfiguration)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateHelmConfigurationPtrType) ToAkriConnectorTemplateHelmConfigurationPtrOutput() AkriConnectorTemplateHelmConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateHelmConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateHelmConfigurationPtrType) ToAkriConnectorTemplateHelmConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmConfigurationPtrOutput)
+}
+
+// AkriConnectorTemplateHelmConfiguration properties.
+type AkriConnectorTemplateHelmConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmConfigurationOutput) ToAkriConnectorTemplateHelmConfigurationOutput() AkriConnectorTemplateHelmConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmConfigurationOutput) ToAkriConnectorTemplateHelmConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmConfigurationOutput) ToAkriConnectorTemplateHelmConfigurationPtrOutput() AkriConnectorTemplateHelmConfigurationPtrOutput {
+	return o.ToAkriConnectorTemplateHelmConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateHelmConfigurationOutput) ToAkriConnectorTemplateHelmConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateHelmConfiguration) *AkriConnectorTemplateHelmConfiguration {
+		return &v
+	}).(AkriConnectorTemplateHelmConfigurationPtrOutput)
+}
+
+// The Helm configuration settings.
+func (o AkriConnectorTemplateHelmConfigurationOutput) HelmConfigurationSettings() AkriConnectorTemplateHelmConfigurationSettingsOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfiguration) AkriConnectorTemplateHelmConfigurationSettings {
+		return v.HelmConfigurationSettings
+	}).(AkriConnectorTemplateHelmConfigurationSettingsOutput)
+}
+
+// Runtime configuration types.
+// Expected value is 'HelmConfiguration'.
+func (o AkriConnectorTemplateHelmConfigurationOutput) RuntimeConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfiguration) string { return v.RuntimeConfigurationType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateHelmConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmConfigurationPtrOutput) ToAkriConnectorTemplateHelmConfigurationPtrOutput() AkriConnectorTemplateHelmConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmConfigurationPtrOutput) ToAkriConnectorTemplateHelmConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmConfigurationPtrOutput) Elem() AkriConnectorTemplateHelmConfigurationOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmConfiguration) AkriConnectorTemplateHelmConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmConfiguration
+		return ret
+	}).(AkriConnectorTemplateHelmConfigurationOutput)
+}
+
+// The Helm configuration settings.
+func (o AkriConnectorTemplateHelmConfigurationPtrOutput) HelmConfigurationSettings() AkriConnectorTemplateHelmConfigurationSettingsPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmConfiguration) *AkriConnectorTemplateHelmConfigurationSettings {
+		if v == nil {
+			return nil
+		}
+		return &v.HelmConfigurationSettings
+	}).(AkriConnectorTemplateHelmConfigurationSettingsPtrOutput)
+}
+
+// Runtime configuration types.
+// Expected value is 'HelmConfiguration'.
+func (o AkriConnectorTemplateHelmConfigurationPtrOutput) RuntimeConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RuntimeConfigurationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmConfiguration properties.
+type AkriConnectorTemplateHelmConfigurationResponse struct {
+	// The Helm configuration settings.
+	HelmConfigurationSettings AkriConnectorTemplateHelmConfigurationSettingsResponse `pulumi:"helmConfigurationSettings"`
+	// Runtime configuration types.
+	// Expected value is 'HelmConfiguration'.
+	RuntimeConfigurationType string `pulumi:"runtimeConfigurationType"`
+}
+
+// AkriConnectorTemplateHelmConfiguration properties.
+type AkriConnectorTemplateHelmConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmConfigurationResponseOutput) ToAkriConnectorTemplateHelmConfigurationResponseOutput() AkriConnectorTemplateHelmConfigurationResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmConfigurationResponseOutput) ToAkriConnectorTemplateHelmConfigurationResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationResponseOutput {
+	return o
+}
+
+// The Helm configuration settings.
+func (o AkriConnectorTemplateHelmConfigurationResponseOutput) HelmConfigurationSettings() AkriConnectorTemplateHelmConfigurationSettingsResponseOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationResponse) AkriConnectorTemplateHelmConfigurationSettingsResponse {
+		return v.HelmConfigurationSettings
+	}).(AkriConnectorTemplateHelmConfigurationSettingsResponseOutput)
+}
+
+// Runtime configuration types.
+// Expected value is 'HelmConfiguration'.
+func (o AkriConnectorTemplateHelmConfigurationResponseOutput) RuntimeConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationResponse) string { return v.RuntimeConfigurationType }).(pulumi.StringOutput)
+}
+
+// AkriConnectorTemplateHelmConfiguration properties.
+type AkriConnectorTemplateHelmConfigurationSettings struct {
+	// Advanced configuration for the Helm chart.
+	// Install, upgrade, and uninstall options for the helm chart such as atomic, wait, timeout, `wait_for_jobs`, and `disable_hooks`.
+	AdvancedConfiguration *AkriConnectorTemplateHelmAdvancedConfiguration `pulumi:"advancedConfiguration"`
+	// The registry settings for the helm chart to be used.
+	RegistrySettings interface{} `pulumi:"registrySettings"`
+	// The release name of the Helm chart.
+	ReleaseName string `pulumi:"releaseName"`
+	// The name of the repository
+	RepositoryName string `pulumi:"repositoryName"`
+	// A map of values to pass to the helm chart.
+	Values map[string]string `pulumi:"values"`
+	// The version of the Helm chart.
+	Version string `pulumi:"version"`
+}
+
+// AkriConnectorTemplateHelmConfigurationSettingsInput is an input type that accepts AkriConnectorTemplateHelmConfigurationSettingsArgs and AkriConnectorTemplateHelmConfigurationSettingsOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmConfigurationSettingsInput` via:
+//
+//	AkriConnectorTemplateHelmConfigurationSettingsArgs{...}
+type AkriConnectorTemplateHelmConfigurationSettingsInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmConfigurationSettingsOutput() AkriConnectorTemplateHelmConfigurationSettingsOutput
+	ToAkriConnectorTemplateHelmConfigurationSettingsOutputWithContext(context.Context) AkriConnectorTemplateHelmConfigurationSettingsOutput
+}
+
+// AkriConnectorTemplateHelmConfiguration properties.
+type AkriConnectorTemplateHelmConfigurationSettingsArgs struct {
+	// Advanced configuration for the Helm chart.
+	// Install, upgrade, and uninstall options for the helm chart such as atomic, wait, timeout, `wait_for_jobs`, and `disable_hooks`.
+	AdvancedConfiguration AkriConnectorTemplateHelmAdvancedConfigurationPtrInput `pulumi:"advancedConfiguration"`
+	// The registry settings for the helm chart to be used.
+	RegistrySettings pulumi.Input `pulumi:"registrySettings"`
+	// The release name of the Helm chart.
+	ReleaseName pulumi.StringInput `pulumi:"releaseName"`
+	// The name of the repository
+	RepositoryName pulumi.StringInput `pulumi:"repositoryName"`
+	// A map of values to pass to the helm chart.
+	Values pulumi.StringMapInput `pulumi:"values"`
+	// The version of the Helm chart.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (AkriConnectorTemplateHelmConfigurationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmConfigurationSettings)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateHelmConfigurationSettingsArgs) ToAkriConnectorTemplateHelmConfigurationSettingsOutput() AkriConnectorTemplateHelmConfigurationSettingsOutput {
+	return i.ToAkriConnectorTemplateHelmConfigurationSettingsOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmConfigurationSettingsArgs) ToAkriConnectorTemplateHelmConfigurationSettingsOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmConfigurationSettingsOutput)
+}
+
+func (i AkriConnectorTemplateHelmConfigurationSettingsArgs) ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutput() AkriConnectorTemplateHelmConfigurationSettingsPtrOutput {
+	return i.ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmConfigurationSettingsArgs) ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmConfigurationSettingsOutput).ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateHelmConfigurationSettingsPtrInput is an input type that accepts AkriConnectorTemplateHelmConfigurationSettingsArgs, AkriConnectorTemplateHelmConfigurationSettingsPtr and AkriConnectorTemplateHelmConfigurationSettingsPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmConfigurationSettingsPtrInput` via:
+//
+//	        AkriConnectorTemplateHelmConfigurationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateHelmConfigurationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutput() AkriConnectorTemplateHelmConfigurationSettingsPtrOutput
+	ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutputWithContext(context.Context) AkriConnectorTemplateHelmConfigurationSettingsPtrOutput
+}
+
+type akriConnectorTemplateHelmConfigurationSettingsPtrType AkriConnectorTemplateHelmConfigurationSettingsArgs
+
+func AkriConnectorTemplateHelmConfigurationSettingsPtr(v *AkriConnectorTemplateHelmConfigurationSettingsArgs) AkriConnectorTemplateHelmConfigurationSettingsPtrInput {
+	return (*akriConnectorTemplateHelmConfigurationSettingsPtrType)(v)
+}
+
+func (*akriConnectorTemplateHelmConfigurationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmConfigurationSettings)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateHelmConfigurationSettingsPtrType) ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutput() AkriConnectorTemplateHelmConfigurationSettingsPtrOutput {
+	return i.ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateHelmConfigurationSettingsPtrType) ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmConfigurationSettingsPtrOutput)
+}
+
+// AkriConnectorTemplateHelmConfiguration properties.
+type AkriConnectorTemplateHelmConfigurationSettingsOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmConfigurationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmConfigurationSettings)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmConfigurationSettingsOutput) ToAkriConnectorTemplateHelmConfigurationSettingsOutput() AkriConnectorTemplateHelmConfigurationSettingsOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmConfigurationSettingsOutput) ToAkriConnectorTemplateHelmConfigurationSettingsOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationSettingsOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmConfigurationSettingsOutput) ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutput() AkriConnectorTemplateHelmConfigurationSettingsPtrOutput {
+	return o.ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateHelmConfigurationSettingsOutput) ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateHelmConfigurationSettings) *AkriConnectorTemplateHelmConfigurationSettings {
+		return &v
+	}).(AkriConnectorTemplateHelmConfigurationSettingsPtrOutput)
+}
+
+// Advanced configuration for the Helm chart.
+// Install, upgrade, and uninstall options for the helm chart such as atomic, wait, timeout, `wait_for_jobs`, and `disable_hooks`.
+func (o AkriConnectorTemplateHelmConfigurationSettingsOutput) AdvancedConfiguration() AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettings) *AkriConnectorTemplateHelmAdvancedConfiguration {
+		return v.AdvancedConfiguration
+	}).(AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput)
+}
+
+// The registry settings for the helm chart to be used.
+func (o AkriConnectorTemplateHelmConfigurationSettingsOutput) RegistrySettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettings) interface{} { return v.RegistrySettings }).(pulumi.AnyOutput)
+}
+
+// The release name of the Helm chart.
+func (o AkriConnectorTemplateHelmConfigurationSettingsOutput) ReleaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettings) string { return v.ReleaseName }).(pulumi.StringOutput)
+}
+
+// The name of the repository
+func (o AkriConnectorTemplateHelmConfigurationSettingsOutput) RepositoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettings) string { return v.RepositoryName }).(pulumi.StringOutput)
+}
+
+// A map of values to pass to the helm chart.
+func (o AkriConnectorTemplateHelmConfigurationSettingsOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettings) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+// The version of the Helm chart.
+func (o AkriConnectorTemplateHelmConfigurationSettingsOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettings) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateHelmConfigurationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmConfigurationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmConfigurationSettings)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmConfigurationSettingsPtrOutput) ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutput() AkriConnectorTemplateHelmConfigurationSettingsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmConfigurationSettingsPtrOutput) ToAkriConnectorTemplateHelmConfigurationSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationSettingsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmConfigurationSettingsPtrOutput) Elem() AkriConnectorTemplateHelmConfigurationSettingsOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmConfigurationSettings) AkriConnectorTemplateHelmConfigurationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmConfigurationSettings
+		return ret
+	}).(AkriConnectorTemplateHelmConfigurationSettingsOutput)
+}
+
+// Advanced configuration for the Helm chart.
+// Install, upgrade, and uninstall options for the helm chart such as atomic, wait, timeout, `wait_for_jobs`, and `disable_hooks`.
+func (o AkriConnectorTemplateHelmConfigurationSettingsPtrOutput) AdvancedConfiguration() AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmConfigurationSettings) *AkriConnectorTemplateHelmAdvancedConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedConfiguration
+	}).(AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput)
+}
+
+// The registry settings for the helm chart to be used.
+func (o AkriConnectorTemplateHelmConfigurationSettingsPtrOutput) RegistrySettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmConfigurationSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.RegistrySettings
+	}).(pulumi.AnyOutput)
+}
+
+// The release name of the Helm chart.
+func (o AkriConnectorTemplateHelmConfigurationSettingsPtrOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmConfigurationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReleaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the repository
+func (o AkriConnectorTemplateHelmConfigurationSettingsPtrOutput) RepositoryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmConfigurationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepositoryName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of values to pass to the helm chart.
+func (o AkriConnectorTemplateHelmConfigurationSettingsPtrOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmConfigurationSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringMapOutput)
+}
+
+// The version of the Helm chart.
+func (o AkriConnectorTemplateHelmConfigurationSettingsPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmConfigurationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmConfiguration properties.
+type AkriConnectorTemplateHelmConfigurationSettingsResponse struct {
+	// Advanced configuration for the Helm chart.
+	// Install, upgrade, and uninstall options for the helm chart such as atomic, wait, timeout, `wait_for_jobs`, and `disable_hooks`.
+	AdvancedConfiguration *AkriConnectorTemplateHelmAdvancedConfigurationResponse `pulumi:"advancedConfiguration"`
+	// The registry settings for the helm chart to be used.
+	RegistrySettings interface{} `pulumi:"registrySettings"`
+	// The release name of the Helm chart.
+	ReleaseName string `pulumi:"releaseName"`
+	// The name of the repository
+	RepositoryName string `pulumi:"repositoryName"`
+	// A map of values to pass to the helm chart.
+	Values map[string]string `pulumi:"values"`
+	// The version of the Helm chart.
+	Version string `pulumi:"version"`
+}
+
+// AkriConnectorTemplateHelmConfiguration properties.
+type AkriConnectorTemplateHelmConfigurationSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmConfigurationSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmConfigurationSettingsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmConfigurationSettingsResponseOutput) ToAkriConnectorTemplateHelmConfigurationSettingsResponseOutput() AkriConnectorTemplateHelmConfigurationSettingsResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmConfigurationSettingsResponseOutput) ToAkriConnectorTemplateHelmConfigurationSettingsResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmConfigurationSettingsResponseOutput {
+	return o
+}
+
+// Advanced configuration for the Helm chart.
+// Install, upgrade, and uninstall options for the helm chart such as atomic, wait, timeout, `wait_for_jobs`, and `disable_hooks`.
+func (o AkriConnectorTemplateHelmConfigurationSettingsResponseOutput) AdvancedConfiguration() AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettingsResponse) *AkriConnectorTemplateHelmAdvancedConfigurationResponse {
+		return v.AdvancedConfiguration
+	}).(AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput)
+}
+
+// The registry settings for the helm chart to be used.
+func (o AkriConnectorTemplateHelmConfigurationSettingsResponseOutput) RegistrySettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettingsResponse) interface{} { return v.RegistrySettings }).(pulumi.AnyOutput)
+}
+
+// The release name of the Helm chart.
+func (o AkriConnectorTemplateHelmConfigurationSettingsResponseOutput) ReleaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettingsResponse) string { return v.ReleaseName }).(pulumi.StringOutput)
+}
+
+// The name of the repository
+func (o AkriConnectorTemplateHelmConfigurationSettingsResponseOutput) RepositoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettingsResponse) string { return v.RepositoryName }).(pulumi.StringOutput)
+}
+
+// A map of values to pass to the helm chart.
+func (o AkriConnectorTemplateHelmConfigurationSettingsResponseOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettingsResponse) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+// The version of the Helm chart.
+func (o AkriConnectorTemplateHelmConfigurationSettingsResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmConfigurationSettingsResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// AkriConnectorTemplateHelmContainerRegistry properties.
+type AkriConnectorTemplateHelmContainerRegistry struct {
+	// The registry settings for the container registry.
+	ContainerRegistrySettings AkriConnectorTemplateHelmContainerRegistrySettings `pulumi:"containerRegistrySettings"`
+	// AkriConnectorTemplateHelmRegistrySettingsType values.
+	// Expected value is 'ContainerRegistry'.
+	RegistrySettingsType string `pulumi:"registrySettingsType"`
+}
+
+// AkriConnectorTemplateHelmContainerRegistryInput is an input type that accepts AkriConnectorTemplateHelmContainerRegistryArgs and AkriConnectorTemplateHelmContainerRegistryOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmContainerRegistryInput` via:
+//
+//	AkriConnectorTemplateHelmContainerRegistryArgs{...}
+type AkriConnectorTemplateHelmContainerRegistryInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmContainerRegistryOutput() AkriConnectorTemplateHelmContainerRegistryOutput
+	ToAkriConnectorTemplateHelmContainerRegistryOutputWithContext(context.Context) AkriConnectorTemplateHelmContainerRegistryOutput
+}
+
+// AkriConnectorTemplateHelmContainerRegistry properties.
+type AkriConnectorTemplateHelmContainerRegistryArgs struct {
+	// The registry settings for the container registry.
+	ContainerRegistrySettings AkriConnectorTemplateHelmContainerRegistrySettingsInput `pulumi:"containerRegistrySettings"`
+	// AkriConnectorTemplateHelmRegistrySettingsType values.
+	// Expected value is 'ContainerRegistry'.
+	RegistrySettingsType pulumi.StringInput `pulumi:"registrySettingsType"`
+}
+
+func (AkriConnectorTemplateHelmContainerRegistryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmContainerRegistry)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateHelmContainerRegistryArgs) ToAkriConnectorTemplateHelmContainerRegistryOutput() AkriConnectorTemplateHelmContainerRegistryOutput {
+	return i.ToAkriConnectorTemplateHelmContainerRegistryOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmContainerRegistryArgs) ToAkriConnectorTemplateHelmContainerRegistryOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmContainerRegistryOutput)
+}
+
+func (i AkriConnectorTemplateHelmContainerRegistryArgs) ToAkriConnectorTemplateHelmContainerRegistryPtrOutput() AkriConnectorTemplateHelmContainerRegistryPtrOutput {
+	return i.ToAkriConnectorTemplateHelmContainerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmContainerRegistryArgs) ToAkriConnectorTemplateHelmContainerRegistryPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmContainerRegistryOutput).ToAkriConnectorTemplateHelmContainerRegistryPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateHelmContainerRegistryPtrInput is an input type that accepts AkriConnectorTemplateHelmContainerRegistryArgs, AkriConnectorTemplateHelmContainerRegistryPtr and AkriConnectorTemplateHelmContainerRegistryPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmContainerRegistryPtrInput` via:
+//
+//	        AkriConnectorTemplateHelmContainerRegistryArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateHelmContainerRegistryPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmContainerRegistryPtrOutput() AkriConnectorTemplateHelmContainerRegistryPtrOutput
+	ToAkriConnectorTemplateHelmContainerRegistryPtrOutputWithContext(context.Context) AkriConnectorTemplateHelmContainerRegistryPtrOutput
+}
+
+type akriConnectorTemplateHelmContainerRegistryPtrType AkriConnectorTemplateHelmContainerRegistryArgs
+
+func AkriConnectorTemplateHelmContainerRegistryPtr(v *AkriConnectorTemplateHelmContainerRegistryArgs) AkriConnectorTemplateHelmContainerRegistryPtrInput {
+	return (*akriConnectorTemplateHelmContainerRegistryPtrType)(v)
+}
+
+func (*akriConnectorTemplateHelmContainerRegistryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmContainerRegistry)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateHelmContainerRegistryPtrType) ToAkriConnectorTemplateHelmContainerRegistryPtrOutput() AkriConnectorTemplateHelmContainerRegistryPtrOutput {
+	return i.ToAkriConnectorTemplateHelmContainerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateHelmContainerRegistryPtrType) ToAkriConnectorTemplateHelmContainerRegistryPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmContainerRegistryPtrOutput)
+}
+
+// AkriConnectorTemplateHelmContainerRegistry properties.
+type AkriConnectorTemplateHelmContainerRegistryOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmContainerRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmContainerRegistry)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryOutput) ToAkriConnectorTemplateHelmContainerRegistryOutput() AkriConnectorTemplateHelmContainerRegistryOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryOutput) ToAkriConnectorTemplateHelmContainerRegistryOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistryOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryOutput) ToAkriConnectorTemplateHelmContainerRegistryPtrOutput() AkriConnectorTemplateHelmContainerRegistryPtrOutput {
+	return o.ToAkriConnectorTemplateHelmContainerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryOutput) ToAkriConnectorTemplateHelmContainerRegistryPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateHelmContainerRegistry) *AkriConnectorTemplateHelmContainerRegistry {
+		return &v
+	}).(AkriConnectorTemplateHelmContainerRegistryPtrOutput)
+}
+
+// The registry settings for the container registry.
+func (o AkriConnectorTemplateHelmContainerRegistryOutput) ContainerRegistrySettings() AkriConnectorTemplateHelmContainerRegistrySettingsOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmContainerRegistry) AkriConnectorTemplateHelmContainerRegistrySettings {
+		return v.ContainerRegistrySettings
+	}).(AkriConnectorTemplateHelmContainerRegistrySettingsOutput)
+}
+
+// AkriConnectorTemplateHelmRegistrySettingsType values.
+// Expected value is 'ContainerRegistry'.
+func (o AkriConnectorTemplateHelmContainerRegistryOutput) RegistrySettingsType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmContainerRegistry) string { return v.RegistrySettingsType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateHelmContainerRegistryPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmContainerRegistryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmContainerRegistry)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryPtrOutput) ToAkriConnectorTemplateHelmContainerRegistryPtrOutput() AkriConnectorTemplateHelmContainerRegistryPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryPtrOutput) ToAkriConnectorTemplateHelmContainerRegistryPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistryPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryPtrOutput) Elem() AkriConnectorTemplateHelmContainerRegistryOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistry) AkriConnectorTemplateHelmContainerRegistry {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmContainerRegistry
+		return ret
+	}).(AkriConnectorTemplateHelmContainerRegistryOutput)
+}
+
+// The registry settings for the container registry.
+func (o AkriConnectorTemplateHelmContainerRegistryPtrOutput) ContainerRegistrySettings() AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistry) *AkriConnectorTemplateHelmContainerRegistrySettings {
+		if v == nil {
+			return nil
+		}
+		return &v.ContainerRegistrySettings
+	}).(AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput)
+}
+
+// AkriConnectorTemplateHelmRegistrySettingsType values.
+// Expected value is 'ContainerRegistry'.
+func (o AkriConnectorTemplateHelmContainerRegistryPtrOutput) RegistrySettingsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistrySettingsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmContainerRegistry properties.
+type AkriConnectorTemplateHelmContainerRegistryResponse struct {
+	// The registry settings for the container registry.
+	ContainerRegistrySettings AkriConnectorTemplateHelmContainerRegistrySettingsResponse `pulumi:"containerRegistrySettings"`
+	// AkriConnectorTemplateHelmRegistrySettingsType values.
+	// Expected value is 'ContainerRegistry'.
+	RegistrySettingsType string `pulumi:"registrySettingsType"`
+}
+
+// AkriConnectorTemplateHelmContainerRegistry properties.
+type AkriConnectorTemplateHelmContainerRegistryResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmContainerRegistryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmContainerRegistryResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryResponseOutput) ToAkriConnectorTemplateHelmContainerRegistryResponseOutput() AkriConnectorTemplateHelmContainerRegistryResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryResponseOutput) ToAkriConnectorTemplateHelmContainerRegistryResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistryResponseOutput {
+	return o
+}
+
+// The registry settings for the container registry.
+func (o AkriConnectorTemplateHelmContainerRegistryResponseOutput) ContainerRegistrySettings() AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmContainerRegistryResponse) AkriConnectorTemplateHelmContainerRegistrySettingsResponse {
+		return v.ContainerRegistrySettings
+	}).(AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput)
+}
+
+// AkriConnectorTemplateHelmRegistrySettingsType values.
+// Expected value is 'ContainerRegistry'.
+func (o AkriConnectorTemplateHelmContainerRegistryResponseOutput) RegistrySettingsType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmContainerRegistryResponse) string { return v.RegistrySettingsType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateHelmContainerRegistryResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmContainerRegistryResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmContainerRegistryResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryResponsePtrOutput) ToAkriConnectorTemplateHelmContainerRegistryResponsePtrOutput() AkriConnectorTemplateHelmContainerRegistryResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryResponsePtrOutput) ToAkriConnectorTemplateHelmContainerRegistryResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistryResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistryResponsePtrOutput) Elem() AkriConnectorTemplateHelmContainerRegistryResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistryResponse) AkriConnectorTemplateHelmContainerRegistryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmContainerRegistryResponse
+		return ret
+	}).(AkriConnectorTemplateHelmContainerRegistryResponseOutput)
+}
+
+// The registry settings for the container registry.
+func (o AkriConnectorTemplateHelmContainerRegistryResponsePtrOutput) ContainerRegistrySettings() AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistryResponse) *AkriConnectorTemplateHelmContainerRegistrySettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ContainerRegistrySettings
+	}).(AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput)
+}
+
+// AkriConnectorTemplateHelmRegistrySettingsType values.
+// Expected value is 'ContainerRegistry'.
+func (o AkriConnectorTemplateHelmContainerRegistryResponsePtrOutput) RegistrySettingsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistryResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistrySettingsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmContainerRegistrySettings properties.
+type AkriConnectorTemplateHelmContainerRegistrySettings struct {
+	// Optional reference to a secret in the same namespace to use for pulling the Helm chart.
+	AuthSecretRef *AkriConnectorTemplateHelmAuthSecretRef `pulumi:"authSecretRef"`
+	// The registry to use for the Helm chart.
+	Registry string `pulumi:"registry"`
+}
+
+// AkriConnectorTemplateHelmContainerRegistrySettingsInput is an input type that accepts AkriConnectorTemplateHelmContainerRegistrySettingsArgs and AkriConnectorTemplateHelmContainerRegistrySettingsOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmContainerRegistrySettingsInput` via:
+//
+//	AkriConnectorTemplateHelmContainerRegistrySettingsArgs{...}
+type AkriConnectorTemplateHelmContainerRegistrySettingsInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmContainerRegistrySettingsOutput() AkriConnectorTemplateHelmContainerRegistrySettingsOutput
+	ToAkriConnectorTemplateHelmContainerRegistrySettingsOutputWithContext(context.Context) AkriConnectorTemplateHelmContainerRegistrySettingsOutput
+}
+
+// AkriConnectorTemplateHelmContainerRegistrySettings properties.
+type AkriConnectorTemplateHelmContainerRegistrySettingsArgs struct {
+	// Optional reference to a secret in the same namespace to use for pulling the Helm chart.
+	AuthSecretRef AkriConnectorTemplateHelmAuthSecretRefPtrInput `pulumi:"authSecretRef"`
+	// The registry to use for the Helm chart.
+	Registry pulumi.StringInput `pulumi:"registry"`
+}
+
+func (AkriConnectorTemplateHelmContainerRegistrySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmContainerRegistrySettings)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateHelmContainerRegistrySettingsArgs) ToAkriConnectorTemplateHelmContainerRegistrySettingsOutput() AkriConnectorTemplateHelmContainerRegistrySettingsOutput {
+	return i.ToAkriConnectorTemplateHelmContainerRegistrySettingsOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmContainerRegistrySettingsArgs) ToAkriConnectorTemplateHelmContainerRegistrySettingsOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistrySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmContainerRegistrySettingsOutput)
+}
+
+func (i AkriConnectorTemplateHelmContainerRegistrySettingsArgs) ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput() AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput {
+	return i.ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmContainerRegistrySettingsArgs) ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmContainerRegistrySettingsOutput).ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateHelmContainerRegistrySettingsPtrInput is an input type that accepts AkriConnectorTemplateHelmContainerRegistrySettingsArgs, AkriConnectorTemplateHelmContainerRegistrySettingsPtr and AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmContainerRegistrySettingsPtrInput` via:
+//
+//	        AkriConnectorTemplateHelmContainerRegistrySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateHelmContainerRegistrySettingsPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput() AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput
+	ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutputWithContext(context.Context) AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput
+}
+
+type akriConnectorTemplateHelmContainerRegistrySettingsPtrType AkriConnectorTemplateHelmContainerRegistrySettingsArgs
+
+func AkriConnectorTemplateHelmContainerRegistrySettingsPtr(v *AkriConnectorTemplateHelmContainerRegistrySettingsArgs) AkriConnectorTemplateHelmContainerRegistrySettingsPtrInput {
+	return (*akriConnectorTemplateHelmContainerRegistrySettingsPtrType)(v)
+}
+
+func (*akriConnectorTemplateHelmContainerRegistrySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmContainerRegistrySettings)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateHelmContainerRegistrySettingsPtrType) ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput() AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput {
+	return i.ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateHelmContainerRegistrySettingsPtrType) ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput)
+}
+
+// AkriConnectorTemplateHelmContainerRegistrySettings properties.
+type AkriConnectorTemplateHelmContainerRegistrySettingsOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmContainerRegistrySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmContainerRegistrySettings)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsOutput) ToAkriConnectorTemplateHelmContainerRegistrySettingsOutput() AkriConnectorTemplateHelmContainerRegistrySettingsOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsOutput) ToAkriConnectorTemplateHelmContainerRegistrySettingsOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistrySettingsOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsOutput) ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput() AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput {
+	return o.ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsOutput) ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateHelmContainerRegistrySettings) *AkriConnectorTemplateHelmContainerRegistrySettings {
+		return &v
+	}).(AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput)
+}
+
+// Optional reference to a secret in the same namespace to use for pulling the Helm chart.
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsOutput) AuthSecretRef() AkriConnectorTemplateHelmAuthSecretRefPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmContainerRegistrySettings) *AkriConnectorTemplateHelmAuthSecretRef {
+		return v.AuthSecretRef
+	}).(AkriConnectorTemplateHelmAuthSecretRefPtrOutput)
+}
+
+// The registry to use for the Helm chart.
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsOutput) Registry() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmContainerRegistrySettings) string { return v.Registry }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmContainerRegistrySettings)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput) ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput() AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput) ToAkriConnectorTemplateHelmContainerRegistrySettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput) Elem() AkriConnectorTemplateHelmContainerRegistrySettingsOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistrySettings) AkriConnectorTemplateHelmContainerRegistrySettings {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmContainerRegistrySettings
+		return ret
+	}).(AkriConnectorTemplateHelmContainerRegistrySettingsOutput)
+}
+
+// Optional reference to a secret in the same namespace to use for pulling the Helm chart.
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput) AuthSecretRef() AkriConnectorTemplateHelmAuthSecretRefPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistrySettings) *AkriConnectorTemplateHelmAuthSecretRef {
+		if v == nil {
+			return nil
+		}
+		return v.AuthSecretRef
+	}).(AkriConnectorTemplateHelmAuthSecretRefPtrOutput)
+}
+
+// The registry to use for the Helm chart.
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput) Registry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistrySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmContainerRegistrySettings properties.
+type AkriConnectorTemplateHelmContainerRegistrySettingsResponse struct {
+	// Optional reference to a secret in the same namespace to use for pulling the Helm chart.
+	AuthSecretRef *AkriConnectorTemplateHelmAuthSecretRefResponse `pulumi:"authSecretRef"`
+	// The registry to use for the Helm chart.
+	Registry string `pulumi:"registry"`
+}
+
+// AkriConnectorTemplateHelmContainerRegistrySettings properties.
+type AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmContainerRegistrySettingsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput) ToAkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput() AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput) ToAkriConnectorTemplateHelmContainerRegistrySettingsResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput {
+	return o
+}
+
+// Optional reference to a secret in the same namespace to use for pulling the Helm chart.
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput) AuthSecretRef() AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmContainerRegistrySettingsResponse) *AkriConnectorTemplateHelmAuthSecretRefResponse {
+		return v.AuthSecretRef
+	}).(AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput)
+}
+
+// The registry to use for the Helm chart.
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput) Registry() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmContainerRegistrySettingsResponse) string { return v.Registry }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmContainerRegistrySettingsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput) ToAkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput() AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput) ToAkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput) Elem() AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistrySettingsResponse) AkriConnectorTemplateHelmContainerRegistrySettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmContainerRegistrySettingsResponse
+		return ret
+	}).(AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput)
+}
+
+// Optional reference to a secret in the same namespace to use for pulling the Helm chart.
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput) AuthSecretRef() AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistrySettingsResponse) *AkriConnectorTemplateHelmAuthSecretRefResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AuthSecretRef
+	}).(AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput)
+}
+
+// The registry to use for the Helm chart.
+func (o AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput) Registry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmContainerRegistrySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmDeleteConfiguration properties.
+type AkriConnectorTemplateHelmDeleteConfiguration struct {
+	// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+	Atomic *bool `pulumi:"atomic"`
+	// Disable pre/post upgrade hooks for the operation.
+	DisableHooks *bool `pulumi:"disableHooks"`
+	// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+	Timeout *int `pulumi:"timeout"`
+	// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+	Wait *bool `pulumi:"wait"`
+	// If set, the operation will wait for jobs to complete before marking the release as successful.
+	WaitForJobs *bool `pulumi:"waitForJobs"`
+}
+
+// AkriConnectorTemplateHelmDeleteConfigurationInput is an input type that accepts AkriConnectorTemplateHelmDeleteConfigurationArgs and AkriConnectorTemplateHelmDeleteConfigurationOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmDeleteConfigurationInput` via:
+//
+//	AkriConnectorTemplateHelmDeleteConfigurationArgs{...}
+type AkriConnectorTemplateHelmDeleteConfigurationInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmDeleteConfigurationOutput() AkriConnectorTemplateHelmDeleteConfigurationOutput
+	ToAkriConnectorTemplateHelmDeleteConfigurationOutputWithContext(context.Context) AkriConnectorTemplateHelmDeleteConfigurationOutput
+}
+
+// AkriConnectorTemplateHelmDeleteConfiguration properties.
+type AkriConnectorTemplateHelmDeleteConfigurationArgs struct {
+	// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+	Atomic pulumi.BoolPtrInput `pulumi:"atomic"`
+	// Disable pre/post upgrade hooks for the operation.
+	DisableHooks pulumi.BoolPtrInput `pulumi:"disableHooks"`
+	// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+	Wait pulumi.BoolPtrInput `pulumi:"wait"`
+	// If set, the operation will wait for jobs to complete before marking the release as successful.
+	WaitForJobs pulumi.BoolPtrInput `pulumi:"waitForJobs"`
+}
+
+func (AkriConnectorTemplateHelmDeleteConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmDeleteConfiguration)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateHelmDeleteConfigurationArgs) ToAkriConnectorTemplateHelmDeleteConfigurationOutput() AkriConnectorTemplateHelmDeleteConfigurationOutput {
+	return i.ToAkriConnectorTemplateHelmDeleteConfigurationOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmDeleteConfigurationArgs) ToAkriConnectorTemplateHelmDeleteConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmDeleteConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmDeleteConfigurationOutput)
+}
+
+func (i AkriConnectorTemplateHelmDeleteConfigurationArgs) ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutput() AkriConnectorTemplateHelmDeleteConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmDeleteConfigurationArgs) ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmDeleteConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmDeleteConfigurationOutput).ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateHelmDeleteConfigurationPtrInput is an input type that accepts AkriConnectorTemplateHelmDeleteConfigurationArgs, AkriConnectorTemplateHelmDeleteConfigurationPtr and AkriConnectorTemplateHelmDeleteConfigurationPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmDeleteConfigurationPtrInput` via:
+//
+//	        AkriConnectorTemplateHelmDeleteConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateHelmDeleteConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutput() AkriConnectorTemplateHelmDeleteConfigurationPtrOutput
+	ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutputWithContext(context.Context) AkriConnectorTemplateHelmDeleteConfigurationPtrOutput
+}
+
+type akriConnectorTemplateHelmDeleteConfigurationPtrType AkriConnectorTemplateHelmDeleteConfigurationArgs
+
+func AkriConnectorTemplateHelmDeleteConfigurationPtr(v *AkriConnectorTemplateHelmDeleteConfigurationArgs) AkriConnectorTemplateHelmDeleteConfigurationPtrInput {
+	return (*akriConnectorTemplateHelmDeleteConfigurationPtrType)(v)
+}
+
+func (*akriConnectorTemplateHelmDeleteConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmDeleteConfiguration)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateHelmDeleteConfigurationPtrType) ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutput() AkriConnectorTemplateHelmDeleteConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateHelmDeleteConfigurationPtrType) ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmDeleteConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmDeleteConfigurationPtrOutput)
+}
+
+// AkriConnectorTemplateHelmDeleteConfiguration properties.
+type AkriConnectorTemplateHelmDeleteConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmDeleteConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmDeleteConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationOutput) ToAkriConnectorTemplateHelmDeleteConfigurationOutput() AkriConnectorTemplateHelmDeleteConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationOutput) ToAkriConnectorTemplateHelmDeleteConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmDeleteConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationOutput) ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutput() AkriConnectorTemplateHelmDeleteConfigurationPtrOutput {
+	return o.ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationOutput) ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmDeleteConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateHelmDeleteConfiguration) *AkriConnectorTemplateHelmDeleteConfiguration {
+		return &v
+	}).(AkriConnectorTemplateHelmDeleteConfigurationPtrOutput)
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmDeleteConfigurationOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmDeleteConfiguration) *bool { return v.Atomic }).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmDeleteConfigurationOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmDeleteConfiguration) *bool { return v.DisableHooks }).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmDeleteConfigurationOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmDeleteConfiguration) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmDeleteConfigurationOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmDeleteConfiguration) *bool { return v.Wait }).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmDeleteConfigurationOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmDeleteConfiguration) *bool { return v.WaitForJobs }).(pulumi.BoolPtrOutput)
+}
+
+type AkriConnectorTemplateHelmDeleteConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmDeleteConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmDeleteConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationPtrOutput) ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutput() AkriConnectorTemplateHelmDeleteConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationPtrOutput) ToAkriConnectorTemplateHelmDeleteConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmDeleteConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationPtrOutput) Elem() AkriConnectorTemplateHelmDeleteConfigurationOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfiguration) AkriConnectorTemplateHelmDeleteConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmDeleteConfiguration
+		return ret
+	}).(AkriConnectorTemplateHelmDeleteConfigurationOutput)
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmDeleteConfigurationPtrOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Atomic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmDeleteConfigurationPtrOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableHooks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmDeleteConfigurationPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmDeleteConfigurationPtrOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmDeleteConfigurationPtrOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForJobs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// AkriConnectorTemplateHelmDeleteConfiguration properties.
+type AkriConnectorTemplateHelmDeleteConfigurationResponse struct {
+	// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+	Atomic *bool `pulumi:"atomic"`
+	// Disable pre/post upgrade hooks for the operation.
+	DisableHooks *bool `pulumi:"disableHooks"`
+	// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+	Timeout *int `pulumi:"timeout"`
+	// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+	Wait *bool `pulumi:"wait"`
+	// If set, the operation will wait for jobs to complete before marking the release as successful.
+	WaitForJobs *bool `pulumi:"waitForJobs"`
+}
+
+// AkriConnectorTemplateHelmDeleteConfiguration properties.
+type AkriConnectorTemplateHelmDeleteConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmDeleteConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmDeleteConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponseOutput) ToAkriConnectorTemplateHelmDeleteConfigurationResponseOutput() AkriConnectorTemplateHelmDeleteConfigurationResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponseOutput) ToAkriConnectorTemplateHelmDeleteConfigurationResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmDeleteConfigurationResponseOutput {
+	return o
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponseOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmDeleteConfigurationResponse) *bool { return v.Atomic }).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponseOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmDeleteConfigurationResponse) *bool { return v.DisableHooks }).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponseOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmDeleteConfigurationResponse) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponseOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmDeleteConfigurationResponse) *bool { return v.Wait }).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponseOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmDeleteConfigurationResponse) *bool { return v.WaitForJobs }).(pulumi.BoolPtrOutput)
+}
+
+type AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmDeleteConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput) ToAkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput() AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput) ToAkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput) Elem() AkriConnectorTemplateHelmDeleteConfigurationResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfigurationResponse) AkriConnectorTemplateHelmDeleteConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmDeleteConfigurationResponse
+		return ret
+	}).(AkriConnectorTemplateHelmDeleteConfigurationResponseOutput)
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Atomic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableHooks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmDeleteConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForJobs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// AkriConnectorTemplateHelmInstallConfiguration properties.
+type AkriConnectorTemplateHelmInstallConfiguration struct {
+	// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+	Atomic *bool `pulumi:"atomic"`
+	// Disable pre/post upgrade hooks for the operation.
+	DisableHooks *bool `pulumi:"disableHooks"`
+	// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+	Timeout *int `pulumi:"timeout"`
+	// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+	Wait *bool `pulumi:"wait"`
+	// If set, the operation will wait for jobs to complete before marking the release as successful.
+	WaitForJobs *bool `pulumi:"waitForJobs"`
+}
+
+// AkriConnectorTemplateHelmInstallConfigurationInput is an input type that accepts AkriConnectorTemplateHelmInstallConfigurationArgs and AkriConnectorTemplateHelmInstallConfigurationOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmInstallConfigurationInput` via:
+//
+//	AkriConnectorTemplateHelmInstallConfigurationArgs{...}
+type AkriConnectorTemplateHelmInstallConfigurationInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmInstallConfigurationOutput() AkriConnectorTemplateHelmInstallConfigurationOutput
+	ToAkriConnectorTemplateHelmInstallConfigurationOutputWithContext(context.Context) AkriConnectorTemplateHelmInstallConfigurationOutput
+}
+
+// AkriConnectorTemplateHelmInstallConfiguration properties.
+type AkriConnectorTemplateHelmInstallConfigurationArgs struct {
+	// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+	Atomic pulumi.BoolPtrInput `pulumi:"atomic"`
+	// Disable pre/post upgrade hooks for the operation.
+	DisableHooks pulumi.BoolPtrInput `pulumi:"disableHooks"`
+	// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+	Wait pulumi.BoolPtrInput `pulumi:"wait"`
+	// If set, the operation will wait for jobs to complete before marking the release as successful.
+	WaitForJobs pulumi.BoolPtrInput `pulumi:"waitForJobs"`
+}
+
+func (AkriConnectorTemplateHelmInstallConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmInstallConfiguration)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateHelmInstallConfigurationArgs) ToAkriConnectorTemplateHelmInstallConfigurationOutput() AkriConnectorTemplateHelmInstallConfigurationOutput {
+	return i.ToAkriConnectorTemplateHelmInstallConfigurationOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmInstallConfigurationArgs) ToAkriConnectorTemplateHelmInstallConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmInstallConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmInstallConfigurationOutput)
+}
+
+func (i AkriConnectorTemplateHelmInstallConfigurationArgs) ToAkriConnectorTemplateHelmInstallConfigurationPtrOutput() AkriConnectorTemplateHelmInstallConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateHelmInstallConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmInstallConfigurationArgs) ToAkriConnectorTemplateHelmInstallConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmInstallConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmInstallConfigurationOutput).ToAkriConnectorTemplateHelmInstallConfigurationPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateHelmInstallConfigurationPtrInput is an input type that accepts AkriConnectorTemplateHelmInstallConfigurationArgs, AkriConnectorTemplateHelmInstallConfigurationPtr and AkriConnectorTemplateHelmInstallConfigurationPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmInstallConfigurationPtrInput` via:
+//
+//	        AkriConnectorTemplateHelmInstallConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateHelmInstallConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmInstallConfigurationPtrOutput() AkriConnectorTemplateHelmInstallConfigurationPtrOutput
+	ToAkriConnectorTemplateHelmInstallConfigurationPtrOutputWithContext(context.Context) AkriConnectorTemplateHelmInstallConfigurationPtrOutput
+}
+
+type akriConnectorTemplateHelmInstallConfigurationPtrType AkriConnectorTemplateHelmInstallConfigurationArgs
+
+func AkriConnectorTemplateHelmInstallConfigurationPtr(v *AkriConnectorTemplateHelmInstallConfigurationArgs) AkriConnectorTemplateHelmInstallConfigurationPtrInput {
+	return (*akriConnectorTemplateHelmInstallConfigurationPtrType)(v)
+}
+
+func (*akriConnectorTemplateHelmInstallConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmInstallConfiguration)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateHelmInstallConfigurationPtrType) ToAkriConnectorTemplateHelmInstallConfigurationPtrOutput() AkriConnectorTemplateHelmInstallConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateHelmInstallConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateHelmInstallConfigurationPtrType) ToAkriConnectorTemplateHelmInstallConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmInstallConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmInstallConfigurationPtrOutput)
+}
+
+// AkriConnectorTemplateHelmInstallConfiguration properties.
+type AkriConnectorTemplateHelmInstallConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmInstallConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmInstallConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationOutput) ToAkriConnectorTemplateHelmInstallConfigurationOutput() AkriConnectorTemplateHelmInstallConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationOutput) ToAkriConnectorTemplateHelmInstallConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmInstallConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationOutput) ToAkriConnectorTemplateHelmInstallConfigurationPtrOutput() AkriConnectorTemplateHelmInstallConfigurationPtrOutput {
+	return o.ToAkriConnectorTemplateHelmInstallConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationOutput) ToAkriConnectorTemplateHelmInstallConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmInstallConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateHelmInstallConfiguration) *AkriConnectorTemplateHelmInstallConfiguration {
+		return &v
+	}).(AkriConnectorTemplateHelmInstallConfigurationPtrOutput)
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmInstallConfigurationOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmInstallConfiguration) *bool { return v.Atomic }).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmInstallConfigurationOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmInstallConfiguration) *bool { return v.DisableHooks }).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmInstallConfigurationOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmInstallConfiguration) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmInstallConfigurationOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmInstallConfiguration) *bool { return v.Wait }).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmInstallConfigurationOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmInstallConfiguration) *bool { return v.WaitForJobs }).(pulumi.BoolPtrOutput)
+}
+
+type AkriConnectorTemplateHelmInstallConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmInstallConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmInstallConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationPtrOutput) ToAkriConnectorTemplateHelmInstallConfigurationPtrOutput() AkriConnectorTemplateHelmInstallConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationPtrOutput) ToAkriConnectorTemplateHelmInstallConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmInstallConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationPtrOutput) Elem() AkriConnectorTemplateHelmInstallConfigurationOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfiguration) AkriConnectorTemplateHelmInstallConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmInstallConfiguration
+		return ret
+	}).(AkriConnectorTemplateHelmInstallConfigurationOutput)
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmInstallConfigurationPtrOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Atomic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmInstallConfigurationPtrOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableHooks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmInstallConfigurationPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmInstallConfigurationPtrOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmInstallConfigurationPtrOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForJobs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// AkriConnectorTemplateHelmInstallConfiguration properties.
+type AkriConnectorTemplateHelmInstallConfigurationResponse struct {
+	// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+	Atomic *bool `pulumi:"atomic"`
+	// Disable pre/post upgrade hooks for the operation.
+	DisableHooks *bool `pulumi:"disableHooks"`
+	// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+	Timeout *int `pulumi:"timeout"`
+	// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+	Wait *bool `pulumi:"wait"`
+	// If set, the operation will wait for jobs to complete before marking the release as successful.
+	WaitForJobs *bool `pulumi:"waitForJobs"`
+}
+
+// AkriConnectorTemplateHelmInstallConfiguration properties.
+type AkriConnectorTemplateHelmInstallConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmInstallConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmInstallConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationResponseOutput) ToAkriConnectorTemplateHelmInstallConfigurationResponseOutput() AkriConnectorTemplateHelmInstallConfigurationResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationResponseOutput) ToAkriConnectorTemplateHelmInstallConfigurationResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmInstallConfigurationResponseOutput {
+	return o
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmInstallConfigurationResponseOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmInstallConfigurationResponse) *bool { return v.Atomic }).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmInstallConfigurationResponseOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmInstallConfigurationResponse) *bool { return v.DisableHooks }).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmInstallConfigurationResponseOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmInstallConfigurationResponse) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmInstallConfigurationResponseOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmInstallConfigurationResponse) *bool { return v.Wait }).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmInstallConfigurationResponseOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmInstallConfigurationResponse) *bool { return v.WaitForJobs }).(pulumi.BoolPtrOutput)
+}
+
+type AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmInstallConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput) ToAkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput() AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput) ToAkriConnectorTemplateHelmInstallConfigurationResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput) Elem() AkriConnectorTemplateHelmInstallConfigurationResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfigurationResponse) AkriConnectorTemplateHelmInstallConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmInstallConfigurationResponse
+		return ret
+	}).(AkriConnectorTemplateHelmInstallConfigurationResponseOutput)
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Atomic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableHooks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmInstallConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForJobs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// AkriConnectorTemplateHelmRegistryEndpointRef properties.
+type AkriConnectorTemplateHelmRegistryEndpointRef struct {
+	// The name of the registry endpoint.
+	RegistryEndpointRef string `pulumi:"registryEndpointRef"`
+	// AkriConnectorTemplateHelmRegistrySettingsType values.
+	// Expected value is 'RegistryEndpointRef'.
+	RegistrySettingsType string `pulumi:"registrySettingsType"`
+}
+
+// AkriConnectorTemplateHelmRegistryEndpointRefInput is an input type that accepts AkriConnectorTemplateHelmRegistryEndpointRefArgs and AkriConnectorTemplateHelmRegistryEndpointRefOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmRegistryEndpointRefInput` via:
+//
+//	AkriConnectorTemplateHelmRegistryEndpointRefArgs{...}
+type AkriConnectorTemplateHelmRegistryEndpointRefInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmRegistryEndpointRefOutput() AkriConnectorTemplateHelmRegistryEndpointRefOutput
+	ToAkriConnectorTemplateHelmRegistryEndpointRefOutputWithContext(context.Context) AkriConnectorTemplateHelmRegistryEndpointRefOutput
+}
+
+// AkriConnectorTemplateHelmRegistryEndpointRef properties.
+type AkriConnectorTemplateHelmRegistryEndpointRefArgs struct {
+	// The name of the registry endpoint.
+	RegistryEndpointRef pulumi.StringInput `pulumi:"registryEndpointRef"`
+	// AkriConnectorTemplateHelmRegistrySettingsType values.
+	// Expected value is 'RegistryEndpointRef'.
+	RegistrySettingsType pulumi.StringInput `pulumi:"registrySettingsType"`
+}
+
+func (AkriConnectorTemplateHelmRegistryEndpointRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmRegistryEndpointRef)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateHelmRegistryEndpointRefArgs) ToAkriConnectorTemplateHelmRegistryEndpointRefOutput() AkriConnectorTemplateHelmRegistryEndpointRefOutput {
+	return i.ToAkriConnectorTemplateHelmRegistryEndpointRefOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmRegistryEndpointRefArgs) ToAkriConnectorTemplateHelmRegistryEndpointRefOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmRegistryEndpointRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmRegistryEndpointRefOutput)
+}
+
+func (i AkriConnectorTemplateHelmRegistryEndpointRefArgs) ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutput() AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput {
+	return i.ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmRegistryEndpointRefArgs) ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmRegistryEndpointRefOutput).ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateHelmRegistryEndpointRefPtrInput is an input type that accepts AkriConnectorTemplateHelmRegistryEndpointRefArgs, AkriConnectorTemplateHelmRegistryEndpointRefPtr and AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmRegistryEndpointRefPtrInput` via:
+//
+//	        AkriConnectorTemplateHelmRegistryEndpointRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateHelmRegistryEndpointRefPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutput() AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput
+	ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutputWithContext(context.Context) AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput
+}
+
+type akriConnectorTemplateHelmRegistryEndpointRefPtrType AkriConnectorTemplateHelmRegistryEndpointRefArgs
+
+func AkriConnectorTemplateHelmRegistryEndpointRefPtr(v *AkriConnectorTemplateHelmRegistryEndpointRefArgs) AkriConnectorTemplateHelmRegistryEndpointRefPtrInput {
+	return (*akriConnectorTemplateHelmRegistryEndpointRefPtrType)(v)
+}
+
+func (*akriConnectorTemplateHelmRegistryEndpointRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmRegistryEndpointRef)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateHelmRegistryEndpointRefPtrType) ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutput() AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput {
+	return i.ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateHelmRegistryEndpointRefPtrType) ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput)
+}
+
+// AkriConnectorTemplateHelmRegistryEndpointRef properties.
+type AkriConnectorTemplateHelmRegistryEndpointRefOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmRegistryEndpointRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmRegistryEndpointRef)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefOutput) ToAkriConnectorTemplateHelmRegistryEndpointRefOutput() AkriConnectorTemplateHelmRegistryEndpointRefOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefOutput) ToAkriConnectorTemplateHelmRegistryEndpointRefOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmRegistryEndpointRefOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefOutput) ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutput() AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput {
+	return o.ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefOutput) ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateHelmRegistryEndpointRef) *AkriConnectorTemplateHelmRegistryEndpointRef {
+		return &v
+	}).(AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput)
+}
+
+// The name of the registry endpoint.
+func (o AkriConnectorTemplateHelmRegistryEndpointRefOutput) RegistryEndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmRegistryEndpointRef) string { return v.RegistryEndpointRef }).(pulumi.StringOutput)
+}
+
+// AkriConnectorTemplateHelmRegistrySettingsType values.
+// Expected value is 'RegistryEndpointRef'.
+func (o AkriConnectorTemplateHelmRegistryEndpointRefOutput) RegistrySettingsType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmRegistryEndpointRef) string { return v.RegistrySettingsType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmRegistryEndpointRef)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput) ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutput() AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput) ToAkriConnectorTemplateHelmRegistryEndpointRefPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput) Elem() AkriConnectorTemplateHelmRegistryEndpointRefOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmRegistryEndpointRef) AkriConnectorTemplateHelmRegistryEndpointRef {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmRegistryEndpointRef
+		return ret
+	}).(AkriConnectorTemplateHelmRegistryEndpointRefOutput)
+}
+
+// The name of the registry endpoint.
+func (o AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput) RegistryEndpointRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmRegistryEndpointRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistryEndpointRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmRegistrySettingsType values.
+// Expected value is 'RegistryEndpointRef'.
+func (o AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput) RegistrySettingsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmRegistryEndpointRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistrySettingsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmRegistryEndpointRef properties.
+type AkriConnectorTemplateHelmRegistryEndpointRefResponse struct {
+	// The name of the registry endpoint.
+	RegistryEndpointRef string `pulumi:"registryEndpointRef"`
+	// AkriConnectorTemplateHelmRegistrySettingsType values.
+	// Expected value is 'RegistryEndpointRef'.
+	RegistrySettingsType string `pulumi:"registrySettingsType"`
+}
+
+// AkriConnectorTemplateHelmRegistryEndpointRef properties.
+type AkriConnectorTemplateHelmRegistryEndpointRefResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmRegistryEndpointRefResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmRegistryEndpointRefResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefResponseOutput) ToAkriConnectorTemplateHelmRegistryEndpointRefResponseOutput() AkriConnectorTemplateHelmRegistryEndpointRefResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefResponseOutput) ToAkriConnectorTemplateHelmRegistryEndpointRefResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmRegistryEndpointRefResponseOutput {
+	return o
+}
+
+// The name of the registry endpoint.
+func (o AkriConnectorTemplateHelmRegistryEndpointRefResponseOutput) RegistryEndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmRegistryEndpointRefResponse) string { return v.RegistryEndpointRef }).(pulumi.StringOutput)
+}
+
+// AkriConnectorTemplateHelmRegistrySettingsType values.
+// Expected value is 'RegistryEndpointRef'.
+func (o AkriConnectorTemplateHelmRegistryEndpointRefResponseOutput) RegistrySettingsType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmRegistryEndpointRefResponse) string { return v.RegistrySettingsType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmRegistryEndpointRefResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutput) ToAkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutput() AkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutput) ToAkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutput) Elem() AkriConnectorTemplateHelmRegistryEndpointRefResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmRegistryEndpointRefResponse) AkriConnectorTemplateHelmRegistryEndpointRefResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmRegistryEndpointRefResponse
+		return ret
+	}).(AkriConnectorTemplateHelmRegistryEndpointRefResponseOutput)
+}
+
+// The name of the registry endpoint.
+func (o AkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutput) RegistryEndpointRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmRegistryEndpointRefResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistryEndpointRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmRegistrySettingsType values.
+// Expected value is 'RegistryEndpointRef'.
+func (o AkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutput) RegistrySettingsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmRegistryEndpointRefResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistrySettingsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateHelmUpgradeConfiguration properties.
+type AkriConnectorTemplateHelmUpgradeConfiguration struct {
+	// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+	Atomic *bool `pulumi:"atomic"`
+	// Disable pre/post upgrade hooks for the operation.
+	DisableHooks *bool `pulumi:"disableHooks"`
+	// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+	Timeout *int `pulumi:"timeout"`
+	// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+	Wait *bool `pulumi:"wait"`
+	// If set, the operation will wait for jobs to complete before marking the release as successful.
+	WaitForJobs *bool `pulumi:"waitForJobs"`
+}
+
+// AkriConnectorTemplateHelmUpgradeConfigurationInput is an input type that accepts AkriConnectorTemplateHelmUpgradeConfigurationArgs and AkriConnectorTemplateHelmUpgradeConfigurationOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmUpgradeConfigurationInput` via:
+//
+//	AkriConnectorTemplateHelmUpgradeConfigurationArgs{...}
+type AkriConnectorTemplateHelmUpgradeConfigurationInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmUpgradeConfigurationOutput() AkriConnectorTemplateHelmUpgradeConfigurationOutput
+	ToAkriConnectorTemplateHelmUpgradeConfigurationOutputWithContext(context.Context) AkriConnectorTemplateHelmUpgradeConfigurationOutput
+}
+
+// AkriConnectorTemplateHelmUpgradeConfiguration properties.
+type AkriConnectorTemplateHelmUpgradeConfigurationArgs struct {
+	// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+	Atomic pulumi.BoolPtrInput `pulumi:"atomic"`
+	// Disable pre/post upgrade hooks for the operation.
+	DisableHooks pulumi.BoolPtrInput `pulumi:"disableHooks"`
+	// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+	Wait pulumi.BoolPtrInput `pulumi:"wait"`
+	// If set, the operation will wait for jobs to complete before marking the release as successful.
+	WaitForJobs pulumi.BoolPtrInput `pulumi:"waitForJobs"`
+}
+
+func (AkriConnectorTemplateHelmUpgradeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmUpgradeConfiguration)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateHelmUpgradeConfigurationArgs) ToAkriConnectorTemplateHelmUpgradeConfigurationOutput() AkriConnectorTemplateHelmUpgradeConfigurationOutput {
+	return i.ToAkriConnectorTemplateHelmUpgradeConfigurationOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmUpgradeConfigurationArgs) ToAkriConnectorTemplateHelmUpgradeConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmUpgradeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmUpgradeConfigurationOutput)
+}
+
+func (i AkriConnectorTemplateHelmUpgradeConfigurationArgs) ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutput() AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateHelmUpgradeConfigurationArgs) ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmUpgradeConfigurationOutput).ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateHelmUpgradeConfigurationPtrInput is an input type that accepts AkriConnectorTemplateHelmUpgradeConfigurationArgs, AkriConnectorTemplateHelmUpgradeConfigurationPtr and AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateHelmUpgradeConfigurationPtrInput` via:
+//
+//	        AkriConnectorTemplateHelmUpgradeConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateHelmUpgradeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutput() AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput
+	ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutputWithContext(context.Context) AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput
+}
+
+type akriConnectorTemplateHelmUpgradeConfigurationPtrType AkriConnectorTemplateHelmUpgradeConfigurationArgs
+
+func AkriConnectorTemplateHelmUpgradeConfigurationPtr(v *AkriConnectorTemplateHelmUpgradeConfigurationArgs) AkriConnectorTemplateHelmUpgradeConfigurationPtrInput {
+	return (*akriConnectorTemplateHelmUpgradeConfigurationPtrType)(v)
+}
+
+func (*akriConnectorTemplateHelmUpgradeConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmUpgradeConfiguration)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateHelmUpgradeConfigurationPtrType) ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutput() AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateHelmUpgradeConfigurationPtrType) ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput)
+}
+
+// AkriConnectorTemplateHelmUpgradeConfiguration properties.
+type AkriConnectorTemplateHelmUpgradeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmUpgradeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmUpgradeConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationOutput) ToAkriConnectorTemplateHelmUpgradeConfigurationOutput() AkriConnectorTemplateHelmUpgradeConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationOutput) ToAkriConnectorTemplateHelmUpgradeConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmUpgradeConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationOutput) ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutput() AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput {
+	return o.ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationOutput) ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateHelmUpgradeConfiguration) *AkriConnectorTemplateHelmUpgradeConfiguration {
+		return &v
+	}).(AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput)
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmUpgradeConfiguration) *bool { return v.Atomic }).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmUpgradeConfiguration) *bool { return v.DisableHooks }).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmUpgradeConfigurationOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmUpgradeConfiguration) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmUpgradeConfiguration) *bool { return v.Wait }).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmUpgradeConfiguration) *bool { return v.WaitForJobs }).(pulumi.BoolPtrOutput)
+}
+
+type AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmUpgradeConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput) ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutput() AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput) ToAkriConnectorTemplateHelmUpgradeConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput) Elem() AkriConnectorTemplateHelmUpgradeConfigurationOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfiguration) AkriConnectorTemplateHelmUpgradeConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmUpgradeConfiguration
+		return ret
+	}).(AkriConnectorTemplateHelmUpgradeConfigurationOutput)
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Atomic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableHooks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForJobs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// AkriConnectorTemplateHelmUpgradeConfiguration properties.
+type AkriConnectorTemplateHelmUpgradeConfigurationResponse struct {
+	// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+	Atomic *bool `pulumi:"atomic"`
+	// Disable pre/post upgrade hooks for the operation.
+	DisableHooks *bool `pulumi:"disableHooks"`
+	// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+	Timeout *int `pulumi:"timeout"`
+	// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+	Wait *bool `pulumi:"wait"`
+	// If set, the operation will wait for jobs to complete before marking the release as successful.
+	WaitForJobs *bool `pulumi:"waitForJobs"`
+}
+
+// AkriConnectorTemplateHelmUpgradeConfiguration properties.
+type AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateHelmUpgradeConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput) ToAkriConnectorTemplateHelmUpgradeConfigurationResponseOutput() AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput) ToAkriConnectorTemplateHelmUpgradeConfigurationResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput {
+	return o
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmUpgradeConfigurationResponse) *bool { return v.Atomic }).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmUpgradeConfigurationResponse) *bool { return v.DisableHooks }).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmUpgradeConfigurationResponse) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmUpgradeConfigurationResponse) *bool { return v.Wait }).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateHelmUpgradeConfigurationResponse) *bool { return v.WaitForJobs }).(pulumi.BoolPtrOutput)
+}
+
+type AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateHelmUpgradeConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput) ToAkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput() AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput) ToAkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput) Elem() AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfigurationResponse) AkriConnectorTemplateHelmUpgradeConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateHelmUpgradeConfigurationResponse
+		return ret
+	}).(AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput)
+}
+
+// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput) Atomic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Atomic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Disable pre/post upgrade hooks for the operation.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput) DisableHooks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableHooks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set, the operation will wait for jobs to complete before marking the release as successful.
+func (o AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput) WaitForJobs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateHelmUpgradeConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForJobs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// AkriConnectorTemplateManagedConfiguration properties.
+type AkriConnectorTemplateManagedConfiguration struct {
+	// The managed configuration settings.
+	ManagedConfigurationSettings interface{} `pulumi:"managedConfigurationSettings"`
+	// Runtime configuration types.
+	// Expected value is 'ManagedConfiguration'.
+	RuntimeConfigurationType string `pulumi:"runtimeConfigurationType"`
+}
+
+// AkriConnectorTemplateManagedConfigurationInput is an input type that accepts AkriConnectorTemplateManagedConfigurationArgs and AkriConnectorTemplateManagedConfigurationOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateManagedConfigurationInput` via:
+//
+//	AkriConnectorTemplateManagedConfigurationArgs{...}
+type AkriConnectorTemplateManagedConfigurationInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateManagedConfigurationOutput() AkriConnectorTemplateManagedConfigurationOutput
+	ToAkriConnectorTemplateManagedConfigurationOutputWithContext(context.Context) AkriConnectorTemplateManagedConfigurationOutput
+}
+
+// AkriConnectorTemplateManagedConfiguration properties.
+type AkriConnectorTemplateManagedConfigurationArgs struct {
+	// The managed configuration settings.
+	ManagedConfigurationSettings pulumi.Input `pulumi:"managedConfigurationSettings"`
+	// Runtime configuration types.
+	// Expected value is 'ManagedConfiguration'.
+	RuntimeConfigurationType pulumi.StringInput `pulumi:"runtimeConfigurationType"`
+}
+
+func (AkriConnectorTemplateManagedConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateManagedConfiguration)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateManagedConfigurationArgs) ToAkriConnectorTemplateManagedConfigurationOutput() AkriConnectorTemplateManagedConfigurationOutput {
+	return i.ToAkriConnectorTemplateManagedConfigurationOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateManagedConfigurationArgs) ToAkriConnectorTemplateManagedConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateManagedConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateManagedConfigurationOutput)
+}
+
+func (i AkriConnectorTemplateManagedConfigurationArgs) ToAkriConnectorTemplateManagedConfigurationPtrOutput() AkriConnectorTemplateManagedConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateManagedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateManagedConfigurationArgs) ToAkriConnectorTemplateManagedConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateManagedConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateManagedConfigurationOutput).ToAkriConnectorTemplateManagedConfigurationPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateManagedConfigurationPtrInput is an input type that accepts AkriConnectorTemplateManagedConfigurationArgs, AkriConnectorTemplateManagedConfigurationPtr and AkriConnectorTemplateManagedConfigurationPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateManagedConfigurationPtrInput` via:
+//
+//	        AkriConnectorTemplateManagedConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateManagedConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateManagedConfigurationPtrOutput() AkriConnectorTemplateManagedConfigurationPtrOutput
+	ToAkriConnectorTemplateManagedConfigurationPtrOutputWithContext(context.Context) AkriConnectorTemplateManagedConfigurationPtrOutput
+}
+
+type akriConnectorTemplateManagedConfigurationPtrType AkriConnectorTemplateManagedConfigurationArgs
+
+func AkriConnectorTemplateManagedConfigurationPtr(v *AkriConnectorTemplateManagedConfigurationArgs) AkriConnectorTemplateManagedConfigurationPtrInput {
+	return (*akriConnectorTemplateManagedConfigurationPtrType)(v)
+}
+
+func (*akriConnectorTemplateManagedConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateManagedConfiguration)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateManagedConfigurationPtrType) ToAkriConnectorTemplateManagedConfigurationPtrOutput() AkriConnectorTemplateManagedConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateManagedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateManagedConfigurationPtrType) ToAkriConnectorTemplateManagedConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateManagedConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateManagedConfigurationPtrOutput)
+}
+
+// AkriConnectorTemplateManagedConfiguration properties.
+type AkriConnectorTemplateManagedConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateManagedConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateManagedConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateManagedConfigurationOutput) ToAkriConnectorTemplateManagedConfigurationOutput() AkriConnectorTemplateManagedConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateManagedConfigurationOutput) ToAkriConnectorTemplateManagedConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateManagedConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateManagedConfigurationOutput) ToAkriConnectorTemplateManagedConfigurationPtrOutput() AkriConnectorTemplateManagedConfigurationPtrOutput {
+	return o.ToAkriConnectorTemplateManagedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateManagedConfigurationOutput) ToAkriConnectorTemplateManagedConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateManagedConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateManagedConfiguration) *AkriConnectorTemplateManagedConfiguration {
+		return &v
+	}).(AkriConnectorTemplateManagedConfigurationPtrOutput)
+}
+
+// The managed configuration settings.
+func (o AkriConnectorTemplateManagedConfigurationOutput) ManagedConfigurationSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateManagedConfiguration) interface{} { return v.ManagedConfigurationSettings }).(pulumi.AnyOutput)
+}
+
+// Runtime configuration types.
+// Expected value is 'ManagedConfiguration'.
+func (o AkriConnectorTemplateManagedConfigurationOutput) RuntimeConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateManagedConfiguration) string { return v.RuntimeConfigurationType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateManagedConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateManagedConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateManagedConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateManagedConfigurationPtrOutput) ToAkriConnectorTemplateManagedConfigurationPtrOutput() AkriConnectorTemplateManagedConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateManagedConfigurationPtrOutput) ToAkriConnectorTemplateManagedConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateManagedConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateManagedConfigurationPtrOutput) Elem() AkriConnectorTemplateManagedConfigurationOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateManagedConfiguration) AkriConnectorTemplateManagedConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateManagedConfiguration
+		return ret
+	}).(AkriConnectorTemplateManagedConfigurationOutput)
+}
+
+// The managed configuration settings.
+func (o AkriConnectorTemplateManagedConfigurationPtrOutput) ManagedConfigurationSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateManagedConfiguration) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedConfigurationSettings
+	}).(pulumi.AnyOutput)
+}
+
+// Runtime configuration types.
+// Expected value is 'ManagedConfiguration'.
+func (o AkriConnectorTemplateManagedConfigurationPtrOutput) RuntimeConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateManagedConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RuntimeConfigurationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateManagedConfiguration properties.
+type AkriConnectorTemplateManagedConfigurationResponse struct {
+	// The managed configuration settings.
+	ManagedConfigurationSettings interface{} `pulumi:"managedConfigurationSettings"`
+	// Runtime configuration types.
+	// Expected value is 'ManagedConfiguration'.
+	RuntimeConfigurationType string `pulumi:"runtimeConfigurationType"`
+}
+
+// AkriConnectorTemplateManagedConfiguration properties.
+type AkriConnectorTemplateManagedConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateManagedConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateManagedConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateManagedConfigurationResponseOutput) ToAkriConnectorTemplateManagedConfigurationResponseOutput() AkriConnectorTemplateManagedConfigurationResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateManagedConfigurationResponseOutput) ToAkriConnectorTemplateManagedConfigurationResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateManagedConfigurationResponseOutput {
+	return o
+}
+
+// The managed configuration settings.
+func (o AkriConnectorTemplateManagedConfigurationResponseOutput) ManagedConfigurationSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateManagedConfigurationResponse) interface{} {
+		return v.ManagedConfigurationSettings
+	}).(pulumi.AnyOutput)
+}
+
+// Runtime configuration types.
+// Expected value is 'ManagedConfiguration'.
+func (o AkriConnectorTemplateManagedConfigurationResponseOutput) RuntimeConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateManagedConfigurationResponse) string { return v.RuntimeConfigurationType }).(pulumi.StringOutput)
+}
+
+// AkriConnectorTemplatePersistentVolumeClaim properties.
+type AkriConnectorTemplatePersistentVolumeClaim struct {
+	// The name of the persistent volume claim.
+	ClaimName string `pulumi:"claimName"`
+	// The mount path for the persistent volume claim.
+	MountPath string `pulumi:"mountPath"`
+}
+
+// AkriConnectorTemplatePersistentVolumeClaimInput is an input type that accepts AkriConnectorTemplatePersistentVolumeClaimArgs and AkriConnectorTemplatePersistentVolumeClaimOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplatePersistentVolumeClaimInput` via:
+//
+//	AkriConnectorTemplatePersistentVolumeClaimArgs{...}
+type AkriConnectorTemplatePersistentVolumeClaimInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplatePersistentVolumeClaimOutput() AkriConnectorTemplatePersistentVolumeClaimOutput
+	ToAkriConnectorTemplatePersistentVolumeClaimOutputWithContext(context.Context) AkriConnectorTemplatePersistentVolumeClaimOutput
+}
+
+// AkriConnectorTemplatePersistentVolumeClaim properties.
+type AkriConnectorTemplatePersistentVolumeClaimArgs struct {
+	// The name of the persistent volume claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The mount path for the persistent volume claim.
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+}
+
+func (AkriConnectorTemplatePersistentVolumeClaimArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplatePersistentVolumeClaim)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplatePersistentVolumeClaimArgs) ToAkriConnectorTemplatePersistentVolumeClaimOutput() AkriConnectorTemplatePersistentVolumeClaimOutput {
+	return i.ToAkriConnectorTemplatePersistentVolumeClaimOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplatePersistentVolumeClaimArgs) ToAkriConnectorTemplatePersistentVolumeClaimOutputWithContext(ctx context.Context) AkriConnectorTemplatePersistentVolumeClaimOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplatePersistentVolumeClaimOutput)
+}
+
+// AkriConnectorTemplatePersistentVolumeClaimArrayInput is an input type that accepts AkriConnectorTemplatePersistentVolumeClaimArray and AkriConnectorTemplatePersistentVolumeClaimArrayOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplatePersistentVolumeClaimArrayInput` via:
+//
+//	AkriConnectorTemplatePersistentVolumeClaimArray{ AkriConnectorTemplatePersistentVolumeClaimArgs{...} }
+type AkriConnectorTemplatePersistentVolumeClaimArrayInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplatePersistentVolumeClaimArrayOutput() AkriConnectorTemplatePersistentVolumeClaimArrayOutput
+	ToAkriConnectorTemplatePersistentVolumeClaimArrayOutputWithContext(context.Context) AkriConnectorTemplatePersistentVolumeClaimArrayOutput
+}
+
+type AkriConnectorTemplatePersistentVolumeClaimArray []AkriConnectorTemplatePersistentVolumeClaimInput
+
+func (AkriConnectorTemplatePersistentVolumeClaimArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorTemplatePersistentVolumeClaim)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplatePersistentVolumeClaimArray) ToAkriConnectorTemplatePersistentVolumeClaimArrayOutput() AkriConnectorTemplatePersistentVolumeClaimArrayOutput {
+	return i.ToAkriConnectorTemplatePersistentVolumeClaimArrayOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplatePersistentVolumeClaimArray) ToAkriConnectorTemplatePersistentVolumeClaimArrayOutputWithContext(ctx context.Context) AkriConnectorTemplatePersistentVolumeClaimArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplatePersistentVolumeClaimArrayOutput)
+}
+
+// AkriConnectorTemplatePersistentVolumeClaim properties.
+type AkriConnectorTemplatePersistentVolumeClaimOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplatePersistentVolumeClaimOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplatePersistentVolumeClaim)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplatePersistentVolumeClaimOutput) ToAkriConnectorTemplatePersistentVolumeClaimOutput() AkriConnectorTemplatePersistentVolumeClaimOutput {
+	return o
+}
+
+func (o AkriConnectorTemplatePersistentVolumeClaimOutput) ToAkriConnectorTemplatePersistentVolumeClaimOutputWithContext(ctx context.Context) AkriConnectorTemplatePersistentVolumeClaimOutput {
+	return o
+}
+
+// The name of the persistent volume claim.
+func (o AkriConnectorTemplatePersistentVolumeClaimOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplatePersistentVolumeClaim) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The mount path for the persistent volume claim.
+func (o AkriConnectorTemplatePersistentVolumeClaimOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplatePersistentVolumeClaim) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplatePersistentVolumeClaimArrayOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplatePersistentVolumeClaimArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorTemplatePersistentVolumeClaim)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplatePersistentVolumeClaimArrayOutput) ToAkriConnectorTemplatePersistentVolumeClaimArrayOutput() AkriConnectorTemplatePersistentVolumeClaimArrayOutput {
+	return o
+}
+
+func (o AkriConnectorTemplatePersistentVolumeClaimArrayOutput) ToAkriConnectorTemplatePersistentVolumeClaimArrayOutputWithContext(ctx context.Context) AkriConnectorTemplatePersistentVolumeClaimArrayOutput {
+	return o
+}
+
+func (o AkriConnectorTemplatePersistentVolumeClaimArrayOutput) Index(i pulumi.IntInput) AkriConnectorTemplatePersistentVolumeClaimOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AkriConnectorTemplatePersistentVolumeClaim {
+		return vs[0].([]AkriConnectorTemplatePersistentVolumeClaim)[vs[1].(int)]
+	}).(AkriConnectorTemplatePersistentVolumeClaimOutput)
+}
+
+// AkriConnectorTemplatePersistentVolumeClaim properties.
+type AkriConnectorTemplatePersistentVolumeClaimResponse struct {
+	// The name of the persistent volume claim.
+	ClaimName string `pulumi:"claimName"`
+	// The mount path for the persistent volume claim.
+	MountPath string `pulumi:"mountPath"`
+}
+
+// AkriConnectorTemplatePersistentVolumeClaim properties.
+type AkriConnectorTemplatePersistentVolumeClaimResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplatePersistentVolumeClaimResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplatePersistentVolumeClaimResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplatePersistentVolumeClaimResponseOutput) ToAkriConnectorTemplatePersistentVolumeClaimResponseOutput() AkriConnectorTemplatePersistentVolumeClaimResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplatePersistentVolumeClaimResponseOutput) ToAkriConnectorTemplatePersistentVolumeClaimResponseOutputWithContext(ctx context.Context) AkriConnectorTemplatePersistentVolumeClaimResponseOutput {
+	return o
+}
+
+// The name of the persistent volume claim.
+func (o AkriConnectorTemplatePersistentVolumeClaimResponseOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplatePersistentVolumeClaimResponse) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The mount path for the persistent volume claim.
+func (o AkriConnectorTemplatePersistentVolumeClaimResponseOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplatePersistentVolumeClaimResponse) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorTemplatePersistentVolumeClaimResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput) ToAkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput() AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput {
+	return o
+}
+
+func (o AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput) ToAkriConnectorTemplatePersistentVolumeClaimResponseArrayOutputWithContext(ctx context.Context) AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput {
+	return o
+}
+
+func (o AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput) Index(i pulumi.IntInput) AkriConnectorTemplatePersistentVolumeClaimResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AkriConnectorTemplatePersistentVolumeClaimResponse {
+		return vs[0].([]AkriConnectorTemplatePersistentVolumeClaimResponse)[vs[1].(int)]
+	}).(AkriConnectorTemplatePersistentVolumeClaimResponseOutput)
+}
+
+// AkriConnectorTemplate properties.
+type AkriConnectorTemplateProperties struct {
+	// Metadata about AIO.
+	AioMetadata *AkriConnectorTemplateAioMetadata `pulumi:"aioMetadata"`
+	// Device inbound endpoint types.
+	DeviceInboundEndpointTypes []AkriConnectorTemplateDeviceInboundEndpointType `pulumi:"deviceInboundEndpointTypes"`
+	// Diagnostics settings for the Connector template.
+	Diagnostics *AkriConnectorTemplateDiagnostics `pulumi:"diagnostics"`
+	// Mqtt connection configuration settings.
+	MqttConnectionConfiguration *AkriConnectorsMqttConnectionConfiguration `pulumi:"mqttConnectionConfiguration"`
+	// The runtime configuration for the Connector template.
+	RuntimeConfiguration interface{} `pulumi:"runtimeConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorTemplateProperties
+func (val *AkriConnectorTemplateProperties) Defaults() *AkriConnectorTemplateProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Diagnostics = tmp.Diagnostics.Defaults()
+
+	tmp.MqttConnectionConfiguration = tmp.MqttConnectionConfiguration.Defaults()
+
+	return &tmp
+}
+
+// AkriConnectorTemplatePropertiesInput is an input type that accepts AkriConnectorTemplatePropertiesArgs and AkriConnectorTemplatePropertiesOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplatePropertiesInput` via:
+//
+//	AkriConnectorTemplatePropertiesArgs{...}
+type AkriConnectorTemplatePropertiesInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplatePropertiesOutput() AkriConnectorTemplatePropertiesOutput
+	ToAkriConnectorTemplatePropertiesOutputWithContext(context.Context) AkriConnectorTemplatePropertiesOutput
+}
+
+// AkriConnectorTemplate properties.
+type AkriConnectorTemplatePropertiesArgs struct {
+	// Metadata about AIO.
+	AioMetadata AkriConnectorTemplateAioMetadataPtrInput `pulumi:"aioMetadata"`
+	// Device inbound endpoint types.
+	DeviceInboundEndpointTypes AkriConnectorTemplateDeviceInboundEndpointTypeArrayInput `pulumi:"deviceInboundEndpointTypes"`
+	// Diagnostics settings for the Connector template.
+	Diagnostics AkriConnectorTemplateDiagnosticsPtrInput `pulumi:"diagnostics"`
+	// Mqtt connection configuration settings.
+	MqttConnectionConfiguration AkriConnectorsMqttConnectionConfigurationPtrInput `pulumi:"mqttConnectionConfiguration"`
+	// The runtime configuration for the Connector template.
+	RuntimeConfiguration pulumi.Input `pulumi:"runtimeConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorTemplatePropertiesArgs
+func (val *AkriConnectorTemplatePropertiesArgs) Defaults() *AkriConnectorTemplatePropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (AkriConnectorTemplatePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateProperties)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplatePropertiesArgs) ToAkriConnectorTemplatePropertiesOutput() AkriConnectorTemplatePropertiesOutput {
+	return i.ToAkriConnectorTemplatePropertiesOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplatePropertiesArgs) ToAkriConnectorTemplatePropertiesOutputWithContext(ctx context.Context) AkriConnectorTemplatePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplatePropertiesOutput)
+}
+
+func (i AkriConnectorTemplatePropertiesArgs) ToAkriConnectorTemplatePropertiesPtrOutput() AkriConnectorTemplatePropertiesPtrOutput {
+	return i.ToAkriConnectorTemplatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplatePropertiesArgs) ToAkriConnectorTemplatePropertiesPtrOutputWithContext(ctx context.Context) AkriConnectorTemplatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplatePropertiesOutput).ToAkriConnectorTemplatePropertiesPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplatePropertiesPtrInput is an input type that accepts AkriConnectorTemplatePropertiesArgs, AkriConnectorTemplatePropertiesPtr and AkriConnectorTemplatePropertiesPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplatePropertiesPtrInput` via:
+//
+//	        AkriConnectorTemplatePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplatePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplatePropertiesPtrOutput() AkriConnectorTemplatePropertiesPtrOutput
+	ToAkriConnectorTemplatePropertiesPtrOutputWithContext(context.Context) AkriConnectorTemplatePropertiesPtrOutput
+}
+
+type akriConnectorTemplatePropertiesPtrType AkriConnectorTemplatePropertiesArgs
+
+func AkriConnectorTemplatePropertiesPtr(v *AkriConnectorTemplatePropertiesArgs) AkriConnectorTemplatePropertiesPtrInput {
+	return (*akriConnectorTemplatePropertiesPtrType)(v)
+}
+
+func (*akriConnectorTemplatePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateProperties)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplatePropertiesPtrType) ToAkriConnectorTemplatePropertiesPtrOutput() AkriConnectorTemplatePropertiesPtrOutput {
+	return i.ToAkriConnectorTemplatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplatePropertiesPtrType) ToAkriConnectorTemplatePropertiesPtrOutputWithContext(ctx context.Context) AkriConnectorTemplatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplatePropertiesPtrOutput)
+}
+
+// AkriConnectorTemplate properties.
+type AkriConnectorTemplatePropertiesOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplatePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateProperties)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplatePropertiesOutput) ToAkriConnectorTemplatePropertiesOutput() AkriConnectorTemplatePropertiesOutput {
+	return o
+}
+
+func (o AkriConnectorTemplatePropertiesOutput) ToAkriConnectorTemplatePropertiesOutputWithContext(ctx context.Context) AkriConnectorTemplatePropertiesOutput {
+	return o
+}
+
+func (o AkriConnectorTemplatePropertiesOutput) ToAkriConnectorTemplatePropertiesPtrOutput() AkriConnectorTemplatePropertiesPtrOutput {
+	return o.ToAkriConnectorTemplatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplatePropertiesOutput) ToAkriConnectorTemplatePropertiesPtrOutputWithContext(ctx context.Context) AkriConnectorTemplatePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateProperties) *AkriConnectorTemplateProperties {
+		return &v
+	}).(AkriConnectorTemplatePropertiesPtrOutput)
+}
+
+// Metadata about AIO.
+func (o AkriConnectorTemplatePropertiesOutput) AioMetadata() AkriConnectorTemplateAioMetadataPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateProperties) *AkriConnectorTemplateAioMetadata { return v.AioMetadata }).(AkriConnectorTemplateAioMetadataPtrOutput)
+}
+
+// Device inbound endpoint types.
+func (o AkriConnectorTemplatePropertiesOutput) DeviceInboundEndpointTypes() AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateProperties) []AkriConnectorTemplateDeviceInboundEndpointType {
+		return v.DeviceInboundEndpointTypes
+	}).(AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput)
+}
+
+// Diagnostics settings for the Connector template.
+func (o AkriConnectorTemplatePropertiesOutput) Diagnostics() AkriConnectorTemplateDiagnosticsPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateProperties) *AkriConnectorTemplateDiagnostics { return v.Diagnostics }).(AkriConnectorTemplateDiagnosticsPtrOutput)
+}
+
+// Mqtt connection configuration settings.
+func (o AkriConnectorTemplatePropertiesOutput) MqttConnectionConfiguration() AkriConnectorsMqttConnectionConfigurationPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateProperties) *AkriConnectorsMqttConnectionConfiguration {
+		return v.MqttConnectionConfiguration
+	}).(AkriConnectorsMqttConnectionConfigurationPtrOutput)
+}
+
+// The runtime configuration for the Connector template.
+func (o AkriConnectorTemplatePropertiesOutput) RuntimeConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateProperties) interface{} { return v.RuntimeConfiguration }).(pulumi.AnyOutput)
+}
+
+type AkriConnectorTemplatePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplatePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateProperties)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplatePropertiesPtrOutput) ToAkriConnectorTemplatePropertiesPtrOutput() AkriConnectorTemplatePropertiesPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplatePropertiesPtrOutput) ToAkriConnectorTemplatePropertiesPtrOutputWithContext(ctx context.Context) AkriConnectorTemplatePropertiesPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplatePropertiesPtrOutput) Elem() AkriConnectorTemplatePropertiesOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateProperties) AkriConnectorTemplateProperties {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateProperties
+		return ret
+	}).(AkriConnectorTemplatePropertiesOutput)
+}
+
+// Metadata about AIO.
+func (o AkriConnectorTemplatePropertiesPtrOutput) AioMetadata() AkriConnectorTemplateAioMetadataPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateProperties) *AkriConnectorTemplateAioMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.AioMetadata
+	}).(AkriConnectorTemplateAioMetadataPtrOutput)
+}
+
+// Device inbound endpoint types.
+func (o AkriConnectorTemplatePropertiesPtrOutput) DeviceInboundEndpointTypes() AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateProperties) []AkriConnectorTemplateDeviceInboundEndpointType {
+		if v == nil {
+			return nil
+		}
+		return v.DeviceInboundEndpointTypes
+	}).(AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput)
+}
+
+// Diagnostics settings for the Connector template.
+func (o AkriConnectorTemplatePropertiesPtrOutput) Diagnostics() AkriConnectorTemplateDiagnosticsPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateProperties) *AkriConnectorTemplateDiagnostics {
+		if v == nil {
+			return nil
+		}
+		return v.Diagnostics
+	}).(AkriConnectorTemplateDiagnosticsPtrOutput)
+}
+
+// Mqtt connection configuration settings.
+func (o AkriConnectorTemplatePropertiesPtrOutput) MqttConnectionConfiguration() AkriConnectorsMqttConnectionConfigurationPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateProperties) *AkriConnectorsMqttConnectionConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.MqttConnectionConfiguration
+	}).(AkriConnectorsMqttConnectionConfigurationPtrOutput)
+}
+
+// The runtime configuration for the Connector template.
+func (o AkriConnectorTemplatePropertiesPtrOutput) RuntimeConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateProperties) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeConfiguration
+	}).(pulumi.AnyOutput)
+}
+
+// AkriConnectorTemplate properties.
+type AkriConnectorTemplatePropertiesResponse struct {
+	// Metadata about AIO.
+	AioMetadata *AkriConnectorTemplateAioMetadataResponse `pulumi:"aioMetadata"`
+	// Device inbound endpoint types.
+	DeviceInboundEndpointTypes []AkriConnectorTemplateDeviceInboundEndpointTypeResponse `pulumi:"deviceInboundEndpointTypes"`
+	// Diagnostics settings for the Connector template.
+	Diagnostics *AkriConnectorTemplateDiagnosticsResponse `pulumi:"diagnostics"`
+	// Mqtt connection configuration settings.
+	MqttConnectionConfiguration *AkriConnectorsMqttConnectionConfigurationResponse `pulumi:"mqttConnectionConfiguration"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The runtime configuration for the Connector template.
+	RuntimeConfiguration interface{} `pulumi:"runtimeConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorTemplatePropertiesResponse
+func (val *AkriConnectorTemplatePropertiesResponse) Defaults() *AkriConnectorTemplatePropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Diagnostics = tmp.Diagnostics.Defaults()
+
+	tmp.MqttConnectionConfiguration = tmp.MqttConnectionConfiguration.Defaults()
+
+	return &tmp
+}
+
+// AkriConnectorTemplate properties.
+type AkriConnectorTemplatePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplatePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplatePropertiesResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplatePropertiesResponseOutput) ToAkriConnectorTemplatePropertiesResponseOutput() AkriConnectorTemplatePropertiesResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplatePropertiesResponseOutput) ToAkriConnectorTemplatePropertiesResponseOutputWithContext(ctx context.Context) AkriConnectorTemplatePropertiesResponseOutput {
+	return o
+}
+
+// Metadata about AIO.
+func (o AkriConnectorTemplatePropertiesResponseOutput) AioMetadata() AkriConnectorTemplateAioMetadataResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplatePropertiesResponse) *AkriConnectorTemplateAioMetadataResponse {
+		return v.AioMetadata
+	}).(AkriConnectorTemplateAioMetadataResponsePtrOutput)
+}
+
+// Device inbound endpoint types.
+func (o AkriConnectorTemplatePropertiesResponseOutput) DeviceInboundEndpointTypes() AkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplatePropertiesResponse) []AkriConnectorTemplateDeviceInboundEndpointTypeResponse {
+		return v.DeviceInboundEndpointTypes
+	}).(AkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutput)
+}
+
+// Diagnostics settings for the Connector template.
+func (o AkriConnectorTemplatePropertiesResponseOutput) Diagnostics() AkriConnectorTemplateDiagnosticsResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplatePropertiesResponse) *AkriConnectorTemplateDiagnosticsResponse {
+		return v.Diagnostics
+	}).(AkriConnectorTemplateDiagnosticsResponsePtrOutput)
+}
+
+// Mqtt connection configuration settings.
+func (o AkriConnectorTemplatePropertiesResponseOutput) MqttConnectionConfiguration() AkriConnectorsMqttConnectionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplatePropertiesResponse) *AkriConnectorsMqttConnectionConfigurationResponse {
+		return v.MqttConnectionConfiguration
+	}).(AkriConnectorsMqttConnectionConfigurationResponsePtrOutput)
+}
+
+// The status of the last operation.
+func (o AkriConnectorTemplatePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplatePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The runtime configuration for the Connector template.
+func (o AkriConnectorTemplatePropertiesResponseOutput) RuntimeConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplatePropertiesResponse) interface{} { return v.RuntimeConfiguration }).(pulumi.AnyOutput)
+}
+
+// AkriConnectorTemplateRuntimeImageConfiguration properties.
+type AkriConnectorTemplateRuntimeImageConfiguration struct {
+	// Additional configuration for the image of the managed configuration.
+	AdditionalConfiguration map[string]string `pulumi:"additionalConfiguration"`
+	// Allocation settings for the managed configuration.
+	Allocation *AkriConnectorTemplateBucketizedAllocation `pulumi:"allocation"`
+	// The image configuration settings.
+	ImageConfigurationSettings AkriConnectorTemplateRuntimeImageConfigurationSettings `pulumi:"imageConfigurationSettings"`
+	// Managed configuration types.
+	// Expected value is 'ImageConfiguration'.
+	ManagedConfigurationType string `pulumi:"managedConfigurationType"`
+	// The persistent volume claim templates for the managed configuration.
+	// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+	PersistentVolumeClaimTemplates []interface{} `pulumi:"persistentVolumeClaimTemplates"`
+	// The persistent volume claims for the managed configuration.
+	PersistentVolumeClaims []AkriConnectorTemplatePersistentVolumeClaim `pulumi:"persistentVolumeClaims"`
+	// Connector secrets that will be mounted onto all connector instances.
+	Secrets []AkriConnectorsSecret `pulumi:"secrets"`
+	// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+	TrustSettings *AkriConnectorTemplateTrustList `pulumi:"trustSettings"`
+}
+
+// AkriConnectorTemplateRuntimeImageConfigurationInput is an input type that accepts AkriConnectorTemplateRuntimeImageConfigurationArgs and AkriConnectorTemplateRuntimeImageConfigurationOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateRuntimeImageConfigurationInput` via:
+//
+//	AkriConnectorTemplateRuntimeImageConfigurationArgs{...}
+type AkriConnectorTemplateRuntimeImageConfigurationInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateRuntimeImageConfigurationOutput() AkriConnectorTemplateRuntimeImageConfigurationOutput
+	ToAkriConnectorTemplateRuntimeImageConfigurationOutputWithContext(context.Context) AkriConnectorTemplateRuntimeImageConfigurationOutput
+}
+
+// AkriConnectorTemplateRuntimeImageConfiguration properties.
+type AkriConnectorTemplateRuntimeImageConfigurationArgs struct {
+	// Additional configuration for the image of the managed configuration.
+	AdditionalConfiguration pulumi.StringMapInput `pulumi:"additionalConfiguration"`
+	// Allocation settings for the managed configuration.
+	Allocation AkriConnectorTemplateBucketizedAllocationPtrInput `pulumi:"allocation"`
+	// The image configuration settings.
+	ImageConfigurationSettings AkriConnectorTemplateRuntimeImageConfigurationSettingsInput `pulumi:"imageConfigurationSettings"`
+	// Managed configuration types.
+	// Expected value is 'ImageConfiguration'.
+	ManagedConfigurationType pulumi.StringInput `pulumi:"managedConfigurationType"`
+	// The persistent volume claim templates for the managed configuration.
+	// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+	PersistentVolumeClaimTemplates pulumi.ArrayInput `pulumi:"persistentVolumeClaimTemplates"`
+	// The persistent volume claims for the managed configuration.
+	PersistentVolumeClaims AkriConnectorTemplatePersistentVolumeClaimArrayInput `pulumi:"persistentVolumeClaims"`
+	// Connector secrets that will be mounted onto all connector instances.
+	Secrets AkriConnectorsSecretArrayInput `pulumi:"secrets"`
+	// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+	TrustSettings AkriConnectorTemplateTrustListPtrInput `pulumi:"trustSettings"`
+}
+
+func (AkriConnectorTemplateRuntimeImageConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateRuntimeImageConfiguration)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateRuntimeImageConfigurationArgs) ToAkriConnectorTemplateRuntimeImageConfigurationOutput() AkriConnectorTemplateRuntimeImageConfigurationOutput {
+	return i.ToAkriConnectorTemplateRuntimeImageConfigurationOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateRuntimeImageConfigurationArgs) ToAkriConnectorTemplateRuntimeImageConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateRuntimeImageConfigurationOutput)
+}
+
+func (i AkriConnectorTemplateRuntimeImageConfigurationArgs) ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutput() AkriConnectorTemplateRuntimeImageConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateRuntimeImageConfigurationArgs) ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateRuntimeImageConfigurationOutput).ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateRuntimeImageConfigurationPtrInput is an input type that accepts AkriConnectorTemplateRuntimeImageConfigurationArgs, AkriConnectorTemplateRuntimeImageConfigurationPtr and AkriConnectorTemplateRuntimeImageConfigurationPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateRuntimeImageConfigurationPtrInput` via:
+//
+//	        AkriConnectorTemplateRuntimeImageConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateRuntimeImageConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutput() AkriConnectorTemplateRuntimeImageConfigurationPtrOutput
+	ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutputWithContext(context.Context) AkriConnectorTemplateRuntimeImageConfigurationPtrOutput
+}
+
+type akriConnectorTemplateRuntimeImageConfigurationPtrType AkriConnectorTemplateRuntimeImageConfigurationArgs
+
+func AkriConnectorTemplateRuntimeImageConfigurationPtr(v *AkriConnectorTemplateRuntimeImageConfigurationArgs) AkriConnectorTemplateRuntimeImageConfigurationPtrInput {
+	return (*akriConnectorTemplateRuntimeImageConfigurationPtrType)(v)
+}
+
+func (*akriConnectorTemplateRuntimeImageConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateRuntimeImageConfiguration)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateRuntimeImageConfigurationPtrType) ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutput() AkriConnectorTemplateRuntimeImageConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateRuntimeImageConfigurationPtrType) ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateRuntimeImageConfigurationPtrOutput)
+}
+
+// AkriConnectorTemplateRuntimeImageConfiguration properties.
+type AkriConnectorTemplateRuntimeImageConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateRuntimeImageConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateRuntimeImageConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) ToAkriConnectorTemplateRuntimeImageConfigurationOutput() AkriConnectorTemplateRuntimeImageConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) ToAkriConnectorTemplateRuntimeImageConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutput() AkriConnectorTemplateRuntimeImageConfigurationPtrOutput {
+	return o.ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateRuntimeImageConfiguration) *AkriConnectorTemplateRuntimeImageConfiguration {
+		return &v
+	}).(AkriConnectorTemplateRuntimeImageConfigurationPtrOutput)
+}
+
+// Additional configuration for the image of the managed configuration.
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) AdditionalConfiguration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfiguration) map[string]string {
+		return v.AdditionalConfiguration
+	}).(pulumi.StringMapOutput)
+}
+
+// Allocation settings for the managed configuration.
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) Allocation() AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfiguration) *AkriConnectorTemplateBucketizedAllocation {
+		return v.Allocation
+	}).(AkriConnectorTemplateBucketizedAllocationPtrOutput)
+}
+
+// The image configuration settings.
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) ImageConfigurationSettings() AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfiguration) AkriConnectorTemplateRuntimeImageConfigurationSettings {
+		return v.ImageConfigurationSettings
+	}).(AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput)
+}
+
+// Managed configuration types.
+// Expected value is 'ImageConfiguration'.
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) ManagedConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfiguration) string { return v.ManagedConfigurationType }).(pulumi.StringOutput)
+}
+
+// The persistent volume claim templates for the managed configuration.
+// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) PersistentVolumeClaimTemplates() pulumi.ArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfiguration) []interface{} {
+		return v.PersistentVolumeClaimTemplates
+	}).(pulumi.ArrayOutput)
+}
+
+// The persistent volume claims for the managed configuration.
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) PersistentVolumeClaims() AkriConnectorTemplatePersistentVolumeClaimArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfiguration) []AkriConnectorTemplatePersistentVolumeClaim {
+		return v.PersistentVolumeClaims
+	}).(AkriConnectorTemplatePersistentVolumeClaimArrayOutput)
+}
+
+// Connector secrets that will be mounted onto all connector instances.
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) Secrets() AkriConnectorsSecretArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfiguration) []AkriConnectorsSecret { return v.Secrets }).(AkriConnectorsSecretArrayOutput)
+}
+
+// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+func (o AkriConnectorTemplateRuntimeImageConfigurationOutput) TrustSettings() AkriConnectorTemplateTrustListPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfiguration) *AkriConnectorTemplateTrustList {
+		return v.TrustSettings
+	}).(AkriConnectorTemplateTrustListPtrOutput)
+}
+
+type AkriConnectorTemplateRuntimeImageConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateRuntimeImageConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutput() AkriConnectorTemplateRuntimeImageConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) ToAkriConnectorTemplateRuntimeImageConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) Elem() AkriConnectorTemplateRuntimeImageConfigurationOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfiguration) AkriConnectorTemplateRuntimeImageConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateRuntimeImageConfiguration
+		return ret
+	}).(AkriConnectorTemplateRuntimeImageConfigurationOutput)
+}
+
+// Additional configuration for the image of the managed configuration.
+func (o AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) AdditionalConfiguration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfiguration) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalConfiguration
+	}).(pulumi.StringMapOutput)
+}
+
+// Allocation settings for the managed configuration.
+func (o AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) Allocation() AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfiguration) *AkriConnectorTemplateBucketizedAllocation {
+		if v == nil {
+			return nil
+		}
+		return v.Allocation
+	}).(AkriConnectorTemplateBucketizedAllocationPtrOutput)
+}
+
+// The image configuration settings.
+func (o AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) ImageConfigurationSettings() AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfiguration) *AkriConnectorTemplateRuntimeImageConfigurationSettings {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageConfigurationSettings
+	}).(AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput)
+}
+
+// Managed configuration types.
+// Expected value is 'ImageConfiguration'.
+func (o AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) ManagedConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ManagedConfigurationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The persistent volume claim templates for the managed configuration.
+// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+func (o AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) PersistentVolumeClaimTemplates() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfiguration) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentVolumeClaimTemplates
+	}).(pulumi.ArrayOutput)
+}
+
+// The persistent volume claims for the managed configuration.
+func (o AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) PersistentVolumeClaims() AkriConnectorTemplatePersistentVolumeClaimArrayOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfiguration) []AkriConnectorTemplatePersistentVolumeClaim {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentVolumeClaims
+	}).(AkriConnectorTemplatePersistentVolumeClaimArrayOutput)
+}
+
+// Connector secrets that will be mounted onto all connector instances.
+func (o AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) Secrets() AkriConnectorsSecretArrayOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfiguration) []AkriConnectorsSecret {
+		if v == nil {
+			return nil
+		}
+		return v.Secrets
+	}).(AkriConnectorsSecretArrayOutput)
+}
+
+// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+func (o AkriConnectorTemplateRuntimeImageConfigurationPtrOutput) TrustSettings() AkriConnectorTemplateTrustListPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfiguration) *AkriConnectorTemplateTrustList {
+		if v == nil {
+			return nil
+		}
+		return v.TrustSettings
+	}).(AkriConnectorTemplateTrustListPtrOutput)
+}
+
+// AkriConnectorTemplateRuntimeImageConfiguration properties.
+type AkriConnectorTemplateRuntimeImageConfigurationResponse struct {
+	// Additional configuration for the image of the managed configuration.
+	AdditionalConfiguration map[string]string `pulumi:"additionalConfiguration"`
+	// Allocation settings for the managed configuration.
+	Allocation *AkriConnectorTemplateBucketizedAllocationResponse `pulumi:"allocation"`
+	// The image configuration settings.
+	ImageConfigurationSettings AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse `pulumi:"imageConfigurationSettings"`
+	// Managed configuration types.
+	// Expected value is 'ImageConfiguration'.
+	ManagedConfigurationType string `pulumi:"managedConfigurationType"`
+	// The persistent volume claim templates for the managed configuration.
+	// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+	PersistentVolumeClaimTemplates []interface{} `pulumi:"persistentVolumeClaimTemplates"`
+	// The persistent volume claims for the managed configuration.
+	PersistentVolumeClaims []AkriConnectorTemplatePersistentVolumeClaimResponse `pulumi:"persistentVolumeClaims"`
+	// Connector secrets that will be mounted onto all connector instances.
+	Secrets []AkriConnectorsSecretResponse `pulumi:"secrets"`
+	// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+	TrustSettings *AkriConnectorTemplateTrustListResponse `pulumi:"trustSettings"`
+}
+
+// AkriConnectorTemplateRuntimeImageConfiguration properties.
+type AkriConnectorTemplateRuntimeImageConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateRuntimeImageConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateRuntimeImageConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationResponseOutput) ToAkriConnectorTemplateRuntimeImageConfigurationResponseOutput() AkriConnectorTemplateRuntimeImageConfigurationResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationResponseOutput) ToAkriConnectorTemplateRuntimeImageConfigurationResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationResponseOutput {
+	return o
+}
+
+// Additional configuration for the image of the managed configuration.
+func (o AkriConnectorTemplateRuntimeImageConfigurationResponseOutput) AdditionalConfiguration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationResponse) map[string]string {
+		return v.AdditionalConfiguration
+	}).(pulumi.StringMapOutput)
+}
+
+// Allocation settings for the managed configuration.
+func (o AkriConnectorTemplateRuntimeImageConfigurationResponseOutput) Allocation() AkriConnectorTemplateBucketizedAllocationResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationResponse) *AkriConnectorTemplateBucketizedAllocationResponse {
+		return v.Allocation
+	}).(AkriConnectorTemplateBucketizedAllocationResponsePtrOutput)
+}
+
+// The image configuration settings.
+func (o AkriConnectorTemplateRuntimeImageConfigurationResponseOutput) ImageConfigurationSettings() AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationResponse) AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse {
+		return v.ImageConfigurationSettings
+	}).(AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput)
+}
+
+// Managed configuration types.
+// Expected value is 'ImageConfiguration'.
+func (o AkriConnectorTemplateRuntimeImageConfigurationResponseOutput) ManagedConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationResponse) string {
+		return v.ManagedConfigurationType
+	}).(pulumi.StringOutput)
+}
+
+// The persistent volume claim templates for the managed configuration.
+// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+func (o AkriConnectorTemplateRuntimeImageConfigurationResponseOutput) PersistentVolumeClaimTemplates() pulumi.ArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationResponse) []interface{} {
+		return v.PersistentVolumeClaimTemplates
+	}).(pulumi.ArrayOutput)
+}
+
+// The persistent volume claims for the managed configuration.
+func (o AkriConnectorTemplateRuntimeImageConfigurationResponseOutput) PersistentVolumeClaims() AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationResponse) []AkriConnectorTemplatePersistentVolumeClaimResponse {
+		return v.PersistentVolumeClaims
+	}).(AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput)
+}
+
+// Connector secrets that will be mounted onto all connector instances.
+func (o AkriConnectorTemplateRuntimeImageConfigurationResponseOutput) Secrets() AkriConnectorsSecretResponseArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationResponse) []AkriConnectorsSecretResponse {
+		return v.Secrets
+	}).(AkriConnectorsSecretResponseArrayOutput)
+}
+
+// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+func (o AkriConnectorTemplateRuntimeImageConfigurationResponseOutput) TrustSettings() AkriConnectorTemplateTrustListResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationResponse) *AkriConnectorTemplateTrustListResponse {
+		return v.TrustSettings
+	}).(AkriConnectorTemplateTrustListResponsePtrOutput)
+}
+
+// AkriConnectorTemplateRuntimeImageConfiguration properties.
+type AkriConnectorTemplateRuntimeImageConfigurationSettings struct {
+	// The image name without any registry reference, tag or digest.
+	ImageName string `pulumi:"imageName"`
+	// The pull policy of the image.
+	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
+	// The registry settings for the image. You can omit this field if using the default docker hub repository or using a local image.
+	RegistrySettings interface{} `pulumi:"registrySettings"`
+	// The number of replicas to be set up.
+	Replicas *int `pulumi:"replicas"`
+	// Optional image tag or digest. If not specified, the default tag is `latest`.
+	TagDigestSettings interface{} `pulumi:"tagDigestSettings"`
+}
+
+// AkriConnectorTemplateRuntimeImageConfigurationSettingsInput is an input type that accepts AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs and AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateRuntimeImageConfigurationSettingsInput` via:
+//
+//	AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs{...}
+type AkriConnectorTemplateRuntimeImageConfigurationSettingsInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateRuntimeImageConfigurationSettingsOutput() AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput
+	ToAkriConnectorTemplateRuntimeImageConfigurationSettingsOutputWithContext(context.Context) AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput
+}
+
+// AkriConnectorTemplateRuntimeImageConfiguration properties.
+type AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs struct {
+	// The image name without any registry reference, tag or digest.
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// The pull policy of the image.
+	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
+	// The registry settings for the image. You can omit this field if using the default docker hub repository or using a local image.
+	RegistrySettings pulumi.Input `pulumi:"registrySettings"`
+	// The number of replicas to be set up.
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
+	// Optional image tag or digest. If not specified, the default tag is `latest`.
+	TagDigestSettings pulumi.Input `pulumi:"tagDigestSettings"`
+}
+
+func (AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateRuntimeImageConfigurationSettings)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsOutput() AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput {
+	return i.ToAkriConnectorTemplateRuntimeImageConfigurationSettingsOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput)
+}
+
+func (i AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput() AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput {
+	return i.ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput).ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrInput is an input type that accepts AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs, AkriConnectorTemplateRuntimeImageConfigurationSettingsPtr and AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrInput` via:
+//
+//	        AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput() AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput
+	ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutputWithContext(context.Context) AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput
+}
+
+type akriConnectorTemplateRuntimeImageConfigurationSettingsPtrType AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs
+
+func AkriConnectorTemplateRuntimeImageConfigurationSettingsPtr(v *AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs) AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrInput {
+	return (*akriConnectorTemplateRuntimeImageConfigurationSettingsPtrType)(v)
+}
+
+func (*akriConnectorTemplateRuntimeImageConfigurationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateRuntimeImageConfigurationSettings)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateRuntimeImageConfigurationSettingsPtrType) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput() AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput {
+	return i.ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateRuntimeImageConfigurationSettingsPtrType) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput)
+}
+
+// AkriConnectorTemplateRuntimeImageConfiguration properties.
+type AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateRuntimeImageConfigurationSettings)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsOutput() AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput() AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput {
+	return o.ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateRuntimeImageConfigurationSettings) *AkriConnectorTemplateRuntimeImageConfigurationSettings {
+		return &v
+	}).(AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput)
+}
+
+// The image name without any registry reference, tag or digest.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationSettings) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// The pull policy of the image.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput) ImagePullPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationSettings) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The registry settings for the image. You can omit this field if using the default docker hub repository or using a local image.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput) RegistrySettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationSettings) interface{} { return v.RegistrySettings }).(pulumi.AnyOutput)
+}
+
+// The number of replicas to be set up.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationSettings) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+// Optional image tag or digest. If not specified, the default tag is `latest`.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput) TagDigestSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationSettings) interface{} { return v.TagDigestSettings }).(pulumi.AnyOutput)
+}
+
+type AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateRuntimeImageConfigurationSettings)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput() AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput) Elem() AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfigurationSettings) AkriConnectorTemplateRuntimeImageConfigurationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateRuntimeImageConfigurationSettings
+		return ret
+	}).(AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput)
+}
+
+// The image name without any registry reference, tag or digest.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfigurationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The pull policy of the image.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput) ImagePullPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfigurationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImagePullPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The registry settings for the image. You can omit this field if using the default docker hub repository or using a local image.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput) RegistrySettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfigurationSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.RegistrySettings
+	}).(pulumi.AnyOutput)
+}
+
+// The number of replicas to be set up.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfigurationSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Replicas
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional image tag or digest. If not specified, the default tag is `latest`.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput) TagDigestSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeImageConfigurationSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.TagDigestSettings
+	}).(pulumi.AnyOutput)
+}
+
+// AkriConnectorTemplateRuntimeImageConfiguration properties.
+type AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse struct {
+	// The image name without any registry reference, tag or digest.
+	ImageName string `pulumi:"imageName"`
+	// The pull policy of the image.
+	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
+	// The registry settings for the image. You can omit this field if using the default docker hub repository or using a local image.
+	RegistrySettings interface{} `pulumi:"registrySettings"`
+	// The number of replicas to be set up.
+	Replicas *int `pulumi:"replicas"`
+	// Optional image tag or digest. If not specified, the default tag is `latest`.
+	TagDigestSettings interface{} `pulumi:"tagDigestSettings"`
+}
+
+// AkriConnectorTemplateRuntimeImageConfiguration properties.
+type AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput() AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput) ToAkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput {
+	return o
+}
+
+// The image name without any registry reference, tag or digest.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// The pull policy of the image.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput) ImagePullPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse) *string {
+		return v.ImagePullPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The registry settings for the image. You can omit this field if using the default docker hub repository or using a local image.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput) RegistrySettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse) interface{} {
+		return v.RegistrySettings
+	}).(pulumi.AnyOutput)
+}
+
+// The number of replicas to be set up.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+// Optional image tag or digest. If not specified, the default tag is `latest`.
+func (o AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput) TagDigestSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse) interface{} {
+		return v.TagDigestSettings
+	}).(pulumi.AnyOutput)
+}
+
+// AkriConnectorTemplateRuntimeStatefulSetConfiguration properties.
+type AkriConnectorTemplateRuntimeStatefulSetConfiguration struct {
+	// Additional configuration for the image of the managed configuration.
+	AdditionalConfiguration map[string]string `pulumi:"additionalConfiguration"`
+	// Allocation settings for the managed configuration.
+	Allocation *AkriConnectorTemplateBucketizedAllocation `pulumi:"allocation"`
+	// Managed configuration types.
+	// Expected value is 'StatefulSetConfiguration'.
+	ManagedConfigurationType string `pulumi:"managedConfigurationType"`
+	// The persistent volume claim templates for the managed configuration.
+	// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+	PersistentVolumeClaimTemplates []interface{} `pulumi:"persistentVolumeClaimTemplates"`
+	// The persistent volume claims for the managed configuration.
+	PersistentVolumeClaims []AkriConnectorTemplatePersistentVolumeClaim `pulumi:"persistentVolumeClaims"`
+	// Connector secrets that will be mounted onto all connector instances.
+	Secrets []AkriConnectorsSecret `pulumi:"secrets"`
+	// The stateful set configuration settings. This corresponds to the Kubernetes StatefulSet resource.
+	// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json#/components/schemas/io.k8s.api.apps.v1.StatefulSetSpec
+	StatefulSetConfigurationSettings interface{} `pulumi:"statefulSetConfigurationSettings"`
+	// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+	TrustSettings *AkriConnectorTemplateTrustList `pulumi:"trustSettings"`
+}
+
+// AkriConnectorTemplateRuntimeStatefulSetConfigurationInput is an input type that accepts AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs and AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateRuntimeStatefulSetConfigurationInput` via:
+//
+//	AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs{...}
+type AkriConnectorTemplateRuntimeStatefulSetConfigurationInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateRuntimeStatefulSetConfigurationOutput() AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput
+	ToAkriConnectorTemplateRuntimeStatefulSetConfigurationOutputWithContext(context.Context) AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput
+}
+
+// AkriConnectorTemplateRuntimeStatefulSetConfiguration properties.
+type AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs struct {
+	// Additional configuration for the image of the managed configuration.
+	AdditionalConfiguration pulumi.StringMapInput `pulumi:"additionalConfiguration"`
+	// Allocation settings for the managed configuration.
+	Allocation AkriConnectorTemplateBucketizedAllocationPtrInput `pulumi:"allocation"`
+	// Managed configuration types.
+	// Expected value is 'StatefulSetConfiguration'.
+	ManagedConfigurationType pulumi.StringInput `pulumi:"managedConfigurationType"`
+	// The persistent volume claim templates for the managed configuration.
+	// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+	PersistentVolumeClaimTemplates pulumi.ArrayInput `pulumi:"persistentVolumeClaimTemplates"`
+	// The persistent volume claims for the managed configuration.
+	PersistentVolumeClaims AkriConnectorTemplatePersistentVolumeClaimArrayInput `pulumi:"persistentVolumeClaims"`
+	// Connector secrets that will be mounted onto all connector instances.
+	Secrets AkriConnectorsSecretArrayInput `pulumi:"secrets"`
+	// The stateful set configuration settings. This corresponds to the Kubernetes StatefulSet resource.
+	// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json#/components/schemas/io.k8s.api.apps.v1.StatefulSetSpec
+	StatefulSetConfigurationSettings pulumi.Input `pulumi:"statefulSetConfigurationSettings"`
+	// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+	TrustSettings AkriConnectorTemplateTrustListPtrInput `pulumi:"trustSettings"`
+}
+
+func (AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateRuntimeStatefulSetConfiguration)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationOutput() AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput {
+	return i.ToAkriConnectorTemplateRuntimeStatefulSetConfigurationOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput)
+}
+
+func (i AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput() AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput).ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrInput is an input type that accepts AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs, AkriConnectorTemplateRuntimeStatefulSetConfigurationPtr and AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrInput` via:
+//
+//	        AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput() AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput
+	ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutputWithContext(context.Context) AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput
+}
+
+type akriConnectorTemplateRuntimeStatefulSetConfigurationPtrType AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs
+
+func AkriConnectorTemplateRuntimeStatefulSetConfigurationPtr(v *AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs) AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrInput {
+	return (*akriConnectorTemplateRuntimeStatefulSetConfigurationPtrType)(v)
+}
+
+func (*akriConnectorTemplateRuntimeStatefulSetConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateRuntimeStatefulSetConfiguration)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateRuntimeStatefulSetConfigurationPtrType) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput() AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput {
+	return i.ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateRuntimeStatefulSetConfigurationPtrType) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput)
+}
+
+// AkriConnectorTemplateRuntimeStatefulSetConfiguration properties.
+type AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateRuntimeStatefulSetConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationOutput() AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput() AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput {
+	return o.ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateRuntimeStatefulSetConfiguration) *AkriConnectorTemplateRuntimeStatefulSetConfiguration {
+		return &v
+	}).(AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput)
+}
+
+// Additional configuration for the image of the managed configuration.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) AdditionalConfiguration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfiguration) map[string]string {
+		return v.AdditionalConfiguration
+	}).(pulumi.StringMapOutput)
+}
+
+// Allocation settings for the managed configuration.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) Allocation() AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfiguration) *AkriConnectorTemplateBucketizedAllocation {
+		return v.Allocation
+	}).(AkriConnectorTemplateBucketizedAllocationPtrOutput)
+}
+
+// Managed configuration types.
+// Expected value is 'StatefulSetConfiguration'.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) ManagedConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfiguration) string { return v.ManagedConfigurationType }).(pulumi.StringOutput)
+}
+
+// The persistent volume claim templates for the managed configuration.
+// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) PersistentVolumeClaimTemplates() pulumi.ArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfiguration) []interface{} {
+		return v.PersistentVolumeClaimTemplates
+	}).(pulumi.ArrayOutput)
+}
+
+// The persistent volume claims for the managed configuration.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) PersistentVolumeClaims() AkriConnectorTemplatePersistentVolumeClaimArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfiguration) []AkriConnectorTemplatePersistentVolumeClaim {
+		return v.PersistentVolumeClaims
+	}).(AkriConnectorTemplatePersistentVolumeClaimArrayOutput)
+}
+
+// Connector secrets that will be mounted onto all connector instances.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) Secrets() AkriConnectorsSecretArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfiguration) []AkriConnectorsSecret { return v.Secrets }).(AkriConnectorsSecretArrayOutput)
+}
+
+// The stateful set configuration settings. This corresponds to the Kubernetes StatefulSet resource.
+// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json#/components/schemas/io.k8s.api.apps.v1.StatefulSetSpec
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) StatefulSetConfigurationSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfiguration) interface{} {
+		return v.StatefulSetConfigurationSettings
+	}).(pulumi.AnyOutput)
+}
+
+// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput) TrustSettings() AkriConnectorTemplateTrustListPtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfiguration) *AkriConnectorTemplateTrustList {
+		return v.TrustSettings
+	}).(AkriConnectorTemplateTrustListPtrOutput)
+}
+
+type AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateRuntimeStatefulSetConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput() AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) Elem() AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeStatefulSetConfiguration) AkriConnectorTemplateRuntimeStatefulSetConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateRuntimeStatefulSetConfiguration
+		return ret
+	}).(AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput)
+}
+
+// Additional configuration for the image of the managed configuration.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) AdditionalConfiguration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeStatefulSetConfiguration) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalConfiguration
+	}).(pulumi.StringMapOutput)
+}
+
+// Allocation settings for the managed configuration.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) Allocation() AkriConnectorTemplateBucketizedAllocationPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeStatefulSetConfiguration) *AkriConnectorTemplateBucketizedAllocation {
+		if v == nil {
+			return nil
+		}
+		return v.Allocation
+	}).(AkriConnectorTemplateBucketizedAllocationPtrOutput)
+}
+
+// Managed configuration types.
+// Expected value is 'StatefulSetConfiguration'.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) ManagedConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeStatefulSetConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ManagedConfigurationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The persistent volume claim templates for the managed configuration.
+// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) PersistentVolumeClaimTemplates() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeStatefulSetConfiguration) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentVolumeClaimTemplates
+	}).(pulumi.ArrayOutput)
+}
+
+// The persistent volume claims for the managed configuration.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) PersistentVolumeClaims() AkriConnectorTemplatePersistentVolumeClaimArrayOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeStatefulSetConfiguration) []AkriConnectorTemplatePersistentVolumeClaim {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentVolumeClaims
+	}).(AkriConnectorTemplatePersistentVolumeClaimArrayOutput)
+}
+
+// Connector secrets that will be mounted onto all connector instances.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) Secrets() AkriConnectorsSecretArrayOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeStatefulSetConfiguration) []AkriConnectorsSecret {
+		if v == nil {
+			return nil
+		}
+		return v.Secrets
+	}).(AkriConnectorsSecretArrayOutput)
+}
+
+// The stateful set configuration settings. This corresponds to the Kubernetes StatefulSet resource.
+// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json#/components/schemas/io.k8s.api.apps.v1.StatefulSetSpec
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) StatefulSetConfigurationSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeStatefulSetConfiguration) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.StatefulSetConfigurationSettings
+	}).(pulumi.AnyOutput)
+}
+
+// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput) TrustSettings() AkriConnectorTemplateTrustListPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateRuntimeStatefulSetConfiguration) *AkriConnectorTemplateTrustList {
+		if v == nil {
+			return nil
+		}
+		return v.TrustSettings
+	}).(AkriConnectorTemplateTrustListPtrOutput)
+}
+
+// AkriConnectorTemplateRuntimeStatefulSetConfiguration properties.
+type AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse struct {
+	// Additional configuration for the image of the managed configuration.
+	AdditionalConfiguration map[string]string `pulumi:"additionalConfiguration"`
+	// Allocation settings for the managed configuration.
+	Allocation *AkriConnectorTemplateBucketizedAllocationResponse `pulumi:"allocation"`
+	// Managed configuration types.
+	// Expected value is 'StatefulSetConfiguration'.
+	ManagedConfigurationType string `pulumi:"managedConfigurationType"`
+	// The persistent volume claim templates for the managed configuration.
+	// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+	PersistentVolumeClaimTemplates []interface{} `pulumi:"persistentVolumeClaimTemplates"`
+	// The persistent volume claims for the managed configuration.
+	PersistentVolumeClaims []AkriConnectorTemplatePersistentVolumeClaimResponse `pulumi:"persistentVolumeClaims"`
+	// Connector secrets that will be mounted onto all connector instances.
+	Secrets []AkriConnectorsSecretResponse `pulumi:"secrets"`
+	// The stateful set configuration settings. This corresponds to the Kubernetes StatefulSet resource.
+	// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json#/components/schemas/io.k8s.api.apps.v1.StatefulSetSpec
+	StatefulSetConfigurationSettings interface{} `pulumi:"statefulSetConfigurationSettings"`
+	// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+	TrustSettings *AkriConnectorTemplateTrustListResponse `pulumi:"trustSettings"`
+}
+
+// AkriConnectorTemplateRuntimeStatefulSetConfiguration properties.
+type AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput() AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput) ToAkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput {
+	return o
+}
+
+// Additional configuration for the image of the managed configuration.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput) AdditionalConfiguration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse) map[string]string {
+		return v.AdditionalConfiguration
+	}).(pulumi.StringMapOutput)
+}
+
+// Allocation settings for the managed configuration.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput) Allocation() AkriConnectorTemplateBucketizedAllocationResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse) *AkriConnectorTemplateBucketizedAllocationResponse {
+		return v.Allocation
+	}).(AkriConnectorTemplateBucketizedAllocationResponsePtrOutput)
+}
+
+// Managed configuration types.
+// Expected value is 'StatefulSetConfiguration'.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput) ManagedConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse) string {
+		return v.ManagedConfigurationType
+	}).(pulumi.StringOutput)
+}
+
+// The persistent volume claim templates for the managed configuration.
+// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput) PersistentVolumeClaimTemplates() pulumi.ArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse) []interface{} {
+		return v.PersistentVolumeClaimTemplates
+	}).(pulumi.ArrayOutput)
+}
+
+// The persistent volume claims for the managed configuration.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput) PersistentVolumeClaims() AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse) []AkriConnectorTemplatePersistentVolumeClaimResponse {
+		return v.PersistentVolumeClaims
+	}).(AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput)
+}
+
+// Connector secrets that will be mounted onto all connector instances.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput) Secrets() AkriConnectorsSecretResponseArrayOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse) []AkriConnectorsSecretResponse {
+		return v.Secrets
+	}).(AkriConnectorsSecretResponseArrayOutput)
+}
+
+// The stateful set configuration settings. This corresponds to the Kubernetes StatefulSet resource.
+// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json#/components/schemas/io.k8s.api.apps.v1.StatefulSetSpec
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput) StatefulSetConfigurationSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse) interface{} {
+		return v.StatefulSetConfigurationSettings
+	}).(pulumi.AnyOutput)
+}
+
+// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+func (o AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput) TrustSettings() AkriConnectorTemplateTrustListResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse) *AkriConnectorTemplateTrustListResponse {
+		return v.TrustSettings
+	}).(AkriConnectorTemplateTrustListResponsePtrOutput)
+}
+
+// AkriConnectorTemplateTrustList properties.
+type AkriConnectorTemplateTrustList struct {
+	// The secret reference for certificates to trust.
+	TrustListSecretRef string `pulumi:"trustListSecretRef"`
+}
+
+// AkriConnectorTemplateTrustListInput is an input type that accepts AkriConnectorTemplateTrustListArgs and AkriConnectorTemplateTrustListOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateTrustListInput` via:
+//
+//	AkriConnectorTemplateTrustListArgs{...}
+type AkriConnectorTemplateTrustListInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateTrustListOutput() AkriConnectorTemplateTrustListOutput
+	ToAkriConnectorTemplateTrustListOutputWithContext(context.Context) AkriConnectorTemplateTrustListOutput
+}
+
+// AkriConnectorTemplateTrustList properties.
+type AkriConnectorTemplateTrustListArgs struct {
+	// The secret reference for certificates to trust.
+	TrustListSecretRef pulumi.StringInput `pulumi:"trustListSecretRef"`
+}
+
+func (AkriConnectorTemplateTrustListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateTrustList)(nil)).Elem()
+}
+
+func (i AkriConnectorTemplateTrustListArgs) ToAkriConnectorTemplateTrustListOutput() AkriConnectorTemplateTrustListOutput {
+	return i.ToAkriConnectorTemplateTrustListOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateTrustListArgs) ToAkriConnectorTemplateTrustListOutputWithContext(ctx context.Context) AkriConnectorTemplateTrustListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateTrustListOutput)
+}
+
+func (i AkriConnectorTemplateTrustListArgs) ToAkriConnectorTemplateTrustListPtrOutput() AkriConnectorTemplateTrustListPtrOutput {
+	return i.ToAkriConnectorTemplateTrustListPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorTemplateTrustListArgs) ToAkriConnectorTemplateTrustListPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateTrustListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateTrustListOutput).ToAkriConnectorTemplateTrustListPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorTemplateTrustListPtrInput is an input type that accepts AkriConnectorTemplateTrustListArgs, AkriConnectorTemplateTrustListPtr and AkriConnectorTemplateTrustListPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorTemplateTrustListPtrInput` via:
+//
+//	        AkriConnectorTemplateTrustListArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorTemplateTrustListPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorTemplateTrustListPtrOutput() AkriConnectorTemplateTrustListPtrOutput
+	ToAkriConnectorTemplateTrustListPtrOutputWithContext(context.Context) AkriConnectorTemplateTrustListPtrOutput
+}
+
+type akriConnectorTemplateTrustListPtrType AkriConnectorTemplateTrustListArgs
+
+func AkriConnectorTemplateTrustListPtr(v *AkriConnectorTemplateTrustListArgs) AkriConnectorTemplateTrustListPtrInput {
+	return (*akriConnectorTemplateTrustListPtrType)(v)
+}
+
+func (*akriConnectorTemplateTrustListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateTrustList)(nil)).Elem()
+}
+
+func (i *akriConnectorTemplateTrustListPtrType) ToAkriConnectorTemplateTrustListPtrOutput() AkriConnectorTemplateTrustListPtrOutput {
+	return i.ToAkriConnectorTemplateTrustListPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorTemplateTrustListPtrType) ToAkriConnectorTemplateTrustListPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateTrustListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorTemplateTrustListPtrOutput)
+}
+
+// AkriConnectorTemplateTrustList properties.
+type AkriConnectorTemplateTrustListOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateTrustListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateTrustList)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateTrustListOutput) ToAkriConnectorTemplateTrustListOutput() AkriConnectorTemplateTrustListOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateTrustListOutput) ToAkriConnectorTemplateTrustListOutputWithContext(ctx context.Context) AkriConnectorTemplateTrustListOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateTrustListOutput) ToAkriConnectorTemplateTrustListPtrOutput() AkriConnectorTemplateTrustListPtrOutput {
+	return o.ToAkriConnectorTemplateTrustListPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorTemplateTrustListOutput) ToAkriConnectorTemplateTrustListPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateTrustListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorTemplateTrustList) *AkriConnectorTemplateTrustList {
+		return &v
+	}).(AkriConnectorTemplateTrustListPtrOutput)
+}
+
+// The secret reference for certificates to trust.
+func (o AkriConnectorTemplateTrustListOutput) TrustListSecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateTrustList) string { return v.TrustListSecretRef }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateTrustListPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateTrustListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateTrustList)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateTrustListPtrOutput) ToAkriConnectorTemplateTrustListPtrOutput() AkriConnectorTemplateTrustListPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateTrustListPtrOutput) ToAkriConnectorTemplateTrustListPtrOutputWithContext(ctx context.Context) AkriConnectorTemplateTrustListPtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateTrustListPtrOutput) Elem() AkriConnectorTemplateTrustListOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateTrustList) AkriConnectorTemplateTrustList {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateTrustList
+		return ret
+	}).(AkriConnectorTemplateTrustListOutput)
+}
+
+// The secret reference for certificates to trust.
+func (o AkriConnectorTemplateTrustListPtrOutput) TrustListSecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateTrustList) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TrustListSecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorTemplateTrustList properties.
+type AkriConnectorTemplateTrustListResponse struct {
+	// The secret reference for certificates to trust.
+	TrustListSecretRef string `pulumi:"trustListSecretRef"`
+}
+
+// AkriConnectorTemplateTrustList properties.
+type AkriConnectorTemplateTrustListResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateTrustListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorTemplateTrustListResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateTrustListResponseOutput) ToAkriConnectorTemplateTrustListResponseOutput() AkriConnectorTemplateTrustListResponseOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateTrustListResponseOutput) ToAkriConnectorTemplateTrustListResponseOutputWithContext(ctx context.Context) AkriConnectorTemplateTrustListResponseOutput {
+	return o
+}
+
+// The secret reference for certificates to trust.
+func (o AkriConnectorTemplateTrustListResponseOutput) TrustListSecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorTemplateTrustListResponse) string { return v.TrustListSecretRef }).(pulumi.StringOutput)
+}
+
+type AkriConnectorTemplateTrustListResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorTemplateTrustListResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorTemplateTrustListResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorTemplateTrustListResponsePtrOutput) ToAkriConnectorTemplateTrustListResponsePtrOutput() AkriConnectorTemplateTrustListResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateTrustListResponsePtrOutput) ToAkriConnectorTemplateTrustListResponsePtrOutputWithContext(ctx context.Context) AkriConnectorTemplateTrustListResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorTemplateTrustListResponsePtrOutput) Elem() AkriConnectorTemplateTrustListResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateTrustListResponse) AkriConnectorTemplateTrustListResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorTemplateTrustListResponse
+		return ret
+	}).(AkriConnectorTemplateTrustListResponseOutput)
+}
+
+// The secret reference for certificates to trust.
+func (o AkriConnectorTemplateTrustListResponsePtrOutput) TrustListSecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorTemplateTrustListResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TrustListSecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsContainerRegistry properties.
+type AkriConnectorsContainerRegistry struct {
+	// The registry settings for the container registry.
+	ContainerRegistrySettings AkriConnectorsContainerRegistrySettings `pulumi:"containerRegistrySettings"`
+	// AkriConnectorsRegistrySettings properties.
+	// Expected value is 'ContainerRegistry'.
+	RegistrySettingsType string `pulumi:"registrySettingsType"`
+}
+
+// AkriConnectorsContainerRegistryInput is an input type that accepts AkriConnectorsContainerRegistryArgs and AkriConnectorsContainerRegistryOutput values.
+// You can construct a concrete instance of `AkriConnectorsContainerRegistryInput` via:
+//
+//	AkriConnectorsContainerRegistryArgs{...}
+type AkriConnectorsContainerRegistryInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsContainerRegistryOutput() AkriConnectorsContainerRegistryOutput
+	ToAkriConnectorsContainerRegistryOutputWithContext(context.Context) AkriConnectorsContainerRegistryOutput
+}
+
+// AkriConnectorsContainerRegistry properties.
+type AkriConnectorsContainerRegistryArgs struct {
+	// The registry settings for the container registry.
+	ContainerRegistrySettings AkriConnectorsContainerRegistrySettingsInput `pulumi:"containerRegistrySettings"`
+	// AkriConnectorsRegistrySettings properties.
+	// Expected value is 'ContainerRegistry'.
+	RegistrySettingsType pulumi.StringInput `pulumi:"registrySettingsType"`
+}
+
+func (AkriConnectorsContainerRegistryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsContainerRegistry)(nil)).Elem()
+}
+
+func (i AkriConnectorsContainerRegistryArgs) ToAkriConnectorsContainerRegistryOutput() AkriConnectorsContainerRegistryOutput {
+	return i.ToAkriConnectorsContainerRegistryOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsContainerRegistryArgs) ToAkriConnectorsContainerRegistryOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsContainerRegistryOutput)
+}
+
+func (i AkriConnectorsContainerRegistryArgs) ToAkriConnectorsContainerRegistryPtrOutput() AkriConnectorsContainerRegistryPtrOutput {
+	return i.ToAkriConnectorsContainerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsContainerRegistryArgs) ToAkriConnectorsContainerRegistryPtrOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsContainerRegistryOutput).ToAkriConnectorsContainerRegistryPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorsContainerRegistryPtrInput is an input type that accepts AkriConnectorsContainerRegistryArgs, AkriConnectorsContainerRegistryPtr and AkriConnectorsContainerRegistryPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorsContainerRegistryPtrInput` via:
+//
+//	        AkriConnectorsContainerRegistryArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorsContainerRegistryPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsContainerRegistryPtrOutput() AkriConnectorsContainerRegistryPtrOutput
+	ToAkriConnectorsContainerRegistryPtrOutputWithContext(context.Context) AkriConnectorsContainerRegistryPtrOutput
+}
+
+type akriConnectorsContainerRegistryPtrType AkriConnectorsContainerRegistryArgs
+
+func AkriConnectorsContainerRegistryPtr(v *AkriConnectorsContainerRegistryArgs) AkriConnectorsContainerRegistryPtrInput {
+	return (*akriConnectorsContainerRegistryPtrType)(v)
+}
+
+func (*akriConnectorsContainerRegistryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsContainerRegistry)(nil)).Elem()
+}
+
+func (i *akriConnectorsContainerRegistryPtrType) ToAkriConnectorsContainerRegistryPtrOutput() AkriConnectorsContainerRegistryPtrOutput {
+	return i.ToAkriConnectorsContainerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorsContainerRegistryPtrType) ToAkriConnectorsContainerRegistryPtrOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsContainerRegistryPtrOutput)
+}
+
+// AkriConnectorsContainerRegistry properties.
+type AkriConnectorsContainerRegistryOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsContainerRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsContainerRegistry)(nil)).Elem()
+}
+
+func (o AkriConnectorsContainerRegistryOutput) ToAkriConnectorsContainerRegistryOutput() AkriConnectorsContainerRegistryOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistryOutput) ToAkriConnectorsContainerRegistryOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistryOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistryOutput) ToAkriConnectorsContainerRegistryPtrOutput() AkriConnectorsContainerRegistryPtrOutput {
+	return o.ToAkriConnectorsContainerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsContainerRegistryOutput) ToAkriConnectorsContainerRegistryPtrOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorsContainerRegistry) *AkriConnectorsContainerRegistry {
+		return &v
+	}).(AkriConnectorsContainerRegistryPtrOutput)
+}
+
+// The registry settings for the container registry.
+func (o AkriConnectorsContainerRegistryOutput) ContainerRegistrySettings() AkriConnectorsContainerRegistrySettingsOutput {
+	return o.ApplyT(func(v AkriConnectorsContainerRegistry) AkriConnectorsContainerRegistrySettings {
+		return v.ContainerRegistrySettings
+	}).(AkriConnectorsContainerRegistrySettingsOutput)
+}
+
+// AkriConnectorsRegistrySettings properties.
+// Expected value is 'ContainerRegistry'.
+func (o AkriConnectorsContainerRegistryOutput) RegistrySettingsType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsContainerRegistry) string { return v.RegistrySettingsType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsContainerRegistryPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsContainerRegistryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsContainerRegistry)(nil)).Elem()
+}
+
+func (o AkriConnectorsContainerRegistryPtrOutput) ToAkriConnectorsContainerRegistryPtrOutput() AkriConnectorsContainerRegistryPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistryPtrOutput) ToAkriConnectorsContainerRegistryPtrOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistryPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistryPtrOutput) Elem() AkriConnectorsContainerRegistryOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistry) AkriConnectorsContainerRegistry {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsContainerRegistry
+		return ret
+	}).(AkriConnectorsContainerRegistryOutput)
+}
+
+// The registry settings for the container registry.
+func (o AkriConnectorsContainerRegistryPtrOutput) ContainerRegistrySettings() AkriConnectorsContainerRegistrySettingsPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistry) *AkriConnectorsContainerRegistrySettings {
+		if v == nil {
+			return nil
+		}
+		return &v.ContainerRegistrySettings
+	}).(AkriConnectorsContainerRegistrySettingsPtrOutput)
+}
+
+// AkriConnectorsRegistrySettings properties.
+// Expected value is 'ContainerRegistry'.
+func (o AkriConnectorsContainerRegistryPtrOutput) RegistrySettingsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistrySettingsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsContainerRegistry properties.
+type AkriConnectorsContainerRegistryResponse struct {
+	// The registry settings for the container registry.
+	ContainerRegistrySettings AkriConnectorsContainerRegistrySettingsResponse `pulumi:"containerRegistrySettings"`
+	// AkriConnectorsRegistrySettings properties.
+	// Expected value is 'ContainerRegistry'.
+	RegistrySettingsType string `pulumi:"registrySettingsType"`
+}
+
+// AkriConnectorsContainerRegistry properties.
+type AkriConnectorsContainerRegistryResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsContainerRegistryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsContainerRegistryResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsContainerRegistryResponseOutput) ToAkriConnectorsContainerRegistryResponseOutput() AkriConnectorsContainerRegistryResponseOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistryResponseOutput) ToAkriConnectorsContainerRegistryResponseOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistryResponseOutput {
+	return o
+}
+
+// The registry settings for the container registry.
+func (o AkriConnectorsContainerRegistryResponseOutput) ContainerRegistrySettings() AkriConnectorsContainerRegistrySettingsResponseOutput {
+	return o.ApplyT(func(v AkriConnectorsContainerRegistryResponse) AkriConnectorsContainerRegistrySettingsResponse {
+		return v.ContainerRegistrySettings
+	}).(AkriConnectorsContainerRegistrySettingsResponseOutput)
+}
+
+// AkriConnectorsRegistrySettings properties.
+// Expected value is 'ContainerRegistry'.
+func (o AkriConnectorsContainerRegistryResponseOutput) RegistrySettingsType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsContainerRegistryResponse) string { return v.RegistrySettingsType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsContainerRegistryResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsContainerRegistryResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsContainerRegistryResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsContainerRegistryResponsePtrOutput) ToAkriConnectorsContainerRegistryResponsePtrOutput() AkriConnectorsContainerRegistryResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistryResponsePtrOutput) ToAkriConnectorsContainerRegistryResponsePtrOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistryResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistryResponsePtrOutput) Elem() AkriConnectorsContainerRegistryResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistryResponse) AkriConnectorsContainerRegistryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsContainerRegistryResponse
+		return ret
+	}).(AkriConnectorsContainerRegistryResponseOutput)
+}
+
+// The registry settings for the container registry.
+func (o AkriConnectorsContainerRegistryResponsePtrOutput) ContainerRegistrySettings() AkriConnectorsContainerRegistrySettingsResponsePtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistryResponse) *AkriConnectorsContainerRegistrySettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ContainerRegistrySettings
+	}).(AkriConnectorsContainerRegistrySettingsResponsePtrOutput)
+}
+
+// AkriConnectorsRegistrySettings properties.
+// Expected value is 'ContainerRegistry'.
+func (o AkriConnectorsContainerRegistryResponsePtrOutput) RegistrySettingsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistryResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistrySettingsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsContainerRegistry properties.
+type AkriConnectorsContainerRegistrySettings struct {
+	// Optional list of references to secrets in the same namespace to use for pulling the connector image.
+	ImagePullSecrets []AkriConnectorsImagePullSecret `pulumi:"imagePullSecrets"`
+	// The container registry to use for the artifact.
+	Registry string `pulumi:"registry"`
+}
+
+// AkriConnectorsContainerRegistrySettingsInput is an input type that accepts AkriConnectorsContainerRegistrySettingsArgs and AkriConnectorsContainerRegistrySettingsOutput values.
+// You can construct a concrete instance of `AkriConnectorsContainerRegistrySettingsInput` via:
+//
+//	AkriConnectorsContainerRegistrySettingsArgs{...}
+type AkriConnectorsContainerRegistrySettingsInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsContainerRegistrySettingsOutput() AkriConnectorsContainerRegistrySettingsOutput
+	ToAkriConnectorsContainerRegistrySettingsOutputWithContext(context.Context) AkriConnectorsContainerRegistrySettingsOutput
+}
+
+// AkriConnectorsContainerRegistry properties.
+type AkriConnectorsContainerRegistrySettingsArgs struct {
+	// Optional list of references to secrets in the same namespace to use for pulling the connector image.
+	ImagePullSecrets AkriConnectorsImagePullSecretArrayInput `pulumi:"imagePullSecrets"`
+	// The container registry to use for the artifact.
+	Registry pulumi.StringInput `pulumi:"registry"`
+}
+
+func (AkriConnectorsContainerRegistrySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsContainerRegistrySettings)(nil)).Elem()
+}
+
+func (i AkriConnectorsContainerRegistrySettingsArgs) ToAkriConnectorsContainerRegistrySettingsOutput() AkriConnectorsContainerRegistrySettingsOutput {
+	return i.ToAkriConnectorsContainerRegistrySettingsOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsContainerRegistrySettingsArgs) ToAkriConnectorsContainerRegistrySettingsOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistrySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsContainerRegistrySettingsOutput)
+}
+
+func (i AkriConnectorsContainerRegistrySettingsArgs) ToAkriConnectorsContainerRegistrySettingsPtrOutput() AkriConnectorsContainerRegistrySettingsPtrOutput {
+	return i.ToAkriConnectorsContainerRegistrySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsContainerRegistrySettingsArgs) ToAkriConnectorsContainerRegistrySettingsPtrOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistrySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsContainerRegistrySettingsOutput).ToAkriConnectorsContainerRegistrySettingsPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorsContainerRegistrySettingsPtrInput is an input type that accepts AkriConnectorsContainerRegistrySettingsArgs, AkriConnectorsContainerRegistrySettingsPtr and AkriConnectorsContainerRegistrySettingsPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorsContainerRegistrySettingsPtrInput` via:
+//
+//	        AkriConnectorsContainerRegistrySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorsContainerRegistrySettingsPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsContainerRegistrySettingsPtrOutput() AkriConnectorsContainerRegistrySettingsPtrOutput
+	ToAkriConnectorsContainerRegistrySettingsPtrOutputWithContext(context.Context) AkriConnectorsContainerRegistrySettingsPtrOutput
+}
+
+type akriConnectorsContainerRegistrySettingsPtrType AkriConnectorsContainerRegistrySettingsArgs
+
+func AkriConnectorsContainerRegistrySettingsPtr(v *AkriConnectorsContainerRegistrySettingsArgs) AkriConnectorsContainerRegistrySettingsPtrInput {
+	return (*akriConnectorsContainerRegistrySettingsPtrType)(v)
+}
+
+func (*akriConnectorsContainerRegistrySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsContainerRegistrySettings)(nil)).Elem()
+}
+
+func (i *akriConnectorsContainerRegistrySettingsPtrType) ToAkriConnectorsContainerRegistrySettingsPtrOutput() AkriConnectorsContainerRegistrySettingsPtrOutput {
+	return i.ToAkriConnectorsContainerRegistrySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorsContainerRegistrySettingsPtrType) ToAkriConnectorsContainerRegistrySettingsPtrOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistrySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsContainerRegistrySettingsPtrOutput)
+}
+
+// AkriConnectorsContainerRegistry properties.
+type AkriConnectorsContainerRegistrySettingsOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsContainerRegistrySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsContainerRegistrySettings)(nil)).Elem()
+}
+
+func (o AkriConnectorsContainerRegistrySettingsOutput) ToAkriConnectorsContainerRegistrySettingsOutput() AkriConnectorsContainerRegistrySettingsOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistrySettingsOutput) ToAkriConnectorsContainerRegistrySettingsOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistrySettingsOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistrySettingsOutput) ToAkriConnectorsContainerRegistrySettingsPtrOutput() AkriConnectorsContainerRegistrySettingsPtrOutput {
+	return o.ToAkriConnectorsContainerRegistrySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsContainerRegistrySettingsOutput) ToAkriConnectorsContainerRegistrySettingsPtrOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistrySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorsContainerRegistrySettings) *AkriConnectorsContainerRegistrySettings {
+		return &v
+	}).(AkriConnectorsContainerRegistrySettingsPtrOutput)
+}
+
+// Optional list of references to secrets in the same namespace to use for pulling the connector image.
+func (o AkriConnectorsContainerRegistrySettingsOutput) ImagePullSecrets() AkriConnectorsImagePullSecretArrayOutput {
+	return o.ApplyT(func(v AkriConnectorsContainerRegistrySettings) []AkriConnectorsImagePullSecret {
+		return v.ImagePullSecrets
+	}).(AkriConnectorsImagePullSecretArrayOutput)
+}
+
+// The container registry to use for the artifact.
+func (o AkriConnectorsContainerRegistrySettingsOutput) Registry() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsContainerRegistrySettings) string { return v.Registry }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsContainerRegistrySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsContainerRegistrySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsContainerRegistrySettings)(nil)).Elem()
+}
+
+func (o AkriConnectorsContainerRegistrySettingsPtrOutput) ToAkriConnectorsContainerRegistrySettingsPtrOutput() AkriConnectorsContainerRegistrySettingsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistrySettingsPtrOutput) ToAkriConnectorsContainerRegistrySettingsPtrOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistrySettingsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistrySettingsPtrOutput) Elem() AkriConnectorsContainerRegistrySettingsOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistrySettings) AkriConnectorsContainerRegistrySettings {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsContainerRegistrySettings
+		return ret
+	}).(AkriConnectorsContainerRegistrySettingsOutput)
+}
+
+// Optional list of references to secrets in the same namespace to use for pulling the connector image.
+func (o AkriConnectorsContainerRegistrySettingsPtrOutput) ImagePullSecrets() AkriConnectorsImagePullSecretArrayOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistrySettings) []AkriConnectorsImagePullSecret {
+		if v == nil {
+			return nil
+		}
+		return v.ImagePullSecrets
+	}).(AkriConnectorsImagePullSecretArrayOutput)
+}
+
+// The container registry to use for the artifact.
+func (o AkriConnectorsContainerRegistrySettingsPtrOutput) Registry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistrySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsContainerRegistry properties.
+type AkriConnectorsContainerRegistrySettingsResponse struct {
+	// Optional list of references to secrets in the same namespace to use for pulling the connector image.
+	ImagePullSecrets []AkriConnectorsImagePullSecretResponse `pulumi:"imagePullSecrets"`
+	// The container registry to use for the artifact.
+	Registry string `pulumi:"registry"`
+}
+
+// AkriConnectorsContainerRegistry properties.
+type AkriConnectorsContainerRegistrySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsContainerRegistrySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsContainerRegistrySettingsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsContainerRegistrySettingsResponseOutput) ToAkriConnectorsContainerRegistrySettingsResponseOutput() AkriConnectorsContainerRegistrySettingsResponseOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistrySettingsResponseOutput) ToAkriConnectorsContainerRegistrySettingsResponseOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistrySettingsResponseOutput {
+	return o
+}
+
+// Optional list of references to secrets in the same namespace to use for pulling the connector image.
+func (o AkriConnectorsContainerRegistrySettingsResponseOutput) ImagePullSecrets() AkriConnectorsImagePullSecretResponseArrayOutput {
+	return o.ApplyT(func(v AkriConnectorsContainerRegistrySettingsResponse) []AkriConnectorsImagePullSecretResponse {
+		return v.ImagePullSecrets
+	}).(AkriConnectorsImagePullSecretResponseArrayOutput)
+}
+
+// The container registry to use for the artifact.
+func (o AkriConnectorsContainerRegistrySettingsResponseOutput) Registry() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsContainerRegistrySettingsResponse) string { return v.Registry }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsContainerRegistrySettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsContainerRegistrySettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsContainerRegistrySettingsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsContainerRegistrySettingsResponsePtrOutput) ToAkriConnectorsContainerRegistrySettingsResponsePtrOutput() AkriConnectorsContainerRegistrySettingsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistrySettingsResponsePtrOutput) ToAkriConnectorsContainerRegistrySettingsResponsePtrOutputWithContext(ctx context.Context) AkriConnectorsContainerRegistrySettingsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsContainerRegistrySettingsResponsePtrOutput) Elem() AkriConnectorsContainerRegistrySettingsResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistrySettingsResponse) AkriConnectorsContainerRegistrySettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsContainerRegistrySettingsResponse
+		return ret
+	}).(AkriConnectorsContainerRegistrySettingsResponseOutput)
+}
+
+// Optional list of references to secrets in the same namespace to use for pulling the connector image.
+func (o AkriConnectorsContainerRegistrySettingsResponsePtrOutput) ImagePullSecrets() AkriConnectorsImagePullSecretResponseArrayOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistrySettingsResponse) []AkriConnectorsImagePullSecretResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ImagePullSecrets
+	}).(AkriConnectorsImagePullSecretResponseArrayOutput)
+}
+
+// The container registry to use for the artifact.
+func (o AkriConnectorsContainerRegistrySettingsResponsePtrOutput) Registry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsContainerRegistrySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsDiagnostic Log properties.
+type AkriConnectorsDiagnosticsLogs struct {
+	// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
+	Level *string `pulumi:"level"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorsDiagnosticsLogs
+func (val *AkriConnectorsDiagnosticsLogs) Defaults() *AkriConnectorsDiagnosticsLogs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Level == nil {
+		level_ := "info"
+		tmp.Level = &level_
+	}
+	return &tmp
+}
+
+// AkriConnectorsDiagnosticsLogsInput is an input type that accepts AkriConnectorsDiagnosticsLogsArgs and AkriConnectorsDiagnosticsLogsOutput values.
+// You can construct a concrete instance of `AkriConnectorsDiagnosticsLogsInput` via:
+//
+//	AkriConnectorsDiagnosticsLogsArgs{...}
+type AkriConnectorsDiagnosticsLogsInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsDiagnosticsLogsOutput() AkriConnectorsDiagnosticsLogsOutput
+	ToAkriConnectorsDiagnosticsLogsOutputWithContext(context.Context) AkriConnectorsDiagnosticsLogsOutput
+}
+
+// AkriConnectorsDiagnostic Log properties.
+type AkriConnectorsDiagnosticsLogsArgs struct {
+	// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
+	Level pulumi.StringPtrInput `pulumi:"level"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorsDiagnosticsLogsArgs
+func (val *AkriConnectorsDiagnosticsLogsArgs) Defaults() *AkriConnectorsDiagnosticsLogsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Level == nil {
+		tmp.Level = pulumi.StringPtr("info")
+	}
+	return &tmp
+}
+func (AkriConnectorsDiagnosticsLogsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsDiagnosticsLogs)(nil)).Elem()
+}
+
+func (i AkriConnectorsDiagnosticsLogsArgs) ToAkriConnectorsDiagnosticsLogsOutput() AkriConnectorsDiagnosticsLogsOutput {
+	return i.ToAkriConnectorsDiagnosticsLogsOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsDiagnosticsLogsArgs) ToAkriConnectorsDiagnosticsLogsOutputWithContext(ctx context.Context) AkriConnectorsDiagnosticsLogsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsDiagnosticsLogsOutput)
+}
+
+func (i AkriConnectorsDiagnosticsLogsArgs) ToAkriConnectorsDiagnosticsLogsPtrOutput() AkriConnectorsDiagnosticsLogsPtrOutput {
+	return i.ToAkriConnectorsDiagnosticsLogsPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsDiagnosticsLogsArgs) ToAkriConnectorsDiagnosticsLogsPtrOutputWithContext(ctx context.Context) AkriConnectorsDiagnosticsLogsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsDiagnosticsLogsOutput).ToAkriConnectorsDiagnosticsLogsPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorsDiagnosticsLogsPtrInput is an input type that accepts AkriConnectorsDiagnosticsLogsArgs, AkriConnectorsDiagnosticsLogsPtr and AkriConnectorsDiagnosticsLogsPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorsDiagnosticsLogsPtrInput` via:
+//
+//	        AkriConnectorsDiagnosticsLogsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorsDiagnosticsLogsPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsDiagnosticsLogsPtrOutput() AkriConnectorsDiagnosticsLogsPtrOutput
+	ToAkriConnectorsDiagnosticsLogsPtrOutputWithContext(context.Context) AkriConnectorsDiagnosticsLogsPtrOutput
+}
+
+type akriConnectorsDiagnosticsLogsPtrType AkriConnectorsDiagnosticsLogsArgs
+
+func AkriConnectorsDiagnosticsLogsPtr(v *AkriConnectorsDiagnosticsLogsArgs) AkriConnectorsDiagnosticsLogsPtrInput {
+	return (*akriConnectorsDiagnosticsLogsPtrType)(v)
+}
+
+func (*akriConnectorsDiagnosticsLogsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsDiagnosticsLogs)(nil)).Elem()
+}
+
+func (i *akriConnectorsDiagnosticsLogsPtrType) ToAkriConnectorsDiagnosticsLogsPtrOutput() AkriConnectorsDiagnosticsLogsPtrOutput {
+	return i.ToAkriConnectorsDiagnosticsLogsPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorsDiagnosticsLogsPtrType) ToAkriConnectorsDiagnosticsLogsPtrOutputWithContext(ctx context.Context) AkriConnectorsDiagnosticsLogsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsDiagnosticsLogsPtrOutput)
+}
+
+// AkriConnectorsDiagnostic Log properties.
+type AkriConnectorsDiagnosticsLogsOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsDiagnosticsLogsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsDiagnosticsLogs)(nil)).Elem()
+}
+
+func (o AkriConnectorsDiagnosticsLogsOutput) ToAkriConnectorsDiagnosticsLogsOutput() AkriConnectorsDiagnosticsLogsOutput {
+	return o
+}
+
+func (o AkriConnectorsDiagnosticsLogsOutput) ToAkriConnectorsDiagnosticsLogsOutputWithContext(ctx context.Context) AkriConnectorsDiagnosticsLogsOutput {
+	return o
+}
+
+func (o AkriConnectorsDiagnosticsLogsOutput) ToAkriConnectorsDiagnosticsLogsPtrOutput() AkriConnectorsDiagnosticsLogsPtrOutput {
+	return o.ToAkriConnectorsDiagnosticsLogsPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsDiagnosticsLogsOutput) ToAkriConnectorsDiagnosticsLogsPtrOutputWithContext(ctx context.Context) AkriConnectorsDiagnosticsLogsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorsDiagnosticsLogs) *AkriConnectorsDiagnosticsLogs {
+		return &v
+	}).(AkriConnectorsDiagnosticsLogsPtrOutput)
+}
+
+// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
+func (o AkriConnectorsDiagnosticsLogsOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsDiagnosticsLogs) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+type AkriConnectorsDiagnosticsLogsPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsDiagnosticsLogsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsDiagnosticsLogs)(nil)).Elem()
+}
+
+func (o AkriConnectorsDiagnosticsLogsPtrOutput) ToAkriConnectorsDiagnosticsLogsPtrOutput() AkriConnectorsDiagnosticsLogsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsDiagnosticsLogsPtrOutput) ToAkriConnectorsDiagnosticsLogsPtrOutputWithContext(ctx context.Context) AkriConnectorsDiagnosticsLogsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsDiagnosticsLogsPtrOutput) Elem() AkriConnectorsDiagnosticsLogsOutput {
+	return o.ApplyT(func(v *AkriConnectorsDiagnosticsLogs) AkriConnectorsDiagnosticsLogs {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsDiagnosticsLogs
+		return ret
+	}).(AkriConnectorsDiagnosticsLogsOutput)
+}
+
+// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
+func (o AkriConnectorsDiagnosticsLogsPtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsDiagnosticsLogs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsDiagnostic Log properties.
+type AkriConnectorsDiagnosticsLogsResponse struct {
+	// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
+	Level *string `pulumi:"level"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorsDiagnosticsLogsResponse
+func (val *AkriConnectorsDiagnosticsLogsResponse) Defaults() *AkriConnectorsDiagnosticsLogsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Level == nil {
+		level_ := "info"
+		tmp.Level = &level_
+	}
+	return &tmp
+}
+
+// AkriConnectorsDiagnostic Log properties.
+type AkriConnectorsDiagnosticsLogsResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsDiagnosticsLogsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsDiagnosticsLogsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsDiagnosticsLogsResponseOutput) ToAkriConnectorsDiagnosticsLogsResponseOutput() AkriConnectorsDiagnosticsLogsResponseOutput {
+	return o
+}
+
+func (o AkriConnectorsDiagnosticsLogsResponseOutput) ToAkriConnectorsDiagnosticsLogsResponseOutputWithContext(ctx context.Context) AkriConnectorsDiagnosticsLogsResponseOutput {
+	return o
+}
+
+// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
+func (o AkriConnectorsDiagnosticsLogsResponseOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsDiagnosticsLogsResponse) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+type AkriConnectorsDiagnosticsLogsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsDiagnosticsLogsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsDiagnosticsLogsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsDiagnosticsLogsResponsePtrOutput) ToAkriConnectorsDiagnosticsLogsResponsePtrOutput() AkriConnectorsDiagnosticsLogsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsDiagnosticsLogsResponsePtrOutput) ToAkriConnectorsDiagnosticsLogsResponsePtrOutputWithContext(ctx context.Context) AkriConnectorsDiagnosticsLogsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsDiagnosticsLogsResponsePtrOutput) Elem() AkriConnectorsDiagnosticsLogsResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorsDiagnosticsLogsResponse) AkriConnectorsDiagnosticsLogsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsDiagnosticsLogsResponse
+		return ret
+	}).(AkriConnectorsDiagnosticsLogsResponseOutput)
+}
+
+// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
+func (o AkriConnectorsDiagnosticsLogsResponsePtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsDiagnosticsLogsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsDigest properties.
+type AkriConnectorsDigest struct {
+	// The digest of the image.
+	Digest string `pulumi:"digest"`
+	// AkriConnectorsTagDigestType values.
+	// Expected value is 'Digest'.
+	TagDigestType string `pulumi:"tagDigestType"`
+}
+
+// AkriConnectorsDigestInput is an input type that accepts AkriConnectorsDigestArgs and AkriConnectorsDigestOutput values.
+// You can construct a concrete instance of `AkriConnectorsDigestInput` via:
+//
+//	AkriConnectorsDigestArgs{...}
+type AkriConnectorsDigestInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsDigestOutput() AkriConnectorsDigestOutput
+	ToAkriConnectorsDigestOutputWithContext(context.Context) AkriConnectorsDigestOutput
+}
+
+// AkriConnectorsDigest properties.
+type AkriConnectorsDigestArgs struct {
+	// The digest of the image.
+	Digest pulumi.StringInput `pulumi:"digest"`
+	// AkriConnectorsTagDigestType values.
+	// Expected value is 'Digest'.
+	TagDigestType pulumi.StringInput `pulumi:"tagDigestType"`
+}
+
+func (AkriConnectorsDigestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsDigest)(nil)).Elem()
+}
+
+func (i AkriConnectorsDigestArgs) ToAkriConnectorsDigestOutput() AkriConnectorsDigestOutput {
+	return i.ToAkriConnectorsDigestOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsDigestArgs) ToAkriConnectorsDigestOutputWithContext(ctx context.Context) AkriConnectorsDigestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsDigestOutput)
+}
+
+func (i AkriConnectorsDigestArgs) ToAkriConnectorsDigestPtrOutput() AkriConnectorsDigestPtrOutput {
+	return i.ToAkriConnectorsDigestPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsDigestArgs) ToAkriConnectorsDigestPtrOutputWithContext(ctx context.Context) AkriConnectorsDigestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsDigestOutput).ToAkriConnectorsDigestPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorsDigestPtrInput is an input type that accepts AkriConnectorsDigestArgs, AkriConnectorsDigestPtr and AkriConnectorsDigestPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorsDigestPtrInput` via:
+//
+//	        AkriConnectorsDigestArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorsDigestPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsDigestPtrOutput() AkriConnectorsDigestPtrOutput
+	ToAkriConnectorsDigestPtrOutputWithContext(context.Context) AkriConnectorsDigestPtrOutput
+}
+
+type akriConnectorsDigestPtrType AkriConnectorsDigestArgs
+
+func AkriConnectorsDigestPtr(v *AkriConnectorsDigestArgs) AkriConnectorsDigestPtrInput {
+	return (*akriConnectorsDigestPtrType)(v)
+}
+
+func (*akriConnectorsDigestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsDigest)(nil)).Elem()
+}
+
+func (i *akriConnectorsDigestPtrType) ToAkriConnectorsDigestPtrOutput() AkriConnectorsDigestPtrOutput {
+	return i.ToAkriConnectorsDigestPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorsDigestPtrType) ToAkriConnectorsDigestPtrOutputWithContext(ctx context.Context) AkriConnectorsDigestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsDigestPtrOutput)
+}
+
+// AkriConnectorsDigest properties.
+type AkriConnectorsDigestOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsDigestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsDigest)(nil)).Elem()
+}
+
+func (o AkriConnectorsDigestOutput) ToAkriConnectorsDigestOutput() AkriConnectorsDigestOutput {
+	return o
+}
+
+func (o AkriConnectorsDigestOutput) ToAkriConnectorsDigestOutputWithContext(ctx context.Context) AkriConnectorsDigestOutput {
+	return o
+}
+
+func (o AkriConnectorsDigestOutput) ToAkriConnectorsDigestPtrOutput() AkriConnectorsDigestPtrOutput {
+	return o.ToAkriConnectorsDigestPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsDigestOutput) ToAkriConnectorsDigestPtrOutputWithContext(ctx context.Context) AkriConnectorsDigestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorsDigest) *AkriConnectorsDigest {
+		return &v
+	}).(AkriConnectorsDigestPtrOutput)
+}
+
+// The digest of the image.
+func (o AkriConnectorsDigestOutput) Digest() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsDigest) string { return v.Digest }).(pulumi.StringOutput)
+}
+
+// AkriConnectorsTagDigestType values.
+// Expected value is 'Digest'.
+func (o AkriConnectorsDigestOutput) TagDigestType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsDigest) string { return v.TagDigestType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsDigestPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsDigestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsDigest)(nil)).Elem()
+}
+
+func (o AkriConnectorsDigestPtrOutput) ToAkriConnectorsDigestPtrOutput() AkriConnectorsDigestPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsDigestPtrOutput) ToAkriConnectorsDigestPtrOutputWithContext(ctx context.Context) AkriConnectorsDigestPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsDigestPtrOutput) Elem() AkriConnectorsDigestOutput {
+	return o.ApplyT(func(v *AkriConnectorsDigest) AkriConnectorsDigest {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsDigest
+		return ret
+	}).(AkriConnectorsDigestOutput)
+}
+
+// The digest of the image.
+func (o AkriConnectorsDigestPtrOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsDigest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Digest
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsTagDigestType values.
+// Expected value is 'Digest'.
+func (o AkriConnectorsDigestPtrOutput) TagDigestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsDigest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagDigestType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsDigest properties.
+type AkriConnectorsDigestResponse struct {
+	// The digest of the image.
+	Digest string `pulumi:"digest"`
+	// AkriConnectorsTagDigestType values.
+	// Expected value is 'Digest'.
+	TagDigestType string `pulumi:"tagDigestType"`
+}
+
+// AkriConnectorsDigest properties.
+type AkriConnectorsDigestResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsDigestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsDigestResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsDigestResponseOutput) ToAkriConnectorsDigestResponseOutput() AkriConnectorsDigestResponseOutput {
+	return o
+}
+
+func (o AkriConnectorsDigestResponseOutput) ToAkriConnectorsDigestResponseOutputWithContext(ctx context.Context) AkriConnectorsDigestResponseOutput {
+	return o
+}
+
+// The digest of the image.
+func (o AkriConnectorsDigestResponseOutput) Digest() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsDigestResponse) string { return v.Digest }).(pulumi.StringOutput)
+}
+
+// AkriConnectorsTagDigestType values.
+// Expected value is 'Digest'.
+func (o AkriConnectorsDigestResponseOutput) TagDigestType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsDigestResponse) string { return v.TagDigestType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsDigestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsDigestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsDigestResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsDigestResponsePtrOutput) ToAkriConnectorsDigestResponsePtrOutput() AkriConnectorsDigestResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsDigestResponsePtrOutput) ToAkriConnectorsDigestResponsePtrOutputWithContext(ctx context.Context) AkriConnectorsDigestResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsDigestResponsePtrOutput) Elem() AkriConnectorsDigestResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorsDigestResponse) AkriConnectorsDigestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsDigestResponse
+		return ret
+	}).(AkriConnectorsDigestResponseOutput)
+}
+
+// The digest of the image.
+func (o AkriConnectorsDigestResponsePtrOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsDigestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Digest
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsTagDigestType values.
+// Expected value is 'Digest'.
+func (o AkriConnectorsDigestResponsePtrOutput) TagDigestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsDigestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagDigestType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsImagePullSecret properties.
+type AkriConnectorsImagePullSecret struct {
+	// The name of the image pull secret.
+	SecretRef string `pulumi:"secretRef"`
+}
+
+// AkriConnectorsImagePullSecretInput is an input type that accepts AkriConnectorsImagePullSecretArgs and AkriConnectorsImagePullSecretOutput values.
+// You can construct a concrete instance of `AkriConnectorsImagePullSecretInput` via:
+//
+//	AkriConnectorsImagePullSecretArgs{...}
+type AkriConnectorsImagePullSecretInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsImagePullSecretOutput() AkriConnectorsImagePullSecretOutput
+	ToAkriConnectorsImagePullSecretOutputWithContext(context.Context) AkriConnectorsImagePullSecretOutput
+}
+
+// AkriConnectorsImagePullSecret properties.
+type AkriConnectorsImagePullSecretArgs struct {
+	// The name of the image pull secret.
+	SecretRef pulumi.StringInput `pulumi:"secretRef"`
+}
+
+func (AkriConnectorsImagePullSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsImagePullSecret)(nil)).Elem()
+}
+
+func (i AkriConnectorsImagePullSecretArgs) ToAkriConnectorsImagePullSecretOutput() AkriConnectorsImagePullSecretOutput {
+	return i.ToAkriConnectorsImagePullSecretOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsImagePullSecretArgs) ToAkriConnectorsImagePullSecretOutputWithContext(ctx context.Context) AkriConnectorsImagePullSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsImagePullSecretOutput)
+}
+
+// AkriConnectorsImagePullSecretArrayInput is an input type that accepts AkriConnectorsImagePullSecretArray and AkriConnectorsImagePullSecretArrayOutput values.
+// You can construct a concrete instance of `AkriConnectorsImagePullSecretArrayInput` via:
+//
+//	AkriConnectorsImagePullSecretArray{ AkriConnectorsImagePullSecretArgs{...} }
+type AkriConnectorsImagePullSecretArrayInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsImagePullSecretArrayOutput() AkriConnectorsImagePullSecretArrayOutput
+	ToAkriConnectorsImagePullSecretArrayOutputWithContext(context.Context) AkriConnectorsImagePullSecretArrayOutput
+}
+
+type AkriConnectorsImagePullSecretArray []AkriConnectorsImagePullSecretInput
+
+func (AkriConnectorsImagePullSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorsImagePullSecret)(nil)).Elem()
+}
+
+func (i AkriConnectorsImagePullSecretArray) ToAkriConnectorsImagePullSecretArrayOutput() AkriConnectorsImagePullSecretArrayOutput {
+	return i.ToAkriConnectorsImagePullSecretArrayOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsImagePullSecretArray) ToAkriConnectorsImagePullSecretArrayOutputWithContext(ctx context.Context) AkriConnectorsImagePullSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsImagePullSecretArrayOutput)
+}
+
+// AkriConnectorsImagePullSecret properties.
+type AkriConnectorsImagePullSecretOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsImagePullSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsImagePullSecret)(nil)).Elem()
+}
+
+func (o AkriConnectorsImagePullSecretOutput) ToAkriConnectorsImagePullSecretOutput() AkriConnectorsImagePullSecretOutput {
+	return o
+}
+
+func (o AkriConnectorsImagePullSecretOutput) ToAkriConnectorsImagePullSecretOutputWithContext(ctx context.Context) AkriConnectorsImagePullSecretOutput {
+	return o
+}
+
+// The name of the image pull secret.
+func (o AkriConnectorsImagePullSecretOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsImagePullSecret) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsImagePullSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsImagePullSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorsImagePullSecret)(nil)).Elem()
+}
+
+func (o AkriConnectorsImagePullSecretArrayOutput) ToAkriConnectorsImagePullSecretArrayOutput() AkriConnectorsImagePullSecretArrayOutput {
+	return o
+}
+
+func (o AkriConnectorsImagePullSecretArrayOutput) ToAkriConnectorsImagePullSecretArrayOutputWithContext(ctx context.Context) AkriConnectorsImagePullSecretArrayOutput {
+	return o
+}
+
+func (o AkriConnectorsImagePullSecretArrayOutput) Index(i pulumi.IntInput) AkriConnectorsImagePullSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AkriConnectorsImagePullSecret {
+		return vs[0].([]AkriConnectorsImagePullSecret)[vs[1].(int)]
+	}).(AkriConnectorsImagePullSecretOutput)
+}
+
+// AkriConnectorsImagePullSecret properties.
+type AkriConnectorsImagePullSecretResponse struct {
+	// The name of the image pull secret.
+	SecretRef string `pulumi:"secretRef"`
+}
+
+// AkriConnectorsImagePullSecret properties.
+type AkriConnectorsImagePullSecretResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsImagePullSecretResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsImagePullSecretResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsImagePullSecretResponseOutput) ToAkriConnectorsImagePullSecretResponseOutput() AkriConnectorsImagePullSecretResponseOutput {
+	return o
+}
+
+func (o AkriConnectorsImagePullSecretResponseOutput) ToAkriConnectorsImagePullSecretResponseOutputWithContext(ctx context.Context) AkriConnectorsImagePullSecretResponseOutput {
+	return o
+}
+
+// The name of the image pull secret.
+func (o AkriConnectorsImagePullSecretResponseOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsImagePullSecretResponse) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsImagePullSecretResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsImagePullSecretResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorsImagePullSecretResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsImagePullSecretResponseArrayOutput) ToAkriConnectorsImagePullSecretResponseArrayOutput() AkriConnectorsImagePullSecretResponseArrayOutput {
+	return o
+}
+
+func (o AkriConnectorsImagePullSecretResponseArrayOutput) ToAkriConnectorsImagePullSecretResponseArrayOutputWithContext(ctx context.Context) AkriConnectorsImagePullSecretResponseArrayOutput {
+	return o
+}
+
+func (o AkriConnectorsImagePullSecretResponseArrayOutput) Index(i pulumi.IntInput) AkriConnectorsImagePullSecretResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AkriConnectorsImagePullSecretResponse {
+		return vs[0].([]AkriConnectorsImagePullSecretResponse)[vs[1].(int)]
+	}).(AkriConnectorsImagePullSecretResponseOutput)
+}
+
+// AkriConnectorsMqttConnectionConfiguration properties.
+type AkriConnectorsMqttConnectionConfiguration struct {
+	// Authentication properties.
+	Authentication *AkriConnectorsServiceAccountAuthentication `pulumi:"authentication"`
+	// Host of the Broker in the form of <hostname>:<port>.
+	Host *string `pulumi:"host"`
+	// KeepAlive for connection in seconds.
+	KeepAliveSeconds *int `pulumi:"keepAliveSeconds"`
+	// The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
+	MaxInflightMessages *int `pulumi:"maxInflightMessages"`
+	// The protocol to use for the connection. Currently only `mqtt` is supported.
+	Protocol *string `pulumi:"protocol"`
+	// Session expiry in seconds.
+	SessionExpirySeconds *int `pulumi:"sessionExpirySeconds"`
+	// TLS configuration.
+	Tls *TlsProperties `pulumi:"tls"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorsMqttConnectionConfiguration
+func (val *AkriConnectorsMqttConnectionConfiguration) Defaults() *AkriConnectorsMqttConnectionConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Tls = tmp.Tls.Defaults()
+
+	return &tmp
+}
+
+// AkriConnectorsMqttConnectionConfigurationInput is an input type that accepts AkriConnectorsMqttConnectionConfigurationArgs and AkriConnectorsMqttConnectionConfigurationOutput values.
+// You can construct a concrete instance of `AkriConnectorsMqttConnectionConfigurationInput` via:
+//
+//	AkriConnectorsMqttConnectionConfigurationArgs{...}
+type AkriConnectorsMqttConnectionConfigurationInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsMqttConnectionConfigurationOutput() AkriConnectorsMqttConnectionConfigurationOutput
+	ToAkriConnectorsMqttConnectionConfigurationOutputWithContext(context.Context) AkriConnectorsMqttConnectionConfigurationOutput
+}
+
+// AkriConnectorsMqttConnectionConfiguration properties.
+type AkriConnectorsMqttConnectionConfigurationArgs struct {
+	// Authentication properties.
+	Authentication AkriConnectorsServiceAccountAuthenticationPtrInput `pulumi:"authentication"`
+	// Host of the Broker in the form of <hostname>:<port>.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// KeepAlive for connection in seconds.
+	KeepAliveSeconds pulumi.IntPtrInput `pulumi:"keepAliveSeconds"`
+	// The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
+	MaxInflightMessages pulumi.IntPtrInput `pulumi:"maxInflightMessages"`
+	// The protocol to use for the connection. Currently only `mqtt` is supported.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Session expiry in seconds.
+	SessionExpirySeconds pulumi.IntPtrInput `pulumi:"sessionExpirySeconds"`
+	// TLS configuration.
+	Tls TlsPropertiesPtrInput `pulumi:"tls"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorsMqttConnectionConfigurationArgs
+func (val *AkriConnectorsMqttConnectionConfigurationArgs) Defaults() *AkriConnectorsMqttConnectionConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (AkriConnectorsMqttConnectionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsMqttConnectionConfiguration)(nil)).Elem()
+}
+
+func (i AkriConnectorsMqttConnectionConfigurationArgs) ToAkriConnectorsMqttConnectionConfigurationOutput() AkriConnectorsMqttConnectionConfigurationOutput {
+	return i.ToAkriConnectorsMqttConnectionConfigurationOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsMqttConnectionConfigurationArgs) ToAkriConnectorsMqttConnectionConfigurationOutputWithContext(ctx context.Context) AkriConnectorsMqttConnectionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsMqttConnectionConfigurationOutput)
+}
+
+func (i AkriConnectorsMqttConnectionConfigurationArgs) ToAkriConnectorsMqttConnectionConfigurationPtrOutput() AkriConnectorsMqttConnectionConfigurationPtrOutput {
+	return i.ToAkriConnectorsMqttConnectionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsMqttConnectionConfigurationArgs) ToAkriConnectorsMqttConnectionConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorsMqttConnectionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsMqttConnectionConfigurationOutput).ToAkriConnectorsMqttConnectionConfigurationPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorsMqttConnectionConfigurationPtrInput is an input type that accepts AkriConnectorsMqttConnectionConfigurationArgs, AkriConnectorsMqttConnectionConfigurationPtr and AkriConnectorsMqttConnectionConfigurationPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorsMqttConnectionConfigurationPtrInput` via:
+//
+//	        AkriConnectorsMqttConnectionConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorsMqttConnectionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsMqttConnectionConfigurationPtrOutput() AkriConnectorsMqttConnectionConfigurationPtrOutput
+	ToAkriConnectorsMqttConnectionConfigurationPtrOutputWithContext(context.Context) AkriConnectorsMqttConnectionConfigurationPtrOutput
+}
+
+type akriConnectorsMqttConnectionConfigurationPtrType AkriConnectorsMqttConnectionConfigurationArgs
+
+func AkriConnectorsMqttConnectionConfigurationPtr(v *AkriConnectorsMqttConnectionConfigurationArgs) AkriConnectorsMqttConnectionConfigurationPtrInput {
+	return (*akriConnectorsMqttConnectionConfigurationPtrType)(v)
+}
+
+func (*akriConnectorsMqttConnectionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsMqttConnectionConfiguration)(nil)).Elem()
+}
+
+func (i *akriConnectorsMqttConnectionConfigurationPtrType) ToAkriConnectorsMqttConnectionConfigurationPtrOutput() AkriConnectorsMqttConnectionConfigurationPtrOutput {
+	return i.ToAkriConnectorsMqttConnectionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorsMqttConnectionConfigurationPtrType) ToAkriConnectorsMqttConnectionConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorsMqttConnectionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsMqttConnectionConfigurationPtrOutput)
+}
+
+// AkriConnectorsMqttConnectionConfiguration properties.
+type AkriConnectorsMqttConnectionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsMqttConnectionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsMqttConnectionConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationOutput) ToAkriConnectorsMqttConnectionConfigurationOutput() AkriConnectorsMqttConnectionConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationOutput) ToAkriConnectorsMqttConnectionConfigurationOutputWithContext(ctx context.Context) AkriConnectorsMqttConnectionConfigurationOutput {
+	return o
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationOutput) ToAkriConnectorsMqttConnectionConfigurationPtrOutput() AkriConnectorsMqttConnectionConfigurationPtrOutput {
+	return o.ToAkriConnectorsMqttConnectionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationOutput) ToAkriConnectorsMqttConnectionConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorsMqttConnectionConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorsMqttConnectionConfiguration) *AkriConnectorsMqttConnectionConfiguration {
+		return &v
+	}).(AkriConnectorsMqttConnectionConfigurationPtrOutput)
+}
+
+// Authentication properties.
+func (o AkriConnectorsMqttConnectionConfigurationOutput) Authentication() AkriConnectorsServiceAccountAuthenticationPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfiguration) *AkriConnectorsServiceAccountAuthentication {
+		return v.Authentication
+	}).(AkriConnectorsServiceAccountAuthenticationPtrOutput)
+}
+
+// Host of the Broker in the form of <hostname>:<port>.
+func (o AkriConnectorsMqttConnectionConfigurationOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfiguration) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// KeepAlive for connection in seconds.
+func (o AkriConnectorsMqttConnectionConfigurationOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfiguration) *int { return v.KeepAliveSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
+func (o AkriConnectorsMqttConnectionConfigurationOutput) MaxInflightMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfiguration) *int { return v.MaxInflightMessages }).(pulumi.IntPtrOutput)
+}
+
+// The protocol to use for the connection. Currently only `mqtt` is supported.
+func (o AkriConnectorsMqttConnectionConfigurationOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfiguration) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Session expiry in seconds.
+func (o AkriConnectorsMqttConnectionConfigurationOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfiguration) *int { return v.SessionExpirySeconds }).(pulumi.IntPtrOutput)
+}
+
+// TLS configuration.
+func (o AkriConnectorsMqttConnectionConfigurationOutput) Tls() TlsPropertiesPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfiguration) *TlsProperties { return v.Tls }).(TlsPropertiesPtrOutput)
+}
+
+type AkriConnectorsMqttConnectionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsMqttConnectionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsMqttConnectionConfiguration)(nil)).Elem()
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationPtrOutput) ToAkriConnectorsMqttConnectionConfigurationPtrOutput() AkriConnectorsMqttConnectionConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationPtrOutput) ToAkriConnectorsMqttConnectionConfigurationPtrOutputWithContext(ctx context.Context) AkriConnectorsMqttConnectionConfigurationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationPtrOutput) Elem() AkriConnectorsMqttConnectionConfigurationOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfiguration) AkriConnectorsMqttConnectionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsMqttConnectionConfiguration
+		return ret
+	}).(AkriConnectorsMqttConnectionConfigurationOutput)
+}
+
+// Authentication properties.
+func (o AkriConnectorsMqttConnectionConfigurationPtrOutput) Authentication() AkriConnectorsServiceAccountAuthenticationPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfiguration) *AkriConnectorsServiceAccountAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(AkriConnectorsServiceAccountAuthenticationPtrOutput)
+}
+
+// Host of the Broker in the form of <hostname>:<port>.
+func (o AkriConnectorsMqttConnectionConfigurationPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// KeepAlive for connection in seconds.
+func (o AkriConnectorsMqttConnectionConfigurationPtrOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAliveSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
+func (o AkriConnectorsMqttConnectionConfigurationPtrOutput) MaxInflightMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInflightMessages
+	}).(pulumi.IntPtrOutput)
+}
+
+// The protocol to use for the connection. Currently only `mqtt` is supported.
+func (o AkriConnectorsMqttConnectionConfigurationPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Session expiry in seconds.
+func (o AkriConnectorsMqttConnectionConfigurationPtrOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionExpirySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// TLS configuration.
+func (o AkriConnectorsMqttConnectionConfigurationPtrOutput) Tls() TlsPropertiesPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfiguration) *TlsProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Tls
+	}).(TlsPropertiesPtrOutput)
+}
+
+// AkriConnectorsMqttConnectionConfiguration properties.
+type AkriConnectorsMqttConnectionConfigurationResponse struct {
+	// Authentication properties.
+	Authentication *AkriConnectorsServiceAccountAuthenticationResponse `pulumi:"authentication"`
+	// Host of the Broker in the form of <hostname>:<port>.
+	Host *string `pulumi:"host"`
+	// KeepAlive for connection in seconds.
+	KeepAliveSeconds *int `pulumi:"keepAliveSeconds"`
+	// The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
+	MaxInflightMessages *int `pulumi:"maxInflightMessages"`
+	// The protocol to use for the connection. Currently only `mqtt` is supported.
+	Protocol *string `pulumi:"protocol"`
+	// Session expiry in seconds.
+	SessionExpirySeconds *int `pulumi:"sessionExpirySeconds"`
+	// TLS configuration.
+	Tls *TlsPropertiesResponse `pulumi:"tls"`
+}
+
+// Defaults sets the appropriate defaults for AkriConnectorsMqttConnectionConfigurationResponse
+func (val *AkriConnectorsMqttConnectionConfigurationResponse) Defaults() *AkriConnectorsMqttConnectionConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Tls = tmp.Tls.Defaults()
+
+	return &tmp
+}
+
+// AkriConnectorsMqttConnectionConfiguration properties.
+type AkriConnectorsMqttConnectionConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsMqttConnectionConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsMqttConnectionConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationResponseOutput) ToAkriConnectorsMqttConnectionConfigurationResponseOutput() AkriConnectorsMqttConnectionConfigurationResponseOutput {
+	return o
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationResponseOutput) ToAkriConnectorsMqttConnectionConfigurationResponseOutputWithContext(ctx context.Context) AkriConnectorsMqttConnectionConfigurationResponseOutput {
+	return o
+}
+
+// Authentication properties.
+func (o AkriConnectorsMqttConnectionConfigurationResponseOutput) Authentication() AkriConnectorsServiceAccountAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfigurationResponse) *AkriConnectorsServiceAccountAuthenticationResponse {
+		return v.Authentication
+	}).(AkriConnectorsServiceAccountAuthenticationResponsePtrOutput)
+}
+
+// Host of the Broker in the form of <hostname>:<port>.
+func (o AkriConnectorsMqttConnectionConfigurationResponseOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfigurationResponse) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// KeepAlive for connection in seconds.
+func (o AkriConnectorsMqttConnectionConfigurationResponseOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfigurationResponse) *int { return v.KeepAliveSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
+func (o AkriConnectorsMqttConnectionConfigurationResponseOutput) MaxInflightMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfigurationResponse) *int { return v.MaxInflightMessages }).(pulumi.IntPtrOutput)
+}
+
+// The protocol to use for the connection. Currently only `mqtt` is supported.
+func (o AkriConnectorsMqttConnectionConfigurationResponseOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfigurationResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Session expiry in seconds.
+func (o AkriConnectorsMqttConnectionConfigurationResponseOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfigurationResponse) *int { return v.SessionExpirySeconds }).(pulumi.IntPtrOutput)
+}
+
+// TLS configuration.
+func (o AkriConnectorsMqttConnectionConfigurationResponseOutput) Tls() TlsPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v AkriConnectorsMqttConnectionConfigurationResponse) *TlsPropertiesResponse { return v.Tls }).(TlsPropertiesResponsePtrOutput)
+}
+
+type AkriConnectorsMqttConnectionConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsMqttConnectionConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsMqttConnectionConfigurationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationResponsePtrOutput) ToAkriConnectorsMqttConnectionConfigurationResponsePtrOutput() AkriConnectorsMqttConnectionConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationResponsePtrOutput) ToAkriConnectorsMqttConnectionConfigurationResponsePtrOutputWithContext(ctx context.Context) AkriConnectorsMqttConnectionConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsMqttConnectionConfigurationResponsePtrOutput) Elem() AkriConnectorsMqttConnectionConfigurationResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfigurationResponse) AkriConnectorsMqttConnectionConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsMqttConnectionConfigurationResponse
+		return ret
+	}).(AkriConnectorsMqttConnectionConfigurationResponseOutput)
+}
+
+// Authentication properties.
+func (o AkriConnectorsMqttConnectionConfigurationResponsePtrOutput) Authentication() AkriConnectorsServiceAccountAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfigurationResponse) *AkriConnectorsServiceAccountAuthenticationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(AkriConnectorsServiceAccountAuthenticationResponsePtrOutput)
+}
+
+// Host of the Broker in the form of <hostname>:<port>.
+func (o AkriConnectorsMqttConnectionConfigurationResponsePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// KeepAlive for connection in seconds.
+func (o AkriConnectorsMqttConnectionConfigurationResponsePtrOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAliveSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
+func (o AkriConnectorsMqttConnectionConfigurationResponsePtrOutput) MaxInflightMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInflightMessages
+	}).(pulumi.IntPtrOutput)
+}
+
+// The protocol to use for the connection. Currently only `mqtt` is supported.
+func (o AkriConnectorsMqttConnectionConfigurationResponsePtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Session expiry in seconds.
+func (o AkriConnectorsMqttConnectionConfigurationResponsePtrOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionExpirySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// TLS configuration.
+func (o AkriConnectorsMqttConnectionConfigurationResponsePtrOutput) Tls() TlsPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsMqttConnectionConfigurationResponse) *TlsPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Tls
+	}).(TlsPropertiesResponsePtrOutput)
+}
+
+// AkriConnectorsRegistryEndpointRef properties.
+type AkriConnectorsRegistryEndpointRef struct {
+	// The name of the registry endpoint.
+	RegistryEndpointRef string `pulumi:"registryEndpointRef"`
+	// AkriConnectorsRegistrySettings properties.
+	// Expected value is 'RegistryEndpointRef'.
+	RegistrySettingsType string `pulumi:"registrySettingsType"`
+}
+
+// AkriConnectorsRegistryEndpointRefInput is an input type that accepts AkriConnectorsRegistryEndpointRefArgs and AkriConnectorsRegistryEndpointRefOutput values.
+// You can construct a concrete instance of `AkriConnectorsRegistryEndpointRefInput` via:
+//
+//	AkriConnectorsRegistryEndpointRefArgs{...}
+type AkriConnectorsRegistryEndpointRefInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsRegistryEndpointRefOutput() AkriConnectorsRegistryEndpointRefOutput
+	ToAkriConnectorsRegistryEndpointRefOutputWithContext(context.Context) AkriConnectorsRegistryEndpointRefOutput
+}
+
+// AkriConnectorsRegistryEndpointRef properties.
+type AkriConnectorsRegistryEndpointRefArgs struct {
+	// The name of the registry endpoint.
+	RegistryEndpointRef pulumi.StringInput `pulumi:"registryEndpointRef"`
+	// AkriConnectorsRegistrySettings properties.
+	// Expected value is 'RegistryEndpointRef'.
+	RegistrySettingsType pulumi.StringInput `pulumi:"registrySettingsType"`
+}
+
+func (AkriConnectorsRegistryEndpointRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsRegistryEndpointRef)(nil)).Elem()
+}
+
+func (i AkriConnectorsRegistryEndpointRefArgs) ToAkriConnectorsRegistryEndpointRefOutput() AkriConnectorsRegistryEndpointRefOutput {
+	return i.ToAkriConnectorsRegistryEndpointRefOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsRegistryEndpointRefArgs) ToAkriConnectorsRegistryEndpointRefOutputWithContext(ctx context.Context) AkriConnectorsRegistryEndpointRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsRegistryEndpointRefOutput)
+}
+
+func (i AkriConnectorsRegistryEndpointRefArgs) ToAkriConnectorsRegistryEndpointRefPtrOutput() AkriConnectorsRegistryEndpointRefPtrOutput {
+	return i.ToAkriConnectorsRegistryEndpointRefPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsRegistryEndpointRefArgs) ToAkriConnectorsRegistryEndpointRefPtrOutputWithContext(ctx context.Context) AkriConnectorsRegistryEndpointRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsRegistryEndpointRefOutput).ToAkriConnectorsRegistryEndpointRefPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorsRegistryEndpointRefPtrInput is an input type that accepts AkriConnectorsRegistryEndpointRefArgs, AkriConnectorsRegistryEndpointRefPtr and AkriConnectorsRegistryEndpointRefPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorsRegistryEndpointRefPtrInput` via:
+//
+//	        AkriConnectorsRegistryEndpointRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorsRegistryEndpointRefPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsRegistryEndpointRefPtrOutput() AkriConnectorsRegistryEndpointRefPtrOutput
+	ToAkriConnectorsRegistryEndpointRefPtrOutputWithContext(context.Context) AkriConnectorsRegistryEndpointRefPtrOutput
+}
+
+type akriConnectorsRegistryEndpointRefPtrType AkriConnectorsRegistryEndpointRefArgs
+
+func AkriConnectorsRegistryEndpointRefPtr(v *AkriConnectorsRegistryEndpointRefArgs) AkriConnectorsRegistryEndpointRefPtrInput {
+	return (*akriConnectorsRegistryEndpointRefPtrType)(v)
+}
+
+func (*akriConnectorsRegistryEndpointRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsRegistryEndpointRef)(nil)).Elem()
+}
+
+func (i *akriConnectorsRegistryEndpointRefPtrType) ToAkriConnectorsRegistryEndpointRefPtrOutput() AkriConnectorsRegistryEndpointRefPtrOutput {
+	return i.ToAkriConnectorsRegistryEndpointRefPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorsRegistryEndpointRefPtrType) ToAkriConnectorsRegistryEndpointRefPtrOutputWithContext(ctx context.Context) AkriConnectorsRegistryEndpointRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsRegistryEndpointRefPtrOutput)
+}
+
+// AkriConnectorsRegistryEndpointRef properties.
+type AkriConnectorsRegistryEndpointRefOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsRegistryEndpointRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsRegistryEndpointRef)(nil)).Elem()
+}
+
+func (o AkriConnectorsRegistryEndpointRefOutput) ToAkriConnectorsRegistryEndpointRefOutput() AkriConnectorsRegistryEndpointRefOutput {
+	return o
+}
+
+func (o AkriConnectorsRegistryEndpointRefOutput) ToAkriConnectorsRegistryEndpointRefOutputWithContext(ctx context.Context) AkriConnectorsRegistryEndpointRefOutput {
+	return o
+}
+
+func (o AkriConnectorsRegistryEndpointRefOutput) ToAkriConnectorsRegistryEndpointRefPtrOutput() AkriConnectorsRegistryEndpointRefPtrOutput {
+	return o.ToAkriConnectorsRegistryEndpointRefPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsRegistryEndpointRefOutput) ToAkriConnectorsRegistryEndpointRefPtrOutputWithContext(ctx context.Context) AkriConnectorsRegistryEndpointRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorsRegistryEndpointRef) *AkriConnectorsRegistryEndpointRef {
+		return &v
+	}).(AkriConnectorsRegistryEndpointRefPtrOutput)
+}
+
+// The name of the registry endpoint.
+func (o AkriConnectorsRegistryEndpointRefOutput) RegistryEndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsRegistryEndpointRef) string { return v.RegistryEndpointRef }).(pulumi.StringOutput)
+}
+
+// AkriConnectorsRegistrySettings properties.
+// Expected value is 'RegistryEndpointRef'.
+func (o AkriConnectorsRegistryEndpointRefOutput) RegistrySettingsType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsRegistryEndpointRef) string { return v.RegistrySettingsType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsRegistryEndpointRefPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsRegistryEndpointRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsRegistryEndpointRef)(nil)).Elem()
+}
+
+func (o AkriConnectorsRegistryEndpointRefPtrOutput) ToAkriConnectorsRegistryEndpointRefPtrOutput() AkriConnectorsRegistryEndpointRefPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsRegistryEndpointRefPtrOutput) ToAkriConnectorsRegistryEndpointRefPtrOutputWithContext(ctx context.Context) AkriConnectorsRegistryEndpointRefPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsRegistryEndpointRefPtrOutput) Elem() AkriConnectorsRegistryEndpointRefOutput {
+	return o.ApplyT(func(v *AkriConnectorsRegistryEndpointRef) AkriConnectorsRegistryEndpointRef {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsRegistryEndpointRef
+		return ret
+	}).(AkriConnectorsRegistryEndpointRefOutput)
+}
+
+// The name of the registry endpoint.
+func (o AkriConnectorsRegistryEndpointRefPtrOutput) RegistryEndpointRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsRegistryEndpointRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistryEndpointRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsRegistrySettings properties.
+// Expected value is 'RegistryEndpointRef'.
+func (o AkriConnectorsRegistryEndpointRefPtrOutput) RegistrySettingsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsRegistryEndpointRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistrySettingsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsRegistryEndpointRef properties.
+type AkriConnectorsRegistryEndpointRefResponse struct {
+	// The name of the registry endpoint.
+	RegistryEndpointRef string `pulumi:"registryEndpointRef"`
+	// AkriConnectorsRegistrySettings properties.
+	// Expected value is 'RegistryEndpointRef'.
+	RegistrySettingsType string `pulumi:"registrySettingsType"`
+}
+
+// AkriConnectorsRegistryEndpointRef properties.
+type AkriConnectorsRegistryEndpointRefResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsRegistryEndpointRefResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsRegistryEndpointRefResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsRegistryEndpointRefResponseOutput) ToAkriConnectorsRegistryEndpointRefResponseOutput() AkriConnectorsRegistryEndpointRefResponseOutput {
+	return o
+}
+
+func (o AkriConnectorsRegistryEndpointRefResponseOutput) ToAkriConnectorsRegistryEndpointRefResponseOutputWithContext(ctx context.Context) AkriConnectorsRegistryEndpointRefResponseOutput {
+	return o
+}
+
+// The name of the registry endpoint.
+func (o AkriConnectorsRegistryEndpointRefResponseOutput) RegistryEndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsRegistryEndpointRefResponse) string { return v.RegistryEndpointRef }).(pulumi.StringOutput)
+}
+
+// AkriConnectorsRegistrySettings properties.
+// Expected value is 'RegistryEndpointRef'.
+func (o AkriConnectorsRegistryEndpointRefResponseOutput) RegistrySettingsType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsRegistryEndpointRefResponse) string { return v.RegistrySettingsType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsRegistryEndpointRefResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsRegistryEndpointRefResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsRegistryEndpointRefResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsRegistryEndpointRefResponsePtrOutput) ToAkriConnectorsRegistryEndpointRefResponsePtrOutput() AkriConnectorsRegistryEndpointRefResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsRegistryEndpointRefResponsePtrOutput) ToAkriConnectorsRegistryEndpointRefResponsePtrOutputWithContext(ctx context.Context) AkriConnectorsRegistryEndpointRefResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsRegistryEndpointRefResponsePtrOutput) Elem() AkriConnectorsRegistryEndpointRefResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorsRegistryEndpointRefResponse) AkriConnectorsRegistryEndpointRefResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsRegistryEndpointRefResponse
+		return ret
+	}).(AkriConnectorsRegistryEndpointRefResponseOutput)
+}
+
+// The name of the registry endpoint.
+func (o AkriConnectorsRegistryEndpointRefResponsePtrOutput) RegistryEndpointRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsRegistryEndpointRefResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistryEndpointRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsRegistrySettings properties.
+// Expected value is 'RegistryEndpointRef'.
+func (o AkriConnectorsRegistryEndpointRefResponsePtrOutput) RegistrySettingsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsRegistryEndpointRefResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistrySettingsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsSecret properties.
+type AkriConnectorsSecret struct {
+	// The application-defined alias for the secret.
+	SecretAlias string `pulumi:"secretAlias"`
+	// The key in the secret to be mounted.
+	SecretKey string `pulumi:"secretKey"`
+	// The name of the secret to be mounted.
+	SecretRef string `pulumi:"secretRef"`
+}
+
+// AkriConnectorsSecretInput is an input type that accepts AkriConnectorsSecretArgs and AkriConnectorsSecretOutput values.
+// You can construct a concrete instance of `AkriConnectorsSecretInput` via:
+//
+//	AkriConnectorsSecretArgs{...}
+type AkriConnectorsSecretInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsSecretOutput() AkriConnectorsSecretOutput
+	ToAkriConnectorsSecretOutputWithContext(context.Context) AkriConnectorsSecretOutput
+}
+
+// AkriConnectorsSecret properties.
+type AkriConnectorsSecretArgs struct {
+	// The application-defined alias for the secret.
+	SecretAlias pulumi.StringInput `pulumi:"secretAlias"`
+	// The key in the secret to be mounted.
+	SecretKey pulumi.StringInput `pulumi:"secretKey"`
+	// The name of the secret to be mounted.
+	SecretRef pulumi.StringInput `pulumi:"secretRef"`
+}
+
+func (AkriConnectorsSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsSecret)(nil)).Elem()
+}
+
+func (i AkriConnectorsSecretArgs) ToAkriConnectorsSecretOutput() AkriConnectorsSecretOutput {
+	return i.ToAkriConnectorsSecretOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsSecretArgs) ToAkriConnectorsSecretOutputWithContext(ctx context.Context) AkriConnectorsSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsSecretOutput)
+}
+
+// AkriConnectorsSecretArrayInput is an input type that accepts AkriConnectorsSecretArray and AkriConnectorsSecretArrayOutput values.
+// You can construct a concrete instance of `AkriConnectorsSecretArrayInput` via:
+//
+//	AkriConnectorsSecretArray{ AkriConnectorsSecretArgs{...} }
+type AkriConnectorsSecretArrayInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsSecretArrayOutput() AkriConnectorsSecretArrayOutput
+	ToAkriConnectorsSecretArrayOutputWithContext(context.Context) AkriConnectorsSecretArrayOutput
+}
+
+type AkriConnectorsSecretArray []AkriConnectorsSecretInput
+
+func (AkriConnectorsSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorsSecret)(nil)).Elem()
+}
+
+func (i AkriConnectorsSecretArray) ToAkriConnectorsSecretArrayOutput() AkriConnectorsSecretArrayOutput {
+	return i.ToAkriConnectorsSecretArrayOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsSecretArray) ToAkriConnectorsSecretArrayOutputWithContext(ctx context.Context) AkriConnectorsSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsSecretArrayOutput)
+}
+
+// AkriConnectorsSecret properties.
+type AkriConnectorsSecretOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsSecret)(nil)).Elem()
+}
+
+func (o AkriConnectorsSecretOutput) ToAkriConnectorsSecretOutput() AkriConnectorsSecretOutput {
+	return o
+}
+
+func (o AkriConnectorsSecretOutput) ToAkriConnectorsSecretOutputWithContext(ctx context.Context) AkriConnectorsSecretOutput {
+	return o
+}
+
+// The application-defined alias for the secret.
+func (o AkriConnectorsSecretOutput) SecretAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsSecret) string { return v.SecretAlias }).(pulumi.StringOutput)
+}
+
+// The key in the secret to be mounted.
+func (o AkriConnectorsSecretOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsSecret) string { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+// The name of the secret to be mounted.
+func (o AkriConnectorsSecretOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsSecret) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorsSecret)(nil)).Elem()
+}
+
+func (o AkriConnectorsSecretArrayOutput) ToAkriConnectorsSecretArrayOutput() AkriConnectorsSecretArrayOutput {
+	return o
+}
+
+func (o AkriConnectorsSecretArrayOutput) ToAkriConnectorsSecretArrayOutputWithContext(ctx context.Context) AkriConnectorsSecretArrayOutput {
+	return o
+}
+
+func (o AkriConnectorsSecretArrayOutput) Index(i pulumi.IntInput) AkriConnectorsSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AkriConnectorsSecret {
+		return vs[0].([]AkriConnectorsSecret)[vs[1].(int)]
+	}).(AkriConnectorsSecretOutput)
+}
+
+// AkriConnectorsSecret properties.
+type AkriConnectorsSecretResponse struct {
+	// The application-defined alias for the secret.
+	SecretAlias string `pulumi:"secretAlias"`
+	// The key in the secret to be mounted.
+	SecretKey string `pulumi:"secretKey"`
+	// The name of the secret to be mounted.
+	SecretRef string `pulumi:"secretRef"`
+}
+
+// AkriConnectorsSecret properties.
+type AkriConnectorsSecretResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsSecretResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsSecretResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsSecretResponseOutput) ToAkriConnectorsSecretResponseOutput() AkriConnectorsSecretResponseOutput {
+	return o
+}
+
+func (o AkriConnectorsSecretResponseOutput) ToAkriConnectorsSecretResponseOutputWithContext(ctx context.Context) AkriConnectorsSecretResponseOutput {
+	return o
+}
+
+// The application-defined alias for the secret.
+func (o AkriConnectorsSecretResponseOutput) SecretAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsSecretResponse) string { return v.SecretAlias }).(pulumi.StringOutput)
+}
+
+// The key in the secret to be mounted.
+func (o AkriConnectorsSecretResponseOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsSecretResponse) string { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+// The name of the secret to be mounted.
+func (o AkriConnectorsSecretResponseOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsSecretResponse) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsSecretResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsSecretResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AkriConnectorsSecretResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsSecretResponseArrayOutput) ToAkriConnectorsSecretResponseArrayOutput() AkriConnectorsSecretResponseArrayOutput {
+	return o
+}
+
+func (o AkriConnectorsSecretResponseArrayOutput) ToAkriConnectorsSecretResponseArrayOutputWithContext(ctx context.Context) AkriConnectorsSecretResponseArrayOutput {
+	return o
+}
+
+func (o AkriConnectorsSecretResponseArrayOutput) Index(i pulumi.IntInput) AkriConnectorsSecretResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AkriConnectorsSecretResponse {
+		return vs[0].([]AkriConnectorsSecretResponse)[vs[1].(int)]
+	}).(AkriConnectorsSecretResponseOutput)
+}
+
+// AkriConnectorsServiceAccountAuthentication properties.
+type AkriConnectorsServiceAccountAuthentication struct {
+	// AkriConnectorsMqttAuthenticationMethod properties.
+	// Expected value is 'ServiceAccountToken'.
+	Method string `pulumi:"method"`
+	// The service account token for the MQTT connection.
+	ServiceAccountTokenSettings AkriConnectorsServiceAccountTokenSettings `pulumi:"serviceAccountTokenSettings"`
+}
+
+// AkriConnectorsServiceAccountAuthenticationInput is an input type that accepts AkriConnectorsServiceAccountAuthenticationArgs and AkriConnectorsServiceAccountAuthenticationOutput values.
+// You can construct a concrete instance of `AkriConnectorsServiceAccountAuthenticationInput` via:
+//
+//	AkriConnectorsServiceAccountAuthenticationArgs{...}
+type AkriConnectorsServiceAccountAuthenticationInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsServiceAccountAuthenticationOutput() AkriConnectorsServiceAccountAuthenticationOutput
+	ToAkriConnectorsServiceAccountAuthenticationOutputWithContext(context.Context) AkriConnectorsServiceAccountAuthenticationOutput
+}
+
+// AkriConnectorsServiceAccountAuthentication properties.
+type AkriConnectorsServiceAccountAuthenticationArgs struct {
+	// AkriConnectorsMqttAuthenticationMethod properties.
+	// Expected value is 'ServiceAccountToken'.
+	Method pulumi.StringInput `pulumi:"method"`
+	// The service account token for the MQTT connection.
+	ServiceAccountTokenSettings AkriConnectorsServiceAccountTokenSettingsInput `pulumi:"serviceAccountTokenSettings"`
+}
+
+func (AkriConnectorsServiceAccountAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsServiceAccountAuthentication)(nil)).Elem()
+}
+
+func (i AkriConnectorsServiceAccountAuthenticationArgs) ToAkriConnectorsServiceAccountAuthenticationOutput() AkriConnectorsServiceAccountAuthenticationOutput {
+	return i.ToAkriConnectorsServiceAccountAuthenticationOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsServiceAccountAuthenticationArgs) ToAkriConnectorsServiceAccountAuthenticationOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsServiceAccountAuthenticationOutput)
+}
+
+func (i AkriConnectorsServiceAccountAuthenticationArgs) ToAkriConnectorsServiceAccountAuthenticationPtrOutput() AkriConnectorsServiceAccountAuthenticationPtrOutput {
+	return i.ToAkriConnectorsServiceAccountAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsServiceAccountAuthenticationArgs) ToAkriConnectorsServiceAccountAuthenticationPtrOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsServiceAccountAuthenticationOutput).ToAkriConnectorsServiceAccountAuthenticationPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorsServiceAccountAuthenticationPtrInput is an input type that accepts AkriConnectorsServiceAccountAuthenticationArgs, AkriConnectorsServiceAccountAuthenticationPtr and AkriConnectorsServiceAccountAuthenticationPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorsServiceAccountAuthenticationPtrInput` via:
+//
+//	        AkriConnectorsServiceAccountAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorsServiceAccountAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsServiceAccountAuthenticationPtrOutput() AkriConnectorsServiceAccountAuthenticationPtrOutput
+	ToAkriConnectorsServiceAccountAuthenticationPtrOutputWithContext(context.Context) AkriConnectorsServiceAccountAuthenticationPtrOutput
+}
+
+type akriConnectorsServiceAccountAuthenticationPtrType AkriConnectorsServiceAccountAuthenticationArgs
+
+func AkriConnectorsServiceAccountAuthenticationPtr(v *AkriConnectorsServiceAccountAuthenticationArgs) AkriConnectorsServiceAccountAuthenticationPtrInput {
+	return (*akriConnectorsServiceAccountAuthenticationPtrType)(v)
+}
+
+func (*akriConnectorsServiceAccountAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsServiceAccountAuthentication)(nil)).Elem()
+}
+
+func (i *akriConnectorsServiceAccountAuthenticationPtrType) ToAkriConnectorsServiceAccountAuthenticationPtrOutput() AkriConnectorsServiceAccountAuthenticationPtrOutput {
+	return i.ToAkriConnectorsServiceAccountAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorsServiceAccountAuthenticationPtrType) ToAkriConnectorsServiceAccountAuthenticationPtrOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsServiceAccountAuthenticationPtrOutput)
+}
+
+// AkriConnectorsServiceAccountAuthentication properties.
+type AkriConnectorsServiceAccountAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsServiceAccountAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsServiceAccountAuthentication)(nil)).Elem()
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationOutput) ToAkriConnectorsServiceAccountAuthenticationOutput() AkriConnectorsServiceAccountAuthenticationOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationOutput) ToAkriConnectorsServiceAccountAuthenticationOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountAuthenticationOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationOutput) ToAkriConnectorsServiceAccountAuthenticationPtrOutput() AkriConnectorsServiceAccountAuthenticationPtrOutput {
+	return o.ToAkriConnectorsServiceAccountAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationOutput) ToAkriConnectorsServiceAccountAuthenticationPtrOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorsServiceAccountAuthentication) *AkriConnectorsServiceAccountAuthentication {
+		return &v
+	}).(AkriConnectorsServiceAccountAuthenticationPtrOutput)
+}
+
+// AkriConnectorsMqttAuthenticationMethod properties.
+// Expected value is 'ServiceAccountToken'.
+func (o AkriConnectorsServiceAccountAuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsServiceAccountAuthentication) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// The service account token for the MQTT connection.
+func (o AkriConnectorsServiceAccountAuthenticationOutput) ServiceAccountTokenSettings() AkriConnectorsServiceAccountTokenSettingsOutput {
+	return o.ApplyT(func(v AkriConnectorsServiceAccountAuthentication) AkriConnectorsServiceAccountTokenSettings {
+		return v.ServiceAccountTokenSettings
+	}).(AkriConnectorsServiceAccountTokenSettingsOutput)
+}
+
+type AkriConnectorsServiceAccountAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsServiceAccountAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsServiceAccountAuthentication)(nil)).Elem()
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationPtrOutput) ToAkriConnectorsServiceAccountAuthenticationPtrOutput() AkriConnectorsServiceAccountAuthenticationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationPtrOutput) ToAkriConnectorsServiceAccountAuthenticationPtrOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountAuthenticationPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationPtrOutput) Elem() AkriConnectorsServiceAccountAuthenticationOutput {
+	return o.ApplyT(func(v *AkriConnectorsServiceAccountAuthentication) AkriConnectorsServiceAccountAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsServiceAccountAuthentication
+		return ret
+	}).(AkriConnectorsServiceAccountAuthenticationOutput)
+}
+
+// AkriConnectorsMqttAuthenticationMethod properties.
+// Expected value is 'ServiceAccountToken'.
+func (o AkriConnectorsServiceAccountAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsServiceAccountAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account token for the MQTT connection.
+func (o AkriConnectorsServiceAccountAuthenticationPtrOutput) ServiceAccountTokenSettings() AkriConnectorsServiceAccountTokenSettingsPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsServiceAccountAuthentication) *AkriConnectorsServiceAccountTokenSettings {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountTokenSettings
+	}).(AkriConnectorsServiceAccountTokenSettingsPtrOutput)
+}
+
+// AkriConnectorsServiceAccountAuthentication properties.
+type AkriConnectorsServiceAccountAuthenticationResponse struct {
+	// AkriConnectorsMqttAuthenticationMethod properties.
+	// Expected value is 'ServiceAccountToken'.
+	Method string `pulumi:"method"`
+	// The service account token for the MQTT connection.
+	ServiceAccountTokenSettings AkriConnectorsServiceAccountTokenSettingsResponse `pulumi:"serviceAccountTokenSettings"`
+}
+
+// AkriConnectorsServiceAccountAuthentication properties.
+type AkriConnectorsServiceAccountAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsServiceAccountAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsServiceAccountAuthenticationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationResponseOutput) ToAkriConnectorsServiceAccountAuthenticationResponseOutput() AkriConnectorsServiceAccountAuthenticationResponseOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationResponseOutput) ToAkriConnectorsServiceAccountAuthenticationResponseOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountAuthenticationResponseOutput {
+	return o
+}
+
+// AkriConnectorsMqttAuthenticationMethod properties.
+// Expected value is 'ServiceAccountToken'.
+func (o AkriConnectorsServiceAccountAuthenticationResponseOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsServiceAccountAuthenticationResponse) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// The service account token for the MQTT connection.
+func (o AkriConnectorsServiceAccountAuthenticationResponseOutput) ServiceAccountTokenSettings() AkriConnectorsServiceAccountTokenSettingsResponseOutput {
+	return o.ApplyT(func(v AkriConnectorsServiceAccountAuthenticationResponse) AkriConnectorsServiceAccountTokenSettingsResponse {
+		return v.ServiceAccountTokenSettings
+	}).(AkriConnectorsServiceAccountTokenSettingsResponseOutput)
+}
+
+type AkriConnectorsServiceAccountAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsServiceAccountAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsServiceAccountAuthenticationResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationResponsePtrOutput) ToAkriConnectorsServiceAccountAuthenticationResponsePtrOutput() AkriConnectorsServiceAccountAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationResponsePtrOutput) ToAkriConnectorsServiceAccountAuthenticationResponsePtrOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountAuthenticationResponsePtrOutput) Elem() AkriConnectorsServiceAccountAuthenticationResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorsServiceAccountAuthenticationResponse) AkriConnectorsServiceAccountAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsServiceAccountAuthenticationResponse
+		return ret
+	}).(AkriConnectorsServiceAccountAuthenticationResponseOutput)
+}
+
+// AkriConnectorsMqttAuthenticationMethod properties.
+// Expected value is 'ServiceAccountToken'.
+func (o AkriConnectorsServiceAccountAuthenticationResponsePtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsServiceAccountAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account token for the MQTT connection.
+func (o AkriConnectorsServiceAccountAuthenticationResponsePtrOutput) ServiceAccountTokenSettings() AkriConnectorsServiceAccountTokenSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsServiceAccountAuthenticationResponse) *AkriConnectorsServiceAccountTokenSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountTokenSettings
+	}).(AkriConnectorsServiceAccountTokenSettingsResponsePtrOutput)
+}
+
+// AkriConnectorsServiceAccountTokenSettings properties.
+type AkriConnectorsServiceAccountTokenSettings struct {
+	// The audience for the service account token.
+	Audience string `pulumi:"audience"`
+}
+
+// AkriConnectorsServiceAccountTokenSettingsInput is an input type that accepts AkriConnectorsServiceAccountTokenSettingsArgs and AkriConnectorsServiceAccountTokenSettingsOutput values.
+// You can construct a concrete instance of `AkriConnectorsServiceAccountTokenSettingsInput` via:
+//
+//	AkriConnectorsServiceAccountTokenSettingsArgs{...}
+type AkriConnectorsServiceAccountTokenSettingsInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsServiceAccountTokenSettingsOutput() AkriConnectorsServiceAccountTokenSettingsOutput
+	ToAkriConnectorsServiceAccountTokenSettingsOutputWithContext(context.Context) AkriConnectorsServiceAccountTokenSettingsOutput
+}
+
+// AkriConnectorsServiceAccountTokenSettings properties.
+type AkriConnectorsServiceAccountTokenSettingsArgs struct {
+	// The audience for the service account token.
+	Audience pulumi.StringInput `pulumi:"audience"`
+}
+
+func (AkriConnectorsServiceAccountTokenSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsServiceAccountTokenSettings)(nil)).Elem()
+}
+
+func (i AkriConnectorsServiceAccountTokenSettingsArgs) ToAkriConnectorsServiceAccountTokenSettingsOutput() AkriConnectorsServiceAccountTokenSettingsOutput {
+	return i.ToAkriConnectorsServiceAccountTokenSettingsOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsServiceAccountTokenSettingsArgs) ToAkriConnectorsServiceAccountTokenSettingsOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountTokenSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsServiceAccountTokenSettingsOutput)
+}
+
+func (i AkriConnectorsServiceAccountTokenSettingsArgs) ToAkriConnectorsServiceAccountTokenSettingsPtrOutput() AkriConnectorsServiceAccountTokenSettingsPtrOutput {
+	return i.ToAkriConnectorsServiceAccountTokenSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsServiceAccountTokenSettingsArgs) ToAkriConnectorsServiceAccountTokenSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountTokenSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsServiceAccountTokenSettingsOutput).ToAkriConnectorsServiceAccountTokenSettingsPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorsServiceAccountTokenSettingsPtrInput is an input type that accepts AkriConnectorsServiceAccountTokenSettingsArgs, AkriConnectorsServiceAccountTokenSettingsPtr and AkriConnectorsServiceAccountTokenSettingsPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorsServiceAccountTokenSettingsPtrInput` via:
+//
+//	        AkriConnectorsServiceAccountTokenSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorsServiceAccountTokenSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsServiceAccountTokenSettingsPtrOutput() AkriConnectorsServiceAccountTokenSettingsPtrOutput
+	ToAkriConnectorsServiceAccountTokenSettingsPtrOutputWithContext(context.Context) AkriConnectorsServiceAccountTokenSettingsPtrOutput
+}
+
+type akriConnectorsServiceAccountTokenSettingsPtrType AkriConnectorsServiceAccountTokenSettingsArgs
+
+func AkriConnectorsServiceAccountTokenSettingsPtr(v *AkriConnectorsServiceAccountTokenSettingsArgs) AkriConnectorsServiceAccountTokenSettingsPtrInput {
+	return (*akriConnectorsServiceAccountTokenSettingsPtrType)(v)
+}
+
+func (*akriConnectorsServiceAccountTokenSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsServiceAccountTokenSettings)(nil)).Elem()
+}
+
+func (i *akriConnectorsServiceAccountTokenSettingsPtrType) ToAkriConnectorsServiceAccountTokenSettingsPtrOutput() AkriConnectorsServiceAccountTokenSettingsPtrOutput {
+	return i.ToAkriConnectorsServiceAccountTokenSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorsServiceAccountTokenSettingsPtrType) ToAkriConnectorsServiceAccountTokenSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountTokenSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsServiceAccountTokenSettingsPtrOutput)
+}
+
+// AkriConnectorsServiceAccountTokenSettings properties.
+type AkriConnectorsServiceAccountTokenSettingsOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsServiceAccountTokenSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsServiceAccountTokenSettings)(nil)).Elem()
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsOutput) ToAkriConnectorsServiceAccountTokenSettingsOutput() AkriConnectorsServiceAccountTokenSettingsOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsOutput) ToAkriConnectorsServiceAccountTokenSettingsOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountTokenSettingsOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsOutput) ToAkriConnectorsServiceAccountTokenSettingsPtrOutput() AkriConnectorsServiceAccountTokenSettingsPtrOutput {
+	return o.ToAkriConnectorsServiceAccountTokenSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsOutput) ToAkriConnectorsServiceAccountTokenSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountTokenSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorsServiceAccountTokenSettings) *AkriConnectorsServiceAccountTokenSettings {
+		return &v
+	}).(AkriConnectorsServiceAccountTokenSettingsPtrOutput)
+}
+
+// The audience for the service account token.
+func (o AkriConnectorsServiceAccountTokenSettingsOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsServiceAccountTokenSettings) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsServiceAccountTokenSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsServiceAccountTokenSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsServiceAccountTokenSettings)(nil)).Elem()
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsPtrOutput) ToAkriConnectorsServiceAccountTokenSettingsPtrOutput() AkriConnectorsServiceAccountTokenSettingsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsPtrOutput) ToAkriConnectorsServiceAccountTokenSettingsPtrOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountTokenSettingsPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsPtrOutput) Elem() AkriConnectorsServiceAccountTokenSettingsOutput {
+	return o.ApplyT(func(v *AkriConnectorsServiceAccountTokenSettings) AkriConnectorsServiceAccountTokenSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsServiceAccountTokenSettings
+		return ret
+	}).(AkriConnectorsServiceAccountTokenSettingsOutput)
+}
+
+// The audience for the service account token.
+func (o AkriConnectorsServiceAccountTokenSettingsPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsServiceAccountTokenSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsServiceAccountTokenSettings properties.
+type AkriConnectorsServiceAccountTokenSettingsResponse struct {
+	// The audience for the service account token.
+	Audience string `pulumi:"audience"`
+}
+
+// AkriConnectorsServiceAccountTokenSettings properties.
+type AkriConnectorsServiceAccountTokenSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsServiceAccountTokenSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsServiceAccountTokenSettingsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsResponseOutput) ToAkriConnectorsServiceAccountTokenSettingsResponseOutput() AkriConnectorsServiceAccountTokenSettingsResponseOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsResponseOutput) ToAkriConnectorsServiceAccountTokenSettingsResponseOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountTokenSettingsResponseOutput {
+	return o
+}
+
+// The audience for the service account token.
+func (o AkriConnectorsServiceAccountTokenSettingsResponseOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsServiceAccountTokenSettingsResponse) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsServiceAccountTokenSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsServiceAccountTokenSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsServiceAccountTokenSettingsResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsResponsePtrOutput) ToAkriConnectorsServiceAccountTokenSettingsResponsePtrOutput() AkriConnectorsServiceAccountTokenSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsResponsePtrOutput) ToAkriConnectorsServiceAccountTokenSettingsResponsePtrOutputWithContext(ctx context.Context) AkriConnectorsServiceAccountTokenSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsServiceAccountTokenSettingsResponsePtrOutput) Elem() AkriConnectorsServiceAccountTokenSettingsResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorsServiceAccountTokenSettingsResponse) AkriConnectorsServiceAccountTokenSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsServiceAccountTokenSettingsResponse
+		return ret
+	}).(AkriConnectorsServiceAccountTokenSettingsResponseOutput)
+}
+
+// The audience for the service account token.
+func (o AkriConnectorsServiceAccountTokenSettingsResponsePtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsServiceAccountTokenSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsTag properties.
+type AkriConnectorsTag struct {
+	// The tag of the image.
+	Tag string `pulumi:"tag"`
+	// AkriConnectorsTagDigestType values.
+	// Expected value is 'Tag'.
+	TagDigestType string `pulumi:"tagDigestType"`
+}
+
+// AkriConnectorsTagInput is an input type that accepts AkriConnectorsTagArgs and AkriConnectorsTagOutput values.
+// You can construct a concrete instance of `AkriConnectorsTagInput` via:
+//
+//	AkriConnectorsTagArgs{...}
+type AkriConnectorsTagInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsTagOutput() AkriConnectorsTagOutput
+	ToAkriConnectorsTagOutputWithContext(context.Context) AkriConnectorsTagOutput
+}
+
+// AkriConnectorsTag properties.
+type AkriConnectorsTagArgs struct {
+	// The tag of the image.
+	Tag pulumi.StringInput `pulumi:"tag"`
+	// AkriConnectorsTagDigestType values.
+	// Expected value is 'Tag'.
+	TagDigestType pulumi.StringInput `pulumi:"tagDigestType"`
+}
+
+func (AkriConnectorsTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsTag)(nil)).Elem()
+}
+
+func (i AkriConnectorsTagArgs) ToAkriConnectorsTagOutput() AkriConnectorsTagOutput {
+	return i.ToAkriConnectorsTagOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsTagArgs) ToAkriConnectorsTagOutputWithContext(ctx context.Context) AkriConnectorsTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsTagOutput)
+}
+
+func (i AkriConnectorsTagArgs) ToAkriConnectorsTagPtrOutput() AkriConnectorsTagPtrOutput {
+	return i.ToAkriConnectorsTagPtrOutputWithContext(context.Background())
+}
+
+func (i AkriConnectorsTagArgs) ToAkriConnectorsTagPtrOutputWithContext(ctx context.Context) AkriConnectorsTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsTagOutput).ToAkriConnectorsTagPtrOutputWithContext(ctx)
+}
+
+// AkriConnectorsTagPtrInput is an input type that accepts AkriConnectorsTagArgs, AkriConnectorsTagPtr and AkriConnectorsTagPtrOutput values.
+// You can construct a concrete instance of `AkriConnectorsTagPtrInput` via:
+//
+//	        AkriConnectorsTagArgs{...}
+//
+//	or:
+//
+//	        nil
+type AkriConnectorsTagPtrInput interface {
+	pulumi.Input
+
+	ToAkriConnectorsTagPtrOutput() AkriConnectorsTagPtrOutput
+	ToAkriConnectorsTagPtrOutputWithContext(context.Context) AkriConnectorsTagPtrOutput
+}
+
+type akriConnectorsTagPtrType AkriConnectorsTagArgs
+
+func AkriConnectorsTagPtr(v *AkriConnectorsTagArgs) AkriConnectorsTagPtrInput {
+	return (*akriConnectorsTagPtrType)(v)
+}
+
+func (*akriConnectorsTagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsTag)(nil)).Elem()
+}
+
+func (i *akriConnectorsTagPtrType) ToAkriConnectorsTagPtrOutput() AkriConnectorsTagPtrOutput {
+	return i.ToAkriConnectorsTagPtrOutputWithContext(context.Background())
+}
+
+func (i *akriConnectorsTagPtrType) ToAkriConnectorsTagPtrOutputWithContext(ctx context.Context) AkriConnectorsTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AkriConnectorsTagPtrOutput)
+}
+
+// AkriConnectorsTag properties.
+type AkriConnectorsTagOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsTag)(nil)).Elem()
+}
+
+func (o AkriConnectorsTagOutput) ToAkriConnectorsTagOutput() AkriConnectorsTagOutput {
+	return o
+}
+
+func (o AkriConnectorsTagOutput) ToAkriConnectorsTagOutputWithContext(ctx context.Context) AkriConnectorsTagOutput {
+	return o
+}
+
+func (o AkriConnectorsTagOutput) ToAkriConnectorsTagPtrOutput() AkriConnectorsTagPtrOutput {
+	return o.ToAkriConnectorsTagPtrOutputWithContext(context.Background())
+}
+
+func (o AkriConnectorsTagOutput) ToAkriConnectorsTagPtrOutputWithContext(ctx context.Context) AkriConnectorsTagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AkriConnectorsTag) *AkriConnectorsTag {
+		return &v
+	}).(AkriConnectorsTagPtrOutput)
+}
+
+// The tag of the image.
+func (o AkriConnectorsTagOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsTag) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+// AkriConnectorsTagDigestType values.
+// Expected value is 'Tag'.
+func (o AkriConnectorsTagOutput) TagDigestType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsTag) string { return v.TagDigestType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsTagPtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsTagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsTag)(nil)).Elem()
+}
+
+func (o AkriConnectorsTagPtrOutput) ToAkriConnectorsTagPtrOutput() AkriConnectorsTagPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsTagPtrOutput) ToAkriConnectorsTagPtrOutputWithContext(ctx context.Context) AkriConnectorsTagPtrOutput {
+	return o
+}
+
+func (o AkriConnectorsTagPtrOutput) Elem() AkriConnectorsTagOutput {
+	return o.ApplyT(func(v *AkriConnectorsTag) AkriConnectorsTag {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsTag
+		return ret
+	}).(AkriConnectorsTagOutput)
+}
+
+// The tag of the image.
+func (o AkriConnectorsTagPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsTag) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsTagDigestType values.
+// Expected value is 'Tag'.
+func (o AkriConnectorsTagPtrOutput) TagDigestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsTag) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagDigestType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsTag properties.
+type AkriConnectorsTagResponse struct {
+	// The tag of the image.
+	Tag string `pulumi:"tag"`
+	// AkriConnectorsTagDigestType values.
+	// Expected value is 'Tag'.
+	TagDigestType string `pulumi:"tagDigestType"`
+}
+
+// AkriConnectorsTag properties.
+type AkriConnectorsTagResponseOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsTagResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AkriConnectorsTagResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsTagResponseOutput) ToAkriConnectorsTagResponseOutput() AkriConnectorsTagResponseOutput {
+	return o
+}
+
+func (o AkriConnectorsTagResponseOutput) ToAkriConnectorsTagResponseOutputWithContext(ctx context.Context) AkriConnectorsTagResponseOutput {
+	return o
+}
+
+// The tag of the image.
+func (o AkriConnectorsTagResponseOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsTagResponse) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+// AkriConnectorsTagDigestType values.
+// Expected value is 'Tag'.
+func (o AkriConnectorsTagResponseOutput) TagDigestType() pulumi.StringOutput {
+	return o.ApplyT(func(v AkriConnectorsTagResponse) string { return v.TagDigestType }).(pulumi.StringOutput)
+}
+
+type AkriConnectorsTagResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AkriConnectorsTagResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AkriConnectorsTagResponse)(nil)).Elem()
+}
+
+func (o AkriConnectorsTagResponsePtrOutput) ToAkriConnectorsTagResponsePtrOutput() AkriConnectorsTagResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsTagResponsePtrOutput) ToAkriConnectorsTagResponsePtrOutputWithContext(ctx context.Context) AkriConnectorsTagResponsePtrOutput {
+	return o
+}
+
+func (o AkriConnectorsTagResponsePtrOutput) Elem() AkriConnectorsTagResponseOutput {
+	return o.ApplyT(func(v *AkriConnectorsTagResponse) AkriConnectorsTagResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AkriConnectorsTagResponse
+		return ret
+	}).(AkriConnectorsTagResponseOutput)
+}
+
+// The tag of the image.
+func (o AkriConnectorsTagResponsePtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsTagResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// AkriConnectorsTagDigestType values.
+// Expected value is 'Tag'.
+func (o AkriConnectorsTagResponsePtrOutput) TagDigestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AkriConnectorsTagResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagDigestType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Broker AuthorizationConfig properties
 type AuthorizationConfig struct {
 	// Enable caching of the authorization rules.
@@ -13807,6 +22550,1975 @@ func (o DataflowEndpointPropertiesResponseOutput) ProvisioningState() pulumi.Str
 	return o.ApplyT(func(v DataflowEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// DataflowGraph DataflowGraphNode Connection Input.
+type DataflowGraphConnectionInput struct {
+	// Name of the input node.
+	Name string `pulumi:"name"`
+	// Schema settings for the input node.
+	Schema *DataflowGraphConnectionSchemaSettings `pulumi:"schema"`
+}
+
+// DataflowGraphConnectionInputInput is an input type that accepts DataflowGraphConnectionInputArgs and DataflowGraphConnectionInputOutput values.
+// You can construct a concrete instance of `DataflowGraphConnectionInputInput` via:
+//
+//	DataflowGraphConnectionInputArgs{...}
+type DataflowGraphConnectionInputInput interface {
+	pulumi.Input
+
+	ToDataflowGraphConnectionInputOutput() DataflowGraphConnectionInputOutput
+	ToDataflowGraphConnectionInputOutputWithContext(context.Context) DataflowGraphConnectionInputOutput
+}
+
+// DataflowGraph DataflowGraphNode Connection Input.
+type DataflowGraphConnectionInputArgs struct {
+	// Name of the input node.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Schema settings for the input node.
+	Schema DataflowGraphConnectionSchemaSettingsPtrInput `pulumi:"schema"`
+}
+
+func (DataflowGraphConnectionInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphConnectionInput)(nil)).Elem()
+}
+
+func (i DataflowGraphConnectionInputArgs) ToDataflowGraphConnectionInputOutput() DataflowGraphConnectionInputOutput {
+	return i.ToDataflowGraphConnectionInputOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphConnectionInputArgs) ToDataflowGraphConnectionInputOutputWithContext(ctx context.Context) DataflowGraphConnectionInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphConnectionInputOutput)
+}
+
+// DataflowGraph DataflowGraphNode Connection Input.
+type DataflowGraphConnectionInputOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphConnectionInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphConnectionInput)(nil)).Elem()
+}
+
+func (o DataflowGraphConnectionInputOutput) ToDataflowGraphConnectionInputOutput() DataflowGraphConnectionInputOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionInputOutput) ToDataflowGraphConnectionInputOutputWithContext(ctx context.Context) DataflowGraphConnectionInputOutput {
+	return o
+}
+
+// Name of the input node.
+func (o DataflowGraphConnectionInputOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphConnectionInput) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Schema settings for the input node.
+func (o DataflowGraphConnectionInputOutput) Schema() DataflowGraphConnectionSchemaSettingsPtrOutput {
+	return o.ApplyT(func(v DataflowGraphConnectionInput) *DataflowGraphConnectionSchemaSettings { return v.Schema }).(DataflowGraphConnectionSchemaSettingsPtrOutput)
+}
+
+// DataflowGraph DataflowGraphNode Connection Input.
+type DataflowGraphConnectionInputResponse struct {
+	// Name of the input node.
+	Name string `pulumi:"name"`
+	// Schema settings for the input node.
+	Schema *DataflowGraphConnectionSchemaSettingsResponse `pulumi:"schema"`
+}
+
+// DataflowGraph DataflowGraphNode Connection Input.
+type DataflowGraphConnectionInputResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphConnectionInputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphConnectionInputResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphConnectionInputResponseOutput) ToDataflowGraphConnectionInputResponseOutput() DataflowGraphConnectionInputResponseOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionInputResponseOutput) ToDataflowGraphConnectionInputResponseOutputWithContext(ctx context.Context) DataflowGraphConnectionInputResponseOutput {
+	return o
+}
+
+// Name of the input node.
+func (o DataflowGraphConnectionInputResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphConnectionInputResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Schema settings for the input node.
+func (o DataflowGraphConnectionInputResponseOutput) Schema() DataflowGraphConnectionSchemaSettingsResponsePtrOutput {
+	return o.ApplyT(func(v DataflowGraphConnectionInputResponse) *DataflowGraphConnectionSchemaSettingsResponse {
+		return v.Schema
+	}).(DataflowGraphConnectionSchemaSettingsResponsePtrOutput)
+}
+
+// DataflowGraph DataflowGraphNode Connection Output.
+type DataflowGraphConnectionOutput struct {
+	// Name of the destination node.
+	Name string `pulumi:"name"`
+}
+
+// DataflowGraphConnectionOutputInput is an input type that accepts DataflowGraphConnectionOutputArgs and DataflowGraphConnectionOutputOutput values.
+// You can construct a concrete instance of `DataflowGraphConnectionOutputInput` via:
+//
+//	DataflowGraphConnectionOutputArgs{...}
+type DataflowGraphConnectionOutputInput interface {
+	pulumi.Input
+
+	ToDataflowGraphConnectionOutputOutput() DataflowGraphConnectionOutputOutput
+	ToDataflowGraphConnectionOutputOutputWithContext(context.Context) DataflowGraphConnectionOutputOutput
+}
+
+// DataflowGraph DataflowGraphNode Connection Output.
+type DataflowGraphConnectionOutputArgs struct {
+	// Name of the destination node.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (DataflowGraphConnectionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphConnectionOutput)(nil)).Elem()
+}
+
+func (i DataflowGraphConnectionOutputArgs) ToDataflowGraphConnectionOutputOutput() DataflowGraphConnectionOutputOutput {
+	return i.ToDataflowGraphConnectionOutputOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphConnectionOutputArgs) ToDataflowGraphConnectionOutputOutputWithContext(ctx context.Context) DataflowGraphConnectionOutputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphConnectionOutputOutput)
+}
+
+// DataflowGraph DataflowGraphNode Connection Output.
+type DataflowGraphConnectionOutputOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphConnectionOutputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphConnectionOutput)(nil)).Elem()
+}
+
+func (o DataflowGraphConnectionOutputOutput) ToDataflowGraphConnectionOutputOutput() DataflowGraphConnectionOutputOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionOutputOutput) ToDataflowGraphConnectionOutputOutputWithContext(ctx context.Context) DataflowGraphConnectionOutputOutput {
+	return o
+}
+
+// Name of the destination node.
+func (o DataflowGraphConnectionOutputOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphConnectionOutput) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// DataflowGraph DataflowGraphNode Connection Output.
+type DataflowGraphConnectionOutputResponse struct {
+	// Name of the destination node.
+	Name string `pulumi:"name"`
+}
+
+// DataflowGraph DataflowGraphNode Connection Output.
+type DataflowGraphConnectionOutputResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphConnectionOutputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphConnectionOutputResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphConnectionOutputResponseOutput) ToDataflowGraphConnectionOutputResponseOutput() DataflowGraphConnectionOutputResponseOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionOutputResponseOutput) ToDataflowGraphConnectionOutputResponseOutputWithContext(ctx context.Context) DataflowGraphConnectionOutputResponseOutput {
+	return o
+}
+
+// Name of the destination node.
+func (o DataflowGraphConnectionOutputResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphConnectionOutputResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// DataflowGraph connection node output schema settings.
+type DataflowGraphConnectionSchemaSettings struct {
+	// Reference to the schema that describes the output of the transformation.
+	SchemaRef *string `pulumi:"schemaRef"`
+	// Output serialization format.
+	SerializationFormat *string `pulumi:"serializationFormat"`
+}
+
+// DataflowGraphConnectionSchemaSettingsInput is an input type that accepts DataflowGraphConnectionSchemaSettingsArgs and DataflowGraphConnectionSchemaSettingsOutput values.
+// You can construct a concrete instance of `DataflowGraphConnectionSchemaSettingsInput` via:
+//
+//	DataflowGraphConnectionSchemaSettingsArgs{...}
+type DataflowGraphConnectionSchemaSettingsInput interface {
+	pulumi.Input
+
+	ToDataflowGraphConnectionSchemaSettingsOutput() DataflowGraphConnectionSchemaSettingsOutput
+	ToDataflowGraphConnectionSchemaSettingsOutputWithContext(context.Context) DataflowGraphConnectionSchemaSettingsOutput
+}
+
+// DataflowGraph connection node output schema settings.
+type DataflowGraphConnectionSchemaSettingsArgs struct {
+	// Reference to the schema that describes the output of the transformation.
+	SchemaRef pulumi.StringPtrInput `pulumi:"schemaRef"`
+	// Output serialization format.
+	SerializationFormat pulumi.StringPtrInput `pulumi:"serializationFormat"`
+}
+
+func (DataflowGraphConnectionSchemaSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphConnectionSchemaSettings)(nil)).Elem()
+}
+
+func (i DataflowGraphConnectionSchemaSettingsArgs) ToDataflowGraphConnectionSchemaSettingsOutput() DataflowGraphConnectionSchemaSettingsOutput {
+	return i.ToDataflowGraphConnectionSchemaSettingsOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphConnectionSchemaSettingsArgs) ToDataflowGraphConnectionSchemaSettingsOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphConnectionSchemaSettingsOutput)
+}
+
+func (i DataflowGraphConnectionSchemaSettingsArgs) ToDataflowGraphConnectionSchemaSettingsPtrOutput() DataflowGraphConnectionSchemaSettingsPtrOutput {
+	return i.ToDataflowGraphConnectionSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphConnectionSchemaSettingsArgs) ToDataflowGraphConnectionSchemaSettingsPtrOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphConnectionSchemaSettingsOutput).ToDataflowGraphConnectionSchemaSettingsPtrOutputWithContext(ctx)
+}
+
+// DataflowGraphConnectionSchemaSettingsPtrInput is an input type that accepts DataflowGraphConnectionSchemaSettingsArgs, DataflowGraphConnectionSchemaSettingsPtr and DataflowGraphConnectionSchemaSettingsPtrOutput values.
+// You can construct a concrete instance of `DataflowGraphConnectionSchemaSettingsPtrInput` via:
+//
+//	        DataflowGraphConnectionSchemaSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowGraphConnectionSchemaSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDataflowGraphConnectionSchemaSettingsPtrOutput() DataflowGraphConnectionSchemaSettingsPtrOutput
+	ToDataflowGraphConnectionSchemaSettingsPtrOutputWithContext(context.Context) DataflowGraphConnectionSchemaSettingsPtrOutput
+}
+
+type dataflowGraphConnectionSchemaSettingsPtrType DataflowGraphConnectionSchemaSettingsArgs
+
+func DataflowGraphConnectionSchemaSettingsPtr(v *DataflowGraphConnectionSchemaSettingsArgs) DataflowGraphConnectionSchemaSettingsPtrInput {
+	return (*dataflowGraphConnectionSchemaSettingsPtrType)(v)
+}
+
+func (*dataflowGraphConnectionSchemaSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowGraphConnectionSchemaSettings)(nil)).Elem()
+}
+
+func (i *dataflowGraphConnectionSchemaSettingsPtrType) ToDataflowGraphConnectionSchemaSettingsPtrOutput() DataflowGraphConnectionSchemaSettingsPtrOutput {
+	return i.ToDataflowGraphConnectionSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowGraphConnectionSchemaSettingsPtrType) ToDataflowGraphConnectionSchemaSettingsPtrOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphConnectionSchemaSettingsPtrOutput)
+}
+
+// DataflowGraph connection node output schema settings.
+type DataflowGraphConnectionSchemaSettingsOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphConnectionSchemaSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphConnectionSchemaSettings)(nil)).Elem()
+}
+
+func (o DataflowGraphConnectionSchemaSettingsOutput) ToDataflowGraphConnectionSchemaSettingsOutput() DataflowGraphConnectionSchemaSettingsOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionSchemaSettingsOutput) ToDataflowGraphConnectionSchemaSettingsOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSettingsOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionSchemaSettingsOutput) ToDataflowGraphConnectionSchemaSettingsPtrOutput() DataflowGraphConnectionSchemaSettingsPtrOutput {
+	return o.ToDataflowGraphConnectionSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowGraphConnectionSchemaSettingsOutput) ToDataflowGraphConnectionSchemaSettingsPtrOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowGraphConnectionSchemaSettings) *DataflowGraphConnectionSchemaSettings {
+		return &v
+	}).(DataflowGraphConnectionSchemaSettingsPtrOutput)
+}
+
+// Reference to the schema that describes the output of the transformation.
+func (o DataflowGraphConnectionSchemaSettingsOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphConnectionSchemaSettings) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
+}
+
+// Output serialization format.
+func (o DataflowGraphConnectionSchemaSettingsOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphConnectionSchemaSettings) *string { return v.SerializationFormat }).(pulumi.StringPtrOutput)
+}
+
+type DataflowGraphConnectionSchemaSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphConnectionSchemaSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowGraphConnectionSchemaSettings)(nil)).Elem()
+}
+
+func (o DataflowGraphConnectionSchemaSettingsPtrOutput) ToDataflowGraphConnectionSchemaSettingsPtrOutput() DataflowGraphConnectionSchemaSettingsPtrOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionSchemaSettingsPtrOutput) ToDataflowGraphConnectionSchemaSettingsPtrOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSettingsPtrOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionSchemaSettingsPtrOutput) Elem() DataflowGraphConnectionSchemaSettingsOutput {
+	return o.ApplyT(func(v *DataflowGraphConnectionSchemaSettings) DataflowGraphConnectionSchemaSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowGraphConnectionSchemaSettings
+		return ret
+	}).(DataflowGraphConnectionSchemaSettingsOutput)
+}
+
+// Reference to the schema that describes the output of the transformation.
+func (o DataflowGraphConnectionSchemaSettingsPtrOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowGraphConnectionSchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output serialization format.
+func (o DataflowGraphConnectionSchemaSettingsPtrOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowGraphConnectionSchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SerializationFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowGraph connection node output schema settings.
+type DataflowGraphConnectionSchemaSettingsResponse struct {
+	// Reference to the schema that describes the output of the transformation.
+	SchemaRef *string `pulumi:"schemaRef"`
+	// Output serialization format.
+	SerializationFormat *string `pulumi:"serializationFormat"`
+}
+
+// DataflowGraph connection node output schema settings.
+type DataflowGraphConnectionSchemaSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphConnectionSchemaSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphConnectionSchemaSettingsResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphConnectionSchemaSettingsResponseOutput) ToDataflowGraphConnectionSchemaSettingsResponseOutput() DataflowGraphConnectionSchemaSettingsResponseOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionSchemaSettingsResponseOutput) ToDataflowGraphConnectionSchemaSettingsResponseOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSettingsResponseOutput {
+	return o
+}
+
+// Reference to the schema that describes the output of the transformation.
+func (o DataflowGraphConnectionSchemaSettingsResponseOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphConnectionSchemaSettingsResponse) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
+}
+
+// Output serialization format.
+func (o DataflowGraphConnectionSchemaSettingsResponseOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphConnectionSchemaSettingsResponse) *string { return v.SerializationFormat }).(pulumi.StringPtrOutput)
+}
+
+type DataflowGraphConnectionSchemaSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphConnectionSchemaSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowGraphConnectionSchemaSettingsResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphConnectionSchemaSettingsResponsePtrOutput) ToDataflowGraphConnectionSchemaSettingsResponsePtrOutput() DataflowGraphConnectionSchemaSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionSchemaSettingsResponsePtrOutput) ToDataflowGraphConnectionSchemaSettingsResponsePtrOutputWithContext(ctx context.Context) DataflowGraphConnectionSchemaSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DataflowGraphConnectionSchemaSettingsResponsePtrOutput) Elem() DataflowGraphConnectionSchemaSettingsResponseOutput {
+	return o.ApplyT(func(v *DataflowGraphConnectionSchemaSettingsResponse) DataflowGraphConnectionSchemaSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowGraphConnectionSchemaSettingsResponse
+		return ret
+	}).(DataflowGraphConnectionSchemaSettingsResponseOutput)
+}
+
+// Reference to the schema that describes the output of the transformation.
+func (o DataflowGraphConnectionSchemaSettingsResponsePtrOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowGraphConnectionSchemaSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output serialization format.
+func (o DataflowGraphConnectionSchemaSettingsResponsePtrOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowGraphConnectionSchemaSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SerializationFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowGraph destination node properties.
+type DataflowGraphDestinationNode struct {
+	// Destination configuration.
+	DestinationSettings DataflowGraphDestinationNodeSettings `pulumi:"destinationSettings"`
+	// Name of the node.
+	Name string `pulumi:"name"`
+	// DataflowGraph node types.
+	// Expected value is 'Destination'.
+	NodeType string `pulumi:"nodeType"`
+}
+
+// DataflowGraphDestinationNodeInput is an input type that accepts DataflowGraphDestinationNodeArgs and DataflowGraphDestinationNodeOutput values.
+// You can construct a concrete instance of `DataflowGraphDestinationNodeInput` via:
+//
+//	DataflowGraphDestinationNodeArgs{...}
+type DataflowGraphDestinationNodeInput interface {
+	pulumi.Input
+
+	ToDataflowGraphDestinationNodeOutput() DataflowGraphDestinationNodeOutput
+	ToDataflowGraphDestinationNodeOutputWithContext(context.Context) DataflowGraphDestinationNodeOutput
+}
+
+// DataflowGraph destination node properties.
+type DataflowGraphDestinationNodeArgs struct {
+	// Destination configuration.
+	DestinationSettings DataflowGraphDestinationNodeSettingsInput `pulumi:"destinationSettings"`
+	// Name of the node.
+	Name pulumi.StringInput `pulumi:"name"`
+	// DataflowGraph node types.
+	// Expected value is 'Destination'.
+	NodeType pulumi.StringInput `pulumi:"nodeType"`
+}
+
+func (DataflowGraphDestinationNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphDestinationNode)(nil)).Elem()
+}
+
+func (i DataflowGraphDestinationNodeArgs) ToDataflowGraphDestinationNodeOutput() DataflowGraphDestinationNodeOutput {
+	return i.ToDataflowGraphDestinationNodeOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphDestinationNodeArgs) ToDataflowGraphDestinationNodeOutputWithContext(ctx context.Context) DataflowGraphDestinationNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphDestinationNodeOutput)
+}
+
+// DataflowGraph destination node properties.
+type DataflowGraphDestinationNodeOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphDestinationNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphDestinationNode)(nil)).Elem()
+}
+
+func (o DataflowGraphDestinationNodeOutput) ToDataflowGraphDestinationNodeOutput() DataflowGraphDestinationNodeOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationNodeOutput) ToDataflowGraphDestinationNodeOutputWithContext(ctx context.Context) DataflowGraphDestinationNodeOutput {
+	return o
+}
+
+// Destination configuration.
+func (o DataflowGraphDestinationNodeOutput) DestinationSettings() DataflowGraphDestinationNodeSettingsOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNode) DataflowGraphDestinationNodeSettings {
+		return v.DestinationSettings
+	}).(DataflowGraphDestinationNodeSettingsOutput)
+}
+
+// Name of the node.
+func (o DataflowGraphDestinationNodeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNode) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// DataflowGraph node types.
+// Expected value is 'Destination'.
+func (o DataflowGraphDestinationNodeOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNode) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// DataflowGraph destination node properties.
+type DataflowGraphDestinationNodeResponse struct {
+	// Destination configuration.
+	DestinationSettings DataflowGraphDestinationNodeSettingsResponse `pulumi:"destinationSettings"`
+	// Name of the node.
+	Name string `pulumi:"name"`
+	// DataflowGraph node types.
+	// Expected value is 'Destination'.
+	NodeType string `pulumi:"nodeType"`
+}
+
+// DataflowGraph destination node properties.
+type DataflowGraphDestinationNodeResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphDestinationNodeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphDestinationNodeResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphDestinationNodeResponseOutput) ToDataflowGraphDestinationNodeResponseOutput() DataflowGraphDestinationNodeResponseOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationNodeResponseOutput) ToDataflowGraphDestinationNodeResponseOutputWithContext(ctx context.Context) DataflowGraphDestinationNodeResponseOutput {
+	return o
+}
+
+// Destination configuration.
+func (o DataflowGraphDestinationNodeResponseOutput) DestinationSettings() DataflowGraphDestinationNodeSettingsResponseOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNodeResponse) DataflowGraphDestinationNodeSettingsResponse {
+		return v.DestinationSettings
+	}).(DataflowGraphDestinationNodeSettingsResponseOutput)
+}
+
+// Name of the node.
+func (o DataflowGraphDestinationNodeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNodeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// DataflowGraph node types.
+// Expected value is 'Destination'.
+func (o DataflowGraphDestinationNodeResponseOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNodeResponse) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// DataflowGraph destination node settings.
+type DataflowGraphDestinationNodeSettings struct {
+	// Data destination at the endpoint.
+	DataDestination string `pulumi:"dataDestination"`
+	// The name of the DataflowEndpoint resource .
+	EndpointRef string `pulumi:"endpointRef"`
+	// Output schema settings.
+	OutputSchemaSettings *DataflowGraphDestinationSchemaSettings `pulumi:"outputSchemaSettings"`
+}
+
+// DataflowGraphDestinationNodeSettingsInput is an input type that accepts DataflowGraphDestinationNodeSettingsArgs and DataflowGraphDestinationNodeSettingsOutput values.
+// You can construct a concrete instance of `DataflowGraphDestinationNodeSettingsInput` via:
+//
+//	DataflowGraphDestinationNodeSettingsArgs{...}
+type DataflowGraphDestinationNodeSettingsInput interface {
+	pulumi.Input
+
+	ToDataflowGraphDestinationNodeSettingsOutput() DataflowGraphDestinationNodeSettingsOutput
+	ToDataflowGraphDestinationNodeSettingsOutputWithContext(context.Context) DataflowGraphDestinationNodeSettingsOutput
+}
+
+// DataflowGraph destination node settings.
+type DataflowGraphDestinationNodeSettingsArgs struct {
+	// Data destination at the endpoint.
+	DataDestination pulumi.StringInput `pulumi:"dataDestination"`
+	// The name of the DataflowEndpoint resource .
+	EndpointRef pulumi.StringInput `pulumi:"endpointRef"`
+	// Output schema settings.
+	OutputSchemaSettings DataflowGraphDestinationSchemaSettingsPtrInput `pulumi:"outputSchemaSettings"`
+}
+
+func (DataflowGraphDestinationNodeSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphDestinationNodeSettings)(nil)).Elem()
+}
+
+func (i DataflowGraphDestinationNodeSettingsArgs) ToDataflowGraphDestinationNodeSettingsOutput() DataflowGraphDestinationNodeSettingsOutput {
+	return i.ToDataflowGraphDestinationNodeSettingsOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphDestinationNodeSettingsArgs) ToDataflowGraphDestinationNodeSettingsOutputWithContext(ctx context.Context) DataflowGraphDestinationNodeSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphDestinationNodeSettingsOutput)
+}
+
+// DataflowGraph destination node settings.
+type DataflowGraphDestinationNodeSettingsOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphDestinationNodeSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphDestinationNodeSettings)(nil)).Elem()
+}
+
+func (o DataflowGraphDestinationNodeSettingsOutput) ToDataflowGraphDestinationNodeSettingsOutput() DataflowGraphDestinationNodeSettingsOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationNodeSettingsOutput) ToDataflowGraphDestinationNodeSettingsOutputWithContext(ctx context.Context) DataflowGraphDestinationNodeSettingsOutput {
+	return o
+}
+
+// Data destination at the endpoint.
+func (o DataflowGraphDestinationNodeSettingsOutput) DataDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNodeSettings) string { return v.DataDestination }).(pulumi.StringOutput)
+}
+
+// The name of the DataflowEndpoint resource .
+func (o DataflowGraphDestinationNodeSettingsOutput) EndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNodeSettings) string { return v.EndpointRef }).(pulumi.StringOutput)
+}
+
+// Output schema settings.
+func (o DataflowGraphDestinationNodeSettingsOutput) OutputSchemaSettings() DataflowGraphDestinationSchemaSettingsPtrOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNodeSettings) *DataflowGraphDestinationSchemaSettings {
+		return v.OutputSchemaSettings
+	}).(DataflowGraphDestinationSchemaSettingsPtrOutput)
+}
+
+// DataflowGraph destination node settings.
+type DataflowGraphDestinationNodeSettingsResponse struct {
+	// Data destination at the endpoint.
+	DataDestination string `pulumi:"dataDestination"`
+	// The name of the DataflowEndpoint resource .
+	EndpointRef string `pulumi:"endpointRef"`
+	// Output schema settings.
+	OutputSchemaSettings *DataflowGraphDestinationSchemaSettingsResponse `pulumi:"outputSchemaSettings"`
+}
+
+// DataflowGraph destination node settings.
+type DataflowGraphDestinationNodeSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphDestinationNodeSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphDestinationNodeSettingsResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphDestinationNodeSettingsResponseOutput) ToDataflowGraphDestinationNodeSettingsResponseOutput() DataflowGraphDestinationNodeSettingsResponseOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationNodeSettingsResponseOutput) ToDataflowGraphDestinationNodeSettingsResponseOutputWithContext(ctx context.Context) DataflowGraphDestinationNodeSettingsResponseOutput {
+	return o
+}
+
+// Data destination at the endpoint.
+func (o DataflowGraphDestinationNodeSettingsResponseOutput) DataDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNodeSettingsResponse) string { return v.DataDestination }).(pulumi.StringOutput)
+}
+
+// The name of the DataflowEndpoint resource .
+func (o DataflowGraphDestinationNodeSettingsResponseOutput) EndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNodeSettingsResponse) string { return v.EndpointRef }).(pulumi.StringOutput)
+}
+
+// Output schema settings.
+func (o DataflowGraphDestinationNodeSettingsResponseOutput) OutputSchemaSettings() DataflowGraphDestinationSchemaSettingsResponsePtrOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationNodeSettingsResponse) *DataflowGraphDestinationSchemaSettingsResponse {
+		return v.OutputSchemaSettings
+	}).(DataflowGraphDestinationSchemaSettingsResponsePtrOutput)
+}
+
+// DataflowGraph destination node output schema settings.
+type DataflowGraphDestinationSchemaSettings struct {
+	// Reference to the schema that describes the output of the transformation.
+	SchemaRef *string `pulumi:"schemaRef"`
+	// The format of the output data.
+	SerializationFormat string `pulumi:"serializationFormat"`
+}
+
+// DataflowGraphDestinationSchemaSettingsInput is an input type that accepts DataflowGraphDestinationSchemaSettingsArgs and DataflowGraphDestinationSchemaSettingsOutput values.
+// You can construct a concrete instance of `DataflowGraphDestinationSchemaSettingsInput` via:
+//
+//	DataflowGraphDestinationSchemaSettingsArgs{...}
+type DataflowGraphDestinationSchemaSettingsInput interface {
+	pulumi.Input
+
+	ToDataflowGraphDestinationSchemaSettingsOutput() DataflowGraphDestinationSchemaSettingsOutput
+	ToDataflowGraphDestinationSchemaSettingsOutputWithContext(context.Context) DataflowGraphDestinationSchemaSettingsOutput
+}
+
+// DataflowGraph destination node output schema settings.
+type DataflowGraphDestinationSchemaSettingsArgs struct {
+	// Reference to the schema that describes the output of the transformation.
+	SchemaRef pulumi.StringPtrInput `pulumi:"schemaRef"`
+	// The format of the output data.
+	SerializationFormat pulumi.StringInput `pulumi:"serializationFormat"`
+}
+
+func (DataflowGraphDestinationSchemaSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphDestinationSchemaSettings)(nil)).Elem()
+}
+
+func (i DataflowGraphDestinationSchemaSettingsArgs) ToDataflowGraphDestinationSchemaSettingsOutput() DataflowGraphDestinationSchemaSettingsOutput {
+	return i.ToDataflowGraphDestinationSchemaSettingsOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphDestinationSchemaSettingsArgs) ToDataflowGraphDestinationSchemaSettingsOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphDestinationSchemaSettingsOutput)
+}
+
+func (i DataflowGraphDestinationSchemaSettingsArgs) ToDataflowGraphDestinationSchemaSettingsPtrOutput() DataflowGraphDestinationSchemaSettingsPtrOutput {
+	return i.ToDataflowGraphDestinationSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphDestinationSchemaSettingsArgs) ToDataflowGraphDestinationSchemaSettingsPtrOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphDestinationSchemaSettingsOutput).ToDataflowGraphDestinationSchemaSettingsPtrOutputWithContext(ctx)
+}
+
+// DataflowGraphDestinationSchemaSettingsPtrInput is an input type that accepts DataflowGraphDestinationSchemaSettingsArgs, DataflowGraphDestinationSchemaSettingsPtr and DataflowGraphDestinationSchemaSettingsPtrOutput values.
+// You can construct a concrete instance of `DataflowGraphDestinationSchemaSettingsPtrInput` via:
+//
+//	        DataflowGraphDestinationSchemaSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowGraphDestinationSchemaSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDataflowGraphDestinationSchemaSettingsPtrOutput() DataflowGraphDestinationSchemaSettingsPtrOutput
+	ToDataflowGraphDestinationSchemaSettingsPtrOutputWithContext(context.Context) DataflowGraphDestinationSchemaSettingsPtrOutput
+}
+
+type dataflowGraphDestinationSchemaSettingsPtrType DataflowGraphDestinationSchemaSettingsArgs
+
+func DataflowGraphDestinationSchemaSettingsPtr(v *DataflowGraphDestinationSchemaSettingsArgs) DataflowGraphDestinationSchemaSettingsPtrInput {
+	return (*dataflowGraphDestinationSchemaSettingsPtrType)(v)
+}
+
+func (*dataflowGraphDestinationSchemaSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowGraphDestinationSchemaSettings)(nil)).Elem()
+}
+
+func (i *dataflowGraphDestinationSchemaSettingsPtrType) ToDataflowGraphDestinationSchemaSettingsPtrOutput() DataflowGraphDestinationSchemaSettingsPtrOutput {
+	return i.ToDataflowGraphDestinationSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowGraphDestinationSchemaSettingsPtrType) ToDataflowGraphDestinationSchemaSettingsPtrOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphDestinationSchemaSettingsPtrOutput)
+}
+
+// DataflowGraph destination node output schema settings.
+type DataflowGraphDestinationSchemaSettingsOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphDestinationSchemaSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphDestinationSchemaSettings)(nil)).Elem()
+}
+
+func (o DataflowGraphDestinationSchemaSettingsOutput) ToDataflowGraphDestinationSchemaSettingsOutput() DataflowGraphDestinationSchemaSettingsOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationSchemaSettingsOutput) ToDataflowGraphDestinationSchemaSettingsOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSettingsOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationSchemaSettingsOutput) ToDataflowGraphDestinationSchemaSettingsPtrOutput() DataflowGraphDestinationSchemaSettingsPtrOutput {
+	return o.ToDataflowGraphDestinationSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowGraphDestinationSchemaSettingsOutput) ToDataflowGraphDestinationSchemaSettingsPtrOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowGraphDestinationSchemaSettings) *DataflowGraphDestinationSchemaSettings {
+		return &v
+	}).(DataflowGraphDestinationSchemaSettingsPtrOutput)
+}
+
+// Reference to the schema that describes the output of the transformation.
+func (o DataflowGraphDestinationSchemaSettingsOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationSchemaSettings) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
+}
+
+// The format of the output data.
+func (o DataflowGraphDestinationSchemaSettingsOutput) SerializationFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationSchemaSettings) string { return v.SerializationFormat }).(pulumi.StringOutput)
+}
+
+type DataflowGraphDestinationSchemaSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphDestinationSchemaSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowGraphDestinationSchemaSettings)(nil)).Elem()
+}
+
+func (o DataflowGraphDestinationSchemaSettingsPtrOutput) ToDataflowGraphDestinationSchemaSettingsPtrOutput() DataflowGraphDestinationSchemaSettingsPtrOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationSchemaSettingsPtrOutput) ToDataflowGraphDestinationSchemaSettingsPtrOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSettingsPtrOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationSchemaSettingsPtrOutput) Elem() DataflowGraphDestinationSchemaSettingsOutput {
+	return o.ApplyT(func(v *DataflowGraphDestinationSchemaSettings) DataflowGraphDestinationSchemaSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowGraphDestinationSchemaSettings
+		return ret
+	}).(DataflowGraphDestinationSchemaSettingsOutput)
+}
+
+// Reference to the schema that describes the output of the transformation.
+func (o DataflowGraphDestinationSchemaSettingsPtrOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowGraphDestinationSchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The format of the output data.
+func (o DataflowGraphDestinationSchemaSettingsPtrOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowGraphDestinationSchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SerializationFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowGraph destination node output schema settings.
+type DataflowGraphDestinationSchemaSettingsResponse struct {
+	// Reference to the schema that describes the output of the transformation.
+	SchemaRef *string `pulumi:"schemaRef"`
+	// The format of the output data.
+	SerializationFormat string `pulumi:"serializationFormat"`
+}
+
+// DataflowGraph destination node output schema settings.
+type DataflowGraphDestinationSchemaSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphDestinationSchemaSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphDestinationSchemaSettingsResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphDestinationSchemaSettingsResponseOutput) ToDataflowGraphDestinationSchemaSettingsResponseOutput() DataflowGraphDestinationSchemaSettingsResponseOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationSchemaSettingsResponseOutput) ToDataflowGraphDestinationSchemaSettingsResponseOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSettingsResponseOutput {
+	return o
+}
+
+// Reference to the schema that describes the output of the transformation.
+func (o DataflowGraphDestinationSchemaSettingsResponseOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationSchemaSettingsResponse) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
+}
+
+// The format of the output data.
+func (o DataflowGraphDestinationSchemaSettingsResponseOutput) SerializationFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphDestinationSchemaSettingsResponse) string { return v.SerializationFormat }).(pulumi.StringOutput)
+}
+
+type DataflowGraphDestinationSchemaSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphDestinationSchemaSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowGraphDestinationSchemaSettingsResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphDestinationSchemaSettingsResponsePtrOutput) ToDataflowGraphDestinationSchemaSettingsResponsePtrOutput() DataflowGraphDestinationSchemaSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationSchemaSettingsResponsePtrOutput) ToDataflowGraphDestinationSchemaSettingsResponsePtrOutputWithContext(ctx context.Context) DataflowGraphDestinationSchemaSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DataflowGraphDestinationSchemaSettingsResponsePtrOutput) Elem() DataflowGraphDestinationSchemaSettingsResponseOutput {
+	return o.ApplyT(func(v *DataflowGraphDestinationSchemaSettingsResponse) DataflowGraphDestinationSchemaSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowGraphDestinationSchemaSettingsResponse
+		return ret
+	}).(DataflowGraphDestinationSchemaSettingsResponseOutput)
+}
+
+// Reference to the schema that describes the output of the transformation.
+func (o DataflowGraphDestinationSchemaSettingsResponsePtrOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowGraphDestinationSchemaSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The format of the output data.
+func (o DataflowGraphDestinationSchemaSettingsResponsePtrOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowGraphDestinationSchemaSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SerializationFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowGraph graph node properties.
+type DataflowGraphGraphNode struct {
+	// Graph configuration.
+	GraphSettings DataflowGraphNodeGraphSettings `pulumi:"graphSettings"`
+	// Name of the node.
+	Name string `pulumi:"name"`
+	// DataflowGraph node types.
+	// Expected value is 'Graph'.
+	NodeType string `pulumi:"nodeType"`
+}
+
+// DataflowGraphGraphNodeInput is an input type that accepts DataflowGraphGraphNodeArgs and DataflowGraphGraphNodeOutput values.
+// You can construct a concrete instance of `DataflowGraphGraphNodeInput` via:
+//
+//	DataflowGraphGraphNodeArgs{...}
+type DataflowGraphGraphNodeInput interface {
+	pulumi.Input
+
+	ToDataflowGraphGraphNodeOutput() DataflowGraphGraphNodeOutput
+	ToDataflowGraphGraphNodeOutputWithContext(context.Context) DataflowGraphGraphNodeOutput
+}
+
+// DataflowGraph graph node properties.
+type DataflowGraphGraphNodeArgs struct {
+	// Graph configuration.
+	GraphSettings DataflowGraphNodeGraphSettingsInput `pulumi:"graphSettings"`
+	// Name of the node.
+	Name pulumi.StringInput `pulumi:"name"`
+	// DataflowGraph node types.
+	// Expected value is 'Graph'.
+	NodeType pulumi.StringInput `pulumi:"nodeType"`
+}
+
+func (DataflowGraphGraphNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphGraphNode)(nil)).Elem()
+}
+
+func (i DataflowGraphGraphNodeArgs) ToDataflowGraphGraphNodeOutput() DataflowGraphGraphNodeOutput {
+	return i.ToDataflowGraphGraphNodeOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphGraphNodeArgs) ToDataflowGraphGraphNodeOutputWithContext(ctx context.Context) DataflowGraphGraphNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphGraphNodeOutput)
+}
+
+// DataflowGraph graph node properties.
+type DataflowGraphGraphNodeOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphGraphNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphGraphNode)(nil)).Elem()
+}
+
+func (o DataflowGraphGraphNodeOutput) ToDataflowGraphGraphNodeOutput() DataflowGraphGraphNodeOutput {
+	return o
+}
+
+func (o DataflowGraphGraphNodeOutput) ToDataflowGraphGraphNodeOutputWithContext(ctx context.Context) DataflowGraphGraphNodeOutput {
+	return o
+}
+
+// Graph configuration.
+func (o DataflowGraphGraphNodeOutput) GraphSettings() DataflowGraphNodeGraphSettingsOutput {
+	return o.ApplyT(func(v DataflowGraphGraphNode) DataflowGraphNodeGraphSettings { return v.GraphSettings }).(DataflowGraphNodeGraphSettingsOutput)
+}
+
+// Name of the node.
+func (o DataflowGraphGraphNodeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphGraphNode) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// DataflowGraph node types.
+// Expected value is 'Graph'.
+func (o DataflowGraphGraphNodeOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphGraphNode) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// DataflowGraph graph node configuration.
+type DataflowGraphGraphNodeConfiguration struct {
+	// Key of the configuration.
+	Key string `pulumi:"key"`
+	// Value of the configuration.
+	Value string `pulumi:"value"`
+}
+
+// DataflowGraphGraphNodeConfigurationInput is an input type that accepts DataflowGraphGraphNodeConfigurationArgs and DataflowGraphGraphNodeConfigurationOutput values.
+// You can construct a concrete instance of `DataflowGraphGraphNodeConfigurationInput` via:
+//
+//	DataflowGraphGraphNodeConfigurationArgs{...}
+type DataflowGraphGraphNodeConfigurationInput interface {
+	pulumi.Input
+
+	ToDataflowGraphGraphNodeConfigurationOutput() DataflowGraphGraphNodeConfigurationOutput
+	ToDataflowGraphGraphNodeConfigurationOutputWithContext(context.Context) DataflowGraphGraphNodeConfigurationOutput
+}
+
+// DataflowGraph graph node configuration.
+type DataflowGraphGraphNodeConfigurationArgs struct {
+	// Key of the configuration.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the configuration.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (DataflowGraphGraphNodeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphGraphNodeConfiguration)(nil)).Elem()
+}
+
+func (i DataflowGraphGraphNodeConfigurationArgs) ToDataflowGraphGraphNodeConfigurationOutput() DataflowGraphGraphNodeConfigurationOutput {
+	return i.ToDataflowGraphGraphNodeConfigurationOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphGraphNodeConfigurationArgs) ToDataflowGraphGraphNodeConfigurationOutputWithContext(ctx context.Context) DataflowGraphGraphNodeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphGraphNodeConfigurationOutput)
+}
+
+// DataflowGraphGraphNodeConfigurationArrayInput is an input type that accepts DataflowGraphGraphNodeConfigurationArray and DataflowGraphGraphNodeConfigurationArrayOutput values.
+// You can construct a concrete instance of `DataflowGraphGraphNodeConfigurationArrayInput` via:
+//
+//	DataflowGraphGraphNodeConfigurationArray{ DataflowGraphGraphNodeConfigurationArgs{...} }
+type DataflowGraphGraphNodeConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToDataflowGraphGraphNodeConfigurationArrayOutput() DataflowGraphGraphNodeConfigurationArrayOutput
+	ToDataflowGraphGraphNodeConfigurationArrayOutputWithContext(context.Context) DataflowGraphGraphNodeConfigurationArrayOutput
+}
+
+type DataflowGraphGraphNodeConfigurationArray []DataflowGraphGraphNodeConfigurationInput
+
+func (DataflowGraphGraphNodeConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowGraphGraphNodeConfiguration)(nil)).Elem()
+}
+
+func (i DataflowGraphGraphNodeConfigurationArray) ToDataflowGraphGraphNodeConfigurationArrayOutput() DataflowGraphGraphNodeConfigurationArrayOutput {
+	return i.ToDataflowGraphGraphNodeConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphGraphNodeConfigurationArray) ToDataflowGraphGraphNodeConfigurationArrayOutputWithContext(ctx context.Context) DataflowGraphGraphNodeConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphGraphNodeConfigurationArrayOutput)
+}
+
+// DataflowGraph graph node configuration.
+type DataflowGraphGraphNodeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphGraphNodeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphGraphNodeConfiguration)(nil)).Elem()
+}
+
+func (o DataflowGraphGraphNodeConfigurationOutput) ToDataflowGraphGraphNodeConfigurationOutput() DataflowGraphGraphNodeConfigurationOutput {
+	return o
+}
+
+func (o DataflowGraphGraphNodeConfigurationOutput) ToDataflowGraphGraphNodeConfigurationOutputWithContext(ctx context.Context) DataflowGraphGraphNodeConfigurationOutput {
+	return o
+}
+
+// Key of the configuration.
+func (o DataflowGraphGraphNodeConfigurationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphGraphNodeConfiguration) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the configuration.
+func (o DataflowGraphGraphNodeConfigurationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphGraphNodeConfiguration) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DataflowGraphGraphNodeConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphGraphNodeConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowGraphGraphNodeConfiguration)(nil)).Elem()
+}
+
+func (o DataflowGraphGraphNodeConfigurationArrayOutput) ToDataflowGraphGraphNodeConfigurationArrayOutput() DataflowGraphGraphNodeConfigurationArrayOutput {
+	return o
+}
+
+func (o DataflowGraphGraphNodeConfigurationArrayOutput) ToDataflowGraphGraphNodeConfigurationArrayOutputWithContext(ctx context.Context) DataflowGraphGraphNodeConfigurationArrayOutput {
+	return o
+}
+
+func (o DataflowGraphGraphNodeConfigurationArrayOutput) Index(i pulumi.IntInput) DataflowGraphGraphNodeConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowGraphGraphNodeConfiguration {
+		return vs[0].([]DataflowGraphGraphNodeConfiguration)[vs[1].(int)]
+	}).(DataflowGraphGraphNodeConfigurationOutput)
+}
+
+// DataflowGraph graph node configuration.
+type DataflowGraphGraphNodeConfigurationResponse struct {
+	// Key of the configuration.
+	Key string `pulumi:"key"`
+	// Value of the configuration.
+	Value string `pulumi:"value"`
+}
+
+// DataflowGraph graph node configuration.
+type DataflowGraphGraphNodeConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphGraphNodeConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphGraphNodeConfigurationResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphGraphNodeConfigurationResponseOutput) ToDataflowGraphGraphNodeConfigurationResponseOutput() DataflowGraphGraphNodeConfigurationResponseOutput {
+	return o
+}
+
+func (o DataflowGraphGraphNodeConfigurationResponseOutput) ToDataflowGraphGraphNodeConfigurationResponseOutputWithContext(ctx context.Context) DataflowGraphGraphNodeConfigurationResponseOutput {
+	return o
+}
+
+// Key of the configuration.
+func (o DataflowGraphGraphNodeConfigurationResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphGraphNodeConfigurationResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the configuration.
+func (o DataflowGraphGraphNodeConfigurationResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphGraphNodeConfigurationResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DataflowGraphGraphNodeConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphGraphNodeConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowGraphGraphNodeConfigurationResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphGraphNodeConfigurationResponseArrayOutput) ToDataflowGraphGraphNodeConfigurationResponseArrayOutput() DataflowGraphGraphNodeConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o DataflowGraphGraphNodeConfigurationResponseArrayOutput) ToDataflowGraphGraphNodeConfigurationResponseArrayOutputWithContext(ctx context.Context) DataflowGraphGraphNodeConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o DataflowGraphGraphNodeConfigurationResponseArrayOutput) Index(i pulumi.IntInput) DataflowGraphGraphNodeConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowGraphGraphNodeConfigurationResponse {
+		return vs[0].([]DataflowGraphGraphNodeConfigurationResponse)[vs[1].(int)]
+	}).(DataflowGraphGraphNodeConfigurationResponseOutput)
+}
+
+// DataflowGraph graph node properties.
+type DataflowGraphGraphNodeResponse struct {
+	// Graph configuration.
+	GraphSettings DataflowGraphNodeGraphSettingsResponse `pulumi:"graphSettings"`
+	// Name of the node.
+	Name string `pulumi:"name"`
+	// DataflowGraph node types.
+	// Expected value is 'Graph'.
+	NodeType string `pulumi:"nodeType"`
+}
+
+// DataflowGraph graph node properties.
+type DataflowGraphGraphNodeResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphGraphNodeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphGraphNodeResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphGraphNodeResponseOutput) ToDataflowGraphGraphNodeResponseOutput() DataflowGraphGraphNodeResponseOutput {
+	return o
+}
+
+func (o DataflowGraphGraphNodeResponseOutput) ToDataflowGraphGraphNodeResponseOutputWithContext(ctx context.Context) DataflowGraphGraphNodeResponseOutput {
+	return o
+}
+
+// Graph configuration.
+func (o DataflowGraphGraphNodeResponseOutput) GraphSettings() DataflowGraphNodeGraphSettingsResponseOutput {
+	return o.ApplyT(func(v DataflowGraphGraphNodeResponse) DataflowGraphNodeGraphSettingsResponse { return v.GraphSettings }).(DataflowGraphNodeGraphSettingsResponseOutput)
+}
+
+// Name of the node.
+func (o DataflowGraphGraphNodeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphGraphNodeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// DataflowGraph node types.
+// Expected value is 'Graph'.
+func (o DataflowGraphGraphNodeResponseOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphGraphNodeResponse) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// DataflowGraph DataflowGraphNode Connection.
+type DataflowGraphNodeConnection struct {
+	// Information about the source node.
+	From DataflowGraphConnectionInput `pulumi:"from"`
+	// Information about the destination node.
+	To DataflowGraphConnectionOutput `pulumi:"to"`
+}
+
+// DataflowGraphNodeConnectionInput is an input type that accepts DataflowGraphNodeConnectionArgs and DataflowGraphNodeConnectionOutput values.
+// You can construct a concrete instance of `DataflowGraphNodeConnectionInput` via:
+//
+//	DataflowGraphNodeConnectionArgs{...}
+type DataflowGraphNodeConnectionInput interface {
+	pulumi.Input
+
+	ToDataflowGraphNodeConnectionOutput() DataflowGraphNodeConnectionOutput
+	ToDataflowGraphNodeConnectionOutputWithContext(context.Context) DataflowGraphNodeConnectionOutput
+}
+
+// DataflowGraph DataflowGraphNode Connection.
+type DataflowGraphNodeConnectionArgs struct {
+	// Information about the source node.
+	From DataflowGraphConnectionInputInput `pulumi:"from"`
+	// Information about the destination node.
+	To DataflowGraphConnectionOutputInput `pulumi:"to"`
+}
+
+func (DataflowGraphNodeConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphNodeConnection)(nil)).Elem()
+}
+
+func (i DataflowGraphNodeConnectionArgs) ToDataflowGraphNodeConnectionOutput() DataflowGraphNodeConnectionOutput {
+	return i.ToDataflowGraphNodeConnectionOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphNodeConnectionArgs) ToDataflowGraphNodeConnectionOutputWithContext(ctx context.Context) DataflowGraphNodeConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphNodeConnectionOutput)
+}
+
+// DataflowGraphNodeConnectionArrayInput is an input type that accepts DataflowGraphNodeConnectionArray and DataflowGraphNodeConnectionArrayOutput values.
+// You can construct a concrete instance of `DataflowGraphNodeConnectionArrayInput` via:
+//
+//	DataflowGraphNodeConnectionArray{ DataflowGraphNodeConnectionArgs{...} }
+type DataflowGraphNodeConnectionArrayInput interface {
+	pulumi.Input
+
+	ToDataflowGraphNodeConnectionArrayOutput() DataflowGraphNodeConnectionArrayOutput
+	ToDataflowGraphNodeConnectionArrayOutputWithContext(context.Context) DataflowGraphNodeConnectionArrayOutput
+}
+
+type DataflowGraphNodeConnectionArray []DataflowGraphNodeConnectionInput
+
+func (DataflowGraphNodeConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowGraphNodeConnection)(nil)).Elem()
+}
+
+func (i DataflowGraphNodeConnectionArray) ToDataflowGraphNodeConnectionArrayOutput() DataflowGraphNodeConnectionArrayOutput {
+	return i.ToDataflowGraphNodeConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphNodeConnectionArray) ToDataflowGraphNodeConnectionArrayOutputWithContext(ctx context.Context) DataflowGraphNodeConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphNodeConnectionArrayOutput)
+}
+
+// DataflowGraph DataflowGraphNode Connection.
+type DataflowGraphNodeConnectionOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphNodeConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphNodeConnection)(nil)).Elem()
+}
+
+func (o DataflowGraphNodeConnectionOutput) ToDataflowGraphNodeConnectionOutput() DataflowGraphNodeConnectionOutput {
+	return o
+}
+
+func (o DataflowGraphNodeConnectionOutput) ToDataflowGraphNodeConnectionOutputWithContext(ctx context.Context) DataflowGraphNodeConnectionOutput {
+	return o
+}
+
+// Information about the source node.
+func (o DataflowGraphNodeConnectionOutput) From() DataflowGraphConnectionInputOutput {
+	return o.ApplyT(func(v DataflowGraphNodeConnection) DataflowGraphConnectionInput { return v.From }).(DataflowGraphConnectionInputOutput)
+}
+
+// Information about the destination node.
+func (o DataflowGraphNodeConnectionOutput) To() DataflowGraphConnectionOutputOutput {
+	return o.ApplyT(func(v DataflowGraphNodeConnection) DataflowGraphConnectionOutput { return v.To }).(DataflowGraphConnectionOutputOutput)
+}
+
+type DataflowGraphNodeConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphNodeConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowGraphNodeConnection)(nil)).Elem()
+}
+
+func (o DataflowGraphNodeConnectionArrayOutput) ToDataflowGraphNodeConnectionArrayOutput() DataflowGraphNodeConnectionArrayOutput {
+	return o
+}
+
+func (o DataflowGraphNodeConnectionArrayOutput) ToDataflowGraphNodeConnectionArrayOutputWithContext(ctx context.Context) DataflowGraphNodeConnectionArrayOutput {
+	return o
+}
+
+func (o DataflowGraphNodeConnectionArrayOutput) Index(i pulumi.IntInput) DataflowGraphNodeConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowGraphNodeConnection {
+		return vs[0].([]DataflowGraphNodeConnection)[vs[1].(int)]
+	}).(DataflowGraphNodeConnectionOutput)
+}
+
+// DataflowGraph DataflowGraphNode Connection.
+type DataflowGraphNodeConnectionResponse struct {
+	// Information about the source node.
+	From DataflowGraphConnectionInputResponse `pulumi:"from"`
+	// Information about the destination node.
+	To DataflowGraphConnectionOutputResponse `pulumi:"to"`
+}
+
+// DataflowGraph DataflowGraphNode Connection.
+type DataflowGraphNodeConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphNodeConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphNodeConnectionResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphNodeConnectionResponseOutput) ToDataflowGraphNodeConnectionResponseOutput() DataflowGraphNodeConnectionResponseOutput {
+	return o
+}
+
+func (o DataflowGraphNodeConnectionResponseOutput) ToDataflowGraphNodeConnectionResponseOutputWithContext(ctx context.Context) DataflowGraphNodeConnectionResponseOutput {
+	return o
+}
+
+// Information about the source node.
+func (o DataflowGraphNodeConnectionResponseOutput) From() DataflowGraphConnectionInputResponseOutput {
+	return o.ApplyT(func(v DataflowGraphNodeConnectionResponse) DataflowGraphConnectionInputResponse { return v.From }).(DataflowGraphConnectionInputResponseOutput)
+}
+
+// Information about the destination node.
+func (o DataflowGraphNodeConnectionResponseOutput) To() DataflowGraphConnectionOutputResponseOutput {
+	return o.ApplyT(func(v DataflowGraphNodeConnectionResponse) DataflowGraphConnectionOutputResponse { return v.To }).(DataflowGraphConnectionOutputResponseOutput)
+}
+
+type DataflowGraphNodeConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphNodeConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowGraphNodeConnectionResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphNodeConnectionResponseArrayOutput) ToDataflowGraphNodeConnectionResponseArrayOutput() DataflowGraphNodeConnectionResponseArrayOutput {
+	return o
+}
+
+func (o DataflowGraphNodeConnectionResponseArrayOutput) ToDataflowGraphNodeConnectionResponseArrayOutputWithContext(ctx context.Context) DataflowGraphNodeConnectionResponseArrayOutput {
+	return o
+}
+
+func (o DataflowGraphNodeConnectionResponseArrayOutput) Index(i pulumi.IntInput) DataflowGraphNodeConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowGraphNodeConnectionResponse {
+		return vs[0].([]DataflowGraphNodeConnectionResponse)[vs[1].(int)]
+	}).(DataflowGraphNodeConnectionResponseOutput)
+}
+
+// DataflowGraph graph node settings.
+type DataflowGraphNodeGraphSettings struct {
+	// The artifact name and version to pull. This should be in the format `<artifact-name>:<version>`.
+	Artifact string `pulumi:"artifact"`
+	// Configuration key-value pairs.
+	Configuration []DataflowGraphGraphNodeConfiguration `pulumi:"configuration"`
+	// Reference to the registry endpoint for pulling the artifact.
+	RegistryEndpointRef string `pulumi:"registryEndpointRef"`
+}
+
+// DataflowGraphNodeGraphSettingsInput is an input type that accepts DataflowGraphNodeGraphSettingsArgs and DataflowGraphNodeGraphSettingsOutput values.
+// You can construct a concrete instance of `DataflowGraphNodeGraphSettingsInput` via:
+//
+//	DataflowGraphNodeGraphSettingsArgs{...}
+type DataflowGraphNodeGraphSettingsInput interface {
+	pulumi.Input
+
+	ToDataflowGraphNodeGraphSettingsOutput() DataflowGraphNodeGraphSettingsOutput
+	ToDataflowGraphNodeGraphSettingsOutputWithContext(context.Context) DataflowGraphNodeGraphSettingsOutput
+}
+
+// DataflowGraph graph node settings.
+type DataflowGraphNodeGraphSettingsArgs struct {
+	// The artifact name and version to pull. This should be in the format `<artifact-name>:<version>`.
+	Artifact pulumi.StringInput `pulumi:"artifact"`
+	// Configuration key-value pairs.
+	Configuration DataflowGraphGraphNodeConfigurationArrayInput `pulumi:"configuration"`
+	// Reference to the registry endpoint for pulling the artifact.
+	RegistryEndpointRef pulumi.StringInput `pulumi:"registryEndpointRef"`
+}
+
+func (DataflowGraphNodeGraphSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphNodeGraphSettings)(nil)).Elem()
+}
+
+func (i DataflowGraphNodeGraphSettingsArgs) ToDataflowGraphNodeGraphSettingsOutput() DataflowGraphNodeGraphSettingsOutput {
+	return i.ToDataflowGraphNodeGraphSettingsOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphNodeGraphSettingsArgs) ToDataflowGraphNodeGraphSettingsOutputWithContext(ctx context.Context) DataflowGraphNodeGraphSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphNodeGraphSettingsOutput)
+}
+
+// DataflowGraph graph node settings.
+type DataflowGraphNodeGraphSettingsOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphNodeGraphSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphNodeGraphSettings)(nil)).Elem()
+}
+
+func (o DataflowGraphNodeGraphSettingsOutput) ToDataflowGraphNodeGraphSettingsOutput() DataflowGraphNodeGraphSettingsOutput {
+	return o
+}
+
+func (o DataflowGraphNodeGraphSettingsOutput) ToDataflowGraphNodeGraphSettingsOutputWithContext(ctx context.Context) DataflowGraphNodeGraphSettingsOutput {
+	return o
+}
+
+// The artifact name and version to pull. This should be in the format `<artifact-name>:<version>`.
+func (o DataflowGraphNodeGraphSettingsOutput) Artifact() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphNodeGraphSettings) string { return v.Artifact }).(pulumi.StringOutput)
+}
+
+// Configuration key-value pairs.
+func (o DataflowGraphNodeGraphSettingsOutput) Configuration() DataflowGraphGraphNodeConfigurationArrayOutput {
+	return o.ApplyT(func(v DataflowGraphNodeGraphSettings) []DataflowGraphGraphNodeConfiguration { return v.Configuration }).(DataflowGraphGraphNodeConfigurationArrayOutput)
+}
+
+// Reference to the registry endpoint for pulling the artifact.
+func (o DataflowGraphNodeGraphSettingsOutput) RegistryEndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphNodeGraphSettings) string { return v.RegistryEndpointRef }).(pulumi.StringOutput)
+}
+
+// DataflowGraph graph node settings.
+type DataflowGraphNodeGraphSettingsResponse struct {
+	// The artifact name and version to pull. This should be in the format `<artifact-name>:<version>`.
+	Artifact string `pulumi:"artifact"`
+	// Configuration key-value pairs.
+	Configuration []DataflowGraphGraphNodeConfigurationResponse `pulumi:"configuration"`
+	// Reference to the registry endpoint for pulling the artifact.
+	RegistryEndpointRef string `pulumi:"registryEndpointRef"`
+}
+
+// DataflowGraph graph node settings.
+type DataflowGraphNodeGraphSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphNodeGraphSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphNodeGraphSettingsResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphNodeGraphSettingsResponseOutput) ToDataflowGraphNodeGraphSettingsResponseOutput() DataflowGraphNodeGraphSettingsResponseOutput {
+	return o
+}
+
+func (o DataflowGraphNodeGraphSettingsResponseOutput) ToDataflowGraphNodeGraphSettingsResponseOutputWithContext(ctx context.Context) DataflowGraphNodeGraphSettingsResponseOutput {
+	return o
+}
+
+// The artifact name and version to pull. This should be in the format `<artifact-name>:<version>`.
+func (o DataflowGraphNodeGraphSettingsResponseOutput) Artifact() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphNodeGraphSettingsResponse) string { return v.Artifact }).(pulumi.StringOutput)
+}
+
+// Configuration key-value pairs.
+func (o DataflowGraphNodeGraphSettingsResponseOutput) Configuration() DataflowGraphGraphNodeConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v DataflowGraphNodeGraphSettingsResponse) []DataflowGraphGraphNodeConfigurationResponse {
+		return v.Configuration
+	}).(DataflowGraphGraphNodeConfigurationResponseArrayOutput)
+}
+
+// Reference to the registry endpoint for pulling the artifact.
+func (o DataflowGraphNodeGraphSettingsResponseOutput) RegistryEndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphNodeGraphSettingsResponse) string { return v.RegistryEndpointRef }).(pulumi.StringOutput)
+}
+
+// DataflowGraph properties.
+type DataflowGraphProperties struct {
+	// The mode of the dataflow graph.
+	Mode *string `pulumi:"mode"`
+	// List of connections between nodes in the dataflow graph.
+	NodeConnections []DataflowGraphNodeConnection `pulumi:"nodeConnections"`
+	// List of nodes in the dataflow graph.
+	Nodes []interface{} `pulumi:"nodes"`
+	// Disk persistence mode.
+	RequestDiskPersistence *string `pulumi:"requestDiskPersistence"`
+}
+
+// Defaults sets the appropriate defaults for DataflowGraphProperties
+func (val *DataflowGraphProperties) Defaults() *DataflowGraphProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "Enabled"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+// DataflowGraphPropertiesInput is an input type that accepts DataflowGraphPropertiesArgs and DataflowGraphPropertiesOutput values.
+// You can construct a concrete instance of `DataflowGraphPropertiesInput` via:
+//
+//	DataflowGraphPropertiesArgs{...}
+type DataflowGraphPropertiesInput interface {
+	pulumi.Input
+
+	ToDataflowGraphPropertiesOutput() DataflowGraphPropertiesOutput
+	ToDataflowGraphPropertiesOutputWithContext(context.Context) DataflowGraphPropertiesOutput
+}
+
+// DataflowGraph properties.
+type DataflowGraphPropertiesArgs struct {
+	// The mode of the dataflow graph.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// List of connections between nodes in the dataflow graph.
+	NodeConnections DataflowGraphNodeConnectionArrayInput `pulumi:"nodeConnections"`
+	// List of nodes in the dataflow graph.
+	Nodes pulumi.ArrayInput `pulumi:"nodes"`
+	// Disk persistence mode.
+	RequestDiskPersistence pulumi.StringPtrInput `pulumi:"requestDiskPersistence"`
+}
+
+// Defaults sets the appropriate defaults for DataflowGraphPropertiesArgs
+func (val *DataflowGraphPropertiesArgs) Defaults() *DataflowGraphPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		tmp.Mode = pulumi.StringPtr("Enabled")
+	}
+	return &tmp
+}
+func (DataflowGraphPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphProperties)(nil)).Elem()
+}
+
+func (i DataflowGraphPropertiesArgs) ToDataflowGraphPropertiesOutput() DataflowGraphPropertiesOutput {
+	return i.ToDataflowGraphPropertiesOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphPropertiesArgs) ToDataflowGraphPropertiesOutputWithContext(ctx context.Context) DataflowGraphPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphPropertiesOutput)
+}
+
+func (i DataflowGraphPropertiesArgs) ToDataflowGraphPropertiesPtrOutput() DataflowGraphPropertiesPtrOutput {
+	return i.ToDataflowGraphPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphPropertiesArgs) ToDataflowGraphPropertiesPtrOutputWithContext(ctx context.Context) DataflowGraphPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphPropertiesOutput).ToDataflowGraphPropertiesPtrOutputWithContext(ctx)
+}
+
+// DataflowGraphPropertiesPtrInput is an input type that accepts DataflowGraphPropertiesArgs, DataflowGraphPropertiesPtr and DataflowGraphPropertiesPtrOutput values.
+// You can construct a concrete instance of `DataflowGraphPropertiesPtrInput` via:
+//
+//	        DataflowGraphPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowGraphPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDataflowGraphPropertiesPtrOutput() DataflowGraphPropertiesPtrOutput
+	ToDataflowGraphPropertiesPtrOutputWithContext(context.Context) DataflowGraphPropertiesPtrOutput
+}
+
+type dataflowGraphPropertiesPtrType DataflowGraphPropertiesArgs
+
+func DataflowGraphPropertiesPtr(v *DataflowGraphPropertiesArgs) DataflowGraphPropertiesPtrInput {
+	return (*dataflowGraphPropertiesPtrType)(v)
+}
+
+func (*dataflowGraphPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowGraphProperties)(nil)).Elem()
+}
+
+func (i *dataflowGraphPropertiesPtrType) ToDataflowGraphPropertiesPtrOutput() DataflowGraphPropertiesPtrOutput {
+	return i.ToDataflowGraphPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowGraphPropertiesPtrType) ToDataflowGraphPropertiesPtrOutputWithContext(ctx context.Context) DataflowGraphPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphPropertiesPtrOutput)
+}
+
+// DataflowGraph properties.
+type DataflowGraphPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphProperties)(nil)).Elem()
+}
+
+func (o DataflowGraphPropertiesOutput) ToDataflowGraphPropertiesOutput() DataflowGraphPropertiesOutput {
+	return o
+}
+
+func (o DataflowGraphPropertiesOutput) ToDataflowGraphPropertiesOutputWithContext(ctx context.Context) DataflowGraphPropertiesOutput {
+	return o
+}
+
+func (o DataflowGraphPropertiesOutput) ToDataflowGraphPropertiesPtrOutput() DataflowGraphPropertiesPtrOutput {
+	return o.ToDataflowGraphPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowGraphPropertiesOutput) ToDataflowGraphPropertiesPtrOutputWithContext(ctx context.Context) DataflowGraphPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowGraphProperties) *DataflowGraphProperties {
+		return &v
+	}).(DataflowGraphPropertiesPtrOutput)
+}
+
+// The mode of the dataflow graph.
+func (o DataflowGraphPropertiesOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphProperties) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// List of connections between nodes in the dataflow graph.
+func (o DataflowGraphPropertiesOutput) NodeConnections() DataflowGraphNodeConnectionArrayOutput {
+	return o.ApplyT(func(v DataflowGraphProperties) []DataflowGraphNodeConnection { return v.NodeConnections }).(DataflowGraphNodeConnectionArrayOutput)
+}
+
+// List of nodes in the dataflow graph.
+func (o DataflowGraphPropertiesOutput) Nodes() pulumi.ArrayOutput {
+	return o.ApplyT(func(v DataflowGraphProperties) []interface{} { return v.Nodes }).(pulumi.ArrayOutput)
+}
+
+// Disk persistence mode.
+func (o DataflowGraphPropertiesOutput) RequestDiskPersistence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphProperties) *string { return v.RequestDiskPersistence }).(pulumi.StringPtrOutput)
+}
+
+type DataflowGraphPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowGraphProperties)(nil)).Elem()
+}
+
+func (o DataflowGraphPropertiesPtrOutput) ToDataflowGraphPropertiesPtrOutput() DataflowGraphPropertiesPtrOutput {
+	return o
+}
+
+func (o DataflowGraphPropertiesPtrOutput) ToDataflowGraphPropertiesPtrOutputWithContext(ctx context.Context) DataflowGraphPropertiesPtrOutput {
+	return o
+}
+
+func (o DataflowGraphPropertiesPtrOutput) Elem() DataflowGraphPropertiesOutput {
+	return o.ApplyT(func(v *DataflowGraphProperties) DataflowGraphProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowGraphProperties
+		return ret
+	}).(DataflowGraphPropertiesOutput)
+}
+
+// The mode of the dataflow graph.
+func (o DataflowGraphPropertiesPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowGraphProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of connections between nodes in the dataflow graph.
+func (o DataflowGraphPropertiesPtrOutput) NodeConnections() DataflowGraphNodeConnectionArrayOutput {
+	return o.ApplyT(func(v *DataflowGraphProperties) []DataflowGraphNodeConnection {
+		if v == nil {
+			return nil
+		}
+		return v.NodeConnections
+	}).(DataflowGraphNodeConnectionArrayOutput)
+}
+
+// List of nodes in the dataflow graph.
+func (o DataflowGraphPropertiesPtrOutput) Nodes() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *DataflowGraphProperties) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Nodes
+	}).(pulumi.ArrayOutput)
+}
+
+// Disk persistence mode.
+func (o DataflowGraphPropertiesPtrOutput) RequestDiskPersistence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowGraphProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestDiskPersistence
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowGraph properties.
+type DataflowGraphPropertiesResponse struct {
+	// The mode of the dataflow graph.
+	Mode *string `pulumi:"mode"`
+	// List of connections between nodes in the dataflow graph.
+	NodeConnections []DataflowGraphNodeConnectionResponse `pulumi:"nodeConnections"`
+	// List of nodes in the dataflow graph.
+	Nodes []interface{} `pulumi:"nodes"`
+	// The provisioning state of the dataflow graph.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Disk persistence mode.
+	RequestDiskPersistence *string `pulumi:"requestDiskPersistence"`
+}
+
+// Defaults sets the appropriate defaults for DataflowGraphPropertiesResponse
+func (val *DataflowGraphPropertiesResponse) Defaults() *DataflowGraphPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		mode_ := "Enabled"
+		tmp.Mode = &mode_
+	}
+	return &tmp
+}
+
+// DataflowGraph properties.
+type DataflowGraphPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphPropertiesResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphPropertiesResponseOutput) ToDataflowGraphPropertiesResponseOutput() DataflowGraphPropertiesResponseOutput {
+	return o
+}
+
+func (o DataflowGraphPropertiesResponseOutput) ToDataflowGraphPropertiesResponseOutputWithContext(ctx context.Context) DataflowGraphPropertiesResponseOutput {
+	return o
+}
+
+// The mode of the dataflow graph.
+func (o DataflowGraphPropertiesResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphPropertiesResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// List of connections between nodes in the dataflow graph.
+func (o DataflowGraphPropertiesResponseOutput) NodeConnections() DataflowGraphNodeConnectionResponseArrayOutput {
+	return o.ApplyT(func(v DataflowGraphPropertiesResponse) []DataflowGraphNodeConnectionResponse {
+		return v.NodeConnections
+	}).(DataflowGraphNodeConnectionResponseArrayOutput)
+}
+
+// List of nodes in the dataflow graph.
+func (o DataflowGraphPropertiesResponseOutput) Nodes() pulumi.ArrayOutput {
+	return o.ApplyT(func(v DataflowGraphPropertiesResponse) []interface{} { return v.Nodes }).(pulumi.ArrayOutput)
+}
+
+// The provisioning state of the dataflow graph.
+func (o DataflowGraphPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Disk persistence mode.
+func (o DataflowGraphPropertiesResponseOutput) RequestDiskPersistence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphPropertiesResponse) *string { return v.RequestDiskPersistence }).(pulumi.StringPtrOutput)
+}
+
+// DataflowGraph source node properties.
+type DataflowGraphSourceNode struct {
+	// Name of the node.
+	Name string `pulumi:"name"`
+	// DataflowGraph node types.
+	// Expected value is 'Source'.
+	NodeType string `pulumi:"nodeType"`
+	// Source configuration.
+	SourceSettings DataflowGraphSourceSettings `pulumi:"sourceSettings"`
+}
+
+// DataflowGraphSourceNodeInput is an input type that accepts DataflowGraphSourceNodeArgs and DataflowGraphSourceNodeOutput values.
+// You can construct a concrete instance of `DataflowGraphSourceNodeInput` via:
+//
+//	DataflowGraphSourceNodeArgs{...}
+type DataflowGraphSourceNodeInput interface {
+	pulumi.Input
+
+	ToDataflowGraphSourceNodeOutput() DataflowGraphSourceNodeOutput
+	ToDataflowGraphSourceNodeOutputWithContext(context.Context) DataflowGraphSourceNodeOutput
+}
+
+// DataflowGraph source node properties.
+type DataflowGraphSourceNodeArgs struct {
+	// Name of the node.
+	Name pulumi.StringInput `pulumi:"name"`
+	// DataflowGraph node types.
+	// Expected value is 'Source'.
+	NodeType pulumi.StringInput `pulumi:"nodeType"`
+	// Source configuration.
+	SourceSettings DataflowGraphSourceSettingsInput `pulumi:"sourceSettings"`
+}
+
+func (DataflowGraphSourceNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphSourceNode)(nil)).Elem()
+}
+
+func (i DataflowGraphSourceNodeArgs) ToDataflowGraphSourceNodeOutput() DataflowGraphSourceNodeOutput {
+	return i.ToDataflowGraphSourceNodeOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphSourceNodeArgs) ToDataflowGraphSourceNodeOutputWithContext(ctx context.Context) DataflowGraphSourceNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphSourceNodeOutput)
+}
+
+// DataflowGraph source node properties.
+type DataflowGraphSourceNodeOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphSourceNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphSourceNode)(nil)).Elem()
+}
+
+func (o DataflowGraphSourceNodeOutput) ToDataflowGraphSourceNodeOutput() DataflowGraphSourceNodeOutput {
+	return o
+}
+
+func (o DataflowGraphSourceNodeOutput) ToDataflowGraphSourceNodeOutputWithContext(ctx context.Context) DataflowGraphSourceNodeOutput {
+	return o
+}
+
+// Name of the node.
+func (o DataflowGraphSourceNodeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphSourceNode) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// DataflowGraph node types.
+// Expected value is 'Source'.
+func (o DataflowGraphSourceNodeOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphSourceNode) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// Source configuration.
+func (o DataflowGraphSourceNodeOutput) SourceSettings() DataflowGraphSourceSettingsOutput {
+	return o.ApplyT(func(v DataflowGraphSourceNode) DataflowGraphSourceSettings { return v.SourceSettings }).(DataflowGraphSourceSettingsOutput)
+}
+
+// DataflowGraph source node properties.
+type DataflowGraphSourceNodeResponse struct {
+	// Name of the node.
+	Name string `pulumi:"name"`
+	// DataflowGraph node types.
+	// Expected value is 'Source'.
+	NodeType string `pulumi:"nodeType"`
+	// Source configuration.
+	SourceSettings DataflowGraphSourceSettingsResponse `pulumi:"sourceSettings"`
+}
+
+// DataflowGraph source node properties.
+type DataflowGraphSourceNodeResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphSourceNodeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphSourceNodeResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphSourceNodeResponseOutput) ToDataflowGraphSourceNodeResponseOutput() DataflowGraphSourceNodeResponseOutput {
+	return o
+}
+
+func (o DataflowGraphSourceNodeResponseOutput) ToDataflowGraphSourceNodeResponseOutputWithContext(ctx context.Context) DataflowGraphSourceNodeResponseOutput {
+	return o
+}
+
+// Name of the node.
+func (o DataflowGraphSourceNodeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphSourceNodeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// DataflowGraph node types.
+// Expected value is 'Source'.
+func (o DataflowGraphSourceNodeResponseOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphSourceNodeResponse) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// Source configuration.
+func (o DataflowGraphSourceNodeResponseOutput) SourceSettings() DataflowGraphSourceSettingsResponseOutput {
+	return o.ApplyT(func(v DataflowGraphSourceNodeResponse) DataflowGraphSourceSettingsResponse { return v.SourceSettings }).(DataflowGraphSourceSettingsResponseOutput)
+}
+
+// DataflowGraph source node settings.
+type DataflowGraphSourceSettings struct {
+	// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
+	AssetRef *string `pulumi:"assetRef"`
+	// List of data sources.
+	DataSources []string `pulumi:"dataSources"`
+	// The endpoint reference for the source.
+	EndpointRef string `pulumi:"endpointRef"`
+}
+
+// DataflowGraphSourceSettingsInput is an input type that accepts DataflowGraphSourceSettingsArgs and DataflowGraphSourceSettingsOutput values.
+// You can construct a concrete instance of `DataflowGraphSourceSettingsInput` via:
+//
+//	DataflowGraphSourceSettingsArgs{...}
+type DataflowGraphSourceSettingsInput interface {
+	pulumi.Input
+
+	ToDataflowGraphSourceSettingsOutput() DataflowGraphSourceSettingsOutput
+	ToDataflowGraphSourceSettingsOutputWithContext(context.Context) DataflowGraphSourceSettingsOutput
+}
+
+// DataflowGraph source node settings.
+type DataflowGraphSourceSettingsArgs struct {
+	// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
+	AssetRef pulumi.StringPtrInput `pulumi:"assetRef"`
+	// List of data sources.
+	DataSources pulumi.StringArrayInput `pulumi:"dataSources"`
+	// The endpoint reference for the source.
+	EndpointRef pulumi.StringInput `pulumi:"endpointRef"`
+}
+
+func (DataflowGraphSourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphSourceSettings)(nil)).Elem()
+}
+
+func (i DataflowGraphSourceSettingsArgs) ToDataflowGraphSourceSettingsOutput() DataflowGraphSourceSettingsOutput {
+	return i.ToDataflowGraphSourceSettingsOutputWithContext(context.Background())
+}
+
+func (i DataflowGraphSourceSettingsArgs) ToDataflowGraphSourceSettingsOutputWithContext(ctx context.Context) DataflowGraphSourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowGraphSourceSettingsOutput)
+}
+
+// DataflowGraph source node settings.
+type DataflowGraphSourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphSourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphSourceSettings)(nil)).Elem()
+}
+
+func (o DataflowGraphSourceSettingsOutput) ToDataflowGraphSourceSettingsOutput() DataflowGraphSourceSettingsOutput {
+	return o
+}
+
+func (o DataflowGraphSourceSettingsOutput) ToDataflowGraphSourceSettingsOutputWithContext(ctx context.Context) DataflowGraphSourceSettingsOutput {
+	return o
+}
+
+// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
+func (o DataflowGraphSourceSettingsOutput) AssetRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphSourceSettings) *string { return v.AssetRef }).(pulumi.StringPtrOutput)
+}
+
+// List of data sources.
+func (o DataflowGraphSourceSettingsOutput) DataSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataflowGraphSourceSettings) []string { return v.DataSources }).(pulumi.StringArrayOutput)
+}
+
+// The endpoint reference for the source.
+func (o DataflowGraphSourceSettingsOutput) EndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphSourceSettings) string { return v.EndpointRef }).(pulumi.StringOutput)
+}
+
+// DataflowGraph source node settings.
+type DataflowGraphSourceSettingsResponse struct {
+	// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
+	AssetRef *string `pulumi:"assetRef"`
+	// List of data sources.
+	DataSources []string `pulumi:"dataSources"`
+	// The endpoint reference for the source.
+	EndpointRef string `pulumi:"endpointRef"`
+}
+
+// DataflowGraph source node settings.
+type DataflowGraphSourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowGraphSourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowGraphSourceSettingsResponse)(nil)).Elem()
+}
+
+func (o DataflowGraphSourceSettingsResponseOutput) ToDataflowGraphSourceSettingsResponseOutput() DataflowGraphSourceSettingsResponseOutput {
+	return o
+}
+
+func (o DataflowGraphSourceSettingsResponseOutput) ToDataflowGraphSourceSettingsResponseOutputWithContext(ctx context.Context) DataflowGraphSourceSettingsResponseOutput {
+	return o
+}
+
+// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
+func (o DataflowGraphSourceSettingsResponseOutput) AssetRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowGraphSourceSettingsResponse) *string { return v.AssetRef }).(pulumi.StringPtrOutput)
+}
+
+// List of data sources.
+func (o DataflowGraphSourceSettingsResponseOutput) DataSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataflowGraphSourceSettingsResponse) []string { return v.DataSources }).(pulumi.StringArrayOutput)
+}
+
+// The endpoint reference for the source.
+func (o DataflowGraphSourceSettingsResponseOutput) EndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowGraphSourceSettingsResponse) string { return v.EndpointRef }).(pulumi.StringOutput)
+}
+
 // Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
 type DataflowOperation struct {
 	// Built In Transformation configuration.
@@ -15464,6 +26176,47 @@ func (i ExtendedLocationArgs) ToExtendedLocationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput)
 }
 
+func (i ExtendedLocationArgs) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput).ToExtendedLocationPtrOutputWithContext(ctx)
+}
+
+// ExtendedLocationPtrInput is an input type that accepts ExtendedLocationArgs, ExtendedLocationPtr and ExtendedLocationPtrOutput values.
+// You can construct a concrete instance of `ExtendedLocationPtrInput` via:
+//
+//	        ExtendedLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExtendedLocationPtrInput interface {
+	pulumi.Input
+
+	ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput
+	ToExtendedLocationPtrOutputWithContext(context.Context) ExtendedLocationPtrOutput
+}
+
+type extendedLocationPtrType ExtendedLocationArgs
+
+func ExtendedLocationPtr(v *ExtendedLocationArgs) ExtendedLocationPtrInput {
+	return (*extendedLocationPtrType)(v)
+}
+
+func (*extendedLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocation)(nil)).Elem()
+}
+
+func (i *extendedLocationPtrType) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *extendedLocationPtrType) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationPtrOutput)
+}
+
 // Extended location is an extension of Azure locations. They provide a way to use their Azure ARC enabled Kubernetes clusters as target locations for deploying Azure services instances.
 type ExtendedLocationOutput struct{ *pulumi.OutputState }
 
@@ -15479,6 +26232,16 @@ func (o ExtendedLocationOutput) ToExtendedLocationOutputWithContext(ctx context.
 	return o
 }
 
+func (o ExtendedLocationOutput) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return o.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtendedLocation) *ExtendedLocation {
+		return &v
+	}).(ExtendedLocationPtrOutput)
+}
+
 // The name of the extended location.
 func (o ExtendedLocationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtendedLocation) string { return v.Name }).(pulumi.StringOutput)
@@ -15487,6 +26250,50 @@ func (o ExtendedLocationOutput) Name() pulumi.StringOutput {
 // Type of ExtendedLocation.
 func (o ExtendedLocationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtendedLocation) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExtendedLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocation)(nil)).Elem()
+}
+
+func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return o
+}
+
+func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return o
+}
+
+func (o ExtendedLocationPtrOutput) Elem() ExtendedLocationOutput {
+	return o.ApplyT(func(v *ExtendedLocation) ExtendedLocation {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocation
+		return ret
+	}).(ExtendedLocationOutput)
+}
+
+// The name of the extended location.
+func (o ExtendedLocationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of ExtendedLocation.
+func (o ExtendedLocationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Extended location is an extension of Azure locations. They provide a way to use their Azure ARC enabled Kubernetes clusters as target locations for deploying Azure services instances.
@@ -15520,6 +26327,50 @@ func (o ExtendedLocationResponseOutput) Name() pulumi.StringOutput {
 // Type of ExtendedLocation.
 func (o ExtendedLocationResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExtendedLocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocationResponse)(nil)).Elem()
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput() ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) ExtendedLocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocationResponse
+		return ret
+	}).(ExtendedLocationResponseOutput)
+}
+
+// The name of the extended location.
+func (o ExtendedLocationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of ExtendedLocation.
+func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The desired properties of the frontend instances of the Broker
@@ -17977,6 +28828,2273 @@ func (o ProfileDiagnosticsResponsePtrOutput) Metrics() MetricsResponsePtrOutput 
 		}
 		return v.Metrics
 	}).(MetricsResponsePtrOutput)
+}
+
+// Anonymous authentication
+type RegistryEndpointAnonymousAuthentication struct {
+	// Anonymous authentication properties
+	AnonymousSettings interface{} `pulumi:"anonymousSettings"`
+	// The authentication method.
+	// Expected value is 'Anonymous'.
+	Method string `pulumi:"method"`
+}
+
+// RegistryEndpointAnonymousAuthenticationInput is an input type that accepts RegistryEndpointAnonymousAuthenticationArgs and RegistryEndpointAnonymousAuthenticationOutput values.
+// You can construct a concrete instance of `RegistryEndpointAnonymousAuthenticationInput` via:
+//
+//	RegistryEndpointAnonymousAuthenticationArgs{...}
+type RegistryEndpointAnonymousAuthenticationInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointAnonymousAuthenticationOutput() RegistryEndpointAnonymousAuthenticationOutput
+	ToRegistryEndpointAnonymousAuthenticationOutputWithContext(context.Context) RegistryEndpointAnonymousAuthenticationOutput
+}
+
+// Anonymous authentication
+type RegistryEndpointAnonymousAuthenticationArgs struct {
+	// Anonymous authentication properties
+	AnonymousSettings pulumi.Input `pulumi:"anonymousSettings"`
+	// The authentication method.
+	// Expected value is 'Anonymous'.
+	Method pulumi.StringInput `pulumi:"method"`
+}
+
+func (RegistryEndpointAnonymousAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointAnonymousAuthentication)(nil)).Elem()
+}
+
+func (i RegistryEndpointAnonymousAuthenticationArgs) ToRegistryEndpointAnonymousAuthenticationOutput() RegistryEndpointAnonymousAuthenticationOutput {
+	return i.ToRegistryEndpointAnonymousAuthenticationOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointAnonymousAuthenticationArgs) ToRegistryEndpointAnonymousAuthenticationOutputWithContext(ctx context.Context) RegistryEndpointAnonymousAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointAnonymousAuthenticationOutput)
+}
+
+func (i RegistryEndpointAnonymousAuthenticationArgs) ToRegistryEndpointAnonymousAuthenticationPtrOutput() RegistryEndpointAnonymousAuthenticationPtrOutput {
+	return i.ToRegistryEndpointAnonymousAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointAnonymousAuthenticationArgs) ToRegistryEndpointAnonymousAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointAnonymousAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointAnonymousAuthenticationOutput).ToRegistryEndpointAnonymousAuthenticationPtrOutputWithContext(ctx)
+}
+
+// RegistryEndpointAnonymousAuthenticationPtrInput is an input type that accepts RegistryEndpointAnonymousAuthenticationArgs, RegistryEndpointAnonymousAuthenticationPtr and RegistryEndpointAnonymousAuthenticationPtrOutput values.
+// You can construct a concrete instance of `RegistryEndpointAnonymousAuthenticationPtrInput` via:
+//
+//	        RegistryEndpointAnonymousAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegistryEndpointAnonymousAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointAnonymousAuthenticationPtrOutput() RegistryEndpointAnonymousAuthenticationPtrOutput
+	ToRegistryEndpointAnonymousAuthenticationPtrOutputWithContext(context.Context) RegistryEndpointAnonymousAuthenticationPtrOutput
+}
+
+type registryEndpointAnonymousAuthenticationPtrType RegistryEndpointAnonymousAuthenticationArgs
+
+func RegistryEndpointAnonymousAuthenticationPtr(v *RegistryEndpointAnonymousAuthenticationArgs) RegistryEndpointAnonymousAuthenticationPtrInput {
+	return (*registryEndpointAnonymousAuthenticationPtrType)(v)
+}
+
+func (*registryEndpointAnonymousAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointAnonymousAuthentication)(nil)).Elem()
+}
+
+func (i *registryEndpointAnonymousAuthenticationPtrType) ToRegistryEndpointAnonymousAuthenticationPtrOutput() RegistryEndpointAnonymousAuthenticationPtrOutput {
+	return i.ToRegistryEndpointAnonymousAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *registryEndpointAnonymousAuthenticationPtrType) ToRegistryEndpointAnonymousAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointAnonymousAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointAnonymousAuthenticationPtrOutput)
+}
+
+// Anonymous authentication
+type RegistryEndpointAnonymousAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointAnonymousAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointAnonymousAuthentication)(nil)).Elem()
+}
+
+func (o RegistryEndpointAnonymousAuthenticationOutput) ToRegistryEndpointAnonymousAuthenticationOutput() RegistryEndpointAnonymousAuthenticationOutput {
+	return o
+}
+
+func (o RegistryEndpointAnonymousAuthenticationOutput) ToRegistryEndpointAnonymousAuthenticationOutputWithContext(ctx context.Context) RegistryEndpointAnonymousAuthenticationOutput {
+	return o
+}
+
+func (o RegistryEndpointAnonymousAuthenticationOutput) ToRegistryEndpointAnonymousAuthenticationPtrOutput() RegistryEndpointAnonymousAuthenticationPtrOutput {
+	return o.ToRegistryEndpointAnonymousAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEndpointAnonymousAuthenticationOutput) ToRegistryEndpointAnonymousAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointAnonymousAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEndpointAnonymousAuthentication) *RegistryEndpointAnonymousAuthentication {
+		return &v
+	}).(RegistryEndpointAnonymousAuthenticationPtrOutput)
+}
+
+// Anonymous authentication properties
+func (o RegistryEndpointAnonymousAuthenticationOutput) AnonymousSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v RegistryEndpointAnonymousAuthentication) interface{} { return v.AnonymousSettings }).(pulumi.AnyOutput)
+}
+
+// The authentication method.
+// Expected value is 'Anonymous'.
+func (o RegistryEndpointAnonymousAuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointAnonymousAuthentication) string { return v.Method }).(pulumi.StringOutput)
+}
+
+type RegistryEndpointAnonymousAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointAnonymousAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointAnonymousAuthentication)(nil)).Elem()
+}
+
+func (o RegistryEndpointAnonymousAuthenticationPtrOutput) ToRegistryEndpointAnonymousAuthenticationPtrOutput() RegistryEndpointAnonymousAuthenticationPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointAnonymousAuthenticationPtrOutput) ToRegistryEndpointAnonymousAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointAnonymousAuthenticationPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointAnonymousAuthenticationPtrOutput) Elem() RegistryEndpointAnonymousAuthenticationOutput {
+	return o.ApplyT(func(v *RegistryEndpointAnonymousAuthentication) RegistryEndpointAnonymousAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointAnonymousAuthentication
+		return ret
+	}).(RegistryEndpointAnonymousAuthenticationOutput)
+}
+
+// Anonymous authentication properties
+func (o RegistryEndpointAnonymousAuthenticationPtrOutput) AnonymousSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *RegistryEndpointAnonymousAuthentication) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AnonymousSettings
+	}).(pulumi.AnyOutput)
+}
+
+// The authentication method.
+// Expected value is 'Anonymous'.
+func (o RegistryEndpointAnonymousAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointAnonymousAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Anonymous authentication
+type RegistryEndpointAnonymousAuthenticationResponse struct {
+	// Anonymous authentication properties
+	AnonymousSettings interface{} `pulumi:"anonymousSettings"`
+	// The authentication method.
+	// Expected value is 'Anonymous'.
+	Method string `pulumi:"method"`
+}
+
+// Anonymous authentication
+type RegistryEndpointAnonymousAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointAnonymousAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointAnonymousAuthenticationResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointAnonymousAuthenticationResponseOutput) ToRegistryEndpointAnonymousAuthenticationResponseOutput() RegistryEndpointAnonymousAuthenticationResponseOutput {
+	return o
+}
+
+func (o RegistryEndpointAnonymousAuthenticationResponseOutput) ToRegistryEndpointAnonymousAuthenticationResponseOutputWithContext(ctx context.Context) RegistryEndpointAnonymousAuthenticationResponseOutput {
+	return o
+}
+
+// Anonymous authentication properties
+func (o RegistryEndpointAnonymousAuthenticationResponseOutput) AnonymousSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v RegistryEndpointAnonymousAuthenticationResponse) interface{} { return v.AnonymousSettings }).(pulumi.AnyOutput)
+}
+
+// The authentication method.
+// Expected value is 'Anonymous'.
+func (o RegistryEndpointAnonymousAuthenticationResponseOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointAnonymousAuthenticationResponse) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Artifact Pull Secret authentication
+type RegistryEndpointArtifactPullSecretAuthentication struct {
+	// Artifact Pull Secret authentication properties
+	ArtifactPullSecretSettings RegistryEndpointArtifactPullSecretSettings `pulumi:"artifactPullSecretSettings"`
+	// The authentication method.
+	// Expected value is 'ArtifactPullSecret'.
+	Method string `pulumi:"method"`
+}
+
+// RegistryEndpointArtifactPullSecretAuthenticationInput is an input type that accepts RegistryEndpointArtifactPullSecretAuthenticationArgs and RegistryEndpointArtifactPullSecretAuthenticationOutput values.
+// You can construct a concrete instance of `RegistryEndpointArtifactPullSecretAuthenticationInput` via:
+//
+//	RegistryEndpointArtifactPullSecretAuthenticationArgs{...}
+type RegistryEndpointArtifactPullSecretAuthenticationInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointArtifactPullSecretAuthenticationOutput() RegistryEndpointArtifactPullSecretAuthenticationOutput
+	ToRegistryEndpointArtifactPullSecretAuthenticationOutputWithContext(context.Context) RegistryEndpointArtifactPullSecretAuthenticationOutput
+}
+
+// Artifact Pull Secret authentication
+type RegistryEndpointArtifactPullSecretAuthenticationArgs struct {
+	// Artifact Pull Secret authentication properties
+	ArtifactPullSecretSettings RegistryEndpointArtifactPullSecretSettingsInput `pulumi:"artifactPullSecretSettings"`
+	// The authentication method.
+	// Expected value is 'ArtifactPullSecret'.
+	Method pulumi.StringInput `pulumi:"method"`
+}
+
+func (RegistryEndpointArtifactPullSecretAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointArtifactPullSecretAuthentication)(nil)).Elem()
+}
+
+func (i RegistryEndpointArtifactPullSecretAuthenticationArgs) ToRegistryEndpointArtifactPullSecretAuthenticationOutput() RegistryEndpointArtifactPullSecretAuthenticationOutput {
+	return i.ToRegistryEndpointArtifactPullSecretAuthenticationOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointArtifactPullSecretAuthenticationArgs) ToRegistryEndpointArtifactPullSecretAuthenticationOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointArtifactPullSecretAuthenticationOutput)
+}
+
+func (i RegistryEndpointArtifactPullSecretAuthenticationArgs) ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutput() RegistryEndpointArtifactPullSecretAuthenticationPtrOutput {
+	return i.ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointArtifactPullSecretAuthenticationArgs) ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointArtifactPullSecretAuthenticationOutput).ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutputWithContext(ctx)
+}
+
+// RegistryEndpointArtifactPullSecretAuthenticationPtrInput is an input type that accepts RegistryEndpointArtifactPullSecretAuthenticationArgs, RegistryEndpointArtifactPullSecretAuthenticationPtr and RegistryEndpointArtifactPullSecretAuthenticationPtrOutput values.
+// You can construct a concrete instance of `RegistryEndpointArtifactPullSecretAuthenticationPtrInput` via:
+//
+//	        RegistryEndpointArtifactPullSecretAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegistryEndpointArtifactPullSecretAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutput() RegistryEndpointArtifactPullSecretAuthenticationPtrOutput
+	ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutputWithContext(context.Context) RegistryEndpointArtifactPullSecretAuthenticationPtrOutput
+}
+
+type registryEndpointArtifactPullSecretAuthenticationPtrType RegistryEndpointArtifactPullSecretAuthenticationArgs
+
+func RegistryEndpointArtifactPullSecretAuthenticationPtr(v *RegistryEndpointArtifactPullSecretAuthenticationArgs) RegistryEndpointArtifactPullSecretAuthenticationPtrInput {
+	return (*registryEndpointArtifactPullSecretAuthenticationPtrType)(v)
+}
+
+func (*registryEndpointArtifactPullSecretAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointArtifactPullSecretAuthentication)(nil)).Elem()
+}
+
+func (i *registryEndpointArtifactPullSecretAuthenticationPtrType) ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutput() RegistryEndpointArtifactPullSecretAuthenticationPtrOutput {
+	return i.ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *registryEndpointArtifactPullSecretAuthenticationPtrType) ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointArtifactPullSecretAuthenticationPtrOutput)
+}
+
+// Artifact Pull Secret authentication
+type RegistryEndpointArtifactPullSecretAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointArtifactPullSecretAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointArtifactPullSecretAuthentication)(nil)).Elem()
+}
+
+func (o RegistryEndpointArtifactPullSecretAuthenticationOutput) ToRegistryEndpointArtifactPullSecretAuthenticationOutput() RegistryEndpointArtifactPullSecretAuthenticationOutput {
+	return o
+}
+
+func (o RegistryEndpointArtifactPullSecretAuthenticationOutput) ToRegistryEndpointArtifactPullSecretAuthenticationOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretAuthenticationOutput {
+	return o
+}
+
+func (o RegistryEndpointArtifactPullSecretAuthenticationOutput) ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutput() RegistryEndpointArtifactPullSecretAuthenticationPtrOutput {
+	return o.ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEndpointArtifactPullSecretAuthenticationOutput) ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEndpointArtifactPullSecretAuthentication) *RegistryEndpointArtifactPullSecretAuthentication {
+		return &v
+	}).(RegistryEndpointArtifactPullSecretAuthenticationPtrOutput)
+}
+
+// Artifact Pull Secret authentication properties
+func (o RegistryEndpointArtifactPullSecretAuthenticationOutput) ArtifactPullSecretSettings() RegistryEndpointArtifactPullSecretSettingsOutput {
+	return o.ApplyT(func(v RegistryEndpointArtifactPullSecretAuthentication) RegistryEndpointArtifactPullSecretSettings {
+		return v.ArtifactPullSecretSettings
+	}).(RegistryEndpointArtifactPullSecretSettingsOutput)
+}
+
+// The authentication method.
+// Expected value is 'ArtifactPullSecret'.
+func (o RegistryEndpointArtifactPullSecretAuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointArtifactPullSecretAuthentication) string { return v.Method }).(pulumi.StringOutput)
+}
+
+type RegistryEndpointArtifactPullSecretAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointArtifactPullSecretAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointArtifactPullSecretAuthentication)(nil)).Elem()
+}
+
+func (o RegistryEndpointArtifactPullSecretAuthenticationPtrOutput) ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutput() RegistryEndpointArtifactPullSecretAuthenticationPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointArtifactPullSecretAuthenticationPtrOutput) ToRegistryEndpointArtifactPullSecretAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretAuthenticationPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointArtifactPullSecretAuthenticationPtrOutput) Elem() RegistryEndpointArtifactPullSecretAuthenticationOutput {
+	return o.ApplyT(func(v *RegistryEndpointArtifactPullSecretAuthentication) RegistryEndpointArtifactPullSecretAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointArtifactPullSecretAuthentication
+		return ret
+	}).(RegistryEndpointArtifactPullSecretAuthenticationOutput)
+}
+
+// Artifact Pull Secret authentication properties
+func (o RegistryEndpointArtifactPullSecretAuthenticationPtrOutput) ArtifactPullSecretSettings() RegistryEndpointArtifactPullSecretSettingsPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointArtifactPullSecretAuthentication) *RegistryEndpointArtifactPullSecretSettings {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactPullSecretSettings
+	}).(RegistryEndpointArtifactPullSecretSettingsPtrOutput)
+}
+
+// The authentication method.
+// Expected value is 'ArtifactPullSecret'.
+func (o RegistryEndpointArtifactPullSecretAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointArtifactPullSecretAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Artifact Pull Secret authentication
+type RegistryEndpointArtifactPullSecretAuthenticationResponse struct {
+	// Artifact Pull Secret authentication properties
+	ArtifactPullSecretSettings RegistryEndpointArtifactPullSecretSettingsResponse `pulumi:"artifactPullSecretSettings"`
+	// The authentication method.
+	// Expected value is 'ArtifactPullSecret'.
+	Method string `pulumi:"method"`
+}
+
+// Artifact Pull Secret authentication
+type RegistryEndpointArtifactPullSecretAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointArtifactPullSecretAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointArtifactPullSecretAuthenticationResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointArtifactPullSecretAuthenticationResponseOutput) ToRegistryEndpointArtifactPullSecretAuthenticationResponseOutput() RegistryEndpointArtifactPullSecretAuthenticationResponseOutput {
+	return o
+}
+
+func (o RegistryEndpointArtifactPullSecretAuthenticationResponseOutput) ToRegistryEndpointArtifactPullSecretAuthenticationResponseOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretAuthenticationResponseOutput {
+	return o
+}
+
+// Artifact Pull Secret authentication properties
+func (o RegistryEndpointArtifactPullSecretAuthenticationResponseOutput) ArtifactPullSecretSettings() RegistryEndpointArtifactPullSecretSettingsResponseOutput {
+	return o.ApplyT(func(v RegistryEndpointArtifactPullSecretAuthenticationResponse) RegistryEndpointArtifactPullSecretSettingsResponse {
+		return v.ArtifactPullSecretSettings
+	}).(RegistryEndpointArtifactPullSecretSettingsResponseOutput)
+}
+
+// The authentication method.
+// Expected value is 'ArtifactPullSecret'.
+func (o RegistryEndpointArtifactPullSecretAuthenticationResponseOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointArtifactPullSecretAuthenticationResponse) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// RegistryEndpoint Artifact Pull Secret authentication properties
+type RegistryEndpointArtifactPullSecretSettings struct {
+	// The name of the kubernetes secret that contains the artifact pull secret.
+	SecretRef string `pulumi:"secretRef"`
+}
+
+// RegistryEndpointArtifactPullSecretSettingsInput is an input type that accepts RegistryEndpointArtifactPullSecretSettingsArgs and RegistryEndpointArtifactPullSecretSettingsOutput values.
+// You can construct a concrete instance of `RegistryEndpointArtifactPullSecretSettingsInput` via:
+//
+//	RegistryEndpointArtifactPullSecretSettingsArgs{...}
+type RegistryEndpointArtifactPullSecretSettingsInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointArtifactPullSecretSettingsOutput() RegistryEndpointArtifactPullSecretSettingsOutput
+	ToRegistryEndpointArtifactPullSecretSettingsOutputWithContext(context.Context) RegistryEndpointArtifactPullSecretSettingsOutput
+}
+
+// RegistryEndpoint Artifact Pull Secret authentication properties
+type RegistryEndpointArtifactPullSecretSettingsArgs struct {
+	// The name of the kubernetes secret that contains the artifact pull secret.
+	SecretRef pulumi.StringInput `pulumi:"secretRef"`
+}
+
+func (RegistryEndpointArtifactPullSecretSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointArtifactPullSecretSettings)(nil)).Elem()
+}
+
+func (i RegistryEndpointArtifactPullSecretSettingsArgs) ToRegistryEndpointArtifactPullSecretSettingsOutput() RegistryEndpointArtifactPullSecretSettingsOutput {
+	return i.ToRegistryEndpointArtifactPullSecretSettingsOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointArtifactPullSecretSettingsArgs) ToRegistryEndpointArtifactPullSecretSettingsOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointArtifactPullSecretSettingsOutput)
+}
+
+func (i RegistryEndpointArtifactPullSecretSettingsArgs) ToRegistryEndpointArtifactPullSecretSettingsPtrOutput() RegistryEndpointArtifactPullSecretSettingsPtrOutput {
+	return i.ToRegistryEndpointArtifactPullSecretSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointArtifactPullSecretSettingsArgs) ToRegistryEndpointArtifactPullSecretSettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointArtifactPullSecretSettingsOutput).ToRegistryEndpointArtifactPullSecretSettingsPtrOutputWithContext(ctx)
+}
+
+// RegistryEndpointArtifactPullSecretSettingsPtrInput is an input type that accepts RegistryEndpointArtifactPullSecretSettingsArgs, RegistryEndpointArtifactPullSecretSettingsPtr and RegistryEndpointArtifactPullSecretSettingsPtrOutput values.
+// You can construct a concrete instance of `RegistryEndpointArtifactPullSecretSettingsPtrInput` via:
+//
+//	        RegistryEndpointArtifactPullSecretSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegistryEndpointArtifactPullSecretSettingsPtrInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointArtifactPullSecretSettingsPtrOutput() RegistryEndpointArtifactPullSecretSettingsPtrOutput
+	ToRegistryEndpointArtifactPullSecretSettingsPtrOutputWithContext(context.Context) RegistryEndpointArtifactPullSecretSettingsPtrOutput
+}
+
+type registryEndpointArtifactPullSecretSettingsPtrType RegistryEndpointArtifactPullSecretSettingsArgs
+
+func RegistryEndpointArtifactPullSecretSettingsPtr(v *RegistryEndpointArtifactPullSecretSettingsArgs) RegistryEndpointArtifactPullSecretSettingsPtrInput {
+	return (*registryEndpointArtifactPullSecretSettingsPtrType)(v)
+}
+
+func (*registryEndpointArtifactPullSecretSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointArtifactPullSecretSettings)(nil)).Elem()
+}
+
+func (i *registryEndpointArtifactPullSecretSettingsPtrType) ToRegistryEndpointArtifactPullSecretSettingsPtrOutput() RegistryEndpointArtifactPullSecretSettingsPtrOutput {
+	return i.ToRegistryEndpointArtifactPullSecretSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *registryEndpointArtifactPullSecretSettingsPtrType) ToRegistryEndpointArtifactPullSecretSettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointArtifactPullSecretSettingsPtrOutput)
+}
+
+// RegistryEndpoint Artifact Pull Secret authentication properties
+type RegistryEndpointArtifactPullSecretSettingsOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointArtifactPullSecretSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointArtifactPullSecretSettings)(nil)).Elem()
+}
+
+func (o RegistryEndpointArtifactPullSecretSettingsOutput) ToRegistryEndpointArtifactPullSecretSettingsOutput() RegistryEndpointArtifactPullSecretSettingsOutput {
+	return o
+}
+
+func (o RegistryEndpointArtifactPullSecretSettingsOutput) ToRegistryEndpointArtifactPullSecretSettingsOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretSettingsOutput {
+	return o
+}
+
+func (o RegistryEndpointArtifactPullSecretSettingsOutput) ToRegistryEndpointArtifactPullSecretSettingsPtrOutput() RegistryEndpointArtifactPullSecretSettingsPtrOutput {
+	return o.ToRegistryEndpointArtifactPullSecretSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEndpointArtifactPullSecretSettingsOutput) ToRegistryEndpointArtifactPullSecretSettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEndpointArtifactPullSecretSettings) *RegistryEndpointArtifactPullSecretSettings {
+		return &v
+	}).(RegistryEndpointArtifactPullSecretSettingsPtrOutput)
+}
+
+// The name of the kubernetes secret that contains the artifact pull secret.
+func (o RegistryEndpointArtifactPullSecretSettingsOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointArtifactPullSecretSettings) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+type RegistryEndpointArtifactPullSecretSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointArtifactPullSecretSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointArtifactPullSecretSettings)(nil)).Elem()
+}
+
+func (o RegistryEndpointArtifactPullSecretSettingsPtrOutput) ToRegistryEndpointArtifactPullSecretSettingsPtrOutput() RegistryEndpointArtifactPullSecretSettingsPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointArtifactPullSecretSettingsPtrOutput) ToRegistryEndpointArtifactPullSecretSettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretSettingsPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointArtifactPullSecretSettingsPtrOutput) Elem() RegistryEndpointArtifactPullSecretSettingsOutput {
+	return o.ApplyT(func(v *RegistryEndpointArtifactPullSecretSettings) RegistryEndpointArtifactPullSecretSettings {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointArtifactPullSecretSettings
+		return ret
+	}).(RegistryEndpointArtifactPullSecretSettingsOutput)
+}
+
+// The name of the kubernetes secret that contains the artifact pull secret.
+func (o RegistryEndpointArtifactPullSecretSettingsPtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointArtifactPullSecretSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegistryEndpoint Artifact Pull Secret authentication properties
+type RegistryEndpointArtifactPullSecretSettingsResponse struct {
+	// The name of the kubernetes secret that contains the artifact pull secret.
+	SecretRef string `pulumi:"secretRef"`
+}
+
+// RegistryEndpoint Artifact Pull Secret authentication properties
+type RegistryEndpointArtifactPullSecretSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointArtifactPullSecretSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointArtifactPullSecretSettingsResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointArtifactPullSecretSettingsResponseOutput) ToRegistryEndpointArtifactPullSecretSettingsResponseOutput() RegistryEndpointArtifactPullSecretSettingsResponseOutput {
+	return o
+}
+
+func (o RegistryEndpointArtifactPullSecretSettingsResponseOutput) ToRegistryEndpointArtifactPullSecretSettingsResponseOutputWithContext(ctx context.Context) RegistryEndpointArtifactPullSecretSettingsResponseOutput {
+	return o
+}
+
+// The name of the kubernetes secret that contains the artifact pull secret.
+func (o RegistryEndpointArtifactPullSecretSettingsResponseOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointArtifactPullSecretSettingsResponse) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+// RegistryEndpoint properties
+type RegistryEndpointProperties struct {
+	// The authentication settings for the Azure Container Registry.
+	Authentication interface{} `pulumi:"authentication"`
+	// The Container Registry endpoint hostname.
+	Host string `pulumi:"host"`
+	// Trust settings for the registry endpoint
+	TrustSettings *RegistryEndpointTrustedSettings `pulumi:"trustSettings"`
+}
+
+// RegistryEndpointPropertiesInput is an input type that accepts RegistryEndpointPropertiesArgs and RegistryEndpointPropertiesOutput values.
+// You can construct a concrete instance of `RegistryEndpointPropertiesInput` via:
+//
+//	RegistryEndpointPropertiesArgs{...}
+type RegistryEndpointPropertiesInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointPropertiesOutput() RegistryEndpointPropertiesOutput
+	ToRegistryEndpointPropertiesOutputWithContext(context.Context) RegistryEndpointPropertiesOutput
+}
+
+// RegistryEndpoint properties
+type RegistryEndpointPropertiesArgs struct {
+	// The authentication settings for the Azure Container Registry.
+	Authentication pulumi.Input `pulumi:"authentication"`
+	// The Container Registry endpoint hostname.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Trust settings for the registry endpoint
+	TrustSettings RegistryEndpointTrustedSettingsPtrInput `pulumi:"trustSettings"`
+}
+
+func (RegistryEndpointPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointProperties)(nil)).Elem()
+}
+
+func (i RegistryEndpointPropertiesArgs) ToRegistryEndpointPropertiesOutput() RegistryEndpointPropertiesOutput {
+	return i.ToRegistryEndpointPropertiesOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointPropertiesArgs) ToRegistryEndpointPropertiesOutputWithContext(ctx context.Context) RegistryEndpointPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointPropertiesOutput)
+}
+
+func (i RegistryEndpointPropertiesArgs) ToRegistryEndpointPropertiesPtrOutput() RegistryEndpointPropertiesPtrOutput {
+	return i.ToRegistryEndpointPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointPropertiesArgs) ToRegistryEndpointPropertiesPtrOutputWithContext(ctx context.Context) RegistryEndpointPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointPropertiesOutput).ToRegistryEndpointPropertiesPtrOutputWithContext(ctx)
+}
+
+// RegistryEndpointPropertiesPtrInput is an input type that accepts RegistryEndpointPropertiesArgs, RegistryEndpointPropertiesPtr and RegistryEndpointPropertiesPtrOutput values.
+// You can construct a concrete instance of `RegistryEndpointPropertiesPtrInput` via:
+//
+//	        RegistryEndpointPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegistryEndpointPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointPropertiesPtrOutput() RegistryEndpointPropertiesPtrOutput
+	ToRegistryEndpointPropertiesPtrOutputWithContext(context.Context) RegistryEndpointPropertiesPtrOutput
+}
+
+type registryEndpointPropertiesPtrType RegistryEndpointPropertiesArgs
+
+func RegistryEndpointPropertiesPtr(v *RegistryEndpointPropertiesArgs) RegistryEndpointPropertiesPtrInput {
+	return (*registryEndpointPropertiesPtrType)(v)
+}
+
+func (*registryEndpointPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointProperties)(nil)).Elem()
+}
+
+func (i *registryEndpointPropertiesPtrType) ToRegistryEndpointPropertiesPtrOutput() RegistryEndpointPropertiesPtrOutput {
+	return i.ToRegistryEndpointPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *registryEndpointPropertiesPtrType) ToRegistryEndpointPropertiesPtrOutputWithContext(ctx context.Context) RegistryEndpointPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointPropertiesPtrOutput)
+}
+
+// RegistryEndpoint properties
+type RegistryEndpointPropertiesOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointProperties)(nil)).Elem()
+}
+
+func (o RegistryEndpointPropertiesOutput) ToRegistryEndpointPropertiesOutput() RegistryEndpointPropertiesOutput {
+	return o
+}
+
+func (o RegistryEndpointPropertiesOutput) ToRegistryEndpointPropertiesOutputWithContext(ctx context.Context) RegistryEndpointPropertiesOutput {
+	return o
+}
+
+func (o RegistryEndpointPropertiesOutput) ToRegistryEndpointPropertiesPtrOutput() RegistryEndpointPropertiesPtrOutput {
+	return o.ToRegistryEndpointPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEndpointPropertiesOutput) ToRegistryEndpointPropertiesPtrOutputWithContext(ctx context.Context) RegistryEndpointPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEndpointProperties) *RegistryEndpointProperties {
+		return &v
+	}).(RegistryEndpointPropertiesPtrOutput)
+}
+
+// The authentication settings for the Azure Container Registry.
+func (o RegistryEndpointPropertiesOutput) Authentication() pulumi.AnyOutput {
+	return o.ApplyT(func(v RegistryEndpointProperties) interface{} { return v.Authentication }).(pulumi.AnyOutput)
+}
+
+// The Container Registry endpoint hostname.
+func (o RegistryEndpointPropertiesOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointProperties) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Trust settings for the registry endpoint
+func (o RegistryEndpointPropertiesOutput) TrustSettings() RegistryEndpointTrustedSettingsPtrOutput {
+	return o.ApplyT(func(v RegistryEndpointProperties) *RegistryEndpointTrustedSettings { return v.TrustSettings }).(RegistryEndpointTrustedSettingsPtrOutput)
+}
+
+type RegistryEndpointPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointProperties)(nil)).Elem()
+}
+
+func (o RegistryEndpointPropertiesPtrOutput) ToRegistryEndpointPropertiesPtrOutput() RegistryEndpointPropertiesPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointPropertiesPtrOutput) ToRegistryEndpointPropertiesPtrOutputWithContext(ctx context.Context) RegistryEndpointPropertiesPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointPropertiesPtrOutput) Elem() RegistryEndpointPropertiesOutput {
+	return o.ApplyT(func(v *RegistryEndpointProperties) RegistryEndpointProperties {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointProperties
+		return ret
+	}).(RegistryEndpointPropertiesOutput)
+}
+
+// The authentication settings for the Azure Container Registry.
+func (o RegistryEndpointPropertiesPtrOutput) Authentication() pulumi.AnyOutput {
+	return o.ApplyT(func(v *RegistryEndpointProperties) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.AnyOutput)
+}
+
+// The Container Registry endpoint hostname.
+func (o RegistryEndpointPropertiesPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Trust settings for the registry endpoint
+func (o RegistryEndpointPropertiesPtrOutput) TrustSettings() RegistryEndpointTrustedSettingsPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointProperties) *RegistryEndpointTrustedSettings {
+		if v == nil {
+			return nil
+		}
+		return v.TrustSettings
+	}).(RegistryEndpointTrustedSettingsPtrOutput)
+}
+
+// RegistryEndpoint properties
+type RegistryEndpointPropertiesResponse struct {
+	// The authentication settings for the Azure Container Registry.
+	Authentication interface{} `pulumi:"authentication"`
+	// The Container Registry endpoint hostname.
+	Host string `pulumi:"host"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Trust settings for the registry endpoint
+	TrustSettings *RegistryEndpointTrustedSettingsResponse `pulumi:"trustSettings"`
+}
+
+// RegistryEndpoint properties
+type RegistryEndpointPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointPropertiesResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointPropertiesResponseOutput) ToRegistryEndpointPropertiesResponseOutput() RegistryEndpointPropertiesResponseOutput {
+	return o
+}
+
+func (o RegistryEndpointPropertiesResponseOutput) ToRegistryEndpointPropertiesResponseOutputWithContext(ctx context.Context) RegistryEndpointPropertiesResponseOutput {
+	return o
+}
+
+// The authentication settings for the Azure Container Registry.
+func (o RegistryEndpointPropertiesResponseOutput) Authentication() pulumi.AnyOutput {
+	return o.ApplyT(func(v RegistryEndpointPropertiesResponse) interface{} { return v.Authentication }).(pulumi.AnyOutput)
+}
+
+// The Container Registry endpoint hostname.
+func (o RegistryEndpointPropertiesResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointPropertiesResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The status of the last operation.
+func (o RegistryEndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Trust settings for the registry endpoint
+func (o RegistryEndpointPropertiesResponseOutput) TrustSettings() RegistryEndpointTrustedSettingsResponsePtrOutput {
+	return o.ApplyT(func(v RegistryEndpointPropertiesResponse) *RegistryEndpointTrustedSettingsResponse {
+		return v.TrustSettings
+	}).(RegistryEndpointTrustedSettingsResponsePtrOutput)
+}
+
+// System assigned identity authentication
+type RegistryEndpointSystemAssignedIdentityAuthentication struct {
+	// The authentication method.
+	// Expected value is 'SystemAssignedManagedIdentity'.
+	Method string `pulumi:"method"`
+	// System assigned managed identity properties
+	SystemAssignedManagedIdentitySettings RegistryEndpointSystemAssignedManagedIdentitySettings `pulumi:"systemAssignedManagedIdentitySettings"`
+}
+
+// RegistryEndpointSystemAssignedIdentityAuthenticationInput is an input type that accepts RegistryEndpointSystemAssignedIdentityAuthenticationArgs and RegistryEndpointSystemAssignedIdentityAuthenticationOutput values.
+// You can construct a concrete instance of `RegistryEndpointSystemAssignedIdentityAuthenticationInput` via:
+//
+//	RegistryEndpointSystemAssignedIdentityAuthenticationArgs{...}
+type RegistryEndpointSystemAssignedIdentityAuthenticationInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointSystemAssignedIdentityAuthenticationOutput() RegistryEndpointSystemAssignedIdentityAuthenticationOutput
+	ToRegistryEndpointSystemAssignedIdentityAuthenticationOutputWithContext(context.Context) RegistryEndpointSystemAssignedIdentityAuthenticationOutput
+}
+
+// System assigned identity authentication
+type RegistryEndpointSystemAssignedIdentityAuthenticationArgs struct {
+	// The authentication method.
+	// Expected value is 'SystemAssignedManagedIdentity'.
+	Method pulumi.StringInput `pulumi:"method"`
+	// System assigned managed identity properties
+	SystemAssignedManagedIdentitySettings RegistryEndpointSystemAssignedManagedIdentitySettingsInput `pulumi:"systemAssignedManagedIdentitySettings"`
+}
+
+func (RegistryEndpointSystemAssignedIdentityAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointSystemAssignedIdentityAuthentication)(nil)).Elem()
+}
+
+func (i RegistryEndpointSystemAssignedIdentityAuthenticationArgs) ToRegistryEndpointSystemAssignedIdentityAuthenticationOutput() RegistryEndpointSystemAssignedIdentityAuthenticationOutput {
+	return i.ToRegistryEndpointSystemAssignedIdentityAuthenticationOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointSystemAssignedIdentityAuthenticationArgs) ToRegistryEndpointSystemAssignedIdentityAuthenticationOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedIdentityAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointSystemAssignedIdentityAuthenticationOutput)
+}
+
+func (i RegistryEndpointSystemAssignedIdentityAuthenticationArgs) ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput() RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput {
+	return i.ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointSystemAssignedIdentityAuthenticationArgs) ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointSystemAssignedIdentityAuthenticationOutput).ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutputWithContext(ctx)
+}
+
+// RegistryEndpointSystemAssignedIdentityAuthenticationPtrInput is an input type that accepts RegistryEndpointSystemAssignedIdentityAuthenticationArgs, RegistryEndpointSystemAssignedIdentityAuthenticationPtr and RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput values.
+// You can construct a concrete instance of `RegistryEndpointSystemAssignedIdentityAuthenticationPtrInput` via:
+//
+//	        RegistryEndpointSystemAssignedIdentityAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegistryEndpointSystemAssignedIdentityAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput() RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput
+	ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutputWithContext(context.Context) RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput
+}
+
+type registryEndpointSystemAssignedIdentityAuthenticationPtrType RegistryEndpointSystemAssignedIdentityAuthenticationArgs
+
+func RegistryEndpointSystemAssignedIdentityAuthenticationPtr(v *RegistryEndpointSystemAssignedIdentityAuthenticationArgs) RegistryEndpointSystemAssignedIdentityAuthenticationPtrInput {
+	return (*registryEndpointSystemAssignedIdentityAuthenticationPtrType)(v)
+}
+
+func (*registryEndpointSystemAssignedIdentityAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointSystemAssignedIdentityAuthentication)(nil)).Elem()
+}
+
+func (i *registryEndpointSystemAssignedIdentityAuthenticationPtrType) ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput() RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput {
+	return i.ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *registryEndpointSystemAssignedIdentityAuthenticationPtrType) ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput)
+}
+
+// System assigned identity authentication
+type RegistryEndpointSystemAssignedIdentityAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointSystemAssignedIdentityAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointSystemAssignedIdentityAuthentication)(nil)).Elem()
+}
+
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationOutput) ToRegistryEndpointSystemAssignedIdentityAuthenticationOutput() RegistryEndpointSystemAssignedIdentityAuthenticationOutput {
+	return o
+}
+
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationOutput) ToRegistryEndpointSystemAssignedIdentityAuthenticationOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedIdentityAuthenticationOutput {
+	return o
+}
+
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationOutput) ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput() RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput {
+	return o.ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationOutput) ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEndpointSystemAssignedIdentityAuthentication) *RegistryEndpointSystemAssignedIdentityAuthentication {
+		return &v
+	}).(RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput)
+}
+
+// The authentication method.
+// Expected value is 'SystemAssignedManagedIdentity'.
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointSystemAssignedIdentityAuthentication) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// System assigned managed identity properties
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationOutput) SystemAssignedManagedIdentitySettings() RegistryEndpointSystemAssignedManagedIdentitySettingsOutput {
+	return o.ApplyT(func(v RegistryEndpointSystemAssignedIdentityAuthentication) RegistryEndpointSystemAssignedManagedIdentitySettings {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(RegistryEndpointSystemAssignedManagedIdentitySettingsOutput)
+}
+
+type RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointSystemAssignedIdentityAuthentication)(nil)).Elem()
+}
+
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput) ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput() RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput) ToRegistryEndpointSystemAssignedIdentityAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput) Elem() RegistryEndpointSystemAssignedIdentityAuthenticationOutput {
+	return o.ApplyT(func(v *RegistryEndpointSystemAssignedIdentityAuthentication) RegistryEndpointSystemAssignedIdentityAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointSystemAssignedIdentityAuthentication
+		return ret
+	}).(RegistryEndpointSystemAssignedIdentityAuthenticationOutput)
+}
+
+// The authentication method.
+// Expected value is 'SystemAssignedManagedIdentity'.
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointSystemAssignedIdentityAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// System assigned managed identity properties
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput) SystemAssignedManagedIdentitySettings() RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointSystemAssignedIdentityAuthentication) *RegistryEndpointSystemAssignedManagedIdentitySettings {
+		if v == nil {
+			return nil
+		}
+		return &v.SystemAssignedManagedIdentitySettings
+	}).(RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput)
+}
+
+// System assigned identity authentication
+type RegistryEndpointSystemAssignedIdentityAuthenticationResponse struct {
+	// The authentication method.
+	// Expected value is 'SystemAssignedManagedIdentity'.
+	Method string `pulumi:"method"`
+	// System assigned managed identity properties
+	SystemAssignedManagedIdentitySettings RegistryEndpointSystemAssignedManagedIdentitySettingsResponse `pulumi:"systemAssignedManagedIdentitySettings"`
+}
+
+// System assigned identity authentication
+type RegistryEndpointSystemAssignedIdentityAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointSystemAssignedIdentityAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointSystemAssignedIdentityAuthenticationResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationResponseOutput) ToRegistryEndpointSystemAssignedIdentityAuthenticationResponseOutput() RegistryEndpointSystemAssignedIdentityAuthenticationResponseOutput {
+	return o
+}
+
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationResponseOutput) ToRegistryEndpointSystemAssignedIdentityAuthenticationResponseOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedIdentityAuthenticationResponseOutput {
+	return o
+}
+
+// The authentication method.
+// Expected value is 'SystemAssignedManagedIdentity'.
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationResponseOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointSystemAssignedIdentityAuthenticationResponse) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// System assigned managed identity properties
+func (o RegistryEndpointSystemAssignedIdentityAuthenticationResponseOutput) SystemAssignedManagedIdentitySettings() RegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutput {
+	return o.ApplyT(func(v RegistryEndpointSystemAssignedIdentityAuthenticationResponse) RegistryEndpointSystemAssignedManagedIdentitySettingsResponse {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(RegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutput)
+}
+
+// System assigned managed identity properties
+type RegistryEndpointSystemAssignedManagedIdentitySettings struct {
+	// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+	Audience *string `pulumi:"audience"`
+}
+
+// RegistryEndpointSystemAssignedManagedIdentitySettingsInput is an input type that accepts RegistryEndpointSystemAssignedManagedIdentitySettingsArgs and RegistryEndpointSystemAssignedManagedIdentitySettingsOutput values.
+// You can construct a concrete instance of `RegistryEndpointSystemAssignedManagedIdentitySettingsInput` via:
+//
+//	RegistryEndpointSystemAssignedManagedIdentitySettingsArgs{...}
+type RegistryEndpointSystemAssignedManagedIdentitySettingsInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointSystemAssignedManagedIdentitySettingsOutput() RegistryEndpointSystemAssignedManagedIdentitySettingsOutput
+	ToRegistryEndpointSystemAssignedManagedIdentitySettingsOutputWithContext(context.Context) RegistryEndpointSystemAssignedManagedIdentitySettingsOutput
+}
+
+// System assigned managed identity properties
+type RegistryEndpointSystemAssignedManagedIdentitySettingsArgs struct {
+	// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+}
+
+func (RegistryEndpointSystemAssignedManagedIdentitySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointSystemAssignedManagedIdentitySettings)(nil)).Elem()
+}
+
+func (i RegistryEndpointSystemAssignedManagedIdentitySettingsArgs) ToRegistryEndpointSystemAssignedManagedIdentitySettingsOutput() RegistryEndpointSystemAssignedManagedIdentitySettingsOutput {
+	return i.ToRegistryEndpointSystemAssignedManagedIdentitySettingsOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointSystemAssignedManagedIdentitySettingsArgs) ToRegistryEndpointSystemAssignedManagedIdentitySettingsOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedManagedIdentitySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointSystemAssignedManagedIdentitySettingsOutput)
+}
+
+func (i RegistryEndpointSystemAssignedManagedIdentitySettingsArgs) ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput() RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput {
+	return i.ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointSystemAssignedManagedIdentitySettingsArgs) ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointSystemAssignedManagedIdentitySettingsOutput).ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutputWithContext(ctx)
+}
+
+// RegistryEndpointSystemAssignedManagedIdentitySettingsPtrInput is an input type that accepts RegistryEndpointSystemAssignedManagedIdentitySettingsArgs, RegistryEndpointSystemAssignedManagedIdentitySettingsPtr and RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput values.
+// You can construct a concrete instance of `RegistryEndpointSystemAssignedManagedIdentitySettingsPtrInput` via:
+//
+//	        RegistryEndpointSystemAssignedManagedIdentitySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegistryEndpointSystemAssignedManagedIdentitySettingsPtrInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput() RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput
+	ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutputWithContext(context.Context) RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput
+}
+
+type registryEndpointSystemAssignedManagedIdentitySettingsPtrType RegistryEndpointSystemAssignedManagedIdentitySettingsArgs
+
+func RegistryEndpointSystemAssignedManagedIdentitySettingsPtr(v *RegistryEndpointSystemAssignedManagedIdentitySettingsArgs) RegistryEndpointSystemAssignedManagedIdentitySettingsPtrInput {
+	return (*registryEndpointSystemAssignedManagedIdentitySettingsPtrType)(v)
+}
+
+func (*registryEndpointSystemAssignedManagedIdentitySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointSystemAssignedManagedIdentitySettings)(nil)).Elem()
+}
+
+func (i *registryEndpointSystemAssignedManagedIdentitySettingsPtrType) ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput() RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput {
+	return i.ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *registryEndpointSystemAssignedManagedIdentitySettingsPtrType) ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput)
+}
+
+// System assigned managed identity properties
+type RegistryEndpointSystemAssignedManagedIdentitySettingsOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointSystemAssignedManagedIdentitySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointSystemAssignedManagedIdentitySettings)(nil)).Elem()
+}
+
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsOutput) ToRegistryEndpointSystemAssignedManagedIdentitySettingsOutput() RegistryEndpointSystemAssignedManagedIdentitySettingsOutput {
+	return o
+}
+
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsOutput) ToRegistryEndpointSystemAssignedManagedIdentitySettingsOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedManagedIdentitySettingsOutput {
+	return o
+}
+
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsOutput) ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput() RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput {
+	return o.ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsOutput) ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEndpointSystemAssignedManagedIdentitySettings) *RegistryEndpointSystemAssignedManagedIdentitySettings {
+		return &v
+	}).(RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput)
+}
+
+// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryEndpointSystemAssignedManagedIdentitySettings) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+type RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointSystemAssignedManagedIdentitySettings)(nil)).Elem()
+}
+
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput) ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput() RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput) ToRegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput) Elem() RegistryEndpointSystemAssignedManagedIdentitySettingsOutput {
+	return o.ApplyT(func(v *RegistryEndpointSystemAssignedManagedIdentitySettings) RegistryEndpointSystemAssignedManagedIdentitySettings {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointSystemAssignedManagedIdentitySettings
+		return ret
+	}).(RegistryEndpointSystemAssignedManagedIdentitySettingsOutput)
+}
+
+// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointSystemAssignedManagedIdentitySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// System assigned managed identity properties
+type RegistryEndpointSystemAssignedManagedIdentitySettingsResponse struct {
+	// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+	Audience *string `pulumi:"audience"`
+}
+
+// System assigned managed identity properties
+type RegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointSystemAssignedManagedIdentitySettingsResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutput) ToRegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutput() RegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutput {
+	return o
+}
+
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutput) ToRegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutputWithContext(ctx context.Context) RegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutput {
+	return o
+}
+
+// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+func (o RegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryEndpointSystemAssignedManagedIdentitySettingsResponse) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+// RegistryEndpointTrustedSettings properties
+type RegistryEndpointTrustedSettings struct {
+	// The trust properties for the registry endpoint.
+	TrustedSigningKeys interface{} `pulumi:"trustedSigningKeys"`
+}
+
+// RegistryEndpointTrustedSettingsInput is an input type that accepts RegistryEndpointTrustedSettingsArgs and RegistryEndpointTrustedSettingsOutput values.
+// You can construct a concrete instance of `RegistryEndpointTrustedSettingsInput` via:
+//
+//	RegistryEndpointTrustedSettingsArgs{...}
+type RegistryEndpointTrustedSettingsInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointTrustedSettingsOutput() RegistryEndpointTrustedSettingsOutput
+	ToRegistryEndpointTrustedSettingsOutputWithContext(context.Context) RegistryEndpointTrustedSettingsOutput
+}
+
+// RegistryEndpointTrustedSettings properties
+type RegistryEndpointTrustedSettingsArgs struct {
+	// The trust properties for the registry endpoint.
+	TrustedSigningKeys pulumi.Input `pulumi:"trustedSigningKeys"`
+}
+
+func (RegistryEndpointTrustedSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointTrustedSettings)(nil)).Elem()
+}
+
+func (i RegistryEndpointTrustedSettingsArgs) ToRegistryEndpointTrustedSettingsOutput() RegistryEndpointTrustedSettingsOutput {
+	return i.ToRegistryEndpointTrustedSettingsOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointTrustedSettingsArgs) ToRegistryEndpointTrustedSettingsOutputWithContext(ctx context.Context) RegistryEndpointTrustedSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointTrustedSettingsOutput)
+}
+
+func (i RegistryEndpointTrustedSettingsArgs) ToRegistryEndpointTrustedSettingsPtrOutput() RegistryEndpointTrustedSettingsPtrOutput {
+	return i.ToRegistryEndpointTrustedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointTrustedSettingsArgs) ToRegistryEndpointTrustedSettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointTrustedSettingsOutput).ToRegistryEndpointTrustedSettingsPtrOutputWithContext(ctx)
+}
+
+// RegistryEndpointTrustedSettingsPtrInput is an input type that accepts RegistryEndpointTrustedSettingsArgs, RegistryEndpointTrustedSettingsPtr and RegistryEndpointTrustedSettingsPtrOutput values.
+// You can construct a concrete instance of `RegistryEndpointTrustedSettingsPtrInput` via:
+//
+//	        RegistryEndpointTrustedSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegistryEndpointTrustedSettingsPtrInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointTrustedSettingsPtrOutput() RegistryEndpointTrustedSettingsPtrOutput
+	ToRegistryEndpointTrustedSettingsPtrOutputWithContext(context.Context) RegistryEndpointTrustedSettingsPtrOutput
+}
+
+type registryEndpointTrustedSettingsPtrType RegistryEndpointTrustedSettingsArgs
+
+func RegistryEndpointTrustedSettingsPtr(v *RegistryEndpointTrustedSettingsArgs) RegistryEndpointTrustedSettingsPtrInput {
+	return (*registryEndpointTrustedSettingsPtrType)(v)
+}
+
+func (*registryEndpointTrustedSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointTrustedSettings)(nil)).Elem()
+}
+
+func (i *registryEndpointTrustedSettingsPtrType) ToRegistryEndpointTrustedSettingsPtrOutput() RegistryEndpointTrustedSettingsPtrOutput {
+	return i.ToRegistryEndpointTrustedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *registryEndpointTrustedSettingsPtrType) ToRegistryEndpointTrustedSettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointTrustedSettingsPtrOutput)
+}
+
+// RegistryEndpointTrustedSettings properties
+type RegistryEndpointTrustedSettingsOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointTrustedSettings)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSettingsOutput) ToRegistryEndpointTrustedSettingsOutput() RegistryEndpointTrustedSettingsOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSettingsOutput) ToRegistryEndpointTrustedSettingsOutputWithContext(ctx context.Context) RegistryEndpointTrustedSettingsOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSettingsOutput) ToRegistryEndpointTrustedSettingsPtrOutput() RegistryEndpointTrustedSettingsPtrOutput {
+	return o.ToRegistryEndpointTrustedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEndpointTrustedSettingsOutput) ToRegistryEndpointTrustedSettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEndpointTrustedSettings) *RegistryEndpointTrustedSettings {
+		return &v
+	}).(RegistryEndpointTrustedSettingsPtrOutput)
+}
+
+// The trust properties for the registry endpoint.
+func (o RegistryEndpointTrustedSettingsOutput) TrustedSigningKeys() pulumi.AnyOutput {
+	return o.ApplyT(func(v RegistryEndpointTrustedSettings) interface{} { return v.TrustedSigningKeys }).(pulumi.AnyOutput)
+}
+
+type RegistryEndpointTrustedSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointTrustedSettings)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSettingsPtrOutput) ToRegistryEndpointTrustedSettingsPtrOutput() RegistryEndpointTrustedSettingsPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSettingsPtrOutput) ToRegistryEndpointTrustedSettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSettingsPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSettingsPtrOutput) Elem() RegistryEndpointTrustedSettingsOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSettings) RegistryEndpointTrustedSettings {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointTrustedSettings
+		return ret
+	}).(RegistryEndpointTrustedSettingsOutput)
+}
+
+// The trust properties for the registry endpoint.
+func (o RegistryEndpointTrustedSettingsPtrOutput) TrustedSigningKeys() pulumi.AnyOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.TrustedSigningKeys
+	}).(pulumi.AnyOutput)
+}
+
+// RegistryEndpointTrustedSettings properties
+type RegistryEndpointTrustedSettingsResponse struct {
+	// The trust properties for the registry endpoint.
+	TrustedSigningKeys interface{} `pulumi:"trustedSigningKeys"`
+}
+
+// RegistryEndpointTrustedSettings properties
+type RegistryEndpointTrustedSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointTrustedSettingsResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSettingsResponseOutput) ToRegistryEndpointTrustedSettingsResponseOutput() RegistryEndpointTrustedSettingsResponseOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSettingsResponseOutput) ToRegistryEndpointTrustedSettingsResponseOutputWithContext(ctx context.Context) RegistryEndpointTrustedSettingsResponseOutput {
+	return o
+}
+
+// The trust properties for the registry endpoint.
+func (o RegistryEndpointTrustedSettingsResponseOutput) TrustedSigningKeys() pulumi.AnyOutput {
+	return o.ApplyT(func(v RegistryEndpointTrustedSettingsResponse) interface{} { return v.TrustedSigningKeys }).(pulumi.AnyOutput)
+}
+
+type RegistryEndpointTrustedSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointTrustedSettingsResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSettingsResponsePtrOutput) ToRegistryEndpointTrustedSettingsResponsePtrOutput() RegistryEndpointTrustedSettingsResponsePtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSettingsResponsePtrOutput) ToRegistryEndpointTrustedSettingsResponsePtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSettingsResponsePtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSettingsResponsePtrOutput) Elem() RegistryEndpointTrustedSettingsResponseOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSettingsResponse) RegistryEndpointTrustedSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointTrustedSettingsResponse
+		return ret
+	}).(RegistryEndpointTrustedSettingsResponseOutput)
+}
+
+// The trust properties for the registry endpoint.
+func (o RegistryEndpointTrustedSettingsResponsePtrOutput) TrustedSigningKeys() pulumi.AnyOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSettingsResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.TrustedSigningKeys
+	}).(pulumi.AnyOutput)
+}
+
+// Settings for RegistryEndpoint trust provided through a configmap.
+type RegistryEndpointTrustedSigningKeyConfigMap struct {
+	// The name of the configmap.
+	ConfigMapRef string `pulumi:"configMapRef"`
+	// RegistryEndpointTrustedSigningKeyType values
+	// Expected value is 'ConfigMap'.
+	Type string `pulumi:"type"`
+}
+
+// RegistryEndpointTrustedSigningKeyConfigMapInput is an input type that accepts RegistryEndpointTrustedSigningKeyConfigMap and RegistryEndpointTrustedSigningKeyConfigMapOutput values.
+// You can construct a concrete instance of `RegistryEndpointTrustedSigningKeyConfigMapInput` via:
+//
+//	RegistryEndpointTrustedSigningKeyConfigMap{ "key": RegistryEndpointTrustedSigningKeyConfigArgs{...} }
+type RegistryEndpointTrustedSigningKeyConfigMapInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointTrustedSigningKeyConfigMapOutput() RegistryEndpointTrustedSigningKeyConfigMapOutput
+	ToRegistryEndpointTrustedSigningKeyConfigMapOutputWithContext(context.Context) RegistryEndpointTrustedSigningKeyConfigMapOutput
+}
+
+// Settings for RegistryEndpoint trust provided through a configmap.
+type RegistryEndpointTrustedSigningKeyConfigMapArgs struct {
+	// The name of the configmap.
+	ConfigMapRef pulumi.StringInput `pulumi:"configMapRef"`
+	// RegistryEndpointTrustedSigningKeyType values
+	// Expected value is 'ConfigMap'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RegistryEndpointTrustedSigningKeyConfigMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointTrustedSigningKeyConfigMap)(nil)).Elem()
+}
+
+func (i RegistryEndpointTrustedSigningKeyConfigMapArgs) ToRegistryEndpointTrustedSigningKeyConfigMapOutput() RegistryEndpointTrustedSigningKeyConfigMapOutput {
+	return i.ToRegistryEndpointTrustedSigningKeyConfigMapOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointTrustedSigningKeyConfigMapArgs) ToRegistryEndpointTrustedSigningKeyConfigMapOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeyConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointTrustedSigningKeyConfigMapOutput)
+}
+
+func (i RegistryEndpointTrustedSigningKeyConfigMapArgs) ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutput() RegistryEndpointTrustedSigningKeyConfigMapPtrOutput {
+	return i.ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointTrustedSigningKeyConfigMapArgs) ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeyConfigMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointTrustedSigningKeyConfigMapOutput).ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutputWithContext(ctx)
+}
+
+// RegistryEndpointTrustedSigningKeyConfigMapPtrInput is an input type that accepts RegistryEndpointTrustedSigningKeyConfigMapArgs, RegistryEndpointTrustedSigningKeyConfigMapPtr and RegistryEndpointTrustedSigningKeyConfigMapPtrOutput values.
+// You can construct a concrete instance of `RegistryEndpointTrustedSigningKeyConfigMapPtrInput` via:
+//
+//	        RegistryEndpointTrustedSigningKeyConfigMapArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegistryEndpointTrustedSigningKeyConfigMapPtrInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutput() RegistryEndpointTrustedSigningKeyConfigMapPtrOutput
+	ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutputWithContext(context.Context) RegistryEndpointTrustedSigningKeyConfigMapPtrOutput
+}
+
+type registryEndpointTrustedSigningKeyConfigMapPtrType RegistryEndpointTrustedSigningKeyConfigMapArgs
+
+func RegistryEndpointTrustedSigningKeyConfigMapPtr(v *RegistryEndpointTrustedSigningKeyConfigMapArgs) RegistryEndpointTrustedSigningKeyConfigMapPtrInput {
+	return (*registryEndpointTrustedSigningKeyConfigMapPtrType)(v)
+}
+
+func (*registryEndpointTrustedSigningKeyConfigMapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointTrustedSigningKeyConfigMap)(nil)).Elem()
+}
+
+func (i *registryEndpointTrustedSigningKeyConfigMapPtrType) ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutput() RegistryEndpointTrustedSigningKeyConfigMapPtrOutput {
+	return i.ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutputWithContext(context.Background())
+}
+
+func (i *registryEndpointTrustedSigningKeyConfigMapPtrType) ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeyConfigMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointTrustedSigningKeyConfigMapPtrOutput)
+}
+
+// Settings for RegistryEndpoint trust provided through a configmap.
+type RegistryEndpointTrustedSigningKeyConfigMapOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSigningKeyConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointTrustedSigningKeyConfigMap)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapOutput) ToRegistryEndpointTrustedSigningKeyConfigMapOutput() RegistryEndpointTrustedSigningKeyConfigMapOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapOutput) ToRegistryEndpointTrustedSigningKeyConfigMapOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeyConfigMapOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapOutput) ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutput() RegistryEndpointTrustedSigningKeyConfigMapPtrOutput {
+	return o.ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapOutput) ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeyConfigMapPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEndpointTrustedSigningKeyConfigMap) *RegistryEndpointTrustedSigningKeyConfigMap {
+		return &v
+	}).(RegistryEndpointTrustedSigningKeyConfigMapPtrOutput)
+}
+
+// The name of the configmap.
+func (o RegistryEndpointTrustedSigningKeyConfigMapOutput) ConfigMapRef() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointTrustedSigningKeyConfigMap) string { return v.ConfigMapRef }).(pulumi.StringOutput)
+}
+
+// RegistryEndpointTrustedSigningKeyType values
+// Expected value is 'ConfigMap'.
+func (o RegistryEndpointTrustedSigningKeyConfigMapOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointTrustedSigningKeyConfigMap) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RegistryEndpointTrustedSigningKeyConfigMapPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSigningKeyConfigMapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointTrustedSigningKeyConfigMap)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapPtrOutput) ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutput() RegistryEndpointTrustedSigningKeyConfigMapPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapPtrOutput) ToRegistryEndpointTrustedSigningKeyConfigMapPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeyConfigMapPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapPtrOutput) Elem() RegistryEndpointTrustedSigningKeyConfigMapOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeyConfigMap) RegistryEndpointTrustedSigningKeyConfigMap {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointTrustedSigningKeyConfigMap
+		return ret
+	}).(RegistryEndpointTrustedSigningKeyConfigMapOutput)
+}
+
+// The name of the configmap.
+func (o RegistryEndpointTrustedSigningKeyConfigMapPtrOutput) ConfigMapRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeyConfigMap) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigMapRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegistryEndpointTrustedSigningKeyType values
+// Expected value is 'ConfigMap'.
+func (o RegistryEndpointTrustedSigningKeyConfigMapPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeyConfigMap) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Settings for RegistryEndpoint trust provided through a configmap.
+type RegistryEndpointTrustedSigningKeyConfigMapResponse struct {
+	// The name of the configmap.
+	ConfigMapRef string `pulumi:"configMapRef"`
+	// RegistryEndpointTrustedSigningKeyType values
+	// Expected value is 'ConfigMap'.
+	Type string `pulumi:"type"`
+}
+
+// Settings for RegistryEndpoint trust provided through a configmap.
+type RegistryEndpointTrustedSigningKeyConfigMapResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSigningKeyConfigMapResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointTrustedSigningKeyConfigMapResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapResponseOutput) ToRegistryEndpointTrustedSigningKeyConfigMapResponseOutput() RegistryEndpointTrustedSigningKeyConfigMapResponseOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapResponseOutput) ToRegistryEndpointTrustedSigningKeyConfigMapResponseOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeyConfigMapResponseOutput {
+	return o
+}
+
+// The name of the configmap.
+func (o RegistryEndpointTrustedSigningKeyConfigMapResponseOutput) ConfigMapRef() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointTrustedSigningKeyConfigMapResponse) string { return v.ConfigMapRef }).(pulumi.StringOutput)
+}
+
+// RegistryEndpointTrustedSigningKeyType values
+// Expected value is 'ConfigMap'.
+func (o RegistryEndpointTrustedSigningKeyConfigMapResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointTrustedSigningKeyConfigMapResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointTrustedSigningKeyConfigMapResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutput) ToRegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutput() RegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutput) ToRegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutput) Elem() RegistryEndpointTrustedSigningKeyConfigMapResponseOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeyConfigMapResponse) RegistryEndpointTrustedSigningKeyConfigMapResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointTrustedSigningKeyConfigMapResponse
+		return ret
+	}).(RegistryEndpointTrustedSigningKeyConfigMapResponseOutput)
+}
+
+// The name of the configmap.
+func (o RegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutput) ConfigMapRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeyConfigMapResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigMapRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegistryEndpointTrustedSigningKeyType values
+// Expected value is 'ConfigMap'.
+func (o RegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeyConfigMapResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Settings for RegistryEndpoint trust provided through a secret.
+type RegistryEndpointTrustedSigningKeySecret struct {
+	// The name of the secret.
+	SecretRef string `pulumi:"secretRef"`
+	// RegistryEndpointTrustedSigningKeyType values
+	// Expected value is 'Secret'.
+	Type string `pulumi:"type"`
+}
+
+// RegistryEndpointTrustedSigningKeySecretInput is an input type that accepts RegistryEndpointTrustedSigningKeySecretArgs and RegistryEndpointTrustedSigningKeySecretOutput values.
+// You can construct a concrete instance of `RegistryEndpointTrustedSigningKeySecretInput` via:
+//
+//	RegistryEndpointTrustedSigningKeySecretArgs{...}
+type RegistryEndpointTrustedSigningKeySecretInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointTrustedSigningKeySecretOutput() RegistryEndpointTrustedSigningKeySecretOutput
+	ToRegistryEndpointTrustedSigningKeySecretOutputWithContext(context.Context) RegistryEndpointTrustedSigningKeySecretOutput
+}
+
+// Settings for RegistryEndpoint trust provided through a secret.
+type RegistryEndpointTrustedSigningKeySecretArgs struct {
+	// The name of the secret.
+	SecretRef pulumi.StringInput `pulumi:"secretRef"`
+	// RegistryEndpointTrustedSigningKeyType values
+	// Expected value is 'Secret'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RegistryEndpointTrustedSigningKeySecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointTrustedSigningKeySecret)(nil)).Elem()
+}
+
+func (i RegistryEndpointTrustedSigningKeySecretArgs) ToRegistryEndpointTrustedSigningKeySecretOutput() RegistryEndpointTrustedSigningKeySecretOutput {
+	return i.ToRegistryEndpointTrustedSigningKeySecretOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointTrustedSigningKeySecretArgs) ToRegistryEndpointTrustedSigningKeySecretOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeySecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointTrustedSigningKeySecretOutput)
+}
+
+func (i RegistryEndpointTrustedSigningKeySecretArgs) ToRegistryEndpointTrustedSigningKeySecretPtrOutput() RegistryEndpointTrustedSigningKeySecretPtrOutput {
+	return i.ToRegistryEndpointTrustedSigningKeySecretPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointTrustedSigningKeySecretArgs) ToRegistryEndpointTrustedSigningKeySecretPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeySecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointTrustedSigningKeySecretOutput).ToRegistryEndpointTrustedSigningKeySecretPtrOutputWithContext(ctx)
+}
+
+// RegistryEndpointTrustedSigningKeySecretPtrInput is an input type that accepts RegistryEndpointTrustedSigningKeySecretArgs, RegistryEndpointTrustedSigningKeySecretPtr and RegistryEndpointTrustedSigningKeySecretPtrOutput values.
+// You can construct a concrete instance of `RegistryEndpointTrustedSigningKeySecretPtrInput` via:
+//
+//	        RegistryEndpointTrustedSigningKeySecretArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegistryEndpointTrustedSigningKeySecretPtrInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointTrustedSigningKeySecretPtrOutput() RegistryEndpointTrustedSigningKeySecretPtrOutput
+	ToRegistryEndpointTrustedSigningKeySecretPtrOutputWithContext(context.Context) RegistryEndpointTrustedSigningKeySecretPtrOutput
+}
+
+type registryEndpointTrustedSigningKeySecretPtrType RegistryEndpointTrustedSigningKeySecretArgs
+
+func RegistryEndpointTrustedSigningKeySecretPtr(v *RegistryEndpointTrustedSigningKeySecretArgs) RegistryEndpointTrustedSigningKeySecretPtrInput {
+	return (*registryEndpointTrustedSigningKeySecretPtrType)(v)
+}
+
+func (*registryEndpointTrustedSigningKeySecretPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointTrustedSigningKeySecret)(nil)).Elem()
+}
+
+func (i *registryEndpointTrustedSigningKeySecretPtrType) ToRegistryEndpointTrustedSigningKeySecretPtrOutput() RegistryEndpointTrustedSigningKeySecretPtrOutput {
+	return i.ToRegistryEndpointTrustedSigningKeySecretPtrOutputWithContext(context.Background())
+}
+
+func (i *registryEndpointTrustedSigningKeySecretPtrType) ToRegistryEndpointTrustedSigningKeySecretPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeySecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointTrustedSigningKeySecretPtrOutput)
+}
+
+// Settings for RegistryEndpoint trust provided through a secret.
+type RegistryEndpointTrustedSigningKeySecretOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSigningKeySecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointTrustedSigningKeySecret)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretOutput) ToRegistryEndpointTrustedSigningKeySecretOutput() RegistryEndpointTrustedSigningKeySecretOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretOutput) ToRegistryEndpointTrustedSigningKeySecretOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeySecretOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretOutput) ToRegistryEndpointTrustedSigningKeySecretPtrOutput() RegistryEndpointTrustedSigningKeySecretPtrOutput {
+	return o.ToRegistryEndpointTrustedSigningKeySecretPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretOutput) ToRegistryEndpointTrustedSigningKeySecretPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeySecretPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEndpointTrustedSigningKeySecret) *RegistryEndpointTrustedSigningKeySecret {
+		return &v
+	}).(RegistryEndpointTrustedSigningKeySecretPtrOutput)
+}
+
+// The name of the secret.
+func (o RegistryEndpointTrustedSigningKeySecretOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointTrustedSigningKeySecret) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+// RegistryEndpointTrustedSigningKeyType values
+// Expected value is 'Secret'.
+func (o RegistryEndpointTrustedSigningKeySecretOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointTrustedSigningKeySecret) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RegistryEndpointTrustedSigningKeySecretPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSigningKeySecretPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointTrustedSigningKeySecret)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretPtrOutput) ToRegistryEndpointTrustedSigningKeySecretPtrOutput() RegistryEndpointTrustedSigningKeySecretPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretPtrOutput) ToRegistryEndpointTrustedSigningKeySecretPtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeySecretPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretPtrOutput) Elem() RegistryEndpointTrustedSigningKeySecretOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeySecret) RegistryEndpointTrustedSigningKeySecret {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointTrustedSigningKeySecret
+		return ret
+	}).(RegistryEndpointTrustedSigningKeySecretOutput)
+}
+
+// The name of the secret.
+func (o RegistryEndpointTrustedSigningKeySecretPtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeySecret) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegistryEndpointTrustedSigningKeyType values
+// Expected value is 'Secret'.
+func (o RegistryEndpointTrustedSigningKeySecretPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeySecret) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Settings for RegistryEndpoint trust provided through a secret.
+type RegistryEndpointTrustedSigningKeySecretResponse struct {
+	// The name of the secret.
+	SecretRef string `pulumi:"secretRef"`
+	// RegistryEndpointTrustedSigningKeyType values
+	// Expected value is 'Secret'.
+	Type string `pulumi:"type"`
+}
+
+// Settings for RegistryEndpoint trust provided through a secret.
+type RegistryEndpointTrustedSigningKeySecretResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSigningKeySecretResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointTrustedSigningKeySecretResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretResponseOutput) ToRegistryEndpointTrustedSigningKeySecretResponseOutput() RegistryEndpointTrustedSigningKeySecretResponseOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretResponseOutput) ToRegistryEndpointTrustedSigningKeySecretResponseOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeySecretResponseOutput {
+	return o
+}
+
+// The name of the secret.
+func (o RegistryEndpointTrustedSigningKeySecretResponseOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointTrustedSigningKeySecretResponse) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+// RegistryEndpointTrustedSigningKeyType values
+// Expected value is 'Secret'.
+func (o RegistryEndpointTrustedSigningKeySecretResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointTrustedSigningKeySecretResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RegistryEndpointTrustedSigningKeySecretResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointTrustedSigningKeySecretResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointTrustedSigningKeySecretResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretResponsePtrOutput) ToRegistryEndpointTrustedSigningKeySecretResponsePtrOutput() RegistryEndpointTrustedSigningKeySecretResponsePtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretResponsePtrOutput) ToRegistryEndpointTrustedSigningKeySecretResponsePtrOutputWithContext(ctx context.Context) RegistryEndpointTrustedSigningKeySecretResponsePtrOutput {
+	return o
+}
+
+func (o RegistryEndpointTrustedSigningKeySecretResponsePtrOutput) Elem() RegistryEndpointTrustedSigningKeySecretResponseOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeySecretResponse) RegistryEndpointTrustedSigningKeySecretResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointTrustedSigningKeySecretResponse
+		return ret
+	}).(RegistryEndpointTrustedSigningKeySecretResponseOutput)
+}
+
+// The name of the secret.
+func (o RegistryEndpointTrustedSigningKeySecretResponsePtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeySecretResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegistryEndpointTrustedSigningKeyType values
+// Expected value is 'Secret'.
+func (o RegistryEndpointTrustedSigningKeySecretResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointTrustedSigningKeySecretResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// User assigned identity authentication
+type RegistryEndpointUserAssignedIdentityAuthentication struct {
+	// The authentication method.
+	// Expected value is 'UserAssignedManagedIdentity'.
+	Method string `pulumi:"method"`
+	// User assigned managed identity properties
+	UserAssignedManagedIdentitySettings RegistryEndpointUserAssignedManagedIdentitySettings `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+// RegistryEndpointUserAssignedIdentityAuthenticationInput is an input type that accepts RegistryEndpointUserAssignedIdentityAuthenticationArgs and RegistryEndpointUserAssignedIdentityAuthenticationOutput values.
+// You can construct a concrete instance of `RegistryEndpointUserAssignedIdentityAuthenticationInput` via:
+//
+//	RegistryEndpointUserAssignedIdentityAuthenticationArgs{...}
+type RegistryEndpointUserAssignedIdentityAuthenticationInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointUserAssignedIdentityAuthenticationOutput() RegistryEndpointUserAssignedIdentityAuthenticationOutput
+	ToRegistryEndpointUserAssignedIdentityAuthenticationOutputWithContext(context.Context) RegistryEndpointUserAssignedIdentityAuthenticationOutput
+}
+
+// User assigned identity authentication
+type RegistryEndpointUserAssignedIdentityAuthenticationArgs struct {
+	// The authentication method.
+	// Expected value is 'UserAssignedManagedIdentity'.
+	Method pulumi.StringInput `pulumi:"method"`
+	// User assigned managed identity properties
+	UserAssignedManagedIdentitySettings RegistryEndpointUserAssignedManagedIdentitySettingsInput `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+func (RegistryEndpointUserAssignedIdentityAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointUserAssignedIdentityAuthentication)(nil)).Elem()
+}
+
+func (i RegistryEndpointUserAssignedIdentityAuthenticationArgs) ToRegistryEndpointUserAssignedIdentityAuthenticationOutput() RegistryEndpointUserAssignedIdentityAuthenticationOutput {
+	return i.ToRegistryEndpointUserAssignedIdentityAuthenticationOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointUserAssignedIdentityAuthenticationArgs) ToRegistryEndpointUserAssignedIdentityAuthenticationOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedIdentityAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointUserAssignedIdentityAuthenticationOutput)
+}
+
+func (i RegistryEndpointUserAssignedIdentityAuthenticationArgs) ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutput() RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput {
+	return i.ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointUserAssignedIdentityAuthenticationArgs) ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointUserAssignedIdentityAuthenticationOutput).ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutputWithContext(ctx)
+}
+
+// RegistryEndpointUserAssignedIdentityAuthenticationPtrInput is an input type that accepts RegistryEndpointUserAssignedIdentityAuthenticationArgs, RegistryEndpointUserAssignedIdentityAuthenticationPtr and RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput values.
+// You can construct a concrete instance of `RegistryEndpointUserAssignedIdentityAuthenticationPtrInput` via:
+//
+//	        RegistryEndpointUserAssignedIdentityAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegistryEndpointUserAssignedIdentityAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutput() RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput
+	ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutputWithContext(context.Context) RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput
+}
+
+type registryEndpointUserAssignedIdentityAuthenticationPtrType RegistryEndpointUserAssignedIdentityAuthenticationArgs
+
+func RegistryEndpointUserAssignedIdentityAuthenticationPtr(v *RegistryEndpointUserAssignedIdentityAuthenticationArgs) RegistryEndpointUserAssignedIdentityAuthenticationPtrInput {
+	return (*registryEndpointUserAssignedIdentityAuthenticationPtrType)(v)
+}
+
+func (*registryEndpointUserAssignedIdentityAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointUserAssignedIdentityAuthentication)(nil)).Elem()
+}
+
+func (i *registryEndpointUserAssignedIdentityAuthenticationPtrType) ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutput() RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput {
+	return i.ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *registryEndpointUserAssignedIdentityAuthenticationPtrType) ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput)
+}
+
+// User assigned identity authentication
+type RegistryEndpointUserAssignedIdentityAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointUserAssignedIdentityAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointUserAssignedIdentityAuthentication)(nil)).Elem()
+}
+
+func (o RegistryEndpointUserAssignedIdentityAuthenticationOutput) ToRegistryEndpointUserAssignedIdentityAuthenticationOutput() RegistryEndpointUserAssignedIdentityAuthenticationOutput {
+	return o
+}
+
+func (o RegistryEndpointUserAssignedIdentityAuthenticationOutput) ToRegistryEndpointUserAssignedIdentityAuthenticationOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedIdentityAuthenticationOutput {
+	return o
+}
+
+func (o RegistryEndpointUserAssignedIdentityAuthenticationOutput) ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutput() RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput {
+	return o.ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEndpointUserAssignedIdentityAuthenticationOutput) ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEndpointUserAssignedIdentityAuthentication) *RegistryEndpointUserAssignedIdentityAuthentication {
+		return &v
+	}).(RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput)
+}
+
+// The authentication method.
+// Expected value is 'UserAssignedManagedIdentity'.
+func (o RegistryEndpointUserAssignedIdentityAuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointUserAssignedIdentityAuthentication) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// User assigned managed identity properties
+func (o RegistryEndpointUserAssignedIdentityAuthenticationOutput) UserAssignedManagedIdentitySettings() RegistryEndpointUserAssignedManagedIdentitySettingsOutput {
+	return o.ApplyT(func(v RegistryEndpointUserAssignedIdentityAuthentication) RegistryEndpointUserAssignedManagedIdentitySettings {
+		return v.UserAssignedManagedIdentitySettings
+	}).(RegistryEndpointUserAssignedManagedIdentitySettingsOutput)
+}
+
+type RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointUserAssignedIdentityAuthentication)(nil)).Elem()
+}
+
+func (o RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput) ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutput() RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput) ToRegistryEndpointUserAssignedIdentityAuthenticationPtrOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput) Elem() RegistryEndpointUserAssignedIdentityAuthenticationOutput {
+	return o.ApplyT(func(v *RegistryEndpointUserAssignedIdentityAuthentication) RegistryEndpointUserAssignedIdentityAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointUserAssignedIdentityAuthentication
+		return ret
+	}).(RegistryEndpointUserAssignedIdentityAuthenticationOutput)
+}
+
+// The authentication method.
+// Expected value is 'UserAssignedManagedIdentity'.
+func (o RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointUserAssignedIdentityAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// User assigned managed identity properties
+func (o RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput) UserAssignedManagedIdentitySettings() RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointUserAssignedIdentityAuthentication) *RegistryEndpointUserAssignedManagedIdentitySettings {
+		if v == nil {
+			return nil
+		}
+		return &v.UserAssignedManagedIdentitySettings
+	}).(RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput)
+}
+
+// User assigned identity authentication
+type RegistryEndpointUserAssignedIdentityAuthenticationResponse struct {
+	// The authentication method.
+	// Expected value is 'UserAssignedManagedIdentity'.
+	Method string `pulumi:"method"`
+	// User assigned managed identity properties
+	UserAssignedManagedIdentitySettings RegistryEndpointUserAssignedManagedIdentitySettingsResponse `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+// User assigned identity authentication
+type RegistryEndpointUserAssignedIdentityAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointUserAssignedIdentityAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointUserAssignedIdentityAuthenticationResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointUserAssignedIdentityAuthenticationResponseOutput) ToRegistryEndpointUserAssignedIdentityAuthenticationResponseOutput() RegistryEndpointUserAssignedIdentityAuthenticationResponseOutput {
+	return o
+}
+
+func (o RegistryEndpointUserAssignedIdentityAuthenticationResponseOutput) ToRegistryEndpointUserAssignedIdentityAuthenticationResponseOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedIdentityAuthenticationResponseOutput {
+	return o
+}
+
+// The authentication method.
+// Expected value is 'UserAssignedManagedIdentity'.
+func (o RegistryEndpointUserAssignedIdentityAuthenticationResponseOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointUserAssignedIdentityAuthenticationResponse) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// User assigned managed identity properties
+func (o RegistryEndpointUserAssignedIdentityAuthenticationResponseOutput) UserAssignedManagedIdentitySettings() RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput {
+	return o.ApplyT(func(v RegistryEndpointUserAssignedIdentityAuthenticationResponse) RegistryEndpointUserAssignedManagedIdentitySettingsResponse {
+		return v.UserAssignedManagedIdentitySettings
+	}).(RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput)
+}
+
+// User assigned managed identity properties
+type RegistryEndpointUserAssignedManagedIdentitySettings struct {
+	// Client ID for the user-assigned managed identity.
+	ClientId string `pulumi:"clientId"`
+	// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+	Scope *string `pulumi:"scope"`
+	// Tenant ID.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// RegistryEndpointUserAssignedManagedIdentitySettingsInput is an input type that accepts RegistryEndpointUserAssignedManagedIdentitySettingsArgs and RegistryEndpointUserAssignedManagedIdentitySettingsOutput values.
+// You can construct a concrete instance of `RegistryEndpointUserAssignedManagedIdentitySettingsInput` via:
+//
+//	RegistryEndpointUserAssignedManagedIdentitySettingsArgs{...}
+type RegistryEndpointUserAssignedManagedIdentitySettingsInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointUserAssignedManagedIdentitySettingsOutput() RegistryEndpointUserAssignedManagedIdentitySettingsOutput
+	ToRegistryEndpointUserAssignedManagedIdentitySettingsOutputWithContext(context.Context) RegistryEndpointUserAssignedManagedIdentitySettingsOutput
+}
+
+// User assigned managed identity properties
+type RegistryEndpointUserAssignedManagedIdentitySettingsArgs struct {
+	// Client ID for the user-assigned managed identity.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// Tenant ID.
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
+}
+
+func (RegistryEndpointUserAssignedManagedIdentitySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointUserAssignedManagedIdentitySettings)(nil)).Elem()
+}
+
+func (i RegistryEndpointUserAssignedManagedIdentitySettingsArgs) ToRegistryEndpointUserAssignedManagedIdentitySettingsOutput() RegistryEndpointUserAssignedManagedIdentitySettingsOutput {
+	return i.ToRegistryEndpointUserAssignedManagedIdentitySettingsOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointUserAssignedManagedIdentitySettingsArgs) ToRegistryEndpointUserAssignedManagedIdentitySettingsOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedManagedIdentitySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointUserAssignedManagedIdentitySettingsOutput)
+}
+
+func (i RegistryEndpointUserAssignedManagedIdentitySettingsArgs) ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput() RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput {
+	return i.ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryEndpointUserAssignedManagedIdentitySettingsArgs) ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointUserAssignedManagedIdentitySettingsOutput).ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutputWithContext(ctx)
+}
+
+// RegistryEndpointUserAssignedManagedIdentitySettingsPtrInput is an input type that accepts RegistryEndpointUserAssignedManagedIdentitySettingsArgs, RegistryEndpointUserAssignedManagedIdentitySettingsPtr and RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput values.
+// You can construct a concrete instance of `RegistryEndpointUserAssignedManagedIdentitySettingsPtrInput` via:
+//
+//	        RegistryEndpointUserAssignedManagedIdentitySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegistryEndpointUserAssignedManagedIdentitySettingsPtrInput interface {
+	pulumi.Input
+
+	ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput() RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput
+	ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutputWithContext(context.Context) RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput
+}
+
+type registryEndpointUserAssignedManagedIdentitySettingsPtrType RegistryEndpointUserAssignedManagedIdentitySettingsArgs
+
+func RegistryEndpointUserAssignedManagedIdentitySettingsPtr(v *RegistryEndpointUserAssignedManagedIdentitySettingsArgs) RegistryEndpointUserAssignedManagedIdentitySettingsPtrInput {
+	return (*registryEndpointUserAssignedManagedIdentitySettingsPtrType)(v)
+}
+
+func (*registryEndpointUserAssignedManagedIdentitySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointUserAssignedManagedIdentitySettings)(nil)).Elem()
+}
+
+func (i *registryEndpointUserAssignedManagedIdentitySettingsPtrType) ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput() RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput {
+	return i.ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *registryEndpointUserAssignedManagedIdentitySettingsPtrType) ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput)
+}
+
+// User assigned managed identity properties
+type RegistryEndpointUserAssignedManagedIdentitySettingsOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointUserAssignedManagedIdentitySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointUserAssignedManagedIdentitySettings)(nil)).Elem()
+}
+
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsOutput) ToRegistryEndpointUserAssignedManagedIdentitySettingsOutput() RegistryEndpointUserAssignedManagedIdentitySettingsOutput {
+	return o
+}
+
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsOutput) ToRegistryEndpointUserAssignedManagedIdentitySettingsOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedManagedIdentitySettingsOutput {
+	return o
+}
+
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsOutput) ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput() RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput {
+	return o.ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsOutput) ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEndpointUserAssignedManagedIdentitySettings) *RegistryEndpointUserAssignedManagedIdentitySettings {
+		return &v
+	}).(RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput)
+}
+
+// Client ID for the user-assigned managed identity.
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointUserAssignedManagedIdentitySettings) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryEndpointUserAssignedManagedIdentitySettings) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Tenant ID.
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointUserAssignedManagedIdentitySettings) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+type RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEndpointUserAssignedManagedIdentitySettings)(nil)).Elem()
+}
+
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput) ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput() RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput) ToRegistryEndpointUserAssignedManagedIdentitySettingsPtrOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput {
+	return o
+}
+
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput) Elem() RegistryEndpointUserAssignedManagedIdentitySettingsOutput {
+	return o.ApplyT(func(v *RegistryEndpointUserAssignedManagedIdentitySettings) RegistryEndpointUserAssignedManagedIdentitySettings {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEndpointUserAssignedManagedIdentitySettings
+		return ret
+	}).(RegistryEndpointUserAssignedManagedIdentitySettingsOutput)
+}
+
+// Client ID for the user-assigned managed identity.
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointUserAssignedManagedIdentitySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointUserAssignedManagedIdentitySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tenant ID.
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEndpointUserAssignedManagedIdentitySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// User assigned managed identity properties
+type RegistryEndpointUserAssignedManagedIdentitySettingsResponse struct {
+	// Client ID for the user-assigned managed identity.
+	ClientId string `pulumi:"clientId"`
+	// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+	Scope *string `pulumi:"scope"`
+	// Tenant ID.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// User assigned managed identity properties
+type RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEndpointUserAssignedManagedIdentitySettingsResponse)(nil)).Elem()
+}
+
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput) ToRegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput() RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput {
+	return o
+}
+
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput) ToRegistryEndpointUserAssignedManagedIdentitySettingsResponseOutputWithContext(ctx context.Context) RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput {
+	return o
+}
+
+// Client ID for the user-assigned managed identity.
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointUserAssignedManagedIdentitySettingsResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryEndpointUserAssignedManagedIdentitySettingsResponse) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Tenant ID.
+func (o RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryEndpointUserAssignedManagedIdentitySettingsResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // Subject Alternative Names (SANs) for certificate.
@@ -21818,6 +34936,132 @@ func init() {
 	pulumi.RegisterOutputType(AdvancedSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AdvancedSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AdvancedSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateAioMetadataOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateAioMetadataPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateAioMetadataResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateAioMetadataResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateBucketizedAllocationOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateBucketizedAllocationPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateBucketizedAllocationResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateBucketizedAllocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDeviceInboundEndpointTypeOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDeviceInboundEndpointTypeArrayOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDeviceInboundEndpointTypeResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDeviceInboundEndpointTypeResponseArrayOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDiagnosticsOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDiagnosticsPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDiagnosticsResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateDiagnosticsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmAdvancedConfigurationOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmAdvancedConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmAdvancedConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmAdvancedConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmAuthSecretRefOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmAuthSecretRefPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmAuthSecretRefResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmAuthSecretRefResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmConfigurationOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmConfigurationSettingsOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmConfigurationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmConfigurationSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmContainerRegistryOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmContainerRegistryPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmContainerRegistryResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmContainerRegistryResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmContainerRegistrySettingsOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmContainerRegistrySettingsPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmContainerRegistrySettingsResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmContainerRegistrySettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmDeleteConfigurationOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmDeleteConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmDeleteConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmDeleteConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmInstallConfigurationOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmInstallConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmInstallConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmInstallConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmRegistryEndpointRefOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmRegistryEndpointRefPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmRegistryEndpointRefResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmRegistryEndpointRefResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmUpgradeConfigurationOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmUpgradeConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmUpgradeConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateHelmUpgradeConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateManagedConfigurationOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateManagedConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateManagedConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplatePersistentVolumeClaimOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplatePersistentVolumeClaimArrayOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplatePersistentVolumeClaimResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplatePersistentVolumeClaimResponseArrayOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplatePropertiesOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplatePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplatePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateRuntimeImageConfigurationOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateRuntimeImageConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateRuntimeImageConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateRuntimeImageConfigurationSettingsOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateRuntimeImageConfigurationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateRuntimeImageConfigurationSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateRuntimeStatefulSetConfigurationOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateRuntimeStatefulSetConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateRuntimeStatefulSetConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateTrustListOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateTrustListPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateTrustListResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorTemplateTrustListResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsContainerRegistryOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsContainerRegistryPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsContainerRegistryResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsContainerRegistryResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsContainerRegistrySettingsOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsContainerRegistrySettingsPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsContainerRegistrySettingsResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsContainerRegistrySettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsDiagnosticsLogsOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsDiagnosticsLogsPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsDiagnosticsLogsResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsDiagnosticsLogsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsDigestOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsDigestPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsDigestResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsDigestResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsImagePullSecretOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsImagePullSecretArrayOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsImagePullSecretResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsImagePullSecretResponseArrayOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsMqttConnectionConfigurationOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsMqttConnectionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsMqttConnectionConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsMqttConnectionConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsRegistryEndpointRefOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsRegistryEndpointRefPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsRegistryEndpointRefResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsRegistryEndpointRefResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsSecretOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsSecretArrayOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsSecretResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsSecretResponseArrayOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsServiceAccountAuthenticationOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsServiceAccountAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsServiceAccountAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsServiceAccountAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsServiceAccountTokenSettingsOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsServiceAccountTokenSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsServiceAccountTokenSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsServiceAccountTokenSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsTagOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsTagPtrOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsTagResponseOutput{})
+	pulumi.RegisterOutputType(AkriConnectorsTagResponsePtrOutput{})
 	pulumi.RegisterOutputType(AuthorizationConfigOutput{})
 	pulumi.RegisterOutputType(AuthorizationConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthorizationConfigResponseOutput{})
@@ -22000,6 +35244,41 @@ func init() {
 	pulumi.RegisterOutputType(DataflowEndpointPropertiesOutput{})
 	pulumi.RegisterOutputType(DataflowEndpointPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DataflowEndpointPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphConnectionInputOutput{})
+	pulumi.RegisterOutputType(DataflowGraphConnectionInputResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphConnectionOutputOutput{})
+	pulumi.RegisterOutputType(DataflowGraphConnectionOutputResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphConnectionSchemaSettingsOutput{})
+	pulumi.RegisterOutputType(DataflowGraphConnectionSchemaSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DataflowGraphConnectionSchemaSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphConnectionSchemaSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowGraphDestinationNodeOutput{})
+	pulumi.RegisterOutputType(DataflowGraphDestinationNodeResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphDestinationNodeSettingsOutput{})
+	pulumi.RegisterOutputType(DataflowGraphDestinationNodeSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphDestinationSchemaSettingsOutput{})
+	pulumi.RegisterOutputType(DataflowGraphDestinationSchemaSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DataflowGraphDestinationSchemaSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphDestinationSchemaSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowGraphGraphNodeOutput{})
+	pulumi.RegisterOutputType(DataflowGraphGraphNodeConfigurationOutput{})
+	pulumi.RegisterOutputType(DataflowGraphGraphNodeConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(DataflowGraphGraphNodeConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphGraphNodeConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataflowGraphGraphNodeResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphNodeConnectionOutput{})
+	pulumi.RegisterOutputType(DataflowGraphNodeConnectionArrayOutput{})
+	pulumi.RegisterOutputType(DataflowGraphNodeConnectionResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphNodeConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataflowGraphNodeGraphSettingsOutput{})
+	pulumi.RegisterOutputType(DataflowGraphNodeGraphSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphPropertiesOutput{})
+	pulumi.RegisterOutputType(DataflowGraphPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DataflowGraphPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphSourceNodeOutput{})
+	pulumi.RegisterOutputType(DataflowGraphSourceNodeResponseOutput{})
+	pulumi.RegisterOutputType(DataflowGraphSourceSettingsOutput{})
+	pulumi.RegisterOutputType(DataflowGraphSourceSettingsResponseOutput{})
 	pulumi.RegisterOutputType(DataflowOperationOutput{})
 	pulumi.RegisterOutputType(DataflowOperationArrayOutput{})
 	pulumi.RegisterOutputType(DataflowOperationResponseOutput{})
@@ -22023,7 +35302,9 @@ func init() {
 	pulumi.RegisterOutputType(DiskBackedMessageBufferResponseOutput{})
 	pulumi.RegisterOutputType(DiskBackedMessageBufferResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
 	pulumi.RegisterOutputType(FrontendOutput{})
 	pulumi.RegisterOutputType(FrontendPtrOutput{})
 	pulumi.RegisterOutputType(FrontendResponseOutput{})
@@ -22061,6 +35342,42 @@ func init() {
 	pulumi.RegisterOutputType(ProfileDiagnosticsPtrOutput{})
 	pulumi.RegisterOutputType(ProfileDiagnosticsResponseOutput{})
 	pulumi.RegisterOutputType(ProfileDiagnosticsResponsePtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointAnonymousAuthenticationOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointAnonymousAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointAnonymousAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointArtifactPullSecretAuthenticationOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointArtifactPullSecretAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointArtifactPullSecretAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointArtifactPullSecretSettingsOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointArtifactPullSecretSettingsPtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointArtifactPullSecretSettingsResponseOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointPropertiesOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointSystemAssignedIdentityAuthenticationOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointSystemAssignedIdentityAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointSystemAssignedIdentityAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointSystemAssignedManagedIdentitySettingsOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointSystemAssignedManagedIdentitySettingsPtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointSystemAssignedManagedIdentitySettingsResponseOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSettingsOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSettingsPtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSettingsResponseOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSigningKeyConfigMapOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSigningKeyConfigMapPtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSigningKeyConfigMapResponseOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSigningKeyConfigMapResponsePtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSigningKeySecretOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSigningKeySecretPtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSigningKeySecretResponseOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointTrustedSigningKeySecretResponsePtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointUserAssignedIdentityAuthenticationOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointUserAssignedIdentityAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointUserAssignedIdentityAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointUserAssignedManagedIdentitySettingsOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointUserAssignedManagedIdentitySettingsPtrOutput{})
+	pulumi.RegisterOutputType(RegistryEndpointUserAssignedManagedIdentitySettingsResponseOutput{})
 	pulumi.RegisterOutputType(SanForCertOutput{})
 	pulumi.RegisterOutputType(SanForCertPtrOutput{})
 	pulumi.RegisterOutputType(SanForCertResponseOutput{})

@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
 //
-// Other available API versions: 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ReplicationLink struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +80,9 @@ func NewReplicationLink(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:ReplicationLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20241101preview:ReplicationLink"),
 		},
 	})
 	opts = append(opts, aliases)

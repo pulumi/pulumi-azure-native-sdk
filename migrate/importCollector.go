@@ -72,6 +72,9 @@ func NewImportCollector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20240101preview:ImportCollectorsOperation"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20240115:ImportCollector"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20240303preview:ImportCollector"),
 		},
 		{

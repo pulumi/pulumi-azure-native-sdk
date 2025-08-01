@@ -22,9 +22,9 @@ type Database struct {
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The charset of the database.
+	// Character set of the database.
 	Charset pulumi.StringPtrOutput `pulumi:"charset"`
-	// The collation of the database.
+	// Collation of the database.
 	Collation pulumi.StringPtrOutput `pulumi:"collation"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -125,11 +125,11 @@ func (DatabaseState) ElementType() reflect.Type {
 }
 
 type databaseArgs struct {
-	// The charset of the database.
+	// Character set of the database.
 	Charset *string `pulumi:"charset"`
-	// The collation of the database.
+	// Collation of the database.
 	Collation *string `pulumi:"collation"`
-	// The name of the database.
+	// Name of the database.
 	DatabaseName *string `pulumi:"databaseName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -139,11 +139,11 @@ type databaseArgs struct {
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
-	// The charset of the database.
+	// Character set of the database.
 	Charset pulumi.StringPtrInput
-	// The collation of the database.
+	// Collation of the database.
 	Collation pulumi.StringPtrInput
-	// The name of the database.
+	// Name of the database.
 	DatabaseName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -193,12 +193,12 @@ func (o DatabaseOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// The charset of the database.
+// Character set of the database.
 func (o DatabaseOutput) Charset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Charset }).(pulumi.StringPtrOutput)
 }
 
-// The collation of the database.
+// Collation of the database.
 func (o DatabaseOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Collation }).(pulumi.StringPtrOutput)
 }

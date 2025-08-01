@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2023-11-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-11-01-preview, 2024-09-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAssetEndpointProfile(ctx *pulumi.Context, args *LookupAssetEndpointProfileArgs, opts ...pulumi.InvokeOption) (*LookupAssetEndpointProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssetEndpointProfileResult

@@ -8184,6 +8184,246 @@ func (o FailoverPolicyResponseArrayOutput) Index(i pulumi.IntInput) FailoverPoli
 	}).(FailoverPolicyResponseOutput)
 }
 
+// Configuration for fleetspace Account in the fleetspace.
+type FleetspaceAccountPropertiesGlobalDatabaseAccountProperties struct {
+	// The location of  global database account in the Fleetspace Account.
+	ArmLocation *string `pulumi:"armLocation"`
+	// The resource identifier of global database account in the Fleetspace Account.
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesInput is an input type that accepts FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs and FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput values.
+// You can construct a concrete instance of `FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesInput` via:
+//
+//	FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs{...}
+type FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesInput interface {
+	pulumi.Input
+
+	ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput() FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput
+	ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutputWithContext(context.Context) FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput
+}
+
+// Configuration for fleetspace Account in the fleetspace.
+type FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs struct {
+	// The location of  global database account in the Fleetspace Account.
+	ArmLocation pulumi.StringPtrInput `pulumi:"armLocation"`
+	// The resource identifier of global database account in the Fleetspace Account.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetspaceAccountPropertiesGlobalDatabaseAccountProperties)(nil)).Elem()
+}
+
+func (i FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput() FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput {
+	return i.ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutputWithContext(context.Background())
+}
+
+func (i FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutputWithContext(ctx context.Context) FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput)
+}
+
+func (i FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput() FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput {
+	return i.ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutputWithContext(ctx context.Context) FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput).ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutputWithContext(ctx)
+}
+
+// FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrInput is an input type that accepts FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs, FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtr and FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput values.
+// You can construct a concrete instance of `FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrInput` via:
+//
+//	        FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput() FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput
+	ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutputWithContext(context.Context) FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput
+}
+
+type fleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrType FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs
+
+func FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtr(v *FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs) FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrInput {
+	return (*fleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrType)(v)
+}
+
+func (*fleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetspaceAccountPropertiesGlobalDatabaseAccountProperties)(nil)).Elem()
+}
+
+func (i *fleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrType) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput() FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput {
+	return i.ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrType) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutputWithContext(ctx context.Context) FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput)
+}
+
+// Configuration for fleetspace Account in the fleetspace.
+type FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput struct{ *pulumi.OutputState }
+
+func (FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetspaceAccountPropertiesGlobalDatabaseAccountProperties)(nil)).Elem()
+}
+
+func (o FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput() FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput {
+	return o
+}
+
+func (o FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutputWithContext(ctx context.Context) FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput {
+	return o
+}
+
+func (o FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput() FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput {
+	return o.ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutputWithContext(ctx context.Context) FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetspaceAccountPropertiesGlobalDatabaseAccountProperties) *FleetspaceAccountPropertiesGlobalDatabaseAccountProperties {
+		return &v
+	}).(FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput)
+}
+
+// The location of  global database account in the Fleetspace Account.
+func (o FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput) ArmLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetspaceAccountPropertiesGlobalDatabaseAccountProperties) *string { return v.ArmLocation }).(pulumi.StringPtrOutput)
+}
+
+// The resource identifier of global database account in the Fleetspace Account.
+func (o FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetspaceAccountPropertiesGlobalDatabaseAccountProperties) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetspaceAccountPropertiesGlobalDatabaseAccountProperties)(nil)).Elem()
+}
+
+func (o FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput() FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput {
+	return o
+}
+
+func (o FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput) ToFleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutputWithContext(ctx context.Context) FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput {
+	return o
+}
+
+func (o FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput) Elem() FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput {
+	return o.ApplyT(func(v *FleetspaceAccountPropertiesGlobalDatabaseAccountProperties) FleetspaceAccountPropertiesGlobalDatabaseAccountProperties {
+		if v != nil {
+			return *v
+		}
+		var ret FleetspaceAccountPropertiesGlobalDatabaseAccountProperties
+		return ret
+	}).(FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput)
+}
+
+// The location of  global database account in the Fleetspace Account.
+func (o FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput) ArmLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetspaceAccountPropertiesGlobalDatabaseAccountProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArmLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource identifier of global database account in the Fleetspace Account.
+func (o FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetspaceAccountPropertiesGlobalDatabaseAccountProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for fleetspace Account in the fleetspace.
+type FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties struct {
+	// The location of  global database account in the Fleetspace Account.
+	ArmLocation *string `pulumi:"armLocation"`
+	// The resource identifier of global database account in the Fleetspace Account.
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// Configuration for fleetspace Account in the fleetspace.
+type FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput struct{ *pulumi.OutputState }
+
+func (FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties)(nil)).Elem()
+}
+
+func (o FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput) ToFleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput() FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput {
+	return o
+}
+
+func (o FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput) ToFleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutputWithContext(ctx context.Context) FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput {
+	return o
+}
+
+// The location of  global database account in the Fleetspace Account.
+func (o FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput) ArmLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties) *string {
+		return v.ArmLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource identifier of global database account in the Fleetspace Account.
+func (o FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties) *string {
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties)(nil)).Elem()
+}
+
+func (o FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput) ToFleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput() FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput {
+	return o
+}
+
+func (o FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput) ToFleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutputWithContext(ctx context.Context) FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput {
+	return o
+}
+
+func (o FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput) Elem() FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput {
+	return o.ApplyT(func(v *FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties) FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties {
+		if v != nil {
+			return *v
+		}
+		var ret FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties
+		return ret
+	}).(FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput)
+}
+
+// The location of  global database account in the Fleetspace Account.
+func (o FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput) ArmLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArmLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource identifier of global database account in the Fleetspace Account.
+func (o FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration for throughput pool in the fleetspace.
 type FleetspacePropertiesResponseThroughputPoolConfiguration struct {
 	// List of data regions assigned to the fleetspace. Eg [westus2]
@@ -20075,6 +20315,10 @@ func init() {
 	pulumi.RegisterOutputType(ExcludedPathResponseArrayOutput{})
 	pulumi.RegisterOutputType(FailoverPolicyResponseOutput{})
 	pulumi.RegisterOutputType(FailoverPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesOutput{})
+	pulumi.RegisterOutputType(FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesOutput{})
+	pulumi.RegisterOutputType(FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(FleetspacePropertiesResponseThroughputPoolConfigurationOutput{})
 	pulumi.RegisterOutputType(FleetspacePropertiesResponseThroughputPoolConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(FleetspacePropertiesThroughputPoolConfigurationOutput{})

@@ -13,9 +13,9 @@ import (
 
 // Container App.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2025-01-01.
 //
-// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupContainerApp(ctx *pulumi.Context, args *LookupContainerAppArgs, opts ...pulumi.InvokeOption) (*LookupContainerAppResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerAppResult
@@ -47,7 +47,7 @@ type LookupContainerAppResult struct {
 	EventStreamEndpoint string `pulumi:"eventStreamEndpoint"`
 	// The complex type of the extended location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
@@ -69,6 +69,8 @@ type LookupContainerAppResult struct {
 	OutboundIpAddresses []string `pulumi:"outboundIpAddresses"`
 	// Provisioning state of the Container App.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Running status of the Container App.
+	RunningStatus string `pulumi:"runningStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -158,7 +160,7 @@ func (o LookupContainerAppResultOutput) ExtendedLocation() ExtendedLocationRespo
 	return o.ApplyT(func(v LookupContainerAppResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupContainerAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -211,6 +213,11 @@ func (o LookupContainerAppResultOutput) OutboundIpAddresses() pulumi.StringArray
 // Provisioning state of the Container App.
 func (o LookupContainerAppResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Running status of the Container App.
+func (o LookupContainerAppResultOutput) RunningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) string { return v.RunningStatus }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

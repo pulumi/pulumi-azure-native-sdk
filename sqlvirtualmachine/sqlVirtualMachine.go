@@ -38,9 +38,9 @@ type SqlVirtualMachine struct {
 	KeyVaultCredentialSettings KeyVaultCredentialSettingsResponsePtrOutput `pulumi:"keyVaultCredentialSettings"`
 	// SQL IaaS Agent least privilege mode.
 	LeastPrivilegeMode pulumi.StringPtrOutput `pulumi:"leastPrivilegeMode"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Operating System of the current SQL Virtual Machine.
 	OsType pulumi.StringOutput `pulumi:"osType"`
@@ -60,13 +60,13 @@ type SqlVirtualMachine struct {
 	SqlVirtualMachineGroupResourceId pulumi.StringPtrOutput `pulumi:"sqlVirtualMachineGroupResourceId"`
 	// Storage Configuration Settings.
 	StorageConfigurationSettings StorageConfigurationSettingsResponsePtrOutput `pulumi:"storageConfigurationSettings"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Troubleshooting status
 	TroubleshootingStatus TroubleshootingStatusResponseOutput `pulumi:"troubleshootingStatus"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Virtual Machine Identity details used for Sql IaaS extension configurations.
 	VirtualMachineIdentitySettings VirtualMachineIdentityResponsePtrOutput `pulumi:"virtualMachineIdentitySettings"`
@@ -174,9 +174,9 @@ type sqlVirtualMachineArgs struct {
 	KeyVaultCredentialSettings *KeyVaultCredentialSettings `pulumi:"keyVaultCredentialSettings"`
 	// SQL IaaS Agent least privilege mode.
 	LeastPrivilegeMode *string `pulumi:"leastPrivilegeMode"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// SQL Server configuration management settings.
 	ServerConfigurationsManagementSettings *ServerConfigurationsManagementSettings `pulumi:"serverConfigurationsManagementSettings"`
@@ -222,9 +222,9 @@ type SqlVirtualMachineArgs struct {
 	KeyVaultCredentialSettings KeyVaultCredentialSettingsPtrInput
 	// SQL IaaS Agent least privilege mode.
 	LeastPrivilegeMode pulumi.StringPtrInput
-	// Resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// SQL Server configuration management settings.
 	ServerConfigurationsManagementSettings ServerConfigurationsManagementSettingsPtrInput
@@ -338,12 +338,12 @@ func (o SqlVirtualMachineOutput) LeastPrivilegeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringPtrOutput { return v.LeastPrivilegeMode }).(pulumi.StringPtrOutput)
 }
 
-// Resource location.
+// The geo-location where the resource lives
 func (o SqlVirtualMachineOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o SqlVirtualMachineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -397,7 +397,7 @@ func (o SqlVirtualMachineOutput) StorageConfigurationSettings() StorageConfigura
 	}).(StorageConfigurationSettingsResponsePtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SqlVirtualMachineOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -412,7 +412,7 @@ func (o SqlVirtualMachineOutput) TroubleshootingStatus() TroubleshootingStatusRe
 	return o.ApplyT(func(v *SqlVirtualMachine) TroubleshootingStatusResponseOutput { return v.TroubleshootingStatus }).(TroubleshootingStatusResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SqlVirtualMachineOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
