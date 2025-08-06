@@ -930,6 +930,9 @@ func NewPremiumMicrosoftDefenderForThreatIntelligence(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250601:PremiumMicrosoftDefenderForThreatIntelligence"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250701preview:PremiumMicrosoftDefenderForThreatIntelligence"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:AADDataConnector"),
 		},
 		{
