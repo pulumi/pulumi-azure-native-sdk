@@ -26,8 +26,8 @@ type Channel struct {
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// The geo-location where the resource lives
-	Location pulumi.StringOutput `pulumi:"location"`
+	// Specifies the location of the resource.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The set of properties specific to bot channel resource
@@ -36,7 +36,7 @@ type Channel struct {
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -121,7 +121,7 @@ type channelArgs struct {
 	ChannelName *string `pulumi:"channelName"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind *string `pulumi:"kind"`
-	// The geo-location where the resource lives
+	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
 	// The set of properties specific to bot channel resource
 	Properties interface{} `pulumi:"properties"`
@@ -131,7 +131,7 @@ type channelArgs struct {
 	ResourceName string `pulumi:"resourceName"`
 	// Gets or sets the SKU of the resource.
 	Sku *Sku `pulumi:"sku"`
-	// Resource tags.
+	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -141,7 +141,7 @@ type ChannelArgs struct {
 	ChannelName pulumi.StringPtrInput
 	// Required. Gets or sets the Kind of the resource.
 	Kind pulumi.StringPtrInput
-	// The geo-location where the resource lives
+	// Specifies the location of the resource.
 	Location pulumi.StringPtrInput
 	// The set of properties specific to bot channel resource
 	Properties pulumi.Input
@@ -151,7 +151,7 @@ type ChannelArgs struct {
 	ResourceName pulumi.StringInput
 	// Gets or sets the SKU of the resource.
 	Sku SkuPtrInput
-	// Resource tags.
+	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapInput
 }
 
@@ -207,9 +207,9 @@ func (o ChannelOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// The geo-location where the resource lives
-func (o ChannelOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+// Specifies the location of the resource.
+func (o ChannelOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -232,7 +232,7 @@ func (o ChannelOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Channel) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags.
+// Contains resource tags defined as key/value pairs.
 func (o ChannelOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
