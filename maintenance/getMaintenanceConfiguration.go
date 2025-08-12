@@ -47,8 +47,8 @@ type LookupMaintenanceConfigurationResult struct {
 	Id string `pulumi:"id"`
 	// The input parameters to be passed to the patch run operation.
 	InstallPatches *InputPatchConfigurationResponse `pulumi:"installPatches"`
-	// The geo-location where the resource lives
-	Location string `pulumi:"location"`
+	// Gets or sets location of the resource
+	Location *string `pulumi:"location"`
 	// Gets or sets maintenanceScope of the configuration
 	MaintenanceScope *string `pulumi:"maintenanceScope"`
 	// The name of the resource
@@ -61,7 +61,7 @@ type LookupMaintenanceConfigurationResult struct {
 	StartDateTime *string `pulumi:"startDateTime"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// Gets or sets tags of the resource
 	Tags map[string]string `pulumi:"tags"`
 	// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
 	TimeZone *string `pulumi:"timeZone"`
@@ -146,9 +146,9 @@ func (o LookupMaintenanceConfigurationResultOutput) InstallPatches() InputPatchC
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) *InputPatchConfigurationResponse { return v.InstallPatches }).(InputPatchConfigurationResponsePtrOutput)
 }
 
-// The geo-location where the resource lives
-func (o LookupMaintenanceConfigurationResultOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) string { return v.Location }).(pulumi.StringOutput)
+// Gets or sets location of the resource
+func (o LookupMaintenanceConfigurationResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets maintenanceScope of the configuration
@@ -181,7 +181,7 @@ func (o LookupMaintenanceConfigurationResultOutput) SystemData() SystemDataRespo
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags.
+// Gets or sets tags of the resource
 func (o LookupMaintenanceConfigurationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMaintenanceConfigurationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
