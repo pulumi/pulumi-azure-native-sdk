@@ -43,8 +43,8 @@ type LookupBotResult struct {
 	Id string `pulumi:"id"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind *string `pulumi:"kind"`
-	// The geo-location where the resource lives
-	Location string `pulumi:"location"`
+	// Specifies the location of the resource.
+	Location *string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The set of properties specific to bot resource
@@ -53,7 +53,7 @@ type LookupBotResult struct {
 	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -126,9 +126,9 @@ func (o LookupBotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// The geo-location where the resource lives
-func (o LookupBotResultOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBotResult) string { return v.Location }).(pulumi.StringOutput)
+// Specifies the location of the resource.
+func (o LookupBotResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupBotResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -151,7 +151,7 @@ func (o LookupBotResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupBotResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags.
+// Contains resource tags defined as key/value pairs.
 func (o LookupBotResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupBotResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

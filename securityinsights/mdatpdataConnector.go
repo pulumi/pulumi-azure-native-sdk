@@ -881,6 +881,9 @@ func NewMDATPDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250601:MDATPDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250701preview:MDATPDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:AADDataConnector"),
 		},
 		{

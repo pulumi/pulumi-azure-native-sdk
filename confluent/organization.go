@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2021-12-01.
 //
-// Other available API versions: 2021-12-01, 2023-08-22, 2024-02-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-12-01, 2023-08-22, 2024-02-13, 2025-07-17-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Organization struct {
 	pulumi.CustomResourceState
 
@@ -86,6 +86,9 @@ func NewOrganization(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:confluent/v20240701:Organization"),
+		},
+		{
+			Type: pulumi.String("azure-native:confluent/v20250717preview:Organization"),
 		},
 	})
 	opts = append(opts, aliases)

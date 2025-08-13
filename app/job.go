@@ -14,9 +14,9 @@ import (
 
 // Container App Job
 //
-// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 //
-// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Job struct {
 	pulumi.CustomResourceState
 
@@ -28,6 +28,8 @@ type Job struct {
 	EnvironmentId pulumi.StringPtrOutput `pulumi:"environmentId"`
 	// The endpoint of the eventstream of the container apps job.
 	EventStreamEndpoint pulumi.StringOutput `pulumi:"eventStreamEndpoint"`
+	// The complex type of the extended location.
+	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -38,6 +40,8 @@ type Job struct {
 	OutboundIpAddresses pulumi.StringArrayOutput `pulumi:"outboundIpAddresses"`
 	// Provisioning state of the Container Apps Job.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Current running state of the job
+	RunningState pulumi.StringOutput `pulumi:"runningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -139,6 +143,8 @@ type jobArgs struct {
 	Configuration *JobConfiguration `pulumi:"configuration"`
 	// Resource ID of environment.
 	EnvironmentId *string `pulumi:"environmentId"`
+	// The complex type of the extended location.
+	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Job Name
@@ -161,6 +167,8 @@ type JobArgs struct {
 	Configuration JobConfigurationPtrInput
 	// Resource ID of environment.
 	EnvironmentId pulumi.StringPtrInput
+	// The complex type of the extended location.
+	ExtendedLocation ExtendedLocationPtrInput
 	// Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
 	Identity ManagedServiceIdentityPtrInput
 	// Job Name
@@ -234,6 +242,11 @@ func (o JobOutput) EventStreamEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.EventStreamEndpoint }).(pulumi.StringOutput)
 }
 
+// The complex type of the extended location.
+func (o JobOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *Job) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
 // Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
 func (o JobOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *Job) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
@@ -257,6 +270,11 @@ func (o JobOutput) OutboundIpAddresses() pulumi.StringArrayOutput {
 // Provisioning state of the Container Apps Job.
 func (o JobOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Current running state of the job
+func (o JobOutput) RunningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.RunningState }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -30,8 +30,8 @@ type MaintenanceConfiguration struct {
 	ExtensionProperties pulumi.StringMapOutput `pulumi:"extensionProperties"`
 	// The input parameters to be passed to the patch run operation.
 	InstallPatches InputPatchConfigurationResponsePtrOutput `pulumi:"installPatches"`
-	// The geo-location where the resource lives
-	Location pulumi.StringOutput `pulumi:"location"`
+	// Gets or sets location of the resource
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Gets or sets maintenanceScope of the configuration
 	MaintenanceScope pulumi.StringPtrOutput `pulumi:"maintenanceScope"`
 	// The name of the resource
@@ -44,7 +44,7 @@ type MaintenanceConfiguration struct {
 	StartDateTime pulumi.StringPtrOutput `pulumi:"startDateTime"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// Gets or sets tags of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
 	TimeZone pulumi.StringPtrOutput `pulumi:"timeZone"`
@@ -144,7 +144,7 @@ type maintenanceConfigurationArgs struct {
 	ExtensionProperties map[string]string `pulumi:"extensionProperties"`
 	// The input parameters to be passed to the patch run operation.
 	InstallPatches *InputPatchConfiguration `pulumi:"installPatches"`
-	// The geo-location where the resource lives
+	// Gets or sets location of the resource
 	Location *string `pulumi:"location"`
 	// Gets or sets maintenanceScope of the configuration
 	MaintenanceScope *string `pulumi:"maintenanceScope"`
@@ -158,7 +158,7 @@ type maintenanceConfigurationArgs struct {
 	ResourceName *string `pulumi:"resourceName"`
 	// Effective start date of the maintenance window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
 	StartDateTime *string `pulumi:"startDateTime"`
-	// Resource tags.
+	// Gets or sets tags of the resource
 	Tags map[string]string `pulumi:"tags"`
 	// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
 	TimeZone *string `pulumi:"timeZone"`
@@ -176,7 +176,7 @@ type MaintenanceConfigurationArgs struct {
 	ExtensionProperties pulumi.StringMapInput
 	// The input parameters to be passed to the patch run operation.
 	InstallPatches InputPatchConfigurationPtrInput
-	// The geo-location where the resource lives
+	// Gets or sets location of the resource
 	Location pulumi.StringPtrInput
 	// Gets or sets maintenanceScope of the configuration
 	MaintenanceScope pulumi.StringPtrInput
@@ -190,7 +190,7 @@ type MaintenanceConfigurationArgs struct {
 	ResourceName pulumi.StringPtrInput
 	// Effective start date of the maintenance window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
 	StartDateTime pulumi.StringPtrInput
-	// Resource tags.
+	// Gets or sets tags of the resource
 	Tags pulumi.StringMapInput
 	// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
 	TimeZone pulumi.StringPtrInput
@@ -260,9 +260,9 @@ func (o MaintenanceConfigurationOutput) InstallPatches() InputPatchConfiguration
 	return o.ApplyT(func(v *MaintenanceConfiguration) InputPatchConfigurationResponsePtrOutput { return v.InstallPatches }).(InputPatchConfigurationResponsePtrOutput)
 }
 
-// The geo-location where the resource lives
-func (o MaintenanceConfigurationOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+// Gets or sets location of the resource
+func (o MaintenanceConfigurationOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets maintenanceScope of the configuration
@@ -295,7 +295,7 @@ func (o MaintenanceConfigurationOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *MaintenanceConfiguration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags.
+// Gets or sets tags of the resource
 func (o MaintenanceConfigurationOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
