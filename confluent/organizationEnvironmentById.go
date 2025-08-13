@@ -15,6 +15,8 @@ import (
 // Details about environment name, metadata and environment id of an environment
 //
 // Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
+//
+// Other available API versions: 2025-07-17-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type OrganizationEnvironmentById struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +52,9 @@ func NewOrganizationEnvironmentById(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:confluent/v20240701:OrganizationEnvironmentById"),
+		},
+		{
+			Type: pulumi.String("azure-native:confluent/v20250717preview:OrganizationEnvironmentById"),
 		},
 	})
 	opts = append(opts, aliases)

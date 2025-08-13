@@ -14,9 +14,9 @@ import (
 
 // Dapr Component.
 //
-// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 //
-// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DaprComponent struct {
 	pulumi.CustomResourceState
 
@@ -38,6 +38,8 @@ type DaprComponent struct {
 	SecretStoreComponent pulumi.StringPtrOutput `pulumi:"secretStoreComponent"`
 	// Collection of secrets used by a Dapr component
 	Secrets SecretResponseArrayOutput `pulumi:"secrets"`
+	// List of container app services that are bound to the Dapr component
+	ServiceComponentBind DaprComponentServiceBindingResponseArrayOutput `pulumi:"serviceComponentBind"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -166,6 +168,8 @@ type daprComponentArgs struct {
 	SecretStoreComponent *string `pulumi:"secretStoreComponent"`
 	// Collection of secrets used by a Dapr component
 	Secrets []Secret `pulumi:"secrets"`
+	// List of container app services that are bound to the Dapr component
+	ServiceComponentBind []DaprComponentServiceBinding `pulumi:"serviceComponentBind"`
 	// Component version
 	Version *string `pulumi:"version"`
 }
@@ -192,6 +196,8 @@ type DaprComponentArgs struct {
 	SecretStoreComponent pulumi.StringPtrInput
 	// Collection of secrets used by a Dapr component
 	Secrets SecretArrayInput
+	// List of container app services that are bound to the Dapr component
+	ServiceComponentBind DaprComponentServiceBindingArrayInput
 	// Component version
 	Version pulumi.StringPtrInput
 }
@@ -276,6 +282,11 @@ func (o DaprComponentOutput) SecretStoreComponent() pulumi.StringPtrOutput {
 // Collection of secrets used by a Dapr component
 func (o DaprComponentOutput) Secrets() SecretResponseArrayOutput {
 	return o.ApplyT(func(v *DaprComponent) SecretResponseArrayOutput { return v.Secrets }).(SecretResponseArrayOutput)
+}
+
+// List of container app services that are bound to the Dapr component
+func (o DaprComponentOutput) ServiceComponentBind() DaprComponentServiceBindingResponseArrayOutput {
+	return o.ApplyT(func(v *DaprComponent) DaprComponentServiceBindingResponseArrayOutput { return v.ServiceComponentBind }).(DaprComponentServiceBindingResponseArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

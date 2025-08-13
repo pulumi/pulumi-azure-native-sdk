@@ -14,14 +14,18 @@ import (
 
 // An environment for hosting container apps
 //
-// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 //
-// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ManagedEnvironment struct {
 	pulumi.CustomResourceState
 
-	// Cluster configuration which enables the log daemon to export app logs to configured destination.
+	// Environment level Application Insights configuration
+	AppInsightsConfiguration AppInsightsConfigurationResponsePtrOutput `pulumi:"appInsightsConfiguration"`
+	// Cluster configuration which enables the log daemon to export app logs to configured destination
 	AppLogsConfiguration AppLogsConfigurationResponsePtrOutput `pulumi:"appLogsConfiguration"`
+	// The list of availability zones to use for managed environment
+	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Custom domain configuration for the environment
@@ -36,12 +40,16 @@ type ManagedEnvironment struct {
 	DefaultDomain pulumi.StringOutput `pulumi:"defaultDomain"`
 	// Any errors that occurred during deployment or deployment validation
 	DeploymentErrors pulumi.StringOutput `pulumi:"deploymentErrors"`
+	// Disk encryption configuration for the Managed Environment.
+	DiskEncryptionConfiguration DiskEncryptionConfigurationResponsePtrOutput `pulumi:"diskEncryptionConfiguration"`
 	// The endpoint of the eventstream of the Environment.
 	EventStreamEndpoint pulumi.StringOutput `pulumi:"eventStreamEndpoint"`
 	// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
 	InfrastructureResourceGroup pulumi.StringPtrOutput `pulumi:"infrastructureResourceGroup"`
+	// Ingress configuration for the Managed Environment.
+	IngressConfiguration IngressConfigurationResponsePtrOutput `pulumi:"ingressConfiguration"`
 	// The configuration of Keda component.
 	KedaConfiguration KedaConfigurationResponsePtrOutput `pulumi:"kedaConfiguration"`
 	// Kind of the Environment.
@@ -50,12 +58,20 @@ type ManagedEnvironment struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Environment Open Telemetry configuration
+	OpenTelemetryConfiguration OpenTelemetryConfigurationResponsePtrOutput `pulumi:"openTelemetryConfiguration"`
 	// Peer authentication settings for the Managed Environment
 	PeerAuthentication ManagedEnvironmentResponsePeerAuthenticationPtrOutput `pulumi:"peerAuthentication"`
 	// Peer traffic settings for the Managed Environment
 	PeerTrafficConfiguration ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput `pulumi:"peerTrafficConfiguration"`
+	// Private endpoint connections to the resource.
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	// Private Link Default Domain Name for the environment
+	PrivateLinkDefaultDomain pulumi.StringOutput `pulumi:"privateLinkDefaultDomain"`
 	// Provisioning state of the Environment.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
+	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Static IP of the Environment
 	StaticIp pulumi.StringOutput `pulumi:"staticIp"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -166,28 +182,40 @@ func (ManagedEnvironmentState) ElementType() reflect.Type {
 }
 
 type managedEnvironmentArgs struct {
-	// Cluster configuration which enables the log daemon to export app logs to configured destination.
+	// Environment level Application Insights configuration
+	AppInsightsConfiguration *AppInsightsConfiguration `pulumi:"appInsightsConfiguration"`
+	// Cluster configuration which enables the log daemon to export app logs to configured destination
 	AppLogsConfiguration *AppLogsConfiguration `pulumi:"appLogsConfiguration"`
+	// The list of availability zones to use for managed environment
+	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Custom domain configuration for the environment
 	CustomDomainConfiguration *CustomDomainConfiguration `pulumi:"customDomainConfiguration"`
 	// Application Insights connection string used by Dapr to export Service to Service communication telemetry
 	DaprAIConnectionString *string `pulumi:"daprAIConnectionString"`
 	// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
 	DaprAIInstrumentationKey *string `pulumi:"daprAIInstrumentationKey"`
+	// Disk encryption configuration for the Managed Environment.
+	DiskEncryptionConfiguration *DiskEncryptionConfiguration `pulumi:"diskEncryptionConfiguration"`
 	// Name of the Environment.
 	EnvironmentName *string `pulumi:"environmentName"`
 	// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
 	InfrastructureResourceGroup *string `pulumi:"infrastructureResourceGroup"`
+	// Ingress configuration for the Managed Environment.
+	IngressConfiguration *IngressConfiguration `pulumi:"ingressConfiguration"`
 	// Kind of the Environment.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Environment Open Telemetry configuration
+	OpenTelemetryConfiguration *OpenTelemetryConfiguration `pulumi:"openTelemetryConfiguration"`
 	// Peer authentication settings for the Managed Environment
 	PeerAuthentication *ManagedEnvironmentPeerAuthentication `pulumi:"peerAuthentication"`
 	// Peer traffic settings for the Managed Environment
 	PeerTrafficConfiguration *ManagedEnvironmentPeerTrafficConfiguration `pulumi:"peerTrafficConfiguration"`
+	// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -202,28 +230,40 @@ type managedEnvironmentArgs struct {
 
 // The set of arguments for constructing a ManagedEnvironment resource.
 type ManagedEnvironmentArgs struct {
-	// Cluster configuration which enables the log daemon to export app logs to configured destination.
+	// Environment level Application Insights configuration
+	AppInsightsConfiguration AppInsightsConfigurationPtrInput
+	// Cluster configuration which enables the log daemon to export app logs to configured destination
 	AppLogsConfiguration AppLogsConfigurationPtrInput
+	// The list of availability zones to use for managed environment
+	AvailabilityZones pulumi.StringArrayInput
 	// Custom domain configuration for the environment
 	CustomDomainConfiguration CustomDomainConfigurationPtrInput
 	// Application Insights connection string used by Dapr to export Service to Service communication telemetry
 	DaprAIConnectionString pulumi.StringPtrInput
 	// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
 	DaprAIInstrumentationKey pulumi.StringPtrInput
+	// Disk encryption configuration for the Managed Environment.
+	DiskEncryptionConfiguration DiskEncryptionConfigurationPtrInput
 	// Name of the Environment.
 	EnvironmentName pulumi.StringPtrInput
 	// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity ManagedServiceIdentityPtrInput
 	// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
 	InfrastructureResourceGroup pulumi.StringPtrInput
+	// Ingress configuration for the Managed Environment.
+	IngressConfiguration IngressConfigurationPtrInput
 	// Kind of the Environment.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Environment Open Telemetry configuration
+	OpenTelemetryConfiguration OpenTelemetryConfigurationPtrInput
 	// Peer authentication settings for the Managed Environment
 	PeerAuthentication ManagedEnvironmentPeerAuthenticationPtrInput
 	// Peer traffic settings for the Managed Environment
 	PeerTrafficConfiguration ManagedEnvironmentPeerTrafficConfigurationPtrInput
+	// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
+	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -273,9 +313,21 @@ func (o ManagedEnvironmentOutput) ToManagedEnvironmentOutputWithContext(ctx cont
 	return o
 }
 
-// Cluster configuration which enables the log daemon to export app logs to configured destination.
+// Environment level Application Insights configuration
+func (o ManagedEnvironmentOutput) AppInsightsConfiguration() AppInsightsConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) AppInsightsConfigurationResponsePtrOutput {
+		return v.AppInsightsConfiguration
+	}).(AppInsightsConfigurationResponsePtrOutput)
+}
+
+// Cluster configuration which enables the log daemon to export app logs to configured destination
 func (o ManagedEnvironmentOutput) AppLogsConfiguration() AppLogsConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) AppLogsConfigurationResponsePtrOutput { return v.AppLogsConfiguration }).(AppLogsConfigurationResponsePtrOutput)
+}
+
+// The list of availability zones to use for managed environment
+func (o ManagedEnvironmentOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
 // The Azure API version of the resource.
@@ -315,6 +367,13 @@ func (o ManagedEnvironmentOutput) DeploymentErrors() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.DeploymentErrors }).(pulumi.StringOutput)
 }
 
+// Disk encryption configuration for the Managed Environment.
+func (o ManagedEnvironmentOutput) DiskEncryptionConfiguration() DiskEncryptionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) DiskEncryptionConfigurationResponsePtrOutput {
+		return v.DiskEncryptionConfiguration
+	}).(DiskEncryptionConfigurationResponsePtrOutput)
+}
+
 // The endpoint of the eventstream of the Environment.
 func (o ManagedEnvironmentOutput) EventStreamEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.EventStreamEndpoint }).(pulumi.StringOutput)
@@ -328,6 +387,11 @@ func (o ManagedEnvironmentOutput) Identity() ManagedServiceIdentityResponsePtrOu
 // Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
 func (o ManagedEnvironmentOutput) InfrastructureResourceGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringPtrOutput { return v.InfrastructureResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Ingress configuration for the Managed Environment.
+func (o ManagedEnvironmentOutput) IngressConfiguration() IngressConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) IngressConfigurationResponsePtrOutput { return v.IngressConfiguration }).(IngressConfigurationResponsePtrOutput)
 }
 
 // The configuration of Keda component.
@@ -350,6 +414,13 @@ func (o ManagedEnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Environment Open Telemetry configuration
+func (o ManagedEnvironmentOutput) OpenTelemetryConfiguration() OpenTelemetryConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) OpenTelemetryConfigurationResponsePtrOutput {
+		return v.OpenTelemetryConfiguration
+	}).(OpenTelemetryConfigurationResponsePtrOutput)
+}
+
 // Peer authentication settings for the Managed Environment
 func (o ManagedEnvironmentOutput) PeerAuthentication() ManagedEnvironmentResponsePeerAuthenticationPtrOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) ManagedEnvironmentResponsePeerAuthenticationPtrOutput {
@@ -364,9 +435,26 @@ func (o ManagedEnvironmentOutput) PeerTrafficConfiguration() ManagedEnvironmentR
 	}).(ManagedEnvironmentResponsePeerTrafficConfigurationPtrOutput)
 }
 
+// Private endpoint connections to the resource.
+func (o ManagedEnvironmentOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) PrivateEndpointConnectionResponseArrayOutput {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// Private Link Default Domain Name for the environment
+func (o ManagedEnvironmentOutput) PrivateLinkDefaultDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.PrivateLinkDefaultDomain }).(pulumi.StringOutput)
+}
+
 // Provisioning state of the Environment.
 func (o ManagedEnvironmentOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
+func (o ManagedEnvironmentOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedEnvironment) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Static IP of the Environment

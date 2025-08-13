@@ -13,9 +13,9 @@ import (
 
 // Container App.
 //
-// Uses Azure REST API version 2025-01-01.
+// Uses Azure REST API version 2025-02-02-preview.
 //
-// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupContainerApp(ctx *pulumi.Context, args *LookupContainerAppArgs, opts ...pulumi.InvokeOption) (*LookupContainerAppResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerAppResult
@@ -41,6 +41,8 @@ type LookupContainerAppResult struct {
 	Configuration *ConfigurationResponse `pulumi:"configuration"`
 	// Id used to verify domain name ownership
 	CustomDomainVerificationId string `pulumi:"customDomainVerificationId"`
+	// Any errors that occurred during deployment
+	DeploymentErrors string `pulumi:"deploymentErrors"`
 	// Resource ID of environment.
 	EnvironmentId *string `pulumi:"environmentId"`
 	// The endpoint of the eventstream of the container app.
@@ -51,6 +53,8 @@ type LookupContainerAppResult struct {
 	Id string `pulumi:"id"`
 	// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
+	Kind *string `pulumi:"kind"`
 	// Name of the latest ready revision of the Container App.
 	LatestReadyRevisionName string `pulumi:"latestReadyRevisionName"`
 	// Fully Qualified Domain Name of the latest revision of the Container App.
@@ -67,6 +71,8 @@ type LookupContainerAppResult struct {
 	Name string `pulumi:"name"`
 	// Outbound IP Addresses for container app.
 	OutboundIpAddresses []string `pulumi:"outboundIpAddresses"`
+	// Container App auto patch configuration.
+	PatchingConfiguration *ContainerAppResponsePatchingConfiguration `pulumi:"patchingConfiguration"`
 	// Provisioning state of the Container App.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Running status of the Container App.
@@ -145,6 +151,11 @@ func (o LookupContainerAppResultOutput) CustomDomainVerificationId() pulumi.Stri
 	return o.ApplyT(func(v LookupContainerAppResult) string { return v.CustomDomainVerificationId }).(pulumi.StringOutput)
 }
 
+// Any errors that occurred during deployment
+func (o LookupContainerAppResultOutput) DeploymentErrors() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) string { return v.DeploymentErrors }).(pulumi.StringOutput)
+}
+
 // Resource ID of environment.
 func (o LookupContainerAppResultOutput) EnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
@@ -168,6 +179,11 @@ func (o LookupContainerAppResultOutput) Id() pulumi.StringOutput {
 // managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 func (o LookupContainerAppResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
+func (o LookupContainerAppResultOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // Name of the latest ready revision of the Container App.
@@ -208,6 +224,13 @@ func (o LookupContainerAppResultOutput) Name() pulumi.StringOutput {
 // Outbound IP Addresses for container app.
 func (o LookupContainerAppResultOutput) OutboundIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupContainerAppResult) []string { return v.OutboundIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Container App auto patch configuration.
+func (o LookupContainerAppResultOutput) PatchingConfiguration() ContainerAppResponsePatchingConfigurationPtrOutput {
+	return o.ApplyT(func(v LookupContainerAppResult) *ContainerAppResponsePatchingConfiguration {
+		return v.PatchingConfiguration
+	}).(ContainerAppResponsePatchingConfigurationPtrOutput)
 }
 
 // Provisioning state of the Container App.

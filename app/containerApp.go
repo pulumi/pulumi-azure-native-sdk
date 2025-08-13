@@ -14,9 +14,9 @@ import (
 
 // Container App.
 //
-// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 //
-// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ContainerApp struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +26,8 @@ type ContainerApp struct {
 	Configuration ConfigurationResponsePtrOutput `pulumi:"configuration"`
 	// Id used to verify domain name ownership
 	CustomDomainVerificationId pulumi.StringOutput `pulumi:"customDomainVerificationId"`
+	// Any errors that occurred during deployment
+	DeploymentErrors pulumi.StringOutput `pulumi:"deploymentErrors"`
 	// Resource ID of environment.
 	EnvironmentId pulumi.StringPtrOutput `pulumi:"environmentId"`
 	// The endpoint of the eventstream of the container app.
@@ -34,6 +36,8 @@ type ContainerApp struct {
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	// Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
+	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Name of the latest ready revision of the Container App.
 	LatestReadyRevisionName pulumi.StringOutput `pulumi:"latestReadyRevisionName"`
 	// Fully Qualified Domain Name of the latest revision of the Container App.
@@ -50,6 +54,8 @@ type ContainerApp struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Outbound IP Addresses for container app.
 	OutboundIpAddresses pulumi.StringArrayOutput `pulumi:"outboundIpAddresses"`
+	// Container App auto patch configuration.
+	PatchingConfiguration ContainerAppResponsePatchingConfigurationPtrOutput `pulumi:"patchingConfiguration"`
 	// Provisioning state of the Container App.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Running status of the Container App.
@@ -176,12 +182,16 @@ type containerAppArgs struct {
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	// Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
+	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy *string `pulumi:"managedBy"`
 	// Deprecated. Resource ID of the Container App's environment.
 	ManagedEnvironmentId *string `pulumi:"managedEnvironmentId"`
+	// Container App auto patch configuration.
+	PatchingConfiguration *ContainerAppPatchingConfiguration `pulumi:"patchingConfiguration"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -204,12 +214,16 @@ type ContainerAppArgs struct {
 	ExtendedLocation ExtendedLocationPtrInput
 	// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 	Identity ManagedServiceIdentityPtrInput
+	// Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
+	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrInput
 	// Deprecated. Resource ID of the Container App's environment.
 	ManagedEnvironmentId pulumi.StringPtrInput
+	// Container App auto patch configuration.
+	PatchingConfiguration ContainerAppPatchingConfigurationPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -272,6 +286,11 @@ func (o ContainerAppOutput) CustomDomainVerificationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerApp) pulumi.StringOutput { return v.CustomDomainVerificationId }).(pulumi.StringOutput)
 }
 
+// Any errors that occurred during deployment
+func (o ContainerAppOutput) DeploymentErrors() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerApp) pulumi.StringOutput { return v.DeploymentErrors }).(pulumi.StringOutput)
+}
+
 // Resource ID of environment.
 func (o ContainerAppOutput) EnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerApp) pulumi.StringPtrOutput { return v.EnvironmentId }).(pulumi.StringPtrOutput)
@@ -290,6 +309,11 @@ func (o ContainerAppOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput
 // managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
 func (o ContainerAppOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *ContainerApp) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
+func (o ContainerAppOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerApp) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // Name of the latest ready revision of the Container App.
@@ -330,6 +354,13 @@ func (o ContainerAppOutput) Name() pulumi.StringOutput {
 // Outbound IP Addresses for container app.
 func (o ContainerAppOutput) OutboundIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ContainerApp) pulumi.StringArrayOutput { return v.OutboundIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Container App auto patch configuration.
+func (o ContainerAppOutput) PatchingConfiguration() ContainerAppResponsePatchingConfigurationPtrOutput {
+	return o.ApplyT(func(v *ContainerApp) ContainerAppResponsePatchingConfigurationPtrOutput {
+		return v.PatchingConfiguration
+	}).(ContainerAppResponsePatchingConfigurationPtrOutput)
 }
 
 // Provisioning state of the Container App.
