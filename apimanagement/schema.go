@@ -104,6 +104,9 @@ func NewSchema(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Schema"),
 		},
 		{
+			Type: pulumi.String("azure-native:apimanagement/v20241001preview:Schema"),
+		},
+		{
 			Type: pulumi.String("azure-native:apimanagement:GlobalSchema"),
 		},
 	})

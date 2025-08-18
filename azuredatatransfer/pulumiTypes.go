@@ -17,17 +17,17 @@ var _ = utilities.GetEnvOrDefault
 type ApiFlowOptionsResponse struct {
 	// Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked
 	ApiMode *string `pulumi:"apiMode"`
-	// Optional field to override the audience of the remote endpoint
+	// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 	AudienceOverride *string `pulumi:"audienceOverride"`
 	// Unique CNAME to represent the Azure Data Transfer API Flow instance
 	Cname *string `pulumi:"cname"`
-	// Flag for if Azure Data Transfer API Flow should extract the user token
+	// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 	IdentityTranslation *string `pulumi:"identityTranslation"`
-	// Remote stub app registration Client ID
+	// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 	RemoteCallingModeClientId *string `pulumi:"remoteCallingModeClientId"`
-	// Remote host to which communication needs to be made
+	// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the remoteEndpointSettings.endpoint property instead.
 	RemoteEndpoint *string `pulumi:"remoteEndpoint"`
-	// Sender's app user assigned Manage Identity client ID
+	// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 	SenderClientId *string `pulumi:"senderClientId"`
 }
 
@@ -51,7 +51,7 @@ func (o ApiFlowOptionsResponseOutput) ApiMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.ApiMode }).(pulumi.StringPtrOutput)
 }
 
-// Optional field to override the audience of the remote endpoint
+// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 func (o ApiFlowOptionsResponseOutput) AudienceOverride() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.AudienceOverride }).(pulumi.StringPtrOutput)
 }
@@ -61,22 +61,22 @@ func (o ApiFlowOptionsResponseOutput) Cname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.Cname }).(pulumi.StringPtrOutput)
 }
 
-// Flag for if Azure Data Transfer API Flow should extract the user token
+// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 func (o ApiFlowOptionsResponseOutput) IdentityTranslation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.IdentityTranslation }).(pulumi.StringPtrOutput)
 }
 
-// Remote stub app registration Client ID
+// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 func (o ApiFlowOptionsResponseOutput) RemoteCallingModeClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.RemoteCallingModeClientId }).(pulumi.StringPtrOutput)
 }
 
-// Remote host to which communication needs to be made
+// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the remoteEndpointSettings.endpoint property instead.
 func (o ApiFlowOptionsResponseOutput) RemoteEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.RemoteEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// Sender's app user assigned Manage Identity client ID
+// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 func (o ApiFlowOptionsResponseOutput) SenderClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFlowOptionsResponse) *string { return v.SenderClientId }).(pulumi.StringPtrOutput)
 }
@@ -115,7 +115,7 @@ func (o ApiFlowOptionsResponsePtrOutput) ApiMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional field to override the audience of the remote endpoint
+// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 func (o ApiFlowOptionsResponsePtrOutput) AudienceOverride() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
 		if v == nil {
@@ -135,7 +135,7 @@ func (o ApiFlowOptionsResponsePtrOutput) Cname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Flag for if Azure Data Transfer API Flow should extract the user token
+// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 func (o ApiFlowOptionsResponsePtrOutput) IdentityTranslation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
 		if v == nil {
@@ -145,7 +145,7 @@ func (o ApiFlowOptionsResponsePtrOutput) IdentityTranslation() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Remote stub app registration Client ID
+// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 func (o ApiFlowOptionsResponsePtrOutput) RemoteCallingModeClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
 		if v == nil {
@@ -155,7 +155,7 @@ func (o ApiFlowOptionsResponsePtrOutput) RemoteCallingModeClientId() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Remote host to which communication needs to be made
+// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the remoteEndpointSettings.endpoint property instead.
 func (o ApiFlowOptionsResponsePtrOutput) RemoteEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
 		if v == nil {
@@ -165,7 +165,7 @@ func (o ApiFlowOptionsResponsePtrOutput) RemoteEndpoint() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Sender's app user assigned Manage Identity client ID
+// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
 func (o ApiFlowOptionsResponsePtrOutput) SenderClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFlowOptionsResponse) *string {
 		if v == nil {
@@ -1187,7 +1187,7 @@ type FlowPropertiesResponse struct {
 	ConsumerGroup *string `pulumi:"consumerGroup"`
 	// The URI to the customer managed key for this flow
 	CustomerManagedKeyVaultUri *string `pulumi:"customerManagedKeyVaultUri"`
-	// Type of data to transfer via the flow.
+	// Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 	DataType *string `pulumi:"dataType"`
 	// The destination endpoint ports of the stream
 	DestinationEndpointPorts []float64 `pulumi:"destinationEndpointPorts"`
@@ -1197,7 +1197,7 @@ type FlowPropertiesResponse struct {
 	EventHubId *string `pulumi:"eventHubId"`
 	// Dataflow GUID associated with this flow
 	FlowId string `pulumi:"flowId"`
-	// The flow type for this flow
+	// The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 	FlowType *string `pulumi:"flowType"`
 	// Force disablement status of the current flow
 	ForceDisabledStatus []string `pulumi:"forceDisabledStatus"`
@@ -1211,11 +1211,11 @@ type FlowPropertiesResponse struct {
 	MessagingOptions *MessagingOptionsResponse `pulumi:"messagingOptions"`
 	// The passphrase used for SRT streams
 	Passphrase *string `pulumi:"passphrase"`
-	// The policies for this flow
+	// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 	Policies []string `pulumi:"policies"`
 	// Provisioning state of the flow
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The selected schema for this flow
+	// The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 	Schema *SchemaResponse `pulumi:"schema"`
 	// Service Bus Queue ID
 	ServiceBusQueueId *string `pulumi:"serviceBusQueueId"`
@@ -1274,7 +1274,7 @@ func (o FlowPropertiesResponseOutput) CustomerManagedKeyVaultUri() pulumi.String
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.CustomerManagedKeyVaultUri }).(pulumi.StringPtrOutput)
 }
 
-// Type of data to transfer via the flow.
+// Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponseOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
 }
@@ -1299,7 +1299,7 @@ func (o FlowPropertiesResponseOutput) FlowId() pulumi.StringOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.FlowId }).(pulumi.StringOutput)
 }
 
-// The flow type for this flow
+// The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponseOutput) FlowType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.FlowType }).(pulumi.StringPtrOutput)
 }
@@ -1334,7 +1334,7 @@ func (o FlowPropertiesResponseOutput) Passphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
 }
 
-// The policies for this flow
+// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponseOutput) Policies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) []string { return v.Policies }).(pulumi.StringArrayOutput)
 }
@@ -1344,7 +1344,7 @@ func (o FlowPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The selected schema for this flow
+// The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponseOutput) Schema() SchemaResponsePtrOutput {
 	return o.ApplyT(func(v FlowPropertiesResponse) *SchemaResponse { return v.Schema }).(SchemaResponsePtrOutput)
 }
@@ -1463,7 +1463,7 @@ func (o FlowPropertiesResponsePtrOutput) CustomerManagedKeyVaultUri() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of data to transfer via the flow.
+// Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponsePtrOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
 		if v == nil {
@@ -1513,7 +1513,7 @@ func (o FlowPropertiesResponsePtrOutput) FlowId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The flow type for this flow
+// The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponsePtrOutput) FlowType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlowPropertiesResponse) *string {
 		if v == nil {
@@ -1583,7 +1583,7 @@ func (o FlowPropertiesResponsePtrOutput) Passphrase() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The policies for this flow
+// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponsePtrOutput) Policies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlowPropertiesResponse) []string {
 		if v == nil {
@@ -1603,7 +1603,7 @@ func (o FlowPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The selected schema for this flow
+// The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 func (o FlowPropertiesResponsePtrOutput) Schema() SchemaResponsePtrOutput {
 	return o.ApplyT(func(v *FlowPropertiesResponse) *SchemaResponse {
 		if v == nil {
