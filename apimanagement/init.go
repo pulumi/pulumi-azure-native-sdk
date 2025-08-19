@@ -67,6 +67,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cache{}
 	case "azure-native:apimanagement:Certificate":
 		r = &Certificate{}
+	case "azure-native:apimanagement:ClientApplication":
+		r = &ClientApplication{}
+	case "azure-native:apimanagement:ClientApplicationProductLink":
+		r = &ClientApplicationProductLink{}
 	case "azure-native:apimanagement:ContentItem":
 		r = &ContentItem{}
 	case "azure-native:apimanagement:ContentType":

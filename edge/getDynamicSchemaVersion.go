@@ -14,6 +14,8 @@ import (
 // Get a Dynamic Schema Version Resource
 //
 // Uses Azure REST API version 2025-06-01.
+//
+// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDynamicSchemaVersion(ctx *pulumi.Context, args *LookupDynamicSchemaVersionArgs, opts ...pulumi.InvokeOption) (*LookupDynamicSchemaVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDynamicSchemaVersionResult
@@ -27,12 +29,12 @@ func LookupDynamicSchemaVersion(ctx *pulumi.Context, args *LookupDynamicSchemaVe
 type LookupDynamicSchemaVersionArgs struct {
 	// The name of the DynamicSchema
 	DynamicSchemaName string `pulumi:"dynamicSchemaName"`
+	// The name of the DynamicSchemaVersion
+	DynamicSchemaVersionName string `pulumi:"dynamicSchemaVersionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Schema
 	SchemaName string `pulumi:"schemaName"`
-	// The name of the SchemaVersion
-	SchemaVersionName string `pulumi:"schemaVersionName"`
 }
 
 // Dynamic Schema Version Resource
@@ -65,12 +67,12 @@ func LookupDynamicSchemaVersionOutput(ctx *pulumi.Context, args LookupDynamicSch
 type LookupDynamicSchemaVersionOutputArgs struct {
 	// The name of the DynamicSchema
 	DynamicSchemaName pulumi.StringInput `pulumi:"dynamicSchemaName"`
+	// The name of the DynamicSchemaVersion
+	DynamicSchemaVersionName pulumi.StringInput `pulumi:"dynamicSchemaVersionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the Schema
 	SchemaName pulumi.StringInput `pulumi:"schemaName"`
-	// The name of the SchemaVersion
-	SchemaVersionName pulumi.StringInput `pulumi:"schemaVersionName"`
 }
 
 func (LookupDynamicSchemaVersionOutputArgs) ElementType() reflect.Type {

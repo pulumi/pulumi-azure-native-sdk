@@ -4643,7 +4643,7 @@ func (o ConcurrencyConfigurationResponsePtrOutput) WorkerCount() pulumi.IntPtrOu
 
 // A condition of the scheduled query rule.
 type Condition struct {
-	// The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant and required only for dynamic threshold rules of the kind LogAlert.
+	// The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert.
 	AlertSensitivity *string `pulumi:"alertSensitivity"`
 	// Specifies the type of threshold criteria
 	CriterionType *string `pulumi:"criterionType"`
@@ -4657,6 +4657,8 @@ type Condition struct {
 	MetricMeasureColumn *string `pulumi:"metricMeasureColumn"`
 	// The name of the metric to be sent. Relevant and required only for rules of the kind LogToMetric.
 	MetricName *string `pulumi:"metricName"`
+	// The minimum results count that should be found for triggering an alert. Relevant only for rules of the kind SimpleLogAlert.
+	MinRecurrenceCount *float64 `pulumi:"minRecurrenceCount"`
 	// The criteria operator. Relevant and required only for rules of the kind LogAlert.
 	Operator *string `pulumi:"operator"`
 	// Log query alert
@@ -4693,7 +4695,7 @@ type ConditionInput interface {
 
 // A condition of the scheduled query rule.
 type ConditionArgs struct {
-	// The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant and required only for dynamic threshold rules of the kind LogAlert.
+	// The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert.
 	AlertSensitivity pulumi.StringPtrInput `pulumi:"alertSensitivity"`
 	// Specifies the type of threshold criteria
 	CriterionType pulumi.StringPtrInput `pulumi:"criterionType"`
@@ -4707,6 +4709,8 @@ type ConditionArgs struct {
 	MetricMeasureColumn pulumi.StringPtrInput `pulumi:"metricMeasureColumn"`
 	// The name of the metric to be sent. Relevant and required only for rules of the kind LogToMetric.
 	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
+	// The minimum results count that should be found for triggering an alert. Relevant only for rules of the kind SimpleLogAlert.
+	MinRecurrenceCount pulumi.Float64PtrInput `pulumi:"minRecurrenceCount"`
 	// The criteria operator. Relevant and required only for rules of the kind LogAlert.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// Log query alert
@@ -4780,7 +4784,7 @@ func (o ConditionOutput) ToConditionOutputWithContext(ctx context.Context) Condi
 	return o
 }
 
-// The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant and required only for dynamic threshold rules of the kind LogAlert.
+// The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert.
 func (o ConditionOutput) AlertSensitivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Condition) *string { return v.AlertSensitivity }).(pulumi.StringPtrOutput)
 }
@@ -4813,6 +4817,11 @@ func (o ConditionOutput) MetricMeasureColumn() pulumi.StringPtrOutput {
 // The name of the metric to be sent. Relevant and required only for rules of the kind LogToMetric.
 func (o ConditionOutput) MetricName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Condition) *string { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// The minimum results count that should be found for triggering an alert. Relevant only for rules of the kind SimpleLogAlert.
+func (o ConditionOutput) MinRecurrenceCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Condition) *float64 { return v.MinRecurrenceCount }).(pulumi.Float64PtrOutput)
 }
 
 // The criteria operator. Relevant and required only for rules of the kind LogAlert.
@@ -5052,7 +5061,7 @@ func (o ConditionFailingPeriodsPtrOutput) NumberOfEvaluationPeriods() pulumi.Flo
 
 // A condition of the scheduled query rule.
 type ConditionResponse struct {
-	// The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant and required only for dynamic threshold rules of the kind LogAlert.
+	// The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert.
 	AlertSensitivity *string `pulumi:"alertSensitivity"`
 	// Specifies the type of threshold criteria
 	CriterionType *string `pulumi:"criterionType"`
@@ -5066,6 +5075,8 @@ type ConditionResponse struct {
 	MetricMeasureColumn *string `pulumi:"metricMeasureColumn"`
 	// The name of the metric to be sent. Relevant and required only for rules of the kind LogToMetric.
 	MetricName *string `pulumi:"metricName"`
+	// The minimum results count that should be found for triggering an alert. Relevant only for rules of the kind SimpleLogAlert.
+	MinRecurrenceCount *float64 `pulumi:"minRecurrenceCount"`
 	// The criteria operator. Relevant and required only for rules of the kind LogAlert.
 	Operator *string `pulumi:"operator"`
 	// Log query alert
@@ -5104,7 +5115,7 @@ func (o ConditionResponseOutput) ToConditionResponseOutputWithContext(ctx contex
 	return o
 }
 
-// The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant and required only for dynamic threshold rules of the kind LogAlert.
+// The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert.
 func (o ConditionResponseOutput) AlertSensitivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionResponse) *string { return v.AlertSensitivity }).(pulumi.StringPtrOutput)
 }
@@ -5137,6 +5148,11 @@ func (o ConditionResponseOutput) MetricMeasureColumn() pulumi.StringPtrOutput {
 // The name of the metric to be sent. Relevant and required only for rules of the kind LogToMetric.
 func (o ConditionResponseOutput) MetricName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionResponse) *string { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// The minimum results count that should be found for triggering an alert. Relevant only for rules of the kind SimpleLogAlert.
+func (o ConditionResponseOutput) MinRecurrenceCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ConditionResponse) *float64 { return v.MinRecurrenceCount }).(pulumi.Float64PtrOutput)
 }
 
 // The criteria operator. Relevant and required only for rules of the kind LogAlert.

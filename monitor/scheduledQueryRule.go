@@ -14,15 +14,15 @@ import (
 
 // The scheduled query rule resource.
 //
-// Uses Azure REST API version 2024-01-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 //
-// Other available API versions: 2023-12-01, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01, 2024-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ScheduledQueryRule struct {
 	pulumi.CustomResourceState
 
 	// Actions to invoke when the alert fires.
 	Actions ActionsResponsePtrOutput `pulumi:"actions"`
-	// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of the kind LogAlert.
+	// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
 	AutoMitigate pulumi.BoolPtrOutput `pulumi:"autoMitigate"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
@@ -58,7 +58,7 @@ type ScheduledQueryRule struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// If specified then overrides the query time range (default is WindowSize*NumberOfEvaluationPeriods). Relevant only for rules of the kind LogAlert.
 	OverrideQueryTimeRange pulumi.StringPtrOutput `pulumi:"overrideQueryTimeRange"`
-	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
+	// Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
 	ResolveConfiguration RuleResolveConfigurationResponsePtrOutput `pulumi:"resolveConfiguration"`
 	// The list of resource id's that this scheduled query rule is scoped to.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
@@ -186,7 +186,7 @@ func (ScheduledQueryRuleState) ElementType() reflect.Type {
 type scheduledQueryRuleArgs struct {
 	// Actions to invoke when the alert fires.
 	Actions *Actions `pulumi:"actions"`
-	// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of the kind LogAlert.
+	// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
 	AutoMitigate *bool `pulumi:"autoMitigate"`
 	// The flag which indicates whether this scheduled query rule should be stored in the customer's storage. The default is false. Relevant only for rules of the kind LogAlert.
 	CheckWorkspaceAlertsStorageConfigured *bool `pulumi:"checkWorkspaceAlertsStorageConfigured"`
@@ -210,7 +210,7 @@ type scheduledQueryRuleArgs struct {
 	MuteActionsDuration *string `pulumi:"muteActionsDuration"`
 	// If specified then overrides the query time range (default is WindowSize*NumberOfEvaluationPeriods). Relevant only for rules of the kind LogAlert.
 	OverrideQueryTimeRange *string `pulumi:"overrideQueryTimeRange"`
-	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
+	// Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
 	ResolveConfiguration *RuleResolveConfiguration `pulumi:"resolveConfiguration"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -234,7 +234,7 @@ type scheduledQueryRuleArgs struct {
 type ScheduledQueryRuleArgs struct {
 	// Actions to invoke when the alert fires.
 	Actions ActionsPtrInput
-	// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of the kind LogAlert.
+	// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
 	AutoMitigate pulumi.BoolPtrInput
 	// The flag which indicates whether this scheduled query rule should be stored in the customer's storage. The default is false. Relevant only for rules of the kind LogAlert.
 	CheckWorkspaceAlertsStorageConfigured pulumi.BoolPtrInput
@@ -258,7 +258,7 @@ type ScheduledQueryRuleArgs struct {
 	MuteActionsDuration pulumi.StringPtrInput
 	// If specified then overrides the query time range (default is WindowSize*NumberOfEvaluationPeriods). Relevant only for rules of the kind LogAlert.
 	OverrideQueryTimeRange pulumi.StringPtrInput
-	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
+	// Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
 	ResolveConfiguration RuleResolveConfigurationPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -320,7 +320,7 @@ func (o ScheduledQueryRuleOutput) Actions() ActionsResponsePtrOutput {
 	return o.ApplyT(func(v *ScheduledQueryRule) ActionsResponsePtrOutput { return v.Actions }).(ActionsResponsePtrOutput)
 }
 
-// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of the kind LogAlert.
+// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
 func (o ScheduledQueryRuleOutput) AutoMitigate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ScheduledQueryRule) pulumi.BoolPtrOutput { return v.AutoMitigate }).(pulumi.BoolPtrOutput)
 }
@@ -410,7 +410,7 @@ func (o ScheduledQueryRuleOutput) OverrideQueryTimeRange() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *ScheduledQueryRule) pulumi.StringPtrOutput { return v.OverrideQueryTimeRange }).(pulumi.StringPtrOutput)
 }
 
-// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
+// Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
 func (o ScheduledQueryRuleOutput) ResolveConfiguration() RuleResolveConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *ScheduledQueryRule) RuleResolveConfigurationResponsePtrOutput { return v.ResolveConfiguration }).(RuleResolveConfigurationResponsePtrOutput)
 }
