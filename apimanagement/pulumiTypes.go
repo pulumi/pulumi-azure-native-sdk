@@ -7036,6 +7036,83 @@ func (o CircuitBreakerRuleResponseArrayOutput) Index(i pulumi.IntInput) CircuitB
 	}).(CircuitBreakerRuleResponseOutput)
 }
 
+// Microsoft EntraID client application secrets
+type ClientApplicationSecretsContractResponseEntra struct {
+	// EntraID client application secret
+	ClientSecret *string `pulumi:"clientSecret"`
+	// EntraID client application secret expiration date.
+	ExpiresAt string `pulumi:"expiresAt"`
+}
+
+// Microsoft EntraID client application secrets
+type ClientApplicationSecretsContractResponseEntraOutput struct{ *pulumi.OutputState }
+
+func (ClientApplicationSecretsContractResponseEntraOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientApplicationSecretsContractResponseEntra)(nil)).Elem()
+}
+
+func (o ClientApplicationSecretsContractResponseEntraOutput) ToClientApplicationSecretsContractResponseEntraOutput() ClientApplicationSecretsContractResponseEntraOutput {
+	return o
+}
+
+func (o ClientApplicationSecretsContractResponseEntraOutput) ToClientApplicationSecretsContractResponseEntraOutputWithContext(ctx context.Context) ClientApplicationSecretsContractResponseEntraOutput {
+	return o
+}
+
+// EntraID client application secret
+func (o ClientApplicationSecretsContractResponseEntraOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientApplicationSecretsContractResponseEntra) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// EntraID client application secret expiration date.
+func (o ClientApplicationSecretsContractResponseEntraOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientApplicationSecretsContractResponseEntra) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+type ClientApplicationSecretsContractResponseEntraPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientApplicationSecretsContractResponseEntraPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientApplicationSecretsContractResponseEntra)(nil)).Elem()
+}
+
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ToClientApplicationSecretsContractResponseEntraPtrOutput() ClientApplicationSecretsContractResponseEntraPtrOutput {
+	return o
+}
+
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ToClientApplicationSecretsContractResponseEntraPtrOutputWithContext(ctx context.Context) ClientApplicationSecretsContractResponseEntraPtrOutput {
+	return o
+}
+
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) Elem() ClientApplicationSecretsContractResponseEntraOutput {
+	return o.ApplyT(func(v *ClientApplicationSecretsContractResponseEntra) ClientApplicationSecretsContractResponseEntra {
+		if v != nil {
+			return *v
+		}
+		var ret ClientApplicationSecretsContractResponseEntra
+		return ret
+	}).(ClientApplicationSecretsContractResponseEntraOutput)
+}
+
+// EntraID client application secret
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientApplicationSecretsContractResponseEntra) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// EntraID client application secret expiration date.
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientApplicationSecretsContractResponseEntra) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpiresAt
+	}).(pulumi.StringPtrOutput)
+}
+
 type DataMasking struct {
 	// Masking settings for headers
 	Headers []DataMaskingEntity `pulumi:"headers"`
@@ -14132,6 +14209,8 @@ func init() {
 	pulumi.RegisterOutputType(CircuitBreakerRuleArrayOutput{})
 	pulumi.RegisterOutputType(CircuitBreakerRuleResponseOutput{})
 	pulumi.RegisterOutputType(CircuitBreakerRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(ClientApplicationSecretsContractResponseEntraOutput{})
+	pulumi.RegisterOutputType(ClientApplicationSecretsContractResponseEntraPtrOutput{})
 	pulumi.RegisterOutputType(DataMaskingOutput{})
 	pulumi.RegisterOutputType(DataMaskingPtrOutput{})
 	pulumi.RegisterOutputType(DataMaskingEntityOutput{})

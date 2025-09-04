@@ -2,12 +2,12 @@ module github.com/pulumi/pulumi-azure-native-sdk/datamigration/v3
 
 go 1.23.11
 
-toolchain go1.24.6
+toolchain go1.24.7
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.7.1
-	github.com/pulumi/pulumi/sdk/v3 v3.189.0
+	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.8.0-alpha.1756942349
+	github.com/pulumi/pulumi/sdk/v3 v3.192.0
 )
 
 require (
@@ -85,8 +85,8 @@ require (
 	golang.org/x/term v0.32.0 // indirect
 	golang.org/x/text v0.26.0 // indirect
 	golang.org/x/tools v0.33.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240814211410-ddb44dafa142 // indirect
-	google.golang.org/grpc v1.67.1 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250115164207-1a7da9e5054f // indirect
+	google.golang.org/grpc v1.71.1 // indirect
 	google.golang.org/protobuf v1.36.6 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect

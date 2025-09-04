@@ -15,14 +15,16 @@ import (
 // Playwright workspace resource.
 //
 // Uses Azure REST API version 2025-07-01-preview.
+//
+// Other available API versions: 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PlaywrightWorkspace struct {
 	pulumi.CustomResourceState
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The workspace data plane URI.
+	// The workspace data plane service API URI.
 	DataplaneUri pulumi.StringOutput `pulumi:"dataplaneUri"`
-	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+	// Enables the workspace to use local authentication through service access tokens for operations.
 	LocalAuth pulumi.StringPtrOutput `pulumi:"localAuth"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -30,7 +32,7 @@ type PlaywrightWorkspace struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The status of the last resource operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// This property sets the connection region for client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
+	// Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created.
 	RegionalAffinity pulumi.StringPtrOutput `pulumi:"regionalAffinity"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -38,6 +40,8 @@ type PlaywrightWorkspace struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The workspace ID in GUID format.
+	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
 }
 
 // NewPlaywrightWorkspace registers a new resource with the given unique name, arguments, and options.
@@ -59,6 +63,9 @@ func NewPlaywrightWorkspace(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:loadtestservice/v20250701preview:PlaywrightWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:loadtestservice/v20250901:PlaywrightWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -95,13 +102,13 @@ func (PlaywrightWorkspaceState) ElementType() reflect.Type {
 }
 
 type playwrightWorkspaceArgs struct {
-	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+	// Enables the workspace to use local authentication through service access tokens for operations.
 	LocalAuth *string `pulumi:"localAuth"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the PlaywrightWorkspace
 	PlaywrightWorkspaceName *string `pulumi:"playwrightWorkspaceName"`
-	// This property sets the connection region for client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
+	// Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created.
 	RegionalAffinity *string `pulumi:"regionalAffinity"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -111,13 +118,13 @@ type playwrightWorkspaceArgs struct {
 
 // The set of arguments for constructing a PlaywrightWorkspace resource.
 type PlaywrightWorkspaceArgs struct {
-	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+	// Enables the workspace to use local authentication through service access tokens for operations.
 	LocalAuth pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the PlaywrightWorkspace
 	PlaywrightWorkspaceName pulumi.StringPtrInput
-	// This property sets the connection region for client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
+	// Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created.
 	RegionalAffinity pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -167,12 +174,12 @@ func (o PlaywrightWorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlaywrightWorkspace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// The workspace data plane URI.
+// The workspace data plane service API URI.
 func (o PlaywrightWorkspaceOutput) DataplaneUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlaywrightWorkspace) pulumi.StringOutput { return v.DataplaneUri }).(pulumi.StringOutput)
 }
 
-// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+// Enables the workspace to use local authentication through service access tokens for operations.
 func (o PlaywrightWorkspaceOutput) LocalAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PlaywrightWorkspace) pulumi.StringPtrOutput { return v.LocalAuth }).(pulumi.StringPtrOutput)
 }
@@ -192,7 +199,7 @@ func (o PlaywrightWorkspaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlaywrightWorkspace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// This property sets the connection region for client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
+// Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created.
 func (o PlaywrightWorkspaceOutput) RegionalAffinity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PlaywrightWorkspace) pulumi.StringPtrOutput { return v.RegionalAffinity }).(pulumi.StringPtrOutput)
 }
@@ -210,6 +217,11 @@ func (o PlaywrightWorkspaceOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PlaywrightWorkspaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlaywrightWorkspace) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The workspace ID in GUID format.
+func (o PlaywrightWorkspaceOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PlaywrightWorkspace) pulumi.StringOutput { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
 func init() {

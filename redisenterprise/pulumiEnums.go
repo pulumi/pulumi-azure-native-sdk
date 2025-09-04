@@ -10,7 +10,173 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Sets the frequency at which data is written to disk.
+// This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created.
+type AccessKeysAuthentication string
+
+const (
+	AccessKeysAuthenticationDisabled = AccessKeysAuthentication("Disabled")
+	AccessKeysAuthenticationEnabled  = AccessKeysAuthentication("Enabled")
+)
+
+func (AccessKeysAuthentication) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeysAuthentication)(nil)).Elem()
+}
+
+func (e AccessKeysAuthentication) ToAccessKeysAuthenticationOutput() AccessKeysAuthenticationOutput {
+	return pulumi.ToOutput(e).(AccessKeysAuthenticationOutput)
+}
+
+func (e AccessKeysAuthentication) ToAccessKeysAuthenticationOutputWithContext(ctx context.Context) AccessKeysAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AccessKeysAuthenticationOutput)
+}
+
+func (e AccessKeysAuthentication) ToAccessKeysAuthenticationPtrOutput() AccessKeysAuthenticationPtrOutput {
+	return e.ToAccessKeysAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (e AccessKeysAuthentication) ToAccessKeysAuthenticationPtrOutputWithContext(ctx context.Context) AccessKeysAuthenticationPtrOutput {
+	return AccessKeysAuthentication(e).ToAccessKeysAuthenticationOutputWithContext(ctx).ToAccessKeysAuthenticationPtrOutputWithContext(ctx)
+}
+
+func (e AccessKeysAuthentication) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AccessKeysAuthentication) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AccessKeysAuthentication) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AccessKeysAuthentication) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AccessKeysAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (AccessKeysAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeysAuthentication)(nil)).Elem()
+}
+
+func (o AccessKeysAuthenticationOutput) ToAccessKeysAuthenticationOutput() AccessKeysAuthenticationOutput {
+	return o
+}
+
+func (o AccessKeysAuthenticationOutput) ToAccessKeysAuthenticationOutputWithContext(ctx context.Context) AccessKeysAuthenticationOutput {
+	return o
+}
+
+func (o AccessKeysAuthenticationOutput) ToAccessKeysAuthenticationPtrOutput() AccessKeysAuthenticationPtrOutput {
+	return o.ToAccessKeysAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessKeysAuthenticationOutput) ToAccessKeysAuthenticationPtrOutputWithContext(ctx context.Context) AccessKeysAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessKeysAuthentication) *AccessKeysAuthentication {
+		return &v
+	}).(AccessKeysAuthenticationPtrOutput)
+}
+
+func (o AccessKeysAuthenticationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AccessKeysAuthenticationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AccessKeysAuthentication) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AccessKeysAuthenticationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AccessKeysAuthenticationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AccessKeysAuthentication) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessKeysAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessKeysAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessKeysAuthentication)(nil)).Elem()
+}
+
+func (o AccessKeysAuthenticationPtrOutput) ToAccessKeysAuthenticationPtrOutput() AccessKeysAuthenticationPtrOutput {
+	return o
+}
+
+func (o AccessKeysAuthenticationPtrOutput) ToAccessKeysAuthenticationPtrOutputWithContext(ctx context.Context) AccessKeysAuthenticationPtrOutput {
+	return o
+}
+
+func (o AccessKeysAuthenticationPtrOutput) Elem() AccessKeysAuthenticationOutput {
+	return o.ApplyT(func(v *AccessKeysAuthentication) AccessKeysAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret AccessKeysAuthentication
+		return ret
+	}).(AccessKeysAuthenticationOutput)
+}
+
+func (o AccessKeysAuthenticationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AccessKeysAuthenticationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AccessKeysAuthentication) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AccessKeysAuthenticationInput is an input type that accepts values of the AccessKeysAuthentication enum
+// A concrete instance of `AccessKeysAuthenticationInput` can be one of the following:
+//
+//	AccessKeysAuthenticationDisabled
+//	AccessKeysAuthenticationEnabled
+type AccessKeysAuthenticationInput interface {
+	pulumi.Input
+
+	ToAccessKeysAuthenticationOutput() AccessKeysAuthenticationOutput
+	ToAccessKeysAuthenticationOutputWithContext(context.Context) AccessKeysAuthenticationOutput
+}
+
+var accessKeysAuthenticationPtrType = reflect.TypeOf((**AccessKeysAuthentication)(nil)).Elem()
+
+type AccessKeysAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToAccessKeysAuthenticationPtrOutput() AccessKeysAuthenticationPtrOutput
+	ToAccessKeysAuthenticationPtrOutputWithContext(context.Context) AccessKeysAuthenticationPtrOutput
+}
+
+type accessKeysAuthenticationPtr string
+
+func AccessKeysAuthenticationPtr(v string) AccessKeysAuthenticationPtrInput {
+	return (*accessKeysAuthenticationPtr)(&v)
+}
+
+func (*accessKeysAuthenticationPtr) ElementType() reflect.Type {
+	return accessKeysAuthenticationPtrType
+}
+
+func (in *accessKeysAuthenticationPtr) ToAccessKeysAuthenticationPtrOutput() AccessKeysAuthenticationPtrOutput {
+	return pulumi.ToOutput(in).(AccessKeysAuthenticationPtrOutput)
+}
+
+func (in *accessKeysAuthenticationPtr) ToAccessKeysAuthenticationPtrOutputWithContext(ctx context.Context) AccessKeysAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AccessKeysAuthenticationPtrOutput)
+}
+
+// Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact.
 type AofFrequency string
 
 const (
@@ -176,12 +342,16 @@ func (in *aofFrequencyPtr) ToAofFrequencyPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AofFrequencyPtrOutput)
 }
 
-// Clustering policy - default is OSSCluster. Specified at create time.
+// Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database.
 type ClusteringPolicy string
 
 const (
+	// Enterprise clustering policy uses only the classic redis protocol, which does not support redis cluster commands.
 	ClusteringPolicyEnterpriseCluster = ClusteringPolicy("EnterpriseCluster")
-	ClusteringPolicyOSSCluster        = ClusteringPolicy("OSSCluster")
+	// OSS clustering policy follows the redis cluster specification, and requires all clients to support redis clustering.
+	ClusteringPolicyOSSCluster = ClusteringPolicy("OSSCluster")
+	// The NoCluster policy is used for non-clustered Redis instances that do not require clustering features.
+	ClusteringPolicyNoCluster = ClusteringPolicy("NoCluster")
 )
 
 func (ClusteringPolicy) ElementType() reflect.Type {
@@ -308,6 +478,7 @@ func (o ClusteringPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 //
 //	ClusteringPolicyEnterpriseCluster
 //	ClusteringPolicyOSSCluster
+//	ClusteringPolicyNoCluster
 type ClusteringPolicyInput interface {
 	pulumi.Input
 
@@ -508,7 +679,7 @@ func (in *cmkIdentityTypePtr) ToCmkIdentityTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(CmkIdentityTypePtrOutput)
 }
 
-// Option to defer upgrade when newest version is released - default is NotDeferred. Learn more:  https://aka.ms/redisversionupgrade
+// Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade
 type DeferUpgradeSetting string
 
 const (
@@ -850,6 +1021,172 @@ func (in *evictionPolicyPtr) ToEvictionPolicyPtrOutput() EvictionPolicyPtrOutput
 
 func (in *evictionPolicyPtr) ToEvictionPolicyPtrOutputWithContext(ctx context.Context) EvictionPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EvictionPolicyPtrOutput)
+}
+
+// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.
+type HighAvailability string
+
+const (
+	HighAvailabilityEnabled  = HighAvailability("Enabled")
+	HighAvailabilityDisabled = HighAvailability("Disabled")
+)
+
+func (HighAvailability) ElementType() reflect.Type {
+	return reflect.TypeOf((*HighAvailability)(nil)).Elem()
+}
+
+func (e HighAvailability) ToHighAvailabilityOutput() HighAvailabilityOutput {
+	return pulumi.ToOutput(e).(HighAvailabilityOutput)
+}
+
+func (e HighAvailability) ToHighAvailabilityOutputWithContext(ctx context.Context) HighAvailabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HighAvailabilityOutput)
+}
+
+func (e HighAvailability) ToHighAvailabilityPtrOutput() HighAvailabilityPtrOutput {
+	return e.ToHighAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (e HighAvailability) ToHighAvailabilityPtrOutputWithContext(ctx context.Context) HighAvailabilityPtrOutput {
+	return HighAvailability(e).ToHighAvailabilityOutputWithContext(ctx).ToHighAvailabilityPtrOutputWithContext(ctx)
+}
+
+func (e HighAvailability) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HighAvailability) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HighAvailability) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HighAvailability) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HighAvailabilityOutput struct{ *pulumi.OutputState }
+
+func (HighAvailabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HighAvailability)(nil)).Elem()
+}
+
+func (o HighAvailabilityOutput) ToHighAvailabilityOutput() HighAvailabilityOutput {
+	return o
+}
+
+func (o HighAvailabilityOutput) ToHighAvailabilityOutputWithContext(ctx context.Context) HighAvailabilityOutput {
+	return o
+}
+
+func (o HighAvailabilityOutput) ToHighAvailabilityPtrOutput() HighAvailabilityPtrOutput {
+	return o.ToHighAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (o HighAvailabilityOutput) ToHighAvailabilityPtrOutputWithContext(ctx context.Context) HighAvailabilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HighAvailability) *HighAvailability {
+		return &v
+	}).(HighAvailabilityPtrOutput)
+}
+
+func (o HighAvailabilityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HighAvailabilityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HighAvailability) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HighAvailabilityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HighAvailabilityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HighAvailability) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HighAvailabilityPtrOutput struct{ *pulumi.OutputState }
+
+func (HighAvailabilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HighAvailability)(nil)).Elem()
+}
+
+func (o HighAvailabilityPtrOutput) ToHighAvailabilityPtrOutput() HighAvailabilityPtrOutput {
+	return o
+}
+
+func (o HighAvailabilityPtrOutput) ToHighAvailabilityPtrOutputWithContext(ctx context.Context) HighAvailabilityPtrOutput {
+	return o
+}
+
+func (o HighAvailabilityPtrOutput) Elem() HighAvailabilityOutput {
+	return o.ApplyT(func(v *HighAvailability) HighAvailability {
+		if v != nil {
+			return *v
+		}
+		var ret HighAvailability
+		return ret
+	}).(HighAvailabilityOutput)
+}
+
+func (o HighAvailabilityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HighAvailabilityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HighAvailability) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HighAvailabilityInput is an input type that accepts values of the HighAvailability enum
+// A concrete instance of `HighAvailabilityInput` can be one of the following:
+//
+//	HighAvailabilityEnabled
+//	HighAvailabilityDisabled
+type HighAvailabilityInput interface {
+	pulumi.Input
+
+	ToHighAvailabilityOutput() HighAvailabilityOutput
+	ToHighAvailabilityOutputWithContext(context.Context) HighAvailabilityOutput
+}
+
+var highAvailabilityPtrType = reflect.TypeOf((**HighAvailability)(nil)).Elem()
+
+type HighAvailabilityPtrInput interface {
+	pulumi.Input
+
+	ToHighAvailabilityPtrOutput() HighAvailabilityPtrOutput
+	ToHighAvailabilityPtrOutputWithContext(context.Context) HighAvailabilityPtrOutput
+}
+
+type highAvailabilityPtr string
+
+func HighAvailabilityPtr(v string) HighAvailabilityPtrInput {
+	return (*highAvailabilityPtr)(&v)
+}
+
+func (*highAvailabilityPtr) ElementType() reflect.Type {
+	return highAvailabilityPtrType
+}
+
+func (in *highAvailabilityPtr) ToHighAvailabilityPtrOutput() HighAvailabilityPtrOutput {
+	return pulumi.ToOutput(in).(HighAvailabilityPtrOutput)
+}
+
+func (in *highAvailabilityPtr) ToHighAvailabilityPtrOutputWithContext(ctx context.Context) HighAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HighAvailabilityPtrOutput)
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -1524,18 +1861,65 @@ func (in *rdbFrequencyPtr) ToRdbFrequencyPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(RdbFrequencyPtrOutput)
 }
 
-// The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+// The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future.
 type SkuName string
 
 const (
+	SkuName_Enterprise_E1         = SkuName("Enterprise_E1")
 	SkuName_Enterprise_E5         = SkuName("Enterprise_E5")
 	SkuName_Enterprise_E10        = SkuName("Enterprise_E10")
 	SkuName_Enterprise_E20        = SkuName("Enterprise_E20")
 	SkuName_Enterprise_E50        = SkuName("Enterprise_E50")
 	SkuName_Enterprise_E100       = SkuName("Enterprise_E100")
+	SkuName_Enterprise_E200       = SkuName("Enterprise_E200")
+	SkuName_Enterprise_E400       = SkuName("Enterprise_E400")
 	SkuName_EnterpriseFlash_F300  = SkuName("EnterpriseFlash_F300")
 	SkuName_EnterpriseFlash_F700  = SkuName("EnterpriseFlash_F700")
 	SkuName_EnterpriseFlash_F1500 = SkuName("EnterpriseFlash_F1500")
+	SkuName_Balanced_B0           = SkuName("Balanced_B0")
+	SkuName_Balanced_B1           = SkuName("Balanced_B1")
+	SkuName_Balanced_B3           = SkuName("Balanced_B3")
+	SkuName_Balanced_B5           = SkuName("Balanced_B5")
+	SkuName_Balanced_B10          = SkuName("Balanced_B10")
+	SkuName_Balanced_B20          = SkuName("Balanced_B20")
+	SkuName_Balanced_B50          = SkuName("Balanced_B50")
+	SkuName_Balanced_B100         = SkuName("Balanced_B100")
+	SkuName_Balanced_B150         = SkuName("Balanced_B150")
+	SkuName_Balanced_B250         = SkuName("Balanced_B250")
+	SkuName_Balanced_B350         = SkuName("Balanced_B350")
+	SkuName_Balanced_B500         = SkuName("Balanced_B500")
+	SkuName_Balanced_B700         = SkuName("Balanced_B700")
+	SkuName_Balanced_B1000        = SkuName("Balanced_B1000")
+	SkuName_MemoryOptimized_M10   = SkuName("MemoryOptimized_M10")
+	SkuName_MemoryOptimized_M20   = SkuName("MemoryOptimized_M20")
+	SkuName_MemoryOptimized_M50   = SkuName("MemoryOptimized_M50")
+	SkuName_MemoryOptimized_M100  = SkuName("MemoryOptimized_M100")
+	SkuName_MemoryOptimized_M150  = SkuName("MemoryOptimized_M150")
+	SkuName_MemoryOptimized_M250  = SkuName("MemoryOptimized_M250")
+	SkuName_MemoryOptimized_M350  = SkuName("MemoryOptimized_M350")
+	SkuName_MemoryOptimized_M500  = SkuName("MemoryOptimized_M500")
+	SkuName_MemoryOptimized_M700  = SkuName("MemoryOptimized_M700")
+	SkuName_MemoryOptimized_M1000 = SkuName("MemoryOptimized_M1000")
+	SkuName_MemoryOptimized_M1500 = SkuName("MemoryOptimized_M1500")
+	SkuName_MemoryOptimized_M2000 = SkuName("MemoryOptimized_M2000")
+	SkuName_ComputeOptimized_X3   = SkuName("ComputeOptimized_X3")
+	SkuName_ComputeOptimized_X5   = SkuName("ComputeOptimized_X5")
+	SkuName_ComputeOptimized_X10  = SkuName("ComputeOptimized_X10")
+	SkuName_ComputeOptimized_X20  = SkuName("ComputeOptimized_X20")
+	SkuName_ComputeOptimized_X50  = SkuName("ComputeOptimized_X50")
+	SkuName_ComputeOptimized_X100 = SkuName("ComputeOptimized_X100")
+	SkuName_ComputeOptimized_X150 = SkuName("ComputeOptimized_X150")
+	SkuName_ComputeOptimized_X250 = SkuName("ComputeOptimized_X250")
+	SkuName_ComputeOptimized_X350 = SkuName("ComputeOptimized_X350")
+	SkuName_ComputeOptimized_X500 = SkuName("ComputeOptimized_X500")
+	SkuName_ComputeOptimized_X700 = SkuName("ComputeOptimized_X700")
+	SkuName_FlashOptimized_A250   = SkuName("FlashOptimized_A250")
+	SkuName_FlashOptimized_A500   = SkuName("FlashOptimized_A500")
+	SkuName_FlashOptimized_A700   = SkuName("FlashOptimized_A700")
+	SkuName_FlashOptimized_A1000  = SkuName("FlashOptimized_A1000")
+	SkuName_FlashOptimized_A1500  = SkuName("FlashOptimized_A1500")
+	SkuName_FlashOptimized_A2000  = SkuName("FlashOptimized_A2000")
+	SkuName_FlashOptimized_A4500  = SkuName("FlashOptimized_A4500")
 )
 
 func (SkuName) ElementType() reflect.Type {
@@ -1660,14 +2044,61 @@ func (o SkuNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 // SkuNameInput is an input type that accepts values of the SkuName enum
 // A concrete instance of `SkuNameInput` can be one of the following:
 //
+//	SkuName_Enterprise_E1
 //	SkuName_Enterprise_E5
 //	SkuName_Enterprise_E10
 //	SkuName_Enterprise_E20
 //	SkuName_Enterprise_E50
 //	SkuName_Enterprise_E100
+//	SkuName_Enterprise_E200
+//	SkuName_Enterprise_E400
 //	SkuName_EnterpriseFlash_F300
 //	SkuName_EnterpriseFlash_F700
 //	SkuName_EnterpriseFlash_F1500
+//	SkuName_Balanced_B0
+//	SkuName_Balanced_B1
+//	SkuName_Balanced_B3
+//	SkuName_Balanced_B5
+//	SkuName_Balanced_B10
+//	SkuName_Balanced_B20
+//	SkuName_Balanced_B50
+//	SkuName_Balanced_B100
+//	SkuName_Balanced_B150
+//	SkuName_Balanced_B250
+//	SkuName_Balanced_B350
+//	SkuName_Balanced_B500
+//	SkuName_Balanced_B700
+//	SkuName_Balanced_B1000
+//	SkuName_MemoryOptimized_M10
+//	SkuName_MemoryOptimized_M20
+//	SkuName_MemoryOptimized_M50
+//	SkuName_MemoryOptimized_M100
+//	SkuName_MemoryOptimized_M150
+//	SkuName_MemoryOptimized_M250
+//	SkuName_MemoryOptimized_M350
+//	SkuName_MemoryOptimized_M500
+//	SkuName_MemoryOptimized_M700
+//	SkuName_MemoryOptimized_M1000
+//	SkuName_MemoryOptimized_M1500
+//	SkuName_MemoryOptimized_M2000
+//	SkuName_ComputeOptimized_X3
+//	SkuName_ComputeOptimized_X5
+//	SkuName_ComputeOptimized_X10
+//	SkuName_ComputeOptimized_X20
+//	SkuName_ComputeOptimized_X50
+//	SkuName_ComputeOptimized_X100
+//	SkuName_ComputeOptimized_X150
+//	SkuName_ComputeOptimized_X250
+//	SkuName_ComputeOptimized_X350
+//	SkuName_ComputeOptimized_X500
+//	SkuName_ComputeOptimized_X700
+//	SkuName_FlashOptimized_A250
+//	SkuName_FlashOptimized_A500
+//	SkuName_FlashOptimized_A700
+//	SkuName_FlashOptimized_A1000
+//	SkuName_FlashOptimized_A1500
+//	SkuName_FlashOptimized_A2000
+//	SkuName_FlashOptimized_A4500
 type SkuNameInput interface {
 	pulumi.Input
 
@@ -1702,7 +2133,7 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-// The minimum TLS version for the cluster to support, e.g. '1.2'
+// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
 type TlsVersion string
 
 const (
@@ -1871,6 +2302,8 @@ func (in *tlsVersionPtr) ToTlsVersionPtrOutputWithContext(ctx context.Context) T
 }
 
 func init() {
+	pulumi.RegisterOutputType(AccessKeysAuthenticationOutput{})
+	pulumi.RegisterOutputType(AccessKeysAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(AofFrequencyOutput{})
 	pulumi.RegisterOutputType(AofFrequencyPtrOutput{})
 	pulumi.RegisterOutputType(ClusteringPolicyOutput{})
@@ -1881,6 +2314,8 @@ func init() {
 	pulumi.RegisterOutputType(DeferUpgradeSettingPtrOutput{})
 	pulumi.RegisterOutputType(EvictionPolicyOutput{})
 	pulumi.RegisterOutputType(EvictionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(HighAvailabilityOutput{})
+	pulumi.RegisterOutputType(HighAvailabilityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusOutput{})

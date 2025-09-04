@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about a database in a RedisEnterprise cluster.
+// Gets information about a database in a Redis Enterprise cluster.
 //
-// Uses Azure REST API version 2024-03-01-preview.
+// Uses Azure REST API version 2025-05-01-preview.
 //
-// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseResult
@@ -27,7 +27,7 @@ func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulum
 }
 
 type LookupDatabaseArgs struct {
-	// The name of the Redis Enterprise cluster.
+	// The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the Redis Enterprise database.
 	DatabaseName string `pulumi:"databaseName"`
@@ -35,15 +35,17 @@ type LookupDatabaseArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Describes a database on the RedisEnterprise cluster
+// Describes a database on the Redis Enterprise cluster
 type LookupDatabaseResult struct {
+	// This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created.
+	AccessKeysAuthentication *string `pulumi:"accessKeysAuthentication"`
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted.
 	ClientProtocol *string `pulumi:"clientProtocol"`
-	// Clustering policy - default is OSSCluster. Specified at create time.
+	// Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database.
 	ClusteringPolicy *string `pulumi:"clusteringPolicy"`
-	// Option to defer upgrade when newest version is released - default is NotDeferred. Learn more:  https://aka.ms/redisversionupgrade
+	// Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade
 	DeferUpgrade *string `pulumi:"deferUpgrade"`
 	// Redis eviction policy - default is VolatileLRU
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
@@ -65,6 +67,8 @@ type LookupDatabaseResult struct {
 	RedisVersion string `pulumi:"redisVersion"`
 	// Current resource status of the database
 	ResourceState string `pulumi:"resourceState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -79,7 +83,7 @@ func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, op
 }
 
 type LookupDatabaseOutputArgs struct {
-	// The name of the Redis Enterprise cluster.
+	// The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the Redis Enterprise database.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
@@ -91,7 +95,7 @@ func (LookupDatabaseOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupDatabaseArgs)(nil)).Elem()
 }
 
-// Describes a database on the RedisEnterprise cluster
+// Describes a database on the Redis Enterprise cluster
 type LookupDatabaseResultOutput struct{ *pulumi.OutputState }
 
 func (LookupDatabaseResultOutput) ElementType() reflect.Type {
@@ -106,6 +110,11 @@ func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx 
 	return o
 }
 
+// This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created.
+func (o LookupDatabaseResultOutput) AccessKeysAuthentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.AccessKeysAuthentication }).(pulumi.StringPtrOutput)
+}
+
 // The Azure API version of the resource.
 func (o LookupDatabaseResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
@@ -116,12 +125,12 @@ func (o LookupDatabaseResultOutput) ClientProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.ClientProtocol }).(pulumi.StringPtrOutput)
 }
 
-// Clustering policy - default is OSSCluster. Specified at create time.
+// Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database.
 func (o LookupDatabaseResultOutput) ClusteringPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.ClusteringPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Option to defer upgrade when newest version is released - default is NotDeferred. Learn more:  https://aka.ms/redisversionupgrade
+// Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade
 func (o LookupDatabaseResultOutput) DeferUpgrade() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.DeferUpgrade }).(pulumi.StringPtrOutput)
 }
@@ -174,6 +183,11 @@ func (o LookupDatabaseResultOutput) RedisVersion() pulumi.StringOutput {
 // Current resource status of the database
 func (o LookupDatabaseResultOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.ResourceState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupDatabaseResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

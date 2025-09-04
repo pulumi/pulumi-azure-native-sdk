@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Lists the flows in a pipeline.
+// Lists all Flows associated with the specified Pipeline.
 //
 // Uses Azure REST API version 2025-05-21.
 //
-// Other available API versions: 2025-04-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-04-11-preview, 2025-05-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListListFlowsByPipeline(ctx *pulumi.Context, args *ListListFlowsByPipelineArgs, opts ...pulumi.InvokeOption) (*ListListFlowsByPipelineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListListFlowsByPipelineResult
@@ -27,7 +27,7 @@ func ListListFlowsByPipeline(ctx *pulumi.Context, args *ListListFlowsByPipelineA
 }
 
 type ListListFlowsByPipelineArgs struct {
-	// The name for the pipeline to perform the operation on.
+	// The name of the pipeline on which to operate.
 	PipelineName string `pulumi:"pipelineName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -51,7 +51,7 @@ func ListListFlowsByPipelineOutput(ctx *pulumi.Context, args ListListFlowsByPipe
 }
 
 type ListListFlowsByPipelineOutputArgs struct {
-	// The name for the pipeline to perform the operation on.
+	// The name of the pipeline on which to operate.
 	PipelineName pulumi.StringInput `pulumi:"pipelineName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`

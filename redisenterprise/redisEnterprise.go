@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes the RedisEnterprise cluster
+// Describes the Redis Enterprise cluster
 //
-// Uses Azure REST API version 2024-03-01-preview.
+// Uses Azure REST API version 2025-05-01-preview.
 //
-// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RedisEnterprise struct {
 	pulumi.CustomResourceState
 
@@ -24,22 +24,28 @@ type RedisEnterprise struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Encryption-at-rest configuration for the cluster.
 	Encryption ClusterPropertiesResponseEncryptionPtrOutput `pulumi:"encryption"`
+	// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.
+	HighAvailability pulumi.StringPtrOutput `pulumi:"highAvailability"`
 	// DNS name of the cluster endpoint
 	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// The identity of the resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	// Distinguishes the kind of cluster. Read-only.
+	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The minimum TLS version for the cluster to support, e.g. '1.2'
+	// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
 	MinimumTlsVersion pulumi.StringPtrOutput `pulumi:"minimumTlsVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// List of private endpoint connections associated with the specified RedisEnterprise cluster
+	// List of private endpoint connections associated with the specified Redis Enterprise cluster
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Current provisioning status of the cluster
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Version of redis the cluster supports, e.g. '6'
 	RedisVersion pulumi.StringOutput `pulumi:"redisVersion"`
+	// Explains the current redundancy strategy of the cluster, which affects the expected SLA.
+	RedundancyMode pulumi.StringOutput `pulumi:"redundancyMode"`
 	// Current resource status of the cluster
 	ResourceState pulumi.StringOutput `pulumi:"resourceState"`
 	// The SKU to create, which affects price, performance, and features.
@@ -191,15 +197,17 @@ func (RedisEnterpriseState) ElementType() reflect.Type {
 }
 
 type redisEnterpriseArgs struct {
-	// The name of the Redis Enterprise cluster.
+	// The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
 	ClusterName *string `pulumi:"clusterName"`
 	// Encryption-at-rest configuration for the cluster.
 	Encryption *ClusterPropertiesEncryption `pulumi:"encryption"`
+	// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.
+	HighAvailability *string `pulumi:"highAvailability"`
 	// The identity of the resource.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The minimum TLS version for the cluster to support, e.g. '1.2'
+	// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
 	MinimumTlsVersion *string `pulumi:"minimumTlsVersion"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -213,15 +221,17 @@ type redisEnterpriseArgs struct {
 
 // The set of arguments for constructing a RedisEnterprise resource.
 type RedisEnterpriseArgs struct {
-	// The name of the Redis Enterprise cluster.
+	// The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
 	ClusterName pulumi.StringPtrInput
 	// Encryption-at-rest configuration for the cluster.
 	Encryption ClusterPropertiesEncryptionPtrInput
+	// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.
+	HighAvailability pulumi.StringPtrInput
 	// The identity of the resource.
 	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The minimum TLS version for the cluster to support, e.g. '1.2'
+	// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
 	MinimumTlsVersion pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -280,6 +290,11 @@ func (o RedisEnterpriseOutput) Encryption() ClusterPropertiesResponseEncryptionP
 	return o.ApplyT(func(v *RedisEnterprise) ClusterPropertiesResponseEncryptionPtrOutput { return v.Encryption }).(ClusterPropertiesResponseEncryptionPtrOutput)
 }
 
+// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.
+func (o RedisEnterpriseOutput) HighAvailability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisEnterprise) pulumi.StringPtrOutput { return v.HighAvailability }).(pulumi.StringPtrOutput)
+}
+
 // DNS name of the cluster endpoint
 func (o RedisEnterpriseOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisEnterprise) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
@@ -290,12 +305,17 @@ func (o RedisEnterpriseOutput) Identity() ManagedServiceIdentityResponsePtrOutpu
 	return o.ApplyT(func(v *RedisEnterprise) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
+// Distinguishes the kind of cluster. Read-only.
+func (o RedisEnterpriseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *RedisEnterprise) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o RedisEnterpriseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisEnterprise) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The minimum TLS version for the cluster to support, e.g. '1.2'
+// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
 func (o RedisEnterpriseOutput) MinimumTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisEnterprise) pulumi.StringPtrOutput { return v.MinimumTlsVersion }).(pulumi.StringPtrOutput)
 }
@@ -305,7 +325,7 @@ func (o RedisEnterpriseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisEnterprise) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of private endpoint connections associated with the specified RedisEnterprise cluster
+// List of private endpoint connections associated with the specified Redis Enterprise cluster
 func (o RedisEnterpriseOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v *RedisEnterprise) PrivateEndpointConnectionResponseArrayOutput {
 		return v.PrivateEndpointConnections
@@ -320,6 +340,11 @@ func (o RedisEnterpriseOutput) ProvisioningState() pulumi.StringOutput {
 // Version of redis the cluster supports, e.g. '6'
 func (o RedisEnterpriseOutput) RedisVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisEnterprise) pulumi.StringOutput { return v.RedisVersion }).(pulumi.StringOutput)
+}
+
+// Explains the current redundancy strategy of the cluster, which affects the expected SLA.
+func (o RedisEnterpriseOutput) RedundancyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *RedisEnterprise) pulumi.StringOutput { return v.RedundancyMode }).(pulumi.StringOutput)
 }
 
 // Current resource status of the cluster
