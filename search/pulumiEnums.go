@@ -178,6 +178,174 @@ func (in *aadAuthFailureModePtr) ToAadAuthFailureModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AadAuthFailureModePtrOutput)
 }
 
+// Configure this property to support the search service using either the Default Compute or Azure Confidential Compute.
+type ComputeType string
+
+const (
+	// Create the service with the Default Compute.
+	ComputeTypeDefault = ComputeType("default")
+	// Create the service with Azure Confidential Compute.
+	ComputeTypeConfidential = ComputeType("confidential")
+)
+
+func (ComputeType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeType)(nil)).Elem()
+}
+
+func (e ComputeType) ToComputeTypeOutput() ComputeTypeOutput {
+	return pulumi.ToOutput(e).(ComputeTypeOutput)
+}
+
+func (e ComputeType) ToComputeTypeOutputWithContext(ctx context.Context) ComputeTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ComputeTypeOutput)
+}
+
+func (e ComputeType) ToComputeTypePtrOutput() ComputeTypePtrOutput {
+	return e.ToComputeTypePtrOutputWithContext(context.Background())
+}
+
+func (e ComputeType) ToComputeTypePtrOutputWithContext(ctx context.Context) ComputeTypePtrOutput {
+	return ComputeType(e).ToComputeTypeOutputWithContext(ctx).ToComputeTypePtrOutputWithContext(ctx)
+}
+
+func (e ComputeType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ComputeType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ComputeType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ComputeType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ComputeTypeOutput struct{ *pulumi.OutputState }
+
+func (ComputeTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeType)(nil)).Elem()
+}
+
+func (o ComputeTypeOutput) ToComputeTypeOutput() ComputeTypeOutput {
+	return o
+}
+
+func (o ComputeTypeOutput) ToComputeTypeOutputWithContext(ctx context.Context) ComputeTypeOutput {
+	return o
+}
+
+func (o ComputeTypeOutput) ToComputeTypePtrOutput() ComputeTypePtrOutput {
+	return o.ToComputeTypePtrOutputWithContext(context.Background())
+}
+
+func (o ComputeTypeOutput) ToComputeTypePtrOutputWithContext(ctx context.Context) ComputeTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeType) *ComputeType {
+		return &v
+	}).(ComputeTypePtrOutput)
+}
+
+func (o ComputeTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ComputeTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ComputeType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ComputeTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ComputeTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ComputeType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ComputeTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ComputeTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeType)(nil)).Elem()
+}
+
+func (o ComputeTypePtrOutput) ToComputeTypePtrOutput() ComputeTypePtrOutput {
+	return o
+}
+
+func (o ComputeTypePtrOutput) ToComputeTypePtrOutputWithContext(ctx context.Context) ComputeTypePtrOutput {
+	return o
+}
+
+func (o ComputeTypePtrOutput) Elem() ComputeTypeOutput {
+	return o.ApplyT(func(v *ComputeType) ComputeType {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeType
+		return ret
+	}).(ComputeTypeOutput)
+}
+
+func (o ComputeTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ComputeTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ComputeType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ComputeTypeInput is an input type that accepts values of the ComputeType enum
+// A concrete instance of `ComputeTypeInput` can be one of the following:
+//
+//	ComputeTypeDefault
+//	ComputeTypeConfidential
+type ComputeTypeInput interface {
+	pulumi.Input
+
+	ToComputeTypeOutput() ComputeTypeOutput
+	ToComputeTypeOutputWithContext(context.Context) ComputeTypeOutput
+}
+
+var computeTypePtrType = reflect.TypeOf((**ComputeType)(nil)).Elem()
+
+type ComputeTypePtrInput interface {
+	pulumi.Input
+
+	ToComputeTypePtrOutput() ComputeTypePtrOutput
+	ToComputeTypePtrOutputWithContext(context.Context) ComputeTypePtrOutput
+}
+
+type computeTypePtr string
+
+func ComputeTypePtr(v string) ComputeTypePtrInput {
+	return (*computeTypePtr)(&v)
+}
+
+func (*computeTypePtr) ElementType() reflect.Type {
+	return computeTypePtrType
+}
+
+func (in *computeTypePtr) ToComputeTypePtrOutput() ComputeTypePtrOutput {
+	return pulumi.ToOutput(in).(ComputeTypePtrOutput)
+}
+
+func (in *computeTypePtr) ToComputeTypePtrOutputWithContext(ctx context.Context) ComputeTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ComputeTypePtrOutput)
+}
+
 // Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
 type HostingMode string
 
@@ -346,12 +514,18 @@ func (in *hostingModePtr) ToHostingModePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(HostingModePtrOutput)
 }
 
-// The identity type.
+// The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an identity created by the system and a set of user assigned identities. The type 'None' will remove all identities from the service.
 type IdentityType string
 
 const (
-	IdentityTypeNone           = IdentityType("None")
+	// Indicates that any identity associated with the search service needs to be removed.
+	IdentityTypeNone = IdentityType("None")
+	// Indicates that system-assigned identity for the search service will be enabled.
 	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
+	// Indicates that one or more user assigned identities will be assigned to the search service.
+	IdentityTypeUserAssigned = IdentityType("UserAssigned")
+	// Indicates that system-assigned identity for the search service will be enabled along with the assignment of one or more user assigned identities.
+	IdentityType_SystemAssigned_UserAssigned = IdentityType("SystemAssigned, UserAssigned")
 )
 
 func (IdentityType) ElementType() reflect.Type {
@@ -478,6 +652,8 @@ func (o IdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 //
 //	IdentityTypeNone
 //	IdentityTypeSystemAssigned
+//	IdentityTypeUserAssigned
+//	IdentityType_SystemAssigned_UserAssigned
 type IdentityTypeInput interface {
 	pulumi.Input
 
@@ -512,7 +688,7 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-// The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, or Incomplete
+// The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
 type PrivateLinkServiceConnectionProvisioningState string
 
 const (
@@ -526,7 +702,7 @@ const (
 	PrivateLinkServiceConnectionProvisioningStateSucceeded = PrivateLinkServiceConnectionProvisioningState("Succeeded")
 	// Provisioning request for the private link service connection resource has been accepted but the process of creation has not commenced yet.
 	PrivateLinkServiceConnectionProvisioningStateIncomplete = PrivateLinkServiceConnectionProvisioningState("Incomplete")
-	// Provisioning request for the private link service connection resource has been canceled
+	// Provisioning request for the private link service connection resource has been canceled.
 	PrivateLinkServiceConnectionProvisioningStateCanceled = PrivateLinkServiceConnectionProvisioningState("Canceled")
 )
 
@@ -870,8 +1046,12 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 type PublicNetworkAccess string
 
 const (
-	PublicNetworkAccessEnabled  = PublicNetworkAccess("enabled")
+	// The search service is accessible from traffic originating from the public internet.
+	PublicNetworkAccessEnabled = PublicNetworkAccess("enabled")
+	// The search service is not accessible from traffic originating from the public internet. Access is only permitted over approved private endpoint connections.
 	PublicNetworkAccessDisabled = PublicNetworkAccess("disabled")
+	// The network security perimeter configuration rules allow or disallow public network access to the resource. Requires an associated network security perimeter.
+	PublicNetworkAccessSecuredByPerimeter = PublicNetworkAccess("securedByPerimeter")
 )
 
 func (PublicNetworkAccess) ElementType() reflect.Type {
@@ -998,6 +1178,7 @@ func (o PublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 //
 //	PublicNetworkAccessEnabled
 //	PublicNetworkAccessDisabled
+//	PublicNetworkAccessSecuredByPerimeter
 type PublicNetworkAccessInput interface {
 	pulumi.Input
 
@@ -1032,13 +1213,346 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
-// Describes how a search service should enforce having one or more non-customer-encrypted resources.
+// Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section.
+type SearchBypass string
+
+const (
+	// Indicates that no origin can bypass the rules defined in the 'ipRules' section. This is the default.
+	SearchBypassNone = SearchBypass("None")
+	// Indicates that requests originating from Azure trusted services can bypass the rules defined in the 'ipRules' section.
+	SearchBypassAzureServices = SearchBypass("AzureServices")
+)
+
+func (SearchBypass) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchBypass)(nil)).Elem()
+}
+
+func (e SearchBypass) ToSearchBypassOutput() SearchBypassOutput {
+	return pulumi.ToOutput(e).(SearchBypassOutput)
+}
+
+func (e SearchBypass) ToSearchBypassOutputWithContext(ctx context.Context) SearchBypassOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SearchBypassOutput)
+}
+
+func (e SearchBypass) ToSearchBypassPtrOutput() SearchBypassPtrOutput {
+	return e.ToSearchBypassPtrOutputWithContext(context.Background())
+}
+
+func (e SearchBypass) ToSearchBypassPtrOutputWithContext(ctx context.Context) SearchBypassPtrOutput {
+	return SearchBypass(e).ToSearchBypassOutputWithContext(ctx).ToSearchBypassPtrOutputWithContext(ctx)
+}
+
+func (e SearchBypass) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchBypass) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchBypass) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SearchBypass) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SearchBypassOutput struct{ *pulumi.OutputState }
+
+func (SearchBypassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchBypass)(nil)).Elem()
+}
+
+func (o SearchBypassOutput) ToSearchBypassOutput() SearchBypassOutput {
+	return o
+}
+
+func (o SearchBypassOutput) ToSearchBypassOutputWithContext(ctx context.Context) SearchBypassOutput {
+	return o
+}
+
+func (o SearchBypassOutput) ToSearchBypassPtrOutput() SearchBypassPtrOutput {
+	return o.ToSearchBypassPtrOutputWithContext(context.Background())
+}
+
+func (o SearchBypassOutput) ToSearchBypassPtrOutputWithContext(ctx context.Context) SearchBypassPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchBypass) *SearchBypass {
+		return &v
+	}).(SearchBypassPtrOutput)
+}
+
+func (o SearchBypassOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SearchBypassOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchBypass) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SearchBypassOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchBypassOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchBypass) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SearchBypassPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchBypassPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchBypass)(nil)).Elem()
+}
+
+func (o SearchBypassPtrOutput) ToSearchBypassPtrOutput() SearchBypassPtrOutput {
+	return o
+}
+
+func (o SearchBypassPtrOutput) ToSearchBypassPtrOutputWithContext(ctx context.Context) SearchBypassPtrOutput {
+	return o
+}
+
+func (o SearchBypassPtrOutput) Elem() SearchBypassOutput {
+	return o.ApplyT(func(v *SearchBypass) SearchBypass {
+		if v != nil {
+			return *v
+		}
+		var ret SearchBypass
+		return ret
+	}).(SearchBypassOutput)
+}
+
+func (o SearchBypassPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchBypassPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SearchBypass) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SearchBypassInput is an input type that accepts values of the SearchBypass enum
+// A concrete instance of `SearchBypassInput` can be one of the following:
+//
+//	SearchBypassNone
+//	SearchBypassAzureServices
+type SearchBypassInput interface {
+	pulumi.Input
+
+	ToSearchBypassOutput() SearchBypassOutput
+	ToSearchBypassOutputWithContext(context.Context) SearchBypassOutput
+}
+
+var searchBypassPtrType = reflect.TypeOf((**SearchBypass)(nil)).Elem()
+
+type SearchBypassPtrInput interface {
+	pulumi.Input
+
+	ToSearchBypassPtrOutput() SearchBypassPtrOutput
+	ToSearchBypassPtrOutputWithContext(context.Context) SearchBypassPtrOutput
+}
+
+type searchBypassPtr string
+
+func SearchBypassPtr(v string) SearchBypassPtrInput {
+	return (*searchBypassPtr)(&v)
+}
+
+func (*searchBypassPtr) ElementType() reflect.Type {
+	return searchBypassPtrType
+}
+
+func (in *searchBypassPtr) ToSearchBypassPtrOutput() SearchBypassPtrOutput {
+	return pulumi.ToOutput(in).(SearchBypassPtrOutput)
+}
+
+func (in *searchBypassPtr) ToSearchBypassPtrOutputWithContext(ctx context.Context) SearchBypassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SearchBypassPtrOutput)
+}
+
+// A specific data exfiltration scenario that is disabled for the service.
+type SearchDataExfiltrationProtection string
+
+const (
+	// Indicates that all data exfiltration scenarios are disabled.
+	SearchDataExfiltrationProtectionBlockAll = SearchDataExfiltrationProtection("BlockAll")
+)
+
+func (SearchDataExfiltrationProtection) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchDataExfiltrationProtection)(nil)).Elem()
+}
+
+func (e SearchDataExfiltrationProtection) ToSearchDataExfiltrationProtectionOutput() SearchDataExfiltrationProtectionOutput {
+	return pulumi.ToOutput(e).(SearchDataExfiltrationProtectionOutput)
+}
+
+func (e SearchDataExfiltrationProtection) ToSearchDataExfiltrationProtectionOutputWithContext(ctx context.Context) SearchDataExfiltrationProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SearchDataExfiltrationProtectionOutput)
+}
+
+func (e SearchDataExfiltrationProtection) ToSearchDataExfiltrationProtectionPtrOutput() SearchDataExfiltrationProtectionPtrOutput {
+	return e.ToSearchDataExfiltrationProtectionPtrOutputWithContext(context.Background())
+}
+
+func (e SearchDataExfiltrationProtection) ToSearchDataExfiltrationProtectionPtrOutputWithContext(ctx context.Context) SearchDataExfiltrationProtectionPtrOutput {
+	return SearchDataExfiltrationProtection(e).ToSearchDataExfiltrationProtectionOutputWithContext(ctx).ToSearchDataExfiltrationProtectionPtrOutputWithContext(ctx)
+}
+
+func (e SearchDataExfiltrationProtection) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchDataExfiltrationProtection) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchDataExfiltrationProtection) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SearchDataExfiltrationProtection) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SearchDataExfiltrationProtectionOutput struct{ *pulumi.OutputState }
+
+func (SearchDataExfiltrationProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchDataExfiltrationProtection)(nil)).Elem()
+}
+
+func (o SearchDataExfiltrationProtectionOutput) ToSearchDataExfiltrationProtectionOutput() SearchDataExfiltrationProtectionOutput {
+	return o
+}
+
+func (o SearchDataExfiltrationProtectionOutput) ToSearchDataExfiltrationProtectionOutputWithContext(ctx context.Context) SearchDataExfiltrationProtectionOutput {
+	return o
+}
+
+func (o SearchDataExfiltrationProtectionOutput) ToSearchDataExfiltrationProtectionPtrOutput() SearchDataExfiltrationProtectionPtrOutput {
+	return o.ToSearchDataExfiltrationProtectionPtrOutputWithContext(context.Background())
+}
+
+func (o SearchDataExfiltrationProtectionOutput) ToSearchDataExfiltrationProtectionPtrOutputWithContext(ctx context.Context) SearchDataExfiltrationProtectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchDataExfiltrationProtection) *SearchDataExfiltrationProtection {
+		return &v
+	}).(SearchDataExfiltrationProtectionPtrOutput)
+}
+
+func (o SearchDataExfiltrationProtectionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SearchDataExfiltrationProtectionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchDataExfiltrationProtection) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SearchDataExfiltrationProtectionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchDataExfiltrationProtectionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchDataExfiltrationProtection) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SearchDataExfiltrationProtectionPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchDataExfiltrationProtectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchDataExfiltrationProtection)(nil)).Elem()
+}
+
+func (o SearchDataExfiltrationProtectionPtrOutput) ToSearchDataExfiltrationProtectionPtrOutput() SearchDataExfiltrationProtectionPtrOutput {
+	return o
+}
+
+func (o SearchDataExfiltrationProtectionPtrOutput) ToSearchDataExfiltrationProtectionPtrOutputWithContext(ctx context.Context) SearchDataExfiltrationProtectionPtrOutput {
+	return o
+}
+
+func (o SearchDataExfiltrationProtectionPtrOutput) Elem() SearchDataExfiltrationProtectionOutput {
+	return o.ApplyT(func(v *SearchDataExfiltrationProtection) SearchDataExfiltrationProtection {
+		if v != nil {
+			return *v
+		}
+		var ret SearchDataExfiltrationProtection
+		return ret
+	}).(SearchDataExfiltrationProtectionOutput)
+}
+
+func (o SearchDataExfiltrationProtectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchDataExfiltrationProtectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SearchDataExfiltrationProtection) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SearchDataExfiltrationProtectionInput is an input type that accepts values of the SearchDataExfiltrationProtection enum
+// A concrete instance of `SearchDataExfiltrationProtectionInput` can be one of the following:
+//
+//	SearchDataExfiltrationProtectionBlockAll
+type SearchDataExfiltrationProtectionInput interface {
+	pulumi.Input
+
+	ToSearchDataExfiltrationProtectionOutput() SearchDataExfiltrationProtectionOutput
+	ToSearchDataExfiltrationProtectionOutputWithContext(context.Context) SearchDataExfiltrationProtectionOutput
+}
+
+var searchDataExfiltrationProtectionPtrType = reflect.TypeOf((**SearchDataExfiltrationProtection)(nil)).Elem()
+
+type SearchDataExfiltrationProtectionPtrInput interface {
+	pulumi.Input
+
+	ToSearchDataExfiltrationProtectionPtrOutput() SearchDataExfiltrationProtectionPtrOutput
+	ToSearchDataExfiltrationProtectionPtrOutputWithContext(context.Context) SearchDataExfiltrationProtectionPtrOutput
+}
+
+type searchDataExfiltrationProtectionPtr string
+
+func SearchDataExfiltrationProtectionPtr(v string) SearchDataExfiltrationProtectionPtrInput {
+	return (*searchDataExfiltrationProtectionPtr)(&v)
+}
+
+func (*searchDataExfiltrationProtectionPtr) ElementType() reflect.Type {
+	return searchDataExfiltrationProtectionPtrType
+}
+
+func (in *searchDataExfiltrationProtectionPtr) ToSearchDataExfiltrationProtectionPtrOutput() SearchDataExfiltrationProtectionPtrOutput {
+	return pulumi.ToOutput(in).(SearchDataExfiltrationProtectionPtrOutput)
+}
+
+func (in *searchDataExfiltrationProtectionPtr) ToSearchDataExfiltrationProtectionPtrOutputWithContext(ctx context.Context) SearchDataExfiltrationProtectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SearchDataExfiltrationProtectionPtrOutput)
+}
+
+// Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key.
 type SearchEncryptionWithCmk string
 
 const (
-	// No enforcement will be made and the search service can have non-customer-encrypted resources.
+	// No enforcement of customer-managed key encryption will be made. Only the built-in service-managed encryption is used.
 	SearchEncryptionWithCmkDisabled = SearchEncryptionWithCmk("Disabled")
-	// Search service will be marked as non-compliant if there are one or more non-customer-encrypted resources.
+	// Search service will be marked as non-compliant if one or more objects aren't encrypted with a customer-managed key.
 	SearchEncryptionWithCmkEnabled = SearchEncryptionWithCmk("Enabled")
 	// Enforcement policy is not explicitly specified, with the behavior being the same as if it were set to 'Disabled'.
 	SearchEncryptionWithCmkUnspecified = SearchEncryptionWithCmk("Unspecified")
@@ -1203,15 +1717,15 @@ func (in *searchEncryptionWithCmkPtr) ToSearchEncryptionWithCmkPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SearchEncryptionWithCmkPtrOutput)
 }
 
-// Sets options that control the availability of semantic search. This configuration is only possible for certain search SKUs in certain locations.
+// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
 type SearchSemanticSearch string
 
 const (
-	// Indicates that semantic ranking is disabled for the search service.
+	// Indicates that semantic reranker is disabled for the search service. This is the default.
 	SearchSemanticSearchDisabled = SearchSemanticSearch("disabled")
-	// Enables semantic ranking on a search service and indicates that it is to be used within the limits of the free tier. This would cap the volume of semantic ranking requests and is offered at no extra charge. This is the default for newly provisioned search services.
+	// Enables semantic reranker on a search service and indicates that it is to be used within the limits of the free plan. The free plan would cap the volume of semantic ranking requests and is offered at no extra charge. This is the default for newly provisioned search services.
 	SearchSemanticSearchFree = SearchSemanticSearch("free")
-	// Enables semantic ranking on a search service as a billable feature, with higher throughput and volume of semantic ranking requests.
+	// Enables semantic reranker on a search service as a billable feature, with higher throughput and volume of semantically reranked queries.
 	SearchSemanticSearchStandard = SearchSemanticSearch("standard")
 )
 
@@ -1378,10 +1892,15 @@ func (in *searchSemanticSearchPtr) ToSearchSemanticSearchPtrOutputWithContext(ct
 type SharedPrivateLinkResourceProvisioningState string
 
 const (
-	SharedPrivateLinkResourceProvisioningStateUpdating   = SharedPrivateLinkResourceProvisioningState("Updating")
-	SharedPrivateLinkResourceProvisioningStateDeleting   = SharedPrivateLinkResourceProvisioningState("Deleting")
-	SharedPrivateLinkResourceProvisioningStateFailed     = SharedPrivateLinkResourceProvisioningState("Failed")
-	SharedPrivateLinkResourceProvisioningStateSucceeded  = SharedPrivateLinkResourceProvisioningState("Succeeded")
+	// The shared private link resource is in the process of being created along with other resources for it to be fully functional.
+	SharedPrivateLinkResourceProvisioningStateUpdating = SharedPrivateLinkResourceProvisioningState("Updating")
+	// The shared private link resource is in the process of being deleted.
+	SharedPrivateLinkResourceProvisioningStateDeleting = SharedPrivateLinkResourceProvisioningState("Deleting")
+	// The shared private link resource has failed to be provisioned or deleted.
+	SharedPrivateLinkResourceProvisioningStateFailed = SharedPrivateLinkResourceProvisioningState("Failed")
+	// The shared private link resource has finished provisioning and is ready for approval.
+	SharedPrivateLinkResourceProvisioningStateSucceeded = SharedPrivateLinkResourceProvisioningState("Succeeded")
+	// Provisioning request for the shared private link resource has been accepted but the process of creation has not commenced yet.
 	SharedPrivateLinkResourceProvisioningStateIncomplete = SharedPrivateLinkResourceProvisioningState("Incomplete")
 )
 
@@ -1550,9 +2069,13 @@ func (in *sharedPrivateLinkResourceProvisioningStatePtr) ToSharedPrivateLinkReso
 type SharedPrivateLinkResourceStatus string
 
 const (
-	SharedPrivateLinkResourceStatusPending      = SharedPrivateLinkResourceStatus("Pending")
-	SharedPrivateLinkResourceStatusApproved     = SharedPrivateLinkResourceStatus("Approved")
-	SharedPrivateLinkResourceStatusRejected     = SharedPrivateLinkResourceStatus("Rejected")
+	// The shared private link resource has been created and is pending approval.
+	SharedPrivateLinkResourceStatusPending = SharedPrivateLinkResourceStatus("Pending")
+	// The shared private link resource is approved and is ready for use.
+	SharedPrivateLinkResourceStatusApproved = SharedPrivateLinkResourceStatus("Approved")
+	// The shared private link resource has been rejected and cannot be used.
+	SharedPrivateLinkResourceStatusRejected = SharedPrivateLinkResourceStatus("Rejected")
+	// The shared private link resource has been removed from the service.
 	SharedPrivateLinkResourceStatusDisconnected = SharedPrivateLinkResourceStatus("Disconnected")
 )
 
@@ -1899,9 +2422,179 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
+// Indicates if the search service has an upgrade available.
+type UpgradeAvailable string
+
+const (
+	// An upgrade is currently not available for the service.
+	UpgradeAvailableNotAvailable = UpgradeAvailable("notAvailable")
+	// There is an upgrade available for the service.
+	UpgradeAvailableAvailable = UpgradeAvailable("available")
+)
+
+func (UpgradeAvailable) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeAvailable)(nil)).Elem()
+}
+
+func (e UpgradeAvailable) ToUpgradeAvailableOutput() UpgradeAvailableOutput {
+	return pulumi.ToOutput(e).(UpgradeAvailableOutput)
+}
+
+func (e UpgradeAvailable) ToUpgradeAvailableOutputWithContext(ctx context.Context) UpgradeAvailableOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UpgradeAvailableOutput)
+}
+
+func (e UpgradeAvailable) ToUpgradeAvailablePtrOutput() UpgradeAvailablePtrOutput {
+	return e.ToUpgradeAvailablePtrOutputWithContext(context.Background())
+}
+
+func (e UpgradeAvailable) ToUpgradeAvailablePtrOutputWithContext(ctx context.Context) UpgradeAvailablePtrOutput {
+	return UpgradeAvailable(e).ToUpgradeAvailableOutputWithContext(ctx).ToUpgradeAvailablePtrOutputWithContext(ctx)
+}
+
+func (e UpgradeAvailable) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UpgradeAvailable) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UpgradeAvailable) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e UpgradeAvailable) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type UpgradeAvailableOutput struct{ *pulumi.OutputState }
+
+func (UpgradeAvailableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeAvailable)(nil)).Elem()
+}
+
+func (o UpgradeAvailableOutput) ToUpgradeAvailableOutput() UpgradeAvailableOutput {
+	return o
+}
+
+func (o UpgradeAvailableOutput) ToUpgradeAvailableOutputWithContext(ctx context.Context) UpgradeAvailableOutput {
+	return o
+}
+
+func (o UpgradeAvailableOutput) ToUpgradeAvailablePtrOutput() UpgradeAvailablePtrOutput {
+	return o.ToUpgradeAvailablePtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeAvailableOutput) ToUpgradeAvailablePtrOutputWithContext(ctx context.Context) UpgradeAvailablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeAvailable) *UpgradeAvailable {
+		return &v
+	}).(UpgradeAvailablePtrOutput)
+}
+
+func (o UpgradeAvailableOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o UpgradeAvailableOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UpgradeAvailable) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o UpgradeAvailableOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeAvailableOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UpgradeAvailable) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type UpgradeAvailablePtrOutput struct{ *pulumi.OutputState }
+
+func (UpgradeAvailablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeAvailable)(nil)).Elem()
+}
+
+func (o UpgradeAvailablePtrOutput) ToUpgradeAvailablePtrOutput() UpgradeAvailablePtrOutput {
+	return o
+}
+
+func (o UpgradeAvailablePtrOutput) ToUpgradeAvailablePtrOutputWithContext(ctx context.Context) UpgradeAvailablePtrOutput {
+	return o
+}
+
+func (o UpgradeAvailablePtrOutput) Elem() UpgradeAvailableOutput {
+	return o.ApplyT(func(v *UpgradeAvailable) UpgradeAvailable {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeAvailable
+		return ret
+	}).(UpgradeAvailableOutput)
+}
+
+func (o UpgradeAvailablePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeAvailablePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UpgradeAvailable) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// UpgradeAvailableInput is an input type that accepts values of the UpgradeAvailable enum
+// A concrete instance of `UpgradeAvailableInput` can be one of the following:
+//
+//	UpgradeAvailableNotAvailable
+//	UpgradeAvailableAvailable
+type UpgradeAvailableInput interface {
+	pulumi.Input
+
+	ToUpgradeAvailableOutput() UpgradeAvailableOutput
+	ToUpgradeAvailableOutputWithContext(context.Context) UpgradeAvailableOutput
+}
+
+var upgradeAvailablePtrType = reflect.TypeOf((**UpgradeAvailable)(nil)).Elem()
+
+type UpgradeAvailablePtrInput interface {
+	pulumi.Input
+
+	ToUpgradeAvailablePtrOutput() UpgradeAvailablePtrOutput
+	ToUpgradeAvailablePtrOutputWithContext(context.Context) UpgradeAvailablePtrOutput
+}
+
+type upgradeAvailablePtr string
+
+func UpgradeAvailablePtr(v string) UpgradeAvailablePtrInput {
+	return (*upgradeAvailablePtr)(&v)
+}
+
+func (*upgradeAvailablePtr) ElementType() reflect.Type {
+	return upgradeAvailablePtrType
+}
+
+func (in *upgradeAvailablePtr) ToUpgradeAvailablePtrOutput() UpgradeAvailablePtrOutput {
+	return pulumi.ToOutput(in).(UpgradeAvailablePtrOutput)
+}
+
+func (in *upgradeAvailablePtr) ToUpgradeAvailablePtrOutputWithContext(ctx context.Context) UpgradeAvailablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UpgradeAvailablePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AadAuthFailureModeOutput{})
 	pulumi.RegisterOutputType(AadAuthFailureModePtrOutput{})
+	pulumi.RegisterOutputType(ComputeTypeOutput{})
+	pulumi.RegisterOutputType(ComputeTypePtrOutput{})
 	pulumi.RegisterOutputType(HostingModeOutput{})
 	pulumi.RegisterOutputType(HostingModePtrOutput{})
 	pulumi.RegisterOutputType(IdentityTypeOutput{})
@@ -1912,6 +2605,10 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
+	pulumi.RegisterOutputType(SearchBypassOutput{})
+	pulumi.RegisterOutputType(SearchBypassPtrOutput{})
+	pulumi.RegisterOutputType(SearchDataExfiltrationProtectionOutput{})
+	pulumi.RegisterOutputType(SearchDataExfiltrationProtectionPtrOutput{})
 	pulumi.RegisterOutputType(SearchEncryptionWithCmkOutput{})
 	pulumi.RegisterOutputType(SearchEncryptionWithCmkPtrOutput{})
 	pulumi.RegisterOutputType(SearchSemanticSearchOutput{})
@@ -1922,4 +2619,6 @@ func init() {
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceStatusPtrOutput{})
 	pulumi.RegisterOutputType(SkuNameOutput{})
 	pulumi.RegisterOutputType(SkuNamePtrOutput{})
+	pulumi.RegisterOutputType(UpgradeAvailableOutput{})
+	pulumi.RegisterOutputType(UpgradeAvailablePtrOutput{})
 }

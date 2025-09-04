@@ -1606,13 +1606,13 @@ func (o ModuleResponseArrayOutput) Index(i pulumi.IntInput) ModuleResponseOutput
 	}).(ModuleResponseOutput)
 }
 
-// Persistence-related configuration for the RedisEnterprise database
+// Persistence-related configuration for the Redis Enterprise database
 type Persistence struct {
-	// Sets whether AOF is enabled.
+	// Sets whether AOF is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 	AofEnabled *bool `pulumi:"aofEnabled"`
-	// Sets the frequency at which data is written to disk.
+	// Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact.
 	AofFrequency *string `pulumi:"aofFrequency"`
-	// Sets whether RDB is enabled.
+	// Sets whether RDB is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 	RdbEnabled *bool `pulumi:"rdbEnabled"`
 	// Sets the frequency at which a snapshot of the database is created.
 	RdbFrequency *string `pulumi:"rdbFrequency"`
@@ -1629,13 +1629,13 @@ type PersistenceInput interface {
 	ToPersistenceOutputWithContext(context.Context) PersistenceOutput
 }
 
-// Persistence-related configuration for the RedisEnterprise database
+// Persistence-related configuration for the Redis Enterprise database
 type PersistenceArgs struct {
-	// Sets whether AOF is enabled.
+	// Sets whether AOF is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 	AofEnabled pulumi.BoolPtrInput `pulumi:"aofEnabled"`
-	// Sets the frequency at which data is written to disk.
+	// Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact.
 	AofFrequency pulumi.StringPtrInput `pulumi:"aofFrequency"`
-	// Sets whether RDB is enabled.
+	// Sets whether RDB is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 	RdbEnabled pulumi.BoolPtrInput `pulumi:"rdbEnabled"`
 	// Sets the frequency at which a snapshot of the database is created.
 	RdbFrequency pulumi.StringPtrInput `pulumi:"rdbFrequency"`
@@ -1694,7 +1694,7 @@ func (i *persistencePtrType) ToPersistencePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PersistencePtrOutput)
 }
 
-// Persistence-related configuration for the RedisEnterprise database
+// Persistence-related configuration for the Redis Enterprise database
 type PersistenceOutput struct{ *pulumi.OutputState }
 
 func (PersistenceOutput) ElementType() reflect.Type {
@@ -1719,17 +1719,17 @@ func (o PersistenceOutput) ToPersistencePtrOutputWithContext(ctx context.Context
 	}).(PersistencePtrOutput)
 }
 
-// Sets whether AOF is enabled.
+// Sets whether AOF is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 func (o PersistenceOutput) AofEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Persistence) *bool { return v.AofEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Sets the frequency at which data is written to disk.
+// Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact.
 func (o PersistenceOutput) AofFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Persistence) *string { return v.AofFrequency }).(pulumi.StringPtrOutput)
 }
 
-// Sets whether RDB is enabled.
+// Sets whether RDB is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 func (o PersistenceOutput) RdbEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Persistence) *bool { return v.RdbEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1763,7 +1763,7 @@ func (o PersistencePtrOutput) Elem() PersistenceOutput {
 	}).(PersistenceOutput)
 }
 
-// Sets whether AOF is enabled.
+// Sets whether AOF is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 func (o PersistencePtrOutput) AofEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Persistence) *bool {
 		if v == nil {
@@ -1773,7 +1773,7 @@ func (o PersistencePtrOutput) AofEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Sets the frequency at which data is written to disk.
+// Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact.
 func (o PersistencePtrOutput) AofFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Persistence) *string {
 		if v == nil {
@@ -1783,7 +1783,7 @@ func (o PersistencePtrOutput) AofFrequency() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Sets whether RDB is enabled.
+// Sets whether RDB is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 func (o PersistencePtrOutput) RdbEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Persistence) *bool {
 		if v == nil {
@@ -1803,19 +1803,19 @@ func (o PersistencePtrOutput) RdbFrequency() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Persistence-related configuration for the RedisEnterprise database
+// Persistence-related configuration for the Redis Enterprise database
 type PersistenceResponse struct {
-	// Sets whether AOF is enabled.
+	// Sets whether AOF is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 	AofEnabled *bool `pulumi:"aofEnabled"`
-	// Sets the frequency at which data is written to disk.
+	// Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact.
 	AofFrequency *string `pulumi:"aofFrequency"`
-	// Sets whether RDB is enabled.
+	// Sets whether RDB is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 	RdbEnabled *bool `pulumi:"rdbEnabled"`
 	// Sets the frequency at which a snapshot of the database is created.
 	RdbFrequency *string `pulumi:"rdbFrequency"`
 }
 
-// Persistence-related configuration for the RedisEnterprise database
+// Persistence-related configuration for the Redis Enterprise database
 type PersistenceResponseOutput struct{ *pulumi.OutputState }
 
 func (PersistenceResponseOutput) ElementType() reflect.Type {
@@ -1830,17 +1830,17 @@ func (o PersistenceResponseOutput) ToPersistenceResponseOutputWithContext(ctx co
 	return o
 }
 
-// Sets whether AOF is enabled.
+// Sets whether AOF is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 func (o PersistenceResponseOutput) AofEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PersistenceResponse) *bool { return v.AofEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Sets the frequency at which data is written to disk.
+// Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact.
 func (o PersistenceResponseOutput) AofFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PersistenceResponse) *string { return v.AofFrequency }).(pulumi.StringPtrOutput)
 }
 
-// Sets whether RDB is enabled.
+// Sets whether RDB is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 func (o PersistenceResponseOutput) RdbEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PersistenceResponse) *bool { return v.RdbEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1874,7 +1874,7 @@ func (o PersistenceResponsePtrOutput) Elem() PersistenceResponseOutput {
 	}).(PersistenceResponseOutput)
 }
 
-// Sets whether AOF is enabled.
+// Sets whether AOF is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 func (o PersistenceResponsePtrOutput) AofEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PersistenceResponse) *bool {
 		if v == nil {
@@ -1884,7 +1884,7 @@ func (o PersistenceResponsePtrOutput) AofEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Sets the frequency at which data is written to disk.
+// Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact.
 func (o PersistenceResponsePtrOutput) AofFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PersistenceResponse) *string {
 		if v == nil {
@@ -1894,7 +1894,7 @@ func (o PersistenceResponsePtrOutput) AofFrequency() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Sets whether RDB is enabled.
+// Sets whether RDB is enabled. Note that at most one of AOF or RDB persistence may be enabled.
 func (o PersistenceResponsePtrOutput) RdbEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PersistenceResponse) *bool {
 		if v == nil {
@@ -2170,11 +2170,11 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringP
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// SKU parameters supplied to the create RedisEnterprise operation.
+// SKU parameters supplied to the create Redis Enterprise cluster operation.
 type Sku struct {
-	// The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+	// This property is only used with Enterprise and EnterpriseFlash SKUs. Determines the size of the cluster. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for EnterpriseFlash SKUs.
 	Capacity *int `pulumi:"capacity"`
-	// The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+	// The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future.
 	Name string `pulumi:"name"`
 }
 
@@ -2189,11 +2189,11 @@ type SkuInput interface {
 	ToSkuOutputWithContext(context.Context) SkuOutput
 }
 
-// SKU parameters supplied to the create RedisEnterprise operation.
+// SKU parameters supplied to the create Redis Enterprise cluster operation.
 type SkuArgs struct {
-	// The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+	// This property is only used with Enterprise and EnterpriseFlash SKUs. Determines the size of the cluster. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for EnterpriseFlash SKUs.
 	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
-	// The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+	// The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2209,7 +2209,7 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-// SKU parameters supplied to the create RedisEnterprise operation.
+// SKU parameters supplied to the create Redis Enterprise cluster operation.
 type SkuOutput struct{ *pulumi.OutputState }
 
 func (SkuOutput) ElementType() reflect.Type {
@@ -2224,12 +2224,12 @@ func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
 }
 
-// The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+// This property is only used with Enterprise and EnterpriseFlash SKUs. Determines the size of the cluster. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for EnterpriseFlash SKUs.
 func (o SkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Sku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
 
-// The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+// The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future.
 func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2287,15 +2287,15 @@ func (o SkuDetailsResponseArrayOutput) Index(i pulumi.IntInput) SkuDetailsRespon
 	}).(SkuDetailsResponseOutput)
 }
 
-// SKU parameters supplied to the create RedisEnterprise operation.
+// SKU parameters supplied to the create Redis Enterprise cluster operation.
 type SkuResponse struct {
-	// The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+	// This property is only used with Enterprise and EnterpriseFlash SKUs. Determines the size of the cluster. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for EnterpriseFlash SKUs.
 	Capacity *int `pulumi:"capacity"`
-	// The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+	// The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future.
 	Name string `pulumi:"name"`
 }
 
-// SKU parameters supplied to the create RedisEnterprise operation.
+// SKU parameters supplied to the create Redis Enterprise cluster operation.
 type SkuResponseOutput struct{ *pulumi.OutputState }
 
 func (SkuResponseOutput) ElementType() reflect.Type {
@@ -2310,14 +2310,75 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+// This property is only used with Enterprise and EnterpriseFlash SKUs. Determines the size of the cluster. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for EnterpriseFlash SKUs.
 func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
 
-// The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+// The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future.
 func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // User assigned identity properties
@@ -2418,6 +2479,7 @@ func init() {
 	pulumi.RegisterOutputType(SkuDetailsResponseOutput{})
 	pulumi.RegisterOutputType(SkuDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

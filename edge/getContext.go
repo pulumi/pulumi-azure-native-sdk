@@ -14,6 +14,8 @@ import (
 // Get Context Resource
 //
 // Uses Azure REST API version 2025-06-01.
+//
+// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupContext(ctx *pulumi.Context, args *LookupContextArgs, opts ...pulumi.InvokeOption) (*LookupContextResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContextResult

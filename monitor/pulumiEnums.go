@@ -2369,9 +2369,9 @@ func (in *jsonMapperElementPtr) ToJsonMapperElementPtrOutputWithContext(ctx cont
 type Kind string
 
 const (
-	KindLogAlert      = Kind("LogAlert")
-	KindEventLogAlert = Kind("EventLogAlert")
-	KindLogToMetric   = Kind("LogToMetric")
+	KindLogAlert       = Kind("LogAlert")
+	KindSimpleLogAlert = Kind("SimpleLogAlert")
+	KindLogToMetric    = Kind("LogToMetric")
 )
 
 func (Kind) ElementType() reflect.Type {
@@ -2497,7 +2497,7 @@ func (o KindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.
 // A concrete instance of `KindInput` can be one of the following:
 //
 //	KindLogAlert
-//	KindEventLogAlert
+//	KindSimpleLogAlert
 //	KindLogToMetric
 type KindInput interface {
 	pulumi.Input

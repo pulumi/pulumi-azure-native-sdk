@@ -14,6 +14,8 @@ import (
 // Get a PlaywrightWorkspace
 //
 // Uses Azure REST API version 2025-07-01-preview.
+//
+// Other available API versions: 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPlaywrightWorkspace(ctx *pulumi.Context, args *LookupPlaywrightWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupPlaywrightWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPlaywrightWorkspaceResult
@@ -35,11 +37,11 @@ type LookupPlaywrightWorkspaceArgs struct {
 type LookupPlaywrightWorkspaceResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The workspace data plane URI.
+	// The workspace data plane service API URI.
 	DataplaneUri string `pulumi:"dataplaneUri"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+	// Enables the workspace to use local authentication through service access tokens for operations.
 	LocalAuth *string `pulumi:"localAuth"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -47,7 +49,7 @@ type LookupPlaywrightWorkspaceResult struct {
 	Name string `pulumi:"name"`
 	// The status of the last resource operation.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// This property sets the connection region for client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
+	// Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created.
 	RegionalAffinity *string `pulumi:"regionalAffinity"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -55,6 +57,8 @@ type LookupPlaywrightWorkspaceResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// The workspace ID in GUID format.
+	WorkspaceId string `pulumi:"workspaceId"`
 }
 
 // Defaults sets the appropriate defaults for LookupPlaywrightWorkspaceResult
@@ -113,7 +117,7 @@ func (o LookupPlaywrightWorkspaceResultOutput) AzureApiVersion() pulumi.StringOu
 	return o.ApplyT(func(v LookupPlaywrightWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// The workspace data plane URI.
+// The workspace data plane service API URI.
 func (o LookupPlaywrightWorkspaceResultOutput) DataplaneUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPlaywrightWorkspaceResult) string { return v.DataplaneUri }).(pulumi.StringOutput)
 }
@@ -123,7 +127,7 @@ func (o LookupPlaywrightWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPlaywrightWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+// Enables the workspace to use local authentication through service access tokens for operations.
 func (o LookupPlaywrightWorkspaceResultOutput) LocalAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPlaywrightWorkspaceResult) *string { return v.LocalAuth }).(pulumi.StringPtrOutput)
 }
@@ -143,7 +147,7 @@ func (o LookupPlaywrightWorkspaceResultOutput) ProvisioningState() pulumi.String
 	return o.ApplyT(func(v LookupPlaywrightWorkspaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// This property sets the connection region for client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
+// Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created.
 func (o LookupPlaywrightWorkspaceResultOutput) RegionalAffinity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPlaywrightWorkspaceResult) *string { return v.RegionalAffinity }).(pulumi.StringPtrOutput)
 }
@@ -161,6 +165,11 @@ func (o LookupPlaywrightWorkspaceResultOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPlaywrightWorkspaceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPlaywrightWorkspaceResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The workspace ID in GUID format.
+func (o LookupPlaywrightWorkspaceResultOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPlaywrightWorkspaceResult) string { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
 func init() {

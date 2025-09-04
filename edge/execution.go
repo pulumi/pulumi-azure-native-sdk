@@ -15,6 +15,8 @@ import (
 // Execution Resource
 //
 // Uses Azure REST API version 2025-06-01.
+//
+// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Execution struct {
 	pulumi.CustomResourceState
 
@@ -56,6 +58,9 @@ func NewExecution(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:edge/v20250601:Execution"),
+		},
+		{
+			Type: pulumi.String("azure-native:edge/v20250801:Execution"),
 		},
 	})
 	opts = append(opts, aliases)

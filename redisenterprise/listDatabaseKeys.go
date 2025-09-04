@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves the access keys for the RedisEnterprise database.
+// Retrieves the access keys for the Redis Enterprise database.
 //
-// Uses Azure REST API version 2024-03-01-preview.
+// Uses Azure REST API version 2025-05-01-preview.
 //
-// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListDatabaseKeys(ctx *pulumi.Context, args *ListDatabaseKeysArgs, opts ...pulumi.InvokeOption) (*ListDatabaseKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDatabaseKeysResult
@@ -27,7 +27,7 @@ func ListDatabaseKeys(ctx *pulumi.Context, args *ListDatabaseKeysArgs, opts ...p
 }
 
 type ListDatabaseKeysArgs struct {
-	// The name of the Redis Enterprise cluster.
+	// The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the Redis Enterprise database.
 	DatabaseName string `pulumi:"databaseName"`
@@ -53,7 +53,7 @@ func ListDatabaseKeysOutput(ctx *pulumi.Context, args ListDatabaseKeysOutputArgs
 }
 
 type ListDatabaseKeysOutputArgs struct {
-	// The name of the Redis Enterprise cluster.
+	// The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the Redis Enterprise database.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`

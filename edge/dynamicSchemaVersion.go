@@ -15,6 +15,8 @@ import (
 // Dynamic Schema Version Resource
 //
 // Uses Azure REST API version 2025-06-01.
+//
+// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DynamicSchemaVersion struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,9 @@ func NewDynamicSchemaVersion(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:edge/v20250601:DynamicSchemaVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:edge/v20250801:DynamicSchemaVersion"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -89,28 +94,28 @@ func (DynamicSchemaVersionState) ElementType() reflect.Type {
 type dynamicSchemaVersionArgs struct {
 	// The name of the DynamicSchema
 	DynamicSchemaName string `pulumi:"dynamicSchemaName"`
+	// The name of the DynamicSchemaVersion
+	DynamicSchemaVersionName *string `pulumi:"dynamicSchemaVersionName"`
 	// The resource-specific properties for this resource.
 	Properties *SchemaVersionProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Schema
 	SchemaName string `pulumi:"schemaName"`
-	// The name of the SchemaVersion
-	SchemaVersionName *string `pulumi:"schemaVersionName"`
 }
 
 // The set of arguments for constructing a DynamicSchemaVersion resource.
 type DynamicSchemaVersionArgs struct {
 	// The name of the DynamicSchema
 	DynamicSchemaName pulumi.StringInput
+	// The name of the DynamicSchemaVersion
+	DynamicSchemaVersionName pulumi.StringPtrInput
 	// The resource-specific properties for this resource.
 	Properties SchemaVersionPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the Schema
 	SchemaName pulumi.StringInput
-	// The name of the SchemaVersion
-	SchemaVersionName pulumi.StringPtrInput
 }
 
 func (DynamicSchemaVersionArgs) ElementType() reflect.Type {
