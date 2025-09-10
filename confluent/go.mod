@@ -6,8 +6,8 @@ toolchain go1.24.7
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.8.0
-	github.com/pulumi/pulumi/sdk/v3 v3.193.0
+	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.9.0-alpha.1757522298
+	github.com/pulumi/pulumi/sdk/v3 v3.194.0
 )
 
 require (
