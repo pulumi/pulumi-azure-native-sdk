@@ -108,7 +108,7 @@ type privateEndpointConnectionArgs struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the storage sync service name within the specified resource group.
+	// Name of Storage Sync Service resource.
 	StorageSyncServiceName string `pulumi:"storageSyncServiceName"`
 }
 
@@ -120,7 +120,7 @@ type PrivateEndpointConnectionArgs struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The name of the storage sync service name within the specified resource group.
+	// Name of Storage Sync Service resource.
 	StorageSyncServiceName pulumi.StringInput
 }
 

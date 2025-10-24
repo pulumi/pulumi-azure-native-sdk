@@ -33,7 +33,7 @@ type LookupHybridConnectionAuthorizationRuleArgs struct {
 	HybridConnectionName string `pulumi:"hybridConnectionName"`
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -49,9 +49,9 @@ type LookupHybridConnectionAuthorizationRuleResult struct {
 	Name string `pulumi:"name"`
 	// The rights associated with the rule.
 	Rights []string `pulumi:"rights"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -71,7 +71,7 @@ type LookupHybridConnectionAuthorizationRuleOutputArgs struct {
 	HybridConnectionName pulumi.StringInput `pulumi:"hybridConnectionName"`
 	// The namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -119,12 +119,12 @@ func (o LookupHybridConnectionAuthorizationRuleResultOutput) Rights() pulumi.Str
 	return o.ApplyT(func(v LookupHybridConnectionAuthorizationRuleResult) []string { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupHybridConnectionAuthorizationRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupHybridConnectionAuthorizationRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupHybridConnectionAuthorizationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridConnectionAuthorizationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

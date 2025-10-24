@@ -15,6 +15,8 @@ import (
 // Instance dataflowEndpoint resource.
 //
 // Uses Azure REST API version 2025-07-01-preview.
+//
+// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DataflowGraph struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +56,9 @@ func NewDataflowGraph(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20250701preview:DataflowGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20251001:DataflowGraph"),
 		},
 	})
 	opts = append(opts, aliases)

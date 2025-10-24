@@ -91,7 +91,7 @@ type siteArgs struct {
 	Properties *SiteProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of Site resource
+	// The name of the Site
 	SiteName *string `pulumi:"siteName"`
 }
 
@@ -101,7 +101,7 @@ type SiteArgs struct {
 	Properties SitePropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Name of Site resource
+	// The name of the Site
 	SiteName pulumi.StringPtrInput
 }
 

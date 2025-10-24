@@ -39,7 +39,7 @@ type LookupStorageSyncServiceResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// managed identities for the Storage Sync service to interact with other Azure services without maintaining any secrets or credentials in code.
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Incoming Traffic Policy
 	IncomingTrafficPolicy *string `pulumi:"incomingTrafficPolicy"`
@@ -114,7 +114,7 @@ func (o LookupStorageSyncServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// managed identities for the Storage Sync service to interact with other Azure services without maintaining any secrets or credentials in code.
+// The managed service identities assigned to this resource.
 func (o LookupStorageSyncServiceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }

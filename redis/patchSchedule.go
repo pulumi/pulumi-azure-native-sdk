@@ -28,6 +28,8 @@ type PatchSchedule struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of patch schedules for a Redis cache.
 	ScheduleEntries ScheduleEntryResponseArrayOutput `pulumi:"scheduleEntries"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -147,9 +149,9 @@ func (PatchScheduleState) ElementType() reflect.Type {
 }
 
 type patchScheduleArgs struct {
-	// Default string modeled as parameter for auto generation to work correctly.
+	// The name of the RedisPatchSchedule
 	Default *string `pulumi:"default"`
-	// The name of the Redis cache.
+	// The name of the redis cache.
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -159,9 +161,9 @@ type patchScheduleArgs struct {
 
 // The set of arguments for constructing a PatchSchedule resource.
 type PatchScheduleArgs struct {
-	// Default string modeled as parameter for auto generation to work correctly.
+	// The name of the RedisPatchSchedule
 	Default pulumi.StringPtrInput
-	// The name of the Redis cache.
+	// The name of the redis cache.
 	Name pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -224,6 +226,11 @@ func (o PatchScheduleOutput) Name() pulumi.StringOutput {
 // List of patch schedules for a Redis cache.
 func (o PatchScheduleOutput) ScheduleEntries() ScheduleEntryResponseArrayOutput {
 	return o.ApplyT(func(v *PatchSchedule) ScheduleEntryResponseArrayOutput { return v.ScheduleEntries }).(ScheduleEntryResponseArrayOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PatchScheduleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PatchSchedule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

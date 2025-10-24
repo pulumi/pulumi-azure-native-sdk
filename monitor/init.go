@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ActionGroup{}
 	case "azure-native:monitor:ActivityLogAlert":
 		r = &ActivityLogAlert{}
+	case "azure-native:monitor:AuthenticationSetting":
+		r = &AuthenticationSetting{}
 	case "azure-native:monitor:AutoscaleSetting":
 		r = &AutoscaleSetting{}
 	case "azure-native:monitor:AzureMonitorWorkspace":
@@ -37,6 +39,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataCollectionRuleAssociation{}
 	case "azure-native:monitor:DiagnosticSetting":
 		r = &DiagnosticSetting{}
+	case "azure-native:monitor:DiscoveryRule":
+		r = &DiscoveryRule{}
+	case "azure-native:monitor:Entity":
+		r = &Entity{}
+	case "azure-native:monitor:HealthModel":
+		r = &HealthModel{}
+	case "azure-native:monitor:Issue":
+		r = &Issue{}
 	case "azure-native:monitor:ManagementGroupDiagnosticSetting":
 		r = &ManagementGroupDiagnosticSetting{}
 	case "azure-native:monitor:MetricAlert":
@@ -49,8 +59,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateLinkScope{}
 	case "azure-native:monitor:PrivateLinkScopedResource":
 		r = &PrivateLinkScopedResource{}
+	case "azure-native:monitor:Relationship":
+		r = &Relationship{}
 	case "azure-native:monitor:ScheduledQueryRule":
 		r = &ScheduledQueryRule{}
+	case "azure-native:monitor:SignalDefinition":
+		r = &SignalDefinition{}
 	case "azure-native:monitor:SubscriptionDiagnosticSetting":
 		r = &SubscriptionDiagnosticSetting{}
 	case "azure-native:monitor:TenantActionGroup":

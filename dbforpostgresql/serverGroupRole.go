@@ -23,7 +23,8 @@ type ServerGroupRole struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
-	Name          pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
 	ObjectId      pulumi.StringOutput `pulumi:"objectId"`
 	PrincipalType pulumi.StringOutput `pulumi:"principalType"`
 	// Provisioning state of the role
@@ -31,7 +32,8 @@ type ServerGroupRole struct {
 	RoleType          pulumi.StringPtrOutput `pulumi:"roleType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	TenantId   pulumi.StringPtrOutput   `pulumi:"tenantId"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -111,7 +113,8 @@ func (ServerGroupRoleState) ElementType() reflect.Type {
 type serverGroupRoleArgs struct {
 	// The name of the cluster.
 	ClusterName string `pulumi:"clusterName"`
-	ObjectId    string `pulumi:"objectId"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	ObjectId string `pulumi:"objectId"`
 	// The password of the cluster role. If an identity is used, password will not be required.
 	Password      *string `pulumi:"password"`
 	PrincipalType string  `pulumi:"principalType"`
@@ -120,6 +123,7 @@ type serverGroupRoleArgs struct {
 	// The name of the cluster role.
 	RoleName *string `pulumi:"roleName"`
 	RoleType *string `pulumi:"roleType"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -127,7 +131,8 @@ type serverGroupRoleArgs struct {
 type ServerGroupRoleArgs struct {
 	// The name of the cluster.
 	ClusterName pulumi.StringInput
-	ObjectId    pulumi.StringInput
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	ObjectId pulumi.StringInput
 	// The password of the cluster role. If an identity is used, password will not be required.
 	Password      pulumi.StringPtrInput
 	PrincipalType pulumi.StringInput
@@ -136,6 +141,7 @@ type ServerGroupRoleArgs struct {
 	// The name of the cluster role.
 	RoleName pulumi.StringPtrInput
 	RoleType pulumi.StringPtrInput
+	// A type definition that refers the id to an Azure Resource Manager resource.
 	TenantId pulumi.StringPtrInput
 }
 
@@ -186,6 +192,7 @@ func (o ServerGroupRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroupRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// A type definition that refers the id to an Azure Resource Manager resource.
 func (o ServerGroupRoleOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroupRole) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
@@ -208,6 +215,7 @@ func (o ServerGroupRoleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ServerGroupRole) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// A type definition that refers the id to an Azure Resource Manager resource.
 func (o ServerGroupRoleOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupRole) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
 }

@@ -29,7 +29,7 @@ func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.Invoke
 type LookupSiteArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of Site resource
+	// The name of the Site
 	SiteName string `pulumi:"siteName"`
 }
 
@@ -61,7 +61,7 @@ func LookupSiteOutput(ctx *pulumi.Context, args LookupSiteOutputArgs, opts ...pu
 type LookupSiteOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of Site resource
+	// The name of the Site
 	SiteName pulumi.StringInput `pulumi:"siteName"`
 }
 

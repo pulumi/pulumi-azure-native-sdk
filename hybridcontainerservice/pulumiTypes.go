@@ -3803,6 +3803,242 @@ func (o CredentialResultResponseArrayOutput) Index(i pulumi.IntInput) Credential
 	}).(CredentialResultResponseOutput)
 }
 
+// Extended location pointing to the underlying infrastructure
+type ExtendedLocation struct {
+	// ARM Id of the extended location.
+	Name *string `pulumi:"name"`
+	// The extended location type. Allowed value: 'CustomLocation'
+	Type *string `pulumi:"type"`
+}
+
+// ExtendedLocationInput is an input type that accepts ExtendedLocationArgs and ExtendedLocationOutput values.
+// You can construct a concrete instance of `ExtendedLocationInput` via:
+//
+//	ExtendedLocationArgs{...}
+type ExtendedLocationInput interface {
+	pulumi.Input
+
+	ToExtendedLocationOutput() ExtendedLocationOutput
+	ToExtendedLocationOutputWithContext(context.Context) ExtendedLocationOutput
+}
+
+// Extended location pointing to the underlying infrastructure
+type ExtendedLocationArgs struct {
+	// ARM Id of the extended location.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The extended location type. Allowed value: 'CustomLocation'
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ExtendedLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocation)(nil)).Elem()
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationOutput() ExtendedLocationOutput {
+	return i.ToExtendedLocationOutputWithContext(context.Background())
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationOutputWithContext(ctx context.Context) ExtendedLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput)
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput).ToExtendedLocationPtrOutputWithContext(ctx)
+}
+
+// ExtendedLocationPtrInput is an input type that accepts ExtendedLocationArgs, ExtendedLocationPtr and ExtendedLocationPtrOutput values.
+// You can construct a concrete instance of `ExtendedLocationPtrInput` via:
+//
+//	        ExtendedLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExtendedLocationPtrInput interface {
+	pulumi.Input
+
+	ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput
+	ToExtendedLocationPtrOutputWithContext(context.Context) ExtendedLocationPtrOutput
+}
+
+type extendedLocationPtrType ExtendedLocationArgs
+
+func ExtendedLocationPtr(v *ExtendedLocationArgs) ExtendedLocationPtrInput {
+	return (*extendedLocationPtrType)(v)
+}
+
+func (*extendedLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocation)(nil)).Elem()
+}
+
+func (i *extendedLocationPtrType) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *extendedLocationPtrType) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationPtrOutput)
+}
+
+// Extended location pointing to the underlying infrastructure
+type ExtendedLocationOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocation)(nil)).Elem()
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationOutput() ExtendedLocationOutput {
+	return o
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationOutputWithContext(ctx context.Context) ExtendedLocationOutput {
+	return o
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return o.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtendedLocation) *ExtendedLocation {
+		return &v
+	}).(ExtendedLocationPtrOutput)
+}
+
+// ARM Id of the extended location.
+func (o ExtendedLocationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtendedLocation) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The extended location type. Allowed value: 'CustomLocation'
+func (o ExtendedLocationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtendedLocation) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ExtendedLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocation)(nil)).Elem()
+}
+
+func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return o
+}
+
+func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return o
+}
+
+func (o ExtendedLocationPtrOutput) Elem() ExtendedLocationOutput {
+	return o.ApplyT(func(v *ExtendedLocation) ExtendedLocation {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocation
+		return ret
+	}).(ExtendedLocationOutput)
+}
+
+// ARM Id of the extended location.
+func (o ExtendedLocationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location type. Allowed value: 'CustomLocation'
+func (o ExtendedLocationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Extended location pointing to the underlying infrastructure
+type ExtendedLocationResponse struct {
+	// ARM Id of the extended location.
+	Name *string `pulumi:"name"`
+	// The extended location type. Allowed value: 'CustomLocation'
+	Type *string `pulumi:"type"`
+}
+
+// Extended location pointing to the underlying infrastructure
+type ExtendedLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocationResponse)(nil)).Elem()
+}
+
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutput() ExtendedLocationResponseOutput {
+	return o
+}
+
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutputWithContext(ctx context.Context) ExtendedLocationResponseOutput {
+	return o
+}
+
+// ARM Id of the extended location.
+func (o ExtendedLocationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The extended location type. Allowed value: 'CustomLocation'
+func (o ExtendedLocationResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ExtendedLocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocationResponse)(nil)).Elem()
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput() ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) ExtendedLocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocationResponse
+		return ret
+	}).(ExtendedLocationResponseOutput)
+}
+
+// ARM Id of the extended location.
+func (o ExtendedLocationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location type. Allowed value: 'CustomLocation'
+func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configurations for provisioning the cluster with HTTP proxy servers.
 type HttpProxyConfig struct {
 	// The HTTP proxy server endpoint to use.
@@ -4164,6 +4400,233 @@ func (o HttpProxyConfigResponseResponsePtrOutput) Username() pulumi.StringPtrOut
 		}
 		return v.Username
 	}).(pulumi.StringPtrOutput)
+}
+
+// Kubernetes Patch Version profile
+type KubernetesPatchVersionsResponse struct {
+	// Indicates whether the kubernetes version image is ready or not
+	Readiness []KubernetesVersionReadinessResponse `pulumi:"readiness"`
+	// Possible upgrade paths for given patch version
+	Upgrades []string `pulumi:"upgrades"`
+}
+
+// Kubernetes Patch Version profile
+type KubernetesPatchVersionsResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesPatchVersionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesPatchVersionsResponse)(nil)).Elem()
+}
+
+func (o KubernetesPatchVersionsResponseOutput) ToKubernetesPatchVersionsResponseOutput() KubernetesPatchVersionsResponseOutput {
+	return o
+}
+
+func (o KubernetesPatchVersionsResponseOutput) ToKubernetesPatchVersionsResponseOutputWithContext(ctx context.Context) KubernetesPatchVersionsResponseOutput {
+	return o
+}
+
+// Indicates whether the kubernetes version image is ready or not
+func (o KubernetesPatchVersionsResponseOutput) Readiness() KubernetesVersionReadinessResponseArrayOutput {
+	return o.ApplyT(func(v KubernetesPatchVersionsResponse) []KubernetesVersionReadinessResponse { return v.Readiness }).(KubernetesVersionReadinessResponseArrayOutput)
+}
+
+// Possible upgrade paths for given patch version
+func (o KubernetesPatchVersionsResponseOutput) Upgrades() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KubernetesPatchVersionsResponse) []string { return v.Upgrades }).(pulumi.StringArrayOutput)
+}
+
+type KubernetesPatchVersionsResponseMapOutput struct{ *pulumi.OutputState }
+
+func (KubernetesPatchVersionsResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]KubernetesPatchVersionsResponse)(nil)).Elem()
+}
+
+func (o KubernetesPatchVersionsResponseMapOutput) ToKubernetesPatchVersionsResponseMapOutput() KubernetesPatchVersionsResponseMapOutput {
+	return o
+}
+
+func (o KubernetesPatchVersionsResponseMapOutput) ToKubernetesPatchVersionsResponseMapOutputWithContext(ctx context.Context) KubernetesPatchVersionsResponseMapOutput {
+	return o
+}
+
+func (o KubernetesPatchVersionsResponseMapOutput) MapIndex(k pulumi.StringInput) KubernetesPatchVersionsResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KubernetesPatchVersionsResponse {
+		return vs[0].(map[string]KubernetesPatchVersionsResponse)[vs[1].(string)]
+	}).(KubernetesPatchVersionsResponseOutput)
+}
+
+type KubernetesVersionProfileResponseProperties struct {
+	// Provisioning state of the resource
+	ProvisioningState string `pulumi:"provisioningState"`
+	// List of supported Kubernetes versions
+	Values []KubernetesVersionPropertiesResponse `pulumi:"values"`
+}
+
+type KubernetesVersionProfileResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (KubernetesVersionProfileResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesVersionProfileResponseProperties)(nil)).Elem()
+}
+
+func (o KubernetesVersionProfileResponsePropertiesOutput) ToKubernetesVersionProfileResponsePropertiesOutput() KubernetesVersionProfileResponsePropertiesOutput {
+	return o
+}
+
+func (o KubernetesVersionProfileResponsePropertiesOutput) ToKubernetesVersionProfileResponsePropertiesOutputWithContext(ctx context.Context) KubernetesVersionProfileResponsePropertiesOutput {
+	return o
+}
+
+// Provisioning state of the resource
+func (o KubernetesVersionProfileResponsePropertiesOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesVersionProfileResponseProperties) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// List of supported Kubernetes versions
+func (o KubernetesVersionProfileResponsePropertiesOutput) Values() KubernetesVersionPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v KubernetesVersionProfileResponseProperties) []KubernetesVersionPropertiesResponse {
+		return v.Values
+	}).(KubernetesVersionPropertiesResponseArrayOutput)
+}
+
+// Kubernetes version profile for given major.minor release
+type KubernetesVersionPropertiesResponse struct {
+	// Whether this version is in preview mode.
+	IsPreview bool `pulumi:"isPreview"`
+	// Patch versions of a Kubernetes release
+	PatchVersions map[string]KubernetesPatchVersionsResponse `pulumi:"patchVersions"`
+	// major.minor version of Kubernetes release
+	Version string `pulumi:"version"`
+}
+
+// Kubernetes version profile for given major.minor release
+type KubernetesVersionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesVersionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesVersionPropertiesResponse)(nil)).Elem()
+}
+
+func (o KubernetesVersionPropertiesResponseOutput) ToKubernetesVersionPropertiesResponseOutput() KubernetesVersionPropertiesResponseOutput {
+	return o
+}
+
+func (o KubernetesVersionPropertiesResponseOutput) ToKubernetesVersionPropertiesResponseOutputWithContext(ctx context.Context) KubernetesVersionPropertiesResponseOutput {
+	return o
+}
+
+// Whether this version is in preview mode.
+func (o KubernetesVersionPropertiesResponseOutput) IsPreview() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesVersionPropertiesResponse) bool { return v.IsPreview }).(pulumi.BoolOutput)
+}
+
+// Patch versions of a Kubernetes release
+func (o KubernetesVersionPropertiesResponseOutput) PatchVersions() KubernetesPatchVersionsResponseMapOutput {
+	return o.ApplyT(func(v KubernetesVersionPropertiesResponse) map[string]KubernetesPatchVersionsResponse {
+		return v.PatchVersions
+	}).(KubernetesPatchVersionsResponseMapOutput)
+}
+
+// major.minor version of Kubernetes release
+func (o KubernetesVersionPropertiesResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesVersionPropertiesResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type KubernetesVersionPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesVersionPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesVersionPropertiesResponse)(nil)).Elem()
+}
+
+func (o KubernetesVersionPropertiesResponseArrayOutput) ToKubernetesVersionPropertiesResponseArrayOutput() KubernetesVersionPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesVersionPropertiesResponseArrayOutput) ToKubernetesVersionPropertiesResponseArrayOutputWithContext(ctx context.Context) KubernetesVersionPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesVersionPropertiesResponseArrayOutput) Index(i pulumi.IntInput) KubernetesVersionPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesVersionPropertiesResponse {
+		return vs[0].([]KubernetesVersionPropertiesResponse)[vs[1].(int)]
+	}).(KubernetesVersionPropertiesResponseOutput)
+}
+
+// Indicates whether the kubernetes version image is ready or not
+type KubernetesVersionReadinessResponse struct {
+	// The error message for version not being ready
+	ErrorMessage string `pulumi:"errorMessage"`
+	// Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.
+	OsSku *string `pulumi:"osSku"`
+	// The particular KubernetesVersion Image OS Type (Linux, Windows)
+	OsType string `pulumi:"osType"`
+	// Whether the kubernetes version image is ready or not
+	Ready bool `pulumi:"ready"`
+}
+
+// Defaults sets the appropriate defaults for KubernetesVersionReadinessResponse
+func (val *KubernetesVersionReadinessResponse) Defaults() *KubernetesVersionReadinessResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.OsType) {
+		tmp.OsType = "Linux"
+	}
+	return &tmp
+}
+
+// Indicates whether the kubernetes version image is ready or not
+type KubernetesVersionReadinessResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesVersionReadinessResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesVersionReadinessResponse)(nil)).Elem()
+}
+
+func (o KubernetesVersionReadinessResponseOutput) ToKubernetesVersionReadinessResponseOutput() KubernetesVersionReadinessResponseOutput {
+	return o
+}
+
+func (o KubernetesVersionReadinessResponseOutput) ToKubernetesVersionReadinessResponseOutputWithContext(ctx context.Context) KubernetesVersionReadinessResponseOutput {
+	return o
+}
+
+// The error message for version not being ready
+func (o KubernetesVersionReadinessResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesVersionReadinessResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.
+func (o KubernetesVersionReadinessResponseOutput) OsSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesVersionReadinessResponse) *string { return v.OsSku }).(pulumi.StringPtrOutput)
+}
+
+// The particular KubernetesVersion Image OS Type (Linux, Windows)
+func (o KubernetesVersionReadinessResponseOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesVersionReadinessResponse) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// Whether the kubernetes version image is ready or not
+func (o KubernetesVersionReadinessResponseOutput) Ready() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesVersionReadinessResponse) bool { return v.Ready }).(pulumi.BoolOutput)
+}
+
+type KubernetesVersionReadinessResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesVersionReadinessResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesVersionReadinessResponse)(nil)).Elem()
+}
+
+func (o KubernetesVersionReadinessResponseArrayOutput) ToKubernetesVersionReadinessResponseArrayOutput() KubernetesVersionReadinessResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesVersionReadinessResponseArrayOutput) ToKubernetesVersionReadinessResponseArrayOutputWithContext(ctx context.Context) KubernetesVersionReadinessResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesVersionReadinessResponseArrayOutput) Index(i pulumi.IntInput) KubernetesVersionReadinessResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesVersionReadinessResponse {
+		return vs[0].([]KubernetesVersionReadinessResponse)[vs[1].(int)]
+	}).(KubernetesVersionReadinessResponseOutput)
 }
 
 // LinuxProfile - Profile for Linux VMs in the container service cluster.
@@ -11782,6 +12245,164 @@ func (o VirtualNetworksResponseExtendedLocationPtrOutput) Type() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Describes the VM SKU capabilities like MemoryGB, vCPUs, etc.
+type VmSkuCapabilitiesResponse struct {
+	// Name of the VM SKU capability
+	Name string `pulumi:"name"`
+	// Value of the VM SKU capability
+	Value string `pulumi:"value"`
+}
+
+// Describes the VM SKU capabilities like MemoryGB, vCPUs, etc.
+type VmSkuCapabilitiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VmSkuCapabilitiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmSkuCapabilitiesResponse)(nil)).Elem()
+}
+
+func (o VmSkuCapabilitiesResponseOutput) ToVmSkuCapabilitiesResponseOutput() VmSkuCapabilitiesResponseOutput {
+	return o
+}
+
+func (o VmSkuCapabilitiesResponseOutput) ToVmSkuCapabilitiesResponseOutputWithContext(ctx context.Context) VmSkuCapabilitiesResponseOutput {
+	return o
+}
+
+// Name of the VM SKU capability
+func (o VmSkuCapabilitiesResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VmSkuCapabilitiesResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of the VM SKU capability
+func (o VmSkuCapabilitiesResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v VmSkuCapabilitiesResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type VmSkuCapabilitiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VmSkuCapabilitiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmSkuCapabilitiesResponse)(nil)).Elem()
+}
+
+func (o VmSkuCapabilitiesResponseArrayOutput) ToVmSkuCapabilitiesResponseArrayOutput() VmSkuCapabilitiesResponseArrayOutput {
+	return o
+}
+
+func (o VmSkuCapabilitiesResponseArrayOutput) ToVmSkuCapabilitiesResponseArrayOutputWithContext(ctx context.Context) VmSkuCapabilitiesResponseArrayOutput {
+	return o
+}
+
+func (o VmSkuCapabilitiesResponseArrayOutput) Index(i pulumi.IntInput) VmSkuCapabilitiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmSkuCapabilitiesResponse {
+		return vs[0].([]VmSkuCapabilitiesResponse)[vs[1].(int)]
+	}).(VmSkuCapabilitiesResponseOutput)
+}
+
+type VmSkuProfileResponseProperties struct {
+	// Provisioning state of the resource
+	ProvisioningState string `pulumi:"provisioningState"`
+	// List of supported VM SKUs.
+	Values []VmSkuPropertiesResponse `pulumi:"values"`
+}
+
+type VmSkuProfileResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (VmSkuProfileResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmSkuProfileResponseProperties)(nil)).Elem()
+}
+
+func (o VmSkuProfileResponsePropertiesOutput) ToVmSkuProfileResponsePropertiesOutput() VmSkuProfileResponsePropertiesOutput {
+	return o
+}
+
+func (o VmSkuProfileResponsePropertiesOutput) ToVmSkuProfileResponsePropertiesOutputWithContext(ctx context.Context) VmSkuProfileResponsePropertiesOutput {
+	return o
+}
+
+// Provisioning state of the resource
+func (o VmSkuProfileResponsePropertiesOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v VmSkuProfileResponseProperties) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// List of supported VM SKUs.
+func (o VmSkuProfileResponsePropertiesOutput) Values() VmSkuPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v VmSkuProfileResponseProperties) []VmSkuPropertiesResponse { return v.Values }).(VmSkuPropertiesResponseArrayOutput)
+}
+
+// The profile for supported VM SKUs
+type VmSkuPropertiesResponse struct {
+	// The list of name-value pairs to describe VM SKU capabilities like MemoryGB, vCPUs, etc.
+	Capabilities []VmSkuCapabilitiesResponse `pulumi:"capabilities"`
+	// The name of the VM SKU
+	Name string `pulumi:"name"`
+	// The type of resource the SKU applies to.
+	ResourceType string `pulumi:"resourceType"`
+	// The size of the VM SKU
+	Size string `pulumi:"size"`
+	// The tier of the VM SKU
+	Tier string `pulumi:"tier"`
+}
+
+// The profile for supported VM SKUs
+type VmSkuPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VmSkuPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmSkuPropertiesResponse)(nil)).Elem()
+}
+
+func (o VmSkuPropertiesResponseOutput) ToVmSkuPropertiesResponseOutput() VmSkuPropertiesResponseOutput {
+	return o
+}
+
+func (o VmSkuPropertiesResponseOutput) ToVmSkuPropertiesResponseOutputWithContext(ctx context.Context) VmSkuPropertiesResponseOutput {
+	return o
+}
+
+// The list of name-value pairs to describe VM SKU capabilities like MemoryGB, vCPUs, etc.
+func (o VmSkuPropertiesResponseOutput) Capabilities() VmSkuCapabilitiesResponseArrayOutput {
+	return o.ApplyT(func(v VmSkuPropertiesResponse) []VmSkuCapabilitiesResponse { return v.Capabilities }).(VmSkuCapabilitiesResponseArrayOutput)
+}
+
+// The name of the VM SKU
+func (o VmSkuPropertiesResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VmSkuPropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of resource the SKU applies to.
+func (o VmSkuPropertiesResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VmSkuPropertiesResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The size of the VM SKU
+func (o VmSkuPropertiesResponseOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v VmSkuPropertiesResponse) string { return v.Size }).(pulumi.StringOutput)
+}
+
+// The tier of the VM SKU
+func (o VmSkuPropertiesResponseOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v VmSkuPropertiesResponse) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+type VmSkuPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VmSkuPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmSkuPropertiesResponse)(nil)).Elem()
+}
+
+func (o VmSkuPropertiesResponseArrayOutput) ToVmSkuPropertiesResponseArrayOutput() VmSkuPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o VmSkuPropertiesResponseArrayOutput) ToVmSkuPropertiesResponseArrayOutputWithContext(ctx context.Context) VmSkuPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o VmSkuPropertiesResponseArrayOutput) Index(i pulumi.IntInput) VmSkuPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmSkuPropertiesResponse {
+		return vs[0].([]VmSkuPropertiesResponse)[vs[1].(int)]
+	}).(VmSkuPropertiesResponseOutput)
+}
+
 // WindowsProfile - Profile for Windows VMs in the container service cluster.
 type WindowsProfile struct {
 	// AdminPassword - Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
@@ -12128,10 +12749,21 @@ func init() {
 	pulumi.RegisterOutputType(ControlPlaneProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(CredentialResultResponseOutput{})
 	pulumi.RegisterOutputType(CredentialResultResponseArrayOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigPtrOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigResponseResponseOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigResponseResponsePtrOutput{})
+	pulumi.RegisterOutputType(KubernetesPatchVersionsResponseOutput{})
+	pulumi.RegisterOutputType(KubernetesPatchVersionsResponseMapOutput{})
+	pulumi.RegisterOutputType(KubernetesVersionProfileResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(KubernetesVersionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(KubernetesVersionPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesVersionReadinessResponseOutput{})
+	pulumi.RegisterOutputType(KubernetesVersionReadinessResponseArrayOutput{})
 	pulumi.RegisterOutputType(LinuxProfilePropertiesOutput{})
 	pulumi.RegisterOutputType(LinuxProfilePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(LinuxProfilePropertiesPublicKeysOutput{})
@@ -12245,6 +12877,11 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNetworksPropertiesVmwarePtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksResponseExtendedLocationOutput{})
 	pulumi.RegisterOutputType(VirtualNetworksResponseExtendedLocationPtrOutput{})
+	pulumi.RegisterOutputType(VmSkuCapabilitiesResponseOutput{})
+	pulumi.RegisterOutputType(VmSkuCapabilitiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(VmSkuProfileResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(VmSkuPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VmSkuPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(WindowsProfileOutput{})
 	pulumi.RegisterOutputType(WindowsProfilePtrOutput{})
 	pulumi.RegisterOutputType(WindowsProfileResponseResponseOutput{})

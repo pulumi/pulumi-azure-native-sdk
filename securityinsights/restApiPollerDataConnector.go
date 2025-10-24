@@ -940,6 +940,9 @@ func NewRestApiPollerDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250701preview:RestApiPollerDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250901:RestApiPollerDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:AADDataConnector"),
 		},
 		{

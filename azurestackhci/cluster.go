@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -169,6 +169,12 @@ func NewCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250915preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251001:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)

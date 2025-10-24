@@ -36,6 +36,8 @@ type LinkedServer struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Role of the linked server.
 	ServerRole pulumi.StringOutput `pulumi:"serverRole"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -168,9 +170,9 @@ type linkedServerArgs struct {
 	LinkedRedisCacheId string `pulumi:"linkedRedisCacheId"`
 	// Location of the linked redis cache.
 	LinkedRedisCacheLocation string `pulumi:"linkedRedisCacheLocation"`
-	// The name of the linked server that is being added to the Redis cache.
+	// The name of the RedisLinkedServerWithProperties
 	LinkedServerName *string `pulumi:"linkedServerName"`
-	// The name of the Redis cache.
+	// The name of the redis cache.
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -184,9 +186,9 @@ type LinkedServerArgs struct {
 	LinkedRedisCacheId pulumi.StringInput
 	// Location of the linked redis cache.
 	LinkedRedisCacheLocation pulumi.StringInput
-	// The name of the linked server that is being added to the Redis cache.
+	// The name of the RedisLinkedServerWithProperties
 	LinkedServerName pulumi.StringPtrInput
-	// The name of the Redis cache.
+	// The name of the redis cache.
 	Name pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -269,6 +271,11 @@ func (o LinkedServerOutput) ProvisioningState() pulumi.StringOutput {
 // Role of the linked server.
 func (o LinkedServerOutput) ServerRole() pulumi.StringOutput {
 	return o.ApplyT(func(v *LinkedServer) pulumi.StringOutput { return v.ServerRole }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LinkedServerOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *LinkedServer) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

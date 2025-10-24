@@ -14,6 +14,8 @@ import (
 // Get a AkriConnectorTemplateResource
 //
 // Uses Azure REST API version 2025-07-01-preview.
+//
+// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAkriConnectorTemplate(ctx *pulumi.Context, args *LookupAkriConnectorTemplateArgs, opts ...pulumi.InvokeOption) (*LookupAkriConnectorTemplateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAkriConnectorTemplateResult

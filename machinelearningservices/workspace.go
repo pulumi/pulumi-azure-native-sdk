@@ -14,9 +14,9 @@ import (
 
 // An object that represents a machine learning workspace.
 //
-// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -32,8 +32,9 @@ type Workspace struct {
 	// The description of this workspace.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Url for the discovery service to identify regional endpoints for machine learning experimentation services
-	DiscoveryUrl        pulumi.StringPtrOutput `pulumi:"discoveryUrl"`
-	EnableDataIsolation pulumi.BoolPtrOutput   `pulumi:"enableDataIsolation"`
+	DiscoveryUrl                   pulumi.StringPtrOutput `pulumi:"discoveryUrl"`
+	EnableDataIsolation            pulumi.BoolPtrOutput   `pulumi:"enableDataIsolation"`
+	EnableServiceSideCMKEncryption pulumi.BoolPtrOutput   `pulumi:"enableServiceSideCMKEncryption"`
 	// The encryption settings of Azure ML workspace.
 	Encryption EncryptionPropertyResponsePtrOutput `pulumi:"encryption"`
 	// Settings for feature store type workspace.
@@ -66,6 +67,8 @@ type Workspace struct {
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Count of private connections in the workspace
 	PrivateLinkCount pulumi.IntOutput `pulumi:"privateLinkCount"`
+	// Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
+	ProvisionNetworkNow pulumi.BoolPtrOutput `pulumi:"provisionNetworkNow"`
 	// The current deployment state of workspace resource. The provisioningState is to indicate states for resource provisioning.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Whether requests from Public Network are allowed.
@@ -86,6 +89,8 @@ type Workspace struct {
 	StorageHnsEnabled pulumi.BoolOutput `pulumi:"storageHnsEnabled"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The auth mode used for accessing the system datastores of the workspace.
+	SystemDatastoresAuthMode pulumi.StringPtrOutput `pulumi:"systemDatastoresAuthMode"`
 	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The tenant id associated with this workspace.
@@ -115,6 +120,9 @@ func NewWorkspace(ctx *pulumi.Context,
 	}
 	if args.HbiWorkspace == nil {
 		args.HbiWorkspace = pulumi.BoolPtr(false)
+	}
+	if args.ManagedNetwork != nil {
+		args.ManagedNetwork = args.ManagedNetwork.ToManagedNetworkSettingsPtrOutput().ApplyT(func(v *ManagedNetworkSettings) *ManagedNetworkSettings { return v.Defaults() }).(ManagedNetworkSettingsPtrOutput)
 	}
 	if args.V1LegacyMode == nil {
 		args.V1LegacyMode = pulumi.BoolPtr(false)
@@ -246,6 +254,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:Workspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250901:Workspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -291,8 +302,9 @@ type workspaceArgs struct {
 	// The description of this workspace.
 	Description *string `pulumi:"description"`
 	// Url for the discovery service to identify regional endpoints for machine learning experimentation services
-	DiscoveryUrl        *string `pulumi:"discoveryUrl"`
-	EnableDataIsolation *bool   `pulumi:"enableDataIsolation"`
+	DiscoveryUrl                   *string `pulumi:"discoveryUrl"`
+	EnableDataIsolation            *bool   `pulumi:"enableDataIsolation"`
+	EnableServiceSideCMKEncryption *bool   `pulumi:"enableServiceSideCMKEncryption"`
 	// The encryption settings of Azure ML workspace.
 	Encryption *EncryptionProperty `pulumi:"encryption"`
 	// Settings for feature store type workspace.
@@ -315,6 +327,8 @@ type workspaceArgs struct {
 	ManagedNetwork *ManagedNetworkSettings `pulumi:"managedNetwork"`
 	// The user assigned identity resource id that represents the workspace identity.
 	PrimaryUserAssignedIdentity *string `pulumi:"primaryUserAssignedIdentity"`
+	// Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
+	ProvisionNetworkNow *bool `pulumi:"provisionNetworkNow"`
 	// Whether requests from Public Network are allowed.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group. The name is case insensitive.
@@ -329,6 +343,8 @@ type workspaceArgs struct {
 	Sku *Sku `pulumi:"sku"`
 	// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
 	StorageAccount *string `pulumi:"storageAccount"`
+	// The auth mode used for accessing the system datastores of the workspace.
+	SystemDatastoresAuthMode *string `pulumi:"systemDatastoresAuthMode"`
 	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
 	// Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
@@ -351,8 +367,9 @@ type WorkspaceArgs struct {
 	// The description of this workspace.
 	Description pulumi.StringPtrInput
 	// Url for the discovery service to identify regional endpoints for machine learning experimentation services
-	DiscoveryUrl        pulumi.StringPtrInput
-	EnableDataIsolation pulumi.BoolPtrInput
+	DiscoveryUrl                   pulumi.StringPtrInput
+	EnableDataIsolation            pulumi.BoolPtrInput
+	EnableServiceSideCMKEncryption pulumi.BoolPtrInput
 	// The encryption settings of Azure ML workspace.
 	Encryption EncryptionPropertyPtrInput
 	// Settings for feature store type workspace.
@@ -375,6 +392,8 @@ type WorkspaceArgs struct {
 	ManagedNetwork ManagedNetworkSettingsPtrInput
 	// The user assigned identity resource id that represents the workspace identity.
 	PrimaryUserAssignedIdentity pulumi.StringPtrInput
+	// Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
+	ProvisionNetworkNow pulumi.BoolPtrInput
 	// Whether requests from Public Network are allowed.
 	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -389,6 +408,8 @@ type WorkspaceArgs struct {
 	Sku SkuPtrInput
 	// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
 	StorageAccount pulumi.StringPtrInput
+	// The auth mode used for accessing the system datastores of the workspace.
+	SystemDatastoresAuthMode pulumi.StringPtrInput
 	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapInput
 	// Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
@@ -474,6 +495,10 @@ func (o WorkspaceOutput) EnableDataIsolation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.EnableDataIsolation }).(pulumi.BoolPtrOutput)
 }
 
+func (o WorkspaceOutput) EnableServiceSideCMKEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.EnableServiceSideCMKEncryption }).(pulumi.BoolPtrOutput)
+}
+
 // The encryption settings of Azure ML workspace.
 func (o WorkspaceOutput) Encryption() EncryptionPropertyResponsePtrOutput {
 	return o.ApplyT(func(v *Workspace) EncryptionPropertyResponsePtrOutput { return v.Encryption }).(EncryptionPropertyResponsePtrOutput)
@@ -557,6 +582,11 @@ func (o WorkspaceOutput) PrivateLinkCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.IntOutput { return v.PrivateLinkCount }).(pulumi.IntOutput)
 }
 
+// Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
+func (o WorkspaceOutput) ProvisionNetworkNow() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.ProvisionNetworkNow }).(pulumi.BoolPtrOutput)
+}
+
 // The current deployment state of workspace resource. The provisioningState is to indicate states for resource provisioning.
 func (o WorkspaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -607,6 +637,11 @@ func (o WorkspaceOutput) StorageHnsEnabled() pulumi.BoolOutput {
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o WorkspaceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Workspace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The auth mode used for accessing the system datastores of the workspace.
+func (o WorkspaceOutput) SystemDatastoresAuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.SystemDatastoresAuthMode }).(pulumi.StringPtrOutput)
 }
 
 // Contains resource tags defined as key/value pairs.

@@ -1795,7 +1795,7 @@ func (o BackupPolicyResponseOutput) PolicyRules() pulumi.ArrayOutput {
 
 // Schedule for backup
 type BackupSchedule struct {
-	// ISO 8601 repeating time interval format
+	// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
 	RepeatingTimeIntervals []string `pulumi:"repeatingTimeIntervals"`
 	// Time zone for a schedule. Example: Pacific Standard Time
 	TimeZone *string `pulumi:"timeZone"`
@@ -1814,7 +1814,7 @@ type BackupScheduleInput interface {
 
 // Schedule for backup
 type BackupScheduleArgs struct {
-	// ISO 8601 repeating time interval format
+	// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
 	RepeatingTimeIntervals pulumi.StringArrayInput `pulumi:"repeatingTimeIntervals"`
 	// Time zone for a schedule. Example: Pacific Standard Time
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
@@ -1847,7 +1847,7 @@ func (o BackupScheduleOutput) ToBackupScheduleOutputWithContext(ctx context.Cont
 	return o
 }
 
-// ISO 8601 repeating time interval format
+// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
 func (o BackupScheduleOutput) RepeatingTimeIntervals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackupSchedule) []string { return v.RepeatingTimeIntervals }).(pulumi.StringArrayOutput)
 }
@@ -1859,7 +1859,7 @@ func (o BackupScheduleOutput) TimeZone() pulumi.StringPtrOutput {
 
 // Schedule for backup
 type BackupScheduleResponse struct {
-	// ISO 8601 repeating time interval format
+	// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
 	RepeatingTimeIntervals []string `pulumi:"repeatingTimeIntervals"`
 	// Time zone for a schedule. Example: Pacific Standard Time
 	TimeZone *string `pulumi:"timeZone"`
@@ -1880,7 +1880,7 @@ func (o BackupScheduleResponseOutput) ToBackupScheduleResponseOutputWithContext(
 	return o
 }
 
-// ISO 8601 repeating time interval format
+// Repeating time interval which only support the following ISO 8601 format [R/startDateTime/Duration]. Example: R/2007-03-01T13:00:00Z/P1Y2M10DT2H30M
 func (o BackupScheduleResponseOutput) RepeatingTimeIntervals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackupScheduleResponse) []string { return v.RepeatingTimeIntervals }).(pulumi.StringArrayOutput)
 }

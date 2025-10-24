@@ -28,6 +28,8 @@ type FirewallRule struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// lowest IP address included in the range
 	StartIP pulumi.StringOutput `pulumi:"startIP"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -237,6 +239,11 @@ func (o FirewallRuleOutput) Name() pulumi.StringOutput {
 // lowest IP address included in the range
 func (o FirewallRuleOutput) StartIP() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.StartIP }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o FirewallRuleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *FirewallRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

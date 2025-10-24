@@ -38303,7 +38303,7 @@ type FqdnOutboundRuleResponse struct {
 	Category    *string `pulumi:"category"`
 	Destination *string `pulumi:"destination"`
 	// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
-	ErrorInformation *string  `pulumi:"errorInformation"`
+	ErrorInformation string   `pulumi:"errorInformation"`
 	ParentRuleNames  []string `pulumi:"parentRuleNames"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	Status *string `pulumi:"status"`
@@ -38337,8 +38337,8 @@ func (o FqdnOutboundRuleResponseOutput) Destination() pulumi.StringPtrOutput {
 }
 
 // Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
-func (o FqdnOutboundRuleResponseOutput) ErrorInformation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FqdnOutboundRuleResponse) *string { return v.ErrorInformation }).(pulumi.StringPtrOutput)
+func (o FqdnOutboundRuleResponseOutput) ErrorInformation() pulumi.StringOutput {
+	return o.ApplyT(func(v FqdnOutboundRuleResponse) string { return v.ErrorInformation }).(pulumi.StringOutput)
 }
 
 func (o FqdnOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {
@@ -56570,13 +56570,38 @@ func (o ManagedNetworkProvisionStatusResponsePtrOutput) Status() pulumi.StringPt
 
 // Managed Network settings for a machine learning workspace.
 type ManagedNetworkSettings struct {
+	// A flag to indicate if monitoring needs to be enabled for the managed network firewall.
+	EnableFirewallLog *bool `pulumi:"enableFirewallLog"`
+	// A flag to indicate if monitoring needs to be enabled for the managed network.
+	EnableNetworkMonitor *bool `pulumi:"enableNetworkMonitor"`
+	// Public IP address assigned to the Azure Firewall.
+	FirewallPublicIpAddress *string `pulumi:"firewallPublicIpAddress"`
 	// Firewall Sku used for FQDN Rules
 	FirewallSku *string `pulumi:"firewallSku"`
 	// Isolation mode for the managed network of a machine learning workspace.
-	IsolationMode *string                `pulumi:"isolationMode"`
-	OutboundRules map[string]interface{} `pulumi:"outboundRules"`
+	IsolationMode *string `pulumi:"isolationMode"`
+	// The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+	ManagedNetworkKind *string                `pulumi:"managedNetworkKind"`
+	OutboundRules      map[string]interface{} `pulumi:"outboundRules"`
 	// Status of the Provisioning for the managed network of a machine learning workspace.
 	Status *ManagedNetworkProvisionStatus `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for ManagedNetworkSettings
+func (val *ManagedNetworkSettings) Defaults() *ManagedNetworkSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableFirewallLog == nil {
+		enableFirewallLog_ := false
+		tmp.EnableFirewallLog = &enableFirewallLog_
+	}
+	if tmp.EnableNetworkMonitor == nil {
+		enableNetworkMonitor_ := false
+		tmp.EnableNetworkMonitor = &enableNetworkMonitor_
+	}
+	return &tmp
 }
 
 // ManagedNetworkSettingsInput is an input type that accepts ManagedNetworkSettingsArgs and ManagedNetworkSettingsOutput values.
@@ -56592,15 +56617,37 @@ type ManagedNetworkSettingsInput interface {
 
 // Managed Network settings for a machine learning workspace.
 type ManagedNetworkSettingsArgs struct {
+	// A flag to indicate if monitoring needs to be enabled for the managed network firewall.
+	EnableFirewallLog pulumi.BoolPtrInput `pulumi:"enableFirewallLog"`
+	// A flag to indicate if monitoring needs to be enabled for the managed network.
+	EnableNetworkMonitor pulumi.BoolPtrInput `pulumi:"enableNetworkMonitor"`
+	// Public IP address assigned to the Azure Firewall.
+	FirewallPublicIpAddress pulumi.StringPtrInput `pulumi:"firewallPublicIpAddress"`
 	// Firewall Sku used for FQDN Rules
 	FirewallSku pulumi.StringPtrInput `pulumi:"firewallSku"`
 	// Isolation mode for the managed network of a machine learning workspace.
 	IsolationMode pulumi.StringPtrInput `pulumi:"isolationMode"`
-	OutboundRules pulumi.MapInput       `pulumi:"outboundRules"`
+	// The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+	ManagedNetworkKind pulumi.StringPtrInput `pulumi:"managedNetworkKind"`
+	OutboundRules      pulumi.MapInput       `pulumi:"outboundRules"`
 	// Status of the Provisioning for the managed network of a machine learning workspace.
 	Status ManagedNetworkProvisionStatusPtrInput `pulumi:"status"`
 }
 
+// Defaults sets the appropriate defaults for ManagedNetworkSettingsArgs
+func (val *ManagedNetworkSettingsArgs) Defaults() *ManagedNetworkSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableFirewallLog == nil {
+		tmp.EnableFirewallLog = pulumi.BoolPtr(false)
+	}
+	if tmp.EnableNetworkMonitor == nil {
+		tmp.EnableNetworkMonitor = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
 func (ManagedNetworkSettingsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedNetworkSettings)(nil)).Elem()
 }
@@ -56679,6 +56726,21 @@ func (o ManagedNetworkSettingsOutput) ToManagedNetworkSettingsPtrOutputWithConte
 	}).(ManagedNetworkSettingsPtrOutput)
 }
 
+// A flag to indicate if monitoring needs to be enabled for the managed network firewall.
+func (o ManagedNetworkSettingsOutput) EnableFirewallLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedNetworkSettings) *bool { return v.EnableFirewallLog }).(pulumi.BoolPtrOutput)
+}
+
+// A flag to indicate if monitoring needs to be enabled for the managed network.
+func (o ManagedNetworkSettingsOutput) EnableNetworkMonitor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedNetworkSettings) *bool { return v.EnableNetworkMonitor }).(pulumi.BoolPtrOutput)
+}
+
+// Public IP address assigned to the Azure Firewall.
+func (o ManagedNetworkSettingsOutput) FirewallPublicIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedNetworkSettings) *string { return v.FirewallPublicIpAddress }).(pulumi.StringPtrOutput)
+}
+
 // Firewall Sku used for FQDN Rules
 func (o ManagedNetworkSettingsOutput) FirewallSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedNetworkSettings) *string { return v.FirewallSku }).(pulumi.StringPtrOutput)
@@ -56687,6 +56749,11 @@ func (o ManagedNetworkSettingsOutput) FirewallSku() pulumi.StringPtrOutput {
 // Isolation mode for the managed network of a machine learning workspace.
 func (o ManagedNetworkSettingsOutput) IsolationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedNetworkSettings) *string { return v.IsolationMode }).(pulumi.StringPtrOutput)
+}
+
+// The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+func (o ManagedNetworkSettingsOutput) ManagedNetworkKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedNetworkSettings) *string { return v.ManagedNetworkKind }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedNetworkSettingsOutput) OutboundRules() pulumi.MapOutput {
@@ -56722,6 +56789,36 @@ func (o ManagedNetworkSettingsPtrOutput) Elem() ManagedNetworkSettingsOutput {
 	}).(ManagedNetworkSettingsOutput)
 }
 
+// A flag to indicate if monitoring needs to be enabled for the managed network firewall.
+func (o ManagedNetworkSettingsPtrOutput) EnableFirewallLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedNetworkSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableFirewallLog
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A flag to indicate if monitoring needs to be enabled for the managed network.
+func (o ManagedNetworkSettingsPtrOutput) EnableNetworkMonitor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedNetworkSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableNetworkMonitor
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Public IP address assigned to the Azure Firewall.
+func (o ManagedNetworkSettingsPtrOutput) FirewallPublicIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedNetworkSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirewallPublicIpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
 // Firewall Sku used for FQDN Rules
 func (o ManagedNetworkSettingsPtrOutput) FirewallSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedNetworkSettings) *string {
@@ -56739,6 +56836,16 @@ func (o ManagedNetworkSettingsPtrOutput) IsolationMode() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.IsolationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+func (o ManagedNetworkSettingsPtrOutput) ManagedNetworkKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedNetworkSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedNetworkKind
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -56763,14 +56870,39 @@ func (o ManagedNetworkSettingsPtrOutput) Status() ManagedNetworkProvisionStatusP
 
 // Managed Network settings for a machine learning workspace.
 type ManagedNetworkSettingsResponse struct {
+	// A flag to indicate if monitoring needs to be enabled for the managed network firewall.
+	EnableFirewallLog *bool `pulumi:"enableFirewallLog"`
+	// A flag to indicate if monitoring needs to be enabled for the managed network.
+	EnableNetworkMonitor *bool `pulumi:"enableNetworkMonitor"`
+	// Public IP address assigned to the Azure Firewall.
+	FirewallPublicIpAddress *string `pulumi:"firewallPublicIpAddress"`
 	// Firewall Sku used for FQDN Rules
 	FirewallSku *string `pulumi:"firewallSku"`
 	// Isolation mode for the managed network of a machine learning workspace.
-	IsolationMode *string                `pulumi:"isolationMode"`
-	NetworkId     string                 `pulumi:"networkId"`
-	OutboundRules map[string]interface{} `pulumi:"outboundRules"`
+	IsolationMode *string `pulumi:"isolationMode"`
+	// The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+	ManagedNetworkKind *string                `pulumi:"managedNetworkKind"`
+	NetworkId          string                 `pulumi:"networkId"`
+	OutboundRules      map[string]interface{} `pulumi:"outboundRules"`
 	// Status of the Provisioning for the managed network of a machine learning workspace.
 	Status *ManagedNetworkProvisionStatusResponse `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for ManagedNetworkSettingsResponse
+func (val *ManagedNetworkSettingsResponse) Defaults() *ManagedNetworkSettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableFirewallLog == nil {
+		enableFirewallLog_ := false
+		tmp.EnableFirewallLog = &enableFirewallLog_
+	}
+	if tmp.EnableNetworkMonitor == nil {
+		enableNetworkMonitor_ := false
+		tmp.EnableNetworkMonitor = &enableNetworkMonitor_
+	}
+	return &tmp
 }
 
 // Managed Network settings for a machine learning workspace.
@@ -56788,6 +56920,21 @@ func (o ManagedNetworkSettingsResponseOutput) ToManagedNetworkSettingsResponseOu
 	return o
 }
 
+// A flag to indicate if monitoring needs to be enabled for the managed network firewall.
+func (o ManagedNetworkSettingsResponseOutput) EnableFirewallLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedNetworkSettingsResponse) *bool { return v.EnableFirewallLog }).(pulumi.BoolPtrOutput)
+}
+
+// A flag to indicate if monitoring needs to be enabled for the managed network.
+func (o ManagedNetworkSettingsResponseOutput) EnableNetworkMonitor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedNetworkSettingsResponse) *bool { return v.EnableNetworkMonitor }).(pulumi.BoolPtrOutput)
+}
+
+// Public IP address assigned to the Azure Firewall.
+func (o ManagedNetworkSettingsResponseOutput) FirewallPublicIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedNetworkSettingsResponse) *string { return v.FirewallPublicIpAddress }).(pulumi.StringPtrOutput)
+}
+
 // Firewall Sku used for FQDN Rules
 func (o ManagedNetworkSettingsResponseOutput) FirewallSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedNetworkSettingsResponse) *string { return v.FirewallSku }).(pulumi.StringPtrOutput)
@@ -56796,6 +56943,11 @@ func (o ManagedNetworkSettingsResponseOutput) FirewallSku() pulumi.StringPtrOutp
 // Isolation mode for the managed network of a machine learning workspace.
 func (o ManagedNetworkSettingsResponseOutput) IsolationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedNetworkSettingsResponse) *string { return v.IsolationMode }).(pulumi.StringPtrOutput)
+}
+
+// The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+func (o ManagedNetworkSettingsResponseOutput) ManagedNetworkKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedNetworkSettingsResponse) *string { return v.ManagedNetworkKind }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedNetworkSettingsResponseOutput) NetworkId() pulumi.StringOutput {
@@ -56835,6 +56987,36 @@ func (o ManagedNetworkSettingsResponsePtrOutput) Elem() ManagedNetworkSettingsRe
 	}).(ManagedNetworkSettingsResponseOutput)
 }
 
+// A flag to indicate if monitoring needs to be enabled for the managed network firewall.
+func (o ManagedNetworkSettingsResponsePtrOutput) EnableFirewallLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedNetworkSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableFirewallLog
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A flag to indicate if monitoring needs to be enabled for the managed network.
+func (o ManagedNetworkSettingsResponsePtrOutput) EnableNetworkMonitor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedNetworkSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableNetworkMonitor
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Public IP address assigned to the Azure Firewall.
+func (o ManagedNetworkSettingsResponsePtrOutput) FirewallPublicIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedNetworkSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirewallPublicIpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
 // Firewall Sku used for FQDN Rules
 func (o ManagedNetworkSettingsResponsePtrOutput) FirewallSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedNetworkSettingsResponse) *string {
@@ -56852,6 +57034,16 @@ func (o ManagedNetworkSettingsResponsePtrOutput) IsolationMode() pulumi.StringPt
 			return nil
 		}
 		return v.IsolationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+func (o ManagedNetworkSettingsResponsePtrOutput) ManagedNetworkKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedNetworkSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedNetworkKind
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -57454,6 +57646,114 @@ func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) Provisi
 // Expected value is 'managedOnlineEndpoint'.
 func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedOnlineEndpointDeploymentResourcePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Details for managed resource group assigned identities.
+type ManagedResourceGroupAssignedIdentitiesResponse struct {
+	// Identity principal Id
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// Details for managed resource group assigned identities.
+type ManagedResourceGroupAssignedIdentitiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedResourceGroupAssignedIdentitiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedResourceGroupAssignedIdentitiesResponse)(nil)).Elem()
+}
+
+func (o ManagedResourceGroupAssignedIdentitiesResponseOutput) ToManagedResourceGroupAssignedIdentitiesResponseOutput() ManagedResourceGroupAssignedIdentitiesResponseOutput {
+	return o
+}
+
+func (o ManagedResourceGroupAssignedIdentitiesResponseOutput) ToManagedResourceGroupAssignedIdentitiesResponseOutputWithContext(ctx context.Context) ManagedResourceGroupAssignedIdentitiesResponseOutput {
+	return o
+}
+
+// Identity principal Id
+func (o ManagedResourceGroupAssignedIdentitiesResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedResourceGroupAssignedIdentitiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type ManagedResourceGroupAssignedIdentitiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedResourceGroupAssignedIdentitiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedResourceGroupAssignedIdentitiesResponse)(nil)).Elem()
+}
+
+func (o ManagedResourceGroupAssignedIdentitiesResponseArrayOutput) ToManagedResourceGroupAssignedIdentitiesResponseArrayOutput() ManagedResourceGroupAssignedIdentitiesResponseArrayOutput {
+	return o
+}
+
+func (o ManagedResourceGroupAssignedIdentitiesResponseArrayOutput) ToManagedResourceGroupAssignedIdentitiesResponseArrayOutputWithContext(ctx context.Context) ManagedResourceGroupAssignedIdentitiesResponseArrayOutput {
+	return o
+}
+
+func (o ManagedResourceGroupAssignedIdentitiesResponseArrayOutput) Index(i pulumi.IntInput) ManagedResourceGroupAssignedIdentitiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedResourceGroupAssignedIdentitiesResponse {
+		return vs[0].([]ManagedResourceGroupAssignedIdentitiesResponse)[vs[1].(int)]
+	}).(ManagedResourceGroupAssignedIdentitiesResponseOutput)
+}
+
+// Managed resource group settings
+type ManagedResourceGroupSettingsResponse struct {
+	// List of assigned identities for the managed resource group
+	AssignedIdentities []ManagedResourceGroupAssignedIdentitiesResponse `pulumi:"assignedIdentities"`
+}
+
+// Managed resource group settings
+type ManagedResourceGroupSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedResourceGroupSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedResourceGroupSettingsResponse)(nil)).Elem()
+}
+
+func (o ManagedResourceGroupSettingsResponseOutput) ToManagedResourceGroupSettingsResponseOutput() ManagedResourceGroupSettingsResponseOutput {
+	return o
+}
+
+func (o ManagedResourceGroupSettingsResponseOutput) ToManagedResourceGroupSettingsResponseOutputWithContext(ctx context.Context) ManagedResourceGroupSettingsResponseOutput {
+	return o
+}
+
+// List of assigned identities for the managed resource group
+func (o ManagedResourceGroupSettingsResponseOutput) AssignedIdentities() ManagedResourceGroupAssignedIdentitiesResponseArrayOutput {
+	return o.ApplyT(func(v ManagedResourceGroupSettingsResponse) []ManagedResourceGroupAssignedIdentitiesResponse {
+		return v.AssignedIdentities
+	}).(ManagedResourceGroupAssignedIdentitiesResponseArrayOutput)
+}
+
+type ManagedResourceGroupSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedResourceGroupSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedResourceGroupSettingsResponse)(nil)).Elem()
+}
+
+func (o ManagedResourceGroupSettingsResponsePtrOutput) ToManagedResourceGroupSettingsResponsePtrOutput() ManagedResourceGroupSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ManagedResourceGroupSettingsResponsePtrOutput) ToManagedResourceGroupSettingsResponsePtrOutputWithContext(ctx context.Context) ManagedResourceGroupSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ManagedResourceGroupSettingsResponsePtrOutput) Elem() ManagedResourceGroupSettingsResponseOutput {
+	return o.ApplyT(func(v *ManagedResourceGroupSettingsResponse) ManagedResourceGroupSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedResourceGroupSettingsResponse
+		return ret
+	}).(ManagedResourceGroupSettingsResponseOutput)
+}
+
+// List of assigned identities for the managed resource group
+func (o ManagedResourceGroupSettingsResponsePtrOutput) AssignedIdentities() ManagedResourceGroupAssignedIdentitiesResponseArrayOutput {
+	return o.ApplyT(func(v *ManagedResourceGroupSettingsResponse) []ManagedResourceGroupAssignedIdentitiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedIdentities
+	}).(ManagedResourceGroupAssignedIdentitiesResponseArrayOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -65620,7 +65920,7 @@ type PrivateEndpointOutboundRuleResponse struct {
 	// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
 	Destination *PrivateEndpointDestinationResponse `pulumi:"destination"`
 	// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
-	ErrorInformation *string  `pulumi:"errorInformation"`
+	ErrorInformation string   `pulumi:"errorInformation"`
 	Fqdns            []string `pulumi:"fqdns"`
 	ParentRuleNames  []string `pulumi:"parentRuleNames"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
@@ -65656,8 +65956,8 @@ func (o PrivateEndpointOutboundRuleResponseOutput) Destination() PrivateEndpoint
 }
 
 // Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
-func (o PrivateEndpointOutboundRuleResponseOutput) ErrorInformation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) *string { return v.ErrorInformation }).(pulumi.StringPtrOutput)
+func (o PrivateEndpointOutboundRuleResponseOutput) ErrorInformation() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) string { return v.ErrorInformation }).(pulumi.StringOutput)
 }
 
 func (o PrivateEndpointOutboundRuleResponseOutput) Fqdns() pulumi.StringArrayOutput {
@@ -65894,139 +66194,6 @@ func (o PrivateEndpointResourceResponsePtrOutput) SubnetArmId() pulumi.StringPtr
 		}
 		return v.SubnetArmId
 	}).(pulumi.StringPtrOutput)
-}
-
-// The Private Endpoint resource.
-type PrivateEndpointResponse struct {
-	// The ARM identifier for Private Endpoint
-	Id string `pulumi:"id"`
-}
-
-// The Private Endpoint resource.
-type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
-	return o
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointResponse
-		return ret
-	}).(PrivateEndpointResponseOutput)
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionState struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
-//
-//	PrivateLinkServiceConnectionStateArgs{...}
-type PrivateLinkServiceConnectionStateInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
-	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateArgs struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 type ColumnTransformerArrayMap map[string]ColumnTransformerArrayInput
@@ -66793,6 +66960,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedOnlineDeploymentResponseOutput{})
 	pulumi.RegisterOutputType(ManagedOnlineEndpointDeploymentResourcePropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ManagedResourceGroupAssignedIdentitiesResponseOutput{})
+	pulumi.RegisterOutputType(ManagedResourceGroupAssignedIdentitiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedResourceGroupSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ManagedResourceGroupSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
@@ -66913,9 +67084,6 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEndpointResourcePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResourceResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResourceResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerArrayMapOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerResponseArrayMapOutput{})
 	pulumi.RegisterOutputType(DeltaModelCurrentStateResponseArrayMapOutput{})

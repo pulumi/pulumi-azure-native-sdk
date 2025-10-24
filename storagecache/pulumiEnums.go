@@ -10,6 +10,172 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'.
+type AdminStatus string
+
+const (
+	AdminStatusEnable  = AdminStatus("Enable")
+	AdminStatusDisable = AdminStatus("Disable")
+)
+
+func (AdminStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdminStatus)(nil)).Elem()
+}
+
+func (e AdminStatus) ToAdminStatusOutput() AdminStatusOutput {
+	return pulumi.ToOutput(e).(AdminStatusOutput)
+}
+
+func (e AdminStatus) ToAdminStatusOutputWithContext(ctx context.Context) AdminStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AdminStatusOutput)
+}
+
+func (e AdminStatus) ToAdminStatusPtrOutput() AdminStatusPtrOutput {
+	return e.ToAdminStatusPtrOutputWithContext(context.Background())
+}
+
+func (e AdminStatus) ToAdminStatusPtrOutputWithContext(ctx context.Context) AdminStatusPtrOutput {
+	return AdminStatus(e).ToAdminStatusOutputWithContext(ctx).ToAdminStatusPtrOutputWithContext(ctx)
+}
+
+func (e AdminStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AdminStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AdminStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AdminStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AdminStatusOutput struct{ *pulumi.OutputState }
+
+func (AdminStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdminStatus)(nil)).Elem()
+}
+
+func (o AdminStatusOutput) ToAdminStatusOutput() AdminStatusOutput {
+	return o
+}
+
+func (o AdminStatusOutput) ToAdminStatusOutputWithContext(ctx context.Context) AdminStatusOutput {
+	return o
+}
+
+func (o AdminStatusOutput) ToAdminStatusPtrOutput() AdminStatusPtrOutput {
+	return o.ToAdminStatusPtrOutputWithContext(context.Background())
+}
+
+func (o AdminStatusOutput) ToAdminStatusPtrOutputWithContext(ctx context.Context) AdminStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdminStatus) *AdminStatus {
+		return &v
+	}).(AdminStatusPtrOutput)
+}
+
+func (o AdminStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AdminStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AdminStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AdminStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AdminStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AdminStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AdminStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (AdminStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdminStatus)(nil)).Elem()
+}
+
+func (o AdminStatusPtrOutput) ToAdminStatusPtrOutput() AdminStatusPtrOutput {
+	return o
+}
+
+func (o AdminStatusPtrOutput) ToAdminStatusPtrOutputWithContext(ctx context.Context) AdminStatusPtrOutput {
+	return o
+}
+
+func (o AdminStatusPtrOutput) Elem() AdminStatusOutput {
+	return o.ApplyT(func(v *AdminStatus) AdminStatus {
+		if v != nil {
+			return *v
+		}
+		var ret AdminStatus
+		return ret
+	}).(AdminStatusOutput)
+}
+
+func (o AdminStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AdminStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AdminStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AdminStatusInput is an input type that accepts values of the AdminStatus enum
+// A concrete instance of `AdminStatusInput` can be one of the following:
+//
+//	AdminStatusEnable
+//	AdminStatusDisable
+type AdminStatusInput interface {
+	pulumi.Input
+
+	ToAdminStatusOutput() AdminStatusOutput
+	ToAdminStatusOutputWithContext(context.Context) AdminStatusOutput
+}
+
+var adminStatusPtrType = reflect.TypeOf((**AdminStatus)(nil)).Elem()
+
+type AdminStatusPtrInput interface {
+	pulumi.Input
+
+	ToAdminStatusPtrOutput() AdminStatusPtrOutput
+	ToAdminStatusPtrOutputWithContext(context.Context) AdminStatusPtrOutput
+}
+
+type adminStatusPtr string
+
+func AdminStatusPtr(v string) AdminStatusPtrInput {
+	return (*adminStatusPtr)(&v)
+}
+
+func (*adminStatusPtr) ElementType() reflect.Type {
+	return adminStatusPtrType
+}
+
+func (in *adminStatusPtr) ToAdminStatusPtrOutput() AdminStatusPtrOutput {
+	return pulumi.ToOutput(in).(AdminStatusPtrOutput)
+}
+
+func (in *adminStatusPtr) ToAdminStatusPtrOutputWithContext(ctx context.Context) AdminStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AdminStatusPtrOutput)
+}
+
 // The type of identity used for the resource.
 type AmlFilesystemIdentityType string
 
@@ -2045,6 +2211,8 @@ func (in *usernameSourcePtr) ToUsernameSourcePtrOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterOutputType(AdminStatusOutput{})
+	pulumi.RegisterOutputType(AdminStatusPtrOutput{})
 	pulumi.RegisterOutputType(AmlFilesystemIdentityTypeOutput{})
 	pulumi.RegisterOutputType(AmlFilesystemIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(AmlFilesystemSquashModeOutput{})

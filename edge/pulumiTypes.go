@@ -309,7 +309,7 @@ func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Type()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Capability, to match in Solution Templates & Targets
+// Capability, to match in Solution Templates and Targets
 type Capability struct {
 	// Description of Capability
 	Description string `pulumi:"description"`
@@ -330,7 +330,7 @@ type CapabilityInput interface {
 	ToCapabilityOutputWithContext(context.Context) CapabilityOutput
 }
 
-// Capability, to match in Solution Templates & Targets
+// Capability, to match in Solution Templates and Targets
 type CapabilityArgs struct {
 	// Description of Capability
 	Description pulumi.StringInput `pulumi:"description"`
@@ -377,7 +377,7 @@ func (i CapabilityArray) ToCapabilityArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CapabilityArrayOutput)
 }
 
-// Capability, to match in Solution Templates & Targets
+// Capability, to match in Solution Templates and Targets
 type CapabilityOutput struct{ *pulumi.OutputState }
 
 func (CapabilityOutput) ElementType() reflect.Type {
@@ -427,7 +427,7 @@ func (o CapabilityArrayOutput) Index(i pulumi.IntInput) CapabilityOutput {
 	}).(CapabilityOutput)
 }
 
-// Capability, to match in Solution Templates & Targets
+// Capability, to match in Solution Templates and Targets
 type CapabilityResponse struct {
 	// Description of Capability
 	Description string `pulumi:"description"`
@@ -437,7 +437,7 @@ type CapabilityResponse struct {
 	State *string `pulumi:"state"`
 }
 
-// Capability, to match in Solution Templates & Targets
+// Capability, to match in Solution Templates and Targets
 type CapabilityResponseOutput struct{ *pulumi.OutputState }
 
 func (CapabilityResponseOutput) ElementType() reflect.Type {
@@ -3001,6 +3001,179 @@ func (o SchemaPropertiesResponseOutput) CurrentVersion() pulumi.StringOutput {
 // Provisioning state of resource
 func (o SchemaPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Schema Reference Properties
+type SchemaReferenceProperties struct {
+	// Schema Id of schema reference
+	SchemaId string `pulumi:"schemaId"`
+}
+
+// SchemaReferencePropertiesInput is an input type that accepts SchemaReferencePropertiesArgs and SchemaReferencePropertiesOutput values.
+// You can construct a concrete instance of `SchemaReferencePropertiesInput` via:
+//
+//	SchemaReferencePropertiesArgs{...}
+type SchemaReferencePropertiesInput interface {
+	pulumi.Input
+
+	ToSchemaReferencePropertiesOutput() SchemaReferencePropertiesOutput
+	ToSchemaReferencePropertiesOutputWithContext(context.Context) SchemaReferencePropertiesOutput
+}
+
+// Schema Reference Properties
+type SchemaReferencePropertiesArgs struct {
+	// Schema Id of schema reference
+	SchemaId pulumi.StringInput `pulumi:"schemaId"`
+}
+
+func (SchemaReferencePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaReferenceProperties)(nil)).Elem()
+}
+
+func (i SchemaReferencePropertiesArgs) ToSchemaReferencePropertiesOutput() SchemaReferencePropertiesOutput {
+	return i.ToSchemaReferencePropertiesOutputWithContext(context.Background())
+}
+
+func (i SchemaReferencePropertiesArgs) ToSchemaReferencePropertiesOutputWithContext(ctx context.Context) SchemaReferencePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaReferencePropertiesOutput)
+}
+
+func (i SchemaReferencePropertiesArgs) ToSchemaReferencePropertiesPtrOutput() SchemaReferencePropertiesPtrOutput {
+	return i.ToSchemaReferencePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SchemaReferencePropertiesArgs) ToSchemaReferencePropertiesPtrOutputWithContext(ctx context.Context) SchemaReferencePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaReferencePropertiesOutput).ToSchemaReferencePropertiesPtrOutputWithContext(ctx)
+}
+
+// SchemaReferencePropertiesPtrInput is an input type that accepts SchemaReferencePropertiesArgs, SchemaReferencePropertiesPtr and SchemaReferencePropertiesPtrOutput values.
+// You can construct a concrete instance of `SchemaReferencePropertiesPtrInput` via:
+//
+//	        SchemaReferencePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SchemaReferencePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSchemaReferencePropertiesPtrOutput() SchemaReferencePropertiesPtrOutput
+	ToSchemaReferencePropertiesPtrOutputWithContext(context.Context) SchemaReferencePropertiesPtrOutput
+}
+
+type schemaReferencePropertiesPtrType SchemaReferencePropertiesArgs
+
+func SchemaReferencePropertiesPtr(v *SchemaReferencePropertiesArgs) SchemaReferencePropertiesPtrInput {
+	return (*schemaReferencePropertiesPtrType)(v)
+}
+
+func (*schemaReferencePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaReferenceProperties)(nil)).Elem()
+}
+
+func (i *schemaReferencePropertiesPtrType) ToSchemaReferencePropertiesPtrOutput() SchemaReferencePropertiesPtrOutput {
+	return i.ToSchemaReferencePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *schemaReferencePropertiesPtrType) ToSchemaReferencePropertiesPtrOutputWithContext(ctx context.Context) SchemaReferencePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaReferencePropertiesPtrOutput)
+}
+
+// Schema Reference Properties
+type SchemaReferencePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SchemaReferencePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaReferenceProperties)(nil)).Elem()
+}
+
+func (o SchemaReferencePropertiesOutput) ToSchemaReferencePropertiesOutput() SchemaReferencePropertiesOutput {
+	return o
+}
+
+func (o SchemaReferencePropertiesOutput) ToSchemaReferencePropertiesOutputWithContext(ctx context.Context) SchemaReferencePropertiesOutput {
+	return o
+}
+
+func (o SchemaReferencePropertiesOutput) ToSchemaReferencePropertiesPtrOutput() SchemaReferencePropertiesPtrOutput {
+	return o.ToSchemaReferencePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaReferencePropertiesOutput) ToSchemaReferencePropertiesPtrOutputWithContext(ctx context.Context) SchemaReferencePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaReferenceProperties) *SchemaReferenceProperties {
+		return &v
+	}).(SchemaReferencePropertiesPtrOutput)
+}
+
+// Schema Id of schema reference
+func (o SchemaReferencePropertiesOutput) SchemaId() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaReferenceProperties) string { return v.SchemaId }).(pulumi.StringOutput)
+}
+
+type SchemaReferencePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaReferencePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaReferenceProperties)(nil)).Elem()
+}
+
+func (o SchemaReferencePropertiesPtrOutput) ToSchemaReferencePropertiesPtrOutput() SchemaReferencePropertiesPtrOutput {
+	return o
+}
+
+func (o SchemaReferencePropertiesPtrOutput) ToSchemaReferencePropertiesPtrOutputWithContext(ctx context.Context) SchemaReferencePropertiesPtrOutput {
+	return o
+}
+
+func (o SchemaReferencePropertiesPtrOutput) Elem() SchemaReferencePropertiesOutput {
+	return o.ApplyT(func(v *SchemaReferenceProperties) SchemaReferenceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaReferenceProperties
+		return ret
+	}).(SchemaReferencePropertiesOutput)
+}
+
+// Schema Id of schema reference
+func (o SchemaReferencePropertiesPtrOutput) SchemaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaReferenceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SchemaId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schema Reference Properties
+type SchemaReferencePropertiesResponse struct {
+	// Provisioning state of resource
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Schema Id of schema reference
+	SchemaId string `pulumi:"schemaId"`
+}
+
+// Schema Reference Properties
+type SchemaReferencePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SchemaReferencePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaReferencePropertiesResponse)(nil)).Elem()
+}
+
+func (o SchemaReferencePropertiesResponseOutput) ToSchemaReferencePropertiesResponseOutput() SchemaReferencePropertiesResponseOutput {
+	return o
+}
+
+func (o SchemaReferencePropertiesResponseOutput) ToSchemaReferencePropertiesResponseOutputWithContext(ctx context.Context) SchemaReferencePropertiesResponseOutput {
+	return o
+}
+
+// Provisioning state of resource
+func (o SchemaReferencePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaReferencePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Schema Id of schema reference
+func (o SchemaReferencePropertiesResponseOutput) SchemaId() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaReferencePropertiesResponse) string { return v.SchemaId }).(pulumi.StringOutput)
 }
 
 // Schema Version Properties
@@ -6219,6 +6392,9 @@ func init() {
 	pulumi.RegisterOutputType(ReconciliationPolicyPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ReconciliationPolicyPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SchemaPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SchemaReferencePropertiesOutput{})
+	pulumi.RegisterOutputType(SchemaReferencePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SchemaReferencePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SchemaVersionPropertiesOutput{})
 	pulumi.RegisterOutputType(SchemaVersionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SchemaVersionPropertiesResponseOutput{})

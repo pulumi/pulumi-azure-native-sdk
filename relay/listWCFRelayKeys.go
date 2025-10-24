@@ -33,7 +33,7 @@ type ListWCFRelayKeysArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The relay name.
 	RelayName string `pulumi:"relayName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -67,7 +67,7 @@ type ListWCFRelayKeysOutputArgs struct {
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
 	// The relay name.
 	RelayName pulumi.StringInput `pulumi:"relayName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

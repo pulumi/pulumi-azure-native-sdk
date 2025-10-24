@@ -107,7 +107,7 @@ func (ServerGroupPrivateEndpointConnectionState) ElementType() reflect.Type {
 type serverGroupPrivateEndpointConnectionArgs struct {
 	// The name of the cluster.
 	ClusterName string `pulumi:"clusterName"`
-	// The name of the private endpoint connection associated with the cluster.
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
@@ -119,7 +119,7 @@ type serverGroupPrivateEndpointConnectionArgs struct {
 type ServerGroupPrivateEndpointConnectionArgs struct {
 	// The name of the cluster.
 	ClusterName pulumi.StringInput
-	// The name of the private endpoint connection associated with the cluster.
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput

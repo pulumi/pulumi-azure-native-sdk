@@ -88,7 +88,7 @@ type sitesByServiceGroupArgs struct {
 	Properties *SiteProperties `pulumi:"properties"`
 	// The name of the service group
 	ServicegroupName string `pulumi:"servicegroupName"`
-	// The name of the site
+	// The name of the Site
 	SiteName *string `pulumi:"siteName"`
 }
 
@@ -98,7 +98,7 @@ type SitesByServiceGroupArgs struct {
 	Properties SitePropertiesPtrInput
 	// The name of the service group
 	ServicegroupName pulumi.StringInput
-	// The name of the site
+	// The name of the Site
 	SiteName pulumi.StringPtrInput
 }
 

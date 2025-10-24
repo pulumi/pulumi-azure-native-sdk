@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseMigrationsMongoToCosmosDbvCoreMongo{}
 	case "azure-native:datamigration:DatabaseMigrationsSqlDb":
 		r = &DatabaseMigrationsSqlDb{}
+	case "azure-native:datamigration:DatabaseMigrationsSqlMi":
+		r = &DatabaseMigrationsSqlMi{}
+	case "azure-native:datamigration:DatabaseMigrationsSqlVm":
+		r = &DatabaseMigrationsSqlVm{}
 	case "azure-native:datamigration:File":
 		r = &File{}
 	case "azure-native:datamigration:MigrationService":

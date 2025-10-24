@@ -2311,6 +2311,8 @@ type ScriptActivity struct {
 	Scripts []ScriptActivityScriptBlock `pulumi:"scripts"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
 	State *string `pulumi:"state"`
+	// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+	TreatDecimalAsString interface{} `pulumi:"treatDecimalAsString"`
 	// Type of activity.
 	// Expected value is 'Script'.
 	Type string `pulumi:"type"`
@@ -2353,6 +2355,8 @@ type ScriptActivityArgs struct {
 	Scripts ScriptActivityScriptBlockArrayInput `pulumi:"scripts"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+	TreatDecimalAsString pulumi.Input `pulumi:"treatDecimalAsString"`
 	// Type of activity.
 	// Expected value is 'Script'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -2440,6 +2444,11 @@ func (o ScriptActivityOutput) Scripts() ScriptActivityScriptBlockArrayOutput {
 // Activity state. This is an optional property and if not provided, the state will be Active by default.
 func (o ScriptActivityOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScriptActivity) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+func (o ScriptActivityOutput) TreatDecimalAsString() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScriptActivity) interface{} { return v.TreatDecimalAsString }).(pulumi.AnyOutput)
 }
 
 // Type of activity.
@@ -2687,6 +2696,8 @@ type ScriptActivityResponse struct {
 	Scripts []ScriptActivityScriptBlockResponse `pulumi:"scripts"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
 	State *string `pulumi:"state"`
+	// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+	TreatDecimalAsString interface{} `pulumi:"treatDecimalAsString"`
 	// Type of activity.
 	// Expected value is 'Script'.
 	Type string `pulumi:"type"`
@@ -2762,6 +2773,11 @@ func (o ScriptActivityResponseOutput) Scripts() ScriptActivityScriptBlockRespons
 // Activity state. This is an optional property and if not provided, the state will be Active by default.
 func (o ScriptActivityResponseOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScriptActivityResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+func (o ScriptActivityResponseOutput) TreatDecimalAsString() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScriptActivityResponse) interface{} { return v.TreatDecimalAsString }).(pulumi.AnyOutput)
 }
 
 // Type of activity.
@@ -11004,6 +11020,8 @@ type SnowflakeV2LinkedService struct {
 	// Type of linked service.
 	// Expected value is 'SnowflakeV2'.
 	Type string `pulumi:"type"`
+	// Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
+	UseUtcTimestamps interface{} `pulumi:"useUtcTimestamps"`
 	// The name of the Snowflake user.
 	User interface{} `pulumi:"user"`
 	// Version of the linked service.
@@ -11077,6 +11095,8 @@ type SnowflakeV2LinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'SnowflakeV2'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
+	UseUtcTimestamps pulumi.Input `pulumi:"useUtcTimestamps"`
 	// The name of the Snowflake user.
 	User pulumi.Input `pulumi:"user"`
 	// Version of the linked service.
@@ -11219,6 +11239,11 @@ func (o SnowflakeV2LinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SnowflakeV2LinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
+func (o SnowflakeV2LinkedServiceOutput) UseUtcTimestamps() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.UseUtcTimestamps }).(pulumi.AnyOutput)
+}
+
 // The name of the Snowflake user.
 func (o SnowflakeV2LinkedServiceOutput) User() pulumi.AnyOutput {
 	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.User }).(pulumi.AnyOutput)
@@ -11275,6 +11300,8 @@ type SnowflakeV2LinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'SnowflakeV2'.
 	Type string `pulumi:"type"`
+	// Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
+	UseUtcTimestamps interface{} `pulumi:"useUtcTimestamps"`
 	// The name of the Snowflake user.
 	User interface{} `pulumi:"user"`
 	// Version of the linked service.
@@ -11407,6 +11434,11 @@ func (o SnowflakeV2LinkedServiceResponseOutput) TenantId() pulumi.AnyOutput {
 // Expected value is 'SnowflakeV2'.
 func (o SnowflakeV2LinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
+func (o SnowflakeV2LinkedServiceResponseOutput) UseUtcTimestamps() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.UseUtcTimestamps }).(pulumi.AnyOutput)
 }
 
 // The name of the Snowflake user.
@@ -27254,8 +27286,12 @@ type WarehouseLinkedService struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId interface{} `pulumi:"artifactId"`
+	// The authentication type to use.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -27300,8 +27336,12 @@ type WarehouseLinkedServiceArgs struct {
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
 	// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId pulumi.Input `pulumi:"artifactId"`
+	// The authentication type to use.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
+	// The credential reference containing authentication information.
+	Credential CredentialReferencePtrInput `pulumi:"credential"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -27366,9 +27406,19 @@ func (o WarehouseLinkedServiceOutput) ArtifactId() pulumi.AnyOutput {
 	return o.ApplyT(func(v WarehouseLinkedService) interface{} { return v.ArtifactId }).(pulumi.AnyOutput)
 }
 
+// The authentication type to use.
+func (o WarehouseLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // The integration runtime reference.
 func (o WarehouseLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v WarehouseLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
+}
+
+// The credential reference containing authentication information.
+func (o WarehouseLinkedServiceOutput) Credential() CredentialReferencePtrOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
 }
 
 // Linked service description.
@@ -27438,8 +27488,12 @@ type WarehouseLinkedServiceResponse struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId interface{} `pulumi:"artifactId"`
+	// The authentication type to use.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -27492,9 +27546,19 @@ func (o WarehouseLinkedServiceResponseOutput) ArtifactId() pulumi.AnyOutput {
 	return o.ApplyT(func(v WarehouseLinkedServiceResponse) interface{} { return v.ArtifactId }).(pulumi.AnyOutput)
 }
 
+// The authentication type to use.
+func (o WarehouseLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // The integration runtime reference.
 func (o WarehouseLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v WarehouseLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
+}
+
+// The credential reference containing authentication information.
+func (o WarehouseLinkedServiceResponseOutput) Credential() CredentialReferenceResponsePtrOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
 }
 
 // Linked service description.

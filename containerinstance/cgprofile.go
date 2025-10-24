@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// container group profile object
+// A container group profile object
 //
 // Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
+//
+// Other available API versions: 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CGProfile struct {
 	pulumi.CustomResourceState
 
@@ -41,18 +43,18 @@ type CGProfile struct {
 	// The resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The operating system type required by the containers in the container group.
-	OsType pulumi.StringPtrOutput `pulumi:"osType"`
+	OsType pulumi.StringOutput `pulumi:"osType"`
 	// The priority of the container group.
 	Priority pulumi.StringPtrOutput `pulumi:"priority"`
 	// Registered revisions are calculated at request time based off the records in the table logs.
-	RegisteredRevisions pulumi.Float64ArrayOutput `pulumi:"registeredRevisions"`
+	RegisteredRevisions pulumi.IntArrayOutput `pulumi:"registeredRevisions"`
 	// Restart policy for all containers within the container group.
 	// - `Always` Always restart
 	// - `OnFailure` Restart on failure
 	// - `Never` Never restart
 	RestartPolicy pulumi.StringPtrOutput `pulumi:"restartPolicy"`
 	// Container group profile current revision number
-	Revision pulumi.Float64PtrOutput `pulumi:"revision"`
+	Revision pulumi.IntOutput `pulumi:"revision"`
 	// The container security properties.
 	SecurityContext SecurityContextDefinitionResponsePtrOutput `pulumi:"securityContext"`
 	// Shutdown grace period for containers in a container group.
@@ -82,6 +84,12 @@ func NewCGProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Containers == nil {
+		return nil, errors.New("invalid value for required argument 'Containers'")
+	}
+	if args.OsType == nil {
+		return nil, errors.New("invalid value for required argument 'OsType'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -97,6 +105,9 @@ func NewCGProfile(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerinstance/v20241101preview:CGProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerinstance/v20250901:CGProfile"),
 		},
 		{
 			Type: pulumi.String("azure-native:containerinstance:ContainerGroupProfile"),
@@ -157,11 +168,9 @@ type cgprofileArgs struct {
 	// The resource location.
 	Location *string `pulumi:"location"`
 	// The operating system type required by the containers in the container group.
-	OsType *string `pulumi:"osType"`
+	OsType string `pulumi:"osType"`
 	// The priority of the container group.
 	Priority *string `pulumi:"priority"`
-	// Registered revisions are calculated at request time based off the records in the table logs.
-	RegisteredRevisions []float64 `pulumi:"registeredRevisions"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Restart policy for all containers within the container group.
@@ -169,8 +178,6 @@ type cgprofileArgs struct {
 	// - `OnFailure` Restart on failure
 	// - `Never` Never restart
 	RestartPolicy *string `pulumi:"restartPolicy"`
-	// Container group profile current revision number
-	Revision *float64 `pulumi:"revision"`
 	// The container security properties.
 	SecurityContext *SecurityContextDefinition `pulumi:"securityContext"`
 	// Shutdown grace period for containers in a container group.
@@ -212,11 +219,9 @@ type CGProfileArgs struct {
 	// The resource location.
 	Location pulumi.StringPtrInput
 	// The operating system type required by the containers in the container group.
-	OsType pulumi.StringPtrInput
+	OsType pulumi.StringInput
 	// The priority of the container group.
 	Priority pulumi.StringPtrInput
-	// Registered revisions are calculated at request time based off the records in the table logs.
-	RegisteredRevisions pulumi.Float64ArrayInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Restart policy for all containers within the container group.
@@ -224,8 +229,6 @@ type CGProfileArgs struct {
 	// - `OnFailure` Restart on failure
 	// - `Never` Never restart
 	RestartPolicy pulumi.StringPtrInput
-	// Container group profile current revision number
-	Revision pulumi.Float64PtrInput
 	// The container security properties.
 	SecurityContext SecurityContextDefinitionPtrInput
 	// Shutdown grace period for containers in a container group.
@@ -339,8 +342,8 @@ func (o CGProfileOutput) Name() pulumi.StringOutput {
 }
 
 // The operating system type required by the containers in the container group.
-func (o CGProfileOutput) OsType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CGProfile) pulumi.StringPtrOutput { return v.OsType }).(pulumi.StringPtrOutput)
+func (o CGProfileOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v *CGProfile) pulumi.StringOutput { return v.OsType }).(pulumi.StringOutput)
 }
 
 // The priority of the container group.
@@ -349,8 +352,8 @@ func (o CGProfileOutput) Priority() pulumi.StringPtrOutput {
 }
 
 // Registered revisions are calculated at request time based off the records in the table logs.
-func (o CGProfileOutput) RegisteredRevisions() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func(v *CGProfile) pulumi.Float64ArrayOutput { return v.RegisteredRevisions }).(pulumi.Float64ArrayOutput)
+func (o CGProfileOutput) RegisteredRevisions() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *CGProfile) pulumi.IntArrayOutput { return v.RegisteredRevisions }).(pulumi.IntArrayOutput)
 }
 
 // Restart policy for all containers within the container group.
@@ -362,8 +365,8 @@ func (o CGProfileOutput) RestartPolicy() pulumi.StringPtrOutput {
 }
 
 // Container group profile current revision number
-func (o CGProfileOutput) Revision() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *CGProfile) pulumi.Float64PtrOutput { return v.Revision }).(pulumi.Float64PtrOutput)
+func (o CGProfileOutput) Revision() pulumi.IntOutput {
+	return o.ApplyT(func(v *CGProfile) pulumi.IntOutput { return v.Revision }).(pulumi.IntOutput)
 }
 
 // The container security properties.

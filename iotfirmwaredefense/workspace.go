@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-01-10. In version 2.x of the Azure Native provider, it used API version 2023-02-08-preview.
 //
-// Other available API versions: 2023-02-08-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -55,6 +55,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotfirmwaredefense/v20250401preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotfirmwaredefense/v20250802:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -13,9 +13,9 @@ import (
 
 // Gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values.
 //
-// Uses Azure REST API version 2024-09-01.
+// Uses Azure REST API version 2025-06-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2025-01-01-preview, 2025-04-15, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetProfileSupportedOptimizationTypes(ctx *pulumi.Context, args *GetProfileSupportedOptimizationTypesArgs, opts ...pulumi.InvokeOption) (*GetProfileSupportedOptimizationTypesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProfileSupportedOptimizationTypesResult
@@ -29,7 +29,7 @@ func GetProfileSupportedOptimizationTypes(ctx *pulumi.Context, args *GetProfileS
 type GetProfileSupportedOptimizationTypesArgs struct {
 	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -51,7 +51,7 @@ func GetProfileSupportedOptimizationTypesOutput(ctx *pulumi.Context, args GetPro
 type GetProfileSupportedOptimizationTypesOutputArgs struct {
 	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

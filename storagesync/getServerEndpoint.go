@@ -23,7 +23,7 @@ func LookupServerEndpoint(ctx *pulumi.Context, args *LookupServerEndpointArgs, o
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupServerEndpointArgs struct {
@@ -93,6 +93,26 @@ type LookupServerEndpointResult struct {
 	VolumeFreeSpacePercent *int `pulumi:"volumeFreeSpacePercent"`
 }
 
+// Defaults sets the appropriate defaults for LookupServerEndpointResult
+func (val *LookupServerEndpointResult) Defaults() *LookupServerEndpointResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.InitialDownloadPolicy == nil {
+		initialDownloadPolicy_ := "NamespaceThenModifiedFiles"
+		tmp.InitialDownloadPolicy = &initialDownloadPolicy_
+	}
+	if tmp.InitialUploadPolicy == nil {
+		initialUploadPolicy_ := "Merge"
+		tmp.InitialUploadPolicy = &initialUploadPolicy_
+	}
+	if tmp.LocalCacheMode == nil {
+		localCacheMode_ := "UpdateLocallyCachedFiles"
+		tmp.LocalCacheMode = &localCacheMode_
+	}
+	return &tmp
+}
 func LookupServerEndpointOutput(ctx *pulumi.Context, args LookupServerEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupServerEndpointResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerEndpointResultOutput, error) {

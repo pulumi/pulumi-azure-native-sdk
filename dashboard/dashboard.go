@@ -15,6 +15,8 @@ import (
 // The managed dashboard resource type.
 //
 // Uses Azure REST API version 2024-11-01-preview.
+//
+// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dashboard [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Dashboard struct {
 	pulumi.CustomResourceState
 
@@ -47,6 +49,9 @@ func NewDashboard(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:dashboard/v20241101preview:Dashboard"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20250801:Dashboard"),
 		},
 	})
 	opts = append(opts, aliases)

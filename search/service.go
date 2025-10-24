@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -36,7 +36,7 @@ type Service struct {
 	EncryptionWithCmk EncryptionWithCmkResponsePtrOutput `pulumi:"encryptionWithCmk"`
 	// The endpoint of the Azure AI Search service.
 	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
-	// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
+	// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'.
 	HostingMode pulumi.StringPtrOutput `pulumi:"hostingMode"`
 	// The identity of the resource.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
@@ -52,7 +52,7 @@ type Service struct {
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The state of the last provisioning operation performed on the search service. Provisioning is an intermediate state that occurs while service capacity is being established. After capacity is set up, provisioningState changes to either 'Succeeded' or 'Failed'. Client applications can poll provisioning status (the recommended polling interval is from 30 seconds to one minute) by using the Get Search Service operation to see when an operation is completed. If you are using the free service, this value tends to come back as 'Succeeded' directly in the call to Create search service. This is because the free service uses capacity that is already set up.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
+	// This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
 	ReplicaCount pulumi.IntPtrOutput `pulumi:"replicaCount"`
@@ -89,13 +89,13 @@ func NewService(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	if args.HostingMode == nil {
-		args.HostingMode = HostingMode("default")
+		args.HostingMode = HostingMode("Default")
 	}
 	if args.PartitionCount == nil {
 		args.PartitionCount = pulumi.IntPtr(1)
 	}
 	if args.PublicNetworkAccess == nil {
-		args.PublicNetworkAccess = pulumi.StringPtr("enabled")
+		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	if args.ReplicaCount == nil {
 		args.ReplicaCount = pulumi.IntPtr(1)
@@ -136,6 +136,9 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:search/v20250501:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:search/v20251001preview:Service"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -184,7 +187,7 @@ type serviceArgs struct {
 	EncryptionWithCmk *EncryptionWithCmk `pulumi:"encryptionWithCmk"`
 	// The endpoint of the Azure AI Search service.
 	Endpoint *string `pulumi:"endpoint"`
-	// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
+	// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'.
 	HostingMode *HostingMode `pulumi:"hostingMode"`
 	// The identity of the resource.
 	Identity *Identity `pulumi:"identity"`
@@ -194,7 +197,7 @@ type serviceArgs struct {
 	NetworkRuleSet *NetworkRuleSet `pulumi:"networkRuleSet"`
 	// The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
 	PartitionCount *int `pulumi:"partitionCount"`
-	// This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
+	// This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
 	ReplicaCount *int `pulumi:"replicaCount"`
@@ -226,7 +229,7 @@ type ServiceArgs struct {
 	EncryptionWithCmk EncryptionWithCmkPtrInput
 	// The endpoint of the Azure AI Search service.
 	Endpoint pulumi.StringPtrInput
-	// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
+	// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'.
 	HostingMode HostingModePtrInput
 	// The identity of the resource.
 	Identity IdentityPtrInput
@@ -236,7 +239,7 @@ type ServiceArgs struct {
 	NetworkRuleSet NetworkRuleSetPtrInput
 	// The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
 	PartitionCount pulumi.IntPtrInput
-	// This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
+	// This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
 	PublicNetworkAccess pulumi.StringPtrInput
 	// The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
 	ReplicaCount pulumi.IntPtrInput
@@ -331,7 +334,7 @@ func (o ServiceOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
+// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'.
 func (o ServiceOutput) HostingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.HostingMode }).(pulumi.StringPtrOutput)
 }
@@ -371,7 +374,7 @@ func (o ServiceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
+// This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
 func (o ServiceOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }

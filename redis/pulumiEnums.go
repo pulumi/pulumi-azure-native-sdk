@@ -21,8 +21,10 @@ const (
 	DayOfWeekFriday    = DayOfWeek("Friday")
 	DayOfWeekSaturday  = DayOfWeek("Saturday")
 	DayOfWeekSunday    = DayOfWeek("Sunday")
-	DayOfWeekEveryday  = DayOfWeek("Everyday")
-	DayOfWeekWeekend   = DayOfWeek("Weekend")
+	// As a convenience, 'Everyday' is also accepted and means the same as specifying all days of the week.
+	DayOfWeekEveryday = DayOfWeek("Everyday")
+	// As a convenience, 'Weekend' is also accepted and means the same as specifying Saturday and Sunday.
+	DayOfWeekWeekend = DayOfWeek("Weekend")
 )
 
 func (DayOfWeek) ElementType() reflect.Type {
@@ -528,11 +530,13 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
+// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method.
 type PublicNetworkAccess string
 
 const (
-	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	// Public internet access to the cache, via its public IP address, is enabled. Connections may use any network path.
+	PublicNetworkAccessEnabled = PublicNetworkAccess("Enabled")
+	// Public internet access to the cache, via its public IP address, is disabled. Connections must use be made via private endpoints.
 	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
@@ -864,7 +868,9 @@ func (in *replicationRolePtr) ToReplicationRolePtrOutputWithContext(ctx context.
 type SkuFamily string
 
 const (
+	// The SKU family to use - must be 'C' for Basic/Standard SKU redis caches.
 	SkuFamilyC = SkuFamily("C")
+	// The SKU family to use - must be 'P' for Premium SKU redis caches.
 	SkuFamilyP = SkuFamily("P")
 )
 
@@ -1030,9 +1036,12 @@ func (in *skuFamilyPtr) ToSkuFamilyPtrOutputWithContext(ctx context.Context) Sku
 type SkuName string
 
 const (
-	SkuNameBasic    = SkuName("Basic")
+	// The well known 'Basic' SKU for Azure Cache for Redis. Basic SKU does not have an availability SLA.
+	SkuNameBasic = SkuName("Basic")
+	// The well known 'Standard' SKU for Azure Cache for Redis. Standard SKU has an availability SLA.
 	SkuNameStandard = SkuName("Standard")
-	SkuNamePremium  = SkuName("Premium")
+	// The well known 'Premium' SKU for Azure Cache for Redis. Premium SKU has an availability SLA, and higher performance tiers and more features compared with Standard SKU.
+	SkuNamePremium = SkuName("Premium")
 )
 
 func (SkuName) ElementType() reflect.Type {
@@ -1198,8 +1207,11 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 type TlsVersion string
 
 const (
+	// TLS protocol version 1.0 -- deprecated for security reasons. Do not use this value for new caches.
 	TlsVersion_1_0 = TlsVersion("1.0")
+	// TLS protocol version 1.1 -- deprecated for security reasons. Do not use this value for new caches.
 	TlsVersion_1_1 = TlsVersion("1.1")
+	// TLS protocol version 1.2 -- use this value, or higher, for new caches. Or do not specify, so that your cache uses the recommended default value
 	TlsVersion_1_2 = TlsVersion("1.2")
 )
 
@@ -1366,7 +1378,9 @@ func (in *tlsVersionPtr) ToTlsVersionPtrOutputWithContext(ctx context.Context) T
 type UpdateChannel string
 
 const (
-	UpdateChannelStable  = UpdateChannel("Stable")
+	// Stable channel receives updates, which may include important security and stability updates, later than Preview channel.
+	UpdateChannelStable = UpdateChannel("Stable")
+	// Preview channel normally receives updates before Stable channel, and is the recommended channel for non-production workloads.
 	UpdateChannelPreview = UpdateChannel("Preview")
 )
 
@@ -1532,9 +1546,12 @@ func (in *updateChannelPtr) ToUpdateChannelPtrOutputWithContext(ctx context.Cont
 type ZonalAllocationPolicy string
 
 const (
-	ZonalAllocationPolicyAutomatic   = ZonalAllocationPolicy("Automatic")
+	// The zones for the cache will be selected automatically based on availability and capacity.
+	ZonalAllocationPolicyAutomatic = ZonalAllocationPolicy("Automatic")
+	// UserDefined means the zones for the cache are manually configured using the 'zones' property, and can not be automatically selected.
 	ZonalAllocationPolicyUserDefined = ZonalAllocationPolicy("UserDefined")
-	ZonalAllocationPolicyNoZones     = ZonalAllocationPolicy("NoZones")
+	// The cache will not use multiple availability zones.
+	ZonalAllocationPolicyNoZones = ZonalAllocationPolicy("NoZones")
 )
 
 func (ZonalAllocationPolicy) ElementType() reflect.Type {

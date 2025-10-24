@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
 //
-// Other available API versions: 2025-07-17-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Connector struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:confluent/v20250717preview:Connector"),
+		},
+		{
+			Type: pulumi.String("azure-native:confluent/v20250818preview:Connector"),
 		},
 	})
 	opts = append(opts, aliases)

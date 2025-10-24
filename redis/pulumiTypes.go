@@ -285,23 +285,27 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
-// The Private Endpoint Connection resource.
+// The private endpoint connection resource.
 type PrivateEndpointConnectionResponse struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The group ids for the private endpoint resource.
+	GroupIds []string `pulumi:"groupIds"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The resource of private end point.
+	// The private endpoint resource.
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
-// The Private Endpoint Connection resource.
+// The private endpoint connection resource.
 type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
@@ -316,7 +320,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The group ids for the private endpoint resource.
+func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -326,7 +335,7 @@ func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource of private end point.
+// The private endpoint resource.
 func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
 }
@@ -341,6 +350,11 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionSta
 // The provisioning state of the private endpoint connection resource.
 func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -368,13 +382,13 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	}).(PrivateEndpointConnectionResponseOutput)
 }
 
-// The Private Endpoint resource.
+// The private endpoint resource.
 type PrivateEndpointResponse struct {
-	// The ARM identifier for Private Endpoint
+	// The ARM identifier for private endpoint.
 	Id string `pulumi:"id"`
 }
 
-// The Private Endpoint resource.
+// The private endpoint resource.
 type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
@@ -389,7 +403,7 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-// The ARM identifier for Private Endpoint
+// The ARM identifier for private endpoint.
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -418,7 +432,7 @@ func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
 	}).(PrivateEndpointResponseOutput)
 }
 
-// The ARM identifier for Private Endpoint
+// The ARM identifier for private endpoint.
 func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
 		if v == nil {
@@ -584,7 +598,7 @@ type RedisCommonPropertiesRedisConfiguration struct {
 	AofStorageConnectionString0 *string `pulumi:"aofStorageConnectionString0"`
 	// Second storage account connection string
 	AofStorageConnectionString1 *string `pulumi:"aofStorageConnectionString1"`
-	// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+	// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
 	Authnotrequired *string `pulumi:"authnotrequired"`
 	// Value in megabytes reserved for fragmentation per shard
 	MaxfragmentationmemoryReserved *string `pulumi:"maxfragmentationmemoryReserved"`
@@ -598,7 +612,7 @@ type RedisCommonPropertiesRedisConfiguration struct {
 	NotifyKeyspaceEvents *string `pulumi:"notifyKeyspaceEvents"`
 	// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
 	PreferredDataPersistenceAuthMethod *string `pulumi:"preferredDataPersistenceAuthMethod"`
-	// Specifies whether the rdb backup is enabled
+	// Specifies whether the RDB backup is enabled
 	RdbBackupEnabled *string `pulumi:"rdbBackupEnabled"`
 	// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 	RdbBackupFrequency *string `pulumi:"rdbBackupFrequency"`
@@ -631,7 +645,7 @@ type RedisCommonPropertiesRedisConfigurationArgs struct {
 	AofStorageConnectionString0 pulumi.StringPtrInput `pulumi:"aofStorageConnectionString0"`
 	// Second storage account connection string
 	AofStorageConnectionString1 pulumi.StringPtrInput `pulumi:"aofStorageConnectionString1"`
-	// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+	// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
 	Authnotrequired pulumi.StringPtrInput `pulumi:"authnotrequired"`
 	// Value in megabytes reserved for fragmentation per shard
 	MaxfragmentationmemoryReserved pulumi.StringPtrInput `pulumi:"maxfragmentationmemoryReserved"`
@@ -645,7 +659,7 @@ type RedisCommonPropertiesRedisConfigurationArgs struct {
 	NotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"notifyKeyspaceEvents"`
 	// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
 	PreferredDataPersistenceAuthMethod pulumi.StringPtrInput `pulumi:"preferredDataPersistenceAuthMethod"`
-	// Specifies whether the rdb backup is enabled
+	// Specifies whether the RDB backup is enabled
 	RdbBackupEnabled pulumi.StringPtrInput `pulumi:"rdbBackupEnabled"`
 	// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 	RdbBackupFrequency pulumi.StringPtrInput `pulumi:"rdbBackupFrequency"`
@@ -755,7 +769,7 @@ func (o RedisCommonPropertiesRedisConfigurationOutput) AofStorageConnectionStrin
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.AofStorageConnectionString1 }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
 func (o RedisCommonPropertiesRedisConfigurationOutput) Authnotrequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.Authnotrequired }).(pulumi.StringPtrOutput)
 }
@@ -790,7 +804,7 @@ func (o RedisCommonPropertiesRedisConfigurationOutput) PreferredDataPersistenceA
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.PreferredDataPersistenceAuthMethod }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the rdb backup is enabled
+// Specifies whether the RDB backup is enabled
 func (o RedisCommonPropertiesRedisConfigurationOutput) RdbBackupEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.RdbBackupEnabled }).(pulumi.StringPtrOutput)
 }
@@ -879,7 +893,7 @@ func (o RedisCommonPropertiesRedisConfigurationPtrOutput) AofStorageConnectionSt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
 func (o RedisCommonPropertiesRedisConfigurationPtrOutput) Authnotrequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
 		if v == nil {
@@ -949,7 +963,7 @@ func (o RedisCommonPropertiesRedisConfigurationPtrOutput) PreferredDataPersisten
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the rdb backup is enabled
+// Specifies whether the RDB backup is enabled
 func (o RedisCommonPropertiesRedisConfigurationPtrOutput) RdbBackupEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
 		if v == nil {
@@ -1000,7 +1014,7 @@ func (o RedisCommonPropertiesRedisConfigurationPtrOutput) StorageSubscriptionId(
 }
 
 // All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
-type RedisCommonPropertiesResponseRedisConfiguration struct {
+type RedisCommonPropertiesRedisConfigurationResponse struct {
 	// Specifies whether AAD based authentication has been enabled or disabled for the cache
 	AadEnabled *string `pulumi:"aadEnabled"`
 	// Specifies whether the aof backup is enabled
@@ -1009,7 +1023,7 @@ type RedisCommonPropertiesResponseRedisConfiguration struct {
 	AofStorageConnectionString0 *string `pulumi:"aofStorageConnectionString0"`
 	// Second storage account connection string
 	AofStorageConnectionString1 *string `pulumi:"aofStorageConnectionString1"`
-	// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+	// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
 	Authnotrequired *string `pulumi:"authnotrequired"`
 	// The max clients config
 	Maxclients string `pulumi:"maxclients"`
@@ -1027,7 +1041,7 @@ type RedisCommonPropertiesResponseRedisConfiguration struct {
 	PreferredDataArchiveAuthMethod string `pulumi:"preferredDataArchiveAuthMethod"`
 	// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
 	PreferredDataPersistenceAuthMethod *string `pulumi:"preferredDataPersistenceAuthMethod"`
-	// Specifies whether the rdb backup is enabled
+	// Specifies whether the RDB backup is enabled
 	RdbBackupEnabled *string `pulumi:"rdbBackupEnabled"`
 	// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
 	RdbBackupFrequency *string `pulumi:"rdbBackupFrequency"`
@@ -1042,148 +1056,148 @@ type RedisCommonPropertiesResponseRedisConfiguration struct {
 }
 
 // All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
-type RedisCommonPropertiesResponseRedisConfigurationOutput struct{ *pulumi.OutputState }
+type RedisCommonPropertiesRedisConfigurationResponseOutput struct{ *pulumi.OutputState }
 
-func (RedisCommonPropertiesResponseRedisConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RedisCommonPropertiesResponseRedisConfiguration)(nil)).Elem()
+func (RedisCommonPropertiesRedisConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RedisCommonPropertiesRedisConfigurationResponse)(nil)).Elem()
 }
 
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) ToRedisCommonPropertiesResponseRedisConfigurationOutput() RedisCommonPropertiesResponseRedisConfigurationOutput {
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) ToRedisCommonPropertiesRedisConfigurationResponseOutput() RedisCommonPropertiesRedisConfigurationResponseOutput {
 	return o
 }
 
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) ToRedisCommonPropertiesResponseRedisConfigurationOutputWithContext(ctx context.Context) RedisCommonPropertiesResponseRedisConfigurationOutput {
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) ToRedisCommonPropertiesRedisConfigurationResponseOutputWithContext(ctx context.Context) RedisCommonPropertiesRedisConfigurationResponseOutput {
 	return o
 }
 
 // Specifies whether AAD based authentication has been enabled or disabled for the cache
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) AadEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.AadEnabled }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) AadEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.AadEnabled }).(pulumi.StringPtrOutput)
 }
 
 // Specifies whether the aof backup is enabled
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) AofBackupEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.AofBackupEnabled }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) AofBackupEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.AofBackupEnabled }).(pulumi.StringPtrOutput)
 }
 
 // First storage account connection string
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) AofStorageConnectionString0() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.AofStorageConnectionString0 }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) AofStorageConnectionString0() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.AofStorageConnectionString0 }).(pulumi.StringPtrOutput)
 }
 
 // Second storage account connection string
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) AofStorageConnectionString1() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.AofStorageConnectionString1 }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) AofStorageConnectionString1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.AofStorageConnectionString1 }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) Authnotrequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.Authnotrequired }).(pulumi.StringPtrOutput)
+// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) Authnotrequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.Authnotrequired }).(pulumi.StringPtrOutput)
 }
 
 // The max clients config
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) Maxclients() pulumi.StringOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) string { return v.Maxclients }).(pulumi.StringOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) Maxclients() pulumi.StringOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) string { return v.Maxclients }).(pulumi.StringOutput)
 }
 
 // Value in megabytes reserved for fragmentation per shard
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) MaxfragmentationmemoryReserved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) MaxfragmentationmemoryReserved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string {
 		return v.MaxfragmentationmemoryReserved
 	}).(pulumi.StringPtrOutput)
 }
 
 // Value in megabytes reserved for non-cache usage per shard e.g. failover.
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) MaxmemoryDelta() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.MaxmemoryDelta }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) MaxmemoryDelta() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.MaxmemoryDelta }).(pulumi.StringPtrOutput)
 }
 
 // The eviction strategy used when your data won't fit within its memory limit.
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) MaxmemoryPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.MaxmemoryPolicy }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) MaxmemoryPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.MaxmemoryPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Value in megabytes reserved for non-cache usage per shard e.g. failover.
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) MaxmemoryReserved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.MaxmemoryReserved }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) MaxmemoryReserved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.MaxmemoryReserved }).(pulumi.StringPtrOutput)
 }
 
 // The keyspace events which should be monitored.
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.NotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.NotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
 }
 
 // Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) PreferredDataArchiveAuthMethod() pulumi.StringOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) string {
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) PreferredDataArchiveAuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) string {
 		return v.PreferredDataArchiveAuthMethod
 	}).(pulumi.StringOutput)
 }
 
 // Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) PreferredDataPersistenceAuthMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) PreferredDataPersistenceAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string {
 		return v.PreferredDataPersistenceAuthMethod
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the rdb backup is enabled
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) RdbBackupEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.RdbBackupEnabled }).(pulumi.StringPtrOutput)
+// Specifies whether the RDB backup is enabled
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) RdbBackupEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.RdbBackupEnabled }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.RdbBackupFrequency }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.RdbBackupFrequency }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the maximum number of snapshots for rdb backup
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) RdbBackupMaxSnapshotCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.RdbBackupMaxSnapshotCount }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) RdbBackupMaxSnapshotCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.RdbBackupMaxSnapshotCount }).(pulumi.StringPtrOutput)
 }
 
 // The storage account connection string for storing rdb file
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) RdbStorageConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.RdbStorageConnectionString }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) RdbStorageConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.RdbStorageConnectionString }).(pulumi.StringPtrOutput)
 }
 
 // SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) StorageSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.StorageSubscriptionId }).(pulumi.StringPtrOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) StorageSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) *string { return v.StorageSubscriptionId }).(pulumi.StringPtrOutput)
 }
 
 // Zonal Configuration
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) ZonalConfiguration() pulumi.StringOutput {
-	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) string { return v.ZonalConfiguration }).(pulumi.StringOutput)
+func (o RedisCommonPropertiesRedisConfigurationResponseOutput) ZonalConfiguration() pulumi.StringOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfigurationResponse) string { return v.ZonalConfiguration }).(pulumi.StringOutput)
 }
 
-type RedisCommonPropertiesResponseRedisConfigurationPtrOutput struct{ *pulumi.OutputState }
+type RedisCommonPropertiesRedisConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (RedisCommonPropertiesResponseRedisConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RedisCommonPropertiesResponseRedisConfiguration)(nil)).Elem()
+func (RedisCommonPropertiesRedisConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RedisCommonPropertiesRedisConfigurationResponse)(nil)).Elem()
 }
 
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) ToRedisCommonPropertiesResponseRedisConfigurationPtrOutput() RedisCommonPropertiesResponseRedisConfigurationPtrOutput {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) ToRedisCommonPropertiesRedisConfigurationResponsePtrOutput() RedisCommonPropertiesRedisConfigurationResponsePtrOutput {
 	return o
 }
 
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) ToRedisCommonPropertiesResponseRedisConfigurationPtrOutputWithContext(ctx context.Context) RedisCommonPropertiesResponseRedisConfigurationPtrOutput {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) ToRedisCommonPropertiesRedisConfigurationResponsePtrOutputWithContext(ctx context.Context) RedisCommonPropertiesRedisConfigurationResponsePtrOutput {
 	return o
 }
 
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) Elem() RedisCommonPropertiesResponseRedisConfigurationOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) RedisCommonPropertiesResponseRedisConfiguration {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) Elem() RedisCommonPropertiesRedisConfigurationResponseOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) RedisCommonPropertiesRedisConfigurationResponse {
 		if v != nil {
 			return *v
 		}
-		var ret RedisCommonPropertiesResponseRedisConfiguration
+		var ret RedisCommonPropertiesRedisConfigurationResponse
 		return ret
-	}).(RedisCommonPropertiesResponseRedisConfigurationOutput)
+	}).(RedisCommonPropertiesRedisConfigurationResponseOutput)
 }
 
 // Specifies whether AAD based authentication has been enabled or disabled for the cache
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) AadEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) AadEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1192,8 +1206,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) AadEnabled() p
 }
 
 // Specifies whether the aof backup is enabled
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) AofBackupEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) AofBackupEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1202,8 +1216,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) AofBackupEnabl
 }
 
 // First storage account connection string
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) AofStorageConnectionString0() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) AofStorageConnectionString0() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1212,8 +1226,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) AofStorageConn
 }
 
 // Second storage account connection string
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) AofStorageConnectionString1() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) AofStorageConnectionString1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1221,9 +1235,9 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) AofStorageConn
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) Authnotrequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) Authnotrequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1232,8 +1246,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) Authnotrequire
 }
 
 // The max clients config
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) Maxclients() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) Maxclients() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1242,8 +1256,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) Maxclients() p
 }
 
 // Value in megabytes reserved for fragmentation per shard
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) MaxfragmentationmemoryReserved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) MaxfragmentationmemoryReserved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1252,8 +1266,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) Maxfragmentati
 }
 
 // Value in megabytes reserved for non-cache usage per shard e.g. failover.
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) MaxmemoryDelta() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) MaxmemoryDelta() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1262,8 +1276,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) MaxmemoryDelta
 }
 
 // The eviction strategy used when your data won't fit within its memory limit.
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) MaxmemoryPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) MaxmemoryPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1272,8 +1286,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) MaxmemoryPolic
 }
 
 // Value in megabytes reserved for non-cache usage per shard e.g. failover.
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) MaxmemoryReserved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) MaxmemoryReserved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1282,8 +1296,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) MaxmemoryReser
 }
 
 // The keyspace events which should be monitored.
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1292,8 +1306,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) NotifyKeyspace
 }
 
 // Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) PreferredDataArchiveAuthMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) PreferredDataArchiveAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1302,8 +1316,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) PreferredDataA
 }
 
 // Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) PreferredDataPersistenceAuthMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) PreferredDataPersistenceAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1311,9 +1325,9 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) PreferredDataP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the rdb backup is enabled
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbBackupEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+// Specifies whether the RDB backup is enabled
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) RdbBackupEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1322,8 +1336,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbBackupEnabl
 }
 
 // Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) RdbBackupFrequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1332,8 +1346,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbBackupFrequ
 }
 
 // Specifies the maximum number of snapshots for rdb backup
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbBackupMaxSnapshotCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) RdbBackupMaxSnapshotCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1342,8 +1356,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbBackupMaxSn
 }
 
 // The storage account connection string for storing rdb file
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbStorageConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) RdbStorageConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1352,8 +1366,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) RdbStorageConn
 }
 
 // SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) StorageSubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) StorageSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1362,8 +1376,8 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) StorageSubscri
 }
 
 // Zonal Configuration
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) ZonalConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+func (o RedisCommonPropertiesRedisConfigurationResponsePtrOutput) ZonalConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -1789,6 +1803,67 @@ func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
 // User assigned identity properties
 type UserAssignedIdentityResponse struct {
 	// The client ID of the assigned identity.
@@ -1856,8 +1931,8 @@ func init() {
 	pulumi.RegisterOutputType(RedisAccessKeysResponseOutput{})
 	pulumi.RegisterOutputType(RedisCommonPropertiesRedisConfigurationOutput{})
 	pulumi.RegisterOutputType(RedisCommonPropertiesRedisConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(RedisCommonPropertiesResponseRedisConfigurationOutput{})
-	pulumi.RegisterOutputType(RedisCommonPropertiesResponseRedisConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(RedisCommonPropertiesRedisConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(RedisCommonPropertiesRedisConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(RedisInstanceDetailsResponseOutput{})
 	pulumi.RegisterOutputType(RedisInstanceDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(RedisLinkedServerResponseOutput{})
@@ -1868,6 +1943,7 @@ func init() {
 	pulumi.RegisterOutputType(ScheduleEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

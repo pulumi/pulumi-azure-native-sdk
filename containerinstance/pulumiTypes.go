@@ -13,6 +13,590 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// The API entity reference.
+type ApiEntityReference struct {
+	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	Id *string `pulumi:"id"`
+}
+
+// ApiEntityReferenceInput is an input type that accepts ApiEntityReferenceArgs and ApiEntityReferenceOutput values.
+// You can construct a concrete instance of `ApiEntityReferenceInput` via:
+//
+//	ApiEntityReferenceArgs{...}
+type ApiEntityReferenceInput interface {
+	pulumi.Input
+
+	ToApiEntityReferenceOutput() ApiEntityReferenceOutput
+	ToApiEntityReferenceOutputWithContext(context.Context) ApiEntityReferenceOutput
+}
+
+// The API entity reference.
+type ApiEntityReferenceArgs struct {
+	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (ApiEntityReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiEntityReference)(nil)).Elem()
+}
+
+func (i ApiEntityReferenceArgs) ToApiEntityReferenceOutput() ApiEntityReferenceOutput {
+	return i.ToApiEntityReferenceOutputWithContext(context.Background())
+}
+
+func (i ApiEntityReferenceArgs) ToApiEntityReferenceOutputWithContext(ctx context.Context) ApiEntityReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferenceOutput)
+}
+
+func (i ApiEntityReferenceArgs) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
+	return i.ToApiEntityReferencePtrOutputWithContext(context.Background())
+}
+
+func (i ApiEntityReferenceArgs) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferenceOutput).ToApiEntityReferencePtrOutputWithContext(ctx)
+}
+
+// ApiEntityReferencePtrInput is an input type that accepts ApiEntityReferenceArgs, ApiEntityReferencePtr and ApiEntityReferencePtrOutput values.
+// You can construct a concrete instance of `ApiEntityReferencePtrInput` via:
+//
+//	        ApiEntityReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiEntityReferencePtrInput interface {
+	pulumi.Input
+
+	ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput
+	ToApiEntityReferencePtrOutputWithContext(context.Context) ApiEntityReferencePtrOutput
+}
+
+type apiEntityReferencePtrType ApiEntityReferenceArgs
+
+func ApiEntityReferencePtr(v *ApiEntityReferenceArgs) ApiEntityReferencePtrInput {
+	return (*apiEntityReferencePtrType)(v)
+}
+
+func (*apiEntityReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiEntityReference)(nil)).Elem()
+}
+
+func (i *apiEntityReferencePtrType) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
+	return i.ToApiEntityReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *apiEntityReferencePtrType) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferencePtrOutput)
+}
+
+// The API entity reference.
+type ApiEntityReferenceOutput struct{ *pulumi.OutputState }
+
+func (ApiEntityReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiEntityReference)(nil)).Elem()
+}
+
+func (o ApiEntityReferenceOutput) ToApiEntityReferenceOutput() ApiEntityReferenceOutput {
+	return o
+}
+
+func (o ApiEntityReferenceOutput) ToApiEntityReferenceOutputWithContext(ctx context.Context) ApiEntityReferenceOutput {
+	return o
+}
+
+func (o ApiEntityReferenceOutput) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
+	return o.ToApiEntityReferencePtrOutputWithContext(context.Background())
+}
+
+func (o ApiEntityReferenceOutput) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiEntityReference) *ApiEntityReference {
+		return &v
+	}).(ApiEntityReferencePtrOutput)
+}
+
+// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferenceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiEntityReference) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type ApiEntityReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiEntityReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiEntityReference)(nil)).Elem()
+}
+
+func (o ApiEntityReferencePtrOutput) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
+	return o
+}
+
+func (o ApiEntityReferencePtrOutput) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
+	return o
+}
+
+func (o ApiEntityReferencePtrOutput) Elem() ApiEntityReferenceOutput {
+	return o.ApplyT(func(v *ApiEntityReference) ApiEntityReference {
+		if v != nil {
+			return *v
+		}
+		var ret ApiEntityReference
+		return ret
+	}).(ApiEntityReferenceOutput)
+}
+
+// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferencePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiEntityReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The API entity reference.
+type ApiEntityReferenceResponse struct {
+	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	Id *string `pulumi:"id"`
+}
+
+// The API entity reference.
+type ApiEntityReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiEntityReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiEntityReferenceResponse)(nil)).Elem()
+}
+
+func (o ApiEntityReferenceResponseOutput) ToApiEntityReferenceResponseOutput() ApiEntityReferenceResponseOutput {
+	return o
+}
+
+func (o ApiEntityReferenceResponseOutput) ToApiEntityReferenceResponseOutputWithContext(ctx context.Context) ApiEntityReferenceResponseOutput {
+	return o
+}
+
+// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferenceResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiEntityReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type ApiEntityReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiEntityReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiEntityReferenceResponse)(nil)).Elem()
+}
+
+func (o ApiEntityReferenceResponsePtrOutput) ToApiEntityReferenceResponsePtrOutput() ApiEntityReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ApiEntityReferenceResponsePtrOutput) ToApiEntityReferenceResponsePtrOutputWithContext(ctx context.Context) ApiEntityReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ApiEntityReferenceResponsePtrOutput) Elem() ApiEntityReferenceResponseOutput {
+	return o.ApplyT(func(v *ApiEntityReferenceResponse) ApiEntityReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApiEntityReferenceResponse
+		return ret
+	}).(ApiEntityReferenceResponseOutput)
+}
+
+// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiEntityReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Application Gateway the CG profile will use to interact with CGs in a backend pool
+type ApplicationGateway struct {
+	// List of Application Gateway Backend Address Pools.
+	BackendAddressPools []ApplicationGatewayBackendAddressPool `pulumi:"backendAddressPools"`
+	// The Application Gateway ARM resource Id.
+	Resource *string `pulumi:"resource"`
+}
+
+// ApplicationGatewayInput is an input type that accepts ApplicationGatewayArgs and ApplicationGatewayOutput values.
+// You can construct a concrete instance of `ApplicationGatewayInput` via:
+//
+//	ApplicationGatewayArgs{...}
+type ApplicationGatewayInput interface {
+	pulumi.Input
+
+	ToApplicationGatewayOutput() ApplicationGatewayOutput
+	ToApplicationGatewayOutputWithContext(context.Context) ApplicationGatewayOutput
+}
+
+// Application Gateway the CG profile will use to interact with CGs in a backend pool
+type ApplicationGatewayArgs struct {
+	// List of Application Gateway Backend Address Pools.
+	BackendAddressPools ApplicationGatewayBackendAddressPoolArrayInput `pulumi:"backendAddressPools"`
+	// The Application Gateway ARM resource Id.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+}
+
+func (ApplicationGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationGateway)(nil)).Elem()
+}
+
+func (i ApplicationGatewayArgs) ToApplicationGatewayOutput() ApplicationGatewayOutput {
+	return i.ToApplicationGatewayOutputWithContext(context.Background())
+}
+
+func (i ApplicationGatewayArgs) ToApplicationGatewayOutputWithContext(ctx context.Context) ApplicationGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayOutput)
+}
+
+func (i ApplicationGatewayArgs) ToApplicationGatewayPtrOutput() ApplicationGatewayPtrOutput {
+	return i.ToApplicationGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationGatewayArgs) ToApplicationGatewayPtrOutputWithContext(ctx context.Context) ApplicationGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayOutput).ToApplicationGatewayPtrOutputWithContext(ctx)
+}
+
+// ApplicationGatewayPtrInput is an input type that accepts ApplicationGatewayArgs, ApplicationGatewayPtr and ApplicationGatewayPtrOutput values.
+// You can construct a concrete instance of `ApplicationGatewayPtrInput` via:
+//
+//	        ApplicationGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationGatewayPtrInput interface {
+	pulumi.Input
+
+	ToApplicationGatewayPtrOutput() ApplicationGatewayPtrOutput
+	ToApplicationGatewayPtrOutputWithContext(context.Context) ApplicationGatewayPtrOutput
+}
+
+type applicationGatewayPtrType ApplicationGatewayArgs
+
+func ApplicationGatewayPtr(v *ApplicationGatewayArgs) ApplicationGatewayPtrInput {
+	return (*applicationGatewayPtrType)(v)
+}
+
+func (*applicationGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationGateway)(nil)).Elem()
+}
+
+func (i *applicationGatewayPtrType) ToApplicationGatewayPtrOutput() ApplicationGatewayPtrOutput {
+	return i.ToApplicationGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationGatewayPtrType) ToApplicationGatewayPtrOutputWithContext(ctx context.Context) ApplicationGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayPtrOutput)
+}
+
+// Application Gateway the CG profile will use to interact with CGs in a backend pool
+type ApplicationGatewayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationGateway)(nil)).Elem()
+}
+
+func (o ApplicationGatewayOutput) ToApplicationGatewayOutput() ApplicationGatewayOutput {
+	return o
+}
+
+func (o ApplicationGatewayOutput) ToApplicationGatewayOutputWithContext(ctx context.Context) ApplicationGatewayOutput {
+	return o
+}
+
+func (o ApplicationGatewayOutput) ToApplicationGatewayPtrOutput() ApplicationGatewayPtrOutput {
+	return o.ToApplicationGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationGatewayOutput) ToApplicationGatewayPtrOutputWithContext(ctx context.Context) ApplicationGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationGateway) *ApplicationGateway {
+		return &v
+	}).(ApplicationGatewayPtrOutput)
+}
+
+// List of Application Gateway Backend Address Pools.
+func (o ApplicationGatewayOutput) BackendAddressPools() ApplicationGatewayBackendAddressPoolArrayOutput {
+	return o.ApplyT(func(v ApplicationGateway) []ApplicationGatewayBackendAddressPool { return v.BackendAddressPools }).(ApplicationGatewayBackendAddressPoolArrayOutput)
+}
+
+// The Application Gateway ARM resource Id.
+func (o ApplicationGatewayOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationGateway) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationGatewayPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationGateway)(nil)).Elem()
+}
+
+func (o ApplicationGatewayPtrOutput) ToApplicationGatewayPtrOutput() ApplicationGatewayPtrOutput {
+	return o
+}
+
+func (o ApplicationGatewayPtrOutput) ToApplicationGatewayPtrOutputWithContext(ctx context.Context) ApplicationGatewayPtrOutput {
+	return o
+}
+
+func (o ApplicationGatewayPtrOutput) Elem() ApplicationGatewayOutput {
+	return o.ApplyT(func(v *ApplicationGateway) ApplicationGateway {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationGateway
+		return ret
+	}).(ApplicationGatewayOutput)
+}
+
+// List of Application Gateway Backend Address Pools.
+func (o ApplicationGatewayPtrOutput) BackendAddressPools() ApplicationGatewayBackendAddressPoolArrayOutput {
+	return o.ApplyT(func(v *ApplicationGateway) []ApplicationGatewayBackendAddressPool {
+		if v == nil {
+			return nil
+		}
+		return v.BackendAddressPools
+	}).(ApplicationGatewayBackendAddressPoolArrayOutput)
+}
+
+// The Application Gateway ARM resource Id.
+func (o ApplicationGatewayPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// NGroups application gateway backend address pool
+type ApplicationGatewayBackendAddressPool struct {
+	// The application gateway backend address pool ARM resource Id.
+	Resource *string `pulumi:"resource"`
+}
+
+// ApplicationGatewayBackendAddressPoolInput is an input type that accepts ApplicationGatewayBackendAddressPoolArgs and ApplicationGatewayBackendAddressPoolOutput values.
+// You can construct a concrete instance of `ApplicationGatewayBackendAddressPoolInput` via:
+//
+//	ApplicationGatewayBackendAddressPoolArgs{...}
+type ApplicationGatewayBackendAddressPoolInput interface {
+	pulumi.Input
+
+	ToApplicationGatewayBackendAddressPoolOutput() ApplicationGatewayBackendAddressPoolOutput
+	ToApplicationGatewayBackendAddressPoolOutputWithContext(context.Context) ApplicationGatewayBackendAddressPoolOutput
+}
+
+// NGroups application gateway backend address pool
+type ApplicationGatewayBackendAddressPoolArgs struct {
+	// The application gateway backend address pool ARM resource Id.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+}
+
+func (ApplicationGatewayBackendAddressPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationGatewayBackendAddressPool)(nil)).Elem()
+}
+
+func (i ApplicationGatewayBackendAddressPoolArgs) ToApplicationGatewayBackendAddressPoolOutput() ApplicationGatewayBackendAddressPoolOutput {
+	return i.ToApplicationGatewayBackendAddressPoolOutputWithContext(context.Background())
+}
+
+func (i ApplicationGatewayBackendAddressPoolArgs) ToApplicationGatewayBackendAddressPoolOutputWithContext(ctx context.Context) ApplicationGatewayBackendAddressPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayBackendAddressPoolOutput)
+}
+
+// ApplicationGatewayBackendAddressPoolArrayInput is an input type that accepts ApplicationGatewayBackendAddressPoolArray and ApplicationGatewayBackendAddressPoolArrayOutput values.
+// You can construct a concrete instance of `ApplicationGatewayBackendAddressPoolArrayInput` via:
+//
+//	ApplicationGatewayBackendAddressPoolArray{ ApplicationGatewayBackendAddressPoolArgs{...} }
+type ApplicationGatewayBackendAddressPoolArrayInput interface {
+	pulumi.Input
+
+	ToApplicationGatewayBackendAddressPoolArrayOutput() ApplicationGatewayBackendAddressPoolArrayOutput
+	ToApplicationGatewayBackendAddressPoolArrayOutputWithContext(context.Context) ApplicationGatewayBackendAddressPoolArrayOutput
+}
+
+type ApplicationGatewayBackendAddressPoolArray []ApplicationGatewayBackendAddressPoolInput
+
+func (ApplicationGatewayBackendAddressPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationGatewayBackendAddressPool)(nil)).Elem()
+}
+
+func (i ApplicationGatewayBackendAddressPoolArray) ToApplicationGatewayBackendAddressPoolArrayOutput() ApplicationGatewayBackendAddressPoolArrayOutput {
+	return i.ToApplicationGatewayBackendAddressPoolArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationGatewayBackendAddressPoolArray) ToApplicationGatewayBackendAddressPoolArrayOutputWithContext(ctx context.Context) ApplicationGatewayBackendAddressPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayBackendAddressPoolArrayOutput)
+}
+
+// NGroups application gateway backend address pool
+type ApplicationGatewayBackendAddressPoolOutput struct{ *pulumi.OutputState }
+
+func (ApplicationGatewayBackendAddressPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationGatewayBackendAddressPool)(nil)).Elem()
+}
+
+func (o ApplicationGatewayBackendAddressPoolOutput) ToApplicationGatewayBackendAddressPoolOutput() ApplicationGatewayBackendAddressPoolOutput {
+	return o
+}
+
+func (o ApplicationGatewayBackendAddressPoolOutput) ToApplicationGatewayBackendAddressPoolOutputWithContext(ctx context.Context) ApplicationGatewayBackendAddressPoolOutput {
+	return o
+}
+
+// The application gateway backend address pool ARM resource Id.
+func (o ApplicationGatewayBackendAddressPoolOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationGatewayBackendAddressPool) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationGatewayBackendAddressPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationGatewayBackendAddressPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationGatewayBackendAddressPool)(nil)).Elem()
+}
+
+func (o ApplicationGatewayBackendAddressPoolArrayOutput) ToApplicationGatewayBackendAddressPoolArrayOutput() ApplicationGatewayBackendAddressPoolArrayOutput {
+	return o
+}
+
+func (o ApplicationGatewayBackendAddressPoolArrayOutput) ToApplicationGatewayBackendAddressPoolArrayOutputWithContext(ctx context.Context) ApplicationGatewayBackendAddressPoolArrayOutput {
+	return o
+}
+
+func (o ApplicationGatewayBackendAddressPoolArrayOutput) Index(i pulumi.IntInput) ApplicationGatewayBackendAddressPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationGatewayBackendAddressPool {
+		return vs[0].([]ApplicationGatewayBackendAddressPool)[vs[1].(int)]
+	}).(ApplicationGatewayBackendAddressPoolOutput)
+}
+
+// NGroups application gateway backend address pool
+type ApplicationGatewayBackendAddressPoolResponse struct {
+	// The application gateway backend address pool ARM resource Id.
+	Resource *string `pulumi:"resource"`
+}
+
+// NGroups application gateway backend address pool
+type ApplicationGatewayBackendAddressPoolResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplicationGatewayBackendAddressPoolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationGatewayBackendAddressPoolResponse)(nil)).Elem()
+}
+
+func (o ApplicationGatewayBackendAddressPoolResponseOutput) ToApplicationGatewayBackendAddressPoolResponseOutput() ApplicationGatewayBackendAddressPoolResponseOutput {
+	return o
+}
+
+func (o ApplicationGatewayBackendAddressPoolResponseOutput) ToApplicationGatewayBackendAddressPoolResponseOutputWithContext(ctx context.Context) ApplicationGatewayBackendAddressPoolResponseOutput {
+	return o
+}
+
+// The application gateway backend address pool ARM resource Id.
+func (o ApplicationGatewayBackendAddressPoolResponseOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationGatewayBackendAddressPoolResponse) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationGatewayBackendAddressPoolResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationGatewayBackendAddressPoolResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationGatewayBackendAddressPoolResponse)(nil)).Elem()
+}
+
+func (o ApplicationGatewayBackendAddressPoolResponseArrayOutput) ToApplicationGatewayBackendAddressPoolResponseArrayOutput() ApplicationGatewayBackendAddressPoolResponseArrayOutput {
+	return o
+}
+
+func (o ApplicationGatewayBackendAddressPoolResponseArrayOutput) ToApplicationGatewayBackendAddressPoolResponseArrayOutputWithContext(ctx context.Context) ApplicationGatewayBackendAddressPoolResponseArrayOutput {
+	return o
+}
+
+func (o ApplicationGatewayBackendAddressPoolResponseArrayOutput) Index(i pulumi.IntInput) ApplicationGatewayBackendAddressPoolResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationGatewayBackendAddressPoolResponse {
+		return vs[0].([]ApplicationGatewayBackendAddressPoolResponse)[vs[1].(int)]
+	}).(ApplicationGatewayBackendAddressPoolResponseOutput)
+}
+
+// Application Gateway the CG profile will use to interact with CGs in a backend pool
+type ApplicationGatewayResponse struct {
+	// List of Application Gateway Backend Address Pools.
+	BackendAddressPools []ApplicationGatewayBackendAddressPoolResponse `pulumi:"backendAddressPools"`
+	// The Application Gateway ARM resource Id.
+	Resource *string `pulumi:"resource"`
+}
+
+// Application Gateway the CG profile will use to interact with CGs in a backend pool
+type ApplicationGatewayResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplicationGatewayResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationGatewayResponse)(nil)).Elem()
+}
+
+func (o ApplicationGatewayResponseOutput) ToApplicationGatewayResponseOutput() ApplicationGatewayResponseOutput {
+	return o
+}
+
+func (o ApplicationGatewayResponseOutput) ToApplicationGatewayResponseOutputWithContext(ctx context.Context) ApplicationGatewayResponseOutput {
+	return o
+}
+
+// List of Application Gateway Backend Address Pools.
+func (o ApplicationGatewayResponseOutput) BackendAddressPools() ApplicationGatewayBackendAddressPoolResponseArrayOutput {
+	return o.ApplyT(func(v ApplicationGatewayResponse) []ApplicationGatewayBackendAddressPoolResponse {
+		return v.BackendAddressPools
+	}).(ApplicationGatewayBackendAddressPoolResponseArrayOutput)
+}
+
+// The Application Gateway ARM resource Id.
+func (o ApplicationGatewayResponseOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationGatewayResponse) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationGatewayResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationGatewayResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationGatewayResponse)(nil)).Elem()
+}
+
+func (o ApplicationGatewayResponsePtrOutput) ToApplicationGatewayResponsePtrOutput() ApplicationGatewayResponsePtrOutput {
+	return o
+}
+
+func (o ApplicationGatewayResponsePtrOutput) ToApplicationGatewayResponsePtrOutputWithContext(ctx context.Context) ApplicationGatewayResponsePtrOutput {
+	return o
+}
+
+func (o ApplicationGatewayResponsePtrOutput) Elem() ApplicationGatewayResponseOutput {
+	return o.ApplyT(func(v *ApplicationGatewayResponse) ApplicationGatewayResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationGatewayResponse
+		return ret
+	}).(ApplicationGatewayResponseOutput)
+}
+
+// List of Application Gateway Backend Address Pools.
+func (o ApplicationGatewayResponsePtrOutput) BackendAddressPools() ApplicationGatewayBackendAddressPoolResponseArrayOutput {
+	return o.ApplyT(func(v *ApplicationGatewayResponse) []ApplicationGatewayBackendAddressPoolResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BackendAddressPools
+	}).(ApplicationGatewayBackendAddressPoolResponseArrayOutput)
+}
+
+// The Application Gateway ARM resource Id.
+func (o ApplicationGatewayResponsePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationGatewayResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
 // The properties of the Azure File volume. Azure File shares are mounted as volumes.
 type AzureFileVolume struct {
 	// The flag indicating whether the Azure File shared mounted as a volume is read-only.
@@ -1855,6 +2439,218 @@ func (o ContainerGroupProfileReferenceDefinitionResponsePtrOutput) Revision() pu
 	}).(pulumi.IntPtrOutput)
 }
 
+// The object that contains a reference to a Container Group Profile and it's other related properties.
+type ContainerGroupProfileStub struct {
+	//  Container Group properties which can be set while creating or updating the NGroups.
+	ContainerGroupProperties *NGroupContainerGroupProperties `pulumi:"containerGroupProperties"`
+	// A network profile for network settings of a ContainerGroupProfile.
+	NetworkProfile *NetworkProfile `pulumi:"networkProfile"`
+	// A reference to the container group profile ARM resource hosted in ACI RP.
+	Resource *ApiEntityReference `pulumi:"resource"`
+	// The revision of the CG profile is an optional property. If customer does not to provide a revision then NGroups will pickup the latest revision of CGProfile.
+	Revision *int `pulumi:"revision"`
+	// Storage profile for storage related settings of a container group profile.
+	StorageProfile *StorageProfile `pulumi:"storageProfile"`
+}
+
+// ContainerGroupProfileStubInput is an input type that accepts ContainerGroupProfileStubArgs and ContainerGroupProfileStubOutput values.
+// You can construct a concrete instance of `ContainerGroupProfileStubInput` via:
+//
+//	ContainerGroupProfileStubArgs{...}
+type ContainerGroupProfileStubInput interface {
+	pulumi.Input
+
+	ToContainerGroupProfileStubOutput() ContainerGroupProfileStubOutput
+	ToContainerGroupProfileStubOutputWithContext(context.Context) ContainerGroupProfileStubOutput
+}
+
+// The object that contains a reference to a Container Group Profile and it's other related properties.
+type ContainerGroupProfileStubArgs struct {
+	//  Container Group properties which can be set while creating or updating the NGroups.
+	ContainerGroupProperties NGroupContainerGroupPropertiesPtrInput `pulumi:"containerGroupProperties"`
+	// A network profile for network settings of a ContainerGroupProfile.
+	NetworkProfile NetworkProfilePtrInput `pulumi:"networkProfile"`
+	// A reference to the container group profile ARM resource hosted in ACI RP.
+	Resource ApiEntityReferencePtrInput `pulumi:"resource"`
+	// The revision of the CG profile is an optional property. If customer does not to provide a revision then NGroups will pickup the latest revision of CGProfile.
+	Revision pulumi.IntPtrInput `pulumi:"revision"`
+	// Storage profile for storage related settings of a container group profile.
+	StorageProfile StorageProfilePtrInput `pulumi:"storageProfile"`
+}
+
+func (ContainerGroupProfileStubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupProfileStub)(nil)).Elem()
+}
+
+func (i ContainerGroupProfileStubArgs) ToContainerGroupProfileStubOutput() ContainerGroupProfileStubOutput {
+	return i.ToContainerGroupProfileStubOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupProfileStubArgs) ToContainerGroupProfileStubOutputWithContext(ctx context.Context) ContainerGroupProfileStubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupProfileStubOutput)
+}
+
+// ContainerGroupProfileStubArrayInput is an input type that accepts ContainerGroupProfileStubArray and ContainerGroupProfileStubArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupProfileStubArrayInput` via:
+//
+//	ContainerGroupProfileStubArray{ ContainerGroupProfileStubArgs{...} }
+type ContainerGroupProfileStubArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupProfileStubArrayOutput() ContainerGroupProfileStubArrayOutput
+	ToContainerGroupProfileStubArrayOutputWithContext(context.Context) ContainerGroupProfileStubArrayOutput
+}
+
+type ContainerGroupProfileStubArray []ContainerGroupProfileStubInput
+
+func (ContainerGroupProfileStubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupProfileStub)(nil)).Elem()
+}
+
+func (i ContainerGroupProfileStubArray) ToContainerGroupProfileStubArrayOutput() ContainerGroupProfileStubArrayOutput {
+	return i.ToContainerGroupProfileStubArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupProfileStubArray) ToContainerGroupProfileStubArrayOutputWithContext(ctx context.Context) ContainerGroupProfileStubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupProfileStubArrayOutput)
+}
+
+// The object that contains a reference to a Container Group Profile and it's other related properties.
+type ContainerGroupProfileStubOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileStubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupProfileStub)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileStubOutput) ToContainerGroupProfileStubOutput() ContainerGroupProfileStubOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubOutput) ToContainerGroupProfileStubOutputWithContext(ctx context.Context) ContainerGroupProfileStubOutput {
+	return o
+}
+
+// Container Group properties which can be set while creating or updating the NGroups.
+func (o ContainerGroupProfileStubOutput) ContainerGroupProperties() NGroupContainerGroupPropertiesPtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStub) *NGroupContainerGroupProperties { return v.ContainerGroupProperties }).(NGroupContainerGroupPropertiesPtrOutput)
+}
+
+// A network profile for network settings of a ContainerGroupProfile.
+func (o ContainerGroupProfileStubOutput) NetworkProfile() NetworkProfilePtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStub) *NetworkProfile { return v.NetworkProfile }).(NetworkProfilePtrOutput)
+}
+
+// A reference to the container group profile ARM resource hosted in ACI RP.
+func (o ContainerGroupProfileStubOutput) Resource() ApiEntityReferencePtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStub) *ApiEntityReference { return v.Resource }).(ApiEntityReferencePtrOutput)
+}
+
+// The revision of the CG profile is an optional property. If customer does not to provide a revision then NGroups will pickup the latest revision of CGProfile.
+func (o ContainerGroupProfileStubOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStub) *int { return v.Revision }).(pulumi.IntPtrOutput)
+}
+
+// Storage profile for storage related settings of a container group profile.
+func (o ContainerGroupProfileStubOutput) StorageProfile() StorageProfilePtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStub) *StorageProfile { return v.StorageProfile }).(StorageProfilePtrOutput)
+}
+
+type ContainerGroupProfileStubArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileStubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupProfileStub)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileStubArrayOutput) ToContainerGroupProfileStubArrayOutput() ContainerGroupProfileStubArrayOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubArrayOutput) ToContainerGroupProfileStubArrayOutputWithContext(ctx context.Context) ContainerGroupProfileStubArrayOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubArrayOutput) Index(i pulumi.IntInput) ContainerGroupProfileStubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupProfileStub {
+		return vs[0].([]ContainerGroupProfileStub)[vs[1].(int)]
+	}).(ContainerGroupProfileStubOutput)
+}
+
+// The object that contains a reference to a Container Group Profile and it's other related properties.
+type ContainerGroupProfileStubResponse struct {
+	//  Container Group properties which can be set while creating or updating the NGroups.
+	ContainerGroupProperties *NGroupContainerGroupPropertiesResponse `pulumi:"containerGroupProperties"`
+	// A network profile for network settings of a ContainerGroupProfile.
+	NetworkProfile *NetworkProfileResponse `pulumi:"networkProfile"`
+	// A reference to the container group profile ARM resource hosted in ACI RP.
+	Resource *ApiEntityReferenceResponse `pulumi:"resource"`
+	// The revision of the CG profile is an optional property. If customer does not to provide a revision then NGroups will pickup the latest revision of CGProfile.
+	Revision *int `pulumi:"revision"`
+	// Storage profile for storage related settings of a container group profile.
+	StorageProfile *StorageProfileResponse `pulumi:"storageProfile"`
+}
+
+// The object that contains a reference to a Container Group Profile and it's other related properties.
+type ContainerGroupProfileStubResponseOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileStubResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupProfileStubResponse)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileStubResponseOutput) ToContainerGroupProfileStubResponseOutput() ContainerGroupProfileStubResponseOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubResponseOutput) ToContainerGroupProfileStubResponseOutputWithContext(ctx context.Context) ContainerGroupProfileStubResponseOutput {
+	return o
+}
+
+// Container Group properties which can be set while creating or updating the NGroups.
+func (o ContainerGroupProfileStubResponseOutput) ContainerGroupProperties() NGroupContainerGroupPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStubResponse) *NGroupContainerGroupPropertiesResponse {
+		return v.ContainerGroupProperties
+	}).(NGroupContainerGroupPropertiesResponsePtrOutput)
+}
+
+// A network profile for network settings of a ContainerGroupProfile.
+func (o ContainerGroupProfileStubResponseOutput) NetworkProfile() NetworkProfileResponsePtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStubResponse) *NetworkProfileResponse { return v.NetworkProfile }).(NetworkProfileResponsePtrOutput)
+}
+
+// A reference to the container group profile ARM resource hosted in ACI RP.
+func (o ContainerGroupProfileStubResponseOutput) Resource() ApiEntityReferenceResponsePtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStubResponse) *ApiEntityReferenceResponse { return v.Resource }).(ApiEntityReferenceResponsePtrOutput)
+}
+
+// The revision of the CG profile is an optional property. If customer does not to provide a revision then NGroups will pickup the latest revision of CGProfile.
+func (o ContainerGroupProfileStubResponseOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStubResponse) *int { return v.Revision }).(pulumi.IntPtrOutput)
+}
+
+// Storage profile for storage related settings of a container group profile.
+func (o ContainerGroupProfileStubResponseOutput) StorageProfile() StorageProfileResponsePtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStubResponse) *StorageProfileResponse { return v.StorageProfile }).(StorageProfileResponsePtrOutput)
+}
+
+type ContainerGroupProfileStubResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileStubResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupProfileStubResponse)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileStubResponseArrayOutput) ToContainerGroupProfileStubResponseArrayOutput() ContainerGroupProfileStubResponseArrayOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubResponseArrayOutput) ToContainerGroupProfileStubResponseArrayOutputWithContext(ctx context.Context) ContainerGroupProfileStubResponseArrayOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubResponseArrayOutput) Index(i pulumi.IntInput) ContainerGroupProfileStubResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupProfileStubResponse {
+		return vs[0].([]ContainerGroupProfileStubResponse)[vs[1].(int)]
+	}).(ContainerGroupProfileStubResponseOutput)
+}
+
 // The instance view of the container group. Only valid in response.
 type ContainerGroupPropertiesResponseInstanceView struct {
 	// The events of this container group.
@@ -3642,6 +4438,665 @@ func (o DnsConfigurationResponsePtrOutput) SearchDomains() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Describes the elastic profile of the NGroup
+type ElasticProfile struct {
+	// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+	ContainerGroupNamingPolicy *ElasticProfileContainerGroupNamingPolicy `pulumi:"containerGroupNamingPolicy"`
+	DesiredCount               *int                                      `pulumi:"desiredCount"`
+	// Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
+	MaintainDesiredCount *bool `pulumi:"maintainDesiredCount"`
+}
+
+// ElasticProfileInput is an input type that accepts ElasticProfileArgs and ElasticProfileOutput values.
+// You can construct a concrete instance of `ElasticProfileInput` via:
+//
+//	ElasticProfileArgs{...}
+type ElasticProfileInput interface {
+	pulumi.Input
+
+	ToElasticProfileOutput() ElasticProfileOutput
+	ToElasticProfileOutputWithContext(context.Context) ElasticProfileOutput
+}
+
+// Describes the elastic profile of the NGroup
+type ElasticProfileArgs struct {
+	// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+	ContainerGroupNamingPolicy ElasticProfileContainerGroupNamingPolicyPtrInput `pulumi:"containerGroupNamingPolicy"`
+	DesiredCount               pulumi.IntPtrInput                               `pulumi:"desiredCount"`
+	// Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
+	MaintainDesiredCount pulumi.BoolPtrInput `pulumi:"maintainDesiredCount"`
+}
+
+func (ElasticProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfile)(nil)).Elem()
+}
+
+func (i ElasticProfileArgs) ToElasticProfileOutput() ElasticProfileOutput {
+	return i.ToElasticProfileOutputWithContext(context.Background())
+}
+
+func (i ElasticProfileArgs) ToElasticProfileOutputWithContext(ctx context.Context) ElasticProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileOutput)
+}
+
+func (i ElasticProfileArgs) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
+	return i.ToElasticProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ElasticProfileArgs) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileOutput).ToElasticProfilePtrOutputWithContext(ctx)
+}
+
+// ElasticProfilePtrInput is an input type that accepts ElasticProfileArgs, ElasticProfilePtr and ElasticProfilePtrOutput values.
+// You can construct a concrete instance of `ElasticProfilePtrInput` via:
+//
+//	        ElasticProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticProfilePtrInput interface {
+	pulumi.Input
+
+	ToElasticProfilePtrOutput() ElasticProfilePtrOutput
+	ToElasticProfilePtrOutputWithContext(context.Context) ElasticProfilePtrOutput
+}
+
+type elasticProfilePtrType ElasticProfileArgs
+
+func ElasticProfilePtr(v *ElasticProfileArgs) ElasticProfilePtrInput {
+	return (*elasticProfilePtrType)(v)
+}
+
+func (*elasticProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfile)(nil)).Elem()
+}
+
+func (i *elasticProfilePtrType) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
+	return i.ToElasticProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *elasticProfilePtrType) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfilePtrOutput)
+}
+
+// Describes the elastic profile of the NGroup
+type ElasticProfileOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfile)(nil)).Elem()
+}
+
+func (o ElasticProfileOutput) ToElasticProfileOutput() ElasticProfileOutput {
+	return o
+}
+
+func (o ElasticProfileOutput) ToElasticProfileOutputWithContext(ctx context.Context) ElasticProfileOutput {
+	return o
+}
+
+func (o ElasticProfileOutput) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
+	return o.ToElasticProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ElasticProfileOutput) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticProfile) *ElasticProfile {
+		return &v
+	}).(ElasticProfilePtrOutput)
+}
+
+// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+func (o ElasticProfileOutput) ContainerGroupNamingPolicy() ElasticProfileContainerGroupNamingPolicyPtrOutput {
+	return o.ApplyT(func(v ElasticProfile) *ElasticProfileContainerGroupNamingPolicy { return v.ContainerGroupNamingPolicy }).(ElasticProfileContainerGroupNamingPolicyPtrOutput)
+}
+
+func (o ElasticProfileOutput) DesiredCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticProfile) *int { return v.DesiredCount }).(pulumi.IntPtrOutput)
+}
+
+// Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
+func (o ElasticProfileOutput) MaintainDesiredCount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElasticProfile) *bool { return v.MaintainDesiredCount }).(pulumi.BoolPtrOutput)
+}
+
+type ElasticProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfile)(nil)).Elem()
+}
+
+func (o ElasticProfilePtrOutput) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
+	return o
+}
+
+func (o ElasticProfilePtrOutput) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
+	return o
+}
+
+func (o ElasticProfilePtrOutput) Elem() ElasticProfileOutput {
+	return o.ApplyT(func(v *ElasticProfile) ElasticProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticProfile
+		return ret
+	}).(ElasticProfileOutput)
+}
+
+// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+func (o ElasticProfilePtrOutput) ContainerGroupNamingPolicy() ElasticProfileContainerGroupNamingPolicyPtrOutput {
+	return o.ApplyT(func(v *ElasticProfile) *ElasticProfileContainerGroupNamingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerGroupNamingPolicy
+	}).(ElasticProfileContainerGroupNamingPolicyPtrOutput)
+}
+
+func (o ElasticProfilePtrOutput) DesiredCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DesiredCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
+func (o ElasticProfilePtrOutput) MaintainDesiredCount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElasticProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MaintainDesiredCount
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+type ElasticProfileContainerGroupNamingPolicy struct {
+	GuidNamingPolicy *ElasticProfileGuidNamingPolicy `pulumi:"guidNamingPolicy"`
+}
+
+// ElasticProfileContainerGroupNamingPolicyInput is an input type that accepts ElasticProfileContainerGroupNamingPolicyArgs and ElasticProfileContainerGroupNamingPolicyOutput values.
+// You can construct a concrete instance of `ElasticProfileContainerGroupNamingPolicyInput` via:
+//
+//	ElasticProfileContainerGroupNamingPolicyArgs{...}
+type ElasticProfileContainerGroupNamingPolicyInput interface {
+	pulumi.Input
+
+	ToElasticProfileContainerGroupNamingPolicyOutput() ElasticProfileContainerGroupNamingPolicyOutput
+	ToElasticProfileContainerGroupNamingPolicyOutputWithContext(context.Context) ElasticProfileContainerGroupNamingPolicyOutput
+}
+
+// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+type ElasticProfileContainerGroupNamingPolicyArgs struct {
+	GuidNamingPolicy ElasticProfileGuidNamingPolicyPtrInput `pulumi:"guidNamingPolicy"`
+}
+
+func (ElasticProfileContainerGroupNamingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfileContainerGroupNamingPolicy)(nil)).Elem()
+}
+
+func (i ElasticProfileContainerGroupNamingPolicyArgs) ToElasticProfileContainerGroupNamingPolicyOutput() ElasticProfileContainerGroupNamingPolicyOutput {
+	return i.ToElasticProfileContainerGroupNamingPolicyOutputWithContext(context.Background())
+}
+
+func (i ElasticProfileContainerGroupNamingPolicyArgs) ToElasticProfileContainerGroupNamingPolicyOutputWithContext(ctx context.Context) ElasticProfileContainerGroupNamingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileContainerGroupNamingPolicyOutput)
+}
+
+func (i ElasticProfileContainerGroupNamingPolicyArgs) ToElasticProfileContainerGroupNamingPolicyPtrOutput() ElasticProfileContainerGroupNamingPolicyPtrOutput {
+	return i.ToElasticProfileContainerGroupNamingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticProfileContainerGroupNamingPolicyArgs) ToElasticProfileContainerGroupNamingPolicyPtrOutputWithContext(ctx context.Context) ElasticProfileContainerGroupNamingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileContainerGroupNamingPolicyOutput).ToElasticProfileContainerGroupNamingPolicyPtrOutputWithContext(ctx)
+}
+
+// ElasticProfileContainerGroupNamingPolicyPtrInput is an input type that accepts ElasticProfileContainerGroupNamingPolicyArgs, ElasticProfileContainerGroupNamingPolicyPtr and ElasticProfileContainerGroupNamingPolicyPtrOutput values.
+// You can construct a concrete instance of `ElasticProfileContainerGroupNamingPolicyPtrInput` via:
+//
+//	        ElasticProfileContainerGroupNamingPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticProfileContainerGroupNamingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToElasticProfileContainerGroupNamingPolicyPtrOutput() ElasticProfileContainerGroupNamingPolicyPtrOutput
+	ToElasticProfileContainerGroupNamingPolicyPtrOutputWithContext(context.Context) ElasticProfileContainerGroupNamingPolicyPtrOutput
+}
+
+type elasticProfileContainerGroupNamingPolicyPtrType ElasticProfileContainerGroupNamingPolicyArgs
+
+func ElasticProfileContainerGroupNamingPolicyPtr(v *ElasticProfileContainerGroupNamingPolicyArgs) ElasticProfileContainerGroupNamingPolicyPtrInput {
+	return (*elasticProfileContainerGroupNamingPolicyPtrType)(v)
+}
+
+func (*elasticProfileContainerGroupNamingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfileContainerGroupNamingPolicy)(nil)).Elem()
+}
+
+func (i *elasticProfileContainerGroupNamingPolicyPtrType) ToElasticProfileContainerGroupNamingPolicyPtrOutput() ElasticProfileContainerGroupNamingPolicyPtrOutput {
+	return i.ToElasticProfileContainerGroupNamingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticProfileContainerGroupNamingPolicyPtrType) ToElasticProfileContainerGroupNamingPolicyPtrOutputWithContext(ctx context.Context) ElasticProfileContainerGroupNamingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileContainerGroupNamingPolicyPtrOutput)
+}
+
+// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+type ElasticProfileContainerGroupNamingPolicyOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileContainerGroupNamingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfileContainerGroupNamingPolicy)(nil)).Elem()
+}
+
+func (o ElasticProfileContainerGroupNamingPolicyOutput) ToElasticProfileContainerGroupNamingPolicyOutput() ElasticProfileContainerGroupNamingPolicyOutput {
+	return o
+}
+
+func (o ElasticProfileContainerGroupNamingPolicyOutput) ToElasticProfileContainerGroupNamingPolicyOutputWithContext(ctx context.Context) ElasticProfileContainerGroupNamingPolicyOutput {
+	return o
+}
+
+func (o ElasticProfileContainerGroupNamingPolicyOutput) ToElasticProfileContainerGroupNamingPolicyPtrOutput() ElasticProfileContainerGroupNamingPolicyPtrOutput {
+	return o.ToElasticProfileContainerGroupNamingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticProfileContainerGroupNamingPolicyOutput) ToElasticProfileContainerGroupNamingPolicyPtrOutputWithContext(ctx context.Context) ElasticProfileContainerGroupNamingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticProfileContainerGroupNamingPolicy) *ElasticProfileContainerGroupNamingPolicy {
+		return &v
+	}).(ElasticProfileContainerGroupNamingPolicyPtrOutput)
+}
+
+func (o ElasticProfileContainerGroupNamingPolicyOutput) GuidNamingPolicy() ElasticProfileGuidNamingPolicyPtrOutput {
+	return o.ApplyT(func(v ElasticProfileContainerGroupNamingPolicy) *ElasticProfileGuidNamingPolicy {
+		return v.GuidNamingPolicy
+	}).(ElasticProfileGuidNamingPolicyPtrOutput)
+}
+
+type ElasticProfileContainerGroupNamingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileContainerGroupNamingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfileContainerGroupNamingPolicy)(nil)).Elem()
+}
+
+func (o ElasticProfileContainerGroupNamingPolicyPtrOutput) ToElasticProfileContainerGroupNamingPolicyPtrOutput() ElasticProfileContainerGroupNamingPolicyPtrOutput {
+	return o
+}
+
+func (o ElasticProfileContainerGroupNamingPolicyPtrOutput) ToElasticProfileContainerGroupNamingPolicyPtrOutputWithContext(ctx context.Context) ElasticProfileContainerGroupNamingPolicyPtrOutput {
+	return o
+}
+
+func (o ElasticProfileContainerGroupNamingPolicyPtrOutput) Elem() ElasticProfileContainerGroupNamingPolicyOutput {
+	return o.ApplyT(func(v *ElasticProfileContainerGroupNamingPolicy) ElasticProfileContainerGroupNamingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticProfileContainerGroupNamingPolicy
+		return ret
+	}).(ElasticProfileContainerGroupNamingPolicyOutput)
+}
+
+func (o ElasticProfileContainerGroupNamingPolicyPtrOutput) GuidNamingPolicy() ElasticProfileGuidNamingPolicyPtrOutput {
+	return o.ApplyT(func(v *ElasticProfileContainerGroupNamingPolicy) *ElasticProfileGuidNamingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.GuidNamingPolicy
+	}).(ElasticProfileGuidNamingPolicyPtrOutput)
+}
+
+type ElasticProfileGuidNamingPolicy struct {
+	// The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
+	Prefix *string `pulumi:"prefix"`
+}
+
+// ElasticProfileGuidNamingPolicyInput is an input type that accepts ElasticProfileGuidNamingPolicyArgs and ElasticProfileGuidNamingPolicyOutput values.
+// You can construct a concrete instance of `ElasticProfileGuidNamingPolicyInput` via:
+//
+//	ElasticProfileGuidNamingPolicyArgs{...}
+type ElasticProfileGuidNamingPolicyInput interface {
+	pulumi.Input
+
+	ToElasticProfileGuidNamingPolicyOutput() ElasticProfileGuidNamingPolicyOutput
+	ToElasticProfileGuidNamingPolicyOutputWithContext(context.Context) ElasticProfileGuidNamingPolicyOutput
+}
+
+type ElasticProfileGuidNamingPolicyArgs struct {
+	// The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+}
+
+func (ElasticProfileGuidNamingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfileGuidNamingPolicy)(nil)).Elem()
+}
+
+func (i ElasticProfileGuidNamingPolicyArgs) ToElasticProfileGuidNamingPolicyOutput() ElasticProfileGuidNamingPolicyOutput {
+	return i.ToElasticProfileGuidNamingPolicyOutputWithContext(context.Background())
+}
+
+func (i ElasticProfileGuidNamingPolicyArgs) ToElasticProfileGuidNamingPolicyOutputWithContext(ctx context.Context) ElasticProfileGuidNamingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileGuidNamingPolicyOutput)
+}
+
+func (i ElasticProfileGuidNamingPolicyArgs) ToElasticProfileGuidNamingPolicyPtrOutput() ElasticProfileGuidNamingPolicyPtrOutput {
+	return i.ToElasticProfileGuidNamingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticProfileGuidNamingPolicyArgs) ToElasticProfileGuidNamingPolicyPtrOutputWithContext(ctx context.Context) ElasticProfileGuidNamingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileGuidNamingPolicyOutput).ToElasticProfileGuidNamingPolicyPtrOutputWithContext(ctx)
+}
+
+// ElasticProfileGuidNamingPolicyPtrInput is an input type that accepts ElasticProfileGuidNamingPolicyArgs, ElasticProfileGuidNamingPolicyPtr and ElasticProfileGuidNamingPolicyPtrOutput values.
+// You can construct a concrete instance of `ElasticProfileGuidNamingPolicyPtrInput` via:
+//
+//	        ElasticProfileGuidNamingPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticProfileGuidNamingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToElasticProfileGuidNamingPolicyPtrOutput() ElasticProfileGuidNamingPolicyPtrOutput
+	ToElasticProfileGuidNamingPolicyPtrOutputWithContext(context.Context) ElasticProfileGuidNamingPolicyPtrOutput
+}
+
+type elasticProfileGuidNamingPolicyPtrType ElasticProfileGuidNamingPolicyArgs
+
+func ElasticProfileGuidNamingPolicyPtr(v *ElasticProfileGuidNamingPolicyArgs) ElasticProfileGuidNamingPolicyPtrInput {
+	return (*elasticProfileGuidNamingPolicyPtrType)(v)
+}
+
+func (*elasticProfileGuidNamingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfileGuidNamingPolicy)(nil)).Elem()
+}
+
+func (i *elasticProfileGuidNamingPolicyPtrType) ToElasticProfileGuidNamingPolicyPtrOutput() ElasticProfileGuidNamingPolicyPtrOutput {
+	return i.ToElasticProfileGuidNamingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *elasticProfileGuidNamingPolicyPtrType) ToElasticProfileGuidNamingPolicyPtrOutputWithContext(ctx context.Context) ElasticProfileGuidNamingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileGuidNamingPolicyPtrOutput)
+}
+
+type ElasticProfileGuidNamingPolicyOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileGuidNamingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfileGuidNamingPolicy)(nil)).Elem()
+}
+
+func (o ElasticProfileGuidNamingPolicyOutput) ToElasticProfileGuidNamingPolicyOutput() ElasticProfileGuidNamingPolicyOutput {
+	return o
+}
+
+func (o ElasticProfileGuidNamingPolicyOutput) ToElasticProfileGuidNamingPolicyOutputWithContext(ctx context.Context) ElasticProfileGuidNamingPolicyOutput {
+	return o
+}
+
+func (o ElasticProfileGuidNamingPolicyOutput) ToElasticProfileGuidNamingPolicyPtrOutput() ElasticProfileGuidNamingPolicyPtrOutput {
+	return o.ToElasticProfileGuidNamingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ElasticProfileGuidNamingPolicyOutput) ToElasticProfileGuidNamingPolicyPtrOutputWithContext(ctx context.Context) ElasticProfileGuidNamingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticProfileGuidNamingPolicy) *ElasticProfileGuidNamingPolicy {
+		return &v
+	}).(ElasticProfileGuidNamingPolicyPtrOutput)
+}
+
+// The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
+func (o ElasticProfileGuidNamingPolicyOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticProfileGuidNamingPolicy) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type ElasticProfileGuidNamingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileGuidNamingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfileGuidNamingPolicy)(nil)).Elem()
+}
+
+func (o ElasticProfileGuidNamingPolicyPtrOutput) ToElasticProfileGuidNamingPolicyPtrOutput() ElasticProfileGuidNamingPolicyPtrOutput {
+	return o
+}
+
+func (o ElasticProfileGuidNamingPolicyPtrOutput) ToElasticProfileGuidNamingPolicyPtrOutputWithContext(ctx context.Context) ElasticProfileGuidNamingPolicyPtrOutput {
+	return o
+}
+
+func (o ElasticProfileGuidNamingPolicyPtrOutput) Elem() ElasticProfileGuidNamingPolicyOutput {
+	return o.ApplyT(func(v *ElasticProfileGuidNamingPolicy) ElasticProfileGuidNamingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticProfileGuidNamingPolicy
+		return ret
+	}).(ElasticProfileGuidNamingPolicyOutput)
+}
+
+// The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
+func (o ElasticProfileGuidNamingPolicyPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticProfileGuidNamingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the elastic profile of the NGroup
+type ElasticProfileResponse struct {
+	// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+	ContainerGroupNamingPolicy *ElasticProfileResponseContainerGroupNamingPolicy `pulumi:"containerGroupNamingPolicy"`
+	DesiredCount               *int                                              `pulumi:"desiredCount"`
+	// Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
+	MaintainDesiredCount *bool `pulumi:"maintainDesiredCount"`
+}
+
+// Describes the elastic profile of the NGroup
+type ElasticProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfileResponse)(nil)).Elem()
+}
+
+func (o ElasticProfileResponseOutput) ToElasticProfileResponseOutput() ElasticProfileResponseOutput {
+	return o
+}
+
+func (o ElasticProfileResponseOutput) ToElasticProfileResponseOutputWithContext(ctx context.Context) ElasticProfileResponseOutput {
+	return o
+}
+
+// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+func (o ElasticProfileResponseOutput) ContainerGroupNamingPolicy() ElasticProfileResponseContainerGroupNamingPolicyPtrOutput {
+	return o.ApplyT(func(v ElasticProfileResponse) *ElasticProfileResponseContainerGroupNamingPolicy {
+		return v.ContainerGroupNamingPolicy
+	}).(ElasticProfileResponseContainerGroupNamingPolicyPtrOutput)
+}
+
+func (o ElasticProfileResponseOutput) DesiredCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticProfileResponse) *int { return v.DesiredCount }).(pulumi.IntPtrOutput)
+}
+
+// Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
+func (o ElasticProfileResponseOutput) MaintainDesiredCount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElasticProfileResponse) *bool { return v.MaintainDesiredCount }).(pulumi.BoolPtrOutput)
+}
+
+type ElasticProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfileResponse)(nil)).Elem()
+}
+
+func (o ElasticProfileResponsePtrOutput) ToElasticProfileResponsePtrOutput() ElasticProfileResponsePtrOutput {
+	return o
+}
+
+func (o ElasticProfileResponsePtrOutput) ToElasticProfileResponsePtrOutputWithContext(ctx context.Context) ElasticProfileResponsePtrOutput {
+	return o
+}
+
+func (o ElasticProfileResponsePtrOutput) Elem() ElasticProfileResponseOutput {
+	return o.ApplyT(func(v *ElasticProfileResponse) ElasticProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticProfileResponse
+		return ret
+	}).(ElasticProfileResponseOutput)
+}
+
+// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+func (o ElasticProfileResponsePtrOutput) ContainerGroupNamingPolicy() ElasticProfileResponseContainerGroupNamingPolicyPtrOutput {
+	return o.ApplyT(func(v *ElasticProfileResponse) *ElasticProfileResponseContainerGroupNamingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerGroupNamingPolicy
+	}).(ElasticProfileResponseContainerGroupNamingPolicyPtrOutput)
+}
+
+func (o ElasticProfileResponsePtrOutput) DesiredCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticProfileResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DesiredCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
+func (o ElasticProfileResponsePtrOutput) MaintainDesiredCount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElasticProfileResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MaintainDesiredCount
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+type ElasticProfileResponseContainerGroupNamingPolicy struct {
+	GuidNamingPolicy *ElasticProfileResponseGuidNamingPolicy `pulumi:"guidNamingPolicy"`
+}
+
+// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+type ElasticProfileResponseContainerGroupNamingPolicyOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileResponseContainerGroupNamingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfileResponseContainerGroupNamingPolicy)(nil)).Elem()
+}
+
+func (o ElasticProfileResponseContainerGroupNamingPolicyOutput) ToElasticProfileResponseContainerGroupNamingPolicyOutput() ElasticProfileResponseContainerGroupNamingPolicyOutput {
+	return o
+}
+
+func (o ElasticProfileResponseContainerGroupNamingPolicyOutput) ToElasticProfileResponseContainerGroupNamingPolicyOutputWithContext(ctx context.Context) ElasticProfileResponseContainerGroupNamingPolicyOutput {
+	return o
+}
+
+func (o ElasticProfileResponseContainerGroupNamingPolicyOutput) GuidNamingPolicy() ElasticProfileResponseGuidNamingPolicyPtrOutput {
+	return o.ApplyT(func(v ElasticProfileResponseContainerGroupNamingPolicy) *ElasticProfileResponseGuidNamingPolicy {
+		return v.GuidNamingPolicy
+	}).(ElasticProfileResponseGuidNamingPolicyPtrOutput)
+}
+
+type ElasticProfileResponseContainerGroupNamingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileResponseContainerGroupNamingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfileResponseContainerGroupNamingPolicy)(nil)).Elem()
+}
+
+func (o ElasticProfileResponseContainerGroupNamingPolicyPtrOutput) ToElasticProfileResponseContainerGroupNamingPolicyPtrOutput() ElasticProfileResponseContainerGroupNamingPolicyPtrOutput {
+	return o
+}
+
+func (o ElasticProfileResponseContainerGroupNamingPolicyPtrOutput) ToElasticProfileResponseContainerGroupNamingPolicyPtrOutputWithContext(ctx context.Context) ElasticProfileResponseContainerGroupNamingPolicyPtrOutput {
+	return o
+}
+
+func (o ElasticProfileResponseContainerGroupNamingPolicyPtrOutput) Elem() ElasticProfileResponseContainerGroupNamingPolicyOutput {
+	return o.ApplyT(func(v *ElasticProfileResponseContainerGroupNamingPolicy) ElasticProfileResponseContainerGroupNamingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticProfileResponseContainerGroupNamingPolicy
+		return ret
+	}).(ElasticProfileResponseContainerGroupNamingPolicyOutput)
+}
+
+func (o ElasticProfileResponseContainerGroupNamingPolicyPtrOutput) GuidNamingPolicy() ElasticProfileResponseGuidNamingPolicyPtrOutput {
+	return o.ApplyT(func(v *ElasticProfileResponseContainerGroupNamingPolicy) *ElasticProfileResponseGuidNamingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.GuidNamingPolicy
+	}).(ElasticProfileResponseGuidNamingPolicyPtrOutput)
+}
+
+type ElasticProfileResponseGuidNamingPolicy struct {
+	// The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
+	Prefix *string `pulumi:"prefix"`
+}
+
+type ElasticProfileResponseGuidNamingPolicyOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileResponseGuidNamingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfileResponseGuidNamingPolicy)(nil)).Elem()
+}
+
+func (o ElasticProfileResponseGuidNamingPolicyOutput) ToElasticProfileResponseGuidNamingPolicyOutput() ElasticProfileResponseGuidNamingPolicyOutput {
+	return o
+}
+
+func (o ElasticProfileResponseGuidNamingPolicyOutput) ToElasticProfileResponseGuidNamingPolicyOutputWithContext(ctx context.Context) ElasticProfileResponseGuidNamingPolicyOutput {
+	return o
+}
+
+// The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
+func (o ElasticProfileResponseGuidNamingPolicyOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElasticProfileResponseGuidNamingPolicy) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type ElasticProfileResponseGuidNamingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileResponseGuidNamingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfileResponseGuidNamingPolicy)(nil)).Elem()
+}
+
+func (o ElasticProfileResponseGuidNamingPolicyPtrOutput) ToElasticProfileResponseGuidNamingPolicyPtrOutput() ElasticProfileResponseGuidNamingPolicyPtrOutput {
+	return o
+}
+
+func (o ElasticProfileResponseGuidNamingPolicyPtrOutput) ToElasticProfileResponseGuidNamingPolicyPtrOutputWithContext(ctx context.Context) ElasticProfileResponseGuidNamingPolicyPtrOutput {
+	return o
+}
+
+func (o ElasticProfileResponseGuidNamingPolicyPtrOutput) Elem() ElasticProfileResponseGuidNamingPolicyOutput {
+	return o.ApplyT(func(v *ElasticProfileResponseGuidNamingPolicy) ElasticProfileResponseGuidNamingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticProfileResponseGuidNamingPolicy
+		return ret
+	}).(ElasticProfileResponseGuidNamingPolicyOutput)
+}
+
+// The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
+func (o ElasticProfileResponseGuidNamingPolicyPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElasticProfileResponseGuidNamingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
 // The container group encryption properties.
 type EncryptionProperties struct {
 	// The keyvault managed identity.
@@ -4223,6 +5678,479 @@ func (o EventResponseArrayOutput) Index(i pulumi.IntInput) EventResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventResponse {
 		return vs[0].([]EventResponse)[vs[1].(int)]
 	}).(EventResponseOutput)
+}
+
+// File shares that can be mounted on container groups.
+type FileShare struct {
+	Name               *string              `pulumi:"name"`
+	Properties         *FileShareProperties `pulumi:"properties"`
+	ResourceGroupName  *string              `pulumi:"resourceGroupName"`
+	StorageAccountName *string              `pulumi:"storageAccountName"`
+}
+
+// Defaults sets the appropriate defaults for FileShare
+func (val *FileShare) Defaults() *FileShare {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = tmp.Properties.Defaults()
+
+	return &tmp
+}
+
+// FileShareInput is an input type that accepts FileShareArgs and FileShareOutput values.
+// You can construct a concrete instance of `FileShareInput` via:
+//
+//	FileShareArgs{...}
+type FileShareInput interface {
+	pulumi.Input
+
+	ToFileShareOutput() FileShareOutput
+	ToFileShareOutputWithContext(context.Context) FileShareOutput
+}
+
+// File shares that can be mounted on container groups.
+type FileShareArgs struct {
+	Name               pulumi.StringPtrInput       `pulumi:"name"`
+	Properties         FileSharePropertiesPtrInput `pulumi:"properties"`
+	ResourceGroupName  pulumi.StringPtrInput       `pulumi:"resourceGroupName"`
+	StorageAccountName pulumi.StringPtrInput       `pulumi:"storageAccountName"`
+}
+
+// Defaults sets the appropriate defaults for FileShareArgs
+func (val *FileShareArgs) Defaults() *FileShareArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (FileShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileShare)(nil)).Elem()
+}
+
+func (i FileShareArgs) ToFileShareOutput() FileShareOutput {
+	return i.ToFileShareOutputWithContext(context.Background())
+}
+
+func (i FileShareArgs) ToFileShareOutputWithContext(ctx context.Context) FileShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileShareOutput)
+}
+
+// FileShareArrayInput is an input type that accepts FileShareArray and FileShareArrayOutput values.
+// You can construct a concrete instance of `FileShareArrayInput` via:
+//
+//	FileShareArray{ FileShareArgs{...} }
+type FileShareArrayInput interface {
+	pulumi.Input
+
+	ToFileShareArrayOutput() FileShareArrayOutput
+	ToFileShareArrayOutputWithContext(context.Context) FileShareArrayOutput
+}
+
+type FileShareArray []FileShareInput
+
+func (FileShareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FileShare)(nil)).Elem()
+}
+
+func (i FileShareArray) ToFileShareArrayOutput() FileShareArrayOutput {
+	return i.ToFileShareArrayOutputWithContext(context.Background())
+}
+
+func (i FileShareArray) ToFileShareArrayOutputWithContext(ctx context.Context) FileShareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileShareArrayOutput)
+}
+
+// File shares that can be mounted on container groups.
+type FileShareOutput struct{ *pulumi.OutputState }
+
+func (FileShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileShare)(nil)).Elem()
+}
+
+func (o FileShareOutput) ToFileShareOutput() FileShareOutput {
+	return o
+}
+
+func (o FileShareOutput) ToFileShareOutputWithContext(ctx context.Context) FileShareOutput {
+	return o
+}
+
+func (o FileShareOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileShare) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o FileShareOutput) Properties() FileSharePropertiesPtrOutput {
+	return o.ApplyT(func(v FileShare) *FileShareProperties { return v.Properties }).(FileSharePropertiesPtrOutput)
+}
+
+func (o FileShareOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileShare) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+func (o FileShareOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileShare) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+type FileShareArrayOutput struct{ *pulumi.OutputState }
+
+func (FileShareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FileShare)(nil)).Elem()
+}
+
+func (o FileShareArrayOutput) ToFileShareArrayOutput() FileShareArrayOutput {
+	return o
+}
+
+func (o FileShareArrayOutput) ToFileShareArrayOutputWithContext(ctx context.Context) FileShareArrayOutput {
+	return o
+}
+
+func (o FileShareArrayOutput) Index(i pulumi.IntInput) FileShareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FileShare {
+		return vs[0].([]FileShare)[vs[1].(int)]
+	}).(FileShareOutput)
+}
+
+type FileShareProperties struct {
+	// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
+	ShareAccessTier *AzureFileShareAccessTier `pulumi:"shareAccessTier"`
+	//  Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+	ShareAccessType *AzureFileShareAccessType `pulumi:"shareAccessType"`
+}
+
+// Defaults sets the appropriate defaults for FileShareProperties
+func (val *FileShareProperties) Defaults() *FileShareProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ShareAccessTier == nil {
+		shareAccessTier_ := AzureFileShareAccessTier("TransactionOptimized")
+		tmp.ShareAccessTier = &shareAccessTier_
+	}
+	return &tmp
+}
+
+// FileSharePropertiesInput is an input type that accepts FileSharePropertiesArgs and FileSharePropertiesOutput values.
+// You can construct a concrete instance of `FileSharePropertiesInput` via:
+//
+//	FileSharePropertiesArgs{...}
+type FileSharePropertiesInput interface {
+	pulumi.Input
+
+	ToFileSharePropertiesOutput() FileSharePropertiesOutput
+	ToFileSharePropertiesOutputWithContext(context.Context) FileSharePropertiesOutput
+}
+
+type FileSharePropertiesArgs struct {
+	// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
+	ShareAccessTier AzureFileShareAccessTierPtrInput `pulumi:"shareAccessTier"`
+	//  Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+	ShareAccessType AzureFileShareAccessTypePtrInput `pulumi:"shareAccessType"`
+}
+
+// Defaults sets the appropriate defaults for FileSharePropertiesArgs
+func (val *FileSharePropertiesArgs) Defaults() *FileSharePropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ShareAccessTier == nil {
+		tmp.ShareAccessTier = AzureFileShareAccessTier("TransactionOptimized")
+	}
+	return &tmp
+}
+func (FileSharePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileShareProperties)(nil)).Elem()
+}
+
+func (i FileSharePropertiesArgs) ToFileSharePropertiesOutput() FileSharePropertiesOutput {
+	return i.ToFileSharePropertiesOutputWithContext(context.Background())
+}
+
+func (i FileSharePropertiesArgs) ToFileSharePropertiesOutputWithContext(ctx context.Context) FileSharePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSharePropertiesOutput)
+}
+
+func (i FileSharePropertiesArgs) ToFileSharePropertiesPtrOutput() FileSharePropertiesPtrOutput {
+	return i.ToFileSharePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i FileSharePropertiesArgs) ToFileSharePropertiesPtrOutputWithContext(ctx context.Context) FileSharePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSharePropertiesOutput).ToFileSharePropertiesPtrOutputWithContext(ctx)
+}
+
+// FileSharePropertiesPtrInput is an input type that accepts FileSharePropertiesArgs, FileSharePropertiesPtr and FileSharePropertiesPtrOutput values.
+// You can construct a concrete instance of `FileSharePropertiesPtrInput` via:
+//
+//	        FileSharePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileSharePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToFileSharePropertiesPtrOutput() FileSharePropertiesPtrOutput
+	ToFileSharePropertiesPtrOutputWithContext(context.Context) FileSharePropertiesPtrOutput
+}
+
+type fileSharePropertiesPtrType FileSharePropertiesArgs
+
+func FileSharePropertiesPtr(v *FileSharePropertiesArgs) FileSharePropertiesPtrInput {
+	return (*fileSharePropertiesPtrType)(v)
+}
+
+func (*fileSharePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileShareProperties)(nil)).Elem()
+}
+
+func (i *fileSharePropertiesPtrType) ToFileSharePropertiesPtrOutput() FileSharePropertiesPtrOutput {
+	return i.ToFileSharePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *fileSharePropertiesPtrType) ToFileSharePropertiesPtrOutputWithContext(ctx context.Context) FileSharePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSharePropertiesPtrOutput)
+}
+
+type FileSharePropertiesOutput struct{ *pulumi.OutputState }
+
+func (FileSharePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileShareProperties)(nil)).Elem()
+}
+
+func (o FileSharePropertiesOutput) ToFileSharePropertiesOutput() FileSharePropertiesOutput {
+	return o
+}
+
+func (o FileSharePropertiesOutput) ToFileSharePropertiesOutputWithContext(ctx context.Context) FileSharePropertiesOutput {
+	return o
+}
+
+func (o FileSharePropertiesOutput) ToFileSharePropertiesPtrOutput() FileSharePropertiesPtrOutput {
+	return o.ToFileSharePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o FileSharePropertiesOutput) ToFileSharePropertiesPtrOutputWithContext(ctx context.Context) FileSharePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileShareProperties) *FileShareProperties {
+		return &v
+	}).(FileSharePropertiesPtrOutput)
+}
+
+// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
+func (o FileSharePropertiesOutput) ShareAccessTier() AzureFileShareAccessTierPtrOutput {
+	return o.ApplyT(func(v FileShareProperties) *AzureFileShareAccessTier { return v.ShareAccessTier }).(AzureFileShareAccessTierPtrOutput)
+}
+
+// Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+func (o FileSharePropertiesOutput) ShareAccessType() AzureFileShareAccessTypePtrOutput {
+	return o.ApplyT(func(v FileShareProperties) *AzureFileShareAccessType { return v.ShareAccessType }).(AzureFileShareAccessTypePtrOutput)
+}
+
+type FileSharePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (FileSharePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileShareProperties)(nil)).Elem()
+}
+
+func (o FileSharePropertiesPtrOutput) ToFileSharePropertiesPtrOutput() FileSharePropertiesPtrOutput {
+	return o
+}
+
+func (o FileSharePropertiesPtrOutput) ToFileSharePropertiesPtrOutputWithContext(ctx context.Context) FileSharePropertiesPtrOutput {
+	return o
+}
+
+func (o FileSharePropertiesPtrOutput) Elem() FileSharePropertiesOutput {
+	return o.ApplyT(func(v *FileShareProperties) FileShareProperties {
+		if v != nil {
+			return *v
+		}
+		var ret FileShareProperties
+		return ret
+	}).(FileSharePropertiesOutput)
+}
+
+// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
+func (o FileSharePropertiesPtrOutput) ShareAccessTier() AzureFileShareAccessTierPtrOutput {
+	return o.ApplyT(func(v *FileShareProperties) *AzureFileShareAccessTier {
+		if v == nil {
+			return nil
+		}
+		return v.ShareAccessTier
+	}).(AzureFileShareAccessTierPtrOutput)
+}
+
+// Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+func (o FileSharePropertiesPtrOutput) ShareAccessType() AzureFileShareAccessTypePtrOutput {
+	return o.ApplyT(func(v *FileShareProperties) *AzureFileShareAccessType {
+		if v == nil {
+			return nil
+		}
+		return v.ShareAccessType
+	}).(AzureFileShareAccessTypePtrOutput)
+}
+
+// File shares that can be mounted on container groups.
+type FileShareResponse struct {
+	Name               *string                      `pulumi:"name"`
+	Properties         *FileShareResponseProperties `pulumi:"properties"`
+	ResourceGroupName  *string                      `pulumi:"resourceGroupName"`
+	StorageAccountName *string                      `pulumi:"storageAccountName"`
+}
+
+// Defaults sets the appropriate defaults for FileShareResponse
+func (val *FileShareResponse) Defaults() *FileShareResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = tmp.Properties.Defaults()
+
+	return &tmp
+}
+
+// File shares that can be mounted on container groups.
+type FileShareResponseOutput struct{ *pulumi.OutputState }
+
+func (FileShareResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileShareResponse)(nil)).Elem()
+}
+
+func (o FileShareResponseOutput) ToFileShareResponseOutput() FileShareResponseOutput {
+	return o
+}
+
+func (o FileShareResponseOutput) ToFileShareResponseOutputWithContext(ctx context.Context) FileShareResponseOutput {
+	return o
+}
+
+func (o FileShareResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileShareResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o FileShareResponseOutput) Properties() FileShareResponsePropertiesPtrOutput {
+	return o.ApplyT(func(v FileShareResponse) *FileShareResponseProperties { return v.Properties }).(FileShareResponsePropertiesPtrOutput)
+}
+
+func (o FileShareResponseOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileShareResponse) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+func (o FileShareResponseOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileShareResponse) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+type FileShareResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FileShareResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FileShareResponse)(nil)).Elem()
+}
+
+func (o FileShareResponseArrayOutput) ToFileShareResponseArrayOutput() FileShareResponseArrayOutput {
+	return o
+}
+
+func (o FileShareResponseArrayOutput) ToFileShareResponseArrayOutputWithContext(ctx context.Context) FileShareResponseArrayOutput {
+	return o
+}
+
+func (o FileShareResponseArrayOutput) Index(i pulumi.IntInput) FileShareResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FileShareResponse {
+		return vs[0].([]FileShareResponse)[vs[1].(int)]
+	}).(FileShareResponseOutput)
+}
+
+type FileShareResponseProperties struct {
+	// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
+	ShareAccessTier *string `pulumi:"shareAccessTier"`
+	//  Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+	ShareAccessType *string `pulumi:"shareAccessType"`
+}
+
+// Defaults sets the appropriate defaults for FileShareResponseProperties
+func (val *FileShareResponseProperties) Defaults() *FileShareResponseProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ShareAccessTier == nil {
+		shareAccessTier_ := "TransactionOptimized"
+		tmp.ShareAccessTier = &shareAccessTier_
+	}
+	return &tmp
+}
+
+type FileShareResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (FileShareResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileShareResponseProperties)(nil)).Elem()
+}
+
+func (o FileShareResponsePropertiesOutput) ToFileShareResponsePropertiesOutput() FileShareResponsePropertiesOutput {
+	return o
+}
+
+func (o FileShareResponsePropertiesOutput) ToFileShareResponsePropertiesOutputWithContext(ctx context.Context) FileShareResponsePropertiesOutput {
+	return o
+}
+
+// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
+func (o FileShareResponsePropertiesOutput) ShareAccessTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileShareResponseProperties) *string { return v.ShareAccessTier }).(pulumi.StringPtrOutput)
+}
+
+// Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+func (o FileShareResponsePropertiesOutput) ShareAccessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileShareResponseProperties) *string { return v.ShareAccessType }).(pulumi.StringPtrOutput)
+}
+
+type FileShareResponsePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (FileShareResponsePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileShareResponseProperties)(nil)).Elem()
+}
+
+func (o FileShareResponsePropertiesPtrOutput) ToFileShareResponsePropertiesPtrOutput() FileShareResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o FileShareResponsePropertiesPtrOutput) ToFileShareResponsePropertiesPtrOutputWithContext(ctx context.Context) FileShareResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o FileShareResponsePropertiesPtrOutput) Elem() FileShareResponsePropertiesOutput {
+	return o.ApplyT(func(v *FileShareResponseProperties) FileShareResponseProperties {
+		if v != nil {
+			return *v
+		}
+		var ret FileShareResponseProperties
+		return ret
+	}).(FileShareResponsePropertiesOutput)
+}
+
+// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
+func (o FileShareResponsePropertiesPtrOutput) ShareAccessTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileShareResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShareAccessTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+func (o FileShareResponsePropertiesPtrOutput) ShareAccessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileShareResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShareAccessType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a volume that is populated with the contents of a git repository
@@ -5805,6 +7733,352 @@ func (o IpAddressResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+type LoadBalancer struct {
+	// List of Load Balancer Backend Address Pools.
+	BackendAddressPools []LoadBalancerBackendAddressPool `pulumi:"backendAddressPools"`
+}
+
+// LoadBalancerInput is an input type that accepts LoadBalancerArgs and LoadBalancerOutput values.
+// You can construct a concrete instance of `LoadBalancerInput` via:
+//
+//	LoadBalancerArgs{...}
+type LoadBalancerInput interface {
+	pulumi.Input
+
+	ToLoadBalancerOutput() LoadBalancerOutput
+	ToLoadBalancerOutputWithContext(context.Context) LoadBalancerOutput
+}
+
+// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+type LoadBalancerArgs struct {
+	// List of Load Balancer Backend Address Pools.
+	BackendAddressPools LoadBalancerBackendAddressPoolArrayInput `pulumi:"backendAddressPools"`
+}
+
+func (LoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancer)(nil)).Elem()
+}
+
+func (i LoadBalancerArgs) ToLoadBalancerOutput() LoadBalancerOutput {
+	return i.ToLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerArgs) ToLoadBalancerOutputWithContext(ctx context.Context) LoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerOutput)
+}
+
+func (i LoadBalancerArgs) ToLoadBalancerPtrOutput() LoadBalancerPtrOutput {
+	return i.ToLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerArgs) ToLoadBalancerPtrOutputWithContext(ctx context.Context) LoadBalancerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerOutput).ToLoadBalancerPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerPtrInput is an input type that accepts LoadBalancerArgs, LoadBalancerPtr and LoadBalancerPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerPtrInput` via:
+//
+//	        LoadBalancerArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPtrOutput() LoadBalancerPtrOutput
+	ToLoadBalancerPtrOutputWithContext(context.Context) LoadBalancerPtrOutput
+}
+
+type loadBalancerPtrType LoadBalancerArgs
+
+func LoadBalancerPtr(v *LoadBalancerArgs) LoadBalancerPtrInput {
+	return (*loadBalancerPtrType)(v)
+}
+
+func (*loadBalancerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancer)(nil)).Elem()
+}
+
+func (i *loadBalancerPtrType) ToLoadBalancerPtrOutput() LoadBalancerPtrOutput {
+	return i.ToLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerPtrType) ToLoadBalancerPtrOutputWithContext(ctx context.Context) LoadBalancerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPtrOutput)
+}
+
+// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+type LoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancer)(nil)).Elem()
+}
+
+func (o LoadBalancerOutput) ToLoadBalancerOutput() LoadBalancerOutput {
+	return o
+}
+
+func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context) LoadBalancerOutput {
+	return o
+}
+
+func (o LoadBalancerOutput) ToLoadBalancerPtrOutput() LoadBalancerPtrOutput {
+	return o.ToLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerOutput) ToLoadBalancerPtrOutputWithContext(ctx context.Context) LoadBalancerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancer) *LoadBalancer {
+		return &v
+	}).(LoadBalancerPtrOutput)
+}
+
+// List of Load Balancer Backend Address Pools.
+func (o LoadBalancerOutput) BackendAddressPools() LoadBalancerBackendAddressPoolArrayOutput {
+	return o.ApplyT(func(v LoadBalancer) []LoadBalancerBackendAddressPool { return v.BackendAddressPools }).(LoadBalancerBackendAddressPoolArrayOutput)
+}
+
+type LoadBalancerPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancer)(nil)).Elem()
+}
+
+func (o LoadBalancerPtrOutput) ToLoadBalancerPtrOutput() LoadBalancerPtrOutput {
+	return o
+}
+
+func (o LoadBalancerPtrOutput) ToLoadBalancerPtrOutputWithContext(ctx context.Context) LoadBalancerPtrOutput {
+	return o
+}
+
+func (o LoadBalancerPtrOutput) Elem() LoadBalancerOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancer {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancer
+		return ret
+	}).(LoadBalancerOutput)
+}
+
+// List of Load Balancer Backend Address Pools.
+func (o LoadBalancerPtrOutput) BackendAddressPools() LoadBalancerBackendAddressPoolArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) []LoadBalancerBackendAddressPool {
+		if v == nil {
+			return nil
+		}
+		return v.BackendAddressPools
+	}).(LoadBalancerBackendAddressPoolArrayOutput)
+}
+
+// NGroups load balancer backend address pool
+type LoadBalancerBackendAddressPool struct {
+	// The Load Balancer backend address pool ARM resource Id.
+	Resource *string `pulumi:"resource"`
+}
+
+// LoadBalancerBackendAddressPoolInput is an input type that accepts LoadBalancerBackendAddressPoolArgs and LoadBalancerBackendAddressPoolOutput values.
+// You can construct a concrete instance of `LoadBalancerBackendAddressPoolInput` via:
+//
+//	LoadBalancerBackendAddressPoolArgs{...}
+type LoadBalancerBackendAddressPoolInput interface {
+	pulumi.Input
+
+	ToLoadBalancerBackendAddressPoolOutput() LoadBalancerBackendAddressPoolOutput
+	ToLoadBalancerBackendAddressPoolOutputWithContext(context.Context) LoadBalancerBackendAddressPoolOutput
+}
+
+// NGroups load balancer backend address pool
+type LoadBalancerBackendAddressPoolArgs struct {
+	// The Load Balancer backend address pool ARM resource Id.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+}
+
+func (LoadBalancerBackendAddressPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerBackendAddressPool)(nil)).Elem()
+}
+
+func (i LoadBalancerBackendAddressPoolArgs) ToLoadBalancerBackendAddressPoolOutput() LoadBalancerBackendAddressPoolOutput {
+	return i.ToLoadBalancerBackendAddressPoolOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerBackendAddressPoolArgs) ToLoadBalancerBackendAddressPoolOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerBackendAddressPoolOutput)
+}
+
+// LoadBalancerBackendAddressPoolArrayInput is an input type that accepts LoadBalancerBackendAddressPoolArray and LoadBalancerBackendAddressPoolArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerBackendAddressPoolArrayInput` via:
+//
+//	LoadBalancerBackendAddressPoolArray{ LoadBalancerBackendAddressPoolArgs{...} }
+type LoadBalancerBackendAddressPoolArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerBackendAddressPoolArrayOutput() LoadBalancerBackendAddressPoolArrayOutput
+	ToLoadBalancerBackendAddressPoolArrayOutputWithContext(context.Context) LoadBalancerBackendAddressPoolArrayOutput
+}
+
+type LoadBalancerBackendAddressPoolArray []LoadBalancerBackendAddressPoolInput
+
+func (LoadBalancerBackendAddressPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerBackendAddressPool)(nil)).Elem()
+}
+
+func (i LoadBalancerBackendAddressPoolArray) ToLoadBalancerBackendAddressPoolArrayOutput() LoadBalancerBackendAddressPoolArrayOutput {
+	return i.ToLoadBalancerBackendAddressPoolArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerBackendAddressPoolArray) ToLoadBalancerBackendAddressPoolArrayOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerBackendAddressPoolArrayOutput)
+}
+
+// NGroups load balancer backend address pool
+type LoadBalancerBackendAddressPoolOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerBackendAddressPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerBackendAddressPool)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendAddressPoolOutput) ToLoadBalancerBackendAddressPoolOutput() LoadBalancerBackendAddressPoolOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolOutput) ToLoadBalancerBackendAddressPoolOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolOutput {
+	return o
+}
+
+// The Load Balancer backend address pool ARM resource Id.
+func (o LoadBalancerBackendAddressPoolOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerBackendAddressPool) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerBackendAddressPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerBackendAddressPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerBackendAddressPool)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendAddressPoolArrayOutput) ToLoadBalancerBackendAddressPoolArrayOutput() LoadBalancerBackendAddressPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolArrayOutput) ToLoadBalancerBackendAddressPoolArrayOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancerBackendAddressPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerBackendAddressPool {
+		return vs[0].([]LoadBalancerBackendAddressPool)[vs[1].(int)]
+	}).(LoadBalancerBackendAddressPoolOutput)
+}
+
+// NGroups load balancer backend address pool
+type LoadBalancerBackendAddressPoolResponse struct {
+	// The Load Balancer backend address pool ARM resource Id.
+	Resource *string `pulumi:"resource"`
+}
+
+// NGroups load balancer backend address pool
+type LoadBalancerBackendAddressPoolResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerBackendAddressPoolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerBackendAddressPoolResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendAddressPoolResponseOutput) ToLoadBalancerBackendAddressPoolResponseOutput() LoadBalancerBackendAddressPoolResponseOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolResponseOutput) ToLoadBalancerBackendAddressPoolResponseOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolResponseOutput {
+	return o
+}
+
+// The Load Balancer backend address pool ARM resource Id.
+func (o LoadBalancerBackendAddressPoolResponseOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerBackendAddressPoolResponse) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerBackendAddressPoolResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerBackendAddressPoolResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerBackendAddressPoolResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendAddressPoolResponseArrayOutput) ToLoadBalancerBackendAddressPoolResponseArrayOutput() LoadBalancerBackendAddressPoolResponseArrayOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolResponseArrayOutput) ToLoadBalancerBackendAddressPoolResponseArrayOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolResponseArrayOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolResponseArrayOutput) Index(i pulumi.IntInput) LoadBalancerBackendAddressPoolResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerBackendAddressPoolResponse {
+		return vs[0].([]LoadBalancerBackendAddressPoolResponse)[vs[1].(int)]
+	}).(LoadBalancerBackendAddressPoolResponseOutput)
+}
+
+// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+type LoadBalancerResponse struct {
+	// List of Load Balancer Backend Address Pools.
+	BackendAddressPools []LoadBalancerBackendAddressPoolResponse `pulumi:"backendAddressPools"`
+}
+
+// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+type LoadBalancerResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerResponseOutput) ToLoadBalancerResponseOutput() LoadBalancerResponseOutput {
+	return o
+}
+
+func (o LoadBalancerResponseOutput) ToLoadBalancerResponseOutputWithContext(ctx context.Context) LoadBalancerResponseOutput {
+	return o
+}
+
+// List of Load Balancer Backend Address Pools.
+func (o LoadBalancerResponseOutput) BackendAddressPools() LoadBalancerBackendAddressPoolResponseArrayOutput {
+	return o.ApplyT(func(v LoadBalancerResponse) []LoadBalancerBackendAddressPoolResponse { return v.BackendAddressPools }).(LoadBalancerBackendAddressPoolResponseArrayOutput)
+}
+
+type LoadBalancerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerResponsePtrOutput) ToLoadBalancerResponsePtrOutput() LoadBalancerResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerResponsePtrOutput) ToLoadBalancerResponsePtrOutputWithContext(ctx context.Context) LoadBalancerResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerResponsePtrOutput) Elem() LoadBalancerResponseOutput {
+	return o.ApplyT(func(v *LoadBalancerResponse) LoadBalancerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerResponse
+		return ret
+	}).(LoadBalancerResponseOutput)
+}
+
+// List of Load Balancer Backend Address Pools.
+func (o LoadBalancerResponsePtrOutput) BackendAddressPools() LoadBalancerBackendAddressPoolResponseArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerResponse) []LoadBalancerBackendAddressPoolResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BackendAddressPools
+	}).(LoadBalancerBackendAddressPoolResponseArrayOutput)
+}
+
 // Container group log analytics information.
 type LogAnalytics struct {
 	// The log type to be used.
@@ -6147,6 +8421,1507 @@ func (o LogAnalyticsResponsePtrOutput) WorkspaceResourceId() pulumi.StringPtrOut
 		}
 		return v.WorkspaceResourceId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Container properties that can be provided with NGroups object.
+type NGroupCGPropertyContainer struct {
+	// container name
+	Name *string `pulumi:"name"`
+	// container properties
+	Properties *NGroupCGPropertyContainerProperties `pulumi:"properties"`
+}
+
+// NGroupCGPropertyContainerInput is an input type that accepts NGroupCGPropertyContainerArgs and NGroupCGPropertyContainerOutput values.
+// You can construct a concrete instance of `NGroupCGPropertyContainerInput` via:
+//
+//	NGroupCGPropertyContainerArgs{...}
+type NGroupCGPropertyContainerInput interface {
+	pulumi.Input
+
+	ToNGroupCGPropertyContainerOutput() NGroupCGPropertyContainerOutput
+	ToNGroupCGPropertyContainerOutputWithContext(context.Context) NGroupCGPropertyContainerOutput
+}
+
+// Container properties that can be provided with NGroups object.
+type NGroupCGPropertyContainerArgs struct {
+	// container name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// container properties
+	Properties NGroupCGPropertyContainerPropertiesPtrInput `pulumi:"properties"`
+}
+
+func (NGroupCGPropertyContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupCGPropertyContainer)(nil)).Elem()
+}
+
+func (i NGroupCGPropertyContainerArgs) ToNGroupCGPropertyContainerOutput() NGroupCGPropertyContainerOutput {
+	return i.ToNGroupCGPropertyContainerOutputWithContext(context.Background())
+}
+
+func (i NGroupCGPropertyContainerArgs) ToNGroupCGPropertyContainerOutputWithContext(ctx context.Context) NGroupCGPropertyContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupCGPropertyContainerOutput)
+}
+
+// NGroupCGPropertyContainerArrayInput is an input type that accepts NGroupCGPropertyContainerArray and NGroupCGPropertyContainerArrayOutput values.
+// You can construct a concrete instance of `NGroupCGPropertyContainerArrayInput` via:
+//
+//	NGroupCGPropertyContainerArray{ NGroupCGPropertyContainerArgs{...} }
+type NGroupCGPropertyContainerArrayInput interface {
+	pulumi.Input
+
+	ToNGroupCGPropertyContainerArrayOutput() NGroupCGPropertyContainerArrayOutput
+	ToNGroupCGPropertyContainerArrayOutputWithContext(context.Context) NGroupCGPropertyContainerArrayOutput
+}
+
+type NGroupCGPropertyContainerArray []NGroupCGPropertyContainerInput
+
+func (NGroupCGPropertyContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NGroupCGPropertyContainer)(nil)).Elem()
+}
+
+func (i NGroupCGPropertyContainerArray) ToNGroupCGPropertyContainerArrayOutput() NGroupCGPropertyContainerArrayOutput {
+	return i.ToNGroupCGPropertyContainerArrayOutputWithContext(context.Background())
+}
+
+func (i NGroupCGPropertyContainerArray) ToNGroupCGPropertyContainerArrayOutputWithContext(ctx context.Context) NGroupCGPropertyContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupCGPropertyContainerArrayOutput)
+}
+
+// Container properties that can be provided with NGroups object.
+type NGroupCGPropertyContainerOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupCGPropertyContainer)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyContainerOutput) ToNGroupCGPropertyContainerOutput() NGroupCGPropertyContainerOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerOutput) ToNGroupCGPropertyContainerOutputWithContext(ctx context.Context) NGroupCGPropertyContainerOutput {
+	return o
+}
+
+// container name
+func (o NGroupCGPropertyContainerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NGroupCGPropertyContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// container properties
+func (o NGroupCGPropertyContainerOutput) Properties() NGroupCGPropertyContainerPropertiesPtrOutput {
+	return o.ApplyT(func(v NGroupCGPropertyContainer) *NGroupCGPropertyContainerProperties { return v.Properties }).(NGroupCGPropertyContainerPropertiesPtrOutput)
+}
+
+type NGroupCGPropertyContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NGroupCGPropertyContainer)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyContainerArrayOutput) ToNGroupCGPropertyContainerArrayOutput() NGroupCGPropertyContainerArrayOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerArrayOutput) ToNGroupCGPropertyContainerArrayOutputWithContext(ctx context.Context) NGroupCGPropertyContainerArrayOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerArrayOutput) Index(i pulumi.IntInput) NGroupCGPropertyContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NGroupCGPropertyContainer {
+		return vs[0].([]NGroupCGPropertyContainer)[vs[1].(int)]
+	}).(NGroupCGPropertyContainerOutput)
+}
+
+// container properties
+type NGroupCGPropertyContainerProperties struct {
+	VolumeMounts []VolumeMount `pulumi:"volumeMounts"`
+}
+
+// NGroupCGPropertyContainerPropertiesInput is an input type that accepts NGroupCGPropertyContainerPropertiesArgs and NGroupCGPropertyContainerPropertiesOutput values.
+// You can construct a concrete instance of `NGroupCGPropertyContainerPropertiesInput` via:
+//
+//	NGroupCGPropertyContainerPropertiesArgs{...}
+type NGroupCGPropertyContainerPropertiesInput interface {
+	pulumi.Input
+
+	ToNGroupCGPropertyContainerPropertiesOutput() NGroupCGPropertyContainerPropertiesOutput
+	ToNGroupCGPropertyContainerPropertiesOutputWithContext(context.Context) NGroupCGPropertyContainerPropertiesOutput
+}
+
+// container properties
+type NGroupCGPropertyContainerPropertiesArgs struct {
+	VolumeMounts VolumeMountArrayInput `pulumi:"volumeMounts"`
+}
+
+func (NGroupCGPropertyContainerPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupCGPropertyContainerProperties)(nil)).Elem()
+}
+
+func (i NGroupCGPropertyContainerPropertiesArgs) ToNGroupCGPropertyContainerPropertiesOutput() NGroupCGPropertyContainerPropertiesOutput {
+	return i.ToNGroupCGPropertyContainerPropertiesOutputWithContext(context.Background())
+}
+
+func (i NGroupCGPropertyContainerPropertiesArgs) ToNGroupCGPropertyContainerPropertiesOutputWithContext(ctx context.Context) NGroupCGPropertyContainerPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupCGPropertyContainerPropertiesOutput)
+}
+
+func (i NGroupCGPropertyContainerPropertiesArgs) ToNGroupCGPropertyContainerPropertiesPtrOutput() NGroupCGPropertyContainerPropertiesPtrOutput {
+	return i.ToNGroupCGPropertyContainerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i NGroupCGPropertyContainerPropertiesArgs) ToNGroupCGPropertyContainerPropertiesPtrOutputWithContext(ctx context.Context) NGroupCGPropertyContainerPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupCGPropertyContainerPropertiesOutput).ToNGroupCGPropertyContainerPropertiesPtrOutputWithContext(ctx)
+}
+
+// NGroupCGPropertyContainerPropertiesPtrInput is an input type that accepts NGroupCGPropertyContainerPropertiesArgs, NGroupCGPropertyContainerPropertiesPtr and NGroupCGPropertyContainerPropertiesPtrOutput values.
+// You can construct a concrete instance of `NGroupCGPropertyContainerPropertiesPtrInput` via:
+//
+//	        NGroupCGPropertyContainerPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type NGroupCGPropertyContainerPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToNGroupCGPropertyContainerPropertiesPtrOutput() NGroupCGPropertyContainerPropertiesPtrOutput
+	ToNGroupCGPropertyContainerPropertiesPtrOutputWithContext(context.Context) NGroupCGPropertyContainerPropertiesPtrOutput
+}
+
+type ngroupCGPropertyContainerPropertiesPtrType NGroupCGPropertyContainerPropertiesArgs
+
+func NGroupCGPropertyContainerPropertiesPtr(v *NGroupCGPropertyContainerPropertiesArgs) NGroupCGPropertyContainerPropertiesPtrInput {
+	return (*ngroupCGPropertyContainerPropertiesPtrType)(v)
+}
+
+func (*ngroupCGPropertyContainerPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupCGPropertyContainerProperties)(nil)).Elem()
+}
+
+func (i *ngroupCGPropertyContainerPropertiesPtrType) ToNGroupCGPropertyContainerPropertiesPtrOutput() NGroupCGPropertyContainerPropertiesPtrOutput {
+	return i.ToNGroupCGPropertyContainerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *ngroupCGPropertyContainerPropertiesPtrType) ToNGroupCGPropertyContainerPropertiesPtrOutputWithContext(ctx context.Context) NGroupCGPropertyContainerPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupCGPropertyContainerPropertiesPtrOutput)
+}
+
+// container properties
+type NGroupCGPropertyContainerPropertiesOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyContainerPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupCGPropertyContainerProperties)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyContainerPropertiesOutput) ToNGroupCGPropertyContainerPropertiesOutput() NGroupCGPropertyContainerPropertiesOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerPropertiesOutput) ToNGroupCGPropertyContainerPropertiesOutputWithContext(ctx context.Context) NGroupCGPropertyContainerPropertiesOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerPropertiesOutput) ToNGroupCGPropertyContainerPropertiesPtrOutput() NGroupCGPropertyContainerPropertiesPtrOutput {
+	return o.ToNGroupCGPropertyContainerPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o NGroupCGPropertyContainerPropertiesOutput) ToNGroupCGPropertyContainerPropertiesPtrOutputWithContext(ctx context.Context) NGroupCGPropertyContainerPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NGroupCGPropertyContainerProperties) *NGroupCGPropertyContainerProperties {
+		return &v
+	}).(NGroupCGPropertyContainerPropertiesPtrOutput)
+}
+
+func (o NGroupCGPropertyContainerPropertiesOutput) VolumeMounts() VolumeMountArrayOutput {
+	return o.ApplyT(func(v NGroupCGPropertyContainerProperties) []VolumeMount { return v.VolumeMounts }).(VolumeMountArrayOutput)
+}
+
+type NGroupCGPropertyContainerPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyContainerPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupCGPropertyContainerProperties)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyContainerPropertiesPtrOutput) ToNGroupCGPropertyContainerPropertiesPtrOutput() NGroupCGPropertyContainerPropertiesPtrOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerPropertiesPtrOutput) ToNGroupCGPropertyContainerPropertiesPtrOutputWithContext(ctx context.Context) NGroupCGPropertyContainerPropertiesPtrOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerPropertiesPtrOutput) Elem() NGroupCGPropertyContainerPropertiesOutput {
+	return o.ApplyT(func(v *NGroupCGPropertyContainerProperties) NGroupCGPropertyContainerProperties {
+		if v != nil {
+			return *v
+		}
+		var ret NGroupCGPropertyContainerProperties
+		return ret
+	}).(NGroupCGPropertyContainerPropertiesOutput)
+}
+
+func (o NGroupCGPropertyContainerPropertiesPtrOutput) VolumeMounts() VolumeMountArrayOutput {
+	return o.ApplyT(func(v *NGroupCGPropertyContainerProperties) []VolumeMount {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeMounts
+	}).(VolumeMountArrayOutput)
+}
+
+// Container properties that can be provided with NGroups object.
+type NGroupCGPropertyContainerResponse struct {
+	// container name
+	Name *string `pulumi:"name"`
+	// container properties
+	Properties *NGroupCGPropertyContainerResponseProperties `pulumi:"properties"`
+}
+
+// Container properties that can be provided with NGroups object.
+type NGroupCGPropertyContainerResponseOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyContainerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupCGPropertyContainerResponse)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyContainerResponseOutput) ToNGroupCGPropertyContainerResponseOutput() NGroupCGPropertyContainerResponseOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerResponseOutput) ToNGroupCGPropertyContainerResponseOutputWithContext(ctx context.Context) NGroupCGPropertyContainerResponseOutput {
+	return o
+}
+
+// container name
+func (o NGroupCGPropertyContainerResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NGroupCGPropertyContainerResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// container properties
+func (o NGroupCGPropertyContainerResponseOutput) Properties() NGroupCGPropertyContainerResponsePropertiesPtrOutput {
+	return o.ApplyT(func(v NGroupCGPropertyContainerResponse) *NGroupCGPropertyContainerResponseProperties {
+		return v.Properties
+	}).(NGroupCGPropertyContainerResponsePropertiesPtrOutput)
+}
+
+type NGroupCGPropertyContainerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyContainerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NGroupCGPropertyContainerResponse)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyContainerResponseArrayOutput) ToNGroupCGPropertyContainerResponseArrayOutput() NGroupCGPropertyContainerResponseArrayOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerResponseArrayOutput) ToNGroupCGPropertyContainerResponseArrayOutputWithContext(ctx context.Context) NGroupCGPropertyContainerResponseArrayOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerResponseArrayOutput) Index(i pulumi.IntInput) NGroupCGPropertyContainerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NGroupCGPropertyContainerResponse {
+		return vs[0].([]NGroupCGPropertyContainerResponse)[vs[1].(int)]
+	}).(NGroupCGPropertyContainerResponseOutput)
+}
+
+// container properties
+type NGroupCGPropertyContainerResponseProperties struct {
+	VolumeMounts []VolumeMountResponse `pulumi:"volumeMounts"`
+}
+
+// container properties
+type NGroupCGPropertyContainerResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyContainerResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupCGPropertyContainerResponseProperties)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyContainerResponsePropertiesOutput) ToNGroupCGPropertyContainerResponsePropertiesOutput() NGroupCGPropertyContainerResponsePropertiesOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerResponsePropertiesOutput) ToNGroupCGPropertyContainerResponsePropertiesOutputWithContext(ctx context.Context) NGroupCGPropertyContainerResponsePropertiesOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerResponsePropertiesOutput) VolumeMounts() VolumeMountResponseArrayOutput {
+	return o.ApplyT(func(v NGroupCGPropertyContainerResponseProperties) []VolumeMountResponse { return v.VolumeMounts }).(VolumeMountResponseArrayOutput)
+}
+
+type NGroupCGPropertyContainerResponsePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyContainerResponsePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupCGPropertyContainerResponseProperties)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyContainerResponsePropertiesPtrOutput) ToNGroupCGPropertyContainerResponsePropertiesPtrOutput() NGroupCGPropertyContainerResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerResponsePropertiesPtrOutput) ToNGroupCGPropertyContainerResponsePropertiesPtrOutputWithContext(ctx context.Context) NGroupCGPropertyContainerResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o NGroupCGPropertyContainerResponsePropertiesPtrOutput) Elem() NGroupCGPropertyContainerResponsePropertiesOutput {
+	return o.ApplyT(func(v *NGroupCGPropertyContainerResponseProperties) NGroupCGPropertyContainerResponseProperties {
+		if v != nil {
+			return *v
+		}
+		var ret NGroupCGPropertyContainerResponseProperties
+		return ret
+	}).(NGroupCGPropertyContainerResponsePropertiesOutput)
+}
+
+func (o NGroupCGPropertyContainerResponsePropertiesPtrOutput) VolumeMounts() VolumeMountResponseArrayOutput {
+	return o.ApplyT(func(v *NGroupCGPropertyContainerResponseProperties) []VolumeMountResponse {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeMounts
+	}).(VolumeMountResponseArrayOutput)
+}
+
+// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+type NGroupCGPropertyVolume struct {
+	// The Azure File volume.
+	AzureFile *AzureFileVolume `pulumi:"azureFile"`
+	// The name of the volume.
+	Name string `pulumi:"name"`
+}
+
+// NGroupCGPropertyVolumeInput is an input type that accepts NGroupCGPropertyVolumeArgs and NGroupCGPropertyVolumeOutput values.
+// You can construct a concrete instance of `NGroupCGPropertyVolumeInput` via:
+//
+//	NGroupCGPropertyVolumeArgs{...}
+type NGroupCGPropertyVolumeInput interface {
+	pulumi.Input
+
+	ToNGroupCGPropertyVolumeOutput() NGroupCGPropertyVolumeOutput
+	ToNGroupCGPropertyVolumeOutputWithContext(context.Context) NGroupCGPropertyVolumeOutput
+}
+
+// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+type NGroupCGPropertyVolumeArgs struct {
+	// The Azure File volume.
+	AzureFile AzureFileVolumePtrInput `pulumi:"azureFile"`
+	// The name of the volume.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (NGroupCGPropertyVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupCGPropertyVolume)(nil)).Elem()
+}
+
+func (i NGroupCGPropertyVolumeArgs) ToNGroupCGPropertyVolumeOutput() NGroupCGPropertyVolumeOutput {
+	return i.ToNGroupCGPropertyVolumeOutputWithContext(context.Background())
+}
+
+func (i NGroupCGPropertyVolumeArgs) ToNGroupCGPropertyVolumeOutputWithContext(ctx context.Context) NGroupCGPropertyVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupCGPropertyVolumeOutput)
+}
+
+// NGroupCGPropertyVolumeArrayInput is an input type that accepts NGroupCGPropertyVolumeArray and NGroupCGPropertyVolumeArrayOutput values.
+// You can construct a concrete instance of `NGroupCGPropertyVolumeArrayInput` via:
+//
+//	NGroupCGPropertyVolumeArray{ NGroupCGPropertyVolumeArgs{...} }
+type NGroupCGPropertyVolumeArrayInput interface {
+	pulumi.Input
+
+	ToNGroupCGPropertyVolumeArrayOutput() NGroupCGPropertyVolumeArrayOutput
+	ToNGroupCGPropertyVolumeArrayOutputWithContext(context.Context) NGroupCGPropertyVolumeArrayOutput
+}
+
+type NGroupCGPropertyVolumeArray []NGroupCGPropertyVolumeInput
+
+func (NGroupCGPropertyVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NGroupCGPropertyVolume)(nil)).Elem()
+}
+
+func (i NGroupCGPropertyVolumeArray) ToNGroupCGPropertyVolumeArrayOutput() NGroupCGPropertyVolumeArrayOutput {
+	return i.ToNGroupCGPropertyVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i NGroupCGPropertyVolumeArray) ToNGroupCGPropertyVolumeArrayOutputWithContext(ctx context.Context) NGroupCGPropertyVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupCGPropertyVolumeArrayOutput)
+}
+
+// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+type NGroupCGPropertyVolumeOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupCGPropertyVolume)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyVolumeOutput) ToNGroupCGPropertyVolumeOutput() NGroupCGPropertyVolumeOutput {
+	return o
+}
+
+func (o NGroupCGPropertyVolumeOutput) ToNGroupCGPropertyVolumeOutputWithContext(ctx context.Context) NGroupCGPropertyVolumeOutput {
+	return o
+}
+
+// The Azure File volume.
+func (o NGroupCGPropertyVolumeOutput) AzureFile() AzureFileVolumePtrOutput {
+	return o.ApplyT(func(v NGroupCGPropertyVolume) *AzureFileVolume { return v.AzureFile }).(AzureFileVolumePtrOutput)
+}
+
+// The name of the volume.
+func (o NGroupCGPropertyVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NGroupCGPropertyVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NGroupCGPropertyVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NGroupCGPropertyVolume)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyVolumeArrayOutput) ToNGroupCGPropertyVolumeArrayOutput() NGroupCGPropertyVolumeArrayOutput {
+	return o
+}
+
+func (o NGroupCGPropertyVolumeArrayOutput) ToNGroupCGPropertyVolumeArrayOutputWithContext(ctx context.Context) NGroupCGPropertyVolumeArrayOutput {
+	return o
+}
+
+func (o NGroupCGPropertyVolumeArrayOutput) Index(i pulumi.IntInput) NGroupCGPropertyVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NGroupCGPropertyVolume {
+		return vs[0].([]NGroupCGPropertyVolume)[vs[1].(int)]
+	}).(NGroupCGPropertyVolumeOutput)
+}
+
+// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+type NGroupCGPropertyVolumeResponse struct {
+	// The Azure File volume.
+	AzureFile *AzureFileVolumeResponse `pulumi:"azureFile"`
+	// The name of the volume.
+	Name string `pulumi:"name"`
+}
+
+// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+type NGroupCGPropertyVolumeResponseOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyVolumeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupCGPropertyVolumeResponse)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyVolumeResponseOutput) ToNGroupCGPropertyVolumeResponseOutput() NGroupCGPropertyVolumeResponseOutput {
+	return o
+}
+
+func (o NGroupCGPropertyVolumeResponseOutput) ToNGroupCGPropertyVolumeResponseOutputWithContext(ctx context.Context) NGroupCGPropertyVolumeResponseOutput {
+	return o
+}
+
+// The Azure File volume.
+func (o NGroupCGPropertyVolumeResponseOutput) AzureFile() AzureFileVolumeResponsePtrOutput {
+	return o.ApplyT(func(v NGroupCGPropertyVolumeResponse) *AzureFileVolumeResponse { return v.AzureFile }).(AzureFileVolumeResponsePtrOutput)
+}
+
+// The name of the volume.
+func (o NGroupCGPropertyVolumeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NGroupCGPropertyVolumeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NGroupCGPropertyVolumeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NGroupCGPropertyVolumeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NGroupCGPropertyVolumeResponse)(nil)).Elem()
+}
+
+func (o NGroupCGPropertyVolumeResponseArrayOutput) ToNGroupCGPropertyVolumeResponseArrayOutput() NGroupCGPropertyVolumeResponseArrayOutput {
+	return o
+}
+
+func (o NGroupCGPropertyVolumeResponseArrayOutput) ToNGroupCGPropertyVolumeResponseArrayOutputWithContext(ctx context.Context) NGroupCGPropertyVolumeResponseArrayOutput {
+	return o
+}
+
+func (o NGroupCGPropertyVolumeResponseArrayOutput) Index(i pulumi.IntInput) NGroupCGPropertyVolumeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NGroupCGPropertyVolumeResponse {
+		return vs[0].([]NGroupCGPropertyVolumeResponse)[vs[1].(int)]
+	}).(NGroupCGPropertyVolumeResponseOutput)
+}
+
+// Container Group properties which can be set while creating or updating the NGroups.
+type NGroupContainerGroupProperties struct {
+	// Contains information about Container which can be set while creating or updating the NGroups.
+	Containers []NGroupCGPropertyContainer `pulumi:"containers"`
+	// Contains information about Virtual Network Subnet ARM Resource
+	SubnetIds []ContainerGroupSubnetId `pulumi:"subnetIds"`
+	// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+	Volumes []NGroupCGPropertyVolume `pulumi:"volumes"`
+}
+
+// NGroupContainerGroupPropertiesInput is an input type that accepts NGroupContainerGroupPropertiesArgs and NGroupContainerGroupPropertiesOutput values.
+// You can construct a concrete instance of `NGroupContainerGroupPropertiesInput` via:
+//
+//	NGroupContainerGroupPropertiesArgs{...}
+type NGroupContainerGroupPropertiesInput interface {
+	pulumi.Input
+
+	ToNGroupContainerGroupPropertiesOutput() NGroupContainerGroupPropertiesOutput
+	ToNGroupContainerGroupPropertiesOutputWithContext(context.Context) NGroupContainerGroupPropertiesOutput
+}
+
+// Container Group properties which can be set while creating or updating the NGroups.
+type NGroupContainerGroupPropertiesArgs struct {
+	// Contains information about Container which can be set while creating or updating the NGroups.
+	Containers NGroupCGPropertyContainerArrayInput `pulumi:"containers"`
+	// Contains information about Virtual Network Subnet ARM Resource
+	SubnetIds ContainerGroupSubnetIdArrayInput `pulumi:"subnetIds"`
+	// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+	Volumes NGroupCGPropertyVolumeArrayInput `pulumi:"volumes"`
+}
+
+func (NGroupContainerGroupPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupContainerGroupProperties)(nil)).Elem()
+}
+
+func (i NGroupContainerGroupPropertiesArgs) ToNGroupContainerGroupPropertiesOutput() NGroupContainerGroupPropertiesOutput {
+	return i.ToNGroupContainerGroupPropertiesOutputWithContext(context.Background())
+}
+
+func (i NGroupContainerGroupPropertiesArgs) ToNGroupContainerGroupPropertiesOutputWithContext(ctx context.Context) NGroupContainerGroupPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupContainerGroupPropertiesOutput)
+}
+
+func (i NGroupContainerGroupPropertiesArgs) ToNGroupContainerGroupPropertiesPtrOutput() NGroupContainerGroupPropertiesPtrOutput {
+	return i.ToNGroupContainerGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i NGroupContainerGroupPropertiesArgs) ToNGroupContainerGroupPropertiesPtrOutputWithContext(ctx context.Context) NGroupContainerGroupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupContainerGroupPropertiesOutput).ToNGroupContainerGroupPropertiesPtrOutputWithContext(ctx)
+}
+
+// NGroupContainerGroupPropertiesPtrInput is an input type that accepts NGroupContainerGroupPropertiesArgs, NGroupContainerGroupPropertiesPtr and NGroupContainerGroupPropertiesPtrOutput values.
+// You can construct a concrete instance of `NGroupContainerGroupPropertiesPtrInput` via:
+//
+//	        NGroupContainerGroupPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type NGroupContainerGroupPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToNGroupContainerGroupPropertiesPtrOutput() NGroupContainerGroupPropertiesPtrOutput
+	ToNGroupContainerGroupPropertiesPtrOutputWithContext(context.Context) NGroupContainerGroupPropertiesPtrOutput
+}
+
+type ngroupContainerGroupPropertiesPtrType NGroupContainerGroupPropertiesArgs
+
+func NGroupContainerGroupPropertiesPtr(v *NGroupContainerGroupPropertiesArgs) NGroupContainerGroupPropertiesPtrInput {
+	return (*ngroupContainerGroupPropertiesPtrType)(v)
+}
+
+func (*ngroupContainerGroupPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupContainerGroupProperties)(nil)).Elem()
+}
+
+func (i *ngroupContainerGroupPropertiesPtrType) ToNGroupContainerGroupPropertiesPtrOutput() NGroupContainerGroupPropertiesPtrOutput {
+	return i.ToNGroupContainerGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *ngroupContainerGroupPropertiesPtrType) ToNGroupContainerGroupPropertiesPtrOutputWithContext(ctx context.Context) NGroupContainerGroupPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupContainerGroupPropertiesPtrOutput)
+}
+
+// Container Group properties which can be set while creating or updating the NGroups.
+type NGroupContainerGroupPropertiesOutput struct{ *pulumi.OutputState }
+
+func (NGroupContainerGroupPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupContainerGroupProperties)(nil)).Elem()
+}
+
+func (o NGroupContainerGroupPropertiesOutput) ToNGroupContainerGroupPropertiesOutput() NGroupContainerGroupPropertiesOutput {
+	return o
+}
+
+func (o NGroupContainerGroupPropertiesOutput) ToNGroupContainerGroupPropertiesOutputWithContext(ctx context.Context) NGroupContainerGroupPropertiesOutput {
+	return o
+}
+
+func (o NGroupContainerGroupPropertiesOutput) ToNGroupContainerGroupPropertiesPtrOutput() NGroupContainerGroupPropertiesPtrOutput {
+	return o.ToNGroupContainerGroupPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o NGroupContainerGroupPropertiesOutput) ToNGroupContainerGroupPropertiesPtrOutputWithContext(ctx context.Context) NGroupContainerGroupPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NGroupContainerGroupProperties) *NGroupContainerGroupProperties {
+		return &v
+	}).(NGroupContainerGroupPropertiesPtrOutput)
+}
+
+// Contains information about Container which can be set while creating or updating the NGroups.
+func (o NGroupContainerGroupPropertiesOutput) Containers() NGroupCGPropertyContainerArrayOutput {
+	return o.ApplyT(func(v NGroupContainerGroupProperties) []NGroupCGPropertyContainer { return v.Containers }).(NGroupCGPropertyContainerArrayOutput)
+}
+
+// Contains information about Virtual Network Subnet ARM Resource
+func (o NGroupContainerGroupPropertiesOutput) SubnetIds() ContainerGroupSubnetIdArrayOutput {
+	return o.ApplyT(func(v NGroupContainerGroupProperties) []ContainerGroupSubnetId { return v.SubnetIds }).(ContainerGroupSubnetIdArrayOutput)
+}
+
+// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+func (o NGroupContainerGroupPropertiesOutput) Volumes() NGroupCGPropertyVolumeArrayOutput {
+	return o.ApplyT(func(v NGroupContainerGroupProperties) []NGroupCGPropertyVolume { return v.Volumes }).(NGroupCGPropertyVolumeArrayOutput)
+}
+
+type NGroupContainerGroupPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (NGroupContainerGroupPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupContainerGroupProperties)(nil)).Elem()
+}
+
+func (o NGroupContainerGroupPropertiesPtrOutput) ToNGroupContainerGroupPropertiesPtrOutput() NGroupContainerGroupPropertiesPtrOutput {
+	return o
+}
+
+func (o NGroupContainerGroupPropertiesPtrOutput) ToNGroupContainerGroupPropertiesPtrOutputWithContext(ctx context.Context) NGroupContainerGroupPropertiesPtrOutput {
+	return o
+}
+
+func (o NGroupContainerGroupPropertiesPtrOutput) Elem() NGroupContainerGroupPropertiesOutput {
+	return o.ApplyT(func(v *NGroupContainerGroupProperties) NGroupContainerGroupProperties {
+		if v != nil {
+			return *v
+		}
+		var ret NGroupContainerGroupProperties
+		return ret
+	}).(NGroupContainerGroupPropertiesOutput)
+}
+
+// Contains information about Container which can be set while creating or updating the NGroups.
+func (o NGroupContainerGroupPropertiesPtrOutput) Containers() NGroupCGPropertyContainerArrayOutput {
+	return o.ApplyT(func(v *NGroupContainerGroupProperties) []NGroupCGPropertyContainer {
+		if v == nil {
+			return nil
+		}
+		return v.Containers
+	}).(NGroupCGPropertyContainerArrayOutput)
+}
+
+// Contains information about Virtual Network Subnet ARM Resource
+func (o NGroupContainerGroupPropertiesPtrOutput) SubnetIds() ContainerGroupSubnetIdArrayOutput {
+	return o.ApplyT(func(v *NGroupContainerGroupProperties) []ContainerGroupSubnetId {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetIds
+	}).(ContainerGroupSubnetIdArrayOutput)
+}
+
+// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+func (o NGroupContainerGroupPropertiesPtrOutput) Volumes() NGroupCGPropertyVolumeArrayOutput {
+	return o.ApplyT(func(v *NGroupContainerGroupProperties) []NGroupCGPropertyVolume {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(NGroupCGPropertyVolumeArrayOutput)
+}
+
+// Container Group properties which can be set while creating or updating the NGroups.
+type NGroupContainerGroupPropertiesResponse struct {
+	// Contains information about Container which can be set while creating or updating the NGroups.
+	Containers []NGroupCGPropertyContainerResponse `pulumi:"containers"`
+	// Contains information about Virtual Network Subnet ARM Resource
+	SubnetIds []ContainerGroupSubnetIdResponse `pulumi:"subnetIds"`
+	// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+	Volumes []NGroupCGPropertyVolumeResponse `pulumi:"volumes"`
+}
+
+// Container Group properties which can be set while creating or updating the NGroups.
+type NGroupContainerGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (NGroupContainerGroupPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupContainerGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o NGroupContainerGroupPropertiesResponseOutput) ToNGroupContainerGroupPropertiesResponseOutput() NGroupContainerGroupPropertiesResponseOutput {
+	return o
+}
+
+func (o NGroupContainerGroupPropertiesResponseOutput) ToNGroupContainerGroupPropertiesResponseOutputWithContext(ctx context.Context) NGroupContainerGroupPropertiesResponseOutput {
+	return o
+}
+
+// Contains information about Container which can be set while creating or updating the NGroups.
+func (o NGroupContainerGroupPropertiesResponseOutput) Containers() NGroupCGPropertyContainerResponseArrayOutput {
+	return o.ApplyT(func(v NGroupContainerGroupPropertiesResponse) []NGroupCGPropertyContainerResponse {
+		return v.Containers
+	}).(NGroupCGPropertyContainerResponseArrayOutput)
+}
+
+// Contains information about Virtual Network Subnet ARM Resource
+func (o NGroupContainerGroupPropertiesResponseOutput) SubnetIds() ContainerGroupSubnetIdResponseArrayOutput {
+	return o.ApplyT(func(v NGroupContainerGroupPropertiesResponse) []ContainerGroupSubnetIdResponse { return v.SubnetIds }).(ContainerGroupSubnetIdResponseArrayOutput)
+}
+
+// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+func (o NGroupContainerGroupPropertiesResponseOutput) Volumes() NGroupCGPropertyVolumeResponseArrayOutput {
+	return o.ApplyT(func(v NGroupContainerGroupPropertiesResponse) []NGroupCGPropertyVolumeResponse { return v.Volumes }).(NGroupCGPropertyVolumeResponseArrayOutput)
+}
+
+type NGroupContainerGroupPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NGroupContainerGroupPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupContainerGroupPropertiesResponse)(nil)).Elem()
+}
+
+func (o NGroupContainerGroupPropertiesResponsePtrOutput) ToNGroupContainerGroupPropertiesResponsePtrOutput() NGroupContainerGroupPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o NGroupContainerGroupPropertiesResponsePtrOutput) ToNGroupContainerGroupPropertiesResponsePtrOutputWithContext(ctx context.Context) NGroupContainerGroupPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o NGroupContainerGroupPropertiesResponsePtrOutput) Elem() NGroupContainerGroupPropertiesResponseOutput {
+	return o.ApplyT(func(v *NGroupContainerGroupPropertiesResponse) NGroupContainerGroupPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NGroupContainerGroupPropertiesResponse
+		return ret
+	}).(NGroupContainerGroupPropertiesResponseOutput)
+}
+
+// Contains information about Container which can be set while creating or updating the NGroups.
+func (o NGroupContainerGroupPropertiesResponsePtrOutput) Containers() NGroupCGPropertyContainerResponseArrayOutput {
+	return o.ApplyT(func(v *NGroupContainerGroupPropertiesResponse) []NGroupCGPropertyContainerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Containers
+	}).(NGroupCGPropertyContainerResponseArrayOutput)
+}
+
+// Contains information about Virtual Network Subnet ARM Resource
+func (o NGroupContainerGroupPropertiesResponsePtrOutput) SubnetIds() ContainerGroupSubnetIdResponseArrayOutput {
+	return o.ApplyT(func(v *NGroupContainerGroupPropertiesResponse) []ContainerGroupSubnetIdResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetIds
+	}).(ContainerGroupSubnetIdResponseArrayOutput)
+}
+
+// Contains information about the volumes that can be mounted by Containers in the Container Groups.
+func (o NGroupContainerGroupPropertiesResponsePtrOutput) Volumes() NGroupCGPropertyVolumeResponseArrayOutput {
+	return o.ApplyT(func(v *NGroupContainerGroupPropertiesResponse) []NGroupCGPropertyVolumeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(NGroupCGPropertyVolumeResponseArrayOutput)
+}
+
+// Identity for the NGroup.
+type NGroupIdentity struct {
+	// The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
+	Type *ResourceIdentityType `pulumi:"type"`
+	// The list of user identities associated with the NGroup.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// NGroupIdentityInput is an input type that accepts NGroupIdentityArgs and NGroupIdentityOutput values.
+// You can construct a concrete instance of `NGroupIdentityInput` via:
+//
+//	NGroupIdentityArgs{...}
+type NGroupIdentityInput interface {
+	pulumi.Input
+
+	ToNGroupIdentityOutput() NGroupIdentityOutput
+	ToNGroupIdentityOutputWithContext(context.Context) NGroupIdentityOutput
+}
+
+// Identity for the NGroup.
+type NGroupIdentityArgs struct {
+	// The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
+	Type ResourceIdentityTypePtrInput `pulumi:"type"`
+	// The list of user identities associated with the NGroup.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (NGroupIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupIdentity)(nil)).Elem()
+}
+
+func (i NGroupIdentityArgs) ToNGroupIdentityOutput() NGroupIdentityOutput {
+	return i.ToNGroupIdentityOutputWithContext(context.Background())
+}
+
+func (i NGroupIdentityArgs) ToNGroupIdentityOutputWithContext(ctx context.Context) NGroupIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupIdentityOutput)
+}
+
+func (i NGroupIdentityArgs) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
+	return i.ToNGroupIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i NGroupIdentityArgs) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupIdentityOutput).ToNGroupIdentityPtrOutputWithContext(ctx)
+}
+
+// NGroupIdentityPtrInput is an input type that accepts NGroupIdentityArgs, NGroupIdentityPtr and NGroupIdentityPtrOutput values.
+// You can construct a concrete instance of `NGroupIdentityPtrInput` via:
+//
+//	        NGroupIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type NGroupIdentityPtrInput interface {
+	pulumi.Input
+
+	ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput
+	ToNGroupIdentityPtrOutputWithContext(context.Context) NGroupIdentityPtrOutput
+}
+
+type ngroupIdentityPtrType NGroupIdentityArgs
+
+func NGroupIdentityPtr(v *NGroupIdentityArgs) NGroupIdentityPtrInput {
+	return (*ngroupIdentityPtrType)(v)
+}
+
+func (*ngroupIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupIdentity)(nil)).Elem()
+}
+
+func (i *ngroupIdentityPtrType) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
+	return i.ToNGroupIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *ngroupIdentityPtrType) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupIdentityPtrOutput)
+}
+
+// Identity for the NGroup.
+type NGroupIdentityOutput struct{ *pulumi.OutputState }
+
+func (NGroupIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupIdentity)(nil)).Elem()
+}
+
+func (o NGroupIdentityOutput) ToNGroupIdentityOutput() NGroupIdentityOutput {
+	return o
+}
+
+func (o NGroupIdentityOutput) ToNGroupIdentityOutputWithContext(ctx context.Context) NGroupIdentityOutput {
+	return o
+}
+
+func (o NGroupIdentityOutput) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
+	return o.ToNGroupIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o NGroupIdentityOutput) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NGroupIdentity) *NGroupIdentity {
+		return &v
+	}).(NGroupIdentityPtrOutput)
+}
+
+// The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
+func (o NGroupIdentityOutput) Type() ResourceIdentityTypePtrOutput {
+	return o.ApplyT(func(v NGroupIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
+}
+
+// The list of user identities associated with the NGroup.
+func (o NGroupIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NGroupIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type NGroupIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (NGroupIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupIdentity)(nil)).Elem()
+}
+
+func (o NGroupIdentityPtrOutput) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
+	return o
+}
+
+func (o NGroupIdentityPtrOutput) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
+	return o
+}
+
+func (o NGroupIdentityPtrOutput) Elem() NGroupIdentityOutput {
+	return o.ApplyT(func(v *NGroupIdentity) NGroupIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret NGroupIdentity
+		return ret
+	}).(NGroupIdentityOutput)
+}
+
+// The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
+func (o NGroupIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
+	return o.ApplyT(func(v *NGroupIdentity) *ResourceIdentityType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(ResourceIdentityTypePtrOutput)
+}
+
+// The list of user identities associated with the NGroup.
+func (o NGroupIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NGroupIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Identity for the NGroup.
+type NGroupIdentityResponse struct {
+	// The principal id of the NGroup identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant id associated with the NGroup. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
+	Type *string `pulumi:"type"`
+	// The list of user identities associated with the NGroup.
+	UserAssignedIdentities map[string]UserAssignedIdentitiesResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Identity for the NGroup.
+type NGroupIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (NGroupIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupIdentityResponse)(nil)).Elem()
+}
+
+func (o NGroupIdentityResponseOutput) ToNGroupIdentityResponseOutput() NGroupIdentityResponseOutput {
+	return o
+}
+
+func (o NGroupIdentityResponseOutput) ToNGroupIdentityResponseOutputWithContext(ctx context.Context) NGroupIdentityResponseOutput {
+	return o
+}
+
+// The principal id of the NGroup identity. This property will only be provided for a system assigned identity.
+func (o NGroupIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v NGroupIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant id associated with the NGroup. This property will only be provided for a system assigned identity.
+func (o NGroupIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v NGroupIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
+func (o NGroupIdentityResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NGroupIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The list of user identities associated with the NGroup.
+func (o NGroupIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentitiesResponseMapOutput {
+	return o.ApplyT(func(v NGroupIdentityResponse) map[string]UserAssignedIdentitiesResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentitiesResponseMapOutput)
+}
+
+type NGroupIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NGroupIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupIdentityResponse)(nil)).Elem()
+}
+
+func (o NGroupIdentityResponsePtrOutput) ToNGroupIdentityResponsePtrOutput() NGroupIdentityResponsePtrOutput {
+	return o
+}
+
+func (o NGroupIdentityResponsePtrOutput) ToNGroupIdentityResponsePtrOutputWithContext(ctx context.Context) NGroupIdentityResponsePtrOutput {
+	return o
+}
+
+func (o NGroupIdentityResponsePtrOutput) Elem() NGroupIdentityResponseOutput {
+	return o.ApplyT(func(v *NGroupIdentityResponse) NGroupIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NGroupIdentityResponse
+		return ret
+	}).(NGroupIdentityResponseOutput)
+}
+
+// The principal id of the NGroup identity. This property will only be provided for a system assigned identity.
+func (o NGroupIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NGroupIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant id associated with the NGroup. This property will only be provided for a system assigned identity.
+func (o NGroupIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NGroupIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
+func (o NGroupIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NGroupIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of user identities associated with the NGroup.
+func (o NGroupIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentitiesResponseMapOutput {
+	return o.ApplyT(func(v *NGroupIdentityResponse) map[string]UserAssignedIdentitiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentitiesResponseMapOutput)
+}
+
+// A network profile for network settings of a ContainerGroupProfile. Used to manage load balancer and application gateway backend pools, specifically updating the IP addresses of CGs within the backend pool.
+type NetworkProfile struct {
+	// Application Gateway the CG profile will use to interact with CGs in a backend pool
+	ApplicationGateway *ApplicationGateway `pulumi:"applicationGateway"`
+	// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+	LoadBalancer *LoadBalancer `pulumi:"loadBalancer"`
+}
+
+// NetworkProfileInput is an input type that accepts NetworkProfileArgs and NetworkProfileOutput values.
+// You can construct a concrete instance of `NetworkProfileInput` via:
+//
+//	NetworkProfileArgs{...}
+type NetworkProfileInput interface {
+	pulumi.Input
+
+	ToNetworkProfileOutput() NetworkProfileOutput
+	ToNetworkProfileOutputWithContext(context.Context) NetworkProfileOutput
+}
+
+// A network profile for network settings of a ContainerGroupProfile. Used to manage load balancer and application gateway backend pools, specifically updating the IP addresses of CGs within the backend pool.
+type NetworkProfileArgs struct {
+	// Application Gateway the CG profile will use to interact with CGs in a backend pool
+	ApplicationGateway ApplicationGatewayPtrInput `pulumi:"applicationGateway"`
+	// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+	LoadBalancer LoadBalancerPtrInput `pulumi:"loadBalancer"`
+}
+
+func (NetworkProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProfile)(nil)).Elem()
+}
+
+func (i NetworkProfileArgs) ToNetworkProfileOutput() NetworkProfileOutput {
+	return i.ToNetworkProfileOutputWithContext(context.Background())
+}
+
+func (i NetworkProfileArgs) ToNetworkProfileOutputWithContext(ctx context.Context) NetworkProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfileOutput)
+}
+
+func (i NetworkProfileArgs) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
+	return i.ToNetworkProfilePtrOutputWithContext(context.Background())
+}
+
+func (i NetworkProfileArgs) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfileOutput).ToNetworkProfilePtrOutputWithContext(ctx)
+}
+
+// NetworkProfilePtrInput is an input type that accepts NetworkProfileArgs, NetworkProfilePtr and NetworkProfilePtrOutput values.
+// You can construct a concrete instance of `NetworkProfilePtrInput` via:
+//
+//	        NetworkProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkProfilePtrInput interface {
+	pulumi.Input
+
+	ToNetworkProfilePtrOutput() NetworkProfilePtrOutput
+	ToNetworkProfilePtrOutputWithContext(context.Context) NetworkProfilePtrOutput
+}
+
+type networkProfilePtrType NetworkProfileArgs
+
+func NetworkProfilePtr(v *NetworkProfileArgs) NetworkProfilePtrInput {
+	return (*networkProfilePtrType)(v)
+}
+
+func (*networkProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkProfile)(nil)).Elem()
+}
+
+func (i *networkProfilePtrType) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
+	return i.ToNetworkProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *networkProfilePtrType) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfilePtrOutput)
+}
+
+// A network profile for network settings of a ContainerGroupProfile. Used to manage load balancer and application gateway backend pools, specifically updating the IP addresses of CGs within the backend pool.
+type NetworkProfileOutput struct{ *pulumi.OutputState }
+
+func (NetworkProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProfile)(nil)).Elem()
+}
+
+func (o NetworkProfileOutput) ToNetworkProfileOutput() NetworkProfileOutput {
+	return o
+}
+
+func (o NetworkProfileOutput) ToNetworkProfileOutputWithContext(ctx context.Context) NetworkProfileOutput {
+	return o
+}
+
+func (o NetworkProfileOutput) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
+	return o.ToNetworkProfilePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkProfileOutput) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkProfile) *NetworkProfile {
+		return &v
+	}).(NetworkProfilePtrOutput)
+}
+
+// Application Gateway the CG profile will use to interact with CGs in a backend pool
+func (o NetworkProfileOutput) ApplicationGateway() ApplicationGatewayPtrOutput {
+	return o.ApplyT(func(v NetworkProfile) *ApplicationGateway { return v.ApplicationGateway }).(ApplicationGatewayPtrOutput)
+}
+
+// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+func (o NetworkProfileOutput) LoadBalancer() LoadBalancerPtrOutput {
+	return o.ApplyT(func(v NetworkProfile) *LoadBalancer { return v.LoadBalancer }).(LoadBalancerPtrOutput)
+}
+
+type NetworkProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkProfile)(nil)).Elem()
+}
+
+func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
+	return o
+}
+
+func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
+	return o
+}
+
+func (o NetworkProfilePtrOutput) Elem() NetworkProfileOutput {
+	return o.ApplyT(func(v *NetworkProfile) NetworkProfile {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkProfile
+		return ret
+	}).(NetworkProfileOutput)
+}
+
+// Application Gateway the CG profile will use to interact with CGs in a backend pool
+func (o NetworkProfilePtrOutput) ApplicationGateway() ApplicationGatewayPtrOutput {
+	return o.ApplyT(func(v *NetworkProfile) *ApplicationGateway {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationGateway
+	}).(ApplicationGatewayPtrOutput)
+}
+
+// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+func (o NetworkProfilePtrOutput) LoadBalancer() LoadBalancerPtrOutput {
+	return o.ApplyT(func(v *NetworkProfile) *LoadBalancer {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancer
+	}).(LoadBalancerPtrOutput)
+}
+
+// A network profile for network settings of a ContainerGroupProfile. Used to manage load balancer and application gateway backend pools, specifically updating the IP addresses of CGs within the backend pool.
+type NetworkProfileResponse struct {
+	// Application Gateway the CG profile will use to interact with CGs in a backend pool
+	ApplicationGateway *ApplicationGatewayResponse `pulumi:"applicationGateway"`
+	// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+	LoadBalancer *LoadBalancerResponse `pulumi:"loadBalancer"`
+}
+
+// A network profile for network settings of a ContainerGroupProfile. Used to manage load balancer and application gateway backend pools, specifically updating the IP addresses of CGs within the backend pool.
+type NetworkProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProfileResponse)(nil)).Elem()
+}
+
+func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutput() NetworkProfileResponseOutput {
+	return o
+}
+
+func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutputWithContext(ctx context.Context) NetworkProfileResponseOutput {
+	return o
+}
+
+// Application Gateway the CG profile will use to interact with CGs in a backend pool
+func (o NetworkProfileResponseOutput) ApplicationGateway() ApplicationGatewayResponsePtrOutput {
+	return o.ApplyT(func(v NetworkProfileResponse) *ApplicationGatewayResponse { return v.ApplicationGateway }).(ApplicationGatewayResponsePtrOutput)
+}
+
+// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+func (o NetworkProfileResponseOutput) LoadBalancer() LoadBalancerResponsePtrOutput {
+	return o.ApplyT(func(v NetworkProfileResponse) *LoadBalancerResponse { return v.LoadBalancer }).(LoadBalancerResponsePtrOutput)
+}
+
+type NetworkProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkProfileResponse)(nil)).Elem()
+}
+
+func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutput() NetworkProfileResponsePtrOutput {
+	return o
+}
+
+func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutputWithContext(ctx context.Context) NetworkProfileResponsePtrOutput {
+	return o
+}
+
+func (o NetworkProfileResponsePtrOutput) Elem() NetworkProfileResponseOutput {
+	return o.ApplyT(func(v *NetworkProfileResponse) NetworkProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkProfileResponse
+		return ret
+	}).(NetworkProfileResponseOutput)
+}
+
+// Application Gateway the CG profile will use to interact with CGs in a backend pool
+func (o NetworkProfileResponsePtrOutput) ApplicationGateway() ApplicationGatewayResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkProfileResponse) *ApplicationGatewayResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationGateway
+	}).(ApplicationGatewayResponsePtrOutput)
+}
+
+// LoadBalancer the CG profile will use to interact with CGs in a backend pool
+func (o NetworkProfileResponsePtrOutput) LoadBalancer() LoadBalancerResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkProfileResponse) *LoadBalancerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancer
+	}).(LoadBalancerResponsePtrOutput)
+}
+
+// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
+type PlacementProfile struct {
+	// The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
+	FaultDomainCount *int `pulumi:"faultDomainCount"`
+}
+
+// PlacementProfileInput is an input type that accepts PlacementProfileArgs and PlacementProfileOutput values.
+// You can construct a concrete instance of `PlacementProfileInput` via:
+//
+//	PlacementProfileArgs{...}
+type PlacementProfileInput interface {
+	pulumi.Input
+
+	ToPlacementProfileOutput() PlacementProfileOutput
+	ToPlacementProfileOutputWithContext(context.Context) PlacementProfileOutput
+}
+
+// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
+type PlacementProfileArgs struct {
+	// The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
+	FaultDomainCount pulumi.IntPtrInput `pulumi:"faultDomainCount"`
+}
+
+func (PlacementProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementProfile)(nil)).Elem()
+}
+
+func (i PlacementProfileArgs) ToPlacementProfileOutput() PlacementProfileOutput {
+	return i.ToPlacementProfileOutputWithContext(context.Background())
+}
+
+func (i PlacementProfileArgs) ToPlacementProfileOutputWithContext(ctx context.Context) PlacementProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementProfileOutput)
+}
+
+func (i PlacementProfileArgs) ToPlacementProfilePtrOutput() PlacementProfilePtrOutput {
+	return i.ToPlacementProfilePtrOutputWithContext(context.Background())
+}
+
+func (i PlacementProfileArgs) ToPlacementProfilePtrOutputWithContext(ctx context.Context) PlacementProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementProfileOutput).ToPlacementProfilePtrOutputWithContext(ctx)
+}
+
+// PlacementProfilePtrInput is an input type that accepts PlacementProfileArgs, PlacementProfilePtr and PlacementProfilePtrOutput values.
+// You can construct a concrete instance of `PlacementProfilePtrInput` via:
+//
+//	        PlacementProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type PlacementProfilePtrInput interface {
+	pulumi.Input
+
+	ToPlacementProfilePtrOutput() PlacementProfilePtrOutput
+	ToPlacementProfilePtrOutputWithContext(context.Context) PlacementProfilePtrOutput
+}
+
+type placementProfilePtrType PlacementProfileArgs
+
+func PlacementProfilePtr(v *PlacementProfileArgs) PlacementProfilePtrInput {
+	return (*placementProfilePtrType)(v)
+}
+
+func (*placementProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementProfile)(nil)).Elem()
+}
+
+func (i *placementProfilePtrType) ToPlacementProfilePtrOutput() PlacementProfilePtrOutput {
+	return i.ToPlacementProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *placementProfilePtrType) ToPlacementProfilePtrOutputWithContext(ctx context.Context) PlacementProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementProfilePtrOutput)
+}
+
+// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
+type PlacementProfileOutput struct{ *pulumi.OutputState }
+
+func (PlacementProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementProfile)(nil)).Elem()
+}
+
+func (o PlacementProfileOutput) ToPlacementProfileOutput() PlacementProfileOutput {
+	return o
+}
+
+func (o PlacementProfileOutput) ToPlacementProfileOutputWithContext(ctx context.Context) PlacementProfileOutput {
+	return o
+}
+
+func (o PlacementProfileOutput) ToPlacementProfilePtrOutput() PlacementProfilePtrOutput {
+	return o.ToPlacementProfilePtrOutputWithContext(context.Background())
+}
+
+func (o PlacementProfileOutput) ToPlacementProfilePtrOutputWithContext(ctx context.Context) PlacementProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlacementProfile) *PlacementProfile {
+		return &v
+	}).(PlacementProfilePtrOutput)
+}
+
+// The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
+func (o PlacementProfileOutput) FaultDomainCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlacementProfile) *int { return v.FaultDomainCount }).(pulumi.IntPtrOutput)
+}
+
+type PlacementProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (PlacementProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementProfile)(nil)).Elem()
+}
+
+func (o PlacementProfilePtrOutput) ToPlacementProfilePtrOutput() PlacementProfilePtrOutput {
+	return o
+}
+
+func (o PlacementProfilePtrOutput) ToPlacementProfilePtrOutputWithContext(ctx context.Context) PlacementProfilePtrOutput {
+	return o
+}
+
+func (o PlacementProfilePtrOutput) Elem() PlacementProfileOutput {
+	return o.ApplyT(func(v *PlacementProfile) PlacementProfile {
+		if v != nil {
+			return *v
+		}
+		var ret PlacementProfile
+		return ret
+	}).(PlacementProfileOutput)
+}
+
+// The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
+func (o PlacementProfilePtrOutput) FaultDomainCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PlacementProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FaultDomainCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
+type PlacementProfileResponse struct {
+	// The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
+	FaultDomainCount *int `pulumi:"faultDomainCount"`
+}
+
+// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
+type PlacementProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (PlacementProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementProfileResponse)(nil)).Elem()
+}
+
+func (o PlacementProfileResponseOutput) ToPlacementProfileResponseOutput() PlacementProfileResponseOutput {
+	return o
+}
+
+func (o PlacementProfileResponseOutput) ToPlacementProfileResponseOutputWithContext(ctx context.Context) PlacementProfileResponseOutput {
+	return o
+}
+
+// The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
+func (o PlacementProfileResponseOutput) FaultDomainCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlacementProfileResponse) *int { return v.FaultDomainCount }).(pulumi.IntPtrOutput)
+}
+
+type PlacementProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PlacementProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementProfileResponse)(nil)).Elem()
+}
+
+func (o PlacementProfileResponsePtrOutput) ToPlacementProfileResponsePtrOutput() PlacementProfileResponsePtrOutput {
+	return o
+}
+
+func (o PlacementProfileResponsePtrOutput) ToPlacementProfileResponsePtrOutputWithContext(ctx context.Context) PlacementProfileResponsePtrOutput {
+	return o
+}
+
+func (o PlacementProfileResponsePtrOutput) Elem() PlacementProfileResponseOutput {
+	return o.ApplyT(func(v *PlacementProfileResponse) PlacementProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PlacementProfileResponse
+		return ret
+	}).(PlacementProfileResponseOutput)
+}
+
+// The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
+func (o PlacementProfileResponsePtrOutput) FaultDomainCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PlacementProfileResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FaultDomainCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // The port exposed on the container group.
@@ -7945,6 +11720,199 @@ func (o StandbyPoolProfileDefinitionResponsePtrOutput) Id() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Storage profile for storage related settings of a container group profile.
+type StorageProfile struct {
+	FileShares []FileShare `pulumi:"fileShares"`
+}
+
+// StorageProfileInput is an input type that accepts StorageProfileArgs and StorageProfileOutput values.
+// You can construct a concrete instance of `StorageProfileInput` via:
+//
+//	StorageProfileArgs{...}
+type StorageProfileInput interface {
+	pulumi.Input
+
+	ToStorageProfileOutput() StorageProfileOutput
+	ToStorageProfileOutputWithContext(context.Context) StorageProfileOutput
+}
+
+// Storage profile for storage related settings of a container group profile.
+type StorageProfileArgs struct {
+	FileShares FileShareArrayInput `pulumi:"fileShares"`
+}
+
+func (StorageProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageProfile)(nil)).Elem()
+}
+
+func (i StorageProfileArgs) ToStorageProfileOutput() StorageProfileOutput {
+	return i.ToStorageProfileOutputWithContext(context.Background())
+}
+
+func (i StorageProfileArgs) ToStorageProfileOutputWithContext(ctx context.Context) StorageProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageProfileOutput)
+}
+
+func (i StorageProfileArgs) ToStorageProfilePtrOutput() StorageProfilePtrOutput {
+	return i.ToStorageProfilePtrOutputWithContext(context.Background())
+}
+
+func (i StorageProfileArgs) ToStorageProfilePtrOutputWithContext(ctx context.Context) StorageProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageProfileOutput).ToStorageProfilePtrOutputWithContext(ctx)
+}
+
+// StorageProfilePtrInput is an input type that accepts StorageProfileArgs, StorageProfilePtr and StorageProfilePtrOutput values.
+// You can construct a concrete instance of `StorageProfilePtrInput` via:
+//
+//	        StorageProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageProfilePtrInput interface {
+	pulumi.Input
+
+	ToStorageProfilePtrOutput() StorageProfilePtrOutput
+	ToStorageProfilePtrOutputWithContext(context.Context) StorageProfilePtrOutput
+}
+
+type storageProfilePtrType StorageProfileArgs
+
+func StorageProfilePtr(v *StorageProfileArgs) StorageProfilePtrInput {
+	return (*storageProfilePtrType)(v)
+}
+
+func (*storageProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageProfile)(nil)).Elem()
+}
+
+func (i *storageProfilePtrType) ToStorageProfilePtrOutput() StorageProfilePtrOutput {
+	return i.ToStorageProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *storageProfilePtrType) ToStorageProfilePtrOutputWithContext(ctx context.Context) StorageProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageProfilePtrOutput)
+}
+
+// Storage profile for storage related settings of a container group profile.
+type StorageProfileOutput struct{ *pulumi.OutputState }
+
+func (StorageProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageProfile)(nil)).Elem()
+}
+
+func (o StorageProfileOutput) ToStorageProfileOutput() StorageProfileOutput {
+	return o
+}
+
+func (o StorageProfileOutput) ToStorageProfileOutputWithContext(ctx context.Context) StorageProfileOutput {
+	return o
+}
+
+func (o StorageProfileOutput) ToStorageProfilePtrOutput() StorageProfilePtrOutput {
+	return o.ToStorageProfilePtrOutputWithContext(context.Background())
+}
+
+func (o StorageProfileOutput) ToStorageProfilePtrOutputWithContext(ctx context.Context) StorageProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageProfile) *StorageProfile {
+		return &v
+	}).(StorageProfilePtrOutput)
+}
+
+func (o StorageProfileOutput) FileShares() FileShareArrayOutput {
+	return o.ApplyT(func(v StorageProfile) []FileShare { return v.FileShares }).(FileShareArrayOutput)
+}
+
+type StorageProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageProfile)(nil)).Elem()
+}
+
+func (o StorageProfilePtrOutput) ToStorageProfilePtrOutput() StorageProfilePtrOutput {
+	return o
+}
+
+func (o StorageProfilePtrOutput) ToStorageProfilePtrOutputWithContext(ctx context.Context) StorageProfilePtrOutput {
+	return o
+}
+
+func (o StorageProfilePtrOutput) Elem() StorageProfileOutput {
+	return o.ApplyT(func(v *StorageProfile) StorageProfile {
+		if v != nil {
+			return *v
+		}
+		var ret StorageProfile
+		return ret
+	}).(StorageProfileOutput)
+}
+
+func (o StorageProfilePtrOutput) FileShares() FileShareArrayOutput {
+	return o.ApplyT(func(v *StorageProfile) []FileShare {
+		if v == nil {
+			return nil
+		}
+		return v.FileShares
+	}).(FileShareArrayOutput)
+}
+
+// Storage profile for storage related settings of a container group profile.
+type StorageProfileResponse struct {
+	FileShares []FileShareResponse `pulumi:"fileShares"`
+}
+
+// Storage profile for storage related settings of a container group profile.
+type StorageProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageProfileResponse)(nil)).Elem()
+}
+
+func (o StorageProfileResponseOutput) ToStorageProfileResponseOutput() StorageProfileResponseOutput {
+	return o
+}
+
+func (o StorageProfileResponseOutput) ToStorageProfileResponseOutputWithContext(ctx context.Context) StorageProfileResponseOutput {
+	return o
+}
+
+func (o StorageProfileResponseOutput) FileShares() FileShareResponseArrayOutput {
+	return o.ApplyT(func(v StorageProfileResponse) []FileShareResponse { return v.FileShares }).(FileShareResponseArrayOutput)
+}
+
+type StorageProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageProfileResponse)(nil)).Elem()
+}
+
+func (o StorageProfileResponsePtrOutput) ToStorageProfileResponsePtrOutput() StorageProfileResponsePtrOutput {
+	return o
+}
+
+func (o StorageProfileResponsePtrOutput) ToStorageProfileResponsePtrOutputWithContext(ctx context.Context) StorageProfileResponsePtrOutput {
+	return o
+}
+
+func (o StorageProfileResponsePtrOutput) Elem() StorageProfileResponseOutput {
+	return o.ApplyT(func(v *StorageProfileResponse) StorageProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StorageProfileResponse
+		return ret
+	}).(StorageProfileResponseOutput)
+}
+
+func (o StorageProfileResponsePtrOutput) FileShares() FileShareResponseArrayOutput {
+	return o.ApplyT(func(v *StorageProfileResponse) []FileShareResponse {
+		if v == nil {
+			return nil
+		}
+		return v.FileShares
+	}).(FileShareResponseArrayOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -8004,6 +11972,545 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// Used by the customer to specify the way to update the Container Groups in NGroup.
+type UpdateProfile struct {
+	// This profile allows the customers to customize the rolling update.
+	RollingUpdateProfile *UpdateProfileRollingUpdateProfile `pulumi:"rollingUpdateProfile"`
+	UpdateMode           *string                            `pulumi:"updateMode"`
+}
+
+// UpdateProfileInput is an input type that accepts UpdateProfileArgs and UpdateProfileOutput values.
+// You can construct a concrete instance of `UpdateProfileInput` via:
+//
+//	UpdateProfileArgs{...}
+type UpdateProfileInput interface {
+	pulumi.Input
+
+	ToUpdateProfileOutput() UpdateProfileOutput
+	ToUpdateProfileOutputWithContext(context.Context) UpdateProfileOutput
+}
+
+// Used by the customer to specify the way to update the Container Groups in NGroup.
+type UpdateProfileArgs struct {
+	// This profile allows the customers to customize the rolling update.
+	RollingUpdateProfile UpdateProfileRollingUpdateProfilePtrInput `pulumi:"rollingUpdateProfile"`
+	UpdateMode           pulumi.StringPtrInput                     `pulumi:"updateMode"`
+}
+
+func (UpdateProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateProfile)(nil)).Elem()
+}
+
+func (i UpdateProfileArgs) ToUpdateProfileOutput() UpdateProfileOutput {
+	return i.ToUpdateProfileOutputWithContext(context.Background())
+}
+
+func (i UpdateProfileArgs) ToUpdateProfileOutputWithContext(ctx context.Context) UpdateProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateProfileOutput)
+}
+
+func (i UpdateProfileArgs) ToUpdateProfilePtrOutput() UpdateProfilePtrOutput {
+	return i.ToUpdateProfilePtrOutputWithContext(context.Background())
+}
+
+func (i UpdateProfileArgs) ToUpdateProfilePtrOutputWithContext(ctx context.Context) UpdateProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateProfileOutput).ToUpdateProfilePtrOutputWithContext(ctx)
+}
+
+// UpdateProfilePtrInput is an input type that accepts UpdateProfileArgs, UpdateProfilePtr and UpdateProfilePtrOutput values.
+// You can construct a concrete instance of `UpdateProfilePtrInput` via:
+//
+//	        UpdateProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type UpdateProfilePtrInput interface {
+	pulumi.Input
+
+	ToUpdateProfilePtrOutput() UpdateProfilePtrOutput
+	ToUpdateProfilePtrOutputWithContext(context.Context) UpdateProfilePtrOutput
+}
+
+type updateProfilePtrType UpdateProfileArgs
+
+func UpdateProfilePtr(v *UpdateProfileArgs) UpdateProfilePtrInput {
+	return (*updateProfilePtrType)(v)
+}
+
+func (*updateProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpdateProfile)(nil)).Elem()
+}
+
+func (i *updateProfilePtrType) ToUpdateProfilePtrOutput() UpdateProfilePtrOutput {
+	return i.ToUpdateProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *updateProfilePtrType) ToUpdateProfilePtrOutputWithContext(ctx context.Context) UpdateProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateProfilePtrOutput)
+}
+
+// Used by the customer to specify the way to update the Container Groups in NGroup.
+type UpdateProfileOutput struct{ *pulumi.OutputState }
+
+func (UpdateProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateProfile)(nil)).Elem()
+}
+
+func (o UpdateProfileOutput) ToUpdateProfileOutput() UpdateProfileOutput {
+	return o
+}
+
+func (o UpdateProfileOutput) ToUpdateProfileOutputWithContext(ctx context.Context) UpdateProfileOutput {
+	return o
+}
+
+func (o UpdateProfileOutput) ToUpdateProfilePtrOutput() UpdateProfilePtrOutput {
+	return o.ToUpdateProfilePtrOutputWithContext(context.Background())
+}
+
+func (o UpdateProfileOutput) ToUpdateProfilePtrOutputWithContext(ctx context.Context) UpdateProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpdateProfile) *UpdateProfile {
+		return &v
+	}).(UpdateProfilePtrOutput)
+}
+
+// This profile allows the customers to customize the rolling update.
+func (o UpdateProfileOutput) RollingUpdateProfile() UpdateProfileRollingUpdateProfilePtrOutput {
+	return o.ApplyT(func(v UpdateProfile) *UpdateProfileRollingUpdateProfile { return v.RollingUpdateProfile }).(UpdateProfileRollingUpdateProfilePtrOutput)
+}
+
+func (o UpdateProfileOutput) UpdateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UpdateProfile) *string { return v.UpdateMode }).(pulumi.StringPtrOutput)
+}
+
+type UpdateProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (UpdateProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpdateProfile)(nil)).Elem()
+}
+
+func (o UpdateProfilePtrOutput) ToUpdateProfilePtrOutput() UpdateProfilePtrOutput {
+	return o
+}
+
+func (o UpdateProfilePtrOutput) ToUpdateProfilePtrOutputWithContext(ctx context.Context) UpdateProfilePtrOutput {
+	return o
+}
+
+func (o UpdateProfilePtrOutput) Elem() UpdateProfileOutput {
+	return o.ApplyT(func(v *UpdateProfile) UpdateProfile {
+		if v != nil {
+			return *v
+		}
+		var ret UpdateProfile
+		return ret
+	}).(UpdateProfileOutput)
+}
+
+// This profile allows the customers to customize the rolling update.
+func (o UpdateProfilePtrOutput) RollingUpdateProfile() UpdateProfileRollingUpdateProfilePtrOutput {
+	return o.ApplyT(func(v *UpdateProfile) *UpdateProfileRollingUpdateProfile {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpdateProfile
+	}).(UpdateProfileRollingUpdateProfilePtrOutput)
+}
+
+func (o UpdateProfilePtrOutput) UpdateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpdateProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Used by the customer to specify the way to update the Container Groups in NGroup.
+type UpdateProfileResponse struct {
+	// This profile allows the customers to customize the rolling update.
+	RollingUpdateProfile *UpdateProfileResponseRollingUpdateProfile `pulumi:"rollingUpdateProfile"`
+	UpdateMode           *string                                    `pulumi:"updateMode"`
+}
+
+// Used by the customer to specify the way to update the Container Groups in NGroup.
+type UpdateProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (UpdateProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateProfileResponse)(nil)).Elem()
+}
+
+func (o UpdateProfileResponseOutput) ToUpdateProfileResponseOutput() UpdateProfileResponseOutput {
+	return o
+}
+
+func (o UpdateProfileResponseOutput) ToUpdateProfileResponseOutputWithContext(ctx context.Context) UpdateProfileResponseOutput {
+	return o
+}
+
+// This profile allows the customers to customize the rolling update.
+func (o UpdateProfileResponseOutput) RollingUpdateProfile() UpdateProfileResponseRollingUpdateProfilePtrOutput {
+	return o.ApplyT(func(v UpdateProfileResponse) *UpdateProfileResponseRollingUpdateProfile {
+		return v.RollingUpdateProfile
+	}).(UpdateProfileResponseRollingUpdateProfilePtrOutput)
+}
+
+func (o UpdateProfileResponseOutput) UpdateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UpdateProfileResponse) *string { return v.UpdateMode }).(pulumi.StringPtrOutput)
+}
+
+type UpdateProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UpdateProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpdateProfileResponse)(nil)).Elem()
+}
+
+func (o UpdateProfileResponsePtrOutput) ToUpdateProfileResponsePtrOutput() UpdateProfileResponsePtrOutput {
+	return o
+}
+
+func (o UpdateProfileResponsePtrOutput) ToUpdateProfileResponsePtrOutputWithContext(ctx context.Context) UpdateProfileResponsePtrOutput {
+	return o
+}
+
+func (o UpdateProfileResponsePtrOutput) Elem() UpdateProfileResponseOutput {
+	return o.ApplyT(func(v *UpdateProfileResponse) UpdateProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UpdateProfileResponse
+		return ret
+	}).(UpdateProfileResponseOutput)
+}
+
+// This profile allows the customers to customize the rolling update.
+func (o UpdateProfileResponsePtrOutput) RollingUpdateProfile() UpdateProfileResponseRollingUpdateProfilePtrOutput {
+	return o.ApplyT(func(v *UpdateProfileResponse) *UpdateProfileResponseRollingUpdateProfile {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpdateProfile
+	}).(UpdateProfileResponseRollingUpdateProfilePtrOutput)
+}
+
+func (o UpdateProfileResponsePtrOutput) UpdateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpdateProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// This profile allows the customers to customize the rolling update.
+type UpdateProfileResponseRollingUpdateProfile struct {
+	// Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
+	InPlaceUpdate *bool `pulumi:"inPlaceUpdate"`
+	// Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
+	MaxBatchPercent *int `pulumi:"maxBatchPercent"`
+	// Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
+	MaxUnhealthyPercent *int `pulumi:"maxUnhealthyPercent"`
+	// The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
+	PauseTimeBetweenBatches *string `pulumi:"pauseTimeBetweenBatches"`
+}
+
+// This profile allows the customers to customize the rolling update.
+type UpdateProfileResponseRollingUpdateProfileOutput struct{ *pulumi.OutputState }
+
+func (UpdateProfileResponseRollingUpdateProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateProfileResponseRollingUpdateProfile)(nil)).Elem()
+}
+
+func (o UpdateProfileResponseRollingUpdateProfileOutput) ToUpdateProfileResponseRollingUpdateProfileOutput() UpdateProfileResponseRollingUpdateProfileOutput {
+	return o
+}
+
+func (o UpdateProfileResponseRollingUpdateProfileOutput) ToUpdateProfileResponseRollingUpdateProfileOutputWithContext(ctx context.Context) UpdateProfileResponseRollingUpdateProfileOutput {
+	return o
+}
+
+// Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
+func (o UpdateProfileResponseRollingUpdateProfileOutput) InPlaceUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UpdateProfileResponseRollingUpdateProfile) *bool { return v.InPlaceUpdate }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
+func (o UpdateProfileResponseRollingUpdateProfileOutput) MaxBatchPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UpdateProfileResponseRollingUpdateProfile) *int { return v.MaxBatchPercent }).(pulumi.IntPtrOutput)
+}
+
+// Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
+func (o UpdateProfileResponseRollingUpdateProfileOutput) MaxUnhealthyPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UpdateProfileResponseRollingUpdateProfile) *int { return v.MaxUnhealthyPercent }).(pulumi.IntPtrOutput)
+}
+
+// The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
+func (o UpdateProfileResponseRollingUpdateProfileOutput) PauseTimeBetweenBatches() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UpdateProfileResponseRollingUpdateProfile) *string { return v.PauseTimeBetweenBatches }).(pulumi.StringPtrOutput)
+}
+
+type UpdateProfileResponseRollingUpdateProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (UpdateProfileResponseRollingUpdateProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpdateProfileResponseRollingUpdateProfile)(nil)).Elem()
+}
+
+func (o UpdateProfileResponseRollingUpdateProfilePtrOutput) ToUpdateProfileResponseRollingUpdateProfilePtrOutput() UpdateProfileResponseRollingUpdateProfilePtrOutput {
+	return o
+}
+
+func (o UpdateProfileResponseRollingUpdateProfilePtrOutput) ToUpdateProfileResponseRollingUpdateProfilePtrOutputWithContext(ctx context.Context) UpdateProfileResponseRollingUpdateProfilePtrOutput {
+	return o
+}
+
+func (o UpdateProfileResponseRollingUpdateProfilePtrOutput) Elem() UpdateProfileResponseRollingUpdateProfileOutput {
+	return o.ApplyT(func(v *UpdateProfileResponseRollingUpdateProfile) UpdateProfileResponseRollingUpdateProfile {
+		if v != nil {
+			return *v
+		}
+		var ret UpdateProfileResponseRollingUpdateProfile
+		return ret
+	}).(UpdateProfileResponseRollingUpdateProfileOutput)
+}
+
+// Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
+func (o UpdateProfileResponseRollingUpdateProfilePtrOutput) InPlaceUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UpdateProfileResponseRollingUpdateProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InPlaceUpdate
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
+func (o UpdateProfileResponseRollingUpdateProfilePtrOutput) MaxBatchPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *UpdateProfileResponseRollingUpdateProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBatchPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
+func (o UpdateProfileResponseRollingUpdateProfilePtrOutput) MaxUnhealthyPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *UpdateProfileResponseRollingUpdateProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnhealthyPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
+func (o UpdateProfileResponseRollingUpdateProfilePtrOutput) PauseTimeBetweenBatches() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpdateProfileResponseRollingUpdateProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PauseTimeBetweenBatches
+	}).(pulumi.StringPtrOutput)
+}
+
+// This profile allows the customers to customize the rolling update.
+type UpdateProfileRollingUpdateProfile struct {
+	// Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
+	InPlaceUpdate *bool `pulumi:"inPlaceUpdate"`
+	// Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
+	MaxBatchPercent *int `pulumi:"maxBatchPercent"`
+	// Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
+	MaxUnhealthyPercent *int `pulumi:"maxUnhealthyPercent"`
+	// The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
+	PauseTimeBetweenBatches *string `pulumi:"pauseTimeBetweenBatches"`
+}
+
+// UpdateProfileRollingUpdateProfileInput is an input type that accepts UpdateProfileRollingUpdateProfileArgs and UpdateProfileRollingUpdateProfileOutput values.
+// You can construct a concrete instance of `UpdateProfileRollingUpdateProfileInput` via:
+//
+//	UpdateProfileRollingUpdateProfileArgs{...}
+type UpdateProfileRollingUpdateProfileInput interface {
+	pulumi.Input
+
+	ToUpdateProfileRollingUpdateProfileOutput() UpdateProfileRollingUpdateProfileOutput
+	ToUpdateProfileRollingUpdateProfileOutputWithContext(context.Context) UpdateProfileRollingUpdateProfileOutput
+}
+
+// This profile allows the customers to customize the rolling update.
+type UpdateProfileRollingUpdateProfileArgs struct {
+	// Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
+	InPlaceUpdate pulumi.BoolPtrInput `pulumi:"inPlaceUpdate"`
+	// Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
+	MaxBatchPercent pulumi.IntPtrInput `pulumi:"maxBatchPercent"`
+	// Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
+	MaxUnhealthyPercent pulumi.IntPtrInput `pulumi:"maxUnhealthyPercent"`
+	// The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
+	PauseTimeBetweenBatches pulumi.StringPtrInput `pulumi:"pauseTimeBetweenBatches"`
+}
+
+func (UpdateProfileRollingUpdateProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateProfileRollingUpdateProfile)(nil)).Elem()
+}
+
+func (i UpdateProfileRollingUpdateProfileArgs) ToUpdateProfileRollingUpdateProfileOutput() UpdateProfileRollingUpdateProfileOutput {
+	return i.ToUpdateProfileRollingUpdateProfileOutputWithContext(context.Background())
+}
+
+func (i UpdateProfileRollingUpdateProfileArgs) ToUpdateProfileRollingUpdateProfileOutputWithContext(ctx context.Context) UpdateProfileRollingUpdateProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateProfileRollingUpdateProfileOutput)
+}
+
+func (i UpdateProfileRollingUpdateProfileArgs) ToUpdateProfileRollingUpdateProfilePtrOutput() UpdateProfileRollingUpdateProfilePtrOutput {
+	return i.ToUpdateProfileRollingUpdateProfilePtrOutputWithContext(context.Background())
+}
+
+func (i UpdateProfileRollingUpdateProfileArgs) ToUpdateProfileRollingUpdateProfilePtrOutputWithContext(ctx context.Context) UpdateProfileRollingUpdateProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateProfileRollingUpdateProfileOutput).ToUpdateProfileRollingUpdateProfilePtrOutputWithContext(ctx)
+}
+
+// UpdateProfileRollingUpdateProfilePtrInput is an input type that accepts UpdateProfileRollingUpdateProfileArgs, UpdateProfileRollingUpdateProfilePtr and UpdateProfileRollingUpdateProfilePtrOutput values.
+// You can construct a concrete instance of `UpdateProfileRollingUpdateProfilePtrInput` via:
+//
+//	        UpdateProfileRollingUpdateProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type UpdateProfileRollingUpdateProfilePtrInput interface {
+	pulumi.Input
+
+	ToUpdateProfileRollingUpdateProfilePtrOutput() UpdateProfileRollingUpdateProfilePtrOutput
+	ToUpdateProfileRollingUpdateProfilePtrOutputWithContext(context.Context) UpdateProfileRollingUpdateProfilePtrOutput
+}
+
+type updateProfileRollingUpdateProfilePtrType UpdateProfileRollingUpdateProfileArgs
+
+func UpdateProfileRollingUpdateProfilePtr(v *UpdateProfileRollingUpdateProfileArgs) UpdateProfileRollingUpdateProfilePtrInput {
+	return (*updateProfileRollingUpdateProfilePtrType)(v)
+}
+
+func (*updateProfileRollingUpdateProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpdateProfileRollingUpdateProfile)(nil)).Elem()
+}
+
+func (i *updateProfileRollingUpdateProfilePtrType) ToUpdateProfileRollingUpdateProfilePtrOutput() UpdateProfileRollingUpdateProfilePtrOutput {
+	return i.ToUpdateProfileRollingUpdateProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *updateProfileRollingUpdateProfilePtrType) ToUpdateProfileRollingUpdateProfilePtrOutputWithContext(ctx context.Context) UpdateProfileRollingUpdateProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateProfileRollingUpdateProfilePtrOutput)
+}
+
+// This profile allows the customers to customize the rolling update.
+type UpdateProfileRollingUpdateProfileOutput struct{ *pulumi.OutputState }
+
+func (UpdateProfileRollingUpdateProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateProfileRollingUpdateProfile)(nil)).Elem()
+}
+
+func (o UpdateProfileRollingUpdateProfileOutput) ToUpdateProfileRollingUpdateProfileOutput() UpdateProfileRollingUpdateProfileOutput {
+	return o
+}
+
+func (o UpdateProfileRollingUpdateProfileOutput) ToUpdateProfileRollingUpdateProfileOutputWithContext(ctx context.Context) UpdateProfileRollingUpdateProfileOutput {
+	return o
+}
+
+func (o UpdateProfileRollingUpdateProfileOutput) ToUpdateProfileRollingUpdateProfilePtrOutput() UpdateProfileRollingUpdateProfilePtrOutput {
+	return o.ToUpdateProfileRollingUpdateProfilePtrOutputWithContext(context.Background())
+}
+
+func (o UpdateProfileRollingUpdateProfileOutput) ToUpdateProfileRollingUpdateProfilePtrOutputWithContext(ctx context.Context) UpdateProfileRollingUpdateProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpdateProfileRollingUpdateProfile) *UpdateProfileRollingUpdateProfile {
+		return &v
+	}).(UpdateProfileRollingUpdateProfilePtrOutput)
+}
+
+// Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
+func (o UpdateProfileRollingUpdateProfileOutput) InPlaceUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UpdateProfileRollingUpdateProfile) *bool { return v.InPlaceUpdate }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
+func (o UpdateProfileRollingUpdateProfileOutput) MaxBatchPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UpdateProfileRollingUpdateProfile) *int { return v.MaxBatchPercent }).(pulumi.IntPtrOutput)
+}
+
+// Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
+func (o UpdateProfileRollingUpdateProfileOutput) MaxUnhealthyPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UpdateProfileRollingUpdateProfile) *int { return v.MaxUnhealthyPercent }).(pulumi.IntPtrOutput)
+}
+
+// The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
+func (o UpdateProfileRollingUpdateProfileOutput) PauseTimeBetweenBatches() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UpdateProfileRollingUpdateProfile) *string { return v.PauseTimeBetweenBatches }).(pulumi.StringPtrOutput)
+}
+
+type UpdateProfileRollingUpdateProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (UpdateProfileRollingUpdateProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpdateProfileRollingUpdateProfile)(nil)).Elem()
+}
+
+func (o UpdateProfileRollingUpdateProfilePtrOutput) ToUpdateProfileRollingUpdateProfilePtrOutput() UpdateProfileRollingUpdateProfilePtrOutput {
+	return o
+}
+
+func (o UpdateProfileRollingUpdateProfilePtrOutput) ToUpdateProfileRollingUpdateProfilePtrOutputWithContext(ctx context.Context) UpdateProfileRollingUpdateProfilePtrOutput {
+	return o
+}
+
+func (o UpdateProfileRollingUpdateProfilePtrOutput) Elem() UpdateProfileRollingUpdateProfileOutput {
+	return o.ApplyT(func(v *UpdateProfileRollingUpdateProfile) UpdateProfileRollingUpdateProfile {
+		if v != nil {
+			return *v
+		}
+		var ret UpdateProfileRollingUpdateProfile
+		return ret
+	}).(UpdateProfileRollingUpdateProfileOutput)
+}
+
+// Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
+func (o UpdateProfileRollingUpdateProfilePtrOutput) InPlaceUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UpdateProfileRollingUpdateProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InPlaceUpdate
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
+func (o UpdateProfileRollingUpdateProfilePtrOutput) MaxBatchPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *UpdateProfileRollingUpdateProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBatchPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
+func (o UpdateProfileRollingUpdateProfilePtrOutput) MaxUnhealthyPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *UpdateProfileRollingUpdateProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnhealthyPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
+func (o UpdateProfileRollingUpdateProfilePtrOutput) PauseTimeBetweenBatches() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpdateProfileRollingUpdateProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PauseTimeBetweenBatches
+	}).(pulumi.StringPtrOutput)
 }
 
 // The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -8464,6 +12971,18 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 }
 
 func init() {
+	pulumi.RegisterOutputType(ApiEntityReferenceOutput{})
+	pulumi.RegisterOutputType(ApiEntityReferencePtrOutput{})
+	pulumi.RegisterOutputType(ApiEntityReferenceResponseOutput{})
+	pulumi.RegisterOutputType(ApiEntityReferenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(ApplicationGatewayOutput{})
+	pulumi.RegisterOutputType(ApplicationGatewayPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationGatewayBackendAddressPoolOutput{})
+	pulumi.RegisterOutputType(ApplicationGatewayBackendAddressPoolArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationGatewayBackendAddressPoolResponseOutput{})
+	pulumi.RegisterOutputType(ApplicationGatewayBackendAddressPoolResponseArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationGatewayResponseOutput{})
+	pulumi.RegisterOutputType(ApplicationGatewayResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureFileVolumeOutput{})
 	pulumi.RegisterOutputType(AzureFileVolumePtrOutput{})
 	pulumi.RegisterOutputType(AzureFileVolumeResponseOutput{})
@@ -8494,6 +13013,10 @@ func init() {
 	pulumi.RegisterOutputType(ContainerGroupProfileReferenceDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(ContainerGroupProfileReferenceDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ContainerGroupProfileReferenceDefinitionResponsePtrOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileStubOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileStubArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileStubResponseOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileStubResponseArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupPropertiesResponseInstanceViewOutput{})
 	pulumi.RegisterOutputType(ContainerGroupSubnetIdOutput{})
 	pulumi.RegisterOutputType(ContainerGroupSubnetIdArrayOutput{})
@@ -8523,6 +13046,18 @@ func init() {
 	pulumi.RegisterOutputType(DnsConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DnsConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(DnsConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticProfileOutput{})
+	pulumi.RegisterOutputType(ElasticProfilePtrOutput{})
+	pulumi.RegisterOutputType(ElasticProfileContainerGroupNamingPolicyOutput{})
+	pulumi.RegisterOutputType(ElasticProfileContainerGroupNamingPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ElasticProfileGuidNamingPolicyOutput{})
+	pulumi.RegisterOutputType(ElasticProfileGuidNamingPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ElasticProfileResponseOutput{})
+	pulumi.RegisterOutputType(ElasticProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticProfileResponseContainerGroupNamingPolicyOutput{})
+	pulumi.RegisterOutputType(ElasticProfileResponseContainerGroupNamingPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ElasticProfileResponseGuidNamingPolicyOutput{})
+	pulumi.RegisterOutputType(ElasticProfileResponseGuidNamingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesResponseOutput{})
@@ -8533,6 +13068,14 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentVariableResponseArrayOutput{})
 	pulumi.RegisterOutputType(EventResponseOutput{})
 	pulumi.RegisterOutputType(EventResponseArrayOutput{})
+	pulumi.RegisterOutputType(FileShareOutput{})
+	pulumi.RegisterOutputType(FileShareArrayOutput{})
+	pulumi.RegisterOutputType(FileSharePropertiesOutput{})
+	pulumi.RegisterOutputType(FileSharePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(FileShareResponseOutput{})
+	pulumi.RegisterOutputType(FileShareResponseArrayOutput{})
+	pulumi.RegisterOutputType(FileShareResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(FileShareResponsePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(GitRepoVolumeOutput{})
 	pulumi.RegisterOutputType(GitRepoVolumePtrOutput{})
 	pulumi.RegisterOutputType(GitRepoVolumeResponseOutput{})
@@ -8558,10 +13101,46 @@ func init() {
 	pulumi.RegisterOutputType(IpAddressPtrOutput{})
 	pulumi.RegisterOutputType(IpAddressResponseOutput{})
 	pulumi.RegisterOutputType(IpAddressResponsePtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolResponseOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolResponseArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerResponseOutput{})
+	pulumi.RegisterOutputType(LoadBalancerResponsePtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsPtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsResponseOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsResponsePtrOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyContainerOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyContainerArrayOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyContainerPropertiesOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyContainerPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyContainerResponseOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyContainerResponseArrayOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyContainerResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyContainerResponsePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyVolumeOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyVolumeArrayOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyVolumeResponseOutput{})
+	pulumi.RegisterOutputType(NGroupCGPropertyVolumeResponseArrayOutput{})
+	pulumi.RegisterOutputType(NGroupContainerGroupPropertiesOutput{})
+	pulumi.RegisterOutputType(NGroupContainerGroupPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(NGroupContainerGroupPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(NGroupContainerGroupPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(NGroupIdentityOutput{})
+	pulumi.RegisterOutputType(NGroupIdentityPtrOutput{})
+	pulumi.RegisterOutputType(NGroupIdentityResponseOutput{})
+	pulumi.RegisterOutputType(NGroupIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(NetworkProfileOutput{})
+	pulumi.RegisterOutputType(NetworkProfilePtrOutput{})
+	pulumi.RegisterOutputType(NetworkProfileResponseOutput{})
+	pulumi.RegisterOutputType(NetworkProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(PlacementProfileOutput{})
+	pulumi.RegisterOutputType(PlacementProfilePtrOutput{})
+	pulumi.RegisterOutputType(PlacementProfileResponseOutput{})
+	pulumi.RegisterOutputType(PlacementProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(PortOutput{})
 	pulumi.RegisterOutputType(PortArrayOutput{})
 	pulumi.RegisterOutputType(PortResponseOutput{})
@@ -8590,7 +13169,19 @@ func init() {
 	pulumi.RegisterOutputType(StandbyPoolProfileDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(StandbyPoolProfileDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(StandbyPoolProfileDefinitionResponsePtrOutput{})
+	pulumi.RegisterOutputType(StorageProfileOutput{})
+	pulumi.RegisterOutputType(StorageProfilePtrOutput{})
+	pulumi.RegisterOutputType(StorageProfileResponseOutput{})
+	pulumi.RegisterOutputType(StorageProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UpdateProfileOutput{})
+	pulumi.RegisterOutputType(UpdateProfilePtrOutput{})
+	pulumi.RegisterOutputType(UpdateProfileResponseOutput{})
+	pulumi.RegisterOutputType(UpdateProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(UpdateProfileResponseRollingUpdateProfileOutput{})
+	pulumi.RegisterOutputType(UpdateProfileResponseRollingUpdateProfilePtrOutput{})
+	pulumi.RegisterOutputType(UpdateProfileRollingUpdateProfileOutput{})
+	pulumi.RegisterOutputType(UpdateProfileRollingUpdateProfilePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseMapOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})

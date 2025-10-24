@@ -1703,7 +1703,7 @@ type MySQLServerIdentityResponse struct {
 	// Type of managed service identity.
 	Type *string `pulumi:"type"`
 	// Metadata of user assigned identity.
-	UserAssignedIdentities map[string][]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 // Properties to configure Identity for Bring your Own Keys
@@ -1737,10 +1737,10 @@ func (o MySQLServerIdentityResponseOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Metadata of user assigned identity.
-func (o MySQLServerIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseArrayMapOutput {
-	return o.ApplyT(func(v MySQLServerIdentityResponse) map[string][]UserAssignedIdentityResponse {
+func (o MySQLServerIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v MySQLServerIdentityResponse) map[string]UserAssignedIdentityResponse {
 		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseArrayMapOutput)
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 type MySQLServerIdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1798,13 +1798,13 @@ func (o MySQLServerIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Metadata of user assigned identity.
-func (o MySQLServerIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseArrayMapOutput {
-	return o.ApplyT(func(v *MySQLServerIdentityResponse) map[string][]UserAssignedIdentityResponse {
+func (o MySQLServerIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *MySQLServerIdentityResponse) map[string]UserAssignedIdentityResponse {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseArrayMapOutput)
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // Billing information related properties of a server.
@@ -4783,44 +4783,24 @@ func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-type UserAssignedIdentityResponseArrayOutput struct{ *pulumi.OutputState }
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
 
-func (UserAssignedIdentityResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserAssignedIdentityResponse)(nil)).Elem()
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
 }
 
-func (o UserAssignedIdentityResponseArrayOutput) ToUserAssignedIdentityResponseArrayOutput() UserAssignedIdentityResponseArrayOutput {
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
 	return o
 }
 
-func (o UserAssignedIdentityResponseArrayOutput) ToUserAssignedIdentityResponseArrayOutputWithContext(ctx context.Context) UserAssignedIdentityResponseArrayOutput {
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
 }
 
-func (o UserAssignedIdentityResponseArrayOutput) Index(i pulumi.IntInput) UserAssignedIdentityResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
-		return vs[0].([]UserAssignedIdentityResponse)[vs[1].(int)]
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
 	}).(UserAssignedIdentityResponseOutput)
-}
-
-type UserAssignedIdentityResponseArrayMapOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseArrayMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string][]UserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseArrayMapOutput) ToUserAssignedIdentityResponseArrayMapOutput() UserAssignedIdentityResponseArrayMapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseArrayMapOutput) ToUserAssignedIdentityResponseArrayMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseArrayMapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseArrayMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseArrayOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) []UserAssignedIdentityResponse {
-		return vs[0].(map[string][]UserAssignedIdentityResponse)[vs[1].(string)]
-	}).(UserAssignedIdentityResponseArrayOutput)
 }
 
 func init() {
@@ -4891,6 +4871,5 @@ func init() {
 	pulumi.RegisterOutputType(StorageResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseArrayOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseArrayMapOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

@@ -11999,6 +11999,354 @@ func (o RaiPolicyPropertiesResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RaiPolicyPropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// RAI Custom Topic properties.
+type RaiTopicProperties struct {
+	// Creation time of the custom topic.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Description of the custom topic.
+	Description *string `pulumi:"description"`
+	// Failed reason if the status is Failed.
+	FailedReason *string `pulumi:"failedReason"`
+	// Last modified time of the custom topic.
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// Sample blob url for the custom topic.
+	SampleBlobUrl *string `pulumi:"sampleBlobUrl"`
+	// Status of the custom topic.
+	Status *string `pulumi:"status"`
+	// The unique identifier of the custom topic.
+	TopicId *string `pulumi:"topicId"`
+	// The name of the custom topic.
+	TopicName *string `pulumi:"topicName"`
+}
+
+// RaiTopicPropertiesInput is an input type that accepts RaiTopicPropertiesArgs and RaiTopicPropertiesOutput values.
+// You can construct a concrete instance of `RaiTopicPropertiesInput` via:
+//
+//	RaiTopicPropertiesArgs{...}
+type RaiTopicPropertiesInput interface {
+	pulumi.Input
+
+	ToRaiTopicPropertiesOutput() RaiTopicPropertiesOutput
+	ToRaiTopicPropertiesOutputWithContext(context.Context) RaiTopicPropertiesOutput
+}
+
+// RAI Custom Topic properties.
+type RaiTopicPropertiesArgs struct {
+	// Creation time of the custom topic.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Description of the custom topic.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Failed reason if the status is Failed.
+	FailedReason pulumi.StringPtrInput `pulumi:"failedReason"`
+	// Last modified time of the custom topic.
+	LastModifiedAt pulumi.StringPtrInput `pulumi:"lastModifiedAt"`
+	// Sample blob url for the custom topic.
+	SampleBlobUrl pulumi.StringPtrInput `pulumi:"sampleBlobUrl"`
+	// Status of the custom topic.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The unique identifier of the custom topic.
+	TopicId pulumi.StringPtrInput `pulumi:"topicId"`
+	// The name of the custom topic.
+	TopicName pulumi.StringPtrInput `pulumi:"topicName"`
+}
+
+func (RaiTopicPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiTopicProperties)(nil)).Elem()
+}
+
+func (i RaiTopicPropertiesArgs) ToRaiTopicPropertiesOutput() RaiTopicPropertiesOutput {
+	return i.ToRaiTopicPropertiesOutputWithContext(context.Background())
+}
+
+func (i RaiTopicPropertiesArgs) ToRaiTopicPropertiesOutputWithContext(ctx context.Context) RaiTopicPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiTopicPropertiesOutput)
+}
+
+func (i RaiTopicPropertiesArgs) ToRaiTopicPropertiesPtrOutput() RaiTopicPropertiesPtrOutput {
+	return i.ToRaiTopicPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i RaiTopicPropertiesArgs) ToRaiTopicPropertiesPtrOutputWithContext(ctx context.Context) RaiTopicPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiTopicPropertiesOutput).ToRaiTopicPropertiesPtrOutputWithContext(ctx)
+}
+
+// RaiTopicPropertiesPtrInput is an input type that accepts RaiTopicPropertiesArgs, RaiTopicPropertiesPtr and RaiTopicPropertiesPtrOutput values.
+// You can construct a concrete instance of `RaiTopicPropertiesPtrInput` via:
+//
+//	        RaiTopicPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RaiTopicPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToRaiTopicPropertiesPtrOutput() RaiTopicPropertiesPtrOutput
+	ToRaiTopicPropertiesPtrOutputWithContext(context.Context) RaiTopicPropertiesPtrOutput
+}
+
+type raiTopicPropertiesPtrType RaiTopicPropertiesArgs
+
+func RaiTopicPropertiesPtr(v *RaiTopicPropertiesArgs) RaiTopicPropertiesPtrInput {
+	return (*raiTopicPropertiesPtrType)(v)
+}
+
+func (*raiTopicPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiTopicProperties)(nil)).Elem()
+}
+
+func (i *raiTopicPropertiesPtrType) ToRaiTopicPropertiesPtrOutput() RaiTopicPropertiesPtrOutput {
+	return i.ToRaiTopicPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *raiTopicPropertiesPtrType) ToRaiTopicPropertiesPtrOutputWithContext(ctx context.Context) RaiTopicPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiTopicPropertiesPtrOutput)
+}
+
+// RAI Custom Topic properties.
+type RaiTopicPropertiesOutput struct{ *pulumi.OutputState }
+
+func (RaiTopicPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiTopicProperties)(nil)).Elem()
+}
+
+func (o RaiTopicPropertiesOutput) ToRaiTopicPropertiesOutput() RaiTopicPropertiesOutput {
+	return o
+}
+
+func (o RaiTopicPropertiesOutput) ToRaiTopicPropertiesOutputWithContext(ctx context.Context) RaiTopicPropertiesOutput {
+	return o
+}
+
+func (o RaiTopicPropertiesOutput) ToRaiTopicPropertiesPtrOutput() RaiTopicPropertiesPtrOutput {
+	return o.ToRaiTopicPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o RaiTopicPropertiesOutput) ToRaiTopicPropertiesPtrOutputWithContext(ctx context.Context) RaiTopicPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RaiTopicProperties) *RaiTopicProperties {
+		return &v
+	}).(RaiTopicPropertiesPtrOutput)
+}
+
+// Creation time of the custom topic.
+func (o RaiTopicPropertiesOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicProperties) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Description of the custom topic.
+func (o RaiTopicPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Failed reason if the status is Failed.
+func (o RaiTopicPropertiesOutput) FailedReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicProperties) *string { return v.FailedReason }).(pulumi.StringPtrOutput)
+}
+
+// Last modified time of the custom topic.
+func (o RaiTopicPropertiesOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicProperties) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// Sample blob url for the custom topic.
+func (o RaiTopicPropertiesOutput) SampleBlobUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicProperties) *string { return v.SampleBlobUrl }).(pulumi.StringPtrOutput)
+}
+
+// Status of the custom topic.
+func (o RaiTopicPropertiesOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicProperties) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the custom topic.
+func (o RaiTopicPropertiesOutput) TopicId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicProperties) *string { return v.TopicId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the custom topic.
+func (o RaiTopicPropertiesOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicProperties) *string { return v.TopicName }).(pulumi.StringPtrOutput)
+}
+
+type RaiTopicPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (RaiTopicPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiTopicProperties)(nil)).Elem()
+}
+
+func (o RaiTopicPropertiesPtrOutput) ToRaiTopicPropertiesPtrOutput() RaiTopicPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiTopicPropertiesPtrOutput) ToRaiTopicPropertiesPtrOutputWithContext(ctx context.Context) RaiTopicPropertiesPtrOutput {
+	return o
+}
+
+func (o RaiTopicPropertiesPtrOutput) Elem() RaiTopicPropertiesOutput {
+	return o.ApplyT(func(v *RaiTopicProperties) RaiTopicProperties {
+		if v != nil {
+			return *v
+		}
+		var ret RaiTopicProperties
+		return ret
+	}).(RaiTopicPropertiesOutput)
+}
+
+// Creation time of the custom topic.
+func (o RaiTopicPropertiesPtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiTopicProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Description of the custom topic.
+func (o RaiTopicPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiTopicProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Failed reason if the status is Failed.
+func (o RaiTopicPropertiesPtrOutput) FailedReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiTopicProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailedReason
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last modified time of the custom topic.
+func (o RaiTopicPropertiesPtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiTopicProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sample blob url for the custom topic.
+func (o RaiTopicPropertiesPtrOutput) SampleBlobUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiTopicProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SampleBlobUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status of the custom topic.
+func (o RaiTopicPropertiesPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiTopicProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the custom topic.
+func (o RaiTopicPropertiesPtrOutput) TopicId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiTopicProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the custom topic.
+func (o RaiTopicPropertiesPtrOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiTopicProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicName
+	}).(pulumi.StringPtrOutput)
+}
+
+// RAI Custom Topic properties.
+type RaiTopicPropertiesResponse struct {
+	// Creation time of the custom topic.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Description of the custom topic.
+	Description *string `pulumi:"description"`
+	// Failed reason if the status is Failed.
+	FailedReason *string `pulumi:"failedReason"`
+	// Last modified time of the custom topic.
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// Sample blob url for the custom topic.
+	SampleBlobUrl *string `pulumi:"sampleBlobUrl"`
+	// Status of the custom topic.
+	Status *string `pulumi:"status"`
+	// The unique identifier of the custom topic.
+	TopicId *string `pulumi:"topicId"`
+	// The name of the custom topic.
+	TopicName *string `pulumi:"topicName"`
+}
+
+// RAI Custom Topic properties.
+type RaiTopicPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiTopicPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiTopicPropertiesResponse)(nil)).Elem()
+}
+
+func (o RaiTopicPropertiesResponseOutput) ToRaiTopicPropertiesResponseOutput() RaiTopicPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiTopicPropertiesResponseOutput) ToRaiTopicPropertiesResponseOutputWithContext(ctx context.Context) RaiTopicPropertiesResponseOutput {
+	return o
+}
+
+// Creation time of the custom topic.
+func (o RaiTopicPropertiesResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicPropertiesResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Description of the custom topic.
+func (o RaiTopicPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Failed reason if the status is Failed.
+func (o RaiTopicPropertiesResponseOutput) FailedReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicPropertiesResponse) *string { return v.FailedReason }).(pulumi.StringPtrOutput)
+}
+
+// Last modified time of the custom topic.
+func (o RaiTopicPropertiesResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicPropertiesResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// Sample blob url for the custom topic.
+func (o RaiTopicPropertiesResponseOutput) SampleBlobUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicPropertiesResponse) *string { return v.SampleBlobUrl }).(pulumi.StringPtrOutput)
+}
+
+// Status of the custom topic.
+func (o RaiTopicPropertiesResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicPropertiesResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the custom topic.
+func (o RaiTopicPropertiesResponseOutput) TopicId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicPropertiesResponse) *string { return v.TopicId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the custom topic.
+func (o RaiTopicPropertiesResponseOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiTopicPropertiesResponse) *string { return v.TopicName }).(pulumi.StringPtrOutput)
+}
+
 // The call rate limit Cognitive Services account.
 type RegionSetting struct {
 	// Maps the region to the regional custom subdomain.
@@ -14256,6 +14604,9 @@ func init() {
 	pulumi.RegisterOutputType(RaiPolicyPropertiesOutput{})
 	pulumi.RegisterOutputType(RaiPolicyPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(RaiPolicyPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RaiTopicPropertiesOutput{})
+	pulumi.RegisterOutputType(RaiTopicPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(RaiTopicPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RegionSettingOutput{})
 	pulumi.RegisterOutputType(RegionSettingArrayOutput{})
 	pulumi.RegisterOutputType(RegionSettingResponseOutput{})

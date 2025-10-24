@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "azure-native:edge:Schema":
 		r = &Schema{}
+	case "azure-native:edge:SchemaReference":
+		r = &SchemaReference{}
 	case "azure-native:edge:SchemaVersion":
 		r = &SchemaVersion{}
 	case "azure-native:edge:Site":

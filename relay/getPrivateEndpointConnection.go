@@ -31,7 +31,7 @@ type LookupPrivateEndpointConnectionArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The PrivateEndpointConnection name
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -51,9 +51,9 @@ type LookupPrivateEndpointConnectionResult struct {
 	PrivateLinkServiceConnectionState *ConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// Provisioning state of the Private Endpoint Connection.
 	ProvisioningState *string `pulumi:"provisioningState"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -71,7 +71,7 @@ type LookupPrivateEndpointConnectionOutputArgs struct {
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
 	// The PrivateEndpointConnection name
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -131,12 +131,12 @@ func (o LookupPrivateEndpointConnectionResultOutput) ProvisioningState() pulumi.
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupPrivateEndpointConnectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPrivateEndpointConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -54,8 +54,8 @@ type LookupWorkspaceBackendResult struct {
 	Pool *BackendBaseParametersResponsePool `pulumi:"pool"`
 	// Backend Properties contract
 	Properties BackendPropertiesResponse `pulumi:"properties"`
-	// Backend communication protocol.
-	Protocol string `pulumi:"protocol"`
+	// Backend communication protocol. Required when backend type is 'Single'.
+	Protocol *string `pulumi:"protocol"`
 	// Backend gateway Contract Properties
 	Proxy *BackendProxyContractResponse `pulumi:"proxy"`
 	// Management Uri of the Resource in External System. This URL can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
@@ -66,8 +66,8 @@ type LookupWorkspaceBackendResult struct {
 	Tls *BackendTlsPropertiesResponse `pulumi:"tls"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Runtime Url of the Backend.
-	Url string `pulumi:"url"`
+	// Runtime Url of the Backend. Required when backend type is 'Single'.
+	Url *string `pulumi:"url"`
 }
 
 // Defaults sets the appropriate defaults for LookupWorkspaceBackendResult
@@ -158,9 +158,9 @@ func (o LookupWorkspaceBackendResultOutput) Properties() BackendPropertiesRespon
 	return o.ApplyT(func(v LookupWorkspaceBackendResult) BackendPropertiesResponse { return v.Properties }).(BackendPropertiesResponseOutput)
 }
 
-// Backend communication protocol.
-func (o LookupWorkspaceBackendResultOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceBackendResult) string { return v.Protocol }).(pulumi.StringOutput)
+// Backend communication protocol. Required when backend type is 'Single'.
+func (o LookupWorkspaceBackendResultOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceBackendResult) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // Backend gateway Contract Properties
@@ -188,9 +188,9 @@ func (o LookupWorkspaceBackendResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceBackendResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Runtime Url of the Backend.
-func (o LookupWorkspaceBackendResultOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceBackendResult) string { return v.Url }).(pulumi.StringOutput)
+// Runtime Url of the Backend. Required when backend type is 'Single'.
+func (o LookupWorkspaceBackendResultOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceBackendResult) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 func init() {

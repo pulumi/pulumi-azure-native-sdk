@@ -31,7 +31,7 @@ type LookupPrivateEndpointConnectionArgs struct {
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the storage sync service name within the specified resource group.
+	// Name of Storage Sync Service resource.
 	StorageSyncServiceName string `pulumi:"storageSyncServiceName"`
 }
 
@@ -71,7 +71,7 @@ type LookupPrivateEndpointConnectionOutputArgs struct {
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The name of the storage sync service name within the specified resource group.
+	// Name of Storage Sync Service resource.
 	StorageSyncServiceName pulumi.StringInput `pulumi:"storageSyncServiceName"`
 }
 
