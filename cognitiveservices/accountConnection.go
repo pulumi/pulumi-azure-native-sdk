@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2025-04-01-preview.
 //
-// Other available API versions: 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AccountConnection struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +52,12 @@ func NewAccountConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20250601:AccountConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20250701preview:AccountConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20250901:AccountConnection"),
 		},
 	})
 	opts = append(opts, aliases)

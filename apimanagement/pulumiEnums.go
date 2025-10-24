@@ -1241,7 +1241,7 @@ func (in *authorizationTypePtr) ToAuthorizationTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationTypePtrOutput)
 }
 
-// Backend communication protocol.
+// Backend communication protocol. Required when backend type is 'Single'.
 type BackendProtocol string
 
 const (

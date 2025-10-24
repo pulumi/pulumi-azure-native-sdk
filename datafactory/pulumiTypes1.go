@@ -1541,10 +1541,14 @@ func (o HDInsightHiveActivityResponseOutput) Variables() pulumi.MapOutput {
 type HDInsightLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// HDInsight cluster authentication type.
+	ClusterAuthType *string `pulumi:"clusterAuthType"`
 	// HDInsight cluster URI. Type: string (or Expression with resultType string).
 	ClusterUri interface{} `pulumi:"clusterUri"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// The credential reference containing MI authentication information for the HDInsight cluster.
+	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -1585,10 +1589,14 @@ type HDInsightLinkedServiceInput interface {
 type HDInsightLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// HDInsight cluster authentication type.
+	ClusterAuthType pulumi.StringPtrInput `pulumi:"clusterAuthType"`
 	// HDInsight cluster URI. Type: string (or Expression with resultType string).
 	ClusterUri pulumi.Input `pulumi:"clusterUri"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
+	// The credential reference containing MI authentication information for the HDInsight cluster.
+	Credential CredentialReferencePtrInput `pulumi:"credential"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -1646,6 +1654,11 @@ func (o HDInsightLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v HDInsightLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// HDInsight cluster authentication type.
+func (o HDInsightLinkedServiceOutput) ClusterAuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) *string { return v.ClusterAuthType }).(pulumi.StringPtrOutput)
+}
+
 // HDInsight cluster URI. Type: string (or Expression with resultType string).
 func (o HDInsightLinkedServiceOutput) ClusterUri() pulumi.AnyOutput {
 	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.ClusterUri }).(pulumi.AnyOutput)
@@ -1654,6 +1667,11 @@ func (o HDInsightLinkedServiceOutput) ClusterUri() pulumi.AnyOutput {
 // The integration runtime reference.
 func (o HDInsightLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v HDInsightLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
+}
+
+// The credential reference containing MI authentication information for the HDInsight cluster.
+func (o HDInsightLinkedServiceOutput) Credential() CredentialReferencePtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
 }
 
 // Linked service description.
@@ -1716,10 +1734,14 @@ func (o HDInsightLinkedServiceOutput) Version() pulumi.StringPtrOutput {
 type HDInsightLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// HDInsight cluster authentication type.
+	ClusterAuthType *string `pulumi:"clusterAuthType"`
 	// HDInsight cluster URI. Type: string (or Expression with resultType string).
 	ClusterUri interface{} `pulumi:"clusterUri"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// The credential reference containing MI authentication information for the HDInsight cluster.
+	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -1765,6 +1787,11 @@ func (o HDInsightLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v HDInsightLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// HDInsight cluster authentication type.
+func (o HDInsightLinkedServiceResponseOutput) ClusterAuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *string { return v.ClusterAuthType }).(pulumi.StringPtrOutput)
+}
+
 // HDInsight cluster URI. Type: string (or Expression with resultType string).
 func (o HDInsightLinkedServiceResponseOutput) ClusterUri() pulumi.AnyOutput {
 	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.ClusterUri }).(pulumi.AnyOutput)
@@ -1773,6 +1800,11 @@ func (o HDInsightLinkedServiceResponseOutput) ClusterUri() pulumi.AnyOutput {
 // The integration runtime reference.
 func (o HDInsightLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
+}
+
+// The credential reference containing MI authentication information for the HDInsight cluster.
+func (o HDInsightLinkedServiceResponseOutput) Credential() CredentialReferenceResponsePtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
 }
 
 // Linked service description.
@@ -16008,8 +16040,12 @@ type LakeHouseLinkedService struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The ID of Microsoft Fabric Lakehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId interface{} `pulumi:"artifactId"`
+	// The authentication type to use.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -16052,8 +16088,12 @@ type LakeHouseLinkedServiceArgs struct {
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
 	// The ID of Microsoft Fabric Lakehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId pulumi.Input `pulumi:"artifactId"`
+	// The authentication type to use.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
+	// The credential reference containing authentication information.
+	Credential CredentialReferencePtrInput `pulumi:"credential"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -16116,9 +16156,19 @@ func (o LakeHouseLinkedServiceOutput) ArtifactId() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseLinkedService) interface{} { return v.ArtifactId }).(pulumi.AnyOutput)
 }
 
+// The authentication type to use.
+func (o LakeHouseLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LakeHouseLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // The integration runtime reference.
 func (o LakeHouseLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v LakeHouseLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
+}
+
+// The credential reference containing authentication information.
+func (o LakeHouseLinkedServiceOutput) Credential() CredentialReferencePtrOutput {
+	return o.ApplyT(func(v LakeHouseLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
 }
 
 // Linked service description.
@@ -16183,8 +16233,12 @@ type LakeHouseLinkedServiceResponse struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The ID of Microsoft Fabric Lakehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId interface{} `pulumi:"artifactId"`
+	// The authentication type to use.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -16235,9 +16289,19 @@ func (o LakeHouseLinkedServiceResponseOutput) ArtifactId() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) interface{} { return v.ArtifactId }).(pulumi.AnyOutput)
 }
 
+// The authentication type to use.
+func (o LakeHouseLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // The integration runtime reference.
 func (o LakeHouseLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
+}
+
+// The credential reference containing authentication information.
+func (o LakeHouseLinkedServiceResponseOutput) Credential() CredentialReferenceResponsePtrOutput {
+	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
 }
 
 // Linked service description.
@@ -19783,6 +19847,8 @@ type LookupActivity struct {
 	Source interface{} `pulumi:"source"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
 	State *string `pulumi:"state"`
+	// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+	TreatDecimalAsString interface{} `pulumi:"treatDecimalAsString"`
 	// Type of activity.
 	// Expected value is 'Lookup'.
 	Type string `pulumi:"type"`
@@ -19823,6 +19889,8 @@ type LookupActivityArgs struct {
 	Source pulumi.Input `pulumi:"source"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+	TreatDecimalAsString pulumi.Input `pulumi:"treatDecimalAsString"`
 	// Type of activity.
 	// Expected value is 'Lookup'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -19907,6 +19975,11 @@ func (o LookupActivityOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActivity) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+func (o LookupActivityOutput) TreatDecimalAsString() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupActivity) interface{} { return v.TreatDecimalAsString }).(pulumi.AnyOutput)
+}
+
 // Type of activity.
 // Expected value is 'Lookup'.
 func (o LookupActivityOutput) Type() pulumi.StringOutput {
@@ -19940,6 +20013,8 @@ type LookupActivityResponse struct {
 	Source interface{} `pulumi:"source"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
 	State *string `pulumi:"state"`
+	// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+	TreatDecimalAsString interface{} `pulumi:"treatDecimalAsString"`
 	// Type of activity.
 	// Expected value is 'Lookup'.
 	Type string `pulumi:"type"`
@@ -20010,6 +20085,11 @@ func (o LookupActivityResponseOutput) Source() pulumi.AnyOutput {
 // Activity state. This is an optional property and if not provided, the state will be Active by default.
 func (o LookupActivityResponseOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActivityResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+func (o LookupActivityResponseOutput) TreatDecimalAsString() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupActivityResponse) interface{} { return v.TreatDecimalAsString }).(pulumi.AnyOutput)
 }
 
 // Type of activity.
@@ -57708,6 +57788,8 @@ type SalesforceV2Source struct {
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// Page size for each http request, too large pageSize will caused timeout, default 300,000. Type: integer (or Expression with resultType integer).
 	PageSize interface{} `pulumi:"pageSize"`
+	// Partition option for the SalesforceV2 connector in copy activity, AutoDetect or None. Type: string (or Expression with resultType string).
+	PartitionOption interface{} `pulumi:"partitionOption"`
 	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
 	Query interface{} `pulumi:"query"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
@@ -57746,6 +57828,8 @@ type SalesforceV2SourceArgs struct {
 	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
 	// Page size for each http request, too large pageSize will caused timeout, default 300,000. Type: integer (or Expression with resultType integer).
 	PageSize pulumi.Input `pulumi:"pageSize"`
+	// Partition option for the SalesforceV2 connector in copy activity, AutoDetect or None. Type: string (or Expression with resultType string).
+	PartitionOption pulumi.Input `pulumi:"partitionOption"`
 	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
 	Query pulumi.Input `pulumi:"query"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
@@ -57813,6 +57897,11 @@ func (o SalesforceV2SourceOutput) PageSize() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.PageSize }).(pulumi.AnyOutput)
 }
 
+// Partition option for the SalesforceV2 connector in copy activity, AutoDetect or None. Type: string (or Expression with resultType string).
+func (o SalesforceV2SourceOutput) PartitionOption() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.PartitionOption }).(pulumi.AnyOutput)
+}
+
 // You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
 func (o SalesforceV2SourceOutput) Query() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.Query }).(pulumi.AnyOutput)
@@ -57856,6 +57945,8 @@ type SalesforceV2SourceResponse struct {
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// Page size for each http request, too large pageSize will caused timeout, default 300,000. Type: integer (or Expression with resultType integer).
 	PageSize interface{} `pulumi:"pageSize"`
+	// Partition option for the SalesforceV2 connector in copy activity, AutoDetect or None. Type: string (or Expression with resultType string).
+	PartitionOption interface{} `pulumi:"partitionOption"`
 	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
 	Query interface{} `pulumi:"query"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
@@ -57909,6 +58000,11 @@ func (o SalesforceV2SourceResponseOutput) MaxConcurrentConnections() pulumi.AnyO
 // Page size for each http request, too large pageSize will caused timeout, default 300,000. Type: integer (or Expression with resultType integer).
 func (o SalesforceV2SourceResponseOutput) PageSize() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.PageSize }).(pulumi.AnyOutput)
+}
+
+// Partition option for the SalesforceV2 connector in copy activity, AutoDetect or None. Type: string (or Expression with resultType string).
+func (o SalesforceV2SourceResponseOutput) PartitionOption() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.PartitionOption }).(pulumi.AnyOutput)
 }
 
 // You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).

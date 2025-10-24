@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSitesController(ctx *pulumi.Context, args *LookupSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSitesControllerResult

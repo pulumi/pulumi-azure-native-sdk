@@ -31,7 +31,7 @@ type ListNamespaceKeysArgs struct {
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -63,7 +63,7 @@ type ListNamespaceKeysOutputArgs struct {
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
 	// The namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

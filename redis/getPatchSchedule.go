@@ -27,7 +27,7 @@ func LookupPatchSchedule(ctx *pulumi.Context, args *LookupPatchScheduleArgs, opt
 }
 
 type LookupPatchScheduleArgs struct {
-	// Default string modeled as parameter for auto generation to work correctly.
+	// The name of the RedisPatchSchedule
 	Default string `pulumi:"default"`
 	// The name of the redis cache.
 	Name string `pulumi:"name"`
@@ -39,7 +39,7 @@ type LookupPatchScheduleArgs struct {
 type LookupPatchScheduleResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -47,6 +47,8 @@ type LookupPatchScheduleResult struct {
 	Name string `pulumi:"name"`
 	// List of patch schedules for a Redis cache.
 	ScheduleEntries []ScheduleEntryResponse `pulumi:"scheduleEntries"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -61,7 +63,7 @@ func LookupPatchScheduleOutput(ctx *pulumi.Context, args LookupPatchScheduleOutp
 }
 
 type LookupPatchScheduleOutputArgs struct {
-	// Default string modeled as parameter for auto generation to work correctly.
+	// The name of the RedisPatchSchedule
 	Default pulumi.StringInput `pulumi:"default"`
 	// The name of the redis cache.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -93,7 +95,7 @@ func (o LookupPatchScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPatchScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPatchScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPatchScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -111,6 +113,11 @@ func (o LookupPatchScheduleResultOutput) Name() pulumi.StringOutput {
 // List of patch schedules for a Redis cache.
 func (o LookupPatchScheduleResultOutput) ScheduleEntries() ScheduleEntryResponseArrayOutput {
 	return o.ApplyT(func(v LookupPatchScheduleResult) []ScheduleEntryResponse { return v.ScheduleEntries }).(ScheduleEntryResponseArrayOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupPatchScheduleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPatchScheduleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

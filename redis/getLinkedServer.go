@@ -27,7 +27,7 @@ func LookupLinkedServer(ctx *pulumi.Context, args *LookupLinkedServerArgs, opts 
 }
 
 type LookupLinkedServerArgs struct {
-	// The name of the linked server.
+	// The name of the RedisLinkedServerWithProperties
 	LinkedServerName string `pulumi:"linkedServerName"`
 	// The name of the redis cache.
 	Name string `pulumi:"name"`
@@ -41,7 +41,7 @@ type LookupLinkedServerResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The unchanging DNS name which will always point to current geo-primary cache among the linked redis caches for seamless Geo Failover experience.
 	GeoReplicatedPrimaryHostName string `pulumi:"geoReplicatedPrimaryHostName"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Fully qualified resourceId of the linked redis cache.
 	LinkedRedisCacheId string `pulumi:"linkedRedisCacheId"`
@@ -55,6 +55,8 @@ type LookupLinkedServerResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Role of the linked server.
 	ServerRole string `pulumi:"serverRole"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -69,7 +71,7 @@ func LookupLinkedServerOutput(ctx *pulumi.Context, args LookupLinkedServerOutput
 }
 
 type LookupLinkedServerOutputArgs struct {
-	// The name of the linked server.
+	// The name of the RedisLinkedServerWithProperties
 	LinkedServerName pulumi.StringInput `pulumi:"linkedServerName"`
 	// The name of the redis cache.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -106,7 +108,7 @@ func (o LookupLinkedServerResultOutput) GeoReplicatedPrimaryHostName() pulumi.St
 	return o.ApplyT(func(v LookupLinkedServerResult) string { return v.GeoReplicatedPrimaryHostName }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupLinkedServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -139,6 +141,11 @@ func (o LookupLinkedServerResultOutput) ProvisioningState() pulumi.StringOutput 
 // Role of the linked server.
 func (o LookupLinkedServerResultOutput) ServerRole() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServerResult) string { return v.ServerRole }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupLinkedServerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLinkedServerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

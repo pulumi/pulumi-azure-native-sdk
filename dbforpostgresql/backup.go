@@ -65,6 +65,9 @@ func NewBackup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20250601preview:Backup"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250801:Backup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

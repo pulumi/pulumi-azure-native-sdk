@@ -13,6 +13,139 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// The Private Endpoint resource.
+type PrivateEndpointResponse struct {
+	// The ARM identifier for Private Endpoint
+	Id string `pulumi:"id"`
+}
+
+// The Private Endpoint resource.
+type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
+	return o
+}
+
+// The ARM identifier for Private Endpoint
+func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointResponse
+		return ret
+	}).(PrivateEndpointResponseOutput)
+}
+
+// The ARM identifier for Private Endpoint
+func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionState struct {
+	// A message indicating if changes on the service provider require any updates on the consumer.
+	ActionsRequired *string `pulumi:"actionsRequired"`
+	// The reason for approval/rejection of the connection.
+	Description *string `pulumi:"description"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status *string `pulumi:"status"`
+}
+
+// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
+// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
+//
+//	PrivateLinkServiceConnectionStateArgs{...}
+type PrivateLinkServiceConnectionStateInput interface {
+	pulumi.Input
+
+	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
+	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateArgs struct {
+	// A message indicating if changes on the service provider require any updates on the consumer.
+	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
+	// The reason for approval/rejection of the connection.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
+	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
+	return o
+}
+
+// A message indicating if changes on the service provider require any updates on the consumer.
+func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
+}
+
+// The reason for approval/rejection of the connection.
+func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateResponse struct {
 	// A message indicating if changes on the service provider require any updates on the consumer.
@@ -3010,8 +3143,6 @@ type RegistryType struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Details of each region the registry is in
 	RegionDetails []RegistryRegionArmDetails `pulumi:"regionDetails"`
-	// RegistryId Guid for this registry
-	RegistryId *string `pulumi:"registryId"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnection `pulumi:"registryPrivateEndpointConnections"`
 }
@@ -3042,8 +3173,6 @@ type RegistryTypeArgs struct {
 	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
 	// Details of each region the registry is in
 	RegionDetails RegistryRegionArmDetailsArrayInput `pulumi:"regionDetails"`
-	// RegistryId Guid for this registry
-	RegistryId pulumi.StringPtrInput `pulumi:"registryId"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections RegistryPrivateEndpointConnectionArrayInput `pulumi:"registryPrivateEndpointConnections"`
 }
@@ -3104,11 +3233,6 @@ func (o RegistryTypeOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 // Details of each region the registry is in
 func (o RegistryTypeOutput) RegionDetails() RegistryRegionArmDetailsArrayOutput {
 	return o.ApplyT(func(v RegistryType) []RegistryRegionArmDetails { return v.RegionDetails }).(RegistryRegionArmDetailsArrayOutput)
-}
-
-// RegistryId Guid for this registry
-func (o RegistryTypeOutput) RegistryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryType) *string { return v.RegistryId }).(pulumi.StringPtrOutput)
 }
 
 // Private endpoint connections info used for pending connections in private link portal
@@ -4109,6 +4233,8 @@ type RegistryResponse struct {
 	IntellectualPropertyPublisher *string `pulumi:"intellectualPropertyPublisher"`
 	// ResourceId of the managed RG if the registry has system created resources
 	ManagedResourceGroup *ArmResourceIdResponse `pulumi:"managedResourceGroup"`
+	// Managed resource group specific settings
+	ManagedResourceGroupSettings *ManagedResourceGroupSettingsResponse `pulumi:"managedResourceGroupSettings"`
 	// MLFlow Registry URI for the Registry
 	MlFlowRegistryUri *string `pulumi:"mlFlowRegistryUri"`
 	// Is the Registry accessible from the internet?
@@ -4116,8 +4242,6 @@ type RegistryResponse struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Details of each region the registry is in
 	RegionDetails []RegistryRegionArmDetailsResponse `pulumi:"regionDetails"`
-	// RegistryId Guid for this registry
-	RegistryId *string `pulumi:"registryId"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnectionResponse `pulumi:"registryPrivateEndpointConnections"`
 }
@@ -4152,6 +4276,11 @@ func (o RegistryResponseOutput) ManagedResourceGroup() ArmResourceIdResponsePtrO
 	return o.ApplyT(func(v RegistryResponse) *ArmResourceIdResponse { return v.ManagedResourceGroup }).(ArmResourceIdResponsePtrOutput)
 }
 
+// Managed resource group specific settings
+func (o RegistryResponseOutput) ManagedResourceGroupSettings() ManagedResourceGroupSettingsResponsePtrOutput {
+	return o.ApplyT(func(v RegistryResponse) *ManagedResourceGroupSettingsResponse { return v.ManagedResourceGroupSettings }).(ManagedResourceGroupSettingsResponsePtrOutput)
+}
+
 // MLFlow Registry URI for the Registry
 func (o RegistryResponseOutput) MlFlowRegistryUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryResponse) *string { return v.MlFlowRegistryUri }).(pulumi.StringPtrOutput)
@@ -4166,11 +4295,6 @@ func (o RegistryResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 // Details of each region the registry is in
 func (o RegistryResponseOutput) RegionDetails() RegistryRegionArmDetailsResponseArrayOutput {
 	return o.ApplyT(func(v RegistryResponse) []RegistryRegionArmDetailsResponse { return v.RegionDetails }).(RegistryRegionArmDetailsResponseArrayOutput)
-}
-
-// RegistryId Guid for this registry
-func (o RegistryResponseOutput) RegistryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryResponse) *string { return v.RegistryId }).(pulumi.StringPtrOutput)
 }
 
 // Private endpoint connections info used for pending connections in private link portal
@@ -10149,7 +10273,7 @@ type ServiceTagOutboundRuleResponse struct {
 	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 	Destination *ServiceTagDestinationResponse `pulumi:"destination"`
 	// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
-	ErrorInformation *string  `pulumi:"errorInformation"`
+	ErrorInformation string   `pulumi:"errorInformation"`
 	ParentRuleNames  []string `pulumi:"parentRuleNames"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	Status *string `pulumi:"status"`
@@ -10184,8 +10308,8 @@ func (o ServiceTagOutboundRuleResponseOutput) Destination() ServiceTagDestinatio
 }
 
 // Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
-func (o ServiceTagOutboundRuleResponseOutput) ErrorInformation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *string { return v.ErrorInformation }).(pulumi.StringPtrOutput)
+func (o ServiceTagOutboundRuleResponseOutput) ErrorInformation() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) string { return v.ErrorInformation }).(pulumi.StringOutput)
 }
 
 func (o ServiceTagOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {
@@ -25909,6 +26033,9 @@ func (o WorkspaceHubConfigResponsePtrOutput) DefaultWorkspaceResourceGroup() pul
 }
 
 func init() {
+	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(ProbeSettingsOutput{})
 	pulumi.RegisterOutputType(ProbeSettingsPtrOutput{})

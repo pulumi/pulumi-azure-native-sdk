@@ -32,9 +32,9 @@ type HybridConnection struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Returns true if client authorization is needed for this hybrid connection; otherwise, false.
 	RequiresClientAuthorization pulumi.BoolPtrOutput `pulumi:"requiresClientAuthorization"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -109,7 +109,7 @@ type hybridConnectionArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// Returns true if client authorization is needed for this hybrid connection; otherwise, false.
 	RequiresClientAuthorization *bool `pulumi:"requiresClientAuthorization"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
 	UserMetadata *string `pulumi:"userMetadata"`
@@ -123,7 +123,7 @@ type HybridConnectionArgs struct {
 	NamespaceName pulumi.StringInput
 	// Returns true if client authorization is needed for this hybrid connection; otherwise, false.
 	RequiresClientAuthorization pulumi.BoolPtrInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
 	UserMetadata pulumi.StringPtrInput
@@ -196,12 +196,12 @@ func (o HybridConnectionOutput) RequiresClientAuthorization() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v *HybridConnection) pulumi.BoolPtrOutput { return v.RequiresClientAuthorization }).(pulumi.BoolPtrOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o HybridConnectionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *HybridConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o HybridConnectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *HybridConnection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -29,7 +29,7 @@ func LookupSitesByServiceGroup(ctx *pulumi.Context, args *LookupSitesByServiceGr
 type LookupSitesByServiceGroupArgs struct {
 	// The name of the service group
 	ServicegroupName string `pulumi:"servicegroupName"`
-	// The name of the site
+	// The name of the Site
 	SiteName string `pulumi:"siteName"`
 }
 
@@ -61,7 +61,7 @@ func LookupSitesByServiceGroupOutput(ctx *pulumi.Context, args LookupSitesByServ
 type LookupSitesByServiceGroupOutputArgs struct {
 	// The name of the service group
 	ServicegroupName pulumi.StringInput `pulumi:"servicegroupName"`
-	// The name of the site
+	// The name of the Site
 	SiteName pulumi.StringInput `pulumi:"siteName"`
 }
 

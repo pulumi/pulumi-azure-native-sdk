@@ -321,6 +321,586 @@ func (o AzureActiveDirectoryAppResponsePtrOutput) TenantId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Azure Blob Details
+type AzureBlob struct {
+	// Storage Account Key.
+	AccountKey *string `pulumi:"accountKey"`
+	// Authentication type used for accessing Azure Blob Storage.
+	AuthType *AuthType `pulumi:"authType"`
+	// Blob container name where backups are stored.
+	BlobContainerName *string `pulumi:"blobContainerName"`
+	// Identity details for authentication using a Managed Identity.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	// Resource Id of the storage account where backups are stored.
+	StorageAccountResourceId *string `pulumi:"storageAccountResourceId"`
+}
+
+// AzureBlobInput is an input type that accepts AzureBlobArgs and AzureBlobOutput values.
+// You can construct a concrete instance of `AzureBlobInput` via:
+//
+//	AzureBlobArgs{...}
+type AzureBlobInput interface {
+	pulumi.Input
+
+	ToAzureBlobOutput() AzureBlobOutput
+	ToAzureBlobOutputWithContext(context.Context) AzureBlobOutput
+}
+
+// Azure Blob Details
+type AzureBlobArgs struct {
+	// Storage Account Key.
+	AccountKey pulumi.StringPtrInput `pulumi:"accountKey"`
+	// Authentication type used for accessing Azure Blob Storage.
+	AuthType AuthTypePtrInput `pulumi:"authType"`
+	// Blob container name where backups are stored.
+	BlobContainerName pulumi.StringPtrInput `pulumi:"blobContainerName"`
+	// Identity details for authentication using a Managed Identity.
+	Identity ManagedServiceIdentityPtrInput `pulumi:"identity"`
+	// Resource Id of the storage account where backups are stored.
+	StorageAccountResourceId pulumi.StringPtrInput `pulumi:"storageAccountResourceId"`
+}
+
+func (AzureBlobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBlob)(nil)).Elem()
+}
+
+func (i AzureBlobArgs) ToAzureBlobOutput() AzureBlobOutput {
+	return i.ToAzureBlobOutputWithContext(context.Background())
+}
+
+func (i AzureBlobArgs) ToAzureBlobOutputWithContext(ctx context.Context) AzureBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobOutput)
+}
+
+func (i AzureBlobArgs) ToAzureBlobPtrOutput() AzureBlobPtrOutput {
+	return i.ToAzureBlobPtrOutputWithContext(context.Background())
+}
+
+func (i AzureBlobArgs) ToAzureBlobPtrOutputWithContext(ctx context.Context) AzureBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobOutput).ToAzureBlobPtrOutputWithContext(ctx)
+}
+
+// AzureBlobPtrInput is an input type that accepts AzureBlobArgs, AzureBlobPtr and AzureBlobPtrOutput values.
+// You can construct a concrete instance of `AzureBlobPtrInput` via:
+//
+//	        AzureBlobArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureBlobPtrInput interface {
+	pulumi.Input
+
+	ToAzureBlobPtrOutput() AzureBlobPtrOutput
+	ToAzureBlobPtrOutputWithContext(context.Context) AzureBlobPtrOutput
+}
+
+type azureBlobPtrType AzureBlobArgs
+
+func AzureBlobPtr(v *AzureBlobArgs) AzureBlobPtrInput {
+	return (*azureBlobPtrType)(v)
+}
+
+func (*azureBlobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBlob)(nil)).Elem()
+}
+
+func (i *azureBlobPtrType) ToAzureBlobPtrOutput() AzureBlobPtrOutput {
+	return i.ToAzureBlobPtrOutputWithContext(context.Background())
+}
+
+func (i *azureBlobPtrType) ToAzureBlobPtrOutputWithContext(ctx context.Context) AzureBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobPtrOutput)
+}
+
+// Azure Blob Details
+type AzureBlobOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBlob)(nil)).Elem()
+}
+
+func (o AzureBlobOutput) ToAzureBlobOutput() AzureBlobOutput {
+	return o
+}
+
+func (o AzureBlobOutput) ToAzureBlobOutputWithContext(ctx context.Context) AzureBlobOutput {
+	return o
+}
+
+func (o AzureBlobOutput) ToAzureBlobPtrOutput() AzureBlobPtrOutput {
+	return o.ToAzureBlobPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBlobOutput) ToAzureBlobPtrOutputWithContext(ctx context.Context) AzureBlobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureBlob) *AzureBlob {
+		return &v
+	}).(AzureBlobPtrOutput)
+}
+
+// Storage Account Key.
+func (o AzureBlobOutput) AccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlob) *string { return v.AccountKey }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type used for accessing Azure Blob Storage.
+func (o AzureBlobOutput) AuthType() AuthTypePtrOutput {
+	return o.ApplyT(func(v AzureBlob) *AuthType { return v.AuthType }).(AuthTypePtrOutput)
+}
+
+// Blob container name where backups are stored.
+func (o AzureBlobOutput) BlobContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlob) *string { return v.BlobContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Identity details for authentication using a Managed Identity.
+func (o AzureBlobOutput) Identity() ManagedServiceIdentityPtrOutput {
+	return o.ApplyT(func(v AzureBlob) *ManagedServiceIdentity { return v.Identity }).(ManagedServiceIdentityPtrOutput)
+}
+
+// Resource Id of the storage account where backups are stored.
+func (o AzureBlobOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlob) *string { return v.StorageAccountResourceId }).(pulumi.StringPtrOutput)
+}
+
+type AzureBlobPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBlob)(nil)).Elem()
+}
+
+func (o AzureBlobPtrOutput) ToAzureBlobPtrOutput() AzureBlobPtrOutput {
+	return o
+}
+
+func (o AzureBlobPtrOutput) ToAzureBlobPtrOutputWithContext(ctx context.Context) AzureBlobPtrOutput {
+	return o
+}
+
+func (o AzureBlobPtrOutput) Elem() AzureBlobOutput {
+	return o.ApplyT(func(v *AzureBlob) AzureBlob {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBlob
+		return ret
+	}).(AzureBlobOutput)
+}
+
+// Storage Account Key.
+func (o AzureBlobPtrOutput) AccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type used for accessing Azure Blob Storage.
+func (o AzureBlobPtrOutput) AuthType() AuthTypePtrOutput {
+	return o.ApplyT(func(v *AzureBlob) *AuthType {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(AuthTypePtrOutput)
+}
+
+// Blob container name where backups are stored.
+func (o AzureBlobPtrOutput) BlobContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlobContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity details for authentication using a Managed Identity.
+func (o AzureBlobPtrOutput) Identity() ManagedServiceIdentityPtrOutput {
+	return o.ApplyT(func(v *AzureBlob) *ManagedServiceIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+// Resource Id of the storage account where backups are stored.
+func (o AzureBlobPtrOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Details
+type AzureBlobResponse struct {
+	// Storage Account Key.
+	AccountKey *string `pulumi:"accountKey"`
+	// Authentication type used for accessing Azure Blob Storage.
+	AuthType *string `pulumi:"authType"`
+	// Blob container name where backups are stored.
+	BlobContainerName *string `pulumi:"blobContainerName"`
+	// Identity details for authentication using a Managed Identity.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// Resource Id of the storage account where backups are stored.
+	StorageAccountResourceId *string `pulumi:"storageAccountResourceId"`
+}
+
+// Azure Blob Details
+type AzureBlobResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBlobResponse)(nil)).Elem()
+}
+
+func (o AzureBlobResponseOutput) ToAzureBlobResponseOutput() AzureBlobResponseOutput {
+	return o
+}
+
+func (o AzureBlobResponseOutput) ToAzureBlobResponseOutputWithContext(ctx context.Context) AzureBlobResponseOutput {
+	return o
+}
+
+// Storage Account Key.
+func (o AzureBlobResponseOutput) AccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobResponse) *string { return v.AccountKey }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type used for accessing Azure Blob Storage.
+func (o AzureBlobResponseOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobResponse) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Blob container name where backups are stored.
+func (o AzureBlobResponseOutput) BlobContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobResponse) *string { return v.BlobContainerName }).(pulumi.StringPtrOutput)
+}
+
+// Identity details for authentication using a Managed Identity.
+func (o AzureBlobResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v AzureBlobResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// Resource Id of the storage account where backups are stored.
+func (o AzureBlobResponseOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobResponse) *string { return v.StorageAccountResourceId }).(pulumi.StringPtrOutput)
+}
+
+type AzureBlobResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBlobResponse)(nil)).Elem()
+}
+
+func (o AzureBlobResponsePtrOutput) ToAzureBlobResponsePtrOutput() AzureBlobResponsePtrOutput {
+	return o
+}
+
+func (o AzureBlobResponsePtrOutput) ToAzureBlobResponsePtrOutputWithContext(ctx context.Context) AzureBlobResponsePtrOutput {
+	return o
+}
+
+func (o AzureBlobResponsePtrOutput) Elem() AzureBlobResponseOutput {
+	return o.ApplyT(func(v *AzureBlobResponse) AzureBlobResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBlobResponse
+		return ret
+	}).(AzureBlobResponseOutput)
+}
+
+// Storage Account Key.
+func (o AzureBlobResponsePtrOutput) AccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type used for accessing Azure Blob Storage.
+func (o AzureBlobResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Blob container name where backups are stored.
+func (o AzureBlobResponsePtrOutput) BlobContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlobContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity details for authentication using a Managed Identity.
+func (o AzureBlobResponsePtrOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *AzureBlobResponse) *ManagedServiceIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// Resource Id of the storage account where backups are stored.
+func (o AzureBlobResponsePtrOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Backup Configuration
+type BackupConfiguration struct {
+	// Source location of backups.
+	SourceLocation *SourceLocation `pulumi:"sourceLocation"`
+	// Target location for copying backups.
+	TargetLocation *TargetLocation `pulumi:"targetLocation"`
+}
+
+// BackupConfigurationInput is an input type that accepts BackupConfigurationArgs and BackupConfigurationOutput values.
+// You can construct a concrete instance of `BackupConfigurationInput` via:
+//
+//	BackupConfigurationArgs{...}
+type BackupConfigurationInput interface {
+	pulumi.Input
+
+	ToBackupConfigurationOutput() BackupConfigurationOutput
+	ToBackupConfigurationOutputWithContext(context.Context) BackupConfigurationOutput
+}
+
+// Backup Configuration
+type BackupConfigurationArgs struct {
+	// Source location of backups.
+	SourceLocation SourceLocationPtrInput `pulumi:"sourceLocation"`
+	// Target location for copying backups.
+	TargetLocation TargetLocationPtrInput `pulumi:"targetLocation"`
+}
+
+func (BackupConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupConfiguration)(nil)).Elem()
+}
+
+func (i BackupConfigurationArgs) ToBackupConfigurationOutput() BackupConfigurationOutput {
+	return i.ToBackupConfigurationOutputWithContext(context.Background())
+}
+
+func (i BackupConfigurationArgs) ToBackupConfigurationOutputWithContext(ctx context.Context) BackupConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupConfigurationOutput)
+}
+
+func (i BackupConfigurationArgs) ToBackupConfigurationPtrOutput() BackupConfigurationPtrOutput {
+	return i.ToBackupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i BackupConfigurationArgs) ToBackupConfigurationPtrOutputWithContext(ctx context.Context) BackupConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupConfigurationOutput).ToBackupConfigurationPtrOutputWithContext(ctx)
+}
+
+// BackupConfigurationPtrInput is an input type that accepts BackupConfigurationArgs, BackupConfigurationPtr and BackupConfigurationPtrOutput values.
+// You can construct a concrete instance of `BackupConfigurationPtrInput` via:
+//
+//	        BackupConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToBackupConfigurationPtrOutput() BackupConfigurationPtrOutput
+	ToBackupConfigurationPtrOutputWithContext(context.Context) BackupConfigurationPtrOutput
+}
+
+type backupConfigurationPtrType BackupConfigurationArgs
+
+func BackupConfigurationPtr(v *BackupConfigurationArgs) BackupConfigurationPtrInput {
+	return (*backupConfigurationPtrType)(v)
+}
+
+func (*backupConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupConfiguration)(nil)).Elem()
+}
+
+func (i *backupConfigurationPtrType) ToBackupConfigurationPtrOutput() BackupConfigurationPtrOutput {
+	return i.ToBackupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *backupConfigurationPtrType) ToBackupConfigurationPtrOutputWithContext(ctx context.Context) BackupConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupConfigurationPtrOutput)
+}
+
+// Backup Configuration
+type BackupConfigurationOutput struct{ *pulumi.OutputState }
+
+func (BackupConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupConfiguration)(nil)).Elem()
+}
+
+func (o BackupConfigurationOutput) ToBackupConfigurationOutput() BackupConfigurationOutput {
+	return o
+}
+
+func (o BackupConfigurationOutput) ToBackupConfigurationOutputWithContext(ctx context.Context) BackupConfigurationOutput {
+	return o
+}
+
+func (o BackupConfigurationOutput) ToBackupConfigurationPtrOutput() BackupConfigurationPtrOutput {
+	return o.ToBackupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o BackupConfigurationOutput) ToBackupConfigurationPtrOutputWithContext(ctx context.Context) BackupConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupConfiguration) *BackupConfiguration {
+		return &v
+	}).(BackupConfigurationPtrOutput)
+}
+
+// Source location of backups.
+func (o BackupConfigurationOutput) SourceLocation() SourceLocationPtrOutput {
+	return o.ApplyT(func(v BackupConfiguration) *SourceLocation { return v.SourceLocation }).(SourceLocationPtrOutput)
+}
+
+// Target location for copying backups.
+func (o BackupConfigurationOutput) TargetLocation() TargetLocationPtrOutput {
+	return o.ApplyT(func(v BackupConfiguration) *TargetLocation { return v.TargetLocation }).(TargetLocationPtrOutput)
+}
+
+type BackupConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupConfiguration)(nil)).Elem()
+}
+
+func (o BackupConfigurationPtrOutput) ToBackupConfigurationPtrOutput() BackupConfigurationPtrOutput {
+	return o
+}
+
+func (o BackupConfigurationPtrOutput) ToBackupConfigurationPtrOutputWithContext(ctx context.Context) BackupConfigurationPtrOutput {
+	return o
+}
+
+func (o BackupConfigurationPtrOutput) Elem() BackupConfigurationOutput {
+	return o.ApplyT(func(v *BackupConfiguration) BackupConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret BackupConfiguration
+		return ret
+	}).(BackupConfigurationOutput)
+}
+
+// Source location of backups.
+func (o BackupConfigurationPtrOutput) SourceLocation() SourceLocationPtrOutput {
+	return o.ApplyT(func(v *BackupConfiguration) *SourceLocation {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLocation
+	}).(SourceLocationPtrOutput)
+}
+
+// Target location for copying backups.
+func (o BackupConfigurationPtrOutput) TargetLocation() TargetLocationPtrOutput {
+	return o.ApplyT(func(v *BackupConfiguration) *TargetLocation {
+		if v == nil {
+			return nil
+		}
+		return v.TargetLocation
+	}).(TargetLocationPtrOutput)
+}
+
+// Backup Configuration
+type BackupConfigurationResponse struct {
+	// Source location of backups.
+	SourceLocation *SourceLocationResponse `pulumi:"sourceLocation"`
+	// Target location for copying backups.
+	TargetLocation *TargetLocationResponse `pulumi:"targetLocation"`
+}
+
+// Backup Configuration
+type BackupConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (BackupConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupConfigurationResponse)(nil)).Elem()
+}
+
+func (o BackupConfigurationResponseOutput) ToBackupConfigurationResponseOutput() BackupConfigurationResponseOutput {
+	return o
+}
+
+func (o BackupConfigurationResponseOutput) ToBackupConfigurationResponseOutputWithContext(ctx context.Context) BackupConfigurationResponseOutput {
+	return o
+}
+
+// Source location of backups.
+func (o BackupConfigurationResponseOutput) SourceLocation() SourceLocationResponsePtrOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) *SourceLocationResponse { return v.SourceLocation }).(SourceLocationResponsePtrOutput)
+}
+
+// Target location for copying backups.
+func (o BackupConfigurationResponseOutput) TargetLocation() TargetLocationResponsePtrOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) *TargetLocationResponse { return v.TargetLocation }).(TargetLocationResponsePtrOutput)
+}
+
+type BackupConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupConfigurationResponse)(nil)).Elem()
+}
+
+func (o BackupConfigurationResponsePtrOutput) ToBackupConfigurationResponsePtrOutput() BackupConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BackupConfigurationResponsePtrOutput) ToBackupConfigurationResponsePtrOutputWithContext(ctx context.Context) BackupConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BackupConfigurationResponsePtrOutput) Elem() BackupConfigurationResponseOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) BackupConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackupConfigurationResponse
+		return ret
+	}).(BackupConfigurationResponseOutput)
+}
+
+// Source location of backups.
+func (o BackupConfigurationResponsePtrOutput) SourceLocation() SourceLocationResponsePtrOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) *SourceLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLocation
+	}).(SourceLocationResponsePtrOutput)
+}
+
+// Target location for copying backups.
+func (o BackupConfigurationResponsePtrOutput) TargetLocation() TargetLocationResponsePtrOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) *TargetLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TargetLocation
+	}).(TargetLocationResponsePtrOutput)
+}
+
 // Information of the backup file
 type BackupFileInfoResponse struct {
 	// Sequence number of the backup file in the backup set
@@ -9908,6 +10488,920 @@ func (o DatabaseMigrationPropertiesSqlDbResponseOutput) TargetSqlConnection() Sq
 	}).(SqlConnectionInformationResponsePtrOutput)
 }
 
+// Database Migration Resource properties for SQL Managed Instance.
+type DatabaseMigrationPropertiesSqlMi struct {
+	// Backup configuration info.
+	BackupConfiguration *BackupConfiguration `pulumi:"backupConfiguration"`
+	// Expected value is 'SqlMi'.
+	Kind string `pulumi:"kind"`
+	// ID for current migration operation.
+	MigrationOperationId *string `pulumi:"migrationOperationId"`
+	// Resource Id of the Migration Service.
+	MigrationService *string `pulumi:"migrationService"`
+	// Offline configuration.
+	OfflineConfiguration *OfflineConfiguration `pulumi:"offlineConfiguration"`
+	// Error message for migration provisioning failure, if any.
+	ProvisioningError *string `pulumi:"provisioningError"`
+	// Resource Id of the target resource.
+	Scope *string `pulumi:"scope"`
+	// Name of the source database.
+	SourceDatabaseName *string `pulumi:"sourceDatabaseName"`
+	// Source SQL Server connection details.
+	SourceSqlConnection *SqlConnectionInformation `pulumi:"sourceSqlConnection"`
+	// Database collation to be used for the target database.
+	TargetDatabaseCollation *string `pulumi:"targetDatabaseCollation"`
+}
+
+// DatabaseMigrationPropertiesSqlMiInput is an input type that accepts DatabaseMigrationPropertiesSqlMiArgs and DatabaseMigrationPropertiesSqlMiOutput values.
+// You can construct a concrete instance of `DatabaseMigrationPropertiesSqlMiInput` via:
+//
+//	DatabaseMigrationPropertiesSqlMiArgs{...}
+type DatabaseMigrationPropertiesSqlMiInput interface {
+	pulumi.Input
+
+	ToDatabaseMigrationPropertiesSqlMiOutput() DatabaseMigrationPropertiesSqlMiOutput
+	ToDatabaseMigrationPropertiesSqlMiOutputWithContext(context.Context) DatabaseMigrationPropertiesSqlMiOutput
+}
+
+// Database Migration Resource properties for SQL Managed Instance.
+type DatabaseMigrationPropertiesSqlMiArgs struct {
+	// Backup configuration info.
+	BackupConfiguration BackupConfigurationPtrInput `pulumi:"backupConfiguration"`
+	// Expected value is 'SqlMi'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// ID for current migration operation.
+	MigrationOperationId pulumi.StringPtrInput `pulumi:"migrationOperationId"`
+	// Resource Id of the Migration Service.
+	MigrationService pulumi.StringPtrInput `pulumi:"migrationService"`
+	// Offline configuration.
+	OfflineConfiguration OfflineConfigurationPtrInput `pulumi:"offlineConfiguration"`
+	// Error message for migration provisioning failure, if any.
+	ProvisioningError pulumi.StringPtrInput `pulumi:"provisioningError"`
+	// Resource Id of the target resource.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// Name of the source database.
+	SourceDatabaseName pulumi.StringPtrInput `pulumi:"sourceDatabaseName"`
+	// Source SQL Server connection details.
+	SourceSqlConnection SqlConnectionInformationPtrInput `pulumi:"sourceSqlConnection"`
+	// Database collation to be used for the target database.
+	TargetDatabaseCollation pulumi.StringPtrInput `pulumi:"targetDatabaseCollation"`
+}
+
+func (DatabaseMigrationPropertiesSqlMiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMigrationPropertiesSqlMi)(nil)).Elem()
+}
+
+func (i DatabaseMigrationPropertiesSqlMiArgs) ToDatabaseMigrationPropertiesSqlMiOutput() DatabaseMigrationPropertiesSqlMiOutput {
+	return i.ToDatabaseMigrationPropertiesSqlMiOutputWithContext(context.Background())
+}
+
+func (i DatabaseMigrationPropertiesSqlMiArgs) ToDatabaseMigrationPropertiesSqlMiOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlMiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMigrationPropertiesSqlMiOutput)
+}
+
+func (i DatabaseMigrationPropertiesSqlMiArgs) ToDatabaseMigrationPropertiesSqlMiPtrOutput() DatabaseMigrationPropertiesSqlMiPtrOutput {
+	return i.ToDatabaseMigrationPropertiesSqlMiPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseMigrationPropertiesSqlMiArgs) ToDatabaseMigrationPropertiesSqlMiPtrOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlMiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMigrationPropertiesSqlMiOutput).ToDatabaseMigrationPropertiesSqlMiPtrOutputWithContext(ctx)
+}
+
+// DatabaseMigrationPropertiesSqlMiPtrInput is an input type that accepts DatabaseMigrationPropertiesSqlMiArgs, DatabaseMigrationPropertiesSqlMiPtr and DatabaseMigrationPropertiesSqlMiPtrOutput values.
+// You can construct a concrete instance of `DatabaseMigrationPropertiesSqlMiPtrInput` via:
+//
+//	        DatabaseMigrationPropertiesSqlMiArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseMigrationPropertiesSqlMiPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseMigrationPropertiesSqlMiPtrOutput() DatabaseMigrationPropertiesSqlMiPtrOutput
+	ToDatabaseMigrationPropertiesSqlMiPtrOutputWithContext(context.Context) DatabaseMigrationPropertiesSqlMiPtrOutput
+}
+
+type databaseMigrationPropertiesSqlMiPtrType DatabaseMigrationPropertiesSqlMiArgs
+
+func DatabaseMigrationPropertiesSqlMiPtr(v *DatabaseMigrationPropertiesSqlMiArgs) DatabaseMigrationPropertiesSqlMiPtrInput {
+	return (*databaseMigrationPropertiesSqlMiPtrType)(v)
+}
+
+func (*databaseMigrationPropertiesSqlMiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMigrationPropertiesSqlMi)(nil)).Elem()
+}
+
+func (i *databaseMigrationPropertiesSqlMiPtrType) ToDatabaseMigrationPropertiesSqlMiPtrOutput() DatabaseMigrationPropertiesSqlMiPtrOutput {
+	return i.ToDatabaseMigrationPropertiesSqlMiPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseMigrationPropertiesSqlMiPtrType) ToDatabaseMigrationPropertiesSqlMiPtrOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlMiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMigrationPropertiesSqlMiPtrOutput)
+}
+
+// Database Migration Resource properties for SQL Managed Instance.
+type DatabaseMigrationPropertiesSqlMiOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMigrationPropertiesSqlMiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMigrationPropertiesSqlMi)(nil)).Elem()
+}
+
+func (o DatabaseMigrationPropertiesSqlMiOutput) ToDatabaseMigrationPropertiesSqlMiOutput() DatabaseMigrationPropertiesSqlMiOutput {
+	return o
+}
+
+func (o DatabaseMigrationPropertiesSqlMiOutput) ToDatabaseMigrationPropertiesSqlMiOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlMiOutput {
+	return o
+}
+
+func (o DatabaseMigrationPropertiesSqlMiOutput) ToDatabaseMigrationPropertiesSqlMiPtrOutput() DatabaseMigrationPropertiesSqlMiPtrOutput {
+	return o.ToDatabaseMigrationPropertiesSqlMiPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseMigrationPropertiesSqlMiOutput) ToDatabaseMigrationPropertiesSqlMiPtrOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlMiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseMigrationPropertiesSqlMi) *DatabaseMigrationPropertiesSqlMi {
+		return &v
+	}).(DatabaseMigrationPropertiesSqlMiPtrOutput)
+}
+
+// Backup configuration info.
+func (o DatabaseMigrationPropertiesSqlMiOutput) BackupConfiguration() BackupConfigurationPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMi) *BackupConfiguration { return v.BackupConfiguration }).(BackupConfigurationPtrOutput)
+}
+
+// Expected value is 'SqlMi'.
+func (o DatabaseMigrationPropertiesSqlMiOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMi) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// ID for current migration operation.
+func (o DatabaseMigrationPropertiesSqlMiOutput) MigrationOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMi) *string { return v.MigrationOperationId }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the Migration Service.
+func (o DatabaseMigrationPropertiesSqlMiOutput) MigrationService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMi) *string { return v.MigrationService }).(pulumi.StringPtrOutput)
+}
+
+// Offline configuration.
+func (o DatabaseMigrationPropertiesSqlMiOutput) OfflineConfiguration() OfflineConfigurationPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMi) *OfflineConfiguration { return v.OfflineConfiguration }).(OfflineConfigurationPtrOutput)
+}
+
+// Error message for migration provisioning failure, if any.
+func (o DatabaseMigrationPropertiesSqlMiOutput) ProvisioningError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMi) *string { return v.ProvisioningError }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the target resource.
+func (o DatabaseMigrationPropertiesSqlMiOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMi) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Name of the source database.
+func (o DatabaseMigrationPropertiesSqlMiOutput) SourceDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMi) *string { return v.SourceDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Source SQL Server connection details.
+func (o DatabaseMigrationPropertiesSqlMiOutput) SourceSqlConnection() SqlConnectionInformationPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMi) *SqlConnectionInformation { return v.SourceSqlConnection }).(SqlConnectionInformationPtrOutput)
+}
+
+// Database collation to be used for the target database.
+func (o DatabaseMigrationPropertiesSqlMiOutput) TargetDatabaseCollation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMi) *string { return v.TargetDatabaseCollation }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseMigrationPropertiesSqlMiPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMigrationPropertiesSqlMiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMigrationPropertiesSqlMi)(nil)).Elem()
+}
+
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) ToDatabaseMigrationPropertiesSqlMiPtrOutput() DatabaseMigrationPropertiesSqlMiPtrOutput {
+	return o
+}
+
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) ToDatabaseMigrationPropertiesSqlMiPtrOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlMiPtrOutput {
+	return o
+}
+
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) Elem() DatabaseMigrationPropertiesSqlMiOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlMi) DatabaseMigrationPropertiesSqlMi {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseMigrationPropertiesSqlMi
+		return ret
+	}).(DatabaseMigrationPropertiesSqlMiOutput)
+}
+
+// Backup configuration info.
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) BackupConfiguration() BackupConfigurationPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlMi) *BackupConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.BackupConfiguration
+	}).(BackupConfigurationPtrOutput)
+}
+
+// Expected value is 'SqlMi'.
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlMi) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID for current migration operation.
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) MigrationOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlMi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationOperationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the Migration Service.
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) MigrationService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlMi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationService
+	}).(pulumi.StringPtrOutput)
+}
+
+// Offline configuration.
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) OfflineConfiguration() OfflineConfigurationPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlMi) *OfflineConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.OfflineConfiguration
+	}).(OfflineConfigurationPtrOutput)
+}
+
+// Error message for migration provisioning failure, if any.
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) ProvisioningError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlMi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningError
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the target resource.
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlMi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the source database.
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) SourceDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlMi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceDatabaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source SQL Server connection details.
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) SourceSqlConnection() SqlConnectionInformationPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlMi) *SqlConnectionInformation {
+		if v == nil {
+			return nil
+		}
+		return v.SourceSqlConnection
+	}).(SqlConnectionInformationPtrOutput)
+}
+
+// Database collation to be used for the target database.
+func (o DatabaseMigrationPropertiesSqlMiPtrOutput) TargetDatabaseCollation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlMi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetDatabaseCollation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Database Migration Resource properties for SQL Managed Instance.
+type DatabaseMigrationPropertiesSqlMiResponse struct {
+	// Backup configuration info.
+	BackupConfiguration *BackupConfigurationResponse `pulumi:"backupConfiguration"`
+	// Database migration end time.
+	EndedOn string `pulumi:"endedOn"`
+	// Expected value is 'SqlMi'.
+	Kind string `pulumi:"kind"`
+	// Error details in case of migration failure.
+	MigrationFailureError ErrorInfoResponse `pulumi:"migrationFailureError"`
+	// ID for current migration operation.
+	MigrationOperationId *string `pulumi:"migrationOperationId"`
+	// Resource Id of the Migration Service.
+	MigrationService *string `pulumi:"migrationService"`
+	// Migration status.
+	MigrationStatus string `pulumi:"migrationStatus"`
+	// Detailed migration status. Not included by default.
+	MigrationStatusDetails MigrationStatusDetailsResponse `pulumi:"migrationStatusDetails"`
+	// Offline configuration.
+	OfflineConfiguration *OfflineConfigurationResponse `pulumi:"offlineConfiguration"`
+	// Error message for migration provisioning failure, if any.
+	ProvisioningError *string `pulumi:"provisioningError"`
+	// Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource Id of the target resource.
+	Scope *string `pulumi:"scope"`
+	// Name of the source database.
+	SourceDatabaseName *string `pulumi:"sourceDatabaseName"`
+	// Name of the source sql server.
+	SourceServerName string `pulumi:"sourceServerName"`
+	// Source SQL Server connection details.
+	SourceSqlConnection *SqlConnectionInformationResponse `pulumi:"sourceSqlConnection"`
+	// Database migration start time.
+	StartedOn string `pulumi:"startedOn"`
+	// Database collation to be used for the target database.
+	TargetDatabaseCollation *string `pulumi:"targetDatabaseCollation"`
+}
+
+// Database Migration Resource properties for SQL Managed Instance.
+type DatabaseMigrationPropertiesSqlMiResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMigrationPropertiesSqlMiResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMigrationPropertiesSqlMiResponse)(nil)).Elem()
+}
+
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) ToDatabaseMigrationPropertiesSqlMiResponseOutput() DatabaseMigrationPropertiesSqlMiResponseOutput {
+	return o
+}
+
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) ToDatabaseMigrationPropertiesSqlMiResponseOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlMiResponseOutput {
+	return o
+}
+
+// Backup configuration info.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) BackupConfiguration() BackupConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) *BackupConfigurationResponse {
+		return v.BackupConfiguration
+	}).(BackupConfigurationResponsePtrOutput)
+}
+
+// Database migration end time.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) EndedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) string { return v.EndedOn }).(pulumi.StringOutput)
+}
+
+// Expected value is 'SqlMi'.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Error details in case of migration failure.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) MigrationFailureError() ErrorInfoResponseOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) ErrorInfoResponse { return v.MigrationFailureError }).(ErrorInfoResponseOutput)
+}
+
+// ID for current migration operation.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) MigrationOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) *string { return v.MigrationOperationId }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the Migration Service.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) MigrationService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) *string { return v.MigrationService }).(pulumi.StringPtrOutput)
+}
+
+// Migration status.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) MigrationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) string { return v.MigrationStatus }).(pulumi.StringOutput)
+}
+
+// Detailed migration status. Not included by default.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) MigrationStatusDetails() MigrationStatusDetailsResponseOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) MigrationStatusDetailsResponse {
+		return v.MigrationStatusDetails
+	}).(MigrationStatusDetailsResponseOutput)
+}
+
+// Offline configuration.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) OfflineConfiguration() OfflineConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) *OfflineConfigurationResponse {
+		return v.OfflineConfiguration
+	}).(OfflineConfigurationResponsePtrOutput)
+}
+
+// Error message for migration provisioning failure, if any.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) ProvisioningError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) *string { return v.ProvisioningError }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Resource Id of the target resource.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Name of the source database.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) SourceDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) *string { return v.SourceDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the source sql server.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) SourceServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) string { return v.SourceServerName }).(pulumi.StringOutput)
+}
+
+// Source SQL Server connection details.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) SourceSqlConnection() SqlConnectionInformationResponsePtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) *SqlConnectionInformationResponse {
+		return v.SourceSqlConnection
+	}).(SqlConnectionInformationResponsePtrOutput)
+}
+
+// Database migration start time.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) StartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) string { return v.StartedOn }).(pulumi.StringOutput)
+}
+
+// Database collation to be used for the target database.
+func (o DatabaseMigrationPropertiesSqlMiResponseOutput) TargetDatabaseCollation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlMiResponse) *string { return v.TargetDatabaseCollation }).(pulumi.StringPtrOutput)
+}
+
+// Database Migration Resource properties for SQL Virtual Machine.
+type DatabaseMigrationPropertiesSqlVm struct {
+	// Backup configuration info.
+	BackupConfiguration *BackupConfiguration `pulumi:"backupConfiguration"`
+	// Expected value is 'SqlVm'.
+	Kind string `pulumi:"kind"`
+	// ID for current migration operation.
+	MigrationOperationId *string `pulumi:"migrationOperationId"`
+	// Resource Id of the Migration Service.
+	MigrationService *string `pulumi:"migrationService"`
+	// Offline configuration.
+	OfflineConfiguration *OfflineConfiguration `pulumi:"offlineConfiguration"`
+	// Error message for migration provisioning failure, if any.
+	ProvisioningError *string `pulumi:"provisioningError"`
+	// Resource Id of the target resource.
+	Scope *string `pulumi:"scope"`
+	// Name of the source database.
+	SourceDatabaseName *string `pulumi:"sourceDatabaseName"`
+	// Source SQL Server connection details.
+	SourceSqlConnection *SqlConnectionInformation `pulumi:"sourceSqlConnection"`
+	// Database collation to be used for the target database.
+	TargetDatabaseCollation *string `pulumi:"targetDatabaseCollation"`
+}
+
+// DatabaseMigrationPropertiesSqlVmInput is an input type that accepts DatabaseMigrationPropertiesSqlVmArgs and DatabaseMigrationPropertiesSqlVmOutput values.
+// You can construct a concrete instance of `DatabaseMigrationPropertiesSqlVmInput` via:
+//
+//	DatabaseMigrationPropertiesSqlVmArgs{...}
+type DatabaseMigrationPropertiesSqlVmInput interface {
+	pulumi.Input
+
+	ToDatabaseMigrationPropertiesSqlVmOutput() DatabaseMigrationPropertiesSqlVmOutput
+	ToDatabaseMigrationPropertiesSqlVmOutputWithContext(context.Context) DatabaseMigrationPropertiesSqlVmOutput
+}
+
+// Database Migration Resource properties for SQL Virtual Machine.
+type DatabaseMigrationPropertiesSqlVmArgs struct {
+	// Backup configuration info.
+	BackupConfiguration BackupConfigurationPtrInput `pulumi:"backupConfiguration"`
+	// Expected value is 'SqlVm'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// ID for current migration operation.
+	MigrationOperationId pulumi.StringPtrInput `pulumi:"migrationOperationId"`
+	// Resource Id of the Migration Service.
+	MigrationService pulumi.StringPtrInput `pulumi:"migrationService"`
+	// Offline configuration.
+	OfflineConfiguration OfflineConfigurationPtrInput `pulumi:"offlineConfiguration"`
+	// Error message for migration provisioning failure, if any.
+	ProvisioningError pulumi.StringPtrInput `pulumi:"provisioningError"`
+	// Resource Id of the target resource.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// Name of the source database.
+	SourceDatabaseName pulumi.StringPtrInput `pulumi:"sourceDatabaseName"`
+	// Source SQL Server connection details.
+	SourceSqlConnection SqlConnectionInformationPtrInput `pulumi:"sourceSqlConnection"`
+	// Database collation to be used for the target database.
+	TargetDatabaseCollation pulumi.StringPtrInput `pulumi:"targetDatabaseCollation"`
+}
+
+func (DatabaseMigrationPropertiesSqlVmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMigrationPropertiesSqlVm)(nil)).Elem()
+}
+
+func (i DatabaseMigrationPropertiesSqlVmArgs) ToDatabaseMigrationPropertiesSqlVmOutput() DatabaseMigrationPropertiesSqlVmOutput {
+	return i.ToDatabaseMigrationPropertiesSqlVmOutputWithContext(context.Background())
+}
+
+func (i DatabaseMigrationPropertiesSqlVmArgs) ToDatabaseMigrationPropertiesSqlVmOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlVmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMigrationPropertiesSqlVmOutput)
+}
+
+func (i DatabaseMigrationPropertiesSqlVmArgs) ToDatabaseMigrationPropertiesSqlVmPtrOutput() DatabaseMigrationPropertiesSqlVmPtrOutput {
+	return i.ToDatabaseMigrationPropertiesSqlVmPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseMigrationPropertiesSqlVmArgs) ToDatabaseMigrationPropertiesSqlVmPtrOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlVmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMigrationPropertiesSqlVmOutput).ToDatabaseMigrationPropertiesSqlVmPtrOutputWithContext(ctx)
+}
+
+// DatabaseMigrationPropertiesSqlVmPtrInput is an input type that accepts DatabaseMigrationPropertiesSqlVmArgs, DatabaseMigrationPropertiesSqlVmPtr and DatabaseMigrationPropertiesSqlVmPtrOutput values.
+// You can construct a concrete instance of `DatabaseMigrationPropertiesSqlVmPtrInput` via:
+//
+//	        DatabaseMigrationPropertiesSqlVmArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseMigrationPropertiesSqlVmPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseMigrationPropertiesSqlVmPtrOutput() DatabaseMigrationPropertiesSqlVmPtrOutput
+	ToDatabaseMigrationPropertiesSqlVmPtrOutputWithContext(context.Context) DatabaseMigrationPropertiesSqlVmPtrOutput
+}
+
+type databaseMigrationPropertiesSqlVmPtrType DatabaseMigrationPropertiesSqlVmArgs
+
+func DatabaseMigrationPropertiesSqlVmPtr(v *DatabaseMigrationPropertiesSqlVmArgs) DatabaseMigrationPropertiesSqlVmPtrInput {
+	return (*databaseMigrationPropertiesSqlVmPtrType)(v)
+}
+
+func (*databaseMigrationPropertiesSqlVmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMigrationPropertiesSqlVm)(nil)).Elem()
+}
+
+func (i *databaseMigrationPropertiesSqlVmPtrType) ToDatabaseMigrationPropertiesSqlVmPtrOutput() DatabaseMigrationPropertiesSqlVmPtrOutput {
+	return i.ToDatabaseMigrationPropertiesSqlVmPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseMigrationPropertiesSqlVmPtrType) ToDatabaseMigrationPropertiesSqlVmPtrOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlVmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMigrationPropertiesSqlVmPtrOutput)
+}
+
+// Database Migration Resource properties for SQL Virtual Machine.
+type DatabaseMigrationPropertiesSqlVmOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMigrationPropertiesSqlVmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMigrationPropertiesSqlVm)(nil)).Elem()
+}
+
+func (o DatabaseMigrationPropertiesSqlVmOutput) ToDatabaseMigrationPropertiesSqlVmOutput() DatabaseMigrationPropertiesSqlVmOutput {
+	return o
+}
+
+func (o DatabaseMigrationPropertiesSqlVmOutput) ToDatabaseMigrationPropertiesSqlVmOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlVmOutput {
+	return o
+}
+
+func (o DatabaseMigrationPropertiesSqlVmOutput) ToDatabaseMigrationPropertiesSqlVmPtrOutput() DatabaseMigrationPropertiesSqlVmPtrOutput {
+	return o.ToDatabaseMigrationPropertiesSqlVmPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseMigrationPropertiesSqlVmOutput) ToDatabaseMigrationPropertiesSqlVmPtrOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlVmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseMigrationPropertiesSqlVm) *DatabaseMigrationPropertiesSqlVm {
+		return &v
+	}).(DatabaseMigrationPropertiesSqlVmPtrOutput)
+}
+
+// Backup configuration info.
+func (o DatabaseMigrationPropertiesSqlVmOutput) BackupConfiguration() BackupConfigurationPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVm) *BackupConfiguration { return v.BackupConfiguration }).(BackupConfigurationPtrOutput)
+}
+
+// Expected value is 'SqlVm'.
+func (o DatabaseMigrationPropertiesSqlVmOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVm) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// ID for current migration operation.
+func (o DatabaseMigrationPropertiesSqlVmOutput) MigrationOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVm) *string { return v.MigrationOperationId }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the Migration Service.
+func (o DatabaseMigrationPropertiesSqlVmOutput) MigrationService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVm) *string { return v.MigrationService }).(pulumi.StringPtrOutput)
+}
+
+// Offline configuration.
+func (o DatabaseMigrationPropertiesSqlVmOutput) OfflineConfiguration() OfflineConfigurationPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVm) *OfflineConfiguration { return v.OfflineConfiguration }).(OfflineConfigurationPtrOutput)
+}
+
+// Error message for migration provisioning failure, if any.
+func (o DatabaseMigrationPropertiesSqlVmOutput) ProvisioningError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVm) *string { return v.ProvisioningError }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the target resource.
+func (o DatabaseMigrationPropertiesSqlVmOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVm) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Name of the source database.
+func (o DatabaseMigrationPropertiesSqlVmOutput) SourceDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVm) *string { return v.SourceDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Source SQL Server connection details.
+func (o DatabaseMigrationPropertiesSqlVmOutput) SourceSqlConnection() SqlConnectionInformationPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVm) *SqlConnectionInformation { return v.SourceSqlConnection }).(SqlConnectionInformationPtrOutput)
+}
+
+// Database collation to be used for the target database.
+func (o DatabaseMigrationPropertiesSqlVmOutput) TargetDatabaseCollation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVm) *string { return v.TargetDatabaseCollation }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseMigrationPropertiesSqlVmPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMigrationPropertiesSqlVmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseMigrationPropertiesSqlVm)(nil)).Elem()
+}
+
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) ToDatabaseMigrationPropertiesSqlVmPtrOutput() DatabaseMigrationPropertiesSqlVmPtrOutput {
+	return o
+}
+
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) ToDatabaseMigrationPropertiesSqlVmPtrOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlVmPtrOutput {
+	return o
+}
+
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) Elem() DatabaseMigrationPropertiesSqlVmOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlVm) DatabaseMigrationPropertiesSqlVm {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseMigrationPropertiesSqlVm
+		return ret
+	}).(DatabaseMigrationPropertiesSqlVmOutput)
+}
+
+// Backup configuration info.
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) BackupConfiguration() BackupConfigurationPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlVm) *BackupConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.BackupConfiguration
+	}).(BackupConfigurationPtrOutput)
+}
+
+// Expected value is 'SqlVm'.
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlVm) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID for current migration operation.
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) MigrationOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlVm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationOperationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the Migration Service.
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) MigrationService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlVm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationService
+	}).(pulumi.StringPtrOutput)
+}
+
+// Offline configuration.
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) OfflineConfiguration() OfflineConfigurationPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlVm) *OfflineConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.OfflineConfiguration
+	}).(OfflineConfigurationPtrOutput)
+}
+
+// Error message for migration provisioning failure, if any.
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) ProvisioningError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlVm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningError
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the target resource.
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlVm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the source database.
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) SourceDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlVm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceDatabaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source SQL Server connection details.
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) SourceSqlConnection() SqlConnectionInformationPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlVm) *SqlConnectionInformation {
+		if v == nil {
+			return nil
+		}
+		return v.SourceSqlConnection
+	}).(SqlConnectionInformationPtrOutput)
+}
+
+// Database collation to be used for the target database.
+func (o DatabaseMigrationPropertiesSqlVmPtrOutput) TargetDatabaseCollation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlVm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetDatabaseCollation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Database Migration Resource properties for SQL Virtual Machine.
+type DatabaseMigrationPropertiesSqlVmResponse struct {
+	// Backup configuration info.
+	BackupConfiguration *BackupConfigurationResponse `pulumi:"backupConfiguration"`
+	// Database migration end time.
+	EndedOn string `pulumi:"endedOn"`
+	// Expected value is 'SqlVm'.
+	Kind string `pulumi:"kind"`
+	// Error details in case of migration failure.
+	MigrationFailureError ErrorInfoResponse `pulumi:"migrationFailureError"`
+	// ID for current migration operation.
+	MigrationOperationId *string `pulumi:"migrationOperationId"`
+	// Resource Id of the Migration Service.
+	MigrationService *string `pulumi:"migrationService"`
+	// Migration status.
+	MigrationStatus string `pulumi:"migrationStatus"`
+	// Detailed migration status. Not included by default.
+	MigrationStatusDetails MigrationStatusDetailsResponse `pulumi:"migrationStatusDetails"`
+	// Offline configuration.
+	OfflineConfiguration *OfflineConfigurationResponse `pulumi:"offlineConfiguration"`
+	// Error message for migration provisioning failure, if any.
+	ProvisioningError *string `pulumi:"provisioningError"`
+	// Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource Id of the target resource.
+	Scope *string `pulumi:"scope"`
+	// Name of the source database.
+	SourceDatabaseName *string `pulumi:"sourceDatabaseName"`
+	// Name of the source sql server.
+	SourceServerName string `pulumi:"sourceServerName"`
+	// Source SQL Server connection details.
+	SourceSqlConnection *SqlConnectionInformationResponse `pulumi:"sourceSqlConnection"`
+	// Database migration start time.
+	StartedOn string `pulumi:"startedOn"`
+	// Database collation to be used for the target database.
+	TargetDatabaseCollation *string `pulumi:"targetDatabaseCollation"`
+}
+
+// Database Migration Resource properties for SQL Virtual Machine.
+type DatabaseMigrationPropertiesSqlVmResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseMigrationPropertiesSqlVmResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseMigrationPropertiesSqlVmResponse)(nil)).Elem()
+}
+
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) ToDatabaseMigrationPropertiesSqlVmResponseOutput() DatabaseMigrationPropertiesSqlVmResponseOutput {
+	return o
+}
+
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) ToDatabaseMigrationPropertiesSqlVmResponseOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlVmResponseOutput {
+	return o
+}
+
+// Backup configuration info.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) BackupConfiguration() BackupConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) *BackupConfigurationResponse {
+		return v.BackupConfiguration
+	}).(BackupConfigurationResponsePtrOutput)
+}
+
+// Database migration end time.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) EndedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) string { return v.EndedOn }).(pulumi.StringOutput)
+}
+
+// Expected value is 'SqlVm'.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Error details in case of migration failure.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) MigrationFailureError() ErrorInfoResponseOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) ErrorInfoResponse { return v.MigrationFailureError }).(ErrorInfoResponseOutput)
+}
+
+// ID for current migration operation.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) MigrationOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) *string { return v.MigrationOperationId }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the Migration Service.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) MigrationService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) *string { return v.MigrationService }).(pulumi.StringPtrOutput)
+}
+
+// Migration status.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) MigrationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) string { return v.MigrationStatus }).(pulumi.StringOutput)
+}
+
+// Detailed migration status. Not included by default.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) MigrationStatusDetails() MigrationStatusDetailsResponseOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) MigrationStatusDetailsResponse {
+		return v.MigrationStatusDetails
+	}).(MigrationStatusDetailsResponseOutput)
+}
+
+// Offline configuration.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) OfflineConfiguration() OfflineConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) *OfflineConfigurationResponse {
+		return v.OfflineConfiguration
+	}).(OfflineConfigurationResponsePtrOutput)
+}
+
+// Error message for migration provisioning failure, if any.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) ProvisioningError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) *string { return v.ProvisioningError }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Resource Id of the target resource.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Name of the source database.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) SourceDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) *string { return v.SourceDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the source sql server.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) SourceServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) string { return v.SourceServerName }).(pulumi.StringOutput)
+}
+
+// Source SQL Server connection details.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) SourceSqlConnection() SqlConnectionInformationResponsePtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) *SqlConnectionInformationResponse {
+		return v.SourceSqlConnection
+	}).(SqlConnectionInformationResponsePtrOutput)
+}
+
+// Database migration start time.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) StartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) string { return v.StartedOn }).(pulumi.StringOutput)
+}
+
+// Database collation to be used for the target database.
+func (o DatabaseMigrationPropertiesSqlVmResponseOutput) TargetDatabaseCollation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlVmResponse) *string { return v.TargetDatabaseCollation }).(pulumi.StringPtrOutput)
+}
+
 // Summary of database results in the migration
 type DatabaseSummaryResultResponse struct {
 	// Migration end time
@@ -14328,6 +15822,278 @@ func (o GetUserTablesSqlTaskPropertiesResponseOutput) TaskId() pulumi.StringPtrO
 // Expected value is 'GetUserTables.Sql'.
 func (o GetUserTablesSqlTaskPropertiesResponseOutput) TaskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserTablesSqlTaskPropertiesResponse) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentity struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+//
+//	ManagedServiceIdentityArgs{...}
+type ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
+	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityArgs struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+//
+//	        ManagedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
+	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+}
+
+type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+
+func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
+	return (*managedServiceIdentityPtrType)(v)
+}
+
+func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+		return &v
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentity
+		return ret
+	}).(ManagedServiceIdentityOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityResponse
+		return ret
+	}).(ManagedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // Properties required to create a connection to Azure SQL database Managed instance
@@ -27585,6 +29351,116 @@ func (o MigrationReportResultResponsePtrOutput) ReportUrl() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Detailed status of current migration.
+type MigrationStatusDetailsResponse struct {
+	// Backup sets that are currently active.
+	ActiveBackupSets []SqlBackupSetInfoResponse `pulumi:"activeBackupSets"`
+	// Name of blob container.
+	BlobContainerName string `pulumi:"blobContainerName"`
+	// Complete restore error message, if any
+	CompleteRestoreErrorMessage string `pulumi:"completeRestoreErrorMessage"`
+	// File name that is currently being restored.
+	CurrentRestoringFilename string `pulumi:"currentRestoringFilename"`
+	// File upload blocking errors, if any.
+	FileUploadBlockingErrors []string `pulumi:"fileUploadBlockingErrors"`
+	// Details of full backup set.
+	FullBackupSetInfo SqlBackupSetInfoResponse `pulumi:"fullBackupSetInfo"`
+	// Files that are not valid backup files.
+	InvalidFiles []string `pulumi:"invalidFiles"`
+	// Whether full backup has been applied to the target database or not.
+	IsFullBackupRestored bool `pulumi:"isFullBackupRestored"`
+	// Last applied backup set information.
+	LastRestoredBackupSetInfo SqlBackupSetInfoResponse `pulumi:"lastRestoredBackupSetInfo"`
+	// Last restored file name.
+	LastRestoredFilename string `pulumi:"lastRestoredFilename"`
+	// Current State of Migration.
+	MigrationState string `pulumi:"migrationState"`
+	// Total pending log backups.
+	PendingLogBackupsCount int `pulumi:"pendingLogBackupsCount"`
+	// Restore blocking reason, if any
+	RestoreBlockingReason string `pulumi:"restoreBlockingReason"`
+}
+
+// Detailed status of current migration.
+type MigrationStatusDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (MigrationStatusDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationStatusDetailsResponse)(nil)).Elem()
+}
+
+func (o MigrationStatusDetailsResponseOutput) ToMigrationStatusDetailsResponseOutput() MigrationStatusDetailsResponseOutput {
+	return o
+}
+
+func (o MigrationStatusDetailsResponseOutput) ToMigrationStatusDetailsResponseOutputWithContext(ctx context.Context) MigrationStatusDetailsResponseOutput {
+	return o
+}
+
+// Backup sets that are currently active.
+func (o MigrationStatusDetailsResponseOutput) ActiveBackupSets() SqlBackupSetInfoResponseArrayOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) []SqlBackupSetInfoResponse { return v.ActiveBackupSets }).(SqlBackupSetInfoResponseArrayOutput)
+}
+
+// Name of blob container.
+func (o MigrationStatusDetailsResponseOutput) BlobContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) string { return v.BlobContainerName }).(pulumi.StringOutput)
+}
+
+// Complete restore error message, if any
+func (o MigrationStatusDetailsResponseOutput) CompleteRestoreErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) string { return v.CompleteRestoreErrorMessage }).(pulumi.StringOutput)
+}
+
+// File name that is currently being restored.
+func (o MigrationStatusDetailsResponseOutput) CurrentRestoringFilename() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) string { return v.CurrentRestoringFilename }).(pulumi.StringOutput)
+}
+
+// File upload blocking errors, if any.
+func (o MigrationStatusDetailsResponseOutput) FileUploadBlockingErrors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) []string { return v.FileUploadBlockingErrors }).(pulumi.StringArrayOutput)
+}
+
+// Details of full backup set.
+func (o MigrationStatusDetailsResponseOutput) FullBackupSetInfo() SqlBackupSetInfoResponseOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) SqlBackupSetInfoResponse { return v.FullBackupSetInfo }).(SqlBackupSetInfoResponseOutput)
+}
+
+// Files that are not valid backup files.
+func (o MigrationStatusDetailsResponseOutput) InvalidFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) []string { return v.InvalidFiles }).(pulumi.StringArrayOutput)
+}
+
+// Whether full backup has been applied to the target database or not.
+func (o MigrationStatusDetailsResponseOutput) IsFullBackupRestored() pulumi.BoolOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) bool { return v.IsFullBackupRestored }).(pulumi.BoolOutput)
+}
+
+// Last applied backup set information.
+func (o MigrationStatusDetailsResponseOutput) LastRestoredBackupSetInfo() SqlBackupSetInfoResponseOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) SqlBackupSetInfoResponse { return v.LastRestoredBackupSetInfo }).(SqlBackupSetInfoResponseOutput)
+}
+
+// Last restored file name.
+func (o MigrationStatusDetailsResponseOutput) LastRestoredFilename() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) string { return v.LastRestoredFilename }).(pulumi.StringOutput)
+}
+
+// Current State of Migration.
+func (o MigrationStatusDetailsResponseOutput) MigrationState() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) string { return v.MigrationState }).(pulumi.StringOutput)
+}
+
+// Total pending log backups.
+func (o MigrationStatusDetailsResponseOutput) PendingLogBackupsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) int { return v.PendingLogBackupsCount }).(pulumi.IntOutput)
+}
+
+// Restore blocking reason, if any
+func (o MigrationStatusDetailsResponseOutput) RestoreBlockingReason() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationStatusDetailsResponse) string { return v.RestoreBlockingReason }).(pulumi.StringOutput)
+}
+
 // Migration Validation Database level summary result
 type MigrationValidationDatabaseSummaryResultResponse struct {
 	// Validation end time
@@ -32304,6 +34180,242 @@ func (o ODataErrorResponseArrayOutput) Index(i pulumi.IntInput) ODataErrorRespon
 	}).(ODataErrorResponseOutput)
 }
 
+// Offline configuration
+type OfflineConfiguration struct {
+	// Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
+	LastBackupName *string `pulumi:"lastBackupName"`
+	// Offline migration
+	Offline *bool `pulumi:"offline"`
+}
+
+// OfflineConfigurationInput is an input type that accepts OfflineConfigurationArgs and OfflineConfigurationOutput values.
+// You can construct a concrete instance of `OfflineConfigurationInput` via:
+//
+//	OfflineConfigurationArgs{...}
+type OfflineConfigurationInput interface {
+	pulumi.Input
+
+	ToOfflineConfigurationOutput() OfflineConfigurationOutput
+	ToOfflineConfigurationOutputWithContext(context.Context) OfflineConfigurationOutput
+}
+
+// Offline configuration
+type OfflineConfigurationArgs struct {
+	// Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
+	LastBackupName pulumi.StringPtrInput `pulumi:"lastBackupName"`
+	// Offline migration
+	Offline pulumi.BoolPtrInput `pulumi:"offline"`
+}
+
+func (OfflineConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OfflineConfiguration)(nil)).Elem()
+}
+
+func (i OfflineConfigurationArgs) ToOfflineConfigurationOutput() OfflineConfigurationOutput {
+	return i.ToOfflineConfigurationOutputWithContext(context.Background())
+}
+
+func (i OfflineConfigurationArgs) ToOfflineConfigurationOutputWithContext(ctx context.Context) OfflineConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OfflineConfigurationOutput)
+}
+
+func (i OfflineConfigurationArgs) ToOfflineConfigurationPtrOutput() OfflineConfigurationPtrOutput {
+	return i.ToOfflineConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i OfflineConfigurationArgs) ToOfflineConfigurationPtrOutputWithContext(ctx context.Context) OfflineConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OfflineConfigurationOutput).ToOfflineConfigurationPtrOutputWithContext(ctx)
+}
+
+// OfflineConfigurationPtrInput is an input type that accepts OfflineConfigurationArgs, OfflineConfigurationPtr and OfflineConfigurationPtrOutput values.
+// You can construct a concrete instance of `OfflineConfigurationPtrInput` via:
+//
+//	        OfflineConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type OfflineConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToOfflineConfigurationPtrOutput() OfflineConfigurationPtrOutput
+	ToOfflineConfigurationPtrOutputWithContext(context.Context) OfflineConfigurationPtrOutput
+}
+
+type offlineConfigurationPtrType OfflineConfigurationArgs
+
+func OfflineConfigurationPtr(v *OfflineConfigurationArgs) OfflineConfigurationPtrInput {
+	return (*offlineConfigurationPtrType)(v)
+}
+
+func (*offlineConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OfflineConfiguration)(nil)).Elem()
+}
+
+func (i *offlineConfigurationPtrType) ToOfflineConfigurationPtrOutput() OfflineConfigurationPtrOutput {
+	return i.ToOfflineConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *offlineConfigurationPtrType) ToOfflineConfigurationPtrOutputWithContext(ctx context.Context) OfflineConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OfflineConfigurationPtrOutput)
+}
+
+// Offline configuration
+type OfflineConfigurationOutput struct{ *pulumi.OutputState }
+
+func (OfflineConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OfflineConfiguration)(nil)).Elem()
+}
+
+func (o OfflineConfigurationOutput) ToOfflineConfigurationOutput() OfflineConfigurationOutput {
+	return o
+}
+
+func (o OfflineConfigurationOutput) ToOfflineConfigurationOutputWithContext(ctx context.Context) OfflineConfigurationOutput {
+	return o
+}
+
+func (o OfflineConfigurationOutput) ToOfflineConfigurationPtrOutput() OfflineConfigurationPtrOutput {
+	return o.ToOfflineConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o OfflineConfigurationOutput) ToOfflineConfigurationPtrOutputWithContext(ctx context.Context) OfflineConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OfflineConfiguration) *OfflineConfiguration {
+		return &v
+	}).(OfflineConfigurationPtrOutput)
+}
+
+// Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
+func (o OfflineConfigurationOutput) LastBackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfflineConfiguration) *string { return v.LastBackupName }).(pulumi.StringPtrOutput)
+}
+
+// Offline migration
+func (o OfflineConfigurationOutput) Offline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OfflineConfiguration) *bool { return v.Offline }).(pulumi.BoolPtrOutput)
+}
+
+type OfflineConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (OfflineConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OfflineConfiguration)(nil)).Elem()
+}
+
+func (o OfflineConfigurationPtrOutput) ToOfflineConfigurationPtrOutput() OfflineConfigurationPtrOutput {
+	return o
+}
+
+func (o OfflineConfigurationPtrOutput) ToOfflineConfigurationPtrOutputWithContext(ctx context.Context) OfflineConfigurationPtrOutput {
+	return o
+}
+
+func (o OfflineConfigurationPtrOutput) Elem() OfflineConfigurationOutput {
+	return o.ApplyT(func(v *OfflineConfiguration) OfflineConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret OfflineConfiguration
+		return ret
+	}).(OfflineConfigurationOutput)
+}
+
+// Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
+func (o OfflineConfigurationPtrOutput) LastBackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OfflineConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastBackupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Offline migration
+func (o OfflineConfigurationPtrOutput) Offline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OfflineConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Offline
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Offline configuration
+type OfflineConfigurationResponse struct {
+	// Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
+	LastBackupName *string `pulumi:"lastBackupName"`
+	// Offline migration
+	Offline *bool `pulumi:"offline"`
+}
+
+// Offline configuration
+type OfflineConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (OfflineConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OfflineConfigurationResponse)(nil)).Elem()
+}
+
+func (o OfflineConfigurationResponseOutput) ToOfflineConfigurationResponseOutput() OfflineConfigurationResponseOutput {
+	return o
+}
+
+func (o OfflineConfigurationResponseOutput) ToOfflineConfigurationResponseOutputWithContext(ctx context.Context) OfflineConfigurationResponseOutput {
+	return o
+}
+
+// Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
+func (o OfflineConfigurationResponseOutput) LastBackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfflineConfigurationResponse) *string { return v.LastBackupName }).(pulumi.StringPtrOutput)
+}
+
+// Offline migration
+func (o OfflineConfigurationResponseOutput) Offline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OfflineConfigurationResponse) *bool { return v.Offline }).(pulumi.BoolPtrOutput)
+}
+
+type OfflineConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OfflineConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OfflineConfigurationResponse)(nil)).Elem()
+}
+
+func (o OfflineConfigurationResponsePtrOutput) ToOfflineConfigurationResponsePtrOutput() OfflineConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o OfflineConfigurationResponsePtrOutput) ToOfflineConfigurationResponsePtrOutputWithContext(ctx context.Context) OfflineConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o OfflineConfigurationResponsePtrOutput) Elem() OfflineConfigurationResponseOutput {
+	return o.ApplyT(func(v *OfflineConfigurationResponse) OfflineConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OfflineConfigurationResponse
+		return ret
+	}).(OfflineConfigurationResponseOutput)
+}
+
+// Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
+func (o OfflineConfigurationResponsePtrOutput) LastBackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OfflineConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastBackupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Offline migration
+func (o OfflineConfigurationResponsePtrOutput) Offline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OfflineConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Offline
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Information for connecting to Oracle server
 type OracleConnectionInfo struct {
 	// Authentication type to use for connection
@@ -34674,6 +36786,470 @@ func (o ServiceSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Source Location details of backups.
+type SourceLocation struct {
+	// Source Azure Blob.
+	AzureBlob *AzureBlob `pulumi:"azureBlob"`
+	// Source File share.
+	FileShare *SqlFileShare `pulumi:"fileShare"`
+}
+
+// SourceLocationInput is an input type that accepts SourceLocationArgs and SourceLocationOutput values.
+// You can construct a concrete instance of `SourceLocationInput` via:
+//
+//	SourceLocationArgs{...}
+type SourceLocationInput interface {
+	pulumi.Input
+
+	ToSourceLocationOutput() SourceLocationOutput
+	ToSourceLocationOutputWithContext(context.Context) SourceLocationOutput
+}
+
+// Source Location details of backups.
+type SourceLocationArgs struct {
+	// Source Azure Blob.
+	AzureBlob AzureBlobPtrInput `pulumi:"azureBlob"`
+	// Source File share.
+	FileShare SqlFileSharePtrInput `pulumi:"fileShare"`
+}
+
+func (SourceLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceLocation)(nil)).Elem()
+}
+
+func (i SourceLocationArgs) ToSourceLocationOutput() SourceLocationOutput {
+	return i.ToSourceLocationOutputWithContext(context.Background())
+}
+
+func (i SourceLocationArgs) ToSourceLocationOutputWithContext(ctx context.Context) SourceLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceLocationOutput)
+}
+
+func (i SourceLocationArgs) ToSourceLocationPtrOutput() SourceLocationPtrOutput {
+	return i.ToSourceLocationPtrOutputWithContext(context.Background())
+}
+
+func (i SourceLocationArgs) ToSourceLocationPtrOutputWithContext(ctx context.Context) SourceLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceLocationOutput).ToSourceLocationPtrOutputWithContext(ctx)
+}
+
+// SourceLocationPtrInput is an input type that accepts SourceLocationArgs, SourceLocationPtr and SourceLocationPtrOutput values.
+// You can construct a concrete instance of `SourceLocationPtrInput` via:
+//
+//	        SourceLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceLocationPtrInput interface {
+	pulumi.Input
+
+	ToSourceLocationPtrOutput() SourceLocationPtrOutput
+	ToSourceLocationPtrOutputWithContext(context.Context) SourceLocationPtrOutput
+}
+
+type sourceLocationPtrType SourceLocationArgs
+
+func SourceLocationPtr(v *SourceLocationArgs) SourceLocationPtrInput {
+	return (*sourceLocationPtrType)(v)
+}
+
+func (*sourceLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceLocation)(nil)).Elem()
+}
+
+func (i *sourceLocationPtrType) ToSourceLocationPtrOutput() SourceLocationPtrOutput {
+	return i.ToSourceLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceLocationPtrType) ToSourceLocationPtrOutputWithContext(ctx context.Context) SourceLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceLocationPtrOutput)
+}
+
+// Source Location details of backups.
+type SourceLocationOutput struct{ *pulumi.OutputState }
+
+func (SourceLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceLocation)(nil)).Elem()
+}
+
+func (o SourceLocationOutput) ToSourceLocationOutput() SourceLocationOutput {
+	return o
+}
+
+func (o SourceLocationOutput) ToSourceLocationOutputWithContext(ctx context.Context) SourceLocationOutput {
+	return o
+}
+
+func (o SourceLocationOutput) ToSourceLocationPtrOutput() SourceLocationPtrOutput {
+	return o.ToSourceLocationPtrOutputWithContext(context.Background())
+}
+
+func (o SourceLocationOutput) ToSourceLocationPtrOutputWithContext(ctx context.Context) SourceLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceLocation) *SourceLocation {
+		return &v
+	}).(SourceLocationPtrOutput)
+}
+
+// Source Azure Blob.
+func (o SourceLocationOutput) AzureBlob() AzureBlobPtrOutput {
+	return o.ApplyT(func(v SourceLocation) *AzureBlob { return v.AzureBlob }).(AzureBlobPtrOutput)
+}
+
+// Source File share.
+func (o SourceLocationOutput) FileShare() SqlFileSharePtrOutput {
+	return o.ApplyT(func(v SourceLocation) *SqlFileShare { return v.FileShare }).(SqlFileSharePtrOutput)
+}
+
+type SourceLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceLocation)(nil)).Elem()
+}
+
+func (o SourceLocationPtrOutput) ToSourceLocationPtrOutput() SourceLocationPtrOutput {
+	return o
+}
+
+func (o SourceLocationPtrOutput) ToSourceLocationPtrOutputWithContext(ctx context.Context) SourceLocationPtrOutput {
+	return o
+}
+
+func (o SourceLocationPtrOutput) Elem() SourceLocationOutput {
+	return o.ApplyT(func(v *SourceLocation) SourceLocation {
+		if v != nil {
+			return *v
+		}
+		var ret SourceLocation
+		return ret
+	}).(SourceLocationOutput)
+}
+
+// Source Azure Blob.
+func (o SourceLocationPtrOutput) AzureBlob() AzureBlobPtrOutput {
+	return o.ApplyT(func(v *SourceLocation) *AzureBlob {
+		if v == nil {
+			return nil
+		}
+		return v.AzureBlob
+	}).(AzureBlobPtrOutput)
+}
+
+// Source File share.
+func (o SourceLocationPtrOutput) FileShare() SqlFileSharePtrOutput {
+	return o.ApplyT(func(v *SourceLocation) *SqlFileShare {
+		if v == nil {
+			return nil
+		}
+		return v.FileShare
+	}).(SqlFileSharePtrOutput)
+}
+
+// Source Location details of backups.
+type SourceLocationResponse struct {
+	// Source Azure Blob.
+	AzureBlob *AzureBlobResponse `pulumi:"azureBlob"`
+	// Source File share.
+	FileShare *SqlFileShareResponse `pulumi:"fileShare"`
+	// Backup storage Type.
+	FileStorageType string `pulumi:"fileStorageType"`
+}
+
+// Source Location details of backups.
+type SourceLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceLocationResponse)(nil)).Elem()
+}
+
+func (o SourceLocationResponseOutput) ToSourceLocationResponseOutput() SourceLocationResponseOutput {
+	return o
+}
+
+func (o SourceLocationResponseOutput) ToSourceLocationResponseOutputWithContext(ctx context.Context) SourceLocationResponseOutput {
+	return o
+}
+
+// Source Azure Blob.
+func (o SourceLocationResponseOutput) AzureBlob() AzureBlobResponsePtrOutput {
+	return o.ApplyT(func(v SourceLocationResponse) *AzureBlobResponse { return v.AzureBlob }).(AzureBlobResponsePtrOutput)
+}
+
+// Source File share.
+func (o SourceLocationResponseOutput) FileShare() SqlFileShareResponsePtrOutput {
+	return o.ApplyT(func(v SourceLocationResponse) *SqlFileShareResponse { return v.FileShare }).(SqlFileShareResponsePtrOutput)
+}
+
+// Backup storage Type.
+func (o SourceLocationResponseOutput) FileStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceLocationResponse) string { return v.FileStorageType }).(pulumi.StringOutput)
+}
+
+type SourceLocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceLocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceLocationResponse)(nil)).Elem()
+}
+
+func (o SourceLocationResponsePtrOutput) ToSourceLocationResponsePtrOutput() SourceLocationResponsePtrOutput {
+	return o
+}
+
+func (o SourceLocationResponsePtrOutput) ToSourceLocationResponsePtrOutputWithContext(ctx context.Context) SourceLocationResponsePtrOutput {
+	return o
+}
+
+func (o SourceLocationResponsePtrOutput) Elem() SourceLocationResponseOutput {
+	return o.ApplyT(func(v *SourceLocationResponse) SourceLocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceLocationResponse
+		return ret
+	}).(SourceLocationResponseOutput)
+}
+
+// Source Azure Blob.
+func (o SourceLocationResponsePtrOutput) AzureBlob() AzureBlobResponsePtrOutput {
+	return o.ApplyT(func(v *SourceLocationResponse) *AzureBlobResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureBlob
+	}).(AzureBlobResponsePtrOutput)
+}
+
+// Source File share.
+func (o SourceLocationResponsePtrOutput) FileShare() SqlFileShareResponsePtrOutput {
+	return o.ApplyT(func(v *SourceLocationResponse) *SqlFileShareResponse {
+		if v == nil {
+			return nil
+		}
+		return v.FileShare
+	}).(SqlFileShareResponsePtrOutput)
+}
+
+// Backup storage Type.
+func (o SourceLocationResponsePtrOutput) FileStorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileStorageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information of backup file
+type SqlBackupFileInfoResponse struct {
+	// Copy Duration in seconds
+	CopyDuration int `pulumi:"copyDuration"`
+	// Copy throughput in KBps
+	CopyThroughput float64 `pulumi:"copyThroughput"`
+	// Bytes read
+	DataRead float64 `pulumi:"dataRead"`
+	// Bytes written
+	DataWritten float64 `pulumi:"dataWritten"`
+	// Media family sequence number
+	FamilySequenceNumber int `pulumi:"familySequenceNumber"`
+	// File name.
+	FileName string `pulumi:"fileName"`
+	// Status of the file. (Initial, Uploading, Uploaded, Restoring, Restored or Skipped)
+	Status string `pulumi:"status"`
+	// File size in bytes
+	TotalSize float64 `pulumi:"totalSize"`
+}
+
+// Information of backup file
+type SqlBackupFileInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlBackupFileInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlBackupFileInfoResponse)(nil)).Elem()
+}
+
+func (o SqlBackupFileInfoResponseOutput) ToSqlBackupFileInfoResponseOutput() SqlBackupFileInfoResponseOutput {
+	return o
+}
+
+func (o SqlBackupFileInfoResponseOutput) ToSqlBackupFileInfoResponseOutputWithContext(ctx context.Context) SqlBackupFileInfoResponseOutput {
+	return o
+}
+
+// Copy Duration in seconds
+func (o SqlBackupFileInfoResponseOutput) CopyDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlBackupFileInfoResponse) int { return v.CopyDuration }).(pulumi.IntOutput)
+}
+
+// Copy throughput in KBps
+func (o SqlBackupFileInfoResponseOutput) CopyThroughput() pulumi.Float64Output {
+	return o.ApplyT(func(v SqlBackupFileInfoResponse) float64 { return v.CopyThroughput }).(pulumi.Float64Output)
+}
+
+// Bytes read
+func (o SqlBackupFileInfoResponseOutput) DataRead() pulumi.Float64Output {
+	return o.ApplyT(func(v SqlBackupFileInfoResponse) float64 { return v.DataRead }).(pulumi.Float64Output)
+}
+
+// Bytes written
+func (o SqlBackupFileInfoResponseOutput) DataWritten() pulumi.Float64Output {
+	return o.ApplyT(func(v SqlBackupFileInfoResponse) float64 { return v.DataWritten }).(pulumi.Float64Output)
+}
+
+// Media family sequence number
+func (o SqlBackupFileInfoResponseOutput) FamilySequenceNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlBackupFileInfoResponse) int { return v.FamilySequenceNumber }).(pulumi.IntOutput)
+}
+
+// File name.
+func (o SqlBackupFileInfoResponseOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlBackupFileInfoResponse) string { return v.FileName }).(pulumi.StringOutput)
+}
+
+// Status of the file. (Initial, Uploading, Uploaded, Restoring, Restored or Skipped)
+func (o SqlBackupFileInfoResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlBackupFileInfoResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// File size in bytes
+func (o SqlBackupFileInfoResponseOutput) TotalSize() pulumi.Float64Output {
+	return o.ApplyT(func(v SqlBackupFileInfoResponse) float64 { return v.TotalSize }).(pulumi.Float64Output)
+}
+
+type SqlBackupFileInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlBackupFileInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlBackupFileInfoResponse)(nil)).Elem()
+}
+
+func (o SqlBackupFileInfoResponseArrayOutput) ToSqlBackupFileInfoResponseArrayOutput() SqlBackupFileInfoResponseArrayOutput {
+	return o
+}
+
+func (o SqlBackupFileInfoResponseArrayOutput) ToSqlBackupFileInfoResponseArrayOutputWithContext(ctx context.Context) SqlBackupFileInfoResponseArrayOutput {
+	return o
+}
+
+func (o SqlBackupFileInfoResponseArrayOutput) Index(i pulumi.IntInput) SqlBackupFileInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlBackupFileInfoResponse {
+		return vs[0].([]SqlBackupFileInfoResponse)[vs[1].(int)]
+	}).(SqlBackupFileInfoResponseOutput)
+}
+
+// Information of backup set
+type SqlBackupSetInfoResponse struct {
+	// Backup end time.
+	BackupFinishDate string `pulumi:"backupFinishDate"`
+	// Backup set id.
+	BackupSetId string `pulumi:"backupSetId"`
+	// Backup start date.
+	BackupStartDate string `pulumi:"backupStartDate"`
+	// Backup type.
+	BackupType string `pulumi:"backupType"`
+	// Media family count
+	FamilyCount int `pulumi:"familyCount"`
+	// First LSN of the backup set.
+	FirstLSN string `pulumi:"firstLSN"`
+	// Has Backup Checksums
+	HasBackupChecksums bool `pulumi:"hasBackupChecksums"`
+	// The reasons why the backup set is ignored
+	IgnoreReasons []string `pulumi:"ignoreReasons"`
+	// Whether this backup set has been restored or not.
+	IsBackupRestored bool `pulumi:"isBackupRestored"`
+	// Last LSN of the backup set.
+	LastLSN string `pulumi:"lastLSN"`
+	// List of files in the backup set.
+	ListOfBackupFiles []SqlBackupFileInfoResponse `pulumi:"listOfBackupFiles"`
+}
+
+// Information of backup set
+type SqlBackupSetInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlBackupSetInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlBackupSetInfoResponse)(nil)).Elem()
+}
+
+func (o SqlBackupSetInfoResponseOutput) ToSqlBackupSetInfoResponseOutput() SqlBackupSetInfoResponseOutput {
+	return o
+}
+
+func (o SqlBackupSetInfoResponseOutput) ToSqlBackupSetInfoResponseOutputWithContext(ctx context.Context) SqlBackupSetInfoResponseOutput {
+	return o
+}
+
+// Backup end time.
+func (o SqlBackupSetInfoResponseOutput) BackupFinishDate() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlBackupSetInfoResponse) string { return v.BackupFinishDate }).(pulumi.StringOutput)
+}
+
+// Backup set id.
+func (o SqlBackupSetInfoResponseOutput) BackupSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlBackupSetInfoResponse) string { return v.BackupSetId }).(pulumi.StringOutput)
+}
+
+// Backup start date.
+func (o SqlBackupSetInfoResponseOutput) BackupStartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlBackupSetInfoResponse) string { return v.BackupStartDate }).(pulumi.StringOutput)
+}
+
+// Backup type.
+func (o SqlBackupSetInfoResponseOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlBackupSetInfoResponse) string { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// Media family count
+func (o SqlBackupSetInfoResponseOutput) FamilyCount() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlBackupSetInfoResponse) int { return v.FamilyCount }).(pulumi.IntOutput)
+}
+
+// First LSN of the backup set.
+func (o SqlBackupSetInfoResponseOutput) FirstLSN() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlBackupSetInfoResponse) string { return v.FirstLSN }).(pulumi.StringOutput)
+}
+
+// Has Backup Checksums
+func (o SqlBackupSetInfoResponseOutput) HasBackupChecksums() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlBackupSetInfoResponse) bool { return v.HasBackupChecksums }).(pulumi.BoolOutput)
+}
+
+// The reasons why the backup set is ignored
+func (o SqlBackupSetInfoResponseOutput) IgnoreReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SqlBackupSetInfoResponse) []string { return v.IgnoreReasons }).(pulumi.StringArrayOutput)
+}
+
+// Whether this backup set has been restored or not.
+func (o SqlBackupSetInfoResponseOutput) IsBackupRestored() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlBackupSetInfoResponse) bool { return v.IsBackupRestored }).(pulumi.BoolOutput)
+}
+
+// Last LSN of the backup set.
+func (o SqlBackupSetInfoResponseOutput) LastLSN() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlBackupSetInfoResponse) string { return v.LastLSN }).(pulumi.StringOutput)
+}
+
+// List of files in the backup set.
+func (o SqlBackupSetInfoResponseOutput) ListOfBackupFiles() SqlBackupFileInfoResponseArrayOutput {
+	return o.ApplyT(func(v SqlBackupSetInfoResponse) []SqlBackupFileInfoResponse { return v.ListOfBackupFiles }).(SqlBackupFileInfoResponseArrayOutput)
+}
+
+type SqlBackupSetInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlBackupSetInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlBackupSetInfoResponse)(nil)).Elem()
+}
+
+func (o SqlBackupSetInfoResponseArrayOutput) ToSqlBackupSetInfoResponseArrayOutput() SqlBackupSetInfoResponseArrayOutput {
+	return o
+}
+
+func (o SqlBackupSetInfoResponseArrayOutput) ToSqlBackupSetInfoResponseArrayOutputWithContext(ctx context.Context) SqlBackupSetInfoResponseArrayOutput {
+	return o
+}
+
+func (o SqlBackupSetInfoResponseArrayOutput) Index(i pulumi.IntInput) SqlBackupSetInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlBackupSetInfoResponse {
+		return vs[0].([]SqlBackupSetInfoResponse)[vs[1].(int)]
+	}).(SqlBackupSetInfoResponseOutput)
+}
+
 // Information for connecting to SQL database server
 type SqlConnectionInfo struct {
 	// Additional connection settings
@@ -35845,6 +38421,261 @@ func (o SqlDbOfflineConfigurationResponseOutput) Offline() pulumi.BoolOutput {
 	return o.ApplyT(func(v SqlDbOfflineConfigurationResponse) bool { return v.Offline }).(pulumi.BoolOutput)
 }
 
+// File share
+type SqlFileShare struct {
+	// Password for username to access file share location.
+	Password *string `pulumi:"password"`
+	// Location as SMB share or local drive where backups are placed.
+	Path *string `pulumi:"path"`
+	// Username to access the file share location for backups.
+	Username *string `pulumi:"username"`
+}
+
+// SqlFileShareInput is an input type that accepts SqlFileShareArgs and SqlFileShareOutput values.
+// You can construct a concrete instance of `SqlFileShareInput` via:
+//
+//	SqlFileShareArgs{...}
+type SqlFileShareInput interface {
+	pulumi.Input
+
+	ToSqlFileShareOutput() SqlFileShareOutput
+	ToSqlFileShareOutputWithContext(context.Context) SqlFileShareOutput
+}
+
+// File share
+type SqlFileShareArgs struct {
+	// Password for username to access file share location.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Location as SMB share or local drive where backups are placed.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Username to access the file share location for backups.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (SqlFileShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlFileShare)(nil)).Elem()
+}
+
+func (i SqlFileShareArgs) ToSqlFileShareOutput() SqlFileShareOutput {
+	return i.ToSqlFileShareOutputWithContext(context.Background())
+}
+
+func (i SqlFileShareArgs) ToSqlFileShareOutputWithContext(ctx context.Context) SqlFileShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlFileShareOutput)
+}
+
+func (i SqlFileShareArgs) ToSqlFileSharePtrOutput() SqlFileSharePtrOutput {
+	return i.ToSqlFileSharePtrOutputWithContext(context.Background())
+}
+
+func (i SqlFileShareArgs) ToSqlFileSharePtrOutputWithContext(ctx context.Context) SqlFileSharePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlFileShareOutput).ToSqlFileSharePtrOutputWithContext(ctx)
+}
+
+// SqlFileSharePtrInput is an input type that accepts SqlFileShareArgs, SqlFileSharePtr and SqlFileSharePtrOutput values.
+// You can construct a concrete instance of `SqlFileSharePtrInput` via:
+//
+//	        SqlFileShareArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlFileSharePtrInput interface {
+	pulumi.Input
+
+	ToSqlFileSharePtrOutput() SqlFileSharePtrOutput
+	ToSqlFileSharePtrOutputWithContext(context.Context) SqlFileSharePtrOutput
+}
+
+type sqlFileSharePtrType SqlFileShareArgs
+
+func SqlFileSharePtr(v *SqlFileShareArgs) SqlFileSharePtrInput {
+	return (*sqlFileSharePtrType)(v)
+}
+
+func (*sqlFileSharePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlFileShare)(nil)).Elem()
+}
+
+func (i *sqlFileSharePtrType) ToSqlFileSharePtrOutput() SqlFileSharePtrOutput {
+	return i.ToSqlFileSharePtrOutputWithContext(context.Background())
+}
+
+func (i *sqlFileSharePtrType) ToSqlFileSharePtrOutputWithContext(ctx context.Context) SqlFileSharePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlFileSharePtrOutput)
+}
+
+// File share
+type SqlFileShareOutput struct{ *pulumi.OutputState }
+
+func (SqlFileShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlFileShare)(nil)).Elem()
+}
+
+func (o SqlFileShareOutput) ToSqlFileShareOutput() SqlFileShareOutput {
+	return o
+}
+
+func (o SqlFileShareOutput) ToSqlFileShareOutputWithContext(ctx context.Context) SqlFileShareOutput {
+	return o
+}
+
+func (o SqlFileShareOutput) ToSqlFileSharePtrOutput() SqlFileSharePtrOutput {
+	return o.ToSqlFileSharePtrOutputWithContext(context.Background())
+}
+
+func (o SqlFileShareOutput) ToSqlFileSharePtrOutputWithContext(ctx context.Context) SqlFileSharePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlFileShare) *SqlFileShare {
+		return &v
+	}).(SqlFileSharePtrOutput)
+}
+
+// Password for username to access file share location.
+func (o SqlFileShareOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlFileShare) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Location as SMB share or local drive where backups are placed.
+func (o SqlFileShareOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlFileShare) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Username to access the file share location for backups.
+func (o SqlFileShareOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlFileShare) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type SqlFileSharePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlFileSharePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlFileShare)(nil)).Elem()
+}
+
+func (o SqlFileSharePtrOutput) ToSqlFileSharePtrOutput() SqlFileSharePtrOutput {
+	return o
+}
+
+func (o SqlFileSharePtrOutput) ToSqlFileSharePtrOutputWithContext(ctx context.Context) SqlFileSharePtrOutput {
+	return o
+}
+
+func (o SqlFileSharePtrOutput) Elem() SqlFileShareOutput {
+	return o.ApplyT(func(v *SqlFileShare) SqlFileShare {
+		if v != nil {
+			return *v
+		}
+		var ret SqlFileShare
+		return ret
+	}).(SqlFileShareOutput)
+}
+
+// Password for username to access file share location.
+func (o SqlFileSharePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlFileShare) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location as SMB share or local drive where backups are placed.
+func (o SqlFileSharePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlFileShare) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to access the file share location for backups.
+func (o SqlFileSharePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlFileShare) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// File share
+type SqlFileShareResponse struct {
+	// Location as SMB share or local drive where backups are placed.
+	Path *string `pulumi:"path"`
+	// Username to access the file share location for backups.
+	Username *string `pulumi:"username"`
+}
+
+// File share
+type SqlFileShareResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlFileShareResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlFileShareResponse)(nil)).Elem()
+}
+
+func (o SqlFileShareResponseOutput) ToSqlFileShareResponseOutput() SqlFileShareResponseOutput {
+	return o
+}
+
+func (o SqlFileShareResponseOutput) ToSqlFileShareResponseOutputWithContext(ctx context.Context) SqlFileShareResponseOutput {
+	return o
+}
+
+// Location as SMB share or local drive where backups are placed.
+func (o SqlFileShareResponseOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlFileShareResponse) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Username to access the file share location for backups.
+func (o SqlFileShareResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlFileShareResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type SqlFileShareResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlFileShareResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlFileShareResponse)(nil)).Elem()
+}
+
+func (o SqlFileShareResponsePtrOutput) ToSqlFileShareResponsePtrOutput() SqlFileShareResponsePtrOutput {
+	return o
+}
+
+func (o SqlFileShareResponsePtrOutput) ToSqlFileShareResponsePtrOutputWithContext(ctx context.Context) SqlFileShareResponsePtrOutput {
+	return o
+}
+
+func (o SqlFileShareResponsePtrOutput) Elem() SqlFileShareResponseOutput {
+	return o.ApplyT(func(v *SqlFileShareResponse) SqlFileShareResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlFileShareResponse
+		return ret
+	}).(SqlFileShareResponseOutput)
+}
+
+// Location as SMB share or local drive where backups are placed.
+func (o SqlFileShareResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlFileShareResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to access the file share location for backups.
+func (o SqlFileShareResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlFileShareResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 // SSIS migration info with SSIS store type, overwrite policy.
 type SsisMigrationInfo struct {
 	// The overwrite option for the SSIS environment migration
@@ -36284,6 +39115,295 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// Target Location details for optional copy of backups
+type TargetLocation struct {
+	// Storage Account Key.
+	AccountKey *string `pulumi:"accountKey"`
+	// Resource Id of the storage account copying backups.
+	StorageAccountResourceId *string `pulumi:"storageAccountResourceId"`
+}
+
+// TargetLocationInput is an input type that accepts TargetLocationArgs and TargetLocationOutput values.
+// You can construct a concrete instance of `TargetLocationInput` via:
+//
+//	TargetLocationArgs{...}
+type TargetLocationInput interface {
+	pulumi.Input
+
+	ToTargetLocationOutput() TargetLocationOutput
+	ToTargetLocationOutputWithContext(context.Context) TargetLocationOutput
+}
+
+// Target Location details for optional copy of backups
+type TargetLocationArgs struct {
+	// Storage Account Key.
+	AccountKey pulumi.StringPtrInput `pulumi:"accountKey"`
+	// Resource Id of the storage account copying backups.
+	StorageAccountResourceId pulumi.StringPtrInput `pulumi:"storageAccountResourceId"`
+}
+
+func (TargetLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetLocation)(nil)).Elem()
+}
+
+func (i TargetLocationArgs) ToTargetLocationOutput() TargetLocationOutput {
+	return i.ToTargetLocationOutputWithContext(context.Background())
+}
+
+func (i TargetLocationArgs) ToTargetLocationOutputWithContext(ctx context.Context) TargetLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetLocationOutput)
+}
+
+func (i TargetLocationArgs) ToTargetLocationPtrOutput() TargetLocationPtrOutput {
+	return i.ToTargetLocationPtrOutputWithContext(context.Background())
+}
+
+func (i TargetLocationArgs) ToTargetLocationPtrOutputWithContext(ctx context.Context) TargetLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetLocationOutput).ToTargetLocationPtrOutputWithContext(ctx)
+}
+
+// TargetLocationPtrInput is an input type that accepts TargetLocationArgs, TargetLocationPtr and TargetLocationPtrOutput values.
+// You can construct a concrete instance of `TargetLocationPtrInput` via:
+//
+//	        TargetLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type TargetLocationPtrInput interface {
+	pulumi.Input
+
+	ToTargetLocationPtrOutput() TargetLocationPtrOutput
+	ToTargetLocationPtrOutputWithContext(context.Context) TargetLocationPtrOutput
+}
+
+type targetLocationPtrType TargetLocationArgs
+
+func TargetLocationPtr(v *TargetLocationArgs) TargetLocationPtrInput {
+	return (*targetLocationPtrType)(v)
+}
+
+func (*targetLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetLocation)(nil)).Elem()
+}
+
+func (i *targetLocationPtrType) ToTargetLocationPtrOutput() TargetLocationPtrOutput {
+	return i.ToTargetLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *targetLocationPtrType) ToTargetLocationPtrOutputWithContext(ctx context.Context) TargetLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetLocationPtrOutput)
+}
+
+// Target Location details for optional copy of backups
+type TargetLocationOutput struct{ *pulumi.OutputState }
+
+func (TargetLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetLocation)(nil)).Elem()
+}
+
+func (o TargetLocationOutput) ToTargetLocationOutput() TargetLocationOutput {
+	return o
+}
+
+func (o TargetLocationOutput) ToTargetLocationOutputWithContext(ctx context.Context) TargetLocationOutput {
+	return o
+}
+
+func (o TargetLocationOutput) ToTargetLocationPtrOutput() TargetLocationPtrOutput {
+	return o.ToTargetLocationPtrOutputWithContext(context.Background())
+}
+
+func (o TargetLocationOutput) ToTargetLocationPtrOutputWithContext(ctx context.Context) TargetLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetLocation) *TargetLocation {
+		return &v
+	}).(TargetLocationPtrOutput)
+}
+
+// Storage Account Key.
+func (o TargetLocationOutput) AccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetLocation) *string { return v.AccountKey }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the storage account copying backups.
+func (o TargetLocationOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetLocation) *string { return v.StorageAccountResourceId }).(pulumi.StringPtrOutput)
+}
+
+type TargetLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetLocation)(nil)).Elem()
+}
+
+func (o TargetLocationPtrOutput) ToTargetLocationPtrOutput() TargetLocationPtrOutput {
+	return o
+}
+
+func (o TargetLocationPtrOutput) ToTargetLocationPtrOutputWithContext(ctx context.Context) TargetLocationPtrOutput {
+	return o
+}
+
+func (o TargetLocationPtrOutput) Elem() TargetLocationOutput {
+	return o.ApplyT(func(v *TargetLocation) TargetLocation {
+		if v != nil {
+			return *v
+		}
+		var ret TargetLocation
+		return ret
+	}).(TargetLocationOutput)
+}
+
+// Storage Account Key.
+func (o TargetLocationPtrOutput) AccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the storage account copying backups.
+func (o TargetLocationPtrOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target Location details for optional copy of backups
+type TargetLocationResponse struct {
+	// Storage Account Key.
+	AccountKey *string `pulumi:"accountKey"`
+	// Resource Id of the storage account copying backups.
+	StorageAccountResourceId *string `pulumi:"storageAccountResourceId"`
+}
+
+// Target Location details for optional copy of backups
+type TargetLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetLocationResponse)(nil)).Elem()
+}
+
+func (o TargetLocationResponseOutput) ToTargetLocationResponseOutput() TargetLocationResponseOutput {
+	return o
+}
+
+func (o TargetLocationResponseOutput) ToTargetLocationResponseOutputWithContext(ctx context.Context) TargetLocationResponseOutput {
+	return o
+}
+
+// Storage Account Key.
+func (o TargetLocationResponseOutput) AccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetLocationResponse) *string { return v.AccountKey }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the storage account copying backups.
+func (o TargetLocationResponseOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetLocationResponse) *string { return v.StorageAccountResourceId }).(pulumi.StringPtrOutput)
+}
+
+type TargetLocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TargetLocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetLocationResponse)(nil)).Elem()
+}
+
+func (o TargetLocationResponsePtrOutput) ToTargetLocationResponsePtrOutput() TargetLocationResponsePtrOutput {
+	return o
+}
+
+func (o TargetLocationResponsePtrOutput) ToTargetLocationResponsePtrOutputWithContext(ctx context.Context) TargetLocationResponsePtrOutput {
+	return o
+}
+
+func (o TargetLocationResponsePtrOutput) Elem() TargetLocationResponseOutput {
+	return o.ApplyT(func(v *TargetLocationResponse) TargetLocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TargetLocationResponse
+		return ret
+	}).(TargetLocationResponseOutput)
+}
+
+// Storage Account Key.
+func (o TargetLocationResponsePtrOutput) AccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of the storage account copying backups.
+func (o TargetLocationResponsePtrOutput) StorageAccountResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
 }
 
 // Properties for task that validates migration input for SQL to Azure SQL DB sync migrations
@@ -39404,6 +42524,14 @@ func init() {
 	pulumi.RegisterOutputType(AzureActiveDirectoryAppPtrOutput{})
 	pulumi.RegisterOutputType(AzureActiveDirectoryAppResponseOutput{})
 	pulumi.RegisterOutputType(AzureActiveDirectoryAppResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureBlobOutput{})
+	pulumi.RegisterOutputType(AzureBlobPtrOutput{})
+	pulumi.RegisterOutputType(AzureBlobResponseOutput{})
+	pulumi.RegisterOutputType(AzureBlobResponsePtrOutput{})
+	pulumi.RegisterOutputType(BackupConfigurationOutput{})
+	pulumi.RegisterOutputType(BackupConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(BackupConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(BackupConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackupFileInfoResponseOutput{})
 	pulumi.RegisterOutputType(BackupFileInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(BackupSetInfoResponseOutput{})
@@ -39535,6 +42663,12 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseMigrationPropertiesSqlDbOutput{})
 	pulumi.RegisterOutputType(DatabaseMigrationPropertiesSqlDbPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseMigrationPropertiesSqlDbResponseOutput{})
+	pulumi.RegisterOutputType(DatabaseMigrationPropertiesSqlMiOutput{})
+	pulumi.RegisterOutputType(DatabaseMigrationPropertiesSqlMiPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseMigrationPropertiesSqlMiResponseOutput{})
+	pulumi.RegisterOutputType(DatabaseMigrationPropertiesSqlVmOutput{})
+	pulumi.RegisterOutputType(DatabaseMigrationPropertiesSqlVmPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseMigrationPropertiesSqlVmResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseSummaryResultResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseSummaryResultResponseMapOutput{})
 	pulumi.RegisterOutputType(DatabaseTableResponseOutput{})
@@ -39600,6 +42734,10 @@ func init() {
 	pulumi.RegisterOutputType(GetUserTablesSqlTaskPropertiesOutput{})
 	pulumi.RegisterOutputType(GetUserTablesSqlTaskPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(GetUserTablesSqlTaskPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(MiSqlConnectionInfoOutput{})
 	pulumi.RegisterOutputType(MiSqlConnectionInfoPtrOutput{})
 	pulumi.RegisterOutputType(MiSqlConnectionInfoResponseOutput{})
@@ -39753,6 +42891,7 @@ func init() {
 	pulumi.RegisterOutputType(MigrationEligibilityInfoResponseOutput{})
 	pulumi.RegisterOutputType(MigrationReportResultResponseOutput{})
 	pulumi.RegisterOutputType(MigrationReportResultResponsePtrOutput{})
+	pulumi.RegisterOutputType(MigrationStatusDetailsResponseOutput{})
 	pulumi.RegisterOutputType(MigrationValidationDatabaseSummaryResultResponseOutput{})
 	pulumi.RegisterOutputType(MigrationValidationDatabaseSummaryResultResponseMapOutput{})
 	pulumi.RegisterOutputType(MigrationValidationOptionsOutput{})
@@ -39822,6 +42961,10 @@ func init() {
 	pulumi.RegisterOutputType(NodeMonitoringDataResponseArrayOutput{})
 	pulumi.RegisterOutputType(ODataErrorResponseOutput{})
 	pulumi.RegisterOutputType(ODataErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(OfflineConfigurationOutput{})
+	pulumi.RegisterOutputType(OfflineConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(OfflineConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(OfflineConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(OracleConnectionInfoOutput{})
 	pulumi.RegisterOutputType(OracleConnectionInfoPtrOutput{})
 	pulumi.RegisterOutputType(OracleConnectionInfoResponseOutput{})
@@ -39852,6 +42995,14 @@ func init() {
 	pulumi.RegisterOutputType(ServiceSkuPtrOutput{})
 	pulumi.RegisterOutputType(ServiceSkuResponseOutput{})
 	pulumi.RegisterOutputType(ServiceSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceLocationOutput{})
+	pulumi.RegisterOutputType(SourceLocationPtrOutput{})
+	pulumi.RegisterOutputType(SourceLocationResponseOutput{})
+	pulumi.RegisterOutputType(SourceLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlBackupFileInfoResponseOutput{})
+	pulumi.RegisterOutputType(SqlBackupFileInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(SqlBackupSetInfoResponseOutput{})
+	pulumi.RegisterOutputType(SqlBackupSetInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(SqlConnectionInfoOutput{})
 	pulumi.RegisterOutputType(SqlConnectionInfoPtrOutput{})
 	pulumi.RegisterOutputType(SqlConnectionInfoResponseOutput{})
@@ -39862,6 +43013,10 @@ func init() {
 	pulumi.RegisterOutputType(SqlConnectionInformationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlDbMigrationStatusDetailsResponseOutput{})
 	pulumi.RegisterOutputType(SqlDbOfflineConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SqlFileShareOutput{})
+	pulumi.RegisterOutputType(SqlFileSharePtrOutput{})
+	pulumi.RegisterOutputType(SqlFileShareResponseOutput{})
+	pulumi.RegisterOutputType(SqlFileShareResponsePtrOutput{})
 	pulumi.RegisterOutputType(SsisMigrationInfoOutput{})
 	pulumi.RegisterOutputType(SsisMigrationInfoPtrOutput{})
 	pulumi.RegisterOutputType(SsisMigrationInfoResponseOutput{})
@@ -39871,6 +43026,12 @@ func init() {
 	pulumi.RegisterOutputType(SyncMigrationDatabaseErrorEventResponseOutput{})
 	pulumi.RegisterOutputType(SyncMigrationDatabaseErrorEventResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TargetLocationOutput{})
+	pulumi.RegisterOutputType(TargetLocationPtrOutput{})
+	pulumi.RegisterOutputType(TargetLocationResponseOutput{})
+	pulumi.RegisterOutputType(TargetLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesOutput{})
 	pulumi.RegisterOutputType(ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesResponseOutput{})

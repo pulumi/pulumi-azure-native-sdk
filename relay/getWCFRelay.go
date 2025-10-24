@@ -31,7 +31,7 @@ type LookupWCFRelayArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The relay name.
 	RelayName string `pulumi:"relayName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -57,9 +57,9 @@ type LookupWCFRelayResult struct {
 	RequiresClientAuthorization *bool `pulumi:"requiresClientAuthorization"`
 	// Returns true if transport security is needed for this relay; otherwise, false.
 	RequiresTransportSecurity *bool `pulumi:"requiresTransportSecurity"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -81,7 +81,7 @@ type LookupWCFRelayOutputArgs struct {
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
 	// The relay name.
 	RelayName pulumi.StringInput `pulumi:"relayName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -154,12 +154,12 @@ func (o LookupWCFRelayResultOutput) RequiresTransportSecurity() pulumi.BoolPtrOu
 	return o.ApplyT(func(v LookupWCFRelayResult) *bool { return v.RequiresTransportSecurity }).(pulumi.BoolPtrOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupWCFRelayResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWCFRelayResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWCFRelayResult) string { return v.Type }).(pulumi.StringOutput)
 }

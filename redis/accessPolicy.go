@@ -28,6 +28,8 @@ type AccessPolicy struct {
 	Permissions pulumi.StringOutput `pulumi:"permissions"`
 	// Provisioning state of access policy
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -194,6 +196,11 @@ func (o AccessPolicyOutput) Permissions() pulumi.StringOutput {
 // Provisioning state of access policy
 func (o AccessPolicyOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AccessPolicyOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AccessPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

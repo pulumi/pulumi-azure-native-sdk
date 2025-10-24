@@ -10140,6 +10140,172 @@ const (
 	MLAssistConfigurationTypeDisabled = MLAssistConfigurationType("Disabled")
 )
 
+// The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+type ManagedNetworkKind string
+
+const (
+	ManagedNetworkKindV1 = ManagedNetworkKind("V1")
+	ManagedNetworkKindV2 = ManagedNetworkKind("V2")
+)
+
+func (ManagedNetworkKind) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedNetworkKind)(nil)).Elem()
+}
+
+func (e ManagedNetworkKind) ToManagedNetworkKindOutput() ManagedNetworkKindOutput {
+	return pulumi.ToOutput(e).(ManagedNetworkKindOutput)
+}
+
+func (e ManagedNetworkKind) ToManagedNetworkKindOutputWithContext(ctx context.Context) ManagedNetworkKindOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ManagedNetworkKindOutput)
+}
+
+func (e ManagedNetworkKind) ToManagedNetworkKindPtrOutput() ManagedNetworkKindPtrOutput {
+	return e.ToManagedNetworkKindPtrOutputWithContext(context.Background())
+}
+
+func (e ManagedNetworkKind) ToManagedNetworkKindPtrOutputWithContext(ctx context.Context) ManagedNetworkKindPtrOutput {
+	return ManagedNetworkKind(e).ToManagedNetworkKindOutputWithContext(ctx).ToManagedNetworkKindPtrOutputWithContext(ctx)
+}
+
+func (e ManagedNetworkKind) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedNetworkKind) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedNetworkKind) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ManagedNetworkKind) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ManagedNetworkKindOutput struct{ *pulumi.OutputState }
+
+func (ManagedNetworkKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedNetworkKind)(nil)).Elem()
+}
+
+func (o ManagedNetworkKindOutput) ToManagedNetworkKindOutput() ManagedNetworkKindOutput {
+	return o
+}
+
+func (o ManagedNetworkKindOutput) ToManagedNetworkKindOutputWithContext(ctx context.Context) ManagedNetworkKindOutput {
+	return o
+}
+
+func (o ManagedNetworkKindOutput) ToManagedNetworkKindPtrOutput() ManagedNetworkKindPtrOutput {
+	return o.ToManagedNetworkKindPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedNetworkKindOutput) ToManagedNetworkKindPtrOutputWithContext(ctx context.Context) ManagedNetworkKindPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedNetworkKind) *ManagedNetworkKind {
+		return &v
+	}).(ManagedNetworkKindPtrOutput)
+}
+
+func (o ManagedNetworkKindOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ManagedNetworkKindOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedNetworkKind) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ManagedNetworkKindOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedNetworkKindOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedNetworkKind) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedNetworkKindPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedNetworkKindPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedNetworkKind)(nil)).Elem()
+}
+
+func (o ManagedNetworkKindPtrOutput) ToManagedNetworkKindPtrOutput() ManagedNetworkKindPtrOutput {
+	return o
+}
+
+func (o ManagedNetworkKindPtrOutput) ToManagedNetworkKindPtrOutputWithContext(ctx context.Context) ManagedNetworkKindPtrOutput {
+	return o
+}
+
+func (o ManagedNetworkKindPtrOutput) Elem() ManagedNetworkKindOutput {
+	return o.ApplyT(func(v *ManagedNetworkKind) ManagedNetworkKind {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedNetworkKind
+		return ret
+	}).(ManagedNetworkKindOutput)
+}
+
+func (o ManagedNetworkKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedNetworkKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagedNetworkKind) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ManagedNetworkKindInput is an input type that accepts values of the ManagedNetworkKind enum
+// A concrete instance of `ManagedNetworkKindInput` can be one of the following:
+//
+//	ManagedNetworkKindV1
+//	ManagedNetworkKindV2
+type ManagedNetworkKindInput interface {
+	pulumi.Input
+
+	ToManagedNetworkKindOutput() ManagedNetworkKindOutput
+	ToManagedNetworkKindOutputWithContext(context.Context) ManagedNetworkKindOutput
+}
+
+var managedNetworkKindPtrType = reflect.TypeOf((**ManagedNetworkKind)(nil)).Elem()
+
+type ManagedNetworkKindPtrInput interface {
+	pulumi.Input
+
+	ToManagedNetworkKindPtrOutput() ManagedNetworkKindPtrOutput
+	ToManagedNetworkKindPtrOutputWithContext(context.Context) ManagedNetworkKindPtrOutput
+}
+
+type managedNetworkKindPtr string
+
+func ManagedNetworkKindPtr(v string) ManagedNetworkKindPtrInput {
+	return (*managedNetworkKindPtr)(&v)
+}
+
+func (*managedNetworkKindPtr) ElementType() reflect.Type {
+	return managedNetworkKindPtrType
+}
+
+func (in *managedNetworkKindPtr) ToManagedNetworkKindPtrOutput() ManagedNetworkKindPtrOutput {
+	return pulumi.ToOutput(in).(ManagedNetworkKindPtrOutput)
+}
+
+func (in *managedNetworkKindPtr) ToManagedNetworkKindPtrOutputWithContext(ctx context.Context) ManagedNetworkKindPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ManagedNetworkKindPtrOutput)
+}
+
 // Status for the managed network of a machine learning workspace.
 type ManagedNetworkStatus string
 
@@ -15513,8 +15679,11 @@ func (in *ruleCategoryPtr) ToRuleCategoryPtrOutputWithContext(ctx context.Contex
 type RuleStatus string
 
 const (
-	RuleStatusInactive = RuleStatus("Inactive")
-	RuleStatusActive   = RuleStatus("Active")
+	RuleStatusInactive     = RuleStatus("Inactive")
+	RuleStatusActive       = RuleStatus("Active")
+	RuleStatusProvisioning = RuleStatus("Provisioning")
+	RuleStatusDeleting     = RuleStatus("Deleting")
+	RuleStatusFailed       = RuleStatus("Failed")
 )
 
 func (RuleStatus) ElementType() reflect.Type {
@@ -15641,6 +15810,9 @@ func (o RuleStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 //
 //	RuleStatusInactive
 //	RuleStatusActive
+//	RuleStatusProvisioning
+//	RuleStatusDeleting
+//	RuleStatusFailed
 type RuleStatusInput interface {
 	pulumi.Input
 
@@ -17768,6 +17940,174 @@ func (in *stochasticOptimizerPtr) ToStochasticOptimizerPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(StochasticOptimizerPtrOutput)
 }
 
+// The auth mode used for accessing the system datastores of the workspace.
+type SystemDatastoresAuthMode string
+
+const (
+	SystemDatastoresAuthModeAccessKey         = SystemDatastoresAuthMode("AccessKey")
+	SystemDatastoresAuthModeIdentity          = SystemDatastoresAuthMode("Identity")
+	SystemDatastoresAuthModeUserDelegationSAS = SystemDatastoresAuthMode("UserDelegationSAS")
+)
+
+func (SystemDatastoresAuthMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDatastoresAuthMode)(nil)).Elem()
+}
+
+func (e SystemDatastoresAuthMode) ToSystemDatastoresAuthModeOutput() SystemDatastoresAuthModeOutput {
+	return pulumi.ToOutput(e).(SystemDatastoresAuthModeOutput)
+}
+
+func (e SystemDatastoresAuthMode) ToSystemDatastoresAuthModeOutputWithContext(ctx context.Context) SystemDatastoresAuthModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SystemDatastoresAuthModeOutput)
+}
+
+func (e SystemDatastoresAuthMode) ToSystemDatastoresAuthModePtrOutput() SystemDatastoresAuthModePtrOutput {
+	return e.ToSystemDatastoresAuthModePtrOutputWithContext(context.Background())
+}
+
+func (e SystemDatastoresAuthMode) ToSystemDatastoresAuthModePtrOutputWithContext(ctx context.Context) SystemDatastoresAuthModePtrOutput {
+	return SystemDatastoresAuthMode(e).ToSystemDatastoresAuthModeOutputWithContext(ctx).ToSystemDatastoresAuthModePtrOutputWithContext(ctx)
+}
+
+func (e SystemDatastoresAuthMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SystemDatastoresAuthMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SystemDatastoresAuthMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SystemDatastoresAuthMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SystemDatastoresAuthModeOutput struct{ *pulumi.OutputState }
+
+func (SystemDatastoresAuthModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDatastoresAuthMode)(nil)).Elem()
+}
+
+func (o SystemDatastoresAuthModeOutput) ToSystemDatastoresAuthModeOutput() SystemDatastoresAuthModeOutput {
+	return o
+}
+
+func (o SystemDatastoresAuthModeOutput) ToSystemDatastoresAuthModeOutputWithContext(ctx context.Context) SystemDatastoresAuthModeOutput {
+	return o
+}
+
+func (o SystemDatastoresAuthModeOutput) ToSystemDatastoresAuthModePtrOutput() SystemDatastoresAuthModePtrOutput {
+	return o.ToSystemDatastoresAuthModePtrOutputWithContext(context.Background())
+}
+
+func (o SystemDatastoresAuthModeOutput) ToSystemDatastoresAuthModePtrOutputWithContext(ctx context.Context) SystemDatastoresAuthModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemDatastoresAuthMode) *SystemDatastoresAuthMode {
+		return &v
+	}).(SystemDatastoresAuthModePtrOutput)
+}
+
+func (o SystemDatastoresAuthModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SystemDatastoresAuthModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SystemDatastoresAuthMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SystemDatastoresAuthModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SystemDatastoresAuthModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SystemDatastoresAuthMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SystemDatastoresAuthModePtrOutput struct{ *pulumi.OutputState }
+
+func (SystemDatastoresAuthModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemDatastoresAuthMode)(nil)).Elem()
+}
+
+func (o SystemDatastoresAuthModePtrOutput) ToSystemDatastoresAuthModePtrOutput() SystemDatastoresAuthModePtrOutput {
+	return o
+}
+
+func (o SystemDatastoresAuthModePtrOutput) ToSystemDatastoresAuthModePtrOutputWithContext(ctx context.Context) SystemDatastoresAuthModePtrOutput {
+	return o
+}
+
+func (o SystemDatastoresAuthModePtrOutput) Elem() SystemDatastoresAuthModeOutput {
+	return o.ApplyT(func(v *SystemDatastoresAuthMode) SystemDatastoresAuthMode {
+		if v != nil {
+			return *v
+		}
+		var ret SystemDatastoresAuthMode
+		return ret
+	}).(SystemDatastoresAuthModeOutput)
+}
+
+func (o SystemDatastoresAuthModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SystemDatastoresAuthModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SystemDatastoresAuthMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SystemDatastoresAuthModeInput is an input type that accepts values of the SystemDatastoresAuthMode enum
+// A concrete instance of `SystemDatastoresAuthModeInput` can be one of the following:
+//
+//	SystemDatastoresAuthModeAccessKey
+//	SystemDatastoresAuthModeIdentity
+//	SystemDatastoresAuthModeUserDelegationSAS
+type SystemDatastoresAuthModeInput interface {
+	pulumi.Input
+
+	ToSystemDatastoresAuthModeOutput() SystemDatastoresAuthModeOutput
+	ToSystemDatastoresAuthModeOutputWithContext(context.Context) SystemDatastoresAuthModeOutput
+}
+
+var systemDatastoresAuthModePtrType = reflect.TypeOf((**SystemDatastoresAuthMode)(nil)).Elem()
+
+type SystemDatastoresAuthModePtrInput interface {
+	pulumi.Input
+
+	ToSystemDatastoresAuthModePtrOutput() SystemDatastoresAuthModePtrOutput
+	ToSystemDatastoresAuthModePtrOutputWithContext(context.Context) SystemDatastoresAuthModePtrOutput
+}
+
+type systemDatastoresAuthModePtr string
+
+func SystemDatastoresAuthModePtr(v string) SystemDatastoresAuthModePtrInput {
+	return (*systemDatastoresAuthModePtr)(&v)
+}
+
+func (*systemDatastoresAuthModePtr) ElementType() reflect.Type {
+	return systemDatastoresAuthModePtrType
+}
+
+func (in *systemDatastoresAuthModePtr) ToSystemDatastoresAuthModePtrOutput() SystemDatastoresAuthModePtrOutput {
+	return pulumi.ToOutput(in).(SystemDatastoresAuthModePtrOutput)
+}
+
+func (in *systemDatastoresAuthModePtr) ToSystemDatastoresAuthModePtrOutputWithContext(ctx context.Context) SystemDatastoresAuthModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SystemDatastoresAuthModePtrOutput)
+}
+
 // The function to be used to aggregate the time series target column to conform to a user specified frequency.
 // If the TargetAggregateFunction is set i.e. not 'None', but the freq parameter is not set, the error is raised. The possible target aggregation functions are: "sum", "max", "min" and "mean".
 type TargetAggregationFunction string
@@ -19318,6 +19658,8 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerTypePtrOutput{})
 	pulumi.RegisterOutputType(LogVerbosityOutput{})
 	pulumi.RegisterOutputType(LogVerbosityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedNetworkKindOutput{})
+	pulumi.RegisterOutputType(ManagedNetworkKindPtrOutput{})
 	pulumi.RegisterOutputType(ManagedNetworkStatusOutput{})
 	pulumi.RegisterOutputType(ManagedNetworkStatusPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
@@ -19406,6 +19748,8 @@ func init() {
 	pulumi.RegisterOutputType(StackMetaLearnerTypePtrOutput{})
 	pulumi.RegisterOutputType(StochasticOptimizerOutput{})
 	pulumi.RegisterOutputType(StochasticOptimizerPtrOutput{})
+	pulumi.RegisterOutputType(SystemDatastoresAuthModeOutput{})
+	pulumi.RegisterOutputType(SystemDatastoresAuthModePtrOutput{})
 	pulumi.RegisterOutputType(TargetAggregationFunctionOutput{})
 	pulumi.RegisterOutputType(TargetAggregationFunctionPtrOutput{})
 	pulumi.RegisterOutputType(TextAnnotationTypeOutput{})

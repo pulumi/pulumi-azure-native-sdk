@@ -15,6 +15,8 @@ import (
 // Definition of ARM tracked top level resource.
 //
 // Uses Azure REST API version 2022-06-01.
+//
+// Other available API versions: 2024-03-11. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DataCollectionRule struct {
 	pulumi.CustomResourceState
 
@@ -91,6 +93,9 @@ func NewDataCollectionRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:monitor/v20230311:DataCollectionRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:monitor/v20240311:DataCollectionRule"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -27,7 +27,7 @@ func ListRedisKeys(ctx *pulumi.Context, args *ListRedisKeysArgs, opts ...pulumi.
 }
 
 type ListRedisKeysArgs struct {
-	// The name of the Redis cache.
+	// The name of the RedisResource
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -51,7 +51,7 @@ func ListRedisKeysOutput(ctx *pulumi.Context, args ListRedisKeysOutputArgs, opts
 }
 
 type ListRedisKeysOutputArgs struct {
-	// The name of the Redis cache.
+	// The name of the RedisResource
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`

@@ -38,9 +38,9 @@ type WCFRelay struct {
 	RequiresClientAuthorization pulumi.BoolPtrOutput `pulumi:"requiresClientAuthorization"`
 	// Returns true if transport security is needed for this relay; otherwise, false.
 	RequiresTransportSecurity pulumi.BoolPtrOutput `pulumi:"requiresTransportSecurity"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -119,7 +119,7 @@ type wcfrelayArgs struct {
 	RequiresClientAuthorization *bool `pulumi:"requiresClientAuthorization"`
 	// Returns true if transport security is needed for this relay; otherwise, false.
 	RequiresTransportSecurity *bool `pulumi:"requiresTransportSecurity"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored.
 	UserMetadata *string `pulumi:"userMetadata"`
@@ -137,7 +137,7 @@ type WCFRelayArgs struct {
 	RequiresClientAuthorization pulumi.BoolPtrInput
 	// Returns true if transport security is needed for this relay; otherwise, false.
 	RequiresTransportSecurity pulumi.BoolPtrInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored.
 	UserMetadata pulumi.StringPtrInput
@@ -225,12 +225,12 @@ func (o WCFRelayOutput) RequiresTransportSecurity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WCFRelay) pulumi.BoolPtrOutput { return v.RequiresTransportSecurity }).(pulumi.BoolPtrOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o WCFRelayOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *WCFRelay) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WCFRelayOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WCFRelay) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

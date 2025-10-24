@@ -27,7 +27,7 @@ func LookupSitesBySubscription(ctx *pulumi.Context, args *LookupSitesBySubscript
 }
 
 type LookupSitesBySubscriptionArgs struct {
-	// Name of Site resource
+	// The name of the Site
 	SiteName string `pulumi:"siteName"`
 }
 
@@ -57,7 +57,7 @@ func LookupSitesBySubscriptionOutput(ctx *pulumi.Context, args LookupSitesBySubs
 }
 
 type LookupSitesBySubscriptionOutputArgs struct {
-	// Name of Site resource
+	// The name of the Site
 	SiteName pulumi.StringInput `pulumi:"siteName"`
 }
 

@@ -14,6 +14,8 @@ import (
 // Get a Retention Policy
 //
 // Uses Azure REST API version 2025-04-01-preview.
+//
+// Other available API versions: 2025-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRetentionPolicy(ctx *pulumi.Context, args *LookupRetentionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRetentionPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRetentionPolicyResult

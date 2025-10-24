@@ -13,6 +13,532 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// DependencyProcessFilter model
+type DependencyProcessFilter struct {
+	// Process name filter
+	ProcessNameFilter *ProcessNameFilter `pulumi:"processNameFilter"`
+}
+
+// DependencyProcessFilterInput is an input type that accepts DependencyProcessFilterArgs and DependencyProcessFilterOutput values.
+// You can construct a concrete instance of `DependencyProcessFilterInput` via:
+//
+//	DependencyProcessFilterArgs{...}
+type DependencyProcessFilterInput interface {
+	pulumi.Input
+
+	ToDependencyProcessFilterOutput() DependencyProcessFilterOutput
+	ToDependencyProcessFilterOutputWithContext(context.Context) DependencyProcessFilterOutput
+}
+
+// DependencyProcessFilter model
+type DependencyProcessFilterArgs struct {
+	// Process name filter
+	ProcessNameFilter ProcessNameFilterPtrInput `pulumi:"processNameFilter"`
+}
+
+func (DependencyProcessFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DependencyProcessFilter)(nil)).Elem()
+}
+
+func (i DependencyProcessFilterArgs) ToDependencyProcessFilterOutput() DependencyProcessFilterOutput {
+	return i.ToDependencyProcessFilterOutputWithContext(context.Background())
+}
+
+func (i DependencyProcessFilterArgs) ToDependencyProcessFilterOutputWithContext(ctx context.Context) DependencyProcessFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DependencyProcessFilterOutput)
+}
+
+func (i DependencyProcessFilterArgs) ToDependencyProcessFilterPtrOutput() DependencyProcessFilterPtrOutput {
+	return i.ToDependencyProcessFilterPtrOutputWithContext(context.Background())
+}
+
+func (i DependencyProcessFilterArgs) ToDependencyProcessFilterPtrOutputWithContext(ctx context.Context) DependencyProcessFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DependencyProcessFilterOutput).ToDependencyProcessFilterPtrOutputWithContext(ctx)
+}
+
+// DependencyProcessFilterPtrInput is an input type that accepts DependencyProcessFilterArgs, DependencyProcessFilterPtr and DependencyProcessFilterPtrOutput values.
+// You can construct a concrete instance of `DependencyProcessFilterPtrInput` via:
+//
+//	        DependencyProcessFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type DependencyProcessFilterPtrInput interface {
+	pulumi.Input
+
+	ToDependencyProcessFilterPtrOutput() DependencyProcessFilterPtrOutput
+	ToDependencyProcessFilterPtrOutputWithContext(context.Context) DependencyProcessFilterPtrOutput
+}
+
+type dependencyProcessFilterPtrType DependencyProcessFilterArgs
+
+func DependencyProcessFilterPtr(v *DependencyProcessFilterArgs) DependencyProcessFilterPtrInput {
+	return (*dependencyProcessFilterPtrType)(v)
+}
+
+func (*dependencyProcessFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DependencyProcessFilter)(nil)).Elem()
+}
+
+func (i *dependencyProcessFilterPtrType) ToDependencyProcessFilterPtrOutput() DependencyProcessFilterPtrOutput {
+	return i.ToDependencyProcessFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *dependencyProcessFilterPtrType) ToDependencyProcessFilterPtrOutputWithContext(ctx context.Context) DependencyProcessFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DependencyProcessFilterPtrOutput)
+}
+
+// DependencyProcessFilter model
+type DependencyProcessFilterOutput struct{ *pulumi.OutputState }
+
+func (DependencyProcessFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DependencyProcessFilter)(nil)).Elem()
+}
+
+func (o DependencyProcessFilterOutput) ToDependencyProcessFilterOutput() DependencyProcessFilterOutput {
+	return o
+}
+
+func (o DependencyProcessFilterOutput) ToDependencyProcessFilterOutputWithContext(ctx context.Context) DependencyProcessFilterOutput {
+	return o
+}
+
+func (o DependencyProcessFilterOutput) ToDependencyProcessFilterPtrOutput() DependencyProcessFilterPtrOutput {
+	return o.ToDependencyProcessFilterPtrOutputWithContext(context.Background())
+}
+
+func (o DependencyProcessFilterOutput) ToDependencyProcessFilterPtrOutputWithContext(ctx context.Context) DependencyProcessFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DependencyProcessFilter) *DependencyProcessFilter {
+		return &v
+	}).(DependencyProcessFilterPtrOutput)
+}
+
+// Process name filter
+func (o DependencyProcessFilterOutput) ProcessNameFilter() ProcessNameFilterPtrOutput {
+	return o.ApplyT(func(v DependencyProcessFilter) *ProcessNameFilter { return v.ProcessNameFilter }).(ProcessNameFilterPtrOutput)
+}
+
+type DependencyProcessFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (DependencyProcessFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DependencyProcessFilter)(nil)).Elem()
+}
+
+func (o DependencyProcessFilterPtrOutput) ToDependencyProcessFilterPtrOutput() DependencyProcessFilterPtrOutput {
+	return o
+}
+
+func (o DependencyProcessFilterPtrOutput) ToDependencyProcessFilterPtrOutputWithContext(ctx context.Context) DependencyProcessFilterPtrOutput {
+	return o
+}
+
+func (o DependencyProcessFilterPtrOutput) Elem() DependencyProcessFilterOutput {
+	return o.ApplyT(func(v *DependencyProcessFilter) DependencyProcessFilter {
+		if v != nil {
+			return *v
+		}
+		var ret DependencyProcessFilter
+		return ret
+	}).(DependencyProcessFilterOutput)
+}
+
+// Process name filter
+func (o DependencyProcessFilterPtrOutput) ProcessNameFilter() ProcessNameFilterPtrOutput {
+	return o.ApplyT(func(v *DependencyProcessFilter) *ProcessNameFilter {
+		if v == nil {
+			return nil
+		}
+		return v.ProcessNameFilter
+	}).(ProcessNameFilterPtrOutput)
+}
+
+// The resource management error additional info.
+type ErrorAdditionalInfoResponse struct {
+	// The additional info.
+	Info interface{} `pulumi:"info"`
+	// The additional info type.
+	Type string `pulumi:"type"`
+}
+
+// The resource management error additional info.
+type ErrorAdditionalInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutput() ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+// The additional info.
+func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
+}
+
+// The additional info type.
+func (o ErrorAdditionalInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ErrorAdditionalInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutput() ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorAdditionalInfoResponse {
+		return vs[0].([]ErrorAdditionalInfoResponse)[vs[1].(int)]
+	}).(ErrorAdditionalInfoResponseOutput)
+}
+
+// The error detail.
+type ErrorDetailResponse struct {
+	// The error additional info.
+	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
+	// The error code.
+	Code string `pulumi:"code"`
+	// The error details.
+	Details []ErrorDetailResponse `pulumi:"details"`
+	// The error message.
+	Message string `pulumi:"message"`
+	// The error target.
+	Target string `pulumi:"target"`
+}
+
+// The error detail.
+type ErrorDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResponseOutput {
+	return o
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
+	return o
+}
+
+// The error additional info.
+func (o ErrorDetailResponseOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorAdditionalInfoResponse { return v.AdditionalInfo }).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponseOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorDetailResponse { return v.Details }).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type ErrorDetailResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutput() ErrorDetailResponsePtrOutput {
+	return o
+}
+
+func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutputWithContext(ctx context.Context) ErrorDetailResponsePtrOutput {
+	return o
+}
+
+func (o ErrorDetailResponsePtrOutput) Elem() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) ErrorDetailResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorDetailResponse
+		return ret
+	}).(ErrorDetailResponseOutput)
+}
+
+// The error additional info.
+func (o ErrorDetailResponsePtrOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorAdditionalInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalInfo
+	}).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponsePtrOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorDetailResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponsePtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErrorDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
+		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
+	}).(ErrorDetailResponseOutput)
+}
+
+// Model representing properties returned upon successful completion of the export dependencies asynchronous operation.
+type GetDependencyViewForAllMachinesResultPropertiesResponse struct {
+	// The SAS URI of the blob containing the layout file for the multi-server view.
+	LayoutFileSasUrl string `pulumi:"layoutFileSasUrl"`
+}
+
+// Model representing properties returned upon successful completion of the export dependencies asynchronous operation.
+type GetDependencyViewForAllMachinesResultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (GetDependencyViewForAllMachinesResultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDependencyViewForAllMachinesResultPropertiesResponse)(nil)).Elem()
+}
+
+func (o GetDependencyViewForAllMachinesResultPropertiesResponseOutput) ToGetDependencyViewForAllMachinesResultPropertiesResponseOutput() GetDependencyViewForAllMachinesResultPropertiesResponseOutput {
+	return o
+}
+
+func (o GetDependencyViewForAllMachinesResultPropertiesResponseOutput) ToGetDependencyViewForAllMachinesResultPropertiesResponseOutputWithContext(ctx context.Context) GetDependencyViewForAllMachinesResultPropertiesResponseOutput {
+	return o
+}
+
+// The SAS URI of the blob containing the layout file for the multi-server view.
+func (o GetDependencyViewForAllMachinesResultPropertiesResponseOutput) LayoutFileSasUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDependencyViewForAllMachinesResultPropertiesResponse) string { return v.LayoutFileSasUrl }).(pulumi.StringOutput)
+}
+
+// Process name filter for dependency map visualization apis
+type ProcessNameFilter struct {
+	// Operator for process name filter
+	Operator string `pulumi:"operator"`
+	// List of process names on which the operator should be applied
+	ProcessNames []string `pulumi:"processNames"`
+}
+
+// ProcessNameFilterInput is an input type that accepts ProcessNameFilterArgs and ProcessNameFilterOutput values.
+// You can construct a concrete instance of `ProcessNameFilterInput` via:
+//
+//	ProcessNameFilterArgs{...}
+type ProcessNameFilterInput interface {
+	pulumi.Input
+
+	ToProcessNameFilterOutput() ProcessNameFilterOutput
+	ToProcessNameFilterOutputWithContext(context.Context) ProcessNameFilterOutput
+}
+
+// Process name filter for dependency map visualization apis
+type ProcessNameFilterArgs struct {
+	// Operator for process name filter
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// List of process names on which the operator should be applied
+	ProcessNames pulumi.StringArrayInput `pulumi:"processNames"`
+}
+
+func (ProcessNameFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProcessNameFilter)(nil)).Elem()
+}
+
+func (i ProcessNameFilterArgs) ToProcessNameFilterOutput() ProcessNameFilterOutput {
+	return i.ToProcessNameFilterOutputWithContext(context.Background())
+}
+
+func (i ProcessNameFilterArgs) ToProcessNameFilterOutputWithContext(ctx context.Context) ProcessNameFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProcessNameFilterOutput)
+}
+
+func (i ProcessNameFilterArgs) ToProcessNameFilterPtrOutput() ProcessNameFilterPtrOutput {
+	return i.ToProcessNameFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ProcessNameFilterArgs) ToProcessNameFilterPtrOutputWithContext(ctx context.Context) ProcessNameFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProcessNameFilterOutput).ToProcessNameFilterPtrOutputWithContext(ctx)
+}
+
+// ProcessNameFilterPtrInput is an input type that accepts ProcessNameFilterArgs, ProcessNameFilterPtr and ProcessNameFilterPtrOutput values.
+// You can construct a concrete instance of `ProcessNameFilterPtrInput` via:
+//
+//	        ProcessNameFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProcessNameFilterPtrInput interface {
+	pulumi.Input
+
+	ToProcessNameFilterPtrOutput() ProcessNameFilterPtrOutput
+	ToProcessNameFilterPtrOutputWithContext(context.Context) ProcessNameFilterPtrOutput
+}
+
+type processNameFilterPtrType ProcessNameFilterArgs
+
+func ProcessNameFilterPtr(v *ProcessNameFilterArgs) ProcessNameFilterPtrInput {
+	return (*processNameFilterPtrType)(v)
+}
+
+func (*processNameFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProcessNameFilter)(nil)).Elem()
+}
+
+func (i *processNameFilterPtrType) ToProcessNameFilterPtrOutput() ProcessNameFilterPtrOutput {
+	return i.ToProcessNameFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *processNameFilterPtrType) ToProcessNameFilterPtrOutputWithContext(ctx context.Context) ProcessNameFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProcessNameFilterPtrOutput)
+}
+
+// Process name filter for dependency map visualization apis
+type ProcessNameFilterOutput struct{ *pulumi.OutputState }
+
+func (ProcessNameFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProcessNameFilter)(nil)).Elem()
+}
+
+func (o ProcessNameFilterOutput) ToProcessNameFilterOutput() ProcessNameFilterOutput {
+	return o
+}
+
+func (o ProcessNameFilterOutput) ToProcessNameFilterOutputWithContext(ctx context.Context) ProcessNameFilterOutput {
+	return o
+}
+
+func (o ProcessNameFilterOutput) ToProcessNameFilterPtrOutput() ProcessNameFilterPtrOutput {
+	return o.ToProcessNameFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ProcessNameFilterOutput) ToProcessNameFilterPtrOutputWithContext(ctx context.Context) ProcessNameFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProcessNameFilter) *ProcessNameFilter {
+		return &v
+	}).(ProcessNameFilterPtrOutput)
+}
+
+// Operator for process name filter
+func (o ProcessNameFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ProcessNameFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// List of process names on which the operator should be applied
+func (o ProcessNameFilterOutput) ProcessNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProcessNameFilter) []string { return v.ProcessNames }).(pulumi.StringArrayOutput)
+}
+
+type ProcessNameFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ProcessNameFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProcessNameFilter)(nil)).Elem()
+}
+
+func (o ProcessNameFilterPtrOutput) ToProcessNameFilterPtrOutput() ProcessNameFilterPtrOutput {
+	return o
+}
+
+func (o ProcessNameFilterPtrOutput) ToProcessNameFilterPtrOutputWithContext(ctx context.Context) ProcessNameFilterPtrOutput {
+	return o
+}
+
+func (o ProcessNameFilterPtrOutput) Elem() ProcessNameFilterOutput {
+	return o.ApplyT(func(v *ProcessNameFilter) ProcessNameFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ProcessNameFilter
+		return ret
+	}).(ProcessNameFilterOutput)
+}
+
+// Operator for process name filter
+func (o ProcessNameFilterPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProcessNameFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of process names on which the operator should be applied
+func (o ProcessNameFilterPtrOutput) ProcessNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProcessNameFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProcessNames
+	}).(pulumi.StringArrayOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -75,5 +601,15 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(DependencyProcessFilterOutput{})
+	pulumi.RegisterOutputType(DependencyProcessFilterPtrOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponsePtrOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
+	pulumi.RegisterOutputType(GetDependencyViewForAllMachinesResultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ProcessNameFilterOutput{})
+	pulumi.RegisterOutputType(ProcessNameFilterPtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

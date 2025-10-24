@@ -819,6 +819,278 @@ func (o ActionsResponsePtrOutput) CustomProperties() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Alert configuration details
+type AlertConfiguration struct {
+	// Optional list of action group resource IDs to be notified when the alert is triggered.
+	ActionGroupIds []string `pulumi:"actionGroupIds"`
+	// The alert rule description.
+	Description *string `pulumi:"description"`
+	// The severity of triggered alert.
+	Severity string `pulumi:"severity"`
+}
+
+// AlertConfigurationInput is an input type that accepts AlertConfigurationArgs and AlertConfigurationOutput values.
+// You can construct a concrete instance of `AlertConfigurationInput` via:
+//
+//	AlertConfigurationArgs{...}
+type AlertConfigurationInput interface {
+	pulumi.Input
+
+	ToAlertConfigurationOutput() AlertConfigurationOutput
+	ToAlertConfigurationOutputWithContext(context.Context) AlertConfigurationOutput
+}
+
+// Alert configuration details
+type AlertConfigurationArgs struct {
+	// Optional list of action group resource IDs to be notified when the alert is triggered.
+	ActionGroupIds pulumi.StringArrayInput `pulumi:"actionGroupIds"`
+	// The alert rule description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The severity of triggered alert.
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (AlertConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertConfiguration)(nil)).Elem()
+}
+
+func (i AlertConfigurationArgs) ToAlertConfigurationOutput() AlertConfigurationOutput {
+	return i.ToAlertConfigurationOutputWithContext(context.Background())
+}
+
+func (i AlertConfigurationArgs) ToAlertConfigurationOutputWithContext(ctx context.Context) AlertConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertConfigurationOutput)
+}
+
+func (i AlertConfigurationArgs) ToAlertConfigurationPtrOutput() AlertConfigurationPtrOutput {
+	return i.ToAlertConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AlertConfigurationArgs) ToAlertConfigurationPtrOutputWithContext(ctx context.Context) AlertConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertConfigurationOutput).ToAlertConfigurationPtrOutputWithContext(ctx)
+}
+
+// AlertConfigurationPtrInput is an input type that accepts AlertConfigurationArgs, AlertConfigurationPtr and AlertConfigurationPtrOutput values.
+// You can construct a concrete instance of `AlertConfigurationPtrInput` via:
+//
+//	        AlertConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAlertConfigurationPtrOutput() AlertConfigurationPtrOutput
+	ToAlertConfigurationPtrOutputWithContext(context.Context) AlertConfigurationPtrOutput
+}
+
+type alertConfigurationPtrType AlertConfigurationArgs
+
+func AlertConfigurationPtr(v *AlertConfigurationArgs) AlertConfigurationPtrInput {
+	return (*alertConfigurationPtrType)(v)
+}
+
+func (*alertConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertConfiguration)(nil)).Elem()
+}
+
+func (i *alertConfigurationPtrType) ToAlertConfigurationPtrOutput() AlertConfigurationPtrOutput {
+	return i.ToAlertConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *alertConfigurationPtrType) ToAlertConfigurationPtrOutputWithContext(ctx context.Context) AlertConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertConfigurationPtrOutput)
+}
+
+// Alert configuration details
+type AlertConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AlertConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertConfiguration)(nil)).Elem()
+}
+
+func (o AlertConfigurationOutput) ToAlertConfigurationOutput() AlertConfigurationOutput {
+	return o
+}
+
+func (o AlertConfigurationOutput) ToAlertConfigurationOutputWithContext(ctx context.Context) AlertConfigurationOutput {
+	return o
+}
+
+func (o AlertConfigurationOutput) ToAlertConfigurationPtrOutput() AlertConfigurationPtrOutput {
+	return o.ToAlertConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AlertConfigurationOutput) ToAlertConfigurationPtrOutputWithContext(ctx context.Context) AlertConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertConfiguration) *AlertConfiguration {
+		return &v
+	}).(AlertConfigurationPtrOutput)
+}
+
+// Optional list of action group resource IDs to be notified when the alert is triggered.
+func (o AlertConfigurationOutput) ActionGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertConfiguration) []string { return v.ActionGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The alert rule description.
+func (o AlertConfigurationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertConfiguration) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The severity of triggered alert.
+func (o AlertConfigurationOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertConfiguration) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type AlertConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertConfiguration)(nil)).Elem()
+}
+
+func (o AlertConfigurationPtrOutput) ToAlertConfigurationPtrOutput() AlertConfigurationPtrOutput {
+	return o
+}
+
+func (o AlertConfigurationPtrOutput) ToAlertConfigurationPtrOutputWithContext(ctx context.Context) AlertConfigurationPtrOutput {
+	return o
+}
+
+func (o AlertConfigurationPtrOutput) Elem() AlertConfigurationOutput {
+	return o.ApplyT(func(v *AlertConfiguration) AlertConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AlertConfiguration
+		return ret
+	}).(AlertConfigurationOutput)
+}
+
+// Optional list of action group resource IDs to be notified when the alert is triggered.
+func (o AlertConfigurationPtrOutput) ActionGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionGroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The alert rule description.
+func (o AlertConfigurationPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The severity of triggered alert.
+func (o AlertConfigurationPtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Severity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Alert configuration details
+type AlertConfigurationResponse struct {
+	// Optional list of action group resource IDs to be notified when the alert is triggered.
+	ActionGroupIds []string `pulumi:"actionGroupIds"`
+	// The alert rule description.
+	Description *string `pulumi:"description"`
+	// The severity of triggered alert.
+	Severity string `pulumi:"severity"`
+}
+
+// Alert configuration details
+type AlertConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (AlertConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertConfigurationResponse)(nil)).Elem()
+}
+
+func (o AlertConfigurationResponseOutput) ToAlertConfigurationResponseOutput() AlertConfigurationResponseOutput {
+	return o
+}
+
+func (o AlertConfigurationResponseOutput) ToAlertConfigurationResponseOutputWithContext(ctx context.Context) AlertConfigurationResponseOutput {
+	return o
+}
+
+// Optional list of action group resource IDs to be notified when the alert is triggered.
+func (o AlertConfigurationResponseOutput) ActionGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertConfigurationResponse) []string { return v.ActionGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The alert rule description.
+func (o AlertConfigurationResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertConfigurationResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The severity of triggered alert.
+func (o AlertConfigurationResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertConfigurationResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type AlertConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertConfigurationResponse)(nil)).Elem()
+}
+
+func (o AlertConfigurationResponsePtrOutput) ToAlertConfigurationResponsePtrOutput() AlertConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AlertConfigurationResponsePtrOutput) ToAlertConfigurationResponsePtrOutputWithContext(ctx context.Context) AlertConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o AlertConfigurationResponsePtrOutput) Elem() AlertConfigurationResponseOutput {
+	return o.ApplyT(func(v *AlertConfigurationResponse) AlertConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AlertConfigurationResponse
+		return ret
+	}).(AlertConfigurationResponseOutput)
+}
+
+// Optional list of action group resource IDs to be notified when the alert is triggered.
+func (o AlertConfigurationResponsePtrOutput) ActionGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertConfigurationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionGroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The alert rule description.
+func (o AlertConfigurationResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The severity of triggered alert.
+func (o AlertConfigurationResponsePtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Severity
+	}).(pulumi.StringPtrOutput)
+}
+
 // An Activity Log Alert rule condition that is met when all its member conditions are met.
 type AlertRuleAllOfCondition struct {
 	// The list of Activity Log Alert rule conditions.
@@ -1315,6 +1587,348 @@ func (o AlertRuleLeafConditionResponseArrayOutput) Index(i pulumi.IntInput) Aler
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleLeafConditionResponse {
 		return vs[0].([]AlertRuleLeafConditionResponse)[vs[1].(int)]
 	}).(AlertRuleLeafConditionResponseOutput)
+}
+
+// Discovery rule properties for an Application Insights topology query
+type ApplicationInsightsTopologyDiscoveryRuleProperties struct {
+	// Whether to add all recommended signals to the discovered entities.
+	AddRecommendedSignals string `pulumi:"addRecommendedSignals"`
+	// Application Insights resource ID
+	ApplicationInsightsResourceId string `pulumi:"applicationInsightsResourceId"`
+	// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+	AuthenticationSetting string `pulumi:"authenticationSetting"`
+	// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+	DiscoverRelationships string `pulumi:"discoverRelationships"`
+	// Discovery rule relationship discovery behavior
+	// Expected value is 'ApplicationInsightsTopology'.
+	DiscoveryRuleKind string `pulumi:"discoveryRuleKind"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+}
+
+// ApplicationInsightsTopologyDiscoveryRulePropertiesInput is an input type that accepts ApplicationInsightsTopologyDiscoveryRulePropertiesArgs and ApplicationInsightsTopologyDiscoveryRulePropertiesOutput values.
+// You can construct a concrete instance of `ApplicationInsightsTopologyDiscoveryRulePropertiesInput` via:
+//
+//	ApplicationInsightsTopologyDiscoveryRulePropertiesArgs{...}
+type ApplicationInsightsTopologyDiscoveryRulePropertiesInput interface {
+	pulumi.Input
+
+	ToApplicationInsightsTopologyDiscoveryRulePropertiesOutput() ApplicationInsightsTopologyDiscoveryRulePropertiesOutput
+	ToApplicationInsightsTopologyDiscoveryRulePropertiesOutputWithContext(context.Context) ApplicationInsightsTopologyDiscoveryRulePropertiesOutput
+}
+
+// Discovery rule properties for an Application Insights topology query
+type ApplicationInsightsTopologyDiscoveryRulePropertiesArgs struct {
+	// Whether to add all recommended signals to the discovered entities.
+	AddRecommendedSignals pulumi.StringInput `pulumi:"addRecommendedSignals"`
+	// Application Insights resource ID
+	ApplicationInsightsResourceId pulumi.StringInput `pulumi:"applicationInsightsResourceId"`
+	// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+	AuthenticationSetting pulumi.StringInput `pulumi:"authenticationSetting"`
+	// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+	DiscoverRelationships pulumi.StringInput `pulumi:"discoverRelationships"`
+	// Discovery rule relationship discovery behavior
+	// Expected value is 'ApplicationInsightsTopology'.
+	DiscoveryRuleKind pulumi.StringInput `pulumi:"discoveryRuleKind"`
+	// Display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+}
+
+func (ApplicationInsightsTopologyDiscoveryRulePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationInsightsTopologyDiscoveryRuleProperties)(nil)).Elem()
+}
+
+func (i ApplicationInsightsTopologyDiscoveryRulePropertiesArgs) ToApplicationInsightsTopologyDiscoveryRulePropertiesOutput() ApplicationInsightsTopologyDiscoveryRulePropertiesOutput {
+	return i.ToApplicationInsightsTopologyDiscoveryRulePropertiesOutputWithContext(context.Background())
+}
+
+func (i ApplicationInsightsTopologyDiscoveryRulePropertiesArgs) ToApplicationInsightsTopologyDiscoveryRulePropertiesOutputWithContext(ctx context.Context) ApplicationInsightsTopologyDiscoveryRulePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInsightsTopologyDiscoveryRulePropertiesOutput)
+}
+
+func (i ApplicationInsightsTopologyDiscoveryRulePropertiesArgs) ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput() ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput {
+	return i.ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationInsightsTopologyDiscoveryRulePropertiesArgs) ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutputWithContext(ctx context.Context) ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInsightsTopologyDiscoveryRulePropertiesOutput).ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutputWithContext(ctx)
+}
+
+// ApplicationInsightsTopologyDiscoveryRulePropertiesPtrInput is an input type that accepts ApplicationInsightsTopologyDiscoveryRulePropertiesArgs, ApplicationInsightsTopologyDiscoveryRulePropertiesPtr and ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput values.
+// You can construct a concrete instance of `ApplicationInsightsTopologyDiscoveryRulePropertiesPtrInput` via:
+//
+//	        ApplicationInsightsTopologyDiscoveryRulePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationInsightsTopologyDiscoveryRulePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput() ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput
+	ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutputWithContext(context.Context) ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput
+}
+
+type applicationInsightsTopologyDiscoveryRulePropertiesPtrType ApplicationInsightsTopologyDiscoveryRulePropertiesArgs
+
+func ApplicationInsightsTopologyDiscoveryRulePropertiesPtr(v *ApplicationInsightsTopologyDiscoveryRulePropertiesArgs) ApplicationInsightsTopologyDiscoveryRulePropertiesPtrInput {
+	return (*applicationInsightsTopologyDiscoveryRulePropertiesPtrType)(v)
+}
+
+func (*applicationInsightsTopologyDiscoveryRulePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationInsightsTopologyDiscoveryRuleProperties)(nil)).Elem()
+}
+
+func (i *applicationInsightsTopologyDiscoveryRulePropertiesPtrType) ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput() ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput {
+	return i.ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationInsightsTopologyDiscoveryRulePropertiesPtrType) ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutputWithContext(ctx context.Context) ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput)
+}
+
+// Discovery rule properties for an Application Insights topology query
+type ApplicationInsightsTopologyDiscoveryRulePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ApplicationInsightsTopologyDiscoveryRulePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationInsightsTopologyDiscoveryRuleProperties)(nil)).Elem()
+}
+
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesOutput) ToApplicationInsightsTopologyDiscoveryRulePropertiesOutput() ApplicationInsightsTopologyDiscoveryRulePropertiesOutput {
+	return o
+}
+
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesOutput) ToApplicationInsightsTopologyDiscoveryRulePropertiesOutputWithContext(ctx context.Context) ApplicationInsightsTopologyDiscoveryRulePropertiesOutput {
+	return o
+}
+
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesOutput) ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput() ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput {
+	return o.ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesOutput) ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutputWithContext(ctx context.Context) ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationInsightsTopologyDiscoveryRuleProperties) *ApplicationInsightsTopologyDiscoveryRuleProperties {
+		return &v
+	}).(ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput)
+}
+
+// Whether to add all recommended signals to the discovered entities.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesOutput) AddRecommendedSignals() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRuleProperties) string { return v.AddRecommendedSignals }).(pulumi.StringOutput)
+}
+
+// Application Insights resource ID
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesOutput) ApplicationInsightsResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRuleProperties) string {
+		return v.ApplicationInsightsResourceId
+	}).(pulumi.StringOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesOutput) AuthenticationSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRuleProperties) string { return v.AuthenticationSetting }).(pulumi.StringOutput)
+}
+
+// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesOutput) DiscoverRelationships() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRuleProperties) string { return v.DiscoverRelationships }).(pulumi.StringOutput)
+}
+
+// Discovery rule relationship discovery behavior
+// Expected value is 'ApplicationInsightsTopology'.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesOutput) DiscoveryRuleKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRuleProperties) string { return v.DiscoveryRuleKind }).(pulumi.StringOutput)
+}
+
+// Display name
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRuleProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationInsightsTopologyDiscoveryRuleProperties)(nil)).Elem()
+}
+
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput) ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput() ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput {
+	return o
+}
+
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput) ToApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutputWithContext(ctx context.Context) ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput {
+	return o
+}
+
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput) Elem() ApplicationInsightsTopologyDiscoveryRulePropertiesOutput {
+	return o.ApplyT(func(v *ApplicationInsightsTopologyDiscoveryRuleProperties) ApplicationInsightsTopologyDiscoveryRuleProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationInsightsTopologyDiscoveryRuleProperties
+		return ret
+	}).(ApplicationInsightsTopologyDiscoveryRulePropertiesOutput)
+}
+
+// Whether to add all recommended signals to the discovered entities.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput) AddRecommendedSignals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInsightsTopologyDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AddRecommendedSignals
+	}).(pulumi.StringPtrOutput)
+}
+
+// Application Insights resource ID
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput) ApplicationInsightsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInsightsTopologyDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplicationInsightsResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput) AuthenticationSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInsightsTopologyDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationSetting
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput) DiscoverRelationships() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInsightsTopologyDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscoverRelationships
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discovery rule relationship discovery behavior
+// Expected value is 'ApplicationInsightsTopology'.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput) DiscoveryRuleKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInsightsTopologyDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscoveryRuleKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display name
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInsightsTopologyDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discovery rule properties for an Application Insights topology query
+type ApplicationInsightsTopologyDiscoveryRulePropertiesResponse struct {
+	// Whether to add all recommended signals to the discovered entities.
+	AddRecommendedSignals string `pulumi:"addRecommendedSignals"`
+	// Application Insights resource ID
+	ApplicationInsightsResourceId string `pulumi:"applicationInsightsResourceId"`
+	// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+	AuthenticationSetting string `pulumi:"authenticationSetting"`
+	// Date when the discovery rule was (soft-)deleted.
+	DeletionDate string `pulumi:"deletionDate"`
+	// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+	DiscoverRelationships string `pulumi:"discoverRelationships"`
+	// Discovery rule relationship discovery behavior
+	// Expected value is 'ApplicationInsightsTopology'.
+	DiscoveryRuleKind string `pulumi:"discoveryRuleKind"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
+	EntityName string `pulumi:"entityName"`
+	// Error details if the last discovery operation failed.
+	Error DiscoveryErrorResponse `pulumi:"error"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Discovery rule properties for an Application Insights topology query
+type ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationInsightsTopologyDiscoveryRulePropertiesResponse)(nil)).Elem()
+}
+
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) ToApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput() ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput {
+	return o
+}
+
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) ToApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutputWithContext(ctx context.Context) ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput {
+	return o
+}
+
+// Whether to add all recommended signals to the discovered entities.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) AddRecommendedSignals() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRulePropertiesResponse) string {
+		return v.AddRecommendedSignals
+	}).(pulumi.StringOutput)
+}
+
+// Application Insights resource ID
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) ApplicationInsightsResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRulePropertiesResponse) string {
+		return v.ApplicationInsightsResourceId
+	}).(pulumi.StringOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) AuthenticationSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRulePropertiesResponse) string {
+		return v.AuthenticationSetting
+	}).(pulumi.StringOutput)
+}
+
+// Date when the discovery rule was (soft-)deleted.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) DeletionDate() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRulePropertiesResponse) string { return v.DeletionDate }).(pulumi.StringOutput)
+}
+
+// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) DiscoverRelationships() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRulePropertiesResponse) string {
+		return v.DiscoverRelationships
+	}).(pulumi.StringOutput)
+}
+
+// Discovery rule relationship discovery behavior
+// Expected value is 'ApplicationInsightsTopology'.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) DiscoveryRuleKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRulePropertiesResponse) string { return v.DiscoveryRuleKind }).(pulumi.StringOutput)
+}
+
+// Display name
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRulePropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) EntityName() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRulePropertiesResponse) string { return v.EntityName }).(pulumi.StringOutput)
+}
+
+// Error details if the last discovery operation failed.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) Error() DiscoveryErrorResponseOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRulePropertiesResponse) DiscoveryErrorResponse {
+		return v.Error
+	}).(DiscoveryErrorResponseOutput)
+}
+
+// The status of the last operation.
+func (o ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInsightsTopologyDiscoveryRulePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // An arm role receiver.
@@ -3439,6 +4053,280 @@ func (o AzureMonitorWorkspaceResponseMetricsOutput) PrometheusQueryEndpoint() pu
 	return o.ApplyT(func(v AzureMonitorWorkspaceResponseMetrics) string { return v.PrometheusQueryEndpoint }).(pulumi.StringOutput)
 }
 
+// A grouping of signal assignments for a Azure Monitor Workspace
+type AzureMonitorWorkspaceSignalGroup struct {
+	// Reference to the name of the authentication setting which is used for querying the data source
+	AuthenticationSetting string `pulumi:"authenticationSetting"`
+	// Azure Monitor workspace resource ID
+	AzureMonitorWorkspaceResourceId string `pulumi:"azureMonitorWorkspaceResourceId"`
+	// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+	SignalAssignments []SignalAssignment `pulumi:"signalAssignments"`
+}
+
+// AzureMonitorWorkspaceSignalGroupInput is an input type that accepts AzureMonitorWorkspaceSignalGroupArgs and AzureMonitorWorkspaceSignalGroupOutput values.
+// You can construct a concrete instance of `AzureMonitorWorkspaceSignalGroupInput` via:
+//
+//	AzureMonitorWorkspaceSignalGroupArgs{...}
+type AzureMonitorWorkspaceSignalGroupInput interface {
+	pulumi.Input
+
+	ToAzureMonitorWorkspaceSignalGroupOutput() AzureMonitorWorkspaceSignalGroupOutput
+	ToAzureMonitorWorkspaceSignalGroupOutputWithContext(context.Context) AzureMonitorWorkspaceSignalGroupOutput
+}
+
+// A grouping of signal assignments for a Azure Monitor Workspace
+type AzureMonitorWorkspaceSignalGroupArgs struct {
+	// Reference to the name of the authentication setting which is used for querying the data source
+	AuthenticationSetting pulumi.StringInput `pulumi:"authenticationSetting"`
+	// Azure Monitor workspace resource ID
+	AzureMonitorWorkspaceResourceId pulumi.StringInput `pulumi:"azureMonitorWorkspaceResourceId"`
+	// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+	SignalAssignments SignalAssignmentArrayInput `pulumi:"signalAssignments"`
+}
+
+func (AzureMonitorWorkspaceSignalGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorWorkspaceSignalGroup)(nil)).Elem()
+}
+
+func (i AzureMonitorWorkspaceSignalGroupArgs) ToAzureMonitorWorkspaceSignalGroupOutput() AzureMonitorWorkspaceSignalGroupOutput {
+	return i.ToAzureMonitorWorkspaceSignalGroupOutputWithContext(context.Background())
+}
+
+func (i AzureMonitorWorkspaceSignalGroupArgs) ToAzureMonitorWorkspaceSignalGroupOutputWithContext(ctx context.Context) AzureMonitorWorkspaceSignalGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorWorkspaceSignalGroupOutput)
+}
+
+func (i AzureMonitorWorkspaceSignalGroupArgs) ToAzureMonitorWorkspaceSignalGroupPtrOutput() AzureMonitorWorkspaceSignalGroupPtrOutput {
+	return i.ToAzureMonitorWorkspaceSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i AzureMonitorWorkspaceSignalGroupArgs) ToAzureMonitorWorkspaceSignalGroupPtrOutputWithContext(ctx context.Context) AzureMonitorWorkspaceSignalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorWorkspaceSignalGroupOutput).ToAzureMonitorWorkspaceSignalGroupPtrOutputWithContext(ctx)
+}
+
+// AzureMonitorWorkspaceSignalGroupPtrInput is an input type that accepts AzureMonitorWorkspaceSignalGroupArgs, AzureMonitorWorkspaceSignalGroupPtr and AzureMonitorWorkspaceSignalGroupPtrOutput values.
+// You can construct a concrete instance of `AzureMonitorWorkspaceSignalGroupPtrInput` via:
+//
+//	        AzureMonitorWorkspaceSignalGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureMonitorWorkspaceSignalGroupPtrInput interface {
+	pulumi.Input
+
+	ToAzureMonitorWorkspaceSignalGroupPtrOutput() AzureMonitorWorkspaceSignalGroupPtrOutput
+	ToAzureMonitorWorkspaceSignalGroupPtrOutputWithContext(context.Context) AzureMonitorWorkspaceSignalGroupPtrOutput
+}
+
+type azureMonitorWorkspaceSignalGroupPtrType AzureMonitorWorkspaceSignalGroupArgs
+
+func AzureMonitorWorkspaceSignalGroupPtr(v *AzureMonitorWorkspaceSignalGroupArgs) AzureMonitorWorkspaceSignalGroupPtrInput {
+	return (*azureMonitorWorkspaceSignalGroupPtrType)(v)
+}
+
+func (*azureMonitorWorkspaceSignalGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMonitorWorkspaceSignalGroup)(nil)).Elem()
+}
+
+func (i *azureMonitorWorkspaceSignalGroupPtrType) ToAzureMonitorWorkspaceSignalGroupPtrOutput() AzureMonitorWorkspaceSignalGroupPtrOutput {
+	return i.ToAzureMonitorWorkspaceSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *azureMonitorWorkspaceSignalGroupPtrType) ToAzureMonitorWorkspaceSignalGroupPtrOutputWithContext(ctx context.Context) AzureMonitorWorkspaceSignalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorWorkspaceSignalGroupPtrOutput)
+}
+
+// A grouping of signal assignments for a Azure Monitor Workspace
+type AzureMonitorWorkspaceSignalGroupOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorWorkspaceSignalGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorWorkspaceSignalGroup)(nil)).Elem()
+}
+
+func (o AzureMonitorWorkspaceSignalGroupOutput) ToAzureMonitorWorkspaceSignalGroupOutput() AzureMonitorWorkspaceSignalGroupOutput {
+	return o
+}
+
+func (o AzureMonitorWorkspaceSignalGroupOutput) ToAzureMonitorWorkspaceSignalGroupOutputWithContext(ctx context.Context) AzureMonitorWorkspaceSignalGroupOutput {
+	return o
+}
+
+func (o AzureMonitorWorkspaceSignalGroupOutput) ToAzureMonitorWorkspaceSignalGroupPtrOutput() AzureMonitorWorkspaceSignalGroupPtrOutput {
+	return o.ToAzureMonitorWorkspaceSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (o AzureMonitorWorkspaceSignalGroupOutput) ToAzureMonitorWorkspaceSignalGroupPtrOutputWithContext(ctx context.Context) AzureMonitorWorkspaceSignalGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureMonitorWorkspaceSignalGroup) *AzureMonitorWorkspaceSignalGroup {
+		return &v
+	}).(AzureMonitorWorkspaceSignalGroupPtrOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o AzureMonitorWorkspaceSignalGroupOutput) AuthenticationSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceSignalGroup) string { return v.AuthenticationSetting }).(pulumi.StringOutput)
+}
+
+// Azure Monitor workspace resource ID
+func (o AzureMonitorWorkspaceSignalGroupOutput) AzureMonitorWorkspaceResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceSignalGroup) string { return v.AzureMonitorWorkspaceResourceId }).(pulumi.StringOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o AzureMonitorWorkspaceSignalGroupOutput) SignalAssignments() SignalAssignmentArrayOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceSignalGroup) []SignalAssignment { return v.SignalAssignments }).(SignalAssignmentArrayOutput)
+}
+
+type AzureMonitorWorkspaceSignalGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorWorkspaceSignalGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMonitorWorkspaceSignalGroup)(nil)).Elem()
+}
+
+func (o AzureMonitorWorkspaceSignalGroupPtrOutput) ToAzureMonitorWorkspaceSignalGroupPtrOutput() AzureMonitorWorkspaceSignalGroupPtrOutput {
+	return o
+}
+
+func (o AzureMonitorWorkspaceSignalGroupPtrOutput) ToAzureMonitorWorkspaceSignalGroupPtrOutputWithContext(ctx context.Context) AzureMonitorWorkspaceSignalGroupPtrOutput {
+	return o
+}
+
+func (o AzureMonitorWorkspaceSignalGroupPtrOutput) Elem() AzureMonitorWorkspaceSignalGroupOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspaceSignalGroup) AzureMonitorWorkspaceSignalGroup {
+		if v != nil {
+			return *v
+		}
+		var ret AzureMonitorWorkspaceSignalGroup
+		return ret
+	}).(AzureMonitorWorkspaceSignalGroupOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o AzureMonitorWorkspaceSignalGroupPtrOutput) AuthenticationSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspaceSignalGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationSetting
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Monitor workspace resource ID
+func (o AzureMonitorWorkspaceSignalGroupPtrOutput) AzureMonitorWorkspaceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspaceSignalGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureMonitorWorkspaceResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o AzureMonitorWorkspaceSignalGroupPtrOutput) SignalAssignments() SignalAssignmentArrayOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspaceSignalGroup) []SignalAssignment {
+		if v == nil {
+			return nil
+		}
+		return v.SignalAssignments
+	}).(SignalAssignmentArrayOutput)
+}
+
+// A grouping of signal assignments for a Azure Monitor Workspace
+type AzureMonitorWorkspaceSignalGroupResponse struct {
+	// Reference to the name of the authentication setting which is used for querying the data source
+	AuthenticationSetting string `pulumi:"authenticationSetting"`
+	// Azure Monitor workspace resource ID
+	AzureMonitorWorkspaceResourceId string `pulumi:"azureMonitorWorkspaceResourceId"`
+	// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+	SignalAssignments []SignalAssignmentResponse `pulumi:"signalAssignments"`
+}
+
+// A grouping of signal assignments for a Azure Monitor Workspace
+type AzureMonitorWorkspaceSignalGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorWorkspaceSignalGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMonitorWorkspaceSignalGroupResponse)(nil)).Elem()
+}
+
+func (o AzureMonitorWorkspaceSignalGroupResponseOutput) ToAzureMonitorWorkspaceSignalGroupResponseOutput() AzureMonitorWorkspaceSignalGroupResponseOutput {
+	return o
+}
+
+func (o AzureMonitorWorkspaceSignalGroupResponseOutput) ToAzureMonitorWorkspaceSignalGroupResponseOutputWithContext(ctx context.Context) AzureMonitorWorkspaceSignalGroupResponseOutput {
+	return o
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o AzureMonitorWorkspaceSignalGroupResponseOutput) AuthenticationSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceSignalGroupResponse) string { return v.AuthenticationSetting }).(pulumi.StringOutput)
+}
+
+// Azure Monitor workspace resource ID
+func (o AzureMonitorWorkspaceSignalGroupResponseOutput) AzureMonitorWorkspaceResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceSignalGroupResponse) string { return v.AzureMonitorWorkspaceResourceId }).(pulumi.StringOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o AzureMonitorWorkspaceSignalGroupResponseOutput) SignalAssignments() SignalAssignmentResponseArrayOutput {
+	return o.ApplyT(func(v AzureMonitorWorkspaceSignalGroupResponse) []SignalAssignmentResponse {
+		return v.SignalAssignments
+	}).(SignalAssignmentResponseArrayOutput)
+}
+
+type AzureMonitorWorkspaceSignalGroupResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureMonitorWorkspaceSignalGroupResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMonitorWorkspaceSignalGroupResponse)(nil)).Elem()
+}
+
+func (o AzureMonitorWorkspaceSignalGroupResponsePtrOutput) ToAzureMonitorWorkspaceSignalGroupResponsePtrOutput() AzureMonitorWorkspaceSignalGroupResponsePtrOutput {
+	return o
+}
+
+func (o AzureMonitorWorkspaceSignalGroupResponsePtrOutput) ToAzureMonitorWorkspaceSignalGroupResponsePtrOutputWithContext(ctx context.Context) AzureMonitorWorkspaceSignalGroupResponsePtrOutput {
+	return o
+}
+
+func (o AzureMonitorWorkspaceSignalGroupResponsePtrOutput) Elem() AzureMonitorWorkspaceSignalGroupResponseOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspaceSignalGroupResponse) AzureMonitorWorkspaceSignalGroupResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureMonitorWorkspaceSignalGroupResponse
+		return ret
+	}).(AzureMonitorWorkspaceSignalGroupResponseOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o AzureMonitorWorkspaceSignalGroupResponsePtrOutput) AuthenticationSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspaceSignalGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationSetting
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Monitor workspace resource ID
+func (o AzureMonitorWorkspaceSignalGroupResponsePtrOutput) AzureMonitorWorkspaceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspaceSignalGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureMonitorWorkspaceResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o AzureMonitorWorkspaceSignalGroupResponsePtrOutput) SignalAssignments() SignalAssignmentResponseArrayOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspaceSignalGroupResponse) []SignalAssignmentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SignalAssignments
+	}).(SignalAssignmentResponseArrayOutput)
+}
+
 // The complex type of the extended location.
 type AzureResourceManagerCommonTypesExtendedLocation struct {
 	// The name of the extended location.
@@ -3673,6 +4561,278 @@ func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Type()
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// A grouping of signal assignments for an Azure resource
+type AzureResourceSignalGroup struct {
+	// Reference to the name of the authentication setting which is used for querying the data source
+	AuthenticationSetting string `pulumi:"authenticationSetting"`
+	// Azure resource ID
+	AzureResourceId string `pulumi:"azureResourceId"`
+	// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+	SignalAssignments []SignalAssignment `pulumi:"signalAssignments"`
+}
+
+// AzureResourceSignalGroupInput is an input type that accepts AzureResourceSignalGroupArgs and AzureResourceSignalGroupOutput values.
+// You can construct a concrete instance of `AzureResourceSignalGroupInput` via:
+//
+//	AzureResourceSignalGroupArgs{...}
+type AzureResourceSignalGroupInput interface {
+	pulumi.Input
+
+	ToAzureResourceSignalGroupOutput() AzureResourceSignalGroupOutput
+	ToAzureResourceSignalGroupOutputWithContext(context.Context) AzureResourceSignalGroupOutput
+}
+
+// A grouping of signal assignments for an Azure resource
+type AzureResourceSignalGroupArgs struct {
+	// Reference to the name of the authentication setting which is used for querying the data source
+	AuthenticationSetting pulumi.StringInput `pulumi:"authenticationSetting"`
+	// Azure resource ID
+	AzureResourceId pulumi.StringInput `pulumi:"azureResourceId"`
+	// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+	SignalAssignments SignalAssignmentArrayInput `pulumi:"signalAssignments"`
+}
+
+func (AzureResourceSignalGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureResourceSignalGroup)(nil)).Elem()
+}
+
+func (i AzureResourceSignalGroupArgs) ToAzureResourceSignalGroupOutput() AzureResourceSignalGroupOutput {
+	return i.ToAzureResourceSignalGroupOutputWithContext(context.Background())
+}
+
+func (i AzureResourceSignalGroupArgs) ToAzureResourceSignalGroupOutputWithContext(ctx context.Context) AzureResourceSignalGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureResourceSignalGroupOutput)
+}
+
+func (i AzureResourceSignalGroupArgs) ToAzureResourceSignalGroupPtrOutput() AzureResourceSignalGroupPtrOutput {
+	return i.ToAzureResourceSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i AzureResourceSignalGroupArgs) ToAzureResourceSignalGroupPtrOutputWithContext(ctx context.Context) AzureResourceSignalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureResourceSignalGroupOutput).ToAzureResourceSignalGroupPtrOutputWithContext(ctx)
+}
+
+// AzureResourceSignalGroupPtrInput is an input type that accepts AzureResourceSignalGroupArgs, AzureResourceSignalGroupPtr and AzureResourceSignalGroupPtrOutput values.
+// You can construct a concrete instance of `AzureResourceSignalGroupPtrInput` via:
+//
+//	        AzureResourceSignalGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureResourceSignalGroupPtrInput interface {
+	pulumi.Input
+
+	ToAzureResourceSignalGroupPtrOutput() AzureResourceSignalGroupPtrOutput
+	ToAzureResourceSignalGroupPtrOutputWithContext(context.Context) AzureResourceSignalGroupPtrOutput
+}
+
+type azureResourceSignalGroupPtrType AzureResourceSignalGroupArgs
+
+func AzureResourceSignalGroupPtr(v *AzureResourceSignalGroupArgs) AzureResourceSignalGroupPtrInput {
+	return (*azureResourceSignalGroupPtrType)(v)
+}
+
+func (*azureResourceSignalGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureResourceSignalGroup)(nil)).Elem()
+}
+
+func (i *azureResourceSignalGroupPtrType) ToAzureResourceSignalGroupPtrOutput() AzureResourceSignalGroupPtrOutput {
+	return i.ToAzureResourceSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *azureResourceSignalGroupPtrType) ToAzureResourceSignalGroupPtrOutputWithContext(ctx context.Context) AzureResourceSignalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureResourceSignalGroupPtrOutput)
+}
+
+// A grouping of signal assignments for an Azure resource
+type AzureResourceSignalGroupOutput struct{ *pulumi.OutputState }
+
+func (AzureResourceSignalGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureResourceSignalGroup)(nil)).Elem()
+}
+
+func (o AzureResourceSignalGroupOutput) ToAzureResourceSignalGroupOutput() AzureResourceSignalGroupOutput {
+	return o
+}
+
+func (o AzureResourceSignalGroupOutput) ToAzureResourceSignalGroupOutputWithContext(ctx context.Context) AzureResourceSignalGroupOutput {
+	return o
+}
+
+func (o AzureResourceSignalGroupOutput) ToAzureResourceSignalGroupPtrOutput() AzureResourceSignalGroupPtrOutput {
+	return o.ToAzureResourceSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (o AzureResourceSignalGroupOutput) ToAzureResourceSignalGroupPtrOutputWithContext(ctx context.Context) AzureResourceSignalGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureResourceSignalGroup) *AzureResourceSignalGroup {
+		return &v
+	}).(AzureResourceSignalGroupPtrOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o AzureResourceSignalGroupOutput) AuthenticationSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureResourceSignalGroup) string { return v.AuthenticationSetting }).(pulumi.StringOutput)
+}
+
+// Azure resource ID
+func (o AzureResourceSignalGroupOutput) AzureResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureResourceSignalGroup) string { return v.AzureResourceId }).(pulumi.StringOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o AzureResourceSignalGroupOutput) SignalAssignments() SignalAssignmentArrayOutput {
+	return o.ApplyT(func(v AzureResourceSignalGroup) []SignalAssignment { return v.SignalAssignments }).(SignalAssignmentArrayOutput)
+}
+
+type AzureResourceSignalGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureResourceSignalGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureResourceSignalGroup)(nil)).Elem()
+}
+
+func (o AzureResourceSignalGroupPtrOutput) ToAzureResourceSignalGroupPtrOutput() AzureResourceSignalGroupPtrOutput {
+	return o
+}
+
+func (o AzureResourceSignalGroupPtrOutput) ToAzureResourceSignalGroupPtrOutputWithContext(ctx context.Context) AzureResourceSignalGroupPtrOutput {
+	return o
+}
+
+func (o AzureResourceSignalGroupPtrOutput) Elem() AzureResourceSignalGroupOutput {
+	return o.ApplyT(func(v *AzureResourceSignalGroup) AzureResourceSignalGroup {
+		if v != nil {
+			return *v
+		}
+		var ret AzureResourceSignalGroup
+		return ret
+	}).(AzureResourceSignalGroupOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o AzureResourceSignalGroupPtrOutput) AuthenticationSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureResourceSignalGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationSetting
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure resource ID
+func (o AzureResourceSignalGroupPtrOutput) AzureResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureResourceSignalGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o AzureResourceSignalGroupPtrOutput) SignalAssignments() SignalAssignmentArrayOutput {
+	return o.ApplyT(func(v *AzureResourceSignalGroup) []SignalAssignment {
+		if v == nil {
+			return nil
+		}
+		return v.SignalAssignments
+	}).(SignalAssignmentArrayOutput)
+}
+
+// A grouping of signal assignments for an Azure resource
+type AzureResourceSignalGroupResponse struct {
+	// Reference to the name of the authentication setting which is used for querying the data source
+	AuthenticationSetting string `pulumi:"authenticationSetting"`
+	// Azure resource ID
+	AzureResourceId string `pulumi:"azureResourceId"`
+	// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+	SignalAssignments []SignalAssignmentResponse `pulumi:"signalAssignments"`
+}
+
+// A grouping of signal assignments for an Azure resource
+type AzureResourceSignalGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureResourceSignalGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureResourceSignalGroupResponse)(nil)).Elem()
+}
+
+func (o AzureResourceSignalGroupResponseOutput) ToAzureResourceSignalGroupResponseOutput() AzureResourceSignalGroupResponseOutput {
+	return o
+}
+
+func (o AzureResourceSignalGroupResponseOutput) ToAzureResourceSignalGroupResponseOutputWithContext(ctx context.Context) AzureResourceSignalGroupResponseOutput {
+	return o
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o AzureResourceSignalGroupResponseOutput) AuthenticationSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureResourceSignalGroupResponse) string { return v.AuthenticationSetting }).(pulumi.StringOutput)
+}
+
+// Azure resource ID
+func (o AzureResourceSignalGroupResponseOutput) AzureResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureResourceSignalGroupResponse) string { return v.AzureResourceId }).(pulumi.StringOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o AzureResourceSignalGroupResponseOutput) SignalAssignments() SignalAssignmentResponseArrayOutput {
+	return o.ApplyT(func(v AzureResourceSignalGroupResponse) []SignalAssignmentResponse { return v.SignalAssignments }).(SignalAssignmentResponseArrayOutput)
+}
+
+type AzureResourceSignalGroupResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureResourceSignalGroupResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureResourceSignalGroupResponse)(nil)).Elem()
+}
+
+func (o AzureResourceSignalGroupResponsePtrOutput) ToAzureResourceSignalGroupResponsePtrOutput() AzureResourceSignalGroupResponsePtrOutput {
+	return o
+}
+
+func (o AzureResourceSignalGroupResponsePtrOutput) ToAzureResourceSignalGroupResponsePtrOutputWithContext(ctx context.Context) AzureResourceSignalGroupResponsePtrOutput {
+	return o
+}
+
+func (o AzureResourceSignalGroupResponsePtrOutput) Elem() AzureResourceSignalGroupResponseOutput {
+	return o.ApplyT(func(v *AzureResourceSignalGroupResponse) AzureResourceSignalGroupResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureResourceSignalGroupResponse
+		return ret
+	}).(AzureResourceSignalGroupResponseOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o AzureResourceSignalGroupResponsePtrOutput) AuthenticationSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureResourceSignalGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationSetting
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure resource ID
+func (o AzureResourceSignalGroupResponsePtrOutput) AzureResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureResourceSignalGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o AzureResourceSignalGroupResponsePtrOutput) SignalAssignments() SignalAssignmentResponseArrayOutput {
+	return o.ApplyT(func(v *AzureResourceSignalGroupResponse) []SignalAssignmentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SignalAssignments
+	}).(SignalAssignmentResponseArrayOutput)
 }
 
 // Batch processor.
@@ -8239,6 +9399,313 @@ func (o DataSourcesSpecResponseDataImportsPtrOutput) EventHub() DataImportSource
 	}).(DataImportSourcesResponseEventHubPtrOutput)
 }
 
+// Properties for dependent entities, i.e. child entities
+type DependenciesSignalGroup struct {
+	// Aggregation type for child dependencies.
+	AggregationType string `pulumi:"aggregationType"`
+	// Degraded threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered degraded when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+	DegradedThreshold *string `pulumi:"degradedThreshold"`
+	// Unhealthy threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered unhealthy when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+	UnhealthyThreshold *string `pulumi:"unhealthyThreshold"`
+}
+
+// Defaults sets the appropriate defaults for DependenciesSignalGroup
+func (val *DependenciesSignalGroup) Defaults() *DependenciesSignalGroup {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.AggregationType) {
+		tmp.AggregationType = "WorstOf"
+	}
+	return &tmp
+}
+
+// DependenciesSignalGroupInput is an input type that accepts DependenciesSignalGroupArgs and DependenciesSignalGroupOutput values.
+// You can construct a concrete instance of `DependenciesSignalGroupInput` via:
+//
+//	DependenciesSignalGroupArgs{...}
+type DependenciesSignalGroupInput interface {
+	pulumi.Input
+
+	ToDependenciesSignalGroupOutput() DependenciesSignalGroupOutput
+	ToDependenciesSignalGroupOutputWithContext(context.Context) DependenciesSignalGroupOutput
+}
+
+// Properties for dependent entities, i.e. child entities
+type DependenciesSignalGroupArgs struct {
+	// Aggregation type for child dependencies.
+	AggregationType pulumi.StringInput `pulumi:"aggregationType"`
+	// Degraded threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered degraded when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+	DegradedThreshold pulumi.StringPtrInput `pulumi:"degradedThreshold"`
+	// Unhealthy threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered unhealthy when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+	UnhealthyThreshold pulumi.StringPtrInput `pulumi:"unhealthyThreshold"`
+}
+
+// Defaults sets the appropriate defaults for DependenciesSignalGroupArgs
+func (val *DependenciesSignalGroupArgs) Defaults() *DependenciesSignalGroupArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AggregationType == nil {
+		tmp.AggregationType = pulumi.String("WorstOf")
+	}
+	return &tmp
+}
+func (DependenciesSignalGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DependenciesSignalGroup)(nil)).Elem()
+}
+
+func (i DependenciesSignalGroupArgs) ToDependenciesSignalGroupOutput() DependenciesSignalGroupOutput {
+	return i.ToDependenciesSignalGroupOutputWithContext(context.Background())
+}
+
+func (i DependenciesSignalGroupArgs) ToDependenciesSignalGroupOutputWithContext(ctx context.Context) DependenciesSignalGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DependenciesSignalGroupOutput)
+}
+
+func (i DependenciesSignalGroupArgs) ToDependenciesSignalGroupPtrOutput() DependenciesSignalGroupPtrOutput {
+	return i.ToDependenciesSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i DependenciesSignalGroupArgs) ToDependenciesSignalGroupPtrOutputWithContext(ctx context.Context) DependenciesSignalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DependenciesSignalGroupOutput).ToDependenciesSignalGroupPtrOutputWithContext(ctx)
+}
+
+// DependenciesSignalGroupPtrInput is an input type that accepts DependenciesSignalGroupArgs, DependenciesSignalGroupPtr and DependenciesSignalGroupPtrOutput values.
+// You can construct a concrete instance of `DependenciesSignalGroupPtrInput` via:
+//
+//	        DependenciesSignalGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type DependenciesSignalGroupPtrInput interface {
+	pulumi.Input
+
+	ToDependenciesSignalGroupPtrOutput() DependenciesSignalGroupPtrOutput
+	ToDependenciesSignalGroupPtrOutputWithContext(context.Context) DependenciesSignalGroupPtrOutput
+}
+
+type dependenciesSignalGroupPtrType DependenciesSignalGroupArgs
+
+func DependenciesSignalGroupPtr(v *DependenciesSignalGroupArgs) DependenciesSignalGroupPtrInput {
+	return (*dependenciesSignalGroupPtrType)(v)
+}
+
+func (*dependenciesSignalGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DependenciesSignalGroup)(nil)).Elem()
+}
+
+func (i *dependenciesSignalGroupPtrType) ToDependenciesSignalGroupPtrOutput() DependenciesSignalGroupPtrOutput {
+	return i.ToDependenciesSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *dependenciesSignalGroupPtrType) ToDependenciesSignalGroupPtrOutputWithContext(ctx context.Context) DependenciesSignalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DependenciesSignalGroupPtrOutput)
+}
+
+// Properties for dependent entities, i.e. child entities
+type DependenciesSignalGroupOutput struct{ *pulumi.OutputState }
+
+func (DependenciesSignalGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DependenciesSignalGroup)(nil)).Elem()
+}
+
+func (o DependenciesSignalGroupOutput) ToDependenciesSignalGroupOutput() DependenciesSignalGroupOutput {
+	return o
+}
+
+func (o DependenciesSignalGroupOutput) ToDependenciesSignalGroupOutputWithContext(ctx context.Context) DependenciesSignalGroupOutput {
+	return o
+}
+
+func (o DependenciesSignalGroupOutput) ToDependenciesSignalGroupPtrOutput() DependenciesSignalGroupPtrOutput {
+	return o.ToDependenciesSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (o DependenciesSignalGroupOutput) ToDependenciesSignalGroupPtrOutputWithContext(ctx context.Context) DependenciesSignalGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DependenciesSignalGroup) *DependenciesSignalGroup {
+		return &v
+	}).(DependenciesSignalGroupPtrOutput)
+}
+
+// Aggregation type for child dependencies.
+func (o DependenciesSignalGroupOutput) AggregationType() pulumi.StringOutput {
+	return o.ApplyT(func(v DependenciesSignalGroup) string { return v.AggregationType }).(pulumi.StringOutput)
+}
+
+// Degraded threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered degraded when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+func (o DependenciesSignalGroupOutput) DegradedThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DependenciesSignalGroup) *string { return v.DegradedThreshold }).(pulumi.StringPtrOutput)
+}
+
+// Unhealthy threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered unhealthy when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+func (o DependenciesSignalGroupOutput) UnhealthyThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DependenciesSignalGroup) *string { return v.UnhealthyThreshold }).(pulumi.StringPtrOutput)
+}
+
+type DependenciesSignalGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (DependenciesSignalGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DependenciesSignalGroup)(nil)).Elem()
+}
+
+func (o DependenciesSignalGroupPtrOutput) ToDependenciesSignalGroupPtrOutput() DependenciesSignalGroupPtrOutput {
+	return o
+}
+
+func (o DependenciesSignalGroupPtrOutput) ToDependenciesSignalGroupPtrOutputWithContext(ctx context.Context) DependenciesSignalGroupPtrOutput {
+	return o
+}
+
+func (o DependenciesSignalGroupPtrOutput) Elem() DependenciesSignalGroupOutput {
+	return o.ApplyT(func(v *DependenciesSignalGroup) DependenciesSignalGroup {
+		if v != nil {
+			return *v
+		}
+		var ret DependenciesSignalGroup
+		return ret
+	}).(DependenciesSignalGroupOutput)
+}
+
+// Aggregation type for child dependencies.
+func (o DependenciesSignalGroupPtrOutput) AggregationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DependenciesSignalGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AggregationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Degraded threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered degraded when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+func (o DependenciesSignalGroupPtrOutput) DegradedThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DependenciesSignalGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DegradedThreshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unhealthy threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered unhealthy when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+func (o DependenciesSignalGroupPtrOutput) UnhealthyThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DependenciesSignalGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UnhealthyThreshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties for dependent entities, i.e. child entities
+type DependenciesSignalGroupResponse struct {
+	// Aggregation type for child dependencies.
+	AggregationType string `pulumi:"aggregationType"`
+	// Degraded threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered degraded when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+	DegradedThreshold *string `pulumi:"degradedThreshold"`
+	// Unhealthy threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered unhealthy when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+	UnhealthyThreshold *string `pulumi:"unhealthyThreshold"`
+}
+
+// Defaults sets the appropriate defaults for DependenciesSignalGroupResponse
+func (val *DependenciesSignalGroupResponse) Defaults() *DependenciesSignalGroupResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.AggregationType) {
+		tmp.AggregationType = "WorstOf"
+	}
+	return &tmp
+}
+
+// Properties for dependent entities, i.e. child entities
+type DependenciesSignalGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (DependenciesSignalGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DependenciesSignalGroupResponse)(nil)).Elem()
+}
+
+func (o DependenciesSignalGroupResponseOutput) ToDependenciesSignalGroupResponseOutput() DependenciesSignalGroupResponseOutput {
+	return o
+}
+
+func (o DependenciesSignalGroupResponseOutput) ToDependenciesSignalGroupResponseOutputWithContext(ctx context.Context) DependenciesSignalGroupResponseOutput {
+	return o
+}
+
+// Aggregation type for child dependencies.
+func (o DependenciesSignalGroupResponseOutput) AggregationType() pulumi.StringOutput {
+	return o.ApplyT(func(v DependenciesSignalGroupResponse) string { return v.AggregationType }).(pulumi.StringOutput)
+}
+
+// Degraded threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered degraded when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+func (o DependenciesSignalGroupResponseOutput) DegradedThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DependenciesSignalGroupResponse) *string { return v.DegradedThreshold }).(pulumi.StringPtrOutput)
+}
+
+// Unhealthy threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered unhealthy when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+func (o DependenciesSignalGroupResponseOutput) UnhealthyThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DependenciesSignalGroupResponse) *string { return v.UnhealthyThreshold }).(pulumi.StringPtrOutput)
+}
+
+type DependenciesSignalGroupResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DependenciesSignalGroupResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DependenciesSignalGroupResponse)(nil)).Elem()
+}
+
+func (o DependenciesSignalGroupResponsePtrOutput) ToDependenciesSignalGroupResponsePtrOutput() DependenciesSignalGroupResponsePtrOutput {
+	return o
+}
+
+func (o DependenciesSignalGroupResponsePtrOutput) ToDependenciesSignalGroupResponsePtrOutputWithContext(ctx context.Context) DependenciesSignalGroupResponsePtrOutput {
+	return o
+}
+
+func (o DependenciesSignalGroupResponsePtrOutput) Elem() DependenciesSignalGroupResponseOutput {
+	return o.ApplyT(func(v *DependenciesSignalGroupResponse) DependenciesSignalGroupResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DependenciesSignalGroupResponse
+		return ret
+	}).(DependenciesSignalGroupResponseOutput)
+}
+
+// Aggregation type for child dependencies.
+func (o DependenciesSignalGroupResponsePtrOutput) AggregationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DependenciesSignalGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AggregationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Degraded threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered degraded when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+func (o DependenciesSignalGroupResponsePtrOutput) DegradedThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DependenciesSignalGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DegradedThreshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unhealthy threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered unhealthy when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+func (o DependenciesSignalGroupResponsePtrOutput) UnhealthyThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DependenciesSignalGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UnhealthyThreshold
+	}).(pulumi.StringPtrOutput)
+}
+
 // Azure Monitor Metrics destination.
 type DestinationsSpecAzureMonitorMetrics struct {
 	// A friendly name for the destination.
@@ -8703,6 +10170,347 @@ func (o DimensionResponseArrayOutput) Index(i pulumi.IntInput) DimensionResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponse {
 		return vs[0].([]DimensionResponse)[vs[1].(int)]
 	}).(DimensionResponseOutput)
+}
+
+// Error details for a failed discovery operation
+type DiscoveryErrorResponse struct {
+	// Additional context information, like resource IDs or query details
+	Context []string `pulumi:"context"`
+	// Error message
+	Message string `pulumi:"message"`
+}
+
+// Error details for a failed discovery operation
+type DiscoveryErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryErrorResponse)(nil)).Elem()
+}
+
+func (o DiscoveryErrorResponseOutput) ToDiscoveryErrorResponseOutput() DiscoveryErrorResponseOutput {
+	return o
+}
+
+func (o DiscoveryErrorResponseOutput) ToDiscoveryErrorResponseOutputWithContext(ctx context.Context) DiscoveryErrorResponseOutput {
+	return o
+}
+
+// Additional context information, like resource IDs or query details
+func (o DiscoveryErrorResponseOutput) Context() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiscoveryErrorResponse) []string { return v.Context }).(pulumi.StringArrayOutput)
+}
+
+// Error message
+func (o DiscoveryErrorResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveryErrorResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// ML-based evaluation rule for a signal definition
+type DynamicDetectionRule struct {
+	// Threshold direction
+	DynamicThresholdDirection string `pulumi:"dynamicThresholdDirection"`
+	// ML model to use for dynamic thresholds
+	DynamicThresholdModel string `pulumi:"dynamicThresholdModel"`
+	// ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
+	ModelSensitivity float64 `pulumi:"modelSensitivity"`
+	// Start time of the training in UTC.
+	TrainingStartTime *string `pulumi:"trainingStartTime"`
+}
+
+// DynamicDetectionRuleInput is an input type that accepts DynamicDetectionRuleArgs and DynamicDetectionRuleOutput values.
+// You can construct a concrete instance of `DynamicDetectionRuleInput` via:
+//
+//	DynamicDetectionRuleArgs{...}
+type DynamicDetectionRuleInput interface {
+	pulumi.Input
+
+	ToDynamicDetectionRuleOutput() DynamicDetectionRuleOutput
+	ToDynamicDetectionRuleOutputWithContext(context.Context) DynamicDetectionRuleOutput
+}
+
+// ML-based evaluation rule for a signal definition
+type DynamicDetectionRuleArgs struct {
+	// Threshold direction
+	DynamicThresholdDirection pulumi.StringInput `pulumi:"dynamicThresholdDirection"`
+	// ML model to use for dynamic thresholds
+	DynamicThresholdModel pulumi.StringInput `pulumi:"dynamicThresholdModel"`
+	// ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
+	ModelSensitivity pulumi.Float64Input `pulumi:"modelSensitivity"`
+	// Start time of the training in UTC.
+	TrainingStartTime pulumi.StringPtrInput `pulumi:"trainingStartTime"`
+}
+
+func (DynamicDetectionRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicDetectionRule)(nil)).Elem()
+}
+
+func (i DynamicDetectionRuleArgs) ToDynamicDetectionRuleOutput() DynamicDetectionRuleOutput {
+	return i.ToDynamicDetectionRuleOutputWithContext(context.Background())
+}
+
+func (i DynamicDetectionRuleArgs) ToDynamicDetectionRuleOutputWithContext(ctx context.Context) DynamicDetectionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicDetectionRuleOutput)
+}
+
+func (i DynamicDetectionRuleArgs) ToDynamicDetectionRulePtrOutput() DynamicDetectionRulePtrOutput {
+	return i.ToDynamicDetectionRulePtrOutputWithContext(context.Background())
+}
+
+func (i DynamicDetectionRuleArgs) ToDynamicDetectionRulePtrOutputWithContext(ctx context.Context) DynamicDetectionRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicDetectionRuleOutput).ToDynamicDetectionRulePtrOutputWithContext(ctx)
+}
+
+// DynamicDetectionRulePtrInput is an input type that accepts DynamicDetectionRuleArgs, DynamicDetectionRulePtr and DynamicDetectionRulePtrOutput values.
+// You can construct a concrete instance of `DynamicDetectionRulePtrInput` via:
+//
+//	        DynamicDetectionRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type DynamicDetectionRulePtrInput interface {
+	pulumi.Input
+
+	ToDynamicDetectionRulePtrOutput() DynamicDetectionRulePtrOutput
+	ToDynamicDetectionRulePtrOutputWithContext(context.Context) DynamicDetectionRulePtrOutput
+}
+
+type dynamicDetectionRulePtrType DynamicDetectionRuleArgs
+
+func DynamicDetectionRulePtr(v *DynamicDetectionRuleArgs) DynamicDetectionRulePtrInput {
+	return (*dynamicDetectionRulePtrType)(v)
+}
+
+func (*dynamicDetectionRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicDetectionRule)(nil)).Elem()
+}
+
+func (i *dynamicDetectionRulePtrType) ToDynamicDetectionRulePtrOutput() DynamicDetectionRulePtrOutput {
+	return i.ToDynamicDetectionRulePtrOutputWithContext(context.Background())
+}
+
+func (i *dynamicDetectionRulePtrType) ToDynamicDetectionRulePtrOutputWithContext(ctx context.Context) DynamicDetectionRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicDetectionRulePtrOutput)
+}
+
+// ML-based evaluation rule for a signal definition
+type DynamicDetectionRuleOutput struct{ *pulumi.OutputState }
+
+func (DynamicDetectionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicDetectionRule)(nil)).Elem()
+}
+
+func (o DynamicDetectionRuleOutput) ToDynamicDetectionRuleOutput() DynamicDetectionRuleOutput {
+	return o
+}
+
+func (o DynamicDetectionRuleOutput) ToDynamicDetectionRuleOutputWithContext(ctx context.Context) DynamicDetectionRuleOutput {
+	return o
+}
+
+func (o DynamicDetectionRuleOutput) ToDynamicDetectionRulePtrOutput() DynamicDetectionRulePtrOutput {
+	return o.ToDynamicDetectionRulePtrOutputWithContext(context.Background())
+}
+
+func (o DynamicDetectionRuleOutput) ToDynamicDetectionRulePtrOutputWithContext(ctx context.Context) DynamicDetectionRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DynamicDetectionRule) *DynamicDetectionRule {
+		return &v
+	}).(DynamicDetectionRulePtrOutput)
+}
+
+// Threshold direction
+func (o DynamicDetectionRuleOutput) DynamicThresholdDirection() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicDetectionRule) string { return v.DynamicThresholdDirection }).(pulumi.StringOutput)
+}
+
+// ML model to use for dynamic thresholds
+func (o DynamicDetectionRuleOutput) DynamicThresholdModel() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicDetectionRule) string { return v.DynamicThresholdModel }).(pulumi.StringOutput)
+}
+
+// ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
+func (o DynamicDetectionRuleOutput) ModelSensitivity() pulumi.Float64Output {
+	return o.ApplyT(func(v DynamicDetectionRule) float64 { return v.ModelSensitivity }).(pulumi.Float64Output)
+}
+
+// Start time of the training in UTC.
+func (o DynamicDetectionRuleOutput) TrainingStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicDetectionRule) *string { return v.TrainingStartTime }).(pulumi.StringPtrOutput)
+}
+
+type DynamicDetectionRulePtrOutput struct{ *pulumi.OutputState }
+
+func (DynamicDetectionRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicDetectionRule)(nil)).Elem()
+}
+
+func (o DynamicDetectionRulePtrOutput) ToDynamicDetectionRulePtrOutput() DynamicDetectionRulePtrOutput {
+	return o
+}
+
+func (o DynamicDetectionRulePtrOutput) ToDynamicDetectionRulePtrOutputWithContext(ctx context.Context) DynamicDetectionRulePtrOutput {
+	return o
+}
+
+func (o DynamicDetectionRulePtrOutput) Elem() DynamicDetectionRuleOutput {
+	return o.ApplyT(func(v *DynamicDetectionRule) DynamicDetectionRule {
+		if v != nil {
+			return *v
+		}
+		var ret DynamicDetectionRule
+		return ret
+	}).(DynamicDetectionRuleOutput)
+}
+
+// Threshold direction
+func (o DynamicDetectionRulePtrOutput) DynamicThresholdDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicDetectionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DynamicThresholdDirection
+	}).(pulumi.StringPtrOutput)
+}
+
+// ML model to use for dynamic thresholds
+func (o DynamicDetectionRulePtrOutput) DynamicThresholdModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicDetectionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DynamicThresholdModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
+func (o DynamicDetectionRulePtrOutput) ModelSensitivity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DynamicDetectionRule) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ModelSensitivity
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Start time of the training in UTC.
+func (o DynamicDetectionRulePtrOutput) TrainingStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicDetectionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// ML-based evaluation rule for a signal definition
+type DynamicDetectionRuleResponse struct {
+	// Threshold direction
+	DynamicThresholdDirection string `pulumi:"dynamicThresholdDirection"`
+	// ML model to use for dynamic thresholds
+	DynamicThresholdModel string `pulumi:"dynamicThresholdModel"`
+	// ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
+	ModelSensitivity float64 `pulumi:"modelSensitivity"`
+	// Start time of the training in UTC.
+	TrainingStartTime *string `pulumi:"trainingStartTime"`
+}
+
+// ML-based evaluation rule for a signal definition
+type DynamicDetectionRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (DynamicDetectionRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicDetectionRuleResponse)(nil)).Elem()
+}
+
+func (o DynamicDetectionRuleResponseOutput) ToDynamicDetectionRuleResponseOutput() DynamicDetectionRuleResponseOutput {
+	return o
+}
+
+func (o DynamicDetectionRuleResponseOutput) ToDynamicDetectionRuleResponseOutputWithContext(ctx context.Context) DynamicDetectionRuleResponseOutput {
+	return o
+}
+
+// Threshold direction
+func (o DynamicDetectionRuleResponseOutput) DynamicThresholdDirection() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicDetectionRuleResponse) string { return v.DynamicThresholdDirection }).(pulumi.StringOutput)
+}
+
+// ML model to use for dynamic thresholds
+func (o DynamicDetectionRuleResponseOutput) DynamicThresholdModel() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicDetectionRuleResponse) string { return v.DynamicThresholdModel }).(pulumi.StringOutput)
+}
+
+// ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
+func (o DynamicDetectionRuleResponseOutput) ModelSensitivity() pulumi.Float64Output {
+	return o.ApplyT(func(v DynamicDetectionRuleResponse) float64 { return v.ModelSensitivity }).(pulumi.Float64Output)
+}
+
+// Start time of the training in UTC.
+func (o DynamicDetectionRuleResponseOutput) TrainingStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicDetectionRuleResponse) *string { return v.TrainingStartTime }).(pulumi.StringPtrOutput)
+}
+
+type DynamicDetectionRuleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DynamicDetectionRuleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicDetectionRuleResponse)(nil)).Elem()
+}
+
+func (o DynamicDetectionRuleResponsePtrOutput) ToDynamicDetectionRuleResponsePtrOutput() DynamicDetectionRuleResponsePtrOutput {
+	return o
+}
+
+func (o DynamicDetectionRuleResponsePtrOutput) ToDynamicDetectionRuleResponsePtrOutputWithContext(ctx context.Context) DynamicDetectionRuleResponsePtrOutput {
+	return o
+}
+
+func (o DynamicDetectionRuleResponsePtrOutput) Elem() DynamicDetectionRuleResponseOutput {
+	return o.ApplyT(func(v *DynamicDetectionRuleResponse) DynamicDetectionRuleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DynamicDetectionRuleResponse
+		return ret
+	}).(DynamicDetectionRuleResponseOutput)
+}
+
+// Threshold direction
+func (o DynamicDetectionRuleResponsePtrOutput) DynamicThresholdDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicDetectionRuleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DynamicThresholdDirection
+	}).(pulumi.StringPtrOutput)
+}
+
+// ML model to use for dynamic thresholds
+func (o DynamicDetectionRuleResponsePtrOutput) DynamicThresholdModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicDetectionRuleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DynamicThresholdModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
+func (o DynamicDetectionRuleResponsePtrOutput) ModelSensitivity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DynamicDetectionRuleResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ModelSensitivity
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Start time of the training in UTC.
+func (o DynamicDetectionRuleResponsePtrOutput) TrainingStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicDetectionRuleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingStartTime
+	}).(pulumi.StringPtrOutput)
 }
 
 // Criterion for dynamic threshold.
@@ -9588,6 +11396,1151 @@ func (o EmailReceiverResponseArrayOutput) Index(i pulumi.IntInput) EmailReceiver
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EmailReceiverResponse {
 		return vs[0].([]EmailReceiverResponse)[vs[1].(int)]
 	}).(EmailReceiverResponseOutput)
+}
+
+// Alert configuration for an entity
+type EntityAlerts struct {
+	// Alert to be triggered on state change to degraded
+	Degraded *AlertConfiguration `pulumi:"degraded"`
+	// Alert to be triggered on state change to unhealthy
+	Unhealthy *AlertConfiguration `pulumi:"unhealthy"`
+}
+
+// EntityAlertsInput is an input type that accepts EntityAlertsArgs and EntityAlertsOutput values.
+// You can construct a concrete instance of `EntityAlertsInput` via:
+//
+//	EntityAlertsArgs{...}
+type EntityAlertsInput interface {
+	pulumi.Input
+
+	ToEntityAlertsOutput() EntityAlertsOutput
+	ToEntityAlertsOutputWithContext(context.Context) EntityAlertsOutput
+}
+
+// Alert configuration for an entity
+type EntityAlertsArgs struct {
+	// Alert to be triggered on state change to degraded
+	Degraded AlertConfigurationPtrInput `pulumi:"degraded"`
+	// Alert to be triggered on state change to unhealthy
+	Unhealthy AlertConfigurationPtrInput `pulumi:"unhealthy"`
+}
+
+func (EntityAlertsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityAlerts)(nil)).Elem()
+}
+
+func (i EntityAlertsArgs) ToEntityAlertsOutput() EntityAlertsOutput {
+	return i.ToEntityAlertsOutputWithContext(context.Background())
+}
+
+func (i EntityAlertsArgs) ToEntityAlertsOutputWithContext(ctx context.Context) EntityAlertsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityAlertsOutput)
+}
+
+func (i EntityAlertsArgs) ToEntityAlertsPtrOutput() EntityAlertsPtrOutput {
+	return i.ToEntityAlertsPtrOutputWithContext(context.Background())
+}
+
+func (i EntityAlertsArgs) ToEntityAlertsPtrOutputWithContext(ctx context.Context) EntityAlertsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityAlertsOutput).ToEntityAlertsPtrOutputWithContext(ctx)
+}
+
+// EntityAlertsPtrInput is an input type that accepts EntityAlertsArgs, EntityAlertsPtr and EntityAlertsPtrOutput values.
+// You can construct a concrete instance of `EntityAlertsPtrInput` via:
+//
+//	        EntityAlertsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntityAlertsPtrInput interface {
+	pulumi.Input
+
+	ToEntityAlertsPtrOutput() EntityAlertsPtrOutput
+	ToEntityAlertsPtrOutputWithContext(context.Context) EntityAlertsPtrOutput
+}
+
+type entityAlertsPtrType EntityAlertsArgs
+
+func EntityAlertsPtr(v *EntityAlertsArgs) EntityAlertsPtrInput {
+	return (*entityAlertsPtrType)(v)
+}
+
+func (*entityAlertsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityAlerts)(nil)).Elem()
+}
+
+func (i *entityAlertsPtrType) ToEntityAlertsPtrOutput() EntityAlertsPtrOutput {
+	return i.ToEntityAlertsPtrOutputWithContext(context.Background())
+}
+
+func (i *entityAlertsPtrType) ToEntityAlertsPtrOutputWithContext(ctx context.Context) EntityAlertsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityAlertsPtrOutput)
+}
+
+// Alert configuration for an entity
+type EntityAlertsOutput struct{ *pulumi.OutputState }
+
+func (EntityAlertsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityAlerts)(nil)).Elem()
+}
+
+func (o EntityAlertsOutput) ToEntityAlertsOutput() EntityAlertsOutput {
+	return o
+}
+
+func (o EntityAlertsOutput) ToEntityAlertsOutputWithContext(ctx context.Context) EntityAlertsOutput {
+	return o
+}
+
+func (o EntityAlertsOutput) ToEntityAlertsPtrOutput() EntityAlertsPtrOutput {
+	return o.ToEntityAlertsPtrOutputWithContext(context.Background())
+}
+
+func (o EntityAlertsOutput) ToEntityAlertsPtrOutputWithContext(ctx context.Context) EntityAlertsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityAlerts) *EntityAlerts {
+		return &v
+	}).(EntityAlertsPtrOutput)
+}
+
+// Alert to be triggered on state change to degraded
+func (o EntityAlertsOutput) Degraded() AlertConfigurationPtrOutput {
+	return o.ApplyT(func(v EntityAlerts) *AlertConfiguration { return v.Degraded }).(AlertConfigurationPtrOutput)
+}
+
+// Alert to be triggered on state change to unhealthy
+func (o EntityAlertsOutput) Unhealthy() AlertConfigurationPtrOutput {
+	return o.ApplyT(func(v EntityAlerts) *AlertConfiguration { return v.Unhealthy }).(AlertConfigurationPtrOutput)
+}
+
+type EntityAlertsPtrOutput struct{ *pulumi.OutputState }
+
+func (EntityAlertsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityAlerts)(nil)).Elem()
+}
+
+func (o EntityAlertsPtrOutput) ToEntityAlertsPtrOutput() EntityAlertsPtrOutput {
+	return o
+}
+
+func (o EntityAlertsPtrOutput) ToEntityAlertsPtrOutputWithContext(ctx context.Context) EntityAlertsPtrOutput {
+	return o
+}
+
+func (o EntityAlertsPtrOutput) Elem() EntityAlertsOutput {
+	return o.ApplyT(func(v *EntityAlerts) EntityAlerts {
+		if v != nil {
+			return *v
+		}
+		var ret EntityAlerts
+		return ret
+	}).(EntityAlertsOutput)
+}
+
+// Alert to be triggered on state change to degraded
+func (o EntityAlertsPtrOutput) Degraded() AlertConfigurationPtrOutput {
+	return o.ApplyT(func(v *EntityAlerts) *AlertConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Degraded
+	}).(AlertConfigurationPtrOutput)
+}
+
+// Alert to be triggered on state change to unhealthy
+func (o EntityAlertsPtrOutput) Unhealthy() AlertConfigurationPtrOutput {
+	return o.ApplyT(func(v *EntityAlerts) *AlertConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Unhealthy
+	}).(AlertConfigurationPtrOutput)
+}
+
+// Alert configuration for an entity
+type EntityAlertsResponse struct {
+	// Alert to be triggered on state change to degraded
+	Degraded *AlertConfigurationResponse `pulumi:"degraded"`
+	// Alert to be triggered on state change to unhealthy
+	Unhealthy *AlertConfigurationResponse `pulumi:"unhealthy"`
+}
+
+// Alert configuration for an entity
+type EntityAlertsResponseOutput struct{ *pulumi.OutputState }
+
+func (EntityAlertsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityAlertsResponse)(nil)).Elem()
+}
+
+func (o EntityAlertsResponseOutput) ToEntityAlertsResponseOutput() EntityAlertsResponseOutput {
+	return o
+}
+
+func (o EntityAlertsResponseOutput) ToEntityAlertsResponseOutputWithContext(ctx context.Context) EntityAlertsResponseOutput {
+	return o
+}
+
+// Alert to be triggered on state change to degraded
+func (o EntityAlertsResponseOutput) Degraded() AlertConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v EntityAlertsResponse) *AlertConfigurationResponse { return v.Degraded }).(AlertConfigurationResponsePtrOutput)
+}
+
+// Alert to be triggered on state change to unhealthy
+func (o EntityAlertsResponseOutput) Unhealthy() AlertConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v EntityAlertsResponse) *AlertConfigurationResponse { return v.Unhealthy }).(AlertConfigurationResponsePtrOutput)
+}
+
+type EntityAlertsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EntityAlertsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityAlertsResponse)(nil)).Elem()
+}
+
+func (o EntityAlertsResponsePtrOutput) ToEntityAlertsResponsePtrOutput() EntityAlertsResponsePtrOutput {
+	return o
+}
+
+func (o EntityAlertsResponsePtrOutput) ToEntityAlertsResponsePtrOutputWithContext(ctx context.Context) EntityAlertsResponsePtrOutput {
+	return o
+}
+
+func (o EntityAlertsResponsePtrOutput) Elem() EntityAlertsResponseOutput {
+	return o.ApplyT(func(v *EntityAlertsResponse) EntityAlertsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EntityAlertsResponse
+		return ret
+	}).(EntityAlertsResponseOutput)
+}
+
+// Alert to be triggered on state change to degraded
+func (o EntityAlertsResponsePtrOutput) Degraded() AlertConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *EntityAlertsResponse) *AlertConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Degraded
+	}).(AlertConfigurationResponsePtrOutput)
+}
+
+// Alert to be triggered on state change to unhealthy
+func (o EntityAlertsResponsePtrOutput) Unhealthy() AlertConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *EntityAlertsResponse) *AlertConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Unhealthy
+	}).(AlertConfigurationResponsePtrOutput)
+}
+
+// Visual position of the entity
+type EntityCoordinates struct {
+	// X Coordinate
+	X float64 `pulumi:"x"`
+	// Y Coordinate
+	Y float64 `pulumi:"y"`
+}
+
+// EntityCoordinatesInput is an input type that accepts EntityCoordinatesArgs and EntityCoordinatesOutput values.
+// You can construct a concrete instance of `EntityCoordinatesInput` via:
+//
+//	EntityCoordinatesArgs{...}
+type EntityCoordinatesInput interface {
+	pulumi.Input
+
+	ToEntityCoordinatesOutput() EntityCoordinatesOutput
+	ToEntityCoordinatesOutputWithContext(context.Context) EntityCoordinatesOutput
+}
+
+// Visual position of the entity
+type EntityCoordinatesArgs struct {
+	// X Coordinate
+	X pulumi.Float64Input `pulumi:"x"`
+	// Y Coordinate
+	Y pulumi.Float64Input `pulumi:"y"`
+}
+
+func (EntityCoordinatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityCoordinates)(nil)).Elem()
+}
+
+func (i EntityCoordinatesArgs) ToEntityCoordinatesOutput() EntityCoordinatesOutput {
+	return i.ToEntityCoordinatesOutputWithContext(context.Background())
+}
+
+func (i EntityCoordinatesArgs) ToEntityCoordinatesOutputWithContext(ctx context.Context) EntityCoordinatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityCoordinatesOutput)
+}
+
+func (i EntityCoordinatesArgs) ToEntityCoordinatesPtrOutput() EntityCoordinatesPtrOutput {
+	return i.ToEntityCoordinatesPtrOutputWithContext(context.Background())
+}
+
+func (i EntityCoordinatesArgs) ToEntityCoordinatesPtrOutputWithContext(ctx context.Context) EntityCoordinatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityCoordinatesOutput).ToEntityCoordinatesPtrOutputWithContext(ctx)
+}
+
+// EntityCoordinatesPtrInput is an input type that accepts EntityCoordinatesArgs, EntityCoordinatesPtr and EntityCoordinatesPtrOutput values.
+// You can construct a concrete instance of `EntityCoordinatesPtrInput` via:
+//
+//	        EntityCoordinatesArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntityCoordinatesPtrInput interface {
+	pulumi.Input
+
+	ToEntityCoordinatesPtrOutput() EntityCoordinatesPtrOutput
+	ToEntityCoordinatesPtrOutputWithContext(context.Context) EntityCoordinatesPtrOutput
+}
+
+type entityCoordinatesPtrType EntityCoordinatesArgs
+
+func EntityCoordinatesPtr(v *EntityCoordinatesArgs) EntityCoordinatesPtrInput {
+	return (*entityCoordinatesPtrType)(v)
+}
+
+func (*entityCoordinatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityCoordinates)(nil)).Elem()
+}
+
+func (i *entityCoordinatesPtrType) ToEntityCoordinatesPtrOutput() EntityCoordinatesPtrOutput {
+	return i.ToEntityCoordinatesPtrOutputWithContext(context.Background())
+}
+
+func (i *entityCoordinatesPtrType) ToEntityCoordinatesPtrOutputWithContext(ctx context.Context) EntityCoordinatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityCoordinatesPtrOutput)
+}
+
+// Visual position of the entity
+type EntityCoordinatesOutput struct{ *pulumi.OutputState }
+
+func (EntityCoordinatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityCoordinates)(nil)).Elem()
+}
+
+func (o EntityCoordinatesOutput) ToEntityCoordinatesOutput() EntityCoordinatesOutput {
+	return o
+}
+
+func (o EntityCoordinatesOutput) ToEntityCoordinatesOutputWithContext(ctx context.Context) EntityCoordinatesOutput {
+	return o
+}
+
+func (o EntityCoordinatesOutput) ToEntityCoordinatesPtrOutput() EntityCoordinatesPtrOutput {
+	return o.ToEntityCoordinatesPtrOutputWithContext(context.Background())
+}
+
+func (o EntityCoordinatesOutput) ToEntityCoordinatesPtrOutputWithContext(ctx context.Context) EntityCoordinatesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityCoordinates) *EntityCoordinates {
+		return &v
+	}).(EntityCoordinatesPtrOutput)
+}
+
+// X Coordinate
+func (o EntityCoordinatesOutput) X() pulumi.Float64Output {
+	return o.ApplyT(func(v EntityCoordinates) float64 { return v.X }).(pulumi.Float64Output)
+}
+
+// Y Coordinate
+func (o EntityCoordinatesOutput) Y() pulumi.Float64Output {
+	return o.ApplyT(func(v EntityCoordinates) float64 { return v.Y }).(pulumi.Float64Output)
+}
+
+type EntityCoordinatesPtrOutput struct{ *pulumi.OutputState }
+
+func (EntityCoordinatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityCoordinates)(nil)).Elem()
+}
+
+func (o EntityCoordinatesPtrOutput) ToEntityCoordinatesPtrOutput() EntityCoordinatesPtrOutput {
+	return o
+}
+
+func (o EntityCoordinatesPtrOutput) ToEntityCoordinatesPtrOutputWithContext(ctx context.Context) EntityCoordinatesPtrOutput {
+	return o
+}
+
+func (o EntityCoordinatesPtrOutput) Elem() EntityCoordinatesOutput {
+	return o.ApplyT(func(v *EntityCoordinates) EntityCoordinates {
+		if v != nil {
+			return *v
+		}
+		var ret EntityCoordinates
+		return ret
+	}).(EntityCoordinatesOutput)
+}
+
+// X Coordinate
+func (o EntityCoordinatesPtrOutput) X() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EntityCoordinates) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.X
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Y Coordinate
+func (o EntityCoordinatesPtrOutput) Y() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EntityCoordinates) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Y
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Visual position of the entity
+type EntityCoordinatesResponse struct {
+	// X Coordinate
+	X float64 `pulumi:"x"`
+	// Y Coordinate
+	Y float64 `pulumi:"y"`
+}
+
+// Visual position of the entity
+type EntityCoordinatesResponseOutput struct{ *pulumi.OutputState }
+
+func (EntityCoordinatesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityCoordinatesResponse)(nil)).Elem()
+}
+
+func (o EntityCoordinatesResponseOutput) ToEntityCoordinatesResponseOutput() EntityCoordinatesResponseOutput {
+	return o
+}
+
+func (o EntityCoordinatesResponseOutput) ToEntityCoordinatesResponseOutputWithContext(ctx context.Context) EntityCoordinatesResponseOutput {
+	return o
+}
+
+// X Coordinate
+func (o EntityCoordinatesResponseOutput) X() pulumi.Float64Output {
+	return o.ApplyT(func(v EntityCoordinatesResponse) float64 { return v.X }).(pulumi.Float64Output)
+}
+
+// Y Coordinate
+func (o EntityCoordinatesResponseOutput) Y() pulumi.Float64Output {
+	return o.ApplyT(func(v EntityCoordinatesResponse) float64 { return v.Y }).(pulumi.Float64Output)
+}
+
+type EntityCoordinatesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EntityCoordinatesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityCoordinatesResponse)(nil)).Elem()
+}
+
+func (o EntityCoordinatesResponsePtrOutput) ToEntityCoordinatesResponsePtrOutput() EntityCoordinatesResponsePtrOutput {
+	return o
+}
+
+func (o EntityCoordinatesResponsePtrOutput) ToEntityCoordinatesResponsePtrOutputWithContext(ctx context.Context) EntityCoordinatesResponsePtrOutput {
+	return o
+}
+
+func (o EntityCoordinatesResponsePtrOutput) Elem() EntityCoordinatesResponseOutput {
+	return o.ApplyT(func(v *EntityCoordinatesResponse) EntityCoordinatesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EntityCoordinatesResponse
+		return ret
+	}).(EntityCoordinatesResponseOutput)
+}
+
+// X Coordinate
+func (o EntityCoordinatesResponsePtrOutput) X() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EntityCoordinatesResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.X
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Y Coordinate
+func (o EntityCoordinatesResponsePtrOutput) Y() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EntityCoordinatesResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Y
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Properties which are common across all kinds of entities
+type EntityProperties struct {
+	// Alert configuration for this entity
+	Alerts *EntityAlerts `pulumi:"alerts"`
+	// Positioning of the entity on the model canvas
+	CanvasPosition *EntityCoordinates `pulumi:"canvasPosition"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Health objective as a percentage of time the entity should be healthy.
+	HealthObjective *float64 `pulumi:"healthObjective"`
+	// Visual icon definition. If not set, a default icon is used.
+	Icon *IconDefinition `pulumi:"icon"`
+	// Impact of the entity in health state propagation
+	Impact *string `pulumi:"impact"`
+	// Entity kind
+	Kind *string `pulumi:"kind"`
+	// Signal groups which are assigned to this entity
+	Signals *SignalGroup `pulumi:"signals"`
+	// Optional set of labels (key-value pairs)
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for EntityProperties
+func (val *EntityProperties) Defaults() *EntityProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Impact == nil {
+		impact_ := "Standard"
+		tmp.Impact = &impact_
+	}
+	if tmp.Kind == nil {
+		kind_ := "Default"
+		tmp.Kind = &kind_
+	}
+	tmp.Signals = tmp.Signals.Defaults()
+
+	return &tmp
+}
+
+// EntityPropertiesInput is an input type that accepts EntityPropertiesArgs and EntityPropertiesOutput values.
+// You can construct a concrete instance of `EntityPropertiesInput` via:
+//
+//	EntityPropertiesArgs{...}
+type EntityPropertiesInput interface {
+	pulumi.Input
+
+	ToEntityPropertiesOutput() EntityPropertiesOutput
+	ToEntityPropertiesOutputWithContext(context.Context) EntityPropertiesOutput
+}
+
+// Properties which are common across all kinds of entities
+type EntityPropertiesArgs struct {
+	// Alert configuration for this entity
+	Alerts EntityAlertsPtrInput `pulumi:"alerts"`
+	// Positioning of the entity on the model canvas
+	CanvasPosition EntityCoordinatesPtrInput `pulumi:"canvasPosition"`
+	// Display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Health objective as a percentage of time the entity should be healthy.
+	HealthObjective pulumi.Float64PtrInput `pulumi:"healthObjective"`
+	// Visual icon definition. If not set, a default icon is used.
+	Icon IconDefinitionPtrInput `pulumi:"icon"`
+	// Impact of the entity in health state propagation
+	Impact pulumi.StringPtrInput `pulumi:"impact"`
+	// Entity kind
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Signal groups which are assigned to this entity
+	Signals SignalGroupPtrInput `pulumi:"signals"`
+	// Optional set of labels (key-value pairs)
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for EntityPropertiesArgs
+func (val *EntityPropertiesArgs) Defaults() *EntityPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Impact == nil {
+		tmp.Impact = pulumi.StringPtr("Standard")
+	}
+	if tmp.Kind == nil {
+		tmp.Kind = pulumi.StringPtr("Default")
+	}
+
+	return &tmp
+}
+func (EntityPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityProperties)(nil)).Elem()
+}
+
+func (i EntityPropertiesArgs) ToEntityPropertiesOutput() EntityPropertiesOutput {
+	return i.ToEntityPropertiesOutputWithContext(context.Background())
+}
+
+func (i EntityPropertiesArgs) ToEntityPropertiesOutputWithContext(ctx context.Context) EntityPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesOutput)
+}
+
+func (i EntityPropertiesArgs) ToEntityPropertiesPtrOutput() EntityPropertiesPtrOutput {
+	return i.ToEntityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i EntityPropertiesArgs) ToEntityPropertiesPtrOutputWithContext(ctx context.Context) EntityPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesOutput).ToEntityPropertiesPtrOutputWithContext(ctx)
+}
+
+// EntityPropertiesPtrInput is an input type that accepts EntityPropertiesArgs, EntityPropertiesPtr and EntityPropertiesPtrOutput values.
+// You can construct a concrete instance of `EntityPropertiesPtrInput` via:
+//
+//	        EntityPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntityPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToEntityPropertiesPtrOutput() EntityPropertiesPtrOutput
+	ToEntityPropertiesPtrOutputWithContext(context.Context) EntityPropertiesPtrOutput
+}
+
+type entityPropertiesPtrType EntityPropertiesArgs
+
+func EntityPropertiesPtr(v *EntityPropertiesArgs) EntityPropertiesPtrInput {
+	return (*entityPropertiesPtrType)(v)
+}
+
+func (*entityPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityProperties)(nil)).Elem()
+}
+
+func (i *entityPropertiesPtrType) ToEntityPropertiesPtrOutput() EntityPropertiesPtrOutput {
+	return i.ToEntityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *entityPropertiesPtrType) ToEntityPropertiesPtrOutputWithContext(ctx context.Context) EntityPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesPtrOutput)
+}
+
+// Properties which are common across all kinds of entities
+type EntityPropertiesOutput struct{ *pulumi.OutputState }
+
+func (EntityPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityProperties)(nil)).Elem()
+}
+
+func (o EntityPropertiesOutput) ToEntityPropertiesOutput() EntityPropertiesOutput {
+	return o
+}
+
+func (o EntityPropertiesOutput) ToEntityPropertiesOutputWithContext(ctx context.Context) EntityPropertiesOutput {
+	return o
+}
+
+func (o EntityPropertiesOutput) ToEntityPropertiesPtrOutput() EntityPropertiesPtrOutput {
+	return o.ToEntityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o EntityPropertiesOutput) ToEntityPropertiesPtrOutputWithContext(ctx context.Context) EntityPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityProperties) *EntityProperties {
+		return &v
+	}).(EntityPropertiesPtrOutput)
+}
+
+// Alert configuration for this entity
+func (o EntityPropertiesOutput) Alerts() EntityAlertsPtrOutput {
+	return o.ApplyT(func(v EntityProperties) *EntityAlerts { return v.Alerts }).(EntityAlertsPtrOutput)
+}
+
+// Positioning of the entity on the model canvas
+func (o EntityPropertiesOutput) CanvasPosition() EntityCoordinatesPtrOutput {
+	return o.ApplyT(func(v EntityProperties) *EntityCoordinates { return v.CanvasPosition }).(EntityCoordinatesPtrOutput)
+}
+
+// Display name
+func (o EntityPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Health objective as a percentage of time the entity should be healthy.
+func (o EntityPropertiesOutput) HealthObjective() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EntityProperties) *float64 { return v.HealthObjective }).(pulumi.Float64PtrOutput)
+}
+
+// Visual icon definition. If not set, a default icon is used.
+func (o EntityPropertiesOutput) Icon() IconDefinitionPtrOutput {
+	return o.ApplyT(func(v EntityProperties) *IconDefinition { return v.Icon }).(IconDefinitionPtrOutput)
+}
+
+// Impact of the entity in health state propagation
+func (o EntityPropertiesOutput) Impact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityProperties) *string { return v.Impact }).(pulumi.StringPtrOutput)
+}
+
+// Entity kind
+func (o EntityPropertiesOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityProperties) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Signal groups which are assigned to this entity
+func (o EntityPropertiesOutput) Signals() SignalGroupPtrOutput {
+	return o.ApplyT(func(v EntityProperties) *SignalGroup { return v.Signals }).(SignalGroupPtrOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o EntityPropertiesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EntityProperties) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type EntityPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (EntityPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityProperties)(nil)).Elem()
+}
+
+func (o EntityPropertiesPtrOutput) ToEntityPropertiesPtrOutput() EntityPropertiesPtrOutput {
+	return o
+}
+
+func (o EntityPropertiesPtrOutput) ToEntityPropertiesPtrOutputWithContext(ctx context.Context) EntityPropertiesPtrOutput {
+	return o
+}
+
+func (o EntityPropertiesPtrOutput) Elem() EntityPropertiesOutput {
+	return o.ApplyT(func(v *EntityProperties) EntityProperties {
+		if v != nil {
+			return *v
+		}
+		var ret EntityProperties
+		return ret
+	}).(EntityPropertiesOutput)
+}
+
+// Alert configuration for this entity
+func (o EntityPropertiesPtrOutput) Alerts() EntityAlertsPtrOutput {
+	return o.ApplyT(func(v *EntityProperties) *EntityAlerts {
+		if v == nil {
+			return nil
+		}
+		return v.Alerts
+	}).(EntityAlertsPtrOutput)
+}
+
+// Positioning of the entity on the model canvas
+func (o EntityPropertiesPtrOutput) CanvasPosition() EntityCoordinatesPtrOutput {
+	return o.ApplyT(func(v *EntityProperties) *EntityCoordinates {
+		if v == nil {
+			return nil
+		}
+		return v.CanvasPosition
+	}).(EntityCoordinatesPtrOutput)
+}
+
+// Display name
+func (o EntityPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Health objective as a percentage of time the entity should be healthy.
+func (o EntityPropertiesPtrOutput) HealthObjective() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EntityProperties) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.HealthObjective
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Visual icon definition. If not set, a default icon is used.
+func (o EntityPropertiesPtrOutput) Icon() IconDefinitionPtrOutput {
+	return o.ApplyT(func(v *EntityProperties) *IconDefinition {
+		if v == nil {
+			return nil
+		}
+		return v.Icon
+	}).(IconDefinitionPtrOutput)
+}
+
+// Impact of the entity in health state propagation
+func (o EntityPropertiesPtrOutput) Impact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Impact
+	}).(pulumi.StringPtrOutput)
+}
+
+// Entity kind
+func (o EntityPropertiesPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signal groups which are assigned to this entity
+func (o EntityPropertiesPtrOutput) Signals() SignalGroupPtrOutput {
+	return o.ApplyT(func(v *EntityProperties) *SignalGroup {
+		if v == nil {
+			return nil
+		}
+		return v.Signals
+	}).(SignalGroupPtrOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o EntityPropertiesPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EntityProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Properties which are common across all kinds of entities
+type EntityPropertiesResponse struct {
+	// Alert configuration for this entity
+	Alerts *EntityAlertsResponse `pulumi:"alerts"`
+	// Positioning of the entity on the model canvas
+	CanvasPosition *EntityCoordinatesResponse `pulumi:"canvasPosition"`
+	// Date when the entity was (soft-)deleted
+	DeletionDate string `pulumi:"deletionDate"`
+	// Discovered by which discovery rule. If set, the entity cannot be deleted manually.
+	DiscoveredBy string `pulumi:"discoveredBy"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Health objective as a percentage of time the entity should be healthy.
+	HealthObjective *float64 `pulumi:"healthObjective"`
+	// Health state of this entity
+	HealthState string `pulumi:"healthState"`
+	// Visual icon definition. If not set, a default icon is used.
+	Icon *IconDefinitionResponse `pulumi:"icon"`
+	// Impact of the entity in health state propagation
+	Impact *string `pulumi:"impact"`
+	// Entity kind
+	Kind *string `pulumi:"kind"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Signal groups which are assigned to this entity
+	Signals *SignalGroupResponse `pulumi:"signals"`
+	// Optional set of labels (key-value pairs)
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for EntityPropertiesResponse
+func (val *EntityPropertiesResponse) Defaults() *EntityPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Impact == nil {
+		impact_ := "Standard"
+		tmp.Impact = &impact_
+	}
+	if tmp.Kind == nil {
+		kind_ := "Default"
+		tmp.Kind = &kind_
+	}
+	tmp.Signals = tmp.Signals.Defaults()
+
+	return &tmp
+}
+
+// Properties which are common across all kinds of entities
+type EntityPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EntityPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityPropertiesResponse)(nil)).Elem()
+}
+
+func (o EntityPropertiesResponseOutput) ToEntityPropertiesResponseOutput() EntityPropertiesResponseOutput {
+	return o
+}
+
+func (o EntityPropertiesResponseOutput) ToEntityPropertiesResponseOutputWithContext(ctx context.Context) EntityPropertiesResponseOutput {
+	return o
+}
+
+// Alert configuration for this entity
+func (o EntityPropertiesResponseOutput) Alerts() EntityAlertsResponsePtrOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) *EntityAlertsResponse { return v.Alerts }).(EntityAlertsResponsePtrOutput)
+}
+
+// Positioning of the entity on the model canvas
+func (o EntityPropertiesResponseOutput) CanvasPosition() EntityCoordinatesResponsePtrOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) *EntityCoordinatesResponse { return v.CanvasPosition }).(EntityCoordinatesResponsePtrOutput)
+}
+
+// Date when the entity was (soft-)deleted
+func (o EntityPropertiesResponseOutput) DeletionDate() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) string { return v.DeletionDate }).(pulumi.StringOutput)
+}
+
+// Discovered by which discovery rule. If set, the entity cannot be deleted manually.
+func (o EntityPropertiesResponseOutput) DiscoveredBy() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) string { return v.DiscoveredBy }).(pulumi.StringOutput)
+}
+
+// Display name
+func (o EntityPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Health objective as a percentage of time the entity should be healthy.
+func (o EntityPropertiesResponseOutput) HealthObjective() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) *float64 { return v.HealthObjective }).(pulumi.Float64PtrOutput)
+}
+
+// Health state of this entity
+func (o EntityPropertiesResponseOutput) HealthState() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) string { return v.HealthState }).(pulumi.StringOutput)
+}
+
+// Visual icon definition. If not set, a default icon is used.
+func (o EntityPropertiesResponseOutput) Icon() IconDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) *IconDefinitionResponse { return v.Icon }).(IconDefinitionResponsePtrOutput)
+}
+
+// Impact of the entity in health state propagation
+func (o EntityPropertiesResponseOutput) Impact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) *string { return v.Impact }).(pulumi.StringPtrOutput)
+}
+
+// Entity kind
+func (o EntityPropertiesResponseOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// The status of the last operation.
+func (o EntityPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Signal groups which are assigned to this entity
+func (o EntityPropertiesResponseOutput) Signals() SignalGroupResponsePtrOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) *SignalGroupResponse { return v.Signals }).(SignalGroupResponsePtrOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o EntityPropertiesResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EntityPropertiesResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Evaluation rule for a signal definition
+type EvaluationRule struct {
+	// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+	DegradedRule *ThresholdRule `pulumi:"degradedRule"`
+	// Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
+	DynamicDetectionRule *DynamicDetectionRule `pulumi:"dynamicDetectionRule"`
+	// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+	UnhealthyRule *ThresholdRule `pulumi:"unhealthyRule"`
+}
+
+// EvaluationRuleInput is an input type that accepts EvaluationRuleArgs and EvaluationRuleOutput values.
+// You can construct a concrete instance of `EvaluationRuleInput` via:
+//
+//	EvaluationRuleArgs{...}
+type EvaluationRuleInput interface {
+	pulumi.Input
+
+	ToEvaluationRuleOutput() EvaluationRuleOutput
+	ToEvaluationRuleOutputWithContext(context.Context) EvaluationRuleOutput
+}
+
+// Evaluation rule for a signal definition
+type EvaluationRuleArgs struct {
+	// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+	DegradedRule ThresholdRulePtrInput `pulumi:"degradedRule"`
+	// Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
+	DynamicDetectionRule DynamicDetectionRulePtrInput `pulumi:"dynamicDetectionRule"`
+	// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+	UnhealthyRule ThresholdRulePtrInput `pulumi:"unhealthyRule"`
+}
+
+func (EvaluationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationRule)(nil)).Elem()
+}
+
+func (i EvaluationRuleArgs) ToEvaluationRuleOutput() EvaluationRuleOutput {
+	return i.ToEvaluationRuleOutputWithContext(context.Background())
+}
+
+func (i EvaluationRuleArgs) ToEvaluationRuleOutputWithContext(ctx context.Context) EvaluationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationRuleOutput)
+}
+
+func (i EvaluationRuleArgs) ToEvaluationRulePtrOutput() EvaluationRulePtrOutput {
+	return i.ToEvaluationRulePtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationRuleArgs) ToEvaluationRulePtrOutputWithContext(ctx context.Context) EvaluationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationRuleOutput).ToEvaluationRulePtrOutputWithContext(ctx)
+}
+
+// EvaluationRulePtrInput is an input type that accepts EvaluationRuleArgs, EvaluationRulePtr and EvaluationRulePtrOutput values.
+// You can construct a concrete instance of `EvaluationRulePtrInput` via:
+//
+//	        EvaluationRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationRulePtrInput interface {
+	pulumi.Input
+
+	ToEvaluationRulePtrOutput() EvaluationRulePtrOutput
+	ToEvaluationRulePtrOutputWithContext(context.Context) EvaluationRulePtrOutput
+}
+
+type evaluationRulePtrType EvaluationRuleArgs
+
+func EvaluationRulePtr(v *EvaluationRuleArgs) EvaluationRulePtrInput {
+	return (*evaluationRulePtrType)(v)
+}
+
+func (*evaluationRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationRule)(nil)).Elem()
+}
+
+func (i *evaluationRulePtrType) ToEvaluationRulePtrOutput() EvaluationRulePtrOutput {
+	return i.ToEvaluationRulePtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationRulePtrType) ToEvaluationRulePtrOutputWithContext(ctx context.Context) EvaluationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationRulePtrOutput)
+}
+
+// Evaluation rule for a signal definition
+type EvaluationRuleOutput struct{ *pulumi.OutputState }
+
+func (EvaluationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationRule)(nil)).Elem()
+}
+
+func (o EvaluationRuleOutput) ToEvaluationRuleOutput() EvaluationRuleOutput {
+	return o
+}
+
+func (o EvaluationRuleOutput) ToEvaluationRuleOutputWithContext(ctx context.Context) EvaluationRuleOutput {
+	return o
+}
+
+func (o EvaluationRuleOutput) ToEvaluationRulePtrOutput() EvaluationRulePtrOutput {
+	return o.ToEvaluationRulePtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationRuleOutput) ToEvaluationRulePtrOutputWithContext(ctx context.Context) EvaluationRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationRule) *EvaluationRule {
+		return &v
+	}).(EvaluationRulePtrOutput)
+}
+
+// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+func (o EvaluationRuleOutput) DegradedRule() ThresholdRulePtrOutput {
+	return o.ApplyT(func(v EvaluationRule) *ThresholdRule { return v.DegradedRule }).(ThresholdRulePtrOutput)
+}
+
+// Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
+func (o EvaluationRuleOutput) DynamicDetectionRule() DynamicDetectionRulePtrOutput {
+	return o.ApplyT(func(v EvaluationRule) *DynamicDetectionRule { return v.DynamicDetectionRule }).(DynamicDetectionRulePtrOutput)
+}
+
+// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+func (o EvaluationRuleOutput) UnhealthyRule() ThresholdRulePtrOutput {
+	return o.ApplyT(func(v EvaluationRule) *ThresholdRule { return v.UnhealthyRule }).(ThresholdRulePtrOutput)
+}
+
+type EvaluationRulePtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationRule)(nil)).Elem()
+}
+
+func (o EvaluationRulePtrOutput) ToEvaluationRulePtrOutput() EvaluationRulePtrOutput {
+	return o
+}
+
+func (o EvaluationRulePtrOutput) ToEvaluationRulePtrOutputWithContext(ctx context.Context) EvaluationRulePtrOutput {
+	return o
+}
+
+func (o EvaluationRulePtrOutput) Elem() EvaluationRuleOutput {
+	return o.ApplyT(func(v *EvaluationRule) EvaluationRule {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationRule
+		return ret
+	}).(EvaluationRuleOutput)
+}
+
+// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+func (o EvaluationRulePtrOutput) DegradedRule() ThresholdRulePtrOutput {
+	return o.ApplyT(func(v *EvaluationRule) *ThresholdRule {
+		if v == nil {
+			return nil
+		}
+		return v.DegradedRule
+	}).(ThresholdRulePtrOutput)
+}
+
+// Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
+func (o EvaluationRulePtrOutput) DynamicDetectionRule() DynamicDetectionRulePtrOutput {
+	return o.ApplyT(func(v *EvaluationRule) *DynamicDetectionRule {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicDetectionRule
+	}).(DynamicDetectionRulePtrOutput)
+}
+
+// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+func (o EvaluationRulePtrOutput) UnhealthyRule() ThresholdRulePtrOutput {
+	return o.ApplyT(func(v *EvaluationRule) *ThresholdRule {
+		if v == nil {
+			return nil
+		}
+		return v.UnhealthyRule
+	}).(ThresholdRulePtrOutput)
+}
+
+// Evaluation rule for a signal definition
+type EvaluationRuleResponse struct {
+	// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+	DegradedRule *ThresholdRuleResponse `pulumi:"degradedRule"`
+	// Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
+	DynamicDetectionRule *DynamicDetectionRuleResponse `pulumi:"dynamicDetectionRule"`
+	// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+	UnhealthyRule *ThresholdRuleResponse `pulumi:"unhealthyRule"`
+}
+
+// Evaluation rule for a signal definition
+type EvaluationRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (EvaluationRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationRuleResponse)(nil)).Elem()
+}
+
+func (o EvaluationRuleResponseOutput) ToEvaluationRuleResponseOutput() EvaluationRuleResponseOutput {
+	return o
+}
+
+func (o EvaluationRuleResponseOutput) ToEvaluationRuleResponseOutputWithContext(ctx context.Context) EvaluationRuleResponseOutput {
+	return o
+}
+
+// Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+func (o EvaluationRuleResponseOutput) DegradedRule() ThresholdRuleResponsePtrOutput {
+	return o.ApplyT(func(v EvaluationRuleResponse) *ThresholdRuleResponse { return v.DegradedRule }).(ThresholdRuleResponsePtrOutput)
+}
+
+// Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
+func (o EvaluationRuleResponseOutput) DynamicDetectionRule() DynamicDetectionRuleResponsePtrOutput {
+	return o.ApplyT(func(v EvaluationRuleResponse) *DynamicDetectionRuleResponse { return v.DynamicDetectionRule }).(DynamicDetectionRuleResponsePtrOutput)
+}
+
+// Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+func (o EvaluationRuleResponseOutput) UnhealthyRule() ThresholdRuleResponsePtrOutput {
+	return o.ApplyT(func(v EvaluationRuleResponse) *ThresholdRuleResponse { return v.UnhealthyRule }).(ThresholdRuleResponsePtrOutput)
 }
 
 type EventHubDestination struct {
@@ -10645,6 +13598,422 @@ func (o ExtensionDataSourceResponseArrayOutput) Index(i pulumi.IntInput) Extensi
 	}).(ExtensionDataSourceResponseOutput)
 }
 
+// HealthModel properties
+type HealthModelProperties struct {
+	// Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
+	Discovery *ModelDiscoverySettings `pulumi:"discovery"`
+}
+
+// HealthModelPropertiesInput is an input type that accepts HealthModelPropertiesArgs and HealthModelPropertiesOutput values.
+// You can construct a concrete instance of `HealthModelPropertiesInput` via:
+//
+//	HealthModelPropertiesArgs{...}
+type HealthModelPropertiesInput interface {
+	pulumi.Input
+
+	ToHealthModelPropertiesOutput() HealthModelPropertiesOutput
+	ToHealthModelPropertiesOutputWithContext(context.Context) HealthModelPropertiesOutput
+}
+
+// HealthModel properties
+type HealthModelPropertiesArgs struct {
+	// Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
+	Discovery ModelDiscoverySettingsPtrInput `pulumi:"discovery"`
+}
+
+func (HealthModelPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthModelProperties)(nil)).Elem()
+}
+
+func (i HealthModelPropertiesArgs) ToHealthModelPropertiesOutput() HealthModelPropertiesOutput {
+	return i.ToHealthModelPropertiesOutputWithContext(context.Background())
+}
+
+func (i HealthModelPropertiesArgs) ToHealthModelPropertiesOutputWithContext(ctx context.Context) HealthModelPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthModelPropertiesOutput)
+}
+
+func (i HealthModelPropertiesArgs) ToHealthModelPropertiesPtrOutput() HealthModelPropertiesPtrOutput {
+	return i.ToHealthModelPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i HealthModelPropertiesArgs) ToHealthModelPropertiesPtrOutputWithContext(ctx context.Context) HealthModelPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthModelPropertiesOutput).ToHealthModelPropertiesPtrOutputWithContext(ctx)
+}
+
+// HealthModelPropertiesPtrInput is an input type that accepts HealthModelPropertiesArgs, HealthModelPropertiesPtr and HealthModelPropertiesPtrOutput values.
+// You can construct a concrete instance of `HealthModelPropertiesPtrInput` via:
+//
+//	        HealthModelPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type HealthModelPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToHealthModelPropertiesPtrOutput() HealthModelPropertiesPtrOutput
+	ToHealthModelPropertiesPtrOutputWithContext(context.Context) HealthModelPropertiesPtrOutput
+}
+
+type healthModelPropertiesPtrType HealthModelPropertiesArgs
+
+func HealthModelPropertiesPtr(v *HealthModelPropertiesArgs) HealthModelPropertiesPtrInput {
+	return (*healthModelPropertiesPtrType)(v)
+}
+
+func (*healthModelPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HealthModelProperties)(nil)).Elem()
+}
+
+func (i *healthModelPropertiesPtrType) ToHealthModelPropertiesPtrOutput() HealthModelPropertiesPtrOutput {
+	return i.ToHealthModelPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *healthModelPropertiesPtrType) ToHealthModelPropertiesPtrOutputWithContext(ctx context.Context) HealthModelPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthModelPropertiesPtrOutput)
+}
+
+// HealthModel properties
+type HealthModelPropertiesOutput struct{ *pulumi.OutputState }
+
+func (HealthModelPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthModelProperties)(nil)).Elem()
+}
+
+func (o HealthModelPropertiesOutput) ToHealthModelPropertiesOutput() HealthModelPropertiesOutput {
+	return o
+}
+
+func (o HealthModelPropertiesOutput) ToHealthModelPropertiesOutputWithContext(ctx context.Context) HealthModelPropertiesOutput {
+	return o
+}
+
+func (o HealthModelPropertiesOutput) ToHealthModelPropertiesPtrOutput() HealthModelPropertiesPtrOutput {
+	return o.ToHealthModelPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o HealthModelPropertiesOutput) ToHealthModelPropertiesPtrOutputWithContext(ctx context.Context) HealthModelPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HealthModelProperties) *HealthModelProperties {
+		return &v
+	}).(HealthModelPropertiesPtrOutput)
+}
+
+// Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
+func (o HealthModelPropertiesOutput) Discovery() ModelDiscoverySettingsPtrOutput {
+	return o.ApplyT(func(v HealthModelProperties) *ModelDiscoverySettings { return v.Discovery }).(ModelDiscoverySettingsPtrOutput)
+}
+
+type HealthModelPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (HealthModelPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HealthModelProperties)(nil)).Elem()
+}
+
+func (o HealthModelPropertiesPtrOutput) ToHealthModelPropertiesPtrOutput() HealthModelPropertiesPtrOutput {
+	return o
+}
+
+func (o HealthModelPropertiesPtrOutput) ToHealthModelPropertiesPtrOutputWithContext(ctx context.Context) HealthModelPropertiesPtrOutput {
+	return o
+}
+
+func (o HealthModelPropertiesPtrOutput) Elem() HealthModelPropertiesOutput {
+	return o.ApplyT(func(v *HealthModelProperties) HealthModelProperties {
+		if v != nil {
+			return *v
+		}
+		var ret HealthModelProperties
+		return ret
+	}).(HealthModelPropertiesOutput)
+}
+
+// Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
+func (o HealthModelPropertiesPtrOutput) Discovery() ModelDiscoverySettingsPtrOutput {
+	return o.ApplyT(func(v *HealthModelProperties) *ModelDiscoverySettings {
+		if v == nil {
+			return nil
+		}
+		return v.Discovery
+	}).(ModelDiscoverySettingsPtrOutput)
+}
+
+// HealthModel properties
+type HealthModelPropertiesResponse struct {
+	// Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
+	Discovery *ModelDiscoverySettingsResponse `pulumi:"discovery"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The data plane endpoint for querying health data
+	QueryEndpoint string `pulumi:"queryEndpoint"`
+}
+
+// HealthModel properties
+type HealthModelPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HealthModelPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthModelPropertiesResponse)(nil)).Elem()
+}
+
+func (o HealthModelPropertiesResponseOutput) ToHealthModelPropertiesResponseOutput() HealthModelPropertiesResponseOutput {
+	return o
+}
+
+func (o HealthModelPropertiesResponseOutput) ToHealthModelPropertiesResponseOutputWithContext(ctx context.Context) HealthModelPropertiesResponseOutput {
+	return o
+}
+
+// Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
+func (o HealthModelPropertiesResponseOutput) Discovery() ModelDiscoverySettingsResponsePtrOutput {
+	return o.ApplyT(func(v HealthModelPropertiesResponse) *ModelDiscoverySettingsResponse { return v.Discovery }).(ModelDiscoverySettingsResponsePtrOutput)
+}
+
+// The status of the last operation.
+func (o HealthModelPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthModelPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The data plane endpoint for querying health data
+func (o HealthModelPropertiesResponseOutput) QueryEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthModelPropertiesResponse) string { return v.QueryEndpoint }).(pulumi.StringOutput)
+}
+
+// Visual icon definition of an entity
+type IconDefinition struct {
+	// Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
+	CustomData *string `pulumi:"customData"`
+	// Name of the built-in icon, or 'Custom' to use customData
+	IconName string `pulumi:"iconName"`
+}
+
+// IconDefinitionInput is an input type that accepts IconDefinitionArgs and IconDefinitionOutput values.
+// You can construct a concrete instance of `IconDefinitionInput` via:
+//
+//	IconDefinitionArgs{...}
+type IconDefinitionInput interface {
+	pulumi.Input
+
+	ToIconDefinitionOutput() IconDefinitionOutput
+	ToIconDefinitionOutputWithContext(context.Context) IconDefinitionOutput
+}
+
+// Visual icon definition of an entity
+type IconDefinitionArgs struct {
+	// Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
+	CustomData pulumi.StringPtrInput `pulumi:"customData"`
+	// Name of the built-in icon, or 'Custom' to use customData
+	IconName pulumi.StringInput `pulumi:"iconName"`
+}
+
+func (IconDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IconDefinition)(nil)).Elem()
+}
+
+func (i IconDefinitionArgs) ToIconDefinitionOutput() IconDefinitionOutput {
+	return i.ToIconDefinitionOutputWithContext(context.Background())
+}
+
+func (i IconDefinitionArgs) ToIconDefinitionOutputWithContext(ctx context.Context) IconDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IconDefinitionOutput)
+}
+
+func (i IconDefinitionArgs) ToIconDefinitionPtrOutput() IconDefinitionPtrOutput {
+	return i.ToIconDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i IconDefinitionArgs) ToIconDefinitionPtrOutputWithContext(ctx context.Context) IconDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IconDefinitionOutput).ToIconDefinitionPtrOutputWithContext(ctx)
+}
+
+// IconDefinitionPtrInput is an input type that accepts IconDefinitionArgs, IconDefinitionPtr and IconDefinitionPtrOutput values.
+// You can construct a concrete instance of `IconDefinitionPtrInput` via:
+//
+//	        IconDefinitionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IconDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToIconDefinitionPtrOutput() IconDefinitionPtrOutput
+	ToIconDefinitionPtrOutputWithContext(context.Context) IconDefinitionPtrOutput
+}
+
+type iconDefinitionPtrType IconDefinitionArgs
+
+func IconDefinitionPtr(v *IconDefinitionArgs) IconDefinitionPtrInput {
+	return (*iconDefinitionPtrType)(v)
+}
+
+func (*iconDefinitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IconDefinition)(nil)).Elem()
+}
+
+func (i *iconDefinitionPtrType) ToIconDefinitionPtrOutput() IconDefinitionPtrOutput {
+	return i.ToIconDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i *iconDefinitionPtrType) ToIconDefinitionPtrOutputWithContext(ctx context.Context) IconDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IconDefinitionPtrOutput)
+}
+
+// Visual icon definition of an entity
+type IconDefinitionOutput struct{ *pulumi.OutputState }
+
+func (IconDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IconDefinition)(nil)).Elem()
+}
+
+func (o IconDefinitionOutput) ToIconDefinitionOutput() IconDefinitionOutput {
+	return o
+}
+
+func (o IconDefinitionOutput) ToIconDefinitionOutputWithContext(ctx context.Context) IconDefinitionOutput {
+	return o
+}
+
+func (o IconDefinitionOutput) ToIconDefinitionPtrOutput() IconDefinitionPtrOutput {
+	return o.ToIconDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (o IconDefinitionOutput) ToIconDefinitionPtrOutputWithContext(ctx context.Context) IconDefinitionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IconDefinition) *IconDefinition {
+		return &v
+	}).(IconDefinitionPtrOutput)
+}
+
+// Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
+func (o IconDefinitionOutput) CustomData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IconDefinition) *string { return v.CustomData }).(pulumi.StringPtrOutput)
+}
+
+// Name of the built-in icon, or 'Custom' to use customData
+func (o IconDefinitionOutput) IconName() pulumi.StringOutput {
+	return o.ApplyT(func(v IconDefinition) string { return v.IconName }).(pulumi.StringOutput)
+}
+
+type IconDefinitionPtrOutput struct{ *pulumi.OutputState }
+
+func (IconDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IconDefinition)(nil)).Elem()
+}
+
+func (o IconDefinitionPtrOutput) ToIconDefinitionPtrOutput() IconDefinitionPtrOutput {
+	return o
+}
+
+func (o IconDefinitionPtrOutput) ToIconDefinitionPtrOutputWithContext(ctx context.Context) IconDefinitionPtrOutput {
+	return o
+}
+
+func (o IconDefinitionPtrOutput) Elem() IconDefinitionOutput {
+	return o.ApplyT(func(v *IconDefinition) IconDefinition {
+		if v != nil {
+			return *v
+		}
+		var ret IconDefinition
+		return ret
+	}).(IconDefinitionOutput)
+}
+
+// Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
+func (o IconDefinitionPtrOutput) CustomData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IconDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomData
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the built-in icon, or 'Custom' to use customData
+func (o IconDefinitionPtrOutput) IconName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IconDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IconName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Visual icon definition of an entity
+type IconDefinitionResponse struct {
+	// Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
+	CustomData *string `pulumi:"customData"`
+	// Name of the built-in icon, or 'Custom' to use customData
+	IconName string `pulumi:"iconName"`
+}
+
+// Visual icon definition of an entity
+type IconDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (IconDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IconDefinitionResponse)(nil)).Elem()
+}
+
+func (o IconDefinitionResponseOutput) ToIconDefinitionResponseOutput() IconDefinitionResponseOutput {
+	return o
+}
+
+func (o IconDefinitionResponseOutput) ToIconDefinitionResponseOutputWithContext(ctx context.Context) IconDefinitionResponseOutput {
+	return o
+}
+
+// Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
+func (o IconDefinitionResponseOutput) CustomData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IconDefinitionResponse) *string { return v.CustomData }).(pulumi.StringPtrOutput)
+}
+
+// Name of the built-in icon, or 'Custom' to use customData
+func (o IconDefinitionResponseOutput) IconName() pulumi.StringOutput {
+	return o.ApplyT(func(v IconDefinitionResponse) string { return v.IconName }).(pulumi.StringOutput)
+}
+
+type IconDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IconDefinitionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IconDefinitionResponse)(nil)).Elem()
+}
+
+func (o IconDefinitionResponsePtrOutput) ToIconDefinitionResponsePtrOutput() IconDefinitionResponsePtrOutput {
+	return o
+}
+
+func (o IconDefinitionResponsePtrOutput) ToIconDefinitionResponsePtrOutputWithContext(ctx context.Context) IconDefinitionResponsePtrOutput {
+	return o
+}
+
+func (o IconDefinitionResponsePtrOutput) Elem() IconDefinitionResponseOutput {
+	return o.ApplyT(func(v *IconDefinitionResponse) IconDefinitionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IconDefinitionResponse
+		return ret
+	}).(IconDefinitionResponseOutput)
+}
+
+// Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
+func (o IconDefinitionResponsePtrOutput) CustomData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IconDefinitionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomData
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the built-in icon, or 'Custom' to use customData
+func (o IconDefinitionResponsePtrOutput) IconName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IconDefinitionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IconName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Identity for the resource.
 type Identity struct {
 	// Type of managed service identity.
@@ -11387,6 +14756,431 @@ func (o IncidentServiceConnectionResponseOutput) Id() pulumi.StringOutput {
 // The name of the connection.
 func (o IncidentServiceConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v IncidentServiceConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Details about the execution of the investigation
+type InvestigationExecutionResponse struct {
+	// The time at which the investigation execution completed (in UTC)
+	CompletedAt *string `pulumi:"completedAt"`
+	// The state of the investigation execution
+	RunState string `pulumi:"runState"`
+}
+
+// Details about the execution of the investigation
+type InvestigationExecutionResponseOutput struct{ *pulumi.OutputState }
+
+func (InvestigationExecutionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InvestigationExecutionResponse)(nil)).Elem()
+}
+
+func (o InvestigationExecutionResponseOutput) ToInvestigationExecutionResponseOutput() InvestigationExecutionResponseOutput {
+	return o
+}
+
+func (o InvestigationExecutionResponseOutput) ToInvestigationExecutionResponseOutputWithContext(ctx context.Context) InvestigationExecutionResponseOutput {
+	return o
+}
+
+// The time at which the investigation execution completed (in UTC)
+func (o InvestigationExecutionResponseOutput) CompletedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvestigationExecutionResponse) *string { return v.CompletedAt }).(pulumi.StringPtrOutput)
+}
+
+// The state of the investigation execution
+func (o InvestigationExecutionResponseOutput) RunState() pulumi.StringOutput {
+	return o.ApplyT(func(v InvestigationExecutionResponse) string { return v.RunState }).(pulumi.StringOutput)
+}
+
+// Properties of the current investigation
+type InvestigationMetadataResponse struct {
+	// The creation time of the investigation (in UTC)
+	CreatedAt string `pulumi:"createdAt"`
+	// The execution details of the investigation
+	Execution InvestigationExecutionResponse `pulumi:"execution"`
+	// The unique identifier of the investigation
+	Id string `pulumi:"id"`
+	// The parameters that were used to start the investigation
+	RunParameters RunParametersResponse `pulumi:"runParameters"`
+}
+
+// Properties of the current investigation
+type InvestigationMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (InvestigationMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InvestigationMetadataResponse)(nil)).Elem()
+}
+
+func (o InvestigationMetadataResponseOutput) ToInvestigationMetadataResponseOutput() InvestigationMetadataResponseOutput {
+	return o
+}
+
+func (o InvestigationMetadataResponseOutput) ToInvestigationMetadataResponseOutputWithContext(ctx context.Context) InvestigationMetadataResponseOutput {
+	return o
+}
+
+// The creation time of the investigation (in UTC)
+func (o InvestigationMetadataResponseOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v InvestigationMetadataResponse) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The execution details of the investigation
+func (o InvestigationMetadataResponseOutput) Execution() InvestigationExecutionResponseOutput {
+	return o.ApplyT(func(v InvestigationMetadataResponse) InvestigationExecutionResponse { return v.Execution }).(InvestigationExecutionResponseOutput)
+}
+
+// The unique identifier of the investigation
+func (o InvestigationMetadataResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v InvestigationMetadataResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The parameters that were used to start the investigation
+func (o InvestigationMetadataResponseOutput) RunParameters() RunParametersResponseOutput {
+	return o.ApplyT(func(v InvestigationMetadataResponse) RunParametersResponse { return v.RunParameters }).(RunParametersResponseOutput)
+}
+
+type InvestigationMetadataResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InvestigationMetadataResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InvestigationMetadataResponse)(nil)).Elem()
+}
+
+func (o InvestigationMetadataResponseArrayOutput) ToInvestigationMetadataResponseArrayOutput() InvestigationMetadataResponseArrayOutput {
+	return o
+}
+
+func (o InvestigationMetadataResponseArrayOutput) ToInvestigationMetadataResponseArrayOutputWithContext(ctx context.Context) InvestigationMetadataResponseArrayOutput {
+	return o
+}
+
+func (o InvestigationMetadataResponseArrayOutput) Index(i pulumi.IntInput) InvestigationMetadataResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InvestigationMetadataResponse {
+		return vs[0].([]InvestigationMetadataResponse)[vs[1].(int)]
+	}).(InvestigationMetadataResponseOutput)
+}
+
+// A single scope of the investigation
+type InvestigationScopeResponse struct {
+	// The ID of the scope of the investigation - either an Azure alert ID or an Azure resource ID
+	Id string `pulumi:"id"`
+	// The origin of the scope
+	Origin OriginResponse `pulumi:"origin"`
+	// The relevance of the scope
+	Relevance *string `pulumi:"relevance"`
+}
+
+// A single scope of the investigation
+type InvestigationScopeResponseOutput struct{ *pulumi.OutputState }
+
+func (InvestigationScopeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InvestigationScopeResponse)(nil)).Elem()
+}
+
+func (o InvestigationScopeResponseOutput) ToInvestigationScopeResponseOutput() InvestigationScopeResponseOutput {
+	return o
+}
+
+func (o InvestigationScopeResponseOutput) ToInvestigationScopeResponseOutputWithContext(ctx context.Context) InvestigationScopeResponseOutput {
+	return o
+}
+
+// The ID of the scope of the investigation - either an Azure alert ID or an Azure resource ID
+func (o InvestigationScopeResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v InvestigationScopeResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The origin of the scope
+func (o InvestigationScopeResponseOutput) Origin() OriginResponseOutput {
+	return o.ApplyT(func(v InvestigationScopeResponse) OriginResponse { return v.Origin }).(OriginResponseOutput)
+}
+
+// The relevance of the scope
+func (o InvestigationScopeResponseOutput) Relevance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvestigationScopeResponse) *string { return v.Relevance }).(pulumi.StringPtrOutput)
+}
+
+type InvestigationScopeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InvestigationScopeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InvestigationScopeResponse)(nil)).Elem()
+}
+
+func (o InvestigationScopeResponseArrayOutput) ToInvestigationScopeResponseArrayOutput() InvestigationScopeResponseArrayOutput {
+	return o
+}
+
+func (o InvestigationScopeResponseArrayOutput) ToInvestigationScopeResponseArrayOutputWithContext(ctx context.Context) InvestigationScopeResponseArrayOutput {
+	return o
+}
+
+func (o InvestigationScopeResponseArrayOutput) Index(i pulumi.IntInput) InvestigationScopeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InvestigationScopeResponse {
+		return vs[0].([]InvestigationScopeResponse)[vs[1].(int)]
+	}).(InvestigationScopeResponseOutput)
+}
+
+// The issue properties
+type IssueProperties struct {
+	// The issue impact time (in UTC)
+	ImpactTime string `pulumi:"impactTime"`
+	// The issue severity
+	Severity string `pulumi:"severity"`
+	// The issue status
+	Status string `pulumi:"status"`
+	// The issue title
+	Title string `pulumi:"title"`
+}
+
+// IssuePropertiesInput is an input type that accepts IssuePropertiesArgs and IssuePropertiesOutput values.
+// You can construct a concrete instance of `IssuePropertiesInput` via:
+//
+//	IssuePropertiesArgs{...}
+type IssuePropertiesInput interface {
+	pulumi.Input
+
+	ToIssuePropertiesOutput() IssuePropertiesOutput
+	ToIssuePropertiesOutputWithContext(context.Context) IssuePropertiesOutput
+}
+
+// The issue properties
+type IssuePropertiesArgs struct {
+	// The issue impact time (in UTC)
+	ImpactTime pulumi.StringInput `pulumi:"impactTime"`
+	// The issue severity
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// The issue status
+	Status pulumi.StringInput `pulumi:"status"`
+	// The issue title
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (IssuePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IssueProperties)(nil)).Elem()
+}
+
+func (i IssuePropertiesArgs) ToIssuePropertiesOutput() IssuePropertiesOutput {
+	return i.ToIssuePropertiesOutputWithContext(context.Background())
+}
+
+func (i IssuePropertiesArgs) ToIssuePropertiesOutputWithContext(ctx context.Context) IssuePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IssuePropertiesOutput)
+}
+
+func (i IssuePropertiesArgs) ToIssuePropertiesPtrOutput() IssuePropertiesPtrOutput {
+	return i.ToIssuePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i IssuePropertiesArgs) ToIssuePropertiesPtrOutputWithContext(ctx context.Context) IssuePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IssuePropertiesOutput).ToIssuePropertiesPtrOutputWithContext(ctx)
+}
+
+// IssuePropertiesPtrInput is an input type that accepts IssuePropertiesArgs, IssuePropertiesPtr and IssuePropertiesPtrOutput values.
+// You can construct a concrete instance of `IssuePropertiesPtrInput` via:
+//
+//	        IssuePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IssuePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToIssuePropertiesPtrOutput() IssuePropertiesPtrOutput
+	ToIssuePropertiesPtrOutputWithContext(context.Context) IssuePropertiesPtrOutput
+}
+
+type issuePropertiesPtrType IssuePropertiesArgs
+
+func IssuePropertiesPtr(v *IssuePropertiesArgs) IssuePropertiesPtrInput {
+	return (*issuePropertiesPtrType)(v)
+}
+
+func (*issuePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IssueProperties)(nil)).Elem()
+}
+
+func (i *issuePropertiesPtrType) ToIssuePropertiesPtrOutput() IssuePropertiesPtrOutput {
+	return i.ToIssuePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *issuePropertiesPtrType) ToIssuePropertiesPtrOutputWithContext(ctx context.Context) IssuePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IssuePropertiesPtrOutput)
+}
+
+// The issue properties
+type IssuePropertiesOutput struct{ *pulumi.OutputState }
+
+func (IssuePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IssueProperties)(nil)).Elem()
+}
+
+func (o IssuePropertiesOutput) ToIssuePropertiesOutput() IssuePropertiesOutput {
+	return o
+}
+
+func (o IssuePropertiesOutput) ToIssuePropertiesOutputWithContext(ctx context.Context) IssuePropertiesOutput {
+	return o
+}
+
+func (o IssuePropertiesOutput) ToIssuePropertiesPtrOutput() IssuePropertiesPtrOutput {
+	return o.ToIssuePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o IssuePropertiesOutput) ToIssuePropertiesPtrOutputWithContext(ctx context.Context) IssuePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IssueProperties) *IssueProperties {
+		return &v
+	}).(IssuePropertiesPtrOutput)
+}
+
+// The issue impact time (in UTC)
+func (o IssuePropertiesOutput) ImpactTime() pulumi.StringOutput {
+	return o.ApplyT(func(v IssueProperties) string { return v.ImpactTime }).(pulumi.StringOutput)
+}
+
+// The issue severity
+func (o IssuePropertiesOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v IssueProperties) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// The issue status
+func (o IssuePropertiesOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v IssueProperties) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The issue title
+func (o IssuePropertiesOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v IssueProperties) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type IssuePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (IssuePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IssueProperties)(nil)).Elem()
+}
+
+func (o IssuePropertiesPtrOutput) ToIssuePropertiesPtrOutput() IssuePropertiesPtrOutput {
+	return o
+}
+
+func (o IssuePropertiesPtrOutput) ToIssuePropertiesPtrOutputWithContext(ctx context.Context) IssuePropertiesPtrOutput {
+	return o
+}
+
+func (o IssuePropertiesPtrOutput) Elem() IssuePropertiesOutput {
+	return o.ApplyT(func(v *IssueProperties) IssueProperties {
+		if v != nil {
+			return *v
+		}
+		var ret IssueProperties
+		return ret
+	}).(IssuePropertiesOutput)
+}
+
+// The issue impact time (in UTC)
+func (o IssuePropertiesPtrOutput) ImpactTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IssueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImpactTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The issue severity
+func (o IssuePropertiesPtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IssueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Severity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The issue status
+func (o IssuePropertiesPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IssueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The issue title
+func (o IssuePropertiesPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IssueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// The issue properties
+type IssuePropertiesResponse struct {
+	// The issue impact time (in UTC)
+	ImpactTime string `pulumi:"impactTime"`
+	// The list of investigations in the issue
+	Investigations []InvestigationMetadataResponse `pulumi:"investigations"`
+	// The number of investigations in the issue
+	InvestigationsCount int `pulumi:"investigationsCount"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The issue severity
+	Severity string `pulumi:"severity"`
+	// The issue status
+	Status string `pulumi:"status"`
+	// The issue title
+	Title string `pulumi:"title"`
+}
+
+// The issue properties
+type IssuePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IssuePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IssuePropertiesResponse)(nil)).Elem()
+}
+
+func (o IssuePropertiesResponseOutput) ToIssuePropertiesResponseOutput() IssuePropertiesResponseOutput {
+	return o
+}
+
+func (o IssuePropertiesResponseOutput) ToIssuePropertiesResponseOutputWithContext(ctx context.Context) IssuePropertiesResponseOutput {
+	return o
+}
+
+// The issue impact time (in UTC)
+func (o IssuePropertiesResponseOutput) ImpactTime() pulumi.StringOutput {
+	return o.ApplyT(func(v IssuePropertiesResponse) string { return v.ImpactTime }).(pulumi.StringOutput)
+}
+
+// The list of investigations in the issue
+func (o IssuePropertiesResponseOutput) Investigations() InvestigationMetadataResponseArrayOutput {
+	return o.ApplyT(func(v IssuePropertiesResponse) []InvestigationMetadataResponse { return v.Investigations }).(InvestigationMetadataResponseArrayOutput)
+}
+
+// The number of investigations in the issue
+func (o IssuePropertiesResponseOutput) InvestigationsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v IssuePropertiesResponse) int { return v.InvestigationsCount }).(pulumi.IntOutput)
+}
+
+// The provisioning state of the resource.
+func (o IssuePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v IssuePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The issue severity
+func (o IssuePropertiesResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v IssuePropertiesResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// The issue status
+func (o IssuePropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v IssuePropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The issue title
+func (o IssuePropertiesResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v IssuePropertiesResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
 // An Itsm receiver.
@@ -12600,6 +16394,711 @@ func (o LogAnalyticsDestinationResponseArrayOutput) Index(i pulumi.IntInput) Log
 	}).(LogAnalyticsDestinationResponseOutput)
 }
 
+// Log Analytics Query Signal Definition properties
+type LogAnalyticsQuerySignalDefinitionProperties struct {
+	// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+	DataUnit *string `pulumi:"dataUnit"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Evaluation rules for the signal definition
+	EvaluationRules EvaluationRule `pulumi:"evaluationRules"`
+	// Query text in KQL syntax
+	QueryText string `pulumi:"queryText"`
+	// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+	RefreshInterval *string `pulumi:"refreshInterval"`
+	// Supported signal kinds as discriminator
+	// Expected value is 'LogAnalyticsQuery'.
+	SignalKind string `pulumi:"signalKind"`
+	// Optional set of labels (key-value pairs)
+	Tags map[string]string `pulumi:"tags"`
+	// Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
+	TimeGrain *string `pulumi:"timeGrain"`
+	// Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
+	ValueColumnName *string `pulumi:"valueColumnName"`
+}
+
+// Defaults sets the appropriate defaults for LogAnalyticsQuerySignalDefinitionProperties
+func (val *LogAnalyticsQuerySignalDefinitionProperties) Defaults() *LogAnalyticsQuerySignalDefinitionProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RefreshInterval == nil {
+		refreshInterval_ := "PT1M"
+		tmp.RefreshInterval = &refreshInterval_
+	}
+	return &tmp
+}
+
+// LogAnalyticsQuerySignalDefinitionPropertiesInput is an input type that accepts LogAnalyticsQuerySignalDefinitionPropertiesArgs and LogAnalyticsQuerySignalDefinitionPropertiesOutput values.
+// You can construct a concrete instance of `LogAnalyticsQuerySignalDefinitionPropertiesInput` via:
+//
+//	LogAnalyticsQuerySignalDefinitionPropertiesArgs{...}
+type LogAnalyticsQuerySignalDefinitionPropertiesInput interface {
+	pulumi.Input
+
+	ToLogAnalyticsQuerySignalDefinitionPropertiesOutput() LogAnalyticsQuerySignalDefinitionPropertiesOutput
+	ToLogAnalyticsQuerySignalDefinitionPropertiesOutputWithContext(context.Context) LogAnalyticsQuerySignalDefinitionPropertiesOutput
+}
+
+// Log Analytics Query Signal Definition properties
+type LogAnalyticsQuerySignalDefinitionPropertiesArgs struct {
+	// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+	DataUnit pulumi.StringPtrInput `pulumi:"dataUnit"`
+	// Display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Evaluation rules for the signal definition
+	EvaluationRules EvaluationRuleInput `pulumi:"evaluationRules"`
+	// Query text in KQL syntax
+	QueryText pulumi.StringInput `pulumi:"queryText"`
+	// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+	RefreshInterval pulumi.StringPtrInput `pulumi:"refreshInterval"`
+	// Supported signal kinds as discriminator
+	// Expected value is 'LogAnalyticsQuery'.
+	SignalKind pulumi.StringInput `pulumi:"signalKind"`
+	// Optional set of labels (key-value pairs)
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
+	TimeGrain pulumi.StringPtrInput `pulumi:"timeGrain"`
+	// Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
+	ValueColumnName pulumi.StringPtrInput `pulumi:"valueColumnName"`
+}
+
+// Defaults sets the appropriate defaults for LogAnalyticsQuerySignalDefinitionPropertiesArgs
+func (val *LogAnalyticsQuerySignalDefinitionPropertiesArgs) Defaults() *LogAnalyticsQuerySignalDefinitionPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RefreshInterval == nil {
+		tmp.RefreshInterval = pulumi.StringPtr("PT1M")
+	}
+	return &tmp
+}
+func (LogAnalyticsQuerySignalDefinitionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogAnalyticsQuerySignalDefinitionProperties)(nil)).Elem()
+}
+
+func (i LogAnalyticsQuerySignalDefinitionPropertiesArgs) ToLogAnalyticsQuerySignalDefinitionPropertiesOutput() LogAnalyticsQuerySignalDefinitionPropertiesOutput {
+	return i.ToLogAnalyticsQuerySignalDefinitionPropertiesOutputWithContext(context.Background())
+}
+
+func (i LogAnalyticsQuerySignalDefinitionPropertiesArgs) ToLogAnalyticsQuerySignalDefinitionPropertiesOutputWithContext(ctx context.Context) LogAnalyticsQuerySignalDefinitionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogAnalyticsQuerySignalDefinitionPropertiesOutput)
+}
+
+func (i LogAnalyticsQuerySignalDefinitionPropertiesArgs) ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutput() LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput {
+	return i.ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i LogAnalyticsQuerySignalDefinitionPropertiesArgs) ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogAnalyticsQuerySignalDefinitionPropertiesOutput).ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutputWithContext(ctx)
+}
+
+// LogAnalyticsQuerySignalDefinitionPropertiesPtrInput is an input type that accepts LogAnalyticsQuerySignalDefinitionPropertiesArgs, LogAnalyticsQuerySignalDefinitionPropertiesPtr and LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput values.
+// You can construct a concrete instance of `LogAnalyticsQuerySignalDefinitionPropertiesPtrInput` via:
+//
+//	        LogAnalyticsQuerySignalDefinitionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogAnalyticsQuerySignalDefinitionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutput() LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput
+	ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutputWithContext(context.Context) LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput
+}
+
+type logAnalyticsQuerySignalDefinitionPropertiesPtrType LogAnalyticsQuerySignalDefinitionPropertiesArgs
+
+func LogAnalyticsQuerySignalDefinitionPropertiesPtr(v *LogAnalyticsQuerySignalDefinitionPropertiesArgs) LogAnalyticsQuerySignalDefinitionPropertiesPtrInput {
+	return (*logAnalyticsQuerySignalDefinitionPropertiesPtrType)(v)
+}
+
+func (*logAnalyticsQuerySignalDefinitionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogAnalyticsQuerySignalDefinitionProperties)(nil)).Elem()
+}
+
+func (i *logAnalyticsQuerySignalDefinitionPropertiesPtrType) ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutput() LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput {
+	return i.ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *logAnalyticsQuerySignalDefinitionPropertiesPtrType) ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput)
+}
+
+// Log Analytics Query Signal Definition properties
+type LogAnalyticsQuerySignalDefinitionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (LogAnalyticsQuerySignalDefinitionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogAnalyticsQuerySignalDefinitionProperties)(nil)).Elem()
+}
+
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) ToLogAnalyticsQuerySignalDefinitionPropertiesOutput() LogAnalyticsQuerySignalDefinitionPropertiesOutput {
+	return o
+}
+
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) ToLogAnalyticsQuerySignalDefinitionPropertiesOutputWithContext(ctx context.Context) LogAnalyticsQuerySignalDefinitionPropertiesOutput {
+	return o
+}
+
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutput() LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput {
+	return o.ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogAnalyticsQuerySignalDefinitionProperties) *LogAnalyticsQuerySignalDefinitionProperties {
+		return &v
+	}).(LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput)
+}
+
+// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) DataUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionProperties) *string { return v.DataUnit }).(pulumi.StringPtrOutput)
+}
+
+// Display name
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Evaluation rules for the signal definition
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) EvaluationRules() EvaluationRuleOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionProperties) EvaluationRule { return v.EvaluationRules }).(EvaluationRuleOutput)
+}
+
+// Query text in KQL syntax
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) QueryText() pulumi.StringOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionProperties) string { return v.QueryText }).(pulumi.StringOutput)
+}
+
+// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionProperties) *string { return v.RefreshInterval }).(pulumi.StringPtrOutput)
+}
+
+// Supported signal kinds as discriminator
+// Expected value is 'LogAnalyticsQuery'.
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) SignalKind() pulumi.StringOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionProperties) string { return v.SignalKind }).(pulumi.StringOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionProperties) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) TimeGrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionProperties) *string { return v.TimeGrain }).(pulumi.StringPtrOutput)
+}
+
+// Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
+func (o LogAnalyticsQuerySignalDefinitionPropertiesOutput) ValueColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionProperties) *string { return v.ValueColumnName }).(pulumi.StringPtrOutput)
+}
+
+type LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogAnalyticsQuerySignalDefinitionProperties)(nil)).Elem()
+}
+
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutput() LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput {
+	return o
+}
+
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) ToLogAnalyticsQuerySignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput {
+	return o
+}
+
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) Elem() LogAnalyticsQuerySignalDefinitionPropertiesOutput {
+	return o.ApplyT(func(v *LogAnalyticsQuerySignalDefinitionProperties) LogAnalyticsQuerySignalDefinitionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret LogAnalyticsQuerySignalDefinitionProperties
+		return ret
+	}).(LogAnalyticsQuerySignalDefinitionPropertiesOutput)
+}
+
+// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) DataUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsQuerySignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display name
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsQuerySignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Evaluation rules for the signal definition
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) EvaluationRules() EvaluationRulePtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsQuerySignalDefinitionProperties) *EvaluationRule {
+		if v == nil {
+			return nil
+		}
+		return &v.EvaluationRules
+	}).(EvaluationRulePtrOutput)
+}
+
+// Query text in KQL syntax
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) QueryText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsQuerySignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryText
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsQuerySignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supported signal kinds as discriminator
+// Expected value is 'LogAnalyticsQuery'.
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) SignalKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsQuerySignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SignalKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LogAnalyticsQuerySignalDefinitionProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) TimeGrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsQuerySignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeGrain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
+func (o LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput) ValueColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsQuerySignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValueColumnName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Log Analytics Query Signal Definition properties
+type LogAnalyticsQuerySignalDefinitionPropertiesResponse struct {
+	// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+	DataUnit *string `pulumi:"dataUnit"`
+	// Date when the signal definition was (soft-)deleted
+	DeletionDate string `pulumi:"deletionDate"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Evaluation rules for the signal definition
+	EvaluationRules EvaluationRuleResponse `pulumi:"evaluationRules"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Query text in KQL syntax
+	QueryText string `pulumi:"queryText"`
+	// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+	RefreshInterval *string `pulumi:"refreshInterval"`
+	// Supported signal kinds as discriminator
+	// Expected value is 'LogAnalyticsQuery'.
+	SignalKind string `pulumi:"signalKind"`
+	// Optional set of labels (key-value pairs)
+	Tags map[string]string `pulumi:"tags"`
+	// Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
+	TimeGrain *string `pulumi:"timeGrain"`
+	// Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
+	ValueColumnName *string `pulumi:"valueColumnName"`
+}
+
+// Defaults sets the appropriate defaults for LogAnalyticsQuerySignalDefinitionPropertiesResponse
+func (val *LogAnalyticsQuerySignalDefinitionPropertiesResponse) Defaults() *LogAnalyticsQuerySignalDefinitionPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RefreshInterval == nil {
+		refreshInterval_ := "PT1M"
+		tmp.RefreshInterval = &refreshInterval_
+	}
+	return &tmp
+}
+
+// Log Analytics Query Signal Definition properties
+type LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogAnalyticsQuerySignalDefinitionPropertiesResponse)(nil)).Elem()
+}
+
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) ToLogAnalyticsQuerySignalDefinitionPropertiesResponseOutput() LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput {
+	return o
+}
+
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) ToLogAnalyticsQuerySignalDefinitionPropertiesResponseOutputWithContext(ctx context.Context) LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput {
+	return o
+}
+
+// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) DataUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionPropertiesResponse) *string { return v.DataUnit }).(pulumi.StringPtrOutput)
+}
+
+// Date when the signal definition was (soft-)deleted
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) DeletionDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionPropertiesResponse) string { return v.DeletionDate }).(pulumi.StringOutput)
+}
+
+// Display name
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Evaluation rules for the signal definition
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) EvaluationRules() EvaluationRuleResponseOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionPropertiesResponse) EvaluationRuleResponse {
+		return v.EvaluationRules
+	}).(EvaluationRuleResponseOutput)
+}
+
+// The status of the last operation.
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Query text in KQL syntax
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) QueryText() pulumi.StringOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionPropertiesResponse) string { return v.QueryText }).(pulumi.StringOutput)
+}
+
+// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionPropertiesResponse) *string { return v.RefreshInterval }).(pulumi.StringPtrOutput)
+}
+
+// Supported signal kinds as discriminator
+// Expected value is 'LogAnalyticsQuery'.
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) SignalKind() pulumi.StringOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionPropertiesResponse) string { return v.SignalKind }).(pulumi.StringOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionPropertiesResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) TimeGrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionPropertiesResponse) *string { return v.TimeGrain }).(pulumi.StringPtrOutput)
+}
+
+// Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
+func (o LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput) ValueColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogAnalyticsQuerySignalDefinitionPropertiesResponse) *string { return v.ValueColumnName }).(pulumi.StringPtrOutput)
+}
+
+// A grouping of signal assignments for a Log Analytics Workspace
+type LogAnalyticsSignalGroup struct {
+	// Reference to the name of the authentication setting which is used for querying the data source
+	AuthenticationSetting string `pulumi:"authenticationSetting"`
+	// Log Analytics Workspace resource ID
+	LogAnalyticsWorkspaceResourceId string `pulumi:"logAnalyticsWorkspaceResourceId"`
+	// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+	SignalAssignments []SignalAssignment `pulumi:"signalAssignments"`
+}
+
+// LogAnalyticsSignalGroupInput is an input type that accepts LogAnalyticsSignalGroupArgs and LogAnalyticsSignalGroupOutput values.
+// You can construct a concrete instance of `LogAnalyticsSignalGroupInput` via:
+//
+//	LogAnalyticsSignalGroupArgs{...}
+type LogAnalyticsSignalGroupInput interface {
+	pulumi.Input
+
+	ToLogAnalyticsSignalGroupOutput() LogAnalyticsSignalGroupOutput
+	ToLogAnalyticsSignalGroupOutputWithContext(context.Context) LogAnalyticsSignalGroupOutput
+}
+
+// A grouping of signal assignments for a Log Analytics Workspace
+type LogAnalyticsSignalGroupArgs struct {
+	// Reference to the name of the authentication setting which is used for querying the data source
+	AuthenticationSetting pulumi.StringInput `pulumi:"authenticationSetting"`
+	// Log Analytics Workspace resource ID
+	LogAnalyticsWorkspaceResourceId pulumi.StringInput `pulumi:"logAnalyticsWorkspaceResourceId"`
+	// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+	SignalAssignments SignalAssignmentArrayInput `pulumi:"signalAssignments"`
+}
+
+func (LogAnalyticsSignalGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogAnalyticsSignalGroup)(nil)).Elem()
+}
+
+func (i LogAnalyticsSignalGroupArgs) ToLogAnalyticsSignalGroupOutput() LogAnalyticsSignalGroupOutput {
+	return i.ToLogAnalyticsSignalGroupOutputWithContext(context.Background())
+}
+
+func (i LogAnalyticsSignalGroupArgs) ToLogAnalyticsSignalGroupOutputWithContext(ctx context.Context) LogAnalyticsSignalGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogAnalyticsSignalGroupOutput)
+}
+
+func (i LogAnalyticsSignalGroupArgs) ToLogAnalyticsSignalGroupPtrOutput() LogAnalyticsSignalGroupPtrOutput {
+	return i.ToLogAnalyticsSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i LogAnalyticsSignalGroupArgs) ToLogAnalyticsSignalGroupPtrOutputWithContext(ctx context.Context) LogAnalyticsSignalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogAnalyticsSignalGroupOutput).ToLogAnalyticsSignalGroupPtrOutputWithContext(ctx)
+}
+
+// LogAnalyticsSignalGroupPtrInput is an input type that accepts LogAnalyticsSignalGroupArgs, LogAnalyticsSignalGroupPtr and LogAnalyticsSignalGroupPtrOutput values.
+// You can construct a concrete instance of `LogAnalyticsSignalGroupPtrInput` via:
+//
+//	        LogAnalyticsSignalGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogAnalyticsSignalGroupPtrInput interface {
+	pulumi.Input
+
+	ToLogAnalyticsSignalGroupPtrOutput() LogAnalyticsSignalGroupPtrOutput
+	ToLogAnalyticsSignalGroupPtrOutputWithContext(context.Context) LogAnalyticsSignalGroupPtrOutput
+}
+
+type logAnalyticsSignalGroupPtrType LogAnalyticsSignalGroupArgs
+
+func LogAnalyticsSignalGroupPtr(v *LogAnalyticsSignalGroupArgs) LogAnalyticsSignalGroupPtrInput {
+	return (*logAnalyticsSignalGroupPtrType)(v)
+}
+
+func (*logAnalyticsSignalGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogAnalyticsSignalGroup)(nil)).Elem()
+}
+
+func (i *logAnalyticsSignalGroupPtrType) ToLogAnalyticsSignalGroupPtrOutput() LogAnalyticsSignalGroupPtrOutput {
+	return i.ToLogAnalyticsSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *logAnalyticsSignalGroupPtrType) ToLogAnalyticsSignalGroupPtrOutputWithContext(ctx context.Context) LogAnalyticsSignalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogAnalyticsSignalGroupPtrOutput)
+}
+
+// A grouping of signal assignments for a Log Analytics Workspace
+type LogAnalyticsSignalGroupOutput struct{ *pulumi.OutputState }
+
+func (LogAnalyticsSignalGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogAnalyticsSignalGroup)(nil)).Elem()
+}
+
+func (o LogAnalyticsSignalGroupOutput) ToLogAnalyticsSignalGroupOutput() LogAnalyticsSignalGroupOutput {
+	return o
+}
+
+func (o LogAnalyticsSignalGroupOutput) ToLogAnalyticsSignalGroupOutputWithContext(ctx context.Context) LogAnalyticsSignalGroupOutput {
+	return o
+}
+
+func (o LogAnalyticsSignalGroupOutput) ToLogAnalyticsSignalGroupPtrOutput() LogAnalyticsSignalGroupPtrOutput {
+	return o.ToLogAnalyticsSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (o LogAnalyticsSignalGroupOutput) ToLogAnalyticsSignalGroupPtrOutputWithContext(ctx context.Context) LogAnalyticsSignalGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogAnalyticsSignalGroup) *LogAnalyticsSignalGroup {
+		return &v
+	}).(LogAnalyticsSignalGroupPtrOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o LogAnalyticsSignalGroupOutput) AuthenticationSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v LogAnalyticsSignalGroup) string { return v.AuthenticationSetting }).(pulumi.StringOutput)
+}
+
+// Log Analytics Workspace resource ID
+func (o LogAnalyticsSignalGroupOutput) LogAnalyticsWorkspaceResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LogAnalyticsSignalGroup) string { return v.LogAnalyticsWorkspaceResourceId }).(pulumi.StringOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o LogAnalyticsSignalGroupOutput) SignalAssignments() SignalAssignmentArrayOutput {
+	return o.ApplyT(func(v LogAnalyticsSignalGroup) []SignalAssignment { return v.SignalAssignments }).(SignalAssignmentArrayOutput)
+}
+
+type LogAnalyticsSignalGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (LogAnalyticsSignalGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogAnalyticsSignalGroup)(nil)).Elem()
+}
+
+func (o LogAnalyticsSignalGroupPtrOutput) ToLogAnalyticsSignalGroupPtrOutput() LogAnalyticsSignalGroupPtrOutput {
+	return o
+}
+
+func (o LogAnalyticsSignalGroupPtrOutput) ToLogAnalyticsSignalGroupPtrOutputWithContext(ctx context.Context) LogAnalyticsSignalGroupPtrOutput {
+	return o
+}
+
+func (o LogAnalyticsSignalGroupPtrOutput) Elem() LogAnalyticsSignalGroupOutput {
+	return o.ApplyT(func(v *LogAnalyticsSignalGroup) LogAnalyticsSignalGroup {
+		if v != nil {
+			return *v
+		}
+		var ret LogAnalyticsSignalGroup
+		return ret
+	}).(LogAnalyticsSignalGroupOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o LogAnalyticsSignalGroupPtrOutput) AuthenticationSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsSignalGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationSetting
+	}).(pulumi.StringPtrOutput)
+}
+
+// Log Analytics Workspace resource ID
+func (o LogAnalyticsSignalGroupPtrOutput) LogAnalyticsWorkspaceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsSignalGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LogAnalyticsWorkspaceResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o LogAnalyticsSignalGroupPtrOutput) SignalAssignments() SignalAssignmentArrayOutput {
+	return o.ApplyT(func(v *LogAnalyticsSignalGroup) []SignalAssignment {
+		if v == nil {
+			return nil
+		}
+		return v.SignalAssignments
+	}).(SignalAssignmentArrayOutput)
+}
+
+// A grouping of signal assignments for a Log Analytics Workspace
+type LogAnalyticsSignalGroupResponse struct {
+	// Reference to the name of the authentication setting which is used for querying the data source
+	AuthenticationSetting string `pulumi:"authenticationSetting"`
+	// Log Analytics Workspace resource ID
+	LogAnalyticsWorkspaceResourceId string `pulumi:"logAnalyticsWorkspaceResourceId"`
+	// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+	SignalAssignments []SignalAssignmentResponse `pulumi:"signalAssignments"`
+}
+
+// A grouping of signal assignments for a Log Analytics Workspace
+type LogAnalyticsSignalGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (LogAnalyticsSignalGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogAnalyticsSignalGroupResponse)(nil)).Elem()
+}
+
+func (o LogAnalyticsSignalGroupResponseOutput) ToLogAnalyticsSignalGroupResponseOutput() LogAnalyticsSignalGroupResponseOutput {
+	return o
+}
+
+func (o LogAnalyticsSignalGroupResponseOutput) ToLogAnalyticsSignalGroupResponseOutputWithContext(ctx context.Context) LogAnalyticsSignalGroupResponseOutput {
+	return o
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o LogAnalyticsSignalGroupResponseOutput) AuthenticationSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v LogAnalyticsSignalGroupResponse) string { return v.AuthenticationSetting }).(pulumi.StringOutput)
+}
+
+// Log Analytics Workspace resource ID
+func (o LogAnalyticsSignalGroupResponseOutput) LogAnalyticsWorkspaceResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LogAnalyticsSignalGroupResponse) string { return v.LogAnalyticsWorkspaceResourceId }).(pulumi.StringOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o LogAnalyticsSignalGroupResponseOutput) SignalAssignments() SignalAssignmentResponseArrayOutput {
+	return o.ApplyT(func(v LogAnalyticsSignalGroupResponse) []SignalAssignmentResponse { return v.SignalAssignments }).(SignalAssignmentResponseArrayOutput)
+}
+
+type LogAnalyticsSignalGroupResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LogAnalyticsSignalGroupResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogAnalyticsSignalGroupResponse)(nil)).Elem()
+}
+
+func (o LogAnalyticsSignalGroupResponsePtrOutput) ToLogAnalyticsSignalGroupResponsePtrOutput() LogAnalyticsSignalGroupResponsePtrOutput {
+	return o
+}
+
+func (o LogAnalyticsSignalGroupResponsePtrOutput) ToLogAnalyticsSignalGroupResponsePtrOutputWithContext(ctx context.Context) LogAnalyticsSignalGroupResponsePtrOutput {
+	return o
+}
+
+func (o LogAnalyticsSignalGroupResponsePtrOutput) Elem() LogAnalyticsSignalGroupResponseOutput {
+	return o.ApplyT(func(v *LogAnalyticsSignalGroupResponse) LogAnalyticsSignalGroupResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LogAnalyticsSignalGroupResponse
+		return ret
+	}).(LogAnalyticsSignalGroupResponseOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying the data source
+func (o LogAnalyticsSignalGroupResponsePtrOutput) AuthenticationSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsSignalGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationSetting
+	}).(pulumi.StringPtrOutput)
+}
+
+// Log Analytics Workspace resource ID
+func (o LogAnalyticsSignalGroupResponsePtrOutput) LogAnalyticsWorkspaceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogAnalyticsSignalGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LogAnalyticsWorkspaceResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+func (o LogAnalyticsSignalGroupResponsePtrOutput) SignalAssignments() SignalAssignmentResponseArrayOutput {
+	return o.ApplyT(func(v *LogAnalyticsSignalGroupResponse) []SignalAssignmentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SignalAssignments
+	}).(SignalAssignmentResponseArrayOutput)
+}
+
 // Text settings
 type LogFileSettingsResponseText struct {
 	// One of the supported timestamp formats
@@ -13659,6 +18158,237 @@ func (o LogicAppReceiverResponseArrayOutput) Index(i pulumi.IntInput) LogicAppRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogicAppReceiverResponse {
 		return vs[0].([]LogicAppReceiverResponse)[vs[1].(int)]
 	}).(LogicAppReceiverResponseOutput)
+}
+
+// Authentication setting properties for Azure Managed Identity
+type ManagedIdentityAuthenticationSettingProperties struct {
+	// Supported kinds of authentication settings as discriminator
+	// Expected value is 'ManagedIdentity'.
+	AuthenticationKind string `pulumi:"authenticationKind"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
+	ManagedIdentityName string `pulumi:"managedIdentityName"`
+}
+
+// ManagedIdentityAuthenticationSettingPropertiesInput is an input type that accepts ManagedIdentityAuthenticationSettingPropertiesArgs and ManagedIdentityAuthenticationSettingPropertiesOutput values.
+// You can construct a concrete instance of `ManagedIdentityAuthenticationSettingPropertiesInput` via:
+//
+//	ManagedIdentityAuthenticationSettingPropertiesArgs{...}
+type ManagedIdentityAuthenticationSettingPropertiesInput interface {
+	pulumi.Input
+
+	ToManagedIdentityAuthenticationSettingPropertiesOutput() ManagedIdentityAuthenticationSettingPropertiesOutput
+	ToManagedIdentityAuthenticationSettingPropertiesOutputWithContext(context.Context) ManagedIdentityAuthenticationSettingPropertiesOutput
+}
+
+// Authentication setting properties for Azure Managed Identity
+type ManagedIdentityAuthenticationSettingPropertiesArgs struct {
+	// Supported kinds of authentication settings as discriminator
+	// Expected value is 'ManagedIdentity'.
+	AuthenticationKind pulumi.StringInput `pulumi:"authenticationKind"`
+	// Display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
+	ManagedIdentityName pulumi.StringInput `pulumi:"managedIdentityName"`
+}
+
+func (ManagedIdentityAuthenticationSettingPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityAuthenticationSettingProperties)(nil)).Elem()
+}
+
+func (i ManagedIdentityAuthenticationSettingPropertiesArgs) ToManagedIdentityAuthenticationSettingPropertiesOutput() ManagedIdentityAuthenticationSettingPropertiesOutput {
+	return i.ToManagedIdentityAuthenticationSettingPropertiesOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentityAuthenticationSettingPropertiesArgs) ToManagedIdentityAuthenticationSettingPropertiesOutputWithContext(ctx context.Context) ManagedIdentityAuthenticationSettingPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityAuthenticationSettingPropertiesOutput)
+}
+
+func (i ManagedIdentityAuthenticationSettingPropertiesArgs) ToManagedIdentityAuthenticationSettingPropertiesPtrOutput() ManagedIdentityAuthenticationSettingPropertiesPtrOutput {
+	return i.ToManagedIdentityAuthenticationSettingPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedIdentityAuthenticationSettingPropertiesArgs) ToManagedIdentityAuthenticationSettingPropertiesPtrOutputWithContext(ctx context.Context) ManagedIdentityAuthenticationSettingPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityAuthenticationSettingPropertiesOutput).ToManagedIdentityAuthenticationSettingPropertiesPtrOutputWithContext(ctx)
+}
+
+// ManagedIdentityAuthenticationSettingPropertiesPtrInput is an input type that accepts ManagedIdentityAuthenticationSettingPropertiesArgs, ManagedIdentityAuthenticationSettingPropertiesPtr and ManagedIdentityAuthenticationSettingPropertiesPtrOutput values.
+// You can construct a concrete instance of `ManagedIdentityAuthenticationSettingPropertiesPtrInput` via:
+//
+//	        ManagedIdentityAuthenticationSettingPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedIdentityAuthenticationSettingPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToManagedIdentityAuthenticationSettingPropertiesPtrOutput() ManagedIdentityAuthenticationSettingPropertiesPtrOutput
+	ToManagedIdentityAuthenticationSettingPropertiesPtrOutputWithContext(context.Context) ManagedIdentityAuthenticationSettingPropertiesPtrOutput
+}
+
+type managedIdentityAuthenticationSettingPropertiesPtrType ManagedIdentityAuthenticationSettingPropertiesArgs
+
+func ManagedIdentityAuthenticationSettingPropertiesPtr(v *ManagedIdentityAuthenticationSettingPropertiesArgs) ManagedIdentityAuthenticationSettingPropertiesPtrInput {
+	return (*managedIdentityAuthenticationSettingPropertiesPtrType)(v)
+}
+
+func (*managedIdentityAuthenticationSettingPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentityAuthenticationSettingProperties)(nil)).Elem()
+}
+
+func (i *managedIdentityAuthenticationSettingPropertiesPtrType) ToManagedIdentityAuthenticationSettingPropertiesPtrOutput() ManagedIdentityAuthenticationSettingPropertiesPtrOutput {
+	return i.ToManagedIdentityAuthenticationSettingPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *managedIdentityAuthenticationSettingPropertiesPtrType) ToManagedIdentityAuthenticationSettingPropertiesPtrOutputWithContext(ctx context.Context) ManagedIdentityAuthenticationSettingPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityAuthenticationSettingPropertiesPtrOutput)
+}
+
+// Authentication setting properties for Azure Managed Identity
+type ManagedIdentityAuthenticationSettingPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityAuthenticationSettingPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityAuthenticationSettingProperties)(nil)).Elem()
+}
+
+func (o ManagedIdentityAuthenticationSettingPropertiesOutput) ToManagedIdentityAuthenticationSettingPropertiesOutput() ManagedIdentityAuthenticationSettingPropertiesOutput {
+	return o
+}
+
+func (o ManagedIdentityAuthenticationSettingPropertiesOutput) ToManagedIdentityAuthenticationSettingPropertiesOutputWithContext(ctx context.Context) ManagedIdentityAuthenticationSettingPropertiesOutput {
+	return o
+}
+
+func (o ManagedIdentityAuthenticationSettingPropertiesOutput) ToManagedIdentityAuthenticationSettingPropertiesPtrOutput() ManagedIdentityAuthenticationSettingPropertiesPtrOutput {
+	return o.ToManagedIdentityAuthenticationSettingPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedIdentityAuthenticationSettingPropertiesOutput) ToManagedIdentityAuthenticationSettingPropertiesPtrOutputWithContext(ctx context.Context) ManagedIdentityAuthenticationSettingPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedIdentityAuthenticationSettingProperties) *ManagedIdentityAuthenticationSettingProperties {
+		return &v
+	}).(ManagedIdentityAuthenticationSettingPropertiesPtrOutput)
+}
+
+// Supported kinds of authentication settings as discriminator
+// Expected value is 'ManagedIdentity'.
+func (o ManagedIdentityAuthenticationSettingPropertiesOutput) AuthenticationKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthenticationSettingProperties) string { return v.AuthenticationKind }).(pulumi.StringOutput)
+}
+
+// Display name
+func (o ManagedIdentityAuthenticationSettingPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthenticationSettingProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
+func (o ManagedIdentityAuthenticationSettingPropertiesOutput) ManagedIdentityName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthenticationSettingProperties) string { return v.ManagedIdentityName }).(pulumi.StringOutput)
+}
+
+type ManagedIdentityAuthenticationSettingPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityAuthenticationSettingPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentityAuthenticationSettingProperties)(nil)).Elem()
+}
+
+func (o ManagedIdentityAuthenticationSettingPropertiesPtrOutput) ToManagedIdentityAuthenticationSettingPropertiesPtrOutput() ManagedIdentityAuthenticationSettingPropertiesPtrOutput {
+	return o
+}
+
+func (o ManagedIdentityAuthenticationSettingPropertiesPtrOutput) ToManagedIdentityAuthenticationSettingPropertiesPtrOutputWithContext(ctx context.Context) ManagedIdentityAuthenticationSettingPropertiesPtrOutput {
+	return o
+}
+
+func (o ManagedIdentityAuthenticationSettingPropertiesPtrOutput) Elem() ManagedIdentityAuthenticationSettingPropertiesOutput {
+	return o.ApplyT(func(v *ManagedIdentityAuthenticationSettingProperties) ManagedIdentityAuthenticationSettingProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedIdentityAuthenticationSettingProperties
+		return ret
+	}).(ManagedIdentityAuthenticationSettingPropertiesOutput)
+}
+
+// Supported kinds of authentication settings as discriminator
+// Expected value is 'ManagedIdentity'.
+func (o ManagedIdentityAuthenticationSettingPropertiesPtrOutput) AuthenticationKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityAuthenticationSettingProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display name
+func (o ManagedIdentityAuthenticationSettingPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityAuthenticationSettingProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
+func (o ManagedIdentityAuthenticationSettingPropertiesPtrOutput) ManagedIdentityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityAuthenticationSettingProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ManagedIdentityName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication setting properties for Azure Managed Identity
+type ManagedIdentityAuthenticationSettingPropertiesResponse struct {
+	// Supported kinds of authentication settings as discriminator
+	// Expected value is 'ManagedIdentity'.
+	AuthenticationKind string `pulumi:"authenticationKind"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
+	ManagedIdentityName string `pulumi:"managedIdentityName"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Authentication setting properties for Azure Managed Identity
+type ManagedIdentityAuthenticationSettingPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityAuthenticationSettingPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityAuthenticationSettingPropertiesResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentityAuthenticationSettingPropertiesResponseOutput) ToManagedIdentityAuthenticationSettingPropertiesResponseOutput() ManagedIdentityAuthenticationSettingPropertiesResponseOutput {
+	return o
+}
+
+func (o ManagedIdentityAuthenticationSettingPropertiesResponseOutput) ToManagedIdentityAuthenticationSettingPropertiesResponseOutputWithContext(ctx context.Context) ManagedIdentityAuthenticationSettingPropertiesResponseOutput {
+	return o
+}
+
+// Supported kinds of authentication settings as discriminator
+// Expected value is 'ManagedIdentity'.
+func (o ManagedIdentityAuthenticationSettingPropertiesResponseOutput) AuthenticationKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthenticationSettingPropertiesResponse) string { return v.AuthenticationKind }).(pulumi.StringOutput)
+}
+
+// Display name
+func (o ManagedIdentityAuthenticationSettingPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthenticationSettingPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
+func (o ManagedIdentityAuthenticationSettingPropertiesResponseOutput) ManagedIdentityName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthenticationSettingPropertiesResponse) string { return v.ManagedIdentityName }).(pulumi.StringOutput)
+}
+
+// The status of the last operation.
+func (o ManagedIdentityAuthenticationSettingPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityAuthenticationSettingPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -15387,6 +20117,278 @@ func (o MetricTriggerResponseOutput) TimeWindow() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricTriggerResponse) string { return v.TimeWindow }).(pulumi.StringOutput)
 }
 
+// Settings for automatically discovering entities for the health model.
+type ModelDiscoverySettings struct {
+	// Whether to add all recommended signals to the discovered entities.
+	AddRecommendedSignals string `pulumi:"addRecommendedSignals"`
+	// Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
+	Identity *string `pulumi:"identity"`
+	// The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
+	Scope string `pulumi:"scope"`
+}
+
+// ModelDiscoverySettingsInput is an input type that accepts ModelDiscoverySettingsArgs and ModelDiscoverySettingsOutput values.
+// You can construct a concrete instance of `ModelDiscoverySettingsInput` via:
+//
+//	ModelDiscoverySettingsArgs{...}
+type ModelDiscoverySettingsInput interface {
+	pulumi.Input
+
+	ToModelDiscoverySettingsOutput() ModelDiscoverySettingsOutput
+	ToModelDiscoverySettingsOutputWithContext(context.Context) ModelDiscoverySettingsOutput
+}
+
+// Settings for automatically discovering entities for the health model.
+type ModelDiscoverySettingsArgs struct {
+	// Whether to add all recommended signals to the discovered entities.
+	AddRecommendedSignals pulumi.StringInput `pulumi:"addRecommendedSignals"`
+	// Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
+	// The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (ModelDiscoverySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelDiscoverySettings)(nil)).Elem()
+}
+
+func (i ModelDiscoverySettingsArgs) ToModelDiscoverySettingsOutput() ModelDiscoverySettingsOutput {
+	return i.ToModelDiscoverySettingsOutputWithContext(context.Background())
+}
+
+func (i ModelDiscoverySettingsArgs) ToModelDiscoverySettingsOutputWithContext(ctx context.Context) ModelDiscoverySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelDiscoverySettingsOutput)
+}
+
+func (i ModelDiscoverySettingsArgs) ToModelDiscoverySettingsPtrOutput() ModelDiscoverySettingsPtrOutput {
+	return i.ToModelDiscoverySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ModelDiscoverySettingsArgs) ToModelDiscoverySettingsPtrOutputWithContext(ctx context.Context) ModelDiscoverySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelDiscoverySettingsOutput).ToModelDiscoverySettingsPtrOutputWithContext(ctx)
+}
+
+// ModelDiscoverySettingsPtrInput is an input type that accepts ModelDiscoverySettingsArgs, ModelDiscoverySettingsPtr and ModelDiscoverySettingsPtrOutput values.
+// You can construct a concrete instance of `ModelDiscoverySettingsPtrInput` via:
+//
+//	        ModelDiscoverySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ModelDiscoverySettingsPtrInput interface {
+	pulumi.Input
+
+	ToModelDiscoverySettingsPtrOutput() ModelDiscoverySettingsPtrOutput
+	ToModelDiscoverySettingsPtrOutputWithContext(context.Context) ModelDiscoverySettingsPtrOutput
+}
+
+type modelDiscoverySettingsPtrType ModelDiscoverySettingsArgs
+
+func ModelDiscoverySettingsPtr(v *ModelDiscoverySettingsArgs) ModelDiscoverySettingsPtrInput {
+	return (*modelDiscoverySettingsPtrType)(v)
+}
+
+func (*modelDiscoverySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelDiscoverySettings)(nil)).Elem()
+}
+
+func (i *modelDiscoverySettingsPtrType) ToModelDiscoverySettingsPtrOutput() ModelDiscoverySettingsPtrOutput {
+	return i.ToModelDiscoverySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *modelDiscoverySettingsPtrType) ToModelDiscoverySettingsPtrOutputWithContext(ctx context.Context) ModelDiscoverySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelDiscoverySettingsPtrOutput)
+}
+
+// Settings for automatically discovering entities for the health model.
+type ModelDiscoverySettingsOutput struct{ *pulumi.OutputState }
+
+func (ModelDiscoverySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelDiscoverySettings)(nil)).Elem()
+}
+
+func (o ModelDiscoverySettingsOutput) ToModelDiscoverySettingsOutput() ModelDiscoverySettingsOutput {
+	return o
+}
+
+func (o ModelDiscoverySettingsOutput) ToModelDiscoverySettingsOutputWithContext(ctx context.Context) ModelDiscoverySettingsOutput {
+	return o
+}
+
+func (o ModelDiscoverySettingsOutput) ToModelDiscoverySettingsPtrOutput() ModelDiscoverySettingsPtrOutput {
+	return o.ToModelDiscoverySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ModelDiscoverySettingsOutput) ToModelDiscoverySettingsPtrOutputWithContext(ctx context.Context) ModelDiscoverySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelDiscoverySettings) *ModelDiscoverySettings {
+		return &v
+	}).(ModelDiscoverySettingsPtrOutput)
+}
+
+// Whether to add all recommended signals to the discovered entities.
+func (o ModelDiscoverySettingsOutput) AddRecommendedSignals() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelDiscoverySettings) string { return v.AddRecommendedSignals }).(pulumi.StringOutput)
+}
+
+// Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
+func (o ModelDiscoverySettingsOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelDiscoverySettings) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+// The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
+func (o ModelDiscoverySettingsOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelDiscoverySettings) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type ModelDiscoverySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelDiscoverySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelDiscoverySettings)(nil)).Elem()
+}
+
+func (o ModelDiscoverySettingsPtrOutput) ToModelDiscoverySettingsPtrOutput() ModelDiscoverySettingsPtrOutput {
+	return o
+}
+
+func (o ModelDiscoverySettingsPtrOutput) ToModelDiscoverySettingsPtrOutputWithContext(ctx context.Context) ModelDiscoverySettingsPtrOutput {
+	return o
+}
+
+func (o ModelDiscoverySettingsPtrOutput) Elem() ModelDiscoverySettingsOutput {
+	return o.ApplyT(func(v *ModelDiscoverySettings) ModelDiscoverySettings {
+		if v != nil {
+			return *v
+		}
+		var ret ModelDiscoverySettings
+		return ret
+	}).(ModelDiscoverySettingsOutput)
+}
+
+// Whether to add all recommended signals to the discovered entities.
+func (o ModelDiscoverySettingsPtrOutput) AddRecommendedSignals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDiscoverySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AddRecommendedSignals
+	}).(pulumi.StringPtrOutput)
+}
+
+// Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
+func (o ModelDiscoverySettingsPtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDiscoverySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
+func (o ModelDiscoverySettingsPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDiscoverySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Settings for automatically discovering entities for the health model.
+type ModelDiscoverySettingsResponse struct {
+	// Whether to add all recommended signals to the discovered entities.
+	AddRecommendedSignals string `pulumi:"addRecommendedSignals"`
+	// Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
+	Identity *string `pulumi:"identity"`
+	// The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
+	Scope string `pulumi:"scope"`
+}
+
+// Settings for automatically discovering entities for the health model.
+type ModelDiscoverySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ModelDiscoverySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelDiscoverySettingsResponse)(nil)).Elem()
+}
+
+func (o ModelDiscoverySettingsResponseOutput) ToModelDiscoverySettingsResponseOutput() ModelDiscoverySettingsResponseOutput {
+	return o
+}
+
+func (o ModelDiscoverySettingsResponseOutput) ToModelDiscoverySettingsResponseOutputWithContext(ctx context.Context) ModelDiscoverySettingsResponseOutput {
+	return o
+}
+
+// Whether to add all recommended signals to the discovered entities.
+func (o ModelDiscoverySettingsResponseOutput) AddRecommendedSignals() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelDiscoverySettingsResponse) string { return v.AddRecommendedSignals }).(pulumi.StringOutput)
+}
+
+// Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
+func (o ModelDiscoverySettingsResponseOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelDiscoverySettingsResponse) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+// The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
+func (o ModelDiscoverySettingsResponseOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelDiscoverySettingsResponse) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type ModelDiscoverySettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ModelDiscoverySettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelDiscoverySettingsResponse)(nil)).Elem()
+}
+
+func (o ModelDiscoverySettingsResponsePtrOutput) ToModelDiscoverySettingsResponsePtrOutput() ModelDiscoverySettingsResponsePtrOutput {
+	return o
+}
+
+func (o ModelDiscoverySettingsResponsePtrOutput) ToModelDiscoverySettingsResponsePtrOutputWithContext(ctx context.Context) ModelDiscoverySettingsResponsePtrOutput {
+	return o
+}
+
+func (o ModelDiscoverySettingsResponsePtrOutput) Elem() ModelDiscoverySettingsResponseOutput {
+	return o.ApplyT(func(v *ModelDiscoverySettingsResponse) ModelDiscoverySettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ModelDiscoverySettingsResponse
+		return ret
+	}).(ModelDiscoverySettingsResponseOutput)
+}
+
+// Whether to add all recommended signals to the discovered entities.
+func (o ModelDiscoverySettingsResponsePtrOutput) AddRecommendedSignals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDiscoverySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AddRecommendedSignals
+	}).(pulumi.StringPtrOutput)
+}
+
+// Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
+func (o ModelDiscoverySettingsResponsePtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDiscoverySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
+func (o ModelDiscoverySettingsResponsePtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDiscoverySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
 // Monitoring account destination.
 type MonitoringAccountDestination struct {
 	// The resource ID of the monitoring account.
@@ -15931,6 +20933,39 @@ func (o NetworkingRouteResponseArrayOutput) Index(i pulumi.IntInput) NetworkingR
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkingRouteResponse {
 		return vs[0].([]NetworkingRouteResponse)[vs[1].(int)]
 	}).(NetworkingRouteResponseOutput)
+}
+
+// Details about the origin of the entity - the source that added it to the issue
+type OriginResponse struct {
+	// The ID of the origin - for example, in case of 'Manual', the user ID/app ID, and in case of 'Automatic', the name of the automatic system
+	AddedBy string `pulumi:"addedBy"`
+	// The source of the origin - Manual or Automatic
+	AddedByType string `pulumi:"addedByType"`
+}
+
+// Details about the origin of the entity - the source that added it to the issue
+type OriginResponseOutput struct{ *pulumi.OutputState }
+
+func (OriginResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginResponse)(nil)).Elem()
+}
+
+func (o OriginResponseOutput) ToOriginResponseOutput() OriginResponseOutput {
+	return o
+}
+
+func (o OriginResponseOutput) ToOriginResponseOutputWithContext(ctx context.Context) OriginResponseOutput {
+	return o
+}
+
+// The ID of the origin - for example, in case of 'Manual', the user ID/app ID, and in case of 'Automatic', the name of the automatic system
+func (o OriginResponseOutput) AddedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v OriginResponse) string { return v.AddedBy }).(pulumi.StringOutput)
+}
+
+// The source of the origin - Manual or Automatic
+func (o OriginResponseOutput) AddedByType() pulumi.StringOutput {
+	return o.ApplyT(func(v OriginResponse) string { return v.AddedByType }).(pulumi.StringOutput)
 }
 
 // OTLP Receiver.
@@ -18193,6 +23228,413 @@ func (o PrometheusForwarderDataSourceResponseArrayOutput) Index(i pulumi.IntInpu
 	}).(PrometheusForwarderDataSourceResponseOutput)
 }
 
+// Prometheus Metrics Signal Definition properties
+type PrometheusMetricsSignalDefinitionProperties struct {
+	// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+	DataUnit *string `pulumi:"dataUnit"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Evaluation rules for the signal definition
+	EvaluationRules EvaluationRule `pulumi:"evaluationRules"`
+	// Query text in PromQL syntax
+	QueryText string `pulumi:"queryText"`
+	// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+	RefreshInterval *string `pulumi:"refreshInterval"`
+	// Supported signal kinds as discriminator
+	// Expected value is 'PrometheusMetricsQuery'.
+	SignalKind string `pulumi:"signalKind"`
+	// Optional set of labels (key-value pairs)
+	Tags map[string]string `pulumi:"tags"`
+	// Time range of signal. ISO duration format like PT10M.
+	TimeGrain *string `pulumi:"timeGrain"`
+}
+
+// Defaults sets the appropriate defaults for PrometheusMetricsSignalDefinitionProperties
+func (val *PrometheusMetricsSignalDefinitionProperties) Defaults() *PrometheusMetricsSignalDefinitionProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RefreshInterval == nil {
+		refreshInterval_ := "PT1M"
+		tmp.RefreshInterval = &refreshInterval_
+	}
+	return &tmp
+}
+
+// PrometheusMetricsSignalDefinitionPropertiesInput is an input type that accepts PrometheusMetricsSignalDefinitionPropertiesArgs and PrometheusMetricsSignalDefinitionPropertiesOutput values.
+// You can construct a concrete instance of `PrometheusMetricsSignalDefinitionPropertiesInput` via:
+//
+//	PrometheusMetricsSignalDefinitionPropertiesArgs{...}
+type PrometheusMetricsSignalDefinitionPropertiesInput interface {
+	pulumi.Input
+
+	ToPrometheusMetricsSignalDefinitionPropertiesOutput() PrometheusMetricsSignalDefinitionPropertiesOutput
+	ToPrometheusMetricsSignalDefinitionPropertiesOutputWithContext(context.Context) PrometheusMetricsSignalDefinitionPropertiesOutput
+}
+
+// Prometheus Metrics Signal Definition properties
+type PrometheusMetricsSignalDefinitionPropertiesArgs struct {
+	// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+	DataUnit pulumi.StringPtrInput `pulumi:"dataUnit"`
+	// Display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Evaluation rules for the signal definition
+	EvaluationRules EvaluationRuleInput `pulumi:"evaluationRules"`
+	// Query text in PromQL syntax
+	QueryText pulumi.StringInput `pulumi:"queryText"`
+	// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+	RefreshInterval pulumi.StringPtrInput `pulumi:"refreshInterval"`
+	// Supported signal kinds as discriminator
+	// Expected value is 'PrometheusMetricsQuery'.
+	SignalKind pulumi.StringInput `pulumi:"signalKind"`
+	// Optional set of labels (key-value pairs)
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Time range of signal. ISO duration format like PT10M.
+	TimeGrain pulumi.StringPtrInput `pulumi:"timeGrain"`
+}
+
+// Defaults sets the appropriate defaults for PrometheusMetricsSignalDefinitionPropertiesArgs
+func (val *PrometheusMetricsSignalDefinitionPropertiesArgs) Defaults() *PrometheusMetricsSignalDefinitionPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RefreshInterval == nil {
+		tmp.RefreshInterval = pulumi.StringPtr("PT1M")
+	}
+	return &tmp
+}
+func (PrometheusMetricsSignalDefinitionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusMetricsSignalDefinitionProperties)(nil)).Elem()
+}
+
+func (i PrometheusMetricsSignalDefinitionPropertiesArgs) ToPrometheusMetricsSignalDefinitionPropertiesOutput() PrometheusMetricsSignalDefinitionPropertiesOutput {
+	return i.ToPrometheusMetricsSignalDefinitionPropertiesOutputWithContext(context.Background())
+}
+
+func (i PrometheusMetricsSignalDefinitionPropertiesArgs) ToPrometheusMetricsSignalDefinitionPropertiesOutputWithContext(ctx context.Context) PrometheusMetricsSignalDefinitionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusMetricsSignalDefinitionPropertiesOutput)
+}
+
+func (i PrometheusMetricsSignalDefinitionPropertiesArgs) ToPrometheusMetricsSignalDefinitionPropertiesPtrOutput() PrometheusMetricsSignalDefinitionPropertiesPtrOutput {
+	return i.ToPrometheusMetricsSignalDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i PrometheusMetricsSignalDefinitionPropertiesArgs) ToPrometheusMetricsSignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) PrometheusMetricsSignalDefinitionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusMetricsSignalDefinitionPropertiesOutput).ToPrometheusMetricsSignalDefinitionPropertiesPtrOutputWithContext(ctx)
+}
+
+// PrometheusMetricsSignalDefinitionPropertiesPtrInput is an input type that accepts PrometheusMetricsSignalDefinitionPropertiesArgs, PrometheusMetricsSignalDefinitionPropertiesPtr and PrometheusMetricsSignalDefinitionPropertiesPtrOutput values.
+// You can construct a concrete instance of `PrometheusMetricsSignalDefinitionPropertiesPtrInput` via:
+//
+//	        PrometheusMetricsSignalDefinitionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrometheusMetricsSignalDefinitionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToPrometheusMetricsSignalDefinitionPropertiesPtrOutput() PrometheusMetricsSignalDefinitionPropertiesPtrOutput
+	ToPrometheusMetricsSignalDefinitionPropertiesPtrOutputWithContext(context.Context) PrometheusMetricsSignalDefinitionPropertiesPtrOutput
+}
+
+type prometheusMetricsSignalDefinitionPropertiesPtrType PrometheusMetricsSignalDefinitionPropertiesArgs
+
+func PrometheusMetricsSignalDefinitionPropertiesPtr(v *PrometheusMetricsSignalDefinitionPropertiesArgs) PrometheusMetricsSignalDefinitionPropertiesPtrInput {
+	return (*prometheusMetricsSignalDefinitionPropertiesPtrType)(v)
+}
+
+func (*prometheusMetricsSignalDefinitionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusMetricsSignalDefinitionProperties)(nil)).Elem()
+}
+
+func (i *prometheusMetricsSignalDefinitionPropertiesPtrType) ToPrometheusMetricsSignalDefinitionPropertiesPtrOutput() PrometheusMetricsSignalDefinitionPropertiesPtrOutput {
+	return i.ToPrometheusMetricsSignalDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *prometheusMetricsSignalDefinitionPropertiesPtrType) ToPrometheusMetricsSignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) PrometheusMetricsSignalDefinitionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusMetricsSignalDefinitionPropertiesPtrOutput)
+}
+
+// Prometheus Metrics Signal Definition properties
+type PrometheusMetricsSignalDefinitionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (PrometheusMetricsSignalDefinitionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusMetricsSignalDefinitionProperties)(nil)).Elem()
+}
+
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) ToPrometheusMetricsSignalDefinitionPropertiesOutput() PrometheusMetricsSignalDefinitionPropertiesOutput {
+	return o
+}
+
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) ToPrometheusMetricsSignalDefinitionPropertiesOutputWithContext(ctx context.Context) PrometheusMetricsSignalDefinitionPropertiesOutput {
+	return o
+}
+
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) ToPrometheusMetricsSignalDefinitionPropertiesPtrOutput() PrometheusMetricsSignalDefinitionPropertiesPtrOutput {
+	return o.ToPrometheusMetricsSignalDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) ToPrometheusMetricsSignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) PrometheusMetricsSignalDefinitionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrometheusMetricsSignalDefinitionProperties) *PrometheusMetricsSignalDefinitionProperties {
+		return &v
+	}).(PrometheusMetricsSignalDefinitionPropertiesPtrOutput)
+}
+
+// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) DataUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionProperties) *string { return v.DataUnit }).(pulumi.StringPtrOutput)
+}
+
+// Display name
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Evaluation rules for the signal definition
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) EvaluationRules() EvaluationRuleOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionProperties) EvaluationRule { return v.EvaluationRules }).(EvaluationRuleOutput)
+}
+
+// Query text in PromQL syntax
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) QueryText() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionProperties) string { return v.QueryText }).(pulumi.StringOutput)
+}
+
+// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionProperties) *string { return v.RefreshInterval }).(pulumi.StringPtrOutput)
+}
+
+// Supported signal kinds as discriminator
+// Expected value is 'PrometheusMetricsQuery'.
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) SignalKind() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionProperties) string { return v.SignalKind }).(pulumi.StringOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionProperties) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Time range of signal. ISO duration format like PT10M.
+func (o PrometheusMetricsSignalDefinitionPropertiesOutput) TimeGrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionProperties) *string { return v.TimeGrain }).(pulumi.StringPtrOutput)
+}
+
+type PrometheusMetricsSignalDefinitionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (PrometheusMetricsSignalDefinitionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusMetricsSignalDefinitionProperties)(nil)).Elem()
+}
+
+func (o PrometheusMetricsSignalDefinitionPropertiesPtrOutput) ToPrometheusMetricsSignalDefinitionPropertiesPtrOutput() PrometheusMetricsSignalDefinitionPropertiesPtrOutput {
+	return o
+}
+
+func (o PrometheusMetricsSignalDefinitionPropertiesPtrOutput) ToPrometheusMetricsSignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) PrometheusMetricsSignalDefinitionPropertiesPtrOutput {
+	return o
+}
+
+func (o PrometheusMetricsSignalDefinitionPropertiesPtrOutput) Elem() PrometheusMetricsSignalDefinitionPropertiesOutput {
+	return o.ApplyT(func(v *PrometheusMetricsSignalDefinitionProperties) PrometheusMetricsSignalDefinitionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret PrometheusMetricsSignalDefinitionProperties
+		return ret
+	}).(PrometheusMetricsSignalDefinitionPropertiesOutput)
+}
+
+// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+func (o PrometheusMetricsSignalDefinitionPropertiesPtrOutput) DataUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusMetricsSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display name
+func (o PrometheusMetricsSignalDefinitionPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusMetricsSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Evaluation rules for the signal definition
+func (o PrometheusMetricsSignalDefinitionPropertiesPtrOutput) EvaluationRules() EvaluationRulePtrOutput {
+	return o.ApplyT(func(v *PrometheusMetricsSignalDefinitionProperties) *EvaluationRule {
+		if v == nil {
+			return nil
+		}
+		return &v.EvaluationRules
+	}).(EvaluationRulePtrOutput)
+}
+
+// Query text in PromQL syntax
+func (o PrometheusMetricsSignalDefinitionPropertiesPtrOutput) QueryText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusMetricsSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryText
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+func (o PrometheusMetricsSignalDefinitionPropertiesPtrOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusMetricsSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supported signal kinds as discriminator
+// Expected value is 'PrometheusMetricsQuery'.
+func (o PrometheusMetricsSignalDefinitionPropertiesPtrOutput) SignalKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusMetricsSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SignalKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o PrometheusMetricsSignalDefinitionPropertiesPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrometheusMetricsSignalDefinitionProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Time range of signal. ISO duration format like PT10M.
+func (o PrometheusMetricsSignalDefinitionPropertiesPtrOutput) TimeGrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusMetricsSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeGrain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prometheus Metrics Signal Definition properties
+type PrometheusMetricsSignalDefinitionPropertiesResponse struct {
+	// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+	DataUnit *string `pulumi:"dataUnit"`
+	// Date when the signal definition was (soft-)deleted
+	DeletionDate string `pulumi:"deletionDate"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Evaluation rules for the signal definition
+	EvaluationRules EvaluationRuleResponse `pulumi:"evaluationRules"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Query text in PromQL syntax
+	QueryText string `pulumi:"queryText"`
+	// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+	RefreshInterval *string `pulumi:"refreshInterval"`
+	// Supported signal kinds as discriminator
+	// Expected value is 'PrometheusMetricsQuery'.
+	SignalKind string `pulumi:"signalKind"`
+	// Optional set of labels (key-value pairs)
+	Tags map[string]string `pulumi:"tags"`
+	// Time range of signal. ISO duration format like PT10M.
+	TimeGrain *string `pulumi:"timeGrain"`
+}
+
+// Defaults sets the appropriate defaults for PrometheusMetricsSignalDefinitionPropertiesResponse
+func (val *PrometheusMetricsSignalDefinitionPropertiesResponse) Defaults() *PrometheusMetricsSignalDefinitionPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RefreshInterval == nil {
+		refreshInterval_ := "PT1M"
+		tmp.RefreshInterval = &refreshInterval_
+	}
+	return &tmp
+}
+
+// Prometheus Metrics Signal Definition properties
+type PrometheusMetricsSignalDefinitionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PrometheusMetricsSignalDefinitionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusMetricsSignalDefinitionPropertiesResponse)(nil)).Elem()
+}
+
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) ToPrometheusMetricsSignalDefinitionPropertiesResponseOutput() PrometheusMetricsSignalDefinitionPropertiesResponseOutput {
+	return o
+}
+
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) ToPrometheusMetricsSignalDefinitionPropertiesResponseOutputWithContext(ctx context.Context) PrometheusMetricsSignalDefinitionPropertiesResponseOutput {
+	return o
+}
+
+// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) DataUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionPropertiesResponse) *string { return v.DataUnit }).(pulumi.StringPtrOutput)
+}
+
+// Date when the signal definition was (soft-)deleted
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) DeletionDate() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionPropertiesResponse) string { return v.DeletionDate }).(pulumi.StringOutput)
+}
+
+// Display name
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Evaluation rules for the signal definition
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) EvaluationRules() EvaluationRuleResponseOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionPropertiesResponse) EvaluationRuleResponse {
+		return v.EvaluationRules
+	}).(EvaluationRuleResponseOutput)
+}
+
+// The status of the last operation.
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Query text in PromQL syntax
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) QueryText() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionPropertiesResponse) string { return v.QueryText }).(pulumi.StringOutput)
+}
+
+// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionPropertiesResponse) *string { return v.RefreshInterval }).(pulumi.StringPtrOutput)
+}
+
+// Supported signal kinds as discriminator
+// Expected value is 'PrometheusMetricsQuery'.
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) SignalKind() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionPropertiesResponse) string { return v.SignalKind }).(pulumi.StringOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionPropertiesResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Time range of signal. ISO duration format like PT10M.
+func (o PrometheusMetricsSignalDefinitionPropertiesResponseOutput) TimeGrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusMetricsSignalDefinitionPropertiesResponse) *string { return v.TimeGrain }).(pulumi.StringPtrOutput)
+}
+
 // Receiver Info.
 type Receiver struct {
 	// The name of receiver.
@@ -19144,6 +24586,749 @@ func (o RecurrentScheduleResponsePtrOutput) TimeZone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Properties of an alert which is related to the issue
+type RelatedAlertResponse struct {
+	// The time this relation was added to the issue (in UTC)
+	AddedAt string `pulumi:"addedAt"`
+	// The alert ID
+	Id string `pulumi:"id"`
+	// The last update time of this relation (in UTC)
+	LastModifiedAt string `pulumi:"lastModifiedAt"`
+	// The source that related the alert to the issue
+	Origin OriginResponse `pulumi:"origin"`
+	// The alerts's relevance status
+	Relevance string `pulumi:"relevance"`
+}
+
+// Properties of an alert which is related to the issue
+type RelatedAlertResponseOutput struct{ *pulumi.OutputState }
+
+func (RelatedAlertResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelatedAlertResponse)(nil)).Elem()
+}
+
+func (o RelatedAlertResponseOutput) ToRelatedAlertResponseOutput() RelatedAlertResponseOutput {
+	return o
+}
+
+func (o RelatedAlertResponseOutput) ToRelatedAlertResponseOutputWithContext(ctx context.Context) RelatedAlertResponseOutput {
+	return o
+}
+
+// The time this relation was added to the issue (in UTC)
+func (o RelatedAlertResponseOutput) AddedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v RelatedAlertResponse) string { return v.AddedAt }).(pulumi.StringOutput)
+}
+
+// The alert ID
+func (o RelatedAlertResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v RelatedAlertResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The last update time of this relation (in UTC)
+func (o RelatedAlertResponseOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v RelatedAlertResponse) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// The source that related the alert to the issue
+func (o RelatedAlertResponseOutput) Origin() OriginResponseOutput {
+	return o.ApplyT(func(v RelatedAlertResponse) OriginResponse { return v.Origin }).(OriginResponseOutput)
+}
+
+// The alerts's relevance status
+func (o RelatedAlertResponseOutput) Relevance() pulumi.StringOutput {
+	return o.ApplyT(func(v RelatedAlertResponse) string { return v.Relevance }).(pulumi.StringOutput)
+}
+
+type RelatedAlertResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RelatedAlertResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RelatedAlertResponse)(nil)).Elem()
+}
+
+func (o RelatedAlertResponseArrayOutput) ToRelatedAlertResponseArrayOutput() RelatedAlertResponseArrayOutput {
+	return o
+}
+
+func (o RelatedAlertResponseArrayOutput) ToRelatedAlertResponseArrayOutputWithContext(ctx context.Context) RelatedAlertResponseArrayOutput {
+	return o
+}
+
+func (o RelatedAlertResponseArrayOutput) Index(i pulumi.IntInput) RelatedAlertResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RelatedAlertResponse {
+		return vs[0].([]RelatedAlertResponse)[vs[1].(int)]
+	}).(RelatedAlertResponseOutput)
+}
+
+// Properties of a resource which is related to the issue
+type RelatedResourceResponse struct {
+	// The time this relation was added to the issue (in UTC)
+	AddedAt string `pulumi:"addedAt"`
+	// The resource ID
+	Id string `pulumi:"id"`
+	// The last update time of this relation (in UTC)
+	LastModifiedAt string `pulumi:"lastModifiedAt"`
+	// The source that related the resource to the issue
+	Origin OriginResponse `pulumi:"origin"`
+	// The resource's relevance status
+	Relevance string `pulumi:"relevance"`
+}
+
+// Properties of a resource which is related to the issue
+type RelatedResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (RelatedResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelatedResourceResponse)(nil)).Elem()
+}
+
+func (o RelatedResourceResponseOutput) ToRelatedResourceResponseOutput() RelatedResourceResponseOutput {
+	return o
+}
+
+func (o RelatedResourceResponseOutput) ToRelatedResourceResponseOutputWithContext(ctx context.Context) RelatedResourceResponseOutput {
+	return o
+}
+
+// The time this relation was added to the issue (in UTC)
+func (o RelatedResourceResponseOutput) AddedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v RelatedResourceResponse) string { return v.AddedAt }).(pulumi.StringOutput)
+}
+
+// The resource ID
+func (o RelatedResourceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v RelatedResourceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The last update time of this relation (in UTC)
+func (o RelatedResourceResponseOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v RelatedResourceResponse) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// The source that related the resource to the issue
+func (o RelatedResourceResponseOutput) Origin() OriginResponseOutput {
+	return o.ApplyT(func(v RelatedResourceResponse) OriginResponse { return v.Origin }).(OriginResponseOutput)
+}
+
+// The resource's relevance status
+func (o RelatedResourceResponseOutput) Relevance() pulumi.StringOutput {
+	return o.ApplyT(func(v RelatedResourceResponse) string { return v.Relevance }).(pulumi.StringOutput)
+}
+
+type RelatedResourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RelatedResourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RelatedResourceResponse)(nil)).Elem()
+}
+
+func (o RelatedResourceResponseArrayOutput) ToRelatedResourceResponseArrayOutput() RelatedResourceResponseArrayOutput {
+	return o
+}
+
+func (o RelatedResourceResponseArrayOutput) ToRelatedResourceResponseArrayOutputWithContext(ctx context.Context) RelatedResourceResponseArrayOutput {
+	return o
+}
+
+func (o RelatedResourceResponseArrayOutput) Index(i pulumi.IntInput) RelatedResourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RelatedResourceResponse {
+		return vs[0].([]RelatedResourceResponse)[vs[1].(int)]
+	}).(RelatedResourceResponseOutput)
+}
+
+// Relationship properties
+type RelationshipProperties struct {
+	// Resource name of the child entity
+	ChildEntityName string `pulumi:"childEntityName"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Resource name of the parent entity
+	ParentEntityName string `pulumi:"parentEntityName"`
+	// Optional set of labels (key-value pairs)
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// RelationshipPropertiesInput is an input type that accepts RelationshipPropertiesArgs and RelationshipPropertiesOutput values.
+// You can construct a concrete instance of `RelationshipPropertiesInput` via:
+//
+//	RelationshipPropertiesArgs{...}
+type RelationshipPropertiesInput interface {
+	pulumi.Input
+
+	ToRelationshipPropertiesOutput() RelationshipPropertiesOutput
+	ToRelationshipPropertiesOutputWithContext(context.Context) RelationshipPropertiesOutput
+}
+
+// Relationship properties
+type RelationshipPropertiesArgs struct {
+	// Resource name of the child entity
+	ChildEntityName pulumi.StringInput `pulumi:"childEntityName"`
+	// Display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Resource name of the parent entity
+	ParentEntityName pulumi.StringInput `pulumi:"parentEntityName"`
+	// Optional set of labels (key-value pairs)
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (RelationshipPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelationshipProperties)(nil)).Elem()
+}
+
+func (i RelationshipPropertiesArgs) ToRelationshipPropertiesOutput() RelationshipPropertiesOutput {
+	return i.ToRelationshipPropertiesOutputWithContext(context.Background())
+}
+
+func (i RelationshipPropertiesArgs) ToRelationshipPropertiesOutputWithContext(ctx context.Context) RelationshipPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RelationshipPropertiesOutput)
+}
+
+func (i RelationshipPropertiesArgs) ToRelationshipPropertiesPtrOutput() RelationshipPropertiesPtrOutput {
+	return i.ToRelationshipPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i RelationshipPropertiesArgs) ToRelationshipPropertiesPtrOutputWithContext(ctx context.Context) RelationshipPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RelationshipPropertiesOutput).ToRelationshipPropertiesPtrOutputWithContext(ctx)
+}
+
+// RelationshipPropertiesPtrInput is an input type that accepts RelationshipPropertiesArgs, RelationshipPropertiesPtr and RelationshipPropertiesPtrOutput values.
+// You can construct a concrete instance of `RelationshipPropertiesPtrInput` via:
+//
+//	        RelationshipPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RelationshipPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToRelationshipPropertiesPtrOutput() RelationshipPropertiesPtrOutput
+	ToRelationshipPropertiesPtrOutputWithContext(context.Context) RelationshipPropertiesPtrOutput
+}
+
+type relationshipPropertiesPtrType RelationshipPropertiesArgs
+
+func RelationshipPropertiesPtr(v *RelationshipPropertiesArgs) RelationshipPropertiesPtrInput {
+	return (*relationshipPropertiesPtrType)(v)
+}
+
+func (*relationshipPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RelationshipProperties)(nil)).Elem()
+}
+
+func (i *relationshipPropertiesPtrType) ToRelationshipPropertiesPtrOutput() RelationshipPropertiesPtrOutput {
+	return i.ToRelationshipPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *relationshipPropertiesPtrType) ToRelationshipPropertiesPtrOutputWithContext(ctx context.Context) RelationshipPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RelationshipPropertiesPtrOutput)
+}
+
+// Relationship properties
+type RelationshipPropertiesOutput struct{ *pulumi.OutputState }
+
+func (RelationshipPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelationshipProperties)(nil)).Elem()
+}
+
+func (o RelationshipPropertiesOutput) ToRelationshipPropertiesOutput() RelationshipPropertiesOutput {
+	return o
+}
+
+func (o RelationshipPropertiesOutput) ToRelationshipPropertiesOutputWithContext(ctx context.Context) RelationshipPropertiesOutput {
+	return o
+}
+
+func (o RelationshipPropertiesOutput) ToRelationshipPropertiesPtrOutput() RelationshipPropertiesPtrOutput {
+	return o.ToRelationshipPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o RelationshipPropertiesOutput) ToRelationshipPropertiesPtrOutputWithContext(ctx context.Context) RelationshipPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipProperties) *RelationshipProperties {
+		return &v
+	}).(RelationshipPropertiesPtrOutput)
+}
+
+// Resource name of the child entity
+func (o RelationshipPropertiesOutput) ChildEntityName() pulumi.StringOutput {
+	return o.ApplyT(func(v RelationshipProperties) string { return v.ChildEntityName }).(pulumi.StringOutput)
+}
+
+// Display name
+func (o RelationshipPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RelationshipProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Resource name of the parent entity
+func (o RelationshipPropertiesOutput) ParentEntityName() pulumi.StringOutput {
+	return o.ApplyT(func(v RelationshipProperties) string { return v.ParentEntityName }).(pulumi.StringOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o RelationshipPropertiesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RelationshipProperties) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type RelationshipPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (RelationshipPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RelationshipProperties)(nil)).Elem()
+}
+
+func (o RelationshipPropertiesPtrOutput) ToRelationshipPropertiesPtrOutput() RelationshipPropertiesPtrOutput {
+	return o
+}
+
+func (o RelationshipPropertiesPtrOutput) ToRelationshipPropertiesPtrOutputWithContext(ctx context.Context) RelationshipPropertiesPtrOutput {
+	return o
+}
+
+func (o RelationshipPropertiesPtrOutput) Elem() RelationshipPropertiesOutput {
+	return o.ApplyT(func(v *RelationshipProperties) RelationshipProperties {
+		if v != nil {
+			return *v
+		}
+		var ret RelationshipProperties
+		return ret
+	}).(RelationshipPropertiesOutput)
+}
+
+// Resource name of the child entity
+func (o RelationshipPropertiesPtrOutput) ChildEntityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RelationshipProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ChildEntityName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display name
+func (o RelationshipPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RelationshipProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name of the parent entity
+func (o RelationshipPropertiesPtrOutput) ParentEntityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RelationshipProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ParentEntityName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o RelationshipPropertiesPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RelationshipProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Relationship properties
+type RelationshipPropertiesResponse struct {
+	// Resource name of the child entity
+	ChildEntityName string `pulumi:"childEntityName"`
+	// Date when the relationship was (soft-)deleted
+	DeletionDate string `pulumi:"deletionDate"`
+	// Discovered by which discovery rule. If set, the relationship cannot be deleted manually.
+	DiscoveredBy string `pulumi:"discoveredBy"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Resource name of the parent entity
+	ParentEntityName string `pulumi:"parentEntityName"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Optional set of labels (key-value pairs)
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Relationship properties
+type RelationshipPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RelationshipPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelationshipPropertiesResponse)(nil)).Elem()
+}
+
+func (o RelationshipPropertiesResponseOutput) ToRelationshipPropertiesResponseOutput() RelationshipPropertiesResponseOutput {
+	return o
+}
+
+func (o RelationshipPropertiesResponseOutput) ToRelationshipPropertiesResponseOutputWithContext(ctx context.Context) RelationshipPropertiesResponseOutput {
+	return o
+}
+
+// Resource name of the child entity
+func (o RelationshipPropertiesResponseOutput) ChildEntityName() pulumi.StringOutput {
+	return o.ApplyT(func(v RelationshipPropertiesResponse) string { return v.ChildEntityName }).(pulumi.StringOutput)
+}
+
+// Date when the relationship was (soft-)deleted
+func (o RelationshipPropertiesResponseOutput) DeletionDate() pulumi.StringOutput {
+	return o.ApplyT(func(v RelationshipPropertiesResponse) string { return v.DeletionDate }).(pulumi.StringOutput)
+}
+
+// Discovered by which discovery rule. If set, the relationship cannot be deleted manually.
+func (o RelationshipPropertiesResponseOutput) DiscoveredBy() pulumi.StringOutput {
+	return o.ApplyT(func(v RelationshipPropertiesResponse) string { return v.DiscoveredBy }).(pulumi.StringOutput)
+}
+
+// Display name
+func (o RelationshipPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RelationshipPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Resource name of the parent entity
+func (o RelationshipPropertiesResponseOutput) ParentEntityName() pulumi.StringOutput {
+	return o.ApplyT(func(v RelationshipPropertiesResponse) string { return v.ParentEntityName }).(pulumi.StringOutput)
+}
+
+// The status of the last operation.
+func (o RelationshipPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v RelationshipPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o RelationshipPropertiesResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RelationshipPropertiesResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Discovery rule properties for an Azure Resource Graph query
+type ResourceGraphQueryDiscoveryRuleProperties struct {
+	// Whether to add all recommended signals to the discovered entities.
+	AddRecommendedSignals string `pulumi:"addRecommendedSignals"`
+	// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+	AuthenticationSetting string `pulumi:"authenticationSetting"`
+	// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+	DiscoverRelationships string `pulumi:"discoverRelationships"`
+	// Discovery rule relationship discovery behavior
+	// Expected value is 'ResourceGraphQuery'.
+	DiscoveryRuleKind string `pulumi:"discoveryRuleKind"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
+	ResourceGraphQuery string `pulumi:"resourceGraphQuery"`
+}
+
+// ResourceGraphQueryDiscoveryRulePropertiesInput is an input type that accepts ResourceGraphQueryDiscoveryRulePropertiesArgs and ResourceGraphQueryDiscoveryRulePropertiesOutput values.
+// You can construct a concrete instance of `ResourceGraphQueryDiscoveryRulePropertiesInput` via:
+//
+//	ResourceGraphQueryDiscoveryRulePropertiesArgs{...}
+type ResourceGraphQueryDiscoveryRulePropertiesInput interface {
+	pulumi.Input
+
+	ToResourceGraphQueryDiscoveryRulePropertiesOutput() ResourceGraphQueryDiscoveryRulePropertiesOutput
+	ToResourceGraphQueryDiscoveryRulePropertiesOutputWithContext(context.Context) ResourceGraphQueryDiscoveryRulePropertiesOutput
+}
+
+// Discovery rule properties for an Azure Resource Graph query
+type ResourceGraphQueryDiscoveryRulePropertiesArgs struct {
+	// Whether to add all recommended signals to the discovered entities.
+	AddRecommendedSignals pulumi.StringInput `pulumi:"addRecommendedSignals"`
+	// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+	AuthenticationSetting pulumi.StringInput `pulumi:"authenticationSetting"`
+	// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+	DiscoverRelationships pulumi.StringInput `pulumi:"discoverRelationships"`
+	// Discovery rule relationship discovery behavior
+	// Expected value is 'ResourceGraphQuery'.
+	DiscoveryRuleKind pulumi.StringInput `pulumi:"discoveryRuleKind"`
+	// Display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
+	ResourceGraphQuery pulumi.StringInput `pulumi:"resourceGraphQuery"`
+}
+
+func (ResourceGraphQueryDiscoveryRulePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGraphQueryDiscoveryRuleProperties)(nil)).Elem()
+}
+
+func (i ResourceGraphQueryDiscoveryRulePropertiesArgs) ToResourceGraphQueryDiscoveryRulePropertiesOutput() ResourceGraphQueryDiscoveryRulePropertiesOutput {
+	return i.ToResourceGraphQueryDiscoveryRulePropertiesOutputWithContext(context.Background())
+}
+
+func (i ResourceGraphQueryDiscoveryRulePropertiesArgs) ToResourceGraphQueryDiscoveryRulePropertiesOutputWithContext(ctx context.Context) ResourceGraphQueryDiscoveryRulePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGraphQueryDiscoveryRulePropertiesOutput)
+}
+
+func (i ResourceGraphQueryDiscoveryRulePropertiesArgs) ToResourceGraphQueryDiscoveryRulePropertiesPtrOutput() ResourceGraphQueryDiscoveryRulePropertiesPtrOutput {
+	return i.ToResourceGraphQueryDiscoveryRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceGraphQueryDiscoveryRulePropertiesArgs) ToResourceGraphQueryDiscoveryRulePropertiesPtrOutputWithContext(ctx context.Context) ResourceGraphQueryDiscoveryRulePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGraphQueryDiscoveryRulePropertiesOutput).ToResourceGraphQueryDiscoveryRulePropertiesPtrOutputWithContext(ctx)
+}
+
+// ResourceGraphQueryDiscoveryRulePropertiesPtrInput is an input type that accepts ResourceGraphQueryDiscoveryRulePropertiesArgs, ResourceGraphQueryDiscoveryRulePropertiesPtr and ResourceGraphQueryDiscoveryRulePropertiesPtrOutput values.
+// You can construct a concrete instance of `ResourceGraphQueryDiscoveryRulePropertiesPtrInput` via:
+//
+//	        ResourceGraphQueryDiscoveryRulePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceGraphQueryDiscoveryRulePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToResourceGraphQueryDiscoveryRulePropertiesPtrOutput() ResourceGraphQueryDiscoveryRulePropertiesPtrOutput
+	ToResourceGraphQueryDiscoveryRulePropertiesPtrOutputWithContext(context.Context) ResourceGraphQueryDiscoveryRulePropertiesPtrOutput
+}
+
+type resourceGraphQueryDiscoveryRulePropertiesPtrType ResourceGraphQueryDiscoveryRulePropertiesArgs
+
+func ResourceGraphQueryDiscoveryRulePropertiesPtr(v *ResourceGraphQueryDiscoveryRulePropertiesArgs) ResourceGraphQueryDiscoveryRulePropertiesPtrInput {
+	return (*resourceGraphQueryDiscoveryRulePropertiesPtrType)(v)
+}
+
+func (*resourceGraphQueryDiscoveryRulePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGraphQueryDiscoveryRuleProperties)(nil)).Elem()
+}
+
+func (i *resourceGraphQueryDiscoveryRulePropertiesPtrType) ToResourceGraphQueryDiscoveryRulePropertiesPtrOutput() ResourceGraphQueryDiscoveryRulePropertiesPtrOutput {
+	return i.ToResourceGraphQueryDiscoveryRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceGraphQueryDiscoveryRulePropertiesPtrType) ToResourceGraphQueryDiscoveryRulePropertiesPtrOutputWithContext(ctx context.Context) ResourceGraphQueryDiscoveryRulePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGraphQueryDiscoveryRulePropertiesPtrOutput)
+}
+
+// Discovery rule properties for an Azure Resource Graph query
+type ResourceGraphQueryDiscoveryRulePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ResourceGraphQueryDiscoveryRulePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGraphQueryDiscoveryRuleProperties)(nil)).Elem()
+}
+
+func (o ResourceGraphQueryDiscoveryRulePropertiesOutput) ToResourceGraphQueryDiscoveryRulePropertiesOutput() ResourceGraphQueryDiscoveryRulePropertiesOutput {
+	return o
+}
+
+func (o ResourceGraphQueryDiscoveryRulePropertiesOutput) ToResourceGraphQueryDiscoveryRulePropertiesOutputWithContext(ctx context.Context) ResourceGraphQueryDiscoveryRulePropertiesOutput {
+	return o
+}
+
+func (o ResourceGraphQueryDiscoveryRulePropertiesOutput) ToResourceGraphQueryDiscoveryRulePropertiesPtrOutput() ResourceGraphQueryDiscoveryRulePropertiesPtrOutput {
+	return o.ToResourceGraphQueryDiscoveryRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceGraphQueryDiscoveryRulePropertiesOutput) ToResourceGraphQueryDiscoveryRulePropertiesPtrOutputWithContext(ctx context.Context) ResourceGraphQueryDiscoveryRulePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGraphQueryDiscoveryRuleProperties) *ResourceGraphQueryDiscoveryRuleProperties {
+		return &v
+	}).(ResourceGraphQueryDiscoveryRulePropertiesPtrOutput)
+}
+
+// Whether to add all recommended signals to the discovered entities.
+func (o ResourceGraphQueryDiscoveryRulePropertiesOutput) AddRecommendedSignals() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRuleProperties) string { return v.AddRecommendedSignals }).(pulumi.StringOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+func (o ResourceGraphQueryDiscoveryRulePropertiesOutput) AuthenticationSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRuleProperties) string { return v.AuthenticationSetting }).(pulumi.StringOutput)
+}
+
+// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+func (o ResourceGraphQueryDiscoveryRulePropertiesOutput) DiscoverRelationships() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRuleProperties) string { return v.DiscoverRelationships }).(pulumi.StringOutput)
+}
+
+// Discovery rule relationship discovery behavior
+// Expected value is 'ResourceGraphQuery'.
+func (o ResourceGraphQueryDiscoveryRulePropertiesOutput) DiscoveryRuleKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRuleProperties) string { return v.DiscoveryRuleKind }).(pulumi.StringOutput)
+}
+
+// Display name
+func (o ResourceGraphQueryDiscoveryRulePropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRuleProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
+func (o ResourceGraphQueryDiscoveryRulePropertiesOutput) ResourceGraphQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRuleProperties) string { return v.ResourceGraphQuery }).(pulumi.StringOutput)
+}
+
+type ResourceGraphQueryDiscoveryRulePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceGraphQueryDiscoveryRulePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGraphQueryDiscoveryRuleProperties)(nil)).Elem()
+}
+
+func (o ResourceGraphQueryDiscoveryRulePropertiesPtrOutput) ToResourceGraphQueryDiscoveryRulePropertiesPtrOutput() ResourceGraphQueryDiscoveryRulePropertiesPtrOutput {
+	return o
+}
+
+func (o ResourceGraphQueryDiscoveryRulePropertiesPtrOutput) ToResourceGraphQueryDiscoveryRulePropertiesPtrOutputWithContext(ctx context.Context) ResourceGraphQueryDiscoveryRulePropertiesPtrOutput {
+	return o
+}
+
+func (o ResourceGraphQueryDiscoveryRulePropertiesPtrOutput) Elem() ResourceGraphQueryDiscoveryRulePropertiesOutput {
+	return o.ApplyT(func(v *ResourceGraphQueryDiscoveryRuleProperties) ResourceGraphQueryDiscoveryRuleProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceGraphQueryDiscoveryRuleProperties
+		return ret
+	}).(ResourceGraphQueryDiscoveryRulePropertiesOutput)
+}
+
+// Whether to add all recommended signals to the discovered entities.
+func (o ResourceGraphQueryDiscoveryRulePropertiesPtrOutput) AddRecommendedSignals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGraphQueryDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AddRecommendedSignals
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+func (o ResourceGraphQueryDiscoveryRulePropertiesPtrOutput) AuthenticationSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGraphQueryDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationSetting
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+func (o ResourceGraphQueryDiscoveryRulePropertiesPtrOutput) DiscoverRelationships() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGraphQueryDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscoverRelationships
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discovery rule relationship discovery behavior
+// Expected value is 'ResourceGraphQuery'.
+func (o ResourceGraphQueryDiscoveryRulePropertiesPtrOutput) DiscoveryRuleKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGraphQueryDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscoveryRuleKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display name
+func (o ResourceGraphQueryDiscoveryRulePropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGraphQueryDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
+func (o ResourceGraphQueryDiscoveryRulePropertiesPtrOutput) ResourceGraphQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGraphQueryDiscoveryRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceGraphQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discovery rule properties for an Azure Resource Graph query
+type ResourceGraphQueryDiscoveryRulePropertiesResponse struct {
+	// Whether to add all recommended signals to the discovered entities.
+	AddRecommendedSignals string `pulumi:"addRecommendedSignals"`
+	// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+	AuthenticationSetting string `pulumi:"authenticationSetting"`
+	// Date when the discovery rule was (soft-)deleted.
+	DeletionDate string `pulumi:"deletionDate"`
+	// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+	DiscoverRelationships string `pulumi:"discoverRelationships"`
+	// Discovery rule relationship discovery behavior
+	// Expected value is 'ResourceGraphQuery'.
+	DiscoveryRuleKind string `pulumi:"discoveryRuleKind"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
+	EntityName string `pulumi:"entityName"`
+	// Error details if the last discovery operation failed.
+	Error DiscoveryErrorResponse `pulumi:"error"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
+	ResourceGraphQuery string `pulumi:"resourceGraphQuery"`
+}
+
+// Discovery rule properties for an Azure Resource Graph query
+type ResourceGraphQueryDiscoveryRulePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGraphQueryDiscoveryRulePropertiesResponse)(nil)).Elem()
+}
+
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) ToResourceGraphQueryDiscoveryRulePropertiesResponseOutput() ResourceGraphQueryDiscoveryRulePropertiesResponseOutput {
+	return o
+}
+
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) ToResourceGraphQueryDiscoveryRulePropertiesResponseOutputWithContext(ctx context.Context) ResourceGraphQueryDiscoveryRulePropertiesResponseOutput {
+	return o
+}
+
+// Whether to add all recommended signals to the discovered entities.
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) AddRecommendedSignals() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRulePropertiesResponse) string { return v.AddRecommendedSignals }).(pulumi.StringOutput)
+}
+
+// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) AuthenticationSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRulePropertiesResponse) string { return v.AuthenticationSetting }).(pulumi.StringOutput)
+}
+
+// Date when the discovery rule was (soft-)deleted.
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) DeletionDate() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRulePropertiesResponse) string { return v.DeletionDate }).(pulumi.StringOutput)
+}
+
+// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) DiscoverRelationships() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRulePropertiesResponse) string { return v.DiscoverRelationships }).(pulumi.StringOutput)
+}
+
+// Discovery rule relationship discovery behavior
+// Expected value is 'ResourceGraphQuery'.
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) DiscoveryRuleKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRulePropertiesResponse) string { return v.DiscoveryRuleKind }).(pulumi.StringOutput)
+}
+
+// Display name
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRulePropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) EntityName() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRulePropertiesResponse) string { return v.EntityName }).(pulumi.StringOutput)
+}
+
+// Error details if the last discovery operation failed.
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) Error() DiscoveryErrorResponseOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRulePropertiesResponse) DiscoveryErrorResponse { return v.Error }).(DiscoveryErrorResponseOutput)
+}
+
+// The status of the last operation.
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRulePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
+func (o ResourceGraphQueryDiscoveryRulePropertiesResponseOutput) ResourceGraphQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGraphQueryDiscoveryRulePropertiesResponse) string { return v.ResourceGraphQuery }).(pulumi.StringOutput)
+}
+
 // Resource map for schema in azure monitor.
 type ResourceMap struct {
 	// Resource Map Key.
@@ -19304,6 +25489,517 @@ func (o ResourceMapResponseArrayOutput) Index(i pulumi.IntInput) ResourceMapResp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceMapResponse {
 		return vs[0].([]ResourceMapResponse)[vs[1].(int)]
 	}).(ResourceMapResponseOutput)
+}
+
+// Azure Resource Metric Signal Definition properties
+type ResourceMetricSignalDefinitionProperties struct {
+	// Type of aggregation to apply to the metric
+	AggregationType string `pulumi:"aggregationType"`
+	// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+	DataUnit *string `pulumi:"dataUnit"`
+	// Optional: Dimension to split by
+	Dimension *string `pulumi:"dimension"`
+	// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+	DimensionFilter *string `pulumi:"dimensionFilter"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Evaluation rules for the signal definition
+	EvaluationRules EvaluationRule `pulumi:"evaluationRules"`
+	// Name of the metric
+	MetricName string `pulumi:"metricName"`
+	// Metric namespace
+	MetricNamespace string `pulumi:"metricNamespace"`
+	// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+	RefreshInterval *string `pulumi:"refreshInterval"`
+	// Supported signal kinds as discriminator
+	// Expected value is 'AzureResourceMetric'.
+	SignalKind string `pulumi:"signalKind"`
+	// Optional set of labels (key-value pairs)
+	Tags map[string]string `pulumi:"tags"`
+	// Time range of signal. ISO duration format like PT10M.
+	TimeGrain string `pulumi:"timeGrain"`
+}
+
+// Defaults sets the appropriate defaults for ResourceMetricSignalDefinitionProperties
+func (val *ResourceMetricSignalDefinitionProperties) Defaults() *ResourceMetricSignalDefinitionProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RefreshInterval == nil {
+		refreshInterval_ := "PT1M"
+		tmp.RefreshInterval = &refreshInterval_
+	}
+	return &tmp
+}
+
+// ResourceMetricSignalDefinitionPropertiesInput is an input type that accepts ResourceMetricSignalDefinitionPropertiesArgs and ResourceMetricSignalDefinitionPropertiesOutput values.
+// You can construct a concrete instance of `ResourceMetricSignalDefinitionPropertiesInput` via:
+//
+//	ResourceMetricSignalDefinitionPropertiesArgs{...}
+type ResourceMetricSignalDefinitionPropertiesInput interface {
+	pulumi.Input
+
+	ToResourceMetricSignalDefinitionPropertiesOutput() ResourceMetricSignalDefinitionPropertiesOutput
+	ToResourceMetricSignalDefinitionPropertiesOutputWithContext(context.Context) ResourceMetricSignalDefinitionPropertiesOutput
+}
+
+// Azure Resource Metric Signal Definition properties
+type ResourceMetricSignalDefinitionPropertiesArgs struct {
+	// Type of aggregation to apply to the metric
+	AggregationType pulumi.StringInput `pulumi:"aggregationType"`
+	// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+	DataUnit pulumi.StringPtrInput `pulumi:"dataUnit"`
+	// Optional: Dimension to split by
+	Dimension pulumi.StringPtrInput `pulumi:"dimension"`
+	// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+	DimensionFilter pulumi.StringPtrInput `pulumi:"dimensionFilter"`
+	// Display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Evaluation rules for the signal definition
+	EvaluationRules EvaluationRuleInput `pulumi:"evaluationRules"`
+	// Name of the metric
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// Metric namespace
+	MetricNamespace pulumi.StringInput `pulumi:"metricNamespace"`
+	// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+	RefreshInterval pulumi.StringPtrInput `pulumi:"refreshInterval"`
+	// Supported signal kinds as discriminator
+	// Expected value is 'AzureResourceMetric'.
+	SignalKind pulumi.StringInput `pulumi:"signalKind"`
+	// Optional set of labels (key-value pairs)
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Time range of signal. ISO duration format like PT10M.
+	TimeGrain pulumi.StringInput `pulumi:"timeGrain"`
+}
+
+// Defaults sets the appropriate defaults for ResourceMetricSignalDefinitionPropertiesArgs
+func (val *ResourceMetricSignalDefinitionPropertiesArgs) Defaults() *ResourceMetricSignalDefinitionPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RefreshInterval == nil {
+		tmp.RefreshInterval = pulumi.StringPtr("PT1M")
+	}
+	return &tmp
+}
+func (ResourceMetricSignalDefinitionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceMetricSignalDefinitionProperties)(nil)).Elem()
+}
+
+func (i ResourceMetricSignalDefinitionPropertiesArgs) ToResourceMetricSignalDefinitionPropertiesOutput() ResourceMetricSignalDefinitionPropertiesOutput {
+	return i.ToResourceMetricSignalDefinitionPropertiesOutputWithContext(context.Background())
+}
+
+func (i ResourceMetricSignalDefinitionPropertiesArgs) ToResourceMetricSignalDefinitionPropertiesOutputWithContext(ctx context.Context) ResourceMetricSignalDefinitionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceMetricSignalDefinitionPropertiesOutput)
+}
+
+func (i ResourceMetricSignalDefinitionPropertiesArgs) ToResourceMetricSignalDefinitionPropertiesPtrOutput() ResourceMetricSignalDefinitionPropertiesPtrOutput {
+	return i.ToResourceMetricSignalDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceMetricSignalDefinitionPropertiesArgs) ToResourceMetricSignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) ResourceMetricSignalDefinitionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceMetricSignalDefinitionPropertiesOutput).ToResourceMetricSignalDefinitionPropertiesPtrOutputWithContext(ctx)
+}
+
+// ResourceMetricSignalDefinitionPropertiesPtrInput is an input type that accepts ResourceMetricSignalDefinitionPropertiesArgs, ResourceMetricSignalDefinitionPropertiesPtr and ResourceMetricSignalDefinitionPropertiesPtrOutput values.
+// You can construct a concrete instance of `ResourceMetricSignalDefinitionPropertiesPtrInput` via:
+//
+//	        ResourceMetricSignalDefinitionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceMetricSignalDefinitionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToResourceMetricSignalDefinitionPropertiesPtrOutput() ResourceMetricSignalDefinitionPropertiesPtrOutput
+	ToResourceMetricSignalDefinitionPropertiesPtrOutputWithContext(context.Context) ResourceMetricSignalDefinitionPropertiesPtrOutput
+}
+
+type resourceMetricSignalDefinitionPropertiesPtrType ResourceMetricSignalDefinitionPropertiesArgs
+
+func ResourceMetricSignalDefinitionPropertiesPtr(v *ResourceMetricSignalDefinitionPropertiesArgs) ResourceMetricSignalDefinitionPropertiesPtrInput {
+	return (*resourceMetricSignalDefinitionPropertiesPtrType)(v)
+}
+
+func (*resourceMetricSignalDefinitionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceMetricSignalDefinitionProperties)(nil)).Elem()
+}
+
+func (i *resourceMetricSignalDefinitionPropertiesPtrType) ToResourceMetricSignalDefinitionPropertiesPtrOutput() ResourceMetricSignalDefinitionPropertiesPtrOutput {
+	return i.ToResourceMetricSignalDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceMetricSignalDefinitionPropertiesPtrType) ToResourceMetricSignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) ResourceMetricSignalDefinitionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceMetricSignalDefinitionPropertiesPtrOutput)
+}
+
+// Azure Resource Metric Signal Definition properties
+type ResourceMetricSignalDefinitionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ResourceMetricSignalDefinitionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceMetricSignalDefinitionProperties)(nil)).Elem()
+}
+
+func (o ResourceMetricSignalDefinitionPropertiesOutput) ToResourceMetricSignalDefinitionPropertiesOutput() ResourceMetricSignalDefinitionPropertiesOutput {
+	return o
+}
+
+func (o ResourceMetricSignalDefinitionPropertiesOutput) ToResourceMetricSignalDefinitionPropertiesOutputWithContext(ctx context.Context) ResourceMetricSignalDefinitionPropertiesOutput {
+	return o
+}
+
+func (o ResourceMetricSignalDefinitionPropertiesOutput) ToResourceMetricSignalDefinitionPropertiesPtrOutput() ResourceMetricSignalDefinitionPropertiesPtrOutput {
+	return o.ToResourceMetricSignalDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceMetricSignalDefinitionPropertiesOutput) ToResourceMetricSignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) ResourceMetricSignalDefinitionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMetricSignalDefinitionProperties) *ResourceMetricSignalDefinitionProperties {
+		return &v
+	}).(ResourceMetricSignalDefinitionPropertiesPtrOutput)
+}
+
+// Type of aggregation to apply to the metric
+func (o ResourceMetricSignalDefinitionPropertiesOutput) AggregationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) string { return v.AggregationType }).(pulumi.StringOutput)
+}
+
+// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+func (o ResourceMetricSignalDefinitionPropertiesOutput) DataUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) *string { return v.DataUnit }).(pulumi.StringPtrOutput)
+}
+
+// Optional: Dimension to split by
+func (o ResourceMetricSignalDefinitionPropertiesOutput) Dimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) *string { return v.Dimension }).(pulumi.StringPtrOutput)
+}
+
+// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+func (o ResourceMetricSignalDefinitionPropertiesOutput) DimensionFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) *string { return v.DimensionFilter }).(pulumi.StringPtrOutput)
+}
+
+// Display name
+func (o ResourceMetricSignalDefinitionPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Evaluation rules for the signal definition
+func (o ResourceMetricSignalDefinitionPropertiesOutput) EvaluationRules() EvaluationRuleOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) EvaluationRule { return v.EvaluationRules }).(EvaluationRuleOutput)
+}
+
+// Name of the metric
+func (o ResourceMetricSignalDefinitionPropertiesOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// Metric namespace
+func (o ResourceMetricSignalDefinitionPropertiesOutput) MetricNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) string { return v.MetricNamespace }).(pulumi.StringOutput)
+}
+
+// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+func (o ResourceMetricSignalDefinitionPropertiesOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) *string { return v.RefreshInterval }).(pulumi.StringPtrOutput)
+}
+
+// Supported signal kinds as discriminator
+// Expected value is 'AzureResourceMetric'.
+func (o ResourceMetricSignalDefinitionPropertiesOutput) SignalKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) string { return v.SignalKind }).(pulumi.StringOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o ResourceMetricSignalDefinitionPropertiesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Time range of signal. ISO duration format like PT10M.
+func (o ResourceMetricSignalDefinitionPropertiesOutput) TimeGrain() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionProperties) string { return v.TimeGrain }).(pulumi.StringOutput)
+}
+
+type ResourceMetricSignalDefinitionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceMetricSignalDefinitionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceMetricSignalDefinitionProperties)(nil)).Elem()
+}
+
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) ToResourceMetricSignalDefinitionPropertiesPtrOutput() ResourceMetricSignalDefinitionPropertiesPtrOutput {
+	return o
+}
+
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) ToResourceMetricSignalDefinitionPropertiesPtrOutputWithContext(ctx context.Context) ResourceMetricSignalDefinitionPropertiesPtrOutput {
+	return o
+}
+
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) Elem() ResourceMetricSignalDefinitionPropertiesOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) ResourceMetricSignalDefinitionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceMetricSignalDefinitionProperties
+		return ret
+	}).(ResourceMetricSignalDefinitionPropertiesOutput)
+}
+
+// Type of aggregation to apply to the metric
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) AggregationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AggregationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) DataUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional: Dimension to split by
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) Dimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dimension
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) DimensionFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DimensionFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display name
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Evaluation rules for the signal definition
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) EvaluationRules() EvaluationRulePtrOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) *EvaluationRule {
+		if v == nil {
+			return nil
+		}
+		return &v.EvaluationRules
+	}).(EvaluationRulePtrOutput)
+}
+
+// Name of the metric
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetricName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metric namespace
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetricNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supported signal kinds as discriminator
+// Expected value is 'AzureResourceMetric'.
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) SignalKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SignalKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Time range of signal. ISO duration format like PT10M.
+func (o ResourceMetricSignalDefinitionPropertiesPtrOutput) TimeGrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMetricSignalDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeGrain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Resource Metric Signal Definition properties
+type ResourceMetricSignalDefinitionPropertiesResponse struct {
+	// Type of aggregation to apply to the metric
+	AggregationType string `pulumi:"aggregationType"`
+	// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+	DataUnit *string `pulumi:"dataUnit"`
+	// Date when the signal definition was (soft-)deleted
+	DeletionDate string `pulumi:"deletionDate"`
+	// Optional: Dimension to split by
+	Dimension *string `pulumi:"dimension"`
+	// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+	DimensionFilter *string `pulumi:"dimensionFilter"`
+	// Display name
+	DisplayName *string `pulumi:"displayName"`
+	// Evaluation rules for the signal definition
+	EvaluationRules EvaluationRuleResponse `pulumi:"evaluationRules"`
+	// Name of the metric
+	MetricName string `pulumi:"metricName"`
+	// Metric namespace
+	MetricNamespace string `pulumi:"metricNamespace"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+	RefreshInterval *string `pulumi:"refreshInterval"`
+	// Supported signal kinds as discriminator
+	// Expected value is 'AzureResourceMetric'.
+	SignalKind string `pulumi:"signalKind"`
+	// Optional set of labels (key-value pairs)
+	Tags map[string]string `pulumi:"tags"`
+	// Time range of signal. ISO duration format like PT10M.
+	TimeGrain string `pulumi:"timeGrain"`
+}
+
+// Defaults sets the appropriate defaults for ResourceMetricSignalDefinitionPropertiesResponse
+func (val *ResourceMetricSignalDefinitionPropertiesResponse) Defaults() *ResourceMetricSignalDefinitionPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RefreshInterval == nil {
+		refreshInterval_ := "PT1M"
+		tmp.RefreshInterval = &refreshInterval_
+	}
+	return &tmp
+}
+
+// Azure Resource Metric Signal Definition properties
+type ResourceMetricSignalDefinitionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceMetricSignalDefinitionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceMetricSignalDefinitionPropertiesResponse)(nil)).Elem()
+}
+
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) ToResourceMetricSignalDefinitionPropertiesResponseOutput() ResourceMetricSignalDefinitionPropertiesResponseOutput {
+	return o
+}
+
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) ToResourceMetricSignalDefinitionPropertiesResponseOutputWithContext(ctx context.Context) ResourceMetricSignalDefinitionPropertiesResponseOutput {
+	return o
+}
+
+// Type of aggregation to apply to the metric
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) AggregationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) string { return v.AggregationType }).(pulumi.StringOutput)
+}
+
+// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) DataUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) *string { return v.DataUnit }).(pulumi.StringPtrOutput)
+}
+
+// Date when the signal definition was (soft-)deleted
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) DeletionDate() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) string { return v.DeletionDate }).(pulumi.StringOutput)
+}
+
+// Optional: Dimension to split by
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) Dimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) *string { return v.Dimension }).(pulumi.StringPtrOutput)
+}
+
+// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) DimensionFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) *string { return v.DimensionFilter }).(pulumi.StringPtrOutput)
+}
+
+// Display name
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Evaluation rules for the signal definition
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) EvaluationRules() EvaluationRuleResponseOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) EvaluationRuleResponse {
+		return v.EvaluationRules
+	}).(EvaluationRuleResponseOutput)
+}
+
+// Name of the metric
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// Metric namespace
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) MetricNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) string { return v.MetricNamespace }).(pulumi.StringOutput)
+}
+
+// The status of the last operation.
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) *string { return v.RefreshInterval }).(pulumi.StringPtrOutput)
+}
+
+// Supported signal kinds as discriminator
+// Expected value is 'AzureResourceMetric'.
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) SignalKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) string { return v.SignalKind }).(pulumi.StringOutput)
+}
+
+// Optional set of labels (key-value pairs)
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Time range of signal. ISO duration format like PT10M.
+func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) TimeGrain() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) string { return v.TimeGrain }).(pulumi.StringOutput)
 }
 
 // Specifies the retention policy for the log.
@@ -19776,6 +26472,46 @@ func (o RuleResolveConfigurationResponsePtrOutput) TimeToResolve() pulumi.String
 		}
 		return v.TimeToResolve
 	}).(pulumi.StringPtrOutput)
+}
+
+// The parameters used to run the investigation
+type RunParametersResponse struct {
+	// The alerts used to run the investigation
+	Alerts []InvestigationScopeResponse `pulumi:"alerts"`
+	// The impact time to investigate (in UTC)
+	ImpactTime string `pulumi:"impactTime"`
+	// The resources used to run the investigation
+	Resources []InvestigationScopeResponse `pulumi:"resources"`
+}
+
+// The parameters used to run the investigation
+type RunParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (RunParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunParametersResponse)(nil)).Elem()
+}
+
+func (o RunParametersResponseOutput) ToRunParametersResponseOutput() RunParametersResponseOutput {
+	return o
+}
+
+func (o RunParametersResponseOutput) ToRunParametersResponseOutputWithContext(ctx context.Context) RunParametersResponseOutput {
+	return o
+}
+
+// The alerts used to run the investigation
+func (o RunParametersResponseOutput) Alerts() InvestigationScopeResponseArrayOutput {
+	return o.ApplyT(func(v RunParametersResponse) []InvestigationScopeResponse { return v.Alerts }).(InvestigationScopeResponseArrayOutput)
+}
+
+// The impact time to investigate (in UTC)
+func (o RunParametersResponseOutput) ImpactTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RunParametersResponse) string { return v.ImpactTime }).(pulumi.StringOutput)
+}
+
+// The resources used to run the investigation
+func (o RunParametersResponseOutput) Resources() InvestigationScopeResponseArrayOutput {
+	return o.ApplyT(func(v RunParametersResponse) []InvestigationScopeResponse { return v.Resources }).(InvestigationScopeResponseArrayOutput)
 }
 
 // The parameters for the scaling action.
@@ -21133,6 +27869,491 @@ func (o ServiceResponseOutput) Persistence() PersistenceConfigurationsResponsePt
 // Pipelines belonging to a given pipeline group.
 func (o ServiceResponseOutput) Pipelines() PipelineResponseArrayOutput {
 	return o.ApplyT(func(v ServiceResponse) []PipelineResponse { return v.Pipelines }).(PipelineResponseArrayOutput)
+}
+
+// Group of signal definition assignments
+type SignalAssignment struct {
+	// Signal definitions referenced by their names. All definitions are combined with an AND operator.
+	SignalDefinitions []string `pulumi:"signalDefinitions"`
+}
+
+// SignalAssignmentInput is an input type that accepts SignalAssignmentArgs and SignalAssignmentOutput values.
+// You can construct a concrete instance of `SignalAssignmentInput` via:
+//
+//	SignalAssignmentArgs{...}
+type SignalAssignmentInput interface {
+	pulumi.Input
+
+	ToSignalAssignmentOutput() SignalAssignmentOutput
+	ToSignalAssignmentOutputWithContext(context.Context) SignalAssignmentOutput
+}
+
+// Group of signal definition assignments
+type SignalAssignmentArgs struct {
+	// Signal definitions referenced by their names. All definitions are combined with an AND operator.
+	SignalDefinitions pulumi.StringArrayInput `pulumi:"signalDefinitions"`
+}
+
+func (SignalAssignmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalAssignment)(nil)).Elem()
+}
+
+func (i SignalAssignmentArgs) ToSignalAssignmentOutput() SignalAssignmentOutput {
+	return i.ToSignalAssignmentOutputWithContext(context.Background())
+}
+
+func (i SignalAssignmentArgs) ToSignalAssignmentOutputWithContext(ctx context.Context) SignalAssignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignalAssignmentOutput)
+}
+
+// SignalAssignmentArrayInput is an input type that accepts SignalAssignmentArray and SignalAssignmentArrayOutput values.
+// You can construct a concrete instance of `SignalAssignmentArrayInput` via:
+//
+//	SignalAssignmentArray{ SignalAssignmentArgs{...} }
+type SignalAssignmentArrayInput interface {
+	pulumi.Input
+
+	ToSignalAssignmentArrayOutput() SignalAssignmentArrayOutput
+	ToSignalAssignmentArrayOutputWithContext(context.Context) SignalAssignmentArrayOutput
+}
+
+type SignalAssignmentArray []SignalAssignmentInput
+
+func (SignalAssignmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SignalAssignment)(nil)).Elem()
+}
+
+func (i SignalAssignmentArray) ToSignalAssignmentArrayOutput() SignalAssignmentArrayOutput {
+	return i.ToSignalAssignmentArrayOutputWithContext(context.Background())
+}
+
+func (i SignalAssignmentArray) ToSignalAssignmentArrayOutputWithContext(ctx context.Context) SignalAssignmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignalAssignmentArrayOutput)
+}
+
+// Group of signal definition assignments
+type SignalAssignmentOutput struct{ *pulumi.OutputState }
+
+func (SignalAssignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalAssignment)(nil)).Elem()
+}
+
+func (o SignalAssignmentOutput) ToSignalAssignmentOutput() SignalAssignmentOutput {
+	return o
+}
+
+func (o SignalAssignmentOutput) ToSignalAssignmentOutputWithContext(ctx context.Context) SignalAssignmentOutput {
+	return o
+}
+
+// Signal definitions referenced by their names. All definitions are combined with an AND operator.
+func (o SignalAssignmentOutput) SignalDefinitions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SignalAssignment) []string { return v.SignalDefinitions }).(pulumi.StringArrayOutput)
+}
+
+type SignalAssignmentArrayOutput struct{ *pulumi.OutputState }
+
+func (SignalAssignmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SignalAssignment)(nil)).Elem()
+}
+
+func (o SignalAssignmentArrayOutput) ToSignalAssignmentArrayOutput() SignalAssignmentArrayOutput {
+	return o
+}
+
+func (o SignalAssignmentArrayOutput) ToSignalAssignmentArrayOutputWithContext(ctx context.Context) SignalAssignmentArrayOutput {
+	return o
+}
+
+func (o SignalAssignmentArrayOutput) Index(i pulumi.IntInput) SignalAssignmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SignalAssignment {
+		return vs[0].([]SignalAssignment)[vs[1].(int)]
+	}).(SignalAssignmentOutput)
+}
+
+// Group of signal definition assignments
+type SignalAssignmentResponse struct {
+	// Signal definitions referenced by their names. All definitions are combined with an AND operator.
+	SignalDefinitions []string `pulumi:"signalDefinitions"`
+}
+
+// Group of signal definition assignments
+type SignalAssignmentResponseOutput struct{ *pulumi.OutputState }
+
+func (SignalAssignmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalAssignmentResponse)(nil)).Elem()
+}
+
+func (o SignalAssignmentResponseOutput) ToSignalAssignmentResponseOutput() SignalAssignmentResponseOutput {
+	return o
+}
+
+func (o SignalAssignmentResponseOutput) ToSignalAssignmentResponseOutputWithContext(ctx context.Context) SignalAssignmentResponseOutput {
+	return o
+}
+
+// Signal definitions referenced by their names. All definitions are combined with an AND operator.
+func (o SignalAssignmentResponseOutput) SignalDefinitions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SignalAssignmentResponse) []string { return v.SignalDefinitions }).(pulumi.StringArrayOutput)
+}
+
+type SignalAssignmentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SignalAssignmentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SignalAssignmentResponse)(nil)).Elem()
+}
+
+func (o SignalAssignmentResponseArrayOutput) ToSignalAssignmentResponseArrayOutput() SignalAssignmentResponseArrayOutput {
+	return o
+}
+
+func (o SignalAssignmentResponseArrayOutput) ToSignalAssignmentResponseArrayOutputWithContext(ctx context.Context) SignalAssignmentResponseArrayOutput {
+	return o
+}
+
+func (o SignalAssignmentResponseArrayOutput) Index(i pulumi.IntInput) SignalAssignmentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SignalAssignmentResponse {
+		return vs[0].([]SignalAssignmentResponse)[vs[1].(int)]
+	}).(SignalAssignmentResponseOutput)
+}
+
+// Contains various signal groups that can be assigned to an entity
+type SignalGroup struct {
+	// Log Analytics Signal Group
+	AzureLogAnalytics *LogAnalyticsSignalGroup `pulumi:"azureLogAnalytics"`
+	// Azure Monitor Workspace Signal Group
+	AzureMonitorWorkspace *AzureMonitorWorkspaceSignalGroup `pulumi:"azureMonitorWorkspace"`
+	// Azure Resource Signal Group
+	AzureResource *AzureResourceSignalGroup `pulumi:"azureResource"`
+	// Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity.
+	Dependencies *DependenciesSignalGroup `pulumi:"dependencies"`
+}
+
+// Defaults sets the appropriate defaults for SignalGroup
+func (val *SignalGroup) Defaults() *SignalGroup {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Dependencies = tmp.Dependencies.Defaults()
+
+	return &tmp
+}
+
+// SignalGroupInput is an input type that accepts SignalGroupArgs and SignalGroupOutput values.
+// You can construct a concrete instance of `SignalGroupInput` via:
+//
+//	SignalGroupArgs{...}
+type SignalGroupInput interface {
+	pulumi.Input
+
+	ToSignalGroupOutput() SignalGroupOutput
+	ToSignalGroupOutputWithContext(context.Context) SignalGroupOutput
+}
+
+// Contains various signal groups that can be assigned to an entity
+type SignalGroupArgs struct {
+	// Log Analytics Signal Group
+	AzureLogAnalytics LogAnalyticsSignalGroupPtrInput `pulumi:"azureLogAnalytics"`
+	// Azure Monitor Workspace Signal Group
+	AzureMonitorWorkspace AzureMonitorWorkspaceSignalGroupPtrInput `pulumi:"azureMonitorWorkspace"`
+	// Azure Resource Signal Group
+	AzureResource AzureResourceSignalGroupPtrInput `pulumi:"azureResource"`
+	// Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity.
+	Dependencies DependenciesSignalGroupPtrInput `pulumi:"dependencies"`
+}
+
+// Defaults sets the appropriate defaults for SignalGroupArgs
+func (val *SignalGroupArgs) Defaults() *SignalGroupArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (SignalGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalGroup)(nil)).Elem()
+}
+
+func (i SignalGroupArgs) ToSignalGroupOutput() SignalGroupOutput {
+	return i.ToSignalGroupOutputWithContext(context.Background())
+}
+
+func (i SignalGroupArgs) ToSignalGroupOutputWithContext(ctx context.Context) SignalGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignalGroupOutput)
+}
+
+func (i SignalGroupArgs) ToSignalGroupPtrOutput() SignalGroupPtrOutput {
+	return i.ToSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i SignalGroupArgs) ToSignalGroupPtrOutputWithContext(ctx context.Context) SignalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignalGroupOutput).ToSignalGroupPtrOutputWithContext(ctx)
+}
+
+// SignalGroupPtrInput is an input type that accepts SignalGroupArgs, SignalGroupPtr and SignalGroupPtrOutput values.
+// You can construct a concrete instance of `SignalGroupPtrInput` via:
+//
+//	        SignalGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type SignalGroupPtrInput interface {
+	pulumi.Input
+
+	ToSignalGroupPtrOutput() SignalGroupPtrOutput
+	ToSignalGroupPtrOutputWithContext(context.Context) SignalGroupPtrOutput
+}
+
+type signalGroupPtrType SignalGroupArgs
+
+func SignalGroupPtr(v *SignalGroupArgs) SignalGroupPtrInput {
+	return (*signalGroupPtrType)(v)
+}
+
+func (*signalGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignalGroup)(nil)).Elem()
+}
+
+func (i *signalGroupPtrType) ToSignalGroupPtrOutput() SignalGroupPtrOutput {
+	return i.ToSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *signalGroupPtrType) ToSignalGroupPtrOutputWithContext(ctx context.Context) SignalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignalGroupPtrOutput)
+}
+
+// Contains various signal groups that can be assigned to an entity
+type SignalGroupOutput struct{ *pulumi.OutputState }
+
+func (SignalGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalGroup)(nil)).Elem()
+}
+
+func (o SignalGroupOutput) ToSignalGroupOutput() SignalGroupOutput {
+	return o
+}
+
+func (o SignalGroupOutput) ToSignalGroupOutputWithContext(ctx context.Context) SignalGroupOutput {
+	return o
+}
+
+func (o SignalGroupOutput) ToSignalGroupPtrOutput() SignalGroupPtrOutput {
+	return o.ToSignalGroupPtrOutputWithContext(context.Background())
+}
+
+func (o SignalGroupOutput) ToSignalGroupPtrOutputWithContext(ctx context.Context) SignalGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SignalGroup) *SignalGroup {
+		return &v
+	}).(SignalGroupPtrOutput)
+}
+
+// Log Analytics Signal Group
+func (o SignalGroupOutput) AzureLogAnalytics() LogAnalyticsSignalGroupPtrOutput {
+	return o.ApplyT(func(v SignalGroup) *LogAnalyticsSignalGroup { return v.AzureLogAnalytics }).(LogAnalyticsSignalGroupPtrOutput)
+}
+
+// Azure Monitor Workspace Signal Group
+func (o SignalGroupOutput) AzureMonitorWorkspace() AzureMonitorWorkspaceSignalGroupPtrOutput {
+	return o.ApplyT(func(v SignalGroup) *AzureMonitorWorkspaceSignalGroup { return v.AzureMonitorWorkspace }).(AzureMonitorWorkspaceSignalGroupPtrOutput)
+}
+
+// Azure Resource Signal Group
+func (o SignalGroupOutput) AzureResource() AzureResourceSignalGroupPtrOutput {
+	return o.ApplyT(func(v SignalGroup) *AzureResourceSignalGroup { return v.AzureResource }).(AzureResourceSignalGroupPtrOutput)
+}
+
+// Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity.
+func (o SignalGroupOutput) Dependencies() DependenciesSignalGroupPtrOutput {
+	return o.ApplyT(func(v SignalGroup) *DependenciesSignalGroup { return v.Dependencies }).(DependenciesSignalGroupPtrOutput)
+}
+
+type SignalGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (SignalGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignalGroup)(nil)).Elem()
+}
+
+func (o SignalGroupPtrOutput) ToSignalGroupPtrOutput() SignalGroupPtrOutput {
+	return o
+}
+
+func (o SignalGroupPtrOutput) ToSignalGroupPtrOutputWithContext(ctx context.Context) SignalGroupPtrOutput {
+	return o
+}
+
+func (o SignalGroupPtrOutput) Elem() SignalGroupOutput {
+	return o.ApplyT(func(v *SignalGroup) SignalGroup {
+		if v != nil {
+			return *v
+		}
+		var ret SignalGroup
+		return ret
+	}).(SignalGroupOutput)
+}
+
+// Log Analytics Signal Group
+func (o SignalGroupPtrOutput) AzureLogAnalytics() LogAnalyticsSignalGroupPtrOutput {
+	return o.ApplyT(func(v *SignalGroup) *LogAnalyticsSignalGroup {
+		if v == nil {
+			return nil
+		}
+		return v.AzureLogAnalytics
+	}).(LogAnalyticsSignalGroupPtrOutput)
+}
+
+// Azure Monitor Workspace Signal Group
+func (o SignalGroupPtrOutput) AzureMonitorWorkspace() AzureMonitorWorkspaceSignalGroupPtrOutput {
+	return o.ApplyT(func(v *SignalGroup) *AzureMonitorWorkspaceSignalGroup {
+		if v == nil {
+			return nil
+		}
+		return v.AzureMonitorWorkspace
+	}).(AzureMonitorWorkspaceSignalGroupPtrOutput)
+}
+
+// Azure Resource Signal Group
+func (o SignalGroupPtrOutput) AzureResource() AzureResourceSignalGroupPtrOutput {
+	return o.ApplyT(func(v *SignalGroup) *AzureResourceSignalGroup {
+		if v == nil {
+			return nil
+		}
+		return v.AzureResource
+	}).(AzureResourceSignalGroupPtrOutput)
+}
+
+// Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity.
+func (o SignalGroupPtrOutput) Dependencies() DependenciesSignalGroupPtrOutput {
+	return o.ApplyT(func(v *SignalGroup) *DependenciesSignalGroup {
+		if v == nil {
+			return nil
+		}
+		return v.Dependencies
+	}).(DependenciesSignalGroupPtrOutput)
+}
+
+// Contains various signal groups that can be assigned to an entity
+type SignalGroupResponse struct {
+	// Log Analytics Signal Group
+	AzureLogAnalytics *LogAnalyticsSignalGroupResponse `pulumi:"azureLogAnalytics"`
+	// Azure Monitor Workspace Signal Group
+	AzureMonitorWorkspace *AzureMonitorWorkspaceSignalGroupResponse `pulumi:"azureMonitorWorkspace"`
+	// Azure Resource Signal Group
+	AzureResource *AzureResourceSignalGroupResponse `pulumi:"azureResource"`
+	// Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity.
+	Dependencies *DependenciesSignalGroupResponse `pulumi:"dependencies"`
+}
+
+// Defaults sets the appropriate defaults for SignalGroupResponse
+func (val *SignalGroupResponse) Defaults() *SignalGroupResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Dependencies = tmp.Dependencies.Defaults()
+
+	return &tmp
+}
+
+// Contains various signal groups that can be assigned to an entity
+type SignalGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (SignalGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignalGroupResponse)(nil)).Elem()
+}
+
+func (o SignalGroupResponseOutput) ToSignalGroupResponseOutput() SignalGroupResponseOutput {
+	return o
+}
+
+func (o SignalGroupResponseOutput) ToSignalGroupResponseOutputWithContext(ctx context.Context) SignalGroupResponseOutput {
+	return o
+}
+
+// Log Analytics Signal Group
+func (o SignalGroupResponseOutput) AzureLogAnalytics() LogAnalyticsSignalGroupResponsePtrOutput {
+	return o.ApplyT(func(v SignalGroupResponse) *LogAnalyticsSignalGroupResponse { return v.AzureLogAnalytics }).(LogAnalyticsSignalGroupResponsePtrOutput)
+}
+
+// Azure Monitor Workspace Signal Group
+func (o SignalGroupResponseOutput) AzureMonitorWorkspace() AzureMonitorWorkspaceSignalGroupResponsePtrOutput {
+	return o.ApplyT(func(v SignalGroupResponse) *AzureMonitorWorkspaceSignalGroupResponse { return v.AzureMonitorWorkspace }).(AzureMonitorWorkspaceSignalGroupResponsePtrOutput)
+}
+
+// Azure Resource Signal Group
+func (o SignalGroupResponseOutput) AzureResource() AzureResourceSignalGroupResponsePtrOutput {
+	return o.ApplyT(func(v SignalGroupResponse) *AzureResourceSignalGroupResponse { return v.AzureResource }).(AzureResourceSignalGroupResponsePtrOutput)
+}
+
+// Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity.
+func (o SignalGroupResponseOutput) Dependencies() DependenciesSignalGroupResponsePtrOutput {
+	return o.ApplyT(func(v SignalGroupResponse) *DependenciesSignalGroupResponse { return v.Dependencies }).(DependenciesSignalGroupResponsePtrOutput)
+}
+
+type SignalGroupResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SignalGroupResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignalGroupResponse)(nil)).Elem()
+}
+
+func (o SignalGroupResponsePtrOutput) ToSignalGroupResponsePtrOutput() SignalGroupResponsePtrOutput {
+	return o
+}
+
+func (o SignalGroupResponsePtrOutput) ToSignalGroupResponsePtrOutputWithContext(ctx context.Context) SignalGroupResponsePtrOutput {
+	return o
+}
+
+func (o SignalGroupResponsePtrOutput) Elem() SignalGroupResponseOutput {
+	return o.ApplyT(func(v *SignalGroupResponse) SignalGroupResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SignalGroupResponse
+		return ret
+	}).(SignalGroupResponseOutput)
+}
+
+// Log Analytics Signal Group
+func (o SignalGroupResponsePtrOutput) AzureLogAnalytics() LogAnalyticsSignalGroupResponsePtrOutput {
+	return o.ApplyT(func(v *SignalGroupResponse) *LogAnalyticsSignalGroupResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureLogAnalytics
+	}).(LogAnalyticsSignalGroupResponsePtrOutput)
+}
+
+// Azure Monitor Workspace Signal Group
+func (o SignalGroupResponsePtrOutput) AzureMonitorWorkspace() AzureMonitorWorkspaceSignalGroupResponsePtrOutput {
+	return o.ApplyT(func(v *SignalGroupResponse) *AzureMonitorWorkspaceSignalGroupResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureMonitorWorkspace
+	}).(AzureMonitorWorkspaceSignalGroupResponsePtrOutput)
+}
+
+// Azure Resource Signal Group
+func (o SignalGroupResponsePtrOutput) AzureResource() AzureResourceSignalGroupResponsePtrOutput {
+	return o.ApplyT(func(v *SignalGroupResponse) *AzureResourceSignalGroupResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureResource
+	}).(AzureResourceSignalGroupResponsePtrOutput)
+}
+
+// Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity.
+func (o SignalGroupResponsePtrOutput) Dependencies() DependenciesSignalGroupResponsePtrOutput {
+	return o.ApplyT(func(v *SignalGroupResponse) *DependenciesSignalGroupResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Dependencies
+	}).(DependenciesSignalGroupResponsePtrOutput)
 }
 
 // An SMS receiver.
@@ -22824,6 +30045,242 @@ func (o TcpExporterResponsePtrOutput) Url() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// Threshold-based evaluation rule for a signal definition
+type ThresholdRule struct {
+	// Operator how to compare the signal value with the threshold
+	Operator string `pulumi:"operator"`
+	// Threshold value
+	Threshold string `pulumi:"threshold"`
+}
+
+// ThresholdRuleInput is an input type that accepts ThresholdRuleArgs and ThresholdRuleOutput values.
+// You can construct a concrete instance of `ThresholdRuleInput` via:
+//
+//	ThresholdRuleArgs{...}
+type ThresholdRuleInput interface {
+	pulumi.Input
+
+	ToThresholdRuleOutput() ThresholdRuleOutput
+	ToThresholdRuleOutputWithContext(context.Context) ThresholdRuleOutput
+}
+
+// Threshold-based evaluation rule for a signal definition
+type ThresholdRuleArgs struct {
+	// Operator how to compare the signal value with the threshold
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Threshold value
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+}
+
+func (ThresholdRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdRule)(nil)).Elem()
+}
+
+func (i ThresholdRuleArgs) ToThresholdRuleOutput() ThresholdRuleOutput {
+	return i.ToThresholdRuleOutputWithContext(context.Background())
+}
+
+func (i ThresholdRuleArgs) ToThresholdRuleOutputWithContext(ctx context.Context) ThresholdRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThresholdRuleOutput)
+}
+
+func (i ThresholdRuleArgs) ToThresholdRulePtrOutput() ThresholdRulePtrOutput {
+	return i.ToThresholdRulePtrOutputWithContext(context.Background())
+}
+
+func (i ThresholdRuleArgs) ToThresholdRulePtrOutputWithContext(ctx context.Context) ThresholdRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThresholdRuleOutput).ToThresholdRulePtrOutputWithContext(ctx)
+}
+
+// ThresholdRulePtrInput is an input type that accepts ThresholdRuleArgs, ThresholdRulePtr and ThresholdRulePtrOutput values.
+// You can construct a concrete instance of `ThresholdRulePtrInput` via:
+//
+//	        ThresholdRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ThresholdRulePtrInput interface {
+	pulumi.Input
+
+	ToThresholdRulePtrOutput() ThresholdRulePtrOutput
+	ToThresholdRulePtrOutputWithContext(context.Context) ThresholdRulePtrOutput
+}
+
+type thresholdRulePtrType ThresholdRuleArgs
+
+func ThresholdRulePtr(v *ThresholdRuleArgs) ThresholdRulePtrInput {
+	return (*thresholdRulePtrType)(v)
+}
+
+func (*thresholdRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThresholdRule)(nil)).Elem()
+}
+
+func (i *thresholdRulePtrType) ToThresholdRulePtrOutput() ThresholdRulePtrOutput {
+	return i.ToThresholdRulePtrOutputWithContext(context.Background())
+}
+
+func (i *thresholdRulePtrType) ToThresholdRulePtrOutputWithContext(ctx context.Context) ThresholdRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThresholdRulePtrOutput)
+}
+
+// Threshold-based evaluation rule for a signal definition
+type ThresholdRuleOutput struct{ *pulumi.OutputState }
+
+func (ThresholdRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdRule)(nil)).Elem()
+}
+
+func (o ThresholdRuleOutput) ToThresholdRuleOutput() ThresholdRuleOutput {
+	return o
+}
+
+func (o ThresholdRuleOutput) ToThresholdRuleOutputWithContext(ctx context.Context) ThresholdRuleOutput {
+	return o
+}
+
+func (o ThresholdRuleOutput) ToThresholdRulePtrOutput() ThresholdRulePtrOutput {
+	return o.ToThresholdRulePtrOutputWithContext(context.Background())
+}
+
+func (o ThresholdRuleOutput) ToThresholdRulePtrOutputWithContext(ctx context.Context) ThresholdRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ThresholdRule) *ThresholdRule {
+		return &v
+	}).(ThresholdRulePtrOutput)
+}
+
+// Operator how to compare the signal value with the threshold
+func (o ThresholdRuleOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ThresholdRule) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Threshold value
+func (o ThresholdRuleOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v ThresholdRule) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+type ThresholdRulePtrOutput struct{ *pulumi.OutputState }
+
+func (ThresholdRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThresholdRule)(nil)).Elem()
+}
+
+func (o ThresholdRulePtrOutput) ToThresholdRulePtrOutput() ThresholdRulePtrOutput {
+	return o
+}
+
+func (o ThresholdRulePtrOutput) ToThresholdRulePtrOutputWithContext(ctx context.Context) ThresholdRulePtrOutput {
+	return o
+}
+
+func (o ThresholdRulePtrOutput) Elem() ThresholdRuleOutput {
+	return o.ApplyT(func(v *ThresholdRule) ThresholdRule {
+		if v != nil {
+			return *v
+		}
+		var ret ThresholdRule
+		return ret
+	}).(ThresholdRuleOutput)
+}
+
+// Operator how to compare the signal value with the threshold
+func (o ThresholdRulePtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ThresholdRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Threshold value
+func (o ThresholdRulePtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ThresholdRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Threshold-based evaluation rule for a signal definition
+type ThresholdRuleResponse struct {
+	// Operator how to compare the signal value with the threshold
+	Operator string `pulumi:"operator"`
+	// Threshold value
+	Threshold string `pulumi:"threshold"`
+}
+
+// Threshold-based evaluation rule for a signal definition
+type ThresholdRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (ThresholdRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdRuleResponse)(nil)).Elem()
+}
+
+func (o ThresholdRuleResponseOutput) ToThresholdRuleResponseOutput() ThresholdRuleResponseOutput {
+	return o
+}
+
+func (o ThresholdRuleResponseOutput) ToThresholdRuleResponseOutputWithContext(ctx context.Context) ThresholdRuleResponseOutput {
+	return o
+}
+
+// Operator how to compare the signal value with the threshold
+func (o ThresholdRuleResponseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ThresholdRuleResponse) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Threshold value
+func (o ThresholdRuleResponseOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v ThresholdRuleResponse) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+type ThresholdRuleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ThresholdRuleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThresholdRuleResponse)(nil)).Elem()
+}
+
+func (o ThresholdRuleResponsePtrOutput) ToThresholdRuleResponsePtrOutput() ThresholdRuleResponsePtrOutput {
+	return o
+}
+
+func (o ThresholdRuleResponsePtrOutput) ToThresholdRuleResponsePtrOutputWithContext(ctx context.Context) ThresholdRuleResponsePtrOutput {
+	return o
+}
+
+func (o ThresholdRuleResponsePtrOutput) Elem() ThresholdRuleResponseOutput {
+	return o.ApplyT(func(v *ThresholdRuleResponse) ThresholdRuleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ThresholdRuleResponse
+		return ret
+	}).(ThresholdRuleResponseOutput)
+}
+
+// Operator how to compare the signal value with the threshold
+func (o ThresholdRuleResponsePtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ThresholdRuleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Threshold value
+func (o ThresholdRuleResponsePtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ThresholdRuleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Threshold
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24723,6 +32180,10 @@ func init() {
 	pulumi.RegisterOutputType(ActionsPtrOutput{})
 	pulumi.RegisterOutputType(ActionsResponseOutput{})
 	pulumi.RegisterOutputType(ActionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AlertConfigurationOutput{})
+	pulumi.RegisterOutputType(AlertConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AlertConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(AlertConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(AlertRuleAllOfConditionOutput{})
 	pulumi.RegisterOutputType(AlertRuleAllOfConditionResponseOutput{})
 	pulumi.RegisterOutputType(AlertRuleAnyOfOrLeafConditionOutput{})
@@ -24733,6 +32194,9 @@ func init() {
 	pulumi.RegisterOutputType(AlertRuleLeafConditionArrayOutput{})
 	pulumi.RegisterOutputType(AlertRuleLeafConditionResponseOutput{})
 	pulumi.RegisterOutputType(AlertRuleLeafConditionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationInsightsTopologyDiscoveryRulePropertiesOutput{})
+	pulumi.RegisterOutputType(ApplicationInsightsTopologyDiscoveryRulePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationInsightsTopologyDiscoveryRulePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ArmRoleReceiverOutput{})
 	pulumi.RegisterOutputType(ArmRoleReceiverArrayOutput{})
 	pulumi.RegisterOutputType(ArmRoleReceiverResponseOutput{})
@@ -24768,10 +32232,18 @@ func init() {
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceLogsExporterResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput{})
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceResponseMetricsOutput{})
+	pulumi.RegisterOutputType(AzureMonitorWorkspaceSignalGroupOutput{})
+	pulumi.RegisterOutputType(AzureMonitorWorkspaceSignalGroupPtrOutput{})
+	pulumi.RegisterOutputType(AzureMonitorWorkspaceSignalGroupResponseOutput{})
+	pulumi.RegisterOutputType(AzureMonitorWorkspaceSignalGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationResponseOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureResourceSignalGroupOutput{})
+	pulumi.RegisterOutputType(AzureResourceSignalGroupPtrOutput{})
+	pulumi.RegisterOutputType(AzureResourceSignalGroupResponseOutput{})
+	pulumi.RegisterOutputType(AzureResourceSignalGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(BatchProcessorOutput{})
 	pulumi.RegisterOutputType(BatchProcessorPtrOutput{})
 	pulumi.RegisterOutputType(BatchProcessorResponseOutput{})
@@ -24841,6 +32313,10 @@ func init() {
 	pulumi.RegisterOutputType(DataSourcesSpecDataImportsPtrOutput{})
 	pulumi.RegisterOutputType(DataSourcesSpecResponseDataImportsOutput{})
 	pulumi.RegisterOutputType(DataSourcesSpecResponseDataImportsPtrOutput{})
+	pulumi.RegisterOutputType(DependenciesSignalGroupOutput{})
+	pulumi.RegisterOutputType(DependenciesSignalGroupPtrOutput{})
+	pulumi.RegisterOutputType(DependenciesSignalGroupResponseOutput{})
+	pulumi.RegisterOutputType(DependenciesSignalGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(DestinationsSpecAzureMonitorMetricsOutput{})
 	pulumi.RegisterOutputType(DestinationsSpecAzureMonitorMetricsPtrOutput{})
 	pulumi.RegisterOutputType(DestinationsSpecResponseAzureMonitorMetricsOutput{})
@@ -24851,6 +32327,11 @@ func init() {
 	pulumi.RegisterOutputType(DimensionArrayOutput{})
 	pulumi.RegisterOutputType(DimensionResponseOutput{})
 	pulumi.RegisterOutputType(DimensionResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiscoveryErrorResponseOutput{})
+	pulumi.RegisterOutputType(DynamicDetectionRuleOutput{})
+	pulumi.RegisterOutputType(DynamicDetectionRulePtrOutput{})
+	pulumi.RegisterOutputType(DynamicDetectionRuleResponseOutput{})
+	pulumi.RegisterOutputType(DynamicDetectionRuleResponsePtrOutput{})
 	pulumi.RegisterOutputType(DynamicMetricCriteriaOutput{})
 	pulumi.RegisterOutputType(DynamicMetricCriteriaResponseOutput{})
 	pulumi.RegisterOutputType(DynamicThresholdFailingPeriodsOutput{})
@@ -24863,6 +32344,20 @@ func init() {
 	pulumi.RegisterOutputType(EmailReceiverArrayOutput{})
 	pulumi.RegisterOutputType(EmailReceiverResponseOutput{})
 	pulumi.RegisterOutputType(EmailReceiverResponseArrayOutput{})
+	pulumi.RegisterOutputType(EntityAlertsOutput{})
+	pulumi.RegisterOutputType(EntityAlertsPtrOutput{})
+	pulumi.RegisterOutputType(EntityAlertsResponseOutput{})
+	pulumi.RegisterOutputType(EntityAlertsResponsePtrOutput{})
+	pulumi.RegisterOutputType(EntityCoordinatesOutput{})
+	pulumi.RegisterOutputType(EntityCoordinatesPtrOutput{})
+	pulumi.RegisterOutputType(EntityCoordinatesResponseOutput{})
+	pulumi.RegisterOutputType(EntityCoordinatesResponsePtrOutput{})
+	pulumi.RegisterOutputType(EntityPropertiesOutput{})
+	pulumi.RegisterOutputType(EntityPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(EntityPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EvaluationRuleOutput{})
+	pulumi.RegisterOutputType(EvaluationRulePtrOutput{})
+	pulumi.RegisterOutputType(EvaluationRuleResponseOutput{})
 	pulumi.RegisterOutputType(EventHubDestinationOutput{})
 	pulumi.RegisterOutputType(EventHubDestinationArrayOutput{})
 	pulumi.RegisterOutputType(EventHubDestinationResponseOutput{})
@@ -24883,6 +32378,13 @@ func init() {
 	pulumi.RegisterOutputType(ExtensionDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(ExtensionDataSourceResponseOutput{})
 	pulumi.RegisterOutputType(ExtensionDataSourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(HealthModelPropertiesOutput{})
+	pulumi.RegisterOutputType(HealthModelPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(HealthModelPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IconDefinitionOutput{})
+	pulumi.RegisterOutputType(IconDefinitionPtrOutput{})
+	pulumi.RegisterOutputType(IconDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(IconDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
@@ -24897,6 +32399,14 @@ func init() {
 	pulumi.RegisterOutputType(IncidentReceiverResponseArrayOutput{})
 	pulumi.RegisterOutputType(IncidentServiceConnectionOutput{})
 	pulumi.RegisterOutputType(IncidentServiceConnectionResponseOutput{})
+	pulumi.RegisterOutputType(InvestigationExecutionResponseOutput{})
+	pulumi.RegisterOutputType(InvestigationMetadataResponseOutput{})
+	pulumi.RegisterOutputType(InvestigationMetadataResponseArrayOutput{})
+	pulumi.RegisterOutputType(InvestigationScopeResponseOutput{})
+	pulumi.RegisterOutputType(InvestigationScopeResponseArrayOutput{})
+	pulumi.RegisterOutputType(IssuePropertiesOutput{})
+	pulumi.RegisterOutputType(IssuePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(IssuePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ItsmReceiverOutput{})
 	pulumi.RegisterOutputType(ItsmReceiverArrayOutput{})
 	pulumi.RegisterOutputType(ItsmReceiverResponseOutput{})
@@ -24919,6 +32429,13 @@ func init() {
 	pulumi.RegisterOutputType(LogAnalyticsDestinationArrayOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsDestinationResponseOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsDestinationResponseArrayOutput{})
+	pulumi.RegisterOutputType(LogAnalyticsQuerySignalDefinitionPropertiesOutput{})
+	pulumi.RegisterOutputType(LogAnalyticsQuerySignalDefinitionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(LogAnalyticsQuerySignalDefinitionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(LogAnalyticsSignalGroupOutput{})
+	pulumi.RegisterOutputType(LogAnalyticsSignalGroupPtrOutput{})
+	pulumi.RegisterOutputType(LogAnalyticsSignalGroupResponseOutput{})
+	pulumi.RegisterOutputType(LogAnalyticsSignalGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(LogFileSettingsResponseTextOutput{})
 	pulumi.RegisterOutputType(LogFileSettingsResponseTextPtrOutput{})
 	pulumi.RegisterOutputType(LogFileSettingsTextOutput{})
@@ -24939,6 +32456,9 @@ func init() {
 	pulumi.RegisterOutputType(LogicAppReceiverArrayOutput{})
 	pulumi.RegisterOutputType(LogicAppReceiverResponseOutput{})
 	pulumi.RegisterOutputType(LogicAppReceiverResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityAuthenticationSettingPropertiesOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityAuthenticationSettingPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityAuthenticationSettingPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
@@ -24969,6 +32489,10 @@ func init() {
 	pulumi.RegisterOutputType(MetricSettingsResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetricTriggerOutput{})
 	pulumi.RegisterOutputType(MetricTriggerResponseOutput{})
+	pulumi.RegisterOutputType(ModelDiscoverySettingsOutput{})
+	pulumi.RegisterOutputType(ModelDiscoverySettingsPtrOutput{})
+	pulumi.RegisterOutputType(ModelDiscoverySettingsResponseOutput{})
+	pulumi.RegisterOutputType(ModelDiscoverySettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(MonitoringAccountDestinationOutput{})
 	pulumi.RegisterOutputType(MonitoringAccountDestinationArrayOutput{})
 	pulumi.RegisterOutputType(MonitoringAccountDestinationResponseOutput{})
@@ -24981,6 +32505,7 @@ func init() {
 	pulumi.RegisterOutputType(NetworkingRouteArrayOutput{})
 	pulumi.RegisterOutputType(NetworkingRouteResponseOutput{})
 	pulumi.RegisterOutputType(NetworkingRouteResponseArrayOutput{})
+	pulumi.RegisterOutputType(OriginResponseOutput{})
 	pulumi.RegisterOutputType(OtlpReceiverOutput{})
 	pulumi.RegisterOutputType(OtlpReceiverPtrOutput{})
 	pulumi.RegisterOutputType(OtlpReceiverResponseOutput{})
@@ -25024,6 +32549,9 @@ func init() {
 	pulumi.RegisterOutputType(PrometheusForwarderDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(PrometheusForwarderDataSourceResponseOutput{})
 	pulumi.RegisterOutputType(PrometheusForwarderDataSourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrometheusMetricsSignalDefinitionPropertiesOutput{})
+	pulumi.RegisterOutputType(PrometheusMetricsSignalDefinitionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(PrometheusMetricsSignalDefinitionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ReceiverOutput{})
 	pulumi.RegisterOutputType(ReceiverArrayOutput{})
 	pulumi.RegisterOutputType(ReceiverResponseOutput{})
@@ -25040,10 +32568,23 @@ func init() {
 	pulumi.RegisterOutputType(RecurrentSchedulePtrOutput{})
 	pulumi.RegisterOutputType(RecurrentScheduleResponseOutput{})
 	pulumi.RegisterOutputType(RecurrentScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(RelatedAlertResponseOutput{})
+	pulumi.RegisterOutputType(RelatedAlertResponseArrayOutput{})
+	pulumi.RegisterOutputType(RelatedResourceResponseOutput{})
+	pulumi.RegisterOutputType(RelatedResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(RelationshipPropertiesOutput{})
+	pulumi.RegisterOutputType(RelationshipPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(RelationshipPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ResourceGraphQueryDiscoveryRulePropertiesOutput{})
+	pulumi.RegisterOutputType(ResourceGraphQueryDiscoveryRulePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ResourceGraphQueryDiscoveryRulePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ResourceMapOutput{})
 	pulumi.RegisterOutputType(ResourceMapArrayOutput{})
 	pulumi.RegisterOutputType(ResourceMapResponseOutput{})
 	pulumi.RegisterOutputType(ResourceMapResponseArrayOutput{})
+	pulumi.RegisterOutputType(ResourceMetricSignalDefinitionPropertiesOutput{})
+	pulumi.RegisterOutputType(ResourceMetricSignalDefinitionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ResourceMetricSignalDefinitionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyResponseOutput{})
@@ -25052,6 +32593,7 @@ func init() {
 	pulumi.RegisterOutputType(RuleResolveConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(RuleResolveConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(RuleResolveConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(RunParametersResponseOutput{})
 	pulumi.RegisterOutputType(ScaleActionOutput{})
 	pulumi.RegisterOutputType(ScaleActionResponseOutput{})
 	pulumi.RegisterOutputType(ScaleCapacityOutput{})
@@ -25077,6 +32619,14 @@ func init() {
 	pulumi.RegisterOutputType(ServiceOutput{})
 	pulumi.RegisterOutputType(ServicePtrOutput{})
 	pulumi.RegisterOutputType(ServiceResponseOutput{})
+	pulumi.RegisterOutputType(SignalAssignmentOutput{})
+	pulumi.RegisterOutputType(SignalAssignmentArrayOutput{})
+	pulumi.RegisterOutputType(SignalAssignmentResponseOutput{})
+	pulumi.RegisterOutputType(SignalAssignmentResponseArrayOutput{})
+	pulumi.RegisterOutputType(SignalGroupOutput{})
+	pulumi.RegisterOutputType(SignalGroupPtrOutput{})
+	pulumi.RegisterOutputType(SignalGroupResponseOutput{})
+	pulumi.RegisterOutputType(SignalGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(SmsReceiverOutput{})
 	pulumi.RegisterOutputType(SmsReceiverArrayOutput{})
 	pulumi.RegisterOutputType(SmsReceiverResponseOutput{})
@@ -25111,6 +32661,10 @@ func init() {
 	pulumi.RegisterOutputType(TcpExporterPtrOutput{})
 	pulumi.RegisterOutputType(TcpExporterResponseOutput{})
 	pulumi.RegisterOutputType(TcpExporterResponsePtrOutput{})
+	pulumi.RegisterOutputType(ThresholdRuleOutput{})
+	pulumi.RegisterOutputType(ThresholdRulePtrOutput{})
+	pulumi.RegisterOutputType(ThresholdRuleResponseOutput{})
+	pulumi.RegisterOutputType(ThresholdRuleResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimeWindowOutput{})
 	pulumi.RegisterOutputType(TimeWindowPtrOutput{})
 	pulumi.RegisterOutputType(TimeWindowResponseOutput{})

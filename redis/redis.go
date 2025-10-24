@@ -30,7 +30,7 @@ type Redis struct {
 	EnableNonSslPort pulumi.BoolPtrOutput `pulumi:"enableNonSslPort"`
 	// Redis host name.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
-	// The identity of the resource.
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// List of the Redis instances associated with the cache
 	Instances RedisInstanceDetailsResponseArrayOutput `pulumi:"instances"`
@@ -48,10 +48,10 @@ type Redis struct {
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Redis instance provisioning status.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
+	// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
-	RedisConfiguration RedisCommonPropertiesResponseRedisConfigurationPtrOutput `pulumi:"redisConfiguration"`
+	RedisConfiguration RedisCommonPropertiesRedisConfigurationResponsePtrOutput `pulumi:"redisConfiguration"`
 	// Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.
 	RedisVersion pulumi.StringPtrOutput `pulumi:"redisVersion"`
 	// The number of replicas to be created per primary.
@@ -68,6 +68,8 @@ type Redis struct {
 	StaticIP pulumi.StringPtrOutput `pulumi:"staticIP"`
 	// The full resource ID of a subnet in a virtual network to deploy the Redis cache in. Example format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
 	SubnetId pulumi.StringPtrOutput `pulumi:"subnetId"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A dictionary of tenant settings
@@ -78,7 +80,7 @@ type Redis struct {
 	UpdateChannel pulumi.StringPtrOutput `pulumi:"updateChannel"`
 	// Optional: Specifies how availability zones are allocated to the Redis cache. 'Automatic' enables zone redundancy and Azure will automatically select zones based on regional availability and capacity. 'UserDefined' will select availability zones passed in by you using the 'zones' parameter. 'NoZones' will produce a non-zonal cache. If 'zonalAllocationPolicy' is not passed, it will be set to 'UserDefined' when zones are passed in, otherwise, it will be set to 'Automatic' in regions where zones are supported and 'NoZones' in regions where zones are not supported.
 	ZonalAllocationPolicy pulumi.StringPtrOutput `pulumi:"zonalAllocationPolicy"`
-	// A list of availability zones denoting where the resource needs to come from.
+	// The availability zones.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
@@ -100,9 +102,6 @@ func NewRedis(ctx *pulumi.Context,
 	}
 	if args.EnableNonSslPort == nil {
 		args.EnableNonSslPort = pulumi.BoolPtr(false)
-	}
-	if args.PublicNetworkAccess == nil {
-		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -225,9 +224,9 @@ type redisArgs struct {
 	Location *string `pulumi:"location"`
 	// Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2')
 	MinimumTlsVersion *string `pulumi:"minimumTlsVersion"`
-	// The name of the Redis cache.
+	// The name of the RedisResource
 	Name *string `pulumi:"name"`
-	// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
+	// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
 	RedisConfiguration *RedisCommonPropertiesRedisConfiguration `pulumi:"redisConfiguration"`
@@ -271,9 +270,9 @@ type RedisArgs struct {
 	Location pulumi.StringPtrInput
 	// Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2')
 	MinimumTlsVersion pulumi.StringPtrInput
-	// The name of the Redis cache.
+	// The name of the RedisResource
 	Name pulumi.StringPtrInput
-	// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
+	// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method.
 	PublicNetworkAccess pulumi.StringPtrInput
 	// All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
 	RedisConfiguration RedisCommonPropertiesRedisConfigurationPtrInput
@@ -367,7 +366,7 @@ func (o RedisOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Redis) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
 }
 
-// The identity of the resource.
+// The managed service identities assigned to this resource.
 func (o RedisOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *Redis) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
@@ -412,14 +411,14 @@ func (o RedisOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Redis) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
+// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method.
 func (o RedisOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Redis) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
-func (o RedisOutput) RedisConfiguration() RedisCommonPropertiesResponseRedisConfigurationPtrOutput {
-	return o.ApplyT(func(v *Redis) RedisCommonPropertiesResponseRedisConfigurationPtrOutput { return v.RedisConfiguration }).(RedisCommonPropertiesResponseRedisConfigurationPtrOutput)
+func (o RedisOutput) RedisConfiguration() RedisCommonPropertiesRedisConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *Redis) RedisCommonPropertiesRedisConfigurationResponsePtrOutput { return v.RedisConfiguration }).(RedisCommonPropertiesRedisConfigurationResponsePtrOutput)
 }
 
 // Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.
@@ -462,6 +461,11 @@ func (o RedisOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Redis) pulumi.StringPtrOutput { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o RedisOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Redis) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o RedisOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Redis) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
@@ -487,7 +491,7 @@ func (o RedisOutput) ZonalAllocationPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Redis) pulumi.StringPtrOutput { return v.ZonalAllocationPolicy }).(pulumi.StringPtrOutput)
 }
 
-// A list of availability zones denoting where the resource needs to come from.
+// The availability zones.
 func (o RedisOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Redis) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }

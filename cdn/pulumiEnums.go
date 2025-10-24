@@ -514,12 +514,521 @@ func (in *afdCertificateTypePtr) ToAfdCertificateTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AfdCertificateTypePtrOutput)
 }
 
-// TLS protocol version that will be used for Https
+// cipher suite set type that will be used for Https
+type AfdCipherSuiteSetType string
+
+const (
+	AfdCipherSuiteSetTypeCustomized  = AfdCipherSuiteSetType("Customized")
+	AfdCipherSuiteSetType_TLS10_2019 = AfdCipherSuiteSetType("TLS10_2019")
+	AfdCipherSuiteSetType_TLS12_2022 = AfdCipherSuiteSetType("TLS12_2022")
+	AfdCipherSuiteSetType_TLS12_2023 = AfdCipherSuiteSetType("TLS12_2023")
+)
+
+func (AfdCipherSuiteSetType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AfdCipherSuiteSetType)(nil)).Elem()
+}
+
+func (e AfdCipherSuiteSetType) ToAfdCipherSuiteSetTypeOutput() AfdCipherSuiteSetTypeOutput {
+	return pulumi.ToOutput(e).(AfdCipherSuiteSetTypeOutput)
+}
+
+func (e AfdCipherSuiteSetType) ToAfdCipherSuiteSetTypeOutputWithContext(ctx context.Context) AfdCipherSuiteSetTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AfdCipherSuiteSetTypeOutput)
+}
+
+func (e AfdCipherSuiteSetType) ToAfdCipherSuiteSetTypePtrOutput() AfdCipherSuiteSetTypePtrOutput {
+	return e.ToAfdCipherSuiteSetTypePtrOutputWithContext(context.Background())
+}
+
+func (e AfdCipherSuiteSetType) ToAfdCipherSuiteSetTypePtrOutputWithContext(ctx context.Context) AfdCipherSuiteSetTypePtrOutput {
+	return AfdCipherSuiteSetType(e).ToAfdCipherSuiteSetTypeOutputWithContext(ctx).ToAfdCipherSuiteSetTypePtrOutputWithContext(ctx)
+}
+
+func (e AfdCipherSuiteSetType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AfdCipherSuiteSetType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AfdCipherSuiteSetType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AfdCipherSuiteSetType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AfdCipherSuiteSetTypeOutput struct{ *pulumi.OutputState }
+
+func (AfdCipherSuiteSetTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AfdCipherSuiteSetType)(nil)).Elem()
+}
+
+func (o AfdCipherSuiteSetTypeOutput) ToAfdCipherSuiteSetTypeOutput() AfdCipherSuiteSetTypeOutput {
+	return o
+}
+
+func (o AfdCipherSuiteSetTypeOutput) ToAfdCipherSuiteSetTypeOutputWithContext(ctx context.Context) AfdCipherSuiteSetTypeOutput {
+	return o
+}
+
+func (o AfdCipherSuiteSetTypeOutput) ToAfdCipherSuiteSetTypePtrOutput() AfdCipherSuiteSetTypePtrOutput {
+	return o.ToAfdCipherSuiteSetTypePtrOutputWithContext(context.Background())
+}
+
+func (o AfdCipherSuiteSetTypeOutput) ToAfdCipherSuiteSetTypePtrOutputWithContext(ctx context.Context) AfdCipherSuiteSetTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AfdCipherSuiteSetType) *AfdCipherSuiteSetType {
+		return &v
+	}).(AfdCipherSuiteSetTypePtrOutput)
+}
+
+func (o AfdCipherSuiteSetTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AfdCipherSuiteSetTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AfdCipherSuiteSetType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AfdCipherSuiteSetTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AfdCipherSuiteSetTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AfdCipherSuiteSetType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AfdCipherSuiteSetTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AfdCipherSuiteSetTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AfdCipherSuiteSetType)(nil)).Elem()
+}
+
+func (o AfdCipherSuiteSetTypePtrOutput) ToAfdCipherSuiteSetTypePtrOutput() AfdCipherSuiteSetTypePtrOutput {
+	return o
+}
+
+func (o AfdCipherSuiteSetTypePtrOutput) ToAfdCipherSuiteSetTypePtrOutputWithContext(ctx context.Context) AfdCipherSuiteSetTypePtrOutput {
+	return o
+}
+
+func (o AfdCipherSuiteSetTypePtrOutput) Elem() AfdCipherSuiteSetTypeOutput {
+	return o.ApplyT(func(v *AfdCipherSuiteSetType) AfdCipherSuiteSetType {
+		if v != nil {
+			return *v
+		}
+		var ret AfdCipherSuiteSetType
+		return ret
+	}).(AfdCipherSuiteSetTypeOutput)
+}
+
+func (o AfdCipherSuiteSetTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AfdCipherSuiteSetTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AfdCipherSuiteSetType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AfdCipherSuiteSetTypeInput is an input type that accepts values of the AfdCipherSuiteSetType enum
+// A concrete instance of `AfdCipherSuiteSetTypeInput` can be one of the following:
+//
+//	AfdCipherSuiteSetTypeCustomized
+//	AfdCipherSuiteSetType_TLS10_2019
+//	AfdCipherSuiteSetType_TLS12_2022
+//	AfdCipherSuiteSetType_TLS12_2023
+type AfdCipherSuiteSetTypeInput interface {
+	pulumi.Input
+
+	ToAfdCipherSuiteSetTypeOutput() AfdCipherSuiteSetTypeOutput
+	ToAfdCipherSuiteSetTypeOutputWithContext(context.Context) AfdCipherSuiteSetTypeOutput
+}
+
+var afdCipherSuiteSetTypePtrType = reflect.TypeOf((**AfdCipherSuiteSetType)(nil)).Elem()
+
+type AfdCipherSuiteSetTypePtrInput interface {
+	pulumi.Input
+
+	ToAfdCipherSuiteSetTypePtrOutput() AfdCipherSuiteSetTypePtrOutput
+	ToAfdCipherSuiteSetTypePtrOutputWithContext(context.Context) AfdCipherSuiteSetTypePtrOutput
+}
+
+type afdCipherSuiteSetTypePtr string
+
+func AfdCipherSuiteSetTypePtr(v string) AfdCipherSuiteSetTypePtrInput {
+	return (*afdCipherSuiteSetTypePtr)(&v)
+}
+
+func (*afdCipherSuiteSetTypePtr) ElementType() reflect.Type {
+	return afdCipherSuiteSetTypePtrType
+}
+
+func (in *afdCipherSuiteSetTypePtr) ToAfdCipherSuiteSetTypePtrOutput() AfdCipherSuiteSetTypePtrOutput {
+	return pulumi.ToOutput(in).(AfdCipherSuiteSetTypePtrOutput)
+}
+
+func (in *afdCipherSuiteSetTypePtr) ToAfdCipherSuiteSetTypePtrOutputWithContext(ctx context.Context) AfdCipherSuiteSetTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AfdCipherSuiteSetTypePtrOutput)
+}
+
+type AfdCustomizedCipherSuiteForTls12 string
+
+const (
+	AfdCustomizedCipherSuiteForTls12_ECDHE_RSA_AES128_GCM_SHA256 = AfdCustomizedCipherSuiteForTls12("ECDHE_RSA_AES128_GCM_SHA256")
+	AfdCustomizedCipherSuiteForTls12_ECDHE_RSA_AES256_GCM_SHA384 = AfdCustomizedCipherSuiteForTls12("ECDHE_RSA_AES256_GCM_SHA384")
+	AfdCustomizedCipherSuiteForTls12_DHE_RSA_AES256_GCM_SHA384   = AfdCustomizedCipherSuiteForTls12("DHE_RSA_AES256_GCM_SHA384")
+	AfdCustomizedCipherSuiteForTls12_DHE_RSA_AES128_GCM_SHA256   = AfdCustomizedCipherSuiteForTls12("DHE_RSA_AES128_GCM_SHA256")
+	AfdCustomizedCipherSuiteForTls12_ECDHE_RSA_AES128_SHA256     = AfdCustomizedCipherSuiteForTls12("ECDHE_RSA_AES128_SHA256")
+	AfdCustomizedCipherSuiteForTls12_ECDHE_RSA_AES256_SHA384     = AfdCustomizedCipherSuiteForTls12("ECDHE_RSA_AES256_SHA384")
+)
+
+func (AfdCustomizedCipherSuiteForTls12) ElementType() reflect.Type {
+	return reflect.TypeOf((*AfdCustomizedCipherSuiteForTls12)(nil)).Elem()
+}
+
+func (e AfdCustomizedCipherSuiteForTls12) ToAfdCustomizedCipherSuiteForTls12Output() AfdCustomizedCipherSuiteForTls12Output {
+	return pulumi.ToOutput(e).(AfdCustomizedCipherSuiteForTls12Output)
+}
+
+func (e AfdCustomizedCipherSuiteForTls12) ToAfdCustomizedCipherSuiteForTls12OutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls12Output {
+	return pulumi.ToOutputWithContext(ctx, e).(AfdCustomizedCipherSuiteForTls12Output)
+}
+
+func (e AfdCustomizedCipherSuiteForTls12) ToAfdCustomizedCipherSuiteForTls12PtrOutput() AfdCustomizedCipherSuiteForTls12PtrOutput {
+	return e.ToAfdCustomizedCipherSuiteForTls12PtrOutputWithContext(context.Background())
+}
+
+func (e AfdCustomizedCipherSuiteForTls12) ToAfdCustomizedCipherSuiteForTls12PtrOutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls12PtrOutput {
+	return AfdCustomizedCipherSuiteForTls12(e).ToAfdCustomizedCipherSuiteForTls12OutputWithContext(ctx).ToAfdCustomizedCipherSuiteForTls12PtrOutputWithContext(ctx)
+}
+
+func (e AfdCustomizedCipherSuiteForTls12) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AfdCustomizedCipherSuiteForTls12) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AfdCustomizedCipherSuiteForTls12) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AfdCustomizedCipherSuiteForTls12) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AfdCustomizedCipherSuiteForTls12Output struct{ *pulumi.OutputState }
+
+func (AfdCustomizedCipherSuiteForTls12Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*AfdCustomizedCipherSuiteForTls12)(nil)).Elem()
+}
+
+func (o AfdCustomizedCipherSuiteForTls12Output) ToAfdCustomizedCipherSuiteForTls12Output() AfdCustomizedCipherSuiteForTls12Output {
+	return o
+}
+
+func (o AfdCustomizedCipherSuiteForTls12Output) ToAfdCustomizedCipherSuiteForTls12OutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls12Output {
+	return o
+}
+
+func (o AfdCustomizedCipherSuiteForTls12Output) ToAfdCustomizedCipherSuiteForTls12PtrOutput() AfdCustomizedCipherSuiteForTls12PtrOutput {
+	return o.ToAfdCustomizedCipherSuiteForTls12PtrOutputWithContext(context.Background())
+}
+
+func (o AfdCustomizedCipherSuiteForTls12Output) ToAfdCustomizedCipherSuiteForTls12PtrOutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls12PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AfdCustomizedCipherSuiteForTls12) *AfdCustomizedCipherSuiteForTls12 {
+		return &v
+	}).(AfdCustomizedCipherSuiteForTls12PtrOutput)
+}
+
+func (o AfdCustomizedCipherSuiteForTls12Output) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AfdCustomizedCipherSuiteForTls12Output) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AfdCustomizedCipherSuiteForTls12) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AfdCustomizedCipherSuiteForTls12Output) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AfdCustomizedCipherSuiteForTls12Output) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AfdCustomizedCipherSuiteForTls12) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AfdCustomizedCipherSuiteForTls12PtrOutput struct{ *pulumi.OutputState }
+
+func (AfdCustomizedCipherSuiteForTls12PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AfdCustomizedCipherSuiteForTls12)(nil)).Elem()
+}
+
+func (o AfdCustomizedCipherSuiteForTls12PtrOutput) ToAfdCustomizedCipherSuiteForTls12PtrOutput() AfdCustomizedCipherSuiteForTls12PtrOutput {
+	return o
+}
+
+func (o AfdCustomizedCipherSuiteForTls12PtrOutput) ToAfdCustomizedCipherSuiteForTls12PtrOutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls12PtrOutput {
+	return o
+}
+
+func (o AfdCustomizedCipherSuiteForTls12PtrOutput) Elem() AfdCustomizedCipherSuiteForTls12Output {
+	return o.ApplyT(func(v *AfdCustomizedCipherSuiteForTls12) AfdCustomizedCipherSuiteForTls12 {
+		if v != nil {
+			return *v
+		}
+		var ret AfdCustomizedCipherSuiteForTls12
+		return ret
+	}).(AfdCustomizedCipherSuiteForTls12Output)
+}
+
+func (o AfdCustomizedCipherSuiteForTls12PtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AfdCustomizedCipherSuiteForTls12PtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AfdCustomizedCipherSuiteForTls12) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AfdCustomizedCipherSuiteForTls12Input is an input type that accepts values of the AfdCustomizedCipherSuiteForTls12 enum
+// A concrete instance of `AfdCustomizedCipherSuiteForTls12Input` can be one of the following:
+//
+//	AfdCustomizedCipherSuiteForTls12_ECDHE_RSA_AES128_GCM_SHA256
+//	AfdCustomizedCipherSuiteForTls12_ECDHE_RSA_AES256_GCM_SHA384
+//	AfdCustomizedCipherSuiteForTls12_DHE_RSA_AES256_GCM_SHA384
+//	AfdCustomizedCipherSuiteForTls12_DHE_RSA_AES128_GCM_SHA256
+//	AfdCustomizedCipherSuiteForTls12_ECDHE_RSA_AES128_SHA256
+//	AfdCustomizedCipherSuiteForTls12_ECDHE_RSA_AES256_SHA384
+type AfdCustomizedCipherSuiteForTls12Input interface {
+	pulumi.Input
+
+	ToAfdCustomizedCipherSuiteForTls12Output() AfdCustomizedCipherSuiteForTls12Output
+	ToAfdCustomizedCipherSuiteForTls12OutputWithContext(context.Context) AfdCustomizedCipherSuiteForTls12Output
+}
+
+var afdCustomizedCipherSuiteForTls12PtrType = reflect.TypeOf((**AfdCustomizedCipherSuiteForTls12)(nil)).Elem()
+
+type AfdCustomizedCipherSuiteForTls12PtrInput interface {
+	pulumi.Input
+
+	ToAfdCustomizedCipherSuiteForTls12PtrOutput() AfdCustomizedCipherSuiteForTls12PtrOutput
+	ToAfdCustomizedCipherSuiteForTls12PtrOutputWithContext(context.Context) AfdCustomizedCipherSuiteForTls12PtrOutput
+}
+
+type afdCustomizedCipherSuiteForTls12Ptr string
+
+func AfdCustomizedCipherSuiteForTls12Ptr(v string) AfdCustomizedCipherSuiteForTls12PtrInput {
+	return (*afdCustomizedCipherSuiteForTls12Ptr)(&v)
+}
+
+func (*afdCustomizedCipherSuiteForTls12Ptr) ElementType() reflect.Type {
+	return afdCustomizedCipherSuiteForTls12PtrType
+}
+
+func (in *afdCustomizedCipherSuiteForTls12Ptr) ToAfdCustomizedCipherSuiteForTls12PtrOutput() AfdCustomizedCipherSuiteForTls12PtrOutput {
+	return pulumi.ToOutput(in).(AfdCustomizedCipherSuiteForTls12PtrOutput)
+}
+
+func (in *afdCustomizedCipherSuiteForTls12Ptr) ToAfdCustomizedCipherSuiteForTls12PtrOutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls12PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AfdCustomizedCipherSuiteForTls12PtrOutput)
+}
+
+type AfdCustomizedCipherSuiteForTls13 string
+
+const (
+	AfdCustomizedCipherSuiteForTls13_TLS_AES_128_GCM_SHA256 = AfdCustomizedCipherSuiteForTls13("TLS_AES_128_GCM_SHA256")
+	AfdCustomizedCipherSuiteForTls13_TLS_AES_256_GCM_SHA384 = AfdCustomizedCipherSuiteForTls13("TLS_AES_256_GCM_SHA384")
+)
+
+func (AfdCustomizedCipherSuiteForTls13) ElementType() reflect.Type {
+	return reflect.TypeOf((*AfdCustomizedCipherSuiteForTls13)(nil)).Elem()
+}
+
+func (e AfdCustomizedCipherSuiteForTls13) ToAfdCustomizedCipherSuiteForTls13Output() AfdCustomizedCipherSuiteForTls13Output {
+	return pulumi.ToOutput(e).(AfdCustomizedCipherSuiteForTls13Output)
+}
+
+func (e AfdCustomizedCipherSuiteForTls13) ToAfdCustomizedCipherSuiteForTls13OutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls13Output {
+	return pulumi.ToOutputWithContext(ctx, e).(AfdCustomizedCipherSuiteForTls13Output)
+}
+
+func (e AfdCustomizedCipherSuiteForTls13) ToAfdCustomizedCipherSuiteForTls13PtrOutput() AfdCustomizedCipherSuiteForTls13PtrOutput {
+	return e.ToAfdCustomizedCipherSuiteForTls13PtrOutputWithContext(context.Background())
+}
+
+func (e AfdCustomizedCipherSuiteForTls13) ToAfdCustomizedCipherSuiteForTls13PtrOutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls13PtrOutput {
+	return AfdCustomizedCipherSuiteForTls13(e).ToAfdCustomizedCipherSuiteForTls13OutputWithContext(ctx).ToAfdCustomizedCipherSuiteForTls13PtrOutputWithContext(ctx)
+}
+
+func (e AfdCustomizedCipherSuiteForTls13) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AfdCustomizedCipherSuiteForTls13) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AfdCustomizedCipherSuiteForTls13) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AfdCustomizedCipherSuiteForTls13) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AfdCustomizedCipherSuiteForTls13Output struct{ *pulumi.OutputState }
+
+func (AfdCustomizedCipherSuiteForTls13Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*AfdCustomizedCipherSuiteForTls13)(nil)).Elem()
+}
+
+func (o AfdCustomizedCipherSuiteForTls13Output) ToAfdCustomizedCipherSuiteForTls13Output() AfdCustomizedCipherSuiteForTls13Output {
+	return o
+}
+
+func (o AfdCustomizedCipherSuiteForTls13Output) ToAfdCustomizedCipherSuiteForTls13OutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls13Output {
+	return o
+}
+
+func (o AfdCustomizedCipherSuiteForTls13Output) ToAfdCustomizedCipherSuiteForTls13PtrOutput() AfdCustomizedCipherSuiteForTls13PtrOutput {
+	return o.ToAfdCustomizedCipherSuiteForTls13PtrOutputWithContext(context.Background())
+}
+
+func (o AfdCustomizedCipherSuiteForTls13Output) ToAfdCustomizedCipherSuiteForTls13PtrOutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls13PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AfdCustomizedCipherSuiteForTls13) *AfdCustomizedCipherSuiteForTls13 {
+		return &v
+	}).(AfdCustomizedCipherSuiteForTls13PtrOutput)
+}
+
+func (o AfdCustomizedCipherSuiteForTls13Output) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AfdCustomizedCipherSuiteForTls13Output) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AfdCustomizedCipherSuiteForTls13) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AfdCustomizedCipherSuiteForTls13Output) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AfdCustomizedCipherSuiteForTls13Output) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AfdCustomizedCipherSuiteForTls13) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AfdCustomizedCipherSuiteForTls13PtrOutput struct{ *pulumi.OutputState }
+
+func (AfdCustomizedCipherSuiteForTls13PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AfdCustomizedCipherSuiteForTls13)(nil)).Elem()
+}
+
+func (o AfdCustomizedCipherSuiteForTls13PtrOutput) ToAfdCustomizedCipherSuiteForTls13PtrOutput() AfdCustomizedCipherSuiteForTls13PtrOutput {
+	return o
+}
+
+func (o AfdCustomizedCipherSuiteForTls13PtrOutput) ToAfdCustomizedCipherSuiteForTls13PtrOutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls13PtrOutput {
+	return o
+}
+
+func (o AfdCustomizedCipherSuiteForTls13PtrOutput) Elem() AfdCustomizedCipherSuiteForTls13Output {
+	return o.ApplyT(func(v *AfdCustomizedCipherSuiteForTls13) AfdCustomizedCipherSuiteForTls13 {
+		if v != nil {
+			return *v
+		}
+		var ret AfdCustomizedCipherSuiteForTls13
+		return ret
+	}).(AfdCustomizedCipherSuiteForTls13Output)
+}
+
+func (o AfdCustomizedCipherSuiteForTls13PtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AfdCustomizedCipherSuiteForTls13PtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AfdCustomizedCipherSuiteForTls13) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AfdCustomizedCipherSuiteForTls13Input is an input type that accepts values of the AfdCustomizedCipherSuiteForTls13 enum
+// A concrete instance of `AfdCustomizedCipherSuiteForTls13Input` can be one of the following:
+//
+//	AfdCustomizedCipherSuiteForTls13_TLS_AES_128_GCM_SHA256
+//	AfdCustomizedCipherSuiteForTls13_TLS_AES_256_GCM_SHA384
+type AfdCustomizedCipherSuiteForTls13Input interface {
+	pulumi.Input
+
+	ToAfdCustomizedCipherSuiteForTls13Output() AfdCustomizedCipherSuiteForTls13Output
+	ToAfdCustomizedCipherSuiteForTls13OutputWithContext(context.Context) AfdCustomizedCipherSuiteForTls13Output
+}
+
+var afdCustomizedCipherSuiteForTls13PtrType = reflect.TypeOf((**AfdCustomizedCipherSuiteForTls13)(nil)).Elem()
+
+type AfdCustomizedCipherSuiteForTls13PtrInput interface {
+	pulumi.Input
+
+	ToAfdCustomizedCipherSuiteForTls13PtrOutput() AfdCustomizedCipherSuiteForTls13PtrOutput
+	ToAfdCustomizedCipherSuiteForTls13PtrOutputWithContext(context.Context) AfdCustomizedCipherSuiteForTls13PtrOutput
+}
+
+type afdCustomizedCipherSuiteForTls13Ptr string
+
+func AfdCustomizedCipherSuiteForTls13Ptr(v string) AfdCustomizedCipherSuiteForTls13PtrInput {
+	return (*afdCustomizedCipherSuiteForTls13Ptr)(&v)
+}
+
+func (*afdCustomizedCipherSuiteForTls13Ptr) ElementType() reflect.Type {
+	return afdCustomizedCipherSuiteForTls13PtrType
+}
+
+func (in *afdCustomizedCipherSuiteForTls13Ptr) ToAfdCustomizedCipherSuiteForTls13PtrOutput() AfdCustomizedCipherSuiteForTls13PtrOutput {
+	return pulumi.ToOutput(in).(AfdCustomizedCipherSuiteForTls13PtrOutput)
+}
+
+func (in *afdCustomizedCipherSuiteForTls13Ptr) ToAfdCustomizedCipherSuiteForTls13PtrOutputWithContext(ctx context.Context) AfdCustomizedCipherSuiteForTls13PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AfdCustomizedCipherSuiteForTls13PtrOutput)
+}
+
+// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
 type AfdMinimumTlsVersion string
 
 const (
 	AfdMinimumTlsVersionTLS10 = AfdMinimumTlsVersion("TLS10")
 	AfdMinimumTlsVersionTLS12 = AfdMinimumTlsVersion("TLS12")
+	AfdMinimumTlsVersionTLS13 = AfdMinimumTlsVersion("TLS13")
 )
 
 func (AfdMinimumTlsVersion) ElementType() reflect.Type {
@@ -646,6 +1155,7 @@ func (o AfdMinimumTlsVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.
 //
 //	AfdMinimumTlsVersionTLS10
 //	AfdMinimumTlsVersionTLS12
+//	AfdMinimumTlsVersionTLS13
 type AfdMinimumTlsVersionInput interface {
 	pulumi.Input
 
@@ -848,6 +1358,172 @@ func (in *afdQueryStringCachingBehaviorPtr) ToAfdQueryStringCachingBehaviorPtrOu
 
 func (in *afdQueryStringCachingBehaviorPtr) ToAfdQueryStringCachingBehaviorPtrOutputWithContext(ctx context.Context) AfdQueryStringCachingBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AfdQueryStringCachingBehaviorPtrOutput)
+}
+
+// The type of the path.
+type AgentPathType string
+
+const (
+	AgentPathTypeChat      = AgentPathType("Chat")
+	AgentPathTypeMcpServer = AgentPathType("McpServer")
+)
+
+func (AgentPathType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentPathType)(nil)).Elem()
+}
+
+func (e AgentPathType) ToAgentPathTypeOutput() AgentPathTypeOutput {
+	return pulumi.ToOutput(e).(AgentPathTypeOutput)
+}
+
+func (e AgentPathType) ToAgentPathTypeOutputWithContext(ctx context.Context) AgentPathTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AgentPathTypeOutput)
+}
+
+func (e AgentPathType) ToAgentPathTypePtrOutput() AgentPathTypePtrOutput {
+	return e.ToAgentPathTypePtrOutputWithContext(context.Background())
+}
+
+func (e AgentPathType) ToAgentPathTypePtrOutputWithContext(ctx context.Context) AgentPathTypePtrOutput {
+	return AgentPathType(e).ToAgentPathTypeOutputWithContext(ctx).ToAgentPathTypePtrOutputWithContext(ctx)
+}
+
+func (e AgentPathType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AgentPathType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AgentPathType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AgentPathType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AgentPathTypeOutput struct{ *pulumi.OutputState }
+
+func (AgentPathTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentPathType)(nil)).Elem()
+}
+
+func (o AgentPathTypeOutput) ToAgentPathTypeOutput() AgentPathTypeOutput {
+	return o
+}
+
+func (o AgentPathTypeOutput) ToAgentPathTypeOutputWithContext(ctx context.Context) AgentPathTypeOutput {
+	return o
+}
+
+func (o AgentPathTypeOutput) ToAgentPathTypePtrOutput() AgentPathTypePtrOutput {
+	return o.ToAgentPathTypePtrOutputWithContext(context.Background())
+}
+
+func (o AgentPathTypeOutput) ToAgentPathTypePtrOutputWithContext(ctx context.Context) AgentPathTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentPathType) *AgentPathType {
+		return &v
+	}).(AgentPathTypePtrOutput)
+}
+
+func (o AgentPathTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AgentPathTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AgentPathType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AgentPathTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AgentPathTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AgentPathType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentPathTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AgentPathTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentPathType)(nil)).Elem()
+}
+
+func (o AgentPathTypePtrOutput) ToAgentPathTypePtrOutput() AgentPathTypePtrOutput {
+	return o
+}
+
+func (o AgentPathTypePtrOutput) ToAgentPathTypePtrOutputWithContext(ctx context.Context) AgentPathTypePtrOutput {
+	return o
+}
+
+func (o AgentPathTypePtrOutput) Elem() AgentPathTypeOutput {
+	return o.ApplyT(func(v *AgentPathType) AgentPathType {
+		if v != nil {
+			return *v
+		}
+		var ret AgentPathType
+		return ret
+	}).(AgentPathTypeOutput)
+}
+
+func (o AgentPathTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AgentPathTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AgentPathType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AgentPathTypeInput is an input type that accepts values of the AgentPathType enum
+// A concrete instance of `AgentPathTypeInput` can be one of the following:
+//
+//	AgentPathTypeChat
+//	AgentPathTypeMcpServer
+type AgentPathTypeInput interface {
+	pulumi.Input
+
+	ToAgentPathTypeOutput() AgentPathTypeOutput
+	ToAgentPathTypeOutputWithContext(context.Context) AgentPathTypeOutput
+}
+
+var agentPathTypePtrType = reflect.TypeOf((**AgentPathType)(nil)).Elem()
+
+type AgentPathTypePtrInput interface {
+	pulumi.Input
+
+	ToAgentPathTypePtrOutput() AgentPathTypePtrOutput
+	ToAgentPathTypePtrOutputWithContext(context.Context) AgentPathTypePtrOutput
+}
+
+type agentPathTypePtr string
+
+func AgentPathTypePtr(v string) AgentPathTypePtrInput {
+	return (*agentPathTypePtr)(&v)
+}
+
+func (*agentPathTypePtr) ElementType() reflect.Type {
+	return agentPathTypePtrType
+}
+
+func (in *agentPathTypePtr) ToAgentPathTypePtrOutput() AgentPathTypePtrOutput {
+	return pulumi.ToOutput(in).(AgentPathTypePtrOutput)
+}
+
+func (in *agentPathTypePtr) ToAgentPathTypePtrOutputWithContext(ctx context.Context) AgentPathTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AgentPathTypePtrOutput)
 }
 
 // Algorithm to use for URL signing
@@ -4106,6 +4782,344 @@ func (in *keyVaultSigningKeyParametersTypePtr) ToKeyVaultSigningKeyParametersTyp
 	return pulumi.ToOutputWithContext(ctx, in).(KeyVaultSigningKeyParametersTypePtrOutput)
 }
 
+// Format or origin of the knowledge source.
+type KnowledgeSourceType string
+
+const (
+	KnowledgeSourceTypeSchemaOrgMarkup = KnowledgeSourceType("SchemaOrgMarkup")
+	KnowledgeSourceTypeRssFeeds        = KnowledgeSourceType("RssFeeds")
+	KnowledgeSourceTypeSitemap         = KnowledgeSourceType("Sitemap")
+)
+
+func (KnowledgeSourceType) ElementType() reflect.Type {
+	return reflect.TypeOf((*KnowledgeSourceType)(nil)).Elem()
+}
+
+func (e KnowledgeSourceType) ToKnowledgeSourceTypeOutput() KnowledgeSourceTypeOutput {
+	return pulumi.ToOutput(e).(KnowledgeSourceTypeOutput)
+}
+
+func (e KnowledgeSourceType) ToKnowledgeSourceTypeOutputWithContext(ctx context.Context) KnowledgeSourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(KnowledgeSourceTypeOutput)
+}
+
+func (e KnowledgeSourceType) ToKnowledgeSourceTypePtrOutput() KnowledgeSourceTypePtrOutput {
+	return e.ToKnowledgeSourceTypePtrOutputWithContext(context.Background())
+}
+
+func (e KnowledgeSourceType) ToKnowledgeSourceTypePtrOutputWithContext(ctx context.Context) KnowledgeSourceTypePtrOutput {
+	return KnowledgeSourceType(e).ToKnowledgeSourceTypeOutputWithContext(ctx).ToKnowledgeSourceTypePtrOutputWithContext(ctx)
+}
+
+func (e KnowledgeSourceType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KnowledgeSourceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KnowledgeSourceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e KnowledgeSourceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type KnowledgeSourceTypeOutput struct{ *pulumi.OutputState }
+
+func (KnowledgeSourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KnowledgeSourceType)(nil)).Elem()
+}
+
+func (o KnowledgeSourceTypeOutput) ToKnowledgeSourceTypeOutput() KnowledgeSourceTypeOutput {
+	return o
+}
+
+func (o KnowledgeSourceTypeOutput) ToKnowledgeSourceTypeOutputWithContext(ctx context.Context) KnowledgeSourceTypeOutput {
+	return o
+}
+
+func (o KnowledgeSourceTypeOutput) ToKnowledgeSourceTypePtrOutput() KnowledgeSourceTypePtrOutput {
+	return o.ToKnowledgeSourceTypePtrOutputWithContext(context.Background())
+}
+
+func (o KnowledgeSourceTypeOutput) ToKnowledgeSourceTypePtrOutputWithContext(ctx context.Context) KnowledgeSourceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KnowledgeSourceType) *KnowledgeSourceType {
+		return &v
+	}).(KnowledgeSourceTypePtrOutput)
+}
+
+func (o KnowledgeSourceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o KnowledgeSourceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KnowledgeSourceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o KnowledgeSourceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KnowledgeSourceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KnowledgeSourceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type KnowledgeSourceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (KnowledgeSourceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KnowledgeSourceType)(nil)).Elem()
+}
+
+func (o KnowledgeSourceTypePtrOutput) ToKnowledgeSourceTypePtrOutput() KnowledgeSourceTypePtrOutput {
+	return o
+}
+
+func (o KnowledgeSourceTypePtrOutput) ToKnowledgeSourceTypePtrOutputWithContext(ctx context.Context) KnowledgeSourceTypePtrOutput {
+	return o
+}
+
+func (o KnowledgeSourceTypePtrOutput) Elem() KnowledgeSourceTypeOutput {
+	return o.ApplyT(func(v *KnowledgeSourceType) KnowledgeSourceType {
+		if v != nil {
+			return *v
+		}
+		var ret KnowledgeSourceType
+		return ret
+	}).(KnowledgeSourceTypeOutput)
+}
+
+func (o KnowledgeSourceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KnowledgeSourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *KnowledgeSourceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// KnowledgeSourceTypeInput is an input type that accepts values of the KnowledgeSourceType enum
+// A concrete instance of `KnowledgeSourceTypeInput` can be one of the following:
+//
+//	KnowledgeSourceTypeSchemaOrgMarkup
+//	KnowledgeSourceTypeRssFeeds
+//	KnowledgeSourceTypeSitemap
+type KnowledgeSourceTypeInput interface {
+	pulumi.Input
+
+	ToKnowledgeSourceTypeOutput() KnowledgeSourceTypeOutput
+	ToKnowledgeSourceTypeOutputWithContext(context.Context) KnowledgeSourceTypeOutput
+}
+
+var knowledgeSourceTypePtrType = reflect.TypeOf((**KnowledgeSourceType)(nil)).Elem()
+
+type KnowledgeSourceTypePtrInput interface {
+	pulumi.Input
+
+	ToKnowledgeSourceTypePtrOutput() KnowledgeSourceTypePtrOutput
+	ToKnowledgeSourceTypePtrOutputWithContext(context.Context) KnowledgeSourceTypePtrOutput
+}
+
+type knowledgeSourceTypePtr string
+
+func KnowledgeSourceTypePtr(v string) KnowledgeSourceTypePtrInput {
+	return (*knowledgeSourceTypePtr)(&v)
+}
+
+func (*knowledgeSourceTypePtr) ElementType() reflect.Type {
+	return knowledgeSourceTypePtrType
+}
+
+func (in *knowledgeSourceTypePtr) ToKnowledgeSourceTypePtrOutput() KnowledgeSourceTypePtrOutput {
+	return pulumi.ToOutput(in).(KnowledgeSourceTypePtrOutput)
+}
+
+func (in *knowledgeSourceTypePtr) ToKnowledgeSourceTypePtrOutputWithContext(ctx context.Context) KnowledgeSourceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(KnowledgeSourceTypePtrOutput)
+}
+
+// Specifies the units of time for scheduling update intervals for the knowledge source.
+type KnowledgeSourceUpdateFrequency string
+
+const (
+	KnowledgeSourceUpdateFrequencyEverySixHours = KnowledgeSourceUpdateFrequency("EverySixHours")
+	KnowledgeSourceUpdateFrequencyDaily         = KnowledgeSourceUpdateFrequency("Daily")
+	KnowledgeSourceUpdateFrequencyWeekly        = KnowledgeSourceUpdateFrequency("Weekly")
+	KnowledgeSourceUpdateFrequencyMonthly       = KnowledgeSourceUpdateFrequency("Monthly")
+)
+
+func (KnowledgeSourceUpdateFrequency) ElementType() reflect.Type {
+	return reflect.TypeOf((*KnowledgeSourceUpdateFrequency)(nil)).Elem()
+}
+
+func (e KnowledgeSourceUpdateFrequency) ToKnowledgeSourceUpdateFrequencyOutput() KnowledgeSourceUpdateFrequencyOutput {
+	return pulumi.ToOutput(e).(KnowledgeSourceUpdateFrequencyOutput)
+}
+
+func (e KnowledgeSourceUpdateFrequency) ToKnowledgeSourceUpdateFrequencyOutputWithContext(ctx context.Context) KnowledgeSourceUpdateFrequencyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(KnowledgeSourceUpdateFrequencyOutput)
+}
+
+func (e KnowledgeSourceUpdateFrequency) ToKnowledgeSourceUpdateFrequencyPtrOutput() KnowledgeSourceUpdateFrequencyPtrOutput {
+	return e.ToKnowledgeSourceUpdateFrequencyPtrOutputWithContext(context.Background())
+}
+
+func (e KnowledgeSourceUpdateFrequency) ToKnowledgeSourceUpdateFrequencyPtrOutputWithContext(ctx context.Context) KnowledgeSourceUpdateFrequencyPtrOutput {
+	return KnowledgeSourceUpdateFrequency(e).ToKnowledgeSourceUpdateFrequencyOutputWithContext(ctx).ToKnowledgeSourceUpdateFrequencyPtrOutputWithContext(ctx)
+}
+
+func (e KnowledgeSourceUpdateFrequency) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KnowledgeSourceUpdateFrequency) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KnowledgeSourceUpdateFrequency) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e KnowledgeSourceUpdateFrequency) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type KnowledgeSourceUpdateFrequencyOutput struct{ *pulumi.OutputState }
+
+func (KnowledgeSourceUpdateFrequencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KnowledgeSourceUpdateFrequency)(nil)).Elem()
+}
+
+func (o KnowledgeSourceUpdateFrequencyOutput) ToKnowledgeSourceUpdateFrequencyOutput() KnowledgeSourceUpdateFrequencyOutput {
+	return o
+}
+
+func (o KnowledgeSourceUpdateFrequencyOutput) ToKnowledgeSourceUpdateFrequencyOutputWithContext(ctx context.Context) KnowledgeSourceUpdateFrequencyOutput {
+	return o
+}
+
+func (o KnowledgeSourceUpdateFrequencyOutput) ToKnowledgeSourceUpdateFrequencyPtrOutput() KnowledgeSourceUpdateFrequencyPtrOutput {
+	return o.ToKnowledgeSourceUpdateFrequencyPtrOutputWithContext(context.Background())
+}
+
+func (o KnowledgeSourceUpdateFrequencyOutput) ToKnowledgeSourceUpdateFrequencyPtrOutputWithContext(ctx context.Context) KnowledgeSourceUpdateFrequencyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KnowledgeSourceUpdateFrequency) *KnowledgeSourceUpdateFrequency {
+		return &v
+	}).(KnowledgeSourceUpdateFrequencyPtrOutput)
+}
+
+func (o KnowledgeSourceUpdateFrequencyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o KnowledgeSourceUpdateFrequencyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KnowledgeSourceUpdateFrequency) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o KnowledgeSourceUpdateFrequencyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KnowledgeSourceUpdateFrequencyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KnowledgeSourceUpdateFrequency) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type KnowledgeSourceUpdateFrequencyPtrOutput struct{ *pulumi.OutputState }
+
+func (KnowledgeSourceUpdateFrequencyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KnowledgeSourceUpdateFrequency)(nil)).Elem()
+}
+
+func (o KnowledgeSourceUpdateFrequencyPtrOutput) ToKnowledgeSourceUpdateFrequencyPtrOutput() KnowledgeSourceUpdateFrequencyPtrOutput {
+	return o
+}
+
+func (o KnowledgeSourceUpdateFrequencyPtrOutput) ToKnowledgeSourceUpdateFrequencyPtrOutputWithContext(ctx context.Context) KnowledgeSourceUpdateFrequencyPtrOutput {
+	return o
+}
+
+func (o KnowledgeSourceUpdateFrequencyPtrOutput) Elem() KnowledgeSourceUpdateFrequencyOutput {
+	return o.ApplyT(func(v *KnowledgeSourceUpdateFrequency) KnowledgeSourceUpdateFrequency {
+		if v != nil {
+			return *v
+		}
+		var ret KnowledgeSourceUpdateFrequency
+		return ret
+	}).(KnowledgeSourceUpdateFrequencyOutput)
+}
+
+func (o KnowledgeSourceUpdateFrequencyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KnowledgeSourceUpdateFrequencyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *KnowledgeSourceUpdateFrequency) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// KnowledgeSourceUpdateFrequencyInput is an input type that accepts values of the KnowledgeSourceUpdateFrequency enum
+// A concrete instance of `KnowledgeSourceUpdateFrequencyInput` can be one of the following:
+//
+//	KnowledgeSourceUpdateFrequencyEverySixHours
+//	KnowledgeSourceUpdateFrequencyDaily
+//	KnowledgeSourceUpdateFrequencyWeekly
+//	KnowledgeSourceUpdateFrequencyMonthly
+type KnowledgeSourceUpdateFrequencyInput interface {
+	pulumi.Input
+
+	ToKnowledgeSourceUpdateFrequencyOutput() KnowledgeSourceUpdateFrequencyOutput
+	ToKnowledgeSourceUpdateFrequencyOutputWithContext(context.Context) KnowledgeSourceUpdateFrequencyOutput
+}
+
+var knowledgeSourceUpdateFrequencyPtrType = reflect.TypeOf((**KnowledgeSourceUpdateFrequency)(nil)).Elem()
+
+type KnowledgeSourceUpdateFrequencyPtrInput interface {
+	pulumi.Input
+
+	ToKnowledgeSourceUpdateFrequencyPtrOutput() KnowledgeSourceUpdateFrequencyPtrOutput
+	ToKnowledgeSourceUpdateFrequencyPtrOutputWithContext(context.Context) KnowledgeSourceUpdateFrequencyPtrOutput
+}
+
+type knowledgeSourceUpdateFrequencyPtr string
+
+func KnowledgeSourceUpdateFrequencyPtr(v string) KnowledgeSourceUpdateFrequencyPtrInput {
+	return (*knowledgeSourceUpdateFrequencyPtr)(&v)
+}
+
+func (*knowledgeSourceUpdateFrequencyPtr) ElementType() reflect.Type {
+	return knowledgeSourceUpdateFrequencyPtrType
+}
+
+func (in *knowledgeSourceUpdateFrequencyPtr) ToKnowledgeSourceUpdateFrequencyPtrOutput() KnowledgeSourceUpdateFrequencyPtrOutput {
+	return pulumi.ToOutput(in).(KnowledgeSourceUpdateFrequencyPtrOutput)
+}
+
+func (in *knowledgeSourceUpdateFrequencyPtr) ToKnowledgeSourceUpdateFrequencyPtrOutputWithContext(ctx context.Context) KnowledgeSourceUpdateFrequencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(KnowledgeSourceUpdateFrequencyPtrOutput)
+}
+
 // whether this route will be linked to the default endpoint domain.
 type LinkToDefaultDomain string
 
@@ -4445,7 +5459,7 @@ const (
 	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
 	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
 	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
-	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned, UserAssigned")
+	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
 )
 
 func (ManagedServiceIdentityType) ElementType() reflect.Type {
@@ -5155,6 +6169,172 @@ func (in *optimizationTypePtr) ToOptimizationTypePtrOutput() OptimizationTypePtr
 
 func (in *optimizationTypePtr) ToOptimizationTypePtrOutputWithContext(ctx context.Context) OptimizationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OptimizationTypePtrOutput)
+}
+
+// The type of the authentication for the origin.
+type OriginAuthenticationType string
+
+const (
+	OriginAuthenticationTypeSystemAssignedIdentity = OriginAuthenticationType("SystemAssignedIdentity")
+	OriginAuthenticationTypeUserAssignedIdentity   = OriginAuthenticationType("UserAssignedIdentity")
+)
+
+func (OriginAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginAuthenticationType)(nil)).Elem()
+}
+
+func (e OriginAuthenticationType) ToOriginAuthenticationTypeOutput() OriginAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(OriginAuthenticationTypeOutput)
+}
+
+func (e OriginAuthenticationType) ToOriginAuthenticationTypeOutputWithContext(ctx context.Context) OriginAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OriginAuthenticationTypeOutput)
+}
+
+func (e OriginAuthenticationType) ToOriginAuthenticationTypePtrOutput() OriginAuthenticationTypePtrOutput {
+	return e.ToOriginAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e OriginAuthenticationType) ToOriginAuthenticationTypePtrOutputWithContext(ctx context.Context) OriginAuthenticationTypePtrOutput {
+	return OriginAuthenticationType(e).ToOriginAuthenticationTypeOutputWithContext(ctx).ToOriginAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e OriginAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OriginAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OriginAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OriginAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OriginAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (OriginAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginAuthenticationType)(nil)).Elem()
+}
+
+func (o OriginAuthenticationTypeOutput) ToOriginAuthenticationTypeOutput() OriginAuthenticationTypeOutput {
+	return o
+}
+
+func (o OriginAuthenticationTypeOutput) ToOriginAuthenticationTypeOutputWithContext(ctx context.Context) OriginAuthenticationTypeOutput {
+	return o
+}
+
+func (o OriginAuthenticationTypeOutput) ToOriginAuthenticationTypePtrOutput() OriginAuthenticationTypePtrOutput {
+	return o.ToOriginAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o OriginAuthenticationTypeOutput) ToOriginAuthenticationTypePtrOutputWithContext(ctx context.Context) OriginAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OriginAuthenticationType) *OriginAuthenticationType {
+		return &v
+	}).(OriginAuthenticationTypePtrOutput)
+}
+
+func (o OriginAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OriginAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OriginAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OriginAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OriginAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OriginAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OriginAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (OriginAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OriginAuthenticationType)(nil)).Elem()
+}
+
+func (o OriginAuthenticationTypePtrOutput) ToOriginAuthenticationTypePtrOutput() OriginAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o OriginAuthenticationTypePtrOutput) ToOriginAuthenticationTypePtrOutputWithContext(ctx context.Context) OriginAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o OriginAuthenticationTypePtrOutput) Elem() OriginAuthenticationTypeOutput {
+	return o.ApplyT(func(v *OriginAuthenticationType) OriginAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret OriginAuthenticationType
+		return ret
+	}).(OriginAuthenticationTypeOutput)
+}
+
+func (o OriginAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OriginAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OriginAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OriginAuthenticationTypeInput is an input type that accepts values of the OriginAuthenticationType enum
+// A concrete instance of `OriginAuthenticationTypeInput` can be one of the following:
+//
+//	OriginAuthenticationTypeSystemAssignedIdentity
+//	OriginAuthenticationTypeUserAssignedIdentity
+type OriginAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToOriginAuthenticationTypeOutput() OriginAuthenticationTypeOutput
+	ToOriginAuthenticationTypeOutputWithContext(context.Context) OriginAuthenticationTypeOutput
+}
+
+var originAuthenticationTypePtrType = reflect.TypeOf((**OriginAuthenticationType)(nil)).Elem()
+
+type OriginAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToOriginAuthenticationTypePtrOutput() OriginAuthenticationTypePtrOutput
+	ToOriginAuthenticationTypePtrOutputWithContext(context.Context) OriginAuthenticationTypePtrOutput
+}
+
+type originAuthenticationTypePtr string
+
+func OriginAuthenticationTypePtr(v string) OriginAuthenticationTypePtrInput {
+	return (*originAuthenticationTypePtr)(&v)
+}
+
+func (*originAuthenticationTypePtr) ElementType() reflect.Type {
+	return originAuthenticationTypePtrType
+}
+
+func (in *originAuthenticationTypePtr) ToOriginAuthenticationTypePtrOutput() OriginAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(OriginAuthenticationTypePtrOutput)
+}
+
+func (in *originAuthenticationTypePtr) ToOriginAuthenticationTypePtrOutputWithContext(ctx context.Context) OriginAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OriginAuthenticationTypePtrOutput)
 }
 
 // Indicates the purpose of the parameter
@@ -7734,6 +8914,170 @@ func (in *requestMethodOperatorPtr) ToRequestMethodOperatorPtrOutput() RequestMe
 
 func (in *requestMethodOperatorPtr) ToRequestMethodOperatorPtrOutputWithContext(ctx context.Context) RequestMethodOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RequestMethodOperatorPtrOutput)
+}
+
+// Describes operator to be matched
+type RequestSchemeMatchConditionParametersOperator string
+
+const (
+	RequestSchemeMatchConditionParametersOperatorEqual = RequestSchemeMatchConditionParametersOperator("Equal")
+)
+
+func (RequestSchemeMatchConditionParametersOperator) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestSchemeMatchConditionParametersOperator)(nil)).Elem()
+}
+
+func (e RequestSchemeMatchConditionParametersOperator) ToRequestSchemeMatchConditionParametersOperatorOutput() RequestSchemeMatchConditionParametersOperatorOutput {
+	return pulumi.ToOutput(e).(RequestSchemeMatchConditionParametersOperatorOutput)
+}
+
+func (e RequestSchemeMatchConditionParametersOperator) ToRequestSchemeMatchConditionParametersOperatorOutputWithContext(ctx context.Context) RequestSchemeMatchConditionParametersOperatorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RequestSchemeMatchConditionParametersOperatorOutput)
+}
+
+func (e RequestSchemeMatchConditionParametersOperator) ToRequestSchemeMatchConditionParametersOperatorPtrOutput() RequestSchemeMatchConditionParametersOperatorPtrOutput {
+	return e.ToRequestSchemeMatchConditionParametersOperatorPtrOutputWithContext(context.Background())
+}
+
+func (e RequestSchemeMatchConditionParametersOperator) ToRequestSchemeMatchConditionParametersOperatorPtrOutputWithContext(ctx context.Context) RequestSchemeMatchConditionParametersOperatorPtrOutput {
+	return RequestSchemeMatchConditionParametersOperator(e).ToRequestSchemeMatchConditionParametersOperatorOutputWithContext(ctx).ToRequestSchemeMatchConditionParametersOperatorPtrOutputWithContext(ctx)
+}
+
+func (e RequestSchemeMatchConditionParametersOperator) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RequestSchemeMatchConditionParametersOperator) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RequestSchemeMatchConditionParametersOperator) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RequestSchemeMatchConditionParametersOperator) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RequestSchemeMatchConditionParametersOperatorOutput struct{ *pulumi.OutputState }
+
+func (RequestSchemeMatchConditionParametersOperatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestSchemeMatchConditionParametersOperator)(nil)).Elem()
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorOutput) ToRequestSchemeMatchConditionParametersOperatorOutput() RequestSchemeMatchConditionParametersOperatorOutput {
+	return o
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorOutput) ToRequestSchemeMatchConditionParametersOperatorOutputWithContext(ctx context.Context) RequestSchemeMatchConditionParametersOperatorOutput {
+	return o
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorOutput) ToRequestSchemeMatchConditionParametersOperatorPtrOutput() RequestSchemeMatchConditionParametersOperatorPtrOutput {
+	return o.ToRequestSchemeMatchConditionParametersOperatorPtrOutputWithContext(context.Background())
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorOutput) ToRequestSchemeMatchConditionParametersOperatorPtrOutputWithContext(ctx context.Context) RequestSchemeMatchConditionParametersOperatorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RequestSchemeMatchConditionParametersOperator) *RequestSchemeMatchConditionParametersOperator {
+		return &v
+	}).(RequestSchemeMatchConditionParametersOperatorPtrOutput)
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RequestSchemeMatchConditionParametersOperator) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RequestSchemeMatchConditionParametersOperator) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RequestSchemeMatchConditionParametersOperatorPtrOutput struct{ *pulumi.OutputState }
+
+func (RequestSchemeMatchConditionParametersOperatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestSchemeMatchConditionParametersOperator)(nil)).Elem()
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorPtrOutput) ToRequestSchemeMatchConditionParametersOperatorPtrOutput() RequestSchemeMatchConditionParametersOperatorPtrOutput {
+	return o
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorPtrOutput) ToRequestSchemeMatchConditionParametersOperatorPtrOutputWithContext(ctx context.Context) RequestSchemeMatchConditionParametersOperatorPtrOutput {
+	return o
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorPtrOutput) Elem() RequestSchemeMatchConditionParametersOperatorOutput {
+	return o.ApplyT(func(v *RequestSchemeMatchConditionParametersOperator) RequestSchemeMatchConditionParametersOperator {
+		if v != nil {
+			return *v
+		}
+		var ret RequestSchemeMatchConditionParametersOperator
+		return ret
+	}).(RequestSchemeMatchConditionParametersOperatorOutput)
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RequestSchemeMatchConditionParametersOperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RequestSchemeMatchConditionParametersOperator) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RequestSchemeMatchConditionParametersOperatorInput is an input type that accepts values of the RequestSchemeMatchConditionParametersOperator enum
+// A concrete instance of `RequestSchemeMatchConditionParametersOperatorInput` can be one of the following:
+//
+//	RequestSchemeMatchConditionParametersOperatorEqual
+type RequestSchemeMatchConditionParametersOperatorInput interface {
+	pulumi.Input
+
+	ToRequestSchemeMatchConditionParametersOperatorOutput() RequestSchemeMatchConditionParametersOperatorOutput
+	ToRequestSchemeMatchConditionParametersOperatorOutputWithContext(context.Context) RequestSchemeMatchConditionParametersOperatorOutput
+}
+
+var requestSchemeMatchConditionParametersOperatorPtrType = reflect.TypeOf((**RequestSchemeMatchConditionParametersOperator)(nil)).Elem()
+
+type RequestSchemeMatchConditionParametersOperatorPtrInput interface {
+	pulumi.Input
+
+	ToRequestSchemeMatchConditionParametersOperatorPtrOutput() RequestSchemeMatchConditionParametersOperatorPtrOutput
+	ToRequestSchemeMatchConditionParametersOperatorPtrOutputWithContext(context.Context) RequestSchemeMatchConditionParametersOperatorPtrOutput
+}
+
+type requestSchemeMatchConditionParametersOperatorPtr string
+
+func RequestSchemeMatchConditionParametersOperatorPtr(v string) RequestSchemeMatchConditionParametersOperatorPtrInput {
+	return (*requestSchemeMatchConditionParametersOperatorPtr)(&v)
+}
+
+func (*requestSchemeMatchConditionParametersOperatorPtr) ElementType() reflect.Type {
+	return requestSchemeMatchConditionParametersOperatorPtrType
+}
+
+func (in *requestSchemeMatchConditionParametersOperatorPtr) ToRequestSchemeMatchConditionParametersOperatorPtrOutput() RequestSchemeMatchConditionParametersOperatorPtrOutput {
+	return pulumi.ToOutput(in).(RequestSchemeMatchConditionParametersOperatorPtrOutput)
+}
+
+func (in *requestSchemeMatchConditionParametersOperatorPtr) ToRequestSchemeMatchConditionParametersOperatorPtrOutputWithContext(ctx context.Context) RequestSchemeMatchConditionParametersOperatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RequestSchemeMatchConditionParametersOperatorPtrOutput)
 }
 
 type RequestSchemeMatchValue string
@@ -11557,10 +12901,18 @@ func init() {
 	pulumi.RegisterOutputType(ActionTypePtrOutput{})
 	pulumi.RegisterOutputType(AfdCertificateTypeOutput{})
 	pulumi.RegisterOutputType(AfdCertificateTypePtrOutput{})
+	pulumi.RegisterOutputType(AfdCipherSuiteSetTypeOutput{})
+	pulumi.RegisterOutputType(AfdCipherSuiteSetTypePtrOutput{})
+	pulumi.RegisterOutputType(AfdCustomizedCipherSuiteForTls12Output{})
+	pulumi.RegisterOutputType(AfdCustomizedCipherSuiteForTls12PtrOutput{})
+	pulumi.RegisterOutputType(AfdCustomizedCipherSuiteForTls13Output{})
+	pulumi.RegisterOutputType(AfdCustomizedCipherSuiteForTls13PtrOutput{})
 	pulumi.RegisterOutputType(AfdMinimumTlsVersionOutput{})
 	pulumi.RegisterOutputType(AfdMinimumTlsVersionPtrOutput{})
 	pulumi.RegisterOutputType(AfdQueryStringCachingBehaviorOutput{})
 	pulumi.RegisterOutputType(AfdQueryStringCachingBehaviorPtrOutput{})
+	pulumi.RegisterOutputType(AgentPathTypeOutput{})
+	pulumi.RegisterOutputType(AgentPathTypePtrOutput{})
 	pulumi.RegisterOutputType(AlgorithmOutput{})
 	pulumi.RegisterOutputType(AlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(AutoGeneratedDomainNameLabelScopeOutput{})
@@ -11599,6 +12951,10 @@ func init() {
 	pulumi.RegisterOutputType(IsDeviceOperatorPtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultSigningKeyParametersTypeOutput{})
 	pulumi.RegisterOutputType(KeyVaultSigningKeyParametersTypePtrOutput{})
+	pulumi.RegisterOutputType(KnowledgeSourceTypeOutput{})
+	pulumi.RegisterOutputType(KnowledgeSourceTypePtrOutput{})
+	pulumi.RegisterOutputType(KnowledgeSourceUpdateFrequencyOutput{})
+	pulumi.RegisterOutputType(KnowledgeSourceUpdateFrequencyPtrOutput{})
 	pulumi.RegisterOutputType(LinkToDefaultDomainOutput{})
 	pulumi.RegisterOutputType(LinkToDefaultDomainPtrOutput{})
 	pulumi.RegisterOutputType(ManagedRuleEnabledStateOutput{})
@@ -11611,6 +12967,8 @@ func init() {
 	pulumi.RegisterOutputType(OperatorPtrOutput{})
 	pulumi.RegisterOutputType(OptimizationTypeOutput{})
 	pulumi.RegisterOutputType(OptimizationTypePtrOutput{})
+	pulumi.RegisterOutputType(OriginAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(OriginAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(ParamIndicatorOutput{})
 	pulumi.RegisterOutputType(ParamIndicatorPtrOutput{})
 	pulumi.RegisterOutputType(PolicyEnabledStateOutput{})
@@ -11641,6 +12999,8 @@ func init() {
 	pulumi.RegisterOutputType(RequestMethodMatchValuePtrOutput{})
 	pulumi.RegisterOutputType(RequestMethodOperatorOutput{})
 	pulumi.RegisterOutputType(RequestMethodOperatorPtrOutput{})
+	pulumi.RegisterOutputType(RequestSchemeMatchConditionParametersOperatorOutput{})
+	pulumi.RegisterOutputType(RequestSchemeMatchConditionParametersOperatorPtrOutput{})
 	pulumi.RegisterOutputType(RequestSchemeMatchValueOutput{})
 	pulumi.RegisterOutputType(RequestSchemeMatchValuePtrOutput{})
 	pulumi.RegisterOutputType(RequestUriOperatorOutput{})

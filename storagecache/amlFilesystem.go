@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AmlFilesystem struct {
 	pulumi.CustomResourceState
 
@@ -97,6 +97,9 @@ func NewAmlFilesystem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20240701:AmlFilesystem"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20250701:AmlFilesystem"),
 		},
 	})
 	opts = append(opts, aliases)

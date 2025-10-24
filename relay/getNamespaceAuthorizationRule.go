@@ -31,7 +31,7 @@ type LookupNamespaceAuthorizationRuleArgs struct {
 	AuthorizationRuleName string `pulumi:"authorizationRuleName"`
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -47,9 +47,9 @@ type LookupNamespaceAuthorizationRuleResult struct {
 	Name string `pulumi:"name"`
 	// The rights associated with the rule.
 	Rights []string `pulumi:"rights"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -67,7 +67,7 @@ type LookupNamespaceAuthorizationRuleOutputArgs struct {
 	AuthorizationRuleName pulumi.StringInput `pulumi:"authorizationRuleName"`
 	// The namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -115,12 +115,12 @@ func (o LookupNamespaceAuthorizationRuleResultOutput) Rights() pulumi.StringArra
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) []string { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupNamespaceAuthorizationRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupNamespaceAuthorizationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

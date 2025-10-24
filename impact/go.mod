@@ -2,12 +2,12 @@ module github.com/pulumi/pulumi-azure-native-sdk/impact/v3
 
 go 1.23.11
 
-toolchain go1.24.7
+toolchain go1.24.9
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.8.0
-	github.com/pulumi/pulumi/sdk/v3 v3.193.0
+	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.9.0-alpha.1761264150
+	github.com/pulumi/pulumi/sdk/v3 v3.204.0
 )
 
 require (
@@ -64,7 +64,6 @@ require (
 	github.com/pulumi/esc v0.17.0 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
-	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect
 	github.com/santhosh-tekuri/jsonschema/v5 v5.0.0 // indirect
 	github.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3 // indirect
 	github.com/skeema/knownhosts v1.3.0 // indirect

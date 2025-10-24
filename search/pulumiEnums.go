@@ -183,9 +183,9 @@ type ComputeType string
 
 const (
 	// Create the service with the Default Compute.
-	ComputeTypeDefault = ComputeType("default")
+	ComputeTypeDefault = ComputeType("Default")
 	// Create the service with Azure Confidential Compute.
-	ComputeTypeConfidential = ComputeType("confidential")
+	ComputeTypeConfidential = ComputeType("Confidential")
 )
 
 func (ComputeType) ElementType() reflect.Type {
@@ -346,14 +346,14 @@ func (in *computeTypePtr) ToComputeTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeTypePtrOutput)
 }
 
-// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
+// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'.
 type HostingMode string
 
 const (
 	// The limit on number of indexes is determined by the default limits for the SKU.
-	HostingModeDefault = HostingMode("default")
+	HostingModeDefault = HostingMode("Default")
 	// Only application for standard3 SKU, where the search service can have up to 1000 indexes.
-	HostingModeHighDensity = HostingMode("highDensity")
+	HostingModeHighDensity = HostingMode("HighDensity")
 )
 
 func (HostingMode) ElementType() reflect.Type {
@@ -1042,16 +1042,16 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-// This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
+// This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
 type PublicNetworkAccess string
 
 const (
 	// The search service is accessible from traffic originating from the public internet.
-	PublicNetworkAccessEnabled = PublicNetworkAccess("enabled")
+	PublicNetworkAccessEnabled = PublicNetworkAccess("Enabled")
 	// The search service is not accessible from traffic originating from the public internet. Access is only permitted over approved private endpoint connections.
-	PublicNetworkAccessDisabled = PublicNetworkAccess("disabled")
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 	// The network security perimeter configuration rules allow or disallow public network access to the resource. Requires an associated network security perimeter.
-	PublicNetworkAccessSecuredByPerimeter = PublicNetworkAccess("securedByPerimeter")
+	PublicNetworkAccessSecuredByPerimeter = PublicNetworkAccess("SecuredByPerimeter")
 )
 
 func (PublicNetworkAccess) ElementType() reflect.Type {

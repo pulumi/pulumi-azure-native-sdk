@@ -22,7 +22,7 @@ type StorageSyncService struct {
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// managed identities for the Storage Sync service to interact with other Azure services without maintaining any secrets or credentials in code.
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Incoming Traffic Policy
 	IncomingTrafficPolicy pulumi.StringPtrOutput `pulumi:"incomingTrafficPolicy"`
@@ -210,7 +210,7 @@ func (o StorageSyncServiceOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageSyncService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// managed identities for the Storage Sync service to interact with other Azure services without maintaining any secrets or credentials in code.
+// The managed service identities assigned to this resource.
 func (o StorageSyncServiceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *StorageSyncService) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }

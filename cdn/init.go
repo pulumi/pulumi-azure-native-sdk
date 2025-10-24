@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Endpoint{}
 	case "azure-native:cdn:KeyGroup":
 		r = &KeyGroup{}
+	case "azure-native:cdn:KnowledgeSource":
+		r = &KnowledgeSource{}
 	case "azure-native:cdn:Origin":
 		r = &Origin{}
 	case "azure-native:cdn:OriginGroup":
@@ -45,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Policy{}
 	case "azure-native:cdn:Profile":
 		r = &Profile{}
+	case "azure-native:cdn:ProfileAgent":
+		r = &ProfileAgent{}
 	case "azure-native:cdn:Route":
 		r = &Route{}
 	case "azure-native:cdn:Rule":
@@ -57,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecurityPolicy{}
 	case "azure-native:cdn:TunnelPolicy":
 		r = &TunnelPolicy{}
+	case "azure-native:cdn:WebAgent":
+		r = &WebAgent{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

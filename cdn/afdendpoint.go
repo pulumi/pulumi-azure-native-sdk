@@ -14,9 +14,9 @@ import (
 
 // Azure Front Door endpoint is the entity within a Azure Front Door profile containing configuration information such as origin, protocol, content caching and delivery behavior. The AzureFrontDoor endpoint uses the URL format <endpointname>.azureedge.net.
 //
-// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2025-01-01-preview, 2025-04-15, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AFDEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -29,19 +29,19 @@ type AFDEndpoint struct {
 	EnabledState pulumi.StringPtrOutput `pulumi:"enabledState"`
 	// The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
 	HostName pulumi.StringOutput `pulumi:"hostName"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the profile which holds the endpoint.
 	ProfileName pulumi.StringOutput `pulumi:"profileName"`
 	// Provisioning status
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -98,6 +98,12 @@ func NewAFDEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20250601:AFDEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250701preview:AFDEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250901preview:AFDEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -139,11 +145,11 @@ type afdendpointArgs struct {
 	EnabledState *string `pulumi:"enabledState"`
 	// Name of the endpoint under the profile which is unique globally.
 	EndpointName *string `pulumi:"endpointName"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -157,11 +163,11 @@ type AFDEndpointArgs struct {
 	EnabledState pulumi.StringPtrInput
 	// Name of the endpoint under the profile which is unique globally.
 	EndpointName pulumi.StringPtrInput
-	// Resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -228,12 +234,12 @@ func (o AFDEndpointOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDEndpoint) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
 }
 
-// Resource location.
+// The geo-location where the resource lives
 func (o AFDEndpointOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDEndpoint) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o AFDEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -248,7 +254,7 @@ func (o AFDEndpointOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDEndpoint) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o AFDEndpointOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *AFDEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -258,7 +264,7 @@ func (o AFDEndpointOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AFDEndpoint) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AFDEndpointOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDEndpoint) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

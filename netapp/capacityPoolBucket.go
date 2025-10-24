@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2025-01-01-preview.
 //
-// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-03-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CapacityPoolBucket struct {
 	pulumi.CustomResourceState
 
@@ -72,6 +72,9 @@ func NewCapacityPoolBucket(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20250301preview:CapacityPoolBucket"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250701preview:CapacityPoolBucket"),
 		},
 	})
 	opts = append(opts, aliases)

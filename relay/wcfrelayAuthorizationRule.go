@@ -28,9 +28,9 @@ type WCFRelayAuthorizationRule struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The rights associated with the rule.
 	Rights pulumi.StringArrayOutput `pulumi:"rights"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -107,7 +107,7 @@ type wcfrelayAuthorizationRuleArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The relay name.
 	RelayName string `pulumi:"relayName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The rights associated with the rule.
 	Rights []string `pulumi:"rights"`
@@ -121,7 +121,7 @@ type WCFRelayAuthorizationRuleArgs struct {
 	NamespaceName pulumi.StringInput
 	// The relay name.
 	RelayName pulumi.StringInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The rights associated with the rule.
 	Rights pulumi.StringArrayInput
@@ -184,12 +184,12 @@ func (o WCFRelayAuthorizationRuleOutput) Rights() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WCFRelayAuthorizationRule) pulumi.StringArrayOutput { return v.Rights }).(pulumi.StringArrayOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o WCFRelayAuthorizationRuleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *WCFRelayAuthorizationRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WCFRelayAuthorizationRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WCFRelayAuthorizationRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

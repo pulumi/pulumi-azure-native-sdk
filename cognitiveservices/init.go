@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RaiBlocklistItem{}
 	case "azure-native:cognitiveservices:RaiPolicy":
 		r = &RaiPolicy{}
+	case "azure-native:cognitiveservices:RaiTopic":
+		r = &RaiTopic{}
 	case "azure-native:cognitiveservices:SharedCommitmentPlan":
 		r = &SharedCommitmentPlan{}
 	default:

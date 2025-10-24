@@ -88,6 +88,15 @@ func NewServerEndpoint(ctx *pulumi.Context,
 	if args.SyncGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'SyncGroupName'")
 	}
+	if args.InitialDownloadPolicy == nil {
+		args.InitialDownloadPolicy = pulumi.StringPtr("NamespaceThenModifiedFiles")
+	}
+	if args.InitialUploadPolicy == nil {
+		args.InitialUploadPolicy = pulumi.StringPtr("Merge")
+	}
+	if args.LocalCacheMode == nil {
+		args.LocalCacheMode = pulumi.StringPtr("UpdateLocallyCachedFiles")
+	}
 	if args.TierFilesOlderThanDays == nil {
 		args.TierFilesOlderThanDays = pulumi.IntPtr(0)
 	}

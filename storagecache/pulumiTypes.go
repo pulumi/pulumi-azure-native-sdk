@@ -1745,6 +1745,116 @@ func (o AmlFilesystemRootSquashSettingsResponsePtrOutput) Status() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The storage account blob change feed status of the auto import job.
+type AutoImportJobResponseBlobSyncEvents struct {
+	// Number of deletions during auto import.
+	Deletions float64 `pulumi:"deletions"`
+	// Number of directories imported during auto import.
+	ImportedDirectories float64 `pulumi:"importedDirectories"`
+	// Number of files imported during auto import.
+	ImportedFiles float64 `pulumi:"importedFiles"`
+	// Number of symlinks imported during auto import.
+	ImportedSymlinks float64 `pulumi:"importedSymlinks"`
+	// Date and time of the last Change Feed event consumed.
+	LastChangeFeedEventConsumedTime string `pulumi:"lastChangeFeedEventConsumedTime"`
+	// Date and time when last fully synchronized.
+	LastTimeFullySynchronized string `pulumi:"lastTimeFullySynchronized"`
+	// Number of preexisting directories during auto import.
+	PreexistingDirectories float64 `pulumi:"preexistingDirectories"`
+	// Number of preexisting files during auto import.
+	PreexistingFiles float64 `pulumi:"preexistingFiles"`
+	// Number of preexisting symlinks during auto import.
+	PreexistingSymlinks float64 `pulumi:"preexistingSymlinks"`
+	// Rate of blob import per second during auto import.
+	RateOfBlobImport float64 `pulumi:"rateOfBlobImport"`
+	// Total number of blobs imported during auto import.
+	TotalBlobsImported float64 `pulumi:"totalBlobsImported"`
+	// Total conflicts encountered during auto import.
+	TotalConflicts float64 `pulumi:"totalConflicts"`
+	// Total errors encountered during auto import.
+	TotalErrors float64 `pulumi:"totalErrors"`
+}
+
+// The storage account blob change feed status of the auto import job.
+type AutoImportJobResponseBlobSyncEventsOutput struct{ *pulumi.OutputState }
+
+func (AutoImportJobResponseBlobSyncEventsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoImportJobResponseBlobSyncEvents)(nil)).Elem()
+}
+
+func (o AutoImportJobResponseBlobSyncEventsOutput) ToAutoImportJobResponseBlobSyncEventsOutput() AutoImportJobResponseBlobSyncEventsOutput {
+	return o
+}
+
+func (o AutoImportJobResponseBlobSyncEventsOutput) ToAutoImportJobResponseBlobSyncEventsOutputWithContext(ctx context.Context) AutoImportJobResponseBlobSyncEventsOutput {
+	return o
+}
+
+// Number of deletions during auto import.
+func (o AutoImportJobResponseBlobSyncEventsOutput) Deletions() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.Deletions }).(pulumi.Float64Output)
+}
+
+// Number of directories imported during auto import.
+func (o AutoImportJobResponseBlobSyncEventsOutput) ImportedDirectories() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.ImportedDirectories }).(pulumi.Float64Output)
+}
+
+// Number of files imported during auto import.
+func (o AutoImportJobResponseBlobSyncEventsOutput) ImportedFiles() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.ImportedFiles }).(pulumi.Float64Output)
+}
+
+// Number of symlinks imported during auto import.
+func (o AutoImportJobResponseBlobSyncEventsOutput) ImportedSymlinks() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.ImportedSymlinks }).(pulumi.Float64Output)
+}
+
+// Date and time of the last Change Feed event consumed.
+func (o AutoImportJobResponseBlobSyncEventsOutput) LastChangeFeedEventConsumedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) string { return v.LastChangeFeedEventConsumedTime }).(pulumi.StringOutput)
+}
+
+// Date and time when last fully synchronized.
+func (o AutoImportJobResponseBlobSyncEventsOutput) LastTimeFullySynchronized() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) string { return v.LastTimeFullySynchronized }).(pulumi.StringOutput)
+}
+
+// Number of preexisting directories during auto import.
+func (o AutoImportJobResponseBlobSyncEventsOutput) PreexistingDirectories() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.PreexistingDirectories }).(pulumi.Float64Output)
+}
+
+// Number of preexisting files during auto import.
+func (o AutoImportJobResponseBlobSyncEventsOutput) PreexistingFiles() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.PreexistingFiles }).(pulumi.Float64Output)
+}
+
+// Number of preexisting symlinks during auto import.
+func (o AutoImportJobResponseBlobSyncEventsOutput) PreexistingSymlinks() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.PreexistingSymlinks }).(pulumi.Float64Output)
+}
+
+// Rate of blob import per second during auto import.
+func (o AutoImportJobResponseBlobSyncEventsOutput) RateOfBlobImport() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.RateOfBlobImport }).(pulumi.Float64Output)
+}
+
+// Total number of blobs imported during auto import.
+func (o AutoImportJobResponseBlobSyncEventsOutput) TotalBlobsImported() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.TotalBlobsImported }).(pulumi.Float64Output)
+}
+
+// Total conflicts encountered during auto import.
+func (o AutoImportJobResponseBlobSyncEventsOutput) TotalConflicts() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.TotalConflicts }).(pulumi.Float64Output)
+}
+
+// Total errors encountered during auto import.
+func (o AutoImportJobResponseBlobSyncEventsOutput) TotalErrors() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.TotalErrors }).(pulumi.Float64Output)
+}
+
 // Properties pertaining to the BlobNfsTarget.
 type BlobNfsTarget struct {
 	// Resource ID of the storage container.
@@ -7827,6 +7937,7 @@ func init() {
 	pulumi.RegisterOutputType(AmlFilesystemRootSquashSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AmlFilesystemRootSquashSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AmlFilesystemRootSquashSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AutoImportJobResponseBlobSyncEventsOutput{})
 	pulumi.RegisterOutputType(BlobNfsTargetOutput{})
 	pulumi.RegisterOutputType(BlobNfsTargetPtrOutput{})
 	pulumi.RegisterOutputType(BlobNfsTargetResponseOutput{})

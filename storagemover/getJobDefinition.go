@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-07-01.
 //
-// Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupJobDefinition(ctx *pulumi.Context, args *LookupJobDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupJobDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobDefinitionResult
@@ -47,7 +47,7 @@ type LookupJobDefinitionResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Strategy to use for copy.
 	CopyMode string `pulumi:"copyMode"`
-	// A description for the Job Definition.
+	// A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
 	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
@@ -138,7 +138,7 @@ func (o LookupJobDefinitionResultOutput) CopyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.CopyMode }).(pulumi.StringOutput)
 }
 
-// A description for the Job Definition.
+// A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
 func (o LookupJobDefinitionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

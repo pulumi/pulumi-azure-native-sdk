@@ -42,7 +42,8 @@ type LookupServerGroupRoleResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
-	Name          string `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
 	ObjectId      string `pulumi:"objectId"`
 	PrincipalType string `pulumi:"principalType"`
 	// Provisioning state of the role
@@ -50,7 +51,8 @@ type LookupServerGroupRoleResult struct {
 	RoleType          *string `pulumi:"roleType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	TenantId   *string            `pulumi:"tenantId"`
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	TenantId *string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -119,6 +121,7 @@ func (o LookupServerGroupRoleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerGroupRoleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A type definition that refers the id to an Azure Resource Manager resource.
 func (o LookupServerGroupRoleResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerGroupRoleResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
@@ -141,6 +144,7 @@ func (o LookupServerGroupRoleResultOutput) SystemData() SystemDataResponseOutput
 	return o.ApplyT(func(v LookupServerGroupRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// A type definition that refers the id to an Azure Resource Manager resource.
 func (o LookupServerGroupRoleResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerGroupRoleResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }

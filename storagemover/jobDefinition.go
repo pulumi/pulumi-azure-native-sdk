@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type JobDefinition struct {
 	pulumi.CustomResourceState
 
@@ -28,7 +28,7 @@ type JobDefinition struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Strategy to use for copy.
 	CopyMode pulumi.StringOutput `pulumi:"copyMode"`
-	// A description for the Job Definition.
+	// A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the Job Run in a non-terminal state, if exists.
 	LatestJobRunName pulumi.StringOutput `pulumi:"latestJobRunName"`
@@ -99,6 +99,9 @@ func NewJobDefinition(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagemover/v20240701:JobDefinition"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagemover/v20250701:JobDefinition"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -138,7 +141,7 @@ type jobDefinitionArgs struct {
 	AgentName *string `pulumi:"agentName"`
 	// Strategy to use for copy.
 	CopyMode string `pulumi:"copyMode"`
-	// A description for the Job Definition.
+	// A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
 	Description *string `pulumi:"description"`
 	// The name of the Job Definition resource.
 	JobDefinitionName *string `pulumi:"jobDefinitionName"`
@@ -164,7 +167,7 @@ type JobDefinitionArgs struct {
 	AgentName pulumi.StringPtrInput
 	// Strategy to use for copy.
 	CopyMode pulumi.StringInput
-	// A description for the Job Definition.
+	// A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
 	Description pulumi.StringPtrInput
 	// The name of the Job Definition resource.
 	JobDefinitionName pulumi.StringPtrInput
@@ -241,7 +244,7 @@ func (o JobDefinitionOutput) CopyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobDefinition) pulumi.StringOutput { return v.CopyMode }).(pulumi.StringOutput)
 }
 
-// A description for the Job Definition.
+// A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
 func (o JobDefinitionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDefinition) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

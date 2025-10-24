@@ -77,6 +77,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAppAuthSettingsV2{}
 	case "azure-native:web:WebAppAuthSettingsV2Slot":
 		r = &WebAppAuthSettingsV2Slot{}
+	case "azure-native:web:WebAppAuthSettingsV2WithoutSecrets":
+		r = &WebAppAuthSettingsV2WithoutSecrets{}
+	case "azure-native:web:WebAppAuthSettingsV2WithoutSecretsSlot":
+		r = &WebAppAuthSettingsV2WithoutSecretsSlot{}
 	case "azure-native:web:WebAppAzureStorageAccounts":
 		r = &WebAppAzureStorageAccounts{}
 	case "azure-native:web:WebAppAzureStorageAccountsSlot":

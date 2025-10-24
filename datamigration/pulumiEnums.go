@@ -10,6 +10,174 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Authentication type used for accessing Azure Blob Storage.
+type AuthType string
+
+const (
+	// Use an account key for authentication.
+	AuthTypeAccountKey = AuthType("AccountKey")
+	// Use a managed identity for authentication.
+	AuthTypeManagedIdentity = AuthType("ManagedIdentity")
+)
+
+func (AuthType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthType)(nil)).Elem()
+}
+
+func (e AuthType) ToAuthTypeOutput() AuthTypeOutput {
+	return pulumi.ToOutput(e).(AuthTypeOutput)
+}
+
+func (e AuthType) ToAuthTypeOutputWithContext(ctx context.Context) AuthTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuthTypeOutput)
+}
+
+func (e AuthType) ToAuthTypePtrOutput() AuthTypePtrOutput {
+	return e.ToAuthTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuthType) ToAuthTypePtrOutputWithContext(ctx context.Context) AuthTypePtrOutput {
+	return AuthType(e).ToAuthTypeOutputWithContext(ctx).ToAuthTypePtrOutputWithContext(ctx)
+}
+
+func (e AuthType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AuthType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AuthTypeOutput struct{ *pulumi.OutputState }
+
+func (AuthTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthType)(nil)).Elem()
+}
+
+func (o AuthTypeOutput) ToAuthTypeOutput() AuthTypeOutput {
+	return o
+}
+
+func (o AuthTypeOutput) ToAuthTypeOutputWithContext(ctx context.Context) AuthTypeOutput {
+	return o
+}
+
+func (o AuthTypeOutput) ToAuthTypePtrOutput() AuthTypePtrOutput {
+	return o.ToAuthTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuthTypeOutput) ToAuthTypePtrOutputWithContext(ctx context.Context) AuthTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthType) *AuthType {
+		return &v
+	}).(AuthTypePtrOutput)
+}
+
+func (o AuthTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuthTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuthTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthType)(nil)).Elem()
+}
+
+func (o AuthTypePtrOutput) ToAuthTypePtrOutput() AuthTypePtrOutput {
+	return o
+}
+
+func (o AuthTypePtrOutput) ToAuthTypePtrOutputWithContext(ctx context.Context) AuthTypePtrOutput {
+	return o
+}
+
+func (o AuthTypePtrOutput) Elem() AuthTypeOutput {
+	return o.ApplyT(func(v *AuthType) AuthType {
+		if v != nil {
+			return *v
+		}
+		var ret AuthType
+		return ret
+	}).(AuthTypeOutput)
+}
+
+func (o AuthTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuthType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AuthTypeInput is an input type that accepts values of the AuthType enum
+// A concrete instance of `AuthTypeInput` can be one of the following:
+//
+//	AuthTypeAccountKey
+//	AuthTypeManagedIdentity
+type AuthTypeInput interface {
+	pulumi.Input
+
+	ToAuthTypeOutput() AuthTypeOutput
+	ToAuthTypeOutputWithContext(context.Context) AuthTypeOutput
+}
+
+var authTypePtrType = reflect.TypeOf((**AuthType)(nil)).Elem()
+
+type AuthTypePtrInput interface {
+	pulumi.Input
+
+	ToAuthTypePtrOutput() AuthTypePtrOutput
+	ToAuthTypePtrOutputWithContext(context.Context) AuthTypePtrOutput
+}
+
+type authTypePtr string
+
+func AuthTypePtr(v string) AuthTypePtrInput {
+	return (*authTypePtr)(&v)
+}
+
+func (*authTypePtr) ElementType() reflect.Type {
+	return authTypePtrType
+}
+
+func (in *authTypePtr) ToAuthTypePtrOutput() AuthTypePtrOutput {
+	return pulumi.ToOutput(in).(AuthTypePtrOutput)
+}
+
+func (in *authTypePtr) ToAuthTypePtrOutputWithContext(ctx context.Context) AuthTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuthTypePtrOutput)
+}
+
 // Authentication type to use for connection
 type AuthenticationType string
 
@@ -346,6 +514,176 @@ func (in *backupModePtr) ToBackupModePtrOutput() BackupModePtrOutput {
 
 func (in *backupModePtr) ToBackupModePtrOutputWithContext(ctx context.Context) BackupModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupModePtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+type ManagedServiceIdentityType string
+
+const (
+	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
+	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
+	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
+)
+
+func (ManagedServiceIdentityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityType)(nil)).Elem()
+}
+
+func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput {
+	return pulumi.ToOutput(e).(ManagedServiceIdentityTypeOutput)
+}
+
+func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypeOutputWithContext(ctx context.Context) ManagedServiceIdentityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ManagedServiceIdentityTypeOutput)
+}
+
+func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
+	return e.ToManagedServiceIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
+	return ManagedServiceIdentityType(e).ToManagedServiceIdentityTypeOutputWithContext(ctx).ToManagedServiceIdentityTypePtrOutputWithContext(ctx)
+}
+
+func (e ManagedServiceIdentityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedServiceIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedServiceIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ManagedServiceIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ManagedServiceIdentityTypeOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityType)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypeOutputWithContext(ctx context.Context) ManagedServiceIdentityTypeOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
+	return o.ToManagedServiceIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentityType) *ManagedServiceIdentityType {
+		return &v
+	}).(ManagedServiceIdentityTypePtrOutput)
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedServiceIdentityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedServiceIdentityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedServiceIdentityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityType)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) Elem() ManagedServiceIdentityTypeOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityType) ManagedServiceIdentityType {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityType
+		return ret
+	}).(ManagedServiceIdentityTypeOutput)
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagedServiceIdentityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ManagedServiceIdentityTypeInput is an input type that accepts values of the ManagedServiceIdentityType enum
+// A concrete instance of `ManagedServiceIdentityTypeInput` can be one of the following:
+//
+//	ManagedServiceIdentityTypeNone
+//	ManagedServiceIdentityTypeSystemAssigned
+//	ManagedServiceIdentityTypeUserAssigned
+//	ManagedServiceIdentityType_SystemAssigned_UserAssigned
+type ManagedServiceIdentityTypeInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput
+	ToManagedServiceIdentityTypeOutputWithContext(context.Context) ManagedServiceIdentityTypeOutput
+}
+
+var managedServiceIdentityTypePtrType = reflect.TypeOf((**ManagedServiceIdentityType)(nil)).Elem()
+
+type ManagedServiceIdentityTypePtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput
+	ToManagedServiceIdentityTypePtrOutputWithContext(context.Context) ManagedServiceIdentityTypePtrOutput
+}
+
+type managedServiceIdentityTypePtr string
+
+func ManagedServiceIdentityTypePtr(v string) ManagedServiceIdentityTypePtrInput {
+	return (*managedServiceIdentityTypePtr)(&v)
+}
+
+func (*managedServiceIdentityTypePtr) ElementType() reflect.Type {
+	return managedServiceIdentityTypePtrType
+}
+
+func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
+	return pulumi.ToOutput(in).(ManagedServiceIdentityTypePtrOutput)
+}
+
+func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
 // Describes how changes will be replicated from the source to the target. The default is OneTime.
@@ -1916,10 +2254,14 @@ const (
 )
 
 func init() {
+	pulumi.RegisterOutputType(AuthTypeOutput{})
+	pulumi.RegisterOutputType(AuthTypePtrOutput{})
 	pulumi.RegisterOutputType(AuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(AuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(BackupModeOutput{})
 	pulumi.RegisterOutputType(BackupModePtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(MongoDbReplicationOutput{})
 	pulumi.RegisterOutputType(MongoDbReplicationPtrOutput{})
 	pulumi.RegisterOutputType(MongoDbShardKeyOrderOutput{})

@@ -27,7 +27,7 @@ func LookupRedis(ctx *pulumi.Context, args *LookupRedisArgs, opts ...pulumi.Invo
 }
 
 type LookupRedisArgs struct {
-	// The name of the Redis cache.
+	// The name of the RedisResource
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -45,9 +45,9 @@ type LookupRedisResult struct {
 	EnableNonSslPort *bool `pulumi:"enableNonSslPort"`
 	// Redis host name.
 	HostName string `pulumi:"hostName"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The identity of the resource.
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// List of the Redis instances associated with the cache
 	Instances []RedisInstanceDetailsResponse `pulumi:"instances"`
@@ -65,10 +65,10 @@ type LookupRedisResult struct {
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Redis instance provisioning status.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
+	// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
-	RedisConfiguration *RedisCommonPropertiesResponseRedisConfiguration `pulumi:"redisConfiguration"`
+	RedisConfiguration *RedisCommonPropertiesRedisConfigurationResponse `pulumi:"redisConfiguration"`
 	// Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.
 	RedisVersion *string `pulumi:"redisVersion"`
 	// The number of replicas to be created per primary.
@@ -85,6 +85,8 @@ type LookupRedisResult struct {
 	StaticIP *string `pulumi:"staticIP"`
 	// The full resource ID of a subnet in a virtual network to deploy the Redis cache in. Example format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
 	SubnetId *string `pulumi:"subnetId"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// A dictionary of tenant settings
@@ -95,7 +97,7 @@ type LookupRedisResult struct {
 	UpdateChannel *string `pulumi:"updateChannel"`
 	// Optional: Specifies how availability zones are allocated to the Redis cache. 'Automatic' enables zone redundancy and Azure will automatically select zones based on regional availability and capacity. 'UserDefined' will select availability zones passed in by you using the 'zones' parameter. 'NoZones' will produce a non-zonal cache. If 'zonalAllocationPolicy' is not passed, it will be set to 'UserDefined' when zones are passed in, otherwise, it will be set to 'Automatic' in regions where zones are supported and 'NoZones' in regions where zones are not supported.
 	ZonalAllocationPolicy *string `pulumi:"zonalAllocationPolicy"`
-	// A list of availability zones denoting where the resource needs to come from.
+	// The availability zones.
 	Zones []string `pulumi:"zones"`
 }
 
@@ -113,10 +115,6 @@ func (val *LookupRedisResult) Defaults() *LookupRedisResult {
 		enableNonSslPort_ := false
 		tmp.EnableNonSslPort = &enableNonSslPort_
 	}
-	if tmp.PublicNetworkAccess == nil {
-		publicNetworkAccess_ := "Enabled"
-		tmp.PublicNetworkAccess = &publicNetworkAccess_
-	}
 	return &tmp
 }
 func LookupRedisOutput(ctx *pulumi.Context, args LookupRedisOutputArgs, opts ...pulumi.InvokeOption) LookupRedisResultOutput {
@@ -129,7 +127,7 @@ func LookupRedisOutput(ctx *pulumi.Context, args LookupRedisOutputArgs, opts ...
 }
 
 type LookupRedisOutputArgs struct {
-	// The name of the Redis cache.
+	// The name of the RedisResource
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -179,12 +177,12 @@ func (o LookupRedisResultOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.HostName }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupRedisResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The identity of the resource.
+// The managed service identities assigned to this resource.
 func (o LookupRedisResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupRedisResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
@@ -229,16 +227,16 @@ func (o LookupRedisResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
+// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method.
 func (o LookupRedisResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRedisResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
-func (o LookupRedisResultOutput) RedisConfiguration() RedisCommonPropertiesResponseRedisConfigurationPtrOutput {
-	return o.ApplyT(func(v LookupRedisResult) *RedisCommonPropertiesResponseRedisConfiguration {
+func (o LookupRedisResultOutput) RedisConfiguration() RedisCommonPropertiesRedisConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupRedisResult) *RedisCommonPropertiesRedisConfigurationResponse {
 		return v.RedisConfiguration
-	}).(RedisCommonPropertiesResponseRedisConfigurationPtrOutput)
+	}).(RedisCommonPropertiesRedisConfigurationResponsePtrOutput)
 }
 
 // Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.
@@ -281,6 +279,11 @@ func (o LookupRedisResultOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRedisResult) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupRedisResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRedisResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o LookupRedisResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRedisResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
@@ -306,7 +309,7 @@ func (o LookupRedisResultOutput) ZonalAllocationPolicy() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupRedisResult) *string { return v.ZonalAllocationPolicy }).(pulumi.StringPtrOutput)
 }
 
-// A list of availability zones denoting where the resource needs to come from.
+// The availability zones.
 func (o LookupRedisResultOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRedisResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }

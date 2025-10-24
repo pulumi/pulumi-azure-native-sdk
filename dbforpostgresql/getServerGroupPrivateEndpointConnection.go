@@ -29,7 +29,7 @@ func LookupServerGroupPrivateEndpointConnection(ctx *pulumi.Context, args *Looku
 type LookupServerGroupPrivateEndpointConnectionArgs struct {
 	// The name of the cluster.
 	ClusterName string `pulumi:"clusterName"`
-	// The name of the private endpoint connection associated with the cluster.
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -69,7 +69,7 @@ func LookupServerGroupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args 
 type LookupServerGroupPrivateEndpointConnectionOutputArgs struct {
 	// The name of the cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The name of the private endpoint connection associated with the cluster.
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`

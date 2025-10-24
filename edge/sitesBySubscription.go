@@ -85,7 +85,7 @@ func (SitesBySubscriptionState) ElementType() reflect.Type {
 type sitesBySubscriptionArgs struct {
 	// The resource-specific properties for this resource.
 	Properties *SiteProperties `pulumi:"properties"`
-	// Name of Site resource
+	// The name of the Site
 	SiteName *string `pulumi:"siteName"`
 }
 
@@ -93,7 +93,7 @@ type sitesBySubscriptionArgs struct {
 type SitesBySubscriptionArgs struct {
 	// The resource-specific properties for this resource.
 	Properties SitePropertiesPtrInput
-	// Name of Site resource
+	// The name of the Site
 	SiteName pulumi.StringPtrInput
 }
 

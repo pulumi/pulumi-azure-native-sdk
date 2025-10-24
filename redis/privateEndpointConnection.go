@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Private Endpoint Connection resource.
+// The private endpoint connection resource.
 //
 // Uses Azure REST API version 2024-11-01.
 //
@@ -22,14 +22,18 @@ type PrivateEndpointConnection struct {
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The group ids for the private endpoint resource.
+	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource of private end point.
+	// The private endpoint resource.
 	PrivateEndpoint PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -142,7 +146,7 @@ func (PrivateEndpointConnectionState) ElementType() reflect.Type {
 type privateEndpointConnectionArgs struct {
 	// The name of the Redis cache.
 	CacheName string `pulumi:"cacheName"`
-	// The name of the private endpoint connection associated with the Azure resource
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
@@ -154,7 +158,7 @@ type privateEndpointConnectionArgs struct {
 type PrivateEndpointConnectionArgs struct {
 	// The name of the Redis cache.
 	CacheName pulumi.StringInput
-	// The name of the private endpoint connection associated with the Azure resource
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput
@@ -204,12 +208,17 @@ func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
+// The group ids for the private endpoint resource.
+func (o PrivateEndpointConnectionOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringArrayOutput { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
 // The name of the resource
 func (o PrivateEndpointConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource of private end point.
+// The private endpoint resource.
 func (o PrivateEndpointConnectionOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) PrivateEndpointResponsePtrOutput { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
 }
@@ -224,6 +233,11 @@ func (o PrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() Pri
 // The provisioning state of the private endpoint connection resource.
 func (o PrivateEndpointConnectionOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

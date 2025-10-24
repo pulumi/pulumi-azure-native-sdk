@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "azure-native:azuredatatransfer:Flow":
 		r = &Flow{}
+	case "azure-native:azuredatatransfer:FlowProfile":
+		r = &FlowProfile{}
 	case "azure-native:azuredatatransfer:Pipeline":
 		r = &Pipeline{}
 	default:
