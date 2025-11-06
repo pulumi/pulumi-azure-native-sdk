@@ -2,12 +2,12 @@ module github.com/pulumi/pulumi-azure-native-sdk/fluidrelay/v3
 
 go 1.23.11
 
-toolchain go1.24.9
+toolchain go1.24.10
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.10.0
-	github.com/pulumi/pulumi/sdk/v3 v3.204.0
+	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.11.0-alpha.1762438115
+	github.com/pulumi/pulumi/sdk/v3 v3.206.0
 )
 
 require (
