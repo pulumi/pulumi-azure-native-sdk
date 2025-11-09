@@ -2,11 +2,11 @@ module github.com/pulumi/pulumi-azure-native-sdk/healthdataaiservices/v3
 
 go 1.23.11
 
-toolchain go1.24.10
+toolchain go1.24.7
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.10.1
+	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.11.0-alpha.1762648116
 	github.com/pulumi/pulumi/sdk/v3 v3.206.0
 )
 
