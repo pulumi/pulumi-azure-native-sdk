@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified NSP profile.
 //
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2021-02-01-preview.
 //
-// Other available API versions: 2021-02-01-preview, 2023-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
 func LookupNspProfile(ctx *pulumi.Context, args *LookupNspProfileArgs, opts ...pulumi.InvokeOption) (*LookupNspProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNspProfileResult
@@ -39,8 +39,6 @@ type LookupNspProfileArgs struct {
 type LookupNspProfileResult struct {
 	// Version number that increases with every update to access rules within the profile.
 	AccessRulesVersion string `pulumi:"accessRulesVersion"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Version number that increases with every update to diagnostic settings within the profile.
 	DiagnosticSettingsVersion string `pulumi:"diagnosticSettingsVersion"`
 	// Resource ID.
@@ -95,11 +93,6 @@ func (o LookupNspProfileResultOutput) ToLookupNspProfileResultOutputWithContext(
 // Version number that increases with every update to access rules within the profile.
 func (o LookupNspProfileResultOutput) AccessRulesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNspProfileResult) string { return v.AccessRulesVersion }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupNspProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNspProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Version number that increases with every update to diagnostic settings within the profile.

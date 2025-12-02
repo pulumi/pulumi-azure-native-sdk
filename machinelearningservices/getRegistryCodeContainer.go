@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-09-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 func LookupRegistryCodeContainer(ctx *pulumi.Context, args *LookupRegistryCodeContainerArgs, opts ...pulumi.InvokeOption) (*LookupRegistryCodeContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistryCodeContainerResult
@@ -37,8 +37,6 @@ type LookupRegistryCodeContainerArgs struct {
 
 // Azure Resource Manager resource envelope.
 type LookupRegistryCodeContainerResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	CodeContainerProperties CodeContainerResponse `pulumi:"codeContainerProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -96,11 +94,6 @@ func (o LookupRegistryCodeContainerResultOutput) ToLookupRegistryCodeContainerRe
 
 func (o LookupRegistryCodeContainerResultOutput) ToLookupRegistryCodeContainerResultOutputWithContext(ctx context.Context) LookupRegistryCodeContainerResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupRegistryCodeContainerResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegistryCodeContainerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

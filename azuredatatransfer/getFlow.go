@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets flow resource.
 //
-// Uses Azure REST API version 2024-09-27.
+// Uses Azure REST API version 2023-10-11-preview.
 //
-// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27, 2025-03-01-preview.
 func LookupFlow(ctx *pulumi.Context, args *LookupFlowArgs, opts ...pulumi.InvokeOption) (*LookupFlowResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFlowResult
@@ -37,8 +37,6 @@ type LookupFlowArgs struct {
 
 // The flow resource definition.
 type LookupFlowResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed identity of the flow resource, if configured.
@@ -94,11 +92,6 @@ func (o LookupFlowResultOutput) ToLookupFlowResultOutput() LookupFlowResultOutpu
 
 func (o LookupFlowResultOutput) ToLookupFlowResultOutputWithContext(ctx context.Context) LookupFlowResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupFlowResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFlowResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

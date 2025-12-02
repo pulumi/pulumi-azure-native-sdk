@@ -8,26 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The springbootservers envelope resource definition.
 //
-// Uses Azure REST API version 2024-04-01-preview.
-//
-// Other available API versions: 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazurespringboot [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2023-01-01-preview.
 type Springbootserver struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The springbootservers resource definition.
 	Properties SpringbootserversPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -50,7 +48,16 @@ func NewSpringbootserver(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazurespringboot/v20230101preview:Springbootserver"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazurespringboot/v20230101preview:springbootserver"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:Springbootserver"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:springbootserver"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazurespringboot:springbootserver"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -95,6 +102,8 @@ type springbootserverArgs struct {
 	SiteName string `pulumi:"siteName"`
 	// The springbootservers name.
 	SpringbootserversName *string `pulumi:"springbootserversName"`
+	// Resource tags
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Springbootserver resource.
@@ -107,6 +116,8 @@ type SpringbootserverArgs struct {
 	SiteName pulumi.StringInput
 	// The springbootservers name.
 	SpringbootserversName pulumi.StringPtrInput
+	// Resource tags
+	Tags pulumi.StringMapInput
 }
 
 func (SpringbootserverArgs) ElementType() reflect.Type {
@@ -146,11 +157,6 @@ func (o SpringbootserverOutput) ToSpringbootserverOutputWithContext(ctx context.
 	return o
 }
 
-// The Azure API version of the resource.
-func (o SpringbootserverOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Springbootserver) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The name of the resource
 func (o SpringbootserverOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Springbootserver) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -164,6 +170,11 @@ func (o SpringbootserverOutput) Properties() SpringbootserversPropertiesResponse
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SpringbootserverOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Springbootserver) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags
+func (o SpringbootserverOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Springbootserver) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

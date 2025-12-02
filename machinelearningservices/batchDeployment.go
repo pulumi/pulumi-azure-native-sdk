@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 type BatchDeployment struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	BatchDeploymentProperties BatchDeploymentResponseOutput `pulumi:"batchDeploymentProperties"`
 	// Managed service identity (system assigned and/or user assigned identities)
@@ -120,21 +118,6 @@ func NewBatchDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:BatchDeployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:BatchDeployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:BatchDeployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:BatchDeployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:BatchDeployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:BatchDeployment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -252,11 +235,6 @@ func (o BatchDeploymentOutput) ToBatchDeploymentOutput() BatchDeploymentOutput {
 
 func (o BatchDeploymentOutput) ToBatchDeploymentOutputWithContext(ctx context.Context) BatchDeploymentOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o BatchDeploymentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *BatchDeployment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

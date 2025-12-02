@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Managed CCF. Contains the properties of Managed CCF Resource.
 //
-// Uses Azure REST API version 2023-06-28-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-26-preview.
+// Uses Azure REST API version 2023-01-26-preview.
 //
-// Other available API versions: 2022-09-08-preview, 2023-01-26-preview, 2024-07-09-preview, 2024-09-19-preview, 2025-06-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confidentialledger [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-28-preview, 2024-07-09-preview, 2024-09-19-preview.
 type ManagedCCF struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -61,9 +59,6 @@ func NewManagedCCF(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:confidentialledger/v20240919preview:ManagedCCF"),
-		},
-		{
-			Type: pulumi.String("azure-native:confidentialledger/v20250610preview:ManagedCCF"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -161,11 +156,6 @@ func (o ManagedCCFOutput) ToManagedCCFOutput() ManagedCCFOutput {
 
 func (o ManagedCCFOutput) ToManagedCCFOutputWithContext(ctx context.Context) ManagedCCFOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o ManagedCCFOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ManagedCCF) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

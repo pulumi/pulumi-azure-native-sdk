@@ -8,20 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Attestation service response message.
 //
-// Uses Azure REST API version 2021-06-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
+// Uses Azure REST API version 2021-06-01. In version 1.x of the Azure Native provider, it used API version 2020-10-01.
+//
+// Other available API versions: 2021-06-01-preview.
 type AttestationProvider struct {
 	pulumi.CustomResourceState
 
 	// Gets the uri of attestation service
 	AttestUri pulumi.StringPtrOutput `pulumi:"attestUri"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -171,11 +171,6 @@ func (o AttestationProviderOutput) ToAttestationProviderOutputWithContext(ctx co
 // Gets the uri of attestation service
 func (o AttestationProviderOutput) AttestUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttestationProvider) pulumi.StringPtrOutput { return v.AttestUri }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o AttestationProviderOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *AttestationProvider) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

@@ -8,21 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Premier add-on.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
 type WebAppPremierAddOnSlot struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource Location.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -115,9 +113,6 @@ func NewWebAppPremierAddOnSlot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppPremierAddOnSlot"),
 		},
-		{
-			Type: pulumi.String("azure-native:web/v20241101:WebAppPremierAddOnSlot"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -153,7 +148,7 @@ func (WebAppPremierAddOnSlotState) ElementType() reflect.Type {
 }
 
 type webAppPremierAddOnSlotArgs struct {
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location *string `pulumi:"location"`
@@ -181,7 +176,7 @@ type webAppPremierAddOnSlotArgs struct {
 
 // The set of arguments for constructing a WebAppPremierAddOnSlot resource.
 type WebAppPremierAddOnSlotArgs struct {
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind pulumi.StringPtrInput
 	// Resource Location.
 	Location pulumi.StringPtrInput
@@ -244,12 +239,7 @@ func (o WebAppPremierAddOnSlotOutput) ToWebAppPremierAddOnSlotOutputWithContext(
 	return o
 }
 
-// The Azure API version of the resource.
-func (o WebAppPremierAddOnSlotOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebAppPremierAddOnSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+// Kind of resource.
 func (o WebAppPremierAddOnSlotOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppPremierAddOnSlot) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }

@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific role by name.
 //
-// Uses Azure REST API version 2023-07-01.
+// Uses Azure REST API version 2022-03-01.
 func LookupIoTRole(ctx *pulumi.Context, args *LookupIoTRoleArgs, opts ...pulumi.InvokeOption) (*LookupIoTRoleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIoTRoleResult
@@ -35,8 +35,6 @@ type LookupIoTRoleArgs struct {
 
 // Compute role.
 type LookupIoTRoleResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource allocation
 	ComputeResource *ComputeResourceResponse `pulumi:"computeResource"`
 	// Host OS supported by the IoT role.
@@ -101,11 +99,6 @@ func (o LookupIoTRoleResultOutput) ToLookupIoTRoleResultOutput() LookupIoTRoleRe
 
 func (o LookupIoTRoleResultOutput) ToLookupIoTRoleResultOutputWithContext(ctx context.Context) LookupIoTRoleResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupIoTRoleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource allocation

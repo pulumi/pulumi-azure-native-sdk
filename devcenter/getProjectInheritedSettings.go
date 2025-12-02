@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets applicable inherited settings for this project.
 //
-// Uses Azure REST API version 2024-10-01-preview.
+// Uses Azure REST API version 2024-05-01-preview.
 //
-// Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
 func GetProjectInheritedSettings(ctx *pulumi.Context, args *GetProjectInheritedSettingsArgs, opts ...pulumi.InvokeOption) (*GetProjectInheritedSettingsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectInheritedSettingsResult

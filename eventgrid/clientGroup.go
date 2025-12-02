@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Client group resource.
 //
-// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
 type ClientGroup struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description for the Client Group resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the resource.
@@ -31,7 +29,7 @@ type ClientGroup struct {
 	// The grouping query for the clients.
 	// Example : attributes.keyName IN ['a', 'b', 'c'].
 	Query pulumi.StringPtrOutput `pulumi:"query"`
-	// The system metadata relating to the Event Grid resource.
+	// The system metadata relating to the ClientGroup resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -65,9 +63,6 @@ func NewClientGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20250215:ClientGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20250401preview:ClientGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -169,11 +164,6 @@ func (o ClientGroupOutput) ToClientGroupOutputWithContext(ctx context.Context) C
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ClientGroupOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClientGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Description for the Client Group resource.
 func (o ClientGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -195,7 +185,7 @@ func (o ClientGroupOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientGroup) pulumi.StringPtrOutput { return v.Query }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to the Event Grid resource.
+// The system metadata relating to the ClientGroup resource.
 func (o ClientGroupOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ClientGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

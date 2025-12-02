@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a postgres Instance resource
 //
-// Uses Azure REST API version 2025-03-01-preview.
+// Uses Azure REST API version 2023-01-15-preview.
 //
-// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-01, 2024-05-01-preview, 2025-03-01-preview.
 func LookupPostgresInstance(ctx *pulumi.Context, args *LookupPostgresInstanceArgs, opts ...pulumi.InvokeOption) (*LookupPostgresInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresInstanceResult
@@ -35,8 +35,6 @@ type LookupPostgresInstanceArgs struct {
 
 // A Postgres Instance.
 type LookupPostgresInstanceResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The extendedLocation of the resource.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -100,11 +98,6 @@ func (o LookupPostgresInstanceResultOutput) ToLookupPostgresInstanceResultOutput
 
 func (o LookupPostgresInstanceResultOutput) ToLookupPostgresInstanceResultOutputWithContext(ctx context.Context) LookupPostgresInstanceResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupPostgresInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPostgresInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extendedLocation of the resource.

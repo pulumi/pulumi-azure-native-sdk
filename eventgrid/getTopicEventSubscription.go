@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of an event subscription of a topic.
 //
-// Uses Azure REST API version 2025-02-15.
+// Uses Azure REST API version 2022-06-15.
 //
-// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
 func LookupTopicEventSubscription(ctx *pulumi.Context, args *LookupTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupTopicEventSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTopicEventSubscriptionResult
@@ -27,18 +27,16 @@ func LookupTopicEventSubscription(ctx *pulumi.Context, args *LookupTopicEventSub
 }
 
 type LookupTopicEventSubscriptionArgs struct {
-	// Name of the event subscription to be found.
+	// Name of the event subscription to be found. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
 	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the topic.
+	// Name of the partner topic.
 	TopicName string `pulumi:"topicName"`
 }
 
-// Event Subscription.
+// Event Subscription
 type LookupTopicEventSubscriptionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
 	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
 	DeadLetterDestination *StorageBlobDeadLetterDestinationResponse `pulumi:"deadLetterDestination"`
@@ -67,7 +65,7 @@ type LookupTopicEventSubscriptionResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
 	RetryPolicy *RetryPolicyResponse `pulumi:"retryPolicy"`
-	// The system metadata relating to the Event Grid resource.
+	// The system metadata relating to Event Subscription resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Name of the topic of the event subscription.
 	Topic string `pulumi:"topic"`
@@ -101,11 +99,11 @@ func LookupTopicEventSubscriptionOutput(ctx *pulumi.Context, args LookupTopicEve
 }
 
 type LookupTopicEventSubscriptionOutputArgs struct {
-	// Name of the event subscription to be found.
+	// Name of the event subscription to be found. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
 	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of the topic.
+	// Name of the partner topic.
 	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
@@ -113,7 +111,7 @@ func (LookupTopicEventSubscriptionOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupTopicEventSubscriptionArgs)(nil)).Elem()
 }
 
-// Event Subscription.
+// Event Subscription
 type LookupTopicEventSubscriptionResultOutput struct{ *pulumi.OutputState }
 
 func (LookupTopicEventSubscriptionResultOutput) ElementType() reflect.Type {
@@ -126,11 +124,6 @@ func (o LookupTopicEventSubscriptionResultOutput) ToLookupTopicEventSubscription
 
 func (o LookupTopicEventSubscriptionResultOutput) ToLookupTopicEventSubscriptionResultOutputWithContext(ctx context.Context) LookupTopicEventSubscriptionResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupTopicEventSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTopicEventSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
@@ -203,7 +196,7 @@ func (o LookupTopicEventSubscriptionResultOutput) RetryPolicy() RetryPolicyRespo
 	return o.ApplyT(func(v LookupTopicEventSubscriptionResult) *RetryPolicyResponse { return v.RetryPolicy }).(RetryPolicyResponsePtrOutput)
 }
 
-// The system metadata relating to the Event Grid resource.
+// The system metadata relating to Event Subscription resource.
 func (o LookupTopicEventSubscriptionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTopicEventSubscriptionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

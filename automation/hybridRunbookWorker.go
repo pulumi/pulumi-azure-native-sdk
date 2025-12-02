@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of hybrid runbook worker.
 //
-// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+// Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2021-06-22.
 //
-// Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
 type HybridRunbookWorker struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the assigned machine IP address.
 	Ip pulumi.StringPtrOutput `pulumi:"ip"`
 	// Last Heartbeat from the Worker
@@ -174,11 +172,6 @@ func (o HybridRunbookWorkerOutput) ToHybridRunbookWorkerOutput() HybridRunbookWo
 
 func (o HybridRunbookWorkerOutput) ToHybridRunbookWorkerOutputWithContext(ctx context.Context) HybridRunbookWorkerOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o HybridRunbookWorkerOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *HybridRunbookWorker) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the assigned machine IP address.

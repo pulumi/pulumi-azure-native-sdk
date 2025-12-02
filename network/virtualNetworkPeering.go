@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Peerings in a virtual network resource.
 //
-// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01.
 //
-// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
 type VirtualNetworkPeering struct {
 	pulumi.CustomResourceState
 
@@ -26,24 +26,12 @@ type VirtualNetworkPeering struct {
 	AllowGatewayTransit pulumi.BoolPtrOutput `pulumi:"allowGatewayTransit"`
 	// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
 	AllowVirtualNetworkAccess pulumi.BoolPtrOutput `pulumi:"allowVirtualNetworkAccess"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// If we need to verify the provisioning state of the remote gateway.
 	DoNotVerifyRemoteGateways pulumi.BoolPtrOutput `pulumi:"doNotVerifyRemoteGateways"`
-	// Whether only Ipv6 address space is peered for subnet peering.
-	EnableOnlyIPv6Peering pulumi.BoolPtrOutput `pulumi:"enableOnlyIPv6Peering"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The local address space of the local virtual network that is peered.
-	LocalAddressSpace AddressSpaceResponsePtrOutput `pulumi:"localAddressSpace"`
-	// List of local subnet names that are subnet peered with remote virtual network.
-	LocalSubnetNames pulumi.StringArrayOutput `pulumi:"localSubnetNames"`
-	// The current local address space of the local virtual network that is peered.
-	LocalVirtualNetworkAddressSpace AddressSpaceResponsePtrOutput `pulumi:"localVirtualNetworkAddressSpace"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
-	// Whether complete virtual network address space is peered.
-	PeerCompleteVnets pulumi.BoolPtrOutput `pulumi:"peerCompleteVnets"`
 	// The status of the virtual network peering.
 	PeeringState pulumi.StringPtrOutput `pulumi:"peeringState"`
 	// The peering sync status of the virtual network peering.
@@ -54,8 +42,6 @@ type VirtualNetworkPeering struct {
 	RemoteAddressSpace AddressSpaceResponsePtrOutput `pulumi:"remoteAddressSpace"`
 	// The reference to the remote virtual network's Bgp Communities.
 	RemoteBgpCommunities VirtualNetworkBgpCommunitiesResponsePtrOutput `pulumi:"remoteBgpCommunities"`
-	// List of remote subnet names from remote virtual network that are subnet peered.
-	RemoteSubnetNames pulumi.StringArrayOutput `pulumi:"remoteSubnetNames"`
 	// The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
 	RemoteVirtualNetwork SubResourceResponsePtrOutput `pulumi:"remoteVirtualNetwork"`
 	// The reference to the current address space of the remote virtual network.
@@ -237,12 +223,6 @@ func NewVirtualNetworkPeering(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240501:VirtualNetworkPeering"),
 		},
-		{
-			Type: pulumi.String("azure-native:network/v20240701:VirtualNetworkPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20241001:VirtualNetworkPeering"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -286,20 +266,10 @@ type virtualNetworkPeeringArgs struct {
 	AllowVirtualNetworkAccess *bool `pulumi:"allowVirtualNetworkAccess"`
 	// If we need to verify the provisioning state of the remote gateway.
 	DoNotVerifyRemoteGateways *bool `pulumi:"doNotVerifyRemoteGateways"`
-	// Whether only Ipv6 address space is peered for subnet peering.
-	EnableOnlyIPv6Peering *bool `pulumi:"enableOnlyIPv6Peering"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
-	// The local address space of the local virtual network that is peered.
-	LocalAddressSpace *AddressSpace `pulumi:"localAddressSpace"`
-	// List of local subnet names that are subnet peered with remote virtual network.
-	LocalSubnetNames []string `pulumi:"localSubnetNames"`
-	// The current local address space of the local virtual network that is peered.
-	LocalVirtualNetworkAddressSpace *AddressSpace `pulumi:"localVirtualNetworkAddressSpace"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
-	// Whether complete virtual network address space is peered.
-	PeerCompleteVnets *bool `pulumi:"peerCompleteVnets"`
 	// The status of the virtual network peering.
 	PeeringState *string `pulumi:"peeringState"`
 	// The peering sync status of the virtual network peering.
@@ -308,8 +278,6 @@ type virtualNetworkPeeringArgs struct {
 	RemoteAddressSpace *AddressSpace `pulumi:"remoteAddressSpace"`
 	// The reference to the remote virtual network's Bgp Communities.
 	RemoteBgpCommunities *VirtualNetworkBgpCommunities `pulumi:"remoteBgpCommunities"`
-	// List of remote subnet names from remote virtual network that are subnet peered.
-	RemoteSubnetNames []string `pulumi:"remoteSubnetNames"`
 	// The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
 	RemoteVirtualNetwork *SubResource `pulumi:"remoteVirtualNetwork"`
 	// The reference to the current address space of the remote virtual network.
@@ -338,20 +306,10 @@ type VirtualNetworkPeeringArgs struct {
 	AllowVirtualNetworkAccess pulumi.BoolPtrInput
 	// If we need to verify the provisioning state of the remote gateway.
 	DoNotVerifyRemoteGateways pulumi.BoolPtrInput
-	// Whether only Ipv6 address space is peered for subnet peering.
-	EnableOnlyIPv6Peering pulumi.BoolPtrInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
-	// The local address space of the local virtual network that is peered.
-	LocalAddressSpace AddressSpacePtrInput
-	// List of local subnet names that are subnet peered with remote virtual network.
-	LocalSubnetNames pulumi.StringArrayInput
-	// The current local address space of the local virtual network that is peered.
-	LocalVirtualNetworkAddressSpace AddressSpacePtrInput
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrInput
-	// Whether complete virtual network address space is peered.
-	PeerCompleteVnets pulumi.BoolPtrInput
 	// The status of the virtual network peering.
 	PeeringState pulumi.StringPtrInput
 	// The peering sync status of the virtual network peering.
@@ -360,8 +318,6 @@ type VirtualNetworkPeeringArgs struct {
 	RemoteAddressSpace AddressSpacePtrInput
 	// The reference to the remote virtual network's Bgp Communities.
 	RemoteBgpCommunities VirtualNetworkBgpCommunitiesPtrInput
-	// List of remote subnet names from remote virtual network that are subnet peered.
-	RemoteSubnetNames pulumi.StringArrayInput
 	// The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
 	RemoteVirtualNetwork SubResourcePtrInput
 	// The reference to the current address space of the remote virtual network.
@@ -432,19 +388,9 @@ func (o VirtualNetworkPeeringOutput) AllowVirtualNetworkAccess() pulumi.BoolPtrO
 	return o.ApplyT(func(v *VirtualNetworkPeering) pulumi.BoolPtrOutput { return v.AllowVirtualNetworkAccess }).(pulumi.BoolPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o VirtualNetworkPeeringOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualNetworkPeering) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // If we need to verify the provisioning state of the remote gateway.
 func (o VirtualNetworkPeeringOutput) DoNotVerifyRemoteGateways() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkPeering) pulumi.BoolPtrOutput { return v.DoNotVerifyRemoteGateways }).(pulumi.BoolPtrOutput)
-}
-
-// Whether only Ipv6 address space is peered for subnet peering.
-func (o VirtualNetworkPeeringOutput) EnableOnlyIPv6Peering() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VirtualNetworkPeering) pulumi.BoolPtrOutput { return v.EnableOnlyIPv6Peering }).(pulumi.BoolPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -452,29 +398,9 @@ func (o VirtualNetworkPeeringOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetworkPeering) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The local address space of the local virtual network that is peered.
-func (o VirtualNetworkPeeringOutput) LocalAddressSpace() AddressSpaceResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualNetworkPeering) AddressSpaceResponsePtrOutput { return v.LocalAddressSpace }).(AddressSpaceResponsePtrOutput)
-}
-
-// List of local subnet names that are subnet peered with remote virtual network.
-func (o VirtualNetworkPeeringOutput) LocalSubnetNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VirtualNetworkPeering) pulumi.StringArrayOutput { return v.LocalSubnetNames }).(pulumi.StringArrayOutput)
-}
-
-// The current local address space of the local virtual network that is peered.
-func (o VirtualNetworkPeeringOutput) LocalVirtualNetworkAddressSpace() AddressSpaceResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualNetworkPeering) AddressSpaceResponsePtrOutput { return v.LocalVirtualNetworkAddressSpace }).(AddressSpaceResponsePtrOutput)
-}
-
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o VirtualNetworkPeeringOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkPeering) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Whether complete virtual network address space is peered.
-func (o VirtualNetworkPeeringOutput) PeerCompleteVnets() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VirtualNetworkPeering) pulumi.BoolPtrOutput { return v.PeerCompleteVnets }).(pulumi.BoolPtrOutput)
 }
 
 // The status of the virtual network peering.
@@ -502,11 +428,6 @@ func (o VirtualNetworkPeeringOutput) RemoteBgpCommunities() VirtualNetworkBgpCom
 	return o.ApplyT(func(v *VirtualNetworkPeering) VirtualNetworkBgpCommunitiesResponsePtrOutput {
 		return v.RemoteBgpCommunities
 	}).(VirtualNetworkBgpCommunitiesResponsePtrOutput)
-}
-
-// List of remote subnet names from remote virtual network that are subnet peered.
-func (o VirtualNetworkPeeringOutput) RemoteSubnetNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VirtualNetworkPeering) pulumi.StringArrayOutput { return v.RemoteSubnetNames }).(pulumi.StringArrayOutput)
 }
 
 // The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).

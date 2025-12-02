@@ -8,44 +8,40 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Distributed availability group between box and Sql Managed Instance.
 //
-// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2021-05-01-preview.
 //
-// Other available API versions: 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 type DistributedAvailabilityGroup struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Databases in the distributed availability group
-	Databases DistributedAvailabilityGroupDatabaseResponseArrayOutput `pulumi:"databases"`
-	// ID of the distributed availability group
+	// The distributed availability group id
 	DistributedAvailabilityGroupId pulumi.StringOutput `pulumi:"distributedAvailabilityGroupId"`
-	// Name of the distributed availability group
-	DistributedAvailabilityGroupName pulumi.StringOutput `pulumi:"distributedAvailabilityGroupName"`
-	// The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
-	FailoverMode pulumi.StringPtrOutput `pulumi:"failoverMode"`
-	// Managed instance side availability group name
-	InstanceAvailabilityGroupName pulumi.StringPtrOutput `pulumi:"instanceAvailabilityGroupName"`
-	// Managed instance side link role
-	InstanceLinkRole pulumi.StringPtrOutput `pulumi:"instanceLinkRole"`
+	// The last hardened lsn
+	LastHardenedLsn pulumi.StringOutput `pulumi:"lastHardenedLsn"`
+	// The link state
+	LinkState pulumi.StringOutput `pulumi:"linkState"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// SQL server side availability group name
-	PartnerAvailabilityGroupName pulumi.StringPtrOutput `pulumi:"partnerAvailabilityGroupName"`
-	// SQL server side endpoint - IP or DNS resolvable name
-	PartnerEndpoint pulumi.StringPtrOutput `pulumi:"partnerEndpoint"`
-	// SQL server side link role
-	PartnerLinkRole pulumi.StringOutput `pulumi:"partnerLinkRole"`
-	// Replication mode of the link
+	// The primary availability group name
+	PrimaryAvailabilityGroupName pulumi.StringPtrOutput `pulumi:"primaryAvailabilityGroupName"`
+	// The replication mode of a distributed availability group. Parameter will be ignored during link creation.
 	ReplicationMode pulumi.StringPtrOutput `pulumi:"replicationMode"`
-	// Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
-	SeedingMode pulumi.StringPtrOutput `pulumi:"seedingMode"`
+	// The secondary availability group name
+	SecondaryAvailabilityGroupName pulumi.StringPtrOutput `pulumi:"secondaryAvailabilityGroupName"`
+	// The source endpoint
+	SourceEndpoint pulumi.StringPtrOutput `pulumi:"sourceEndpoint"`
+	// The source replica id
+	SourceReplicaId pulumi.StringOutput `pulumi:"sourceReplicaId"`
+	// The name of the target database
+	TargetDatabase pulumi.StringPtrOutput `pulumi:"targetDatabase"`
+	// The target replica id
+	TargetReplicaId pulumi.StringOutput `pulumi:"targetReplicaId"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -103,9 +99,6 @@ func NewDistributedAvailabilityGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:DistributedAvailabilityGroup"),
 		},
-		{
-			Type: pulumi.String("azure-native:sql/v20241101preview:DistributedAvailabilityGroup"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -141,54 +134,42 @@ func (DistributedAvailabilityGroupState) ElementType() reflect.Type {
 }
 
 type distributedAvailabilityGroupArgs struct {
-	// Databases in the distributed availability group
-	Databases []DistributedAvailabilityGroupDatabase `pulumi:"databases"`
 	// The distributed availability group name.
 	DistributedAvailabilityGroupName *string `pulumi:"distributedAvailabilityGroupName"`
-	// The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
-	FailoverMode *string `pulumi:"failoverMode"`
-	// Managed instance side availability group name
-	InstanceAvailabilityGroupName *string `pulumi:"instanceAvailabilityGroupName"`
-	// Managed instance side link role
-	InstanceLinkRole *string `pulumi:"instanceLinkRole"`
 	// The name of the managed instance.
 	ManagedInstanceName string `pulumi:"managedInstanceName"`
-	// SQL server side availability group name
-	PartnerAvailabilityGroupName *string `pulumi:"partnerAvailabilityGroupName"`
-	// SQL server side endpoint - IP or DNS resolvable name
-	PartnerEndpoint *string `pulumi:"partnerEndpoint"`
-	// Replication mode of the link
+	// The primary availability group name
+	PrimaryAvailabilityGroupName *string `pulumi:"primaryAvailabilityGroupName"`
+	// The replication mode of a distributed availability group. Parameter will be ignored during link creation.
 	ReplicationMode *string `pulumi:"replicationMode"`
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
-	SeedingMode *string `pulumi:"seedingMode"`
+	// The secondary availability group name
+	SecondaryAvailabilityGroupName *string `pulumi:"secondaryAvailabilityGroupName"`
+	// The source endpoint
+	SourceEndpoint *string `pulumi:"sourceEndpoint"`
+	// The name of the target database
+	TargetDatabase *string `pulumi:"targetDatabase"`
 }
 
 // The set of arguments for constructing a DistributedAvailabilityGroup resource.
 type DistributedAvailabilityGroupArgs struct {
-	// Databases in the distributed availability group
-	Databases DistributedAvailabilityGroupDatabaseArrayInput
 	// The distributed availability group name.
 	DistributedAvailabilityGroupName pulumi.StringPtrInput
-	// The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
-	FailoverMode pulumi.StringPtrInput
-	// Managed instance side availability group name
-	InstanceAvailabilityGroupName pulumi.StringPtrInput
-	// Managed instance side link role
-	InstanceLinkRole pulumi.StringPtrInput
 	// The name of the managed instance.
 	ManagedInstanceName pulumi.StringInput
-	// SQL server side availability group name
-	PartnerAvailabilityGroupName pulumi.StringPtrInput
-	// SQL server side endpoint - IP or DNS resolvable name
-	PartnerEndpoint pulumi.StringPtrInput
-	// Replication mode of the link
+	// The primary availability group name
+	PrimaryAvailabilityGroupName pulumi.StringPtrInput
+	// The replication mode of a distributed availability group. Parameter will be ignored during link creation.
 	ReplicationMode pulumi.StringPtrInput
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
-	// Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
-	SeedingMode pulumi.StringPtrInput
+	// The secondary availability group name
+	SecondaryAvailabilityGroupName pulumi.StringPtrInput
+	// The source endpoint
+	SourceEndpoint pulumi.StringPtrInput
+	// The name of the target database
+	TargetDatabase pulumi.StringPtrInput
 }
 
 func (DistributedAvailabilityGroupArgs) ElementType() reflect.Type {
@@ -228,41 +209,19 @@ func (o DistributedAvailabilityGroupOutput) ToDistributedAvailabilityGroupOutput
 	return o
 }
 
-// The Azure API version of the resource.
-func (o DistributedAvailabilityGroupOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Databases in the distributed availability group
-func (o DistributedAvailabilityGroupOutput) Databases() DistributedAvailabilityGroupDatabaseResponseArrayOutput {
-	return o.ApplyT(func(v *DistributedAvailabilityGroup) DistributedAvailabilityGroupDatabaseResponseArrayOutput {
-		return v.Databases
-	}).(DistributedAvailabilityGroupDatabaseResponseArrayOutput)
-}
-
-// ID of the distributed availability group
+// The distributed availability group id
 func (o DistributedAvailabilityGroupOutput) DistributedAvailabilityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringOutput { return v.DistributedAvailabilityGroupId }).(pulumi.StringOutput)
 }
 
-// Name of the distributed availability group
-func (o DistributedAvailabilityGroupOutput) DistributedAvailabilityGroupName() pulumi.StringOutput {
-	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringOutput { return v.DistributedAvailabilityGroupName }).(pulumi.StringOutput)
+// The last hardened lsn
+func (o DistributedAvailabilityGroupOutput) LastHardenedLsn() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringOutput { return v.LastHardenedLsn }).(pulumi.StringOutput)
 }
 
-// The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
-func (o DistributedAvailabilityGroupOutput) FailoverMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringPtrOutput { return v.FailoverMode }).(pulumi.StringPtrOutput)
-}
-
-// Managed instance side availability group name
-func (o DistributedAvailabilityGroupOutput) InstanceAvailabilityGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringPtrOutput { return v.InstanceAvailabilityGroupName }).(pulumi.StringPtrOutput)
-}
-
-// Managed instance side link role
-func (o DistributedAvailabilityGroupOutput) InstanceLinkRole() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringPtrOutput { return v.InstanceLinkRole }).(pulumi.StringPtrOutput)
+// The link state
+func (o DistributedAvailabilityGroupOutput) LinkState() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringOutput { return v.LinkState }).(pulumi.StringOutput)
 }
 
 // Resource name.
@@ -270,29 +229,39 @@ func (o DistributedAvailabilityGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// SQL server side availability group name
-func (o DistributedAvailabilityGroupOutput) PartnerAvailabilityGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringPtrOutput { return v.PartnerAvailabilityGroupName }).(pulumi.StringPtrOutput)
+// The primary availability group name
+func (o DistributedAvailabilityGroupOutput) PrimaryAvailabilityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringPtrOutput { return v.PrimaryAvailabilityGroupName }).(pulumi.StringPtrOutput)
 }
 
-// SQL server side endpoint - IP or DNS resolvable name
-func (o DistributedAvailabilityGroupOutput) PartnerEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringPtrOutput { return v.PartnerEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// SQL server side link role
-func (o DistributedAvailabilityGroupOutput) PartnerLinkRole() pulumi.StringOutput {
-	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringOutput { return v.PartnerLinkRole }).(pulumi.StringOutput)
-}
-
-// Replication mode of the link
+// The replication mode of a distributed availability group. Parameter will be ignored during link creation.
 func (o DistributedAvailabilityGroupOutput) ReplicationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringPtrOutput { return v.ReplicationMode }).(pulumi.StringPtrOutput)
 }
 
-// Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
-func (o DistributedAvailabilityGroupOutput) SeedingMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringPtrOutput { return v.SeedingMode }).(pulumi.StringPtrOutput)
+// The secondary availability group name
+func (o DistributedAvailabilityGroupOutput) SecondaryAvailabilityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringPtrOutput { return v.SecondaryAvailabilityGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The source endpoint
+func (o DistributedAvailabilityGroupOutput) SourceEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringPtrOutput { return v.SourceEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The source replica id
+func (o DistributedAvailabilityGroupOutput) SourceReplicaId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringOutput { return v.SourceReplicaId }).(pulumi.StringOutput)
+}
+
+// The name of the target database
+func (o DistributedAvailabilityGroupOutput) TargetDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringPtrOutput { return v.TargetDatabase }).(pulumi.StringPtrOutput)
+}
+
+// The target replica id
+func (o DistributedAvailabilityGroupOutput) TargetReplicaId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringOutput { return v.TargetReplicaId }).(pulumi.StringOutput)
 }
 
 // Resource type.

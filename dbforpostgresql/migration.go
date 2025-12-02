@@ -8,75 +8,63 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Migration.
+// Represents a migration resource.
 //
-// Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
+// Uses Azure REST API version 2023-03-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-06-15-privatepreview, 2022-05-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
 type Migration struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Indicates if cancel must be triggered for the entire migration.
+	// To trigger cancel for entire migration we need to send this flag as True
 	Cancel pulumi.StringPtrOutput `pulumi:"cancel"`
-	// Current status of a migration.
+	// Current status of migration
 	CurrentStatus MigrationStatusResponseOutput `pulumi:"currentStatus"`
-	// When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array.
+	// When you want to trigger cancel for specific databases send cancel flag as True and database names in this array
 	DbsToCancelMigrationOn pulumi.StringArrayOutput `pulumi:"dbsToCancelMigrationOn"`
-	// Names of databases to migrate.
+	// Number of databases to migrate
 	DbsToMigrate pulumi.StringArrayOutput `pulumi:"dbsToMigrate"`
-	// When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array.
+	// When you want to trigger cutover for specific databases send triggerCutover flag as True and database names in this array
 	DbsToTriggerCutoverOn pulumi.StringArrayOutput `pulumi:"dbsToTriggerCutoverOn"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Indicates if roles and permissions must be migrated.
-	MigrateRoles pulumi.StringPtrOutput `pulumi:"migrateRoles"`
-	// Identifier of a migration.
+	// ID for migration, a GUID.
 	MigrationId pulumi.StringOutput `pulumi:"migrationId"`
-	// Identifier of the private endpoint migration instance.
-	MigrationInstanceResourceId pulumi.StringPtrOutput `pulumi:"migrationInstanceResourceId"`
-	// Mode used to perform the migration: Online or Offline.
+	// There are two types of migration modes Online and Offline
 	MigrationMode pulumi.StringPtrOutput `pulumi:"migrationMode"`
-	// Supported option for a migration.
-	MigrationOption pulumi.StringPtrOutput `pulumi:"migrationOption"`
-	// End time (UTC) for migration window.
+	// End time in UTC for migration window
 	MigrationWindowEndTimeInUtc pulumi.StringPtrOutput `pulumi:"migrationWindowEndTimeInUtc"`
-	// Start time (UTC) for migration window.
+	// Start time in UTC for migration window
 	MigrationWindowStartTimeInUtc pulumi.StringPtrOutput `pulumi:"migrationWindowStartTimeInUtc"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation.
+	// Indicates whether the databases on the target server can be overwritten, if already present. If set to False, the migration workflow will wait for a confirmation, if it detects that the database already exists.
 	OverwriteDbsInTarget pulumi.StringPtrOutput `pulumi:"overwriteDbsInTarget"`
-	// Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+	// Indicates whether to setup LogicalReplicationOnSourceDb, if needed
 	SetupLogicalReplicationOnSourceDbIfNeeded pulumi.StringPtrOutput `pulumi:"setupLogicalReplicationOnSourceDbIfNeeded"`
-	// Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server.
+	// Source server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
 	SourceDbServerFullyQualifiedDomainName pulumi.StringPtrOutput `pulumi:"sourceDbServerFullyQualifiedDomainName"`
-	// Metadata of source database server.
+	// Metadata of the source database server
 	SourceDbServerMetadata DbServerMetadataResponseOutput `pulumi:"sourceDbServerMetadata"`
-	// Identifier of the source database server resource, when 'sourceType' is 'PostgreSQLSingleServer'. For other source types this must be set to ipaddress:port@username or hostname:port@username.
+	// ResourceId of the source database server
 	SourceDbServerResourceId pulumi.StringPtrOutput `pulumi:"sourceDbServerResourceId"`
-	// Source server type used for the migration: ApsaraDB_RDS, AWS, AWS_AURORA, AWS_EC2, AWS_RDS, AzureVM, Crunchy_PostgreSQL, Digital_Ocean_Droplets, Digital_Ocean_PostgreSQL, EDB, EDB_Oracle_Server, EDB_PostgreSQL, GCP, GCP_AlloyDB, GCP_CloudSQL, GCP_Compute, Heroku_PostgreSQL, Huawei_Compute, Huawei_RDS, OnPremises, PostgreSQLCosmosDB, PostgreSQLFlexibleServer, PostgreSQLSingleServer, or Supabase_PostgreSQL
-	SourceType pulumi.StringPtrOutput `pulumi:"sourceType"`
-	// SSL mode used by a migration. Default SSL mode for 'PostgreSQLSingleServer' is 'VerifyFull'. Default SSL mode for other source types is 'Prefer'.
-	SslMode pulumi.StringPtrOutput `pulumi:"sslMode"`
-	// Indicates if data migration must start right away.
+	// Indicates whether the data migration should start right away
 	StartDataMigration pulumi.StringPtrOutput `pulumi:"startDataMigration"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Fully qualified domain name (FQDN) or IP address of the target server. This property is optional. When provided, the migration service will always use it to connect to the target server.
+	// Target server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
 	TargetDbServerFullyQualifiedDomainName pulumi.StringPtrOutput `pulumi:"targetDbServerFullyQualifiedDomainName"`
-	// Metadata of target database server.
+	// Metadata of the target database server
 	TargetDbServerMetadata DbServerMetadataResponseOutput `pulumi:"targetDbServerMetadata"`
-	// Identifier of the target database server resource.
+	// ResourceId of the source database server
 	TargetDbServerResourceId pulumi.StringOutput `pulumi:"targetDbServerResourceId"`
-	// Indicates if cutover must be triggered for the entire migration.
+	// To trigger cutover for entire migration we need to send this flag as True
 	TriggerCutover pulumi.StringPtrOutput `pulumi:"triggerCutover"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -120,15 +108,6 @@ func NewMigration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Migration"),
 		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250101preview:Migration"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250601preview:Migration"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250801:Migration"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -164,113 +143,93 @@ func (MigrationState) ElementType() reflect.Type {
 }
 
 type migrationArgs struct {
-	// Indicates if cancel must be triggered for the entire migration.
+	// To trigger cancel for entire migration we need to send this flag as True
 	Cancel *string `pulumi:"cancel"`
-	// When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array.
+	// When you want to trigger cancel for specific databases send cancel flag as True and database names in this array
 	DbsToCancelMigrationOn []string `pulumi:"dbsToCancelMigrationOn"`
-	// Names of databases to migrate.
+	// Number of databases to migrate
 	DbsToMigrate []string `pulumi:"dbsToMigrate"`
-	// When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array.
+	// When you want to trigger cutover for specific databases send triggerCutover flag as True and database names in this array
 	DbsToTriggerCutoverOn []string `pulumi:"dbsToTriggerCutoverOn"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Indicates if roles and permissions must be migrated.
-	MigrateRoles *string `pulumi:"migrateRoles"`
-	// Identifier of the private endpoint migration instance.
-	MigrationInstanceResourceId *string `pulumi:"migrationInstanceResourceId"`
-	// Mode used to perform the migration: Online or Offline.
+	// There are two types of migration modes Online and Offline
 	MigrationMode *string `pulumi:"migrationMode"`
-	// Name of migration.
+	// The name of the migration.
 	MigrationName *string `pulumi:"migrationName"`
-	// Supported option for a migration.
-	MigrationOption *string `pulumi:"migrationOption"`
-	// End time (UTC) for migration window.
+	// End time in UTC for migration window
 	MigrationWindowEndTimeInUtc *string `pulumi:"migrationWindowEndTimeInUtc"`
-	// Start time (UTC) for migration window.
+	// Start time in UTC for migration window
 	MigrationWindowStartTimeInUtc *string `pulumi:"migrationWindowStartTimeInUtc"`
-	// Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation.
+	// Indicates whether the databases on the target server can be overwritten, if already present. If set to False, the migration workflow will wait for a confirmation, if it detects that the database already exists.
 	OverwriteDbsInTarget *string `pulumi:"overwriteDbsInTarget"`
-	// Name of resource group of target database server.
+	// The resource group name of the target database server.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Migration secret parameters.
+	// Migration secret parameters
 	SecretParameters *MigrationSecretParameters `pulumi:"secretParameters"`
-	// Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+	// Indicates whether to setup LogicalReplicationOnSourceDb, if needed
 	SetupLogicalReplicationOnSourceDbIfNeeded *string `pulumi:"setupLogicalReplicationOnSourceDbIfNeeded"`
-	// Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server.
+	// Source server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
 	SourceDbServerFullyQualifiedDomainName *string `pulumi:"sourceDbServerFullyQualifiedDomainName"`
-	// Identifier of the source database server resource, when 'sourceType' is 'PostgreSQLSingleServer'. For other source types this must be set to ipaddress:port@username or hostname:port@username.
+	// ResourceId of the source database server
 	SourceDbServerResourceId *string `pulumi:"sourceDbServerResourceId"`
-	// Source server type used for the migration: ApsaraDB_RDS, AWS, AWS_AURORA, AWS_EC2, AWS_RDS, AzureVM, Crunchy_PostgreSQL, Digital_Ocean_Droplets, Digital_Ocean_PostgreSQL, EDB, EDB_Oracle_Server, EDB_PostgreSQL, GCP, GCP_AlloyDB, GCP_CloudSQL, GCP_Compute, Heroku_PostgreSQL, Huawei_Compute, Huawei_RDS, OnPremises, PostgreSQLCosmosDB, PostgreSQLFlexibleServer, PostgreSQLSingleServer, or Supabase_PostgreSQL
-	SourceType *string `pulumi:"sourceType"`
-	// SSL mode used by a migration. Default SSL mode for 'PostgreSQLSingleServer' is 'VerifyFull'. Default SSL mode for other source types is 'Prefer'.
-	SslMode *string `pulumi:"sslMode"`
-	// Indicates if data migration must start right away.
+	// Indicates whether the data migration should start right away
 	StartDataMigration *string `pulumi:"startDataMigration"`
-	// Identifier of subscription of target database server.
+	// The subscription ID of the target database server.
 	SubscriptionId *string `pulumi:"subscriptionId"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Fully qualified domain name (FQDN) or IP address of the target server. This property is optional. When provided, the migration service will always use it to connect to the target server.
+	// Target server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
 	TargetDbServerFullyQualifiedDomainName *string `pulumi:"targetDbServerFullyQualifiedDomainName"`
-	// Name of target database server.
+	// The name of the target database server.
 	TargetDbServerName string `pulumi:"targetDbServerName"`
-	// Indicates if cutover must be triggered for the entire migration.
+	// To trigger cutover for entire migration we need to send this flag as True
 	TriggerCutover *string `pulumi:"triggerCutover"`
 }
 
 // The set of arguments for constructing a Migration resource.
 type MigrationArgs struct {
-	// Indicates if cancel must be triggered for the entire migration.
+	// To trigger cancel for entire migration we need to send this flag as True
 	Cancel pulumi.StringPtrInput
-	// When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array.
+	// When you want to trigger cancel for specific databases send cancel flag as True and database names in this array
 	DbsToCancelMigrationOn pulumi.StringArrayInput
-	// Names of databases to migrate.
+	// Number of databases to migrate
 	DbsToMigrate pulumi.StringArrayInput
-	// When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array.
+	// When you want to trigger cutover for specific databases send triggerCutover flag as True and database names in this array
 	DbsToTriggerCutoverOn pulumi.StringArrayInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Indicates if roles and permissions must be migrated.
-	MigrateRoles pulumi.StringPtrInput
-	// Identifier of the private endpoint migration instance.
-	MigrationInstanceResourceId pulumi.StringPtrInput
-	// Mode used to perform the migration: Online or Offline.
+	// There are two types of migration modes Online and Offline
 	MigrationMode pulumi.StringPtrInput
-	// Name of migration.
+	// The name of the migration.
 	MigrationName pulumi.StringPtrInput
-	// Supported option for a migration.
-	MigrationOption pulumi.StringPtrInput
-	// End time (UTC) for migration window.
+	// End time in UTC for migration window
 	MigrationWindowEndTimeInUtc pulumi.StringPtrInput
-	// Start time (UTC) for migration window.
+	// Start time in UTC for migration window
 	MigrationWindowStartTimeInUtc pulumi.StringPtrInput
-	// Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation.
+	// Indicates whether the databases on the target server can be overwritten, if already present. If set to False, the migration workflow will wait for a confirmation, if it detects that the database already exists.
 	OverwriteDbsInTarget pulumi.StringPtrInput
-	// Name of resource group of target database server.
+	// The resource group name of the target database server.
 	ResourceGroupName pulumi.StringInput
-	// Migration secret parameters.
+	// Migration secret parameters
 	SecretParameters MigrationSecretParametersPtrInput
-	// Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+	// Indicates whether to setup LogicalReplicationOnSourceDb, if needed
 	SetupLogicalReplicationOnSourceDbIfNeeded pulumi.StringPtrInput
-	// Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server.
+	// Source server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
 	SourceDbServerFullyQualifiedDomainName pulumi.StringPtrInput
-	// Identifier of the source database server resource, when 'sourceType' is 'PostgreSQLSingleServer'. For other source types this must be set to ipaddress:port@username or hostname:port@username.
+	// ResourceId of the source database server
 	SourceDbServerResourceId pulumi.StringPtrInput
-	// Source server type used for the migration: ApsaraDB_RDS, AWS, AWS_AURORA, AWS_EC2, AWS_RDS, AzureVM, Crunchy_PostgreSQL, Digital_Ocean_Droplets, Digital_Ocean_PostgreSQL, EDB, EDB_Oracle_Server, EDB_PostgreSQL, GCP, GCP_AlloyDB, GCP_CloudSQL, GCP_Compute, Heroku_PostgreSQL, Huawei_Compute, Huawei_RDS, OnPremises, PostgreSQLCosmosDB, PostgreSQLFlexibleServer, PostgreSQLSingleServer, or Supabase_PostgreSQL
-	SourceType pulumi.StringPtrInput
-	// SSL mode used by a migration. Default SSL mode for 'PostgreSQLSingleServer' is 'VerifyFull'. Default SSL mode for other source types is 'Prefer'.
-	SslMode pulumi.StringPtrInput
-	// Indicates if data migration must start right away.
+	// Indicates whether the data migration should start right away
 	StartDataMigration pulumi.StringPtrInput
-	// Identifier of subscription of target database server.
+	// The subscription ID of the target database server.
 	SubscriptionId pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Fully qualified domain name (FQDN) or IP address of the target server. This property is optional. When provided, the migration service will always use it to connect to the target server.
+	// Target server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
 	TargetDbServerFullyQualifiedDomainName pulumi.StringPtrInput
-	// Name of target database server.
+	// The name of the target database server.
 	TargetDbServerName pulumi.StringInput
-	// Indicates if cutover must be triggered for the entire migration.
+	// To trigger cutover for entire migration we need to send this flag as True
 	TriggerCutover pulumi.StringPtrInput
 }
 
@@ -311,32 +270,27 @@ func (o MigrationOutput) ToMigrationOutputWithContext(ctx context.Context) Migra
 	return o
 }
 
-// The Azure API version of the resource.
-func (o MigrationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Migration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Indicates if cancel must be triggered for the entire migration.
+// To trigger cancel for entire migration we need to send this flag as True
 func (o MigrationOutput) Cancel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.Cancel }).(pulumi.StringPtrOutput)
 }
 
-// Current status of a migration.
+// Current status of migration
 func (o MigrationOutput) CurrentStatus() MigrationStatusResponseOutput {
 	return o.ApplyT(func(v *Migration) MigrationStatusResponseOutput { return v.CurrentStatus }).(MigrationStatusResponseOutput)
 }
 
-// When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array.
+// When you want to trigger cancel for specific databases send cancel flag as True and database names in this array
 func (o MigrationOutput) DbsToCancelMigrationOn() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringArrayOutput { return v.DbsToCancelMigrationOn }).(pulumi.StringArrayOutput)
 }
 
-// Names of databases to migrate.
+// Number of databases to migrate
 func (o MigrationOutput) DbsToMigrate() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringArrayOutput { return v.DbsToMigrate }).(pulumi.StringArrayOutput)
 }
 
-// When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array.
+// When you want to trigger cutover for specific databases send triggerCutover flag as True and database names in this array
 func (o MigrationOutput) DbsToTriggerCutoverOn() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringArrayOutput { return v.DbsToTriggerCutoverOn }).(pulumi.StringArrayOutput)
 }
@@ -346,37 +300,22 @@ func (o MigrationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Indicates if roles and permissions must be migrated.
-func (o MigrationOutput) MigrateRoles() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.MigrateRoles }).(pulumi.StringPtrOutput)
-}
-
-// Identifier of a migration.
+// ID for migration, a GUID.
 func (o MigrationOutput) MigrationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringOutput { return v.MigrationId }).(pulumi.StringOutput)
 }
 
-// Identifier of the private endpoint migration instance.
-func (o MigrationOutput) MigrationInstanceResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.MigrationInstanceResourceId }).(pulumi.StringPtrOutput)
-}
-
-// Mode used to perform the migration: Online or Offline.
+// There are two types of migration modes Online and Offline
 func (o MigrationOutput) MigrationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.MigrationMode }).(pulumi.StringPtrOutput)
 }
 
-// Supported option for a migration.
-func (o MigrationOutput) MigrationOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.MigrationOption }).(pulumi.StringPtrOutput)
-}
-
-// End time (UTC) for migration window.
+// End time in UTC for migration window
 func (o MigrationOutput) MigrationWindowEndTimeInUtc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.MigrationWindowEndTimeInUtc }).(pulumi.StringPtrOutput)
 }
 
-// Start time (UTC) for migration window.
+// Start time in UTC for migration window
 func (o MigrationOutput) MigrationWindowStartTimeInUtc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.MigrationWindowStartTimeInUtc }).(pulumi.StringPtrOutput)
 }
@@ -386,42 +325,32 @@ func (o MigrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation.
+// Indicates whether the databases on the target server can be overwritten, if already present. If set to False, the migration workflow will wait for a confirmation, if it detects that the database already exists.
 func (o MigrationOutput) OverwriteDbsInTarget() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.OverwriteDbsInTarget }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+// Indicates whether to setup LogicalReplicationOnSourceDb, if needed
 func (o MigrationOutput) SetupLogicalReplicationOnSourceDbIfNeeded() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.SetupLogicalReplicationOnSourceDbIfNeeded }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server.
+// Source server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
 func (o MigrationOutput) SourceDbServerFullyQualifiedDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.SourceDbServerFullyQualifiedDomainName }).(pulumi.StringPtrOutput)
 }
 
-// Metadata of source database server.
+// Metadata of the source database server
 func (o MigrationOutput) SourceDbServerMetadata() DbServerMetadataResponseOutput {
 	return o.ApplyT(func(v *Migration) DbServerMetadataResponseOutput { return v.SourceDbServerMetadata }).(DbServerMetadataResponseOutput)
 }
 
-// Identifier of the source database server resource, when 'sourceType' is 'PostgreSQLSingleServer'. For other source types this must be set to ipaddress:port@username or hostname:port@username.
+// ResourceId of the source database server
 func (o MigrationOutput) SourceDbServerResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.SourceDbServerResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Source server type used for the migration: ApsaraDB_RDS, AWS, AWS_AURORA, AWS_EC2, AWS_RDS, AzureVM, Crunchy_PostgreSQL, Digital_Ocean_Droplets, Digital_Ocean_PostgreSQL, EDB, EDB_Oracle_Server, EDB_PostgreSQL, GCP, GCP_AlloyDB, GCP_CloudSQL, GCP_Compute, Heroku_PostgreSQL, Huawei_Compute, Huawei_RDS, OnPremises, PostgreSQLCosmosDB, PostgreSQLFlexibleServer, PostgreSQLSingleServer, or Supabase_PostgreSQL
-func (o MigrationOutput) SourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.SourceType }).(pulumi.StringPtrOutput)
-}
-
-// SSL mode used by a migration. Default SSL mode for 'PostgreSQLSingleServer' is 'VerifyFull'. Default SSL mode for other source types is 'Prefer'.
-func (o MigrationOutput) SslMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.SslMode }).(pulumi.StringPtrOutput)
-}
-
-// Indicates if data migration must start right away.
+// Indicates whether the data migration should start right away
 func (o MigrationOutput) StartDataMigration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.StartDataMigration }).(pulumi.StringPtrOutput)
 }
@@ -436,22 +365,22 @@ func (o MigrationOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Fully qualified domain name (FQDN) or IP address of the target server. This property is optional. When provided, the migration service will always use it to connect to the target server.
+// Target server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
 func (o MigrationOutput) TargetDbServerFullyQualifiedDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.TargetDbServerFullyQualifiedDomainName }).(pulumi.StringPtrOutput)
 }
 
-// Metadata of target database server.
+// Metadata of the target database server
 func (o MigrationOutput) TargetDbServerMetadata() DbServerMetadataResponseOutput {
 	return o.ApplyT(func(v *Migration) DbServerMetadataResponseOutput { return v.TargetDbServerMetadata }).(DbServerMetadataResponseOutput)
 }
 
-// Identifier of the target database server resource.
+// ResourceId of the source database server
 func (o MigrationOutput) TargetDbServerResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringOutput { return v.TargetDbServerResourceId }).(pulumi.StringOutput)
 }
 
-// Indicates if cutover must be triggered for the entire migration.
+// To trigger cutover for entire migration we need to send this flag as True
 func (o MigrationOutput) TriggerCutover() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Migration) pulumi.StringPtrOutput { return v.TriggerCutover }).(pulumi.StringPtrOutput)
 }

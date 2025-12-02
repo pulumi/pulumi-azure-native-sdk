@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A single API Management service resource in List or Get response.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+// Uses Azure REST API version 2022-08-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-10-10, 2017-03-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 type ApiManagementService struct {
 	pulumi.CustomResourceState
 
@@ -24,8 +24,6 @@ type ApiManagementService struct {
 	AdditionalLocations AdditionalLocationResponseArrayOutput `pulumi:"additionalLocations"`
 	// Control Plane Apis version constraint for the API Management service.
 	ApiVersionConstraint ApiVersionConstraintResponsePtrOutput `pulumi:"apiVersionConstraint"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
 	Certificates CertificateConfigurationResponseArrayOutput `pulumi:"certificates"`
 	// Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
@@ -202,9 +200,6 @@ func NewApiManagementService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ApiManagementService"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20241001preview:ApiManagementService"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -388,11 +383,6 @@ func (o ApiManagementServiceOutput) AdditionalLocations() AdditionalLocationResp
 // Control Plane Apis version constraint for the API Management service.
 func (o ApiManagementServiceOutput) ApiVersionConstraint() ApiVersionConstraintResponsePtrOutput {
 	return o.ApplyT(func(v *ApiManagementService) ApiVersionConstraintResponsePtrOutput { return v.ApiVersionConstraint }).(ApiVersionConstraintResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o ApiManagementServiceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApiManagementService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.

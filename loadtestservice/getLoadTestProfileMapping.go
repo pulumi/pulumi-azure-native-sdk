@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-12-01-preview.
 //
-// Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-12-01-preview.
 func LookupLoadTestProfileMapping(ctx *pulumi.Context, args *LookupLoadTestProfileMappingArgs, opts ...pulumi.InvokeOption) (*LookupLoadTestProfileMappingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadTestProfileMappingResult
@@ -35,8 +35,6 @@ type LookupLoadTestProfileMappingArgs struct {
 
 // LoadTest profile mapping resource details
 type LookupLoadTestProfileMappingResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Mapped Azure Load Test resource Id.
 	AzureLoadTestingResourceId *string `pulumi:"azureLoadTestingResourceId"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -86,11 +84,6 @@ func (o LookupLoadTestProfileMappingResultOutput) ToLookupLoadTestProfileMapping
 
 func (o LookupLoadTestProfileMappingResultOutput) ToLookupLoadTestProfileMappingResultOutputWithContext(ctx context.Context) LookupLoadTestProfileMappingResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupLoadTestProfileMappingResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLoadTestProfileMappingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Mapped Azure Load Test resource Id.

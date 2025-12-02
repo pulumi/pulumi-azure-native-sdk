@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Test Base CustomerEvent.
 //
-// Uses Azure REST API version 2023-11-01-preview.
+// Uses Azure REST API version 2022-04-01-preview.
 //
-// Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-11-01-preview.
 func LookupCustomerEvent(ctx *pulumi.Context, args *LookupCustomerEventArgs, opts ...pulumi.InvokeOption) (*LookupCustomerEventResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomerEventResult
@@ -29,7 +29,7 @@ func LookupCustomerEvent(ctx *pulumi.Context, args *LookupCustomerEventArgs, opt
 type LookupCustomerEventArgs struct {
 	// The resource name of the Test Base Customer event.
 	CustomerEventName string `pulumi:"customerEventName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
@@ -37,19 +37,17 @@ type LookupCustomerEventArgs struct {
 
 // The Customer Notification Event resource.
 type LookupCustomerEventResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name of the event subscribed to.
 	EventName string `pulumi:"eventName"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Resource ID.
 	Id string `pulumi:"id"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// The notification event receivers.
 	Receivers []NotificationEventReceiverResponse `pulumi:"receivers"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The system metadata relating to this resource
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 }
 
@@ -65,7 +63,7 @@ func LookupCustomerEventOutput(ctx *pulumi.Context, args LookupCustomerEventOutp
 type LookupCustomerEventOutputArgs struct {
 	// The resource name of the Test Base Customer event.
 	CustomerEventName pulumi.StringInput `pulumi:"customerEventName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
@@ -90,22 +88,17 @@ func (o LookupCustomerEventResultOutput) ToLookupCustomerEventResultOutputWithCo
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupCustomerEventResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomerEventResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The name of the event subscribed to.
 func (o LookupCustomerEventResultOutput) EventName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerEventResult) string { return v.EventName }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupCustomerEventResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerEventResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupCustomerEventResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerEventResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -115,12 +108,12 @@ func (o LookupCustomerEventResultOutput) Receivers() NotificationEventReceiverRe
 	return o.ApplyT(func(v LookupCustomerEventResult) []NotificationEventReceiverResponse { return v.Receivers }).(NotificationEventReceiverResponseArrayOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The system metadata relating to this resource
 func (o LookupCustomerEventResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCustomerEventResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupCustomerEventResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomerEventResult) string { return v.Type }).(pulumi.StringOutput)
 }

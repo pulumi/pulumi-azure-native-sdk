@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about a server administrator associated to a Microsoft Entra principal.
+// Gets information about a server.
 //
-// Uses Azure REST API version 2024-08-01.
+// Uses Azure REST API version 2022-12-01.
 //
-// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
 func LookupAdministrator(ctx *pulumi.Context, args *LookupAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupAdministratorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAdministratorResult
@@ -27,7 +27,7 @@ func LookupAdministrator(ctx *pulumi.Context, args *LookupAdministratorArgs, opt
 }
 
 type LookupAdministratorArgs struct {
-	// Object identifier of the Microsoft Entra principal.
+	// Guid of the objectId for the administrator.
 	ObjectId string `pulumi:"objectId"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -35,23 +35,21 @@ type LookupAdministratorArgs struct {
 	ServerName string `pulumi:"serverName"`
 }
 
-// Server administrator associated to a Microsoft Entra principal.
+// Represents an Active Directory administrator.
 type LookupAdministratorResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Object identifier of the Microsoft Entra principal.
+	// The objectId of the Active Directory administrator.
 	ObjectId *string `pulumi:"objectId"`
-	// Name of the Microsoft Entra principal.
+	// Active Directory administrator principal name.
 	PrincipalName *string `pulumi:"principalName"`
-	// Type of Microsoft Entra principal to which the server administrator is associated.
+	// The principal type used to represent the type of Active Directory Administrator.
 	PrincipalType *string `pulumi:"principalType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Identifier of the tenant in which the Microsoft Entra principal exists.
+	// The tenantId of the Active Directory administrator.
 	TenantId *string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -67,7 +65,7 @@ func LookupAdministratorOutput(ctx *pulumi.Context, args LookupAdministratorOutp
 }
 
 type LookupAdministratorOutputArgs struct {
-	// Object identifier of the Microsoft Entra principal.
+	// Guid of the objectId for the administrator.
 	ObjectId pulumi.StringInput `pulumi:"objectId"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -79,7 +77,7 @@ func (LookupAdministratorOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupAdministratorArgs)(nil)).Elem()
 }
 
-// Server administrator associated to a Microsoft Entra principal.
+// Represents an Active Directory administrator.
 type LookupAdministratorResultOutput struct{ *pulumi.OutputState }
 
 func (LookupAdministratorResultOutput) ElementType() reflect.Type {
@@ -94,12 +92,7 @@ func (o LookupAdministratorResultOutput) ToLookupAdministratorResultOutputWithCo
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupAdministratorResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAdministratorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAdministratorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdministratorResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -109,17 +102,17 @@ func (o LookupAdministratorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdministratorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Object identifier of the Microsoft Entra principal.
+// The objectId of the Active Directory administrator.
 func (o LookupAdministratorResultOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAdministratorResult) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the Microsoft Entra principal.
+// Active Directory administrator principal name.
 func (o LookupAdministratorResultOutput) PrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAdministratorResult) *string { return v.PrincipalName }).(pulumi.StringPtrOutput)
 }
 
-// Type of Microsoft Entra principal to which the server administrator is associated.
+// The principal type used to represent the type of Active Directory Administrator.
 func (o LookupAdministratorResultOutput) PrincipalType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAdministratorResult) *string { return v.PrincipalType }).(pulumi.StringPtrOutput)
 }
@@ -129,7 +122,7 @@ func (o LookupAdministratorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAdministratorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Identifier of the tenant in which the Microsoft Entra principal exists.
+// The tenantId of the Active Directory administrator.
 func (o LookupAdministratorResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAdministratorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }

@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workload group operations for a sql pool
 //
-// Uses Azure REST API version 2021-06-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
+// Uses Azure REST API version 2021-06-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-06-01-preview.
 type SqlPoolWorkloadGroup struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The workload group importance level.
 	Importance pulumi.StringPtrOutput `pulumi:"importance"`
 	// The workload group cap percentage resource.
@@ -203,11 +201,6 @@ func (o SqlPoolWorkloadGroupOutput) ToSqlPoolWorkloadGroupOutput() SqlPoolWorklo
 
 func (o SqlPoolWorkloadGroupOutput) ToSqlPoolWorkloadGroupOutputWithContext(ctx context.Context) SqlPoolWorkloadGroupOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SqlPoolWorkloadGroupOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *SqlPoolWorkloadGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The workload group importance level.

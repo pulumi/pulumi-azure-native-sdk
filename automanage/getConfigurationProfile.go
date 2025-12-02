@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about a configuration profile
 //
 // Uses Azure REST API version 2022-05-04.
-//
-// Other available API versions: 2021-04-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automanage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupConfigurationProfile(ctx *pulumi.Context, args *LookupConfigurationProfileArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationProfileResult
@@ -35,8 +33,6 @@ type LookupConfigurationProfileArgs struct {
 
 // Definition of the configuration profile.
 type LookupConfigurationProfileResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -86,11 +82,6 @@ func (o LookupConfigurationProfileResultOutput) ToLookupConfigurationProfileResu
 
 func (o LookupConfigurationProfileResultOutput) ToLookupConfigurationProfileResultOutputWithContext(ctx context.Context) LookupConfigurationProfileResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupConfigurationProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConfigurationProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

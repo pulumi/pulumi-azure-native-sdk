@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // DevOps Configuration resource.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
+// Uses Azure REST API version 2023-09-01-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2024-05-15-preview, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-04-01, 2024-05-15-preview, 2025-03-01.
 type DevOpsConfiguration struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// DevOps Configuration properties.
@@ -146,11 +144,6 @@ func (o DevOpsConfigurationOutput) ToDevOpsConfigurationOutput() DevOpsConfigura
 
 func (o DevOpsConfigurationOutput) ToDevOpsConfigurationOutputWithContext(ctx context.Context) DevOpsConfigurationOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o DevOpsConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *DevOpsConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

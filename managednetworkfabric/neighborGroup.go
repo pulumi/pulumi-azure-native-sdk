@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the Neighbor Group.
 //
-// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
+// Uses Azure REST API version 2023-06-15.
 type NeighborGroup struct {
 	pulumi.CustomResourceState
 
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An array of destination IPv4 Addresses or IPv6 Addresses.
 	Destination NeighborGroupDestinationResponseOutput `pulumi:"destination"`
 	// The geo-location where the resource lives
@@ -164,11 +162,6 @@ func (o NeighborGroupOutput) ToNeighborGroupOutputWithContext(ctx context.Contex
 // Switch configuration description.
 func (o NeighborGroupOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NeighborGroup) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o NeighborGroupOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NeighborGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An array of destination IPv4 Addresses or IPv6 Addresses.

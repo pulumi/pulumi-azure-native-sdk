@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Azure Monitor Workspace definition
 //
-// Uses Azure REST API version 2023-04-03. In version 2.x of the Azure Native provider, it used API version 2023-04-03.
+// Uses Azure REST API version 2023-04-03. In version 1.x of the Azure Native provider, it used API version 2021-06-03-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2025-05-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-10-01-preview.
 type AzureMonitorWorkspace struct {
 	pulumi.CustomResourceState
 
 	// The immutable Id of the Azure Monitor Workspace. This property is read-only.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Data Collection Rule and Endpoint used for ingestion by default.
 	DefaultIngestionSettings AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput `pulumi:"defaultIngestionSettings"`
 	// Resource entity tag (ETag)
@@ -67,9 +65,6 @@ func NewAzureMonitorWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:monitor/v20231001preview:AzureMonitorWorkspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:monitor/v20250503preview:AzureMonitorWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -172,11 +167,6 @@ func (o AzureMonitorWorkspaceOutput) ToAzureMonitorWorkspaceOutputWithContext(ct
 // The immutable Id of the Azure Monitor Workspace. This property is read-only.
 func (o AzureMonitorWorkspaceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o AzureMonitorWorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Data Collection Rule and Endpoint used for ingestion by default.

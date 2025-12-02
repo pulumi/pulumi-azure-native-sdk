@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements ExternalNetworks GET method.
 //
-// Uses Azure REST API version 2023-06-15.
+// Uses Azure REST API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-15.
 func LookupExternalNetwork(ctx *pulumi.Context, args *LookupExternalNetworkArgs, opts ...pulumi.InvokeOption) (*LookupExternalNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExternalNetworkResult
@@ -27,45 +27,39 @@ func LookupExternalNetwork(ctx *pulumi.Context, args *LookupExternalNetworkArgs,
 }
 
 type LookupExternalNetworkArgs struct {
-	// Name of the External Network.
+	// Name of the ExternalNetwork
 	ExternalNetworkName string `pulumi:"externalNetworkName"`
-	// Name of the L3 Isolation Domain.
+	// Name of the L3IsolationDomain
 	L3IsolationDomainName string `pulumi:"l3IsolationDomainName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Defines the External Network resource.
+// Defines the ExternalNetwork item.
 type LookupExternalNetworkResult struct {
-	// Administrative state of the resource.
+	// AdministrativeState of the externalNetwork. Example: Enabled | Disabled.
 	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Configuration state of the resource.
-	ConfigurationState string `pulumi:"configurationState"`
-	// Export Route Policy either IPv4 or IPv6.
-	ExportRoutePolicy *ExportRoutePolicyResponse `pulumi:"exportRoutePolicy"`
-	// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+	// List of resources the externalNetwork is disabled on. Can be either entire NetworkFabric or NetworkRack.
+	DisabledOnResources []string `pulumi:"disabledOnResources"`
+	// ARM resource ID of exportRoutePolicy.
 	ExportRoutePolicyId *string `pulumi:"exportRoutePolicyId"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Import Route Policy either IPv4 or IPv6.
-	ImportRoutePolicy *ImportRoutePolicyResponse `pulumi:"importRoutePolicy"`
-	// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+	// ARM resource ID of importRoutePolicy.
 	ImportRoutePolicyId *string `pulumi:"importRoutePolicyId"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
-	NetworkToNetworkInterconnectId *string `pulumi:"networkToNetworkInterconnectId"`
+	// Gets the networkToNetworkInterconnectId of the resource.
+	NetworkToNetworkInterconnectId string `pulumi:"networkToNetworkInterconnectId"`
 	// option A properties object
 	OptionAProperties *ExternalNetworkPropertiesResponseOptionAProperties `pulumi:"optionAProperties"`
 	// option B properties object
-	OptionBProperties *L3OptionBPropertiesResponse `pulumi:"optionBProperties"`
+	OptionBProperties *OptionBPropertiesResponse `pulumi:"optionBProperties"`
 	// Peering option list.
 	PeeringOption string `pulumi:"peeringOption"`
-	// Provisioning state of the resource.
+	// Gets the provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -93,9 +87,9 @@ func LookupExternalNetworkOutput(ctx *pulumi.Context, args LookupExternalNetwork
 }
 
 type LookupExternalNetworkOutputArgs struct {
-	// Name of the External Network.
+	// Name of the ExternalNetwork
 	ExternalNetworkName pulumi.StringInput `pulumi:"externalNetworkName"`
-	// Name of the L3 Isolation Domain.
+	// Name of the L3IsolationDomain
 	L3IsolationDomainName pulumi.StringInput `pulumi:"l3IsolationDomainName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -105,7 +99,7 @@ func (LookupExternalNetworkOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupExternalNetworkArgs)(nil)).Elem()
 }
 
-// Defines the External Network resource.
+// Defines the ExternalNetwork item.
 type LookupExternalNetworkResultOutput struct{ *pulumi.OutputState }
 
 func (LookupExternalNetworkResultOutput) ElementType() reflect.Type {
@@ -120,7 +114,7 @@ func (o LookupExternalNetworkResultOutput) ToLookupExternalNetworkResultOutputWi
 	return o
 }
 
-// Administrative state of the resource.
+// AdministrativeState of the externalNetwork. Example: Enabled | Disabled.
 func (o LookupExternalNetworkResultOutput) AdministrativeState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalNetworkResult) string { return v.AdministrativeState }).(pulumi.StringOutput)
 }
@@ -130,37 +124,22 @@ func (o LookupExternalNetworkResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExternalNetworkResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupExternalNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupExternalNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+// List of resources the externalNetwork is disabled on. Can be either entire NetworkFabric or NetworkRack.
+func (o LookupExternalNetworkResultOutput) DisabledOnResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupExternalNetworkResult) []string { return v.DisabledOnResources }).(pulumi.StringArrayOutput)
 }
 
-// Configuration state of the resource.
-func (o LookupExternalNetworkResultOutput) ConfigurationState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupExternalNetworkResult) string { return v.ConfigurationState }).(pulumi.StringOutput)
-}
-
-// Export Route Policy either IPv4 or IPv6.
-func (o LookupExternalNetworkResultOutput) ExportRoutePolicy() ExportRoutePolicyResponsePtrOutput {
-	return o.ApplyT(func(v LookupExternalNetworkResult) *ExportRoutePolicyResponse { return v.ExportRoutePolicy }).(ExportRoutePolicyResponsePtrOutput)
-}
-
-// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+// ARM resource ID of exportRoutePolicy.
 func (o LookupExternalNetworkResultOutput) ExportRoutePolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExternalNetworkResult) *string { return v.ExportRoutePolicyId }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupExternalNetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalNetworkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Import Route Policy either IPv4 or IPv6.
-func (o LookupExternalNetworkResultOutput) ImportRoutePolicy() ImportRoutePolicyResponsePtrOutput {
-	return o.ApplyT(func(v LookupExternalNetworkResult) *ImportRoutePolicyResponse { return v.ImportRoutePolicy }).(ImportRoutePolicyResponsePtrOutput)
-}
-
-// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
+// ARM resource ID of importRoutePolicy.
 func (o LookupExternalNetworkResultOutput) ImportRoutePolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExternalNetworkResult) *string { return v.ImportRoutePolicyId }).(pulumi.StringPtrOutput)
 }
@@ -170,9 +149,9 @@ func (o LookupExternalNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalNetworkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
-func (o LookupExternalNetworkResultOutput) NetworkToNetworkInterconnectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupExternalNetworkResult) *string { return v.NetworkToNetworkInterconnectId }).(pulumi.StringPtrOutput)
+// Gets the networkToNetworkInterconnectId of the resource.
+func (o LookupExternalNetworkResultOutput) NetworkToNetworkInterconnectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExternalNetworkResult) string { return v.NetworkToNetworkInterconnectId }).(pulumi.StringOutput)
 }
 
 // option A properties object
@@ -183,8 +162,8 @@ func (o LookupExternalNetworkResultOutput) OptionAProperties() ExternalNetworkPr
 }
 
 // option B properties object
-func (o LookupExternalNetworkResultOutput) OptionBProperties() L3OptionBPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupExternalNetworkResult) *L3OptionBPropertiesResponse { return v.OptionBProperties }).(L3OptionBPropertiesResponsePtrOutput)
+func (o LookupExternalNetworkResultOutput) OptionBProperties() OptionBPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupExternalNetworkResult) *OptionBPropertiesResponse { return v.OptionBProperties }).(OptionBPropertiesResponsePtrOutput)
 }
 
 // Peering option list.
@@ -192,7 +171,7 @@ func (o LookupExternalNetworkResultOutput) PeeringOption() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalNetworkResult) string { return v.PeeringOption }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the resource.
+// Gets the provisioning state of the resource.
 func (o LookupExternalNetworkResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalNetworkResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

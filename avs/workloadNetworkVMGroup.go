@@ -8,25 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NSX VM Group
 //
-// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
+// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2020-07-17-preview.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01, 2023-09-01.
 type WorkloadNetworkVMGroup struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Display name of the VM group.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Virtual machine members of this group.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -34,9 +32,7 @@ type WorkloadNetworkVMGroup struct {
 	Revision pulumi.Float64PtrOutput `pulumi:"revision"`
 	// VM Group status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -74,9 +70,6 @@ func NewWorkloadNetworkVMGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkVMGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:avs/v20240901:WorkloadNetworkVMGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -123,7 +116,7 @@ type workloadNetworkVMGroupArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// NSX revision number.
 	Revision *float64 `pulumi:"revision"`
-	// ID of the VM group.
+	// NSX VM Group identifier. Generally the same as the VM Group's display name
 	VmGroupId *string `pulumi:"vmGroupId"`
 }
 
@@ -139,7 +132,7 @@ type WorkloadNetworkVMGroupArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// NSX revision number.
 	Revision pulumi.Float64PtrInput
-	// ID of the VM group.
+	// NSX VM Group identifier. Generally the same as the VM Group's display name
 	VmGroupId pulumi.StringPtrInput
 }
 
@@ -180,11 +173,6 @@ func (o WorkloadNetworkVMGroupOutput) ToWorkloadNetworkVMGroupOutputWithContext(
 	return o
 }
 
-// The Azure API version of the resource.
-func (o WorkloadNetworkVMGroupOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkloadNetworkVMGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Display name of the VM group.
 func (o WorkloadNetworkVMGroupOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadNetworkVMGroup) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -195,7 +183,7 @@ func (o WorkloadNetworkVMGroupOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkloadNetworkVMGroup) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o WorkloadNetworkVMGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkVMGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -215,12 +203,7 @@ func (o WorkloadNetworkVMGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkVMGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o WorkloadNetworkVMGroupOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *WorkloadNetworkVMGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o WorkloadNetworkVMGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkVMGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // FirewallPolicy Resource.
 //
-// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01.
+// Uses Azure REST API version 2023-11-01.
 //
-// Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-01, 2024-03-01, 2024-05-01.
 type FirewallPolicyDraft struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The parent firewall policy from which rules are inherited.
 	BasePolicy SubResourceResponsePtrOutput `pulumi:"basePolicy"`
 	// DNS Proxy Settings definition.
@@ -75,12 +73,6 @@ func NewFirewallPolicyDraft(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:FirewallPolicyDraft"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20240701:FirewallPolicyDraft"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20241001:FirewallPolicyDraft"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -214,11 +206,6 @@ func (o FirewallPolicyDraftOutput) ToFirewallPolicyDraftOutput() FirewallPolicyD
 
 func (o FirewallPolicyDraftOutput) ToFirewallPolicyDraftOutputWithContext(ctx context.Context) FirewallPolicyDraftOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o FirewallPolicyDraftOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *FirewallPolicyDraft) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The parent firewall policy from which rules are inherited.

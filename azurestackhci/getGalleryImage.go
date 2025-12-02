@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a gallery image
 //
-// Uses Azure REST API version 2025-02-01-preview.
+// Uses Azure REST API version 2022-12-15-preview.
 //
-// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
 func LookupGalleryImage(ctx *pulumi.Context, args *LookupGalleryImageArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryImageResult
@@ -35,17 +35,15 @@ type LookupGalleryImageArgs struct {
 
 // The gallery images resource definition.
 type LookupGalleryImageResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
 	CloudInitDataSource *string `pulumi:"cloudInitDataSource"`
-	// Storage ContainerID of the storage container to be used for gallery image
-	ContainerId *string `pulumi:"containerId"`
+	// Container Name for storage container
+	ContainerName *string `pulumi:"containerName"`
 	// The extendedLocation of the resource.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// The hypervisor generation of the Virtual Machine [V1, V2]
 	HyperVGeneration *string `pulumi:"hyperVGeneration"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// This is the gallery image definition identifier.
 	Identifier *GalleryImageIdentifierResponse `pulumi:"identifier"`
@@ -56,11 +54,9 @@ type LookupGalleryImageResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Operating system type that the gallery image uses [Windows, Linux]
-	OsType string `pulumi:"osType"`
+	OsType *string `pulumi:"osType"`
 	// Provisioning state of the gallery image.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Resource ID of the source virtual machine from whose OS disk the gallery image is created.
-	SourceVirtualMachineId *string `pulumi:"sourceVirtualMachineId"`
 	// The observed state of gallery images
 	Status GalleryImageStatusResponse `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -71,8 +67,6 @@ type LookupGalleryImageResult struct {
 	Type string `pulumi:"type"`
 	// Specifies information about the gallery image version that you want to create or update.
 	Version *GalleryImageVersionResponse `pulumi:"version"`
-	// The credentials used to login to the image repository that has access to the specified image
-	VmImageRepositoryCredentials *VmImageRepositoryCredentialsResponse `pulumi:"vmImageRepositoryCredentials"`
 }
 
 func LookupGalleryImageOutput(ctx *pulumi.Context, args LookupGalleryImageOutputArgs, opts ...pulumi.InvokeOption) LookupGalleryImageResultOutput {
@@ -110,19 +104,14 @@ func (o LookupGalleryImageResultOutput) ToLookupGalleryImageResultOutputWithCont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupGalleryImageResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
 func (o LookupGalleryImageResultOutput) CloudInitDataSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) *string { return v.CloudInitDataSource }).(pulumi.StringPtrOutput)
 }
 
-// Storage ContainerID of the storage container to be used for gallery image
-func (o LookupGalleryImageResultOutput) ContainerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupGalleryImageResult) *string { return v.ContainerId }).(pulumi.StringPtrOutput)
+// Container Name for storage container
+func (o LookupGalleryImageResultOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupGalleryImageResult) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
 }
 
 // The extendedLocation of the resource.
@@ -135,7 +124,7 @@ func (o LookupGalleryImageResultOutput) HyperVGeneration() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupGalleryImageResult) *string { return v.HyperVGeneration }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupGalleryImageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -161,18 +150,13 @@ func (o LookupGalleryImageResultOutput) Name() pulumi.StringOutput {
 }
 
 // Operating system type that the gallery image uses [Windows, Linux]
-func (o LookupGalleryImageResultOutput) OsType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.OsType }).(pulumi.StringOutput)
+func (o LookupGalleryImageResultOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupGalleryImageResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
 // Provisioning state of the gallery image.
 func (o LookupGalleryImageResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Resource ID of the source virtual machine from whose OS disk the gallery image is created.
-func (o LookupGalleryImageResultOutput) SourceVirtualMachineId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupGalleryImageResult) *string { return v.SourceVirtualMachineId }).(pulumi.StringPtrOutput)
 }
 
 // The observed state of gallery images
@@ -198,13 +182,6 @@ func (o LookupGalleryImageResultOutput) Type() pulumi.StringOutput {
 // Specifies information about the gallery image version that you want to create or update.
 func (o LookupGalleryImageResultOutput) Version() GalleryImageVersionResponsePtrOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) *GalleryImageVersionResponse { return v.Version }).(GalleryImageVersionResponsePtrOutput)
-}
-
-// The credentials used to login to the image repository that has access to the specified image
-func (o LookupGalleryImageResultOutput) VmImageRepositoryCredentials() VmImageRepositoryCredentialsResponsePtrOutput {
-	return o.ApplyT(func(v LookupGalleryImageResult) *VmImageRepositoryCredentialsResponse {
-		return v.VmImageRepositoryCredentials
-	}).(VmImageRepositoryCredentialsResponsePtrOutput)
 }
 
 func init() {

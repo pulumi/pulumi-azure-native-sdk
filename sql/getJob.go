@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a job.
 //
-// Uses Azure REST API version 2023-08-01.
+// Uses Azure REST API version 2021-11-01.
 //
-// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobResult
@@ -39,8 +39,6 @@ type LookupJobArgs struct {
 
 // A job.
 type LookupJobResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// User-defined description of the job.
 	Description *string `pulumi:"description"`
 	// Resource ID.
@@ -106,11 +104,6 @@ func (o LookupJobResultOutput) ToLookupJobResultOutput() LookupJobResultOutput {
 
 func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Context) LookupJobResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupJobResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // User-defined description of the job.

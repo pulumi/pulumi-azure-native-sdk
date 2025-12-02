@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The files resource is a nested, proxy-only resource representing a file stored under the project resource. This method retrieves information about a file.
 //
-// Uses Azure REST API version 2023-07-15-preview.
+// Uses Azure REST API version 2021-06-30.
 //
-// Other available API versions: 2021-06-30, 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview, 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
 func LookupFile(ctx *pulumi.Context, args *LookupFileArgs, opts ...pulumi.InvokeOption) (*LookupFileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFileResult
@@ -39,8 +39,6 @@ type LookupFileArgs struct {
 
 // A file resource
 type LookupFileResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// HTTP strong entity tag value. This is ignored if submitted.
 	Etag *string `pulumi:"etag"`
 	// Resource ID.
@@ -92,11 +90,6 @@ func (o LookupFileResultOutput) ToLookupFileResultOutput() LookupFileResultOutpu
 
 func (o LookupFileResultOutput) ToLookupFileResultOutputWithContext(ctx context.Context) LookupFileResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupFileResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // HTTP strong entity tag value. This is ignored if submitted.

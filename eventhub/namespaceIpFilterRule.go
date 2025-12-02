@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Single item in a List or Get IpFilterRules operation
 //
-// Uses Azure REST API version 2018-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-01-01-preview.
+// Uses Azure REST API version 2018-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-01-01-preview.
 type NamespaceIpFilterRule struct {
 	pulumi.CustomResourceState
 
 	// The IP Filter Action
 	Action pulumi.StringPtrOutput `pulumi:"action"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// IP Filter name
 	FilterName pulumi.StringPtrOutput `pulumi:"filterName"`
 	// IP Mask
@@ -154,11 +152,6 @@ func (o NamespaceIpFilterRuleOutput) ToNamespaceIpFilterRuleOutputWithContext(ct
 // The IP Filter Action
 func (o NamespaceIpFilterRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NamespaceIpFilterRule) pulumi.StringPtrOutput { return v.Action }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o NamespaceIpFilterRuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceIpFilterRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // IP Filter name

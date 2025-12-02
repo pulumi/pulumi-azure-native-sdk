@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SIM policy resource.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
+// Uses Azure REST API version 2023-06-01. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
 //
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
 type SimPolicy struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map. The slice must be in the same location as the SIM policy.
 	DefaultSlice SliceResourceIdResponseOutput `pulumi:"defaultSlice"`
 	// The geo-location where the resource lives
@@ -211,11 +209,6 @@ func (o SimPolicyOutput) ToSimPolicyOutput() SimPolicyOutput {
 
 func (o SimPolicyOutput) ToSimPolicyOutputWithContext(ctx context.Context) SimPolicyOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SimPolicyOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *SimPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map. The slice must be in the same location as the SIM policy.

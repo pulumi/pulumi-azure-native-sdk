@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Recipient Email details.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 type WorkspaceNotificationRecipientEmail struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// User Email subscribed to notification.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
 	// The name of the resource
@@ -67,9 +65,6 @@ func NewWorkspaceNotificationRecipientEmail(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceNotificationRecipientEmail"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20241001preview:WorkspaceNotificationRecipientEmail"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -167,11 +162,6 @@ func (o WorkspaceNotificationRecipientEmailOutput) ToWorkspaceNotificationRecipi
 
 func (o WorkspaceNotificationRecipientEmailOutput) ToWorkspaceNotificationRecipientEmailOutputWithContext(ctx context.Context) WorkspaceNotificationRecipientEmailOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o WorkspaceNotificationRecipientEmailOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkspaceNotificationRecipientEmail) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // User Email subscribed to notification.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about the model of a security automation.
 //
-// Uses Azure REST API version 2023-12-01-preview.
+// Uses Azure REST API version 2019-01-01-preview.
 //
-// Other available API versions: 2019-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01-preview.
 func LookupAutomation(ctx *pulumi.Context, args *LookupAutomationArgs, opts ...pulumi.InvokeOption) (*LookupAutomationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutomationResult
@@ -37,8 +37,6 @@ type LookupAutomationArgs struct {
 type LookupAutomationResult struct {
 	// A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
 	Actions []interface{} `pulumi:"actions"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The security automation description.
 	Description *string `pulumi:"description"`
 	// Entity tag is used for comparing two or more entities from the same requested resource.
@@ -101,11 +99,6 @@ func (o LookupAutomationResultOutput) ToLookupAutomationResultOutputWithContext(
 // A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
 func (o LookupAutomationResultOutput) Actions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupAutomationResult) []interface{} { return v.Actions }).(pulumi.ArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupAutomationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAutomationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The security automation description.

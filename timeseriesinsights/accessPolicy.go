@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An access policy is used to grant users and applications access to the environment. Roles are assigned to service principals in Azure Active Directory. These roles define the actions the principal can perform through the Time Series Insights data plane APIs.
 //
-// Uses Azure REST API version 2020-05-15. In version 2.x of the Azure Native provider, it used API version 2020-05-15.
+// Uses Azure REST API version 2020-05-15. In version 1.x of the Azure Native provider, it used API version 2020-05-15.
 //
-// Other available API versions: 2021-03-31-preview, 2021-06-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native timeseriesinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-06-30-preview.
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An description of the access policy.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource name
@@ -166,11 +164,6 @@ func (o AccessPolicyOutput) ToAccessPolicyOutput() AccessPolicyOutput {
 
 func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o AccessPolicyOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An description of the access policy.

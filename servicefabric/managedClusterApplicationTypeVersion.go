@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An application type version resource for the specified application type name resource.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
+// Uses Azure REST API version 2023-03-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview, 2024-09-01-preview.
 type ManagedClusterApplicationTypeVersion struct {
 	pulumi.CustomResourceState
 
 	// The URL to the application package
 	AppPackageUrl pulumi.StringOutput `pulumi:"appPackageUrl"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource location depends on the parent resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Azure resource name.
@@ -120,12 +118,6 @@ func NewManagedClusterApplicationTypeVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20241101preview:ManagedClusterApplicationTypeVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20250301preview:ManagedClusterApplicationTypeVersion"),
-		},
-		{
-			Type: pulumi.String("azure-native:servicefabric/v20250601preview:ManagedClusterApplicationTypeVersion"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -236,11 +228,6 @@ func (o ManagedClusterApplicationTypeVersionOutput) ToManagedClusterApplicationT
 // The URL to the application package
 func (o ManagedClusterApplicationTypeVersionOutput) AppPackageUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedClusterApplicationTypeVersion) pulumi.StringOutput { return v.AppPackageUrl }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o ManagedClusterApplicationTypeVersionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ManagedClusterApplicationTypeVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource location depends on the parent resource.

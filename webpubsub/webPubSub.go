@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A class represent a resource.
 //
-// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2021-04-01-preview.
 //
-// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-04-01-preview, 2021-06-01-preview, 2021-09-01-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
 type WebPubSub struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// DisableLocalAuth
 	// Enable or disable aad auth
 	// When set as true, connection with AuthType=aad won't work.
@@ -38,13 +36,11 @@ type WebPubSub struct {
 	HostNamePrefix pulumi.StringOutput `pulumi:"hostNamePrefix"`
 	// A class represent managed identities used for request and response
 	Identity ManagedIdentityResponsePtrOutput `pulumi:"identity"`
-	// The kind of the service
-	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Live trace configuration of a Microsoft.SignalRService resource.
 	LiveTraceConfiguration LiveTraceConfigurationResponsePtrOutput `pulumi:"liveTraceConfiguration"`
-	// The geo-location where the resource lives
-	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the resource
+	// The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network ACLs for the resource
 	NetworkACLs WebPubSubNetworkACLsResponsePtrOutput `pulumi:"networkACLs"`
@@ -58,31 +54,21 @@ type WebPubSub struct {
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// The publicly accessible port of the resource which is designed for browser/client side usage.
 	PublicPort pulumi.IntOutput `pulumi:"publicPort"`
-	// Enable or disable the regional endpoint. Default to "Enabled".
-	// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
-	// This property is replica specific. Disable the regional endpoint without replica is not allowed.
-	RegionEndpointEnabled pulumi.StringPtrOutput `pulumi:"regionEndpointEnabled"`
 	// Resource log configuration of a Microsoft.SignalRService resource.
 	ResourceLogConfiguration ResourceLogConfigurationResponsePtrOutput `pulumi:"resourceLogConfiguration"`
-	// Stop or start the resource.  Default to "False".
-	// When it's true, the data plane of the resource is shutdown.
-	// When it's false, the data plane of the resource is started.
-	ResourceStopped pulumi.StringPtrOutput `pulumi:"resourceStopped"`
 	// The publicly accessible port of the resource which is designed for customer server side usage.
 	ServerPort pulumi.IntOutput `pulumi:"serverPort"`
 	// The list of shared private link resources.
 	SharedPrivateLinkResources SharedPrivateLinkResourceResponseArrayOutput `pulumi:"sharedPrivateLinkResources"`
 	// The billing information of the resource.
 	Sku ResourceSkuResponsePtrOutput `pulumi:"sku"`
-	// SocketIO settings for the resource
-	SocketIO WebPubSubSocketIOSettingsResponsePtrOutput `pulumi:"socketIO"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// Tags of the service which is a list of key value pairs that describe the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// TLS settings for the resource
 	Tls WebPubSubTlsSettingsResponsePtrOutput `pulumi:"tls"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Version of the resource. Probably you need the same or higher version of client SDKs.
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -109,12 +95,6 @@ func NewWebPubSub(ctx *pulumi.Context,
 	}
 	if args.PublicNetworkAccess == nil {
 		args.PublicNetworkAccess = pulumi.StringPtr("Enabled")
-	}
-	if args.RegionEndpointEnabled == nil {
-		args.RegionEndpointEnabled = pulumi.StringPtr("Enabled")
-	}
-	if args.ResourceStopped == nil {
-		args.ResourceStopped = pulumi.StringPtr("false")
 	}
 	if args.Tls != nil {
 		args.Tls = args.Tls.ToWebPubSubTlsSettingsPtrOutput().ApplyT(func(v *WebPubSubTlsSettings) *WebPubSubTlsSettings { return v.Defaults() }).(WebPubSubTlsSettingsPtrOutput)
@@ -162,9 +142,6 @@ func NewWebPubSub(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20241001preview:WebPubSub"),
 		},
-		{
-			Type: pulumi.String("azure-native:webpubsub/v20250101preview:WebPubSub"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -210,11 +187,9 @@ type webPubSubArgs struct {
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// A class represent managed identities used for request and response
 	Identity *ManagedIdentity `pulumi:"identity"`
-	// The kind of the service
-	Kind *string `pulumi:"kind"`
 	// Live trace configuration of a Microsoft.SignalRService resource.
 	LiveTraceConfiguration *LiveTraceConfiguration `pulumi:"liveTraceConfiguration"`
-	// The geo-location where the resource lives
+	// The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
 	Location *string `pulumi:"location"`
 	// Network ACLs for the resource
 	NetworkACLs *WebPubSubNetworkACLs `pulumi:"networkACLs"`
@@ -222,25 +197,15 @@ type webPubSubArgs struct {
 	// When it's Enabled, network ACLs still apply.
 	// When it's Disabled, public network access is always disabled no matter what you set in network ACLs.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// Enable or disable the regional endpoint. Default to "Enabled".
-	// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
-	// This property is replica specific. Disable the regional endpoint without replica is not allowed.
-	RegionEndpointEnabled *string `pulumi:"regionEndpointEnabled"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource log configuration of a Microsoft.SignalRService resource.
 	ResourceLogConfiguration *ResourceLogConfiguration `pulumi:"resourceLogConfiguration"`
 	// The name of the resource.
 	ResourceName *string `pulumi:"resourceName"`
-	// Stop or start the resource.  Default to "False".
-	// When it's true, the data plane of the resource is shutdown.
-	// When it's false, the data plane of the resource is started.
-	ResourceStopped *string `pulumi:"resourceStopped"`
 	// The billing information of the resource.
 	Sku *ResourceSku `pulumi:"sku"`
-	// SocketIO settings for the resource
-	SocketIO *WebPubSubSocketIOSettings `pulumi:"socketIO"`
-	// Resource tags.
+	// Tags of the service which is a list of key value pairs that describe the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// TLS settings for the resource
 	Tls *WebPubSubTlsSettings `pulumi:"tls"`
@@ -258,11 +223,9 @@ type WebPubSubArgs struct {
 	DisableLocalAuth pulumi.BoolPtrInput
 	// A class represent managed identities used for request and response
 	Identity ManagedIdentityPtrInput
-	// The kind of the service
-	Kind pulumi.StringPtrInput
 	// Live trace configuration of a Microsoft.SignalRService resource.
 	LiveTraceConfiguration LiveTraceConfigurationPtrInput
-	// The geo-location where the resource lives
+	// The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
 	Location pulumi.StringPtrInput
 	// Network ACLs for the resource
 	NetworkACLs WebPubSubNetworkACLsPtrInput
@@ -270,25 +233,15 @@ type WebPubSubArgs struct {
 	// When it's Enabled, network ACLs still apply.
 	// When it's Disabled, public network access is always disabled no matter what you set in network ACLs.
 	PublicNetworkAccess pulumi.StringPtrInput
-	// Enable or disable the regional endpoint. Default to "Enabled".
-	// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
-	// This property is replica specific. Disable the regional endpoint without replica is not allowed.
-	RegionEndpointEnabled pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
 	// Resource log configuration of a Microsoft.SignalRService resource.
 	ResourceLogConfiguration ResourceLogConfigurationPtrInput
 	// The name of the resource.
 	ResourceName pulumi.StringPtrInput
-	// Stop or start the resource.  Default to "False".
-	// When it's true, the data plane of the resource is shutdown.
-	// When it's false, the data plane of the resource is started.
-	ResourceStopped pulumi.StringPtrInput
 	// The billing information of the resource.
 	Sku ResourceSkuPtrInput
-	// SocketIO settings for the resource
-	SocketIO WebPubSubSocketIOSettingsPtrInput
-	// Resource tags.
+	// Tags of the service which is a list of key value pairs that describe the resource.
 	Tags pulumi.StringMapInput
 	// TLS settings for the resource
 	Tls WebPubSubTlsSettingsPtrInput
@@ -331,11 +284,6 @@ func (o WebPubSubOutput) ToWebPubSubOutputWithContext(ctx context.Context) WebPu
 	return o
 }
 
-// The Azure API version of the resource.
-func (o WebPubSubOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebPubSub) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // DisableLocalAuth
 // Enable or disable aad auth
 // When set as true, connection with AuthType=aad won't work.
@@ -370,22 +318,17 @@ func (o WebPubSubOutput) Identity() ManagedIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *WebPubSub) ManagedIdentityResponsePtrOutput { return v.Identity }).(ManagedIdentityResponsePtrOutput)
 }
 
-// The kind of the service
-func (o WebPubSubOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebPubSub) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
 // Live trace configuration of a Microsoft.SignalRService resource.
 func (o WebPubSubOutput) LiveTraceConfiguration() LiveTraceConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *WebPubSub) LiveTraceConfigurationResponsePtrOutput { return v.LiveTraceConfiguration }).(LiveTraceConfigurationResponsePtrOutput)
 }
 
-// The geo-location where the resource lives
-func (o WebPubSubOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebPubSub) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+// The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
+func (o WebPubSubOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebPubSub) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o WebPubSubOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebPubSub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -417,23 +360,9 @@ func (o WebPubSubOutput) PublicPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *WebPubSub) pulumi.IntOutput { return v.PublicPort }).(pulumi.IntOutput)
 }
 
-// Enable or disable the regional endpoint. Default to "Enabled".
-// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
-// This property is replica specific. Disable the regional endpoint without replica is not allowed.
-func (o WebPubSubOutput) RegionEndpointEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebPubSub) pulumi.StringPtrOutput { return v.RegionEndpointEnabled }).(pulumi.StringPtrOutput)
-}
-
 // Resource log configuration of a Microsoft.SignalRService resource.
 func (o WebPubSubOutput) ResourceLogConfiguration() ResourceLogConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *WebPubSub) ResourceLogConfigurationResponsePtrOutput { return v.ResourceLogConfiguration }).(ResourceLogConfigurationResponsePtrOutput)
-}
-
-// Stop or start the resource.  Default to "False".
-// When it's true, the data plane of the resource is shutdown.
-// When it's false, the data plane of the resource is started.
-func (o WebPubSubOutput) ResourceStopped() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebPubSub) pulumi.StringPtrOutput { return v.ResourceStopped }).(pulumi.StringPtrOutput)
 }
 
 // The publicly accessible port of the resource which is designed for customer server side usage.
@@ -451,17 +380,12 @@ func (o WebPubSubOutput) Sku() ResourceSkuResponsePtrOutput {
 	return o.ApplyT(func(v *WebPubSub) ResourceSkuResponsePtrOutput { return v.Sku }).(ResourceSkuResponsePtrOutput)
 }
 
-// SocketIO settings for the resource
-func (o WebPubSubOutput) SocketIO() WebPubSubSocketIOSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *WebPubSub) WebPubSubSocketIOSettingsResponsePtrOutput { return v.SocketIO }).(WebPubSubSocketIOSettingsResponsePtrOutput)
-}
-
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Metadata pertaining to creation and last modification of the resource.
 func (o WebPubSubOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *WebPubSub) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags.
+// Tags of the service which is a list of key value pairs that describe the resource.
 func (o WebPubSubOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WebPubSub) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -471,7 +395,7 @@ func (o WebPubSubOutput) Tls() WebPubSubTlsSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *WebPubSub) WebPubSubTlsSettingsResponsePtrOutput { return v.Tls }).(WebPubSubTlsSettingsResponsePtrOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
 func (o WebPubSubOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebPubSub) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

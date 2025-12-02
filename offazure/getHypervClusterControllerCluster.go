@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Method to get a Hyper-V cluster.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2023-06-06.
 //
-// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
 func LookupHypervClusterControllerCluster(ctx *pulumi.Context, args *LookupHypervClusterControllerClusterArgs, opts ...pulumi.InvokeOption) (*LookupHypervClusterControllerClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHypervClusterControllerClusterResult
@@ -37,8 +37,6 @@ type LookupHypervClusterControllerClusterArgs struct {
 
 // A cluster resource belonging to a site resource.
 type LookupHypervClusterControllerClusterResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the timestamp marking Hyper-V cluster creation.
 	CreatedTimestamp string `pulumi:"createdTimestamp"`
 	// Gets the errors.
@@ -102,11 +100,6 @@ func (o LookupHypervClusterControllerClusterResultOutput) ToLookupHypervClusterC
 
 func (o LookupHypervClusterControllerClusterResultOutput) ToLookupHypervClusterControllerClusterResultOutputWithContext(ctx context.Context) LookupHypervClusterControllerClusterResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupHypervClusterControllerClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHypervClusterControllerClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the timestamp marking Hyper-V cluster creation.

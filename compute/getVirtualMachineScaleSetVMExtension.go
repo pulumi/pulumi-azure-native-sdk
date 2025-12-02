@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation to get the VMSS VM extension.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2023-03-01.
 //
-// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
 func LookupVirtualMachineScaleSetVMExtension(ctx *pulumi.Context, args *LookupVirtualMachineScaleSetVMExtensionArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScaleSetVMExtensionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineScaleSetVMExtensionResult
@@ -31,7 +31,7 @@ type LookupVirtualMachineScaleSetVMExtensionArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The instance ID of the virtual machine.
 	InstanceId string `pulumi:"instanceId"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the virtual machine extension.
 	VmExtensionName string `pulumi:"vmExtensionName"`
@@ -43,8 +43,6 @@ type LookupVirtualMachineScaleSetVMExtensionArgs struct {
 type LookupVirtualMachineScaleSetVMExtensionResult struct {
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
 	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
 	// How the extension handler should be forced to update even if the extension configuration has not changed.
@@ -55,7 +53,7 @@ type LookupVirtualMachineScaleSetVMExtensionResult struct {
 	InstanceView *VirtualMachineExtensionInstanceViewResponse `pulumi:"instanceView"`
 	// The location of the extension.
 	Location *string `pulumi:"location"`
-	// Resource name
+	// The name of the extension.
 	Name string `pulumi:"name"`
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
@@ -91,7 +89,7 @@ type LookupVirtualMachineScaleSetVMExtensionOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The instance ID of the virtual machine.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the virtual machine extension.
 	VmExtensionName pulumi.StringInput `pulumi:"vmExtensionName"`
@@ -123,11 +121,6 @@ func (o LookupVirtualMachineScaleSetVMExtensionResultOutput) AutoUpgradeMinorVer
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMExtensionResult) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupVirtualMachineScaleSetVMExtensionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMExtensionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
 func (o LookupVirtualMachineScaleSetVMExtensionResultOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMExtensionResult) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
@@ -155,7 +148,7 @@ func (o LookupVirtualMachineScaleSetVMExtensionResultOutput) Location() pulumi.S
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMExtensionResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Resource name
+// The name of the extension.
 func (o LookupVirtualMachineScaleSetVMExtensionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineScaleSetVMExtensionResult) string { return v.Name }).(pulumi.StringOutput)
 }

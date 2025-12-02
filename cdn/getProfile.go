@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 //
-// Uses Azure REST API version 2025-06-01.
+// Uses Azure REST API version 2023-05-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.InvokeOption) (*LookupProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProfileResult
@@ -29,29 +29,25 @@ func LookupProfile(ctx *pulumi.Context, args *LookupProfileArgs, opts ...pulumi.
 type LookupProfileArgs struct {
 	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A profile is a logical grouping of endpoints that share the same settings.
 type LookupProfileResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Key-Value pair representing additional properties for profiles.
 	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
 	// The Id of the frontdoor.
 	FrontDoorId string `pulumi:"frontDoorId"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Resource ID.
 	Id string `pulumi:"id"`
-	// The managed service identities assigned to this resource.
+	// Managed service identity (system assigned and/or user assigned identities).
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile.
 	Kind string `pulumi:"kind"`
-	// The geo-location where the resource lives
+	// Resource location.
 	Location string `pulumi:"location"`
-	// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
-	LogScrubbing *ProfileLogScrubbingResponse `pulumi:"logScrubbing"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
 	OriginResponseTimeoutSeconds *int `pulumi:"originResponseTimeoutSeconds"`
@@ -61,11 +57,11 @@ type LookupProfileResult struct {
 	ResourceState string `pulumi:"resourceState"`
 	// The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
 	Sku SkuResponse `pulumi:"sku"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 }
 
@@ -81,7 +77,7 @@ func LookupProfileOutput(ctx *pulumi.Context, args LookupProfileOutputArgs, opts
 type LookupProfileOutputArgs struct {
 	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -104,11 +100,6 @@ func (o LookupProfileResultOutput) ToLookupProfileResultOutputWithContext(ctx co
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Key-Value pair representing additional properties for profiles.
 func (o LookupProfileResultOutput) ExtendedProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupProfileResult) map[string]string { return v.ExtendedProperties }).(pulumi.StringMapOutput)
@@ -119,12 +110,12 @@ func (o LookupProfileResultOutput) FrontDoorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProfileResult) string { return v.FrontDoorId }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The managed service identities assigned to this resource.
+// Managed service identity (system assigned and/or user assigned identities).
 func (o LookupProfileResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupProfileResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
@@ -134,17 +125,12 @@ func (o LookupProfileResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProfileResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location.
 func (o LookupProfileResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProfileResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
-func (o LookupProfileResultOutput) LogScrubbing() ProfileLogScrubbingResponsePtrOutput {
-	return o.ApplyT(func(v LookupProfileResult) *ProfileLogScrubbingResponse { return v.LogScrubbing }).(ProfileLogScrubbingResponsePtrOutput)
-}
-
-// The name of the resource
+// Resource name.
 func (o LookupProfileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -169,7 +155,7 @@ func (o LookupProfileResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupProfileResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o LookupProfileResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupProfileResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -179,7 +165,7 @@ func (o LookupProfileResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupProfileResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupProfileResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProfileResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,25 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Endpoint resource, which contains information about file sources and targets.
 //
-// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
+// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2022-07-01-preview.
 //
-// Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-10-01, 2024-07-01.
 type Endpoint struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource specific properties for the Storage Mover resource.
 	Properties pulumi.AnyOutput `pulumi:"properties"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Resource system metadata.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -63,9 +61,6 @@ func NewEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagemover/v20240701:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagemover/v20250701:Endpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -161,11 +156,6 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 	return o
 }
 
-// The Azure API version of the resource.
-func (o EndpointOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The name of the resource
 func (o EndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -176,7 +166,7 @@ func (o EndpointOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Resource system metadata.
 func (o EndpointOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Endpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 func LookupWorkspaceProduct(ctx *pulumi.Context, args *LookupWorkspaceProductArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceProductResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceProductResult
@@ -41,8 +41,6 @@ type LookupWorkspaceProductArgs struct {
 type LookupWorkspaceProductResult struct {
 	// whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false.
 	ApprovalRequired *bool `pulumi:"approvalRequired"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Product description. May include HTML formatting tags.
 	Description *string `pulumi:"description"`
 	// Product name.
@@ -105,11 +103,6 @@ func (o LookupWorkspaceProductResultOutput) ToLookupWorkspaceProductResultOutput
 // whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false.
 func (o LookupWorkspaceProductResultOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceProductResult) *bool { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupWorkspaceProductResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceProductResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Product description. May include HTML formatting tags.

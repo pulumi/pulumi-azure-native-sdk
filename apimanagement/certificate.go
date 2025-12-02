@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Certificate details.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+// Uses Azure REST API version 2022-08-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-10-10, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 type Certificate struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 	ExpirationDate pulumi.StringOutput `pulumi:"expirationDate"`
 	// KeyVault location details of the certificate.
@@ -115,9 +113,6 @@ func NewCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Certificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20241001preview:Certificate"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -219,11 +214,6 @@ func (o CertificateOutput) ToCertificateOutput() CertificateOutput {
 
 func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o CertificateOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.

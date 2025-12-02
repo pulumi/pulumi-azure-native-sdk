@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a AssetEndpointProfile
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2023-11-01-preview.
 //
-// Other available API versions: 2023-11-01-preview, 2024-09-01-preview, 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-09-01-preview, 2024-11-01.
 func LookupAssetEndpointProfile(ctx *pulumi.Context, args *LookupAssetEndpointProfileArgs, opts ...pulumi.InvokeOption) (*LookupAssetEndpointProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssetEndpointProfileResult
@@ -37,17 +37,9 @@ type LookupAssetEndpointProfileArgs struct {
 type LookupAssetEndpointProfileResult struct {
 	// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
-	// Defines the client authentication mechanism to the server.
-	Authentication *AuthenticationResponse `pulumi:"authentication"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Reference to a discovered asset endpoint profile. Populated only if the asset endpoint profile has been created from discovery flow. Discovered asset endpoint profile name must be provided.
-	DiscoveredAssetEndpointProfileRef *string `pulumi:"discoveredAssetEndpointProfileRef"`
-	// Defines the configuration for the connector type that is being used with the endpoint profile.
-	EndpointProfileType string `pulumi:"endpointProfileType"`
 	// The extended location.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -55,16 +47,18 @@ type LookupAssetEndpointProfileResult struct {
 	Name string `pulumi:"name"`
 	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
-	Status AssetEndpointProfileStatusResponse `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
 	TargetAddress string `pulumi:"targetAddress"`
+	// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
+	TransportAuthentication *TransportAuthenticationResponse `pulumi:"transportAuthentication"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// Defines the client authentication mechanism to the server.
+	UserAuthentication *UserAuthenticationResponse `pulumi:"userAuthentication"`
 	// Globally unique, immutable, non-reusable id.
 	Uuid string `pulumi:"uuid"`
 }
@@ -75,7 +69,7 @@ func (val *LookupAssetEndpointProfileResult) Defaults() *LookupAssetEndpointProf
 		return nil
 	}
 	tmp := *val
-	tmp.Authentication = tmp.Authentication.Defaults()
+	tmp.UserAuthentication = tmp.UserAuthentication.Defaults()
 
 	return &tmp
 }
@@ -119,32 +113,12 @@ func (o LookupAssetEndpointProfileResultOutput) AdditionalConfiguration() pulumi
 	return o.ApplyT(func(v LookupAssetEndpointProfileResult) *string { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
 }
 
-// Defines the client authentication mechanism to the server.
-func (o LookupAssetEndpointProfileResultOutput) Authentication() AuthenticationResponsePtrOutput {
-	return o.ApplyT(func(v LookupAssetEndpointProfileResult) *AuthenticationResponse { return v.Authentication }).(AuthenticationResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupAssetEndpointProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAssetEndpointProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Reference to a discovered asset endpoint profile. Populated only if the asset endpoint profile has been created from discovery flow. Discovered asset endpoint profile name must be provided.
-func (o LookupAssetEndpointProfileResultOutput) DiscoveredAssetEndpointProfileRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAssetEndpointProfileResult) *string { return v.DiscoveredAssetEndpointProfileRef }).(pulumi.StringPtrOutput)
-}
-
-// Defines the configuration for the connector type that is being used with the endpoint profile.
-func (o LookupAssetEndpointProfileResultOutput) EndpointProfileType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAssetEndpointProfileResult) string { return v.EndpointProfileType }).(pulumi.StringOutput)
-}
-
 // The extended location.
 func (o LookupAssetEndpointProfileResultOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v LookupAssetEndpointProfileResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAssetEndpointProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssetEndpointProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -164,11 +138,6 @@ func (o LookupAssetEndpointProfileResultOutput) ProvisioningState() pulumi.Strin
 	return o.ApplyT(func(v LookupAssetEndpointProfileResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
-func (o LookupAssetEndpointProfileResultOutput) Status() AssetEndpointProfileStatusResponseOutput {
-	return o.ApplyT(func(v LookupAssetEndpointProfileResult) AssetEndpointProfileStatusResponse { return v.Status }).(AssetEndpointProfileStatusResponseOutput)
-}
-
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAssetEndpointProfileResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAssetEndpointProfileResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
@@ -184,9 +153,21 @@ func (o LookupAssetEndpointProfileResultOutput) TargetAddress() pulumi.StringOut
 	return o.ApplyT(func(v LookupAssetEndpointProfileResult) string { return v.TargetAddress }).(pulumi.StringOutput)
 }
 
+// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
+func (o LookupAssetEndpointProfileResultOutput) TransportAuthentication() TransportAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v LookupAssetEndpointProfileResult) *TransportAuthenticationResponse {
+		return v.TransportAuthentication
+	}).(TransportAuthenticationResponsePtrOutput)
+}
+
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAssetEndpointProfileResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssetEndpointProfileResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Defines the client authentication mechanism to the server.
+func (o LookupAssetEndpointProfileResultOutput) UserAuthentication() UserAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v LookupAssetEndpointProfileResult) *UserAuthenticationResponse { return v.UserAuthentication }).(UserAuthenticationResponsePtrOutput)
 }
 
 // Globally unique, immutable, non-reusable id.

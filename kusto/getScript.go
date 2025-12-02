@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Kusto cluster database script.
 //
-// Uses Azure REST API version 2024-04-13.
+// Uses Azure REST API version 2022-12-29.
 //
-// Other available API versions: 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-08-27, 2023-05-02, 2023-08-15, 2024-04-13.
 func LookupScript(ctx *pulumi.Context, args *LookupScriptArgs, opts ...pulumi.InvokeOption) (*LookupScriptResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScriptResult
@@ -31,7 +31,7 @@ type LookupScriptArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Kusto database script.
 	ScriptName string `pulumi:"scriptName"`
@@ -39,8 +39,6 @@ type LookupScriptArgs struct {
 
 // Class representing a database script.
 type LookupScriptResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Flag that indicates whether to continue if one of the command fails.
 	ContinueOnErrors *bool `pulumi:"continueOnErrors"`
 	// A unique string. If changed the script will be applied again.
@@ -49,12 +47,8 @@ type LookupScriptResult struct {
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Indicates if the permissions for the script caller are kept following completion of the script.
-	PrincipalPermissionsAction *string `pulumi:"principalPermissionsAction"`
 	// The provisioned state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Differentiates between the type of script commands included - Database or Cluster. The default is Database.
-	ScriptLevel *string `pulumi:"scriptLevel"`
 	// The url to the KQL script blob file. Must not be used together with scriptContent property
 	ScriptUrl *string `pulumi:"scriptUrl"`
 	// Metadata pertaining to creation and last modification of the resource.
@@ -89,7 +83,7 @@ type LookupScriptOutputArgs struct {
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the Kusto database script.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
@@ -114,11 +108,6 @@ func (o LookupScriptResultOutput) ToLookupScriptResultOutputWithContext(ctx cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupScriptResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScriptResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Flag that indicates whether to continue if one of the command fails.
 func (o LookupScriptResultOutput) ContinueOnErrors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupScriptResult) *bool { return v.ContinueOnErrors }).(pulumi.BoolPtrOutput)
@@ -139,19 +128,9 @@ func (o LookupScriptResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates if the permissions for the script caller are kept following completion of the script.
-func (o LookupScriptResultOutput) PrincipalPermissionsAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupScriptResult) *string { return v.PrincipalPermissionsAction }).(pulumi.StringPtrOutput)
-}
-
 // The provisioned state of the resource.
 func (o LookupScriptResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScriptResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Differentiates between the type of script commands included - Database or Cluster. The default is Database.
-func (o LookupScriptResultOutput) ScriptLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupScriptResult) *string { return v.ScriptLevel }).(pulumi.StringPtrOutput)
 }
 
 // The url to the KQL script blob file. Must not be used together with scriptContent property

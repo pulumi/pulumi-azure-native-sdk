@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ApiRelease details.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 type WorkspaceApiRelease struct {
 	pulumi.CustomResourceState
 
 	// Identifier of the API the release belongs to.
 	ApiId pulumi.StringPtrOutput `pulumi:"apiId"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the API was released. The date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601 standard.
 	CreatedDateTime pulumi.StringOutput `pulumi:"createdDateTime"`
 	// The name of the resource
@@ -73,9 +71,6 @@ func NewWorkspaceApiRelease(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceApiRelease"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20241001preview:WorkspaceApiRelease"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -182,11 +177,6 @@ func (o WorkspaceApiReleaseOutput) ToWorkspaceApiReleaseOutputWithContext(ctx co
 // Identifier of the API the release belongs to.
 func (o WorkspaceApiReleaseOutput) ApiId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceApiRelease) pulumi.StringPtrOutput { return v.ApiId }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o WorkspaceApiReleaseOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkspaceApiRelease) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the API was released. The date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601 standard.

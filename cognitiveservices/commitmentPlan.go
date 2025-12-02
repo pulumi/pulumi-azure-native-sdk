@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Cognitive Services account commitment plan.
 //
-// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-10-01.
 //
-// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview.
 type CommitmentPlan struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The Kind of the resource.
@@ -85,15 +83,6 @@ func NewCommitmentPlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20250401preview:CommitmentPlan"),
-		},
-		{
-			Type: pulumi.String("azure-native:cognitiveservices/v20250601:CommitmentPlan"),
-		},
-		{
-			Type: pulumi.String("azure-native:cognitiveservices/v20250701preview:CommitmentPlan"),
-		},
-		{
-			Type: pulumi.String("azure-native:cognitiveservices/v20250901:CommitmentPlan"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -203,11 +192,6 @@ func (o CommitmentPlanOutput) ToCommitmentPlanOutput() CommitmentPlanOutput {
 
 func (o CommitmentPlanOutput) ToCommitmentPlanOutputWithContext(ctx context.Context) CommitmentPlanOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o CommitmentPlanOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *CommitmentPlan) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Etag.

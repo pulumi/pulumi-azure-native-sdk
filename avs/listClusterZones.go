@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List hosts by zone in a cluster
+// List of all zones and associated hosts for a cluster
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2022-05-01.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01, 2023-09-01.
 func ListClusterZones(ctx *pulumi.Context, args *ListClusterZonesArgs, opts ...pulumi.InvokeOption) (*ListClusterZonesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListClusterZonesResult
@@ -27,7 +27,7 @@ func ListClusterZones(ctx *pulumi.Context, args *ListClusterZonesArgs, opts ...p
 }
 
 type ListClusterZonesArgs struct {
-	// Name of the cluster
+	// Name of the cluster in the private cloud
 	ClusterName string `pulumi:"clusterName"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
@@ -51,7 +51,7 @@ func ListClusterZonesOutput(ctx *pulumi.Context, args ListClusterZonesOutputArgs
 }
 
 type ListClusterZonesOutputArgs struct {
-	// Name of the cluster
+	// Name of the cluster in the private cloud
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`

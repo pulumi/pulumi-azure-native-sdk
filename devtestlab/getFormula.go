@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ type LookupFormulaArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the Formula
+	// The name of the formula.
 	Name string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,8 +39,6 @@ type LookupFormulaArgs struct {
 type LookupFormulaResult struct {
 	// The author of the formula.
 	Author string `pulumi:"author"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the formula.
 	CreationDate string `pulumi:"creationDate"`
 	// The description of the formula.
@@ -91,9 +89,9 @@ type LookupFormulaOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the Formula
+	// The name of the formula.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -119,11 +117,6 @@ func (o LookupFormulaResultOutput) ToLookupFormulaResultOutputWithContext(ctx co
 // The author of the formula.
 func (o LookupFormulaResultOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormulaResult) string { return v.Author }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupFormulaResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFormulaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the formula.

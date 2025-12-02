@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -2386,11 +2386,11 @@ func (o CacheNodeDriveConfigurationResponseArrayOutput) Index(i pulumi.IntInput)
 
 // Model representing Cache Node for ConnectedCache resource
 type CacheNodeEntity struct {
-	// Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
+	// Customer requested day of week for mcc install of auto update cycle
 	AutoUpdateRequestedDay *int `pulumi:"autoUpdateRequestedDay"`
 	// Customer requested time of the day for mcc install of auto update cycle, should be hh:mm
 	AutoUpdateRequestedTime *string `pulumi:"autoUpdateRequestedTime"`
-	// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
+	// Customer requested week of month for mcc install of auto update cycle
 	AutoUpdateRequestedWeek *int `pulumi:"autoUpdateRequestedWeek"`
 	// Auto Update Ring Type which is slow or fast etc.
 	AutoUpdateRingType *string `pulumi:"autoUpdateRingType"`
@@ -2437,11 +2437,11 @@ type CacheNodeEntityInput interface {
 
 // Model representing Cache Node for ConnectedCache resource
 type CacheNodeEntityArgs struct {
-	// Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
+	// Customer requested day of week for mcc install of auto update cycle
 	AutoUpdateRequestedDay pulumi.IntPtrInput `pulumi:"autoUpdateRequestedDay"`
 	// Customer requested time of the day for mcc install of auto update cycle, should be hh:mm
 	AutoUpdateRequestedTime pulumi.StringPtrInput `pulumi:"autoUpdateRequestedTime"`
-	// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
+	// Customer requested week of month for mcc install of auto update cycle
 	AutoUpdateRequestedWeek pulumi.IntPtrInput `pulumi:"autoUpdateRequestedWeek"`
 	// Auto Update Ring Type which is slow or fast etc.
 	AutoUpdateRingType pulumi.StringPtrInput `pulumi:"autoUpdateRingType"`
@@ -2553,7 +2553,7 @@ func (o CacheNodeEntityOutput) ToCacheNodeEntityPtrOutputWithContext(ctx context
 	}).(CacheNodeEntityPtrOutput)
 }
 
-// Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
+// Customer requested day of week for mcc install of auto update cycle
 func (o CacheNodeEntityOutput) AutoUpdateRequestedDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CacheNodeEntity) *int { return v.AutoUpdateRequestedDay }).(pulumi.IntPtrOutput)
 }
@@ -2563,7 +2563,7 @@ func (o CacheNodeEntityOutput) AutoUpdateRequestedTime() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v CacheNodeEntity) *string { return v.AutoUpdateRequestedTime }).(pulumi.StringPtrOutput)
 }
 
-// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
+// Customer requested week of month for mcc install of auto update cycle
 func (o CacheNodeEntityOutput) AutoUpdateRequestedWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CacheNodeEntity) *int { return v.AutoUpdateRequestedWeek }).(pulumi.IntPtrOutput)
 }
@@ -2667,7 +2667,7 @@ func (o CacheNodeEntityPtrOutput) Elem() CacheNodeEntityOutput {
 	}).(CacheNodeEntityOutput)
 }
 
-// Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
+// Customer requested day of week for mcc install of auto update cycle
 func (o CacheNodeEntityPtrOutput) AutoUpdateRequestedDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CacheNodeEntity) *int {
 		if v == nil {
@@ -2687,7 +2687,7 @@ func (o CacheNodeEntityPtrOutput) AutoUpdateRequestedTime() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
+// Customer requested week of month for mcc install of auto update cycle
 func (o CacheNodeEntityPtrOutput) AutoUpdateRequestedWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CacheNodeEntity) *int {
 		if v == nil {
@@ -2851,11 +2851,11 @@ func (o CacheNodeEntityPtrOutput) ShouldMigrate() pulumi.BoolPtrOutput {
 type CacheNodeEntityResponse struct {
 	// Cache node resource total addressable space defined by the Cidr Csv block.
 	AddressSpace int `pulumi:"addressSpace"`
-	// Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
+	// Customer requested day of week for mcc install of auto update cycle
 	AutoUpdateRequestedDay *int `pulumi:"autoUpdateRequestedDay"`
 	// Customer requested time of the day for mcc install of auto update cycle, should be hh:mm
 	AutoUpdateRequestedTime *string `pulumi:"autoUpdateRequestedTime"`
-	// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
+	// Customer requested week of month for mcc install of auto update cycle
 	AutoUpdateRequestedWeek *int `pulumi:"autoUpdateRequestedWeek"`
 	// Auto Update Ring Type which is slow or fast etc.
 	AutoUpdateRingType *string `pulumi:"autoUpdateRingType"`
@@ -2975,7 +2975,7 @@ func (o CacheNodeEntityResponseOutput) AddressSpace() pulumi.IntOutput {
 	return o.ApplyT(func(v CacheNodeEntityResponse) int { return v.AddressSpace }).(pulumi.IntOutput)
 }
 
-// Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
+// Customer requested day of week for mcc install of auto update cycle
 func (o CacheNodeEntityResponseOutput) AutoUpdateRequestedDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CacheNodeEntityResponse) *int { return v.AutoUpdateRequestedDay }).(pulumi.IntPtrOutput)
 }
@@ -2985,7 +2985,7 @@ func (o CacheNodeEntityResponseOutput) AutoUpdateRequestedTime() pulumi.StringPt
 	return o.ApplyT(func(v CacheNodeEntityResponse) *string { return v.AutoUpdateRequestedTime }).(pulumi.StringPtrOutput)
 }
 
-// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
+// Customer requested week of month for mcc install of auto update cycle
 func (o CacheNodeEntityResponseOutput) AutoUpdateRequestedWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CacheNodeEntityResponse) *int { return v.AutoUpdateRequestedWeek }).(pulumi.IntPtrOutput)
 }
@@ -3264,7 +3264,7 @@ func (o CacheNodeEntityResponsePtrOutput) AddressSpace() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
+// Customer requested day of week for mcc install of auto update cycle
 func (o CacheNodeEntityResponsePtrOutput) AutoUpdateRequestedDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CacheNodeEntityResponse) *int {
 		if v == nil {
@@ -3284,7 +3284,7 @@ func (o CacheNodeEntityResponsePtrOutput) AutoUpdateRequestedTime() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
+// Customer requested week of month for mcc install of auto update cycle
 func (o CacheNodeEntityResponsePtrOutput) AutoUpdateRequestedWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CacheNodeEntityResponse) *int {
 		if v == nil {
@@ -5497,457 +5497,6 @@ func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResp
 	}).(ErrorDetailResponseOutput)
 }
 
-// Mcc cache node resource auto update history properties.
-type MccCacheNodeAutoUpdateHistoryPropertiesResponse struct {
-	// Cache node resource auto update history information.
-	AutoUpdateHistory []MccCacheNodeAutoUpdateInfoResponse `pulumi:"autoUpdateHistory"`
-	// Mcc cache node resource Id.
-	CacheNodeId string `pulumi:"cacheNodeId"`
-	// Mcc customer resource Id.
-	CustomerId string `pulumi:"customerId"`
-}
-
-// Mcc cache node resource auto update history properties.
-type MccCacheNodeAutoUpdateHistoryPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (MccCacheNodeAutoUpdateHistoryPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MccCacheNodeAutoUpdateHistoryPropertiesResponse)(nil)).Elem()
-}
-
-func (o MccCacheNodeAutoUpdateHistoryPropertiesResponseOutput) ToMccCacheNodeAutoUpdateHistoryPropertiesResponseOutput() MccCacheNodeAutoUpdateHistoryPropertiesResponseOutput {
-	return o
-}
-
-func (o MccCacheNodeAutoUpdateHistoryPropertiesResponseOutput) ToMccCacheNodeAutoUpdateHistoryPropertiesResponseOutputWithContext(ctx context.Context) MccCacheNodeAutoUpdateHistoryPropertiesResponseOutput {
-	return o
-}
-
-// Cache node resource auto update history information.
-func (o MccCacheNodeAutoUpdateHistoryPropertiesResponseOutput) AutoUpdateHistory() MccCacheNodeAutoUpdateInfoResponseArrayOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateHistoryPropertiesResponse) []MccCacheNodeAutoUpdateInfoResponse {
-		return v.AutoUpdateHistory
-	}).(MccCacheNodeAutoUpdateInfoResponseArrayOutput)
-}
-
-// Mcc cache node resource Id.
-func (o MccCacheNodeAutoUpdateHistoryPropertiesResponseOutput) CacheNodeId() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateHistoryPropertiesResponse) string { return v.CacheNodeId }).(pulumi.StringOutput)
-}
-
-// Mcc customer resource Id.
-func (o MccCacheNodeAutoUpdateHistoryPropertiesResponseOutput) CustomerId() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateHistoryPropertiesResponse) string { return v.CustomerId }).(pulumi.StringOutput)
-}
-
-// Mcc cache node resource auto update properties.
-type MccCacheNodeAutoUpdateInfoResponse struct {
-	// Auto update last applied status.
-	AutoUpdateLastAppliedStatus int `pulumi:"autoUpdateLastAppliedStatus"`
-	// Auto update last applied detailed status text.
-	AutoUpdateLastAppliedStatusDetailedText string `pulumi:"autoUpdateLastAppliedStatusDetailedText"`
-	// Auto update last applied status text.
-	AutoUpdateLastAppliedStatusText string `pulumi:"autoUpdateLastAppliedStatusText"`
-	// Auto update Ring Type.
-	AutoUpdateRingType int `pulumi:"autoUpdateRingType"`
-	// Auto update entity created datetime.
-	CreatedDateTimeUtc string `pulumi:"createdDateTimeUtc"`
-	// Auto update image uri before update.
-	ImageUriBeforeUpdate string `pulumi:"imageUriBeforeUpdate"`
-	// Auto update image uri targetted to update.
-	ImageUriTargeted string `pulumi:"imageUriTargeted"`
-	// Auto update image uri at Terminal.
-	ImageUriTerminal string `pulumi:"imageUriTerminal"`
-	// Auto update image uri after update.
-	MovedToTerminalStateDateTime string `pulumi:"movedToTerminalStateDateTime"`
-	// This text describing the purpose of the plan of auto update.
-	PlanChangeLogText string `pulumi:"planChangeLogText"`
-	// Auto update planId.
-	PlanId float64 `pulumi:"planId"`
-	// Auto update image uri after update.
-	RuleRequestedDay int `pulumi:"ruleRequestedDay"`
-	// Auto update rule requested hour.
-	RuleRequestedHour string `pulumi:"ruleRequestedHour"`
-	// Auto update rule requested minute.
-	RuleRequestedMinute string `pulumi:"ruleRequestedMinute"`
-	// Auto update image uri before update.
-	RuleRequestedWeek int `pulumi:"ruleRequestedWeek"`
-	// Auto update time to go live date time.
-	TimeToGoLiveDateTime string `pulumi:"timeToGoLiveDateTime"`
-	// Auto update entity last updated datetime.
-	UpdatedRegistryDateTimeUtc string `pulumi:"updatedRegistryDateTimeUtc"`
-}
-
-// Mcc cache node resource auto update properties.
-type MccCacheNodeAutoUpdateInfoResponseOutput struct{ *pulumi.OutputState }
-
-func (MccCacheNodeAutoUpdateInfoResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MccCacheNodeAutoUpdateInfoResponse)(nil)).Elem()
-}
-
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) ToMccCacheNodeAutoUpdateInfoResponseOutput() MccCacheNodeAutoUpdateInfoResponseOutput {
-	return o
-}
-
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) ToMccCacheNodeAutoUpdateInfoResponseOutputWithContext(ctx context.Context) MccCacheNodeAutoUpdateInfoResponseOutput {
-	return o
-}
-
-// Auto update last applied status.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) AutoUpdateLastAppliedStatus() pulumi.IntOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) int { return v.AutoUpdateLastAppliedStatus }).(pulumi.IntOutput)
-}
-
-// Auto update last applied detailed status text.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) AutoUpdateLastAppliedStatusDetailedText() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.AutoUpdateLastAppliedStatusDetailedText }).(pulumi.StringOutput)
-}
-
-// Auto update last applied status text.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) AutoUpdateLastAppliedStatusText() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.AutoUpdateLastAppliedStatusText }).(pulumi.StringOutput)
-}
-
-// Auto update Ring Type.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) AutoUpdateRingType() pulumi.IntOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) int { return v.AutoUpdateRingType }).(pulumi.IntOutput)
-}
-
-// Auto update entity created datetime.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) CreatedDateTimeUtc() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.CreatedDateTimeUtc }).(pulumi.StringOutput)
-}
-
-// Auto update image uri before update.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) ImageUriBeforeUpdate() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.ImageUriBeforeUpdate }).(pulumi.StringOutput)
-}
-
-// Auto update image uri targetted to update.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) ImageUriTargeted() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.ImageUriTargeted }).(pulumi.StringOutput)
-}
-
-// Auto update image uri at Terminal.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) ImageUriTerminal() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.ImageUriTerminal }).(pulumi.StringOutput)
-}
-
-// Auto update image uri after update.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) MovedToTerminalStateDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.MovedToTerminalStateDateTime }).(pulumi.StringOutput)
-}
-
-// This text describing the purpose of the plan of auto update.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) PlanChangeLogText() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.PlanChangeLogText }).(pulumi.StringOutput)
-}
-
-// Auto update planId.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) PlanId() pulumi.Float64Output {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) float64 { return v.PlanId }).(pulumi.Float64Output)
-}
-
-// Auto update image uri after update.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) RuleRequestedDay() pulumi.IntOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) int { return v.RuleRequestedDay }).(pulumi.IntOutput)
-}
-
-// Auto update rule requested hour.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) RuleRequestedHour() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.RuleRequestedHour }).(pulumi.StringOutput)
-}
-
-// Auto update rule requested minute.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) RuleRequestedMinute() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.RuleRequestedMinute }).(pulumi.StringOutput)
-}
-
-// Auto update image uri before update.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) RuleRequestedWeek() pulumi.IntOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) int { return v.RuleRequestedWeek }).(pulumi.IntOutput)
-}
-
-// Auto update time to go live date time.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) TimeToGoLiveDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.TimeToGoLiveDateTime }).(pulumi.StringOutput)
-}
-
-// Auto update entity last updated datetime.
-func (o MccCacheNodeAutoUpdateInfoResponseOutput) UpdatedRegistryDateTimeUtc() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeAutoUpdateInfoResponse) string { return v.UpdatedRegistryDateTimeUtc }).(pulumi.StringOutput)
-}
-
-type MccCacheNodeAutoUpdateInfoResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (MccCacheNodeAutoUpdateInfoResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MccCacheNodeAutoUpdateInfoResponse)(nil)).Elem()
-}
-
-func (o MccCacheNodeAutoUpdateInfoResponseArrayOutput) ToMccCacheNodeAutoUpdateInfoResponseArrayOutput() MccCacheNodeAutoUpdateInfoResponseArrayOutput {
-	return o
-}
-
-func (o MccCacheNodeAutoUpdateInfoResponseArrayOutput) ToMccCacheNodeAutoUpdateInfoResponseArrayOutputWithContext(ctx context.Context) MccCacheNodeAutoUpdateInfoResponseArrayOutput {
-	return o
-}
-
-func (o MccCacheNodeAutoUpdateInfoResponseArrayOutput) Index(i pulumi.IntInput) MccCacheNodeAutoUpdateInfoResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MccCacheNodeAutoUpdateInfoResponse {
-		return vs[0].([]MccCacheNodeAutoUpdateInfoResponse)[vs[1].(int)]
-	}).(MccCacheNodeAutoUpdateInfoResponseOutput)
-}
-
-// Mcc cache node resource issue history properties.
-type MccCacheNodeIssueHistoryPropertiesResponse struct {
-	// Mcc cache node resource Id.
-	CacheNodeId string `pulumi:"cacheNodeId"`
-	// Mcc customer resource Id.
-	CustomerId string `pulumi:"customerId"`
-	// Cache node resource issue details history.
-	MccIssueHistory []MccIssueResponse `pulumi:"mccIssueHistory"`
-}
-
-// Mcc cache node resource issue history properties.
-type MccCacheNodeIssueHistoryPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (MccCacheNodeIssueHistoryPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MccCacheNodeIssueHistoryPropertiesResponse)(nil)).Elem()
-}
-
-func (o MccCacheNodeIssueHistoryPropertiesResponseOutput) ToMccCacheNodeIssueHistoryPropertiesResponseOutput() MccCacheNodeIssueHistoryPropertiesResponseOutput {
-	return o
-}
-
-func (o MccCacheNodeIssueHistoryPropertiesResponseOutput) ToMccCacheNodeIssueHistoryPropertiesResponseOutputWithContext(ctx context.Context) MccCacheNodeIssueHistoryPropertiesResponseOutput {
-	return o
-}
-
-// Mcc cache node resource Id.
-func (o MccCacheNodeIssueHistoryPropertiesResponseOutput) CacheNodeId() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeIssueHistoryPropertiesResponse) string { return v.CacheNodeId }).(pulumi.StringOutput)
-}
-
-// Mcc customer resource Id.
-func (o MccCacheNodeIssueHistoryPropertiesResponseOutput) CustomerId() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeIssueHistoryPropertiesResponse) string { return v.CustomerId }).(pulumi.StringOutput)
-}
-
-// Cache node resource issue details history.
-func (o MccCacheNodeIssueHistoryPropertiesResponseOutput) MccIssueHistory() MccIssueResponseArrayOutput {
-	return o.ApplyT(func(v MccCacheNodeIssueHistoryPropertiesResponse) []MccIssueResponse { return v.MccIssueHistory }).(MccIssueResponseArrayOutput)
-}
-
-// Mcc cache node resource auto update properties.
-type MccCacheNodeTlsCertificatePropertiesResponse struct {
-	// Mcc cache node resource Id.
-	CacheNodeId string `pulumi:"cacheNodeId"`
-	// Mcc customer resource Id.
-	CustomerId string `pulumi:"customerId"`
-	// Cache node resource tls certificate history details.
-	TlsCertificateHistory []MccCacheNodeTlsCertificateResponse `pulumi:"tlsCertificateHistory"`
-}
-
-// Mcc cache node resource auto update properties.
-type MccCacheNodeTlsCertificatePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (MccCacheNodeTlsCertificatePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MccCacheNodeTlsCertificatePropertiesResponse)(nil)).Elem()
-}
-
-func (o MccCacheNodeTlsCertificatePropertiesResponseOutput) ToMccCacheNodeTlsCertificatePropertiesResponseOutput() MccCacheNodeTlsCertificatePropertiesResponseOutput {
-	return o
-}
-
-func (o MccCacheNodeTlsCertificatePropertiesResponseOutput) ToMccCacheNodeTlsCertificatePropertiesResponseOutputWithContext(ctx context.Context) MccCacheNodeTlsCertificatePropertiesResponseOutput {
-	return o
-}
-
-// Mcc cache node resource Id.
-func (o MccCacheNodeTlsCertificatePropertiesResponseOutput) CacheNodeId() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeTlsCertificatePropertiesResponse) string { return v.CacheNodeId }).(pulumi.StringOutput)
-}
-
-// Mcc customer resource Id.
-func (o MccCacheNodeTlsCertificatePropertiesResponseOutput) CustomerId() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeTlsCertificatePropertiesResponse) string { return v.CustomerId }).(pulumi.StringOutput)
-}
-
-// Cache node resource tls certificate history details.
-func (o MccCacheNodeTlsCertificatePropertiesResponseOutput) TlsCertificateHistory() MccCacheNodeTlsCertificateResponseArrayOutput {
-	return o.ApplyT(func(v MccCacheNodeTlsCertificatePropertiesResponse) []MccCacheNodeTlsCertificateResponse {
-		return v.TlsCertificateHistory
-	}).(MccCacheNodeTlsCertificateResponseArrayOutput)
-}
-
-// Mcc cache node resource Tls certificate details.
-type MccCacheNodeTlsCertificateResponse struct {
-	// Mcc cache node Tls certificate status.
-	ActionRequired string `pulumi:"actionRequired"`
-	// Mcc cache node Tls certificate file name.
-	CertificateFileName string `pulumi:"certificateFileName"`
-	// Mcc cache node Tls certificate expiry date.
-	ExpiryDate string `pulumi:"expiryDate"`
-	// Mcc cache node Tls certificate not before date.
-	NotBeforeDate string `pulumi:"notBeforeDate"`
-	// Mcc cache node Tls certificate subject name.
-	Subject string `pulumi:"subject"`
-	// Mcc cache node Tls certificate subject alternate name.
-	SubjectAltName string `pulumi:"subjectAltName"`
-	// Mcc cache node Tls certificate thumbprint.
-	Thumbprint string `pulumi:"thumbprint"`
-}
-
-// Mcc cache node resource Tls certificate details.
-type MccCacheNodeTlsCertificateResponseOutput struct{ *pulumi.OutputState }
-
-func (MccCacheNodeTlsCertificateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MccCacheNodeTlsCertificateResponse)(nil)).Elem()
-}
-
-func (o MccCacheNodeTlsCertificateResponseOutput) ToMccCacheNodeTlsCertificateResponseOutput() MccCacheNodeTlsCertificateResponseOutput {
-	return o
-}
-
-func (o MccCacheNodeTlsCertificateResponseOutput) ToMccCacheNodeTlsCertificateResponseOutputWithContext(ctx context.Context) MccCacheNodeTlsCertificateResponseOutput {
-	return o
-}
-
-// Mcc cache node Tls certificate status.
-func (o MccCacheNodeTlsCertificateResponseOutput) ActionRequired() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeTlsCertificateResponse) string { return v.ActionRequired }).(pulumi.StringOutput)
-}
-
-// Mcc cache node Tls certificate file name.
-func (o MccCacheNodeTlsCertificateResponseOutput) CertificateFileName() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeTlsCertificateResponse) string { return v.CertificateFileName }).(pulumi.StringOutput)
-}
-
-// Mcc cache node Tls certificate expiry date.
-func (o MccCacheNodeTlsCertificateResponseOutput) ExpiryDate() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeTlsCertificateResponse) string { return v.ExpiryDate }).(pulumi.StringOutput)
-}
-
-// Mcc cache node Tls certificate not before date.
-func (o MccCacheNodeTlsCertificateResponseOutput) NotBeforeDate() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeTlsCertificateResponse) string { return v.NotBeforeDate }).(pulumi.StringOutput)
-}
-
-// Mcc cache node Tls certificate subject name.
-func (o MccCacheNodeTlsCertificateResponseOutput) Subject() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeTlsCertificateResponse) string { return v.Subject }).(pulumi.StringOutput)
-}
-
-// Mcc cache node Tls certificate subject alternate name.
-func (o MccCacheNodeTlsCertificateResponseOutput) SubjectAltName() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeTlsCertificateResponse) string { return v.SubjectAltName }).(pulumi.StringOutput)
-}
-
-// Mcc cache node Tls certificate thumbprint.
-func (o MccCacheNodeTlsCertificateResponseOutput) Thumbprint() pulumi.StringOutput {
-	return o.ApplyT(func(v MccCacheNodeTlsCertificateResponse) string { return v.Thumbprint }).(pulumi.StringOutput)
-}
-
-type MccCacheNodeTlsCertificateResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (MccCacheNodeTlsCertificateResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MccCacheNodeTlsCertificateResponse)(nil)).Elem()
-}
-
-func (o MccCacheNodeTlsCertificateResponseArrayOutput) ToMccCacheNodeTlsCertificateResponseArrayOutput() MccCacheNodeTlsCertificateResponseArrayOutput {
-	return o
-}
-
-func (o MccCacheNodeTlsCertificateResponseArrayOutput) ToMccCacheNodeTlsCertificateResponseArrayOutputWithContext(ctx context.Context) MccCacheNodeTlsCertificateResponseArrayOutput {
-	return o
-}
-
-func (o MccCacheNodeTlsCertificateResponseArrayOutput) Index(i pulumi.IntInput) MccCacheNodeTlsCertificateResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MccCacheNodeTlsCertificateResponse {
-		return vs[0].([]MccCacheNodeTlsCertificateResponse)[vs[1].(int)]
-	}).(MccCacheNodeTlsCertificateResponseOutput)
-}
-
-// Mcc cache node resource issue properties.
-type MccIssueResponse struct {
-	// Mcc cache node issue detail string.
-	DetailString string `pulumi:"detailString"`
-	// Mcc cache node issue related help link.
-	HelpLink string `pulumi:"helpLink"`
-	// Mcc cache node issue end date.
-	IssueEndDate string `pulumi:"issueEndDate"`
-	// Mcc cache node issue start date.
-	IssueStartDate string `pulumi:"issueStartDate"`
-	// Mcc cache node issue type.
-	MccIssueType string `pulumi:"mccIssueType"`
-	// Mcc cache node issues toastString.
-	ToastString string `pulumi:"toastString"`
-}
-
-// Mcc cache node resource issue properties.
-type MccIssueResponseOutput struct{ *pulumi.OutputState }
-
-func (MccIssueResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MccIssueResponse)(nil)).Elem()
-}
-
-func (o MccIssueResponseOutput) ToMccIssueResponseOutput() MccIssueResponseOutput {
-	return o
-}
-
-func (o MccIssueResponseOutput) ToMccIssueResponseOutputWithContext(ctx context.Context) MccIssueResponseOutput {
-	return o
-}
-
-// Mcc cache node issue detail string.
-func (o MccIssueResponseOutput) DetailString() pulumi.StringOutput {
-	return o.ApplyT(func(v MccIssueResponse) string { return v.DetailString }).(pulumi.StringOutput)
-}
-
-// Mcc cache node issue related help link.
-func (o MccIssueResponseOutput) HelpLink() pulumi.StringOutput {
-	return o.ApplyT(func(v MccIssueResponse) string { return v.HelpLink }).(pulumi.StringOutput)
-}
-
-// Mcc cache node issue end date.
-func (o MccIssueResponseOutput) IssueEndDate() pulumi.StringOutput {
-	return o.ApplyT(func(v MccIssueResponse) string { return v.IssueEndDate }).(pulumi.StringOutput)
-}
-
-// Mcc cache node issue start date.
-func (o MccIssueResponseOutput) IssueStartDate() pulumi.StringOutput {
-	return o.ApplyT(func(v MccIssueResponse) string { return v.IssueStartDate }).(pulumi.StringOutput)
-}
-
-// Mcc cache node issue type.
-func (o MccIssueResponseOutput) MccIssueType() pulumi.StringOutput {
-	return o.ApplyT(func(v MccIssueResponse) string { return v.MccIssueType }).(pulumi.StringOutput)
-}
-
-// Mcc cache node issues toastString.
-func (o MccIssueResponseOutput) ToastString() pulumi.StringOutput {
-	return o.ApplyT(func(v MccIssueResponse) string { return v.ToastString }).(pulumi.StringOutput)
-}
-
-type MccIssueResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (MccIssueResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MccIssueResponse)(nil)).Elem()
-}
-
-func (o MccIssueResponseArrayOutput) ToMccIssueResponseArrayOutput() MccIssueResponseArrayOutput {
-	return o
-}
-
-func (o MccIssueResponseArrayOutput) ToMccIssueResponseArrayOutputWithContext(ctx context.Context) MccIssueResponseArrayOutput {
-	return o
-}
-
-func (o MccIssueResponseArrayOutput) Index(i pulumi.IntInput) MccIssueResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MccIssueResponse {
-		return vs[0].([]MccIssueResponse)[vs[1].(int)]
-	}).(MccIssueResponseOutput)
-}
-
 // ProxyUrl configuration of cache node
 type ProxyUrlConfiguration struct {
 	// Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80
@@ -6250,15 +5799,6 @@ func init() {
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
-	pulumi.RegisterOutputType(MccCacheNodeAutoUpdateHistoryPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(MccCacheNodeAutoUpdateInfoResponseOutput{})
-	pulumi.RegisterOutputType(MccCacheNodeAutoUpdateInfoResponseArrayOutput{})
-	pulumi.RegisterOutputType(MccCacheNodeIssueHistoryPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(MccCacheNodeTlsCertificatePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(MccCacheNodeTlsCertificateResponseOutput{})
-	pulumi.RegisterOutputType(MccCacheNodeTlsCertificateResponseArrayOutput{})
-	pulumi.RegisterOutputType(MccIssueResponseOutput{})
-	pulumi.RegisterOutputType(MccIssueResponseArrayOutput{})
 	pulumi.RegisterOutputType(ProxyUrlConfigurationOutput{})
 	pulumi.RegisterOutputType(ProxyUrlConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ProxyUrlConfigurationResponseOutput{})

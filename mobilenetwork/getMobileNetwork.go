@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified mobile network.
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2023-06-01.
 //
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
 func LookupMobileNetwork(ctx *pulumi.Context, args *LookupMobileNetworkArgs, opts ...pulumi.InvokeOption) (*LookupMobileNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMobileNetworkResult
@@ -35,22 +35,16 @@ type LookupMobileNetworkArgs struct {
 
 // Mobile network resource.
 type LookupMobileNetworkResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The identity used to retrieve any private keys used for SUPI concealment from Azure key vault.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning state of the mobile network resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The unique public land mobile network identifier for the network. If both 'publicLandMobileNetworks' and 'publicLandMobileNetworkIdentifier' are specified, then the 'publicLandMobileNetworks' will take precedence.
+	// The unique public land mobile network identifier for the network. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
 	PublicLandMobileNetworkIdentifier PlmnIdResponse `pulumi:"publicLandMobileNetworkIdentifier"`
-	// A list of public land mobile networks including their identifiers. If both 'publicLandMobileNetworks' and 'publicLandMobileNetworkIdentifier' are specified, then the 'publicLandMobileNetworks' will take precedence.
-	PublicLandMobileNetworks []PublicLandMobileNetworkResponse `pulumi:"publicLandMobileNetworks"`
 	// The mobile network resource identifier
 	ServiceKey string `pulumi:"serviceKey"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -96,19 +90,9 @@ func (o LookupMobileNetworkResultOutput) ToLookupMobileNetworkResultOutputWithCo
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupMobileNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMobileNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMobileNetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMobileNetworkResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The identity used to retrieve any private keys used for SUPI concealment from Azure key vault.
-func (o LookupMobileNetworkResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupMobileNetworkResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -126,14 +110,9 @@ func (o LookupMobileNetworkResultOutput) ProvisioningState() pulumi.StringOutput
 	return o.ApplyT(func(v LookupMobileNetworkResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The unique public land mobile network identifier for the network. If both 'publicLandMobileNetworks' and 'publicLandMobileNetworkIdentifier' are specified, then the 'publicLandMobileNetworks' will take precedence.
+// The unique public land mobile network identifier for the network. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
 func (o LookupMobileNetworkResultOutput) PublicLandMobileNetworkIdentifier() PlmnIdResponseOutput {
 	return o.ApplyT(func(v LookupMobileNetworkResult) PlmnIdResponse { return v.PublicLandMobileNetworkIdentifier }).(PlmnIdResponseOutput)
-}
-
-// A list of public land mobile networks including their identifiers. If both 'publicLandMobileNetworks' and 'publicLandMobileNetworkIdentifier' are specified, then the 'publicLandMobileNetworks' will take precedence.
-func (o LookupMobileNetworkResultOutput) PublicLandMobileNetworks() PublicLandMobileNetworkResponseArrayOutput {
-	return o.ApplyT(func(v LookupMobileNetworkResult) []PublicLandMobileNetworkResponse { return v.PublicLandMobileNetworks }).(PublicLandMobileNetworkResponseArrayOutput)
 }
 
 // The mobile network resource identifier

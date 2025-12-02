@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a ScalingPlanPersonalSchedule definition.
 //
-// Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
+// Uses Azure REST API version 2024-11-01-preview.
 //
-// Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
 type ScalingPlanPersonalSchedule struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Set of days of the week on which this schedule is active.
 	DaysOfWeek pulumi.StringArrayOutput `pulumi:"daysOfWeek"`
 	// The name of the resource
@@ -35,7 +33,7 @@ type ScalingPlanPersonalSchedule struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period.
 	OffPeakMinutesToWaitOnLogoff pulumi.IntPtrOutput `pulumi:"offPeakMinutesToWaitOnLogoff"`
 	// Starting time for off-peak period.
-	OffPeakStartTime TimeResponsePtrOutput `pulumi:"offPeakStartTime"`
+	OffPeakStartTime TimeResponseOutput `pulumi:"offPeakStartTime"`
 	// The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
 	OffPeakStartVMOnConnect pulumi.StringPtrOutput `pulumi:"offPeakStartVMOnConnect"`
 	// Action to be taken after a user disconnect during the peak period.
@@ -47,7 +45,7 @@ type ScalingPlanPersonalSchedule struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the peak period.
 	PeakMinutesToWaitOnLogoff pulumi.IntPtrOutput `pulumi:"peakMinutesToWaitOnLogoff"`
 	// Starting time for peak period.
-	PeakStartTime TimeResponsePtrOutput `pulumi:"peakStartTime"`
+	PeakStartTime TimeResponseOutput `pulumi:"peakStartTime"`
 	// The desired configuration of Start VM On Connect for the hostpool during the peak phase.
 	PeakStartVMOnConnect pulumi.StringPtrOutput `pulumi:"peakStartVMOnConnect"`
 	// Action to be taken after a user disconnect during the ramp down period.
@@ -59,7 +57,7 @@ type ScalingPlanPersonalSchedule struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp down period.
 	RampDownMinutesToWaitOnLogoff pulumi.IntPtrOutput `pulumi:"rampDownMinutesToWaitOnLogoff"`
 	// Starting time for ramp down period.
-	RampDownStartTime TimeResponsePtrOutput `pulumi:"rampDownStartTime"`
+	RampDownStartTime TimeResponseOutput `pulumi:"rampDownStartTime"`
 	// The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
 	RampDownStartVMOnConnect pulumi.StringPtrOutput `pulumi:"rampDownStartVMOnConnect"`
 	// Action to be taken after a user disconnect during the ramp up period.
@@ -73,7 +71,7 @@ type ScalingPlanPersonalSchedule struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp up period.
 	RampUpMinutesToWaitOnLogoff pulumi.IntPtrOutput `pulumi:"rampUpMinutesToWaitOnLogoff"`
 	// Starting time for ramp up period.
-	RampUpStartTime TimeResponsePtrOutput `pulumi:"rampUpStartTime"`
+	RampUpStartTime TimeResponseOutput `pulumi:"rampUpStartTime"`
 	// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
 	RampUpStartVMOnConnect pulumi.StringPtrOutput `pulumi:"rampUpStartVMOnConnect"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -89,6 +87,21 @@ func NewScalingPlanPersonalSchedule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DaysOfWeek == nil {
+		return nil, errors.New("invalid value for required argument 'DaysOfWeek'")
+	}
+	if args.OffPeakStartTime == nil {
+		return nil, errors.New("invalid value for required argument 'OffPeakStartTime'")
+	}
+	if args.PeakStartTime == nil {
+		return nil, errors.New("invalid value for required argument 'PeakStartTime'")
+	}
+	if args.RampDownStartTime == nil {
+		return nil, errors.New("invalid value for required argument 'RampDownStartTime'")
+	}
+	if args.RampUpStartTime == nil {
+		return nil, errors.New("invalid value for required argument 'RampUpStartTime'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -134,12 +147,6 @@ func NewScalingPlanPersonalSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:ScalingPlanPersonalSchedule"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20250301preview:ScalingPlanPersonalSchedule"),
-		},
-		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20250401preview:ScalingPlanPersonalSchedule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -187,7 +194,7 @@ type scalingPlanPersonalScheduleArgs struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period.
 	OffPeakMinutesToWaitOnLogoff *int `pulumi:"offPeakMinutesToWaitOnLogoff"`
 	// Starting time for off-peak period.
-	OffPeakStartTime *Time `pulumi:"offPeakStartTime"`
+	OffPeakStartTime Time `pulumi:"offPeakStartTime"`
 	// The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
 	OffPeakStartVMOnConnect *string `pulumi:"offPeakStartVMOnConnect"`
 	// Action to be taken after a user disconnect during the peak period.
@@ -199,7 +206,7 @@ type scalingPlanPersonalScheduleArgs struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the peak period.
 	PeakMinutesToWaitOnLogoff *int `pulumi:"peakMinutesToWaitOnLogoff"`
 	// Starting time for peak period.
-	PeakStartTime *Time `pulumi:"peakStartTime"`
+	PeakStartTime Time `pulumi:"peakStartTime"`
 	// The desired configuration of Start VM On Connect for the hostpool during the peak phase.
 	PeakStartVMOnConnect *string `pulumi:"peakStartVMOnConnect"`
 	// Action to be taken after a user disconnect during the ramp down period.
@@ -211,7 +218,7 @@ type scalingPlanPersonalScheduleArgs struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp down period.
 	RampDownMinutesToWaitOnLogoff *int `pulumi:"rampDownMinutesToWaitOnLogoff"`
 	// Starting time for ramp down period.
-	RampDownStartTime *Time `pulumi:"rampDownStartTime"`
+	RampDownStartTime Time `pulumi:"rampDownStartTime"`
 	// The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
 	RampDownStartVMOnConnect *string `pulumi:"rampDownStartVMOnConnect"`
 	// Action to be taken after a user disconnect during the ramp up period.
@@ -225,7 +232,7 @@ type scalingPlanPersonalScheduleArgs struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp up period.
 	RampUpMinutesToWaitOnLogoff *int `pulumi:"rampUpMinutesToWaitOnLogoff"`
 	// Starting time for ramp up period.
-	RampUpStartTime *Time `pulumi:"rampUpStartTime"`
+	RampUpStartTime Time `pulumi:"rampUpStartTime"`
 	// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
 	RampUpStartVMOnConnect *string `pulumi:"rampUpStartVMOnConnect"`
 	// The name of the resource group. The name is case insensitive.
@@ -249,7 +256,7 @@ type ScalingPlanPersonalScheduleArgs struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period.
 	OffPeakMinutesToWaitOnLogoff pulumi.IntPtrInput
 	// Starting time for off-peak period.
-	OffPeakStartTime TimePtrInput
+	OffPeakStartTime TimeInput
 	// The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
 	OffPeakStartVMOnConnect pulumi.StringPtrInput
 	// Action to be taken after a user disconnect during the peak period.
@@ -261,7 +268,7 @@ type ScalingPlanPersonalScheduleArgs struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the peak period.
 	PeakMinutesToWaitOnLogoff pulumi.IntPtrInput
 	// Starting time for peak period.
-	PeakStartTime TimePtrInput
+	PeakStartTime TimeInput
 	// The desired configuration of Start VM On Connect for the hostpool during the peak phase.
 	PeakStartVMOnConnect pulumi.StringPtrInput
 	// Action to be taken after a user disconnect during the ramp down period.
@@ -273,7 +280,7 @@ type ScalingPlanPersonalScheduleArgs struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp down period.
 	RampDownMinutesToWaitOnLogoff pulumi.IntPtrInput
 	// Starting time for ramp down period.
-	RampDownStartTime TimePtrInput
+	RampDownStartTime TimeInput
 	// The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
 	RampDownStartVMOnConnect pulumi.StringPtrInput
 	// Action to be taken after a user disconnect during the ramp up period.
@@ -287,7 +294,7 @@ type ScalingPlanPersonalScheduleArgs struct {
 	// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp up period.
 	RampUpMinutesToWaitOnLogoff pulumi.IntPtrInput
 	// Starting time for ramp up period.
-	RampUpStartTime TimePtrInput
+	RampUpStartTime TimeInput
 	// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
 	RampUpStartVMOnConnect pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -335,11 +342,6 @@ func (o ScalingPlanPersonalScheduleOutput) ToScalingPlanPersonalScheduleOutputWi
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ScalingPlanPersonalScheduleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Set of days of the week on which this schedule is active.
 func (o ScalingPlanPersonalScheduleOutput) DaysOfWeek() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) pulumi.StringArrayOutput { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
@@ -371,8 +373,8 @@ func (o ScalingPlanPersonalScheduleOutput) OffPeakMinutesToWaitOnLogoff() pulumi
 }
 
 // Starting time for off-peak period.
-func (o ScalingPlanPersonalScheduleOutput) OffPeakStartTime() TimeResponsePtrOutput {
-	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) TimeResponsePtrOutput { return v.OffPeakStartTime }).(TimeResponsePtrOutput)
+func (o ScalingPlanPersonalScheduleOutput) OffPeakStartTime() TimeResponseOutput {
+	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) TimeResponseOutput { return v.OffPeakStartTime }).(TimeResponseOutput)
 }
 
 // The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
@@ -401,8 +403,8 @@ func (o ScalingPlanPersonalScheduleOutput) PeakMinutesToWaitOnLogoff() pulumi.In
 }
 
 // Starting time for peak period.
-func (o ScalingPlanPersonalScheduleOutput) PeakStartTime() TimeResponsePtrOutput {
-	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) TimeResponsePtrOutput { return v.PeakStartTime }).(TimeResponsePtrOutput)
+func (o ScalingPlanPersonalScheduleOutput) PeakStartTime() TimeResponseOutput {
+	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) TimeResponseOutput { return v.PeakStartTime }).(TimeResponseOutput)
 }
 
 // The desired configuration of Start VM On Connect for the hostpool during the peak phase.
@@ -431,8 +433,8 @@ func (o ScalingPlanPersonalScheduleOutput) RampDownMinutesToWaitOnLogoff() pulum
 }
 
 // Starting time for ramp down period.
-func (o ScalingPlanPersonalScheduleOutput) RampDownStartTime() TimeResponsePtrOutput {
-	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) TimeResponsePtrOutput { return v.RampDownStartTime }).(TimeResponsePtrOutput)
+func (o ScalingPlanPersonalScheduleOutput) RampDownStartTime() TimeResponseOutput {
+	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) TimeResponseOutput { return v.RampDownStartTime }).(TimeResponseOutput)
 }
 
 // The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
@@ -466,8 +468,8 @@ func (o ScalingPlanPersonalScheduleOutput) RampUpMinutesToWaitOnLogoff() pulumi.
 }
 
 // Starting time for ramp up period.
-func (o ScalingPlanPersonalScheduleOutput) RampUpStartTime() TimeResponsePtrOutput {
-	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) TimeResponsePtrOutput { return v.RampUpStartTime }).(TimeResponsePtrOutput)
+func (o ScalingPlanPersonalScheduleOutput) RampUpStartTime() TimeResponseOutput {
+	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) TimeResponseOutput { return v.RampUpStartTime }).(TimeResponseOutput)
 }
 
 // The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.

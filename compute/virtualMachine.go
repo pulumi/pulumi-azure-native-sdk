@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Virtual Machine.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
+// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 //
-// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -26,16 +26,12 @@ type VirtualMachine struct {
 	ApplicationProfile ApplicationProfileResponsePtrOutput `pulumi:"applicationProfile"`
 	// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
 	AvailabilitySet SubResourceResponsePtrOutput `pulumi:"availabilitySet"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
 	BillingProfile BillingProfileResponsePtrOutput `pulumi:"billingProfile"`
 	// Specifies information about the capacity reservation that is used to allocate virtual machine. Minimum api-version: 2021-04-01.
 	CapacityReservation CapacityReservationProfileResponsePtrOutput `pulumi:"capacityReservation"`
 	// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 	DiagnosticsProfile DiagnosticsProfileResponsePtrOutput `pulumi:"diagnosticsProfile"`
-	// Etag is property returned in Create/Update/Get response of the VM, so that customer can supply it in the header to ensure optimistic updates.
-	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
 	EvictionPolicy pulumi.StringPtrOutput `pulumi:"evictionPolicy"`
 	// The extended location of the Virtual Machine.
@@ -54,18 +50,14 @@ type VirtualMachine struct {
 	InstanceView VirtualMachineInstanceViewResponseOutput `pulumi:"instanceView"`
 	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
 	LicenseType pulumi.StringPtrOutput `pulumi:"licenseType"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
-	// ManagedBy is set to Virtual Machine Scale Set(VMSS) flex ARM resourceID, if the VM is part of the VMSS. This property is used by platform for internal resource group delete optimization.
-	ManagedBy pulumi.StringOutput `pulumi:"managedBy"`
-	// The name of the resource
+	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the network interfaces of the virtual machine.
 	NetworkProfile NetworkProfileResponsePtrOutput `pulumi:"networkProfile"`
 	// Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
 	OsProfile OSProfileResponsePtrOutput `pulumi:"osProfile"`
-	// Placement section specifies the user-defined constraints for virtual machine hardware placement. This property cannot be changed once VM is provisioned. Minimum api-version: 2024-11-01.
-	Placement PlacementResponsePtrOutput `pulumi:"placement"`
 	// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
 	Plan PlanResponsePtrOutput `pulumi:"plan"`
 	// Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set. The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' greater than 1. This property cannot be updated once the Virtual Machine is created. Fault domain assignment can be viewed in the Virtual Machine Instance View. Minimum api‐version: 2020‐12‐01.
@@ -78,21 +70,17 @@ type VirtualMachine struct {
 	ProximityPlacementGroup SubResourceResponsePtrOutput `pulumi:"proximityPlacementGroup"`
 	// The virtual machine child extension resources.
 	Resources VirtualMachineExtensionResponseArrayOutput `pulumi:"resources"`
-	// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the virtual machine.
-	ScheduledEventsPolicy ScheduledEventsPolicyResponsePtrOutput `pulumi:"scheduledEventsPolicy"`
 	// Specifies Scheduled Event related configurations.
 	ScheduledEventsProfile ScheduledEventsProfileResponsePtrOutput `pulumi:"scheduledEventsProfile"`
 	// Specifies the Security related profile settings for the virtual machine.
 	SecurityProfile SecurityProfileResponsePtrOutput `pulumi:"securityProfile"`
 	// Specifies the storage settings for the virtual machine disks.
 	StorageProfile StorageProfileResponsePtrOutput `pulumi:"storageProfile"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
 	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
@@ -100,7 +88,7 @@ type VirtualMachine struct {
 	VirtualMachineScaleSet SubResourceResponsePtrOutput `pulumi:"virtualMachineScaleSet"`
 	// Specifies the VM unique ID which is a 128-bits identifier that is encoded and stored in all Azure IaaS VMs SMBIOS and can be read using platform BIOS commands.
 	VmId pulumi.StringOutput `pulumi:"vmId"`
-	// The availability zones.
+	// The virtual machine zones.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
@@ -193,9 +181,6 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20241101:VirtualMachine"),
 		},
-		{
-			Type: pulumi.String("azure-native:compute/v20250401:VirtualMachine"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -259,14 +244,12 @@ type virtualMachineArgs struct {
 	Identity *VirtualMachineIdentity `pulumi:"identity"`
 	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
 	LicenseType *string `pulumi:"licenseType"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location *string `pulumi:"location"`
 	// Specifies the network interfaces of the virtual machine.
 	NetworkProfile *NetworkProfile `pulumi:"networkProfile"`
 	// Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
 	OsProfile *OSProfile `pulumi:"osProfile"`
-	// Placement section specifies the user-defined constraints for virtual machine hardware placement. This property cannot be changed once VM is provisioned. Minimum api-version: 2024-11-01.
-	Placement *Placement `pulumi:"placement"`
 	// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
 	Plan *Plan `pulumi:"plan"`
 	// Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set. The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' greater than 1. This property cannot be updated once the Virtual Machine is created. Fault domain assignment can be viewed in the Virtual Machine Instance View. Minimum api‐version: 2020‐12‐01.
@@ -275,17 +258,15 @@ type virtualMachineArgs struct {
 	Priority *string `pulumi:"priority"`
 	// Specifies information about the proximity placement group that the virtual machine should be assigned to. Minimum api-version: 2018-04-01.
 	ProximityPlacementGroup *SubResource `pulumi:"proximityPlacementGroup"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the virtual machine.
-	ScheduledEventsPolicy *ScheduledEventsPolicy `pulumi:"scheduledEventsPolicy"`
 	// Specifies Scheduled Event related configurations.
 	ScheduledEventsProfile *ScheduledEventsProfile `pulumi:"scheduledEventsProfile"`
 	// Specifies the Security related profile settings for the virtual machine.
 	SecurityProfile *SecurityProfile `pulumi:"securityProfile"`
 	// Specifies the storage settings for the virtual machine disks.
 	StorageProfile *StorageProfile `pulumi:"storageProfile"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
 	UserData *string `pulumi:"userData"`
@@ -293,7 +274,7 @@ type virtualMachineArgs struct {
 	VirtualMachineScaleSet *SubResource `pulumi:"virtualMachineScaleSet"`
 	// The name of the virtual machine.
 	VmName *string `pulumi:"vmName"`
-	// The availability zones.
+	// The virtual machine zones.
 	Zones []string `pulumi:"zones"`
 }
 
@@ -327,14 +308,12 @@ type VirtualMachineArgs struct {
 	Identity VirtualMachineIdentityPtrInput
 	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
 	LicenseType pulumi.StringPtrInput
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringPtrInput
 	// Specifies the network interfaces of the virtual machine.
 	NetworkProfile NetworkProfilePtrInput
 	// Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
 	OsProfile OSProfilePtrInput
-	// Placement section specifies the user-defined constraints for virtual machine hardware placement. This property cannot be changed once VM is provisioned. Minimum api-version: 2024-11-01.
-	Placement PlacementPtrInput
 	// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
 	Plan PlanPtrInput
 	// Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set. The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' greater than 1. This property cannot be updated once the Virtual Machine is created. Fault domain assignment can be viewed in the Virtual Machine Instance View. Minimum api‐version: 2020‐12‐01.
@@ -343,17 +322,15 @@ type VirtualMachineArgs struct {
 	Priority pulumi.StringPtrInput
 	// Specifies information about the proximity placement group that the virtual machine should be assigned to. Minimum api-version: 2018-04-01.
 	ProximityPlacementGroup SubResourcePtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
-	// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the virtual machine.
-	ScheduledEventsPolicy ScheduledEventsPolicyPtrInput
 	// Specifies Scheduled Event related configurations.
 	ScheduledEventsProfile ScheduledEventsProfilePtrInput
 	// Specifies the Security related profile settings for the virtual machine.
 	SecurityProfile SecurityProfilePtrInput
 	// Specifies the storage settings for the virtual machine disks.
 	StorageProfile StorageProfilePtrInput
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapInput
 	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
 	UserData pulumi.StringPtrInput
@@ -361,7 +338,7 @@ type VirtualMachineArgs struct {
 	VirtualMachineScaleSet SubResourcePtrInput
 	// The name of the virtual machine.
 	VmName pulumi.StringPtrInput
-	// The availability zones.
+	// The virtual machine zones.
 	Zones pulumi.StringArrayInput
 }
 
@@ -417,11 +394,6 @@ func (o VirtualMachineOutput) AvailabilitySet() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) SubResourceResponsePtrOutput { return v.AvailabilitySet }).(SubResourceResponsePtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o VirtualMachineOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
 func (o VirtualMachineOutput) BillingProfile() BillingProfileResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) BillingProfileResponsePtrOutput { return v.BillingProfile }).(BillingProfileResponsePtrOutput)
@@ -435,11 +407,6 @@ func (o VirtualMachineOutput) CapacityReservation() CapacityReservationProfileRe
 // Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 func (o VirtualMachineOutput) DiagnosticsProfile() DiagnosticsProfileResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) DiagnosticsProfileResponsePtrOutput { return v.DiagnosticsProfile }).(DiagnosticsProfileResponsePtrOutput)
-}
-
-// Etag is property returned in Create/Update/Get response of the VM, so that customer can supply it in the header to ensure optimistic updates.
-func (o VirtualMachineOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
@@ -487,17 +454,12 @@ func (o VirtualMachineOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.LicenseType }).(pulumi.StringPtrOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location
 func (o VirtualMachineOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// ManagedBy is set to Virtual Machine Scale Set(VMSS) flex ARM resourceID, if the VM is part of the VMSS. This property is used by platform for internal resource group delete optimization.
-func (o VirtualMachineOutput) ManagedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.ManagedBy }).(pulumi.StringOutput)
-}
-
-// The name of the resource
+// Resource name
 func (o VirtualMachineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -510,11 +472,6 @@ func (o VirtualMachineOutput) NetworkProfile() NetworkProfileResponsePtrOutput {
 // Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
 func (o VirtualMachineOutput) OsProfile() OSProfileResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) OSProfileResponsePtrOutput { return v.OsProfile }).(OSProfileResponsePtrOutput)
-}
-
-// Placement section specifies the user-defined constraints for virtual machine hardware placement. This property cannot be changed once VM is provisioned. Minimum api-version: 2024-11-01.
-func (o VirtualMachineOutput) Placement() PlacementResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachine) PlacementResponsePtrOutput { return v.Placement }).(PlacementResponsePtrOutput)
 }
 
 // Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
@@ -547,11 +504,6 @@ func (o VirtualMachineOutput) Resources() VirtualMachineExtensionResponseArrayOu
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineExtensionResponseArrayOutput { return v.Resources }).(VirtualMachineExtensionResponseArrayOutput)
 }
 
-// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the virtual machine.
-func (o VirtualMachineOutput) ScheduledEventsPolicy() ScheduledEventsPolicyResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachine) ScheduledEventsPolicyResponsePtrOutput { return v.ScheduledEventsPolicy }).(ScheduledEventsPolicyResponsePtrOutput)
-}
-
 // Specifies Scheduled Event related configurations.
 func (o VirtualMachineOutput) ScheduledEventsProfile() ScheduledEventsProfileResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) ScheduledEventsProfileResponsePtrOutput { return v.ScheduledEventsProfile }).(ScheduledEventsProfileResponsePtrOutput)
@@ -567,12 +519,7 @@ func (o VirtualMachineOutput) StorageProfile() StorageProfileResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) StorageProfileResponsePtrOutput { return v.StorageProfile }).(StorageProfileResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VirtualMachineOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VirtualMachine) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o VirtualMachineOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -582,7 +529,7 @@ func (o VirtualMachineOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o VirtualMachineOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -602,7 +549,7 @@ func (o VirtualMachineOutput) VmId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.VmId }).(pulumi.StringOutput)
 }
 
-// The availability zones.
+// The virtual machine zones.
 func (o VirtualMachineOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }

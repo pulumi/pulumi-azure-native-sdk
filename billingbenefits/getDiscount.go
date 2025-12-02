@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,20 @@ type LookupDiscountArgs struct {
 
 // Resource definition for Discounts.
 type LookupDiscountResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// List of applied scopes supported for discounts.
+	AppliedScopeType *string `pulumi:"appliedScopeType"`
+	// Fully-qualified identifier of the benefit under applicable benefit list.
+	BenefitResourceId string `pulumi:"benefitResourceId"`
+	// Billing account resource id where the discount metadata is present.
+	BillingAccountResourceId string `pulumi:"billingAccountResourceId"`
+	// Billing profile resource id where the discount is scoped to.
+	BillingProfileResourceId string `pulumi:"billingProfileResourceId"`
+	// Customer resource id where the discount is scoped to.
+	CustomerResourceId string `pulumi:"customerResourceId"`
+	// This defines a user friendly display name for the discount.
+	DisplayName *string `pulumi:"displayName"`
+	// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+	EntityType string `pulumi:"entityType"`
 	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -51,12 +63,20 @@ type LookupDiscountResult struct {
 	Name string `pulumi:"name"`
 	// Plan for the resource.
 	Plan *PlanResponse `pulumi:"plan"`
-	// Discount properties
-	Properties interface{} `pulumi:"properties"`
+	// This is the catalog UPN for the product.
+	ProductCode string `pulumi:"productCode"`
+	// The state of the resource. Supported values are Pending, Failed, Succeeded, Canceled.
+	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource model definition representing SKU
 	Sku *SkuResponse `pulumi:"sku"`
+	// Start date of the discount. Value is the date the discount started or will start in the future.
+	StartAt string `pulumi:"startAt"`
+	// Represents the current status of the discount.
+	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
+	// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+	SystemId *string `pulumi:"systemId"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -98,9 +118,39 @@ func (o LookupDiscountResultOutput) ToLookupDiscountResultOutputWithContext(ctx 
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupDiscountResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDiscountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+// List of applied scopes supported for discounts.
+func (o LookupDiscountResultOutput) AppliedScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDiscountResult) *string { return v.AppliedScopeType }).(pulumi.StringPtrOutput)
+}
+
+// Fully-qualified identifier of the benefit under applicable benefit list.
+func (o LookupDiscountResultOutput) BenefitResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscountResult) string { return v.BenefitResourceId }).(pulumi.StringOutput)
+}
+
+// Billing account resource id where the discount metadata is present.
+func (o LookupDiscountResultOutput) BillingAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscountResult) string { return v.BillingAccountResourceId }).(pulumi.StringOutput)
+}
+
+// Billing profile resource id where the discount is scoped to.
+func (o LookupDiscountResultOutput) BillingProfileResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscountResult) string { return v.BillingProfileResourceId }).(pulumi.StringOutput)
+}
+
+// Customer resource id where the discount is scoped to.
+func (o LookupDiscountResultOutput) CustomerResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscountResult) string { return v.CustomerResourceId }).(pulumi.StringOutput)
+}
+
+// This defines a user friendly display name for the discount.
+func (o LookupDiscountResultOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDiscountResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+func (o LookupDiscountResultOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscountResult) string { return v.EntityType }).(pulumi.StringOutput)
 }
 
 // The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
@@ -143,9 +193,14 @@ func (o LookupDiscountResultOutput) Plan() PlanResponsePtrOutput {
 	return o.ApplyT(func(v LookupDiscountResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
-// Discount properties
-func (o LookupDiscountResultOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupDiscountResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
+// This is the catalog UPN for the product.
+func (o LookupDiscountResultOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscountResult) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// The state of the resource. Supported values are Pending, Failed, Succeeded, Canceled.
+func (o LookupDiscountResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscountResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The resource model definition representing SKU
@@ -153,9 +208,24 @@ func (o LookupDiscountResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupDiscountResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Start date of the discount. Value is the date the discount started or will start in the future.
+func (o LookupDiscountResultOutput) StartAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscountResult) string { return v.StartAt }).(pulumi.StringOutput)
+}
+
+// Represents the current status of the discount.
+func (o LookupDiscountResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscountResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupDiscountResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDiscountResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+func (o LookupDiscountResultOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDiscountResult) *string { return v.SystemId }).(pulumi.StringPtrOutput)
 }
 
 // Resource tags.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a project environment type.
 //
-// Uses Azure REST API version 2024-02-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
 func LookupProjectEnvironmentType(ctx *pulumi.Context, args *LookupProjectEnvironmentTypeArgs, opts ...pulumi.InvokeOption) (*LookupProjectEnvironmentTypeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectEnvironmentTypeResult
@@ -37,17 +37,11 @@ type LookupProjectEnvironmentTypeArgs struct {
 
 // Represents an environment type.
 type LookupProjectEnvironmentTypeResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The role definition assigned to the environment creator on backing resources.
 	CreatorRoleAssignment *ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment `pulumi:"creatorRoleAssignment"`
 	// Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
 	DeploymentTargetId *string `pulumi:"deploymentTargetId"`
-	// The display name of the project environment type.
-	DisplayName *string `pulumi:"displayName"`
-	// The number of environments of this type.
-	EnvironmentCount int `pulumi:"environmentCount"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed identity properties
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
@@ -106,11 +100,6 @@ func (o LookupProjectEnvironmentTypeResultOutput) ToLookupProjectEnvironmentType
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupProjectEnvironmentTypeResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectEnvironmentTypeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The role definition assigned to the environment creator on backing resources.
 func (o LookupProjectEnvironmentTypeResultOutput) CreatorRoleAssignment() ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignmentPtrOutput {
 	return o.ApplyT(func(v LookupProjectEnvironmentTypeResult) *ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment {
@@ -123,17 +112,7 @@ func (o LookupProjectEnvironmentTypeResultOutput) DeploymentTargetId() pulumi.St
 	return o.ApplyT(func(v LookupProjectEnvironmentTypeResult) *string { return v.DeploymentTargetId }).(pulumi.StringPtrOutput)
 }
 
-// The display name of the project environment type.
-func (o LookupProjectEnvironmentTypeResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupProjectEnvironmentTypeResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The number of environments of this type.
-func (o LookupProjectEnvironmentTypeResultOutput) EnvironmentCount() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupProjectEnvironmentTypeResult) int { return v.EnvironmentCount }).(pulumi.IntOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupProjectEnvironmentTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectEnvironmentTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }

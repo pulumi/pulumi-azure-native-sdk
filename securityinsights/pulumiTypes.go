@@ -7,129 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
-
-// Model for API authentication with AWS.
-type AWSAuthModel struct {
-	// AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
-	ExternalId *string `pulumi:"externalId"`
-	// AWS STS assume role ARN
-	RoleArn string `pulumi:"roleArn"`
-	// Type of paging
-	// Expected value is 'AWS'.
-	Type string `pulumi:"type"`
-}
-
-// AWSAuthModelInput is an input type that accepts AWSAuthModelArgs and AWSAuthModelOutput values.
-// You can construct a concrete instance of `AWSAuthModelInput` via:
-//
-//	AWSAuthModelArgs{...}
-type AWSAuthModelInput interface {
-	pulumi.Input
-
-	ToAWSAuthModelOutput() AWSAuthModelOutput
-	ToAWSAuthModelOutputWithContext(context.Context) AWSAuthModelOutput
-}
-
-// Model for API authentication with AWS.
-type AWSAuthModelArgs struct {
-	// AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
-	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
-	// AWS STS assume role ARN
-	RoleArn pulumi.StringInput `pulumi:"roleArn"`
-	// Type of paging
-	// Expected value is 'AWS'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (AWSAuthModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AWSAuthModel)(nil)).Elem()
-}
-
-func (i AWSAuthModelArgs) ToAWSAuthModelOutput() AWSAuthModelOutput {
-	return i.ToAWSAuthModelOutputWithContext(context.Background())
-}
-
-func (i AWSAuthModelArgs) ToAWSAuthModelOutputWithContext(ctx context.Context) AWSAuthModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AWSAuthModelOutput)
-}
-
-// Model for API authentication with AWS.
-type AWSAuthModelOutput struct{ *pulumi.OutputState }
-
-func (AWSAuthModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AWSAuthModel)(nil)).Elem()
-}
-
-func (o AWSAuthModelOutput) ToAWSAuthModelOutput() AWSAuthModelOutput {
-	return o
-}
-
-func (o AWSAuthModelOutput) ToAWSAuthModelOutputWithContext(ctx context.Context) AWSAuthModelOutput {
-	return o
-}
-
-// AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
-func (o AWSAuthModelOutput) ExternalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AWSAuthModel) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
-}
-
-// AWS STS assume role ARN
-func (o AWSAuthModelOutput) RoleArn() pulumi.StringOutput {
-	return o.ApplyT(func(v AWSAuthModel) string { return v.RoleArn }).(pulumi.StringOutput)
-}
-
-// Type of paging
-// Expected value is 'AWS'.
-func (o AWSAuthModelOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v AWSAuthModel) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Model for API authentication with AWS.
-type AWSAuthModelResponse struct {
-	// AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
-	ExternalId *string `pulumi:"externalId"`
-	// AWS STS assume role ARN
-	RoleArn string `pulumi:"roleArn"`
-	// Type of paging
-	// Expected value is 'AWS'.
-	Type string `pulumi:"type"`
-}
-
-// Model for API authentication with AWS.
-type AWSAuthModelResponseOutput struct{ *pulumi.OutputState }
-
-func (AWSAuthModelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AWSAuthModelResponse)(nil)).Elem()
-}
-
-func (o AWSAuthModelResponseOutput) ToAWSAuthModelResponseOutput() AWSAuthModelResponseOutput {
-	return o
-}
-
-func (o AWSAuthModelResponseOutput) ToAWSAuthModelResponseOutputWithContext(ctx context.Context) AWSAuthModelResponseOutput {
-	return o
-}
-
-// AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
-func (o AWSAuthModelResponseOutput) ExternalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AWSAuthModelResponse) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
-}
-
-// AWS STS assume role ARN
-func (o AWSAuthModelResponseOutput) RoleArn() pulumi.StringOutput {
-	return o.ApplyT(func(v AWSAuthModelResponse) string { return v.RoleArn }).(pulumi.StringOutput)
-}
-
-// Type of paging
-// Expected value is 'AWS'.
-func (o AWSAuthModelResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v AWSAuthModelResponse) string { return v.Type }).(pulumi.StringOutput)
-}
 
 // The Activity query definitions
 type ActivityEntityQueriesPropertiesQueryDefinitions struct {
@@ -406,242 +288,6 @@ func (o ActivityTimelineItemResponseOutput) QueryId() pulumi.StringOutput {
 // The activity timeline title.
 func (o ActivityTimelineItemResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.Title }).(pulumi.StringOutput)
-}
-
-// Describes an automation rule action to add a task to an incident.
-type AddIncidentTaskActionProperties struct {
-	// The description of the task.
-	Description *string `pulumi:"description"`
-	// The title of the task.
-	Title string `pulumi:"title"`
-}
-
-// AddIncidentTaskActionPropertiesInput is an input type that accepts AddIncidentTaskActionPropertiesArgs and AddIncidentTaskActionPropertiesOutput values.
-// You can construct a concrete instance of `AddIncidentTaskActionPropertiesInput` via:
-//
-//	AddIncidentTaskActionPropertiesArgs{...}
-type AddIncidentTaskActionPropertiesInput interface {
-	pulumi.Input
-
-	ToAddIncidentTaskActionPropertiesOutput() AddIncidentTaskActionPropertiesOutput
-	ToAddIncidentTaskActionPropertiesOutputWithContext(context.Context) AddIncidentTaskActionPropertiesOutput
-}
-
-// Describes an automation rule action to add a task to an incident.
-type AddIncidentTaskActionPropertiesArgs struct {
-	// The description of the task.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The title of the task.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (AddIncidentTaskActionPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddIncidentTaskActionProperties)(nil)).Elem()
-}
-
-func (i AddIncidentTaskActionPropertiesArgs) ToAddIncidentTaskActionPropertiesOutput() AddIncidentTaskActionPropertiesOutput {
-	return i.ToAddIncidentTaskActionPropertiesOutputWithContext(context.Background())
-}
-
-func (i AddIncidentTaskActionPropertiesArgs) ToAddIncidentTaskActionPropertiesOutputWithContext(ctx context.Context) AddIncidentTaskActionPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddIncidentTaskActionPropertiesOutput)
-}
-
-func (i AddIncidentTaskActionPropertiesArgs) ToAddIncidentTaskActionPropertiesPtrOutput() AddIncidentTaskActionPropertiesPtrOutput {
-	return i.ToAddIncidentTaskActionPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i AddIncidentTaskActionPropertiesArgs) ToAddIncidentTaskActionPropertiesPtrOutputWithContext(ctx context.Context) AddIncidentTaskActionPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddIncidentTaskActionPropertiesOutput).ToAddIncidentTaskActionPropertiesPtrOutputWithContext(ctx)
-}
-
-// AddIncidentTaskActionPropertiesPtrInput is an input type that accepts AddIncidentTaskActionPropertiesArgs, AddIncidentTaskActionPropertiesPtr and AddIncidentTaskActionPropertiesPtrOutput values.
-// You can construct a concrete instance of `AddIncidentTaskActionPropertiesPtrInput` via:
-//
-//	        AddIncidentTaskActionPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type AddIncidentTaskActionPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToAddIncidentTaskActionPropertiesPtrOutput() AddIncidentTaskActionPropertiesPtrOutput
-	ToAddIncidentTaskActionPropertiesPtrOutputWithContext(context.Context) AddIncidentTaskActionPropertiesPtrOutput
-}
-
-type addIncidentTaskActionPropertiesPtrType AddIncidentTaskActionPropertiesArgs
-
-func AddIncidentTaskActionPropertiesPtr(v *AddIncidentTaskActionPropertiesArgs) AddIncidentTaskActionPropertiesPtrInput {
-	return (*addIncidentTaskActionPropertiesPtrType)(v)
-}
-
-func (*addIncidentTaskActionPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddIncidentTaskActionProperties)(nil)).Elem()
-}
-
-func (i *addIncidentTaskActionPropertiesPtrType) ToAddIncidentTaskActionPropertiesPtrOutput() AddIncidentTaskActionPropertiesPtrOutput {
-	return i.ToAddIncidentTaskActionPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *addIncidentTaskActionPropertiesPtrType) ToAddIncidentTaskActionPropertiesPtrOutputWithContext(ctx context.Context) AddIncidentTaskActionPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddIncidentTaskActionPropertiesPtrOutput)
-}
-
-// Describes an automation rule action to add a task to an incident.
-type AddIncidentTaskActionPropertiesOutput struct{ *pulumi.OutputState }
-
-func (AddIncidentTaskActionPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddIncidentTaskActionProperties)(nil)).Elem()
-}
-
-func (o AddIncidentTaskActionPropertiesOutput) ToAddIncidentTaskActionPropertiesOutput() AddIncidentTaskActionPropertiesOutput {
-	return o
-}
-
-func (o AddIncidentTaskActionPropertiesOutput) ToAddIncidentTaskActionPropertiesOutputWithContext(ctx context.Context) AddIncidentTaskActionPropertiesOutput {
-	return o
-}
-
-func (o AddIncidentTaskActionPropertiesOutput) ToAddIncidentTaskActionPropertiesPtrOutput() AddIncidentTaskActionPropertiesPtrOutput {
-	return o.ToAddIncidentTaskActionPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o AddIncidentTaskActionPropertiesOutput) ToAddIncidentTaskActionPropertiesPtrOutputWithContext(ctx context.Context) AddIncidentTaskActionPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddIncidentTaskActionProperties) *AddIncidentTaskActionProperties {
-		return &v
-	}).(AddIncidentTaskActionPropertiesPtrOutput)
-}
-
-// The description of the task.
-func (o AddIncidentTaskActionPropertiesOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AddIncidentTaskActionProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The title of the task.
-func (o AddIncidentTaskActionPropertiesOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v AddIncidentTaskActionProperties) string { return v.Title }).(pulumi.StringOutput)
-}
-
-type AddIncidentTaskActionPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (AddIncidentTaskActionPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddIncidentTaskActionProperties)(nil)).Elem()
-}
-
-func (o AddIncidentTaskActionPropertiesPtrOutput) ToAddIncidentTaskActionPropertiesPtrOutput() AddIncidentTaskActionPropertiesPtrOutput {
-	return o
-}
-
-func (o AddIncidentTaskActionPropertiesPtrOutput) ToAddIncidentTaskActionPropertiesPtrOutputWithContext(ctx context.Context) AddIncidentTaskActionPropertiesPtrOutput {
-	return o
-}
-
-func (o AddIncidentTaskActionPropertiesPtrOutput) Elem() AddIncidentTaskActionPropertiesOutput {
-	return o.ApplyT(func(v *AddIncidentTaskActionProperties) AddIncidentTaskActionProperties {
-		if v != nil {
-			return *v
-		}
-		var ret AddIncidentTaskActionProperties
-		return ret
-	}).(AddIncidentTaskActionPropertiesOutput)
-}
-
-// The description of the task.
-func (o AddIncidentTaskActionPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddIncidentTaskActionProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// The title of the task.
-func (o AddIncidentTaskActionPropertiesPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddIncidentTaskActionProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes an automation rule action to add a task to an incident.
-type AddIncidentTaskActionPropertiesResponse struct {
-	// The description of the task.
-	Description *string `pulumi:"description"`
-	// The title of the task.
-	Title string `pulumi:"title"`
-}
-
-// Describes an automation rule action to add a task to an incident.
-type AddIncidentTaskActionPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (AddIncidentTaskActionPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddIncidentTaskActionPropertiesResponse)(nil)).Elem()
-}
-
-func (o AddIncidentTaskActionPropertiesResponseOutput) ToAddIncidentTaskActionPropertiesResponseOutput() AddIncidentTaskActionPropertiesResponseOutput {
-	return o
-}
-
-func (o AddIncidentTaskActionPropertiesResponseOutput) ToAddIncidentTaskActionPropertiesResponseOutputWithContext(ctx context.Context) AddIncidentTaskActionPropertiesResponseOutput {
-	return o
-}
-
-// The description of the task.
-func (o AddIncidentTaskActionPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AddIncidentTaskActionPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The title of the task.
-func (o AddIncidentTaskActionPropertiesResponseOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v AddIncidentTaskActionPropertiesResponse) string { return v.Title }).(pulumi.StringOutput)
-}
-
-type AddIncidentTaskActionPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AddIncidentTaskActionPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AddIncidentTaskActionPropertiesResponse)(nil)).Elem()
-}
-
-func (o AddIncidentTaskActionPropertiesResponsePtrOutput) ToAddIncidentTaskActionPropertiesResponsePtrOutput() AddIncidentTaskActionPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o AddIncidentTaskActionPropertiesResponsePtrOutput) ToAddIncidentTaskActionPropertiesResponsePtrOutputWithContext(ctx context.Context) AddIncidentTaskActionPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o AddIncidentTaskActionPropertiesResponsePtrOutput) Elem() AddIncidentTaskActionPropertiesResponseOutput {
-	return o.ApplyT(func(v *AddIncidentTaskActionPropertiesResponse) AddIncidentTaskActionPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AddIncidentTaskActionPropertiesResponse
-		return ret
-	}).(AddIncidentTaskActionPropertiesResponseOutput)
-}
-
-// The description of the task.
-func (o AddIncidentTaskActionPropertiesResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddIncidentTaskActionPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// The title of the task.
-func (o AddIncidentTaskActionPropertiesResponsePtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddIncidentTaskActionPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
 }
 
 // Describes the configuration of a system inside the agent.
@@ -1504,156 +1150,6 @@ func (o AnomalyTimelineItemResponseOutput) Vendor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AnomalyTimelineItemResponse) *string { return v.Vendor }).(pulumi.StringPtrOutput)
 }
 
-// Model for authentication with the API Key. Will result in additional header on the request (default behavior) to the remote server: 'ApiKeyName: ApiKeyIdentifier ApiKey'. If 'IsApiKeyInPostPayload' is true it will send it in the body of the request and not the header.
-type ApiKeyAuthModel struct {
-	// API Key for the user secret key credential
-	ApiKey string `pulumi:"apiKey"`
-	// API Key Identifier
-	ApiKeyIdentifier *string `pulumi:"apiKeyIdentifier"`
-	// API Key name
-	ApiKeyName string `pulumi:"apiKeyName"`
-	// Flag to indicate if API key is set in HTTP POST payload
-	IsApiKeyInPostPayload *bool `pulumi:"isApiKeyInPostPayload"`
-	// Type of paging
-	// Expected value is 'APIKey'.
-	Type string `pulumi:"type"`
-}
-
-// ApiKeyAuthModelInput is an input type that accepts ApiKeyAuthModelArgs and ApiKeyAuthModelOutput values.
-// You can construct a concrete instance of `ApiKeyAuthModelInput` via:
-//
-//	ApiKeyAuthModelArgs{...}
-type ApiKeyAuthModelInput interface {
-	pulumi.Input
-
-	ToApiKeyAuthModelOutput() ApiKeyAuthModelOutput
-	ToApiKeyAuthModelOutputWithContext(context.Context) ApiKeyAuthModelOutput
-}
-
-// Model for authentication with the API Key. Will result in additional header on the request (default behavior) to the remote server: 'ApiKeyName: ApiKeyIdentifier ApiKey'. If 'IsApiKeyInPostPayload' is true it will send it in the body of the request and not the header.
-type ApiKeyAuthModelArgs struct {
-	// API Key for the user secret key credential
-	ApiKey pulumi.StringInput `pulumi:"apiKey"`
-	// API Key Identifier
-	ApiKeyIdentifier pulumi.StringPtrInput `pulumi:"apiKeyIdentifier"`
-	// API Key name
-	ApiKeyName pulumi.StringInput `pulumi:"apiKeyName"`
-	// Flag to indicate if API key is set in HTTP POST payload
-	IsApiKeyInPostPayload pulumi.BoolPtrInput `pulumi:"isApiKeyInPostPayload"`
-	// Type of paging
-	// Expected value is 'APIKey'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (ApiKeyAuthModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiKeyAuthModel)(nil)).Elem()
-}
-
-func (i ApiKeyAuthModelArgs) ToApiKeyAuthModelOutput() ApiKeyAuthModelOutput {
-	return i.ToApiKeyAuthModelOutputWithContext(context.Background())
-}
-
-func (i ApiKeyAuthModelArgs) ToApiKeyAuthModelOutputWithContext(ctx context.Context) ApiKeyAuthModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyAuthModelOutput)
-}
-
-// Model for authentication with the API Key. Will result in additional header on the request (default behavior) to the remote server: 'ApiKeyName: ApiKeyIdentifier ApiKey'. If 'IsApiKeyInPostPayload' is true it will send it in the body of the request and not the header.
-type ApiKeyAuthModelOutput struct{ *pulumi.OutputState }
-
-func (ApiKeyAuthModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiKeyAuthModel)(nil)).Elem()
-}
-
-func (o ApiKeyAuthModelOutput) ToApiKeyAuthModelOutput() ApiKeyAuthModelOutput {
-	return o
-}
-
-func (o ApiKeyAuthModelOutput) ToApiKeyAuthModelOutputWithContext(ctx context.Context) ApiKeyAuthModelOutput {
-	return o
-}
-
-// API Key for the user secret key credential
-func (o ApiKeyAuthModelOutput) ApiKey() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiKeyAuthModel) string { return v.ApiKey }).(pulumi.StringOutput)
-}
-
-// API Key Identifier
-func (o ApiKeyAuthModelOutput) ApiKeyIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiKeyAuthModel) *string { return v.ApiKeyIdentifier }).(pulumi.StringPtrOutput)
-}
-
-// API Key name
-func (o ApiKeyAuthModelOutput) ApiKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiKeyAuthModel) string { return v.ApiKeyName }).(pulumi.StringOutput)
-}
-
-// Flag to indicate if API key is set in HTTP POST payload
-func (o ApiKeyAuthModelOutput) IsApiKeyInPostPayload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApiKeyAuthModel) *bool { return v.IsApiKeyInPostPayload }).(pulumi.BoolPtrOutput)
-}
-
-// Type of paging
-// Expected value is 'APIKey'.
-func (o ApiKeyAuthModelOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiKeyAuthModel) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Model for authentication with the API Key. Will result in additional header on the request (default behavior) to the remote server: 'ApiKeyName: ApiKeyIdentifier ApiKey'. If 'IsApiKeyInPostPayload' is true it will send it in the body of the request and not the header.
-type ApiKeyAuthModelResponse struct {
-	// API Key for the user secret key credential
-	ApiKey string `pulumi:"apiKey"`
-	// API Key Identifier
-	ApiKeyIdentifier *string `pulumi:"apiKeyIdentifier"`
-	// API Key name
-	ApiKeyName string `pulumi:"apiKeyName"`
-	// Flag to indicate if API key is set in HTTP POST payload
-	IsApiKeyInPostPayload *bool `pulumi:"isApiKeyInPostPayload"`
-	// Type of paging
-	// Expected value is 'APIKey'.
-	Type string `pulumi:"type"`
-}
-
-// Model for authentication with the API Key. Will result in additional header on the request (default behavior) to the remote server: 'ApiKeyName: ApiKeyIdentifier ApiKey'. If 'IsApiKeyInPostPayload' is true it will send it in the body of the request and not the header.
-type ApiKeyAuthModelResponseOutput struct{ *pulumi.OutputState }
-
-func (ApiKeyAuthModelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiKeyAuthModelResponse)(nil)).Elem()
-}
-
-func (o ApiKeyAuthModelResponseOutput) ToApiKeyAuthModelResponseOutput() ApiKeyAuthModelResponseOutput {
-	return o
-}
-
-func (o ApiKeyAuthModelResponseOutput) ToApiKeyAuthModelResponseOutputWithContext(ctx context.Context) ApiKeyAuthModelResponseOutput {
-	return o
-}
-
-// API Key for the user secret key credential
-func (o ApiKeyAuthModelResponseOutput) ApiKey() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiKeyAuthModelResponse) string { return v.ApiKey }).(pulumi.StringOutput)
-}
-
-// API Key Identifier
-func (o ApiKeyAuthModelResponseOutput) ApiKeyIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiKeyAuthModelResponse) *string { return v.ApiKeyIdentifier }).(pulumi.StringPtrOutput)
-}
-
-// API Key name
-func (o ApiKeyAuthModelResponseOutput) ApiKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiKeyAuthModelResponse) string { return v.ApiKeyName }).(pulumi.StringOutput)
-}
-
-// Flag to indicate if API key is set in HTTP POST payload
-func (o ApiKeyAuthModelResponseOutput) IsApiKeyInPostPayload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApiKeyAuthModelResponse) *bool { return v.IsApiKeyInPostPayload }).(pulumi.BoolPtrOutput)
-}
-
-// Type of paging
-// Expected value is 'APIKey'.
-func (o ApiKeyAuthModelResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiKeyAuthModelResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
 // An entity describing a content item.
 type AssignmentItem struct {
 	// The resource id of the content item
@@ -1798,352 +1294,6 @@ func (o AssignmentItemResponseArrayOutput) Index(i pulumi.IntInput) AssignmentIt
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssignmentItemResponse {
 		return vs[0].([]AssignmentItemResponse)[vs[1].(int)]
 	}).(AssignmentItemResponseOutput)
-}
-
-// Describes an automation rule action to add a task to an incident
-type AutomationRuleAddIncidentTaskAction struct {
-	// Describes an automation rule action to add a task to an incident.
-	ActionConfiguration *AddIncidentTaskActionProperties `pulumi:"actionConfiguration"`
-	// The type of the automation rule action.
-	// Expected value is 'AddIncidentTask'.
-	ActionType string `pulumi:"actionType"`
-	Order      int    `pulumi:"order"`
-}
-
-// AutomationRuleAddIncidentTaskActionInput is an input type that accepts AutomationRuleAddIncidentTaskActionArgs and AutomationRuleAddIncidentTaskActionOutput values.
-// You can construct a concrete instance of `AutomationRuleAddIncidentTaskActionInput` via:
-//
-//	AutomationRuleAddIncidentTaskActionArgs{...}
-type AutomationRuleAddIncidentTaskActionInput interface {
-	pulumi.Input
-
-	ToAutomationRuleAddIncidentTaskActionOutput() AutomationRuleAddIncidentTaskActionOutput
-	ToAutomationRuleAddIncidentTaskActionOutputWithContext(context.Context) AutomationRuleAddIncidentTaskActionOutput
-}
-
-// Describes an automation rule action to add a task to an incident
-type AutomationRuleAddIncidentTaskActionArgs struct {
-	// Describes an automation rule action to add a task to an incident.
-	ActionConfiguration AddIncidentTaskActionPropertiesPtrInput `pulumi:"actionConfiguration"`
-	// The type of the automation rule action.
-	// Expected value is 'AddIncidentTask'.
-	ActionType pulumi.StringInput `pulumi:"actionType"`
-	Order      pulumi.IntInput    `pulumi:"order"`
-}
-
-func (AutomationRuleAddIncidentTaskActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRuleAddIncidentTaskAction)(nil)).Elem()
-}
-
-func (i AutomationRuleAddIncidentTaskActionArgs) ToAutomationRuleAddIncidentTaskActionOutput() AutomationRuleAddIncidentTaskActionOutput {
-	return i.ToAutomationRuleAddIncidentTaskActionOutputWithContext(context.Background())
-}
-
-func (i AutomationRuleAddIncidentTaskActionArgs) ToAutomationRuleAddIncidentTaskActionOutputWithContext(ctx context.Context) AutomationRuleAddIncidentTaskActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleAddIncidentTaskActionOutput)
-}
-
-// Describes an automation rule action to add a task to an incident
-type AutomationRuleAddIncidentTaskActionOutput struct{ *pulumi.OutputState }
-
-func (AutomationRuleAddIncidentTaskActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRuleAddIncidentTaskAction)(nil)).Elem()
-}
-
-func (o AutomationRuleAddIncidentTaskActionOutput) ToAutomationRuleAddIncidentTaskActionOutput() AutomationRuleAddIncidentTaskActionOutput {
-	return o
-}
-
-func (o AutomationRuleAddIncidentTaskActionOutput) ToAutomationRuleAddIncidentTaskActionOutputWithContext(ctx context.Context) AutomationRuleAddIncidentTaskActionOutput {
-	return o
-}
-
-// Describes an automation rule action to add a task to an incident.
-func (o AutomationRuleAddIncidentTaskActionOutput) ActionConfiguration() AddIncidentTaskActionPropertiesPtrOutput {
-	return o.ApplyT(func(v AutomationRuleAddIncidentTaskAction) *AddIncidentTaskActionProperties {
-		return v.ActionConfiguration
-	}).(AddIncidentTaskActionPropertiesPtrOutput)
-}
-
-// The type of the automation rule action.
-// Expected value is 'AddIncidentTask'.
-func (o AutomationRuleAddIncidentTaskActionOutput) ActionType() pulumi.StringOutput {
-	return o.ApplyT(func(v AutomationRuleAddIncidentTaskAction) string { return v.ActionType }).(pulumi.StringOutput)
-}
-
-func (o AutomationRuleAddIncidentTaskActionOutput) Order() pulumi.IntOutput {
-	return o.ApplyT(func(v AutomationRuleAddIncidentTaskAction) int { return v.Order }).(pulumi.IntOutput)
-}
-
-// Describes an automation rule action to add a task to an incident
-type AutomationRuleAddIncidentTaskActionResponse struct {
-	// Describes an automation rule action to add a task to an incident.
-	ActionConfiguration *AddIncidentTaskActionPropertiesResponse `pulumi:"actionConfiguration"`
-	// The type of the automation rule action.
-	// Expected value is 'AddIncidentTask'.
-	ActionType string `pulumi:"actionType"`
-	Order      int    `pulumi:"order"`
-}
-
-// Describes an automation rule action to add a task to an incident
-type AutomationRuleAddIncidentTaskActionResponseOutput struct{ *pulumi.OutputState }
-
-func (AutomationRuleAddIncidentTaskActionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRuleAddIncidentTaskActionResponse)(nil)).Elem()
-}
-
-func (o AutomationRuleAddIncidentTaskActionResponseOutput) ToAutomationRuleAddIncidentTaskActionResponseOutput() AutomationRuleAddIncidentTaskActionResponseOutput {
-	return o
-}
-
-func (o AutomationRuleAddIncidentTaskActionResponseOutput) ToAutomationRuleAddIncidentTaskActionResponseOutputWithContext(ctx context.Context) AutomationRuleAddIncidentTaskActionResponseOutput {
-	return o
-}
-
-// Describes an automation rule action to add a task to an incident.
-func (o AutomationRuleAddIncidentTaskActionResponseOutput) ActionConfiguration() AddIncidentTaskActionPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v AutomationRuleAddIncidentTaskActionResponse) *AddIncidentTaskActionPropertiesResponse {
-		return v.ActionConfiguration
-	}).(AddIncidentTaskActionPropertiesResponsePtrOutput)
-}
-
-// The type of the automation rule action.
-// Expected value is 'AddIncidentTask'.
-func (o AutomationRuleAddIncidentTaskActionResponseOutput) ActionType() pulumi.StringOutput {
-	return o.ApplyT(func(v AutomationRuleAddIncidentTaskActionResponse) string { return v.ActionType }).(pulumi.StringOutput)
-}
-
-func (o AutomationRuleAddIncidentTaskActionResponseOutput) Order() pulumi.IntOutput {
-	return o.ApplyT(func(v AutomationRuleAddIncidentTaskActionResponse) int { return v.Order }).(pulumi.IntOutput)
-}
-
-// Describes an automation rule condition with boolean operators.
-type AutomationRuleBooleanCondition struct {
-	InnerConditions []interface{} `pulumi:"innerConditions"`
-	// Describes a boolean condition operator.
-	Operator *string `pulumi:"operator"`
-}
-
-// AutomationRuleBooleanConditionInput is an input type that accepts AutomationRuleBooleanConditionArgs and AutomationRuleBooleanConditionOutput values.
-// You can construct a concrete instance of `AutomationRuleBooleanConditionInput` via:
-//
-//	AutomationRuleBooleanConditionArgs{...}
-type AutomationRuleBooleanConditionInput interface {
-	pulumi.Input
-
-	ToAutomationRuleBooleanConditionOutput() AutomationRuleBooleanConditionOutput
-	ToAutomationRuleBooleanConditionOutputWithContext(context.Context) AutomationRuleBooleanConditionOutput
-}
-
-// Describes an automation rule condition with boolean operators.
-type AutomationRuleBooleanConditionArgs struct {
-	InnerConditions pulumi.ArrayInput `pulumi:"innerConditions"`
-	// Describes a boolean condition operator.
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
-}
-
-func (AutomationRuleBooleanConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRuleBooleanCondition)(nil)).Elem()
-}
-
-func (i AutomationRuleBooleanConditionArgs) ToAutomationRuleBooleanConditionOutput() AutomationRuleBooleanConditionOutput {
-	return i.ToAutomationRuleBooleanConditionOutputWithContext(context.Background())
-}
-
-func (i AutomationRuleBooleanConditionArgs) ToAutomationRuleBooleanConditionOutputWithContext(ctx context.Context) AutomationRuleBooleanConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleBooleanConditionOutput)
-}
-
-func (i AutomationRuleBooleanConditionArgs) ToAutomationRuleBooleanConditionPtrOutput() AutomationRuleBooleanConditionPtrOutput {
-	return i.ToAutomationRuleBooleanConditionPtrOutputWithContext(context.Background())
-}
-
-func (i AutomationRuleBooleanConditionArgs) ToAutomationRuleBooleanConditionPtrOutputWithContext(ctx context.Context) AutomationRuleBooleanConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleBooleanConditionOutput).ToAutomationRuleBooleanConditionPtrOutputWithContext(ctx)
-}
-
-// AutomationRuleBooleanConditionPtrInput is an input type that accepts AutomationRuleBooleanConditionArgs, AutomationRuleBooleanConditionPtr and AutomationRuleBooleanConditionPtrOutput values.
-// You can construct a concrete instance of `AutomationRuleBooleanConditionPtrInput` via:
-//
-//	        AutomationRuleBooleanConditionArgs{...}
-//
-//	or:
-//
-//	        nil
-type AutomationRuleBooleanConditionPtrInput interface {
-	pulumi.Input
-
-	ToAutomationRuleBooleanConditionPtrOutput() AutomationRuleBooleanConditionPtrOutput
-	ToAutomationRuleBooleanConditionPtrOutputWithContext(context.Context) AutomationRuleBooleanConditionPtrOutput
-}
-
-type automationRuleBooleanConditionPtrType AutomationRuleBooleanConditionArgs
-
-func AutomationRuleBooleanConditionPtr(v *AutomationRuleBooleanConditionArgs) AutomationRuleBooleanConditionPtrInput {
-	return (*automationRuleBooleanConditionPtrType)(v)
-}
-
-func (*automationRuleBooleanConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomationRuleBooleanCondition)(nil)).Elem()
-}
-
-func (i *automationRuleBooleanConditionPtrType) ToAutomationRuleBooleanConditionPtrOutput() AutomationRuleBooleanConditionPtrOutput {
-	return i.ToAutomationRuleBooleanConditionPtrOutputWithContext(context.Background())
-}
-
-func (i *automationRuleBooleanConditionPtrType) ToAutomationRuleBooleanConditionPtrOutputWithContext(ctx context.Context) AutomationRuleBooleanConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleBooleanConditionPtrOutput)
-}
-
-// Describes an automation rule condition with boolean operators.
-type AutomationRuleBooleanConditionOutput struct{ *pulumi.OutputState }
-
-func (AutomationRuleBooleanConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRuleBooleanCondition)(nil)).Elem()
-}
-
-func (o AutomationRuleBooleanConditionOutput) ToAutomationRuleBooleanConditionOutput() AutomationRuleBooleanConditionOutput {
-	return o
-}
-
-func (o AutomationRuleBooleanConditionOutput) ToAutomationRuleBooleanConditionOutputWithContext(ctx context.Context) AutomationRuleBooleanConditionOutput {
-	return o
-}
-
-func (o AutomationRuleBooleanConditionOutput) ToAutomationRuleBooleanConditionPtrOutput() AutomationRuleBooleanConditionPtrOutput {
-	return o.ToAutomationRuleBooleanConditionPtrOutputWithContext(context.Background())
-}
-
-func (o AutomationRuleBooleanConditionOutput) ToAutomationRuleBooleanConditionPtrOutputWithContext(ctx context.Context) AutomationRuleBooleanConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomationRuleBooleanCondition) *AutomationRuleBooleanCondition {
-		return &v
-	}).(AutomationRuleBooleanConditionPtrOutput)
-}
-
-func (o AutomationRuleBooleanConditionOutput) InnerConditions() pulumi.ArrayOutput {
-	return o.ApplyT(func(v AutomationRuleBooleanCondition) []interface{} { return v.InnerConditions }).(pulumi.ArrayOutput)
-}
-
-// Describes a boolean condition operator.
-func (o AutomationRuleBooleanConditionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomationRuleBooleanCondition) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-type AutomationRuleBooleanConditionPtrOutput struct{ *pulumi.OutputState }
-
-func (AutomationRuleBooleanConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomationRuleBooleanCondition)(nil)).Elem()
-}
-
-func (o AutomationRuleBooleanConditionPtrOutput) ToAutomationRuleBooleanConditionPtrOutput() AutomationRuleBooleanConditionPtrOutput {
-	return o
-}
-
-func (o AutomationRuleBooleanConditionPtrOutput) ToAutomationRuleBooleanConditionPtrOutputWithContext(ctx context.Context) AutomationRuleBooleanConditionPtrOutput {
-	return o
-}
-
-func (o AutomationRuleBooleanConditionPtrOutput) Elem() AutomationRuleBooleanConditionOutput {
-	return o.ApplyT(func(v *AutomationRuleBooleanCondition) AutomationRuleBooleanCondition {
-		if v != nil {
-			return *v
-		}
-		var ret AutomationRuleBooleanCondition
-		return ret
-	}).(AutomationRuleBooleanConditionOutput)
-}
-
-func (o AutomationRuleBooleanConditionPtrOutput) InnerConditions() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *AutomationRuleBooleanCondition) []interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.InnerConditions
-	}).(pulumi.ArrayOutput)
-}
-
-// Describes a boolean condition operator.
-func (o AutomationRuleBooleanConditionPtrOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomationRuleBooleanCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Operator
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes an automation rule condition with boolean operators.
-type AutomationRuleBooleanConditionResponse struct {
-	InnerConditions []interface{} `pulumi:"innerConditions"`
-	// Describes a boolean condition operator.
-	Operator *string `pulumi:"operator"`
-}
-
-// Describes an automation rule condition with boolean operators.
-type AutomationRuleBooleanConditionResponseOutput struct{ *pulumi.OutputState }
-
-func (AutomationRuleBooleanConditionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRuleBooleanConditionResponse)(nil)).Elem()
-}
-
-func (o AutomationRuleBooleanConditionResponseOutput) ToAutomationRuleBooleanConditionResponseOutput() AutomationRuleBooleanConditionResponseOutput {
-	return o
-}
-
-func (o AutomationRuleBooleanConditionResponseOutput) ToAutomationRuleBooleanConditionResponseOutputWithContext(ctx context.Context) AutomationRuleBooleanConditionResponseOutput {
-	return o
-}
-
-func (o AutomationRuleBooleanConditionResponseOutput) InnerConditions() pulumi.ArrayOutput {
-	return o.ApplyT(func(v AutomationRuleBooleanConditionResponse) []interface{} { return v.InnerConditions }).(pulumi.ArrayOutput)
-}
-
-// Describes a boolean condition operator.
-func (o AutomationRuleBooleanConditionResponseOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomationRuleBooleanConditionResponse) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-type AutomationRuleBooleanConditionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AutomationRuleBooleanConditionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomationRuleBooleanConditionResponse)(nil)).Elem()
-}
-
-func (o AutomationRuleBooleanConditionResponsePtrOutput) ToAutomationRuleBooleanConditionResponsePtrOutput() AutomationRuleBooleanConditionResponsePtrOutput {
-	return o
-}
-
-func (o AutomationRuleBooleanConditionResponsePtrOutput) ToAutomationRuleBooleanConditionResponsePtrOutputWithContext(ctx context.Context) AutomationRuleBooleanConditionResponsePtrOutput {
-	return o
-}
-
-func (o AutomationRuleBooleanConditionResponsePtrOutput) Elem() AutomationRuleBooleanConditionResponseOutput {
-	return o.ApplyT(func(v *AutomationRuleBooleanConditionResponse) AutomationRuleBooleanConditionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AutomationRuleBooleanConditionResponse
-		return ret
-	}).(AutomationRuleBooleanConditionResponseOutput)
-}
-
-func (o AutomationRuleBooleanConditionResponsePtrOutput) InnerConditions() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *AutomationRuleBooleanConditionResponse) []interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.InnerConditions
-	}).(pulumi.ArrayOutput)
-}
-
-// Describes a boolean condition operator.
-func (o AutomationRuleBooleanConditionResponsePtrOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomationRuleBooleanConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Operator
-	}).(pulumi.StringPtrOutput)
 }
 
 // Describes an automation rule action to modify an object's properties
@@ -2471,271 +1621,6 @@ func (o AutomationRulePropertyArrayChangedValuesConditionResponsePtrOutput) Chan
 		}
 		return v.ChangeType
 	}).(pulumi.StringPtrOutput)
-}
-
-// Describes an automation rule condition on array properties.
-type AutomationRulePropertyArrayValuesCondition struct {
-	// Describes an array condition evaluation type.
-	ArrayConditionType *string `pulumi:"arrayConditionType"`
-	// Describes an array condition evaluated array type.
-	ArrayType      *string       `pulumi:"arrayType"`
-	ItemConditions []interface{} `pulumi:"itemConditions"`
-}
-
-// AutomationRulePropertyArrayValuesConditionInput is an input type that accepts AutomationRulePropertyArrayValuesConditionArgs and AutomationRulePropertyArrayValuesConditionOutput values.
-// You can construct a concrete instance of `AutomationRulePropertyArrayValuesConditionInput` via:
-//
-//	AutomationRulePropertyArrayValuesConditionArgs{...}
-type AutomationRulePropertyArrayValuesConditionInput interface {
-	pulumi.Input
-
-	ToAutomationRulePropertyArrayValuesConditionOutput() AutomationRulePropertyArrayValuesConditionOutput
-	ToAutomationRulePropertyArrayValuesConditionOutputWithContext(context.Context) AutomationRulePropertyArrayValuesConditionOutput
-}
-
-// Describes an automation rule condition on array properties.
-type AutomationRulePropertyArrayValuesConditionArgs struct {
-	// Describes an array condition evaluation type.
-	ArrayConditionType pulumi.StringPtrInput `pulumi:"arrayConditionType"`
-	// Describes an array condition evaluated array type.
-	ArrayType      pulumi.StringPtrInput `pulumi:"arrayType"`
-	ItemConditions pulumi.ArrayInput     `pulumi:"itemConditions"`
-}
-
-func (AutomationRulePropertyArrayValuesConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRulePropertyArrayValuesCondition)(nil)).Elem()
-}
-
-func (i AutomationRulePropertyArrayValuesConditionArgs) ToAutomationRulePropertyArrayValuesConditionOutput() AutomationRulePropertyArrayValuesConditionOutput {
-	return i.ToAutomationRulePropertyArrayValuesConditionOutputWithContext(context.Background())
-}
-
-func (i AutomationRulePropertyArrayValuesConditionArgs) ToAutomationRulePropertyArrayValuesConditionOutputWithContext(ctx context.Context) AutomationRulePropertyArrayValuesConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePropertyArrayValuesConditionOutput)
-}
-
-func (i AutomationRulePropertyArrayValuesConditionArgs) ToAutomationRulePropertyArrayValuesConditionPtrOutput() AutomationRulePropertyArrayValuesConditionPtrOutput {
-	return i.ToAutomationRulePropertyArrayValuesConditionPtrOutputWithContext(context.Background())
-}
-
-func (i AutomationRulePropertyArrayValuesConditionArgs) ToAutomationRulePropertyArrayValuesConditionPtrOutputWithContext(ctx context.Context) AutomationRulePropertyArrayValuesConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePropertyArrayValuesConditionOutput).ToAutomationRulePropertyArrayValuesConditionPtrOutputWithContext(ctx)
-}
-
-// AutomationRulePropertyArrayValuesConditionPtrInput is an input type that accepts AutomationRulePropertyArrayValuesConditionArgs, AutomationRulePropertyArrayValuesConditionPtr and AutomationRulePropertyArrayValuesConditionPtrOutput values.
-// You can construct a concrete instance of `AutomationRulePropertyArrayValuesConditionPtrInput` via:
-//
-//	        AutomationRulePropertyArrayValuesConditionArgs{...}
-//
-//	or:
-//
-//	        nil
-type AutomationRulePropertyArrayValuesConditionPtrInput interface {
-	pulumi.Input
-
-	ToAutomationRulePropertyArrayValuesConditionPtrOutput() AutomationRulePropertyArrayValuesConditionPtrOutput
-	ToAutomationRulePropertyArrayValuesConditionPtrOutputWithContext(context.Context) AutomationRulePropertyArrayValuesConditionPtrOutput
-}
-
-type automationRulePropertyArrayValuesConditionPtrType AutomationRulePropertyArrayValuesConditionArgs
-
-func AutomationRulePropertyArrayValuesConditionPtr(v *AutomationRulePropertyArrayValuesConditionArgs) AutomationRulePropertyArrayValuesConditionPtrInput {
-	return (*automationRulePropertyArrayValuesConditionPtrType)(v)
-}
-
-func (*automationRulePropertyArrayValuesConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomationRulePropertyArrayValuesCondition)(nil)).Elem()
-}
-
-func (i *automationRulePropertyArrayValuesConditionPtrType) ToAutomationRulePropertyArrayValuesConditionPtrOutput() AutomationRulePropertyArrayValuesConditionPtrOutput {
-	return i.ToAutomationRulePropertyArrayValuesConditionPtrOutputWithContext(context.Background())
-}
-
-func (i *automationRulePropertyArrayValuesConditionPtrType) ToAutomationRulePropertyArrayValuesConditionPtrOutputWithContext(ctx context.Context) AutomationRulePropertyArrayValuesConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePropertyArrayValuesConditionPtrOutput)
-}
-
-// Describes an automation rule condition on array properties.
-type AutomationRulePropertyArrayValuesConditionOutput struct{ *pulumi.OutputState }
-
-func (AutomationRulePropertyArrayValuesConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRulePropertyArrayValuesCondition)(nil)).Elem()
-}
-
-func (o AutomationRulePropertyArrayValuesConditionOutput) ToAutomationRulePropertyArrayValuesConditionOutput() AutomationRulePropertyArrayValuesConditionOutput {
-	return o
-}
-
-func (o AutomationRulePropertyArrayValuesConditionOutput) ToAutomationRulePropertyArrayValuesConditionOutputWithContext(ctx context.Context) AutomationRulePropertyArrayValuesConditionOutput {
-	return o
-}
-
-func (o AutomationRulePropertyArrayValuesConditionOutput) ToAutomationRulePropertyArrayValuesConditionPtrOutput() AutomationRulePropertyArrayValuesConditionPtrOutput {
-	return o.ToAutomationRulePropertyArrayValuesConditionPtrOutputWithContext(context.Background())
-}
-
-func (o AutomationRulePropertyArrayValuesConditionOutput) ToAutomationRulePropertyArrayValuesConditionPtrOutputWithContext(ctx context.Context) AutomationRulePropertyArrayValuesConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomationRulePropertyArrayValuesCondition) *AutomationRulePropertyArrayValuesCondition {
-		return &v
-	}).(AutomationRulePropertyArrayValuesConditionPtrOutput)
-}
-
-// Describes an array condition evaluation type.
-func (o AutomationRulePropertyArrayValuesConditionOutput) ArrayConditionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomationRulePropertyArrayValuesCondition) *string { return v.ArrayConditionType }).(pulumi.StringPtrOutput)
-}
-
-// Describes an array condition evaluated array type.
-func (o AutomationRulePropertyArrayValuesConditionOutput) ArrayType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomationRulePropertyArrayValuesCondition) *string { return v.ArrayType }).(pulumi.StringPtrOutput)
-}
-
-func (o AutomationRulePropertyArrayValuesConditionOutput) ItemConditions() pulumi.ArrayOutput {
-	return o.ApplyT(func(v AutomationRulePropertyArrayValuesCondition) []interface{} { return v.ItemConditions }).(pulumi.ArrayOutput)
-}
-
-type AutomationRulePropertyArrayValuesConditionPtrOutput struct{ *pulumi.OutputState }
-
-func (AutomationRulePropertyArrayValuesConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomationRulePropertyArrayValuesCondition)(nil)).Elem()
-}
-
-func (o AutomationRulePropertyArrayValuesConditionPtrOutput) ToAutomationRulePropertyArrayValuesConditionPtrOutput() AutomationRulePropertyArrayValuesConditionPtrOutput {
-	return o
-}
-
-func (o AutomationRulePropertyArrayValuesConditionPtrOutput) ToAutomationRulePropertyArrayValuesConditionPtrOutputWithContext(ctx context.Context) AutomationRulePropertyArrayValuesConditionPtrOutput {
-	return o
-}
-
-func (o AutomationRulePropertyArrayValuesConditionPtrOutput) Elem() AutomationRulePropertyArrayValuesConditionOutput {
-	return o.ApplyT(func(v *AutomationRulePropertyArrayValuesCondition) AutomationRulePropertyArrayValuesCondition {
-		if v != nil {
-			return *v
-		}
-		var ret AutomationRulePropertyArrayValuesCondition
-		return ret
-	}).(AutomationRulePropertyArrayValuesConditionOutput)
-}
-
-// Describes an array condition evaluation type.
-func (o AutomationRulePropertyArrayValuesConditionPtrOutput) ArrayConditionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomationRulePropertyArrayValuesCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ArrayConditionType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes an array condition evaluated array type.
-func (o AutomationRulePropertyArrayValuesConditionPtrOutput) ArrayType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomationRulePropertyArrayValuesCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ArrayType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o AutomationRulePropertyArrayValuesConditionPtrOutput) ItemConditions() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *AutomationRulePropertyArrayValuesCondition) []interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.ItemConditions
-	}).(pulumi.ArrayOutput)
-}
-
-// Describes an automation rule condition on array properties.
-type AutomationRulePropertyArrayValuesConditionResponse struct {
-	// Describes an array condition evaluation type.
-	ArrayConditionType *string `pulumi:"arrayConditionType"`
-	// Describes an array condition evaluated array type.
-	ArrayType      *string       `pulumi:"arrayType"`
-	ItemConditions []interface{} `pulumi:"itemConditions"`
-}
-
-// Describes an automation rule condition on array properties.
-type AutomationRulePropertyArrayValuesConditionResponseOutput struct{ *pulumi.OutputState }
-
-func (AutomationRulePropertyArrayValuesConditionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationRulePropertyArrayValuesConditionResponse)(nil)).Elem()
-}
-
-func (o AutomationRulePropertyArrayValuesConditionResponseOutput) ToAutomationRulePropertyArrayValuesConditionResponseOutput() AutomationRulePropertyArrayValuesConditionResponseOutput {
-	return o
-}
-
-func (o AutomationRulePropertyArrayValuesConditionResponseOutput) ToAutomationRulePropertyArrayValuesConditionResponseOutputWithContext(ctx context.Context) AutomationRulePropertyArrayValuesConditionResponseOutput {
-	return o
-}
-
-// Describes an array condition evaluation type.
-func (o AutomationRulePropertyArrayValuesConditionResponseOutput) ArrayConditionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomationRulePropertyArrayValuesConditionResponse) *string { return v.ArrayConditionType }).(pulumi.StringPtrOutput)
-}
-
-// Describes an array condition evaluated array type.
-func (o AutomationRulePropertyArrayValuesConditionResponseOutput) ArrayType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomationRulePropertyArrayValuesConditionResponse) *string { return v.ArrayType }).(pulumi.StringPtrOutput)
-}
-
-func (o AutomationRulePropertyArrayValuesConditionResponseOutput) ItemConditions() pulumi.ArrayOutput {
-	return o.ApplyT(func(v AutomationRulePropertyArrayValuesConditionResponse) []interface{} { return v.ItemConditions }).(pulumi.ArrayOutput)
-}
-
-type AutomationRulePropertyArrayValuesConditionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AutomationRulePropertyArrayValuesConditionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomationRulePropertyArrayValuesConditionResponse)(nil)).Elem()
-}
-
-func (o AutomationRulePropertyArrayValuesConditionResponsePtrOutput) ToAutomationRulePropertyArrayValuesConditionResponsePtrOutput() AutomationRulePropertyArrayValuesConditionResponsePtrOutput {
-	return o
-}
-
-func (o AutomationRulePropertyArrayValuesConditionResponsePtrOutput) ToAutomationRulePropertyArrayValuesConditionResponsePtrOutputWithContext(ctx context.Context) AutomationRulePropertyArrayValuesConditionResponsePtrOutput {
-	return o
-}
-
-func (o AutomationRulePropertyArrayValuesConditionResponsePtrOutput) Elem() AutomationRulePropertyArrayValuesConditionResponseOutput {
-	return o.ApplyT(func(v *AutomationRulePropertyArrayValuesConditionResponse) AutomationRulePropertyArrayValuesConditionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AutomationRulePropertyArrayValuesConditionResponse
-		return ret
-	}).(AutomationRulePropertyArrayValuesConditionResponseOutput)
-}
-
-// Describes an array condition evaluation type.
-func (o AutomationRulePropertyArrayValuesConditionResponsePtrOutput) ArrayConditionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomationRulePropertyArrayValuesConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ArrayConditionType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes an array condition evaluated array type.
-func (o AutomationRulePropertyArrayValuesConditionResponsePtrOutput) ArrayType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomationRulePropertyArrayValuesConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ArrayType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o AutomationRulePropertyArrayValuesConditionResponsePtrOutput) ItemConditions() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *AutomationRulePropertyArrayValuesConditionResponse) []interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.ItemConditions
-	}).(pulumi.ArrayOutput)
 }
 
 type AutomationRulePropertyValuesChangedCondition struct {
@@ -4149,124 +3034,6 @@ func (o AzureDevOpsResourceInfoResponsePtrOutput) ServiceConnectionId() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Model for API authentication with basic flow - user name + password.
-type BasicAuthModel struct {
-	// The password
-	Password string `pulumi:"password"`
-	// Type of paging
-	// Expected value is 'Basic'.
-	Type string `pulumi:"type"`
-	// The user name.
-	UserName string `pulumi:"userName"`
-}
-
-// BasicAuthModelInput is an input type that accepts BasicAuthModelArgs and BasicAuthModelOutput values.
-// You can construct a concrete instance of `BasicAuthModelInput` via:
-//
-//	BasicAuthModelArgs{...}
-type BasicAuthModelInput interface {
-	pulumi.Input
-
-	ToBasicAuthModelOutput() BasicAuthModelOutput
-	ToBasicAuthModelOutputWithContext(context.Context) BasicAuthModelOutput
-}
-
-// Model for API authentication with basic flow - user name + password.
-type BasicAuthModelArgs struct {
-	// The password
-	Password pulumi.StringInput `pulumi:"password"`
-	// Type of paging
-	// Expected value is 'Basic'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The user name.
-	UserName pulumi.StringInput `pulumi:"userName"`
-}
-
-func (BasicAuthModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BasicAuthModel)(nil)).Elem()
-}
-
-func (i BasicAuthModelArgs) ToBasicAuthModelOutput() BasicAuthModelOutput {
-	return i.ToBasicAuthModelOutputWithContext(context.Background())
-}
-
-func (i BasicAuthModelArgs) ToBasicAuthModelOutputWithContext(ctx context.Context) BasicAuthModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BasicAuthModelOutput)
-}
-
-// Model for API authentication with basic flow - user name + password.
-type BasicAuthModelOutput struct{ *pulumi.OutputState }
-
-func (BasicAuthModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BasicAuthModel)(nil)).Elem()
-}
-
-func (o BasicAuthModelOutput) ToBasicAuthModelOutput() BasicAuthModelOutput {
-	return o
-}
-
-func (o BasicAuthModelOutput) ToBasicAuthModelOutputWithContext(ctx context.Context) BasicAuthModelOutput {
-	return o
-}
-
-// The password
-func (o BasicAuthModelOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v BasicAuthModel) string { return v.Password }).(pulumi.StringOutput)
-}
-
-// Type of paging
-// Expected value is 'Basic'.
-func (o BasicAuthModelOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v BasicAuthModel) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The user name.
-func (o BasicAuthModelOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v BasicAuthModel) string { return v.UserName }).(pulumi.StringOutput)
-}
-
-// Model for API authentication with basic flow - user name + password.
-type BasicAuthModelResponse struct {
-	// The password
-	Password string `pulumi:"password"`
-	// Type of paging
-	// Expected value is 'Basic'.
-	Type string `pulumi:"type"`
-	// The user name.
-	UserName string `pulumi:"userName"`
-}
-
-// Model for API authentication with basic flow - user name + password.
-type BasicAuthModelResponseOutput struct{ *pulumi.OutputState }
-
-func (BasicAuthModelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BasicAuthModelResponse)(nil)).Elem()
-}
-
-func (o BasicAuthModelResponseOutput) ToBasicAuthModelResponseOutput() BasicAuthModelResponseOutput {
-	return o
-}
-
-func (o BasicAuthModelResponseOutput) ToBasicAuthModelResponseOutputWithContext(ctx context.Context) BasicAuthModelResponseOutput {
-	return o
-}
-
-// The password
-func (o BasicAuthModelResponseOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v BasicAuthModelResponse) string { return v.Password }).(pulumi.StringOutput)
-}
-
-// Type of paging
-// Expected value is 'Basic'.
-func (o BasicAuthModelResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v BasicAuthModelResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The user name.
-func (o BasicAuthModelResponseOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v BasicAuthModelResponse) string { return v.UserName }).(pulumi.StringOutput)
-}
-
 // Represents bookmark timeline item.
 type BookmarkTimelineItemResponse struct {
 	// The bookmark azure resource id.
@@ -4349,724 +3116,6 @@ func (o BookmarkTimelineItemResponseOutput) Notes() pulumi.StringPtrOutput {
 // The bookmark start time.
 func (o BookmarkTimelineItemResponseOutput) StartTimeUtc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BookmarkTimelineItemResponse) *string { return v.StartTimeUtc }).(pulumi.StringPtrOutput)
-}
-
-// Describes an automation rule condition that applies a boolean operator (e.g AND, OR) to conditions
-type BooleanConditionProperties struct {
-	// Describes an automation rule condition with boolean operators.
-	ConditionProperties *AutomationRuleBooleanCondition `pulumi:"conditionProperties"`
-	// Expected value is 'Boolean'.
-	ConditionType string `pulumi:"conditionType"`
-}
-
-// BooleanConditionPropertiesInput is an input type that accepts BooleanConditionPropertiesArgs and BooleanConditionPropertiesOutput values.
-// You can construct a concrete instance of `BooleanConditionPropertiesInput` via:
-//
-//	BooleanConditionPropertiesArgs{...}
-type BooleanConditionPropertiesInput interface {
-	pulumi.Input
-
-	ToBooleanConditionPropertiesOutput() BooleanConditionPropertiesOutput
-	ToBooleanConditionPropertiesOutputWithContext(context.Context) BooleanConditionPropertiesOutput
-}
-
-// Describes an automation rule condition that applies a boolean operator (e.g AND, OR) to conditions
-type BooleanConditionPropertiesArgs struct {
-	// Describes an automation rule condition with boolean operators.
-	ConditionProperties AutomationRuleBooleanConditionPtrInput `pulumi:"conditionProperties"`
-	// Expected value is 'Boolean'.
-	ConditionType pulumi.StringInput `pulumi:"conditionType"`
-}
-
-func (BooleanConditionPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BooleanConditionProperties)(nil)).Elem()
-}
-
-func (i BooleanConditionPropertiesArgs) ToBooleanConditionPropertiesOutput() BooleanConditionPropertiesOutput {
-	return i.ToBooleanConditionPropertiesOutputWithContext(context.Background())
-}
-
-func (i BooleanConditionPropertiesArgs) ToBooleanConditionPropertiesOutputWithContext(ctx context.Context) BooleanConditionPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BooleanConditionPropertiesOutput)
-}
-
-// Describes an automation rule condition that applies a boolean operator (e.g AND, OR) to conditions
-type BooleanConditionPropertiesOutput struct{ *pulumi.OutputState }
-
-func (BooleanConditionPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BooleanConditionProperties)(nil)).Elem()
-}
-
-func (o BooleanConditionPropertiesOutput) ToBooleanConditionPropertiesOutput() BooleanConditionPropertiesOutput {
-	return o
-}
-
-func (o BooleanConditionPropertiesOutput) ToBooleanConditionPropertiesOutputWithContext(ctx context.Context) BooleanConditionPropertiesOutput {
-	return o
-}
-
-// Describes an automation rule condition with boolean operators.
-func (o BooleanConditionPropertiesOutput) ConditionProperties() AutomationRuleBooleanConditionPtrOutput {
-	return o.ApplyT(func(v BooleanConditionProperties) *AutomationRuleBooleanCondition { return v.ConditionProperties }).(AutomationRuleBooleanConditionPtrOutput)
-}
-
-// Expected value is 'Boolean'.
-func (o BooleanConditionPropertiesOutput) ConditionType() pulumi.StringOutput {
-	return o.ApplyT(func(v BooleanConditionProperties) string { return v.ConditionType }).(pulumi.StringOutput)
-}
-
-// Describes an automation rule condition that applies a boolean operator (e.g AND, OR) to conditions
-type BooleanConditionPropertiesResponse struct {
-	// Describes an automation rule condition with boolean operators.
-	ConditionProperties *AutomationRuleBooleanConditionResponse `pulumi:"conditionProperties"`
-	// Expected value is 'Boolean'.
-	ConditionType string `pulumi:"conditionType"`
-}
-
-// Describes an automation rule condition that applies a boolean operator (e.g AND, OR) to conditions
-type BooleanConditionPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (BooleanConditionPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BooleanConditionPropertiesResponse)(nil)).Elem()
-}
-
-func (o BooleanConditionPropertiesResponseOutput) ToBooleanConditionPropertiesResponseOutput() BooleanConditionPropertiesResponseOutput {
-	return o
-}
-
-func (o BooleanConditionPropertiesResponseOutput) ToBooleanConditionPropertiesResponseOutputWithContext(ctx context.Context) BooleanConditionPropertiesResponseOutput {
-	return o
-}
-
-// Describes an automation rule condition with boolean operators.
-func (o BooleanConditionPropertiesResponseOutput) ConditionProperties() AutomationRuleBooleanConditionResponsePtrOutput {
-	return o.ApplyT(func(v BooleanConditionPropertiesResponse) *AutomationRuleBooleanConditionResponse {
-		return v.ConditionProperties
-	}).(AutomationRuleBooleanConditionResponsePtrOutput)
-}
-
-// Expected value is 'Boolean'.
-func (o BooleanConditionPropertiesResponseOutput) ConditionType() pulumi.StringOutput {
-	return o.ApplyT(func(v BooleanConditionPropertiesResponse) string { return v.ConditionType }).(pulumi.StringOutput)
-}
-
-// A custom response configuration for a rule.
-type CcpResponseConfig struct {
-	// The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
-	CompressionAlgo *string `pulumi:"compressionAlgo"`
-	// The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
-	ConvertChildPropertiesToArray *bool `pulumi:"convertChildPropertiesToArray"`
-	// The csv delimiter, in case the response format is CSV.
-	CsvDelimiter *string `pulumi:"csvDelimiter"`
-	// The character used to escape characters in CSV.
-	CsvEscape *string `pulumi:"csvEscape"`
-	// The json paths, '$' char is the json root.
-	EventsJsonPaths []string `pulumi:"eventsJsonPaths"`
-	// The response format. possible values are json,csv,xml
-	Format *string `pulumi:"format"`
-	// The value indicating whether the response has CSV boundary in case the response in CSV format.
-	HasCsvBoundary *bool `pulumi:"hasCsvBoundary"`
-	// The value indicating whether the response has headers in case the response in CSV format.
-	HasCsvHeader *bool `pulumi:"hasCsvHeader"`
-	// The value indicating whether the remote server support Gzip and we should expect Gzip response.
-	IsGzipCompressed *bool `pulumi:"isGzipCompressed"`
-	// The value where the status message/code should appear in the response.
-	SuccessStatusJsonPath *string `pulumi:"successStatusJsonPath"`
-	// The status value.
-	SuccessStatusValue *string `pulumi:"successStatusValue"`
-}
-
-// Defaults sets the appropriate defaults for CcpResponseConfig
-func (val *CcpResponseConfig) Defaults() *CcpResponseConfig {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.CompressionAlgo == nil {
-		compressionAlgo_ := "gzip"
-		tmp.CompressionAlgo = &compressionAlgo_
-	}
-	if tmp.CsvEscape == nil {
-		csvEscape_ := "\""
-		tmp.CsvEscape = &csvEscape_
-	}
-	if tmp.Format == nil {
-		format_ := "json"
-		tmp.Format = &format_
-	}
-	return &tmp
-}
-
-// CcpResponseConfigInput is an input type that accepts CcpResponseConfigArgs and CcpResponseConfigOutput values.
-// You can construct a concrete instance of `CcpResponseConfigInput` via:
-//
-//	CcpResponseConfigArgs{...}
-type CcpResponseConfigInput interface {
-	pulumi.Input
-
-	ToCcpResponseConfigOutput() CcpResponseConfigOutput
-	ToCcpResponseConfigOutputWithContext(context.Context) CcpResponseConfigOutput
-}
-
-// A custom response configuration for a rule.
-type CcpResponseConfigArgs struct {
-	// The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
-	CompressionAlgo pulumi.StringPtrInput `pulumi:"compressionAlgo"`
-	// The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
-	ConvertChildPropertiesToArray pulumi.BoolPtrInput `pulumi:"convertChildPropertiesToArray"`
-	// The csv delimiter, in case the response format is CSV.
-	CsvDelimiter pulumi.StringPtrInput `pulumi:"csvDelimiter"`
-	// The character used to escape characters in CSV.
-	CsvEscape pulumi.StringPtrInput `pulumi:"csvEscape"`
-	// The json paths, '$' char is the json root.
-	EventsJsonPaths pulumi.StringArrayInput `pulumi:"eventsJsonPaths"`
-	// The response format. possible values are json,csv,xml
-	Format pulumi.StringPtrInput `pulumi:"format"`
-	// The value indicating whether the response has CSV boundary in case the response in CSV format.
-	HasCsvBoundary pulumi.BoolPtrInput `pulumi:"hasCsvBoundary"`
-	// The value indicating whether the response has headers in case the response in CSV format.
-	HasCsvHeader pulumi.BoolPtrInput `pulumi:"hasCsvHeader"`
-	// The value indicating whether the remote server support Gzip and we should expect Gzip response.
-	IsGzipCompressed pulumi.BoolPtrInput `pulumi:"isGzipCompressed"`
-	// The value where the status message/code should appear in the response.
-	SuccessStatusJsonPath pulumi.StringPtrInput `pulumi:"successStatusJsonPath"`
-	// The status value.
-	SuccessStatusValue pulumi.StringPtrInput `pulumi:"successStatusValue"`
-}
-
-// Defaults sets the appropriate defaults for CcpResponseConfigArgs
-func (val *CcpResponseConfigArgs) Defaults() *CcpResponseConfigArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.CompressionAlgo == nil {
-		tmp.CompressionAlgo = pulumi.StringPtr("gzip")
-	}
-	if tmp.CsvEscape == nil {
-		tmp.CsvEscape = pulumi.StringPtr("\"")
-	}
-	if tmp.Format == nil {
-		tmp.Format = pulumi.StringPtr("json")
-	}
-	return &tmp
-}
-func (CcpResponseConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CcpResponseConfig)(nil)).Elem()
-}
-
-func (i CcpResponseConfigArgs) ToCcpResponseConfigOutput() CcpResponseConfigOutput {
-	return i.ToCcpResponseConfigOutputWithContext(context.Background())
-}
-
-func (i CcpResponseConfigArgs) ToCcpResponseConfigOutputWithContext(ctx context.Context) CcpResponseConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CcpResponseConfigOutput)
-}
-
-func (i CcpResponseConfigArgs) ToCcpResponseConfigPtrOutput() CcpResponseConfigPtrOutput {
-	return i.ToCcpResponseConfigPtrOutputWithContext(context.Background())
-}
-
-func (i CcpResponseConfigArgs) ToCcpResponseConfigPtrOutputWithContext(ctx context.Context) CcpResponseConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CcpResponseConfigOutput).ToCcpResponseConfigPtrOutputWithContext(ctx)
-}
-
-// CcpResponseConfigPtrInput is an input type that accepts CcpResponseConfigArgs, CcpResponseConfigPtr and CcpResponseConfigPtrOutput values.
-// You can construct a concrete instance of `CcpResponseConfigPtrInput` via:
-//
-//	        CcpResponseConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type CcpResponseConfigPtrInput interface {
-	pulumi.Input
-
-	ToCcpResponseConfigPtrOutput() CcpResponseConfigPtrOutput
-	ToCcpResponseConfigPtrOutputWithContext(context.Context) CcpResponseConfigPtrOutput
-}
-
-type ccpResponseConfigPtrType CcpResponseConfigArgs
-
-func CcpResponseConfigPtr(v *CcpResponseConfigArgs) CcpResponseConfigPtrInput {
-	return (*ccpResponseConfigPtrType)(v)
-}
-
-func (*ccpResponseConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CcpResponseConfig)(nil)).Elem()
-}
-
-func (i *ccpResponseConfigPtrType) ToCcpResponseConfigPtrOutput() CcpResponseConfigPtrOutput {
-	return i.ToCcpResponseConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *ccpResponseConfigPtrType) ToCcpResponseConfigPtrOutputWithContext(ctx context.Context) CcpResponseConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CcpResponseConfigPtrOutput)
-}
-
-// A custom response configuration for a rule.
-type CcpResponseConfigOutput struct{ *pulumi.OutputState }
-
-func (CcpResponseConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CcpResponseConfig)(nil)).Elem()
-}
-
-func (o CcpResponseConfigOutput) ToCcpResponseConfigOutput() CcpResponseConfigOutput {
-	return o
-}
-
-func (o CcpResponseConfigOutput) ToCcpResponseConfigOutputWithContext(ctx context.Context) CcpResponseConfigOutput {
-	return o
-}
-
-func (o CcpResponseConfigOutput) ToCcpResponseConfigPtrOutput() CcpResponseConfigPtrOutput {
-	return o.ToCcpResponseConfigPtrOutputWithContext(context.Background())
-}
-
-func (o CcpResponseConfigOutput) ToCcpResponseConfigPtrOutputWithContext(ctx context.Context) CcpResponseConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CcpResponseConfig) *CcpResponseConfig {
-		return &v
-	}).(CcpResponseConfigPtrOutput)
-}
-
-// The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
-func (o CcpResponseConfigOutput) CompressionAlgo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfig) *string { return v.CompressionAlgo }).(pulumi.StringPtrOutput)
-}
-
-// The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
-func (o CcpResponseConfigOutput) ConvertChildPropertiesToArray() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfig) *bool { return v.ConvertChildPropertiesToArray }).(pulumi.BoolPtrOutput)
-}
-
-// The csv delimiter, in case the response format is CSV.
-func (o CcpResponseConfigOutput) CsvDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfig) *string { return v.CsvDelimiter }).(pulumi.StringPtrOutput)
-}
-
-// The character used to escape characters in CSV.
-func (o CcpResponseConfigOutput) CsvEscape() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfig) *string { return v.CsvEscape }).(pulumi.StringPtrOutput)
-}
-
-// The json paths, '$' char is the json root.
-func (o CcpResponseConfigOutput) EventsJsonPaths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v CcpResponseConfig) []string { return v.EventsJsonPaths }).(pulumi.StringArrayOutput)
-}
-
-// The response format. possible values are json,csv,xml
-func (o CcpResponseConfigOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfig) *string { return v.Format }).(pulumi.StringPtrOutput)
-}
-
-// The value indicating whether the response has CSV boundary in case the response in CSV format.
-func (o CcpResponseConfigOutput) HasCsvBoundary() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfig) *bool { return v.HasCsvBoundary }).(pulumi.BoolPtrOutput)
-}
-
-// The value indicating whether the response has headers in case the response in CSV format.
-func (o CcpResponseConfigOutput) HasCsvHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfig) *bool { return v.HasCsvHeader }).(pulumi.BoolPtrOutput)
-}
-
-// The value indicating whether the remote server support Gzip and we should expect Gzip response.
-func (o CcpResponseConfigOutput) IsGzipCompressed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfig) *bool { return v.IsGzipCompressed }).(pulumi.BoolPtrOutput)
-}
-
-// The value where the status message/code should appear in the response.
-func (o CcpResponseConfigOutput) SuccessStatusJsonPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfig) *string { return v.SuccessStatusJsonPath }).(pulumi.StringPtrOutput)
-}
-
-// The status value.
-func (o CcpResponseConfigOutput) SuccessStatusValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfig) *string { return v.SuccessStatusValue }).(pulumi.StringPtrOutput)
-}
-
-type CcpResponseConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (CcpResponseConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CcpResponseConfig)(nil)).Elem()
-}
-
-func (o CcpResponseConfigPtrOutput) ToCcpResponseConfigPtrOutput() CcpResponseConfigPtrOutput {
-	return o
-}
-
-func (o CcpResponseConfigPtrOutput) ToCcpResponseConfigPtrOutputWithContext(ctx context.Context) CcpResponseConfigPtrOutput {
-	return o
-}
-
-func (o CcpResponseConfigPtrOutput) Elem() CcpResponseConfigOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) CcpResponseConfig {
-		if v != nil {
-			return *v
-		}
-		var ret CcpResponseConfig
-		return ret
-	}).(CcpResponseConfigOutput)
-}
-
-// The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
-func (o CcpResponseConfigPtrOutput) CompressionAlgo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CompressionAlgo
-	}).(pulumi.StringPtrOutput)
-}
-
-// The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
-func (o CcpResponseConfigPtrOutput) ConvertChildPropertiesToArray() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ConvertChildPropertiesToArray
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The csv delimiter, in case the response format is CSV.
-func (o CcpResponseConfigPtrOutput) CsvDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CsvDelimiter
-	}).(pulumi.StringPtrOutput)
-}
-
-// The character used to escape characters in CSV.
-func (o CcpResponseConfigPtrOutput) CsvEscape() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CsvEscape
-	}).(pulumi.StringPtrOutput)
-}
-
-// The json paths, '$' char is the json root.
-func (o CcpResponseConfigPtrOutput) EventsJsonPaths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.EventsJsonPaths
-	}).(pulumi.StringArrayOutput)
-}
-
-// The response format. possible values are json,csv,xml
-func (o CcpResponseConfigPtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Format
-	}).(pulumi.StringPtrOutput)
-}
-
-// The value indicating whether the response has CSV boundary in case the response in CSV format.
-func (o CcpResponseConfigPtrOutput) HasCsvBoundary() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.HasCsvBoundary
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The value indicating whether the response has headers in case the response in CSV format.
-func (o CcpResponseConfigPtrOutput) HasCsvHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.HasCsvHeader
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The value indicating whether the remote server support Gzip and we should expect Gzip response.
-func (o CcpResponseConfigPtrOutput) IsGzipCompressed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsGzipCompressed
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The value where the status message/code should appear in the response.
-func (o CcpResponseConfigPtrOutput) SuccessStatusJsonPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessStatusJsonPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// The status value.
-func (o CcpResponseConfigPtrOutput) SuccessStatusValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessStatusValue
-	}).(pulumi.StringPtrOutput)
-}
-
-// A custom response configuration for a rule.
-type CcpResponseConfigResponse struct {
-	// The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
-	CompressionAlgo *string `pulumi:"compressionAlgo"`
-	// The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
-	ConvertChildPropertiesToArray *bool `pulumi:"convertChildPropertiesToArray"`
-	// The csv delimiter, in case the response format is CSV.
-	CsvDelimiter *string `pulumi:"csvDelimiter"`
-	// The character used to escape characters in CSV.
-	CsvEscape *string `pulumi:"csvEscape"`
-	// The json paths, '$' char is the json root.
-	EventsJsonPaths []string `pulumi:"eventsJsonPaths"`
-	// The response format. possible values are json,csv,xml
-	Format *string `pulumi:"format"`
-	// The value indicating whether the response has CSV boundary in case the response in CSV format.
-	HasCsvBoundary *bool `pulumi:"hasCsvBoundary"`
-	// The value indicating whether the response has headers in case the response in CSV format.
-	HasCsvHeader *bool `pulumi:"hasCsvHeader"`
-	// The value indicating whether the remote server support Gzip and we should expect Gzip response.
-	IsGzipCompressed *bool `pulumi:"isGzipCompressed"`
-	// The value where the status message/code should appear in the response.
-	SuccessStatusJsonPath *string `pulumi:"successStatusJsonPath"`
-	// The status value.
-	SuccessStatusValue *string `pulumi:"successStatusValue"`
-}
-
-// Defaults sets the appropriate defaults for CcpResponseConfigResponse
-func (val *CcpResponseConfigResponse) Defaults() *CcpResponseConfigResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.CompressionAlgo == nil {
-		compressionAlgo_ := "gzip"
-		tmp.CompressionAlgo = &compressionAlgo_
-	}
-	if tmp.CsvEscape == nil {
-		csvEscape_ := "\""
-		tmp.CsvEscape = &csvEscape_
-	}
-	if tmp.Format == nil {
-		format_ := "json"
-		tmp.Format = &format_
-	}
-	return &tmp
-}
-
-// A custom response configuration for a rule.
-type CcpResponseConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (CcpResponseConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CcpResponseConfigResponse)(nil)).Elem()
-}
-
-func (o CcpResponseConfigResponseOutput) ToCcpResponseConfigResponseOutput() CcpResponseConfigResponseOutput {
-	return o
-}
-
-func (o CcpResponseConfigResponseOutput) ToCcpResponseConfigResponseOutputWithContext(ctx context.Context) CcpResponseConfigResponseOutput {
-	return o
-}
-
-// The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
-func (o CcpResponseConfigResponseOutput) CompressionAlgo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfigResponse) *string { return v.CompressionAlgo }).(pulumi.StringPtrOutput)
-}
-
-// The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
-func (o CcpResponseConfigResponseOutput) ConvertChildPropertiesToArray() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfigResponse) *bool { return v.ConvertChildPropertiesToArray }).(pulumi.BoolPtrOutput)
-}
-
-// The csv delimiter, in case the response format is CSV.
-func (o CcpResponseConfigResponseOutput) CsvDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfigResponse) *string { return v.CsvDelimiter }).(pulumi.StringPtrOutput)
-}
-
-// The character used to escape characters in CSV.
-func (o CcpResponseConfigResponseOutput) CsvEscape() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfigResponse) *string { return v.CsvEscape }).(pulumi.StringPtrOutput)
-}
-
-// The json paths, '$' char is the json root.
-func (o CcpResponseConfigResponseOutput) EventsJsonPaths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v CcpResponseConfigResponse) []string { return v.EventsJsonPaths }).(pulumi.StringArrayOutput)
-}
-
-// The response format. possible values are json,csv,xml
-func (o CcpResponseConfigResponseOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfigResponse) *string { return v.Format }).(pulumi.StringPtrOutput)
-}
-
-// The value indicating whether the response has CSV boundary in case the response in CSV format.
-func (o CcpResponseConfigResponseOutput) HasCsvBoundary() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfigResponse) *bool { return v.HasCsvBoundary }).(pulumi.BoolPtrOutput)
-}
-
-// The value indicating whether the response has headers in case the response in CSV format.
-func (o CcpResponseConfigResponseOutput) HasCsvHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfigResponse) *bool { return v.HasCsvHeader }).(pulumi.BoolPtrOutput)
-}
-
-// The value indicating whether the remote server support Gzip and we should expect Gzip response.
-func (o CcpResponseConfigResponseOutput) IsGzipCompressed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfigResponse) *bool { return v.IsGzipCompressed }).(pulumi.BoolPtrOutput)
-}
-
-// The value where the status message/code should appear in the response.
-func (o CcpResponseConfigResponseOutput) SuccessStatusJsonPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfigResponse) *string { return v.SuccessStatusJsonPath }).(pulumi.StringPtrOutput)
-}
-
-// The status value.
-func (o CcpResponseConfigResponseOutput) SuccessStatusValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CcpResponseConfigResponse) *string { return v.SuccessStatusValue }).(pulumi.StringPtrOutput)
-}
-
-type CcpResponseConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CcpResponseConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CcpResponseConfigResponse)(nil)).Elem()
-}
-
-func (o CcpResponseConfigResponsePtrOutput) ToCcpResponseConfigResponsePtrOutput() CcpResponseConfigResponsePtrOutput {
-	return o
-}
-
-func (o CcpResponseConfigResponsePtrOutput) ToCcpResponseConfigResponsePtrOutputWithContext(ctx context.Context) CcpResponseConfigResponsePtrOutput {
-	return o
-}
-
-func (o CcpResponseConfigResponsePtrOutput) Elem() CcpResponseConfigResponseOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) CcpResponseConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CcpResponseConfigResponse
-		return ret
-	}).(CcpResponseConfigResponseOutput)
-}
-
-// The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
-func (o CcpResponseConfigResponsePtrOutput) CompressionAlgo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CompressionAlgo
-	}).(pulumi.StringPtrOutput)
-}
-
-// The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
-func (o CcpResponseConfigResponsePtrOutput) ConvertChildPropertiesToArray() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ConvertChildPropertiesToArray
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The csv delimiter, in case the response format is CSV.
-func (o CcpResponseConfigResponsePtrOutput) CsvDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CsvDelimiter
-	}).(pulumi.StringPtrOutput)
-}
-
-// The character used to escape characters in CSV.
-func (o CcpResponseConfigResponsePtrOutput) CsvEscape() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CsvEscape
-	}).(pulumi.StringPtrOutput)
-}
-
-// The json paths, '$' char is the json root.
-func (o CcpResponseConfigResponsePtrOutput) EventsJsonPaths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.EventsJsonPaths
-	}).(pulumi.StringArrayOutput)
-}
-
-// The response format. possible values are json,csv,xml
-func (o CcpResponseConfigResponsePtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Format
-	}).(pulumi.StringPtrOutput)
-}
-
-// The value indicating whether the response has CSV boundary in case the response in CSV format.
-func (o CcpResponseConfigResponsePtrOutput) HasCsvBoundary() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.HasCsvBoundary
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The value indicating whether the response has headers in case the response in CSV format.
-func (o CcpResponseConfigResponsePtrOutput) HasCsvHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.HasCsvHeader
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The value indicating whether the remote server support Gzip and we should expect Gzip response.
-func (o CcpResponseConfigResponsePtrOutput) IsGzipCompressed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsGzipCompressed
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The value where the status message/code should appear in the response.
-func (o CcpResponseConfigResponsePtrOutput) SuccessStatusJsonPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessStatusJsonPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// The status value.
-func (o CcpResponseConfigResponsePtrOutput) SuccessStatusValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CcpResponseConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessStatusValue
-	}).(pulumi.StringPtrOutput)
 }
 
 // Information on the client (user or application) that made some action
@@ -6876,6 +4925,10 @@ type CustomizableConnectorUiConfig struct {
 	DescriptionMarkdown string `pulumi:"descriptionMarkdown"`
 	// Gets or sets the graph queries to show the current data volume over time.
 	GraphQueries []GraphQuery `pulumi:"graphQueries"`
+	// Gets or sets the name of the table the connector will insert the data to.
+	// This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
+	//  in Query and LastDataReceivedQuery values.
+	GraphQueriesTableName *string `pulumi:"graphQueriesTableName"`
 	// Gets or sets custom connector id. optional field.
 	Id *string `pulumi:"id"`
 	// Gets or sets the instruction steps to enable the connector.
@@ -6889,6 +4942,8 @@ type CustomizableConnectorUiConfig struct {
 	Permissions ConnectorDefinitionsPermissions `pulumi:"permissions"`
 	// Gets or sets the connector publisher name.
 	Publisher string `pulumi:"publisher"`
+	// Gets or sets the sample queries for the connector.
+	SampleQueries []SampleQuery `pulumi:"sampleQueries"`
 	// Gets or sets the connector blade title.
 	Title string `pulumi:"title"`
 }
@@ -6916,6 +4971,10 @@ type CustomizableConnectorUiConfigArgs struct {
 	DescriptionMarkdown pulumi.StringInput `pulumi:"descriptionMarkdown"`
 	// Gets or sets the graph queries to show the current data volume over time.
 	GraphQueries GraphQueryArrayInput `pulumi:"graphQueries"`
+	// Gets or sets the name of the table the connector will insert the data to.
+	// This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
+	//  in Query and LastDataReceivedQuery values.
+	GraphQueriesTableName pulumi.StringPtrInput `pulumi:"graphQueriesTableName"`
 	// Gets or sets custom connector id. optional field.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Gets or sets the instruction steps to enable the connector.
@@ -6929,6 +4988,8 @@ type CustomizableConnectorUiConfigArgs struct {
 	Permissions ConnectorDefinitionsPermissionsInput `pulumi:"permissions"`
 	// Gets or sets the connector publisher name.
 	Publisher pulumi.StringInput `pulumi:"publisher"`
+	// Gets or sets the sample queries for the connector.
+	SampleQueries SampleQueryArrayInput `pulumi:"sampleQueries"`
 	// Gets or sets the connector blade title.
 	Title pulumi.StringInput `pulumi:"title"`
 }
@@ -6985,6 +5046,14 @@ func (o CustomizableConnectorUiConfigOutput) GraphQueries() GraphQueryArrayOutpu
 	return o.ApplyT(func(v CustomizableConnectorUiConfig) []GraphQuery { return v.GraphQueries }).(GraphQueryArrayOutput)
 }
 
+// Gets or sets the name of the table the connector will insert the data to.
+// This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
+//
+//	in Query and LastDataReceivedQuery values.
+func (o CustomizableConnectorUiConfigOutput) GraphQueriesTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) *string { return v.GraphQueriesTableName }).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets custom connector id. optional field.
 func (o CustomizableConnectorUiConfigOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomizableConnectorUiConfig) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -7016,6 +5085,11 @@ func (o CustomizableConnectorUiConfigOutput) Publisher() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomizableConnectorUiConfig) string { return v.Publisher }).(pulumi.StringOutput)
 }
 
+// Gets or sets the sample queries for the connector.
+func (o CustomizableConnectorUiConfigOutput) SampleQueries() SampleQueryArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfig) []SampleQuery { return v.SampleQueries }).(SampleQueryArrayOutput)
+}
+
 // Gets or sets the connector blade title.
 func (o CustomizableConnectorUiConfigOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomizableConnectorUiConfig) string { return v.Title }).(pulumi.StringOutput)
@@ -7033,6 +5107,10 @@ type CustomizableConnectorUiConfigResponse struct {
 	DescriptionMarkdown string `pulumi:"descriptionMarkdown"`
 	// Gets or sets the graph queries to show the current data volume over time.
 	GraphQueries []GraphQueryResponse `pulumi:"graphQueries"`
+	// Gets or sets the name of the table the connector will insert the data to.
+	// This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
+	//  in Query and LastDataReceivedQuery values.
+	GraphQueriesTableName *string `pulumi:"graphQueriesTableName"`
 	// Gets or sets custom connector id. optional field.
 	Id *string `pulumi:"id"`
 	// Gets or sets the instruction steps to enable the connector.
@@ -7046,6 +5124,8 @@ type CustomizableConnectorUiConfigResponse struct {
 	Permissions ConnectorDefinitionsPermissionsResponse `pulumi:"permissions"`
 	// Gets or sets the connector publisher name.
 	Publisher string `pulumi:"publisher"`
+	// Gets or sets the sample queries for the connector.
+	SampleQueries []SampleQueryResponse `pulumi:"sampleQueries"`
 	// Gets or sets the connector blade title.
 	Title string `pulumi:"title"`
 }
@@ -7094,6 +5174,14 @@ func (o CustomizableConnectorUiConfigResponseOutput) GraphQueries() GraphQueryRe
 	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) []GraphQueryResponse { return v.GraphQueries }).(GraphQueryResponseArrayOutput)
 }
 
+// Gets or sets the name of the table the connector will insert the data to.
+// This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
+//
+//	in Query and LastDataReceivedQuery values.
+func (o CustomizableConnectorUiConfigResponseOutput) GraphQueriesTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) *string { return v.GraphQueriesTableName }).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets custom connector id. optional field.
 func (o CustomizableConnectorUiConfigResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -7127,281 +5215,14 @@ func (o CustomizableConnectorUiConfigResponseOutput) Publisher() pulumi.StringOu
 	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) string { return v.Publisher }).(pulumi.StringOutput)
 }
 
+// Gets or sets the sample queries for the connector.
+func (o CustomizableConnectorUiConfigResponseOutput) SampleQueries() SampleQueryResponseArrayOutput {
+	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) []SampleQueryResponse { return v.SampleQueries }).(SampleQueryResponseArrayOutput)
+}
+
 // Gets or sets the connector blade title.
 func (o CustomizableConnectorUiConfigResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomizableConnectorUiConfigResponse) string { return v.Title }).(pulumi.StringOutput)
-}
-
-// The configuration of the destination of the data.
-type DCRConfiguration struct {
-	// Represents the data collection ingestion endpoint in log analytics.
-	DataCollectionEndpoint string `pulumi:"dataCollectionEndpoint"`
-	// The data collection rule immutable id, the rule defines the transformation and data destination.
-	DataCollectionRuleImmutableId string `pulumi:"dataCollectionRuleImmutableId"`
-	// The stream we are sending the data to.
-	StreamName string `pulumi:"streamName"`
-}
-
-// DCRConfigurationInput is an input type that accepts DCRConfigurationArgs and DCRConfigurationOutput values.
-// You can construct a concrete instance of `DCRConfigurationInput` via:
-//
-//	DCRConfigurationArgs{...}
-type DCRConfigurationInput interface {
-	pulumi.Input
-
-	ToDCRConfigurationOutput() DCRConfigurationOutput
-	ToDCRConfigurationOutputWithContext(context.Context) DCRConfigurationOutput
-}
-
-// The configuration of the destination of the data.
-type DCRConfigurationArgs struct {
-	// Represents the data collection ingestion endpoint in log analytics.
-	DataCollectionEndpoint pulumi.StringInput `pulumi:"dataCollectionEndpoint"`
-	// The data collection rule immutable id, the rule defines the transformation and data destination.
-	DataCollectionRuleImmutableId pulumi.StringInput `pulumi:"dataCollectionRuleImmutableId"`
-	// The stream we are sending the data to.
-	StreamName pulumi.StringInput `pulumi:"streamName"`
-}
-
-func (DCRConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DCRConfiguration)(nil)).Elem()
-}
-
-func (i DCRConfigurationArgs) ToDCRConfigurationOutput() DCRConfigurationOutput {
-	return i.ToDCRConfigurationOutputWithContext(context.Background())
-}
-
-func (i DCRConfigurationArgs) ToDCRConfigurationOutputWithContext(ctx context.Context) DCRConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DCRConfigurationOutput)
-}
-
-func (i DCRConfigurationArgs) ToDCRConfigurationPtrOutput() DCRConfigurationPtrOutput {
-	return i.ToDCRConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i DCRConfigurationArgs) ToDCRConfigurationPtrOutputWithContext(ctx context.Context) DCRConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DCRConfigurationOutput).ToDCRConfigurationPtrOutputWithContext(ctx)
-}
-
-// DCRConfigurationPtrInput is an input type that accepts DCRConfigurationArgs, DCRConfigurationPtr and DCRConfigurationPtrOutput values.
-// You can construct a concrete instance of `DCRConfigurationPtrInput` via:
-//
-//	        DCRConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type DCRConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToDCRConfigurationPtrOutput() DCRConfigurationPtrOutput
-	ToDCRConfigurationPtrOutputWithContext(context.Context) DCRConfigurationPtrOutput
-}
-
-type dcrconfigurationPtrType DCRConfigurationArgs
-
-func DCRConfigurationPtr(v *DCRConfigurationArgs) DCRConfigurationPtrInput {
-	return (*dcrconfigurationPtrType)(v)
-}
-
-func (*dcrconfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DCRConfiguration)(nil)).Elem()
-}
-
-func (i *dcrconfigurationPtrType) ToDCRConfigurationPtrOutput() DCRConfigurationPtrOutput {
-	return i.ToDCRConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *dcrconfigurationPtrType) ToDCRConfigurationPtrOutputWithContext(ctx context.Context) DCRConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DCRConfigurationPtrOutput)
-}
-
-// The configuration of the destination of the data.
-type DCRConfigurationOutput struct{ *pulumi.OutputState }
-
-func (DCRConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DCRConfiguration)(nil)).Elem()
-}
-
-func (o DCRConfigurationOutput) ToDCRConfigurationOutput() DCRConfigurationOutput {
-	return o
-}
-
-func (o DCRConfigurationOutput) ToDCRConfigurationOutputWithContext(ctx context.Context) DCRConfigurationOutput {
-	return o
-}
-
-func (o DCRConfigurationOutput) ToDCRConfigurationPtrOutput() DCRConfigurationPtrOutput {
-	return o.ToDCRConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o DCRConfigurationOutput) ToDCRConfigurationPtrOutputWithContext(ctx context.Context) DCRConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DCRConfiguration) *DCRConfiguration {
-		return &v
-	}).(DCRConfigurationPtrOutput)
-}
-
-// Represents the data collection ingestion endpoint in log analytics.
-func (o DCRConfigurationOutput) DataCollectionEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v DCRConfiguration) string { return v.DataCollectionEndpoint }).(pulumi.StringOutput)
-}
-
-// The data collection rule immutable id, the rule defines the transformation and data destination.
-func (o DCRConfigurationOutput) DataCollectionRuleImmutableId() pulumi.StringOutput {
-	return o.ApplyT(func(v DCRConfiguration) string { return v.DataCollectionRuleImmutableId }).(pulumi.StringOutput)
-}
-
-// The stream we are sending the data to.
-func (o DCRConfigurationOutput) StreamName() pulumi.StringOutput {
-	return o.ApplyT(func(v DCRConfiguration) string { return v.StreamName }).(pulumi.StringOutput)
-}
-
-type DCRConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (DCRConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DCRConfiguration)(nil)).Elem()
-}
-
-func (o DCRConfigurationPtrOutput) ToDCRConfigurationPtrOutput() DCRConfigurationPtrOutput {
-	return o
-}
-
-func (o DCRConfigurationPtrOutput) ToDCRConfigurationPtrOutputWithContext(ctx context.Context) DCRConfigurationPtrOutput {
-	return o
-}
-
-func (o DCRConfigurationPtrOutput) Elem() DCRConfigurationOutput {
-	return o.ApplyT(func(v *DCRConfiguration) DCRConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret DCRConfiguration
-		return ret
-	}).(DCRConfigurationOutput)
-}
-
-// Represents the data collection ingestion endpoint in log analytics.
-func (o DCRConfigurationPtrOutput) DataCollectionEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DCRConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DataCollectionEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// The data collection rule immutable id, the rule defines the transformation and data destination.
-func (o DCRConfigurationPtrOutput) DataCollectionRuleImmutableId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DCRConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DataCollectionRuleImmutableId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The stream we are sending the data to.
-func (o DCRConfigurationPtrOutput) StreamName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DCRConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StreamName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The configuration of the destination of the data.
-type DCRConfigurationResponse struct {
-	// Represents the data collection ingestion endpoint in log analytics.
-	DataCollectionEndpoint string `pulumi:"dataCollectionEndpoint"`
-	// The data collection rule immutable id, the rule defines the transformation and data destination.
-	DataCollectionRuleImmutableId string `pulumi:"dataCollectionRuleImmutableId"`
-	// The stream we are sending the data to.
-	StreamName string `pulumi:"streamName"`
-}
-
-// The configuration of the destination of the data.
-type DCRConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (DCRConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DCRConfigurationResponse)(nil)).Elem()
-}
-
-func (o DCRConfigurationResponseOutput) ToDCRConfigurationResponseOutput() DCRConfigurationResponseOutput {
-	return o
-}
-
-func (o DCRConfigurationResponseOutput) ToDCRConfigurationResponseOutputWithContext(ctx context.Context) DCRConfigurationResponseOutput {
-	return o
-}
-
-// Represents the data collection ingestion endpoint in log analytics.
-func (o DCRConfigurationResponseOutput) DataCollectionEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v DCRConfigurationResponse) string { return v.DataCollectionEndpoint }).(pulumi.StringOutput)
-}
-
-// The data collection rule immutable id, the rule defines the transformation and data destination.
-func (o DCRConfigurationResponseOutput) DataCollectionRuleImmutableId() pulumi.StringOutput {
-	return o.ApplyT(func(v DCRConfigurationResponse) string { return v.DataCollectionRuleImmutableId }).(pulumi.StringOutput)
-}
-
-// The stream we are sending the data to.
-func (o DCRConfigurationResponseOutput) StreamName() pulumi.StringOutput {
-	return o.ApplyT(func(v DCRConfigurationResponse) string { return v.StreamName }).(pulumi.StringOutput)
-}
-
-type DCRConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DCRConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DCRConfigurationResponse)(nil)).Elem()
-}
-
-func (o DCRConfigurationResponsePtrOutput) ToDCRConfigurationResponsePtrOutput() DCRConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o DCRConfigurationResponsePtrOutput) ToDCRConfigurationResponsePtrOutputWithContext(ctx context.Context) DCRConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o DCRConfigurationResponsePtrOutput) Elem() DCRConfigurationResponseOutput {
-	return o.ApplyT(func(v *DCRConfigurationResponse) DCRConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DCRConfigurationResponse
-		return ret
-	}).(DCRConfigurationResponseOutput)
-}
-
-// Represents the data collection ingestion endpoint in log analytics.
-func (o DCRConfigurationResponsePtrOutput) DataCollectionEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DCRConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DataCollectionEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// The data collection rule immutable id, the rule defines the transformation and data destination.
-func (o DCRConfigurationResponsePtrOutput) DataCollectionRuleImmutableId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DCRConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DataCollectionRuleImmutableId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The stream we are sending the data to.
-func (o DCRConfigurationResponsePtrOutput) StreamName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DCRConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StreamName
-	}).(pulumi.StringPtrOutput)
 }
 
 // Common field for data type in data connectors.
@@ -9601,258 +7422,6 @@ func (o FileMetadataResponseOutput) FileSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FileMetadataResponse) *int { return v.FileSize }).(pulumi.IntPtrOutput)
 }
 
-// Model for API authentication for all GCP kind connectors.
-type GCPAuthModel struct {
-	// GCP Project Number
-	ProjectNumber string `pulumi:"projectNumber"`
-	// GCP Service Account Email
-	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
-	// Type of paging
-	// Expected value is 'GCP'.
-	Type string `pulumi:"type"`
-	// GCP Workload Identity Provider ID
-	WorkloadIdentityProviderId string `pulumi:"workloadIdentityProviderId"`
-}
-
-// GCPAuthModelInput is an input type that accepts GCPAuthModelArgs and GCPAuthModelOutput values.
-// You can construct a concrete instance of `GCPAuthModelInput` via:
-//
-//	GCPAuthModelArgs{...}
-type GCPAuthModelInput interface {
-	pulumi.Input
-
-	ToGCPAuthModelOutput() GCPAuthModelOutput
-	ToGCPAuthModelOutputWithContext(context.Context) GCPAuthModelOutput
-}
-
-// Model for API authentication for all GCP kind connectors.
-type GCPAuthModelArgs struct {
-	// GCP Project Number
-	ProjectNumber pulumi.StringInput `pulumi:"projectNumber"`
-	// GCP Service Account Email
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-	// Type of paging
-	// Expected value is 'GCP'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// GCP Workload Identity Provider ID
-	WorkloadIdentityProviderId pulumi.StringInput `pulumi:"workloadIdentityProviderId"`
-}
-
-func (GCPAuthModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GCPAuthModel)(nil)).Elem()
-}
-
-func (i GCPAuthModelArgs) ToGCPAuthModelOutput() GCPAuthModelOutput {
-	return i.ToGCPAuthModelOutputWithContext(context.Background())
-}
-
-func (i GCPAuthModelArgs) ToGCPAuthModelOutputWithContext(ctx context.Context) GCPAuthModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GCPAuthModelOutput)
-}
-
-// Model for API authentication for all GCP kind connectors.
-type GCPAuthModelOutput struct{ *pulumi.OutputState }
-
-func (GCPAuthModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GCPAuthModel)(nil)).Elem()
-}
-
-func (o GCPAuthModelOutput) ToGCPAuthModelOutput() GCPAuthModelOutput {
-	return o
-}
-
-func (o GCPAuthModelOutput) ToGCPAuthModelOutputWithContext(ctx context.Context) GCPAuthModelOutput {
-	return o
-}
-
-// GCP Project Number
-func (o GCPAuthModelOutput) ProjectNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v GCPAuthModel) string { return v.ProjectNumber }).(pulumi.StringOutput)
-}
-
-// GCP Service Account Email
-func (o GCPAuthModelOutput) ServiceAccountEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GCPAuthModel) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
-}
-
-// Type of paging
-// Expected value is 'GCP'.
-func (o GCPAuthModelOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GCPAuthModel) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// GCP Workload Identity Provider ID
-func (o GCPAuthModelOutput) WorkloadIdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GCPAuthModel) string { return v.WorkloadIdentityProviderId }).(pulumi.StringOutput)
-}
-
-// Model for API authentication for all GCP kind connectors.
-type GCPAuthModelResponse struct {
-	// GCP Project Number
-	ProjectNumber string `pulumi:"projectNumber"`
-	// GCP Service Account Email
-	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
-	// Type of paging
-	// Expected value is 'GCP'.
-	Type string `pulumi:"type"`
-	// GCP Workload Identity Provider ID
-	WorkloadIdentityProviderId string `pulumi:"workloadIdentityProviderId"`
-}
-
-// Model for API authentication for all GCP kind connectors.
-type GCPAuthModelResponseOutput struct{ *pulumi.OutputState }
-
-func (GCPAuthModelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GCPAuthModelResponse)(nil)).Elem()
-}
-
-func (o GCPAuthModelResponseOutput) ToGCPAuthModelResponseOutput() GCPAuthModelResponseOutput {
-	return o
-}
-
-func (o GCPAuthModelResponseOutput) ToGCPAuthModelResponseOutputWithContext(ctx context.Context) GCPAuthModelResponseOutput {
-	return o
-}
-
-// GCP Project Number
-func (o GCPAuthModelResponseOutput) ProjectNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v GCPAuthModelResponse) string { return v.ProjectNumber }).(pulumi.StringOutput)
-}
-
-// GCP Service Account Email
-func (o GCPAuthModelResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GCPAuthModelResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
-}
-
-// Type of paging
-// Expected value is 'GCP'.
-func (o GCPAuthModelResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GCPAuthModelResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// GCP Workload Identity Provider ID
-func (o GCPAuthModelResponseOutput) WorkloadIdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GCPAuthModelResponse) string { return v.WorkloadIdentityProviderId }).(pulumi.StringOutput)
-}
-
-// Model for API authentication for working with service bus or storage account.
-type GenericBlobSbsAuthModel struct {
-	// Credentials for service bus namespace, keyvault uri for access key
-	CredentialsConfig map[string]string `pulumi:"credentialsConfig"`
-	// Credentials for storage account, keyvault uri for access key
-	StorageAccountCredentialsConfig map[string]string `pulumi:"storageAccountCredentialsConfig"`
-	// Type of paging
-	// Expected value is 'ServiceBus'.
-	Type string `pulumi:"type"`
-}
-
-// GenericBlobSbsAuthModelInput is an input type that accepts GenericBlobSbsAuthModelArgs and GenericBlobSbsAuthModelOutput values.
-// You can construct a concrete instance of `GenericBlobSbsAuthModelInput` via:
-//
-//	GenericBlobSbsAuthModelArgs{...}
-type GenericBlobSbsAuthModelInput interface {
-	pulumi.Input
-
-	ToGenericBlobSbsAuthModelOutput() GenericBlobSbsAuthModelOutput
-	ToGenericBlobSbsAuthModelOutputWithContext(context.Context) GenericBlobSbsAuthModelOutput
-}
-
-// Model for API authentication for working with service bus or storage account.
-type GenericBlobSbsAuthModelArgs struct {
-	// Credentials for service bus namespace, keyvault uri for access key
-	CredentialsConfig pulumi.StringMapInput `pulumi:"credentialsConfig"`
-	// Credentials for storage account, keyvault uri for access key
-	StorageAccountCredentialsConfig pulumi.StringMapInput `pulumi:"storageAccountCredentialsConfig"`
-	// Type of paging
-	// Expected value is 'ServiceBus'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GenericBlobSbsAuthModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenericBlobSbsAuthModel)(nil)).Elem()
-}
-
-func (i GenericBlobSbsAuthModelArgs) ToGenericBlobSbsAuthModelOutput() GenericBlobSbsAuthModelOutput {
-	return i.ToGenericBlobSbsAuthModelOutputWithContext(context.Background())
-}
-
-func (i GenericBlobSbsAuthModelArgs) ToGenericBlobSbsAuthModelOutputWithContext(ctx context.Context) GenericBlobSbsAuthModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GenericBlobSbsAuthModelOutput)
-}
-
-// Model for API authentication for working with service bus or storage account.
-type GenericBlobSbsAuthModelOutput struct{ *pulumi.OutputState }
-
-func (GenericBlobSbsAuthModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenericBlobSbsAuthModel)(nil)).Elem()
-}
-
-func (o GenericBlobSbsAuthModelOutput) ToGenericBlobSbsAuthModelOutput() GenericBlobSbsAuthModelOutput {
-	return o
-}
-
-func (o GenericBlobSbsAuthModelOutput) ToGenericBlobSbsAuthModelOutputWithContext(ctx context.Context) GenericBlobSbsAuthModelOutput {
-	return o
-}
-
-// Credentials for service bus namespace, keyvault uri for access key
-func (o GenericBlobSbsAuthModelOutput) CredentialsConfig() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GenericBlobSbsAuthModel) map[string]string { return v.CredentialsConfig }).(pulumi.StringMapOutput)
-}
-
-// Credentials for storage account, keyvault uri for access key
-func (o GenericBlobSbsAuthModelOutput) StorageAccountCredentialsConfig() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GenericBlobSbsAuthModel) map[string]string { return v.StorageAccountCredentialsConfig }).(pulumi.StringMapOutput)
-}
-
-// Type of paging
-// Expected value is 'ServiceBus'.
-func (o GenericBlobSbsAuthModelOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GenericBlobSbsAuthModel) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Model for API authentication for working with service bus or storage account.
-type GenericBlobSbsAuthModelResponse struct {
-	// Credentials for service bus namespace, keyvault uri for access key
-	CredentialsConfig map[string]string `pulumi:"credentialsConfig"`
-	// Credentials for storage account, keyvault uri for access key
-	StorageAccountCredentialsConfig map[string]string `pulumi:"storageAccountCredentialsConfig"`
-	// Type of paging
-	// Expected value is 'ServiceBus'.
-	Type string `pulumi:"type"`
-}
-
-// Model for API authentication for working with service bus or storage account.
-type GenericBlobSbsAuthModelResponseOutput struct{ *pulumi.OutputState }
-
-func (GenericBlobSbsAuthModelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenericBlobSbsAuthModelResponse)(nil)).Elem()
-}
-
-func (o GenericBlobSbsAuthModelResponseOutput) ToGenericBlobSbsAuthModelResponseOutput() GenericBlobSbsAuthModelResponseOutput {
-	return o
-}
-
-func (o GenericBlobSbsAuthModelResponseOutput) ToGenericBlobSbsAuthModelResponseOutputWithContext(ctx context.Context) GenericBlobSbsAuthModelResponseOutput {
-	return o
-}
-
-// Credentials for service bus namespace, keyvault uri for access key
-func (o GenericBlobSbsAuthModelResponseOutput) CredentialsConfig() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GenericBlobSbsAuthModelResponse) map[string]string { return v.CredentialsConfig }).(pulumi.StringMapOutput)
-}
-
-// Credentials for storage account, keyvault uri for access key
-func (o GenericBlobSbsAuthModelResponseOutput) StorageAccountCredentialsConfig() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GenericBlobSbsAuthModelResponse) map[string]string { return v.StorageAccountCredentialsConfig }).(pulumi.StringMapOutput)
-}
-
-// Type of paging
-// Expected value is 'ServiceBus'.
-func (o GenericBlobSbsAuthModelResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GenericBlobSbsAuthModelResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
 // GetInsights Query Errors.
 type GetInsightsErrorKindResponse struct {
 	// the error message
@@ -9988,108 +7557,6 @@ func (o GetInsightsResultsMetadataResponsePtrOutput) TotalCount() pulumi.IntPtrO
 		}
 		return &v.TotalCount
 	}).(pulumi.IntPtrOutput)
-}
-
-// Model for API authentication for GitHub. For this authentication first we need to approve the Router app (Microsoft Security DevOps) to access the GitHub account, Then we only need the InstallationId to get the access token from https://api.github.com/app/installations/{installId}/access_tokens.
-type GitHubAuthModel struct {
-	// The GitHubApp auth installation id.
-	InstallationId *string `pulumi:"installationId"`
-	// Type of paging
-	// Expected value is 'GitHub'.
-	Type string `pulumi:"type"`
-}
-
-// GitHubAuthModelInput is an input type that accepts GitHubAuthModelArgs and GitHubAuthModelOutput values.
-// You can construct a concrete instance of `GitHubAuthModelInput` via:
-//
-//	GitHubAuthModelArgs{...}
-type GitHubAuthModelInput interface {
-	pulumi.Input
-
-	ToGitHubAuthModelOutput() GitHubAuthModelOutput
-	ToGitHubAuthModelOutputWithContext(context.Context) GitHubAuthModelOutput
-}
-
-// Model for API authentication for GitHub. For this authentication first we need to approve the Router app (Microsoft Security DevOps) to access the GitHub account, Then we only need the InstallationId to get the access token from https://api.github.com/app/installations/{installId}/access_tokens.
-type GitHubAuthModelArgs struct {
-	// The GitHubApp auth installation id.
-	InstallationId pulumi.StringPtrInput `pulumi:"installationId"`
-	// Type of paging
-	// Expected value is 'GitHub'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GitHubAuthModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitHubAuthModel)(nil)).Elem()
-}
-
-func (i GitHubAuthModelArgs) ToGitHubAuthModelOutput() GitHubAuthModelOutput {
-	return i.ToGitHubAuthModelOutputWithContext(context.Background())
-}
-
-func (i GitHubAuthModelArgs) ToGitHubAuthModelOutputWithContext(ctx context.Context) GitHubAuthModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitHubAuthModelOutput)
-}
-
-// Model for API authentication for GitHub. For this authentication first we need to approve the Router app (Microsoft Security DevOps) to access the GitHub account, Then we only need the InstallationId to get the access token from https://api.github.com/app/installations/{installId}/access_tokens.
-type GitHubAuthModelOutput struct{ *pulumi.OutputState }
-
-func (GitHubAuthModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitHubAuthModel)(nil)).Elem()
-}
-
-func (o GitHubAuthModelOutput) ToGitHubAuthModelOutput() GitHubAuthModelOutput {
-	return o
-}
-
-func (o GitHubAuthModelOutput) ToGitHubAuthModelOutputWithContext(ctx context.Context) GitHubAuthModelOutput {
-	return o
-}
-
-// The GitHubApp auth installation id.
-func (o GitHubAuthModelOutput) InstallationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitHubAuthModel) *string { return v.InstallationId }).(pulumi.StringPtrOutput)
-}
-
-// Type of paging
-// Expected value is 'GitHub'.
-func (o GitHubAuthModelOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GitHubAuthModel) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Model for API authentication for GitHub. For this authentication first we need to approve the Router app (Microsoft Security DevOps) to access the GitHub account, Then we only need the InstallationId to get the access token from https://api.github.com/app/installations/{installId}/access_tokens.
-type GitHubAuthModelResponse struct {
-	// The GitHubApp auth installation id.
-	InstallationId *string `pulumi:"installationId"`
-	// Type of paging
-	// Expected value is 'GitHub'.
-	Type string `pulumi:"type"`
-}
-
-// Model for API authentication for GitHub. For this authentication first we need to approve the Router app (Microsoft Security DevOps) to access the GitHub account, Then we only need the InstallationId to get the access token from https://api.github.com/app/installations/{installId}/access_tokens.
-type GitHubAuthModelResponseOutput struct{ *pulumi.OutputState }
-
-func (GitHubAuthModelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitHubAuthModelResponse)(nil)).Elem()
-}
-
-func (o GitHubAuthModelResponseOutput) ToGitHubAuthModelResponseOutput() GitHubAuthModelResponseOutput {
-	return o
-}
-
-func (o GitHubAuthModelResponseOutput) ToGitHubAuthModelResponseOutputWithContext(ctx context.Context) GitHubAuthModelResponseOutput {
-	return o
-}
-
-// The GitHubApp auth installation id.
-func (o GitHubAuthModelResponseOutput) InstallationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitHubAuthModelResponse) *string { return v.InstallationId }).(pulumi.StringPtrOutput)
-}
-
-// Type of paging
-// Expected value is 'GitHub'.
-func (o GitHubAuthModelResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GitHubAuthModelResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Resources created in GitHub repository.
@@ -12901,7 +10368,7 @@ type InstructionStep struct {
 	// Gets or sets the instruction step description.
 	Description *string `pulumi:"description"`
 	// Gets or sets the inner instruction steps details.
-	// For Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+	// Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
 	InnerSteps []InstructionStep `pulumi:"innerSteps"`
 	// Gets or sets the instruction step details.
 	Instructions []InstructionStepDetails `pulumi:"instructions"`
@@ -12925,7 +10392,7 @@ type InstructionStepArgs struct {
 	// Gets or sets the instruction step description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Gets or sets the inner instruction steps details.
-	// For Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+	// Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
 	InnerSteps InstructionStepArrayInput `pulumi:"innerSteps"`
 	// Gets or sets the instruction step details.
 	Instructions InstructionStepDetailsArrayInput `pulumi:"instructions"`
@@ -12991,7 +10458,7 @@ func (o InstructionStepOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Gets or sets the inner instruction steps details.
-// For Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+// Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
 func (o InstructionStepOutput) InnerSteps() InstructionStepArrayOutput {
 	return o.ApplyT(func(v InstructionStep) []InstructionStep { return v.InnerSteps }).(InstructionStepArrayOutput)
 }
@@ -13193,7 +10660,7 @@ type InstructionStepResponse struct {
 	// Gets or sets the instruction step description.
 	Description *string `pulumi:"description"`
 	// Gets or sets the inner instruction steps details.
-	// For Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+	// Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
 	InnerSteps []InstructionStepResponse `pulumi:"innerSteps"`
 	// Gets or sets the instruction step details.
 	Instructions []InstructionStepDetailsResponse `pulumi:"instructions"`
@@ -13222,7 +10689,7 @@ func (o InstructionStepResponseOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Gets or sets the inner instruction steps details.
-// For Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+// Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
 func (o InstructionStepResponseOutput) InnerSteps() InstructionStepResponseArrayOutput {
 	return o.ApplyT(func(v InstructionStepResponse) []InstructionStepResponse { return v.InnerSteps }).(InstructionStepResponseArrayOutput)
 }
@@ -13255,268 +10722,6 @@ func (o InstructionStepResponseArrayOutput) Index(i pulumi.IntInput) Instruction
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstructionStepResponse {
 		return vs[0].([]InstructionStepResponse)[vs[1].(int)]
 	}).(InstructionStepResponseOutput)
-}
-
-// Model for API authentication with JWT. Simple exchange between user name + password to access token.
-type JwtAuthModel struct {
-	// The custom headers we want to add once we send request to token endpoint.
-	Headers map[string]string `pulumi:"headers"`
-	// Flag indicating whether we want to send the user name and password to token endpoint in the headers.
-	IsCredentialsInHeaders *bool `pulumi:"isCredentialsInHeaders"`
-	// Flag indicating whether the body request is JSON (header Content-Type = application/json), meaning its a Form URL encoded request (header Content-Type = application/x-www-form-urlencoded).
-	IsJsonRequest *bool `pulumi:"isJsonRequest"`
-	// The password
-	Password map[string]string `pulumi:"password"`
-	// The custom query parameter we want to add once we send request to token endpoint.
-	QueryParameters map[string]string `pulumi:"queryParameters"`
-	// Request timeout in seconds.
-	RequestTimeoutInSeconds *int `pulumi:"requestTimeoutInSeconds"`
-	// Token endpoint to request JWT
-	TokenEndpoint string `pulumi:"tokenEndpoint"`
-	// Type of paging
-	// Expected value is 'JwtToken'.
-	Type string `pulumi:"type"`
-	// The user name. If user name and password sent in header request we only need to populate the `value` property with the user name (Same as basic auth). If user name and password sent in body request we need to specify the `Key` and `Value`.
-	UserName map[string]string `pulumi:"userName"`
-}
-
-// Defaults sets the appropriate defaults for JwtAuthModel
-func (val *JwtAuthModel) Defaults() *JwtAuthModel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsJsonRequest == nil {
-		isJsonRequest_ := false
-		tmp.IsJsonRequest = &isJsonRequest_
-	}
-	if tmp.RequestTimeoutInSeconds == nil {
-		requestTimeoutInSeconds_ := 100
-		tmp.RequestTimeoutInSeconds = &requestTimeoutInSeconds_
-	}
-	return &tmp
-}
-
-// JwtAuthModelInput is an input type that accepts JwtAuthModelArgs and JwtAuthModelOutput values.
-// You can construct a concrete instance of `JwtAuthModelInput` via:
-//
-//	JwtAuthModelArgs{...}
-type JwtAuthModelInput interface {
-	pulumi.Input
-
-	ToJwtAuthModelOutput() JwtAuthModelOutput
-	ToJwtAuthModelOutputWithContext(context.Context) JwtAuthModelOutput
-}
-
-// Model for API authentication with JWT. Simple exchange between user name + password to access token.
-type JwtAuthModelArgs struct {
-	// The custom headers we want to add once we send request to token endpoint.
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	// Flag indicating whether we want to send the user name and password to token endpoint in the headers.
-	IsCredentialsInHeaders pulumi.BoolPtrInput `pulumi:"isCredentialsInHeaders"`
-	// Flag indicating whether the body request is JSON (header Content-Type = application/json), meaning its a Form URL encoded request (header Content-Type = application/x-www-form-urlencoded).
-	IsJsonRequest pulumi.BoolPtrInput `pulumi:"isJsonRequest"`
-	// The password
-	Password pulumi.StringMapInput `pulumi:"password"`
-	// The custom query parameter we want to add once we send request to token endpoint.
-	QueryParameters pulumi.StringMapInput `pulumi:"queryParameters"`
-	// Request timeout in seconds.
-	RequestTimeoutInSeconds pulumi.IntPtrInput `pulumi:"requestTimeoutInSeconds"`
-	// Token endpoint to request JWT
-	TokenEndpoint pulumi.StringInput `pulumi:"tokenEndpoint"`
-	// Type of paging
-	// Expected value is 'JwtToken'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The user name. If user name and password sent in header request we only need to populate the `value` property with the user name (Same as basic auth). If user name and password sent in body request we need to specify the `Key` and `Value`.
-	UserName pulumi.StringMapInput `pulumi:"userName"`
-}
-
-// Defaults sets the appropriate defaults for JwtAuthModelArgs
-func (val *JwtAuthModelArgs) Defaults() *JwtAuthModelArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsJsonRequest == nil {
-		tmp.IsJsonRequest = pulumi.BoolPtr(false)
-	}
-	if tmp.RequestTimeoutInSeconds == nil {
-		tmp.RequestTimeoutInSeconds = pulumi.IntPtr(100)
-	}
-	return &tmp
-}
-func (JwtAuthModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JwtAuthModel)(nil)).Elem()
-}
-
-func (i JwtAuthModelArgs) ToJwtAuthModelOutput() JwtAuthModelOutput {
-	return i.ToJwtAuthModelOutputWithContext(context.Background())
-}
-
-func (i JwtAuthModelArgs) ToJwtAuthModelOutputWithContext(ctx context.Context) JwtAuthModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JwtAuthModelOutput)
-}
-
-// Model for API authentication with JWT. Simple exchange between user name + password to access token.
-type JwtAuthModelOutput struct{ *pulumi.OutputState }
-
-func (JwtAuthModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JwtAuthModel)(nil)).Elem()
-}
-
-func (o JwtAuthModelOutput) ToJwtAuthModelOutput() JwtAuthModelOutput {
-	return o
-}
-
-func (o JwtAuthModelOutput) ToJwtAuthModelOutputWithContext(ctx context.Context) JwtAuthModelOutput {
-	return o
-}
-
-// The custom headers we want to add once we send request to token endpoint.
-func (o JwtAuthModelOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JwtAuthModel) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
-}
-
-// Flag indicating whether we want to send the user name and password to token endpoint in the headers.
-func (o JwtAuthModelOutput) IsCredentialsInHeaders() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v JwtAuthModel) *bool { return v.IsCredentialsInHeaders }).(pulumi.BoolPtrOutput)
-}
-
-// Flag indicating whether the body request is JSON (header Content-Type = application/json), meaning its a Form URL encoded request (header Content-Type = application/x-www-form-urlencoded).
-func (o JwtAuthModelOutput) IsJsonRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v JwtAuthModel) *bool { return v.IsJsonRequest }).(pulumi.BoolPtrOutput)
-}
-
-// The password
-func (o JwtAuthModelOutput) Password() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JwtAuthModel) map[string]string { return v.Password }).(pulumi.StringMapOutput)
-}
-
-// The custom query parameter we want to add once we send request to token endpoint.
-func (o JwtAuthModelOutput) QueryParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JwtAuthModel) map[string]string { return v.QueryParameters }).(pulumi.StringMapOutput)
-}
-
-// Request timeout in seconds.
-func (o JwtAuthModelOutput) RequestTimeoutInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v JwtAuthModel) *int { return v.RequestTimeoutInSeconds }).(pulumi.IntPtrOutput)
-}
-
-// Token endpoint to request JWT
-func (o JwtAuthModelOutput) TokenEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v JwtAuthModel) string { return v.TokenEndpoint }).(pulumi.StringOutput)
-}
-
-// Type of paging
-// Expected value is 'JwtToken'.
-func (o JwtAuthModelOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v JwtAuthModel) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The user name. If user name and password sent in header request we only need to populate the `value` property with the user name (Same as basic auth). If user name and password sent in body request we need to specify the `Key` and `Value`.
-func (o JwtAuthModelOutput) UserName() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JwtAuthModel) map[string]string { return v.UserName }).(pulumi.StringMapOutput)
-}
-
-// Model for API authentication with JWT. Simple exchange between user name + password to access token.
-type JwtAuthModelResponse struct {
-	// The custom headers we want to add once we send request to token endpoint.
-	Headers map[string]string `pulumi:"headers"`
-	// Flag indicating whether we want to send the user name and password to token endpoint in the headers.
-	IsCredentialsInHeaders *bool `pulumi:"isCredentialsInHeaders"`
-	// Flag indicating whether the body request is JSON (header Content-Type = application/json), meaning its a Form URL encoded request (header Content-Type = application/x-www-form-urlencoded).
-	IsJsonRequest *bool `pulumi:"isJsonRequest"`
-	// The password
-	Password map[string]string `pulumi:"password"`
-	// The custom query parameter we want to add once we send request to token endpoint.
-	QueryParameters map[string]string `pulumi:"queryParameters"`
-	// Request timeout in seconds.
-	RequestTimeoutInSeconds *int `pulumi:"requestTimeoutInSeconds"`
-	// Token endpoint to request JWT
-	TokenEndpoint string `pulumi:"tokenEndpoint"`
-	// Type of paging
-	// Expected value is 'JwtToken'.
-	Type string `pulumi:"type"`
-	// The user name. If user name and password sent in header request we only need to populate the `value` property with the user name (Same as basic auth). If user name and password sent in body request we need to specify the `Key` and `Value`.
-	UserName map[string]string `pulumi:"userName"`
-}
-
-// Defaults sets the appropriate defaults for JwtAuthModelResponse
-func (val *JwtAuthModelResponse) Defaults() *JwtAuthModelResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsJsonRequest == nil {
-		isJsonRequest_ := false
-		tmp.IsJsonRequest = &isJsonRequest_
-	}
-	if tmp.RequestTimeoutInSeconds == nil {
-		requestTimeoutInSeconds_ := 100
-		tmp.RequestTimeoutInSeconds = &requestTimeoutInSeconds_
-	}
-	return &tmp
-}
-
-// Model for API authentication with JWT. Simple exchange between user name + password to access token.
-type JwtAuthModelResponseOutput struct{ *pulumi.OutputState }
-
-func (JwtAuthModelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JwtAuthModelResponse)(nil)).Elem()
-}
-
-func (o JwtAuthModelResponseOutput) ToJwtAuthModelResponseOutput() JwtAuthModelResponseOutput {
-	return o
-}
-
-func (o JwtAuthModelResponseOutput) ToJwtAuthModelResponseOutputWithContext(ctx context.Context) JwtAuthModelResponseOutput {
-	return o
-}
-
-// The custom headers we want to add once we send request to token endpoint.
-func (o JwtAuthModelResponseOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JwtAuthModelResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
-}
-
-// Flag indicating whether we want to send the user name and password to token endpoint in the headers.
-func (o JwtAuthModelResponseOutput) IsCredentialsInHeaders() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v JwtAuthModelResponse) *bool { return v.IsCredentialsInHeaders }).(pulumi.BoolPtrOutput)
-}
-
-// Flag indicating whether the body request is JSON (header Content-Type = application/json), meaning its a Form URL encoded request (header Content-Type = application/x-www-form-urlencoded).
-func (o JwtAuthModelResponseOutput) IsJsonRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v JwtAuthModelResponse) *bool { return v.IsJsonRequest }).(pulumi.BoolPtrOutput)
-}
-
-// The password
-func (o JwtAuthModelResponseOutput) Password() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JwtAuthModelResponse) map[string]string { return v.Password }).(pulumi.StringMapOutput)
-}
-
-// The custom query parameter we want to add once we send request to token endpoint.
-func (o JwtAuthModelResponseOutput) QueryParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JwtAuthModelResponse) map[string]string { return v.QueryParameters }).(pulumi.StringMapOutput)
-}
-
-// Request timeout in seconds.
-func (o JwtAuthModelResponseOutput) RequestTimeoutInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v JwtAuthModelResponse) *int { return v.RequestTimeoutInSeconds }).(pulumi.IntPtrOutput)
-}
-
-// Token endpoint to request JWT
-func (o JwtAuthModelResponseOutput) TokenEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v JwtAuthModelResponse) string { return v.TokenEndpoint }).(pulumi.StringOutput)
-}
-
-// Type of paging
-// Expected value is 'JwtToken'.
-func (o JwtAuthModelResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v JwtAuthModelResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The user name. If user name and password sent in header request we only need to populate the `value` property with the user name (Same as basic auth). If user name and password sent in body request we need to specify the `Key` and `Value`.
-func (o JwtAuthModelResponseOutput) UserName() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JwtAuthModelResponse) map[string]string { return v.UserName }).(pulumi.StringMapOutput)
 }
 
 // Represents lock user action.
@@ -14023,188 +11228,6 @@ func (o MCASDataConnectorDataTypesResponsePtrOutput) DiscoveryLogs() DataConnect
 		}
 		return v.DiscoveryLogs
 	}).(DataConnectorDataTypeCommonResponsePtrOutput)
-}
-
-// The available data types for Microsoft Threat Intelligence data connector.
-type MSTIDataConnectorDataTypes struct {
-	// Data type for Microsoft Threat Intelligence data connector.
-	MicrosoftEmergingThreatFeed MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed `pulumi:"microsoftEmergingThreatFeed"`
-}
-
-// MSTIDataConnectorDataTypesInput is an input type that accepts MSTIDataConnectorDataTypesArgs and MSTIDataConnectorDataTypesOutput values.
-// You can construct a concrete instance of `MSTIDataConnectorDataTypesInput` via:
-//
-//	MSTIDataConnectorDataTypesArgs{...}
-type MSTIDataConnectorDataTypesInput interface {
-	pulumi.Input
-
-	ToMSTIDataConnectorDataTypesOutput() MSTIDataConnectorDataTypesOutput
-	ToMSTIDataConnectorDataTypesOutputWithContext(context.Context) MSTIDataConnectorDataTypesOutput
-}
-
-// The available data types for Microsoft Threat Intelligence data connector.
-type MSTIDataConnectorDataTypesArgs struct {
-	// Data type for Microsoft Threat Intelligence data connector.
-	MicrosoftEmergingThreatFeed MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedInput `pulumi:"microsoftEmergingThreatFeed"`
-}
-
-func (MSTIDataConnectorDataTypesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MSTIDataConnectorDataTypes)(nil)).Elem()
-}
-
-func (i MSTIDataConnectorDataTypesArgs) ToMSTIDataConnectorDataTypesOutput() MSTIDataConnectorDataTypesOutput {
-	return i.ToMSTIDataConnectorDataTypesOutputWithContext(context.Background())
-}
-
-func (i MSTIDataConnectorDataTypesArgs) ToMSTIDataConnectorDataTypesOutputWithContext(ctx context.Context) MSTIDataConnectorDataTypesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MSTIDataConnectorDataTypesOutput)
-}
-
-// The available data types for Microsoft Threat Intelligence data connector.
-type MSTIDataConnectorDataTypesOutput struct{ *pulumi.OutputState }
-
-func (MSTIDataConnectorDataTypesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MSTIDataConnectorDataTypes)(nil)).Elem()
-}
-
-func (o MSTIDataConnectorDataTypesOutput) ToMSTIDataConnectorDataTypesOutput() MSTIDataConnectorDataTypesOutput {
-	return o
-}
-
-func (o MSTIDataConnectorDataTypesOutput) ToMSTIDataConnectorDataTypesOutputWithContext(ctx context.Context) MSTIDataConnectorDataTypesOutput {
-	return o
-}
-
-// Data type for Microsoft Threat Intelligence data connector.
-func (o MSTIDataConnectorDataTypesOutput) MicrosoftEmergingThreatFeed() MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput {
-	return o.ApplyT(func(v MSTIDataConnectorDataTypes) MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed {
-		return v.MicrosoftEmergingThreatFeed
-	}).(MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput)
-}
-
-// Data type for Microsoft Threat Intelligence data connector.
-type MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed struct {
-	// The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
-	LookbackPeriod string `pulumi:"lookbackPeriod"`
-	// Describe whether this data type connection is enabled or not.
-	State *string `pulumi:"state"`
-}
-
-// MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedInput is an input type that accepts MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedArgs and MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput values.
-// You can construct a concrete instance of `MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedInput` via:
-//
-//	MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedArgs{...}
-type MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedInput interface {
-	pulumi.Input
-
-	ToMSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput() MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput
-	ToMSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutputWithContext(context.Context) MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput
-}
-
-// Data type for Microsoft Threat Intelligence data connector.
-type MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedArgs struct {
-	// The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
-	LookbackPeriod pulumi.StringInput `pulumi:"lookbackPeriod"`
-	// Describe whether this data type connection is enabled or not.
-	State pulumi.StringPtrInput `pulumi:"state"`
-}
-
-func (MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed)(nil)).Elem()
-}
-
-func (i MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedArgs) ToMSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput() MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput {
-	return i.ToMSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutputWithContext(context.Background())
-}
-
-func (i MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedArgs) ToMSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutputWithContext(ctx context.Context) MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput)
-}
-
-// Data type for Microsoft Threat Intelligence data connector.
-type MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput struct{ *pulumi.OutputState }
-
-func (MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed)(nil)).Elem()
-}
-
-func (o MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput) ToMSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput() MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput {
-	return o
-}
-
-func (o MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput) ToMSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutputWithContext(ctx context.Context) MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput {
-	return o
-}
-
-// The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
-func (o MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput) LookbackPeriod() pulumi.StringOutput {
-	return o.ApplyT(func(v MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed) string { return v.LookbackPeriod }).(pulumi.StringOutput)
-}
-
-// Describe whether this data type connection is enabled or not.
-func (o MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// The available data types for Microsoft Threat Intelligence data connector.
-type MSTIDataConnectorDataTypesResponse struct {
-	// Data type for Microsoft Threat Intelligence data connector.
-	MicrosoftEmergingThreatFeed MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeed `pulumi:"microsoftEmergingThreatFeed"`
-}
-
-// The available data types for Microsoft Threat Intelligence data connector.
-type MSTIDataConnectorDataTypesResponseOutput struct{ *pulumi.OutputState }
-
-func (MSTIDataConnectorDataTypesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MSTIDataConnectorDataTypesResponse)(nil)).Elem()
-}
-
-func (o MSTIDataConnectorDataTypesResponseOutput) ToMSTIDataConnectorDataTypesResponseOutput() MSTIDataConnectorDataTypesResponseOutput {
-	return o
-}
-
-func (o MSTIDataConnectorDataTypesResponseOutput) ToMSTIDataConnectorDataTypesResponseOutputWithContext(ctx context.Context) MSTIDataConnectorDataTypesResponseOutput {
-	return o
-}
-
-// Data type for Microsoft Threat Intelligence data connector.
-func (o MSTIDataConnectorDataTypesResponseOutput) MicrosoftEmergingThreatFeed() MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput {
-	return o.ApplyT(func(v MSTIDataConnectorDataTypesResponse) MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeed {
-		return v.MicrosoftEmergingThreatFeed
-	}).(MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput)
-}
-
-// Data type for Microsoft Threat Intelligence data connector.
-type MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeed struct {
-	// The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
-	LookbackPeriod string `pulumi:"lookbackPeriod"`
-	// Describe whether this data type connection is enabled or not.
-	State *string `pulumi:"state"`
-}
-
-// Data type for Microsoft Threat Intelligence data connector.
-type MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput struct{ *pulumi.OutputState }
-
-func (MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeed)(nil)).Elem()
-}
-
-func (o MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput) ToMSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput() MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput {
-	return o
-}
-
-func (o MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput) ToMSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutputWithContext(ctx context.Context) MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput {
-	return o
-}
-
-// The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
-func (o MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput) LookbackPeriod() pulumi.StringOutput {
-	return o.ApplyT(func(v MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeed) string { return v.LookbackPeriod }).(pulumi.StringOutput)
-}
-
-// Describe whether this data type connection is enabled or not.
-func (o MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeed) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
 // Publisher or creator of the content item.
@@ -15740,455 +12763,6 @@ func (o MetadataSupportResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Model for API authentication with no authentication method - public API.
-type NoneAuthModel struct {
-	// Type of paging
-	// Expected value is 'None'.
-	Type string `pulumi:"type"`
-}
-
-// NoneAuthModelInput is an input type that accepts NoneAuthModelArgs and NoneAuthModelOutput values.
-// You can construct a concrete instance of `NoneAuthModelInput` via:
-//
-//	NoneAuthModelArgs{...}
-type NoneAuthModelInput interface {
-	pulumi.Input
-
-	ToNoneAuthModelOutput() NoneAuthModelOutput
-	ToNoneAuthModelOutputWithContext(context.Context) NoneAuthModelOutput
-}
-
-// Model for API authentication with no authentication method - public API.
-type NoneAuthModelArgs struct {
-	// Type of paging
-	// Expected value is 'None'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (NoneAuthModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NoneAuthModel)(nil)).Elem()
-}
-
-func (i NoneAuthModelArgs) ToNoneAuthModelOutput() NoneAuthModelOutput {
-	return i.ToNoneAuthModelOutputWithContext(context.Background())
-}
-
-func (i NoneAuthModelArgs) ToNoneAuthModelOutputWithContext(ctx context.Context) NoneAuthModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NoneAuthModelOutput)
-}
-
-// Model for API authentication with no authentication method - public API.
-type NoneAuthModelOutput struct{ *pulumi.OutputState }
-
-func (NoneAuthModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NoneAuthModel)(nil)).Elem()
-}
-
-func (o NoneAuthModelOutput) ToNoneAuthModelOutput() NoneAuthModelOutput {
-	return o
-}
-
-func (o NoneAuthModelOutput) ToNoneAuthModelOutputWithContext(ctx context.Context) NoneAuthModelOutput {
-	return o
-}
-
-// Type of paging
-// Expected value is 'None'.
-func (o NoneAuthModelOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v NoneAuthModel) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Model for API authentication with no authentication method - public API.
-type NoneAuthModelResponse struct {
-	// Type of paging
-	// Expected value is 'None'.
-	Type string `pulumi:"type"`
-}
-
-// Model for API authentication with no authentication method - public API.
-type NoneAuthModelResponseOutput struct{ *pulumi.OutputState }
-
-func (NoneAuthModelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NoneAuthModelResponse)(nil)).Elem()
-}
-
-func (o NoneAuthModelResponseOutput) ToNoneAuthModelResponseOutput() NoneAuthModelResponseOutput {
-	return o
-}
-
-func (o NoneAuthModelResponseOutput) ToNoneAuthModelResponseOutputWithContext(ctx context.Context) NoneAuthModelResponseOutput {
-	return o
-}
-
-// Type of paging
-// Expected value is 'None'.
-func (o NoneAuthModelResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v NoneAuthModelResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Model for API authentication with OAuth2.
-type OAuthModel struct {
-	// Access token prepend. Default is 'Bearer'.
-	AccessTokenPrepend *string `pulumi:"accessTokenPrepend"`
-	// The user's authorization code.
-	AuthorizationCode *string `pulumi:"authorizationCode"`
-	// The authorization endpoint.
-	AuthorizationEndpoint *string `pulumi:"authorizationEndpoint"`
-	// The authorization endpoint headers.
-	AuthorizationEndpointHeaders map[string]string `pulumi:"authorizationEndpointHeaders"`
-	// The authorization endpoint query parameters.
-	AuthorizationEndpointQueryParameters map[string]string `pulumi:"authorizationEndpointQueryParameters"`
-	// The Application (client) ID that the OAuth provider assigned to your app.
-	ClientId string `pulumi:"clientId"`
-	// The Application (client) secret that the OAuth provider assigned to your app.
-	ClientSecret string `pulumi:"clientSecret"`
-	// The grant type, usually will be 'authorization code'.
-	GrantType string `pulumi:"grantType"`
-	// Indicating whether we want to send the clientId and clientSecret to token endpoint in the headers.
-	IsCredentialsInHeaders *bool `pulumi:"isCredentialsInHeaders"`
-	// A value indicating whether it's a JWT flow.
-	IsJwtBearerFlow *bool `pulumi:"isJwtBearerFlow"`
-	// The Application redirect url that the user config in the OAuth provider.
-	RedirectUri *string `pulumi:"redirectUri"`
-	// The Application (client) Scope that the OAuth provider assigned to your app.
-	Scope *string `pulumi:"scope"`
-	// The token endpoint. Defines the OAuth2 refresh token.
-	TokenEndpoint string `pulumi:"tokenEndpoint"`
-	// The token endpoint headers.
-	TokenEndpointHeaders map[string]string `pulumi:"tokenEndpointHeaders"`
-	// The token endpoint query parameters.
-	TokenEndpointQueryParameters map[string]string `pulumi:"tokenEndpointQueryParameters"`
-	// Type of paging
-	// Expected value is 'OAuth2'.
-	Type string `pulumi:"type"`
-}
-
-// Defaults sets the appropriate defaults for OAuthModel
-func (val *OAuthModel) Defaults() *OAuthModel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsCredentialsInHeaders == nil {
-		isCredentialsInHeaders_ := false
-		tmp.IsCredentialsInHeaders = &isCredentialsInHeaders_
-	}
-	return &tmp
-}
-
-// OAuthModelInput is an input type that accepts OAuthModelArgs and OAuthModelOutput values.
-// You can construct a concrete instance of `OAuthModelInput` via:
-//
-//	OAuthModelArgs{...}
-type OAuthModelInput interface {
-	pulumi.Input
-
-	ToOAuthModelOutput() OAuthModelOutput
-	ToOAuthModelOutputWithContext(context.Context) OAuthModelOutput
-}
-
-// Model for API authentication with OAuth2.
-type OAuthModelArgs struct {
-	// Access token prepend. Default is 'Bearer'.
-	AccessTokenPrepend pulumi.StringPtrInput `pulumi:"accessTokenPrepend"`
-	// The user's authorization code.
-	AuthorizationCode pulumi.StringPtrInput `pulumi:"authorizationCode"`
-	// The authorization endpoint.
-	AuthorizationEndpoint pulumi.StringPtrInput `pulumi:"authorizationEndpoint"`
-	// The authorization endpoint headers.
-	AuthorizationEndpointHeaders pulumi.StringMapInput `pulumi:"authorizationEndpointHeaders"`
-	// The authorization endpoint query parameters.
-	AuthorizationEndpointQueryParameters pulumi.StringMapInput `pulumi:"authorizationEndpointQueryParameters"`
-	// The Application (client) ID that the OAuth provider assigned to your app.
-	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// The Application (client) secret that the OAuth provider assigned to your app.
-	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
-	// The grant type, usually will be 'authorization code'.
-	GrantType pulumi.StringInput `pulumi:"grantType"`
-	// Indicating whether we want to send the clientId and clientSecret to token endpoint in the headers.
-	IsCredentialsInHeaders pulumi.BoolPtrInput `pulumi:"isCredentialsInHeaders"`
-	// A value indicating whether it's a JWT flow.
-	IsJwtBearerFlow pulumi.BoolPtrInput `pulumi:"isJwtBearerFlow"`
-	// The Application redirect url that the user config in the OAuth provider.
-	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
-	// The Application (client) Scope that the OAuth provider assigned to your app.
-	Scope pulumi.StringPtrInput `pulumi:"scope"`
-	// The token endpoint. Defines the OAuth2 refresh token.
-	TokenEndpoint pulumi.StringInput `pulumi:"tokenEndpoint"`
-	// The token endpoint headers.
-	TokenEndpointHeaders pulumi.StringMapInput `pulumi:"tokenEndpointHeaders"`
-	// The token endpoint query parameters.
-	TokenEndpointQueryParameters pulumi.StringMapInput `pulumi:"tokenEndpointQueryParameters"`
-	// Type of paging
-	// Expected value is 'OAuth2'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-// Defaults sets the appropriate defaults for OAuthModelArgs
-func (val *OAuthModelArgs) Defaults() *OAuthModelArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsCredentialsInHeaders == nil {
-		tmp.IsCredentialsInHeaders = pulumi.BoolPtr(false)
-	}
-	return &tmp
-}
-func (OAuthModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OAuthModel)(nil)).Elem()
-}
-
-func (i OAuthModelArgs) ToOAuthModelOutput() OAuthModelOutput {
-	return i.ToOAuthModelOutputWithContext(context.Background())
-}
-
-func (i OAuthModelArgs) ToOAuthModelOutputWithContext(ctx context.Context) OAuthModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OAuthModelOutput)
-}
-
-// Model for API authentication with OAuth2.
-type OAuthModelOutput struct{ *pulumi.OutputState }
-
-func (OAuthModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OAuthModel)(nil)).Elem()
-}
-
-func (o OAuthModelOutput) ToOAuthModelOutput() OAuthModelOutput {
-	return o
-}
-
-func (o OAuthModelOutput) ToOAuthModelOutputWithContext(ctx context.Context) OAuthModelOutput {
-	return o
-}
-
-// Access token prepend. Default is 'Bearer'.
-func (o OAuthModelOutput) AccessTokenPrepend() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OAuthModel) *string { return v.AccessTokenPrepend }).(pulumi.StringPtrOutput)
-}
-
-// The user's authorization code.
-func (o OAuthModelOutput) AuthorizationCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OAuthModel) *string { return v.AuthorizationCode }).(pulumi.StringPtrOutput)
-}
-
-// The authorization endpoint.
-func (o OAuthModelOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OAuthModel) *string { return v.AuthorizationEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// The authorization endpoint headers.
-func (o OAuthModelOutput) AuthorizationEndpointHeaders() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OAuthModel) map[string]string { return v.AuthorizationEndpointHeaders }).(pulumi.StringMapOutput)
-}
-
-// The authorization endpoint query parameters.
-func (o OAuthModelOutput) AuthorizationEndpointQueryParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OAuthModel) map[string]string { return v.AuthorizationEndpointQueryParameters }).(pulumi.StringMapOutput)
-}
-
-// The Application (client) ID that the OAuth provider assigned to your app.
-func (o OAuthModelOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v OAuthModel) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The Application (client) secret that the OAuth provider assigned to your app.
-func (o OAuthModelOutput) ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v OAuthModel) string { return v.ClientSecret }).(pulumi.StringOutput)
-}
-
-// The grant type, usually will be 'authorization code'.
-func (o OAuthModelOutput) GrantType() pulumi.StringOutput {
-	return o.ApplyT(func(v OAuthModel) string { return v.GrantType }).(pulumi.StringOutput)
-}
-
-// Indicating whether we want to send the clientId and clientSecret to token endpoint in the headers.
-func (o OAuthModelOutput) IsCredentialsInHeaders() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OAuthModel) *bool { return v.IsCredentialsInHeaders }).(pulumi.BoolPtrOutput)
-}
-
-// A value indicating whether it's a JWT flow.
-func (o OAuthModelOutput) IsJwtBearerFlow() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OAuthModel) *bool { return v.IsJwtBearerFlow }).(pulumi.BoolPtrOutput)
-}
-
-// The Application redirect url that the user config in the OAuth provider.
-func (o OAuthModelOutput) RedirectUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OAuthModel) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
-}
-
-// The Application (client) Scope that the OAuth provider assigned to your app.
-func (o OAuthModelOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OAuthModel) *string { return v.Scope }).(pulumi.StringPtrOutput)
-}
-
-// The token endpoint. Defines the OAuth2 refresh token.
-func (o OAuthModelOutput) TokenEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v OAuthModel) string { return v.TokenEndpoint }).(pulumi.StringOutput)
-}
-
-// The token endpoint headers.
-func (o OAuthModelOutput) TokenEndpointHeaders() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OAuthModel) map[string]string { return v.TokenEndpointHeaders }).(pulumi.StringMapOutput)
-}
-
-// The token endpoint query parameters.
-func (o OAuthModelOutput) TokenEndpointQueryParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OAuthModel) map[string]string { return v.TokenEndpointQueryParameters }).(pulumi.StringMapOutput)
-}
-
-// Type of paging
-// Expected value is 'OAuth2'.
-func (o OAuthModelOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v OAuthModel) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Model for API authentication with OAuth2.
-type OAuthModelResponse struct {
-	// Access token prepend. Default is 'Bearer'.
-	AccessTokenPrepend *string `pulumi:"accessTokenPrepend"`
-	// The user's authorization code.
-	AuthorizationCode *string `pulumi:"authorizationCode"`
-	// The authorization endpoint.
-	AuthorizationEndpoint *string `pulumi:"authorizationEndpoint"`
-	// The authorization endpoint headers.
-	AuthorizationEndpointHeaders map[string]string `pulumi:"authorizationEndpointHeaders"`
-	// The authorization endpoint query parameters.
-	AuthorizationEndpointQueryParameters map[string]string `pulumi:"authorizationEndpointQueryParameters"`
-	// The Application (client) ID that the OAuth provider assigned to your app.
-	ClientId string `pulumi:"clientId"`
-	// The Application (client) secret that the OAuth provider assigned to your app.
-	ClientSecret string `pulumi:"clientSecret"`
-	// The grant type, usually will be 'authorization code'.
-	GrantType string `pulumi:"grantType"`
-	// Indicating whether we want to send the clientId and clientSecret to token endpoint in the headers.
-	IsCredentialsInHeaders *bool `pulumi:"isCredentialsInHeaders"`
-	// A value indicating whether it's a JWT flow.
-	IsJwtBearerFlow *bool `pulumi:"isJwtBearerFlow"`
-	// The Application redirect url that the user config in the OAuth provider.
-	RedirectUri *string `pulumi:"redirectUri"`
-	// The Application (client) Scope that the OAuth provider assigned to your app.
-	Scope *string `pulumi:"scope"`
-	// The token endpoint. Defines the OAuth2 refresh token.
-	TokenEndpoint string `pulumi:"tokenEndpoint"`
-	// The token endpoint headers.
-	TokenEndpointHeaders map[string]string `pulumi:"tokenEndpointHeaders"`
-	// The token endpoint query parameters.
-	TokenEndpointQueryParameters map[string]string `pulumi:"tokenEndpointQueryParameters"`
-	// Type of paging
-	// Expected value is 'OAuth2'.
-	Type string `pulumi:"type"`
-}
-
-// Defaults sets the appropriate defaults for OAuthModelResponse
-func (val *OAuthModelResponse) Defaults() *OAuthModelResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsCredentialsInHeaders == nil {
-		isCredentialsInHeaders_ := false
-		tmp.IsCredentialsInHeaders = &isCredentialsInHeaders_
-	}
-	return &tmp
-}
-
-// Model for API authentication with OAuth2.
-type OAuthModelResponseOutput struct{ *pulumi.OutputState }
-
-func (OAuthModelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OAuthModelResponse)(nil)).Elem()
-}
-
-func (o OAuthModelResponseOutput) ToOAuthModelResponseOutput() OAuthModelResponseOutput {
-	return o
-}
-
-func (o OAuthModelResponseOutput) ToOAuthModelResponseOutputWithContext(ctx context.Context) OAuthModelResponseOutput {
-	return o
-}
-
-// Access token prepend. Default is 'Bearer'.
-func (o OAuthModelResponseOutput) AccessTokenPrepend() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OAuthModelResponse) *string { return v.AccessTokenPrepend }).(pulumi.StringPtrOutput)
-}
-
-// The user's authorization code.
-func (o OAuthModelResponseOutput) AuthorizationCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OAuthModelResponse) *string { return v.AuthorizationCode }).(pulumi.StringPtrOutput)
-}
-
-// The authorization endpoint.
-func (o OAuthModelResponseOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OAuthModelResponse) *string { return v.AuthorizationEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// The authorization endpoint headers.
-func (o OAuthModelResponseOutput) AuthorizationEndpointHeaders() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OAuthModelResponse) map[string]string { return v.AuthorizationEndpointHeaders }).(pulumi.StringMapOutput)
-}
-
-// The authorization endpoint query parameters.
-func (o OAuthModelResponseOutput) AuthorizationEndpointQueryParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OAuthModelResponse) map[string]string { return v.AuthorizationEndpointQueryParameters }).(pulumi.StringMapOutput)
-}
-
-// The Application (client) ID that the OAuth provider assigned to your app.
-func (o OAuthModelResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v OAuthModelResponse) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The Application (client) secret that the OAuth provider assigned to your app.
-func (o OAuthModelResponseOutput) ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v OAuthModelResponse) string { return v.ClientSecret }).(pulumi.StringOutput)
-}
-
-// The grant type, usually will be 'authorization code'.
-func (o OAuthModelResponseOutput) GrantType() pulumi.StringOutput {
-	return o.ApplyT(func(v OAuthModelResponse) string { return v.GrantType }).(pulumi.StringOutput)
-}
-
-// Indicating whether we want to send the clientId and clientSecret to token endpoint in the headers.
-func (o OAuthModelResponseOutput) IsCredentialsInHeaders() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OAuthModelResponse) *bool { return v.IsCredentialsInHeaders }).(pulumi.BoolPtrOutput)
-}
-
-// A value indicating whether it's a JWT flow.
-func (o OAuthModelResponseOutput) IsJwtBearerFlow() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OAuthModelResponse) *bool { return v.IsJwtBearerFlow }).(pulumi.BoolPtrOutput)
-}
-
-// The Application redirect url that the user config in the OAuth provider.
-func (o OAuthModelResponseOutput) RedirectUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OAuthModelResponse) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
-}
-
-// The Application (client) Scope that the OAuth provider assigned to your app.
-func (o OAuthModelResponseOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OAuthModelResponse) *string { return v.Scope }).(pulumi.StringPtrOutput)
-}
-
-// The token endpoint. Defines the OAuth2 refresh token.
-func (o OAuthModelResponseOutput) TokenEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v OAuthModelResponse) string { return v.TokenEndpoint }).(pulumi.StringOutput)
-}
-
-// The token endpoint headers.
-func (o OAuthModelResponseOutput) TokenEndpointHeaders() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OAuthModelResponse) map[string]string { return v.TokenEndpointHeaders }).(pulumi.StringMapOutput)
-}
-
-// The token endpoint query parameters.
-func (o OAuthModelResponseOutput) TokenEndpointQueryParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OAuthModelResponse) map[string]string { return v.TokenEndpointQueryParameters }).(pulumi.StringMapOutput)
-}
-
-// Type of paging
-// Expected value is 'OAuth2'.
-func (o OAuthModelResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v OAuthModelResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
 // The available data types for office data connector.
 type OfficeDataConnectorDataTypes struct {
 	// Exchange data type connection.
@@ -17067,156 +13641,6 @@ func (o OfficeDataConnectorDataTypesTeamsPtrOutput) State() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Model for API authentication for Oracle.
-type OracleAuthModel struct {
-	// Content of the PRM file
-	PemFile string `pulumi:"pemFile"`
-	// Public Fingerprint
-	PublicFingerprint string `pulumi:"publicFingerprint"`
-	// Oracle tenant ID
-	TenantId string `pulumi:"tenantId"`
-	// Type of paging
-	// Expected value is 'Oracle'.
-	Type string `pulumi:"type"`
-	// Oracle user ID
-	UserId string `pulumi:"userId"`
-}
-
-// OracleAuthModelInput is an input type that accepts OracleAuthModelArgs and OracleAuthModelOutput values.
-// You can construct a concrete instance of `OracleAuthModelInput` via:
-//
-//	OracleAuthModelArgs{...}
-type OracleAuthModelInput interface {
-	pulumi.Input
-
-	ToOracleAuthModelOutput() OracleAuthModelOutput
-	ToOracleAuthModelOutputWithContext(context.Context) OracleAuthModelOutput
-}
-
-// Model for API authentication for Oracle.
-type OracleAuthModelArgs struct {
-	// Content of the PRM file
-	PemFile pulumi.StringInput `pulumi:"pemFile"`
-	// Public Fingerprint
-	PublicFingerprint pulumi.StringInput `pulumi:"publicFingerprint"`
-	// Oracle tenant ID
-	TenantId pulumi.StringInput `pulumi:"tenantId"`
-	// Type of paging
-	// Expected value is 'Oracle'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Oracle user ID
-	UserId pulumi.StringInput `pulumi:"userId"`
-}
-
-func (OracleAuthModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OracleAuthModel)(nil)).Elem()
-}
-
-func (i OracleAuthModelArgs) ToOracleAuthModelOutput() OracleAuthModelOutput {
-	return i.ToOracleAuthModelOutputWithContext(context.Background())
-}
-
-func (i OracleAuthModelArgs) ToOracleAuthModelOutputWithContext(ctx context.Context) OracleAuthModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleAuthModelOutput)
-}
-
-// Model for API authentication for Oracle.
-type OracleAuthModelOutput struct{ *pulumi.OutputState }
-
-func (OracleAuthModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OracleAuthModel)(nil)).Elem()
-}
-
-func (o OracleAuthModelOutput) ToOracleAuthModelOutput() OracleAuthModelOutput {
-	return o
-}
-
-func (o OracleAuthModelOutput) ToOracleAuthModelOutputWithContext(ctx context.Context) OracleAuthModelOutput {
-	return o
-}
-
-// Content of the PRM file
-func (o OracleAuthModelOutput) PemFile() pulumi.StringOutput {
-	return o.ApplyT(func(v OracleAuthModel) string { return v.PemFile }).(pulumi.StringOutput)
-}
-
-// Public Fingerprint
-func (o OracleAuthModelOutput) PublicFingerprint() pulumi.StringOutput {
-	return o.ApplyT(func(v OracleAuthModel) string { return v.PublicFingerprint }).(pulumi.StringOutput)
-}
-
-// Oracle tenant ID
-func (o OracleAuthModelOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v OracleAuthModel) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Type of paging
-// Expected value is 'Oracle'.
-func (o OracleAuthModelOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v OracleAuthModel) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Oracle user ID
-func (o OracleAuthModelOutput) UserId() pulumi.StringOutput {
-	return o.ApplyT(func(v OracleAuthModel) string { return v.UserId }).(pulumi.StringOutput)
-}
-
-// Model for API authentication for Oracle.
-type OracleAuthModelResponse struct {
-	// Content of the PRM file
-	PemFile string `pulumi:"pemFile"`
-	// Public Fingerprint
-	PublicFingerprint string `pulumi:"publicFingerprint"`
-	// Oracle tenant ID
-	TenantId string `pulumi:"tenantId"`
-	// Type of paging
-	// Expected value is 'Oracle'.
-	Type string `pulumi:"type"`
-	// Oracle user ID
-	UserId string `pulumi:"userId"`
-}
-
-// Model for API authentication for Oracle.
-type OracleAuthModelResponseOutput struct{ *pulumi.OutputState }
-
-func (OracleAuthModelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OracleAuthModelResponse)(nil)).Elem()
-}
-
-func (o OracleAuthModelResponseOutput) ToOracleAuthModelResponseOutput() OracleAuthModelResponseOutput {
-	return o
-}
-
-func (o OracleAuthModelResponseOutput) ToOracleAuthModelResponseOutputWithContext(ctx context.Context) OracleAuthModelResponseOutput {
-	return o
-}
-
-// Content of the PRM file
-func (o OracleAuthModelResponseOutput) PemFile() pulumi.StringOutput {
-	return o.ApplyT(func(v OracleAuthModelResponse) string { return v.PemFile }).(pulumi.StringOutput)
-}
-
-// Public Fingerprint
-func (o OracleAuthModelResponseOutput) PublicFingerprint() pulumi.StringOutput {
-	return o.ApplyT(func(v OracleAuthModelResponse) string { return v.PublicFingerprint }).(pulumi.StringOutput)
-}
-
-// Oracle tenant ID
-func (o OracleAuthModelResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v OracleAuthModelResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Type of paging
-// Expected value is 'Oracle'.
-func (o OracleAuthModelResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v OracleAuthModelResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Oracle user ID
-func (o OracleAuthModelResponseOutput) UserId() pulumi.StringOutput {
-	return o.ApplyT(func(v OracleAuthModelResponse) string { return v.UserId }).(pulumi.StringOutput)
-}
-
 type PlaybookActionProperties struct {
 	// The resource id of the playbook resource.
 	LogicAppResourceId string `pulumi:"logicAppResourceId"`
@@ -17448,172 +13872,6 @@ func (o PlaybookActionPropertiesResponsePtrOutput) TenantId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The available data types for Premium Microsoft Defender for Threat Intelligence data connector.
-type PremiumMdtiDataConnectorDataTypes struct {
-	// Data type for Premium Microsoft Defender for Threat Intelligence data connector.
-	Connector PremiumMdtiDataConnectorDataTypesConnector `pulumi:"connector"`
-}
-
-// PremiumMdtiDataConnectorDataTypesInput is an input type that accepts PremiumMdtiDataConnectorDataTypesArgs and PremiumMdtiDataConnectorDataTypesOutput values.
-// You can construct a concrete instance of `PremiumMdtiDataConnectorDataTypesInput` via:
-//
-//	PremiumMdtiDataConnectorDataTypesArgs{...}
-type PremiumMdtiDataConnectorDataTypesInput interface {
-	pulumi.Input
-
-	ToPremiumMdtiDataConnectorDataTypesOutput() PremiumMdtiDataConnectorDataTypesOutput
-	ToPremiumMdtiDataConnectorDataTypesOutputWithContext(context.Context) PremiumMdtiDataConnectorDataTypesOutput
-}
-
-// The available data types for Premium Microsoft Defender for Threat Intelligence data connector.
-type PremiumMdtiDataConnectorDataTypesArgs struct {
-	// Data type for Premium Microsoft Defender for Threat Intelligence data connector.
-	Connector PremiumMdtiDataConnectorDataTypesConnectorInput `pulumi:"connector"`
-}
-
-func (PremiumMdtiDataConnectorDataTypesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PremiumMdtiDataConnectorDataTypes)(nil)).Elem()
-}
-
-func (i PremiumMdtiDataConnectorDataTypesArgs) ToPremiumMdtiDataConnectorDataTypesOutput() PremiumMdtiDataConnectorDataTypesOutput {
-	return i.ToPremiumMdtiDataConnectorDataTypesOutputWithContext(context.Background())
-}
-
-func (i PremiumMdtiDataConnectorDataTypesArgs) ToPremiumMdtiDataConnectorDataTypesOutputWithContext(ctx context.Context) PremiumMdtiDataConnectorDataTypesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PremiumMdtiDataConnectorDataTypesOutput)
-}
-
-// The available data types for Premium Microsoft Defender for Threat Intelligence data connector.
-type PremiumMdtiDataConnectorDataTypesOutput struct{ *pulumi.OutputState }
-
-func (PremiumMdtiDataConnectorDataTypesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PremiumMdtiDataConnectorDataTypes)(nil)).Elem()
-}
-
-func (o PremiumMdtiDataConnectorDataTypesOutput) ToPremiumMdtiDataConnectorDataTypesOutput() PremiumMdtiDataConnectorDataTypesOutput {
-	return o
-}
-
-func (o PremiumMdtiDataConnectorDataTypesOutput) ToPremiumMdtiDataConnectorDataTypesOutputWithContext(ctx context.Context) PremiumMdtiDataConnectorDataTypesOutput {
-	return o
-}
-
-// Data type for Premium Microsoft Defender for Threat Intelligence data connector.
-func (o PremiumMdtiDataConnectorDataTypesOutput) Connector() PremiumMdtiDataConnectorDataTypesConnectorOutput {
-	return o.ApplyT(func(v PremiumMdtiDataConnectorDataTypes) PremiumMdtiDataConnectorDataTypesConnector {
-		return v.Connector
-	}).(PremiumMdtiDataConnectorDataTypesConnectorOutput)
-}
-
-// Data type for Premium Microsoft Defender for Threat Intelligence data connector.
-type PremiumMdtiDataConnectorDataTypesConnector struct {
-	// Describe whether this data type connection is enabled or not.
-	State *string `pulumi:"state"`
-}
-
-// PremiumMdtiDataConnectorDataTypesConnectorInput is an input type that accepts PremiumMdtiDataConnectorDataTypesConnectorArgs and PremiumMdtiDataConnectorDataTypesConnectorOutput values.
-// You can construct a concrete instance of `PremiumMdtiDataConnectorDataTypesConnectorInput` via:
-//
-//	PremiumMdtiDataConnectorDataTypesConnectorArgs{...}
-type PremiumMdtiDataConnectorDataTypesConnectorInput interface {
-	pulumi.Input
-
-	ToPremiumMdtiDataConnectorDataTypesConnectorOutput() PremiumMdtiDataConnectorDataTypesConnectorOutput
-	ToPremiumMdtiDataConnectorDataTypesConnectorOutputWithContext(context.Context) PremiumMdtiDataConnectorDataTypesConnectorOutput
-}
-
-// Data type for Premium Microsoft Defender for Threat Intelligence data connector.
-type PremiumMdtiDataConnectorDataTypesConnectorArgs struct {
-	// Describe whether this data type connection is enabled or not.
-	State pulumi.StringPtrInput `pulumi:"state"`
-}
-
-func (PremiumMdtiDataConnectorDataTypesConnectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PremiumMdtiDataConnectorDataTypesConnector)(nil)).Elem()
-}
-
-func (i PremiumMdtiDataConnectorDataTypesConnectorArgs) ToPremiumMdtiDataConnectorDataTypesConnectorOutput() PremiumMdtiDataConnectorDataTypesConnectorOutput {
-	return i.ToPremiumMdtiDataConnectorDataTypesConnectorOutputWithContext(context.Background())
-}
-
-func (i PremiumMdtiDataConnectorDataTypesConnectorArgs) ToPremiumMdtiDataConnectorDataTypesConnectorOutputWithContext(ctx context.Context) PremiumMdtiDataConnectorDataTypesConnectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PremiumMdtiDataConnectorDataTypesConnectorOutput)
-}
-
-// Data type for Premium Microsoft Defender for Threat Intelligence data connector.
-type PremiumMdtiDataConnectorDataTypesConnectorOutput struct{ *pulumi.OutputState }
-
-func (PremiumMdtiDataConnectorDataTypesConnectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PremiumMdtiDataConnectorDataTypesConnector)(nil)).Elem()
-}
-
-func (o PremiumMdtiDataConnectorDataTypesConnectorOutput) ToPremiumMdtiDataConnectorDataTypesConnectorOutput() PremiumMdtiDataConnectorDataTypesConnectorOutput {
-	return o
-}
-
-func (o PremiumMdtiDataConnectorDataTypesConnectorOutput) ToPremiumMdtiDataConnectorDataTypesConnectorOutputWithContext(ctx context.Context) PremiumMdtiDataConnectorDataTypesConnectorOutput {
-	return o
-}
-
-// Describe whether this data type connection is enabled or not.
-func (o PremiumMdtiDataConnectorDataTypesConnectorOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PremiumMdtiDataConnectorDataTypesConnector) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// The available data types for Premium Microsoft Defender for Threat Intelligence data connector.
-type PremiumMdtiDataConnectorDataTypesResponse struct {
-	// Data type for Premium Microsoft Defender for Threat Intelligence data connector.
-	Connector PremiumMdtiDataConnectorDataTypesResponseConnector `pulumi:"connector"`
-}
-
-// The available data types for Premium Microsoft Defender for Threat Intelligence data connector.
-type PremiumMdtiDataConnectorDataTypesResponseOutput struct{ *pulumi.OutputState }
-
-func (PremiumMdtiDataConnectorDataTypesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PremiumMdtiDataConnectorDataTypesResponse)(nil)).Elem()
-}
-
-func (o PremiumMdtiDataConnectorDataTypesResponseOutput) ToPremiumMdtiDataConnectorDataTypesResponseOutput() PremiumMdtiDataConnectorDataTypesResponseOutput {
-	return o
-}
-
-func (o PremiumMdtiDataConnectorDataTypesResponseOutput) ToPremiumMdtiDataConnectorDataTypesResponseOutputWithContext(ctx context.Context) PremiumMdtiDataConnectorDataTypesResponseOutput {
-	return o
-}
-
-// Data type for Premium Microsoft Defender for Threat Intelligence data connector.
-func (o PremiumMdtiDataConnectorDataTypesResponseOutput) Connector() PremiumMdtiDataConnectorDataTypesResponseConnectorOutput {
-	return o.ApplyT(func(v PremiumMdtiDataConnectorDataTypesResponse) PremiumMdtiDataConnectorDataTypesResponseConnector {
-		return v.Connector
-	}).(PremiumMdtiDataConnectorDataTypesResponseConnectorOutput)
-}
-
-// Data type for Premium Microsoft Defender for Threat Intelligence data connector.
-type PremiumMdtiDataConnectorDataTypesResponseConnector struct {
-	// Describe whether this data type connection is enabled or not.
-	State *string `pulumi:"state"`
-}
-
-// Data type for Premium Microsoft Defender for Threat Intelligence data connector.
-type PremiumMdtiDataConnectorDataTypesResponseConnectorOutput struct{ *pulumi.OutputState }
-
-func (PremiumMdtiDataConnectorDataTypesResponseConnectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PremiumMdtiDataConnectorDataTypesResponseConnector)(nil)).Elem()
-}
-
-func (o PremiumMdtiDataConnectorDataTypesResponseConnectorOutput) ToPremiumMdtiDataConnectorDataTypesResponseConnectorOutput() PremiumMdtiDataConnectorDataTypesResponseConnectorOutput {
-	return o
-}
-
-func (o PremiumMdtiDataConnectorDataTypesResponseConnectorOutput) ToPremiumMdtiDataConnectorDataTypesResponseConnectorOutputWithContext(ctx context.Context) PremiumMdtiDataConnectorDataTypesResponseConnectorOutput {
-	return o
-}
-
-// Describe whether this data type connection is enabled or not.
-func (o PremiumMdtiDataConnectorDataTypesResponseConnectorOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PremiumMdtiDataConnectorDataTypesResponseConnector) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
 // Describes an automation rule condition that evaluates an array property's value change
 type PropertyArrayChangedConditionProperties struct {
 	ConditionProperties *AutomationRulePropertyArrayChangedValuesCondition `pulumi:"conditionProperties"`
@@ -17708,107 +13966,6 @@ func (o PropertyArrayChangedConditionPropertiesResponseOutput) ConditionProperti
 // Expected value is 'PropertyArrayChanged'.
 func (o PropertyArrayChangedConditionPropertiesResponseOutput) ConditionType() pulumi.StringOutput {
 	return o.ApplyT(func(v PropertyArrayChangedConditionPropertiesResponse) string { return v.ConditionType }).(pulumi.StringOutput)
-}
-
-// Describes an automation rule condition that evaluates an array property's value
-type PropertyArrayConditionProperties struct {
-	// Describes an automation rule condition on array properties.
-	ConditionProperties *AutomationRulePropertyArrayValuesCondition `pulumi:"conditionProperties"`
-	// Expected value is 'PropertyArray'.
-	ConditionType string `pulumi:"conditionType"`
-}
-
-// PropertyArrayConditionPropertiesInput is an input type that accepts PropertyArrayConditionPropertiesArgs and PropertyArrayConditionPropertiesOutput values.
-// You can construct a concrete instance of `PropertyArrayConditionPropertiesInput` via:
-//
-//	PropertyArrayConditionPropertiesArgs{...}
-type PropertyArrayConditionPropertiesInput interface {
-	pulumi.Input
-
-	ToPropertyArrayConditionPropertiesOutput() PropertyArrayConditionPropertiesOutput
-	ToPropertyArrayConditionPropertiesOutputWithContext(context.Context) PropertyArrayConditionPropertiesOutput
-}
-
-// Describes an automation rule condition that evaluates an array property's value
-type PropertyArrayConditionPropertiesArgs struct {
-	// Describes an automation rule condition on array properties.
-	ConditionProperties AutomationRulePropertyArrayValuesConditionPtrInput `pulumi:"conditionProperties"`
-	// Expected value is 'PropertyArray'.
-	ConditionType pulumi.StringInput `pulumi:"conditionType"`
-}
-
-func (PropertyArrayConditionPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PropertyArrayConditionProperties)(nil)).Elem()
-}
-
-func (i PropertyArrayConditionPropertiesArgs) ToPropertyArrayConditionPropertiesOutput() PropertyArrayConditionPropertiesOutput {
-	return i.ToPropertyArrayConditionPropertiesOutputWithContext(context.Background())
-}
-
-func (i PropertyArrayConditionPropertiesArgs) ToPropertyArrayConditionPropertiesOutputWithContext(ctx context.Context) PropertyArrayConditionPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PropertyArrayConditionPropertiesOutput)
-}
-
-// Describes an automation rule condition that evaluates an array property's value
-type PropertyArrayConditionPropertiesOutput struct{ *pulumi.OutputState }
-
-func (PropertyArrayConditionPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PropertyArrayConditionProperties)(nil)).Elem()
-}
-
-func (o PropertyArrayConditionPropertiesOutput) ToPropertyArrayConditionPropertiesOutput() PropertyArrayConditionPropertiesOutput {
-	return o
-}
-
-func (o PropertyArrayConditionPropertiesOutput) ToPropertyArrayConditionPropertiesOutputWithContext(ctx context.Context) PropertyArrayConditionPropertiesOutput {
-	return o
-}
-
-// Describes an automation rule condition on array properties.
-func (o PropertyArrayConditionPropertiesOutput) ConditionProperties() AutomationRulePropertyArrayValuesConditionPtrOutput {
-	return o.ApplyT(func(v PropertyArrayConditionProperties) *AutomationRulePropertyArrayValuesCondition {
-		return v.ConditionProperties
-	}).(AutomationRulePropertyArrayValuesConditionPtrOutput)
-}
-
-// Expected value is 'PropertyArray'.
-func (o PropertyArrayConditionPropertiesOutput) ConditionType() pulumi.StringOutput {
-	return o.ApplyT(func(v PropertyArrayConditionProperties) string { return v.ConditionType }).(pulumi.StringOutput)
-}
-
-// Describes an automation rule condition that evaluates an array property's value
-type PropertyArrayConditionPropertiesResponse struct {
-	// Describes an automation rule condition on array properties.
-	ConditionProperties *AutomationRulePropertyArrayValuesConditionResponse `pulumi:"conditionProperties"`
-	// Expected value is 'PropertyArray'.
-	ConditionType string `pulumi:"conditionType"`
-}
-
-// Describes an automation rule condition that evaluates an array property's value
-type PropertyArrayConditionPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (PropertyArrayConditionPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PropertyArrayConditionPropertiesResponse)(nil)).Elem()
-}
-
-func (o PropertyArrayConditionPropertiesResponseOutput) ToPropertyArrayConditionPropertiesResponseOutput() PropertyArrayConditionPropertiesResponseOutput {
-	return o
-}
-
-func (o PropertyArrayConditionPropertiesResponseOutput) ToPropertyArrayConditionPropertiesResponseOutputWithContext(ctx context.Context) PropertyArrayConditionPropertiesResponseOutput {
-	return o
-}
-
-// Describes an automation rule condition on array properties.
-func (o PropertyArrayConditionPropertiesResponseOutput) ConditionProperties() AutomationRulePropertyArrayValuesConditionResponsePtrOutput {
-	return o.ApplyT(func(v PropertyArrayConditionPropertiesResponse) *AutomationRulePropertyArrayValuesConditionResponse {
-		return v.ConditionProperties
-	}).(AutomationRulePropertyArrayValuesConditionResponsePtrOutput)
-}
-
-// Expected value is 'PropertyArray'.
-func (o PropertyArrayConditionPropertiesResponseOutput) ConditionType() pulumi.StringOutput {
-	return o.ApplyT(func(v PropertyArrayConditionPropertiesResponse) string { return v.ConditionType }).(pulumi.StringOutput)
 }
 
 // Describes an automation rule condition that evaluates a property's value change
@@ -18009,8 +14166,6 @@ type RepoResponse struct {
 	Branches []string `pulumi:"branches"`
 	// The name of the repository.
 	FullName *string `pulumi:"fullName"`
-	// The installation id of the repository.
-	InstallationId *float64 `pulumi:"installationId"`
 	// The url to access the repository.
 	Url *string `pulumi:"url"`
 }
@@ -18038,11 +14193,6 @@ func (o RepoResponseOutput) Branches() pulumi.StringArrayOutput {
 // The name of the repository.
 func (o RepoResponseOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepoResponse) *string { return v.FullName }).(pulumi.StringPtrOutput)
-}
-
-// The installation id of the repository.
-func (o RepoResponseOutput) InstallationId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RepoResponse) *float64 { return v.InstallationId }).(pulumi.Float64PtrOutput)
 }
 
 // The url to access the repository.
@@ -18623,599 +14773,6 @@ func (o ResourceProviderRequiredPermissionsResponseOutput) Write() pulumi.BoolPt
 	return o.ApplyT(func(v ResourceProviderRequiredPermissionsResponse) *bool { return v.Write }).(pulumi.BoolPtrOutput)
 }
 
-// The request configuration.
-type RestApiPollerRequestConfig struct {
-	// The API endpoint.
-	ApiEndpoint string `pulumi:"apiEndpoint"`
-	// The query parameter name which the remote server expect to end query. This property goes hand to hand with `startTimeAttributeName`
-	EndTimeAttributeName *string `pulumi:"endTimeAttributeName"`
-	// The header for the request for the remote server.
-	Headers map[string]string `pulumi:"headers"`
-	// The HTTP method, default value GET.
-	HttpMethod *string `pulumi:"httpMethod"`
-	// Flag to indicate if HTTP POST payload is in JSON format (vs form-urlencoded).
-	IsPostPayloadJson *bool `pulumi:"isPostPayloadJson"`
-	// The HTTP query parameters to RESTful API.
-	QueryParameters interface{} `pulumi:"queryParameters"`
-	// the query parameters template. Defines the query parameters template to use when passing query parameters in advanced scenarios.
-	QueryParametersTemplate *string `pulumi:"queryParametersTemplate"`
-	// The query time format. A remote server can have a query to pull data from range 'start' to 'end'. This property indicate what is the expected time format the remote server know to parse.
-	QueryTimeFormat *string `pulumi:"queryTimeFormat"`
-	// The query parameter name which we need to send the server for query logs in time interval. Should be defined with `queryTimeIntervalPrepend` and `queryTimeIntervalDelimiter`
-	QueryTimeIntervalAttributeName *string `pulumi:"queryTimeIntervalAttributeName"`
-	// The delimiter string between 2 QueryTimeFormat in the query parameter `queryTimeIntervalAttributeName`.
-	QueryTimeIntervalDelimiter *string `pulumi:"queryTimeIntervalDelimiter"`
-	// The string prepend to the value of the query parameter in `queryTimeIntervalAttributeName`.
-	QueryTimeIntervalPrepend *string `pulumi:"queryTimeIntervalPrepend"`
-	// The query window in minutes for the request.
-	QueryWindowInMin *int `pulumi:"queryWindowInMin"`
-	// The Rate limit queries per second for the request..
-	RateLimitQPS *int `pulumi:"rateLimitQPS"`
-	// The retry count.
-	RetryCount *int `pulumi:"retryCount"`
-	// The query parameter name which the remote server expect to start query. This property goes hand to hand with `endTimeAttributeName`.
-	StartTimeAttributeName *string `pulumi:"startTimeAttributeName"`
-	// The timeout in seconds.
-	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
-}
-
-// RestApiPollerRequestConfigInput is an input type that accepts RestApiPollerRequestConfigArgs and RestApiPollerRequestConfigOutput values.
-// You can construct a concrete instance of `RestApiPollerRequestConfigInput` via:
-//
-//	RestApiPollerRequestConfigArgs{...}
-type RestApiPollerRequestConfigInput interface {
-	pulumi.Input
-
-	ToRestApiPollerRequestConfigOutput() RestApiPollerRequestConfigOutput
-	ToRestApiPollerRequestConfigOutputWithContext(context.Context) RestApiPollerRequestConfigOutput
-}
-
-// The request configuration.
-type RestApiPollerRequestConfigArgs struct {
-	// The API endpoint.
-	ApiEndpoint pulumi.StringInput `pulumi:"apiEndpoint"`
-	// The query parameter name which the remote server expect to end query. This property goes hand to hand with `startTimeAttributeName`
-	EndTimeAttributeName pulumi.StringPtrInput `pulumi:"endTimeAttributeName"`
-	// The header for the request for the remote server.
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	// The HTTP method, default value GET.
-	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
-	// Flag to indicate if HTTP POST payload is in JSON format (vs form-urlencoded).
-	IsPostPayloadJson pulumi.BoolPtrInput `pulumi:"isPostPayloadJson"`
-	// The HTTP query parameters to RESTful API.
-	QueryParameters pulumi.Input `pulumi:"queryParameters"`
-	// the query parameters template. Defines the query parameters template to use when passing query parameters in advanced scenarios.
-	QueryParametersTemplate pulumi.StringPtrInput `pulumi:"queryParametersTemplate"`
-	// The query time format. A remote server can have a query to pull data from range 'start' to 'end'. This property indicate what is the expected time format the remote server know to parse.
-	QueryTimeFormat pulumi.StringPtrInput `pulumi:"queryTimeFormat"`
-	// The query parameter name which we need to send the server for query logs in time interval. Should be defined with `queryTimeIntervalPrepend` and `queryTimeIntervalDelimiter`
-	QueryTimeIntervalAttributeName pulumi.StringPtrInput `pulumi:"queryTimeIntervalAttributeName"`
-	// The delimiter string between 2 QueryTimeFormat in the query parameter `queryTimeIntervalAttributeName`.
-	QueryTimeIntervalDelimiter pulumi.StringPtrInput `pulumi:"queryTimeIntervalDelimiter"`
-	// The string prepend to the value of the query parameter in `queryTimeIntervalAttributeName`.
-	QueryTimeIntervalPrepend pulumi.StringPtrInput `pulumi:"queryTimeIntervalPrepend"`
-	// The query window in minutes for the request.
-	QueryWindowInMin pulumi.IntPtrInput `pulumi:"queryWindowInMin"`
-	// The Rate limit queries per second for the request..
-	RateLimitQPS pulumi.IntPtrInput `pulumi:"rateLimitQPS"`
-	// The retry count.
-	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
-	// The query parameter name which the remote server expect to start query. This property goes hand to hand with `endTimeAttributeName`.
-	StartTimeAttributeName pulumi.StringPtrInput `pulumi:"startTimeAttributeName"`
-	// The timeout in seconds.
-	TimeoutInSeconds pulumi.IntPtrInput `pulumi:"timeoutInSeconds"`
-}
-
-func (RestApiPollerRequestConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestApiPollerRequestConfig)(nil)).Elem()
-}
-
-func (i RestApiPollerRequestConfigArgs) ToRestApiPollerRequestConfigOutput() RestApiPollerRequestConfigOutput {
-	return i.ToRestApiPollerRequestConfigOutputWithContext(context.Background())
-}
-
-func (i RestApiPollerRequestConfigArgs) ToRestApiPollerRequestConfigOutputWithContext(ctx context.Context) RestApiPollerRequestConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestApiPollerRequestConfigOutput)
-}
-
-// The request configuration.
-type RestApiPollerRequestConfigOutput struct{ *pulumi.OutputState }
-
-func (RestApiPollerRequestConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestApiPollerRequestConfig)(nil)).Elem()
-}
-
-func (o RestApiPollerRequestConfigOutput) ToRestApiPollerRequestConfigOutput() RestApiPollerRequestConfigOutput {
-	return o
-}
-
-func (o RestApiPollerRequestConfigOutput) ToRestApiPollerRequestConfigOutputWithContext(ctx context.Context) RestApiPollerRequestConfigOutput {
-	return o
-}
-
-// The API endpoint.
-func (o RestApiPollerRequestConfigOutput) ApiEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) string { return v.ApiEndpoint }).(pulumi.StringOutput)
-}
-
-// The query parameter name which the remote server expect to end query. This property goes hand to hand with `startTimeAttributeName`
-func (o RestApiPollerRequestConfigOutput) EndTimeAttributeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *string { return v.EndTimeAttributeName }).(pulumi.StringPtrOutput)
-}
-
-// The header for the request for the remote server.
-func (o RestApiPollerRequestConfigOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
-}
-
-// The HTTP method, default value GET.
-func (o RestApiPollerRequestConfigOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
-}
-
-// Flag to indicate if HTTP POST payload is in JSON format (vs form-urlencoded).
-func (o RestApiPollerRequestConfigOutput) IsPostPayloadJson() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *bool { return v.IsPostPayloadJson }).(pulumi.BoolPtrOutput)
-}
-
-// The HTTP query parameters to RESTful API.
-func (o RestApiPollerRequestConfigOutput) QueryParameters() pulumi.AnyOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) interface{} { return v.QueryParameters }).(pulumi.AnyOutput)
-}
-
-// the query parameters template. Defines the query parameters template to use when passing query parameters in advanced scenarios.
-func (o RestApiPollerRequestConfigOutput) QueryParametersTemplate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *string { return v.QueryParametersTemplate }).(pulumi.StringPtrOutput)
-}
-
-// The query time format. A remote server can have a query to pull data from range 'start' to 'end'. This property indicate what is the expected time format the remote server know to parse.
-func (o RestApiPollerRequestConfigOutput) QueryTimeFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *string { return v.QueryTimeFormat }).(pulumi.StringPtrOutput)
-}
-
-// The query parameter name which we need to send the server for query logs in time interval. Should be defined with `queryTimeIntervalPrepend` and `queryTimeIntervalDelimiter`
-func (o RestApiPollerRequestConfigOutput) QueryTimeIntervalAttributeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *string { return v.QueryTimeIntervalAttributeName }).(pulumi.StringPtrOutput)
-}
-
-// The delimiter string between 2 QueryTimeFormat in the query parameter `queryTimeIntervalAttributeName`.
-func (o RestApiPollerRequestConfigOutput) QueryTimeIntervalDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *string { return v.QueryTimeIntervalDelimiter }).(pulumi.StringPtrOutput)
-}
-
-// The string prepend to the value of the query parameter in `queryTimeIntervalAttributeName`.
-func (o RestApiPollerRequestConfigOutput) QueryTimeIntervalPrepend() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *string { return v.QueryTimeIntervalPrepend }).(pulumi.StringPtrOutput)
-}
-
-// The query window in minutes for the request.
-func (o RestApiPollerRequestConfigOutput) QueryWindowInMin() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *int { return v.QueryWindowInMin }).(pulumi.IntPtrOutput)
-}
-
-// The Rate limit queries per second for the request..
-func (o RestApiPollerRequestConfigOutput) RateLimitQPS() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *int { return v.RateLimitQPS }).(pulumi.IntPtrOutput)
-}
-
-// The retry count.
-func (o RestApiPollerRequestConfigOutput) RetryCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
-}
-
-// The query parameter name which the remote server expect to start query. This property goes hand to hand with `endTimeAttributeName`.
-func (o RestApiPollerRequestConfigOutput) StartTimeAttributeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *string { return v.StartTimeAttributeName }).(pulumi.StringPtrOutput)
-}
-
-// The timeout in seconds.
-func (o RestApiPollerRequestConfigOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfig) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
-}
-
-// The request configuration.
-type RestApiPollerRequestConfigResponse struct {
-	// The API endpoint.
-	ApiEndpoint string `pulumi:"apiEndpoint"`
-	// The query parameter name which the remote server expect to end query. This property goes hand to hand with `startTimeAttributeName`
-	EndTimeAttributeName *string `pulumi:"endTimeAttributeName"`
-	// The header for the request for the remote server.
-	Headers map[string]string `pulumi:"headers"`
-	// The HTTP method, default value GET.
-	HttpMethod *string `pulumi:"httpMethod"`
-	// Flag to indicate if HTTP POST payload is in JSON format (vs form-urlencoded).
-	IsPostPayloadJson *bool `pulumi:"isPostPayloadJson"`
-	// The HTTP query parameters to RESTful API.
-	QueryParameters interface{} `pulumi:"queryParameters"`
-	// the query parameters template. Defines the query parameters template to use when passing query parameters in advanced scenarios.
-	QueryParametersTemplate *string `pulumi:"queryParametersTemplate"`
-	// The query time format. A remote server can have a query to pull data from range 'start' to 'end'. This property indicate what is the expected time format the remote server know to parse.
-	QueryTimeFormat *string `pulumi:"queryTimeFormat"`
-	// The query parameter name which we need to send the server for query logs in time interval. Should be defined with `queryTimeIntervalPrepend` and `queryTimeIntervalDelimiter`
-	QueryTimeIntervalAttributeName *string `pulumi:"queryTimeIntervalAttributeName"`
-	// The delimiter string between 2 QueryTimeFormat in the query parameter `queryTimeIntervalAttributeName`.
-	QueryTimeIntervalDelimiter *string `pulumi:"queryTimeIntervalDelimiter"`
-	// The string prepend to the value of the query parameter in `queryTimeIntervalAttributeName`.
-	QueryTimeIntervalPrepend *string `pulumi:"queryTimeIntervalPrepend"`
-	// The query window in minutes for the request.
-	QueryWindowInMin *int `pulumi:"queryWindowInMin"`
-	// The Rate limit queries per second for the request..
-	RateLimitQPS *int `pulumi:"rateLimitQPS"`
-	// The retry count.
-	RetryCount *int `pulumi:"retryCount"`
-	// The query parameter name which the remote server expect to start query. This property goes hand to hand with `endTimeAttributeName`.
-	StartTimeAttributeName *string `pulumi:"startTimeAttributeName"`
-	// The timeout in seconds.
-	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
-}
-
-// The request configuration.
-type RestApiPollerRequestConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (RestApiPollerRequestConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestApiPollerRequestConfigResponse)(nil)).Elem()
-}
-
-func (o RestApiPollerRequestConfigResponseOutput) ToRestApiPollerRequestConfigResponseOutput() RestApiPollerRequestConfigResponseOutput {
-	return o
-}
-
-func (o RestApiPollerRequestConfigResponseOutput) ToRestApiPollerRequestConfigResponseOutputWithContext(ctx context.Context) RestApiPollerRequestConfigResponseOutput {
-	return o
-}
-
-// The API endpoint.
-func (o RestApiPollerRequestConfigResponseOutput) ApiEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) string { return v.ApiEndpoint }).(pulumi.StringOutput)
-}
-
-// The query parameter name which the remote server expect to end query. This property goes hand to hand with `startTimeAttributeName`
-func (o RestApiPollerRequestConfigResponseOutput) EndTimeAttributeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *string { return v.EndTimeAttributeName }).(pulumi.StringPtrOutput)
-}
-
-// The header for the request for the remote server.
-func (o RestApiPollerRequestConfigResponseOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
-}
-
-// The HTTP method, default value GET.
-func (o RestApiPollerRequestConfigResponseOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
-}
-
-// Flag to indicate if HTTP POST payload is in JSON format (vs form-urlencoded).
-func (o RestApiPollerRequestConfigResponseOutput) IsPostPayloadJson() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *bool { return v.IsPostPayloadJson }).(pulumi.BoolPtrOutput)
-}
-
-// The HTTP query parameters to RESTful API.
-func (o RestApiPollerRequestConfigResponseOutput) QueryParameters() pulumi.AnyOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) interface{} { return v.QueryParameters }).(pulumi.AnyOutput)
-}
-
-// the query parameters template. Defines the query parameters template to use when passing query parameters in advanced scenarios.
-func (o RestApiPollerRequestConfigResponseOutput) QueryParametersTemplate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *string { return v.QueryParametersTemplate }).(pulumi.StringPtrOutput)
-}
-
-// The query time format. A remote server can have a query to pull data from range 'start' to 'end'. This property indicate what is the expected time format the remote server know to parse.
-func (o RestApiPollerRequestConfigResponseOutput) QueryTimeFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *string { return v.QueryTimeFormat }).(pulumi.StringPtrOutput)
-}
-
-// The query parameter name which we need to send the server for query logs in time interval. Should be defined with `queryTimeIntervalPrepend` and `queryTimeIntervalDelimiter`
-func (o RestApiPollerRequestConfigResponseOutput) QueryTimeIntervalAttributeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *string { return v.QueryTimeIntervalAttributeName }).(pulumi.StringPtrOutput)
-}
-
-// The delimiter string between 2 QueryTimeFormat in the query parameter `queryTimeIntervalAttributeName`.
-func (o RestApiPollerRequestConfigResponseOutput) QueryTimeIntervalDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *string { return v.QueryTimeIntervalDelimiter }).(pulumi.StringPtrOutput)
-}
-
-// The string prepend to the value of the query parameter in `queryTimeIntervalAttributeName`.
-func (o RestApiPollerRequestConfigResponseOutput) QueryTimeIntervalPrepend() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *string { return v.QueryTimeIntervalPrepend }).(pulumi.StringPtrOutput)
-}
-
-// The query window in minutes for the request.
-func (o RestApiPollerRequestConfigResponseOutput) QueryWindowInMin() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *int { return v.QueryWindowInMin }).(pulumi.IntPtrOutput)
-}
-
-// The Rate limit queries per second for the request..
-func (o RestApiPollerRequestConfigResponseOutput) RateLimitQPS() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *int { return v.RateLimitQPS }).(pulumi.IntPtrOutput)
-}
-
-// The retry count.
-func (o RestApiPollerRequestConfigResponseOutput) RetryCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
-}
-
-// The query parameter name which the remote server expect to start query. This property goes hand to hand with `endTimeAttributeName`.
-func (o RestApiPollerRequestConfigResponseOutput) StartTimeAttributeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *string { return v.StartTimeAttributeName }).(pulumi.StringPtrOutput)
-}
-
-// The timeout in seconds.
-func (o RestApiPollerRequestConfigResponseOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestConfigResponse) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
-}
-
-// The request paging configuration.
-type RestApiPollerRequestPagingConfig struct {
-	// Page size
-	PageSize *int `pulumi:"pageSize"`
-	// Page size parameter name
-	PageSizeParameterName *string `pulumi:"pageSizeParameterName"`
-	// Type of paging
-	PagingType string `pulumi:"pagingType"`
-}
-
-// RestApiPollerRequestPagingConfigInput is an input type that accepts RestApiPollerRequestPagingConfigArgs and RestApiPollerRequestPagingConfigOutput values.
-// You can construct a concrete instance of `RestApiPollerRequestPagingConfigInput` via:
-//
-//	RestApiPollerRequestPagingConfigArgs{...}
-type RestApiPollerRequestPagingConfigInput interface {
-	pulumi.Input
-
-	ToRestApiPollerRequestPagingConfigOutput() RestApiPollerRequestPagingConfigOutput
-	ToRestApiPollerRequestPagingConfigOutputWithContext(context.Context) RestApiPollerRequestPagingConfigOutput
-}
-
-// The request paging configuration.
-type RestApiPollerRequestPagingConfigArgs struct {
-	// Page size
-	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// Page size parameter name
-	PageSizeParameterName pulumi.StringPtrInput `pulumi:"pageSizeParameterName"`
-	// Type of paging
-	PagingType pulumi.StringInput `pulumi:"pagingType"`
-}
-
-func (RestApiPollerRequestPagingConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestApiPollerRequestPagingConfig)(nil)).Elem()
-}
-
-func (i RestApiPollerRequestPagingConfigArgs) ToRestApiPollerRequestPagingConfigOutput() RestApiPollerRequestPagingConfigOutput {
-	return i.ToRestApiPollerRequestPagingConfigOutputWithContext(context.Background())
-}
-
-func (i RestApiPollerRequestPagingConfigArgs) ToRestApiPollerRequestPagingConfigOutputWithContext(ctx context.Context) RestApiPollerRequestPagingConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestApiPollerRequestPagingConfigOutput)
-}
-
-func (i RestApiPollerRequestPagingConfigArgs) ToRestApiPollerRequestPagingConfigPtrOutput() RestApiPollerRequestPagingConfigPtrOutput {
-	return i.ToRestApiPollerRequestPagingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i RestApiPollerRequestPagingConfigArgs) ToRestApiPollerRequestPagingConfigPtrOutputWithContext(ctx context.Context) RestApiPollerRequestPagingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestApiPollerRequestPagingConfigOutput).ToRestApiPollerRequestPagingConfigPtrOutputWithContext(ctx)
-}
-
-// RestApiPollerRequestPagingConfigPtrInput is an input type that accepts RestApiPollerRequestPagingConfigArgs, RestApiPollerRequestPagingConfigPtr and RestApiPollerRequestPagingConfigPtrOutput values.
-// You can construct a concrete instance of `RestApiPollerRequestPagingConfigPtrInput` via:
-//
-//	        RestApiPollerRequestPagingConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type RestApiPollerRequestPagingConfigPtrInput interface {
-	pulumi.Input
-
-	ToRestApiPollerRequestPagingConfigPtrOutput() RestApiPollerRequestPagingConfigPtrOutput
-	ToRestApiPollerRequestPagingConfigPtrOutputWithContext(context.Context) RestApiPollerRequestPagingConfigPtrOutput
-}
-
-type restApiPollerRequestPagingConfigPtrType RestApiPollerRequestPagingConfigArgs
-
-func RestApiPollerRequestPagingConfigPtr(v *RestApiPollerRequestPagingConfigArgs) RestApiPollerRequestPagingConfigPtrInput {
-	return (*restApiPollerRequestPagingConfigPtrType)(v)
-}
-
-func (*restApiPollerRequestPagingConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RestApiPollerRequestPagingConfig)(nil)).Elem()
-}
-
-func (i *restApiPollerRequestPagingConfigPtrType) ToRestApiPollerRequestPagingConfigPtrOutput() RestApiPollerRequestPagingConfigPtrOutput {
-	return i.ToRestApiPollerRequestPagingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *restApiPollerRequestPagingConfigPtrType) ToRestApiPollerRequestPagingConfigPtrOutputWithContext(ctx context.Context) RestApiPollerRequestPagingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestApiPollerRequestPagingConfigPtrOutput)
-}
-
-// The request paging configuration.
-type RestApiPollerRequestPagingConfigOutput struct{ *pulumi.OutputState }
-
-func (RestApiPollerRequestPagingConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestApiPollerRequestPagingConfig)(nil)).Elem()
-}
-
-func (o RestApiPollerRequestPagingConfigOutput) ToRestApiPollerRequestPagingConfigOutput() RestApiPollerRequestPagingConfigOutput {
-	return o
-}
-
-func (o RestApiPollerRequestPagingConfigOutput) ToRestApiPollerRequestPagingConfigOutputWithContext(ctx context.Context) RestApiPollerRequestPagingConfigOutput {
-	return o
-}
-
-func (o RestApiPollerRequestPagingConfigOutput) ToRestApiPollerRequestPagingConfigPtrOutput() RestApiPollerRequestPagingConfigPtrOutput {
-	return o.ToRestApiPollerRequestPagingConfigPtrOutputWithContext(context.Background())
-}
-
-func (o RestApiPollerRequestPagingConfigOutput) ToRestApiPollerRequestPagingConfigPtrOutputWithContext(ctx context.Context) RestApiPollerRequestPagingConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestApiPollerRequestPagingConfig) *RestApiPollerRequestPagingConfig {
-		return &v
-	}).(RestApiPollerRequestPagingConfigPtrOutput)
-}
-
-// Page size
-func (o RestApiPollerRequestPagingConfigOutput) PageSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestPagingConfig) *int { return v.PageSize }).(pulumi.IntPtrOutput)
-}
-
-// Page size parameter name
-func (o RestApiPollerRequestPagingConfigOutput) PageSizeParameterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestPagingConfig) *string { return v.PageSizeParameterName }).(pulumi.StringPtrOutput)
-}
-
-// Type of paging
-func (o RestApiPollerRequestPagingConfigOutput) PagingType() pulumi.StringOutput {
-	return o.ApplyT(func(v RestApiPollerRequestPagingConfig) string { return v.PagingType }).(pulumi.StringOutput)
-}
-
-type RestApiPollerRequestPagingConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (RestApiPollerRequestPagingConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RestApiPollerRequestPagingConfig)(nil)).Elem()
-}
-
-func (o RestApiPollerRequestPagingConfigPtrOutput) ToRestApiPollerRequestPagingConfigPtrOutput() RestApiPollerRequestPagingConfigPtrOutput {
-	return o
-}
-
-func (o RestApiPollerRequestPagingConfigPtrOutput) ToRestApiPollerRequestPagingConfigPtrOutputWithContext(ctx context.Context) RestApiPollerRequestPagingConfigPtrOutput {
-	return o
-}
-
-func (o RestApiPollerRequestPagingConfigPtrOutput) Elem() RestApiPollerRequestPagingConfigOutput {
-	return o.ApplyT(func(v *RestApiPollerRequestPagingConfig) RestApiPollerRequestPagingConfig {
-		if v != nil {
-			return *v
-		}
-		var ret RestApiPollerRequestPagingConfig
-		return ret
-	}).(RestApiPollerRequestPagingConfigOutput)
-}
-
-// Page size
-func (o RestApiPollerRequestPagingConfigPtrOutput) PageSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RestApiPollerRequestPagingConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PageSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// Page size parameter name
-func (o RestApiPollerRequestPagingConfigPtrOutput) PageSizeParameterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RestApiPollerRequestPagingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PageSizeParameterName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of paging
-func (o RestApiPollerRequestPagingConfigPtrOutput) PagingType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RestApiPollerRequestPagingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PagingType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The request paging configuration.
-type RestApiPollerRequestPagingConfigResponse struct {
-	// Page size
-	PageSize *int `pulumi:"pageSize"`
-	// Page size parameter name
-	PageSizeParameterName *string `pulumi:"pageSizeParameterName"`
-	// Type of paging
-	PagingType string `pulumi:"pagingType"`
-}
-
-// The request paging configuration.
-type RestApiPollerRequestPagingConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (RestApiPollerRequestPagingConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestApiPollerRequestPagingConfigResponse)(nil)).Elem()
-}
-
-func (o RestApiPollerRequestPagingConfigResponseOutput) ToRestApiPollerRequestPagingConfigResponseOutput() RestApiPollerRequestPagingConfigResponseOutput {
-	return o
-}
-
-func (o RestApiPollerRequestPagingConfigResponseOutput) ToRestApiPollerRequestPagingConfigResponseOutputWithContext(ctx context.Context) RestApiPollerRequestPagingConfigResponseOutput {
-	return o
-}
-
-// Page size
-func (o RestApiPollerRequestPagingConfigResponseOutput) PageSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestPagingConfigResponse) *int { return v.PageSize }).(pulumi.IntPtrOutput)
-}
-
-// Page size parameter name
-func (o RestApiPollerRequestPagingConfigResponseOutput) PageSizeParameterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestApiPollerRequestPagingConfigResponse) *string { return v.PageSizeParameterName }).(pulumi.StringPtrOutput)
-}
-
-// Type of paging
-func (o RestApiPollerRequestPagingConfigResponseOutput) PagingType() pulumi.StringOutput {
-	return o.ApplyT(func(v RestApiPollerRequestPagingConfigResponse) string { return v.PagingType }).(pulumi.StringOutput)
-}
-
-type RestApiPollerRequestPagingConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RestApiPollerRequestPagingConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RestApiPollerRequestPagingConfigResponse)(nil)).Elem()
-}
-
-func (o RestApiPollerRequestPagingConfigResponsePtrOutput) ToRestApiPollerRequestPagingConfigResponsePtrOutput() RestApiPollerRequestPagingConfigResponsePtrOutput {
-	return o
-}
-
-func (o RestApiPollerRequestPagingConfigResponsePtrOutput) ToRestApiPollerRequestPagingConfigResponsePtrOutputWithContext(ctx context.Context) RestApiPollerRequestPagingConfigResponsePtrOutput {
-	return o
-}
-
-func (o RestApiPollerRequestPagingConfigResponsePtrOutput) Elem() RestApiPollerRequestPagingConfigResponseOutput {
-	return o.ApplyT(func(v *RestApiPollerRequestPagingConfigResponse) RestApiPollerRequestPagingConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RestApiPollerRequestPagingConfigResponse
-		return ret
-	}).(RestApiPollerRequestPagingConfigResponseOutput)
-}
-
-// Page size
-func (o RestApiPollerRequestPagingConfigResponsePtrOutput) PageSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RestApiPollerRequestPagingConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PageSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// Page size parameter name
-func (o RestApiPollerRequestPagingConfigResponsePtrOutput) PageSizeParameterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RestApiPollerRequestPagingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PageSizeParameterName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of paging
-func (o RestApiPollerRequestPagingConfigResponsePtrOutput) PagingType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RestApiPollerRequestPagingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PagingType
-	}).(pulumi.StringPtrOutput)
-}
-
 // Describes the Rfc connector.
 type RfcConnector struct {
 	// FQDN, hostname, or IP address of the ABAP server.
@@ -19480,6 +15037,168 @@ func (o RfcConnectorResponseOutput) SystemNumber() pulumi.StringOutput {
 // Expected value is 'Rfc'.
 func (o RfcConnectorResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RfcConnectorResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The sample queries for the connector.
+type SampleQuery struct {
+	// Gets or sets the  sample query description.
+	Description string `pulumi:"description"`
+	// Gets or sets the KQL sample query.
+	Query string `pulumi:"query"`
+}
+
+// SampleQueryInput is an input type that accepts SampleQueryArgs and SampleQueryOutput values.
+// You can construct a concrete instance of `SampleQueryInput` via:
+//
+//	SampleQueryArgs{...}
+type SampleQueryInput interface {
+	pulumi.Input
+
+	ToSampleQueryOutput() SampleQueryOutput
+	ToSampleQueryOutputWithContext(context.Context) SampleQueryOutput
+}
+
+// The sample queries for the connector.
+type SampleQueryArgs struct {
+	// Gets or sets the  sample query description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Gets or sets the KQL sample query.
+	Query pulumi.StringInput `pulumi:"query"`
+}
+
+func (SampleQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SampleQuery)(nil)).Elem()
+}
+
+func (i SampleQueryArgs) ToSampleQueryOutput() SampleQueryOutput {
+	return i.ToSampleQueryOutputWithContext(context.Background())
+}
+
+func (i SampleQueryArgs) ToSampleQueryOutputWithContext(ctx context.Context) SampleQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SampleQueryOutput)
+}
+
+// SampleQueryArrayInput is an input type that accepts SampleQueryArray and SampleQueryArrayOutput values.
+// You can construct a concrete instance of `SampleQueryArrayInput` via:
+//
+//	SampleQueryArray{ SampleQueryArgs{...} }
+type SampleQueryArrayInput interface {
+	pulumi.Input
+
+	ToSampleQueryArrayOutput() SampleQueryArrayOutput
+	ToSampleQueryArrayOutputWithContext(context.Context) SampleQueryArrayOutput
+}
+
+type SampleQueryArray []SampleQueryInput
+
+func (SampleQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SampleQuery)(nil)).Elem()
+}
+
+func (i SampleQueryArray) ToSampleQueryArrayOutput() SampleQueryArrayOutput {
+	return i.ToSampleQueryArrayOutputWithContext(context.Background())
+}
+
+func (i SampleQueryArray) ToSampleQueryArrayOutputWithContext(ctx context.Context) SampleQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SampleQueryArrayOutput)
+}
+
+// The sample queries for the connector.
+type SampleQueryOutput struct{ *pulumi.OutputState }
+
+func (SampleQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SampleQuery)(nil)).Elem()
+}
+
+func (o SampleQueryOutput) ToSampleQueryOutput() SampleQueryOutput {
+	return o
+}
+
+func (o SampleQueryOutput) ToSampleQueryOutputWithContext(ctx context.Context) SampleQueryOutput {
+	return o
+}
+
+// Gets or sets the  sample query description.
+func (o SampleQueryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v SampleQuery) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Gets or sets the KQL sample query.
+func (o SampleQueryOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v SampleQuery) string { return v.Query }).(pulumi.StringOutput)
+}
+
+type SampleQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (SampleQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SampleQuery)(nil)).Elem()
+}
+
+func (o SampleQueryArrayOutput) ToSampleQueryArrayOutput() SampleQueryArrayOutput {
+	return o
+}
+
+func (o SampleQueryArrayOutput) ToSampleQueryArrayOutputWithContext(ctx context.Context) SampleQueryArrayOutput {
+	return o
+}
+
+func (o SampleQueryArrayOutput) Index(i pulumi.IntInput) SampleQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SampleQuery {
+		return vs[0].([]SampleQuery)[vs[1].(int)]
+	}).(SampleQueryOutput)
+}
+
+// The sample queries for the connector.
+type SampleQueryResponse struct {
+	// Gets or sets the  sample query description.
+	Description string `pulumi:"description"`
+	// Gets or sets the KQL sample query.
+	Query string `pulumi:"query"`
+}
+
+// The sample queries for the connector.
+type SampleQueryResponseOutput struct{ *pulumi.OutputState }
+
+func (SampleQueryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SampleQueryResponse)(nil)).Elem()
+}
+
+func (o SampleQueryResponseOutput) ToSampleQueryResponseOutput() SampleQueryResponseOutput {
+	return o
+}
+
+func (o SampleQueryResponseOutput) ToSampleQueryResponseOutputWithContext(ctx context.Context) SampleQueryResponseOutput {
+	return o
+}
+
+// Gets or sets the  sample query description.
+func (o SampleQueryResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v SampleQueryResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Gets or sets the KQL sample query.
+func (o SampleQueryResponseOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v SampleQueryResponse) string { return v.Query }).(pulumi.StringOutput)
+}
+
+type SampleQueryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SampleQueryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SampleQueryResponse)(nil)).Elem()
+}
+
+func (o SampleQueryResponseArrayOutput) ToSampleQueryResponseArrayOutput() SampleQueryResponseArrayOutput {
+	return o
+}
+
+func (o SampleQueryResponseArrayOutput) ToSampleQueryResponseArrayOutputWithContext(ctx context.Context) SampleQueryResponseArrayOutput {
+	return o
+}
+
+func (o SampleQueryResponseArrayOutput) Index(i pulumi.IntInput) SampleQueryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SampleQueryResponse {
+		return vs[0].([]SampleQueryResponse)[vs[1].(int)]
+	}).(SampleQueryResponseOutput)
 }
 
 // Describes the configuration of a SAP Docker agent.
@@ -20323,220 +16042,6 @@ func (o SecurityMLAnalyticsSettingsDataSourceResponseArrayOutput) Index(i pulumi
 	}).(SecurityMLAnalyticsSettingsDataSourceResponseOutput)
 }
 
-// Model for API authentication with session cookie.
-type SessionAuthModel struct {
-	// HTTP request headers to session service endpoint.
-	Headers map[string]string `pulumi:"headers"`
-	// Indicating whether API key is set in HTTP POST payload.
-	IsPostPayloadJson *bool `pulumi:"isPostPayloadJson"`
-	// The password attribute name.
-	Password map[string]string `pulumi:"password"`
-	// Query parameters to session service endpoint.
-	QueryParameters interface{} `pulumi:"queryParameters"`
-	// Session id attribute name from HTTP response header.
-	SessionIdName *string `pulumi:"sessionIdName"`
-	// HTTP request URL to session service endpoint.
-	SessionLoginRequestUri *string `pulumi:"sessionLoginRequestUri"`
-	// Session timeout in minutes.
-	SessionTimeoutInMinutes *int `pulumi:"sessionTimeoutInMinutes"`
-	// Type of paging
-	// Expected value is 'Session'.
-	Type string `pulumi:"type"`
-	// The user name attribute key value.
-	UserName map[string]string `pulumi:"userName"`
-}
-
-// SessionAuthModelInput is an input type that accepts SessionAuthModelArgs and SessionAuthModelOutput values.
-// You can construct a concrete instance of `SessionAuthModelInput` via:
-//
-//	SessionAuthModelArgs{...}
-type SessionAuthModelInput interface {
-	pulumi.Input
-
-	ToSessionAuthModelOutput() SessionAuthModelOutput
-	ToSessionAuthModelOutputWithContext(context.Context) SessionAuthModelOutput
-}
-
-// Model for API authentication with session cookie.
-type SessionAuthModelArgs struct {
-	// HTTP request headers to session service endpoint.
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	// Indicating whether API key is set in HTTP POST payload.
-	IsPostPayloadJson pulumi.BoolPtrInput `pulumi:"isPostPayloadJson"`
-	// The password attribute name.
-	Password pulumi.StringMapInput `pulumi:"password"`
-	// Query parameters to session service endpoint.
-	QueryParameters pulumi.Input `pulumi:"queryParameters"`
-	// Session id attribute name from HTTP response header.
-	SessionIdName pulumi.StringPtrInput `pulumi:"sessionIdName"`
-	// HTTP request URL to session service endpoint.
-	SessionLoginRequestUri pulumi.StringPtrInput `pulumi:"sessionLoginRequestUri"`
-	// Session timeout in minutes.
-	SessionTimeoutInMinutes pulumi.IntPtrInput `pulumi:"sessionTimeoutInMinutes"`
-	// Type of paging
-	// Expected value is 'Session'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The user name attribute key value.
-	UserName pulumi.StringMapInput `pulumi:"userName"`
-}
-
-func (SessionAuthModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SessionAuthModel)(nil)).Elem()
-}
-
-func (i SessionAuthModelArgs) ToSessionAuthModelOutput() SessionAuthModelOutput {
-	return i.ToSessionAuthModelOutputWithContext(context.Background())
-}
-
-func (i SessionAuthModelArgs) ToSessionAuthModelOutputWithContext(ctx context.Context) SessionAuthModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SessionAuthModelOutput)
-}
-
-// Model for API authentication with session cookie.
-type SessionAuthModelOutput struct{ *pulumi.OutputState }
-
-func (SessionAuthModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SessionAuthModel)(nil)).Elem()
-}
-
-func (o SessionAuthModelOutput) ToSessionAuthModelOutput() SessionAuthModelOutput {
-	return o
-}
-
-func (o SessionAuthModelOutput) ToSessionAuthModelOutputWithContext(ctx context.Context) SessionAuthModelOutput {
-	return o
-}
-
-// HTTP request headers to session service endpoint.
-func (o SessionAuthModelOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SessionAuthModel) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
-}
-
-// Indicating whether API key is set in HTTP POST payload.
-func (o SessionAuthModelOutput) IsPostPayloadJson() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SessionAuthModel) *bool { return v.IsPostPayloadJson }).(pulumi.BoolPtrOutput)
-}
-
-// The password attribute name.
-func (o SessionAuthModelOutput) Password() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SessionAuthModel) map[string]string { return v.Password }).(pulumi.StringMapOutput)
-}
-
-// Query parameters to session service endpoint.
-func (o SessionAuthModelOutput) QueryParameters() pulumi.AnyOutput {
-	return o.ApplyT(func(v SessionAuthModel) interface{} { return v.QueryParameters }).(pulumi.AnyOutput)
-}
-
-// Session id attribute name from HTTP response header.
-func (o SessionAuthModelOutput) SessionIdName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SessionAuthModel) *string { return v.SessionIdName }).(pulumi.StringPtrOutput)
-}
-
-// HTTP request URL to session service endpoint.
-func (o SessionAuthModelOutput) SessionLoginRequestUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SessionAuthModel) *string { return v.SessionLoginRequestUri }).(pulumi.StringPtrOutput)
-}
-
-// Session timeout in minutes.
-func (o SessionAuthModelOutput) SessionTimeoutInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SessionAuthModel) *int { return v.SessionTimeoutInMinutes }).(pulumi.IntPtrOutput)
-}
-
-// Type of paging
-// Expected value is 'Session'.
-func (o SessionAuthModelOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SessionAuthModel) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The user name attribute key value.
-func (o SessionAuthModelOutput) UserName() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SessionAuthModel) map[string]string { return v.UserName }).(pulumi.StringMapOutput)
-}
-
-// Model for API authentication with session cookie.
-type SessionAuthModelResponse struct {
-	// HTTP request headers to session service endpoint.
-	Headers map[string]string `pulumi:"headers"`
-	// Indicating whether API key is set in HTTP POST payload.
-	IsPostPayloadJson *bool `pulumi:"isPostPayloadJson"`
-	// The password attribute name.
-	Password map[string]string `pulumi:"password"`
-	// Query parameters to session service endpoint.
-	QueryParameters interface{} `pulumi:"queryParameters"`
-	// Session id attribute name from HTTP response header.
-	SessionIdName *string `pulumi:"sessionIdName"`
-	// HTTP request URL to session service endpoint.
-	SessionLoginRequestUri *string `pulumi:"sessionLoginRequestUri"`
-	// Session timeout in minutes.
-	SessionTimeoutInMinutes *int `pulumi:"sessionTimeoutInMinutes"`
-	// Type of paging
-	// Expected value is 'Session'.
-	Type string `pulumi:"type"`
-	// The user name attribute key value.
-	UserName map[string]string `pulumi:"userName"`
-}
-
-// Model for API authentication with session cookie.
-type SessionAuthModelResponseOutput struct{ *pulumi.OutputState }
-
-func (SessionAuthModelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SessionAuthModelResponse)(nil)).Elem()
-}
-
-func (o SessionAuthModelResponseOutput) ToSessionAuthModelResponseOutput() SessionAuthModelResponseOutput {
-	return o
-}
-
-func (o SessionAuthModelResponseOutput) ToSessionAuthModelResponseOutputWithContext(ctx context.Context) SessionAuthModelResponseOutput {
-	return o
-}
-
-// HTTP request headers to session service endpoint.
-func (o SessionAuthModelResponseOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SessionAuthModelResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
-}
-
-// Indicating whether API key is set in HTTP POST payload.
-func (o SessionAuthModelResponseOutput) IsPostPayloadJson() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SessionAuthModelResponse) *bool { return v.IsPostPayloadJson }).(pulumi.BoolPtrOutput)
-}
-
-// The password attribute name.
-func (o SessionAuthModelResponseOutput) Password() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SessionAuthModelResponse) map[string]string { return v.Password }).(pulumi.StringMapOutput)
-}
-
-// Query parameters to session service endpoint.
-func (o SessionAuthModelResponseOutput) QueryParameters() pulumi.AnyOutput {
-	return o.ApplyT(func(v SessionAuthModelResponse) interface{} { return v.QueryParameters }).(pulumi.AnyOutput)
-}
-
-// Session id attribute name from HTTP response header.
-func (o SessionAuthModelResponseOutput) SessionIdName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SessionAuthModelResponse) *string { return v.SessionIdName }).(pulumi.StringPtrOutput)
-}
-
-// HTTP request URL to session service endpoint.
-func (o SessionAuthModelResponseOutput) SessionLoginRequestUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SessionAuthModelResponse) *string { return v.SessionLoginRequestUri }).(pulumi.StringPtrOutput)
-}
-
-// Session timeout in minutes.
-func (o SessionAuthModelResponseOutput) SessionTimeoutInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SessionAuthModelResponse) *int { return v.SessionTimeoutInMinutes }).(pulumi.IntPtrOutput)
-}
-
-// Type of paging
-// Expected value is 'Session'.
-func (o SessionAuthModelResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SessionAuthModelResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The user name attribute key value.
-func (o SessionAuthModelResponseOutput) UserName() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SessionAuthModelResponse) map[string]string { return v.UserName }).(pulumi.StringMapOutput)
-}
-
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -20998,234 +16503,6 @@ func (o TIDataConnectorDataTypesResponseIndicatorsPtrOutput) State() pulumi.Stri
 		}
 		return v.State
 	}).(pulumi.StringPtrOutput)
-}
-
-// Template property bag.
-type TemplatePropertiesResponse struct {
-	// The creator of the content item.
-	Author *MetadataAuthorResponse `pulumi:"author"`
-	// Categories for the item
-	Categories *MetadataCategoriesResponse `pulumi:"categories"`
-	// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
-	ContentId string `pulumi:"contentId"`
-	// The kind of content the template is for.
-	ContentKind string `pulumi:"contentKind"`
-	// Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template
-	ContentProductId string `pulumi:"contentProductId"`
-	// Schema version of the content. Can be used to distinguish between different flow based on the schema version
-	ContentSchemaVersion *string `pulumi:"contentSchemaVersion"`
-	// The custom version of the content. A optional free text
-	CustomVersion *string `pulumi:"customVersion"`
-	// Dependant templates. Expandable.
-	DependantTemplates []TemplatePropertiesResponse `pulumi:"dependantTemplates"`
-	// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
-	Dependencies *MetadataDependenciesResponse `pulumi:"dependencies"`
-	// The display name of the template
-	DisplayName string `pulumi:"displayName"`
-	// first publish date content item
-	FirstPublishDate *string `pulumi:"firstPublishDate"`
-	// the icon identifier. this id can later be fetched from the content metadata
-	Icon *string `pulumi:"icon"`
-	// Flag indicates if this template is deprecated
-	IsDeprecated string `pulumi:"isDeprecated"`
-	// last publish date for the content item
-	LastPublishDate *string `pulumi:"lastPublishDate"`
-	// The JSON of the ARM template to deploy active content. Expandable.
-	MainTemplate interface{} `pulumi:"mainTemplate"`
-	// the package Id contains this template
-	PackageId string `pulumi:"packageId"`
-	// the packageKind of the package contains this template
-	PackageKind *string `pulumi:"packageKind"`
-	// the name of the package contains this template
-	PackageName *string `pulumi:"packageName"`
-	// Version of the package.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
-	PackageVersion string `pulumi:"packageVersion"`
-	// preview image file names. These will be taken from the solution artifacts
-	PreviewImages []string `pulumi:"previewImages"`
-	// preview image file names. These will be taken from the solution artifacts. used for dark theme support
-	PreviewImagesDark []string `pulumi:"previewImagesDark"`
-	// Providers for the content item
-	Providers []string `pulumi:"providers"`
-	// Source of the content.  This is where/how it was created.
-	Source MetadataSourceResponse `pulumi:"source"`
-	// Support information for the template - type, name, contact information
-	Support *MetadataSupportResponse `pulumi:"support"`
-	// the tactics the resource covers
-	ThreatAnalysisTactics []string `pulumi:"threatAnalysisTactics"`
-	// the techniques the resource covers, these have to be aligned with the tactics being used
-	ThreatAnalysisTechniques []string `pulumi:"threatAnalysisTechniques"`
-	// Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
-	Version string `pulumi:"version"`
-}
-
-// Template property bag.
-type TemplatePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (TemplatePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplatePropertiesResponse)(nil)).Elem()
-}
-
-func (o TemplatePropertiesResponseOutput) ToTemplatePropertiesResponseOutput() TemplatePropertiesResponseOutput {
-	return o
-}
-
-func (o TemplatePropertiesResponseOutput) ToTemplatePropertiesResponseOutputWithContext(ctx context.Context) TemplatePropertiesResponseOutput {
-	return o
-}
-
-// The creator of the content item.
-func (o TemplatePropertiesResponseOutput) Author() MetadataAuthorResponsePtrOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) *MetadataAuthorResponse { return v.Author }).(MetadataAuthorResponsePtrOutput)
-}
-
-// Categories for the item
-func (o TemplatePropertiesResponseOutput) Categories() MetadataCategoriesResponsePtrOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) *MetadataCategoriesResponse { return v.Categories }).(MetadataCategoriesResponsePtrOutput)
-}
-
-// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
-func (o TemplatePropertiesResponseOutput) ContentId() pulumi.StringOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) string { return v.ContentId }).(pulumi.StringOutput)
-}
-
-// The kind of content the template is for.
-func (o TemplatePropertiesResponseOutput) ContentKind() pulumi.StringOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) string { return v.ContentKind }).(pulumi.StringOutput)
-}
-
-// Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template
-func (o TemplatePropertiesResponseOutput) ContentProductId() pulumi.StringOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) string { return v.ContentProductId }).(pulumi.StringOutput)
-}
-
-// Schema version of the content. Can be used to distinguish between different flow based on the schema version
-func (o TemplatePropertiesResponseOutput) ContentSchemaVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) *string { return v.ContentSchemaVersion }).(pulumi.StringPtrOutput)
-}
-
-// The custom version of the content. A optional free text
-func (o TemplatePropertiesResponseOutput) CustomVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) *string { return v.CustomVersion }).(pulumi.StringPtrOutput)
-}
-
-// Dependant templates. Expandable.
-func (o TemplatePropertiesResponseOutput) DependantTemplates() TemplatePropertiesResponseArrayOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) []TemplatePropertiesResponse { return v.DependantTemplates }).(TemplatePropertiesResponseArrayOutput)
-}
-
-// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
-func (o TemplatePropertiesResponseOutput) Dependencies() MetadataDependenciesResponsePtrOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) *MetadataDependenciesResponse { return v.Dependencies }).(MetadataDependenciesResponsePtrOutput)
-}
-
-// The display name of the template
-func (o TemplatePropertiesResponseOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// first publish date content item
-func (o TemplatePropertiesResponseOutput) FirstPublishDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) *string { return v.FirstPublishDate }).(pulumi.StringPtrOutput)
-}
-
-// the icon identifier. this id can later be fetched from the content metadata
-func (o TemplatePropertiesResponseOutput) Icon() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) *string { return v.Icon }).(pulumi.StringPtrOutput)
-}
-
-// Flag indicates if this template is deprecated
-func (o TemplatePropertiesResponseOutput) IsDeprecated() pulumi.StringOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) string { return v.IsDeprecated }).(pulumi.StringOutput)
-}
-
-// last publish date for the content item
-func (o TemplatePropertiesResponseOutput) LastPublishDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) *string { return v.LastPublishDate }).(pulumi.StringPtrOutput)
-}
-
-// The JSON of the ARM template to deploy active content. Expandable.
-func (o TemplatePropertiesResponseOutput) MainTemplate() pulumi.AnyOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) interface{} { return v.MainTemplate }).(pulumi.AnyOutput)
-}
-
-// the package Id contains this template
-func (o TemplatePropertiesResponseOutput) PackageId() pulumi.StringOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) string { return v.PackageId }).(pulumi.StringOutput)
-}
-
-// the packageKind of the package contains this template
-func (o TemplatePropertiesResponseOutput) PackageKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) *string { return v.PackageKind }).(pulumi.StringPtrOutput)
-}
-
-// the name of the package contains this template
-func (o TemplatePropertiesResponseOutput) PackageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) *string { return v.PackageName }).(pulumi.StringPtrOutput)
-}
-
-// Version of the package.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
-func (o TemplatePropertiesResponseOutput) PackageVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) string { return v.PackageVersion }).(pulumi.StringOutput)
-}
-
-// preview image file names. These will be taken from the solution artifacts
-func (o TemplatePropertiesResponseOutput) PreviewImages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) []string { return v.PreviewImages }).(pulumi.StringArrayOutput)
-}
-
-// preview image file names. These will be taken from the solution artifacts. used for dark theme support
-func (o TemplatePropertiesResponseOutput) PreviewImagesDark() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) []string { return v.PreviewImagesDark }).(pulumi.StringArrayOutput)
-}
-
-// Providers for the content item
-func (o TemplatePropertiesResponseOutput) Providers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) []string { return v.Providers }).(pulumi.StringArrayOutput)
-}
-
-// Source of the content.  This is where/how it was created.
-func (o TemplatePropertiesResponseOutput) Source() MetadataSourceResponseOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) MetadataSourceResponse { return v.Source }).(MetadataSourceResponseOutput)
-}
-
-// Support information for the template - type, name, contact information
-func (o TemplatePropertiesResponseOutput) Support() MetadataSupportResponsePtrOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) *MetadataSupportResponse { return v.Support }).(MetadataSupportResponsePtrOutput)
-}
-
-// the tactics the resource covers
-func (o TemplatePropertiesResponseOutput) ThreatAnalysisTactics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) []string { return v.ThreatAnalysisTactics }).(pulumi.StringArrayOutput)
-}
-
-// the techniques the resource covers, these have to be aligned with the tactics being used
-func (o TemplatePropertiesResponseOutput) ThreatAnalysisTechniques() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) []string { return v.ThreatAnalysisTechniques }).(pulumi.StringArrayOutput)
-}
-
-// Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
-func (o TemplatePropertiesResponseOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v TemplatePropertiesResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type TemplatePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (TemplatePropertiesResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TemplatePropertiesResponse)(nil)).Elem()
-}
-
-func (o TemplatePropertiesResponseArrayOutput) ToTemplatePropertiesResponseArrayOutput() TemplatePropertiesResponseArrayOutput {
-	return o
-}
-
-func (o TemplatePropertiesResponseArrayOutput) ToTemplatePropertiesResponseArrayOutputWithContext(ctx context.Context) TemplatePropertiesResponseArrayOutput {
-	return o
-}
-
-func (o TemplatePropertiesResponseArrayOutput) Index(i pulumi.IntInput) TemplatePropertiesResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplatePropertiesResponse {
-		return vs[0].([]TemplatePropertiesResponse)[vs[1].(int)]
-	}).(TemplatePropertiesResponseOutput)
 }
 
 // Describes external reference
@@ -22890,17 +18167,11 @@ func (o WebhookResponsePtrOutput) WebhookUrl() pulumi.StringPtrOutput {
 }
 
 func init() {
-	pulumi.RegisterOutputType(AWSAuthModelOutput{})
-	pulumi.RegisterOutputType(AWSAuthModelResponseOutput{})
 	pulumi.RegisterOutputType(ActivityEntityQueriesPropertiesQueryDefinitionsOutput{})
 	pulumi.RegisterOutputType(ActivityEntityQueriesPropertiesQueryDefinitionsPtrOutput{})
 	pulumi.RegisterOutputType(ActivityEntityQueriesPropertiesResponseQueryDefinitionsOutput{})
 	pulumi.RegisterOutputType(ActivityEntityQueriesPropertiesResponseQueryDefinitionsPtrOutput{})
 	pulumi.RegisterOutputType(ActivityTimelineItemResponseOutput{})
-	pulumi.RegisterOutputType(AddIncidentTaskActionPropertiesOutput{})
-	pulumi.RegisterOutputType(AddIncidentTaskActionPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(AddIncidentTaskActionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(AddIncidentTaskActionPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(AgentSystemResponseOutput{})
 	pulumi.RegisterOutputType(AgentSystemResponseArrayOutput{})
 	pulumi.RegisterOutputType(AlertDetailsOverrideOutput{})
@@ -22916,28 +18187,16 @@ func init() {
 	pulumi.RegisterOutputType(AlertsDataTypeOfDataConnectorResponseOutput{})
 	pulumi.RegisterOutputType(AlertsDataTypeOfDataConnectorResponsePtrOutput{})
 	pulumi.RegisterOutputType(AnomalyTimelineItemResponseOutput{})
-	pulumi.RegisterOutputType(ApiKeyAuthModelOutput{})
-	pulumi.RegisterOutputType(ApiKeyAuthModelResponseOutput{})
 	pulumi.RegisterOutputType(AssignmentItemOutput{})
 	pulumi.RegisterOutputType(AssignmentItemArrayOutput{})
 	pulumi.RegisterOutputType(AssignmentItemResponseOutput{})
 	pulumi.RegisterOutputType(AssignmentItemResponseArrayOutput{})
-	pulumi.RegisterOutputType(AutomationRuleAddIncidentTaskActionOutput{})
-	pulumi.RegisterOutputType(AutomationRuleAddIncidentTaskActionResponseOutput{})
-	pulumi.RegisterOutputType(AutomationRuleBooleanConditionOutput{})
-	pulumi.RegisterOutputType(AutomationRuleBooleanConditionPtrOutput{})
-	pulumi.RegisterOutputType(AutomationRuleBooleanConditionResponseOutput{})
-	pulumi.RegisterOutputType(AutomationRuleBooleanConditionResponsePtrOutput{})
 	pulumi.RegisterOutputType(AutomationRuleModifyPropertiesActionOutput{})
 	pulumi.RegisterOutputType(AutomationRuleModifyPropertiesActionResponseOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyArrayChangedValuesConditionOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyArrayChangedValuesConditionPtrOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyArrayChangedValuesConditionResponseOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyArrayChangedValuesConditionResponsePtrOutput{})
-	pulumi.RegisterOutputType(AutomationRulePropertyArrayValuesConditionOutput{})
-	pulumi.RegisterOutputType(AutomationRulePropertyArrayValuesConditionPtrOutput{})
-	pulumi.RegisterOutputType(AutomationRulePropertyArrayValuesConditionResponseOutput{})
-	pulumi.RegisterOutputType(AutomationRulePropertyArrayValuesConditionResponsePtrOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyValuesChangedConditionOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyValuesChangedConditionPtrOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyValuesChangedConditionResponseOutput{})
@@ -22962,15 +18221,7 @@ func init() {
 	pulumi.RegisterOutputType(AzureDevOpsResourceInfoPtrOutput{})
 	pulumi.RegisterOutputType(AzureDevOpsResourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(AzureDevOpsResourceInfoResponsePtrOutput{})
-	pulumi.RegisterOutputType(BasicAuthModelOutput{})
-	pulumi.RegisterOutputType(BasicAuthModelResponseOutput{})
 	pulumi.RegisterOutputType(BookmarkTimelineItemResponseOutput{})
-	pulumi.RegisterOutputType(BooleanConditionPropertiesOutput{})
-	pulumi.RegisterOutputType(BooleanConditionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(CcpResponseConfigOutput{})
-	pulumi.RegisterOutputType(CcpResponseConfigPtrOutput{})
-	pulumi.RegisterOutputType(CcpResponseConfigResponseOutput{})
-	pulumi.RegisterOutputType(CcpResponseConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClientInfoOutput{})
 	pulumi.RegisterOutputType(ClientInfoPtrOutput{})
 	pulumi.RegisterOutputType(ClientInfoResponseOutput{})
@@ -23007,10 +18258,6 @@ func init() {
 	pulumi.RegisterOutputType(CustomizableConnectionsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomizableConnectorUiConfigOutput{})
 	pulumi.RegisterOutputType(CustomizableConnectorUiConfigResponseOutput{})
-	pulumi.RegisterOutputType(DCRConfigurationOutput{})
-	pulumi.RegisterOutputType(DCRConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(DCRConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(DCRConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DataConnectorDataTypeCommonOutput{})
 	pulumi.RegisterOutputType(DataConnectorDataTypeCommonPtrOutput{})
 	pulumi.RegisterOutputType(DataConnectorDataTypeCommonResponseOutput{})
@@ -23049,16 +18296,10 @@ func init() {
 	pulumi.RegisterOutputType(FieldMappingResponseArrayOutput{})
 	pulumi.RegisterOutputType(FileMetadataOutput{})
 	pulumi.RegisterOutputType(FileMetadataResponseOutput{})
-	pulumi.RegisterOutputType(GCPAuthModelOutput{})
-	pulumi.RegisterOutputType(GCPAuthModelResponseOutput{})
-	pulumi.RegisterOutputType(GenericBlobSbsAuthModelOutput{})
-	pulumi.RegisterOutputType(GenericBlobSbsAuthModelResponseOutput{})
 	pulumi.RegisterOutputType(GetInsightsErrorKindResponseOutput{})
 	pulumi.RegisterOutputType(GetInsightsErrorKindResponseArrayOutput{})
 	pulumi.RegisterOutputType(GetInsightsResultsMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GetInsightsResultsMetadataResponsePtrOutput{})
-	pulumi.RegisterOutputType(GitHubAuthModelOutput{})
-	pulumi.RegisterOutputType(GitHubAuthModelResponseOutput{})
 	pulumi.RegisterOutputType(GitHubResourceInfoOutput{})
 	pulumi.RegisterOutputType(GitHubResourceInfoPtrOutput{})
 	pulumi.RegisterOutputType(GitHubResourceInfoResponseOutput{})
@@ -23109,8 +18350,6 @@ func init() {
 	pulumi.RegisterOutputType(InstructionStepDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(InstructionStepResponseOutput{})
 	pulumi.RegisterOutputType(InstructionStepResponseArrayOutput{})
-	pulumi.RegisterOutputType(JwtAuthModelOutput{})
-	pulumi.RegisterOutputType(JwtAuthModelResponseOutput{})
 	pulumi.RegisterOutputType(LockUserActionResponseOutput{})
 	pulumi.RegisterOutputType(LogOutput{})
 	pulumi.RegisterOutputType(LogArrayOutput{})
@@ -23120,10 +18359,6 @@ func init() {
 	pulumi.RegisterOutputType(MCASDataConnectorDataTypesPtrOutput{})
 	pulumi.RegisterOutputType(MCASDataConnectorDataTypesResponseOutput{})
 	pulumi.RegisterOutputType(MCASDataConnectorDataTypesResponsePtrOutput{})
-	pulumi.RegisterOutputType(MSTIDataConnectorDataTypesOutput{})
-	pulumi.RegisterOutputType(MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedOutput{})
-	pulumi.RegisterOutputType(MSTIDataConnectorDataTypesResponseOutput{})
-	pulumi.RegisterOutputType(MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeedOutput{})
 	pulumi.RegisterOutputType(MetadataAuthorOutput{})
 	pulumi.RegisterOutputType(MetadataAuthorPtrOutput{})
 	pulumi.RegisterOutputType(MetadataAuthorResponseOutput{})
@@ -23146,10 +18381,6 @@ func init() {
 	pulumi.RegisterOutputType(MetadataSupportPtrOutput{})
 	pulumi.RegisterOutputType(MetadataSupportResponseOutput{})
 	pulumi.RegisterOutputType(MetadataSupportResponsePtrOutput{})
-	pulumi.RegisterOutputType(NoneAuthModelOutput{})
-	pulumi.RegisterOutputType(NoneAuthModelResponseOutput{})
-	pulumi.RegisterOutputType(OAuthModelOutput{})
-	pulumi.RegisterOutputType(OAuthModelResponseOutput{})
 	pulumi.RegisterOutputType(OfficeDataConnectorDataTypesOutput{})
 	pulumi.RegisterOutputType(OfficeDataConnectorDataTypesPtrOutput{})
 	pulumi.RegisterOutputType(OfficeDataConnectorDataTypesExchangeOutput{})
@@ -23166,20 +18397,12 @@ func init() {
 	pulumi.RegisterOutputType(OfficeDataConnectorDataTypesSharePointPtrOutput{})
 	pulumi.RegisterOutputType(OfficeDataConnectorDataTypesTeamsOutput{})
 	pulumi.RegisterOutputType(OfficeDataConnectorDataTypesTeamsPtrOutput{})
-	pulumi.RegisterOutputType(OracleAuthModelOutput{})
-	pulumi.RegisterOutputType(OracleAuthModelResponseOutput{})
 	pulumi.RegisterOutputType(PlaybookActionPropertiesOutput{})
 	pulumi.RegisterOutputType(PlaybookActionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(PlaybookActionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PlaybookActionPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(PremiumMdtiDataConnectorDataTypesOutput{})
-	pulumi.RegisterOutputType(PremiumMdtiDataConnectorDataTypesConnectorOutput{})
-	pulumi.RegisterOutputType(PremiumMdtiDataConnectorDataTypesResponseOutput{})
-	pulumi.RegisterOutputType(PremiumMdtiDataConnectorDataTypesResponseConnectorOutput{})
 	pulumi.RegisterOutputType(PropertyArrayChangedConditionPropertiesOutput{})
 	pulumi.RegisterOutputType(PropertyArrayChangedConditionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(PropertyArrayConditionPropertiesOutput{})
-	pulumi.RegisterOutputType(PropertyArrayConditionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PropertyChangedConditionPropertiesOutput{})
 	pulumi.RegisterOutputType(PropertyChangedConditionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PropertyConditionPropertiesOutput{})
@@ -23194,14 +18417,12 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryResponseOutput{})
 	pulumi.RegisterOutputType(ResourceProviderRequiredPermissionsOutput{})
 	pulumi.RegisterOutputType(ResourceProviderRequiredPermissionsResponseOutput{})
-	pulumi.RegisterOutputType(RestApiPollerRequestConfigOutput{})
-	pulumi.RegisterOutputType(RestApiPollerRequestConfigResponseOutput{})
-	pulumi.RegisterOutputType(RestApiPollerRequestPagingConfigOutput{})
-	pulumi.RegisterOutputType(RestApiPollerRequestPagingConfigPtrOutput{})
-	pulumi.RegisterOutputType(RestApiPollerRequestPagingConfigResponseOutput{})
-	pulumi.RegisterOutputType(RestApiPollerRequestPagingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(RfcConnectorOutput{})
 	pulumi.RegisterOutputType(RfcConnectorResponseOutput{})
+	pulumi.RegisterOutputType(SampleQueryOutput{})
+	pulumi.RegisterOutputType(SampleQueryArrayOutput{})
+	pulumi.RegisterOutputType(SampleQueryResponseOutput{})
+	pulumi.RegisterOutputType(SampleQueryResponseArrayOutput{})
 	pulumi.RegisterOutputType(SapAgentConfigurationOutput{})
 	pulumi.RegisterOutputType(SapAgentConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(SapControlConnectorOutput{})
@@ -23213,8 +18434,6 @@ func init() {
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceResponseOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceResponseArrayOutput{})
-	pulumi.RegisterOutputType(SessionAuthModelOutput{})
-	pulumi.RegisterOutputType(SessionAuthModelResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TIDataConnectorDataTypesOutput{})
 	pulumi.RegisterOutputType(TIDataConnectorDataTypesPtrOutput{})
@@ -23224,8 +18443,6 @@ func init() {
 	pulumi.RegisterOutputType(TIDataConnectorDataTypesResponsePtrOutput{})
 	pulumi.RegisterOutputType(TIDataConnectorDataTypesResponseIndicatorsOutput{})
 	pulumi.RegisterOutputType(TIDataConnectorDataTypesResponseIndicatorsPtrOutput{})
-	pulumi.RegisterOutputType(TemplatePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(TemplatePropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(ThreatIntelligenceExternalReferenceOutput{})
 	pulumi.RegisterOutputType(ThreatIntelligenceExternalReferenceArrayOutput{})
 	pulumi.RegisterOutputType(ThreatIntelligenceGranularMarkingModelOutput{})

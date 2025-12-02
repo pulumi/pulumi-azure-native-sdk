@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Properties of an artifact source.
 //
-// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type ArtifactSource struct {
 	pulumi.CustomResourceState
 
 	// The folder containing Azure Resource Manager templates.
 	ArmTemplateFolderPath pulumi.StringPtrOutput `pulumi:"armTemplateFolderPath"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The artifact source's branch reference.
 	BranchRef pulumi.StringPtrOutput `pulumi:"branchRef"`
 	// The artifact source's creation date.
@@ -122,9 +120,9 @@ type artifactSourceArgs struct {
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the ArtifactSource
+	// The name of the artifact source.
 	Name *string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The security token to authenticate to the artifact source.
 	SecurityToken *string `pulumi:"securityToken"`
@@ -152,9 +150,9 @@ type ArtifactSourceArgs struct {
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the ArtifactSource
+	// The name of the artifact source.
 	Name pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The security token to authenticate to the artifact source.
 	SecurityToken pulumi.StringPtrInput
@@ -208,11 +206,6 @@ func (o ArtifactSourceOutput) ToArtifactSourceOutputWithContext(ctx context.Cont
 // The folder containing Azure Resource Manager templates.
 func (o ArtifactSourceOutput) ArmTemplateFolderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArtifactSource) pulumi.StringPtrOutput { return v.ArmTemplateFolderPath }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o ArtifactSourceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ArtifactSource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The artifact source's branch reference.

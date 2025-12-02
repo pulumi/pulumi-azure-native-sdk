@@ -8,20 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The NSP logging configuration
 //
-// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
-//
-// Other available API versions: 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2024-06-01-preview.
 type NetworkSecurityPerimeterLoggingConfiguration struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name.
@@ -48,12 +44,6 @@ func NewNetworkSecurityPerimeterLoggingConfiguration(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:network/v20240601preview:NetworkSecurityPerimeterLoggingConfiguration"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20240701:NetworkSecurityPerimeterLoggingConfiguration"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20241001:NetworkSecurityPerimeterLoggingConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -147,11 +137,6 @@ func (o NetworkSecurityPerimeterLoggingConfigurationOutput) ToNetworkSecurityPer
 
 func (o NetworkSecurityPerimeterLoggingConfigurationOutput) ToNetworkSecurityPerimeterLoggingConfigurationOutputWithContext(ctx context.Context) NetworkSecurityPerimeterLoggingConfigurationOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o NetworkSecurityPerimeterLoggingConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkSecurityPerimeterLoggingConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

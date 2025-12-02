@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a partner namespace.
 //
-// Uses Azure REST API version 2025-02-15.
+// Uses Azure REST API version 2022-06-15.
 //
-// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
 func LookupPartnerNamespace(ctx *pulumi.Context, args *LookupPartnerNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupPartnerNamespaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerNamespaceResult
@@ -35,8 +35,6 @@ type LookupPartnerNamespaceArgs struct {
 
 // EventGrid Partner Namespace.
 type LookupPartnerNamespaceResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace.
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Endpoint for the partner namespace.
@@ -47,8 +45,6 @@ type LookupPartnerNamespaceResult struct {
 	InboundIpRules []InboundIpRuleResponse `pulumi:"inboundIpRules"`
 	// Location of the resource.
 	Location string `pulumi:"location"`
-	// Minimum TLS version of the publisher allowed to publish to this partner namespace
-	MinimumTlsVersionAllowed *string `pulumi:"minimumTlsVersionAllowed"`
 	// Name of the resource.
 	Name string `pulumi:"name"`
 	// The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
@@ -56,15 +52,14 @@ type LookupPartnerNamespaceResult struct {
 	PartnerRegistrationFullyQualifiedId *string `pulumi:"partnerRegistrationFullyQualifiedId"`
 	// This determines if events published to this partner namespace should use the source attribute in the event payload
 	// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
-	PartnerTopicRoutingMode *string `pulumi:"partnerTopicRoutingMode"`
-	// List of private endpoint connections.
+	PartnerTopicRoutingMode    *string                             `pulumi:"partnerTopicRoutingMode"`
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the partner namespace.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" />
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// The system metadata relating to the Event Grid resource.
+	// The system metadata relating to Partner Namespace resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -127,11 +122,6 @@ func (o LookupPartnerNamespaceResultOutput) ToLookupPartnerNamespaceResultOutput
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupPartnerNamespaceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPartnerNamespaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace.
 func (o LookupPartnerNamespaceResultOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupPartnerNamespaceResult) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
@@ -157,11 +147,6 @@ func (o LookupPartnerNamespaceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerNamespaceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Minimum TLS version of the publisher allowed to publish to this partner namespace
-func (o LookupPartnerNamespaceResultOutput) MinimumTlsVersionAllowed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPartnerNamespaceResult) *string { return v.MinimumTlsVersionAllowed }).(pulumi.StringPtrOutput)
-}
-
 // Name of the resource.
 func (o LookupPartnerNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
@@ -179,7 +164,6 @@ func (o LookupPartnerNamespaceResultOutput) PartnerTopicRoutingMode() pulumi.Str
 	return o.ApplyT(func(v LookupPartnerNamespaceResult) *string { return v.PartnerTopicRoutingMode }).(pulumi.StringPtrOutput)
 }
 
-// List of private endpoint connections.
 func (o LookupPartnerNamespaceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupPartnerNamespaceResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
@@ -197,7 +181,7 @@ func (o LookupPartnerNamespaceResultOutput) PublicNetworkAccess() pulumi.StringP
 	return o.ApplyT(func(v LookupPartnerNamespaceResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to the Event Grid resource.
+// The system metadata relating to Partner Namespace resource.
 func (o LookupPartnerNamespaceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPartnerNamespaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

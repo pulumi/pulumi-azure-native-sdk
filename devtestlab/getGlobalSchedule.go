@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,16 +27,14 @@ func LookupGlobalSchedule(ctx *pulumi.Context, args *LookupGlobalScheduleArgs, o
 type LookupGlobalScheduleArgs struct {
 	// Specify the $expand query. Example: 'properties($select=status)'
 	Expand *string `pulumi:"expand"`
-	// The name of the Schedule
+	// The name of the schedule.
 	Name string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A schedule.
 type LookupGlobalScheduleResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate string `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
@@ -97,9 +95,9 @@ func LookupGlobalScheduleOutput(ctx *pulumi.Context, args LookupGlobalScheduleOu
 type LookupGlobalScheduleOutputArgs struct {
 	// Specify the $expand query. Example: 'properties($select=status)'
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// The name of the Schedule
+	// The name of the schedule.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -120,11 +118,6 @@ func (o LookupGlobalScheduleResultOutput) ToLookupGlobalScheduleResultOutput() L
 
 func (o LookupGlobalScheduleResultOutput) ToLookupGlobalScheduleResultOutputWithContext(ctx context.Context) LookupGlobalScheduleResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupGlobalScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the schedule.

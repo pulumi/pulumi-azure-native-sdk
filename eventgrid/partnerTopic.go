@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Event Grid Partner Topic.
 //
-// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
+// Uses Azure REST API version 2022-06-15. In version 1.x of the Azure Native provider, it used API version 2021-10-15-preview.
 //
-// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
 type PartnerTopic struct {
 	pulumi.CustomResourceState
 
 	// Activation state of the partner topic.
 	ActivationState pulumi.StringPtrOutput `pulumi:"activationState"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Event Type information from the corresponding event channel.
 	EventTypeInfo EventTypeInfoResponsePtrOutput `pulumi:"eventTypeInfo"`
 	// Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,
@@ -46,7 +44,7 @@ type PartnerTopic struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Source associated with this partner topic. This represents a unique partner resource.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
-	// The system metadata relating to the Event Grid resource.
+	// The system metadata relating to Partner Topic resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -85,9 +83,6 @@ func NewPartnerTopic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20250215:PartnerTopic"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20250401preview:PartnerTopic"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -224,11 +219,6 @@ func (o PartnerTopicOutput) ActivationState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PartnerTopic) pulumi.StringPtrOutput { return v.ActivationState }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o PartnerTopicOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *PartnerTopic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Event Type information from the corresponding event channel.
 func (o PartnerTopicOutput) EventTypeInfo() EventTypeInfoResponsePtrOutput {
 	return o.ApplyT(func(v *PartnerTopic) EventTypeInfoResponsePtrOutput { return v.EventTypeInfo }).(EventTypeInfoResponsePtrOutput)
@@ -281,7 +271,7 @@ func (o PartnerTopicOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PartnerTopic) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to the Event Grid resource.
+// The system metadata relating to Partner Topic resource.
 func (o PartnerTopicOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PartnerTopic) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

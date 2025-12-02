@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the access key for the specified configuration store.
 //
-// Uses Azure REST API version 2024-05-01.
+// Uses Azure REST API version 2023-03-01.
 //
-// Other available API versions: 2023-03-01, 2023-08-01-preview, 2023-09-01-preview, 2024-06-01, 2024-06-15-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
 func ListConfigurationStoreKeys(ctx *pulumi.Context, args *ListConfigurationStoreKeysArgs, opts ...pulumi.InvokeOption) (*ListConfigurationStoreKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConfigurationStoreKeysResult

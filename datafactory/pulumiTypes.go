@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1257,53 +1257,25 @@ func (o AmazonMWSSourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AmazonMWSSourceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
+// AmazonRdsForOracle database.
 type AmazonRdsForOracleLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
-	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
-	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
-	CryptoChecksumClient interface{} `pulumi:"cryptoChecksumClient"`
-	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
-	CryptoChecksumTypesClient interface{} `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
-	EnableBulkLoad interface{} `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
-	EncryptionClient interface{} `pulumi:"encryptionClient"`
-	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
-	EncryptionTypesClient interface{} `pulumi:"encryptionTypesClient"`
-	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
-	FetchSize interface{} `pulumi:"fetchSize"`
-	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
-	FetchTswtzAsTimestamp interface{} `pulumi:"fetchTswtzAsTimestamp"`
-	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
-	InitialLobFetchSize interface{} `pulumi:"initialLobFetchSize"`
-	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
-	InitializationString interface{} `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password interface{} `pulumi:"password"`
-	// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
-	Server interface{} `pulumi:"server"`
-	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
-	StatementCacheSize interface{} `pulumi:"statementCacheSize"`
-	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
-	SupportV1DataTypes interface{} `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForOracle'.
 	Type string `pulumi:"type"`
-	// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
-	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
@@ -1319,53 +1291,25 @@ type AmazonRdsForOracleLinkedServiceInput interface {
 	ToAmazonRdsForOracleLinkedServiceOutputWithContext(context.Context) AmazonRdsForOracleLinkedServiceOutput
 }
 
-// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
+// AmazonRdsForOracle database.
 type AmazonRdsForOracleLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
-	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
-	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
-	CryptoChecksumClient pulumi.Input `pulumi:"cryptoChecksumClient"`
-	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
-	CryptoChecksumTypesClient pulumi.Input `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
-	EnableBulkLoad pulumi.Input `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
-	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
-	EncryptionClient pulumi.Input `pulumi:"encryptionClient"`
-	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
-	EncryptionTypesClient pulumi.Input `pulumi:"encryptionTypesClient"`
-	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
-	FetchSize pulumi.Input `pulumi:"fetchSize"`
-	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
-	FetchTswtzAsTimestamp pulumi.Input `pulumi:"fetchTswtzAsTimestamp"`
-	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
-	InitialLobFetchSize pulumi.Input `pulumi:"initialLobFetchSize"`
-	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
-	InitializationString pulumi.Input `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password pulumi.Input `pulumi:"password"`
-	// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
-	Server pulumi.Input `pulumi:"server"`
-	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
-	StatementCacheSize pulumi.Input `pulumi:"statementCacheSize"`
-	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
-	SupportV1DataTypes pulumi.Input `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForOracle'.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
-	Username pulumi.Input `pulumi:"username"`
 	// Version of the linked service.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -1382,7 +1326,7 @@ func (i AmazonRdsForOracleLinkedServiceArgs) ToAmazonRdsForOracleLinkedServiceOu
 	return pulumi.ToOutputWithContext(ctx, i).(AmazonRdsForOracleLinkedServiceOutput)
 }
 
-// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
+// AmazonRdsForOracle database.
 type AmazonRdsForOracleLinkedServiceOutput struct{ *pulumi.OutputState }
 
 func (AmazonRdsForOracleLinkedServiceOutput) ElementType() reflect.Type {
@@ -1402,29 +1346,14 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Annotations() pulumi.ArrayOutput 
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
-// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
-}
-
 // The integration runtime reference.
 func (o AmazonRdsForOracleLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
 }
 
-// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
+// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o AmazonRdsForOracleLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
-}
-
-// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) CryptoChecksumClient() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.CryptoChecksumClient }).(pulumi.AnyOutput)
-}
-
-// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) CryptoChecksumTypesClient() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.CryptoChecksumTypesClient }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -1432,44 +1361,9 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Description() pulumi.StringPtrOut
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) EnableBulkLoad() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.EnableBulkLoad }).(pulumi.AnyOutput)
-}
-
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AmazonRdsForOracleLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) EncryptionClient() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.EncryptionClient }).(pulumi.AnyOutput)
-}
-
-// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) EncryptionTypesClient() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.EncryptionTypesClient }).(pulumi.AnyOutput)
-}
-
-// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) FetchSize() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.FetchSize }).(pulumi.AnyOutput)
-}
-
-// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) FetchTswtzAsTimestamp() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.FetchTswtzAsTimestamp }).(pulumi.AnyOutput)
-}
-
-// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) InitialLobFetchSize() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.InitialLobFetchSize }).(pulumi.AnyOutput)
-}
-
-// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) InitializationString() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.InitializationString }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -1482,30 +1376,10 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
-// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) Server() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
-}
-
-// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) StatementCacheSize() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.StatementCacheSize }).(pulumi.AnyOutput)
-}
-
-// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) SupportV1DataTypes() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.SupportV1DataTypes }).(pulumi.AnyOutput)
-}
-
 // Type of linked service.
 // Expected value is 'AmazonRdsForOracle'.
 func (o AmazonRdsForOracleLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceOutput) Username() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
@@ -1513,58 +1387,30 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Version() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
+// AmazonRdsForOracle database.
 type AmazonRdsForOracleLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
-	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
-	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
-	CryptoChecksumClient interface{} `pulumi:"cryptoChecksumClient"`
-	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
-	CryptoChecksumTypesClient interface{} `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
-	EnableBulkLoad interface{} `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
-	EncryptionClient interface{} `pulumi:"encryptionClient"`
-	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
-	EncryptionTypesClient interface{} `pulumi:"encryptionTypesClient"`
-	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
-	FetchSize interface{} `pulumi:"fetchSize"`
-	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
-	FetchTswtzAsTimestamp interface{} `pulumi:"fetchTswtzAsTimestamp"`
-	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
-	InitialLobFetchSize interface{} `pulumi:"initialLobFetchSize"`
-	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
-	InitializationString interface{} `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password interface{} `pulumi:"password"`
-	// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
-	Server interface{} `pulumi:"server"`
-	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
-	StatementCacheSize interface{} `pulumi:"statementCacheSize"`
-	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
-	SupportV1DataTypes interface{} `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForOracle'.
 	Type string `pulumi:"type"`
-	// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
-	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
 
-// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
+// AmazonRdsForOracle database.
 type AmazonRdsForOracleLinkedServiceResponseOutput struct{ *pulumi.OutputState }
 
 func (AmazonRdsForOracleLinkedServiceResponseOutput) ElementType() reflect.Type {
@@ -1584,11 +1430,6 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) Annotations() pulumi.Arra
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
-// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
-}
-
 // The integration runtime reference.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *IntegrationRuntimeReferenceResponse {
@@ -1596,19 +1437,9 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) ConnectVia() IntegrationR
 	}).(IntegrationRuntimeReferenceResponsePtrOutput)
 }
 
-// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
+// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
-}
-
-// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) CryptoChecksumClient() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.CryptoChecksumClient }).(pulumi.AnyOutput)
-}
-
-// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) CryptoChecksumTypesClient() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.CryptoChecksumTypesClient }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -1616,44 +1447,9 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) Description() pulumi.Stri
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) EnableBulkLoad() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.EnableBulkLoad }).(pulumi.AnyOutput)
-}
-
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) EncryptionClient() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.EncryptionClient }).(pulumi.AnyOutput)
-}
-
-// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) EncryptionTypesClient() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.EncryptionTypesClient }).(pulumi.AnyOutput)
-}
-
-// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) FetchSize() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.FetchSize }).(pulumi.AnyOutput)
-}
-
-// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) FetchTswtzAsTimestamp() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.FetchTswtzAsTimestamp }).(pulumi.AnyOutput)
-}
-
-// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) InitialLobFetchSize() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.InitialLobFetchSize }).(pulumi.AnyOutput)
-}
-
-// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) InitializationString() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.InitializationString }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -1668,30 +1464,10 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) Password() pulumi.AnyOutp
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
-// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
-}
-
-// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) StatementCacheSize() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.StatementCacheSize }).(pulumi.AnyOutput)
-}
-
-// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) SupportV1DataTypes() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.SupportV1DataTypes }).(pulumi.AnyOutput)
-}
-
 // Type of linked service.
 // Expected value is 'AmazonRdsForOracle'.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
-func (o AmazonRdsForOracleLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
@@ -2015,10 +1791,6 @@ type AmazonRdsForOracleSource struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
-	NumberPrecision interface{} `pulumi:"numberPrecision"`
-	// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
-	NumberScale interface{} `pulumi:"numberScale"`
 	// AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
 	OracleReaderQuery interface{} `pulumi:"oracleReaderQuery"`
 	// The partition mechanism that will be used for AmazonRdsForOracle read in parallel. Type: string (or Expression with resultType string).
@@ -2055,10 +1827,6 @@ type AmazonRdsForOracleSourceArgs struct {
 	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
-	// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
-	NumberPrecision pulumi.Input `pulumi:"numberPrecision"`
-	// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
-	NumberScale pulumi.Input `pulumi:"numberScale"`
 	// AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
 	OracleReaderQuery pulumi.Input `pulumi:"oracleReaderQuery"`
 	// The partition mechanism that will be used for AmazonRdsForOracle read in parallel. Type: string (or Expression with resultType string).
@@ -2118,16 +1886,6 @@ func (o AmazonRdsForOracleSourceOutput) MaxConcurrentConnections() pulumi.AnyOut
 	return o.ApplyT(func(v AmazonRdsForOracleSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
 }
 
-// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
-func (o AmazonRdsForOracleSourceOutput) NumberPrecision() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleSource) interface{} { return v.NumberPrecision }).(pulumi.AnyOutput)
-}
-
-// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
-func (o AmazonRdsForOracleSourceOutput) NumberScale() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleSource) interface{} { return v.NumberScale }).(pulumi.AnyOutput)
-}
-
 // AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
 func (o AmazonRdsForOracleSourceOutput) OracleReaderQuery() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleSource) interface{} { return v.OracleReaderQuery }).(pulumi.AnyOutput)
@@ -2172,10 +1930,6 @@ type AmazonRdsForOracleSourceResponse struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
-	NumberPrecision interface{} `pulumi:"numberPrecision"`
-	// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
-	NumberScale interface{} `pulumi:"numberScale"`
 	// AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
 	OracleReaderQuery interface{} `pulumi:"oracleReaderQuery"`
 	// The partition mechanism that will be used for AmazonRdsForOracle read in parallel. Type: string (or Expression with resultType string).
@@ -2221,16 +1975,6 @@ func (o AmazonRdsForOracleSourceResponseOutput) DisableMetricsCollection() pulum
 // The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 func (o AmazonRdsForOracleSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
-}
-
-// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
-func (o AmazonRdsForOracleSourceResponseOutput) NumberPrecision() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleSourceResponse) interface{} { return v.NumberPrecision }).(pulumi.AnyOutput)
-}
-
-// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
-func (o AmazonRdsForOracleSourceResponseOutput) NumberScale() pulumi.AnyOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleSourceResponse) interface{} { return v.NumberScale }).(pulumi.AnyOutput)
 }
 
 // AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
@@ -18155,8 +17899,6 @@ type AzureDatabricksLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReference `pulumi:"credential"`
-	// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
-	DataSecurityMode interface{} `pulumi:"dataSecurityMode"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
@@ -18223,8 +17965,6 @@ type AzureDatabricksLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The credential reference containing authentication information.
 	Credential CredentialReferencePtrInput `pulumi:"credential"`
-	// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
-	DataSecurityMode pulumi.Input `pulumi:"dataSecurityMode"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
@@ -18318,11 +18058,6 @@ func (o AzureDatabricksLinkedServiceOutput) ConnectVia() IntegrationRuntimeRefer
 // The credential reference containing authentication information.
 func (o AzureDatabricksLinkedServiceOutput) Credential() CredentialReferencePtrOutput {
 	return o.ApplyT(func(v AzureDatabricksLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
-}
-
-// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
-func (o AzureDatabricksLinkedServiceOutput) DataSecurityMode() pulumi.AnyOutput {
-	return o.ApplyT(func(v AzureDatabricksLinkedService) interface{} { return v.DataSecurityMode }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -18438,8 +18173,6 @@ type AzureDatabricksLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
-	// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
-	DataSecurityMode interface{} `pulumi:"dataSecurityMode"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
@@ -18521,11 +18254,6 @@ func (o AzureDatabricksLinkedServiceResponseOutput) ConnectVia() IntegrationRunt
 // The credential reference containing authentication information.
 func (o AzureDatabricksLinkedServiceResponseOutput) Credential() CredentialReferenceResponsePtrOutput {
 	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
-}
-
-// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
-func (o AzureDatabricksLinkedServiceResponseOutput) DataSecurityMode() pulumi.AnyOutput {
-	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) interface{} { return v.DataSecurityMode }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -43983,252 +43711,6 @@ func (o DataMapperMappingResponseArrayOutput) Index(i pulumi.IntInput) DataMappe
 	}).(DataMapperMappingResponseOutput)
 }
 
-// Databricks Job activity.
-type DatabricksJobActivity struct {
-	// Activity depends on condition.
-	DependsOn []ActivityDependency `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
-	JobId interface{} `pulumi:"jobId"`
-	// Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
-	JobParameters map[string]interface{} `pulumi:"jobParameters"`
-	// Linked service reference.
-	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
-	// Activity policy.
-	Policy *ActivityPolicy `pulumi:"policy"`
-	// Activity state. This is an optional property and if not provided, the state will be Active by default.
-	State *string `pulumi:"state"`
-	// Type of activity.
-	// Expected value is 'DatabricksJob'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserProperty `pulumi:"userProperties"`
-}
-
-// DatabricksJobActivityInput is an input type that accepts DatabricksJobActivityArgs and DatabricksJobActivityOutput values.
-// You can construct a concrete instance of `DatabricksJobActivityInput` via:
-//
-//	DatabricksJobActivityArgs{...}
-type DatabricksJobActivityInput interface {
-	pulumi.Input
-
-	ToDatabricksJobActivityOutput() DatabricksJobActivityOutput
-	ToDatabricksJobActivityOutputWithContext(context.Context) DatabricksJobActivityOutput
-}
-
-// Databricks Job activity.
-type DatabricksJobActivityArgs struct {
-	// Activity depends on condition.
-	DependsOn ActivityDependencyArrayInput `pulumi:"dependsOn"`
-	// Activity description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
-	JobId pulumi.Input `pulumi:"jobId"`
-	// Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
-	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
-	// Activity name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-	OnInactiveMarkAs pulumi.StringPtrInput `pulumi:"onInactiveMarkAs"`
-	// Activity policy.
-	Policy ActivityPolicyPtrInput `pulumi:"policy"`
-	// Activity state. This is an optional property and if not provided, the state will be Active by default.
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// Type of activity.
-	// Expected value is 'DatabricksJob'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Activity user properties.
-	UserProperties UserPropertyArrayInput `pulumi:"userProperties"`
-}
-
-func (DatabricksJobActivityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabricksJobActivity)(nil)).Elem()
-}
-
-func (i DatabricksJobActivityArgs) ToDatabricksJobActivityOutput() DatabricksJobActivityOutput {
-	return i.ToDatabricksJobActivityOutputWithContext(context.Background())
-}
-
-func (i DatabricksJobActivityArgs) ToDatabricksJobActivityOutputWithContext(ctx context.Context) DatabricksJobActivityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabricksJobActivityOutput)
-}
-
-// Databricks Job activity.
-type DatabricksJobActivityOutput struct{ *pulumi.OutputState }
-
-func (DatabricksJobActivityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabricksJobActivity)(nil)).Elem()
-}
-
-func (o DatabricksJobActivityOutput) ToDatabricksJobActivityOutput() DatabricksJobActivityOutput {
-	return o
-}
-
-func (o DatabricksJobActivityOutput) ToDatabricksJobActivityOutputWithContext(ctx context.Context) DatabricksJobActivityOutput {
-	return o
-}
-
-// Activity depends on condition.
-func (o DatabricksJobActivityOutput) DependsOn() ActivityDependencyArrayOutput {
-	return o.ApplyT(func(v DatabricksJobActivity) []ActivityDependency { return v.DependsOn }).(ActivityDependencyArrayOutput)
-}
-
-// Activity description.
-func (o DatabricksJobActivityOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabricksJobActivity) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
-func (o DatabricksJobActivityOutput) JobId() pulumi.AnyOutput {
-	return o.ApplyT(func(v DatabricksJobActivity) interface{} { return v.JobId }).(pulumi.AnyOutput)
-}
-
-// Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
-func (o DatabricksJobActivityOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v DatabricksJobActivity) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
-}
-
-// Linked service reference.
-func (o DatabricksJobActivityOutput) LinkedServiceName() LinkedServiceReferencePtrOutput {
-	return o.ApplyT(func(v DatabricksJobActivity) *LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferencePtrOutput)
-}
-
-// Activity name.
-func (o DatabricksJobActivityOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabricksJobActivity) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-func (o DatabricksJobActivityOutput) OnInactiveMarkAs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabricksJobActivity) *string { return v.OnInactiveMarkAs }).(pulumi.StringPtrOutput)
-}
-
-// Activity policy.
-func (o DatabricksJobActivityOutput) Policy() ActivityPolicyPtrOutput {
-	return o.ApplyT(func(v DatabricksJobActivity) *ActivityPolicy { return v.Policy }).(ActivityPolicyPtrOutput)
-}
-
-// Activity state. This is an optional property and if not provided, the state will be Active by default.
-func (o DatabricksJobActivityOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabricksJobActivity) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// Type of activity.
-// Expected value is 'DatabricksJob'.
-func (o DatabricksJobActivityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabricksJobActivity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Activity user properties.
-func (o DatabricksJobActivityOutput) UserProperties() UserPropertyArrayOutput {
-	return o.ApplyT(func(v DatabricksJobActivity) []UserProperty { return v.UserProperties }).(UserPropertyArrayOutput)
-}
-
-// Databricks Job activity.
-type DatabricksJobActivityResponse struct {
-	// Activity depends on condition.
-	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
-	JobId interface{} `pulumi:"jobId"`
-	// Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
-	JobParameters map[string]interface{} `pulumi:"jobParameters"`
-	// Linked service reference.
-	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
-	// Activity policy.
-	Policy *ActivityPolicyResponse `pulumi:"policy"`
-	// Activity state. This is an optional property and if not provided, the state will be Active by default.
-	State *string `pulumi:"state"`
-	// Type of activity.
-	// Expected value is 'DatabricksJob'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
-}
-
-// Databricks Job activity.
-type DatabricksJobActivityResponseOutput struct{ *pulumi.OutputState }
-
-func (DatabricksJobActivityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabricksJobActivityResponse)(nil)).Elem()
-}
-
-func (o DatabricksJobActivityResponseOutput) ToDatabricksJobActivityResponseOutput() DatabricksJobActivityResponseOutput {
-	return o
-}
-
-func (o DatabricksJobActivityResponseOutput) ToDatabricksJobActivityResponseOutputWithContext(ctx context.Context) DatabricksJobActivityResponseOutput {
-	return o
-}
-
-// Activity depends on condition.
-func (o DatabricksJobActivityResponseOutput) DependsOn() ActivityDependencyResponseArrayOutput {
-	return o.ApplyT(func(v DatabricksJobActivityResponse) []ActivityDependencyResponse { return v.DependsOn }).(ActivityDependencyResponseArrayOutput)
-}
-
-// Activity description.
-func (o DatabricksJobActivityResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabricksJobActivityResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
-func (o DatabricksJobActivityResponseOutput) JobId() pulumi.AnyOutput {
-	return o.ApplyT(func(v DatabricksJobActivityResponse) interface{} { return v.JobId }).(pulumi.AnyOutput)
-}
-
-// Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
-func (o DatabricksJobActivityResponseOutput) JobParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v DatabricksJobActivityResponse) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
-}
-
-// Linked service reference.
-func (o DatabricksJobActivityResponseOutput) LinkedServiceName() LinkedServiceReferenceResponsePtrOutput {
-	return o.ApplyT(func(v DatabricksJobActivityResponse) *LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponsePtrOutput)
-}
-
-// Activity name.
-func (o DatabricksJobActivityResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabricksJobActivityResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-func (o DatabricksJobActivityResponseOutput) OnInactiveMarkAs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabricksJobActivityResponse) *string { return v.OnInactiveMarkAs }).(pulumi.StringPtrOutput)
-}
-
-// Activity policy.
-func (o DatabricksJobActivityResponseOutput) Policy() ActivityPolicyResponsePtrOutput {
-	return o.ApplyT(func(v DatabricksJobActivityResponse) *ActivityPolicyResponse { return v.Policy }).(ActivityPolicyResponsePtrOutput)
-}
-
-// Activity state. This is an optional property and if not provided, the state will be Active by default.
-func (o DatabricksJobActivityResponseOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabricksJobActivityResponse) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// Type of activity.
-// Expected value is 'DatabricksJob'.
-func (o DatabricksJobActivityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabricksJobActivityResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Activity user properties.
-func (o DatabricksJobActivityResponseOutput) UserProperties() UserPropertyResponseArrayOutput {
-	return o.ApplyT(func(v DatabricksJobActivityResponse) []UserPropertyResponse { return v.UserProperties }).(UserPropertyResponseArrayOutput)
-}
-
 // DatabricksNotebook activity.
 type DatabricksNotebookActivity struct {
 	// Base parameters to be used for each run of this job.If the notebook takes a parameter that is not specified, the default value from the notebook will be used.
@@ -56799,8 +56281,8 @@ type ExpressionV2 struct {
 	Operators []string `pulumi:"operators"`
 	// Type of expressions supported by the system. Type: string.
 	Type *string `pulumi:"type"`
-	// Value for Constant/Field Type: object.
-	Value interface{} `pulumi:"value"`
+	// Value for Constant/Field Type: string.
+	Value *string `pulumi:"value"`
 }
 
 // ExpressionV2Input is an input type that accepts ExpressionV2Args and ExpressionV2Output values.
@@ -56822,8 +56304,8 @@ type ExpressionV2Args struct {
 	Operators pulumi.StringArrayInput `pulumi:"operators"`
 	// Type of expressions supported by the system. Type: string.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Value for Constant/Field Type: object.
-	Value pulumi.Input `pulumi:"value"`
+	// Value for Constant/Field Type: string.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ExpressionV2Args) ElementType() reflect.Type {
@@ -56944,9 +56426,9 @@ func (o ExpressionV2Output) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExpressionV2) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Value for Constant/Field Type: object.
-func (o ExpressionV2Output) Value() pulumi.AnyOutput {
-	return o.ApplyT(func(v ExpressionV2) interface{} { return v.Value }).(pulumi.AnyOutput)
+// Value for Constant/Field Type: string.
+func (o ExpressionV2Output) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressionV2) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type ExpressionV2PtrOutput struct{ *pulumi.OutputState }
@@ -57003,14 +56485,14 @@ func (o ExpressionV2PtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value for Constant/Field Type: object.
-func (o ExpressionV2PtrOutput) Value() pulumi.AnyOutput {
-	return o.ApplyT(func(v *ExpressionV2) interface{} {
+// Value for Constant/Field Type: string.
+func (o ExpressionV2PtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressionV2) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Value
-	}).(pulumi.AnyOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ExpressionV2ArrayOutput struct{ *pulumi.OutputState }
@@ -57041,8 +56523,8 @@ type ExpressionV2Response struct {
 	Operators []string `pulumi:"operators"`
 	// Type of expressions supported by the system. Type: string.
 	Type *string `pulumi:"type"`
-	// Value for Constant/Field Type: object.
-	Value interface{} `pulumi:"value"`
+	// Value for Constant/Field Type: string.
+	Value *string `pulumi:"value"`
 }
 
 // Nested representation of a complex expression.
@@ -57075,9 +56557,9 @@ func (o ExpressionV2ResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExpressionV2Response) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Value for Constant/Field Type: object.
-func (o ExpressionV2ResponseOutput) Value() pulumi.AnyOutput {
-	return o.ApplyT(func(v ExpressionV2Response) interface{} { return v.Value }).(pulumi.AnyOutput)
+// Value for Constant/Field Type: string.
+func (o ExpressionV2ResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressionV2Response) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type ExpressionV2ResponsePtrOutput struct{ *pulumi.OutputState }
@@ -57134,14 +56616,14 @@ func (o ExpressionV2ResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value for Constant/Field Type: object.
-func (o ExpressionV2ResponsePtrOutput) Value() pulumi.AnyOutput {
-	return o.ApplyT(func(v *ExpressionV2Response) interface{} {
+// Value for Constant/Field Type: string.
+func (o ExpressionV2ResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressionV2Response) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Value
-	}).(pulumi.AnyOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type ExpressionV2ResponseArrayOutput struct{ *pulumi.OutputState }
@@ -66990,6 +66472,204 @@ func (o GreenplumLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreenplumLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
+// A copy activity Greenplum Database source.
+type GreenplumSource struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'GreenplumSource'.
+	Type string `pulumi:"type"`
+}
+
+// GreenplumSourceInput is an input type that accepts GreenplumSourceArgs and GreenplumSourceOutput values.
+// You can construct a concrete instance of `GreenplumSourceInput` via:
+//
+//	GreenplumSourceArgs{...}
+type GreenplumSourceInput interface {
+	pulumi.Input
+
+	ToGreenplumSourceOutput() GreenplumSourceOutput
+	ToGreenplumSourceOutputWithContext(context.Context) GreenplumSourceOutput
+}
+
+// A copy activity Greenplum Database source.
+type GreenplumSourceArgs struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query pulumi.Input `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'GreenplumSource'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GreenplumSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreenplumSource)(nil)).Elem()
+}
+
+func (i GreenplumSourceArgs) ToGreenplumSourceOutput() GreenplumSourceOutput {
+	return i.ToGreenplumSourceOutputWithContext(context.Background())
+}
+
+func (i GreenplumSourceArgs) ToGreenplumSourceOutputWithContext(ctx context.Context) GreenplumSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GreenplumSourceOutput)
+}
+
+// A copy activity Greenplum Database source.
+type GreenplumSourceOutput struct{ *pulumi.OutputState }
+
+func (GreenplumSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreenplumSource)(nil)).Elem()
+}
+
+func (o GreenplumSourceOutput) ToGreenplumSourceOutput() GreenplumSourceOutput {
+	return o
+}
+
+func (o GreenplumSourceOutput) ToGreenplumSourceOutputWithContext(ctx context.Context) GreenplumSourceOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o GreenplumSourceOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o GreenplumSourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o GreenplumSourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// A query to retrieve data from source. Type: string (or Expression with resultType string).
+func (o GreenplumSourceOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GreenplumSourceOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o GreenplumSourceOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GreenplumSourceOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSource) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'GreenplumSource'.
+func (o GreenplumSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GreenplumSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A copy activity Greenplum Database source.
+type GreenplumSourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'GreenplumSource'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity Greenplum Database source.
+type GreenplumSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GreenplumSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreenplumSourceResponse)(nil)).Elem()
+}
+
+func (o GreenplumSourceResponseOutput) ToGreenplumSourceResponseOutput() GreenplumSourceResponseOutput {
+	return o
+}
+
+func (o GreenplumSourceResponseOutput) ToGreenplumSourceResponseOutputWithContext(ctx context.Context) GreenplumSourceResponseOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o GreenplumSourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o GreenplumSourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o GreenplumSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// A query to retrieve data from source. Type: string (or Expression with resultType string).
+func (o GreenplumSourceResponseOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GreenplumSourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o GreenplumSourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GreenplumSourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'GreenplumSource'.
+func (o GreenplumSourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GreenplumSourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type SSISExecutionParameterMapMap map[string]SSISExecutionParameterMapInput
 
 func (SSISExecutionParameterMapMap) ElementType() reflect.Type {
@@ -67460,8 +67140,6 @@ func init() {
 	pulumi.RegisterOutputType(DataMapperMappingArrayOutput{})
 	pulumi.RegisterOutputType(DataMapperMappingResponseOutput{})
 	pulumi.RegisterOutputType(DataMapperMappingResponseArrayOutput{})
-	pulumi.RegisterOutputType(DatabricksJobActivityOutput{})
-	pulumi.RegisterOutputType(DatabricksJobActivityResponseOutput{})
 	pulumi.RegisterOutputType(DatabricksNotebookActivityOutput{})
 	pulumi.RegisterOutputType(DatabricksNotebookActivityResponseOutput{})
 	pulumi.RegisterOutputType(DatabricksSparkJarActivityOutput{})
@@ -67676,6 +67354,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleSheetsLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(GreenplumLinkedServiceOutput{})
 	pulumi.RegisterOutputType(GreenplumLinkedServiceResponseOutput{})
+	pulumi.RegisterOutputType(GreenplumSourceOutput{})
+	pulumi.RegisterOutputType(GreenplumSourceResponseOutput{})
 	pulumi.RegisterOutputType(SSISExecutionParameterMapMapOutput{})
 	pulumi.RegisterOutputType(SSISExecutionParameterResponseMapMapOutput{})
 }

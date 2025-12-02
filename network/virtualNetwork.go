@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Virtual Network resource.
 //
-// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01.
 //
-// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 
 	// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
 	AddressSpace AddressSpaceResponsePtrOutput `pulumi:"addressSpace"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
 	BgpCommunities VirtualNetworkBgpCommunitiesResponsePtrOutput `pulumi:"bgpCommunities"`
 	// The DDoS protection plan associated with the virtual network.
@@ -50,8 +48,6 @@ type VirtualNetwork struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Private Endpoint VNet Policies.
-	PrivateEndpointVNetPolicies pulumi.StringPtrOutput `pulumi:"privateEndpointVNetPolicies"`
 	// The provisioning state of the virtual network resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The resourceGuid property of the Virtual Network resource.
@@ -245,12 +241,6 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240501:VirtualNetwork"),
 		},
-		{
-			Type: pulumi.String("azure-native:network/v20240701:VirtualNetwork"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20241001:VirtualNetwork"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -310,8 +300,6 @@ type virtualNetworkArgs struct {
 	IpAllocations []SubResource `pulumi:"ipAllocations"`
 	// Resource location.
 	Location *string `pulumi:"location"`
-	// Private Endpoint VNet Policies.
-	PrivateEndpointVNetPolicies *string `pulumi:"privateEndpointVNetPolicies"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A list of subnets in a Virtual Network.
@@ -352,8 +340,6 @@ type VirtualNetworkArgs struct {
 	IpAllocations SubResourceArrayInput
 	// Resource location.
 	Location pulumi.StringPtrInput
-	// Private Endpoint VNet Policies.
-	PrivateEndpointVNetPolicies pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// A list of subnets in a Virtual Network.
@@ -408,11 +394,6 @@ func (o VirtualNetworkOutput) ToVirtualNetworkOutputWithContext(ctx context.Cont
 // The AddressSpace that contains an array of IP address ranges that can be used by subnets.
 func (o VirtualNetworkOutput) AddressSpace() AddressSpaceResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualNetwork) AddressSpaceResponsePtrOutput { return v.AddressSpace }).(AddressSpaceResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o VirtualNetworkOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
@@ -478,11 +459,6 @@ func (o VirtualNetworkOutput) Location() pulumi.StringPtrOutput {
 // Resource name.
 func (o VirtualNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// Private Endpoint VNet Policies.
-func (o VirtualNetworkOutput) PrivateEndpointVNetPolicies() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringPtrOutput { return v.PrivateEndpointVNetPolicies }).(pulumi.StringPtrOutput)
 }
 
 // The provisioning state of the virtual network resource.

@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NSX DNS Zone
 //
-// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
+// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2020-07-17-preview.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01, 2023-09-01.
 type WorkloadNetworkDnsZone struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Display name of the DNS Zone.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// DNS Server IP array of the DNS Zone.
@@ -30,7 +28,7 @@ type WorkloadNetworkDnsZone struct {
 	DnsServices pulumi.Float64PtrOutput `pulumi:"dnsServices"`
 	// Domain names of the DNS Zone.
 	Domain pulumi.StringArrayOutput `pulumi:"domain"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -38,9 +36,7 @@ type WorkloadNetworkDnsZone struct {
 	Revision pulumi.Float64PtrOutput `pulumi:"revision"`
 	// Source IP of the DNS Zone.
 	SourceIp pulumi.StringPtrOutput `pulumi:"sourceIp"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -78,9 +74,6 @@ func NewWorkloadNetworkDnsZone(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkDnsZone"),
-		},
-		{
-			Type: pulumi.String("azure-native:avs/v20240901:WorkloadNetworkDnsZone"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -123,7 +116,7 @@ type workloadNetworkDnsZoneArgs struct {
 	DnsServerIps []string `pulumi:"dnsServerIps"`
 	// Number of DNS Services using the DNS zone.
 	DnsServices *float64 `pulumi:"dnsServices"`
-	// ID of the DNS zone.
+	// NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
 	DnsZoneId *string `pulumi:"dnsZoneId"`
 	// Domain names of the DNS Zone.
 	Domain []string `pulumi:"domain"`
@@ -145,7 +138,7 @@ type WorkloadNetworkDnsZoneArgs struct {
 	DnsServerIps pulumi.StringArrayInput
 	// Number of DNS Services using the DNS zone.
 	DnsServices pulumi.Float64PtrInput
-	// ID of the DNS zone.
+	// NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
 	DnsZoneId pulumi.StringPtrInput
 	// Domain names of the DNS Zone.
 	Domain pulumi.StringArrayInput
@@ -196,11 +189,6 @@ func (o WorkloadNetworkDnsZoneOutput) ToWorkloadNetworkDnsZoneOutputWithContext(
 	return o
 }
 
-// The Azure API version of the resource.
-func (o WorkloadNetworkDnsZoneOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDnsZone) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Display name of the DNS Zone.
 func (o WorkloadNetworkDnsZoneOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDnsZone) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -221,7 +209,7 @@ func (o WorkloadNetworkDnsZoneOutput) Domain() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDnsZone) pulumi.StringArrayOutput { return v.Domain }).(pulumi.StringArrayOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o WorkloadNetworkDnsZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDnsZone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -241,12 +229,7 @@ func (o WorkloadNetworkDnsZoneOutput) SourceIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDnsZone) pulumi.StringPtrOutput { return v.SourceIp }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o WorkloadNetworkDnsZoneOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDnsZone) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o WorkloadNetworkDnsZoneOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDnsZone) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

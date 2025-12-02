@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1145,9 +1145,7 @@ func (o ArtifactStorePrivateEndPointsFormatResponseArrayOutput) Index(i pulumi.I
 
 // Artifact store properties.
 type ArtifactStorePropertiesFormat struct {
-	// The artifact store backing resource network access type
-	BackingResourcePublicNetworkAccess *string                                                         `pulumi:"backingResourcePublicNetworkAccess"`
-	ManagedResourceGroupConfiguration  *ArtifactStorePropertiesFormatManagedResourceGroupConfiguration `pulumi:"managedResourceGroupConfiguration"`
+	ManagedResourceGroupConfiguration *ArtifactStorePropertiesFormatManagedResourceGroupConfiguration `pulumi:"managedResourceGroupConfiguration"`
 	// The replication strategy.
 	ReplicationStrategy *string `pulumi:"replicationStrategy"`
 	// The artifact store type.
@@ -1167,9 +1165,7 @@ type ArtifactStorePropertiesFormatInput interface {
 
 // Artifact store properties.
 type ArtifactStorePropertiesFormatArgs struct {
-	// The artifact store backing resource network access type
-	BackingResourcePublicNetworkAccess pulumi.StringPtrInput                                                  `pulumi:"backingResourcePublicNetworkAccess"`
-	ManagedResourceGroupConfiguration  ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrInput `pulumi:"managedResourceGroupConfiguration"`
+	ManagedResourceGroupConfiguration ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrInput `pulumi:"managedResourceGroupConfiguration"`
 	// The replication strategy.
 	ReplicationStrategy pulumi.StringPtrInput `pulumi:"replicationStrategy"`
 	// The artifact store type.
@@ -1254,11 +1250,6 @@ func (o ArtifactStorePropertiesFormatOutput) ToArtifactStorePropertiesFormatPtrO
 	}).(ArtifactStorePropertiesFormatPtrOutput)
 }
 
-// The artifact store backing resource network access type
-func (o ArtifactStorePropertiesFormatOutput) BackingResourcePublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ArtifactStorePropertiesFormat) *string { return v.BackingResourcePublicNetworkAccess }).(pulumi.StringPtrOutput)
-}
-
 func (o ArtifactStorePropertiesFormatOutput) ManagedResourceGroupConfiguration() ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput {
 	return o.ApplyT(func(v ArtifactStorePropertiesFormat) *ArtifactStorePropertiesFormatManagedResourceGroupConfiguration {
 		return v.ManagedResourceGroupConfiguration
@@ -1297,16 +1288,6 @@ func (o ArtifactStorePropertiesFormatPtrOutput) Elem() ArtifactStorePropertiesFo
 		var ret ArtifactStorePropertiesFormat
 		return ret
 	}).(ArtifactStorePropertiesFormatOutput)
-}
-
-// The artifact store backing resource network access type
-func (o ArtifactStorePropertiesFormatPtrOutput) BackingResourcePublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ArtifactStorePropertiesFormat) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BackingResourcePublicNetworkAccess
-	}).(pulumi.StringPtrOutput)
 }
 
 func (o ArtifactStorePropertiesFormatPtrOutput) ManagedResourceGroupConfiguration() ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput {
@@ -1496,9 +1477,7 @@ func (o ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput)
 
 // Artifact store properties.
 type ArtifactStorePropertiesFormatResponse struct {
-	// The artifact store backing resource network access type
-	BackingResourcePublicNetworkAccess *string                                                                 `pulumi:"backingResourcePublicNetworkAccess"`
-	ManagedResourceGroupConfiguration  *ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration `pulumi:"managedResourceGroupConfiguration"`
+	ManagedResourceGroupConfiguration *ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration `pulumi:"managedResourceGroupConfiguration"`
 	// The provisioning state of the application groups resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The replication strategy.
@@ -1522,11 +1501,6 @@ func (o ArtifactStorePropertiesFormatResponseOutput) ToArtifactStorePropertiesFo
 
 func (o ArtifactStorePropertiesFormatResponseOutput) ToArtifactStorePropertiesFormatResponseOutputWithContext(ctx context.Context) ArtifactStorePropertiesFormatResponseOutput {
 	return o
-}
-
-// The artifact store backing resource network access type
-func (o ArtifactStorePropertiesFormatResponseOutput) BackingResourcePublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ArtifactStorePropertiesFormatResponse) *string { return v.BackingResourcePublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 func (o ArtifactStorePropertiesFormatResponseOutput) ManagedResourceGroupConfiguration() ArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationPtrOutput {
@@ -11835,941 +11809,404 @@ func (o NetworkFunctionTemplateResponsePtrOutput) NetworkFunctionRoleConfigurati
 	}).(NetworkFunctionRoleConfigurationResponseArrayOutput)
 }
 
-// NetworkFunction with secrets.
-type NetworkFunctionValueWithSecrets struct {
-	// Indicates if software updates are allowed during deployment.
-	AllowSoftwareUpdate *bool `pulumi:"allowSoftwareUpdate"`
-	// The secret type which indicates if secret or not.
-	// Expected value is 'Secret'.
-	ConfigurationType string `pulumi:"configurationType"`
-	// The network function definition group name for the network function.
-	NetworkFunctionDefinitionGroupName *string `pulumi:"networkFunctionDefinitionGroupName"`
-	// The location of the network function definition offering.
-	NetworkFunctionDefinitionOfferingLocation *string `pulumi:"networkFunctionDefinitionOfferingLocation"`
-	// The network function definition version for the network function.
-	NetworkFunctionDefinitionVersion *string `pulumi:"networkFunctionDefinitionVersion"`
-	// The network function definition version resource reference.
-	NetworkFunctionDefinitionVersionResourceReference interface{} `pulumi:"networkFunctionDefinitionVersionResourceReference"`
-	// The nfviId for the network function.
-	NfviId *string `pulumi:"nfviId"`
-	// The nfvi type for the network function.
-	NfviType *string `pulumi:"nfviType"`
-	// The publisher name for the network function.
-	PublisherName *string `pulumi:"publisherName"`
-	// The scope of the publisher.
-	PublisherScope *string `pulumi:"publisherScope"`
-	// The role configuration override values from the user.
-	RoleOverrideValues []string `pulumi:"roleOverrideValues"`
-	// The JSON-serialized secret deployment values from the user. This contains secrets like passwords,keys etc
-	SecretDeploymentValues *string `pulumi:"secretDeploymentValues"`
+// The network function user configuration.
+type NetworkFunctionUserConfiguration struct {
+	// The network interface configuration.
+	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
+	// Specifies the operating system settings for the role instance.
+	OsProfile *NetworkFunctionUserConfigurationOsProfile `pulumi:"osProfile"`
+	// The name of the network function role.
+	RoleName *string `pulumi:"roleName"`
+	// The user data parameters from the customer.
+	UserDataParameters interface{} `pulumi:"userDataParameters"`
 }
 
-// NetworkFunctionValueWithSecretsInput is an input type that accepts NetworkFunctionValueWithSecretsArgs and NetworkFunctionValueWithSecretsOutput values.
-// You can construct a concrete instance of `NetworkFunctionValueWithSecretsInput` via:
+// NetworkFunctionUserConfigurationInput is an input type that accepts NetworkFunctionUserConfigurationArgs and NetworkFunctionUserConfigurationOutput values.
+// You can construct a concrete instance of `NetworkFunctionUserConfigurationInput` via:
 //
-//	NetworkFunctionValueWithSecretsArgs{...}
-type NetworkFunctionValueWithSecretsInput interface {
+//	NetworkFunctionUserConfigurationArgs{...}
+type NetworkFunctionUserConfigurationInput interface {
 	pulumi.Input
 
-	ToNetworkFunctionValueWithSecretsOutput() NetworkFunctionValueWithSecretsOutput
-	ToNetworkFunctionValueWithSecretsOutputWithContext(context.Context) NetworkFunctionValueWithSecretsOutput
+	ToNetworkFunctionUserConfigurationOutput() NetworkFunctionUserConfigurationOutput
+	ToNetworkFunctionUserConfigurationOutputWithContext(context.Context) NetworkFunctionUserConfigurationOutput
 }
 
-// NetworkFunction with secrets.
-type NetworkFunctionValueWithSecretsArgs struct {
-	// Indicates if software updates are allowed during deployment.
-	AllowSoftwareUpdate pulumi.BoolPtrInput `pulumi:"allowSoftwareUpdate"`
-	// The secret type which indicates if secret or not.
-	// Expected value is 'Secret'.
-	ConfigurationType pulumi.StringInput `pulumi:"configurationType"`
-	// The network function definition group name for the network function.
-	NetworkFunctionDefinitionGroupName pulumi.StringPtrInput `pulumi:"networkFunctionDefinitionGroupName"`
-	// The location of the network function definition offering.
-	NetworkFunctionDefinitionOfferingLocation pulumi.StringPtrInput `pulumi:"networkFunctionDefinitionOfferingLocation"`
-	// The network function definition version for the network function.
-	NetworkFunctionDefinitionVersion pulumi.StringPtrInput `pulumi:"networkFunctionDefinitionVersion"`
-	// The network function definition version resource reference.
-	NetworkFunctionDefinitionVersionResourceReference pulumi.Input `pulumi:"networkFunctionDefinitionVersionResourceReference"`
-	// The nfviId for the network function.
-	NfviId pulumi.StringPtrInput `pulumi:"nfviId"`
-	// The nfvi type for the network function.
-	NfviType pulumi.StringPtrInput `pulumi:"nfviType"`
-	// The publisher name for the network function.
-	PublisherName pulumi.StringPtrInput `pulumi:"publisherName"`
-	// The scope of the publisher.
-	PublisherScope pulumi.StringPtrInput `pulumi:"publisherScope"`
-	// The role configuration override values from the user.
-	RoleOverrideValues pulumi.StringArrayInput `pulumi:"roleOverrideValues"`
-	// The JSON-serialized secret deployment values from the user. This contains secrets like passwords,keys etc
-	SecretDeploymentValues pulumi.StringPtrInput `pulumi:"secretDeploymentValues"`
+// The network function user configuration.
+type NetworkFunctionUserConfigurationArgs struct {
+	// The network interface configuration.
+	NetworkInterfaces NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// Specifies the operating system settings for the role instance.
+	OsProfile NetworkFunctionUserConfigurationOsProfilePtrInput `pulumi:"osProfile"`
+	// The name of the network function role.
+	RoleName pulumi.StringPtrInput `pulumi:"roleName"`
+	// The user data parameters from the customer.
+	UserDataParameters pulumi.Input `pulumi:"userDataParameters"`
 }
 
-func (NetworkFunctionValueWithSecretsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkFunctionValueWithSecrets)(nil)).Elem()
+func (NetworkFunctionUserConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkFunctionUserConfiguration)(nil)).Elem()
 }
 
-func (i NetworkFunctionValueWithSecretsArgs) ToNetworkFunctionValueWithSecretsOutput() NetworkFunctionValueWithSecretsOutput {
-	return i.ToNetworkFunctionValueWithSecretsOutputWithContext(context.Background())
+func (i NetworkFunctionUserConfigurationArgs) ToNetworkFunctionUserConfigurationOutput() NetworkFunctionUserConfigurationOutput {
+	return i.ToNetworkFunctionUserConfigurationOutputWithContext(context.Background())
 }
 
-func (i NetworkFunctionValueWithSecretsArgs) ToNetworkFunctionValueWithSecretsOutputWithContext(ctx context.Context) NetworkFunctionValueWithSecretsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionValueWithSecretsOutput)
+func (i NetworkFunctionUserConfigurationArgs) ToNetworkFunctionUserConfigurationOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionUserConfigurationOutput)
 }
 
-func (i NetworkFunctionValueWithSecretsArgs) ToNetworkFunctionValueWithSecretsPtrOutput() NetworkFunctionValueWithSecretsPtrOutput {
-	return i.ToNetworkFunctionValueWithSecretsPtrOutputWithContext(context.Background())
-}
-
-func (i NetworkFunctionValueWithSecretsArgs) ToNetworkFunctionValueWithSecretsPtrOutputWithContext(ctx context.Context) NetworkFunctionValueWithSecretsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionValueWithSecretsOutput).ToNetworkFunctionValueWithSecretsPtrOutputWithContext(ctx)
-}
-
-// NetworkFunctionValueWithSecretsPtrInput is an input type that accepts NetworkFunctionValueWithSecretsArgs, NetworkFunctionValueWithSecretsPtr and NetworkFunctionValueWithSecretsPtrOutput values.
-// You can construct a concrete instance of `NetworkFunctionValueWithSecretsPtrInput` via:
+// NetworkFunctionUserConfigurationArrayInput is an input type that accepts NetworkFunctionUserConfigurationArray and NetworkFunctionUserConfigurationArrayOutput values.
+// You can construct a concrete instance of `NetworkFunctionUserConfigurationArrayInput` via:
 //
-//	        NetworkFunctionValueWithSecretsArgs{...}
+//	NetworkFunctionUserConfigurationArray{ NetworkFunctionUserConfigurationArgs{...} }
+type NetworkFunctionUserConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToNetworkFunctionUserConfigurationArrayOutput() NetworkFunctionUserConfigurationArrayOutput
+	ToNetworkFunctionUserConfigurationArrayOutputWithContext(context.Context) NetworkFunctionUserConfigurationArrayOutput
+}
+
+type NetworkFunctionUserConfigurationArray []NetworkFunctionUserConfigurationInput
+
+func (NetworkFunctionUserConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkFunctionUserConfiguration)(nil)).Elem()
+}
+
+func (i NetworkFunctionUserConfigurationArray) ToNetworkFunctionUserConfigurationArrayOutput() NetworkFunctionUserConfigurationArrayOutput {
+	return i.ToNetworkFunctionUserConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkFunctionUserConfigurationArray) ToNetworkFunctionUserConfigurationArrayOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionUserConfigurationArrayOutput)
+}
+
+// The network function user configuration.
+type NetworkFunctionUserConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NetworkFunctionUserConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkFunctionUserConfiguration)(nil)).Elem()
+}
+
+func (o NetworkFunctionUserConfigurationOutput) ToNetworkFunctionUserConfigurationOutput() NetworkFunctionUserConfigurationOutput {
+	return o
+}
+
+func (o NetworkFunctionUserConfigurationOutput) ToNetworkFunctionUserConfigurationOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationOutput {
+	return o
+}
+
+// The network interface configuration.
+func (o NetworkFunctionUserConfigurationOutput) NetworkInterfaces() NetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v NetworkFunctionUserConfiguration) []NetworkInterface { return v.NetworkInterfaces }).(NetworkInterfaceArrayOutput)
+}
+
+// Specifies the operating system settings for the role instance.
+func (o NetworkFunctionUserConfigurationOutput) OsProfile() NetworkFunctionUserConfigurationOsProfilePtrOutput {
+	return o.ApplyT(func(v NetworkFunctionUserConfiguration) *NetworkFunctionUserConfigurationOsProfile {
+		return v.OsProfile
+	}).(NetworkFunctionUserConfigurationOsProfilePtrOutput)
+}
+
+// The name of the network function role.
+func (o NetworkFunctionUserConfigurationOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkFunctionUserConfiguration) *string { return v.RoleName }).(pulumi.StringPtrOutput)
+}
+
+// The user data parameters from the customer.
+func (o NetworkFunctionUserConfigurationOutput) UserDataParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v NetworkFunctionUserConfiguration) interface{} { return v.UserDataParameters }).(pulumi.AnyOutput)
+}
+
+type NetworkFunctionUserConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkFunctionUserConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkFunctionUserConfiguration)(nil)).Elem()
+}
+
+func (o NetworkFunctionUserConfigurationArrayOutput) ToNetworkFunctionUserConfigurationArrayOutput() NetworkFunctionUserConfigurationArrayOutput {
+	return o
+}
+
+func (o NetworkFunctionUserConfigurationArrayOutput) ToNetworkFunctionUserConfigurationArrayOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationArrayOutput {
+	return o
+}
+
+func (o NetworkFunctionUserConfigurationArrayOutput) Index(i pulumi.IntInput) NetworkFunctionUserConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkFunctionUserConfiguration {
+		return vs[0].([]NetworkFunctionUserConfiguration)[vs[1].(int)]
+	}).(NetworkFunctionUserConfigurationOutput)
+}
+
+// Specifies the operating system settings for the role instance.
+type NetworkFunctionUserConfigurationOsProfile struct {
+	// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+	CustomData *string `pulumi:"customData"`
+}
+
+// NetworkFunctionUserConfigurationOsProfileInput is an input type that accepts NetworkFunctionUserConfigurationOsProfileArgs and NetworkFunctionUserConfigurationOsProfileOutput values.
+// You can construct a concrete instance of `NetworkFunctionUserConfigurationOsProfileInput` via:
+//
+//	NetworkFunctionUserConfigurationOsProfileArgs{...}
+type NetworkFunctionUserConfigurationOsProfileInput interface {
+	pulumi.Input
+
+	ToNetworkFunctionUserConfigurationOsProfileOutput() NetworkFunctionUserConfigurationOsProfileOutput
+	ToNetworkFunctionUserConfigurationOsProfileOutputWithContext(context.Context) NetworkFunctionUserConfigurationOsProfileOutput
+}
+
+// Specifies the operating system settings for the role instance.
+type NetworkFunctionUserConfigurationOsProfileArgs struct {
+	// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+	CustomData pulumi.StringPtrInput `pulumi:"customData"`
+}
+
+func (NetworkFunctionUserConfigurationOsProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkFunctionUserConfigurationOsProfile)(nil)).Elem()
+}
+
+func (i NetworkFunctionUserConfigurationOsProfileArgs) ToNetworkFunctionUserConfigurationOsProfileOutput() NetworkFunctionUserConfigurationOsProfileOutput {
+	return i.ToNetworkFunctionUserConfigurationOsProfileOutputWithContext(context.Background())
+}
+
+func (i NetworkFunctionUserConfigurationOsProfileArgs) ToNetworkFunctionUserConfigurationOsProfileOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationOsProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionUserConfigurationOsProfileOutput)
+}
+
+func (i NetworkFunctionUserConfigurationOsProfileArgs) ToNetworkFunctionUserConfigurationOsProfilePtrOutput() NetworkFunctionUserConfigurationOsProfilePtrOutput {
+	return i.ToNetworkFunctionUserConfigurationOsProfilePtrOutputWithContext(context.Background())
+}
+
+func (i NetworkFunctionUserConfigurationOsProfileArgs) ToNetworkFunctionUserConfigurationOsProfilePtrOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationOsProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionUserConfigurationOsProfileOutput).ToNetworkFunctionUserConfigurationOsProfilePtrOutputWithContext(ctx)
+}
+
+// NetworkFunctionUserConfigurationOsProfilePtrInput is an input type that accepts NetworkFunctionUserConfigurationOsProfileArgs, NetworkFunctionUserConfigurationOsProfilePtr and NetworkFunctionUserConfigurationOsProfilePtrOutput values.
+// You can construct a concrete instance of `NetworkFunctionUserConfigurationOsProfilePtrInput` via:
+//
+//	        NetworkFunctionUserConfigurationOsProfileArgs{...}
 //
 //	or:
 //
 //	        nil
-type NetworkFunctionValueWithSecretsPtrInput interface {
+type NetworkFunctionUserConfigurationOsProfilePtrInput interface {
 	pulumi.Input
 
-	ToNetworkFunctionValueWithSecretsPtrOutput() NetworkFunctionValueWithSecretsPtrOutput
-	ToNetworkFunctionValueWithSecretsPtrOutputWithContext(context.Context) NetworkFunctionValueWithSecretsPtrOutput
+	ToNetworkFunctionUserConfigurationOsProfilePtrOutput() NetworkFunctionUserConfigurationOsProfilePtrOutput
+	ToNetworkFunctionUserConfigurationOsProfilePtrOutputWithContext(context.Context) NetworkFunctionUserConfigurationOsProfilePtrOutput
 }
 
-type networkFunctionValueWithSecretsPtrType NetworkFunctionValueWithSecretsArgs
+type networkFunctionUserConfigurationOsProfilePtrType NetworkFunctionUserConfigurationOsProfileArgs
 
-func NetworkFunctionValueWithSecretsPtr(v *NetworkFunctionValueWithSecretsArgs) NetworkFunctionValueWithSecretsPtrInput {
-	return (*networkFunctionValueWithSecretsPtrType)(v)
+func NetworkFunctionUserConfigurationOsProfilePtr(v *NetworkFunctionUserConfigurationOsProfileArgs) NetworkFunctionUserConfigurationOsProfilePtrInput {
+	return (*networkFunctionUserConfigurationOsProfilePtrType)(v)
 }
 
-func (*networkFunctionValueWithSecretsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkFunctionValueWithSecrets)(nil)).Elem()
+func (*networkFunctionUserConfigurationOsProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkFunctionUserConfigurationOsProfile)(nil)).Elem()
 }
 
-func (i *networkFunctionValueWithSecretsPtrType) ToNetworkFunctionValueWithSecretsPtrOutput() NetworkFunctionValueWithSecretsPtrOutput {
-	return i.ToNetworkFunctionValueWithSecretsPtrOutputWithContext(context.Background())
+func (i *networkFunctionUserConfigurationOsProfilePtrType) ToNetworkFunctionUserConfigurationOsProfilePtrOutput() NetworkFunctionUserConfigurationOsProfilePtrOutput {
+	return i.ToNetworkFunctionUserConfigurationOsProfilePtrOutputWithContext(context.Background())
 }
 
-func (i *networkFunctionValueWithSecretsPtrType) ToNetworkFunctionValueWithSecretsPtrOutputWithContext(ctx context.Context) NetworkFunctionValueWithSecretsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionValueWithSecretsPtrOutput)
+func (i *networkFunctionUserConfigurationOsProfilePtrType) ToNetworkFunctionUserConfigurationOsProfilePtrOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationOsProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionUserConfigurationOsProfilePtrOutput)
 }
 
-// NetworkFunction with secrets.
-type NetworkFunctionValueWithSecretsOutput struct{ *pulumi.OutputState }
+// Specifies the operating system settings for the role instance.
+type NetworkFunctionUserConfigurationOsProfileOutput struct{ *pulumi.OutputState }
 
-func (NetworkFunctionValueWithSecretsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkFunctionValueWithSecrets)(nil)).Elem()
+func (NetworkFunctionUserConfigurationOsProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkFunctionUserConfigurationOsProfile)(nil)).Elem()
 }
 
-func (o NetworkFunctionValueWithSecretsOutput) ToNetworkFunctionValueWithSecretsOutput() NetworkFunctionValueWithSecretsOutput {
+func (o NetworkFunctionUserConfigurationOsProfileOutput) ToNetworkFunctionUserConfigurationOsProfileOutput() NetworkFunctionUserConfigurationOsProfileOutput {
 	return o
 }
 
-func (o NetworkFunctionValueWithSecretsOutput) ToNetworkFunctionValueWithSecretsOutputWithContext(ctx context.Context) NetworkFunctionValueWithSecretsOutput {
+func (o NetworkFunctionUserConfigurationOsProfileOutput) ToNetworkFunctionUserConfigurationOsProfileOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationOsProfileOutput {
 	return o
 }
 
-func (o NetworkFunctionValueWithSecretsOutput) ToNetworkFunctionValueWithSecretsPtrOutput() NetworkFunctionValueWithSecretsPtrOutput {
-	return o.ToNetworkFunctionValueWithSecretsPtrOutputWithContext(context.Background())
+func (o NetworkFunctionUserConfigurationOsProfileOutput) ToNetworkFunctionUserConfigurationOsProfilePtrOutput() NetworkFunctionUserConfigurationOsProfilePtrOutput {
+	return o.ToNetworkFunctionUserConfigurationOsProfilePtrOutputWithContext(context.Background())
 }
 
-func (o NetworkFunctionValueWithSecretsOutput) ToNetworkFunctionValueWithSecretsPtrOutputWithContext(ctx context.Context) NetworkFunctionValueWithSecretsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkFunctionValueWithSecrets) *NetworkFunctionValueWithSecrets {
+func (o NetworkFunctionUserConfigurationOsProfileOutput) ToNetworkFunctionUserConfigurationOsProfilePtrOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationOsProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkFunctionUserConfigurationOsProfile) *NetworkFunctionUserConfigurationOsProfile {
 		return &v
-	}).(NetworkFunctionValueWithSecretsPtrOutput)
+	}).(NetworkFunctionUserConfigurationOsProfilePtrOutput)
 }
 
-// Indicates if software updates are allowed during deployment.
-func (o NetworkFunctionValueWithSecretsOutput) AllowSoftwareUpdate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) *bool { return v.AllowSoftwareUpdate }).(pulumi.BoolPtrOutput)
+// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+func (o NetworkFunctionUserConfigurationOsProfileOutput) CustomData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkFunctionUserConfigurationOsProfile) *string { return v.CustomData }).(pulumi.StringPtrOutput)
 }
 
-// The secret type which indicates if secret or not.
-// Expected value is 'Secret'.
-func (o NetworkFunctionValueWithSecretsOutput) ConfigurationType() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) string { return v.ConfigurationType }).(pulumi.StringOutput)
+type NetworkFunctionUserConfigurationOsProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkFunctionUserConfigurationOsProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkFunctionUserConfigurationOsProfile)(nil)).Elem()
 }
 
-// The network function definition group name for the network function.
-func (o NetworkFunctionValueWithSecretsOutput) NetworkFunctionDefinitionGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) *string { return v.NetworkFunctionDefinitionGroupName }).(pulumi.StringPtrOutput)
-}
-
-// The location of the network function definition offering.
-func (o NetworkFunctionValueWithSecretsOutput) NetworkFunctionDefinitionOfferingLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) *string { return v.NetworkFunctionDefinitionOfferingLocation }).(pulumi.StringPtrOutput)
-}
-
-// The network function definition version for the network function.
-func (o NetworkFunctionValueWithSecretsOutput) NetworkFunctionDefinitionVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) *string { return v.NetworkFunctionDefinitionVersion }).(pulumi.StringPtrOutput)
-}
-
-// The network function definition version resource reference.
-func (o NetworkFunctionValueWithSecretsOutput) NetworkFunctionDefinitionVersionResourceReference() pulumi.AnyOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) interface{} {
-		return v.NetworkFunctionDefinitionVersionResourceReference
-	}).(pulumi.AnyOutput)
-}
-
-// The nfviId for the network function.
-func (o NetworkFunctionValueWithSecretsOutput) NfviId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) *string { return v.NfviId }).(pulumi.StringPtrOutput)
-}
-
-// The nfvi type for the network function.
-func (o NetworkFunctionValueWithSecretsOutput) NfviType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) *string { return v.NfviType }).(pulumi.StringPtrOutput)
-}
-
-// The publisher name for the network function.
-func (o NetworkFunctionValueWithSecretsOutput) PublisherName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) *string { return v.PublisherName }).(pulumi.StringPtrOutput)
-}
-
-// The scope of the publisher.
-func (o NetworkFunctionValueWithSecretsOutput) PublisherScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) *string { return v.PublisherScope }).(pulumi.StringPtrOutput)
-}
-
-// The role configuration override values from the user.
-func (o NetworkFunctionValueWithSecretsOutput) RoleOverrideValues() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) []string { return v.RoleOverrideValues }).(pulumi.StringArrayOutput)
-}
-
-// The JSON-serialized secret deployment values from the user. This contains secrets like passwords,keys etc
-func (o NetworkFunctionValueWithSecretsOutput) SecretDeploymentValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecrets) *string { return v.SecretDeploymentValues }).(pulumi.StringPtrOutput)
-}
-
-type NetworkFunctionValueWithSecretsPtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkFunctionValueWithSecretsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkFunctionValueWithSecrets)(nil)).Elem()
-}
-
-func (o NetworkFunctionValueWithSecretsPtrOutput) ToNetworkFunctionValueWithSecretsPtrOutput() NetworkFunctionValueWithSecretsPtrOutput {
+func (o NetworkFunctionUserConfigurationOsProfilePtrOutput) ToNetworkFunctionUserConfigurationOsProfilePtrOutput() NetworkFunctionUserConfigurationOsProfilePtrOutput {
 	return o
 }
 
-func (o NetworkFunctionValueWithSecretsPtrOutput) ToNetworkFunctionValueWithSecretsPtrOutputWithContext(ctx context.Context) NetworkFunctionValueWithSecretsPtrOutput {
+func (o NetworkFunctionUserConfigurationOsProfilePtrOutput) ToNetworkFunctionUserConfigurationOsProfilePtrOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationOsProfilePtrOutput {
 	return o
 }
 
-func (o NetworkFunctionValueWithSecretsPtrOutput) Elem() NetworkFunctionValueWithSecretsOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) NetworkFunctionValueWithSecrets {
+func (o NetworkFunctionUserConfigurationOsProfilePtrOutput) Elem() NetworkFunctionUserConfigurationOsProfileOutput {
+	return o.ApplyT(func(v *NetworkFunctionUserConfigurationOsProfile) NetworkFunctionUserConfigurationOsProfile {
 		if v != nil {
 			return *v
 		}
-		var ret NetworkFunctionValueWithSecrets
+		var ret NetworkFunctionUserConfigurationOsProfile
 		return ret
-	}).(NetworkFunctionValueWithSecretsOutput)
+	}).(NetworkFunctionUserConfigurationOsProfileOutput)
 }
 
-// Indicates if software updates are allowed during deployment.
-func (o NetworkFunctionValueWithSecretsPtrOutput) AllowSoftwareUpdate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) *bool {
+// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+func (o NetworkFunctionUserConfigurationOsProfilePtrOutput) CustomData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkFunctionUserConfigurationOsProfile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AllowSoftwareUpdate
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The secret type which indicates if secret or not.
-// Expected value is 'Secret'.
-func (o NetworkFunctionValueWithSecretsPtrOutput) ConfigurationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ConfigurationType
+		return v.CustomData
 	}).(pulumi.StringPtrOutput)
 }
 
-// The network function definition group name for the network function.
-func (o NetworkFunctionValueWithSecretsPtrOutput) NetworkFunctionDefinitionGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkFunctionDefinitionGroupName
-	}).(pulumi.StringPtrOutput)
+// The network function user configuration.
+type NetworkFunctionUserConfigurationResponse struct {
+	// The network interface configuration.
+	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+	// Specifies the operating system settings for the role instance.
+	OsProfile *NetworkFunctionUserConfigurationResponseOsProfile `pulumi:"osProfile"`
+	// The name of the network function role.
+	RoleName *string `pulumi:"roleName"`
+	// The user data parameters from the customer.
+	UserDataParameters interface{} `pulumi:"userDataParameters"`
 }
 
-// The location of the network function definition offering.
-func (o NetworkFunctionValueWithSecretsPtrOutput) NetworkFunctionDefinitionOfferingLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkFunctionDefinitionOfferingLocation
-	}).(pulumi.StringPtrOutput)
+// The network function user configuration.
+type NetworkFunctionUserConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkFunctionUserConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkFunctionUserConfigurationResponse)(nil)).Elem()
 }
 
-// The network function definition version for the network function.
-func (o NetworkFunctionValueWithSecretsPtrOutput) NetworkFunctionDefinitionVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkFunctionDefinitionVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The network function definition version resource reference.
-func (o NetworkFunctionValueWithSecretsPtrOutput) NetworkFunctionDefinitionVersionResourceReference() pulumi.AnyOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkFunctionDefinitionVersionResourceReference
-	}).(pulumi.AnyOutput)
-}
-
-// The nfviId for the network function.
-func (o NetworkFunctionValueWithSecretsPtrOutput) NfviId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NfviId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The nfvi type for the network function.
-func (o NetworkFunctionValueWithSecretsPtrOutput) NfviType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NfviType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The publisher name for the network function.
-func (o NetworkFunctionValueWithSecretsPtrOutput) PublisherName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublisherName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The scope of the publisher.
-func (o NetworkFunctionValueWithSecretsPtrOutput) PublisherScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublisherScope
-	}).(pulumi.StringPtrOutput)
-}
-
-// The role configuration override values from the user.
-func (o NetworkFunctionValueWithSecretsPtrOutput) RoleOverrideValues() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) []string {
-		if v == nil {
-			return nil
-		}
-		return v.RoleOverrideValues
-	}).(pulumi.StringArrayOutput)
-}
-
-// The JSON-serialized secret deployment values from the user. This contains secrets like passwords,keys etc
-func (o NetworkFunctionValueWithSecretsPtrOutput) SecretDeploymentValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretDeploymentValues
-	}).(pulumi.StringPtrOutput)
-}
-
-// NetworkFunction with secrets.
-type NetworkFunctionValueWithSecretsResponse struct {
-	// Indicates if software updates are allowed during deployment.
-	AllowSoftwareUpdate *bool `pulumi:"allowSoftwareUpdate"`
-	// The secret type which indicates if secret or not.
-	// Expected value is 'Secret'.
-	ConfigurationType string `pulumi:"configurationType"`
-	// The network function definition group name for the network function.
-	NetworkFunctionDefinitionGroupName *string `pulumi:"networkFunctionDefinitionGroupName"`
-	// The location of the network function definition offering.
-	NetworkFunctionDefinitionOfferingLocation *string `pulumi:"networkFunctionDefinitionOfferingLocation"`
-	// The network function definition version for the network function.
-	NetworkFunctionDefinitionVersion *string `pulumi:"networkFunctionDefinitionVersion"`
-	// The network function definition version resource reference.
-	NetworkFunctionDefinitionVersionResourceReference interface{} `pulumi:"networkFunctionDefinitionVersionResourceReference"`
-	// The nfviId for the network function.
-	NfviId *string `pulumi:"nfviId"`
-	// The nfvi type for the network function.
-	NfviType *string `pulumi:"nfviType"`
-	// The provisioning state of the network function resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The publisher name for the network function.
-	PublisherName *string `pulumi:"publisherName"`
-	// The scope of the publisher.
-	PublisherScope *string `pulumi:"publisherScope"`
-	// The role configuration override values from the user.
-	RoleOverrideValues []string `pulumi:"roleOverrideValues"`
-}
-
-// NetworkFunction with secrets.
-type NetworkFunctionValueWithSecretsResponseOutput struct{ *pulumi.OutputState }
-
-func (NetworkFunctionValueWithSecretsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkFunctionValueWithSecretsResponse)(nil)).Elem()
-}
-
-func (o NetworkFunctionValueWithSecretsResponseOutput) ToNetworkFunctionValueWithSecretsResponseOutput() NetworkFunctionValueWithSecretsResponseOutput {
+func (o NetworkFunctionUserConfigurationResponseOutput) ToNetworkFunctionUserConfigurationResponseOutput() NetworkFunctionUserConfigurationResponseOutput {
 	return o
 }
 
-func (o NetworkFunctionValueWithSecretsResponseOutput) ToNetworkFunctionValueWithSecretsResponseOutputWithContext(ctx context.Context) NetworkFunctionValueWithSecretsResponseOutput {
+func (o NetworkFunctionUserConfigurationResponseOutput) ToNetworkFunctionUserConfigurationResponseOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationResponseOutput {
 	return o
 }
 
-// Indicates if software updates are allowed during deployment.
-func (o NetworkFunctionValueWithSecretsResponseOutput) AllowSoftwareUpdate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) *bool { return v.AllowSoftwareUpdate }).(pulumi.BoolPtrOutput)
+// The network interface configuration.
+func (o NetworkFunctionUserConfigurationResponseOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v NetworkFunctionUserConfigurationResponse) []NetworkInterfaceResponse {
+		return v.NetworkInterfaces
+	}).(NetworkInterfaceResponseArrayOutput)
 }
 
-// The secret type which indicates if secret or not.
-// Expected value is 'Secret'.
-func (o NetworkFunctionValueWithSecretsResponseOutput) ConfigurationType() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) string { return v.ConfigurationType }).(pulumi.StringOutput)
+// Specifies the operating system settings for the role instance.
+func (o NetworkFunctionUserConfigurationResponseOutput) OsProfile() NetworkFunctionUserConfigurationResponseOsProfilePtrOutput {
+	return o.ApplyT(func(v NetworkFunctionUserConfigurationResponse) *NetworkFunctionUserConfigurationResponseOsProfile {
+		return v.OsProfile
+	}).(NetworkFunctionUserConfigurationResponseOsProfilePtrOutput)
 }
 
-// The network function definition group name for the network function.
-func (o NetworkFunctionValueWithSecretsResponseOutput) NetworkFunctionDefinitionGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) *string { return v.NetworkFunctionDefinitionGroupName }).(pulumi.StringPtrOutput)
+// The name of the network function role.
+func (o NetworkFunctionUserConfigurationResponseOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkFunctionUserConfigurationResponse) *string { return v.RoleName }).(pulumi.StringPtrOutput)
 }
 
-// The location of the network function definition offering.
-func (o NetworkFunctionValueWithSecretsResponseOutput) NetworkFunctionDefinitionOfferingLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) *string {
-		return v.NetworkFunctionDefinitionOfferingLocation
-	}).(pulumi.StringPtrOutput)
+// The user data parameters from the customer.
+func (o NetworkFunctionUserConfigurationResponseOutput) UserDataParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v NetworkFunctionUserConfigurationResponse) interface{} { return v.UserDataParameters }).(pulumi.AnyOutput)
 }
 
-// The network function definition version for the network function.
-func (o NetworkFunctionValueWithSecretsResponseOutput) NetworkFunctionDefinitionVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) *string { return v.NetworkFunctionDefinitionVersion }).(pulumi.StringPtrOutput)
+type NetworkFunctionUserConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkFunctionUserConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkFunctionUserConfigurationResponse)(nil)).Elem()
 }
 
-// The network function definition version resource reference.
-func (o NetworkFunctionValueWithSecretsResponseOutput) NetworkFunctionDefinitionVersionResourceReference() pulumi.AnyOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) interface{} {
-		return v.NetworkFunctionDefinitionVersionResourceReference
-	}).(pulumi.AnyOutput)
-}
-
-// The nfviId for the network function.
-func (o NetworkFunctionValueWithSecretsResponseOutput) NfviId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) *string { return v.NfviId }).(pulumi.StringPtrOutput)
-}
-
-// The nfvi type for the network function.
-func (o NetworkFunctionValueWithSecretsResponseOutput) NfviType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) *string { return v.NfviType }).(pulumi.StringPtrOutput)
-}
-
-// The provisioning state of the network function resource.
-func (o NetworkFunctionValueWithSecretsResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The publisher name for the network function.
-func (o NetworkFunctionValueWithSecretsResponseOutput) PublisherName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) *string { return v.PublisherName }).(pulumi.StringPtrOutput)
-}
-
-// The scope of the publisher.
-func (o NetworkFunctionValueWithSecretsResponseOutput) PublisherScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) *string { return v.PublisherScope }).(pulumi.StringPtrOutput)
-}
-
-// The role configuration override values from the user.
-func (o NetworkFunctionValueWithSecretsResponseOutput) RoleOverrideValues() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithSecretsResponse) []string { return v.RoleOverrideValues }).(pulumi.StringArrayOutput)
-}
-
-// NetworkFunction with no secrets.
-type NetworkFunctionValueWithoutSecrets struct {
-	// Indicates if software updates are allowed during deployment.
-	AllowSoftwareUpdate *bool `pulumi:"allowSoftwareUpdate"`
-	// The secret type which indicates if secret or not.
-	// Expected value is 'Open'.
-	ConfigurationType string `pulumi:"configurationType"`
-	// The JSON-serialized deployment values from the user.
-	DeploymentValues *string `pulumi:"deploymentValues"`
-	// The network function definition group name for the network function.
-	NetworkFunctionDefinitionGroupName *string `pulumi:"networkFunctionDefinitionGroupName"`
-	// The location of the network function definition offering.
-	NetworkFunctionDefinitionOfferingLocation *string `pulumi:"networkFunctionDefinitionOfferingLocation"`
-	// The network function definition version for the network function.
-	NetworkFunctionDefinitionVersion *string `pulumi:"networkFunctionDefinitionVersion"`
-	// The network function definition version resource reference.
-	NetworkFunctionDefinitionVersionResourceReference interface{} `pulumi:"networkFunctionDefinitionVersionResourceReference"`
-	// The nfviId for the network function.
-	NfviId *string `pulumi:"nfviId"`
-	// The nfvi type for the network function.
-	NfviType *string `pulumi:"nfviType"`
-	// The publisher name for the network function.
-	PublisherName *string `pulumi:"publisherName"`
-	// The scope of the publisher.
-	PublisherScope *string `pulumi:"publisherScope"`
-	// The role configuration override values from the user.
-	RoleOverrideValues []string `pulumi:"roleOverrideValues"`
-}
-
-// NetworkFunctionValueWithoutSecretsInput is an input type that accepts NetworkFunctionValueWithoutSecretsArgs and NetworkFunctionValueWithoutSecretsOutput values.
-// You can construct a concrete instance of `NetworkFunctionValueWithoutSecretsInput` via:
-//
-//	NetworkFunctionValueWithoutSecretsArgs{...}
-type NetworkFunctionValueWithoutSecretsInput interface {
-	pulumi.Input
-
-	ToNetworkFunctionValueWithoutSecretsOutput() NetworkFunctionValueWithoutSecretsOutput
-	ToNetworkFunctionValueWithoutSecretsOutputWithContext(context.Context) NetworkFunctionValueWithoutSecretsOutput
-}
-
-// NetworkFunction with no secrets.
-type NetworkFunctionValueWithoutSecretsArgs struct {
-	// Indicates if software updates are allowed during deployment.
-	AllowSoftwareUpdate pulumi.BoolPtrInput `pulumi:"allowSoftwareUpdate"`
-	// The secret type which indicates if secret or not.
-	// Expected value is 'Open'.
-	ConfigurationType pulumi.StringInput `pulumi:"configurationType"`
-	// The JSON-serialized deployment values from the user.
-	DeploymentValues pulumi.StringPtrInput `pulumi:"deploymentValues"`
-	// The network function definition group name for the network function.
-	NetworkFunctionDefinitionGroupName pulumi.StringPtrInput `pulumi:"networkFunctionDefinitionGroupName"`
-	// The location of the network function definition offering.
-	NetworkFunctionDefinitionOfferingLocation pulumi.StringPtrInput `pulumi:"networkFunctionDefinitionOfferingLocation"`
-	// The network function definition version for the network function.
-	NetworkFunctionDefinitionVersion pulumi.StringPtrInput `pulumi:"networkFunctionDefinitionVersion"`
-	// The network function definition version resource reference.
-	NetworkFunctionDefinitionVersionResourceReference pulumi.Input `pulumi:"networkFunctionDefinitionVersionResourceReference"`
-	// The nfviId for the network function.
-	NfviId pulumi.StringPtrInput `pulumi:"nfviId"`
-	// The nfvi type for the network function.
-	NfviType pulumi.StringPtrInput `pulumi:"nfviType"`
-	// The publisher name for the network function.
-	PublisherName pulumi.StringPtrInput `pulumi:"publisherName"`
-	// The scope of the publisher.
-	PublisherScope pulumi.StringPtrInput `pulumi:"publisherScope"`
-	// The role configuration override values from the user.
-	RoleOverrideValues pulumi.StringArrayInput `pulumi:"roleOverrideValues"`
-}
-
-func (NetworkFunctionValueWithoutSecretsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkFunctionValueWithoutSecrets)(nil)).Elem()
-}
-
-func (i NetworkFunctionValueWithoutSecretsArgs) ToNetworkFunctionValueWithoutSecretsOutput() NetworkFunctionValueWithoutSecretsOutput {
-	return i.ToNetworkFunctionValueWithoutSecretsOutputWithContext(context.Background())
-}
-
-func (i NetworkFunctionValueWithoutSecretsArgs) ToNetworkFunctionValueWithoutSecretsOutputWithContext(ctx context.Context) NetworkFunctionValueWithoutSecretsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionValueWithoutSecretsOutput)
-}
-
-func (i NetworkFunctionValueWithoutSecretsArgs) ToNetworkFunctionValueWithoutSecretsPtrOutput() NetworkFunctionValueWithoutSecretsPtrOutput {
-	return i.ToNetworkFunctionValueWithoutSecretsPtrOutputWithContext(context.Background())
-}
-
-func (i NetworkFunctionValueWithoutSecretsArgs) ToNetworkFunctionValueWithoutSecretsPtrOutputWithContext(ctx context.Context) NetworkFunctionValueWithoutSecretsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionValueWithoutSecretsOutput).ToNetworkFunctionValueWithoutSecretsPtrOutputWithContext(ctx)
-}
-
-// NetworkFunctionValueWithoutSecretsPtrInput is an input type that accepts NetworkFunctionValueWithoutSecretsArgs, NetworkFunctionValueWithoutSecretsPtr and NetworkFunctionValueWithoutSecretsPtrOutput values.
-// You can construct a concrete instance of `NetworkFunctionValueWithoutSecretsPtrInput` via:
-//
-//	        NetworkFunctionValueWithoutSecretsArgs{...}
-//
-//	or:
-//
-//	        nil
-type NetworkFunctionValueWithoutSecretsPtrInput interface {
-	pulumi.Input
-
-	ToNetworkFunctionValueWithoutSecretsPtrOutput() NetworkFunctionValueWithoutSecretsPtrOutput
-	ToNetworkFunctionValueWithoutSecretsPtrOutputWithContext(context.Context) NetworkFunctionValueWithoutSecretsPtrOutput
-}
-
-type networkFunctionValueWithoutSecretsPtrType NetworkFunctionValueWithoutSecretsArgs
-
-func NetworkFunctionValueWithoutSecretsPtr(v *NetworkFunctionValueWithoutSecretsArgs) NetworkFunctionValueWithoutSecretsPtrInput {
-	return (*networkFunctionValueWithoutSecretsPtrType)(v)
-}
-
-func (*networkFunctionValueWithoutSecretsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkFunctionValueWithoutSecrets)(nil)).Elem()
-}
-
-func (i *networkFunctionValueWithoutSecretsPtrType) ToNetworkFunctionValueWithoutSecretsPtrOutput() NetworkFunctionValueWithoutSecretsPtrOutput {
-	return i.ToNetworkFunctionValueWithoutSecretsPtrOutputWithContext(context.Background())
-}
-
-func (i *networkFunctionValueWithoutSecretsPtrType) ToNetworkFunctionValueWithoutSecretsPtrOutputWithContext(ctx context.Context) NetworkFunctionValueWithoutSecretsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionValueWithoutSecretsPtrOutput)
-}
-
-// NetworkFunction with no secrets.
-type NetworkFunctionValueWithoutSecretsOutput struct{ *pulumi.OutputState }
-
-func (NetworkFunctionValueWithoutSecretsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkFunctionValueWithoutSecrets)(nil)).Elem()
-}
-
-func (o NetworkFunctionValueWithoutSecretsOutput) ToNetworkFunctionValueWithoutSecretsOutput() NetworkFunctionValueWithoutSecretsOutput {
+func (o NetworkFunctionUserConfigurationResponseArrayOutput) ToNetworkFunctionUserConfigurationResponseArrayOutput() NetworkFunctionUserConfigurationResponseArrayOutput {
 	return o
 }
 
-func (o NetworkFunctionValueWithoutSecretsOutput) ToNetworkFunctionValueWithoutSecretsOutputWithContext(ctx context.Context) NetworkFunctionValueWithoutSecretsOutput {
+func (o NetworkFunctionUserConfigurationResponseArrayOutput) ToNetworkFunctionUserConfigurationResponseArrayOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationResponseArrayOutput {
 	return o
 }
 
-func (o NetworkFunctionValueWithoutSecretsOutput) ToNetworkFunctionValueWithoutSecretsPtrOutput() NetworkFunctionValueWithoutSecretsPtrOutput {
-	return o.ToNetworkFunctionValueWithoutSecretsPtrOutputWithContext(context.Background())
+func (o NetworkFunctionUserConfigurationResponseArrayOutput) Index(i pulumi.IntInput) NetworkFunctionUserConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkFunctionUserConfigurationResponse {
+		return vs[0].([]NetworkFunctionUserConfigurationResponse)[vs[1].(int)]
+	}).(NetworkFunctionUserConfigurationResponseOutput)
 }
 
-func (o NetworkFunctionValueWithoutSecretsOutput) ToNetworkFunctionValueWithoutSecretsPtrOutputWithContext(ctx context.Context) NetworkFunctionValueWithoutSecretsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkFunctionValueWithoutSecrets) *NetworkFunctionValueWithoutSecrets {
-		return &v
-	}).(NetworkFunctionValueWithoutSecretsPtrOutput)
+// Specifies the operating system settings for the role instance.
+type NetworkFunctionUserConfigurationResponseOsProfile struct {
+	// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+	CustomData *string `pulumi:"customData"`
 }
 
-// Indicates if software updates are allowed during deployment.
-func (o NetworkFunctionValueWithoutSecretsOutput) AllowSoftwareUpdate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) *bool { return v.AllowSoftwareUpdate }).(pulumi.BoolPtrOutput)
+// Specifies the operating system settings for the role instance.
+type NetworkFunctionUserConfigurationResponseOsProfileOutput struct{ *pulumi.OutputState }
+
+func (NetworkFunctionUserConfigurationResponseOsProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkFunctionUserConfigurationResponseOsProfile)(nil)).Elem()
 }
 
-// The secret type which indicates if secret or not.
-// Expected value is 'Open'.
-func (o NetworkFunctionValueWithoutSecretsOutput) ConfigurationType() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) string { return v.ConfigurationType }).(pulumi.StringOutput)
-}
-
-// The JSON-serialized deployment values from the user.
-func (o NetworkFunctionValueWithoutSecretsOutput) DeploymentValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) *string { return v.DeploymentValues }).(pulumi.StringPtrOutput)
-}
-
-// The network function definition group name for the network function.
-func (o NetworkFunctionValueWithoutSecretsOutput) NetworkFunctionDefinitionGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) *string { return v.NetworkFunctionDefinitionGroupName }).(pulumi.StringPtrOutput)
-}
-
-// The location of the network function definition offering.
-func (o NetworkFunctionValueWithoutSecretsOutput) NetworkFunctionDefinitionOfferingLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) *string { return v.NetworkFunctionDefinitionOfferingLocation }).(pulumi.StringPtrOutput)
-}
-
-// The network function definition version for the network function.
-func (o NetworkFunctionValueWithoutSecretsOutput) NetworkFunctionDefinitionVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) *string { return v.NetworkFunctionDefinitionVersion }).(pulumi.StringPtrOutput)
-}
-
-// The network function definition version resource reference.
-func (o NetworkFunctionValueWithoutSecretsOutput) NetworkFunctionDefinitionVersionResourceReference() pulumi.AnyOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) interface{} {
-		return v.NetworkFunctionDefinitionVersionResourceReference
-	}).(pulumi.AnyOutput)
-}
-
-// The nfviId for the network function.
-func (o NetworkFunctionValueWithoutSecretsOutput) NfviId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) *string { return v.NfviId }).(pulumi.StringPtrOutput)
-}
-
-// The nfvi type for the network function.
-func (o NetworkFunctionValueWithoutSecretsOutput) NfviType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) *string { return v.NfviType }).(pulumi.StringPtrOutput)
-}
-
-// The publisher name for the network function.
-func (o NetworkFunctionValueWithoutSecretsOutput) PublisherName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) *string { return v.PublisherName }).(pulumi.StringPtrOutput)
-}
-
-// The scope of the publisher.
-func (o NetworkFunctionValueWithoutSecretsOutput) PublisherScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) *string { return v.PublisherScope }).(pulumi.StringPtrOutput)
-}
-
-// The role configuration override values from the user.
-func (o NetworkFunctionValueWithoutSecretsOutput) RoleOverrideValues() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecrets) []string { return v.RoleOverrideValues }).(pulumi.StringArrayOutput)
-}
-
-type NetworkFunctionValueWithoutSecretsPtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkFunctionValueWithoutSecretsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkFunctionValueWithoutSecrets)(nil)).Elem()
-}
-
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) ToNetworkFunctionValueWithoutSecretsPtrOutput() NetworkFunctionValueWithoutSecretsPtrOutput {
+func (o NetworkFunctionUserConfigurationResponseOsProfileOutput) ToNetworkFunctionUserConfigurationResponseOsProfileOutput() NetworkFunctionUserConfigurationResponseOsProfileOutput {
 	return o
 }
 
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) ToNetworkFunctionValueWithoutSecretsPtrOutputWithContext(ctx context.Context) NetworkFunctionValueWithoutSecretsPtrOutput {
+func (o NetworkFunctionUserConfigurationResponseOsProfileOutput) ToNetworkFunctionUserConfigurationResponseOsProfileOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationResponseOsProfileOutput {
 	return o
 }
 
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) Elem() NetworkFunctionValueWithoutSecretsOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) NetworkFunctionValueWithoutSecrets {
+// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+func (o NetworkFunctionUserConfigurationResponseOsProfileOutput) CustomData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkFunctionUserConfigurationResponseOsProfile) *string { return v.CustomData }).(pulumi.StringPtrOutput)
+}
+
+type NetworkFunctionUserConfigurationResponseOsProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkFunctionUserConfigurationResponseOsProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkFunctionUserConfigurationResponseOsProfile)(nil)).Elem()
+}
+
+func (o NetworkFunctionUserConfigurationResponseOsProfilePtrOutput) ToNetworkFunctionUserConfigurationResponseOsProfilePtrOutput() NetworkFunctionUserConfigurationResponseOsProfilePtrOutput {
+	return o
+}
+
+func (o NetworkFunctionUserConfigurationResponseOsProfilePtrOutput) ToNetworkFunctionUserConfigurationResponseOsProfilePtrOutputWithContext(ctx context.Context) NetworkFunctionUserConfigurationResponseOsProfilePtrOutput {
+	return o
+}
+
+func (o NetworkFunctionUserConfigurationResponseOsProfilePtrOutput) Elem() NetworkFunctionUserConfigurationResponseOsProfileOutput {
+	return o.ApplyT(func(v *NetworkFunctionUserConfigurationResponseOsProfile) NetworkFunctionUserConfigurationResponseOsProfile {
 		if v != nil {
 			return *v
 		}
-		var ret NetworkFunctionValueWithoutSecrets
+		var ret NetworkFunctionUserConfigurationResponseOsProfile
 		return ret
-	}).(NetworkFunctionValueWithoutSecretsOutput)
+	}).(NetworkFunctionUserConfigurationResponseOsProfileOutput)
 }
 
-// Indicates if software updates are allowed during deployment.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) AllowSoftwareUpdate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) *bool {
+// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+func (o NetworkFunctionUserConfigurationResponseOsProfilePtrOutput) CustomData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkFunctionUserConfigurationResponseOsProfile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AllowSoftwareUpdate
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The secret type which indicates if secret or not.
-// Expected value is 'Open'.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) ConfigurationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ConfigurationType
+		return v.CustomData
 	}).(pulumi.StringPtrOutput)
-}
-
-// The JSON-serialized deployment values from the user.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) DeploymentValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeploymentValues
-	}).(pulumi.StringPtrOutput)
-}
-
-// The network function definition group name for the network function.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) NetworkFunctionDefinitionGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkFunctionDefinitionGroupName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The location of the network function definition offering.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) NetworkFunctionDefinitionOfferingLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkFunctionDefinitionOfferingLocation
-	}).(pulumi.StringPtrOutput)
-}
-
-// The network function definition version for the network function.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) NetworkFunctionDefinitionVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkFunctionDefinitionVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The network function definition version resource reference.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) NetworkFunctionDefinitionVersionResourceReference() pulumi.AnyOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkFunctionDefinitionVersionResourceReference
-	}).(pulumi.AnyOutput)
-}
-
-// The nfviId for the network function.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) NfviId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NfviId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The nfvi type for the network function.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) NfviType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NfviType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The publisher name for the network function.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) PublisherName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublisherName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The scope of the publisher.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) PublisherScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublisherScope
-	}).(pulumi.StringPtrOutput)
-}
-
-// The role configuration override values from the user.
-func (o NetworkFunctionValueWithoutSecretsPtrOutput) RoleOverrideValues() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NetworkFunctionValueWithoutSecrets) []string {
-		if v == nil {
-			return nil
-		}
-		return v.RoleOverrideValues
-	}).(pulumi.StringArrayOutput)
-}
-
-// NetworkFunction with no secrets.
-type NetworkFunctionValueWithoutSecretsResponse struct {
-	// Indicates if software updates are allowed during deployment.
-	AllowSoftwareUpdate *bool `pulumi:"allowSoftwareUpdate"`
-	// The secret type which indicates if secret or not.
-	// Expected value is 'Open'.
-	ConfigurationType string `pulumi:"configurationType"`
-	// The JSON-serialized deployment values from the user.
-	DeploymentValues *string `pulumi:"deploymentValues"`
-	// The network function definition group name for the network function.
-	NetworkFunctionDefinitionGroupName *string `pulumi:"networkFunctionDefinitionGroupName"`
-	// The location of the network function definition offering.
-	NetworkFunctionDefinitionOfferingLocation *string `pulumi:"networkFunctionDefinitionOfferingLocation"`
-	// The network function definition version for the network function.
-	NetworkFunctionDefinitionVersion *string `pulumi:"networkFunctionDefinitionVersion"`
-	// The network function definition version resource reference.
-	NetworkFunctionDefinitionVersionResourceReference interface{} `pulumi:"networkFunctionDefinitionVersionResourceReference"`
-	// The nfviId for the network function.
-	NfviId *string `pulumi:"nfviId"`
-	// The nfvi type for the network function.
-	NfviType *string `pulumi:"nfviType"`
-	// The provisioning state of the network function resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The publisher name for the network function.
-	PublisherName *string `pulumi:"publisherName"`
-	// The scope of the publisher.
-	PublisherScope *string `pulumi:"publisherScope"`
-	// The role configuration override values from the user.
-	RoleOverrideValues []string `pulumi:"roleOverrideValues"`
-}
-
-// NetworkFunction with no secrets.
-type NetworkFunctionValueWithoutSecretsResponseOutput struct{ *pulumi.OutputState }
-
-func (NetworkFunctionValueWithoutSecretsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkFunctionValueWithoutSecretsResponse)(nil)).Elem()
-}
-
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) ToNetworkFunctionValueWithoutSecretsResponseOutput() NetworkFunctionValueWithoutSecretsResponseOutput {
-	return o
-}
-
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) ToNetworkFunctionValueWithoutSecretsResponseOutputWithContext(ctx context.Context) NetworkFunctionValueWithoutSecretsResponseOutput {
-	return o
-}
-
-// Indicates if software updates are allowed during deployment.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) AllowSoftwareUpdate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) *bool { return v.AllowSoftwareUpdate }).(pulumi.BoolPtrOutput)
-}
-
-// The secret type which indicates if secret or not.
-// Expected value is 'Open'.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) ConfigurationType() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) string { return v.ConfigurationType }).(pulumi.StringOutput)
-}
-
-// The JSON-serialized deployment values from the user.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) DeploymentValues() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) *string { return v.DeploymentValues }).(pulumi.StringPtrOutput)
-}
-
-// The network function definition group name for the network function.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) NetworkFunctionDefinitionGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) *string {
-		return v.NetworkFunctionDefinitionGroupName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The location of the network function definition offering.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) NetworkFunctionDefinitionOfferingLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) *string {
-		return v.NetworkFunctionDefinitionOfferingLocation
-	}).(pulumi.StringPtrOutput)
-}
-
-// The network function definition version for the network function.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) NetworkFunctionDefinitionVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) *string { return v.NetworkFunctionDefinitionVersion }).(pulumi.StringPtrOutput)
-}
-
-// The network function definition version resource reference.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) NetworkFunctionDefinitionVersionResourceReference() pulumi.AnyOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) interface{} {
-		return v.NetworkFunctionDefinitionVersionResourceReference
-	}).(pulumi.AnyOutput)
-}
-
-// The nfviId for the network function.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) NfviId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) *string { return v.NfviId }).(pulumi.StringPtrOutput)
-}
-
-// The nfvi type for the network function.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) NfviType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) *string { return v.NfviType }).(pulumi.StringPtrOutput)
-}
-
-// The provisioning state of the network function resource.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The publisher name for the network function.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) PublisherName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) *string { return v.PublisherName }).(pulumi.StringPtrOutput)
-}
-
-// The scope of the publisher.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) PublisherScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) *string { return v.PublisherScope }).(pulumi.StringPtrOutput)
-}
-
-// The role configuration override values from the user.
-func (o NetworkFunctionValueWithoutSecretsResponseOutput) RoleOverrideValues() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NetworkFunctionValueWithoutSecretsResponse) []string { return v.RoleOverrideValues }).(pulumi.StringArrayOutput)
 }
 
 // Network interface properties.
@@ -16708,6 +16145,158 @@ func (o StorageProfileResponsePtrOutput) OsDisk() OsDiskResponsePtrOutput {
 }
 
 // Reference to another sub resource.
+type SubResource struct {
+	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
+	Id *string `pulumi:"id"`
+}
+
+// SubResourceInput is an input type that accepts SubResourceArgs and SubResourceOutput values.
+// You can construct a concrete instance of `SubResourceInput` via:
+//
+//	SubResourceArgs{...}
+type SubResourceInput interface {
+	pulumi.Input
+
+	ToSubResourceOutput() SubResourceOutput
+	ToSubResourceOutputWithContext(context.Context) SubResourceOutput
+}
+
+// Reference to another sub resource.
+type SubResourceArgs struct {
+	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+	// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+	// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (SubResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubResource)(nil)).Elem()
+}
+
+func (i SubResourceArgs) ToSubResourceOutput() SubResourceOutput {
+	return i.ToSubResourceOutputWithContext(context.Background())
+}
+
+func (i SubResourceArgs) ToSubResourceOutputWithContext(ctx context.Context) SubResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubResourceOutput)
+}
+
+func (i SubResourceArgs) ToSubResourcePtrOutput() SubResourcePtrOutput {
+	return i.ToSubResourcePtrOutputWithContext(context.Background())
+}
+
+func (i SubResourceArgs) ToSubResourcePtrOutputWithContext(ctx context.Context) SubResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubResourceOutput).ToSubResourcePtrOutputWithContext(ctx)
+}
+
+// SubResourcePtrInput is an input type that accepts SubResourceArgs, SubResourcePtr and SubResourcePtrOutput values.
+// You can construct a concrete instance of `SubResourcePtrInput` via:
+//
+//	        SubResourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubResourcePtrInput interface {
+	pulumi.Input
+
+	ToSubResourcePtrOutput() SubResourcePtrOutput
+	ToSubResourcePtrOutputWithContext(context.Context) SubResourcePtrOutput
+}
+
+type subResourcePtrType SubResourceArgs
+
+func SubResourcePtr(v *SubResourceArgs) SubResourcePtrInput {
+	return (*subResourcePtrType)(v)
+}
+
+func (*subResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubResource)(nil)).Elem()
+}
+
+func (i *subResourcePtrType) ToSubResourcePtrOutput() SubResourcePtrOutput {
+	return i.ToSubResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *subResourcePtrType) ToSubResourcePtrOutputWithContext(ctx context.Context) SubResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubResourcePtrOutput)
+}
+
+// Reference to another sub resource.
+type SubResourceOutput struct{ *pulumi.OutputState }
+
+func (SubResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubResource)(nil)).Elem()
+}
+
+func (o SubResourceOutput) ToSubResourceOutput() SubResourceOutput {
+	return o
+}
+
+func (o SubResourceOutput) ToSubResourceOutputWithContext(ctx context.Context) SubResourceOutput {
+	return o
+}
+
+func (o SubResourceOutput) ToSubResourcePtrOutput() SubResourcePtrOutput {
+	return o.ToSubResourcePtrOutputWithContext(context.Background())
+}
+
+func (o SubResourceOutput) ToSubResourcePtrOutputWithContext(ctx context.Context) SubResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubResource) *SubResource {
+		return &v
+	}).(SubResourcePtrOutput)
+}
+
+// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
+func (o SubResourceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubResource) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type SubResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (SubResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubResource)(nil)).Elem()
+}
+
+func (o SubResourcePtrOutput) ToSubResourcePtrOutput() SubResourcePtrOutput {
+	return o
+}
+
+func (o SubResourcePtrOutput) ToSubResourcePtrOutputWithContext(ctx context.Context) SubResourcePtrOutput {
+	return o
+}
+
+func (o SubResourcePtrOutput) Elem() SubResourceOutput {
+	return o.ApplyT(func(v *SubResource) SubResource {
+		if v != nil {
+			return *v
+		}
+		var ret SubResource
+		return ret
+	}).(SubResourceOutput)
+}
+
+// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
+// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
+// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
+// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
+func (o SubResourcePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to another sub resource.
 type SubResourceResponse struct {
 	// Resource ID.
 	Id *string `pulumi:"id"`
@@ -16731,6 +16320,40 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 // Resource ID.
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type SubResourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SubResourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubResourceResponse)(nil)).Elem()
+}
+
+func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutput() SubResourceResponsePtrOutput {
+	return o
+}
+
+func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutputWithContext(ctx context.Context) SubResourceResponsePtrOutput {
+	return o
+}
+
+func (o SubResourceResponsePtrOutput) Elem() SubResourceResponseOutput {
+	return o.ApplyT(func(v *SubResourceResponse) SubResourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SubResourceResponse
+		return ret
+	}).(SubResourceResponseOutput)
+}
+
+// Resource ID.
+func (o SubResourceResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubResourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
 type SubResourceResponseArrayOutput struct{ *pulumi.OutputState }
@@ -17905,12 +17528,14 @@ func init() {
 	pulumi.RegisterOutputType(NetworkFunctionTemplatePtrOutput{})
 	pulumi.RegisterOutputType(NetworkFunctionTemplateResponseOutput{})
 	pulumi.RegisterOutputType(NetworkFunctionTemplateResponsePtrOutput{})
-	pulumi.RegisterOutputType(NetworkFunctionValueWithSecretsOutput{})
-	pulumi.RegisterOutputType(NetworkFunctionValueWithSecretsPtrOutput{})
-	pulumi.RegisterOutputType(NetworkFunctionValueWithSecretsResponseOutput{})
-	pulumi.RegisterOutputType(NetworkFunctionValueWithoutSecretsOutput{})
-	pulumi.RegisterOutputType(NetworkFunctionValueWithoutSecretsPtrOutput{})
-	pulumi.RegisterOutputType(NetworkFunctionValueWithoutSecretsResponseOutput{})
+	pulumi.RegisterOutputType(NetworkFunctionUserConfigurationOutput{})
+	pulumi.RegisterOutputType(NetworkFunctionUserConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(NetworkFunctionUserConfigurationOsProfileOutput{})
+	pulumi.RegisterOutputType(NetworkFunctionUserConfigurationOsProfilePtrOutput{})
+	pulumi.RegisterOutputType(NetworkFunctionUserConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(NetworkFunctionUserConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(NetworkFunctionUserConfigurationResponseOsProfileOutput{})
+	pulumi.RegisterOutputType(NetworkFunctionUserConfigurationResponseOsProfilePtrOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceIPConfigurationOutput{})
@@ -17977,7 +17602,10 @@ func init() {
 	pulumi.RegisterOutputType(StorageProfilePtrOutput{})
 	pulumi.RegisterOutputType(StorageProfileResponseOutput{})
 	pulumi.RegisterOutputType(StorageProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(SubResourceOutput{})
+	pulumi.RegisterOutputType(SubResourcePtrOutput{})
 	pulumi.RegisterOutputType(SubResourceResponseOutput{})
+	pulumi.RegisterOutputType(SubResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})

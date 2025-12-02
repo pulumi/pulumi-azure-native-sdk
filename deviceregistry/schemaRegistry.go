@@ -8,20 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Schema registry definition.
 //
-// Uses Azure REST API version 2024-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
-//
-// Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2024-09-01-preview.
 type SchemaRegistry struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Human-readable description of the schema registry.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Human-readable display name.
@@ -67,15 +63,6 @@ func NewSchemaRegistry(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:deviceregistry/v20240901preview:SchemaRegistry"),
-		},
-		{
-			Type: pulumi.String("azure-native:deviceregistry/v20250701preview:SchemaRegistry"),
-		},
-		{
-			Type: pulumi.String("azure-native:deviceregistry/v20251001:SchemaRegistry"),
-		},
-		{
-			Type: pulumi.String("azure-native:deviceregistry/v20251101preview:SchemaRegistry"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -189,11 +176,6 @@ func (o SchemaRegistryOutput) ToSchemaRegistryOutput() SchemaRegistryOutput {
 
 func (o SchemaRegistryOutput) ToSchemaRegistryOutputWithContext(ctx context.Context) SchemaRegistryOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SchemaRegistryOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *SchemaRegistry) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Human-readable description of the schema registry.

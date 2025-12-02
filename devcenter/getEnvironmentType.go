@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an environment type.
 //
-// Uses Azure REST API version 2024-02-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
 func LookupEnvironmentType(ctx *pulumi.Context, args *LookupEnvironmentTypeArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentTypeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentTypeResult
@@ -37,11 +37,7 @@ type LookupEnvironmentTypeArgs struct {
 
 // Represents an environment type.
 type LookupEnvironmentTypeResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The display name of the environment type.
-	DisplayName *string `pulumi:"displayName"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -92,17 +88,7 @@ func (o LookupEnvironmentTypeResultOutput) ToLookupEnvironmentTypeResultOutputWi
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupEnvironmentTypeResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEnvironmentTypeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The display name of the environment type.
-func (o LookupEnvironmentTypeResultOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEnvironmentTypeResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEnvironmentTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }

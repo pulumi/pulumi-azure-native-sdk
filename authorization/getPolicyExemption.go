@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-07-01-preview.
 //
-// Other available API versions: 2020-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-12-01-preview.
 func LookupPolicyExemption(ctx *pulumi.Context, args *LookupPolicyExemptionArgs, opts ...pulumi.InvokeOption) (*LookupPolicyExemptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyExemptionResult
@@ -37,8 +37,6 @@ type LookupPolicyExemptionArgs struct {
 type LookupPolicyExemptionResult struct {
 	// The option whether validate the exemption is at or under the assignment scope.
 	AssignmentScopeValidation *string `pulumi:"assignmentScopeValidation"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The description of the policy exemption.
 	Description *string `pulumi:"description"`
 	// The display name of the policy exemption.
@@ -115,11 +113,6 @@ func (o LookupPolicyExemptionResultOutput) ToLookupPolicyExemptionResultOutputWi
 // The option whether validate the exemption is at or under the assignment scope.
 func (o LookupPolicyExemptionResultOutput) AssignmentScopeValidation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyExemptionResult) *string { return v.AssignmentScopeValidation }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupPolicyExemptionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPolicyExemptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of the policy exemption.

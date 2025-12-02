@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The pipeline resource definition.
 //
-// Uses Azure REST API version 2024-09-27. In version 2.x of the Azure Native provider, it used API version 2023-10-11-preview.
+// Uses Azure REST API version 2023-10-11-preview.
 //
-// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27, 2025-03-01-preview.
 type Pipeline struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -64,15 +62,6 @@ func NewPipeline(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azuredatatransfer/v20250301preview:Pipeline"),
-		},
-		{
-			Type: pulumi.String("azure-native:azuredatatransfer/v20250411preview:Pipeline"),
-		},
-		{
-			Type: pulumi.String("azure-native:azuredatatransfer/v20250521:Pipeline"),
-		},
-		{
-			Type: pulumi.String("azure-native:azuredatatransfer/v20250530preview:Pipeline"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -170,11 +159,6 @@ func (o PipelineOutput) ToPipelineOutput() PipelineOutput {
 
 func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o PipelineOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

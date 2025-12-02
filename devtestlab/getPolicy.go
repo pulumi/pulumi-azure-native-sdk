@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,20 +27,18 @@ func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.In
 type LookupPolicyArgs struct {
 	// Specify the $expand query. Example: 'properties($select=description)'
 	Expand *string `pulumi:"expand"`
-	// labs
+	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the Schedule
+	// The name of the policy.
 	Name string `pulumi:"name"`
-	// policysets
+	// The name of the policy set.
 	PolicySetName string `pulumi:"policySetName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A Policy.
 type LookupPolicyResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the policy.
 	CreatedDate string `pulumi:"createdDate"`
 	// The description of the policy.
@@ -83,13 +81,13 @@ func LookupPolicyOutput(ctx *pulumi.Context, args LookupPolicyOutputArgs, opts .
 type LookupPolicyOutputArgs struct {
 	// Specify the $expand query. Example: 'properties($select=description)'
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// labs
+	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the Schedule
+	// The name of the policy.
 	Name pulumi.StringInput `pulumi:"name"`
-	// policysets
+	// The name of the policy set.
 	PolicySetName pulumi.StringInput `pulumi:"policySetName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -110,11 +108,6 @@ func (o LookupPolicyResultOutput) ToLookupPolicyResultOutput() LookupPolicyResul
 
 func (o LookupPolicyResultOutput) ToLookupPolicyResultOutputWithContext(ctx context.Context) LookupPolicyResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the policy.

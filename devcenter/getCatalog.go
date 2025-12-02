@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a catalog
 //
-// Uses Azure REST API version 2024-02-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCatalogResult
@@ -39,18 +39,10 @@ type LookupCatalogArgs struct {
 type LookupCatalogResult struct {
 	// Properties for an Azure DevOps catalog type.
 	AdoGit *GitCatalogResponse `pulumi:"adoGit"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The connection state of the catalog.
-	ConnectionState string `pulumi:"connectionState"`
 	// Properties for a GitHub catalog type.
 	GitHub *GitCatalogResponse `pulumi:"gitHub"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// When the catalog was last connected.
-	LastConnectionTime string `pulumi:"lastConnectionTime"`
-	// Stats of the latest synchronization.
-	LastSyncStats SyncStatsResponse `pulumi:"lastSyncStats"`
 	// When the catalog was last synced.
 	LastSyncTime string `pulumi:"lastSyncTime"`
 	// The name of the resource
@@ -59,12 +51,8 @@ type LookupCatalogResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The synchronization state of the catalog.
 	SyncState string `pulumi:"syncState"`
-	// Indicates the type of sync that is configured for the catalog.
-	SyncType *string `pulumi:"syncType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
-	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -111,34 +99,14 @@ func (o LookupCatalogResultOutput) AdoGit() GitCatalogResponsePtrOutput {
 	return o.ApplyT(func(v LookupCatalogResult) *GitCatalogResponse { return v.AdoGit }).(GitCatalogResponsePtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupCatalogResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCatalogResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The connection state of the catalog.
-func (o LookupCatalogResultOutput) ConnectionState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCatalogResult) string { return v.ConnectionState }).(pulumi.StringOutput)
-}
-
 // Properties for a GitHub catalog type.
 func (o LookupCatalogResultOutput) GitHub() GitCatalogResponsePtrOutput {
 	return o.ApplyT(func(v LookupCatalogResult) *GitCatalogResponse { return v.GitHub }).(GitCatalogResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupCatalogResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// When the catalog was last connected.
-func (o LookupCatalogResultOutput) LastConnectionTime() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCatalogResult) string { return v.LastConnectionTime }).(pulumi.StringOutput)
-}
-
-// Stats of the latest synchronization.
-func (o LookupCatalogResultOutput) LastSyncStats() SyncStatsResponseOutput {
-	return o.ApplyT(func(v LookupCatalogResult) SyncStatsResponse { return v.LastSyncStats }).(SyncStatsResponseOutput)
 }
 
 // When the catalog was last synced.
@@ -161,19 +129,9 @@ func (o LookupCatalogResultOutput) SyncState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.SyncState }).(pulumi.StringOutput)
 }
 
-// Indicates the type of sync that is configured for the catalog.
-func (o LookupCatalogResultOutput) SyncType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCatalogResult) *string { return v.SyncType }).(pulumi.StringPtrOutput)
-}
-
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupCatalogResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCatalogResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
-func (o LookupCatalogResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupCatalogResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

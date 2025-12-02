@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A schedule.
 //
-// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type VirtualMachineSchedule struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
@@ -120,15 +118,15 @@ type virtualMachineScheduleArgs struct {
 	DailyRecurrence *DayDetails `pulumi:"dailyRecurrence"`
 	// If the schedule will occur multiple times a day, specify the hourly recurrence.
 	HourlyRecurrence *HourDetails `pulumi:"hourlyRecurrence"`
-	// labs
+	// The name of the lab.
 	LabName string `pulumi:"labName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the Schedule
+	// The name of the schedule.
 	Name *string `pulumi:"name"`
 	// Notification settings.
 	NotificationSettings *NotificationSettings `pulumi:"notificationSettings"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status *string `pulumi:"status"`
@@ -140,7 +138,7 @@ type virtualMachineScheduleArgs struct {
 	TaskType *string `pulumi:"taskType"`
 	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId *string `pulumi:"timeZoneId"`
-	// virtualmachines
+	// The name of the virtual machine.
 	VirtualMachineName string `pulumi:"virtualMachineName"`
 	// If the schedule will occur only some days of the week, specify the weekly recurrence.
 	WeeklyRecurrence *WeekDetails `pulumi:"weeklyRecurrence"`
@@ -152,15 +150,15 @@ type VirtualMachineScheduleArgs struct {
 	DailyRecurrence DayDetailsPtrInput
 	// If the schedule will occur multiple times a day, specify the hourly recurrence.
 	HourlyRecurrence HourDetailsPtrInput
-	// labs
+	// The name of the lab.
 	LabName pulumi.StringInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the Schedule
+	// The name of the schedule.
 	Name pulumi.StringPtrInput
 	// Notification settings.
 	NotificationSettings NotificationSettingsPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status pulumi.StringPtrInput
@@ -172,7 +170,7 @@ type VirtualMachineScheduleArgs struct {
 	TaskType pulumi.StringPtrInput
 	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId pulumi.StringPtrInput
-	// virtualmachines
+	// The name of the virtual machine.
 	VirtualMachineName pulumi.StringInput
 	// If the schedule will occur only some days of the week, specify the weekly recurrence.
 	WeeklyRecurrence WeekDetailsPtrInput
@@ -213,11 +211,6 @@ func (o VirtualMachineScheduleOutput) ToVirtualMachineScheduleOutput() VirtualMa
 
 func (o VirtualMachineScheduleOutput) ToVirtualMachineScheduleOutputWithContext(ctx context.Context) VirtualMachineScheduleOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o VirtualMachineScheduleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the schedule.

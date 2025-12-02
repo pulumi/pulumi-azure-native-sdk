@@ -7,1708 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
 
-// Access profile for the Fleet hub API server.
-type APIServerAccessProfile struct {
-	// Whether to create the Fleet hub as a private cluster or not.
-	EnablePrivateCluster *bool `pulumi:"enablePrivateCluster"`
-	// Whether to enable apiserver vnet integration for the Fleet hub or not.
-	EnableVnetIntegration *bool `pulumi:"enableVnetIntegration"`
-	// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
-	SubnetId *string `pulumi:"subnetId"`
-}
-
-// APIServerAccessProfileInput is an input type that accepts APIServerAccessProfileArgs and APIServerAccessProfileOutput values.
-// You can construct a concrete instance of `APIServerAccessProfileInput` via:
-//
-//	APIServerAccessProfileArgs{...}
-type APIServerAccessProfileInput interface {
-	pulumi.Input
-
-	ToAPIServerAccessProfileOutput() APIServerAccessProfileOutput
-	ToAPIServerAccessProfileOutputWithContext(context.Context) APIServerAccessProfileOutput
-}
-
-// Access profile for the Fleet hub API server.
-type APIServerAccessProfileArgs struct {
-	// Whether to create the Fleet hub as a private cluster or not.
-	EnablePrivateCluster pulumi.BoolPtrInput `pulumi:"enablePrivateCluster"`
-	// Whether to enable apiserver vnet integration for the Fleet hub or not.
-	EnableVnetIntegration pulumi.BoolPtrInput `pulumi:"enableVnetIntegration"`
-	// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
-	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
-}
-
-func (APIServerAccessProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*APIServerAccessProfile)(nil)).Elem()
-}
-
-func (i APIServerAccessProfileArgs) ToAPIServerAccessProfileOutput() APIServerAccessProfileOutput {
-	return i.ToAPIServerAccessProfileOutputWithContext(context.Background())
-}
-
-func (i APIServerAccessProfileArgs) ToAPIServerAccessProfileOutputWithContext(ctx context.Context) APIServerAccessProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(APIServerAccessProfileOutput)
-}
-
-func (i APIServerAccessProfileArgs) ToAPIServerAccessProfilePtrOutput() APIServerAccessProfilePtrOutput {
-	return i.ToAPIServerAccessProfilePtrOutputWithContext(context.Background())
-}
-
-func (i APIServerAccessProfileArgs) ToAPIServerAccessProfilePtrOutputWithContext(ctx context.Context) APIServerAccessProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(APIServerAccessProfileOutput).ToAPIServerAccessProfilePtrOutputWithContext(ctx)
-}
-
-// APIServerAccessProfilePtrInput is an input type that accepts APIServerAccessProfileArgs, APIServerAccessProfilePtr and APIServerAccessProfilePtrOutput values.
-// You can construct a concrete instance of `APIServerAccessProfilePtrInput` via:
-//
-//	        APIServerAccessProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type APIServerAccessProfilePtrInput interface {
-	pulumi.Input
-
-	ToAPIServerAccessProfilePtrOutput() APIServerAccessProfilePtrOutput
-	ToAPIServerAccessProfilePtrOutputWithContext(context.Context) APIServerAccessProfilePtrOutput
-}
-
-type apiserverAccessProfilePtrType APIServerAccessProfileArgs
-
-func APIServerAccessProfilePtr(v *APIServerAccessProfileArgs) APIServerAccessProfilePtrInput {
-	return (*apiserverAccessProfilePtrType)(v)
-}
-
-func (*apiserverAccessProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**APIServerAccessProfile)(nil)).Elem()
-}
-
-func (i *apiserverAccessProfilePtrType) ToAPIServerAccessProfilePtrOutput() APIServerAccessProfilePtrOutput {
-	return i.ToAPIServerAccessProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *apiserverAccessProfilePtrType) ToAPIServerAccessProfilePtrOutputWithContext(ctx context.Context) APIServerAccessProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(APIServerAccessProfilePtrOutput)
-}
-
-// Access profile for the Fleet hub API server.
-type APIServerAccessProfileOutput struct{ *pulumi.OutputState }
-
-func (APIServerAccessProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*APIServerAccessProfile)(nil)).Elem()
-}
-
-func (o APIServerAccessProfileOutput) ToAPIServerAccessProfileOutput() APIServerAccessProfileOutput {
-	return o
-}
-
-func (o APIServerAccessProfileOutput) ToAPIServerAccessProfileOutputWithContext(ctx context.Context) APIServerAccessProfileOutput {
-	return o
-}
-
-func (o APIServerAccessProfileOutput) ToAPIServerAccessProfilePtrOutput() APIServerAccessProfilePtrOutput {
-	return o.ToAPIServerAccessProfilePtrOutputWithContext(context.Background())
-}
-
-func (o APIServerAccessProfileOutput) ToAPIServerAccessProfilePtrOutputWithContext(ctx context.Context) APIServerAccessProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v APIServerAccessProfile) *APIServerAccessProfile {
-		return &v
-	}).(APIServerAccessProfilePtrOutput)
-}
-
-// Whether to create the Fleet hub as a private cluster or not.
-func (o APIServerAccessProfileOutput) EnablePrivateCluster() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v APIServerAccessProfile) *bool { return v.EnablePrivateCluster }).(pulumi.BoolPtrOutput)
-}
-
-// Whether to enable apiserver vnet integration for the Fleet hub or not.
-func (o APIServerAccessProfileOutput) EnableVnetIntegration() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v APIServerAccessProfile) *bool { return v.EnableVnetIntegration }).(pulumi.BoolPtrOutput)
-}
-
-// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
-func (o APIServerAccessProfileOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v APIServerAccessProfile) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
-}
-
-type APIServerAccessProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (APIServerAccessProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**APIServerAccessProfile)(nil)).Elem()
-}
-
-func (o APIServerAccessProfilePtrOutput) ToAPIServerAccessProfilePtrOutput() APIServerAccessProfilePtrOutput {
-	return o
-}
-
-func (o APIServerAccessProfilePtrOutput) ToAPIServerAccessProfilePtrOutputWithContext(ctx context.Context) APIServerAccessProfilePtrOutput {
-	return o
-}
-
-func (o APIServerAccessProfilePtrOutput) Elem() APIServerAccessProfileOutput {
-	return o.ApplyT(func(v *APIServerAccessProfile) APIServerAccessProfile {
-		if v != nil {
-			return *v
-		}
-		var ret APIServerAccessProfile
-		return ret
-	}).(APIServerAccessProfileOutput)
-}
-
-// Whether to create the Fleet hub as a private cluster or not.
-func (o APIServerAccessProfilePtrOutput) EnablePrivateCluster() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *APIServerAccessProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnablePrivateCluster
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to enable apiserver vnet integration for the Fleet hub or not.
-func (o APIServerAccessProfilePtrOutput) EnableVnetIntegration() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *APIServerAccessProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableVnetIntegration
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
-func (o APIServerAccessProfilePtrOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *APIServerAccessProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubnetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Access profile for the Fleet hub API server.
-type APIServerAccessProfileResponse struct {
-	// Whether to create the Fleet hub as a private cluster or not.
-	EnablePrivateCluster *bool `pulumi:"enablePrivateCluster"`
-	// Whether to enable apiserver vnet integration for the Fleet hub or not.
-	EnableVnetIntegration *bool `pulumi:"enableVnetIntegration"`
-	// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
-	SubnetId *string `pulumi:"subnetId"`
-}
-
-// Access profile for the Fleet hub API server.
-type APIServerAccessProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (APIServerAccessProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*APIServerAccessProfileResponse)(nil)).Elem()
-}
-
-func (o APIServerAccessProfileResponseOutput) ToAPIServerAccessProfileResponseOutput() APIServerAccessProfileResponseOutput {
-	return o
-}
-
-func (o APIServerAccessProfileResponseOutput) ToAPIServerAccessProfileResponseOutputWithContext(ctx context.Context) APIServerAccessProfileResponseOutput {
-	return o
-}
-
-// Whether to create the Fleet hub as a private cluster or not.
-func (o APIServerAccessProfileResponseOutput) EnablePrivateCluster() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v APIServerAccessProfileResponse) *bool { return v.EnablePrivateCluster }).(pulumi.BoolPtrOutput)
-}
-
-// Whether to enable apiserver vnet integration for the Fleet hub or not.
-func (o APIServerAccessProfileResponseOutput) EnableVnetIntegration() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v APIServerAccessProfileResponse) *bool { return v.EnableVnetIntegration }).(pulumi.BoolPtrOutput)
-}
-
-// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
-func (o APIServerAccessProfileResponseOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v APIServerAccessProfileResponse) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
-}
-
-type APIServerAccessProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (APIServerAccessProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**APIServerAccessProfileResponse)(nil)).Elem()
-}
-
-func (o APIServerAccessProfileResponsePtrOutput) ToAPIServerAccessProfileResponsePtrOutput() APIServerAccessProfileResponsePtrOutput {
-	return o
-}
-
-func (o APIServerAccessProfileResponsePtrOutput) ToAPIServerAccessProfileResponsePtrOutputWithContext(ctx context.Context) APIServerAccessProfileResponsePtrOutput {
-	return o
-}
-
-func (o APIServerAccessProfileResponsePtrOutput) Elem() APIServerAccessProfileResponseOutput {
-	return o.ApplyT(func(v *APIServerAccessProfileResponse) APIServerAccessProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret APIServerAccessProfileResponse
-		return ret
-	}).(APIServerAccessProfileResponseOutput)
-}
-
-// Whether to create the Fleet hub as a private cluster or not.
-func (o APIServerAccessProfileResponsePtrOutput) EnablePrivateCluster() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *APIServerAccessProfileResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnablePrivateCluster
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to enable apiserver vnet integration for the Fleet hub or not.
-func (o APIServerAccessProfileResponsePtrOutput) EnableVnetIntegration() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *APIServerAccessProfileResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableVnetIntegration
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
-func (o APIServerAccessProfileResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *APIServerAccessProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubnetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-type AbsoluteMonthlySchedule struct {
-	// The date of the month.
-	DayOfMonth int `pulumi:"dayOfMonth"`
-	// Specifies the number of months between each set of occurrences.
-	IntervalMonths int `pulumi:"intervalMonths"`
-}
-
-// AbsoluteMonthlyScheduleInput is an input type that accepts AbsoluteMonthlyScheduleArgs and AbsoluteMonthlyScheduleOutput values.
-// You can construct a concrete instance of `AbsoluteMonthlyScheduleInput` via:
-//
-//	AbsoluteMonthlyScheduleArgs{...}
-type AbsoluteMonthlyScheduleInput interface {
-	pulumi.Input
-
-	ToAbsoluteMonthlyScheduleOutput() AbsoluteMonthlyScheduleOutput
-	ToAbsoluteMonthlyScheduleOutputWithContext(context.Context) AbsoluteMonthlyScheduleOutput
-}
-
-// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-type AbsoluteMonthlyScheduleArgs struct {
-	// The date of the month.
-	DayOfMonth pulumi.IntInput `pulumi:"dayOfMonth"`
-	// Specifies the number of months between each set of occurrences.
-	IntervalMonths pulumi.IntInput `pulumi:"intervalMonths"`
-}
-
-func (AbsoluteMonthlyScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AbsoluteMonthlySchedule)(nil)).Elem()
-}
-
-func (i AbsoluteMonthlyScheduleArgs) ToAbsoluteMonthlyScheduleOutput() AbsoluteMonthlyScheduleOutput {
-	return i.ToAbsoluteMonthlyScheduleOutputWithContext(context.Background())
-}
-
-func (i AbsoluteMonthlyScheduleArgs) ToAbsoluteMonthlyScheduleOutputWithContext(ctx context.Context) AbsoluteMonthlyScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AbsoluteMonthlyScheduleOutput)
-}
-
-func (i AbsoluteMonthlyScheduleArgs) ToAbsoluteMonthlySchedulePtrOutput() AbsoluteMonthlySchedulePtrOutput {
-	return i.ToAbsoluteMonthlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i AbsoluteMonthlyScheduleArgs) ToAbsoluteMonthlySchedulePtrOutputWithContext(ctx context.Context) AbsoluteMonthlySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AbsoluteMonthlyScheduleOutput).ToAbsoluteMonthlySchedulePtrOutputWithContext(ctx)
-}
-
-// AbsoluteMonthlySchedulePtrInput is an input type that accepts AbsoluteMonthlyScheduleArgs, AbsoluteMonthlySchedulePtr and AbsoluteMonthlySchedulePtrOutput values.
-// You can construct a concrete instance of `AbsoluteMonthlySchedulePtrInput` via:
-//
-//	        AbsoluteMonthlyScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type AbsoluteMonthlySchedulePtrInput interface {
-	pulumi.Input
-
-	ToAbsoluteMonthlySchedulePtrOutput() AbsoluteMonthlySchedulePtrOutput
-	ToAbsoluteMonthlySchedulePtrOutputWithContext(context.Context) AbsoluteMonthlySchedulePtrOutput
-}
-
-type absoluteMonthlySchedulePtrType AbsoluteMonthlyScheduleArgs
-
-func AbsoluteMonthlySchedulePtr(v *AbsoluteMonthlyScheduleArgs) AbsoluteMonthlySchedulePtrInput {
-	return (*absoluteMonthlySchedulePtrType)(v)
-}
-
-func (*absoluteMonthlySchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AbsoluteMonthlySchedule)(nil)).Elem()
-}
-
-func (i *absoluteMonthlySchedulePtrType) ToAbsoluteMonthlySchedulePtrOutput() AbsoluteMonthlySchedulePtrOutput {
-	return i.ToAbsoluteMonthlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *absoluteMonthlySchedulePtrType) ToAbsoluteMonthlySchedulePtrOutputWithContext(ctx context.Context) AbsoluteMonthlySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AbsoluteMonthlySchedulePtrOutput)
-}
-
-// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-type AbsoluteMonthlyScheduleOutput struct{ *pulumi.OutputState }
-
-func (AbsoluteMonthlyScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AbsoluteMonthlySchedule)(nil)).Elem()
-}
-
-func (o AbsoluteMonthlyScheduleOutput) ToAbsoluteMonthlyScheduleOutput() AbsoluteMonthlyScheduleOutput {
-	return o
-}
-
-func (o AbsoluteMonthlyScheduleOutput) ToAbsoluteMonthlyScheduleOutputWithContext(ctx context.Context) AbsoluteMonthlyScheduleOutput {
-	return o
-}
-
-func (o AbsoluteMonthlyScheduleOutput) ToAbsoluteMonthlySchedulePtrOutput() AbsoluteMonthlySchedulePtrOutput {
-	return o.ToAbsoluteMonthlySchedulePtrOutputWithContext(context.Background())
-}
-
-func (o AbsoluteMonthlyScheduleOutput) ToAbsoluteMonthlySchedulePtrOutputWithContext(ctx context.Context) AbsoluteMonthlySchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AbsoluteMonthlySchedule) *AbsoluteMonthlySchedule {
-		return &v
-	}).(AbsoluteMonthlySchedulePtrOutput)
-}
-
-// The date of the month.
-func (o AbsoluteMonthlyScheduleOutput) DayOfMonth() pulumi.IntOutput {
-	return o.ApplyT(func(v AbsoluteMonthlySchedule) int { return v.DayOfMonth }).(pulumi.IntOutput)
-}
-
-// Specifies the number of months between each set of occurrences.
-func (o AbsoluteMonthlyScheduleOutput) IntervalMonths() pulumi.IntOutput {
-	return o.ApplyT(func(v AbsoluteMonthlySchedule) int { return v.IntervalMonths }).(pulumi.IntOutput)
-}
-
-type AbsoluteMonthlySchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (AbsoluteMonthlySchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AbsoluteMonthlySchedule)(nil)).Elem()
-}
-
-func (o AbsoluteMonthlySchedulePtrOutput) ToAbsoluteMonthlySchedulePtrOutput() AbsoluteMonthlySchedulePtrOutput {
-	return o
-}
-
-func (o AbsoluteMonthlySchedulePtrOutput) ToAbsoluteMonthlySchedulePtrOutputWithContext(ctx context.Context) AbsoluteMonthlySchedulePtrOutput {
-	return o
-}
-
-func (o AbsoluteMonthlySchedulePtrOutput) Elem() AbsoluteMonthlyScheduleOutput {
-	return o.ApplyT(func(v *AbsoluteMonthlySchedule) AbsoluteMonthlySchedule {
-		if v != nil {
-			return *v
-		}
-		var ret AbsoluteMonthlySchedule
-		return ret
-	}).(AbsoluteMonthlyScheduleOutput)
-}
-
-// The date of the month.
-func (o AbsoluteMonthlySchedulePtrOutput) DayOfMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AbsoluteMonthlySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfMonth
-	}).(pulumi.IntPtrOutput)
-}
-
-// Specifies the number of months between each set of occurrences.
-func (o AbsoluteMonthlySchedulePtrOutput) IntervalMonths() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AbsoluteMonthlySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.IntervalMonths
-	}).(pulumi.IntPtrOutput)
-}
-
-// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-type AbsoluteMonthlyScheduleResponse struct {
-	// The date of the month.
-	DayOfMonth int `pulumi:"dayOfMonth"`
-	// Specifies the number of months between each set of occurrences.
-	IntervalMonths int `pulumi:"intervalMonths"`
-}
-
-// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-type AbsoluteMonthlyScheduleResponseOutput struct{ *pulumi.OutputState }
-
-func (AbsoluteMonthlyScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AbsoluteMonthlyScheduleResponse)(nil)).Elem()
-}
-
-func (o AbsoluteMonthlyScheduleResponseOutput) ToAbsoluteMonthlyScheduleResponseOutput() AbsoluteMonthlyScheduleResponseOutput {
-	return o
-}
-
-func (o AbsoluteMonthlyScheduleResponseOutput) ToAbsoluteMonthlyScheduleResponseOutputWithContext(ctx context.Context) AbsoluteMonthlyScheduleResponseOutput {
-	return o
-}
-
-// The date of the month.
-func (o AbsoluteMonthlyScheduleResponseOutput) DayOfMonth() pulumi.IntOutput {
-	return o.ApplyT(func(v AbsoluteMonthlyScheduleResponse) int { return v.DayOfMonth }).(pulumi.IntOutput)
-}
-
-// Specifies the number of months between each set of occurrences.
-func (o AbsoluteMonthlyScheduleResponseOutput) IntervalMonths() pulumi.IntOutput {
-	return o.ApplyT(func(v AbsoluteMonthlyScheduleResponse) int { return v.IntervalMonths }).(pulumi.IntOutput)
-}
-
-type AbsoluteMonthlyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AbsoluteMonthlyScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AbsoluteMonthlyScheduleResponse)(nil)).Elem()
-}
-
-func (o AbsoluteMonthlyScheduleResponsePtrOutput) ToAbsoluteMonthlyScheduleResponsePtrOutput() AbsoluteMonthlyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o AbsoluteMonthlyScheduleResponsePtrOutput) ToAbsoluteMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) AbsoluteMonthlyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o AbsoluteMonthlyScheduleResponsePtrOutput) Elem() AbsoluteMonthlyScheduleResponseOutput {
-	return o.ApplyT(func(v *AbsoluteMonthlyScheduleResponse) AbsoluteMonthlyScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AbsoluteMonthlyScheduleResponse
-		return ret
-	}).(AbsoluteMonthlyScheduleResponseOutput)
-}
-
-// The date of the month.
-func (o AbsoluteMonthlyScheduleResponsePtrOutput) DayOfMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AbsoluteMonthlyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfMonth
-	}).(pulumi.IntPtrOutput)
-}
-
-// Specifies the number of months between each set of occurrences.
-func (o AbsoluteMonthlyScheduleResponsePtrOutput) IntervalMonths() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AbsoluteMonthlyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.IntervalMonths
-	}).(pulumi.IntPtrOutput)
-}
-
-// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-type AdvancedNetworking struct {
-	// Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
-	Enabled *bool `pulumi:"enabled"`
-	// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-	Observability *AdvancedNetworkingObservability `pulumi:"observability"`
-	// Security profile to enable security features on cilium based cluster.
-	Security *AdvancedNetworkingSecurity `pulumi:"security"`
-}
-
-// AdvancedNetworkingInput is an input type that accepts AdvancedNetworkingArgs and AdvancedNetworkingOutput values.
-// You can construct a concrete instance of `AdvancedNetworkingInput` via:
-//
-//	AdvancedNetworkingArgs{...}
-type AdvancedNetworkingInput interface {
-	pulumi.Input
-
-	ToAdvancedNetworkingOutput() AdvancedNetworkingOutput
-	ToAdvancedNetworkingOutputWithContext(context.Context) AdvancedNetworkingOutput
-}
-
-// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-type AdvancedNetworkingArgs struct {
-	// Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-	Observability AdvancedNetworkingObservabilityPtrInput `pulumi:"observability"`
-	// Security profile to enable security features on cilium based cluster.
-	Security AdvancedNetworkingSecurityPtrInput `pulumi:"security"`
-}
-
-func (AdvancedNetworkingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdvancedNetworking)(nil)).Elem()
-}
-
-func (i AdvancedNetworkingArgs) ToAdvancedNetworkingOutput() AdvancedNetworkingOutput {
-	return i.ToAdvancedNetworkingOutputWithContext(context.Background())
-}
-
-func (i AdvancedNetworkingArgs) ToAdvancedNetworkingOutputWithContext(ctx context.Context) AdvancedNetworkingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdvancedNetworkingOutput)
-}
-
-func (i AdvancedNetworkingArgs) ToAdvancedNetworkingPtrOutput() AdvancedNetworkingPtrOutput {
-	return i.ToAdvancedNetworkingPtrOutputWithContext(context.Background())
-}
-
-func (i AdvancedNetworkingArgs) ToAdvancedNetworkingPtrOutputWithContext(ctx context.Context) AdvancedNetworkingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdvancedNetworkingOutput).ToAdvancedNetworkingPtrOutputWithContext(ctx)
-}
-
-// AdvancedNetworkingPtrInput is an input type that accepts AdvancedNetworkingArgs, AdvancedNetworkingPtr and AdvancedNetworkingPtrOutput values.
-// You can construct a concrete instance of `AdvancedNetworkingPtrInput` via:
-//
-//	        AdvancedNetworkingArgs{...}
-//
-//	or:
-//
-//	        nil
-type AdvancedNetworkingPtrInput interface {
-	pulumi.Input
-
-	ToAdvancedNetworkingPtrOutput() AdvancedNetworkingPtrOutput
-	ToAdvancedNetworkingPtrOutputWithContext(context.Context) AdvancedNetworkingPtrOutput
-}
-
-type advancedNetworkingPtrType AdvancedNetworkingArgs
-
-func AdvancedNetworkingPtr(v *AdvancedNetworkingArgs) AdvancedNetworkingPtrInput {
-	return (*advancedNetworkingPtrType)(v)
-}
-
-func (*advancedNetworkingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdvancedNetworking)(nil)).Elem()
-}
-
-func (i *advancedNetworkingPtrType) ToAdvancedNetworkingPtrOutput() AdvancedNetworkingPtrOutput {
-	return i.ToAdvancedNetworkingPtrOutputWithContext(context.Background())
-}
-
-func (i *advancedNetworkingPtrType) ToAdvancedNetworkingPtrOutputWithContext(ctx context.Context) AdvancedNetworkingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdvancedNetworkingPtrOutput)
-}
-
-// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-type AdvancedNetworkingOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdvancedNetworking)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingOutput) ToAdvancedNetworkingOutput() AdvancedNetworkingOutput {
-	return o
-}
-
-func (o AdvancedNetworkingOutput) ToAdvancedNetworkingOutputWithContext(ctx context.Context) AdvancedNetworkingOutput {
-	return o
-}
-
-func (o AdvancedNetworkingOutput) ToAdvancedNetworkingPtrOutput() AdvancedNetworkingPtrOutput {
-	return o.ToAdvancedNetworkingPtrOutputWithContext(context.Background())
-}
-
-func (o AdvancedNetworkingOutput) ToAdvancedNetworkingPtrOutputWithContext(ctx context.Context) AdvancedNetworkingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdvancedNetworking) *AdvancedNetworking {
-		return &v
-	}).(AdvancedNetworkingPtrOutput)
-}
-
-// Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
-func (o AdvancedNetworkingOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AdvancedNetworking) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-func (o AdvancedNetworkingOutput) Observability() AdvancedNetworkingObservabilityPtrOutput {
-	return o.ApplyT(func(v AdvancedNetworking) *AdvancedNetworkingObservability { return v.Observability }).(AdvancedNetworkingObservabilityPtrOutput)
-}
-
-// Security profile to enable security features on cilium based cluster.
-func (o AdvancedNetworkingOutput) Security() AdvancedNetworkingSecurityPtrOutput {
-	return o.ApplyT(func(v AdvancedNetworking) *AdvancedNetworkingSecurity { return v.Security }).(AdvancedNetworkingSecurityPtrOutput)
-}
-
-type AdvancedNetworkingPtrOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdvancedNetworking)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingPtrOutput) ToAdvancedNetworkingPtrOutput() AdvancedNetworkingPtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingPtrOutput) ToAdvancedNetworkingPtrOutputWithContext(ctx context.Context) AdvancedNetworkingPtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingPtrOutput) Elem() AdvancedNetworkingOutput {
-	return o.ApplyT(func(v *AdvancedNetworking) AdvancedNetworking {
-		if v != nil {
-			return *v
-		}
-		var ret AdvancedNetworking
-		return ret
-	}).(AdvancedNetworkingOutput)
-}
-
-// Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
-func (o AdvancedNetworkingPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AdvancedNetworking) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-func (o AdvancedNetworkingPtrOutput) Observability() AdvancedNetworkingObservabilityPtrOutput {
-	return o.ApplyT(func(v *AdvancedNetworking) *AdvancedNetworkingObservability {
-		if v == nil {
-			return nil
-		}
-		return v.Observability
-	}).(AdvancedNetworkingObservabilityPtrOutput)
-}
-
-// Security profile to enable security features on cilium based cluster.
-func (o AdvancedNetworkingPtrOutput) Security() AdvancedNetworkingSecurityPtrOutput {
-	return o.ApplyT(func(v *AdvancedNetworking) *AdvancedNetworkingSecurity {
-		if v == nil {
-			return nil
-		}
-		return v.Security
-	}).(AdvancedNetworkingSecurityPtrOutput)
-}
-
-// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-type AdvancedNetworkingObservability struct {
-	// Indicates the enablement of Advanced Networking observability functionalities on clusters.
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// AdvancedNetworkingObservabilityInput is an input type that accepts AdvancedNetworkingObservabilityArgs and AdvancedNetworkingObservabilityOutput values.
-// You can construct a concrete instance of `AdvancedNetworkingObservabilityInput` via:
-//
-//	AdvancedNetworkingObservabilityArgs{...}
-type AdvancedNetworkingObservabilityInput interface {
-	pulumi.Input
-
-	ToAdvancedNetworkingObservabilityOutput() AdvancedNetworkingObservabilityOutput
-	ToAdvancedNetworkingObservabilityOutputWithContext(context.Context) AdvancedNetworkingObservabilityOutput
-}
-
-// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-type AdvancedNetworkingObservabilityArgs struct {
-	// Indicates the enablement of Advanced Networking observability functionalities on clusters.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-}
-
-func (AdvancedNetworkingObservabilityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdvancedNetworkingObservability)(nil)).Elem()
-}
-
-func (i AdvancedNetworkingObservabilityArgs) ToAdvancedNetworkingObservabilityOutput() AdvancedNetworkingObservabilityOutput {
-	return i.ToAdvancedNetworkingObservabilityOutputWithContext(context.Background())
-}
-
-func (i AdvancedNetworkingObservabilityArgs) ToAdvancedNetworkingObservabilityOutputWithContext(ctx context.Context) AdvancedNetworkingObservabilityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdvancedNetworkingObservabilityOutput)
-}
-
-func (i AdvancedNetworkingObservabilityArgs) ToAdvancedNetworkingObservabilityPtrOutput() AdvancedNetworkingObservabilityPtrOutput {
-	return i.ToAdvancedNetworkingObservabilityPtrOutputWithContext(context.Background())
-}
-
-func (i AdvancedNetworkingObservabilityArgs) ToAdvancedNetworkingObservabilityPtrOutputWithContext(ctx context.Context) AdvancedNetworkingObservabilityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdvancedNetworkingObservabilityOutput).ToAdvancedNetworkingObservabilityPtrOutputWithContext(ctx)
-}
-
-// AdvancedNetworkingObservabilityPtrInput is an input type that accepts AdvancedNetworkingObservabilityArgs, AdvancedNetworkingObservabilityPtr and AdvancedNetworkingObservabilityPtrOutput values.
-// You can construct a concrete instance of `AdvancedNetworkingObservabilityPtrInput` via:
-//
-//	        AdvancedNetworkingObservabilityArgs{...}
-//
-//	or:
-//
-//	        nil
-type AdvancedNetworkingObservabilityPtrInput interface {
-	pulumi.Input
-
-	ToAdvancedNetworkingObservabilityPtrOutput() AdvancedNetworkingObservabilityPtrOutput
-	ToAdvancedNetworkingObservabilityPtrOutputWithContext(context.Context) AdvancedNetworkingObservabilityPtrOutput
-}
-
-type advancedNetworkingObservabilityPtrType AdvancedNetworkingObservabilityArgs
-
-func AdvancedNetworkingObservabilityPtr(v *AdvancedNetworkingObservabilityArgs) AdvancedNetworkingObservabilityPtrInput {
-	return (*advancedNetworkingObservabilityPtrType)(v)
-}
-
-func (*advancedNetworkingObservabilityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdvancedNetworkingObservability)(nil)).Elem()
-}
-
-func (i *advancedNetworkingObservabilityPtrType) ToAdvancedNetworkingObservabilityPtrOutput() AdvancedNetworkingObservabilityPtrOutput {
-	return i.ToAdvancedNetworkingObservabilityPtrOutputWithContext(context.Background())
-}
-
-func (i *advancedNetworkingObservabilityPtrType) ToAdvancedNetworkingObservabilityPtrOutputWithContext(ctx context.Context) AdvancedNetworkingObservabilityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdvancedNetworkingObservabilityPtrOutput)
-}
-
-// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-type AdvancedNetworkingObservabilityOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingObservabilityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdvancedNetworkingObservability)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingObservabilityOutput) ToAdvancedNetworkingObservabilityOutput() AdvancedNetworkingObservabilityOutput {
-	return o
-}
-
-func (o AdvancedNetworkingObservabilityOutput) ToAdvancedNetworkingObservabilityOutputWithContext(ctx context.Context) AdvancedNetworkingObservabilityOutput {
-	return o
-}
-
-func (o AdvancedNetworkingObservabilityOutput) ToAdvancedNetworkingObservabilityPtrOutput() AdvancedNetworkingObservabilityPtrOutput {
-	return o.ToAdvancedNetworkingObservabilityPtrOutputWithContext(context.Background())
-}
-
-func (o AdvancedNetworkingObservabilityOutput) ToAdvancedNetworkingObservabilityPtrOutputWithContext(ctx context.Context) AdvancedNetworkingObservabilityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdvancedNetworkingObservability) *AdvancedNetworkingObservability {
-		return &v
-	}).(AdvancedNetworkingObservabilityPtrOutput)
-}
-
-// Indicates the enablement of Advanced Networking observability functionalities on clusters.
-func (o AdvancedNetworkingObservabilityOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AdvancedNetworkingObservability) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type AdvancedNetworkingObservabilityPtrOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingObservabilityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdvancedNetworkingObservability)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingObservabilityPtrOutput) ToAdvancedNetworkingObservabilityPtrOutput() AdvancedNetworkingObservabilityPtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingObservabilityPtrOutput) ToAdvancedNetworkingObservabilityPtrOutputWithContext(ctx context.Context) AdvancedNetworkingObservabilityPtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingObservabilityPtrOutput) Elem() AdvancedNetworkingObservabilityOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingObservability) AdvancedNetworkingObservability {
-		if v != nil {
-			return *v
-		}
-		var ret AdvancedNetworkingObservability
-		return ret
-	}).(AdvancedNetworkingObservabilityOutput)
-}
-
-// Indicates the enablement of Advanced Networking observability functionalities on clusters.
-func (o AdvancedNetworkingObservabilityPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingObservability) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-type AdvancedNetworkingObservabilityResponse struct {
-	// Indicates the enablement of Advanced Networking observability functionalities on clusters.
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-type AdvancedNetworkingObservabilityResponseOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingObservabilityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdvancedNetworkingObservabilityResponse)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingObservabilityResponseOutput) ToAdvancedNetworkingObservabilityResponseOutput() AdvancedNetworkingObservabilityResponseOutput {
-	return o
-}
-
-func (o AdvancedNetworkingObservabilityResponseOutput) ToAdvancedNetworkingObservabilityResponseOutputWithContext(ctx context.Context) AdvancedNetworkingObservabilityResponseOutput {
-	return o
-}
-
-// Indicates the enablement of Advanced Networking observability functionalities on clusters.
-func (o AdvancedNetworkingObservabilityResponseOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AdvancedNetworkingObservabilityResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type AdvancedNetworkingObservabilityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingObservabilityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdvancedNetworkingObservabilityResponse)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingObservabilityResponsePtrOutput) ToAdvancedNetworkingObservabilityResponsePtrOutput() AdvancedNetworkingObservabilityResponsePtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingObservabilityResponsePtrOutput) ToAdvancedNetworkingObservabilityResponsePtrOutputWithContext(ctx context.Context) AdvancedNetworkingObservabilityResponsePtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingObservabilityResponsePtrOutput) Elem() AdvancedNetworkingObservabilityResponseOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingObservabilityResponse) AdvancedNetworkingObservabilityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AdvancedNetworkingObservabilityResponse
-		return ret
-	}).(AdvancedNetworkingObservabilityResponseOutput)
-}
-
-// Indicates the enablement of Advanced Networking observability functionalities on clusters.
-func (o AdvancedNetworkingObservabilityResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingObservabilityResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-type AdvancedNetworkingResponse struct {
-	// Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
-	Enabled *bool `pulumi:"enabled"`
-	// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-	Observability *AdvancedNetworkingObservabilityResponse `pulumi:"observability"`
-	// Security profile to enable security features on cilium based cluster.
-	Security *AdvancedNetworkingSecurityResponse `pulumi:"security"`
-}
-
-// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-type AdvancedNetworkingResponseOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdvancedNetworkingResponse)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingResponseOutput) ToAdvancedNetworkingResponseOutput() AdvancedNetworkingResponseOutput {
-	return o
-}
-
-func (o AdvancedNetworkingResponseOutput) ToAdvancedNetworkingResponseOutputWithContext(ctx context.Context) AdvancedNetworkingResponseOutput {
-	return o
-}
-
-// Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
-func (o AdvancedNetworkingResponseOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AdvancedNetworkingResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-func (o AdvancedNetworkingResponseOutput) Observability() AdvancedNetworkingObservabilityResponsePtrOutput {
-	return o.ApplyT(func(v AdvancedNetworkingResponse) *AdvancedNetworkingObservabilityResponse { return v.Observability }).(AdvancedNetworkingObservabilityResponsePtrOutput)
-}
-
-// Security profile to enable security features on cilium based cluster.
-func (o AdvancedNetworkingResponseOutput) Security() AdvancedNetworkingSecurityResponsePtrOutput {
-	return o.ApplyT(func(v AdvancedNetworkingResponse) *AdvancedNetworkingSecurityResponse { return v.Security }).(AdvancedNetworkingSecurityResponsePtrOutput)
-}
-
-type AdvancedNetworkingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdvancedNetworkingResponse)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingResponsePtrOutput) ToAdvancedNetworkingResponsePtrOutput() AdvancedNetworkingResponsePtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingResponsePtrOutput) ToAdvancedNetworkingResponsePtrOutputWithContext(ctx context.Context) AdvancedNetworkingResponsePtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingResponsePtrOutput) Elem() AdvancedNetworkingResponseOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingResponse) AdvancedNetworkingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AdvancedNetworkingResponse
-		return ret
-	}).(AdvancedNetworkingResponseOutput)
-}
-
-// Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
-func (o AdvancedNetworkingResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-func (o AdvancedNetworkingResponsePtrOutput) Observability() AdvancedNetworkingObservabilityResponsePtrOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingResponse) *AdvancedNetworkingObservabilityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Observability
-	}).(AdvancedNetworkingObservabilityResponsePtrOutput)
-}
-
-// Security profile to enable security features on cilium based cluster.
-func (o AdvancedNetworkingResponsePtrOutput) Security() AdvancedNetworkingSecurityResponsePtrOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingResponse) *AdvancedNetworkingSecurityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Security
-	}).(AdvancedNetworkingSecurityResponsePtrOutput)
-}
-
-// Security profile to enable security features on cilium based cluster.
-type AdvancedNetworkingSecurity struct {
-	// This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// AdvancedNetworkingSecurityInput is an input type that accepts AdvancedNetworkingSecurityArgs and AdvancedNetworkingSecurityOutput values.
-// You can construct a concrete instance of `AdvancedNetworkingSecurityInput` via:
-//
-//	AdvancedNetworkingSecurityArgs{...}
-type AdvancedNetworkingSecurityInput interface {
-	pulumi.Input
-
-	ToAdvancedNetworkingSecurityOutput() AdvancedNetworkingSecurityOutput
-	ToAdvancedNetworkingSecurityOutputWithContext(context.Context) AdvancedNetworkingSecurityOutput
-}
-
-// Security profile to enable security features on cilium based cluster.
-type AdvancedNetworkingSecurityArgs struct {
-	// This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-}
-
-func (AdvancedNetworkingSecurityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdvancedNetworkingSecurity)(nil)).Elem()
-}
-
-func (i AdvancedNetworkingSecurityArgs) ToAdvancedNetworkingSecurityOutput() AdvancedNetworkingSecurityOutput {
-	return i.ToAdvancedNetworkingSecurityOutputWithContext(context.Background())
-}
-
-func (i AdvancedNetworkingSecurityArgs) ToAdvancedNetworkingSecurityOutputWithContext(ctx context.Context) AdvancedNetworkingSecurityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdvancedNetworkingSecurityOutput)
-}
-
-func (i AdvancedNetworkingSecurityArgs) ToAdvancedNetworkingSecurityPtrOutput() AdvancedNetworkingSecurityPtrOutput {
-	return i.ToAdvancedNetworkingSecurityPtrOutputWithContext(context.Background())
-}
-
-func (i AdvancedNetworkingSecurityArgs) ToAdvancedNetworkingSecurityPtrOutputWithContext(ctx context.Context) AdvancedNetworkingSecurityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdvancedNetworkingSecurityOutput).ToAdvancedNetworkingSecurityPtrOutputWithContext(ctx)
-}
-
-// AdvancedNetworkingSecurityPtrInput is an input type that accepts AdvancedNetworkingSecurityArgs, AdvancedNetworkingSecurityPtr and AdvancedNetworkingSecurityPtrOutput values.
-// You can construct a concrete instance of `AdvancedNetworkingSecurityPtrInput` via:
-//
-//	        AdvancedNetworkingSecurityArgs{...}
-//
-//	or:
-//
-//	        nil
-type AdvancedNetworkingSecurityPtrInput interface {
-	pulumi.Input
-
-	ToAdvancedNetworkingSecurityPtrOutput() AdvancedNetworkingSecurityPtrOutput
-	ToAdvancedNetworkingSecurityPtrOutputWithContext(context.Context) AdvancedNetworkingSecurityPtrOutput
-}
-
-type advancedNetworkingSecurityPtrType AdvancedNetworkingSecurityArgs
-
-func AdvancedNetworkingSecurityPtr(v *AdvancedNetworkingSecurityArgs) AdvancedNetworkingSecurityPtrInput {
-	return (*advancedNetworkingSecurityPtrType)(v)
-}
-
-func (*advancedNetworkingSecurityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdvancedNetworkingSecurity)(nil)).Elem()
-}
-
-func (i *advancedNetworkingSecurityPtrType) ToAdvancedNetworkingSecurityPtrOutput() AdvancedNetworkingSecurityPtrOutput {
-	return i.ToAdvancedNetworkingSecurityPtrOutputWithContext(context.Background())
-}
-
-func (i *advancedNetworkingSecurityPtrType) ToAdvancedNetworkingSecurityPtrOutputWithContext(ctx context.Context) AdvancedNetworkingSecurityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdvancedNetworkingSecurityPtrOutput)
-}
-
-// Security profile to enable security features on cilium based cluster.
-type AdvancedNetworkingSecurityOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingSecurityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdvancedNetworkingSecurity)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingSecurityOutput) ToAdvancedNetworkingSecurityOutput() AdvancedNetworkingSecurityOutput {
-	return o
-}
-
-func (o AdvancedNetworkingSecurityOutput) ToAdvancedNetworkingSecurityOutputWithContext(ctx context.Context) AdvancedNetworkingSecurityOutput {
-	return o
-}
-
-func (o AdvancedNetworkingSecurityOutput) ToAdvancedNetworkingSecurityPtrOutput() AdvancedNetworkingSecurityPtrOutput {
-	return o.ToAdvancedNetworkingSecurityPtrOutputWithContext(context.Background())
-}
-
-func (o AdvancedNetworkingSecurityOutput) ToAdvancedNetworkingSecurityPtrOutputWithContext(ctx context.Context) AdvancedNetworkingSecurityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdvancedNetworkingSecurity) *AdvancedNetworkingSecurity {
-		return &v
-	}).(AdvancedNetworkingSecurityPtrOutput)
-}
-
-// This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
-func (o AdvancedNetworkingSecurityOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AdvancedNetworkingSecurity) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type AdvancedNetworkingSecurityPtrOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingSecurityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdvancedNetworkingSecurity)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingSecurityPtrOutput) ToAdvancedNetworkingSecurityPtrOutput() AdvancedNetworkingSecurityPtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingSecurityPtrOutput) ToAdvancedNetworkingSecurityPtrOutputWithContext(ctx context.Context) AdvancedNetworkingSecurityPtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingSecurityPtrOutput) Elem() AdvancedNetworkingSecurityOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingSecurity) AdvancedNetworkingSecurity {
-		if v != nil {
-			return *v
-		}
-		var ret AdvancedNetworkingSecurity
-		return ret
-	}).(AdvancedNetworkingSecurityOutput)
-}
-
-// This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
-func (o AdvancedNetworkingSecurityPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingSecurity) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Security profile to enable security features on cilium based cluster.
-type AdvancedNetworkingSecurityResponse struct {
-	// This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// Security profile to enable security features on cilium based cluster.
-type AdvancedNetworkingSecurityResponseOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingSecurityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdvancedNetworkingSecurityResponse)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingSecurityResponseOutput) ToAdvancedNetworkingSecurityResponseOutput() AdvancedNetworkingSecurityResponseOutput {
-	return o
-}
-
-func (o AdvancedNetworkingSecurityResponseOutput) ToAdvancedNetworkingSecurityResponseOutputWithContext(ctx context.Context) AdvancedNetworkingSecurityResponseOutput {
-	return o
-}
-
-// This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
-func (o AdvancedNetworkingSecurityResponseOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AdvancedNetworkingSecurityResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type AdvancedNetworkingSecurityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AdvancedNetworkingSecurityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdvancedNetworkingSecurityResponse)(nil)).Elem()
-}
-
-func (o AdvancedNetworkingSecurityResponsePtrOutput) ToAdvancedNetworkingSecurityResponsePtrOutput() AdvancedNetworkingSecurityResponsePtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingSecurityResponsePtrOutput) ToAdvancedNetworkingSecurityResponsePtrOutputWithContext(ctx context.Context) AdvancedNetworkingSecurityResponsePtrOutput {
-	return o
-}
-
-func (o AdvancedNetworkingSecurityResponsePtrOutput) Elem() AdvancedNetworkingSecurityResponseOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingSecurityResponse) AdvancedNetworkingSecurityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AdvancedNetworkingSecurityResponse
-		return ret
-	}).(AdvancedNetworkingSecurityResponseOutput)
-}
-
-// This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
-func (o AdvancedNetworkingSecurityResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AdvancedNetworkingSecurityResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Network settings of an agent pool.
-type AgentPoolNetworkProfile struct {
-	// The port ranges that are allowed to access. The specified ranges are allowed to overlap.
-	AllowedHostPorts []PortRange `pulumi:"allowedHostPorts"`
-	// The IDs of the application security groups which agent pool will associate when created.
-	ApplicationSecurityGroups []string `pulumi:"applicationSecurityGroups"`
-	// IPTags of instance-level public IPs.
-	NodePublicIPTags []IPTag `pulumi:"nodePublicIPTags"`
-}
-
-// AgentPoolNetworkProfileInput is an input type that accepts AgentPoolNetworkProfileArgs and AgentPoolNetworkProfileOutput values.
-// You can construct a concrete instance of `AgentPoolNetworkProfileInput` via:
-//
-//	AgentPoolNetworkProfileArgs{...}
-type AgentPoolNetworkProfileInput interface {
-	pulumi.Input
-
-	ToAgentPoolNetworkProfileOutput() AgentPoolNetworkProfileOutput
-	ToAgentPoolNetworkProfileOutputWithContext(context.Context) AgentPoolNetworkProfileOutput
-}
-
-// Network settings of an agent pool.
-type AgentPoolNetworkProfileArgs struct {
-	// The port ranges that are allowed to access. The specified ranges are allowed to overlap.
-	AllowedHostPorts PortRangeArrayInput `pulumi:"allowedHostPorts"`
-	// The IDs of the application security groups which agent pool will associate when created.
-	ApplicationSecurityGroups pulumi.StringArrayInput `pulumi:"applicationSecurityGroups"`
-	// IPTags of instance-level public IPs.
-	NodePublicIPTags IPTagArrayInput `pulumi:"nodePublicIPTags"`
-}
-
-func (AgentPoolNetworkProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPoolNetworkProfile)(nil)).Elem()
-}
-
-func (i AgentPoolNetworkProfileArgs) ToAgentPoolNetworkProfileOutput() AgentPoolNetworkProfileOutput {
-	return i.ToAgentPoolNetworkProfileOutputWithContext(context.Background())
-}
-
-func (i AgentPoolNetworkProfileArgs) ToAgentPoolNetworkProfileOutputWithContext(ctx context.Context) AgentPoolNetworkProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolNetworkProfileOutput)
-}
-
-func (i AgentPoolNetworkProfileArgs) ToAgentPoolNetworkProfilePtrOutput() AgentPoolNetworkProfilePtrOutput {
-	return i.ToAgentPoolNetworkProfilePtrOutputWithContext(context.Background())
-}
-
-func (i AgentPoolNetworkProfileArgs) ToAgentPoolNetworkProfilePtrOutputWithContext(ctx context.Context) AgentPoolNetworkProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolNetworkProfileOutput).ToAgentPoolNetworkProfilePtrOutputWithContext(ctx)
-}
-
-// AgentPoolNetworkProfilePtrInput is an input type that accepts AgentPoolNetworkProfileArgs, AgentPoolNetworkProfilePtr and AgentPoolNetworkProfilePtrOutput values.
-// You can construct a concrete instance of `AgentPoolNetworkProfilePtrInput` via:
-//
-//	        AgentPoolNetworkProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type AgentPoolNetworkProfilePtrInput interface {
-	pulumi.Input
-
-	ToAgentPoolNetworkProfilePtrOutput() AgentPoolNetworkProfilePtrOutput
-	ToAgentPoolNetworkProfilePtrOutputWithContext(context.Context) AgentPoolNetworkProfilePtrOutput
-}
-
-type agentPoolNetworkProfilePtrType AgentPoolNetworkProfileArgs
-
-func AgentPoolNetworkProfilePtr(v *AgentPoolNetworkProfileArgs) AgentPoolNetworkProfilePtrInput {
-	return (*agentPoolNetworkProfilePtrType)(v)
-}
-
-func (*agentPoolNetworkProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentPoolNetworkProfile)(nil)).Elem()
-}
-
-func (i *agentPoolNetworkProfilePtrType) ToAgentPoolNetworkProfilePtrOutput() AgentPoolNetworkProfilePtrOutput {
-	return i.ToAgentPoolNetworkProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *agentPoolNetworkProfilePtrType) ToAgentPoolNetworkProfilePtrOutputWithContext(ctx context.Context) AgentPoolNetworkProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolNetworkProfilePtrOutput)
-}
-
-// Network settings of an agent pool.
-type AgentPoolNetworkProfileOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolNetworkProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPoolNetworkProfile)(nil)).Elem()
-}
-
-func (o AgentPoolNetworkProfileOutput) ToAgentPoolNetworkProfileOutput() AgentPoolNetworkProfileOutput {
-	return o
-}
-
-func (o AgentPoolNetworkProfileOutput) ToAgentPoolNetworkProfileOutputWithContext(ctx context.Context) AgentPoolNetworkProfileOutput {
-	return o
-}
-
-func (o AgentPoolNetworkProfileOutput) ToAgentPoolNetworkProfilePtrOutput() AgentPoolNetworkProfilePtrOutput {
-	return o.ToAgentPoolNetworkProfilePtrOutputWithContext(context.Background())
-}
-
-func (o AgentPoolNetworkProfileOutput) ToAgentPoolNetworkProfilePtrOutputWithContext(ctx context.Context) AgentPoolNetworkProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentPoolNetworkProfile) *AgentPoolNetworkProfile {
-		return &v
-	}).(AgentPoolNetworkProfilePtrOutput)
-}
-
-// The port ranges that are allowed to access. The specified ranges are allowed to overlap.
-func (o AgentPoolNetworkProfileOutput) AllowedHostPorts() PortRangeArrayOutput {
-	return o.ApplyT(func(v AgentPoolNetworkProfile) []PortRange { return v.AllowedHostPorts }).(PortRangeArrayOutput)
-}
-
-// The IDs of the application security groups which agent pool will associate when created.
-func (o AgentPoolNetworkProfileOutput) ApplicationSecurityGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AgentPoolNetworkProfile) []string { return v.ApplicationSecurityGroups }).(pulumi.StringArrayOutput)
-}
-
-// IPTags of instance-level public IPs.
-func (o AgentPoolNetworkProfileOutput) NodePublicIPTags() IPTagArrayOutput {
-	return o.ApplyT(func(v AgentPoolNetworkProfile) []IPTag { return v.NodePublicIPTags }).(IPTagArrayOutput)
-}
-
-type AgentPoolNetworkProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolNetworkProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentPoolNetworkProfile)(nil)).Elem()
-}
-
-func (o AgentPoolNetworkProfilePtrOutput) ToAgentPoolNetworkProfilePtrOutput() AgentPoolNetworkProfilePtrOutput {
-	return o
-}
-
-func (o AgentPoolNetworkProfilePtrOutput) ToAgentPoolNetworkProfilePtrOutputWithContext(ctx context.Context) AgentPoolNetworkProfilePtrOutput {
-	return o
-}
-
-func (o AgentPoolNetworkProfilePtrOutput) Elem() AgentPoolNetworkProfileOutput {
-	return o.ApplyT(func(v *AgentPoolNetworkProfile) AgentPoolNetworkProfile {
-		if v != nil {
-			return *v
-		}
-		var ret AgentPoolNetworkProfile
-		return ret
-	}).(AgentPoolNetworkProfileOutput)
-}
-
-// The port ranges that are allowed to access. The specified ranges are allowed to overlap.
-func (o AgentPoolNetworkProfilePtrOutput) AllowedHostPorts() PortRangeArrayOutput {
-	return o.ApplyT(func(v *AgentPoolNetworkProfile) []PortRange {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedHostPorts
-	}).(PortRangeArrayOutput)
-}
-
-// The IDs of the application security groups which agent pool will associate when created.
-func (o AgentPoolNetworkProfilePtrOutput) ApplicationSecurityGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AgentPoolNetworkProfile) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ApplicationSecurityGroups
-	}).(pulumi.StringArrayOutput)
-}
-
-// IPTags of instance-level public IPs.
-func (o AgentPoolNetworkProfilePtrOutput) NodePublicIPTags() IPTagArrayOutput {
-	return o.ApplyT(func(v *AgentPoolNetworkProfile) []IPTag {
-		if v == nil {
-			return nil
-		}
-		return v.NodePublicIPTags
-	}).(IPTagArrayOutput)
-}
-
-// Network settings of an agent pool.
-type AgentPoolNetworkProfileResponse struct {
-	// The port ranges that are allowed to access. The specified ranges are allowed to overlap.
-	AllowedHostPorts []PortRangeResponse `pulumi:"allowedHostPorts"`
-	// The IDs of the application security groups which agent pool will associate when created.
-	ApplicationSecurityGroups []string `pulumi:"applicationSecurityGroups"`
-	// IPTags of instance-level public IPs.
-	NodePublicIPTags []IPTagResponse `pulumi:"nodePublicIPTags"`
-}
-
-// Network settings of an agent pool.
-type AgentPoolNetworkProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolNetworkProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPoolNetworkProfileResponse)(nil)).Elem()
-}
-
-func (o AgentPoolNetworkProfileResponseOutput) ToAgentPoolNetworkProfileResponseOutput() AgentPoolNetworkProfileResponseOutput {
-	return o
-}
-
-func (o AgentPoolNetworkProfileResponseOutput) ToAgentPoolNetworkProfileResponseOutputWithContext(ctx context.Context) AgentPoolNetworkProfileResponseOutput {
-	return o
-}
-
-// The port ranges that are allowed to access. The specified ranges are allowed to overlap.
-func (o AgentPoolNetworkProfileResponseOutput) AllowedHostPorts() PortRangeResponseArrayOutput {
-	return o.ApplyT(func(v AgentPoolNetworkProfileResponse) []PortRangeResponse { return v.AllowedHostPorts }).(PortRangeResponseArrayOutput)
-}
-
-// The IDs of the application security groups which agent pool will associate when created.
-func (o AgentPoolNetworkProfileResponseOutput) ApplicationSecurityGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AgentPoolNetworkProfileResponse) []string { return v.ApplicationSecurityGroups }).(pulumi.StringArrayOutput)
-}
-
-// IPTags of instance-level public IPs.
-func (o AgentPoolNetworkProfileResponseOutput) NodePublicIPTags() IPTagResponseArrayOutput {
-	return o.ApplyT(func(v AgentPoolNetworkProfileResponse) []IPTagResponse { return v.NodePublicIPTags }).(IPTagResponseArrayOutput)
-}
-
-type AgentPoolNetworkProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolNetworkProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentPoolNetworkProfileResponse)(nil)).Elem()
-}
-
-func (o AgentPoolNetworkProfileResponsePtrOutput) ToAgentPoolNetworkProfileResponsePtrOutput() AgentPoolNetworkProfileResponsePtrOutput {
-	return o
-}
-
-func (o AgentPoolNetworkProfileResponsePtrOutput) ToAgentPoolNetworkProfileResponsePtrOutputWithContext(ctx context.Context) AgentPoolNetworkProfileResponsePtrOutput {
-	return o
-}
-
-func (o AgentPoolNetworkProfileResponsePtrOutput) Elem() AgentPoolNetworkProfileResponseOutput {
-	return o.ApplyT(func(v *AgentPoolNetworkProfileResponse) AgentPoolNetworkProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AgentPoolNetworkProfileResponse
-		return ret
-	}).(AgentPoolNetworkProfileResponseOutput)
-}
-
-// The port ranges that are allowed to access. The specified ranges are allowed to overlap.
-func (o AgentPoolNetworkProfileResponsePtrOutput) AllowedHostPorts() PortRangeResponseArrayOutput {
-	return o.ApplyT(func(v *AgentPoolNetworkProfileResponse) []PortRangeResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedHostPorts
-	}).(PortRangeResponseArrayOutput)
-}
-
-// The IDs of the application security groups which agent pool will associate when created.
-func (o AgentPoolNetworkProfileResponsePtrOutput) ApplicationSecurityGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AgentPoolNetworkProfileResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ApplicationSecurityGroups
-	}).(pulumi.StringArrayOutput)
-}
-
-// IPTags of instance-level public IPs.
-func (o AgentPoolNetworkProfileResponsePtrOutput) NodePublicIPTags() IPTagResponseArrayOutput {
-	return o.ApplyT(func(v *AgentPoolNetworkProfileResponse) []IPTagResponse {
-		if v == nil {
-			return nil
-		}
-		return v.NodePublicIPTags
-	}).(IPTagResponseArrayOutput)
-}
-
-// The security settings of an agent pool.
-type AgentPoolSecurityProfile struct {
-	// Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
-	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
-	// vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
-	EnableVTPM *bool `pulumi:"enableVTPM"`
-}
-
-// AgentPoolSecurityProfileInput is an input type that accepts AgentPoolSecurityProfileArgs and AgentPoolSecurityProfileOutput values.
-// You can construct a concrete instance of `AgentPoolSecurityProfileInput` via:
-//
-//	AgentPoolSecurityProfileArgs{...}
-type AgentPoolSecurityProfileInput interface {
-	pulumi.Input
-
-	ToAgentPoolSecurityProfileOutput() AgentPoolSecurityProfileOutput
-	ToAgentPoolSecurityProfileOutputWithContext(context.Context) AgentPoolSecurityProfileOutput
-}
-
-// The security settings of an agent pool.
-type AgentPoolSecurityProfileArgs struct {
-	// Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
-	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
-	// vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
-	EnableVTPM pulumi.BoolPtrInput `pulumi:"enableVTPM"`
-}
-
-func (AgentPoolSecurityProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPoolSecurityProfile)(nil)).Elem()
-}
-
-func (i AgentPoolSecurityProfileArgs) ToAgentPoolSecurityProfileOutput() AgentPoolSecurityProfileOutput {
-	return i.ToAgentPoolSecurityProfileOutputWithContext(context.Background())
-}
-
-func (i AgentPoolSecurityProfileArgs) ToAgentPoolSecurityProfileOutputWithContext(ctx context.Context) AgentPoolSecurityProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolSecurityProfileOutput)
-}
-
-func (i AgentPoolSecurityProfileArgs) ToAgentPoolSecurityProfilePtrOutput() AgentPoolSecurityProfilePtrOutput {
-	return i.ToAgentPoolSecurityProfilePtrOutputWithContext(context.Background())
-}
-
-func (i AgentPoolSecurityProfileArgs) ToAgentPoolSecurityProfilePtrOutputWithContext(ctx context.Context) AgentPoolSecurityProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolSecurityProfileOutput).ToAgentPoolSecurityProfilePtrOutputWithContext(ctx)
-}
-
-// AgentPoolSecurityProfilePtrInput is an input type that accepts AgentPoolSecurityProfileArgs, AgentPoolSecurityProfilePtr and AgentPoolSecurityProfilePtrOutput values.
-// You can construct a concrete instance of `AgentPoolSecurityProfilePtrInput` via:
-//
-//	        AgentPoolSecurityProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type AgentPoolSecurityProfilePtrInput interface {
-	pulumi.Input
-
-	ToAgentPoolSecurityProfilePtrOutput() AgentPoolSecurityProfilePtrOutput
-	ToAgentPoolSecurityProfilePtrOutputWithContext(context.Context) AgentPoolSecurityProfilePtrOutput
-}
-
-type agentPoolSecurityProfilePtrType AgentPoolSecurityProfileArgs
-
-func AgentPoolSecurityProfilePtr(v *AgentPoolSecurityProfileArgs) AgentPoolSecurityProfilePtrInput {
-	return (*agentPoolSecurityProfilePtrType)(v)
-}
-
-func (*agentPoolSecurityProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentPoolSecurityProfile)(nil)).Elem()
-}
-
-func (i *agentPoolSecurityProfilePtrType) ToAgentPoolSecurityProfilePtrOutput() AgentPoolSecurityProfilePtrOutput {
-	return i.ToAgentPoolSecurityProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *agentPoolSecurityProfilePtrType) ToAgentPoolSecurityProfilePtrOutputWithContext(ctx context.Context) AgentPoolSecurityProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolSecurityProfilePtrOutput)
-}
-
-// The security settings of an agent pool.
-type AgentPoolSecurityProfileOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolSecurityProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPoolSecurityProfile)(nil)).Elem()
-}
-
-func (o AgentPoolSecurityProfileOutput) ToAgentPoolSecurityProfileOutput() AgentPoolSecurityProfileOutput {
-	return o
-}
-
-func (o AgentPoolSecurityProfileOutput) ToAgentPoolSecurityProfileOutputWithContext(ctx context.Context) AgentPoolSecurityProfileOutput {
-	return o
-}
-
-func (o AgentPoolSecurityProfileOutput) ToAgentPoolSecurityProfilePtrOutput() AgentPoolSecurityProfilePtrOutput {
-	return o.ToAgentPoolSecurityProfilePtrOutputWithContext(context.Background())
-}
-
-func (o AgentPoolSecurityProfileOutput) ToAgentPoolSecurityProfilePtrOutputWithContext(ctx context.Context) AgentPoolSecurityProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentPoolSecurityProfile) *AgentPoolSecurityProfile {
-		return &v
-	}).(AgentPoolSecurityProfilePtrOutput)
-}
-
-// Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
-func (o AgentPoolSecurityProfileOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AgentPoolSecurityProfile) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
-}
-
-// vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
-func (o AgentPoolSecurityProfileOutput) EnableVTPM() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AgentPoolSecurityProfile) *bool { return v.EnableVTPM }).(pulumi.BoolPtrOutput)
-}
-
-type AgentPoolSecurityProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolSecurityProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentPoolSecurityProfile)(nil)).Elem()
-}
-
-func (o AgentPoolSecurityProfilePtrOutput) ToAgentPoolSecurityProfilePtrOutput() AgentPoolSecurityProfilePtrOutput {
-	return o
-}
-
-func (o AgentPoolSecurityProfilePtrOutput) ToAgentPoolSecurityProfilePtrOutputWithContext(ctx context.Context) AgentPoolSecurityProfilePtrOutput {
-	return o
-}
-
-func (o AgentPoolSecurityProfilePtrOutput) Elem() AgentPoolSecurityProfileOutput {
-	return o.ApplyT(func(v *AgentPoolSecurityProfile) AgentPoolSecurityProfile {
-		if v != nil {
-			return *v
-		}
-		var ret AgentPoolSecurityProfile
-		return ret
-	}).(AgentPoolSecurityProfileOutput)
-}
-
-// Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
-func (o AgentPoolSecurityProfilePtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AgentPoolSecurityProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableSecureBoot
-	}).(pulumi.BoolPtrOutput)
-}
-
-// vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
-func (o AgentPoolSecurityProfilePtrOutput) EnableVTPM() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AgentPoolSecurityProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableVTPM
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The security settings of an agent pool.
-type AgentPoolSecurityProfileResponse struct {
-	// Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
-	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
-	// vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
-	EnableVTPM *bool `pulumi:"enableVTPM"`
-}
-
-// The security settings of an agent pool.
-type AgentPoolSecurityProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolSecurityProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPoolSecurityProfileResponse)(nil)).Elem()
-}
-
-func (o AgentPoolSecurityProfileResponseOutput) ToAgentPoolSecurityProfileResponseOutput() AgentPoolSecurityProfileResponseOutput {
-	return o
-}
-
-func (o AgentPoolSecurityProfileResponseOutput) ToAgentPoolSecurityProfileResponseOutputWithContext(ctx context.Context) AgentPoolSecurityProfileResponseOutput {
-	return o
-}
-
-// Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
-func (o AgentPoolSecurityProfileResponseOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AgentPoolSecurityProfileResponse) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
-}
-
-// vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
-func (o AgentPoolSecurityProfileResponseOutput) EnableVTPM() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AgentPoolSecurityProfileResponse) *bool { return v.EnableVTPM }).(pulumi.BoolPtrOutput)
-}
-
-type AgentPoolSecurityProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolSecurityProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentPoolSecurityProfileResponse)(nil)).Elem()
-}
-
-func (o AgentPoolSecurityProfileResponsePtrOutput) ToAgentPoolSecurityProfileResponsePtrOutput() AgentPoolSecurityProfileResponsePtrOutput {
-	return o
-}
-
-func (o AgentPoolSecurityProfileResponsePtrOutput) ToAgentPoolSecurityProfileResponsePtrOutputWithContext(ctx context.Context) AgentPoolSecurityProfileResponsePtrOutput {
-	return o
-}
-
-func (o AgentPoolSecurityProfileResponsePtrOutput) Elem() AgentPoolSecurityProfileResponseOutput {
-	return o.ApplyT(func(v *AgentPoolSecurityProfileResponse) AgentPoolSecurityProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AgentPoolSecurityProfileResponse
-		return ret
-	}).(AgentPoolSecurityProfileResponseOutput)
-}
-
-// Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
-func (o AgentPoolSecurityProfileResponsePtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AgentPoolSecurityProfileResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableSecureBoot
-	}).(pulumi.BoolPtrOutput)
-}
-
-// vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
-func (o AgentPoolSecurityProfileResponsePtrOutput) EnableVTPM() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AgentPoolSecurityProfileResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableVTPM
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Settings for upgrading an agentpool
 type AgentPoolUpgradeSettings struct {
-	// The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
-	DrainTimeoutInMinutes *int `pulumi:"drainTimeoutInMinutes"`
-	// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+	// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
 	MaxSurge *string `pulumi:"maxSurge"`
-	// The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
-	NodeSoakDurationInMinutes *int `pulumi:"nodeSoakDurationInMinutes"`
 }
 
 // AgentPoolUpgradeSettingsInput is an input type that accepts AgentPoolUpgradeSettingsArgs and AgentPoolUpgradeSettingsOutput values.
@@ -1724,12 +32,8 @@ type AgentPoolUpgradeSettingsInput interface {
 
 // Settings for upgrading an agentpool
 type AgentPoolUpgradeSettingsArgs struct {
-	// The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
-	DrainTimeoutInMinutes pulumi.IntPtrInput `pulumi:"drainTimeoutInMinutes"`
-	// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+	// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
 	MaxSurge pulumi.StringPtrInput `pulumi:"maxSurge"`
-	// The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
-	NodeSoakDurationInMinutes pulumi.IntPtrInput `pulumi:"nodeSoakDurationInMinutes"`
 }
 
 func (AgentPoolUpgradeSettingsArgs) ElementType() reflect.Type {
@@ -1810,19 +114,9 @@ func (o AgentPoolUpgradeSettingsOutput) ToAgentPoolUpgradeSettingsPtrOutputWithC
 	}).(AgentPoolUpgradeSettingsPtrOutput)
 }
 
-// The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
-func (o AgentPoolUpgradeSettingsOutput) DrainTimeoutInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AgentPoolUpgradeSettings) *int { return v.DrainTimeoutInMinutes }).(pulumi.IntPtrOutput)
-}
-
-// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
 func (o AgentPoolUpgradeSettingsOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentPoolUpgradeSettings) *string { return v.MaxSurge }).(pulumi.StringPtrOutput)
-}
-
-// The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
-func (o AgentPoolUpgradeSettingsOutput) NodeSoakDurationInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AgentPoolUpgradeSettings) *int { return v.NodeSoakDurationInMinutes }).(pulumi.IntPtrOutput)
 }
 
 type AgentPoolUpgradeSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -1849,17 +143,7 @@ func (o AgentPoolUpgradeSettingsPtrOutput) Elem() AgentPoolUpgradeSettingsOutput
 	}).(AgentPoolUpgradeSettingsOutput)
 }
 
-// The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
-func (o AgentPoolUpgradeSettingsPtrOutput) DrainTimeoutInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AgentPoolUpgradeSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DrainTimeoutInMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
 func (o AgentPoolUpgradeSettingsPtrOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AgentPoolUpgradeSettings) *string {
 		if v == nil {
@@ -1869,24 +153,10 @@ func (o AgentPoolUpgradeSettingsPtrOutput) MaxSurge() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
-func (o AgentPoolUpgradeSettingsPtrOutput) NodeSoakDurationInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AgentPoolUpgradeSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.NodeSoakDurationInMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
 // Settings for upgrading an agentpool
 type AgentPoolUpgradeSettingsResponse struct {
-	// The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
-	DrainTimeoutInMinutes *int `pulumi:"drainTimeoutInMinutes"`
-	// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+	// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
 	MaxSurge *string `pulumi:"maxSurge"`
-	// The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
-	NodeSoakDurationInMinutes *int `pulumi:"nodeSoakDurationInMinutes"`
 }
 
 // Settings for upgrading an agentpool
@@ -1904,19 +174,9 @@ func (o AgentPoolUpgradeSettingsResponseOutput) ToAgentPoolUpgradeSettingsRespon
 	return o
 }
 
-// The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
-func (o AgentPoolUpgradeSettingsResponseOutput) DrainTimeoutInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AgentPoolUpgradeSettingsResponse) *int { return v.DrainTimeoutInMinutes }).(pulumi.IntPtrOutput)
-}
-
-// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
 func (o AgentPoolUpgradeSettingsResponseOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentPoolUpgradeSettingsResponse) *string { return v.MaxSurge }).(pulumi.StringPtrOutput)
-}
-
-// The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
-func (o AgentPoolUpgradeSettingsResponseOutput) NodeSoakDurationInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AgentPoolUpgradeSettingsResponse) *int { return v.NodeSoakDurationInMinutes }).(pulumi.IntPtrOutput)
 }
 
 type AgentPoolUpgradeSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1943,469 +203,13 @@ func (o AgentPoolUpgradeSettingsResponsePtrOutput) Elem() AgentPoolUpgradeSettin
 	}).(AgentPoolUpgradeSettingsResponseOutput)
 }
 
-// The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
-func (o AgentPoolUpgradeSettingsResponsePtrOutput) DrainTimeoutInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AgentPoolUpgradeSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DrainTimeoutInMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
 func (o AgentPoolUpgradeSettingsResponsePtrOutput) MaxSurge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AgentPoolUpgradeSettingsResponse) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxSurge
-	}).(pulumi.StringPtrOutput)
-}
-
-// The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
-func (o AgentPoolUpgradeSettingsResponsePtrOutput) NodeSoakDurationInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AgentPoolUpgradeSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.NodeSoakDurationInMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// The Windows agent pool's specific profile.
-type AgentPoolWindowsProfile struct {
-	// The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
-	DisableOutboundNat *bool `pulumi:"disableOutboundNat"`
-}
-
-// AgentPoolWindowsProfileInput is an input type that accepts AgentPoolWindowsProfileArgs and AgentPoolWindowsProfileOutput values.
-// You can construct a concrete instance of `AgentPoolWindowsProfileInput` via:
-//
-//	AgentPoolWindowsProfileArgs{...}
-type AgentPoolWindowsProfileInput interface {
-	pulumi.Input
-
-	ToAgentPoolWindowsProfileOutput() AgentPoolWindowsProfileOutput
-	ToAgentPoolWindowsProfileOutputWithContext(context.Context) AgentPoolWindowsProfileOutput
-}
-
-// The Windows agent pool's specific profile.
-type AgentPoolWindowsProfileArgs struct {
-	// The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
-	DisableOutboundNat pulumi.BoolPtrInput `pulumi:"disableOutboundNat"`
-}
-
-func (AgentPoolWindowsProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPoolWindowsProfile)(nil)).Elem()
-}
-
-func (i AgentPoolWindowsProfileArgs) ToAgentPoolWindowsProfileOutput() AgentPoolWindowsProfileOutput {
-	return i.ToAgentPoolWindowsProfileOutputWithContext(context.Background())
-}
-
-func (i AgentPoolWindowsProfileArgs) ToAgentPoolWindowsProfileOutputWithContext(ctx context.Context) AgentPoolWindowsProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolWindowsProfileOutput)
-}
-
-func (i AgentPoolWindowsProfileArgs) ToAgentPoolWindowsProfilePtrOutput() AgentPoolWindowsProfilePtrOutput {
-	return i.ToAgentPoolWindowsProfilePtrOutputWithContext(context.Background())
-}
-
-func (i AgentPoolWindowsProfileArgs) ToAgentPoolWindowsProfilePtrOutputWithContext(ctx context.Context) AgentPoolWindowsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolWindowsProfileOutput).ToAgentPoolWindowsProfilePtrOutputWithContext(ctx)
-}
-
-// AgentPoolWindowsProfilePtrInput is an input type that accepts AgentPoolWindowsProfileArgs, AgentPoolWindowsProfilePtr and AgentPoolWindowsProfilePtrOutput values.
-// You can construct a concrete instance of `AgentPoolWindowsProfilePtrInput` via:
-//
-//	        AgentPoolWindowsProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type AgentPoolWindowsProfilePtrInput interface {
-	pulumi.Input
-
-	ToAgentPoolWindowsProfilePtrOutput() AgentPoolWindowsProfilePtrOutput
-	ToAgentPoolWindowsProfilePtrOutputWithContext(context.Context) AgentPoolWindowsProfilePtrOutput
-}
-
-type agentPoolWindowsProfilePtrType AgentPoolWindowsProfileArgs
-
-func AgentPoolWindowsProfilePtr(v *AgentPoolWindowsProfileArgs) AgentPoolWindowsProfilePtrInput {
-	return (*agentPoolWindowsProfilePtrType)(v)
-}
-
-func (*agentPoolWindowsProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentPoolWindowsProfile)(nil)).Elem()
-}
-
-func (i *agentPoolWindowsProfilePtrType) ToAgentPoolWindowsProfilePtrOutput() AgentPoolWindowsProfilePtrOutput {
-	return i.ToAgentPoolWindowsProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *agentPoolWindowsProfilePtrType) ToAgentPoolWindowsProfilePtrOutputWithContext(ctx context.Context) AgentPoolWindowsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolWindowsProfilePtrOutput)
-}
-
-// The Windows agent pool's specific profile.
-type AgentPoolWindowsProfileOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolWindowsProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPoolWindowsProfile)(nil)).Elem()
-}
-
-func (o AgentPoolWindowsProfileOutput) ToAgentPoolWindowsProfileOutput() AgentPoolWindowsProfileOutput {
-	return o
-}
-
-func (o AgentPoolWindowsProfileOutput) ToAgentPoolWindowsProfileOutputWithContext(ctx context.Context) AgentPoolWindowsProfileOutput {
-	return o
-}
-
-func (o AgentPoolWindowsProfileOutput) ToAgentPoolWindowsProfilePtrOutput() AgentPoolWindowsProfilePtrOutput {
-	return o.ToAgentPoolWindowsProfilePtrOutputWithContext(context.Background())
-}
-
-func (o AgentPoolWindowsProfileOutput) ToAgentPoolWindowsProfilePtrOutputWithContext(ctx context.Context) AgentPoolWindowsProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentPoolWindowsProfile) *AgentPoolWindowsProfile {
-		return &v
-	}).(AgentPoolWindowsProfilePtrOutput)
-}
-
-// The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
-func (o AgentPoolWindowsProfileOutput) DisableOutboundNat() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AgentPoolWindowsProfile) *bool { return v.DisableOutboundNat }).(pulumi.BoolPtrOutput)
-}
-
-type AgentPoolWindowsProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolWindowsProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentPoolWindowsProfile)(nil)).Elem()
-}
-
-func (o AgentPoolWindowsProfilePtrOutput) ToAgentPoolWindowsProfilePtrOutput() AgentPoolWindowsProfilePtrOutput {
-	return o
-}
-
-func (o AgentPoolWindowsProfilePtrOutput) ToAgentPoolWindowsProfilePtrOutputWithContext(ctx context.Context) AgentPoolWindowsProfilePtrOutput {
-	return o
-}
-
-func (o AgentPoolWindowsProfilePtrOutput) Elem() AgentPoolWindowsProfileOutput {
-	return o.ApplyT(func(v *AgentPoolWindowsProfile) AgentPoolWindowsProfile {
-		if v != nil {
-			return *v
-		}
-		var ret AgentPoolWindowsProfile
-		return ret
-	}).(AgentPoolWindowsProfileOutput)
-}
-
-// The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
-func (o AgentPoolWindowsProfilePtrOutput) DisableOutboundNat() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AgentPoolWindowsProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisableOutboundNat
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The Windows agent pool's specific profile.
-type AgentPoolWindowsProfileResponse struct {
-	// The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
-	DisableOutboundNat *bool `pulumi:"disableOutboundNat"`
-}
-
-// The Windows agent pool's specific profile.
-type AgentPoolWindowsProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolWindowsProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPoolWindowsProfileResponse)(nil)).Elem()
-}
-
-func (o AgentPoolWindowsProfileResponseOutput) ToAgentPoolWindowsProfileResponseOutput() AgentPoolWindowsProfileResponseOutput {
-	return o
-}
-
-func (o AgentPoolWindowsProfileResponseOutput) ToAgentPoolWindowsProfileResponseOutputWithContext(ctx context.Context) AgentPoolWindowsProfileResponseOutput {
-	return o
-}
-
-// The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
-func (o AgentPoolWindowsProfileResponseOutput) DisableOutboundNat() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AgentPoolWindowsProfileResponse) *bool { return v.DisableOutboundNat }).(pulumi.BoolPtrOutput)
-}
-
-type AgentPoolWindowsProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AgentPoolWindowsProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentPoolWindowsProfileResponse)(nil)).Elem()
-}
-
-func (o AgentPoolWindowsProfileResponsePtrOutput) ToAgentPoolWindowsProfileResponsePtrOutput() AgentPoolWindowsProfileResponsePtrOutput {
-	return o
-}
-
-func (o AgentPoolWindowsProfileResponsePtrOutput) ToAgentPoolWindowsProfileResponsePtrOutputWithContext(ctx context.Context) AgentPoolWindowsProfileResponsePtrOutput {
-	return o
-}
-
-func (o AgentPoolWindowsProfileResponsePtrOutput) Elem() AgentPoolWindowsProfileResponseOutput {
-	return o.ApplyT(func(v *AgentPoolWindowsProfileResponse) AgentPoolWindowsProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AgentPoolWindowsProfileResponse
-		return ret
-	}).(AgentPoolWindowsProfileResponseOutput)
-}
-
-// The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
-func (o AgentPoolWindowsProfileResponsePtrOutput) DisableOutboundNat() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AgentPoolWindowsProfileResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisableOutboundNat
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Agent profile for the Fleet hub.
-type AgentProfile struct {
-	// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
-	SubnetId *string `pulumi:"subnetId"`
-	// The virtual machine size of the Fleet hub.
-	VmSize *string `pulumi:"vmSize"`
-}
-
-// AgentProfileInput is an input type that accepts AgentProfileArgs and AgentProfileOutput values.
-// You can construct a concrete instance of `AgentProfileInput` via:
-//
-//	AgentProfileArgs{...}
-type AgentProfileInput interface {
-	pulumi.Input
-
-	ToAgentProfileOutput() AgentProfileOutput
-	ToAgentProfileOutputWithContext(context.Context) AgentProfileOutput
-}
-
-// Agent profile for the Fleet hub.
-type AgentProfileArgs struct {
-	// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
-	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
-	// The virtual machine size of the Fleet hub.
-	VmSize pulumi.StringPtrInput `pulumi:"vmSize"`
-}
-
-func (AgentProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentProfile)(nil)).Elem()
-}
-
-func (i AgentProfileArgs) ToAgentProfileOutput() AgentProfileOutput {
-	return i.ToAgentProfileOutputWithContext(context.Background())
-}
-
-func (i AgentProfileArgs) ToAgentProfileOutputWithContext(ctx context.Context) AgentProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentProfileOutput)
-}
-
-func (i AgentProfileArgs) ToAgentProfilePtrOutput() AgentProfilePtrOutput {
-	return i.ToAgentProfilePtrOutputWithContext(context.Background())
-}
-
-func (i AgentProfileArgs) ToAgentProfilePtrOutputWithContext(ctx context.Context) AgentProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentProfileOutput).ToAgentProfilePtrOutputWithContext(ctx)
-}
-
-// AgentProfilePtrInput is an input type that accepts AgentProfileArgs, AgentProfilePtr and AgentProfilePtrOutput values.
-// You can construct a concrete instance of `AgentProfilePtrInput` via:
-//
-//	        AgentProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type AgentProfilePtrInput interface {
-	pulumi.Input
-
-	ToAgentProfilePtrOutput() AgentProfilePtrOutput
-	ToAgentProfilePtrOutputWithContext(context.Context) AgentProfilePtrOutput
-}
-
-type agentProfilePtrType AgentProfileArgs
-
-func AgentProfilePtr(v *AgentProfileArgs) AgentProfilePtrInput {
-	return (*agentProfilePtrType)(v)
-}
-
-func (*agentProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentProfile)(nil)).Elem()
-}
-
-func (i *agentProfilePtrType) ToAgentProfilePtrOutput() AgentProfilePtrOutput {
-	return i.ToAgentProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *agentProfilePtrType) ToAgentProfilePtrOutputWithContext(ctx context.Context) AgentProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentProfilePtrOutput)
-}
-
-// Agent profile for the Fleet hub.
-type AgentProfileOutput struct{ *pulumi.OutputState }
-
-func (AgentProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentProfile)(nil)).Elem()
-}
-
-func (o AgentProfileOutput) ToAgentProfileOutput() AgentProfileOutput {
-	return o
-}
-
-func (o AgentProfileOutput) ToAgentProfileOutputWithContext(ctx context.Context) AgentProfileOutput {
-	return o
-}
-
-func (o AgentProfileOutput) ToAgentProfilePtrOutput() AgentProfilePtrOutput {
-	return o.ToAgentProfilePtrOutputWithContext(context.Background())
-}
-
-func (o AgentProfileOutput) ToAgentProfilePtrOutputWithContext(ctx context.Context) AgentProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentProfile) *AgentProfile {
-		return &v
-	}).(AgentProfilePtrOutput)
-}
-
-// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
-func (o AgentProfileOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgentProfile) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
-}
-
-// The virtual machine size of the Fleet hub.
-func (o AgentProfileOutput) VmSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgentProfile) *string { return v.VmSize }).(pulumi.StringPtrOutput)
-}
-
-type AgentProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (AgentProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentProfile)(nil)).Elem()
-}
-
-func (o AgentProfilePtrOutput) ToAgentProfilePtrOutput() AgentProfilePtrOutput {
-	return o
-}
-
-func (o AgentProfilePtrOutput) ToAgentProfilePtrOutputWithContext(ctx context.Context) AgentProfilePtrOutput {
-	return o
-}
-
-func (o AgentProfilePtrOutput) Elem() AgentProfileOutput {
-	return o.ApplyT(func(v *AgentProfile) AgentProfile {
-		if v != nil {
-			return *v
-		}
-		var ret AgentProfile
-		return ret
-	}).(AgentProfileOutput)
-}
-
-// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
-func (o AgentProfilePtrOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AgentProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubnetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The virtual machine size of the Fleet hub.
-func (o AgentProfilePtrOutput) VmSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AgentProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VmSize
-	}).(pulumi.StringPtrOutput)
-}
-
-// Agent profile for the Fleet hub.
-type AgentProfileResponse struct {
-	// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
-	SubnetId *string `pulumi:"subnetId"`
-	// The virtual machine size of the Fleet hub.
-	VmSize *string `pulumi:"vmSize"`
-}
-
-// Agent profile for the Fleet hub.
-type AgentProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (AgentProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentProfileResponse)(nil)).Elem()
-}
-
-func (o AgentProfileResponseOutput) ToAgentProfileResponseOutput() AgentProfileResponseOutput {
-	return o
-}
-
-func (o AgentProfileResponseOutput) ToAgentProfileResponseOutputWithContext(ctx context.Context) AgentProfileResponseOutput {
-	return o
-}
-
-// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
-func (o AgentProfileResponseOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgentProfileResponse) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
-}
-
-// The virtual machine size of the Fleet hub.
-func (o AgentProfileResponseOutput) VmSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AgentProfileResponse) *string { return v.VmSize }).(pulumi.StringPtrOutput)
-}
-
-type AgentProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AgentProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentProfileResponse)(nil)).Elem()
-}
-
-func (o AgentProfileResponsePtrOutput) ToAgentProfileResponsePtrOutput() AgentProfileResponsePtrOutput {
-	return o
-}
-
-func (o AgentProfileResponsePtrOutput) ToAgentProfileResponsePtrOutputWithContext(ctx context.Context) AgentProfileResponsePtrOutput {
-	return o
-}
-
-func (o AgentProfileResponsePtrOutput) Elem() AgentProfileResponseOutput {
-	return o.ApplyT(func(v *AgentProfileResponse) AgentProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AgentProfileResponse
-		return ret
-	}).(AgentProfileResponseOutput)
-}
-
-// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
-func (o AgentProfileResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AgentProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubnetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The virtual machine size of the Fleet hub.
-func (o AgentProfileResponsePtrOutput) VmSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AgentProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VmSize
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2954,206 +758,6 @@ func (o AzureKeyVaultKmsResponsePtrOutput) KeyVaultResourceId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Settings for upgrading a cluster.
-type ClusterUpgradeSettings struct {
-	// Settings for overrides.
-	OverrideSettings *UpgradeOverrideSettings `pulumi:"overrideSettings"`
-}
-
-// ClusterUpgradeSettingsInput is an input type that accepts ClusterUpgradeSettingsArgs and ClusterUpgradeSettingsOutput values.
-// You can construct a concrete instance of `ClusterUpgradeSettingsInput` via:
-//
-//	ClusterUpgradeSettingsArgs{...}
-type ClusterUpgradeSettingsInput interface {
-	pulumi.Input
-
-	ToClusterUpgradeSettingsOutput() ClusterUpgradeSettingsOutput
-	ToClusterUpgradeSettingsOutputWithContext(context.Context) ClusterUpgradeSettingsOutput
-}
-
-// Settings for upgrading a cluster.
-type ClusterUpgradeSettingsArgs struct {
-	// Settings for overrides.
-	OverrideSettings UpgradeOverrideSettingsPtrInput `pulumi:"overrideSettings"`
-}
-
-func (ClusterUpgradeSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterUpgradeSettings)(nil)).Elem()
-}
-
-func (i ClusterUpgradeSettingsArgs) ToClusterUpgradeSettingsOutput() ClusterUpgradeSettingsOutput {
-	return i.ToClusterUpgradeSettingsOutputWithContext(context.Background())
-}
-
-func (i ClusterUpgradeSettingsArgs) ToClusterUpgradeSettingsOutputWithContext(ctx context.Context) ClusterUpgradeSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterUpgradeSettingsOutput)
-}
-
-func (i ClusterUpgradeSettingsArgs) ToClusterUpgradeSettingsPtrOutput() ClusterUpgradeSettingsPtrOutput {
-	return i.ToClusterUpgradeSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i ClusterUpgradeSettingsArgs) ToClusterUpgradeSettingsPtrOutputWithContext(ctx context.Context) ClusterUpgradeSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterUpgradeSettingsOutput).ToClusterUpgradeSettingsPtrOutputWithContext(ctx)
-}
-
-// ClusterUpgradeSettingsPtrInput is an input type that accepts ClusterUpgradeSettingsArgs, ClusterUpgradeSettingsPtr and ClusterUpgradeSettingsPtrOutput values.
-// You can construct a concrete instance of `ClusterUpgradeSettingsPtrInput` via:
-//
-//	        ClusterUpgradeSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ClusterUpgradeSettingsPtrInput interface {
-	pulumi.Input
-
-	ToClusterUpgradeSettingsPtrOutput() ClusterUpgradeSettingsPtrOutput
-	ToClusterUpgradeSettingsPtrOutputWithContext(context.Context) ClusterUpgradeSettingsPtrOutput
-}
-
-type clusterUpgradeSettingsPtrType ClusterUpgradeSettingsArgs
-
-func ClusterUpgradeSettingsPtr(v *ClusterUpgradeSettingsArgs) ClusterUpgradeSettingsPtrInput {
-	return (*clusterUpgradeSettingsPtrType)(v)
-}
-
-func (*clusterUpgradeSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterUpgradeSettings)(nil)).Elem()
-}
-
-func (i *clusterUpgradeSettingsPtrType) ToClusterUpgradeSettingsPtrOutput() ClusterUpgradeSettingsPtrOutput {
-	return i.ToClusterUpgradeSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterUpgradeSettingsPtrType) ToClusterUpgradeSettingsPtrOutputWithContext(ctx context.Context) ClusterUpgradeSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterUpgradeSettingsPtrOutput)
-}
-
-// Settings for upgrading a cluster.
-type ClusterUpgradeSettingsOutput struct{ *pulumi.OutputState }
-
-func (ClusterUpgradeSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterUpgradeSettings)(nil)).Elem()
-}
-
-func (o ClusterUpgradeSettingsOutput) ToClusterUpgradeSettingsOutput() ClusterUpgradeSettingsOutput {
-	return o
-}
-
-func (o ClusterUpgradeSettingsOutput) ToClusterUpgradeSettingsOutputWithContext(ctx context.Context) ClusterUpgradeSettingsOutput {
-	return o
-}
-
-func (o ClusterUpgradeSettingsOutput) ToClusterUpgradeSettingsPtrOutput() ClusterUpgradeSettingsPtrOutput {
-	return o.ToClusterUpgradeSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterUpgradeSettingsOutput) ToClusterUpgradeSettingsPtrOutputWithContext(ctx context.Context) ClusterUpgradeSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterUpgradeSettings) *ClusterUpgradeSettings {
-		return &v
-	}).(ClusterUpgradeSettingsPtrOutput)
-}
-
-// Settings for overrides.
-func (o ClusterUpgradeSettingsOutput) OverrideSettings() UpgradeOverrideSettingsPtrOutput {
-	return o.ApplyT(func(v ClusterUpgradeSettings) *UpgradeOverrideSettings { return v.OverrideSettings }).(UpgradeOverrideSettingsPtrOutput)
-}
-
-type ClusterUpgradeSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterUpgradeSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterUpgradeSettings)(nil)).Elem()
-}
-
-func (o ClusterUpgradeSettingsPtrOutput) ToClusterUpgradeSettingsPtrOutput() ClusterUpgradeSettingsPtrOutput {
-	return o
-}
-
-func (o ClusterUpgradeSettingsPtrOutput) ToClusterUpgradeSettingsPtrOutputWithContext(ctx context.Context) ClusterUpgradeSettingsPtrOutput {
-	return o
-}
-
-func (o ClusterUpgradeSettingsPtrOutput) Elem() ClusterUpgradeSettingsOutput {
-	return o.ApplyT(func(v *ClusterUpgradeSettings) ClusterUpgradeSettings {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterUpgradeSettings
-		return ret
-	}).(ClusterUpgradeSettingsOutput)
-}
-
-// Settings for overrides.
-func (o ClusterUpgradeSettingsPtrOutput) OverrideSettings() UpgradeOverrideSettingsPtrOutput {
-	return o.ApplyT(func(v *ClusterUpgradeSettings) *UpgradeOverrideSettings {
-		if v == nil {
-			return nil
-		}
-		return v.OverrideSettings
-	}).(UpgradeOverrideSettingsPtrOutput)
-}
-
-// Settings for upgrading a cluster.
-type ClusterUpgradeSettingsResponse struct {
-	// Settings for overrides.
-	OverrideSettings *UpgradeOverrideSettingsResponse `pulumi:"overrideSettings"`
-}
-
-// Settings for upgrading a cluster.
-type ClusterUpgradeSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (ClusterUpgradeSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterUpgradeSettingsResponse)(nil)).Elem()
-}
-
-func (o ClusterUpgradeSettingsResponseOutput) ToClusterUpgradeSettingsResponseOutput() ClusterUpgradeSettingsResponseOutput {
-	return o
-}
-
-func (o ClusterUpgradeSettingsResponseOutput) ToClusterUpgradeSettingsResponseOutputWithContext(ctx context.Context) ClusterUpgradeSettingsResponseOutput {
-	return o
-}
-
-// Settings for overrides.
-func (o ClusterUpgradeSettingsResponseOutput) OverrideSettings() UpgradeOverrideSettingsResponsePtrOutput {
-	return o.ApplyT(func(v ClusterUpgradeSettingsResponse) *UpgradeOverrideSettingsResponse { return v.OverrideSettings }).(UpgradeOverrideSettingsResponsePtrOutput)
-}
-
-type ClusterUpgradeSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterUpgradeSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterUpgradeSettingsResponse)(nil)).Elem()
-}
-
-func (o ClusterUpgradeSettingsResponsePtrOutput) ToClusterUpgradeSettingsResponsePtrOutput() ClusterUpgradeSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ClusterUpgradeSettingsResponsePtrOutput) ToClusterUpgradeSettingsResponsePtrOutputWithContext(ctx context.Context) ClusterUpgradeSettingsResponsePtrOutput {
-	return o
-}
-
-func (o ClusterUpgradeSettingsResponsePtrOutput) Elem() ClusterUpgradeSettingsResponseOutput {
-	return o.ApplyT(func(v *ClusterUpgradeSettingsResponse) ClusterUpgradeSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterUpgradeSettingsResponse
-		return ret
-	}).(ClusterUpgradeSettingsResponseOutput)
-}
-
-// Settings for overrides.
-func (o ClusterUpgradeSettingsResponsePtrOutput) OverrideSettings() UpgradeOverrideSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *ClusterUpgradeSettingsResponse) *UpgradeOverrideSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.OverrideSettings
-	}).(UpgradeOverrideSettingsResponsePtrOutput)
-}
-
 // Profile for Linux VMs in the container service cluster.
 type ContainerServiceLinuxProfile struct {
 	// The administrator username to use for Linux VMs.
@@ -3392,8 +996,6 @@ func (o ContainerServiceLinuxProfileResponsePtrOutput) Ssh() ContainerServiceSsh
 
 // Profile of network configuration.
 type ContainerServiceNetworkProfile struct {
-	// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-	AdvancedNetworking *AdvancedNetworking `pulumi:"advancedNetworking"`
 	// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
 	DnsServiceIP *string `pulumi:"dnsServiceIP"`
 	// IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
@@ -3440,6 +1042,10 @@ func (val *ContainerServiceNetworkProfile) Defaults() *ContainerServiceNetworkPr
 
 	tmp.NatGatewayProfile = tmp.NatGatewayProfile.Defaults()
 
+	if tmp.NetworkPlugin == nil {
+		networkPlugin_ := "kubenet"
+		tmp.NetworkPlugin = &networkPlugin_
+	}
 	if tmp.OutboundType == nil {
 		outboundType_ := "loadBalancer"
 		tmp.OutboundType = &outboundType_
@@ -3468,8 +1074,6 @@ type ContainerServiceNetworkProfileInput interface {
 
 // Profile of network configuration.
 type ContainerServiceNetworkProfileArgs struct {
-	// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-	AdvancedNetworking AdvancedNetworkingPtrInput `pulumi:"advancedNetworking"`
 	// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
 	DnsServiceIP pulumi.StringPtrInput `pulumi:"dnsServiceIP"`
 	// IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
@@ -3512,6 +1116,9 @@ func (val *ContainerServiceNetworkProfileArgs) Defaults() *ContainerServiceNetwo
 		tmp.DnsServiceIP = pulumi.StringPtr("10.0.0.10")
 	}
 
+	if tmp.NetworkPlugin == nil {
+		tmp.NetworkPlugin = pulumi.StringPtr("kubenet")
+	}
 	if tmp.OutboundType == nil {
 		tmp.OutboundType = pulumi.StringPtr("loadBalancer")
 	}
@@ -3599,11 +1206,6 @@ func (o ContainerServiceNetworkProfileOutput) ToContainerServiceNetworkProfilePt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerServiceNetworkProfile) *ContainerServiceNetworkProfile {
 		return &v
 	}).(ContainerServiceNetworkProfilePtrOutput)
-}
-
-// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-func (o ContainerServiceNetworkProfileOutput) AdvancedNetworking() AdvancedNetworkingPtrOutput {
-	return o.ApplyT(func(v ContainerServiceNetworkProfile) *AdvancedNetworking { return v.AdvancedNetworking }).(AdvancedNetworkingPtrOutput)
 }
 
 // An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
@@ -3705,16 +1307,6 @@ func (o ContainerServiceNetworkProfilePtrOutput) Elem() ContainerServiceNetworkP
 		var ret ContainerServiceNetworkProfile
 		return ret
 	}).(ContainerServiceNetworkProfileOutput)
-}
-
-// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-func (o ContainerServiceNetworkProfilePtrOutput) AdvancedNetworking() AdvancedNetworkingPtrOutput {
-	return o.ApplyT(func(v *ContainerServiceNetworkProfile) *AdvancedNetworking {
-		if v == nil {
-			return nil
-		}
-		return v.AdvancedNetworking
-	}).(AdvancedNetworkingPtrOutput)
 }
 
 // An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
@@ -3869,8 +1461,6 @@ func (o ContainerServiceNetworkProfilePtrOutput) ServiceCidrs() pulumi.StringArr
 
 // Profile of network configuration.
 type ContainerServiceNetworkProfileResponse struct {
-	// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-	AdvancedNetworking *AdvancedNetworkingResponse `pulumi:"advancedNetworking"`
 	// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
 	DnsServiceIP *string `pulumi:"dnsServiceIP"`
 	// IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
@@ -3917,6 +1507,10 @@ func (val *ContainerServiceNetworkProfileResponse) Defaults() *ContainerServiceN
 
 	tmp.NatGatewayProfile = tmp.NatGatewayProfile.Defaults()
 
+	if tmp.NetworkPlugin == nil {
+		networkPlugin_ := "kubenet"
+		tmp.NetworkPlugin = &networkPlugin_
+	}
 	if tmp.OutboundType == nil {
 		outboundType_ := "loadBalancer"
 		tmp.OutboundType = &outboundType_
@@ -3945,13 +1539,6 @@ func (o ContainerServiceNetworkProfileResponseOutput) ToContainerServiceNetworkP
 
 func (o ContainerServiceNetworkProfileResponseOutput) ToContainerServiceNetworkProfileResponseOutputWithContext(ctx context.Context) ContainerServiceNetworkProfileResponseOutput {
 	return o
-}
-
-// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-func (o ContainerServiceNetworkProfileResponseOutput) AdvancedNetworking() AdvancedNetworkingResponsePtrOutput {
-	return o.ApplyT(func(v ContainerServiceNetworkProfileResponse) *AdvancedNetworkingResponse {
-		return v.AdvancedNetworking
-	}).(AdvancedNetworkingResponsePtrOutput)
 }
 
 // An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
@@ -4055,16 +1642,6 @@ func (o ContainerServiceNetworkProfileResponsePtrOutput) Elem() ContainerService
 		var ret ContainerServiceNetworkProfileResponse
 		return ret
 	}).(ContainerServiceNetworkProfileResponseOutput)
-}
-
-// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-func (o ContainerServiceNetworkProfileResponsePtrOutput) AdvancedNetworking() AdvancedNetworkingResponsePtrOutput {
-	return o.ApplyT(func(v *ContainerServiceNetworkProfileResponse) *AdvancedNetworkingResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AdvancedNetworking
-	}).(AdvancedNetworkingResponsePtrOutput)
 }
 
 // An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
@@ -4818,562 +2395,6 @@ func (o CredentialResultResponseArrayOutput) Index(i pulumi.IntInput) Credential
 	}).(CredentialResultResponseOutput)
 }
 
-// For schedules like: 'recur every day' or 'recur every 3 days'.
-type DailySchedule struct {
-	// Specifies the number of days between each set of occurrences.
-	IntervalDays int `pulumi:"intervalDays"`
-}
-
-// DailyScheduleInput is an input type that accepts DailyScheduleArgs and DailyScheduleOutput values.
-// You can construct a concrete instance of `DailyScheduleInput` via:
-//
-//	DailyScheduleArgs{...}
-type DailyScheduleInput interface {
-	pulumi.Input
-
-	ToDailyScheduleOutput() DailyScheduleOutput
-	ToDailyScheduleOutputWithContext(context.Context) DailyScheduleOutput
-}
-
-// For schedules like: 'recur every day' or 'recur every 3 days'.
-type DailyScheduleArgs struct {
-	// Specifies the number of days between each set of occurrences.
-	IntervalDays pulumi.IntInput `pulumi:"intervalDays"`
-}
-
-func (DailyScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DailySchedule)(nil)).Elem()
-}
-
-func (i DailyScheduleArgs) ToDailyScheduleOutput() DailyScheduleOutput {
-	return i.ToDailyScheduleOutputWithContext(context.Background())
-}
-
-func (i DailyScheduleArgs) ToDailyScheduleOutputWithContext(ctx context.Context) DailyScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DailyScheduleOutput)
-}
-
-func (i DailyScheduleArgs) ToDailySchedulePtrOutput() DailySchedulePtrOutput {
-	return i.ToDailySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i DailyScheduleArgs) ToDailySchedulePtrOutputWithContext(ctx context.Context) DailySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DailyScheduleOutput).ToDailySchedulePtrOutputWithContext(ctx)
-}
-
-// DailySchedulePtrInput is an input type that accepts DailyScheduleArgs, DailySchedulePtr and DailySchedulePtrOutput values.
-// You can construct a concrete instance of `DailySchedulePtrInput` via:
-//
-//	        DailyScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type DailySchedulePtrInput interface {
-	pulumi.Input
-
-	ToDailySchedulePtrOutput() DailySchedulePtrOutput
-	ToDailySchedulePtrOutputWithContext(context.Context) DailySchedulePtrOutput
-}
-
-type dailySchedulePtrType DailyScheduleArgs
-
-func DailySchedulePtr(v *DailyScheduleArgs) DailySchedulePtrInput {
-	return (*dailySchedulePtrType)(v)
-}
-
-func (*dailySchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DailySchedule)(nil)).Elem()
-}
-
-func (i *dailySchedulePtrType) ToDailySchedulePtrOutput() DailySchedulePtrOutput {
-	return i.ToDailySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *dailySchedulePtrType) ToDailySchedulePtrOutputWithContext(ctx context.Context) DailySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DailySchedulePtrOutput)
-}
-
-// For schedules like: 'recur every day' or 'recur every 3 days'.
-type DailyScheduleOutput struct{ *pulumi.OutputState }
-
-func (DailyScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DailySchedule)(nil)).Elem()
-}
-
-func (o DailyScheduleOutput) ToDailyScheduleOutput() DailyScheduleOutput {
-	return o
-}
-
-func (o DailyScheduleOutput) ToDailyScheduleOutputWithContext(ctx context.Context) DailyScheduleOutput {
-	return o
-}
-
-func (o DailyScheduleOutput) ToDailySchedulePtrOutput() DailySchedulePtrOutput {
-	return o.ToDailySchedulePtrOutputWithContext(context.Background())
-}
-
-func (o DailyScheduleOutput) ToDailySchedulePtrOutputWithContext(ctx context.Context) DailySchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DailySchedule) *DailySchedule {
-		return &v
-	}).(DailySchedulePtrOutput)
-}
-
-// Specifies the number of days between each set of occurrences.
-func (o DailyScheduleOutput) IntervalDays() pulumi.IntOutput {
-	return o.ApplyT(func(v DailySchedule) int { return v.IntervalDays }).(pulumi.IntOutput)
-}
-
-type DailySchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (DailySchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DailySchedule)(nil)).Elem()
-}
-
-func (o DailySchedulePtrOutput) ToDailySchedulePtrOutput() DailySchedulePtrOutput {
-	return o
-}
-
-func (o DailySchedulePtrOutput) ToDailySchedulePtrOutputWithContext(ctx context.Context) DailySchedulePtrOutput {
-	return o
-}
-
-func (o DailySchedulePtrOutput) Elem() DailyScheduleOutput {
-	return o.ApplyT(func(v *DailySchedule) DailySchedule {
-		if v != nil {
-			return *v
-		}
-		var ret DailySchedule
-		return ret
-	}).(DailyScheduleOutput)
-}
-
-// Specifies the number of days between each set of occurrences.
-func (o DailySchedulePtrOutput) IntervalDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DailySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.IntervalDays
-	}).(pulumi.IntPtrOutput)
-}
-
-// For schedules like: 'recur every day' or 'recur every 3 days'.
-type DailyScheduleResponse struct {
-	// Specifies the number of days between each set of occurrences.
-	IntervalDays int `pulumi:"intervalDays"`
-}
-
-// For schedules like: 'recur every day' or 'recur every 3 days'.
-type DailyScheduleResponseOutput struct{ *pulumi.OutputState }
-
-func (DailyScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DailyScheduleResponse)(nil)).Elem()
-}
-
-func (o DailyScheduleResponseOutput) ToDailyScheduleResponseOutput() DailyScheduleResponseOutput {
-	return o
-}
-
-func (o DailyScheduleResponseOutput) ToDailyScheduleResponseOutputWithContext(ctx context.Context) DailyScheduleResponseOutput {
-	return o
-}
-
-// Specifies the number of days between each set of occurrences.
-func (o DailyScheduleResponseOutput) IntervalDays() pulumi.IntOutput {
-	return o.ApplyT(func(v DailyScheduleResponse) int { return v.IntervalDays }).(pulumi.IntOutput)
-}
-
-type DailyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DailyScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DailyScheduleResponse)(nil)).Elem()
-}
-
-func (o DailyScheduleResponsePtrOutput) ToDailyScheduleResponsePtrOutput() DailyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o DailyScheduleResponsePtrOutput) ToDailyScheduleResponsePtrOutputWithContext(ctx context.Context) DailyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o DailyScheduleResponsePtrOutput) Elem() DailyScheduleResponseOutput {
-	return o.ApplyT(func(v *DailyScheduleResponse) DailyScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DailyScheduleResponse
-		return ret
-	}).(DailyScheduleResponseOutput)
-}
-
-// Specifies the number of days between each set of occurrences.
-func (o DailyScheduleResponsePtrOutput) IntervalDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DailyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.IntervalDays
-	}).(pulumi.IntPtrOutput)
-}
-
-// For example, between '2022-12-23' and '2023-01-05'.
-type DateSpan struct {
-	// The end date of the date span.
-	End string `pulumi:"end"`
-	// The start date of the date span.
-	Start string `pulumi:"start"`
-}
-
-// DateSpanInput is an input type that accepts DateSpanArgs and DateSpanOutput values.
-// You can construct a concrete instance of `DateSpanInput` via:
-//
-//	DateSpanArgs{...}
-type DateSpanInput interface {
-	pulumi.Input
-
-	ToDateSpanOutput() DateSpanOutput
-	ToDateSpanOutputWithContext(context.Context) DateSpanOutput
-}
-
-// For example, between '2022-12-23' and '2023-01-05'.
-type DateSpanArgs struct {
-	// The end date of the date span.
-	End pulumi.StringInput `pulumi:"end"`
-	// The start date of the date span.
-	Start pulumi.StringInput `pulumi:"start"`
-}
-
-func (DateSpanArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DateSpan)(nil)).Elem()
-}
-
-func (i DateSpanArgs) ToDateSpanOutput() DateSpanOutput {
-	return i.ToDateSpanOutputWithContext(context.Background())
-}
-
-func (i DateSpanArgs) ToDateSpanOutputWithContext(ctx context.Context) DateSpanOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DateSpanOutput)
-}
-
-// DateSpanArrayInput is an input type that accepts DateSpanArray and DateSpanArrayOutput values.
-// You can construct a concrete instance of `DateSpanArrayInput` via:
-//
-//	DateSpanArray{ DateSpanArgs{...} }
-type DateSpanArrayInput interface {
-	pulumi.Input
-
-	ToDateSpanArrayOutput() DateSpanArrayOutput
-	ToDateSpanArrayOutputWithContext(context.Context) DateSpanArrayOutput
-}
-
-type DateSpanArray []DateSpanInput
-
-func (DateSpanArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DateSpan)(nil)).Elem()
-}
-
-func (i DateSpanArray) ToDateSpanArrayOutput() DateSpanArrayOutput {
-	return i.ToDateSpanArrayOutputWithContext(context.Background())
-}
-
-func (i DateSpanArray) ToDateSpanArrayOutputWithContext(ctx context.Context) DateSpanArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DateSpanArrayOutput)
-}
-
-// For example, between '2022-12-23' and '2023-01-05'.
-type DateSpanOutput struct{ *pulumi.OutputState }
-
-func (DateSpanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DateSpan)(nil)).Elem()
-}
-
-func (o DateSpanOutput) ToDateSpanOutput() DateSpanOutput {
-	return o
-}
-
-func (o DateSpanOutput) ToDateSpanOutputWithContext(ctx context.Context) DateSpanOutput {
-	return o
-}
-
-// The end date of the date span.
-func (o DateSpanOutput) End() pulumi.StringOutput {
-	return o.ApplyT(func(v DateSpan) string { return v.End }).(pulumi.StringOutput)
-}
-
-// The start date of the date span.
-func (o DateSpanOutput) Start() pulumi.StringOutput {
-	return o.ApplyT(func(v DateSpan) string { return v.Start }).(pulumi.StringOutput)
-}
-
-type DateSpanArrayOutput struct{ *pulumi.OutputState }
-
-func (DateSpanArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DateSpan)(nil)).Elem()
-}
-
-func (o DateSpanArrayOutput) ToDateSpanArrayOutput() DateSpanArrayOutput {
-	return o
-}
-
-func (o DateSpanArrayOutput) ToDateSpanArrayOutputWithContext(ctx context.Context) DateSpanArrayOutput {
-	return o
-}
-
-func (o DateSpanArrayOutput) Index(i pulumi.IntInput) DateSpanOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DateSpan {
-		return vs[0].([]DateSpan)[vs[1].(int)]
-	}).(DateSpanOutput)
-}
-
-// For example, between '2022-12-23' and '2023-01-05'.
-type DateSpanResponse struct {
-	// The end date of the date span.
-	End string `pulumi:"end"`
-	// The start date of the date span.
-	Start string `pulumi:"start"`
-}
-
-// For example, between '2022-12-23' and '2023-01-05'.
-type DateSpanResponseOutput struct{ *pulumi.OutputState }
-
-func (DateSpanResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DateSpanResponse)(nil)).Elem()
-}
-
-func (o DateSpanResponseOutput) ToDateSpanResponseOutput() DateSpanResponseOutput {
-	return o
-}
-
-func (o DateSpanResponseOutput) ToDateSpanResponseOutputWithContext(ctx context.Context) DateSpanResponseOutput {
-	return o
-}
-
-// The end date of the date span.
-func (o DateSpanResponseOutput) End() pulumi.StringOutput {
-	return o.ApplyT(func(v DateSpanResponse) string { return v.End }).(pulumi.StringOutput)
-}
-
-// The start date of the date span.
-func (o DateSpanResponseOutput) Start() pulumi.StringOutput {
-	return o.ApplyT(func(v DateSpanResponse) string { return v.Start }).(pulumi.StringOutput)
-}
-
-type DateSpanResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (DateSpanResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DateSpanResponse)(nil)).Elem()
-}
-
-func (o DateSpanResponseArrayOutput) ToDateSpanResponseArrayOutput() DateSpanResponseArrayOutput {
-	return o
-}
-
-func (o DateSpanResponseArrayOutput) ToDateSpanResponseArrayOutputWithContext(ctx context.Context) DateSpanResponseArrayOutput {
-	return o
-}
-
-func (o DateSpanResponseArrayOutput) Index(i pulumi.IntInput) DateSpanResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DateSpanResponse {
-		return vs[0].([]DateSpanResponse)[vs[1].(int)]
-	}).(DateSpanResponseOutput)
-}
-
-// Delegated resource properties - internal use only.
-type DelegatedResource struct {
-	// The source resource location - internal use only.
-	Location *string `pulumi:"location"`
-	// The delegation id of the referral delegation (optional) - internal use only.
-	ReferralResource *string `pulumi:"referralResource"`
-	// The ARM resource id of the delegated resource - internal use only.
-	ResourceId *string `pulumi:"resourceId"`
-	// The tenant id of the delegated resource - internal use only.
-	TenantId *string `pulumi:"tenantId"`
-}
-
-// DelegatedResourceInput is an input type that accepts DelegatedResourceArgs and DelegatedResourceOutput values.
-// You can construct a concrete instance of `DelegatedResourceInput` via:
-//
-//	DelegatedResourceArgs{...}
-type DelegatedResourceInput interface {
-	pulumi.Input
-
-	ToDelegatedResourceOutput() DelegatedResourceOutput
-	ToDelegatedResourceOutputWithContext(context.Context) DelegatedResourceOutput
-}
-
-// Delegated resource properties - internal use only.
-type DelegatedResourceArgs struct {
-	// The source resource location - internal use only.
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	// The delegation id of the referral delegation (optional) - internal use only.
-	ReferralResource pulumi.StringPtrInput `pulumi:"referralResource"`
-	// The ARM resource id of the delegated resource - internal use only.
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// The tenant id of the delegated resource - internal use only.
-	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
-}
-
-func (DelegatedResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DelegatedResource)(nil)).Elem()
-}
-
-func (i DelegatedResourceArgs) ToDelegatedResourceOutput() DelegatedResourceOutput {
-	return i.ToDelegatedResourceOutputWithContext(context.Background())
-}
-
-func (i DelegatedResourceArgs) ToDelegatedResourceOutputWithContext(ctx context.Context) DelegatedResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DelegatedResourceOutput)
-}
-
-// DelegatedResourceMapInput is an input type that accepts DelegatedResourceMap and DelegatedResourceMapOutput values.
-// You can construct a concrete instance of `DelegatedResourceMapInput` via:
-//
-//	DelegatedResourceMap{ "key": DelegatedResourceArgs{...} }
-type DelegatedResourceMapInput interface {
-	pulumi.Input
-
-	ToDelegatedResourceMapOutput() DelegatedResourceMapOutput
-	ToDelegatedResourceMapOutputWithContext(context.Context) DelegatedResourceMapOutput
-}
-
-type DelegatedResourceMap map[string]DelegatedResourceInput
-
-func (DelegatedResourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DelegatedResource)(nil)).Elem()
-}
-
-func (i DelegatedResourceMap) ToDelegatedResourceMapOutput() DelegatedResourceMapOutput {
-	return i.ToDelegatedResourceMapOutputWithContext(context.Background())
-}
-
-func (i DelegatedResourceMap) ToDelegatedResourceMapOutputWithContext(ctx context.Context) DelegatedResourceMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DelegatedResourceMapOutput)
-}
-
-// Delegated resource properties - internal use only.
-type DelegatedResourceOutput struct{ *pulumi.OutputState }
-
-func (DelegatedResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DelegatedResource)(nil)).Elem()
-}
-
-func (o DelegatedResourceOutput) ToDelegatedResourceOutput() DelegatedResourceOutput {
-	return o
-}
-
-func (o DelegatedResourceOutput) ToDelegatedResourceOutputWithContext(ctx context.Context) DelegatedResourceOutput {
-	return o
-}
-
-// The source resource location - internal use only.
-func (o DelegatedResourceOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DelegatedResource) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// The delegation id of the referral delegation (optional) - internal use only.
-func (o DelegatedResourceOutput) ReferralResource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DelegatedResource) *string { return v.ReferralResource }).(pulumi.StringPtrOutput)
-}
-
-// The ARM resource id of the delegated resource - internal use only.
-func (o DelegatedResourceOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DelegatedResource) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-// The tenant id of the delegated resource - internal use only.
-func (o DelegatedResourceOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DelegatedResource) *string { return v.TenantId }).(pulumi.StringPtrOutput)
-}
-
-type DelegatedResourceMapOutput struct{ *pulumi.OutputState }
-
-func (DelegatedResourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DelegatedResource)(nil)).Elem()
-}
-
-func (o DelegatedResourceMapOutput) ToDelegatedResourceMapOutput() DelegatedResourceMapOutput {
-	return o
-}
-
-func (o DelegatedResourceMapOutput) ToDelegatedResourceMapOutputWithContext(ctx context.Context) DelegatedResourceMapOutput {
-	return o
-}
-
-func (o DelegatedResourceMapOutput) MapIndex(k pulumi.StringInput) DelegatedResourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DelegatedResource {
-		return vs[0].(map[string]DelegatedResource)[vs[1].(string)]
-	}).(DelegatedResourceOutput)
-}
-
-// Delegated resource properties - internal use only.
-type DelegatedResourceResponse struct {
-	// The source resource location - internal use only.
-	Location *string `pulumi:"location"`
-	// The delegation id of the referral delegation (optional) - internal use only.
-	ReferralResource *string `pulumi:"referralResource"`
-	// The ARM resource id of the delegated resource - internal use only.
-	ResourceId *string `pulumi:"resourceId"`
-	// The tenant id of the delegated resource - internal use only.
-	TenantId *string `pulumi:"tenantId"`
-}
-
-// Delegated resource properties - internal use only.
-type DelegatedResourceResponseOutput struct{ *pulumi.OutputState }
-
-func (DelegatedResourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DelegatedResourceResponse)(nil)).Elem()
-}
-
-func (o DelegatedResourceResponseOutput) ToDelegatedResourceResponseOutput() DelegatedResourceResponseOutput {
-	return o
-}
-
-func (o DelegatedResourceResponseOutput) ToDelegatedResourceResponseOutputWithContext(ctx context.Context) DelegatedResourceResponseOutput {
-	return o
-}
-
-// The source resource location - internal use only.
-func (o DelegatedResourceResponseOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DelegatedResourceResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// The delegation id of the referral delegation (optional) - internal use only.
-func (o DelegatedResourceResponseOutput) ReferralResource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DelegatedResourceResponse) *string { return v.ReferralResource }).(pulumi.StringPtrOutput)
-}
-
-// The ARM resource id of the delegated resource - internal use only.
-func (o DelegatedResourceResponseOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DelegatedResourceResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-// The tenant id of the delegated resource - internal use only.
-func (o DelegatedResourceResponseOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DelegatedResourceResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
-}
-
-type DelegatedResourceResponseMapOutput struct{ *pulumi.OutputState }
-
-func (DelegatedResourceResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DelegatedResourceResponse)(nil)).Elem()
-}
-
-func (o DelegatedResourceResponseMapOutput) ToDelegatedResourceResponseMapOutput() DelegatedResourceResponseMapOutput {
-	return o
-}
-
-func (o DelegatedResourceResponseMapOutput) ToDelegatedResourceResponseMapOutputWithContext(ctx context.Context) DelegatedResourceResponseMapOutput {
-	return o
-}
-
-func (o DelegatedResourceResponseMapOutput) MapIndex(k pulumi.StringInput) DelegatedResourceResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DelegatedResourceResponse {
-		return vs[0].(map[string]DelegatedResourceResponse)[vs[1].(string)]
-	}).(DelegatedResourceResponseOutput)
-}
-
 // The resource management error additional info.
 type ErrorAdditionalInfoResponse struct {
 	// The additional info.
@@ -5792,10 +2813,6 @@ func (o FleetCredentialResultResponseArrayOutput) Index(i pulumi.IntInput) Fleet
 
 // The FleetHubProfile configures the fleet hub.
 type FleetHubProfile struct {
-	// The agent profile for the Fleet hub.
-	AgentProfile *AgentProfile `pulumi:"agentProfile"`
-	// The access profile for the Fleet hub API server.
-	ApiServerAccessProfile *APIServerAccessProfile `pulumi:"apiServerAccessProfile"`
 	// DNS prefix used to create the FQDN for the Fleet hub.
 	DnsPrefix *string `pulumi:"dnsPrefix"`
 }
@@ -5813,10 +2830,6 @@ type FleetHubProfileInput interface {
 
 // The FleetHubProfile configures the fleet hub.
 type FleetHubProfileArgs struct {
-	// The agent profile for the Fleet hub.
-	AgentProfile AgentProfilePtrInput `pulumi:"agentProfile"`
-	// The access profile for the Fleet hub API server.
-	ApiServerAccessProfile APIServerAccessProfilePtrInput `pulumi:"apiServerAccessProfile"`
 	// DNS prefix used to create the FQDN for the Fleet hub.
 	DnsPrefix pulumi.StringPtrInput `pulumi:"dnsPrefix"`
 }
@@ -5899,16 +2912,6 @@ func (o FleetHubProfileOutput) ToFleetHubProfilePtrOutputWithContext(ctx context
 	}).(FleetHubProfilePtrOutput)
 }
 
-// The agent profile for the Fleet hub.
-func (o FleetHubProfileOutput) AgentProfile() AgentProfilePtrOutput {
-	return o.ApplyT(func(v FleetHubProfile) *AgentProfile { return v.AgentProfile }).(AgentProfilePtrOutput)
-}
-
-// The access profile for the Fleet hub API server.
-func (o FleetHubProfileOutput) ApiServerAccessProfile() APIServerAccessProfilePtrOutput {
-	return o.ApplyT(func(v FleetHubProfile) *APIServerAccessProfile { return v.ApiServerAccessProfile }).(APIServerAccessProfilePtrOutput)
-}
-
 // DNS prefix used to create the FQDN for the Fleet hub.
 func (o FleetHubProfileOutput) DnsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FleetHubProfile) *string { return v.DnsPrefix }).(pulumi.StringPtrOutput)
@@ -5938,26 +2941,6 @@ func (o FleetHubProfilePtrOutput) Elem() FleetHubProfileOutput {
 	}).(FleetHubProfileOutput)
 }
 
-// The agent profile for the Fleet hub.
-func (o FleetHubProfilePtrOutput) AgentProfile() AgentProfilePtrOutput {
-	return o.ApplyT(func(v *FleetHubProfile) *AgentProfile {
-		if v == nil {
-			return nil
-		}
-		return v.AgentProfile
-	}).(AgentProfilePtrOutput)
-}
-
-// The access profile for the Fleet hub API server.
-func (o FleetHubProfilePtrOutput) ApiServerAccessProfile() APIServerAccessProfilePtrOutput {
-	return o.ApplyT(func(v *FleetHubProfile) *APIServerAccessProfile {
-		if v == nil {
-			return nil
-		}
-		return v.ApiServerAccessProfile
-	}).(APIServerAccessProfilePtrOutput)
-}
-
 // DNS prefix used to create the FQDN for the Fleet hub.
 func (o FleetHubProfilePtrOutput) DnsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FleetHubProfile) *string {
@@ -5970,18 +2953,12 @@ func (o FleetHubProfilePtrOutput) DnsPrefix() pulumi.StringPtrOutput {
 
 // The FleetHubProfile configures the fleet hub.
 type FleetHubProfileResponse struct {
-	// The agent profile for the Fleet hub.
-	AgentProfile *AgentProfileResponse `pulumi:"agentProfile"`
-	// The access profile for the Fleet hub API server.
-	ApiServerAccessProfile *APIServerAccessProfileResponse `pulumi:"apiServerAccessProfile"`
 	// DNS prefix used to create the FQDN for the Fleet hub.
 	DnsPrefix *string `pulumi:"dnsPrefix"`
 	// The FQDN of the Fleet hub.
 	Fqdn string `pulumi:"fqdn"`
 	// The Kubernetes version of the Fleet hub.
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
-	// The Azure Portal FQDN of the Fleet hub.
-	PortalFqdn string `pulumi:"portalFqdn"`
 }
 
 // The FleetHubProfile configures the fleet hub.
@@ -5999,16 +2976,6 @@ func (o FleetHubProfileResponseOutput) ToFleetHubProfileResponseOutputWithContex
 	return o
 }
 
-// The agent profile for the Fleet hub.
-func (o FleetHubProfileResponseOutput) AgentProfile() AgentProfileResponsePtrOutput {
-	return o.ApplyT(func(v FleetHubProfileResponse) *AgentProfileResponse { return v.AgentProfile }).(AgentProfileResponsePtrOutput)
-}
-
-// The access profile for the Fleet hub API server.
-func (o FleetHubProfileResponseOutput) ApiServerAccessProfile() APIServerAccessProfileResponsePtrOutput {
-	return o.ApplyT(func(v FleetHubProfileResponse) *APIServerAccessProfileResponse { return v.ApiServerAccessProfile }).(APIServerAccessProfileResponsePtrOutput)
-}
-
 // DNS prefix used to create the FQDN for the Fleet hub.
 func (o FleetHubProfileResponseOutput) DnsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FleetHubProfileResponse) *string { return v.DnsPrefix }).(pulumi.StringPtrOutput)
@@ -6022,11 +2989,6 @@ func (o FleetHubProfileResponseOutput) Fqdn() pulumi.StringOutput {
 // The Kubernetes version of the Fleet hub.
 func (o FleetHubProfileResponseOutput) KubernetesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v FleetHubProfileResponse) string { return v.KubernetesVersion }).(pulumi.StringOutput)
-}
-
-// The Azure Portal FQDN of the Fleet hub.
-func (o FleetHubProfileResponseOutput) PortalFqdn() pulumi.StringOutput {
-	return o.ApplyT(func(v FleetHubProfileResponse) string { return v.PortalFqdn }).(pulumi.StringOutput)
 }
 
 type FleetHubProfileResponsePtrOutput struct{ *pulumi.OutputState }
@@ -6051,26 +3013,6 @@ func (o FleetHubProfileResponsePtrOutput) Elem() FleetHubProfileResponseOutput {
 		var ret FleetHubProfileResponse
 		return ret
 	}).(FleetHubProfileResponseOutput)
-}
-
-// The agent profile for the Fleet hub.
-func (o FleetHubProfileResponsePtrOutput) AgentProfile() AgentProfileResponsePtrOutput {
-	return o.ApplyT(func(v *FleetHubProfileResponse) *AgentProfileResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AgentProfile
-	}).(AgentProfileResponsePtrOutput)
-}
-
-// The access profile for the Fleet hub API server.
-func (o FleetHubProfileResponsePtrOutput) ApiServerAccessProfile() APIServerAccessProfileResponsePtrOutput {
-	return o.ApplyT(func(v *FleetHubProfileResponse) *APIServerAccessProfileResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ApiServerAccessProfile
-	}).(APIServerAccessProfileResponsePtrOutput)
 }
 
 // DNS prefix used to create the FQDN for the Fleet hub.
@@ -6101,2835 +3043,6 @@ func (o FleetHubProfileResponsePtrOutput) KubernetesVersion() pulumi.StringPtrOu
 		}
 		return &v.KubernetesVersion
 	}).(pulumi.StringPtrOutput)
-}
-
-// The Azure Portal FQDN of the Fleet hub.
-func (o FleetHubProfileResponsePtrOutput) PortalFqdn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FleetHubProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PortalFqdn
-	}).(pulumi.StringPtrOutput)
-}
-
-// Contains the IPTag associated with the object.
-type IPTag struct {
-	// The IP tag type. Example: RoutingPreference.
-	IpTagType *string `pulumi:"ipTagType"`
-	// The value of the IP tag associated with the public IP. Example: Internet.
-	Tag *string `pulumi:"tag"`
-}
-
-// IPTagInput is an input type that accepts IPTagArgs and IPTagOutput values.
-// You can construct a concrete instance of `IPTagInput` via:
-//
-//	IPTagArgs{...}
-type IPTagInput interface {
-	pulumi.Input
-
-	ToIPTagOutput() IPTagOutput
-	ToIPTagOutputWithContext(context.Context) IPTagOutput
-}
-
-// Contains the IPTag associated with the object.
-type IPTagArgs struct {
-	// The IP tag type. Example: RoutingPreference.
-	IpTagType pulumi.StringPtrInput `pulumi:"ipTagType"`
-	// The value of the IP tag associated with the public IP. Example: Internet.
-	Tag pulumi.StringPtrInput `pulumi:"tag"`
-}
-
-func (IPTagArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IPTag)(nil)).Elem()
-}
-
-func (i IPTagArgs) ToIPTagOutput() IPTagOutput {
-	return i.ToIPTagOutputWithContext(context.Background())
-}
-
-func (i IPTagArgs) ToIPTagOutputWithContext(ctx context.Context) IPTagOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IPTagOutput)
-}
-
-// IPTagArrayInput is an input type that accepts IPTagArray and IPTagArrayOutput values.
-// You can construct a concrete instance of `IPTagArrayInput` via:
-//
-//	IPTagArray{ IPTagArgs{...} }
-type IPTagArrayInput interface {
-	pulumi.Input
-
-	ToIPTagArrayOutput() IPTagArrayOutput
-	ToIPTagArrayOutputWithContext(context.Context) IPTagArrayOutput
-}
-
-type IPTagArray []IPTagInput
-
-func (IPTagArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IPTag)(nil)).Elem()
-}
-
-func (i IPTagArray) ToIPTagArrayOutput() IPTagArrayOutput {
-	return i.ToIPTagArrayOutputWithContext(context.Background())
-}
-
-func (i IPTagArray) ToIPTagArrayOutputWithContext(ctx context.Context) IPTagArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IPTagArrayOutput)
-}
-
-// Contains the IPTag associated with the object.
-type IPTagOutput struct{ *pulumi.OutputState }
-
-func (IPTagOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IPTag)(nil)).Elem()
-}
-
-func (o IPTagOutput) ToIPTagOutput() IPTagOutput {
-	return o
-}
-
-func (o IPTagOutput) ToIPTagOutputWithContext(ctx context.Context) IPTagOutput {
-	return o
-}
-
-// The IP tag type. Example: RoutingPreference.
-func (o IPTagOutput) IpTagType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IPTag) *string { return v.IpTagType }).(pulumi.StringPtrOutput)
-}
-
-// The value of the IP tag associated with the public IP. Example: Internet.
-func (o IPTagOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IPTag) *string { return v.Tag }).(pulumi.StringPtrOutput)
-}
-
-type IPTagArrayOutput struct{ *pulumi.OutputState }
-
-func (IPTagArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IPTag)(nil)).Elem()
-}
-
-func (o IPTagArrayOutput) ToIPTagArrayOutput() IPTagArrayOutput {
-	return o
-}
-
-func (o IPTagArrayOutput) ToIPTagArrayOutputWithContext(ctx context.Context) IPTagArrayOutput {
-	return o
-}
-
-func (o IPTagArrayOutput) Index(i pulumi.IntInput) IPTagOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IPTag {
-		return vs[0].([]IPTag)[vs[1].(int)]
-	}).(IPTagOutput)
-}
-
-// Contains the IPTag associated with the object.
-type IPTagResponse struct {
-	// The IP tag type. Example: RoutingPreference.
-	IpTagType *string `pulumi:"ipTagType"`
-	// The value of the IP tag associated with the public IP. Example: Internet.
-	Tag *string `pulumi:"tag"`
-}
-
-// Contains the IPTag associated with the object.
-type IPTagResponseOutput struct{ *pulumi.OutputState }
-
-func (IPTagResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IPTagResponse)(nil)).Elem()
-}
-
-func (o IPTagResponseOutput) ToIPTagResponseOutput() IPTagResponseOutput {
-	return o
-}
-
-func (o IPTagResponseOutput) ToIPTagResponseOutputWithContext(ctx context.Context) IPTagResponseOutput {
-	return o
-}
-
-// The IP tag type. Example: RoutingPreference.
-func (o IPTagResponseOutput) IpTagType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IPTagResponse) *string { return v.IpTagType }).(pulumi.StringPtrOutput)
-}
-
-// The value of the IP tag associated with the public IP. Example: Internet.
-func (o IPTagResponseOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IPTagResponse) *string { return v.Tag }).(pulumi.StringPtrOutput)
-}
-
-type IPTagResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (IPTagResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IPTagResponse)(nil)).Elem()
-}
-
-func (o IPTagResponseArrayOutput) ToIPTagResponseArrayOutput() IPTagResponseArrayOutput {
-	return o
-}
-
-func (o IPTagResponseArrayOutput) ToIPTagResponseArrayOutputWithContext(ctx context.Context) IPTagResponseArrayOutput {
-	return o
-}
-
-func (o IPTagResponseArrayOutput) Index(i pulumi.IntInput) IPTagResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IPTagResponse {
-		return vs[0].([]IPTagResponse)[vs[1].(int)]
-	}).(IPTagResponseOutput)
-}
-
-// Managed identity profile for the identity binding.
-type IdentityBindingManagedIdentityProfile struct {
-	// The resource ID of the managed identity.
-	ResourceId string `pulumi:"resourceId"`
-}
-
-// IdentityBindingManagedIdentityProfileInput is an input type that accepts IdentityBindingManagedIdentityProfileArgs and IdentityBindingManagedIdentityProfileOutput values.
-// You can construct a concrete instance of `IdentityBindingManagedIdentityProfileInput` via:
-//
-//	IdentityBindingManagedIdentityProfileArgs{...}
-type IdentityBindingManagedIdentityProfileInput interface {
-	pulumi.Input
-
-	ToIdentityBindingManagedIdentityProfileOutput() IdentityBindingManagedIdentityProfileOutput
-	ToIdentityBindingManagedIdentityProfileOutputWithContext(context.Context) IdentityBindingManagedIdentityProfileOutput
-}
-
-// Managed identity profile for the identity binding.
-type IdentityBindingManagedIdentityProfileArgs struct {
-	// The resource ID of the managed identity.
-	ResourceId pulumi.StringInput `pulumi:"resourceId"`
-}
-
-func (IdentityBindingManagedIdentityProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityBindingManagedIdentityProfile)(nil)).Elem()
-}
-
-func (i IdentityBindingManagedIdentityProfileArgs) ToIdentityBindingManagedIdentityProfileOutput() IdentityBindingManagedIdentityProfileOutput {
-	return i.ToIdentityBindingManagedIdentityProfileOutputWithContext(context.Background())
-}
-
-func (i IdentityBindingManagedIdentityProfileArgs) ToIdentityBindingManagedIdentityProfileOutputWithContext(ctx context.Context) IdentityBindingManagedIdentityProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityBindingManagedIdentityProfileOutput)
-}
-
-func (i IdentityBindingManagedIdentityProfileArgs) ToIdentityBindingManagedIdentityProfilePtrOutput() IdentityBindingManagedIdentityProfilePtrOutput {
-	return i.ToIdentityBindingManagedIdentityProfilePtrOutputWithContext(context.Background())
-}
-
-func (i IdentityBindingManagedIdentityProfileArgs) ToIdentityBindingManagedIdentityProfilePtrOutputWithContext(ctx context.Context) IdentityBindingManagedIdentityProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityBindingManagedIdentityProfileOutput).ToIdentityBindingManagedIdentityProfilePtrOutputWithContext(ctx)
-}
-
-// IdentityBindingManagedIdentityProfilePtrInput is an input type that accepts IdentityBindingManagedIdentityProfileArgs, IdentityBindingManagedIdentityProfilePtr and IdentityBindingManagedIdentityProfilePtrOutput values.
-// You can construct a concrete instance of `IdentityBindingManagedIdentityProfilePtrInput` via:
-//
-//	        IdentityBindingManagedIdentityProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type IdentityBindingManagedIdentityProfilePtrInput interface {
-	pulumi.Input
-
-	ToIdentityBindingManagedIdentityProfilePtrOutput() IdentityBindingManagedIdentityProfilePtrOutput
-	ToIdentityBindingManagedIdentityProfilePtrOutputWithContext(context.Context) IdentityBindingManagedIdentityProfilePtrOutput
-}
-
-type identityBindingManagedIdentityProfilePtrType IdentityBindingManagedIdentityProfileArgs
-
-func IdentityBindingManagedIdentityProfilePtr(v *IdentityBindingManagedIdentityProfileArgs) IdentityBindingManagedIdentityProfilePtrInput {
-	return (*identityBindingManagedIdentityProfilePtrType)(v)
-}
-
-func (*identityBindingManagedIdentityProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IdentityBindingManagedIdentityProfile)(nil)).Elem()
-}
-
-func (i *identityBindingManagedIdentityProfilePtrType) ToIdentityBindingManagedIdentityProfilePtrOutput() IdentityBindingManagedIdentityProfilePtrOutput {
-	return i.ToIdentityBindingManagedIdentityProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *identityBindingManagedIdentityProfilePtrType) ToIdentityBindingManagedIdentityProfilePtrOutputWithContext(ctx context.Context) IdentityBindingManagedIdentityProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityBindingManagedIdentityProfilePtrOutput)
-}
-
-// Managed identity profile for the identity binding.
-type IdentityBindingManagedIdentityProfileOutput struct{ *pulumi.OutputState }
-
-func (IdentityBindingManagedIdentityProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityBindingManagedIdentityProfile)(nil)).Elem()
-}
-
-func (o IdentityBindingManagedIdentityProfileOutput) ToIdentityBindingManagedIdentityProfileOutput() IdentityBindingManagedIdentityProfileOutput {
-	return o
-}
-
-func (o IdentityBindingManagedIdentityProfileOutput) ToIdentityBindingManagedIdentityProfileOutputWithContext(ctx context.Context) IdentityBindingManagedIdentityProfileOutput {
-	return o
-}
-
-func (o IdentityBindingManagedIdentityProfileOutput) ToIdentityBindingManagedIdentityProfilePtrOutput() IdentityBindingManagedIdentityProfilePtrOutput {
-	return o.ToIdentityBindingManagedIdentityProfilePtrOutputWithContext(context.Background())
-}
-
-func (o IdentityBindingManagedIdentityProfileOutput) ToIdentityBindingManagedIdentityProfilePtrOutputWithContext(ctx context.Context) IdentityBindingManagedIdentityProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityBindingManagedIdentityProfile) *IdentityBindingManagedIdentityProfile {
-		return &v
-	}).(IdentityBindingManagedIdentityProfilePtrOutput)
-}
-
-// The resource ID of the managed identity.
-func (o IdentityBindingManagedIdentityProfileOutput) ResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityBindingManagedIdentityProfile) string { return v.ResourceId }).(pulumi.StringOutput)
-}
-
-type IdentityBindingManagedIdentityProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (IdentityBindingManagedIdentityProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IdentityBindingManagedIdentityProfile)(nil)).Elem()
-}
-
-func (o IdentityBindingManagedIdentityProfilePtrOutput) ToIdentityBindingManagedIdentityProfilePtrOutput() IdentityBindingManagedIdentityProfilePtrOutput {
-	return o
-}
-
-func (o IdentityBindingManagedIdentityProfilePtrOutput) ToIdentityBindingManagedIdentityProfilePtrOutputWithContext(ctx context.Context) IdentityBindingManagedIdentityProfilePtrOutput {
-	return o
-}
-
-func (o IdentityBindingManagedIdentityProfilePtrOutput) Elem() IdentityBindingManagedIdentityProfileOutput {
-	return o.ApplyT(func(v *IdentityBindingManagedIdentityProfile) IdentityBindingManagedIdentityProfile {
-		if v != nil {
-			return *v
-		}
-		var ret IdentityBindingManagedIdentityProfile
-		return ret
-	}).(IdentityBindingManagedIdentityProfileOutput)
-}
-
-// The resource ID of the managed identity.
-func (o IdentityBindingManagedIdentityProfilePtrOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IdentityBindingManagedIdentityProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Managed identity profile for the identity binding.
-type IdentityBindingManagedIdentityProfileResponse struct {
-	// The client ID of the managed identity.
-	ClientId string `pulumi:"clientId"`
-	// The object ID of the managed identity.
-	ObjectId string `pulumi:"objectId"`
-	// The resource ID of the managed identity.
-	ResourceId string `pulumi:"resourceId"`
-	// The tenant ID of the managed identity.
-	TenantId string `pulumi:"tenantId"`
-}
-
-// Managed identity profile for the identity binding.
-type IdentityBindingManagedIdentityProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (IdentityBindingManagedIdentityProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityBindingManagedIdentityProfileResponse)(nil)).Elem()
-}
-
-func (o IdentityBindingManagedIdentityProfileResponseOutput) ToIdentityBindingManagedIdentityProfileResponseOutput() IdentityBindingManagedIdentityProfileResponseOutput {
-	return o
-}
-
-func (o IdentityBindingManagedIdentityProfileResponseOutput) ToIdentityBindingManagedIdentityProfileResponseOutputWithContext(ctx context.Context) IdentityBindingManagedIdentityProfileResponseOutput {
-	return o
-}
-
-// The client ID of the managed identity.
-func (o IdentityBindingManagedIdentityProfileResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityBindingManagedIdentityProfileResponse) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The object ID of the managed identity.
-func (o IdentityBindingManagedIdentityProfileResponseOutput) ObjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityBindingManagedIdentityProfileResponse) string { return v.ObjectId }).(pulumi.StringOutput)
-}
-
-// The resource ID of the managed identity.
-func (o IdentityBindingManagedIdentityProfileResponseOutput) ResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityBindingManagedIdentityProfileResponse) string { return v.ResourceId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of the managed identity.
-func (o IdentityBindingManagedIdentityProfileResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityBindingManagedIdentityProfileResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// IdentityBinding OIDC issuer profile.
-type IdentityBindingOidcIssuerProfileResponse struct {
-	// The OIDC issuer URL of the IdentityBinding.
-	OidcIssuerUrl string `pulumi:"oidcIssuerUrl"`
-}
-
-// IdentityBinding OIDC issuer profile.
-type IdentityBindingOidcIssuerProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (IdentityBindingOidcIssuerProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityBindingOidcIssuerProfileResponse)(nil)).Elem()
-}
-
-func (o IdentityBindingOidcIssuerProfileResponseOutput) ToIdentityBindingOidcIssuerProfileResponseOutput() IdentityBindingOidcIssuerProfileResponseOutput {
-	return o
-}
-
-func (o IdentityBindingOidcIssuerProfileResponseOutput) ToIdentityBindingOidcIssuerProfileResponseOutputWithContext(ctx context.Context) IdentityBindingOidcIssuerProfileResponseOutput {
-	return o
-}
-
-// The OIDC issuer URL of the IdentityBinding.
-func (o IdentityBindingOidcIssuerProfileResponseOutput) OidcIssuerUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityBindingOidcIssuerProfileResponse) string { return v.OidcIssuerUrl }).(pulumi.StringOutput)
-}
-
-// IdentityBinding properties.
-type IdentityBindingProperties struct {
-	// Managed identity profile for the identity binding.
-	ManagedIdentity IdentityBindingManagedIdentityProfile `pulumi:"managedIdentity"`
-}
-
-// IdentityBindingPropertiesInput is an input type that accepts IdentityBindingPropertiesArgs and IdentityBindingPropertiesOutput values.
-// You can construct a concrete instance of `IdentityBindingPropertiesInput` via:
-//
-//	IdentityBindingPropertiesArgs{...}
-type IdentityBindingPropertiesInput interface {
-	pulumi.Input
-
-	ToIdentityBindingPropertiesOutput() IdentityBindingPropertiesOutput
-	ToIdentityBindingPropertiesOutputWithContext(context.Context) IdentityBindingPropertiesOutput
-}
-
-// IdentityBinding properties.
-type IdentityBindingPropertiesArgs struct {
-	// Managed identity profile for the identity binding.
-	ManagedIdentity IdentityBindingManagedIdentityProfileInput `pulumi:"managedIdentity"`
-}
-
-func (IdentityBindingPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityBindingProperties)(nil)).Elem()
-}
-
-func (i IdentityBindingPropertiesArgs) ToIdentityBindingPropertiesOutput() IdentityBindingPropertiesOutput {
-	return i.ToIdentityBindingPropertiesOutputWithContext(context.Background())
-}
-
-func (i IdentityBindingPropertiesArgs) ToIdentityBindingPropertiesOutputWithContext(ctx context.Context) IdentityBindingPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityBindingPropertiesOutput)
-}
-
-func (i IdentityBindingPropertiesArgs) ToIdentityBindingPropertiesPtrOutput() IdentityBindingPropertiesPtrOutput {
-	return i.ToIdentityBindingPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i IdentityBindingPropertiesArgs) ToIdentityBindingPropertiesPtrOutputWithContext(ctx context.Context) IdentityBindingPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityBindingPropertiesOutput).ToIdentityBindingPropertiesPtrOutputWithContext(ctx)
-}
-
-// IdentityBindingPropertiesPtrInput is an input type that accepts IdentityBindingPropertiesArgs, IdentityBindingPropertiesPtr and IdentityBindingPropertiesPtrOutput values.
-// You can construct a concrete instance of `IdentityBindingPropertiesPtrInput` via:
-//
-//	        IdentityBindingPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type IdentityBindingPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToIdentityBindingPropertiesPtrOutput() IdentityBindingPropertiesPtrOutput
-	ToIdentityBindingPropertiesPtrOutputWithContext(context.Context) IdentityBindingPropertiesPtrOutput
-}
-
-type identityBindingPropertiesPtrType IdentityBindingPropertiesArgs
-
-func IdentityBindingPropertiesPtr(v *IdentityBindingPropertiesArgs) IdentityBindingPropertiesPtrInput {
-	return (*identityBindingPropertiesPtrType)(v)
-}
-
-func (*identityBindingPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IdentityBindingProperties)(nil)).Elem()
-}
-
-func (i *identityBindingPropertiesPtrType) ToIdentityBindingPropertiesPtrOutput() IdentityBindingPropertiesPtrOutput {
-	return i.ToIdentityBindingPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *identityBindingPropertiesPtrType) ToIdentityBindingPropertiesPtrOutputWithContext(ctx context.Context) IdentityBindingPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentityBindingPropertiesPtrOutput)
-}
-
-// IdentityBinding properties.
-type IdentityBindingPropertiesOutput struct{ *pulumi.OutputState }
-
-func (IdentityBindingPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityBindingProperties)(nil)).Elem()
-}
-
-func (o IdentityBindingPropertiesOutput) ToIdentityBindingPropertiesOutput() IdentityBindingPropertiesOutput {
-	return o
-}
-
-func (o IdentityBindingPropertiesOutput) ToIdentityBindingPropertiesOutputWithContext(ctx context.Context) IdentityBindingPropertiesOutput {
-	return o
-}
-
-func (o IdentityBindingPropertiesOutput) ToIdentityBindingPropertiesPtrOutput() IdentityBindingPropertiesPtrOutput {
-	return o.ToIdentityBindingPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o IdentityBindingPropertiesOutput) ToIdentityBindingPropertiesPtrOutputWithContext(ctx context.Context) IdentityBindingPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityBindingProperties) *IdentityBindingProperties {
-		return &v
-	}).(IdentityBindingPropertiesPtrOutput)
-}
-
-// Managed identity profile for the identity binding.
-func (o IdentityBindingPropertiesOutput) ManagedIdentity() IdentityBindingManagedIdentityProfileOutput {
-	return o.ApplyT(func(v IdentityBindingProperties) IdentityBindingManagedIdentityProfile { return v.ManagedIdentity }).(IdentityBindingManagedIdentityProfileOutput)
-}
-
-type IdentityBindingPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (IdentityBindingPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IdentityBindingProperties)(nil)).Elem()
-}
-
-func (o IdentityBindingPropertiesPtrOutput) ToIdentityBindingPropertiesPtrOutput() IdentityBindingPropertiesPtrOutput {
-	return o
-}
-
-func (o IdentityBindingPropertiesPtrOutput) ToIdentityBindingPropertiesPtrOutputWithContext(ctx context.Context) IdentityBindingPropertiesPtrOutput {
-	return o
-}
-
-func (o IdentityBindingPropertiesPtrOutput) Elem() IdentityBindingPropertiesOutput {
-	return o.ApplyT(func(v *IdentityBindingProperties) IdentityBindingProperties {
-		if v != nil {
-			return *v
-		}
-		var ret IdentityBindingProperties
-		return ret
-	}).(IdentityBindingPropertiesOutput)
-}
-
-// Managed identity profile for the identity binding.
-func (o IdentityBindingPropertiesPtrOutput) ManagedIdentity() IdentityBindingManagedIdentityProfilePtrOutput {
-	return o.ApplyT(func(v *IdentityBindingProperties) *IdentityBindingManagedIdentityProfile {
-		if v == nil {
-			return nil
-		}
-		return &v.ManagedIdentity
-	}).(IdentityBindingManagedIdentityProfilePtrOutput)
-}
-
-// IdentityBinding properties.
-type IdentityBindingPropertiesResponse struct {
-	// Managed identity profile for the identity binding.
-	ManagedIdentity IdentityBindingManagedIdentityProfileResponse `pulumi:"managedIdentity"`
-	// The OIDC issuer URL of the IdentityBinding.
-	OidcIssuer IdentityBindingOidcIssuerProfileResponse `pulumi:"oidcIssuer"`
-	// The status of the last operation.
-	ProvisioningState string `pulumi:"provisioningState"`
-}
-
-// IdentityBinding properties.
-type IdentityBindingPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (IdentityBindingPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityBindingPropertiesResponse)(nil)).Elem()
-}
-
-func (o IdentityBindingPropertiesResponseOutput) ToIdentityBindingPropertiesResponseOutput() IdentityBindingPropertiesResponseOutput {
-	return o
-}
-
-func (o IdentityBindingPropertiesResponseOutput) ToIdentityBindingPropertiesResponseOutputWithContext(ctx context.Context) IdentityBindingPropertiesResponseOutput {
-	return o
-}
-
-// Managed identity profile for the identity binding.
-func (o IdentityBindingPropertiesResponseOutput) ManagedIdentity() IdentityBindingManagedIdentityProfileResponseOutput {
-	return o.ApplyT(func(v IdentityBindingPropertiesResponse) IdentityBindingManagedIdentityProfileResponse {
-		return v.ManagedIdentity
-	}).(IdentityBindingManagedIdentityProfileResponseOutput)
-}
-
-// The OIDC issuer URL of the IdentityBinding.
-func (o IdentityBindingPropertiesResponseOutput) OidcIssuer() IdentityBindingOidcIssuerProfileResponseOutput {
-	return o.ApplyT(func(v IdentityBindingPropertiesResponse) IdentityBindingOidcIssuerProfileResponse {
-		return v.OidcIssuer
-	}).(IdentityBindingOidcIssuerProfileResponseOutput)
-}
-
-// The status of the last operation.
-func (o IdentityBindingPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v IdentityBindingPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-type IstioCertificateAuthority struct {
-	// Plugin certificates information for Service Mesh.
-	Plugin *IstioPluginCertificateAuthority `pulumi:"plugin"`
-}
-
-// IstioCertificateAuthorityInput is an input type that accepts IstioCertificateAuthorityArgs and IstioCertificateAuthorityOutput values.
-// You can construct a concrete instance of `IstioCertificateAuthorityInput` via:
-//
-//	IstioCertificateAuthorityArgs{...}
-type IstioCertificateAuthorityInput interface {
-	pulumi.Input
-
-	ToIstioCertificateAuthorityOutput() IstioCertificateAuthorityOutput
-	ToIstioCertificateAuthorityOutputWithContext(context.Context) IstioCertificateAuthorityOutput
-}
-
-// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-type IstioCertificateAuthorityArgs struct {
-	// Plugin certificates information for Service Mesh.
-	Plugin IstioPluginCertificateAuthorityPtrInput `pulumi:"plugin"`
-}
-
-func (IstioCertificateAuthorityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioCertificateAuthority)(nil)).Elem()
-}
-
-func (i IstioCertificateAuthorityArgs) ToIstioCertificateAuthorityOutput() IstioCertificateAuthorityOutput {
-	return i.ToIstioCertificateAuthorityOutputWithContext(context.Background())
-}
-
-func (i IstioCertificateAuthorityArgs) ToIstioCertificateAuthorityOutputWithContext(ctx context.Context) IstioCertificateAuthorityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioCertificateAuthorityOutput)
-}
-
-func (i IstioCertificateAuthorityArgs) ToIstioCertificateAuthorityPtrOutput() IstioCertificateAuthorityPtrOutput {
-	return i.ToIstioCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i IstioCertificateAuthorityArgs) ToIstioCertificateAuthorityPtrOutputWithContext(ctx context.Context) IstioCertificateAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioCertificateAuthorityOutput).ToIstioCertificateAuthorityPtrOutputWithContext(ctx)
-}
-
-// IstioCertificateAuthorityPtrInput is an input type that accepts IstioCertificateAuthorityArgs, IstioCertificateAuthorityPtr and IstioCertificateAuthorityPtrOutput values.
-// You can construct a concrete instance of `IstioCertificateAuthorityPtrInput` via:
-//
-//	        IstioCertificateAuthorityArgs{...}
-//
-//	or:
-//
-//	        nil
-type IstioCertificateAuthorityPtrInput interface {
-	pulumi.Input
-
-	ToIstioCertificateAuthorityPtrOutput() IstioCertificateAuthorityPtrOutput
-	ToIstioCertificateAuthorityPtrOutputWithContext(context.Context) IstioCertificateAuthorityPtrOutput
-}
-
-type istioCertificateAuthorityPtrType IstioCertificateAuthorityArgs
-
-func IstioCertificateAuthorityPtr(v *IstioCertificateAuthorityArgs) IstioCertificateAuthorityPtrInput {
-	return (*istioCertificateAuthorityPtrType)(v)
-}
-
-func (*istioCertificateAuthorityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioCertificateAuthority)(nil)).Elem()
-}
-
-func (i *istioCertificateAuthorityPtrType) ToIstioCertificateAuthorityPtrOutput() IstioCertificateAuthorityPtrOutput {
-	return i.ToIstioCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i *istioCertificateAuthorityPtrType) ToIstioCertificateAuthorityPtrOutputWithContext(ctx context.Context) IstioCertificateAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioCertificateAuthorityPtrOutput)
-}
-
-// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-type IstioCertificateAuthorityOutput struct{ *pulumi.OutputState }
-
-func (IstioCertificateAuthorityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioCertificateAuthority)(nil)).Elem()
-}
-
-func (o IstioCertificateAuthorityOutput) ToIstioCertificateAuthorityOutput() IstioCertificateAuthorityOutput {
-	return o
-}
-
-func (o IstioCertificateAuthorityOutput) ToIstioCertificateAuthorityOutputWithContext(ctx context.Context) IstioCertificateAuthorityOutput {
-	return o
-}
-
-func (o IstioCertificateAuthorityOutput) ToIstioCertificateAuthorityPtrOutput() IstioCertificateAuthorityPtrOutput {
-	return o.ToIstioCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (o IstioCertificateAuthorityOutput) ToIstioCertificateAuthorityPtrOutputWithContext(ctx context.Context) IstioCertificateAuthorityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IstioCertificateAuthority) *IstioCertificateAuthority {
-		return &v
-	}).(IstioCertificateAuthorityPtrOutput)
-}
-
-// Plugin certificates information for Service Mesh.
-func (o IstioCertificateAuthorityOutput) Plugin() IstioPluginCertificateAuthorityPtrOutput {
-	return o.ApplyT(func(v IstioCertificateAuthority) *IstioPluginCertificateAuthority { return v.Plugin }).(IstioPluginCertificateAuthorityPtrOutput)
-}
-
-type IstioCertificateAuthorityPtrOutput struct{ *pulumi.OutputState }
-
-func (IstioCertificateAuthorityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioCertificateAuthority)(nil)).Elem()
-}
-
-func (o IstioCertificateAuthorityPtrOutput) ToIstioCertificateAuthorityPtrOutput() IstioCertificateAuthorityPtrOutput {
-	return o
-}
-
-func (o IstioCertificateAuthorityPtrOutput) ToIstioCertificateAuthorityPtrOutputWithContext(ctx context.Context) IstioCertificateAuthorityPtrOutput {
-	return o
-}
-
-func (o IstioCertificateAuthorityPtrOutput) Elem() IstioCertificateAuthorityOutput {
-	return o.ApplyT(func(v *IstioCertificateAuthority) IstioCertificateAuthority {
-		if v != nil {
-			return *v
-		}
-		var ret IstioCertificateAuthority
-		return ret
-	}).(IstioCertificateAuthorityOutput)
-}
-
-// Plugin certificates information for Service Mesh.
-func (o IstioCertificateAuthorityPtrOutput) Plugin() IstioPluginCertificateAuthorityPtrOutput {
-	return o.ApplyT(func(v *IstioCertificateAuthority) *IstioPluginCertificateAuthority {
-		if v == nil {
-			return nil
-		}
-		return v.Plugin
-	}).(IstioPluginCertificateAuthorityPtrOutput)
-}
-
-// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-type IstioCertificateAuthorityResponse struct {
-	// Plugin certificates information for Service Mesh.
-	Plugin *IstioPluginCertificateAuthorityResponse `pulumi:"plugin"`
-}
-
-// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-type IstioCertificateAuthorityResponseOutput struct{ *pulumi.OutputState }
-
-func (IstioCertificateAuthorityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioCertificateAuthorityResponse)(nil)).Elem()
-}
-
-func (o IstioCertificateAuthorityResponseOutput) ToIstioCertificateAuthorityResponseOutput() IstioCertificateAuthorityResponseOutput {
-	return o
-}
-
-func (o IstioCertificateAuthorityResponseOutput) ToIstioCertificateAuthorityResponseOutputWithContext(ctx context.Context) IstioCertificateAuthorityResponseOutput {
-	return o
-}
-
-// Plugin certificates information for Service Mesh.
-func (o IstioCertificateAuthorityResponseOutput) Plugin() IstioPluginCertificateAuthorityResponsePtrOutput {
-	return o.ApplyT(func(v IstioCertificateAuthorityResponse) *IstioPluginCertificateAuthorityResponse { return v.Plugin }).(IstioPluginCertificateAuthorityResponsePtrOutput)
-}
-
-type IstioCertificateAuthorityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IstioCertificateAuthorityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioCertificateAuthorityResponse)(nil)).Elem()
-}
-
-func (o IstioCertificateAuthorityResponsePtrOutput) ToIstioCertificateAuthorityResponsePtrOutput() IstioCertificateAuthorityResponsePtrOutput {
-	return o
-}
-
-func (o IstioCertificateAuthorityResponsePtrOutput) ToIstioCertificateAuthorityResponsePtrOutputWithContext(ctx context.Context) IstioCertificateAuthorityResponsePtrOutput {
-	return o
-}
-
-func (o IstioCertificateAuthorityResponsePtrOutput) Elem() IstioCertificateAuthorityResponseOutput {
-	return o.ApplyT(func(v *IstioCertificateAuthorityResponse) IstioCertificateAuthorityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IstioCertificateAuthorityResponse
-		return ret
-	}).(IstioCertificateAuthorityResponseOutput)
-}
-
-// Plugin certificates information for Service Mesh.
-func (o IstioCertificateAuthorityResponsePtrOutput) Plugin() IstioPluginCertificateAuthorityResponsePtrOutput {
-	return o.ApplyT(func(v *IstioCertificateAuthorityResponse) *IstioPluginCertificateAuthorityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Plugin
-	}).(IstioPluginCertificateAuthorityResponsePtrOutput)
-}
-
-// Istio components configuration.
-type IstioComponents struct {
-	// Istio egress gateways.
-	EgressGateways []IstioEgressGateway `pulumi:"egressGateways"`
-	// Istio ingress gateways.
-	IngressGateways []IstioIngressGateway `pulumi:"ingressGateways"`
-}
-
-// IstioComponentsInput is an input type that accepts IstioComponentsArgs and IstioComponentsOutput values.
-// You can construct a concrete instance of `IstioComponentsInput` via:
-//
-//	IstioComponentsArgs{...}
-type IstioComponentsInput interface {
-	pulumi.Input
-
-	ToIstioComponentsOutput() IstioComponentsOutput
-	ToIstioComponentsOutputWithContext(context.Context) IstioComponentsOutput
-}
-
-// Istio components configuration.
-type IstioComponentsArgs struct {
-	// Istio egress gateways.
-	EgressGateways IstioEgressGatewayArrayInput `pulumi:"egressGateways"`
-	// Istio ingress gateways.
-	IngressGateways IstioIngressGatewayArrayInput `pulumi:"ingressGateways"`
-}
-
-func (IstioComponentsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioComponents)(nil)).Elem()
-}
-
-func (i IstioComponentsArgs) ToIstioComponentsOutput() IstioComponentsOutput {
-	return i.ToIstioComponentsOutputWithContext(context.Background())
-}
-
-func (i IstioComponentsArgs) ToIstioComponentsOutputWithContext(ctx context.Context) IstioComponentsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioComponentsOutput)
-}
-
-func (i IstioComponentsArgs) ToIstioComponentsPtrOutput() IstioComponentsPtrOutput {
-	return i.ToIstioComponentsPtrOutputWithContext(context.Background())
-}
-
-func (i IstioComponentsArgs) ToIstioComponentsPtrOutputWithContext(ctx context.Context) IstioComponentsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioComponentsOutput).ToIstioComponentsPtrOutputWithContext(ctx)
-}
-
-// IstioComponentsPtrInput is an input type that accepts IstioComponentsArgs, IstioComponentsPtr and IstioComponentsPtrOutput values.
-// You can construct a concrete instance of `IstioComponentsPtrInput` via:
-//
-//	        IstioComponentsArgs{...}
-//
-//	or:
-//
-//	        nil
-type IstioComponentsPtrInput interface {
-	pulumi.Input
-
-	ToIstioComponentsPtrOutput() IstioComponentsPtrOutput
-	ToIstioComponentsPtrOutputWithContext(context.Context) IstioComponentsPtrOutput
-}
-
-type istioComponentsPtrType IstioComponentsArgs
-
-func IstioComponentsPtr(v *IstioComponentsArgs) IstioComponentsPtrInput {
-	return (*istioComponentsPtrType)(v)
-}
-
-func (*istioComponentsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioComponents)(nil)).Elem()
-}
-
-func (i *istioComponentsPtrType) ToIstioComponentsPtrOutput() IstioComponentsPtrOutput {
-	return i.ToIstioComponentsPtrOutputWithContext(context.Background())
-}
-
-func (i *istioComponentsPtrType) ToIstioComponentsPtrOutputWithContext(ctx context.Context) IstioComponentsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioComponentsPtrOutput)
-}
-
-// Istio components configuration.
-type IstioComponentsOutput struct{ *pulumi.OutputState }
-
-func (IstioComponentsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioComponents)(nil)).Elem()
-}
-
-func (o IstioComponentsOutput) ToIstioComponentsOutput() IstioComponentsOutput {
-	return o
-}
-
-func (o IstioComponentsOutput) ToIstioComponentsOutputWithContext(ctx context.Context) IstioComponentsOutput {
-	return o
-}
-
-func (o IstioComponentsOutput) ToIstioComponentsPtrOutput() IstioComponentsPtrOutput {
-	return o.ToIstioComponentsPtrOutputWithContext(context.Background())
-}
-
-func (o IstioComponentsOutput) ToIstioComponentsPtrOutputWithContext(ctx context.Context) IstioComponentsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IstioComponents) *IstioComponents {
-		return &v
-	}).(IstioComponentsPtrOutput)
-}
-
-// Istio egress gateways.
-func (o IstioComponentsOutput) EgressGateways() IstioEgressGatewayArrayOutput {
-	return o.ApplyT(func(v IstioComponents) []IstioEgressGateway { return v.EgressGateways }).(IstioEgressGatewayArrayOutput)
-}
-
-// Istio ingress gateways.
-func (o IstioComponentsOutput) IngressGateways() IstioIngressGatewayArrayOutput {
-	return o.ApplyT(func(v IstioComponents) []IstioIngressGateway { return v.IngressGateways }).(IstioIngressGatewayArrayOutput)
-}
-
-type IstioComponentsPtrOutput struct{ *pulumi.OutputState }
-
-func (IstioComponentsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioComponents)(nil)).Elem()
-}
-
-func (o IstioComponentsPtrOutput) ToIstioComponentsPtrOutput() IstioComponentsPtrOutput {
-	return o
-}
-
-func (o IstioComponentsPtrOutput) ToIstioComponentsPtrOutputWithContext(ctx context.Context) IstioComponentsPtrOutput {
-	return o
-}
-
-func (o IstioComponentsPtrOutput) Elem() IstioComponentsOutput {
-	return o.ApplyT(func(v *IstioComponents) IstioComponents {
-		if v != nil {
-			return *v
-		}
-		var ret IstioComponents
-		return ret
-	}).(IstioComponentsOutput)
-}
-
-// Istio egress gateways.
-func (o IstioComponentsPtrOutput) EgressGateways() IstioEgressGatewayArrayOutput {
-	return o.ApplyT(func(v *IstioComponents) []IstioEgressGateway {
-		if v == nil {
-			return nil
-		}
-		return v.EgressGateways
-	}).(IstioEgressGatewayArrayOutput)
-}
-
-// Istio ingress gateways.
-func (o IstioComponentsPtrOutput) IngressGateways() IstioIngressGatewayArrayOutput {
-	return o.ApplyT(func(v *IstioComponents) []IstioIngressGateway {
-		if v == nil {
-			return nil
-		}
-		return v.IngressGateways
-	}).(IstioIngressGatewayArrayOutput)
-}
-
-// Istio components configuration.
-type IstioComponentsResponse struct {
-	// Istio egress gateways.
-	EgressGateways []IstioEgressGatewayResponse `pulumi:"egressGateways"`
-	// Istio ingress gateways.
-	IngressGateways []IstioIngressGatewayResponse `pulumi:"ingressGateways"`
-}
-
-// Istio components configuration.
-type IstioComponentsResponseOutput struct{ *pulumi.OutputState }
-
-func (IstioComponentsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioComponentsResponse)(nil)).Elem()
-}
-
-func (o IstioComponentsResponseOutput) ToIstioComponentsResponseOutput() IstioComponentsResponseOutput {
-	return o
-}
-
-func (o IstioComponentsResponseOutput) ToIstioComponentsResponseOutputWithContext(ctx context.Context) IstioComponentsResponseOutput {
-	return o
-}
-
-// Istio egress gateways.
-func (o IstioComponentsResponseOutput) EgressGateways() IstioEgressGatewayResponseArrayOutput {
-	return o.ApplyT(func(v IstioComponentsResponse) []IstioEgressGatewayResponse { return v.EgressGateways }).(IstioEgressGatewayResponseArrayOutput)
-}
-
-// Istio ingress gateways.
-func (o IstioComponentsResponseOutput) IngressGateways() IstioIngressGatewayResponseArrayOutput {
-	return o.ApplyT(func(v IstioComponentsResponse) []IstioIngressGatewayResponse { return v.IngressGateways }).(IstioIngressGatewayResponseArrayOutput)
-}
-
-type IstioComponentsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IstioComponentsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioComponentsResponse)(nil)).Elem()
-}
-
-func (o IstioComponentsResponsePtrOutput) ToIstioComponentsResponsePtrOutput() IstioComponentsResponsePtrOutput {
-	return o
-}
-
-func (o IstioComponentsResponsePtrOutput) ToIstioComponentsResponsePtrOutputWithContext(ctx context.Context) IstioComponentsResponsePtrOutput {
-	return o
-}
-
-func (o IstioComponentsResponsePtrOutput) Elem() IstioComponentsResponseOutput {
-	return o.ApplyT(func(v *IstioComponentsResponse) IstioComponentsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IstioComponentsResponse
-		return ret
-	}).(IstioComponentsResponseOutput)
-}
-
-// Istio egress gateways.
-func (o IstioComponentsResponsePtrOutput) EgressGateways() IstioEgressGatewayResponseArrayOutput {
-	return o.ApplyT(func(v *IstioComponentsResponse) []IstioEgressGatewayResponse {
-		if v == nil {
-			return nil
-		}
-		return v.EgressGateways
-	}).(IstioEgressGatewayResponseArrayOutput)
-}
-
-// Istio ingress gateways.
-func (o IstioComponentsResponsePtrOutput) IngressGateways() IstioIngressGatewayResponseArrayOutput {
-	return o.ApplyT(func(v *IstioComponentsResponse) []IstioIngressGatewayResponse {
-		if v == nil {
-			return nil
-		}
-		return v.IngressGateways
-	}).(IstioIngressGatewayResponseArrayOutput)
-}
-
-// Istio egress gateway configuration.
-type IstioEgressGateway struct {
-	// Whether to enable the egress gateway.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// IstioEgressGatewayInput is an input type that accepts IstioEgressGatewayArgs and IstioEgressGatewayOutput values.
-// You can construct a concrete instance of `IstioEgressGatewayInput` via:
-//
-//	IstioEgressGatewayArgs{...}
-type IstioEgressGatewayInput interface {
-	pulumi.Input
-
-	ToIstioEgressGatewayOutput() IstioEgressGatewayOutput
-	ToIstioEgressGatewayOutputWithContext(context.Context) IstioEgressGatewayOutput
-}
-
-// Istio egress gateway configuration.
-type IstioEgressGatewayArgs struct {
-	// Whether to enable the egress gateway.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (IstioEgressGatewayArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioEgressGateway)(nil)).Elem()
-}
-
-func (i IstioEgressGatewayArgs) ToIstioEgressGatewayOutput() IstioEgressGatewayOutput {
-	return i.ToIstioEgressGatewayOutputWithContext(context.Background())
-}
-
-func (i IstioEgressGatewayArgs) ToIstioEgressGatewayOutputWithContext(ctx context.Context) IstioEgressGatewayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioEgressGatewayOutput)
-}
-
-// IstioEgressGatewayArrayInput is an input type that accepts IstioEgressGatewayArray and IstioEgressGatewayArrayOutput values.
-// You can construct a concrete instance of `IstioEgressGatewayArrayInput` via:
-//
-//	IstioEgressGatewayArray{ IstioEgressGatewayArgs{...} }
-type IstioEgressGatewayArrayInput interface {
-	pulumi.Input
-
-	ToIstioEgressGatewayArrayOutput() IstioEgressGatewayArrayOutput
-	ToIstioEgressGatewayArrayOutputWithContext(context.Context) IstioEgressGatewayArrayOutput
-}
-
-type IstioEgressGatewayArray []IstioEgressGatewayInput
-
-func (IstioEgressGatewayArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IstioEgressGateway)(nil)).Elem()
-}
-
-func (i IstioEgressGatewayArray) ToIstioEgressGatewayArrayOutput() IstioEgressGatewayArrayOutput {
-	return i.ToIstioEgressGatewayArrayOutputWithContext(context.Background())
-}
-
-func (i IstioEgressGatewayArray) ToIstioEgressGatewayArrayOutputWithContext(ctx context.Context) IstioEgressGatewayArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioEgressGatewayArrayOutput)
-}
-
-// Istio egress gateway configuration.
-type IstioEgressGatewayOutput struct{ *pulumi.OutputState }
-
-func (IstioEgressGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioEgressGateway)(nil)).Elem()
-}
-
-func (o IstioEgressGatewayOutput) ToIstioEgressGatewayOutput() IstioEgressGatewayOutput {
-	return o
-}
-
-func (o IstioEgressGatewayOutput) ToIstioEgressGatewayOutputWithContext(ctx context.Context) IstioEgressGatewayOutput {
-	return o
-}
-
-// Whether to enable the egress gateway.
-func (o IstioEgressGatewayOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v IstioEgressGateway) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type IstioEgressGatewayArrayOutput struct{ *pulumi.OutputState }
-
-func (IstioEgressGatewayArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IstioEgressGateway)(nil)).Elem()
-}
-
-func (o IstioEgressGatewayArrayOutput) ToIstioEgressGatewayArrayOutput() IstioEgressGatewayArrayOutput {
-	return o
-}
-
-func (o IstioEgressGatewayArrayOutput) ToIstioEgressGatewayArrayOutputWithContext(ctx context.Context) IstioEgressGatewayArrayOutput {
-	return o
-}
-
-func (o IstioEgressGatewayArrayOutput) Index(i pulumi.IntInput) IstioEgressGatewayOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IstioEgressGateway {
-		return vs[0].([]IstioEgressGateway)[vs[1].(int)]
-	}).(IstioEgressGatewayOutput)
-}
-
-// Istio egress gateway configuration.
-type IstioEgressGatewayResponse struct {
-	// Whether to enable the egress gateway.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// Istio egress gateway configuration.
-type IstioEgressGatewayResponseOutput struct{ *pulumi.OutputState }
-
-func (IstioEgressGatewayResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioEgressGatewayResponse)(nil)).Elem()
-}
-
-func (o IstioEgressGatewayResponseOutput) ToIstioEgressGatewayResponseOutput() IstioEgressGatewayResponseOutput {
-	return o
-}
-
-func (o IstioEgressGatewayResponseOutput) ToIstioEgressGatewayResponseOutputWithContext(ctx context.Context) IstioEgressGatewayResponseOutput {
-	return o
-}
-
-// Whether to enable the egress gateway.
-func (o IstioEgressGatewayResponseOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v IstioEgressGatewayResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type IstioEgressGatewayResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (IstioEgressGatewayResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IstioEgressGatewayResponse)(nil)).Elem()
-}
-
-func (o IstioEgressGatewayResponseArrayOutput) ToIstioEgressGatewayResponseArrayOutput() IstioEgressGatewayResponseArrayOutput {
-	return o
-}
-
-func (o IstioEgressGatewayResponseArrayOutput) ToIstioEgressGatewayResponseArrayOutputWithContext(ctx context.Context) IstioEgressGatewayResponseArrayOutput {
-	return o
-}
-
-func (o IstioEgressGatewayResponseArrayOutput) Index(i pulumi.IntInput) IstioEgressGatewayResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IstioEgressGatewayResponse {
-		return vs[0].([]IstioEgressGatewayResponse)[vs[1].(int)]
-	}).(IstioEgressGatewayResponseOutput)
-}
-
-// Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
-type IstioIngressGateway struct {
-	// Whether to enable the ingress gateway.
-	Enabled bool `pulumi:"enabled"`
-	// Mode of an ingress gateway.
-	Mode string `pulumi:"mode"`
-}
-
-// IstioIngressGatewayInput is an input type that accepts IstioIngressGatewayArgs and IstioIngressGatewayOutput values.
-// You can construct a concrete instance of `IstioIngressGatewayInput` via:
-//
-//	IstioIngressGatewayArgs{...}
-type IstioIngressGatewayInput interface {
-	pulumi.Input
-
-	ToIstioIngressGatewayOutput() IstioIngressGatewayOutput
-	ToIstioIngressGatewayOutputWithContext(context.Context) IstioIngressGatewayOutput
-}
-
-// Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
-type IstioIngressGatewayArgs struct {
-	// Whether to enable the ingress gateway.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Mode of an ingress gateway.
-	Mode pulumi.StringInput `pulumi:"mode"`
-}
-
-func (IstioIngressGatewayArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioIngressGateway)(nil)).Elem()
-}
-
-func (i IstioIngressGatewayArgs) ToIstioIngressGatewayOutput() IstioIngressGatewayOutput {
-	return i.ToIstioIngressGatewayOutputWithContext(context.Background())
-}
-
-func (i IstioIngressGatewayArgs) ToIstioIngressGatewayOutputWithContext(ctx context.Context) IstioIngressGatewayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioIngressGatewayOutput)
-}
-
-// IstioIngressGatewayArrayInput is an input type that accepts IstioIngressGatewayArray and IstioIngressGatewayArrayOutput values.
-// You can construct a concrete instance of `IstioIngressGatewayArrayInput` via:
-//
-//	IstioIngressGatewayArray{ IstioIngressGatewayArgs{...} }
-type IstioIngressGatewayArrayInput interface {
-	pulumi.Input
-
-	ToIstioIngressGatewayArrayOutput() IstioIngressGatewayArrayOutput
-	ToIstioIngressGatewayArrayOutputWithContext(context.Context) IstioIngressGatewayArrayOutput
-}
-
-type IstioIngressGatewayArray []IstioIngressGatewayInput
-
-func (IstioIngressGatewayArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IstioIngressGateway)(nil)).Elem()
-}
-
-func (i IstioIngressGatewayArray) ToIstioIngressGatewayArrayOutput() IstioIngressGatewayArrayOutput {
-	return i.ToIstioIngressGatewayArrayOutputWithContext(context.Background())
-}
-
-func (i IstioIngressGatewayArray) ToIstioIngressGatewayArrayOutputWithContext(ctx context.Context) IstioIngressGatewayArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioIngressGatewayArrayOutput)
-}
-
-// Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
-type IstioIngressGatewayOutput struct{ *pulumi.OutputState }
-
-func (IstioIngressGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioIngressGateway)(nil)).Elem()
-}
-
-func (o IstioIngressGatewayOutput) ToIstioIngressGatewayOutput() IstioIngressGatewayOutput {
-	return o
-}
-
-func (o IstioIngressGatewayOutput) ToIstioIngressGatewayOutputWithContext(ctx context.Context) IstioIngressGatewayOutput {
-	return o
-}
-
-// Whether to enable the ingress gateway.
-func (o IstioIngressGatewayOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v IstioIngressGateway) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Mode of an ingress gateway.
-func (o IstioIngressGatewayOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v IstioIngressGateway) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-type IstioIngressGatewayArrayOutput struct{ *pulumi.OutputState }
-
-func (IstioIngressGatewayArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IstioIngressGateway)(nil)).Elem()
-}
-
-func (o IstioIngressGatewayArrayOutput) ToIstioIngressGatewayArrayOutput() IstioIngressGatewayArrayOutput {
-	return o
-}
-
-func (o IstioIngressGatewayArrayOutput) ToIstioIngressGatewayArrayOutputWithContext(ctx context.Context) IstioIngressGatewayArrayOutput {
-	return o
-}
-
-func (o IstioIngressGatewayArrayOutput) Index(i pulumi.IntInput) IstioIngressGatewayOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IstioIngressGateway {
-		return vs[0].([]IstioIngressGateway)[vs[1].(int)]
-	}).(IstioIngressGatewayOutput)
-}
-
-// Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
-type IstioIngressGatewayResponse struct {
-	// Whether to enable the ingress gateway.
-	Enabled bool `pulumi:"enabled"`
-	// Mode of an ingress gateway.
-	Mode string `pulumi:"mode"`
-}
-
-// Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
-type IstioIngressGatewayResponseOutput struct{ *pulumi.OutputState }
-
-func (IstioIngressGatewayResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioIngressGatewayResponse)(nil)).Elem()
-}
-
-func (o IstioIngressGatewayResponseOutput) ToIstioIngressGatewayResponseOutput() IstioIngressGatewayResponseOutput {
-	return o
-}
-
-func (o IstioIngressGatewayResponseOutput) ToIstioIngressGatewayResponseOutputWithContext(ctx context.Context) IstioIngressGatewayResponseOutput {
-	return o
-}
-
-// Whether to enable the ingress gateway.
-func (o IstioIngressGatewayResponseOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v IstioIngressGatewayResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Mode of an ingress gateway.
-func (o IstioIngressGatewayResponseOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v IstioIngressGatewayResponse) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-type IstioIngressGatewayResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (IstioIngressGatewayResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IstioIngressGatewayResponse)(nil)).Elem()
-}
-
-func (o IstioIngressGatewayResponseArrayOutput) ToIstioIngressGatewayResponseArrayOutput() IstioIngressGatewayResponseArrayOutput {
-	return o
-}
-
-func (o IstioIngressGatewayResponseArrayOutput) ToIstioIngressGatewayResponseArrayOutputWithContext(ctx context.Context) IstioIngressGatewayResponseArrayOutput {
-	return o
-}
-
-func (o IstioIngressGatewayResponseArrayOutput) Index(i pulumi.IntInput) IstioIngressGatewayResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IstioIngressGatewayResponse {
-		return vs[0].([]IstioIngressGatewayResponse)[vs[1].(int)]
-	}).(IstioIngressGatewayResponseOutput)
-}
-
-// Plugin certificates information for Service Mesh.
-type IstioPluginCertificateAuthority struct {
-	// Certificate chain object name in Azure Key Vault.
-	CertChainObjectName *string `pulumi:"certChainObjectName"`
-	// Intermediate certificate object name in Azure Key Vault.
-	CertObjectName *string `pulumi:"certObjectName"`
-	// Intermediate certificate private key object name in Azure Key Vault.
-	KeyObjectName *string `pulumi:"keyObjectName"`
-	// The resource ID of the Key Vault.
-	KeyVaultId *string `pulumi:"keyVaultId"`
-	// Root certificate object name in Azure Key Vault.
-	RootCertObjectName *string `pulumi:"rootCertObjectName"`
-}
-
-// IstioPluginCertificateAuthorityInput is an input type that accepts IstioPluginCertificateAuthorityArgs and IstioPluginCertificateAuthorityOutput values.
-// You can construct a concrete instance of `IstioPluginCertificateAuthorityInput` via:
-//
-//	IstioPluginCertificateAuthorityArgs{...}
-type IstioPluginCertificateAuthorityInput interface {
-	pulumi.Input
-
-	ToIstioPluginCertificateAuthorityOutput() IstioPluginCertificateAuthorityOutput
-	ToIstioPluginCertificateAuthorityOutputWithContext(context.Context) IstioPluginCertificateAuthorityOutput
-}
-
-// Plugin certificates information for Service Mesh.
-type IstioPluginCertificateAuthorityArgs struct {
-	// Certificate chain object name in Azure Key Vault.
-	CertChainObjectName pulumi.StringPtrInput `pulumi:"certChainObjectName"`
-	// Intermediate certificate object name in Azure Key Vault.
-	CertObjectName pulumi.StringPtrInput `pulumi:"certObjectName"`
-	// Intermediate certificate private key object name in Azure Key Vault.
-	KeyObjectName pulumi.StringPtrInput `pulumi:"keyObjectName"`
-	// The resource ID of the Key Vault.
-	KeyVaultId pulumi.StringPtrInput `pulumi:"keyVaultId"`
-	// Root certificate object name in Azure Key Vault.
-	RootCertObjectName pulumi.StringPtrInput `pulumi:"rootCertObjectName"`
-}
-
-func (IstioPluginCertificateAuthorityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioPluginCertificateAuthority)(nil)).Elem()
-}
-
-func (i IstioPluginCertificateAuthorityArgs) ToIstioPluginCertificateAuthorityOutput() IstioPluginCertificateAuthorityOutput {
-	return i.ToIstioPluginCertificateAuthorityOutputWithContext(context.Background())
-}
-
-func (i IstioPluginCertificateAuthorityArgs) ToIstioPluginCertificateAuthorityOutputWithContext(ctx context.Context) IstioPluginCertificateAuthorityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioPluginCertificateAuthorityOutput)
-}
-
-func (i IstioPluginCertificateAuthorityArgs) ToIstioPluginCertificateAuthorityPtrOutput() IstioPluginCertificateAuthorityPtrOutput {
-	return i.ToIstioPluginCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i IstioPluginCertificateAuthorityArgs) ToIstioPluginCertificateAuthorityPtrOutputWithContext(ctx context.Context) IstioPluginCertificateAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioPluginCertificateAuthorityOutput).ToIstioPluginCertificateAuthorityPtrOutputWithContext(ctx)
-}
-
-// IstioPluginCertificateAuthorityPtrInput is an input type that accepts IstioPluginCertificateAuthorityArgs, IstioPluginCertificateAuthorityPtr and IstioPluginCertificateAuthorityPtrOutput values.
-// You can construct a concrete instance of `IstioPluginCertificateAuthorityPtrInput` via:
-//
-//	        IstioPluginCertificateAuthorityArgs{...}
-//
-//	or:
-//
-//	        nil
-type IstioPluginCertificateAuthorityPtrInput interface {
-	pulumi.Input
-
-	ToIstioPluginCertificateAuthorityPtrOutput() IstioPluginCertificateAuthorityPtrOutput
-	ToIstioPluginCertificateAuthorityPtrOutputWithContext(context.Context) IstioPluginCertificateAuthorityPtrOutput
-}
-
-type istioPluginCertificateAuthorityPtrType IstioPluginCertificateAuthorityArgs
-
-func IstioPluginCertificateAuthorityPtr(v *IstioPluginCertificateAuthorityArgs) IstioPluginCertificateAuthorityPtrInput {
-	return (*istioPluginCertificateAuthorityPtrType)(v)
-}
-
-func (*istioPluginCertificateAuthorityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioPluginCertificateAuthority)(nil)).Elem()
-}
-
-func (i *istioPluginCertificateAuthorityPtrType) ToIstioPluginCertificateAuthorityPtrOutput() IstioPluginCertificateAuthorityPtrOutput {
-	return i.ToIstioPluginCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i *istioPluginCertificateAuthorityPtrType) ToIstioPluginCertificateAuthorityPtrOutputWithContext(ctx context.Context) IstioPluginCertificateAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioPluginCertificateAuthorityPtrOutput)
-}
-
-// Plugin certificates information for Service Mesh.
-type IstioPluginCertificateAuthorityOutput struct{ *pulumi.OutputState }
-
-func (IstioPluginCertificateAuthorityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioPluginCertificateAuthority)(nil)).Elem()
-}
-
-func (o IstioPluginCertificateAuthorityOutput) ToIstioPluginCertificateAuthorityOutput() IstioPluginCertificateAuthorityOutput {
-	return o
-}
-
-func (o IstioPluginCertificateAuthorityOutput) ToIstioPluginCertificateAuthorityOutputWithContext(ctx context.Context) IstioPluginCertificateAuthorityOutput {
-	return o
-}
-
-func (o IstioPluginCertificateAuthorityOutput) ToIstioPluginCertificateAuthorityPtrOutput() IstioPluginCertificateAuthorityPtrOutput {
-	return o.ToIstioPluginCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (o IstioPluginCertificateAuthorityOutput) ToIstioPluginCertificateAuthorityPtrOutputWithContext(ctx context.Context) IstioPluginCertificateAuthorityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IstioPluginCertificateAuthority) *IstioPluginCertificateAuthority {
-		return &v
-	}).(IstioPluginCertificateAuthorityPtrOutput)
-}
-
-// Certificate chain object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityOutput) CertChainObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IstioPluginCertificateAuthority) *string { return v.CertChainObjectName }).(pulumi.StringPtrOutput)
-}
-
-// Intermediate certificate object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityOutput) CertObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IstioPluginCertificateAuthority) *string { return v.CertObjectName }).(pulumi.StringPtrOutput)
-}
-
-// Intermediate certificate private key object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityOutput) KeyObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IstioPluginCertificateAuthority) *string { return v.KeyObjectName }).(pulumi.StringPtrOutput)
-}
-
-// The resource ID of the Key Vault.
-func (o IstioPluginCertificateAuthorityOutput) KeyVaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IstioPluginCertificateAuthority) *string { return v.KeyVaultId }).(pulumi.StringPtrOutput)
-}
-
-// Root certificate object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityOutput) RootCertObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IstioPluginCertificateAuthority) *string { return v.RootCertObjectName }).(pulumi.StringPtrOutput)
-}
-
-type IstioPluginCertificateAuthorityPtrOutput struct{ *pulumi.OutputState }
-
-func (IstioPluginCertificateAuthorityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioPluginCertificateAuthority)(nil)).Elem()
-}
-
-func (o IstioPluginCertificateAuthorityPtrOutput) ToIstioPluginCertificateAuthorityPtrOutput() IstioPluginCertificateAuthorityPtrOutput {
-	return o
-}
-
-func (o IstioPluginCertificateAuthorityPtrOutput) ToIstioPluginCertificateAuthorityPtrOutputWithContext(ctx context.Context) IstioPluginCertificateAuthorityPtrOutput {
-	return o
-}
-
-func (o IstioPluginCertificateAuthorityPtrOutput) Elem() IstioPluginCertificateAuthorityOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthority) IstioPluginCertificateAuthority {
-		if v != nil {
-			return *v
-		}
-		var ret IstioPluginCertificateAuthority
-		return ret
-	}).(IstioPluginCertificateAuthorityOutput)
-}
-
-// Certificate chain object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityPtrOutput) CertChainObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertChainObjectName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Intermediate certificate object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityPtrOutput) CertObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertObjectName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Intermediate certificate private key object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityPtrOutput) KeyObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeyObjectName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource ID of the Key Vault.
-func (o IstioPluginCertificateAuthorityPtrOutput) KeyVaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeyVaultId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Root certificate object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityPtrOutput) RootCertObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RootCertObjectName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Plugin certificates information for Service Mesh.
-type IstioPluginCertificateAuthorityResponse struct {
-	// Certificate chain object name in Azure Key Vault.
-	CertChainObjectName *string `pulumi:"certChainObjectName"`
-	// Intermediate certificate object name in Azure Key Vault.
-	CertObjectName *string `pulumi:"certObjectName"`
-	// Intermediate certificate private key object name in Azure Key Vault.
-	KeyObjectName *string `pulumi:"keyObjectName"`
-	// The resource ID of the Key Vault.
-	KeyVaultId *string `pulumi:"keyVaultId"`
-	// Root certificate object name in Azure Key Vault.
-	RootCertObjectName *string `pulumi:"rootCertObjectName"`
-}
-
-// Plugin certificates information for Service Mesh.
-type IstioPluginCertificateAuthorityResponseOutput struct{ *pulumi.OutputState }
-
-func (IstioPluginCertificateAuthorityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioPluginCertificateAuthorityResponse)(nil)).Elem()
-}
-
-func (o IstioPluginCertificateAuthorityResponseOutput) ToIstioPluginCertificateAuthorityResponseOutput() IstioPluginCertificateAuthorityResponseOutput {
-	return o
-}
-
-func (o IstioPluginCertificateAuthorityResponseOutput) ToIstioPluginCertificateAuthorityResponseOutputWithContext(ctx context.Context) IstioPluginCertificateAuthorityResponseOutput {
-	return o
-}
-
-// Certificate chain object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityResponseOutput) CertChainObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IstioPluginCertificateAuthorityResponse) *string { return v.CertChainObjectName }).(pulumi.StringPtrOutput)
-}
-
-// Intermediate certificate object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityResponseOutput) CertObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IstioPluginCertificateAuthorityResponse) *string { return v.CertObjectName }).(pulumi.StringPtrOutput)
-}
-
-// Intermediate certificate private key object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityResponseOutput) KeyObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IstioPluginCertificateAuthorityResponse) *string { return v.KeyObjectName }).(pulumi.StringPtrOutput)
-}
-
-// The resource ID of the Key Vault.
-func (o IstioPluginCertificateAuthorityResponseOutput) KeyVaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IstioPluginCertificateAuthorityResponse) *string { return v.KeyVaultId }).(pulumi.StringPtrOutput)
-}
-
-// Root certificate object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityResponseOutput) RootCertObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IstioPluginCertificateAuthorityResponse) *string { return v.RootCertObjectName }).(pulumi.StringPtrOutput)
-}
-
-type IstioPluginCertificateAuthorityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IstioPluginCertificateAuthorityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioPluginCertificateAuthorityResponse)(nil)).Elem()
-}
-
-func (o IstioPluginCertificateAuthorityResponsePtrOutput) ToIstioPluginCertificateAuthorityResponsePtrOutput() IstioPluginCertificateAuthorityResponsePtrOutput {
-	return o
-}
-
-func (o IstioPluginCertificateAuthorityResponsePtrOutput) ToIstioPluginCertificateAuthorityResponsePtrOutputWithContext(ctx context.Context) IstioPluginCertificateAuthorityResponsePtrOutput {
-	return o
-}
-
-func (o IstioPluginCertificateAuthorityResponsePtrOutput) Elem() IstioPluginCertificateAuthorityResponseOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthorityResponse) IstioPluginCertificateAuthorityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IstioPluginCertificateAuthorityResponse
-		return ret
-	}).(IstioPluginCertificateAuthorityResponseOutput)
-}
-
-// Certificate chain object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityResponsePtrOutput) CertChainObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthorityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertChainObjectName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Intermediate certificate object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityResponsePtrOutput) CertObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthorityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertObjectName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Intermediate certificate private key object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityResponsePtrOutput) KeyObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthorityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeyObjectName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource ID of the Key Vault.
-func (o IstioPluginCertificateAuthorityResponsePtrOutput) KeyVaultId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthorityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeyVaultId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Root certificate object name in Azure Key Vault.
-func (o IstioPluginCertificateAuthorityResponsePtrOutput) RootCertObjectName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IstioPluginCertificateAuthorityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RootCertObjectName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Istio service mesh configuration.
-type IstioServiceMesh struct {
-	// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-	CertificateAuthority *IstioCertificateAuthority `pulumi:"certificateAuthority"`
-	// Istio components configuration.
-	Components *IstioComponents `pulumi:"components"`
-	// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
-	Revisions []string `pulumi:"revisions"`
-}
-
-// IstioServiceMeshInput is an input type that accepts IstioServiceMeshArgs and IstioServiceMeshOutput values.
-// You can construct a concrete instance of `IstioServiceMeshInput` via:
-//
-//	IstioServiceMeshArgs{...}
-type IstioServiceMeshInput interface {
-	pulumi.Input
-
-	ToIstioServiceMeshOutput() IstioServiceMeshOutput
-	ToIstioServiceMeshOutputWithContext(context.Context) IstioServiceMeshOutput
-}
-
-// Istio service mesh configuration.
-type IstioServiceMeshArgs struct {
-	// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-	CertificateAuthority IstioCertificateAuthorityPtrInput `pulumi:"certificateAuthority"`
-	// Istio components configuration.
-	Components IstioComponentsPtrInput `pulumi:"components"`
-	// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
-	Revisions pulumi.StringArrayInput `pulumi:"revisions"`
-}
-
-func (IstioServiceMeshArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioServiceMesh)(nil)).Elem()
-}
-
-func (i IstioServiceMeshArgs) ToIstioServiceMeshOutput() IstioServiceMeshOutput {
-	return i.ToIstioServiceMeshOutputWithContext(context.Background())
-}
-
-func (i IstioServiceMeshArgs) ToIstioServiceMeshOutputWithContext(ctx context.Context) IstioServiceMeshOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioServiceMeshOutput)
-}
-
-func (i IstioServiceMeshArgs) ToIstioServiceMeshPtrOutput() IstioServiceMeshPtrOutput {
-	return i.ToIstioServiceMeshPtrOutputWithContext(context.Background())
-}
-
-func (i IstioServiceMeshArgs) ToIstioServiceMeshPtrOutputWithContext(ctx context.Context) IstioServiceMeshPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioServiceMeshOutput).ToIstioServiceMeshPtrOutputWithContext(ctx)
-}
-
-// IstioServiceMeshPtrInput is an input type that accepts IstioServiceMeshArgs, IstioServiceMeshPtr and IstioServiceMeshPtrOutput values.
-// You can construct a concrete instance of `IstioServiceMeshPtrInput` via:
-//
-//	        IstioServiceMeshArgs{...}
-//
-//	or:
-//
-//	        nil
-type IstioServiceMeshPtrInput interface {
-	pulumi.Input
-
-	ToIstioServiceMeshPtrOutput() IstioServiceMeshPtrOutput
-	ToIstioServiceMeshPtrOutputWithContext(context.Context) IstioServiceMeshPtrOutput
-}
-
-type istioServiceMeshPtrType IstioServiceMeshArgs
-
-func IstioServiceMeshPtr(v *IstioServiceMeshArgs) IstioServiceMeshPtrInput {
-	return (*istioServiceMeshPtrType)(v)
-}
-
-func (*istioServiceMeshPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioServiceMesh)(nil)).Elem()
-}
-
-func (i *istioServiceMeshPtrType) ToIstioServiceMeshPtrOutput() IstioServiceMeshPtrOutput {
-	return i.ToIstioServiceMeshPtrOutputWithContext(context.Background())
-}
-
-func (i *istioServiceMeshPtrType) ToIstioServiceMeshPtrOutputWithContext(ctx context.Context) IstioServiceMeshPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IstioServiceMeshPtrOutput)
-}
-
-// Istio service mesh configuration.
-type IstioServiceMeshOutput struct{ *pulumi.OutputState }
-
-func (IstioServiceMeshOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioServiceMesh)(nil)).Elem()
-}
-
-func (o IstioServiceMeshOutput) ToIstioServiceMeshOutput() IstioServiceMeshOutput {
-	return o
-}
-
-func (o IstioServiceMeshOutput) ToIstioServiceMeshOutputWithContext(ctx context.Context) IstioServiceMeshOutput {
-	return o
-}
-
-func (o IstioServiceMeshOutput) ToIstioServiceMeshPtrOutput() IstioServiceMeshPtrOutput {
-	return o.ToIstioServiceMeshPtrOutputWithContext(context.Background())
-}
-
-func (o IstioServiceMeshOutput) ToIstioServiceMeshPtrOutputWithContext(ctx context.Context) IstioServiceMeshPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IstioServiceMesh) *IstioServiceMesh {
-		return &v
-	}).(IstioServiceMeshPtrOutput)
-}
-
-// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-func (o IstioServiceMeshOutput) CertificateAuthority() IstioCertificateAuthorityPtrOutput {
-	return o.ApplyT(func(v IstioServiceMesh) *IstioCertificateAuthority { return v.CertificateAuthority }).(IstioCertificateAuthorityPtrOutput)
-}
-
-// Istio components configuration.
-func (o IstioServiceMeshOutput) Components() IstioComponentsPtrOutput {
-	return o.ApplyT(func(v IstioServiceMesh) *IstioComponents { return v.Components }).(IstioComponentsPtrOutput)
-}
-
-// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
-func (o IstioServiceMeshOutput) Revisions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v IstioServiceMesh) []string { return v.Revisions }).(pulumi.StringArrayOutput)
-}
-
-type IstioServiceMeshPtrOutput struct{ *pulumi.OutputState }
-
-func (IstioServiceMeshPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioServiceMesh)(nil)).Elem()
-}
-
-func (o IstioServiceMeshPtrOutput) ToIstioServiceMeshPtrOutput() IstioServiceMeshPtrOutput {
-	return o
-}
-
-func (o IstioServiceMeshPtrOutput) ToIstioServiceMeshPtrOutputWithContext(ctx context.Context) IstioServiceMeshPtrOutput {
-	return o
-}
-
-func (o IstioServiceMeshPtrOutput) Elem() IstioServiceMeshOutput {
-	return o.ApplyT(func(v *IstioServiceMesh) IstioServiceMesh {
-		if v != nil {
-			return *v
-		}
-		var ret IstioServiceMesh
-		return ret
-	}).(IstioServiceMeshOutput)
-}
-
-// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-func (o IstioServiceMeshPtrOutput) CertificateAuthority() IstioCertificateAuthorityPtrOutput {
-	return o.ApplyT(func(v *IstioServiceMesh) *IstioCertificateAuthority {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateAuthority
-	}).(IstioCertificateAuthorityPtrOutput)
-}
-
-// Istio components configuration.
-func (o IstioServiceMeshPtrOutput) Components() IstioComponentsPtrOutput {
-	return o.ApplyT(func(v *IstioServiceMesh) *IstioComponents {
-		if v == nil {
-			return nil
-		}
-		return v.Components
-	}).(IstioComponentsPtrOutput)
-}
-
-// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
-func (o IstioServiceMeshPtrOutput) Revisions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *IstioServiceMesh) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Revisions
-	}).(pulumi.StringArrayOutput)
-}
-
-// Istio service mesh configuration.
-type IstioServiceMeshResponse struct {
-	// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-	CertificateAuthority *IstioCertificateAuthorityResponse `pulumi:"certificateAuthority"`
-	// Istio components configuration.
-	Components *IstioComponentsResponse `pulumi:"components"`
-	// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
-	Revisions []string `pulumi:"revisions"`
-}
-
-// Istio service mesh configuration.
-type IstioServiceMeshResponseOutput struct{ *pulumi.OutputState }
-
-func (IstioServiceMeshResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IstioServiceMeshResponse)(nil)).Elem()
-}
-
-func (o IstioServiceMeshResponseOutput) ToIstioServiceMeshResponseOutput() IstioServiceMeshResponseOutput {
-	return o
-}
-
-func (o IstioServiceMeshResponseOutput) ToIstioServiceMeshResponseOutputWithContext(ctx context.Context) IstioServiceMeshResponseOutput {
-	return o
-}
-
-// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-func (o IstioServiceMeshResponseOutput) CertificateAuthority() IstioCertificateAuthorityResponsePtrOutput {
-	return o.ApplyT(func(v IstioServiceMeshResponse) *IstioCertificateAuthorityResponse { return v.CertificateAuthority }).(IstioCertificateAuthorityResponsePtrOutput)
-}
-
-// Istio components configuration.
-func (o IstioServiceMeshResponseOutput) Components() IstioComponentsResponsePtrOutput {
-	return o.ApplyT(func(v IstioServiceMeshResponse) *IstioComponentsResponse { return v.Components }).(IstioComponentsResponsePtrOutput)
-}
-
-// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
-func (o IstioServiceMeshResponseOutput) Revisions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v IstioServiceMeshResponse) []string { return v.Revisions }).(pulumi.StringArrayOutput)
-}
-
-type IstioServiceMeshResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IstioServiceMeshResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IstioServiceMeshResponse)(nil)).Elem()
-}
-
-func (o IstioServiceMeshResponsePtrOutput) ToIstioServiceMeshResponsePtrOutput() IstioServiceMeshResponsePtrOutput {
-	return o
-}
-
-func (o IstioServiceMeshResponsePtrOutput) ToIstioServiceMeshResponsePtrOutputWithContext(ctx context.Context) IstioServiceMeshResponsePtrOutput {
-	return o
-}
-
-func (o IstioServiceMeshResponsePtrOutput) Elem() IstioServiceMeshResponseOutput {
-	return o.ApplyT(func(v *IstioServiceMeshResponse) IstioServiceMeshResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IstioServiceMeshResponse
-		return ret
-	}).(IstioServiceMeshResponseOutput)
-}
-
-// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-func (o IstioServiceMeshResponsePtrOutput) CertificateAuthority() IstioCertificateAuthorityResponsePtrOutput {
-	return o.ApplyT(func(v *IstioServiceMeshResponse) *IstioCertificateAuthorityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateAuthority
-	}).(IstioCertificateAuthorityResponsePtrOutput)
-}
-
-// Istio components configuration.
-func (o IstioServiceMeshResponsePtrOutput) Components() IstioComponentsResponsePtrOutput {
-	return o.ApplyT(func(v *IstioServiceMeshResponse) *IstioComponentsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Components
-	}).(IstioComponentsResponsePtrOutput)
-}
-
-// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
-func (o IstioServiceMeshResponsePtrOutput) Revisions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *IstioServiceMeshResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Revisions
-	}).(pulumi.StringArrayOutput)
-}
-
-// The claim mapping expression for JWTAuthenticator.
-type JWTAuthenticatorClaimMappingExpression struct {
-	// The CEL expression used to access token claims.
-	Expression string `pulumi:"expression"`
-}
-
-// JWTAuthenticatorClaimMappingExpressionInput is an input type that accepts JWTAuthenticatorClaimMappingExpressionArgs and JWTAuthenticatorClaimMappingExpressionOutput values.
-// You can construct a concrete instance of `JWTAuthenticatorClaimMappingExpressionInput` via:
-//
-//	JWTAuthenticatorClaimMappingExpressionArgs{...}
-type JWTAuthenticatorClaimMappingExpressionInput interface {
-	pulumi.Input
-
-	ToJWTAuthenticatorClaimMappingExpressionOutput() JWTAuthenticatorClaimMappingExpressionOutput
-	ToJWTAuthenticatorClaimMappingExpressionOutputWithContext(context.Context) JWTAuthenticatorClaimMappingExpressionOutput
-}
-
-// The claim mapping expression for JWTAuthenticator.
-type JWTAuthenticatorClaimMappingExpressionArgs struct {
-	// The CEL expression used to access token claims.
-	Expression pulumi.StringInput `pulumi:"expression"`
-}
-
-func (JWTAuthenticatorClaimMappingExpressionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorClaimMappingExpression)(nil)).Elem()
-}
-
-func (i JWTAuthenticatorClaimMappingExpressionArgs) ToJWTAuthenticatorClaimMappingExpressionOutput() JWTAuthenticatorClaimMappingExpressionOutput {
-	return i.ToJWTAuthenticatorClaimMappingExpressionOutputWithContext(context.Background())
-}
-
-func (i JWTAuthenticatorClaimMappingExpressionArgs) ToJWTAuthenticatorClaimMappingExpressionOutputWithContext(ctx context.Context) JWTAuthenticatorClaimMappingExpressionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JWTAuthenticatorClaimMappingExpressionOutput)
-}
-
-func (i JWTAuthenticatorClaimMappingExpressionArgs) ToJWTAuthenticatorClaimMappingExpressionPtrOutput() JWTAuthenticatorClaimMappingExpressionPtrOutput {
-	return i.ToJWTAuthenticatorClaimMappingExpressionPtrOutputWithContext(context.Background())
-}
-
-func (i JWTAuthenticatorClaimMappingExpressionArgs) ToJWTAuthenticatorClaimMappingExpressionPtrOutputWithContext(ctx context.Context) JWTAuthenticatorClaimMappingExpressionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JWTAuthenticatorClaimMappingExpressionOutput).ToJWTAuthenticatorClaimMappingExpressionPtrOutputWithContext(ctx)
-}
-
-// JWTAuthenticatorClaimMappingExpressionPtrInput is an input type that accepts JWTAuthenticatorClaimMappingExpressionArgs, JWTAuthenticatorClaimMappingExpressionPtr and JWTAuthenticatorClaimMappingExpressionPtrOutput values.
-// You can construct a concrete instance of `JWTAuthenticatorClaimMappingExpressionPtrInput` via:
-//
-//	        JWTAuthenticatorClaimMappingExpressionArgs{...}
-//
-//	or:
-//
-//	        nil
-type JWTAuthenticatorClaimMappingExpressionPtrInput interface {
-	pulumi.Input
-
-	ToJWTAuthenticatorClaimMappingExpressionPtrOutput() JWTAuthenticatorClaimMappingExpressionPtrOutput
-	ToJWTAuthenticatorClaimMappingExpressionPtrOutputWithContext(context.Context) JWTAuthenticatorClaimMappingExpressionPtrOutput
-}
-
-type jwtauthenticatorClaimMappingExpressionPtrType JWTAuthenticatorClaimMappingExpressionArgs
-
-func JWTAuthenticatorClaimMappingExpressionPtr(v *JWTAuthenticatorClaimMappingExpressionArgs) JWTAuthenticatorClaimMappingExpressionPtrInput {
-	return (*jwtauthenticatorClaimMappingExpressionPtrType)(v)
-}
-
-func (*jwtauthenticatorClaimMappingExpressionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JWTAuthenticatorClaimMappingExpression)(nil)).Elem()
-}
-
-func (i *jwtauthenticatorClaimMappingExpressionPtrType) ToJWTAuthenticatorClaimMappingExpressionPtrOutput() JWTAuthenticatorClaimMappingExpressionPtrOutput {
-	return i.ToJWTAuthenticatorClaimMappingExpressionPtrOutputWithContext(context.Background())
-}
-
-func (i *jwtauthenticatorClaimMappingExpressionPtrType) ToJWTAuthenticatorClaimMappingExpressionPtrOutputWithContext(ctx context.Context) JWTAuthenticatorClaimMappingExpressionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JWTAuthenticatorClaimMappingExpressionPtrOutput)
-}
-
-// The claim mapping expression for JWTAuthenticator.
-type JWTAuthenticatorClaimMappingExpressionOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorClaimMappingExpressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorClaimMappingExpression)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionOutput) ToJWTAuthenticatorClaimMappingExpressionOutput() JWTAuthenticatorClaimMappingExpressionOutput {
-	return o
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionOutput) ToJWTAuthenticatorClaimMappingExpressionOutputWithContext(ctx context.Context) JWTAuthenticatorClaimMappingExpressionOutput {
-	return o
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionOutput) ToJWTAuthenticatorClaimMappingExpressionPtrOutput() JWTAuthenticatorClaimMappingExpressionPtrOutput {
-	return o.ToJWTAuthenticatorClaimMappingExpressionPtrOutputWithContext(context.Background())
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionOutput) ToJWTAuthenticatorClaimMappingExpressionPtrOutputWithContext(ctx context.Context) JWTAuthenticatorClaimMappingExpressionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JWTAuthenticatorClaimMappingExpression) *JWTAuthenticatorClaimMappingExpression {
-		return &v
-	}).(JWTAuthenticatorClaimMappingExpressionPtrOutput)
-}
-
-// The CEL expression used to access token claims.
-func (o JWTAuthenticatorClaimMappingExpressionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v JWTAuthenticatorClaimMappingExpression) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-type JWTAuthenticatorClaimMappingExpressionPtrOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorClaimMappingExpressionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JWTAuthenticatorClaimMappingExpression)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionPtrOutput) ToJWTAuthenticatorClaimMappingExpressionPtrOutput() JWTAuthenticatorClaimMappingExpressionPtrOutput {
-	return o
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionPtrOutput) ToJWTAuthenticatorClaimMappingExpressionPtrOutputWithContext(ctx context.Context) JWTAuthenticatorClaimMappingExpressionPtrOutput {
-	return o
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionPtrOutput) Elem() JWTAuthenticatorClaimMappingExpressionOutput {
-	return o.ApplyT(func(v *JWTAuthenticatorClaimMappingExpression) JWTAuthenticatorClaimMappingExpression {
-		if v != nil {
-			return *v
-		}
-		var ret JWTAuthenticatorClaimMappingExpression
-		return ret
-	}).(JWTAuthenticatorClaimMappingExpressionOutput)
-}
-
-// The CEL expression used to access token claims.
-func (o JWTAuthenticatorClaimMappingExpressionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JWTAuthenticatorClaimMappingExpression) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-// The claim mapping expression for JWTAuthenticator.
-type JWTAuthenticatorClaimMappingExpressionResponse struct {
-	// The CEL expression used to access token claims.
-	Expression string `pulumi:"expression"`
-}
-
-// The claim mapping expression for JWTAuthenticator.
-type JWTAuthenticatorClaimMappingExpressionResponseOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorClaimMappingExpressionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorClaimMappingExpressionResponse)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionResponseOutput) ToJWTAuthenticatorClaimMappingExpressionResponseOutput() JWTAuthenticatorClaimMappingExpressionResponseOutput {
-	return o
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionResponseOutput) ToJWTAuthenticatorClaimMappingExpressionResponseOutputWithContext(ctx context.Context) JWTAuthenticatorClaimMappingExpressionResponseOutput {
-	return o
-}
-
-// The CEL expression used to access token claims.
-func (o JWTAuthenticatorClaimMappingExpressionResponseOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v JWTAuthenticatorClaimMappingExpressionResponse) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-type JWTAuthenticatorClaimMappingExpressionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorClaimMappingExpressionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JWTAuthenticatorClaimMappingExpressionResponse)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionResponsePtrOutput) ToJWTAuthenticatorClaimMappingExpressionResponsePtrOutput() JWTAuthenticatorClaimMappingExpressionResponsePtrOutput {
-	return o
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionResponsePtrOutput) ToJWTAuthenticatorClaimMappingExpressionResponsePtrOutputWithContext(ctx context.Context) JWTAuthenticatorClaimMappingExpressionResponsePtrOutput {
-	return o
-}
-
-func (o JWTAuthenticatorClaimMappingExpressionResponsePtrOutput) Elem() JWTAuthenticatorClaimMappingExpressionResponseOutput {
-	return o.ApplyT(func(v *JWTAuthenticatorClaimMappingExpressionResponse) JWTAuthenticatorClaimMappingExpressionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JWTAuthenticatorClaimMappingExpressionResponse
-		return ret
-	}).(JWTAuthenticatorClaimMappingExpressionResponseOutput)
-}
-
-// The CEL expression used to access token claims.
-func (o JWTAuthenticatorClaimMappingExpressionResponsePtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JWTAuthenticatorClaimMappingExpressionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-// The claim mappings for JWTAuthenticator.
-type JWTAuthenticatorClaimMappings struct {
-	// The expression to extract extra attribute from the token claims. When not provided, no extra attributes are extracted from the token claims.
-	Extra []JWTAuthenticatorExtraClaimMappingExpression `pulumi:"extra"`
-	// The expression to extract groups attribute from the token claims. When not provided, no groups are extracted from the token claims.
-	Groups *JWTAuthenticatorClaimMappingExpression `pulumi:"groups"`
-	// The expression to extract uid attribute from the token claims. When not provided, no uid is extracted from the token claims.
-	Uid *JWTAuthenticatorClaimMappingExpression `pulumi:"uid"`
-	// The expression to extract username attribute from the token claims.
-	Username JWTAuthenticatorClaimMappingExpression `pulumi:"username"`
-}
-
-// JWTAuthenticatorClaimMappingsInput is an input type that accepts JWTAuthenticatorClaimMappingsArgs and JWTAuthenticatorClaimMappingsOutput values.
-// You can construct a concrete instance of `JWTAuthenticatorClaimMappingsInput` via:
-//
-//	JWTAuthenticatorClaimMappingsArgs{...}
-type JWTAuthenticatorClaimMappingsInput interface {
-	pulumi.Input
-
-	ToJWTAuthenticatorClaimMappingsOutput() JWTAuthenticatorClaimMappingsOutput
-	ToJWTAuthenticatorClaimMappingsOutputWithContext(context.Context) JWTAuthenticatorClaimMappingsOutput
-}
-
-// The claim mappings for JWTAuthenticator.
-type JWTAuthenticatorClaimMappingsArgs struct {
-	// The expression to extract extra attribute from the token claims. When not provided, no extra attributes are extracted from the token claims.
-	Extra JWTAuthenticatorExtraClaimMappingExpressionArrayInput `pulumi:"extra"`
-	// The expression to extract groups attribute from the token claims. When not provided, no groups are extracted from the token claims.
-	Groups JWTAuthenticatorClaimMappingExpressionPtrInput `pulumi:"groups"`
-	// The expression to extract uid attribute from the token claims. When not provided, no uid is extracted from the token claims.
-	Uid JWTAuthenticatorClaimMappingExpressionPtrInput `pulumi:"uid"`
-	// The expression to extract username attribute from the token claims.
-	Username JWTAuthenticatorClaimMappingExpressionInput `pulumi:"username"`
-}
-
-func (JWTAuthenticatorClaimMappingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorClaimMappings)(nil)).Elem()
-}
-
-func (i JWTAuthenticatorClaimMappingsArgs) ToJWTAuthenticatorClaimMappingsOutput() JWTAuthenticatorClaimMappingsOutput {
-	return i.ToJWTAuthenticatorClaimMappingsOutputWithContext(context.Background())
-}
-
-func (i JWTAuthenticatorClaimMappingsArgs) ToJWTAuthenticatorClaimMappingsOutputWithContext(ctx context.Context) JWTAuthenticatorClaimMappingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JWTAuthenticatorClaimMappingsOutput)
-}
-
-// The claim mappings for JWTAuthenticator.
-type JWTAuthenticatorClaimMappingsOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorClaimMappingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorClaimMappings)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorClaimMappingsOutput) ToJWTAuthenticatorClaimMappingsOutput() JWTAuthenticatorClaimMappingsOutput {
-	return o
-}
-
-func (o JWTAuthenticatorClaimMappingsOutput) ToJWTAuthenticatorClaimMappingsOutputWithContext(ctx context.Context) JWTAuthenticatorClaimMappingsOutput {
-	return o
-}
-
-// The expression to extract extra attribute from the token claims. When not provided, no extra attributes are extracted from the token claims.
-func (o JWTAuthenticatorClaimMappingsOutput) Extra() JWTAuthenticatorExtraClaimMappingExpressionArrayOutput {
-	return o.ApplyT(func(v JWTAuthenticatorClaimMappings) []JWTAuthenticatorExtraClaimMappingExpression { return v.Extra }).(JWTAuthenticatorExtraClaimMappingExpressionArrayOutput)
-}
-
-// The expression to extract groups attribute from the token claims. When not provided, no groups are extracted from the token claims.
-func (o JWTAuthenticatorClaimMappingsOutput) Groups() JWTAuthenticatorClaimMappingExpressionPtrOutput {
-	return o.ApplyT(func(v JWTAuthenticatorClaimMappings) *JWTAuthenticatorClaimMappingExpression { return v.Groups }).(JWTAuthenticatorClaimMappingExpressionPtrOutput)
-}
-
-// The expression to extract uid attribute from the token claims. When not provided, no uid is extracted from the token claims.
-func (o JWTAuthenticatorClaimMappingsOutput) Uid() JWTAuthenticatorClaimMappingExpressionPtrOutput {
-	return o.ApplyT(func(v JWTAuthenticatorClaimMappings) *JWTAuthenticatorClaimMappingExpression { return v.Uid }).(JWTAuthenticatorClaimMappingExpressionPtrOutput)
-}
-
-// The expression to extract username attribute from the token claims.
-func (o JWTAuthenticatorClaimMappingsOutput) Username() JWTAuthenticatorClaimMappingExpressionOutput {
-	return o.ApplyT(func(v JWTAuthenticatorClaimMappings) JWTAuthenticatorClaimMappingExpression { return v.Username }).(JWTAuthenticatorClaimMappingExpressionOutput)
-}
-
-// The claim mappings for JWTAuthenticator.
-type JWTAuthenticatorClaimMappingsResponse struct {
-	// The expression to extract extra attribute from the token claims. When not provided, no extra attributes are extracted from the token claims.
-	Extra []JWTAuthenticatorExtraClaimMappingExpressionResponse `pulumi:"extra"`
-	// The expression to extract groups attribute from the token claims. When not provided, no groups are extracted from the token claims.
-	Groups *JWTAuthenticatorClaimMappingExpressionResponse `pulumi:"groups"`
-	// The expression to extract uid attribute from the token claims. When not provided, no uid is extracted from the token claims.
-	Uid *JWTAuthenticatorClaimMappingExpressionResponse `pulumi:"uid"`
-	// The expression to extract username attribute from the token claims.
-	Username JWTAuthenticatorClaimMappingExpressionResponse `pulumi:"username"`
-}
-
-// The claim mappings for JWTAuthenticator.
-type JWTAuthenticatorClaimMappingsResponseOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorClaimMappingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorClaimMappingsResponse)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorClaimMappingsResponseOutput) ToJWTAuthenticatorClaimMappingsResponseOutput() JWTAuthenticatorClaimMappingsResponseOutput {
-	return o
-}
-
-func (o JWTAuthenticatorClaimMappingsResponseOutput) ToJWTAuthenticatorClaimMappingsResponseOutputWithContext(ctx context.Context) JWTAuthenticatorClaimMappingsResponseOutput {
-	return o
-}
-
-// The expression to extract extra attribute from the token claims. When not provided, no extra attributes are extracted from the token claims.
-func (o JWTAuthenticatorClaimMappingsResponseOutput) Extra() JWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutput {
-	return o.ApplyT(func(v JWTAuthenticatorClaimMappingsResponse) []JWTAuthenticatorExtraClaimMappingExpressionResponse {
-		return v.Extra
-	}).(JWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutput)
-}
-
-// The expression to extract groups attribute from the token claims. When not provided, no groups are extracted from the token claims.
-func (o JWTAuthenticatorClaimMappingsResponseOutput) Groups() JWTAuthenticatorClaimMappingExpressionResponsePtrOutput {
-	return o.ApplyT(func(v JWTAuthenticatorClaimMappingsResponse) *JWTAuthenticatorClaimMappingExpressionResponse {
-		return v.Groups
-	}).(JWTAuthenticatorClaimMappingExpressionResponsePtrOutput)
-}
-
-// The expression to extract uid attribute from the token claims. When not provided, no uid is extracted from the token claims.
-func (o JWTAuthenticatorClaimMappingsResponseOutput) Uid() JWTAuthenticatorClaimMappingExpressionResponsePtrOutput {
-	return o.ApplyT(func(v JWTAuthenticatorClaimMappingsResponse) *JWTAuthenticatorClaimMappingExpressionResponse {
-		return v.Uid
-	}).(JWTAuthenticatorClaimMappingExpressionResponsePtrOutput)
-}
-
-// The expression to extract username attribute from the token claims.
-func (o JWTAuthenticatorClaimMappingsResponseOutput) Username() JWTAuthenticatorClaimMappingExpressionResponseOutput {
-	return o.ApplyT(func(v JWTAuthenticatorClaimMappingsResponse) JWTAuthenticatorClaimMappingExpressionResponse {
-		return v.Username
-	}).(JWTAuthenticatorClaimMappingExpressionResponseOutput)
-}
-
-// The extra claim mapping expression for JWTAuthenticator.
-type JWTAuthenticatorExtraClaimMappingExpression struct {
-	// The key of the extra attribute.
-	Key string `pulumi:"key"`
-	// The CEL expression used to extract the value of the extra attribute.
-	ValueExpression string `pulumi:"valueExpression"`
-}
-
-// JWTAuthenticatorExtraClaimMappingExpressionInput is an input type that accepts JWTAuthenticatorExtraClaimMappingExpressionArgs and JWTAuthenticatorExtraClaimMappingExpressionOutput values.
-// You can construct a concrete instance of `JWTAuthenticatorExtraClaimMappingExpressionInput` via:
-//
-//	JWTAuthenticatorExtraClaimMappingExpressionArgs{...}
-type JWTAuthenticatorExtraClaimMappingExpressionInput interface {
-	pulumi.Input
-
-	ToJWTAuthenticatorExtraClaimMappingExpressionOutput() JWTAuthenticatorExtraClaimMappingExpressionOutput
-	ToJWTAuthenticatorExtraClaimMappingExpressionOutputWithContext(context.Context) JWTAuthenticatorExtraClaimMappingExpressionOutput
-}
-
-// The extra claim mapping expression for JWTAuthenticator.
-type JWTAuthenticatorExtraClaimMappingExpressionArgs struct {
-	// The key of the extra attribute.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The CEL expression used to extract the value of the extra attribute.
-	ValueExpression pulumi.StringInput `pulumi:"valueExpression"`
-}
-
-func (JWTAuthenticatorExtraClaimMappingExpressionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorExtraClaimMappingExpression)(nil)).Elem()
-}
-
-func (i JWTAuthenticatorExtraClaimMappingExpressionArgs) ToJWTAuthenticatorExtraClaimMappingExpressionOutput() JWTAuthenticatorExtraClaimMappingExpressionOutput {
-	return i.ToJWTAuthenticatorExtraClaimMappingExpressionOutputWithContext(context.Background())
-}
-
-func (i JWTAuthenticatorExtraClaimMappingExpressionArgs) ToJWTAuthenticatorExtraClaimMappingExpressionOutputWithContext(ctx context.Context) JWTAuthenticatorExtraClaimMappingExpressionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JWTAuthenticatorExtraClaimMappingExpressionOutput)
-}
-
-// JWTAuthenticatorExtraClaimMappingExpressionArrayInput is an input type that accepts JWTAuthenticatorExtraClaimMappingExpressionArray and JWTAuthenticatorExtraClaimMappingExpressionArrayOutput values.
-// You can construct a concrete instance of `JWTAuthenticatorExtraClaimMappingExpressionArrayInput` via:
-//
-//	JWTAuthenticatorExtraClaimMappingExpressionArray{ JWTAuthenticatorExtraClaimMappingExpressionArgs{...} }
-type JWTAuthenticatorExtraClaimMappingExpressionArrayInput interface {
-	pulumi.Input
-
-	ToJWTAuthenticatorExtraClaimMappingExpressionArrayOutput() JWTAuthenticatorExtraClaimMappingExpressionArrayOutput
-	ToJWTAuthenticatorExtraClaimMappingExpressionArrayOutputWithContext(context.Context) JWTAuthenticatorExtraClaimMappingExpressionArrayOutput
-}
-
-type JWTAuthenticatorExtraClaimMappingExpressionArray []JWTAuthenticatorExtraClaimMappingExpressionInput
-
-func (JWTAuthenticatorExtraClaimMappingExpressionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JWTAuthenticatorExtraClaimMappingExpression)(nil)).Elem()
-}
-
-func (i JWTAuthenticatorExtraClaimMappingExpressionArray) ToJWTAuthenticatorExtraClaimMappingExpressionArrayOutput() JWTAuthenticatorExtraClaimMappingExpressionArrayOutput {
-	return i.ToJWTAuthenticatorExtraClaimMappingExpressionArrayOutputWithContext(context.Background())
-}
-
-func (i JWTAuthenticatorExtraClaimMappingExpressionArray) ToJWTAuthenticatorExtraClaimMappingExpressionArrayOutputWithContext(ctx context.Context) JWTAuthenticatorExtraClaimMappingExpressionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JWTAuthenticatorExtraClaimMappingExpressionArrayOutput)
-}
-
-// The extra claim mapping expression for JWTAuthenticator.
-type JWTAuthenticatorExtraClaimMappingExpressionOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorExtraClaimMappingExpressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorExtraClaimMappingExpression)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorExtraClaimMappingExpressionOutput) ToJWTAuthenticatorExtraClaimMappingExpressionOutput() JWTAuthenticatorExtraClaimMappingExpressionOutput {
-	return o
-}
-
-func (o JWTAuthenticatorExtraClaimMappingExpressionOutput) ToJWTAuthenticatorExtraClaimMappingExpressionOutputWithContext(ctx context.Context) JWTAuthenticatorExtraClaimMappingExpressionOutput {
-	return o
-}
-
-// The key of the extra attribute.
-func (o JWTAuthenticatorExtraClaimMappingExpressionOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v JWTAuthenticatorExtraClaimMappingExpression) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// The CEL expression used to extract the value of the extra attribute.
-func (o JWTAuthenticatorExtraClaimMappingExpressionOutput) ValueExpression() pulumi.StringOutput {
-	return o.ApplyT(func(v JWTAuthenticatorExtraClaimMappingExpression) string { return v.ValueExpression }).(pulumi.StringOutput)
-}
-
-type JWTAuthenticatorExtraClaimMappingExpressionArrayOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorExtraClaimMappingExpressionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JWTAuthenticatorExtraClaimMappingExpression)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorExtraClaimMappingExpressionArrayOutput) ToJWTAuthenticatorExtraClaimMappingExpressionArrayOutput() JWTAuthenticatorExtraClaimMappingExpressionArrayOutput {
-	return o
-}
-
-func (o JWTAuthenticatorExtraClaimMappingExpressionArrayOutput) ToJWTAuthenticatorExtraClaimMappingExpressionArrayOutputWithContext(ctx context.Context) JWTAuthenticatorExtraClaimMappingExpressionArrayOutput {
-	return o
-}
-
-func (o JWTAuthenticatorExtraClaimMappingExpressionArrayOutput) Index(i pulumi.IntInput) JWTAuthenticatorExtraClaimMappingExpressionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JWTAuthenticatorExtraClaimMappingExpression {
-		return vs[0].([]JWTAuthenticatorExtraClaimMappingExpression)[vs[1].(int)]
-	}).(JWTAuthenticatorExtraClaimMappingExpressionOutput)
-}
-
-// The extra claim mapping expression for JWTAuthenticator.
-type JWTAuthenticatorExtraClaimMappingExpressionResponse struct {
-	// The key of the extra attribute.
-	Key string `pulumi:"key"`
-	// The CEL expression used to extract the value of the extra attribute.
-	ValueExpression string `pulumi:"valueExpression"`
-}
-
-// The extra claim mapping expression for JWTAuthenticator.
-type JWTAuthenticatorExtraClaimMappingExpressionResponseOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorExtraClaimMappingExpressionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorExtraClaimMappingExpressionResponse)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorExtraClaimMappingExpressionResponseOutput) ToJWTAuthenticatorExtraClaimMappingExpressionResponseOutput() JWTAuthenticatorExtraClaimMappingExpressionResponseOutput {
-	return o
-}
-
-func (o JWTAuthenticatorExtraClaimMappingExpressionResponseOutput) ToJWTAuthenticatorExtraClaimMappingExpressionResponseOutputWithContext(ctx context.Context) JWTAuthenticatorExtraClaimMappingExpressionResponseOutput {
-	return o
-}
-
-// The key of the extra attribute.
-func (o JWTAuthenticatorExtraClaimMappingExpressionResponseOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v JWTAuthenticatorExtraClaimMappingExpressionResponse) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// The CEL expression used to extract the value of the extra attribute.
-func (o JWTAuthenticatorExtraClaimMappingExpressionResponseOutput) ValueExpression() pulumi.StringOutput {
-	return o.ApplyT(func(v JWTAuthenticatorExtraClaimMappingExpressionResponse) string { return v.ValueExpression }).(pulumi.StringOutput)
-}
-
-type JWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JWTAuthenticatorExtraClaimMappingExpressionResponse)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutput) ToJWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutput() JWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutput {
-	return o
-}
-
-func (o JWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutput) ToJWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutputWithContext(ctx context.Context) JWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutput {
-	return o
-}
-
-func (o JWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutput) Index(i pulumi.IntInput) JWTAuthenticatorExtraClaimMappingExpressionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JWTAuthenticatorExtraClaimMappingExpressionResponse {
-		return vs[0].([]JWTAuthenticatorExtraClaimMappingExpressionResponse)[vs[1].(int)]
-	}).(JWTAuthenticatorExtraClaimMappingExpressionResponseOutput)
-}
-
-// The OIDC issuer details for JWTAuthenticator.
-type JWTAuthenticatorIssuer struct {
-	// The set of acceptable audiences the JWT must be issued to. At least one is required. When multiple is set, AudienceMatchPolicy is used in API Server configuration.
-	Audiences []string `pulumi:"audiences"`
-	// The issuer URL. The URL must begin with the scheme https and cannot contain a query string or fragment. This must match the "iss" claim in the presented JWT, and the issuer returned from discovery.
-	Url string `pulumi:"url"`
-}
-
-// JWTAuthenticatorIssuerInput is an input type that accepts JWTAuthenticatorIssuerArgs and JWTAuthenticatorIssuerOutput values.
-// You can construct a concrete instance of `JWTAuthenticatorIssuerInput` via:
-//
-//	JWTAuthenticatorIssuerArgs{...}
-type JWTAuthenticatorIssuerInput interface {
-	pulumi.Input
-
-	ToJWTAuthenticatorIssuerOutput() JWTAuthenticatorIssuerOutput
-	ToJWTAuthenticatorIssuerOutputWithContext(context.Context) JWTAuthenticatorIssuerOutput
-}
-
-// The OIDC issuer details for JWTAuthenticator.
-type JWTAuthenticatorIssuerArgs struct {
-	// The set of acceptable audiences the JWT must be issued to. At least one is required. When multiple is set, AudienceMatchPolicy is used in API Server configuration.
-	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
-	// The issuer URL. The URL must begin with the scheme https and cannot contain a query string or fragment. This must match the "iss" claim in the presented JWT, and the issuer returned from discovery.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (JWTAuthenticatorIssuerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorIssuer)(nil)).Elem()
-}
-
-func (i JWTAuthenticatorIssuerArgs) ToJWTAuthenticatorIssuerOutput() JWTAuthenticatorIssuerOutput {
-	return i.ToJWTAuthenticatorIssuerOutputWithContext(context.Background())
-}
-
-func (i JWTAuthenticatorIssuerArgs) ToJWTAuthenticatorIssuerOutputWithContext(ctx context.Context) JWTAuthenticatorIssuerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JWTAuthenticatorIssuerOutput)
-}
-
-// The OIDC issuer details for JWTAuthenticator.
-type JWTAuthenticatorIssuerOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorIssuerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorIssuer)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorIssuerOutput) ToJWTAuthenticatorIssuerOutput() JWTAuthenticatorIssuerOutput {
-	return o
-}
-
-func (o JWTAuthenticatorIssuerOutput) ToJWTAuthenticatorIssuerOutputWithContext(ctx context.Context) JWTAuthenticatorIssuerOutput {
-	return o
-}
-
-// The set of acceptable audiences the JWT must be issued to. At least one is required. When multiple is set, AudienceMatchPolicy is used in API Server configuration.
-func (o JWTAuthenticatorIssuerOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JWTAuthenticatorIssuer) []string { return v.Audiences }).(pulumi.StringArrayOutput)
-}
-
-// The issuer URL. The URL must begin with the scheme https and cannot contain a query string or fragment. This must match the "iss" claim in the presented JWT, and the issuer returned from discovery.
-func (o JWTAuthenticatorIssuerOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v JWTAuthenticatorIssuer) string { return v.Url }).(pulumi.StringOutput)
-}
-
-// The OIDC issuer details for JWTAuthenticator.
-type JWTAuthenticatorIssuerResponse struct {
-	// The set of acceptable audiences the JWT must be issued to. At least one is required. When multiple is set, AudienceMatchPolicy is used in API Server configuration.
-	Audiences []string `pulumi:"audiences"`
-	// The issuer URL. The URL must begin with the scheme https and cannot contain a query string or fragment. This must match the "iss" claim in the presented JWT, and the issuer returned from discovery.
-	Url string `pulumi:"url"`
-}
-
-// The OIDC issuer details for JWTAuthenticator.
-type JWTAuthenticatorIssuerResponseOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorIssuerResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorIssuerResponse)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorIssuerResponseOutput) ToJWTAuthenticatorIssuerResponseOutput() JWTAuthenticatorIssuerResponseOutput {
-	return o
-}
-
-func (o JWTAuthenticatorIssuerResponseOutput) ToJWTAuthenticatorIssuerResponseOutputWithContext(ctx context.Context) JWTAuthenticatorIssuerResponseOutput {
-	return o
-}
-
-// The set of acceptable audiences the JWT must be issued to. At least one is required. When multiple is set, AudienceMatchPolicy is used in API Server configuration.
-func (o JWTAuthenticatorIssuerResponseOutput) Audiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JWTAuthenticatorIssuerResponse) []string { return v.Audiences }).(pulumi.StringArrayOutput)
-}
-
-// The issuer URL. The URL must begin with the scheme https and cannot contain a query string or fragment. This must match the "iss" claim in the presented JWT, and the issuer returned from discovery.
-func (o JWTAuthenticatorIssuerResponseOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v JWTAuthenticatorIssuerResponse) string { return v.Url }).(pulumi.StringOutput)
-}
-
-// The properties of JWTAuthenticator. For details on how to configure the properties of a JWT authenticator, please refer to the Kubernetes documentation: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration. Please note that not all fields available in the Kubernetes documentation are supported by AKS. For troubleshooting, please see https://aka.ms/aks-external-issuers-docs.
-type JWTAuthenticatorProperties struct {
-	// The mappings that define how user attributes are extracted from the token claims.
-	ClaimMappings JWTAuthenticatorClaimMappings `pulumi:"claimMappings"`
-	// The rules that are applied to validate token claims to authenticate users. All the expressions must evaluate to true for validation to succeed.
-	ClaimValidationRules []JWTAuthenticatorValidationRule `pulumi:"claimValidationRules"`
-	// The JWT OIDC issuer details.
-	Issuer JWTAuthenticatorIssuer `pulumi:"issuer"`
-	// The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
-	UserValidationRules []JWTAuthenticatorValidationRule `pulumi:"userValidationRules"`
-}
-
-// JWTAuthenticatorPropertiesInput is an input type that accepts JWTAuthenticatorPropertiesArgs and JWTAuthenticatorPropertiesOutput values.
-// You can construct a concrete instance of `JWTAuthenticatorPropertiesInput` via:
-//
-//	JWTAuthenticatorPropertiesArgs{...}
-type JWTAuthenticatorPropertiesInput interface {
-	pulumi.Input
-
-	ToJWTAuthenticatorPropertiesOutput() JWTAuthenticatorPropertiesOutput
-	ToJWTAuthenticatorPropertiesOutputWithContext(context.Context) JWTAuthenticatorPropertiesOutput
-}
-
-// The properties of JWTAuthenticator. For details on how to configure the properties of a JWT authenticator, please refer to the Kubernetes documentation: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration. Please note that not all fields available in the Kubernetes documentation are supported by AKS. For troubleshooting, please see https://aka.ms/aks-external-issuers-docs.
-type JWTAuthenticatorPropertiesArgs struct {
-	// The mappings that define how user attributes are extracted from the token claims.
-	ClaimMappings JWTAuthenticatorClaimMappingsInput `pulumi:"claimMappings"`
-	// The rules that are applied to validate token claims to authenticate users. All the expressions must evaluate to true for validation to succeed.
-	ClaimValidationRules JWTAuthenticatorValidationRuleArrayInput `pulumi:"claimValidationRules"`
-	// The JWT OIDC issuer details.
-	Issuer JWTAuthenticatorIssuerInput `pulumi:"issuer"`
-	// The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
-	UserValidationRules JWTAuthenticatorValidationRuleArrayInput `pulumi:"userValidationRules"`
-}
-
-func (JWTAuthenticatorPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorProperties)(nil)).Elem()
-}
-
-func (i JWTAuthenticatorPropertiesArgs) ToJWTAuthenticatorPropertiesOutput() JWTAuthenticatorPropertiesOutput {
-	return i.ToJWTAuthenticatorPropertiesOutputWithContext(context.Background())
-}
-
-func (i JWTAuthenticatorPropertiesArgs) ToJWTAuthenticatorPropertiesOutputWithContext(ctx context.Context) JWTAuthenticatorPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JWTAuthenticatorPropertiesOutput)
-}
-
-// The properties of JWTAuthenticator. For details on how to configure the properties of a JWT authenticator, please refer to the Kubernetes documentation: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration. Please note that not all fields available in the Kubernetes documentation are supported by AKS. For troubleshooting, please see https://aka.ms/aks-external-issuers-docs.
-type JWTAuthenticatorPropertiesOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorProperties)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorPropertiesOutput) ToJWTAuthenticatorPropertiesOutput() JWTAuthenticatorPropertiesOutput {
-	return o
-}
-
-func (o JWTAuthenticatorPropertiesOutput) ToJWTAuthenticatorPropertiesOutputWithContext(ctx context.Context) JWTAuthenticatorPropertiesOutput {
-	return o
-}
-
-// The mappings that define how user attributes are extracted from the token claims.
-func (o JWTAuthenticatorPropertiesOutput) ClaimMappings() JWTAuthenticatorClaimMappingsOutput {
-	return o.ApplyT(func(v JWTAuthenticatorProperties) JWTAuthenticatorClaimMappings { return v.ClaimMappings }).(JWTAuthenticatorClaimMappingsOutput)
-}
-
-// The rules that are applied to validate token claims to authenticate users. All the expressions must evaluate to true for validation to succeed.
-func (o JWTAuthenticatorPropertiesOutput) ClaimValidationRules() JWTAuthenticatorValidationRuleArrayOutput {
-	return o.ApplyT(func(v JWTAuthenticatorProperties) []JWTAuthenticatorValidationRule { return v.ClaimValidationRules }).(JWTAuthenticatorValidationRuleArrayOutput)
-}
-
-// The JWT OIDC issuer details.
-func (o JWTAuthenticatorPropertiesOutput) Issuer() JWTAuthenticatorIssuerOutput {
-	return o.ApplyT(func(v JWTAuthenticatorProperties) JWTAuthenticatorIssuer { return v.Issuer }).(JWTAuthenticatorIssuerOutput)
-}
-
-// The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
-func (o JWTAuthenticatorPropertiesOutput) UserValidationRules() JWTAuthenticatorValidationRuleArrayOutput {
-	return o.ApplyT(func(v JWTAuthenticatorProperties) []JWTAuthenticatorValidationRule { return v.UserValidationRules }).(JWTAuthenticatorValidationRuleArrayOutput)
-}
-
-// The properties of JWTAuthenticator. For details on how to configure the properties of a JWT authenticator, please refer to the Kubernetes documentation: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration. Please note that not all fields available in the Kubernetes documentation are supported by AKS. For troubleshooting, please see https://aka.ms/aks-external-issuers-docs.
-type JWTAuthenticatorPropertiesResponse struct {
-	// The mappings that define how user attributes are extracted from the token claims.
-	ClaimMappings JWTAuthenticatorClaimMappingsResponse `pulumi:"claimMappings"`
-	// The rules that are applied to validate token claims to authenticate users. All the expressions must evaluate to true for validation to succeed.
-	ClaimValidationRules []JWTAuthenticatorValidationRuleResponse `pulumi:"claimValidationRules"`
-	// The JWT OIDC issuer details.
-	Issuer JWTAuthenticatorIssuerResponse `pulumi:"issuer"`
-	// The current provisioning state of the JWT authenticator.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
-	UserValidationRules []JWTAuthenticatorValidationRuleResponse `pulumi:"userValidationRules"`
-}
-
-// The properties of JWTAuthenticator. For details on how to configure the properties of a JWT authenticator, please refer to the Kubernetes documentation: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration. Please note that not all fields available in the Kubernetes documentation are supported by AKS. For troubleshooting, please see https://aka.ms/aks-external-issuers-docs.
-type JWTAuthenticatorPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorPropertiesResponse)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorPropertiesResponseOutput) ToJWTAuthenticatorPropertiesResponseOutput() JWTAuthenticatorPropertiesResponseOutput {
-	return o
-}
-
-func (o JWTAuthenticatorPropertiesResponseOutput) ToJWTAuthenticatorPropertiesResponseOutputWithContext(ctx context.Context) JWTAuthenticatorPropertiesResponseOutput {
-	return o
-}
-
-// The mappings that define how user attributes are extracted from the token claims.
-func (o JWTAuthenticatorPropertiesResponseOutput) ClaimMappings() JWTAuthenticatorClaimMappingsResponseOutput {
-	return o.ApplyT(func(v JWTAuthenticatorPropertiesResponse) JWTAuthenticatorClaimMappingsResponse {
-		return v.ClaimMappings
-	}).(JWTAuthenticatorClaimMappingsResponseOutput)
-}
-
-// The rules that are applied to validate token claims to authenticate users. All the expressions must evaluate to true for validation to succeed.
-func (o JWTAuthenticatorPropertiesResponseOutput) ClaimValidationRules() JWTAuthenticatorValidationRuleResponseArrayOutput {
-	return o.ApplyT(func(v JWTAuthenticatorPropertiesResponse) []JWTAuthenticatorValidationRuleResponse {
-		return v.ClaimValidationRules
-	}).(JWTAuthenticatorValidationRuleResponseArrayOutput)
-}
-
-// The JWT OIDC issuer details.
-func (o JWTAuthenticatorPropertiesResponseOutput) Issuer() JWTAuthenticatorIssuerResponseOutput {
-	return o.ApplyT(func(v JWTAuthenticatorPropertiesResponse) JWTAuthenticatorIssuerResponse { return v.Issuer }).(JWTAuthenticatorIssuerResponseOutput)
-}
-
-// The current provisioning state of the JWT authenticator.
-func (o JWTAuthenticatorPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v JWTAuthenticatorPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
-func (o JWTAuthenticatorPropertiesResponseOutput) UserValidationRules() JWTAuthenticatorValidationRuleResponseArrayOutput {
-	return o.ApplyT(func(v JWTAuthenticatorPropertiesResponse) []JWTAuthenticatorValidationRuleResponse {
-		return v.UserValidationRules
-	}).(JWTAuthenticatorValidationRuleResponseArrayOutput)
-}
-
-// The validation rule for JWTAuthenticator.
-type JWTAuthenticatorValidationRule struct {
-	// The CEL expression used to validate the claim or attribute.
-	Expression string `pulumi:"expression"`
-	// The validation error message.
-	Message *string `pulumi:"message"`
-}
-
-// JWTAuthenticatorValidationRuleInput is an input type that accepts JWTAuthenticatorValidationRuleArgs and JWTAuthenticatorValidationRuleOutput values.
-// You can construct a concrete instance of `JWTAuthenticatorValidationRuleInput` via:
-//
-//	JWTAuthenticatorValidationRuleArgs{...}
-type JWTAuthenticatorValidationRuleInput interface {
-	pulumi.Input
-
-	ToJWTAuthenticatorValidationRuleOutput() JWTAuthenticatorValidationRuleOutput
-	ToJWTAuthenticatorValidationRuleOutputWithContext(context.Context) JWTAuthenticatorValidationRuleOutput
-}
-
-// The validation rule for JWTAuthenticator.
-type JWTAuthenticatorValidationRuleArgs struct {
-	// The CEL expression used to validate the claim or attribute.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// The validation error message.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (JWTAuthenticatorValidationRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorValidationRule)(nil)).Elem()
-}
-
-func (i JWTAuthenticatorValidationRuleArgs) ToJWTAuthenticatorValidationRuleOutput() JWTAuthenticatorValidationRuleOutput {
-	return i.ToJWTAuthenticatorValidationRuleOutputWithContext(context.Background())
-}
-
-func (i JWTAuthenticatorValidationRuleArgs) ToJWTAuthenticatorValidationRuleOutputWithContext(ctx context.Context) JWTAuthenticatorValidationRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JWTAuthenticatorValidationRuleOutput)
-}
-
-// JWTAuthenticatorValidationRuleArrayInput is an input type that accepts JWTAuthenticatorValidationRuleArray and JWTAuthenticatorValidationRuleArrayOutput values.
-// You can construct a concrete instance of `JWTAuthenticatorValidationRuleArrayInput` via:
-//
-//	JWTAuthenticatorValidationRuleArray{ JWTAuthenticatorValidationRuleArgs{...} }
-type JWTAuthenticatorValidationRuleArrayInput interface {
-	pulumi.Input
-
-	ToJWTAuthenticatorValidationRuleArrayOutput() JWTAuthenticatorValidationRuleArrayOutput
-	ToJWTAuthenticatorValidationRuleArrayOutputWithContext(context.Context) JWTAuthenticatorValidationRuleArrayOutput
-}
-
-type JWTAuthenticatorValidationRuleArray []JWTAuthenticatorValidationRuleInput
-
-func (JWTAuthenticatorValidationRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JWTAuthenticatorValidationRule)(nil)).Elem()
-}
-
-func (i JWTAuthenticatorValidationRuleArray) ToJWTAuthenticatorValidationRuleArrayOutput() JWTAuthenticatorValidationRuleArrayOutput {
-	return i.ToJWTAuthenticatorValidationRuleArrayOutputWithContext(context.Background())
-}
-
-func (i JWTAuthenticatorValidationRuleArray) ToJWTAuthenticatorValidationRuleArrayOutputWithContext(ctx context.Context) JWTAuthenticatorValidationRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JWTAuthenticatorValidationRuleArrayOutput)
-}
-
-// The validation rule for JWTAuthenticator.
-type JWTAuthenticatorValidationRuleOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorValidationRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorValidationRule)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorValidationRuleOutput) ToJWTAuthenticatorValidationRuleOutput() JWTAuthenticatorValidationRuleOutput {
-	return o
-}
-
-func (o JWTAuthenticatorValidationRuleOutput) ToJWTAuthenticatorValidationRuleOutputWithContext(ctx context.Context) JWTAuthenticatorValidationRuleOutput {
-	return o
-}
-
-// The CEL expression used to validate the claim or attribute.
-func (o JWTAuthenticatorValidationRuleOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v JWTAuthenticatorValidationRule) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-// The validation error message.
-func (o JWTAuthenticatorValidationRuleOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JWTAuthenticatorValidationRule) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type JWTAuthenticatorValidationRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorValidationRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JWTAuthenticatorValidationRule)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorValidationRuleArrayOutput) ToJWTAuthenticatorValidationRuleArrayOutput() JWTAuthenticatorValidationRuleArrayOutput {
-	return o
-}
-
-func (o JWTAuthenticatorValidationRuleArrayOutput) ToJWTAuthenticatorValidationRuleArrayOutputWithContext(ctx context.Context) JWTAuthenticatorValidationRuleArrayOutput {
-	return o
-}
-
-func (o JWTAuthenticatorValidationRuleArrayOutput) Index(i pulumi.IntInput) JWTAuthenticatorValidationRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JWTAuthenticatorValidationRule {
-		return vs[0].([]JWTAuthenticatorValidationRule)[vs[1].(int)]
-	}).(JWTAuthenticatorValidationRuleOutput)
-}
-
-// The validation rule for JWTAuthenticator.
-type JWTAuthenticatorValidationRuleResponse struct {
-	// The CEL expression used to validate the claim or attribute.
-	Expression string `pulumi:"expression"`
-	// The validation error message.
-	Message *string `pulumi:"message"`
-}
-
-// The validation rule for JWTAuthenticator.
-type JWTAuthenticatorValidationRuleResponseOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorValidationRuleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JWTAuthenticatorValidationRuleResponse)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorValidationRuleResponseOutput) ToJWTAuthenticatorValidationRuleResponseOutput() JWTAuthenticatorValidationRuleResponseOutput {
-	return o
-}
-
-func (o JWTAuthenticatorValidationRuleResponseOutput) ToJWTAuthenticatorValidationRuleResponseOutputWithContext(ctx context.Context) JWTAuthenticatorValidationRuleResponseOutput {
-	return o
-}
-
-// The CEL expression used to validate the claim or attribute.
-func (o JWTAuthenticatorValidationRuleResponseOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v JWTAuthenticatorValidationRuleResponse) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-// The validation error message.
-func (o JWTAuthenticatorValidationRuleResponseOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JWTAuthenticatorValidationRuleResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type JWTAuthenticatorValidationRuleResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (JWTAuthenticatorValidationRuleResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JWTAuthenticatorValidationRuleResponse)(nil)).Elem()
-}
-
-func (o JWTAuthenticatorValidationRuleResponseArrayOutput) ToJWTAuthenticatorValidationRuleResponseArrayOutput() JWTAuthenticatorValidationRuleResponseArrayOutput {
-	return o
-}
-
-func (o JWTAuthenticatorValidationRuleResponseArrayOutput) ToJWTAuthenticatorValidationRuleResponseArrayOutputWithContext(ctx context.Context) JWTAuthenticatorValidationRuleResponseArrayOutput {
-	return o
-}
-
-func (o JWTAuthenticatorValidationRuleResponseArrayOutput) Index(i pulumi.IntInput) JWTAuthenticatorValidationRuleResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JWTAuthenticatorValidationRuleResponse {
-		return vs[0].([]JWTAuthenticatorValidationRuleResponse)[vs[1].(int)]
-	}).(JWTAuthenticatorValidationRuleResponseOutput)
 }
 
 // See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
@@ -10214,421 +4327,6 @@ func (o LinuxOSConfigResponsePtrOutput) TransparentHugePageEnabled() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Maintenance window used to configure scheduled auto-upgrade for a Managed Cluster.
-type MaintenanceWindow struct {
-	// Length of maintenance window range from 4 to 24 hours.
-	DurationHours int `pulumi:"durationHours"`
-	// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
-	NotAllowedDates []DateSpan `pulumi:"notAllowedDates"`
-	// Recurrence schedule for the maintenance window.
-	Schedule Schedule `pulumi:"schedule"`
-	// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
-	StartDate *string `pulumi:"startDate"`
-	// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
-	StartTime string `pulumi:"startTime"`
-	// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
-	UtcOffset *string `pulumi:"utcOffset"`
-}
-
-// Defaults sets the appropriate defaults for MaintenanceWindow
-func (val *MaintenanceWindow) Defaults() *MaintenanceWindow {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if utilities.IsZero(tmp.DurationHours) {
-		tmp.DurationHours = 24
-	}
-	return &tmp
-}
-
-// MaintenanceWindowInput is an input type that accepts MaintenanceWindowArgs and MaintenanceWindowOutput values.
-// You can construct a concrete instance of `MaintenanceWindowInput` via:
-//
-//	MaintenanceWindowArgs{...}
-type MaintenanceWindowInput interface {
-	pulumi.Input
-
-	ToMaintenanceWindowOutput() MaintenanceWindowOutput
-	ToMaintenanceWindowOutputWithContext(context.Context) MaintenanceWindowOutput
-}
-
-// Maintenance window used to configure scheduled auto-upgrade for a Managed Cluster.
-type MaintenanceWindowArgs struct {
-	// Length of maintenance window range from 4 to 24 hours.
-	DurationHours pulumi.IntInput `pulumi:"durationHours"`
-	// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
-	NotAllowedDates DateSpanArrayInput `pulumi:"notAllowedDates"`
-	// Recurrence schedule for the maintenance window.
-	Schedule ScheduleInput `pulumi:"schedule"`
-	// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
-	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
-	// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
-	UtcOffset pulumi.StringPtrInput `pulumi:"utcOffset"`
-}
-
-// Defaults sets the appropriate defaults for MaintenanceWindowArgs
-func (val *MaintenanceWindowArgs) Defaults() *MaintenanceWindowArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.DurationHours == nil {
-		tmp.DurationHours = pulumi.Int(24)
-	}
-	return &tmp
-}
-func (MaintenanceWindowArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MaintenanceWindow)(nil)).Elem()
-}
-
-func (i MaintenanceWindowArgs) ToMaintenanceWindowOutput() MaintenanceWindowOutput {
-	return i.ToMaintenanceWindowOutputWithContext(context.Background())
-}
-
-func (i MaintenanceWindowArgs) ToMaintenanceWindowOutputWithContext(ctx context.Context) MaintenanceWindowOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput)
-}
-
-func (i MaintenanceWindowArgs) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
-	return i.ToMaintenanceWindowPtrOutputWithContext(context.Background())
-}
-
-func (i MaintenanceWindowArgs) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput).ToMaintenanceWindowPtrOutputWithContext(ctx)
-}
-
-// MaintenanceWindowPtrInput is an input type that accepts MaintenanceWindowArgs, MaintenanceWindowPtr and MaintenanceWindowPtrOutput values.
-// You can construct a concrete instance of `MaintenanceWindowPtrInput` via:
-//
-//	        MaintenanceWindowArgs{...}
-//
-//	or:
-//
-//	        nil
-type MaintenanceWindowPtrInput interface {
-	pulumi.Input
-
-	ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput
-	ToMaintenanceWindowPtrOutputWithContext(context.Context) MaintenanceWindowPtrOutput
-}
-
-type maintenanceWindowPtrType MaintenanceWindowArgs
-
-func MaintenanceWindowPtr(v *MaintenanceWindowArgs) MaintenanceWindowPtrInput {
-	return (*maintenanceWindowPtrType)(v)
-}
-
-func (*maintenanceWindowPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaintenanceWindow)(nil)).Elem()
-}
-
-func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
-	return i.ToMaintenanceWindowPtrOutputWithContext(context.Background())
-}
-
-func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
-}
-
-// Maintenance window used to configure scheduled auto-upgrade for a Managed Cluster.
-type MaintenanceWindowOutput struct{ *pulumi.OutputState }
-
-func (MaintenanceWindowOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MaintenanceWindow)(nil)).Elem()
-}
-
-func (o MaintenanceWindowOutput) ToMaintenanceWindowOutput() MaintenanceWindowOutput {
-	return o
-}
-
-func (o MaintenanceWindowOutput) ToMaintenanceWindowOutputWithContext(ctx context.Context) MaintenanceWindowOutput {
-	return o
-}
-
-func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
-	return o.ToMaintenanceWindowPtrOutputWithContext(context.Background())
-}
-
-func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindow) *MaintenanceWindow {
-		return &v
-	}).(MaintenanceWindowPtrOutput)
-}
-
-// Length of maintenance window range from 4 to 24 hours.
-func (o MaintenanceWindowOutput) DurationHours() pulumi.IntOutput {
-	return o.ApplyT(func(v MaintenanceWindow) int { return v.DurationHours }).(pulumi.IntOutput)
-}
-
-// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
-func (o MaintenanceWindowOutput) NotAllowedDates() DateSpanArrayOutput {
-	return o.ApplyT(func(v MaintenanceWindow) []DateSpan { return v.NotAllowedDates }).(DateSpanArrayOutput)
-}
-
-// Recurrence schedule for the maintenance window.
-func (o MaintenanceWindowOutput) Schedule() ScheduleOutput {
-	return o.ApplyT(func(v MaintenanceWindow) Schedule { return v.Schedule }).(ScheduleOutput)
-}
-
-// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
-func (o MaintenanceWindowOutput) StartDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindow) *string { return v.StartDate }).(pulumi.StringPtrOutput)
-}
-
-// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
-func (o MaintenanceWindowOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func(v MaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
-}
-
-// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
-func (o MaintenanceWindowOutput) UtcOffset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindow) *string { return v.UtcOffset }).(pulumi.StringPtrOutput)
-}
-
-type MaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
-
-func (MaintenanceWindowPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaintenanceWindow)(nil)).Elem()
-}
-
-func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
-	return o
-}
-
-func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
-	return o
-}
-
-func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) MaintenanceWindow {
-		if v != nil {
-			return *v
-		}
-		var ret MaintenanceWindow
-		return ret
-	}).(MaintenanceWindowOutput)
-}
-
-// Length of maintenance window range from 4 to 24 hours.
-func (o MaintenanceWindowPtrOutput) DurationHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DurationHours
-	}).(pulumi.IntPtrOutput)
-}
-
-// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
-func (o MaintenanceWindowPtrOutput) NotAllowedDates() DateSpanArrayOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) []DateSpan {
-		if v == nil {
-			return nil
-		}
-		return v.NotAllowedDates
-	}).(DateSpanArrayOutput)
-}
-
-// Recurrence schedule for the maintenance window.
-func (o MaintenanceWindowPtrOutput) Schedule() SchedulePtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) *Schedule {
-		if v == nil {
-			return nil
-		}
-		return &v.Schedule
-	}).(SchedulePtrOutput)
-}
-
-// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
-func (o MaintenanceWindowPtrOutput) StartDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartDate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
-func (o MaintenanceWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
-func (o MaintenanceWindowPtrOutput) UtcOffset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UtcOffset
-	}).(pulumi.StringPtrOutput)
-}
-
-// Maintenance window used to configure scheduled auto-upgrade for a Managed Cluster.
-type MaintenanceWindowResponse struct {
-	// Length of maintenance window range from 4 to 24 hours.
-	DurationHours int `pulumi:"durationHours"`
-	// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
-	NotAllowedDates []DateSpanResponse `pulumi:"notAllowedDates"`
-	// Recurrence schedule for the maintenance window.
-	Schedule ScheduleResponse `pulumi:"schedule"`
-	// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
-	StartDate *string `pulumi:"startDate"`
-	// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
-	StartTime string `pulumi:"startTime"`
-	// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
-	UtcOffset *string `pulumi:"utcOffset"`
-}
-
-// Defaults sets the appropriate defaults for MaintenanceWindowResponse
-func (val *MaintenanceWindowResponse) Defaults() *MaintenanceWindowResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if utilities.IsZero(tmp.DurationHours) {
-		tmp.DurationHours = 24
-	}
-	return &tmp
-}
-
-// Maintenance window used to configure scheduled auto-upgrade for a Managed Cluster.
-type MaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
-
-func (MaintenanceWindowResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MaintenanceWindowResponse)(nil)).Elem()
-}
-
-func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput {
-	return o
-}
-
-func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithContext(ctx context.Context) MaintenanceWindowResponseOutput {
-	return o
-}
-
-// Length of maintenance window range from 4 to 24 hours.
-func (o MaintenanceWindowResponseOutput) DurationHours() pulumi.IntOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) int { return v.DurationHours }).(pulumi.IntOutput)
-}
-
-// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
-func (o MaintenanceWindowResponseOutput) NotAllowedDates() DateSpanResponseArrayOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) []DateSpanResponse { return v.NotAllowedDates }).(DateSpanResponseArrayOutput)
-}
-
-// Recurrence schedule for the maintenance window.
-func (o MaintenanceWindowResponseOutput) Schedule() ScheduleResponseOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) ScheduleResponse { return v.Schedule }).(ScheduleResponseOutput)
-}
-
-// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
-func (o MaintenanceWindowResponseOutput) StartDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) *string { return v.StartDate }).(pulumi.StringPtrOutput)
-}
-
-// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
-func (o MaintenanceWindowResponseOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.StartTime }).(pulumi.StringOutput)
-}
-
-// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
-func (o MaintenanceWindowResponseOutput) UtcOffset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) *string { return v.UtcOffset }).(pulumi.StringPtrOutput)
-}
-
-type MaintenanceWindowResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MaintenanceWindowResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaintenanceWindowResponse)(nil)).Elem()
-}
-
-func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
-	return o
-}
-
-func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return o
-}
-
-func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MaintenanceWindowResponse
-		return ret
-	}).(MaintenanceWindowResponseOutput)
-}
-
-// Length of maintenance window range from 4 to 24 hours.
-func (o MaintenanceWindowResponsePtrOutput) DurationHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DurationHours
-	}).(pulumi.IntPtrOutput)
-}
-
-// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
-func (o MaintenanceWindowResponsePtrOutput) NotAllowedDates() DateSpanResponseArrayOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) []DateSpanResponse {
-		if v == nil {
-			return nil
-		}
-		return v.NotAllowedDates
-	}).(DateSpanResponseArrayOutput)
-}
-
-// Recurrence schedule for the maintenance window.
-func (o MaintenanceWindowResponsePtrOutput) Schedule() ScheduleResponsePtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) *ScheduleResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Schedule
-	}).(ScheduleResponsePtrOutput)
-}
-
-// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
-func (o MaintenanceWindowResponsePtrOutput) StartDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartDate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
-func (o MaintenanceWindowResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
-func (o MaintenanceWindowResponsePtrOutput) UtcOffset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UtcOffset
-	}).(pulumi.StringPtrOutput)
-}
-
 // For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
 type ManagedClusterAADProfile struct {
 	// The list of AAD group object IDs that will have admin role of the cluster.
@@ -11604,8 +5302,6 @@ func (o ManagedClusterAddonProfileResponseIdentityOutput) ResourceId() pulumi.St
 type ManagedClusterAgentPoolProfile struct {
 	// The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// AKS will associate the specified agent pool with the Capacity Reservation Group.
-	CapacityReservationGroupID *string `pulumi:"capacityReservationGroupID"`
 	// Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
 	Count *int `pulumi:"count"`
 	// CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
@@ -11634,16 +5330,12 @@ type ManagedClusterAgentPoolProfile struct {
 	MaxCount *int `pulumi:"maxCount"`
 	// The maximum number of pods that can run on a node.
 	MaxPods *int `pulumi:"maxPods"`
-	// A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
-	MessageOfTheDay *string `pulumi:"messageOfTheDay"`
 	// The minimum number of nodes for auto-scaling
 	MinCount *int `pulumi:"minCount"`
 	// A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
 	Mode *string `pulumi:"mode"`
 	// Windows agent pool names must be 6 characters or less.
 	Name string `pulumi:"name"`
-	// Network-related settings of an agent pool.
-	NetworkProfile *AgentPoolNetworkProfile `pulumi:"networkProfile"`
 	// The node labels to be persisted across all nodes in agent pool.
 	NodeLabels map[string]string `pulumi:"nodeLabels"`
 	// This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
@@ -11672,8 +5364,6 @@ type ManagedClusterAgentPoolProfile struct {
 	ScaleSetEvictionPolicy *string `pulumi:"scaleSetEvictionPolicy"`
 	// The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
 	ScaleSetPriority *string `pulumi:"scaleSetPriority"`
-	// The security settings of an agent pool.
-	SecurityProfile *AgentPoolSecurityProfile `pulumi:"securityProfile"`
 	// Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
 	SpotMaxPrice *float64 `pulumi:"spotMaxPrice"`
 	// The tags to be persisted on the agent pool virtual machine scale set.
@@ -11682,12 +5372,10 @@ type ManagedClusterAgentPoolProfile struct {
 	Type *string `pulumi:"type"`
 	// Settings for upgrading the agentpool
 	UpgradeSettings *AgentPoolUpgradeSettings `pulumi:"upgradeSettings"`
-	// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. If this field is not specified, AKS will attempt to find an appropriate VM SKU for your pool, based on quota and capacity. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+	// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
 	VmSize *string `pulumi:"vmSize"`
 	// If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
 	VnetSubnetID *string `pulumi:"vnetSubnetID"`
-	// The Windows agent pool's specific profile.
-	WindowsProfile *AgentPoolWindowsProfile `pulumi:"windowsProfile"`
 	// Determines the type of workload a node can run.
 	WorkloadRuntime *string `pulumi:"workloadRuntime"`
 }
@@ -11707,8 +5395,6 @@ type ManagedClusterAgentPoolProfileInput interface {
 type ManagedClusterAgentPoolProfileArgs struct {
 	// The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// AKS will associate the specified agent pool with the Capacity Reservation Group.
-	CapacityReservationGroupID pulumi.StringPtrInput `pulumi:"capacityReservationGroupID"`
 	// Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
 	Count pulumi.IntPtrInput `pulumi:"count"`
 	// CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
@@ -11737,16 +5423,12 @@ type ManagedClusterAgentPoolProfileArgs struct {
 	MaxCount pulumi.IntPtrInput `pulumi:"maxCount"`
 	// The maximum number of pods that can run on a node.
 	MaxPods pulumi.IntPtrInput `pulumi:"maxPods"`
-	// A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
-	MessageOfTheDay pulumi.StringPtrInput `pulumi:"messageOfTheDay"`
 	// The minimum number of nodes for auto-scaling
 	MinCount pulumi.IntPtrInput `pulumi:"minCount"`
 	// A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Windows agent pool names must be 6 characters or less.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Network-related settings of an agent pool.
-	NetworkProfile AgentPoolNetworkProfilePtrInput `pulumi:"networkProfile"`
 	// The node labels to be persisted across all nodes in agent pool.
 	NodeLabels pulumi.StringMapInput `pulumi:"nodeLabels"`
 	// This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
@@ -11775,8 +5457,6 @@ type ManagedClusterAgentPoolProfileArgs struct {
 	ScaleSetEvictionPolicy pulumi.StringPtrInput `pulumi:"scaleSetEvictionPolicy"`
 	// The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
 	ScaleSetPriority pulumi.StringPtrInput `pulumi:"scaleSetPriority"`
-	// The security settings of an agent pool.
-	SecurityProfile AgentPoolSecurityProfilePtrInput `pulumi:"securityProfile"`
 	// Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
 	SpotMaxPrice pulumi.Float64PtrInput `pulumi:"spotMaxPrice"`
 	// The tags to be persisted on the agent pool virtual machine scale set.
@@ -11785,12 +5465,10 @@ type ManagedClusterAgentPoolProfileArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Settings for upgrading the agentpool
 	UpgradeSettings AgentPoolUpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
-	// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. If this field is not specified, AKS will attempt to find an appropriate VM SKU for your pool, based on quota and capacity. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+	// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
 	VmSize pulumi.StringPtrInput `pulumi:"vmSize"`
 	// If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
 	VnetSubnetID pulumi.StringPtrInput `pulumi:"vnetSubnetID"`
-	// The Windows agent pool's specific profile.
-	WindowsProfile AgentPoolWindowsProfilePtrInput `pulumi:"windowsProfile"`
 	// Determines the type of workload a node can run.
 	WorkloadRuntime pulumi.StringPtrInput `pulumi:"workloadRuntime"`
 }
@@ -11850,11 +5528,6 @@ func (o ManagedClusterAgentPoolProfileOutput) ToManagedClusterAgentPoolProfileOu
 // The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.
 func (o ManagedClusterAgentPoolProfileOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
-}
-
-// AKS will associate the specified agent pool with the Capacity Reservation Group.
-func (o ManagedClusterAgentPoolProfileOutput) CapacityReservationGroupID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *string { return v.CapacityReservationGroupID }).(pulumi.StringPtrOutput)
 }
 
 // Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
@@ -11927,11 +5600,6 @@ func (o ManagedClusterAgentPoolProfileOutput) MaxPods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *int { return v.MaxPods }).(pulumi.IntPtrOutput)
 }
 
-// A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
-func (o ManagedClusterAgentPoolProfileOutput) MessageOfTheDay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *string { return v.MessageOfTheDay }).(pulumi.StringPtrOutput)
-}
-
 // The minimum number of nodes for auto-scaling
 func (o ManagedClusterAgentPoolProfileOutput) MinCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *int { return v.MinCount }).(pulumi.IntPtrOutput)
@@ -11945,11 +5613,6 @@ func (o ManagedClusterAgentPoolProfileOutput) Mode() pulumi.StringPtrOutput {
 // Windows agent pool names must be 6 characters or less.
 func (o ManagedClusterAgentPoolProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Network-related settings of an agent pool.
-func (o ManagedClusterAgentPoolProfileOutput) NetworkProfile() AgentPoolNetworkProfilePtrOutput {
-	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *AgentPoolNetworkProfile { return v.NetworkProfile }).(AgentPoolNetworkProfilePtrOutput)
 }
 
 // The node labels to be persisted across all nodes in agent pool.
@@ -12022,11 +5685,6 @@ func (o ManagedClusterAgentPoolProfileOutput) ScaleSetPriority() pulumi.StringPt
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *string { return v.ScaleSetPriority }).(pulumi.StringPtrOutput)
 }
 
-// The security settings of an agent pool.
-func (o ManagedClusterAgentPoolProfileOutput) SecurityProfile() AgentPoolSecurityProfilePtrOutput {
-	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *AgentPoolSecurityProfile { return v.SecurityProfile }).(AgentPoolSecurityProfilePtrOutput)
-}
-
 // Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
 func (o ManagedClusterAgentPoolProfileOutput) SpotMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *float64 { return v.SpotMaxPrice }).(pulumi.Float64PtrOutput)
@@ -12047,7 +5705,7 @@ func (o ManagedClusterAgentPoolProfileOutput) UpgradeSettings() AgentPoolUpgrade
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *AgentPoolUpgradeSettings { return v.UpgradeSettings }).(AgentPoolUpgradeSettingsPtrOutput)
 }
 
-// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. If this field is not specified, AKS will attempt to find an appropriate VM SKU for your pool, based on quota and capacity. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
 func (o ManagedClusterAgentPoolProfileOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *string { return v.VmSize }).(pulumi.StringPtrOutput)
 }
@@ -12055,11 +5713,6 @@ func (o ManagedClusterAgentPoolProfileOutput) VmSize() pulumi.StringPtrOutput {
 // If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
 func (o ManagedClusterAgentPoolProfileOutput) VnetSubnetID() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *string { return v.VnetSubnetID }).(pulumi.StringPtrOutput)
-}
-
-// The Windows agent pool's specific profile.
-func (o ManagedClusterAgentPoolProfileOutput) WindowsProfile() AgentPoolWindowsProfilePtrOutput {
-	return o.ApplyT(func(v ManagedClusterAgentPoolProfile) *AgentPoolWindowsProfile { return v.WindowsProfile }).(AgentPoolWindowsProfilePtrOutput)
 }
 
 // Determines the type of workload a node can run.
@@ -12091,16 +5744,12 @@ func (o ManagedClusterAgentPoolProfileArrayOutput) Index(i pulumi.IntInput) Mana
 type ManagedClusterAgentPoolProfileResponse struct {
 	// The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// AKS will associate the specified agent pool with the Capacity Reservation Group.
-	CapacityReservationGroupID *string `pulumi:"capacityReservationGroupID"`
 	// Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
 	Count *int `pulumi:"count"`
 	// CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
 	CreationData *CreationDataResponse `pulumi:"creationData"`
 	// If orchestratorVersion is a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion is <major.minor>, this field will contain the full <major.minor.patch> version being used.
 	CurrentOrchestratorVersion string `pulumi:"currentOrchestratorVersion"`
-	// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal etag convention.
-	ETag string `pulumi:"eTag"`
 	// Whether to enable auto-scaler
 	EnableAutoScaling *bool `pulumi:"enableAutoScaling"`
 	// This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption
@@ -12125,16 +5774,12 @@ type ManagedClusterAgentPoolProfileResponse struct {
 	MaxCount *int `pulumi:"maxCount"`
 	// The maximum number of pods that can run on a node.
 	MaxPods *int `pulumi:"maxPods"`
-	// A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
-	MessageOfTheDay *string `pulumi:"messageOfTheDay"`
 	// The minimum number of nodes for auto-scaling
 	MinCount *int `pulumi:"minCount"`
 	// A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
 	Mode *string `pulumi:"mode"`
 	// Windows agent pool names must be 6 characters or less.
 	Name string `pulumi:"name"`
-	// Network-related settings of an agent pool.
-	NetworkProfile *AgentPoolNetworkProfileResponse `pulumi:"networkProfile"`
 	// The version of node image
 	NodeImageVersion string `pulumi:"nodeImageVersion"`
 	// The node labels to be persisted across all nodes in agent pool.
@@ -12167,8 +5812,6 @@ type ManagedClusterAgentPoolProfileResponse struct {
 	ScaleSetEvictionPolicy *string `pulumi:"scaleSetEvictionPolicy"`
 	// The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
 	ScaleSetPriority *string `pulumi:"scaleSetPriority"`
-	// The security settings of an agent pool.
-	SecurityProfile *AgentPoolSecurityProfileResponse `pulumi:"securityProfile"`
 	// Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
 	SpotMaxPrice *float64 `pulumi:"spotMaxPrice"`
 	// The tags to be persisted on the agent pool virtual machine scale set.
@@ -12177,12 +5820,10 @@ type ManagedClusterAgentPoolProfileResponse struct {
 	Type *string `pulumi:"type"`
 	// Settings for upgrading the agentpool
 	UpgradeSettings *AgentPoolUpgradeSettingsResponse `pulumi:"upgradeSettings"`
-	// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. If this field is not specified, AKS will attempt to find an appropriate VM SKU for your pool, based on quota and capacity. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+	// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
 	VmSize *string `pulumi:"vmSize"`
 	// If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
 	VnetSubnetID *string `pulumi:"vnetSubnetID"`
-	// The Windows agent pool's specific profile.
-	WindowsProfile *AgentPoolWindowsProfileResponse `pulumi:"windowsProfile"`
 	// Determines the type of workload a node can run.
 	WorkloadRuntime *string `pulumi:"workloadRuntime"`
 }
@@ -12207,11 +5848,6 @@ func (o ManagedClusterAgentPoolProfileResponseOutput) AvailabilityZones() pulumi
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// AKS will associate the specified agent pool with the Capacity Reservation Group.
-func (o ManagedClusterAgentPoolProfileResponseOutput) CapacityReservationGroupID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *string { return v.CapacityReservationGroupID }).(pulumi.StringPtrOutput)
-}
-
 // Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
 func (o ManagedClusterAgentPoolProfileResponseOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *int { return v.Count }).(pulumi.IntPtrOutput)
@@ -12225,11 +5861,6 @@ func (o ManagedClusterAgentPoolProfileResponseOutput) CreationData() CreationDat
 // If orchestratorVersion is a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion is <major.minor>, this field will contain the full <major.minor.patch> version being used.
 func (o ManagedClusterAgentPoolProfileResponseOutput) CurrentOrchestratorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) string { return v.CurrentOrchestratorVersion }).(pulumi.StringOutput)
-}
-
-// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal etag convention.
-func (o ManagedClusterAgentPoolProfileResponseOutput) ETag() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) string { return v.ETag }).(pulumi.StringOutput)
 }
 
 // Whether to enable auto-scaler
@@ -12292,11 +5923,6 @@ func (o ManagedClusterAgentPoolProfileResponseOutput) MaxPods() pulumi.IntPtrOut
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *int { return v.MaxPods }).(pulumi.IntPtrOutput)
 }
 
-// A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
-func (o ManagedClusterAgentPoolProfileResponseOutput) MessageOfTheDay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *string { return v.MessageOfTheDay }).(pulumi.StringPtrOutput)
-}
-
 // The minimum number of nodes for auto-scaling
 func (o ManagedClusterAgentPoolProfileResponseOutput) MinCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *int { return v.MinCount }).(pulumi.IntPtrOutput)
@@ -12310,13 +5936,6 @@ func (o ManagedClusterAgentPoolProfileResponseOutput) Mode() pulumi.StringPtrOut
 // Windows agent pool names must be 6 characters or less.
 func (o ManagedClusterAgentPoolProfileResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Network-related settings of an agent pool.
-func (o ManagedClusterAgentPoolProfileResponseOutput) NetworkProfile() AgentPoolNetworkProfileResponsePtrOutput {
-	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *AgentPoolNetworkProfileResponse {
-		return v.NetworkProfile
-	}).(AgentPoolNetworkProfileResponsePtrOutput)
 }
 
 // The version of node image
@@ -12399,13 +6018,6 @@ func (o ManagedClusterAgentPoolProfileResponseOutput) ScaleSetPriority() pulumi.
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *string { return v.ScaleSetPriority }).(pulumi.StringPtrOutput)
 }
 
-// The security settings of an agent pool.
-func (o ManagedClusterAgentPoolProfileResponseOutput) SecurityProfile() AgentPoolSecurityProfileResponsePtrOutput {
-	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *AgentPoolSecurityProfileResponse {
-		return v.SecurityProfile
-	}).(AgentPoolSecurityProfileResponsePtrOutput)
-}
-
 // Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
 func (o ManagedClusterAgentPoolProfileResponseOutput) SpotMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *float64 { return v.SpotMaxPrice }).(pulumi.Float64PtrOutput)
@@ -12428,7 +6040,7 @@ func (o ManagedClusterAgentPoolProfileResponseOutput) UpgradeSettings() AgentPoo
 	}).(AgentPoolUpgradeSettingsResponsePtrOutput)
 }
 
-// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. If this field is not specified, AKS will attempt to find an appropriate VM SKU for your pool, based on quota and capacity. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
 func (o ManagedClusterAgentPoolProfileResponseOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *string { return v.VmSize }).(pulumi.StringPtrOutput)
 }
@@ -12436,13 +6048,6 @@ func (o ManagedClusterAgentPoolProfileResponseOutput) VmSize() pulumi.StringPtrO
 // If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
 func (o ManagedClusterAgentPoolProfileResponseOutput) VnetSubnetID() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *string { return v.VnetSubnetID }).(pulumi.StringPtrOutput)
-}
-
-// The Windows agent pool's specific profile.
-func (o ManagedClusterAgentPoolProfileResponseOutput) WindowsProfile() AgentPoolWindowsProfileResponsePtrOutput {
-	return o.ApplyT(func(v ManagedClusterAgentPoolProfileResponse) *AgentPoolWindowsProfileResponse {
-		return v.WindowsProfile
-	}).(AgentPoolWindowsProfileResponsePtrOutput)
 }
 
 // Determines the type of workload a node can run.
@@ -12472,8 +6077,6 @@ func (o ManagedClusterAgentPoolProfileResponseArrayOutput) Index(i pulumi.IntInp
 
 // Auto upgrade profile for a managed cluster.
 type ManagedClusterAutoUpgradeProfile struct {
-	// Manner in which the OS on your nodes is updated. The default is NodeImage.
-	NodeOSUpgradeChannel *string `pulumi:"nodeOSUpgradeChannel"`
 	// For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
 	UpgradeChannel *string `pulumi:"upgradeChannel"`
 }
@@ -12491,8 +6094,6 @@ type ManagedClusterAutoUpgradeProfileInput interface {
 
 // Auto upgrade profile for a managed cluster.
 type ManagedClusterAutoUpgradeProfileArgs struct {
-	// Manner in which the OS on your nodes is updated. The default is NodeImage.
-	NodeOSUpgradeChannel pulumi.StringPtrInput `pulumi:"nodeOSUpgradeChannel"`
 	// For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
 	UpgradeChannel pulumi.StringPtrInput `pulumi:"upgradeChannel"`
 }
@@ -12575,11 +6176,6 @@ func (o ManagedClusterAutoUpgradeProfileOutput) ToManagedClusterAutoUpgradeProfi
 	}).(ManagedClusterAutoUpgradeProfilePtrOutput)
 }
 
-// Manner in which the OS on your nodes is updated. The default is NodeImage.
-func (o ManagedClusterAutoUpgradeProfileOutput) NodeOSUpgradeChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedClusterAutoUpgradeProfile) *string { return v.NodeOSUpgradeChannel }).(pulumi.StringPtrOutput)
-}
-
 // For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
 func (o ManagedClusterAutoUpgradeProfileOutput) UpgradeChannel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAutoUpgradeProfile) *string { return v.UpgradeChannel }).(pulumi.StringPtrOutput)
@@ -12609,16 +6205,6 @@ func (o ManagedClusterAutoUpgradeProfilePtrOutput) Elem() ManagedClusterAutoUpgr
 	}).(ManagedClusterAutoUpgradeProfileOutput)
 }
 
-// Manner in which the OS on your nodes is updated. The default is NodeImage.
-func (o ManagedClusterAutoUpgradeProfilePtrOutput) NodeOSUpgradeChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterAutoUpgradeProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeOSUpgradeChannel
-	}).(pulumi.StringPtrOutput)
-}
-
 // For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
 func (o ManagedClusterAutoUpgradeProfilePtrOutput) UpgradeChannel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedClusterAutoUpgradeProfile) *string {
@@ -12631,8 +6217,6 @@ func (o ManagedClusterAutoUpgradeProfilePtrOutput) UpgradeChannel() pulumi.Strin
 
 // Auto upgrade profile for a managed cluster.
 type ManagedClusterAutoUpgradeProfileResponse struct {
-	// Manner in which the OS on your nodes is updated. The default is NodeImage.
-	NodeOSUpgradeChannel *string `pulumi:"nodeOSUpgradeChannel"`
 	// For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
 	UpgradeChannel *string `pulumi:"upgradeChannel"`
 }
@@ -12650,11 +6234,6 @@ func (o ManagedClusterAutoUpgradeProfileResponseOutput) ToManagedClusterAutoUpgr
 
 func (o ManagedClusterAutoUpgradeProfileResponseOutput) ToManagedClusterAutoUpgradeProfileResponseOutputWithContext(ctx context.Context) ManagedClusterAutoUpgradeProfileResponseOutput {
 	return o
-}
-
-// Manner in which the OS on your nodes is updated. The default is NodeImage.
-func (o ManagedClusterAutoUpgradeProfileResponseOutput) NodeOSUpgradeChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedClusterAutoUpgradeProfileResponse) *string { return v.NodeOSUpgradeChannel }).(pulumi.StringPtrOutput)
 }
 
 // For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
@@ -12684,16 +6263,6 @@ func (o ManagedClusterAutoUpgradeProfileResponsePtrOutput) Elem() ManagedCluster
 		var ret ManagedClusterAutoUpgradeProfileResponse
 		return ret
 	}).(ManagedClusterAutoUpgradeProfileResponseOutput)
-}
-
-// Manner in which the OS on your nodes is updated. The default is NodeImage.
-func (o ManagedClusterAutoUpgradeProfileResponsePtrOutput) NodeOSUpgradeChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterAutoUpgradeProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeOSUpgradeChannel
-	}).(pulumi.StringPtrOutput)
 }
 
 // For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
@@ -13388,206 +6957,6 @@ func (o ManagedClusterAzureMonitorProfileResponsePtrOutput) Metrics() ManagedClu
 	}).(ManagedClusterAzureMonitorProfileMetricsResponsePtrOutput)
 }
 
-// The cost analysis configuration for the cluster
-type ManagedClusterCostAnalysis struct {
-	// The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// ManagedClusterCostAnalysisInput is an input type that accepts ManagedClusterCostAnalysisArgs and ManagedClusterCostAnalysisOutput values.
-// You can construct a concrete instance of `ManagedClusterCostAnalysisInput` via:
-//
-//	ManagedClusterCostAnalysisArgs{...}
-type ManagedClusterCostAnalysisInput interface {
-	pulumi.Input
-
-	ToManagedClusterCostAnalysisOutput() ManagedClusterCostAnalysisOutput
-	ToManagedClusterCostAnalysisOutputWithContext(context.Context) ManagedClusterCostAnalysisOutput
-}
-
-// The cost analysis configuration for the cluster
-type ManagedClusterCostAnalysisArgs struct {
-	// The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-}
-
-func (ManagedClusterCostAnalysisArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterCostAnalysis)(nil)).Elem()
-}
-
-func (i ManagedClusterCostAnalysisArgs) ToManagedClusterCostAnalysisOutput() ManagedClusterCostAnalysisOutput {
-	return i.ToManagedClusterCostAnalysisOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterCostAnalysisArgs) ToManagedClusterCostAnalysisOutputWithContext(ctx context.Context) ManagedClusterCostAnalysisOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterCostAnalysisOutput)
-}
-
-func (i ManagedClusterCostAnalysisArgs) ToManagedClusterCostAnalysisPtrOutput() ManagedClusterCostAnalysisPtrOutput {
-	return i.ToManagedClusterCostAnalysisPtrOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterCostAnalysisArgs) ToManagedClusterCostAnalysisPtrOutputWithContext(ctx context.Context) ManagedClusterCostAnalysisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterCostAnalysisOutput).ToManagedClusterCostAnalysisPtrOutputWithContext(ctx)
-}
-
-// ManagedClusterCostAnalysisPtrInput is an input type that accepts ManagedClusterCostAnalysisArgs, ManagedClusterCostAnalysisPtr and ManagedClusterCostAnalysisPtrOutput values.
-// You can construct a concrete instance of `ManagedClusterCostAnalysisPtrInput` via:
-//
-//	        ManagedClusterCostAnalysisArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedClusterCostAnalysisPtrInput interface {
-	pulumi.Input
-
-	ToManagedClusterCostAnalysisPtrOutput() ManagedClusterCostAnalysisPtrOutput
-	ToManagedClusterCostAnalysisPtrOutputWithContext(context.Context) ManagedClusterCostAnalysisPtrOutput
-}
-
-type managedClusterCostAnalysisPtrType ManagedClusterCostAnalysisArgs
-
-func ManagedClusterCostAnalysisPtr(v *ManagedClusterCostAnalysisArgs) ManagedClusterCostAnalysisPtrInput {
-	return (*managedClusterCostAnalysisPtrType)(v)
-}
-
-func (*managedClusterCostAnalysisPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterCostAnalysis)(nil)).Elem()
-}
-
-func (i *managedClusterCostAnalysisPtrType) ToManagedClusterCostAnalysisPtrOutput() ManagedClusterCostAnalysisPtrOutput {
-	return i.ToManagedClusterCostAnalysisPtrOutputWithContext(context.Background())
-}
-
-func (i *managedClusterCostAnalysisPtrType) ToManagedClusterCostAnalysisPtrOutputWithContext(ctx context.Context) ManagedClusterCostAnalysisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterCostAnalysisPtrOutput)
-}
-
-// The cost analysis configuration for the cluster
-type ManagedClusterCostAnalysisOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterCostAnalysisOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterCostAnalysis)(nil)).Elem()
-}
-
-func (o ManagedClusterCostAnalysisOutput) ToManagedClusterCostAnalysisOutput() ManagedClusterCostAnalysisOutput {
-	return o
-}
-
-func (o ManagedClusterCostAnalysisOutput) ToManagedClusterCostAnalysisOutputWithContext(ctx context.Context) ManagedClusterCostAnalysisOutput {
-	return o
-}
-
-func (o ManagedClusterCostAnalysisOutput) ToManagedClusterCostAnalysisPtrOutput() ManagedClusterCostAnalysisPtrOutput {
-	return o.ToManagedClusterCostAnalysisPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedClusterCostAnalysisOutput) ToManagedClusterCostAnalysisPtrOutputWithContext(ctx context.Context) ManagedClusterCostAnalysisPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterCostAnalysis) *ManagedClusterCostAnalysis {
-		return &v
-	}).(ManagedClusterCostAnalysisPtrOutput)
-}
-
-// The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
-func (o ManagedClusterCostAnalysisOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedClusterCostAnalysis) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type ManagedClusterCostAnalysisPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterCostAnalysisPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterCostAnalysis)(nil)).Elem()
-}
-
-func (o ManagedClusterCostAnalysisPtrOutput) ToManagedClusterCostAnalysisPtrOutput() ManagedClusterCostAnalysisPtrOutput {
-	return o
-}
-
-func (o ManagedClusterCostAnalysisPtrOutput) ToManagedClusterCostAnalysisPtrOutputWithContext(ctx context.Context) ManagedClusterCostAnalysisPtrOutput {
-	return o
-}
-
-func (o ManagedClusterCostAnalysisPtrOutput) Elem() ManagedClusterCostAnalysisOutput {
-	return o.ApplyT(func(v *ManagedClusterCostAnalysis) ManagedClusterCostAnalysis {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterCostAnalysis
-		return ret
-	}).(ManagedClusterCostAnalysisOutput)
-}
-
-// The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
-func (o ManagedClusterCostAnalysisPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterCostAnalysis) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The cost analysis configuration for the cluster
-type ManagedClusterCostAnalysisResponse struct {
-	// The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// The cost analysis configuration for the cluster
-type ManagedClusterCostAnalysisResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterCostAnalysisResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterCostAnalysisResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterCostAnalysisResponseOutput) ToManagedClusterCostAnalysisResponseOutput() ManagedClusterCostAnalysisResponseOutput {
-	return o
-}
-
-func (o ManagedClusterCostAnalysisResponseOutput) ToManagedClusterCostAnalysisResponseOutputWithContext(ctx context.Context) ManagedClusterCostAnalysisResponseOutput {
-	return o
-}
-
-// The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
-func (o ManagedClusterCostAnalysisResponseOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedClusterCostAnalysisResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type ManagedClusterCostAnalysisResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterCostAnalysisResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterCostAnalysisResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterCostAnalysisResponsePtrOutput) ToManagedClusterCostAnalysisResponsePtrOutput() ManagedClusterCostAnalysisResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterCostAnalysisResponsePtrOutput) ToManagedClusterCostAnalysisResponsePtrOutputWithContext(ctx context.Context) ManagedClusterCostAnalysisResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterCostAnalysisResponsePtrOutput) Elem() ManagedClusterCostAnalysisResponseOutput {
-	return o.ApplyT(func(v *ManagedClusterCostAnalysisResponse) ManagedClusterCostAnalysisResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterCostAnalysisResponse
-		return ret
-	}).(ManagedClusterCostAnalysisResponseOutput)
-}
-
-// The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
-func (o ManagedClusterCostAnalysisResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterCostAnalysisResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Cluster HTTP proxy configuration.
 type ManagedClusterHTTPProxyConfig struct {
 	// The HTTP proxy server endpoint to use.
@@ -13898,8 +7267,6 @@ func (o ManagedClusterHTTPProxyConfigResponsePtrOutput) TrustedCa() pulumi.Strin
 
 // Identity for the managed cluster.
 type ManagedClusterIdentity struct {
-	// The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
-	DelegatedResources map[string]DelegatedResource `pulumi:"delegatedResources"`
 	// For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
 	Type *ResourceIdentityType `pulumi:"type"`
 	// The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -13919,8 +7286,6 @@ type ManagedClusterIdentityInput interface {
 
 // Identity for the managed cluster.
 type ManagedClusterIdentityArgs struct {
-	// The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
-	DelegatedResources DelegatedResourceMapInput `pulumi:"delegatedResources"`
 	// For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
 	Type ResourceIdentityTypePtrInput `pulumi:"type"`
 	// The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -14005,11 +7370,6 @@ func (o ManagedClusterIdentityOutput) ToManagedClusterIdentityPtrOutputWithConte
 	}).(ManagedClusterIdentityPtrOutput)
 }
 
-// The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
-func (o ManagedClusterIdentityOutput) DelegatedResources() DelegatedResourceMapOutput {
-	return o.ApplyT(func(v ManagedClusterIdentity) map[string]DelegatedResource { return v.DelegatedResources }).(DelegatedResourceMapOutput)
-}
-
 // For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
 func (o ManagedClusterIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v ManagedClusterIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -14044,16 +7404,6 @@ func (o ManagedClusterIdentityPtrOutput) Elem() ManagedClusterIdentityOutput {
 	}).(ManagedClusterIdentityOutput)
 }
 
-// The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
-func (o ManagedClusterIdentityPtrOutput) DelegatedResources() DelegatedResourceMapOutput {
-	return o.ApplyT(func(v *ManagedClusterIdentity) map[string]DelegatedResource {
-		if v == nil {
-			return nil
-		}
-		return v.DelegatedResources
-	}).(DelegatedResourceMapOutput)
-}
-
 // For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
 func (o ManagedClusterIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v *ManagedClusterIdentity) *ResourceIdentityType {
@@ -14076,8 +7426,6 @@ func (o ManagedClusterIdentityPtrOutput) UserAssignedIdentities() pulumi.StringA
 
 // Identity for the managed cluster.
 type ManagedClusterIdentityResponse struct {
-	// The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
-	DelegatedResources map[string]DelegatedResourceResponse `pulumi:"delegatedResources"`
 	// The principal id of the system assigned identity which is used by master components.
 	PrincipalId string `pulumi:"principalId"`
 	// The tenant id of the system assigned identity which is used by master components.
@@ -14101,13 +7449,6 @@ func (o ManagedClusterIdentityResponseOutput) ToManagedClusterIdentityResponseOu
 
 func (o ManagedClusterIdentityResponseOutput) ToManagedClusterIdentityResponseOutputWithContext(ctx context.Context) ManagedClusterIdentityResponseOutput {
 	return o
-}
-
-// The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
-func (o ManagedClusterIdentityResponseOutput) DelegatedResources() DelegatedResourceResponseMapOutput {
-	return o.ApplyT(func(v ManagedClusterIdentityResponse) map[string]DelegatedResourceResponse {
-		return v.DelegatedResources
-	}).(DelegatedResourceResponseMapOutput)
 }
 
 // The principal id of the system assigned identity which is used by master components.
@@ -14154,16 +7495,6 @@ func (o ManagedClusterIdentityResponsePtrOutput) Elem() ManagedClusterIdentityRe
 		var ret ManagedClusterIdentityResponse
 		return ret
 	}).(ManagedClusterIdentityResponseOutput)
-}
-
-// The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
-func (o ManagedClusterIdentityResponsePtrOutput) DelegatedResources() DelegatedResourceResponseMapOutput {
-	return o.ApplyT(func(v *ManagedClusterIdentityResponse) map[string]DelegatedResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.DelegatedResources
-	}).(DelegatedResourceResponseMapOutput)
 }
 
 // The principal id of the system assigned identity which is used by master components.
@@ -14257,471 +7588,10 @@ func (o ManagedClusterIdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(
 	}).(ManagedClusterIdentityResponseUserAssignedIdentitiesOutput)
 }
 
-// Ingress profile for the container service cluster.
-type ManagedClusterIngressProfile struct {
-	// App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
-	WebAppRouting *ManagedClusterIngressProfileWebAppRouting `pulumi:"webAppRouting"`
-}
-
-// ManagedClusterIngressProfileInput is an input type that accepts ManagedClusterIngressProfileArgs and ManagedClusterIngressProfileOutput values.
-// You can construct a concrete instance of `ManagedClusterIngressProfileInput` via:
-//
-//	ManagedClusterIngressProfileArgs{...}
-type ManagedClusterIngressProfileInput interface {
-	pulumi.Input
-
-	ToManagedClusterIngressProfileOutput() ManagedClusterIngressProfileOutput
-	ToManagedClusterIngressProfileOutputWithContext(context.Context) ManagedClusterIngressProfileOutput
-}
-
-// Ingress profile for the container service cluster.
-type ManagedClusterIngressProfileArgs struct {
-	// App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
-	WebAppRouting ManagedClusterIngressProfileWebAppRoutingPtrInput `pulumi:"webAppRouting"`
-}
-
-func (ManagedClusterIngressProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterIngressProfile)(nil)).Elem()
-}
-
-func (i ManagedClusterIngressProfileArgs) ToManagedClusterIngressProfileOutput() ManagedClusterIngressProfileOutput {
-	return i.ToManagedClusterIngressProfileOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterIngressProfileArgs) ToManagedClusterIngressProfileOutputWithContext(ctx context.Context) ManagedClusterIngressProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIngressProfileOutput)
-}
-
-func (i ManagedClusterIngressProfileArgs) ToManagedClusterIngressProfilePtrOutput() ManagedClusterIngressProfilePtrOutput {
-	return i.ToManagedClusterIngressProfilePtrOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterIngressProfileArgs) ToManagedClusterIngressProfilePtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIngressProfileOutput).ToManagedClusterIngressProfilePtrOutputWithContext(ctx)
-}
-
-// ManagedClusterIngressProfilePtrInput is an input type that accepts ManagedClusterIngressProfileArgs, ManagedClusterIngressProfilePtr and ManagedClusterIngressProfilePtrOutput values.
-// You can construct a concrete instance of `ManagedClusterIngressProfilePtrInput` via:
-//
-//	        ManagedClusterIngressProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedClusterIngressProfilePtrInput interface {
-	pulumi.Input
-
-	ToManagedClusterIngressProfilePtrOutput() ManagedClusterIngressProfilePtrOutput
-	ToManagedClusterIngressProfilePtrOutputWithContext(context.Context) ManagedClusterIngressProfilePtrOutput
-}
-
-type managedClusterIngressProfilePtrType ManagedClusterIngressProfileArgs
-
-func ManagedClusterIngressProfilePtr(v *ManagedClusterIngressProfileArgs) ManagedClusterIngressProfilePtrInput {
-	return (*managedClusterIngressProfilePtrType)(v)
-}
-
-func (*managedClusterIngressProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterIngressProfile)(nil)).Elem()
-}
-
-func (i *managedClusterIngressProfilePtrType) ToManagedClusterIngressProfilePtrOutput() ManagedClusterIngressProfilePtrOutput {
-	return i.ToManagedClusterIngressProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *managedClusterIngressProfilePtrType) ToManagedClusterIngressProfilePtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIngressProfilePtrOutput)
-}
-
-// Ingress profile for the container service cluster.
-type ManagedClusterIngressProfileOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterIngressProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterIngressProfile)(nil)).Elem()
-}
-
-func (o ManagedClusterIngressProfileOutput) ToManagedClusterIngressProfileOutput() ManagedClusterIngressProfileOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileOutput) ToManagedClusterIngressProfileOutputWithContext(ctx context.Context) ManagedClusterIngressProfileOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileOutput) ToManagedClusterIngressProfilePtrOutput() ManagedClusterIngressProfilePtrOutput {
-	return o.ToManagedClusterIngressProfilePtrOutputWithContext(context.Background())
-}
-
-func (o ManagedClusterIngressProfileOutput) ToManagedClusterIngressProfilePtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterIngressProfile) *ManagedClusterIngressProfile {
-		return &v
-	}).(ManagedClusterIngressProfilePtrOutput)
-}
-
-// App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
-func (o ManagedClusterIngressProfileOutput) WebAppRouting() ManagedClusterIngressProfileWebAppRoutingPtrOutput {
-	return o.ApplyT(func(v ManagedClusterIngressProfile) *ManagedClusterIngressProfileWebAppRouting {
-		return v.WebAppRouting
-	}).(ManagedClusterIngressProfileWebAppRoutingPtrOutput)
-}
-
-type ManagedClusterIngressProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterIngressProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterIngressProfile)(nil)).Elem()
-}
-
-func (o ManagedClusterIngressProfilePtrOutput) ToManagedClusterIngressProfilePtrOutput() ManagedClusterIngressProfilePtrOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfilePtrOutput) ToManagedClusterIngressProfilePtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfilePtrOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfilePtrOutput) Elem() ManagedClusterIngressProfileOutput {
-	return o.ApplyT(func(v *ManagedClusterIngressProfile) ManagedClusterIngressProfile {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterIngressProfile
-		return ret
-	}).(ManagedClusterIngressProfileOutput)
-}
-
-// App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
-func (o ManagedClusterIngressProfilePtrOutput) WebAppRouting() ManagedClusterIngressProfileWebAppRoutingPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterIngressProfile) *ManagedClusterIngressProfileWebAppRouting {
-		if v == nil {
-			return nil
-		}
-		return v.WebAppRouting
-	}).(ManagedClusterIngressProfileWebAppRoutingPtrOutput)
-}
-
-// Ingress profile for the container service cluster.
-type ManagedClusterIngressProfileResponse struct {
-	// App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
-	WebAppRouting *ManagedClusterIngressProfileWebAppRoutingResponse `pulumi:"webAppRouting"`
-}
-
-// Ingress profile for the container service cluster.
-type ManagedClusterIngressProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterIngressProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterIngressProfileResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterIngressProfileResponseOutput) ToManagedClusterIngressProfileResponseOutput() ManagedClusterIngressProfileResponseOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileResponseOutput) ToManagedClusterIngressProfileResponseOutputWithContext(ctx context.Context) ManagedClusterIngressProfileResponseOutput {
-	return o
-}
-
-// App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
-func (o ManagedClusterIngressProfileResponseOutput) WebAppRouting() ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput {
-	return o.ApplyT(func(v ManagedClusterIngressProfileResponse) *ManagedClusterIngressProfileWebAppRoutingResponse {
-		return v.WebAppRouting
-	}).(ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput)
-}
-
-type ManagedClusterIngressProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterIngressProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterIngressProfileResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterIngressProfileResponsePtrOutput) ToManagedClusterIngressProfileResponsePtrOutput() ManagedClusterIngressProfileResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileResponsePtrOutput) ToManagedClusterIngressProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfileResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileResponsePtrOutput) Elem() ManagedClusterIngressProfileResponseOutput {
-	return o.ApplyT(func(v *ManagedClusterIngressProfileResponse) ManagedClusterIngressProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterIngressProfileResponse
-		return ret
-	}).(ManagedClusterIngressProfileResponseOutput)
-}
-
-// App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
-func (o ManagedClusterIngressProfileResponsePtrOutput) WebAppRouting() ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput {
-	return o.ApplyT(func(v *ManagedClusterIngressProfileResponse) *ManagedClusterIngressProfileWebAppRoutingResponse {
-		if v == nil {
-			return nil
-		}
-		return v.WebAppRouting
-	}).(ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput)
-}
-
-// Application Routing add-on settings for the ingress profile.
-type ManagedClusterIngressProfileWebAppRouting struct {
-	// Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
-	DnsZoneResourceIds []string `pulumi:"dnsZoneResourceIds"`
-	// Whether to enable the Application Routing add-on.
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// ManagedClusterIngressProfileWebAppRoutingInput is an input type that accepts ManagedClusterIngressProfileWebAppRoutingArgs and ManagedClusterIngressProfileWebAppRoutingOutput values.
-// You can construct a concrete instance of `ManagedClusterIngressProfileWebAppRoutingInput` via:
-//
-//	ManagedClusterIngressProfileWebAppRoutingArgs{...}
-type ManagedClusterIngressProfileWebAppRoutingInput interface {
-	pulumi.Input
-
-	ToManagedClusterIngressProfileWebAppRoutingOutput() ManagedClusterIngressProfileWebAppRoutingOutput
-	ToManagedClusterIngressProfileWebAppRoutingOutputWithContext(context.Context) ManagedClusterIngressProfileWebAppRoutingOutput
-}
-
-// Application Routing add-on settings for the ingress profile.
-type ManagedClusterIngressProfileWebAppRoutingArgs struct {
-	// Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
-	DnsZoneResourceIds pulumi.StringArrayInput `pulumi:"dnsZoneResourceIds"`
-	// Whether to enable the Application Routing add-on.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-}
-
-func (ManagedClusterIngressProfileWebAppRoutingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterIngressProfileWebAppRouting)(nil)).Elem()
-}
-
-func (i ManagedClusterIngressProfileWebAppRoutingArgs) ToManagedClusterIngressProfileWebAppRoutingOutput() ManagedClusterIngressProfileWebAppRoutingOutput {
-	return i.ToManagedClusterIngressProfileWebAppRoutingOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterIngressProfileWebAppRoutingArgs) ToManagedClusterIngressProfileWebAppRoutingOutputWithContext(ctx context.Context) ManagedClusterIngressProfileWebAppRoutingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIngressProfileWebAppRoutingOutput)
-}
-
-func (i ManagedClusterIngressProfileWebAppRoutingArgs) ToManagedClusterIngressProfileWebAppRoutingPtrOutput() ManagedClusterIngressProfileWebAppRoutingPtrOutput {
-	return i.ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterIngressProfileWebAppRoutingArgs) ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfileWebAppRoutingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIngressProfileWebAppRoutingOutput).ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(ctx)
-}
-
-// ManagedClusterIngressProfileWebAppRoutingPtrInput is an input type that accepts ManagedClusterIngressProfileWebAppRoutingArgs, ManagedClusterIngressProfileWebAppRoutingPtr and ManagedClusterIngressProfileWebAppRoutingPtrOutput values.
-// You can construct a concrete instance of `ManagedClusterIngressProfileWebAppRoutingPtrInput` via:
-//
-//	        ManagedClusterIngressProfileWebAppRoutingArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedClusterIngressProfileWebAppRoutingPtrInput interface {
-	pulumi.Input
-
-	ToManagedClusterIngressProfileWebAppRoutingPtrOutput() ManagedClusterIngressProfileWebAppRoutingPtrOutput
-	ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(context.Context) ManagedClusterIngressProfileWebAppRoutingPtrOutput
-}
-
-type managedClusterIngressProfileWebAppRoutingPtrType ManagedClusterIngressProfileWebAppRoutingArgs
-
-func ManagedClusterIngressProfileWebAppRoutingPtr(v *ManagedClusterIngressProfileWebAppRoutingArgs) ManagedClusterIngressProfileWebAppRoutingPtrInput {
-	return (*managedClusterIngressProfileWebAppRoutingPtrType)(v)
-}
-
-func (*managedClusterIngressProfileWebAppRoutingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterIngressProfileWebAppRouting)(nil)).Elem()
-}
-
-func (i *managedClusterIngressProfileWebAppRoutingPtrType) ToManagedClusterIngressProfileWebAppRoutingPtrOutput() ManagedClusterIngressProfileWebAppRoutingPtrOutput {
-	return i.ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(context.Background())
-}
-
-func (i *managedClusterIngressProfileWebAppRoutingPtrType) ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfileWebAppRoutingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIngressProfileWebAppRoutingPtrOutput)
-}
-
-// Application Routing add-on settings for the ingress profile.
-type ManagedClusterIngressProfileWebAppRoutingOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterIngressProfileWebAppRoutingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterIngressProfileWebAppRouting)(nil)).Elem()
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingOutput) ToManagedClusterIngressProfileWebAppRoutingOutput() ManagedClusterIngressProfileWebAppRoutingOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingOutput) ToManagedClusterIngressProfileWebAppRoutingOutputWithContext(ctx context.Context) ManagedClusterIngressProfileWebAppRoutingOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingOutput) ToManagedClusterIngressProfileWebAppRoutingPtrOutput() ManagedClusterIngressProfileWebAppRoutingPtrOutput {
-	return o.ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingOutput) ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfileWebAppRoutingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterIngressProfileWebAppRouting) *ManagedClusterIngressProfileWebAppRouting {
-		return &v
-	}).(ManagedClusterIngressProfileWebAppRoutingPtrOutput)
-}
-
-// Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
-func (o ManagedClusterIngressProfileWebAppRoutingOutput) DnsZoneResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ManagedClusterIngressProfileWebAppRouting) []string { return v.DnsZoneResourceIds }).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable the Application Routing add-on.
-func (o ManagedClusterIngressProfileWebAppRoutingOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedClusterIngressProfileWebAppRouting) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type ManagedClusterIngressProfileWebAppRoutingPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterIngressProfileWebAppRoutingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterIngressProfileWebAppRouting)(nil)).Elem()
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingPtrOutput) ToManagedClusterIngressProfileWebAppRoutingPtrOutput() ManagedClusterIngressProfileWebAppRoutingPtrOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingPtrOutput) ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfileWebAppRoutingPtrOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingPtrOutput) Elem() ManagedClusterIngressProfileWebAppRoutingOutput {
-	return o.ApplyT(func(v *ManagedClusterIngressProfileWebAppRouting) ManagedClusterIngressProfileWebAppRouting {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterIngressProfileWebAppRouting
-		return ret
-	}).(ManagedClusterIngressProfileWebAppRoutingOutput)
-}
-
-// Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
-func (o ManagedClusterIngressProfileWebAppRoutingPtrOutput) DnsZoneResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ManagedClusterIngressProfileWebAppRouting) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DnsZoneResourceIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable the Application Routing add-on.
-func (o ManagedClusterIngressProfileWebAppRoutingPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterIngressProfileWebAppRouting) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Application Routing add-on settings for the ingress profile.
-type ManagedClusterIngressProfileWebAppRoutingResponse struct {
-	// Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
-	DnsZoneResourceIds []string `pulumi:"dnsZoneResourceIds"`
-	// Whether to enable the Application Routing add-on.
-	Enabled *bool `pulumi:"enabled"`
-	// Managed identity of the Application Routing add-on. This is the identity that should be granted permissions, for example, to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See [this overview of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm) for more instructions.
-	Identity UserAssignedIdentityResponse `pulumi:"identity"`
-}
-
-// Application Routing add-on settings for the ingress profile.
-type ManagedClusterIngressProfileWebAppRoutingResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterIngressProfileWebAppRoutingResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterIngressProfileWebAppRoutingResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingResponseOutput) ToManagedClusterIngressProfileWebAppRoutingResponseOutput() ManagedClusterIngressProfileWebAppRoutingResponseOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingResponseOutput) ToManagedClusterIngressProfileWebAppRoutingResponseOutputWithContext(ctx context.Context) ManagedClusterIngressProfileWebAppRoutingResponseOutput {
-	return o
-}
-
-// Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
-func (o ManagedClusterIngressProfileWebAppRoutingResponseOutput) DnsZoneResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ManagedClusterIngressProfileWebAppRoutingResponse) []string { return v.DnsZoneResourceIds }).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable the Application Routing add-on.
-func (o ManagedClusterIngressProfileWebAppRoutingResponseOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedClusterIngressProfileWebAppRoutingResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Managed identity of the Application Routing add-on. This is the identity that should be granted permissions, for example, to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See [this overview of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm) for more instructions.
-func (o ManagedClusterIngressProfileWebAppRoutingResponseOutput) Identity() UserAssignedIdentityResponseOutput {
-	return o.ApplyT(func(v ManagedClusterIngressProfileWebAppRoutingResponse) UserAssignedIdentityResponse {
-		return v.Identity
-	}).(UserAssignedIdentityResponseOutput)
-}
-
-type ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterIngressProfileWebAppRoutingResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput) ToManagedClusterIngressProfileWebAppRoutingResponsePtrOutput() ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput) ToManagedClusterIngressProfileWebAppRoutingResponsePtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput) Elem() ManagedClusterIngressProfileWebAppRoutingResponseOutput {
-	return o.ApplyT(func(v *ManagedClusterIngressProfileWebAppRoutingResponse) ManagedClusterIngressProfileWebAppRoutingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterIngressProfileWebAppRoutingResponse
-		return ret
-	}).(ManagedClusterIngressProfileWebAppRoutingResponseOutput)
-}
-
-// Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
-func (o ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput) DnsZoneResourceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ManagedClusterIngressProfileWebAppRoutingResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DnsZoneResourceIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable the Application Routing add-on.
-func (o ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterIngressProfileWebAppRoutingResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Managed identity of the Application Routing add-on. This is the identity that should be granted permissions, for example, to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See [this overview of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm) for more instructions.
-func (o ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput) Identity() UserAssignedIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ManagedClusterIngressProfileWebAppRoutingResponse) *UserAssignedIdentityResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Identity
-	}).(UserAssignedIdentityResponsePtrOutput)
-}
-
 // Profile of the managed cluster load balancer.
 type ManagedClusterLoadBalancerProfile struct {
 	// The desired number of allocated SNAT ports per VM. Allowed values are in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
 	AllocatedOutboundPorts *int `pulumi:"allocatedOutboundPorts"`
-	// The type of the managed inbound Load Balancer BackendPool.
-	BackendPoolType *string `pulumi:"backendPoolType"`
 	// The effective outbound IP resources of the cluster load balancer.
 	EffectiveOutboundIPs []ResourceReference `pulumi:"effectiveOutboundIPs"`
 	// Enable multiple standard load balancers per AKS cluster or not.
@@ -14745,10 +7615,6 @@ func (val *ManagedClusterLoadBalancerProfile) Defaults() *ManagedClusterLoadBala
 	if tmp.AllocatedOutboundPorts == nil {
 		allocatedOutboundPorts_ := 0
 		tmp.AllocatedOutboundPorts = &allocatedOutboundPorts_
-	}
-	if tmp.BackendPoolType == nil {
-		backendPoolType_ := "NodeIPConfiguration"
-		tmp.BackendPoolType = &backendPoolType_
 	}
 	if tmp.IdleTimeoutInMinutes == nil {
 		idleTimeoutInMinutes_ := 30
@@ -14774,8 +7640,6 @@ type ManagedClusterLoadBalancerProfileInput interface {
 type ManagedClusterLoadBalancerProfileArgs struct {
 	// The desired number of allocated SNAT ports per VM. Allowed values are in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
 	AllocatedOutboundPorts pulumi.IntPtrInput `pulumi:"allocatedOutboundPorts"`
-	// The type of the managed inbound Load Balancer BackendPool.
-	BackendPoolType pulumi.StringPtrInput `pulumi:"backendPoolType"`
 	// The effective outbound IP resources of the cluster load balancer.
 	EffectiveOutboundIPs ResourceReferenceArrayInput `pulumi:"effectiveOutboundIPs"`
 	// Enable multiple standard load balancers per AKS cluster or not.
@@ -14798,9 +7662,6 @@ func (val *ManagedClusterLoadBalancerProfileArgs) Defaults() *ManagedClusterLoad
 	tmp := *val
 	if tmp.AllocatedOutboundPorts == nil {
 		tmp.AllocatedOutboundPorts = pulumi.IntPtr(0)
-	}
-	if tmp.BackendPoolType == nil {
-		tmp.BackendPoolType = pulumi.StringPtr("NodeIPConfiguration")
 	}
 	if tmp.IdleTimeoutInMinutes == nil {
 		tmp.IdleTimeoutInMinutes = pulumi.IntPtr(30)
@@ -14891,11 +7752,6 @@ func (o ManagedClusterLoadBalancerProfileOutput) AllocatedOutboundPorts() pulumi
 	return o.ApplyT(func(v ManagedClusterLoadBalancerProfile) *int { return v.AllocatedOutboundPorts }).(pulumi.IntPtrOutput)
 }
 
-// The type of the managed inbound Load Balancer BackendPool.
-func (o ManagedClusterLoadBalancerProfileOutput) BackendPoolType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedClusterLoadBalancerProfile) *string { return v.BackendPoolType }).(pulumi.StringPtrOutput)
-}
-
 // The effective outbound IP resources of the cluster load balancer.
 func (o ManagedClusterLoadBalancerProfileOutput) EffectiveOutboundIPs() ResourceReferenceArrayOutput {
 	return o.ApplyT(func(v ManagedClusterLoadBalancerProfile) []ResourceReference { return v.EffectiveOutboundIPs }).(ResourceReferenceArrayOutput)
@@ -14964,16 +7820,6 @@ func (o ManagedClusterLoadBalancerProfilePtrOutput) AllocatedOutboundPorts() pul
 		}
 		return v.AllocatedOutboundPorts
 	}).(pulumi.IntPtrOutput)
-}
-
-// The type of the managed inbound Load Balancer BackendPool.
-func (o ManagedClusterLoadBalancerProfilePtrOutput) BackendPoolType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterLoadBalancerProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BackendPoolType
-	}).(pulumi.StringPtrOutput)
 }
 
 // The effective outbound IP resources of the cluster load balancer.
@@ -15512,8 +8358,6 @@ func (o ManagedClusterLoadBalancerProfileOutboundIPsPtrOutput) PublicIPs() Resou
 type ManagedClusterLoadBalancerProfileResponse struct {
 	// The desired number of allocated SNAT ports per VM. Allowed values are in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
 	AllocatedOutboundPorts *int `pulumi:"allocatedOutboundPorts"`
-	// The type of the managed inbound Load Balancer BackendPool.
-	BackendPoolType *string `pulumi:"backendPoolType"`
 	// The effective outbound IP resources of the cluster load balancer.
 	EffectiveOutboundIPs []ResourceReferenceResponse `pulumi:"effectiveOutboundIPs"`
 	// Enable multiple standard load balancers per AKS cluster or not.
@@ -15537,10 +8381,6 @@ func (val *ManagedClusterLoadBalancerProfileResponse) Defaults() *ManagedCluster
 	if tmp.AllocatedOutboundPorts == nil {
 		allocatedOutboundPorts_ := 0
 		tmp.AllocatedOutboundPorts = &allocatedOutboundPorts_
-	}
-	if tmp.BackendPoolType == nil {
-		backendPoolType_ := "NodeIPConfiguration"
-		tmp.BackendPoolType = &backendPoolType_
 	}
 	if tmp.IdleTimeoutInMinutes == nil {
 		idleTimeoutInMinutes_ := 30
@@ -15569,11 +8409,6 @@ func (o ManagedClusterLoadBalancerProfileResponseOutput) ToManagedClusterLoadBal
 // The desired number of allocated SNAT ports per VM. Allowed values are in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
 func (o ManagedClusterLoadBalancerProfileResponseOutput) AllocatedOutboundPorts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedClusterLoadBalancerProfileResponse) *int { return v.AllocatedOutboundPorts }).(pulumi.IntPtrOutput)
-}
-
-// The type of the managed inbound Load Balancer BackendPool.
-func (o ManagedClusterLoadBalancerProfileResponseOutput) BackendPoolType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedClusterLoadBalancerProfileResponse) *string { return v.BackendPoolType }).(pulumi.StringPtrOutput)
 }
 
 // The effective outbound IP resources of the cluster load balancer.
@@ -15646,16 +8481,6 @@ func (o ManagedClusterLoadBalancerProfileResponsePtrOutput) AllocatedOutboundPor
 		}
 		return v.AllocatedOutboundPorts
 	}).(pulumi.IntPtrOutput)
-}
-
-// The type of the managed inbound Load Balancer BackendPool.
-func (o ManagedClusterLoadBalancerProfileResponsePtrOutput) BackendPoolType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterLoadBalancerProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BackendPoolType
-	}).(pulumi.StringPtrOutput)
 }
 
 // The effective outbound IP resources of the cluster load balancer.
@@ -16173,208 +8998,6 @@ func (o ManagedClusterManagedOutboundIPProfileResponsePtrOutput) Count() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
-// The metrics profile for the ManagedCluster.
-type ManagedClusterMetricsProfile struct {
-	// The cost analysis configuration for the cluster
-	CostAnalysis *ManagedClusterCostAnalysis `pulumi:"costAnalysis"`
-}
-
-// ManagedClusterMetricsProfileInput is an input type that accepts ManagedClusterMetricsProfileArgs and ManagedClusterMetricsProfileOutput values.
-// You can construct a concrete instance of `ManagedClusterMetricsProfileInput` via:
-//
-//	ManagedClusterMetricsProfileArgs{...}
-type ManagedClusterMetricsProfileInput interface {
-	pulumi.Input
-
-	ToManagedClusterMetricsProfileOutput() ManagedClusterMetricsProfileOutput
-	ToManagedClusterMetricsProfileOutputWithContext(context.Context) ManagedClusterMetricsProfileOutput
-}
-
-// The metrics profile for the ManagedCluster.
-type ManagedClusterMetricsProfileArgs struct {
-	// The cost analysis configuration for the cluster
-	CostAnalysis ManagedClusterCostAnalysisPtrInput `pulumi:"costAnalysis"`
-}
-
-func (ManagedClusterMetricsProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterMetricsProfile)(nil)).Elem()
-}
-
-func (i ManagedClusterMetricsProfileArgs) ToManagedClusterMetricsProfileOutput() ManagedClusterMetricsProfileOutput {
-	return i.ToManagedClusterMetricsProfileOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterMetricsProfileArgs) ToManagedClusterMetricsProfileOutputWithContext(ctx context.Context) ManagedClusterMetricsProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterMetricsProfileOutput)
-}
-
-func (i ManagedClusterMetricsProfileArgs) ToManagedClusterMetricsProfilePtrOutput() ManagedClusterMetricsProfilePtrOutput {
-	return i.ToManagedClusterMetricsProfilePtrOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterMetricsProfileArgs) ToManagedClusterMetricsProfilePtrOutputWithContext(ctx context.Context) ManagedClusterMetricsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterMetricsProfileOutput).ToManagedClusterMetricsProfilePtrOutputWithContext(ctx)
-}
-
-// ManagedClusterMetricsProfilePtrInput is an input type that accepts ManagedClusterMetricsProfileArgs, ManagedClusterMetricsProfilePtr and ManagedClusterMetricsProfilePtrOutput values.
-// You can construct a concrete instance of `ManagedClusterMetricsProfilePtrInput` via:
-//
-//	        ManagedClusterMetricsProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedClusterMetricsProfilePtrInput interface {
-	pulumi.Input
-
-	ToManagedClusterMetricsProfilePtrOutput() ManagedClusterMetricsProfilePtrOutput
-	ToManagedClusterMetricsProfilePtrOutputWithContext(context.Context) ManagedClusterMetricsProfilePtrOutput
-}
-
-type managedClusterMetricsProfilePtrType ManagedClusterMetricsProfileArgs
-
-func ManagedClusterMetricsProfilePtr(v *ManagedClusterMetricsProfileArgs) ManagedClusterMetricsProfilePtrInput {
-	return (*managedClusterMetricsProfilePtrType)(v)
-}
-
-func (*managedClusterMetricsProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterMetricsProfile)(nil)).Elem()
-}
-
-func (i *managedClusterMetricsProfilePtrType) ToManagedClusterMetricsProfilePtrOutput() ManagedClusterMetricsProfilePtrOutput {
-	return i.ToManagedClusterMetricsProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *managedClusterMetricsProfilePtrType) ToManagedClusterMetricsProfilePtrOutputWithContext(ctx context.Context) ManagedClusterMetricsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterMetricsProfilePtrOutput)
-}
-
-// The metrics profile for the ManagedCluster.
-type ManagedClusterMetricsProfileOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterMetricsProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterMetricsProfile)(nil)).Elem()
-}
-
-func (o ManagedClusterMetricsProfileOutput) ToManagedClusterMetricsProfileOutput() ManagedClusterMetricsProfileOutput {
-	return o
-}
-
-func (o ManagedClusterMetricsProfileOutput) ToManagedClusterMetricsProfileOutputWithContext(ctx context.Context) ManagedClusterMetricsProfileOutput {
-	return o
-}
-
-func (o ManagedClusterMetricsProfileOutput) ToManagedClusterMetricsProfilePtrOutput() ManagedClusterMetricsProfilePtrOutput {
-	return o.ToManagedClusterMetricsProfilePtrOutputWithContext(context.Background())
-}
-
-func (o ManagedClusterMetricsProfileOutput) ToManagedClusterMetricsProfilePtrOutputWithContext(ctx context.Context) ManagedClusterMetricsProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterMetricsProfile) *ManagedClusterMetricsProfile {
-		return &v
-	}).(ManagedClusterMetricsProfilePtrOutput)
-}
-
-// The cost analysis configuration for the cluster
-func (o ManagedClusterMetricsProfileOutput) CostAnalysis() ManagedClusterCostAnalysisPtrOutput {
-	return o.ApplyT(func(v ManagedClusterMetricsProfile) *ManagedClusterCostAnalysis { return v.CostAnalysis }).(ManagedClusterCostAnalysisPtrOutput)
-}
-
-type ManagedClusterMetricsProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterMetricsProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterMetricsProfile)(nil)).Elem()
-}
-
-func (o ManagedClusterMetricsProfilePtrOutput) ToManagedClusterMetricsProfilePtrOutput() ManagedClusterMetricsProfilePtrOutput {
-	return o
-}
-
-func (o ManagedClusterMetricsProfilePtrOutput) ToManagedClusterMetricsProfilePtrOutputWithContext(ctx context.Context) ManagedClusterMetricsProfilePtrOutput {
-	return o
-}
-
-func (o ManagedClusterMetricsProfilePtrOutput) Elem() ManagedClusterMetricsProfileOutput {
-	return o.ApplyT(func(v *ManagedClusterMetricsProfile) ManagedClusterMetricsProfile {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterMetricsProfile
-		return ret
-	}).(ManagedClusterMetricsProfileOutput)
-}
-
-// The cost analysis configuration for the cluster
-func (o ManagedClusterMetricsProfilePtrOutput) CostAnalysis() ManagedClusterCostAnalysisPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterMetricsProfile) *ManagedClusterCostAnalysis {
-		if v == nil {
-			return nil
-		}
-		return v.CostAnalysis
-	}).(ManagedClusterCostAnalysisPtrOutput)
-}
-
-// The metrics profile for the ManagedCluster.
-type ManagedClusterMetricsProfileResponse struct {
-	// The cost analysis configuration for the cluster
-	CostAnalysis *ManagedClusterCostAnalysisResponse `pulumi:"costAnalysis"`
-}
-
-// The metrics profile for the ManagedCluster.
-type ManagedClusterMetricsProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterMetricsProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterMetricsProfileResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterMetricsProfileResponseOutput) ToManagedClusterMetricsProfileResponseOutput() ManagedClusterMetricsProfileResponseOutput {
-	return o
-}
-
-func (o ManagedClusterMetricsProfileResponseOutput) ToManagedClusterMetricsProfileResponseOutputWithContext(ctx context.Context) ManagedClusterMetricsProfileResponseOutput {
-	return o
-}
-
-// The cost analysis configuration for the cluster
-func (o ManagedClusterMetricsProfileResponseOutput) CostAnalysis() ManagedClusterCostAnalysisResponsePtrOutput {
-	return o.ApplyT(func(v ManagedClusterMetricsProfileResponse) *ManagedClusterCostAnalysisResponse {
-		return v.CostAnalysis
-	}).(ManagedClusterCostAnalysisResponsePtrOutput)
-}
-
-type ManagedClusterMetricsProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterMetricsProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterMetricsProfileResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterMetricsProfileResponsePtrOutput) ToManagedClusterMetricsProfileResponsePtrOutput() ManagedClusterMetricsProfileResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterMetricsProfileResponsePtrOutput) ToManagedClusterMetricsProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterMetricsProfileResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterMetricsProfileResponsePtrOutput) Elem() ManagedClusterMetricsProfileResponseOutput {
-	return o.ApplyT(func(v *ManagedClusterMetricsProfileResponse) ManagedClusterMetricsProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterMetricsProfileResponse
-		return ret
-	}).(ManagedClusterMetricsProfileResponseOutput)
-}
-
-// The cost analysis configuration for the cluster
-func (o ManagedClusterMetricsProfileResponsePtrOutput) CostAnalysis() ManagedClusterCostAnalysisResponsePtrOutput {
-	return o.ApplyT(func(v *ManagedClusterMetricsProfileResponse) *ManagedClusterCostAnalysisResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CostAnalysis
-	}).(ManagedClusterCostAnalysisResponsePtrOutput)
-}
-
 // Profile of the managed cluster NAT gateway.
 type ManagedClusterNATGatewayProfile struct {
 	// The effective outbound IP resources of the cluster NAT gateway.
@@ -16693,206 +9316,6 @@ func (o ManagedClusterNATGatewayProfileResponsePtrOutput) ManagedOutboundIPProfi
 		}
 		return v.ManagedOutboundIPProfile
 	}).(ManagedClusterManagedOutboundIPProfileResponsePtrOutput)
-}
-
-// Node resource group lockdown profile for a managed cluster.
-type ManagedClusterNodeResourceGroupProfile struct {
-	// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
-	RestrictionLevel *string `pulumi:"restrictionLevel"`
-}
-
-// ManagedClusterNodeResourceGroupProfileInput is an input type that accepts ManagedClusterNodeResourceGroupProfileArgs and ManagedClusterNodeResourceGroupProfileOutput values.
-// You can construct a concrete instance of `ManagedClusterNodeResourceGroupProfileInput` via:
-//
-//	ManagedClusterNodeResourceGroupProfileArgs{...}
-type ManagedClusterNodeResourceGroupProfileInput interface {
-	pulumi.Input
-
-	ToManagedClusterNodeResourceGroupProfileOutput() ManagedClusterNodeResourceGroupProfileOutput
-	ToManagedClusterNodeResourceGroupProfileOutputWithContext(context.Context) ManagedClusterNodeResourceGroupProfileOutput
-}
-
-// Node resource group lockdown profile for a managed cluster.
-type ManagedClusterNodeResourceGroupProfileArgs struct {
-	// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
-	RestrictionLevel pulumi.StringPtrInput `pulumi:"restrictionLevel"`
-}
-
-func (ManagedClusterNodeResourceGroupProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterNodeResourceGroupProfile)(nil)).Elem()
-}
-
-func (i ManagedClusterNodeResourceGroupProfileArgs) ToManagedClusterNodeResourceGroupProfileOutput() ManagedClusterNodeResourceGroupProfileOutput {
-	return i.ToManagedClusterNodeResourceGroupProfileOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterNodeResourceGroupProfileArgs) ToManagedClusterNodeResourceGroupProfileOutputWithContext(ctx context.Context) ManagedClusterNodeResourceGroupProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterNodeResourceGroupProfileOutput)
-}
-
-func (i ManagedClusterNodeResourceGroupProfileArgs) ToManagedClusterNodeResourceGroupProfilePtrOutput() ManagedClusterNodeResourceGroupProfilePtrOutput {
-	return i.ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterNodeResourceGroupProfileArgs) ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(ctx context.Context) ManagedClusterNodeResourceGroupProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterNodeResourceGroupProfileOutput).ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(ctx)
-}
-
-// ManagedClusterNodeResourceGroupProfilePtrInput is an input type that accepts ManagedClusterNodeResourceGroupProfileArgs, ManagedClusterNodeResourceGroupProfilePtr and ManagedClusterNodeResourceGroupProfilePtrOutput values.
-// You can construct a concrete instance of `ManagedClusterNodeResourceGroupProfilePtrInput` via:
-//
-//	        ManagedClusterNodeResourceGroupProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedClusterNodeResourceGroupProfilePtrInput interface {
-	pulumi.Input
-
-	ToManagedClusterNodeResourceGroupProfilePtrOutput() ManagedClusterNodeResourceGroupProfilePtrOutput
-	ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(context.Context) ManagedClusterNodeResourceGroupProfilePtrOutput
-}
-
-type managedClusterNodeResourceGroupProfilePtrType ManagedClusterNodeResourceGroupProfileArgs
-
-func ManagedClusterNodeResourceGroupProfilePtr(v *ManagedClusterNodeResourceGroupProfileArgs) ManagedClusterNodeResourceGroupProfilePtrInput {
-	return (*managedClusterNodeResourceGroupProfilePtrType)(v)
-}
-
-func (*managedClusterNodeResourceGroupProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterNodeResourceGroupProfile)(nil)).Elem()
-}
-
-func (i *managedClusterNodeResourceGroupProfilePtrType) ToManagedClusterNodeResourceGroupProfilePtrOutput() ManagedClusterNodeResourceGroupProfilePtrOutput {
-	return i.ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *managedClusterNodeResourceGroupProfilePtrType) ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(ctx context.Context) ManagedClusterNodeResourceGroupProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterNodeResourceGroupProfilePtrOutput)
-}
-
-// Node resource group lockdown profile for a managed cluster.
-type ManagedClusterNodeResourceGroupProfileOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterNodeResourceGroupProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterNodeResourceGroupProfile)(nil)).Elem()
-}
-
-func (o ManagedClusterNodeResourceGroupProfileOutput) ToManagedClusterNodeResourceGroupProfileOutput() ManagedClusterNodeResourceGroupProfileOutput {
-	return o
-}
-
-func (o ManagedClusterNodeResourceGroupProfileOutput) ToManagedClusterNodeResourceGroupProfileOutputWithContext(ctx context.Context) ManagedClusterNodeResourceGroupProfileOutput {
-	return o
-}
-
-func (o ManagedClusterNodeResourceGroupProfileOutput) ToManagedClusterNodeResourceGroupProfilePtrOutput() ManagedClusterNodeResourceGroupProfilePtrOutput {
-	return o.ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(context.Background())
-}
-
-func (o ManagedClusterNodeResourceGroupProfileOutput) ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(ctx context.Context) ManagedClusterNodeResourceGroupProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterNodeResourceGroupProfile) *ManagedClusterNodeResourceGroupProfile {
-		return &v
-	}).(ManagedClusterNodeResourceGroupProfilePtrOutput)
-}
-
-// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
-func (o ManagedClusterNodeResourceGroupProfileOutput) RestrictionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedClusterNodeResourceGroupProfile) *string { return v.RestrictionLevel }).(pulumi.StringPtrOutput)
-}
-
-type ManagedClusterNodeResourceGroupProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterNodeResourceGroupProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterNodeResourceGroupProfile)(nil)).Elem()
-}
-
-func (o ManagedClusterNodeResourceGroupProfilePtrOutput) ToManagedClusterNodeResourceGroupProfilePtrOutput() ManagedClusterNodeResourceGroupProfilePtrOutput {
-	return o
-}
-
-func (o ManagedClusterNodeResourceGroupProfilePtrOutput) ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(ctx context.Context) ManagedClusterNodeResourceGroupProfilePtrOutput {
-	return o
-}
-
-func (o ManagedClusterNodeResourceGroupProfilePtrOutput) Elem() ManagedClusterNodeResourceGroupProfileOutput {
-	return o.ApplyT(func(v *ManagedClusterNodeResourceGroupProfile) ManagedClusterNodeResourceGroupProfile {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterNodeResourceGroupProfile
-		return ret
-	}).(ManagedClusterNodeResourceGroupProfileOutput)
-}
-
-// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
-func (o ManagedClusterNodeResourceGroupProfilePtrOutput) RestrictionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterNodeResourceGroupProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RestrictionLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-// Node resource group lockdown profile for a managed cluster.
-type ManagedClusterNodeResourceGroupProfileResponse struct {
-	// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
-	RestrictionLevel *string `pulumi:"restrictionLevel"`
-}
-
-// Node resource group lockdown profile for a managed cluster.
-type ManagedClusterNodeResourceGroupProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterNodeResourceGroupProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterNodeResourceGroupProfileResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterNodeResourceGroupProfileResponseOutput) ToManagedClusterNodeResourceGroupProfileResponseOutput() ManagedClusterNodeResourceGroupProfileResponseOutput {
-	return o
-}
-
-func (o ManagedClusterNodeResourceGroupProfileResponseOutput) ToManagedClusterNodeResourceGroupProfileResponseOutputWithContext(ctx context.Context) ManagedClusterNodeResourceGroupProfileResponseOutput {
-	return o
-}
-
-// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
-func (o ManagedClusterNodeResourceGroupProfileResponseOutput) RestrictionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedClusterNodeResourceGroupProfileResponse) *string { return v.RestrictionLevel }).(pulumi.StringPtrOutput)
-}
-
-type ManagedClusterNodeResourceGroupProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterNodeResourceGroupProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterNodeResourceGroupProfileResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterNodeResourceGroupProfileResponsePtrOutput) ToManagedClusterNodeResourceGroupProfileResponsePtrOutput() ManagedClusterNodeResourceGroupProfileResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterNodeResourceGroupProfileResponsePtrOutput) ToManagedClusterNodeResourceGroupProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterNodeResourceGroupProfileResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterNodeResourceGroupProfileResponsePtrOutput) Elem() ManagedClusterNodeResourceGroupProfileResponseOutput {
-	return o.ApplyT(func(v *ManagedClusterNodeResourceGroupProfileResponse) ManagedClusterNodeResourceGroupProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterNodeResourceGroupProfileResponse
-		return ret
-	}).(ManagedClusterNodeResourceGroupProfileResponseOutput)
-}
-
-// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
-func (o ManagedClusterNodeResourceGroupProfileResponsePtrOutput) RestrictionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterNodeResourceGroupProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RestrictionLevel
-	}).(pulumi.StringPtrOutput)
 }
 
 // The OIDC issuer profile of the Managed Cluster.
@@ -18037,14 +10460,8 @@ func (o ManagedClusterPodIdentityResponseProvisioningInfoOutput) Error() Managed
 type ManagedClusterPropertiesAutoScalerProfile struct {
 	// Valid values are 'true' and 'false'
 	BalanceSimilarNodeGroups *string `pulumi:"balanceSimilarNodeGroups"`
-	// If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-	DaemonsetEvictionForEmptyNodes *bool `pulumi:"daemonsetEvictionForEmptyNodes"`
-	// If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-	DaemonsetEvictionForOccupiedNodes *bool `pulumi:"daemonsetEvictionForOccupiedNodes"`
 	// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
 	Expander *string `pulumi:"expander"`
-	// If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
-	IgnoreDaemonsetsUtilization *bool `pulumi:"ignoreDaemonsetsUtilization"`
 	// The default is 10.
 	MaxEmptyBulkDelete *string `pulumi:"maxEmptyBulkDelete"`
 	// The default is 600.
@@ -18092,14 +10509,8 @@ type ManagedClusterPropertiesAutoScalerProfileInput interface {
 type ManagedClusterPropertiesAutoScalerProfileArgs struct {
 	// Valid values are 'true' and 'false'
 	BalanceSimilarNodeGroups pulumi.StringPtrInput `pulumi:"balanceSimilarNodeGroups"`
-	// If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-	DaemonsetEvictionForEmptyNodes pulumi.BoolPtrInput `pulumi:"daemonsetEvictionForEmptyNodes"`
-	// If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-	DaemonsetEvictionForOccupiedNodes pulumi.BoolPtrInput `pulumi:"daemonsetEvictionForOccupiedNodes"`
 	// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
 	Expander pulumi.StringPtrInput `pulumi:"expander"`
-	// If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
-	IgnoreDaemonsetsUtilization pulumi.BoolPtrInput `pulumi:"ignoreDaemonsetsUtilization"`
 	// The default is 10.
 	MaxEmptyBulkDelete pulumi.StringPtrInput `pulumi:"maxEmptyBulkDelete"`
 	// The default is 600.
@@ -18215,24 +10626,9 @@ func (o ManagedClusterPropertiesAutoScalerProfileOutput) BalanceSimilarNodeGroup
 	return o.ApplyT(func(v ManagedClusterPropertiesAutoScalerProfile) *string { return v.BalanceSimilarNodeGroups }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-func (o ManagedClusterPropertiesAutoScalerProfileOutput) DaemonsetEvictionForEmptyNodes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedClusterPropertiesAutoScalerProfile) *bool { return v.DaemonsetEvictionForEmptyNodes }).(pulumi.BoolPtrOutput)
-}
-
-// If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-func (o ManagedClusterPropertiesAutoScalerProfileOutput) DaemonsetEvictionForOccupiedNodes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedClusterPropertiesAutoScalerProfile) *bool { return v.DaemonsetEvictionForOccupiedNodes }).(pulumi.BoolPtrOutput)
-}
-
 // If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
 func (o ManagedClusterPropertiesAutoScalerProfileOutput) Expander() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterPropertiesAutoScalerProfile) *string { return v.Expander }).(pulumi.StringPtrOutput)
-}
-
-// If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
-func (o ManagedClusterPropertiesAutoScalerProfileOutput) IgnoreDaemonsetsUtilization() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedClusterPropertiesAutoScalerProfile) *bool { return v.IgnoreDaemonsetsUtilization }).(pulumi.BoolPtrOutput)
 }
 
 // The default is 10.
@@ -18344,26 +10740,6 @@ func (o ManagedClusterPropertiesAutoScalerProfilePtrOutput) BalanceSimilarNodeGr
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-func (o ManagedClusterPropertiesAutoScalerProfilePtrOutput) DaemonsetEvictionForEmptyNodes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterPropertiesAutoScalerProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DaemonsetEvictionForEmptyNodes
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-func (o ManagedClusterPropertiesAutoScalerProfilePtrOutput) DaemonsetEvictionForOccupiedNodes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterPropertiesAutoScalerProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DaemonsetEvictionForOccupiedNodes
-	}).(pulumi.BoolPtrOutput)
-}
-
 // If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
 func (o ManagedClusterPropertiesAutoScalerProfilePtrOutput) Expander() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedClusterPropertiesAutoScalerProfile) *string {
@@ -18372,16 +10748,6 @@ func (o ManagedClusterPropertiesAutoScalerProfilePtrOutput) Expander() pulumi.St
 		}
 		return v.Expander
 	}).(pulumi.StringPtrOutput)
-}
-
-// If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
-func (o ManagedClusterPropertiesAutoScalerProfilePtrOutput) IgnoreDaemonsetsUtilization() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterPropertiesAutoScalerProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IgnoreDaemonsetsUtilization
-	}).(pulumi.BoolPtrOutput)
 }
 
 // The default is 10.
@@ -18587,14 +10953,8 @@ func (o ManagedClusterPropertiesForSnapshotResponseOutput) Sku() ManagedClusterS
 type ManagedClusterPropertiesResponseAutoScalerProfile struct {
 	// Valid values are 'true' and 'false'
 	BalanceSimilarNodeGroups *string `pulumi:"balanceSimilarNodeGroups"`
-	// If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-	DaemonsetEvictionForEmptyNodes *bool `pulumi:"daemonsetEvictionForEmptyNodes"`
-	// If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-	DaemonsetEvictionForOccupiedNodes *bool `pulumi:"daemonsetEvictionForOccupiedNodes"`
 	// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
 	Expander *string `pulumi:"expander"`
-	// If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
-	IgnoreDaemonsetsUtilization *bool `pulumi:"ignoreDaemonsetsUtilization"`
 	// The default is 10.
 	MaxEmptyBulkDelete *string `pulumi:"maxEmptyBulkDelete"`
 	// The default is 600.
@@ -18647,28 +11007,9 @@ func (o ManagedClusterPropertiesResponseAutoScalerProfileOutput) BalanceSimilarN
 	return o.ApplyT(func(v ManagedClusterPropertiesResponseAutoScalerProfile) *string { return v.BalanceSimilarNodeGroups }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-func (o ManagedClusterPropertiesResponseAutoScalerProfileOutput) DaemonsetEvictionForEmptyNodes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedClusterPropertiesResponseAutoScalerProfile) *bool {
-		return v.DaemonsetEvictionForEmptyNodes
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-func (o ManagedClusterPropertiesResponseAutoScalerProfileOutput) DaemonsetEvictionForOccupiedNodes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedClusterPropertiesResponseAutoScalerProfile) *bool {
-		return v.DaemonsetEvictionForOccupiedNodes
-	}).(pulumi.BoolPtrOutput)
-}
-
 // If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
 func (o ManagedClusterPropertiesResponseAutoScalerProfileOutput) Expander() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterPropertiesResponseAutoScalerProfile) *string { return v.Expander }).(pulumi.StringPtrOutput)
-}
-
-// If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
-func (o ManagedClusterPropertiesResponseAutoScalerProfileOutput) IgnoreDaemonsetsUtilization() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedClusterPropertiesResponseAutoScalerProfile) *bool { return v.IgnoreDaemonsetsUtilization }).(pulumi.BoolPtrOutput)
 }
 
 // The default is 10.
@@ -18782,26 +11123,6 @@ func (o ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput) BalanceSimil
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-func (o ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput) DaemonsetEvictionForEmptyNodes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterPropertiesResponseAutoScalerProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DaemonsetEvictionForEmptyNodes
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
-func (o ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput) DaemonsetEvictionForOccupiedNodes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterPropertiesResponseAutoScalerProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DaemonsetEvictionForOccupiedNodes
-	}).(pulumi.BoolPtrOutput)
-}
-
 // If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
 func (o ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput) Expander() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedClusterPropertiesResponseAutoScalerProfile) *string {
@@ -18810,16 +11131,6 @@ func (o ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput) Expander() p
 		}
 		return v.Expander
 	}).(pulumi.StringPtrOutput)
-}
-
-// If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
-func (o ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput) IgnoreDaemonsetsUtilization() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterPropertiesResponseAutoScalerProfile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IgnoreDaemonsetsUtilization
-	}).(pulumi.BoolPtrOutput)
 }
 
 // The default is 10.
@@ -21797,8 +14108,6 @@ func (o ManagedClusterStorageProfileSnapshotControllerResponsePtrOutput) Enabled
 
 // The update to be applied to the ManagedClusters.
 type ManagedClusterUpdate struct {
-	// The node image upgrade to be applied to the target nodes in update run.
-	NodeImageSelection *NodeImageSelection `pulumi:"nodeImageSelection"`
 	// The upgrade to apply to the ManagedClusters.
 	Upgrade ManagedClusterUpgradeSpec `pulumi:"upgrade"`
 }
@@ -21816,8 +14125,6 @@ type ManagedClusterUpdateInput interface {
 
 // The update to be applied to the ManagedClusters.
 type ManagedClusterUpdateArgs struct {
-	// The node image upgrade to be applied to the target nodes in update run.
-	NodeImageSelection NodeImageSelectionPtrInput `pulumi:"nodeImageSelection"`
 	// The upgrade to apply to the ManagedClusters.
 	Upgrade ManagedClusterUpgradeSpecInput `pulumi:"upgrade"`
 }
@@ -21849,11 +14156,6 @@ func (o ManagedClusterUpdateOutput) ToManagedClusterUpdateOutputWithContext(ctx 
 	return o
 }
 
-// The node image upgrade to be applied to the target nodes in update run.
-func (o ManagedClusterUpdateOutput) NodeImageSelection() NodeImageSelectionPtrOutput {
-	return o.ApplyT(func(v ManagedClusterUpdate) *NodeImageSelection { return v.NodeImageSelection }).(NodeImageSelectionPtrOutput)
-}
-
 // The upgrade to apply to the ManagedClusters.
 func (o ManagedClusterUpdateOutput) Upgrade() ManagedClusterUpgradeSpecOutput {
 	return o.ApplyT(func(v ManagedClusterUpdate) ManagedClusterUpgradeSpec { return v.Upgrade }).(ManagedClusterUpgradeSpecOutput)
@@ -21861,8 +14163,6 @@ func (o ManagedClusterUpdateOutput) Upgrade() ManagedClusterUpgradeSpecOutput {
 
 // The update to be applied to the ManagedClusters.
 type ManagedClusterUpdateResponse struct {
-	// The node image upgrade to be applied to the target nodes in update run.
-	NodeImageSelection *NodeImageSelectionResponse `pulumi:"nodeImageSelection"`
 	// The upgrade to apply to the ManagedClusters.
 	Upgrade ManagedClusterUpgradeSpecResponse `pulumi:"upgrade"`
 }
@@ -21880,11 +14180,6 @@ func (o ManagedClusterUpdateResponseOutput) ToManagedClusterUpdateResponseOutput
 
 func (o ManagedClusterUpdateResponseOutput) ToManagedClusterUpdateResponseOutputWithContext(ctx context.Context) ManagedClusterUpdateResponseOutput {
 	return o
-}
-
-// The node image upgrade to be applied to the target nodes in update run.
-func (o ManagedClusterUpdateResponseOutput) NodeImageSelection() NodeImageSelectionResponsePtrOutput {
-	return o.ApplyT(func(v ManagedClusterUpdateResponse) *NodeImageSelectionResponse { return v.NodeImageSelection }).(NodeImageSelectionResponsePtrOutput)
 }
 
 // The upgrade to apply to the ManagedClusters.
@@ -22337,19 +14632,6 @@ func (o ManagedClusterWindowsProfileResponsePtrOutput) LicenseType() pulumi.Stri
 type ManagedClusterWorkloadAutoScalerProfile struct {
 	// KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
 	Keda *ManagedClusterWorkloadAutoScalerProfileKeda `pulumi:"keda"`
-	// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-	VerticalPodAutoscaler *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler `pulumi:"verticalPodAutoscaler"`
-}
-
-// Defaults sets the appropriate defaults for ManagedClusterWorkloadAutoScalerProfile
-func (val *ManagedClusterWorkloadAutoScalerProfile) Defaults() *ManagedClusterWorkloadAutoScalerProfile {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.VerticalPodAutoscaler = tmp.VerticalPodAutoscaler.Defaults()
-
-	return &tmp
 }
 
 // ManagedClusterWorkloadAutoScalerProfileInput is an input type that accepts ManagedClusterWorkloadAutoScalerProfileArgs and ManagedClusterWorkloadAutoScalerProfileOutput values.
@@ -22367,19 +14649,8 @@ type ManagedClusterWorkloadAutoScalerProfileInput interface {
 type ManagedClusterWorkloadAutoScalerProfileArgs struct {
 	// KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
 	Keda ManagedClusterWorkloadAutoScalerProfileKedaPtrInput `pulumi:"keda"`
-	// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-	VerticalPodAutoscaler ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrInput `pulumi:"verticalPodAutoscaler"`
 }
 
-// Defaults sets the appropriate defaults for ManagedClusterWorkloadAutoScalerProfileArgs
-func (val *ManagedClusterWorkloadAutoScalerProfileArgs) Defaults() *ManagedClusterWorkloadAutoScalerProfileArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-
-	return &tmp
-}
 func (ManagedClusterWorkloadAutoScalerProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedClusterWorkloadAutoScalerProfile)(nil)).Elem()
 }
@@ -22465,13 +14736,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileOutput) Keda() ManagedClusterWork
 	}).(ManagedClusterWorkloadAutoScalerProfileKedaPtrOutput)
 }
 
-// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-func (o ManagedClusterWorkloadAutoScalerProfileOutput) VerticalPodAutoscaler() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
-	return o.ApplyT(func(v ManagedClusterWorkloadAutoScalerProfile) *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler {
-		return v.VerticalPodAutoscaler
-	}).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput)
-}
-
 type ManagedClusterWorkloadAutoScalerProfilePtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedClusterWorkloadAutoScalerProfilePtrOutput) ElementType() reflect.Type {
@@ -22504,16 +14768,6 @@ func (o ManagedClusterWorkloadAutoScalerProfilePtrOutput) Keda() ManagedClusterW
 		}
 		return v.Keda
 	}).(ManagedClusterWorkloadAutoScalerProfileKedaPtrOutput)
-}
-
-// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-func (o ManagedClusterWorkloadAutoScalerProfilePtrOutput) VerticalPodAutoscaler() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterWorkloadAutoScalerProfile) *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler {
-		if v == nil {
-			return nil
-		}
-		return v.VerticalPodAutoscaler
-	}).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput)
 }
 
 // KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
@@ -22720,19 +14974,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileKedaResponsePtrOutput) Enabled() 
 type ManagedClusterWorkloadAutoScalerProfileResponse struct {
 	// KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
 	Keda *ManagedClusterWorkloadAutoScalerProfileKedaResponse `pulumi:"keda"`
-	// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-	VerticalPodAutoscaler *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse `pulumi:"verticalPodAutoscaler"`
-}
-
-// Defaults sets the appropriate defaults for ManagedClusterWorkloadAutoScalerProfileResponse
-func (val *ManagedClusterWorkloadAutoScalerProfileResponse) Defaults() *ManagedClusterWorkloadAutoScalerProfileResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.VerticalPodAutoscaler = tmp.VerticalPodAutoscaler.Defaults()
-
-	return &tmp
 }
 
 // Workload Auto-scaler profile for the managed cluster.
@@ -22755,13 +14996,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileResponseOutput) Keda() ManagedClu
 	return o.ApplyT(func(v ManagedClusterWorkloadAutoScalerProfileResponse) *ManagedClusterWorkloadAutoScalerProfileKedaResponse {
 		return v.Keda
 	}).(ManagedClusterWorkloadAutoScalerProfileKedaResponsePtrOutput)
-}
-
-// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-func (o ManagedClusterWorkloadAutoScalerProfileResponseOutput) VerticalPodAutoscaler() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput {
-	return o.ApplyT(func(v ManagedClusterWorkloadAutoScalerProfileResponse) *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse {
-		return v.VerticalPodAutoscaler
-	}).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput)
 }
 
 type ManagedClusterWorkloadAutoScalerProfileResponsePtrOutput struct{ *pulumi.OutputState }
@@ -22798,529 +15032,10 @@ func (o ManagedClusterWorkloadAutoScalerProfileResponsePtrOutput) Keda() Managed
 	}).(ManagedClusterWorkloadAutoScalerProfileKedaResponsePtrOutput)
 }
 
-// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-func (o ManagedClusterWorkloadAutoScalerProfileResponsePtrOutput) VerticalPodAutoscaler() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput {
-	return o.ApplyT(func(v *ManagedClusterWorkloadAutoScalerProfileResponse) *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse {
-		if v == nil {
-			return nil
-		}
-		return v.VerticalPodAutoscaler
-	}).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput)
-}
-
-// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-type ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler struct {
-	// Whether to enable VPA. Default value is false.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// Defaults sets the appropriate defaults for ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler
-func (val *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler) Defaults() *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if utilities.IsZero(tmp.Enabled) {
-		tmp.Enabled = false
-	}
-	return &tmp
-}
-
-// ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerInput is an input type that accepts ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs and ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput values.
-// You can construct a concrete instance of `ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerInput` via:
-//
-//	ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs{...}
-type ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerInput interface {
-	pulumi.Input
-
-	ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput
-	ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutputWithContext(context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput
-}
-
-// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-type ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs struct {
-	// Whether to enable VPA. Default value is false.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-// Defaults sets the appropriate defaults for ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs
-func (val *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs) Defaults() *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Enabled == nil {
-		tmp.Enabled = pulumi.Bool(false)
-	}
-	return &tmp
-}
-func (ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler)(nil)).Elem()
-}
-
-func (i ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput {
-	return i.ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput)
-}
-
-func (i ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
-	return i.ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(context.Background())
-}
-
-func (i ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput).ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(ctx)
-}
-
-// ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrInput is an input type that accepts ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs, ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtr and ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput values.
-// You can construct a concrete instance of `ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrInput` via:
-//
-//	        ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrInput interface {
-	pulumi.Input
-
-	ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput
-	ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput
-}
-
-type managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrType ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs
-
-func ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtr(v *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrInput {
-	return (*managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrType)(v)
-}
-
-func (*managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler)(nil)).Elem()
-}
-
-func (i *managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrType) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
-	return i.ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(context.Background())
-}
-
-func (i *managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrType) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput)
-}
-
-// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-type ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler)(nil)).Elem()
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput {
-	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput {
-	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
-	return o.ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler) *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler {
-		return &v
-	}).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput)
-}
-
-// Whether to enable VPA. Default value is false.
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler)(nil)).Elem()
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
-	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
-	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput) Elem() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput {
-	return o.ApplyT(func(v *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler
-		return ret
-	}).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput)
-}
-
-// Whether to enable VPA. Default value is false.
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-type ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse struct {
-	// Whether to enable VPA. Default value is false.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// Defaults sets the appropriate defaults for ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse
-func (val *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse) Defaults() *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if utilities.IsZero(tmp.Enabled) {
-		tmp.Enabled = false
-	}
-	return &tmp
-}
-
-// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-type ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput {
-	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput {
-	return o
-}
-
-// Whether to enable VPA. Default value is false.
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse)(nil)).Elem()
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput {
-	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput) Elem() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput {
-	return o.ApplyT(func(v *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse
-		return ret
-	}).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput)
-}
-
-// Whether to enable VPA. Default value is false.
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentity struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
-}
-
-// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
-//
-//	ManagedServiceIdentityArgs{...}
-type ManagedServiceIdentityInput interface {
-	pulumi.Input
-
-	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
-	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityArgs struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type pulumi.StringInput `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
-}
-
-func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
-	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
-}
-
-// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
-//
-//	        ManagedServiceIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedServiceIdentityPtrInput interface {
-	pulumi.Input
-
-	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
-	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
-}
-
-type managedServiceIdentityPtrType ManagedServiceIdentityArgs
-
-func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
-	return (*managedServiceIdentityPtrType)(v)
-}
-
-func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
-		return &v
-	}).(ManagedServiceIdentityPtrOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
-}
-
-type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedServiceIdentity
-		return ret
-	}).(ManagedServiceIdentityOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(pulumi.StringArrayOutput)
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityResponse struct {
-	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	TenantId string `pulumi:"tenantId"`
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
-	return o
-}
-
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
-}
-
-type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedServiceIdentityResponse
-		return ret
-	}).(ManagedServiceIdentityResponseOutput)
-}
-
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
-}
-
 // The status of a member update operation.
 type MemberUpdateStatusResponse struct {
 	// The Azure resource id of the target Kubernetes cluster.
 	ClusterResourceId string `pulumi:"clusterResourceId"`
-	// The status message after processing the member update operation.
-	Message string `pulumi:"message"`
 	// The name of the FleetMember.
 	Name string `pulumi:"name"`
 	// The operation resource id of the latest attempt to perform the operation.
@@ -23347,11 +15062,6 @@ func (o MemberUpdateStatusResponseOutput) ToMemberUpdateStatusResponseOutputWith
 // The Azure resource id of the target Kubernetes cluster.
 func (o MemberUpdateStatusResponseOutput) ClusterResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v MemberUpdateStatusResponse) string { return v.ClusterResourceId }).(pulumi.StringOutput)
-}
-
-// The status message after processing the member update operation.
-func (o MemberUpdateStatusResponseOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v MemberUpdateStatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
 // The name of the FleetMember.
@@ -23389,621 +15099,205 @@ func (o MemberUpdateStatusResponseArrayOutput) Index(i pulumi.IntInput) MemberUp
 	}).(MemberUpdateStatusResponseOutput)
 }
 
-// Properties of a namespace managed by ARM
-type NamespaceProperties struct {
-	// Action if Kubernetes namespace with same name already exists.
-	AdoptionPolicy *string `pulumi:"adoptionPolicy"`
-	// The annotations of managed namespace.
-	Annotations map[string]string `pulumi:"annotations"`
-	// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
-	DefaultNetworkPolicy *NetworkPolicies `pulumi:"defaultNetworkPolicy"`
-	// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
-	DefaultResourceQuota *ResourceQuota `pulumi:"defaultResourceQuota"`
-	// Delete options of a namespace.
-	DeletePolicy *string `pulumi:"deletePolicy"`
-	// The labels of managed namespace.
-	Labels map[string]string `pulumi:"labels"`
+// Represents the OpenShift networking configuration
+type NetworkProfile struct {
+	// CIDR of subnet used to create PLS needed for management of the cluster
+	ManagementSubnetCidr *string `pulumi:"managementSubnetCidr"`
+	// CIDR for the OpenShift Vnet.
+	VnetCidr *string `pulumi:"vnetCidr"`
+	// ID of the Vnet created for OSA cluster.
+	VnetId *string `pulumi:"vnetId"`
 }
 
-// Defaults sets the appropriate defaults for NamespaceProperties
-func (val *NamespaceProperties) Defaults() *NamespaceProperties {
+// Defaults sets the appropriate defaults for NetworkProfile
+func (val *NetworkProfile) Defaults() *NetworkProfile {
 	if val == nil {
 		return nil
 	}
 	tmp := *val
-	tmp.DefaultNetworkPolicy = tmp.DefaultNetworkPolicy.Defaults()
-
+	if tmp.VnetCidr == nil {
+		vnetCidr_ := "10.0.0.0/8"
+		tmp.VnetCidr = &vnetCidr_
+	}
 	return &tmp
 }
 
-// NamespacePropertiesInput is an input type that accepts NamespacePropertiesArgs and NamespacePropertiesOutput values.
-// You can construct a concrete instance of `NamespacePropertiesInput` via:
+// NetworkProfileInput is an input type that accepts NetworkProfileArgs and NetworkProfileOutput values.
+// You can construct a concrete instance of `NetworkProfileInput` via:
 //
-//	NamespacePropertiesArgs{...}
-type NamespacePropertiesInput interface {
+//	NetworkProfileArgs{...}
+type NetworkProfileInput interface {
 	pulumi.Input
 
-	ToNamespacePropertiesOutput() NamespacePropertiesOutput
-	ToNamespacePropertiesOutputWithContext(context.Context) NamespacePropertiesOutput
+	ToNetworkProfileOutput() NetworkProfileOutput
+	ToNetworkProfileOutputWithContext(context.Context) NetworkProfileOutput
 }
 
-// Properties of a namespace managed by ARM
-type NamespacePropertiesArgs struct {
-	// Action if Kubernetes namespace with same name already exists.
-	AdoptionPolicy pulumi.StringPtrInput `pulumi:"adoptionPolicy"`
-	// The annotations of managed namespace.
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
-	DefaultNetworkPolicy NetworkPoliciesPtrInput `pulumi:"defaultNetworkPolicy"`
-	// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
-	DefaultResourceQuota ResourceQuotaPtrInput `pulumi:"defaultResourceQuota"`
-	// Delete options of a namespace.
-	DeletePolicy pulumi.StringPtrInput `pulumi:"deletePolicy"`
-	// The labels of managed namespace.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
+// Represents the OpenShift networking configuration
+type NetworkProfileArgs struct {
+	// CIDR of subnet used to create PLS needed for management of the cluster
+	ManagementSubnetCidr pulumi.StringPtrInput `pulumi:"managementSubnetCidr"`
+	// CIDR for the OpenShift Vnet.
+	VnetCidr pulumi.StringPtrInput `pulumi:"vnetCidr"`
+	// ID of the Vnet created for OSA cluster.
+	VnetId pulumi.StringPtrInput `pulumi:"vnetId"`
 }
 
-// Defaults sets the appropriate defaults for NamespacePropertiesArgs
-func (val *NamespacePropertiesArgs) Defaults() *NamespacePropertiesArgs {
+// Defaults sets the appropriate defaults for NetworkProfileArgs
+func (val *NetworkProfileArgs) Defaults() *NetworkProfileArgs {
 	if val == nil {
 		return nil
 	}
 	tmp := *val
-
+	if tmp.VnetCidr == nil {
+		tmp.VnetCidr = pulumi.StringPtr("10.0.0.0/8")
+	}
 	return &tmp
 }
-func (NamespacePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceProperties)(nil)).Elem()
+func (NetworkProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProfile)(nil)).Elem()
 }
 
-func (i NamespacePropertiesArgs) ToNamespacePropertiesOutput() NamespacePropertiesOutput {
-	return i.ToNamespacePropertiesOutputWithContext(context.Background())
+func (i NetworkProfileArgs) ToNetworkProfileOutput() NetworkProfileOutput {
+	return i.ToNetworkProfileOutputWithContext(context.Background())
 }
 
-func (i NamespacePropertiesArgs) ToNamespacePropertiesOutputWithContext(ctx context.Context) NamespacePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespacePropertiesOutput)
+func (i NetworkProfileArgs) ToNetworkProfileOutputWithContext(ctx context.Context) NetworkProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfileOutput)
 }
 
-func (i NamespacePropertiesArgs) ToNamespacePropertiesPtrOutput() NamespacePropertiesPtrOutput {
-	return i.ToNamespacePropertiesPtrOutputWithContext(context.Background())
+func (i NetworkProfileArgs) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
+	return i.ToNetworkProfilePtrOutputWithContext(context.Background())
 }
 
-func (i NamespacePropertiesArgs) ToNamespacePropertiesPtrOutputWithContext(ctx context.Context) NamespacePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespacePropertiesOutput).ToNamespacePropertiesPtrOutputWithContext(ctx)
+func (i NetworkProfileArgs) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfileOutput).ToNetworkProfilePtrOutputWithContext(ctx)
 }
 
-// NamespacePropertiesPtrInput is an input type that accepts NamespacePropertiesArgs, NamespacePropertiesPtr and NamespacePropertiesPtrOutput values.
-// You can construct a concrete instance of `NamespacePropertiesPtrInput` via:
+// NetworkProfilePtrInput is an input type that accepts NetworkProfileArgs, NetworkProfilePtr and NetworkProfilePtrOutput values.
+// You can construct a concrete instance of `NetworkProfilePtrInput` via:
 //
-//	        NamespacePropertiesArgs{...}
+//	        NetworkProfileArgs{...}
 //
 //	or:
 //
 //	        nil
-type NamespacePropertiesPtrInput interface {
+type NetworkProfilePtrInput interface {
 	pulumi.Input
 
-	ToNamespacePropertiesPtrOutput() NamespacePropertiesPtrOutput
-	ToNamespacePropertiesPtrOutputWithContext(context.Context) NamespacePropertiesPtrOutput
+	ToNetworkProfilePtrOutput() NetworkProfilePtrOutput
+	ToNetworkProfilePtrOutputWithContext(context.Context) NetworkProfilePtrOutput
 }
 
-type namespacePropertiesPtrType NamespacePropertiesArgs
+type networkProfilePtrType NetworkProfileArgs
 
-func NamespacePropertiesPtr(v *NamespacePropertiesArgs) NamespacePropertiesPtrInput {
-	return (*namespacePropertiesPtrType)(v)
+func NetworkProfilePtr(v *NetworkProfileArgs) NetworkProfilePtrInput {
+	return (*networkProfilePtrType)(v)
 }
 
-func (*namespacePropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespaceProperties)(nil)).Elem()
+func (*networkProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkProfile)(nil)).Elem()
 }
 
-func (i *namespacePropertiesPtrType) ToNamespacePropertiesPtrOutput() NamespacePropertiesPtrOutput {
-	return i.ToNamespacePropertiesPtrOutputWithContext(context.Background())
+func (i *networkProfilePtrType) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
+	return i.ToNetworkProfilePtrOutputWithContext(context.Background())
 }
 
-func (i *namespacePropertiesPtrType) ToNamespacePropertiesPtrOutputWithContext(ctx context.Context) NamespacePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespacePropertiesPtrOutput)
+func (i *networkProfilePtrType) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfilePtrOutput)
 }
 
-// Properties of a namespace managed by ARM
-type NamespacePropertiesOutput struct{ *pulumi.OutputState }
+// Represents the OpenShift networking configuration
+type NetworkProfileOutput struct{ *pulumi.OutputState }
 
-func (NamespacePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceProperties)(nil)).Elem()
+func (NetworkProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProfile)(nil)).Elem()
 }
 
-func (o NamespacePropertiesOutput) ToNamespacePropertiesOutput() NamespacePropertiesOutput {
+func (o NetworkProfileOutput) ToNetworkProfileOutput() NetworkProfileOutput {
 	return o
 }
 
-func (o NamespacePropertiesOutput) ToNamespacePropertiesOutputWithContext(ctx context.Context) NamespacePropertiesOutput {
+func (o NetworkProfileOutput) ToNetworkProfileOutputWithContext(ctx context.Context) NetworkProfileOutput {
 	return o
 }
 
-func (o NamespacePropertiesOutput) ToNamespacePropertiesPtrOutput() NamespacePropertiesPtrOutput {
-	return o.ToNamespacePropertiesPtrOutputWithContext(context.Background())
+func (o NetworkProfileOutput) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
+	return o.ToNetworkProfilePtrOutputWithContext(context.Background())
 }
 
-func (o NamespacePropertiesOutput) ToNamespacePropertiesPtrOutputWithContext(ctx context.Context) NamespacePropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceProperties) *NamespaceProperties {
+func (o NetworkProfileOutput) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkProfile) *NetworkProfile {
 		return &v
-	}).(NamespacePropertiesPtrOutput)
+	}).(NetworkProfilePtrOutput)
 }
 
-// Action if Kubernetes namespace with same name already exists.
-func (o NamespacePropertiesOutput) AdoptionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespaceProperties) *string { return v.AdoptionPolicy }).(pulumi.StringPtrOutput)
+// CIDR of subnet used to create PLS needed for management of the cluster
+func (o NetworkProfileOutput) ManagementSubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProfile) *string { return v.ManagementSubnetCidr }).(pulumi.StringPtrOutput)
 }
 
-// The annotations of managed namespace.
-func (o NamespacePropertiesOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v NamespaceProperties) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+// CIDR for the OpenShift Vnet.
+func (o NetworkProfileOutput) VnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProfile) *string { return v.VnetCidr }).(pulumi.StringPtrOutput)
 }
 
-// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
-func (o NamespacePropertiesOutput) DefaultNetworkPolicy() NetworkPoliciesPtrOutput {
-	return o.ApplyT(func(v NamespaceProperties) *NetworkPolicies { return v.DefaultNetworkPolicy }).(NetworkPoliciesPtrOutput)
+// ID of the Vnet created for OSA cluster.
+func (o NetworkProfileOutput) VnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProfile) *string { return v.VnetId }).(pulumi.StringPtrOutput)
 }
 
-// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
-func (o NamespacePropertiesOutput) DefaultResourceQuota() ResourceQuotaPtrOutput {
-	return o.ApplyT(func(v NamespaceProperties) *ResourceQuota { return v.DefaultResourceQuota }).(ResourceQuotaPtrOutput)
+type NetworkProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkProfile)(nil)).Elem()
 }
 
-// Delete options of a namespace.
-func (o NamespacePropertiesOutput) DeletePolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespaceProperties) *string { return v.DeletePolicy }).(pulumi.StringPtrOutput)
-}
-
-// The labels of managed namespace.
-func (o NamespacePropertiesOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v NamespaceProperties) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-type NamespacePropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (NamespacePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespaceProperties)(nil)).Elem()
-}
-
-func (o NamespacePropertiesPtrOutput) ToNamespacePropertiesPtrOutput() NamespacePropertiesPtrOutput {
+func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
 	return o
 }
 
-func (o NamespacePropertiesPtrOutput) ToNamespacePropertiesPtrOutputWithContext(ctx context.Context) NamespacePropertiesPtrOutput {
+func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
 	return o
 }
 
-func (o NamespacePropertiesPtrOutput) Elem() NamespacePropertiesOutput {
-	return o.ApplyT(func(v *NamespaceProperties) NamespaceProperties {
+func (o NetworkProfilePtrOutput) Elem() NetworkProfileOutput {
+	return o.ApplyT(func(v *NetworkProfile) NetworkProfile {
 		if v != nil {
 			return *v
 		}
-		var ret NamespaceProperties
+		var ret NetworkProfile
 		return ret
-	}).(NamespacePropertiesOutput)
+	}).(NetworkProfileOutput)
 }
 
-// Action if Kubernetes namespace with same name already exists.
-func (o NamespacePropertiesPtrOutput) AdoptionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NamespaceProperties) *string {
+// CIDR of subnet used to create PLS needed for management of the cluster
+func (o NetworkProfilePtrOutput) ManagementSubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProfile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AdoptionPolicy
+		return v.ManagementSubnetCidr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The annotations of managed namespace.
-func (o NamespacePropertiesPtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *NamespaceProperties) map[string]string {
+// CIDR for the OpenShift Vnet.
+func (o NetworkProfilePtrOutput) VnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProfile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Annotations
-	}).(pulumi.StringMapOutput)
-}
-
-// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
-func (o NamespacePropertiesPtrOutput) DefaultNetworkPolicy() NetworkPoliciesPtrOutput {
-	return o.ApplyT(func(v *NamespaceProperties) *NetworkPolicies {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultNetworkPolicy
-	}).(NetworkPoliciesPtrOutput)
-}
-
-// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
-func (o NamespacePropertiesPtrOutput) DefaultResourceQuota() ResourceQuotaPtrOutput {
-	return o.ApplyT(func(v *NamespaceProperties) *ResourceQuota {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultResourceQuota
-	}).(ResourceQuotaPtrOutput)
-}
-
-// Delete options of a namespace.
-func (o NamespacePropertiesPtrOutput) DeletePolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NamespaceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeletePolicy
+		return v.VnetCidr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The labels of managed namespace.
-func (o NamespacePropertiesPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *NamespaceProperties) map[string]string {
+// ID of the Vnet created for OSA cluster.
+func (o NetworkProfilePtrOutput) VnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProfile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// Properties of a namespace managed by ARM
-type NamespacePropertiesResponse struct {
-	// Action if Kubernetes namespace with same name already exists.
-	AdoptionPolicy *string `pulumi:"adoptionPolicy"`
-	// The annotations of managed namespace.
-	Annotations map[string]string `pulumi:"annotations"`
-	// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
-	DefaultNetworkPolicy *NetworkPoliciesResponse `pulumi:"defaultNetworkPolicy"`
-	// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
-	DefaultResourceQuota *ResourceQuotaResponse `pulumi:"defaultResourceQuota"`
-	// Delete options of a namespace.
-	DeletePolicy *string `pulumi:"deletePolicy"`
-	// The labels of managed namespace.
-	Labels map[string]string `pulumi:"labels"`
-	// The current provisioning state of the namespace.
-	ProvisioningState string `pulumi:"provisioningState"`
-}
-
-// Defaults sets the appropriate defaults for NamespacePropertiesResponse
-func (val *NamespacePropertiesResponse) Defaults() *NamespacePropertiesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.DefaultNetworkPolicy = tmp.DefaultNetworkPolicy.Defaults()
-
-	return &tmp
-}
-
-// Properties of a namespace managed by ARM
-type NamespacePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (NamespacePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespacePropertiesResponse)(nil)).Elem()
-}
-
-func (o NamespacePropertiesResponseOutput) ToNamespacePropertiesResponseOutput() NamespacePropertiesResponseOutput {
-	return o
-}
-
-func (o NamespacePropertiesResponseOutput) ToNamespacePropertiesResponseOutputWithContext(ctx context.Context) NamespacePropertiesResponseOutput {
-	return o
-}
-
-// Action if Kubernetes namespace with same name already exists.
-func (o NamespacePropertiesResponseOutput) AdoptionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespacePropertiesResponse) *string { return v.AdoptionPolicy }).(pulumi.StringPtrOutput)
-}
-
-// The annotations of managed namespace.
-func (o NamespacePropertiesResponseOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v NamespacePropertiesResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
-}
-
-// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
-func (o NamespacePropertiesResponseOutput) DefaultNetworkPolicy() NetworkPoliciesResponsePtrOutput {
-	return o.ApplyT(func(v NamespacePropertiesResponse) *NetworkPoliciesResponse { return v.DefaultNetworkPolicy }).(NetworkPoliciesResponsePtrOutput)
-}
-
-// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
-func (o NamespacePropertiesResponseOutput) DefaultResourceQuota() ResourceQuotaResponsePtrOutput {
-	return o.ApplyT(func(v NamespacePropertiesResponse) *ResourceQuotaResponse { return v.DefaultResourceQuota }).(ResourceQuotaResponsePtrOutput)
-}
-
-// Delete options of a namespace.
-func (o NamespacePropertiesResponseOutput) DeletePolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NamespacePropertiesResponse) *string { return v.DeletePolicy }).(pulumi.StringPtrOutput)
-}
-
-// The labels of managed namespace.
-func (o NamespacePropertiesResponseOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v NamespacePropertiesResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// The current provisioning state of the namespace.
-func (o NamespacePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v NamespacePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Default network policy of the namespace, specifying ingress and egress rules.
-type NetworkPolicies struct {
-	// Egress policy for the network.
-	Egress *string `pulumi:"egress"`
-	// Ingress policy for the network.
-	Ingress *string `pulumi:"ingress"`
-}
-
-// Defaults sets the appropriate defaults for NetworkPolicies
-func (val *NetworkPolicies) Defaults() *NetworkPolicies {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Egress == nil {
-		egress_ := "AllowAll"
-		tmp.Egress = &egress_
-	}
-	if tmp.Ingress == nil {
-		ingress_ := "AllowSameNamespace"
-		tmp.Ingress = &ingress_
-	}
-	return &tmp
-}
-
-// NetworkPoliciesInput is an input type that accepts NetworkPoliciesArgs and NetworkPoliciesOutput values.
-// You can construct a concrete instance of `NetworkPoliciesInput` via:
-//
-//	NetworkPoliciesArgs{...}
-type NetworkPoliciesInput interface {
-	pulumi.Input
-
-	ToNetworkPoliciesOutput() NetworkPoliciesOutput
-	ToNetworkPoliciesOutputWithContext(context.Context) NetworkPoliciesOutput
-}
-
-// Default network policy of the namespace, specifying ingress and egress rules.
-type NetworkPoliciesArgs struct {
-	// Egress policy for the network.
-	Egress pulumi.StringPtrInput `pulumi:"egress"`
-	// Ingress policy for the network.
-	Ingress pulumi.StringPtrInput `pulumi:"ingress"`
-}
-
-// Defaults sets the appropriate defaults for NetworkPoliciesArgs
-func (val *NetworkPoliciesArgs) Defaults() *NetworkPoliciesArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Egress == nil {
-		tmp.Egress = pulumi.StringPtr("AllowAll")
-	}
-	if tmp.Ingress == nil {
-		tmp.Ingress = pulumi.StringPtr("AllowSameNamespace")
-	}
-	return &tmp
-}
-func (NetworkPoliciesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkPolicies)(nil)).Elem()
-}
-
-func (i NetworkPoliciesArgs) ToNetworkPoliciesOutput() NetworkPoliciesOutput {
-	return i.ToNetworkPoliciesOutputWithContext(context.Background())
-}
-
-func (i NetworkPoliciesArgs) ToNetworkPoliciesOutputWithContext(ctx context.Context) NetworkPoliciesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkPoliciesOutput)
-}
-
-func (i NetworkPoliciesArgs) ToNetworkPoliciesPtrOutput() NetworkPoliciesPtrOutput {
-	return i.ToNetworkPoliciesPtrOutputWithContext(context.Background())
-}
-
-func (i NetworkPoliciesArgs) ToNetworkPoliciesPtrOutputWithContext(ctx context.Context) NetworkPoliciesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkPoliciesOutput).ToNetworkPoliciesPtrOutputWithContext(ctx)
-}
-
-// NetworkPoliciesPtrInput is an input type that accepts NetworkPoliciesArgs, NetworkPoliciesPtr and NetworkPoliciesPtrOutput values.
-// You can construct a concrete instance of `NetworkPoliciesPtrInput` via:
-//
-//	        NetworkPoliciesArgs{...}
-//
-//	or:
-//
-//	        nil
-type NetworkPoliciesPtrInput interface {
-	pulumi.Input
-
-	ToNetworkPoliciesPtrOutput() NetworkPoliciesPtrOutput
-	ToNetworkPoliciesPtrOutputWithContext(context.Context) NetworkPoliciesPtrOutput
-}
-
-type networkPoliciesPtrType NetworkPoliciesArgs
-
-func NetworkPoliciesPtr(v *NetworkPoliciesArgs) NetworkPoliciesPtrInput {
-	return (*networkPoliciesPtrType)(v)
-}
-
-func (*networkPoliciesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkPolicies)(nil)).Elem()
-}
-
-func (i *networkPoliciesPtrType) ToNetworkPoliciesPtrOutput() NetworkPoliciesPtrOutput {
-	return i.ToNetworkPoliciesPtrOutputWithContext(context.Background())
-}
-
-func (i *networkPoliciesPtrType) ToNetworkPoliciesPtrOutputWithContext(ctx context.Context) NetworkPoliciesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkPoliciesPtrOutput)
-}
-
-// Default network policy of the namespace, specifying ingress and egress rules.
-type NetworkPoliciesOutput struct{ *pulumi.OutputState }
-
-func (NetworkPoliciesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkPolicies)(nil)).Elem()
-}
-
-func (o NetworkPoliciesOutput) ToNetworkPoliciesOutput() NetworkPoliciesOutput {
-	return o
-}
-
-func (o NetworkPoliciesOutput) ToNetworkPoliciesOutputWithContext(ctx context.Context) NetworkPoliciesOutput {
-	return o
-}
-
-func (o NetworkPoliciesOutput) ToNetworkPoliciesPtrOutput() NetworkPoliciesPtrOutput {
-	return o.ToNetworkPoliciesPtrOutputWithContext(context.Background())
-}
-
-func (o NetworkPoliciesOutput) ToNetworkPoliciesPtrOutputWithContext(ctx context.Context) NetworkPoliciesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPolicies) *NetworkPolicies {
-		return &v
-	}).(NetworkPoliciesPtrOutput)
-}
-
-// Egress policy for the network.
-func (o NetworkPoliciesOutput) Egress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkPolicies) *string { return v.Egress }).(pulumi.StringPtrOutput)
-}
-
-// Ingress policy for the network.
-func (o NetworkPoliciesOutput) Ingress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkPolicies) *string { return v.Ingress }).(pulumi.StringPtrOutput)
-}
-
-type NetworkPoliciesPtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkPoliciesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkPolicies)(nil)).Elem()
-}
-
-func (o NetworkPoliciesPtrOutput) ToNetworkPoliciesPtrOutput() NetworkPoliciesPtrOutput {
-	return o
-}
-
-func (o NetworkPoliciesPtrOutput) ToNetworkPoliciesPtrOutputWithContext(ctx context.Context) NetworkPoliciesPtrOutput {
-	return o
-}
-
-func (o NetworkPoliciesPtrOutput) Elem() NetworkPoliciesOutput {
-	return o.ApplyT(func(v *NetworkPolicies) NetworkPolicies {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkPolicies
-		return ret
-	}).(NetworkPoliciesOutput)
-}
-
-// Egress policy for the network.
-func (o NetworkPoliciesPtrOutput) Egress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkPolicies) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Egress
-	}).(pulumi.StringPtrOutput)
-}
-
-// Ingress policy for the network.
-func (o NetworkPoliciesPtrOutput) Ingress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkPolicies) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ingress
-	}).(pulumi.StringPtrOutput)
-}
-
-// Default network policy of the namespace, specifying ingress and egress rules.
-type NetworkPoliciesResponse struct {
-	// Egress policy for the network.
-	Egress *string `pulumi:"egress"`
-	// Ingress policy for the network.
-	Ingress *string `pulumi:"ingress"`
-}
-
-// Defaults sets the appropriate defaults for NetworkPoliciesResponse
-func (val *NetworkPoliciesResponse) Defaults() *NetworkPoliciesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Egress == nil {
-		egress_ := "AllowAll"
-		tmp.Egress = &egress_
-	}
-	if tmp.Ingress == nil {
-		ingress_ := "AllowSameNamespace"
-		tmp.Ingress = &ingress_
-	}
-	return &tmp
-}
-
-// Default network policy of the namespace, specifying ingress and egress rules.
-type NetworkPoliciesResponseOutput struct{ *pulumi.OutputState }
-
-func (NetworkPoliciesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkPoliciesResponse)(nil)).Elem()
-}
-
-func (o NetworkPoliciesResponseOutput) ToNetworkPoliciesResponseOutput() NetworkPoliciesResponseOutput {
-	return o
-}
-
-func (o NetworkPoliciesResponseOutput) ToNetworkPoliciesResponseOutputWithContext(ctx context.Context) NetworkPoliciesResponseOutput {
-	return o
-}
-
-// Egress policy for the network.
-func (o NetworkPoliciesResponseOutput) Egress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkPoliciesResponse) *string { return v.Egress }).(pulumi.StringPtrOutput)
-}
-
-// Ingress policy for the network.
-func (o NetworkPoliciesResponseOutput) Ingress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkPoliciesResponse) *string { return v.Ingress }).(pulumi.StringPtrOutput)
-}
-
-type NetworkPoliciesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkPoliciesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkPoliciesResponse)(nil)).Elem()
-}
-
-func (o NetworkPoliciesResponsePtrOutput) ToNetworkPoliciesResponsePtrOutput() NetworkPoliciesResponsePtrOutput {
-	return o
-}
-
-func (o NetworkPoliciesResponsePtrOutput) ToNetworkPoliciesResponsePtrOutputWithContext(ctx context.Context) NetworkPoliciesResponsePtrOutput {
-	return o
-}
-
-func (o NetworkPoliciesResponsePtrOutput) Elem() NetworkPoliciesResponseOutput {
-	return o.ApplyT(func(v *NetworkPoliciesResponse) NetworkPoliciesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkPoliciesResponse
-		return ret
-	}).(NetworkPoliciesResponseOutput)
-}
-
-// Egress policy for the network.
-func (o NetworkPoliciesResponsePtrOutput) Egress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkPoliciesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Egress
-	}).(pulumi.StringPtrOutput)
-}
-
-// Ingress policy for the network.
-func (o NetworkPoliciesResponsePtrOutput) Ingress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkPoliciesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ingress
+		return v.VnetId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24061,917 +15355,2001 @@ func (o NetworkProfileForSnapshotResponseOutput) NetworkPolicy() pulumi.StringPt
 	return o.ApplyT(func(v NetworkProfileForSnapshotResponse) *string { return v.NetworkPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The properties of the Node Customization resource.
-type NodeCustomizationProperties struct {
-	// The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
-	ContainerImages []string `pulumi:"containerImages"`
-	// The scripts to customize the node before or after image capture.
-	CustomizationScripts []NodeCustomizationScript `pulumi:"customizationScripts"`
+// Represents the OpenShift networking configuration
+type NetworkProfileResponse struct {
+	// CIDR of subnet used to create PLS needed for management of the cluster
+	ManagementSubnetCidr *string `pulumi:"managementSubnetCidr"`
+	// CIDR for the OpenShift Vnet.
+	VnetCidr *string `pulumi:"vnetCidr"`
+	// ID of the Vnet created for OSA cluster.
+	VnetId *string `pulumi:"vnetId"`
 }
 
-// NodeCustomizationPropertiesInput is an input type that accepts NodeCustomizationPropertiesArgs and NodeCustomizationPropertiesOutput values.
-// You can construct a concrete instance of `NodeCustomizationPropertiesInput` via:
+// Defaults sets the appropriate defaults for NetworkProfileResponse
+func (val *NetworkProfileResponse) Defaults() *NetworkProfileResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.VnetCidr == nil {
+		vnetCidr_ := "10.0.0.0/8"
+		tmp.VnetCidr = &vnetCidr_
+	}
+	return &tmp
+}
+
+// Represents the OpenShift networking configuration
+type NetworkProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProfileResponse)(nil)).Elem()
+}
+
+func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutput() NetworkProfileResponseOutput {
+	return o
+}
+
+func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutputWithContext(ctx context.Context) NetworkProfileResponseOutput {
+	return o
+}
+
+// CIDR of subnet used to create PLS needed for management of the cluster
+func (o NetworkProfileResponseOutput) ManagementSubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProfileResponse) *string { return v.ManagementSubnetCidr }).(pulumi.StringPtrOutput)
+}
+
+// CIDR for the OpenShift Vnet.
+func (o NetworkProfileResponseOutput) VnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProfileResponse) *string { return v.VnetCidr }).(pulumi.StringPtrOutput)
+}
+
+// ID of the Vnet created for OSA cluster.
+func (o NetworkProfileResponseOutput) VnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkProfileResponse) *string { return v.VnetId }).(pulumi.StringPtrOutput)
+}
+
+type NetworkProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkProfileResponse)(nil)).Elem()
+}
+
+func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutput() NetworkProfileResponsePtrOutput {
+	return o
+}
+
+func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutputWithContext(ctx context.Context) NetworkProfileResponsePtrOutput {
+	return o
+}
+
+func (o NetworkProfileResponsePtrOutput) Elem() NetworkProfileResponseOutput {
+	return o.ApplyT(func(v *NetworkProfileResponse) NetworkProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkProfileResponse
+		return ret
+	}).(NetworkProfileResponseOutput)
+}
+
+// CIDR of subnet used to create PLS needed for management of the cluster
+func (o NetworkProfileResponsePtrOutput) ManagementSubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementSubnetCidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// CIDR for the OpenShift Vnet.
+func (o NetworkProfileResponsePtrOutput) VnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VnetCidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the Vnet created for OSA cluster.
+func (o NetworkProfileResponsePtrOutput) VnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines further properties on the API.
+type OpenShiftAPIProperties struct {
+	// Specifies if API server is public or private.
+	PrivateApiServer *bool `pulumi:"privateApiServer"`
+}
+
+// OpenShiftAPIPropertiesInput is an input type that accepts OpenShiftAPIPropertiesArgs and OpenShiftAPIPropertiesOutput values.
+// You can construct a concrete instance of `OpenShiftAPIPropertiesInput` via:
 //
-//	NodeCustomizationPropertiesArgs{...}
-type NodeCustomizationPropertiesInput interface {
+//	OpenShiftAPIPropertiesArgs{...}
+type OpenShiftAPIPropertiesInput interface {
 	pulumi.Input
 
-	ToNodeCustomizationPropertiesOutput() NodeCustomizationPropertiesOutput
-	ToNodeCustomizationPropertiesOutputWithContext(context.Context) NodeCustomizationPropertiesOutput
+	ToOpenShiftAPIPropertiesOutput() OpenShiftAPIPropertiesOutput
+	ToOpenShiftAPIPropertiesOutputWithContext(context.Context) OpenShiftAPIPropertiesOutput
 }
 
-// The properties of the Node Customization resource.
-type NodeCustomizationPropertiesArgs struct {
-	// The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
-	ContainerImages pulumi.StringArrayInput `pulumi:"containerImages"`
-	// The scripts to customize the node before or after image capture.
-	CustomizationScripts NodeCustomizationScriptArrayInput `pulumi:"customizationScripts"`
+// Defines further properties on the API.
+type OpenShiftAPIPropertiesArgs struct {
+	// Specifies if API server is public or private.
+	PrivateApiServer pulumi.BoolPtrInput `pulumi:"privateApiServer"`
 }
 
-func (NodeCustomizationPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeCustomizationProperties)(nil)).Elem()
+func (OpenShiftAPIPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftAPIProperties)(nil)).Elem()
 }
 
-func (i NodeCustomizationPropertiesArgs) ToNodeCustomizationPropertiesOutput() NodeCustomizationPropertiesOutput {
-	return i.ToNodeCustomizationPropertiesOutputWithContext(context.Background())
+func (i OpenShiftAPIPropertiesArgs) ToOpenShiftAPIPropertiesOutput() OpenShiftAPIPropertiesOutput {
+	return i.ToOpenShiftAPIPropertiesOutputWithContext(context.Background())
 }
 
-func (i NodeCustomizationPropertiesArgs) ToNodeCustomizationPropertiesOutputWithContext(ctx context.Context) NodeCustomizationPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeCustomizationPropertiesOutput)
+func (i OpenShiftAPIPropertiesArgs) ToOpenShiftAPIPropertiesOutputWithContext(ctx context.Context) OpenShiftAPIPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftAPIPropertiesOutput)
 }
 
-func (i NodeCustomizationPropertiesArgs) ToNodeCustomizationPropertiesPtrOutput() NodeCustomizationPropertiesPtrOutput {
-	return i.ToNodeCustomizationPropertiesPtrOutputWithContext(context.Background())
+func (i OpenShiftAPIPropertiesArgs) ToOpenShiftAPIPropertiesPtrOutput() OpenShiftAPIPropertiesPtrOutput {
+	return i.ToOpenShiftAPIPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i NodeCustomizationPropertiesArgs) ToNodeCustomizationPropertiesPtrOutputWithContext(ctx context.Context) NodeCustomizationPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeCustomizationPropertiesOutput).ToNodeCustomizationPropertiesPtrOutputWithContext(ctx)
+func (i OpenShiftAPIPropertiesArgs) ToOpenShiftAPIPropertiesPtrOutputWithContext(ctx context.Context) OpenShiftAPIPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftAPIPropertiesOutput).ToOpenShiftAPIPropertiesPtrOutputWithContext(ctx)
 }
 
-// NodeCustomizationPropertiesPtrInput is an input type that accepts NodeCustomizationPropertiesArgs, NodeCustomizationPropertiesPtr and NodeCustomizationPropertiesPtrOutput values.
-// You can construct a concrete instance of `NodeCustomizationPropertiesPtrInput` via:
+// OpenShiftAPIPropertiesPtrInput is an input type that accepts OpenShiftAPIPropertiesArgs, OpenShiftAPIPropertiesPtr and OpenShiftAPIPropertiesPtrOutput values.
+// You can construct a concrete instance of `OpenShiftAPIPropertiesPtrInput` via:
 //
-//	        NodeCustomizationPropertiesArgs{...}
+//	        OpenShiftAPIPropertiesArgs{...}
 //
 //	or:
 //
 //	        nil
-type NodeCustomizationPropertiesPtrInput interface {
+type OpenShiftAPIPropertiesPtrInput interface {
 	pulumi.Input
 
-	ToNodeCustomizationPropertiesPtrOutput() NodeCustomizationPropertiesPtrOutput
-	ToNodeCustomizationPropertiesPtrOutputWithContext(context.Context) NodeCustomizationPropertiesPtrOutput
+	ToOpenShiftAPIPropertiesPtrOutput() OpenShiftAPIPropertiesPtrOutput
+	ToOpenShiftAPIPropertiesPtrOutputWithContext(context.Context) OpenShiftAPIPropertiesPtrOutput
 }
 
-type nodeCustomizationPropertiesPtrType NodeCustomizationPropertiesArgs
+type openShiftAPIPropertiesPtrType OpenShiftAPIPropertiesArgs
 
-func NodeCustomizationPropertiesPtr(v *NodeCustomizationPropertiesArgs) NodeCustomizationPropertiesPtrInput {
-	return (*nodeCustomizationPropertiesPtrType)(v)
+func OpenShiftAPIPropertiesPtr(v *OpenShiftAPIPropertiesArgs) OpenShiftAPIPropertiesPtrInput {
+	return (*openShiftAPIPropertiesPtrType)(v)
 }
 
-func (*nodeCustomizationPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeCustomizationProperties)(nil)).Elem()
+func (*openShiftAPIPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftAPIProperties)(nil)).Elem()
 }
 
-func (i *nodeCustomizationPropertiesPtrType) ToNodeCustomizationPropertiesPtrOutput() NodeCustomizationPropertiesPtrOutput {
-	return i.ToNodeCustomizationPropertiesPtrOutputWithContext(context.Background())
+func (i *openShiftAPIPropertiesPtrType) ToOpenShiftAPIPropertiesPtrOutput() OpenShiftAPIPropertiesPtrOutput {
+	return i.ToOpenShiftAPIPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i *nodeCustomizationPropertiesPtrType) ToNodeCustomizationPropertiesPtrOutputWithContext(ctx context.Context) NodeCustomizationPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeCustomizationPropertiesPtrOutput)
+func (i *openShiftAPIPropertiesPtrType) ToOpenShiftAPIPropertiesPtrOutputWithContext(ctx context.Context) OpenShiftAPIPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftAPIPropertiesPtrOutput)
 }
 
-// The properties of the Node Customization resource.
-type NodeCustomizationPropertiesOutput struct{ *pulumi.OutputState }
+// Defines further properties on the API.
+type OpenShiftAPIPropertiesOutput struct{ *pulumi.OutputState }
 
-func (NodeCustomizationPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeCustomizationProperties)(nil)).Elem()
+func (OpenShiftAPIPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftAPIProperties)(nil)).Elem()
 }
 
-func (o NodeCustomizationPropertiesOutput) ToNodeCustomizationPropertiesOutput() NodeCustomizationPropertiesOutput {
+func (o OpenShiftAPIPropertiesOutput) ToOpenShiftAPIPropertiesOutput() OpenShiftAPIPropertiesOutput {
 	return o
 }
 
-func (o NodeCustomizationPropertiesOutput) ToNodeCustomizationPropertiesOutputWithContext(ctx context.Context) NodeCustomizationPropertiesOutput {
+func (o OpenShiftAPIPropertiesOutput) ToOpenShiftAPIPropertiesOutputWithContext(ctx context.Context) OpenShiftAPIPropertiesOutput {
 	return o
 }
 
-func (o NodeCustomizationPropertiesOutput) ToNodeCustomizationPropertiesPtrOutput() NodeCustomizationPropertiesPtrOutput {
-	return o.ToNodeCustomizationPropertiesPtrOutputWithContext(context.Background())
+func (o OpenShiftAPIPropertiesOutput) ToOpenShiftAPIPropertiesPtrOutput() OpenShiftAPIPropertiesPtrOutput {
+	return o.ToOpenShiftAPIPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (o NodeCustomizationPropertiesOutput) ToNodeCustomizationPropertiesPtrOutputWithContext(ctx context.Context) NodeCustomizationPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeCustomizationProperties) *NodeCustomizationProperties {
+func (o OpenShiftAPIPropertiesOutput) ToOpenShiftAPIPropertiesPtrOutputWithContext(ctx context.Context) OpenShiftAPIPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenShiftAPIProperties) *OpenShiftAPIProperties {
 		return &v
-	}).(NodeCustomizationPropertiesPtrOutput)
+	}).(OpenShiftAPIPropertiesPtrOutput)
 }
 
-// The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
-func (o NodeCustomizationPropertiesOutput) ContainerImages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NodeCustomizationProperties) []string { return v.ContainerImages }).(pulumi.StringArrayOutput)
+// Specifies if API server is public or private.
+func (o OpenShiftAPIPropertiesOutput) PrivateApiServer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenShiftAPIProperties) *bool { return v.PrivateApiServer }).(pulumi.BoolPtrOutput)
 }
 
-// The scripts to customize the node before or after image capture.
-func (o NodeCustomizationPropertiesOutput) CustomizationScripts() NodeCustomizationScriptArrayOutput {
-	return o.ApplyT(func(v NodeCustomizationProperties) []NodeCustomizationScript { return v.CustomizationScripts }).(NodeCustomizationScriptArrayOutput)
+type OpenShiftAPIPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftAPIPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftAPIProperties)(nil)).Elem()
 }
 
-type NodeCustomizationPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (NodeCustomizationPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeCustomizationProperties)(nil)).Elem()
-}
-
-func (o NodeCustomizationPropertiesPtrOutput) ToNodeCustomizationPropertiesPtrOutput() NodeCustomizationPropertiesPtrOutput {
+func (o OpenShiftAPIPropertiesPtrOutput) ToOpenShiftAPIPropertiesPtrOutput() OpenShiftAPIPropertiesPtrOutput {
 	return o
 }
 
-func (o NodeCustomizationPropertiesPtrOutput) ToNodeCustomizationPropertiesPtrOutputWithContext(ctx context.Context) NodeCustomizationPropertiesPtrOutput {
+func (o OpenShiftAPIPropertiesPtrOutput) ToOpenShiftAPIPropertiesPtrOutputWithContext(ctx context.Context) OpenShiftAPIPropertiesPtrOutput {
 	return o
 }
 
-func (o NodeCustomizationPropertiesPtrOutput) Elem() NodeCustomizationPropertiesOutput {
-	return o.ApplyT(func(v *NodeCustomizationProperties) NodeCustomizationProperties {
+func (o OpenShiftAPIPropertiesPtrOutput) Elem() OpenShiftAPIPropertiesOutput {
+	return o.ApplyT(func(v *OpenShiftAPIProperties) OpenShiftAPIProperties {
 		if v != nil {
 			return *v
 		}
-		var ret NodeCustomizationProperties
+		var ret OpenShiftAPIProperties
 		return ret
-	}).(NodeCustomizationPropertiesOutput)
+	}).(OpenShiftAPIPropertiesOutput)
 }
 
-// The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
-func (o NodeCustomizationPropertiesPtrOutput) ContainerImages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NodeCustomizationProperties) []string {
+// Specifies if API server is public or private.
+func (o OpenShiftAPIPropertiesPtrOutput) PrivateApiServer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenShiftAPIProperties) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.ContainerImages
-	}).(pulumi.StringArrayOutput)
+		return v.PrivateApiServer
+	}).(pulumi.BoolPtrOutput)
 }
 
-// The scripts to customize the node before or after image capture.
-func (o NodeCustomizationPropertiesPtrOutput) CustomizationScripts() NodeCustomizationScriptArrayOutput {
-	return o.ApplyT(func(v *NodeCustomizationProperties) []NodeCustomizationScript {
+// Defines further properties on the API.
+type OpenShiftAPIPropertiesResponse struct {
+	// Specifies if API server is public or private.
+	PrivateApiServer *bool `pulumi:"privateApiServer"`
+}
+
+// Defines further properties on the API.
+type OpenShiftAPIPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftAPIPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftAPIPropertiesResponse)(nil)).Elem()
+}
+
+func (o OpenShiftAPIPropertiesResponseOutput) ToOpenShiftAPIPropertiesResponseOutput() OpenShiftAPIPropertiesResponseOutput {
+	return o
+}
+
+func (o OpenShiftAPIPropertiesResponseOutput) ToOpenShiftAPIPropertiesResponseOutputWithContext(ctx context.Context) OpenShiftAPIPropertiesResponseOutput {
+	return o
+}
+
+// Specifies if API server is public or private.
+func (o OpenShiftAPIPropertiesResponseOutput) PrivateApiServer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenShiftAPIPropertiesResponse) *bool { return v.PrivateApiServer }).(pulumi.BoolPtrOutput)
+}
+
+type OpenShiftAPIPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftAPIPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftAPIPropertiesResponse)(nil)).Elem()
+}
+
+func (o OpenShiftAPIPropertiesResponsePtrOutput) ToOpenShiftAPIPropertiesResponsePtrOutput() OpenShiftAPIPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o OpenShiftAPIPropertiesResponsePtrOutput) ToOpenShiftAPIPropertiesResponsePtrOutputWithContext(ctx context.Context) OpenShiftAPIPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o OpenShiftAPIPropertiesResponsePtrOutput) Elem() OpenShiftAPIPropertiesResponseOutput {
+	return o.ApplyT(func(v *OpenShiftAPIPropertiesResponse) OpenShiftAPIPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OpenShiftAPIPropertiesResponse
+		return ret
+	}).(OpenShiftAPIPropertiesResponseOutput)
+}
+
+// Specifies if API server is public or private.
+func (o OpenShiftAPIPropertiesResponsePtrOutput) PrivateApiServer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenShiftAPIPropertiesResponse) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.CustomizationScripts
-	}).(NodeCustomizationScriptArrayOutput)
+		return v.PrivateApiServer
+	}).(pulumi.BoolPtrOutput)
 }
 
-// The properties of the Node Customization resource.
-type NodeCustomizationPropertiesResponse struct {
-	// The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
-	ContainerImages []string `pulumi:"containerImages"`
-	// The scripts to customize the node before or after image capture.
-	CustomizationScripts []NodeCustomizationScriptResponse `pulumi:"customizationScripts"`
-	// The identity used to execute node customization tasks during image build time and provisioning time.
-	// If not specified the default agentpool identity will be used.
-	// This does not affect provisioned nodes.
-	IdentityProfile *UserAssignedIdentityResponse `pulumi:"identityProfile"`
-	// The provisioning state of the node customization.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// An auto-generated value that changes when the other fields of the image customization are changed.
-	Version string `pulumi:"version"`
+// Defines the Identity provider for MS AAD.
+type OpenShiftManagedClusterAADIdentityProvider struct {
+	// The clientId password associated with the provider.
+	ClientId *string `pulumi:"clientId"`
+	// The groupId to be granted cluster admin role.
+	CustomerAdminGroupId *string `pulumi:"customerAdminGroupId"`
+	// The kind of the provider.
+	// Expected value is 'AADIdentityProvider'.
+	Kind string `pulumi:"kind"`
+	// The secret password associated with the provider.
+	Secret *string `pulumi:"secret"`
+	// The tenantId associated with the provider.
+	TenantId *string `pulumi:"tenantId"`
 }
 
-// The properties of the Node Customization resource.
-type NodeCustomizationPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (NodeCustomizationPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeCustomizationPropertiesResponse)(nil)).Elem()
-}
-
-func (o NodeCustomizationPropertiesResponseOutput) ToNodeCustomizationPropertiesResponseOutput() NodeCustomizationPropertiesResponseOutput {
-	return o
-}
-
-func (o NodeCustomizationPropertiesResponseOutput) ToNodeCustomizationPropertiesResponseOutputWithContext(ctx context.Context) NodeCustomizationPropertiesResponseOutput {
-	return o
-}
-
-// The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
-func (o NodeCustomizationPropertiesResponseOutput) ContainerImages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NodeCustomizationPropertiesResponse) []string { return v.ContainerImages }).(pulumi.StringArrayOutput)
-}
-
-// The scripts to customize the node before or after image capture.
-func (o NodeCustomizationPropertiesResponseOutput) CustomizationScripts() NodeCustomizationScriptResponseArrayOutput {
-	return o.ApplyT(func(v NodeCustomizationPropertiesResponse) []NodeCustomizationScriptResponse {
-		return v.CustomizationScripts
-	}).(NodeCustomizationScriptResponseArrayOutput)
-}
-
-// The identity used to execute node customization tasks during image build time and provisioning time.
-// If not specified the default agentpool identity will be used.
-// This does not affect provisioned nodes.
-func (o NodeCustomizationPropertiesResponseOutput) IdentityProfile() UserAssignedIdentityResponsePtrOutput {
-	return o.ApplyT(func(v NodeCustomizationPropertiesResponse) *UserAssignedIdentityResponse { return v.IdentityProfile }).(UserAssignedIdentityResponsePtrOutput)
-}
-
-// The provisioning state of the node customization.
-func (o NodeCustomizationPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeCustomizationPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// An auto-generated value that changes when the other fields of the image customization are changed.
-func (o NodeCustomizationPropertiesResponseOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeCustomizationPropertiesResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-// Node customization script
-type NodeCustomizationScript struct {
-	// The stage at which the script is executed.
-	// Specifying `NodeImageBuildTime` will ensure changes are persisted into the node image.
-	ExecutionPoint string `pulumi:"executionPoint"`
-	// The name for the customization script.
-	// Must be unique within the node customization resource.
-	// Can only contain lowercase alphanumeric,'-' or '.' characters.
-	Name string `pulumi:"name"`
-	// Whether the node should reboot after successful script execution.
-	RebootAfter *bool `pulumi:"rebootAfter"`
-	// The script content to be executed in plain text. Do not include secrets.
-	Script *string `pulumi:"script"`
-	// The runtime environment for the script (e.g. Bash).
-	ScriptType string `pulumi:"scriptType"`
-}
-
-// NodeCustomizationScriptInput is an input type that accepts NodeCustomizationScriptArgs and NodeCustomizationScriptOutput values.
-// You can construct a concrete instance of `NodeCustomizationScriptInput` via:
+// OpenShiftManagedClusterAADIdentityProviderInput is an input type that accepts OpenShiftManagedClusterAADIdentityProviderArgs and OpenShiftManagedClusterAADIdentityProviderOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterAADIdentityProviderInput` via:
 //
-//	NodeCustomizationScriptArgs{...}
-type NodeCustomizationScriptInput interface {
+//	OpenShiftManagedClusterAADIdentityProviderArgs{...}
+type OpenShiftManagedClusterAADIdentityProviderInput interface {
 	pulumi.Input
 
-	ToNodeCustomizationScriptOutput() NodeCustomizationScriptOutput
-	ToNodeCustomizationScriptOutputWithContext(context.Context) NodeCustomizationScriptOutput
+	ToOpenShiftManagedClusterAADIdentityProviderOutput() OpenShiftManagedClusterAADIdentityProviderOutput
+	ToOpenShiftManagedClusterAADIdentityProviderOutputWithContext(context.Context) OpenShiftManagedClusterAADIdentityProviderOutput
 }
 
-// Node customization script
-type NodeCustomizationScriptArgs struct {
-	// The stage at which the script is executed.
-	// Specifying `NodeImageBuildTime` will ensure changes are persisted into the node image.
-	ExecutionPoint pulumi.StringInput `pulumi:"executionPoint"`
-	// The name for the customization script.
-	// Must be unique within the node customization resource.
-	// Can only contain lowercase alphanumeric,'-' or '.' characters.
+// Defines the Identity provider for MS AAD.
+type OpenShiftManagedClusterAADIdentityProviderArgs struct {
+	// The clientId password associated with the provider.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// The groupId to be granted cluster admin role.
+	CustomerAdminGroupId pulumi.StringPtrInput `pulumi:"customerAdminGroupId"`
+	// The kind of the provider.
+	// Expected value is 'AADIdentityProvider'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The secret password associated with the provider.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// The tenantId associated with the provider.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (OpenShiftManagedClusterAADIdentityProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterAADIdentityProvider)(nil)).Elem()
+}
+
+func (i OpenShiftManagedClusterAADIdentityProviderArgs) ToOpenShiftManagedClusterAADIdentityProviderOutput() OpenShiftManagedClusterAADIdentityProviderOutput {
+	return i.ToOpenShiftManagedClusterAADIdentityProviderOutputWithContext(context.Background())
+}
+
+func (i OpenShiftManagedClusterAADIdentityProviderArgs) ToOpenShiftManagedClusterAADIdentityProviderOutputWithContext(ctx context.Context) OpenShiftManagedClusterAADIdentityProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAADIdentityProviderOutput)
+}
+
+func (i OpenShiftManagedClusterAADIdentityProviderArgs) ToOpenShiftManagedClusterAADIdentityProviderPtrOutput() OpenShiftManagedClusterAADIdentityProviderPtrOutput {
+	return i.ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(context.Background())
+}
+
+func (i OpenShiftManagedClusterAADIdentityProviderArgs) ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAADIdentityProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAADIdentityProviderOutput).ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(ctx)
+}
+
+// OpenShiftManagedClusterAADIdentityProviderPtrInput is an input type that accepts OpenShiftManagedClusterAADIdentityProviderArgs, OpenShiftManagedClusterAADIdentityProviderPtr and OpenShiftManagedClusterAADIdentityProviderPtrOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterAADIdentityProviderPtrInput` via:
+//
+//	        OpenShiftManagedClusterAADIdentityProviderArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenShiftManagedClusterAADIdentityProviderPtrInput interface {
+	pulumi.Input
+
+	ToOpenShiftManagedClusterAADIdentityProviderPtrOutput() OpenShiftManagedClusterAADIdentityProviderPtrOutput
+	ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(context.Context) OpenShiftManagedClusterAADIdentityProviderPtrOutput
+}
+
+type openShiftManagedClusterAADIdentityProviderPtrType OpenShiftManagedClusterAADIdentityProviderArgs
+
+func OpenShiftManagedClusterAADIdentityProviderPtr(v *OpenShiftManagedClusterAADIdentityProviderArgs) OpenShiftManagedClusterAADIdentityProviderPtrInput {
+	return (*openShiftManagedClusterAADIdentityProviderPtrType)(v)
+}
+
+func (*openShiftManagedClusterAADIdentityProviderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterAADIdentityProvider)(nil)).Elem()
+}
+
+func (i *openShiftManagedClusterAADIdentityProviderPtrType) ToOpenShiftManagedClusterAADIdentityProviderPtrOutput() OpenShiftManagedClusterAADIdentityProviderPtrOutput {
+	return i.ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *openShiftManagedClusterAADIdentityProviderPtrType) ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAADIdentityProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAADIdentityProviderPtrOutput)
+}
+
+// Defines the Identity provider for MS AAD.
+type OpenShiftManagedClusterAADIdentityProviderOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterAADIdentityProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterAADIdentityProvider)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderOutput) ToOpenShiftManagedClusterAADIdentityProviderOutput() OpenShiftManagedClusterAADIdentityProviderOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderOutput) ToOpenShiftManagedClusterAADIdentityProviderOutputWithContext(ctx context.Context) OpenShiftManagedClusterAADIdentityProviderOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderOutput) ToOpenShiftManagedClusterAADIdentityProviderPtrOutput() OpenShiftManagedClusterAADIdentityProviderPtrOutput {
+	return o.ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(context.Background())
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderOutput) ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAADIdentityProviderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenShiftManagedClusterAADIdentityProvider) *OpenShiftManagedClusterAADIdentityProvider {
+		return &v
+	}).(OpenShiftManagedClusterAADIdentityProviderPtrOutput)
+}
+
+// The clientId password associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAADIdentityProvider) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The groupId to be granted cluster admin role.
+func (o OpenShiftManagedClusterAADIdentityProviderOutput) CustomerAdminGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAADIdentityProvider) *string { return v.CustomerAdminGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The kind of the provider.
+// Expected value is 'AADIdentityProvider'.
+func (o OpenShiftManagedClusterAADIdentityProviderOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAADIdentityProvider) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The secret password associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAADIdentityProvider) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// The tenantId associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAADIdentityProvider) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type OpenShiftManagedClusterAADIdentityProviderPtrOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterAADIdentityProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterAADIdentityProvider)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) ToOpenShiftManagedClusterAADIdentityProviderPtrOutput() OpenShiftManagedClusterAADIdentityProviderPtrOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAADIdentityProviderPtrOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) Elem() OpenShiftManagedClusterAADIdentityProviderOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProvider) OpenShiftManagedClusterAADIdentityProvider {
+		if v != nil {
+			return *v
+		}
+		var ret OpenShiftManagedClusterAADIdentityProvider
+		return ret
+	}).(OpenShiftManagedClusterAADIdentityProviderOutput)
+}
+
+// The clientId password associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The groupId to be granted cluster admin role.
+func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) CustomerAdminGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerAdminGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The kind of the provider.
+// Expected value is 'AADIdentityProvider'.
+func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The secret password associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenantId associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the Identity provider for MS AAD.
+type OpenShiftManagedClusterAADIdentityProviderResponse struct {
+	// The clientId password associated with the provider.
+	ClientId *string `pulumi:"clientId"`
+	// The groupId to be granted cluster admin role.
+	CustomerAdminGroupId *string `pulumi:"customerAdminGroupId"`
+	// The kind of the provider.
+	// Expected value is 'AADIdentityProvider'.
+	Kind string `pulumi:"kind"`
+	// The secret password associated with the provider.
+	Secret *string `pulumi:"secret"`
+	// The tenantId associated with the provider.
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// Defines the Identity provider for MS AAD.
+type OpenShiftManagedClusterAADIdentityProviderResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterAADIdentityProviderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterAADIdentityProviderResponse)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderResponseOutput) ToOpenShiftManagedClusterAADIdentityProviderResponseOutput() OpenShiftManagedClusterAADIdentityProviderResponseOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderResponseOutput) ToOpenShiftManagedClusterAADIdentityProviderResponseOutputWithContext(ctx context.Context) OpenShiftManagedClusterAADIdentityProviderResponseOutput {
+	return o
+}
+
+// The clientId password associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAADIdentityProviderResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The groupId to be granted cluster admin role.
+func (o OpenShiftManagedClusterAADIdentityProviderResponseOutput) CustomerAdminGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAADIdentityProviderResponse) *string { return v.CustomerAdminGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The kind of the provider.
+// Expected value is 'AADIdentityProvider'.
+func (o OpenShiftManagedClusterAADIdentityProviderResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAADIdentityProviderResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The secret password associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderResponseOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAADIdentityProviderResponse) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// The tenantId associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAADIdentityProviderResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterAADIdentityProviderResponse)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) ToOpenShiftManagedClusterAADIdentityProviderResponsePtrOutput() OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) ToOpenShiftManagedClusterAADIdentityProviderResponsePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) Elem() OpenShiftManagedClusterAADIdentityProviderResponseOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProviderResponse) OpenShiftManagedClusterAADIdentityProviderResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OpenShiftManagedClusterAADIdentityProviderResponse
+		return ret
+	}).(OpenShiftManagedClusterAADIdentityProviderResponseOutput)
+}
+
+// The clientId password associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProviderResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The groupId to be granted cluster admin role.
+func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) CustomerAdminGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProviderResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerAdminGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The kind of the provider.
+// Expected value is 'AADIdentityProvider'.
+func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProviderResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The secret password associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProviderResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenantId associated with the provider.
+func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAADIdentityProviderResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the configuration of the OpenShift cluster VMs.
+type OpenShiftManagedClusterAgentPoolProfile struct {
+	// Number of agents (VMs) to host docker containers.
+	Count int `pulumi:"count"`
+	// Unique name of the pool profile in the context of the subscription and resource group.
+	Name string `pulumi:"name"`
+	// OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+	OsType *string `pulumi:"osType"`
+	// Define the role of the AgentPoolProfile.
+	Role *string `pulumi:"role"`
+	// Subnet CIDR for the peering.
+	SubnetCidr *string `pulumi:"subnetCidr"`
+	// Size of agent VMs.
+	VmSize string `pulumi:"vmSize"`
+}
+
+// Defaults sets the appropriate defaults for OpenShiftManagedClusterAgentPoolProfile
+func (val *OpenShiftManagedClusterAgentPoolProfile) Defaults() *OpenShiftManagedClusterAgentPoolProfile {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SubnetCidr == nil {
+		subnetCidr_ := "10.0.0.0/24"
+		tmp.SubnetCidr = &subnetCidr_
+	}
+	return &tmp
+}
+
+// OpenShiftManagedClusterAgentPoolProfileInput is an input type that accepts OpenShiftManagedClusterAgentPoolProfileArgs and OpenShiftManagedClusterAgentPoolProfileOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterAgentPoolProfileInput` via:
+//
+//	OpenShiftManagedClusterAgentPoolProfileArgs{...}
+type OpenShiftManagedClusterAgentPoolProfileInput interface {
+	pulumi.Input
+
+	ToOpenShiftManagedClusterAgentPoolProfileOutput() OpenShiftManagedClusterAgentPoolProfileOutput
+	ToOpenShiftManagedClusterAgentPoolProfileOutputWithContext(context.Context) OpenShiftManagedClusterAgentPoolProfileOutput
+}
+
+// Defines the configuration of the OpenShift cluster VMs.
+type OpenShiftManagedClusterAgentPoolProfileArgs struct {
+	// Number of agents (VMs) to host docker containers.
+	Count pulumi.IntInput `pulumi:"count"`
+	// Unique name of the pool profile in the context of the subscription and resource group.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Whether the node should reboot after successful script execution.
-	RebootAfter pulumi.BoolPtrInput `pulumi:"rebootAfter"`
-	// The script content to be executed in plain text. Do not include secrets.
-	Script pulumi.StringPtrInput `pulumi:"script"`
-	// The runtime environment for the script (e.g. Bash).
-	ScriptType pulumi.StringInput `pulumi:"scriptType"`
+	// OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+	OsType pulumi.StringPtrInput `pulumi:"osType"`
+	// Define the role of the AgentPoolProfile.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// Subnet CIDR for the peering.
+	SubnetCidr pulumi.StringPtrInput `pulumi:"subnetCidr"`
+	// Size of agent VMs.
+	VmSize pulumi.StringInput `pulumi:"vmSize"`
 }
 
-func (NodeCustomizationScriptArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeCustomizationScript)(nil)).Elem()
+// Defaults sets the appropriate defaults for OpenShiftManagedClusterAgentPoolProfileArgs
+func (val *OpenShiftManagedClusterAgentPoolProfileArgs) Defaults() *OpenShiftManagedClusterAgentPoolProfileArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SubnetCidr == nil {
+		tmp.SubnetCidr = pulumi.StringPtr("10.0.0.0/24")
+	}
+	return &tmp
+}
+func (OpenShiftManagedClusterAgentPoolProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterAgentPoolProfile)(nil)).Elem()
 }
 
-func (i NodeCustomizationScriptArgs) ToNodeCustomizationScriptOutput() NodeCustomizationScriptOutput {
-	return i.ToNodeCustomizationScriptOutputWithContext(context.Background())
+func (i OpenShiftManagedClusterAgentPoolProfileArgs) ToOpenShiftManagedClusterAgentPoolProfileOutput() OpenShiftManagedClusterAgentPoolProfileOutput {
+	return i.ToOpenShiftManagedClusterAgentPoolProfileOutputWithContext(context.Background())
 }
 
-func (i NodeCustomizationScriptArgs) ToNodeCustomizationScriptOutputWithContext(ctx context.Context) NodeCustomizationScriptOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeCustomizationScriptOutput)
+func (i OpenShiftManagedClusterAgentPoolProfileArgs) ToOpenShiftManagedClusterAgentPoolProfileOutputWithContext(ctx context.Context) OpenShiftManagedClusterAgentPoolProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAgentPoolProfileOutput)
 }
 
-// NodeCustomizationScriptArrayInput is an input type that accepts NodeCustomizationScriptArray and NodeCustomizationScriptArrayOutput values.
-// You can construct a concrete instance of `NodeCustomizationScriptArrayInput` via:
+// OpenShiftManagedClusterAgentPoolProfileArrayInput is an input type that accepts OpenShiftManagedClusterAgentPoolProfileArray and OpenShiftManagedClusterAgentPoolProfileArrayOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterAgentPoolProfileArrayInput` via:
 //
-//	NodeCustomizationScriptArray{ NodeCustomizationScriptArgs{...} }
-type NodeCustomizationScriptArrayInput interface {
+//	OpenShiftManagedClusterAgentPoolProfileArray{ OpenShiftManagedClusterAgentPoolProfileArgs{...} }
+type OpenShiftManagedClusterAgentPoolProfileArrayInput interface {
 	pulumi.Input
 
-	ToNodeCustomizationScriptArrayOutput() NodeCustomizationScriptArrayOutput
-	ToNodeCustomizationScriptArrayOutputWithContext(context.Context) NodeCustomizationScriptArrayOutput
+	ToOpenShiftManagedClusterAgentPoolProfileArrayOutput() OpenShiftManagedClusterAgentPoolProfileArrayOutput
+	ToOpenShiftManagedClusterAgentPoolProfileArrayOutputWithContext(context.Context) OpenShiftManagedClusterAgentPoolProfileArrayOutput
 }
 
-type NodeCustomizationScriptArray []NodeCustomizationScriptInput
+type OpenShiftManagedClusterAgentPoolProfileArray []OpenShiftManagedClusterAgentPoolProfileInput
 
-func (NodeCustomizationScriptArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodeCustomizationScript)(nil)).Elem()
+func (OpenShiftManagedClusterAgentPoolProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenShiftManagedClusterAgentPoolProfile)(nil)).Elem()
 }
 
-func (i NodeCustomizationScriptArray) ToNodeCustomizationScriptArrayOutput() NodeCustomizationScriptArrayOutput {
-	return i.ToNodeCustomizationScriptArrayOutputWithContext(context.Background())
+func (i OpenShiftManagedClusterAgentPoolProfileArray) ToOpenShiftManagedClusterAgentPoolProfileArrayOutput() OpenShiftManagedClusterAgentPoolProfileArrayOutput {
+	return i.ToOpenShiftManagedClusterAgentPoolProfileArrayOutputWithContext(context.Background())
 }
 
-func (i NodeCustomizationScriptArray) ToNodeCustomizationScriptArrayOutputWithContext(ctx context.Context) NodeCustomizationScriptArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeCustomizationScriptArrayOutput)
+func (i OpenShiftManagedClusterAgentPoolProfileArray) ToOpenShiftManagedClusterAgentPoolProfileArrayOutputWithContext(ctx context.Context) OpenShiftManagedClusterAgentPoolProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAgentPoolProfileArrayOutput)
 }
 
-// Node customization script
-type NodeCustomizationScriptOutput struct{ *pulumi.OutputState }
+// Defines the configuration of the OpenShift cluster VMs.
+type OpenShiftManagedClusterAgentPoolProfileOutput struct{ *pulumi.OutputState }
 
-func (NodeCustomizationScriptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeCustomizationScript)(nil)).Elem()
+func (OpenShiftManagedClusterAgentPoolProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterAgentPoolProfile)(nil)).Elem()
 }
 
-func (o NodeCustomizationScriptOutput) ToNodeCustomizationScriptOutput() NodeCustomizationScriptOutput {
+func (o OpenShiftManagedClusterAgentPoolProfileOutput) ToOpenShiftManagedClusterAgentPoolProfileOutput() OpenShiftManagedClusterAgentPoolProfileOutput {
 	return o
 }
 
-func (o NodeCustomizationScriptOutput) ToNodeCustomizationScriptOutputWithContext(ctx context.Context) NodeCustomizationScriptOutput {
+func (o OpenShiftManagedClusterAgentPoolProfileOutput) ToOpenShiftManagedClusterAgentPoolProfileOutputWithContext(ctx context.Context) OpenShiftManagedClusterAgentPoolProfileOutput {
 	return o
 }
 
-// The stage at which the script is executed.
-// Specifying `NodeImageBuildTime` will ensure changes are persisted into the node image.
-func (o NodeCustomizationScriptOutput) ExecutionPoint() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeCustomizationScript) string { return v.ExecutionPoint }).(pulumi.StringOutput)
+// Number of agents (VMs) to host docker containers.
+func (o OpenShiftManagedClusterAgentPoolProfileOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfile) int { return v.Count }).(pulumi.IntOutput)
 }
 
-// The name for the customization script.
-// Must be unique within the node customization resource.
-// Can only contain lowercase alphanumeric,'-' or '.' characters.
-func (o NodeCustomizationScriptOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeCustomizationScript) string { return v.Name }).(pulumi.StringOutput)
+// Unique name of the pool profile in the context of the subscription and resource group.
+func (o OpenShiftManagedClusterAgentPoolProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfile) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Whether the node should reboot after successful script execution.
-func (o NodeCustomizationScriptOutput) RebootAfter() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NodeCustomizationScript) *bool { return v.RebootAfter }).(pulumi.BoolPtrOutput)
+// OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+func (o OpenShiftManagedClusterAgentPoolProfileOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfile) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
-// The script content to be executed in plain text. Do not include secrets.
-func (o NodeCustomizationScriptOutput) Script() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeCustomizationScript) *string { return v.Script }).(pulumi.StringPtrOutput)
+// Define the role of the AgentPoolProfile.
+func (o OpenShiftManagedClusterAgentPoolProfileOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfile) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// The runtime environment for the script (e.g. Bash).
-func (o NodeCustomizationScriptOutput) ScriptType() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeCustomizationScript) string { return v.ScriptType }).(pulumi.StringOutput)
+// Subnet CIDR for the peering.
+func (o OpenShiftManagedClusterAgentPoolProfileOutput) SubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfile) *string { return v.SubnetCidr }).(pulumi.StringPtrOutput)
 }
 
-type NodeCustomizationScriptArrayOutput struct{ *pulumi.OutputState }
-
-func (NodeCustomizationScriptArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodeCustomizationScript)(nil)).Elem()
+// Size of agent VMs.
+func (o OpenShiftManagedClusterAgentPoolProfileOutput) VmSize() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfile) string { return v.VmSize }).(pulumi.StringOutput)
 }
 
-func (o NodeCustomizationScriptArrayOutput) ToNodeCustomizationScriptArrayOutput() NodeCustomizationScriptArrayOutput {
+type OpenShiftManagedClusterAgentPoolProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterAgentPoolProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenShiftManagedClusterAgentPoolProfile)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterAgentPoolProfileArrayOutput) ToOpenShiftManagedClusterAgentPoolProfileArrayOutput() OpenShiftManagedClusterAgentPoolProfileArrayOutput {
 	return o
 }
 
-func (o NodeCustomizationScriptArrayOutput) ToNodeCustomizationScriptArrayOutputWithContext(ctx context.Context) NodeCustomizationScriptArrayOutput {
+func (o OpenShiftManagedClusterAgentPoolProfileArrayOutput) ToOpenShiftManagedClusterAgentPoolProfileArrayOutputWithContext(ctx context.Context) OpenShiftManagedClusterAgentPoolProfileArrayOutput {
 	return o
 }
 
-func (o NodeCustomizationScriptArrayOutput) Index(i pulumi.IntInput) NodeCustomizationScriptOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeCustomizationScript {
-		return vs[0].([]NodeCustomizationScript)[vs[1].(int)]
-	}).(NodeCustomizationScriptOutput)
+func (o OpenShiftManagedClusterAgentPoolProfileArrayOutput) Index(i pulumi.IntInput) OpenShiftManagedClusterAgentPoolProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenShiftManagedClusterAgentPoolProfile {
+		return vs[0].([]OpenShiftManagedClusterAgentPoolProfile)[vs[1].(int)]
+	}).(OpenShiftManagedClusterAgentPoolProfileOutput)
 }
 
-// Node customization script
-type NodeCustomizationScriptResponse struct {
-	// The stage at which the script is executed.
-	// Specifying `NodeImageBuildTime` will ensure changes are persisted into the node image.
-	ExecutionPoint string `pulumi:"executionPoint"`
-	// The name for the customization script.
-	// Must be unique within the node customization resource.
-	// Can only contain lowercase alphanumeric,'-' or '.' characters.
+// Defines the configuration of the OpenShift cluster VMs.
+type OpenShiftManagedClusterAgentPoolProfileResponse struct {
+	// Number of agents (VMs) to host docker containers.
+	Count int `pulumi:"count"`
+	// Unique name of the pool profile in the context of the subscription and resource group.
 	Name string `pulumi:"name"`
-	// Whether the node should reboot after successful script execution.
-	RebootAfter *bool `pulumi:"rebootAfter"`
-	// The script content to be executed in plain text. Do not include secrets.
-	Script *string `pulumi:"script"`
-	// The runtime environment for the script (e.g. Bash).
-	ScriptType string `pulumi:"scriptType"`
+	// OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+	OsType *string `pulumi:"osType"`
+	// Define the role of the AgentPoolProfile.
+	Role *string `pulumi:"role"`
+	// Subnet CIDR for the peering.
+	SubnetCidr *string `pulumi:"subnetCidr"`
+	// Size of agent VMs.
+	VmSize string `pulumi:"vmSize"`
 }
 
-// Node customization script
-type NodeCustomizationScriptResponseOutput struct{ *pulumi.OutputState }
-
-func (NodeCustomizationScriptResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeCustomizationScriptResponse)(nil)).Elem()
+// Defaults sets the appropriate defaults for OpenShiftManagedClusterAgentPoolProfileResponse
+func (val *OpenShiftManagedClusterAgentPoolProfileResponse) Defaults() *OpenShiftManagedClusterAgentPoolProfileResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SubnetCidr == nil {
+		subnetCidr_ := "10.0.0.0/24"
+		tmp.SubnetCidr = &subnetCidr_
+	}
+	return &tmp
 }
 
-func (o NodeCustomizationScriptResponseOutput) ToNodeCustomizationScriptResponseOutput() NodeCustomizationScriptResponseOutput {
+// Defines the configuration of the OpenShift cluster VMs.
+type OpenShiftManagedClusterAgentPoolProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterAgentPoolProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterAgentPoolProfileResponse)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterAgentPoolProfileResponseOutput) ToOpenShiftManagedClusterAgentPoolProfileResponseOutput() OpenShiftManagedClusterAgentPoolProfileResponseOutput {
 	return o
 }
 
-func (o NodeCustomizationScriptResponseOutput) ToNodeCustomizationScriptResponseOutputWithContext(ctx context.Context) NodeCustomizationScriptResponseOutput {
+func (o OpenShiftManagedClusterAgentPoolProfileResponseOutput) ToOpenShiftManagedClusterAgentPoolProfileResponseOutputWithContext(ctx context.Context) OpenShiftManagedClusterAgentPoolProfileResponseOutput {
 	return o
 }
 
-// The stage at which the script is executed.
-// Specifying `NodeImageBuildTime` will ensure changes are persisted into the node image.
-func (o NodeCustomizationScriptResponseOutput) ExecutionPoint() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeCustomizationScriptResponse) string { return v.ExecutionPoint }).(pulumi.StringOutput)
+// Number of agents (VMs) to host docker containers.
+func (o OpenShiftManagedClusterAgentPoolProfileResponseOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfileResponse) int { return v.Count }).(pulumi.IntOutput)
 }
 
-// The name for the customization script.
-// Must be unique within the node customization resource.
-// Can only contain lowercase alphanumeric,'-' or '.' characters.
-func (o NodeCustomizationScriptResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeCustomizationScriptResponse) string { return v.Name }).(pulumi.StringOutput)
+// Unique name of the pool profile in the context of the subscription and resource group.
+func (o OpenShiftManagedClusterAgentPoolProfileResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfileResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Whether the node should reboot after successful script execution.
-func (o NodeCustomizationScriptResponseOutput) RebootAfter() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NodeCustomizationScriptResponse) *bool { return v.RebootAfter }).(pulumi.BoolPtrOutput)
+// OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+func (o OpenShiftManagedClusterAgentPoolProfileResponseOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfileResponse) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
-// The script content to be executed in plain text. Do not include secrets.
-func (o NodeCustomizationScriptResponseOutput) Script() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeCustomizationScriptResponse) *string { return v.Script }).(pulumi.StringPtrOutput)
+// Define the role of the AgentPoolProfile.
+func (o OpenShiftManagedClusterAgentPoolProfileResponseOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfileResponse) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// The runtime environment for the script (e.g. Bash).
-func (o NodeCustomizationScriptResponseOutput) ScriptType() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeCustomizationScriptResponse) string { return v.ScriptType }).(pulumi.StringOutput)
+// Subnet CIDR for the peering.
+func (o OpenShiftManagedClusterAgentPoolProfileResponseOutput) SubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfileResponse) *string { return v.SubnetCidr }).(pulumi.StringPtrOutput)
 }
 
-type NodeCustomizationScriptResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (NodeCustomizationScriptResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodeCustomizationScriptResponse)(nil)).Elem()
+// Size of agent VMs.
+func (o OpenShiftManagedClusterAgentPoolProfileResponseOutput) VmSize() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfileResponse) string { return v.VmSize }).(pulumi.StringOutput)
 }
 
-func (o NodeCustomizationScriptResponseArrayOutput) ToNodeCustomizationScriptResponseArrayOutput() NodeCustomizationScriptResponseArrayOutput {
+type OpenShiftManagedClusterAgentPoolProfileResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterAgentPoolProfileResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenShiftManagedClusterAgentPoolProfileResponse)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterAgentPoolProfileResponseArrayOutput) ToOpenShiftManagedClusterAgentPoolProfileResponseArrayOutput() OpenShiftManagedClusterAgentPoolProfileResponseArrayOutput {
 	return o
 }
 
-func (o NodeCustomizationScriptResponseArrayOutput) ToNodeCustomizationScriptResponseArrayOutputWithContext(ctx context.Context) NodeCustomizationScriptResponseArrayOutput {
+func (o OpenShiftManagedClusterAgentPoolProfileResponseArrayOutput) ToOpenShiftManagedClusterAgentPoolProfileResponseArrayOutputWithContext(ctx context.Context) OpenShiftManagedClusterAgentPoolProfileResponseArrayOutput {
 	return o
 }
 
-func (o NodeCustomizationScriptResponseArrayOutput) Index(i pulumi.IntInput) NodeCustomizationScriptResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeCustomizationScriptResponse {
-		return vs[0].([]NodeCustomizationScriptResponse)[vs[1].(int)]
-	}).(NodeCustomizationScriptResponseOutput)
+func (o OpenShiftManagedClusterAgentPoolProfileResponseArrayOutput) Index(i pulumi.IntInput) OpenShiftManagedClusterAgentPoolProfileResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenShiftManagedClusterAgentPoolProfileResponse {
+		return vs[0].([]OpenShiftManagedClusterAgentPoolProfileResponse)[vs[1].(int)]
+	}).(OpenShiftManagedClusterAgentPoolProfileResponseOutput)
 }
 
-// The node image upgrade to be applied to the target nodes in update run.
-type NodeImageSelection struct {
-	// The node image upgrade type.
-	Type string `pulumi:"type"`
+// Defines all possible authentication profiles for the OpenShift cluster.
+type OpenShiftManagedClusterAuthProfile struct {
+	// Type of authentication profile to use.
+	IdentityProviders []OpenShiftManagedClusterIdentityProvider `pulumi:"identityProviders"`
 }
 
-// NodeImageSelectionInput is an input type that accepts NodeImageSelectionArgs and NodeImageSelectionOutput values.
-// You can construct a concrete instance of `NodeImageSelectionInput` via:
+// OpenShiftManagedClusterAuthProfileInput is an input type that accepts OpenShiftManagedClusterAuthProfileArgs and OpenShiftManagedClusterAuthProfileOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterAuthProfileInput` via:
 //
-//	NodeImageSelectionArgs{...}
-type NodeImageSelectionInput interface {
+//	OpenShiftManagedClusterAuthProfileArgs{...}
+type OpenShiftManagedClusterAuthProfileInput interface {
 	pulumi.Input
 
-	ToNodeImageSelectionOutput() NodeImageSelectionOutput
-	ToNodeImageSelectionOutputWithContext(context.Context) NodeImageSelectionOutput
+	ToOpenShiftManagedClusterAuthProfileOutput() OpenShiftManagedClusterAuthProfileOutput
+	ToOpenShiftManagedClusterAuthProfileOutputWithContext(context.Context) OpenShiftManagedClusterAuthProfileOutput
 }
 
-// The node image upgrade to be applied to the target nodes in update run.
-type NodeImageSelectionArgs struct {
-	// The node image upgrade type.
-	Type pulumi.StringInput `pulumi:"type"`
+// Defines all possible authentication profiles for the OpenShift cluster.
+type OpenShiftManagedClusterAuthProfileArgs struct {
+	// Type of authentication profile to use.
+	IdentityProviders OpenShiftManagedClusterIdentityProviderArrayInput `pulumi:"identityProviders"`
 }
 
-func (NodeImageSelectionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeImageSelection)(nil)).Elem()
+func (OpenShiftManagedClusterAuthProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterAuthProfile)(nil)).Elem()
 }
 
-func (i NodeImageSelectionArgs) ToNodeImageSelectionOutput() NodeImageSelectionOutput {
-	return i.ToNodeImageSelectionOutputWithContext(context.Background())
+func (i OpenShiftManagedClusterAuthProfileArgs) ToOpenShiftManagedClusterAuthProfileOutput() OpenShiftManagedClusterAuthProfileOutput {
+	return i.ToOpenShiftManagedClusterAuthProfileOutputWithContext(context.Background())
 }
 
-func (i NodeImageSelectionArgs) ToNodeImageSelectionOutputWithContext(ctx context.Context) NodeImageSelectionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeImageSelectionOutput)
+func (i OpenShiftManagedClusterAuthProfileArgs) ToOpenShiftManagedClusterAuthProfileOutputWithContext(ctx context.Context) OpenShiftManagedClusterAuthProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAuthProfileOutput)
 }
 
-func (i NodeImageSelectionArgs) ToNodeImageSelectionPtrOutput() NodeImageSelectionPtrOutput {
-	return i.ToNodeImageSelectionPtrOutputWithContext(context.Background())
+func (i OpenShiftManagedClusterAuthProfileArgs) ToOpenShiftManagedClusterAuthProfilePtrOutput() OpenShiftManagedClusterAuthProfilePtrOutput {
+	return i.ToOpenShiftManagedClusterAuthProfilePtrOutputWithContext(context.Background())
 }
 
-func (i NodeImageSelectionArgs) ToNodeImageSelectionPtrOutputWithContext(ctx context.Context) NodeImageSelectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeImageSelectionOutput).ToNodeImageSelectionPtrOutputWithContext(ctx)
+func (i OpenShiftManagedClusterAuthProfileArgs) ToOpenShiftManagedClusterAuthProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAuthProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAuthProfileOutput).ToOpenShiftManagedClusterAuthProfilePtrOutputWithContext(ctx)
 }
 
-// NodeImageSelectionPtrInput is an input type that accepts NodeImageSelectionArgs, NodeImageSelectionPtr and NodeImageSelectionPtrOutput values.
-// You can construct a concrete instance of `NodeImageSelectionPtrInput` via:
+// OpenShiftManagedClusterAuthProfilePtrInput is an input type that accepts OpenShiftManagedClusterAuthProfileArgs, OpenShiftManagedClusterAuthProfilePtr and OpenShiftManagedClusterAuthProfilePtrOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterAuthProfilePtrInput` via:
 //
-//	        NodeImageSelectionArgs{...}
+//	        OpenShiftManagedClusterAuthProfileArgs{...}
 //
 //	or:
 //
 //	        nil
-type NodeImageSelectionPtrInput interface {
+type OpenShiftManagedClusterAuthProfilePtrInput interface {
 	pulumi.Input
 
-	ToNodeImageSelectionPtrOutput() NodeImageSelectionPtrOutput
-	ToNodeImageSelectionPtrOutputWithContext(context.Context) NodeImageSelectionPtrOutput
+	ToOpenShiftManagedClusterAuthProfilePtrOutput() OpenShiftManagedClusterAuthProfilePtrOutput
+	ToOpenShiftManagedClusterAuthProfilePtrOutputWithContext(context.Context) OpenShiftManagedClusterAuthProfilePtrOutput
 }
 
-type nodeImageSelectionPtrType NodeImageSelectionArgs
+type openShiftManagedClusterAuthProfilePtrType OpenShiftManagedClusterAuthProfileArgs
 
-func NodeImageSelectionPtr(v *NodeImageSelectionArgs) NodeImageSelectionPtrInput {
-	return (*nodeImageSelectionPtrType)(v)
+func OpenShiftManagedClusterAuthProfilePtr(v *OpenShiftManagedClusterAuthProfileArgs) OpenShiftManagedClusterAuthProfilePtrInput {
+	return (*openShiftManagedClusterAuthProfilePtrType)(v)
 }
 
-func (*nodeImageSelectionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeImageSelection)(nil)).Elem()
+func (*openShiftManagedClusterAuthProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterAuthProfile)(nil)).Elem()
 }
 
-func (i *nodeImageSelectionPtrType) ToNodeImageSelectionPtrOutput() NodeImageSelectionPtrOutput {
-	return i.ToNodeImageSelectionPtrOutputWithContext(context.Background())
+func (i *openShiftManagedClusterAuthProfilePtrType) ToOpenShiftManagedClusterAuthProfilePtrOutput() OpenShiftManagedClusterAuthProfilePtrOutput {
+	return i.ToOpenShiftManagedClusterAuthProfilePtrOutputWithContext(context.Background())
 }
 
-func (i *nodeImageSelectionPtrType) ToNodeImageSelectionPtrOutputWithContext(ctx context.Context) NodeImageSelectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeImageSelectionPtrOutput)
+func (i *openShiftManagedClusterAuthProfilePtrType) ToOpenShiftManagedClusterAuthProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAuthProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAuthProfilePtrOutput)
 }
 
-// The node image upgrade to be applied to the target nodes in update run.
-type NodeImageSelectionOutput struct{ *pulumi.OutputState }
+// Defines all possible authentication profiles for the OpenShift cluster.
+type OpenShiftManagedClusterAuthProfileOutput struct{ *pulumi.OutputState }
 
-func (NodeImageSelectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeImageSelection)(nil)).Elem()
+func (OpenShiftManagedClusterAuthProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterAuthProfile)(nil)).Elem()
 }
 
-func (o NodeImageSelectionOutput) ToNodeImageSelectionOutput() NodeImageSelectionOutput {
+func (o OpenShiftManagedClusterAuthProfileOutput) ToOpenShiftManagedClusterAuthProfileOutput() OpenShiftManagedClusterAuthProfileOutput {
 	return o
 }
 
-func (o NodeImageSelectionOutput) ToNodeImageSelectionOutputWithContext(ctx context.Context) NodeImageSelectionOutput {
+func (o OpenShiftManagedClusterAuthProfileOutput) ToOpenShiftManagedClusterAuthProfileOutputWithContext(ctx context.Context) OpenShiftManagedClusterAuthProfileOutput {
 	return o
 }
 
-func (o NodeImageSelectionOutput) ToNodeImageSelectionPtrOutput() NodeImageSelectionPtrOutput {
-	return o.ToNodeImageSelectionPtrOutputWithContext(context.Background())
+func (o OpenShiftManagedClusterAuthProfileOutput) ToOpenShiftManagedClusterAuthProfilePtrOutput() OpenShiftManagedClusterAuthProfilePtrOutput {
+	return o.ToOpenShiftManagedClusterAuthProfilePtrOutputWithContext(context.Background())
 }
 
-func (o NodeImageSelectionOutput) ToNodeImageSelectionPtrOutputWithContext(ctx context.Context) NodeImageSelectionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeImageSelection) *NodeImageSelection {
+func (o OpenShiftManagedClusterAuthProfileOutput) ToOpenShiftManagedClusterAuthProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAuthProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenShiftManagedClusterAuthProfile) *OpenShiftManagedClusterAuthProfile {
 		return &v
-	}).(NodeImageSelectionPtrOutput)
+	}).(OpenShiftManagedClusterAuthProfilePtrOutput)
 }
 
-// The node image upgrade type.
-func (o NodeImageSelectionOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeImageSelection) string { return v.Type }).(pulumi.StringOutput)
+// Type of authentication profile to use.
+func (o OpenShiftManagedClusterAuthProfileOutput) IdentityProviders() OpenShiftManagedClusterIdentityProviderArrayOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAuthProfile) []OpenShiftManagedClusterIdentityProvider {
+		return v.IdentityProviders
+	}).(OpenShiftManagedClusterIdentityProviderArrayOutput)
 }
 
-type NodeImageSelectionPtrOutput struct{ *pulumi.OutputState }
+type OpenShiftManagedClusterAuthProfilePtrOutput struct{ *pulumi.OutputState }
 
-func (NodeImageSelectionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeImageSelection)(nil)).Elem()
+func (OpenShiftManagedClusterAuthProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterAuthProfile)(nil)).Elem()
 }
 
-func (o NodeImageSelectionPtrOutput) ToNodeImageSelectionPtrOutput() NodeImageSelectionPtrOutput {
+func (o OpenShiftManagedClusterAuthProfilePtrOutput) ToOpenShiftManagedClusterAuthProfilePtrOutput() OpenShiftManagedClusterAuthProfilePtrOutput {
 	return o
 }
 
-func (o NodeImageSelectionPtrOutput) ToNodeImageSelectionPtrOutputWithContext(ctx context.Context) NodeImageSelectionPtrOutput {
+func (o OpenShiftManagedClusterAuthProfilePtrOutput) ToOpenShiftManagedClusterAuthProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAuthProfilePtrOutput {
 	return o
 }
 
-func (o NodeImageSelectionPtrOutput) Elem() NodeImageSelectionOutput {
-	return o.ApplyT(func(v *NodeImageSelection) NodeImageSelection {
+func (o OpenShiftManagedClusterAuthProfilePtrOutput) Elem() OpenShiftManagedClusterAuthProfileOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAuthProfile) OpenShiftManagedClusterAuthProfile {
 		if v != nil {
 			return *v
 		}
-		var ret NodeImageSelection
+		var ret OpenShiftManagedClusterAuthProfile
 		return ret
-	}).(NodeImageSelectionOutput)
+	}).(OpenShiftManagedClusterAuthProfileOutput)
 }
 
-// The node image upgrade type.
-func (o NodeImageSelectionPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodeImageSelection) *string {
+// Type of authentication profile to use.
+func (o OpenShiftManagedClusterAuthProfilePtrOutput) IdentityProviders() OpenShiftManagedClusterIdentityProviderArrayOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAuthProfile) []OpenShiftManagedClusterIdentityProvider {
 		if v == nil {
 			return nil
 		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
+		return v.IdentityProviders
+	}).(OpenShiftManagedClusterIdentityProviderArrayOutput)
 }
 
-// The node image upgrade to be applied to the target nodes in update run.
-type NodeImageSelectionResponse struct {
-	// Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded.
-	CustomNodeImageVersions []NodeImageVersionResponse `pulumi:"customNodeImageVersions"`
-	// The node image upgrade type.
-	Type string `pulumi:"type"`
+// Defines all possible authentication profiles for the OpenShift cluster.
+type OpenShiftManagedClusterAuthProfileResponse struct {
+	// Type of authentication profile to use.
+	IdentityProviders []OpenShiftManagedClusterIdentityProviderResponse `pulumi:"identityProviders"`
 }
 
-// The node image upgrade to be applied to the target nodes in update run.
-type NodeImageSelectionResponseOutput struct{ *pulumi.OutputState }
+// Defines all possible authentication profiles for the OpenShift cluster.
+type OpenShiftManagedClusterAuthProfileResponseOutput struct{ *pulumi.OutputState }
 
-func (NodeImageSelectionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeImageSelectionResponse)(nil)).Elem()
+func (OpenShiftManagedClusterAuthProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterAuthProfileResponse)(nil)).Elem()
 }
 
-func (o NodeImageSelectionResponseOutput) ToNodeImageSelectionResponseOutput() NodeImageSelectionResponseOutput {
+func (o OpenShiftManagedClusterAuthProfileResponseOutput) ToOpenShiftManagedClusterAuthProfileResponseOutput() OpenShiftManagedClusterAuthProfileResponseOutput {
 	return o
 }
 
-func (o NodeImageSelectionResponseOutput) ToNodeImageSelectionResponseOutputWithContext(ctx context.Context) NodeImageSelectionResponseOutput {
+func (o OpenShiftManagedClusterAuthProfileResponseOutput) ToOpenShiftManagedClusterAuthProfileResponseOutputWithContext(ctx context.Context) OpenShiftManagedClusterAuthProfileResponseOutput {
 	return o
 }
 
-// Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded.
-func (o NodeImageSelectionResponseOutput) CustomNodeImageVersions() NodeImageVersionResponseArrayOutput {
-	return o.ApplyT(func(v NodeImageSelectionResponse) []NodeImageVersionResponse { return v.CustomNodeImageVersions }).(NodeImageVersionResponseArrayOutput)
+// Type of authentication profile to use.
+func (o OpenShiftManagedClusterAuthProfileResponseOutput) IdentityProviders() OpenShiftManagedClusterIdentityProviderResponseArrayOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterAuthProfileResponse) []OpenShiftManagedClusterIdentityProviderResponse {
+		return v.IdentityProviders
+	}).(OpenShiftManagedClusterIdentityProviderResponseArrayOutput)
 }
 
-// The node image upgrade type.
-func (o NodeImageSelectionResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeImageSelectionResponse) string { return v.Type }).(pulumi.StringOutput)
+type OpenShiftManagedClusterAuthProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterAuthProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterAuthProfileResponse)(nil)).Elem()
 }
 
-type NodeImageSelectionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NodeImageSelectionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeImageSelectionResponse)(nil)).Elem()
-}
-
-func (o NodeImageSelectionResponsePtrOutput) ToNodeImageSelectionResponsePtrOutput() NodeImageSelectionResponsePtrOutput {
+func (o OpenShiftManagedClusterAuthProfileResponsePtrOutput) ToOpenShiftManagedClusterAuthProfileResponsePtrOutput() OpenShiftManagedClusterAuthProfileResponsePtrOutput {
 	return o
 }
 
-func (o NodeImageSelectionResponsePtrOutput) ToNodeImageSelectionResponsePtrOutputWithContext(ctx context.Context) NodeImageSelectionResponsePtrOutput {
+func (o OpenShiftManagedClusterAuthProfileResponsePtrOutput) ToOpenShiftManagedClusterAuthProfileResponsePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAuthProfileResponsePtrOutput {
 	return o
 }
 
-func (o NodeImageSelectionResponsePtrOutput) Elem() NodeImageSelectionResponseOutput {
-	return o.ApplyT(func(v *NodeImageSelectionResponse) NodeImageSelectionResponse {
+func (o OpenShiftManagedClusterAuthProfileResponsePtrOutput) Elem() OpenShiftManagedClusterAuthProfileResponseOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAuthProfileResponse) OpenShiftManagedClusterAuthProfileResponse {
 		if v != nil {
 			return *v
 		}
-		var ret NodeImageSelectionResponse
+		var ret OpenShiftManagedClusterAuthProfileResponse
 		return ret
-	}).(NodeImageSelectionResponseOutput)
+	}).(OpenShiftManagedClusterAuthProfileResponseOutput)
 }
 
-// Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded.
-func (o NodeImageSelectionResponsePtrOutput) CustomNodeImageVersions() NodeImageVersionResponseArrayOutput {
-	return o.ApplyT(func(v *NodeImageSelectionResponse) []NodeImageVersionResponse {
+// Type of authentication profile to use.
+func (o OpenShiftManagedClusterAuthProfileResponsePtrOutput) IdentityProviders() OpenShiftManagedClusterIdentityProviderResponseArrayOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterAuthProfileResponse) []OpenShiftManagedClusterIdentityProviderResponse {
 		if v == nil {
 			return nil
 		}
-		return v.CustomNodeImageVersions
-	}).(NodeImageVersionResponseArrayOutput)
+		return v.IdentityProviders
+	}).(OpenShiftManagedClusterIdentityProviderResponseArrayOutput)
 }
 
-// The node image upgrade type.
-func (o NodeImageSelectionResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodeImageSelectionResponse) *string {
+// Defines the configuration of the identity providers to be used in the OpenShift cluster.
+type OpenShiftManagedClusterIdentityProvider struct {
+	// Name of the provider.
+	Name *string `pulumi:"name"`
+	// Configuration of the provider.
+	Provider *OpenShiftManagedClusterAADIdentityProvider `pulumi:"provider"`
+}
+
+// OpenShiftManagedClusterIdentityProviderInput is an input type that accepts OpenShiftManagedClusterIdentityProviderArgs and OpenShiftManagedClusterIdentityProviderOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterIdentityProviderInput` via:
+//
+//	OpenShiftManagedClusterIdentityProviderArgs{...}
+type OpenShiftManagedClusterIdentityProviderInput interface {
+	pulumi.Input
+
+	ToOpenShiftManagedClusterIdentityProviderOutput() OpenShiftManagedClusterIdentityProviderOutput
+	ToOpenShiftManagedClusterIdentityProviderOutputWithContext(context.Context) OpenShiftManagedClusterIdentityProviderOutput
+}
+
+// Defines the configuration of the identity providers to be used in the OpenShift cluster.
+type OpenShiftManagedClusterIdentityProviderArgs struct {
+	// Name of the provider.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Configuration of the provider.
+	Provider OpenShiftManagedClusterAADIdentityProviderPtrInput `pulumi:"provider"`
+}
+
+func (OpenShiftManagedClusterIdentityProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterIdentityProvider)(nil)).Elem()
+}
+
+func (i OpenShiftManagedClusterIdentityProviderArgs) ToOpenShiftManagedClusterIdentityProviderOutput() OpenShiftManagedClusterIdentityProviderOutput {
+	return i.ToOpenShiftManagedClusterIdentityProviderOutputWithContext(context.Background())
+}
+
+func (i OpenShiftManagedClusterIdentityProviderArgs) ToOpenShiftManagedClusterIdentityProviderOutputWithContext(ctx context.Context) OpenShiftManagedClusterIdentityProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterIdentityProviderOutput)
+}
+
+// OpenShiftManagedClusterIdentityProviderArrayInput is an input type that accepts OpenShiftManagedClusterIdentityProviderArray and OpenShiftManagedClusterIdentityProviderArrayOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterIdentityProviderArrayInput` via:
+//
+//	OpenShiftManagedClusterIdentityProviderArray{ OpenShiftManagedClusterIdentityProviderArgs{...} }
+type OpenShiftManagedClusterIdentityProviderArrayInput interface {
+	pulumi.Input
+
+	ToOpenShiftManagedClusterIdentityProviderArrayOutput() OpenShiftManagedClusterIdentityProviderArrayOutput
+	ToOpenShiftManagedClusterIdentityProviderArrayOutputWithContext(context.Context) OpenShiftManagedClusterIdentityProviderArrayOutput
+}
+
+type OpenShiftManagedClusterIdentityProviderArray []OpenShiftManagedClusterIdentityProviderInput
+
+func (OpenShiftManagedClusterIdentityProviderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenShiftManagedClusterIdentityProvider)(nil)).Elem()
+}
+
+func (i OpenShiftManagedClusterIdentityProviderArray) ToOpenShiftManagedClusterIdentityProviderArrayOutput() OpenShiftManagedClusterIdentityProviderArrayOutput {
+	return i.ToOpenShiftManagedClusterIdentityProviderArrayOutputWithContext(context.Background())
+}
+
+func (i OpenShiftManagedClusterIdentityProviderArray) ToOpenShiftManagedClusterIdentityProviderArrayOutputWithContext(ctx context.Context) OpenShiftManagedClusterIdentityProviderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterIdentityProviderArrayOutput)
+}
+
+// Defines the configuration of the identity providers to be used in the OpenShift cluster.
+type OpenShiftManagedClusterIdentityProviderOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterIdentityProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterIdentityProvider)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterIdentityProviderOutput) ToOpenShiftManagedClusterIdentityProviderOutput() OpenShiftManagedClusterIdentityProviderOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterIdentityProviderOutput) ToOpenShiftManagedClusterIdentityProviderOutputWithContext(ctx context.Context) OpenShiftManagedClusterIdentityProviderOutput {
+	return o
+}
+
+// Name of the provider.
+func (o OpenShiftManagedClusterIdentityProviderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterIdentityProvider) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Configuration of the provider.
+func (o OpenShiftManagedClusterIdentityProviderOutput) Provider() OpenShiftManagedClusterAADIdentityProviderPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterIdentityProvider) *OpenShiftManagedClusterAADIdentityProvider {
+		return v.Provider
+	}).(OpenShiftManagedClusterAADIdentityProviderPtrOutput)
+}
+
+type OpenShiftManagedClusterIdentityProviderArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterIdentityProviderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenShiftManagedClusterIdentityProvider)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterIdentityProviderArrayOutput) ToOpenShiftManagedClusterIdentityProviderArrayOutput() OpenShiftManagedClusterIdentityProviderArrayOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterIdentityProviderArrayOutput) ToOpenShiftManagedClusterIdentityProviderArrayOutputWithContext(ctx context.Context) OpenShiftManagedClusterIdentityProviderArrayOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterIdentityProviderArrayOutput) Index(i pulumi.IntInput) OpenShiftManagedClusterIdentityProviderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenShiftManagedClusterIdentityProvider {
+		return vs[0].([]OpenShiftManagedClusterIdentityProvider)[vs[1].(int)]
+	}).(OpenShiftManagedClusterIdentityProviderOutput)
+}
+
+// Defines the configuration of the identity providers to be used in the OpenShift cluster.
+type OpenShiftManagedClusterIdentityProviderResponse struct {
+	// Name of the provider.
+	Name *string `pulumi:"name"`
+	// Configuration of the provider.
+	Provider *OpenShiftManagedClusterAADIdentityProviderResponse `pulumi:"provider"`
+}
+
+// Defines the configuration of the identity providers to be used in the OpenShift cluster.
+type OpenShiftManagedClusterIdentityProviderResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterIdentityProviderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterIdentityProviderResponse)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterIdentityProviderResponseOutput) ToOpenShiftManagedClusterIdentityProviderResponseOutput() OpenShiftManagedClusterIdentityProviderResponseOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterIdentityProviderResponseOutput) ToOpenShiftManagedClusterIdentityProviderResponseOutputWithContext(ctx context.Context) OpenShiftManagedClusterIdentityProviderResponseOutput {
+	return o
+}
+
+// Name of the provider.
+func (o OpenShiftManagedClusterIdentityProviderResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterIdentityProviderResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Configuration of the provider.
+func (o OpenShiftManagedClusterIdentityProviderResponseOutput) Provider() OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterIdentityProviderResponse) *OpenShiftManagedClusterAADIdentityProviderResponse {
+		return v.Provider
+	}).(OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput)
+}
+
+type OpenShiftManagedClusterIdentityProviderResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterIdentityProviderResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenShiftManagedClusterIdentityProviderResponse)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterIdentityProviderResponseArrayOutput) ToOpenShiftManagedClusterIdentityProviderResponseArrayOutput() OpenShiftManagedClusterIdentityProviderResponseArrayOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterIdentityProviderResponseArrayOutput) ToOpenShiftManagedClusterIdentityProviderResponseArrayOutputWithContext(ctx context.Context) OpenShiftManagedClusterIdentityProviderResponseArrayOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterIdentityProviderResponseArrayOutput) Index(i pulumi.IntInput) OpenShiftManagedClusterIdentityProviderResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenShiftManagedClusterIdentityProviderResponse {
+		return vs[0].([]OpenShiftManagedClusterIdentityProviderResponse)[vs[1].(int)]
+	}).(OpenShiftManagedClusterIdentityProviderResponseOutput)
+}
+
+// OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift master VMs.
+type OpenShiftManagedClusterMasterPoolProfile struct {
+	// Defines further properties on the API.
+	ApiProperties *OpenShiftAPIProperties `pulumi:"apiProperties"`
+	// Number of masters (VMs) to host docker containers. The default value is 3.
+	Count int `pulumi:"count"`
+	// Subnet CIDR for the peering.
+	SubnetCidr *string `pulumi:"subnetCidr"`
+	// Size of agent VMs.
+	VmSize string `pulumi:"vmSize"`
+}
+
+// OpenShiftManagedClusterMasterPoolProfileInput is an input type that accepts OpenShiftManagedClusterMasterPoolProfileArgs and OpenShiftManagedClusterMasterPoolProfileOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterMasterPoolProfileInput` via:
+//
+//	OpenShiftManagedClusterMasterPoolProfileArgs{...}
+type OpenShiftManagedClusterMasterPoolProfileInput interface {
+	pulumi.Input
+
+	ToOpenShiftManagedClusterMasterPoolProfileOutput() OpenShiftManagedClusterMasterPoolProfileOutput
+	ToOpenShiftManagedClusterMasterPoolProfileOutputWithContext(context.Context) OpenShiftManagedClusterMasterPoolProfileOutput
+}
+
+// OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift master VMs.
+type OpenShiftManagedClusterMasterPoolProfileArgs struct {
+	// Defines further properties on the API.
+	ApiProperties OpenShiftAPIPropertiesPtrInput `pulumi:"apiProperties"`
+	// Number of masters (VMs) to host docker containers. The default value is 3.
+	Count pulumi.IntInput `pulumi:"count"`
+	// Subnet CIDR for the peering.
+	SubnetCidr pulumi.StringPtrInput `pulumi:"subnetCidr"`
+	// Size of agent VMs.
+	VmSize pulumi.StringInput `pulumi:"vmSize"`
+}
+
+func (OpenShiftManagedClusterMasterPoolProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterMasterPoolProfile)(nil)).Elem()
+}
+
+func (i OpenShiftManagedClusterMasterPoolProfileArgs) ToOpenShiftManagedClusterMasterPoolProfileOutput() OpenShiftManagedClusterMasterPoolProfileOutput {
+	return i.ToOpenShiftManagedClusterMasterPoolProfileOutputWithContext(context.Background())
+}
+
+func (i OpenShiftManagedClusterMasterPoolProfileArgs) ToOpenShiftManagedClusterMasterPoolProfileOutputWithContext(ctx context.Context) OpenShiftManagedClusterMasterPoolProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterMasterPoolProfileOutput)
+}
+
+func (i OpenShiftManagedClusterMasterPoolProfileArgs) ToOpenShiftManagedClusterMasterPoolProfilePtrOutput() OpenShiftManagedClusterMasterPoolProfilePtrOutput {
+	return i.ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(context.Background())
+}
+
+func (i OpenShiftManagedClusterMasterPoolProfileArgs) ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMasterPoolProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterMasterPoolProfileOutput).ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(ctx)
+}
+
+// OpenShiftManagedClusterMasterPoolProfilePtrInput is an input type that accepts OpenShiftManagedClusterMasterPoolProfileArgs, OpenShiftManagedClusterMasterPoolProfilePtr and OpenShiftManagedClusterMasterPoolProfilePtrOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterMasterPoolProfilePtrInput` via:
+//
+//	        OpenShiftManagedClusterMasterPoolProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenShiftManagedClusterMasterPoolProfilePtrInput interface {
+	pulumi.Input
+
+	ToOpenShiftManagedClusterMasterPoolProfilePtrOutput() OpenShiftManagedClusterMasterPoolProfilePtrOutput
+	ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(context.Context) OpenShiftManagedClusterMasterPoolProfilePtrOutput
+}
+
+type openShiftManagedClusterMasterPoolProfilePtrType OpenShiftManagedClusterMasterPoolProfileArgs
+
+func OpenShiftManagedClusterMasterPoolProfilePtr(v *OpenShiftManagedClusterMasterPoolProfileArgs) OpenShiftManagedClusterMasterPoolProfilePtrInput {
+	return (*openShiftManagedClusterMasterPoolProfilePtrType)(v)
+}
+
+func (*openShiftManagedClusterMasterPoolProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterMasterPoolProfile)(nil)).Elem()
+}
+
+func (i *openShiftManagedClusterMasterPoolProfilePtrType) ToOpenShiftManagedClusterMasterPoolProfilePtrOutput() OpenShiftManagedClusterMasterPoolProfilePtrOutput {
+	return i.ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *openShiftManagedClusterMasterPoolProfilePtrType) ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMasterPoolProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterMasterPoolProfilePtrOutput)
+}
+
+// OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift master VMs.
+type OpenShiftManagedClusterMasterPoolProfileOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterMasterPoolProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterMasterPoolProfile)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterMasterPoolProfileOutput) ToOpenShiftManagedClusterMasterPoolProfileOutput() OpenShiftManagedClusterMasterPoolProfileOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterMasterPoolProfileOutput) ToOpenShiftManagedClusterMasterPoolProfileOutputWithContext(ctx context.Context) OpenShiftManagedClusterMasterPoolProfileOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterMasterPoolProfileOutput) ToOpenShiftManagedClusterMasterPoolProfilePtrOutput() OpenShiftManagedClusterMasterPoolProfilePtrOutput {
+	return o.ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(context.Background())
+}
+
+func (o OpenShiftManagedClusterMasterPoolProfileOutput) ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMasterPoolProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenShiftManagedClusterMasterPoolProfile) *OpenShiftManagedClusterMasterPoolProfile {
+		return &v
+	}).(OpenShiftManagedClusterMasterPoolProfilePtrOutput)
+}
+
+// Defines further properties on the API.
+func (o OpenShiftManagedClusterMasterPoolProfileOutput) ApiProperties() OpenShiftAPIPropertiesPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMasterPoolProfile) *OpenShiftAPIProperties { return v.ApiProperties }).(OpenShiftAPIPropertiesPtrOutput)
+}
+
+// Number of masters (VMs) to host docker containers. The default value is 3.
+func (o OpenShiftManagedClusterMasterPoolProfileOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMasterPoolProfile) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Subnet CIDR for the peering.
+func (o OpenShiftManagedClusterMasterPoolProfileOutput) SubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMasterPoolProfile) *string { return v.SubnetCidr }).(pulumi.StringPtrOutput)
+}
+
+// Size of agent VMs.
+func (o OpenShiftManagedClusterMasterPoolProfileOutput) VmSize() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMasterPoolProfile) string { return v.VmSize }).(pulumi.StringOutput)
+}
+
+type OpenShiftManagedClusterMasterPoolProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterMasterPoolProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterMasterPoolProfile)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterMasterPoolProfilePtrOutput) ToOpenShiftManagedClusterMasterPoolProfilePtrOutput() OpenShiftManagedClusterMasterPoolProfilePtrOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterMasterPoolProfilePtrOutput) ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMasterPoolProfilePtrOutput {
+	return o
+}
+
+func (o OpenShiftManagedClusterMasterPoolProfilePtrOutput) Elem() OpenShiftManagedClusterMasterPoolProfileOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMasterPoolProfile) OpenShiftManagedClusterMasterPoolProfile {
+		if v != nil {
+			return *v
+		}
+		var ret OpenShiftManagedClusterMasterPoolProfile
+		return ret
+	}).(OpenShiftManagedClusterMasterPoolProfileOutput)
+}
+
+// Defines further properties on the API.
+func (o OpenShiftManagedClusterMasterPoolProfilePtrOutput) ApiProperties() OpenShiftAPIPropertiesPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMasterPoolProfile) *OpenShiftAPIProperties {
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return v.ApiProperties
+	}).(OpenShiftAPIPropertiesPtrOutput)
+}
+
+// Number of masters (VMs) to host docker containers. The default value is 3.
+func (o OpenShiftManagedClusterMasterPoolProfilePtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMasterPoolProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// Subnet CIDR for the peering.
+func (o OpenShiftManagedClusterMasterPoolProfilePtrOutput) SubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMasterPoolProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetCidr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The node image upgrade specs for the update run.
-type NodeImageSelectionStatusResponse struct {
-	// The image versions to upgrade the nodes to.
-	SelectedNodeImageVersions []NodeImageVersionResponse `pulumi:"selectedNodeImageVersions"`
+// Size of agent VMs.
+func (o OpenShiftManagedClusterMasterPoolProfilePtrOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMasterPoolProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VmSize
+	}).(pulumi.StringPtrOutput)
 }
 
-// The node image upgrade specs for the update run.
-type NodeImageSelectionStatusResponseOutput struct{ *pulumi.OutputState }
-
-func (NodeImageSelectionStatusResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeImageSelectionStatusResponse)(nil)).Elem()
+// OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift master VMs.
+type OpenShiftManagedClusterMasterPoolProfileResponse struct {
+	// Defines further properties on the API.
+	ApiProperties *OpenShiftAPIPropertiesResponse `pulumi:"apiProperties"`
+	// Number of masters (VMs) to host docker containers. The default value is 3.
+	Count int `pulumi:"count"`
+	// Subnet CIDR for the peering.
+	SubnetCidr *string `pulumi:"subnetCidr"`
+	// Size of agent VMs.
+	VmSize string `pulumi:"vmSize"`
 }
 
-func (o NodeImageSelectionStatusResponseOutput) ToNodeImageSelectionStatusResponseOutput() NodeImageSelectionStatusResponseOutput {
+// OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift master VMs.
+type OpenShiftManagedClusterMasterPoolProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterMasterPoolProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterMasterPoolProfileResponse)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterMasterPoolProfileResponseOutput) ToOpenShiftManagedClusterMasterPoolProfileResponseOutput() OpenShiftManagedClusterMasterPoolProfileResponseOutput {
 	return o
 }
 
-func (o NodeImageSelectionStatusResponseOutput) ToNodeImageSelectionStatusResponseOutputWithContext(ctx context.Context) NodeImageSelectionStatusResponseOutput {
+func (o OpenShiftManagedClusterMasterPoolProfileResponseOutput) ToOpenShiftManagedClusterMasterPoolProfileResponseOutputWithContext(ctx context.Context) OpenShiftManagedClusterMasterPoolProfileResponseOutput {
 	return o
 }
 
-// The image versions to upgrade the nodes to.
-func (o NodeImageSelectionStatusResponseOutput) SelectedNodeImageVersions() NodeImageVersionResponseArrayOutput {
-	return o.ApplyT(func(v NodeImageSelectionStatusResponse) []NodeImageVersionResponse {
-		return v.SelectedNodeImageVersions
-	}).(NodeImageVersionResponseArrayOutput)
+// Defines further properties on the API.
+func (o OpenShiftManagedClusterMasterPoolProfileResponseOutput) ApiProperties() OpenShiftAPIPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMasterPoolProfileResponse) *OpenShiftAPIPropertiesResponse {
+		return v.ApiProperties
+	}).(OpenShiftAPIPropertiesResponsePtrOutput)
 }
 
-// The node upgrade image version.
-type NodeImageVersionResponse struct {
-	// The image version to upgrade the nodes to (e.g., 'AKSUbuntu-1804gen2containerd-2022.12.13').
-	Version string `pulumi:"version"`
+// Number of masters (VMs) to host docker containers. The default value is 3.
+func (o OpenShiftManagedClusterMasterPoolProfileResponseOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMasterPoolProfileResponse) int { return v.Count }).(pulumi.IntOutput)
 }
 
-// The node upgrade image version.
-type NodeImageVersionResponseOutput struct{ *pulumi.OutputState }
-
-func (NodeImageVersionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeImageVersionResponse)(nil)).Elem()
+// Subnet CIDR for the peering.
+func (o OpenShiftManagedClusterMasterPoolProfileResponseOutput) SubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMasterPoolProfileResponse) *string { return v.SubnetCidr }).(pulumi.StringPtrOutput)
 }
 
-func (o NodeImageVersionResponseOutput) ToNodeImageVersionResponseOutput() NodeImageVersionResponseOutput {
+// Size of agent VMs.
+func (o OpenShiftManagedClusterMasterPoolProfileResponseOutput) VmSize() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMasterPoolProfileResponse) string { return v.VmSize }).(pulumi.StringOutput)
+}
+
+type OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterMasterPoolProfileResponse)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) ToOpenShiftManagedClusterMasterPoolProfileResponsePtrOutput() OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput {
 	return o
 }
 
-func (o NodeImageVersionResponseOutput) ToNodeImageVersionResponseOutputWithContext(ctx context.Context) NodeImageVersionResponseOutput {
+func (o OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) ToOpenShiftManagedClusterMasterPoolProfileResponsePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput {
 	return o
 }
 
-// The image version to upgrade the nodes to (e.g., 'AKSUbuntu-1804gen2containerd-2022.12.13').
-func (o NodeImageVersionResponseOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeImageVersionResponse) string { return v.Version }).(pulumi.StringOutput)
+func (o OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) Elem() OpenShiftManagedClusterMasterPoolProfileResponseOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMasterPoolProfileResponse) OpenShiftManagedClusterMasterPoolProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OpenShiftManagedClusterMasterPoolProfileResponse
+		return ret
+	}).(OpenShiftManagedClusterMasterPoolProfileResponseOutput)
 }
 
-type NodeImageVersionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (NodeImageVersionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodeImageVersionResponse)(nil)).Elem()
+// Defines further properties on the API.
+func (o OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) ApiProperties() OpenShiftAPIPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMasterPoolProfileResponse) *OpenShiftAPIPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApiProperties
+	}).(OpenShiftAPIPropertiesResponsePtrOutput)
 }
 
-func (o NodeImageVersionResponseArrayOutput) ToNodeImageVersionResponseArrayOutput() NodeImageVersionResponseArrayOutput {
-	return o
+// Number of masters (VMs) to host docker containers. The default value is 3.
+func (o OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMasterPoolProfileResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Count
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o NodeImageVersionResponseArrayOutput) ToNodeImageVersionResponseArrayOutputWithContext(ctx context.Context) NodeImageVersionResponseArrayOutput {
-	return o
+// Subnet CIDR for the peering.
+func (o OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) SubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMasterPoolProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetCidr
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o NodeImageVersionResponseArrayOutput) Index(i pulumi.IntInput) NodeImageVersionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeImageVersionResponse {
-		return vs[0].([]NodeImageVersionResponse)[vs[1].(int)]
-	}).(NodeImageVersionResponseOutput)
+// Size of agent VMs.
+func (o OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMasterPoolProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VmSize
+	}).(pulumi.StringPtrOutput)
 }
 
-// The port range.
-type PortRange struct {
-	// The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or equal to portStart.
-	PortEnd *int `pulumi:"portEnd"`
-	// The minimum port that is included in the range. It should be ranged from 1 to 65535, and be less than or equal to portEnd.
-	PortStart *int `pulumi:"portStart"`
-	// The network protocol of the port.
-	Protocol *string `pulumi:"protocol"`
+// Defines the configuration for Log Analytics integration.
+type OpenShiftManagedClusterMonitorProfile struct {
+	// If the Log analytics integration should be turned on or off
+	Enabled *bool `pulumi:"enabled"`
+	// Azure Resource Manager Resource ID for the Log Analytics workspace to integrate with.
+	WorkspaceResourceID *string `pulumi:"workspaceResourceID"`
 }
 
-// PortRangeInput is an input type that accepts PortRangeArgs and PortRangeOutput values.
-// You can construct a concrete instance of `PortRangeInput` via:
+// OpenShiftManagedClusterMonitorProfileInput is an input type that accepts OpenShiftManagedClusterMonitorProfileArgs and OpenShiftManagedClusterMonitorProfileOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterMonitorProfileInput` via:
 //
-//	PortRangeArgs{...}
-type PortRangeInput interface {
+//	OpenShiftManagedClusterMonitorProfileArgs{...}
+type OpenShiftManagedClusterMonitorProfileInput interface {
 	pulumi.Input
 
-	ToPortRangeOutput() PortRangeOutput
-	ToPortRangeOutputWithContext(context.Context) PortRangeOutput
+	ToOpenShiftManagedClusterMonitorProfileOutput() OpenShiftManagedClusterMonitorProfileOutput
+	ToOpenShiftManagedClusterMonitorProfileOutputWithContext(context.Context) OpenShiftManagedClusterMonitorProfileOutput
 }
 
-// The port range.
-type PortRangeArgs struct {
-	// The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or equal to portStart.
-	PortEnd pulumi.IntPtrInput `pulumi:"portEnd"`
-	// The minimum port that is included in the range. It should be ranged from 1 to 65535, and be less than or equal to portEnd.
-	PortStart pulumi.IntPtrInput `pulumi:"portStart"`
-	// The network protocol of the port.
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+// Defines the configuration for Log Analytics integration.
+type OpenShiftManagedClusterMonitorProfileArgs struct {
+	// If the Log analytics integration should be turned on or off
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Azure Resource Manager Resource ID for the Log Analytics workspace to integrate with.
+	WorkspaceResourceID pulumi.StringPtrInput `pulumi:"workspaceResourceID"`
 }
 
-func (PortRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PortRange)(nil)).Elem()
+func (OpenShiftManagedClusterMonitorProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterMonitorProfile)(nil)).Elem()
 }
 
-func (i PortRangeArgs) ToPortRangeOutput() PortRangeOutput {
-	return i.ToPortRangeOutputWithContext(context.Background())
+func (i OpenShiftManagedClusterMonitorProfileArgs) ToOpenShiftManagedClusterMonitorProfileOutput() OpenShiftManagedClusterMonitorProfileOutput {
+	return i.ToOpenShiftManagedClusterMonitorProfileOutputWithContext(context.Background())
 }
 
-func (i PortRangeArgs) ToPortRangeOutputWithContext(ctx context.Context) PortRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PortRangeOutput)
+func (i OpenShiftManagedClusterMonitorProfileArgs) ToOpenShiftManagedClusterMonitorProfileOutputWithContext(ctx context.Context) OpenShiftManagedClusterMonitorProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterMonitorProfileOutput)
 }
 
-// PortRangeArrayInput is an input type that accepts PortRangeArray and PortRangeArrayOutput values.
-// You can construct a concrete instance of `PortRangeArrayInput` via:
+func (i OpenShiftManagedClusterMonitorProfileArgs) ToOpenShiftManagedClusterMonitorProfilePtrOutput() OpenShiftManagedClusterMonitorProfilePtrOutput {
+	return i.ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(context.Background())
+}
+
+func (i OpenShiftManagedClusterMonitorProfileArgs) ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMonitorProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterMonitorProfileOutput).ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(ctx)
+}
+
+// OpenShiftManagedClusterMonitorProfilePtrInput is an input type that accepts OpenShiftManagedClusterMonitorProfileArgs, OpenShiftManagedClusterMonitorProfilePtr and OpenShiftManagedClusterMonitorProfilePtrOutput values.
+// You can construct a concrete instance of `OpenShiftManagedClusterMonitorProfilePtrInput` via:
 //
-//	PortRangeArray{ PortRangeArgs{...} }
-type PortRangeArrayInput interface {
+//	        OpenShiftManagedClusterMonitorProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenShiftManagedClusterMonitorProfilePtrInput interface {
 	pulumi.Input
 
-	ToPortRangeArrayOutput() PortRangeArrayOutput
-	ToPortRangeArrayOutputWithContext(context.Context) PortRangeArrayOutput
+	ToOpenShiftManagedClusterMonitorProfilePtrOutput() OpenShiftManagedClusterMonitorProfilePtrOutput
+	ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(context.Context) OpenShiftManagedClusterMonitorProfilePtrOutput
 }
 
-type PortRangeArray []PortRangeInput
+type openShiftManagedClusterMonitorProfilePtrType OpenShiftManagedClusterMonitorProfileArgs
 
-func (PortRangeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PortRange)(nil)).Elem()
+func OpenShiftManagedClusterMonitorProfilePtr(v *OpenShiftManagedClusterMonitorProfileArgs) OpenShiftManagedClusterMonitorProfilePtrInput {
+	return (*openShiftManagedClusterMonitorProfilePtrType)(v)
 }
 
-func (i PortRangeArray) ToPortRangeArrayOutput() PortRangeArrayOutput {
-	return i.ToPortRangeArrayOutputWithContext(context.Background())
+func (*openShiftManagedClusterMonitorProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterMonitorProfile)(nil)).Elem()
 }
 
-func (i PortRangeArray) ToPortRangeArrayOutputWithContext(ctx context.Context) PortRangeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PortRangeArrayOutput)
+func (i *openShiftManagedClusterMonitorProfilePtrType) ToOpenShiftManagedClusterMonitorProfilePtrOutput() OpenShiftManagedClusterMonitorProfilePtrOutput {
+	return i.ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(context.Background())
 }
 
-// The port range.
-type PortRangeOutput struct{ *pulumi.OutputState }
-
-func (PortRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PortRange)(nil)).Elem()
+func (i *openShiftManagedClusterMonitorProfilePtrType) ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMonitorProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterMonitorProfilePtrOutput)
 }
 
-func (o PortRangeOutput) ToPortRangeOutput() PortRangeOutput {
+// Defines the configuration for Log Analytics integration.
+type OpenShiftManagedClusterMonitorProfileOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterMonitorProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterMonitorProfile)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterMonitorProfileOutput) ToOpenShiftManagedClusterMonitorProfileOutput() OpenShiftManagedClusterMonitorProfileOutput {
 	return o
 }
 
-func (o PortRangeOutput) ToPortRangeOutputWithContext(ctx context.Context) PortRangeOutput {
+func (o OpenShiftManagedClusterMonitorProfileOutput) ToOpenShiftManagedClusterMonitorProfileOutputWithContext(ctx context.Context) OpenShiftManagedClusterMonitorProfileOutput {
 	return o
 }
 
-// The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or equal to portStart.
-func (o PortRangeOutput) PortEnd() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PortRange) *int { return v.PortEnd }).(pulumi.IntPtrOutput)
+func (o OpenShiftManagedClusterMonitorProfileOutput) ToOpenShiftManagedClusterMonitorProfilePtrOutput() OpenShiftManagedClusterMonitorProfilePtrOutput {
+	return o.ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(context.Background())
 }
 
-// The minimum port that is included in the range. It should be ranged from 1 to 65535, and be less than or equal to portEnd.
-func (o PortRangeOutput) PortStart() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PortRange) *int { return v.PortStart }).(pulumi.IntPtrOutput)
+func (o OpenShiftManagedClusterMonitorProfileOutput) ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMonitorProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenShiftManagedClusterMonitorProfile) *OpenShiftManagedClusterMonitorProfile {
+		return &v
+	}).(OpenShiftManagedClusterMonitorProfilePtrOutput)
 }
 
-// The network protocol of the port.
-func (o PortRangeOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PortRange) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+// If the Log analytics integration should be turned on or off
+func (o OpenShiftManagedClusterMonitorProfileOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMonitorProfile) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-type PortRangeArrayOutput struct{ *pulumi.OutputState }
-
-func (PortRangeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PortRange)(nil)).Elem()
+// Azure Resource Manager Resource ID for the Log Analytics workspace to integrate with.
+func (o OpenShiftManagedClusterMonitorProfileOutput) WorkspaceResourceID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMonitorProfile) *string { return v.WorkspaceResourceID }).(pulumi.StringPtrOutput)
 }
 
-func (o PortRangeArrayOutput) ToPortRangeArrayOutput() PortRangeArrayOutput {
+type OpenShiftManagedClusterMonitorProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterMonitorProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterMonitorProfile)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterMonitorProfilePtrOutput) ToOpenShiftManagedClusterMonitorProfilePtrOutput() OpenShiftManagedClusterMonitorProfilePtrOutput {
 	return o
 }
 
-func (o PortRangeArrayOutput) ToPortRangeArrayOutputWithContext(ctx context.Context) PortRangeArrayOutput {
+func (o OpenShiftManagedClusterMonitorProfilePtrOutput) ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMonitorProfilePtrOutput {
 	return o
 }
 
-func (o PortRangeArrayOutput) Index(i pulumi.IntInput) PortRangeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PortRange {
-		return vs[0].([]PortRange)[vs[1].(int)]
-	}).(PortRangeOutput)
+func (o OpenShiftManagedClusterMonitorProfilePtrOutput) Elem() OpenShiftManagedClusterMonitorProfileOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMonitorProfile) OpenShiftManagedClusterMonitorProfile {
+		if v != nil {
+			return *v
+		}
+		var ret OpenShiftManagedClusterMonitorProfile
+		return ret
+	}).(OpenShiftManagedClusterMonitorProfileOutput)
 }
 
-// The port range.
-type PortRangeResponse struct {
-	// The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or equal to portStart.
-	PortEnd *int `pulumi:"portEnd"`
-	// The minimum port that is included in the range. It should be ranged from 1 to 65535, and be less than or equal to portEnd.
-	PortStart *int `pulumi:"portStart"`
-	// The network protocol of the port.
-	Protocol *string `pulumi:"protocol"`
+// If the Log analytics integration should be turned on or off
+func (o OpenShiftManagedClusterMonitorProfilePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMonitorProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
-// The port range.
-type PortRangeResponseOutput struct{ *pulumi.OutputState }
-
-func (PortRangeResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PortRangeResponse)(nil)).Elem()
+// Azure Resource Manager Resource ID for the Log Analytics workspace to integrate with.
+func (o OpenShiftManagedClusterMonitorProfilePtrOutput) WorkspaceResourceID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMonitorProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceResourceID
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o PortRangeResponseOutput) ToPortRangeResponseOutput() PortRangeResponseOutput {
+// Defines the configuration for Log Analytics integration.
+type OpenShiftManagedClusterMonitorProfileResponse struct {
+	// If the Log analytics integration should be turned on or off
+	Enabled *bool `pulumi:"enabled"`
+	// Azure Resource Manager Resource ID for the Log Analytics workspace to integrate with.
+	WorkspaceResourceID *string `pulumi:"workspaceResourceID"`
+}
+
+// Defines the configuration for Log Analytics integration.
+type OpenShiftManagedClusterMonitorProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterMonitorProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftManagedClusterMonitorProfileResponse)(nil)).Elem()
+}
+
+func (o OpenShiftManagedClusterMonitorProfileResponseOutput) ToOpenShiftManagedClusterMonitorProfileResponseOutput() OpenShiftManagedClusterMonitorProfileResponseOutput {
 	return o
 }
 
-func (o PortRangeResponseOutput) ToPortRangeResponseOutputWithContext(ctx context.Context) PortRangeResponseOutput {
+func (o OpenShiftManagedClusterMonitorProfileResponseOutput) ToOpenShiftManagedClusterMonitorProfileResponseOutputWithContext(ctx context.Context) OpenShiftManagedClusterMonitorProfileResponseOutput {
 	return o
 }
 
-// The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or equal to portStart.
-func (o PortRangeResponseOutput) PortEnd() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PortRangeResponse) *int { return v.PortEnd }).(pulumi.IntPtrOutput)
+// If the Log analytics integration should be turned on or off
+func (o OpenShiftManagedClusterMonitorProfileResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMonitorProfileResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The minimum port that is included in the range. It should be ranged from 1 to 65535, and be less than or equal to portEnd.
-func (o PortRangeResponseOutput) PortStart() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PortRangeResponse) *int { return v.PortStart }).(pulumi.IntPtrOutput)
+// Azure Resource Manager Resource ID for the Log Analytics workspace to integrate with.
+func (o OpenShiftManagedClusterMonitorProfileResponseOutput) WorkspaceResourceID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftManagedClusterMonitorProfileResponse) *string { return v.WorkspaceResourceID }).(pulumi.StringPtrOutput)
 }
 
-// The network protocol of the port.
-func (o PortRangeResponseOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PortRangeResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+type OpenShiftManagedClusterMonitorProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftManagedClusterMonitorProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenShiftManagedClusterMonitorProfileResponse)(nil)).Elem()
 }
 
-type PortRangeResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PortRangeResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PortRangeResponse)(nil)).Elem()
-}
-
-func (o PortRangeResponseArrayOutput) ToPortRangeResponseArrayOutput() PortRangeResponseArrayOutput {
+func (o OpenShiftManagedClusterMonitorProfileResponsePtrOutput) ToOpenShiftManagedClusterMonitorProfileResponsePtrOutput() OpenShiftManagedClusterMonitorProfileResponsePtrOutput {
 	return o
 }
 
-func (o PortRangeResponseArrayOutput) ToPortRangeResponseArrayOutputWithContext(ctx context.Context) PortRangeResponseArrayOutput {
+func (o OpenShiftManagedClusterMonitorProfileResponsePtrOutput) ToOpenShiftManagedClusterMonitorProfileResponsePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMonitorProfileResponsePtrOutput {
 	return o
 }
 
-func (o PortRangeResponseArrayOutput) Index(i pulumi.IntInput) PortRangeResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PortRangeResponse {
-		return vs[0].([]PortRangeResponse)[vs[1].(int)]
-	}).(PortRangeResponseOutput)
+func (o OpenShiftManagedClusterMonitorProfileResponsePtrOutput) Elem() OpenShiftManagedClusterMonitorProfileResponseOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMonitorProfileResponse) OpenShiftManagedClusterMonitorProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OpenShiftManagedClusterMonitorProfileResponse
+		return ret
+	}).(OpenShiftManagedClusterMonitorProfileResponseOutput)
+}
+
+// If the Log analytics integration should be turned on or off
+func (o OpenShiftManagedClusterMonitorProfileResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMonitorProfileResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Azure Resource Manager Resource ID for the Log Analytics workspace to integrate with.
+func (o OpenShiftManagedClusterMonitorProfileResponsePtrOutput) WorkspaceResourceID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenShiftManagedClusterMonitorProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceResourceID
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents an OpenShift router
+type OpenShiftRouterProfile struct {
+	// Name of the router profile.
+	Name *string `pulumi:"name"`
+}
+
+// OpenShiftRouterProfileInput is an input type that accepts OpenShiftRouterProfileArgs and OpenShiftRouterProfileOutput values.
+// You can construct a concrete instance of `OpenShiftRouterProfileInput` via:
+//
+//	OpenShiftRouterProfileArgs{...}
+type OpenShiftRouterProfileInput interface {
+	pulumi.Input
+
+	ToOpenShiftRouterProfileOutput() OpenShiftRouterProfileOutput
+	ToOpenShiftRouterProfileOutputWithContext(context.Context) OpenShiftRouterProfileOutput
+}
+
+// Represents an OpenShift router
+type OpenShiftRouterProfileArgs struct {
+	// Name of the router profile.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (OpenShiftRouterProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftRouterProfile)(nil)).Elem()
+}
+
+func (i OpenShiftRouterProfileArgs) ToOpenShiftRouterProfileOutput() OpenShiftRouterProfileOutput {
+	return i.ToOpenShiftRouterProfileOutputWithContext(context.Background())
+}
+
+func (i OpenShiftRouterProfileArgs) ToOpenShiftRouterProfileOutputWithContext(ctx context.Context) OpenShiftRouterProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftRouterProfileOutput)
+}
+
+// OpenShiftRouterProfileArrayInput is an input type that accepts OpenShiftRouterProfileArray and OpenShiftRouterProfileArrayOutput values.
+// You can construct a concrete instance of `OpenShiftRouterProfileArrayInput` via:
+//
+//	OpenShiftRouterProfileArray{ OpenShiftRouterProfileArgs{...} }
+type OpenShiftRouterProfileArrayInput interface {
+	pulumi.Input
+
+	ToOpenShiftRouterProfileArrayOutput() OpenShiftRouterProfileArrayOutput
+	ToOpenShiftRouterProfileArrayOutputWithContext(context.Context) OpenShiftRouterProfileArrayOutput
+}
+
+type OpenShiftRouterProfileArray []OpenShiftRouterProfileInput
+
+func (OpenShiftRouterProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenShiftRouterProfile)(nil)).Elem()
+}
+
+func (i OpenShiftRouterProfileArray) ToOpenShiftRouterProfileArrayOutput() OpenShiftRouterProfileArrayOutput {
+	return i.ToOpenShiftRouterProfileArrayOutputWithContext(context.Background())
+}
+
+func (i OpenShiftRouterProfileArray) ToOpenShiftRouterProfileArrayOutputWithContext(ctx context.Context) OpenShiftRouterProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftRouterProfileArrayOutput)
+}
+
+// Represents an OpenShift router
+type OpenShiftRouterProfileOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftRouterProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftRouterProfile)(nil)).Elem()
+}
+
+func (o OpenShiftRouterProfileOutput) ToOpenShiftRouterProfileOutput() OpenShiftRouterProfileOutput {
+	return o
+}
+
+func (o OpenShiftRouterProfileOutput) ToOpenShiftRouterProfileOutputWithContext(ctx context.Context) OpenShiftRouterProfileOutput {
+	return o
+}
+
+// Name of the router profile.
+func (o OpenShiftRouterProfileOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftRouterProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type OpenShiftRouterProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftRouterProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenShiftRouterProfile)(nil)).Elem()
+}
+
+func (o OpenShiftRouterProfileArrayOutput) ToOpenShiftRouterProfileArrayOutput() OpenShiftRouterProfileArrayOutput {
+	return o
+}
+
+func (o OpenShiftRouterProfileArrayOutput) ToOpenShiftRouterProfileArrayOutputWithContext(ctx context.Context) OpenShiftRouterProfileArrayOutput {
+	return o
+}
+
+func (o OpenShiftRouterProfileArrayOutput) Index(i pulumi.IntInput) OpenShiftRouterProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenShiftRouterProfile {
+		return vs[0].([]OpenShiftRouterProfile)[vs[1].(int)]
+	}).(OpenShiftRouterProfileOutput)
+}
+
+// Represents an OpenShift router
+type OpenShiftRouterProfileResponse struct {
+	// Auto-allocated FQDN for the OpenShift router.
+	Fqdn string `pulumi:"fqdn"`
+	// Name of the router profile.
+	Name *string `pulumi:"name"`
+	// DNS subdomain for OpenShift router.
+	PublicSubdomain string `pulumi:"publicSubdomain"`
+}
+
+// Represents an OpenShift router
+type OpenShiftRouterProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftRouterProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenShiftRouterProfileResponse)(nil)).Elem()
+}
+
+func (o OpenShiftRouterProfileResponseOutput) ToOpenShiftRouterProfileResponseOutput() OpenShiftRouterProfileResponseOutput {
+	return o
+}
+
+func (o OpenShiftRouterProfileResponseOutput) ToOpenShiftRouterProfileResponseOutputWithContext(ctx context.Context) OpenShiftRouterProfileResponseOutput {
+	return o
+}
+
+// Auto-allocated FQDN for the OpenShift router.
+func (o OpenShiftRouterProfileResponseOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenShiftRouterProfileResponse) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// Name of the router profile.
+func (o OpenShiftRouterProfileResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenShiftRouterProfileResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// DNS subdomain for OpenShift router.
+func (o OpenShiftRouterProfileResponseOutput) PublicSubdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenShiftRouterProfileResponse) string { return v.PublicSubdomain }).(pulumi.StringOutput)
+}
+
+type OpenShiftRouterProfileResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenShiftRouterProfileResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenShiftRouterProfileResponse)(nil)).Elem()
+}
+
+func (o OpenShiftRouterProfileResponseArrayOutput) ToOpenShiftRouterProfileResponseArrayOutput() OpenShiftRouterProfileResponseArrayOutput {
+	return o
+}
+
+func (o OpenShiftRouterProfileResponseArrayOutput) ToOpenShiftRouterProfileResponseArrayOutputWithContext(ctx context.Context) OpenShiftRouterProfileResponseArrayOutput {
+	return o
+}
+
+func (o OpenShiftRouterProfileResponseArrayOutput) Index(i pulumi.IntInput) OpenShiftRouterProfileResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenShiftRouterProfileResponse {
+		return vs[0].([]OpenShiftRouterProfileResponse)[vs[1].(int)]
+	}).(OpenShiftRouterProfileResponseOutput)
 }
 
 // Describes the Power State of the cluster
@@ -25688,583 +18066,311 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringP
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-type RelativeMonthlySchedule struct {
-	// Specifies on which day of the week the maintenance occurs.
-	DayOfWeek string `pulumi:"dayOfWeek"`
-	// Specifies the number of months between each set of occurrences.
-	IntervalMonths int `pulumi:"intervalMonths"`
-	// Specifies on which week of the month the dayOfWeek applies.
-	WeekIndex string `pulumi:"weekIndex"`
+// Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
+type PurchasePlan struct {
+	// The plan ID.
+	Name *string `pulumi:"name"`
+	// Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+	Product *string `pulumi:"product"`
+	// The promotion code.
+	PromotionCode *string `pulumi:"promotionCode"`
+	// The plan ID.
+	Publisher *string `pulumi:"publisher"`
 }
 
-// RelativeMonthlyScheduleInput is an input type that accepts RelativeMonthlyScheduleArgs and RelativeMonthlyScheduleOutput values.
-// You can construct a concrete instance of `RelativeMonthlyScheduleInput` via:
+// PurchasePlanInput is an input type that accepts PurchasePlanArgs and PurchasePlanOutput values.
+// You can construct a concrete instance of `PurchasePlanInput` via:
 //
-//	RelativeMonthlyScheduleArgs{...}
-type RelativeMonthlyScheduleInput interface {
+//	PurchasePlanArgs{...}
+type PurchasePlanInput interface {
 	pulumi.Input
 
-	ToRelativeMonthlyScheduleOutput() RelativeMonthlyScheduleOutput
-	ToRelativeMonthlyScheduleOutputWithContext(context.Context) RelativeMonthlyScheduleOutput
+	ToPurchasePlanOutput() PurchasePlanOutput
+	ToPurchasePlanOutputWithContext(context.Context) PurchasePlanOutput
 }
 
-// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-type RelativeMonthlyScheduleArgs struct {
-	// Specifies on which day of the week the maintenance occurs.
-	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
-	// Specifies the number of months between each set of occurrences.
-	IntervalMonths pulumi.IntInput `pulumi:"intervalMonths"`
-	// Specifies on which week of the month the dayOfWeek applies.
-	WeekIndex pulumi.StringInput `pulumi:"weekIndex"`
+// Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
+type PurchasePlanArgs struct {
+	// The plan ID.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+	Product pulumi.StringPtrInput `pulumi:"product"`
+	// The promotion code.
+	PromotionCode pulumi.StringPtrInput `pulumi:"promotionCode"`
+	// The plan ID.
+	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
 }
 
-func (RelativeMonthlyScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RelativeMonthlySchedule)(nil)).Elem()
+func (PurchasePlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PurchasePlan)(nil)).Elem()
 }
 
-func (i RelativeMonthlyScheduleArgs) ToRelativeMonthlyScheduleOutput() RelativeMonthlyScheduleOutput {
-	return i.ToRelativeMonthlyScheduleOutputWithContext(context.Background())
+func (i PurchasePlanArgs) ToPurchasePlanOutput() PurchasePlanOutput {
+	return i.ToPurchasePlanOutputWithContext(context.Background())
 }
 
-func (i RelativeMonthlyScheduleArgs) ToRelativeMonthlyScheduleOutputWithContext(ctx context.Context) RelativeMonthlyScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RelativeMonthlyScheduleOutput)
+func (i PurchasePlanArgs) ToPurchasePlanOutputWithContext(ctx context.Context) PurchasePlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PurchasePlanOutput)
 }
 
-func (i RelativeMonthlyScheduleArgs) ToRelativeMonthlySchedulePtrOutput() RelativeMonthlySchedulePtrOutput {
-	return i.ToRelativeMonthlySchedulePtrOutputWithContext(context.Background())
+func (i PurchasePlanArgs) ToPurchasePlanPtrOutput() PurchasePlanPtrOutput {
+	return i.ToPurchasePlanPtrOutputWithContext(context.Background())
 }
 
-func (i RelativeMonthlyScheduleArgs) ToRelativeMonthlySchedulePtrOutputWithContext(ctx context.Context) RelativeMonthlySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RelativeMonthlyScheduleOutput).ToRelativeMonthlySchedulePtrOutputWithContext(ctx)
+func (i PurchasePlanArgs) ToPurchasePlanPtrOutputWithContext(ctx context.Context) PurchasePlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PurchasePlanOutput).ToPurchasePlanPtrOutputWithContext(ctx)
 }
 
-// RelativeMonthlySchedulePtrInput is an input type that accepts RelativeMonthlyScheduleArgs, RelativeMonthlySchedulePtr and RelativeMonthlySchedulePtrOutput values.
-// You can construct a concrete instance of `RelativeMonthlySchedulePtrInput` via:
+// PurchasePlanPtrInput is an input type that accepts PurchasePlanArgs, PurchasePlanPtr and PurchasePlanPtrOutput values.
+// You can construct a concrete instance of `PurchasePlanPtrInput` via:
 //
-//	        RelativeMonthlyScheduleArgs{...}
+//	        PurchasePlanArgs{...}
 //
 //	or:
 //
 //	        nil
-type RelativeMonthlySchedulePtrInput interface {
+type PurchasePlanPtrInput interface {
 	pulumi.Input
 
-	ToRelativeMonthlySchedulePtrOutput() RelativeMonthlySchedulePtrOutput
-	ToRelativeMonthlySchedulePtrOutputWithContext(context.Context) RelativeMonthlySchedulePtrOutput
+	ToPurchasePlanPtrOutput() PurchasePlanPtrOutput
+	ToPurchasePlanPtrOutputWithContext(context.Context) PurchasePlanPtrOutput
 }
 
-type relativeMonthlySchedulePtrType RelativeMonthlyScheduleArgs
+type purchasePlanPtrType PurchasePlanArgs
 
-func RelativeMonthlySchedulePtr(v *RelativeMonthlyScheduleArgs) RelativeMonthlySchedulePtrInput {
-	return (*relativeMonthlySchedulePtrType)(v)
+func PurchasePlanPtr(v *PurchasePlanArgs) PurchasePlanPtrInput {
+	return (*purchasePlanPtrType)(v)
 }
 
-func (*relativeMonthlySchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RelativeMonthlySchedule)(nil)).Elem()
+func (*purchasePlanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PurchasePlan)(nil)).Elem()
 }
 
-func (i *relativeMonthlySchedulePtrType) ToRelativeMonthlySchedulePtrOutput() RelativeMonthlySchedulePtrOutput {
-	return i.ToRelativeMonthlySchedulePtrOutputWithContext(context.Background())
+func (i *purchasePlanPtrType) ToPurchasePlanPtrOutput() PurchasePlanPtrOutput {
+	return i.ToPurchasePlanPtrOutputWithContext(context.Background())
 }
 
-func (i *relativeMonthlySchedulePtrType) ToRelativeMonthlySchedulePtrOutputWithContext(ctx context.Context) RelativeMonthlySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RelativeMonthlySchedulePtrOutput)
+func (i *purchasePlanPtrType) ToPurchasePlanPtrOutputWithContext(ctx context.Context) PurchasePlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PurchasePlanPtrOutput)
 }
 
-// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-type RelativeMonthlyScheduleOutput struct{ *pulumi.OutputState }
+// Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
+type PurchasePlanOutput struct{ *pulumi.OutputState }
 
-func (RelativeMonthlyScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RelativeMonthlySchedule)(nil)).Elem()
+func (PurchasePlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PurchasePlan)(nil)).Elem()
 }
 
-func (o RelativeMonthlyScheduleOutput) ToRelativeMonthlyScheduleOutput() RelativeMonthlyScheduleOutput {
+func (o PurchasePlanOutput) ToPurchasePlanOutput() PurchasePlanOutput {
 	return o
 }
 
-func (o RelativeMonthlyScheduleOutput) ToRelativeMonthlyScheduleOutputWithContext(ctx context.Context) RelativeMonthlyScheduleOutput {
+func (o PurchasePlanOutput) ToPurchasePlanOutputWithContext(ctx context.Context) PurchasePlanOutput {
 	return o
 }
 
-func (o RelativeMonthlyScheduleOutput) ToRelativeMonthlySchedulePtrOutput() RelativeMonthlySchedulePtrOutput {
-	return o.ToRelativeMonthlySchedulePtrOutputWithContext(context.Background())
+func (o PurchasePlanOutput) ToPurchasePlanPtrOutput() PurchasePlanPtrOutput {
+	return o.ToPurchasePlanPtrOutputWithContext(context.Background())
 }
 
-func (o RelativeMonthlyScheduleOutput) ToRelativeMonthlySchedulePtrOutputWithContext(ctx context.Context) RelativeMonthlySchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelativeMonthlySchedule) *RelativeMonthlySchedule {
+func (o PurchasePlanOutput) ToPurchasePlanPtrOutputWithContext(ctx context.Context) PurchasePlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PurchasePlan) *PurchasePlan {
 		return &v
-	}).(RelativeMonthlySchedulePtrOutput)
+	}).(PurchasePlanPtrOutput)
 }
 
-// Specifies on which day of the week the maintenance occurs.
-func (o RelativeMonthlyScheduleOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v RelativeMonthlySchedule) string { return v.DayOfWeek }).(pulumi.StringOutput)
+// The plan ID.
+func (o PurchasePlanOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PurchasePlan) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of months between each set of occurrences.
-func (o RelativeMonthlyScheduleOutput) IntervalMonths() pulumi.IntOutput {
-	return o.ApplyT(func(v RelativeMonthlySchedule) int { return v.IntervalMonths }).(pulumi.IntOutput)
+// Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+func (o PurchasePlanOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PurchasePlan) *string { return v.Product }).(pulumi.StringPtrOutput)
 }
 
-// Specifies on which week of the month the dayOfWeek applies.
-func (o RelativeMonthlyScheduleOutput) WeekIndex() pulumi.StringOutput {
-	return o.ApplyT(func(v RelativeMonthlySchedule) string { return v.WeekIndex }).(pulumi.StringOutput)
+// The promotion code.
+func (o PurchasePlanOutput) PromotionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PurchasePlan) *string { return v.PromotionCode }).(pulumi.StringPtrOutput)
 }
 
-type RelativeMonthlySchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (RelativeMonthlySchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RelativeMonthlySchedule)(nil)).Elem()
+// The plan ID.
+func (o PurchasePlanOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PurchasePlan) *string { return v.Publisher }).(pulumi.StringPtrOutput)
 }
 
-func (o RelativeMonthlySchedulePtrOutput) ToRelativeMonthlySchedulePtrOutput() RelativeMonthlySchedulePtrOutput {
+type PurchasePlanPtrOutput struct{ *pulumi.OutputState }
+
+func (PurchasePlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PurchasePlan)(nil)).Elem()
+}
+
+func (o PurchasePlanPtrOutput) ToPurchasePlanPtrOutput() PurchasePlanPtrOutput {
 	return o
 }
 
-func (o RelativeMonthlySchedulePtrOutput) ToRelativeMonthlySchedulePtrOutputWithContext(ctx context.Context) RelativeMonthlySchedulePtrOutput {
+func (o PurchasePlanPtrOutput) ToPurchasePlanPtrOutputWithContext(ctx context.Context) PurchasePlanPtrOutput {
 	return o
 }
 
-func (o RelativeMonthlySchedulePtrOutput) Elem() RelativeMonthlyScheduleOutput {
-	return o.ApplyT(func(v *RelativeMonthlySchedule) RelativeMonthlySchedule {
+func (o PurchasePlanPtrOutput) Elem() PurchasePlanOutput {
+	return o.ApplyT(func(v *PurchasePlan) PurchasePlan {
 		if v != nil {
 			return *v
 		}
-		var ret RelativeMonthlySchedule
+		var ret PurchasePlan
 		return ret
-	}).(RelativeMonthlyScheduleOutput)
+	}).(PurchasePlanOutput)
 }
 
-// Specifies on which day of the week the maintenance occurs.
-func (o RelativeMonthlySchedulePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RelativeMonthlySchedule) *string {
+// The plan ID.
+func (o PurchasePlanPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PurchasePlan) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.DayOfWeek
+		return v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of months between each set of occurrences.
-func (o RelativeMonthlySchedulePtrOutput) IntervalMonths() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RelativeMonthlySchedule) *int {
+// Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+func (o PurchasePlanPtrOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PurchasePlan) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.IntervalMonths
-	}).(pulumi.IntPtrOutput)
-}
-
-// Specifies on which week of the month the dayOfWeek applies.
-func (o RelativeMonthlySchedulePtrOutput) WeekIndex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RelativeMonthlySchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WeekIndex
+		return v.Product
 	}).(pulumi.StringPtrOutput)
 }
 
-// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-type RelativeMonthlyScheduleResponse struct {
-	// Specifies on which day of the week the maintenance occurs.
-	DayOfWeek string `pulumi:"dayOfWeek"`
-	// Specifies the number of months between each set of occurrences.
-	IntervalMonths int `pulumi:"intervalMonths"`
-	// Specifies on which week of the month the dayOfWeek applies.
-	WeekIndex string `pulumi:"weekIndex"`
+// The promotion code.
+func (o PurchasePlanPtrOutput) PromotionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PurchasePlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PromotionCode
+	}).(pulumi.StringPtrOutput)
 }
 
-// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-type RelativeMonthlyScheduleResponseOutput struct{ *pulumi.OutputState }
-
-func (RelativeMonthlyScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RelativeMonthlyScheduleResponse)(nil)).Elem()
+// The plan ID.
+func (o PurchasePlanPtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PurchasePlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o RelativeMonthlyScheduleResponseOutput) ToRelativeMonthlyScheduleResponseOutput() RelativeMonthlyScheduleResponseOutput {
+// Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
+type PurchasePlanResponse struct {
+	// The plan ID.
+	Name *string `pulumi:"name"`
+	// Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+	Product *string `pulumi:"product"`
+	// The promotion code.
+	PromotionCode *string `pulumi:"promotionCode"`
+	// The plan ID.
+	Publisher *string `pulumi:"publisher"`
+}
+
+// Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
+type PurchasePlanResponseOutput struct{ *pulumi.OutputState }
+
+func (PurchasePlanResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PurchasePlanResponse)(nil)).Elem()
+}
+
+func (o PurchasePlanResponseOutput) ToPurchasePlanResponseOutput() PurchasePlanResponseOutput {
 	return o
 }
 
-func (o RelativeMonthlyScheduleResponseOutput) ToRelativeMonthlyScheduleResponseOutputWithContext(ctx context.Context) RelativeMonthlyScheduleResponseOutput {
+func (o PurchasePlanResponseOutput) ToPurchasePlanResponseOutputWithContext(ctx context.Context) PurchasePlanResponseOutput {
 	return o
 }
 
-// Specifies on which day of the week the maintenance occurs.
-func (o RelativeMonthlyScheduleResponseOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v RelativeMonthlyScheduleResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
+// The plan ID.
+func (o PurchasePlanResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PurchasePlanResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of months between each set of occurrences.
-func (o RelativeMonthlyScheduleResponseOutput) IntervalMonths() pulumi.IntOutput {
-	return o.ApplyT(func(v RelativeMonthlyScheduleResponse) int { return v.IntervalMonths }).(pulumi.IntOutput)
+// Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+func (o PurchasePlanResponseOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PurchasePlanResponse) *string { return v.Product }).(pulumi.StringPtrOutput)
 }
 
-// Specifies on which week of the month the dayOfWeek applies.
-func (o RelativeMonthlyScheduleResponseOutput) WeekIndex() pulumi.StringOutput {
-	return o.ApplyT(func(v RelativeMonthlyScheduleResponse) string { return v.WeekIndex }).(pulumi.StringOutput)
+// The promotion code.
+func (o PurchasePlanResponseOutput) PromotionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PurchasePlanResponse) *string { return v.PromotionCode }).(pulumi.StringPtrOutput)
 }
 
-type RelativeMonthlyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RelativeMonthlyScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RelativeMonthlyScheduleResponse)(nil)).Elem()
+// The plan ID.
+func (o PurchasePlanResponseOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PurchasePlanResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
 }
 
-func (o RelativeMonthlyScheduleResponsePtrOutput) ToRelativeMonthlyScheduleResponsePtrOutput() RelativeMonthlyScheduleResponsePtrOutput {
+type PurchasePlanResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PurchasePlanResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PurchasePlanResponse)(nil)).Elem()
+}
+
+func (o PurchasePlanResponsePtrOutput) ToPurchasePlanResponsePtrOutput() PurchasePlanResponsePtrOutput {
 	return o
 }
 
-func (o RelativeMonthlyScheduleResponsePtrOutput) ToRelativeMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) RelativeMonthlyScheduleResponsePtrOutput {
+func (o PurchasePlanResponsePtrOutput) ToPurchasePlanResponsePtrOutputWithContext(ctx context.Context) PurchasePlanResponsePtrOutput {
 	return o
 }
 
-func (o RelativeMonthlyScheduleResponsePtrOutput) Elem() RelativeMonthlyScheduleResponseOutput {
-	return o.ApplyT(func(v *RelativeMonthlyScheduleResponse) RelativeMonthlyScheduleResponse {
+func (o PurchasePlanResponsePtrOutput) Elem() PurchasePlanResponseOutput {
+	return o.ApplyT(func(v *PurchasePlanResponse) PurchasePlanResponse {
 		if v != nil {
 			return *v
 		}
-		var ret RelativeMonthlyScheduleResponse
+		var ret PurchasePlanResponse
 		return ret
-	}).(RelativeMonthlyScheduleResponseOutput)
+	}).(PurchasePlanResponseOutput)
 }
 
-// Specifies on which day of the week the maintenance occurs.
-func (o RelativeMonthlyScheduleResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RelativeMonthlyScheduleResponse) *string {
+// The plan ID.
+func (o PurchasePlanResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PurchasePlanResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.DayOfWeek
+		return v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of months between each set of occurrences.
-func (o RelativeMonthlyScheduleResponsePtrOutput) IntervalMonths() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RelativeMonthlyScheduleResponse) *int {
+// Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+func (o PurchasePlanResponsePtrOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PurchasePlanResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.IntervalMonths
-	}).(pulumi.IntPtrOutput)
-}
-
-// Specifies on which week of the month the dayOfWeek applies.
-func (o RelativeMonthlyScheduleResponsePtrOutput) WeekIndex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RelativeMonthlyScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WeekIndex
+		return v.Product
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource quota for the namespace.
-type ResourceQuota struct {
-	// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-	CpuLimit *string `pulumi:"cpuLimit"`
-	// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-	CpuRequest *string `pulumi:"cpuRequest"`
-	// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-	MemoryLimit *string `pulumi:"memoryLimit"`
-	// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-	MemoryRequest *string `pulumi:"memoryRequest"`
-}
-
-// ResourceQuotaInput is an input type that accepts ResourceQuotaArgs and ResourceQuotaOutput values.
-// You can construct a concrete instance of `ResourceQuotaInput` via:
-//
-//	ResourceQuotaArgs{...}
-type ResourceQuotaInput interface {
-	pulumi.Input
-
-	ToResourceQuotaOutput() ResourceQuotaOutput
-	ToResourceQuotaOutputWithContext(context.Context) ResourceQuotaOutput
-}
-
-// Resource quota for the namespace.
-type ResourceQuotaArgs struct {
-	// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-	CpuLimit pulumi.StringPtrInput `pulumi:"cpuLimit"`
-	// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-	CpuRequest pulumi.StringPtrInput `pulumi:"cpuRequest"`
-	// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-	MemoryLimit pulumi.StringPtrInput `pulumi:"memoryLimit"`
-	// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-	MemoryRequest pulumi.StringPtrInput `pulumi:"memoryRequest"`
-}
-
-func (ResourceQuotaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceQuota)(nil)).Elem()
-}
-
-func (i ResourceQuotaArgs) ToResourceQuotaOutput() ResourceQuotaOutput {
-	return i.ToResourceQuotaOutputWithContext(context.Background())
-}
-
-func (i ResourceQuotaArgs) ToResourceQuotaOutputWithContext(ctx context.Context) ResourceQuotaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceQuotaOutput)
-}
-
-func (i ResourceQuotaArgs) ToResourceQuotaPtrOutput() ResourceQuotaPtrOutput {
-	return i.ToResourceQuotaPtrOutputWithContext(context.Background())
-}
-
-func (i ResourceQuotaArgs) ToResourceQuotaPtrOutputWithContext(ctx context.Context) ResourceQuotaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceQuotaOutput).ToResourceQuotaPtrOutputWithContext(ctx)
-}
-
-// ResourceQuotaPtrInput is an input type that accepts ResourceQuotaArgs, ResourceQuotaPtr and ResourceQuotaPtrOutput values.
-// You can construct a concrete instance of `ResourceQuotaPtrInput` via:
-//
-//	        ResourceQuotaArgs{...}
-//
-//	or:
-//
-//	        nil
-type ResourceQuotaPtrInput interface {
-	pulumi.Input
-
-	ToResourceQuotaPtrOutput() ResourceQuotaPtrOutput
-	ToResourceQuotaPtrOutputWithContext(context.Context) ResourceQuotaPtrOutput
-}
-
-type resourceQuotaPtrType ResourceQuotaArgs
-
-func ResourceQuotaPtr(v *ResourceQuotaArgs) ResourceQuotaPtrInput {
-	return (*resourceQuotaPtrType)(v)
-}
-
-func (*resourceQuotaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceQuota)(nil)).Elem()
-}
-
-func (i *resourceQuotaPtrType) ToResourceQuotaPtrOutput() ResourceQuotaPtrOutput {
-	return i.ToResourceQuotaPtrOutputWithContext(context.Background())
-}
-
-func (i *resourceQuotaPtrType) ToResourceQuotaPtrOutputWithContext(ctx context.Context) ResourceQuotaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceQuotaPtrOutput)
-}
-
-// Resource quota for the namespace.
-type ResourceQuotaOutput struct{ *pulumi.OutputState }
-
-func (ResourceQuotaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceQuota)(nil)).Elem()
-}
-
-func (o ResourceQuotaOutput) ToResourceQuotaOutput() ResourceQuotaOutput {
-	return o
-}
-
-func (o ResourceQuotaOutput) ToResourceQuotaOutputWithContext(ctx context.Context) ResourceQuotaOutput {
-	return o
-}
-
-func (o ResourceQuotaOutput) ToResourceQuotaPtrOutput() ResourceQuotaPtrOutput {
-	return o.ToResourceQuotaPtrOutputWithContext(context.Background())
-}
-
-func (o ResourceQuotaOutput) ToResourceQuotaPtrOutputWithContext(ctx context.Context) ResourceQuotaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceQuota) *ResourceQuota {
-		return &v
-	}).(ResourceQuotaPtrOutput)
-}
-
-// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-func (o ResourceQuotaOutput) CpuLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceQuota) *string { return v.CpuLimit }).(pulumi.StringPtrOutput)
-}
-
-// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-func (o ResourceQuotaOutput) CpuRequest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceQuota) *string { return v.CpuRequest }).(pulumi.StringPtrOutput)
-}
-
-// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-func (o ResourceQuotaOutput) MemoryLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceQuota) *string { return v.MemoryLimit }).(pulumi.StringPtrOutput)
-}
-
-// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-func (o ResourceQuotaOutput) MemoryRequest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceQuota) *string { return v.MemoryRequest }).(pulumi.StringPtrOutput)
-}
-
-type ResourceQuotaPtrOutput struct{ *pulumi.OutputState }
-
-func (ResourceQuotaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceQuota)(nil)).Elem()
-}
-
-func (o ResourceQuotaPtrOutput) ToResourceQuotaPtrOutput() ResourceQuotaPtrOutput {
-	return o
-}
-
-func (o ResourceQuotaPtrOutput) ToResourceQuotaPtrOutputWithContext(ctx context.Context) ResourceQuotaPtrOutput {
-	return o
-}
-
-func (o ResourceQuotaPtrOutput) Elem() ResourceQuotaOutput {
-	return o.ApplyT(func(v *ResourceQuota) ResourceQuota {
-		if v != nil {
-			return *v
-		}
-		var ret ResourceQuota
-		return ret
-	}).(ResourceQuotaOutput)
-}
-
-// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-func (o ResourceQuotaPtrOutput) CpuLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceQuota) *string {
+// The promotion code.
+func (o PurchasePlanResponsePtrOutput) PromotionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PurchasePlanResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.CpuLimit
+		return v.PromotionCode
 	}).(pulumi.StringPtrOutput)
 }
 
-// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-func (o ResourceQuotaPtrOutput) CpuRequest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceQuota) *string {
+// The plan ID.
+func (o PurchasePlanResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PurchasePlanResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.CpuRequest
-	}).(pulumi.StringPtrOutput)
-}
-
-// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-func (o ResourceQuotaPtrOutput) MemoryLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceQuota) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MemoryLimit
-	}).(pulumi.StringPtrOutput)
-}
-
-// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-func (o ResourceQuotaPtrOutput) MemoryRequest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceQuota) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MemoryRequest
-	}).(pulumi.StringPtrOutput)
-}
-
-// Resource quota for the namespace.
-type ResourceQuotaResponse struct {
-	// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-	CpuLimit *string `pulumi:"cpuLimit"`
-	// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-	CpuRequest *string `pulumi:"cpuRequest"`
-	// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-	MemoryLimit *string `pulumi:"memoryLimit"`
-	// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-	MemoryRequest *string `pulumi:"memoryRequest"`
-}
-
-// Resource quota for the namespace.
-type ResourceQuotaResponseOutput struct{ *pulumi.OutputState }
-
-func (ResourceQuotaResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceQuotaResponse)(nil)).Elem()
-}
-
-func (o ResourceQuotaResponseOutput) ToResourceQuotaResponseOutput() ResourceQuotaResponseOutput {
-	return o
-}
-
-func (o ResourceQuotaResponseOutput) ToResourceQuotaResponseOutputWithContext(ctx context.Context) ResourceQuotaResponseOutput {
-	return o
-}
-
-// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-func (o ResourceQuotaResponseOutput) CpuLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceQuotaResponse) *string { return v.CpuLimit }).(pulumi.StringPtrOutput)
-}
-
-// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-func (o ResourceQuotaResponseOutput) CpuRequest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceQuotaResponse) *string { return v.CpuRequest }).(pulumi.StringPtrOutput)
-}
-
-// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-func (o ResourceQuotaResponseOutput) MemoryLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceQuotaResponse) *string { return v.MemoryLimit }).(pulumi.StringPtrOutput)
-}
-
-// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-func (o ResourceQuotaResponseOutput) MemoryRequest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceQuotaResponse) *string { return v.MemoryRequest }).(pulumi.StringPtrOutput)
-}
-
-type ResourceQuotaResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ResourceQuotaResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceQuotaResponse)(nil)).Elem()
-}
-
-func (o ResourceQuotaResponsePtrOutput) ToResourceQuotaResponsePtrOutput() ResourceQuotaResponsePtrOutput {
-	return o
-}
-
-func (o ResourceQuotaResponsePtrOutput) ToResourceQuotaResponsePtrOutputWithContext(ctx context.Context) ResourceQuotaResponsePtrOutput {
-	return o
-}
-
-func (o ResourceQuotaResponsePtrOutput) Elem() ResourceQuotaResponseOutput {
-	return o.ApplyT(func(v *ResourceQuotaResponse) ResourceQuotaResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ResourceQuotaResponse
-		return ret
-	}).(ResourceQuotaResponseOutput)
-}
-
-// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-func (o ResourceQuotaResponsePtrOutput) CpuLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceQuotaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CpuLimit
-	}).(pulumi.StringPtrOutput)
-}
-
-// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-func (o ResourceQuotaResponsePtrOutput) CpuRequest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceQuotaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CpuRequest
-	}).(pulumi.StringPtrOutput)
-}
-
-// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-func (o ResourceQuotaResponsePtrOutput) MemoryLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceQuotaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MemoryLimit
-	}).(pulumi.StringPtrOutput)
-}
-
-// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-func (o ResourceQuotaResponsePtrOutput) MemoryRequest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceQuotaResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MemoryRequest
+		return v.Publisher
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26412,550 +18518,6 @@ func (o ResourceReferenceResponseArrayOutput) Index(i pulumi.IntInput) ResourceR
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceReferenceResponse {
 		return vs[0].([]ResourceReferenceResponse)[vs[1].(int)]
 	}).(ResourceReferenceResponseOutput)
-}
-
-// One and only one of the schedule types should be specified. Choose either 'daily', 'weekly', 'absoluteMonthly' or 'relativeMonthly' for your maintenance schedule.
-type Schedule struct {
-	// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-	AbsoluteMonthly *AbsoluteMonthlySchedule `pulumi:"absoluteMonthly"`
-	// For schedules like: 'recur every day' or 'recur every 3 days'.
-	Daily *DailySchedule `pulumi:"daily"`
-	// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-	RelativeMonthly *RelativeMonthlySchedule `pulumi:"relativeMonthly"`
-	// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-	Weekly *WeeklySchedule `pulumi:"weekly"`
-}
-
-// ScheduleInput is an input type that accepts ScheduleArgs and ScheduleOutput values.
-// You can construct a concrete instance of `ScheduleInput` via:
-//
-//	ScheduleArgs{...}
-type ScheduleInput interface {
-	pulumi.Input
-
-	ToScheduleOutput() ScheduleOutput
-	ToScheduleOutputWithContext(context.Context) ScheduleOutput
-}
-
-// One and only one of the schedule types should be specified. Choose either 'daily', 'weekly', 'absoluteMonthly' or 'relativeMonthly' for your maintenance schedule.
-type ScheduleArgs struct {
-	// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-	AbsoluteMonthly AbsoluteMonthlySchedulePtrInput `pulumi:"absoluteMonthly"`
-	// For schedules like: 'recur every day' or 'recur every 3 days'.
-	Daily DailySchedulePtrInput `pulumi:"daily"`
-	// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-	RelativeMonthly RelativeMonthlySchedulePtrInput `pulumi:"relativeMonthly"`
-	// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-	Weekly WeeklySchedulePtrInput `pulumi:"weekly"`
-}
-
-func (ScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Schedule)(nil)).Elem()
-}
-
-func (i ScheduleArgs) ToScheduleOutput() ScheduleOutput {
-	return i.ToScheduleOutputWithContext(context.Background())
-}
-
-func (i ScheduleArgs) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
-}
-
-func (i ScheduleArgs) ToSchedulePtrOutput() SchedulePtrOutput {
-	return i.ToSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i ScheduleArgs) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput).ToSchedulePtrOutputWithContext(ctx)
-}
-
-// SchedulePtrInput is an input type that accepts ScheduleArgs, SchedulePtr and SchedulePtrOutput values.
-// You can construct a concrete instance of `SchedulePtrInput` via:
-//
-//	        ScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type SchedulePtrInput interface {
-	pulumi.Input
-
-	ToSchedulePtrOutput() SchedulePtrOutput
-	ToSchedulePtrOutputWithContext(context.Context) SchedulePtrOutput
-}
-
-type schedulePtrType ScheduleArgs
-
-func SchedulePtr(v *ScheduleArgs) SchedulePtrInput {
-	return (*schedulePtrType)(v)
-}
-
-func (*schedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Schedule)(nil)).Elem()
-}
-
-func (i *schedulePtrType) ToSchedulePtrOutput() SchedulePtrOutput {
-	return i.ToSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *schedulePtrType) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulePtrOutput)
-}
-
-// One and only one of the schedule types should be specified. Choose either 'daily', 'weekly', 'absoluteMonthly' or 'relativeMonthly' for your maintenance schedule.
-type ScheduleOutput struct{ *pulumi.OutputState }
-
-func (ScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Schedule)(nil)).Elem()
-}
-
-func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {
-	return o
-}
-
-func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
-	return o
-}
-
-func (o ScheduleOutput) ToSchedulePtrOutput() SchedulePtrOutput {
-	return o.ToSchedulePtrOutputWithContext(context.Background())
-}
-
-func (o ScheduleOutput) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Schedule) *Schedule {
-		return &v
-	}).(SchedulePtrOutput)
-}
-
-// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-func (o ScheduleOutput) AbsoluteMonthly() AbsoluteMonthlySchedulePtrOutput {
-	return o.ApplyT(func(v Schedule) *AbsoluteMonthlySchedule { return v.AbsoluteMonthly }).(AbsoluteMonthlySchedulePtrOutput)
-}
-
-// For schedules like: 'recur every day' or 'recur every 3 days'.
-func (o ScheduleOutput) Daily() DailySchedulePtrOutput {
-	return o.ApplyT(func(v Schedule) *DailySchedule { return v.Daily }).(DailySchedulePtrOutput)
-}
-
-// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-func (o ScheduleOutput) RelativeMonthly() RelativeMonthlySchedulePtrOutput {
-	return o.ApplyT(func(v Schedule) *RelativeMonthlySchedule { return v.RelativeMonthly }).(RelativeMonthlySchedulePtrOutput)
-}
-
-// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-func (o ScheduleOutput) Weekly() WeeklySchedulePtrOutput {
-	return o.ApplyT(func(v Schedule) *WeeklySchedule { return v.Weekly }).(WeeklySchedulePtrOutput)
-}
-
-type SchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (SchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Schedule)(nil)).Elem()
-}
-
-func (o SchedulePtrOutput) ToSchedulePtrOutput() SchedulePtrOutput {
-	return o
-}
-
-func (o SchedulePtrOutput) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
-	return o
-}
-
-func (o SchedulePtrOutput) Elem() ScheduleOutput {
-	return o.ApplyT(func(v *Schedule) Schedule {
-		if v != nil {
-			return *v
-		}
-		var ret Schedule
-		return ret
-	}).(ScheduleOutput)
-}
-
-// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-func (o SchedulePtrOutput) AbsoluteMonthly() AbsoluteMonthlySchedulePtrOutput {
-	return o.ApplyT(func(v *Schedule) *AbsoluteMonthlySchedule {
-		if v == nil {
-			return nil
-		}
-		return v.AbsoluteMonthly
-	}).(AbsoluteMonthlySchedulePtrOutput)
-}
-
-// For schedules like: 'recur every day' or 'recur every 3 days'.
-func (o SchedulePtrOutput) Daily() DailySchedulePtrOutput {
-	return o.ApplyT(func(v *Schedule) *DailySchedule {
-		if v == nil {
-			return nil
-		}
-		return v.Daily
-	}).(DailySchedulePtrOutput)
-}
-
-// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-func (o SchedulePtrOutput) RelativeMonthly() RelativeMonthlySchedulePtrOutput {
-	return o.ApplyT(func(v *Schedule) *RelativeMonthlySchedule {
-		if v == nil {
-			return nil
-		}
-		return v.RelativeMonthly
-	}).(RelativeMonthlySchedulePtrOutput)
-}
-
-// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-func (o SchedulePtrOutput) Weekly() WeeklySchedulePtrOutput {
-	return o.ApplyT(func(v *Schedule) *WeeklySchedule {
-		if v == nil {
-			return nil
-		}
-		return v.Weekly
-	}).(WeeklySchedulePtrOutput)
-}
-
-// One and only one of the schedule types should be specified. Choose either 'daily', 'weekly', 'absoluteMonthly' or 'relativeMonthly' for your maintenance schedule.
-type ScheduleResponse struct {
-	// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-	AbsoluteMonthly *AbsoluteMonthlyScheduleResponse `pulumi:"absoluteMonthly"`
-	// For schedules like: 'recur every day' or 'recur every 3 days'.
-	Daily *DailyScheduleResponse `pulumi:"daily"`
-	// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-	RelativeMonthly *RelativeMonthlyScheduleResponse `pulumi:"relativeMonthly"`
-	// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-	Weekly *WeeklyScheduleResponse `pulumi:"weekly"`
-}
-
-// One and only one of the schedule types should be specified. Choose either 'daily', 'weekly', 'absoluteMonthly' or 'relativeMonthly' for your maintenance schedule.
-type ScheduleResponseOutput struct{ *pulumi.OutputState }
-
-func (ScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleResponse)(nil)).Elem()
-}
-
-func (o ScheduleResponseOutput) ToScheduleResponseOutput() ScheduleResponseOutput {
-	return o
-}
-
-func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
-	return o
-}
-
-// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-func (o ScheduleResponseOutput) AbsoluteMonthly() AbsoluteMonthlyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v ScheduleResponse) *AbsoluteMonthlyScheduleResponse { return v.AbsoluteMonthly }).(AbsoluteMonthlyScheduleResponsePtrOutput)
-}
-
-// For schedules like: 'recur every day' or 'recur every 3 days'.
-func (o ScheduleResponseOutput) Daily() DailyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v ScheduleResponse) *DailyScheduleResponse { return v.Daily }).(DailyScheduleResponsePtrOutput)
-}
-
-// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-func (o ScheduleResponseOutput) RelativeMonthly() RelativeMonthlyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v ScheduleResponse) *RelativeMonthlyScheduleResponse { return v.RelativeMonthly }).(RelativeMonthlyScheduleResponsePtrOutput)
-}
-
-// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-func (o ScheduleResponseOutput) Weekly() WeeklyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v ScheduleResponse) *WeeklyScheduleResponse { return v.Weekly }).(WeeklyScheduleResponsePtrOutput)
-}
-
-type ScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScheduleResponse)(nil)).Elem()
-}
-
-func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
-	return o
-}
-
-func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
-	return o
-}
-
-func (o ScheduleResponsePtrOutput) Elem() ScheduleResponseOutput {
-	return o.ApplyT(func(v *ScheduleResponse) ScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ScheduleResponse
-		return ret
-	}).(ScheduleResponseOutput)
-}
-
-// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-func (o ScheduleResponsePtrOutput) AbsoluteMonthly() AbsoluteMonthlyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v *ScheduleResponse) *AbsoluteMonthlyScheduleResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AbsoluteMonthly
-	}).(AbsoluteMonthlyScheduleResponsePtrOutput)
-}
-
-// For schedules like: 'recur every day' or 'recur every 3 days'.
-func (o ScheduleResponsePtrOutput) Daily() DailyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v *ScheduleResponse) *DailyScheduleResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Daily
-	}).(DailyScheduleResponsePtrOutput)
-}
-
-// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-func (o ScheduleResponsePtrOutput) RelativeMonthly() RelativeMonthlyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v *ScheduleResponse) *RelativeMonthlyScheduleResponse {
-		if v == nil {
-			return nil
-		}
-		return v.RelativeMonthly
-	}).(RelativeMonthlyScheduleResponsePtrOutput)
-}
-
-// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-func (o ScheduleResponsePtrOutput) Weekly() WeeklyScheduleResponsePtrOutput {
-	return o.ApplyT(func(v *ScheduleResponse) *WeeklyScheduleResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Weekly
-	}).(WeeklyScheduleResponsePtrOutput)
-}
-
-// Service mesh profile for a managed cluster.
-type ServiceMeshProfile struct {
-	// Istio service mesh configuration.
-	Istio *IstioServiceMesh `pulumi:"istio"`
-	// Mode of the service mesh.
-	Mode string `pulumi:"mode"`
-}
-
-// ServiceMeshProfileInput is an input type that accepts ServiceMeshProfileArgs and ServiceMeshProfileOutput values.
-// You can construct a concrete instance of `ServiceMeshProfileInput` via:
-//
-//	ServiceMeshProfileArgs{...}
-type ServiceMeshProfileInput interface {
-	pulumi.Input
-
-	ToServiceMeshProfileOutput() ServiceMeshProfileOutput
-	ToServiceMeshProfileOutputWithContext(context.Context) ServiceMeshProfileOutput
-}
-
-// Service mesh profile for a managed cluster.
-type ServiceMeshProfileArgs struct {
-	// Istio service mesh configuration.
-	Istio IstioServiceMeshPtrInput `pulumi:"istio"`
-	// Mode of the service mesh.
-	Mode pulumi.StringInput `pulumi:"mode"`
-}
-
-func (ServiceMeshProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceMeshProfile)(nil)).Elem()
-}
-
-func (i ServiceMeshProfileArgs) ToServiceMeshProfileOutput() ServiceMeshProfileOutput {
-	return i.ToServiceMeshProfileOutputWithContext(context.Background())
-}
-
-func (i ServiceMeshProfileArgs) ToServiceMeshProfileOutputWithContext(ctx context.Context) ServiceMeshProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshProfileOutput)
-}
-
-func (i ServiceMeshProfileArgs) ToServiceMeshProfilePtrOutput() ServiceMeshProfilePtrOutput {
-	return i.ToServiceMeshProfilePtrOutputWithContext(context.Background())
-}
-
-func (i ServiceMeshProfileArgs) ToServiceMeshProfilePtrOutputWithContext(ctx context.Context) ServiceMeshProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshProfileOutput).ToServiceMeshProfilePtrOutputWithContext(ctx)
-}
-
-// ServiceMeshProfilePtrInput is an input type that accepts ServiceMeshProfileArgs, ServiceMeshProfilePtr and ServiceMeshProfilePtrOutput values.
-// You can construct a concrete instance of `ServiceMeshProfilePtrInput` via:
-//
-//	        ServiceMeshProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type ServiceMeshProfilePtrInput interface {
-	pulumi.Input
-
-	ToServiceMeshProfilePtrOutput() ServiceMeshProfilePtrOutput
-	ToServiceMeshProfilePtrOutputWithContext(context.Context) ServiceMeshProfilePtrOutput
-}
-
-type serviceMeshProfilePtrType ServiceMeshProfileArgs
-
-func ServiceMeshProfilePtr(v *ServiceMeshProfileArgs) ServiceMeshProfilePtrInput {
-	return (*serviceMeshProfilePtrType)(v)
-}
-
-func (*serviceMeshProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceMeshProfile)(nil)).Elem()
-}
-
-func (i *serviceMeshProfilePtrType) ToServiceMeshProfilePtrOutput() ServiceMeshProfilePtrOutput {
-	return i.ToServiceMeshProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *serviceMeshProfilePtrType) ToServiceMeshProfilePtrOutputWithContext(ctx context.Context) ServiceMeshProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshProfilePtrOutput)
-}
-
-// Service mesh profile for a managed cluster.
-type ServiceMeshProfileOutput struct{ *pulumi.OutputState }
-
-func (ServiceMeshProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceMeshProfile)(nil)).Elem()
-}
-
-func (o ServiceMeshProfileOutput) ToServiceMeshProfileOutput() ServiceMeshProfileOutput {
-	return o
-}
-
-func (o ServiceMeshProfileOutput) ToServiceMeshProfileOutputWithContext(ctx context.Context) ServiceMeshProfileOutput {
-	return o
-}
-
-func (o ServiceMeshProfileOutput) ToServiceMeshProfilePtrOutput() ServiceMeshProfilePtrOutput {
-	return o.ToServiceMeshProfilePtrOutputWithContext(context.Background())
-}
-
-func (o ServiceMeshProfileOutput) ToServiceMeshProfilePtrOutputWithContext(ctx context.Context) ServiceMeshProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshProfile) *ServiceMeshProfile {
-		return &v
-	}).(ServiceMeshProfilePtrOutput)
-}
-
-// Istio service mesh configuration.
-func (o ServiceMeshProfileOutput) Istio() IstioServiceMeshPtrOutput {
-	return o.ApplyT(func(v ServiceMeshProfile) *IstioServiceMesh { return v.Istio }).(IstioServiceMeshPtrOutput)
-}
-
-// Mode of the service mesh.
-func (o ServiceMeshProfileOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceMeshProfile) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-type ServiceMeshProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceMeshProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceMeshProfile)(nil)).Elem()
-}
-
-func (o ServiceMeshProfilePtrOutput) ToServiceMeshProfilePtrOutput() ServiceMeshProfilePtrOutput {
-	return o
-}
-
-func (o ServiceMeshProfilePtrOutput) ToServiceMeshProfilePtrOutputWithContext(ctx context.Context) ServiceMeshProfilePtrOutput {
-	return o
-}
-
-func (o ServiceMeshProfilePtrOutput) Elem() ServiceMeshProfileOutput {
-	return o.ApplyT(func(v *ServiceMeshProfile) ServiceMeshProfile {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceMeshProfile
-		return ret
-	}).(ServiceMeshProfileOutput)
-}
-
-// Istio service mesh configuration.
-func (o ServiceMeshProfilePtrOutput) Istio() IstioServiceMeshPtrOutput {
-	return o.ApplyT(func(v *ServiceMeshProfile) *IstioServiceMesh {
-		if v == nil {
-			return nil
-		}
-		return v.Istio
-	}).(IstioServiceMeshPtrOutput)
-}
-
-// Mode of the service mesh.
-func (o ServiceMeshProfilePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceMeshProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service mesh profile for a managed cluster.
-type ServiceMeshProfileResponse struct {
-	// Istio service mesh configuration.
-	Istio *IstioServiceMeshResponse `pulumi:"istio"`
-	// Mode of the service mesh.
-	Mode string `pulumi:"mode"`
-}
-
-// Service mesh profile for a managed cluster.
-type ServiceMeshProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (ServiceMeshProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceMeshProfileResponse)(nil)).Elem()
-}
-
-func (o ServiceMeshProfileResponseOutput) ToServiceMeshProfileResponseOutput() ServiceMeshProfileResponseOutput {
-	return o
-}
-
-func (o ServiceMeshProfileResponseOutput) ToServiceMeshProfileResponseOutputWithContext(ctx context.Context) ServiceMeshProfileResponseOutput {
-	return o
-}
-
-// Istio service mesh configuration.
-func (o ServiceMeshProfileResponseOutput) Istio() IstioServiceMeshResponsePtrOutput {
-	return o.ApplyT(func(v ServiceMeshProfileResponse) *IstioServiceMeshResponse { return v.Istio }).(IstioServiceMeshResponsePtrOutput)
-}
-
-// Mode of the service mesh.
-func (o ServiceMeshProfileResponseOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceMeshProfileResponse) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-type ServiceMeshProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceMeshProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceMeshProfileResponse)(nil)).Elem()
-}
-
-func (o ServiceMeshProfileResponsePtrOutput) ToServiceMeshProfileResponsePtrOutput() ServiceMeshProfileResponsePtrOutput {
-	return o
-}
-
-func (o ServiceMeshProfileResponsePtrOutput) ToServiceMeshProfileResponsePtrOutputWithContext(ctx context.Context) ServiceMeshProfileResponsePtrOutput {
-	return o
-}
-
-func (o ServiceMeshProfileResponsePtrOutput) Elem() ServiceMeshProfileResponseOutput {
-	return o.ApplyT(func(v *ServiceMeshProfileResponse) ServiceMeshProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceMeshProfileResponse
-		return ret
-	}).(ServiceMeshProfileResponseOutput)
-}
-
-// Istio service mesh configuration.
-func (o ServiceMeshProfileResponsePtrOutput) Istio() IstioServiceMeshResponsePtrOutput {
-	return o.ApplyT(func(v *ServiceMeshProfileResponse) *IstioServiceMeshResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Istio
-	}).(IstioServiceMeshResponsePtrOutput)
-}
-
-// Mode of the service mesh.
-func (o ServiceMeshProfileResponsePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceMeshProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Mode
-	}).(pulumi.StringPtrOutput)
 }
 
 // Sysctl settings for Linux agent nodes.
@@ -28728,8 +20290,6 @@ func (o UpdateGroupStatusResponseArrayOutput) Index(i pulumi.IntInput) UpdateGro
 
 // The status of a UpdateRun.
 type UpdateRunStatusResponse struct {
-	// The node image upgrade specs for the update run. It is only set in update run when `NodeImageSelection.type` is `Consistent`.
-	NodeImageSelection NodeImageSelectionStatusResponse `pulumi:"nodeImageSelection"`
 	// The stages composing an update run. Stages are run sequentially withing an UpdateRun.
 	Stages []UpdateStageStatusResponse `pulumi:"stages"`
 	// The status of the UpdateRun.
@@ -28749,11 +20309,6 @@ func (o UpdateRunStatusResponseOutput) ToUpdateRunStatusResponseOutput() UpdateR
 
 func (o UpdateRunStatusResponseOutput) ToUpdateRunStatusResponseOutputWithContext(ctx context.Context) UpdateRunStatusResponseOutput {
 	return o
-}
-
-// The node image upgrade specs for the update run. It is only set in update run when `NodeImageSelection.type` is `Consistent`.
-func (o UpdateRunStatusResponseOutput) NodeImageSelection() NodeImageSelectionStatusResponseOutput {
-	return o.ApplyT(func(v UpdateRunStatusResponse) NodeImageSelectionStatusResponse { return v.NodeImageSelection }).(NodeImageSelectionStatusResponseOutput)
 }
 
 // The stages composing an update run. Stages are run sequentially withing an UpdateRun.
@@ -29288,242 +20843,6 @@ func (o UpdateStatusResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v UpdateStatusResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Settings for overrides when upgrading a cluster.
-type UpgradeOverrideSettings struct {
-	// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
-	ForceUpgrade *bool `pulumi:"forceUpgrade"`
-	// Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.
-	Until *string `pulumi:"until"`
-}
-
-// UpgradeOverrideSettingsInput is an input type that accepts UpgradeOverrideSettingsArgs and UpgradeOverrideSettingsOutput values.
-// You can construct a concrete instance of `UpgradeOverrideSettingsInput` via:
-//
-//	UpgradeOverrideSettingsArgs{...}
-type UpgradeOverrideSettingsInput interface {
-	pulumi.Input
-
-	ToUpgradeOverrideSettingsOutput() UpgradeOverrideSettingsOutput
-	ToUpgradeOverrideSettingsOutputWithContext(context.Context) UpgradeOverrideSettingsOutput
-}
-
-// Settings for overrides when upgrading a cluster.
-type UpgradeOverrideSettingsArgs struct {
-	// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
-	ForceUpgrade pulumi.BoolPtrInput `pulumi:"forceUpgrade"`
-	// Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.
-	Until pulumi.StringPtrInput `pulumi:"until"`
-}
-
-func (UpgradeOverrideSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UpgradeOverrideSettings)(nil)).Elem()
-}
-
-func (i UpgradeOverrideSettingsArgs) ToUpgradeOverrideSettingsOutput() UpgradeOverrideSettingsOutput {
-	return i.ToUpgradeOverrideSettingsOutputWithContext(context.Background())
-}
-
-func (i UpgradeOverrideSettingsArgs) ToUpgradeOverrideSettingsOutputWithContext(ctx context.Context) UpgradeOverrideSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeOverrideSettingsOutput)
-}
-
-func (i UpgradeOverrideSettingsArgs) ToUpgradeOverrideSettingsPtrOutput() UpgradeOverrideSettingsPtrOutput {
-	return i.ToUpgradeOverrideSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i UpgradeOverrideSettingsArgs) ToUpgradeOverrideSettingsPtrOutputWithContext(ctx context.Context) UpgradeOverrideSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeOverrideSettingsOutput).ToUpgradeOverrideSettingsPtrOutputWithContext(ctx)
-}
-
-// UpgradeOverrideSettingsPtrInput is an input type that accepts UpgradeOverrideSettingsArgs, UpgradeOverrideSettingsPtr and UpgradeOverrideSettingsPtrOutput values.
-// You can construct a concrete instance of `UpgradeOverrideSettingsPtrInput` via:
-//
-//	        UpgradeOverrideSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type UpgradeOverrideSettingsPtrInput interface {
-	pulumi.Input
-
-	ToUpgradeOverrideSettingsPtrOutput() UpgradeOverrideSettingsPtrOutput
-	ToUpgradeOverrideSettingsPtrOutputWithContext(context.Context) UpgradeOverrideSettingsPtrOutput
-}
-
-type upgradeOverrideSettingsPtrType UpgradeOverrideSettingsArgs
-
-func UpgradeOverrideSettingsPtr(v *UpgradeOverrideSettingsArgs) UpgradeOverrideSettingsPtrInput {
-	return (*upgradeOverrideSettingsPtrType)(v)
-}
-
-func (*upgradeOverrideSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UpgradeOverrideSettings)(nil)).Elem()
-}
-
-func (i *upgradeOverrideSettingsPtrType) ToUpgradeOverrideSettingsPtrOutput() UpgradeOverrideSettingsPtrOutput {
-	return i.ToUpgradeOverrideSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *upgradeOverrideSettingsPtrType) ToUpgradeOverrideSettingsPtrOutputWithContext(ctx context.Context) UpgradeOverrideSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UpgradeOverrideSettingsPtrOutput)
-}
-
-// Settings for overrides when upgrading a cluster.
-type UpgradeOverrideSettingsOutput struct{ *pulumi.OutputState }
-
-func (UpgradeOverrideSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UpgradeOverrideSettings)(nil)).Elem()
-}
-
-func (o UpgradeOverrideSettingsOutput) ToUpgradeOverrideSettingsOutput() UpgradeOverrideSettingsOutput {
-	return o
-}
-
-func (o UpgradeOverrideSettingsOutput) ToUpgradeOverrideSettingsOutputWithContext(ctx context.Context) UpgradeOverrideSettingsOutput {
-	return o
-}
-
-func (o UpgradeOverrideSettingsOutput) ToUpgradeOverrideSettingsPtrOutput() UpgradeOverrideSettingsPtrOutput {
-	return o.ToUpgradeOverrideSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o UpgradeOverrideSettingsOutput) ToUpgradeOverrideSettingsPtrOutputWithContext(ctx context.Context) UpgradeOverrideSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeOverrideSettings) *UpgradeOverrideSettings {
-		return &v
-	}).(UpgradeOverrideSettingsPtrOutput)
-}
-
-// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
-func (o UpgradeOverrideSettingsOutput) ForceUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v UpgradeOverrideSettings) *bool { return v.ForceUpgrade }).(pulumi.BoolPtrOutput)
-}
-
-// Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.
-func (o UpgradeOverrideSettingsOutput) Until() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UpgradeOverrideSettings) *string { return v.Until }).(pulumi.StringPtrOutput)
-}
-
-type UpgradeOverrideSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (UpgradeOverrideSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UpgradeOverrideSettings)(nil)).Elem()
-}
-
-func (o UpgradeOverrideSettingsPtrOutput) ToUpgradeOverrideSettingsPtrOutput() UpgradeOverrideSettingsPtrOutput {
-	return o
-}
-
-func (o UpgradeOverrideSettingsPtrOutput) ToUpgradeOverrideSettingsPtrOutputWithContext(ctx context.Context) UpgradeOverrideSettingsPtrOutput {
-	return o
-}
-
-func (o UpgradeOverrideSettingsPtrOutput) Elem() UpgradeOverrideSettingsOutput {
-	return o.ApplyT(func(v *UpgradeOverrideSettings) UpgradeOverrideSettings {
-		if v != nil {
-			return *v
-		}
-		var ret UpgradeOverrideSettings
-		return ret
-	}).(UpgradeOverrideSettingsOutput)
-}
-
-// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
-func (o UpgradeOverrideSettingsPtrOutput) ForceUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *UpgradeOverrideSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ForceUpgrade
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.
-func (o UpgradeOverrideSettingsPtrOutput) Until() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UpgradeOverrideSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Until
-	}).(pulumi.StringPtrOutput)
-}
-
-// Settings for overrides when upgrading a cluster.
-type UpgradeOverrideSettingsResponse struct {
-	// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
-	ForceUpgrade *bool `pulumi:"forceUpgrade"`
-	// Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.
-	Until *string `pulumi:"until"`
-}
-
-// Settings for overrides when upgrading a cluster.
-type UpgradeOverrideSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (UpgradeOverrideSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UpgradeOverrideSettingsResponse)(nil)).Elem()
-}
-
-func (o UpgradeOverrideSettingsResponseOutput) ToUpgradeOverrideSettingsResponseOutput() UpgradeOverrideSettingsResponseOutput {
-	return o
-}
-
-func (o UpgradeOverrideSettingsResponseOutput) ToUpgradeOverrideSettingsResponseOutputWithContext(ctx context.Context) UpgradeOverrideSettingsResponseOutput {
-	return o
-}
-
-// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
-func (o UpgradeOverrideSettingsResponseOutput) ForceUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v UpgradeOverrideSettingsResponse) *bool { return v.ForceUpgrade }).(pulumi.BoolPtrOutput)
-}
-
-// Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.
-func (o UpgradeOverrideSettingsResponseOutput) Until() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UpgradeOverrideSettingsResponse) *string { return v.Until }).(pulumi.StringPtrOutput)
-}
-
-type UpgradeOverrideSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (UpgradeOverrideSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UpgradeOverrideSettingsResponse)(nil)).Elem()
-}
-
-func (o UpgradeOverrideSettingsResponsePtrOutput) ToUpgradeOverrideSettingsResponsePtrOutput() UpgradeOverrideSettingsResponsePtrOutput {
-	return o
-}
-
-func (o UpgradeOverrideSettingsResponsePtrOutput) ToUpgradeOverrideSettingsResponsePtrOutputWithContext(ctx context.Context) UpgradeOverrideSettingsResponsePtrOutput {
-	return o
-}
-
-func (o UpgradeOverrideSettingsResponsePtrOutput) Elem() UpgradeOverrideSettingsResponseOutput {
-	return o.ApplyT(func(v *UpgradeOverrideSettingsResponse) UpgradeOverrideSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret UpgradeOverrideSettingsResponse
-		return ret
-	}).(UpgradeOverrideSettingsResponseOutput)
-}
-
-// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
-func (o UpgradeOverrideSettingsResponsePtrOutput) ForceUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *UpgradeOverrideSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ForceUpgrade
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.
-func (o UpgradeOverrideSettingsResponsePtrOutput) Until() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UpgradeOverrideSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Until
-	}).(pulumi.StringPtrOutput)
-}
-
 // Details about a user assigned identity.
 type UserAssignedIdentity struct {
 	// The client ID of the user assigned identity.
@@ -29642,19 +20961,17 @@ func (o UserAssignedIdentityMapOutput) MapIndex(k pulumi.StringInput) UserAssign
 	}).(UserAssignedIdentityOutput)
 }
 
-// User assigned identity properties
+// Details about a user assigned identity.
 type UserAssignedIdentityResponse struct {
-	// The client ID of the assigned identity.
-	ClientId string `pulumi:"clientId"`
+	// The client ID of the user assigned identity.
+	ClientId *string `pulumi:"clientId"`
 	// The object ID of the user assigned identity.
 	ObjectId *string `pulumi:"objectId"`
-	// The principal ID of the assigned identity.
-	PrincipalId string `pulumi:"principalId"`
 	// The resource ID of the user assigned identity.
 	ResourceId *string `pulumi:"resourceId"`
 }
 
-// User assigned identity properties
+// Details about a user assigned identity.
 type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
@@ -29669,9 +20986,9 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-// The client ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+// The client ID of the user assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
 // The object ID of the user assigned identity.
@@ -29679,78 +20996,9 @@ func (o UserAssignedIdentityResponseOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
-// The principal ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
 // The resource ID of the user assigned identity.
 func (o UserAssignedIdentityResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-type UserAssignedIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponsePtrOutput) ToUserAssignedIdentityResponsePtrOutput() UserAssignedIdentityResponsePtrOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponsePtrOutput) ToUserAssignedIdentityResponsePtrOutputWithContext(ctx context.Context) UserAssignedIdentityResponsePtrOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponsePtrOutput) Elem() UserAssignedIdentityResponseOutput {
-	return o.ApplyT(func(v *UserAssignedIdentityResponse) UserAssignedIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret UserAssignedIdentityResponse
-		return ret
-	}).(UserAssignedIdentityResponseOutput)
-}
-
-// The client ID of the assigned identity.
-func (o UserAssignedIdentityResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserAssignedIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The object ID of the user assigned identity.
-func (o UserAssignedIdentityResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserAssignedIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ObjectId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The principal ID of the assigned identity.
-func (o UserAssignedIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserAssignedIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource ID of the user assigned identity.
-func (o UserAssignedIdentityResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserAssignedIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceId
-	}).(pulumi.StringPtrOutput)
 }
 
 type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
@@ -29804,242 +21052,6 @@ func (o WaitStatusResponseOutput) Status() UpdateStatusResponseOutput {
 // The wait duration configured in seconds.
 func (o WaitStatusResponseOutput) WaitDurationInSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v WaitStatusResponse) int { return v.WaitDurationInSeconds }).(pulumi.IntOutput)
-}
-
-// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-type WeeklySchedule struct {
-	// Specifies on which day of the week the maintenance occurs.
-	DayOfWeek string `pulumi:"dayOfWeek"`
-	// Specifies the number of weeks between each set of occurrences.
-	IntervalWeeks int `pulumi:"intervalWeeks"`
-}
-
-// WeeklyScheduleInput is an input type that accepts WeeklyScheduleArgs and WeeklyScheduleOutput values.
-// You can construct a concrete instance of `WeeklyScheduleInput` via:
-//
-//	WeeklyScheduleArgs{...}
-type WeeklyScheduleInput interface {
-	pulumi.Input
-
-	ToWeeklyScheduleOutput() WeeklyScheduleOutput
-	ToWeeklyScheduleOutputWithContext(context.Context) WeeklyScheduleOutput
-}
-
-// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-type WeeklyScheduleArgs struct {
-	// Specifies on which day of the week the maintenance occurs.
-	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
-	// Specifies the number of weeks between each set of occurrences.
-	IntervalWeeks pulumi.IntInput `pulumi:"intervalWeeks"`
-}
-
-func (WeeklyScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WeeklySchedule)(nil)).Elem()
-}
-
-func (i WeeklyScheduleArgs) ToWeeklyScheduleOutput() WeeklyScheduleOutput {
-	return i.ToWeeklyScheduleOutputWithContext(context.Background())
-}
-
-func (i WeeklyScheduleArgs) ToWeeklyScheduleOutputWithContext(ctx context.Context) WeeklyScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleOutput)
-}
-
-func (i WeeklyScheduleArgs) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return i.ToWeeklySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i WeeklyScheduleArgs) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleOutput).ToWeeklySchedulePtrOutputWithContext(ctx)
-}
-
-// WeeklySchedulePtrInput is an input type that accepts WeeklyScheduleArgs, WeeklySchedulePtr and WeeklySchedulePtrOutput values.
-// You can construct a concrete instance of `WeeklySchedulePtrInput` via:
-//
-//	        WeeklyScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type WeeklySchedulePtrInput interface {
-	pulumi.Input
-
-	ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput
-	ToWeeklySchedulePtrOutputWithContext(context.Context) WeeklySchedulePtrOutput
-}
-
-type weeklySchedulePtrType WeeklyScheduleArgs
-
-func WeeklySchedulePtr(v *WeeklyScheduleArgs) WeeklySchedulePtrInput {
-	return (*weeklySchedulePtrType)(v)
-}
-
-func (*weeklySchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeeklySchedule)(nil)).Elem()
-}
-
-func (i *weeklySchedulePtrType) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return i.ToWeeklySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *weeklySchedulePtrType) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WeeklySchedulePtrOutput)
-}
-
-// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-type WeeklyScheduleOutput struct{ *pulumi.OutputState }
-
-func (WeeklyScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WeeklySchedule)(nil)).Elem()
-}
-
-func (o WeeklyScheduleOutput) ToWeeklyScheduleOutput() WeeklyScheduleOutput {
-	return o
-}
-
-func (o WeeklyScheduleOutput) ToWeeklyScheduleOutputWithContext(ctx context.Context) WeeklyScheduleOutput {
-	return o
-}
-
-func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return o.ToWeeklySchedulePtrOutputWithContext(context.Background())
-}
-
-func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeeklySchedule) *WeeklySchedule {
-		return &v
-	}).(WeeklySchedulePtrOutput)
-}
-
-// Specifies on which day of the week the maintenance occurs.
-func (o WeeklyScheduleOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v WeeklySchedule) string { return v.DayOfWeek }).(pulumi.StringOutput)
-}
-
-// Specifies the number of weeks between each set of occurrences.
-func (o WeeklyScheduleOutput) IntervalWeeks() pulumi.IntOutput {
-	return o.ApplyT(func(v WeeklySchedule) int { return v.IntervalWeeks }).(pulumi.IntOutput)
-}
-
-type WeeklySchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (WeeklySchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeeklySchedule)(nil)).Elem()
-}
-
-func (o WeeklySchedulePtrOutput) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
-	return o
-}
-
-func (o WeeklySchedulePtrOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
-	return o
-}
-
-func (o WeeklySchedulePtrOutput) Elem() WeeklyScheduleOutput {
-	return o.ApplyT(func(v *WeeklySchedule) WeeklySchedule {
-		if v != nil {
-			return *v
-		}
-		var ret WeeklySchedule
-		return ret
-	}).(WeeklyScheduleOutput)
-}
-
-// Specifies on which day of the week the maintenance occurs.
-func (o WeeklySchedulePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WeeklySchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the number of weeks between each set of occurrences.
-func (o WeeklySchedulePtrOutput) IntervalWeeks() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeeklySchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.IntervalWeeks
-	}).(pulumi.IntPtrOutput)
-}
-
-// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-type WeeklyScheduleResponse struct {
-	// Specifies on which day of the week the maintenance occurs.
-	DayOfWeek string `pulumi:"dayOfWeek"`
-	// Specifies the number of weeks between each set of occurrences.
-	IntervalWeeks int `pulumi:"intervalWeeks"`
-}
-
-// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-type WeeklyScheduleResponseOutput struct{ *pulumi.OutputState }
-
-func (WeeklyScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WeeklyScheduleResponse)(nil)).Elem()
-}
-
-func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutput() WeeklyScheduleResponseOutput {
-	return o
-}
-
-func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutputWithContext(ctx context.Context) WeeklyScheduleResponseOutput {
-	return o
-}
-
-// Specifies on which day of the week the maintenance occurs.
-func (o WeeklyScheduleResponseOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v WeeklyScheduleResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
-}
-
-// Specifies the number of weeks between each set of occurrences.
-func (o WeeklyScheduleResponseOutput) IntervalWeeks() pulumi.IntOutput {
-	return o.ApplyT(func(v WeeklyScheduleResponse) int { return v.IntervalWeeks }).(pulumi.IntOutput)
-}
-
-type WeeklyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WeeklyScheduleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WeeklyScheduleResponse)(nil)).Elem()
-}
-
-func (o WeeklyScheduleResponsePtrOutput) ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o WeeklyScheduleResponsePtrOutput) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
-	return o
-}
-
-func (o WeeklyScheduleResponsePtrOutput) Elem() WeeklyScheduleResponseOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) WeeklyScheduleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WeeklyScheduleResponse
-		return ret
-	}).(WeeklyScheduleResponseOutput)
-}
-
-// Specifies on which day of the week the maintenance occurs.
-func (o WeeklyScheduleResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the number of weeks between each set of occurrences.
-func (o WeeklyScheduleResponsePtrOutput) IntervalWeeks() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WeeklyScheduleResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.IntervalWeeks
-	}).(pulumi.IntPtrOutput)
 }
 
 // Windows gMSA Profile in the managed cluster.
@@ -30315,46 +21327,10 @@ func (o WindowsGmsaProfileResponsePtrOutput) RootDomainName() pulumi.StringPtrOu
 }
 
 func init() {
-	pulumi.RegisterOutputType(APIServerAccessProfileOutput{})
-	pulumi.RegisterOutputType(APIServerAccessProfilePtrOutput{})
-	pulumi.RegisterOutputType(APIServerAccessProfileResponseOutput{})
-	pulumi.RegisterOutputType(APIServerAccessProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(AbsoluteMonthlyScheduleOutput{})
-	pulumi.RegisterOutputType(AbsoluteMonthlySchedulePtrOutput{})
-	pulumi.RegisterOutputType(AbsoluteMonthlyScheduleResponseOutput{})
-	pulumi.RegisterOutputType(AbsoluteMonthlyScheduleResponsePtrOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingPtrOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingObservabilityOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingObservabilityPtrOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingObservabilityResponseOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingObservabilityResponsePtrOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingResponseOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingResponsePtrOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingSecurityOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingSecurityPtrOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingSecurityResponseOutput{})
-	pulumi.RegisterOutputType(AdvancedNetworkingSecurityResponsePtrOutput{})
-	pulumi.RegisterOutputType(AgentPoolNetworkProfileOutput{})
-	pulumi.RegisterOutputType(AgentPoolNetworkProfilePtrOutput{})
-	pulumi.RegisterOutputType(AgentPoolNetworkProfileResponseOutput{})
-	pulumi.RegisterOutputType(AgentPoolNetworkProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(AgentPoolSecurityProfileOutput{})
-	pulumi.RegisterOutputType(AgentPoolSecurityProfilePtrOutput{})
-	pulumi.RegisterOutputType(AgentPoolSecurityProfileResponseOutput{})
-	pulumi.RegisterOutputType(AgentPoolSecurityProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsOutput{})
 	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(AgentPoolWindowsProfileOutput{})
-	pulumi.RegisterOutputType(AgentPoolWindowsProfilePtrOutput{})
-	pulumi.RegisterOutputType(AgentPoolWindowsProfileResponseOutput{})
-	pulumi.RegisterOutputType(AgentPoolWindowsProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(AgentProfileOutput{})
-	pulumi.RegisterOutputType(AgentProfilePtrOutput{})
-	pulumi.RegisterOutputType(AgentProfileResponseOutput{})
-	pulumi.RegisterOutputType(AgentProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(AutoUpgradeNodeImageSelectionOutput{})
 	pulumi.RegisterOutputType(AutoUpgradeNodeImageSelectionPtrOutput{})
 	pulumi.RegisterOutputType(AutoUpgradeNodeImageSelectionResponseOutput{})
@@ -30363,10 +21339,6 @@ func init() {
 	pulumi.RegisterOutputType(AzureKeyVaultKmsPtrOutput{})
 	pulumi.RegisterOutputType(AzureKeyVaultKmsResponseOutput{})
 	pulumi.RegisterOutputType(AzureKeyVaultKmsResponsePtrOutput{})
-	pulumi.RegisterOutputType(ClusterUpgradeSettingsOutput{})
-	pulumi.RegisterOutputType(ClusterUpgradeSettingsPtrOutput{})
-	pulumi.RegisterOutputType(ClusterUpgradeSettingsResponseOutput{})
-	pulumi.RegisterOutputType(ClusterUpgradeSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContainerServiceLinuxProfileOutput{})
 	pulumi.RegisterOutputType(ContainerServiceLinuxProfilePtrOutput{})
 	pulumi.RegisterOutputType(ContainerServiceLinuxProfileResponseOutput{})
@@ -30389,18 +21361,6 @@ func init() {
 	pulumi.RegisterOutputType(CreationDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(CredentialResultResponseOutput{})
 	pulumi.RegisterOutputType(CredentialResultResponseArrayOutput{})
-	pulumi.RegisterOutputType(DailyScheduleOutput{})
-	pulumi.RegisterOutputType(DailySchedulePtrOutput{})
-	pulumi.RegisterOutputType(DailyScheduleResponseOutput{})
-	pulumi.RegisterOutputType(DailyScheduleResponsePtrOutput{})
-	pulumi.RegisterOutputType(DateSpanOutput{})
-	pulumi.RegisterOutputType(DateSpanArrayOutput{})
-	pulumi.RegisterOutputType(DateSpanResponseOutput{})
-	pulumi.RegisterOutputType(DateSpanResponseArrayOutput{})
-	pulumi.RegisterOutputType(DelegatedResourceOutput{})
-	pulumi.RegisterOutputType(DelegatedResourceMapOutput{})
-	pulumi.RegisterOutputType(DelegatedResourceResponseOutput{})
-	pulumi.RegisterOutputType(DelegatedResourceResponseMapOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
@@ -30415,59 +21375,6 @@ func init() {
 	pulumi.RegisterOutputType(FleetHubProfilePtrOutput{})
 	pulumi.RegisterOutputType(FleetHubProfileResponseOutput{})
 	pulumi.RegisterOutputType(FleetHubProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(IPTagOutput{})
-	pulumi.RegisterOutputType(IPTagArrayOutput{})
-	pulumi.RegisterOutputType(IPTagResponseOutput{})
-	pulumi.RegisterOutputType(IPTagResponseArrayOutput{})
-	pulumi.RegisterOutputType(IdentityBindingManagedIdentityProfileOutput{})
-	pulumi.RegisterOutputType(IdentityBindingManagedIdentityProfilePtrOutput{})
-	pulumi.RegisterOutputType(IdentityBindingManagedIdentityProfileResponseOutput{})
-	pulumi.RegisterOutputType(IdentityBindingOidcIssuerProfileResponseOutput{})
-	pulumi.RegisterOutputType(IdentityBindingPropertiesOutput{})
-	pulumi.RegisterOutputType(IdentityBindingPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(IdentityBindingPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(IstioCertificateAuthorityOutput{})
-	pulumi.RegisterOutputType(IstioCertificateAuthorityPtrOutput{})
-	pulumi.RegisterOutputType(IstioCertificateAuthorityResponseOutput{})
-	pulumi.RegisterOutputType(IstioCertificateAuthorityResponsePtrOutput{})
-	pulumi.RegisterOutputType(IstioComponentsOutput{})
-	pulumi.RegisterOutputType(IstioComponentsPtrOutput{})
-	pulumi.RegisterOutputType(IstioComponentsResponseOutput{})
-	pulumi.RegisterOutputType(IstioComponentsResponsePtrOutput{})
-	pulumi.RegisterOutputType(IstioEgressGatewayOutput{})
-	pulumi.RegisterOutputType(IstioEgressGatewayArrayOutput{})
-	pulumi.RegisterOutputType(IstioEgressGatewayResponseOutput{})
-	pulumi.RegisterOutputType(IstioEgressGatewayResponseArrayOutput{})
-	pulumi.RegisterOutputType(IstioIngressGatewayOutput{})
-	pulumi.RegisterOutputType(IstioIngressGatewayArrayOutput{})
-	pulumi.RegisterOutputType(IstioIngressGatewayResponseOutput{})
-	pulumi.RegisterOutputType(IstioIngressGatewayResponseArrayOutput{})
-	pulumi.RegisterOutputType(IstioPluginCertificateAuthorityOutput{})
-	pulumi.RegisterOutputType(IstioPluginCertificateAuthorityPtrOutput{})
-	pulumi.RegisterOutputType(IstioPluginCertificateAuthorityResponseOutput{})
-	pulumi.RegisterOutputType(IstioPluginCertificateAuthorityResponsePtrOutput{})
-	pulumi.RegisterOutputType(IstioServiceMeshOutput{})
-	pulumi.RegisterOutputType(IstioServiceMeshPtrOutput{})
-	pulumi.RegisterOutputType(IstioServiceMeshResponseOutput{})
-	pulumi.RegisterOutputType(IstioServiceMeshResponsePtrOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorClaimMappingExpressionOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorClaimMappingExpressionPtrOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorClaimMappingExpressionResponseOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorClaimMappingExpressionResponsePtrOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorClaimMappingsOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorClaimMappingsResponseOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorExtraClaimMappingExpressionOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorExtraClaimMappingExpressionArrayOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorExtraClaimMappingExpressionResponseOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorExtraClaimMappingExpressionResponseArrayOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorIssuerOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorIssuerResponseOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorPropertiesOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorValidationRuleOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorValidationRuleArrayOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorValidationRuleResponseOutput{})
-	pulumi.RegisterOutputType(JWTAuthenticatorValidationRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(KubeletConfigOutput{})
 	pulumi.RegisterOutputType(KubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(KubeletConfigResponseOutput{})
@@ -30484,10 +21391,6 @@ func init() {
 	pulumi.RegisterOutputType(LinuxOSConfigPtrOutput{})
 	pulumi.RegisterOutputType(LinuxOSConfigResponseOutput{})
 	pulumi.RegisterOutputType(LinuxOSConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(MaintenanceWindowOutput{})
-	pulumi.RegisterOutputType(MaintenanceWindowPtrOutput{})
-	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
-	pulumi.RegisterOutputType(MaintenanceWindowResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterAADProfileOutput{})
 	pulumi.RegisterOutputType(ManagedClusterAADProfilePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterAADProfileResponseOutput{})
@@ -30521,10 +21424,6 @@ func init() {
 	pulumi.RegisterOutputType(ManagedClusterAzureMonitorProfileMetricsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterAzureMonitorProfileResponseOutput{})
 	pulumi.RegisterOutputType(ManagedClusterAzureMonitorProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(ManagedClusterCostAnalysisOutput{})
-	pulumi.RegisterOutputType(ManagedClusterCostAnalysisPtrOutput{})
-	pulumi.RegisterOutputType(ManagedClusterCostAnalysisResponseOutput{})
-	pulumi.RegisterOutputType(ManagedClusterCostAnalysisResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterHTTPProxyConfigOutput{})
 	pulumi.RegisterOutputType(ManagedClusterHTTPProxyConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterHTTPProxyConfigResponseOutput{})
@@ -30535,14 +21434,6 @@ func init() {
 	pulumi.RegisterOutputType(ManagedClusterIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterIdentityResponseUserAssignedIdentitiesOutput{})
 	pulumi.RegisterOutputType(ManagedClusterIdentityResponseUserAssignedIdentitiesMapOutput{})
-	pulumi.RegisterOutputType(ManagedClusterIngressProfileOutput{})
-	pulumi.RegisterOutputType(ManagedClusterIngressProfilePtrOutput{})
-	pulumi.RegisterOutputType(ManagedClusterIngressProfileResponseOutput{})
-	pulumi.RegisterOutputType(ManagedClusterIngressProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(ManagedClusterIngressProfileWebAppRoutingOutput{})
-	pulumi.RegisterOutputType(ManagedClusterIngressProfileWebAppRoutingPtrOutput{})
-	pulumi.RegisterOutputType(ManagedClusterIngressProfileWebAppRoutingResponseOutput{})
-	pulumi.RegisterOutputType(ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterLoadBalancerProfileOutput{})
 	pulumi.RegisterOutputType(ManagedClusterLoadBalancerProfilePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterLoadBalancerProfileManagedOutboundIPsOutput{})
@@ -30563,18 +21454,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedClusterManagedOutboundIPProfilePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterManagedOutboundIPProfileResponseOutput{})
 	pulumi.RegisterOutputType(ManagedClusterManagedOutboundIPProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(ManagedClusterMetricsProfileOutput{})
-	pulumi.RegisterOutputType(ManagedClusterMetricsProfilePtrOutput{})
-	pulumi.RegisterOutputType(ManagedClusterMetricsProfileResponseOutput{})
-	pulumi.RegisterOutputType(ManagedClusterMetricsProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterNATGatewayProfileOutput{})
 	pulumi.RegisterOutputType(ManagedClusterNATGatewayProfilePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterNATGatewayProfileResponseOutput{})
 	pulumi.RegisterOutputType(ManagedClusterNATGatewayProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(ManagedClusterNodeResourceGroupProfileOutput{})
-	pulumi.RegisterOutputType(ManagedClusterNodeResourceGroupProfilePtrOutput{})
-	pulumi.RegisterOutputType(ManagedClusterNodeResourceGroupProfileResponseOutput{})
-	pulumi.RegisterOutputType(ManagedClusterNodeResourceGroupProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterOIDCIssuerProfileOutput{})
 	pulumi.RegisterOutputType(ManagedClusterOIDCIssuerProfilePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterOIDCIssuerProfileResponseOutput{})
@@ -30666,42 +21549,45 @@ func init() {
 	pulumi.RegisterOutputType(ManagedClusterWorkloadAutoScalerProfileKedaResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterWorkloadAutoScalerProfileResponseOutput{})
 	pulumi.RegisterOutputType(ManagedClusterWorkloadAutoScalerProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput{})
-	pulumi.RegisterOutputType(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput{})
-	pulumi.RegisterOutputType(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput{})
-	pulumi.RegisterOutputType(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(MemberUpdateStatusResponseOutput{})
 	pulumi.RegisterOutputType(MemberUpdateStatusResponseArrayOutput{})
-	pulumi.RegisterOutputType(NamespacePropertiesOutput{})
-	pulumi.RegisterOutputType(NamespacePropertiesPtrOutput{})
-	pulumi.RegisterOutputType(NamespacePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(NetworkPoliciesOutput{})
-	pulumi.RegisterOutputType(NetworkPoliciesPtrOutput{})
-	pulumi.RegisterOutputType(NetworkPoliciesResponseOutput{})
-	pulumi.RegisterOutputType(NetworkPoliciesResponsePtrOutput{})
+	pulumi.RegisterOutputType(NetworkProfileOutput{})
+	pulumi.RegisterOutputType(NetworkProfilePtrOutput{})
 	pulumi.RegisterOutputType(NetworkProfileForSnapshotResponseOutput{})
-	pulumi.RegisterOutputType(NodeCustomizationPropertiesOutput{})
-	pulumi.RegisterOutputType(NodeCustomizationPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(NodeCustomizationPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(NodeCustomizationScriptOutput{})
-	pulumi.RegisterOutputType(NodeCustomizationScriptArrayOutput{})
-	pulumi.RegisterOutputType(NodeCustomizationScriptResponseOutput{})
-	pulumi.RegisterOutputType(NodeCustomizationScriptResponseArrayOutput{})
-	pulumi.RegisterOutputType(NodeImageSelectionOutput{})
-	pulumi.RegisterOutputType(NodeImageSelectionPtrOutput{})
-	pulumi.RegisterOutputType(NodeImageSelectionResponseOutput{})
-	pulumi.RegisterOutputType(NodeImageSelectionResponsePtrOutput{})
-	pulumi.RegisterOutputType(NodeImageSelectionStatusResponseOutput{})
-	pulumi.RegisterOutputType(NodeImageVersionResponseOutput{})
-	pulumi.RegisterOutputType(NodeImageVersionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PortRangeOutput{})
-	pulumi.RegisterOutputType(PortRangeArrayOutput{})
-	pulumi.RegisterOutputType(PortRangeResponseOutput{})
-	pulumi.RegisterOutputType(PortRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(NetworkProfileResponseOutput{})
+	pulumi.RegisterOutputType(NetworkProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(OpenShiftAPIPropertiesOutput{})
+	pulumi.RegisterOutputType(OpenShiftAPIPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(OpenShiftAPIPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OpenShiftAPIPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAADIdentityProviderOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAADIdentityProviderPtrOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAADIdentityProviderResponseOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAgentPoolProfileOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAgentPoolProfileArrayOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAgentPoolProfileResponseOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAgentPoolProfileResponseArrayOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAuthProfileOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAuthProfilePtrOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAuthProfileResponseOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterAuthProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterIdentityProviderOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterIdentityProviderArrayOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterIdentityProviderResponseOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterIdentityProviderResponseArrayOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterMasterPoolProfileOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterMasterPoolProfilePtrOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterMasterPoolProfileResponseOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterMonitorProfileOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterMonitorProfilePtrOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterMonitorProfileResponseOutput{})
+	pulumi.RegisterOutputType(OpenShiftManagedClusterMonitorProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(OpenShiftRouterProfileOutput{})
+	pulumi.RegisterOutputType(OpenShiftRouterProfileArrayOutput{})
+	pulumi.RegisterOutputType(OpenShiftRouterProfileResponseOutput{})
+	pulumi.RegisterOutputType(OpenShiftRouterProfileResponseArrayOutput{})
 	pulumi.RegisterOutputType(PowerStateOutput{})
 	pulumi.RegisterOutputType(PowerStatePtrOutput{})
 	pulumi.RegisterOutputType(PowerStateResponseOutput{})
@@ -30716,26 +21602,14 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
-	pulumi.RegisterOutputType(RelativeMonthlyScheduleOutput{})
-	pulumi.RegisterOutputType(RelativeMonthlySchedulePtrOutput{})
-	pulumi.RegisterOutputType(RelativeMonthlyScheduleResponseOutput{})
-	pulumi.RegisterOutputType(RelativeMonthlyScheduleResponsePtrOutput{})
-	pulumi.RegisterOutputType(ResourceQuotaOutput{})
-	pulumi.RegisterOutputType(ResourceQuotaPtrOutput{})
-	pulumi.RegisterOutputType(ResourceQuotaResponseOutput{})
-	pulumi.RegisterOutputType(ResourceQuotaResponsePtrOutput{})
+	pulumi.RegisterOutputType(PurchasePlanOutput{})
+	pulumi.RegisterOutputType(PurchasePlanPtrOutput{})
+	pulumi.RegisterOutputType(PurchasePlanResponseOutput{})
+	pulumi.RegisterOutputType(PurchasePlanResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceReferenceOutput{})
 	pulumi.RegisterOutputType(ResourceReferenceArrayOutput{})
 	pulumi.RegisterOutputType(ResourceReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ResourceReferenceResponseArrayOutput{})
-	pulumi.RegisterOutputType(ScheduleOutput{})
-	pulumi.RegisterOutputType(SchedulePtrOutput{})
-	pulumi.RegisterOutputType(ScheduleResponseOutput{})
-	pulumi.RegisterOutputType(ScheduleResponsePtrOutput{})
-	pulumi.RegisterOutputType(ServiceMeshProfileOutput{})
-	pulumi.RegisterOutputType(ServiceMeshProfilePtrOutput{})
-	pulumi.RegisterOutputType(ServiceMeshProfileResponseOutput{})
-	pulumi.RegisterOutputType(ServiceMeshProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(SysctlConfigOutput{})
 	pulumi.RegisterOutputType(SysctlConfigPtrOutput{})
 	pulumi.RegisterOutputType(SysctlConfigResponseOutput{})
@@ -30767,20 +21641,11 @@ func init() {
 	pulumi.RegisterOutputType(UpdateStageStatusResponseOutput{})
 	pulumi.RegisterOutputType(UpdateStageStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(UpdateStatusResponseOutput{})
-	pulumi.RegisterOutputType(UpgradeOverrideSettingsOutput{})
-	pulumi.RegisterOutputType(UpgradeOverrideSettingsPtrOutput{})
-	pulumi.RegisterOutputType(UpgradeOverrideSettingsResponseOutput{})
-	pulumi.RegisterOutputType(UpgradeOverrideSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityMapOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(WaitStatusResponseOutput{})
-	pulumi.RegisterOutputType(WeeklyScheduleOutput{})
-	pulumi.RegisterOutputType(WeeklySchedulePtrOutput{})
-	pulumi.RegisterOutputType(WeeklyScheduleResponseOutput{})
-	pulumi.RegisterOutputType(WeeklyScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(WindowsGmsaProfileOutput{})
 	pulumi.RegisterOutputType(WindowsGmsaProfilePtrOutput{})
 	pulumi.RegisterOutputType(WindowsGmsaProfileResponseOutput{})

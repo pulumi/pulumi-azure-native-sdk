@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a Datastore
+// A datastore resource
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2022-05-01.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01, 2023-09-01.
 func LookupDatastore(ctx *pulumi.Context, args *LookupDatastoreArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatastoreResult
@@ -27,9 +27,9 @@ func LookupDatastore(ctx *pulumi.Context, args *LookupDatastoreArgs, opts ...pul
 }
 
 type LookupDatastoreArgs struct {
-	// Name of the cluster
+	// Name of the cluster in the private cloud
 	ClusterName string `pulumi:"clusterName"`
-	// Name of the datastore
+	// Name of the datastore in the private cloud cluster
 	DatastoreName string `pulumi:"datastoreName"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
@@ -39,15 +39,11 @@ type LookupDatastoreArgs struct {
 
 // A datastore resource
 type LookupDatastoreResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An iSCSI volume
 	DiskPoolVolume *DiskPoolVolumeResponse `pulumi:"diskPoolVolume"`
-	// An Elastic SAN volume
-	ElasticSanVolume *ElasticSanVolumeResponse `pulumi:"elasticSanVolume"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Resource ID.
 	Id string `pulumi:"id"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// An Azure NetApp Files volume
 	NetAppVolume *NetAppVolumeResponse `pulumi:"netAppVolume"`
@@ -55,9 +51,7 @@ type LookupDatastoreResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The operational status of the datastore
 	Status string `pulumi:"status"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 }
 
@@ -81,9 +75,9 @@ func LookupDatastoreOutput(ctx *pulumi.Context, args LookupDatastoreOutputArgs, 
 }
 
 type LookupDatastoreOutputArgs struct {
-	// Name of the cluster
+	// Name of the cluster in the private cloud
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// Name of the datastore
+	// Name of the datastore in the private cloud cluster
 	DatastoreName pulumi.StringInput `pulumi:"datastoreName"`
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
@@ -110,27 +104,17 @@ func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutputWithContext(ct
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupDatastoreResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDatastoreResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // An iSCSI volume
 func (o LookupDatastoreResultOutput) DiskPoolVolume() DiskPoolVolumeResponsePtrOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) *DiskPoolVolumeResponse { return v.DiskPoolVolume }).(DiskPoolVolumeResponsePtrOutput)
 }
 
-// An Elastic SAN volume
-func (o LookupDatastoreResultOutput) ElasticSanVolume() ElasticSanVolumeResponsePtrOutput {
-	return o.ApplyT(func(v LookupDatastoreResult) *ElasticSanVolumeResponse { return v.ElasticSanVolume }).(ElasticSanVolumeResponsePtrOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupDatastoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupDatastoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -150,12 +134,7 @@ func (o LookupDatastoreResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDatastoreResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDatastoreResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupDatastoreResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) string { return v.Type }).(pulumi.StringOutput)
 }

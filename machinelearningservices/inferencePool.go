@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
+// Uses Azure REST API version 2023-08-01-preview.
 //
-// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
 type InferencePool struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// [Required] Additional attributes of the entity.
@@ -72,12 +70,6 @@ func NewInferencePool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:InferencePool"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:InferencePool"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:InferencePool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -191,11 +183,6 @@ func (o InferencePoolOutput) ToInferencePoolOutput() InferencePoolOutput {
 
 func (o InferencePoolOutput) ToInferencePoolOutputWithContext(ctx context.Context) InferencePoolOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o InferencePoolOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *InferencePool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

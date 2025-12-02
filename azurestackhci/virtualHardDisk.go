@@ -8,32 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The virtual hard disk resource definition.
 //
-// Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
+// Uses Azure REST API version 2022-12-15-preview.
 //
-// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
 type VirtualHardDisk struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Block size in bytes
 	BlockSizeBytes pulumi.IntPtrOutput `pulumi:"blockSizeBytes"`
 	// Storage ContainerID of the storage container to be used for VHD
 	ContainerId pulumi.StringPtrOutput `pulumi:"containerId"`
-	// Boolean indicating whether it is an existing local hard disk or if one should be created.
-	CreateFromLocal pulumi.BoolPtrOutput `pulumi:"createFromLocal"`
 	// The format of the actual VHD file [vhd, vhdx]
 	DiskFileFormat pulumi.StringPtrOutput `pulumi:"diskFileFormat"`
 	// Size of the disk in GB
 	DiskSizeGB pulumi.Float64PtrOutput `pulumi:"diskSizeGB"`
-	// URL for downloading or accessing the virtual hard disk. This URL points to a secure link from where the VHD can be downloaded or accessed directly.
-	DownloadUrl pulumi.StringPtrOutput `pulumi:"downloadUrl"`
 	// Boolean for enabling dynamic sizing on the virtual hard disk
 	Dynamic pulumi.BoolPtrOutput `pulumi:"dynamic"`
 	// The extendedLocation of the resource.
@@ -41,12 +34,10 @@ type VirtualHardDisk struct {
 	// The hypervisor generation of the Virtual Machine [V1, V2]
 	HyperVGeneration pulumi.StringPtrOutput `pulumi:"hyperVGeneration"`
 	// The geo-location where the resource lives
-	Location pulumi.StringOutput `pulumi:"location"`
-	// Logical sector in bytes
+	Location           pulumi.StringOutput `pulumi:"location"`
 	LogicalSectorBytes pulumi.IntPtrOutput `pulumi:"logicalSectorBytes"`
 	// The name of the resource
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Physical sector in bytes
+	Name                pulumi.StringOutput `pulumi:"name"`
 	PhysicalSectorBytes pulumi.IntPtrOutput `pulumi:"physicalSectorBytes"`
 	// Provisioning state of the virtual hard disk.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -70,18 +61,12 @@ func NewVirtualHardDisk(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.CreateFromLocal == nil {
-		args.CreateFromLocal = pulumi.BoolPtr(false)
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:VirtualHardDisk"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:VirtualHardDisk"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:VirtualharddiskRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:VirtualHardDisk"),
@@ -115,9 +100,6 @@ func NewVirtualHardDisk(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:VirtualHardDisk"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci/v20250601preview:VirtualHardDisk"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -154,18 +136,13 @@ func (VirtualHardDiskState) ElementType() reflect.Type {
 }
 
 type virtualHardDiskArgs struct {
-	// Block size in bytes
 	BlockSizeBytes *int `pulumi:"blockSizeBytes"`
 	// Storage ContainerID of the storage container to be used for VHD
 	ContainerId *string `pulumi:"containerId"`
-	// Boolean indicating whether it is an existing local hard disk or if one should be created.
-	CreateFromLocal *bool `pulumi:"createFromLocal"`
 	// The format of the actual VHD file [vhd, vhdx]
 	DiskFileFormat *string `pulumi:"diskFileFormat"`
 	// Size of the disk in GB
 	DiskSizeGB *float64 `pulumi:"diskSizeGB"`
-	// URL for downloading or accessing the virtual hard disk. This URL points to a secure link from where the VHD can be downloaded or accessed directly.
-	DownloadUrl *string `pulumi:"downloadUrl"`
 	// Boolean for enabling dynamic sizing on the virtual hard disk
 	Dynamic *bool `pulumi:"dynamic"`
 	// The extendedLocation of the resource.
@@ -173,11 +150,9 @@ type virtualHardDiskArgs struct {
 	// The hypervisor generation of the Virtual Machine [V1, V2]
 	HyperVGeneration *string `pulumi:"hyperVGeneration"`
 	// The geo-location where the resource lives
-	Location *string `pulumi:"location"`
-	// Logical sector in bytes
-	LogicalSectorBytes *int `pulumi:"logicalSectorBytes"`
-	// Physical sector in bytes
-	PhysicalSectorBytes *int `pulumi:"physicalSectorBytes"`
+	Location            *string `pulumi:"location"`
+	LogicalSectorBytes  *int    `pulumi:"logicalSectorBytes"`
+	PhysicalSectorBytes *int    `pulumi:"physicalSectorBytes"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -188,18 +163,13 @@ type virtualHardDiskArgs struct {
 
 // The set of arguments for constructing a VirtualHardDisk resource.
 type VirtualHardDiskArgs struct {
-	// Block size in bytes
 	BlockSizeBytes pulumi.IntPtrInput
 	// Storage ContainerID of the storage container to be used for VHD
 	ContainerId pulumi.StringPtrInput
-	// Boolean indicating whether it is an existing local hard disk or if one should be created.
-	CreateFromLocal pulumi.BoolPtrInput
 	// The format of the actual VHD file [vhd, vhdx]
 	DiskFileFormat pulumi.StringPtrInput
 	// Size of the disk in GB
 	DiskSizeGB pulumi.Float64PtrInput
-	// URL for downloading or accessing the virtual hard disk. This URL points to a secure link from where the VHD can be downloaded or accessed directly.
-	DownloadUrl pulumi.StringPtrInput
 	// Boolean for enabling dynamic sizing on the virtual hard disk
 	Dynamic pulumi.BoolPtrInput
 	// The extendedLocation of the resource.
@@ -207,10 +177,8 @@ type VirtualHardDiskArgs struct {
 	// The hypervisor generation of the Virtual Machine [V1, V2]
 	HyperVGeneration pulumi.StringPtrInput
 	// The geo-location where the resource lives
-	Location pulumi.StringPtrInput
-	// Logical sector in bytes
-	LogicalSectorBytes pulumi.IntPtrInput
-	// Physical sector in bytes
+	Location            pulumi.StringPtrInput
+	LogicalSectorBytes  pulumi.IntPtrInput
 	PhysicalSectorBytes pulumi.IntPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -257,12 +225,6 @@ func (o VirtualHardDiskOutput) ToVirtualHardDiskOutputWithContext(ctx context.Co
 	return o
 }
 
-// The Azure API version of the resource.
-func (o VirtualHardDiskOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualHardDisk) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Block size in bytes
 func (o VirtualHardDiskOutput) BlockSizeBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualHardDisk) pulumi.IntPtrOutput { return v.BlockSizeBytes }).(pulumi.IntPtrOutput)
 }
@@ -270,11 +232,6 @@ func (o VirtualHardDiskOutput) BlockSizeBytes() pulumi.IntPtrOutput {
 // Storage ContainerID of the storage container to be used for VHD
 func (o VirtualHardDiskOutput) ContainerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualHardDisk) pulumi.StringPtrOutput { return v.ContainerId }).(pulumi.StringPtrOutput)
-}
-
-// Boolean indicating whether it is an existing local hard disk or if one should be created.
-func (o VirtualHardDiskOutput) CreateFromLocal() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VirtualHardDisk) pulumi.BoolPtrOutput { return v.CreateFromLocal }).(pulumi.BoolPtrOutput)
 }
 
 // The format of the actual VHD file [vhd, vhdx]
@@ -285,11 +242,6 @@ func (o VirtualHardDiskOutput) DiskFileFormat() pulumi.StringPtrOutput {
 // Size of the disk in GB
 func (o VirtualHardDiskOutput) DiskSizeGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VirtualHardDisk) pulumi.Float64PtrOutput { return v.DiskSizeGB }).(pulumi.Float64PtrOutput)
-}
-
-// URL for downloading or accessing the virtual hard disk. This URL points to a secure link from where the VHD can be downloaded or accessed directly.
-func (o VirtualHardDiskOutput) DownloadUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualHardDisk) pulumi.StringPtrOutput { return v.DownloadUrl }).(pulumi.StringPtrOutput)
 }
 
 // Boolean for enabling dynamic sizing on the virtual hard disk
@@ -312,7 +264,6 @@ func (o VirtualHardDiskOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualHardDisk) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Logical sector in bytes
 func (o VirtualHardDiskOutput) LogicalSectorBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualHardDisk) pulumi.IntPtrOutput { return v.LogicalSectorBytes }).(pulumi.IntPtrOutput)
 }
@@ -322,7 +273,6 @@ func (o VirtualHardDiskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualHardDisk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Physical sector in bytes
 func (o VirtualHardDiskOutput) PhysicalSectorBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualHardDisk) pulumi.IntPtrOutput { return v.PhysicalSectorBytes }).(pulumi.IntPtrOutput)
 }

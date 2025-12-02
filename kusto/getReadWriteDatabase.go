@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a database.
 //
-// Uses Azure REST API version 2024-04-13.
+// Uses Azure REST API version 2022-12-29.
 func LookupReadWriteDatabase(ctx *pulumi.Context, args *LookupReadWriteDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadWriteDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReadWriteDatabaseResult
@@ -29,22 +29,18 @@ type LookupReadWriteDatabaseArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing a read write database.
 type LookupReadWriteDatabaseResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The time the data should be kept in cache for fast queries in TimeSpan.
 	HotCachePeriod *string `pulumi:"hotCachePeriod"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Indicates whether the database is followed.
 	IsFollowed bool `pulumi:"isFollowed"`
-	// KeyVault properties for the database encryption.
-	KeyVaultProperties *KeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
 	// Kind of the database
 	// Expected value is 'ReadWrite'.
 	Kind string `pulumi:"kind"`
@@ -58,8 +54,6 @@ type LookupReadWriteDatabaseResult struct {
 	SoftDeletePeriod *string `pulumi:"softDeletePeriod"`
 	// The statistics of the database.
 	Statistics DatabaseStatisticsResponse `pulumi:"statistics"`
-	// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
-	SuspensionDetails SuspensionDetailsResponse `pulumi:"suspensionDetails"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -78,7 +72,7 @@ type LookupReadWriteDatabaseOutputArgs struct {
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -101,11 +95,6 @@ func (o LookupReadWriteDatabaseResultOutput) ToLookupReadWriteDatabaseResultOutp
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupReadWriteDatabaseResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The time the data should be kept in cache for fast queries in TimeSpan.
 func (o LookupReadWriteDatabaseResultOutput) HotCachePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReadWriteDatabaseResult) *string { return v.HotCachePeriod }).(pulumi.StringPtrOutput)
@@ -119,11 +108,6 @@ func (o LookupReadWriteDatabaseResultOutput) Id() pulumi.StringOutput {
 // Indicates whether the database is followed.
 func (o LookupReadWriteDatabaseResultOutput) IsFollowed() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupReadWriteDatabaseResult) bool { return v.IsFollowed }).(pulumi.BoolOutput)
-}
-
-// KeyVault properties for the database encryption.
-func (o LookupReadWriteDatabaseResultOutput) KeyVaultProperties() KeyVaultPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) *KeyVaultPropertiesResponse { return v.KeyVaultProperties }).(KeyVaultPropertiesResponsePtrOutput)
 }
 
 // Kind of the database
@@ -155,11 +139,6 @@ func (o LookupReadWriteDatabaseResultOutput) SoftDeletePeriod() pulumi.StringPtr
 // The statistics of the database.
 func (o LookupReadWriteDatabaseResultOutput) Statistics() DatabaseStatisticsResponseOutput {
 	return o.ApplyT(func(v LookupReadWriteDatabaseResult) DatabaseStatisticsResponse { return v.Statistics }).(DatabaseStatisticsResponseOutput)
-}
-
-// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
-func (o LookupReadWriteDatabaseResultOutput) SuspensionDetails() SuspensionDetailsResponseOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) SuspensionDetailsResponse { return v.SuspensionDetails }).(SuspensionDetailsResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

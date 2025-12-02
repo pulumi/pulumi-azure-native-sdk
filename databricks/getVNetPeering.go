@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the workspace vNet Peering.
 //
-// Uses Azure REST API version 2024-05-01.
-//
-// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2023-02-01.
 func LookupVNetPeering(ctx *pulumi.Context, args *LookupVNetPeeringArgs, opts ...pulumi.InvokeOption) (*LookupVNetPeeringResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVNetPeeringResult
@@ -43,8 +41,6 @@ type LookupVNetPeeringResult struct {
 	AllowGatewayTransit *bool `pulumi:"allowGatewayTransit"`
 	// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
 	AllowVirtualNetworkAccess *bool `pulumi:"allowVirtualNetworkAccess"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The reference to the databricks virtual network address space.
 	DatabricksAddressSpace *AddressSpaceResponse `pulumi:"databricksAddressSpace"`
 	//  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
@@ -117,11 +113,6 @@ func (o LookupVNetPeeringResultOutput) AllowGatewayTransit() pulumi.BoolPtrOutpu
 // Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
 func (o LookupVNetPeeringResultOutput) AllowVirtualNetworkAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVNetPeeringResult) *bool { return v.AllowVirtualNetworkAccess }).(pulumi.BoolPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupVNetPeeringResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVNetPeeringResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The reference to the databricks virtual network address space.

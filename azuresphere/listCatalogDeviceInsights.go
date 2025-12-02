@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists device insights for catalog.
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2022-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuresphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-04-01.
 func ListCatalogDeviceInsights(ctx *pulumi.Context, args *ListCatalogDeviceInsightsArgs, opts ...pulumi.InvokeOption) (*ListCatalogDeviceInsightsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListCatalogDeviceInsightsResult
@@ -44,7 +44,7 @@ type ListCatalogDeviceInsightsArgs struct {
 // Paged collection of DeviceInsight items
 type ListCatalogDeviceInsightsResult struct {
 	// The link to the next page of items
-	NextLink *string `pulumi:"nextLink"`
+	NextLink string `pulumi:"nextLink"`
 	// The DeviceInsight items on this page
 	Value []DeviceInsightResponse `pulumi:"value"`
 }
@@ -93,8 +93,8 @@ func (o ListCatalogDeviceInsightsResultOutput) ToListCatalogDeviceInsightsResult
 }
 
 // The link to the next page of items
-func (o ListCatalogDeviceInsightsResultOutput) NextLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListCatalogDeviceInsightsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
+func (o ListCatalogDeviceInsightsResultOutput) NextLink() pulumi.StringOutput {
+	return o.ApplyT(func(v ListCatalogDeviceInsightsResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
 // The DeviceInsight items on this page

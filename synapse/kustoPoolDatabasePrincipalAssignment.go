@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a database principal assignment.
 //
-// Uses Azure REST API version 2021-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-01-preview.
+// Uses Azure REST API version 2021-06-01-preview.
 type KustoPoolDatabasePrincipalAssignment struct {
 	pulumi.CustomResourceState
 
 	// The service principal object id in AAD (Azure active directory)
 	AadObjectId pulumi.StringOutput `pulumi:"aadObjectId"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The principal ID assigned to the database principal. It can be a user email, application ID, or security group name.
@@ -74,16 +72,10 @@ func NewKustoPoolDatabasePrincipalAssignment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse/v20210401preview:DatabasePrincipalAssignment"),
-		},
-		{
 			Type: pulumi.String("azure-native:synapse/v20210401preview:KustoPoolDatabasePrincipalAssignment"),
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601preview:KustoPoolDatabasePrincipalAssignment"),
-		},
-		{
-			Type: pulumi.String("azure-native:synapse:DatabasePrincipalAssignment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -202,11 +194,6 @@ func (o KustoPoolDatabasePrincipalAssignmentOutput) ToKustoPoolDatabasePrincipal
 // The service principal object id in AAD (Azure active directory)
 func (o KustoPoolDatabasePrincipalAssignmentOutput) AadObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KustoPoolDatabasePrincipalAssignment) pulumi.StringOutput { return v.AadObjectId }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o KustoPoolDatabasePrincipalAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *KustoPoolDatabasePrincipalAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

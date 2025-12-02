@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a partner destination.
 //
-// Uses Azure REST API version 2024-12-15-preview.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-10-15-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
 func LookupPartnerDestination(ctx *pulumi.Context, args *LookupPartnerDestinationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerDestinationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerDestinationResult
@@ -37,8 +37,6 @@ type LookupPartnerDestinationArgs struct {
 type LookupPartnerDestinationResult struct {
 	// Activation state of the partner destination.
 	ActivationState *string `pulumi:"activationState"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Endpoint Base URL of the partner destination
 	EndpointBaseUrl *string `pulumi:"endpointBaseUrl"`
 	// Endpoint context associated with this partner destination.
@@ -58,7 +56,7 @@ type LookupPartnerDestinationResult struct {
 	PartnerRegistrationImmutableId *string `pulumi:"partnerRegistrationImmutableId"`
 	// Provisioning state of the partner destination.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The system metadata relating to the Event Grid resource.
+	// The system metadata relating to Partner Destination resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -104,11 +102,6 @@ func (o LookupPartnerDestinationResultOutput) ToLookupPartnerDestinationResultOu
 // Activation state of the partner destination.
 func (o LookupPartnerDestinationResultOutput) ActivationState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPartnerDestinationResult) *string { return v.ActivationState }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupPartnerDestinationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPartnerDestinationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Endpoint Base URL of the partner destination
@@ -157,7 +150,7 @@ func (o LookupPartnerDestinationResultOutput) ProvisioningState() pulumi.StringO
 	return o.ApplyT(func(v LookupPartnerDestinationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to the Event Grid resource.
+// The system metadata relating to Partner Destination resource.
 func (o LookupPartnerDestinationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPartnerDestinationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

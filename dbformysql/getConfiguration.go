@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a configuration of server.
 //
-// Uses Azure REST API version 2023-12-30.
+// Uses Azure REST API version 2022-01-01.
 //
-// Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2017-12-01, 2020-07-01-privatepreview, 2023-06-01-preview, 2023-06-30, 2023-12-30.
 func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationResult
@@ -39,8 +39,6 @@ type LookupConfigurationArgs struct {
 type LookupConfigurationResult struct {
 	// Allowed values of the configuration.
 	AllowedValues string `pulumi:"allowedValues"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Current value of the configuration.
 	CurrentValue *string `pulumi:"currentValue"`
 	// Data type of the configuration.
@@ -51,7 +49,7 @@ type LookupConfigurationResult struct {
 	Description string `pulumi:"description"`
 	// The link used to get the document from community or Azure site.
 	DocumentationLink string `pulumi:"documentationLink"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// If is the configuration pending restart or not.
 	IsConfigPendingRestart string `pulumi:"isConfigPendingRestart"`
@@ -63,7 +61,7 @@ type LookupConfigurationResult struct {
 	Name string `pulumi:"name"`
 	// Source of the configuration.
 	Source *string `pulumi:"source"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The system metadata relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -113,11 +111,6 @@ func (o LookupConfigurationResultOutput) AllowedValues() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.AllowedValues }).(pulumi.StringOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Current value of the configuration.
 func (o LookupConfigurationResultOutput) CurrentValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) *string { return v.CurrentValue }).(pulumi.StringPtrOutput)
@@ -143,7 +136,7 @@ func (o LookupConfigurationResultOutput) DocumentationLink() pulumi.StringOutput
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.DocumentationLink }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -173,7 +166,7 @@ func (o LookupConfigurationResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The system metadata relating to this resource.
 func (o LookupConfigurationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

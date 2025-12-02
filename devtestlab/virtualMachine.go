@@ -8,13 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A virtual machine.
 //
-// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -26,8 +26,6 @@ type VirtualMachine struct {
 	ArtifactDeploymentStatus ArtifactDeploymentStatusPropertiesResponseOutput `pulumi:"artifactDeploymentStatus"`
 	// The artifacts to be installed on the virtual machine.
 	Artifacts ArtifactInstallPropertiesResponseArrayOutput `pulumi:"artifacts"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource identifier (Microsoft.Compute) of the virtual machine.
 	ComputeId pulumi.StringOutput `pulumi:"computeId"`
 	// The compute virtual machine properties.
@@ -198,7 +196,7 @@ type virtualMachineArgs struct {
 	LabVirtualNetworkId *string `pulumi:"labVirtualNetworkId"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the LabVirtualMachine
+	// The name of the virtual machine.
 	Name *string `pulumi:"name"`
 	// The network interface properties.
 	NetworkInterface *NetworkInterfaceProperties `pulumi:"networkInterface"`
@@ -212,7 +210,7 @@ type virtualMachineArgs struct {
 	Password *string `pulumi:"password"`
 	// The id of the plan associated with the virtual machine image
 	PlanId *string `pulumi:"planId"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Virtual Machine schedules to be created
 	ScheduleParameters []ScheduleCreationParameter `pulumi:"scheduleParameters"`
@@ -258,7 +256,7 @@ type VirtualMachineArgs struct {
 	LabVirtualNetworkId pulumi.StringPtrInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the LabVirtualMachine
+	// The name of the virtual machine.
 	Name pulumi.StringPtrInput
 	// The network interface properties.
 	NetworkInterface NetworkInterfacePropertiesPtrInput
@@ -272,7 +270,7 @@ type VirtualMachineArgs struct {
 	Password pulumi.StringPtrInput
 	// The id of the plan associated with the virtual machine image
 	PlanId pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Virtual Machine schedules to be created
 	ScheduleParameters ScheduleCreationParameterArrayInput
@@ -345,11 +343,6 @@ func (o VirtualMachineOutput) ArtifactDeploymentStatus() ArtifactDeploymentStatu
 // The artifacts to be installed on the virtual machine.
 func (o VirtualMachineOutput) Artifacts() ArtifactInstallPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) ArtifactInstallPropertiesResponseArrayOutput { return v.Artifacts }).(ArtifactInstallPropertiesResponseArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o VirtualMachineOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource identifier (Microsoft.Compute) of the virtual machine.

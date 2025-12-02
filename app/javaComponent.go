@@ -8,24 +8,28 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Java Component.
 //
-// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-02-preview.
+// Uses Azure REST API version 2023-11-02-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
 type JavaComponent struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Type of the Java Component.
+	ComponentType pulumi.StringPtrOutput `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations JavaComponentConfigurationPropertyResponseArrayOutput `pulumi:"configurations"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Java Component resource specific properties
-	Properties pulumi.AnyOutput `pulumi:"properties"`
+	// Provisioning state of the Java Component.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds JavaComponentServiceBindResponseArrayOutput `pulumi:"serviceBinds"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -60,12 +64,6 @@ func NewJavaComponent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20250101:JavaComponent"),
-		},
-		{
-			Type: pulumi.String("azure-native:app/v20250202preview:JavaComponent"),
-		},
-		{
-			Type: pulumi.String("azure-native:app/v20250701:JavaComponent"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -102,26 +100,34 @@ func (JavaComponentState) ElementType() reflect.Type {
 }
 
 type javaComponentArgs struct {
+	// Type of the Java Component.
+	ComponentType *string `pulumi:"componentType"`
+	// List of Java Components configuration properties
+	Configurations []JavaComponentConfigurationProperty `pulumi:"configurations"`
 	// Name of the Managed Environment.
 	EnvironmentName string `pulumi:"environmentName"`
 	// Name of the Java Component.
 	Name *string `pulumi:"name"`
-	// Java Component resource specific properties
-	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// List of Java Components that are bound to the Java component
+	ServiceBinds []JavaComponentServiceBind `pulumi:"serviceBinds"`
 }
 
 // The set of arguments for constructing a JavaComponent resource.
 type JavaComponentArgs struct {
+	// Type of the Java Component.
+	ComponentType pulumi.StringPtrInput
+	// List of Java Components configuration properties
+	Configurations JavaComponentConfigurationPropertyArrayInput
 	// Name of the Managed Environment.
 	EnvironmentName pulumi.StringInput
 	// Name of the Java Component.
 	Name pulumi.StringPtrInput
-	// Java Component resource specific properties
-	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// List of Java Components that are bound to the Java component
+	ServiceBinds JavaComponentServiceBindArrayInput
 }
 
 func (JavaComponentArgs) ElementType() reflect.Type {
@@ -161,9 +167,14 @@ func (o JavaComponentOutput) ToJavaComponentOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The Azure API version of the resource.
-func (o JavaComponentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *JavaComponent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+// Type of the Java Component.
+func (o JavaComponentOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JavaComponent) pulumi.StringPtrOutput { return v.ComponentType }).(pulumi.StringPtrOutput)
+}
+
+// List of Java Components configuration properties
+func (o JavaComponentOutput) Configurations() JavaComponentConfigurationPropertyResponseArrayOutput {
+	return o.ApplyT(func(v *JavaComponent) JavaComponentConfigurationPropertyResponseArrayOutput { return v.Configurations }).(JavaComponentConfigurationPropertyResponseArrayOutput)
 }
 
 // The name of the resource
@@ -171,9 +182,14 @@ func (o JavaComponentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *JavaComponent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Java Component resource specific properties
-func (o JavaComponentOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v *JavaComponent) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
+// Provisioning state of the Java Component.
+func (o JavaComponentOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *JavaComponent) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// List of Java Components that are bound to the Java component
+func (o JavaComponentOutput) ServiceBinds() JavaComponentServiceBindResponseArrayOutput {
+	return o.ApplyT(func(v *JavaComponent) JavaComponentServiceBindResponseArrayOutput { return v.ServiceBinds }).(JavaComponentServiceBindResponseArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

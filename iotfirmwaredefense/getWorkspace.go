@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get firmware analysis workspace.
 //
-// Uses Azure REST API version 2024-01-10.
+// Uses Azure REST API version 2023-02-08-preview.
 //
-// Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-10, 2025-04-01-preview.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceResult
@@ -35,9 +35,7 @@ type LookupWorkspaceArgs struct {
 
 // Firmware analysis workspace.
 type LookupWorkspaceResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -88,12 +86,7 @@ func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ct
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }

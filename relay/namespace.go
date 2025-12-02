@@ -8,27 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a namespace resource.
 //
-// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
 //
-// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-01.
 type Namespace struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the namespace was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The geo-location where the resource lives
+	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier for Azure Insights metrics.
 	MetricId pulumi.StringOutput `pulumi:"metricId"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of private endpoint connections.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
@@ -42,11 +40,11 @@ type Namespace struct {
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Status of the Namespace.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The system meta data relating to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -116,7 +114,7 @@ func (NamespaceState) ElementType() reflect.Type {
 }
 
 type namespaceArgs struct {
-	// The geo-location where the resource lives
+	// Resource location.
 	Location *string `pulumi:"location"`
 	// The namespace name
 	NamespaceName *string `pulumi:"namespaceName"`
@@ -125,7 +123,7 @@ type namespaceArgs struct {
 	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// SKU of the namespace.
 	Sku *Sku `pulumi:"sku"`
@@ -135,7 +133,7 @@ type namespaceArgs struct {
 
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
-	// The geo-location where the resource lives
+	// Resource location.
 	Location pulumi.StringPtrInput
 	// The namespace name
 	NamespaceName pulumi.StringPtrInput
@@ -144,7 +142,7 @@ type NamespaceArgs struct {
 	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// SKU of the namespace.
 	Sku SkuPtrInput
@@ -189,17 +187,12 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 	return o
 }
 
-// The Azure API version of the resource.
-func (o NamespaceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The time the namespace was created.
 func (o NamespaceOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location.
 func (o NamespaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -209,7 +202,7 @@ func (o NamespaceOutput) MetricId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.MetricId }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o NamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -244,7 +237,7 @@ func (o NamespaceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The system meta data relating to this resource.
 func (o NamespaceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Namespace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -254,7 +247,7 @@ func (o NamespaceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o NamespaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

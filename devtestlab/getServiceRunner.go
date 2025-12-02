@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,16 +27,14 @@ func LookupServiceRunner(ctx *pulumi.Context, args *LookupServiceRunnerArgs, opt
 type LookupServiceRunnerArgs struct {
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the ServiceRunner
+	// The name of the service runner.
 	Name string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A container for a managed identity to execute DevTest lab services.
 type LookupServiceRunnerResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The identifier of the resource.
 	Id string `pulumi:"id"`
 	// The identity of the resource.
@@ -63,9 +61,9 @@ func LookupServiceRunnerOutput(ctx *pulumi.Context, args LookupServiceRunnerOutp
 type LookupServiceRunnerOutputArgs struct {
 	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the ServiceRunner
+	// The name of the service runner.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -86,11 +84,6 @@ func (o LookupServiceRunnerResultOutput) ToLookupServiceRunnerResultOutput() Loo
 
 func (o LookupServiceRunnerResultOutput) ToLookupServiceRunnerResultOutputWithContext(ctx context.Context) LookupServiceRunnerResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupServiceRunnerResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServiceRunnerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identifier of the resource.

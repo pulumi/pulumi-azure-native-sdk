@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a network manager security admin configuration.
 //
-// Uses Azure REST API version 2024-05-01.
+// Uses Azure REST API version 2023-02-01.
 //
-// Other available API versions: 2021-02-01-preview, 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01, 2024-05-01.
 func LookupSecurityAdminConfiguration(ctx *pulumi.Context, args *LookupSecurityAdminConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSecurityAdminConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityAdminConfigurationResult
@@ -39,8 +39,6 @@ type LookupSecurityAdminConfigurationArgs struct {
 type LookupSecurityAdminConfigurationResult struct {
 	// Enum list of network intent policy based services.
 	ApplyOnNetworkIntentPolicyBasedServices []string `pulumi:"applyOnNetworkIntentPolicyBasedServices"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description of the security configuration.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -49,8 +47,6 @@ type LookupSecurityAdminConfigurationResult struct {
 	Id string `pulumi:"id"`
 	// Resource name.
 	Name string `pulumi:"name"`
-	// Determine update behavior for changes to network groups referenced within the rules in this configuration.
-	NetworkGroupAddressSpaceAggregationOption *string `pulumi:"networkGroupAddressSpaceAggregationOption"`
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Unique identifier for this resource.
@@ -105,11 +101,6 @@ func (o LookupSecurityAdminConfigurationResultOutput) ApplyOnNetworkIntentPolicy
 	}).(pulumi.StringArrayOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupSecurityAdminConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // A description of the security configuration.
 func (o LookupSecurityAdminConfigurationResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -128,13 +119,6 @@ func (o LookupSecurityAdminConfigurationResultOutput) Id() pulumi.StringOutput {
 // Resource name.
 func (o LookupSecurityAdminConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Determine update behavior for changes to network groups referenced within the rules in this configuration.
-func (o LookupSecurityAdminConfigurationResultOutput) NetworkGroupAddressSpaceAggregationOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSecurityAdminConfigurationResult) *string {
-		return v.NetworkGroupAddressSpaceAggregationOption
-	}).(pulumi.StringPtrOutput)
 }
 
 // The provisioning state of the resource.

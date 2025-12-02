@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about a gallery image version.
 //
-// Uses Azure REST API version 2024-03-03.
+// Uses Azure REST API version 2022-03-03.
 //
-// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
 func LookupGalleryImageVersion(ctx *pulumi.Context, args *LookupGalleryImageVersionArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryImageVersionResult
@@ -29,25 +29,23 @@ func LookupGalleryImageVersion(ctx *pulumi.Context, args *LookupGalleryImageVers
 type LookupGalleryImageVersionArgs struct {
 	// The expand expression to apply on the operation.
 	Expand *string `pulumi:"expand"`
-	// The name of the gallery image definition to be retrieved.
+	// The name of the gallery image definition in which the Image Version resides.
 	GalleryImageName string `pulumi:"galleryImageName"`
 	// The name of the gallery image version to be retrieved.
 	GalleryImageVersionName string `pulumi:"galleryImageVersionName"`
-	// The name of the Shared Image Gallery.
+	// The name of the Shared Image Gallery in which the Image Definition resides.
 	GalleryName string `pulumi:"galleryName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Specifies information about the gallery image version that you want to create or update.
 type LookupGalleryImageVersionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Resource Id
 	Id string `pulumi:"id"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location string `pulumi:"location"`
-	// The name of the resource
+	// Resource name
 	Name string `pulumi:"name"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -55,22 +53,14 @@ type LookupGalleryImageVersionResult struct {
 	PublishingProfile *GalleryImageVersionPublishingProfileResponse `pulumi:"publishingProfile"`
 	// This is the replication status of the gallery image version.
 	ReplicationStatus ReplicationStatusResponse `pulumi:"replicationStatus"`
-	// Indicates if this is a soft-delete resource restoration request.
-	Restore *bool `pulumi:"restore"`
 	// This is the safety profile of the Gallery Image Version.
 	SafetyProfile *GalleryImageVersionSafetyProfileResponse `pulumi:"safetyProfile"`
-	// The security profile of a gallery image version
-	SecurityProfile *ImageVersionSecurityProfileResponse `pulumi:"securityProfile"`
 	// This is the storage profile of a Gallery Image Version.
 	StorageProfile GalleryImageVersionStorageProfileResponse `pulumi:"storageProfile"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type string `pulumi:"type"`
-	// This is the validations profile of a Gallery Image Version.
-	ValidationsProfile ValidationsProfileResponse `pulumi:"validationsProfile"`
 }
 
 func LookupGalleryImageVersionOutput(ctx *pulumi.Context, args LookupGalleryImageVersionOutputArgs, opts ...pulumi.InvokeOption) LookupGalleryImageVersionResultOutput {
@@ -85,13 +75,13 @@ func LookupGalleryImageVersionOutput(ctx *pulumi.Context, args LookupGalleryImag
 type LookupGalleryImageVersionOutputArgs struct {
 	// The expand expression to apply on the operation.
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// The name of the gallery image definition to be retrieved.
+	// The name of the gallery image definition in which the Image Version resides.
 	GalleryImageName pulumi.StringInput `pulumi:"galleryImageName"`
 	// The name of the gallery image version to be retrieved.
 	GalleryImageVersionName pulumi.StringInput `pulumi:"galleryImageVersionName"`
-	// The name of the Shared Image Gallery.
+	// The name of the Shared Image Gallery in which the Image Definition resides.
 	GalleryName pulumi.StringInput `pulumi:"galleryName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -114,22 +104,17 @@ func (o LookupGalleryImageVersionResultOutput) ToLookupGalleryImageVersionResult
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupGalleryImageVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGalleryImageVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Resource Id
 func (o LookupGalleryImageVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location
 func (o LookupGalleryImageVersionResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name
 func (o LookupGalleryImageVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -151,21 +136,11 @@ func (o LookupGalleryImageVersionResultOutput) ReplicationStatus() ReplicationSt
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) ReplicationStatusResponse { return v.ReplicationStatus }).(ReplicationStatusResponseOutput)
 }
 
-// Indicates if this is a soft-delete resource restoration request.
-func (o LookupGalleryImageVersionResultOutput) Restore() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupGalleryImageVersionResult) *bool { return v.Restore }).(pulumi.BoolPtrOutput)
-}
-
 // This is the safety profile of the Gallery Image Version.
 func (o LookupGalleryImageVersionResultOutput) SafetyProfile() GalleryImageVersionSafetyProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) *GalleryImageVersionSafetyProfileResponse {
 		return v.SafetyProfile
 	}).(GalleryImageVersionSafetyProfileResponsePtrOutput)
-}
-
-// The security profile of a gallery image version
-func (o LookupGalleryImageVersionResultOutput) SecurityProfile() ImageVersionSecurityProfileResponsePtrOutput {
-	return o.ApplyT(func(v LookupGalleryImageVersionResult) *ImageVersionSecurityProfileResponse { return v.SecurityProfile }).(ImageVersionSecurityProfileResponsePtrOutput)
 }
 
 // This is the storage profile of a Gallery Image Version.
@@ -175,24 +150,14 @@ func (o LookupGalleryImageVersionResultOutput) StorageProfile() GalleryImageVers
 	}).(GalleryImageVersionStorageProfileResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupGalleryImageVersionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupGalleryImageVersionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o LookupGalleryImageVersionResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o LookupGalleryImageVersionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// This is the validations profile of a Gallery Image Version.
-func (o LookupGalleryImageVersionResultOutput) ValidationsProfile() ValidationsProfileResponseOutput {
-	return o.ApplyT(func(v LookupGalleryImageVersionResult) ValidationsProfileResponse { return v.ValidationsProfile }).(ValidationsProfileResponseOutput)
 }
 
 func init() {

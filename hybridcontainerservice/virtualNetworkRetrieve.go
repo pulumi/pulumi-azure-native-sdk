@@ -8,20 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The virtualNetworks resource definition.
 //
-// Uses Azure REST API version 2022-09-01-preview.
-//
-// Other available API versions: 2023-11-15-preview, 2024-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcontainerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
 type VirtualNetworkRetrieve struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion  pulumi.StringOutput                              `pulumi:"azureApiVersion"`
 	ExtendedLocation VirtualNetworksResponseExtendedLocationPtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -52,16 +48,28 @@ func NewVirtualNetworkRetrieve(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:VirtualNetworkRetrieve"),
 		},
 		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:virtualNetworkRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:VirtualNetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:virtualNetworkRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20231115preview:VirtualNetworkRetrieve"),
 		},
 		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20231115preview:virtualNetworkRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:VirtualNetworkRetrieve"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20250201preview:VirtualNetworkRetrieve"),
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:virtualNetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice:virtualNetworkRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -161,11 +169,6 @@ func (o VirtualNetworkRetrieveOutput) ToVirtualNetworkRetrieveOutput() VirtualNe
 
 func (o VirtualNetworkRetrieveOutput) ToVirtualNetworkRetrieveOutputWithContext(ctx context.Context) VirtualNetworkRetrieveOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o VirtualNetworkRetrieveOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualNetworkRetrieve) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o VirtualNetworkRetrieveOutput) ExtendedLocation() VirtualNetworksResponseExtendedLocationPtrOutput {

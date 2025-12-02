@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about a pair of virtual endpoints.
+// Gets information about a virtual endpoint.
 //
-// Uses Azure REST API version 2024-08-01.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
 func LookupVirtualEndpoint(ctx *pulumi.Context, args *LookupVirtualEndpointArgs, opts ...pulumi.InvokeOption) (*LookupVirtualEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualEndpointResult
@@ -31,19 +31,17 @@ type LookupVirtualEndpointArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName string `pulumi:"serverName"`
-	// Base name of the virtual endpoints.
+	// The name of the virtual endpoint.
 	VirtualEndpointName string `pulumi:"virtualEndpointName"`
 }
 
-// Pair of virtual endpoints for a flexible server.
+// Represents a virtual endpoint for a server.
 type LookupVirtualEndpointResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Type of endpoint for the virtual endpoints.
+	// The endpoint type for the virtual endpoint.
 	EndpointType *string `pulumi:"endpointType"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// List of flexible servers that one of the virtual endpoints can refer to.
+	// List of members for a virtual endpoint
 	Members []string `pulumi:"members"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -51,7 +49,7 @@ type LookupVirtualEndpointResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// List of virtual endpoints for a flexible server.
+	// List of virtual endpoints for a server
 	VirtualEndpoints []string `pulumi:"virtualEndpoints"`
 }
 
@@ -69,7 +67,7 @@ type LookupVirtualEndpointOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName pulumi.StringInput `pulumi:"serverName"`
-	// Base name of the virtual endpoints.
+	// The name of the virtual endpoint.
 	VirtualEndpointName pulumi.StringInput `pulumi:"virtualEndpointName"`
 }
 
@@ -77,7 +75,7 @@ func (LookupVirtualEndpointOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupVirtualEndpointArgs)(nil)).Elem()
 }
 
-// Pair of virtual endpoints for a flexible server.
+// Represents a virtual endpoint for a server.
 type LookupVirtualEndpointResultOutput struct{ *pulumi.OutputState }
 
 func (LookupVirtualEndpointResultOutput) ElementType() reflect.Type {
@@ -92,12 +90,7 @@ func (o LookupVirtualEndpointResultOutput) ToLookupVirtualEndpointResultOutputWi
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupVirtualEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Type of endpoint for the virtual endpoints.
+// The endpoint type for the virtual endpoint.
 func (o LookupVirtualEndpointResultOutput) EndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualEndpointResult) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
 }
@@ -107,7 +100,7 @@ func (o LookupVirtualEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of flexible servers that one of the virtual endpoints can refer to.
+// List of members for a virtual endpoint
 func (o LookupVirtualEndpointResultOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVirtualEndpointResult) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -127,7 +120,7 @@ func (o LookupVirtualEndpointResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualEndpointResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// List of virtual endpoints for a flexible server.
+// List of virtual endpoints for a server
 func (o LookupVirtualEndpointResultOutput) VirtualEndpoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVirtualEndpointResult) []string { return v.VirtualEndpoints }).(pulumi.StringArrayOutput)
 }

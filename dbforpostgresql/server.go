@@ -8,61 +8,55 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Flexible server.
+// Represents a server.
 //
-// Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
+// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2017-12-01.
 //
-// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2017-12-01, 2017-12-01-preview, 2020-02-14-preview, 2021-04-10-privatepreview, 2021-06-15-privatepreview, 2022-03-08-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
 type Server struct {
 	pulumi.CustomResourceState
 
-	// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
+	// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
 	AdministratorLogin pulumi.StringPtrOutput `pulumi:"administratorLogin"`
-	// Authentication configuration properties of a flexible server.
+	// AuthConfig properties of a server.
 	AuthConfig AuthConfigResponsePtrOutput `pulumi:"authConfig"`
-	// Availability zone of a flexible server.
+	// availability zone information of the server.
 	AvailabilityZone pulumi.StringPtrOutput `pulumi:"availabilityZone"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Backup properties of a flexible server.
+	// Backup properties of a server.
 	Backup BackupResponsePtrOutput `pulumi:"backup"`
-	// Data encryption properties of a flexible server.
+	// Data encryption properties of a server.
 	DataEncryption DataEncryptionResponsePtrOutput `pulumi:"dataEncryption"`
-	// Fully qualified domain name of a flexible server.
+	// The fully qualified domain name of a server.
 	FullyQualifiedDomainName pulumi.StringOutput `pulumi:"fullyQualifiedDomainName"`
-	// High availability properties of a flexible server.
+	// High availability properties of a server.
 	HighAvailability HighAvailabilityResponsePtrOutput `pulumi:"highAvailability"`
-	// User assigned managed identities assigned to the flexible server.
+	// Describes the identity of the application.
 	Identity UserAssignedIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Maintenance window properties of a flexible server.
+	// Maintenance window properties of a server.
 	MaintenanceWindow MaintenanceWindowResponsePtrOutput `pulumi:"maintenanceWindow"`
-	// Minor version of PostgreSQL database engine.
+	// The minor version of the server.
 	MinorVersion pulumi.StringOutput `pulumi:"minorVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Network properties of a flexible server. Only required if you want your server to be integrated into a virtual network provided by customer.
+	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
 	Network NetworkResponsePtrOutput `pulumi:"network"`
-	// List of private endpoint connections associated with the specified flexible server.
-	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
-	// Read replica properties of a flexible server. Required only in case that you want to promote a server.
-	Replica ReplicaResponsePtrOutput `pulumi:"replica"`
-	// Maximum number of read replicas allowed for a flexible server.
+	// Replicas allowed for a server.
 	ReplicaCapacity pulumi.IntOutput `pulumi:"replicaCapacity"`
-	// Role of the server in a replication set.
+	// Replication role of the server
 	ReplicationRole pulumi.StringPtrOutput `pulumi:"replicationRole"`
-	// Compute tier and size of a flexible server.
+	// The SKU (pricing tier) of the server.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
-	// Identifier of the flexible server to be used as the source of the new flexible server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target flexible server is a read replica.
+	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
 	SourceServerResourceId pulumi.StringPtrOutput `pulumi:"sourceServerResourceId"`
-	// Possible states of a flexible server.
+	// A state of a server that is visible to user.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Storage properties of a flexible server.
+	// Storage properties of a server.
 	Storage StorageResponsePtrOutput `pulumi:"storage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -70,7 +64,7 @@ type Server struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Major version of PostgreSQL database engine.
+	// PostgreSQL Server version.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -100,12 +94,6 @@ func NewServer(ctx *pulumi.Context,
 		args.MaintenanceWindow = args.MaintenanceWindow.ToMaintenanceWindowPtrOutput().ApplyT(func(v *MaintenanceWindow) *MaintenanceWindow { return v.Defaults() }).(MaintenanceWindowPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20171201:Server"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20171201preview:Server"),
-		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214preview:Server"),
 		},
@@ -151,15 +139,6 @@ func NewServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Server"),
 		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250101preview:Server"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250601preview:Server"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250801:Server"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -195,97 +174,93 @@ func (ServerState) ElementType() reflect.Type {
 }
 
 type serverArgs struct {
-	// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
+	// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
 	AdministratorLogin *string `pulumi:"administratorLogin"`
-	// Password assigned to the administrator login. As long as password authentication is enabled, this password can be changed at any time.
+	// The administrator login password (required for server creation).
 	AdministratorLoginPassword *string `pulumi:"administratorLoginPassword"`
-	// Authentication configuration properties of a flexible server.
+	// AuthConfig properties of a server.
 	AuthConfig *AuthConfig `pulumi:"authConfig"`
-	// Availability zone of a flexible server.
+	// availability zone information of the server.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Backup properties of a flexible server.
+	// Backup properties of a server.
 	Backup *BackupType `pulumi:"backup"`
-	// Creation mode of a new flexible server.
+	// The mode to create a new PostgreSQL server.
 	CreateMode *string `pulumi:"createMode"`
-	// Data encryption properties of a flexible server.
+	// Data encryption properties of a server.
 	DataEncryption *DataEncryption `pulumi:"dataEncryption"`
-	// High availability properties of a flexible server.
+	// High availability properties of a server.
 	HighAvailability *HighAvailability `pulumi:"highAvailability"`
-	// User assigned managed identities assigned to the flexible server.
+	// Describes the identity of the application.
 	Identity *UserAssignedIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Maintenance window properties of a flexible server.
+	// Maintenance window properties of a server.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
-	// Network properties of a flexible server. Only required if you want your server to be integrated into a virtual network provided by customer.
+	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
 	Network *Network `pulumi:"network"`
-	// Creation time (in ISO8601 format) of the backup which you want to restore in the new flexible server. It's required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', or 'ReviveDropped'.
+	// Restore point creation time (ISO8601 format), specifying the time to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore'.
 	PointInTimeUTC *string `pulumi:"pointInTimeUTC"`
-	// Read replica properties of a flexible server. Required only in case that you want to promote a server.
-	Replica *Replica `pulumi:"replica"`
-	// Role of the server in a replication set.
+	// Replication role of the server
 	ReplicationRole *string `pulumi:"replicationRole"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName *string `pulumi:"serverName"`
-	// Compute tier and size of a flexible server.
+	// The SKU (pricing tier) of the server.
 	Sku *Sku `pulumi:"sku"`
-	// Identifier of the flexible server to be used as the source of the new flexible server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target flexible server is a read replica.
+	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
 	SourceServerResourceId *string `pulumi:"sourceServerResourceId"`
-	// Storage properties of a flexible server.
+	// Storage properties of a server.
 	Storage *Storage `pulumi:"storage"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Major version of PostgreSQL database engine.
+	// PostgreSQL Server version.
 	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Server resource.
 type ServerArgs struct {
-	// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
+	// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
 	AdministratorLogin pulumi.StringPtrInput
-	// Password assigned to the administrator login. As long as password authentication is enabled, this password can be changed at any time.
+	// The administrator login password (required for server creation).
 	AdministratorLoginPassword pulumi.StringPtrInput
-	// Authentication configuration properties of a flexible server.
+	// AuthConfig properties of a server.
 	AuthConfig AuthConfigPtrInput
-	// Availability zone of a flexible server.
+	// availability zone information of the server.
 	AvailabilityZone pulumi.StringPtrInput
-	// Backup properties of a flexible server.
+	// Backup properties of a server.
 	Backup BackupTypePtrInput
-	// Creation mode of a new flexible server.
+	// The mode to create a new PostgreSQL server.
 	CreateMode pulumi.StringPtrInput
-	// Data encryption properties of a flexible server.
+	// Data encryption properties of a server.
 	DataEncryption DataEncryptionPtrInput
-	// High availability properties of a flexible server.
+	// High availability properties of a server.
 	HighAvailability HighAvailabilityPtrInput
-	// User assigned managed identities assigned to the flexible server.
+	// Describes the identity of the application.
 	Identity UserAssignedIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Maintenance window properties of a flexible server.
+	// Maintenance window properties of a server.
 	MaintenanceWindow MaintenanceWindowPtrInput
-	// Network properties of a flexible server. Only required if you want your server to be integrated into a virtual network provided by customer.
+	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
 	Network NetworkPtrInput
-	// Creation time (in ISO8601 format) of the backup which you want to restore in the new flexible server. It's required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', or 'ReviveDropped'.
+	// Restore point creation time (ISO8601 format), specifying the time to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore'.
 	PointInTimeUTC pulumi.StringPtrInput
-	// Read replica properties of a flexible server. Required only in case that you want to promote a server.
-	Replica ReplicaPtrInput
-	// Role of the server in a replication set.
+	// Replication role of the server
 	ReplicationRole pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the server.
 	ServerName pulumi.StringPtrInput
-	// Compute tier and size of a flexible server.
+	// The SKU (pricing tier) of the server.
 	Sku SkuPtrInput
-	// Identifier of the flexible server to be used as the source of the new flexible server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target flexible server is a read replica.
+	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
 	SourceServerResourceId pulumi.StringPtrInput
-	// Storage properties of a flexible server.
+	// Storage properties of a server.
 	Storage StoragePtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Major version of PostgreSQL database engine.
+	// PostgreSQL Server version.
 	Version pulumi.StringPtrInput
 }
 
@@ -326,47 +301,42 @@ func (o ServerOutput) ToServerOutputWithContext(ctx context.Context) ServerOutpu
 	return o
 }
 
-// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
+// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
 func (o ServerOutput) AdministratorLogin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
 }
 
-// Authentication configuration properties of a flexible server.
+// AuthConfig properties of a server.
 func (o ServerOutput) AuthConfig() AuthConfigResponsePtrOutput {
 	return o.ApplyT(func(v *Server) AuthConfigResponsePtrOutput { return v.AuthConfig }).(AuthConfigResponsePtrOutput)
 }
 
-// Availability zone of a flexible server.
+// availability zone information of the server.
 func (o ServerOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o ServerOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Backup properties of a flexible server.
+// Backup properties of a server.
 func (o ServerOutput) Backup() BackupResponsePtrOutput {
 	return o.ApplyT(func(v *Server) BackupResponsePtrOutput { return v.Backup }).(BackupResponsePtrOutput)
 }
 
-// Data encryption properties of a flexible server.
+// Data encryption properties of a server.
 func (o ServerOutput) DataEncryption() DataEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v *Server) DataEncryptionResponsePtrOutput { return v.DataEncryption }).(DataEncryptionResponsePtrOutput)
 }
 
-// Fully qualified domain name of a flexible server.
+// The fully qualified domain name of a server.
 func (o ServerOutput) FullyQualifiedDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.FullyQualifiedDomainName }).(pulumi.StringOutput)
 }
 
-// High availability properties of a flexible server.
+// High availability properties of a server.
 func (o ServerOutput) HighAvailability() HighAvailabilityResponsePtrOutput {
 	return o.ApplyT(func(v *Server) HighAvailabilityResponsePtrOutput { return v.HighAvailability }).(HighAvailabilityResponsePtrOutput)
 }
 
-// User assigned managed identities assigned to the flexible server.
+// Describes the identity of the application.
 func (o ServerOutput) Identity() UserAssignedIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *Server) UserAssignedIdentityResponsePtrOutput { return v.Identity }).(UserAssignedIdentityResponsePtrOutput)
 }
@@ -376,12 +346,12 @@ func (o ServerOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Maintenance window properties of a flexible server.
+// Maintenance window properties of a server.
 func (o ServerOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
 	return o.ApplyT(func(v *Server) MaintenanceWindowResponsePtrOutput { return v.MaintenanceWindow }).(MaintenanceWindowResponsePtrOutput)
 }
 
-// Minor version of PostgreSQL database engine.
+// The minor version of the server.
 func (o ServerOutput) MinorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.MinorVersion }).(pulumi.StringOutput)
 }
@@ -391,47 +361,37 @@ func (o ServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Network properties of a flexible server. Only required if you want your server to be integrated into a virtual network provided by customer.
+// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
 func (o ServerOutput) Network() NetworkResponsePtrOutput {
 	return o.ApplyT(func(v *Server) NetworkResponsePtrOutput { return v.Network }).(NetworkResponsePtrOutput)
 }
 
-// List of private endpoint connections associated with the specified flexible server.
-func (o ServerOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *Server) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
-}
-
-// Read replica properties of a flexible server. Required only in case that you want to promote a server.
-func (o ServerOutput) Replica() ReplicaResponsePtrOutput {
-	return o.ApplyT(func(v *Server) ReplicaResponsePtrOutput { return v.Replica }).(ReplicaResponsePtrOutput)
-}
-
-// Maximum number of read replicas allowed for a flexible server.
+// Replicas allowed for a server.
 func (o ServerOutput) ReplicaCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v *Server) pulumi.IntOutput { return v.ReplicaCapacity }).(pulumi.IntOutput)
 }
 
-// Role of the server in a replication set.
+// Replication role of the server
 func (o ServerOutput) ReplicationRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.ReplicationRole }).(pulumi.StringPtrOutput)
 }
 
-// Compute tier and size of a flexible server.
+// The SKU (pricing tier) of the server.
 func (o ServerOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v *Server) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
-// Identifier of the flexible server to be used as the source of the new flexible server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target flexible server is a read replica.
+// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
 func (o ServerOutput) SourceServerResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.SourceServerResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Possible states of a flexible server.
+// A state of a server that is visible to user.
 func (o ServerOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Storage properties of a flexible server.
+// Storage properties of a server.
 func (o ServerOutput) Storage() StorageResponsePtrOutput {
 	return o.ApplyT(func(v *Server) StorageResponsePtrOutput { return v.Storage }).(StorageResponsePtrOutput)
 }
@@ -451,7 +411,7 @@ func (o ServerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Major version of PostgreSQL database engine.
+// PostgreSQL Server version.
 func (o ServerOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }

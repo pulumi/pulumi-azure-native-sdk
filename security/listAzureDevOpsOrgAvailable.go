@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List of RP resources which supports pagination.
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2023-09-01-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2024-05-15-preview, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-04-01, 2024-05-15-preview, 2025-03-01.
 func ListAzureDevOpsOrgAvailable(ctx *pulumi.Context, args *ListAzureDevOpsOrgAvailableArgs, opts ...pulumi.InvokeOption) (*ListAzureDevOpsOrgAvailableResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAzureDevOpsOrgAvailableResult

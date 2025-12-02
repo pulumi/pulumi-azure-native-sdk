@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a ScalingPlanPooledSchedule.
 //
-// Uses Azure REST API version 2024-04-03.
+// Uses Azure REST API version 2022-09-09.
 //
-// Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
 func LookupScalingPlanPooledSchedule(ctx *pulumi.Context, args *LookupScalingPlanPooledScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScalingPlanPooledScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScalingPlanPooledScheduleResult
@@ -37,11 +37,9 @@ type LookupScalingPlanPooledScheduleArgs struct {
 
 // Represents a ScalingPlanPooledSchedule definition.
 type LookupScalingPlanPooledScheduleResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Set of days of the week on which this schedule is active.
 	DaysOfWeek []string `pulumi:"daysOfWeek"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -77,7 +75,7 @@ type LookupScalingPlanPooledScheduleResult struct {
 	RampUpMinimumHostsPct *int `pulumi:"rampUpMinimumHostsPct"`
 	// Starting time for ramp up period.
 	RampUpStartTime *TimeResponse `pulumi:"rampUpStartTime"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -120,17 +118,12 @@ func (o LookupScalingPlanPooledScheduleResultOutput) ToLookupScalingPlanPooledSc
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupScalingPlanPooledScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScalingPlanPooledScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Set of days of the week on which this schedule is active.
 func (o LookupScalingPlanPooledScheduleResultOutput) DaysOfWeek() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupScalingPlanPooledScheduleResult) []string { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupScalingPlanPooledScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScalingPlanPooledScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -220,7 +213,7 @@ func (o LookupScalingPlanPooledScheduleResultOutput) RampUpStartTime() TimeRespo
 	return o.ApplyT(func(v LookupScalingPlanPooledScheduleResult) *TimeResponse { return v.RampUpStartTime }).(TimeResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Metadata pertaining to creation and last modification of the resource.
 func (o LookupScalingPlanPooledScheduleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupScalingPlanPooledScheduleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

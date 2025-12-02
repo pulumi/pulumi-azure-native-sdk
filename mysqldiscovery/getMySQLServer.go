@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +35,6 @@ type LookupMySQLServerArgs struct {
 
 // The MySQLServer resource definition.
 type LookupMySQLServerResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// mysql server edition.
 	Edition *string `pulumi:"edition"`
 	// The list of errors.
@@ -108,11 +106,6 @@ func (o LookupMySQLServerResultOutput) ToLookupMySQLServerResultOutput() LookupM
 
 func (o LookupMySQLServerResultOutput) ToLookupMySQLServerResultOutputWithContext(ctx context.Context) LookupMySQLServerResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupMySQLServerResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMySQLServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // mysql server edition.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the current version of the specified key from the specified key vault.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2023-02-01.
 //
-// Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
 func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOption) (*LookupKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeyResult
@@ -39,14 +39,12 @@ type LookupKeyArgs struct {
 type LookupKeyResult struct {
 	// The attributes of the key.
 	Attributes *KeyAttributesResponse `pulumi:"attributes"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
+	// The elliptic curve name. For valid values, see JsonWebKeyCurveName.
 	CurveName *string `pulumi:"curveName"`
 	// Fully qualified identifier of the key vault resource.
 	Id     string   `pulumi:"id"`
 	KeyOps []string `pulumi:"keyOps"`
-	// The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
+	// The key size in bits. For example: 2048, 3072, or 4096 for RSA.
 	KeySize *int `pulumi:"keySize"`
 	// The URI to retrieve the current version of the key.
 	KeyUri string `pulumi:"keyUri"`
@@ -122,12 +120,7 @@ func (o LookupKeyResultOutput) Attributes() KeyAttributesResponsePtrOutput {
 	return o.ApplyT(func(v LookupKeyResult) *KeyAttributesResponse { return v.Attributes }).(KeyAttributesResponsePtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupKeyResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKeyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
+// The elliptic curve name. For valid values, see JsonWebKeyCurveName.
 func (o LookupKeyResultOutput) CurveName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeyResult) *string { return v.CurveName }).(pulumi.StringPtrOutput)
 }
@@ -141,7 +134,7 @@ func (o LookupKeyResultOutput) KeyOps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupKeyResult) []string { return v.KeyOps }).(pulumi.StringArrayOutput)
 }
 
-// The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
+// The key size in bits. For example: 2048, 3072, or 4096 for RSA.
 func (o LookupKeyResultOutput) KeySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupKeyResult) *int { return v.KeySize }).(pulumi.IntPtrOutput)
 }

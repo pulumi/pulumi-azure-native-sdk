@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a cache rule for a container registry.
 //
-// Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
+// Uses Azure REST API version 2023-01-01-preview.
 //
-// Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
 type CacheRule struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the cache rule.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// The ARM resource ID of the credential store which is associated with the cache rule.
@@ -72,15 +70,6 @@ func NewCacheRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20241101preview:CacheRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerregistry/v20250301preview:CacheRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerregistry/v20250401:CacheRule"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerregistry/v20250501preview:CacheRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -184,11 +173,6 @@ func (o CacheRuleOutput) ToCacheRuleOutput() CacheRuleOutput {
 
 func (o CacheRuleOutput) ToCacheRuleOutputWithContext(ctx context.Context) CacheRuleOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o CacheRuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *CacheRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the cache rule.

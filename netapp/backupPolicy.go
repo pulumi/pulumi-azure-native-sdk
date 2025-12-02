@@ -8,21 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Backup policy information
 //
-// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
+// Uses Azure REST API version 2022-11-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-04-01, 2021-04-01-preview, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Backup Policy GUID ID
+	// Backup Policy Resource ID
 	BackupPolicyId pulumi.StringOutput `pulumi:"backupPolicyId"`
 	// Daily backups count to keep
 	DailyBackupsToKeep pulumi.IntPtrOutput `pulumi:"dailyBackupsToKeep"`
@@ -168,24 +166,6 @@ func NewBackupPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20240901preview:BackupPolicy"),
 		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250101:BackupPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250101preview:BackupPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250301:BackupPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250301preview:BackupPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250601:BackupPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:netapp/v20250701preview:BackupPolicy"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -300,12 +280,7 @@ func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The Azure API version of the resource.
-func (o BackupPolicyOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Backup Policy GUID ID
+// Backup Policy Resource ID
 func (o BackupPolicyOutput) BackupPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.BackupPolicyId }).(pulumi.StringOutput)
 }

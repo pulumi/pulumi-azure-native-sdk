@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // App Service plan.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-09-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
 type AppServicePlan struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
 	ElasticScaleEnabled pulumi.BoolPtrOutput `pulumi:"elasticScaleEnabled"`
 	// Extended Location.
@@ -38,7 +36,7 @@ type AppServicePlan struct {
 	IsSpot pulumi.BoolPtrOutput `pulumi:"isSpot"`
 	// Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
 	IsXenon pulumi.BoolPtrOutput `pulumi:"isXenon"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Specification for the Kubernetes Environment to use for the App Service plan.
 	KubeEnvironmentProfile KubeEnvironmentProfileResponsePtrOutput `pulumi:"kubeEnvironmentProfile"`
@@ -163,9 +161,6 @@ func NewAppServicePlan(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20240401:AppServicePlan"),
 		},
-		{
-			Type: pulumi.String("azure-native:web/v20241101:AppServicePlan"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -215,7 +210,7 @@ type appServicePlanArgs struct {
 	IsSpot *bool `pulumi:"isSpot"`
 	// Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
 	IsXenon *bool `pulumi:"isXenon"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind *string `pulumi:"kind"`
 	// Specification for the Kubernetes Environment to use for the App Service plan.
 	KubeEnvironmentProfile *KubeEnvironmentProfile `pulumi:"kubeEnvironmentProfile"`
@@ -265,7 +260,7 @@ type AppServicePlanArgs struct {
 	IsSpot pulumi.BoolPtrInput
 	// Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
 	IsXenon pulumi.BoolPtrInput
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind pulumi.StringPtrInput
 	// Specification for the Kubernetes Environment to use for the App Service plan.
 	KubeEnvironmentProfile KubeEnvironmentProfilePtrInput
@@ -336,11 +331,6 @@ func (o AppServicePlanOutput) ToAppServicePlanOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o AppServicePlanOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *AppServicePlan) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
 func (o AppServicePlanOutput) ElasticScaleEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppServicePlan) pulumi.BoolPtrOutput { return v.ElasticScaleEnabled }).(pulumi.BoolPtrOutput)
@@ -381,7 +371,7 @@ func (o AppServicePlanOutput) IsXenon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppServicePlan) pulumi.BoolPtrOutput { return v.IsXenon }).(pulumi.BoolPtrOutput)
 }
 
-// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+// Kind of resource.
 func (o AppServicePlanOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppServicePlan) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a workspace instance.
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2022-10-01.
 //
-// Other available API versions: 2015-11-01-preview, 2020-03-01-preview, 2020-08-01, 2020-10-01, 2021-06-01, 2021-12-01-preview, 2022-10-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2015-11-01-preview, 2020-08-01, 2020-10-01, 2021-06-01, 2021-12-01-preview, 2023-09-01, 2025-02-01.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceResult
@@ -35,8 +35,6 @@ type LookupWorkspaceArgs struct {
 
 // The top level Workspace resource container.
 type LookupWorkspaceResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Workspace creation date.
 	CreatedDate string `pulumi:"createdDate"`
 	// This is a read-only property. Represents the ID associated with the workspace.
@@ -114,11 +112,6 @@ func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutput() LookupWorks
 
 func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ctx context.Context) LookupWorkspaceResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Workspace creation date.

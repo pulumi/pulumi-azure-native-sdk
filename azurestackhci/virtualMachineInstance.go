@@ -8,50 +8,44 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The virtual machine instance resource definition.
 //
-// Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-01-preview.
+// Uses Azure REST API version 2023-07-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
 type VirtualMachineInstance struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Boolean indicating whether this is an existing local virtual machine or if one should be created.
-	CreateFromLocal pulumi.BoolPtrOutput `pulumi:"createFromLocal"`
 	// The extendedLocation of the resource.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Guest agent install status.
 	GuestAgentInstallStatus GuestAgentInstallStatusResponsePtrOutput `pulumi:"guestAgentInstallStatus"`
 	// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
-	HardwareProfile VirtualMachineInstancePropertiesHardwareProfileResponsePtrOutput `pulumi:"hardwareProfile"`
-	// HTTP Proxy configuration for the VM.
-	HttpProxyConfig HttpProxyConfigurationResponsePtrOutput `pulumi:"httpProxyConfig"`
-	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	HardwareProfile VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput `pulumi:"hardwareProfile"`
+	// Identity for the resource.
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// The virtual machine instance view.
 	InstanceView VirtualMachineInstanceViewResponseOutput `pulumi:"instanceView"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// NetworkProfile - describes the network configuration the virtual machine instance
-	NetworkProfile VirtualMachineInstancePropertiesNetworkProfileResponsePtrOutput `pulumi:"networkProfile"`
+	NetworkProfile VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput `pulumi:"networkProfile"`
 	// OsProfile - describes the configuration of the operating system and sets login data
-	OsProfile VirtualMachineInstancePropertiesOsProfileResponsePtrOutput `pulumi:"osProfile"`
+	OsProfile VirtualMachineInstancePropertiesResponseOsProfilePtrOutput `pulumi:"osProfile"`
 	// Provisioning state of the virtual machine instance.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Unique identifier defined by ARC to identify the guest of the VM.
 	ResourceUid pulumi.StringPtrOutput `pulumi:"resourceUid"`
 	// SecurityProfile - Specifies the security settings for the virtual machine instance.
-	SecurityProfile VirtualMachineInstancePropertiesSecurityProfileResponsePtrOutput `pulumi:"securityProfile"`
+	SecurityProfile VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput `pulumi:"securityProfile"`
 	// The observed state of virtual machine instances
 	Status VirtualMachineInstanceStatusResponseOutput `pulumi:"status"`
 	// StorageProfile - contains information about the disks and storage information for the virtual machine instance
-	StorageProfile VirtualMachineInstancePropertiesStorageProfileResponsePtrOutput `pulumi:"storageProfile"`
+	StorageProfile VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput `pulumi:"storageProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -69,9 +63,6 @@ func NewVirtualMachineInstance(ctx *pulumi.Context,
 
 	if args.ResourceUri == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceUri'")
-	}
-	if args.CreateFromLocal == nil {
-		args.CreateFromLocal = pulumi.BoolPtr(false)
 	}
 	if args.HardwareProfile != nil {
 		args.HardwareProfile = args.HardwareProfile.ToVirtualMachineInstancePropertiesHardwareProfilePtrOutput().ApplyT(func(v *VirtualMachineInstancePropertiesHardwareProfile) *VirtualMachineInstancePropertiesHardwareProfile {
@@ -119,9 +110,6 @@ func NewVirtualMachineInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:VirtualMachineInstance"),
 		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci/v20250601preview:VirtualMachineInstance"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -157,23 +145,19 @@ func (VirtualMachineInstanceState) ElementType() reflect.Type {
 }
 
 type virtualMachineInstanceArgs struct {
-	// Boolean indicating whether this is an existing local virtual machine or if one should be created.
-	CreateFromLocal *bool `pulumi:"createFromLocal"`
 	// The extendedLocation of the resource.
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
 	HardwareProfile *VirtualMachineInstancePropertiesHardwareProfile `pulumi:"hardwareProfile"`
-	// HTTP Proxy configuration for the VM.
-	HttpProxyConfig *HttpProxyConfiguration `pulumi:"httpProxyConfig"`
-	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	// Identity for the resource.
+	Identity *Identity `pulumi:"identity"`
 	// NetworkProfile - describes the network configuration the virtual machine instance
 	NetworkProfile *VirtualMachineInstancePropertiesNetworkProfile `pulumi:"networkProfile"`
 	// OsProfile - describes the configuration of the operating system and sets login data
 	OsProfile *VirtualMachineInstancePropertiesOsProfile `pulumi:"osProfile"`
 	// Unique identifier defined by ARC to identify the guest of the VM.
 	ResourceUid *string `pulumi:"resourceUid"`
-	// The fully qualified Azure Resource manager identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 	ResourceUri string `pulumi:"resourceUri"`
 	// SecurityProfile - Specifies the security settings for the virtual machine instance.
 	SecurityProfile *VirtualMachineInstancePropertiesSecurityProfile `pulumi:"securityProfile"`
@@ -183,23 +167,19 @@ type virtualMachineInstanceArgs struct {
 
 // The set of arguments for constructing a VirtualMachineInstance resource.
 type VirtualMachineInstanceArgs struct {
-	// Boolean indicating whether this is an existing local virtual machine or if one should be created.
-	CreateFromLocal pulumi.BoolPtrInput
 	// The extendedLocation of the resource.
 	ExtendedLocation ExtendedLocationPtrInput
 	// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
 	HardwareProfile VirtualMachineInstancePropertiesHardwareProfilePtrInput
-	// HTTP Proxy configuration for the VM.
-	HttpProxyConfig HttpProxyConfigurationPtrInput
-	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityPtrInput
+	// Identity for the resource.
+	Identity IdentityPtrInput
 	// NetworkProfile - describes the network configuration the virtual machine instance
 	NetworkProfile VirtualMachineInstancePropertiesNetworkProfilePtrInput
 	// OsProfile - describes the configuration of the operating system and sets login data
 	OsProfile VirtualMachineInstancePropertiesOsProfilePtrInput
 	// Unique identifier defined by ARC to identify the guest of the VM.
 	ResourceUid pulumi.StringPtrInput
-	// The fully qualified Azure Resource manager identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 	ResourceUri pulumi.StringInput
 	// SecurityProfile - Specifies the security settings for the virtual machine instance.
 	SecurityProfile VirtualMachineInstancePropertiesSecurityProfilePtrInput
@@ -244,16 +224,6 @@ func (o VirtualMachineInstanceOutput) ToVirtualMachineInstanceOutputWithContext(
 	return o
 }
 
-// The Azure API version of the resource.
-func (o VirtualMachineInstanceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Boolean indicating whether this is an existing local virtual machine or if one should be created.
-func (o VirtualMachineInstanceOutput) CreateFromLocal() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) pulumi.BoolPtrOutput { return v.CreateFromLocal }).(pulumi.BoolPtrOutput)
-}
-
 // The extendedLocation of the resource.
 func (o VirtualMachineInstanceOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInstance) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
@@ -267,20 +237,15 @@ func (o VirtualMachineInstanceOutput) GuestAgentInstallStatus() GuestAgentInstal
 }
 
 // HardwareProfile - Specifies the hardware settings for the virtual machine instance.
-func (o VirtualMachineInstanceOutput) HardwareProfile() VirtualMachineInstancePropertiesHardwareProfileResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesHardwareProfileResponsePtrOutput {
+func (o VirtualMachineInstanceOutput) HardwareProfile() VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput {
 		return v.HardwareProfile
-	}).(VirtualMachineInstancePropertiesHardwareProfileResponsePtrOutput)
+	}).(VirtualMachineInstancePropertiesResponseHardwareProfilePtrOutput)
 }
 
-// HTTP Proxy configuration for the VM.
-func (o VirtualMachineInstanceOutput) HttpProxyConfig() HttpProxyConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) HttpProxyConfigurationResponsePtrOutput { return v.HttpProxyConfig }).(HttpProxyConfigurationResponsePtrOutput)
-}
-
-// The managed service identities assigned to this resource.
-func (o VirtualMachineInstanceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+// Identity for the resource.
+func (o VirtualMachineInstanceOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // The virtual machine instance view.
@@ -294,17 +259,17 @@ func (o VirtualMachineInstanceOutput) Name() pulumi.StringOutput {
 }
 
 // NetworkProfile - describes the network configuration the virtual machine instance
-func (o VirtualMachineInstanceOutput) NetworkProfile() VirtualMachineInstancePropertiesNetworkProfileResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesNetworkProfileResponsePtrOutput {
+func (o VirtualMachineInstanceOutput) NetworkProfile() VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput {
 		return v.NetworkProfile
-	}).(VirtualMachineInstancePropertiesNetworkProfileResponsePtrOutput)
+	}).(VirtualMachineInstancePropertiesResponseNetworkProfilePtrOutput)
 }
 
 // OsProfile - describes the configuration of the operating system and sets login data
-func (o VirtualMachineInstanceOutput) OsProfile() VirtualMachineInstancePropertiesOsProfileResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesOsProfileResponsePtrOutput {
+func (o VirtualMachineInstanceOutput) OsProfile() VirtualMachineInstancePropertiesResponseOsProfilePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesResponseOsProfilePtrOutput {
 		return v.OsProfile
-	}).(VirtualMachineInstancePropertiesOsProfileResponsePtrOutput)
+	}).(VirtualMachineInstancePropertiesResponseOsProfilePtrOutput)
 }
 
 // Provisioning state of the virtual machine instance.
@@ -318,10 +283,10 @@ func (o VirtualMachineInstanceOutput) ResourceUid() pulumi.StringPtrOutput {
 }
 
 // SecurityProfile - Specifies the security settings for the virtual machine instance.
-func (o VirtualMachineInstanceOutput) SecurityProfile() VirtualMachineInstancePropertiesSecurityProfileResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesSecurityProfileResponsePtrOutput {
+func (o VirtualMachineInstanceOutput) SecurityProfile() VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput {
 		return v.SecurityProfile
-	}).(VirtualMachineInstancePropertiesSecurityProfileResponsePtrOutput)
+	}).(VirtualMachineInstancePropertiesResponseSecurityProfilePtrOutput)
 }
 
 // The observed state of virtual machine instances
@@ -330,10 +295,10 @@ func (o VirtualMachineInstanceOutput) Status() VirtualMachineInstanceStatusRespo
 }
 
 // StorageProfile - contains information about the disks and storage information for the virtual machine instance
-func (o VirtualMachineInstanceOutput) StorageProfile() VirtualMachineInstancePropertiesStorageProfileResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesStorageProfileResponsePtrOutput {
+func (o VirtualMachineInstanceOutput) StorageProfile() VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput {
 		return v.StorageProfile
-	}).(VirtualMachineInstancePropertiesStorageProfileResponsePtrOutput)
+	}).(VirtualMachineInstancePropertiesResponseStorageProfilePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

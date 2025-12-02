@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific addon by name.
 //
-// Uses Azure REST API version 2023-07-01.
+// Uses Azure REST API version 2022-03-01.
 func LookupIoTAddon(ctx *pulumi.Context, args *LookupIoTAddonArgs, opts ...pulumi.InvokeOption) (*LookupIoTAddonResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIoTAddonResult
@@ -37,8 +37,6 @@ type LookupIoTAddonArgs struct {
 
 // IoT Addon.
 type LookupIoTAddonResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Host OS supported by the IoT addon.
 	HostPlatform string `pulumi:"hostPlatform"`
 	// Platform where the runtime is hosted.
@@ -101,11 +99,6 @@ func (o LookupIoTAddonResultOutput) ToLookupIoTAddonResultOutput() LookupIoTAddo
 
 func (o LookupIoTAddonResultOutput) ToLookupIoTAddonResultOutputWithContext(ctx context.Context) LookupIoTAddonResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupIoTAddonResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Host OS supported by the IoT addon.

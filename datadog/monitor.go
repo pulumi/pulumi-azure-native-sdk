@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-10-20. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
+// Uses Azure REST API version 2022-06-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 //
-// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-08-01, 2023-01-01, 2023-07-07, 2023-10-20.
 type Monitor struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput                 `pulumi:"azureApiVersion"`
-	Identity        IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
-	Location        pulumi.StringOutput                 `pulumi:"location"`
+	Identity IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
+	Location pulumi.StringOutput                 `pulumi:"location"`
 	// Name of the monitor resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties specific to the monitor resource.
@@ -162,11 +160,6 @@ func (o MonitorOutput) ToMonitorOutput() MonitorOutput {
 
 func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o MonitorOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o MonitorOutput) Identity() IdentityPropertiesResponsePtrOutput {

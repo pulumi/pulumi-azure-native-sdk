@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Type of the Storage Target.
 //
-// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 //
-// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01, 2023-11-01-preview, 2024-03-01, 2024-07-01.
 type StorageTarget struct {
 	pulumi.CustomResourceState
 
 	// The percentage of cache space allocated for this storage target
 	AllocationPercentage pulumi.IntOutput `pulumi:"allocationPercentage"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Properties when targetType is blobNfs.
 	BlobNfs BlobNfsTargetResponsePtrOutput `pulumi:"blobNfs"`
 	// Properties when targetType is clfs.
@@ -111,9 +109,6 @@ func NewStorageTarget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20240701:StorageTarget"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagecache/v20250701:StorageTarget"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -236,11 +231,6 @@ func (o StorageTargetOutput) ToStorageTargetOutputWithContext(ctx context.Contex
 // The percentage of cache space allocated for this storage target
 func (o StorageTargetOutput) AllocationPercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v *StorageTarget) pulumi.IntOutput { return v.AllocationPercentage }).(pulumi.IntOutput)
-}
-
-// The Azure API version of the resource.
-func (o StorageTargetOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *StorageTarget) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties when targetType is blobNfs.

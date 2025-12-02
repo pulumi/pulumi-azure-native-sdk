@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net.
 //
-// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 type Endpoint struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of content types on which compression applies. The value should be a valid MIME type.
 	ContentTypesToCompress pulumi.StringArrayOutput `pulumi:"contentTypesToCompress"`
 	// The custom domains under the endpoint.
@@ -29,7 +27,7 @@ type Endpoint struct {
 	// A reference to the origin group.
 	DefaultOriginGroup ResourceReferenceResponsePtrOutput `pulumi:"defaultOriginGroup"`
 	// A policy that specifies the delivery rules to be used for an endpoint.
-	DeliveryPolicy EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput `pulumi:"deliveryPolicy"`
+	DeliveryPolicy EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput `pulumi:"deliveryPolicy"`
 	// List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
 	GeoFilters GeoFilterResponseArrayOutput `pulumi:"geoFilters"`
 	// The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
@@ -40,9 +38,9 @@ type Endpoint struct {
 	IsHttpAllowed pulumi.BoolPtrOutput `pulumi:"isHttpAllowed"`
 	// Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
 	IsHttpsAllowed pulumi.BoolPtrOutput `pulumi:"isHttpsAllowed"`
-	// The geo-location where the resource lives
+	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
 	OptimizationType pulumi.StringPtrOutput `pulumi:"optimizationType"`
@@ -62,16 +60,16 @@ type Endpoint struct {
 	QueryStringCachingBehavior pulumi.StringPtrOutput `pulumi:"queryStringCachingBehavior"`
 	// Resource status of the endpoint.
 	ResourceState pulumi.StringOutput `pulumi:"resourceState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// List of keys used to validate the signed URL hashes.
 	UrlSigningKeys UrlSigningKeyResponseArrayOutput `pulumi:"urlSigningKeys"`
 	// Defines the Web Application Firewall policy for the endpoint (if applicable)
-	WebApplicationFirewallPolicyLink EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput `pulumi:"webApplicationFirewallPolicyLink"`
+	WebApplicationFirewallPolicyLink EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput `pulumi:"webApplicationFirewallPolicyLink"`
 }
 
 // NewEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -163,21 +161,6 @@ func NewEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:Endpoint"),
 		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250101preview:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250415:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250601:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250701preview:Endpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250901preview:Endpoint"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -229,7 +212,7 @@ type endpointArgs struct {
 	IsHttpAllowed *bool `pulumi:"isHttpAllowed"`
 	// Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
 	IsHttpsAllowed *bool `pulumi:"isHttpsAllowed"`
-	// The geo-location where the resource lives
+	// Resource location.
 	Location *string `pulumi:"location"`
 	// Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
 	OptimizationType *string `pulumi:"optimizationType"`
@@ -243,11 +226,11 @@ type endpointArgs struct {
 	Origins []DeepCreatedOrigin `pulumi:"origins"`
 	// Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin.
 	ProbePath *string `pulumi:"probePath"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
 	// Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
 	QueryStringCachingBehavior *QueryStringCachingBehavior `pulumi:"queryStringCachingBehavior"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -275,7 +258,7 @@ type EndpointArgs struct {
 	IsHttpAllowed pulumi.BoolPtrInput
 	// Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
 	IsHttpsAllowed pulumi.BoolPtrInput
-	// The geo-location where the resource lives
+	// Resource location.
 	Location pulumi.StringPtrInput
 	// Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
 	OptimizationType pulumi.StringPtrInput
@@ -289,11 +272,11 @@ type EndpointArgs struct {
 	Origins DeepCreatedOriginArrayInput
 	// Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin.
 	ProbePath pulumi.StringPtrInput
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
 	// Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
 	QueryStringCachingBehavior QueryStringCachingBehaviorPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -340,11 +323,6 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 	return o
 }
 
-// The Azure API version of the resource.
-func (o EndpointOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // List of content types on which compression applies. The value should be a valid MIME type.
 func (o EndpointOutput) ContentTypesToCompress() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringArrayOutput { return v.ContentTypesToCompress }).(pulumi.StringArrayOutput)
@@ -361,10 +339,10 @@ func (o EndpointOutput) DefaultOriginGroup() ResourceReferenceResponsePtrOutput 
 }
 
 // A policy that specifies the delivery rules to be used for an endpoint.
-func (o EndpointOutput) DeliveryPolicy() EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput {
-	return o.ApplyT(func(v *Endpoint) EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput {
+func (o EndpointOutput) DeliveryPolicy() EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput {
+	return o.ApplyT(func(v *Endpoint) EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput {
 		return v.DeliveryPolicy
-	}).(EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput)
+	}).(EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput)
 }
 
 // List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
@@ -392,12 +370,12 @@ func (o EndpointOutput) IsHttpsAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.BoolPtrOutput { return v.IsHttpsAllowed }).(pulumi.BoolPtrOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location.
 func (o EndpointOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o EndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -447,7 +425,7 @@ func (o EndpointOutput) ResourceState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.ResourceState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o EndpointOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Endpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -457,7 +435,7 @@ func (o EndpointOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o EndpointOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -468,10 +446,10 @@ func (o EndpointOutput) UrlSigningKeys() UrlSigningKeyResponseArrayOutput {
 }
 
 // Defines the Web Application Firewall policy for the endpoint (if applicable)
-func (o EndpointOutput) WebApplicationFirewallPolicyLink() EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput {
-	return o.ApplyT(func(v *Endpoint) EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput {
+func (o EndpointOutput) WebApplicationFirewallPolicyLink() EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput {
+	return o.ApplyT(func(v *Endpoint) EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput {
 		return v.WebApplicationFirewallPolicyLink
-	}).(EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput)
+	}).(EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput)
 }
 
 func init() {

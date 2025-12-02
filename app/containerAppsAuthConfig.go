@@ -8,22 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
 //
-// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2022-03-01.
 //
-// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
 type ContainerAppsAuthConfig struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
-	EncryptionSettings EncryptionSettingsResponsePtrOutput `pulumi:"encryptionSettings"`
 	// The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.
 	GlobalValidation GlobalValidationResponsePtrOutput `pulumi:"globalValidation"`
 	// The configuration settings of the HTTP requests for authentication and authorization requests made against ContainerApp Service Authentication/Authorization.
@@ -101,12 +97,6 @@ func NewContainerAppsAuthConfig(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20250101:ContainerAppsAuthConfig"),
 		},
-		{
-			Type: pulumi.String("azure-native:app/v20250202preview:ContainerAppsAuthConfig"),
-		},
-		{
-			Type: pulumi.String("azure-native:app/v20250701:ContainerAppsAuthConfig"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -146,8 +136,6 @@ type containerAppsAuthConfigArgs struct {
 	AuthConfigName *string `pulumi:"authConfigName"`
 	// Name of the Container App.
 	ContainerAppName string `pulumi:"containerAppName"`
-	// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
-	EncryptionSettings *EncryptionSettings `pulumi:"encryptionSettings"`
 	// The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.
 	GlobalValidation *GlobalValidation `pulumi:"globalValidation"`
 	// The configuration settings of the HTTP requests for authentication and authorization requests made against ContainerApp Service Authentication/Authorization.
@@ -168,8 +156,6 @@ type ContainerAppsAuthConfigArgs struct {
 	AuthConfigName pulumi.StringPtrInput
 	// Name of the Container App.
 	ContainerAppName pulumi.StringInput
-	// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
-	EncryptionSettings EncryptionSettingsPtrInput
 	// The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.
 	GlobalValidation GlobalValidationPtrInput
 	// The configuration settings of the HTTP requests for authentication and authorization requests made against ContainerApp Service Authentication/Authorization.
@@ -219,16 +205,6 @@ func (o ContainerAppsAuthConfigOutput) ToContainerAppsAuthConfigOutput() Contain
 
 func (o ContainerAppsAuthConfigOutput) ToContainerAppsAuthConfigOutputWithContext(ctx context.Context) ContainerAppsAuthConfigOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o ContainerAppsAuthConfigOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ContainerAppsAuthConfig) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
-func (o ContainerAppsAuthConfigOutput) EncryptionSettings() EncryptionSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *ContainerAppsAuthConfig) EncryptionSettingsResponsePtrOutput { return v.EncryptionSettings }).(EncryptionSettingsResponsePtrOutput)
 }
 
 // The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.

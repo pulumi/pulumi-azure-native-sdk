@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A schedule.
 //
-// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type GlobalSchedule struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
@@ -116,11 +114,11 @@ type globalScheduleArgs struct {
 	HourlyRecurrence *HourDetails `pulumi:"hourlyRecurrence"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the Schedule
+	// The name of the schedule.
 	Name *string `pulumi:"name"`
 	// Notification settings.
 	NotificationSettings *NotificationSettings `pulumi:"notificationSettings"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status *string `pulumi:"status"`
@@ -144,11 +142,11 @@ type GlobalScheduleArgs struct {
 	HourlyRecurrence HourDetailsPtrInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
-	// The name of the Schedule
+	// The name of the schedule.
 	Name pulumi.StringPtrInput
 	// Notification settings.
 	NotificationSettings NotificationSettingsPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status pulumi.StringPtrInput
@@ -199,11 +197,6 @@ func (o GlobalScheduleOutput) ToGlobalScheduleOutput() GlobalScheduleOutput {
 
 func (o GlobalScheduleOutput) ToGlobalScheduleOutputWithContext(ctx context.Context) GlobalScheduleOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o GlobalScheduleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *GlobalSchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the schedule.

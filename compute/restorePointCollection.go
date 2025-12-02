@@ -8,23 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Create or update Restore Point collection parameters.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
+// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 //
-// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
 type RestorePointCollection struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the resource
+	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the restore point collection.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -34,11 +32,9 @@ type RestorePointCollection struct {
 	RestorePoints RestorePointResponseArrayOutput `pulumi:"restorePoints"`
 	// The properties of the source resource that this restore point collection is created from.
 	Source RestorePointCollectionSourcePropertiesResponsePtrOutput `pulumi:"source"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -92,9 +88,6 @@ func NewRestorePointCollection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20241101:RestorePointCollection"),
 		},
-		{
-			Type: pulumi.String("azure-native:compute/v20250401:RestorePointCollection"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -130,29 +123,29 @@ func (RestorePointCollectionState) ElementType() reflect.Type {
 }
 
 type restorePointCollectionArgs struct {
-	// The geo-location where the resource lives
+	// Resource location
 	Location *string `pulumi:"location"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the restore point collection.
 	RestorePointCollectionName *string `pulumi:"restorePointCollectionName"`
 	// The properties of the source resource that this restore point collection is created from.
 	Source *RestorePointCollectionSourceProperties `pulumi:"source"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a RestorePointCollection resource.
 type RestorePointCollectionArgs struct {
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The name of the restore point collection.
 	RestorePointCollectionName pulumi.StringPtrInput
 	// The properties of the source resource that this restore point collection is created from.
 	Source RestorePointCollectionSourcePropertiesPtrInput
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapInput
 }
 
@@ -193,17 +186,12 @@ func (o RestorePointCollectionOutput) ToRestorePointCollectionOutputWithContext(
 	return o
 }
 
-// The Azure API version of the resource.
-func (o RestorePointCollectionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *RestorePointCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The geo-location where the resource lives
+// Resource location
 func (o RestorePointCollectionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePointCollection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name
 func (o RestorePointCollectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePointCollection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -230,17 +218,12 @@ func (o RestorePointCollectionOutput) Source() RestorePointCollectionSourcePrope
 	}).(RestorePointCollectionSourcePropertiesResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o RestorePointCollectionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *RestorePointCollection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o RestorePointCollectionOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RestorePointCollection) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o RestorePointCollectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePointCollection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

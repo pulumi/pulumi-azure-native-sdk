@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements IP Extended Community GET method.
 //
-// Uses Azure REST API version 2023-06-15.
+// Uses Azure REST API version 2023-02-01-preview.
 //
-// Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-15.
 func LookupIpExtendedCommunity(ctx *pulumi.Context, args *LookupIpExtendedCommunityArgs, opts ...pulumi.InvokeOption) (*LookupIpExtendedCommunityResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIpExtendedCommunityResult
@@ -27,32 +27,28 @@ func LookupIpExtendedCommunity(ctx *pulumi.Context, args *LookupIpExtendedCommun
 }
 
 type LookupIpExtendedCommunityArgs struct {
-	// Name of the IP Extended Community.
+	// Name of the IP Extended Community
 	IpExtendedCommunityName string `pulumi:"ipExtendedCommunityName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The IP Extended Community resource definition.
+// The IpExtendedCommunity resource definition.
 type LookupIpExtendedCommunityResult struct {
-	// Administrative state of the resource.
-	AdministrativeState string `pulumi:"administrativeState"`
+	// Action to be taken on the configuration. Example: Permit | Deny.
+	Action string `pulumi:"action"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Configuration state of the resource.
-	ConfigurationState string `pulumi:"configurationState"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// List of IP Extended Community Rules.
-	IpExtendedCommunityRules []IpExtendedCommunityRuleResponse `pulumi:"ipExtendedCommunityRules"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Provisioning state of the resource.
+	// Gets the provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+	RouteTargets []string `pulumi:"routeTargets"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -71,7 +67,7 @@ func LookupIpExtendedCommunityOutput(ctx *pulumi.Context, args LookupIpExtendedC
 }
 
 type LookupIpExtendedCommunityOutputArgs struct {
-	// Name of the IP Extended Community.
+	// Name of the IP Extended Community
 	IpExtendedCommunityName pulumi.StringInput `pulumi:"ipExtendedCommunityName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -81,7 +77,7 @@ func (LookupIpExtendedCommunityOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupIpExtendedCommunityArgs)(nil)).Elem()
 }
 
-// The IP Extended Community resource definition.
+// The IpExtendedCommunity resource definition.
 type LookupIpExtendedCommunityResultOutput struct{ *pulumi.OutputState }
 
 func (LookupIpExtendedCommunityResultOutput) ElementType() reflect.Type {
@@ -96,9 +92,9 @@ func (o LookupIpExtendedCommunityResultOutput) ToLookupIpExtendedCommunityResult
 	return o
 }
 
-// Administrative state of the resource.
-func (o LookupIpExtendedCommunityResultOutput) AdministrativeState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIpExtendedCommunityResult) string { return v.AdministrativeState }).(pulumi.StringOutput)
+// Action to be taken on the configuration. Example: Permit | Deny.
+func (o LookupIpExtendedCommunityResultOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIpExtendedCommunityResult) string { return v.Action }).(pulumi.StringOutput)
 }
 
 // Switch configuration description.
@@ -106,26 +102,9 @@ func (o LookupIpExtendedCommunityResultOutput) Annotation() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupIpExtendedCommunityResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupIpExtendedCommunityResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIpExtendedCommunityResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Configuration state of the resource.
-func (o LookupIpExtendedCommunityResultOutput) ConfigurationState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIpExtendedCommunityResult) string { return v.ConfigurationState }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupIpExtendedCommunityResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpExtendedCommunityResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// List of IP Extended Community Rules.
-func (o LookupIpExtendedCommunityResultOutput) IpExtendedCommunityRules() IpExtendedCommunityRuleResponseArrayOutput {
-	return o.ApplyT(func(v LookupIpExtendedCommunityResult) []IpExtendedCommunityRuleResponse {
-		return v.IpExtendedCommunityRules
-	}).(IpExtendedCommunityRuleResponseArrayOutput)
 }
 
 // The geo-location where the resource lives
@@ -138,9 +117,14 @@ func (o LookupIpExtendedCommunityResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpExtendedCommunityResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the resource.
+// Gets the provisioning state of the resource.
 func (o LookupIpExtendedCommunityResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpExtendedCommunityResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+func (o LookupIpExtendedCommunityResultOutput) RouteTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupIpExtendedCommunityResult) []string { return v.RouteTargets }).(pulumi.StringArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

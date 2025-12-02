@@ -7,257 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
-
-// A copy activity source for SAP Business Warehouse Open Hub Destination source.
-type SapOpenHubSource struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-	BaseRequestId interface{} `pulumi:"baseRequestId"`
-	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-	CustomRfcReadTableFunctionModule interface{} `pulumi:"customRfcReadTableFunctionModule"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-	ExcludeLastRequest interface{} `pulumi:"excludeLastRequest"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-	SapDataColumnDelimiter interface{} `pulumi:"sapDataColumnDelimiter"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'SapOpenHubSource'.
-	Type string `pulumi:"type"`
-}
-
-// SapOpenHubSourceInput is an input type that accepts SapOpenHubSourceArgs and SapOpenHubSourceOutput values.
-// You can construct a concrete instance of `SapOpenHubSourceInput` via:
-//
-//	SapOpenHubSourceArgs{...}
-type SapOpenHubSourceInput interface {
-	pulumi.Input
-
-	ToSapOpenHubSourceOutput() SapOpenHubSourceOutput
-	ToSapOpenHubSourceOutputWithContext(context.Context) SapOpenHubSourceOutput
-}
-
-// A copy activity source for SAP Business Warehouse Open Hub Destination source.
-type SapOpenHubSourceArgs struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
-	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-	BaseRequestId pulumi.Input `pulumi:"baseRequestId"`
-	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-	CustomRfcReadTableFunctionModule pulumi.Input `pulumi:"customRfcReadTableFunctionModule"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
-	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-	ExcludeLastRequest pulumi.Input `pulumi:"excludeLastRequest"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
-	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-	SapDataColumnDelimiter pulumi.Input `pulumi:"sapDataColumnDelimiter"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'SapOpenHubSource'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (SapOpenHubSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SapOpenHubSource)(nil)).Elem()
-}
-
-func (i SapOpenHubSourceArgs) ToSapOpenHubSourceOutput() SapOpenHubSourceOutput {
-	return i.ToSapOpenHubSourceOutputWithContext(context.Background())
-}
-
-func (i SapOpenHubSourceArgs) ToSapOpenHubSourceOutputWithContext(ctx context.Context) SapOpenHubSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SapOpenHubSourceOutput)
-}
-
-// A copy activity source for SAP Business Warehouse Open Hub Destination source.
-type SapOpenHubSourceOutput struct{ *pulumi.OutputState }
-
-func (SapOpenHubSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SapOpenHubSource)(nil)).Elem()
-}
-
-func (o SapOpenHubSourceOutput) ToSapOpenHubSourceOutput() SapOpenHubSourceOutput {
-	return o
-}
-
-func (o SapOpenHubSourceOutput) ToSapOpenHubSourceOutputWithContext(ctx context.Context) SapOpenHubSourceOutput {
-	return o
-}
-
-// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-func (o SapOpenHubSourceOutput) AdditionalColumns() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
-}
-
-// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-func (o SapOpenHubSourceOutput) BaseRequestId() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.BaseRequestId }).(pulumi.AnyOutput)
-}
-
-// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-func (o SapOpenHubSourceOutput) CustomRfcReadTableFunctionModule() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.CustomRfcReadTableFunctionModule }).(pulumi.AnyOutput)
-}
-
-// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-func (o SapOpenHubSourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
-}
-
-// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-func (o SapOpenHubSourceOutput) ExcludeLastRequest() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.ExcludeLastRequest }).(pulumi.AnyOutput)
-}
-
-// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-func (o SapOpenHubSourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
-}
-
-// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o SapOpenHubSourceOutput) QueryTimeout() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
-}
-
-// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-func (o SapOpenHubSourceOutput) SapDataColumnDelimiter() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.SapDataColumnDelimiter }).(pulumi.AnyOutput)
-}
-
-// Source retry count. Type: integer (or Expression with resultType integer).
-func (o SapOpenHubSourceOutput) SourceRetryCount() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
-}
-
-// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o SapOpenHubSourceOutput) SourceRetryWait() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSource) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
-}
-
-// Copy source type.
-// Expected value is 'SapOpenHubSource'.
-func (o SapOpenHubSourceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SapOpenHubSource) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// A copy activity source for SAP Business Warehouse Open Hub Destination source.
-type SapOpenHubSourceResponse struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-	BaseRequestId interface{} `pulumi:"baseRequestId"`
-	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-	CustomRfcReadTableFunctionModule interface{} `pulumi:"customRfcReadTableFunctionModule"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-	ExcludeLastRequest interface{} `pulumi:"excludeLastRequest"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-	SapDataColumnDelimiter interface{} `pulumi:"sapDataColumnDelimiter"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'SapOpenHubSource'.
-	Type string `pulumi:"type"`
-}
-
-// A copy activity source for SAP Business Warehouse Open Hub Destination source.
-type SapOpenHubSourceResponseOutput struct{ *pulumi.OutputState }
-
-func (SapOpenHubSourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SapOpenHubSourceResponse)(nil)).Elem()
-}
-
-func (o SapOpenHubSourceResponseOutput) ToSapOpenHubSourceResponseOutput() SapOpenHubSourceResponseOutput {
-	return o
-}
-
-func (o SapOpenHubSourceResponseOutput) ToSapOpenHubSourceResponseOutputWithContext(ctx context.Context) SapOpenHubSourceResponseOutput {
-	return o
-}
-
-// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-func (o SapOpenHubSourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
-}
-
-// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-func (o SapOpenHubSourceResponseOutput) BaseRequestId() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.BaseRequestId }).(pulumi.AnyOutput)
-}
-
-// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-func (o SapOpenHubSourceResponseOutput) CustomRfcReadTableFunctionModule() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.CustomRfcReadTableFunctionModule }).(pulumi.AnyOutput)
-}
-
-// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-func (o SapOpenHubSourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
-}
-
-// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-func (o SapOpenHubSourceResponseOutput) ExcludeLastRequest() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.ExcludeLastRequest }).(pulumi.AnyOutput)
-}
-
-// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-func (o SapOpenHubSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
-}
-
-// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o SapOpenHubSourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
-}
-
-// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-func (o SapOpenHubSourceResponseOutput) SapDataColumnDelimiter() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.SapDataColumnDelimiter }).(pulumi.AnyOutput)
-}
-
-// Source retry count. Type: integer (or Expression with resultType integer).
-func (o SapOpenHubSourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
-}
-
-// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o SapOpenHubSourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
-}
-
-// Copy source type.
-// Expected value is 'SapOpenHubSource'.
-func (o SapOpenHubSourceResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SapOpenHubSourceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
 
 // Sap Business Warehouse Open Hub Destination Table properties.
 type SapOpenHubTableDataset struct {
@@ -2311,8 +2065,6 @@ type ScriptActivity struct {
 	Scripts []ScriptActivityScriptBlock `pulumi:"scripts"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
 	State *string `pulumi:"state"`
-	// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
-	TreatDecimalAsString interface{} `pulumi:"treatDecimalAsString"`
 	// Type of activity.
 	// Expected value is 'Script'.
 	Type string `pulumi:"type"`
@@ -2355,8 +2107,6 @@ type ScriptActivityArgs struct {
 	Scripts ScriptActivityScriptBlockArrayInput `pulumi:"scripts"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
 	State pulumi.StringPtrInput `pulumi:"state"`
-	// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
-	TreatDecimalAsString pulumi.Input `pulumi:"treatDecimalAsString"`
 	// Type of activity.
 	// Expected value is 'Script'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -2444,11 +2194,6 @@ func (o ScriptActivityOutput) Scripts() ScriptActivityScriptBlockArrayOutput {
 // Activity state. This is an optional property and if not provided, the state will be Active by default.
 func (o ScriptActivityOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScriptActivity) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
-func (o ScriptActivityOutput) TreatDecimalAsString() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptActivity) interface{} { return v.TreatDecimalAsString }).(pulumi.AnyOutput)
 }
 
 // Type of activity.
@@ -2696,8 +2441,6 @@ type ScriptActivityResponse struct {
 	Scripts []ScriptActivityScriptBlockResponse `pulumi:"scripts"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
 	State *string `pulumi:"state"`
-	// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
-	TreatDecimalAsString interface{} `pulumi:"treatDecimalAsString"`
 	// Type of activity.
 	// Expected value is 'Script'.
 	Type string `pulumi:"type"`
@@ -2773,11 +2516,6 @@ func (o ScriptActivityResponseOutput) Scripts() ScriptActivityScriptBlockRespons
 // Activity state. This is an optional property and if not provided, the state will be Active by default.
 func (o ScriptActivityResponseOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScriptActivityResponse) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
-func (o ScriptActivityResponseOutput) TreatDecimalAsString() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) interface{} { return v.TreatDecimalAsString }).(pulumi.AnyOutput)
 }
 
 // Type of activity.
@@ -11020,8 +10758,6 @@ type SnowflakeV2LinkedService struct {
 	// Type of linked service.
 	// Expected value is 'SnowflakeV2'.
 	Type string `pulumi:"type"`
-	// Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
-	UseUtcTimestamps interface{} `pulumi:"useUtcTimestamps"`
 	// The name of the Snowflake user.
 	User interface{} `pulumi:"user"`
 	// Version of the linked service.
@@ -11095,8 +10831,6 @@ type SnowflakeV2LinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'SnowflakeV2'.
 	Type pulumi.StringInput `pulumi:"type"`
-	// Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
-	UseUtcTimestamps pulumi.Input `pulumi:"useUtcTimestamps"`
 	// The name of the Snowflake user.
 	User pulumi.Input `pulumi:"user"`
 	// Version of the linked service.
@@ -11239,11 +10973,6 @@ func (o SnowflakeV2LinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SnowflakeV2LinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
-func (o SnowflakeV2LinkedServiceOutput) UseUtcTimestamps() pulumi.AnyOutput {
-	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.UseUtcTimestamps }).(pulumi.AnyOutput)
-}
-
 // The name of the Snowflake user.
 func (o SnowflakeV2LinkedServiceOutput) User() pulumi.AnyOutput {
 	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.User }).(pulumi.AnyOutput)
@@ -11300,8 +11029,6 @@ type SnowflakeV2LinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'SnowflakeV2'.
 	Type string `pulumi:"type"`
-	// Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
-	UseUtcTimestamps interface{} `pulumi:"useUtcTimestamps"`
 	// The name of the Snowflake user.
 	User interface{} `pulumi:"user"`
 	// Version of the linked service.
@@ -11434,11 +11161,6 @@ func (o SnowflakeV2LinkedServiceResponseOutput) TenantId() pulumi.AnyOutput {
 // Expected value is 'SnowflakeV2'.
 func (o SnowflakeV2LinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
-func (o SnowflakeV2LinkedServiceResponseOutput) UseUtcTimestamps() pulumi.AnyOutput {
-	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.UseUtcTimestamps }).(pulumi.AnyOutput)
 }
 
 // The name of the Snowflake user.
@@ -12102,8 +11824,6 @@ type SparkLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
-	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl interface{} `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -12160,8 +11880,6 @@ type SparkLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
-	EnableServerCertificateValidation pulumi.Input `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl pulumi.Input `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -12250,11 +11968,6 @@ func (o SparkLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
-func (o SparkLinkedServiceOutput) EnableServerCertificateValidation() pulumi.AnyOutput {
-	return o.ApplyT(func(v SparkLinkedService) interface{} { return v.EnableServerCertificateValidation }).(pulumi.AnyOutput)
-}
-
 // Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 func (o SparkLinkedServiceOutput) EnableSsl() pulumi.AnyOutput {
 	return o.ApplyT(func(v SparkLinkedService) interface{} { return v.EnableSsl }).(pulumi.AnyOutput)
@@ -12340,8 +12053,6 @@ type SparkLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
-	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
 	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
 	EnableSsl interface{} `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -12416,11 +12127,6 @@ func (o SparkLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferen
 // Linked service description.
 func (o SparkLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
-func (o SparkLinkedServiceResponseOutput) EnableServerCertificateValidation() pulumi.AnyOutput {
-	return o.ApplyT(func(v SparkLinkedServiceResponse) interface{} { return v.EnableServerCertificateValidation }).(pulumi.AnyOutput)
 }
 
 // Specifies whether the connections to the server are encrypted using SSL. The default value is false.
@@ -27286,12 +26992,8 @@ type WarehouseLinkedService struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId interface{} `pulumi:"artifactId"`
-	// The authentication type to use.
-	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// The credential reference containing authentication information.
-	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -27336,12 +27038,8 @@ type WarehouseLinkedServiceArgs struct {
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
 	// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId pulumi.Input `pulumi:"artifactId"`
-	// The authentication type to use.
-	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
-	// The credential reference containing authentication information.
-	Credential CredentialReferencePtrInput `pulumi:"credential"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -27406,19 +27104,9 @@ func (o WarehouseLinkedServiceOutput) ArtifactId() pulumi.AnyOutput {
 	return o.ApplyT(func(v WarehouseLinkedService) interface{} { return v.ArtifactId }).(pulumi.AnyOutput)
 }
 
-// The authentication type to use.
-func (o WarehouseLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WarehouseLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
-}
-
 // The integration runtime reference.
 func (o WarehouseLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v WarehouseLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
-}
-
-// The credential reference containing authentication information.
-func (o WarehouseLinkedServiceOutput) Credential() CredentialReferencePtrOutput {
-	return o.ApplyT(func(v WarehouseLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
 }
 
 // Linked service description.
@@ -27488,12 +27176,8 @@ type WarehouseLinkedServiceResponse struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId interface{} `pulumi:"artifactId"`
-	// The authentication type to use.
-	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// The credential reference containing authentication information.
-	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -27546,19 +27230,9 @@ func (o WarehouseLinkedServiceResponseOutput) ArtifactId() pulumi.AnyOutput {
 	return o.ApplyT(func(v WarehouseLinkedServiceResponse) interface{} { return v.ArtifactId }).(pulumi.AnyOutput)
 }
 
-// The authentication type to use.
-func (o WarehouseLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WarehouseLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
-}
-
 // The integration runtime reference.
 func (o WarehouseLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v WarehouseLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
-}
-
-// The credential reference containing authentication information.
-func (o WarehouseLinkedServiceResponseOutput) Credential() CredentialReferenceResponsePtrOutput {
-	return o.ApplyT(func(v WarehouseLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
 }
 
 // Linked service description.
@@ -33376,8 +33050,6 @@ func (o ZohoSourceResponseOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
-	pulumi.RegisterOutputType(SapOpenHubSourceOutput{})
-	pulumi.RegisterOutputType(SapOpenHubSourceResponseOutput{})
 	pulumi.RegisterOutputType(SapOpenHubTableDatasetOutput{})
 	pulumi.RegisterOutputType(SapOpenHubTableDatasetResponseOutput{})
 	pulumi.RegisterOutputType(SapTableLinkedServiceOutput{})

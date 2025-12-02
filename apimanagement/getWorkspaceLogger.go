@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the logger specified by its identifier.
 //
-// Uses Azure REST API version 2024-06-01-preview.
+// Uses Azure REST API version 2023-09-01-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-05-01, 2024-06-01-preview.
 func LookupWorkspaceLogger(ctx *pulumi.Context, args *LookupWorkspaceLoggerArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceLoggerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceLoggerResult
@@ -39,8 +39,6 @@ type LookupWorkspaceLoggerArgs struct {
 
 // Logger details.
 type LookupWorkspaceLoggerResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name and SendRule connection string of the event hub for azureEventHub logger.
 	// Instrumentation key for applicationInsights logger.
 	Credentials map[string]string `pulumi:"credentials"`
@@ -97,11 +95,6 @@ func (o LookupWorkspaceLoggerResultOutput) ToLookupWorkspaceLoggerResultOutput()
 
 func (o LookupWorkspaceLoggerResultOutput) ToLookupWorkspaceLoggerResultOutputWithContext(ctx context.Context) LookupWorkspaceLoggerResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupWorkspaceLoggerResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceLoggerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name and SendRule connection string of the event hub for azureEventHub logger.

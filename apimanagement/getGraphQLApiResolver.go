@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the GraphQL API Resolver specified by its identifier.
 //
-// Uses Azure REST API version 2022-09-01-preview.
+// Uses Azure REST API version 2022-08-01.
 //
-// Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 func LookupGraphQLApiResolver(ctx *pulumi.Context, args *LookupGraphQLApiResolverArgs, opts ...pulumi.InvokeOption) (*LookupGraphQLApiResolverResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGraphQLApiResolverResult
@@ -39,8 +39,6 @@ type LookupGraphQLApiResolverArgs struct {
 
 // GraphQL API Resolver details.
 type LookupGraphQLApiResolverResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description of the resolver. May include HTML formatting tags.
 	Description *string `pulumi:"description"`
 	// Resolver Name.
@@ -92,11 +90,6 @@ func (o LookupGraphQLApiResolverResultOutput) ToLookupGraphQLApiResolverResultOu
 
 func (o LookupGraphQLApiResolverResultOutput) ToLookupGraphQLApiResolverResultOutputWithContext(ctx context.Context) LookupGraphQLApiResolverResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupGraphQLApiResolverResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGraphQLApiResolverResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the resolver. May include HTML formatting tags.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the queue with the specified queue name, under the specified account if it exists.
 //
-// Uses Azure REST API version 2024-01-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
 func LookupQueue(ctx *pulumi.Context, args *LookupQueueArgs, opts ...pulumi.InvokeOption) (*LookupQueueResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueueResult
@@ -38,8 +38,6 @@ type LookupQueueArgs struct {
 type LookupQueueResult struct {
 	// Integer indicating an approximate number of messages in the queue. This number is not lower than the actual number of messages in the queue, but could be higher.
 	ApproximateMessageCount int `pulumi:"approximateMessageCount"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// A name-value pair that represents queue metadata.
@@ -89,11 +87,6 @@ func (o LookupQueueResultOutput) ToLookupQueueResultOutputWithContext(ctx contex
 // Integer indicating an approximate number of messages in the queue. This number is not lower than the actual number of messages in the queue, but could be higher.
 func (o LookupQueueResultOutput) ApproximateMessageCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupQueueResult) int { return v.ApproximateMessageCount }).(pulumi.IntOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupQueueResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupQueueResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

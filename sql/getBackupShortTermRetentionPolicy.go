@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a database's short term retention policy.
 //
-// Uses Azure REST API version 2023-08-01.
+// Uses Azure REST API version 2021-11-01.
 //
-// Other available API versions: 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 func LookupBackupShortTermRetentionPolicy(ctx *pulumi.Context, args *LookupBackupShortTermRetentionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupShortTermRetentionPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupShortTermRetentionPolicyResult
@@ -39,8 +39,6 @@ type LookupBackupShortTermRetentionPolicyArgs struct {
 
 // A short term retention policy.
 type LookupBackupShortTermRetentionPolicyResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.
 	DiffBackupIntervalInHours *int `pulumi:"diffBackupIntervalInHours"`
 	// Resource ID.
@@ -90,11 +88,6 @@ func (o LookupBackupShortTermRetentionPolicyResultOutput) ToLookupBackupShortTer
 
 func (o LookupBackupShortTermRetentionPolicyResultOutput) ToLookupBackupShortTermRetentionPolicyResultOutputWithContext(ctx context.Context) LookupBackupShortTermRetentionPolicyResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupBackupShortTermRetentionPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBackupShortTermRetentionPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.

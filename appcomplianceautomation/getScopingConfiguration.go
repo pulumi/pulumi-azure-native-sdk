@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +35,6 @@ type LookupScopingConfigurationArgs struct {
 type LookupScopingConfigurationResult struct {
 	// List of scoping question answers.
 	Answers []ScopingAnswerResponse `pulumi:"answers"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -87,11 +85,6 @@ func (o LookupScopingConfigurationResultOutput) ToLookupScopingConfigurationResu
 // List of scoping question answers.
 func (o LookupScopingConfigurationResultOutput) Answers() ScopingAnswerResponseArrayOutput {
 	return o.ApplyT(func(v LookupScopingConfigurationResult) []ScopingAnswerResponse { return v.Answers }).(ScopingAnswerResponseArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupScopingConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupScopingConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

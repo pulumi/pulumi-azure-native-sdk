@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,8 +37,6 @@ type LookupRoleAssignmentArgs struct {
 type LookupRoleAssignmentResult struct {
 	// The name of the metadata object.
 	AssignmentName string `pulumi:"assignmentName"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Widget types set for the assignment.
 	ConflationPolicies *ResourceSetDescriptionResponse `pulumi:"conflationPolicies"`
 	// Connectors set for the assignment.
@@ -125,11 +123,6 @@ func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutputWith
 // The name of the metadata object.
 func (o LookupRoleAssignmentResultOutput) AssignmentName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.AssignmentName }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupRoleAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Widget types set for the assignment.

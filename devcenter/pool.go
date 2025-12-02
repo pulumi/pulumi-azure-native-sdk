@@ -8,26 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A pool of Virtual Machines.
 //
-// Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2022-09-01-preview.
 //
-// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
 type Pool struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Indicates the number of provisioned Dev Boxes in this pool.
-	DevBoxCount pulumi.IntOutput `pulumi:"devBoxCount"`
 	// Name of a Dev Box definition in parent Project of this Pool
 	DevBoxDefinitionName pulumi.StringOutput `pulumi:"devBoxDefinitionName"`
-	// The display name of the pool.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Overall health status of the Pool. Indicates whether or not the Pool is available to create Dev Boxes.
 	HealthStatus pulumi.StringOutput `pulumi:"healthStatus"`
 	// Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state
@@ -38,16 +32,12 @@ type Pool struct {
 	LocalAdministrator pulumi.StringOutput `pulumi:"localAdministrator"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The regions of the managed virtual network (required when managedNetworkType is Managed).
-	ManagedVirtualNetworkRegions pulumi.StringArrayOutput `pulumi:"managedVirtualNetworkRegions"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of a Network Connection in parent Project of this Pool
 	NetworkConnectionName pulumi.StringOutput `pulumi:"networkConnectionName"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant.
-	SingleSignOnStatus pulumi.StringPtrOutput `pulumi:"singleSignOnStatus"`
 	// Stop on disconnect configuration settings for Dev Boxes created in this pool.
 	StopOnDisconnect StopOnDisconnectConfigurationResponsePtrOutput `pulumi:"stopOnDisconnect"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -56,8 +46,6 @@ type Pool struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
-	VirtualNetworkType pulumi.StringPtrOutput `pulumi:"virtualNetworkType"`
 }
 
 // NewPool registers a new resource with the given unique name, arguments, and options.
@@ -131,12 +119,6 @@ func NewPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20250201:Pool"),
 		},
-		{
-			Type: pulumi.String("azure-native:devcenter/v20250401preview:Pool"),
-		},
-		{
-			Type: pulumi.String("azure-native:devcenter/v20250701preview:Pool"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -174,16 +156,12 @@ func (PoolState) ElementType() reflect.Type {
 type poolArgs struct {
 	// Name of a Dev Box definition in parent Project of this Pool
 	DevBoxDefinitionName string `pulumi:"devBoxDefinitionName"`
-	// The display name of the pool.
-	DisplayName *string `pulumi:"displayName"`
 	// Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
 	LicenseType string `pulumi:"licenseType"`
 	// Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
 	LocalAdministrator string `pulumi:"localAdministrator"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The regions of the managed virtual network (required when managedNetworkType is Managed).
-	ManagedVirtualNetworkRegions []string `pulumi:"managedVirtualNetworkRegions"`
 	// Name of a Network Connection in parent Project of this Pool
 	NetworkConnectionName string `pulumi:"networkConnectionName"`
 	// Name of the pool.
@@ -192,30 +170,22 @@ type poolArgs struct {
 	ProjectName string `pulumi:"projectName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant.
-	SingleSignOnStatus *string `pulumi:"singleSignOnStatus"`
 	// Stop on disconnect configuration settings for Dev Boxes created in this pool.
 	StopOnDisconnect *StopOnDisconnectConfiguration `pulumi:"stopOnDisconnect"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
-	VirtualNetworkType *string `pulumi:"virtualNetworkType"`
 }
 
 // The set of arguments for constructing a Pool resource.
 type PoolArgs struct {
 	// Name of a Dev Box definition in parent Project of this Pool
 	DevBoxDefinitionName pulumi.StringInput
-	// The display name of the pool.
-	DisplayName pulumi.StringPtrInput
 	// Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
 	LicenseType pulumi.StringInput
 	// Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
 	LocalAdministrator pulumi.StringInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The regions of the managed virtual network (required when managedNetworkType is Managed).
-	ManagedVirtualNetworkRegions pulumi.StringArrayInput
 	// Name of a Network Connection in parent Project of this Pool
 	NetworkConnectionName pulumi.StringInput
 	// Name of the pool.
@@ -224,14 +194,10 @@ type PoolArgs struct {
 	ProjectName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant.
-	SingleSignOnStatus pulumi.StringPtrInput
 	// Stop on disconnect configuration settings for Dev Boxes created in this pool.
 	StopOnDisconnect StopOnDisconnectConfigurationPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
-	VirtualNetworkType pulumi.StringPtrInput
 }
 
 func (PoolArgs) ElementType() reflect.Type {
@@ -271,24 +237,9 @@ func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return o
 }
 
-// The Azure API version of the resource.
-func (o PoolOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Indicates the number of provisioned Dev Boxes in this pool.
-func (o PoolOutput) DevBoxCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *Pool) pulumi.IntOutput { return v.DevBoxCount }).(pulumi.IntOutput)
-}
-
 // Name of a Dev Box definition in parent Project of this Pool
 func (o PoolOutput) DevBoxDefinitionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.DevBoxDefinitionName }).(pulumi.StringOutput)
-}
-
-// The display name of the pool.
-func (o PoolOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Overall health status of the Pool. Indicates whether or not the Pool is available to create Dev Boxes.
@@ -316,11 +267,6 @@ func (o PoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The regions of the managed virtual network (required when managedNetworkType is Managed).
-func (o PoolOutput) ManagedVirtualNetworkRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Pool) pulumi.StringArrayOutput { return v.ManagedVirtualNetworkRegions }).(pulumi.StringArrayOutput)
-}
-
 // The name of the resource
 func (o PoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -334,11 +280,6 @@ func (o PoolOutput) NetworkConnectionName() pulumi.StringOutput {
 // The provisioning state of the resource.
 func (o PoolOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant.
-func (o PoolOutput) SingleSignOnStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.SingleSignOnStatus }).(pulumi.StringPtrOutput)
 }
 
 // Stop on disconnect configuration settings for Dev Boxes created in this pool.
@@ -359,11 +300,6 @@ func (o PoolOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PoolOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
-}
-
-// Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
-func (o PoolOutput) VirtualNetworkType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.VirtualNetworkType }).(pulumi.StringPtrOutput)
 }
 
 func init() {

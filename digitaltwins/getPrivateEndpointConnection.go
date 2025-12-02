@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get private endpoint connection properties for the given private endpoint.
 //
 // Uses Azure REST API version 2023-01-31.
+//
+// Other available API versions: 2020-12-01.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult
@@ -35,8 +37,6 @@ type LookupPrivateEndpointConnectionArgs struct {
 
 // The private endpoint connection of a Digital Twin.
 type LookupPrivateEndpointConnectionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource identifier.
 	Id string `pulumi:"id"`
 	// The resource name.
@@ -84,11 +84,6 @@ func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConn
 
 func (o LookupPrivateEndpointConnectionResultOutput) ToLookupPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupPrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource identifier.

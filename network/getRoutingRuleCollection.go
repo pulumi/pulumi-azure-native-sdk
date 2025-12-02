@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a network manager routing configuration rule collection.
 //
-// Uses Azure REST API version 2024-05-01.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2024-03-01, 2024-07-01, 2024-09-01-preview, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-05-01.
 func LookupRoutingRuleCollection(ctx *pulumi.Context, args *LookupRoutingRuleCollectionArgs, opts ...pulumi.InvokeOption) (*LookupRoutingRuleCollectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoutingRuleCollectionResult
@@ -41,8 +41,6 @@ type LookupRoutingRuleCollectionArgs struct {
 type LookupRoutingRuleCollectionResult struct {
 	// Groups for configuration
 	AppliesTo []NetworkManagerRoutingGroupItemResponse `pulumi:"appliesTo"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description of the routing rule collection.
 	Description *string `pulumi:"description"`
 	// Determines whether BGP route propagation is enabled. Defaults to true.
@@ -105,11 +103,6 @@ func (o LookupRoutingRuleCollectionResultOutput) ToLookupRoutingRuleCollectionRe
 // Groups for configuration
 func (o LookupRoutingRuleCollectionResultOutput) AppliesTo() NetworkManagerRoutingGroupItemResponseArrayOutput {
 	return o.ApplyT(func(v LookupRoutingRuleCollectionResult) []NetworkManagerRoutingGroupItemResponse { return v.AppliesTo }).(NetworkManagerRoutingGroupItemResponseArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupRoutingRuleCollectionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRoutingRuleCollectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the routing rule collection.

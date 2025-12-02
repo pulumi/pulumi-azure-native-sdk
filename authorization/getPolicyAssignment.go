@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This operation retrieves a single policy assignment, given its name and the scope it was created at.
 //
-// Uses Azure REST API version 2025-01-01.
+// Uses Azure REST API version 2022-06-01.
 //
-// Other available API versions: 2020-09-01, 2021-06-01, 2022-06-01, 2023-04-01, 2024-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2019-06-01, 2020-03-01, 2023-04-01, 2024-04-01, 2024-05-01, 2025-01-01, 2025-03-01.
 func LookupPolicyAssignment(ctx *pulumi.Context, args *LookupPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupPolicyAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyAssignmentResult
@@ -27,8 +27,6 @@ func LookupPolicyAssignment(ctx *pulumi.Context, args *LookupPolicyAssignmentArg
 }
 
 type LookupPolicyAssignmentArgs struct {
-	// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
-	Expand *string `pulumi:"expand"`
 	// The name of the policy assignment to get.
 	PolicyAssignmentName string `pulumi:"policyAssignmentName"`
 	// The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
@@ -37,28 +35,16 @@ type LookupPolicyAssignmentArgs struct {
 
 // The policy assignment.
 type LookupPolicyAssignmentResult struct {
-	// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
-	AssignmentType *string `pulumi:"assignmentType"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The version of the policy definition to use.
-	DefinitionVersion *string `pulumi:"definitionVersion"`
 	// This message will be part of response in case of policy violation.
 	Description *string `pulumi:"description"`
 	// The display name of the policy assignment.
 	DisplayName *string `pulumi:"displayName"`
-	// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
-	EffectiveDefinitionVersion string `pulumi:"effectiveDefinitionVersion"`
-	// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
+	// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
 	EnforcementMode *string `pulumi:"enforcementMode"`
 	// The ID of the policy assignment.
 	Id string `pulumi:"id"`
 	// The managed identity associated with the policy assignment.
 	Identity *IdentityResponse `pulumi:"identity"`
-	// The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.
-	InstanceId string `pulumi:"instanceId"`
-	// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
-	LatestDefinitionVersion string `pulumi:"latestDefinitionVersion"`
 	// The location of the policy assignment. Only required when utilizing managed identity.
 	Location *string `pulumi:"location"`
 	// The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
@@ -107,8 +93,6 @@ func LookupPolicyAssignmentOutput(ctx *pulumi.Context, args LookupPolicyAssignme
 }
 
 type LookupPolicyAssignmentOutputArgs struct {
-	// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
-	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the policy assignment to get.
 	PolicyAssignmentName pulumi.StringInput `pulumi:"policyAssignmentName"`
 	// The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
@@ -134,21 +118,6 @@ func (o LookupPolicyAssignmentResultOutput) ToLookupPolicyAssignmentResultOutput
 	return o
 }
 
-// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
-func (o LookupPolicyAssignmentResultOutput) AssignmentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.AssignmentType }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupPolicyAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPolicyAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The version of the policy definition to use.
-func (o LookupPolicyAssignmentResultOutput) DefinitionVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.DefinitionVersion }).(pulumi.StringPtrOutput)
-}
-
 // This message will be part of response in case of policy violation.
 func (o LookupPolicyAssignmentResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -159,12 +128,7 @@ func (o LookupPolicyAssignmentResultOutput) DisplayName() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
-func (o LookupPolicyAssignmentResultOutput) EffectiveDefinitionVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPolicyAssignmentResult) string { return v.EffectiveDefinitionVersion }).(pulumi.StringOutput)
-}
-
-// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
+// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
 func (o LookupPolicyAssignmentResultOutput) EnforcementMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.EnforcementMode }).(pulumi.StringPtrOutput)
 }
@@ -177,16 +141,6 @@ func (o LookupPolicyAssignmentResultOutput) Id() pulumi.StringOutput {
 // The managed identity associated with the policy assignment.
 func (o LookupPolicyAssignmentResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
-}
-
-// The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.
-func (o LookupPolicyAssignmentResultOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPolicyAssignmentResult) string { return v.InstanceId }).(pulumi.StringOutput)
-}
-
-// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
-func (o LookupPolicyAssignmentResultOutput) LatestDefinitionVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPolicyAssignmentResult) string { return v.LatestDefinitionVersion }).(pulumi.StringOutput)
 }
 
 // The location of the policy assignment. Only required when utilizing managed identity.

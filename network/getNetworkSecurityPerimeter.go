@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified network security perimeter by the name.
 //
-// Uses Azure REST API version 2024-06-01-preview.
+// Uses Azure REST API version 2021-03-01-preview.
 //
-// Other available API versions: 2021-02-01-preview, 2021-03-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-02-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2024-06-01-preview.
 func LookupNetworkSecurityPerimeter(ctx *pulumi.Context, args *LookupNetworkSecurityPerimeterArgs, opts ...pulumi.InvokeOption) (*LookupNetworkSecurityPerimeterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkSecurityPerimeterResult
@@ -35,16 +35,18 @@ type LookupNetworkSecurityPerimeterArgs struct {
 
 // The Network Security Perimeter resource
 type LookupNetworkSecurityPerimeterResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// A description of the network security perimeter.
+	Description *string `pulumi:"description"`
+	// A friendly name for the network security perimeter.
+	DisplayName *string `pulumi:"displayName"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// Resource name.
 	Name string `pulumi:"name"`
-	// perimeter guid of the network security perimeter.
-	PerimeterGuid string `pulumi:"perimeterGuid"`
 	// The provisioning state of the scope assignment resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Resource tags.
@@ -88,9 +90,19 @@ func (o LookupNetworkSecurityPerimeterResultOutput) ToLookupNetworkSecurityPerim
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupNetworkSecurityPerimeterResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+// A description of the network security perimeter.
+func (o LookupNetworkSecurityPerimeterResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A friendly name for the network security perimeter.
+func (o LookupNetworkSecurityPerimeterResultOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o LookupNetworkSecurityPerimeterResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Resource ID.
@@ -106,11 +118,6 @@ func (o LookupNetworkSecurityPerimeterResultOutput) Location() pulumi.StringPtrO
 // Resource name.
 func (o LookupNetworkSecurityPerimeterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// perimeter guid of the network security perimeter.
-func (o LookupNetworkSecurityPerimeterResultOutput) PerimeterGuid() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNetworkSecurityPerimeterResult) string { return v.PerimeterGuid }).(pulumi.StringOutput)
 }
 
 // The provisioning state of the scope assignment resource.

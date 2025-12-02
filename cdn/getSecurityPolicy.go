@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing security policy within a profile.
 //
-// Uses Azure REST API version 2025-06-01.
+// Uses Azure REST API version 2023-05-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 func LookupSecurityPolicy(ctx *pulumi.Context, args *LookupSecurityPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSecurityPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityPolicyResult
@@ -27,9 +27,9 @@ func LookupSecurityPolicy(ctx *pulumi.Context, args *LookupSecurityPolicyArgs, o
 }
 
 type LookupSecurityPolicyArgs struct {
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the security policy under the profile.
 	SecurityPolicyName string `pulumi:"securityPolicyName"`
@@ -37,12 +37,10 @@ type LookupSecurityPolicyArgs struct {
 
 // SecurityPolicy association for AzureFrontDoor profile
 type LookupSecurityPolicyResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion  string `pulumi:"azureApiVersion"`
 	DeploymentStatus string `pulumi:"deploymentStatus"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Resource ID.
 	Id string `pulumi:"id"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// object which contains security policy parameters
 	Parameters *SecurityPolicyWebApplicationFirewallParametersResponse `pulumi:"parameters"`
@@ -50,9 +48,9 @@ type LookupSecurityPolicyResult struct {
 	ProfileName string `pulumi:"profileName"`
 	// Provisioning status
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 }
 
@@ -66,9 +64,9 @@ func LookupSecurityPolicyOutput(ctx *pulumi.Context, args LookupSecurityPolicyOu
 }
 
 type LookupSecurityPolicyOutputArgs struct {
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of the security policy under the profile.
 	SecurityPolicyName pulumi.StringInput `pulumi:"securityPolicyName"`
@@ -93,21 +91,16 @@ func (o LookupSecurityPolicyResultOutput) ToLookupSecurityPolicyResultOutputWith
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupSecurityPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 func (o LookupSecurityPolicyResultOutput) DeploymentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.DeploymentStatus }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupSecurityPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupSecurityPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -129,12 +122,12 @@ func (o LookupSecurityPolicyResultOutput) ProvisioningState() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o LookupSecurityPolicyResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupSecurityPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

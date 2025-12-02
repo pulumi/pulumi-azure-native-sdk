@@ -8,22 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The network interface resource definition.
 //
-// Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
+// Uses Azure REST API version 2022-12-15-preview.
 //
-// Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Boolean indicating whether this is a existing local network interface or if one should be created.
-	CreateFromLocal pulumi.BoolPtrOutput `pulumi:"createFromLocal"`
 	// DNS Settings for the interface
 	DnsSettings InterfaceDNSSettingsResponsePtrOutput `pulumi:"dnsSettings"`
 	// The extendedLocation of the resource.
@@ -36,8 +32,6 @@ type NetworkInterface struct {
 	MacAddress pulumi.StringPtrOutput `pulumi:"macAddress"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// NetworkSecurityGroup - Network Security Group attached to the network interface.
-	NetworkSecurityGroup NetworkSecurityGroupArmReferenceResponsePtrOutput `pulumi:"networkSecurityGroup"`
 	// Provisioning state of the network interface.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The observed state of network interfaces
@@ -60,18 +54,12 @@ func NewNetworkInterface(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.CreateFromLocal == nil {
-		args.CreateFromLocal = pulumi.BoolPtr(false)
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:NetworkInterface"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:NetworkinterfaceRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:NetworkInterface"),
@@ -105,9 +93,6 @@ func NewNetworkInterface(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20250401preview:NetworkInterface"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci/v20250601preview:NetworkInterface"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -144,8 +129,6 @@ func (NetworkInterfaceState) ElementType() reflect.Type {
 }
 
 type networkInterfaceArgs struct {
-	// Boolean indicating whether this is a existing local network interface or if one should be created.
-	CreateFromLocal *bool `pulumi:"createFromLocal"`
 	// DNS Settings for the interface
 	DnsSettings *InterfaceDNSSettings `pulumi:"dnsSettings"`
 	// The extendedLocation of the resource.
@@ -158,8 +141,6 @@ type networkInterfaceArgs struct {
 	MacAddress *string `pulumi:"macAddress"`
 	// Name of the network interface
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
-	// NetworkSecurityGroup - Network Security Group attached to the network interface.
-	NetworkSecurityGroup *NetworkSecurityGroupArmReference `pulumi:"networkSecurityGroup"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -168,8 +149,6 @@ type networkInterfaceArgs struct {
 
 // The set of arguments for constructing a NetworkInterface resource.
 type NetworkInterfaceArgs struct {
-	// Boolean indicating whether this is a existing local network interface or if one should be created.
-	CreateFromLocal pulumi.BoolPtrInput
 	// DNS Settings for the interface
 	DnsSettings InterfaceDNSSettingsPtrInput
 	// The extendedLocation of the resource.
@@ -182,8 +161,6 @@ type NetworkInterfaceArgs struct {
 	MacAddress pulumi.StringPtrInput
 	// Name of the network interface
 	NetworkInterfaceName pulumi.StringPtrInput
-	// NetworkSecurityGroup - Network Security Group attached to the network interface.
-	NetworkSecurityGroup NetworkSecurityGroupArmReferencePtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -227,16 +204,6 @@ func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.
 	return o
 }
 
-// The Azure API version of the resource.
-func (o NetworkInterfaceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Boolean indicating whether this is a existing local network interface or if one should be created.
-func (o NetworkInterfaceOutput) CreateFromLocal() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *NetworkInterface) pulumi.BoolPtrOutput { return v.CreateFromLocal }).(pulumi.BoolPtrOutput)
-}
-
 // DNS Settings for the interface
 func (o NetworkInterfaceOutput) DnsSettings() InterfaceDNSSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *NetworkInterface) InterfaceDNSSettingsResponsePtrOutput { return v.DnsSettings }).(InterfaceDNSSettingsResponsePtrOutput)
@@ -265,13 +232,6 @@ func (o NetworkInterfaceOutput) MacAddress() pulumi.StringPtrOutput {
 // The name of the resource
 func (o NetworkInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// NetworkSecurityGroup - Network Security Group attached to the network interface.
-func (o NetworkInterfaceOutput) NetworkSecurityGroup() NetworkSecurityGroupArmReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *NetworkInterface) NetworkSecurityGroupArmReferenceResponsePtrOutput {
-		return v.NetworkSecurityGroup
-	}).(NetworkSecurityGroupArmReferenceResponsePtrOutput)
 }
 
 // Provisioning state of the network interface.

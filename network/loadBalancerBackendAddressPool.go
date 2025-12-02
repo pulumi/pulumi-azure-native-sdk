@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Pool of backend IP addresses.
 //
-// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01.
 //
-// Other available API versions: 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
 type LoadBalancerBackendAddressPool struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An array of references to IP addresses defined in network interfaces.
 	BackendIPConfigurations NetworkInterfaceIPConfigurationResponseArrayOutput `pulumi:"backendIPConfigurations"`
 	// Amount of seconds Load Balancer waits for before sending RESET to client and backend address.
@@ -44,8 +42,6 @@ type LoadBalancerBackendAddressPool struct {
 	OutboundRules SubResourceResponseArrayOutput `pulumi:"outboundRules"`
 	// The provisioning state of the backend address pool resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Backend address synchronous mode for the backend pool
-	SyncMode pulumi.StringPtrOutput `pulumi:"syncMode"`
 	// An array of gateway load balancer tunnel interfaces.
 	TunnelInterfaces GatewayLoadBalancerTunnelInterfaceResponseArrayOutput `pulumi:"tunnelInterfaces"`
 	// Type of the resource.
@@ -140,12 +136,6 @@ func NewLoadBalancerBackendAddressPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240501:LoadBalancerBackendAddressPool"),
 		},
-		{
-			Type: pulumi.String("azure-native:network/v20240701:LoadBalancerBackendAddressPool"),
-		},
-		{
-			Type: pulumi.String("azure-native:network/v20241001:LoadBalancerBackendAddressPool"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -197,8 +187,6 @@ type loadBalancerBackendAddressPoolArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Backend address synchronous mode for the backend pool
-	SyncMode *string `pulumi:"syncMode"`
 	// An array of gateway load balancer tunnel interfaces.
 	TunnelInterfaces []GatewayLoadBalancerTunnelInterface `pulumi:"tunnelInterfaces"`
 	// A reference to a virtual network.
@@ -223,8 +211,6 @@ type LoadBalancerBackendAddressPoolArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
-	// Backend address synchronous mode for the backend pool
-	SyncMode pulumi.StringPtrInput
 	// An array of gateway load balancer tunnel interfaces.
 	TunnelInterfaces GatewayLoadBalancerTunnelInterfaceArrayInput
 	// A reference to a virtual network.
@@ -266,11 +252,6 @@ func (o LoadBalancerBackendAddressPoolOutput) ToLoadBalancerBackendAddressPoolOu
 
 func (o LoadBalancerBackendAddressPoolOutput) ToLoadBalancerBackendAddressPoolOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LoadBalancerBackendAddressPoolOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *LoadBalancerBackendAddressPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An array of references to IP addresses defined in network interfaces.
@@ -330,11 +311,6 @@ func (o LoadBalancerBackendAddressPoolOutput) OutboundRules() SubResourceRespons
 // The provisioning state of the backend address pool resource.
 func (o LoadBalancerBackendAddressPoolOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerBackendAddressPool) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Backend address synchronous mode for the backend pool
-func (o LoadBalancerBackendAddressPoolOutput) SyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerBackendAddressPool) pulumi.StringPtrOutput { return v.SyncMode }).(pulumi.StringPtrOutput)
 }
 
 // An array of gateway load balancer tunnel interfaces.

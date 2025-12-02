@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets private store collection
 //
 // Uses Azure REST API version 2023-01-01.
-//
-// Other available API versions: 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native marketplace [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPrivateStoreCollection(ctx *pulumi.Context, args *LookupPrivateStoreCollectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateStoreCollectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateStoreCollectionResult
@@ -43,8 +41,6 @@ type LookupPrivateStoreCollectionResult struct {
 	ApproveAllItems bool `pulumi:"approveAllItems"`
 	// Gets the modified date of all items approved.
 	ApproveAllItemsModifiedAt string `pulumi:"approveAllItemsModifiedAt"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the association with Commercial's Billing Account.
 	Claim *string `pulumi:"claim"`
 	// Gets collection Id.
@@ -120,11 +116,6 @@ func (o LookupPrivateStoreCollectionResultOutput) ApproveAllItems() pulumi.BoolO
 // Gets the modified date of all items approved.
 func (o LookupPrivateStoreCollectionResultOutput) ApproveAllItemsModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) string { return v.ApproveAllItemsModifiedAt }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupPrivateStoreCollectionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the association with Commercial's Billing Account.

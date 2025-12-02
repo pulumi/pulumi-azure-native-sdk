@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure OpenAI Content Filters resource.
 //
-// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-04-01-preview.
+// Uses Azure REST API version 2024-04-01-preview.
 //
-// Other available API versions: 2024-04-01-preview, 2024-07-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview.
 type RaiPolicy struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure OpenAI Content Filters properties.
@@ -64,12 +62,6 @@ func NewRaiPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:RaiPolicy"),
 		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:RaiPolicy"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:RaiPolicy"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -109,8 +101,6 @@ type raiPolicyArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// Azure OpenAI Content Filters properties.
 	Properties RaiPolicyProperties `pulumi:"properties"`
-	// Api version used by proxy call
-	ProxyApiVersion *string `pulumi:"proxyApiVersion"`
 	// Name of the Rai Policy.
 	RaiPolicyName *string `pulumi:"raiPolicyName"`
 	// The name of the resource group. The name is case insensitive.
@@ -125,8 +115,6 @@ type RaiPolicyArgs struct {
 	EndpointName pulumi.StringInput
 	// Azure OpenAI Content Filters properties.
 	Properties RaiPolicyPropertiesInput
-	// Api version used by proxy call
-	ProxyApiVersion pulumi.StringPtrInput
 	// Name of the Rai Policy.
 	RaiPolicyName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -170,11 +158,6 @@ func (o RaiPolicyOutput) ToRaiPolicyOutput() RaiPolicyOutput {
 
 func (o RaiPolicyOutput) ToRaiPolicyOutputWithContext(ctx context.Context) RaiPolicyOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o RaiPolicyOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *RaiPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

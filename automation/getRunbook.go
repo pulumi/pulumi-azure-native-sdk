@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the runbook identified by runbook name.
 //
-// Uses Azure REST API version 2023-11-01.
+// Uses Azure REST API version 2022-08-08.
 //
-// Other available API versions: 2015-10-31, 2018-06-30, 2019-06-01, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
 func LookupRunbook(ctx *pulumi.Context, args *LookupRunbookArgs, opts ...pulumi.InvokeOption) (*LookupRunbookResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRunbookResult
@@ -37,8 +37,6 @@ type LookupRunbookArgs struct {
 
 // Definition of the runbook type.
 type LookupRunbookResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the creation time.
 	CreationTime *string `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -71,6 +69,8 @@ type LookupRunbookResult struct {
 	Parameters map[string]RunbookParameterResponse `pulumi:"parameters"`
 	// Gets or sets the provisioning state of the runbook.
 	ProvisioningState *string `pulumi:"provisioningState"`
+	// Gets or sets the published runbook content link.
+	PublishContentLink *ContentLinkResponse `pulumi:"publishContentLink"`
 	// Gets or sets the type of the runbook.
 	RunbookType *string `pulumi:"runbookType"`
 	// Gets or sets the state of the runbook.
@@ -116,11 +116,6 @@ func (o LookupRunbookResultOutput) ToLookupRunbookResultOutput() LookupRunbookRe
 
 func (o LookupRunbookResultOutput) ToLookupRunbookResultOutputWithContext(ctx context.Context) LookupRunbookResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupRunbookResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRunbookResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the creation time.
@@ -201,6 +196,11 @@ func (o LookupRunbookResultOutput) Parameters() RunbookParameterResponseMapOutpu
 // Gets or sets the provisioning state of the runbook.
 func (o LookupRunbookResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRunbookResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the published runbook content link.
+func (o LookupRunbookResultOutput) PublishContentLink() ContentLinkResponsePtrOutput {
+	return o.ApplyT(func(v LookupRunbookResult) *ContentLinkResponse { return v.PublishContentLink }).(ContentLinkResponsePtrOutput)
 }
 
 // Gets or sets the type of the runbook.

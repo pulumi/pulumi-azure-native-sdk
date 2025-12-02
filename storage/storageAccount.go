@@ -8,32 +8,28 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The storage account.
 //
-// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2021-02-01.
 //
-// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
 type StorageAccount struct {
 	pulumi.CustomResourceState
 
 	// Required for storage accounts where kind = BlobStorage. The access tier is used for billing. The 'Premium' access tier is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs storage account type.
 	AccessTier pulumi.StringOutput `pulumi:"accessTier"`
-	// If customer initiated account migration is in progress, the value will be true else it will be null.
-	AccountMigrationInProgress pulumi.BoolOutput `pulumi:"accountMigrationInProgress"`
-	// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false for this property.
+	// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
 	AllowBlobPublicAccess pulumi.BoolPtrOutput `pulumi:"allowBlobPublicAccess"`
-	// Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false for new accounts to follow best security practices by default.
+	// Allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
 	AllowCrossTenantReplication pulumi.BoolPtrOutput `pulumi:"allowCrossTenantReplication"`
 	// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
 	AllowSharedKeyAccess pulumi.BoolPtrOutput `pulumi:"allowSharedKeyAccess"`
 	// Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet.
 	AllowedCopyScope pulumi.StringPtrOutput `pulumi:"allowedCopyScope"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Provides the identity based authentication settings for Azure Files.
 	AzureFilesIdentityBasedAuthentication AzureFilesIdentityBasedAuthenticationResponsePtrOutput `pulumi:"azureFilesIdentityBasedAuthentication"`
 	// Blob restore status
@@ -46,8 +42,6 @@ type StorageAccount struct {
 	DefaultToOAuthAuthentication pulumi.BoolPtrOutput `pulumi:"defaultToOAuthAuthentication"`
 	// Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
 	DnsEndpointType pulumi.StringPtrOutput `pulumi:"dnsEndpointType"`
-	// Enables extended group support with local users feature, if set to true
-	EnableExtendedGroups pulumi.BoolPtrOutput `pulumi:"enableExtendedGroups"`
 	// Allows https traffic only to storage service if sets to true.
 	EnableHttpsTrafficOnly pulumi.BoolPtrOutput `pulumi:"enableHttpsTrafficOnly"`
 	// NFS 3.0 protocol support enabled if set to true.
@@ -70,8 +64,6 @@ type StorageAccount struct {
 	IsLocalUserEnabled pulumi.BoolPtrOutput `pulumi:"isLocalUserEnabled"`
 	// Enables Secure File Transfer Protocol, if set to true
 	IsSftpEnabled pulumi.BoolPtrOutput `pulumi:"isSftpEnabled"`
-	// This property will be set to true or false on an event of ongoing migration. Default value is null.
-	IsSkuConversionBlocked pulumi.BoolOutput `pulumi:"isSkuConversionBlocked"`
 	// Storage account keys creation time.
 	KeyCreationTime KeyCreationTimeResponseOutput `pulumi:"keyCreationTime"`
 	// KeyPolicy assigned to the storage account.
@@ -98,7 +90,7 @@ type StorageAccount struct {
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Gets the status of the storage account at the time the operation was called.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
+	// Allow or disallow public network access to Storage Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Maintains information about the network routing choice opted by the user for data transfer
 	RoutingPreference RoutingPreferenceResponsePtrOutput `pulumi:"routingPreference"`
@@ -226,9 +218,6 @@ func NewStorageAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storage/v20240101:StorageAccount"),
 		},
-		{
-			Type: pulumi.String("azure-native:storage/v20250101:StorageAccount"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -268,9 +257,9 @@ type storageAccountArgs struct {
 	AccessTier *AccessTier `pulumi:"accessTier"`
 	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 	AccountName *string `pulumi:"accountName"`
-	// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false for this property.
+	// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
 	AllowBlobPublicAccess *bool `pulumi:"allowBlobPublicAccess"`
-	// Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false for new accounts to follow best security practices by default.
+	// Allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
 	AllowCrossTenantReplication *bool `pulumi:"allowCrossTenantReplication"`
 	// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
 	AllowSharedKeyAccess *bool `pulumi:"allowSharedKeyAccess"`
@@ -284,8 +273,6 @@ type storageAccountArgs struct {
 	DefaultToOAuthAuthentication *bool `pulumi:"defaultToOAuthAuthentication"`
 	// Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
 	DnsEndpointType *string `pulumi:"dnsEndpointType"`
-	// Enables extended group support with local users feature, if set to true
-	EnableExtendedGroups *bool `pulumi:"enableExtendedGroups"`
 	// Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
 	EnableHttpsTrafficOnly *bool `pulumi:"enableHttpsTrafficOnly"`
 	// NFS 3.0 protocol support enabled if set to true.
@@ -316,7 +303,7 @@ type storageAccountArgs struct {
 	MinimumTlsVersion *string `pulumi:"minimumTlsVersion"`
 	// Network rule set
 	NetworkRuleSet *NetworkRuleSet `pulumi:"networkRuleSet"`
-	// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
+	// Allow or disallow public network access to Storage Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -336,9 +323,9 @@ type StorageAccountArgs struct {
 	AccessTier AccessTierPtrInput
 	// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 	AccountName pulumi.StringPtrInput
-	// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false for this property.
+	// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
 	AllowBlobPublicAccess pulumi.BoolPtrInput
-	// Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false for new accounts to follow best security practices by default.
+	// Allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
 	AllowCrossTenantReplication pulumi.BoolPtrInput
 	// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
 	AllowSharedKeyAccess pulumi.BoolPtrInput
@@ -352,8 +339,6 @@ type StorageAccountArgs struct {
 	DefaultToOAuthAuthentication pulumi.BoolPtrInput
 	// Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
 	DnsEndpointType pulumi.StringPtrInput
-	// Enables extended group support with local users feature, if set to true
-	EnableExtendedGroups pulumi.BoolPtrInput
 	// Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
 	EnableHttpsTrafficOnly pulumi.BoolPtrInput
 	// NFS 3.0 protocol support enabled if set to true.
@@ -384,7 +369,7 @@ type StorageAccountArgs struct {
 	MinimumTlsVersion pulumi.StringPtrInput
 	// Network rule set
 	NetworkRuleSet NetworkRuleSetPtrInput
-	// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
+	// Allow or disallow public network access to Storage Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
 	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -440,17 +425,12 @@ func (o StorageAccountOutput) AccessTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageAccount) pulumi.StringOutput { return v.AccessTier }).(pulumi.StringOutput)
 }
 
-// If customer initiated account migration is in progress, the value will be true else it will be null.
-func (o StorageAccountOutput) AccountMigrationInProgress() pulumi.BoolOutput {
-	return o.ApplyT(func(v *StorageAccount) pulumi.BoolOutput { return v.AccountMigrationInProgress }).(pulumi.BoolOutput)
-}
-
-// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false for this property.
+// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
 func (o StorageAccountOutput) AllowBlobPublicAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StorageAccount) pulumi.BoolPtrOutput { return v.AllowBlobPublicAccess }).(pulumi.BoolPtrOutput)
 }
 
-// Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false for new accounts to follow best security practices by default.
+// Allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
 func (o StorageAccountOutput) AllowCrossTenantReplication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StorageAccount) pulumi.BoolPtrOutput { return v.AllowCrossTenantReplication }).(pulumi.BoolPtrOutput)
 }
@@ -463,11 +443,6 @@ func (o StorageAccountOutput) AllowSharedKeyAccess() pulumi.BoolPtrOutput {
 // Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet.
 func (o StorageAccountOutput) AllowedCopyScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageAccount) pulumi.StringPtrOutput { return v.AllowedCopyScope }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o StorageAccountOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *StorageAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Provides the identity based authentication settings for Azure Files.
@@ -500,11 +475,6 @@ func (o StorageAccountOutput) DefaultToOAuthAuthentication() pulumi.BoolPtrOutpu
 // Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
 func (o StorageAccountOutput) DnsEndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageAccount) pulumi.StringPtrOutput { return v.DnsEndpointType }).(pulumi.StringPtrOutput)
-}
-
-// Enables extended group support with local users feature, if set to true
-func (o StorageAccountOutput) EnableExtendedGroups() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *StorageAccount) pulumi.BoolPtrOutput { return v.EnableExtendedGroups }).(pulumi.BoolPtrOutput)
 }
 
 // Allows https traffic only to storage service if sets to true.
@@ -562,11 +532,6 @@ func (o StorageAccountOutput) IsLocalUserEnabled() pulumi.BoolPtrOutput {
 // Enables Secure File Transfer Protocol, if set to true
 func (o StorageAccountOutput) IsSftpEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StorageAccount) pulumi.BoolPtrOutput { return v.IsSftpEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// This property will be set to true or false on an event of ongoing migration. Default value is null.
-func (o StorageAccountOutput) IsSkuConversionBlocked() pulumi.BoolOutput {
-	return o.ApplyT(func(v *StorageAccount) pulumi.BoolOutput { return v.IsSkuConversionBlocked }).(pulumi.BoolOutput)
 }
 
 // Storage account keys creation time.
@@ -636,7 +601,7 @@ func (o StorageAccountOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageAccount) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
+// Allow or disallow public network access to Storage Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
 func (o StorageAccountOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageAccount) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }

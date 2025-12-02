@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a PrivateCloud
+// A private cloud resource
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2022-05-01.
 //
-// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01, 2023-09-01.
 func LookupPrivateCloud(ctx *pulumi.Context, args *LookupPrivateCloudArgs, opts ...pulumi.InvokeOption) (*LookupPrivateCloudResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateCloudResult
@@ -37,45 +37,33 @@ type LookupPrivateCloudArgs struct {
 type LookupPrivateCloudResult struct {
 	// Properties describing how the cloud is distributed across availability zones
 	Availability *AvailabilityPropertiesResponse `pulumi:"availability"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An ExpressRoute Circuit
 	Circuit *CircuitResponse `pulumi:"circuit"`
-	// The type of DNS zone to use.
-	DnsZoneType *string `pulumi:"dnsZoneType"`
 	// Customer managed key encryption, can be enabled or disabled
 	Encryption *EncryptionResponse `pulumi:"encryption"`
 	// The endpoints
 	Endpoints EndpointsResponse `pulumi:"endpoints"`
-	// Array of additional networks noncontiguous with networkBlock. Networks must be
-	// unique and non-overlapping across VNet in your subscription, on-premise, and
-	// this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
-	// (A.B.C.D/X).
-	ExtendedNetworkBlocks []string `pulumi:"extendedNetworkBlocks"`
 	// Array of cloud link IDs from other clouds that connect to this one
 	ExternalCloudLinks []string `pulumi:"externalCloudLinks"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Resource ID.
 	Id string `pulumi:"id"`
-	// The managed service identities assigned to this resource.
-	Identity *SystemAssignedServiceIdentityResponse `pulumi:"identity"`
+	// The identity of the private cloud, if configured.
+	Identity *PrivateCloudIdentityResponse `pulumi:"identity"`
 	// vCenter Single Sign On Identity Sources
 	IdentitySources []IdentitySourceResponse `pulumi:"identitySources"`
 	// Connectivity to internet is enabled or disabled
 	Internet *string `pulumi:"internet"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location string `pulumi:"location"`
 	// The default cluster used for management
 	ManagementCluster ManagementClusterResponse `pulumi:"managementCluster"`
 	// Network used to access vCenter Server and NSX-T Manager
 	ManagementNetwork string `pulumi:"managementNetwork"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
-	// The block of addresses should be unique across VNet in your subscription as
-	// well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where
-	// A,B,C,D are between 0 and 255, and X is between 0 and 22
+	// The block of addresses should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
 	NetworkBlock string `pulumi:"networkBlock"`
-	// Flag to indicate whether the private cloud has the quota for provisioned NSX
-	// Public IP count raised from 64 to 1024
+	// Flag to indicate whether the private cloud has the quota for provisioned NSX Public IP count raised from 64 to 1024
 	NsxPublicIpQuotaRaised string `pulumi:"nsxPublicIpQuotaRaised"`
 	// Thumbprint of the NSX-T Manager SSL certificate
 	NsxtCertificateThumbprint string `pulumi:"nsxtCertificateThumbprint"`
@@ -85,23 +73,18 @@ type LookupPrivateCloudResult struct {
 	ProvisioningNetwork string `pulumi:"provisioningNetwork"`
 	// The provisioning state
 	ProvisioningState string `pulumi:"provisioningState"`
-	// A secondary expressRoute circuit from a separate AZ. Only present in a
-	// stretched private cloud
+	// A secondary expressRoute circuit from a separate AZ. Only present in a stretched private cloud
 	SecondaryCircuit *CircuitResponse `pulumi:"secondaryCircuit"`
-	// The SKU (Stock Keeping Unit) assigned to this resource.
+	// The private cloud SKU
 	Sku SkuResponse `pulumi:"sku"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 	// Thumbprint of the vCenter Server SSL certificate
 	VcenterCertificateThumbprint string `pulumi:"vcenterCertificateThumbprint"`
 	// Optionally, set the vCenter admin password when the private cloud is created
 	VcenterPassword *string `pulumi:"vcenterPassword"`
-	// Azure resource ID of the virtual network
-	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 	// Used for live migration of virtual machines
 	VmotionNetwork string `pulumi:"vmotionNetwork"`
 }
@@ -158,19 +141,9 @@ func (o LookupPrivateCloudResultOutput) Availability() AvailabilityPropertiesRes
 	return o.ApplyT(func(v LookupPrivateCloudResult) *AvailabilityPropertiesResponse { return v.Availability }).(AvailabilityPropertiesResponsePtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupPrivateCloudResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // An ExpressRoute Circuit
 func (o LookupPrivateCloudResultOutput) Circuit() CircuitResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) *CircuitResponse { return v.Circuit }).(CircuitResponsePtrOutput)
-}
-
-// The type of DNS zone to use.
-func (o LookupPrivateCloudResultOutput) DnsZoneType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPrivateCloudResult) *string { return v.DnsZoneType }).(pulumi.StringPtrOutput)
 }
 
 // Customer managed key encryption, can be enabled or disabled
@@ -183,27 +156,19 @@ func (o LookupPrivateCloudResultOutput) Endpoints() EndpointsResponseOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) EndpointsResponse { return v.Endpoints }).(EndpointsResponseOutput)
 }
 
-// Array of additional networks noncontiguous with networkBlock. Networks must be
-// unique and non-overlapping across VNet in your subscription, on-premise, and
-// this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
-// (A.B.C.D/X).
-func (o LookupPrivateCloudResultOutput) ExtendedNetworkBlocks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupPrivateCloudResult) []string { return v.ExtendedNetworkBlocks }).(pulumi.StringArrayOutput)
-}
-
 // Array of cloud link IDs from other clouds that connect to this one
 func (o LookupPrivateCloudResultOutput) ExternalCloudLinks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) []string { return v.ExternalCloudLinks }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupPrivateCloudResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The managed service identities assigned to this resource.
-func (o LookupPrivateCloudResultOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupPrivateCloudResult) *SystemAssignedServiceIdentityResponse { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
+// The identity of the private cloud, if configured.
+func (o LookupPrivateCloudResultOutput) Identity() PrivateCloudIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) *PrivateCloudIdentityResponse { return v.Identity }).(PrivateCloudIdentityResponsePtrOutput)
 }
 
 // vCenter Single Sign On Identity Sources
@@ -216,7 +181,7 @@ func (o LookupPrivateCloudResultOutput) Internet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) *string { return v.Internet }).(pulumi.StringPtrOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location
 func (o LookupPrivateCloudResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -231,20 +196,17 @@ func (o LookupPrivateCloudResultOutput) ManagementNetwork() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.ManagementNetwork }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupPrivateCloudResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The block of addresses should be unique across VNet in your subscription as
-// well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where
-// A,B,C,D are between 0 and 255, and X is between 0 and 22
+// The block of addresses should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
 func (o LookupPrivateCloudResultOutput) NetworkBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.NetworkBlock }).(pulumi.StringOutput)
 }
 
-// Flag to indicate whether the private cloud has the quota for provisioned NSX
-// Public IP count raised from 64 to 1024
+// Flag to indicate whether the private cloud has the quota for provisioned NSX Public IP count raised from 64 to 1024
 func (o LookupPrivateCloudResultOutput) NsxPublicIpQuotaRaised() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.NsxPublicIpQuotaRaised }).(pulumi.StringOutput)
 }
@@ -269,28 +231,22 @@ func (o LookupPrivateCloudResultOutput) ProvisioningState() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// A secondary expressRoute circuit from a separate AZ. Only present in a
-// stretched private cloud
+// A secondary expressRoute circuit from a separate AZ. Only present in a stretched private cloud
 func (o LookupPrivateCloudResultOutput) SecondaryCircuit() CircuitResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) *CircuitResponse { return v.SecondaryCircuit }).(CircuitResponsePtrOutput)
 }
 
-// The SKU (Stock Keeping Unit) assigned to this resource.
+// The private cloud SKU
 func (o LookupPrivateCloudResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupPrivateCloudResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateCloudResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o LookupPrivateCloudResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupPrivateCloudResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -303,11 +259,6 @@ func (o LookupPrivateCloudResultOutput) VcenterCertificateThumbprint() pulumi.St
 // Optionally, set the vCenter admin password when the private cloud is created
 func (o LookupPrivateCloudResultOutput) VcenterPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) *string { return v.VcenterPassword }).(pulumi.StringPtrOutput)
-}
-
-// Azure resource ID of the virtual network
-func (o LookupPrivateCloudResultOutput) VirtualNetworkId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPrivateCloudResult) *string { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
 }
 
 // Used for live migration of virtual machines

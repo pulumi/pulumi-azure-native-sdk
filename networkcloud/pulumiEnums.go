@@ -1510,8 +1510,7 @@ func (in *clusterTypePtr) ToClusterTypePtrOutputWithContext(ctx context.Context)
 type ClusterUpdateStrategyType string
 
 const (
-	ClusterUpdateStrategyTypeRack           = ClusterUpdateStrategyType("Rack")
-	ClusterUpdateStrategyTypePauseAfterRack = ClusterUpdateStrategyType("PauseAfterRack")
+	ClusterUpdateStrategyTypeRack = ClusterUpdateStrategyType("Rack")
 )
 
 func (ClusterUpdateStrategyType) ElementType() reflect.Type {
@@ -1637,7 +1636,6 @@ func (o ClusterUpdateStrategyTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 // A concrete instance of `ClusterUpdateStrategyTypeInput` can be one of the following:
 //
 //	ClusterUpdateStrategyTypeRack
-//	ClusterUpdateStrategyTypePauseAfterRack
 type ClusterUpdateStrategyTypeInput interface {
 	pulumi.Input
 
@@ -3177,350 +3175,11 @@ func (in *l3networkConfigurationIpamEnabledPtr) ToL3NetworkConfigurationIpamEnab
 	return pulumi.ToOutputWithContext(ctx, in).(L3NetworkConfigurationIpamEnabledPtrOutput)
 }
 
-// The type of managed identity that is being selected.
-type ManagedServiceIdentitySelectorType string
-
-const (
-	ManagedServiceIdentitySelectorTypeSystemAssignedIdentity = ManagedServiceIdentitySelectorType("SystemAssignedIdentity")
-	ManagedServiceIdentitySelectorTypeUserAssignedIdentity   = ManagedServiceIdentitySelectorType("UserAssignedIdentity")
-)
-
-func (ManagedServiceIdentitySelectorType) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentitySelectorType)(nil)).Elem()
-}
-
-func (e ManagedServiceIdentitySelectorType) ToManagedServiceIdentitySelectorTypeOutput() ManagedServiceIdentitySelectorTypeOutput {
-	return pulumi.ToOutput(e).(ManagedServiceIdentitySelectorTypeOutput)
-}
-
-func (e ManagedServiceIdentitySelectorType) ToManagedServiceIdentitySelectorTypeOutputWithContext(ctx context.Context) ManagedServiceIdentitySelectorTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ManagedServiceIdentitySelectorTypeOutput)
-}
-
-func (e ManagedServiceIdentitySelectorType) ToManagedServiceIdentitySelectorTypePtrOutput() ManagedServiceIdentitySelectorTypePtrOutput {
-	return e.ToManagedServiceIdentitySelectorTypePtrOutputWithContext(context.Background())
-}
-
-func (e ManagedServiceIdentitySelectorType) ToManagedServiceIdentitySelectorTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentitySelectorTypePtrOutput {
-	return ManagedServiceIdentitySelectorType(e).ToManagedServiceIdentitySelectorTypeOutputWithContext(ctx).ToManagedServiceIdentitySelectorTypePtrOutputWithContext(ctx)
-}
-
-func (e ManagedServiceIdentitySelectorType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ManagedServiceIdentitySelectorType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ManagedServiceIdentitySelectorType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ManagedServiceIdentitySelectorType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ManagedServiceIdentitySelectorTypeOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentitySelectorTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentitySelectorType)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentitySelectorTypeOutput) ToManagedServiceIdentitySelectorTypeOutput() ManagedServiceIdentitySelectorTypeOutput {
-	return o
-}
-
-func (o ManagedServiceIdentitySelectorTypeOutput) ToManagedServiceIdentitySelectorTypeOutputWithContext(ctx context.Context) ManagedServiceIdentitySelectorTypeOutput {
-	return o
-}
-
-func (o ManagedServiceIdentitySelectorTypeOutput) ToManagedServiceIdentitySelectorTypePtrOutput() ManagedServiceIdentitySelectorTypePtrOutput {
-	return o.ToManagedServiceIdentitySelectorTypePtrOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentitySelectorTypeOutput) ToManagedServiceIdentitySelectorTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentitySelectorTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentitySelectorType) *ManagedServiceIdentitySelectorType {
-		return &v
-	}).(ManagedServiceIdentitySelectorTypePtrOutput)
-}
-
-func (o ManagedServiceIdentitySelectorTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentitySelectorTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedServiceIdentitySelectorType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ManagedServiceIdentitySelectorTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentitySelectorTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedServiceIdentitySelectorType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ManagedServiceIdentitySelectorTypePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentitySelectorTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentitySelectorType)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentitySelectorTypePtrOutput) ToManagedServiceIdentitySelectorTypePtrOutput() ManagedServiceIdentitySelectorTypePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentitySelectorTypePtrOutput) ToManagedServiceIdentitySelectorTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentitySelectorTypePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentitySelectorTypePtrOutput) Elem() ManagedServiceIdentitySelectorTypeOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentitySelectorType) ManagedServiceIdentitySelectorType {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedServiceIdentitySelectorType
-		return ret
-	}).(ManagedServiceIdentitySelectorTypeOutput)
-}
-
-func (o ManagedServiceIdentitySelectorTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentitySelectorTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagedServiceIdentitySelectorType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ManagedServiceIdentitySelectorTypeInput is an input type that accepts values of the ManagedServiceIdentitySelectorType enum
-// A concrete instance of `ManagedServiceIdentitySelectorTypeInput` can be one of the following:
-//
-//	ManagedServiceIdentitySelectorTypeSystemAssignedIdentity
-//	ManagedServiceIdentitySelectorTypeUserAssignedIdentity
-type ManagedServiceIdentitySelectorTypeInput interface {
-	pulumi.Input
-
-	ToManagedServiceIdentitySelectorTypeOutput() ManagedServiceIdentitySelectorTypeOutput
-	ToManagedServiceIdentitySelectorTypeOutputWithContext(context.Context) ManagedServiceIdentitySelectorTypeOutput
-}
-
-var managedServiceIdentitySelectorTypePtrType = reflect.TypeOf((**ManagedServiceIdentitySelectorType)(nil)).Elem()
-
-type ManagedServiceIdentitySelectorTypePtrInput interface {
-	pulumi.Input
-
-	ToManagedServiceIdentitySelectorTypePtrOutput() ManagedServiceIdentitySelectorTypePtrOutput
-	ToManagedServiceIdentitySelectorTypePtrOutputWithContext(context.Context) ManagedServiceIdentitySelectorTypePtrOutput
-}
-
-type managedServiceIdentitySelectorTypePtr string
-
-func ManagedServiceIdentitySelectorTypePtr(v string) ManagedServiceIdentitySelectorTypePtrInput {
-	return (*managedServiceIdentitySelectorTypePtr)(&v)
-}
-
-func (*managedServiceIdentitySelectorTypePtr) ElementType() reflect.Type {
-	return managedServiceIdentitySelectorTypePtrType
-}
-
-func (in *managedServiceIdentitySelectorTypePtr) ToManagedServiceIdentitySelectorTypePtrOutput() ManagedServiceIdentitySelectorTypePtrOutput {
-	return pulumi.ToOutput(in).(ManagedServiceIdentitySelectorTypePtrOutput)
-}
-
-func (in *managedServiceIdentitySelectorTypePtr) ToManagedServiceIdentitySelectorTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentitySelectorTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentitySelectorTypePtrOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-type ManagedServiceIdentityType string
-
-const (
-	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
-	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
-	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
-	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
-)
-
-func (ManagedServiceIdentityType) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentityType)(nil)).Elem()
-}
-
-func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput {
-	return pulumi.ToOutput(e).(ManagedServiceIdentityTypeOutput)
-}
-
-func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypeOutputWithContext(ctx context.Context) ManagedServiceIdentityTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ManagedServiceIdentityTypeOutput)
-}
-
-func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
-	return e.ToManagedServiceIdentityTypePtrOutputWithContext(context.Background())
-}
-
-func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
-	return ManagedServiceIdentityType(e).ToManagedServiceIdentityTypeOutputWithContext(ctx).ToManagedServiceIdentityTypePtrOutputWithContext(ctx)
-}
-
-func (e ManagedServiceIdentityType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ManagedServiceIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ManagedServiceIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ManagedServiceIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ManagedServiceIdentityTypeOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentityType)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypeOutputWithContext(ctx context.Context) ManagedServiceIdentityTypeOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
-	return o.ToManagedServiceIdentityTypePtrOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentityType) *ManagedServiceIdentityType {
-		return &v
-	}).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (o ManagedServiceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedServiceIdentityType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ManagedServiceIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedServiceIdentityType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ManagedServiceIdentityTypePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentityType)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityTypePtrOutput) Elem() ManagedServiceIdentityTypeOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityType) ManagedServiceIdentityType {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedServiceIdentityType
-		return ret
-	}).(ManagedServiceIdentityTypeOutput)
-}
-
-func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagedServiceIdentityType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ManagedServiceIdentityTypeInput is an input type that accepts values of the ManagedServiceIdentityType enum
-// A concrete instance of `ManagedServiceIdentityTypeInput` can be one of the following:
-//
-//	ManagedServiceIdentityTypeNone
-//	ManagedServiceIdentityTypeSystemAssigned
-//	ManagedServiceIdentityTypeUserAssigned
-//	ManagedServiceIdentityType_SystemAssigned_UserAssigned
-type ManagedServiceIdentityTypeInput interface {
-	pulumi.Input
-
-	ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput
-	ToManagedServiceIdentityTypeOutputWithContext(context.Context) ManagedServiceIdentityTypeOutput
-}
-
-var managedServiceIdentityTypePtrType = reflect.TypeOf((**ManagedServiceIdentityType)(nil)).Elem()
-
-type ManagedServiceIdentityTypePtrInput interface {
-	pulumi.Input
-
-	ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput
-	ToManagedServiceIdentityTypePtrOutputWithContext(context.Context) ManagedServiceIdentityTypePtrOutput
-}
-
-type managedServiceIdentityTypePtr string
-
-func ManagedServiceIdentityTypePtr(v string) ManagedServiceIdentityTypePtrInput {
-	return (*managedServiceIdentityTypePtr)(&v)
-}
-
-func (*managedServiceIdentityTypePtr) ElementType() reflect.Type {
-	return managedServiceIdentityTypePtrType
-}
-
-func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
-	return pulumi.ToOutput(in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
 // The strategy for creating the OS disk.
 type OsDiskCreateOption string
 
 const (
-	// Utilize the local storage of the host machine.
 	OsDiskCreateOptionEphemeral = OsDiskCreateOption("Ephemeral")
-	// Utilize a storage appliance backed volume to host the disk.
-	OsDiskCreateOptionPersistent = OsDiskCreateOption("Persistent")
 )
 
 func (OsDiskCreateOption) ElementType() reflect.Type {
@@ -3646,7 +3305,6 @@ func (o OsDiskCreateOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // A concrete instance of `OsDiskCreateOptionInput` can be one of the following:
 //
 //	OsDiskCreateOptionEphemeral
-//	OsDiskCreateOptionPersistent
 type OsDiskCreateOptionInput interface {
 	pulumi.Input
 
@@ -4519,12 +4177,8 @@ func (in *virtualMachineBootMethodPtr) ToVirtualMachineBootMethodPtrOutputWithCo
 type VirtualMachineDeviceModelType string
 
 const (
-	// Traditional and most compatible device virtualization interface.
 	VirtualMachineDeviceModelTypeT1 = VirtualMachineDeviceModelType("T1")
-	// Modern and enhanced device virtualization interface.
 	VirtualMachineDeviceModelTypeT2 = VirtualMachineDeviceModelType("T2")
-	// Improved security and functionality (including TPM and secure boot support). Required for windows 11 and server 2025.
-	VirtualMachineDeviceModelTypeT3 = VirtualMachineDeviceModelType("T3")
 )
 
 func (VirtualMachineDeviceModelType) ElementType() reflect.Type {
@@ -4651,7 +4305,6 @@ func (o VirtualMachineDeviceModelTypePtrOutput) ToStringPtrOutputWithContext(ctx
 //
 //	VirtualMachineDeviceModelTypeT1
 //	VirtualMachineDeviceModelTypeT2
-//	VirtualMachineDeviceModelTypeT3
 type VirtualMachineDeviceModelTypeInput interface {
 	pulumi.Input
 
@@ -5686,172 +5339,6 @@ func (in *virtualMachineVirtioInterfaceTypePtr) ToVirtualMachineVirtioInterfaceT
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineVirtioInterfaceTypePtrOutput)
 }
 
-// The mode selection for container vulnerability scanning.
-type VulnerabilityScanningSettingsContainerScan string
-
-const (
-	VulnerabilityScanningSettingsContainerScanDisabled = VulnerabilityScanningSettingsContainerScan("Disabled")
-	VulnerabilityScanningSettingsContainerScanEnabled  = VulnerabilityScanningSettingsContainerScan("Enabled")
-)
-
-func (VulnerabilityScanningSettingsContainerScan) ElementType() reflect.Type {
-	return reflect.TypeOf((*VulnerabilityScanningSettingsContainerScan)(nil)).Elem()
-}
-
-func (e VulnerabilityScanningSettingsContainerScan) ToVulnerabilityScanningSettingsContainerScanOutput() VulnerabilityScanningSettingsContainerScanOutput {
-	return pulumi.ToOutput(e).(VulnerabilityScanningSettingsContainerScanOutput)
-}
-
-func (e VulnerabilityScanningSettingsContainerScan) ToVulnerabilityScanningSettingsContainerScanOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsContainerScanOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(VulnerabilityScanningSettingsContainerScanOutput)
-}
-
-func (e VulnerabilityScanningSettingsContainerScan) ToVulnerabilityScanningSettingsContainerScanPtrOutput() VulnerabilityScanningSettingsContainerScanPtrOutput {
-	return e.ToVulnerabilityScanningSettingsContainerScanPtrOutputWithContext(context.Background())
-}
-
-func (e VulnerabilityScanningSettingsContainerScan) ToVulnerabilityScanningSettingsContainerScanPtrOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsContainerScanPtrOutput {
-	return VulnerabilityScanningSettingsContainerScan(e).ToVulnerabilityScanningSettingsContainerScanOutputWithContext(ctx).ToVulnerabilityScanningSettingsContainerScanPtrOutputWithContext(ctx)
-}
-
-func (e VulnerabilityScanningSettingsContainerScan) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e VulnerabilityScanningSettingsContainerScan) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e VulnerabilityScanningSettingsContainerScan) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e VulnerabilityScanningSettingsContainerScan) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type VulnerabilityScanningSettingsContainerScanOutput struct{ *pulumi.OutputState }
-
-func (VulnerabilityScanningSettingsContainerScanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VulnerabilityScanningSettingsContainerScan)(nil)).Elem()
-}
-
-func (o VulnerabilityScanningSettingsContainerScanOutput) ToVulnerabilityScanningSettingsContainerScanOutput() VulnerabilityScanningSettingsContainerScanOutput {
-	return o
-}
-
-func (o VulnerabilityScanningSettingsContainerScanOutput) ToVulnerabilityScanningSettingsContainerScanOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsContainerScanOutput {
-	return o
-}
-
-func (o VulnerabilityScanningSettingsContainerScanOutput) ToVulnerabilityScanningSettingsContainerScanPtrOutput() VulnerabilityScanningSettingsContainerScanPtrOutput {
-	return o.ToVulnerabilityScanningSettingsContainerScanPtrOutputWithContext(context.Background())
-}
-
-func (o VulnerabilityScanningSettingsContainerScanOutput) ToVulnerabilityScanningSettingsContainerScanPtrOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsContainerScanPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityScanningSettingsContainerScan) *VulnerabilityScanningSettingsContainerScan {
-		return &v
-	}).(VulnerabilityScanningSettingsContainerScanPtrOutput)
-}
-
-func (o VulnerabilityScanningSettingsContainerScanOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o VulnerabilityScanningSettingsContainerScanOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e VulnerabilityScanningSettingsContainerScan) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o VulnerabilityScanningSettingsContainerScanOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o VulnerabilityScanningSettingsContainerScanOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e VulnerabilityScanningSettingsContainerScan) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type VulnerabilityScanningSettingsContainerScanPtrOutput struct{ *pulumi.OutputState }
-
-func (VulnerabilityScanningSettingsContainerScanPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VulnerabilityScanningSettingsContainerScan)(nil)).Elem()
-}
-
-func (o VulnerabilityScanningSettingsContainerScanPtrOutput) ToVulnerabilityScanningSettingsContainerScanPtrOutput() VulnerabilityScanningSettingsContainerScanPtrOutput {
-	return o
-}
-
-func (o VulnerabilityScanningSettingsContainerScanPtrOutput) ToVulnerabilityScanningSettingsContainerScanPtrOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsContainerScanPtrOutput {
-	return o
-}
-
-func (o VulnerabilityScanningSettingsContainerScanPtrOutput) Elem() VulnerabilityScanningSettingsContainerScanOutput {
-	return o.ApplyT(func(v *VulnerabilityScanningSettingsContainerScan) VulnerabilityScanningSettingsContainerScan {
-		if v != nil {
-			return *v
-		}
-		var ret VulnerabilityScanningSettingsContainerScan
-		return ret
-	}).(VulnerabilityScanningSettingsContainerScanOutput)
-}
-
-func (o VulnerabilityScanningSettingsContainerScanPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o VulnerabilityScanningSettingsContainerScanPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VulnerabilityScanningSettingsContainerScan) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// VulnerabilityScanningSettingsContainerScanInput is an input type that accepts values of the VulnerabilityScanningSettingsContainerScan enum
-// A concrete instance of `VulnerabilityScanningSettingsContainerScanInput` can be one of the following:
-//
-//	VulnerabilityScanningSettingsContainerScanDisabled
-//	VulnerabilityScanningSettingsContainerScanEnabled
-type VulnerabilityScanningSettingsContainerScanInput interface {
-	pulumi.Input
-
-	ToVulnerabilityScanningSettingsContainerScanOutput() VulnerabilityScanningSettingsContainerScanOutput
-	ToVulnerabilityScanningSettingsContainerScanOutputWithContext(context.Context) VulnerabilityScanningSettingsContainerScanOutput
-}
-
-var vulnerabilityScanningSettingsContainerScanPtrType = reflect.TypeOf((**VulnerabilityScanningSettingsContainerScan)(nil)).Elem()
-
-type VulnerabilityScanningSettingsContainerScanPtrInput interface {
-	pulumi.Input
-
-	ToVulnerabilityScanningSettingsContainerScanPtrOutput() VulnerabilityScanningSettingsContainerScanPtrOutput
-	ToVulnerabilityScanningSettingsContainerScanPtrOutputWithContext(context.Context) VulnerabilityScanningSettingsContainerScanPtrOutput
-}
-
-type vulnerabilityScanningSettingsContainerScanPtr string
-
-func VulnerabilityScanningSettingsContainerScanPtr(v string) VulnerabilityScanningSettingsContainerScanPtrInput {
-	return (*vulnerabilityScanningSettingsContainerScanPtr)(&v)
-}
-
-func (*vulnerabilityScanningSettingsContainerScanPtr) ElementType() reflect.Type {
-	return vulnerabilityScanningSettingsContainerScanPtrType
-}
-
-func (in *vulnerabilityScanningSettingsContainerScanPtr) ToVulnerabilityScanningSettingsContainerScanPtrOutput() VulnerabilityScanningSettingsContainerScanPtrOutput {
-	return pulumi.ToOutput(in).(VulnerabilityScanningSettingsContainerScanPtrOutput)
-}
-
-func (in *vulnerabilityScanningSettingsContainerScanPtr) ToVulnerabilityScanningSettingsContainerScanPtrOutputWithContext(ctx context.Context) VulnerabilityScanningSettingsContainerScanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(VulnerabilityScanningSettingsContainerScanPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(AdvertiseToFabricOutput{})
 	pulumi.RegisterOutputType(AdvertiseToFabricPtrOutput{})
@@ -5891,10 +5378,6 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesPluginTypePtrOutput{})
 	pulumi.RegisterOutputType(L3NetworkConfigurationIpamEnabledOutput{})
 	pulumi.RegisterOutputType(L3NetworkConfigurationIpamEnabledPtrOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentitySelectorTypeOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentitySelectorTypePtrOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(OsDiskCreateOptionOutput{})
 	pulumi.RegisterOutputType(OsDiskCreateOptionPtrOutput{})
 	pulumi.RegisterOutputType(OsDiskDeleteOptionOutput{})
@@ -5921,6 +5404,4 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineSchedulingExecutionPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVirtioInterfaceTypeOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVirtioInterfaceTypePtrOutput{})
-	pulumi.RegisterOutputType(VulnerabilityScanningSettingsContainerScanOutput{})
-	pulumi.RegisterOutputType(VulnerabilityScanningSettingsContainerScanPtrOutput{})
 }

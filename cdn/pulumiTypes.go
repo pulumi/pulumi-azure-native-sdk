@@ -7,257 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
 
-// Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized.
-type AFDDomainHttpsCustomizedCipherSuiteSet struct {
-	// Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
-	CipherSuiteSetForTls12 []string `pulumi:"cipherSuiteSetForTls12"`
-	// Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
-	CipherSuiteSetForTls13 []string `pulumi:"cipherSuiteSetForTls13"`
-}
-
-// AFDDomainHttpsCustomizedCipherSuiteSetInput is an input type that accepts AFDDomainHttpsCustomizedCipherSuiteSetArgs and AFDDomainHttpsCustomizedCipherSuiteSetOutput values.
-// You can construct a concrete instance of `AFDDomainHttpsCustomizedCipherSuiteSetInput` via:
-//
-//	AFDDomainHttpsCustomizedCipherSuiteSetArgs{...}
-type AFDDomainHttpsCustomizedCipherSuiteSetInput interface {
-	pulumi.Input
-
-	ToAFDDomainHttpsCustomizedCipherSuiteSetOutput() AFDDomainHttpsCustomizedCipherSuiteSetOutput
-	ToAFDDomainHttpsCustomizedCipherSuiteSetOutputWithContext(context.Context) AFDDomainHttpsCustomizedCipherSuiteSetOutput
-}
-
-// Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized.
-type AFDDomainHttpsCustomizedCipherSuiteSetArgs struct {
-	// Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
-	CipherSuiteSetForTls12 pulumi.StringArrayInput `pulumi:"cipherSuiteSetForTls12"`
-	// Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
-	CipherSuiteSetForTls13 pulumi.StringArrayInput `pulumi:"cipherSuiteSetForTls13"`
-}
-
-func (AFDDomainHttpsCustomizedCipherSuiteSetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AFDDomainHttpsCustomizedCipherSuiteSet)(nil)).Elem()
-}
-
-func (i AFDDomainHttpsCustomizedCipherSuiteSetArgs) ToAFDDomainHttpsCustomizedCipherSuiteSetOutput() AFDDomainHttpsCustomizedCipherSuiteSetOutput {
-	return i.ToAFDDomainHttpsCustomizedCipherSuiteSetOutputWithContext(context.Background())
-}
-
-func (i AFDDomainHttpsCustomizedCipherSuiteSetArgs) ToAFDDomainHttpsCustomizedCipherSuiteSetOutputWithContext(ctx context.Context) AFDDomainHttpsCustomizedCipherSuiteSetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AFDDomainHttpsCustomizedCipherSuiteSetOutput)
-}
-
-func (i AFDDomainHttpsCustomizedCipherSuiteSetArgs) ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutput() AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput {
-	return i.ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutputWithContext(context.Background())
-}
-
-func (i AFDDomainHttpsCustomizedCipherSuiteSetArgs) ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutputWithContext(ctx context.Context) AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AFDDomainHttpsCustomizedCipherSuiteSetOutput).ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutputWithContext(ctx)
-}
-
-// AFDDomainHttpsCustomizedCipherSuiteSetPtrInput is an input type that accepts AFDDomainHttpsCustomizedCipherSuiteSetArgs, AFDDomainHttpsCustomizedCipherSuiteSetPtr and AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput values.
-// You can construct a concrete instance of `AFDDomainHttpsCustomizedCipherSuiteSetPtrInput` via:
-//
-//	        AFDDomainHttpsCustomizedCipherSuiteSetArgs{...}
-//
-//	or:
-//
-//	        nil
-type AFDDomainHttpsCustomizedCipherSuiteSetPtrInput interface {
-	pulumi.Input
-
-	ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutput() AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput
-	ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutputWithContext(context.Context) AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput
-}
-
-type afddomainHttpsCustomizedCipherSuiteSetPtrType AFDDomainHttpsCustomizedCipherSuiteSetArgs
-
-func AFDDomainHttpsCustomizedCipherSuiteSetPtr(v *AFDDomainHttpsCustomizedCipherSuiteSetArgs) AFDDomainHttpsCustomizedCipherSuiteSetPtrInput {
-	return (*afddomainHttpsCustomizedCipherSuiteSetPtrType)(v)
-}
-
-func (*afddomainHttpsCustomizedCipherSuiteSetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AFDDomainHttpsCustomizedCipherSuiteSet)(nil)).Elem()
-}
-
-func (i *afddomainHttpsCustomizedCipherSuiteSetPtrType) ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutput() AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput {
-	return i.ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutputWithContext(context.Background())
-}
-
-func (i *afddomainHttpsCustomizedCipherSuiteSetPtrType) ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutputWithContext(ctx context.Context) AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput)
-}
-
-// Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized.
-type AFDDomainHttpsCustomizedCipherSuiteSetOutput struct{ *pulumi.OutputState }
-
-func (AFDDomainHttpsCustomizedCipherSuiteSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AFDDomainHttpsCustomizedCipherSuiteSet)(nil)).Elem()
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetOutput) ToAFDDomainHttpsCustomizedCipherSuiteSetOutput() AFDDomainHttpsCustomizedCipherSuiteSetOutput {
-	return o
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetOutput) ToAFDDomainHttpsCustomizedCipherSuiteSetOutputWithContext(ctx context.Context) AFDDomainHttpsCustomizedCipherSuiteSetOutput {
-	return o
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetOutput) ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutput() AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput {
-	return o.ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutputWithContext(context.Background())
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetOutput) ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutputWithContext(ctx context.Context) AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AFDDomainHttpsCustomizedCipherSuiteSet) *AFDDomainHttpsCustomizedCipherSuiteSet {
-		return &v
-	}).(AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput)
-}
-
-// Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
-func (o AFDDomainHttpsCustomizedCipherSuiteSetOutput) CipherSuiteSetForTls12() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AFDDomainHttpsCustomizedCipherSuiteSet) []string { return v.CipherSuiteSetForTls12 }).(pulumi.StringArrayOutput)
-}
-
-// Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
-func (o AFDDomainHttpsCustomizedCipherSuiteSetOutput) CipherSuiteSetForTls13() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AFDDomainHttpsCustomizedCipherSuiteSet) []string { return v.CipherSuiteSetForTls13 }).(pulumi.StringArrayOutput)
-}
-
-type AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput struct{ *pulumi.OutputState }
-
-func (AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AFDDomainHttpsCustomizedCipherSuiteSet)(nil)).Elem()
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput) ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutput() AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput {
-	return o
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput) ToAFDDomainHttpsCustomizedCipherSuiteSetPtrOutputWithContext(ctx context.Context) AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput {
-	return o
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput) Elem() AFDDomainHttpsCustomizedCipherSuiteSetOutput {
-	return o.ApplyT(func(v *AFDDomainHttpsCustomizedCipherSuiteSet) AFDDomainHttpsCustomizedCipherSuiteSet {
-		if v != nil {
-			return *v
-		}
-		var ret AFDDomainHttpsCustomizedCipherSuiteSet
-		return ret
-	}).(AFDDomainHttpsCustomizedCipherSuiteSetOutput)
-}
-
-// Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
-func (o AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput) CipherSuiteSetForTls12() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AFDDomainHttpsCustomizedCipherSuiteSet) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CipherSuiteSetForTls12
-	}).(pulumi.StringArrayOutput)
-}
-
-// Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
-func (o AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput) CipherSuiteSetForTls13() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AFDDomainHttpsCustomizedCipherSuiteSet) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CipherSuiteSetForTls13
-	}).(pulumi.StringArrayOutput)
-}
-
-// Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized.
-type AFDDomainHttpsCustomizedCipherSuiteSetResponse struct {
-	// Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
-	CipherSuiteSetForTls12 []string `pulumi:"cipherSuiteSetForTls12"`
-	// Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
-	CipherSuiteSetForTls13 []string `pulumi:"cipherSuiteSetForTls13"`
-}
-
-// Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized.
-type AFDDomainHttpsCustomizedCipherSuiteSetResponseOutput struct{ *pulumi.OutputState }
-
-func (AFDDomainHttpsCustomizedCipherSuiteSetResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AFDDomainHttpsCustomizedCipherSuiteSetResponse)(nil)).Elem()
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetResponseOutput) ToAFDDomainHttpsCustomizedCipherSuiteSetResponseOutput() AFDDomainHttpsCustomizedCipherSuiteSetResponseOutput {
-	return o
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetResponseOutput) ToAFDDomainHttpsCustomizedCipherSuiteSetResponseOutputWithContext(ctx context.Context) AFDDomainHttpsCustomizedCipherSuiteSetResponseOutput {
-	return o
-}
-
-// Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
-func (o AFDDomainHttpsCustomizedCipherSuiteSetResponseOutput) CipherSuiteSetForTls12() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AFDDomainHttpsCustomizedCipherSuiteSetResponse) []string { return v.CipherSuiteSetForTls12 }).(pulumi.StringArrayOutput)
-}
-
-// Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
-func (o AFDDomainHttpsCustomizedCipherSuiteSetResponseOutput) CipherSuiteSetForTls13() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AFDDomainHttpsCustomizedCipherSuiteSetResponse) []string { return v.CipherSuiteSetForTls13 }).(pulumi.StringArrayOutput)
-}
-
-type AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AFDDomainHttpsCustomizedCipherSuiteSetResponse)(nil)).Elem()
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput) ToAFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput() AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput {
-	return o
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput) ToAFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutputWithContext(ctx context.Context) AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput {
-	return o
-}
-
-func (o AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput) Elem() AFDDomainHttpsCustomizedCipherSuiteSetResponseOutput {
-	return o.ApplyT(func(v *AFDDomainHttpsCustomizedCipherSuiteSetResponse) AFDDomainHttpsCustomizedCipherSuiteSetResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AFDDomainHttpsCustomizedCipherSuiteSetResponse
-		return ret
-	}).(AFDDomainHttpsCustomizedCipherSuiteSetResponseOutput)
-}
-
-// Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
-func (o AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput) CipherSuiteSetForTls12() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AFDDomainHttpsCustomizedCipherSuiteSetResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CipherSuiteSetForTls12
-	}).(pulumi.StringArrayOutput)
-}
-
-// Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
-func (o AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput) CipherSuiteSetForTls13() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AFDDomainHttpsCustomizedCipherSuiteSetResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CipherSuiteSetForTls13
-	}).(pulumi.StringArrayOutput)
-}
-
 // The JSON object that contains the properties to secure a domain.
 type AFDDomainHttpsParameters struct {
 	// Defines the source of the SSL certificate.
 	CertificateType string `pulumi:"certificateType"`
-	// cipher suite set type that will be used for Https
-	CipherSuiteSetType *string `pulumi:"cipherSuiteSetType"`
-	// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
-	CustomizedCipherSuiteSet *AFDDomainHttpsCustomizedCipherSuiteSet `pulumi:"customizedCipherSuiteSet"`
-	// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+	// TLS protocol version that will be used for Https
 	MinimumTlsVersion *AfdMinimumTlsVersion `pulumi:"minimumTlsVersion"`
 	// Resource reference to the secret. ie. subs/rg/profile/secret
 	Secret *ResourceReference `pulumi:"secret"`
@@ -278,11 +38,7 @@ type AFDDomainHttpsParametersInput interface {
 type AFDDomainHttpsParametersArgs struct {
 	// Defines the source of the SSL certificate.
 	CertificateType pulumi.StringInput `pulumi:"certificateType"`
-	// cipher suite set type that will be used for Https
-	CipherSuiteSetType pulumi.StringPtrInput `pulumi:"cipherSuiteSetType"`
-	// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
-	CustomizedCipherSuiteSet AFDDomainHttpsCustomizedCipherSuiteSetPtrInput `pulumi:"customizedCipherSuiteSet"`
-	// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+	// TLS protocol version that will be used for Https
 	MinimumTlsVersion AfdMinimumTlsVersionPtrInput `pulumi:"minimumTlsVersion"`
 	// Resource reference to the secret. ie. subs/rg/profile/secret
 	Secret ResourceReferencePtrInput `pulumi:"secret"`
@@ -371,19 +127,7 @@ func (o AFDDomainHttpsParametersOutput) CertificateType() pulumi.StringOutput {
 	return o.ApplyT(func(v AFDDomainHttpsParameters) string { return v.CertificateType }).(pulumi.StringOutput)
 }
 
-// cipher suite set type that will be used for Https
-func (o AFDDomainHttpsParametersOutput) CipherSuiteSetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AFDDomainHttpsParameters) *string { return v.CipherSuiteSetType }).(pulumi.StringPtrOutput)
-}
-
-// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
-func (o AFDDomainHttpsParametersOutput) CustomizedCipherSuiteSet() AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput {
-	return o.ApplyT(func(v AFDDomainHttpsParameters) *AFDDomainHttpsCustomizedCipherSuiteSet {
-		return v.CustomizedCipherSuiteSet
-	}).(AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput)
-}
-
-// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+// TLS protocol version that will be used for Https
 func (o AFDDomainHttpsParametersOutput) MinimumTlsVersion() AfdMinimumTlsVersionPtrOutput {
 	return o.ApplyT(func(v AFDDomainHttpsParameters) *AfdMinimumTlsVersion { return v.MinimumTlsVersion }).(AfdMinimumTlsVersionPtrOutput)
 }
@@ -427,27 +171,7 @@ func (o AFDDomainHttpsParametersPtrOutput) CertificateType() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// cipher suite set type that will be used for Https
-func (o AFDDomainHttpsParametersPtrOutput) CipherSuiteSetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AFDDomainHttpsParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CipherSuiteSetType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
-func (o AFDDomainHttpsParametersPtrOutput) CustomizedCipherSuiteSet() AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput {
-	return o.ApplyT(func(v *AFDDomainHttpsParameters) *AFDDomainHttpsCustomizedCipherSuiteSet {
-		if v == nil {
-			return nil
-		}
-		return v.CustomizedCipherSuiteSet
-	}).(AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput)
-}
-
-// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+// TLS protocol version that will be used for Https
 func (o AFDDomainHttpsParametersPtrOutput) MinimumTlsVersion() AfdMinimumTlsVersionPtrOutput {
 	return o.ApplyT(func(v *AFDDomainHttpsParameters) *AfdMinimumTlsVersion {
 		if v == nil {
@@ -471,11 +195,7 @@ func (o AFDDomainHttpsParametersPtrOutput) Secret() ResourceReferencePtrOutput {
 type AFDDomainHttpsParametersResponse struct {
 	// Defines the source of the SSL certificate.
 	CertificateType string `pulumi:"certificateType"`
-	// cipher suite set type that will be used for Https
-	CipherSuiteSetType *string `pulumi:"cipherSuiteSetType"`
-	// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
-	CustomizedCipherSuiteSet *AFDDomainHttpsCustomizedCipherSuiteSetResponse `pulumi:"customizedCipherSuiteSet"`
-	// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+	// TLS protocol version that will be used for Https
 	MinimumTlsVersion *string `pulumi:"minimumTlsVersion"`
 	// Resource reference to the secret. ie. subs/rg/profile/secret
 	Secret *ResourceReferenceResponse `pulumi:"secret"`
@@ -501,19 +221,7 @@ func (o AFDDomainHttpsParametersResponseOutput) CertificateType() pulumi.StringO
 	return o.ApplyT(func(v AFDDomainHttpsParametersResponse) string { return v.CertificateType }).(pulumi.StringOutput)
 }
 
-// cipher suite set type that will be used for Https
-func (o AFDDomainHttpsParametersResponseOutput) CipherSuiteSetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AFDDomainHttpsParametersResponse) *string { return v.CipherSuiteSetType }).(pulumi.StringPtrOutput)
-}
-
-// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
-func (o AFDDomainHttpsParametersResponseOutput) CustomizedCipherSuiteSet() AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput {
-	return o.ApplyT(func(v AFDDomainHttpsParametersResponse) *AFDDomainHttpsCustomizedCipherSuiteSetResponse {
-		return v.CustomizedCipherSuiteSet
-	}).(AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput)
-}
-
-// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+// TLS protocol version that will be used for Https
 func (o AFDDomainHttpsParametersResponseOutput) MinimumTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AFDDomainHttpsParametersResponse) *string { return v.MinimumTlsVersion }).(pulumi.StringPtrOutput)
 }
@@ -557,27 +265,7 @@ func (o AFDDomainHttpsParametersResponsePtrOutput) CertificateType() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// cipher suite set type that will be used for Https
-func (o AFDDomainHttpsParametersResponsePtrOutput) CipherSuiteSetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AFDDomainHttpsParametersResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CipherSuiteSetType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
-func (o AFDDomainHttpsParametersResponsePtrOutput) CustomizedCipherSuiteSet() AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput {
-	return o.ApplyT(func(v *AFDDomainHttpsParametersResponse) *AFDDomainHttpsCustomizedCipherSuiteSetResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CustomizedCipherSuiteSet
-	}).(AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput)
-}
-
-// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+// TLS protocol version that will be used for Https
 func (o AFDDomainHttpsParametersResponsePtrOutput) MinimumTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AFDDomainHttpsParametersResponse) *string {
 		if v == nil {
@@ -1022,168 +710,6 @@ func (o AfdRouteCacheConfigurationResponsePtrOutput) QueryStringCachingBehavior(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines a path configuration for a web agent.
-type AgentPath struct {
-	// The actual path value.
-	Path string `pulumi:"path"`
-	// The type of the path.
-	Type string `pulumi:"type"`
-}
-
-// AgentPathInput is an input type that accepts AgentPathArgs and AgentPathOutput values.
-// You can construct a concrete instance of `AgentPathInput` via:
-//
-//	AgentPathArgs{...}
-type AgentPathInput interface {
-	pulumi.Input
-
-	ToAgentPathOutput() AgentPathOutput
-	ToAgentPathOutputWithContext(context.Context) AgentPathOutput
-}
-
-// Defines a path configuration for a web agent.
-type AgentPathArgs struct {
-	// The actual path value.
-	Path pulumi.StringInput `pulumi:"path"`
-	// The type of the path.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (AgentPathArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPath)(nil)).Elem()
-}
-
-func (i AgentPathArgs) ToAgentPathOutput() AgentPathOutput {
-	return i.ToAgentPathOutputWithContext(context.Background())
-}
-
-func (i AgentPathArgs) ToAgentPathOutputWithContext(ctx context.Context) AgentPathOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentPathOutput)
-}
-
-// AgentPathArrayInput is an input type that accepts AgentPathArray and AgentPathArrayOutput values.
-// You can construct a concrete instance of `AgentPathArrayInput` via:
-//
-//	AgentPathArray{ AgentPathArgs{...} }
-type AgentPathArrayInput interface {
-	pulumi.Input
-
-	ToAgentPathArrayOutput() AgentPathArrayOutput
-	ToAgentPathArrayOutputWithContext(context.Context) AgentPathArrayOutput
-}
-
-type AgentPathArray []AgentPathInput
-
-func (AgentPathArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AgentPath)(nil)).Elem()
-}
-
-func (i AgentPathArray) ToAgentPathArrayOutput() AgentPathArrayOutput {
-	return i.ToAgentPathArrayOutputWithContext(context.Background())
-}
-
-func (i AgentPathArray) ToAgentPathArrayOutputWithContext(ctx context.Context) AgentPathArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentPathArrayOutput)
-}
-
-// Defines a path configuration for a web agent.
-type AgentPathOutput struct{ *pulumi.OutputState }
-
-func (AgentPathOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPath)(nil)).Elem()
-}
-
-func (o AgentPathOutput) ToAgentPathOutput() AgentPathOutput {
-	return o
-}
-
-func (o AgentPathOutput) ToAgentPathOutputWithContext(ctx context.Context) AgentPathOutput {
-	return o
-}
-
-// The actual path value.
-func (o AgentPathOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v AgentPath) string { return v.Path }).(pulumi.StringOutput)
-}
-
-// The type of the path.
-func (o AgentPathOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v AgentPath) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type AgentPathArrayOutput struct{ *pulumi.OutputState }
-
-func (AgentPathArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AgentPath)(nil)).Elem()
-}
-
-func (o AgentPathArrayOutput) ToAgentPathArrayOutput() AgentPathArrayOutput {
-	return o
-}
-
-func (o AgentPathArrayOutput) ToAgentPathArrayOutputWithContext(ctx context.Context) AgentPathArrayOutput {
-	return o
-}
-
-func (o AgentPathArrayOutput) Index(i pulumi.IntInput) AgentPathOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentPath {
-		return vs[0].([]AgentPath)[vs[1].(int)]
-	}).(AgentPathOutput)
-}
-
-// Defines a path configuration for a web agent.
-type AgentPathResponse struct {
-	// The actual path value.
-	Path string `pulumi:"path"`
-	// The type of the path.
-	Type string `pulumi:"type"`
-}
-
-// Defines a path configuration for a web agent.
-type AgentPathResponseOutput struct{ *pulumi.OutputState }
-
-func (AgentPathResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentPathResponse)(nil)).Elem()
-}
-
-func (o AgentPathResponseOutput) ToAgentPathResponseOutput() AgentPathResponseOutput {
-	return o
-}
-
-func (o AgentPathResponseOutput) ToAgentPathResponseOutputWithContext(ctx context.Context) AgentPathResponseOutput {
-	return o
-}
-
-// The actual path value.
-func (o AgentPathResponseOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v AgentPathResponse) string { return v.Path }).(pulumi.StringOutput)
-}
-
-// The type of the path.
-func (o AgentPathResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v AgentPathResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type AgentPathResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (AgentPathResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AgentPathResponse)(nil)).Elem()
-}
-
-func (o AgentPathResponseArrayOutput) ToAgentPathResponseArrayOutput() AgentPathResponseArrayOutput {
-	return o
-}
-
-func (o AgentPathResponseArrayOutput) ToAgentPathResponseArrayOutputWithContext(ctx context.Context) AgentPathResponseArrayOutput {
-	return o
-}
-
-func (o AgentPathResponseArrayOutput) Index(i pulumi.IntInput) AgentPathResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentPathResponse {
-		return vs[0].([]AgentPathResponse)[vs[1].(int)]
-	}).(AgentPathResponseOutput)
-}
-
 // Azure FirstParty Managed Certificate provided by other first party resource providers to enable HTTPS.
 type AzureFirstPartyManagedCertificateParameters struct {
 	// The list of SANs.
@@ -1353,7 +879,7 @@ type AzureFirstPartyManagedCertificateParametersResponse struct {
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	// Certificate expiration date.
 	ExpirationDate string `pulumi:"expirationDate"`
-	// Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{certificateName}
+	// Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{certificateName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 	SecretSource ResourceReferenceResponse `pulumi:"secretSource"`
 	// Subject name in the certificate.
 	Subject string `pulumi:"subject"`
@@ -1391,7 +917,7 @@ func (o AzureFirstPartyManagedCertificateParametersResponseOutput) ExpirationDat
 	return o.ApplyT(func(v AzureFirstPartyManagedCertificateParametersResponse) string { return v.ExpirationDate }).(pulumi.StringOutput)
 }
 
-// Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{certificateName}
+// Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{certificateName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 func (o AzureFirstPartyManagedCertificateParametersResponseOutput) SecretSource() ResourceReferenceResponseOutput {
 	return o.ApplyT(func(v AzureFirstPartyManagedCertificateParametersResponse) ResourceReferenceResponse {
 		return v.SecretSource
@@ -1463,7 +989,7 @@ func (o AzureFirstPartyManagedCertificateParametersResponsePtrOutput) Expiration
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{certificateName}
+// Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{certificateName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 func (o AzureFirstPartyManagedCertificateParametersResponsePtrOutput) SecretSource() ResourceReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *AzureFirstPartyManagedCertificateParametersResponse) *ResourceReferenceResponse {
 		if v == nil {
@@ -1866,8 +1392,7 @@ type CacheExpirationActionParameters struct {
 	CacheDuration *string `pulumi:"cacheDuration"`
 	// The level at which the content needs to be cached.
 	CacheType string `pulumi:"cacheType"`
-	// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName  string `pulumi:"typeName"`
 }
 
 // CacheExpirationActionParametersInput is an input type that accepts CacheExpirationActionParametersArgs and CacheExpirationActionParametersOutput values.
@@ -1889,8 +1414,7 @@ type CacheExpirationActionParametersArgs struct {
 	CacheDuration pulumi.StringPtrInput `pulumi:"cacheDuration"`
 	// The level at which the content needs to be cached.
 	CacheType pulumi.StringInput `pulumi:"cacheType"`
-	// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName  pulumi.StringInput `pulumi:"typeName"`
 }
 
 func (CacheExpirationActionParametersArgs) ElementType() reflect.Type {
@@ -1935,7 +1459,6 @@ func (o CacheExpirationActionParametersOutput) CacheType() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheExpirationActionParameters) string { return v.CacheType }).(pulumi.StringOutput)
 }
 
-// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
 func (o CacheExpirationActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheExpirationActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -1948,8 +1471,7 @@ type CacheExpirationActionParametersResponse struct {
 	CacheDuration *string `pulumi:"cacheDuration"`
 	// The level at which the content needs to be cached.
 	CacheType string `pulumi:"cacheType"`
-	// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName  string `pulumi:"typeName"`
 }
 
 // Defines the parameters for the cache expiration action.
@@ -1982,7 +1504,6 @@ func (o CacheExpirationActionParametersResponseOutput) CacheType() pulumi.String
 	return o.ApplyT(func(v CacheExpirationActionParametersResponse) string { return v.CacheType }).(pulumi.StringOutput)
 }
 
-// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
 func (o CacheExpirationActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheExpirationActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -1993,8 +1514,7 @@ type CacheKeyQueryStringActionParameters struct {
 	QueryParameters *string `pulumi:"queryParameters"`
 	// Caching behavior for the requests
 	QueryStringBehavior string `pulumi:"queryStringBehavior"`
-	// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName            string `pulumi:"typeName"`
 }
 
 // CacheKeyQueryStringActionParametersInput is an input type that accepts CacheKeyQueryStringActionParametersArgs and CacheKeyQueryStringActionParametersOutput values.
@@ -2014,8 +1534,7 @@ type CacheKeyQueryStringActionParametersArgs struct {
 	QueryParameters pulumi.StringPtrInput `pulumi:"queryParameters"`
 	// Caching behavior for the requests
 	QueryStringBehavior pulumi.StringInput `pulumi:"queryStringBehavior"`
-	// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName            pulumi.StringInput `pulumi:"typeName"`
 }
 
 func (CacheKeyQueryStringActionParametersArgs) ElementType() reflect.Type {
@@ -2055,7 +1574,6 @@ func (o CacheKeyQueryStringActionParametersOutput) QueryStringBehavior() pulumi.
 	return o.ApplyT(func(v CacheKeyQueryStringActionParameters) string { return v.QueryStringBehavior }).(pulumi.StringOutput)
 }
 
-// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
 func (o CacheKeyQueryStringActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheKeyQueryStringActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -2066,8 +1584,7 @@ type CacheKeyQueryStringActionParametersResponse struct {
 	QueryParameters *string `pulumi:"queryParameters"`
 	// Caching behavior for the requests
 	QueryStringBehavior string `pulumi:"queryStringBehavior"`
-	// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName            string `pulumi:"typeName"`
 }
 
 // Defines the parameters for the cache-key query string action.
@@ -2095,7 +1612,6 @@ func (o CacheKeyQueryStringActionParametersResponseOutput) QueryStringBehavior()
 	return o.ApplyT(func(v CacheKeyQueryStringActionParametersResponse) string { return v.QueryStringBehavior }).(pulumi.StringOutput)
 }
 
-// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
 func (o CacheKeyQueryStringActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheKeyQueryStringActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -2104,8 +1620,7 @@ func (o CacheKeyQueryStringActionParametersResponseOutput) TypeName() pulumi.Str
 type CdnCertificateSourceParametersResponse struct {
 	// Type of certificate used
 	CertificateType string `pulumi:"certificateType"`
-	// Expected value is 'CdnCertificateSourceParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName        string `pulumi:"typeName"`
 }
 
 // Defines the parameters for using CDN managed certificate for securing custom domain.
@@ -2128,7 +1643,6 @@ func (o CdnCertificateSourceParametersResponseOutput) CertificateType() pulumi.S
 	return o.ApplyT(func(v CdnCertificateSourceParametersResponse) string { return v.CertificateType }).(pulumi.StringOutput)
 }
 
-// Expected value is 'CdnCertificateSourceParameters'.
 func (o CdnCertificateSourceParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CdnCertificateSourceParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -2167,7 +1681,6 @@ func (o CdnCertificateSourceParametersResponsePtrOutput) CertificateType() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Expected value is 'CdnCertificateSourceParameters'.
 func (o CdnCertificateSourceParametersResponsePtrOutput) TypeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CdnCertificateSourceParametersResponse) *string {
 		if v == nil {
@@ -2349,8 +1862,7 @@ type ClientPortMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleClientPortConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ClientPortMatchConditionParameters
@@ -2387,8 +1899,7 @@ type ClientPortMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleClientPortConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ClientPortMatchConditionParametersArgs
@@ -2449,7 +1960,6 @@ func (o ClientPortMatchConditionParametersOutput) Transforms() pulumi.StringArra
 	return o.ApplyT(func(v ClientPortMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleClientPortConditionParameters'.
 func (o ClientPortMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientPortMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -2464,8 +1974,7 @@ type ClientPortMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleClientPortConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ClientPortMatchConditionParametersResponse
@@ -2516,7 +2025,6 @@ func (o ClientPortMatchConditionParametersResponseOutput) Transforms() pulumi.St
 	return o.ApplyT(func(v ClientPortMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleClientPortConditionParameters'.
 func (o ClientPortMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientPortMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -2769,8 +2277,7 @@ type CookiesMatchConditionParameters struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleCookiesConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for CookiesMatchConditionParameters
@@ -2809,8 +2316,7 @@ type CookiesMatchConditionParametersArgs struct {
 	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleCookiesConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for CookiesMatchConditionParametersArgs
@@ -2876,7 +2382,6 @@ func (o CookiesMatchConditionParametersOutput) Transforms() pulumi.StringArrayOu
 	return o.ApplyT(func(v CookiesMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleCookiesConditionParameters'.
 func (o CookiesMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CookiesMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -2893,8 +2398,7 @@ type CookiesMatchConditionParametersResponse struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleCookiesConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for CookiesMatchConditionParametersResponse
@@ -2950,7 +2454,6 @@ func (o CookiesMatchConditionParametersResponseOutput) Transforms() pulumi.Strin
 	return o.ApplyT(func(v CookiesMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleCookiesConditionParameters'.
 func (o CookiesMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CookiesMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -3371,6 +2874,8 @@ type CustomerCertificateParameters struct {
 	SecretSource ResourceReference `pulumi:"secretSource"`
 	// Version of the secret to be used
 	SecretVersion *string `pulumi:"secretVersion"`
+	// The list of SANs.
+	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
 	// The type of the secret resource.
 	// Expected value is 'CustomerCertificate'.
 	Type string `pulumi:"type"`
@@ -3395,6 +2900,8 @@ type CustomerCertificateParametersArgs struct {
 	SecretSource ResourceReferenceInput `pulumi:"secretSource"`
 	// Version of the secret to be used
 	SecretVersion pulumi.StringPtrInput `pulumi:"secretVersion"`
+	// The list of SANs.
+	SubjectAlternativeNames pulumi.StringArrayInput `pulumi:"subjectAlternativeNames"`
 	// The type of the secret resource.
 	// Expected value is 'CustomerCertificate'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -3490,6 +2997,11 @@ func (o CustomerCertificateParametersOutput) SecretVersion() pulumi.StringPtrOut
 	return o.ApplyT(func(v CustomerCertificateParameters) *string { return v.SecretVersion }).(pulumi.StringPtrOutput)
 }
 
+// The list of SANs.
+func (o CustomerCertificateParametersOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomerCertificateParameters) []string { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
+}
+
 // The type of the secret resource.
 // Expected value is 'CustomerCertificate'.
 func (o CustomerCertificateParametersOutput) Type() pulumi.StringOutput {
@@ -3543,6 +3055,16 @@ func (o CustomerCertificateParametersPtrOutput) SecretVersion() pulumi.StringPtr
 		}
 		return v.SecretVersion
 	}).(pulumi.StringPtrOutput)
+}
+
+// The list of SANs.
+func (o CustomerCertificateParametersPtrOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomerCertificateParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectAlternativeNames
+	}).(pulumi.StringArrayOutput)
 }
 
 // The type of the secret resource.
@@ -4707,7 +4229,7 @@ func (o DeliveryRuleCacheKeyQueryStringActionResponseOutput) Parameters() CacheK
 
 // Defines the ClientPort condition for the delivery rule.
 type DeliveryRuleClientPortCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'ClientPort'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -4738,7 +4260,7 @@ type DeliveryRuleClientPortConditionInput interface {
 
 // Defines the ClientPort condition for the delivery rule.
 type DeliveryRuleClientPortConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'ClientPort'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -4781,7 +4303,7 @@ func (o DeliveryRuleClientPortConditionOutput) ToDeliveryRuleClientPortCondition
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'ClientPort'.
 func (o DeliveryRuleClientPortConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleClientPortCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -4794,7 +4316,7 @@ func (o DeliveryRuleClientPortConditionOutput) Parameters() ClientPortMatchCondi
 
 // Defines the ClientPort condition for the delivery rule.
 type DeliveryRuleClientPortConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'ClientPort'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -4827,7 +4349,7 @@ func (o DeliveryRuleClientPortConditionResponseOutput) ToDeliveryRuleClientPortC
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'ClientPort'.
 func (o DeliveryRuleClientPortConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleClientPortConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -4842,7 +4364,7 @@ func (o DeliveryRuleClientPortConditionResponseOutput) Parameters() ClientPortMa
 
 // Defines the Cookies condition for the delivery rule.
 type DeliveryRuleCookiesCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'Cookies'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -4873,7 +4395,7 @@ type DeliveryRuleCookiesConditionInput interface {
 
 // Defines the Cookies condition for the delivery rule.
 type DeliveryRuleCookiesConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'Cookies'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -4916,7 +4438,7 @@ func (o DeliveryRuleCookiesConditionOutput) ToDeliveryRuleCookiesConditionOutput
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'Cookies'.
 func (o DeliveryRuleCookiesConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleCookiesCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -4929,7 +4451,7 @@ func (o DeliveryRuleCookiesConditionOutput) Parameters() CookiesMatchConditionPa
 
 // Defines the Cookies condition for the delivery rule.
 type DeliveryRuleCookiesConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'Cookies'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -4962,7 +4484,7 @@ func (o DeliveryRuleCookiesConditionResponseOutput) ToDeliveryRuleCookiesConditi
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'Cookies'.
 func (o DeliveryRuleCookiesConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleCookiesConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -4977,7 +4499,7 @@ func (o DeliveryRuleCookiesConditionResponseOutput) Parameters() CookiesMatchCon
 
 // Defines the HostName condition for the delivery rule.
 type DeliveryRuleHostNameCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'HostName'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5008,7 +4530,7 @@ type DeliveryRuleHostNameConditionInput interface {
 
 // Defines the HostName condition for the delivery rule.
 type DeliveryRuleHostNameConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'HostName'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5051,7 +4573,7 @@ func (o DeliveryRuleHostNameConditionOutput) ToDeliveryRuleHostNameConditionOutp
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'HostName'.
 func (o DeliveryRuleHostNameConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleHostNameCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -5064,7 +4586,7 @@ func (o DeliveryRuleHostNameConditionOutput) Parameters() HostNameMatchCondition
 
 // Defines the HostName condition for the delivery rule.
 type DeliveryRuleHostNameConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'HostName'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5097,7 +4619,7 @@ func (o DeliveryRuleHostNameConditionResponseOutput) ToDeliveryRuleHostNameCondi
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'HostName'.
 func (o DeliveryRuleHostNameConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleHostNameConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -5112,7 +4634,7 @@ func (o DeliveryRuleHostNameConditionResponseOutput) Parameters() HostNameMatchC
 
 // Defines the HttpVersion condition for the delivery rule.
 type DeliveryRuleHttpVersionCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'HttpVersion'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5143,7 +4665,7 @@ type DeliveryRuleHttpVersionConditionInput interface {
 
 // Defines the HttpVersion condition for the delivery rule.
 type DeliveryRuleHttpVersionConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'HttpVersion'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5186,7 +4708,7 @@ func (o DeliveryRuleHttpVersionConditionOutput) ToDeliveryRuleHttpVersionConditi
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'HttpVersion'.
 func (o DeliveryRuleHttpVersionConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleHttpVersionCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -5199,7 +4721,7 @@ func (o DeliveryRuleHttpVersionConditionOutput) Parameters() HttpVersionMatchCon
 
 // Defines the HttpVersion condition for the delivery rule.
 type DeliveryRuleHttpVersionConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'HttpVersion'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5232,7 +4754,7 @@ func (o DeliveryRuleHttpVersionConditionResponseOutput) ToDeliveryRuleHttpVersio
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'HttpVersion'.
 func (o DeliveryRuleHttpVersionConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleHttpVersionConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -5247,7 +4769,7 @@ func (o DeliveryRuleHttpVersionConditionResponseOutput) Parameters() HttpVersion
 
 // Defines the IsDevice condition for the delivery rule.
 type DeliveryRuleIsDeviceCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'IsDevice'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5278,7 +4800,7 @@ type DeliveryRuleIsDeviceConditionInput interface {
 
 // Defines the IsDevice condition for the delivery rule.
 type DeliveryRuleIsDeviceConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'IsDevice'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5321,7 +4843,7 @@ func (o DeliveryRuleIsDeviceConditionOutput) ToDeliveryRuleIsDeviceConditionOutp
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'IsDevice'.
 func (o DeliveryRuleIsDeviceConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleIsDeviceCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -5334,7 +4856,7 @@ func (o DeliveryRuleIsDeviceConditionOutput) Parameters() IsDeviceMatchCondition
 
 // Defines the IsDevice condition for the delivery rule.
 type DeliveryRuleIsDeviceConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'IsDevice'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5367,7 +4889,7 @@ func (o DeliveryRuleIsDeviceConditionResponseOutput) ToDeliveryRuleIsDeviceCondi
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'IsDevice'.
 func (o DeliveryRuleIsDeviceConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleIsDeviceConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -5382,7 +4904,7 @@ func (o DeliveryRuleIsDeviceConditionResponseOutput) Parameters() IsDeviceMatchC
 
 // Defines the PostArgs condition for the delivery rule.
 type DeliveryRulePostArgsCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'PostArgs'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5413,7 +4935,7 @@ type DeliveryRulePostArgsConditionInput interface {
 
 // Defines the PostArgs condition for the delivery rule.
 type DeliveryRulePostArgsConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'PostArgs'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5456,7 +4978,7 @@ func (o DeliveryRulePostArgsConditionOutput) ToDeliveryRulePostArgsConditionOutp
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'PostArgs'.
 func (o DeliveryRulePostArgsConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRulePostArgsCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -5469,7 +4991,7 @@ func (o DeliveryRulePostArgsConditionOutput) Parameters() PostArgsMatchCondition
 
 // Defines the PostArgs condition for the delivery rule.
 type DeliveryRulePostArgsConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'PostArgs'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5502,7 +5024,7 @@ func (o DeliveryRulePostArgsConditionResponseOutput) ToDeliveryRulePostArgsCondi
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'PostArgs'.
 func (o DeliveryRulePostArgsConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRulePostArgsConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -5517,7 +5039,7 @@ func (o DeliveryRulePostArgsConditionResponseOutput) Parameters() PostArgsMatchC
 
 // Defines the QueryString condition for the delivery rule.
 type DeliveryRuleQueryStringCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'QueryString'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5548,7 +5070,7 @@ type DeliveryRuleQueryStringConditionInput interface {
 
 // Defines the QueryString condition for the delivery rule.
 type DeliveryRuleQueryStringConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'QueryString'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5591,7 +5113,7 @@ func (o DeliveryRuleQueryStringConditionOutput) ToDeliveryRuleQueryStringConditi
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'QueryString'.
 func (o DeliveryRuleQueryStringConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleQueryStringCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -5604,7 +5126,7 @@ func (o DeliveryRuleQueryStringConditionOutput) Parameters() QueryStringMatchCon
 
 // Defines the QueryString condition for the delivery rule.
 type DeliveryRuleQueryStringConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'QueryString'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5637,7 +5159,7 @@ func (o DeliveryRuleQueryStringConditionResponseOutput) ToDeliveryRuleQueryStrin
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'QueryString'.
 func (o DeliveryRuleQueryStringConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleQueryStringConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -5652,7 +5174,7 @@ func (o DeliveryRuleQueryStringConditionResponseOutput) Parameters() QueryString
 
 // Defines the RemoteAddress condition for the delivery rule.
 type DeliveryRuleRemoteAddressCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RemoteAddress'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5683,7 +5205,7 @@ type DeliveryRuleRemoteAddressConditionInput interface {
 
 // Defines the RemoteAddress condition for the delivery rule.
 type DeliveryRuleRemoteAddressConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RemoteAddress'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5726,7 +5248,7 @@ func (o DeliveryRuleRemoteAddressConditionOutput) ToDeliveryRuleRemoteAddressCon
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RemoteAddress'.
 func (o DeliveryRuleRemoteAddressConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRemoteAddressCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -5739,7 +5261,7 @@ func (o DeliveryRuleRemoteAddressConditionOutput) Parameters() RemoteAddressMatc
 
 // Defines the RemoteAddress condition for the delivery rule.
 type DeliveryRuleRemoteAddressConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RemoteAddress'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5772,7 +5294,7 @@ func (o DeliveryRuleRemoteAddressConditionResponseOutput) ToDeliveryRuleRemoteAd
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RemoteAddress'.
 func (o DeliveryRuleRemoteAddressConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRemoteAddressConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -5787,7 +5309,7 @@ func (o DeliveryRuleRemoteAddressConditionResponseOutput) Parameters() RemoteAdd
 
 // Defines the RequestBody condition for the delivery rule.
 type DeliveryRuleRequestBodyCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestBody'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5818,7 +5340,7 @@ type DeliveryRuleRequestBodyConditionInput interface {
 
 // Defines the RequestBody condition for the delivery rule.
 type DeliveryRuleRequestBodyConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestBody'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5861,7 +5383,7 @@ func (o DeliveryRuleRequestBodyConditionOutput) ToDeliveryRuleRequestBodyConditi
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RequestBody'.
 func (o DeliveryRuleRequestBodyConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRequestBodyCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -5874,7 +5396,7 @@ func (o DeliveryRuleRequestBodyConditionOutput) Parameters() RequestBodyMatchCon
 
 // Defines the RequestBody condition for the delivery rule.
 type DeliveryRuleRequestBodyConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestBody'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -5907,7 +5429,7 @@ func (o DeliveryRuleRequestBodyConditionResponseOutput) ToDeliveryRuleRequestBod
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RequestBody'.
 func (o DeliveryRuleRequestBodyConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRequestBodyConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -6024,7 +5546,7 @@ func (o DeliveryRuleRequestHeaderActionResponseOutput) Parameters() HeaderAction
 
 // Defines the RequestHeader condition for the delivery rule.
 type DeliveryRuleRequestHeaderCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestHeader'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6055,7 +5577,7 @@ type DeliveryRuleRequestHeaderConditionInput interface {
 
 // Defines the RequestHeader condition for the delivery rule.
 type DeliveryRuleRequestHeaderConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestHeader'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6098,7 +5620,7 @@ func (o DeliveryRuleRequestHeaderConditionOutput) ToDeliveryRuleRequestHeaderCon
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RequestHeader'.
 func (o DeliveryRuleRequestHeaderConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRequestHeaderCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -6111,7 +5633,7 @@ func (o DeliveryRuleRequestHeaderConditionOutput) Parameters() RequestHeaderMatc
 
 // Defines the RequestHeader condition for the delivery rule.
 type DeliveryRuleRequestHeaderConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestHeader'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6144,7 +5666,7 @@ func (o DeliveryRuleRequestHeaderConditionResponseOutput) ToDeliveryRuleRequestH
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RequestHeader'.
 func (o DeliveryRuleRequestHeaderConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRequestHeaderConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -6159,7 +5681,7 @@ func (o DeliveryRuleRequestHeaderConditionResponseOutput) Parameters() RequestHe
 
 // Defines the RequestMethod condition for the delivery rule.
 type DeliveryRuleRequestMethodCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestMethod'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6190,7 +5712,7 @@ type DeliveryRuleRequestMethodConditionInput interface {
 
 // Defines the RequestMethod condition for the delivery rule.
 type DeliveryRuleRequestMethodConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestMethod'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6233,7 +5755,7 @@ func (o DeliveryRuleRequestMethodConditionOutput) ToDeliveryRuleRequestMethodCon
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RequestMethod'.
 func (o DeliveryRuleRequestMethodConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRequestMethodCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -6246,7 +5768,7 @@ func (o DeliveryRuleRequestMethodConditionOutput) Parameters() RequestMethodMatc
 
 // Defines the RequestMethod condition for the delivery rule.
 type DeliveryRuleRequestMethodConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestMethod'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6279,7 +5801,7 @@ func (o DeliveryRuleRequestMethodConditionResponseOutput) ToDeliveryRuleRequestM
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RequestMethod'.
 func (o DeliveryRuleRequestMethodConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRequestMethodConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -6294,7 +5816,7 @@ func (o DeliveryRuleRequestMethodConditionResponseOutput) Parameters() RequestMe
 
 // Defines the RequestScheme condition for the delivery rule.
 type DeliveryRuleRequestSchemeCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestScheme'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6325,7 +5847,7 @@ type DeliveryRuleRequestSchemeConditionInput interface {
 
 // Defines the RequestScheme condition for the delivery rule.
 type DeliveryRuleRequestSchemeConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestScheme'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6368,7 +5890,7 @@ func (o DeliveryRuleRequestSchemeConditionOutput) ToDeliveryRuleRequestSchemeCon
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RequestScheme'.
 func (o DeliveryRuleRequestSchemeConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRequestSchemeCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -6381,7 +5903,7 @@ func (o DeliveryRuleRequestSchemeConditionOutput) Parameters() RequestSchemeMatc
 
 // Defines the RequestScheme condition for the delivery rule.
 type DeliveryRuleRequestSchemeConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestScheme'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6414,7 +5936,7 @@ func (o DeliveryRuleRequestSchemeConditionResponseOutput) ToDeliveryRuleRequestS
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RequestScheme'.
 func (o DeliveryRuleRequestSchemeConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRequestSchemeConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -6429,7 +5951,7 @@ func (o DeliveryRuleRequestSchemeConditionResponseOutput) Parameters() RequestSc
 
 // Defines the RequestUri condition for the delivery rule.
 type DeliveryRuleRequestUriCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestUri'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6460,7 +5982,7 @@ type DeliveryRuleRequestUriConditionInput interface {
 
 // Defines the RequestUri condition for the delivery rule.
 type DeliveryRuleRequestUriConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestUri'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6503,7 +6025,7 @@ func (o DeliveryRuleRequestUriConditionOutput) ToDeliveryRuleRequestUriCondition
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RequestUri'.
 func (o DeliveryRuleRequestUriConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRequestUriCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -6516,7 +6038,7 @@ func (o DeliveryRuleRequestUriConditionOutput) Parameters() RequestUriMatchCondi
 
 // Defines the RequestUri condition for the delivery rule.
 type DeliveryRuleRequestUriConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'RequestUri'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6549,7 +6071,7 @@ func (o DeliveryRuleRequestUriConditionResponseOutput) ToDeliveryRuleRequestUriC
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'RequestUri'.
 func (o DeliveryRuleRequestUriConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleRequestUriConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -6839,7 +6361,7 @@ func (o DeliveryRuleRouteConfigurationOverrideActionResponseOutput) Parameters()
 
 // Defines the ServerPort condition for the delivery rule.
 type DeliveryRuleServerPortCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'ServerPort'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6870,7 +6392,7 @@ type DeliveryRuleServerPortConditionInput interface {
 
 // Defines the ServerPort condition for the delivery rule.
 type DeliveryRuleServerPortConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'ServerPort'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6913,7 +6435,7 @@ func (o DeliveryRuleServerPortConditionOutput) ToDeliveryRuleServerPortCondition
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'ServerPort'.
 func (o DeliveryRuleServerPortConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleServerPortCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -6926,7 +6448,7 @@ func (o DeliveryRuleServerPortConditionOutput) Parameters() ServerPortMatchCondi
 
 // Defines the ServerPort condition for the delivery rule.
 type DeliveryRuleServerPortConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'ServerPort'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -6959,7 +6481,7 @@ func (o DeliveryRuleServerPortConditionResponseOutput) ToDeliveryRuleServerPortC
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'ServerPort'.
 func (o DeliveryRuleServerPortConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleServerPortConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -6974,7 +6496,7 @@ func (o DeliveryRuleServerPortConditionResponseOutput) Parameters() ServerPortMa
 
 // Defines the SocketAddress condition for the delivery rule.
 type DeliveryRuleSocketAddrCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'SocketAddr'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7005,7 +6527,7 @@ type DeliveryRuleSocketAddrConditionInput interface {
 
 // Defines the SocketAddress condition for the delivery rule.
 type DeliveryRuleSocketAddrConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'SocketAddr'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7048,7 +6570,7 @@ func (o DeliveryRuleSocketAddrConditionOutput) ToDeliveryRuleSocketAddrCondition
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'SocketAddr'.
 func (o DeliveryRuleSocketAddrConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleSocketAddrCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -7061,7 +6583,7 @@ func (o DeliveryRuleSocketAddrConditionOutput) Parameters() SocketAddrMatchCondi
 
 // Defines the SocketAddress condition for the delivery rule.
 type DeliveryRuleSocketAddrConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'SocketAddr'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7094,7 +6616,7 @@ func (o DeliveryRuleSocketAddrConditionResponseOutput) ToDeliveryRuleSocketAddrC
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'SocketAddr'.
 func (o DeliveryRuleSocketAddrConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleSocketAddrConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -7109,7 +6631,7 @@ func (o DeliveryRuleSocketAddrConditionResponseOutput) Parameters() SocketAddrMa
 
 // Defines the SslProtocol condition for the delivery rule.
 type DeliveryRuleSslProtocolCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'SslProtocol'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7140,7 +6662,7 @@ type DeliveryRuleSslProtocolConditionInput interface {
 
 // Defines the SslProtocol condition for the delivery rule.
 type DeliveryRuleSslProtocolConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'SslProtocol'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7183,7 +6705,7 @@ func (o DeliveryRuleSslProtocolConditionOutput) ToDeliveryRuleSslProtocolConditi
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'SslProtocol'.
 func (o DeliveryRuleSslProtocolConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleSslProtocolCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -7196,7 +6718,7 @@ func (o DeliveryRuleSslProtocolConditionOutput) Parameters() SslProtocolMatchCon
 
 // Defines the SslProtocol condition for the delivery rule.
 type DeliveryRuleSslProtocolConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'SslProtocol'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7229,7 +6751,7 @@ func (o DeliveryRuleSslProtocolConditionResponseOutput) ToDeliveryRuleSslProtoco
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'SslProtocol'.
 func (o DeliveryRuleSslProtocolConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleSslProtocolConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -7244,7 +6766,7 @@ func (o DeliveryRuleSslProtocolConditionResponseOutput) Parameters() SslProtocol
 
 // Defines the UrlFileExtension condition for the delivery rule.
 type DeliveryRuleUrlFileExtensionCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'UrlFileExtension'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7275,7 +6797,7 @@ type DeliveryRuleUrlFileExtensionConditionInput interface {
 
 // Defines the UrlFileExtension condition for the delivery rule.
 type DeliveryRuleUrlFileExtensionConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'UrlFileExtension'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7318,7 +6840,7 @@ func (o DeliveryRuleUrlFileExtensionConditionOutput) ToDeliveryRuleUrlFileExtens
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'UrlFileExtension'.
 func (o DeliveryRuleUrlFileExtensionConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleUrlFileExtensionCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -7333,7 +6855,7 @@ func (o DeliveryRuleUrlFileExtensionConditionOutput) Parameters() UrlFileExtensi
 
 // Defines the UrlFileExtension condition for the delivery rule.
 type DeliveryRuleUrlFileExtensionConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'UrlFileExtension'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7366,7 +6888,7 @@ func (o DeliveryRuleUrlFileExtensionConditionResponseOutput) ToDeliveryRuleUrlFi
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'UrlFileExtension'.
 func (o DeliveryRuleUrlFileExtensionConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleUrlFileExtensionConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -7381,7 +6903,7 @@ func (o DeliveryRuleUrlFileExtensionConditionResponseOutput) Parameters() UrlFil
 
 // Defines the UrlFileName condition for the delivery rule.
 type DeliveryRuleUrlFileNameCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'UrlFileName'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7412,7 +6934,7 @@ type DeliveryRuleUrlFileNameConditionInput interface {
 
 // Defines the UrlFileName condition for the delivery rule.
 type DeliveryRuleUrlFileNameConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'UrlFileName'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7455,7 +6977,7 @@ func (o DeliveryRuleUrlFileNameConditionOutput) ToDeliveryRuleUrlFileNameConditi
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'UrlFileName'.
 func (o DeliveryRuleUrlFileNameConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleUrlFileNameCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -7468,7 +6990,7 @@ func (o DeliveryRuleUrlFileNameConditionOutput) Parameters() UrlFileNameMatchCon
 
 // Defines the UrlFileName condition for the delivery rule.
 type DeliveryRuleUrlFileNameConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'UrlFileName'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7501,7 +7023,7 @@ func (o DeliveryRuleUrlFileNameConditionResponseOutput) ToDeliveryRuleUrlFileNam
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'UrlFileName'.
 func (o DeliveryRuleUrlFileNameConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleUrlFileNameConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -7516,7 +7038,7 @@ func (o DeliveryRuleUrlFileNameConditionResponseOutput) Parameters() UrlFileName
 
 // Defines the UrlPath condition for the delivery rule.
 type DeliveryRuleUrlPathCondition struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'UrlPath'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7547,7 +7069,7 @@ type DeliveryRuleUrlPathConditionInput interface {
 
 // Defines the UrlPath condition for the delivery rule.
 type DeliveryRuleUrlPathConditionArgs struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'UrlPath'.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7590,7 +7112,7 @@ func (o DeliveryRuleUrlPathConditionOutput) ToDeliveryRuleUrlPathConditionOutput
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'UrlPath'.
 func (o DeliveryRuleUrlPathConditionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleUrlPathCondition) string { return v.Name }).(pulumi.StringOutput)
@@ -7603,7 +7125,7 @@ func (o DeliveryRuleUrlPathConditionOutput) Parameters() UrlPathMatchConditionPa
 
 // Defines the UrlPath condition for the delivery rule.
 type DeliveryRuleUrlPathConditionResponse struct {
-	// Request variable to compare with.
+	// The name of the condition for the delivery rule.
 	// Expected value is 'UrlPath'.
 	Name string `pulumi:"name"`
 	// Defines the parameters for the condition.
@@ -7636,7 +7158,7 @@ func (o DeliveryRuleUrlPathConditionResponseOutput) ToDeliveryRuleUrlPathConditi
 	return o
 }
 
-// Request variable to compare with.
+// The name of the condition for the delivery rule.
 // Expected value is 'UrlPath'.
 func (o DeliveryRuleUrlPathConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryRuleUrlPathConditionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -7842,7 +7364,7 @@ func (o EndpointPropertiesUpdateParametersDeliveryPolicyPtrOutput) Rules() Deliv
 }
 
 // A policy that specifies the delivery rules to be used for an endpoint.
-type EndpointPropertiesUpdateParametersDeliveryPolicyResponse struct {
+type EndpointPropertiesUpdateParametersResponseDeliveryPolicy struct {
 	// User-friendly description of the policy.
 	Description *string `pulumi:"description"`
 	// A list of the delivery rules.
@@ -7850,59 +7372,59 @@ type EndpointPropertiesUpdateParametersDeliveryPolicyResponse struct {
 }
 
 // A policy that specifies the delivery rules to be used for an endpoint.
-type EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput struct{ *pulumi.OutputState }
+type EndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput struct{ *pulumi.OutputState }
 
-func (EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointPropertiesUpdateParametersDeliveryPolicyResponse)(nil)).Elem()
+func (EndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPropertiesUpdateParametersResponseDeliveryPolicy)(nil)).Elem()
 }
 
-func (o EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput) ToEndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput() EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput {
+func (o EndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput) ToEndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput() EndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput {
 	return o
 }
 
-func (o EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput) ToEndpointPropertiesUpdateParametersDeliveryPolicyResponseOutputWithContext(ctx context.Context) EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput {
+func (o EndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput) ToEndpointPropertiesUpdateParametersResponseDeliveryPolicyOutputWithContext(ctx context.Context) EndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput {
 	return o
 }
 
 // User-friendly description of the policy.
-func (o EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesUpdateParametersDeliveryPolicyResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o EndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesUpdateParametersResponseDeliveryPolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // A list of the delivery rules.
-func (o EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput) Rules() DeliveryRuleResponseArrayOutput {
-	return o.ApplyT(func(v EndpointPropertiesUpdateParametersDeliveryPolicyResponse) []DeliveryRuleResponse {
+func (o EndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput) Rules() DeliveryRuleResponseArrayOutput {
+	return o.ApplyT(func(v EndpointPropertiesUpdateParametersResponseDeliveryPolicy) []DeliveryRuleResponse {
 		return v.Rules
 	}).(DeliveryRuleResponseArrayOutput)
 }
 
-type EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+type EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput struct{ *pulumi.OutputState }
 
-func (EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointPropertiesUpdateParametersDeliveryPolicyResponse)(nil)).Elem()
+func (EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointPropertiesUpdateParametersResponseDeliveryPolicy)(nil)).Elem()
 }
 
-func (o EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput) ToEndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput() EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput {
+func (o EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput) ToEndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput() EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput {
 	return o
 }
 
-func (o EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput) ToEndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutputWithContext(ctx context.Context) EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput {
+func (o EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput) ToEndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutputWithContext(ctx context.Context) EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput {
 	return o
 }
 
-func (o EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput) Elem() EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput {
-	return o.ApplyT(func(v *EndpointPropertiesUpdateParametersDeliveryPolicyResponse) EndpointPropertiesUpdateParametersDeliveryPolicyResponse {
+func (o EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput) Elem() EndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput {
+	return o.ApplyT(func(v *EndpointPropertiesUpdateParametersResponseDeliveryPolicy) EndpointPropertiesUpdateParametersResponseDeliveryPolicy {
 		if v != nil {
 			return *v
 		}
-		var ret EndpointPropertiesUpdateParametersDeliveryPolicyResponse
+		var ret EndpointPropertiesUpdateParametersResponseDeliveryPolicy
 		return ret
-	}).(EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput)
+	}).(EndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput)
 }
 
 // User-friendly description of the policy.
-func (o EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointPropertiesUpdateParametersDeliveryPolicyResponse) *string {
+func (o EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointPropertiesUpdateParametersResponseDeliveryPolicy) *string {
 		if v == nil {
 			return nil
 		}
@@ -7911,13 +7433,75 @@ func (o EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput) Descr
 }
 
 // A list of the delivery rules.
-func (o EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput) Rules() DeliveryRuleResponseArrayOutput {
-	return o.ApplyT(func(v *EndpointPropertiesUpdateParametersDeliveryPolicyResponse) []DeliveryRuleResponse {
+func (o EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput) Rules() DeliveryRuleResponseArrayOutput {
+	return o.ApplyT(func(v *EndpointPropertiesUpdateParametersResponseDeliveryPolicy) []DeliveryRuleResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Rules
 	}).(DeliveryRuleResponseArrayOutput)
+}
+
+// Defines the Web Application Firewall policy for the endpoint (if applicable)
+type EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink struct {
+	// Resource ID.
+	Id *string `pulumi:"id"`
+}
+
+// Defines the Web Application Firewall policy for the endpoint (if applicable)
+type EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput struct{ *pulumi.OutputState }
+
+func (EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink)(nil)).Elem()
+}
+
+func (o EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput) ToEndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput() EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput {
+	return o
+}
+
+func (o EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput) ToEndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutputWithContext(ctx context.Context) EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput {
+	return o
+}
+
+// Resource ID.
+func (o EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink) *string {
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink)(nil)).Elem()
+}
+
+func (o EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput) ToEndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput() EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput {
+	return o
+}
+
+func (o EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput) ToEndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutputWithContext(ctx context.Context) EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput {
+	return o
+}
+
+func (o EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput) Elem() EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput {
+	return o.ApplyT(func(v *EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink) EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink
+		return ret
+	}).(EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput)
+}
+
+// Resource ID.
+func (o EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the Web Application Firewall policy for the endpoint (if applicable)
@@ -8053,68 +7637,6 @@ func (o EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkPtrOut
 // Resource ID.
 func (o EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines the Web Application Firewall policy for the endpoint (if applicable)
-type EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse struct {
-	// Resource ID.
-	Id *string `pulumi:"id"`
-}
-
-// Defines the Web Application Firewall policy for the endpoint (if applicable)
-type EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutput struct{ *pulumi.OutputState }
-
-func (EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse)(nil)).Elem()
-}
-
-func (o EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutput) ToEndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutput() EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutput {
-	return o
-}
-
-func (o EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutput) ToEndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutputWithContext(ctx context.Context) EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutput {
-	return o
-}
-
-// Resource ID.
-func (o EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse) *string {
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-type EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse)(nil)).Elem()
-}
-
-func (o EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput) ToEndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput() EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput {
-	return o
-}
-
-func (o EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput) ToEndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutputWithContext(ctx context.Context) EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput {
-	return o
-}
-
-func (o EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput) Elem() EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutput {
-	return o.ApplyT(func(v *EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse) EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse
-		return ret
-	}).(EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutput)
-}
-
-// Resource ID.
-func (o EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -8306,8 +7828,7 @@ type HeaderActionParameters struct {
 	HeaderAction string `pulumi:"headerAction"`
 	// Name of the header to modify
 	HeaderName string `pulumi:"headerName"`
-	// Expected value is 'DeliveryRuleHeaderActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string `pulumi:"typeName"`
 	// Value for the specified action
 	Value *string `pulumi:"value"`
 }
@@ -8329,8 +7850,7 @@ type HeaderActionParametersArgs struct {
 	HeaderAction pulumi.StringInput `pulumi:"headerAction"`
 	// Name of the header to modify
 	HeaderName pulumi.StringInput `pulumi:"headerName"`
-	// Expected value is 'DeliveryRuleHeaderActionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput `pulumi:"typeName"`
 	// Value for the specified action
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -8372,7 +7892,6 @@ func (o HeaderActionParametersOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderActionParameters) string { return v.HeaderName }).(pulumi.StringOutput)
 }
 
-// Expected value is 'DeliveryRuleHeaderActionParameters'.
 func (o HeaderActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -8388,8 +7907,7 @@ type HeaderActionParametersResponse struct {
 	HeaderAction string `pulumi:"headerAction"`
 	// Name of the header to modify
 	HeaderName string `pulumi:"headerName"`
-	// Expected value is 'DeliveryRuleHeaderActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string `pulumi:"typeName"`
 	// Value for the specified action
 	Value *string `pulumi:"value"`
 }
@@ -8419,7 +7937,6 @@ func (o HeaderActionParametersResponseOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderActionParametersResponse) string { return v.HeaderName }).(pulumi.StringOutput)
 }
 
-// Expected value is 'DeliveryRuleHeaderActionParameters'.
 func (o HeaderActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -8747,8 +8264,7 @@ type HostNameMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleHostNameConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HostNameMatchConditionParameters
@@ -8785,8 +8301,7 @@ type HostNameMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleHostNameConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HostNameMatchConditionParametersArgs
@@ -8847,7 +8362,6 @@ func (o HostNameMatchConditionParametersOutput) Transforms() pulumi.StringArrayO
 	return o.ApplyT(func(v HostNameMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleHostNameConditionParameters'.
 func (o HostNameMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HostNameMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -8862,8 +8376,7 @@ type HostNameMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleHostNameConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HostNameMatchConditionParametersResponse
@@ -8914,7 +8427,6 @@ func (o HostNameMatchConditionParametersResponseOutput) Transforms() pulumi.Stri
 	return o.ApplyT(func(v HostNameMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleHostNameConditionParameters'.
 func (o HostNameMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HostNameMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -9091,8 +8603,7 @@ type HttpVersionMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HttpVersionMatchConditionParameters
@@ -9129,8 +8640,7 @@ type HttpVersionMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HttpVersionMatchConditionParametersArgs
@@ -9191,7 +8701,6 @@ func (o HttpVersionMatchConditionParametersOutput) Transforms() pulumi.StringArr
 	return o.ApplyT(func(v HttpVersionMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
 func (o HttpVersionMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpVersionMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -9206,8 +8715,7 @@ type HttpVersionMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HttpVersionMatchConditionParametersResponse
@@ -9258,7 +8766,6 @@ func (o HttpVersionMatchConditionParametersResponseOutput) Transforms() pulumi.S
 	return o.ApplyT(func(v HttpVersionMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
 func (o HttpVersionMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpVersionMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -9273,8 +8780,7 @@ type IsDeviceMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for IsDeviceMatchConditionParameters
@@ -9311,8 +8817,7 @@ type IsDeviceMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for IsDeviceMatchConditionParametersArgs
@@ -9373,7 +8878,6 @@ func (o IsDeviceMatchConditionParametersOutput) Transforms() pulumi.StringArrayO
 	return o.ApplyT(func(v IsDeviceMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
 func (o IsDeviceMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v IsDeviceMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -9388,8 +8892,7 @@ type IsDeviceMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for IsDeviceMatchConditionParametersResponse
@@ -9440,7 +8943,6 @@ func (o IsDeviceMatchConditionParametersResponseOutput) Transforms() pulumi.Stri
 	return o.ApplyT(func(v IsDeviceMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
 func (o IsDeviceMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v IsDeviceMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -9457,8 +8959,7 @@ type KeyVaultCertificateSourceParametersResponse struct {
 	SecretVersion *string `pulumi:"secretVersion"`
 	// Subscription Id of the user's Key Vault containing the SSL certificate
 	SubscriptionId string `pulumi:"subscriptionId"`
-	// Expected value is 'KeyVaultCertificateSourceParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName       string `pulumi:"typeName"`
 	// Describes the action that shall be taken when the certificate is updated in Key Vault.
 	UpdateRule string `pulumi:"updateRule"`
 	// The name of the user's Key Vault containing the SSL certificate
@@ -9505,7 +9006,6 @@ func (o KeyVaultCertificateSourceParametersResponseOutput) SubscriptionId() pulu
 	return o.ApplyT(func(v KeyVaultCertificateSourceParametersResponse) string { return v.SubscriptionId }).(pulumi.StringOutput)
 }
 
-// Expected value is 'KeyVaultCertificateSourceParameters'.
 func (o KeyVaultCertificateSourceParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultCertificateSourceParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -9594,7 +9094,6 @@ func (o KeyVaultCertificateSourceParametersResponsePtrOutput) SubscriptionId() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Expected value is 'KeyVaultCertificateSourceParameters'.
 func (o KeyVaultCertificateSourceParametersResponsePtrOutput) TypeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVaultCertificateSourceParametersResponse) *string {
 		if v == nil {
@@ -11525,280 +11024,6 @@ func (o MatchConditionResponseArrayOutput) Index(i pulumi.IntInput) MatchConditi
 	}).(MatchConditionResponseOutput)
 }
 
-// The JSON object that contains the properties of the origin authentication settings.
-type OriginAuthenticationProperties struct {
-	// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-	Scope *string `pulumi:"scope"`
-	// The type of the authentication for the origin.
-	Type *string `pulumi:"type"`
-	// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
-	UserAssignedIdentity *ResourceReference `pulumi:"userAssignedIdentity"`
-}
-
-// OriginAuthenticationPropertiesInput is an input type that accepts OriginAuthenticationPropertiesArgs and OriginAuthenticationPropertiesOutput values.
-// You can construct a concrete instance of `OriginAuthenticationPropertiesInput` via:
-//
-//	OriginAuthenticationPropertiesArgs{...}
-type OriginAuthenticationPropertiesInput interface {
-	pulumi.Input
-
-	ToOriginAuthenticationPropertiesOutput() OriginAuthenticationPropertiesOutput
-	ToOriginAuthenticationPropertiesOutputWithContext(context.Context) OriginAuthenticationPropertiesOutput
-}
-
-// The JSON object that contains the properties of the origin authentication settings.
-type OriginAuthenticationPropertiesArgs struct {
-	// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-	Scope pulumi.StringPtrInput `pulumi:"scope"`
-	// The type of the authentication for the origin.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
-	UserAssignedIdentity ResourceReferencePtrInput `pulumi:"userAssignedIdentity"`
-}
-
-func (OriginAuthenticationPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OriginAuthenticationProperties)(nil)).Elem()
-}
-
-func (i OriginAuthenticationPropertiesArgs) ToOriginAuthenticationPropertiesOutput() OriginAuthenticationPropertiesOutput {
-	return i.ToOriginAuthenticationPropertiesOutputWithContext(context.Background())
-}
-
-func (i OriginAuthenticationPropertiesArgs) ToOriginAuthenticationPropertiesOutputWithContext(ctx context.Context) OriginAuthenticationPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OriginAuthenticationPropertiesOutput)
-}
-
-func (i OriginAuthenticationPropertiesArgs) ToOriginAuthenticationPropertiesPtrOutput() OriginAuthenticationPropertiesPtrOutput {
-	return i.ToOriginAuthenticationPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i OriginAuthenticationPropertiesArgs) ToOriginAuthenticationPropertiesPtrOutputWithContext(ctx context.Context) OriginAuthenticationPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OriginAuthenticationPropertiesOutput).ToOriginAuthenticationPropertiesPtrOutputWithContext(ctx)
-}
-
-// OriginAuthenticationPropertiesPtrInput is an input type that accepts OriginAuthenticationPropertiesArgs, OriginAuthenticationPropertiesPtr and OriginAuthenticationPropertiesPtrOutput values.
-// You can construct a concrete instance of `OriginAuthenticationPropertiesPtrInput` via:
-//
-//	        OriginAuthenticationPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type OriginAuthenticationPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToOriginAuthenticationPropertiesPtrOutput() OriginAuthenticationPropertiesPtrOutput
-	ToOriginAuthenticationPropertiesPtrOutputWithContext(context.Context) OriginAuthenticationPropertiesPtrOutput
-}
-
-type originAuthenticationPropertiesPtrType OriginAuthenticationPropertiesArgs
-
-func OriginAuthenticationPropertiesPtr(v *OriginAuthenticationPropertiesArgs) OriginAuthenticationPropertiesPtrInput {
-	return (*originAuthenticationPropertiesPtrType)(v)
-}
-
-func (*originAuthenticationPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OriginAuthenticationProperties)(nil)).Elem()
-}
-
-func (i *originAuthenticationPropertiesPtrType) ToOriginAuthenticationPropertiesPtrOutput() OriginAuthenticationPropertiesPtrOutput {
-	return i.ToOriginAuthenticationPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *originAuthenticationPropertiesPtrType) ToOriginAuthenticationPropertiesPtrOutputWithContext(ctx context.Context) OriginAuthenticationPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OriginAuthenticationPropertiesPtrOutput)
-}
-
-// The JSON object that contains the properties of the origin authentication settings.
-type OriginAuthenticationPropertiesOutput struct{ *pulumi.OutputState }
-
-func (OriginAuthenticationPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OriginAuthenticationProperties)(nil)).Elem()
-}
-
-func (o OriginAuthenticationPropertiesOutput) ToOriginAuthenticationPropertiesOutput() OriginAuthenticationPropertiesOutput {
-	return o
-}
-
-func (o OriginAuthenticationPropertiesOutput) ToOriginAuthenticationPropertiesOutputWithContext(ctx context.Context) OriginAuthenticationPropertiesOutput {
-	return o
-}
-
-func (o OriginAuthenticationPropertiesOutput) ToOriginAuthenticationPropertiesPtrOutput() OriginAuthenticationPropertiesPtrOutput {
-	return o.ToOriginAuthenticationPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o OriginAuthenticationPropertiesOutput) ToOriginAuthenticationPropertiesPtrOutputWithContext(ctx context.Context) OriginAuthenticationPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OriginAuthenticationProperties) *OriginAuthenticationProperties {
-		return &v
-	}).(OriginAuthenticationPropertiesPtrOutput)
-}
-
-// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-func (o OriginAuthenticationPropertiesOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OriginAuthenticationProperties) *string { return v.Scope }).(pulumi.StringPtrOutput)
-}
-
-// The type of the authentication for the origin.
-func (o OriginAuthenticationPropertiesOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OriginAuthenticationProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
-func (o OriginAuthenticationPropertiesOutput) UserAssignedIdentity() ResourceReferencePtrOutput {
-	return o.ApplyT(func(v OriginAuthenticationProperties) *ResourceReference { return v.UserAssignedIdentity }).(ResourceReferencePtrOutput)
-}
-
-type OriginAuthenticationPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (OriginAuthenticationPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OriginAuthenticationProperties)(nil)).Elem()
-}
-
-func (o OriginAuthenticationPropertiesPtrOutput) ToOriginAuthenticationPropertiesPtrOutput() OriginAuthenticationPropertiesPtrOutput {
-	return o
-}
-
-func (o OriginAuthenticationPropertiesPtrOutput) ToOriginAuthenticationPropertiesPtrOutputWithContext(ctx context.Context) OriginAuthenticationPropertiesPtrOutput {
-	return o
-}
-
-func (o OriginAuthenticationPropertiesPtrOutput) Elem() OriginAuthenticationPropertiesOutput {
-	return o.ApplyT(func(v *OriginAuthenticationProperties) OriginAuthenticationProperties {
-		if v != nil {
-			return *v
-		}
-		var ret OriginAuthenticationProperties
-		return ret
-	}).(OriginAuthenticationPropertiesOutput)
-}
-
-// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-func (o OriginAuthenticationPropertiesPtrOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OriginAuthenticationProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Scope
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of the authentication for the origin.
-func (o OriginAuthenticationPropertiesPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OriginAuthenticationProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
-func (o OriginAuthenticationPropertiesPtrOutput) UserAssignedIdentity() ResourceReferencePtrOutput {
-	return o.ApplyT(func(v *OriginAuthenticationProperties) *ResourceReference {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentity
-	}).(ResourceReferencePtrOutput)
-}
-
-// The JSON object that contains the properties of the origin authentication settings.
-type OriginAuthenticationPropertiesResponse struct {
-	// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-	Scope *string `pulumi:"scope"`
-	// The type of the authentication for the origin.
-	Type *string `pulumi:"type"`
-	// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
-	UserAssignedIdentity *ResourceReferenceResponse `pulumi:"userAssignedIdentity"`
-}
-
-// The JSON object that contains the properties of the origin authentication settings.
-type OriginAuthenticationPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (OriginAuthenticationPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OriginAuthenticationPropertiesResponse)(nil)).Elem()
-}
-
-func (o OriginAuthenticationPropertiesResponseOutput) ToOriginAuthenticationPropertiesResponseOutput() OriginAuthenticationPropertiesResponseOutput {
-	return o
-}
-
-func (o OriginAuthenticationPropertiesResponseOutput) ToOriginAuthenticationPropertiesResponseOutputWithContext(ctx context.Context) OriginAuthenticationPropertiesResponseOutput {
-	return o
-}
-
-// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-func (o OriginAuthenticationPropertiesResponseOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OriginAuthenticationPropertiesResponse) *string { return v.Scope }).(pulumi.StringPtrOutput)
-}
-
-// The type of the authentication for the origin.
-func (o OriginAuthenticationPropertiesResponseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OriginAuthenticationPropertiesResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
-func (o OriginAuthenticationPropertiesResponseOutput) UserAssignedIdentity() ResourceReferenceResponsePtrOutput {
-	return o.ApplyT(func(v OriginAuthenticationPropertiesResponse) *ResourceReferenceResponse {
-		return v.UserAssignedIdentity
-	}).(ResourceReferenceResponsePtrOutput)
-}
-
-type OriginAuthenticationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OriginAuthenticationPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OriginAuthenticationPropertiesResponse)(nil)).Elem()
-}
-
-func (o OriginAuthenticationPropertiesResponsePtrOutput) ToOriginAuthenticationPropertiesResponsePtrOutput() OriginAuthenticationPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o OriginAuthenticationPropertiesResponsePtrOutput) ToOriginAuthenticationPropertiesResponsePtrOutputWithContext(ctx context.Context) OriginAuthenticationPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o OriginAuthenticationPropertiesResponsePtrOutput) Elem() OriginAuthenticationPropertiesResponseOutput {
-	return o.ApplyT(func(v *OriginAuthenticationPropertiesResponse) OriginAuthenticationPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OriginAuthenticationPropertiesResponse
-		return ret
-	}).(OriginAuthenticationPropertiesResponseOutput)
-}
-
-// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-func (o OriginAuthenticationPropertiesResponsePtrOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OriginAuthenticationPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Scope
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of the authentication for the origin.
-func (o OriginAuthenticationPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OriginAuthenticationPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
-func (o OriginAuthenticationPropertiesResponsePtrOutput) UserAssignedIdentity() ResourceReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *OriginAuthenticationPropertiesResponse) *ResourceReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentity
-	}).(ResourceReferenceResponsePtrOutput)
-}
-
 // Defines the parameters for the origin group override configuration.
 type OriginGroupOverride struct {
 	// Protocol this rule will use when forwarding traffic to backends.
@@ -12029,8 +11254,7 @@ func (o OriginGroupOverrideActionOutput) Parameters() OriginGroupOverrideActionP
 type OriginGroupOverrideActionParameters struct {
 	// defines the OriginGroup that would override the DefaultOriginGroup.
 	OriginGroup ResourceReference `pulumi:"originGroup"`
-	// Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName    string            `pulumi:"typeName"`
 }
 
 // OriginGroupOverrideActionParametersInput is an input type that accepts OriginGroupOverrideActionParametersArgs and OriginGroupOverrideActionParametersOutput values.
@@ -12048,8 +11272,7 @@ type OriginGroupOverrideActionParametersInput interface {
 type OriginGroupOverrideActionParametersArgs struct {
 	// defines the OriginGroup that would override the DefaultOriginGroup.
 	OriginGroup ResourceReferenceInput `pulumi:"originGroup"`
-	// Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName    pulumi.StringInput     `pulumi:"typeName"`
 }
 
 func (OriginGroupOverrideActionParametersArgs) ElementType() reflect.Type {
@@ -12084,7 +11307,6 @@ func (o OriginGroupOverrideActionParametersOutput) OriginGroup() ResourceReferen
 	return o.ApplyT(func(v OriginGroupOverrideActionParameters) ResourceReference { return v.OriginGroup }).(ResourceReferenceOutput)
 }
 
-// Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
 func (o OriginGroupOverrideActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v OriginGroupOverrideActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -12093,8 +11315,7 @@ func (o OriginGroupOverrideActionParametersOutput) TypeName() pulumi.StringOutpu
 type OriginGroupOverrideActionParametersResponse struct {
 	// defines the OriginGroup that would override the DefaultOriginGroup.
 	OriginGroup ResourceReferenceResponse `pulumi:"originGroup"`
-	// Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName    string                    `pulumi:"typeName"`
 }
 
 // Defines the parameters for the origin group override action.
@@ -12117,7 +11338,6 @@ func (o OriginGroupOverrideActionParametersResponseOutput) OriginGroup() Resourc
 	return o.ApplyT(func(v OriginGroupOverrideActionParametersResponse) ResourceReferenceResponse { return v.OriginGroup }).(ResourceReferenceResponseOutput)
 }
 
-// Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
 func (o OriginGroupOverrideActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v OriginGroupOverrideActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -12241,7 +11461,7 @@ type PolicySettings struct {
 	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
 	DefaultCustomBlockResponseBody *string `pulumi:"defaultCustomBlockResponseBody"`
 	// If the action type is block, this field defines the default customer overridable http response status code.
-	DefaultCustomBlockResponseStatusCode *float64 `pulumi:"defaultCustomBlockResponseStatusCode"`
+	DefaultCustomBlockResponseStatusCode *int `pulumi:"defaultCustomBlockResponseStatusCode"`
 	// If action type is redirect, this field represents the default redirect URL for the client.
 	DefaultRedirectUrl *string `pulumi:"defaultRedirectUrl"`
 	// describes if the policy is in enabled state or disabled state
@@ -12266,7 +11486,7 @@ type PolicySettingsArgs struct {
 	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
 	DefaultCustomBlockResponseBody pulumi.StringPtrInput `pulumi:"defaultCustomBlockResponseBody"`
 	// If the action type is block, this field defines the default customer overridable http response status code.
-	DefaultCustomBlockResponseStatusCode pulumi.Float64PtrInput `pulumi:"defaultCustomBlockResponseStatusCode"`
+	DefaultCustomBlockResponseStatusCode pulumi.IntPtrInput `pulumi:"defaultCustomBlockResponseStatusCode"`
 	// If action type is redirect, this field represents the default redirect URL for the client.
 	DefaultRedirectUrl pulumi.StringPtrInput `pulumi:"defaultRedirectUrl"`
 	// describes if the policy is in enabled state or disabled state
@@ -12359,8 +11579,8 @@ func (o PolicySettingsOutput) DefaultCustomBlockResponseBody() pulumi.StringPtrO
 }
 
 // If the action type is block, this field defines the default customer overridable http response status code.
-func (o PolicySettingsOutput) DefaultCustomBlockResponseStatusCode() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v PolicySettings) *float64 { return v.DefaultCustomBlockResponseStatusCode }).(pulumi.Float64PtrOutput)
+func (o PolicySettingsOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicySettings) *int { return v.DefaultCustomBlockResponseStatusCode }).(pulumi.IntPtrOutput)
 }
 
 // If action type is redirect, this field represents the default redirect URL for the client.
@@ -12413,13 +11633,13 @@ func (o PolicySettingsPtrOutput) DefaultCustomBlockResponseBody() pulumi.StringP
 }
 
 // If the action type is block, this field defines the default customer overridable http response status code.
-func (o PolicySettingsPtrOutput) DefaultCustomBlockResponseStatusCode() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *PolicySettings) *float64 {
+func (o PolicySettingsPtrOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PolicySettings) *int {
 		if v == nil {
 			return nil
 		}
 		return v.DefaultCustomBlockResponseStatusCode
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // If action type is redirect, this field represents the default redirect URL for the client.
@@ -12457,7 +11677,7 @@ type PolicySettingsResponse struct {
 	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
 	DefaultCustomBlockResponseBody *string `pulumi:"defaultCustomBlockResponseBody"`
 	// If the action type is block, this field defines the default customer overridable http response status code.
-	DefaultCustomBlockResponseStatusCode *float64 `pulumi:"defaultCustomBlockResponseStatusCode"`
+	DefaultCustomBlockResponseStatusCode *int `pulumi:"defaultCustomBlockResponseStatusCode"`
 	// If action type is redirect, this field represents the default redirect URL for the client.
 	DefaultRedirectUrl *string `pulumi:"defaultRedirectUrl"`
 	// describes if the policy is in enabled state or disabled state
@@ -12487,8 +11707,8 @@ func (o PolicySettingsResponseOutput) DefaultCustomBlockResponseBody() pulumi.St
 }
 
 // If the action type is block, this field defines the default customer overridable http response status code.
-func (o PolicySettingsResponseOutput) DefaultCustomBlockResponseStatusCode() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *float64 { return v.DefaultCustomBlockResponseStatusCode }).(pulumi.Float64PtrOutput)
+func (o PolicySettingsResponseOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicySettingsResponse) *int { return v.DefaultCustomBlockResponseStatusCode }).(pulumi.IntPtrOutput)
 }
 
 // If action type is redirect, this field represents the default redirect URL for the client.
@@ -12541,13 +11761,13 @@ func (o PolicySettingsResponsePtrOutput) DefaultCustomBlockResponseBody() pulumi
 }
 
 // If the action type is block, this field defines the default customer overridable http response status code.
-func (o PolicySettingsResponsePtrOutput) DefaultCustomBlockResponseStatusCode() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *float64 {
+func (o PolicySettingsResponsePtrOutput) DefaultCustomBlockResponseStatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PolicySettingsResponse) *int {
 		if v == nil {
 			return nil
 		}
 		return v.DefaultCustomBlockResponseStatusCode
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // If action type is redirect, this field represents the default redirect URL for the client.
@@ -12592,8 +11812,7 @@ type PostArgsMatchConditionParameters struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRulePostArgsConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for PostArgsMatchConditionParameters
@@ -12632,8 +11851,7 @@ type PostArgsMatchConditionParametersArgs struct {
 	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRulePostArgsConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for PostArgsMatchConditionParametersArgs
@@ -12699,7 +11917,6 @@ func (o PostArgsMatchConditionParametersOutput) Transforms() pulumi.StringArrayO
 	return o.ApplyT(func(v PostArgsMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRulePostArgsConditionParameters'.
 func (o PostArgsMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v PostArgsMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -12716,8 +11933,7 @@ type PostArgsMatchConditionParametersResponse struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRulePostArgsConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for PostArgsMatchConditionParametersResponse
@@ -12773,439 +11989,8 @@ func (o PostArgsMatchConditionParametersResponseOutput) Transforms() pulumi.Stri
 	return o.ApplyT(func(v PostArgsMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRulePostArgsConditionParameters'.
 func (o PostArgsMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v PostArgsMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
-}
-
-// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
-type ProfileLogScrubbing struct {
-	// List of log scrubbing rules applied to the Azure Front Door profile logs.
-	ScrubbingRules []ProfileScrubbingRules `pulumi:"scrubbingRules"`
-	// State of the log scrubbing config. Default value is Enabled.
-	State *string `pulumi:"state"`
-}
-
-// ProfileLogScrubbingInput is an input type that accepts ProfileLogScrubbingArgs and ProfileLogScrubbingOutput values.
-// You can construct a concrete instance of `ProfileLogScrubbingInput` via:
-//
-//	ProfileLogScrubbingArgs{...}
-type ProfileLogScrubbingInput interface {
-	pulumi.Input
-
-	ToProfileLogScrubbingOutput() ProfileLogScrubbingOutput
-	ToProfileLogScrubbingOutputWithContext(context.Context) ProfileLogScrubbingOutput
-}
-
-// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
-type ProfileLogScrubbingArgs struct {
-	// List of log scrubbing rules applied to the Azure Front Door profile logs.
-	ScrubbingRules ProfileScrubbingRulesArrayInput `pulumi:"scrubbingRules"`
-	// State of the log scrubbing config. Default value is Enabled.
-	State pulumi.StringPtrInput `pulumi:"state"`
-}
-
-func (ProfileLogScrubbingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProfileLogScrubbing)(nil)).Elem()
-}
-
-func (i ProfileLogScrubbingArgs) ToProfileLogScrubbingOutput() ProfileLogScrubbingOutput {
-	return i.ToProfileLogScrubbingOutputWithContext(context.Background())
-}
-
-func (i ProfileLogScrubbingArgs) ToProfileLogScrubbingOutputWithContext(ctx context.Context) ProfileLogScrubbingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProfileLogScrubbingOutput)
-}
-
-func (i ProfileLogScrubbingArgs) ToProfileLogScrubbingPtrOutput() ProfileLogScrubbingPtrOutput {
-	return i.ToProfileLogScrubbingPtrOutputWithContext(context.Background())
-}
-
-func (i ProfileLogScrubbingArgs) ToProfileLogScrubbingPtrOutputWithContext(ctx context.Context) ProfileLogScrubbingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProfileLogScrubbingOutput).ToProfileLogScrubbingPtrOutputWithContext(ctx)
-}
-
-// ProfileLogScrubbingPtrInput is an input type that accepts ProfileLogScrubbingArgs, ProfileLogScrubbingPtr and ProfileLogScrubbingPtrOutput values.
-// You can construct a concrete instance of `ProfileLogScrubbingPtrInput` via:
-//
-//	        ProfileLogScrubbingArgs{...}
-//
-//	or:
-//
-//	        nil
-type ProfileLogScrubbingPtrInput interface {
-	pulumi.Input
-
-	ToProfileLogScrubbingPtrOutput() ProfileLogScrubbingPtrOutput
-	ToProfileLogScrubbingPtrOutputWithContext(context.Context) ProfileLogScrubbingPtrOutput
-}
-
-type profileLogScrubbingPtrType ProfileLogScrubbingArgs
-
-func ProfileLogScrubbingPtr(v *ProfileLogScrubbingArgs) ProfileLogScrubbingPtrInput {
-	return (*profileLogScrubbingPtrType)(v)
-}
-
-func (*profileLogScrubbingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProfileLogScrubbing)(nil)).Elem()
-}
-
-func (i *profileLogScrubbingPtrType) ToProfileLogScrubbingPtrOutput() ProfileLogScrubbingPtrOutput {
-	return i.ToProfileLogScrubbingPtrOutputWithContext(context.Background())
-}
-
-func (i *profileLogScrubbingPtrType) ToProfileLogScrubbingPtrOutputWithContext(ctx context.Context) ProfileLogScrubbingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProfileLogScrubbingPtrOutput)
-}
-
-// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
-type ProfileLogScrubbingOutput struct{ *pulumi.OutputState }
-
-func (ProfileLogScrubbingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProfileLogScrubbing)(nil)).Elem()
-}
-
-func (o ProfileLogScrubbingOutput) ToProfileLogScrubbingOutput() ProfileLogScrubbingOutput {
-	return o
-}
-
-func (o ProfileLogScrubbingOutput) ToProfileLogScrubbingOutputWithContext(ctx context.Context) ProfileLogScrubbingOutput {
-	return o
-}
-
-func (o ProfileLogScrubbingOutput) ToProfileLogScrubbingPtrOutput() ProfileLogScrubbingPtrOutput {
-	return o.ToProfileLogScrubbingPtrOutputWithContext(context.Background())
-}
-
-func (o ProfileLogScrubbingOutput) ToProfileLogScrubbingPtrOutputWithContext(ctx context.Context) ProfileLogScrubbingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProfileLogScrubbing) *ProfileLogScrubbing {
-		return &v
-	}).(ProfileLogScrubbingPtrOutput)
-}
-
-// List of log scrubbing rules applied to the Azure Front Door profile logs.
-func (o ProfileLogScrubbingOutput) ScrubbingRules() ProfileScrubbingRulesArrayOutput {
-	return o.ApplyT(func(v ProfileLogScrubbing) []ProfileScrubbingRules { return v.ScrubbingRules }).(ProfileScrubbingRulesArrayOutput)
-}
-
-// State of the log scrubbing config. Default value is Enabled.
-func (o ProfileLogScrubbingOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProfileLogScrubbing) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type ProfileLogScrubbingPtrOutput struct{ *pulumi.OutputState }
-
-func (ProfileLogScrubbingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProfileLogScrubbing)(nil)).Elem()
-}
-
-func (o ProfileLogScrubbingPtrOutput) ToProfileLogScrubbingPtrOutput() ProfileLogScrubbingPtrOutput {
-	return o
-}
-
-func (o ProfileLogScrubbingPtrOutput) ToProfileLogScrubbingPtrOutputWithContext(ctx context.Context) ProfileLogScrubbingPtrOutput {
-	return o
-}
-
-func (o ProfileLogScrubbingPtrOutput) Elem() ProfileLogScrubbingOutput {
-	return o.ApplyT(func(v *ProfileLogScrubbing) ProfileLogScrubbing {
-		if v != nil {
-			return *v
-		}
-		var ret ProfileLogScrubbing
-		return ret
-	}).(ProfileLogScrubbingOutput)
-}
-
-// List of log scrubbing rules applied to the Azure Front Door profile logs.
-func (o ProfileLogScrubbingPtrOutput) ScrubbingRules() ProfileScrubbingRulesArrayOutput {
-	return o.ApplyT(func(v *ProfileLogScrubbing) []ProfileScrubbingRules {
-		if v == nil {
-			return nil
-		}
-		return v.ScrubbingRules
-	}).(ProfileScrubbingRulesArrayOutput)
-}
-
-// State of the log scrubbing config. Default value is Enabled.
-func (o ProfileLogScrubbingPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProfileLogScrubbing) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
-type ProfileLogScrubbingResponse struct {
-	// List of log scrubbing rules applied to the Azure Front Door profile logs.
-	ScrubbingRules []ProfileScrubbingRulesResponse `pulumi:"scrubbingRules"`
-	// State of the log scrubbing config. Default value is Enabled.
-	State *string `pulumi:"state"`
-}
-
-// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
-type ProfileLogScrubbingResponseOutput struct{ *pulumi.OutputState }
-
-func (ProfileLogScrubbingResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProfileLogScrubbingResponse)(nil)).Elem()
-}
-
-func (o ProfileLogScrubbingResponseOutput) ToProfileLogScrubbingResponseOutput() ProfileLogScrubbingResponseOutput {
-	return o
-}
-
-func (o ProfileLogScrubbingResponseOutput) ToProfileLogScrubbingResponseOutputWithContext(ctx context.Context) ProfileLogScrubbingResponseOutput {
-	return o
-}
-
-// List of log scrubbing rules applied to the Azure Front Door profile logs.
-func (o ProfileLogScrubbingResponseOutput) ScrubbingRules() ProfileScrubbingRulesResponseArrayOutput {
-	return o.ApplyT(func(v ProfileLogScrubbingResponse) []ProfileScrubbingRulesResponse { return v.ScrubbingRules }).(ProfileScrubbingRulesResponseArrayOutput)
-}
-
-// State of the log scrubbing config. Default value is Enabled.
-func (o ProfileLogScrubbingResponseOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProfileLogScrubbingResponse) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type ProfileLogScrubbingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ProfileLogScrubbingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProfileLogScrubbingResponse)(nil)).Elem()
-}
-
-func (o ProfileLogScrubbingResponsePtrOutput) ToProfileLogScrubbingResponsePtrOutput() ProfileLogScrubbingResponsePtrOutput {
-	return o
-}
-
-func (o ProfileLogScrubbingResponsePtrOutput) ToProfileLogScrubbingResponsePtrOutputWithContext(ctx context.Context) ProfileLogScrubbingResponsePtrOutput {
-	return o
-}
-
-func (o ProfileLogScrubbingResponsePtrOutput) Elem() ProfileLogScrubbingResponseOutput {
-	return o.ApplyT(func(v *ProfileLogScrubbingResponse) ProfileLogScrubbingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ProfileLogScrubbingResponse
-		return ret
-	}).(ProfileLogScrubbingResponseOutput)
-}
-
-// List of log scrubbing rules applied to the Azure Front Door profile logs.
-func (o ProfileLogScrubbingResponsePtrOutput) ScrubbingRules() ProfileScrubbingRulesResponseArrayOutput {
-	return o.ApplyT(func(v *ProfileLogScrubbingResponse) []ProfileScrubbingRulesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ScrubbingRules
-	}).(ProfileScrubbingRulesResponseArrayOutput)
-}
-
-// State of the log scrubbing config. Default value is Enabled.
-func (o ProfileLogScrubbingResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProfileLogScrubbingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines the contents of the log scrubbing rules.
-type ProfileScrubbingRules struct {
-	// The variable to be scrubbed from the logs.
-	MatchVariable string `pulumi:"matchVariable"`
-	// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
-	Selector *string `pulumi:"selector"`
-	// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
-	SelectorMatchOperator string `pulumi:"selectorMatchOperator"`
-	// Defines the state of a log scrubbing rule. Default value is enabled.
-	State *string `pulumi:"state"`
-}
-
-// ProfileScrubbingRulesInput is an input type that accepts ProfileScrubbingRulesArgs and ProfileScrubbingRulesOutput values.
-// You can construct a concrete instance of `ProfileScrubbingRulesInput` via:
-//
-//	ProfileScrubbingRulesArgs{...}
-type ProfileScrubbingRulesInput interface {
-	pulumi.Input
-
-	ToProfileScrubbingRulesOutput() ProfileScrubbingRulesOutput
-	ToProfileScrubbingRulesOutputWithContext(context.Context) ProfileScrubbingRulesOutput
-}
-
-// Defines the contents of the log scrubbing rules.
-type ProfileScrubbingRulesArgs struct {
-	// The variable to be scrubbed from the logs.
-	MatchVariable pulumi.StringInput `pulumi:"matchVariable"`
-	// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
-	Selector pulumi.StringPtrInput `pulumi:"selector"`
-	// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
-	SelectorMatchOperator pulumi.StringInput `pulumi:"selectorMatchOperator"`
-	// Defines the state of a log scrubbing rule. Default value is enabled.
-	State pulumi.StringPtrInput `pulumi:"state"`
-}
-
-func (ProfileScrubbingRulesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProfileScrubbingRules)(nil)).Elem()
-}
-
-func (i ProfileScrubbingRulesArgs) ToProfileScrubbingRulesOutput() ProfileScrubbingRulesOutput {
-	return i.ToProfileScrubbingRulesOutputWithContext(context.Background())
-}
-
-func (i ProfileScrubbingRulesArgs) ToProfileScrubbingRulesOutputWithContext(ctx context.Context) ProfileScrubbingRulesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProfileScrubbingRulesOutput)
-}
-
-// ProfileScrubbingRulesArrayInput is an input type that accepts ProfileScrubbingRulesArray and ProfileScrubbingRulesArrayOutput values.
-// You can construct a concrete instance of `ProfileScrubbingRulesArrayInput` via:
-//
-//	ProfileScrubbingRulesArray{ ProfileScrubbingRulesArgs{...} }
-type ProfileScrubbingRulesArrayInput interface {
-	pulumi.Input
-
-	ToProfileScrubbingRulesArrayOutput() ProfileScrubbingRulesArrayOutput
-	ToProfileScrubbingRulesArrayOutputWithContext(context.Context) ProfileScrubbingRulesArrayOutput
-}
-
-type ProfileScrubbingRulesArray []ProfileScrubbingRulesInput
-
-func (ProfileScrubbingRulesArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProfileScrubbingRules)(nil)).Elem()
-}
-
-func (i ProfileScrubbingRulesArray) ToProfileScrubbingRulesArrayOutput() ProfileScrubbingRulesArrayOutput {
-	return i.ToProfileScrubbingRulesArrayOutputWithContext(context.Background())
-}
-
-func (i ProfileScrubbingRulesArray) ToProfileScrubbingRulesArrayOutputWithContext(ctx context.Context) ProfileScrubbingRulesArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProfileScrubbingRulesArrayOutput)
-}
-
-// Defines the contents of the log scrubbing rules.
-type ProfileScrubbingRulesOutput struct{ *pulumi.OutputState }
-
-func (ProfileScrubbingRulesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProfileScrubbingRules)(nil)).Elem()
-}
-
-func (o ProfileScrubbingRulesOutput) ToProfileScrubbingRulesOutput() ProfileScrubbingRulesOutput {
-	return o
-}
-
-func (o ProfileScrubbingRulesOutput) ToProfileScrubbingRulesOutputWithContext(ctx context.Context) ProfileScrubbingRulesOutput {
-	return o
-}
-
-// The variable to be scrubbed from the logs.
-func (o ProfileScrubbingRulesOutput) MatchVariable() pulumi.StringOutput {
-	return o.ApplyT(func(v ProfileScrubbingRules) string { return v.MatchVariable }).(pulumi.StringOutput)
-}
-
-// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
-func (o ProfileScrubbingRulesOutput) Selector() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProfileScrubbingRules) *string { return v.Selector }).(pulumi.StringPtrOutput)
-}
-
-// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
-func (o ProfileScrubbingRulesOutput) SelectorMatchOperator() pulumi.StringOutput {
-	return o.ApplyT(func(v ProfileScrubbingRules) string { return v.SelectorMatchOperator }).(pulumi.StringOutput)
-}
-
-// Defines the state of a log scrubbing rule. Default value is enabled.
-func (o ProfileScrubbingRulesOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProfileScrubbingRules) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type ProfileScrubbingRulesArrayOutput struct{ *pulumi.OutputState }
-
-func (ProfileScrubbingRulesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProfileScrubbingRules)(nil)).Elem()
-}
-
-func (o ProfileScrubbingRulesArrayOutput) ToProfileScrubbingRulesArrayOutput() ProfileScrubbingRulesArrayOutput {
-	return o
-}
-
-func (o ProfileScrubbingRulesArrayOutput) ToProfileScrubbingRulesArrayOutputWithContext(ctx context.Context) ProfileScrubbingRulesArrayOutput {
-	return o
-}
-
-func (o ProfileScrubbingRulesArrayOutput) Index(i pulumi.IntInput) ProfileScrubbingRulesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProfileScrubbingRules {
-		return vs[0].([]ProfileScrubbingRules)[vs[1].(int)]
-	}).(ProfileScrubbingRulesOutput)
-}
-
-// Defines the contents of the log scrubbing rules.
-type ProfileScrubbingRulesResponse struct {
-	// The variable to be scrubbed from the logs.
-	MatchVariable string `pulumi:"matchVariable"`
-	// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
-	Selector *string `pulumi:"selector"`
-	// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
-	SelectorMatchOperator string `pulumi:"selectorMatchOperator"`
-	// Defines the state of a log scrubbing rule. Default value is enabled.
-	State *string `pulumi:"state"`
-}
-
-// Defines the contents of the log scrubbing rules.
-type ProfileScrubbingRulesResponseOutput struct{ *pulumi.OutputState }
-
-func (ProfileScrubbingRulesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProfileScrubbingRulesResponse)(nil)).Elem()
-}
-
-func (o ProfileScrubbingRulesResponseOutput) ToProfileScrubbingRulesResponseOutput() ProfileScrubbingRulesResponseOutput {
-	return o
-}
-
-func (o ProfileScrubbingRulesResponseOutput) ToProfileScrubbingRulesResponseOutputWithContext(ctx context.Context) ProfileScrubbingRulesResponseOutput {
-	return o
-}
-
-// The variable to be scrubbed from the logs.
-func (o ProfileScrubbingRulesResponseOutput) MatchVariable() pulumi.StringOutput {
-	return o.ApplyT(func(v ProfileScrubbingRulesResponse) string { return v.MatchVariable }).(pulumi.StringOutput)
-}
-
-// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
-func (o ProfileScrubbingRulesResponseOutput) Selector() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProfileScrubbingRulesResponse) *string { return v.Selector }).(pulumi.StringPtrOutput)
-}
-
-// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
-func (o ProfileScrubbingRulesResponseOutput) SelectorMatchOperator() pulumi.StringOutput {
-	return o.ApplyT(func(v ProfileScrubbingRulesResponse) string { return v.SelectorMatchOperator }).(pulumi.StringOutput)
-}
-
-// Defines the state of a log scrubbing rule. Default value is enabled.
-func (o ProfileScrubbingRulesResponseOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProfileScrubbingRulesResponse) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type ProfileScrubbingRulesResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ProfileScrubbingRulesResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProfileScrubbingRulesResponse)(nil)).Elem()
-}
-
-func (o ProfileScrubbingRulesResponseArrayOutput) ToProfileScrubbingRulesResponseArrayOutput() ProfileScrubbingRulesResponseArrayOutput {
-	return o
-}
-
-func (o ProfileScrubbingRulesResponseArrayOutput) ToProfileScrubbingRulesResponseArrayOutputWithContext(ctx context.Context) ProfileScrubbingRulesResponseArrayOutput {
-	return o
-}
-
-func (o ProfileScrubbingRulesResponseArrayOutput) Index(i pulumi.IntInput) ProfileScrubbingRulesResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProfileScrubbingRulesResponse {
-		return vs[0].([]ProfileScrubbingRulesResponse)[vs[1].(int)]
-	}).(ProfileScrubbingRulesResponseOutput)
 }
 
 // Defines the parameters for QueryString match conditions
@@ -13218,8 +12003,7 @@ type QueryStringMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleQueryStringConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for QueryStringMatchConditionParameters
@@ -13256,8 +12040,7 @@ type QueryStringMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleQueryStringConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for QueryStringMatchConditionParametersArgs
@@ -13318,7 +12101,6 @@ func (o QueryStringMatchConditionParametersOutput) Transforms() pulumi.StringArr
 	return o.ApplyT(func(v QueryStringMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleQueryStringConditionParameters'.
 func (o QueryStringMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryStringMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13333,8 +12115,7 @@ type QueryStringMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleQueryStringConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for QueryStringMatchConditionParametersResponse
@@ -13385,7 +12166,6 @@ func (o QueryStringMatchConditionParametersResponseOutput) Transforms() pulumi.S
 	return o.ApplyT(func(v QueryStringMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleQueryStringConditionParameters'.
 func (o QueryStringMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryStringMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13842,8 +12622,7 @@ type RemoteAddressMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RemoteAddressMatchConditionParameters
@@ -13880,8 +12659,7 @@ type RemoteAddressMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RemoteAddressMatchConditionParametersArgs
@@ -13942,7 +12720,6 @@ func (o RemoteAddressMatchConditionParametersOutput) Transforms() pulumi.StringA
 	return o.ApplyT(func(v RemoteAddressMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
 func (o RemoteAddressMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RemoteAddressMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13957,8 +12734,7 @@ type RemoteAddressMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RemoteAddressMatchConditionParametersResponse
@@ -14009,7 +12785,6 @@ func (o RemoteAddressMatchConditionParametersResponseOutput) Transforms() pulumi
 	return o.ApplyT(func(v RemoteAddressMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
 func (o RemoteAddressMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RemoteAddressMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14024,8 +12799,7 @@ type RequestBodyMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestBodyMatchConditionParameters
@@ -14062,8 +12836,7 @@ type RequestBodyMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestBodyMatchConditionParametersArgs
@@ -14124,7 +12897,6 @@ func (o RequestBodyMatchConditionParametersOutput) Transforms() pulumi.StringArr
 	return o.ApplyT(func(v RequestBodyMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
 func (o RequestBodyMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestBodyMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14139,8 +12911,7 @@ type RequestBodyMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestBodyMatchConditionParametersResponse
@@ -14191,7 +12962,6 @@ func (o RequestBodyMatchConditionParametersResponseOutput) Transforms() pulumi.S
 	return o.ApplyT(func(v RequestBodyMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
 func (o RequestBodyMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestBodyMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14208,8 +12978,7 @@ type RequestHeaderMatchConditionParameters struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestHeaderMatchConditionParameters
@@ -14248,8 +13017,7 @@ type RequestHeaderMatchConditionParametersArgs struct {
 	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestHeaderMatchConditionParametersArgs
@@ -14315,7 +13083,6 @@ func (o RequestHeaderMatchConditionParametersOutput) Transforms() pulumi.StringA
 	return o.ApplyT(func(v RequestHeaderMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
 func (o RequestHeaderMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestHeaderMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14332,8 +13099,7 @@ type RequestHeaderMatchConditionParametersResponse struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestHeaderMatchConditionParametersResponse
@@ -14389,7 +13155,6 @@ func (o RequestHeaderMatchConditionParametersResponseOutput) Transforms() pulumi
 	return o.ApplyT(func(v RequestHeaderMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
 func (o RequestHeaderMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestHeaderMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14404,8 +13169,7 @@ type RequestMethodMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestMethodMatchConditionParameters
@@ -14442,8 +13206,7 @@ type RequestMethodMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestMethodMatchConditionParametersArgs
@@ -14504,7 +13267,6 @@ func (o RequestMethodMatchConditionParametersOutput) Transforms() pulumi.StringA
 	return o.ApplyT(func(v RequestMethodMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
 func (o RequestMethodMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestMethodMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14519,8 +13281,7 @@ type RequestMethodMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestMethodMatchConditionParametersResponse
@@ -14571,7 +13332,6 @@ func (o RequestMethodMatchConditionParametersResponseOutput) Transforms() pulumi
 	return o.ApplyT(func(v RequestMethodMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
 func (o RequestMethodMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestMethodMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14586,8 +13346,7 @@ type RequestSchemeMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestSchemeMatchConditionParameters
@@ -14624,8 +13383,7 @@ type RequestSchemeMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestSchemeMatchConditionParametersArgs
@@ -14686,7 +13444,6 @@ func (o RequestSchemeMatchConditionParametersOutput) Transforms() pulumi.StringA
 	return o.ApplyT(func(v RequestSchemeMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
 func (o RequestSchemeMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestSchemeMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14701,8 +13458,7 @@ type RequestSchemeMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestSchemeMatchConditionParametersResponse
@@ -14753,7 +13509,6 @@ func (o RequestSchemeMatchConditionParametersResponseOutput) Transforms() pulumi
 	return o.ApplyT(func(v RequestSchemeMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
 func (o RequestSchemeMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestSchemeMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14768,8 +13523,7 @@ type RequestUriMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestUriConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestUriMatchConditionParameters
@@ -14806,8 +13560,7 @@ type RequestUriMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestUriConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestUriMatchConditionParametersArgs
@@ -14868,7 +13621,6 @@ func (o RequestUriMatchConditionParametersOutput) Transforms() pulumi.StringArra
 	return o.ApplyT(func(v RequestUriMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRequestUriConditionParameters'.
 func (o RequestUriMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestUriMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14883,8 +13635,7 @@ type RequestUriMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleRequestUriConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestUriMatchConditionParametersResponse
@@ -14935,7 +13686,6 @@ func (o RequestUriMatchConditionParametersResponseOutput) Transforms() pulumi.St
 	return o.ApplyT(func(v RequestUriMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleRequestUriConditionParameters'.
 func (o RequestUriMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestUriMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -15495,8 +14245,7 @@ type RouteConfigurationOverrideActionParameters struct {
 	CacheConfiguration *CacheConfiguration `pulumi:"cacheConfiguration"`
 	// A reference to the origin group override configuration. Leave empty to use the default origin group on route.
 	OriginGroupOverride *OriginGroupOverride `pulumi:"originGroupOverride"`
-	// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName            string               `pulumi:"typeName"`
 }
 
 // RouteConfigurationOverrideActionParametersInput is an input type that accepts RouteConfigurationOverrideActionParametersArgs and RouteConfigurationOverrideActionParametersOutput values.
@@ -15516,8 +14265,7 @@ type RouteConfigurationOverrideActionParametersArgs struct {
 	CacheConfiguration CacheConfigurationPtrInput `pulumi:"cacheConfiguration"`
 	// A reference to the origin group override configuration. Leave empty to use the default origin group on route.
 	OriginGroupOverride OriginGroupOverridePtrInput `pulumi:"originGroupOverride"`
-	// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName            pulumi.StringInput          `pulumi:"typeName"`
 }
 
 func (RouteConfigurationOverrideActionParametersArgs) ElementType() reflect.Type {
@@ -15557,7 +14305,6 @@ func (o RouteConfigurationOverrideActionParametersOutput) OriginGroupOverride() 
 	return o.ApplyT(func(v RouteConfigurationOverrideActionParameters) *OriginGroupOverride { return v.OriginGroupOverride }).(OriginGroupOverridePtrOutput)
 }
 
-// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
 func (o RouteConfigurationOverrideActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteConfigurationOverrideActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -15568,8 +14315,7 @@ type RouteConfigurationOverrideActionParametersResponse struct {
 	CacheConfiguration *CacheConfigurationResponse `pulumi:"cacheConfiguration"`
 	// A reference to the origin group override configuration. Leave empty to use the default origin group on route.
 	OriginGroupOverride *OriginGroupOverrideResponse `pulumi:"originGroupOverride"`
-	// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName            string                       `pulumi:"typeName"`
 }
 
 // Defines the parameters for the route configuration override action.
@@ -15601,7 +14347,6 @@ func (o RouteConfigurationOverrideActionParametersResponseOutput) OriginGroupOve
 	}).(OriginGroupOverrideResponsePtrOutput)
 }
 
-// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
 func (o RouteConfigurationOverrideActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteConfigurationOverrideActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16065,8 +14810,7 @@ type ServerPortMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleServerPortConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ServerPortMatchConditionParameters
@@ -16103,8 +14847,7 @@ type ServerPortMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleServerPortConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ServerPortMatchConditionParametersArgs
@@ -16165,7 +14908,6 @@ func (o ServerPortMatchConditionParametersOutput) Transforms() pulumi.StringArra
 	return o.ApplyT(func(v ServerPortMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleServerPortConditionParameters'.
 func (o ServerPortMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerPortMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16180,8 +14922,7 @@ type ServerPortMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleServerPortConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ServerPortMatchConditionParametersResponse
@@ -16232,7 +14973,6 @@ func (o ServerPortMatchConditionParametersResponseOutput) Transforms() pulumi.St
 	return o.ApplyT(func(v ServerPortMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleServerPortConditionParameters'.
 func (o ServerPortMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerPortMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16732,8 +15472,7 @@ type SocketAddrMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SocketAddrMatchConditionParameters
@@ -16770,8 +15509,7 @@ type SocketAddrMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SocketAddrMatchConditionParametersArgs
@@ -16832,7 +15570,6 @@ func (o SocketAddrMatchConditionParametersOutput) Transforms() pulumi.StringArra
 	return o.ApplyT(func(v SocketAddrMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
 func (o SocketAddrMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v SocketAddrMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16847,8 +15584,7 @@ type SocketAddrMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SocketAddrMatchConditionParametersResponse
@@ -16899,7 +15635,6 @@ func (o SocketAddrMatchConditionParametersResponseOutput) Transforms() pulumi.St
 	return o.ApplyT(func(v SocketAddrMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
 func (o SocketAddrMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v SocketAddrMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16914,8 +15649,7 @@ type SslProtocolMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SslProtocolMatchConditionParameters
@@ -16952,8 +15686,7 @@ type SslProtocolMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SslProtocolMatchConditionParametersArgs
@@ -17014,7 +15747,6 @@ func (o SslProtocolMatchConditionParametersOutput) Transforms() pulumi.StringArr
 	return o.ApplyT(func(v SslProtocolMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
 func (o SslProtocolMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v SslProtocolMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17029,8 +15761,7 @@ type SslProtocolMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SslProtocolMatchConditionParametersResponse
@@ -17081,28 +15812,27 @@ func (o SslProtocolMatchConditionParametersResponseOutput) Transforms() pulumi.S
 	return o.ApplyT(func(v SslProtocolMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
 func (o SslProtocolMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v SslProtocolMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Read only system data
 type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
+	// The timestamp of resource creation (UTC)
 	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
+	// An identifier for the identity that created the resource
 	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
+	// The type of identity that created the resource
 	CreatedByType *string `pulumi:"createdByType"`
 	// The timestamp of resource last modification (UTC)
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
+	// An identifier for the identity that last modified the resource
 	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
+	// The type of identity that last modified the resource
 	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Read only system data
 type SystemDataResponseOutput struct{ *pulumi.OutputState }
 
 func (SystemDataResponseOutput) ElementType() reflect.Type {
@@ -17117,17 +15847,17 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-// The timestamp of resource creation (UTC).
+// The timestamp of resource creation (UTC)
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
-// The identity that created the resource.
+// An identifier for the identity that created the resource
 func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that created the resource.
+// The type of identity that created the resource
 func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
@@ -17137,12 +15867,12 @@ func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }
 
-// The identity that last modified the resource.
+// An identifier for the identity that last modified the resource
 func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that last modified the resource.
+// The type of identity that last modified the resource
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
@@ -17319,8 +16049,7 @@ type UrlFileExtensionMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileExtensionMatchConditionParameters
@@ -17357,8 +16086,7 @@ type UrlFileExtensionMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileExtensionMatchConditionParametersArgs
@@ -17419,7 +16147,6 @@ func (o UrlFileExtensionMatchConditionParametersOutput) Transforms() pulumi.Stri
 	return o.ApplyT(func(v UrlFileExtensionMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
 func (o UrlFileExtensionMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlFileExtensionMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17434,8 +16161,7 @@ type UrlFileExtensionMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileExtensionMatchConditionParametersResponse
@@ -17486,7 +16212,6 @@ func (o UrlFileExtensionMatchConditionParametersResponseOutput) Transforms() pul
 	return o.ApplyT(func(v UrlFileExtensionMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
 func (o UrlFileExtensionMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlFileExtensionMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17501,8 +16226,7 @@ type UrlFileNameMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileNameMatchConditionParameters
@@ -17539,8 +16263,7 @@ type UrlFileNameMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileNameMatchConditionParametersArgs
@@ -17601,7 +16324,6 @@ func (o UrlFileNameMatchConditionParametersOutput) Transforms() pulumi.StringArr
 	return o.ApplyT(func(v UrlFileNameMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
 func (o UrlFileNameMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlFileNameMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17616,8 +16338,7 @@ type UrlFileNameMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileNameMatchConditionParametersResponse
@@ -17668,7 +16389,6 @@ func (o UrlFileNameMatchConditionParametersResponseOutput) Transforms() pulumi.S
 	return o.ApplyT(func(v UrlFileNameMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
 func (o UrlFileNameMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlFileNameMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17683,8 +16403,7 @@ type UrlPathMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlPathMatchConditionParameters
@@ -17721,8 +16440,7 @@ type UrlPathMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName   pulumi.StringInput      `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlPathMatchConditionParametersArgs
@@ -17783,7 +16501,6 @@ func (o UrlPathMatchConditionParametersOutput) Transforms() pulumi.StringArrayOu
 	return o.ApplyT(func(v UrlPathMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
 func (o UrlPathMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlPathMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17798,8 +16515,7 @@ type UrlPathMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	// Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName   string   `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlPathMatchConditionParametersResponse
@@ -17850,7 +16566,6 @@ func (o UrlPathMatchConditionParametersResponseOutput) Transforms() pulumi.Strin
 	return o.ApplyT(func(v UrlPathMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
 func (o UrlPathMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlPathMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17936,8 +16651,7 @@ type UrlRedirectActionParameters struct {
 	DestinationProtocol *string `pulumi:"destinationProtocol"`
 	// The redirect type the rule will use when redirecting traffic.
 	RedirectType string `pulumi:"redirectType"`
-	// Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName     string `pulumi:"typeName"`
 }
 
 // UrlRedirectActionParametersInput is an input type that accepts UrlRedirectActionParametersArgs and UrlRedirectActionParametersOutput values.
@@ -17965,8 +16679,7 @@ type UrlRedirectActionParametersArgs struct {
 	DestinationProtocol pulumi.StringPtrInput `pulumi:"destinationProtocol"`
 	// The redirect type the rule will use when redirecting traffic.
 	RedirectType pulumi.StringInput `pulumi:"redirectType"`
-	// Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName     pulumi.StringInput `pulumi:"typeName"`
 }
 
 func (UrlRedirectActionParametersArgs) ElementType() reflect.Type {
@@ -18026,7 +16739,6 @@ func (o UrlRedirectActionParametersOutput) RedirectType() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRedirectActionParameters) string { return v.RedirectType }).(pulumi.StringOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
 func (o UrlRedirectActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRedirectActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -18045,8 +16757,7 @@ type UrlRedirectActionParametersResponse struct {
 	DestinationProtocol *string `pulumi:"destinationProtocol"`
 	// The redirect type the rule will use when redirecting traffic.
 	RedirectType string `pulumi:"redirectType"`
-	// Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName     string `pulumi:"typeName"`
 }
 
 // Defines the parameters for the url redirect action.
@@ -18094,7 +16805,6 @@ func (o UrlRedirectActionParametersResponseOutput) RedirectType() pulumi.StringO
 	return o.ApplyT(func(v UrlRedirectActionParametersResponse) string { return v.RedirectType }).(pulumi.StringOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
 func (o UrlRedirectActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRedirectActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -18209,8 +16919,7 @@ type UrlRewriteActionParameters struct {
 	PreserveUnmatchedPath *bool `pulumi:"preserveUnmatchedPath"`
 	// define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
 	SourcePattern string `pulumi:"sourcePattern"`
-	// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName      string `pulumi:"typeName"`
 }
 
 // UrlRewriteActionParametersInput is an input type that accepts UrlRewriteActionParametersArgs and UrlRewriteActionParametersOutput values.
@@ -18232,8 +16941,7 @@ type UrlRewriteActionParametersArgs struct {
 	PreserveUnmatchedPath pulumi.BoolPtrInput `pulumi:"preserveUnmatchedPath"`
 	// define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
 	SourcePattern pulumi.StringInput `pulumi:"sourcePattern"`
-	// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName      pulumi.StringInput `pulumi:"typeName"`
 }
 
 func (UrlRewriteActionParametersArgs) ElementType() reflect.Type {
@@ -18278,7 +16986,6 @@ func (o UrlRewriteActionParametersOutput) SourcePattern() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRewriteActionParameters) string { return v.SourcePattern }).(pulumi.StringOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
 func (o UrlRewriteActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRewriteActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -18291,8 +16998,7 @@ type UrlRewriteActionParametersResponse struct {
 	PreserveUnmatchedPath *bool `pulumi:"preserveUnmatchedPath"`
 	// define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
 	SourcePattern string `pulumi:"sourcePattern"`
-	// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName      string `pulumi:"typeName"`
 }
 
 // Defines the parameters for the url rewrite action.
@@ -18325,7 +17031,6 @@ func (o UrlRewriteActionParametersResponseOutput) SourcePattern() pulumi.StringO
 	return o.ApplyT(func(v UrlRewriteActionParametersResponse) string { return v.SourcePattern }).(pulumi.StringOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
 func (o UrlRewriteActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRewriteActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -18438,8 +17143,7 @@ type UrlSigningActionParameters struct {
 	Algorithm *string `pulumi:"algorithm"`
 	// Defines which query string parameters in the url to be considered for expires, key id etc.
 	ParameterNameOverride []UrlSigningParamIdentifier `pulumi:"parameterNameOverride"`
-	// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName              string                      `pulumi:"typeName"`
 }
 
 // UrlSigningActionParametersInput is an input type that accepts UrlSigningActionParametersArgs and UrlSigningActionParametersOutput values.
@@ -18459,8 +17163,7 @@ type UrlSigningActionParametersArgs struct {
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// Defines which query string parameters in the url to be considered for expires, key id etc.
 	ParameterNameOverride UrlSigningParamIdentifierArrayInput `pulumi:"parameterNameOverride"`
-	// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
-	TypeName pulumi.StringInput `pulumi:"typeName"`
+	TypeName              pulumi.StringInput                  `pulumi:"typeName"`
 }
 
 func (UrlSigningActionParametersArgs) ElementType() reflect.Type {
@@ -18500,7 +17203,6 @@ func (o UrlSigningActionParametersOutput) ParameterNameOverride() UrlSigningPara
 	return o.ApplyT(func(v UrlSigningActionParameters) []UrlSigningParamIdentifier { return v.ParameterNameOverride }).(UrlSigningParamIdentifierArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
 func (o UrlSigningActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlSigningActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -18511,8 +17213,7 @@ type UrlSigningActionParametersResponse struct {
 	Algorithm *string `pulumi:"algorithm"`
 	// Defines which query string parameters in the url to be considered for expires, key id etc.
 	ParameterNameOverride []UrlSigningParamIdentifierResponse `pulumi:"parameterNameOverride"`
-	// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
-	TypeName string `pulumi:"typeName"`
+	TypeName              string                              `pulumi:"typeName"`
 }
 
 // Defines the parameters for the Url Signing action.
@@ -18542,7 +17243,6 @@ func (o UrlSigningActionParametersResponseOutput) ParameterNameOverride() UrlSig
 	}).(UrlSigningParamIdentifierResponseArrayOutput)
 }
 
-// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
 func (o UrlSigningActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlSigningActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -18698,7 +17398,7 @@ type UrlSigningKeyParameters struct {
 	// Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{secretName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 	SecretSource ResourceReference `pulumi:"secretSource"`
 	// Version of the secret to be used
-	SecretVersion string `pulumi:"secretVersion"`
+	SecretVersion *string `pulumi:"secretVersion"`
 	// The type of the secret resource.
 	// Expected value is 'UrlSigningKey'.
 	Type string `pulumi:"type"`
@@ -18722,7 +17422,7 @@ type UrlSigningKeyParametersArgs struct {
 	// Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{secretName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 	SecretSource ResourceReferenceInput `pulumi:"secretSource"`
 	// Version of the secret to be used
-	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
+	SecretVersion pulumi.StringPtrInput `pulumi:"secretVersion"`
 	// The type of the secret resource.
 	// Expected value is 'UrlSigningKey'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -18817,8 +17517,8 @@ func (o UrlSigningKeyParametersOutput) SecretSource() ResourceReferenceOutput {
 }
 
 // Version of the secret to be used
-func (o UrlSigningKeyParametersOutput) SecretVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v UrlSigningKeyParameters) string { return v.SecretVersion }).(pulumi.StringOutput)
+func (o UrlSigningKeyParametersOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UrlSigningKeyParameters) *string { return v.SecretVersion }).(pulumi.StringPtrOutput)
 }
 
 // The type of the secret resource.
@@ -18877,7 +17577,7 @@ func (o UrlSigningKeyParametersPtrOutput) SecretVersion() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.SecretVersion
+		return v.SecretVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18899,7 +17599,7 @@ type UrlSigningKeyParametersResponse struct {
 	// Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{secretName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 	SecretSource ResourceReferenceResponse `pulumi:"secretSource"`
 	// Version of the secret to be used
-	SecretVersion string `pulumi:"secretVersion"`
+	SecretVersion *string `pulumi:"secretVersion"`
 	// The type of the secret resource.
 	// Expected value is 'UrlSigningKey'.
 	Type string `pulumi:"type"`
@@ -18931,8 +17631,8 @@ func (o UrlSigningKeyParametersResponseOutput) SecretSource() ResourceReferenceR
 }
 
 // Version of the secret to be used
-func (o UrlSigningKeyParametersResponseOutput) SecretVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v UrlSigningKeyParametersResponse) string { return v.SecretVersion }).(pulumi.StringOutput)
+func (o UrlSigningKeyParametersResponseOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UrlSigningKeyParametersResponse) *string { return v.SecretVersion }).(pulumi.StringPtrOutput)
 }
 
 // The type of the secret resource.
@@ -18991,7 +17691,7 @@ func (o UrlSigningKeyParametersResponsePtrOutput) SecretVersion() pulumi.StringP
 		if v == nil {
 			return nil
 		}
-		return &v.SecretVersion
+		return v.SecretVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19391,10 +18091,6 @@ func (o UserManagedHttpsParametersResponsePtrOutput) ProtocolType() pulumi.Strin
 }
 
 func init() {
-	pulumi.RegisterOutputType(AFDDomainHttpsCustomizedCipherSuiteSetOutput{})
-	pulumi.RegisterOutputType(AFDDomainHttpsCustomizedCipherSuiteSetPtrOutput{})
-	pulumi.RegisterOutputType(AFDDomainHttpsCustomizedCipherSuiteSetResponseOutput{})
-	pulumi.RegisterOutputType(AFDDomainHttpsCustomizedCipherSuiteSetResponsePtrOutput{})
 	pulumi.RegisterOutputType(AFDDomainHttpsParametersOutput{})
 	pulumi.RegisterOutputType(AFDDomainHttpsParametersPtrOutput{})
 	pulumi.RegisterOutputType(AFDDomainHttpsParametersResponseOutput{})
@@ -19407,10 +18103,6 @@ func init() {
 	pulumi.RegisterOutputType(AfdRouteCacheConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AfdRouteCacheConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(AfdRouteCacheConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(AgentPathOutput{})
-	pulumi.RegisterOutputType(AgentPathArrayOutput{})
-	pulumi.RegisterOutputType(AgentPathResponseOutput{})
-	pulumi.RegisterOutputType(AgentPathResponseArrayOutput{})
 	pulumi.RegisterOutputType(AzureFirstPartyManagedCertificateParametersOutput{})
 	pulumi.RegisterOutputType(AzureFirstPartyManagedCertificateParametersPtrOutput{})
 	pulumi.RegisterOutputType(AzureFirstPartyManagedCertificateParametersResponseOutput{})
@@ -19514,12 +18206,12 @@ func init() {
 	pulumi.RegisterOutputType(DomainValidationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersDeliveryPolicyOutput{})
 	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersDeliveryPolicyPtrOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersDeliveryPolicyResponseOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersDeliveryPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersResponseDeliveryPolicyOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersResponseDeliveryPolicyPtrOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput{})
+	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput{})
 	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkOutput{})
 	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponseOutput{})
-	pulumi.RegisterOutputType(EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponsePtrOutput{})
 	pulumi.RegisterOutputType(GeoFilterOutput{})
 	pulumi.RegisterOutputType(GeoFilterArrayOutput{})
 	pulumi.RegisterOutputType(GeoFilterResponseOutput{})
@@ -19576,10 +18268,6 @@ func init() {
 	pulumi.RegisterOutputType(MatchConditionArrayOutput{})
 	pulumi.RegisterOutputType(MatchConditionResponseOutput{})
 	pulumi.RegisterOutputType(MatchConditionResponseArrayOutput{})
-	pulumi.RegisterOutputType(OriginAuthenticationPropertiesOutput{})
-	pulumi.RegisterOutputType(OriginAuthenticationPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(OriginAuthenticationPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(OriginAuthenticationPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(OriginGroupOverrideOutput{})
 	pulumi.RegisterOutputType(OriginGroupOverridePtrOutput{})
 	pulumi.RegisterOutputType(OriginGroupOverrideActionOutput{})
@@ -19594,14 +18282,6 @@ func init() {
 	pulumi.RegisterOutputType(PolicySettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(PostArgsMatchConditionParametersOutput{})
 	pulumi.RegisterOutputType(PostArgsMatchConditionParametersResponseOutput{})
-	pulumi.RegisterOutputType(ProfileLogScrubbingOutput{})
-	pulumi.RegisterOutputType(ProfileLogScrubbingPtrOutput{})
-	pulumi.RegisterOutputType(ProfileLogScrubbingResponseOutput{})
-	pulumi.RegisterOutputType(ProfileLogScrubbingResponsePtrOutput{})
-	pulumi.RegisterOutputType(ProfileScrubbingRulesOutput{})
-	pulumi.RegisterOutputType(ProfileScrubbingRulesArrayOutput{})
-	pulumi.RegisterOutputType(ProfileScrubbingRulesResponseOutput{})
-	pulumi.RegisterOutputType(ProfileScrubbingRulesResponseArrayOutput{})
 	pulumi.RegisterOutputType(QueryStringMatchConditionParametersOutput{})
 	pulumi.RegisterOutputType(QueryStringMatchConditionParametersResponseOutput{})
 	pulumi.RegisterOutputType(RateLimitRuleOutput{})

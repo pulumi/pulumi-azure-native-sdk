@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2024-03-01-preview.
 //
-// Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native orbital [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-03-01.
 func ListEdgeSiteL2Connections(ctx *pulumi.Context, args *ListEdgeSiteL2ConnectionsArgs, opts ...pulumi.InvokeOption) (*ListEdgeSiteL2ConnectionsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEdgeSiteL2ConnectionsResult

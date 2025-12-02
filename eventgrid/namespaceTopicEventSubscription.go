@@ -8,33 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Event Subscription.
 //
-// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
 type NamespaceTopicEventSubscription struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Information about the delivery configuration of the event subscription.
 	DeliveryConfiguration DeliveryConfigurationResponsePtrOutput `pulumi:"deliveryConfiguration"`
 	// The event delivery schema for the event subscription.
 	EventDeliverySchema pulumi.StringPtrOutput `pulumi:"eventDeliverySchema"`
-	// Expiration time of the event subscription.
-	ExpirationTimeUtc pulumi.StringPtrOutput `pulumi:"expirationTimeUtc"`
 	// Information about the filter for the event subscription.
 	FiltersConfiguration FiltersConfigurationResponsePtrOutput `pulumi:"filtersConfiguration"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning state of the event subscription.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system metadata relating to the Event Grid resource.
+	// The system metadata relating to Event Subscription resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -71,9 +67,6 @@ func NewNamespaceTopicEventSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20250215:NamespaceTopicEventSubscription"),
-		},
-		{
-			Type: pulumi.String("azure-native:eventgrid/v20250401preview:NamespaceTopicEventSubscription"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -114,10 +107,8 @@ type namespaceTopicEventSubscriptionArgs struct {
 	DeliveryConfiguration *DeliveryConfiguration `pulumi:"deliveryConfiguration"`
 	// The event delivery schema for the event subscription.
 	EventDeliverySchema *string `pulumi:"eventDeliverySchema"`
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 50 characters in length and use alphanumeric letters only.
+	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 	EventSubscriptionName *string `pulumi:"eventSubscriptionName"`
-	// Expiration time of the event subscription.
-	ExpirationTimeUtc *string `pulumi:"expirationTimeUtc"`
 	// Information about the filter for the event subscription.
 	FiltersConfiguration *FiltersConfiguration `pulumi:"filtersConfiguration"`
 	// Name of the namespace.
@@ -134,10 +125,8 @@ type NamespaceTopicEventSubscriptionArgs struct {
 	DeliveryConfiguration DeliveryConfigurationPtrInput
 	// The event delivery schema for the event subscription.
 	EventDeliverySchema pulumi.StringPtrInput
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 50 characters in length and use alphanumeric letters only.
+	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 	EventSubscriptionName pulumi.StringPtrInput
-	// Expiration time of the event subscription.
-	ExpirationTimeUtc pulumi.StringPtrInput
 	// Information about the filter for the event subscription.
 	FiltersConfiguration FiltersConfigurationPtrInput
 	// Name of the namespace.
@@ -185,11 +174,6 @@ func (o NamespaceTopicEventSubscriptionOutput) ToNamespaceTopicEventSubscription
 	return o
 }
 
-// The Azure API version of the resource.
-func (o NamespaceTopicEventSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceTopicEventSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Information about the delivery configuration of the event subscription.
 func (o NamespaceTopicEventSubscriptionOutput) DeliveryConfiguration() DeliveryConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *NamespaceTopicEventSubscription) DeliveryConfigurationResponsePtrOutput {
@@ -200,11 +184,6 @@ func (o NamespaceTopicEventSubscriptionOutput) DeliveryConfiguration() DeliveryC
 // The event delivery schema for the event subscription.
 func (o NamespaceTopicEventSubscriptionOutput) EventDeliverySchema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NamespaceTopicEventSubscription) pulumi.StringPtrOutput { return v.EventDeliverySchema }).(pulumi.StringPtrOutput)
-}
-
-// Expiration time of the event subscription.
-func (o NamespaceTopicEventSubscriptionOutput) ExpirationTimeUtc() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NamespaceTopicEventSubscription) pulumi.StringPtrOutput { return v.ExpirationTimeUtc }).(pulumi.StringPtrOutput)
 }
 
 // Information about the filter for the event subscription.
@@ -224,7 +203,7 @@ func (o NamespaceTopicEventSubscriptionOutput) ProvisioningState() pulumi.String
 	return o.ApplyT(func(v *NamespaceTopicEventSubscription) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to the Event Grid resource.
+// The system metadata relating to Event Subscription resource.
 func (o NamespaceTopicEventSubscriptionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *NamespaceTopicEventSubscription) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

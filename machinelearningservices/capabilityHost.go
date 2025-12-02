@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.
+// Uses Azure REST API version 2024-10-01-preview.
 //
-// Other available API versions: 2024-10-01-preview, 2025-01-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-01-01-preview.
 type CapabilityHost struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	CapabilityHostProperties CapabilityHostResponseOutput `pulumi:"capabilityHostProperties"`
 	// The name of the resource
@@ -55,18 +53,6 @@ func NewCapabilityHost(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:CapabilityHost"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:CapabilityHost"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:CapabilityHost"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:CapabilityHost"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:CapabilityHost"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -160,11 +146,6 @@ func (o CapabilityHostOutput) ToCapabilityHostOutput() CapabilityHostOutput {
 
 func (o CapabilityHostOutput) ToCapabilityHostOutputWithContext(ctx context.Context) CapabilityHostOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o CapabilityHostOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *CapabilityHost) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the detail of a linked workspace.
 //
 // Uses Azure REST API version 2020-05-15-preview.
-//
-// Other available API versions: 2020-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupLinkedWorkspace(ctx *pulumi.Context, args *LookupLinkedWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupLinkedWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLinkedWorkspaceResult
@@ -37,8 +35,6 @@ type LookupLinkedWorkspaceArgs struct {
 
 // Linked workspace.
 type LookupLinkedWorkspaceResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ResourceId of the link of the linked workspace.
 	Id string `pulumi:"id"`
 	// Friendly name of the linked workspace.
@@ -84,11 +80,6 @@ func (o LookupLinkedWorkspaceResultOutput) ToLookupLinkedWorkspaceResultOutput()
 
 func (o LookupLinkedWorkspaceResultOutput) ToLookupLinkedWorkspaceResultOutputWithContext(ctx context.Context) LookupLinkedWorkspaceResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupLinkedWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLinkedWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ResourceId of the link of the linked workspace.

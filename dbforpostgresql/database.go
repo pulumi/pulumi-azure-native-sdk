@@ -8,23 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a Database.
 //
-// Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
+// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2017-12-01.
 //
-// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
 type Database struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Character set of the database.
+	// The charset of the database.
 	Charset pulumi.StringPtrOutput `pulumi:"charset"`
-	// Collation of the database.
+	// The collation of the database.
 	Collation pulumi.StringPtrOutput `pulumi:"collation"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -48,9 +46,6 @@ func NewDatabase(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20171201:Database"),
-		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20201105preview:Database"),
 		},
@@ -87,15 +82,6 @@ func NewDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Database"),
 		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250101preview:Database"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250601preview:Database"),
-		},
-		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20250801:Database"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -131,11 +117,11 @@ func (DatabaseState) ElementType() reflect.Type {
 }
 
 type databaseArgs struct {
-	// Character set of the database.
+	// The charset of the database.
 	Charset *string `pulumi:"charset"`
-	// Collation of the database.
+	// The collation of the database.
 	Collation *string `pulumi:"collation"`
-	// Name of the database.
+	// The name of the database.
 	DatabaseName *string `pulumi:"databaseName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -145,11 +131,11 @@ type databaseArgs struct {
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
-	// Character set of the database.
+	// The charset of the database.
 	Charset pulumi.StringPtrInput
-	// Collation of the database.
+	// The collation of the database.
 	Collation pulumi.StringPtrInput
-	// Name of the database.
+	// The name of the database.
 	DatabaseName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -194,17 +180,12 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
-// The Azure API version of the resource.
-func (o DatabaseOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Character set of the database.
+// The charset of the database.
 func (o DatabaseOutput) Charset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Charset }).(pulumi.StringPtrOutput)
 }
 
-// Collation of the database.
+// The collation of the database.
 func (o DatabaseOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Collation }).(pulumi.StringPtrOutput)
 }

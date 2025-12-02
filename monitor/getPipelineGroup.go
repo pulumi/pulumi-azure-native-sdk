@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specific pipeline group instance.
 //
-// Uses Azure REST API version 2024-10-01-preview.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-10-01-preview.
 func LookupPipelineGroup(ctx *pulumi.Context, args *LookupPipelineGroupArgs, opts ...pulumi.InvokeOption) (*LookupPipelineGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineGroupResult
@@ -35,9 +35,9 @@ type LookupPipelineGroupArgs struct {
 
 // A pipeline group definition.
 type LookupPipelineGroupResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The complex type of the extended location.
+	// The exporters specified for a pipeline group instance.
+	Exporters []ExporterResponse `pulumi:"exporters"`
+	// The extended location for given pipeline group.
 	ExtendedLocation *AzureResourceManagerCommonTypesExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
@@ -45,8 +45,18 @@ type LookupPipelineGroupResult struct {
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The resource-specific properties for this resource.
-	Properties PipelineGroupPropertiesResponse `pulumi:"properties"`
+	// Networking configurations for the pipeline group instance.
+	NetworkingConfigurations []NetworkingConfigurationResponse `pulumi:"networkingConfigurations"`
+	// The processors specified for a pipeline group instance.
+	Processors []ProcessorResponse `pulumi:"processors"`
+	// The provisioning state of a pipeline group instance. Set to Succeeded if everything is healthy.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The receivers specified for a pipeline group instance.
+	Receivers []ReceiverResponse `pulumi:"receivers"`
+	// Defines the amount of replicas of the pipeline group instance.
+	Replicas *int `pulumi:"replicas"`
+	// The service section for a given pipeline group instance.
+	Service ServiceResponse `pulumi:"service"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -90,12 +100,12 @@ func (o LookupPipelineGroupResultOutput) ToLookupPipelineGroupResultOutputWithCo
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupPipelineGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPipelineGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+// The exporters specified for a pipeline group instance.
+func (o LookupPipelineGroupResultOutput) Exporters() ExporterResponseArrayOutput {
+	return o.ApplyT(func(v LookupPipelineGroupResult) []ExporterResponse { return v.Exporters }).(ExporterResponseArrayOutput)
 }
 
-// The complex type of the extended location.
+// The extended location for given pipeline group.
 func (o LookupPipelineGroupResultOutput) ExtendedLocation() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v LookupPipelineGroupResult) *AzureResourceManagerCommonTypesExtendedLocationResponse {
 		return v.ExtendedLocation
@@ -117,9 +127,34 @@ func (o LookupPipelineGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource-specific properties for this resource.
-func (o LookupPipelineGroupResultOutput) Properties() PipelineGroupPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupPipelineGroupResult) PipelineGroupPropertiesResponse { return v.Properties }).(PipelineGroupPropertiesResponseOutput)
+// Networking configurations for the pipeline group instance.
+func (o LookupPipelineGroupResultOutput) NetworkingConfigurations() NetworkingConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v LookupPipelineGroupResult) []NetworkingConfigurationResponse { return v.NetworkingConfigurations }).(NetworkingConfigurationResponseArrayOutput)
+}
+
+// The processors specified for a pipeline group instance.
+func (o LookupPipelineGroupResultOutput) Processors() ProcessorResponseArrayOutput {
+	return o.ApplyT(func(v LookupPipelineGroupResult) []ProcessorResponse { return v.Processors }).(ProcessorResponseArrayOutput)
+}
+
+// The provisioning state of a pipeline group instance. Set to Succeeded if everything is healthy.
+func (o LookupPipelineGroupResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPipelineGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The receivers specified for a pipeline group instance.
+func (o LookupPipelineGroupResultOutput) Receivers() ReceiverResponseArrayOutput {
+	return o.ApplyT(func(v LookupPipelineGroupResult) []ReceiverResponse { return v.Receivers }).(ReceiverResponseArrayOutput)
+}
+
+// Defines the amount of replicas of the pipeline group instance.
+func (o LookupPipelineGroupResultOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupPipelineGroupResult) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+// The service section for a given pipeline group instance.
+func (o LookupPipelineGroupResultOutput) Service() ServiceResponseOutput {
+	return o.ApplyT(func(v LookupPipelineGroupResult) ServiceResponse { return v.Service }).(ServiceResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

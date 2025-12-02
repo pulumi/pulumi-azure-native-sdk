@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Storage Mover resource.
 //
-// Uses Azure REST API version 2024-07-01.
+// Uses Azure REST API version 2023-03-01.
 //
-// Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-10-01, 2024-07-01.
 func LookupStorageMover(ctx *pulumi.Context, args *LookupStorageMoverArgs, opts ...pulumi.InvokeOption) (*LookupStorageMoverResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageMoverResult
@@ -35,8 +35,6 @@ type LookupStorageMoverArgs struct {
 
 // The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
 type LookupStorageMoverResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description for the Storage Mover.
 	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -47,7 +45,7 @@ type LookupStorageMoverResult struct {
 	Name string `pulumi:"name"`
 	// The provisioning state of this resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Resource system metadata.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -90,11 +88,6 @@ func (o LookupStorageMoverResultOutput) ToLookupStorageMoverResultOutputWithCont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupStorageMoverResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStorageMoverResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // A description for the Storage Mover.
 func (o LookupStorageMoverResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageMoverResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -120,7 +113,7 @@ func (o LookupStorageMoverResultOutput) ProvisioningState() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupStorageMoverResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Resource system metadata.
 func (o LookupStorageMoverResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupStorageMoverResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
